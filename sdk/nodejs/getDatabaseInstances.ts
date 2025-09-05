@@ -22,10 +22,22 @@ import * as utilities from "./utilities";
  * export const allDatabaseInstances = all.then(all => all.databaseInstances);
  * ```
  */
-export function getDatabaseInstances(opts?: pulumi.InvokeOptions): Promise<GetDatabaseInstancesResult> {
+export function getDatabaseInstances(args?: GetDatabaseInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabaseInstancesResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getDatabaseInstances:getDatabaseInstances", {
+        "workspaceId": args.workspaceId,
     }, opts);
+}
+
+/**
+ * A collection of arguments for invoking getDatabaseInstances.
+ */
+export interface GetDatabaseInstancesArgs {
+    /**
+     * Workspace ID of the resource
+     */
+    workspaceId?: string;
 }
 
 /**
@@ -37,6 +49,7 @@ export interface GetDatabaseInstancesResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly workspaceId?: string;
 }
 /**
  * This data source can be used to fetch the list of Database Instances within the workspace.
@@ -54,8 +67,20 @@ export interface GetDatabaseInstancesResult {
  * export const allDatabaseInstances = all.then(all => all.databaseInstances);
  * ```
  */
-export function getDatabaseInstancesOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDatabaseInstancesResult> {
+export function getDatabaseInstancesOutput(args?: GetDatabaseInstancesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDatabaseInstancesResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getDatabaseInstances:getDatabaseInstances", {
+        "workspaceId": args.workspaceId,
     }, opts);
+}
+
+/**
+ * A collection of arguments for invoking getDatabaseInstances.
+ */
+export interface GetDatabaseInstancesOutputArgs {
+    /**
+     * Workspace ID of the resource
+     */
+    workspaceId?: pulumi.Input<string>;
 }

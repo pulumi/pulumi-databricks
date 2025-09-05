@@ -10,11 +10,34 @@ import * as utilities from "./utilities";
  * This data source can be used to fetch the list of external metadata objects.
  *
  * > **Note** This resource can only be used with an workspace-level provider!
+ *
+ * ## Example Usage
+ *
+ * Getting a list of all external metadata objects:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const all = databricks.getExternalMetadatas({});
+ * ```
  */
-export function getExternalMetadatas(opts?: pulumi.InvokeOptions): Promise<GetExternalMetadatasResult> {
+export function getExternalMetadatas(args?: GetExternalMetadatasArgs, opts?: pulumi.InvokeOptions): Promise<GetExternalMetadatasResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getExternalMetadatas:getExternalMetadatas", {
+        "workspaceId": args.workspaceId,
     }, opts);
+}
+
+/**
+ * A collection of arguments for invoking getExternalMetadatas.
+ */
+export interface GetExternalMetadatasArgs {
+    /**
+     * Workspace ID of the resource
+     */
+    workspaceId?: string;
 }
 
 /**
@@ -26,14 +49,38 @@ export interface GetExternalMetadatasResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly workspaceId?: string;
 }
 /**
  * This data source can be used to fetch the list of external metadata objects.
  *
  * > **Note** This resource can only be used with an workspace-level provider!
+ *
+ * ## Example Usage
+ *
+ * Getting a list of all external metadata objects:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const all = databricks.getExternalMetadatas({});
+ * ```
  */
-export function getExternalMetadatasOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetExternalMetadatasResult> {
+export function getExternalMetadatasOutput(args?: GetExternalMetadatasOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetExternalMetadatasResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getExternalMetadatas:getExternalMetadatas", {
+        "workspaceId": args.workspaceId,
     }, opts);
+}
+
+/**
+ * A collection of arguments for invoking getExternalMetadatas.
+ */
+export interface GetExternalMetadatasOutputArgs {
+    /**
+     * Workspace ID of the resource
+     */
+    workspaceId?: pulumi.Input<string>;
 }

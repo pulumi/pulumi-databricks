@@ -21,6 +21,7 @@ export function getPolicyInfo(args: GetPolicyInfoArgs, opts?: pulumi.InvokeOptio
         "rowFilter": args.rowFilter,
         "toPrincipals": args.toPrincipals,
         "whenCondition": args.whenCondition,
+        "workspaceId": args.workspaceId,
     }, opts);
 }
 
@@ -44,19 +45,19 @@ export interface GetPolicyInfoArgs {
     exceptPrincipals?: string[];
     /**
      * (string) - Type of securables that the policy should take effect on.
-     * Only `table` is supported at this moment.
+     * Only `TABLE` is supported at this moment.
      * Required on create and optional on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
      */
     forSecurableType: string;
     /**
      * (list of MatchColumn) - Optional list of condition expressions used to match table columns.
-     * Only valid when `forSecurableType` is `table`.
+     * Only valid when `forSecurableType` is `TABLE`.
      * When specified, the policy only applies to tables whose columns satisfy all match conditions
      */
     matchColumns?: inputs.GetPolicyInfoMatchColumn[];
     /**
-     * Name of the policy. Required on create and ignored on update.
-     * To update the name, use the `newName` field
+     * Name of the policy. Required on create and optional on update.
+     * To rename the policy, set `name` to a different value on update
      */
     name?: string;
     /**
@@ -66,7 +67,7 @@ export interface GetPolicyInfoArgs {
     onSecurableFullname?: string;
     /**
      * Type of the securable on which the policy is defined.
-     * Only `catalog`, `schema` and `table` are supported at this moment.
+     * Only `CATALOG`, `SCHEMA` and `TABLE` are supported at this moment.
      * Required on create and ignored on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
      */
     onSecurableType?: string;
@@ -89,6 +90,10 @@ export interface GetPolicyInfoArgs {
      * (string) - Optional condition when the policy should take effect
      */
     whenCondition?: string;
+    /**
+     * Workspace ID of the resource
+     */
+    workspaceId?: string;
 }
 
 /**
@@ -119,7 +124,7 @@ export interface GetPolicyInfoResult {
     readonly exceptPrincipals?: string[];
     /**
      * (string) - Type of securables that the policy should take effect on.
-     * Only `table` is supported at this moment.
+     * Only `TABLE` is supported at this moment.
      * Required on create and optional on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
      */
     readonly forSecurableType: string;
@@ -129,13 +134,13 @@ export interface GetPolicyInfoResult {
     readonly id: string;
     /**
      * (list of MatchColumn) - Optional list of condition expressions used to match table columns.
-     * Only valid when `forSecurableType` is `table`.
+     * Only valid when `forSecurableType` is `TABLE`.
      * When specified, the policy only applies to tables whose columns satisfy all match conditions
      */
     readonly matchColumns?: outputs.GetPolicyInfoMatchColumn[];
     /**
-     * (string) - Name of the policy. Required on create and ignored on update.
-     * To update the name, use the `newName` field
+     * (string) - Name of the policy. Required on create and optional on update.
+     * To rename the policy, set `name` to a different value on update
      */
     readonly name?: string;
     /**
@@ -145,7 +150,7 @@ export interface GetPolicyInfoResult {
     readonly onSecurableFullname?: string;
     /**
      * (string) - Type of the securable on which the policy is defined.
-     * Only `catalog`, `schema` and `table` are supported at this moment.
+     * Only `CATALOG`, `SCHEMA` and `TABLE` are supported at this moment.
      * Required on create and ignored on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
      */
     readonly onSecurableType?: string;
@@ -176,6 +181,7 @@ export interface GetPolicyInfoResult {
      * (string) - Optional condition when the policy should take effect
      */
     readonly whenCondition?: string;
+    readonly workspaceId?: string;
 }
 export function getPolicyInfoOutput(args: GetPolicyInfoOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPolicyInfoResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -192,6 +198,7 @@ export function getPolicyInfoOutput(args: GetPolicyInfoOutputArgs, opts?: pulumi
         "rowFilter": args.rowFilter,
         "toPrincipals": args.toPrincipals,
         "whenCondition": args.whenCondition,
+        "workspaceId": args.workspaceId,
     }, opts);
 }
 
@@ -215,19 +222,19 @@ export interface GetPolicyInfoOutputArgs {
     exceptPrincipals?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * (string) - Type of securables that the policy should take effect on.
-     * Only `table` is supported at this moment.
+     * Only `TABLE` is supported at this moment.
      * Required on create and optional on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
      */
     forSecurableType: pulumi.Input<string>;
     /**
      * (list of MatchColumn) - Optional list of condition expressions used to match table columns.
-     * Only valid when `forSecurableType` is `table`.
+     * Only valid when `forSecurableType` is `TABLE`.
      * When specified, the policy only applies to tables whose columns satisfy all match conditions
      */
     matchColumns?: pulumi.Input<pulumi.Input<inputs.GetPolicyInfoMatchColumnArgs>[]>;
     /**
-     * Name of the policy. Required on create and ignored on update.
-     * To update the name, use the `newName` field
+     * Name of the policy. Required on create and optional on update.
+     * To rename the policy, set `name` to a different value on update
      */
     name?: pulumi.Input<string>;
     /**
@@ -237,7 +244,7 @@ export interface GetPolicyInfoOutputArgs {
     onSecurableFullname?: pulumi.Input<string>;
     /**
      * Type of the securable on which the policy is defined.
-     * Only `catalog`, `schema` and `table` are supported at this moment.
+     * Only `CATALOG`, `SCHEMA` and `TABLE` are supported at this moment.
      * Required on create and ignored on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
      */
     onSecurableType?: pulumi.Input<string>;
@@ -260,4 +267,8 @@ export interface GetPolicyInfoOutputArgs {
      * (string) - Optional condition when the policy should take effect
      */
     whenCondition?: pulumi.Input<string>;
+    /**
+     * Workspace ID of the resource
+     */
+    workspaceId?: pulumi.Input<string>;
 }

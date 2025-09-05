@@ -207,6 +207,13 @@ namespace Pulumi.Databricks
             set => _metadataServiceUrl.Set(value);
         }
 
+        private static readonly __Value<int?> _oauthCallbackPort = new __Value<int?>(() => __config.GetInt32("oauthCallbackPort"));
+        public static int? OauthCallbackPort
+        {
+            get => _oauthCallbackPort.Get();
+            set => _oauthCallbackPort.Set(value);
+        }
+
         private static readonly __Value<string?> _oidcTokenEnv = new __Value<string?>(() => __config.Get("oidcTokenEnv"));
         public static string? OidcTokenEnv
         {

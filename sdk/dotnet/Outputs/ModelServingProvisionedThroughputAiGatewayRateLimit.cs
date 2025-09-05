@@ -20,6 +20,7 @@ namespace Pulumi.Databricks.Outputs
         public readonly string? Key;
         public readonly string? Principal;
         public readonly string RenewalPeriod;
+        public readonly int? Tokens;
 
         [OutputConstructor]
         private ModelServingProvisionedThroughputAiGatewayRateLimit(
@@ -29,12 +30,15 @@ namespace Pulumi.Databricks.Outputs
 
             string? principal,
 
-            string renewalPeriod)
+            string renewalPeriod,
+
+            int? tokens)
         {
             Calls = calls;
             Key = key;
             Principal = principal;
             RenewalPeriod = renewalPeriod;
+            Tokens = tokens;
         }
     }
 }

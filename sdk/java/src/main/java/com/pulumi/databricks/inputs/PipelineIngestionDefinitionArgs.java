@@ -6,6 +6,7 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.PipelineIngestionDefinitionObjectArgs;
+import com.pulumi.databricks.inputs.PipelineIngestionDefinitionSourceConfigurationArgs;
 import com.pulumi.databricks.inputs.PipelineIngestionDefinitionTableConfigurationArgs;
 import java.lang.String;
 import java.util.List;
@@ -39,6 +40,13 @@ public final class PipelineIngestionDefinitionArgs extends com.pulumi.resources.
         return Optional.ofNullable(this.objects);
     }
 
+    @Import(name="sourceConfigurations")
+    private @Nullable Output<List<PipelineIngestionDefinitionSourceConfigurationArgs>> sourceConfigurations;
+
+    public Optional<Output<List<PipelineIngestionDefinitionSourceConfigurationArgs>>> sourceConfigurations() {
+        return Optional.ofNullable(this.sourceConfigurations);
+    }
+
     @Import(name="sourceType")
     private @Nullable Output<String> sourceType;
 
@@ -59,6 +67,7 @@ public final class PipelineIngestionDefinitionArgs extends com.pulumi.resources.
         this.connectionName = $.connectionName;
         this.ingestionGatewayId = $.ingestionGatewayId;
         this.objects = $.objects;
+        this.sourceConfigurations = $.sourceConfigurations;
         this.sourceType = $.sourceType;
         this.tableConfiguration = $.tableConfiguration;
     }
@@ -110,6 +119,19 @@ public final class PipelineIngestionDefinitionArgs extends com.pulumi.resources.
 
         public Builder objects(PipelineIngestionDefinitionObjectArgs... objects) {
             return objects(List.of(objects));
+        }
+
+        public Builder sourceConfigurations(@Nullable Output<List<PipelineIngestionDefinitionSourceConfigurationArgs>> sourceConfigurations) {
+            $.sourceConfigurations = sourceConfigurations;
+            return this;
+        }
+
+        public Builder sourceConfigurations(List<PipelineIngestionDefinitionSourceConfigurationArgs> sourceConfigurations) {
+            return sourceConfigurations(Output.of(sourceConfigurations));
+        }
+
+        public Builder sourceConfigurations(PipelineIngestionDefinitionSourceConfigurationArgs... sourceConfigurations) {
+            return sourceConfigurations(List.of(sourceConfigurations));
         }
 
         public Builder sourceType(@Nullable Output<String> sourceType) {

@@ -15,7 +15,7 @@ import * as utilities from "./utilities";
  *
  * import {
  *
- *   id = name
+ *   id = "name"
  *
  *   to = databricks_recipient_federation_policy.this
  *
@@ -24,7 +24,7 @@ import * as utilities from "./utilities";
  * If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
  *
  * ```sh
- * $ pulumi import databricks:index/recipientFederationPolicy:RecipientFederationPolicy databricks_recipient_federation_policy name
+ * $ pulumi import databricks:index/recipientFederationPolicy:RecipientFederationPolicy databricks_recipient_federation_policy "name"
  * ```
  */
 export class RecipientFederationPolicy extends pulumi.CustomResource {
@@ -76,6 +76,10 @@ export class RecipientFederationPolicy extends pulumi.CustomResource {
      * (string) - System-generated timestamp indicating when the policy was last updated
      */
     declare public /*out*/ readonly updateTime: pulumi.Output<string>;
+    /**
+     * Workspace ID of the resource
+     */
+    declare public readonly workspaceId: pulumi.Output<string | undefined>;
 
     /**
      * Create a RecipientFederationPolicy resource with the given unique name, arguments, and options.
@@ -95,11 +99,13 @@ export class RecipientFederationPolicy extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["oidcPolicy"] = state?.oidcPolicy;
             resourceInputs["updateTime"] = state?.updateTime;
+            resourceInputs["workspaceId"] = state?.workspaceId;
         } else {
             const args = argsOrState as RecipientFederationPolicyArgs | undefined;
             resourceInputs["comment"] = args?.comment;
             resourceInputs["name"] = args?.name;
             resourceInputs["oidcPolicy"] = args?.oidcPolicy;
+            resourceInputs["workspaceId"] = args?.workspaceId;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
@@ -133,6 +139,10 @@ export interface RecipientFederationPolicyState {
      * (string) - System-generated timestamp indicating when the policy was last updated
      */
     updateTime?: pulumi.Input<string>;
+    /**
+     * Workspace ID of the resource
+     */
+    workspaceId?: pulumi.Input<string>;
 }
 
 /**
@@ -152,4 +162,8 @@ export interface RecipientFederationPolicyArgs {
      * Specifies the policy to use for validating OIDC claims in the federated tokens
      */
     oidcPolicy?: pulumi.Input<inputs.RecipientFederationPolicyOidcPolicy>;
+    /**
+     * Workspace ID of the resource
+     */
+    workspaceId?: pulumi.Input<string>;
 }

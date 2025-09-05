@@ -13,10 +13,16 @@ namespace Pulumi.Databricks.Inputs
     public sealed class VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the embedding model endpoint
+        /// The name of the embedding model endpoint, used by default for both ingestion and querying.
         /// </summary>
         [Input("embeddingModelEndpointName")]
         public Input<string>? EmbeddingModelEndpointName { get; set; }
+
+        /// <summary>
+        /// The name of the embedding model endpoint which, if specified, is used for querying (not ingestion).
+        /// </summary>
+        [Input("modelEndpointNameForQuery")]
+        public Input<string>? ModelEndpointNameForQuery { get; set; }
 
         /// <summary>
         /// The name of the column

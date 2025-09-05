@@ -11,14 +11,67 @@ namespace Pulumi.Databricks
 {
     public static class GetPolicyInfos
     {
-        public static Task<GetPolicyInfosResult> InvokeAsync(InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.InvokeAsync<GetPolicyInfosResult>("databricks:index/getPolicyInfos:getPolicyInfos", InvokeArgs.Empty, options.WithDefaults());
+        public static Task<GetPolicyInfosResult> InvokeAsync(GetPolicyInfosArgs args, InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetPolicyInfosResult>("databricks:index/getPolicyInfos:getPolicyInfos", args ?? new GetPolicyInfosArgs(), options.WithDefaults());
 
-        public static Output<GetPolicyInfosResult> Invoke(InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.Invoke<GetPolicyInfosResult>("databricks:index/getPolicyInfos:getPolicyInfos", InvokeArgs.Empty, options.WithDefaults());
+        public static Output<GetPolicyInfosResult> Invoke(GetPolicyInfosInvokeArgs args, InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.Invoke<GetPolicyInfosResult>("databricks:index/getPolicyInfos:getPolicyInfos", args ?? new GetPolicyInfosInvokeArgs(), options.WithDefaults());
 
-        public static Output<GetPolicyInfosResult> Invoke(InvokeOutputOptions options)
-            => global::Pulumi.Deployment.Instance.Invoke<GetPolicyInfosResult>("databricks:index/getPolicyInfos:getPolicyInfos", InvokeArgs.Empty, options.WithDefaults());
+        public static Output<GetPolicyInfosResult> Invoke(GetPolicyInfosInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetPolicyInfosResult>("databricks:index/getPolicyInfos:getPolicyInfos", args ?? new GetPolicyInfosInvokeArgs(), options.WithDefaults());
+    }
+
+
+    public sealed class GetPolicyInfosArgs : global::Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Required. The fully qualified name of securable to list policies for
+        /// </summary>
+        [Input("onSecurableFullname", required: true)]
+        public string OnSecurableFullname { get; set; } = null!;
+
+        /// <summary>
+        /// Required. The type of the securable to list policies for
+        /// </summary>
+        [Input("onSecurableType", required: true)]
+        public string OnSecurableType { get; set; } = null!;
+
+        /// <summary>
+        /// Workspace ID of the resource
+        /// </summary>
+        [Input("workspaceId")]
+        public string? WorkspaceId { get; set; }
+
+        public GetPolicyInfosArgs()
+        {
+        }
+        public static new GetPolicyInfosArgs Empty => new GetPolicyInfosArgs();
+    }
+
+    public sealed class GetPolicyInfosInvokeArgs : global::Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Required. The fully qualified name of securable to list policies for
+        /// </summary>
+        [Input("onSecurableFullname", required: true)]
+        public Input<string> OnSecurableFullname { get; set; } = null!;
+
+        /// <summary>
+        /// Required. The type of the securable to list policies for
+        /// </summary>
+        [Input("onSecurableType", required: true)]
+        public Input<string> OnSecurableType { get; set; } = null!;
+
+        /// <summary>
+        /// Workspace ID of the resource
+        /// </summary>
+        [Input("workspaceId")]
+        public Input<string>? WorkspaceId { get; set; }
+
+        public GetPolicyInfosInvokeArgs()
+        {
+        }
+        public static new GetPolicyInfosInvokeArgs Empty => new GetPolicyInfosInvokeArgs();
     }
 
 
@@ -29,16 +82,37 @@ namespace Pulumi.Databricks
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// (string) - Full name of the securable on which the policy is defined.
+        /// Required on create and ignored on update
+        /// </summary>
+        public readonly string OnSecurableFullname;
+        /// <summary>
+        /// (string) - Type of the securable on which the policy is defined.
+        /// Only `CATALOG`, `SCHEMA` and `TABLE` are supported at this moment.
+        /// Required on create and ignored on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+        /// </summary>
+        public readonly string OnSecurableType;
         public readonly ImmutableArray<Outputs.GetPolicyInfosPolicyResult> Policies;
+        public readonly string? WorkspaceId;
 
         [OutputConstructor]
         private GetPolicyInfosResult(
             string id,
 
-            ImmutableArray<Outputs.GetPolicyInfosPolicyResult> policies)
+            string onSecurableFullname,
+
+            string onSecurableType,
+
+            ImmutableArray<Outputs.GetPolicyInfosPolicyResult> policies,
+
+            string? workspaceId)
         {
             Id = id;
+            OnSecurableFullname = onSecurableFullname;
+            OnSecurableType = onSecurableType;
             Policies = policies;
+            WorkspaceId = workspaceId;
         }
     }
 }

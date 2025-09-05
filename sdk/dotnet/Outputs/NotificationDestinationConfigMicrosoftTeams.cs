@@ -13,6 +13,14 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class NotificationDestinationConfigMicrosoftTeams
     {
+        public readonly string? AppId;
+        public readonly bool? AppIdSet;
+        public readonly string? AuthSecret;
+        public readonly bool? AuthSecretSet;
+        public readonly string? ChannelUrl;
+        public readonly bool? ChannelUrlSet;
+        public readonly string? TenantId;
+        public readonly bool? TenantIdSet;
         /// <summary>
         /// The Microsoft Teams webhook URL.
         /// </summary>
@@ -21,10 +29,34 @@ namespace Pulumi.Databricks.Outputs
 
         [OutputConstructor]
         private NotificationDestinationConfigMicrosoftTeams(
+            string? appId,
+
+            bool? appIdSet,
+
+            string? authSecret,
+
+            bool? authSecretSet,
+
+            string? channelUrl,
+
+            bool? channelUrlSet,
+
+            string? tenantId,
+
+            bool? tenantIdSet,
+
             string? url,
 
             bool? urlSet)
         {
+            AppId = appId;
+            AppIdSet = appIdSet;
+            AuthSecret = authSecret;
+            AuthSecretSet = authSecretSet;
+            ChannelUrl = channelUrl;
+            ChannelUrlSet = channelUrlSet;
+            TenantId = tenantId;
+            TenantIdSet = tenantIdSet;
             Url = url;
             UrlSet = urlSet;
         }

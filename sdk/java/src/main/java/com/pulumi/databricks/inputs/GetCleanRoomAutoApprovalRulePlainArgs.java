@@ -78,6 +78,21 @@ public final class GetCleanRoomAutoApprovalRulePlainArgs extends com.pulumi.reso
         return Optional.ofNullable(this.runnerCollaboratorAlias);
     }
 
+    /**
+     * Workspace ID of the resource
+     * 
+     */
+    @Import(name="workspaceId")
+    private @Nullable String workspaceId;
+
+    /**
+     * @return Workspace ID of the resource
+     * 
+     */
+    public Optional<String> workspaceId() {
+        return Optional.ofNullable(this.workspaceId);
+    }
+
     private GetCleanRoomAutoApprovalRulePlainArgs() {}
 
     private GetCleanRoomAutoApprovalRulePlainArgs(GetCleanRoomAutoApprovalRulePlainArgs $) {
@@ -85,6 +100,7 @@ public final class GetCleanRoomAutoApprovalRulePlainArgs extends com.pulumi.reso
         this.authorScope = $.authorScope;
         this.cleanRoomName = $.cleanRoomName;
         this.runnerCollaboratorAlias = $.runnerCollaboratorAlias;
+        this.workspaceId = $.workspaceId;
     }
 
     public static Builder builder() {
@@ -148,6 +164,17 @@ public final class GetCleanRoomAutoApprovalRulePlainArgs extends com.pulumi.reso
          */
         public Builder runnerCollaboratorAlias(@Nullable String runnerCollaboratorAlias) {
             $.runnerCollaboratorAlias = runnerCollaboratorAlias;
+            return this;
+        }
+
+        /**
+         * @param workspaceId Workspace ID of the resource
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workspaceId(@Nullable String workspaceId) {
+            $.workspaceId = workspaceId;
             return this;
         }
 

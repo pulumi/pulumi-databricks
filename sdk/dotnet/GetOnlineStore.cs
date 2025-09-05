@@ -42,6 +42,12 @@ namespace Pulumi.Databricks
         [Input("readReplicaCount")]
         public int? ReadReplicaCount { get; set; }
 
+        /// <summary>
+        /// Workspace ID of the resource
+        /// </summary>
+        [Input("workspaceId")]
+        public string? WorkspaceId { get; set; }
+
         public GetOnlineStoreArgs()
         {
         }
@@ -67,6 +73,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("readReplicaCount")]
         public Input<int>? ReadReplicaCount { get; set; }
+
+        /// <summary>
+        /// Workspace ID of the resource
+        /// </summary>
+        [Input("workspaceId")]
+        public Input<string>? WorkspaceId { get; set; }
 
         public GetOnlineStoreInvokeArgs()
         {
@@ -106,6 +118,7 @@ namespace Pulumi.Databricks
         /// (string) - The current state of the online store. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
         /// </summary>
         public readonly string State;
+        public readonly string? WorkspaceId;
 
         [OutputConstructor]
         private GetOnlineStoreResult(
@@ -121,7 +134,9 @@ namespace Pulumi.Databricks
 
             int? readReplicaCount,
 
-            string state)
+            string state,
+
+            string? workspaceId)
         {
             Capacity = capacity;
             CreationTime = creationTime;
@@ -130,6 +145,7 @@ namespace Pulumi.Databricks
             Name = name;
             ReadReplicaCount = readReplicaCount;
             State = state;
+            WorkspaceId = workspaceId;
         }
     }
 }

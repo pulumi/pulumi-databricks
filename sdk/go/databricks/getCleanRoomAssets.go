@@ -38,28 +38,54 @@ import (
 //	}
 //
 // ```
-func GetCleanRoomAssets(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetCleanRoomAssetsResult, error) {
+func GetCleanRoomAssets(ctx *pulumi.Context, args *GetCleanRoomAssetsArgs, opts ...pulumi.InvokeOption) (*GetCleanRoomAssetsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetCleanRoomAssetsResult
-	err := ctx.Invoke("databricks:index/getCleanRoomAssets:getCleanRoomAssets", nil, &rv, opts...)
+	err := ctx.Invoke("databricks:index/getCleanRoomAssets:getCleanRoomAssets", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &rv, nil
 }
 
+// A collection of arguments for invoking getCleanRoomAssets.
+type GetCleanRoomAssetsArgs struct {
+	// Name of the clean room
+	CleanRoomName string `pulumi:"cleanRoomName"`
+	// Workspace ID of the resource
+	WorkspaceId *string `pulumi:"workspaceId"`
+}
+
 // A collection of values returned by getCleanRoomAssets.
 type GetCleanRoomAssetsResult struct {
 	Assets []GetCleanRoomAssetsAsset `pulumi:"assets"`
+	// (string) - The name of the clean room this asset belongs to.
+	// This field is required for create operations and populated by the server for responses
+	CleanRoomName string `pulumi:"cleanRoomName"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	Id          string  `pulumi:"id"`
+	WorkspaceId *string `pulumi:"workspaceId"`
 }
 
-func GetCleanRoomAssetsOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetCleanRoomAssetsResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetCleanRoomAssetsResultOutput, error) {
-		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-		return ctx.InvokeOutput("databricks:index/getCleanRoomAssets:getCleanRoomAssets", nil, GetCleanRoomAssetsResultOutput{}, options).(GetCleanRoomAssetsResultOutput), nil
-	}).(GetCleanRoomAssetsResultOutput)
+func GetCleanRoomAssetsOutput(ctx *pulumi.Context, args GetCleanRoomAssetsOutputArgs, opts ...pulumi.InvokeOption) GetCleanRoomAssetsResultOutput {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (GetCleanRoomAssetsResultOutput, error) {
+			args := v.(GetCleanRoomAssetsArgs)
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("databricks:index/getCleanRoomAssets:getCleanRoomAssets", args, GetCleanRoomAssetsResultOutput{}, options).(GetCleanRoomAssetsResultOutput), nil
+		}).(GetCleanRoomAssetsResultOutput)
+}
+
+// A collection of arguments for invoking getCleanRoomAssets.
+type GetCleanRoomAssetsOutputArgs struct {
+	// Name of the clean room
+	CleanRoomName pulumi.StringInput `pulumi:"cleanRoomName"`
+	// Workspace ID of the resource
+	WorkspaceId pulumi.StringPtrInput `pulumi:"workspaceId"`
+}
+
+func (GetCleanRoomAssetsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCleanRoomAssetsArgs)(nil)).Elem()
 }
 
 // A collection of values returned by getCleanRoomAssets.
@@ -81,9 +107,19 @@ func (o GetCleanRoomAssetsResultOutput) Assets() GetCleanRoomAssetsAssetArrayOut
 	return o.ApplyT(func(v GetCleanRoomAssetsResult) []GetCleanRoomAssetsAsset { return v.Assets }).(GetCleanRoomAssetsAssetArrayOutput)
 }
 
+// (string) - The name of the clean room this asset belongs to.
+// This field is required for create operations and populated by the server for responses
+func (o GetCleanRoomAssetsResultOutput) CleanRoomName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCleanRoomAssetsResult) string { return v.CleanRoomName }).(pulumi.StringOutput)
+}
+
 // The provider-assigned unique ID for this managed resource.
 func (o GetCleanRoomAssetsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCleanRoomAssetsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetCleanRoomAssetsResultOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCleanRoomAssetsResult) *string { return v.WorkspaceId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

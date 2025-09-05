@@ -9,6 +9,7 @@ export function getMaterializedFeaturesFeatureTag(args: GetMaterializedFeaturesF
     return pulumi.runtime.invoke("databricks:index/getMaterializedFeaturesFeatureTag:getMaterializedFeaturesFeatureTag", {
         "key": args.key,
         "value": args.value,
+        "workspaceId": args.workspaceId,
     }, opts);
 }
 
@@ -21,6 +22,10 @@ export interface GetMaterializedFeaturesFeatureTagArgs {
      * (string)
      */
     value?: string;
+    /**
+     * Workspace ID of the resource
+     */
+    workspaceId?: string;
 }
 
 /**
@@ -39,12 +44,14 @@ export interface GetMaterializedFeaturesFeatureTagResult {
      * (string)
      */
     readonly value?: string;
+    readonly workspaceId?: string;
 }
 export function getMaterializedFeaturesFeatureTagOutput(args: GetMaterializedFeaturesFeatureTagOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMaterializedFeaturesFeatureTagResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getMaterializedFeaturesFeatureTag:getMaterializedFeaturesFeatureTag", {
         "key": args.key,
         "value": args.value,
+        "workspaceId": args.workspaceId,
     }, opts);
 }
 
@@ -57,4 +64,8 @@ export interface GetMaterializedFeaturesFeatureTagOutputArgs {
      * (string)
      */
     value?: pulumi.Input<string>;
+    /**
+     * Workspace ID of the resource
+     */
+    workspaceId?: pulumi.Input<string>;
 }

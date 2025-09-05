@@ -27,13 +27,16 @@ class GetMaterializedFeaturesFeatureTagsResult:
     """
     A collection of values returned by getMaterializedFeaturesFeatureTags.
     """
-    def __init__(__self__, feature_tags=None, id=None):
+    def __init__(__self__, feature_tags=None, id=None, workspace_id=None):
         if feature_tags and not isinstance(feature_tags, list):
             raise TypeError("Expected argument 'feature_tags' to be a list")
         pulumi.set(__self__, "feature_tags", feature_tags)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if workspace_id and not isinstance(workspace_id, str):
+            raise TypeError("Expected argument 'workspace_id' to be a str")
+        pulumi.set(__self__, "workspace_id", workspace_id)
 
     @_builtins.property
     @pulumi.getter(name="featureTags")
@@ -48,6 +51,11 @@ class GetMaterializedFeaturesFeatureTagsResult:
         """
         return pulumi.get(self, "id")
 
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "workspace_id")
+
 
 class AwaitableGetMaterializedFeaturesFeatureTagsResult(GetMaterializedFeaturesFeatureTagsResult):
     # pylint: disable=using-constant-test
@@ -56,27 +64,38 @@ class AwaitableGetMaterializedFeaturesFeatureTagsResult(GetMaterializedFeaturesF
             yield self
         return GetMaterializedFeaturesFeatureTagsResult(
             feature_tags=self.feature_tags,
-            id=self.id)
+            id=self.id,
+            workspace_id=self.workspace_id)
 
 
-def get_materialized_features_feature_tags(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMaterializedFeaturesFeatureTagsResult:
+def get_materialized_features_feature_tags(workspace_id: Optional[_builtins.str] = None,
+                                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMaterializedFeaturesFeatureTagsResult:
     """
     Use this data source to access information about an existing resource.
+
+    :param _builtins.str workspace_id: Workspace ID of the resource
     """
     __args__ = dict()
+    __args__['workspaceId'] = workspace_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getMaterializedFeaturesFeatureTags:getMaterializedFeaturesFeatureTags', __args__, opts=opts, typ=GetMaterializedFeaturesFeatureTagsResult).value
 
     return AwaitableGetMaterializedFeaturesFeatureTagsResult(
         feature_tags=pulumi.get(__ret__, 'feature_tags'),
-        id=pulumi.get(__ret__, 'id'))
-def get_materialized_features_feature_tags_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMaterializedFeaturesFeatureTagsResult]:
+        id=pulumi.get(__ret__, 'id'),
+        workspace_id=pulumi.get(__ret__, 'workspace_id'))
+def get_materialized_features_feature_tags_output(workspace_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMaterializedFeaturesFeatureTagsResult]:
     """
     Use this data source to access information about an existing resource.
+
+    :param _builtins.str workspace_id: Workspace ID of the resource
     """
     __args__ = dict()
+    __args__['workspaceId'] = workspace_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getMaterializedFeaturesFeatureTags:getMaterializedFeaturesFeatureTags', __args__, opts=opts, typ=GetMaterializedFeaturesFeatureTagsResult)
     return __ret__.apply(lambda __response__: GetMaterializedFeaturesFeatureTagsResult(
         feature_tags=pulumi.get(__response__, 'feature_tags'),
-        id=pulumi.get(__response__, 'id')))
+        id=pulumi.get(__response__, 'id'),
+        workspace_id=pulumi.get(__response__, 'workspace_id')))

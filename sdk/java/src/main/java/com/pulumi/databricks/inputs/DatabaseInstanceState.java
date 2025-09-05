@@ -83,6 +83,25 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * (boolean) - xref AIP-129. `enable_pg_native_login` is owned by the client, while `effective_enable_pg_native_login` is owned by the server.
+     * `enable_pg_native_login` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+     * `effective_enable_pg_native_login` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * 
+     */
+    @Import(name="effectiveEnablePgNativeLogin")
+    private @Nullable Output<Boolean> effectiveEnablePgNativeLogin;
+
+    /**
+     * @return (boolean) - xref AIP-129. `enable_pg_native_login` is owned by the client, while `effective_enable_pg_native_login` is owned by the server.
+     * `enable_pg_native_login` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+     * `effective_enable_pg_native_login` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * 
+     */
+    public Optional<Output<Boolean>> effectiveEnablePgNativeLogin() {
+        return Optional.ofNullable(this.effectiveEnablePgNativeLogin);
+    }
+
+    /**
      * (boolean) - xref AIP-129. `enable_readable_secondaries` is owned by the client, while `effective_enable_readable_secondaries` is owned by the server.
      * `enable_readable_secondaries` will only be set in Create/Update response messages if and only if the user provides the field via the request.
      * `effective_enable_readable_secondaries` on the other hand will always bet set in all response messages (Create/Update/Get/List)
@@ -156,6 +175,21 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
      */
     public Optional<Output<Boolean>> effectiveStopped() {
         return Optional.ofNullable(this.effectiveStopped);
+    }
+
+    /**
+     * Whether the instance has PG native password login enabled. Defaults to true
+     * 
+     */
+    @Import(name="enablePgNativeLogin")
+    private @Nullable Output<Boolean> enablePgNativeLogin;
+
+    /**
+     * @return Whether the instance has PG native password login enabled. Defaults to true
+     * 
+     */
+    public Optional<Output<Boolean>> enablePgNativeLogin() {
+        return Optional.ofNullable(this.enablePgNativeLogin);
     }
 
     /**
@@ -352,6 +386,21 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.uid);
     }
 
+    /**
+     * Workspace ID of the resource
+     * 
+     */
+    @Import(name="workspaceId")
+    private @Nullable Output<String> workspaceId;
+
+    /**
+     * @return Workspace ID of the resource
+     * 
+     */
+    public Optional<Output<String>> workspaceId() {
+        return Optional.ofNullable(this.workspaceId);
+    }
+
     private DatabaseInstanceState() {}
 
     private DatabaseInstanceState(DatabaseInstanceState $) {
@@ -359,10 +408,12 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         this.childInstanceRefs = $.childInstanceRefs;
         this.creationTime = $.creationTime;
         this.creator = $.creator;
+        this.effectiveEnablePgNativeLogin = $.effectiveEnablePgNativeLogin;
         this.effectiveEnableReadableSecondaries = $.effectiveEnableReadableSecondaries;
         this.effectiveNodeCount = $.effectiveNodeCount;
         this.effectiveRetentionWindowInDays = $.effectiveRetentionWindowInDays;
         this.effectiveStopped = $.effectiveStopped;
+        this.enablePgNativeLogin = $.enablePgNativeLogin;
         this.enableReadableSecondaries = $.enableReadableSecondaries;
         this.name = $.name;
         this.nodeCount = $.nodeCount;
@@ -375,6 +426,7 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         this.state = $.state;
         this.stopped = $.stopped;
         this.uid = $.uid;
+        this.workspaceId = $.workspaceId;
     }
 
     public static Builder builder() {
@@ -493,6 +545,31 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
+         * @param effectiveEnablePgNativeLogin (boolean) - xref AIP-129. `enable_pg_native_login` is owned by the client, while `effective_enable_pg_native_login` is owned by the server.
+         * `enable_pg_native_login` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+         * `effective_enable_pg_native_login` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveEnablePgNativeLogin(@Nullable Output<Boolean> effectiveEnablePgNativeLogin) {
+            $.effectiveEnablePgNativeLogin = effectiveEnablePgNativeLogin;
+            return this;
+        }
+
+        /**
+         * @param effectiveEnablePgNativeLogin (boolean) - xref AIP-129. `enable_pg_native_login` is owned by the client, while `effective_enable_pg_native_login` is owned by the server.
+         * `enable_pg_native_login` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+         * `effective_enable_pg_native_login` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveEnablePgNativeLogin(Boolean effectiveEnablePgNativeLogin) {
+            return effectiveEnablePgNativeLogin(Output.of(effectiveEnablePgNativeLogin));
+        }
+
+        /**
          * @param effectiveEnableReadableSecondaries (boolean) - xref AIP-129. `enable_readable_secondaries` is owned by the client, while `effective_enable_readable_secondaries` is owned by the server.
          * `enable_readable_secondaries` will only be set in Create/Update response messages if and only if the user provides the field via the request.
          * `effective_enable_readable_secondaries` on the other hand will always bet set in all response messages (Create/Update/Get/List)
@@ -590,6 +667,27 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
          */
         public Builder effectiveStopped(Boolean effectiveStopped) {
             return effectiveStopped(Output.of(effectiveStopped));
+        }
+
+        /**
+         * @param enablePgNativeLogin Whether the instance has PG native password login enabled. Defaults to true
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enablePgNativeLogin(@Nullable Output<Boolean> enablePgNativeLogin) {
+            $.enablePgNativeLogin = enablePgNativeLogin;
+            return this;
+        }
+
+        /**
+         * @param enablePgNativeLogin Whether the instance has PG native password login enabled. Defaults to true
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enablePgNativeLogin(Boolean enablePgNativeLogin) {
+            return enablePgNativeLogin(Output.of(enablePgNativeLogin));
         }
 
         /**
@@ -856,6 +954,27 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
          */
         public Builder uid(String uid) {
             return uid(Output.of(uid));
+        }
+
+        /**
+         * @param workspaceId Workspace ID of the resource
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workspaceId(@Nullable Output<String> workspaceId) {
+            $.workspaceId = workspaceId;
+            return this;
+        }
+
+        /**
+         * @param workspaceId Workspace ID of the resource
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workspaceId(String workspaceId) {
+            return workspaceId(Output.of(workspaceId));
         }
 
         public DatabaseInstanceState build() {

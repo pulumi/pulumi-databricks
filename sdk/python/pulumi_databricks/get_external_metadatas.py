@@ -27,13 +27,16 @@ class GetExternalMetadatasResult:
     """
     A collection of values returned by getExternalMetadatas.
     """
-    def __init__(__self__, external_metadatas=None, id=None):
+    def __init__(__self__, external_metadatas=None, id=None, workspace_id=None):
         if external_metadatas and not isinstance(external_metadatas, list):
             raise TypeError("Expected argument 'external_metadatas' to be a list")
         pulumi.set(__self__, "external_metadatas", external_metadatas)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if workspace_id and not isinstance(workspace_id, str):
+            raise TypeError("Expected argument 'workspace_id' to be a str")
+        pulumi.set(__self__, "workspace_id", workspace_id)
 
     @_builtins.property
     @pulumi.getter(name="externalMetadatas")
@@ -48,6 +51,11 @@ class GetExternalMetadatasResult:
         """
         return pulumi.get(self, "id")
 
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "workspace_id")
+
 
 class AwaitableGetExternalMetadatasResult(GetExternalMetadatasResult):
     # pylint: disable=using-constant-test
@@ -56,31 +64,66 @@ class AwaitableGetExternalMetadatasResult(GetExternalMetadatasResult):
             yield self
         return GetExternalMetadatasResult(
             external_metadatas=self.external_metadatas,
-            id=self.id)
+            id=self.id,
+            workspace_id=self.workspace_id)
 
 
-def get_external_metadatas(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetExternalMetadatasResult:
+def get_external_metadatas(workspace_id: Optional[_builtins.str] = None,
+                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetExternalMetadatasResult:
     """
     This data source can be used to fetch the list of external metadata objects.
 
     > **Note** This resource can only be used with an workspace-level provider!
+
+    ## Example Usage
+
+    Getting a list of all external metadata objects:
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    all = databricks.get_external_metadatas()
+    ```
+
+
+    :param _builtins.str workspace_id: Workspace ID of the resource
     """
     __args__ = dict()
+    __args__['workspaceId'] = workspace_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getExternalMetadatas:getExternalMetadatas', __args__, opts=opts, typ=GetExternalMetadatasResult).value
 
     return AwaitableGetExternalMetadatasResult(
         external_metadatas=pulumi.get(__ret__, 'external_metadatas'),
-        id=pulumi.get(__ret__, 'id'))
-def get_external_metadatas_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetExternalMetadatasResult]:
+        id=pulumi.get(__ret__, 'id'),
+        workspace_id=pulumi.get(__ret__, 'workspace_id'))
+def get_external_metadatas_output(workspace_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetExternalMetadatasResult]:
     """
     This data source can be used to fetch the list of external metadata objects.
 
     > **Note** This resource can only be used with an workspace-level provider!
+
+    ## Example Usage
+
+    Getting a list of all external metadata objects:
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    all = databricks.get_external_metadatas()
+    ```
+
+
+    :param _builtins.str workspace_id: Workspace ID of the resource
     """
     __args__ = dict()
+    __args__['workspaceId'] = workspace_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getExternalMetadatas:getExternalMetadatas', __args__, opts=opts, typ=GetExternalMetadatasResult)
     return __ret__.apply(lambda __response__: GetExternalMetadatasResult(
         external_metadatas=pulumi.get(__response__, 'external_metadatas'),
-        id=pulumi.get(__response__, 'id')))
+        id=pulumi.get(__response__, 'id'),
+        workspace_id=pulumi.get(__response__, 'workspace_id')))

@@ -6,10 +6,22 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-export function getDatabaseSyncedDatabaseTables(opts?: pulumi.InvokeOptions): Promise<GetDatabaseSyncedDatabaseTablesResult> {
+export function getDatabaseSyncedDatabaseTables(args?: GetDatabaseSyncedDatabaseTablesArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabaseSyncedDatabaseTablesResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getDatabaseSyncedDatabaseTables:getDatabaseSyncedDatabaseTables", {
+        "workspaceId": args.workspaceId,
     }, opts);
+}
+
+/**
+ * A collection of arguments for invoking getDatabaseSyncedDatabaseTables.
+ */
+export interface GetDatabaseSyncedDatabaseTablesArgs {
+    /**
+     * Workspace ID of the resource
+     */
+    workspaceId?: string;
 }
 
 /**
@@ -21,9 +33,22 @@ export interface GetDatabaseSyncedDatabaseTablesResult {
      */
     readonly id: string;
     readonly syncedTables: outputs.GetDatabaseSyncedDatabaseTablesSyncedTable[];
+    readonly workspaceId?: string;
 }
-export function getDatabaseSyncedDatabaseTablesOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDatabaseSyncedDatabaseTablesResult> {
+export function getDatabaseSyncedDatabaseTablesOutput(args?: GetDatabaseSyncedDatabaseTablesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDatabaseSyncedDatabaseTablesResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getDatabaseSyncedDatabaseTables:getDatabaseSyncedDatabaseTables", {
+        "workspaceId": args.workspaceId,
     }, opts);
+}
+
+/**
+ * A collection of arguments for invoking getDatabaseSyncedDatabaseTables.
+ */
+export interface GetDatabaseSyncedDatabaseTablesOutputArgs {
+    /**
+     * Workspace ID of the resource
+     */
+    workspaceId?: pulumi.Input<string>;
 }

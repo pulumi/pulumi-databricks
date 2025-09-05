@@ -9,6 +9,8 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetMaterializedFeaturesFeatureTagsResult {
@@ -18,6 +20,7 @@ public final class GetMaterializedFeaturesFeatureTagsResult {
      * 
      */
     private String id;
+    private @Nullable String workspaceId;
 
     private GetMaterializedFeaturesFeatureTagsResult() {}
     public List<GetMaterializedFeaturesFeatureTagsFeatureTag> featureTags() {
@@ -29,6 +32,9 @@ public final class GetMaterializedFeaturesFeatureTagsResult {
      */
     public String id() {
         return this.id;
+    }
+    public Optional<String> workspaceId() {
+        return Optional.ofNullable(this.workspaceId);
     }
 
     public static Builder builder() {
@@ -42,11 +48,13 @@ public final class GetMaterializedFeaturesFeatureTagsResult {
     public static final class Builder {
         private List<GetMaterializedFeaturesFeatureTagsFeatureTag> featureTags;
         private String id;
+        private @Nullable String workspaceId;
         public Builder() {}
         public Builder(GetMaterializedFeaturesFeatureTagsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.featureTags = defaults.featureTags;
     	      this.id = defaults.id;
+    	      this.workspaceId = defaults.workspaceId;
         }
 
         @CustomType.Setter
@@ -68,10 +76,17 @@ public final class GetMaterializedFeaturesFeatureTagsResult {
             this.id = id;
             return this;
         }
+        @CustomType.Setter
+        public Builder workspaceId(@Nullable String workspaceId) {
+
+            this.workspaceId = workspaceId;
+            return this;
+        }
         public GetMaterializedFeaturesFeatureTagsResult build() {
             final var _resultValue = new GetMaterializedFeaturesFeatureTagsResult();
             _resultValue.featureTags = featureTags;
             _resultValue.id = id;
+            _resultValue.workspaceId = workspaceId;
             return _resultValue;
         }
     }

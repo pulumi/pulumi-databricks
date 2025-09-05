@@ -35,7 +35,7 @@ import javax.annotation.Nullable;
  * 
  * import {
  * 
- *   id = name
+ *   id = &#34;name&#34;
  * 
  *   to = databricks_clean_rooms_clean_room.this
  * 
@@ -44,7 +44,7 @@ import javax.annotation.Nullable;
  * If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
  * 
  * ```sh
- * $ pulumi import databricks:index/cleanRoomsCleanRoom:CleanRoomsCleanRoom databricks_clean_rooms_clean_room name
+ * $ pulumi import databricks:index/cleanRoomsCleanRoom:CleanRoomsCleanRoom databricks_clean_rooms_clean_room &#34;name&#34;
  * ```
  * 
  */
@@ -131,14 +131,14 @@ public class CleanRoomsCleanRoom extends com.pulumi.resources.CustomResource {
         return this.outputCatalog;
     }
     /**
-     * This is Databricks username of the owner of the local clean room securable for permission management
+     * This is the Databricks username of the owner of the local clean room securable for permission management
      * 
      */
     @Export(name="owner", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> owner;
 
     /**
-     * @return This is Databricks username of the owner of the local clean room securable for permission management
+     * @return This is the Databricks username of the owner of the local clean room securable for permission management
      * 
      */
     public Output<Optional<String>> owner() {
@@ -189,6 +189,20 @@ public class CleanRoomsCleanRoom extends com.pulumi.resources.CustomResource {
      */
     public Output<Integer> updatedAt() {
         return this.updatedAt;
+    }
+    /**
+     * Workspace ID of the resource
+     * 
+     */
+    @Export(name="workspaceId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> workspaceId;
+
+    /**
+     * @return Workspace ID of the resource
+     * 
+     */
+    public Output<Optional<String>> workspaceId() {
+        return Codegen.optional(this.workspaceId);
     }
 
     /**

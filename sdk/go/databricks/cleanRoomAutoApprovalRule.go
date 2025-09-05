@@ -19,7 +19,7 @@ import (
 //
 // import {
 //
-//	id = rule_id
+//	id = "rule_id"
 //
 //	to = databricks_clean_room_auto_approval_rule.this
 //
@@ -28,7 +28,7 @@ import (
 // If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
 //
 // ```sh
-// $ pulumi import databricks:index/cleanRoomAutoApprovalRule:CleanRoomAutoApprovalRule databricks_clean_room_auto_approval_rule rule_id
+// $ pulumi import databricks:index/cleanRoomAutoApprovalRule:CleanRoomAutoApprovalRule databricks_clean_room_auto_approval_rule "rule_id"
 // ```
 type CleanRoomAutoApprovalRule struct {
 	pulumi.CustomResourceState
@@ -49,6 +49,8 @@ type CleanRoomAutoApprovalRule struct {
 	RuleOwnerCollaboratorAlias pulumi.StringOutput `pulumi:"ruleOwnerCollaboratorAlias"`
 	// Collaborator alias of the runner covered by the rule
 	RunnerCollaboratorAlias pulumi.StringPtrOutput `pulumi:"runnerCollaboratorAlias"`
+	// Workspace ID of the resource
+	WorkspaceId pulumi.StringPtrOutput `pulumi:"workspaceId"`
 }
 
 // NewCleanRoomAutoApprovalRule registers a new resource with the given unique name, arguments, and options.
@@ -97,6 +99,8 @@ type cleanRoomAutoApprovalRuleState struct {
 	RuleOwnerCollaboratorAlias *string `pulumi:"ruleOwnerCollaboratorAlias"`
 	// Collaborator alias of the runner covered by the rule
 	RunnerCollaboratorAlias *string `pulumi:"runnerCollaboratorAlias"`
+	// Workspace ID of the resource
+	WorkspaceId *string `pulumi:"workspaceId"`
 }
 
 type CleanRoomAutoApprovalRuleState struct {
@@ -116,6 +120,8 @@ type CleanRoomAutoApprovalRuleState struct {
 	RuleOwnerCollaboratorAlias pulumi.StringPtrInput
 	// Collaborator alias of the runner covered by the rule
 	RunnerCollaboratorAlias pulumi.StringPtrInput
+	// Workspace ID of the resource
+	WorkspaceId pulumi.StringPtrInput
 }
 
 func (CleanRoomAutoApprovalRuleState) ElementType() reflect.Type {
@@ -133,6 +139,8 @@ type cleanRoomAutoApprovalRuleArgs struct {
 	CleanRoomName *string `pulumi:"cleanRoomName"`
 	// Collaborator alias of the runner covered by the rule
 	RunnerCollaboratorAlias *string `pulumi:"runnerCollaboratorAlias"`
+	// Workspace ID of the resource
+	WorkspaceId *string `pulumi:"workspaceId"`
 }
 
 // The set of arguments for constructing a CleanRoomAutoApprovalRule resource.
@@ -147,6 +155,8 @@ type CleanRoomAutoApprovalRuleArgs struct {
 	CleanRoomName pulumi.StringPtrInput
 	// Collaborator alias of the runner covered by the rule
 	RunnerCollaboratorAlias pulumi.StringPtrInput
+	// Workspace ID of the resource
+	WorkspaceId pulumi.StringPtrInput
 }
 
 func (CleanRoomAutoApprovalRuleArgs) ElementType() reflect.Type {
@@ -271,6 +281,11 @@ func (o CleanRoomAutoApprovalRuleOutput) RuleOwnerCollaboratorAlias() pulumi.Str
 // Collaborator alias of the runner covered by the rule
 func (o CleanRoomAutoApprovalRuleOutput) RunnerCollaboratorAlias() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CleanRoomAutoApprovalRule) pulumi.StringPtrOutput { return v.RunnerCollaboratorAlias }).(pulumi.StringPtrOutput)
+}
+
+// Workspace ID of the resource
+func (o CleanRoomAutoApprovalRuleOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CleanRoomAutoApprovalRule) pulumi.StringPtrOutput { return v.WorkspaceId }).(pulumi.StringPtrOutput)
 }
 
 type CleanRoomAutoApprovalRuleArrayOutput struct{ *pulumi.OutputState }

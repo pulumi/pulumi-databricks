@@ -57,12 +57,14 @@ type LookupCleanRoomsCleanRoomArgs struct {
 	// The name of the clean room.
 	// It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements)
 	Name *string `pulumi:"name"`
-	// (string) - This is Databricks username of the owner of the local clean room securable for permission management
+	// (string) - This is the Databricks username of the owner of the local clean room securable for permission management
 	Owner *string `pulumi:"owner"`
 	// (CleanRoomRemoteDetail) - Central clean room details. During creation, users need to specify
 	// cloud_vendor, region, and collaborators.global_metastore_id.
 	// This field will not be filled in the ListCleanRooms call
 	RemoteDetailedInfo *GetCleanRoomsCleanRoomRemoteDetailedInfo `pulumi:"remoteDetailedInfo"`
+	// Workspace ID of the resource
+	WorkspaceId *string `pulumi:"workspaceId"`
 }
 
 // A collection of values returned by getCleanRoomsCleanRoom.
@@ -83,7 +85,7 @@ type LookupCleanRoomsCleanRoomResult struct {
 	// (CleanRoomOutputCatalog) - Output catalog of the clean room. It is an output only field. Output catalog is manipulated
 	// using the separate CreateCleanRoomOutputCatalog API
 	OutputCatalog GetCleanRoomsCleanRoomOutputCatalog `pulumi:"outputCatalog"`
-	// (string) - This is Databricks username of the owner of the local clean room securable for permission management
+	// (string) - This is the Databricks username of the owner of the local clean room securable for permission management
 	Owner *string `pulumi:"owner"`
 	// (CleanRoomRemoteDetail) - Central clean room details. During creation, users need to specify
 	// cloud_vendor, region, and collaborators.global_metastore_id.
@@ -92,7 +94,8 @@ type LookupCleanRoomsCleanRoomResult struct {
 	// (string) - . Possible values are: `CREATED`, `NOT_CREATED`, `NOT_ELIGIBLE`
 	Status string `pulumi:"status"`
 	// (integer) - When the clean room was last updated, in epoch milliseconds
-	UpdatedAt int `pulumi:"updatedAt"`
+	UpdatedAt   int     `pulumi:"updatedAt"`
+	WorkspaceId *string `pulumi:"workspaceId"`
 }
 
 func LookupCleanRoomsCleanRoomOutput(ctx *pulumi.Context, args LookupCleanRoomsCleanRoomOutputArgs, opts ...pulumi.InvokeOption) LookupCleanRoomsCleanRoomResultOutput {
@@ -111,12 +114,14 @@ type LookupCleanRoomsCleanRoomOutputArgs struct {
 	// The name of the clean room.
 	// It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements)
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// (string) - This is Databricks username of the owner of the local clean room securable for permission management
+	// (string) - This is the Databricks username of the owner of the local clean room securable for permission management
 	Owner pulumi.StringPtrInput `pulumi:"owner"`
 	// (CleanRoomRemoteDetail) - Central clean room details. During creation, users need to specify
 	// cloud_vendor, region, and collaborators.global_metastore_id.
 	// This field will not be filled in the ListCleanRooms call
 	RemoteDetailedInfo GetCleanRoomsCleanRoomRemoteDetailedInfoPtrInput `pulumi:"remoteDetailedInfo"`
+	// Workspace ID of the resource
+	WorkspaceId pulumi.StringPtrInput `pulumi:"workspaceId"`
 }
 
 func (LookupCleanRoomsCleanRoomOutputArgs) ElementType() reflect.Type {
@@ -175,7 +180,7 @@ func (o LookupCleanRoomsCleanRoomResultOutput) OutputCatalog() GetCleanRoomsClea
 	return o.ApplyT(func(v LookupCleanRoomsCleanRoomResult) GetCleanRoomsCleanRoomOutputCatalog { return v.OutputCatalog }).(GetCleanRoomsCleanRoomOutputCatalogOutput)
 }
 
-// (string) - This is Databricks username of the owner of the local clean room securable for permission management
+// (string) - This is the Databricks username of the owner of the local clean room securable for permission management
 func (o LookupCleanRoomsCleanRoomResultOutput) Owner() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupCleanRoomsCleanRoomResult) *string { return v.Owner }).(pulumi.StringPtrOutput)
 }
@@ -197,6 +202,10 @@ func (o LookupCleanRoomsCleanRoomResultOutput) Status() pulumi.StringOutput {
 // (integer) - When the clean room was last updated, in epoch milliseconds
 func (o LookupCleanRoomsCleanRoomResultOutput) UpdatedAt() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupCleanRoomsCleanRoomResult) int { return v.UpdatedAt }).(pulumi.IntOutput)
+}
+
+func (o LookupCleanRoomsCleanRoomResultOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupCleanRoomsCleanRoomResult) *string { return v.WorkspaceId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

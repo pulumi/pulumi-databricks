@@ -27,6 +27,7 @@ public final class GetMaterializedFeaturesFeatureTagResult {
      * 
      */
     private @Nullable String value;
+    private @Nullable String workspaceId;
 
     private GetMaterializedFeaturesFeatureTagResult() {}
     /**
@@ -50,6 +51,9 @@ public final class GetMaterializedFeaturesFeatureTagResult {
     public Optional<String> value() {
         return Optional.ofNullable(this.value);
     }
+    public Optional<String> workspaceId() {
+        return Optional.ofNullable(this.workspaceId);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -63,12 +67,14 @@ public final class GetMaterializedFeaturesFeatureTagResult {
         private String id;
         private String key;
         private @Nullable String value;
+        private @Nullable String workspaceId;
         public Builder() {}
         public Builder(GetMaterializedFeaturesFeatureTagResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
     	      this.key = defaults.key;
     	      this.value = defaults.value;
+    	      this.workspaceId = defaults.workspaceId;
         }
 
         @CustomType.Setter
@@ -93,11 +99,18 @@ public final class GetMaterializedFeaturesFeatureTagResult {
             this.value = value;
             return this;
         }
+        @CustomType.Setter
+        public Builder workspaceId(@Nullable String workspaceId) {
+
+            this.workspaceId = workspaceId;
+            return this;
+        }
         public GetMaterializedFeaturesFeatureTagResult build() {
             final var _resultValue = new GetMaterializedFeaturesFeatureTagResult();
             _resultValue.id = id;
             _resultValue.key = key;
             _resultValue.value = value;
+            _resultValue.workspaceId = workspaceId;
             return _resultValue;
         }
     }

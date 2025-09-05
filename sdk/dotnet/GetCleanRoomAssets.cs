@@ -31,8 +31,8 @@ namespace Pulumi.Databricks
         /// });
         /// ```
         /// </summary>
-        public static Task<GetCleanRoomAssetsResult> InvokeAsync(InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.InvokeAsync<GetCleanRoomAssetsResult>("databricks:index/getCleanRoomAssets:getCleanRoomAssets", InvokeArgs.Empty, options.WithDefaults());
+        public static Task<GetCleanRoomAssetsResult> InvokeAsync(GetCleanRoomAssetsArgs args, InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetCleanRoomAssetsResult>("databricks:index/getCleanRoomAssets:getCleanRoomAssets", args ?? new GetCleanRoomAssetsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source can be used to fetch the list of clean room assets.
@@ -54,8 +54,8 @@ namespace Pulumi.Databricks
         /// });
         /// ```
         /// </summary>
-        public static Output<GetCleanRoomAssetsResult> Invoke(InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.Invoke<GetCleanRoomAssetsResult>("databricks:index/getCleanRoomAssets:getCleanRoomAssets", InvokeArgs.Empty, options.WithDefaults());
+        public static Output<GetCleanRoomAssetsResult> Invoke(GetCleanRoomAssetsInvokeArgs args, InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.Invoke<GetCleanRoomAssetsResult>("databricks:index/getCleanRoomAssets:getCleanRoomAssets", args ?? new GetCleanRoomAssetsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source can be used to fetch the list of clean room assets.
@@ -77,8 +77,49 @@ namespace Pulumi.Databricks
         /// });
         /// ```
         /// </summary>
-        public static Output<GetCleanRoomAssetsResult> Invoke(InvokeOutputOptions options)
-            => global::Pulumi.Deployment.Instance.Invoke<GetCleanRoomAssetsResult>("databricks:index/getCleanRoomAssets:getCleanRoomAssets", InvokeArgs.Empty, options.WithDefaults());
+        public static Output<GetCleanRoomAssetsResult> Invoke(GetCleanRoomAssetsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetCleanRoomAssetsResult>("databricks:index/getCleanRoomAssets:getCleanRoomAssets", args ?? new GetCleanRoomAssetsInvokeArgs(), options.WithDefaults());
+    }
+
+
+    public sealed class GetCleanRoomAssetsArgs : global::Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Name of the clean room
+        /// </summary>
+        [Input("cleanRoomName", required: true)]
+        public string CleanRoomName { get; set; } = null!;
+
+        /// <summary>
+        /// Workspace ID of the resource
+        /// </summary>
+        [Input("workspaceId")]
+        public string? WorkspaceId { get; set; }
+
+        public GetCleanRoomAssetsArgs()
+        {
+        }
+        public static new GetCleanRoomAssetsArgs Empty => new GetCleanRoomAssetsArgs();
+    }
+
+    public sealed class GetCleanRoomAssetsInvokeArgs : global::Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Name of the clean room
+        /// </summary>
+        [Input("cleanRoomName", required: true)]
+        public Input<string> CleanRoomName { get; set; } = null!;
+
+        /// <summary>
+        /// Workspace ID of the resource
+        /// </summary>
+        [Input("workspaceId")]
+        public Input<string>? WorkspaceId { get; set; }
+
+        public GetCleanRoomAssetsInvokeArgs()
+        {
+        }
+        public static new GetCleanRoomAssetsInvokeArgs Empty => new GetCleanRoomAssetsInvokeArgs();
     }
 
 
@@ -87,18 +128,30 @@ namespace Pulumi.Databricks
     {
         public readonly ImmutableArray<Outputs.GetCleanRoomAssetsAssetResult> Assets;
         /// <summary>
+        /// (string) - The name of the clean room this asset belongs to.
+        /// This field is required for create operations and populated by the server for responses
+        /// </summary>
+        public readonly string CleanRoomName;
+        /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly string? WorkspaceId;
 
         [OutputConstructor]
         private GetCleanRoomAssetsResult(
             ImmutableArray<Outputs.GetCleanRoomAssetsAssetResult> assets,
 
-            string id)
+            string cleanRoomName,
+
+            string id,
+
+            string? workspaceId)
         {
             Assets = assets;
+            CleanRoomName = cleanRoomName;
             Id = id;
+            WorkspaceId = workspaceId;
         }
     }
 }

@@ -17,6 +17,19 @@
                     }
                 }
             },
+            "databricks_account_federation_policy": {
+                "current": "databricks:index/accountFederationPolicy:AccountFederationPolicy",
+                "majorVersion": 1,
+                "fields": {
+                    "oidc_policy": {
+                        "fields": {
+                            "audiences": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    }
+                }
+            },
             "databricks_account_network_policy": {
                 "current": "databricks:index/accountNetworkPolicy:AccountNetworkPolicy",
                 "majorVersion": 1,
@@ -39,6 +52,26 @@
                                         }
                                     }
                                 }
+                            }
+                        }
+                    }
+                }
+            },
+            "databricks_account_setting_v2": {
+                "current": "databricks:index/accountSettingV2:AccountSettingV2",
+                "majorVersion": 1,
+                "fields": {
+                    "aibi_dashboard_embedding_approved_domains": {
+                        "fields": {
+                            "approved_domains": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    },
+                    "effective_aibi_dashboard_embedding_approved_domains": {
+                        "fields": {
+                            "approved_domains": {
+                                "maxItemsOne": false
                             }
                         }
                     }
@@ -131,6 +164,19 @@
                     },
                     "user_api_scopes": {
                         "maxItemsOne": false
+                    }
+                }
+            },
+            "databricks_apps_settings_custom_template": {
+                "current": "databricks:index/appsSettingsCustomTemplate:AppsSettingsCustomTemplate",
+                "majorVersion": 1,
+                "fields": {
+                    "manifest": {
+                        "fields": {
+                            "resource_specs": {
+                                "maxItemsOne": false
+                            }
+                        }
                     }
                 }
             },
@@ -240,7 +286,15 @@
             },
             "databricks_catalog": {
                 "current": "databricks:index/catalog:Catalog",
-                "majorVersion": 1
+                "majorVersion": 1,
+                "fields": {
+                    "effective_predictive_optimization_flag": {
+                        "maxItemsOne": true
+                    },
+                    "provisioning_info": {
+                        "maxItemsOne": true
+                    }
+                }
             },
             "databricks_catalog_workspace_binding": {
                 "current": "databricks:index/catalogWorkspaceBinding:CatalogWorkspaceBinding",
@@ -556,16 +610,6 @@
                 "current": "databricks:index/connection:Connection",
                 "majorVersion": 1,
                 "fields": {
-                    "environment_settings": {
-                        "maxItemsOne": true,
-                        "elem": {
-                            "fields": {
-                                "java_dependencies": {
-                                    "maxItemsOne": false
-                                }
-                            }
-                        }
-                    },
                     "provisioning_info": {
                         "maxItemsOne": false
                     }
@@ -692,6 +736,10 @@
             },
             "databricks_entitlements": {
                 "current": "databricks:index/entitlements:Entitlements",
+                "majorVersion": 1
+            },
+            "databricks_entity_tag_assignment": {
+                "current": "databricks:index/entityTagAssignment:EntityTagAssignment",
                 "majorVersion": 1
             },
             "databricks_external_location": {
@@ -3129,6 +3177,30 @@
                                         }
                                     }
                                 },
+                                "source_configurations": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "catalog": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "postgres": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "slot_config": {
+                                                                        "maxItemsOne": true
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
                                 "table_configuration": {
                                     "maxItemsOne": true,
                                     "elem": {
@@ -3493,6 +3565,19 @@
                 "current": "databricks:index/servicePrincipal:ServicePrincipal",
                 "majorVersion": 1
             },
+            "databricks_service_principal_federation_policy": {
+                "current": "databricks:index/servicePrincipalFederationPolicy:ServicePrincipalFederationPolicy",
+                "majorVersion": 1,
+                "fields": {
+                    "oidc_policy": {
+                        "fields": {
+                            "audiences": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    }
+                }
+            },
             "databricks_service_principal_role": {
                 "current": "databricks:index/servicePrincipalRole:ServicePrincipalRole",
                 "majorVersion": 1
@@ -3775,6 +3860,15 @@
                     }
                 }
             },
+            "databricks_tag_policy": {
+                "current": "databricks:index/tagPolicy:TagPolicy",
+                "majorVersion": 1,
+                "fields": {
+                    "values": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "databricks_token": {
                 "current": "databricks:index/token:Token",
                 "majorVersion": 1
@@ -3854,9 +3948,62 @@
             "databricks_workspace_network_option": {
                 "current": "databricks:index/workspaceNetworkOption:WorkspaceNetworkOption",
                 "majorVersion": 1
+            },
+            "databricks_workspace_setting_v2": {
+                "current": "databricks:index/workspaceSettingV2:WorkspaceSettingV2",
+                "majorVersion": 1,
+                "fields": {
+                    "aibi_dashboard_embedding_approved_domains": {
+                        "fields": {
+                            "approved_domains": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    },
+                    "effective_aibi_dashboard_embedding_approved_domains": {
+                        "fields": {
+                            "approved_domains": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    }
+                }
             }
         },
         "datasources": {
+            "databricks_account_federation_policies": {
+                "current": "databricks:index/getAccountFederationPolicies:getAccountFederationPolicies",
+                "majorVersion": 1,
+                "fields": {
+                    "policies": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "oidc_policy": {
+                                    "fields": {
+                                        "audiences": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "databricks_account_federation_policy": {
+                "current": "databricks:index/getAccountFederationPolicy:getAccountFederationPolicy",
+                "majorVersion": 1,
+                "fields": {
+                    "oidc_policy": {
+                        "fields": {
+                            "audiences": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    }
+                }
+            },
             "databricks_account_network_policies": {
                 "current": "databricks:index/getAccountNetworkPolicies:getAccountNetworkPolicies",
                 "majorVersion": 1,
@@ -3913,6 +4060,26 @@
                                         }
                                     }
                                 }
+                            }
+                        }
+                    }
+                }
+            },
+            "databricks_account_setting_v2": {
+                "current": "databricks:index/getAccountSettingV2:getAccountSettingV2",
+                "majorVersion": 1,
+                "fields": {
+                    "aibi_dashboard_embedding_approved_domains": {
+                        "fields": {
+                            "approved_domains": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    },
+                    "effective_aibi_dashboard_embedding_approved_domains": {
+                        "fields": {
+                            "approved_domains": {
+                                "maxItemsOne": false
                             }
                         }
                     }
@@ -3994,6 +4161,39 @@
                                 },
                                 "user_api_scopes": {
                                     "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "databricks_apps_settings_custom_template": {
+                "current": "databricks:index/getAppsSettingsCustomTemplate:getAppsSettingsCustomTemplate",
+                "majorVersion": 1,
+                "fields": {
+                    "manifest": {
+                        "fields": {
+                            "resource_specs": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    }
+                }
+            },
+            "databricks_apps_settings_custom_templates": {
+                "current": "databricks:index/getAppsSettingsCustomTemplates:getAppsSettingsCustomTemplates",
+                "majorVersion": 1,
+                "fields": {
+                    "templates": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "manifest": {
+                                    "fields": {
+                                        "resource_specs": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -4940,6 +5140,19 @@
             "databricks_directory": {
                 "current": "databricks:index/getDirectory:getDirectory",
                 "majorVersion": 1
+            },
+            "databricks_entity_tag_assignment": {
+                "current": "databricks:index/getEntityTagAssignment:getEntityTagAssignment",
+                "majorVersion": 1
+            },
+            "databricks_entity_tag_assignments": {
+                "current": "databricks:index/getEntityTagAssignments:getEntityTagAssignments",
+                "majorVersion": 1,
+                "fields": {
+                    "tag_assignments": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "databricks_external_location": {
                 "current": "databricks:index/getExternalLocation:getExternalLocation",
@@ -6603,6 +6816,39 @@
                 "current": "databricks:index/getServicePrincipal:getServicePrincipal",
                 "majorVersion": 1
             },
+            "databricks_service_principal_federation_policies": {
+                "current": "databricks:index/getServicePrincipalFederationPolicies:getServicePrincipalFederationPolicies",
+                "majorVersion": 1,
+                "fields": {
+                    "policies": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "oidc_policy": {
+                                    "fields": {
+                                        "audiences": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "databricks_service_principal_federation_policy": {
+                "current": "databricks:index/getServicePrincipalFederationPolicy:getServicePrincipalFederationPolicy",
+                "majorVersion": 1,
+                "fields": {
+                    "oidc_policy": {
+                        "fields": {
+                            "audiences": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    }
+                }
+            },
             "databricks_service_principals": {
                 "current": "databricks:index/getServicePrincipals:getServicePrincipals",
                 "majorVersion": 1,
@@ -7017,6 +7263,31 @@
                     }
                 }
             },
+            "databricks_tag_policies": {
+                "current": "databricks:index/getTagPolicies:getTagPolicies",
+                "majorVersion": 1,
+                "fields": {
+                    "tag_policies": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "databricks_tag_policy": {
+                "current": "databricks:index/getTagPolicy:getTagPolicy",
+                "majorVersion": 1,
+                "fields": {
+                    "values": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "databricks_user": {
                 "current": "databricks:index/getUser:getUser",
                 "majorVersion": 1
@@ -7066,6 +7337,26 @@
                 "current": "databricks:index/getWorkspaceNetworkOption:getWorkspaceNetworkOption",
                 "majorVersion": 1
             },
+            "databricks_workspace_setting_v2": {
+                "current": "databricks:index/getWorkspaceSettingV2:getWorkspaceSettingV2",
+                "majorVersion": 1,
+                "fields": {
+                    "aibi_dashboard_embedding_approved_domains": {
+                        "fields": {
+                            "approved_domains": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    },
+                    "effective_aibi_dashboard_embedding_approved_domains": {
+                        "fields": {
+                            "approved_domains": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    }
+                }
+            },
             "databricks_zones": {
                 "current": "databricks:index/getZones:getZones",
                 "majorVersion": 1,
@@ -7104,12 +7395,15 @@
     "mux": {
         "resources": {
             "databricks:index/accessControlRuleSet:AccessControlRuleSet": 0,
+            "databricks:index/accountFederationPolicy:AccountFederationPolicy": 1,
             "databricks:index/accountNetworkPolicy:AccountNetworkPolicy": 1,
+            "databricks:index/accountSettingV2:AccountSettingV2": 1,
             "databricks:index/aibiDashboardEmbeddingAccessPolicySetting:AibiDashboardEmbeddingAccessPolicySetting": 0,
             "databricks:index/aibiDashboardEmbeddingApprovedDomainsSetting:AibiDashboardEmbeddingApprovedDomainsSetting": 0,
             "databricks:index/alert:Alert": 0,
             "databricks:index/alertV2:AlertV2": 1,
             "databricks:index/app:App": 1,
+            "databricks:index/appsSettingsCustomTemplate:AppsSettingsCustomTemplate": 1,
             "databricks:index/artifactAllowlist:ArtifactAllowlist": 0,
             "databricks:index/automaticClusterUpdateWorkspaceSetting:AutomaticClusterUpdateWorkspaceSetting": 0,
             "databricks:index/budget:Budget": 0,
@@ -7137,6 +7431,7 @@
             "databricks:index/disableLegacyFeaturesSetting:DisableLegacyFeaturesSetting": 0,
             "databricks:index/enhancedSecurityMonitoringWorkspaceSetting:EnhancedSecurityMonitoringWorkspaceSetting": 0,
             "databricks:index/entitlements:Entitlements": 0,
+            "databricks:index/entityTagAssignment:EntityTagAssignment": 1,
             "databricks:index/externalLocation:ExternalLocation": 0,
             "databricks:index/externalMetadata:ExternalMetadata": 1,
             "databricks:index/file:File": 0,
@@ -7199,6 +7494,7 @@
             "databricks:index/secretAcl:SecretAcl": 0,
             "databricks:index/secretScope:SecretScope": 0,
             "databricks:index/servicePrincipal:ServicePrincipal": 0,
+            "databricks:index/servicePrincipalFederationPolicy:ServicePrincipalFederationPolicy": 1,
             "databricks:index/servicePrincipalRole:ServicePrincipalRole": 0,
             "databricks:index/servicePrincipalSecret:ServicePrincipalSecret": 0,
             "databricks:index/share:Share": 0,
@@ -7214,6 +7510,7 @@
             "databricks:index/storageCredential:StorageCredential": 0,
             "databricks:index/systemSchema:SystemSchema": 0,
             "databricks:index/table:Table": 0,
+            "databricks:index/tagPolicy:TagPolicy": 1,
             "databricks:index/token:Token": 0,
             "databricks:index/user:User": 0,
             "databricks:index/userInstanceProfile:UserInstanceProfile": 0,
@@ -7224,15 +7521,21 @@
             "databricks:index/workspaceBinding:WorkspaceBinding": 0,
             "databricks:index/workspaceConf:WorkspaceConf": 0,
             "databricks:index/workspaceFile:WorkspaceFile": 0,
-            "databricks:index/workspaceNetworkOption:WorkspaceNetworkOption": 1
+            "databricks:index/workspaceNetworkOption:WorkspaceNetworkOption": 1,
+            "databricks:index/workspaceSettingV2:WorkspaceSettingV2": 1
         },
         "functions": {
+            "databricks:index/getAccountFederationPolicies:getAccountFederationPolicies": 1,
+            "databricks:index/getAccountFederationPolicy:getAccountFederationPolicy": 1,
             "databricks:index/getAccountNetworkPolicies:getAccountNetworkPolicies": 1,
             "databricks:index/getAccountNetworkPolicy:getAccountNetworkPolicy": 1,
+            "databricks:index/getAccountSettingV2:getAccountSettingV2": 1,
             "databricks:index/getAlertV2:getAlertV2": 1,
             "databricks:index/getAlertsV2:getAlertsV2": 1,
             "databricks:index/getApp:getApp": 1,
             "databricks:index/getApps:getApps": 1,
+            "databricks:index/getAppsSettingsCustomTemplate:getAppsSettingsCustomTemplate": 1,
+            "databricks:index/getAppsSettingsCustomTemplates:getAppsSettingsCustomTemplates": 1,
             "databricks:index/getAwsAssumeRolePolicy:getAwsAssumeRolePolicy": 0,
             "databricks:index/getAwsBucketPolicy:getAwsBucketPolicy": 0,
             "databricks:index/getAwsCrossAccountPolicy:getAwsCrossAccountPolicy": 0,
@@ -7266,6 +7569,8 @@
             "databricks:index/getDbfsFile:getDbfsFile": 0,
             "databricks:index/getDbfsFilePaths:getDbfsFilePaths": 0,
             "databricks:index/getDirectory:getDirectory": 0,
+            "databricks:index/getEntityTagAssignment:getEntityTagAssignment": 1,
+            "databricks:index/getEntityTagAssignments:getEntityTagAssignments": 1,
             "databricks:index/getExternalLocation:getExternalLocation": 0,
             "databricks:index/getExternalLocations:getExternalLocations": 0,
             "databricks:index/getExternalMetadata:getExternalMetadata": 1,
@@ -7305,6 +7610,8 @@
             "databricks:index/getSchema:getSchema": 0,
             "databricks:index/getSchemas:getSchemas": 0,
             "databricks:index/getServicePrincipal:getServicePrincipal": 0,
+            "databricks:index/getServicePrincipalFederationPolicies:getServicePrincipalFederationPolicies": 1,
+            "databricks:index/getServicePrincipalFederationPolicy:getServicePrincipalFederationPolicy": 1,
             "databricks:index/getServicePrincipals:getServicePrincipals": 0,
             "databricks:index/getServingEndpoints:getServingEndpoints": 1,
             "databricks:index/getShare:getShare": 0,
@@ -7316,11 +7623,14 @@
             "databricks:index/getStorageCredentials:getStorageCredentials": 0,
             "databricks:index/getTable:getTable": 0,
             "databricks:index/getTables:getTables": 0,
+            "databricks:index/getTagPolicies:getTagPolicies": 1,
+            "databricks:index/getTagPolicy:getTagPolicy": 1,
             "databricks:index/getUser:getUser": 0,
             "databricks:index/getViews:getViews": 0,
             "databricks:index/getVolume:getVolume": 0,
             "databricks:index/getVolumes:getVolumes": 1,
             "databricks:index/getWorkspaceNetworkOption:getWorkspaceNetworkOption": 1,
+            "databricks:index/getWorkspaceSettingV2:getWorkspaceSettingV2": 1,
             "databricks:index/getZones:getZones": 0
         }
     },
@@ -10247,10 +10557,43 @@
     },
     "workspace-id": {
         "resources": {
+            "databricks_alert_v2": [
+                "workspace_id"
+            ],
+            "databricks_apps_settings_custom_template": [
+                "workspace_id"
+            ],
             "databricks_budget": [
                 "filter.$.workspace_id"
             ],
             "databricks_catalog_workspace_binding": [
+                "workspace_id"
+            ],
+            "databricks_clean_room_asset": [
+                "workspace_id"
+            ],
+            "databricks_clean_room_auto_approval_rule": [
+                "workspace_id"
+            ],
+            "databricks_clean_rooms_clean_room": [
+                "workspace_id"
+            ],
+            "databricks_database_database_catalog": [
+                "workspace_id"
+            ],
+            "databricks_database_instance": [
+                "workspace_id"
+            ],
+            "databricks_database_synced_database_table": [
+                "workspace_id"
+            ],
+            "databricks_entity_tag_assignment": [
+                "workspace_id"
+            ],
+            "databricks_external_metadata": [
+                "workspace_id"
+            ],
+            "databricks_materialized_features_feature_tag": [
                 "workspace_id"
             ],
             "databricks_metastore_assignment": [
@@ -10268,15 +10611,138 @@
             "databricks_mws_workspaces": [
                 "workspace_id"
             ],
+            "databricks_online_store": [
+                "workspace_id"
+            ],
+            "databricks_policy_info": [
+                "workspace_id"
+            ],
+            "databricks_quality_monitor_v2": [
+                "workspace_id"
+            ],
+            "databricks_recipient_federation_policy": [
+                "workspace_id"
+            ],
+            "databricks_tag_policy": [
+                "workspace_id"
+            ],
             "databricks_workspace_binding": [
                 "workspace_id"
             ],
             "databricks_workspace_network_option": [
                 "workspace_id"
+            ],
+            "databricks_workspace_setting_v2": [
+                "workspace_id"
             ]
         },
         "dataSources": {
+            "databricks_alert_v2": [
+                "workspace_id"
+            ],
+            "databricks_alerts_v2": [
+                "workspace_id"
+            ],
+            "databricks_apps_settings_custom_template": [
+                "workspace_id"
+            ],
+            "databricks_apps_settings_custom_templates": [
+                "workspace_id"
+            ],
+            "databricks_clean_room_asset": [
+                "workspace_id"
+            ],
+            "databricks_clean_room_asset_revisions_clean_room_asset": [
+                "workspace_id"
+            ],
+            "databricks_clean_room_asset_revisions_clean_room_assets": [
+                "workspace_id"
+            ],
+            "databricks_clean_room_assets": [
+                "workspace_id"
+            ],
+            "databricks_clean_room_auto_approval_rule": [
+                "workspace_id"
+            ],
+            "databricks_clean_room_auto_approval_rules": [
+                "workspace_id"
+            ],
+            "databricks_clean_rooms_clean_room": [
+                "workspace_id"
+            ],
+            "databricks_clean_rooms_clean_rooms": [
+                "workspace_id"
+            ],
+            "databricks_database_database_catalog": [
+                "workspace_id"
+            ],
+            "databricks_database_database_catalogs": [
+                "workspace_id"
+            ],
+            "databricks_database_instance": [
+                "workspace_id"
+            ],
+            "databricks_database_instances": [
+                "workspace_id"
+            ],
+            "databricks_database_synced_database_table": [
+                "workspace_id"
+            ],
+            "databricks_database_synced_database_tables": [
+                "workspace_id"
+            ],
+            "databricks_entity_tag_assignment": [
+                "workspace_id"
+            ],
+            "databricks_entity_tag_assignments": [
+                "workspace_id"
+            ],
+            "databricks_external_metadata": [
+                "workspace_id"
+            ],
+            "databricks_external_metadatas": [
+                "workspace_id"
+            ],
+            "databricks_materialized_features_feature_tag": [
+                "workspace_id"
+            ],
+            "databricks_materialized_features_feature_tags": [
+                "workspace_id"
+            ],
+            "databricks_online_store": [
+                "workspace_id"
+            ],
+            "databricks_online_stores": [
+                "workspace_id"
+            ],
+            "databricks_policy_info": [
+                "workspace_id"
+            ],
+            "databricks_policy_infos": [
+                "workspace_id"
+            ],
+            "databricks_quality_monitor_v2": [
+                "workspace_id"
+            ],
+            "databricks_quality_monitors_v2": [
+                "workspace_id"
+            ],
+            "databricks_recipient_federation_policies": [
+                "workspace_id"
+            ],
+            "databricks_recipient_federation_policy": [
+                "workspace_id"
+            ],
+            "databricks_tag_policies": [
+                "workspace_id"
+            ],
+            "databricks_tag_policy": [
+                "workspace_id"
+            ],
             "databricks_workspace_network_option": [
+                "workspace_id"
+            ],
+            "databricks_workspace_setting_v2": [
                 "workspace_id"
             ]
         }

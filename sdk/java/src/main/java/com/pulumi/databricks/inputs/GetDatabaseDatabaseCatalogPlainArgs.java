@@ -76,6 +76,21 @@ public final class GetDatabaseDatabaseCatalogPlainArgs extends com.pulumi.resour
         return this.name;
     }
 
+    /**
+     * Workspace ID of the resource
+     * 
+     */
+    @Import(name="workspaceId")
+    private @Nullable String workspaceId;
+
+    /**
+     * @return Workspace ID of the resource
+     * 
+     */
+    public Optional<String> workspaceId() {
+        return Optional.ofNullable(this.workspaceId);
+    }
+
     private GetDatabaseDatabaseCatalogPlainArgs() {}
 
     private GetDatabaseDatabaseCatalogPlainArgs(GetDatabaseDatabaseCatalogPlainArgs $) {
@@ -83,6 +98,7 @@ public final class GetDatabaseDatabaseCatalogPlainArgs extends com.pulumi.resour
         this.databaseInstanceName = $.databaseInstanceName;
         this.databaseName = $.databaseName;
         this.name = $.name;
+        this.workspaceId = $.workspaceId;
     }
 
     public static Builder builder() {
@@ -144,6 +160,17 @@ public final class GetDatabaseDatabaseCatalogPlainArgs extends com.pulumi.resour
          */
         public Builder name(String name) {
             $.name = name;
+            return this;
+        }
+
+        /**
+         * @param workspaceId Workspace ID of the resource
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workspaceId(@Nullable String workspaceId) {
+            $.workspaceId = workspaceId;
             return this;
         }
 

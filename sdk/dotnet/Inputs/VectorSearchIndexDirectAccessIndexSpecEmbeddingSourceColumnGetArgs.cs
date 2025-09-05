@@ -19,6 +19,12 @@ namespace Pulumi.Databricks.Inputs
         public Input<string>? EmbeddingModelEndpointName { get; set; }
 
         /// <summary>
+        /// The name of the embedding model endpoint which, if specified, is used for querying (not ingestion).
+        /// </summary>
+        [Input("modelEndpointNameForQuery")]
+        public Input<string>? ModelEndpointNameForQuery { get; set; }
+
+        /// <summary>
         /// The name of the column
         /// </summary>
         [Input("name")]

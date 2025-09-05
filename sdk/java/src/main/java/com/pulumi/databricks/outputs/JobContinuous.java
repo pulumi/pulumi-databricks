@@ -16,6 +16,7 @@ public final class JobContinuous {
      * 
      */
     private @Nullable String pauseStatus;
+    private @Nullable String taskRetryMode;
 
     private JobContinuous() {}
     /**
@@ -24,6 +25,9 @@ public final class JobContinuous {
      */
     public Optional<String> pauseStatus() {
         return Optional.ofNullable(this.pauseStatus);
+    }
+    public Optional<String> taskRetryMode() {
+        return Optional.ofNullable(this.taskRetryMode);
     }
 
     public static Builder builder() {
@@ -36,10 +40,12 @@ public final class JobContinuous {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String pauseStatus;
+        private @Nullable String taskRetryMode;
         public Builder() {}
         public Builder(JobContinuous defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.pauseStatus = defaults.pauseStatus;
+    	      this.taskRetryMode = defaults.taskRetryMode;
         }
 
         @CustomType.Setter
@@ -48,9 +54,16 @@ public final class JobContinuous {
             this.pauseStatus = pauseStatus;
             return this;
         }
+        @CustomType.Setter
+        public Builder taskRetryMode(@Nullable String taskRetryMode) {
+
+            this.taskRetryMode = taskRetryMode;
+            return this;
+        }
         public JobContinuous build() {
             final var _resultValue = new JobContinuous();
             _resultValue.pauseStatus = pauseStatus;
+            _resultValue.taskRetryMode = taskRetryMode;
             return _resultValue;
         }
     }

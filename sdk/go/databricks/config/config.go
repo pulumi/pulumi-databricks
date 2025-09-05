@@ -86,6 +86,9 @@ func GetHttpTimeoutSeconds(ctx *pulumi.Context) int {
 func GetMetadataServiceUrl(ctx *pulumi.Context) string {
 	return config.Get(ctx, "databricks:metadataServiceUrl")
 }
+func GetOauthCallbackPort(ctx *pulumi.Context) int {
+	return config.GetInt(ctx, "databricks:oauthCallbackPort")
+}
 func GetOidcTokenEnv(ctx *pulumi.Context) string {
 	return config.Get(ctx, "databricks:oidcTokenEnv")
 }

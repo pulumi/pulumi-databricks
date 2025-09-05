@@ -182,7 +182,7 @@ namespace Pulumi.Databricks
         public Output<string> EndpointName { get; private set; } = null!;
 
         /// <summary>
-        /// Example `com.amazonaws.vpce.us-east-1.vpce-svc-123abcc1298abc123`. The full target AWS endpoint service name that connects to the destination resources of the private endpoint.
+        /// Example `com.amazonaws.vpce.us-east-1.vpce-svc-123abcc1298abc123`. The full target AWS endpoint service name that connects to the destination resources of the private endpoint. Change forces creation of a new resource.
         /// </summary>
         [Output("endpointService")]
         public Output<string?> EndpointService { get; private set; } = null!;
@@ -334,7 +334,7 @@ namespace Pulumi.Databricks
         public Input<string>? EndpointName { get; set; }
 
         /// <summary>
-        /// Example `com.amazonaws.vpce.us-east-1.vpce-svc-123abcc1298abc123`. The full target AWS endpoint service name that connects to the destination resources of the private endpoint.
+        /// Example `com.amazonaws.vpce.us-east-1.vpce-svc-123abcc1298abc123`. The full target AWS endpoint service name that connects to the destination resources of the private endpoint. Change forces creation of a new resource.
         /// </summary>
         [Input("endpointService")]
         public Input<string>? EndpointService { get; set; }
@@ -454,7 +454,7 @@ namespace Pulumi.Databricks
         public Input<string>? EndpointName { get; set; }
 
         /// <summary>
-        /// Example `com.amazonaws.vpce.us-east-1.vpce-svc-123abcc1298abc123`. The full target AWS endpoint service name that connects to the destination resources of the private endpoint.
+        /// Example `com.amazonaws.vpce.us-east-1.vpce-svc-123abcc1298abc123`. The full target AWS endpoint service name that connects to the destination resources of the private endpoint. Change forces creation of a new resource.
         /// </summary>
         [Input("endpointService")]
         public Input<string>? EndpointService { get; set; }

@@ -13,8 +13,14 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class NotificationDestinationConfigSlack
     {
+        /// <summary>
+        /// Slack channel ID for notifications.
+        /// </summary>
         public readonly string? ChannelId;
         public readonly bool? ChannelIdSet;
+        /// <summary>
+        /// OAuth token for Slack authentication.
+        /// </summary>
         public readonly string? OauthToken;
         public readonly bool? OauthTokenSet;
         /// <summary>

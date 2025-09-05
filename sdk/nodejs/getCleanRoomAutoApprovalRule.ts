@@ -12,6 +12,7 @@ export function getCleanRoomAutoApprovalRule(args?: GetCleanRoomAutoApprovalRule
         "authorScope": args.authorScope,
         "cleanRoomName": args.cleanRoomName,
         "runnerCollaboratorAlias": args.runnerCollaboratorAlias,
+        "workspaceId": args.workspaceId,
     }, opts);
 }
 
@@ -37,6 +38,10 @@ export interface GetCleanRoomAutoApprovalRuleArgs {
      * (string) - Collaborator alias of the runner covered by the rule
      */
     runnerCollaboratorAlias?: string;
+    /**
+     * Workspace ID of the resource
+     */
+    workspaceId?: string;
 }
 
 /**
@@ -77,6 +82,7 @@ export interface GetCleanRoomAutoApprovalRuleResult {
      * (string) - Collaborator alias of the runner covered by the rule
      */
     readonly runnerCollaboratorAlias?: string;
+    readonly workspaceId?: string;
 }
 export function getCleanRoomAutoApprovalRuleOutput(args?: GetCleanRoomAutoApprovalRuleOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCleanRoomAutoApprovalRuleResult> {
     args = args || {};
@@ -86,6 +92,7 @@ export function getCleanRoomAutoApprovalRuleOutput(args?: GetCleanRoomAutoApprov
         "authorScope": args.authorScope,
         "cleanRoomName": args.cleanRoomName,
         "runnerCollaboratorAlias": args.runnerCollaboratorAlias,
+        "workspaceId": args.workspaceId,
     }, opts);
 }
 
@@ -111,4 +118,8 @@ export interface GetCleanRoomAutoApprovalRuleOutputArgs {
      * (string) - Collaborator alias of the runner covered by the rule
      */
     runnerCollaboratorAlias?: pulumi.Input<string>;
+    /**
+     * Workspace ID of the resource
+     */
+    workspaceId?: pulumi.Input<string>;
 }

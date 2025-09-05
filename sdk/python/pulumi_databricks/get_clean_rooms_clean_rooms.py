@@ -27,13 +27,16 @@ class GetCleanRoomsCleanRoomsResult:
     """
     A collection of values returned by getCleanRoomsCleanRooms.
     """
-    def __init__(__self__, clean_rooms=None, id=None):
+    def __init__(__self__, clean_rooms=None, id=None, workspace_id=None):
         if clean_rooms and not isinstance(clean_rooms, list):
             raise TypeError("Expected argument 'clean_rooms' to be a list")
         pulumi.set(__self__, "clean_rooms", clean_rooms)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if workspace_id and not isinstance(workspace_id, str):
+            raise TypeError("Expected argument 'workspace_id' to be a str")
+        pulumi.set(__self__, "workspace_id", workspace_id)
 
     @_builtins.property
     @pulumi.getter(name="cleanRooms")
@@ -48,6 +51,11 @@ class GetCleanRoomsCleanRoomsResult:
         """
         return pulumi.get(self, "id")
 
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "workspace_id")
+
 
 class AwaitableGetCleanRoomsCleanRoomsResult(GetCleanRoomsCleanRoomsResult):
     # pylint: disable=using-constant-test
@@ -56,10 +64,12 @@ class AwaitableGetCleanRoomsCleanRoomsResult(GetCleanRoomsCleanRoomsResult):
             yield self
         return GetCleanRoomsCleanRoomsResult(
             clean_rooms=self.clean_rooms,
-            id=self.id)
+            id=self.id,
+            workspace_id=self.workspace_id)
 
 
-def get_clean_rooms_clean_rooms(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCleanRoomsCleanRoomsResult:
+def get_clean_rooms_clean_rooms(workspace_id: Optional[_builtins.str] = None,
+                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCleanRoomsCleanRoomsResult:
     """
     This data source can be used to fetch the list of clean rooms.
 
@@ -73,15 +83,21 @@ def get_clean_rooms_clean_rooms(opts: Optional[pulumi.InvokeOptions] = None) -> 
 
     all = databricks.get_clean_rooms_clean_room()
     ```
+
+
+    :param _builtins.str workspace_id: Workspace ID of the resource
     """
     __args__ = dict()
+    __args__['workspaceId'] = workspace_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getCleanRoomsCleanRooms:getCleanRoomsCleanRooms', __args__, opts=opts, typ=GetCleanRoomsCleanRoomsResult).value
 
     return AwaitableGetCleanRoomsCleanRoomsResult(
         clean_rooms=pulumi.get(__ret__, 'clean_rooms'),
-        id=pulumi.get(__ret__, 'id'))
-def get_clean_rooms_clean_rooms_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCleanRoomsCleanRoomsResult]:
+        id=pulumi.get(__ret__, 'id'),
+        workspace_id=pulumi.get(__ret__, 'workspace_id'))
+def get_clean_rooms_clean_rooms_output(workspace_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCleanRoomsCleanRoomsResult]:
     """
     This data source can be used to fetch the list of clean rooms.
 
@@ -95,10 +111,15 @@ def get_clean_rooms_clean_rooms_output(opts: Optional[Union[pulumi.InvokeOptions
 
     all = databricks.get_clean_rooms_clean_room()
     ```
+
+
+    :param _builtins.str workspace_id: Workspace ID of the resource
     """
     __args__ = dict()
+    __args__['workspaceId'] = workspace_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getCleanRoomsCleanRooms:getCleanRoomsCleanRooms', __args__, opts=opts, typ=GetCleanRoomsCleanRoomsResult)
     return __ret__.apply(lambda __response__: GetCleanRoomsCleanRoomsResult(
         clean_rooms=pulumi.get(__response__, 'clean_rooms'),
-        id=pulumi.get(__response__, 'id')))
+        id=pulumi.get(__response__, 'id'),
+        workspace_id=pulumi.get(__response__, 'workspace_id')))

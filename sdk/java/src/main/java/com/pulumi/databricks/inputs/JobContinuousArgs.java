@@ -30,10 +30,18 @@ public final class JobContinuousArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.pauseStatus);
     }
 
+    @Import(name="taskRetryMode")
+    private @Nullable Output<String> taskRetryMode;
+
+    public Optional<Output<String>> taskRetryMode() {
+        return Optional.ofNullable(this.taskRetryMode);
+    }
+
     private JobContinuousArgs() {}
 
     private JobContinuousArgs(JobContinuousArgs $) {
         this.pauseStatus = $.pauseStatus;
+        this.taskRetryMode = $.taskRetryMode;
     }
 
     public static Builder builder() {
@@ -73,6 +81,15 @@ public final class JobContinuousArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder pauseStatus(String pauseStatus) {
             return pauseStatus(Output.of(pauseStatus));
+        }
+
+        public Builder taskRetryMode(@Nullable Output<String> taskRetryMode) {
+            $.taskRetryMode = taskRetryMode;
+            return this;
+        }
+
+        public Builder taskRetryMode(String taskRetryMode) {
+            return taskRetryMode(Output.of(taskRetryMode));
         }
 
         public JobContinuousArgs build() {

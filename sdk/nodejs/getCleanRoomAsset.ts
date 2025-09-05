@@ -34,6 +34,7 @@ export function getCleanRoomAsset(args: GetCleanRoomAssetArgs, opts?: pulumi.Inv
         "view": args.view,
         "viewLocalDetails": args.viewLocalDetails,
         "volumeLocalDetails": args.volumeLocalDetails,
+        "workspaceId": args.workspaceId,
     }, opts);
 }
 
@@ -100,6 +101,10 @@ export interface GetCleanRoomAssetArgs {
      * Present if and only if **asset_type** is **VOLUME**
      */
     volumeLocalDetails?: inputs.GetCleanRoomAssetVolumeLocalDetails;
+    /**
+     * Workspace ID of the resource
+     */
+    workspaceId?: string;
 }
 
 /**
@@ -175,6 +180,7 @@ export interface GetCleanRoomAssetResult {
      * Present if and only if **asset_type** is **VOLUME**
      */
     readonly volumeLocalDetails?: outputs.GetCleanRoomAssetVolumeLocalDetails;
+    readonly workspaceId?: string;
 }
 /**
  * This data source can be used to get a single clean room asset.
@@ -204,6 +210,7 @@ export function getCleanRoomAssetOutput(args: GetCleanRoomAssetOutputArgs, opts?
         "view": args.view,
         "viewLocalDetails": args.viewLocalDetails,
         "volumeLocalDetails": args.volumeLocalDetails,
+        "workspaceId": args.workspaceId,
     }, opts);
 }
 
@@ -270,4 +277,8 @@ export interface GetCleanRoomAssetOutputArgs {
      * Present if and only if **asset_type** is **VOLUME**
      */
     volumeLocalDetails?: pulumi.Input<inputs.GetCleanRoomAssetVolumeLocalDetailsArgs>;
+    /**
+     * Workspace ID of the resource
+     */
+    workspaceId?: pulumi.Input<string>;
 }

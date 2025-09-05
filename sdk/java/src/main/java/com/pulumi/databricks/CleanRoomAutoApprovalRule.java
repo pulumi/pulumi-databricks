@@ -24,7 +24,7 @@ import javax.annotation.Nullable;
  * 
  * import {
  * 
- *   id = rule_id
+ *   id = &#34;rule_id&#34;
  * 
  *   to = databricks_clean_room_auto_approval_rule.this
  * 
@@ -33,7 +33,7 @@ import javax.annotation.Nullable;
  * If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
  * 
  * ```sh
- * $ pulumi import databricks:index/cleanRoomAutoApprovalRule:CleanRoomAutoApprovalRule databricks_clean_room_auto_approval_rule rule_id
+ * $ pulumi import databricks:index/cleanRoomAutoApprovalRule:CleanRoomAutoApprovalRule databricks_clean_room_auto_approval_rule &#34;rule_id&#34;
  * ```
  * 
  */
@@ -140,6 +140,20 @@ public class CleanRoomAutoApprovalRule extends com.pulumi.resources.CustomResour
      */
     public Output<Optional<String>> runnerCollaboratorAlias() {
         return Codegen.optional(this.runnerCollaboratorAlias);
+    }
+    /**
+     * Workspace ID of the resource
+     * 
+     */
+    @Export(name="workspaceId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> workspaceId;
+
+    /**
+     * @return Workspace ID of the resource
+     * 
+     */
+    public Output<Optional<String>> workspaceId() {
+        return Codegen.optional(this.workspaceId);
     }
 
     /**

@@ -83,7 +83,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * This resource can be imported by name:
+ * When using a workspace-level provider to manage storage credentials, this resource can be imported by name:
  *
  * hcl
  *
@@ -91,7 +91,19 @@ import * as utilities from "./utilities";
  *
  *   to = databricks_storage_credential.this
  *
- *   id = "<name>"
+ *   id = "<storage_credential_name>"
+ *
+ * }
+ *
+ * When using an account-level provider to manage storage credentials, use the format `<metastore_id>|<storage_credential_name>`:
+ *
+ * hcl
+ *
+ * import {
+ *
+ *   to = databricks_storage_credential.this
+ *
+ *   id = "<metastore_id>|<storage_credential_name>"
  *
  * }
  *
@@ -99,8 +111,16 @@ import * as utilities from "./utilities";
  *
  * bash
  *
+ * When using a workspace-level provider
+ *
  * ```sh
- * $ pulumi import databricks:index/storageCredential:StorageCredential this <name>
+ * $ pulumi import databricks:index/storageCredential:StorageCredential this <storage_credential_name>
+ * ```
+ *
+ * When using an account-level provider
+ *
+ * ```sh
+ * $ pulumi import databricks:index/storageCredential:StorageCredential this <metastore_id>|<storage_credential_name>
  * ```
  */
 export class StorageCredential extends pulumi.CustomResource {

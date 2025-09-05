@@ -11,14 +11,43 @@ namespace Pulumi.Databricks
 {
     public static class GetCleanRoomAutoApprovalRules
     {
-        public static Task<GetCleanRoomAutoApprovalRulesResult> InvokeAsync(InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.InvokeAsync<GetCleanRoomAutoApprovalRulesResult>("databricks:index/getCleanRoomAutoApprovalRules:getCleanRoomAutoApprovalRules", InvokeArgs.Empty, options.WithDefaults());
+        public static Task<GetCleanRoomAutoApprovalRulesResult> InvokeAsync(GetCleanRoomAutoApprovalRulesArgs? args = null, InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetCleanRoomAutoApprovalRulesResult>("databricks:index/getCleanRoomAutoApprovalRules:getCleanRoomAutoApprovalRules", args ?? new GetCleanRoomAutoApprovalRulesArgs(), options.WithDefaults());
 
-        public static Output<GetCleanRoomAutoApprovalRulesResult> Invoke(InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.Invoke<GetCleanRoomAutoApprovalRulesResult>("databricks:index/getCleanRoomAutoApprovalRules:getCleanRoomAutoApprovalRules", InvokeArgs.Empty, options.WithDefaults());
+        public static Output<GetCleanRoomAutoApprovalRulesResult> Invoke(GetCleanRoomAutoApprovalRulesInvokeArgs? args = null, InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.Invoke<GetCleanRoomAutoApprovalRulesResult>("databricks:index/getCleanRoomAutoApprovalRules:getCleanRoomAutoApprovalRules", args ?? new GetCleanRoomAutoApprovalRulesInvokeArgs(), options.WithDefaults());
 
-        public static Output<GetCleanRoomAutoApprovalRulesResult> Invoke(InvokeOutputOptions options)
-            => global::Pulumi.Deployment.Instance.Invoke<GetCleanRoomAutoApprovalRulesResult>("databricks:index/getCleanRoomAutoApprovalRules:getCleanRoomAutoApprovalRules", InvokeArgs.Empty, options.WithDefaults());
+        public static Output<GetCleanRoomAutoApprovalRulesResult> Invoke(GetCleanRoomAutoApprovalRulesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetCleanRoomAutoApprovalRulesResult>("databricks:index/getCleanRoomAutoApprovalRules:getCleanRoomAutoApprovalRules", args ?? new GetCleanRoomAutoApprovalRulesInvokeArgs(), options.WithDefaults());
+    }
+
+
+    public sealed class GetCleanRoomAutoApprovalRulesArgs : global::Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Workspace ID of the resource
+        /// </summary>
+        [Input("workspaceId")]
+        public string? WorkspaceId { get; set; }
+
+        public GetCleanRoomAutoApprovalRulesArgs()
+        {
+        }
+        public static new GetCleanRoomAutoApprovalRulesArgs Empty => new GetCleanRoomAutoApprovalRulesArgs();
+    }
+
+    public sealed class GetCleanRoomAutoApprovalRulesInvokeArgs : global::Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Workspace ID of the resource
+        /// </summary>
+        [Input("workspaceId")]
+        public Input<string>? WorkspaceId { get; set; }
+
+        public GetCleanRoomAutoApprovalRulesInvokeArgs()
+        {
+        }
+        public static new GetCleanRoomAutoApprovalRulesInvokeArgs Empty => new GetCleanRoomAutoApprovalRulesInvokeArgs();
     }
 
 
@@ -30,15 +59,19 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<Outputs.GetCleanRoomAutoApprovalRulesRuleResult> Rules;
+        public readonly string? WorkspaceId;
 
         [OutputConstructor]
         private GetCleanRoomAutoApprovalRulesResult(
             string id,
 
-            ImmutableArray<Outputs.GetCleanRoomAutoApprovalRulesRuleResult> rules)
+            ImmutableArray<Outputs.GetCleanRoomAutoApprovalRulesRuleResult> rules,
+
+            string? workspaceId)
         {
             Id = id;
             Rules = rules;
+            WorkspaceId = workspaceId;
         }
     }
 }

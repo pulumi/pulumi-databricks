@@ -117,6 +117,7 @@ type providerArgs struct {
 	Host                       *string `pulumi:"host"`
 	HttpTimeoutSeconds         *int    `pulumi:"httpTimeoutSeconds"`
 	MetadataServiceUrl         *string `pulumi:"metadataServiceUrl"`
+	OauthCallbackPort          *int    `pulumi:"oauthCallbackPort"`
 	OidcTokenEnv               *string `pulumi:"oidcTokenEnv"`
 	Password                   *string `pulumi:"password"`
 	Profile                    *string `pulumi:"profile"`
@@ -156,6 +157,7 @@ type ProviderArgs struct {
 	Host                       pulumi.StringPtrInput
 	HttpTimeoutSeconds         pulumi.IntPtrInput
 	MetadataServiceUrl         pulumi.StringPtrInput
+	OauthCallbackPort          pulumi.IntPtrInput
 	OidcTokenEnv               pulumi.StringPtrInput
 	Password                   pulumi.StringPtrInput
 	Profile                    pulumi.StringPtrInput

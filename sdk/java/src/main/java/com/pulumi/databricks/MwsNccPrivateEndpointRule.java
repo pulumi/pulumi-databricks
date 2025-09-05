@@ -281,14 +281,14 @@ public class MwsNccPrivateEndpointRule extends com.pulumi.resources.CustomResour
         return this.endpointName;
     }
     /**
-     * Example `com.amazonaws.vpce.us-east-1.vpce-svc-123abcc1298abc123`. The full target AWS endpoint service name that connects to the destination resources of the private endpoint.
+     * Example `com.amazonaws.vpce.us-east-1.vpce-svc-123abcc1298abc123`. The full target AWS endpoint service name that connects to the destination resources of the private endpoint. Change forces creation of a new resource.
      * 
      */
     @Export(name="endpointService", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> endpointService;
 
     /**
-     * @return Example `com.amazonaws.vpce.us-east-1.vpce-svc-123abcc1298abc123`. The full target AWS endpoint service name that connects to the destination resources of the private endpoint.
+     * @return Example `com.amazonaws.vpce.us-east-1.vpce-svc-123abcc1298abc123`. The full target AWS endpoint service name that connects to the destination resources of the private endpoint. Change forces creation of a new resource.
      * 
      */
     public Output<Optional<String>> endpointService() {

@@ -31,6 +31,12 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string Creator;
         /// <summary>
+        /// (boolean) - xref AIP-129. `enable_pg_native_login` is owned by the client, while `effective_enable_pg_native_login` is owned by the server.
+        /// `enable_pg_native_login` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+        /// `effective_enable_pg_native_login` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+        /// </summary>
+        public readonly bool EffectiveEnablePgNativeLogin;
+        /// <summary>
         /// (boolean) - xref AIP-129. `enable_readable_secondaries` is owned by the client, while `effective_enable_readable_secondaries` is owned by the server.
         /// `enable_readable_secondaries` will only be set in Create/Update response messages if and only if the user provides the field via the request.
         /// `effective_enable_readable_secondaries` on the other hand will always bet set in all response messages (Create/Update/Get/List)
@@ -54,6 +60,10 @@ namespace Pulumi.Databricks.Outputs
         /// `effective_stopped` on the other hand will always bet set in all response messages (Create/Update/Get/List)
         /// </summary>
         public readonly bool EffectiveStopped;
+        /// <summary>
+        /// (boolean) - Whether the instance has PG native password login enabled. Defaults to true
+        /// </summary>
+        public readonly bool EnablePgNativeLogin;
         /// <summary>
         /// (boolean) - Whether to enable secondaries to serve read-only traffic. Defaults to false
         /// </summary>
@@ -116,6 +126,8 @@ namespace Pulumi.Databricks.Outputs
 
             string creator,
 
+            bool effectiveEnablePgNativeLogin,
+
             bool effectiveEnableReadableSecondaries,
 
             int effectiveNodeCount,
@@ -123,6 +135,8 @@ namespace Pulumi.Databricks.Outputs
             int effectiveRetentionWindowInDays,
 
             bool effectiveStopped,
+
+            bool enablePgNativeLogin,
 
             bool? enableReadableSecondaries,
 
@@ -150,10 +164,12 @@ namespace Pulumi.Databricks.Outputs
             ChildInstanceRefs = childInstanceRefs;
             CreationTime = creationTime;
             Creator = creator;
+            EffectiveEnablePgNativeLogin = effectiveEnablePgNativeLogin;
             EffectiveEnableReadableSecondaries = effectiveEnableReadableSecondaries;
             EffectiveNodeCount = effectiveNodeCount;
             EffectiveRetentionWindowInDays = effectiveRetentionWindowInDays;
             EffectiveStopped = effectiveStopped;
+            EnablePgNativeLogin = enablePgNativeLogin;
             EnableReadableSecondaries = enableReadableSecondaries;
             Name = name;
             NodeCount = nodeCount;

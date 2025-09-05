@@ -105,6 +105,7 @@ public final class GetCleanRoomAssetResult {
      * 
      */
     private @Nullable GetCleanRoomAssetVolumeLocalDetails volumeLocalDetails;
+    private @Nullable String workspaceId;
 
     private GetCleanRoomAssetResult() {}
     /**
@@ -221,6 +222,9 @@ public final class GetCleanRoomAssetResult {
     public Optional<GetCleanRoomAssetVolumeLocalDetails> volumeLocalDetails() {
         return Optional.ofNullable(this.volumeLocalDetails);
     }
+    public Optional<String> workspaceId() {
+        return Optional.ofNullable(this.workspaceId);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -246,6 +250,7 @@ public final class GetCleanRoomAssetResult {
         private @Nullable GetCleanRoomAssetView view;
         private @Nullable GetCleanRoomAssetViewLocalDetails viewLocalDetails;
         private @Nullable GetCleanRoomAssetVolumeLocalDetails volumeLocalDetails;
+        private @Nullable String workspaceId;
         public Builder() {}
         public Builder(GetCleanRoomAssetResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -264,6 +269,7 @@ public final class GetCleanRoomAssetResult {
     	      this.view = defaults.view;
     	      this.viewLocalDetails = defaults.viewLocalDetails;
     	      this.volumeLocalDetails = defaults.volumeLocalDetails;
+    	      this.workspaceId = defaults.workspaceId;
         }
 
         @CustomType.Setter
@@ -368,6 +374,12 @@ public final class GetCleanRoomAssetResult {
             this.volumeLocalDetails = volumeLocalDetails;
             return this;
         }
+        @CustomType.Setter
+        public Builder workspaceId(@Nullable String workspaceId) {
+
+            this.workspaceId = workspaceId;
+            return this;
+        }
         public GetCleanRoomAssetResult build() {
             final var _resultValue = new GetCleanRoomAssetResult();
             _resultValue.addedAt = addedAt;
@@ -385,6 +397,7 @@ public final class GetCleanRoomAssetResult {
             _resultValue.view = view;
             _resultValue.viewLocalDetails = viewLocalDetails;
             _resultValue.volumeLocalDetails = volumeLocalDetails;
+            _resultValue.workspaceId = workspaceId;
             return _resultValue;
         }
     }

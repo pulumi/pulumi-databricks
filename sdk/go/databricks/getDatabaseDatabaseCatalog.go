@@ -60,6 +60,8 @@ type LookupDatabaseDatabaseCatalogArgs struct {
 	DatabaseName string `pulumi:"databaseName"`
 	// The name of the catalog in UC
 	Name string `pulumi:"name"`
+	// Workspace ID of the resource
+	WorkspaceId *string `pulumi:"workspaceId"`
 }
 
 // A collection of values returned by getDatabaseDatabaseCatalog.
@@ -75,7 +77,8 @@ type LookupDatabaseDatabaseCatalogResult struct {
 	// (string) - The name of the catalog in UC
 	Name string `pulumi:"name"`
 	// (string)
-	Uid string `pulumi:"uid"`
+	Uid         string  `pulumi:"uid"`
+	WorkspaceId *string `pulumi:"workspaceId"`
 }
 
 func LookupDatabaseDatabaseCatalogOutput(ctx *pulumi.Context, args LookupDatabaseDatabaseCatalogOutputArgs, opts ...pulumi.InvokeOption) LookupDatabaseDatabaseCatalogResultOutput {
@@ -97,6 +100,8 @@ type LookupDatabaseDatabaseCatalogOutputArgs struct {
 	DatabaseName pulumi.StringInput `pulumi:"databaseName"`
 	// The name of the catalog in UC
 	Name pulumi.StringInput `pulumi:"name"`
+	// Workspace ID of the resource
+	WorkspaceId pulumi.StringPtrInput `pulumi:"workspaceId"`
 }
 
 func (LookupDatabaseDatabaseCatalogOutputArgs) ElementType() reflect.Type {
@@ -146,6 +151,10 @@ func (o LookupDatabaseDatabaseCatalogResultOutput) Name() pulumi.StringOutput {
 // (string)
 func (o LookupDatabaseDatabaseCatalogResultOutput) Uid() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseDatabaseCatalogResult) string { return v.Uid }).(pulumi.StringOutput)
+}
+
+func (o LookupDatabaseDatabaseCatalogResultOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupDatabaseDatabaseCatalogResult) *string { return v.WorkspaceId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

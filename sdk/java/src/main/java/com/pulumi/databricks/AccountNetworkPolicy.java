@@ -41,7 +41,7 @@ import javax.annotation.Nullable;
  * 
  * import {
  * 
- *   id = network_policy_id
+ *   id = &#34;network_policy_id&#34;
  * 
  *   to = databricks_account_network_policy.this
  * 
@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
  * If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
  * 
  * ```sh
- * $ pulumi import databricks:index/accountNetworkPolicy:AccountNetworkPolicy databricks_account_network_policy network_policy_id
+ * $ pulumi import databricks:index/accountNetworkPolicy:AccountNetworkPolicy databricks_account_network_policy &#34;network_policy_id&#34;
  * ```
  * 
  */

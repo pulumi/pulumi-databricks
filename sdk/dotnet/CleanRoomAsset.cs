@@ -48,7 +48,7 @@ namespace Pulumi.Databricks
     /// 
     /// import {
     /// 
-    ///   id = clean_room_name,name,asset_type
+    ///   id = "clean_room_name,name,asset_type"
     /// 
     ///   to = databricks_clean_room_asset.this
     /// 
@@ -57,7 +57,7 @@ namespace Pulumi.Databricks
     /// If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
     /// 
     /// ```sh
-    /// $ pulumi import databricks:index/cleanRoomAsset:CleanRoomAsset databricks_clean_room_asset clean_room_name,name,asset_type
+    /// $ pulumi import databricks:index/cleanRoomAsset:CleanRoomAsset databricks_clean_room_asset "clean_room_name,name,asset_type"
     /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/cleanRoomAsset:CleanRoomAsset")]
@@ -161,6 +161,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("volumeLocalDetails")]
         public Output<Outputs.CleanRoomAssetVolumeLocalDetails?> VolumeLocalDetails { get; private set; } = null!;
+
+        /// <summary>
+        /// Workspace ID of the resource
+        /// </summary>
+        [Output("workspaceId")]
+        public Output<string?> WorkspaceId { get; private set; } = null!;
 
 
         /// <summary>
@@ -289,6 +295,12 @@ namespace Pulumi.Databricks
         [Input("volumeLocalDetails")]
         public Input<Inputs.CleanRoomAssetVolumeLocalDetailsArgs>? VolumeLocalDetails { get; set; }
 
+        /// <summary>
+        /// Workspace ID of the resource
+        /// </summary>
+        [Input("workspaceId")]
+        public Input<string>? WorkspaceId { get; set; }
+
         public CleanRoomAssetArgs()
         {
         }
@@ -395,6 +407,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("volumeLocalDetails")]
         public Input<Inputs.CleanRoomAssetVolumeLocalDetailsGetArgs>? VolumeLocalDetails { get; set; }
+
+        /// <summary>
+        /// Workspace ID of the resource
+        /// </summary>
+        [Input("workspaceId")]
+        public Input<string>? WorkspaceId { get; set; }
 
         public CleanRoomAssetState()
         {

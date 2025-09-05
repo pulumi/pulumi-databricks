@@ -37,6 +37,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServingEndpointsEndpointTagResult> Tags;
         public readonly string? Task;
+        public readonly string? UsagePolicyId;
 
         [OutputConstructor]
         private GetServingEndpointsEndpointResult(
@@ -62,7 +63,9 @@ namespace Pulumi.Databricks.Outputs
 
             ImmutableArray<Outputs.GetServingEndpointsEndpointTagResult> tags,
 
-            string? task)
+            string? task,
+
+            string? usagePolicyId)
         {
             AiGateways = aiGateways;
             BudgetPolicyId = budgetPolicyId;
@@ -76,6 +79,7 @@ namespace Pulumi.Databricks.Outputs
             States = states;
             Tags = tags;
             Task = task;
+            UsagePolicyId = usagePolicyId;
         }
     }
 }

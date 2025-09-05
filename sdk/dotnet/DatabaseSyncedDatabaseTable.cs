@@ -26,7 +26,7 @@ namespace Pulumi.Databricks
     /// 
     /// import {
     /// 
-    ///   id = name
+    ///   id = "name"
     /// 
     ///   to = databricks_database_synced_database_table.this
     /// 
@@ -35,7 +35,7 @@ namespace Pulumi.Databricks
     /// If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
     /// 
     /// ```sh
-    /// $ pulumi import databricks:index/databaseSyncedDatabaseTable:DatabaseSyncedDatabaseTable databricks_database_synced_database_table name
+    /// $ pulumi import databricks:index/databaseSyncedDatabaseTable:DatabaseSyncedDatabaseTable databricks_database_synced_database_table "name"
     /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/databaseSyncedDatabaseTable:DatabaseSyncedDatabaseTable")]
@@ -100,6 +100,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("unityCatalogProvisioningState")]
         public Output<string> UnityCatalogProvisioningState { get; private set; } = null!;
+
+        /// <summary>
+        /// Workspace ID of the resource
+        /// </summary>
+        [Output("workspaceId")]
+        public Output<string?> WorkspaceId { get; private set; } = null!;
 
 
         /// <summary>
@@ -180,6 +186,12 @@ namespace Pulumi.Databricks
         [Input("spec")]
         public Input<Inputs.DatabaseSyncedDatabaseTableSpecArgs>? Spec { get; set; }
 
+        /// <summary>
+        /// Workspace ID of the resource
+        /// </summary>
+        [Input("workspaceId")]
+        public Input<string>? WorkspaceId { get; set; }
+
         public DatabaseSyncedDatabaseTableArgs()
         {
         }
@@ -247,6 +259,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("unityCatalogProvisioningState")]
         public Input<string>? UnityCatalogProvisioningState { get; set; }
+
+        /// <summary>
+        /// Workspace ID of the resource
+        /// </summary>
+        [Input("workspaceId")]
+        public Input<string>? WorkspaceId { get; set; }
 
         public DatabaseSyncedDatabaseTableState()
         {

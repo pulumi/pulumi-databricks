@@ -5,7 +5,6 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.databricks.inputs.ConnectionEnvironmentSettingsArgs;
 import com.pulumi.databricks.inputs.ConnectionProvisioningInfoArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -109,13 +108,6 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> credentialType() {
         return Optional.ofNullable(this.credentialType);
-    }
-
-    @Import(name="environmentSettings")
-    private @Nullable Output<ConnectionEnvironmentSettingsArgs> environmentSettings;
-
-    public Optional<Output<ConnectionEnvironmentSettingsArgs>> environmentSettings() {
-        return Optional.ofNullable(this.environmentSettings);
     }
 
     /**
@@ -299,7 +291,6 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         this.createdAt = $.createdAt;
         this.createdBy = $.createdBy;
         this.credentialType = $.credentialType;
-        this.environmentSettings = $.environmentSettings;
         this.fullName = $.fullName;
         this.metastoreId = $.metastoreId;
         this.name = $.name;
@@ -456,15 +447,6 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder credentialType(String credentialType) {
             return credentialType(Output.of(credentialType));
-        }
-
-        public Builder environmentSettings(@Nullable Output<ConnectionEnvironmentSettingsArgs> environmentSettings) {
-            $.environmentSettings = environmentSettings;
-            return this;
-        }
-
-        public Builder environmentSettings(ConnectionEnvironmentSettingsArgs environmentSettings) {
-            return environmentSettings(Output.of(environmentSettings));
         }
 
         /**

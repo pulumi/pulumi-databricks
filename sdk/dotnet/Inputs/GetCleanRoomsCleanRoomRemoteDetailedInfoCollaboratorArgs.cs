@@ -29,7 +29,7 @@ namespace Pulumi.Databricks.Inputs
         public Input<string> DisplayName { get; set; } = null!;
 
         /// <summary>
-        /// (string) - The global Unity Catalog metastore id of the collaborator. The identifier is of format cloud:region:metastore-uuid
+        /// (string) - The global Unity Catalog metastore ID of the collaborator. The identifier is of format cloud:region:metastore-uuid
         /// </summary>
         [Input("globalMetastoreId")]
         public Input<string>? GlobalMetastoreId { get; set; }

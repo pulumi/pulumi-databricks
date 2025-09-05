@@ -27,6 +27,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("renewalPeriod", required: true)]
         public Input<string> RenewalPeriod { get; set; } = null!;
 
+        [Input("tokens")]
+        public Input<int>? Tokens { get; set; }
+
         public ModelServingProvisionedThroughputAiGatewayRateLimitArgs()
         {
         }

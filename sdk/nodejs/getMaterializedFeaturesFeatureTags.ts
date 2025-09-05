@@ -6,10 +6,22 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-export function getMaterializedFeaturesFeatureTags(opts?: pulumi.InvokeOptions): Promise<GetMaterializedFeaturesFeatureTagsResult> {
+export function getMaterializedFeaturesFeatureTags(args?: GetMaterializedFeaturesFeatureTagsArgs, opts?: pulumi.InvokeOptions): Promise<GetMaterializedFeaturesFeatureTagsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getMaterializedFeaturesFeatureTags:getMaterializedFeaturesFeatureTags", {
+        "workspaceId": args.workspaceId,
     }, opts);
+}
+
+/**
+ * A collection of arguments for invoking getMaterializedFeaturesFeatureTags.
+ */
+export interface GetMaterializedFeaturesFeatureTagsArgs {
+    /**
+     * Workspace ID of the resource
+     */
+    workspaceId?: string;
 }
 
 /**
@@ -21,9 +33,22 @@ export interface GetMaterializedFeaturesFeatureTagsResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly workspaceId?: string;
 }
-export function getMaterializedFeaturesFeatureTagsOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMaterializedFeaturesFeatureTagsResult> {
+export function getMaterializedFeaturesFeatureTagsOutput(args?: GetMaterializedFeaturesFeatureTagsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMaterializedFeaturesFeatureTagsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getMaterializedFeaturesFeatureTags:getMaterializedFeaturesFeatureTags", {
+        "workspaceId": args.workspaceId,
     }, opts);
+}
+
+/**
+ * A collection of arguments for invoking getMaterializedFeaturesFeatureTags.
+ */
+export interface GetMaterializedFeaturesFeatureTagsOutputArgs {
+    /**
+     * Workspace ID of the resource
+     */
+    workspaceId?: pulumi.Input<string>;
 }

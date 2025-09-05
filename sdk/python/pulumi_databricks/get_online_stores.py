@@ -27,13 +27,16 @@ class GetOnlineStoresResult:
     """
     A collection of values returned by getOnlineStores.
     """
-    def __init__(__self__, id=None, online_stores=None):
+    def __init__(__self__, id=None, online_stores=None, workspace_id=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
         if online_stores and not isinstance(online_stores, list):
             raise TypeError("Expected argument 'online_stores' to be a list")
         pulumi.set(__self__, "online_stores", online_stores)
+        if workspace_id and not isinstance(workspace_id, str):
+            raise TypeError("Expected argument 'workspace_id' to be a str")
+        pulumi.set(__self__, "workspace_id", workspace_id)
 
     @_builtins.property
     @pulumi.getter
@@ -48,6 +51,11 @@ class GetOnlineStoresResult:
     def online_stores(self) -> Sequence['outputs.GetOnlineStoresOnlineStoreResult']:
         return pulumi.get(self, "online_stores")
 
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "workspace_id")
+
 
 class AwaitableGetOnlineStoresResult(GetOnlineStoresResult):
     # pylint: disable=using-constant-test
@@ -56,27 +64,38 @@ class AwaitableGetOnlineStoresResult(GetOnlineStoresResult):
             yield self
         return GetOnlineStoresResult(
             id=self.id,
-            online_stores=self.online_stores)
+            online_stores=self.online_stores,
+            workspace_id=self.workspace_id)
 
 
-def get_online_stores(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetOnlineStoresResult:
+def get_online_stores(workspace_id: Optional[_builtins.str] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetOnlineStoresResult:
     """
     Use this data source to access information about an existing resource.
+
+    :param _builtins.str workspace_id: Workspace ID of the resource
     """
     __args__ = dict()
+    __args__['workspaceId'] = workspace_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getOnlineStores:getOnlineStores', __args__, opts=opts, typ=GetOnlineStoresResult).value
 
     return AwaitableGetOnlineStoresResult(
         id=pulumi.get(__ret__, 'id'),
-        online_stores=pulumi.get(__ret__, 'online_stores'))
-def get_online_stores_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOnlineStoresResult]:
+        online_stores=pulumi.get(__ret__, 'online_stores'),
+        workspace_id=pulumi.get(__ret__, 'workspace_id'))
+def get_online_stores_output(workspace_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOnlineStoresResult]:
     """
     Use this data source to access information about an existing resource.
+
+    :param _builtins.str workspace_id: Workspace ID of the resource
     """
     __args__ = dict()
+    __args__['workspaceId'] = workspace_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getOnlineStores:getOnlineStores', __args__, opts=opts, typ=GetOnlineStoresResult)
     return __ret__.apply(lambda __response__: GetOnlineStoresResult(
         id=pulumi.get(__response__, 'id'),
-        online_stores=pulumi.get(__response__, 'online_stores')))
+        online_stores=pulumi.get(__response__, 'online_stores'),
+        workspace_id=pulumi.get(__response__, 'workspace_id')))

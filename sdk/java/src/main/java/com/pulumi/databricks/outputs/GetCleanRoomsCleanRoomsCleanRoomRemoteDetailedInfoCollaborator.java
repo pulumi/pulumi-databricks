@@ -28,7 +28,7 @@ public final class GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoCollaborato
      */
     private String displayName;
     /**
-     * @return (string) - The global Unity Catalog metastore id of the collaborator. The identifier is of format cloud:region:metastore-uuid
+     * @return (string) - The global Unity Catalog metastore ID of the collaborator. The identifier is of format cloud:region:metastore-uuid
      * 
      */
     private @Nullable String globalMetastoreId;
@@ -73,7 +73,7 @@ public final class GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoCollaborato
         return this.displayName;
     }
     /**
-     * @return (string) - The global Unity Catalog metastore id of the collaborator. The identifier is of format cloud:region:metastore-uuid
+     * @return (string) - The global Unity Catalog metastore ID of the collaborator. The identifier is of format cloud:region:metastore-uuid
      * 
      */
     public Optional<String> globalMetastoreId() {

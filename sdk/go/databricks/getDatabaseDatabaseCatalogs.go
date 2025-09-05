@@ -11,28 +11,47 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-func GetDatabaseDatabaseCatalogs(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetDatabaseDatabaseCatalogsResult, error) {
+func GetDatabaseDatabaseCatalogs(ctx *pulumi.Context, args *GetDatabaseDatabaseCatalogsArgs, opts ...pulumi.InvokeOption) (*GetDatabaseDatabaseCatalogsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDatabaseDatabaseCatalogsResult
-	err := ctx.Invoke("databricks:index/getDatabaseDatabaseCatalogs:getDatabaseDatabaseCatalogs", nil, &rv, opts...)
+	err := ctx.Invoke("databricks:index/getDatabaseDatabaseCatalogs:getDatabaseDatabaseCatalogs", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &rv, nil
 }
 
+// A collection of arguments for invoking getDatabaseDatabaseCatalogs.
+type GetDatabaseDatabaseCatalogsArgs struct {
+	// Workspace ID of the resource
+	WorkspaceId *string `pulumi:"workspaceId"`
+}
+
 // A collection of values returned by getDatabaseDatabaseCatalogs.
 type GetDatabaseDatabaseCatalogsResult struct {
 	DatabaseCatalogs []GetDatabaseDatabaseCatalogsDatabaseCatalog `pulumi:"databaseCatalogs"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	Id          string  `pulumi:"id"`
+	WorkspaceId *string `pulumi:"workspaceId"`
 }
 
-func GetDatabaseDatabaseCatalogsOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetDatabaseDatabaseCatalogsResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetDatabaseDatabaseCatalogsResultOutput, error) {
-		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-		return ctx.InvokeOutput("databricks:index/getDatabaseDatabaseCatalogs:getDatabaseDatabaseCatalogs", nil, GetDatabaseDatabaseCatalogsResultOutput{}, options).(GetDatabaseDatabaseCatalogsResultOutput), nil
-	}).(GetDatabaseDatabaseCatalogsResultOutput)
+func GetDatabaseDatabaseCatalogsOutput(ctx *pulumi.Context, args GetDatabaseDatabaseCatalogsOutputArgs, opts ...pulumi.InvokeOption) GetDatabaseDatabaseCatalogsResultOutput {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (GetDatabaseDatabaseCatalogsResultOutput, error) {
+			args := v.(GetDatabaseDatabaseCatalogsArgs)
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("databricks:index/getDatabaseDatabaseCatalogs:getDatabaseDatabaseCatalogs", args, GetDatabaseDatabaseCatalogsResultOutput{}, options).(GetDatabaseDatabaseCatalogsResultOutput), nil
+		}).(GetDatabaseDatabaseCatalogsResultOutput)
+}
+
+// A collection of arguments for invoking getDatabaseDatabaseCatalogs.
+type GetDatabaseDatabaseCatalogsOutputArgs struct {
+	// Workspace ID of the resource
+	WorkspaceId pulumi.StringPtrInput `pulumi:"workspaceId"`
+}
+
+func (GetDatabaseDatabaseCatalogsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseDatabaseCatalogsArgs)(nil)).Elem()
 }
 
 // A collection of values returned by getDatabaseDatabaseCatalogs.
@@ -59,6 +78,10 @@ func (o GetDatabaseDatabaseCatalogsResultOutput) DatabaseCatalogs() GetDatabaseD
 // The provider-assigned unique ID for this managed resource.
 func (o GetDatabaseDatabaseCatalogsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseDatabaseCatalogsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseDatabaseCatalogsResultOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDatabaseDatabaseCatalogsResult) *string { return v.WorkspaceId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

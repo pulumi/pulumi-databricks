@@ -123,6 +123,12 @@ namespace Pulumi.Databricks
         [Input("spec")]
         public Inputs.GetDatabaseSyncedDatabaseTableSpecArgs? Spec { get; set; }
 
+        /// <summary>
+        /// Workspace ID of the resource
+        /// </summary>
+        [Input("workspaceId")]
+        public string? WorkspaceId { get; set; }
+
         public GetDatabaseSyncedDatabaseTableArgs()
         {
         }
@@ -157,6 +163,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("spec")]
         public Input<Inputs.GetDatabaseSyncedDatabaseTableSpecInputArgs>? Spec { get; set; }
+
+        /// <summary>
+        /// Workspace ID of the resource
+        /// </summary>
+        [Input("workspaceId")]
+        public Input<string>? WorkspaceId { get; set; }
 
         public GetDatabaseSyncedDatabaseTableInvokeArgs()
         {
@@ -210,6 +222,7 @@ namespace Pulumi.Databricks
         /// may be in "PROVISIONING" as it runs asynchronously). Possible values are: `ACTIVE`, `DEGRADED`, `DELETING`, `FAILED`, `PROVISIONING`, `UPDATING`
         /// </summary>
         public readonly string UnityCatalogProvisioningState;
+        public readonly string? WorkspaceId;
 
         [OutputConstructor]
         private GetDatabaseSyncedDatabaseTableResult(
@@ -229,7 +242,9 @@ namespace Pulumi.Databricks
 
             Outputs.GetDatabaseSyncedDatabaseTableSpecResult? spec,
 
-            string unityCatalogProvisioningState)
+            string unityCatalogProvisioningState,
+
+            string? workspaceId)
         {
             DataSynchronizationStatus = dataSynchronizationStatus;
             DatabaseInstanceName = databaseInstanceName;
@@ -240,6 +255,7 @@ namespace Pulumi.Databricks
             Name = name;
             Spec = spec;
             UnityCatalogProvisioningState = unityCatalogProvisioningState;
+            WorkspaceId = workspaceId;
         }
     }
 }

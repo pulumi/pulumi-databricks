@@ -58,7 +58,7 @@ import (
 //
 // import {
 //
-//	id = object_type,object_id
+//	id = "object_type,object_id"
 //
 //	to = databricks_quality_monitor_v2.this
 //
@@ -67,7 +67,7 @@ import (
 // If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
 //
 // ```sh
-// $ pulumi import databricks:index/qualityMonitorV2:QualityMonitorV2 databricks_quality_monitor_v2 object_type,object_id
+// $ pulumi import databricks:index/qualityMonitorV2:QualityMonitorV2 databricks_quality_monitor_v2 "object_type,object_id"
 // ```
 type QualityMonitorV2 struct {
 	pulumi.CustomResourceState
@@ -78,6 +78,8 @@ type QualityMonitorV2 struct {
 	ObjectId pulumi.StringOutput `pulumi:"objectId"`
 	// The type of the monitored object. Can be one of the following: schema
 	ObjectType pulumi.StringOutput `pulumi:"objectType"`
+	// Workspace ID of the resource
+	WorkspaceId pulumi.StringPtrOutput `pulumi:"workspaceId"`
 }
 
 // NewQualityMonitorV2 registers a new resource with the given unique name, arguments, and options.
@@ -122,6 +124,8 @@ type qualityMonitorV2State struct {
 	ObjectId *string `pulumi:"objectId"`
 	// The type of the monitored object. Can be one of the following: schema
 	ObjectType *string `pulumi:"objectType"`
+	// Workspace ID of the resource
+	WorkspaceId *string `pulumi:"workspaceId"`
 }
 
 type QualityMonitorV2State struct {
@@ -131,6 +135,8 @@ type QualityMonitorV2State struct {
 	ObjectId pulumi.StringPtrInput
 	// The type of the monitored object. Can be one of the following: schema
 	ObjectType pulumi.StringPtrInput
+	// Workspace ID of the resource
+	WorkspaceId pulumi.StringPtrInput
 }
 
 func (QualityMonitorV2State) ElementType() reflect.Type {
@@ -142,6 +148,8 @@ type qualityMonitorV2Args struct {
 	ObjectId string `pulumi:"objectId"`
 	// The type of the monitored object. Can be one of the following: schema
 	ObjectType string `pulumi:"objectType"`
+	// Workspace ID of the resource
+	WorkspaceId *string `pulumi:"workspaceId"`
 }
 
 // The set of arguments for constructing a QualityMonitorV2 resource.
@@ -150,6 +158,8 @@ type QualityMonitorV2Args struct {
 	ObjectId pulumi.StringInput
 	// The type of the monitored object. Can be one of the following: schema
 	ObjectType pulumi.StringInput
+	// Workspace ID of the resource
+	WorkspaceId pulumi.StringPtrInput
 }
 
 func (QualityMonitorV2Args) ElementType() reflect.Type {
@@ -254,6 +264,11 @@ func (o QualityMonitorV2Output) ObjectId() pulumi.StringOutput {
 // The type of the monitored object. Can be one of the following: schema
 func (o QualityMonitorV2Output) ObjectType() pulumi.StringOutput {
 	return o.ApplyT(func(v *QualityMonitorV2) pulumi.StringOutput { return v.ObjectType }).(pulumi.StringOutput)
+}
+
+// Workspace ID of the resource
+func (o QualityMonitorV2Output) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *QualityMonitorV2) pulumi.StringPtrOutput { return v.WorkspaceId }).(pulumi.StringPtrOutput)
 }
 
 type QualityMonitorV2ArrayOutput struct{ *pulumi.OutputState }

@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * This resource is used to assign account-level users, service principals and groups to a Databricks workspace.
+ * This resource is used to assign account-level users, service principals and groups to a Databricks workspace. To configure additional entitlements such as cluster creation, please use databricks_entitlements.
  *
  * > This resource can only be used with an account-level provider!
  *
@@ -114,8 +114,8 @@ export class MwsPermissionAssignment extends pulumi.CustomResource {
 
     /**
      * The list of workspace permissions to assign to the principal:
-     * * `"USER"` - Can access the workspace with basic privileges.
-     * * `"ADMIN"` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
+     * * `"USER"` - Adds principal to the workspace `users` group. This gives basic workspace access.
+     * * `"ADMIN"` - Adds principal to the workspace `admins` group. This gives workspace admin privileges to manage users and groups, workspace configurations, and more.
      */
     declare public readonly permissions: pulumi.Output<string[]>;
     /**
@@ -169,8 +169,8 @@ export class MwsPermissionAssignment extends pulumi.CustomResource {
 export interface MwsPermissionAssignmentState {
     /**
      * The list of workspace permissions to assign to the principal:
-     * * `"USER"` - Can access the workspace with basic privileges.
-     * * `"ADMIN"` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
+     * * `"USER"` - Adds principal to the workspace `users` group. This gives basic workspace access.
+     * * `"ADMIN"` - Adds principal to the workspace `admins` group. This gives workspace admin privileges to manage users and groups, workspace configurations, and more.
      */
     permissions?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -189,8 +189,8 @@ export interface MwsPermissionAssignmentState {
 export interface MwsPermissionAssignmentArgs {
     /**
      * The list of workspace permissions to assign to the principal:
-     * * `"USER"` - Can access the workspace with basic privileges.
-     * * `"ADMIN"` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
+     * * `"USER"` - Adds principal to the workspace `users` group. This gives basic workspace access.
+     * * `"ADMIN"` - Adds principal to the workspace `admins` group. This gives workspace admin privileges to manage users and groups, workspace configurations, and more.
      */
     permissions: pulumi.Input<pulumi.Input<string>[]>;
     /**

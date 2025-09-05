@@ -27,13 +27,16 @@ class GetRecipientFederationPoliciesResult:
     """
     A collection of values returned by getRecipientFederationPolicies.
     """
-    def __init__(__self__, id=None, policies=None):
+    def __init__(__self__, id=None, policies=None, workspace_id=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
         if policies and not isinstance(policies, list):
             raise TypeError("Expected argument 'policies' to be a list")
         pulumi.set(__self__, "policies", policies)
+        if workspace_id and not isinstance(workspace_id, str):
+            raise TypeError("Expected argument 'workspace_id' to be a str")
+        pulumi.set(__self__, "workspace_id", workspace_id)
 
     @_builtins.property
     @pulumi.getter
@@ -48,6 +51,11 @@ class GetRecipientFederationPoliciesResult:
     def policies(self) -> Sequence['outputs.GetRecipientFederationPoliciesPolicyResult']:
         return pulumi.get(self, "policies")
 
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "workspace_id")
+
 
 class AwaitableGetRecipientFederationPoliciesResult(GetRecipientFederationPoliciesResult):
     # pylint: disable=using-constant-test
@@ -56,27 +64,38 @@ class AwaitableGetRecipientFederationPoliciesResult(GetRecipientFederationPolici
             yield self
         return GetRecipientFederationPoliciesResult(
             id=self.id,
-            policies=self.policies)
+            policies=self.policies,
+            workspace_id=self.workspace_id)
 
 
-def get_recipient_federation_policies(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRecipientFederationPoliciesResult:
+def get_recipient_federation_policies(workspace_id: Optional[_builtins.str] = None,
+                                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRecipientFederationPoliciesResult:
     """
     Use this data source to access information about an existing resource.
+
+    :param _builtins.str workspace_id: Workspace ID of the resource
     """
     __args__ = dict()
+    __args__['workspaceId'] = workspace_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getRecipientFederationPolicies:getRecipientFederationPolicies', __args__, opts=opts, typ=GetRecipientFederationPoliciesResult).value
 
     return AwaitableGetRecipientFederationPoliciesResult(
         id=pulumi.get(__ret__, 'id'),
-        policies=pulumi.get(__ret__, 'policies'))
-def get_recipient_federation_policies_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRecipientFederationPoliciesResult]:
+        policies=pulumi.get(__ret__, 'policies'),
+        workspace_id=pulumi.get(__ret__, 'workspace_id'))
+def get_recipient_federation_policies_output(workspace_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRecipientFederationPoliciesResult]:
     """
     Use this data source to access information about an existing resource.
+
+    :param _builtins.str workspace_id: Workspace ID of the resource
     """
     __args__ = dict()
+    __args__['workspaceId'] = workspace_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getRecipientFederationPolicies:getRecipientFederationPolicies', __args__, opts=opts, typ=GetRecipientFederationPoliciesResult)
     return __ret__.apply(lambda __response__: GetRecipientFederationPoliciesResult(
         id=pulumi.get(__response__, 'id'),
-        policies=pulumi.get(__response__, 'policies')))
+        policies=pulumi.get(__response__, 'policies'),
+        workspace_id=pulumi.get(__response__, 'workspace_id')))

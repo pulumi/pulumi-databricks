@@ -44,6 +44,7 @@ class ProviderArgs:
                  host: Optional[pulumi.Input[_builtins.str]] = None,
                  http_timeout_seconds: Optional[pulumi.Input[_builtins.int]] = None,
                  metadata_service_url: Optional[pulumi.Input[_builtins.str]] = None,
+                 oauth_callback_port: Optional[pulumi.Input[_builtins.int]] = None,
                  oidc_token_env: Optional[pulumi.Input[_builtins.str]] = None,
                  password: Optional[pulumi.Input[_builtins.str]] = None,
                  profile: Optional[pulumi.Input[_builtins.str]] = None,
@@ -107,6 +108,8 @@ class ProviderArgs:
             pulumi.set(__self__, "http_timeout_seconds", http_timeout_seconds)
         if metadata_service_url is not None:
             pulumi.set(__self__, "metadata_service_url", metadata_service_url)
+        if oauth_callback_port is not None:
+            pulumi.set(__self__, "oauth_callback_port", oauth_callback_port)
         if oidc_token_env is not None:
             pulumi.set(__self__, "oidc_token_env", oidc_token_env)
         if password is not None:
@@ -354,6 +357,15 @@ class ProviderArgs:
         pulumi.set(self, "metadata_service_url", value)
 
     @_builtins.property
+    @pulumi.getter(name="oauthCallbackPort")
+    def oauth_callback_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "oauth_callback_port")
+
+    @oauth_callback_port.setter
+    def oauth_callback_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "oauth_callback_port", value)
+
+    @_builtins.property
     @pulumi.getter(name="oidcTokenEnv")
     def oidc_token_env(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "oidc_token_env")
@@ -475,6 +487,7 @@ class Provider(pulumi.ProviderResource):
                  host: Optional[pulumi.Input[_builtins.str]] = None,
                  http_timeout_seconds: Optional[pulumi.Input[_builtins.int]] = None,
                  metadata_service_url: Optional[pulumi.Input[_builtins.str]] = None,
+                 oauth_callback_port: Optional[pulumi.Input[_builtins.int]] = None,
                  oidc_token_env: Optional[pulumi.Input[_builtins.str]] = None,
                  password: Optional[pulumi.Input[_builtins.str]] = None,
                  profile: Optional[pulumi.Input[_builtins.str]] = None,
@@ -547,6 +560,7 @@ class Provider(pulumi.ProviderResource):
                  host: Optional[pulumi.Input[_builtins.str]] = None,
                  http_timeout_seconds: Optional[pulumi.Input[_builtins.int]] = None,
                  metadata_service_url: Optional[pulumi.Input[_builtins.str]] = None,
+                 oauth_callback_port: Optional[pulumi.Input[_builtins.int]] = None,
                  oidc_token_env: Optional[pulumi.Input[_builtins.str]] = None,
                  password: Optional[pulumi.Input[_builtins.str]] = None,
                  profile: Optional[pulumi.Input[_builtins.str]] = None,
@@ -591,6 +605,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["host"] = host
             __props__.__dict__["http_timeout_seconds"] = pulumi.Output.from_input(http_timeout_seconds).apply(pulumi.runtime.to_json) if http_timeout_seconds is not None else None
             __props__.__dict__["metadata_service_url"] = None if metadata_service_url is None else pulumi.Output.secret(metadata_service_url)
+            __props__.__dict__["oauth_callback_port"] = pulumi.Output.from_input(oauth_callback_port).apply(pulumi.runtime.to_json) if oauth_callback_port is not None else None
             __props__.__dict__["oidc_token_env"] = oidc_token_env
             __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
             __props__.__dict__["profile"] = profile

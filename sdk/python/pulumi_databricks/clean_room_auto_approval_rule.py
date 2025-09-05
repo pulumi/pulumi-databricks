@@ -22,7 +22,8 @@ class CleanRoomAutoApprovalRuleArgs:
                  author_collaborator_alias: Optional[pulumi.Input[_builtins.str]] = None,
                  author_scope: Optional[pulumi.Input[_builtins.str]] = None,
                  clean_room_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 runner_collaborator_alias: Optional[pulumi.Input[_builtins.str]] = None):
+                 runner_collaborator_alias: Optional[pulumi.Input[_builtins.str]] = None,
+                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a CleanRoomAutoApprovalRule resource.
         :param pulumi.Input[_builtins.str] author_collaborator_alias: Collaborator alias of the author covered by the rule.
@@ -31,6 +32,7 @@ class CleanRoomAutoApprovalRuleArgs:
                Only one of `author_collaborator_alias` and `author_scope` can be set. Possible values are: `ANY_AUTHOR`
         :param pulumi.Input[_builtins.str] clean_room_name: The name of the clean room this auto-approval rule belongs to
         :param pulumi.Input[_builtins.str] runner_collaborator_alias: Collaborator alias of the runner covered by the rule
+        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID of the resource
         """
         if author_collaborator_alias is not None:
             pulumi.set(__self__, "author_collaborator_alias", author_collaborator_alias)
@@ -40,6 +42,8 @@ class CleanRoomAutoApprovalRuleArgs:
             pulumi.set(__self__, "clean_room_name", clean_room_name)
         if runner_collaborator_alias is not None:
             pulumi.set(__self__, "runner_collaborator_alias", runner_collaborator_alias)
+        if workspace_id is not None:
+            pulumi.set(__self__, "workspace_id", workspace_id)
 
     @_builtins.property
     @pulumi.getter(name="authorCollaboratorAlias")
@@ -91,6 +95,18 @@ class CleanRoomAutoApprovalRuleArgs:
     def runner_collaborator_alias(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "runner_collaborator_alias", value)
 
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Workspace ID of the resource
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "workspace_id", value)
+
 
 @pulumi.input_type
 class _CleanRoomAutoApprovalRuleState:
@@ -101,7 +117,8 @@ class _CleanRoomAutoApprovalRuleState:
                  created_at: Optional[pulumi.Input[_builtins.int]] = None,
                  rule_id: Optional[pulumi.Input[_builtins.str]] = None,
                  rule_owner_collaborator_alias: Optional[pulumi.Input[_builtins.str]] = None,
-                 runner_collaborator_alias: Optional[pulumi.Input[_builtins.str]] = None):
+                 runner_collaborator_alias: Optional[pulumi.Input[_builtins.str]] = None,
+                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CleanRoomAutoApprovalRule resources.
         :param pulumi.Input[_builtins.str] author_collaborator_alias: Collaborator alias of the author covered by the rule.
@@ -113,6 +130,7 @@ class _CleanRoomAutoApprovalRuleState:
         :param pulumi.Input[_builtins.str] rule_id: (string) - A generated UUID identifying the rule
         :param pulumi.Input[_builtins.str] rule_owner_collaborator_alias: (string) - The owner of the rule to whom the rule applies
         :param pulumi.Input[_builtins.str] runner_collaborator_alias: Collaborator alias of the runner covered by the rule
+        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID of the resource
         """
         if author_collaborator_alias is not None:
             pulumi.set(__self__, "author_collaborator_alias", author_collaborator_alias)
@@ -128,6 +146,8 @@ class _CleanRoomAutoApprovalRuleState:
             pulumi.set(__self__, "rule_owner_collaborator_alias", rule_owner_collaborator_alias)
         if runner_collaborator_alias is not None:
             pulumi.set(__self__, "runner_collaborator_alias", runner_collaborator_alias)
+        if workspace_id is not None:
+            pulumi.set(__self__, "workspace_id", workspace_id)
 
     @_builtins.property
     @pulumi.getter(name="authorCollaboratorAlias")
@@ -215,6 +235,18 @@ class _CleanRoomAutoApprovalRuleState:
     def runner_collaborator_alias(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "runner_collaborator_alias", value)
 
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Workspace ID of the resource
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "workspace_id", value)
+
 
 @pulumi.type_token("databricks:index/cleanRoomAutoApprovalRule:CleanRoomAutoApprovalRule")
 class CleanRoomAutoApprovalRule(pulumi.CustomResource):
@@ -226,6 +258,7 @@ class CleanRoomAutoApprovalRule(pulumi.CustomResource):
                  author_scope: Optional[pulumi.Input[_builtins.str]] = None,
                  clean_room_name: Optional[pulumi.Input[_builtins.str]] = None,
                  runner_collaborator_alias: Optional[pulumi.Input[_builtins.str]] = None,
+                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
         ## Import
@@ -236,7 +269,7 @@ class CleanRoomAutoApprovalRule(pulumi.CustomResource):
 
         import {
 
-          id = rule_id
+          id = "rule_id"
 
           to = databricks_clean_room_auto_approval_rule.this
 
@@ -245,7 +278,7 @@ class CleanRoomAutoApprovalRule(pulumi.CustomResource):
         If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
 
         ```sh
-        $ pulumi import databricks:index/cleanRoomAutoApprovalRule:CleanRoomAutoApprovalRule databricks_clean_room_auto_approval_rule rule_id
+        $ pulumi import databricks:index/cleanRoomAutoApprovalRule:CleanRoomAutoApprovalRule databricks_clean_room_auto_approval_rule "rule_id"
         ```
 
         :param str resource_name: The name of the resource.
@@ -256,6 +289,7 @@ class CleanRoomAutoApprovalRule(pulumi.CustomResource):
                Only one of `author_collaborator_alias` and `author_scope` can be set. Possible values are: `ANY_AUTHOR`
         :param pulumi.Input[_builtins.str] clean_room_name: The name of the clean room this auto-approval rule belongs to
         :param pulumi.Input[_builtins.str] runner_collaborator_alias: Collaborator alias of the runner covered by the rule
+        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID of the resource
         """
         ...
     @overload
@@ -272,7 +306,7 @@ class CleanRoomAutoApprovalRule(pulumi.CustomResource):
 
         import {
 
-          id = rule_id
+          id = "rule_id"
 
           to = databricks_clean_room_auto_approval_rule.this
 
@@ -281,7 +315,7 @@ class CleanRoomAutoApprovalRule(pulumi.CustomResource):
         If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
 
         ```sh
-        $ pulumi import databricks:index/cleanRoomAutoApprovalRule:CleanRoomAutoApprovalRule databricks_clean_room_auto_approval_rule rule_id
+        $ pulumi import databricks:index/cleanRoomAutoApprovalRule:CleanRoomAutoApprovalRule databricks_clean_room_auto_approval_rule "rule_id"
         ```
 
         :param str resource_name: The name of the resource.
@@ -303,6 +337,7 @@ class CleanRoomAutoApprovalRule(pulumi.CustomResource):
                  author_scope: Optional[pulumi.Input[_builtins.str]] = None,
                  clean_room_name: Optional[pulumi.Input[_builtins.str]] = None,
                  runner_collaborator_alias: Optional[pulumi.Input[_builtins.str]] = None,
+                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -316,6 +351,7 @@ class CleanRoomAutoApprovalRule(pulumi.CustomResource):
             __props__.__dict__["author_scope"] = author_scope
             __props__.__dict__["clean_room_name"] = clean_room_name
             __props__.__dict__["runner_collaborator_alias"] = runner_collaborator_alias
+            __props__.__dict__["workspace_id"] = workspace_id
             __props__.__dict__["created_at"] = None
             __props__.__dict__["rule_id"] = None
             __props__.__dict__["rule_owner_collaborator_alias"] = None
@@ -335,7 +371,8 @@ class CleanRoomAutoApprovalRule(pulumi.CustomResource):
             created_at: Optional[pulumi.Input[_builtins.int]] = None,
             rule_id: Optional[pulumi.Input[_builtins.str]] = None,
             rule_owner_collaborator_alias: Optional[pulumi.Input[_builtins.str]] = None,
-            runner_collaborator_alias: Optional[pulumi.Input[_builtins.str]] = None) -> 'CleanRoomAutoApprovalRule':
+            runner_collaborator_alias: Optional[pulumi.Input[_builtins.str]] = None,
+            workspace_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'CleanRoomAutoApprovalRule':
         """
         Get an existing CleanRoomAutoApprovalRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -352,6 +389,7 @@ class CleanRoomAutoApprovalRule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] rule_id: (string) - A generated UUID identifying the rule
         :param pulumi.Input[_builtins.str] rule_owner_collaborator_alias: (string) - The owner of the rule to whom the rule applies
         :param pulumi.Input[_builtins.str] runner_collaborator_alias: Collaborator alias of the runner covered by the rule
+        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID of the resource
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -364,6 +402,7 @@ class CleanRoomAutoApprovalRule(pulumi.CustomResource):
         __props__.__dict__["rule_id"] = rule_id
         __props__.__dict__["rule_owner_collaborator_alias"] = rule_owner_collaborator_alias
         __props__.__dict__["runner_collaborator_alias"] = runner_collaborator_alias
+        __props__.__dict__["workspace_id"] = workspace_id
         return CleanRoomAutoApprovalRule(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -423,4 +462,12 @@ class CleanRoomAutoApprovalRule(pulumi.CustomResource):
         Collaborator alias of the runner covered by the rule
         """
         return pulumi.get(self, "runner_collaborator_alias")
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Workspace ID of the resource
+        """
+        return pulumi.get(self, "workspace_id")
 

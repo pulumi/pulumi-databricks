@@ -264,6 +264,21 @@ public final class CleanRoomAssetState extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.volumeLocalDetails);
     }
 
+    /**
+     * Workspace ID of the resource
+     * 
+     */
+    @Import(name="workspaceId")
+    private @Nullable Output<String> workspaceId;
+
+    /**
+     * @return Workspace ID of the resource
+     * 
+     */
+    public Optional<Output<String>> workspaceId() {
+        return Optional.ofNullable(this.workspaceId);
+    }
+
     private CleanRoomAssetState() {}
 
     private CleanRoomAssetState(CleanRoomAssetState $) {
@@ -281,6 +296,7 @@ public final class CleanRoomAssetState extends com.pulumi.resources.ResourceArgs
         this.view = $.view;
         this.viewLocalDetails = $.viewLocalDetails;
         this.volumeLocalDetails = $.volumeLocalDetails;
+        this.workspaceId = $.workspaceId;
     }
 
     public static Builder builder() {
@@ -623,6 +639,27 @@ public final class CleanRoomAssetState extends com.pulumi.resources.ResourceArgs
          */
         public Builder volumeLocalDetails(CleanRoomAssetVolumeLocalDetailsArgs volumeLocalDetails) {
             return volumeLocalDetails(Output.of(volumeLocalDetails));
+        }
+
+        /**
+         * @param workspaceId Workspace ID of the resource
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workspaceId(@Nullable Output<String> workspaceId) {
+            $.workspaceId = workspaceId;
+            return this;
+        }
+
+        /**
+         * @param workspaceId Workspace ID of the resource
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workspaceId(String workspaceId) {
+            return workspaceId(Output.of(workspaceId));
         }
 
         public CleanRoomAssetState build() {

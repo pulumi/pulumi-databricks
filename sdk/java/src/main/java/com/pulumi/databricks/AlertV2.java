@@ -10,7 +10,9 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.databricks.AlertV2Args;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.AlertV2State;
+import com.pulumi.databricks.outputs.AlertV2EffectiveRunAs;
 import com.pulumi.databricks.outputs.AlertV2Evaluation;
+import com.pulumi.databricks.outputs.AlertV2RunAs;
 import com.pulumi.databricks.outputs.AlertV2Schedule;
 import java.lang.String;
 import java.util.Optional;
@@ -37,7 +39,7 @@ import javax.annotation.Nullable;
  * 
  * import {
  * 
- *   id = id
+ *   id = &#34;id&#34;
  * 
  *   to = databricks_alert_v2.this
  * 
@@ -46,7 +48,7 @@ import javax.annotation.Nullable;
  * If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
  * 
  * ```sh
- * $ pulumi import databricks:index/alertV2:AlertV2 databricks_alert_v2 id
+ * $ pulumi import databricks:index/alertV2:AlertV2 databricks_alert_v2 &#34;id&#34;
  * ```
  * 
  */
@@ -107,6 +109,24 @@ public class AlertV2 extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> displayName() {
         return Codegen.optional(this.displayName);
+    }
+    /**
+     * (AlertV2RunAs) - The actual identity that will be used to execute the alert.
+     * This is an output-only field that shows the resolved run-as identity after applying
+     * permissions and defaults
+     * 
+     */
+    @Export(name="effectiveRunAs", refs={AlertV2EffectiveRunAs.class}, tree="[0]")
+    private Output<AlertV2EffectiveRunAs> effectiveRunAs;
+
+    /**
+     * @return (AlertV2RunAs) - The actual identity that will be used to execute the alert.
+     * This is an output-only field that shows the resolved run-as identity after applying
+     * permissions and defaults
+     * 
+     */
+    public Output<AlertV2EffectiveRunAs> effectiveRunAs() {
+        return this.effectiveRunAs;
     }
     @Export(name="evaluation", refs={AlertV2Evaluation.class}, tree="[0]")
     private Output</* @Nullable */ AlertV2Evaluation> evaluation;
@@ -171,8 +191,31 @@ public class AlertV2 extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.queryText);
     }
     /**
+     * Specifies the identity that will be used to run the alert.
+     * This field allows you to configure alerts to run as a specific user or service principal.
+     * - For user identity: Set `user_name` to the email of an active workspace user. Users can only set this to their own email.
+     * - For service principal: Set `service_principal_name` to the application ID. Requires the `servicePrincipal/user` role.
+     *   If not specified, the alert will run as the request user
+     * 
+     */
+    @Export(name="runAs", refs={AlertV2RunAs.class}, tree="[0]")
+    private Output</* @Nullable */ AlertV2RunAs> runAs;
+
+    /**
+     * @return Specifies the identity that will be used to run the alert.
+     * This field allows you to configure alerts to run as a specific user or service principal.
+     * - For user identity: Set `user_name` to the email of an active workspace user. Users can only set this to their own email.
+     * - For service principal: Set `service_principal_name` to the application ID. Requires the `servicePrincipal/user` role.
+     *   If not specified, the alert will run as the request user
+     * 
+     */
+    public Output<Optional<AlertV2RunAs>> runAs() {
+        return Codegen.optional(this.runAs);
+    }
+    /**
      * The run as username or application ID of service principal.
-     * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
+     * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
+     * Deprecated: Use `run_as` field instead. This field will be removed in a future release
      * 
      */
     @Export(name="runAsUserName", refs={String.class}, tree="[0]")
@@ -180,7 +223,8 @@ public class AlertV2 extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The run as username or application ID of service principal.
-     * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
+     * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
+     * Deprecated: Use `run_as` field instead. This field will be removed in a future release
      * 
      */
     public Output<Optional<String>> runAsUserName() {
@@ -219,6 +263,20 @@ public class AlertV2 extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> warehouseId() {
         return Codegen.optional(this.warehouseId);
+    }
+    /**
+     * Workspace ID of the resource
+     * 
+     */
+    @Export(name="workspaceId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> workspaceId;
+
+    /**
+     * @return Workspace ID of the resource
+     * 
+     */
+    public Output<Optional<String>> workspaceId() {
+        return Codegen.optional(this.workspaceId);
     }
 
     /**

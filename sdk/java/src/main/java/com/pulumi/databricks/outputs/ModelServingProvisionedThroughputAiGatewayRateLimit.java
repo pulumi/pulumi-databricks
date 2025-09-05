@@ -21,6 +21,7 @@ public final class ModelServingProvisionedThroughputAiGatewayRateLimit {
     private @Nullable String key;
     private @Nullable String principal;
     private String renewalPeriod;
+    private @Nullable Integer tokens;
 
     private ModelServingProvisionedThroughputAiGatewayRateLimit() {}
     public Optional<Integer> calls() {
@@ -39,6 +40,9 @@ public final class ModelServingProvisionedThroughputAiGatewayRateLimit {
     public String renewalPeriod() {
         return this.renewalPeriod;
     }
+    public Optional<Integer> tokens() {
+        return Optional.ofNullable(this.tokens);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -53,6 +57,7 @@ public final class ModelServingProvisionedThroughputAiGatewayRateLimit {
         private @Nullable String key;
         private @Nullable String principal;
         private String renewalPeriod;
+        private @Nullable Integer tokens;
         public Builder() {}
         public Builder(ModelServingProvisionedThroughputAiGatewayRateLimit defaults) {
     	      Objects.requireNonNull(defaults);
@@ -60,6 +65,7 @@ public final class ModelServingProvisionedThroughputAiGatewayRateLimit {
     	      this.key = defaults.key;
     	      this.principal = defaults.principal;
     	      this.renewalPeriod = defaults.renewalPeriod;
+    	      this.tokens = defaults.tokens;
         }
 
         @CustomType.Setter
@@ -88,12 +94,19 @@ public final class ModelServingProvisionedThroughputAiGatewayRateLimit {
             this.renewalPeriod = renewalPeriod;
             return this;
         }
+        @CustomType.Setter
+        public Builder tokens(@Nullable Integer tokens) {
+
+            this.tokens = tokens;
+            return this;
+        }
         public ModelServingProvisionedThroughputAiGatewayRateLimit build() {
             final var _resultValue = new ModelServingProvisionedThroughputAiGatewayRateLimit();
             _resultValue.calls = calls;
             _resultValue.key = key;
             _resultValue.principal = principal;
             _resultValue.renewalPeriod = renewalPeriod;
+            _resultValue.tokens = tokens;
             return _resultValue;
         }
     }

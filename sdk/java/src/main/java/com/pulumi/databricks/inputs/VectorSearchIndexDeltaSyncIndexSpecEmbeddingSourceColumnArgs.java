@@ -16,18 +16,33 @@ public final class VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArgs 
     public static final VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArgs Empty = new VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArgs();
 
     /**
-     * The name of the embedding model endpoint
+     * The name of the embedding model endpoint, used by default for both ingestion and querying.
      * 
      */
     @Import(name="embeddingModelEndpointName")
     private @Nullable Output<String> embeddingModelEndpointName;
 
     /**
-     * @return The name of the embedding model endpoint
+     * @return The name of the embedding model endpoint, used by default for both ingestion and querying.
      * 
      */
     public Optional<Output<String>> embeddingModelEndpointName() {
         return Optional.ofNullable(this.embeddingModelEndpointName);
+    }
+
+    /**
+     * The name of the embedding model endpoint which, if specified, is used for querying (not ingestion).
+     * 
+     */
+    @Import(name="modelEndpointNameForQuery")
+    private @Nullable Output<String> modelEndpointNameForQuery;
+
+    /**
+     * @return The name of the embedding model endpoint which, if specified, is used for querying (not ingestion).
+     * 
+     */
+    public Optional<Output<String>> modelEndpointNameForQuery() {
+        return Optional.ofNullable(this.modelEndpointNameForQuery);
     }
 
     /**
@@ -49,6 +64,7 @@ public final class VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArgs 
 
     private VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArgs(VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArgs $) {
         this.embeddingModelEndpointName = $.embeddingModelEndpointName;
+        this.modelEndpointNameForQuery = $.modelEndpointNameForQuery;
         this.name = $.name;
     }
 
@@ -71,7 +87,7 @@ public final class VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArgs 
         }
 
         /**
-         * @param embeddingModelEndpointName The name of the embedding model endpoint
+         * @param embeddingModelEndpointName The name of the embedding model endpoint, used by default for both ingestion and querying.
          * 
          * @return builder
          * 
@@ -82,13 +98,34 @@ public final class VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArgs 
         }
 
         /**
-         * @param embeddingModelEndpointName The name of the embedding model endpoint
+         * @param embeddingModelEndpointName The name of the embedding model endpoint, used by default for both ingestion and querying.
          * 
          * @return builder
          * 
          */
         public Builder embeddingModelEndpointName(String embeddingModelEndpointName) {
             return embeddingModelEndpointName(Output.of(embeddingModelEndpointName));
+        }
+
+        /**
+         * @param modelEndpointNameForQuery The name of the embedding model endpoint which, if specified, is used for querying (not ingestion).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder modelEndpointNameForQuery(@Nullable Output<String> modelEndpointNameForQuery) {
+            $.modelEndpointNameForQuery = modelEndpointNameForQuery;
+            return this;
+        }
+
+        /**
+         * @param modelEndpointNameForQuery The name of the embedding model endpoint which, if specified, is used for querying (not ingestion).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder modelEndpointNameForQuery(String modelEndpointNameForQuery) {
+            return modelEndpointNameForQuery(Output.of(modelEndpointNameForQuery));
         }
 
         /**

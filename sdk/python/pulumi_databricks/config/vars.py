@@ -121,6 +121,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('metadataServiceUrl')
 
     @_builtins.property
+    def oauth_callback_port(self) -> Optional[int]:
+        return __config__.get_int('oauthCallbackPort')
+
+    @_builtins.property
     def oidc_token_env(self) -> Optional[str]:
         return __config__.get('oidcTokenEnv')
 

@@ -30,6 +30,49 @@ export interface AccessControlRuleSetGrantRule {
     role: pulumi.Input<string>;
 }
 
+export interface AccountFederationPolicyOidcPolicy {
+    /**
+     * The allowed token audiences, as specified in the 'aud' claim of federated tokens.
+     * The audience identifier is intended to represent the recipient of the token.
+     * Can be any non-empty string value. As long as the audience in the token matches
+     * at least one audience in the policy, the token is considered a match. If audiences
+     * is unspecified, defaults to your Databricks account id
+     */
+    audiences?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The required token issuer, as specified in the 'iss' claim of federated tokens
+     */
+    issuer?: pulumi.Input<string>;
+    /**
+     * The public keys used to validate the signature of federated tokens, in JWKS format.
+     * Most use cases should not need to specify this field. If jwksUri and jwksJson
+     * are both unspecified (recommended), Databricks automatically fetches the public
+     * keys from your issuer’s well known endpoint. Databricks strongly recommends
+     * relying on your issuer’s well known endpoint for discovering public keys
+     */
+    jwksJson?: pulumi.Input<string>;
+    /**
+     * URL of the public keys used to validate the signature of federated tokens, in
+     * JWKS format. Most use cases should not need to specify this field. If jwksUri
+     * and jwksJson are both unspecified (recommended), Databricks automatically
+     * fetches the public keys from your issuer’s well known endpoint. Databricks
+     * strongly recommends relying on your issuer’s well known endpoint for discovering
+     * public keys
+     */
+    jwksUri?: pulumi.Input<string>;
+    /**
+     * The required token subject, as specified in the subject claim of federated tokens.
+     * Must be specified for service principal federation policies. Must not be specified
+     * for account federation policies
+     */
+    subject?: pulumi.Input<string>;
+    /**
+     * The claim that contains the subject of the token. If unspecified, the default value
+     * is 'sub'
+     */
+    subjectClaim?: pulumi.Input<string>;
+}
+
 export interface AccountNetworkPolicyEgress {
     /**
      * The access policy enforced for egress traffic to the internet
@@ -96,6 +139,164 @@ export interface AccountNetworkPolicyEgressNetworkAccessPolicyEnforcement {
      * defaults to ENFORCED. Possible values are: `DRY_RUN`, `ENFORCED`
      */
     enforcementMode?: pulumi.Input<string>;
+}
+
+export interface AccountSettingV2AibiDashboardEmbeddingAccessPolicy {
+    /**
+     * . Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
+     */
+    accessPolicyType: pulumi.Input<string>;
+}
+
+export interface AccountSettingV2AibiDashboardEmbeddingApprovedDomains {
+    approvedDomains?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface AccountSettingV2AutomaticClusterUpdateWorkspace {
+    canToggle?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
+    enablementDetails?: pulumi.Input<inputs.AccountSettingV2AutomaticClusterUpdateWorkspaceEnablementDetails>;
+    maintenanceWindow?: pulumi.Input<inputs.AccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindow>;
+    restartEvenIfNoUpdatesAvailable?: pulumi.Input<boolean>;
+}
+
+export interface AccountSettingV2AutomaticClusterUpdateWorkspaceEnablementDetails {
+    /**
+     * The feature is force enabled if compliance mode is active
+     */
+    forcedForComplianceMode?: pulumi.Input<boolean>;
+    /**
+     * The feature is unavailable if the corresponding entitlement disabled (see getShieldEntitlementEnable)
+     */
+    unavailableForDisabledEntitlement?: pulumi.Input<boolean>;
+    /**
+     * The feature is unavailable if the customer doesn't have enterprise tier
+     */
+    unavailableForNonEnterpriseTier?: pulumi.Input<boolean>;
+}
+
+export interface AccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindow {
+    weekDayBasedSchedule?: pulumi.Input<inputs.AccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule>;
+}
+
+export interface AccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule {
+    /**
+     * . Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
+     */
+    dayOfWeek?: pulumi.Input<string>;
+    /**
+     * . Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
+     */
+    frequency?: pulumi.Input<string>;
+    windowStartTime?: pulumi.Input<inputs.AccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime>;
+}
+
+export interface AccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime {
+    hours?: pulumi.Input<number>;
+    minutes?: pulumi.Input<number>;
+}
+
+export interface AccountSettingV2BooleanVal {
+    value?: pulumi.Input<boolean>;
+}
+
+export interface AccountSettingV2DefaultDataSecurityMode {
+    status: pulumi.Input<string>;
+}
+
+export interface AccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy {
+    /**
+     * . Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
+     */
+    accessPolicyType: pulumi.Input<string>;
+}
+
+export interface AccountSettingV2EffectiveAibiDashboardEmbeddingApprovedDomains {
+    approvedDomains?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface AccountSettingV2EffectiveAutomaticClusterUpdateWorkspace {
+    canToggle?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
+    enablementDetails?: pulumi.Input<inputs.AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetails>;
+    maintenanceWindow?: pulumi.Input<inputs.AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindow>;
+    restartEvenIfNoUpdatesAvailable?: pulumi.Input<boolean>;
+}
+
+export interface AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetails {
+    /**
+     * The feature is force enabled if compliance mode is active
+     */
+    forcedForComplianceMode?: pulumi.Input<boolean>;
+    /**
+     * The feature is unavailable if the corresponding entitlement disabled (see getShieldEntitlementEnable)
+     */
+    unavailableForDisabledEntitlement?: pulumi.Input<boolean>;
+    /**
+     * The feature is unavailable if the customer doesn't have enterprise tier
+     */
+    unavailableForNonEnterpriseTier?: pulumi.Input<boolean>;
+}
+
+export interface AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindow {
+    weekDayBasedSchedule?: pulumi.Input<inputs.AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule>;
+}
+
+export interface AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule {
+    /**
+     * . Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
+     */
+    dayOfWeek?: pulumi.Input<string>;
+    /**
+     * . Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
+     */
+    frequency?: pulumi.Input<string>;
+    windowStartTime?: pulumi.Input<inputs.AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime>;
+}
+
+export interface AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime {
+    hours?: pulumi.Input<number>;
+    minutes?: pulumi.Input<number>;
+}
+
+export interface AccountSettingV2EffectiveBooleanVal {
+    value?: pulumi.Input<boolean>;
+}
+
+export interface AccountSettingV2EffectiveDefaultDataSecurityMode {
+    status: pulumi.Input<string>;
+}
+
+export interface AccountSettingV2EffectiveIntegerVal {
+    value?: pulumi.Input<number>;
+}
+
+export interface AccountSettingV2EffectivePersonalCompute {
+    value?: pulumi.Input<string>;
+}
+
+export interface AccountSettingV2EffectiveRestrictWorkspaceAdmins {
+    status: pulumi.Input<string>;
+}
+
+export interface AccountSettingV2EffectiveStringVal {
+    value?: pulumi.Input<string>;
+}
+
+export interface AccountSettingV2IntegerVal {
+    value?: pulumi.Input<number>;
+}
+
+export interface AccountSettingV2PersonalCompute {
+    value?: pulumi.Input<string>;
+}
+
+export interface AccountSettingV2RestrictWorkspaceAdmins {
+    status: pulumi.Input<string>;
+}
+
+export interface AccountSettingV2StringVal {
+    value?: pulumi.Input<string>;
 }
 
 export interface AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicy {
@@ -165,6 +366,17 @@ export interface AlertConditionThresholdValue {
      * string value to compare against string results.
      */
     stringValue?: pulumi.Input<string>;
+}
+
+export interface AlertV2EffectiveRunAs {
+    /**
+     * Application ID of an active service principal. Setting this field requires the `servicePrincipal/user` role
+     */
+    servicePrincipalName?: pulumi.Input<string>;
+    /**
+     * The email of an active workspace user. Can only set this field to their own email
+     */
+    userName?: pulumi.Input<string>;
 }
 
 export interface AlertV2Evaluation {
@@ -242,6 +454,17 @@ export interface AlertV2EvaluationThresholdValue {
     boolValue?: pulumi.Input<boolean>;
     doubleValue?: pulumi.Input<number>;
     stringValue?: pulumi.Input<string>;
+}
+
+export interface AlertV2RunAs {
+    /**
+     * Application ID of an active service principal. Setting this field requires the `servicePrincipal/user` role
+     */
+    servicePrincipalName?: pulumi.Input<string>;
+    /**
+     * The email of an active workspace user. Can only set this field to their own email
+     */
+    userName?: pulumi.Input<string>;
 }
 
 export interface AlertV2Schedule {
@@ -469,6 +692,64 @@ export interface AppResourceUcSecurable {
     securableType: pulumi.Input<string>;
 }
 
+export interface AppsSettingsCustomTemplateManifest {
+    /**
+     * The description of the template
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * The name of the template. It must contain only alphanumeric characters, hyphens, underscores, and whitespaces.
+     * It must be unique within the workspace
+     */
+    name: pulumi.Input<string>;
+    resourceSpecs?: pulumi.Input<pulumi.Input<inputs.AppsSettingsCustomTemplateManifestResourceSpec>[]>;
+    /**
+     * The manifest schema version, for now only 1 is allowed
+     */
+    version: pulumi.Input<number>;
+}
+
+export interface AppsSettingsCustomTemplateManifestResourceSpec {
+    /**
+     * The description of the template
+     */
+    description?: pulumi.Input<string>;
+    jobSpec?: pulumi.Input<inputs.AppsSettingsCustomTemplateManifestResourceSpecJobSpec>;
+    /**
+     * The name of the template. It must contain only alphanumeric characters, hyphens, underscores, and whitespaces.
+     * It must be unique within the workspace
+     */
+    name: pulumi.Input<string>;
+    secretSpec?: pulumi.Input<inputs.AppsSettingsCustomTemplateManifestResourceSpecSecretSpec>;
+    servingEndpointSpec?: pulumi.Input<inputs.AppsSettingsCustomTemplateManifestResourceSpecServingEndpointSpec>;
+    sqlWarehouseSpec?: pulumi.Input<inputs.AppsSettingsCustomTemplateManifestResourceSpecSqlWarehouseSpec>;
+    ucSecurableSpec?: pulumi.Input<inputs.AppsSettingsCustomTemplateManifestResourceSpecUcSecurableSpec>;
+}
+
+export interface AppsSettingsCustomTemplateManifestResourceSpecJobSpec {
+    permission: pulumi.Input<string>;
+}
+
+export interface AppsSettingsCustomTemplateManifestResourceSpecSecretSpec {
+    permission: pulumi.Input<string>;
+}
+
+export interface AppsSettingsCustomTemplateManifestResourceSpecServingEndpointSpec {
+    permission: pulumi.Input<string>;
+}
+
+export interface AppsSettingsCustomTemplateManifestResourceSpecSqlWarehouseSpec {
+    permission: pulumi.Input<string>;
+}
+
+export interface AppsSettingsCustomTemplateManifestResourceSpecUcSecurableSpec {
+    permission: pulumi.Input<string>;
+    /**
+     * . Possible values are: `VOLUME`
+     */
+    securableType: pulumi.Input<string>;
+}
+
 export interface ArtifactAllowlistArtifactMatcher {
     /**
      * The artifact path or maven coordinate.
@@ -603,6 +884,16 @@ export interface BudgetPolicyCustomTag {
     value?: pulumi.Input<string>;
 }
 
+export interface CatalogEffectivePredictiveOptimizationFlag {
+    inheritedFromName?: pulumi.Input<string>;
+    inheritedFromType?: pulumi.Input<string>;
+    value: pulumi.Input<string>;
+}
+
+export interface CatalogProvisioningInfo {
+    state?: pulumi.Input<string>;
+}
+
 export interface CleanRoomAssetForeignTable {
     /**
      * (list of ColumnInfo) - The metadata information of the columns in the view
@@ -697,7 +988,7 @@ export interface CleanRoomAssetNotebook {
      */
     reviews?: pulumi.Input<pulumi.Input<inputs.CleanRoomAssetNotebookReview>[]>;
     /**
-     * collaborators that can run the notebook
+     * Aliases of collaborators that can run the notebook
      */
     runnerCollaboratorAliases?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -975,7 +1266,7 @@ export interface CleanRoomsCleanRoomRemoteDetailedInfoCollaborator {
      */
     displayName?: pulumi.Input<string>;
     /**
-     * The global Unity Catalog metastore id of the collaborator. The identifier is of format cloud:region:metastore-uuid
+     * The global Unity Catalog metastore ID of the collaborator. The identifier is of format cloud:region:metastore-uuid
      */
     globalMetastoreId?: pulumi.Input<string>;
     /**
@@ -1022,7 +1313,7 @@ export interface CleanRoomsCleanRoomRemoteDetailedInfoCreator {
      */
     displayName?: pulumi.Input<string>;
     /**
-     * The global Unity Catalog metastore id of the collaborator. The identifier is of format cloud:region:metastore-uuid
+     * The global Unity Catalog metastore ID of the collaborator. The identifier is of format cloud:region:metastore-uuid
      */
     globalMetastoreId?: pulumi.Input<string>;
     /**
@@ -1323,6 +1614,9 @@ export interface ClusterGcpAttributes {
      * Boot disk size in GB
      */
     bootDiskSize?: pulumi.Input<number>;
+    /**
+     * The first `firstOnDemand` nodes of the cluster will be placed on on-demand instances. If this value is greater than 0, the cluster driver node will be placed on an on-demand instance. If this value is greater than or equal to the current cluster size, all nodes will be placed on on-demand instances. If this value is less than the current cluster size, `firstOnDemand` nodes will be placed on on-demand instances, and the remainder will be placed on availability instances. This value does not affect cluster size and cannot be mutated over the lifetime of a cluster.
+     */
     firstOnDemand?: pulumi.Input<number>;
     /**
      * Google Service Account email address that the cluster uses to authenticate with Google Identity. This field is used for authentication with the GCS and BigQuery data sources.
@@ -1519,11 +1813,6 @@ export interface ClusterWorkloadTypeClients {
 export interface ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspace {
     complianceStandards: pulumi.Input<pulumi.Input<string>[]>;
     isEnabled: pulumi.Input<boolean>;
-}
-
-export interface ConnectionEnvironmentSettings {
-    environmentVersion?: pulumi.Input<string>;
-    javaDependencies?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface ConnectionProvisioningInfo {
@@ -2068,6 +2357,92 @@ export interface ExternalLocationFileEventQueueProvidedSqs {
     queueUrl: pulumi.Input<string>;
 }
 
+export interface GetAccountFederationPolicyOidcPolicy {
+    /**
+     * (list of string) - The allowed token audiences, as specified in the 'aud' claim of federated tokens.
+     * The audience identifier is intended to represent the recipient of the token.
+     * Can be any non-empty string value. As long as the audience in the token matches
+     * at least one audience in the policy, the token is considered a match. If audiences
+     * is unspecified, defaults to your Databricks account id
+     */
+    audiences?: string[];
+    /**
+     * (string) - The required token issuer, as specified in the 'iss' claim of federated tokens
+     */
+    issuer?: string;
+    /**
+     * (string) - The public keys used to validate the signature of federated tokens, in JWKS format.
+     * Most use cases should not need to specify this field. If jwksUri and jwksJson
+     * are both unspecified (recommended), Databricks automatically fetches the public
+     * keys from your issuer’s well known endpoint. Databricks strongly recommends
+     * relying on your issuer’s well known endpoint for discovering public keys
+     */
+    jwksJson?: string;
+    /**
+     * (string) - URL of the public keys used to validate the signature of federated tokens, in
+     * JWKS format. Most use cases should not need to specify this field. If jwksUri
+     * and jwksJson are both unspecified (recommended), Databricks automatically
+     * fetches the public keys from your issuer’s well known endpoint. Databricks
+     * strongly recommends relying on your issuer’s well known endpoint for discovering
+     * public keys
+     */
+    jwksUri?: string;
+    /**
+     * (string) - The required token subject, as specified in the subject claim of federated tokens.
+     * Must be specified for service principal federation policies. Must not be specified
+     * for account federation policies
+     */
+    subject?: string;
+    /**
+     * (string) - The claim that contains the subject of the token. If unspecified, the default value
+     * is 'sub'
+     */
+    subjectClaim?: string;
+}
+
+export interface GetAccountFederationPolicyOidcPolicyArgs {
+    /**
+     * (list of string) - The allowed token audiences, as specified in the 'aud' claim of federated tokens.
+     * The audience identifier is intended to represent the recipient of the token.
+     * Can be any non-empty string value. As long as the audience in the token matches
+     * at least one audience in the policy, the token is considered a match. If audiences
+     * is unspecified, defaults to your Databricks account id
+     */
+    audiences?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * (string) - The required token issuer, as specified in the 'iss' claim of federated tokens
+     */
+    issuer?: pulumi.Input<string>;
+    /**
+     * (string) - The public keys used to validate the signature of federated tokens, in JWKS format.
+     * Most use cases should not need to specify this field. If jwksUri and jwksJson
+     * are both unspecified (recommended), Databricks automatically fetches the public
+     * keys from your issuer’s well known endpoint. Databricks strongly recommends
+     * relying on your issuer’s well known endpoint for discovering public keys
+     */
+    jwksJson?: pulumi.Input<string>;
+    /**
+     * (string) - URL of the public keys used to validate the signature of federated tokens, in
+     * JWKS format. Most use cases should not need to specify this field. If jwksUri
+     * and jwksJson are both unspecified (recommended), Databricks automatically
+     * fetches the public keys from your issuer’s well known endpoint. Databricks
+     * strongly recommends relying on your issuer’s well known endpoint for discovering
+     * public keys
+     */
+    jwksUri?: pulumi.Input<string>;
+    /**
+     * (string) - The required token subject, as specified in the subject claim of federated tokens.
+     * Must be specified for service principal federation policies. Must not be specified
+     * for account federation policies
+     */
+    subject?: pulumi.Input<string>;
+    /**
+     * (string) - The claim that contains the subject of the token. If unspecified, the default value
+     * is 'sub'
+     */
+    subjectClaim?: pulumi.Input<string>;
+}
+
 export interface GetAccountNetworkPolicyEgress {
     /**
      * (EgressNetworkPolicyNetworkAccessPolicy) - The access policy enforced for egress traffic to the internet
@@ -2214,6 +2589,472 @@ export interface GetAccountNetworkPolicyEgressNetworkAccessPolicyEnforcementArgs
      * defaults to ENFORCED. Possible values are: `DRY_RUN`, `ENFORCED`
      */
     enforcementMode?: pulumi.Input<string>;
+}
+
+export interface GetAccountSettingV2AibiDashboardEmbeddingAccessPolicy {
+    /**
+     * (string) - . Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
+     */
+    accessPolicyType: string;
+}
+
+export interface GetAccountSettingV2AibiDashboardEmbeddingAccessPolicyArgs {
+    /**
+     * (string) - . Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
+     */
+    accessPolicyType: pulumi.Input<string>;
+}
+
+export interface GetAccountSettingV2AibiDashboardEmbeddingApprovedDomains {
+    /**
+     * (list of string)
+     */
+    approvedDomains?: string[];
+}
+
+export interface GetAccountSettingV2AibiDashboardEmbeddingApprovedDomainsArgs {
+    /**
+     * (list of string)
+     */
+    approvedDomains?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetAccountSettingV2AutomaticClusterUpdateWorkspace {
+    /**
+     * (boolean)
+     */
+    canToggle?: boolean;
+    /**
+     * (boolean)
+     */
+    enabled?: boolean;
+    /**
+     * (ClusterAutoRestartMessageEnablementDetails)
+     */
+    enablementDetails?: inputs.GetAccountSettingV2AutomaticClusterUpdateWorkspaceEnablementDetails;
+    /**
+     * (ClusterAutoRestartMessageMaintenanceWindow)
+     */
+    maintenanceWindow?: inputs.GetAccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindow;
+    /**
+     * (boolean)
+     */
+    restartEvenIfNoUpdatesAvailable?: boolean;
+}
+
+export interface GetAccountSettingV2AutomaticClusterUpdateWorkspaceArgs {
+    /**
+     * (boolean)
+     */
+    canToggle?: pulumi.Input<boolean>;
+    /**
+     * (boolean)
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * (ClusterAutoRestartMessageEnablementDetails)
+     */
+    enablementDetails?: pulumi.Input<inputs.GetAccountSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsArgs>;
+    /**
+     * (ClusterAutoRestartMessageMaintenanceWindow)
+     */
+    maintenanceWindow?: pulumi.Input<inputs.GetAccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowArgs>;
+    /**
+     * (boolean)
+     */
+    restartEvenIfNoUpdatesAvailable?: pulumi.Input<boolean>;
+}
+
+export interface GetAccountSettingV2AutomaticClusterUpdateWorkspaceEnablementDetails {
+    /**
+     * (boolean) - The feature is force enabled if compliance mode is active
+     */
+    forcedForComplianceMode?: boolean;
+    /**
+     * (boolean) - The feature is unavailable if the corresponding entitlement disabled (see getShieldEntitlementEnable)
+     */
+    unavailableForDisabledEntitlement?: boolean;
+    /**
+     * (boolean) - The feature is unavailable if the customer doesn't have enterprise tier
+     */
+    unavailableForNonEnterpriseTier?: boolean;
+}
+
+export interface GetAccountSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsArgs {
+    /**
+     * (boolean) - The feature is force enabled if compliance mode is active
+     */
+    forcedForComplianceMode?: pulumi.Input<boolean>;
+    /**
+     * (boolean) - The feature is unavailable if the corresponding entitlement disabled (see getShieldEntitlementEnable)
+     */
+    unavailableForDisabledEntitlement?: pulumi.Input<boolean>;
+    /**
+     * (boolean) - The feature is unavailable if the customer doesn't have enterprise tier
+     */
+    unavailableForNonEnterpriseTier?: pulumi.Input<boolean>;
+}
+
+export interface GetAccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindow {
+    /**
+     * (ClusterAutoRestartMessageMaintenanceWindowWeekDayBasedSchedule)
+     */
+    weekDayBasedSchedule?: inputs.GetAccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule;
+}
+
+export interface GetAccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowArgs {
+    /**
+     * (ClusterAutoRestartMessageMaintenanceWindowWeekDayBasedSchedule)
+     */
+    weekDayBasedSchedule?: pulumi.Input<inputs.GetAccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgs>;
+}
+
+export interface GetAccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule {
+    /**
+     * (string) - . Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
+     */
+    dayOfWeek?: string;
+    /**
+     * (string) - . Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
+     */
+    frequency?: string;
+    /**
+     * (ClusterAutoRestartMessageMaintenanceWindowWindowStartTime)
+     */
+    windowStartTime?: inputs.GetAccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime;
+}
+
+export interface GetAccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgs {
+    /**
+     * (string) - . Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
+     */
+    dayOfWeek?: pulumi.Input<string>;
+    /**
+     * (string) - . Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
+     */
+    frequency?: pulumi.Input<string>;
+    /**
+     * (ClusterAutoRestartMessageMaintenanceWindowWindowStartTime)
+     */
+    windowStartTime?: pulumi.Input<inputs.GetAccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs>;
+}
+
+export interface GetAccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime {
+    /**
+     * (integer)
+     */
+    hours?: number;
+    /**
+     * (integer)
+     */
+    minutes?: number;
+}
+
+export interface GetAccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs {
+    /**
+     * (integer)
+     */
+    hours?: pulumi.Input<number>;
+    /**
+     * (integer)
+     */
+    minutes?: pulumi.Input<number>;
+}
+
+export interface GetAccountSettingV2BooleanVal {
+    /**
+     * (string) - Represents a generic string value
+     */
+    value?: boolean;
+}
+
+export interface GetAccountSettingV2BooleanValArgs {
+    /**
+     * (string) - Represents a generic string value
+     */
+    value?: pulumi.Input<boolean>;
+}
+
+export interface GetAccountSettingV2DefaultDataSecurityMode {
+    /**
+     * (string) - . Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
+     */
+    status: string;
+}
+
+export interface GetAccountSettingV2DefaultDataSecurityModeArgs {
+    /**
+     * (string) - . Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
+     */
+    status: pulumi.Input<string>;
+}
+
+export interface GetAccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy {
+    /**
+     * (string) - . Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
+     */
+    accessPolicyType: string;
+}
+
+export interface GetAccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgs {
+    /**
+     * (string) - . Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
+     */
+    accessPolicyType: pulumi.Input<string>;
+}
+
+export interface GetAccountSettingV2EffectiveAibiDashboardEmbeddingApprovedDomains {
+    /**
+     * (list of string)
+     */
+    approvedDomains?: string[];
+}
+
+export interface GetAccountSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgs {
+    /**
+     * (list of string)
+     */
+    approvedDomains?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspace {
+    /**
+     * (boolean)
+     */
+    canToggle?: boolean;
+    /**
+     * (boolean)
+     */
+    enabled?: boolean;
+    /**
+     * (ClusterAutoRestartMessageEnablementDetails)
+     */
+    enablementDetails?: inputs.GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetails;
+    /**
+     * (ClusterAutoRestartMessageMaintenanceWindow)
+     */
+    maintenanceWindow?: inputs.GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindow;
+    /**
+     * (boolean)
+     */
+    restartEvenIfNoUpdatesAvailable?: boolean;
+}
+
+export interface GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgs {
+    /**
+     * (boolean)
+     */
+    canToggle?: pulumi.Input<boolean>;
+    /**
+     * (boolean)
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * (ClusterAutoRestartMessageEnablementDetails)
+     */
+    enablementDetails?: pulumi.Input<inputs.GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsArgs>;
+    /**
+     * (ClusterAutoRestartMessageMaintenanceWindow)
+     */
+    maintenanceWindow?: pulumi.Input<inputs.GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowArgs>;
+    /**
+     * (boolean)
+     */
+    restartEvenIfNoUpdatesAvailable?: pulumi.Input<boolean>;
+}
+
+export interface GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetails {
+    /**
+     * (boolean) - The feature is force enabled if compliance mode is active
+     */
+    forcedForComplianceMode?: boolean;
+    /**
+     * (boolean) - The feature is unavailable if the corresponding entitlement disabled (see getShieldEntitlementEnable)
+     */
+    unavailableForDisabledEntitlement?: boolean;
+    /**
+     * (boolean) - The feature is unavailable if the customer doesn't have enterprise tier
+     */
+    unavailableForNonEnterpriseTier?: boolean;
+}
+
+export interface GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsArgs {
+    /**
+     * (boolean) - The feature is force enabled if compliance mode is active
+     */
+    forcedForComplianceMode?: pulumi.Input<boolean>;
+    /**
+     * (boolean) - The feature is unavailable if the corresponding entitlement disabled (see getShieldEntitlementEnable)
+     */
+    unavailableForDisabledEntitlement?: pulumi.Input<boolean>;
+    /**
+     * (boolean) - The feature is unavailable if the customer doesn't have enterprise tier
+     */
+    unavailableForNonEnterpriseTier?: pulumi.Input<boolean>;
+}
+
+export interface GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindow {
+    /**
+     * (ClusterAutoRestartMessageMaintenanceWindowWeekDayBasedSchedule)
+     */
+    weekDayBasedSchedule?: inputs.GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule;
+}
+
+export interface GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowArgs {
+    /**
+     * (ClusterAutoRestartMessageMaintenanceWindowWeekDayBasedSchedule)
+     */
+    weekDayBasedSchedule?: pulumi.Input<inputs.GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgs>;
+}
+
+export interface GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule {
+    /**
+     * (string) - . Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
+     */
+    dayOfWeek?: string;
+    /**
+     * (string) - . Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
+     */
+    frequency?: string;
+    /**
+     * (ClusterAutoRestartMessageMaintenanceWindowWindowStartTime)
+     */
+    windowStartTime?: inputs.GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime;
+}
+
+export interface GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgs {
+    /**
+     * (string) - . Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
+     */
+    dayOfWeek?: pulumi.Input<string>;
+    /**
+     * (string) - . Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
+     */
+    frequency?: pulumi.Input<string>;
+    /**
+     * (ClusterAutoRestartMessageMaintenanceWindowWindowStartTime)
+     */
+    windowStartTime?: pulumi.Input<inputs.GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs>;
+}
+
+export interface GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime {
+    /**
+     * (integer)
+     */
+    hours?: number;
+    /**
+     * (integer)
+     */
+    minutes?: number;
+}
+
+export interface GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs {
+    /**
+     * (integer)
+     */
+    hours?: pulumi.Input<number>;
+    /**
+     * (integer)
+     */
+    minutes?: pulumi.Input<number>;
+}
+
+export interface GetAccountSettingV2EffectiveDefaultDataSecurityMode {
+    /**
+     * (string) - . Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
+     */
+    status: string;
+}
+
+export interface GetAccountSettingV2EffectiveDefaultDataSecurityModeArgs {
+    /**
+     * (string) - . Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
+     */
+    status: pulumi.Input<string>;
+}
+
+export interface GetAccountSettingV2EffectivePersonalCompute {
+    /**
+     * (string) - Represents a generic string value
+     */
+    value?: string;
+}
+
+export interface GetAccountSettingV2EffectivePersonalComputeArgs {
+    /**
+     * (string) - Represents a generic string value
+     */
+    value?: pulumi.Input<string>;
+}
+
+export interface GetAccountSettingV2EffectiveRestrictWorkspaceAdmins {
+    /**
+     * (string) - . Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
+     */
+    status: string;
+}
+
+export interface GetAccountSettingV2EffectiveRestrictWorkspaceAdminsArgs {
+    /**
+     * (string) - . Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
+     */
+    status: pulumi.Input<string>;
+}
+
+export interface GetAccountSettingV2IntegerVal {
+    /**
+     * (string) - Represents a generic string value
+     */
+    value?: number;
+}
+
+export interface GetAccountSettingV2IntegerValArgs {
+    /**
+     * (string) - Represents a generic string value
+     */
+    value?: pulumi.Input<number>;
+}
+
+export interface GetAccountSettingV2PersonalCompute {
+    /**
+     * (string) - Represents a generic string value
+     */
+    value?: string;
+}
+
+export interface GetAccountSettingV2PersonalComputeArgs {
+    /**
+     * (string) - Represents a generic string value
+     */
+    value?: pulumi.Input<string>;
+}
+
+export interface GetAccountSettingV2RestrictWorkspaceAdmins {
+    /**
+     * (string) - . Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
+     */
+    status: string;
+}
+
+export interface GetAccountSettingV2RestrictWorkspaceAdminsArgs {
+    /**
+     * (string) - . Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
+     */
+    status: pulumi.Input<string>;
+}
+
+export interface GetAccountSettingV2StringVal {
+    /**
+     * (string) - Represents a generic string value
+     */
+    value?: string;
+}
+
+export interface GetAccountSettingV2StringValArgs {
+    /**
+     * (string) - Represents a generic string value
+     */
+    value?: pulumi.Input<string>;
 }
 
 export interface GetAlertV2Evaluation {
@@ -2442,6 +3283,28 @@ export interface GetAlertV2EvaluationThresholdValueArgs {
     stringValue?: pulumi.Input<string>;
 }
 
+export interface GetAlertV2RunAs {
+    /**
+     * (string) - Application ID of an active service principal. Setting this field requires the `servicePrincipal/user` role
+     */
+    servicePrincipalName?: string;
+    /**
+     * (string) - The email of an active workspace user. Can only set this field to their own email
+     */
+    userName?: string;
+}
+
+export interface GetAlertV2RunAsArgs {
+    /**
+     * (string) - Application ID of an active service principal. Setting this field requires the `servicePrincipal/user` role
+     */
+    servicePrincipalName?: pulumi.Input<string>;
+    /**
+     * (string) - The email of an active workspace user. Can only set this field to their own email
+     */
+    userName?: pulumi.Input<string>;
+}
+
 export interface GetAlertV2Schedule {
     /**
      * (string) - Indicate whether this schedule is paused or not. Possible values are: `PAUSED`, `UNPAUSED`
@@ -2476,6 +3339,188 @@ export interface GetAlertV2ScheduleArgs {
      * See https://docs.databricks.com/sql/language-manual/sql-ref-syntax-aux-conf-mgmt-set-timezone.html for details
      */
     timezoneId?: pulumi.Input<string>;
+}
+
+export interface GetAppsSettingsCustomTemplateManifest {
+    /**
+     * (string) - Description of the App Resource
+     */
+    description?: string;
+    /**
+     * The name of the template. It must contain only alphanumeric characters, hyphens, underscores, and whitespaces.
+     * It must be unique within the workspace
+     */
+    name: string;
+    /**
+     * (list of AppManifestAppResourceSpec)
+     */
+    resourceSpecs?: inputs.GetAppsSettingsCustomTemplateManifestResourceSpec[];
+    /**
+     * (integer) - The manifest schema version, for now only 1 is allowed
+     */
+    version: number;
+}
+
+export interface GetAppsSettingsCustomTemplateManifestArgs {
+    /**
+     * (string) - Description of the App Resource
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * The name of the template. It must contain only alphanumeric characters, hyphens, underscores, and whitespaces.
+     * It must be unique within the workspace
+     */
+    name: pulumi.Input<string>;
+    /**
+     * (list of AppManifestAppResourceSpec)
+     */
+    resourceSpecs?: pulumi.Input<pulumi.Input<inputs.GetAppsSettingsCustomTemplateManifestResourceSpecArgs>[]>;
+    /**
+     * (integer) - The manifest schema version, for now only 1 is allowed
+     */
+    version: pulumi.Input<number>;
+}
+
+export interface GetAppsSettingsCustomTemplateManifestResourceSpec {
+    /**
+     * (string) - Description of the App Resource
+     */
+    description?: string;
+    /**
+     * (AppManifestAppResourceJobSpec)
+     */
+    jobSpec?: inputs.GetAppsSettingsCustomTemplateManifestResourceSpecJobSpec;
+    /**
+     * The name of the template. It must contain only alphanumeric characters, hyphens, underscores, and whitespaces.
+     * It must be unique within the workspace
+     */
+    name: string;
+    /**
+     * (AppManifestAppResourceSecretSpec)
+     */
+    secretSpec?: inputs.GetAppsSettingsCustomTemplateManifestResourceSpecSecretSpec;
+    /**
+     * (AppManifestAppResourceServingEndpointSpec)
+     */
+    servingEndpointSpec?: inputs.GetAppsSettingsCustomTemplateManifestResourceSpecServingEndpointSpec;
+    /**
+     * (AppManifestAppResourceSqlWarehouseSpec)
+     */
+    sqlWarehouseSpec?: inputs.GetAppsSettingsCustomTemplateManifestResourceSpecSqlWarehouseSpec;
+    /**
+     * (AppManifestAppResourceUcSecurableSpec)
+     */
+    ucSecurableSpec?: inputs.GetAppsSettingsCustomTemplateManifestResourceSpecUcSecurableSpec;
+}
+
+export interface GetAppsSettingsCustomTemplateManifestResourceSpecArgs {
+    /**
+     * (string) - Description of the App Resource
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * (AppManifestAppResourceJobSpec)
+     */
+    jobSpec?: pulumi.Input<inputs.GetAppsSettingsCustomTemplateManifestResourceSpecJobSpecArgs>;
+    /**
+     * The name of the template. It must contain only alphanumeric characters, hyphens, underscores, and whitespaces.
+     * It must be unique within the workspace
+     */
+    name: pulumi.Input<string>;
+    /**
+     * (AppManifestAppResourceSecretSpec)
+     */
+    secretSpec?: pulumi.Input<inputs.GetAppsSettingsCustomTemplateManifestResourceSpecSecretSpecArgs>;
+    /**
+     * (AppManifestAppResourceServingEndpointSpec)
+     */
+    servingEndpointSpec?: pulumi.Input<inputs.GetAppsSettingsCustomTemplateManifestResourceSpecServingEndpointSpecArgs>;
+    /**
+     * (AppManifestAppResourceSqlWarehouseSpec)
+     */
+    sqlWarehouseSpec?: pulumi.Input<inputs.GetAppsSettingsCustomTemplateManifestResourceSpecSqlWarehouseSpecArgs>;
+    /**
+     * (AppManifestAppResourceUcSecurableSpec)
+     */
+    ucSecurableSpec?: pulumi.Input<inputs.GetAppsSettingsCustomTemplateManifestResourceSpecUcSecurableSpecArgs>;
+}
+
+export interface GetAppsSettingsCustomTemplateManifestResourceSpecJobSpec {
+    /**
+     * (string) - . Possible values are: `MANAGE`, `READ_VOLUME`, `WRITE_VOLUME`
+     */
+    permission: string;
+}
+
+export interface GetAppsSettingsCustomTemplateManifestResourceSpecJobSpecArgs {
+    /**
+     * (string) - . Possible values are: `MANAGE`, `READ_VOLUME`, `WRITE_VOLUME`
+     */
+    permission: pulumi.Input<string>;
+}
+
+export interface GetAppsSettingsCustomTemplateManifestResourceSpecSecretSpec {
+    /**
+     * (string) - . Possible values are: `MANAGE`, `READ_VOLUME`, `WRITE_VOLUME`
+     */
+    permission: string;
+}
+
+export interface GetAppsSettingsCustomTemplateManifestResourceSpecSecretSpecArgs {
+    /**
+     * (string) - . Possible values are: `MANAGE`, `READ_VOLUME`, `WRITE_VOLUME`
+     */
+    permission: pulumi.Input<string>;
+}
+
+export interface GetAppsSettingsCustomTemplateManifestResourceSpecServingEndpointSpec {
+    /**
+     * (string) - . Possible values are: `MANAGE`, `READ_VOLUME`, `WRITE_VOLUME`
+     */
+    permission: string;
+}
+
+export interface GetAppsSettingsCustomTemplateManifestResourceSpecServingEndpointSpecArgs {
+    /**
+     * (string) - . Possible values are: `MANAGE`, `READ_VOLUME`, `WRITE_VOLUME`
+     */
+    permission: pulumi.Input<string>;
+}
+
+export interface GetAppsSettingsCustomTemplateManifestResourceSpecSqlWarehouseSpec {
+    /**
+     * (string) - . Possible values are: `MANAGE`, `READ_VOLUME`, `WRITE_VOLUME`
+     */
+    permission: string;
+}
+
+export interface GetAppsSettingsCustomTemplateManifestResourceSpecSqlWarehouseSpecArgs {
+    /**
+     * (string) - . Possible values are: `MANAGE`, `READ_VOLUME`, `WRITE_VOLUME`
+     */
+    permission: pulumi.Input<string>;
+}
+
+export interface GetAppsSettingsCustomTemplateManifestResourceSpecUcSecurableSpec {
+    /**
+     * (string) - . Possible values are: `MANAGE`, `READ_VOLUME`, `WRITE_VOLUME`
+     */
+    permission: string;
+    /**
+     * (string) - . Possible values are: `VOLUME`
+     */
+    securableType: string;
+}
+
+export interface GetAppsSettingsCustomTemplateManifestResourceSpecUcSecurableSpecArgs {
+    /**
+     * (string) - . Possible values are: `MANAGE`, `READ_VOLUME`, `WRITE_VOLUME`
+     */
+    permission: pulumi.Input<string>;
+    /**
+     * (string) - . Possible values are: `VOLUME`
+     */
+    securableType: pulumi.Input<string>;
 }
 
 export interface GetBudgetPolicyCustomTag {
@@ -2893,7 +3938,7 @@ export interface GetCleanRoomAssetNotebook {
      */
     reviews?: inputs.GetCleanRoomAssetNotebookReview[];
     /**
-     * (list of string) - collaborators that can run the notebook
+     * (list of string) - Aliases of collaborators that can run the notebook
      */
     runnerCollaboratorAliases?: string[];
 }
@@ -2917,7 +3962,7 @@ export interface GetCleanRoomAssetNotebookArgs {
      */
     reviews?: pulumi.Input<pulumi.Input<inputs.GetCleanRoomAssetNotebookReviewArgs>[]>;
     /**
-     * (list of string) - collaborators that can run the notebook
+     * (list of string) - Aliases of collaborators that can run the notebook
      */
     runnerCollaboratorAliases?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -3157,7 +4202,7 @@ export interface GetCleanRoomAssetRevisionsCleanRoomAssetNotebook {
      */
     reviews?: inputs.GetCleanRoomAssetRevisionsCleanRoomAssetNotebookReview[];
     /**
-     * (list of string) - collaborators that can run the notebook
+     * (list of string) - Aliases of collaborators that can run the notebook
      */
     runnerCollaboratorAliases?: string[];
 }
@@ -3181,7 +4226,7 @@ export interface GetCleanRoomAssetRevisionsCleanRoomAssetNotebookArgs {
      */
     reviews?: pulumi.Input<pulumi.Input<inputs.GetCleanRoomAssetRevisionsCleanRoomAssetNotebookReviewArgs>[]>;
     /**
-     * (list of string) - collaborators that can run the notebook
+     * (list of string) - Aliases of collaborators that can run the notebook
      */
     runnerCollaboratorAliases?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -4178,7 +5223,7 @@ export interface GetCleanRoomsCleanRoomRemoteDetailedInfoCollaborator {
      */
     displayName?: string;
     /**
-     * (string) - The global Unity Catalog metastore id of the collaborator. The identifier is of format cloud:region:metastore-uuid
+     * (string) - The global Unity Catalog metastore ID of the collaborator. The identifier is of format cloud:region:metastore-uuid
      */
     globalMetastoreId?: string;
     /**
@@ -4214,7 +5259,7 @@ export interface GetCleanRoomsCleanRoomRemoteDetailedInfoCollaboratorArgs {
      */
     displayName?: pulumi.Input<string>;
     /**
-     * (string) - The global Unity Catalog metastore id of the collaborator. The identifier is of format cloud:region:metastore-uuid
+     * (string) - The global Unity Catalog metastore ID of the collaborator. The identifier is of format cloud:region:metastore-uuid
      */
     globalMetastoreId?: pulumi.Input<string>;
     /**
@@ -4272,7 +5317,7 @@ export interface GetCleanRoomsCleanRoomRemoteDetailedInfoCreator {
      */
     displayName?: string;
     /**
-     * (string) - The global Unity Catalog metastore id of the collaborator. The identifier is of format cloud:region:metastore-uuid
+     * (string) - The global Unity Catalog metastore ID of the collaborator. The identifier is of format cloud:region:metastore-uuid
      */
     globalMetastoreId?: string;
     /**
@@ -4308,7 +5353,7 @@ export interface GetCleanRoomsCleanRoomRemoteDetailedInfoCreatorArgs {
      */
     displayName?: pulumi.Input<string>;
     /**
-     * (string) - The global Unity Catalog metastore id of the collaborator. The identifier is of format cloud:region:metastore-uuid
+     * (string) - The global Unity Catalog metastore ID of the collaborator. The identifier is of format cloud:region:metastore-uuid
      */
     globalMetastoreId?: pulumi.Input<string>;
     /**
@@ -11036,6 +12081,92 @@ export interface GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagArgs {
     value: pulumi.Input<string>;
 }
 
+export interface GetServicePrincipalFederationPolicyOidcPolicy {
+    /**
+     * (list of string) - The allowed token audiences, as specified in the 'aud' claim of federated tokens.
+     * The audience identifier is intended to represent the recipient of the token.
+     * Can be any non-empty string value. As long as the audience in the token matches
+     * at least one audience in the policy, the token is considered a match. If audiences
+     * is unspecified, defaults to your Databricks account id
+     */
+    audiences?: string[];
+    /**
+     * (string) - The required token issuer, as specified in the 'iss' claim of federated tokens
+     */
+    issuer?: string;
+    /**
+     * (string) - The public keys used to validate the signature of federated tokens, in JWKS format.
+     * Most use cases should not need to specify this field. If jwksUri and jwksJson
+     * are both unspecified (recommended), Databricks automatically fetches the public
+     * keys from your issuer’s well known endpoint. Databricks strongly recommends
+     * relying on your issuer’s well known endpoint for discovering public keys
+     */
+    jwksJson?: string;
+    /**
+     * (string) - URL of the public keys used to validate the signature of federated tokens, in
+     * JWKS format. Most use cases should not need to specify this field. If jwksUri
+     * and jwksJson are both unspecified (recommended), Databricks automatically
+     * fetches the public keys from your issuer’s well known endpoint. Databricks
+     * strongly recommends relying on your issuer’s well known endpoint for discovering
+     * public keys
+     */
+    jwksUri?: string;
+    /**
+     * (string) - The required token subject, as specified in the subject claim of federated tokens.
+     * Must be specified for service principal federation policies. Must not be specified
+     * for account federation policies
+     */
+    subject?: string;
+    /**
+     * (string) - The claim that contains the subject of the token. If unspecified, the default value
+     * is 'sub'
+     */
+    subjectClaim?: string;
+}
+
+export interface GetServicePrincipalFederationPolicyOidcPolicyArgs {
+    /**
+     * (list of string) - The allowed token audiences, as specified in the 'aud' claim of federated tokens.
+     * The audience identifier is intended to represent the recipient of the token.
+     * Can be any non-empty string value. As long as the audience in the token matches
+     * at least one audience in the policy, the token is considered a match. If audiences
+     * is unspecified, defaults to your Databricks account id
+     */
+    audiences?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * (string) - The required token issuer, as specified in the 'iss' claim of federated tokens
+     */
+    issuer?: pulumi.Input<string>;
+    /**
+     * (string) - The public keys used to validate the signature of federated tokens, in JWKS format.
+     * Most use cases should not need to specify this field. If jwksUri and jwksJson
+     * are both unspecified (recommended), Databricks automatically fetches the public
+     * keys from your issuer’s well known endpoint. Databricks strongly recommends
+     * relying on your issuer’s well known endpoint for discovering public keys
+     */
+    jwksJson?: pulumi.Input<string>;
+    /**
+     * (string) - URL of the public keys used to validate the signature of federated tokens, in
+     * JWKS format. Most use cases should not need to specify this field. If jwksUri
+     * and jwksJson are both unspecified (recommended), Databricks automatically
+     * fetches the public keys from your issuer’s well known endpoint. Databricks
+     * strongly recommends relying on your issuer’s well known endpoint for discovering
+     * public keys
+     */
+    jwksUri?: pulumi.Input<string>;
+    /**
+     * (string) - The required token subject, as specified in the subject claim of federated tokens.
+     * Must be specified for service principal federation policies. Must not be specified
+     * for account federation policies
+     */
+    subject?: pulumi.Input<string>;
+    /**
+     * (string) - The claim that contains the subject of the token. If unspecified, the default value
+     * is 'sub'
+     */
+    subjectClaim?: pulumi.Input<string>;
+}
+
 export interface GetServingEndpointsEndpoint {
     /**
      * A block with AI Gateway configuration for the serving endpoint.
@@ -11061,6 +12192,7 @@ export interface GetServingEndpointsEndpoint {
      */
     tags?: inputs.GetServingEndpointsEndpointTag[];
     task?: string;
+    usagePolicyId?: string;
 }
 
 export interface GetServingEndpointsEndpointArgs {
@@ -11088,6 +12220,7 @@ export interface GetServingEndpointsEndpointArgs {
      */
     tags?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointTagArgs>[]>;
     task?: pulumi.Input<string>;
+    usagePolicyId?: pulumi.Input<string>;
 }
 
 export interface GetServingEndpointsEndpointAiGateway {
@@ -11193,6 +12326,7 @@ export interface GetServingEndpointsEndpointAiGatewayRateLimit {
     key?: string;
     principal?: string;
     renewalPeriod: string;
+    tokens?: number;
 }
 
 export interface GetServingEndpointsEndpointAiGatewayRateLimitArgs {
@@ -11200,6 +12334,7 @@ export interface GetServingEndpointsEndpointAiGatewayRateLimitArgs {
     key?: pulumi.Input<string>;
     principal?: pulumi.Input<string>;
     renewalPeriod: pulumi.Input<string>;
+    tokens?: pulumi.Input<number>;
 }
 
 export interface GetServingEndpointsEndpointAiGatewayUsageTrackingConfig {
@@ -12276,6 +13411,20 @@ export interface GetTableTableInfoViewDependenciesDependencyTableArgs {
     tableFullName: pulumi.Input<string>;
 }
 
+export interface GetTagPolicyValue {
+    /**
+     * (string)
+     */
+    name: string;
+}
+
+export interface GetTagPolicyValueArgs {
+    /**
+     * (string)
+     */
+    name: pulumi.Input<string>;
+}
+
 export interface GetVolumeVolumeInfo {
     /**
      * the AWS access point to use when accessing s3 bucket for this volume's external location
@@ -12436,6 +13585,472 @@ export interface GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsArgs {
     awsKmsKeyArn?: pulumi.Input<string>;
 }
 
+export interface GetWorkspaceSettingV2AibiDashboardEmbeddingAccessPolicy {
+    /**
+     * (string) - . Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
+     */
+    accessPolicyType: string;
+}
+
+export interface GetWorkspaceSettingV2AibiDashboardEmbeddingAccessPolicyArgs {
+    /**
+     * (string) - . Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
+     */
+    accessPolicyType: pulumi.Input<string>;
+}
+
+export interface GetWorkspaceSettingV2AibiDashboardEmbeddingApprovedDomains {
+    /**
+     * (list of string)
+     */
+    approvedDomains?: string[];
+}
+
+export interface GetWorkspaceSettingV2AibiDashboardEmbeddingApprovedDomainsArgs {
+    /**
+     * (list of string)
+     */
+    approvedDomains?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetWorkspaceSettingV2AutomaticClusterUpdateWorkspace {
+    /**
+     * (boolean)
+     */
+    canToggle?: boolean;
+    /**
+     * (boolean)
+     */
+    enabled?: boolean;
+    /**
+     * (ClusterAutoRestartMessageEnablementDetails)
+     */
+    enablementDetails?: inputs.GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetails;
+    /**
+     * (ClusterAutoRestartMessageMaintenanceWindow)
+     */
+    maintenanceWindow?: inputs.GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindow;
+    /**
+     * (boolean)
+     */
+    restartEvenIfNoUpdatesAvailable?: boolean;
+}
+
+export interface GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceArgs {
+    /**
+     * (boolean)
+     */
+    canToggle?: pulumi.Input<boolean>;
+    /**
+     * (boolean)
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * (ClusterAutoRestartMessageEnablementDetails)
+     */
+    enablementDetails?: pulumi.Input<inputs.GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsArgs>;
+    /**
+     * (ClusterAutoRestartMessageMaintenanceWindow)
+     */
+    maintenanceWindow?: pulumi.Input<inputs.GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowArgs>;
+    /**
+     * (boolean)
+     */
+    restartEvenIfNoUpdatesAvailable?: pulumi.Input<boolean>;
+}
+
+export interface GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetails {
+    /**
+     * (boolean) - The feature is force enabled if compliance mode is active
+     */
+    forcedForComplianceMode?: boolean;
+    /**
+     * (boolean) - The feature is unavailable if the corresponding entitlement disabled (see getShieldEntitlementEnable)
+     */
+    unavailableForDisabledEntitlement?: boolean;
+    /**
+     * (boolean) - The feature is unavailable if the customer doesn't have enterprise tier
+     */
+    unavailableForNonEnterpriseTier?: boolean;
+}
+
+export interface GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsArgs {
+    /**
+     * (boolean) - The feature is force enabled if compliance mode is active
+     */
+    forcedForComplianceMode?: pulumi.Input<boolean>;
+    /**
+     * (boolean) - The feature is unavailable if the corresponding entitlement disabled (see getShieldEntitlementEnable)
+     */
+    unavailableForDisabledEntitlement?: pulumi.Input<boolean>;
+    /**
+     * (boolean) - The feature is unavailable if the customer doesn't have enterprise tier
+     */
+    unavailableForNonEnterpriseTier?: pulumi.Input<boolean>;
+}
+
+export interface GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindow {
+    /**
+     * (ClusterAutoRestartMessageMaintenanceWindowWeekDayBasedSchedule)
+     */
+    weekDayBasedSchedule?: inputs.GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule;
+}
+
+export interface GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowArgs {
+    /**
+     * (ClusterAutoRestartMessageMaintenanceWindowWeekDayBasedSchedule)
+     */
+    weekDayBasedSchedule?: pulumi.Input<inputs.GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgs>;
+}
+
+export interface GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule {
+    /**
+     * (string) - . Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
+     */
+    dayOfWeek?: string;
+    /**
+     * (string) - . Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
+     */
+    frequency?: string;
+    /**
+     * (ClusterAutoRestartMessageMaintenanceWindowWindowStartTime)
+     */
+    windowStartTime?: inputs.GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime;
+}
+
+export interface GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgs {
+    /**
+     * (string) - . Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
+     */
+    dayOfWeek?: pulumi.Input<string>;
+    /**
+     * (string) - . Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
+     */
+    frequency?: pulumi.Input<string>;
+    /**
+     * (ClusterAutoRestartMessageMaintenanceWindowWindowStartTime)
+     */
+    windowStartTime?: pulumi.Input<inputs.GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs>;
+}
+
+export interface GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime {
+    /**
+     * (integer)
+     */
+    hours?: number;
+    /**
+     * (integer)
+     */
+    minutes?: number;
+}
+
+export interface GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs {
+    /**
+     * (integer)
+     */
+    hours?: pulumi.Input<number>;
+    /**
+     * (integer)
+     */
+    minutes?: pulumi.Input<number>;
+}
+
+export interface GetWorkspaceSettingV2BooleanVal {
+    /**
+     * (string) - Represents a generic string value
+     */
+    value?: boolean;
+}
+
+export interface GetWorkspaceSettingV2BooleanValArgs {
+    /**
+     * (string) - Represents a generic string value
+     */
+    value?: pulumi.Input<boolean>;
+}
+
+export interface GetWorkspaceSettingV2DefaultDataSecurityMode {
+    /**
+     * (string) - . Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
+     */
+    status: string;
+}
+
+export interface GetWorkspaceSettingV2DefaultDataSecurityModeArgs {
+    /**
+     * (string) - . Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
+     */
+    status: pulumi.Input<string>;
+}
+
+export interface GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy {
+    /**
+     * (string) - . Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
+     */
+    accessPolicyType: string;
+}
+
+export interface GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgs {
+    /**
+     * (string) - . Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
+     */
+    accessPolicyType: pulumi.Input<string>;
+}
+
+export interface GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomains {
+    /**
+     * (list of string)
+     */
+    approvedDomains?: string[];
+}
+
+export interface GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgs {
+    /**
+     * (list of string)
+     */
+    approvedDomains?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspace {
+    /**
+     * (boolean)
+     */
+    canToggle?: boolean;
+    /**
+     * (boolean)
+     */
+    enabled?: boolean;
+    /**
+     * (ClusterAutoRestartMessageEnablementDetails)
+     */
+    enablementDetails?: inputs.GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetails;
+    /**
+     * (ClusterAutoRestartMessageMaintenanceWindow)
+     */
+    maintenanceWindow?: inputs.GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindow;
+    /**
+     * (boolean)
+     */
+    restartEvenIfNoUpdatesAvailable?: boolean;
+}
+
+export interface GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgs {
+    /**
+     * (boolean)
+     */
+    canToggle?: pulumi.Input<boolean>;
+    /**
+     * (boolean)
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * (ClusterAutoRestartMessageEnablementDetails)
+     */
+    enablementDetails?: pulumi.Input<inputs.GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsArgs>;
+    /**
+     * (ClusterAutoRestartMessageMaintenanceWindow)
+     */
+    maintenanceWindow?: pulumi.Input<inputs.GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowArgs>;
+    /**
+     * (boolean)
+     */
+    restartEvenIfNoUpdatesAvailable?: pulumi.Input<boolean>;
+}
+
+export interface GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetails {
+    /**
+     * (boolean) - The feature is force enabled if compliance mode is active
+     */
+    forcedForComplianceMode?: boolean;
+    /**
+     * (boolean) - The feature is unavailable if the corresponding entitlement disabled (see getShieldEntitlementEnable)
+     */
+    unavailableForDisabledEntitlement?: boolean;
+    /**
+     * (boolean) - The feature is unavailable if the customer doesn't have enterprise tier
+     */
+    unavailableForNonEnterpriseTier?: boolean;
+}
+
+export interface GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsArgs {
+    /**
+     * (boolean) - The feature is force enabled if compliance mode is active
+     */
+    forcedForComplianceMode?: pulumi.Input<boolean>;
+    /**
+     * (boolean) - The feature is unavailable if the corresponding entitlement disabled (see getShieldEntitlementEnable)
+     */
+    unavailableForDisabledEntitlement?: pulumi.Input<boolean>;
+    /**
+     * (boolean) - The feature is unavailable if the customer doesn't have enterprise tier
+     */
+    unavailableForNonEnterpriseTier?: pulumi.Input<boolean>;
+}
+
+export interface GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindow {
+    /**
+     * (ClusterAutoRestartMessageMaintenanceWindowWeekDayBasedSchedule)
+     */
+    weekDayBasedSchedule?: inputs.GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule;
+}
+
+export interface GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowArgs {
+    /**
+     * (ClusterAutoRestartMessageMaintenanceWindowWeekDayBasedSchedule)
+     */
+    weekDayBasedSchedule?: pulumi.Input<inputs.GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgs>;
+}
+
+export interface GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule {
+    /**
+     * (string) - . Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
+     */
+    dayOfWeek?: string;
+    /**
+     * (string) - . Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
+     */
+    frequency?: string;
+    /**
+     * (ClusterAutoRestartMessageMaintenanceWindowWindowStartTime)
+     */
+    windowStartTime?: inputs.GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime;
+}
+
+export interface GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgs {
+    /**
+     * (string) - . Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
+     */
+    dayOfWeek?: pulumi.Input<string>;
+    /**
+     * (string) - . Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
+     */
+    frequency?: pulumi.Input<string>;
+    /**
+     * (ClusterAutoRestartMessageMaintenanceWindowWindowStartTime)
+     */
+    windowStartTime?: pulumi.Input<inputs.GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs>;
+}
+
+export interface GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime {
+    /**
+     * (integer)
+     */
+    hours?: number;
+    /**
+     * (integer)
+     */
+    minutes?: number;
+}
+
+export interface GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs {
+    /**
+     * (integer)
+     */
+    hours?: pulumi.Input<number>;
+    /**
+     * (integer)
+     */
+    minutes?: pulumi.Input<number>;
+}
+
+export interface GetWorkspaceSettingV2EffectiveDefaultDataSecurityMode {
+    /**
+     * (string) - . Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
+     */
+    status: string;
+}
+
+export interface GetWorkspaceSettingV2EffectiveDefaultDataSecurityModeArgs {
+    /**
+     * (string) - . Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
+     */
+    status: pulumi.Input<string>;
+}
+
+export interface GetWorkspaceSettingV2EffectivePersonalCompute {
+    /**
+     * (string) - Represents a generic string value
+     */
+    value?: string;
+}
+
+export interface GetWorkspaceSettingV2EffectivePersonalComputeArgs {
+    /**
+     * (string) - Represents a generic string value
+     */
+    value?: pulumi.Input<string>;
+}
+
+export interface GetWorkspaceSettingV2EffectiveRestrictWorkspaceAdmins {
+    /**
+     * (string) - . Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
+     */
+    status: string;
+}
+
+export interface GetWorkspaceSettingV2EffectiveRestrictWorkspaceAdminsArgs {
+    /**
+     * (string) - . Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
+     */
+    status: pulumi.Input<string>;
+}
+
+export interface GetWorkspaceSettingV2IntegerVal {
+    /**
+     * (string) - Represents a generic string value
+     */
+    value?: number;
+}
+
+export interface GetWorkspaceSettingV2IntegerValArgs {
+    /**
+     * (string) - Represents a generic string value
+     */
+    value?: pulumi.Input<number>;
+}
+
+export interface GetWorkspaceSettingV2PersonalCompute {
+    /**
+     * (string) - Represents a generic string value
+     */
+    value?: string;
+}
+
+export interface GetWorkspaceSettingV2PersonalComputeArgs {
+    /**
+     * (string) - Represents a generic string value
+     */
+    value?: pulumi.Input<string>;
+}
+
+export interface GetWorkspaceSettingV2RestrictWorkspaceAdmins {
+    /**
+     * (string) - . Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
+     */
+    status: string;
+}
+
+export interface GetWorkspaceSettingV2RestrictWorkspaceAdminsArgs {
+    /**
+     * (string) - . Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
+     */
+    status: pulumi.Input<string>;
+}
+
+export interface GetWorkspaceSettingV2StringVal {
+    /**
+     * (string) - Represents a generic string value
+     */
+    value?: string;
+}
+
+export interface GetWorkspaceSettingV2StringValArgs {
+    /**
+     * (string) - Represents a generic string value
+     */
+    value?: pulumi.Input<string>;
+}
+
 export interface GrantsGrant {
     principal: pulumi.Input<string>;
     privileges: pulumi.Input<pulumi.Input<string>[]>;
@@ -12561,6 +14176,7 @@ export interface JobContinuous {
      * Indicate whether this continuous job is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pauseStatus` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pauseStatus`.
      */
     pauseStatus?: pulumi.Input<string>;
+    taskRetryMode?: pulumi.Input<string>;
 }
 
 export interface JobDbtTask {
@@ -15748,6 +17364,10 @@ export interface ModelServingAiGatewayRateLimit {
      * Renewal period field for a serving endpoint rate limit. Currently, only `minute` is supported.
      */
     renewalPeriod: pulumi.Input<string>;
+    /**
+     * Specifies how many tokens are allowed for a key within the renewal_period.
+     */
+    tokens?: pulumi.Input<number>;
 }
 
 export interface ModelServingAiGatewayUsageTrackingConfig {
@@ -16280,6 +17900,7 @@ export interface ModelServingProvisionedThroughputAiGatewayRateLimit {
     key?: pulumi.Input<string>;
     principal?: pulumi.Input<string>;
     renewalPeriod: pulumi.Input<string>;
+    tokens?: pulumi.Input<number>;
 }
 
 export interface ModelServingProvisionedThroughputAiGatewayUsageTrackingConfig {
@@ -16562,11 +18183,11 @@ export interface MwsNetworksGcpNetworkInfo {
      */
     networkProjectId: pulumi.Input<string>;
     /**
-     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.87.1/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.88.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     podIpRangeName?: pulumi.Input<string>;
     /**
-     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.87.1/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.88.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     serviceIpRangeName?: pulumi.Input<string>;
     /**
@@ -16633,11 +18254,11 @@ export interface MwsWorkspacesExternalCustomerInfo {
 
 export interface MwsWorkspacesGcpManagedNetworkConfig {
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.87.1/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.88.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterPodIpRange?: pulumi.Input<string>;
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.87.1/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.88.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterServiceIpRange?: pulumi.Input<string>;
     subnetCidr: pulumi.Input<string>;
@@ -16712,6 +18333,14 @@ export interface NotificationDestinationConfigGenericWebhook {
 }
 
 export interface NotificationDestinationConfigMicrosoftTeams {
+    appId?: pulumi.Input<string>;
+    appIdSet?: pulumi.Input<boolean>;
+    authSecret?: pulumi.Input<string>;
+    authSecretSet?: pulumi.Input<boolean>;
+    channelUrl?: pulumi.Input<string>;
+    channelUrlSet?: pulumi.Input<boolean>;
+    tenantId?: pulumi.Input<string>;
+    tenantIdSet?: pulumi.Input<boolean>;
     /**
      * The Microsoft Teams webhook URL.
      */
@@ -16728,8 +18357,14 @@ export interface NotificationDestinationConfigPagerduty {
 }
 
 export interface NotificationDestinationConfigSlack {
+    /**
+     * Slack channel ID for notifications.
+     */
     channelId?: pulumi.Input<string>;
     channelIdSet?: pulumi.Input<boolean>;
+    /**
+     * OAuth token for Slack authentication.
+     */
     oauthToken?: pulumi.Input<string>;
     oauthTokenSet?: pulumi.Input<boolean>;
     /**
@@ -17081,6 +18716,7 @@ export interface PipelineIngestionDefinition {
     connectionName?: pulumi.Input<string>;
     ingestionGatewayId?: pulumi.Input<string>;
     objects?: pulumi.Input<pulumi.Input<inputs.PipelineIngestionDefinitionObject>[]>;
+    sourceConfigurations?: pulumi.Input<pulumi.Input<inputs.PipelineIngestionDefinitionSourceConfiguration>[]>;
     sourceType?: pulumi.Input<string>;
     tableConfiguration?: pulumi.Input<inputs.PipelineIngestionDefinitionTableConfiguration>;
 }
@@ -17166,6 +18802,27 @@ export interface PipelineIngestionDefinitionObjectTableTableConfigurationQueryBa
     cursorColumns?: pulumi.Input<pulumi.Input<string>[]>;
     deletionCondition?: pulumi.Input<string>;
     hardDeletionSyncMinIntervalInSeconds?: pulumi.Input<number>;
+}
+
+export interface PipelineIngestionDefinitionSourceConfiguration {
+    /**
+     * The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
+     */
+    catalog?: pulumi.Input<inputs.PipelineIngestionDefinitionSourceConfigurationCatalog>;
+}
+
+export interface PipelineIngestionDefinitionSourceConfigurationCatalog {
+    postgres?: pulumi.Input<inputs.PipelineIngestionDefinitionSourceConfigurationCatalogPostgres>;
+    sourceCatalog?: pulumi.Input<string>;
+}
+
+export interface PipelineIngestionDefinitionSourceConfigurationCatalogPostgres {
+    slotConfig?: pulumi.Input<inputs.PipelineIngestionDefinitionSourceConfigurationCatalogPostgresSlotConfig>;
+}
+
+export interface PipelineIngestionDefinitionSourceConfigurationCatalogPostgresSlotConfig {
+    publicationName?: pulumi.Input<string>;
+    slotName?: pulumi.Input<string>;
 }
 
 export interface PipelineIngestionDefinitionTableConfiguration {
@@ -17679,6 +19336,49 @@ export interface SecretScopeKeyvaultMetadata {
     resourceId: pulumi.Input<string>;
 }
 
+export interface ServicePrincipalFederationPolicyOidcPolicy {
+    /**
+     * The allowed token audiences, as specified in the 'aud' claim of federated tokens.
+     * The audience identifier is intended to represent the recipient of the token.
+     * Can be any non-empty string value. As long as the audience in the token matches
+     * at least one audience in the policy, the token is considered a match. If audiences
+     * is unspecified, defaults to your Databricks account id
+     */
+    audiences?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The required token issuer, as specified in the 'iss' claim of federated tokens
+     */
+    issuer?: pulumi.Input<string>;
+    /**
+     * The public keys used to validate the signature of federated tokens, in JWKS format.
+     * Most use cases should not need to specify this field. If jwksUri and jwksJson
+     * are both unspecified (recommended), Databricks automatically fetches the public
+     * keys from your issuer’s well known endpoint. Databricks strongly recommends
+     * relying on your issuer’s well known endpoint for discovering public keys
+     */
+    jwksJson?: pulumi.Input<string>;
+    /**
+     * URL of the public keys used to validate the signature of federated tokens, in
+     * JWKS format. Most use cases should not need to specify this field. If jwksUri
+     * and jwksJson are both unspecified (recommended), Databricks automatically
+     * fetches the public keys from your issuer’s well known endpoint. Databricks
+     * strongly recommends relying on your issuer’s well known endpoint for discovering
+     * public keys
+     */
+    jwksUri?: pulumi.Input<string>;
+    /**
+     * The required token subject, as specified in the subject claim of federated tokens.
+     * Must be specified for service principal federation policies. Must not be specified
+     * for account federation policies
+     */
+    subject?: pulumi.Input<string>;
+    /**
+     * The claim that contains the subject of the token. If unspecified, the default value
+     * is 'sub'
+     */
+    subjectClaim?: pulumi.Input<string>;
+}
+
 export interface ShareObject {
     addedAt?: pulumi.Input<number>;
     addedBy?: pulumi.Input<string>;
@@ -18141,6 +19841,10 @@ export interface TableColumn {
     typeText: pulumi.Input<string>;
 }
 
+export interface TagPolicyValue {
+    name: pulumi.Input<string>;
+}
+
 export interface VectorSearchEndpointEndpointStatus {
     /**
      * Additional status message.
@@ -18183,9 +19887,13 @@ export interface VectorSearchIndexDeltaSyncIndexSpec {
 
 export interface VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn {
     /**
-     * The name of the embedding model endpoint
+     * The name of the embedding model endpoint, used by default for both ingestion and querying.
      */
     embeddingModelEndpointName?: pulumi.Input<string>;
+    /**
+     * The name of the embedding model endpoint which, if specified, is used for querying (not ingestion).
+     */
+    modelEndpointNameForQuery?: pulumi.Input<string>;
     /**
      * The name of the column
      */
@@ -18224,6 +19932,10 @@ export interface VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumn {
      */
     embeddingModelEndpointName?: pulumi.Input<string>;
     /**
+     * The name of the embedding model endpoint which, if specified, is used for querying (not ingestion).
+     */
+    modelEndpointNameForQuery?: pulumi.Input<string>;
+    /**
      * The name of the column
      */
     name?: pulumi.Input<string>;
@@ -18257,4 +19969,162 @@ export interface VectorSearchIndexStatus {
      * Whether the index is ready for search
      */
     ready?: pulumi.Input<boolean>;
+}
+
+export interface WorkspaceSettingV2AibiDashboardEmbeddingAccessPolicy {
+    /**
+     * . Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
+     */
+    accessPolicyType: pulumi.Input<string>;
+}
+
+export interface WorkspaceSettingV2AibiDashboardEmbeddingApprovedDomains {
+    approvedDomains?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface WorkspaceSettingV2AutomaticClusterUpdateWorkspace {
+    canToggle?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
+    enablementDetails?: pulumi.Input<inputs.WorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetails>;
+    maintenanceWindow?: pulumi.Input<inputs.WorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindow>;
+    restartEvenIfNoUpdatesAvailable?: pulumi.Input<boolean>;
+}
+
+export interface WorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetails {
+    /**
+     * The feature is force enabled if compliance mode is active
+     */
+    forcedForComplianceMode?: pulumi.Input<boolean>;
+    /**
+     * The feature is unavailable if the corresponding entitlement disabled (see getShieldEntitlementEnable)
+     */
+    unavailableForDisabledEntitlement?: pulumi.Input<boolean>;
+    /**
+     * The feature is unavailable if the customer doesn't have enterprise tier
+     */
+    unavailableForNonEnterpriseTier?: pulumi.Input<boolean>;
+}
+
+export interface WorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindow {
+    weekDayBasedSchedule?: pulumi.Input<inputs.WorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule>;
+}
+
+export interface WorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule {
+    /**
+     * . Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
+     */
+    dayOfWeek?: pulumi.Input<string>;
+    /**
+     * . Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
+     */
+    frequency?: pulumi.Input<string>;
+    windowStartTime?: pulumi.Input<inputs.WorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime>;
+}
+
+export interface WorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime {
+    hours?: pulumi.Input<number>;
+    minutes?: pulumi.Input<number>;
+}
+
+export interface WorkspaceSettingV2BooleanVal {
+    value?: pulumi.Input<boolean>;
+}
+
+export interface WorkspaceSettingV2DefaultDataSecurityMode {
+    status: pulumi.Input<string>;
+}
+
+export interface WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy {
+    /**
+     * . Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
+     */
+    accessPolicyType: pulumi.Input<string>;
+}
+
+export interface WorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomains {
+    approvedDomains?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspace {
+    canToggle?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
+    enablementDetails?: pulumi.Input<inputs.WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetails>;
+    maintenanceWindow?: pulumi.Input<inputs.WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindow>;
+    restartEvenIfNoUpdatesAvailable?: pulumi.Input<boolean>;
+}
+
+export interface WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetails {
+    /**
+     * The feature is force enabled if compliance mode is active
+     */
+    forcedForComplianceMode?: pulumi.Input<boolean>;
+    /**
+     * The feature is unavailable if the corresponding entitlement disabled (see getShieldEntitlementEnable)
+     */
+    unavailableForDisabledEntitlement?: pulumi.Input<boolean>;
+    /**
+     * The feature is unavailable if the customer doesn't have enterprise tier
+     */
+    unavailableForNonEnterpriseTier?: pulumi.Input<boolean>;
+}
+
+export interface WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindow {
+    weekDayBasedSchedule?: pulumi.Input<inputs.WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule>;
+}
+
+export interface WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule {
+    /**
+     * . Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
+     */
+    dayOfWeek?: pulumi.Input<string>;
+    /**
+     * . Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
+     */
+    frequency?: pulumi.Input<string>;
+    windowStartTime?: pulumi.Input<inputs.WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime>;
+}
+
+export interface WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime {
+    hours?: pulumi.Input<number>;
+    minutes?: pulumi.Input<number>;
+}
+
+export interface WorkspaceSettingV2EffectiveBooleanVal {
+    value?: pulumi.Input<boolean>;
+}
+
+export interface WorkspaceSettingV2EffectiveDefaultDataSecurityMode {
+    status: pulumi.Input<string>;
+}
+
+export interface WorkspaceSettingV2EffectiveIntegerVal {
+    value?: pulumi.Input<number>;
+}
+
+export interface WorkspaceSettingV2EffectivePersonalCompute {
+    value?: pulumi.Input<string>;
+}
+
+export interface WorkspaceSettingV2EffectiveRestrictWorkspaceAdmins {
+    status: pulumi.Input<string>;
+}
+
+export interface WorkspaceSettingV2EffectiveStringVal {
+    value?: pulumi.Input<string>;
+}
+
+export interface WorkspaceSettingV2IntegerVal {
+    value?: pulumi.Input<number>;
+}
+
+export interface WorkspaceSettingV2PersonalCompute {
+    value?: pulumi.Input<string>;
+}
+
+export interface WorkspaceSettingV2RestrictWorkspaceAdmins {
+    status: pulumi.Input<string>;
+}
+
+export interface WorkspaceSettingV2StringVal {
+    value?: pulumi.Input<string>;
 }

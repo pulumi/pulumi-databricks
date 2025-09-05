@@ -43,6 +43,12 @@ namespace Pulumi.Databricks
         [Input("oidcPolicy")]
         public Inputs.GetRecipientFederationPolicyOidcPolicyArgs? OidcPolicy { get; set; }
 
+        /// <summary>
+        /// Workspace ID of the resource
+        /// </summary>
+        [Input("workspaceId")]
+        public string? WorkspaceId { get; set; }
+
         public GetRecipientFederationPolicyArgs()
         {
         }
@@ -69,6 +75,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("oidcPolicy")]
         public Input<Inputs.GetRecipientFederationPolicyOidcPolicyInputArgs>? OidcPolicy { get; set; }
+
+        /// <summary>
+        /// Workspace ID of the resource
+        /// </summary>
+        [Input("workspaceId")]
+        public Input<string>? WorkspaceId { get; set; }
 
         public GetRecipientFederationPolicyInvokeArgs()
         {
@@ -105,6 +117,7 @@ namespace Pulumi.Databricks
         /// (string) - System-generated timestamp indicating when the policy was last updated
         /// </summary>
         public readonly string UpdateTime;
+        public readonly string? WorkspaceId;
 
         [OutputConstructor]
         private GetRecipientFederationPolicyResult(
@@ -118,7 +131,9 @@ namespace Pulumi.Databricks
 
             Outputs.GetRecipientFederationPolicyOidcPolicyResult? oidcPolicy,
 
-            string updateTime)
+            string updateTime,
+
+            string? workspaceId)
         {
             Comment = comment;
             CreateTime = createTime;
@@ -126,6 +141,7 @@ namespace Pulumi.Databricks
             Name = name;
             OidcPolicy = oidcPolicy;
             UpdateTime = updateTime;
+            WorkspaceId = workspaceId;
         }
     }
 }

@@ -28,7 +28,7 @@ class GetPolicyInfoResult:
     """
     A collection of values returned by getPolicyInfo.
     """
-    def __init__(__self__, column_mask=None, comment=None, created_at=None, created_by=None, except_principals=None, for_securable_type=None, id=None, match_columns=None, name=None, on_securable_fullname=None, on_securable_type=None, policy_type=None, row_filter=None, to_principals=None, updated_at=None, updated_by=None, when_condition=None):
+    def __init__(__self__, column_mask=None, comment=None, created_at=None, created_by=None, except_principals=None, for_securable_type=None, id=None, match_columns=None, name=None, on_securable_fullname=None, on_securable_type=None, policy_type=None, row_filter=None, to_principals=None, updated_at=None, updated_by=None, when_condition=None, workspace_id=None):
         if column_mask and not isinstance(column_mask, dict):
             raise TypeError("Expected argument 'column_mask' to be a dict")
         pulumi.set(__self__, "column_mask", column_mask)
@@ -80,6 +80,9 @@ class GetPolicyInfoResult:
         if when_condition and not isinstance(when_condition, str):
             raise TypeError("Expected argument 'when_condition' to be a str")
         pulumi.set(__self__, "when_condition", when_condition)
+        if workspace_id and not isinstance(workspace_id, str):
+            raise TypeError("Expected argument 'workspace_id' to be a str")
+        pulumi.set(__self__, "workspace_id", workspace_id)
 
     @_builtins.property
     @pulumi.getter(name="columnMask")
@@ -128,7 +131,7 @@ class GetPolicyInfoResult:
     def for_securable_type(self) -> _builtins.str:
         """
         (string) - Type of securables that the policy should take effect on.
-        Only `table` is supported at this moment.
+        Only `TABLE` is supported at this moment.
         Required on create and optional on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
         """
         return pulumi.get(self, "for_securable_type")
@@ -146,7 +149,7 @@ class GetPolicyInfoResult:
     def match_columns(self) -> Optional[Sequence['outputs.GetPolicyInfoMatchColumnResult']]:
         """
         (list of MatchColumn) - Optional list of condition expressions used to match table columns.
-        Only valid when `for_securable_type` is `table`.
+        Only valid when `for_securable_type` is `TABLE`.
         When specified, the policy only applies to tables whose columns satisfy all match conditions
         """
         return pulumi.get(self, "match_columns")
@@ -155,8 +158,8 @@ class GetPolicyInfoResult:
     @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
         """
-        (string) - Name of the policy. Required on create and ignored on update.
-        To update the name, use the `new_name` field
+        (string) - Name of the policy. Required on create and optional on update.
+        To rename the policy, set `name` to a different value on update
         """
         return pulumi.get(self, "name")
 
@@ -174,7 +177,7 @@ class GetPolicyInfoResult:
     def on_securable_type(self) -> Optional[_builtins.str]:
         """
         (string) - Type of the securable on which the policy is defined.
-        Only `catalog`, `schema` and `table` are supported at this moment.
+        Only `CATALOG`, `SCHEMA` and `TABLE` are supported at this moment.
         Required on create and ignored on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
         """
         return pulumi.get(self, "on_securable_type")
@@ -230,6 +233,11 @@ class GetPolicyInfoResult:
         """
         return pulumi.get(self, "when_condition")
 
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "workspace_id")
+
 
 class AwaitableGetPolicyInfoResult(GetPolicyInfoResult):
     # pylint: disable=using-constant-test
@@ -253,7 +261,8 @@ class AwaitableGetPolicyInfoResult(GetPolicyInfoResult):
             to_principals=self.to_principals,
             updated_at=self.updated_at,
             updated_by=self.updated_by,
-            when_condition=self.when_condition)
+            when_condition=self.when_condition,
+            workspace_id=self.workspace_id)
 
 
 def get_policy_info(column_mask: Optional[Union['GetPolicyInfoColumnMaskArgs', 'GetPolicyInfoColumnMaskArgsDict']] = None,
@@ -268,6 +277,7 @@ def get_policy_info(column_mask: Optional[Union['GetPolicyInfoColumnMaskArgs', '
                     row_filter: Optional[Union['GetPolicyInfoRowFilterArgs', 'GetPolicyInfoRowFilterArgsDict']] = None,
                     to_principals: Optional[Sequence[_builtins.str]] = None,
                     when_condition: Optional[_builtins.str] = None,
+                    workspace_id: Optional[_builtins.str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPolicyInfoResult:
     """
     Use this data source to access information about an existing resource.
@@ -278,17 +288,17 @@ def get_policy_info(column_mask: Optional[Union['GetPolicyInfoColumnMaskArgs', '
     :param _builtins.str comment: (string) - Optional description of the policy
     :param Sequence[_builtins.str] except_principals: (list of string) - Optional list of user or group names that should be excluded from the policy
     :param _builtins.str for_securable_type: (string) - Type of securables that the policy should take effect on.
-           Only `table` is supported at this moment.
+           Only `TABLE` is supported at this moment.
            Required on create and optional on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
     :param Sequence[Union['GetPolicyInfoMatchColumnArgs', 'GetPolicyInfoMatchColumnArgsDict']] match_columns: (list of MatchColumn) - Optional list of condition expressions used to match table columns.
-           Only valid when `for_securable_type` is `table`.
+           Only valid when `for_securable_type` is `TABLE`.
            When specified, the policy only applies to tables whose columns satisfy all match conditions
-    :param _builtins.str name: Name of the policy. Required on create and ignored on update.
-           To update the name, use the `new_name` field
+    :param _builtins.str name: Name of the policy. Required on create and optional on update.
+           To rename the policy, set `name` to a different value on update
     :param _builtins.str on_securable_fullname: Full name of the securable on which the policy is defined.
            Required on create and ignored on update
     :param _builtins.str on_securable_type: Type of the securable on which the policy is defined.
-           Only `catalog`, `schema` and `table` are supported at this moment.
+           Only `CATALOG`, `SCHEMA` and `TABLE` are supported at this moment.
            Required on create and ignored on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
     :param _builtins.str policy_type: (string) - Type of the policy. Required on create and ignored on update. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
     :param Union['GetPolicyInfoRowFilterArgs', 'GetPolicyInfoRowFilterArgsDict'] row_filter: (RowFilterOptions) - Options for row filter policies. Valid only if `policy_type` is `POLICY_TYPE_ROW_FILTER`.
@@ -297,6 +307,7 @@ def get_policy_info(column_mask: Optional[Union['GetPolicyInfoColumnMaskArgs', '
     :param Sequence[_builtins.str] to_principals: (list of string) - List of user or group names that the policy applies to.
            Required on create and optional on update
     :param _builtins.str when_condition: (string) - Optional condition when the policy should take effect
+    :param _builtins.str workspace_id: Workspace ID of the resource
     """
     __args__ = dict()
     __args__['columnMask'] = column_mask
@@ -311,6 +322,7 @@ def get_policy_info(column_mask: Optional[Union['GetPolicyInfoColumnMaskArgs', '
     __args__['rowFilter'] = row_filter
     __args__['toPrincipals'] = to_principals
     __args__['whenCondition'] = when_condition
+    __args__['workspaceId'] = workspace_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getPolicyInfo:getPolicyInfo', __args__, opts=opts, typ=GetPolicyInfoResult).value
 
@@ -331,7 +343,8 @@ def get_policy_info(column_mask: Optional[Union['GetPolicyInfoColumnMaskArgs', '
         to_principals=pulumi.get(__ret__, 'to_principals'),
         updated_at=pulumi.get(__ret__, 'updated_at'),
         updated_by=pulumi.get(__ret__, 'updated_by'),
-        when_condition=pulumi.get(__ret__, 'when_condition'))
+        when_condition=pulumi.get(__ret__, 'when_condition'),
+        workspace_id=pulumi.get(__ret__, 'workspace_id'))
 def get_policy_info_output(column_mask: Optional[pulumi.Input[Optional[Union['GetPolicyInfoColumnMaskArgs', 'GetPolicyInfoColumnMaskArgsDict']]]] = None,
                            comment: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                            except_principals: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
@@ -344,6 +357,7 @@ def get_policy_info_output(column_mask: Optional[pulumi.Input[Optional[Union['Ge
                            row_filter: Optional[pulumi.Input[Optional[Union['GetPolicyInfoRowFilterArgs', 'GetPolicyInfoRowFilterArgsDict']]]] = None,
                            to_principals: Optional[pulumi.Input[Sequence[_builtins.str]]] = None,
                            when_condition: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                           workspace_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPolicyInfoResult]:
     """
     Use this data source to access information about an existing resource.
@@ -354,17 +368,17 @@ def get_policy_info_output(column_mask: Optional[pulumi.Input[Optional[Union['Ge
     :param _builtins.str comment: (string) - Optional description of the policy
     :param Sequence[_builtins.str] except_principals: (list of string) - Optional list of user or group names that should be excluded from the policy
     :param _builtins.str for_securable_type: (string) - Type of securables that the policy should take effect on.
-           Only `table` is supported at this moment.
+           Only `TABLE` is supported at this moment.
            Required on create and optional on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
     :param Sequence[Union['GetPolicyInfoMatchColumnArgs', 'GetPolicyInfoMatchColumnArgsDict']] match_columns: (list of MatchColumn) - Optional list of condition expressions used to match table columns.
-           Only valid when `for_securable_type` is `table`.
+           Only valid when `for_securable_type` is `TABLE`.
            When specified, the policy only applies to tables whose columns satisfy all match conditions
-    :param _builtins.str name: Name of the policy. Required on create and ignored on update.
-           To update the name, use the `new_name` field
+    :param _builtins.str name: Name of the policy. Required on create and optional on update.
+           To rename the policy, set `name` to a different value on update
     :param _builtins.str on_securable_fullname: Full name of the securable on which the policy is defined.
            Required on create and ignored on update
     :param _builtins.str on_securable_type: Type of the securable on which the policy is defined.
-           Only `catalog`, `schema` and `table` are supported at this moment.
+           Only `CATALOG`, `SCHEMA` and `TABLE` are supported at this moment.
            Required on create and ignored on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
     :param _builtins.str policy_type: (string) - Type of the policy. Required on create and ignored on update. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
     :param Union['GetPolicyInfoRowFilterArgs', 'GetPolicyInfoRowFilterArgsDict'] row_filter: (RowFilterOptions) - Options for row filter policies. Valid only if `policy_type` is `POLICY_TYPE_ROW_FILTER`.
@@ -373,6 +387,7 @@ def get_policy_info_output(column_mask: Optional[pulumi.Input[Optional[Union['Ge
     :param Sequence[_builtins.str] to_principals: (list of string) - List of user or group names that the policy applies to.
            Required on create and optional on update
     :param _builtins.str when_condition: (string) - Optional condition when the policy should take effect
+    :param _builtins.str workspace_id: Workspace ID of the resource
     """
     __args__ = dict()
     __args__['columnMask'] = column_mask
@@ -387,6 +402,7 @@ def get_policy_info_output(column_mask: Optional[pulumi.Input[Optional[Union['Ge
     __args__['rowFilter'] = row_filter
     __args__['toPrincipals'] = to_principals
     __args__['whenCondition'] = when_condition
+    __args__['workspaceId'] = workspace_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getPolicyInfo:getPolicyInfo', __args__, opts=opts, typ=GetPolicyInfoResult)
     return __ret__.apply(lambda __response__: GetPolicyInfoResult(
@@ -406,4 +422,5 @@ def get_policy_info_output(column_mask: Optional[pulumi.Input[Optional[Union['Ge
         to_principals=pulumi.get(__response__, 'to_principals'),
         updated_at=pulumi.get(__response__, 'updated_at'),
         updated_by=pulumi.get(__response__, 'updated_by'),
-        when_condition=pulumi.get(__response__, 'when_condition')))
+        when_condition=pulumi.get(__response__, 'when_condition'),
+        workspace_id=pulumi.get(__response__, 'workspace_id')))

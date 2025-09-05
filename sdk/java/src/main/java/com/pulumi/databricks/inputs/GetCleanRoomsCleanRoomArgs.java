@@ -49,14 +49,14 @@ public final class GetCleanRoomsCleanRoomArgs extends com.pulumi.resources.Invok
     }
 
     /**
-     * (string) - This is Databricks username of the owner of the local clean room securable for permission management
+     * (string) - This is the Databricks username of the owner of the local clean room securable for permission management
      * 
      */
     @Import(name="owner")
     private @Nullable Output<String> owner;
 
     /**
-     * @return (string) - This is Databricks username of the owner of the local clean room securable for permission management
+     * @return (string) - This is the Databricks username of the owner of the local clean room securable for permission management
      * 
      */
     public Optional<Output<String>> owner() {
@@ -82,6 +82,21 @@ public final class GetCleanRoomsCleanRoomArgs extends com.pulumi.resources.Invok
         return Optional.ofNullable(this.remoteDetailedInfo);
     }
 
+    /**
+     * Workspace ID of the resource
+     * 
+     */
+    @Import(name="workspaceId")
+    private @Nullable Output<String> workspaceId;
+
+    /**
+     * @return Workspace ID of the resource
+     * 
+     */
+    public Optional<Output<String>> workspaceId() {
+        return Optional.ofNullable(this.workspaceId);
+    }
+
     private GetCleanRoomsCleanRoomArgs() {}
 
     private GetCleanRoomsCleanRoomArgs(GetCleanRoomsCleanRoomArgs $) {
@@ -89,6 +104,7 @@ public final class GetCleanRoomsCleanRoomArgs extends com.pulumi.resources.Invok
         this.name = $.name;
         this.owner = $.owner;
         this.remoteDetailedInfo = $.remoteDetailedInfo;
+        this.workspaceId = $.workspaceId;
     }
 
     public static Builder builder() {
@@ -154,7 +170,7 @@ public final class GetCleanRoomsCleanRoomArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param owner (string) - This is Databricks username of the owner of the local clean room securable for permission management
+         * @param owner (string) - This is the Databricks username of the owner of the local clean room securable for permission management
          * 
          * @return builder
          * 
@@ -165,7 +181,7 @@ public final class GetCleanRoomsCleanRoomArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param owner (string) - This is Databricks username of the owner of the local clean room securable for permission management
+         * @param owner (string) - This is the Databricks username of the owner of the local clean room securable for permission management
          * 
          * @return builder
          * 
@@ -197,6 +213,27 @@ public final class GetCleanRoomsCleanRoomArgs extends com.pulumi.resources.Invok
          */
         public Builder remoteDetailedInfo(GetCleanRoomsCleanRoomRemoteDetailedInfoArgs remoteDetailedInfo) {
             return remoteDetailedInfo(Output.of(remoteDetailedInfo));
+        }
+
+        /**
+         * @param workspaceId Workspace ID of the resource
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workspaceId(@Nullable Output<String> workspaceId) {
+            $.workspaceId = workspaceId;
+            return this;
+        }
+
+        /**
+         * @param workspaceId Workspace ID of the resource
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workspaceId(String workspaceId) {
+            return workspaceId(Output.of(workspaceId));
         }
 
         public GetCleanRoomsCleanRoomArgs build() {

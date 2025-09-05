@@ -20,7 +20,7 @@ import (
 //
 // import {
 //
-//	id = key
+//	id = "key"
 //
 //	to = databricks_materialized_features_feature_tag.this
 //
@@ -29,13 +29,15 @@ import (
 // If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
 //
 // ```sh
-// $ pulumi import databricks:index/materializedFeaturesFeatureTag:MaterializedFeaturesFeatureTag databricks_materialized_features_feature_tag key
+// $ pulumi import databricks:index/materializedFeaturesFeatureTag:MaterializedFeaturesFeatureTag databricks_materialized_features_feature_tag "key"
 // ```
 type MaterializedFeaturesFeatureTag struct {
 	pulumi.CustomResourceState
 
 	Key   pulumi.StringOutput    `pulumi:"key"`
 	Value pulumi.StringPtrOutput `pulumi:"value"`
+	// Workspace ID of the resource
+	WorkspaceId pulumi.StringPtrOutput `pulumi:"workspaceId"`
 }
 
 // NewMaterializedFeaturesFeatureTag registers a new resource with the given unique name, arguments, and options.
@@ -73,11 +75,15 @@ func GetMaterializedFeaturesFeatureTag(ctx *pulumi.Context,
 type materializedFeaturesFeatureTagState struct {
 	Key   *string `pulumi:"key"`
 	Value *string `pulumi:"value"`
+	// Workspace ID of the resource
+	WorkspaceId *string `pulumi:"workspaceId"`
 }
 
 type MaterializedFeaturesFeatureTagState struct {
 	Key   pulumi.StringPtrInput
 	Value pulumi.StringPtrInput
+	// Workspace ID of the resource
+	WorkspaceId pulumi.StringPtrInput
 }
 
 func (MaterializedFeaturesFeatureTagState) ElementType() reflect.Type {
@@ -87,12 +93,16 @@ func (MaterializedFeaturesFeatureTagState) ElementType() reflect.Type {
 type materializedFeaturesFeatureTagArgs struct {
 	Key   string  `pulumi:"key"`
 	Value *string `pulumi:"value"`
+	// Workspace ID of the resource
+	WorkspaceId *string `pulumi:"workspaceId"`
 }
 
 // The set of arguments for constructing a MaterializedFeaturesFeatureTag resource.
 type MaterializedFeaturesFeatureTagArgs struct {
 	Key   pulumi.StringInput
 	Value pulumi.StringPtrInput
+	// Workspace ID of the resource
+	WorkspaceId pulumi.StringPtrInput
 }
 
 func (MaterializedFeaturesFeatureTagArgs) ElementType() reflect.Type {
@@ -188,6 +198,11 @@ func (o MaterializedFeaturesFeatureTagOutput) Key() pulumi.StringOutput {
 
 func (o MaterializedFeaturesFeatureTagOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MaterializedFeaturesFeatureTag) pulumi.StringPtrOutput { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+// Workspace ID of the resource
+func (o MaterializedFeaturesFeatureTagOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MaterializedFeaturesFeatureTag) pulumi.StringPtrOutput { return v.WorkspaceId }).(pulumi.StringPtrOutput)
 }
 
 type MaterializedFeaturesFeatureTagArrayOutput struct{ *pulumi.OutputState }

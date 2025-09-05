@@ -39,6 +39,13 @@ public final class GetDatabaseInstanceResult {
      */
     private String creator;
     /**
+     * @return (boolean) - xref AIP-129. `enable_pg_native_login` is owned by the client, while `effective_enable_pg_native_login` is owned by the server.
+     * `enable_pg_native_login` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+     * `effective_enable_pg_native_login` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * 
+     */
+    private Boolean effectiveEnablePgNativeLogin;
+    /**
      * @return (boolean) - xref AIP-129. `enable_readable_secondaries` is owned by the client, while `effective_enable_readable_secondaries` is owned by the server.
      * `enable_readable_secondaries` will only be set in Create/Update response messages if and only if the user provides the field via the request.
      * `effective_enable_readable_secondaries` on the other hand will always bet set in all response messages (Create/Update/Get/List)
@@ -66,6 +73,11 @@ public final class GetDatabaseInstanceResult {
      * 
      */
     private Boolean effectiveStopped;
+    /**
+     * @return (boolean) - Whether the instance has PG native password login enabled. Defaults to true
+     * 
+     */
+    private Boolean enablePgNativeLogin;
     /**
      * @return (boolean) - Whether to enable secondaries to serve read-only traffic. Defaults to false
      * 
@@ -133,6 +145,7 @@ public final class GetDatabaseInstanceResult {
      * 
      */
     private String uid;
+    private @Nullable String workspaceId;
 
     private GetDatabaseInstanceResult() {}
     /**
@@ -163,6 +176,15 @@ public final class GetDatabaseInstanceResult {
      */
     public String creator() {
         return this.creator;
+    }
+    /**
+     * @return (boolean) - xref AIP-129. `enable_pg_native_login` is owned by the client, while `effective_enable_pg_native_login` is owned by the server.
+     * `enable_pg_native_login` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+     * `effective_enable_pg_native_login` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * 
+     */
+    public Boolean effectiveEnablePgNativeLogin() {
+        return this.effectiveEnablePgNativeLogin;
     }
     /**
      * @return (boolean) - xref AIP-129. `enable_readable_secondaries` is owned by the client, while `effective_enable_readable_secondaries` is owned by the server.
@@ -199,6 +221,13 @@ public final class GetDatabaseInstanceResult {
      */
     public Boolean effectiveStopped() {
         return this.effectiveStopped;
+    }
+    /**
+     * @return (boolean) - Whether the instance has PG native password login enabled. Defaults to true
+     * 
+     */
+    public Boolean enablePgNativeLogin() {
+        return this.enablePgNativeLogin;
     }
     /**
      * @return (boolean) - Whether to enable secondaries to serve read-only traffic. Defaults to false
@@ -291,6 +320,9 @@ public final class GetDatabaseInstanceResult {
     public String uid() {
         return this.uid;
     }
+    public Optional<String> workspaceId() {
+        return Optional.ofNullable(this.workspaceId);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -305,10 +337,12 @@ public final class GetDatabaseInstanceResult {
         private List<GetDatabaseInstanceChildInstanceRef> childInstanceRefs;
         private String creationTime;
         private String creator;
+        private Boolean effectiveEnablePgNativeLogin;
         private Boolean effectiveEnableReadableSecondaries;
         private Integer effectiveNodeCount;
         private Integer effectiveRetentionWindowInDays;
         private Boolean effectiveStopped;
+        private Boolean enablePgNativeLogin;
         private @Nullable Boolean enableReadableSecondaries;
         private String id;
         private String name;
@@ -321,6 +355,7 @@ public final class GetDatabaseInstanceResult {
         private String state;
         private @Nullable Boolean stopped;
         private String uid;
+        private @Nullable String workspaceId;
         public Builder() {}
         public Builder(GetDatabaseInstanceResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -328,10 +363,12 @@ public final class GetDatabaseInstanceResult {
     	      this.childInstanceRefs = defaults.childInstanceRefs;
     	      this.creationTime = defaults.creationTime;
     	      this.creator = defaults.creator;
+    	      this.effectiveEnablePgNativeLogin = defaults.effectiveEnablePgNativeLogin;
     	      this.effectiveEnableReadableSecondaries = defaults.effectiveEnableReadableSecondaries;
     	      this.effectiveNodeCount = defaults.effectiveNodeCount;
     	      this.effectiveRetentionWindowInDays = defaults.effectiveRetentionWindowInDays;
     	      this.effectiveStopped = defaults.effectiveStopped;
+    	      this.enablePgNativeLogin = defaults.enablePgNativeLogin;
     	      this.enableReadableSecondaries = defaults.enableReadableSecondaries;
     	      this.id = defaults.id;
     	      this.name = defaults.name;
@@ -344,6 +381,7 @@ public final class GetDatabaseInstanceResult {
     	      this.state = defaults.state;
     	      this.stopped = defaults.stopped;
     	      this.uid = defaults.uid;
+    	      this.workspaceId = defaults.workspaceId;
         }
 
         @CustomType.Setter
@@ -380,6 +418,14 @@ public final class GetDatabaseInstanceResult {
             return this;
         }
         @CustomType.Setter
+        public Builder effectiveEnablePgNativeLogin(Boolean effectiveEnablePgNativeLogin) {
+            if (effectiveEnablePgNativeLogin == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceResult", "effectiveEnablePgNativeLogin");
+            }
+            this.effectiveEnablePgNativeLogin = effectiveEnablePgNativeLogin;
+            return this;
+        }
+        @CustomType.Setter
         public Builder effectiveEnableReadableSecondaries(Boolean effectiveEnableReadableSecondaries) {
             if (effectiveEnableReadableSecondaries == null) {
               throw new MissingRequiredPropertyException("GetDatabaseInstanceResult", "effectiveEnableReadableSecondaries");
@@ -409,6 +455,14 @@ public final class GetDatabaseInstanceResult {
               throw new MissingRequiredPropertyException("GetDatabaseInstanceResult", "effectiveStopped");
             }
             this.effectiveStopped = effectiveStopped;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder enablePgNativeLogin(Boolean enablePgNativeLogin) {
+            if (enablePgNativeLogin == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceResult", "enablePgNativeLogin");
+            }
+            this.enablePgNativeLogin = enablePgNativeLogin;
             return this;
         }
         @CustomType.Setter
@@ -497,16 +551,24 @@ public final class GetDatabaseInstanceResult {
             this.uid = uid;
             return this;
         }
+        @CustomType.Setter
+        public Builder workspaceId(@Nullable String workspaceId) {
+
+            this.workspaceId = workspaceId;
+            return this;
+        }
         public GetDatabaseInstanceResult build() {
             final var _resultValue = new GetDatabaseInstanceResult();
             _resultValue.capacity = capacity;
             _resultValue.childInstanceRefs = childInstanceRefs;
             _resultValue.creationTime = creationTime;
             _resultValue.creator = creator;
+            _resultValue.effectiveEnablePgNativeLogin = effectiveEnablePgNativeLogin;
             _resultValue.effectiveEnableReadableSecondaries = effectiveEnableReadableSecondaries;
             _resultValue.effectiveNodeCount = effectiveNodeCount;
             _resultValue.effectiveRetentionWindowInDays = effectiveRetentionWindowInDays;
             _resultValue.effectiveStopped = effectiveStopped;
+            _resultValue.enablePgNativeLogin = enablePgNativeLogin;
             _resultValue.enableReadableSecondaries = enableReadableSecondaries;
             _resultValue.id = id;
             _resultValue.name = name;
@@ -519,6 +581,7 @@ public final class GetDatabaseInstanceResult {
             _resultValue.state = state;
             _resultValue.stopped = stopped;
             _resultValue.uid = uid;
+            _resultValue.workspaceId = workspaceId;
             return _resultValue;
         }
     }

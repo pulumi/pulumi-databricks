@@ -90,6 +90,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["host"] = args?.host;
             resourceInputs["httpTimeoutSeconds"] = pulumi.output(args?.httpTimeoutSeconds).apply(JSON.stringify);
             resourceInputs["metadataServiceUrl"] = args?.metadataServiceUrl ? pulumi.secret(args.metadataServiceUrl) : undefined;
+            resourceInputs["oauthCallbackPort"] = pulumi.output(args?.oauthCallbackPort).apply(JSON.stringify);
             resourceInputs["oidcTokenEnv"] = args?.oidcTokenEnv;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
             resourceInputs["profile"] = args?.profile;
@@ -146,6 +147,7 @@ export interface ProviderArgs {
     host?: pulumi.Input<string>;
     httpTimeoutSeconds?: pulumi.Input<number>;
     metadataServiceUrl?: pulumi.Input<string>;
+    oauthCallbackPort?: pulumi.Input<number>;
     oidcTokenEnv?: pulumi.Input<string>;
     password?: pulumi.Input<string>;
     profile?: pulumi.Input<string>;

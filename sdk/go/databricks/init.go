@@ -23,8 +23,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "databricks:index/accessControlRuleSet:AccessControlRuleSet":
 		r = &AccessControlRuleSet{}
+	case "databricks:index/accountFederationPolicy:AccountFederationPolicy":
+		r = &AccountFederationPolicy{}
 	case "databricks:index/accountNetworkPolicy:AccountNetworkPolicy":
 		r = &AccountNetworkPolicy{}
+	case "databricks:index/accountSettingV2:AccountSettingV2":
+		r = &AccountSettingV2{}
 	case "databricks:index/aibiDashboardEmbeddingAccessPolicySetting:AibiDashboardEmbeddingAccessPolicySetting":
 		r = &AibiDashboardEmbeddingAccessPolicySetting{}
 	case "databricks:index/aibiDashboardEmbeddingApprovedDomainsSetting:AibiDashboardEmbeddingApprovedDomainsSetting":
@@ -35,6 +39,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AlertV2{}
 	case "databricks:index/app:App":
 		r = &App{}
+	case "databricks:index/appsSettingsCustomTemplate:AppsSettingsCustomTemplate":
+		r = &AppsSettingsCustomTemplate{}
 	case "databricks:index/artifactAllowlist:ArtifactAllowlist":
 		r = &ArtifactAllowlist{}
 	case "databricks:index/automaticClusterUpdateWorkspaceSetting:AutomaticClusterUpdateWorkspaceSetting":
@@ -89,6 +95,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &EnhancedSecurityMonitoringWorkspaceSetting{}
 	case "databricks:index/entitlements:Entitlements":
 		r = &Entitlements{}
+	case "databricks:index/entityTagAssignment:EntityTagAssignment":
+		r = &EntityTagAssignment{}
 	case "databricks:index/externalLocation:ExternalLocation":
 		r = &ExternalLocation{}
 	case "databricks:index/externalMetadata:ExternalMetadata":
@@ -213,6 +221,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &SecretScope{}
 	case "databricks:index/servicePrincipal:ServicePrincipal":
 		r = &ServicePrincipal{}
+	case "databricks:index/servicePrincipalFederationPolicy:ServicePrincipalFederationPolicy":
+		r = &ServicePrincipalFederationPolicy{}
 	case "databricks:index/servicePrincipalRole:ServicePrincipalRole":
 		r = &ServicePrincipalRole{}
 	case "databricks:index/servicePrincipalSecret:ServicePrincipalSecret":
@@ -243,6 +253,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &SystemSchema{}
 	case "databricks:index/table:Table":
 		r = &Table{}
+	case "databricks:index/tagPolicy:TagPolicy":
+		r = &TagPolicy{}
 	case "databricks:index/token:Token":
 		r = &Token{}
 	case "databricks:index/user:User":
@@ -265,6 +277,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &WorkspaceFile{}
 	case "databricks:index/workspaceNetworkOption:WorkspaceNetworkOption":
 		r = &WorkspaceNetworkOption{}
+	case "databricks:index/workspaceSettingV2:WorkspaceSettingV2":
+		r = &WorkspaceSettingV2{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -303,7 +317,17 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"databricks",
+		"index/accountFederationPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
 		"index/accountNetworkPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/accountSettingV2",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -329,6 +353,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"databricks",
 		"index/app",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/appsSettingsCustomTemplate",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -464,6 +493,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"databricks",
 		"index/entitlements",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/entityTagAssignment",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -778,6 +812,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"databricks",
+		"index/servicePrincipalFederationPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
 		"index/servicePrincipalRole",
 		&module{version},
 	)
@@ -853,6 +892,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"databricks",
+		"index/tagPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
 		"index/token",
 		&module{version},
 	)
@@ -904,6 +948,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"databricks",
 		"index/workspaceNetworkOption",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/workspaceSettingV2",
 		&module{version},
 	)
 	pulumi.RegisterResourcePackage(

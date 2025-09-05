@@ -26,6 +26,14 @@ namespace Pulumi.Databricks.Inputs
             set => _objects = value;
         }
 
+        [Input("sourceConfigurations")]
+        private InputList<Inputs.PipelineIngestionDefinitionSourceConfigurationArgs>? _sourceConfigurations;
+        public InputList<Inputs.PipelineIngestionDefinitionSourceConfigurationArgs> SourceConfigurations
+        {
+            get => _sourceConfigurations ?? (_sourceConfigurations = new InputList<Inputs.PipelineIngestionDefinitionSourceConfigurationArgs>());
+            set => _sourceConfigurations = value;
+        }
+
         [Input("sourceType")]
         public Input<string>? SourceType { get; set; }
 

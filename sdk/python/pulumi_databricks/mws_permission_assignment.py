@@ -25,8 +25,8 @@ class MwsPermissionAssignmentArgs:
         """
         The set of arguments for constructing a MwsPermissionAssignment resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] permissions: The list of workspace permissions to assign to the principal:
-               * `"USER"` - Can access the workspace with basic privileges.
-               * `"ADMIN"` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
+               * `"USER"` - Adds principal to the workspace `users` group. This gives basic workspace access.
+               * `"ADMIN"` - Adds principal to the workspace `admins` group. This gives workspace admin privileges to manage users and groups, workspace configurations, and more.
         :param pulumi.Input[_builtins.str] principal_id: Databricks ID of the user, service principal, or group. The principal ID can be retrieved using the SCIM API, or using databricks_user, ServicePrincipal or Group data sources.
         :param pulumi.Input[_builtins.str] workspace_id: Databricks workspace ID.
         """
@@ -39,8 +39,8 @@ class MwsPermissionAssignmentArgs:
     def permissions(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
         """
         The list of workspace permissions to assign to the principal:
-        * `"USER"` - Can access the workspace with basic privileges.
-        * `"ADMIN"` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
+        * `"USER"` - Adds principal to the workspace `users` group. This gives basic workspace access.
+        * `"ADMIN"` - Adds principal to the workspace `admins` group. This gives workspace admin privileges to manage users and groups, workspace configurations, and more.
         """
         return pulumi.get(self, "permissions")
 
@@ -82,8 +82,8 @@ class _MwsPermissionAssignmentState:
         """
         Input properties used for looking up and filtering MwsPermissionAssignment resources.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] permissions: The list of workspace permissions to assign to the principal:
-               * `"USER"` - Can access the workspace with basic privileges.
-               * `"ADMIN"` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
+               * `"USER"` - Adds principal to the workspace `users` group. This gives basic workspace access.
+               * `"ADMIN"` - Adds principal to the workspace `admins` group. This gives workspace admin privileges to manage users and groups, workspace configurations, and more.
         :param pulumi.Input[_builtins.str] principal_id: Databricks ID of the user, service principal, or group. The principal ID can be retrieved using the SCIM API, or using databricks_user, ServicePrincipal or Group data sources.
         :param pulumi.Input[_builtins.str] workspace_id: Databricks workspace ID.
         """
@@ -99,8 +99,8 @@ class _MwsPermissionAssignmentState:
     def permissions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of workspace permissions to assign to the principal:
-        * `"USER"` - Can access the workspace with basic privileges.
-        * `"ADMIN"` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
+        * `"USER"` - Adds principal to the workspace `users` group. This gives basic workspace access.
+        * `"ADMIN"` - Adds principal to the workspace `admins` group. This gives workspace admin privileges to manage users and groups, workspace configurations, and more.
         """
         return pulumi.get(self, "permissions")
 
@@ -144,7 +144,7 @@ class MwsPermissionAssignment(pulumi.CustomResource):
                  workspace_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        This resource is used to assign account-level users, service principals and groups to a Databricks workspace.
+        This resource is used to assign account-level users, service principals and groups to a Databricks workspace. To configure additional entitlements such as cluster creation, please use databricks_entitlements.
 
         > This resource can only be used with an account-level provider!
 
@@ -223,8 +223,8 @@ class MwsPermissionAssignment(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] permissions: The list of workspace permissions to assign to the principal:
-               * `"USER"` - Can access the workspace with basic privileges.
-               * `"ADMIN"` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
+               * `"USER"` - Adds principal to the workspace `users` group. This gives basic workspace access.
+               * `"ADMIN"` - Adds principal to the workspace `admins` group. This gives workspace admin privileges to manage users and groups, workspace configurations, and more.
         :param pulumi.Input[_builtins.str] principal_id: Databricks ID of the user, service principal, or group. The principal ID can be retrieved using the SCIM API, or using databricks_user, ServicePrincipal or Group data sources.
         :param pulumi.Input[_builtins.str] workspace_id: Databricks workspace ID.
         """
@@ -235,7 +235,7 @@ class MwsPermissionAssignment(pulumi.CustomResource):
                  args: MwsPermissionAssignmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        This resource is used to assign account-level users, service principals and groups to a Databricks workspace.
+        This resource is used to assign account-level users, service principals and groups to a Databricks workspace. To configure additional entitlements such as cluster creation, please use databricks_entitlements.
 
         > This resource can only be used with an account-level provider!
 
@@ -368,8 +368,8 @@ class MwsPermissionAssignment(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] permissions: The list of workspace permissions to assign to the principal:
-               * `"USER"` - Can access the workspace with basic privileges.
-               * `"ADMIN"` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
+               * `"USER"` - Adds principal to the workspace `users` group. This gives basic workspace access.
+               * `"ADMIN"` - Adds principal to the workspace `admins` group. This gives workspace admin privileges to manage users and groups, workspace configurations, and more.
         :param pulumi.Input[_builtins.str] principal_id: Databricks ID of the user, service principal, or group. The principal ID can be retrieved using the SCIM API, or using databricks_user, ServicePrincipal or Group data sources.
         :param pulumi.Input[_builtins.str] workspace_id: Databricks workspace ID.
         """
@@ -387,8 +387,8 @@ class MwsPermissionAssignment(pulumi.CustomResource):
     def permissions(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
         The list of workspace permissions to assign to the principal:
-        * `"USER"` - Can access the workspace with basic privileges.
-        * `"ADMIN"` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
+        * `"USER"` - Adds principal to the workspace `users` group. This gives basic workspace access.
+        * `"ADMIN"` - Adds principal to the workspace `admins` group. This gives workspace admin privileges to manage users and groups, workspace configurations, and more.
         """
         return pulumi.get(self, "permissions")
 

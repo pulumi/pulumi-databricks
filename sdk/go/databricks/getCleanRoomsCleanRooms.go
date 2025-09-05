@@ -38,28 +38,47 @@ import (
 //	}
 //
 // ```
-func GetCleanRoomsCleanRooms(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetCleanRoomsCleanRoomsResult, error) {
+func GetCleanRoomsCleanRooms(ctx *pulumi.Context, args *GetCleanRoomsCleanRoomsArgs, opts ...pulumi.InvokeOption) (*GetCleanRoomsCleanRoomsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetCleanRoomsCleanRoomsResult
-	err := ctx.Invoke("databricks:index/getCleanRoomsCleanRooms:getCleanRoomsCleanRooms", nil, &rv, opts...)
+	err := ctx.Invoke("databricks:index/getCleanRoomsCleanRooms:getCleanRoomsCleanRooms", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &rv, nil
 }
 
+// A collection of arguments for invoking getCleanRoomsCleanRooms.
+type GetCleanRoomsCleanRoomsArgs struct {
+	// Workspace ID of the resource
+	WorkspaceId *string `pulumi:"workspaceId"`
+}
+
 // A collection of values returned by getCleanRoomsCleanRooms.
 type GetCleanRoomsCleanRoomsResult struct {
 	CleanRooms []GetCleanRoomsCleanRoomsCleanRoom `pulumi:"cleanRooms"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	Id          string  `pulumi:"id"`
+	WorkspaceId *string `pulumi:"workspaceId"`
 }
 
-func GetCleanRoomsCleanRoomsOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetCleanRoomsCleanRoomsResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetCleanRoomsCleanRoomsResultOutput, error) {
-		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-		return ctx.InvokeOutput("databricks:index/getCleanRoomsCleanRooms:getCleanRoomsCleanRooms", nil, GetCleanRoomsCleanRoomsResultOutput{}, options).(GetCleanRoomsCleanRoomsResultOutput), nil
-	}).(GetCleanRoomsCleanRoomsResultOutput)
+func GetCleanRoomsCleanRoomsOutput(ctx *pulumi.Context, args GetCleanRoomsCleanRoomsOutputArgs, opts ...pulumi.InvokeOption) GetCleanRoomsCleanRoomsResultOutput {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (GetCleanRoomsCleanRoomsResultOutput, error) {
+			args := v.(GetCleanRoomsCleanRoomsArgs)
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("databricks:index/getCleanRoomsCleanRooms:getCleanRoomsCleanRooms", args, GetCleanRoomsCleanRoomsResultOutput{}, options).(GetCleanRoomsCleanRoomsResultOutput), nil
+		}).(GetCleanRoomsCleanRoomsResultOutput)
+}
+
+// A collection of arguments for invoking getCleanRoomsCleanRooms.
+type GetCleanRoomsCleanRoomsOutputArgs struct {
+	// Workspace ID of the resource
+	WorkspaceId pulumi.StringPtrInput `pulumi:"workspaceId"`
+}
+
+func (GetCleanRoomsCleanRoomsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCleanRoomsCleanRoomsArgs)(nil)).Elem()
 }
 
 // A collection of values returned by getCleanRoomsCleanRooms.
@@ -84,6 +103,10 @@ func (o GetCleanRoomsCleanRoomsResultOutput) CleanRooms() GetCleanRoomsCleanRoom
 // The provider-assigned unique ID for this managed resource.
 func (o GetCleanRoomsCleanRoomsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCleanRoomsCleanRoomsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetCleanRoomsCleanRoomsResultOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCleanRoomsCleanRoomsResult) *string { return v.WorkspaceId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

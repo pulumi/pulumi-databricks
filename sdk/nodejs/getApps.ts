@@ -9,8 +9,6 @@ import * as utilities from "./utilities";
 /**
  * > This data source can only be used with a workspace-level provider!
  *
- * > This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html).
- *
  * [Databricks Apps](https://docs.databricks.com/en/dev-tools/databricks-apps/index.html) run directly on a customer’s Databricks instance, integrate with their data, use and extend Databricks services, and enable users to interact through single sign-on. This resource creates the application but does not handle app deployment, which should be handled separately as part of your CI/CD pipeline.
  *
  * This data source allows you to fetch information about all Databricks Apps within a workspace.
@@ -52,8 +50,6 @@ export interface GetAppsResult {
 }
 /**
  * > This data source can only be used with a workspace-level provider!
- *
- * > This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html).
  *
  * [Databricks Apps](https://docs.databricks.com/en/dev-tools/databricks-apps/index.html) run directly on a customer’s Databricks instance, integrate with their data, use and extend Databricks services, and enable users to interact through single sign-on. This resource creates the application but does not handle app deployment, which should be handled separately as part of your CI/CD pipeline.
  *

@@ -33,8 +33,8 @@ namespace Pulumi.Databricks
         /// });
         /// ```
         /// </summary>
-        public static Task<GetQualityMonitorsV2Result> InvokeAsync(InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.InvokeAsync<GetQualityMonitorsV2Result>("databricks:index/getQualityMonitorsV2:getQualityMonitorsV2", InvokeArgs.Empty, options.WithDefaults());
+        public static Task<GetQualityMonitorsV2Result> InvokeAsync(GetQualityMonitorsV2Args? args = null, InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetQualityMonitorsV2Result>("databricks:index/getQualityMonitorsV2:getQualityMonitorsV2", args ?? new GetQualityMonitorsV2Args(), options.WithDefaults());
 
         /// <summary>
         /// This data source can be used to fetch the list of quality monitors v2.
@@ -58,8 +58,8 @@ namespace Pulumi.Databricks
         /// });
         /// ```
         /// </summary>
-        public static Output<GetQualityMonitorsV2Result> Invoke(InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.Invoke<GetQualityMonitorsV2Result>("databricks:index/getQualityMonitorsV2:getQualityMonitorsV2", InvokeArgs.Empty, options.WithDefaults());
+        public static Output<GetQualityMonitorsV2Result> Invoke(GetQualityMonitorsV2InvokeArgs? args = null, InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.Invoke<GetQualityMonitorsV2Result>("databricks:index/getQualityMonitorsV2:getQualityMonitorsV2", args ?? new GetQualityMonitorsV2InvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source can be used to fetch the list of quality monitors v2.
@@ -83,8 +83,37 @@ namespace Pulumi.Databricks
         /// });
         /// ```
         /// </summary>
-        public static Output<GetQualityMonitorsV2Result> Invoke(InvokeOutputOptions options)
-            => global::Pulumi.Deployment.Instance.Invoke<GetQualityMonitorsV2Result>("databricks:index/getQualityMonitorsV2:getQualityMonitorsV2", InvokeArgs.Empty, options.WithDefaults());
+        public static Output<GetQualityMonitorsV2Result> Invoke(GetQualityMonitorsV2InvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetQualityMonitorsV2Result>("databricks:index/getQualityMonitorsV2:getQualityMonitorsV2", args ?? new GetQualityMonitorsV2InvokeArgs(), options.WithDefaults());
+    }
+
+
+    public sealed class GetQualityMonitorsV2Args : global::Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Workspace ID of the resource
+        /// </summary>
+        [Input("workspaceId")]
+        public string? WorkspaceId { get; set; }
+
+        public GetQualityMonitorsV2Args()
+        {
+        }
+        public static new GetQualityMonitorsV2Args Empty => new GetQualityMonitorsV2Args();
+    }
+
+    public sealed class GetQualityMonitorsV2InvokeArgs : global::Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Workspace ID of the resource
+        /// </summary>
+        [Input("workspaceId")]
+        public Input<string>? WorkspaceId { get; set; }
+
+        public GetQualityMonitorsV2InvokeArgs()
+        {
+        }
+        public static new GetQualityMonitorsV2InvokeArgs Empty => new GetQualityMonitorsV2InvokeArgs();
     }
 
 
@@ -96,15 +125,19 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<Outputs.GetQualityMonitorsV2QualityMonitorResult> QualityMonitors;
+        public readonly string? WorkspaceId;
 
         [OutputConstructor]
         private GetQualityMonitorsV2Result(
             string id,
 
-            ImmutableArray<Outputs.GetQualityMonitorsV2QualityMonitorResult> qualityMonitors)
+            ImmutableArray<Outputs.GetQualityMonitorsV2QualityMonitorResult> qualityMonitors,
+
+            string? workspaceId)
         {
             Id = id;
             QualityMonitors = qualityMonitors;
+            WorkspaceId = workspaceId;
         }
     }
 }

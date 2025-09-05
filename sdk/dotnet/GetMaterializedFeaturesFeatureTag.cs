@@ -33,6 +33,12 @@ namespace Pulumi.Databricks
         [Input("value")]
         public string? Value { get; set; }
 
+        /// <summary>
+        /// Workspace ID of the resource
+        /// </summary>
+        [Input("workspaceId")]
+        public string? WorkspaceId { get; set; }
+
         public GetMaterializedFeaturesFeatureTagArgs()
         {
         }
@@ -49,6 +55,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }
+
+        /// <summary>
+        /// Workspace ID of the resource
+        /// </summary>
+        [Input("workspaceId")]
+        public Input<string>? WorkspaceId { get; set; }
 
         public GetMaterializedFeaturesFeatureTagInvokeArgs()
         {
@@ -72,6 +84,7 @@ namespace Pulumi.Databricks
         /// (string)
         /// </summary>
         public readonly string? Value;
+        public readonly string? WorkspaceId;
 
         [OutputConstructor]
         private GetMaterializedFeaturesFeatureTagResult(
@@ -79,11 +92,14 @@ namespace Pulumi.Databricks
 
             string key,
 
-            string? value)
+            string? value,
+
+            string? workspaceId)
         {
             Id = id;
             Key = key;
             Value = value;
+            WorkspaceId = workspaceId;
         }
     }
 }

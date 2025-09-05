@@ -4,7 +4,9 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetAlertV2EffectiveRunAs;
 import com.pulumi.databricks.outputs.GetAlertV2Evaluation;
+import com.pulumi.databricks.outputs.GetAlertV2RunAs;
 import com.pulumi.databricks.outputs.GetAlertV2Schedule;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
@@ -34,6 +36,13 @@ public final class GetAlertV2Result {
      * 
      */
     private @Nullable String displayName;
+    /**
+     * @return (AlertV2RunAs) - The actual identity that will be used to execute the alert.
+     * This is an output-only field that shows the resolved run-as identity after applying
+     * permissions and defaults
+     * 
+     */
+    private GetAlertV2EffectiveRunAs effectiveRunAs;
     /**
      * @return (AlertV2Evaluation)
      * 
@@ -65,8 +74,18 @@ public final class GetAlertV2Result {
      */
     private @Nullable String queryText;
     /**
-     * @return (string) - The run as username or application ID of service principal.
-     * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
+     * @return (AlertV2RunAs) - Specifies the identity that will be used to run the alert.
+     * This field allows you to configure alerts to run as a specific user or service principal.
+     * - For user identity: Set `user_name` to the email of an active workspace user. Users can only set this to their own email.
+     * - For service principal: Set `service_principal_name` to the application ID. Requires the `servicePrincipal/user` role.
+     *   If not specified, the alert will run as the request user
+     * 
+     */
+    private @Nullable GetAlertV2RunAs runAs;
+    /**
+     * @return (string, deprecated) - The run as username or application ID of service principal.
+     * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
+     * Deprecated: Use `run_as` field instead. This field will be removed in a future release
      * 
      */
     private @Nullable String runAsUserName;
@@ -85,6 +104,7 @@ public final class GetAlertV2Result {
      * 
      */
     private @Nullable String warehouseId;
+    private @Nullable String workspaceId;
 
     private GetAlertV2Result() {}
     /**
@@ -114,6 +134,15 @@ public final class GetAlertV2Result {
      */
     public Optional<String> displayName() {
         return Optional.ofNullable(this.displayName);
+    }
+    /**
+     * @return (AlertV2RunAs) - The actual identity that will be used to execute the alert.
+     * This is an output-only field that shows the resolved run-as identity after applying
+     * permissions and defaults
+     * 
+     */
+    public GetAlertV2EffectiveRunAs effectiveRunAs() {
+        return this.effectiveRunAs;
     }
     /**
      * @return (AlertV2Evaluation)
@@ -158,8 +187,20 @@ public final class GetAlertV2Result {
         return Optional.ofNullable(this.queryText);
     }
     /**
-     * @return (string) - The run as username or application ID of service principal.
-     * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
+     * @return (AlertV2RunAs) - Specifies the identity that will be used to run the alert.
+     * This field allows you to configure alerts to run as a specific user or service principal.
+     * - For user identity: Set `user_name` to the email of an active workspace user. Users can only set this to their own email.
+     * - For service principal: Set `service_principal_name` to the application ID. Requires the `servicePrincipal/user` role.
+     *   If not specified, the alert will run as the request user
+     * 
+     */
+    public Optional<GetAlertV2RunAs> runAs() {
+        return Optional.ofNullable(this.runAs);
+    }
+    /**
+     * @return (string, deprecated) - The run as username or application ID of service principal.
+     * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
+     * Deprecated: Use `run_as` field instead. This field will be removed in a future release
      * 
      */
     public Optional<String> runAsUserName() {
@@ -186,6 +227,9 @@ public final class GetAlertV2Result {
     public Optional<String> warehouseId() {
         return Optional.ofNullable(this.warehouseId);
     }
+    public Optional<String> workspaceId() {
+        return Optional.ofNullable(this.workspaceId);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -200,16 +244,19 @@ public final class GetAlertV2Result {
         private @Nullable String customDescription;
         private @Nullable String customSummary;
         private @Nullable String displayName;
+        private GetAlertV2EffectiveRunAs effectiveRunAs;
         private @Nullable GetAlertV2Evaluation evaluation;
         private String id;
         private String lifecycleState;
         private String ownerUserName;
         private @Nullable String parentPath;
         private @Nullable String queryText;
+        private @Nullable GetAlertV2RunAs runAs;
         private @Nullable String runAsUserName;
         private @Nullable GetAlertV2Schedule schedule;
         private String updateTime;
         private @Nullable String warehouseId;
+        private @Nullable String workspaceId;
         public Builder() {}
         public Builder(GetAlertV2Result defaults) {
     	      Objects.requireNonNull(defaults);
@@ -217,16 +264,19 @@ public final class GetAlertV2Result {
     	      this.customDescription = defaults.customDescription;
     	      this.customSummary = defaults.customSummary;
     	      this.displayName = defaults.displayName;
+    	      this.effectiveRunAs = defaults.effectiveRunAs;
     	      this.evaluation = defaults.evaluation;
     	      this.id = defaults.id;
     	      this.lifecycleState = defaults.lifecycleState;
     	      this.ownerUserName = defaults.ownerUserName;
     	      this.parentPath = defaults.parentPath;
     	      this.queryText = defaults.queryText;
+    	      this.runAs = defaults.runAs;
     	      this.runAsUserName = defaults.runAsUserName;
     	      this.schedule = defaults.schedule;
     	      this.updateTime = defaults.updateTime;
     	      this.warehouseId = defaults.warehouseId;
+    	      this.workspaceId = defaults.workspaceId;
         }
 
         @CustomType.Setter
@@ -253,6 +303,14 @@ public final class GetAlertV2Result {
         public Builder displayName(@Nullable String displayName) {
 
             this.displayName = displayName;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder effectiveRunAs(GetAlertV2EffectiveRunAs effectiveRunAs) {
+            if (effectiveRunAs == null) {
+              throw new MissingRequiredPropertyException("GetAlertV2Result", "effectiveRunAs");
+            }
+            this.effectiveRunAs = effectiveRunAs;
             return this;
         }
         @CustomType.Setter
@@ -298,6 +356,12 @@ public final class GetAlertV2Result {
             return this;
         }
         @CustomType.Setter
+        public Builder runAs(@Nullable GetAlertV2RunAs runAs) {
+
+            this.runAs = runAs;
+            return this;
+        }
+        @CustomType.Setter
         public Builder runAsUserName(@Nullable String runAsUserName) {
 
             this.runAsUserName = runAsUserName;
@@ -323,22 +387,31 @@ public final class GetAlertV2Result {
             this.warehouseId = warehouseId;
             return this;
         }
+        @CustomType.Setter
+        public Builder workspaceId(@Nullable String workspaceId) {
+
+            this.workspaceId = workspaceId;
+            return this;
+        }
         public GetAlertV2Result build() {
             final var _resultValue = new GetAlertV2Result();
             _resultValue.createTime = createTime;
             _resultValue.customDescription = customDescription;
             _resultValue.customSummary = customSummary;
             _resultValue.displayName = displayName;
+            _resultValue.effectiveRunAs = effectiveRunAs;
             _resultValue.evaluation = evaluation;
             _resultValue.id = id;
             _resultValue.lifecycleState = lifecycleState;
             _resultValue.ownerUserName = ownerUserName;
             _resultValue.parentPath = parentPath;
             _resultValue.queryText = queryText;
+            _resultValue.runAs = runAs;
             _resultValue.runAsUserName = runAsUserName;
             _resultValue.schedule = schedule;
             _resultValue.updateTime = updateTime;
             _resultValue.warehouseId = warehouseId;
+            _resultValue.workspaceId = workspaceId;
             return _resultValue;
         }
     }

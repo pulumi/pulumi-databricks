@@ -186,7 +186,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * This resource can be imported by name:
+ * When using a workspace-level provider to manage storage credentials, this resource can be imported by name:
  * 
  * hcl
  * 
@@ -194,7 +194,19 @@ import javax.annotation.Nullable;
  * 
  *   to = databricks_storage_credential.this
  * 
- *   id = &#34;&lt;name&gt;&#34;
+ *   id = &#34;&lt;storage_credential_name&gt;&#34;
+ * 
+ * }
+ * 
+ * When using an account-level provider to manage storage credentials, use the format `&lt;metastore_id&gt;|&lt;storage_credential_name&gt;`:
+ * 
+ * hcl
+ * 
+ * import {
+ * 
+ *   to = databricks_storage_credential.this
+ * 
+ *   id = &#34;&lt;metastore_id&gt;|&lt;storage_credential_name&gt;&#34;
  * 
  * }
  * 
@@ -202,8 +214,16 @@ import javax.annotation.Nullable;
  * 
  * bash
  * 
+ * When using a workspace-level provider
+ * 
  * ```sh
- * $ pulumi import databricks:index/storageCredential:StorageCredential this &lt;name&gt;
+ * $ pulumi import databricks:index/storageCredential:StorageCredential this &lt;storage_credential_name&gt;
+ * ```
+ * 
+ * When using an account-level provider
+ * 
+ * ```sh
+ * $ pulumi import databricks:index/storageCredential:StorageCredential this &lt;metastore_id&gt;|&lt;storage_credential_name&gt;
  * ```
  * 
  */

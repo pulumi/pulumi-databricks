@@ -5,7 +5,9 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.AlertV2EffectiveRunAsArgs;
 import com.pulumi.databricks.inputs.AlertV2EvaluationArgs;
+import com.pulumi.databricks.inputs.AlertV2RunAsArgs;
 import com.pulumi.databricks.inputs.AlertV2ScheduleArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -77,6 +79,25 @@ public final class AlertV2State extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.displayName);
     }
 
+    /**
+     * (AlertV2RunAs) - The actual identity that will be used to execute the alert.
+     * This is an output-only field that shows the resolved run-as identity after applying
+     * permissions and defaults
+     * 
+     */
+    @Import(name="effectiveRunAs")
+    private @Nullable Output<AlertV2EffectiveRunAsArgs> effectiveRunAs;
+
+    /**
+     * @return (AlertV2RunAs) - The actual identity that will be used to execute the alert.
+     * This is an output-only field that shows the resolved run-as identity after applying
+     * permissions and defaults
+     * 
+     */
+    public Optional<Output<AlertV2EffectiveRunAsArgs>> effectiveRunAs() {
+        return Optional.ofNullable(this.effectiveRunAs);
+    }
+
     @Import(name="evaluation")
     private @Nullable Output<AlertV2EvaluationArgs> evaluation;
 
@@ -145,8 +166,32 @@ public final class AlertV2State extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Specifies the identity that will be used to run the alert.
+     * This field allows you to configure alerts to run as a specific user or service principal.
+     * - For user identity: Set `user_name` to the email of an active workspace user. Users can only set this to their own email.
+     * - For service principal: Set `service_principal_name` to the application ID. Requires the `servicePrincipal/user` role.
+     *   If not specified, the alert will run as the request user
+     * 
+     */
+    @Import(name="runAs")
+    private @Nullable Output<AlertV2RunAsArgs> runAs;
+
+    /**
+     * @return Specifies the identity that will be used to run the alert.
+     * This field allows you to configure alerts to run as a specific user or service principal.
+     * - For user identity: Set `user_name` to the email of an active workspace user. Users can only set this to their own email.
+     * - For service principal: Set `service_principal_name` to the application ID. Requires the `servicePrincipal/user` role.
+     *   If not specified, the alert will run as the request user
+     * 
+     */
+    public Optional<Output<AlertV2RunAsArgs>> runAs() {
+        return Optional.ofNullable(this.runAs);
+    }
+
+    /**
      * The run as username or application ID of service principal.
-     * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
+     * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
+     * Deprecated: Use `run_as` field instead. This field will be removed in a future release
      * 
      */
     @Import(name="runAsUserName")
@@ -154,7 +199,8 @@ public final class AlertV2State extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The run as username or application ID of service principal.
-     * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
+     * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
+     * Deprecated: Use `run_as` field instead. This field will be removed in a future release
      * 
      */
     public Optional<Output<String>> runAsUserName() {
@@ -198,6 +244,21 @@ public final class AlertV2State extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.warehouseId);
     }
 
+    /**
+     * Workspace ID of the resource
+     * 
+     */
+    @Import(name="workspaceId")
+    private @Nullable Output<String> workspaceId;
+
+    /**
+     * @return Workspace ID of the resource
+     * 
+     */
+    public Optional<Output<String>> workspaceId() {
+        return Optional.ofNullable(this.workspaceId);
+    }
+
     private AlertV2State() {}
 
     private AlertV2State(AlertV2State $) {
@@ -205,15 +266,18 @@ public final class AlertV2State extends com.pulumi.resources.ResourceArgs {
         this.customDescription = $.customDescription;
         this.customSummary = $.customSummary;
         this.displayName = $.displayName;
+        this.effectiveRunAs = $.effectiveRunAs;
         this.evaluation = $.evaluation;
         this.lifecycleState = $.lifecycleState;
         this.ownerUserName = $.ownerUserName;
         this.parentPath = $.parentPath;
         this.queryText = $.queryText;
+        this.runAs = $.runAs;
         this.runAsUserName = $.runAsUserName;
         this.schedule = $.schedule;
         this.updateTime = $.updateTime;
         this.warehouseId = $.warehouseId;
+        this.workspaceId = $.workspaceId;
     }
 
     public static Builder builder() {
@@ -318,6 +382,31 @@ public final class AlertV2State extends com.pulumi.resources.ResourceArgs {
             return displayName(Output.of(displayName));
         }
 
+        /**
+         * @param effectiveRunAs (AlertV2RunAs) - The actual identity that will be used to execute the alert.
+         * This is an output-only field that shows the resolved run-as identity after applying
+         * permissions and defaults
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveRunAs(@Nullable Output<AlertV2EffectiveRunAsArgs> effectiveRunAs) {
+            $.effectiveRunAs = effectiveRunAs;
+            return this;
+        }
+
+        /**
+         * @param effectiveRunAs (AlertV2RunAs) - The actual identity that will be used to execute the alert.
+         * This is an output-only field that shows the resolved run-as identity after applying
+         * permissions and defaults
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveRunAs(AlertV2EffectiveRunAsArgs effectiveRunAs) {
+            return effectiveRunAs(Output.of(effectiveRunAs));
+        }
+
         public Builder evaluation(@Nullable Output<AlertV2EvaluationArgs> evaluation) {
             $.evaluation = evaluation;
             return this;
@@ -412,8 +501,38 @@ public final class AlertV2State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param runAs Specifies the identity that will be used to run the alert.
+         * This field allows you to configure alerts to run as a specific user or service principal.
+         * - For user identity: Set `user_name` to the email of an active workspace user. Users can only set this to their own email.
+         * - For service principal: Set `service_principal_name` to the application ID. Requires the `servicePrincipal/user` role.
+         *   If not specified, the alert will run as the request user
+         * 
+         * @return builder
+         * 
+         */
+        public Builder runAs(@Nullable Output<AlertV2RunAsArgs> runAs) {
+            $.runAs = runAs;
+            return this;
+        }
+
+        /**
+         * @param runAs Specifies the identity that will be used to run the alert.
+         * This field allows you to configure alerts to run as a specific user or service principal.
+         * - For user identity: Set `user_name` to the email of an active workspace user. Users can only set this to their own email.
+         * - For service principal: Set `service_principal_name` to the application ID. Requires the `servicePrincipal/user` role.
+         *   If not specified, the alert will run as the request user
+         * 
+         * @return builder
+         * 
+         */
+        public Builder runAs(AlertV2RunAsArgs runAs) {
+            return runAs(Output.of(runAs));
+        }
+
+        /**
          * @param runAsUserName The run as username or application ID of service principal.
-         * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
+         * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
+         * Deprecated: Use `run_as` field instead. This field will be removed in a future release
          * 
          * @return builder
          * 
@@ -425,7 +544,8 @@ public final class AlertV2State extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param runAsUserName The run as username or application ID of service principal.
-         * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
+         * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
+         * Deprecated: Use `run_as` field instead. This field will be removed in a future release
          * 
          * @return builder
          * 
@@ -483,6 +603,27 @@ public final class AlertV2State extends com.pulumi.resources.ResourceArgs {
          */
         public Builder warehouseId(String warehouseId) {
             return warehouseId(Output.of(warehouseId));
+        }
+
+        /**
+         * @param workspaceId Workspace ID of the resource
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workspaceId(@Nullable Output<String> workspaceId) {
+            $.workspaceId = workspaceId;
+            return this;
+        }
+
+        /**
+         * @param workspaceId Workspace ID of the resource
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workspaceId(String workspaceId) {
+            return workspaceId(Output.of(workspaceId));
         }
 
         public AlertV2State build() {

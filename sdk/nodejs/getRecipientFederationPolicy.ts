@@ -13,6 +13,7 @@ export function getRecipientFederationPolicy(args?: GetRecipientFederationPolicy
         "comment": args.comment,
         "name": args.name,
         "oidcPolicy": args.oidcPolicy,
+        "workspaceId": args.workspaceId,
     }, opts);
 }
 
@@ -33,6 +34,10 @@ export interface GetRecipientFederationPolicyArgs {
      * (OidcFederationPolicy) - Specifies the policy to use for validating OIDC claims in the federated tokens
      */
     oidcPolicy?: inputs.GetRecipientFederationPolicyOidcPolicy;
+    /**
+     * Workspace ID of the resource
+     */
+    workspaceId?: string;
 }
 
 /**
@@ -64,6 +69,7 @@ export interface GetRecipientFederationPolicyResult {
      * (string) - System-generated timestamp indicating when the policy was last updated
      */
     readonly updateTime: string;
+    readonly workspaceId?: string;
 }
 export function getRecipientFederationPolicyOutput(args?: GetRecipientFederationPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRecipientFederationPolicyResult> {
     args = args || {};
@@ -72,6 +78,7 @@ export function getRecipientFederationPolicyOutput(args?: GetRecipientFederation
         "comment": args.comment,
         "name": args.name,
         "oidcPolicy": args.oidcPolicy,
+        "workspaceId": args.workspaceId,
     }, opts);
 }
 
@@ -92,4 +99,8 @@ export interface GetRecipientFederationPolicyOutputArgs {
      * (OidcFederationPolicy) - Specifies the policy to use for validating OIDC claims in the federated tokens
      */
     oidcPolicy?: pulumi.Input<inputs.GetRecipientFederationPolicyOidcPolicyArgs>;
+    /**
+     * Workspace ID of the resource
+     */
+    workspaceId?: pulumi.Input<string>;
 }

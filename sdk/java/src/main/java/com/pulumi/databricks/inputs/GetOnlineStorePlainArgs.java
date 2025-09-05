@@ -61,12 +61,28 @@ public final class GetOnlineStorePlainArgs extends com.pulumi.resources.InvokeAr
         return Optional.ofNullable(this.readReplicaCount);
     }
 
+    /**
+     * Workspace ID of the resource
+     * 
+     */
+    @Import(name="workspaceId")
+    private @Nullable String workspaceId;
+
+    /**
+     * @return Workspace ID of the resource
+     * 
+     */
+    public Optional<String> workspaceId() {
+        return Optional.ofNullable(this.workspaceId);
+    }
+
     private GetOnlineStorePlainArgs() {}
 
     private GetOnlineStorePlainArgs(GetOnlineStorePlainArgs $) {
         this.capacity = $.capacity;
         this.name = $.name;
         this.readReplicaCount = $.readReplicaCount;
+        this.workspaceId = $.workspaceId;
     }
 
     public static Builder builder() {
@@ -117,6 +133,17 @@ public final class GetOnlineStorePlainArgs extends com.pulumi.resources.InvokeAr
          */
         public Builder readReplicaCount(@Nullable Integer readReplicaCount) {
             $.readReplicaCount = readReplicaCount;
+            return this;
+        }
+
+        /**
+         * @param workspaceId Workspace ID of the resource
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workspaceId(@Nullable String workspaceId) {
+            $.workspaceId = workspaceId;
             return this;
         }
 

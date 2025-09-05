@@ -27,13 +27,16 @@ class GetAlertsV2Result:
     """
     A collection of values returned by getAlertsV2.
     """
-    def __init__(__self__, id=None, results=None):
+    def __init__(__self__, id=None, results=None, workspace_id=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
         if results and not isinstance(results, list):
             raise TypeError("Expected argument 'results' to be a list")
         pulumi.set(__self__, "results", results)
+        if workspace_id and not isinstance(workspace_id, str):
+            raise TypeError("Expected argument 'workspace_id' to be a str")
+        pulumi.set(__self__, "workspace_id", workspace_id)
 
     @_builtins.property
     @pulumi.getter
@@ -48,6 +51,11 @@ class GetAlertsV2Result:
     def results(self) -> Sequence['outputs.GetAlertsV2ResultResult']:
         return pulumi.get(self, "results")
 
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "workspace_id")
+
 
 class AwaitableGetAlertsV2Result(GetAlertsV2Result):
     # pylint: disable=using-constant-test
@@ -56,10 +64,12 @@ class AwaitableGetAlertsV2Result(GetAlertsV2Result):
             yield self
         return GetAlertsV2Result(
             id=self.id,
-            results=self.results)
+            results=self.results,
+            workspace_id=self.workspace_id)
 
 
-def get_alerts_v2(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAlertsV2Result:
+def get_alerts_v2(workspace_id: Optional[_builtins.str] = None,
+                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAlertsV2Result:
     """
     The SQL Alerts v2 data source allows you to retrieve a list of alerts in Databricks SQL that are accessible to the current user. This data source returns alerts ordered by their creation time.
 
@@ -78,15 +88,21 @@ def get_alerts_v2(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAl
 
     all = databricks.get_alert_v2()
     ```
+
+
+    :param _builtins.str workspace_id: Workspace ID of the resource
     """
     __args__ = dict()
+    __args__['workspaceId'] = workspace_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getAlertsV2:getAlertsV2', __args__, opts=opts, typ=GetAlertsV2Result).value
 
     return AwaitableGetAlertsV2Result(
         id=pulumi.get(__ret__, 'id'),
-        results=pulumi.get(__ret__, 'results'))
-def get_alerts_v2_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAlertsV2Result]:
+        results=pulumi.get(__ret__, 'results'),
+        workspace_id=pulumi.get(__ret__, 'workspace_id'))
+def get_alerts_v2_output(workspace_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAlertsV2Result]:
     """
     The SQL Alerts v2 data source allows you to retrieve a list of alerts in Databricks SQL that are accessible to the current user. This data source returns alerts ordered by their creation time.
 
@@ -105,10 +121,15 @@ def get_alerts_v2_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.Invok
 
     all = databricks.get_alert_v2()
     ```
+
+
+    :param _builtins.str workspace_id: Workspace ID of the resource
     """
     __args__ = dict()
+    __args__['workspaceId'] = workspace_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getAlertsV2:getAlertsV2', __args__, opts=opts, typ=GetAlertsV2Result)
     return __ret__.apply(lambda __response__: GetAlertsV2Result(
         id=pulumi.get(__response__, 'id'),
-        results=pulumi.get(__response__, 'results')))
+        results=pulumi.get(__response__, 'results'),
+        workspace_id=pulumi.get(__response__, 'workspace_id')))

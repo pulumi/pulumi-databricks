@@ -264,9 +264,6 @@ namespace Pulumi.Databricks
         [Output("credentialType")]
         public Output<string> CredentialType { get; private set; } = null!;
 
-        [Output("environmentSettings")]
-        public Output<Outputs.ConnectionEnvironmentSettings?> EnvironmentSettings { get; private set; } = null!;
-
         /// <summary>
         /// Full name of connection.
         /// </summary>
@@ -398,9 +395,6 @@ namespace Pulumi.Databricks
         [Input("connectionType")]
         public Input<string>? ConnectionType { get; set; }
 
-        [Input("environmentSettings")]
-        public Input<Inputs.ConnectionEnvironmentSettingsArgs>? EnvironmentSettings { get; set; }
-
         /// <summary>
         /// Name of the Connection.
         /// </summary>
@@ -490,9 +484,6 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("credentialType")]
         public Input<string>? CredentialType { get; set; }
-
-        [Input("environmentSettings")]
-        public Input<Inputs.ConnectionEnvironmentSettingsGetArgs>? EnvironmentSettings { get; set; }
 
         /// <summary>
         /// Full name of connection.

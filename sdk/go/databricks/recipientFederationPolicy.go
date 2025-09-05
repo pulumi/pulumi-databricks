@@ -19,7 +19,7 @@ import (
 //
 // import {
 //
-//	id = name
+//	id = "name"
 //
 //	to = databricks_recipient_federation_policy.this
 //
@@ -28,7 +28,7 @@ import (
 // If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
 //
 // ```sh
-// $ pulumi import databricks:index/recipientFederationPolicy:RecipientFederationPolicy databricks_recipient_federation_policy name
+// $ pulumi import databricks:index/recipientFederationPolicy:RecipientFederationPolicy databricks_recipient_federation_policy "name"
 // ```
 type RecipientFederationPolicy struct {
 	pulumi.CustomResourceState
@@ -44,6 +44,8 @@ type RecipientFederationPolicy struct {
 	OidcPolicy RecipientFederationPolicyOidcPolicyPtrOutput `pulumi:"oidcPolicy"`
 	// (string) - System-generated timestamp indicating when the policy was last updated
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
+	// Workspace ID of the resource
+	WorkspaceId pulumi.StringPtrOutput `pulumi:"workspaceId"`
 }
 
 // NewRecipientFederationPolicy registers a new resource with the given unique name, arguments, and options.
@@ -87,6 +89,8 @@ type recipientFederationPolicyState struct {
 	OidcPolicy *RecipientFederationPolicyOidcPolicy `pulumi:"oidcPolicy"`
 	// (string) - System-generated timestamp indicating when the policy was last updated
 	UpdateTime *string `pulumi:"updateTime"`
+	// Workspace ID of the resource
+	WorkspaceId *string `pulumi:"workspaceId"`
 }
 
 type RecipientFederationPolicyState struct {
@@ -101,6 +105,8 @@ type RecipientFederationPolicyState struct {
 	OidcPolicy RecipientFederationPolicyOidcPolicyPtrInput
 	// (string) - System-generated timestamp indicating when the policy was last updated
 	UpdateTime pulumi.StringPtrInput
+	// Workspace ID of the resource
+	WorkspaceId pulumi.StringPtrInput
 }
 
 func (RecipientFederationPolicyState) ElementType() reflect.Type {
@@ -115,6 +121,8 @@ type recipientFederationPolicyArgs struct {
 	Name *string `pulumi:"name"`
 	// Specifies the policy to use for validating OIDC claims in the federated tokens
 	OidcPolicy *RecipientFederationPolicyOidcPolicy `pulumi:"oidcPolicy"`
+	// Workspace ID of the resource
+	WorkspaceId *string `pulumi:"workspaceId"`
 }
 
 // The set of arguments for constructing a RecipientFederationPolicy resource.
@@ -126,6 +134,8 @@ type RecipientFederationPolicyArgs struct {
 	Name pulumi.StringPtrInput
 	// Specifies the policy to use for validating OIDC claims in the federated tokens
 	OidcPolicy RecipientFederationPolicyOidcPolicyPtrInput
+	// Workspace ID of the resource
+	WorkspaceId pulumi.StringPtrInput
 }
 
 func (RecipientFederationPolicyArgs) ElementType() reflect.Type {
@@ -239,6 +249,11 @@ func (o RecipientFederationPolicyOutput) OidcPolicy() RecipientFederationPolicyO
 // (string) - System-generated timestamp indicating when the policy was last updated
 func (o RecipientFederationPolicyOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *RecipientFederationPolicy) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// Workspace ID of the resource
+func (o RecipientFederationPolicyOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RecipientFederationPolicy) pulumi.StringPtrOutput { return v.WorkspaceId }).(pulumi.StringPtrOutput)
 }
 
 type RecipientFederationPolicyArrayOutput struct{ *pulumi.OutputState }

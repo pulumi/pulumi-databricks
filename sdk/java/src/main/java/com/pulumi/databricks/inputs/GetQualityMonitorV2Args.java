@@ -8,6 +8,8 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetQualityMonitorV2Args extends com.pulumi.resources.InvokeArgs {
@@ -44,11 +46,27 @@ public final class GetQualityMonitorV2Args extends com.pulumi.resources.InvokeAr
         return this.objectType;
     }
 
+    /**
+     * Workspace ID of the resource
+     * 
+     */
+    @Import(name="workspaceId")
+    private @Nullable Output<String> workspaceId;
+
+    /**
+     * @return Workspace ID of the resource
+     * 
+     */
+    public Optional<Output<String>> workspaceId() {
+        return Optional.ofNullable(this.workspaceId);
+    }
+
     private GetQualityMonitorV2Args() {}
 
     private GetQualityMonitorV2Args(GetQualityMonitorV2Args $) {
         this.objectId = $.objectId;
         this.objectType = $.objectType;
+        this.workspaceId = $.workspaceId;
     }
 
     public static Builder builder() {
@@ -109,6 +127,27 @@ public final class GetQualityMonitorV2Args extends com.pulumi.resources.InvokeAr
          */
         public Builder objectType(String objectType) {
             return objectType(Output.of(objectType));
+        }
+
+        /**
+         * @param workspaceId Workspace ID of the resource
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workspaceId(@Nullable Output<String> workspaceId) {
+            $.workspaceId = workspaceId;
+            return this;
+        }
+
+        /**
+         * @param workspaceId Workspace ID of the resource
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workspaceId(String workspaceId) {
+            return workspaceId(Output.of(workspaceId));
         }
 
         public GetQualityMonitorV2Args build() {

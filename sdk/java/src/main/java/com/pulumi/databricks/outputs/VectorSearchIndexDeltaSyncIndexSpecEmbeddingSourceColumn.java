@@ -12,10 +12,15 @@ import javax.annotation.Nullable;
 @CustomType
 public final class VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn {
     /**
-     * @return The name of the embedding model endpoint
+     * @return The name of the embedding model endpoint, used by default for both ingestion and querying.
      * 
      */
     private @Nullable String embeddingModelEndpointName;
+    /**
+     * @return The name of the embedding model endpoint which, if specified, is used for querying (not ingestion).
+     * 
+     */
+    private @Nullable String modelEndpointNameForQuery;
     /**
      * @return The name of the column
      * 
@@ -24,11 +29,18 @@ public final class VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn {
 
     private VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn() {}
     /**
-     * @return The name of the embedding model endpoint
+     * @return The name of the embedding model endpoint, used by default for both ingestion and querying.
      * 
      */
     public Optional<String> embeddingModelEndpointName() {
         return Optional.ofNullable(this.embeddingModelEndpointName);
+    }
+    /**
+     * @return The name of the embedding model endpoint which, if specified, is used for querying (not ingestion).
+     * 
+     */
+    public Optional<String> modelEndpointNameForQuery() {
+        return Optional.ofNullable(this.modelEndpointNameForQuery);
     }
     /**
      * @return The name of the column
@@ -48,11 +60,13 @@ public final class VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String embeddingModelEndpointName;
+        private @Nullable String modelEndpointNameForQuery;
         private @Nullable String name;
         public Builder() {}
         public Builder(VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.embeddingModelEndpointName = defaults.embeddingModelEndpointName;
+    	      this.modelEndpointNameForQuery = defaults.modelEndpointNameForQuery;
     	      this.name = defaults.name;
         }
 
@@ -60,6 +74,12 @@ public final class VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn {
         public Builder embeddingModelEndpointName(@Nullable String embeddingModelEndpointName) {
 
             this.embeddingModelEndpointName = embeddingModelEndpointName;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder modelEndpointNameForQuery(@Nullable String modelEndpointNameForQuery) {
+
+            this.modelEndpointNameForQuery = modelEndpointNameForQuery;
             return this;
         }
         @CustomType.Setter
@@ -71,6 +91,7 @@ public final class VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn {
         public VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn build() {
             final var _resultValue = new VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn();
             _resultValue.embeddingModelEndpointName = embeddingModelEndpointName;
+            _resultValue.modelEndpointNameForQuery = modelEndpointNameForQuery;
             _resultValue.name = name;
             return _resultValue;
         }

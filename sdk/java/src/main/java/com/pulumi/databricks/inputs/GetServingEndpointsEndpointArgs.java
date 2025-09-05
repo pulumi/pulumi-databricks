@@ -137,6 +137,13 @@ public final class GetServingEndpointsEndpointArgs extends com.pulumi.resources.
         return Optional.ofNullable(this.task);
     }
 
+    @Import(name="usagePolicyId")
+    private @Nullable Output<String> usagePolicyId;
+
+    public Optional<Output<String>> usagePolicyId() {
+        return Optional.ofNullable(this.usagePolicyId);
+    }
+
     private GetServingEndpointsEndpointArgs() {}
 
     private GetServingEndpointsEndpointArgs(GetServingEndpointsEndpointArgs $) {
@@ -152,6 +159,7 @@ public final class GetServingEndpointsEndpointArgs extends com.pulumi.resources.
         this.states = $.states;
         this.tags = $.tags;
         this.task = $.task;
+        this.usagePolicyId = $.usagePolicyId;
     }
 
     public static Builder builder() {
@@ -360,6 +368,15 @@ public final class GetServingEndpointsEndpointArgs extends com.pulumi.resources.
 
         public Builder task(String task) {
             return task(Output.of(task));
+        }
+
+        public Builder usagePolicyId(@Nullable Output<String> usagePolicyId) {
+            $.usagePolicyId = usagePolicyId;
+            return this;
+        }
+
+        public Builder usagePolicyId(String usagePolicyId) {
+            return usagePolicyId(Output.of(usagePolicyId));
         }
 
         public GetServingEndpointsEndpointArgs build() {

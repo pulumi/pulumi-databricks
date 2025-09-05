@@ -107,7 +107,7 @@ namespace Pulumi.Databricks
         public string? Name { get; set; }
 
         /// <summary>
-        /// (string) - This is Databricks username of the owner of the local clean room securable for permission management
+        /// (string) - This is the Databricks username of the owner of the local clean room securable for permission management
         /// </summary>
         [Input("owner")]
         public string? Owner { get; set; }
@@ -119,6 +119,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("remoteDetailedInfo")]
         public Inputs.GetCleanRoomsCleanRoomRemoteDetailedInfoArgs? RemoteDetailedInfo { get; set; }
+
+        /// <summary>
+        /// Workspace ID of the resource
+        /// </summary>
+        [Input("workspaceId")]
+        public string? WorkspaceId { get; set; }
 
         public GetCleanRoomsCleanRoomArgs()
         {
@@ -142,7 +148,7 @@ namespace Pulumi.Databricks
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// (string) - This is Databricks username of the owner of the local clean room securable for permission management
+        /// (string) - This is the Databricks username of the owner of the local clean room securable for permission management
         /// </summary>
         [Input("owner")]
         public Input<string>? Owner { get; set; }
@@ -154,6 +160,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("remoteDetailedInfo")]
         public Input<Inputs.GetCleanRoomsCleanRoomRemoteDetailedInfoInputArgs>? RemoteDetailedInfo { get; set; }
+
+        /// <summary>
+        /// Workspace ID of the resource
+        /// </summary>
+        [Input("workspaceId")]
+        public Input<string>? WorkspaceId { get; set; }
 
         public GetCleanRoomsCleanRoomInvokeArgs()
         {
@@ -196,7 +208,7 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly Outputs.GetCleanRoomsCleanRoomOutputCatalogResult OutputCatalog;
         /// <summary>
-        /// (string) - This is Databricks username of the owner of the local clean room securable for permission management
+        /// (string) - This is the Databricks username of the owner of the local clean room securable for permission management
         /// </summary>
         public readonly string? Owner;
         /// <summary>
@@ -213,6 +225,7 @@ namespace Pulumi.Databricks
         /// (integer) - When the clean room was last updated, in epoch milliseconds
         /// </summary>
         public readonly int UpdatedAt;
+        public readonly string? WorkspaceId;
 
         [OutputConstructor]
         private GetCleanRoomsCleanRoomResult(
@@ -236,7 +249,9 @@ namespace Pulumi.Databricks
 
             string status,
 
-            int updatedAt)
+            int updatedAt,
+
+            string? workspaceId)
         {
             AccessRestricted = accessRestricted;
             Comment = comment;
@@ -249,6 +264,7 @@ namespace Pulumi.Databricks
             RemoteDetailedInfo = remoteDetailedInfo;
             Status = status;
             UpdatedAt = updatedAt;
+            WorkspaceId = workspaceId;
         }
     }
 }

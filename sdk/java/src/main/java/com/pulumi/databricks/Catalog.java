@@ -10,7 +10,10 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.databricks.CatalogArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.CatalogState;
+import com.pulumi.databricks.outputs.CatalogEffectivePredictiveOptimizationFlag;
+import com.pulumi.databricks.outputs.CatalogProvisioningInfo;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Map;
 import java.util.Optional;
@@ -93,6 +96,18 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="databricks:index/catalog:Catalog")
 public class Catalog extends com.pulumi.resources.CustomResource {
+    @Export(name="browseOnly", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> browseOnly;
+
+    public Output<Optional<Boolean>> browseOnly() {
+        return Codegen.optional(this.browseOnly);
+    }
+    @Export(name="catalogType", refs={String.class}, tree="[0]")
+    private Output<String> catalogType;
+
+    public Output<String> catalogType() {
+        return this.catalogType;
+    }
     /**
      * User-supplied free-form text.
      * 
@@ -121,6 +136,24 @@ public class Catalog extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> connectionName() {
         return Codegen.optional(this.connectionName);
     }
+    @Export(name="createdAt", refs={Integer.class}, tree="[0]")
+    private Output<Integer> createdAt;
+
+    public Output<Integer> createdAt() {
+        return this.createdAt;
+    }
+    @Export(name="createdBy", refs={String.class}, tree="[0]")
+    private Output<String> createdBy;
+
+    public Output<String> createdBy() {
+        return this.createdBy;
+    }
+    @Export(name="effectivePredictiveOptimizationFlag", refs={CatalogEffectivePredictiveOptimizationFlag.class}, tree="[0]")
+    private Output<CatalogEffectivePredictiveOptimizationFlag> effectivePredictiveOptimizationFlag;
+
+    public Output<CatalogEffectivePredictiveOptimizationFlag> effectivePredictiveOptimizationFlag() {
+        return this.effectivePredictiveOptimizationFlag;
+    }
     /**
      * Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
      * 
@@ -148,6 +181,12 @@ public class Catalog extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> forceDestroy() {
         return Codegen.optional(this.forceDestroy);
+    }
+    @Export(name="fullName", refs={String.class}, tree="[0]")
+    private Output<String> fullName;
+
+    public Output<String> fullName() {
+        return this.fullName;
     }
     /**
      * Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
@@ -247,6 +286,18 @@ public class Catalog extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> providerName() {
         return Codegen.optional(this.providerName);
     }
+    @Export(name="provisioningInfo", refs={CatalogProvisioningInfo.class}, tree="[0]")
+    private Output</* @Nullable */ CatalogProvisioningInfo> provisioningInfo;
+
+    public Output<Optional<CatalogProvisioningInfo>> provisioningInfo() {
+        return Codegen.optional(this.provisioningInfo);
+    }
+    @Export(name="securableType", refs={String.class}, tree="[0]")
+    private Output<String> securableType;
+
+    public Output<String> securableType() {
+        return this.securableType;
+    }
     /**
      * For Delta Sharing Catalogs: the name of the share under the share provider. Change forces creation of a new resource.
      * 
@@ -261,6 +312,12 @@ public class Catalog extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> shareName() {
         return Codegen.optional(this.shareName);
     }
+    @Export(name="storageLocation", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> storageLocation;
+
+    public Output<Optional<String>> storageLocation() {
+        return Codegen.optional(this.storageLocation);
+    }
     /**
      * Managed location of the catalog. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
      * 
@@ -274,6 +331,18 @@ public class Catalog extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> storageRoot() {
         return Codegen.optional(this.storageRoot);
+    }
+    @Export(name="updatedAt", refs={Integer.class}, tree="[0]")
+    private Output<Integer> updatedAt;
+
+    public Output<Integer> updatedAt() {
+        return this.updatedAt;
+    }
+    @Export(name="updatedBy", refs={String.class}, tree="[0]")
+    private Output<String> updatedBy;
+
+    public Output<String> updatedBy() {
+        return this.updatedBy;
     }
 
     /**

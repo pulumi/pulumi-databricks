@@ -26,7 +26,7 @@ class GetDatabaseDatabaseCatalogResult:
     """
     A collection of values returned by getDatabaseDatabaseCatalog.
     """
-    def __init__(__self__, create_database_if_not_exists=None, database_instance_name=None, database_name=None, id=None, name=None, uid=None):
+    def __init__(__self__, create_database_if_not_exists=None, database_instance_name=None, database_name=None, id=None, name=None, uid=None, workspace_id=None):
         if create_database_if_not_exists and not isinstance(create_database_if_not_exists, bool):
             raise TypeError("Expected argument 'create_database_if_not_exists' to be a bool")
         pulumi.set(__self__, "create_database_if_not_exists", create_database_if_not_exists)
@@ -45,6 +45,9 @@ class GetDatabaseDatabaseCatalogResult:
         if uid and not isinstance(uid, str):
             raise TypeError("Expected argument 'uid' to be a str")
         pulumi.set(__self__, "uid", uid)
+        if workspace_id and not isinstance(workspace_id, str):
+            raise TypeError("Expected argument 'workspace_id' to be a str")
+        pulumi.set(__self__, "workspace_id", workspace_id)
 
     @_builtins.property
     @pulumi.getter(name="createDatabaseIfNotExists")
@@ -94,6 +97,11 @@ class GetDatabaseDatabaseCatalogResult:
         """
         return pulumi.get(self, "uid")
 
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "workspace_id")
+
 
 class AwaitableGetDatabaseDatabaseCatalogResult(GetDatabaseDatabaseCatalogResult):
     # pylint: disable=using-constant-test
@@ -106,13 +114,15 @@ class AwaitableGetDatabaseDatabaseCatalogResult(GetDatabaseDatabaseCatalogResult
             database_name=self.database_name,
             id=self.id,
             name=self.name,
-            uid=self.uid)
+            uid=self.uid,
+            workspace_id=self.workspace_id)
 
 
 def get_database_database_catalog(create_database_if_not_exists: Optional[_builtins.bool] = None,
                                   database_instance_name: Optional[_builtins.str] = None,
                                   database_name: Optional[_builtins.str] = None,
                                   name: Optional[_builtins.str] = None,
+                                  workspace_id: Optional[_builtins.str] = None,
                                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDatabaseDatabaseCatalogResult:
     """
     This data source can be used to get a single Database Catalog.
@@ -133,12 +143,14 @@ def get_database_database_catalog(create_database_if_not_exists: Optional[_built
     :param _builtins.str database_instance_name: (string) - The name of the DatabaseInstance housing the database
     :param _builtins.str database_name: (string) - The name of the database (in a instance) associated with the catalog
     :param _builtins.str name: The name of the catalog in UC
+    :param _builtins.str workspace_id: Workspace ID of the resource
     """
     __args__ = dict()
     __args__['createDatabaseIfNotExists'] = create_database_if_not_exists
     __args__['databaseInstanceName'] = database_instance_name
     __args__['databaseName'] = database_name
     __args__['name'] = name
+    __args__['workspaceId'] = workspace_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getDatabaseDatabaseCatalog:getDatabaseDatabaseCatalog', __args__, opts=opts, typ=GetDatabaseDatabaseCatalogResult).value
 
@@ -148,11 +160,13 @@ def get_database_database_catalog(create_database_if_not_exists: Optional[_built
         database_name=pulumi.get(__ret__, 'database_name'),
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
-        uid=pulumi.get(__ret__, 'uid'))
+        uid=pulumi.get(__ret__, 'uid'),
+        workspace_id=pulumi.get(__ret__, 'workspace_id'))
 def get_database_database_catalog_output(create_database_if_not_exists: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
                                          database_instance_name: Optional[pulumi.Input[_builtins.str]] = None,
                                          database_name: Optional[pulumi.Input[_builtins.str]] = None,
                                          name: Optional[pulumi.Input[_builtins.str]] = None,
+                                         workspace_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDatabaseDatabaseCatalogResult]:
     """
     This data source can be used to get a single Database Catalog.
@@ -173,12 +187,14 @@ def get_database_database_catalog_output(create_database_if_not_exists: Optional
     :param _builtins.str database_instance_name: (string) - The name of the DatabaseInstance housing the database
     :param _builtins.str database_name: (string) - The name of the database (in a instance) associated with the catalog
     :param _builtins.str name: The name of the catalog in UC
+    :param _builtins.str workspace_id: Workspace ID of the resource
     """
     __args__ = dict()
     __args__['createDatabaseIfNotExists'] = create_database_if_not_exists
     __args__['databaseInstanceName'] = database_instance_name
     __args__['databaseName'] = database_name
     __args__['name'] = name
+    __args__['workspaceId'] = workspace_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getDatabaseDatabaseCatalog:getDatabaseDatabaseCatalog', __args__, opts=opts, typ=GetDatabaseDatabaseCatalogResult)
     return __ret__.apply(lambda __response__: GetDatabaseDatabaseCatalogResult(
@@ -187,4 +203,5 @@ def get_database_database_catalog_output(create_database_if_not_exists: Optional
         database_name=pulumi.get(__response__, 'database_name'),
         id=pulumi.get(__response__, 'id'),
         name=pulumi.get(__response__, 'name'),
-        uid=pulumi.get(__response__, 'uid')))
+        uid=pulumi.get(__response__, 'uid'),
+        workspace_id=pulumi.get(__response__, 'workspace_id')))

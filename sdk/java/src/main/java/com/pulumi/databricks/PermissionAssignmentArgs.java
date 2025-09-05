@@ -17,8 +17,8 @@ public final class PermissionAssignmentArgs extends com.pulumi.resources.Resourc
 
     /**
      * The list of workspace permissions to assign to the principal:
-     * * `&#34;USER&#34;` - Can access the workspace with basic privileges.
-     * * `&#34;ADMIN&#34;` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
+     * * `&#34;USER&#34;` - Adds principal to the workspace `users` group. This gives basic workspace access.
+     * * `&#34;ADMIN&#34;` - Adds principal to the workspace `admins` group. This gives workspace admin privileges to manage users and groups, workspace configurations, and more.
      * 
      */
     @Import(name="permissions", required=true)
@@ -26,8 +26,8 @@ public final class PermissionAssignmentArgs extends com.pulumi.resources.Resourc
 
     /**
      * @return The list of workspace permissions to assign to the principal:
-     * * `&#34;USER&#34;` - Can access the workspace with basic privileges.
-     * * `&#34;ADMIN&#34;` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
+     * * `&#34;USER&#34;` - Adds principal to the workspace `users` group. This gives basic workspace access.
+     * * `&#34;ADMIN&#34;` - Adds principal to the workspace `admins` group. This gives workspace admin privileges to manage users and groups, workspace configurations, and more.
      * 
      */
     public Output<List<String>> permissions() {
@@ -76,8 +76,8 @@ public final class PermissionAssignmentArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param permissions The list of workspace permissions to assign to the principal:
-         * * `&#34;USER&#34;` - Can access the workspace with basic privileges.
-         * * `&#34;ADMIN&#34;` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
+         * * `&#34;USER&#34;` - Adds principal to the workspace `users` group. This gives basic workspace access.
+         * * `&#34;ADMIN&#34;` - Adds principal to the workspace `admins` group. This gives workspace admin privileges to manage users and groups, workspace configurations, and more.
          * 
          * @return builder
          * 
@@ -89,8 +89,8 @@ public final class PermissionAssignmentArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param permissions The list of workspace permissions to assign to the principal:
-         * * `&#34;USER&#34;` - Can access the workspace with basic privileges.
-         * * `&#34;ADMIN&#34;` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
+         * * `&#34;USER&#34;` - Adds principal to the workspace `users` group. This gives basic workspace access.
+         * * `&#34;ADMIN&#34;` - Adds principal to the workspace `admins` group. This gives workspace admin privileges to manage users and groups, workspace configurations, and more.
          * 
          * @return builder
          * 
@@ -101,8 +101,8 @@ public final class PermissionAssignmentArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param permissions The list of workspace permissions to assign to the principal:
-         * * `&#34;USER&#34;` - Can access the workspace with basic privileges.
-         * * `&#34;ADMIN&#34;` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
+         * * `&#34;USER&#34;` - Adds principal to the workspace `users` group. This gives basic workspace access.
+         * * `&#34;ADMIN&#34;` - Adds principal to the workspace `admins` group. This gives workspace admin privileges to manage users and groups, workspace configurations, and more.
          * 
          * @return builder
          * 

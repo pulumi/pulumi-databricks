@@ -11,14 +11,43 @@ namespace Pulumi.Databricks
 {
     public static class GetDatabaseSyncedDatabaseTables
     {
-        public static Task<GetDatabaseSyncedDatabaseTablesResult> InvokeAsync(InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDatabaseSyncedDatabaseTablesResult>("databricks:index/getDatabaseSyncedDatabaseTables:getDatabaseSyncedDatabaseTables", InvokeArgs.Empty, options.WithDefaults());
+        public static Task<GetDatabaseSyncedDatabaseTablesResult> InvokeAsync(GetDatabaseSyncedDatabaseTablesArgs? args = null, InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDatabaseSyncedDatabaseTablesResult>("databricks:index/getDatabaseSyncedDatabaseTables:getDatabaseSyncedDatabaseTables", args ?? new GetDatabaseSyncedDatabaseTablesArgs(), options.WithDefaults());
 
-        public static Output<GetDatabaseSyncedDatabaseTablesResult> Invoke(InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.Invoke<GetDatabaseSyncedDatabaseTablesResult>("databricks:index/getDatabaseSyncedDatabaseTables:getDatabaseSyncedDatabaseTables", InvokeArgs.Empty, options.WithDefaults());
+        public static Output<GetDatabaseSyncedDatabaseTablesResult> Invoke(GetDatabaseSyncedDatabaseTablesInvokeArgs? args = null, InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.Invoke<GetDatabaseSyncedDatabaseTablesResult>("databricks:index/getDatabaseSyncedDatabaseTables:getDatabaseSyncedDatabaseTables", args ?? new GetDatabaseSyncedDatabaseTablesInvokeArgs(), options.WithDefaults());
 
-        public static Output<GetDatabaseSyncedDatabaseTablesResult> Invoke(InvokeOutputOptions options)
-            => global::Pulumi.Deployment.Instance.Invoke<GetDatabaseSyncedDatabaseTablesResult>("databricks:index/getDatabaseSyncedDatabaseTables:getDatabaseSyncedDatabaseTables", InvokeArgs.Empty, options.WithDefaults());
+        public static Output<GetDatabaseSyncedDatabaseTablesResult> Invoke(GetDatabaseSyncedDatabaseTablesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetDatabaseSyncedDatabaseTablesResult>("databricks:index/getDatabaseSyncedDatabaseTables:getDatabaseSyncedDatabaseTables", args ?? new GetDatabaseSyncedDatabaseTablesInvokeArgs(), options.WithDefaults());
+    }
+
+
+    public sealed class GetDatabaseSyncedDatabaseTablesArgs : global::Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Workspace ID of the resource
+        /// </summary>
+        [Input("workspaceId")]
+        public string? WorkspaceId { get; set; }
+
+        public GetDatabaseSyncedDatabaseTablesArgs()
+        {
+        }
+        public static new GetDatabaseSyncedDatabaseTablesArgs Empty => new GetDatabaseSyncedDatabaseTablesArgs();
+    }
+
+    public sealed class GetDatabaseSyncedDatabaseTablesInvokeArgs : global::Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Workspace ID of the resource
+        /// </summary>
+        [Input("workspaceId")]
+        public Input<string>? WorkspaceId { get; set; }
+
+        public GetDatabaseSyncedDatabaseTablesInvokeArgs()
+        {
+        }
+        public static new GetDatabaseSyncedDatabaseTablesInvokeArgs Empty => new GetDatabaseSyncedDatabaseTablesInvokeArgs();
     }
 
 
@@ -30,15 +59,19 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<Outputs.GetDatabaseSyncedDatabaseTablesSyncedTableResult> SyncedTables;
+        public readonly string? WorkspaceId;
 
         [OutputConstructor]
         private GetDatabaseSyncedDatabaseTablesResult(
             string id,
 
-            ImmutableArray<Outputs.GetDatabaseSyncedDatabaseTablesSyncedTableResult> syncedTables)
+            ImmutableArray<Outputs.GetDatabaseSyncedDatabaseTablesSyncedTableResult> syncedTables,
+
+            string? workspaceId)
         {
             Id = id;
             SyncedTables = syncedTables;
+            WorkspaceId = workspaceId;
         }
     }
 }

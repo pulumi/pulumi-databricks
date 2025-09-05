@@ -23,7 +23,7 @@ import javax.annotation.Nullable;
  * 
  * import {
  * 
- *   id = key
+ *   id = &#34;key&#34;
  * 
  *   to = databricks_materialized_features_feature_tag.this
  * 
@@ -32,7 +32,7 @@ import javax.annotation.Nullable;
  * If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
  * 
  * ```sh
- * $ pulumi import databricks:index/materializedFeaturesFeatureTag:MaterializedFeaturesFeatureTag databricks_materialized_features_feature_tag key
+ * $ pulumi import databricks:index/materializedFeaturesFeatureTag:MaterializedFeaturesFeatureTag databricks_materialized_features_feature_tag &#34;key&#34;
  * ```
  * 
  */
@@ -49,6 +49,20 @@ public class MaterializedFeaturesFeatureTag extends com.pulumi.resources.CustomR
 
     public Output<Optional<String>> value() {
         return Codegen.optional(this.value);
+    }
+    /**
+     * Workspace ID of the resource
+     * 
+     */
+    @Export(name="workspaceId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> workspaceId;
+
+    /**
+     * @return Workspace ID of the resource
+     * 
+     */
+    public Output<Optional<String>> workspaceId() {
+        return Codegen.optional(this.workspaceId);
     }
 
     /**

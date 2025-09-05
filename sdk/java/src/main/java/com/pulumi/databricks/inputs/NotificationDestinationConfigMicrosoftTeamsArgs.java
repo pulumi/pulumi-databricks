@@ -16,6 +16,62 @@ public final class NotificationDestinationConfigMicrosoftTeamsArgs extends com.p
 
     public static final NotificationDestinationConfigMicrosoftTeamsArgs Empty = new NotificationDestinationConfigMicrosoftTeamsArgs();
 
+    @Import(name="appId")
+    private @Nullable Output<String> appId;
+
+    public Optional<Output<String>> appId() {
+        return Optional.ofNullable(this.appId);
+    }
+
+    @Import(name="appIdSet")
+    private @Nullable Output<Boolean> appIdSet;
+
+    public Optional<Output<Boolean>> appIdSet() {
+        return Optional.ofNullable(this.appIdSet);
+    }
+
+    @Import(name="authSecret")
+    private @Nullable Output<String> authSecret;
+
+    public Optional<Output<String>> authSecret() {
+        return Optional.ofNullable(this.authSecret);
+    }
+
+    @Import(name="authSecretSet")
+    private @Nullable Output<Boolean> authSecretSet;
+
+    public Optional<Output<Boolean>> authSecretSet() {
+        return Optional.ofNullable(this.authSecretSet);
+    }
+
+    @Import(name="channelUrl")
+    private @Nullable Output<String> channelUrl;
+
+    public Optional<Output<String>> channelUrl() {
+        return Optional.ofNullable(this.channelUrl);
+    }
+
+    @Import(name="channelUrlSet")
+    private @Nullable Output<Boolean> channelUrlSet;
+
+    public Optional<Output<Boolean>> channelUrlSet() {
+        return Optional.ofNullable(this.channelUrlSet);
+    }
+
+    @Import(name="tenantId")
+    private @Nullable Output<String> tenantId;
+
+    public Optional<Output<String>> tenantId() {
+        return Optional.ofNullable(this.tenantId);
+    }
+
+    @Import(name="tenantIdSet")
+    private @Nullable Output<Boolean> tenantIdSet;
+
+    public Optional<Output<Boolean>> tenantIdSet() {
+        return Optional.ofNullable(this.tenantIdSet);
+    }
+
     /**
      * The Microsoft Teams webhook URL.
      * 
@@ -41,6 +97,14 @@ public final class NotificationDestinationConfigMicrosoftTeamsArgs extends com.p
     private NotificationDestinationConfigMicrosoftTeamsArgs() {}
 
     private NotificationDestinationConfigMicrosoftTeamsArgs(NotificationDestinationConfigMicrosoftTeamsArgs $) {
+        this.appId = $.appId;
+        this.appIdSet = $.appIdSet;
+        this.authSecret = $.authSecret;
+        this.authSecretSet = $.authSecretSet;
+        this.channelUrl = $.channelUrl;
+        this.channelUrlSet = $.channelUrlSet;
+        this.tenantId = $.tenantId;
+        this.tenantIdSet = $.tenantIdSet;
         this.url = $.url;
         this.urlSet = $.urlSet;
     }
@@ -61,6 +125,78 @@ public final class NotificationDestinationConfigMicrosoftTeamsArgs extends com.p
 
         public Builder(NotificationDestinationConfigMicrosoftTeamsArgs defaults) {
             $ = new NotificationDestinationConfigMicrosoftTeamsArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder appId(@Nullable Output<String> appId) {
+            $.appId = appId;
+            return this;
+        }
+
+        public Builder appId(String appId) {
+            return appId(Output.of(appId));
+        }
+
+        public Builder appIdSet(@Nullable Output<Boolean> appIdSet) {
+            $.appIdSet = appIdSet;
+            return this;
+        }
+
+        public Builder appIdSet(Boolean appIdSet) {
+            return appIdSet(Output.of(appIdSet));
+        }
+
+        public Builder authSecret(@Nullable Output<String> authSecret) {
+            $.authSecret = authSecret;
+            return this;
+        }
+
+        public Builder authSecret(String authSecret) {
+            return authSecret(Output.of(authSecret));
+        }
+
+        public Builder authSecretSet(@Nullable Output<Boolean> authSecretSet) {
+            $.authSecretSet = authSecretSet;
+            return this;
+        }
+
+        public Builder authSecretSet(Boolean authSecretSet) {
+            return authSecretSet(Output.of(authSecretSet));
+        }
+
+        public Builder channelUrl(@Nullable Output<String> channelUrl) {
+            $.channelUrl = channelUrl;
+            return this;
+        }
+
+        public Builder channelUrl(String channelUrl) {
+            return channelUrl(Output.of(channelUrl));
+        }
+
+        public Builder channelUrlSet(@Nullable Output<Boolean> channelUrlSet) {
+            $.channelUrlSet = channelUrlSet;
+            return this;
+        }
+
+        public Builder channelUrlSet(Boolean channelUrlSet) {
+            return channelUrlSet(Output.of(channelUrlSet));
+        }
+
+        public Builder tenantId(@Nullable Output<String> tenantId) {
+            $.tenantId = tenantId;
+            return this;
+        }
+
+        public Builder tenantId(String tenantId) {
+            return tenantId(Output.of(tenantId));
+        }
+
+        public Builder tenantIdSet(@Nullable Output<Boolean> tenantIdSet) {
+            $.tenantIdSet = tenantIdSet;
+            return this;
+        }
+
+        public Builder tenantIdSet(Boolean tenantIdSet) {
+            return tenantIdSet(Output.of(tenantIdSet));
         }
 
         /**

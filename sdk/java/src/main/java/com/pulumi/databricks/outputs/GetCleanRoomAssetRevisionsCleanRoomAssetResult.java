@@ -105,6 +105,7 @@ public final class GetCleanRoomAssetRevisionsCleanRoomAssetResult {
      * 
      */
     private @Nullable GetCleanRoomAssetRevisionsCleanRoomAssetVolumeLocalDetails volumeLocalDetails;
+    private @Nullable String workspaceId;
 
     private GetCleanRoomAssetRevisionsCleanRoomAssetResult() {}
     /**
@@ -221,6 +222,9 @@ public final class GetCleanRoomAssetRevisionsCleanRoomAssetResult {
     public Optional<GetCleanRoomAssetRevisionsCleanRoomAssetVolumeLocalDetails> volumeLocalDetails() {
         return Optional.ofNullable(this.volumeLocalDetails);
     }
+    public Optional<String> workspaceId() {
+        return Optional.ofNullable(this.workspaceId);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -246,6 +250,7 @@ public final class GetCleanRoomAssetRevisionsCleanRoomAssetResult {
         private @Nullable GetCleanRoomAssetRevisionsCleanRoomAssetView view;
         private @Nullable GetCleanRoomAssetRevisionsCleanRoomAssetViewLocalDetails viewLocalDetails;
         private @Nullable GetCleanRoomAssetRevisionsCleanRoomAssetVolumeLocalDetails volumeLocalDetails;
+        private @Nullable String workspaceId;
         public Builder() {}
         public Builder(GetCleanRoomAssetRevisionsCleanRoomAssetResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -264,6 +269,7 @@ public final class GetCleanRoomAssetRevisionsCleanRoomAssetResult {
     	      this.view = defaults.view;
     	      this.viewLocalDetails = defaults.viewLocalDetails;
     	      this.volumeLocalDetails = defaults.volumeLocalDetails;
+    	      this.workspaceId = defaults.workspaceId;
         }
 
         @CustomType.Setter
@@ -368,6 +374,12 @@ public final class GetCleanRoomAssetRevisionsCleanRoomAssetResult {
             this.volumeLocalDetails = volumeLocalDetails;
             return this;
         }
+        @CustomType.Setter
+        public Builder workspaceId(@Nullable String workspaceId) {
+
+            this.workspaceId = workspaceId;
+            return this;
+        }
         public GetCleanRoomAssetRevisionsCleanRoomAssetResult build() {
             final var _resultValue = new GetCleanRoomAssetRevisionsCleanRoomAssetResult();
             _resultValue.addedAt = addedAt;
@@ -385,6 +397,7 @@ public final class GetCleanRoomAssetRevisionsCleanRoomAssetResult {
             _resultValue.view = view;
             _resultValue.viewLocalDetails = viewLocalDetails;
             _resultValue.volumeLocalDetails = volumeLocalDetails;
+            _resultValue.workspaceId = workspaceId;
             return _resultValue;
         }
     }

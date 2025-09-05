@@ -60,7 +60,7 @@ namespace Pulumi.Databricks
     /// 
     /// import {
     /// 
-    ///   id = name
+    ///   id = "name"
     /// 
     ///   to = databricks_external_metadata.this
     /// 
@@ -69,7 +69,7 @@ namespace Pulumi.Databricks
     /// If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
     /// 
     /// ```sh
-    /// $ pulumi import databricks:index/externalMetadata:ExternalMetadata databricks_external_metadata name
+    /// $ pulumi import databricks:index/externalMetadata:ExternalMetadata databricks_external_metadata "name"
     /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/externalMetadata:ExternalMetadata")]
@@ -152,6 +152,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("url")]
         public Output<string?> Url { get; private set; } = null!;
+
+        /// <summary>
+        /// Workspace ID of the resource
+        /// </summary>
+        [Output("workspaceId")]
+        public Output<string?> WorkspaceId { get; private set; } = null!;
 
 
         /// <summary>
@@ -259,6 +265,12 @@ namespace Pulumi.Databricks
         [Input("url")]
         public Input<string>? Url { get; set; }
 
+        /// <summary>
+        /// Workspace ID of the resource
+        /// </summary>
+        [Input("workspaceId")]
+        public Input<string>? WorkspaceId { get; set; }
+
         public ExternalMetadataArgs()
         {
         }
@@ -356,6 +368,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }
+
+        /// <summary>
+        /// Workspace ID of the resource
+        /// </summary>
+        [Input("workspaceId")]
+        public Input<string>? WorkspaceId { get; set; }
 
         public ExternalMetadataState()
         {

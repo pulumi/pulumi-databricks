@@ -21,7 +21,7 @@ import * as utilities from "./utilities";
  *
  * import {
  *
- *   id = id
+ *   id = "id"
  *
  *   to = databricks_alert_v2.this
  *
@@ -30,7 +30,7 @@ import * as utilities from "./utilities";
  * If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
  *
  * ```sh
- * $ pulumi import databricks:index/alertV2:AlertV2 databricks_alert_v2 id
+ * $ pulumi import databricks:index/alertV2:AlertV2 databricks_alert_v2 "id"
  * ```
  */
 export class AlertV2 extends pulumi.CustomResource {
@@ -77,6 +77,12 @@ export class AlertV2 extends pulumi.CustomResource {
      * The display name of the alert
      */
     declare public readonly displayName: pulumi.Output<string | undefined>;
+    /**
+     * (AlertV2RunAs) - The actual identity that will be used to execute the alert.
+     * This is an output-only field that shows the resolved run-as identity after applying
+     * permissions and defaults
+     */
+    declare public /*out*/ readonly effectiveRunAs: pulumi.Output<outputs.AlertV2EffectiveRunAs>;
     declare public readonly evaluation: pulumi.Output<outputs.AlertV2Evaluation | undefined>;
     /**
      * (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `TRASHED`
@@ -95,8 +101,17 @@ export class AlertV2 extends pulumi.CustomResource {
      */
     declare public readonly queryText: pulumi.Output<string | undefined>;
     /**
+     * Specifies the identity that will be used to run the alert.
+     * This field allows you to configure alerts to run as a specific user or service principal.
+     * - For user identity: Set `userName` to the email of an active workspace user. Users can only set this to their own email.
+     * - For service principal: Set `servicePrincipalName` to the application ID. Requires the `servicePrincipal/user` role.
+     * If not specified, the alert will run as the request user
+     */
+    declare public readonly runAs: pulumi.Output<outputs.AlertV2RunAs | undefined>;
+    /**
      * The run as username or application ID of service principal.
-     * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
+     * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
+     * Deprecated: Use `runAs` field instead. This field will be removed in a future release
      */
     declare public readonly runAsUserName: pulumi.Output<string | undefined>;
     declare public readonly schedule: pulumi.Output<outputs.AlertV2Schedule | undefined>;
@@ -108,6 +123,10 @@ export class AlertV2 extends pulumi.CustomResource {
      * ID of the SQL warehouse attached to the alert
      */
     declare public readonly warehouseId: pulumi.Output<string | undefined>;
+    /**
+     * Workspace ID of the resource
+     */
+    declare public readonly workspaceId: pulumi.Output<string | undefined>;
 
     /**
      * Create a AlertV2 resource with the given unique name, arguments, and options.
@@ -126,15 +145,18 @@ export class AlertV2 extends pulumi.CustomResource {
             resourceInputs["customDescription"] = state?.customDescription;
             resourceInputs["customSummary"] = state?.customSummary;
             resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["effectiveRunAs"] = state?.effectiveRunAs;
             resourceInputs["evaluation"] = state?.evaluation;
             resourceInputs["lifecycleState"] = state?.lifecycleState;
             resourceInputs["ownerUserName"] = state?.ownerUserName;
             resourceInputs["parentPath"] = state?.parentPath;
             resourceInputs["queryText"] = state?.queryText;
+            resourceInputs["runAs"] = state?.runAs;
             resourceInputs["runAsUserName"] = state?.runAsUserName;
             resourceInputs["schedule"] = state?.schedule;
             resourceInputs["updateTime"] = state?.updateTime;
             resourceInputs["warehouseId"] = state?.warehouseId;
+            resourceInputs["workspaceId"] = state?.workspaceId;
         } else {
             const args = argsOrState as AlertV2Args | undefined;
             resourceInputs["customDescription"] = args?.customDescription;
@@ -143,10 +165,13 @@ export class AlertV2 extends pulumi.CustomResource {
             resourceInputs["evaluation"] = args?.evaluation;
             resourceInputs["parentPath"] = args?.parentPath;
             resourceInputs["queryText"] = args?.queryText;
+            resourceInputs["runAs"] = args?.runAs;
             resourceInputs["runAsUserName"] = args?.runAsUserName;
             resourceInputs["schedule"] = args?.schedule;
             resourceInputs["warehouseId"] = args?.warehouseId;
+            resourceInputs["workspaceId"] = args?.workspaceId;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["effectiveRunAs"] = undefined /*out*/;
             resourceInputs["lifecycleState"] = undefined /*out*/;
             resourceInputs["ownerUserName"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
@@ -176,6 +201,12 @@ export interface AlertV2State {
      * The display name of the alert
      */
     displayName?: pulumi.Input<string>;
+    /**
+     * (AlertV2RunAs) - The actual identity that will be used to execute the alert.
+     * This is an output-only field that shows the resolved run-as identity after applying
+     * permissions and defaults
+     */
+    effectiveRunAs?: pulumi.Input<inputs.AlertV2EffectiveRunAs>;
     evaluation?: pulumi.Input<inputs.AlertV2Evaluation>;
     /**
      * (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `TRASHED`
@@ -194,8 +225,17 @@ export interface AlertV2State {
      */
     queryText?: pulumi.Input<string>;
     /**
+     * Specifies the identity that will be used to run the alert.
+     * This field allows you to configure alerts to run as a specific user or service principal.
+     * - For user identity: Set `userName` to the email of an active workspace user. Users can only set this to their own email.
+     * - For service principal: Set `servicePrincipalName` to the application ID. Requires the `servicePrincipal/user` role.
+     * If not specified, the alert will run as the request user
+     */
+    runAs?: pulumi.Input<inputs.AlertV2RunAs>;
+    /**
      * The run as username or application ID of service principal.
-     * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
+     * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
+     * Deprecated: Use `runAs` field instead. This field will be removed in a future release
      */
     runAsUserName?: pulumi.Input<string>;
     schedule?: pulumi.Input<inputs.AlertV2Schedule>;
@@ -207,6 +247,10 @@ export interface AlertV2State {
      * ID of the SQL warehouse attached to the alert
      */
     warehouseId?: pulumi.Input<string>;
+    /**
+     * Workspace ID of the resource
+     */
+    workspaceId?: pulumi.Input<string>;
 }
 
 /**
@@ -235,8 +279,17 @@ export interface AlertV2Args {
      */
     queryText?: pulumi.Input<string>;
     /**
+     * Specifies the identity that will be used to run the alert.
+     * This field allows you to configure alerts to run as a specific user or service principal.
+     * - For user identity: Set `userName` to the email of an active workspace user. Users can only set this to their own email.
+     * - For service principal: Set `servicePrincipalName` to the application ID. Requires the `servicePrincipal/user` role.
+     * If not specified, the alert will run as the request user
+     */
+    runAs?: pulumi.Input<inputs.AlertV2RunAs>;
+    /**
      * The run as username or application ID of service principal.
-     * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
+     * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
+     * Deprecated: Use `runAs` field instead. This field will be removed in a future release
      */
     runAsUserName?: pulumi.Input<string>;
     schedule?: pulumi.Input<inputs.AlertV2Schedule>;
@@ -244,4 +297,8 @@ export interface AlertV2Args {
      * ID of the SQL warehouse attached to the alert
      */
     warehouseId?: pulumi.Input<string>;
+    /**
+     * Workspace ID of the resource
+     */
+    workspaceId?: pulumi.Input<string>;
 }

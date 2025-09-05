@@ -27,9 +27,11 @@ export function getAlertV2(args?: GetAlertV2Args, opts?: pulumi.InvokeOptions): 
         "evaluation": args.evaluation,
         "parentPath": args.parentPath,
         "queryText": args.queryText,
+        "runAs": args.runAs,
         "runAsUserName": args.runAsUserName,
         "schedule": args.schedule,
         "warehouseId": args.warehouseId,
+        "workspaceId": args.workspaceId,
     }, opts);
 }
 
@@ -62,8 +64,17 @@ export interface GetAlertV2Args {
      */
     queryText?: string;
     /**
-     * (string) - The run as username or application ID of service principal.
-     * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
+     * (AlertV2RunAs) - Specifies the identity that will be used to run the alert.
+     * This field allows you to configure alerts to run as a specific user or service principal.
+     * - For user identity: Set `userName` to the email of an active workspace user. Users can only set this to their own email.
+     * - For service principal: Set `servicePrincipalName` to the application ID. Requires the `servicePrincipal/user` role.
+     * If not specified, the alert will run as the request user
+     */
+    runAs?: inputs.GetAlertV2RunAs;
+    /**
+     * (string, deprecated) - The run as username or application ID of service principal.
+     * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
+     * Deprecated: Use `runAs` field instead. This field will be removed in a future release
      */
     runAsUserName?: string;
     /**
@@ -74,6 +85,10 @@ export interface GetAlertV2Args {
      * (string) - ID of the SQL warehouse attached to the alert
      */
     warehouseId?: string;
+    /**
+     * Workspace ID of the resource
+     */
+    workspaceId?: string;
 }
 
 /**
@@ -96,6 +111,12 @@ export interface GetAlertV2Result {
      * (string) - The display name of the alert
      */
     readonly displayName?: string;
+    /**
+     * (AlertV2RunAs) - The actual identity that will be used to execute the alert.
+     * This is an output-only field that shows the resolved run-as identity after applying
+     * permissions and defaults
+     */
+    readonly effectiveRunAs: outputs.GetAlertV2EffectiveRunAs;
     /**
      * (AlertV2Evaluation)
      */
@@ -121,8 +142,17 @@ export interface GetAlertV2Result {
      */
     readonly queryText?: string;
     /**
-     * (string) - The run as username or application ID of service principal.
-     * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
+     * (AlertV2RunAs) - Specifies the identity that will be used to run the alert.
+     * This field allows you to configure alerts to run as a specific user or service principal.
+     * - For user identity: Set `userName` to the email of an active workspace user. Users can only set this to their own email.
+     * - For service principal: Set `servicePrincipalName` to the application ID. Requires the `servicePrincipal/user` role.
+     * If not specified, the alert will run as the request user
+     */
+    readonly runAs?: outputs.GetAlertV2RunAs;
+    /**
+     * (string, deprecated) - The run as username or application ID of service principal.
+     * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
+     * Deprecated: Use `runAs` field instead. This field will be removed in a future release
      */
     readonly runAsUserName?: string;
     /**
@@ -137,6 +167,7 @@ export interface GetAlertV2Result {
      * (string) - ID of the SQL warehouse attached to the alert
      */
     readonly warehouseId?: string;
+    readonly workspaceId?: string;
 }
 /**
  * The SQL Alert v2 data source allows you to retrieve detailed information about a specific alert in Databricks SQL. This data source provides access to all alert properties, including its configuration, evaluation criteria, notification settings, and schedule.
@@ -159,9 +190,11 @@ export function getAlertV2Output(args?: GetAlertV2OutputArgs, opts?: pulumi.Invo
         "evaluation": args.evaluation,
         "parentPath": args.parentPath,
         "queryText": args.queryText,
+        "runAs": args.runAs,
         "runAsUserName": args.runAsUserName,
         "schedule": args.schedule,
         "warehouseId": args.warehouseId,
+        "workspaceId": args.workspaceId,
     }, opts);
 }
 
@@ -194,8 +227,17 @@ export interface GetAlertV2OutputArgs {
      */
     queryText?: pulumi.Input<string>;
     /**
-     * (string) - The run as username or application ID of service principal.
-     * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
+     * (AlertV2RunAs) - Specifies the identity that will be used to run the alert.
+     * This field allows you to configure alerts to run as a specific user or service principal.
+     * - For user identity: Set `userName` to the email of an active workspace user. Users can only set this to their own email.
+     * - For service principal: Set `servicePrincipalName` to the application ID. Requires the `servicePrincipal/user` role.
+     * If not specified, the alert will run as the request user
+     */
+    runAs?: pulumi.Input<inputs.GetAlertV2RunAsArgs>;
+    /**
+     * (string, deprecated) - The run as username or application ID of service principal.
+     * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
+     * Deprecated: Use `runAs` field instead. This field will be removed in a future release
      */
     runAsUserName?: pulumi.Input<string>;
     /**
@@ -206,4 +248,8 @@ export interface GetAlertV2OutputArgs {
      * (string) - ID of the SQL warehouse attached to the alert
      */
     warehouseId?: pulumi.Input<string>;
+    /**
+     * Workspace ID of the resource
+     */
+    workspaceId?: pulumi.Input<string>;
 }

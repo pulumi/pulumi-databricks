@@ -53,7 +53,7 @@ public final class GetCleanRoomsCleanRoomResult {
      */
     private GetCleanRoomsCleanRoomOutputCatalog outputCatalog;
     /**
-     * @return (string) - This is Databricks username of the owner of the local clean room securable for permission management
+     * @return (string) - This is the Databricks username of the owner of the local clean room securable for permission management
      * 
      */
     private @Nullable String owner;
@@ -74,6 +74,7 @@ public final class GetCleanRoomsCleanRoomResult {
      * 
      */
     private Integer updatedAt;
+    private @Nullable String workspaceId;
 
     private GetCleanRoomsCleanRoomResult() {}
     /**
@@ -128,7 +129,7 @@ public final class GetCleanRoomsCleanRoomResult {
         return this.outputCatalog;
     }
     /**
-     * @return (string) - This is Databricks username of the owner of the local clean room securable for permission management
+     * @return (string) - This is the Databricks username of the owner of the local clean room securable for permission management
      * 
      */
     public Optional<String> owner() {
@@ -157,6 +158,9 @@ public final class GetCleanRoomsCleanRoomResult {
     public Integer updatedAt() {
         return this.updatedAt;
     }
+    public Optional<String> workspaceId() {
+        return Optional.ofNullable(this.workspaceId);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -178,6 +182,7 @@ public final class GetCleanRoomsCleanRoomResult {
         private @Nullable GetCleanRoomsCleanRoomRemoteDetailedInfo remoteDetailedInfo;
         private String status;
         private Integer updatedAt;
+        private @Nullable String workspaceId;
         public Builder() {}
         public Builder(GetCleanRoomsCleanRoomResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -192,6 +197,7 @@ public final class GetCleanRoomsCleanRoomResult {
     	      this.remoteDetailedInfo = defaults.remoteDetailedInfo;
     	      this.status = defaults.status;
     	      this.updatedAt = defaults.updatedAt;
+    	      this.workspaceId = defaults.workspaceId;
         }
 
         @CustomType.Setter
@@ -274,6 +280,12 @@ public final class GetCleanRoomsCleanRoomResult {
             this.updatedAt = updatedAt;
             return this;
         }
+        @CustomType.Setter
+        public Builder workspaceId(@Nullable String workspaceId) {
+
+            this.workspaceId = workspaceId;
+            return this;
+        }
         public GetCleanRoomsCleanRoomResult build() {
             final var _resultValue = new GetCleanRoomsCleanRoomResult();
             _resultValue.accessRestricted = accessRestricted;
@@ -287,6 +299,7 @@ public final class GetCleanRoomsCleanRoomResult {
             _resultValue.remoteDetailedInfo = remoteDetailedInfo;
             _resultValue.status = status;
             _resultValue.updatedAt = updatedAt;
+            _resultValue.workspaceId = workspaceId;
             return _resultValue;
         }
     }

@@ -20,10 +20,22 @@ import * as utilities from "./utilities";
  * const all = databricks.getCleanRoomsCleanRoom({});
  * ```
  */
-export function getCleanRoomsCleanRooms(opts?: pulumi.InvokeOptions): Promise<GetCleanRoomsCleanRoomsResult> {
+export function getCleanRoomsCleanRooms(args?: GetCleanRoomsCleanRoomsArgs, opts?: pulumi.InvokeOptions): Promise<GetCleanRoomsCleanRoomsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getCleanRoomsCleanRooms:getCleanRoomsCleanRooms", {
+        "workspaceId": args.workspaceId,
     }, opts);
+}
+
+/**
+ * A collection of arguments for invoking getCleanRoomsCleanRooms.
+ */
+export interface GetCleanRoomsCleanRoomsArgs {
+    /**
+     * Workspace ID of the resource
+     */
+    workspaceId?: string;
 }
 
 /**
@@ -35,6 +47,7 @@ export interface GetCleanRoomsCleanRoomsResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly workspaceId?: string;
 }
 /**
  * This data source can be used to fetch the list of clean rooms.
@@ -50,8 +63,20 @@ export interface GetCleanRoomsCleanRoomsResult {
  * const all = databricks.getCleanRoomsCleanRoom({});
  * ```
  */
-export function getCleanRoomsCleanRoomsOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCleanRoomsCleanRoomsResult> {
+export function getCleanRoomsCleanRoomsOutput(args?: GetCleanRoomsCleanRoomsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCleanRoomsCleanRoomsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getCleanRoomsCleanRooms:getCleanRoomsCleanRooms", {
+        "workspaceId": args.workspaceId,
     }, opts);
+}
+
+/**
+ * A collection of arguments for invoking getCleanRoomsCleanRooms.
+ */
+export interface GetCleanRoomsCleanRoomsOutputArgs {
+    /**
+     * Workspace ID of the resource
+     */
+    workspaceId?: pulumi.Input<string>;
 }

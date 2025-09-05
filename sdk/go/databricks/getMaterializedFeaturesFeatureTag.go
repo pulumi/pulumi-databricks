@@ -26,6 +26,8 @@ type LookupMaterializedFeaturesFeatureTagArgs struct {
 	Key string `pulumi:"key"`
 	// (string)
 	Value *string `pulumi:"value"`
+	// Workspace ID of the resource
+	WorkspaceId *string `pulumi:"workspaceId"`
 }
 
 // A collection of values returned by getMaterializedFeaturesFeatureTag.
@@ -35,7 +37,8 @@ type LookupMaterializedFeaturesFeatureTagResult struct {
 	// (string)
 	Key string `pulumi:"key"`
 	// (string)
-	Value *string `pulumi:"value"`
+	Value       *string `pulumi:"value"`
+	WorkspaceId *string `pulumi:"workspaceId"`
 }
 
 func LookupMaterializedFeaturesFeatureTagOutput(ctx *pulumi.Context, args LookupMaterializedFeaturesFeatureTagOutputArgs, opts ...pulumi.InvokeOption) LookupMaterializedFeaturesFeatureTagResultOutput {
@@ -52,6 +55,8 @@ type LookupMaterializedFeaturesFeatureTagOutputArgs struct {
 	Key pulumi.StringInput `pulumi:"key"`
 	// (string)
 	Value pulumi.StringPtrInput `pulumi:"value"`
+	// Workspace ID of the resource
+	WorkspaceId pulumi.StringPtrInput `pulumi:"workspaceId"`
 }
 
 func (LookupMaterializedFeaturesFeatureTagOutputArgs) ElementType() reflect.Type {
@@ -86,6 +91,10 @@ func (o LookupMaterializedFeaturesFeatureTagResultOutput) Key() pulumi.StringOut
 // (string)
 func (o LookupMaterializedFeaturesFeatureTagResultOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupMaterializedFeaturesFeatureTagResult) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupMaterializedFeaturesFeatureTagResultOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupMaterializedFeaturesFeatureTagResult) *string { return v.WorkspaceId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

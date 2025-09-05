@@ -35,7 +35,7 @@ public final class GetCleanRoomAssetRevisionsCleanRoomAssetNotebook {
      */
     private List<GetCleanRoomAssetRevisionsCleanRoomAssetNotebookReview> reviews;
     /**
-     * @return (list of string) - collaborators that can run the notebook
+     * @return (list of string) - Aliases of collaborators that can run the notebook
      * 
      */
     private @Nullable List<String> runnerCollaboratorAliases;
@@ -71,7 +71,7 @@ public final class GetCleanRoomAssetRevisionsCleanRoomAssetNotebook {
         return this.reviews;
     }
     /**
-     * @return (list of string) - collaborators that can run the notebook
+     * @return (list of string) - Aliases of collaborators that can run the notebook
      * 
      */
     public List<String> runnerCollaboratorAliases() {

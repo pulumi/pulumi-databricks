@@ -29,6 +29,8 @@ type LookupOnlineStoreArgs struct {
 	Name string `pulumi:"name"`
 	// (integer) - The number of read replicas for the online store. Defaults to 0
 	ReadReplicaCount *int `pulumi:"readReplicaCount"`
+	// Workspace ID of the resource
+	WorkspaceId *string `pulumi:"workspaceId"`
 }
 
 // A collection of values returned by getOnlineStore.
@@ -46,7 +48,8 @@ type LookupOnlineStoreResult struct {
 	// (integer) - The number of read replicas for the online store. Defaults to 0
 	ReadReplicaCount *int `pulumi:"readReplicaCount"`
 	// (string) - The current state of the online store. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
-	State string `pulumi:"state"`
+	State       string  `pulumi:"state"`
+	WorkspaceId *string `pulumi:"workspaceId"`
 }
 
 func LookupOnlineStoreOutput(ctx *pulumi.Context, args LookupOnlineStoreOutputArgs, opts ...pulumi.InvokeOption) LookupOnlineStoreResultOutput {
@@ -66,6 +69,8 @@ type LookupOnlineStoreOutputArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// (integer) - The number of read replicas for the online store. Defaults to 0
 	ReadReplicaCount pulumi.IntPtrInput `pulumi:"readReplicaCount"`
+	// Workspace ID of the resource
+	WorkspaceId pulumi.StringPtrInput `pulumi:"workspaceId"`
 }
 
 func (LookupOnlineStoreOutputArgs) ElementType() reflect.Type {
@@ -120,6 +125,10 @@ func (o LookupOnlineStoreResultOutput) ReadReplicaCount() pulumi.IntPtrOutput {
 // (string) - The current state of the online store. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
 func (o LookupOnlineStoreResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOnlineStoreResult) string { return v.State }).(pulumi.StringOutput)
+}
+
+func (o LookupOnlineStoreResultOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupOnlineStoreResult) *string { return v.WorkspaceId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

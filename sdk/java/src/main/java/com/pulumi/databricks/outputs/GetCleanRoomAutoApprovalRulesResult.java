@@ -9,6 +9,8 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetCleanRoomAutoApprovalRulesResult {
@@ -18,6 +20,7 @@ public final class GetCleanRoomAutoApprovalRulesResult {
      */
     private String id;
     private List<GetCleanRoomAutoApprovalRulesRule> rules;
+    private @Nullable String workspaceId;
 
     private GetCleanRoomAutoApprovalRulesResult() {}
     /**
@@ -29,6 +32,9 @@ public final class GetCleanRoomAutoApprovalRulesResult {
     }
     public List<GetCleanRoomAutoApprovalRulesRule> rules() {
         return this.rules;
+    }
+    public Optional<String> workspaceId() {
+        return Optional.ofNullable(this.workspaceId);
     }
 
     public static Builder builder() {
@@ -42,11 +48,13 @@ public final class GetCleanRoomAutoApprovalRulesResult {
     public static final class Builder {
         private String id;
         private List<GetCleanRoomAutoApprovalRulesRule> rules;
+        private @Nullable String workspaceId;
         public Builder() {}
         public Builder(GetCleanRoomAutoApprovalRulesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
     	      this.rules = defaults.rules;
+    	      this.workspaceId = defaults.workspaceId;
         }
 
         @CustomType.Setter
@@ -68,10 +76,17 @@ public final class GetCleanRoomAutoApprovalRulesResult {
         public Builder rules(GetCleanRoomAutoApprovalRulesRule... rules) {
             return rules(List.of(rules));
         }
+        @CustomType.Setter
+        public Builder workspaceId(@Nullable String workspaceId) {
+
+            this.workspaceId = workspaceId;
+            return this;
+        }
         public GetCleanRoomAutoApprovalRulesResult build() {
             final var _resultValue = new GetCleanRoomAutoApprovalRulesResult();
             _resultValue.id = id;
             _resultValue.rules = rules;
+            _resultValue.workspaceId = workspaceId;
             return _resultValue;
         }
     }

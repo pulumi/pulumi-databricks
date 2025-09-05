@@ -18,7 +18,7 @@ namespace Pulumi.Databricks
     /// 
     /// import {
     /// 
-    ///   id = on_securable_type,on_securable_fullname,name
+    ///   id = "on_securable_type,on_securable_fullname,name"
     /// 
     ///   to = databricks_policy_info.this
     /// 
@@ -27,7 +27,7 @@ namespace Pulumi.Databricks
     /// If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
     /// 
     /// ```sh
-    /// $ pulumi import databricks:index/policyInfo:PolicyInfo databricks_policy_info on_securable_type,on_securable_fullname,name
+    /// $ pulumi import databricks:index/policyInfo:PolicyInfo databricks_policy_info "on_securable_type,on_securable_fullname,name"
     /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/policyInfo:PolicyInfo")]
@@ -67,7 +67,7 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// Type of securables that the policy should take effect on.
-        /// Only `table` is supported at this moment.
+        /// Only `TABLE` is supported at this moment.
         /// Required on create and optional on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
         /// </summary>
         [Output("forSecurableType")]
@@ -75,15 +75,15 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// Optional list of condition expressions used to match table columns.
-        /// Only valid when `for_securable_type` is `table`.
+        /// Only valid when `for_securable_type` is `TABLE`.
         /// When specified, the policy only applies to tables whose columns satisfy all match conditions
         /// </summary>
         [Output("matchColumns")]
         public Output<ImmutableArray<Outputs.PolicyInfoMatchColumn>> MatchColumns { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the policy. Required on create and ignored on update.
-        /// To update the name, use the `new_name` field
+        /// Name of the policy. Required on create and optional on update.
+        /// To rename the policy, set `name` to a different value on update
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -97,7 +97,7 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// Type of the securable on which the policy is defined.
-        /// Only `catalog`, `schema` and `table` are supported at this moment.
+        /// Only `CATALOG`, `SCHEMA` and `TABLE` are supported at this moment.
         /// Required on create and ignored on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
         /// </summary>
         [Output("onSecurableType")]
@@ -141,6 +141,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("whenCondition")]
         public Output<string?> WhenCondition { get; private set; } = null!;
+
+        /// <summary>
+        /// Workspace ID of the resource
+        /// </summary>
+        [Output("workspaceId")]
+        public Output<string?> WorkspaceId { get; private set; } = null!;
 
 
         /// <summary>
@@ -216,7 +222,7 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// Type of securables that the policy should take effect on.
-        /// Only `table` is supported at this moment.
+        /// Only `TABLE` is supported at this moment.
         /// Required on create and optional on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
         /// </summary>
         [Input("forSecurableType", required: true)]
@@ -227,7 +233,7 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// Optional list of condition expressions used to match table columns.
-        /// Only valid when `for_securable_type` is `table`.
+        /// Only valid when `for_securable_type` is `TABLE`.
         /// When specified, the policy only applies to tables whose columns satisfy all match conditions
         /// </summary>
         public InputList<Inputs.PolicyInfoMatchColumnArgs> MatchColumns
@@ -237,8 +243,8 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
-        /// Name of the policy. Required on create and ignored on update.
-        /// To update the name, use the `new_name` field
+        /// Name of the policy. Required on create and optional on update.
+        /// To rename the policy, set `name` to a different value on update
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -252,7 +258,7 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// Type of the securable on which the policy is defined.
-        /// Only `catalog`, `schema` and `table` are supported at this moment.
+        /// Only `CATALOG`, `SCHEMA` and `TABLE` are supported at this moment.
         /// Required on create and ignored on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
         /// </summary>
         [Input("onSecurableType")]
@@ -290,6 +296,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("whenCondition")]
         public Input<string>? WhenCondition { get; set; }
+
+        /// <summary>
+        /// Workspace ID of the resource
+        /// </summary>
+        [Input("workspaceId")]
+        public Input<string>? WorkspaceId { get; set; }
 
         public PolicyInfoArgs()
         {
@@ -339,7 +351,7 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// Type of securables that the policy should take effect on.
-        /// Only `table` is supported at this moment.
+        /// Only `TABLE` is supported at this moment.
         /// Required on create and optional on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
         /// </summary>
         [Input("forSecurableType")]
@@ -350,7 +362,7 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// Optional list of condition expressions used to match table columns.
-        /// Only valid when `for_securable_type` is `table`.
+        /// Only valid when `for_securable_type` is `TABLE`.
         /// When specified, the policy only applies to tables whose columns satisfy all match conditions
         /// </summary>
         public InputList<Inputs.PolicyInfoMatchColumnGetArgs> MatchColumns
@@ -360,8 +372,8 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
-        /// Name of the policy. Required on create and ignored on update.
-        /// To update the name, use the `new_name` field
+        /// Name of the policy. Required on create and optional on update.
+        /// To rename the policy, set `name` to a different value on update
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -375,7 +387,7 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// Type of the securable on which the policy is defined.
-        /// Only `catalog`, `schema` and `table` are supported at this moment.
+        /// Only `CATALOG`, `SCHEMA` and `TABLE` are supported at this moment.
         /// Required on create and ignored on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
         /// </summary>
         [Input("onSecurableType")]
@@ -425,6 +437,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("whenCondition")]
         public Input<string>? WhenCondition { get; set; }
+
+        /// <summary>
+        /// Workspace ID of the resource
+        /// </summary>
+        [Input("workspaceId")]
+        public Input<string>? WorkspaceId { get; set; }
 
         public PolicyInfoState()
         {

@@ -70,6 +70,8 @@ type LookupExternalMetadataArgs struct {
 	SystemType string `pulumi:"systemType"`
 	// (string) - URL associated with the external metadata object
 	Url *string `pulumi:"url"`
+	// Workspace ID of the resource
+	WorkspaceId *string `pulumi:"workspaceId"`
 }
 
 // A collection of values returned by getExternalMetadata.
@@ -101,7 +103,8 @@ type LookupExternalMetadataResult struct {
 	// (string) - Username of user who last modified external metadata object
 	UpdatedBy string `pulumi:"updatedBy"`
 	// (string) - URL associated with the external metadata object
-	Url *string `pulumi:"url"`
+	Url         *string `pulumi:"url"`
+	WorkspaceId *string `pulumi:"workspaceId"`
 }
 
 func LookupExternalMetadataOutput(ctx *pulumi.Context, args LookupExternalMetadataOutputArgs, opts ...pulumi.InvokeOption) LookupExternalMetadataResultOutput {
@@ -131,6 +134,8 @@ type LookupExternalMetadataOutputArgs struct {
 	SystemType pulumi.StringInput `pulumi:"systemType"`
 	// (string) - URL associated with the external metadata object
 	Url pulumi.StringPtrInput `pulumi:"url"`
+	// Workspace ID of the resource
+	WorkspaceId pulumi.StringPtrInput `pulumi:"workspaceId"`
 }
 
 func (LookupExternalMetadataOutputArgs) ElementType() reflect.Type {
@@ -220,6 +225,10 @@ func (o LookupExternalMetadataResultOutput) UpdatedBy() pulumi.StringOutput {
 // (string) - URL associated with the external metadata object
 func (o LookupExternalMetadataResultOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupExternalMetadataResult) *string { return v.Url }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupExternalMetadataResultOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupExternalMetadataResult) *string { return v.WorkspaceId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

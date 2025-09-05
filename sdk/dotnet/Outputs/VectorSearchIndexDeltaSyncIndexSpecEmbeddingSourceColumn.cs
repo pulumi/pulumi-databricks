@@ -14,9 +14,13 @@ namespace Pulumi.Databricks.Outputs
     public sealed class VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn
     {
         /// <summary>
-        /// The name of the embedding model endpoint
+        /// The name of the embedding model endpoint, used by default for both ingestion and querying.
         /// </summary>
         public readonly string? EmbeddingModelEndpointName;
+        /// <summary>
+        /// The name of the embedding model endpoint which, if specified, is used for querying (not ingestion).
+        /// </summary>
+        public readonly string? ModelEndpointNameForQuery;
         /// <summary>
         /// The name of the column
         /// </summary>
@@ -26,9 +30,12 @@ namespace Pulumi.Databricks.Outputs
         private VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn(
             string? embeddingModelEndpointName,
 
+            string? modelEndpointNameForQuery,
+
             string? name)
         {
             EmbeddingModelEndpointName = embeddingModelEndpointName;
+            ModelEndpointNameForQuery = modelEndpointNameForQuery;
             Name = name;
         }
     }

@@ -27,18 +27,33 @@ class GetCleanRoomAssetsResult:
     """
     A collection of values returned by getCleanRoomAssets.
     """
-    def __init__(__self__, assets=None, id=None):
+    def __init__(__self__, assets=None, clean_room_name=None, id=None, workspace_id=None):
         if assets and not isinstance(assets, list):
             raise TypeError("Expected argument 'assets' to be a list")
         pulumi.set(__self__, "assets", assets)
+        if clean_room_name and not isinstance(clean_room_name, str):
+            raise TypeError("Expected argument 'clean_room_name' to be a str")
+        pulumi.set(__self__, "clean_room_name", clean_room_name)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if workspace_id and not isinstance(workspace_id, str):
+            raise TypeError("Expected argument 'workspace_id' to be a str")
+        pulumi.set(__self__, "workspace_id", workspace_id)
 
     @_builtins.property
     @pulumi.getter
     def assets(self) -> Sequence['outputs.GetCleanRoomAssetsAssetResult']:
         return pulumi.get(self, "assets")
+
+    @_builtins.property
+    @pulumi.getter(name="cleanRoomName")
+    def clean_room_name(self) -> _builtins.str:
+        """
+        (string) - The name of the clean room this asset belongs to.
+        This field is required for create operations and populated by the server for responses
+        """
+        return pulumi.get(self, "clean_room_name")
 
     @_builtins.property
     @pulumi.getter
@@ -48,6 +63,11 @@ class GetCleanRoomAssetsResult:
         """
         return pulumi.get(self, "id")
 
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "workspace_id")
+
 
 class AwaitableGetCleanRoomAssetsResult(GetCleanRoomAssetsResult):
     # pylint: disable=using-constant-test
@@ -56,10 +76,14 @@ class AwaitableGetCleanRoomAssetsResult(GetCleanRoomAssetsResult):
             yield self
         return GetCleanRoomAssetsResult(
             assets=self.assets,
-            id=self.id)
+            clean_room_name=self.clean_room_name,
+            id=self.id,
+            workspace_id=self.workspace_id)
 
 
-def get_clean_room_assets(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCleanRoomAssetsResult:
+def get_clean_room_assets(clean_room_name: Optional[_builtins.str] = None,
+                          workspace_id: Optional[_builtins.str] = None,
+                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCleanRoomAssetsResult:
     """
     This data source can be used to fetch the list of clean room assets.
 
@@ -73,15 +97,25 @@ def get_clean_room_assets(opts: Optional[pulumi.InvokeOptions] = None) -> Awaita
 
     all = databricks.index.CleanRoomsAsset("all")
     ```
+
+
+    :param _builtins.str clean_room_name: Name of the clean room
+    :param _builtins.str workspace_id: Workspace ID of the resource
     """
     __args__ = dict()
+    __args__['cleanRoomName'] = clean_room_name
+    __args__['workspaceId'] = workspace_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getCleanRoomAssets:getCleanRoomAssets', __args__, opts=opts, typ=GetCleanRoomAssetsResult).value
 
     return AwaitableGetCleanRoomAssetsResult(
         assets=pulumi.get(__ret__, 'assets'),
-        id=pulumi.get(__ret__, 'id'))
-def get_clean_room_assets_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCleanRoomAssetsResult]:
+        clean_room_name=pulumi.get(__ret__, 'clean_room_name'),
+        id=pulumi.get(__ret__, 'id'),
+        workspace_id=pulumi.get(__ret__, 'workspace_id'))
+def get_clean_room_assets_output(clean_room_name: Optional[pulumi.Input[_builtins.str]] = None,
+                                 workspace_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCleanRoomAssetsResult]:
     """
     This data source can be used to fetch the list of clean room assets.
 
@@ -95,10 +129,18 @@ def get_clean_room_assets_output(opts: Optional[Union[pulumi.InvokeOptions, pulu
 
     all = databricks.index.CleanRoomsAsset("all")
     ```
+
+
+    :param _builtins.str clean_room_name: Name of the clean room
+    :param _builtins.str workspace_id: Workspace ID of the resource
     """
     __args__ = dict()
+    __args__['cleanRoomName'] = clean_room_name
+    __args__['workspaceId'] = workspace_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getCleanRoomAssets:getCleanRoomAssets', __args__, opts=opts, typ=GetCleanRoomAssetsResult)
     return __ret__.apply(lambda __response__: GetCleanRoomAssetsResult(
         assets=pulumi.get(__response__, 'assets'),
-        id=pulumi.get(__response__, 'id')))
+        clean_room_name=pulumi.get(__response__, 'clean_room_name'),
+        id=pulumi.get(__response__, 'id'),
+        workspace_id=pulumi.get(__response__, 'workspace_id')))

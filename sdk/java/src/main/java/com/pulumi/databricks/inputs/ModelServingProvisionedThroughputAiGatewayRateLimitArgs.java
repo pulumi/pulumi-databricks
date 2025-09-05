@@ -53,6 +53,13 @@ public final class ModelServingProvisionedThroughputAiGatewayRateLimitArgs exten
         return this.renewalPeriod;
     }
 
+    @Import(name="tokens")
+    private @Nullable Output<Integer> tokens;
+
+    public Optional<Output<Integer>> tokens() {
+        return Optional.ofNullable(this.tokens);
+    }
+
     private ModelServingProvisionedThroughputAiGatewayRateLimitArgs() {}
 
     private ModelServingProvisionedThroughputAiGatewayRateLimitArgs(ModelServingProvisionedThroughputAiGatewayRateLimitArgs $) {
@@ -60,6 +67,7 @@ public final class ModelServingProvisionedThroughputAiGatewayRateLimitArgs exten
         this.key = $.key;
         this.principal = $.principal;
         this.renewalPeriod = $.renewalPeriod;
+        this.tokens = $.tokens;
     }
 
     public static Builder builder() {
@@ -126,6 +134,15 @@ public final class ModelServingProvisionedThroughputAiGatewayRateLimitArgs exten
 
         public Builder renewalPeriod(String renewalPeriod) {
             return renewalPeriod(Output.of(renewalPeriod));
+        }
+
+        public Builder tokens(@Nullable Output<Integer> tokens) {
+            $.tokens = tokens;
+            return this;
+        }
+
+        public Builder tokens(Integer tokens) {
+            return tokens(Output.of(tokens));
         }
 
         public ModelServingProvisionedThroughputAiGatewayRateLimitArgs build() {

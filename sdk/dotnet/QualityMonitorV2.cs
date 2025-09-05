@@ -47,7 +47,7 @@ namespace Pulumi.Databricks
     /// 
     /// import {
     /// 
-    ///   id = object_type,object_id
+    ///   id = "object_type,object_id"
     /// 
     ///   to = databricks_quality_monitor_v2.this
     /// 
@@ -56,7 +56,7 @@ namespace Pulumi.Databricks
     /// If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
     /// 
     /// ```sh
-    /// $ pulumi import databricks:index/qualityMonitorV2:QualityMonitorV2 databricks_quality_monitor_v2 object_type,object_id
+    /// $ pulumi import databricks:index/qualityMonitorV2:QualityMonitorV2 databricks_quality_monitor_v2 "object_type,object_id"
     /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/qualityMonitorV2:QualityMonitorV2")]
@@ -79,6 +79,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("objectType")]
         public Output<string> ObjectType { get; private set; } = null!;
+
+        /// <summary>
+        /// Workspace ID of the resource
+        /// </summary>
+        [Output("workspaceId")]
+        public Output<string?> WorkspaceId { get; private set; } = null!;
 
 
         /// <summary>
@@ -138,6 +144,12 @@ namespace Pulumi.Databricks
         [Input("objectType", required: true)]
         public Input<string> ObjectType { get; set; } = null!;
 
+        /// <summary>
+        /// Workspace ID of the resource
+        /// </summary>
+        [Input("workspaceId")]
+        public Input<string>? WorkspaceId { get; set; }
+
         public QualityMonitorV2Args()
         {
         }
@@ -163,6 +175,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("objectType")]
         public Input<string>? ObjectType { get; set; }
+
+        /// <summary>
+        /// Workspace ID of the resource
+        /// </summary>
+        [Input("workspaceId")]
+        public Input<string>? WorkspaceId { get; set; }
 
         public QualityMonitorV2State()
         {

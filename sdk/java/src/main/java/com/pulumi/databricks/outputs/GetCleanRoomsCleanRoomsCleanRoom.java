@@ -48,7 +48,7 @@ public final class GetCleanRoomsCleanRoomsCleanRoom {
      */
     private GetCleanRoomsCleanRoomsCleanRoomOutputCatalog outputCatalog;
     /**
-     * @return (string) - This is Databricks username of the owner of the local clean room securable for permission management
+     * @return (string) - This is the Databricks username of the owner of the local clean room securable for permission management
      * 
      */
     private @Nullable String owner;
@@ -116,7 +116,7 @@ public final class GetCleanRoomsCleanRoomsCleanRoom {
         return this.outputCatalog;
     }
     /**
-     * @return (string) - This is Databricks username of the owner of the local clean room securable for permission management
+     * @return (string) - This is the Databricks username of the owner of the local clean room securable for permission management
      * 
      */
     public Optional<String> owner() {

@@ -27,6 +27,7 @@ export function getDatabaseDatabaseCatalog(args: GetDatabaseDatabaseCatalogArgs,
         "databaseInstanceName": args.databaseInstanceName,
         "databaseName": args.databaseName,
         "name": args.name,
+        "workspaceId": args.workspaceId,
     }, opts);
 }
 
@@ -50,6 +51,10 @@ export interface GetDatabaseDatabaseCatalogArgs {
      * The name of the catalog in UC
      */
     name: string;
+    /**
+     * Workspace ID of the resource
+     */
+    workspaceId?: string;
 }
 
 /**
@@ -80,6 +85,7 @@ export interface GetDatabaseDatabaseCatalogResult {
      * (string)
      */
     readonly uid: string;
+    readonly workspaceId?: string;
 }
 /**
  * This data source can be used to get a single Database Catalog.
@@ -104,6 +110,7 @@ export function getDatabaseDatabaseCatalogOutput(args: GetDatabaseDatabaseCatalo
         "databaseInstanceName": args.databaseInstanceName,
         "databaseName": args.databaseName,
         "name": args.name,
+        "workspaceId": args.workspaceId,
     }, opts);
 }
 
@@ -127,4 +134,8 @@ export interface GetDatabaseDatabaseCatalogOutputArgs {
      * The name of the catalog in UC
      */
     name: pulumi.Input<string>;
+    /**
+     * Workspace ID of the resource
+     */
+    workspaceId?: pulumi.Input<string>;
 }

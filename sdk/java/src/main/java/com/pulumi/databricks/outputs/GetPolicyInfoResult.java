@@ -46,7 +46,7 @@ public final class GetPolicyInfoResult {
     private @Nullable List<String> exceptPrincipals;
     /**
      * @return (string) - Type of securables that the policy should take effect on.
-     * Only `table` is supported at this moment.
+     * Only `TABLE` is supported at this moment.
      * Required on create and optional on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
      * 
      */
@@ -58,14 +58,14 @@ public final class GetPolicyInfoResult {
     private String id;
     /**
      * @return (list of MatchColumn) - Optional list of condition expressions used to match table columns.
-     * Only valid when `for_securable_type` is `table`.
+     * Only valid when `for_securable_type` is `TABLE`.
      * When specified, the policy only applies to tables whose columns satisfy all match conditions
      * 
      */
     private @Nullable List<GetPolicyInfoMatchColumn> matchColumns;
     /**
-     * @return (string) - Name of the policy. Required on create and ignored on update.
-     * To update the name, use the `new_name` field
+     * @return (string) - Name of the policy. Required on create and optional on update.
+     * To rename the policy, set `name` to a different value on update
      * 
      */
     private @Nullable String name;
@@ -77,7 +77,7 @@ public final class GetPolicyInfoResult {
     private @Nullable String onSecurableFullname;
     /**
      * @return (string) - Type of the securable on which the policy is defined.
-     * Only `catalog`, `schema` and `table` are supported at this moment.
+     * Only `CATALOG`, `SCHEMA` and `TABLE` are supported at this moment.
      * Required on create and ignored on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
      * 
      */
@@ -115,6 +115,7 @@ public final class GetPolicyInfoResult {
      * 
      */
     private @Nullable String whenCondition;
+    private @Nullable String workspaceId;
 
     private GetPolicyInfoResult() {}
     /**
@@ -156,7 +157,7 @@ public final class GetPolicyInfoResult {
     }
     /**
      * @return (string) - Type of securables that the policy should take effect on.
-     * Only `table` is supported at this moment.
+     * Only `TABLE` is supported at this moment.
      * Required on create and optional on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
      * 
      */
@@ -172,7 +173,7 @@ public final class GetPolicyInfoResult {
     }
     /**
      * @return (list of MatchColumn) - Optional list of condition expressions used to match table columns.
-     * Only valid when `for_securable_type` is `table`.
+     * Only valid when `for_securable_type` is `TABLE`.
      * When specified, the policy only applies to tables whose columns satisfy all match conditions
      * 
      */
@@ -180,8 +181,8 @@ public final class GetPolicyInfoResult {
         return this.matchColumns == null ? List.of() : this.matchColumns;
     }
     /**
-     * @return (string) - Name of the policy. Required on create and ignored on update.
-     * To update the name, use the `new_name` field
+     * @return (string) - Name of the policy. Required on create and optional on update.
+     * To rename the policy, set `name` to a different value on update
      * 
      */
     public Optional<String> name() {
@@ -197,7 +198,7 @@ public final class GetPolicyInfoResult {
     }
     /**
      * @return (string) - Type of the securable on which the policy is defined.
-     * Only `catalog`, `schema` and `table` are supported at this moment.
+     * Only `CATALOG`, `SCHEMA` and `TABLE` are supported at this moment.
      * Required on create and ignored on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
      * 
      */
@@ -249,6 +250,9 @@ public final class GetPolicyInfoResult {
     public Optional<String> whenCondition() {
         return Optional.ofNullable(this.whenCondition);
     }
+    public Optional<String> workspaceId() {
+        return Optional.ofNullable(this.workspaceId);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -276,6 +280,7 @@ public final class GetPolicyInfoResult {
         private Integer updatedAt;
         private String updatedBy;
         private @Nullable String whenCondition;
+        private @Nullable String workspaceId;
         public Builder() {}
         public Builder(GetPolicyInfoResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -296,6 +301,7 @@ public final class GetPolicyInfoResult {
     	      this.updatedAt = defaults.updatedAt;
     	      this.updatedBy = defaults.updatedBy;
     	      this.whenCondition = defaults.whenCondition;
+    	      this.workspaceId = defaults.workspaceId;
         }
 
         @CustomType.Setter
@@ -425,6 +431,12 @@ public final class GetPolicyInfoResult {
             this.whenCondition = whenCondition;
             return this;
         }
+        @CustomType.Setter
+        public Builder workspaceId(@Nullable String workspaceId) {
+
+            this.workspaceId = workspaceId;
+            return this;
+        }
         public GetPolicyInfoResult build() {
             final var _resultValue = new GetPolicyInfoResult();
             _resultValue.columnMask = columnMask;
@@ -444,6 +456,7 @@ public final class GetPolicyInfoResult {
             _resultValue.updatedAt = updatedAt;
             _resultValue.updatedBy = updatedBy;
             _resultValue.whenCondition = whenCondition;
+            _resultValue.workspaceId = workspaceId;
             return _resultValue;
         }
     }

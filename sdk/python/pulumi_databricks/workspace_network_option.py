@@ -149,7 +149,7 @@ class WorkspaceNetworkOption(pulumi.CustomResource):
 
         import {
 
-          id = workspace_id
+          id = "workspace_id"
 
           to = databricks_workspace_network_option.this
 
@@ -158,7 +158,7 @@ class WorkspaceNetworkOption(pulumi.CustomResource):
         If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
 
         ```sh
-        $ pulumi import databricks:index/workspaceNetworkOption:WorkspaceNetworkOption databricks_workspace_network_option workspace_id
+        $ pulumi import databricks:index/workspaceNetworkOption:WorkspaceNetworkOption databricks_workspace_network_option "workspace_id"
         ```
 
         :param str resource_name: The name of the resource.
@@ -207,7 +207,7 @@ class WorkspaceNetworkOption(pulumi.CustomResource):
 
         import {
 
-          id = workspace_id
+          id = "workspace_id"
 
           to = databricks_workspace_network_option.this
 
@@ -216,7 +216,7 @@ class WorkspaceNetworkOption(pulumi.CustomResource):
         If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
 
         ```sh
-        $ pulumi import databricks:index/workspaceNetworkOption:WorkspaceNetworkOption databricks_workspace_network_option workspace_id
+        $ pulumi import databricks:index/workspaceNetworkOption:WorkspaceNetworkOption databricks_workspace_network_option "workspace_id"
         ```
 
         :param str resource_name: The name of the resource.

@@ -120,6 +120,12 @@ namespace Pulumi.Databricks
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
+        /// <summary>
+        /// Workspace ID of the resource
+        /// </summary>
+        [Input("workspaceId")]
+        public string? WorkspaceId { get; set; }
+
         public GetDatabaseDatabaseCatalogArgs()
         {
         }
@@ -151,6 +157,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// Workspace ID of the resource
+        /// </summary>
+        [Input("workspaceId")]
+        public Input<string>? WorkspaceId { get; set; }
 
         public GetDatabaseDatabaseCatalogInvokeArgs()
         {
@@ -186,6 +198,7 @@ namespace Pulumi.Databricks
         /// (string)
         /// </summary>
         public readonly string Uid;
+        public readonly string? WorkspaceId;
 
         [OutputConstructor]
         private GetDatabaseDatabaseCatalogResult(
@@ -199,7 +212,9 @@ namespace Pulumi.Databricks
 
             string name,
 
-            string uid)
+            string uid,
+
+            string? workspaceId)
         {
             CreateDatabaseIfNotExists = createDatabaseIfNotExists;
             DatabaseInstanceName = databaseInstanceName;
@@ -207,6 +222,7 @@ namespace Pulumi.Databricks
             Id = id;
             Name = name;
             Uid = uid;
+            WorkspaceId = workspaceId;
         }
     }
 }

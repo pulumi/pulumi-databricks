@@ -40,7 +40,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly Outputs.GetCleanRoomsCleanRoomsCleanRoomOutputCatalogResult OutputCatalog;
         /// <summary>
-        /// (string) - This is Databricks username of the owner of the local clean room securable for permission management
+        /// (string) - This is the Databricks username of the owner of the local clean room securable for permission management
         /// </summary>
         public readonly string? Owner;
         /// <summary>

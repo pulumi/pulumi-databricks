@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.GetAlertV2Evaluation;
+import com.pulumi.databricks.inputs.GetAlertV2RunAs;
 import com.pulumi.databricks.inputs.GetAlertV2Schedule;
 import java.lang.String;
 import java.util.Objects;
@@ -107,16 +108,41 @@ public final class GetAlertV2PlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * (string) - The run as username or application ID of service principal.
-     * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
+     * (AlertV2RunAs) - Specifies the identity that will be used to run the alert.
+     * This field allows you to configure alerts to run as a specific user or service principal.
+     * - For user identity: Set `user_name` to the email of an active workspace user. Users can only set this to their own email.
+     * - For service principal: Set `service_principal_name` to the application ID. Requires the `servicePrincipal/user` role.
+     *   If not specified, the alert will run as the request user
+     * 
+     */
+    @Import(name="runAs")
+    private @Nullable GetAlertV2RunAs runAs;
+
+    /**
+     * @return (AlertV2RunAs) - Specifies the identity that will be used to run the alert.
+     * This field allows you to configure alerts to run as a specific user or service principal.
+     * - For user identity: Set `user_name` to the email of an active workspace user. Users can only set this to their own email.
+     * - For service principal: Set `service_principal_name` to the application ID. Requires the `servicePrincipal/user` role.
+     *   If not specified, the alert will run as the request user
+     * 
+     */
+    public Optional<GetAlertV2RunAs> runAs() {
+        return Optional.ofNullable(this.runAs);
+    }
+
+    /**
+     * (string, deprecated) - The run as username or application ID of service principal.
+     * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
+     * Deprecated: Use `run_as` field instead. This field will be removed in a future release
      * 
      */
     @Import(name="runAsUserName")
     private @Nullable String runAsUserName;
 
     /**
-     * @return (string) - The run as username or application ID of service principal.
-     * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
+     * @return (string, deprecated) - The run as username or application ID of service principal.
+     * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
+     * Deprecated: Use `run_as` field instead. This field will be removed in a future release
      * 
      */
     public Optional<String> runAsUserName() {
@@ -153,6 +179,21 @@ public final class GetAlertV2PlainArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.warehouseId);
     }
 
+    /**
+     * Workspace ID of the resource
+     * 
+     */
+    @Import(name="workspaceId")
+    private @Nullable String workspaceId;
+
+    /**
+     * @return Workspace ID of the resource
+     * 
+     */
+    public Optional<String> workspaceId() {
+        return Optional.ofNullable(this.workspaceId);
+    }
+
     private GetAlertV2PlainArgs() {}
 
     private GetAlertV2PlainArgs(GetAlertV2PlainArgs $) {
@@ -162,9 +203,11 @@ public final class GetAlertV2PlainArgs extends com.pulumi.resources.InvokeArgs {
         this.evaluation = $.evaluation;
         this.parentPath = $.parentPath;
         this.queryText = $.queryText;
+        this.runAs = $.runAs;
         this.runAsUserName = $.runAsUserName;
         this.schedule = $.schedule;
         this.warehouseId = $.warehouseId;
+        this.workspaceId = $.workspaceId;
     }
 
     public static Builder builder() {
@@ -252,8 +295,24 @@ public final class GetAlertV2PlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param runAsUserName (string) - The run as username or application ID of service principal.
-         * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
+         * @param runAs (AlertV2RunAs) - Specifies the identity that will be used to run the alert.
+         * This field allows you to configure alerts to run as a specific user or service principal.
+         * - For user identity: Set `user_name` to the email of an active workspace user. Users can only set this to their own email.
+         * - For service principal: Set `service_principal_name` to the application ID. Requires the `servicePrincipal/user` role.
+         *   If not specified, the alert will run as the request user
+         * 
+         * @return builder
+         * 
+         */
+        public Builder runAs(@Nullable GetAlertV2RunAs runAs) {
+            $.runAs = runAs;
+            return this;
+        }
+
+        /**
+         * @param runAsUserName (string, deprecated) - The run as username or application ID of service principal.
+         * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
+         * Deprecated: Use `run_as` field instead. This field will be removed in a future release
          * 
          * @return builder
          * 
@@ -282,6 +341,17 @@ public final class GetAlertV2PlainArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder warehouseId(@Nullable String warehouseId) {
             $.warehouseId = warehouseId;
+            return this;
+        }
+
+        /**
+         * @param workspaceId Workspace ID of the resource
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workspaceId(@Nullable String workspaceId) {
+            $.workspaceId = workspaceId;
             return this;
         }
 

@@ -76,7 +76,7 @@ import javax.annotation.Nullable;
  * 
  * import {
  * 
- *   id = clean_room_name,name,asset_type
+ *   id = &#34;clean_room_name,name,asset_type&#34;
  * 
  *   to = databricks_clean_room_asset.this
  * 
@@ -85,7 +85,7 @@ import javax.annotation.Nullable;
  * If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
  * 
  * ```sh
- * $ pulumi import databricks:index/cleanRoomAsset:CleanRoomAsset databricks_clean_room_asset clean_room_name,name,asset_type
+ * $ pulumi import databricks:index/cleanRoomAsset:CleanRoomAsset databricks_clean_room_asset &#34;clean_room_name,name,asset_type&#34;
  * ```
  * 
  */
@@ -316,6 +316,20 @@ public class CleanRoomAsset extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<CleanRoomAssetVolumeLocalDetails>> volumeLocalDetails() {
         return Codegen.optional(this.volumeLocalDetails);
+    }
+    /**
+     * Workspace ID of the resource
+     * 
+     */
+    @Export(name="workspaceId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> workspaceId;
+
+    /**
+     * @return Workspace ID of the resource
+     * 
+     */
+    public Output<Optional<String>> workspaceId() {
+        return Codegen.optional(this.workspaceId);
     }
 
     /**

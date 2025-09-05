@@ -5,6 +5,8 @@ package com.pulumi.databricks;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.CatalogEffectivePredictiveOptimizationFlagArgs;
+import com.pulumi.databricks.inputs.CatalogProvisioningInfoArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Map;
@@ -16,6 +18,13 @@ import javax.annotation.Nullable;
 public final class CatalogArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final CatalogArgs Empty = new CatalogArgs();
+
+    @Import(name="browseOnly")
+    private @Nullable Output<Boolean> browseOnly;
+
+    public Optional<Output<Boolean>> browseOnly() {
+        return Optional.ofNullable(this.browseOnly);
+    }
 
     /**
      * User-supplied free-form text.
@@ -45,6 +54,13 @@ public final class CatalogArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> connectionName() {
         return Optional.ofNullable(this.connectionName);
+    }
+
+    @Import(name="effectivePredictiveOptimizationFlag")
+    private @Nullable Output<CatalogEffectivePredictiveOptimizationFlagArgs> effectivePredictiveOptimizationFlag;
+
+    public Optional<Output<CatalogEffectivePredictiveOptimizationFlagArgs>> effectivePredictiveOptimizationFlag() {
+        return Optional.ofNullable(this.effectivePredictiveOptimizationFlag);
     }
 
     /**
@@ -182,6 +198,13 @@ public final class CatalogArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.providerName);
     }
 
+    @Import(name="provisioningInfo")
+    private @Nullable Output<CatalogProvisioningInfoArgs> provisioningInfo;
+
+    public Optional<Output<CatalogProvisioningInfoArgs>> provisioningInfo() {
+        return Optional.ofNullable(this.provisioningInfo);
+    }
+
     /**
      * For Delta Sharing Catalogs: the name of the share under the share provider. Change forces creation of a new resource.
      * 
@@ -195,6 +218,13 @@ public final class CatalogArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> shareName() {
         return Optional.ofNullable(this.shareName);
+    }
+
+    @Import(name="storageLocation")
+    private @Nullable Output<String> storageLocation;
+
+    public Optional<Output<String>> storageLocation() {
+        return Optional.ofNullable(this.storageLocation);
     }
 
     /**
@@ -215,8 +245,10 @@ public final class CatalogArgs extends com.pulumi.resources.ResourceArgs {
     private CatalogArgs() {}
 
     private CatalogArgs(CatalogArgs $) {
+        this.browseOnly = $.browseOnly;
         this.comment = $.comment;
         this.connectionName = $.connectionName;
+        this.effectivePredictiveOptimizationFlag = $.effectivePredictiveOptimizationFlag;
         this.enablePredictiveOptimization = $.enablePredictiveOptimization;
         this.forceDestroy = $.forceDestroy;
         this.isolationMode = $.isolationMode;
@@ -226,7 +258,9 @@ public final class CatalogArgs extends com.pulumi.resources.ResourceArgs {
         this.owner = $.owner;
         this.properties = $.properties;
         this.providerName = $.providerName;
+        this.provisioningInfo = $.provisioningInfo;
         this.shareName = $.shareName;
+        this.storageLocation = $.storageLocation;
         this.storageRoot = $.storageRoot;
     }
 
@@ -246,6 +280,15 @@ public final class CatalogArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(CatalogArgs defaults) {
             $ = new CatalogArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder browseOnly(@Nullable Output<Boolean> browseOnly) {
+            $.browseOnly = browseOnly;
+            return this;
+        }
+
+        public Builder browseOnly(Boolean browseOnly) {
+            return browseOnly(Output.of(browseOnly));
         }
 
         /**
@@ -288,6 +331,15 @@ public final class CatalogArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder connectionName(String connectionName) {
             return connectionName(Output.of(connectionName));
+        }
+
+        public Builder effectivePredictiveOptimizationFlag(@Nullable Output<CatalogEffectivePredictiveOptimizationFlagArgs> effectivePredictiveOptimizationFlag) {
+            $.effectivePredictiveOptimizationFlag = effectivePredictiveOptimizationFlag;
+            return this;
+        }
+
+        public Builder effectivePredictiveOptimizationFlag(CatalogEffectivePredictiveOptimizationFlagArgs effectivePredictiveOptimizationFlag) {
+            return effectivePredictiveOptimizationFlag(Output.of(effectivePredictiveOptimizationFlag));
         }
 
         /**
@@ -479,6 +531,15 @@ public final class CatalogArgs extends com.pulumi.resources.ResourceArgs {
             return providerName(Output.of(providerName));
         }
 
+        public Builder provisioningInfo(@Nullable Output<CatalogProvisioningInfoArgs> provisioningInfo) {
+            $.provisioningInfo = provisioningInfo;
+            return this;
+        }
+
+        public Builder provisioningInfo(CatalogProvisioningInfoArgs provisioningInfo) {
+            return provisioningInfo(Output.of(provisioningInfo));
+        }
+
         /**
          * @param shareName For Delta Sharing Catalogs: the name of the share under the share provider. Change forces creation of a new resource.
          * 
@@ -498,6 +559,15 @@ public final class CatalogArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder shareName(String shareName) {
             return shareName(Output.of(shareName));
+        }
+
+        public Builder storageLocation(@Nullable Output<String> storageLocation) {
+            $.storageLocation = storageLocation;
+            return this;
+        }
+
+        public Builder storageLocation(String storageLocation) {
+            return storageLocation(Output.of(storageLocation));
         }
 
         /**

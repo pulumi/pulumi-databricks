@@ -9,6 +9,8 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetCleanRoomsCleanRoomsResult {
@@ -18,6 +20,7 @@ public final class GetCleanRoomsCleanRoomsResult {
      * 
      */
     private String id;
+    private @Nullable String workspaceId;
 
     private GetCleanRoomsCleanRoomsResult() {}
     public List<GetCleanRoomsCleanRoomsCleanRoom> cleanRooms() {
@@ -29,6 +32,9 @@ public final class GetCleanRoomsCleanRoomsResult {
      */
     public String id() {
         return this.id;
+    }
+    public Optional<String> workspaceId() {
+        return Optional.ofNullable(this.workspaceId);
     }
 
     public static Builder builder() {
@@ -42,11 +48,13 @@ public final class GetCleanRoomsCleanRoomsResult {
     public static final class Builder {
         private List<GetCleanRoomsCleanRoomsCleanRoom> cleanRooms;
         private String id;
+        private @Nullable String workspaceId;
         public Builder() {}
         public Builder(GetCleanRoomsCleanRoomsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cleanRooms = defaults.cleanRooms;
     	      this.id = defaults.id;
+    	      this.workspaceId = defaults.workspaceId;
         }
 
         @CustomType.Setter
@@ -68,10 +76,17 @@ public final class GetCleanRoomsCleanRoomsResult {
             this.id = id;
             return this;
         }
+        @CustomType.Setter
+        public Builder workspaceId(@Nullable String workspaceId) {
+
+            this.workspaceId = workspaceId;
+            return this;
+        }
         public GetCleanRoomsCleanRoomsResult build() {
             final var _resultValue = new GetCleanRoomsCleanRoomsResult();
             _resultValue.cleanRooms = cleanRooms;
             _resultValue.id = id;
+            _resultValue.workspaceId = workspaceId;
             return _resultValue;
         }
     }

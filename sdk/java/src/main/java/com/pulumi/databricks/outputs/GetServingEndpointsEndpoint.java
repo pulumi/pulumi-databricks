@@ -45,6 +45,7 @@ public final class GetServingEndpointsEndpoint {
      */
     private @Nullable List<GetServingEndpointsEndpointTag> tags;
     private @Nullable String task;
+    private @Nullable String usagePolicyId;
 
     private GetServingEndpointsEndpoint() {}
     /**
@@ -99,6 +100,9 @@ public final class GetServingEndpointsEndpoint {
     public Optional<String> task() {
         return Optional.ofNullable(this.task);
     }
+    public Optional<String> usagePolicyId() {
+        return Optional.ofNullable(this.usagePolicyId);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -121,6 +125,7 @@ public final class GetServingEndpointsEndpoint {
         private @Nullable List<GetServingEndpointsEndpointState> states;
         private @Nullable List<GetServingEndpointsEndpointTag> tags;
         private @Nullable String task;
+        private @Nullable String usagePolicyId;
         public Builder() {}
         public Builder(GetServingEndpointsEndpoint defaults) {
     	      Objects.requireNonNull(defaults);
@@ -136,6 +141,7 @@ public final class GetServingEndpointsEndpoint {
     	      this.states = defaults.states;
     	      this.tags = defaults.tags;
     	      this.task = defaults.task;
+    	      this.usagePolicyId = defaults.usagePolicyId;
         }
 
         @CustomType.Setter
@@ -222,6 +228,12 @@ public final class GetServingEndpointsEndpoint {
             this.task = task;
             return this;
         }
+        @CustomType.Setter
+        public Builder usagePolicyId(@Nullable String usagePolicyId) {
+
+            this.usagePolicyId = usagePolicyId;
+            return this;
+        }
         public GetServingEndpointsEndpoint build() {
             final var _resultValue = new GetServingEndpointsEndpoint();
             _resultValue.aiGateways = aiGateways;
@@ -236,6 +248,7 @@ public final class GetServingEndpointsEndpoint {
             _resultValue.states = states;
             _resultValue.tags = tags;
             _resultValue.task = task;
+            _resultValue.usagePolicyId = usagePolicyId;
             return _resultValue;
         }
     }

@@ -174,6 +174,12 @@ namespace Pulumi.Databricks
         [Input("volumeLocalDetails")]
         public Inputs.GetCleanRoomAssetVolumeLocalDetailsArgs? VolumeLocalDetails { get; set; }
 
+        /// <summary>
+        /// Workspace ID of the resource
+        /// </summary>
+        [Input("workspaceId")]
+        public string? WorkspaceId { get; set; }
+
         public GetCleanRoomAssetArgs()
         {
         }
@@ -263,6 +269,12 @@ namespace Pulumi.Databricks
         [Input("volumeLocalDetails")]
         public Input<Inputs.GetCleanRoomAssetVolumeLocalDetailsInputArgs>? VolumeLocalDetails { get; set; }
 
+        /// <summary>
+        /// Workspace ID of the resource
+        /// </summary>
+        [Input("workspaceId")]
+        public Input<string>? WorkspaceId { get; set; }
+
         public GetCleanRoomAssetInvokeArgs()
         {
         }
@@ -342,6 +354,7 @@ namespace Pulumi.Databricks
         /// Present if and only if **asset_type** is **VOLUME**
         /// </summary>
         public readonly Outputs.GetCleanRoomAssetVolumeLocalDetailsResult? VolumeLocalDetails;
+        public readonly string? WorkspaceId;
 
         [OutputConstructor]
         private GetCleanRoomAssetResult(
@@ -373,7 +386,9 @@ namespace Pulumi.Databricks
 
             Outputs.GetCleanRoomAssetViewLocalDetailsResult? viewLocalDetails,
 
-            Outputs.GetCleanRoomAssetVolumeLocalDetailsResult? volumeLocalDetails)
+            Outputs.GetCleanRoomAssetVolumeLocalDetailsResult? volumeLocalDetails,
+
+            string? workspaceId)
         {
             AddedAt = addedAt;
             AssetType = assetType;
@@ -390,6 +405,7 @@ namespace Pulumi.Databricks
             View = view;
             ViewLocalDetails = viewLocalDetails;
             VolumeLocalDetails = volumeLocalDetails;
+            WorkspaceId = workspaceId;
         }
     }
 }

@@ -5,7 +5,10 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.CatalogEffectivePredictiveOptimizationFlagArgs;
+import com.pulumi.databricks.inputs.CatalogProvisioningInfoArgs;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -16,6 +19,20 @@ import javax.annotation.Nullable;
 public final class CatalogState extends com.pulumi.resources.ResourceArgs {
 
     public static final CatalogState Empty = new CatalogState();
+
+    @Import(name="browseOnly")
+    private @Nullable Output<Boolean> browseOnly;
+
+    public Optional<Output<Boolean>> browseOnly() {
+        return Optional.ofNullable(this.browseOnly);
+    }
+
+    @Import(name="catalogType")
+    private @Nullable Output<String> catalogType;
+
+    public Optional<Output<String>> catalogType() {
+        return Optional.ofNullable(this.catalogType);
+    }
 
     /**
      * User-supplied free-form text.
@@ -47,6 +64,27 @@ public final class CatalogState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.connectionName);
     }
 
+    @Import(name="createdAt")
+    private @Nullable Output<Integer> createdAt;
+
+    public Optional<Output<Integer>> createdAt() {
+        return Optional.ofNullable(this.createdAt);
+    }
+
+    @Import(name="createdBy")
+    private @Nullable Output<String> createdBy;
+
+    public Optional<Output<String>> createdBy() {
+        return Optional.ofNullable(this.createdBy);
+    }
+
+    @Import(name="effectivePredictiveOptimizationFlag")
+    private @Nullable Output<CatalogEffectivePredictiveOptimizationFlagArgs> effectivePredictiveOptimizationFlag;
+
+    public Optional<Output<CatalogEffectivePredictiveOptimizationFlagArgs>> effectivePredictiveOptimizationFlag() {
+        return Optional.ofNullable(this.effectivePredictiveOptimizationFlag);
+    }
+
     /**
      * Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
      * 
@@ -75,6 +113,13 @@ public final class CatalogState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> forceDestroy() {
         return Optional.ofNullable(this.forceDestroy);
+    }
+
+    @Import(name="fullName")
+    private @Nullable Output<String> fullName;
+
+    public Optional<Output<String>> fullName() {
+        return Optional.ofNullable(this.fullName);
     }
 
     /**
@@ -182,6 +227,20 @@ public final class CatalogState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.providerName);
     }
 
+    @Import(name="provisioningInfo")
+    private @Nullable Output<CatalogProvisioningInfoArgs> provisioningInfo;
+
+    public Optional<Output<CatalogProvisioningInfoArgs>> provisioningInfo() {
+        return Optional.ofNullable(this.provisioningInfo);
+    }
+
+    @Import(name="securableType")
+    private @Nullable Output<String> securableType;
+
+    public Optional<Output<String>> securableType() {
+        return Optional.ofNullable(this.securableType);
+    }
+
     /**
      * For Delta Sharing Catalogs: the name of the share under the share provider. Change forces creation of a new resource.
      * 
@@ -195,6 +254,13 @@ public final class CatalogState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> shareName() {
         return Optional.ofNullable(this.shareName);
+    }
+
+    @Import(name="storageLocation")
+    private @Nullable Output<String> storageLocation;
+
+    public Optional<Output<String>> storageLocation() {
+        return Optional.ofNullable(this.storageLocation);
     }
 
     /**
@@ -212,13 +278,33 @@ public final class CatalogState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.storageRoot);
     }
 
+    @Import(name="updatedAt")
+    private @Nullable Output<Integer> updatedAt;
+
+    public Optional<Output<Integer>> updatedAt() {
+        return Optional.ofNullable(this.updatedAt);
+    }
+
+    @Import(name="updatedBy")
+    private @Nullable Output<String> updatedBy;
+
+    public Optional<Output<String>> updatedBy() {
+        return Optional.ofNullable(this.updatedBy);
+    }
+
     private CatalogState() {}
 
     private CatalogState(CatalogState $) {
+        this.browseOnly = $.browseOnly;
+        this.catalogType = $.catalogType;
         this.comment = $.comment;
         this.connectionName = $.connectionName;
+        this.createdAt = $.createdAt;
+        this.createdBy = $.createdBy;
+        this.effectivePredictiveOptimizationFlag = $.effectivePredictiveOptimizationFlag;
         this.enablePredictiveOptimization = $.enablePredictiveOptimization;
         this.forceDestroy = $.forceDestroy;
+        this.fullName = $.fullName;
         this.isolationMode = $.isolationMode;
         this.metastoreId = $.metastoreId;
         this.name = $.name;
@@ -226,8 +312,13 @@ public final class CatalogState extends com.pulumi.resources.ResourceArgs {
         this.owner = $.owner;
         this.properties = $.properties;
         this.providerName = $.providerName;
+        this.provisioningInfo = $.provisioningInfo;
+        this.securableType = $.securableType;
         this.shareName = $.shareName;
+        this.storageLocation = $.storageLocation;
         this.storageRoot = $.storageRoot;
+        this.updatedAt = $.updatedAt;
+        this.updatedBy = $.updatedBy;
     }
 
     public static Builder builder() {
@@ -246,6 +337,24 @@ public final class CatalogState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(CatalogState defaults) {
             $ = new CatalogState(Objects.requireNonNull(defaults));
+        }
+
+        public Builder browseOnly(@Nullable Output<Boolean> browseOnly) {
+            $.browseOnly = browseOnly;
+            return this;
+        }
+
+        public Builder browseOnly(Boolean browseOnly) {
+            return browseOnly(Output.of(browseOnly));
+        }
+
+        public Builder catalogType(@Nullable Output<String> catalogType) {
+            $.catalogType = catalogType;
+            return this;
+        }
+
+        public Builder catalogType(String catalogType) {
+            return catalogType(Output.of(catalogType));
         }
 
         /**
@@ -290,6 +399,33 @@ public final class CatalogState extends com.pulumi.resources.ResourceArgs {
             return connectionName(Output.of(connectionName));
         }
 
+        public Builder createdAt(@Nullable Output<Integer> createdAt) {
+            $.createdAt = createdAt;
+            return this;
+        }
+
+        public Builder createdAt(Integer createdAt) {
+            return createdAt(Output.of(createdAt));
+        }
+
+        public Builder createdBy(@Nullable Output<String> createdBy) {
+            $.createdBy = createdBy;
+            return this;
+        }
+
+        public Builder createdBy(String createdBy) {
+            return createdBy(Output.of(createdBy));
+        }
+
+        public Builder effectivePredictiveOptimizationFlag(@Nullable Output<CatalogEffectivePredictiveOptimizationFlagArgs> effectivePredictiveOptimizationFlag) {
+            $.effectivePredictiveOptimizationFlag = effectivePredictiveOptimizationFlag;
+            return this;
+        }
+
+        public Builder effectivePredictiveOptimizationFlag(CatalogEffectivePredictiveOptimizationFlagArgs effectivePredictiveOptimizationFlag) {
+            return effectivePredictiveOptimizationFlag(Output.of(effectivePredictiveOptimizationFlag));
+        }
+
         /**
          * @param enablePredictiveOptimization Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
          * 
@@ -330,6 +466,15 @@ public final class CatalogState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder forceDestroy(Boolean forceDestroy) {
             return forceDestroy(Output.of(forceDestroy));
+        }
+
+        public Builder fullName(@Nullable Output<String> fullName) {
+            $.fullName = fullName;
+            return this;
+        }
+
+        public Builder fullName(String fullName) {
+            return fullName(Output.of(fullName));
         }
 
         /**
@@ -479,6 +624,24 @@ public final class CatalogState extends com.pulumi.resources.ResourceArgs {
             return providerName(Output.of(providerName));
         }
 
+        public Builder provisioningInfo(@Nullable Output<CatalogProvisioningInfoArgs> provisioningInfo) {
+            $.provisioningInfo = provisioningInfo;
+            return this;
+        }
+
+        public Builder provisioningInfo(CatalogProvisioningInfoArgs provisioningInfo) {
+            return provisioningInfo(Output.of(provisioningInfo));
+        }
+
+        public Builder securableType(@Nullable Output<String> securableType) {
+            $.securableType = securableType;
+            return this;
+        }
+
+        public Builder securableType(String securableType) {
+            return securableType(Output.of(securableType));
+        }
+
         /**
          * @param shareName For Delta Sharing Catalogs: the name of the share under the share provider. Change forces creation of a new resource.
          * 
@@ -500,6 +663,15 @@ public final class CatalogState extends com.pulumi.resources.ResourceArgs {
             return shareName(Output.of(shareName));
         }
 
+        public Builder storageLocation(@Nullable Output<String> storageLocation) {
+            $.storageLocation = storageLocation;
+            return this;
+        }
+
+        public Builder storageLocation(String storageLocation) {
+            return storageLocation(Output.of(storageLocation));
+        }
+
         /**
          * @param storageRoot Managed location of the catalog. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
          * 
@@ -519,6 +691,24 @@ public final class CatalogState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder storageRoot(String storageRoot) {
             return storageRoot(Output.of(storageRoot));
+        }
+
+        public Builder updatedAt(@Nullable Output<Integer> updatedAt) {
+            $.updatedAt = updatedAt;
+            return this;
+        }
+
+        public Builder updatedAt(Integer updatedAt) {
+            return updatedAt(Output.of(updatedAt));
+        }
+
+        public Builder updatedBy(@Nullable Output<String> updatedBy) {
+            $.updatedBy = updatedBy;
+            return this;
+        }
+
+        public Builder updatedBy(String updatedBy) {
+            return updatedBy(Output.of(updatedBy));
         }
 
         public CatalogState build() {

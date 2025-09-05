@@ -6,10 +6,26 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-export function getCleanRoomAssetRevisionsCleanRoomAssets(opts?: pulumi.InvokeOptions): Promise<GetCleanRoomAssetRevisionsCleanRoomAssetsResult> {
+export function getCleanRoomAssetRevisionsCleanRoomAssets(args: GetCleanRoomAssetRevisionsCleanRoomAssetsArgs, opts?: pulumi.InvokeOptions): Promise<GetCleanRoomAssetRevisionsCleanRoomAssetsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getCleanRoomAssetRevisionsCleanRoomAssets:getCleanRoomAssetRevisionsCleanRoomAssets", {
+        "name": args.name,
+        "workspaceId": args.workspaceId,
     }, opts);
+}
+
+/**
+ * A collection of arguments for invoking getCleanRoomAssetRevisionsCleanRoomAssets.
+ */
+export interface GetCleanRoomAssetRevisionsCleanRoomAssetsArgs {
+    /**
+     * Name of the asset
+     */
+    name: string;
+    /**
+     * Workspace ID of the resource
+     */
+    workspaceId?: string;
 }
 
 /**
@@ -20,10 +36,31 @@ export interface GetCleanRoomAssetRevisionsCleanRoomAssetsResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * (string) - The name of the partition column
+     */
+    readonly name: string;
     readonly revisions: outputs.GetCleanRoomAssetRevisionsCleanRoomAssetsRevision[];
+    readonly workspaceId?: string;
 }
-export function getCleanRoomAssetRevisionsCleanRoomAssetsOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCleanRoomAssetRevisionsCleanRoomAssetsResult> {
+export function getCleanRoomAssetRevisionsCleanRoomAssetsOutput(args: GetCleanRoomAssetRevisionsCleanRoomAssetsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCleanRoomAssetRevisionsCleanRoomAssetsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getCleanRoomAssetRevisionsCleanRoomAssets:getCleanRoomAssetRevisionsCleanRoomAssets", {
+        "name": args.name,
+        "workspaceId": args.workspaceId,
     }, opts);
+}
+
+/**
+ * A collection of arguments for invoking getCleanRoomAssetRevisionsCleanRoomAssets.
+ */
+export interface GetCleanRoomAssetRevisionsCleanRoomAssetsOutputArgs {
+    /**
+     * Name of the asset
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Workspace ID of the resource
+     */
+    workspaceId?: pulumi.Input<string>;
 }

@@ -9,19 +9,36 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetCleanRoomAssetsResult {
     private List<GetCleanRoomAssetsAsset> assets;
     /**
+     * @return (string) - The name of the clean room this asset belongs to.
+     * This field is required for create operations and populated by the server for responses
+     * 
+     */
+    private String cleanRoomName;
+    /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
+    private @Nullable String workspaceId;
 
     private GetCleanRoomAssetsResult() {}
     public List<GetCleanRoomAssetsAsset> assets() {
         return this.assets;
+    }
+    /**
+     * @return (string) - The name of the clean room this asset belongs to.
+     * This field is required for create operations and populated by the server for responses
+     * 
+     */
+    public String cleanRoomName() {
+        return this.cleanRoomName;
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -29,6 +46,9 @@ public final class GetCleanRoomAssetsResult {
      */
     public String id() {
         return this.id;
+    }
+    public Optional<String> workspaceId() {
+        return Optional.ofNullable(this.workspaceId);
     }
 
     public static Builder builder() {
@@ -41,12 +61,16 @@ public final class GetCleanRoomAssetsResult {
     @CustomType.Builder
     public static final class Builder {
         private List<GetCleanRoomAssetsAsset> assets;
+        private String cleanRoomName;
         private String id;
+        private @Nullable String workspaceId;
         public Builder() {}
         public Builder(GetCleanRoomAssetsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.assets = defaults.assets;
+    	      this.cleanRoomName = defaults.cleanRoomName;
     	      this.id = defaults.id;
+    	      this.workspaceId = defaults.workspaceId;
         }
 
         @CustomType.Setter
@@ -61,6 +85,14 @@ public final class GetCleanRoomAssetsResult {
             return assets(List.of(assets));
         }
         @CustomType.Setter
+        public Builder cleanRoomName(String cleanRoomName) {
+            if (cleanRoomName == null) {
+              throw new MissingRequiredPropertyException("GetCleanRoomAssetsResult", "cleanRoomName");
+            }
+            this.cleanRoomName = cleanRoomName;
+            return this;
+        }
+        @CustomType.Setter
         public Builder id(String id) {
             if (id == null) {
               throw new MissingRequiredPropertyException("GetCleanRoomAssetsResult", "id");
@@ -68,10 +100,18 @@ public final class GetCleanRoomAssetsResult {
             this.id = id;
             return this;
         }
+        @CustomType.Setter
+        public Builder workspaceId(@Nullable String workspaceId) {
+
+            this.workspaceId = workspaceId;
+            return this;
+        }
         public GetCleanRoomAssetsResult build() {
             final var _resultValue = new GetCleanRoomAssetsResult();
             _resultValue.assets = assets;
+            _resultValue.cleanRoomName = cleanRoomName;
             _resultValue.id = id;
+            _resultValue.workspaceId = workspaceId;
             return _resultValue;
         }
     }

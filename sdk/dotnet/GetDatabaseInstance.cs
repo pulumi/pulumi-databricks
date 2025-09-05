@@ -103,6 +103,12 @@ namespace Pulumi.Databricks
         public string? Capacity { get; set; }
 
         /// <summary>
+        /// (boolean) - Whether the instance has PG native password login enabled. Defaults to true
+        /// </summary>
+        [Input("enablePgNativeLogin")]
+        public bool? EnablePgNativeLogin { get; set; }
+
+        /// <summary>
         /// (boolean) - Whether to enable secondaries to serve read-only traffic. Defaults to false
         /// </summary>
         [Input("enableReadableSecondaries")]
@@ -144,6 +150,12 @@ namespace Pulumi.Databricks
         [Input("stopped")]
         public bool? Stopped { get; set; }
 
+        /// <summary>
+        /// Workspace ID of the resource
+        /// </summary>
+        [Input("workspaceId")]
+        public string? WorkspaceId { get; set; }
+
         public GetDatabaseInstanceArgs()
         {
         }
@@ -157,6 +169,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("capacity")]
         public Input<string>? Capacity { get; set; }
+
+        /// <summary>
+        /// (boolean) - Whether the instance has PG native password login enabled. Defaults to true
+        /// </summary>
+        [Input("enablePgNativeLogin")]
+        public Input<bool>? EnablePgNativeLogin { get; set; }
 
         /// <summary>
         /// (boolean) - Whether to enable secondaries to serve read-only traffic. Defaults to false
@@ -200,6 +218,12 @@ namespace Pulumi.Databricks
         [Input("stopped")]
         public Input<bool>? Stopped { get; set; }
 
+        /// <summary>
+        /// Workspace ID of the resource
+        /// </summary>
+        [Input("workspaceId")]
+        public Input<string>? WorkspaceId { get; set; }
+
         public GetDatabaseInstanceInvokeArgs()
         {
         }
@@ -228,6 +252,12 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string Creator;
         /// <summary>
+        /// (boolean) - xref AIP-129. `enable_pg_native_login` is owned by the client, while `effective_enable_pg_native_login` is owned by the server.
+        /// `enable_pg_native_login` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+        /// `effective_enable_pg_native_login` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+        /// </summary>
+        public readonly bool EffectiveEnablePgNativeLogin;
+        /// <summary>
         /// (boolean) - xref AIP-129. `enable_readable_secondaries` is owned by the client, while `effective_enable_readable_secondaries` is owned by the server.
         /// `enable_readable_secondaries` will only be set in Create/Update response messages if and only if the user provides the field via the request.
         /// `effective_enable_readable_secondaries` on the other hand will always bet set in all response messages (Create/Update/Get/List)
@@ -251,6 +281,10 @@ namespace Pulumi.Databricks
         /// `effective_stopped` on the other hand will always bet set in all response messages (Create/Update/Get/List)
         /// </summary>
         public readonly bool EffectiveStopped;
+        /// <summary>
+        /// (boolean) - Whether the instance has PG native password login enabled. Defaults to true
+        /// </summary>
+        public readonly bool EnablePgNativeLogin;
         /// <summary>
         /// (boolean) - Whether to enable secondaries to serve read-only traffic. Defaults to false
         /// </summary>
@@ -306,6 +340,7 @@ namespace Pulumi.Databricks
         /// (string) - Id of the ref database instance
         /// </summary>
         public readonly string Uid;
+        public readonly string? WorkspaceId;
 
         [OutputConstructor]
         private GetDatabaseInstanceResult(
@@ -317,6 +352,8 @@ namespace Pulumi.Databricks
 
             string creator,
 
+            bool effectiveEnablePgNativeLogin,
+
             bool effectiveEnableReadableSecondaries,
 
             int effectiveNodeCount,
@@ -324,6 +361,8 @@ namespace Pulumi.Databricks
             int effectiveRetentionWindowInDays,
 
             bool effectiveStopped,
+
+            bool enablePgNativeLogin,
 
             bool? enableReadableSecondaries,
 
@@ -347,16 +386,20 @@ namespace Pulumi.Databricks
 
             bool? stopped,
 
-            string uid)
+            string uid,
+
+            string? workspaceId)
         {
             Capacity = capacity;
             ChildInstanceRefs = childInstanceRefs;
             CreationTime = creationTime;
             Creator = creator;
+            EffectiveEnablePgNativeLogin = effectiveEnablePgNativeLogin;
             EffectiveEnableReadableSecondaries = effectiveEnableReadableSecondaries;
             EffectiveNodeCount = effectiveNodeCount;
             EffectiveRetentionWindowInDays = effectiveRetentionWindowInDays;
             EffectiveStopped = effectiveStopped;
+            EnablePgNativeLogin = enablePgNativeLogin;
             EnableReadableSecondaries = enableReadableSecondaries;
             Id = id;
             Name = name;
@@ -369,6 +412,7 @@ namespace Pulumi.Databricks
             State = state;
             Stopped = stopped;
             Uid = uid;
+            WorkspaceId = workspaceId;
         }
     }
 }

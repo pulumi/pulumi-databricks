@@ -30,6 +30,8 @@ type LookupRecipientFederationPolicyArgs struct {
 	Name *string `pulumi:"name"`
 	// (OidcFederationPolicy) - Specifies the policy to use for validating OIDC claims in the federated tokens
 	OidcPolicy *GetRecipientFederationPolicyOidcPolicy `pulumi:"oidcPolicy"`
+	// Workspace ID of the resource
+	WorkspaceId *string `pulumi:"workspaceId"`
 }
 
 // A collection of values returned by getRecipientFederationPolicy.
@@ -46,7 +48,8 @@ type LookupRecipientFederationPolicyResult struct {
 	// (OidcFederationPolicy) - Specifies the policy to use for validating OIDC claims in the federated tokens
 	OidcPolicy *GetRecipientFederationPolicyOidcPolicy `pulumi:"oidcPolicy"`
 	// (string) - System-generated timestamp indicating when the policy was last updated
-	UpdateTime string `pulumi:"updateTime"`
+	UpdateTime  string  `pulumi:"updateTime"`
+	WorkspaceId *string `pulumi:"workspaceId"`
 }
 
 func LookupRecipientFederationPolicyOutput(ctx *pulumi.Context, args LookupRecipientFederationPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupRecipientFederationPolicyResultOutput {
@@ -67,6 +70,8 @@ type LookupRecipientFederationPolicyOutputArgs struct {
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// (OidcFederationPolicy) - Specifies the policy to use for validating OIDC claims in the federated tokens
 	OidcPolicy GetRecipientFederationPolicyOidcPolicyPtrInput `pulumi:"oidcPolicy"`
+	// Workspace ID of the resource
+	WorkspaceId pulumi.StringPtrInput `pulumi:"workspaceId"`
 }
 
 func (LookupRecipientFederationPolicyOutputArgs) ElementType() reflect.Type {
@@ -119,6 +124,10 @@ func (o LookupRecipientFederationPolicyResultOutput) OidcPolicy() GetRecipientFe
 // (string) - System-generated timestamp indicating when the policy was last updated
 func (o LookupRecipientFederationPolicyResultOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRecipientFederationPolicyResult) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+func (o LookupRecipientFederationPolicyResultOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupRecipientFederationPolicyResult) *string { return v.WorkspaceId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

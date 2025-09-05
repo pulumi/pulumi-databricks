@@ -31,7 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := databricks.GetQualityMonitorsV2(ctx, map[string]interface{}{}, nil)
+//			_, err := databricks.GetQualityMonitorsV2(ctx, &databricks.GetQualityMonitorsV2Args{}, nil)
 //			if err != nil {
 //				return err
 //			}
@@ -40,14 +40,20 @@ import (
 //	}
 //
 // ```
-func GetQualityMonitorsV2(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetQualityMonitorsV2Result, error) {
+func GetQualityMonitorsV2(ctx *pulumi.Context, args *GetQualityMonitorsV2Args, opts ...pulumi.InvokeOption) (*GetQualityMonitorsV2Result, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetQualityMonitorsV2Result
-	err := ctx.Invoke("databricks:index/getQualityMonitorsV2:getQualityMonitorsV2", nil, &rv, opts...)
+	err := ctx.Invoke("databricks:index/getQualityMonitorsV2:getQualityMonitorsV2", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &rv, nil
+}
+
+// A collection of arguments for invoking getQualityMonitorsV2.
+type GetQualityMonitorsV2Args struct {
+	// Workspace ID of the resource
+	WorkspaceId *string `pulumi:"workspaceId"`
 }
 
 // A collection of values returned by getQualityMonitorsV2.
@@ -55,13 +61,26 @@ type GetQualityMonitorsV2Result struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id              string                               `pulumi:"id"`
 	QualityMonitors []GetQualityMonitorsV2QualityMonitor `pulumi:"qualityMonitors"`
+	WorkspaceId     *string                              `pulumi:"workspaceId"`
 }
 
-func GetQualityMonitorsV2Output(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetQualityMonitorsV2ResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetQualityMonitorsV2ResultOutput, error) {
-		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-		return ctx.InvokeOutput("databricks:index/getQualityMonitorsV2:getQualityMonitorsV2", nil, GetQualityMonitorsV2ResultOutput{}, options).(GetQualityMonitorsV2ResultOutput), nil
-	}).(GetQualityMonitorsV2ResultOutput)
+func GetQualityMonitorsV2Output(ctx *pulumi.Context, args GetQualityMonitorsV2OutputArgs, opts ...pulumi.InvokeOption) GetQualityMonitorsV2ResultOutput {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (GetQualityMonitorsV2ResultOutput, error) {
+			args := v.(GetQualityMonitorsV2Args)
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("databricks:index/getQualityMonitorsV2:getQualityMonitorsV2", args, GetQualityMonitorsV2ResultOutput{}, options).(GetQualityMonitorsV2ResultOutput), nil
+		}).(GetQualityMonitorsV2ResultOutput)
+}
+
+// A collection of arguments for invoking getQualityMonitorsV2.
+type GetQualityMonitorsV2OutputArgs struct {
+	// Workspace ID of the resource
+	WorkspaceId pulumi.StringPtrInput `pulumi:"workspaceId"`
+}
+
+func (GetQualityMonitorsV2OutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetQualityMonitorsV2Args)(nil)).Elem()
 }
 
 // A collection of values returned by getQualityMonitorsV2.
@@ -86,6 +105,10 @@ func (o GetQualityMonitorsV2ResultOutput) Id() pulumi.StringOutput {
 
 func (o GetQualityMonitorsV2ResultOutput) QualityMonitors() GetQualityMonitorsV2QualityMonitorArrayOutput {
 	return o.ApplyT(func(v GetQualityMonitorsV2Result) []GetQualityMonitorsV2QualityMonitor { return v.QualityMonitors }).(GetQualityMonitorsV2QualityMonitorArrayOutput)
+}
+
+func (o GetQualityMonitorsV2ResultOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetQualityMonitorsV2Result) *string { return v.WorkspaceId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

@@ -18,6 +18,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("pauseStatus")]
         public Input<string>? PauseStatus { get; set; }
 
+        [Input("taskRetryMode")]
+        public Input<string>? TaskRetryMode { get; set; }
+
         public JobContinuousGetArgs()
         {
         }

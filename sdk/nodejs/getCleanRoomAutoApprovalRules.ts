@@ -6,10 +6,22 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-export function getCleanRoomAutoApprovalRules(opts?: pulumi.InvokeOptions): Promise<GetCleanRoomAutoApprovalRulesResult> {
+export function getCleanRoomAutoApprovalRules(args?: GetCleanRoomAutoApprovalRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetCleanRoomAutoApprovalRulesResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getCleanRoomAutoApprovalRules:getCleanRoomAutoApprovalRules", {
+        "workspaceId": args.workspaceId,
     }, opts);
+}
+
+/**
+ * A collection of arguments for invoking getCleanRoomAutoApprovalRules.
+ */
+export interface GetCleanRoomAutoApprovalRulesArgs {
+    /**
+     * Workspace ID of the resource
+     */
+    workspaceId?: string;
 }
 
 /**
@@ -21,9 +33,22 @@ export interface GetCleanRoomAutoApprovalRulesResult {
      */
     readonly id: string;
     readonly rules: outputs.GetCleanRoomAutoApprovalRulesRule[];
+    readonly workspaceId?: string;
 }
-export function getCleanRoomAutoApprovalRulesOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCleanRoomAutoApprovalRulesResult> {
+export function getCleanRoomAutoApprovalRulesOutput(args?: GetCleanRoomAutoApprovalRulesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCleanRoomAutoApprovalRulesResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getCleanRoomAutoApprovalRules:getCleanRoomAutoApprovalRules", {
+        "workspaceId": args.workspaceId,
     }, opts);
+}
+
+/**
+ * A collection of arguments for invoking getCleanRoomAutoApprovalRules.
+ */
+export interface GetCleanRoomAutoApprovalRulesOutputArgs {
+    /**
+     * Workspace ID of the resource
+     */
+    workspaceId?: pulumi.Input<string>;
 }

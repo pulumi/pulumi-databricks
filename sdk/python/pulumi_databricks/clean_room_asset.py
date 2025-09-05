@@ -31,7 +31,8 @@ class CleanRoomAssetArgs:
                  table_local_details: Optional[pulumi.Input['CleanRoomAssetTableLocalDetailsArgs']] = None,
                  view: Optional[pulumi.Input['CleanRoomAssetViewArgs']] = None,
                  view_local_details: Optional[pulumi.Input['CleanRoomAssetViewLocalDetailsArgs']] = None,
-                 volume_local_details: Optional[pulumi.Input['CleanRoomAssetVolumeLocalDetailsArgs']] = None):
+                 volume_local_details: Optional[pulumi.Input['CleanRoomAssetVolumeLocalDetailsArgs']] = None,
+                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a CleanRoomAsset resource.
         :param pulumi.Input[_builtins.str] asset_type: The type of the asset. Possible values are: `FOREIGN_TABLE`, `NOTEBOOK_FILE`, `TABLE`, `VIEW`, `VOLUME`
@@ -60,6 +61,7 @@ class CleanRoomAssetArgs:
                Present if and only if **asset_type** is **VIEW**
         :param pulumi.Input['CleanRoomAssetVolumeLocalDetailsArgs'] volume_local_details: Local details for a volume that are only available to its owner.
                Present if and only if **asset_type** is **VOLUME**
+        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID of the resource
         """
         pulumi.set(__self__, "asset_type", asset_type)
         if clean_room_name is not None:
@@ -82,6 +84,8 @@ class CleanRoomAssetArgs:
             pulumi.set(__self__, "view_local_details", view_local_details)
         if volume_local_details is not None:
             pulumi.set(__self__, "volume_local_details", volume_local_details)
+        if workspace_id is not None:
+            pulumi.set(__self__, "workspace_id", workspace_id)
 
     @_builtins.property
     @pulumi.getter(name="assetType")
@@ -230,6 +234,18 @@ class CleanRoomAssetArgs:
     def volume_local_details(self, value: Optional[pulumi.Input['CleanRoomAssetVolumeLocalDetailsArgs']]):
         pulumi.set(self, "volume_local_details", value)
 
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Workspace ID of the resource
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "workspace_id", value)
+
 
 @pulumi.input_type
 class _CleanRoomAssetState:
@@ -247,7 +263,8 @@ class _CleanRoomAssetState:
                  table_local_details: Optional[pulumi.Input['CleanRoomAssetTableLocalDetailsArgs']] = None,
                  view: Optional[pulumi.Input['CleanRoomAssetViewArgs']] = None,
                  view_local_details: Optional[pulumi.Input['CleanRoomAssetViewLocalDetailsArgs']] = None,
-                 volume_local_details: Optional[pulumi.Input['CleanRoomAssetVolumeLocalDetailsArgs']] = None):
+                 volume_local_details: Optional[pulumi.Input['CleanRoomAssetVolumeLocalDetailsArgs']] = None,
+                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CleanRoomAsset resources.
         :param pulumi.Input[_builtins.int] added_at: (integer) - When the asset is added to the clean room, in epoch milliseconds
@@ -279,6 +296,7 @@ class _CleanRoomAssetState:
                Present if and only if **asset_type** is **VIEW**
         :param pulumi.Input['CleanRoomAssetVolumeLocalDetailsArgs'] volume_local_details: Local details for a volume that are only available to its owner.
                Present if and only if **asset_type** is **VOLUME**
+        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID of the resource
         """
         if added_at is not None:
             pulumi.set(__self__, "added_at", added_at)
@@ -308,6 +326,8 @@ class _CleanRoomAssetState:
             pulumi.set(__self__, "view_local_details", view_local_details)
         if volume_local_details is not None:
             pulumi.set(__self__, "volume_local_details", volume_local_details)
+        if workspace_id is not None:
+            pulumi.set(__self__, "workspace_id", workspace_id)
 
     @_builtins.property
     @pulumi.getter(name="addedAt")
@@ -492,6 +512,18 @@ class _CleanRoomAssetState:
     def volume_local_details(self, value: Optional[pulumi.Input['CleanRoomAssetVolumeLocalDetailsArgs']]):
         pulumi.set(self, "volume_local_details", value)
 
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Workspace ID of the resource
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "workspace_id", value)
+
 
 @pulumi.type_token("databricks:index/cleanRoomAsset:CleanRoomAsset")
 class CleanRoomAsset(pulumi.CustomResource):
@@ -510,6 +542,7 @@ class CleanRoomAsset(pulumi.CustomResource):
                  view: Optional[pulumi.Input[Union['CleanRoomAssetViewArgs', 'CleanRoomAssetViewArgsDict']]] = None,
                  view_local_details: Optional[pulumi.Input[Union['CleanRoomAssetViewLocalDetailsArgs', 'CleanRoomAssetViewLocalDetailsArgsDict']]] = None,
                  volume_local_details: Optional[pulumi.Input[Union['CleanRoomAssetVolumeLocalDetailsArgs', 'CleanRoomAssetVolumeLocalDetailsArgsDict']]] = None,
+                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
         Clean room assets are data and code objects -- tables, volumes, and notebooks that are shared with the clean room.
@@ -541,7 +574,7 @@ class CleanRoomAsset(pulumi.CustomResource):
 
         import {
 
-          id = clean_room_name,name,asset_type
+          id = "clean_room_name,name,asset_type"
 
           to = databricks_clean_room_asset.this
 
@@ -550,7 +583,7 @@ class CleanRoomAsset(pulumi.CustomResource):
         If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
 
         ```sh
-        $ pulumi import databricks:index/cleanRoomAsset:CleanRoomAsset databricks_clean_room_asset clean_room_name,name,asset_type
+        $ pulumi import databricks:index/cleanRoomAsset:CleanRoomAsset databricks_clean_room_asset "clean_room_name,name,asset_type"
         ```
 
         :param str resource_name: The name of the resource.
@@ -581,6 +614,7 @@ class CleanRoomAsset(pulumi.CustomResource):
                Present if and only if **asset_type** is **VIEW**
         :param pulumi.Input[Union['CleanRoomAssetVolumeLocalDetailsArgs', 'CleanRoomAssetVolumeLocalDetailsArgsDict']] volume_local_details: Local details for a volume that are only available to its owner.
                Present if and only if **asset_type** is **VOLUME**
+        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID of the resource
         """
         ...
     @overload
@@ -618,7 +652,7 @@ class CleanRoomAsset(pulumi.CustomResource):
 
         import {
 
-          id = clean_room_name,name,asset_type
+          id = "clean_room_name,name,asset_type"
 
           to = databricks_clean_room_asset.this
 
@@ -627,7 +661,7 @@ class CleanRoomAsset(pulumi.CustomResource):
         If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
 
         ```sh
-        $ pulumi import databricks:index/cleanRoomAsset:CleanRoomAsset databricks_clean_room_asset clean_room_name,name,asset_type
+        $ pulumi import databricks:index/cleanRoomAsset:CleanRoomAsset databricks_clean_room_asset "clean_room_name,name,asset_type"
         ```
 
         :param str resource_name: The name of the resource.
@@ -656,6 +690,7 @@ class CleanRoomAsset(pulumi.CustomResource):
                  view: Optional[pulumi.Input[Union['CleanRoomAssetViewArgs', 'CleanRoomAssetViewArgsDict']]] = None,
                  view_local_details: Optional[pulumi.Input[Union['CleanRoomAssetViewLocalDetailsArgs', 'CleanRoomAssetViewLocalDetailsArgsDict']]] = None,
                  volume_local_details: Optional[pulumi.Input[Union['CleanRoomAssetVolumeLocalDetailsArgs', 'CleanRoomAssetVolumeLocalDetailsArgsDict']]] = None,
+                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -678,6 +713,7 @@ class CleanRoomAsset(pulumi.CustomResource):
             __props__.__dict__["view"] = view
             __props__.__dict__["view_local_details"] = view_local_details
             __props__.__dict__["volume_local_details"] = volume_local_details
+            __props__.__dict__["workspace_id"] = workspace_id
             __props__.__dict__["added_at"] = None
             __props__.__dict__["owner_collaborator_alias"] = None
             __props__.__dict__["status"] = None
@@ -704,7 +740,8 @@ class CleanRoomAsset(pulumi.CustomResource):
             table_local_details: Optional[pulumi.Input[Union['CleanRoomAssetTableLocalDetailsArgs', 'CleanRoomAssetTableLocalDetailsArgsDict']]] = None,
             view: Optional[pulumi.Input[Union['CleanRoomAssetViewArgs', 'CleanRoomAssetViewArgsDict']]] = None,
             view_local_details: Optional[pulumi.Input[Union['CleanRoomAssetViewLocalDetailsArgs', 'CleanRoomAssetViewLocalDetailsArgsDict']]] = None,
-            volume_local_details: Optional[pulumi.Input[Union['CleanRoomAssetVolumeLocalDetailsArgs', 'CleanRoomAssetVolumeLocalDetailsArgsDict']]] = None) -> 'CleanRoomAsset':
+            volume_local_details: Optional[pulumi.Input[Union['CleanRoomAssetVolumeLocalDetailsArgs', 'CleanRoomAssetVolumeLocalDetailsArgsDict']]] = None,
+            workspace_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'CleanRoomAsset':
         """
         Get an existing CleanRoomAsset resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -741,6 +778,7 @@ class CleanRoomAsset(pulumi.CustomResource):
                Present if and only if **asset_type** is **VIEW**
         :param pulumi.Input[Union['CleanRoomAssetVolumeLocalDetailsArgs', 'CleanRoomAssetVolumeLocalDetailsArgsDict']] volume_local_details: Local details for a volume that are only available to its owner.
                Present if and only if **asset_type** is **VOLUME**
+        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID of the resource
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -760,6 +798,7 @@ class CleanRoomAsset(pulumi.CustomResource):
         __props__.__dict__["view"] = view
         __props__.__dict__["view_local_details"] = view_local_details
         __props__.__dict__["volume_local_details"] = volume_local_details
+        __props__.__dict__["workspace_id"] = workspace_id
         return CleanRoomAsset(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -888,4 +927,12 @@ class CleanRoomAsset(pulumi.CustomResource):
         Present if and only if **asset_type** is **VOLUME**
         """
         return pulumi.get(self, "volume_local_details")
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Workspace ID of the resource
+        """
+        return pulumi.get(self, "workspace_id")
 

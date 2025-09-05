@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This resource is used to assign account-level users, service principals and groups to a Databricks workspace.
+// This resource is used to assign account-level users, service principals and groups to a Databricks workspace. To configure additional entitlements such as cluster creation, please use databricks_entitlements.
 //
 // > This resource can only be used with an account-level provider!
 //
@@ -160,8 +160,8 @@ type MwsPermissionAssignment struct {
 	pulumi.CustomResourceState
 
 	// The list of workspace permissions to assign to the principal:
-	// * `"USER"` - Can access the workspace with basic privileges.
-	// * `"ADMIN"` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
+	// * `"USER"` - Adds principal to the workspace `users` group. This gives basic workspace access.
+	// * `"ADMIN"` - Adds principal to the workspace `admins` group. This gives workspace admin privileges to manage users and groups, workspace configurations, and more.
 	Permissions pulumi.StringArrayOutput `pulumi:"permissions"`
 	// Databricks ID of the user, service principal, or group. The principal ID can be retrieved using the SCIM API, or using databricks_user, ServicePrincipal or Group data sources.
 	PrincipalId pulumi.StringOutput `pulumi:"principalId"`
@@ -209,8 +209,8 @@ func GetMwsPermissionAssignment(ctx *pulumi.Context,
 // Input properties used for looking up and filtering MwsPermissionAssignment resources.
 type mwsPermissionAssignmentState struct {
 	// The list of workspace permissions to assign to the principal:
-	// * `"USER"` - Can access the workspace with basic privileges.
-	// * `"ADMIN"` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
+	// * `"USER"` - Adds principal to the workspace `users` group. This gives basic workspace access.
+	// * `"ADMIN"` - Adds principal to the workspace `admins` group. This gives workspace admin privileges to manage users and groups, workspace configurations, and more.
 	Permissions []string `pulumi:"permissions"`
 	// Databricks ID of the user, service principal, or group. The principal ID can be retrieved using the SCIM API, or using databricks_user, ServicePrincipal or Group data sources.
 	PrincipalId *string `pulumi:"principalId"`
@@ -220,8 +220,8 @@ type mwsPermissionAssignmentState struct {
 
 type MwsPermissionAssignmentState struct {
 	// The list of workspace permissions to assign to the principal:
-	// * `"USER"` - Can access the workspace with basic privileges.
-	// * `"ADMIN"` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
+	// * `"USER"` - Adds principal to the workspace `users` group. This gives basic workspace access.
+	// * `"ADMIN"` - Adds principal to the workspace `admins` group. This gives workspace admin privileges to manage users and groups, workspace configurations, and more.
 	Permissions pulumi.StringArrayInput
 	// Databricks ID of the user, service principal, or group. The principal ID can be retrieved using the SCIM API, or using databricks_user, ServicePrincipal or Group data sources.
 	PrincipalId pulumi.StringPtrInput
@@ -235,8 +235,8 @@ func (MwsPermissionAssignmentState) ElementType() reflect.Type {
 
 type mwsPermissionAssignmentArgs struct {
 	// The list of workspace permissions to assign to the principal:
-	// * `"USER"` - Can access the workspace with basic privileges.
-	// * `"ADMIN"` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
+	// * `"USER"` - Adds principal to the workspace `users` group. This gives basic workspace access.
+	// * `"ADMIN"` - Adds principal to the workspace `admins` group. This gives workspace admin privileges to manage users and groups, workspace configurations, and more.
 	Permissions []string `pulumi:"permissions"`
 	// Databricks ID of the user, service principal, or group. The principal ID can be retrieved using the SCIM API, or using databricks_user, ServicePrincipal or Group data sources.
 	PrincipalId string `pulumi:"principalId"`
@@ -247,8 +247,8 @@ type mwsPermissionAssignmentArgs struct {
 // The set of arguments for constructing a MwsPermissionAssignment resource.
 type MwsPermissionAssignmentArgs struct {
 	// The list of workspace permissions to assign to the principal:
-	// * `"USER"` - Can access the workspace with basic privileges.
-	// * `"ADMIN"` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
+	// * `"USER"` - Adds principal to the workspace `users` group. This gives basic workspace access.
+	// * `"ADMIN"` - Adds principal to the workspace `admins` group. This gives workspace admin privileges to manage users and groups, workspace configurations, and more.
 	Permissions pulumi.StringArrayInput
 	// Databricks ID of the user, service principal, or group. The principal ID can be retrieved using the SCIM API, or using databricks_user, ServicePrincipal or Group data sources.
 	PrincipalId pulumi.StringInput
@@ -344,8 +344,8 @@ func (o MwsPermissionAssignmentOutput) ToMwsPermissionAssignmentOutputWithContex
 }
 
 // The list of workspace permissions to assign to the principal:
-// * `"USER"` - Can access the workspace with basic privileges.
-// * `"ADMIN"` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
+// * `"USER"` - Adds principal to the workspace `users` group. This gives basic workspace access.
+// * `"ADMIN"` - Adds principal to the workspace `admins` group. This gives workspace admin privileges to manage users and groups, workspace configurations, and more.
 func (o MwsPermissionAssignmentOutput) Permissions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *MwsPermissionAssignment) pulumi.StringArrayOutput { return v.Permissions }).(pulumi.StringArrayOutput)
 }

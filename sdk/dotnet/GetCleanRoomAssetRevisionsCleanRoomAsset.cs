@@ -105,6 +105,12 @@ namespace Pulumi.Databricks
         [Input("volumeLocalDetails")]
         public Inputs.GetCleanRoomAssetRevisionsCleanRoomAssetVolumeLocalDetailsArgs? VolumeLocalDetails { get; set; }
 
+        /// <summary>
+        /// Workspace ID of the resource
+        /// </summary>
+        [Input("workspaceId")]
+        public string? WorkspaceId { get; set; }
+
         public GetCleanRoomAssetRevisionsCleanRoomAssetArgs()
         {
         }
@@ -194,6 +200,12 @@ namespace Pulumi.Databricks
         [Input("volumeLocalDetails")]
         public Input<Inputs.GetCleanRoomAssetRevisionsCleanRoomAssetVolumeLocalDetailsInputArgs>? VolumeLocalDetails { get; set; }
 
+        /// <summary>
+        /// Workspace ID of the resource
+        /// </summary>
+        [Input("workspaceId")]
+        public Input<string>? WorkspaceId { get; set; }
+
         public GetCleanRoomAssetRevisionsCleanRoomAssetInvokeArgs()
         {
         }
@@ -273,6 +285,7 @@ namespace Pulumi.Databricks
         /// Present if and only if **asset_type** is **VOLUME**
         /// </summary>
         public readonly Outputs.GetCleanRoomAssetRevisionsCleanRoomAssetVolumeLocalDetailsResult? VolumeLocalDetails;
+        public readonly string? WorkspaceId;
 
         [OutputConstructor]
         private GetCleanRoomAssetRevisionsCleanRoomAssetResult(
@@ -304,7 +317,9 @@ namespace Pulumi.Databricks
 
             Outputs.GetCleanRoomAssetRevisionsCleanRoomAssetViewLocalDetailsResult? viewLocalDetails,
 
-            Outputs.GetCleanRoomAssetRevisionsCleanRoomAssetVolumeLocalDetailsResult? volumeLocalDetails)
+            Outputs.GetCleanRoomAssetRevisionsCleanRoomAssetVolumeLocalDetailsResult? volumeLocalDetails,
+
+            string? workspaceId)
         {
             AddedAt = addedAt;
             AssetType = assetType;
@@ -321,6 +336,7 @@ namespace Pulumi.Databricks
             View = view;
             ViewLocalDetails = viewLocalDetails;
             VolumeLocalDetails = volumeLocalDetails;
+            WorkspaceId = workspaceId;
         }
     }
 }

@@ -89,7 +89,7 @@ namespace Pulumi.Databricks
     /// 
     /// import {
     /// 
-    ///   id = name
+    ///   id = "name"
     /// 
     ///   to = databricks_database_database_catalog.this
     /// 
@@ -98,7 +98,7 @@ namespace Pulumi.Databricks
     /// If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
     /// 
     /// ```sh
-    /// $ pulumi import databricks:index/databaseDatabaseCatalog:DatabaseDatabaseCatalog databricks_database_database_catalog name
+    /// $ pulumi import databricks:index/databaseDatabaseCatalog:DatabaseDatabaseCatalog databricks_database_database_catalog "name"
     /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/databaseDatabaseCatalog:DatabaseDatabaseCatalog")]
@@ -130,6 +130,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("uid")]
         public Output<string> Uid { get; private set; } = null!;
+
+        /// <summary>
+        /// Workspace ID of the resource
+        /// </summary>
+        [Output("workspaceId")]
+        public Output<string?> WorkspaceId { get; private set; } = null!;
 
 
         /// <summary>
@@ -198,6 +204,12 @@ namespace Pulumi.Databricks
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Workspace ID of the resource
+        /// </summary>
+        [Input("workspaceId")]
+        public Input<string>? WorkspaceId { get; set; }
+
         public DatabaseDatabaseCatalogArgs()
         {
         }
@@ -232,6 +244,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("uid")]
         public Input<string>? Uid { get; set; }
+
+        /// <summary>
+        /// Workspace ID of the resource
+        /// </summary>
+        [Input("workspaceId")]
+        public Input<string>? WorkspaceId { get; set; }
 
         public DatabaseDatabaseCatalogState()
         {

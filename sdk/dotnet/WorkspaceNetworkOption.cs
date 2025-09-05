@@ -49,7 +49,7 @@ namespace Pulumi.Databricks
     /// 
     /// import {
     /// 
-    ///   id = workspace_id
+    ///   id = "workspace_id"
     /// 
     ///   to = databricks_workspace_network_option.this
     /// 
@@ -58,7 +58,7 @@ namespace Pulumi.Databricks
     /// If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
     /// 
     /// ```sh
-    /// $ pulumi import databricks:index/workspaceNetworkOption:WorkspaceNetworkOption databricks_workspace_network_option workspace_id
+    /// $ pulumi import databricks:index/workspaceNetworkOption:WorkspaceNetworkOption databricks_workspace_network_option "workspace_id"
     /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/workspaceNetworkOption:WorkspaceNetworkOption")]

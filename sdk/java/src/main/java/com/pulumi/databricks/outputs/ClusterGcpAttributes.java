@@ -23,6 +23,10 @@ public final class ClusterGcpAttributes {
      * 
      */
     private @Nullable Integer bootDiskSize;
+    /**
+     * @return The first `first_on_demand` nodes of the cluster will be placed on on-demand instances. If this value is greater than 0, the cluster driver node will be placed on an on-demand instance. If this value is greater than or equal to the current cluster size, all nodes will be placed on on-demand instances. If this value is less than the current cluster size, `first_on_demand` nodes will be placed on on-demand instances, and the remainder will be placed on availability instances. This value does not affect cluster size and cannot be mutated over the lifetime of a cluster.
+     * 
+     */
     private @Nullable Integer firstOnDemand;
     /**
      * @return Google Service Account email address that the cluster uses to authenticate with Google Identity. This field is used for authentication with the GCS and BigQuery data sources.
@@ -63,6 +67,10 @@ public final class ClusterGcpAttributes {
     public Optional<Integer> bootDiskSize() {
         return Optional.ofNullable(this.bootDiskSize);
     }
+    /**
+     * @return The first `first_on_demand` nodes of the cluster will be placed on on-demand instances. If this value is greater than 0, the cluster driver node will be placed on an on-demand instance. If this value is greater than or equal to the current cluster size, all nodes will be placed on on-demand instances. If this value is less than the current cluster size, `first_on_demand` nodes will be placed on on-demand instances, and the remainder will be placed on availability instances. This value does not affect cluster size and cannot be mutated over the lifetime of a cluster.
+     * 
+     */
     public Optional<Integer> firstOnDemand() {
         return Optional.ofNullable(this.firstOnDemand);
     }

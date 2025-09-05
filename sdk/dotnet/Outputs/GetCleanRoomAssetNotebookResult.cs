@@ -31,7 +31,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetCleanRoomAssetNotebookReviewResult> Reviews;
         /// <summary>
-        /// (list of string) - collaborators that can run the notebook
+        /// (list of string) - Aliases of collaborators that can run the notebook
         /// </summary>
         public readonly ImmutableArray<string> RunnerCollaboratorAliases;
 
