@@ -15,6 +15,9 @@ The Databricks provider is available as a package in all Pulumi languages:
 * .NET: [`Pulumi.Databricks`](https://www.nuget.org/packages/Pulumi.Databricks)
 * Java: [`com.pulumi/databricks`](https://central.sonatype.com/artifact/com.pulumi/databricks)
 
+## Overview
+
+Use the Databricks Pulumi provider to interact with almost all of [Databricks](http://databricks.com/) resources. ## Example Usage
 ## Configuration Reference
 
 Most provider arguments can be configured either directly in the `provider "databricks"` block or by setting an environment variable, listed for each argument below.
