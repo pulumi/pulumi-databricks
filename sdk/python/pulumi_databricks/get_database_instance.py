@@ -28,7 +28,7 @@ class GetDatabaseInstanceResult:
     """
     A collection of values returned by getDatabaseInstance.
     """
-    def __init__(__self__, capacity=None, child_instance_refs=None, creation_time=None, creator=None, effective_enable_readable_secondaries=None, effective_node_count=None, effective_retention_window_in_days=None, effective_stopped=None, enable_readable_secondaries=None, id=None, name=None, node_count=None, parent_instance_ref=None, pg_version=None, read_only_dns=None, read_write_dns=None, retention_window_in_days=None, state=None, stopped=None, uid=None):
+    def __init__(__self__, capacity=None, child_instance_refs=None, creation_time=None, creator=None, effective_enable_pg_native_login=None, effective_enable_readable_secondaries=None, effective_node_count=None, effective_retention_window_in_days=None, effective_stopped=None, enable_pg_native_login=None, enable_readable_secondaries=None, id=None, name=None, node_count=None, parent_instance_ref=None, pg_version=None, read_only_dns=None, read_write_dns=None, retention_window_in_days=None, state=None, stopped=None, uid=None, workspace_id=None):
         if capacity and not isinstance(capacity, str):
             raise TypeError("Expected argument 'capacity' to be a str")
         pulumi.set(__self__, "capacity", capacity)
@@ -41,6 +41,9 @@ class GetDatabaseInstanceResult:
         if creator and not isinstance(creator, str):
             raise TypeError("Expected argument 'creator' to be a str")
         pulumi.set(__self__, "creator", creator)
+        if effective_enable_pg_native_login and not isinstance(effective_enable_pg_native_login, bool):
+            raise TypeError("Expected argument 'effective_enable_pg_native_login' to be a bool")
+        pulumi.set(__self__, "effective_enable_pg_native_login", effective_enable_pg_native_login)
         if effective_enable_readable_secondaries and not isinstance(effective_enable_readable_secondaries, bool):
             raise TypeError("Expected argument 'effective_enable_readable_secondaries' to be a bool")
         pulumi.set(__self__, "effective_enable_readable_secondaries", effective_enable_readable_secondaries)
@@ -53,6 +56,9 @@ class GetDatabaseInstanceResult:
         if effective_stopped and not isinstance(effective_stopped, bool):
             raise TypeError("Expected argument 'effective_stopped' to be a bool")
         pulumi.set(__self__, "effective_stopped", effective_stopped)
+        if enable_pg_native_login and not isinstance(enable_pg_native_login, bool):
+            raise TypeError("Expected argument 'enable_pg_native_login' to be a bool")
+        pulumi.set(__self__, "enable_pg_native_login", enable_pg_native_login)
         if enable_readable_secondaries and not isinstance(enable_readable_secondaries, bool):
             raise TypeError("Expected argument 'enable_readable_secondaries' to be a bool")
         pulumi.set(__self__, "enable_readable_secondaries", enable_readable_secondaries)
@@ -89,6 +95,9 @@ class GetDatabaseInstanceResult:
         if uid and not isinstance(uid, str):
             raise TypeError("Expected argument 'uid' to be a str")
         pulumi.set(__self__, "uid", uid)
+        if workspace_id and not isinstance(workspace_id, str):
+            raise TypeError("Expected argument 'workspace_id' to be a str")
+        pulumi.set(__self__, "workspace_id", workspace_id)
 
     @_builtins.property
     @pulumi.getter
@@ -122,6 +131,16 @@ class GetDatabaseInstanceResult:
         (string) - The email of the creator of the instance
         """
         return pulumi.get(self, "creator")
+
+    @_builtins.property
+    @pulumi.getter(name="effectiveEnablePgNativeLogin")
+    def effective_enable_pg_native_login(self) -> _builtins.bool:
+        """
+        (boolean) - xref AIP-129. `enable_pg_native_login` is owned by the client, while `effective_enable_pg_native_login` is owned by the server.
+        `enable_pg_native_login` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+        `effective_enable_pg_native_login` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+        """
+        return pulumi.get(self, "effective_enable_pg_native_login")
 
     @_builtins.property
     @pulumi.getter(name="effectiveEnableReadableSecondaries")
@@ -162,6 +181,14 @@ class GetDatabaseInstanceResult:
         `effective_stopped` on the other hand will always bet set in all response messages (Create/Update/Get/List)
         """
         return pulumi.get(self, "effective_stopped")
+
+    @_builtins.property
+    @pulumi.getter(name="enablePgNativeLogin")
+    def enable_pg_native_login(self) -> _builtins.bool:
+        """
+        (boolean) - Whether the instance has PG native password login enabled. Defaults to true
+        """
+        return pulumi.get(self, "enable_pg_native_login")
 
     @_builtins.property
     @pulumi.getter(name="enableReadableSecondaries")
@@ -266,6 +293,11 @@ class GetDatabaseInstanceResult:
         """
         return pulumi.get(self, "uid")
 
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "workspace_id")
+
 
 class AwaitableGetDatabaseInstanceResult(GetDatabaseInstanceResult):
     # pylint: disable=using-constant-test
@@ -277,10 +309,12 @@ class AwaitableGetDatabaseInstanceResult(GetDatabaseInstanceResult):
             child_instance_refs=self.child_instance_refs,
             creation_time=self.creation_time,
             creator=self.creator,
+            effective_enable_pg_native_login=self.effective_enable_pg_native_login,
             effective_enable_readable_secondaries=self.effective_enable_readable_secondaries,
             effective_node_count=self.effective_node_count,
             effective_retention_window_in_days=self.effective_retention_window_in_days,
             effective_stopped=self.effective_stopped,
+            enable_pg_native_login=self.enable_pg_native_login,
             enable_readable_secondaries=self.enable_readable_secondaries,
             id=self.id,
             name=self.name,
@@ -292,16 +326,19 @@ class AwaitableGetDatabaseInstanceResult(GetDatabaseInstanceResult):
             retention_window_in_days=self.retention_window_in_days,
             state=self.state,
             stopped=self.stopped,
-            uid=self.uid)
+            uid=self.uid,
+            workspace_id=self.workspace_id)
 
 
 def get_database_instance(capacity: Optional[_builtins.str] = None,
+                          enable_pg_native_login: Optional[_builtins.bool] = None,
                           enable_readable_secondaries: Optional[_builtins.bool] = None,
                           name: Optional[_builtins.str] = None,
                           node_count: Optional[_builtins.int] = None,
                           parent_instance_ref: Optional[Union['GetDatabaseInstanceParentInstanceRefArgs', 'GetDatabaseInstanceParentInstanceRefArgsDict']] = None,
                           retention_window_in_days: Optional[_builtins.int] = None,
                           stopped: Optional[_builtins.bool] = None,
+                          workspace_id: Optional[_builtins.str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDatabaseInstanceResult:
     """
     This data source can be used to get a single Database Instance.
@@ -319,6 +356,7 @@ def get_database_instance(capacity: Optional[_builtins.str] = None,
 
 
     :param _builtins.str capacity: (string) - The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
+    :param _builtins.bool enable_pg_native_login: (boolean) - Whether the instance has PG native password login enabled. Defaults to true
     :param _builtins.bool enable_readable_secondaries: (boolean) - Whether to enable secondaries to serve read-only traffic. Defaults to false
     :param _builtins.str name: The name of the instance. This is the unique identifier for the instance
     :param _builtins.int node_count: (integer) - The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
@@ -331,15 +369,18 @@ def get_database_instance(capacity: Optional[_builtins.str] = None,
            for which the historical data is retained. The default value is 7 days.
            Valid values are 2 to 35 days
     :param _builtins.bool stopped: (boolean) - Whether the instance is stopped
+    :param _builtins.str workspace_id: Workspace ID of the resource
     """
     __args__ = dict()
     __args__['capacity'] = capacity
+    __args__['enablePgNativeLogin'] = enable_pg_native_login
     __args__['enableReadableSecondaries'] = enable_readable_secondaries
     __args__['name'] = name
     __args__['nodeCount'] = node_count
     __args__['parentInstanceRef'] = parent_instance_ref
     __args__['retentionWindowInDays'] = retention_window_in_days
     __args__['stopped'] = stopped
+    __args__['workspaceId'] = workspace_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getDatabaseInstance:getDatabaseInstance', __args__, opts=opts, typ=GetDatabaseInstanceResult).value
 
@@ -348,10 +389,12 @@ def get_database_instance(capacity: Optional[_builtins.str] = None,
         child_instance_refs=pulumi.get(__ret__, 'child_instance_refs'),
         creation_time=pulumi.get(__ret__, 'creation_time'),
         creator=pulumi.get(__ret__, 'creator'),
+        effective_enable_pg_native_login=pulumi.get(__ret__, 'effective_enable_pg_native_login'),
         effective_enable_readable_secondaries=pulumi.get(__ret__, 'effective_enable_readable_secondaries'),
         effective_node_count=pulumi.get(__ret__, 'effective_node_count'),
         effective_retention_window_in_days=pulumi.get(__ret__, 'effective_retention_window_in_days'),
         effective_stopped=pulumi.get(__ret__, 'effective_stopped'),
+        enable_pg_native_login=pulumi.get(__ret__, 'enable_pg_native_login'),
         enable_readable_secondaries=pulumi.get(__ret__, 'enable_readable_secondaries'),
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
@@ -363,14 +406,17 @@ def get_database_instance(capacity: Optional[_builtins.str] = None,
         retention_window_in_days=pulumi.get(__ret__, 'retention_window_in_days'),
         state=pulumi.get(__ret__, 'state'),
         stopped=pulumi.get(__ret__, 'stopped'),
-        uid=pulumi.get(__ret__, 'uid'))
+        uid=pulumi.get(__ret__, 'uid'),
+        workspace_id=pulumi.get(__ret__, 'workspace_id'))
 def get_database_instance_output(capacity: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                                 enable_pg_native_login: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
                                  enable_readable_secondaries: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
                                  name: Optional[pulumi.Input[_builtins.str]] = None,
                                  node_count: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
                                  parent_instance_ref: Optional[pulumi.Input[Optional[Union['GetDatabaseInstanceParentInstanceRefArgs', 'GetDatabaseInstanceParentInstanceRefArgsDict']]]] = None,
                                  retention_window_in_days: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
                                  stopped: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
+                                 workspace_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDatabaseInstanceResult]:
     """
     This data source can be used to get a single Database Instance.
@@ -388,6 +434,7 @@ def get_database_instance_output(capacity: Optional[pulumi.Input[Optional[_built
 
 
     :param _builtins.str capacity: (string) - The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
+    :param _builtins.bool enable_pg_native_login: (boolean) - Whether the instance has PG native password login enabled. Defaults to true
     :param _builtins.bool enable_readable_secondaries: (boolean) - Whether to enable secondaries to serve read-only traffic. Defaults to false
     :param _builtins.str name: The name of the instance. This is the unique identifier for the instance
     :param _builtins.int node_count: (integer) - The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
@@ -400,15 +447,18 @@ def get_database_instance_output(capacity: Optional[pulumi.Input[Optional[_built
            for which the historical data is retained. The default value is 7 days.
            Valid values are 2 to 35 days
     :param _builtins.bool stopped: (boolean) - Whether the instance is stopped
+    :param _builtins.str workspace_id: Workspace ID of the resource
     """
     __args__ = dict()
     __args__['capacity'] = capacity
+    __args__['enablePgNativeLogin'] = enable_pg_native_login
     __args__['enableReadableSecondaries'] = enable_readable_secondaries
     __args__['name'] = name
     __args__['nodeCount'] = node_count
     __args__['parentInstanceRef'] = parent_instance_ref
     __args__['retentionWindowInDays'] = retention_window_in_days
     __args__['stopped'] = stopped
+    __args__['workspaceId'] = workspace_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getDatabaseInstance:getDatabaseInstance', __args__, opts=opts, typ=GetDatabaseInstanceResult)
     return __ret__.apply(lambda __response__: GetDatabaseInstanceResult(
@@ -416,10 +466,12 @@ def get_database_instance_output(capacity: Optional[pulumi.Input[Optional[_built
         child_instance_refs=pulumi.get(__response__, 'child_instance_refs'),
         creation_time=pulumi.get(__response__, 'creation_time'),
         creator=pulumi.get(__response__, 'creator'),
+        effective_enable_pg_native_login=pulumi.get(__response__, 'effective_enable_pg_native_login'),
         effective_enable_readable_secondaries=pulumi.get(__response__, 'effective_enable_readable_secondaries'),
         effective_node_count=pulumi.get(__response__, 'effective_node_count'),
         effective_retention_window_in_days=pulumi.get(__response__, 'effective_retention_window_in_days'),
         effective_stopped=pulumi.get(__response__, 'effective_stopped'),
+        enable_pg_native_login=pulumi.get(__response__, 'enable_pg_native_login'),
         enable_readable_secondaries=pulumi.get(__response__, 'enable_readable_secondaries'),
         id=pulumi.get(__response__, 'id'),
         name=pulumi.get(__response__, 'name'),
@@ -431,4 +483,5 @@ def get_database_instance_output(capacity: Optional[pulumi.Input[Optional[_built
         retention_window_in_days=pulumi.get(__response__, 'retention_window_in_days'),
         state=pulumi.get(__response__, 'state'),
         stopped=pulumi.get(__response__, 'stopped'),
-        uid=pulumi.get(__response__, 'uid')))
+        uid=pulumi.get(__response__, 'uid'),
+        workspace_id=pulumi.get(__response__, 'workspace_id')))

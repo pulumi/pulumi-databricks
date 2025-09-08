@@ -89,6 +89,8 @@ type LookupCleanRoomAssetArgs struct {
 	// (CleanRoomAssetVolumeLocalDetails) - Local details for a volume that are only available to its owner.
 	// Present if and only if **asset_type** is **VOLUME**
 	VolumeLocalDetails *GetCleanRoomAssetVolumeLocalDetails `pulumi:"volumeLocalDetails"`
+	// Workspace ID of the resource
+	WorkspaceId *string `pulumi:"workspaceId"`
 }
 
 // A collection of values returned by getCleanRoomAsset.
@@ -132,6 +134,7 @@ type LookupCleanRoomAssetResult struct {
 	// (CleanRoomAssetVolumeLocalDetails) - Local details for a volume that are only available to its owner.
 	// Present if and only if **asset_type** is **VOLUME**
 	VolumeLocalDetails *GetCleanRoomAssetVolumeLocalDetails `pulumi:"volumeLocalDetails"`
+	WorkspaceId        *string                              `pulumi:"workspaceId"`
 }
 
 func LookupCleanRoomAssetOutput(ctx *pulumi.Context, args LookupCleanRoomAssetOutputArgs, opts ...pulumi.InvokeOption) LookupCleanRoomAssetResultOutput {
@@ -182,6 +185,8 @@ type LookupCleanRoomAssetOutputArgs struct {
 	// (CleanRoomAssetVolumeLocalDetails) - Local details for a volume that are only available to its owner.
 	// Present if and only if **asset_type** is **VOLUME**
 	VolumeLocalDetails GetCleanRoomAssetVolumeLocalDetailsPtrInput `pulumi:"volumeLocalDetails"`
+	// Workspace ID of the resource
+	WorkspaceId pulumi.StringPtrInput `pulumi:"workspaceId"`
 }
 
 func (LookupCleanRoomAssetOutputArgs) ElementType() reflect.Type {
@@ -287,6 +292,10 @@ func (o LookupCleanRoomAssetResultOutput) ViewLocalDetails() GetCleanRoomAssetVi
 // Present if and only if **asset_type** is **VOLUME**
 func (o LookupCleanRoomAssetResultOutput) VolumeLocalDetails() GetCleanRoomAssetVolumeLocalDetailsPtrOutput {
 	return o.ApplyT(func(v LookupCleanRoomAssetResult) *GetCleanRoomAssetVolumeLocalDetails { return v.VolumeLocalDetails }).(GetCleanRoomAssetVolumeLocalDetailsPtrOutput)
+}
+
+func (o LookupCleanRoomAssetResultOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupCleanRoomAssetResult) *string { return v.WorkspaceId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

@@ -35,7 +35,7 @@ import * as utilities from "./utilities";
  *
  * import {
  *
- *   id = object_type,object_id
+ *   id = "object_type,object_id"
  *
  *   to = databricks_quality_monitor_v2.this
  *
@@ -44,7 +44,7 @@ import * as utilities from "./utilities";
  * If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
  *
  * ```sh
- * $ pulumi import databricks:index/qualityMonitorV2:QualityMonitorV2 databricks_quality_monitor_v2 object_type,object_id
+ * $ pulumi import databricks:index/qualityMonitorV2:QualityMonitorV2 databricks_quality_monitor_v2 "object_type,object_id"
  * ```
  */
 export class QualityMonitorV2 extends pulumi.CustomResource {
@@ -87,6 +87,10 @@ export class QualityMonitorV2 extends pulumi.CustomResource {
      * The type of the monitored object. Can be one of the following: schema
      */
     declare public readonly objectType: pulumi.Output<string>;
+    /**
+     * Workspace ID of the resource
+     */
+    declare public readonly workspaceId: pulumi.Output<string | undefined>;
 
     /**
      * Create a QualityMonitorV2 resource with the given unique name, arguments, and options.
@@ -104,6 +108,7 @@ export class QualityMonitorV2 extends pulumi.CustomResource {
             resourceInputs["anomalyDetectionConfig"] = state?.anomalyDetectionConfig;
             resourceInputs["objectId"] = state?.objectId;
             resourceInputs["objectType"] = state?.objectType;
+            resourceInputs["workspaceId"] = state?.workspaceId;
         } else {
             const args = argsOrState as QualityMonitorV2Args | undefined;
             if (args?.objectId === undefined && !opts.urn) {
@@ -114,6 +119,7 @@ export class QualityMonitorV2 extends pulumi.CustomResource {
             }
             resourceInputs["objectId"] = args?.objectId;
             resourceInputs["objectType"] = args?.objectType;
+            resourceInputs["workspaceId"] = args?.workspaceId;
             resourceInputs["anomalyDetectionConfig"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -137,6 +143,10 @@ export interface QualityMonitorV2State {
      * The type of the monitored object. Can be one of the following: schema
      */
     objectType?: pulumi.Input<string>;
+    /**
+     * Workspace ID of the resource
+     */
+    workspaceId?: pulumi.Input<string>;
 }
 
 /**
@@ -151,4 +161,8 @@ export interface QualityMonitorV2Args {
      * The type of the monitored object. Can be one of the following: schema
      */
     objectType: pulumi.Input<string>;
+    /**
+     * Workspace ID of the resource
+     */
+    workspaceId?: pulumi.Input<string>;
 }

@@ -54,6 +54,8 @@ func LookupDatabaseInstance(ctx *pulumi.Context, args *LookupDatabaseInstanceArg
 type LookupDatabaseInstanceArgs struct {
 	// (string) - The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
 	Capacity *string `pulumi:"capacity"`
+	// (boolean) - Whether the instance has PG native password login enabled. Defaults to true
+	EnablePgNativeLogin *bool `pulumi:"enablePgNativeLogin"`
 	// (boolean) - Whether to enable secondaries to serve read-only traffic. Defaults to false
 	EnableReadableSecondaries *bool `pulumi:"enableReadableSecondaries"`
 	// The name of the instance. This is the unique identifier for the instance
@@ -72,6 +74,8 @@ type LookupDatabaseInstanceArgs struct {
 	RetentionWindowInDays *int `pulumi:"retentionWindowInDays"`
 	// (boolean) - Whether the instance is stopped
 	Stopped *bool `pulumi:"stopped"`
+	// Workspace ID of the resource
+	WorkspaceId *string `pulumi:"workspaceId"`
 }
 
 // A collection of values returned by getDatabaseInstance.
@@ -85,6 +89,10 @@ type LookupDatabaseInstanceResult struct {
 	CreationTime string `pulumi:"creationTime"`
 	// (string) - The email of the creator of the instance
 	Creator string `pulumi:"creator"`
+	// (boolean) - xref AIP-129. `enablePgNativeLogin` is owned by the client, while `effectiveEnablePgNativeLogin` is owned by the server.
+	// `enablePgNativeLogin` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+	// `effectiveEnablePgNativeLogin` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+	EffectiveEnablePgNativeLogin bool `pulumi:"effectiveEnablePgNativeLogin"`
 	// (boolean) - xref AIP-129. `enableReadableSecondaries` is owned by the client, while `effectiveEnableReadableSecondaries` is owned by the server.
 	// `enableReadableSecondaries` will only be set in Create/Update response messages if and only if the user provides the field via the request.
 	// `effectiveEnableReadableSecondaries` on the other hand will always bet set in all response messages (Create/Update/Get/List)
@@ -101,6 +109,8 @@ type LookupDatabaseInstanceResult struct {
 	// `stopped` will only be set in Create/Update response messages if and only if the user provides the field via the request.
 	// `effectiveStopped` on the other hand will always bet set in all response messages (Create/Update/Get/List)
 	EffectiveStopped bool `pulumi:"effectiveStopped"`
+	// (boolean) - Whether the instance has PG native password login enabled. Defaults to true
+	EnablePgNativeLogin bool `pulumi:"enablePgNativeLogin"`
 	// (boolean) - Whether to enable secondaries to serve read-only traffic. Defaults to false
 	EnableReadableSecondaries *bool `pulumi:"enableReadableSecondaries"`
 	// The provider-assigned unique ID for this managed resource.
@@ -131,7 +141,8 @@ type LookupDatabaseInstanceResult struct {
 	// (boolean) - Whether the instance is stopped
 	Stopped *bool `pulumi:"stopped"`
 	// (string) - Id of the ref database instance
-	Uid string `pulumi:"uid"`
+	Uid         string  `pulumi:"uid"`
+	WorkspaceId *string `pulumi:"workspaceId"`
 }
 
 func LookupDatabaseInstanceOutput(ctx *pulumi.Context, args LookupDatabaseInstanceOutputArgs, opts ...pulumi.InvokeOption) LookupDatabaseInstanceResultOutput {
@@ -147,6 +158,8 @@ func LookupDatabaseInstanceOutput(ctx *pulumi.Context, args LookupDatabaseInstan
 type LookupDatabaseInstanceOutputArgs struct {
 	// (string) - The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
 	Capacity pulumi.StringPtrInput `pulumi:"capacity"`
+	// (boolean) - Whether the instance has PG native password login enabled. Defaults to true
+	EnablePgNativeLogin pulumi.BoolPtrInput `pulumi:"enablePgNativeLogin"`
 	// (boolean) - Whether to enable secondaries to serve read-only traffic. Defaults to false
 	EnableReadableSecondaries pulumi.BoolPtrInput `pulumi:"enableReadableSecondaries"`
 	// The name of the instance. This is the unique identifier for the instance
@@ -165,6 +178,8 @@ type LookupDatabaseInstanceOutputArgs struct {
 	RetentionWindowInDays pulumi.IntPtrInput `pulumi:"retentionWindowInDays"`
 	// (boolean) - Whether the instance is stopped
 	Stopped pulumi.BoolPtrInput `pulumi:"stopped"`
+	// Workspace ID of the resource
+	WorkspaceId pulumi.StringPtrInput `pulumi:"workspaceId"`
 }
 
 func (LookupDatabaseInstanceOutputArgs) ElementType() reflect.Type {
@@ -207,6 +222,13 @@ func (o LookupDatabaseInstanceResultOutput) Creator() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseInstanceResult) string { return v.Creator }).(pulumi.StringOutput)
 }
 
+// (boolean) - xref AIP-129. `enablePgNativeLogin` is owned by the client, while `effectiveEnablePgNativeLogin` is owned by the server.
+// `enablePgNativeLogin` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+// `effectiveEnablePgNativeLogin` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+func (o LookupDatabaseInstanceResultOutput) EffectiveEnablePgNativeLogin() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupDatabaseInstanceResult) bool { return v.EffectiveEnablePgNativeLogin }).(pulumi.BoolOutput)
+}
+
 // (boolean) - xref AIP-129. `enableReadableSecondaries` is owned by the client, while `effectiveEnableReadableSecondaries` is owned by the server.
 // `enableReadableSecondaries` will only be set in Create/Update response messages if and only if the user provides the field via the request.
 // `effectiveEnableReadableSecondaries` on the other hand will always bet set in all response messages (Create/Update/Get/List)
@@ -233,6 +255,11 @@ func (o LookupDatabaseInstanceResultOutput) EffectiveRetentionWindowInDays() pul
 // `effectiveStopped` on the other hand will always bet set in all response messages (Create/Update/Get/List)
 func (o LookupDatabaseInstanceResultOutput) EffectiveStopped() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupDatabaseInstanceResult) bool { return v.EffectiveStopped }).(pulumi.BoolOutput)
+}
+
+// (boolean) - Whether the instance has PG native password login enabled. Defaults to true
+func (o LookupDatabaseInstanceResultOutput) EnablePgNativeLogin() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupDatabaseInstanceResult) bool { return v.EnablePgNativeLogin }).(pulumi.BoolOutput)
 }
 
 // (boolean) - Whether to enable secondaries to serve read-only traffic. Defaults to false
@@ -300,6 +327,10 @@ func (o LookupDatabaseInstanceResultOutput) Stopped() pulumi.BoolPtrOutput {
 // (string) - Id of the ref database instance
 func (o LookupDatabaseInstanceResultOutput) Uid() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseInstanceResult) string { return v.Uid }).(pulumi.StringOutput)
+}
+
+func (o LookupDatabaseInstanceResultOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupDatabaseInstanceResult) *string { return v.WorkspaceId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

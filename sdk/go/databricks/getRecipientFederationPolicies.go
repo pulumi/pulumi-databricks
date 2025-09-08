@@ -11,28 +11,47 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-func GetRecipientFederationPolicies(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetRecipientFederationPoliciesResult, error) {
+func GetRecipientFederationPolicies(ctx *pulumi.Context, args *GetRecipientFederationPoliciesArgs, opts ...pulumi.InvokeOption) (*GetRecipientFederationPoliciesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetRecipientFederationPoliciesResult
-	err := ctx.Invoke("databricks:index/getRecipientFederationPolicies:getRecipientFederationPolicies", nil, &rv, opts...)
+	err := ctx.Invoke("databricks:index/getRecipientFederationPolicies:getRecipientFederationPolicies", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &rv, nil
 }
 
+// A collection of arguments for invoking getRecipientFederationPolicies.
+type GetRecipientFederationPoliciesArgs struct {
+	// Workspace ID of the resource
+	WorkspaceId *string `pulumi:"workspaceId"`
+}
+
 // A collection of values returned by getRecipientFederationPolicies.
 type GetRecipientFederationPoliciesResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id       string                                 `pulumi:"id"`
-	Policies []GetRecipientFederationPoliciesPolicy `pulumi:"policies"`
+	Id          string                                 `pulumi:"id"`
+	Policies    []GetRecipientFederationPoliciesPolicy `pulumi:"policies"`
+	WorkspaceId *string                                `pulumi:"workspaceId"`
 }
 
-func GetRecipientFederationPoliciesOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetRecipientFederationPoliciesResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetRecipientFederationPoliciesResultOutput, error) {
-		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-		return ctx.InvokeOutput("databricks:index/getRecipientFederationPolicies:getRecipientFederationPolicies", nil, GetRecipientFederationPoliciesResultOutput{}, options).(GetRecipientFederationPoliciesResultOutput), nil
-	}).(GetRecipientFederationPoliciesResultOutput)
+func GetRecipientFederationPoliciesOutput(ctx *pulumi.Context, args GetRecipientFederationPoliciesOutputArgs, opts ...pulumi.InvokeOption) GetRecipientFederationPoliciesResultOutput {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (GetRecipientFederationPoliciesResultOutput, error) {
+			args := v.(GetRecipientFederationPoliciesArgs)
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("databricks:index/getRecipientFederationPolicies:getRecipientFederationPolicies", args, GetRecipientFederationPoliciesResultOutput{}, options).(GetRecipientFederationPoliciesResultOutput), nil
+		}).(GetRecipientFederationPoliciesResultOutput)
+}
+
+// A collection of arguments for invoking getRecipientFederationPolicies.
+type GetRecipientFederationPoliciesOutputArgs struct {
+	// Workspace ID of the resource
+	WorkspaceId pulumi.StringPtrInput `pulumi:"workspaceId"`
+}
+
+func (GetRecipientFederationPoliciesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRecipientFederationPoliciesArgs)(nil)).Elem()
 }
 
 // A collection of values returned by getRecipientFederationPolicies.
@@ -57,6 +76,10 @@ func (o GetRecipientFederationPoliciesResultOutput) Id() pulumi.StringOutput {
 
 func (o GetRecipientFederationPoliciesResultOutput) Policies() GetRecipientFederationPoliciesPolicyArrayOutput {
 	return o.ApplyT(func(v GetRecipientFederationPoliciesResult) []GetRecipientFederationPoliciesPolicy { return v.Policies }).(GetRecipientFederationPoliciesPolicyArrayOutput)
+}
+
+func (o GetRecipientFederationPoliciesResultOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRecipientFederationPoliciesResult) *string { return v.WorkspaceId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

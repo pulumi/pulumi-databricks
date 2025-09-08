@@ -16,9 +16,17 @@ public final class NotificationDestinationConfigSlackArgs extends com.pulumi.res
 
     public static final NotificationDestinationConfigSlackArgs Empty = new NotificationDestinationConfigSlackArgs();
 
+    /**
+     * Slack channel ID for notifications.
+     * 
+     */
     @Import(name="channelId")
     private @Nullable Output<String> channelId;
 
+    /**
+     * @return Slack channel ID for notifications.
+     * 
+     */
     public Optional<Output<String>> channelId() {
         return Optional.ofNullable(this.channelId);
     }
@@ -30,9 +38,17 @@ public final class NotificationDestinationConfigSlackArgs extends com.pulumi.res
         return Optional.ofNullable(this.channelIdSet);
     }
 
+    /**
+     * OAuth token for Slack authentication.
+     * 
+     */
     @Import(name="oauthToken")
     private @Nullable Output<String> oauthToken;
 
+    /**
+     * @return OAuth token for Slack authentication.
+     * 
+     */
     public Optional<Output<String>> oauthToken() {
         return Optional.ofNullable(this.oauthToken);
     }
@@ -95,11 +111,23 @@ public final class NotificationDestinationConfigSlackArgs extends com.pulumi.res
             $ = new NotificationDestinationConfigSlackArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param channelId Slack channel ID for notifications.
+         * 
+         * @return builder
+         * 
+         */
         public Builder channelId(@Nullable Output<String> channelId) {
             $.channelId = channelId;
             return this;
         }
 
+        /**
+         * @param channelId Slack channel ID for notifications.
+         * 
+         * @return builder
+         * 
+         */
         public Builder channelId(String channelId) {
             return channelId(Output.of(channelId));
         }
@@ -113,11 +141,23 @@ public final class NotificationDestinationConfigSlackArgs extends com.pulumi.res
             return channelIdSet(Output.of(channelIdSet));
         }
 
+        /**
+         * @param oauthToken OAuth token for Slack authentication.
+         * 
+         * @return builder
+         * 
+         */
         public Builder oauthToken(@Nullable Output<String> oauthToken) {
             $.oauthToken = oauthToken;
             return this;
         }
 
+        /**
+         * @param oauthToken OAuth token for Slack authentication.
+         * 
+         * @return builder
+         * 
+         */
         public Builder oauthToken(String oauthToken) {
             return oauthToken(Output.of(oauthToken));
         }

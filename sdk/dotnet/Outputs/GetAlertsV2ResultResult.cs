@@ -30,6 +30,12 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string? DisplayName;
         /// <summary>
+        /// (AlertV2RunAs) - The actual identity that will be used to execute the alert.
+        /// This is an output-only field that shows the resolved run-as identity after applying
+        /// permissions and defaults
+        /// </summary>
+        public readonly Outputs.GetAlertsV2ResultEffectiveRunAsResult EffectiveRunAs;
+        /// <summary>
         /// (AlertV2Evaluation)
         /// </summary>
         public readonly Outputs.GetAlertsV2ResultEvaluationResult? Evaluation;
@@ -54,8 +60,17 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string? QueryText;
         /// <summary>
-        /// (string) - The run as username or application ID of service principal.
-        /// On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
+        /// (AlertV2RunAs) - Specifies the identity that will be used to run the alert.
+        /// This field allows you to configure alerts to run as a specific user or service principal.
+        /// - For user identity: Set `user_name` to the email of an active workspace user. Users can only set this to their own email.
+        /// - For service principal: Set `service_principal_name` to the application ID. Requires the `servicePrincipal/user` role.
+        /// If not specified, the alert will run as the request user
+        /// </summary>
+        public readonly Outputs.GetAlertsV2ResultRunAsResult? RunAs;
+        /// <summary>
+        /// (string, deprecated) - The run as username or application ID of service principal.
+        /// On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
+        /// Deprecated: Use `run_as` field instead. This field will be removed in a future release
         /// </summary>
         public readonly string? RunAsUserName;
         /// <summary>
@@ -81,6 +96,8 @@ namespace Pulumi.Databricks.Outputs
 
             string? displayName,
 
+            Outputs.GetAlertsV2ResultEffectiveRunAsResult effectiveRunAs,
+
             Outputs.GetAlertsV2ResultEvaluationResult? evaluation,
 
             string id,
@@ -92,6 +109,8 @@ namespace Pulumi.Databricks.Outputs
             string? parentPath,
 
             string? queryText,
+
+            Outputs.GetAlertsV2ResultRunAsResult? runAs,
 
             string? runAsUserName,
 
@@ -105,12 +124,14 @@ namespace Pulumi.Databricks.Outputs
             CustomDescription = customDescription;
             CustomSummary = customSummary;
             DisplayName = displayName;
+            EffectiveRunAs = effectiveRunAs;
             Evaluation = evaluation;
             Id = id;
             LifecycleState = lifecycleState;
             OwnerUserName = ownerUserName;
             ParentPath = parentPath;
             QueryText = queryText;
+            RunAs = runAs;
             RunAsUserName = runAsUserName;
             Schedule = schedule;
             UpdateTime = updateTime;

@@ -30,7 +30,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			all, err := databricks.GetDatabaseInstances(ctx, map[string]interface{}{}, nil)
+//			all, err := databricks.GetDatabaseInstances(ctx, &databricks.GetDatabaseInstancesArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}
@@ -40,28 +40,47 @@ import (
 //	}
 //
 // ```
-func GetDatabaseInstances(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetDatabaseInstancesResult, error) {
+func GetDatabaseInstances(ctx *pulumi.Context, args *GetDatabaseInstancesArgs, opts ...pulumi.InvokeOption) (*GetDatabaseInstancesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDatabaseInstancesResult
-	err := ctx.Invoke("databricks:index/getDatabaseInstances:getDatabaseInstances", nil, &rv, opts...)
+	err := ctx.Invoke("databricks:index/getDatabaseInstances:getDatabaseInstances", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &rv, nil
 }
 
+// A collection of arguments for invoking getDatabaseInstances.
+type GetDatabaseInstancesArgs struct {
+	// Workspace ID of the resource
+	WorkspaceId *string `pulumi:"workspaceId"`
+}
+
 // A collection of values returned by getDatabaseInstances.
 type GetDatabaseInstancesResult struct {
 	DatabaseInstances []GetDatabaseInstancesDatabaseInstance `pulumi:"databaseInstances"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	Id          string  `pulumi:"id"`
+	WorkspaceId *string `pulumi:"workspaceId"`
 }
 
-func GetDatabaseInstancesOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetDatabaseInstancesResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetDatabaseInstancesResultOutput, error) {
-		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-		return ctx.InvokeOutput("databricks:index/getDatabaseInstances:getDatabaseInstances", nil, GetDatabaseInstancesResultOutput{}, options).(GetDatabaseInstancesResultOutput), nil
-	}).(GetDatabaseInstancesResultOutput)
+func GetDatabaseInstancesOutput(ctx *pulumi.Context, args GetDatabaseInstancesOutputArgs, opts ...pulumi.InvokeOption) GetDatabaseInstancesResultOutput {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (GetDatabaseInstancesResultOutput, error) {
+			args := v.(GetDatabaseInstancesArgs)
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("databricks:index/getDatabaseInstances:getDatabaseInstances", args, GetDatabaseInstancesResultOutput{}, options).(GetDatabaseInstancesResultOutput), nil
+		}).(GetDatabaseInstancesResultOutput)
+}
+
+// A collection of arguments for invoking getDatabaseInstances.
+type GetDatabaseInstancesOutputArgs struct {
+	// Workspace ID of the resource
+	WorkspaceId pulumi.StringPtrInput `pulumi:"workspaceId"`
+}
+
+func (GetDatabaseInstancesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstancesArgs)(nil)).Elem()
 }
 
 // A collection of values returned by getDatabaseInstances.
@@ -86,6 +105,10 @@ func (o GetDatabaseInstancesResultOutput) DatabaseInstances() GetDatabaseInstanc
 // The provider-assigned unique ID for this managed resource.
 func (o GetDatabaseInstancesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstancesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseInstancesResultOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesResult) *string { return v.WorkspaceId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

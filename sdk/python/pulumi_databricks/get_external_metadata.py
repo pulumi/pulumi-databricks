@@ -26,7 +26,7 @@ class GetExternalMetadataResult:
     """
     A collection of values returned by getExternalMetadata.
     """
-    def __init__(__self__, columns=None, create_time=None, created_by=None, description=None, entity_type=None, id=None, metastore_id=None, name=None, owner=None, properties=None, system_type=None, update_time=None, updated_by=None, url=None):
+    def __init__(__self__, columns=None, create_time=None, created_by=None, description=None, entity_type=None, id=None, metastore_id=None, name=None, owner=None, properties=None, system_type=None, update_time=None, updated_by=None, url=None, workspace_id=None):
         if columns and not isinstance(columns, list):
             raise TypeError("Expected argument 'columns' to be a list")
         pulumi.set(__self__, "columns", columns)
@@ -69,6 +69,9 @@ class GetExternalMetadataResult:
         if url and not isinstance(url, str):
             raise TypeError("Expected argument 'url' to be a str")
         pulumi.set(__self__, "url", url)
+        if workspace_id and not isinstance(workspace_id, str):
+            raise TypeError("Expected argument 'workspace_id' to be a str")
+        pulumi.set(__self__, "workspace_id", workspace_id)
 
     @_builtins.property
     @pulumi.getter
@@ -182,6 +185,11 @@ class GetExternalMetadataResult:
         """
         return pulumi.get(self, "url")
 
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "workspace_id")
+
 
 class AwaitableGetExternalMetadataResult(GetExternalMetadataResult):
     # pylint: disable=using-constant-test
@@ -202,7 +210,8 @@ class AwaitableGetExternalMetadataResult(GetExternalMetadataResult):
             system_type=self.system_type,
             update_time=self.update_time,
             updated_by=self.updated_by,
-            url=self.url)
+            url=self.url,
+            workspace_id=self.workspace_id)
 
 
 def get_external_metadata(columns: Optional[Sequence[_builtins.str]] = None,
@@ -213,6 +222,7 @@ def get_external_metadata(columns: Optional[Sequence[_builtins.str]] = None,
                           properties: Optional[Mapping[str, _builtins.str]] = None,
                           system_type: Optional[_builtins.str] = None,
                           url: Optional[_builtins.str] = None,
+                          workspace_id: Optional[_builtins.str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetExternalMetadataResult:
     """
     This data source can be used to get a single external metadata object.
@@ -239,6 +249,7 @@ def get_external_metadata(columns: Optional[Sequence[_builtins.str]] = None,
     :param Mapping[str, _builtins.str] properties: (object) - A map of key-value properties attached to the external metadata object
     :param _builtins.str system_type: (string) - Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `TABLEAU`, `TERADATA`, `WORKDAY`
     :param _builtins.str url: (string) - URL associated with the external metadata object
+    :param _builtins.str workspace_id: Workspace ID of the resource
     """
     __args__ = dict()
     __args__['columns'] = columns
@@ -249,6 +260,7 @@ def get_external_metadata(columns: Optional[Sequence[_builtins.str]] = None,
     __args__['properties'] = properties
     __args__['systemType'] = system_type
     __args__['url'] = url
+    __args__['workspaceId'] = workspace_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getExternalMetadata:getExternalMetadata', __args__, opts=opts, typ=GetExternalMetadataResult).value
 
@@ -266,7 +278,8 @@ def get_external_metadata(columns: Optional[Sequence[_builtins.str]] = None,
         system_type=pulumi.get(__ret__, 'system_type'),
         update_time=pulumi.get(__ret__, 'update_time'),
         updated_by=pulumi.get(__ret__, 'updated_by'),
-        url=pulumi.get(__ret__, 'url'))
+        url=pulumi.get(__ret__, 'url'),
+        workspace_id=pulumi.get(__ret__, 'workspace_id'))
 def get_external_metadata_output(columns: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
                                  description: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                  entity_type: Optional[pulumi.Input[_builtins.str]] = None,
@@ -275,6 +288,7 @@ def get_external_metadata_output(columns: Optional[pulumi.Input[Optional[Sequenc
                                  properties: Optional[pulumi.Input[Optional[Mapping[str, _builtins.str]]]] = None,
                                  system_type: Optional[pulumi.Input[_builtins.str]] = None,
                                  url: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                                 workspace_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetExternalMetadataResult]:
     """
     This data source can be used to get a single external metadata object.
@@ -301,6 +315,7 @@ def get_external_metadata_output(columns: Optional[pulumi.Input[Optional[Sequenc
     :param Mapping[str, _builtins.str] properties: (object) - A map of key-value properties attached to the external metadata object
     :param _builtins.str system_type: (string) - Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `TABLEAU`, `TERADATA`, `WORKDAY`
     :param _builtins.str url: (string) - URL associated with the external metadata object
+    :param _builtins.str workspace_id: Workspace ID of the resource
     """
     __args__ = dict()
     __args__['columns'] = columns
@@ -311,6 +326,7 @@ def get_external_metadata_output(columns: Optional[pulumi.Input[Optional[Sequenc
     __args__['properties'] = properties
     __args__['systemType'] = system_type
     __args__['url'] = url
+    __args__['workspaceId'] = workspace_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getExternalMetadata:getExternalMetadata', __args__, opts=opts, typ=GetExternalMetadataResult)
     return __ret__.apply(lambda __response__: GetExternalMetadataResult(
@@ -327,4 +343,5 @@ def get_external_metadata_output(columns: Optional[pulumi.Input[Optional[Sequenc
         system_type=pulumi.get(__response__, 'system_type'),
         update_time=pulumi.get(__response__, 'update_time'),
         updated_by=pulumi.get(__response__, 'updated_by'),
-        url=pulumi.get(__response__, 'url')))
+        url=pulumi.get(__response__, 'url'),
+        workspace_id=pulumi.get(__response__, 'workspace_id')))

@@ -17,6 +17,11 @@ public final class VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumn {
      */
     private @Nullable String embeddingModelEndpointName;
     /**
+     * @return The name of the embedding model endpoint which, if specified, is used for querying (not ingestion).
+     * 
+     */
+    private @Nullable String modelEndpointNameForQuery;
+    /**
      * @return The name of the column
      * 
      */
@@ -29,6 +34,13 @@ public final class VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumn {
      */
     public Optional<String> embeddingModelEndpointName() {
         return Optional.ofNullable(this.embeddingModelEndpointName);
+    }
+    /**
+     * @return The name of the embedding model endpoint which, if specified, is used for querying (not ingestion).
+     * 
+     */
+    public Optional<String> modelEndpointNameForQuery() {
+        return Optional.ofNullable(this.modelEndpointNameForQuery);
     }
     /**
      * @return The name of the column
@@ -48,11 +60,13 @@ public final class VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumn {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String embeddingModelEndpointName;
+        private @Nullable String modelEndpointNameForQuery;
         private @Nullable String name;
         public Builder() {}
         public Builder(VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumn defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.embeddingModelEndpointName = defaults.embeddingModelEndpointName;
+    	      this.modelEndpointNameForQuery = defaults.modelEndpointNameForQuery;
     	      this.name = defaults.name;
         }
 
@@ -60,6 +74,12 @@ public final class VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumn {
         public Builder embeddingModelEndpointName(@Nullable String embeddingModelEndpointName) {
 
             this.embeddingModelEndpointName = embeddingModelEndpointName;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder modelEndpointNameForQuery(@Nullable String modelEndpointNameForQuery) {
+
+            this.modelEndpointNameForQuery = modelEndpointNameForQuery;
             return this;
         }
         @CustomType.Setter
@@ -71,6 +91,7 @@ public final class VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumn {
         public VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumn build() {
             final var _resultValue = new VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumn();
             _resultValue.embeddingModelEndpointName = embeddingModelEndpointName;
+            _resultValue.modelEndpointNameForQuery = modelEndpointNameForQuery;
             _resultValue.name = name;
             return _resultValue;
         }

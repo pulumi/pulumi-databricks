@@ -33,6 +33,7 @@ export function getExternalMetadata(args: GetExternalMetadataArgs, opts?: pulumi
         "properties": args.properties,
         "systemType": args.systemType,
         "url": args.url,
+        "workspaceId": args.workspaceId,
     }, opts);
 }
 
@@ -72,6 +73,10 @@ export interface GetExternalMetadataArgs {
      * (string) - URL associated with the external metadata object
      */
     url?: string;
+    /**
+     * Workspace ID of the resource
+     */
+    workspaceId?: string;
 }
 
 /**
@@ -134,6 +139,7 @@ export interface GetExternalMetadataResult {
      * (string) - URL associated with the external metadata object
      */
     readonly url?: string;
+    readonly workspaceId?: string;
 }
 /**
  * This data source can be used to get a single external metadata object.
@@ -164,6 +170,7 @@ export function getExternalMetadataOutput(args: GetExternalMetadataOutputArgs, o
         "properties": args.properties,
         "systemType": args.systemType,
         "url": args.url,
+        "workspaceId": args.workspaceId,
     }, opts);
 }
 
@@ -203,4 +210,8 @@ export interface GetExternalMetadataOutputArgs {
      * (string) - URL associated with the external metadata object
      */
     url?: pulumi.Input<string>;
+    /**
+     * Workspace ID of the resource
+     */
+    workspaceId?: pulumi.Input<string>;
 }

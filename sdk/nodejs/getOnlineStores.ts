@@ -6,10 +6,22 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-export function getOnlineStores(opts?: pulumi.InvokeOptions): Promise<GetOnlineStoresResult> {
+export function getOnlineStores(args?: GetOnlineStoresArgs, opts?: pulumi.InvokeOptions): Promise<GetOnlineStoresResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getOnlineStores:getOnlineStores", {
+        "workspaceId": args.workspaceId,
     }, opts);
+}
+
+/**
+ * A collection of arguments for invoking getOnlineStores.
+ */
+export interface GetOnlineStoresArgs {
+    /**
+     * Workspace ID of the resource
+     */
+    workspaceId?: string;
 }
 
 /**
@@ -21,9 +33,22 @@ export interface GetOnlineStoresResult {
      */
     readonly id: string;
     readonly onlineStores: outputs.GetOnlineStoresOnlineStore[];
+    readonly workspaceId?: string;
 }
-export function getOnlineStoresOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetOnlineStoresResult> {
+export function getOnlineStoresOutput(args?: GetOnlineStoresOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetOnlineStoresResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getOnlineStores:getOnlineStores", {
+        "workspaceId": args.workspaceId,
     }, opts);
+}
+
+/**
+ * A collection of arguments for invoking getOnlineStores.
+ */
+export interface GetOnlineStoresOutputArgs {
+    /**
+     * Workspace ID of the resource
+     */
+    workspaceId?: pulumi.Input<string>;
 }

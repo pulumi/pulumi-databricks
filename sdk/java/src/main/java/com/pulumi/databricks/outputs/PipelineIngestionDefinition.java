@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.PipelineIngestionDefinitionObject;
+import com.pulumi.databricks.outputs.PipelineIngestionDefinitionSourceConfiguration;
 import com.pulumi.databricks.outputs.PipelineIngestionDefinitionTableConfiguration;
 import java.lang.String;
 import java.util.List;
@@ -17,6 +18,7 @@ public final class PipelineIngestionDefinition {
     private @Nullable String connectionName;
     private @Nullable String ingestionGatewayId;
     private @Nullable List<PipelineIngestionDefinitionObject> objects;
+    private @Nullable List<PipelineIngestionDefinitionSourceConfiguration> sourceConfigurations;
     private @Nullable String sourceType;
     private @Nullable PipelineIngestionDefinitionTableConfiguration tableConfiguration;
 
@@ -29,6 +31,9 @@ public final class PipelineIngestionDefinition {
     }
     public List<PipelineIngestionDefinitionObject> objects() {
         return this.objects == null ? List.of() : this.objects;
+    }
+    public List<PipelineIngestionDefinitionSourceConfiguration> sourceConfigurations() {
+        return this.sourceConfigurations == null ? List.of() : this.sourceConfigurations;
     }
     public Optional<String> sourceType() {
         return Optional.ofNullable(this.sourceType);
@@ -49,6 +54,7 @@ public final class PipelineIngestionDefinition {
         private @Nullable String connectionName;
         private @Nullable String ingestionGatewayId;
         private @Nullable List<PipelineIngestionDefinitionObject> objects;
+        private @Nullable List<PipelineIngestionDefinitionSourceConfiguration> sourceConfigurations;
         private @Nullable String sourceType;
         private @Nullable PipelineIngestionDefinitionTableConfiguration tableConfiguration;
         public Builder() {}
@@ -57,6 +63,7 @@ public final class PipelineIngestionDefinition {
     	      this.connectionName = defaults.connectionName;
     	      this.ingestionGatewayId = defaults.ingestionGatewayId;
     	      this.objects = defaults.objects;
+    	      this.sourceConfigurations = defaults.sourceConfigurations;
     	      this.sourceType = defaults.sourceType;
     	      this.tableConfiguration = defaults.tableConfiguration;
         }
@@ -83,6 +90,15 @@ public final class PipelineIngestionDefinition {
             return objects(List.of(objects));
         }
         @CustomType.Setter
+        public Builder sourceConfigurations(@Nullable List<PipelineIngestionDefinitionSourceConfiguration> sourceConfigurations) {
+
+            this.sourceConfigurations = sourceConfigurations;
+            return this;
+        }
+        public Builder sourceConfigurations(PipelineIngestionDefinitionSourceConfiguration... sourceConfigurations) {
+            return sourceConfigurations(List.of(sourceConfigurations));
+        }
+        @CustomType.Setter
         public Builder sourceType(@Nullable String sourceType) {
 
             this.sourceType = sourceType;
@@ -99,6 +115,7 @@ public final class PipelineIngestionDefinition {
             _resultValue.connectionName = connectionName;
             _resultValue.ingestionGatewayId = ingestionGatewayId;
             _resultValue.objects = objects;
+            _resultValue.sourceConfigurations = sourceConfigurations;
             _resultValue.sourceType = sourceType;
             _resultValue.tableConfiguration = tableConfiguration;
             return _resultValue;

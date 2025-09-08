@@ -18,7 +18,7 @@ namespace Pulumi.Databricks
     /// 
     /// import {
     /// 
-    ///   id = name
+    ///   id = "name"
     /// 
     ///   to = databricks_recipient_federation_policy.this
     /// 
@@ -27,7 +27,7 @@ namespace Pulumi.Databricks
     /// If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
     /// 
     /// ```sh
-    /// $ pulumi import databricks:index/recipientFederationPolicy:RecipientFederationPolicy databricks_recipient_federation_policy name
+    /// $ pulumi import databricks:index/recipientFederationPolicy:RecipientFederationPolicy databricks_recipient_federation_policy "name"
     /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/recipientFederationPolicy:RecipientFederationPolicy")]
@@ -63,6 +63,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Workspace ID of the resource
+        /// </summary>
+        [Output("workspaceId")]
+        public Output<string?> WorkspaceId { get; private set; } = null!;
 
 
         /// <summary>
@@ -129,6 +135,12 @@ namespace Pulumi.Databricks
         [Input("oidcPolicy")]
         public Input<Inputs.RecipientFederationPolicyOidcPolicyArgs>? OidcPolicy { get; set; }
 
+        /// <summary>
+        /// Workspace ID of the resource
+        /// </summary>
+        [Input("workspaceId")]
+        public Input<string>? WorkspaceId { get; set; }
+
         public RecipientFederationPolicyArgs()
         {
         }
@@ -167,6 +179,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }
+
+        /// <summary>
+        /// Workspace ID of the resource
+        /// </summary>
+        [Input("workspaceId")]
+        public Input<string>? WorkspaceId { get; set; }
 
         public RecipientFederationPolicyState()
         {

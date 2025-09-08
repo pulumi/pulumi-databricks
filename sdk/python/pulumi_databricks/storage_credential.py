@@ -575,7 +575,7 @@ class StorageCredential(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported by name:
+        When using a workspace-level provider to manage storage credentials, this resource can be imported by name:
 
         hcl
 
@@ -583,7 +583,19 @@ class StorageCredential(pulumi.CustomResource):
 
           to = databricks_storage_credential.this
 
-          id = "<name>"
+          id = "<storage_credential_name>"
+
+        }
+
+        When using an account-level provider to manage storage credentials, use the format `<metastore_id>|<storage_credential_name>`:
+
+        hcl
+
+        import {
+
+          to = databricks_storage_credential.this
+
+          id = "<metastore_id>|<storage_credential_name>"
 
         }
 
@@ -591,8 +603,16 @@ class StorageCredential(pulumi.CustomResource):
 
         bash
 
+        When using a workspace-level provider
+
         ```sh
-        $ pulumi import databricks:index/storageCredential:StorageCredential this <name>
+        $ pulumi import databricks:index/storageCredential:StorageCredential this <storage_credential_name>
+        ```
+
+        When using an account-level provider
+
+        ```sh
+        $ pulumi import databricks:index/storageCredential:StorageCredential this <metastore_id>|<storage_credential_name>
         ```
 
         :param str resource_name: The name of the resource.
@@ -685,7 +705,7 @@ class StorageCredential(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported by name:
+        When using a workspace-level provider to manage storage credentials, this resource can be imported by name:
 
         hcl
 
@@ -693,7 +713,19 @@ class StorageCredential(pulumi.CustomResource):
 
           to = databricks_storage_credential.this
 
-          id = "<name>"
+          id = "<storage_credential_name>"
+
+        }
+
+        When using an account-level provider to manage storage credentials, use the format `<metastore_id>|<storage_credential_name>`:
+
+        hcl
+
+        import {
+
+          to = databricks_storage_credential.this
+
+          id = "<metastore_id>|<storage_credential_name>"
 
         }
 
@@ -701,8 +733,16 @@ class StorageCredential(pulumi.CustomResource):
 
         bash
 
+        When using a workspace-level provider
+
         ```sh
-        $ pulumi import databricks:index/storageCredential:StorageCredential this <name>
+        $ pulumi import databricks:index/storageCredential:StorageCredential this <storage_credential_name>
+        ```
+
+        When using an account-level provider
+
+        ```sh
+        $ pulumi import databricks:index/storageCredential:StorageCredential this <metastore_id>|<storage_credential_name>
         ```
 
         :param str resource_name: The name of the resource.

@@ -55,7 +55,7 @@ import javax.annotation.Nullable;
  * 
  * import {
  * 
- *   id = name
+ *   id = &#34;name&#34;
  * 
  *   to = databricks_database_synced_database_table.this
  * 
@@ -64,7 +64,7 @@ import javax.annotation.Nullable;
  * If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
  * 
  * ```sh
- * $ pulumi import databricks:index/databaseSyncedDatabaseTable:DatabaseSyncedDatabaseTable databricks_database_synced_database_table name
+ * $ pulumi import databricks:index/databaseSyncedDatabaseTable:DatabaseSyncedDatabaseTable databricks_database_synced_database_table &#34;name&#34;
  * ```
  * 
  */
@@ -203,6 +203,20 @@ public class DatabaseSyncedDatabaseTable extends com.pulumi.resources.CustomReso
      */
     public Output<String> unityCatalogProvisioningState() {
         return this.unityCatalogProvisioningState;
+    }
+    /**
+     * Workspace ID of the resource
+     * 
+     */
+    @Export(name="workspaceId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> workspaceId;
+
+    /**
+     * @return Workspace ID of the resource
+     * 
+     */
+    public Output<Optional<String>> workspaceId() {
+        return Codegen.optional(this.workspaceId);
     }
 
     /**

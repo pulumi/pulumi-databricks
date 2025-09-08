@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  *
  * import {
  *
- *   id = rule_id
+ *   id = "rule_id"
  *
  *   to = databricks_clean_room_auto_approval_rule.this
  *
@@ -22,7 +22,7 @@ import * as utilities from "./utilities";
  * If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
  *
  * ```sh
- * $ pulumi import databricks:index/cleanRoomAutoApprovalRule:CleanRoomAutoApprovalRule databricks_clean_room_auto_approval_rule rule_id
+ * $ pulumi import databricks:index/cleanRoomAutoApprovalRule:CleanRoomAutoApprovalRule databricks_clean_room_auto_approval_rule "rule_id"
  * ```
  */
 export class CleanRoomAutoApprovalRule extends pulumi.CustomResource {
@@ -83,6 +83,10 @@ export class CleanRoomAutoApprovalRule extends pulumi.CustomResource {
      * Collaborator alias of the runner covered by the rule
      */
     declare public readonly runnerCollaboratorAlias: pulumi.Output<string | undefined>;
+    /**
+     * Workspace ID of the resource
+     */
+    declare public readonly workspaceId: pulumi.Output<string | undefined>;
 
     /**
      * Create a CleanRoomAutoApprovalRule resource with the given unique name, arguments, and options.
@@ -104,12 +108,14 @@ export class CleanRoomAutoApprovalRule extends pulumi.CustomResource {
             resourceInputs["ruleId"] = state?.ruleId;
             resourceInputs["ruleOwnerCollaboratorAlias"] = state?.ruleOwnerCollaboratorAlias;
             resourceInputs["runnerCollaboratorAlias"] = state?.runnerCollaboratorAlias;
+            resourceInputs["workspaceId"] = state?.workspaceId;
         } else {
             const args = argsOrState as CleanRoomAutoApprovalRuleArgs | undefined;
             resourceInputs["authorCollaboratorAlias"] = args?.authorCollaboratorAlias;
             resourceInputs["authorScope"] = args?.authorScope;
             resourceInputs["cleanRoomName"] = args?.cleanRoomName;
             resourceInputs["runnerCollaboratorAlias"] = args?.runnerCollaboratorAlias;
+            resourceInputs["workspaceId"] = args?.workspaceId;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["ruleId"] = undefined /*out*/;
             resourceInputs["ruleOwnerCollaboratorAlias"] = undefined /*out*/;
@@ -153,6 +159,10 @@ export interface CleanRoomAutoApprovalRuleState {
      * Collaborator alias of the runner covered by the rule
      */
     runnerCollaboratorAlias?: pulumi.Input<string>;
+    /**
+     * Workspace ID of the resource
+     */
+    workspaceId?: pulumi.Input<string>;
 }
 
 /**
@@ -177,4 +187,8 @@ export interface CleanRoomAutoApprovalRuleArgs {
      * Collaborator alias of the runner covered by the rule
      */
     runnerCollaboratorAlias?: pulumi.Input<string>;
+    /**
+     * Workspace ID of the resource
+     */
+    workspaceId?: pulumi.Input<string>;
 }

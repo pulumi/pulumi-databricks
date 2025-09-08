@@ -9,6 +9,8 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetOnlineStoresResult {
@@ -18,6 +20,7 @@ public final class GetOnlineStoresResult {
      */
     private String id;
     private List<GetOnlineStoresOnlineStore> onlineStores;
+    private @Nullable String workspaceId;
 
     private GetOnlineStoresResult() {}
     /**
@@ -29,6 +32,9 @@ public final class GetOnlineStoresResult {
     }
     public List<GetOnlineStoresOnlineStore> onlineStores() {
         return this.onlineStores;
+    }
+    public Optional<String> workspaceId() {
+        return Optional.ofNullable(this.workspaceId);
     }
 
     public static Builder builder() {
@@ -42,11 +48,13 @@ public final class GetOnlineStoresResult {
     public static final class Builder {
         private String id;
         private List<GetOnlineStoresOnlineStore> onlineStores;
+        private @Nullable String workspaceId;
         public Builder() {}
         public Builder(GetOnlineStoresResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
     	      this.onlineStores = defaults.onlineStores;
+    	      this.workspaceId = defaults.workspaceId;
         }
 
         @CustomType.Setter
@@ -68,10 +76,17 @@ public final class GetOnlineStoresResult {
         public Builder onlineStores(GetOnlineStoresOnlineStore... onlineStores) {
             return onlineStores(List.of(onlineStores));
         }
+        @CustomType.Setter
+        public Builder workspaceId(@Nullable String workspaceId) {
+
+            this.workspaceId = workspaceId;
+            return this;
+        }
         public GetOnlineStoresResult build() {
             final var _resultValue = new GetOnlineStoresResult();
             _resultValue.id = id;
             _resultValue.onlineStores = onlineStores;
+            _resultValue.workspaceId = workspaceId;
             return _resultValue;
         }
     }

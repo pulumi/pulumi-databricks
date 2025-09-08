@@ -48,14 +48,14 @@ public final class GetCleanRoomsCleanRoomPlainArgs extends com.pulumi.resources.
     }
 
     /**
-     * (string) - This is Databricks username of the owner of the local clean room securable for permission management
+     * (string) - This is the Databricks username of the owner of the local clean room securable for permission management
      * 
      */
     @Import(name="owner")
     private @Nullable String owner;
 
     /**
-     * @return (string) - This is Databricks username of the owner of the local clean room securable for permission management
+     * @return (string) - This is the Databricks username of the owner of the local clean room securable for permission management
      * 
      */
     public Optional<String> owner() {
@@ -81,6 +81,21 @@ public final class GetCleanRoomsCleanRoomPlainArgs extends com.pulumi.resources.
         return Optional.ofNullable(this.remoteDetailedInfo);
     }
 
+    /**
+     * Workspace ID of the resource
+     * 
+     */
+    @Import(name="workspaceId")
+    private @Nullable String workspaceId;
+
+    /**
+     * @return Workspace ID of the resource
+     * 
+     */
+    public Optional<String> workspaceId() {
+        return Optional.ofNullable(this.workspaceId);
+    }
+
     private GetCleanRoomsCleanRoomPlainArgs() {}
 
     private GetCleanRoomsCleanRoomPlainArgs(GetCleanRoomsCleanRoomPlainArgs $) {
@@ -88,6 +103,7 @@ public final class GetCleanRoomsCleanRoomPlainArgs extends com.pulumi.resources.
         this.name = $.name;
         this.owner = $.owner;
         this.remoteDetailedInfo = $.remoteDetailedInfo;
+        this.workspaceId = $.workspaceId;
     }
 
     public static Builder builder() {
@@ -132,7 +148,7 @@ public final class GetCleanRoomsCleanRoomPlainArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param owner (string) - This is Databricks username of the owner of the local clean room securable for permission management
+         * @param owner (string) - This is the Databricks username of the owner of the local clean room securable for permission management
          * 
          * @return builder
          * 
@@ -152,6 +168,17 @@ public final class GetCleanRoomsCleanRoomPlainArgs extends com.pulumi.resources.
          */
         public Builder remoteDetailedInfo(@Nullable GetCleanRoomsCleanRoomRemoteDetailedInfo remoteDetailedInfo) {
             $.remoteDetailedInfo = remoteDetailedInfo;
+            return this;
+        }
+
+        /**
+         * @param workspaceId Workspace ID of the resource
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workspaceId(@Nullable String workspaceId) {
+            $.workspaceId = workspaceId;
             return this;
         }
 

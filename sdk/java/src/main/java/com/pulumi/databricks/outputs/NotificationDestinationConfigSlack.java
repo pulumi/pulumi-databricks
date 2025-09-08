@@ -12,8 +12,16 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class NotificationDestinationConfigSlack {
+    /**
+     * @return Slack channel ID for notifications.
+     * 
+     */
     private @Nullable String channelId;
     private @Nullable Boolean channelIdSet;
+    /**
+     * @return OAuth token for Slack authentication.
+     * 
+     */
     private @Nullable String oauthToken;
     private @Nullable Boolean oauthTokenSet;
     /**
@@ -24,12 +32,20 @@ public final class NotificationDestinationConfigSlack {
     private @Nullable Boolean urlSet;
 
     private NotificationDestinationConfigSlack() {}
+    /**
+     * @return Slack channel ID for notifications.
+     * 
+     */
     public Optional<String> channelId() {
         return Optional.ofNullable(this.channelId);
     }
     public Optional<Boolean> channelIdSet() {
         return Optional.ofNullable(this.channelIdSet);
     }
+    /**
+     * @return OAuth token for Slack authentication.
+     * 
+     */
     public Optional<String> oauthToken() {
         return Optional.ofNullable(this.oauthToken);
     }

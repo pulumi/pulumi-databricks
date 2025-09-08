@@ -24,15 +24,17 @@ class CleanRoomsCleanRoomArgs:
                  comment: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  owner: Optional[pulumi.Input[_builtins.str]] = None,
-                 remote_detailed_info: Optional[pulumi.Input['CleanRoomsCleanRoomRemoteDetailedInfoArgs']] = None):
+                 remote_detailed_info: Optional[pulumi.Input['CleanRoomsCleanRoomRemoteDetailedInfoArgs']] = None,
+                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a CleanRoomsCleanRoom resource.
         :param pulumi.Input[_builtins.str] name: The name of the clean room.
                It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements)
-        :param pulumi.Input[_builtins.str] owner: This is Databricks username of the owner of the local clean room securable for permission management
+        :param pulumi.Input[_builtins.str] owner: This is the Databricks username of the owner of the local clean room securable for permission management
         :param pulumi.Input['CleanRoomsCleanRoomRemoteDetailedInfoArgs'] remote_detailed_info: Central clean room details. During creation, users need to specify
                cloud_vendor, region, and collaborators.global_metastore_id.
                This field will not be filled in the ListCleanRooms call
+        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID of the resource
         """
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
@@ -42,6 +44,8 @@ class CleanRoomsCleanRoomArgs:
             pulumi.set(__self__, "owner", owner)
         if remote_detailed_info is not None:
             pulumi.set(__self__, "remote_detailed_info", remote_detailed_info)
+        if workspace_id is not None:
+            pulumi.set(__self__, "workspace_id", workspace_id)
 
     @_builtins.property
     @pulumi.getter
@@ -69,7 +73,7 @@ class CleanRoomsCleanRoomArgs:
     @pulumi.getter
     def owner(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        This is Databricks username of the owner of the local clean room securable for permission management
+        This is the Databricks username of the owner of the local clean room securable for permission management
         """
         return pulumi.get(self, "owner")
 
@@ -91,6 +95,18 @@ class CleanRoomsCleanRoomArgs:
     def remote_detailed_info(self, value: Optional[pulumi.Input['CleanRoomsCleanRoomRemoteDetailedInfoArgs']]):
         pulumi.set(self, "remote_detailed_info", value)
 
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Workspace ID of the resource
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "workspace_id", value)
+
 
 @pulumi.input_type
 class _CleanRoomsCleanRoomState:
@@ -104,7 +120,8 @@ class _CleanRoomsCleanRoomState:
                  owner: Optional[pulumi.Input[_builtins.str]] = None,
                  remote_detailed_info: Optional[pulumi.Input['CleanRoomsCleanRoomRemoteDetailedInfoArgs']] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None,
-                 updated_at: Optional[pulumi.Input[_builtins.int]] = None):
+                 updated_at: Optional[pulumi.Input[_builtins.int]] = None,
+                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CleanRoomsCleanRoom resources.
         :param pulumi.Input[_builtins.str] access_restricted: (string) - Whether clean room access is restricted due to [CSP](https://docs.databricks.com/en/security/privacy/security-profile.html). Possible values are: `CSP_MISMATCH`, `NO_RESTRICTION`
@@ -114,12 +131,13 @@ class _CleanRoomsCleanRoomState:
                It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements)
         :param pulumi.Input['CleanRoomsCleanRoomOutputCatalogArgs'] output_catalog: (CleanRoomOutputCatalog) - Output catalog of the clean room. It is an output only field. Output catalog is manipulated
                using the separate CreateCleanRoomOutputCatalog API
-        :param pulumi.Input[_builtins.str] owner: This is Databricks username of the owner of the local clean room securable for permission management
+        :param pulumi.Input[_builtins.str] owner: This is the Databricks username of the owner of the local clean room securable for permission management
         :param pulumi.Input['CleanRoomsCleanRoomRemoteDetailedInfoArgs'] remote_detailed_info: Central clean room details. During creation, users need to specify
                cloud_vendor, region, and collaborators.global_metastore_id.
                This field will not be filled in the ListCleanRooms call
         :param pulumi.Input[_builtins.str] status: (string) - . Possible values are: `CREATED`, `NOT_CREATED`, `NOT_ELIGIBLE`
         :param pulumi.Input[_builtins.int] updated_at: (integer) - When the clean room was last updated, in epoch milliseconds
+        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID of the resource
         """
         if access_restricted is not None:
             pulumi.set(__self__, "access_restricted", access_restricted)
@@ -141,6 +159,8 @@ class _CleanRoomsCleanRoomState:
             pulumi.set(__self__, "status", status)
         if updated_at is not None:
             pulumi.set(__self__, "updated_at", updated_at)
+        if workspace_id is not None:
+            pulumi.set(__self__, "workspace_id", workspace_id)
 
     @_builtins.property
     @pulumi.getter(name="accessRestricted")
@@ -217,7 +237,7 @@ class _CleanRoomsCleanRoomState:
     @pulumi.getter
     def owner(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        This is Databricks username of the owner of the local clean room securable for permission management
+        This is the Databricks username of the owner of the local clean room securable for permission management
         """
         return pulumi.get(self, "owner")
 
@@ -263,6 +283,18 @@ class _CleanRoomsCleanRoomState:
     def updated_at(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "updated_at", value)
 
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Workspace ID of the resource
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "workspace_id", value)
+
 
 @pulumi.type_token("databricks:index/cleanRoomsCleanRoom:CleanRoomsCleanRoom")
 class CleanRoomsCleanRoom(pulumi.CustomResource):
@@ -274,6 +306,7 @@ class CleanRoomsCleanRoom(pulumi.CustomResource):
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  owner: Optional[pulumi.Input[_builtins.str]] = None,
                  remote_detailed_info: Optional[pulumi.Input[Union['CleanRoomsCleanRoomRemoteDetailedInfoArgs', 'CleanRoomsCleanRoomRemoteDetailedInfoArgsDict']]] = None,
+                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
         A Clean Room is a secure environment for data collaboration that enables multiple organizations to analyze their data together while maintaining privacy and security. Clean Rooms provide a controlled environment where data can be shared and analyzed without exposing the underlying raw data.
@@ -288,7 +321,7 @@ class CleanRoomsCleanRoom(pulumi.CustomResource):
 
         import {
 
-          id = name
+          id = "name"
 
           to = databricks_clean_rooms_clean_room.this
 
@@ -297,17 +330,18 @@ class CleanRoomsCleanRoom(pulumi.CustomResource):
         If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
 
         ```sh
-        $ pulumi import databricks:index/cleanRoomsCleanRoom:CleanRoomsCleanRoom databricks_clean_rooms_clean_room name
+        $ pulumi import databricks:index/cleanRoomsCleanRoom:CleanRoomsCleanRoom databricks_clean_rooms_clean_room "name"
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] name: The name of the clean room.
                It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements)
-        :param pulumi.Input[_builtins.str] owner: This is Databricks username of the owner of the local clean room securable for permission management
+        :param pulumi.Input[_builtins.str] owner: This is the Databricks username of the owner of the local clean room securable for permission management
         :param pulumi.Input[Union['CleanRoomsCleanRoomRemoteDetailedInfoArgs', 'CleanRoomsCleanRoomRemoteDetailedInfoArgsDict']] remote_detailed_info: Central clean room details. During creation, users need to specify
                cloud_vendor, region, and collaborators.global_metastore_id.
                This field will not be filled in the ListCleanRooms call
+        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID of the resource
         """
         ...
     @overload
@@ -328,7 +362,7 @@ class CleanRoomsCleanRoom(pulumi.CustomResource):
 
         import {
 
-          id = name
+          id = "name"
 
           to = databricks_clean_rooms_clean_room.this
 
@@ -337,7 +371,7 @@ class CleanRoomsCleanRoom(pulumi.CustomResource):
         If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
 
         ```sh
-        $ pulumi import databricks:index/cleanRoomsCleanRoom:CleanRoomsCleanRoom databricks_clean_rooms_clean_room name
+        $ pulumi import databricks:index/cleanRoomsCleanRoom:CleanRoomsCleanRoom databricks_clean_rooms_clean_room "name"
         ```
 
         :param str resource_name: The name of the resource.
@@ -359,6 +393,7 @@ class CleanRoomsCleanRoom(pulumi.CustomResource):
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  owner: Optional[pulumi.Input[_builtins.str]] = None,
                  remote_detailed_info: Optional[pulumi.Input[Union['CleanRoomsCleanRoomRemoteDetailedInfoArgs', 'CleanRoomsCleanRoomRemoteDetailedInfoArgsDict']]] = None,
+                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -372,6 +407,7 @@ class CleanRoomsCleanRoom(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["owner"] = owner
             __props__.__dict__["remote_detailed_info"] = remote_detailed_info
+            __props__.__dict__["workspace_id"] = workspace_id
             __props__.__dict__["access_restricted"] = None
             __props__.__dict__["created_at"] = None
             __props__.__dict__["local_collaborator_alias"] = None
@@ -397,7 +433,8 @@ class CleanRoomsCleanRoom(pulumi.CustomResource):
             owner: Optional[pulumi.Input[_builtins.str]] = None,
             remote_detailed_info: Optional[pulumi.Input[Union['CleanRoomsCleanRoomRemoteDetailedInfoArgs', 'CleanRoomsCleanRoomRemoteDetailedInfoArgsDict']]] = None,
             status: Optional[pulumi.Input[_builtins.str]] = None,
-            updated_at: Optional[pulumi.Input[_builtins.int]] = None) -> 'CleanRoomsCleanRoom':
+            updated_at: Optional[pulumi.Input[_builtins.int]] = None,
+            workspace_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'CleanRoomsCleanRoom':
         """
         Get an existing CleanRoomsCleanRoom resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -412,12 +449,13 @@ class CleanRoomsCleanRoom(pulumi.CustomResource):
                It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements)
         :param pulumi.Input[Union['CleanRoomsCleanRoomOutputCatalogArgs', 'CleanRoomsCleanRoomOutputCatalogArgsDict']] output_catalog: (CleanRoomOutputCatalog) - Output catalog of the clean room. It is an output only field. Output catalog is manipulated
                using the separate CreateCleanRoomOutputCatalog API
-        :param pulumi.Input[_builtins.str] owner: This is Databricks username of the owner of the local clean room securable for permission management
+        :param pulumi.Input[_builtins.str] owner: This is the Databricks username of the owner of the local clean room securable for permission management
         :param pulumi.Input[Union['CleanRoomsCleanRoomRemoteDetailedInfoArgs', 'CleanRoomsCleanRoomRemoteDetailedInfoArgsDict']] remote_detailed_info: Central clean room details. During creation, users need to specify
                cloud_vendor, region, and collaborators.global_metastore_id.
                This field will not be filled in the ListCleanRooms call
         :param pulumi.Input[_builtins.str] status: (string) - . Possible values are: `CREATED`, `NOT_CREATED`, `NOT_ELIGIBLE`
         :param pulumi.Input[_builtins.int] updated_at: (integer) - When the clean room was last updated, in epoch milliseconds
+        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID of the resource
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -433,6 +471,7 @@ class CleanRoomsCleanRoom(pulumi.CustomResource):
         __props__.__dict__["remote_detailed_info"] = remote_detailed_info
         __props__.__dict__["status"] = status
         __props__.__dict__["updated_at"] = updated_at
+        __props__.__dict__["workspace_id"] = workspace_id
         return CleanRoomsCleanRoom(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -486,7 +525,7 @@ class CleanRoomsCleanRoom(pulumi.CustomResource):
     @pulumi.getter
     def owner(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        This is Databricks username of the owner of the local clean room securable for permission management
+        This is the Databricks username of the owner of the local clean room securable for permission management
         """
         return pulumi.get(self, "owner")
 
@@ -515,4 +554,12 @@ class CleanRoomsCleanRoom(pulumi.CustomResource):
         (integer) - When the clean room was last updated, in epoch milliseconds
         """
         return pulumi.get(self, "updated_at")
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Workspace ID of the resource
+        """
+        return pulumi.get(self, "workspace_id")
 

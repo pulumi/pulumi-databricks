@@ -18,6 +18,10 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string? EmbeddingModelEndpointName;
         /// <summary>
+        /// The name of the embedding model endpoint which, if specified, is used for querying (not ingestion).
+        /// </summary>
+        public readonly string? ModelEndpointNameForQuery;
+        /// <summary>
         /// The name of the column
         /// </summary>
         public readonly string? Name;
@@ -26,9 +30,12 @@ namespace Pulumi.Databricks.Outputs
         private VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumn(
             string? embeddingModelEndpointName,
 
+            string? modelEndpointNameForQuery,
+
             string? name)
         {
             EmbeddingModelEndpointName = embeddingModelEndpointName;
+            ModelEndpointNameForQuery = modelEndpointNameForQuery;
             Name = name;
         }
     }

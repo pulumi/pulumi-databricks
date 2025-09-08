@@ -22,14 +22,18 @@ __all__ = ['QualityMonitorV2Args', 'QualityMonitorV2']
 class QualityMonitorV2Args:
     def __init__(__self__, *,
                  object_id: pulumi.Input[_builtins.str],
-                 object_type: pulumi.Input[_builtins.str]):
+                 object_type: pulumi.Input[_builtins.str],
+                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a QualityMonitorV2 resource.
         :param pulumi.Input[_builtins.str] object_id: The uuid of the request object. For example, schema id
         :param pulumi.Input[_builtins.str] object_type: The type of the monitored object. Can be one of the following: schema
+        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID of the resource
         """
         pulumi.set(__self__, "object_id", object_id)
         pulumi.set(__self__, "object_type", object_type)
+        if workspace_id is not None:
+            pulumi.set(__self__, "workspace_id", workspace_id)
 
     @_builtins.property
     @pulumi.getter(name="objectId")
@@ -55,18 +59,32 @@ class QualityMonitorV2Args:
     def object_type(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "object_type", value)
 
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Workspace ID of the resource
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "workspace_id", value)
+
 
 @pulumi.input_type
 class _QualityMonitorV2State:
     def __init__(__self__, *,
                  anomaly_detection_config: Optional[pulumi.Input['QualityMonitorV2AnomalyDetectionConfigArgs']] = None,
                  object_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 object_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 object_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering QualityMonitorV2 resources.
         :param pulumi.Input['QualityMonitorV2AnomalyDetectionConfigArgs'] anomaly_detection_config: (AnomalyDetectionConfig)
         :param pulumi.Input[_builtins.str] object_id: The uuid of the request object. For example, schema id
         :param pulumi.Input[_builtins.str] object_type: The type of the monitored object. Can be one of the following: schema
+        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID of the resource
         """
         if anomaly_detection_config is not None:
             pulumi.set(__self__, "anomaly_detection_config", anomaly_detection_config)
@@ -74,6 +92,8 @@ class _QualityMonitorV2State:
             pulumi.set(__self__, "object_id", object_id)
         if object_type is not None:
             pulumi.set(__self__, "object_type", object_type)
+        if workspace_id is not None:
+            pulumi.set(__self__, "workspace_id", workspace_id)
 
     @_builtins.property
     @pulumi.getter(name="anomalyDetectionConfig")
@@ -111,6 +131,18 @@ class _QualityMonitorV2State:
     def object_type(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "object_type", value)
 
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Workspace ID of the resource
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "workspace_id", value)
+
 
 @pulumi.type_token("databricks:index/qualityMonitorV2:QualityMonitorV2")
 class QualityMonitorV2(pulumi.CustomResource):
@@ -120,6 +152,7 @@ class QualityMonitorV2(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  object_id: Optional[pulumi.Input[_builtins.str]] = None,
                  object_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
         Users with MANAGE Schema can use quality monitor v2 to set up data quality monitoring checks for UC objects, currently support schema.
@@ -148,7 +181,7 @@ class QualityMonitorV2(pulumi.CustomResource):
 
         import {
 
-          id = object_type,object_id
+          id = "object_type,object_id"
 
           to = databricks_quality_monitor_v2.this
 
@@ -157,13 +190,14 @@ class QualityMonitorV2(pulumi.CustomResource):
         If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
 
         ```sh
-        $ pulumi import databricks:index/qualityMonitorV2:QualityMonitorV2 databricks_quality_monitor_v2 object_type,object_id
+        $ pulumi import databricks:index/qualityMonitorV2:QualityMonitorV2 databricks_quality_monitor_v2 "object_type,object_id"
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] object_id: The uuid of the request object. For example, schema id
         :param pulumi.Input[_builtins.str] object_type: The type of the monitored object. Can be one of the following: schema
+        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID of the resource
         """
         ...
     @overload
@@ -198,7 +232,7 @@ class QualityMonitorV2(pulumi.CustomResource):
 
         import {
 
-          id = object_type,object_id
+          id = "object_type,object_id"
 
           to = databricks_quality_monitor_v2.this
 
@@ -207,7 +241,7 @@ class QualityMonitorV2(pulumi.CustomResource):
         If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
 
         ```sh
-        $ pulumi import databricks:index/qualityMonitorV2:QualityMonitorV2 databricks_quality_monitor_v2 object_type,object_id
+        $ pulumi import databricks:index/qualityMonitorV2:QualityMonitorV2 databricks_quality_monitor_v2 "object_type,object_id"
         ```
 
         :param str resource_name: The name of the resource.
@@ -227,6 +261,7 @@ class QualityMonitorV2(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  object_id: Optional[pulumi.Input[_builtins.str]] = None,
                  object_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -242,6 +277,7 @@ class QualityMonitorV2(pulumi.CustomResource):
             if object_type is None and not opts.urn:
                 raise TypeError("Missing required property 'object_type'")
             __props__.__dict__["object_type"] = object_type
+            __props__.__dict__["workspace_id"] = workspace_id
             __props__.__dict__["anomaly_detection_config"] = None
         super(QualityMonitorV2, __self__).__init__(
             'databricks:index/qualityMonitorV2:QualityMonitorV2',
@@ -255,7 +291,8 @@ class QualityMonitorV2(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             anomaly_detection_config: Optional[pulumi.Input[Union['QualityMonitorV2AnomalyDetectionConfigArgs', 'QualityMonitorV2AnomalyDetectionConfigArgsDict']]] = None,
             object_id: Optional[pulumi.Input[_builtins.str]] = None,
-            object_type: Optional[pulumi.Input[_builtins.str]] = None) -> 'QualityMonitorV2':
+            object_type: Optional[pulumi.Input[_builtins.str]] = None,
+            workspace_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'QualityMonitorV2':
         """
         Get an existing QualityMonitorV2 resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -266,6 +303,7 @@ class QualityMonitorV2(pulumi.CustomResource):
         :param pulumi.Input[Union['QualityMonitorV2AnomalyDetectionConfigArgs', 'QualityMonitorV2AnomalyDetectionConfigArgsDict']] anomaly_detection_config: (AnomalyDetectionConfig)
         :param pulumi.Input[_builtins.str] object_id: The uuid of the request object. For example, schema id
         :param pulumi.Input[_builtins.str] object_type: The type of the monitored object. Can be one of the following: schema
+        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID of the resource
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -274,6 +312,7 @@ class QualityMonitorV2(pulumi.CustomResource):
         __props__.__dict__["anomaly_detection_config"] = anomaly_detection_config
         __props__.__dict__["object_id"] = object_id
         __props__.__dict__["object_type"] = object_type
+        __props__.__dict__["workspace_id"] = workspace_id
         return QualityMonitorV2(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -299,4 +338,12 @@ class QualityMonitorV2(pulumi.CustomResource):
         The type of the monitored object. Can be one of the following: schema
         """
         return pulumi.get(self, "object_type")
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Workspace ID of the resource
+        """
+        return pulumi.get(self, "workspace_id")
 

@@ -15,7 +15,7 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 /**
- * This resource is used to assign account-level users, service principals and groups to a Databricks workspace.
+ * This resource is used to assign account-level users, service principals and groups to a Databricks workspace. To configure additional entitlements such as cluster creation, please use databricks.Entitlements
  * 
  * &gt; This resource can only be used with a workspace-level provider!
  * 
@@ -192,8 +192,8 @@ import javax.annotation.Nullable;
 public class PermissionAssignment extends com.pulumi.resources.CustomResource {
     /**
      * The list of workspace permissions to assign to the principal:
-     * * `&#34;USER&#34;` - Can access the workspace with basic privileges.
-     * * `&#34;ADMIN&#34;` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
+     * * `&#34;USER&#34;` - Adds principal to the workspace `users` group. This gives basic workspace access.
+     * * `&#34;ADMIN&#34;` - Adds principal to the workspace `admins` group. This gives workspace admin privileges to manage users and groups, workspace configurations, and more.
      * 
      */
     @Export(name="permissions", refs={List.class,String.class}, tree="[0,1]")
@@ -201,8 +201,8 @@ public class PermissionAssignment extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The list of workspace permissions to assign to the principal:
-     * * `&#34;USER&#34;` - Can access the workspace with basic privileges.
-     * * `&#34;ADMIN&#34;` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
+     * * `&#34;USER&#34;` - Adds principal to the workspace `users` group. This gives basic workspace access.
+     * * `&#34;ADMIN&#34;` - Adds principal to the workspace `admins` group. This gives workspace admin privileges to manage users and groups, workspace configurations, and more.
      * 
      */
     public Output<List<String>> permissions() {

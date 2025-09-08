@@ -101,7 +101,7 @@ public final class PolicyInfoState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Type of securables that the policy should take effect on.
-     * Only `table` is supported at this moment.
+     * Only `TABLE` is supported at this moment.
      * Required on create and optional on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
      * 
      */
@@ -110,7 +110,7 @@ public final class PolicyInfoState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Type of securables that the policy should take effect on.
-     * Only `table` is supported at this moment.
+     * Only `TABLE` is supported at this moment.
      * Required on create and optional on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
      * 
      */
@@ -120,7 +120,7 @@ public final class PolicyInfoState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Optional list of condition expressions used to match table columns.
-     * Only valid when `for_securable_type` is `table`.
+     * Only valid when `for_securable_type` is `TABLE`.
      * When specified, the policy only applies to tables whose columns satisfy all match conditions
      * 
      */
@@ -129,7 +129,7 @@ public final class PolicyInfoState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Optional list of condition expressions used to match table columns.
-     * Only valid when `for_securable_type` is `table`.
+     * Only valid when `for_securable_type` is `TABLE`.
      * When specified, the policy only applies to tables whose columns satisfy all match conditions
      * 
      */
@@ -138,16 +138,16 @@ public final class PolicyInfoState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the policy. Required on create and ignored on update.
-     * To update the name, use the `new_name` field
+     * Name of the policy. Required on create and optional on update.
+     * To rename the policy, set `name` to a different value on update
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the policy. Required on create and ignored on update.
-     * To update the name, use the `new_name` field
+     * @return Name of the policy. Required on create and optional on update.
+     * To rename the policy, set `name` to a different value on update
      * 
      */
     public Optional<Output<String>> name() {
@@ -173,7 +173,7 @@ public final class PolicyInfoState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Type of the securable on which the policy is defined.
-     * Only `catalog`, `schema` and `table` are supported at this moment.
+     * Only `CATALOG`, `SCHEMA` and `TABLE` are supported at this moment.
      * Required on create and ignored on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
      * 
      */
@@ -182,7 +182,7 @@ public final class PolicyInfoState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Type of the securable on which the policy is defined.
-     * Only `catalog`, `schema` and `table` are supported at this moment.
+     * Only `CATALOG`, `SCHEMA` and `TABLE` are supported at this moment.
      * Required on create and ignored on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
      * 
      */
@@ -286,6 +286,21 @@ public final class PolicyInfoState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.whenCondition);
     }
 
+    /**
+     * Workspace ID of the resource
+     * 
+     */
+    @Import(name="workspaceId")
+    private @Nullable Output<String> workspaceId;
+
+    /**
+     * @return Workspace ID of the resource
+     * 
+     */
+    public Optional<Output<String>> workspaceId() {
+        return Optional.ofNullable(this.workspaceId);
+    }
+
     private PolicyInfoState() {}
 
     private PolicyInfoState(PolicyInfoState $) {
@@ -305,6 +320,7 @@ public final class PolicyInfoState extends com.pulumi.resources.ResourceArgs {
         this.updatedAt = $.updatedAt;
         this.updatedBy = $.updatedBy;
         this.whenCondition = $.whenCondition;
+        this.workspaceId = $.workspaceId;
     }
 
     public static Builder builder() {
@@ -446,7 +462,7 @@ public final class PolicyInfoState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param forSecurableType Type of securables that the policy should take effect on.
-         * Only `table` is supported at this moment.
+         * Only `TABLE` is supported at this moment.
          * Required on create and optional on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
          * 
          * @return builder
@@ -459,7 +475,7 @@ public final class PolicyInfoState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param forSecurableType Type of securables that the policy should take effect on.
-         * Only `table` is supported at this moment.
+         * Only `TABLE` is supported at this moment.
          * Required on create and optional on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
          * 
          * @return builder
@@ -471,7 +487,7 @@ public final class PolicyInfoState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param matchColumns Optional list of condition expressions used to match table columns.
-         * Only valid when `for_securable_type` is `table`.
+         * Only valid when `for_securable_type` is `TABLE`.
          * When specified, the policy only applies to tables whose columns satisfy all match conditions
          * 
          * @return builder
@@ -484,7 +500,7 @@ public final class PolicyInfoState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param matchColumns Optional list of condition expressions used to match table columns.
-         * Only valid when `for_securable_type` is `table`.
+         * Only valid when `for_securable_type` is `TABLE`.
          * When specified, the policy only applies to tables whose columns satisfy all match conditions
          * 
          * @return builder
@@ -496,7 +512,7 @@ public final class PolicyInfoState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param matchColumns Optional list of condition expressions used to match table columns.
-         * Only valid when `for_securable_type` is `table`.
+         * Only valid when `for_securable_type` is `TABLE`.
          * When specified, the policy only applies to tables whose columns satisfy all match conditions
          * 
          * @return builder
@@ -507,8 +523,8 @@ public final class PolicyInfoState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the policy. Required on create and ignored on update.
-         * To update the name, use the `new_name` field
+         * @param name Name of the policy. Required on create and optional on update.
+         * To rename the policy, set `name` to a different value on update
          * 
          * @return builder
          * 
@@ -519,8 +535,8 @@ public final class PolicyInfoState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the policy. Required on create and ignored on update.
-         * To update the name, use the `new_name` field
+         * @param name Name of the policy. Required on create and optional on update.
+         * To rename the policy, set `name` to a different value on update
          * 
          * @return builder
          * 
@@ -554,7 +570,7 @@ public final class PolicyInfoState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param onSecurableType Type of the securable on which the policy is defined.
-         * Only `catalog`, `schema` and `table` are supported at this moment.
+         * Only `CATALOG`, `SCHEMA` and `TABLE` are supported at this moment.
          * Required on create and ignored on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
          * 
          * @return builder
@@ -567,7 +583,7 @@ public final class PolicyInfoState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param onSecurableType Type of the securable on which the policy is defined.
-         * Only `catalog`, `schema` and `table` are supported at this moment.
+         * Only `CATALOG`, `SCHEMA` and `TABLE` are supported at this moment.
          * Required on create and ignored on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
          * 
          * @return builder
@@ -718,6 +734,27 @@ public final class PolicyInfoState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder whenCondition(String whenCondition) {
             return whenCondition(Output.of(whenCondition));
+        }
+
+        /**
+         * @param workspaceId Workspace ID of the resource
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workspaceId(@Nullable Output<String> workspaceId) {
+            $.workspaceId = workspaceId;
+            return this;
+        }
+
+        /**
+         * @param workspaceId Workspace ID of the resource
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workspaceId(String workspaceId) {
+            return workspaceId(Output.of(workspaceId));
         }
 
         public PolicyInfoState build() {

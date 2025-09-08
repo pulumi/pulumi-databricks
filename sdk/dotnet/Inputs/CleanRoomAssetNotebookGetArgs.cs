@@ -47,7 +47,7 @@ namespace Pulumi.Databricks.Inputs
         private InputList<string>? _runnerCollaboratorAliases;
 
         /// <summary>
-        /// collaborators that can run the notebook
+        /// Aliases of collaborators that can run the notebook
         /// </summary>
         public InputList<string> RunnerCollaboratorAliases
         {

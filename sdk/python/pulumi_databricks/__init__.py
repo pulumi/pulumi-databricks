@@ -7,12 +7,15 @@ from . import _utilities
 import typing
 # Export this package's modules as members:
 from .access_control_rule_set import *
+from .account_federation_policy import *
 from .account_network_policy import *
+from .account_setting_v2 import *
 from .aibi_dashboard_embedding_access_policy_setting import *
 from .aibi_dashboard_embedding_approved_domains_setting import *
 from .alert import *
 from .alert_v2 import *
 from .app import *
+from .apps_settings_custom_template import *
 from .artifact_allowlist import *
 from .automatic_cluster_update_workspace_setting import *
 from .budget import *
@@ -40,15 +43,21 @@ from .disable_legacy_dbfs_setting import *
 from .disable_legacy_features_setting import *
 from .enhanced_security_monitoring_workspace_setting import *
 from .entitlements import *
+from .entity_tag_assignment import *
 from .external_location import *
 from .external_metadata import *
 from .file import *
+from .get_account_federation_policies import *
+from .get_account_federation_policy import *
 from .get_account_network_policies import *
 from .get_account_network_policy import *
+from .get_account_setting_v2 import *
 from .get_alert_v2 import *
 from .get_alerts_v2 import *
 from .get_app import *
 from .get_apps import *
+from .get_apps_settings_custom_template import *
+from .get_apps_settings_custom_templates import *
 from .get_aws_assume_role_policy import *
 from .get_aws_bucket_policy import *
 from .get_aws_cross_account_policy import *
@@ -82,6 +91,8 @@ from .get_database_synced_database_tables import *
 from .get_dbfs_file import *
 from .get_dbfs_file_paths import *
 from .get_directory import *
+from .get_entity_tag_assignment import *
+from .get_entity_tag_assignments import *
 from .get_external_location import *
 from .get_external_locations import *
 from .get_external_metadata import *
@@ -121,6 +132,8 @@ from .get_registered_model_versions import *
 from .get_schema import *
 from .get_schemas import *
 from .get_service_principal import *
+from .get_service_principal_federation_policies import *
+from .get_service_principal_federation_policy import *
 from .get_service_principals import *
 from .get_serving_endpoints import *
 from .get_share import *
@@ -132,11 +145,14 @@ from .get_storage_credential import *
 from .get_storage_credentials import *
 from .get_table import *
 from .get_tables import *
+from .get_tag_policies import *
+from .get_tag_policy import *
 from .get_user import *
 from .get_views import *
 from .get_volume import *
 from .get_volumes import *
 from .get_workspace_network_option import *
+from .get_workspace_setting_v2 import *
 from .get_zones import *
 from .git_credential import *
 from .global_init_script import *
@@ -198,6 +214,7 @@ from .secret import *
 from .secret_acl import *
 from .secret_scope import *
 from .service_principal import *
+from .service_principal_federation_policy import *
 from .service_principal_role import *
 from .service_principal_secret import *
 from .share import *
@@ -213,6 +230,7 @@ from .sql_widget import *
 from .storage_credential import *
 from .system_schema import *
 from .table import *
+from .tag_policy import *
 from .token import *
 from .user import *
 from .user_instance_profile import *
@@ -224,6 +242,7 @@ from .workspace_binding import *
 from .workspace_conf import *
 from .workspace_file import *
 from .workspace_network_option import *
+from .workspace_setting_v2 import *
 from ._inputs import *
 from . import outputs
 
@@ -247,10 +266,26 @@ _utilities.register(
  },
  {
   "pkg": "databricks",
+  "mod": "index/accountFederationPolicy",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/accountFederationPolicy:AccountFederationPolicy": "AccountFederationPolicy"
+  }
+ },
+ {
+  "pkg": "databricks",
   "mod": "index/accountNetworkPolicy",
   "fqn": "pulumi_databricks",
   "classes": {
    "databricks:index/accountNetworkPolicy:AccountNetworkPolicy": "AccountNetworkPolicy"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/accountSettingV2",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/accountSettingV2:AccountSettingV2": "AccountSettingV2"
   }
  },
  {
@@ -291,6 +326,14 @@ _utilities.register(
   "fqn": "pulumi_databricks",
   "classes": {
    "databricks:index/app:App": "App"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/appsSettingsCustomTemplate",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/appsSettingsCustomTemplate:AppsSettingsCustomTemplate": "AppsSettingsCustomTemplate"
   }
  },
  {
@@ -507,6 +550,14 @@ _utilities.register(
   "fqn": "pulumi_databricks",
   "classes": {
    "databricks:index/entitlements:Entitlements": "Entitlements"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/entityTagAssignment",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/entityTagAssignment:EntityTagAssignment": "EntityTagAssignment"
   }
  },
  {
@@ -1007,6 +1058,14 @@ _utilities.register(
  },
  {
   "pkg": "databricks",
+  "mod": "index/servicePrincipalFederationPolicy",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/servicePrincipalFederationPolicy:ServicePrincipalFederationPolicy": "ServicePrincipalFederationPolicy"
+  }
+ },
+ {
+  "pkg": "databricks",
   "mod": "index/servicePrincipalRole",
   "fqn": "pulumi_databricks",
   "classes": {
@@ -1127,6 +1186,14 @@ _utilities.register(
  },
  {
   "pkg": "databricks",
+  "mod": "index/tagPolicy",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/tagPolicy:TagPolicy": "TagPolicy"
+  }
+ },
+ {
+  "pkg": "databricks",
   "mod": "index/token",
   "fqn": "pulumi_databricks",
   "classes": {
@@ -1211,6 +1278,14 @@ _utilities.register(
   "fqn": "pulumi_databricks",
   "classes": {
    "databricks:index/workspaceNetworkOption:WorkspaceNetworkOption": "WorkspaceNetworkOption"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/workspaceSettingV2",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/workspaceSettingV2:WorkspaceSettingV2": "WorkspaceSettingV2"
   }
  }
 ]

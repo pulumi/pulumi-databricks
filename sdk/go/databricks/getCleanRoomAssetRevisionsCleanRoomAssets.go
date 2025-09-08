@@ -11,28 +11,53 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-func GetCleanRoomAssetRevisionsCleanRoomAssets(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetCleanRoomAssetRevisionsCleanRoomAssetsResult, error) {
+func GetCleanRoomAssetRevisionsCleanRoomAssets(ctx *pulumi.Context, args *GetCleanRoomAssetRevisionsCleanRoomAssetsArgs, opts ...pulumi.InvokeOption) (*GetCleanRoomAssetRevisionsCleanRoomAssetsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetCleanRoomAssetRevisionsCleanRoomAssetsResult
-	err := ctx.Invoke("databricks:index/getCleanRoomAssetRevisionsCleanRoomAssets:getCleanRoomAssetRevisionsCleanRoomAssets", nil, &rv, opts...)
+	err := ctx.Invoke("databricks:index/getCleanRoomAssetRevisionsCleanRoomAssets:getCleanRoomAssetRevisionsCleanRoomAssets", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &rv, nil
 }
 
+// A collection of arguments for invoking getCleanRoomAssetRevisionsCleanRoomAssets.
+type GetCleanRoomAssetRevisionsCleanRoomAssetsArgs struct {
+	// Name of the asset
+	Name string `pulumi:"name"`
+	// Workspace ID of the resource
+	WorkspaceId *string `pulumi:"workspaceId"`
+}
+
 // A collection of values returned by getCleanRoomAssetRevisionsCleanRoomAssets.
 type GetCleanRoomAssetRevisionsCleanRoomAssetsResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id        string                                              `pulumi:"id"`
-	Revisions []GetCleanRoomAssetRevisionsCleanRoomAssetsRevision `pulumi:"revisions"`
+	Id string `pulumi:"id"`
+	// (string) - The name of the partition column
+	Name        string                                              `pulumi:"name"`
+	Revisions   []GetCleanRoomAssetRevisionsCleanRoomAssetsRevision `pulumi:"revisions"`
+	WorkspaceId *string                                             `pulumi:"workspaceId"`
 }
 
-func GetCleanRoomAssetRevisionsCleanRoomAssetsOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetCleanRoomAssetRevisionsCleanRoomAssetsResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetCleanRoomAssetRevisionsCleanRoomAssetsResultOutput, error) {
-		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-		return ctx.InvokeOutput("databricks:index/getCleanRoomAssetRevisionsCleanRoomAssets:getCleanRoomAssetRevisionsCleanRoomAssets", nil, GetCleanRoomAssetRevisionsCleanRoomAssetsResultOutput{}, options).(GetCleanRoomAssetRevisionsCleanRoomAssetsResultOutput), nil
-	}).(GetCleanRoomAssetRevisionsCleanRoomAssetsResultOutput)
+func GetCleanRoomAssetRevisionsCleanRoomAssetsOutput(ctx *pulumi.Context, args GetCleanRoomAssetRevisionsCleanRoomAssetsOutputArgs, opts ...pulumi.InvokeOption) GetCleanRoomAssetRevisionsCleanRoomAssetsResultOutput {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (GetCleanRoomAssetRevisionsCleanRoomAssetsResultOutput, error) {
+			args := v.(GetCleanRoomAssetRevisionsCleanRoomAssetsArgs)
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("databricks:index/getCleanRoomAssetRevisionsCleanRoomAssets:getCleanRoomAssetRevisionsCleanRoomAssets", args, GetCleanRoomAssetRevisionsCleanRoomAssetsResultOutput{}, options).(GetCleanRoomAssetRevisionsCleanRoomAssetsResultOutput), nil
+		}).(GetCleanRoomAssetRevisionsCleanRoomAssetsResultOutput)
+}
+
+// A collection of arguments for invoking getCleanRoomAssetRevisionsCleanRoomAssets.
+type GetCleanRoomAssetRevisionsCleanRoomAssetsOutputArgs struct {
+	// Name of the asset
+	Name pulumi.StringInput `pulumi:"name"`
+	// Workspace ID of the resource
+	WorkspaceId pulumi.StringPtrInput `pulumi:"workspaceId"`
+}
+
+func (GetCleanRoomAssetRevisionsCleanRoomAssetsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCleanRoomAssetRevisionsCleanRoomAssetsArgs)(nil)).Elem()
 }
 
 // A collection of values returned by getCleanRoomAssetRevisionsCleanRoomAssets.
@@ -55,10 +80,19 @@ func (o GetCleanRoomAssetRevisionsCleanRoomAssetsResultOutput) Id() pulumi.Strin
 	return o.ApplyT(func(v GetCleanRoomAssetRevisionsCleanRoomAssetsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// (string) - The name of the partition column
+func (o GetCleanRoomAssetRevisionsCleanRoomAssetsResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCleanRoomAssetRevisionsCleanRoomAssetsResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
 func (o GetCleanRoomAssetRevisionsCleanRoomAssetsResultOutput) Revisions() GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionArrayOutput {
 	return o.ApplyT(func(v GetCleanRoomAssetRevisionsCleanRoomAssetsResult) []GetCleanRoomAssetRevisionsCleanRoomAssetsRevision {
 		return v.Revisions
 	}).(GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionArrayOutput)
+}
+
+func (o GetCleanRoomAssetRevisionsCleanRoomAssetsResultOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCleanRoomAssetRevisionsCleanRoomAssetsResult) *string { return v.WorkspaceId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

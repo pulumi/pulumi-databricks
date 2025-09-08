@@ -23,7 +23,6 @@ class ConnectionArgs:
     def __init__(__self__, *,
                  comment: Optional[pulumi.Input[_builtins.str]] = None,
                  connection_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 environment_settings: Optional[pulumi.Input['ConnectionEnvironmentSettingsArgs']] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  options: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  owner: Optional[pulumi.Input[_builtins.str]] = None,
@@ -43,8 +42,6 @@ class ConnectionArgs:
             pulumi.set(__self__, "comment", comment)
         if connection_type is not None:
             pulumi.set(__self__, "connection_type", connection_type)
-        if environment_settings is not None:
-            pulumi.set(__self__, "environment_settings", environment_settings)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if options is not None:
@@ -79,15 +76,6 @@ class ConnectionArgs:
     @connection_type.setter
     def connection_type(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "connection_type", value)
-
-    @_builtins.property
-    @pulumi.getter(name="environmentSettings")
-    def environment_settings(self) -> Optional[pulumi.Input['ConnectionEnvironmentSettingsArgs']]:
-        return pulumi.get(self, "environment_settings")
-
-    @environment_settings.setter
-    def environment_settings(self, value: Optional[pulumi.Input['ConnectionEnvironmentSettingsArgs']]):
-        pulumi.set(self, "environment_settings", value)
 
     @_builtins.property
     @pulumi.getter
@@ -159,7 +147,6 @@ class _ConnectionState:
                  created_at: Optional[pulumi.Input[_builtins.int]] = None,
                  created_by: Optional[pulumi.Input[_builtins.str]] = None,
                  credential_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 environment_settings: Optional[pulumi.Input['ConnectionEnvironmentSettingsArgs']] = None,
                  full_name: Optional[pulumi.Input[_builtins.str]] = None,
                  metastore_id: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -204,8 +191,6 @@ class _ConnectionState:
             pulumi.set(__self__, "created_by", created_by)
         if credential_type is not None:
             pulumi.set(__self__, "credential_type", credential_type)
-        if environment_settings is not None:
-            pulumi.set(__self__, "environment_settings", environment_settings)
         if full_name is not None:
             pulumi.set(__self__, "full_name", full_name)
         if metastore_id is not None:
@@ -302,15 +287,6 @@ class _ConnectionState:
     @credential_type.setter
     def credential_type(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "credential_type", value)
-
-    @_builtins.property
-    @pulumi.getter(name="environmentSettings")
-    def environment_settings(self) -> Optional[pulumi.Input['ConnectionEnvironmentSettingsArgs']]:
-        return pulumi.get(self, "environment_settings")
-
-    @environment_settings.setter
-    def environment_settings(self, value: Optional[pulumi.Input['ConnectionEnvironmentSettingsArgs']]):
-        pulumi.set(self, "environment_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="fullName")
@@ -462,7 +438,6 @@ class Connection(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  comment: Optional[pulumi.Input[_builtins.str]] = None,
                  connection_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 environment_settings: Optional[pulumi.Input[Union['ConnectionEnvironmentSettingsArgs', 'ConnectionEnvironmentSettingsArgsDict']]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  options: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  owner: Optional[pulumi.Input[_builtins.str]] = None,
@@ -820,7 +795,6 @@ class Connection(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  comment: Optional[pulumi.Input[_builtins.str]] = None,
                  connection_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 environment_settings: Optional[pulumi.Input[Union['ConnectionEnvironmentSettingsArgs', 'ConnectionEnvironmentSettingsArgsDict']]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  options: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  owner: Optional[pulumi.Input[_builtins.str]] = None,
@@ -837,7 +811,6 @@ class Connection(pulumi.CustomResource):
 
             __props__.__dict__["comment"] = comment
             __props__.__dict__["connection_type"] = connection_type
-            __props__.__dict__["environment_settings"] = environment_settings
             __props__.__dict__["name"] = name
             __props__.__dict__["options"] = None if options is None else pulumi.Output.secret(options)
             __props__.__dict__["owner"] = owner
@@ -872,7 +845,6 @@ class Connection(pulumi.CustomResource):
             created_at: Optional[pulumi.Input[_builtins.int]] = None,
             created_by: Optional[pulumi.Input[_builtins.str]] = None,
             credential_type: Optional[pulumi.Input[_builtins.str]] = None,
-            environment_settings: Optional[pulumi.Input[Union['ConnectionEnvironmentSettingsArgs', 'ConnectionEnvironmentSettingsArgsDict']]] = None,
             full_name: Optional[pulumi.Input[_builtins.str]] = None,
             metastore_id: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -920,7 +892,6 @@ class Connection(pulumi.CustomResource):
         __props__.__dict__["created_at"] = created_at
         __props__.__dict__["created_by"] = created_by
         __props__.__dict__["credential_type"] = credential_type
-        __props__.__dict__["environment_settings"] = environment_settings
         __props__.__dict__["full_name"] = full_name
         __props__.__dict__["metastore_id"] = metastore_id
         __props__.__dict__["name"] = name
@@ -982,11 +953,6 @@ class Connection(pulumi.CustomResource):
         The type of credential for this connection.
         """
         return pulumi.get(self, "credential_type")
-
-    @_builtins.property
-    @pulumi.getter(name="environmentSettings")
-    def environment_settings(self) -> pulumi.Output[Optional['outputs.ConnectionEnvironmentSettings']]:
-        return pulumi.get(self, "environment_settings")
 
     @_builtins.property
     @pulumi.getter(name="fullName")

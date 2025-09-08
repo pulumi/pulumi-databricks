@@ -31,8 +31,8 @@ namespace Pulumi.Databricks
         /// });
         /// ```
         /// </summary>
-        public static Task<GetCleanRoomsCleanRoomsResult> InvokeAsync(InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.InvokeAsync<GetCleanRoomsCleanRoomsResult>("databricks:index/getCleanRoomsCleanRooms:getCleanRoomsCleanRooms", InvokeArgs.Empty, options.WithDefaults());
+        public static Task<GetCleanRoomsCleanRoomsResult> InvokeAsync(GetCleanRoomsCleanRoomsArgs? args = null, InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetCleanRoomsCleanRoomsResult>("databricks:index/getCleanRoomsCleanRooms:getCleanRoomsCleanRooms", args ?? new GetCleanRoomsCleanRoomsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source can be used to fetch the list of clean rooms.
@@ -54,8 +54,8 @@ namespace Pulumi.Databricks
         /// });
         /// ```
         /// </summary>
-        public static Output<GetCleanRoomsCleanRoomsResult> Invoke(InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.Invoke<GetCleanRoomsCleanRoomsResult>("databricks:index/getCleanRoomsCleanRooms:getCleanRoomsCleanRooms", InvokeArgs.Empty, options.WithDefaults());
+        public static Output<GetCleanRoomsCleanRoomsResult> Invoke(GetCleanRoomsCleanRoomsInvokeArgs? args = null, InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.Invoke<GetCleanRoomsCleanRoomsResult>("databricks:index/getCleanRoomsCleanRooms:getCleanRoomsCleanRooms", args ?? new GetCleanRoomsCleanRoomsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source can be used to fetch the list of clean rooms.
@@ -77,8 +77,37 @@ namespace Pulumi.Databricks
         /// });
         /// ```
         /// </summary>
-        public static Output<GetCleanRoomsCleanRoomsResult> Invoke(InvokeOutputOptions options)
-            => global::Pulumi.Deployment.Instance.Invoke<GetCleanRoomsCleanRoomsResult>("databricks:index/getCleanRoomsCleanRooms:getCleanRoomsCleanRooms", InvokeArgs.Empty, options.WithDefaults());
+        public static Output<GetCleanRoomsCleanRoomsResult> Invoke(GetCleanRoomsCleanRoomsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetCleanRoomsCleanRoomsResult>("databricks:index/getCleanRoomsCleanRooms:getCleanRoomsCleanRooms", args ?? new GetCleanRoomsCleanRoomsInvokeArgs(), options.WithDefaults());
+    }
+
+
+    public sealed class GetCleanRoomsCleanRoomsArgs : global::Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Workspace ID of the resource
+        /// </summary>
+        [Input("workspaceId")]
+        public string? WorkspaceId { get; set; }
+
+        public GetCleanRoomsCleanRoomsArgs()
+        {
+        }
+        public static new GetCleanRoomsCleanRoomsArgs Empty => new GetCleanRoomsCleanRoomsArgs();
+    }
+
+    public sealed class GetCleanRoomsCleanRoomsInvokeArgs : global::Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Workspace ID of the resource
+        /// </summary>
+        [Input("workspaceId")]
+        public Input<string>? WorkspaceId { get; set; }
+
+        public GetCleanRoomsCleanRoomsInvokeArgs()
+        {
+        }
+        public static new GetCleanRoomsCleanRoomsInvokeArgs Empty => new GetCleanRoomsCleanRoomsInvokeArgs();
     }
 
 
@@ -90,15 +119,19 @@ namespace Pulumi.Databricks
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly string? WorkspaceId;
 
         [OutputConstructor]
         private GetCleanRoomsCleanRoomsResult(
             ImmutableArray<Outputs.GetCleanRoomsCleanRoomsCleanRoomResult> cleanRooms,
 
-            string id)
+            string id,
+
+            string? workspaceId)
         {
             CleanRooms = cleanRooms;
             Id = id;
+            WorkspaceId = workspaceId;
         }
     }
 }

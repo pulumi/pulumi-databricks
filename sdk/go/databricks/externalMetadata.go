@@ -68,7 +68,7 @@ import (
 //
 // import {
 //
-//	id = name
+//	id = "name"
 //
 //	to = databricks_external_metadata.this
 //
@@ -77,7 +77,7 @@ import (
 // If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
 //
 // ```sh
-// $ pulumi import databricks:index/externalMetadata:ExternalMetadata databricks_external_metadata name
+// $ pulumi import databricks:index/externalMetadata:ExternalMetadata databricks_external_metadata "name"
 // ```
 type ExternalMetadata struct {
 	pulumi.CustomResourceState
@@ -108,6 +108,8 @@ type ExternalMetadata struct {
 	UpdatedBy pulumi.StringOutput `pulumi:"updatedBy"`
 	// URL associated with the external metadata object
 	Url pulumi.StringPtrOutput `pulumi:"url"`
+	// Workspace ID of the resource
+	WorkspaceId pulumi.StringPtrOutput `pulumi:"workspaceId"`
 }
 
 // NewExternalMetadata registers a new resource with the given unique name, arguments, and options.
@@ -172,6 +174,8 @@ type externalMetadataState struct {
 	UpdatedBy *string `pulumi:"updatedBy"`
 	// URL associated with the external metadata object
 	Url *string `pulumi:"url"`
+	// Workspace ID of the resource
+	WorkspaceId *string `pulumi:"workspaceId"`
 }
 
 type ExternalMetadataState struct {
@@ -201,6 +205,8 @@ type ExternalMetadataState struct {
 	UpdatedBy pulumi.StringPtrInput
 	// URL associated with the external metadata object
 	Url pulumi.StringPtrInput
+	// Workspace ID of the resource
+	WorkspaceId pulumi.StringPtrInput
 }
 
 func (ExternalMetadataState) ElementType() reflect.Type {
@@ -224,6 +230,8 @@ type externalMetadataArgs struct {
 	SystemType string `pulumi:"systemType"`
 	// URL associated with the external metadata object
 	Url *string `pulumi:"url"`
+	// Workspace ID of the resource
+	WorkspaceId *string `pulumi:"workspaceId"`
 }
 
 // The set of arguments for constructing a ExternalMetadata resource.
@@ -244,6 +252,8 @@ type ExternalMetadataArgs struct {
 	SystemType pulumi.StringInput
 	// URL associated with the external metadata object
 	Url pulumi.StringPtrInput
+	// Workspace ID of the resource
+	WorkspaceId pulumi.StringPtrInput
 }
 
 func (ExternalMetadataArgs) ElementType() reflect.Type {
@@ -396,6 +406,11 @@ func (o ExternalMetadataOutput) UpdatedBy() pulumi.StringOutput {
 // URL associated with the external metadata object
 func (o ExternalMetadataOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ExternalMetadata) pulumi.StringPtrOutput { return v.Url }).(pulumi.StringPtrOutput)
+}
+
+// Workspace ID of the resource
+func (o ExternalMetadataOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExternalMetadata) pulumi.StringPtrOutput { return v.WorkspaceId }).(pulumi.StringPtrOutput)
 }
 
 type ExternalMetadataArrayOutput struct{ *pulumi.OutputState }

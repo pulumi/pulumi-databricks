@@ -8,6 +8,8 @@ import com.pulumi.databricks.outputs.GetQualityMonitorV2AnomalyDetectionConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetQualityMonitorV2Result {
@@ -31,6 +33,7 @@ public final class GetQualityMonitorV2Result {
      * 
      */
     private String objectType;
+    private @Nullable String workspaceId;
 
     private GetQualityMonitorV2Result() {}
     /**
@@ -61,6 +64,9 @@ public final class GetQualityMonitorV2Result {
     public String objectType() {
         return this.objectType;
     }
+    public Optional<String> workspaceId() {
+        return Optional.ofNullable(this.workspaceId);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -75,6 +81,7 @@ public final class GetQualityMonitorV2Result {
         private String id;
         private String objectId;
         private String objectType;
+        private @Nullable String workspaceId;
         public Builder() {}
         public Builder(GetQualityMonitorV2Result defaults) {
     	      Objects.requireNonNull(defaults);
@@ -82,6 +89,7 @@ public final class GetQualityMonitorV2Result {
     	      this.id = defaults.id;
     	      this.objectId = defaults.objectId;
     	      this.objectType = defaults.objectType;
+    	      this.workspaceId = defaults.workspaceId;
         }
 
         @CustomType.Setter
@@ -116,12 +124,19 @@ public final class GetQualityMonitorV2Result {
             this.objectType = objectType;
             return this;
         }
+        @CustomType.Setter
+        public Builder workspaceId(@Nullable String workspaceId) {
+
+            this.workspaceId = workspaceId;
+            return this;
+        }
         public GetQualityMonitorV2Result build() {
             final var _resultValue = new GetQualityMonitorV2Result();
             _resultValue.anomalyDetectionConfig = anomalyDetectionConfig;
             _resultValue.id = id;
             _resultValue.objectId = objectId;
             _resultValue.objectType = objectType;
+            _resultValue.workspaceId = workspaceId;
             return _resultValue;
         }
     }

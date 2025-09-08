@@ -137,6 +137,21 @@ public final class GetExternalMetadataPlainArgs extends com.pulumi.resources.Inv
         return Optional.ofNullable(this.url);
     }
 
+    /**
+     * Workspace ID of the resource
+     * 
+     */
+    @Import(name="workspaceId")
+    private @Nullable String workspaceId;
+
+    /**
+     * @return Workspace ID of the resource
+     * 
+     */
+    public Optional<String> workspaceId() {
+        return Optional.ofNullable(this.workspaceId);
+    }
+
     private GetExternalMetadataPlainArgs() {}
 
     private GetExternalMetadataPlainArgs(GetExternalMetadataPlainArgs $) {
@@ -148,6 +163,7 @@ public final class GetExternalMetadataPlainArgs extends com.pulumi.resources.Inv
         this.properties = $.properties;
         this.systemType = $.systemType;
         this.url = $.url;
+        this.workspaceId = $.workspaceId;
     }
 
     public static Builder builder() {
@@ -263,6 +279,17 @@ public final class GetExternalMetadataPlainArgs extends com.pulumi.resources.Inv
          */
         public Builder url(@Nullable String url) {
             $.url = url;
+            return this;
+        }
+
+        /**
+         * @param workspaceId Workspace ID of the resource
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workspaceId(@Nullable String workspaceId) {
+            $.workspaceId = workspaceId;
             return this;
         }
 

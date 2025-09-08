@@ -11,28 +11,47 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-func GetMaterializedFeaturesFeatureTags(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetMaterializedFeaturesFeatureTagsResult, error) {
+func GetMaterializedFeaturesFeatureTags(ctx *pulumi.Context, args *GetMaterializedFeaturesFeatureTagsArgs, opts ...pulumi.InvokeOption) (*GetMaterializedFeaturesFeatureTagsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetMaterializedFeaturesFeatureTagsResult
-	err := ctx.Invoke("databricks:index/getMaterializedFeaturesFeatureTags:getMaterializedFeaturesFeatureTags", nil, &rv, opts...)
+	err := ctx.Invoke("databricks:index/getMaterializedFeaturesFeatureTags:getMaterializedFeaturesFeatureTags", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &rv, nil
 }
 
+// A collection of arguments for invoking getMaterializedFeaturesFeatureTags.
+type GetMaterializedFeaturesFeatureTagsArgs struct {
+	// Workspace ID of the resource
+	WorkspaceId *string `pulumi:"workspaceId"`
+}
+
 // A collection of values returned by getMaterializedFeaturesFeatureTags.
 type GetMaterializedFeaturesFeatureTagsResult struct {
 	FeatureTags []GetMaterializedFeaturesFeatureTagsFeatureTag `pulumi:"featureTags"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	Id          string  `pulumi:"id"`
+	WorkspaceId *string `pulumi:"workspaceId"`
 }
 
-func GetMaterializedFeaturesFeatureTagsOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetMaterializedFeaturesFeatureTagsResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetMaterializedFeaturesFeatureTagsResultOutput, error) {
-		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-		return ctx.InvokeOutput("databricks:index/getMaterializedFeaturesFeatureTags:getMaterializedFeaturesFeatureTags", nil, GetMaterializedFeaturesFeatureTagsResultOutput{}, options).(GetMaterializedFeaturesFeatureTagsResultOutput), nil
-	}).(GetMaterializedFeaturesFeatureTagsResultOutput)
+func GetMaterializedFeaturesFeatureTagsOutput(ctx *pulumi.Context, args GetMaterializedFeaturesFeatureTagsOutputArgs, opts ...pulumi.InvokeOption) GetMaterializedFeaturesFeatureTagsResultOutput {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (GetMaterializedFeaturesFeatureTagsResultOutput, error) {
+			args := v.(GetMaterializedFeaturesFeatureTagsArgs)
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("databricks:index/getMaterializedFeaturesFeatureTags:getMaterializedFeaturesFeatureTags", args, GetMaterializedFeaturesFeatureTagsResultOutput{}, options).(GetMaterializedFeaturesFeatureTagsResultOutput), nil
+		}).(GetMaterializedFeaturesFeatureTagsResultOutput)
+}
+
+// A collection of arguments for invoking getMaterializedFeaturesFeatureTags.
+type GetMaterializedFeaturesFeatureTagsOutputArgs struct {
+	// Workspace ID of the resource
+	WorkspaceId pulumi.StringPtrInput `pulumi:"workspaceId"`
+}
+
+func (GetMaterializedFeaturesFeatureTagsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMaterializedFeaturesFeatureTagsArgs)(nil)).Elem()
 }
 
 // A collection of values returned by getMaterializedFeaturesFeatureTags.
@@ -59,6 +78,10 @@ func (o GetMaterializedFeaturesFeatureTagsResultOutput) FeatureTags() GetMateria
 // The provider-assigned unique ID for this managed resource.
 func (o GetMaterializedFeaturesFeatureTagsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMaterializedFeaturesFeatureTagsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetMaterializedFeaturesFeatureTagsResultOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMaterializedFeaturesFeatureTagsResult) *string { return v.WorkspaceId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

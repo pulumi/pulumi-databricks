@@ -5,7 +5,6 @@ package com.pulumi.databricks;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.databricks.inputs.ConnectionEnvironmentSettingsArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Map;
@@ -46,13 +45,6 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> connectionType() {
         return Optional.ofNullable(this.connectionType);
-    }
-
-    @Import(name="environmentSettings")
-    private @Nullable Output<ConnectionEnvironmentSettingsArgs> environmentSettings;
-
-    public Optional<Output<ConnectionEnvironmentSettingsArgs>> environmentSettings() {
-        return Optional.ofNullable(this.environmentSettings);
     }
 
     /**
@@ -135,7 +127,6 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
     private ConnectionArgs(ConnectionArgs $) {
         this.comment = $.comment;
         this.connectionType = $.connectionType;
-        this.environmentSettings = $.environmentSettings;
         this.name = $.name;
         this.options = $.options;
         this.owner = $.owner;
@@ -201,15 +192,6 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder connectionType(String connectionType) {
             return connectionType(Output.of(connectionType));
-        }
-
-        public Builder environmentSettings(@Nullable Output<ConnectionEnvironmentSettingsArgs> environmentSettings) {
-            $.environmentSettings = environmentSettings;
-            return this;
-        }
-
-        public Builder environmentSettings(ConnectionEnvironmentSettingsArgs environmentSettings) {
-            return environmentSettings(Output.of(environmentSettings));
         }
 
         /**

@@ -11,14 +11,20 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-func GetDatabaseSyncedDatabaseTables(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetDatabaseSyncedDatabaseTablesResult, error) {
+func GetDatabaseSyncedDatabaseTables(ctx *pulumi.Context, args *GetDatabaseSyncedDatabaseTablesArgs, opts ...pulumi.InvokeOption) (*GetDatabaseSyncedDatabaseTablesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDatabaseSyncedDatabaseTablesResult
-	err := ctx.Invoke("databricks:index/getDatabaseSyncedDatabaseTables:getDatabaseSyncedDatabaseTables", nil, &rv, opts...)
+	err := ctx.Invoke("databricks:index/getDatabaseSyncedDatabaseTables:getDatabaseSyncedDatabaseTables", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &rv, nil
+}
+
+// A collection of arguments for invoking getDatabaseSyncedDatabaseTables.
+type GetDatabaseSyncedDatabaseTablesArgs struct {
+	// Workspace ID of the resource
+	WorkspaceId *string `pulumi:"workspaceId"`
 }
 
 // A collection of values returned by getDatabaseSyncedDatabaseTables.
@@ -26,13 +32,26 @@ type GetDatabaseSyncedDatabaseTablesResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id           string                                       `pulumi:"id"`
 	SyncedTables []GetDatabaseSyncedDatabaseTablesSyncedTable `pulumi:"syncedTables"`
+	WorkspaceId  *string                                      `pulumi:"workspaceId"`
 }
 
-func GetDatabaseSyncedDatabaseTablesOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetDatabaseSyncedDatabaseTablesResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetDatabaseSyncedDatabaseTablesResultOutput, error) {
-		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-		return ctx.InvokeOutput("databricks:index/getDatabaseSyncedDatabaseTables:getDatabaseSyncedDatabaseTables", nil, GetDatabaseSyncedDatabaseTablesResultOutput{}, options).(GetDatabaseSyncedDatabaseTablesResultOutput), nil
-	}).(GetDatabaseSyncedDatabaseTablesResultOutput)
+func GetDatabaseSyncedDatabaseTablesOutput(ctx *pulumi.Context, args GetDatabaseSyncedDatabaseTablesOutputArgs, opts ...pulumi.InvokeOption) GetDatabaseSyncedDatabaseTablesResultOutput {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (GetDatabaseSyncedDatabaseTablesResultOutput, error) {
+			args := v.(GetDatabaseSyncedDatabaseTablesArgs)
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("databricks:index/getDatabaseSyncedDatabaseTables:getDatabaseSyncedDatabaseTables", args, GetDatabaseSyncedDatabaseTablesResultOutput{}, options).(GetDatabaseSyncedDatabaseTablesResultOutput), nil
+		}).(GetDatabaseSyncedDatabaseTablesResultOutput)
+}
+
+// A collection of arguments for invoking getDatabaseSyncedDatabaseTables.
+type GetDatabaseSyncedDatabaseTablesOutputArgs struct {
+	// Workspace ID of the resource
+	WorkspaceId pulumi.StringPtrInput `pulumi:"workspaceId"`
+}
+
+func (GetDatabaseSyncedDatabaseTablesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseSyncedDatabaseTablesArgs)(nil)).Elem()
 }
 
 // A collection of values returned by getDatabaseSyncedDatabaseTables.
@@ -59,6 +78,10 @@ func (o GetDatabaseSyncedDatabaseTablesResultOutput) SyncedTables() GetDatabaseS
 	return o.ApplyT(func(v GetDatabaseSyncedDatabaseTablesResult) []GetDatabaseSyncedDatabaseTablesSyncedTable {
 		return v.SyncedTables
 	}).(GetDatabaseSyncedDatabaseTablesSyncedTableArrayOutput)
+}
+
+func (o GetDatabaseSyncedDatabaseTablesResultOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDatabaseSyncedDatabaseTablesResult) *string { return v.WorkspaceId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

@@ -65,6 +65,8 @@ type LookupQualityMonitorV2Args struct {
 	ObjectId string `pulumi:"objectId"`
 	// The type of the monitored object. Can be one of the following: schema
 	ObjectType string `pulumi:"objectType"`
+	// Workspace ID of the resource
+	WorkspaceId *string `pulumi:"workspaceId"`
 }
 
 // A collection of values returned by getQualityMonitorV2.
@@ -76,7 +78,8 @@ type LookupQualityMonitorV2Result struct {
 	// (string) - The uuid of the request object. For example, schema id
 	ObjectId string `pulumi:"objectId"`
 	// (string) - The type of the monitored object. Can be one of the following: schema
-	ObjectType string `pulumi:"objectType"`
+	ObjectType  string  `pulumi:"objectType"`
+	WorkspaceId *string `pulumi:"workspaceId"`
 }
 
 func LookupQualityMonitorV2Output(ctx *pulumi.Context, args LookupQualityMonitorV2OutputArgs, opts ...pulumi.InvokeOption) LookupQualityMonitorV2ResultOutput {
@@ -94,6 +97,8 @@ type LookupQualityMonitorV2OutputArgs struct {
 	ObjectId pulumi.StringInput `pulumi:"objectId"`
 	// The type of the monitored object. Can be one of the following: schema
 	ObjectType pulumi.StringInput `pulumi:"objectType"`
+	// Workspace ID of the resource
+	WorkspaceId pulumi.StringPtrInput `pulumi:"workspaceId"`
 }
 
 func (LookupQualityMonitorV2OutputArgs) ElementType() reflect.Type {
@@ -135,6 +140,10 @@ func (o LookupQualityMonitorV2ResultOutput) ObjectId() pulumi.StringOutput {
 // (string) - The type of the monitored object. Can be one of the following: schema
 func (o LookupQualityMonitorV2ResultOutput) ObjectType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupQualityMonitorV2Result) string { return v.ObjectType }).(pulumi.StringOutput)
+}
+
+func (o LookupQualityMonitorV2ResultOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupQualityMonitorV2Result) *string { return v.WorkspaceId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

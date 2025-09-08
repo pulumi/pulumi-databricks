@@ -34,6 +34,21 @@ public final class DatabaseInstanceArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * Whether the instance has PG native password login enabled. Defaults to true
+     * 
+     */
+    @Import(name="enablePgNativeLogin")
+    private @Nullable Output<Boolean> enablePgNativeLogin;
+
+    /**
+     * @return Whether the instance has PG native password login enabled. Defaults to true
+     * 
+     */
+    public Optional<Output<Boolean>> enablePgNativeLogin() {
+        return Optional.ofNullable(this.enablePgNativeLogin);
+    }
+
+    /**
      * Whether to enable secondaries to serve read-only traffic. Defaults to false
      * 
      */
@@ -150,10 +165,26 @@ public final class DatabaseInstanceArgs extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.stopped);
     }
 
+    /**
+     * Workspace ID of the resource
+     * 
+     */
+    @Import(name="workspaceId")
+    private @Nullable Output<String> workspaceId;
+
+    /**
+     * @return Workspace ID of the resource
+     * 
+     */
+    public Optional<Output<String>> workspaceId() {
+        return Optional.ofNullable(this.workspaceId);
+    }
+
     private DatabaseInstanceArgs() {}
 
     private DatabaseInstanceArgs(DatabaseInstanceArgs $) {
         this.capacity = $.capacity;
+        this.enablePgNativeLogin = $.enablePgNativeLogin;
         this.enableReadableSecondaries = $.enableReadableSecondaries;
         this.name = $.name;
         this.nodeCount = $.nodeCount;
@@ -161,6 +192,7 @@ public final class DatabaseInstanceArgs extends com.pulumi.resources.ResourceArg
         this.purgeOnDelete = $.purgeOnDelete;
         this.retentionWindowInDays = $.retentionWindowInDays;
         this.stopped = $.stopped;
+        this.workspaceId = $.workspaceId;
     }
 
     public static Builder builder() {
@@ -200,6 +232,27 @@ public final class DatabaseInstanceArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder capacity(String capacity) {
             return capacity(Output.of(capacity));
+        }
+
+        /**
+         * @param enablePgNativeLogin Whether the instance has PG native password login enabled. Defaults to true
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enablePgNativeLogin(@Nullable Output<Boolean> enablePgNativeLogin) {
+            $.enablePgNativeLogin = enablePgNativeLogin;
+            return this;
+        }
+
+        /**
+         * @param enablePgNativeLogin Whether the instance has PG native password login enabled. Defaults to true
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enablePgNativeLogin(Boolean enablePgNativeLogin) {
+            return enablePgNativeLogin(Output.of(enablePgNativeLogin));
         }
 
         /**
@@ -359,6 +412,27 @@ public final class DatabaseInstanceArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder stopped(Boolean stopped) {
             return stopped(Output.of(stopped));
+        }
+
+        /**
+         * @param workspaceId Workspace ID of the resource
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workspaceId(@Nullable Output<String> workspaceId) {
+            $.workspaceId = workspaceId;
+            return this;
+        }
+
+        /**
+         * @param workspaceId Workspace ID of the resource
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workspaceId(String workspaceId) {
+            return workspaceId(Output.of(workspaceId));
         }
 
         public DatabaseInstanceArgs build() {

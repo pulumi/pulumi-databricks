@@ -44,6 +44,7 @@ public final class GetRecipientFederationPolicyResult {
      * 
      */
     private String updateTime;
+    private @Nullable String workspaceId;
 
     private GetRecipientFederationPolicyResult() {}
     /**
@@ -89,6 +90,9 @@ public final class GetRecipientFederationPolicyResult {
     public String updateTime() {
         return this.updateTime;
     }
+    public Optional<String> workspaceId() {
+        return Optional.ofNullable(this.workspaceId);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -105,6 +109,7 @@ public final class GetRecipientFederationPolicyResult {
         private @Nullable String name;
         private @Nullable GetRecipientFederationPolicyOidcPolicy oidcPolicy;
         private String updateTime;
+        private @Nullable String workspaceId;
         public Builder() {}
         public Builder(GetRecipientFederationPolicyResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -114,6 +119,7 @@ public final class GetRecipientFederationPolicyResult {
     	      this.name = defaults.name;
     	      this.oidcPolicy = defaults.oidcPolicy;
     	      this.updateTime = defaults.updateTime;
+    	      this.workspaceId = defaults.workspaceId;
         }
 
         @CustomType.Setter
@@ -158,6 +164,12 @@ public final class GetRecipientFederationPolicyResult {
             this.updateTime = updateTime;
             return this;
         }
+        @CustomType.Setter
+        public Builder workspaceId(@Nullable String workspaceId) {
+
+            this.workspaceId = workspaceId;
+            return this;
+        }
         public GetRecipientFederationPolicyResult build() {
             final var _resultValue = new GetRecipientFederationPolicyResult();
             _resultValue.comment = comment;
@@ -166,6 +178,7 @@ public final class GetRecipientFederationPolicyResult {
             _resultValue.name = name;
             _resultValue.oidcPolicy = oidcPolicy;
             _resultValue.updateTime = updateTime;
+            _resultValue.workspaceId = workspaceId;
             return _resultValue;
         }
     }

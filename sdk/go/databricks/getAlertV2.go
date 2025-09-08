@@ -44,13 +44,22 @@ type LookupAlertV2Args struct {
 	ParentPath *string `pulumi:"parentPath"`
 	// (string) - Text of the query to be run
 	QueryText *string `pulumi:"queryText"`
-	// (string) - The run as username or application ID of service principal.
-	// On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
+	// (AlertV2RunAs) - Specifies the identity that will be used to run the alert.
+	// This field allows you to configure alerts to run as a specific user or service principal.
+	// - For user identity: Set `userName` to the email of an active workspace user. Users can only set this to their own email.
+	// - For service principal: Set `servicePrincipalName` to the application ID. Requires the `servicePrincipal/user` role.
+	//   If not specified, the alert will run as the request user
+	RunAs *GetAlertV2RunAs `pulumi:"runAs"`
+	// (string, deprecated) - The run as username or application ID of service principal.
+	// On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
+	// Deprecated: Use `runAs` field instead. This field will be removed in a future release
 	RunAsUserName *string `pulumi:"runAsUserName"`
 	// (CronSchedule)
 	Schedule *GetAlertV2Schedule `pulumi:"schedule"`
 	// (string) - ID of the SQL warehouse attached to the alert
 	WarehouseId *string `pulumi:"warehouseId"`
+	// Workspace ID of the resource
+	WorkspaceId *string `pulumi:"workspaceId"`
 }
 
 // A collection of values returned by getAlertV2.
@@ -63,6 +72,10 @@ type LookupAlertV2Result struct {
 	CustomSummary *string `pulumi:"customSummary"`
 	// (string) - The display name of the alert
 	DisplayName *string `pulumi:"displayName"`
+	// (AlertV2RunAs) - The actual identity that will be used to execute the alert.
+	// This is an output-only field that shows the resolved run-as identity after applying
+	// permissions and defaults
+	EffectiveRunAs GetAlertV2EffectiveRunAs `pulumi:"effectiveRunAs"`
 	// (AlertV2Evaluation)
 	Evaluation *GetAlertV2Evaluation `pulumi:"evaluation"`
 	// (string) - UUID identifying the alert
@@ -75,8 +88,15 @@ type LookupAlertV2Result struct {
 	ParentPath *string `pulumi:"parentPath"`
 	// (string) - Text of the query to be run
 	QueryText *string `pulumi:"queryText"`
-	// (string) - The run as username or application ID of service principal.
-	// On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
+	// (AlertV2RunAs) - Specifies the identity that will be used to run the alert.
+	// This field allows you to configure alerts to run as a specific user or service principal.
+	// - For user identity: Set `userName` to the email of an active workspace user. Users can only set this to their own email.
+	// - For service principal: Set `servicePrincipalName` to the application ID. Requires the `servicePrincipal/user` role.
+	//   If not specified, the alert will run as the request user
+	RunAs *GetAlertV2RunAs `pulumi:"runAs"`
+	// (string, deprecated) - The run as username or application ID of service principal.
+	// On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
+	// Deprecated: Use `runAs` field instead. This field will be removed in a future release
 	RunAsUserName *string `pulumi:"runAsUserName"`
 	// (CronSchedule)
 	Schedule *GetAlertV2Schedule `pulumi:"schedule"`
@@ -84,6 +104,7 @@ type LookupAlertV2Result struct {
 	UpdateTime string `pulumi:"updateTime"`
 	// (string) - ID of the SQL warehouse attached to the alert
 	WarehouseId *string `pulumi:"warehouseId"`
+	WorkspaceId *string `pulumi:"workspaceId"`
 }
 
 func LookupAlertV2Output(ctx *pulumi.Context, args LookupAlertV2OutputArgs, opts ...pulumi.InvokeOption) LookupAlertV2ResultOutput {
@@ -109,13 +130,22 @@ type LookupAlertV2OutputArgs struct {
 	ParentPath pulumi.StringPtrInput `pulumi:"parentPath"`
 	// (string) - Text of the query to be run
 	QueryText pulumi.StringPtrInput `pulumi:"queryText"`
-	// (string) - The run as username or application ID of service principal.
-	// On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
+	// (AlertV2RunAs) - Specifies the identity that will be used to run the alert.
+	// This field allows you to configure alerts to run as a specific user or service principal.
+	// - For user identity: Set `userName` to the email of an active workspace user. Users can only set this to their own email.
+	// - For service principal: Set `servicePrincipalName` to the application ID. Requires the `servicePrincipal/user` role.
+	//   If not specified, the alert will run as the request user
+	RunAs GetAlertV2RunAsPtrInput `pulumi:"runAs"`
+	// (string, deprecated) - The run as username or application ID of service principal.
+	// On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
+	// Deprecated: Use `runAs` field instead. This field will be removed in a future release
 	RunAsUserName pulumi.StringPtrInput `pulumi:"runAsUserName"`
 	// (CronSchedule)
 	Schedule GetAlertV2SchedulePtrInput `pulumi:"schedule"`
 	// (string) - ID of the SQL warehouse attached to the alert
 	WarehouseId pulumi.StringPtrInput `pulumi:"warehouseId"`
+	// Workspace ID of the resource
+	WorkspaceId pulumi.StringPtrInput `pulumi:"workspaceId"`
 }
 
 func (LookupAlertV2OutputArgs) ElementType() reflect.Type {
@@ -157,6 +187,13 @@ func (o LookupAlertV2ResultOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAlertV2Result) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
+// (AlertV2RunAs) - The actual identity that will be used to execute the alert.
+// This is an output-only field that shows the resolved run-as identity after applying
+// permissions and defaults
+func (o LookupAlertV2ResultOutput) EffectiveRunAs() GetAlertV2EffectiveRunAsOutput {
+	return o.ApplyT(func(v LookupAlertV2Result) GetAlertV2EffectiveRunAs { return v.EffectiveRunAs }).(GetAlertV2EffectiveRunAsOutput)
+}
+
 // (AlertV2Evaluation)
 func (o LookupAlertV2ResultOutput) Evaluation() GetAlertV2EvaluationPtrOutput {
 	return o.ApplyT(func(v LookupAlertV2Result) *GetAlertV2Evaluation { return v.Evaluation }).(GetAlertV2EvaluationPtrOutput)
@@ -187,8 +224,18 @@ func (o LookupAlertV2ResultOutput) QueryText() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAlertV2Result) *string { return v.QueryText }).(pulumi.StringPtrOutput)
 }
 
-// (string) - The run as username or application ID of service principal.
-// On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
+// (AlertV2RunAs) - Specifies the identity that will be used to run the alert.
+// This field allows you to configure alerts to run as a specific user or service principal.
+//   - For user identity: Set `userName` to the email of an active workspace user. Users can only set this to their own email.
+//   - For service principal: Set `servicePrincipalName` to the application ID. Requires the `servicePrincipal/user` role.
+//     If not specified, the alert will run as the request user
+func (o LookupAlertV2ResultOutput) RunAs() GetAlertV2RunAsPtrOutput {
+	return o.ApplyT(func(v LookupAlertV2Result) *GetAlertV2RunAs { return v.RunAs }).(GetAlertV2RunAsPtrOutput)
+}
+
+// (string, deprecated) - The run as username or application ID of service principal.
+// On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
+// Deprecated: Use `runAs` field instead. This field will be removed in a future release
 func (o LookupAlertV2ResultOutput) RunAsUserName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAlertV2Result) *string { return v.RunAsUserName }).(pulumi.StringPtrOutput)
 }
@@ -206,6 +253,10 @@ func (o LookupAlertV2ResultOutput) UpdateTime() pulumi.StringOutput {
 // (string) - ID of the SQL warehouse attached to the alert
 func (o LookupAlertV2ResultOutput) WarehouseId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAlertV2Result) *string { return v.WarehouseId }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupAlertV2ResultOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupAlertV2Result) *string { return v.WorkspaceId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

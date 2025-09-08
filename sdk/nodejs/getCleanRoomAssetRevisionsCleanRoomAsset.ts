@@ -20,6 +20,7 @@ export function getCleanRoomAssetRevisionsCleanRoomAsset(args: GetCleanRoomAsset
         "view": args.view,
         "viewLocalDetails": args.viewLocalDetails,
         "volumeLocalDetails": args.volumeLocalDetails,
+        "workspaceId": args.workspaceId,
     }, opts);
 }
 
@@ -86,6 +87,10 @@ export interface GetCleanRoomAssetRevisionsCleanRoomAssetArgs {
      * Present if and only if **asset_type** is **VOLUME**
      */
     volumeLocalDetails?: inputs.GetCleanRoomAssetRevisionsCleanRoomAssetVolumeLocalDetails;
+    /**
+     * Workspace ID of the resource
+     */
+    workspaceId?: string;
 }
 
 /**
@@ -161,6 +166,7 @@ export interface GetCleanRoomAssetRevisionsCleanRoomAssetResult {
      * Present if and only if **asset_type** is **VOLUME**
      */
     readonly volumeLocalDetails?: outputs.GetCleanRoomAssetRevisionsCleanRoomAssetVolumeLocalDetails;
+    readonly workspaceId?: string;
 }
 export function getCleanRoomAssetRevisionsCleanRoomAssetOutput(args: GetCleanRoomAssetRevisionsCleanRoomAssetOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCleanRoomAssetRevisionsCleanRoomAssetResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -176,6 +182,7 @@ export function getCleanRoomAssetRevisionsCleanRoomAssetOutput(args: GetCleanRoo
         "view": args.view,
         "viewLocalDetails": args.viewLocalDetails,
         "volumeLocalDetails": args.volumeLocalDetails,
+        "workspaceId": args.workspaceId,
     }, opts);
 }
 
@@ -242,4 +249,8 @@ export interface GetCleanRoomAssetRevisionsCleanRoomAssetOutputArgs {
      * Present if and only if **asset_type** is **VOLUME**
      */
     volumeLocalDetails?: pulumi.Input<inputs.GetCleanRoomAssetRevisionsCleanRoomAssetVolumeLocalDetailsArgs>;
+    /**
+     * Workspace ID of the resource
+     */
+    workspaceId?: pulumi.Input<string>;
 }

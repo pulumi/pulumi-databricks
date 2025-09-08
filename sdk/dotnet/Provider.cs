@@ -256,6 +256,9 @@ namespace Pulumi.Databricks
             }
         }
 
+        [Input("oauthCallbackPort", json: true)]
+        public Input<int>? OauthCallbackPort { get; set; }
+
         [Input("oidcTokenEnv")]
         public Input<string>? OidcTokenEnv { get; set; }
 

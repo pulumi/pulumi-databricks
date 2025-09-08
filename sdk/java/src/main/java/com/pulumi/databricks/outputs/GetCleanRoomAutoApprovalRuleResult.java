@@ -55,6 +55,7 @@ public final class GetCleanRoomAutoApprovalRuleResult {
      * 
      */
     private @Nullable String runnerCollaboratorAlias;
+    private @Nullable String workspaceId;
 
     private GetCleanRoomAutoApprovalRuleResult() {}
     /**
@@ -115,6 +116,9 @@ public final class GetCleanRoomAutoApprovalRuleResult {
     public Optional<String> runnerCollaboratorAlias() {
         return Optional.ofNullable(this.runnerCollaboratorAlias);
     }
+    public Optional<String> workspaceId() {
+        return Optional.ofNullable(this.workspaceId);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -133,6 +137,7 @@ public final class GetCleanRoomAutoApprovalRuleResult {
         private String ruleId;
         private String ruleOwnerCollaboratorAlias;
         private @Nullable String runnerCollaboratorAlias;
+        private @Nullable String workspaceId;
         public Builder() {}
         public Builder(GetCleanRoomAutoApprovalRuleResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -144,6 +149,7 @@ public final class GetCleanRoomAutoApprovalRuleResult {
     	      this.ruleId = defaults.ruleId;
     	      this.ruleOwnerCollaboratorAlias = defaults.ruleOwnerCollaboratorAlias;
     	      this.runnerCollaboratorAlias = defaults.runnerCollaboratorAlias;
+    	      this.workspaceId = defaults.workspaceId;
         }
 
         @CustomType.Setter
@@ -202,6 +208,12 @@ public final class GetCleanRoomAutoApprovalRuleResult {
             this.runnerCollaboratorAlias = runnerCollaboratorAlias;
             return this;
         }
+        @CustomType.Setter
+        public Builder workspaceId(@Nullable String workspaceId) {
+
+            this.workspaceId = workspaceId;
+            return this;
+        }
         public GetCleanRoomAutoApprovalRuleResult build() {
             final var _resultValue = new GetCleanRoomAutoApprovalRuleResult();
             _resultValue.authorCollaboratorAlias = authorCollaboratorAlias;
@@ -212,6 +224,7 @@ public final class GetCleanRoomAutoApprovalRuleResult {
             _resultValue.ruleId = ruleId;
             _resultValue.ruleOwnerCollaboratorAlias = ruleOwnerCollaboratorAlias;
             _resultValue.runnerCollaboratorAlias = runnerCollaboratorAlias;
+            _resultValue.workspaceId = workspaceId;
             return _resultValue;
         }
     }

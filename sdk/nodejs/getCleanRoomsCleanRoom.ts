@@ -30,6 +30,7 @@ export function getCleanRoomsCleanRoom(args?: GetCleanRoomsCleanRoomArgs, opts?:
         "name": args.name,
         "owner": args.owner,
         "remoteDetailedInfo": args.remoteDetailedInfo,
+        "workspaceId": args.workspaceId,
     }, opts);
 }
 
@@ -47,7 +48,7 @@ export interface GetCleanRoomsCleanRoomArgs {
      */
     name?: string;
     /**
-     * (string) - This is Databricks username of the owner of the local clean room securable for permission management
+     * (string) - This is the Databricks username of the owner of the local clean room securable for permission management
      */
     owner?: string;
     /**
@@ -56,6 +57,10 @@ export interface GetCleanRoomsCleanRoomArgs {
      * This field will not be filled in the ListCleanRooms call
      */
     remoteDetailedInfo?: inputs.GetCleanRoomsCleanRoomRemoteDetailedInfo;
+    /**
+     * Workspace ID of the resource
+     */
+    workspaceId?: string;
 }
 
 /**
@@ -93,7 +98,7 @@ export interface GetCleanRoomsCleanRoomResult {
      */
     readonly outputCatalog: outputs.GetCleanRoomsCleanRoomOutputCatalog;
     /**
-     * (string) - This is Databricks username of the owner of the local clean room securable for permission management
+     * (string) - This is the Databricks username of the owner of the local clean room securable for permission management
      */
     readonly owner?: string;
     /**
@@ -110,6 +115,7 @@ export interface GetCleanRoomsCleanRoomResult {
      * (integer) - When the clean room was last updated, in epoch milliseconds
      */
     readonly updatedAt: number;
+    readonly workspaceId?: string;
 }
 /**
  * This data source can be used to get a single clean room.
@@ -135,6 +141,7 @@ export function getCleanRoomsCleanRoomOutput(args?: GetCleanRoomsCleanRoomOutput
         "name": args.name,
         "owner": args.owner,
         "remoteDetailedInfo": args.remoteDetailedInfo,
+        "workspaceId": args.workspaceId,
     }, opts);
 }
 
@@ -152,7 +159,7 @@ export interface GetCleanRoomsCleanRoomOutputArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * (string) - This is Databricks username of the owner of the local clean room securable for permission management
+     * (string) - This is the Databricks username of the owner of the local clean room securable for permission management
      */
     owner?: pulumi.Input<string>;
     /**
@@ -161,4 +168,8 @@ export interface GetCleanRoomsCleanRoomOutputArgs {
      * This field will not be filled in the ListCleanRooms call
      */
     remoteDetailedInfo?: pulumi.Input<inputs.GetCleanRoomsCleanRoomRemoteDetailedInfoArgs>;
+    /**
+     * Workspace ID of the resource
+     */
+    workspaceId?: pulumi.Input<string>;
 }

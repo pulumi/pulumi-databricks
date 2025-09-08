@@ -23,7 +23,7 @@ import * as utilities from "./utilities";
  *
  * import {
  *
- *   id = name
+ *   id = "name"
  *
  *   to = databricks_database_synced_database_table.this
  *
@@ -32,7 +32,7 @@ import * as utilities from "./utilities";
  * If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
  *
  * ```sh
- * $ pulumi import databricks:index/databaseSyncedDatabaseTable:DatabaseSyncedDatabaseTable databricks_database_synced_database_table name
+ * $ pulumi import databricks:index/databaseSyncedDatabaseTable:DatabaseSyncedDatabaseTable databricks_database_synced_database_table "name"
  * ```
  */
 export class DatabaseSyncedDatabaseTable extends pulumi.CustomResource {
@@ -107,6 +107,10 @@ export class DatabaseSyncedDatabaseTable extends pulumi.CustomResource {
      * may be in "PROVISIONING" as it runs asynchronously). Possible values are: `ACTIVE`, `DEGRADED`, `DELETING`, `FAILED`, `PROVISIONING`, `UPDATING`
      */
     declare public /*out*/ readonly unityCatalogProvisioningState: pulumi.Output<string>;
+    /**
+     * Workspace ID of the resource
+     */
+    declare public readonly workspaceId: pulumi.Output<string | undefined>;
 
     /**
      * Create a DatabaseSyncedDatabaseTable resource with the given unique name, arguments, and options.
@@ -129,12 +133,14 @@ export class DatabaseSyncedDatabaseTable extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["spec"] = state?.spec;
             resourceInputs["unityCatalogProvisioningState"] = state?.unityCatalogProvisioningState;
+            resourceInputs["workspaceId"] = state?.workspaceId;
         } else {
             const args = argsOrState as DatabaseSyncedDatabaseTableArgs | undefined;
             resourceInputs["databaseInstanceName"] = args?.databaseInstanceName;
             resourceInputs["logicalDatabaseName"] = args?.logicalDatabaseName;
             resourceInputs["name"] = args?.name;
             resourceInputs["spec"] = args?.spec;
+            resourceInputs["workspaceId"] = args?.workspaceId;
             resourceInputs["dataSynchronizationStatus"] = undefined /*out*/;
             resourceInputs["effectiveDatabaseInstanceName"] = undefined /*out*/;
             resourceInputs["effectiveLogicalDatabaseName"] = undefined /*out*/;
@@ -193,6 +199,10 @@ export interface DatabaseSyncedDatabaseTableState {
      * may be in "PROVISIONING" as it runs asynchronously). Possible values are: `ACTIVE`, `DEGRADED`, `DELETING`, `FAILED`, `PROVISIONING`, `UPDATING`
      */
     unityCatalogProvisioningState?: pulumi.Input<string>;
+    /**
+     * Workspace ID of the resource
+     */
+    workspaceId?: pulumi.Input<string>;
 }
 
 /**
@@ -224,4 +234,8 @@ export interface DatabaseSyncedDatabaseTableArgs {
      */
     name?: pulumi.Input<string>;
     spec?: pulumi.Input<inputs.DatabaseSyncedDatabaseTableSpec>;
+    /**
+     * Workspace ID of the resource
+     */
+    workspaceId?: pulumi.Input<string>;
 }

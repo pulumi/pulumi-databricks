@@ -136,7 +136,7 @@ namespace Pulumi.Databricks
     /// 
     /// ## Import
     /// 
-    /// This resource can be imported by name:
+    /// When using a workspace-level provider to manage storage credentials, this resource can be imported by name:
     /// 
     /// hcl
     /// 
@@ -144,7 +144,19 @@ namespace Pulumi.Databricks
     /// 
     ///   to = databricks_storage_credential.this
     /// 
-    ///   id = "&lt;name&gt;"
+    ///   id = "&lt;storage_credential_name&gt;"
+    /// 
+    /// }
+    /// 
+    /// When using an account-level provider to manage storage credentials, use the format `&lt;metastore_id&gt;|&lt;storage_credential_name&gt;`:
+    /// 
+    /// hcl
+    /// 
+    /// import {
+    /// 
+    ///   to = databricks_storage_credential.this
+    /// 
+    ///   id = "&lt;metastore_id&gt;|&lt;storage_credential_name&gt;"
     /// 
     /// }
     /// 
@@ -152,8 +164,16 @@ namespace Pulumi.Databricks
     /// 
     /// bash
     /// 
+    /// When using a workspace-level provider
+    /// 
     /// ```sh
-    /// $ pulumi import databricks:index/storageCredential:StorageCredential this &lt;name&gt;
+    /// $ pulumi import databricks:index/storageCredential:StorageCredential this &lt;storage_credential_name&gt;
+    /// ```
+    /// 
+    /// When using an account-level provider
+    /// 
+    /// ```sh
+    /// $ pulumi import databricks:index/storageCredential:StorageCredential this &lt;metastore_id&gt;|&lt;storage_credential_name&gt;
     /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/storageCredential:StorageCredential")]

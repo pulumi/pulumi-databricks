@@ -63,6 +63,8 @@ type LookupDatabaseSyncedDatabaseTableArgs struct {
 	Name string `pulumi:"name"`
 	// (SyncedTableSpec)
 	Spec *GetDatabaseSyncedDatabaseTableSpec `pulumi:"spec"`
+	// Workspace ID of the resource
+	WorkspaceId *string `pulumi:"workspaceId"`
 }
 
 // A collection of values returned by getDatabaseSyncedDatabaseTable.
@@ -90,7 +92,8 @@ type LookupDatabaseSyncedDatabaseTableResult struct {
 	// (string) - The provisioning state of the synced table entity in Unity Catalog. This is distinct from the
 	// state of the data synchronization pipeline (i.e. the table may be in "ACTIVE" but the pipeline
 	// may be in "PROVISIONING" as it runs asynchronously). Possible values are: `ACTIVE`, `DEGRADED`, `DELETING`, `FAILED`, `PROVISIONING`, `UPDATING`
-	UnityCatalogProvisioningState string `pulumi:"unityCatalogProvisioningState"`
+	UnityCatalogProvisioningState string  `pulumi:"unityCatalogProvisioningState"`
+	WorkspaceId                   *string `pulumi:"workspaceId"`
 }
 
 func LookupDatabaseSyncedDatabaseTableOutput(ctx *pulumi.Context, args LookupDatabaseSyncedDatabaseTableOutputArgs, opts ...pulumi.InvokeOption) LookupDatabaseSyncedDatabaseTableResultOutput {
@@ -115,6 +118,8 @@ type LookupDatabaseSyncedDatabaseTableOutputArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// (SyncedTableSpec)
 	Spec GetDatabaseSyncedDatabaseTableSpecPtrInput `pulumi:"spec"`
+	// Workspace ID of the resource
+	WorkspaceId pulumi.StringPtrInput `pulumi:"workspaceId"`
 }
 
 func (LookupDatabaseSyncedDatabaseTableOutputArgs) ElementType() reflect.Type {
@@ -187,6 +192,10 @@ func (o LookupDatabaseSyncedDatabaseTableResultOutput) Spec() GetDatabaseSyncedD
 // may be in "PROVISIONING" as it runs asynchronously). Possible values are: `ACTIVE`, `DEGRADED`, `DELETING`, `FAILED`, `PROVISIONING`, `UPDATING`
 func (o LookupDatabaseSyncedDatabaseTableResultOutput) UnityCatalogProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseSyncedDatabaseTableResult) string { return v.UnityCatalogProvisioningState }).(pulumi.StringOutput)
+}
+
+func (o LookupDatabaseSyncedDatabaseTableResultOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupDatabaseSyncedDatabaseTableResult) *string { return v.WorkspaceId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

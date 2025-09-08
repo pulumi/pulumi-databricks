@@ -11,14 +11,43 @@ namespace Pulumi.Databricks
 {
     public static class GetDatabaseDatabaseCatalogs
     {
-        public static Task<GetDatabaseDatabaseCatalogsResult> InvokeAsync(InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDatabaseDatabaseCatalogsResult>("databricks:index/getDatabaseDatabaseCatalogs:getDatabaseDatabaseCatalogs", InvokeArgs.Empty, options.WithDefaults());
+        public static Task<GetDatabaseDatabaseCatalogsResult> InvokeAsync(GetDatabaseDatabaseCatalogsArgs? args = null, InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDatabaseDatabaseCatalogsResult>("databricks:index/getDatabaseDatabaseCatalogs:getDatabaseDatabaseCatalogs", args ?? new GetDatabaseDatabaseCatalogsArgs(), options.WithDefaults());
 
-        public static Output<GetDatabaseDatabaseCatalogsResult> Invoke(InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.Invoke<GetDatabaseDatabaseCatalogsResult>("databricks:index/getDatabaseDatabaseCatalogs:getDatabaseDatabaseCatalogs", InvokeArgs.Empty, options.WithDefaults());
+        public static Output<GetDatabaseDatabaseCatalogsResult> Invoke(GetDatabaseDatabaseCatalogsInvokeArgs? args = null, InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.Invoke<GetDatabaseDatabaseCatalogsResult>("databricks:index/getDatabaseDatabaseCatalogs:getDatabaseDatabaseCatalogs", args ?? new GetDatabaseDatabaseCatalogsInvokeArgs(), options.WithDefaults());
 
-        public static Output<GetDatabaseDatabaseCatalogsResult> Invoke(InvokeOutputOptions options)
-            => global::Pulumi.Deployment.Instance.Invoke<GetDatabaseDatabaseCatalogsResult>("databricks:index/getDatabaseDatabaseCatalogs:getDatabaseDatabaseCatalogs", InvokeArgs.Empty, options.WithDefaults());
+        public static Output<GetDatabaseDatabaseCatalogsResult> Invoke(GetDatabaseDatabaseCatalogsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetDatabaseDatabaseCatalogsResult>("databricks:index/getDatabaseDatabaseCatalogs:getDatabaseDatabaseCatalogs", args ?? new GetDatabaseDatabaseCatalogsInvokeArgs(), options.WithDefaults());
+    }
+
+
+    public sealed class GetDatabaseDatabaseCatalogsArgs : global::Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Workspace ID of the resource
+        /// </summary>
+        [Input("workspaceId")]
+        public string? WorkspaceId { get; set; }
+
+        public GetDatabaseDatabaseCatalogsArgs()
+        {
+        }
+        public static new GetDatabaseDatabaseCatalogsArgs Empty => new GetDatabaseDatabaseCatalogsArgs();
+    }
+
+    public sealed class GetDatabaseDatabaseCatalogsInvokeArgs : global::Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Workspace ID of the resource
+        /// </summary>
+        [Input("workspaceId")]
+        public Input<string>? WorkspaceId { get; set; }
+
+        public GetDatabaseDatabaseCatalogsInvokeArgs()
+        {
+        }
+        public static new GetDatabaseDatabaseCatalogsInvokeArgs Empty => new GetDatabaseDatabaseCatalogsInvokeArgs();
     }
 
 
@@ -30,15 +59,19 @@ namespace Pulumi.Databricks
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly string? WorkspaceId;
 
         [OutputConstructor]
         private GetDatabaseDatabaseCatalogsResult(
             ImmutableArray<Outputs.GetDatabaseDatabaseCatalogsDatabaseCatalogResult> databaseCatalogs,
 
-            string id)
+            string id,
+
+            string? workspaceId)
         {
             DatabaseCatalogs = databaseCatalogs;
             Id = id;
+            WorkspaceId = workspaceId;
         }
     }
 }

@@ -15,7 +15,7 @@ import * as utilities from "./utilities";
  *
  * import {
  *
- *   id = on_securable_type,on_securable_fullname,name
+ *   id = "on_securable_type,on_securable_fullname,name"
  *
  *   to = databricks_policy_info.this
  *
@@ -24,7 +24,7 @@ import * as utilities from "./utilities";
  * If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
  *
  * ```sh
- * $ pulumi import databricks:index/policyInfo:PolicyInfo databricks_policy_info on_securable_type,on_securable_fullname,name
+ * $ pulumi import databricks:index/policyInfo:PolicyInfo databricks_policy_info "on_securable_type,on_securable_fullname,name"
  * ```
  */
 export class PolicyInfo extends pulumi.CustomResource {
@@ -79,19 +79,19 @@ export class PolicyInfo extends pulumi.CustomResource {
     declare public readonly exceptPrincipals: pulumi.Output<string[] | undefined>;
     /**
      * Type of securables that the policy should take effect on.
-     * Only `table` is supported at this moment.
+     * Only `TABLE` is supported at this moment.
      * Required on create and optional on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
      */
     declare public readonly forSecurableType: pulumi.Output<string>;
     /**
      * Optional list of condition expressions used to match table columns.
-     * Only valid when `forSecurableType` is `table`.
+     * Only valid when `forSecurableType` is `TABLE`.
      * When specified, the policy only applies to tables whose columns satisfy all match conditions
      */
     declare public readonly matchColumns: pulumi.Output<outputs.PolicyInfoMatchColumn[] | undefined>;
     /**
-     * Name of the policy. Required on create and ignored on update.
-     * To update the name, use the `newName` field
+     * Name of the policy. Required on create and optional on update.
+     * To rename the policy, set `name` to a different value on update
      */
     declare public readonly name: pulumi.Output<string>;
     /**
@@ -101,7 +101,7 @@ export class PolicyInfo extends pulumi.CustomResource {
     declare public readonly onSecurableFullname: pulumi.Output<string | undefined>;
     /**
      * Type of the securable on which the policy is defined.
-     * Only `catalog`, `schema` and `table` are supported at this moment.
+     * Only `CATALOG`, `SCHEMA` and `TABLE` are supported at this moment.
      * Required on create and ignored on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
      */
     declare public readonly onSecurableType: pulumi.Output<string | undefined>;
@@ -132,6 +132,10 @@ export class PolicyInfo extends pulumi.CustomResource {
      * Optional condition when the policy should take effect
      */
     declare public readonly whenCondition: pulumi.Output<string | undefined>;
+    /**
+     * Workspace ID of the resource
+     */
+    declare public readonly workspaceId: pulumi.Output<string | undefined>;
 
     /**
      * Create a PolicyInfo resource with the given unique name, arguments, and options.
@@ -162,6 +166,7 @@ export class PolicyInfo extends pulumi.CustomResource {
             resourceInputs["updatedAt"] = state?.updatedAt;
             resourceInputs["updatedBy"] = state?.updatedBy;
             resourceInputs["whenCondition"] = state?.whenCondition;
+            resourceInputs["workspaceId"] = state?.workspaceId;
         } else {
             const args = argsOrState as PolicyInfoArgs | undefined;
             if (args?.forSecurableType === undefined && !opts.urn) {
@@ -185,6 +190,7 @@ export class PolicyInfo extends pulumi.CustomResource {
             resourceInputs["rowFilter"] = args?.rowFilter;
             resourceInputs["toPrincipals"] = args?.toPrincipals;
             resourceInputs["whenCondition"] = args?.whenCondition;
+            resourceInputs["workspaceId"] = args?.workspaceId;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["createdBy"] = undefined /*out*/;
             resourceInputs["updatedAt"] = undefined /*out*/;
@@ -223,19 +229,19 @@ export interface PolicyInfoState {
     exceptPrincipals?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Type of securables that the policy should take effect on.
-     * Only `table` is supported at this moment.
+     * Only `TABLE` is supported at this moment.
      * Required on create and optional on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
      */
     forSecurableType?: pulumi.Input<string>;
     /**
      * Optional list of condition expressions used to match table columns.
-     * Only valid when `forSecurableType` is `table`.
+     * Only valid when `forSecurableType` is `TABLE`.
      * When specified, the policy only applies to tables whose columns satisfy all match conditions
      */
     matchColumns?: pulumi.Input<pulumi.Input<inputs.PolicyInfoMatchColumn>[]>;
     /**
-     * Name of the policy. Required on create and ignored on update.
-     * To update the name, use the `newName` field
+     * Name of the policy. Required on create and optional on update.
+     * To rename the policy, set `name` to a different value on update
      */
     name?: pulumi.Input<string>;
     /**
@@ -245,7 +251,7 @@ export interface PolicyInfoState {
     onSecurableFullname?: pulumi.Input<string>;
     /**
      * Type of the securable on which the policy is defined.
-     * Only `catalog`, `schema` and `table` are supported at this moment.
+     * Only `CATALOG`, `SCHEMA` and `TABLE` are supported at this moment.
      * Required on create and ignored on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
      */
     onSecurableType?: pulumi.Input<string>;
@@ -276,6 +282,10 @@ export interface PolicyInfoState {
      * Optional condition when the policy should take effect
      */
     whenCondition?: pulumi.Input<string>;
+    /**
+     * Workspace ID of the resource
+     */
+    workspaceId?: pulumi.Input<string>;
 }
 
 /**
@@ -298,19 +308,19 @@ export interface PolicyInfoArgs {
     exceptPrincipals?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Type of securables that the policy should take effect on.
-     * Only `table` is supported at this moment.
+     * Only `TABLE` is supported at this moment.
      * Required on create and optional on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
      */
     forSecurableType: pulumi.Input<string>;
     /**
      * Optional list of condition expressions used to match table columns.
-     * Only valid when `forSecurableType` is `table`.
+     * Only valid when `forSecurableType` is `TABLE`.
      * When specified, the policy only applies to tables whose columns satisfy all match conditions
      */
     matchColumns?: pulumi.Input<pulumi.Input<inputs.PolicyInfoMatchColumn>[]>;
     /**
-     * Name of the policy. Required on create and ignored on update.
-     * To update the name, use the `newName` field
+     * Name of the policy. Required on create and optional on update.
+     * To rename the policy, set `name` to a different value on update
      */
     name?: pulumi.Input<string>;
     /**
@@ -320,7 +330,7 @@ export interface PolicyInfoArgs {
     onSecurableFullname?: pulumi.Input<string>;
     /**
      * Type of the securable on which the policy is defined.
-     * Only `catalog`, `schema` and `table` are supported at this moment.
+     * Only `CATALOG`, `SCHEMA` and `TABLE` are supported at this moment.
      * Required on create and ignored on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
      */
     onSecurableType?: pulumi.Input<string>;
@@ -343,4 +353,8 @@ export interface PolicyInfoArgs {
      * Optional condition when the policy should take effect
      */
     whenCondition?: pulumi.Input<string>;
+    /**
+     * Workspace ID of the resource
+     */
+    workspaceId?: pulumi.Input<string>;
 }

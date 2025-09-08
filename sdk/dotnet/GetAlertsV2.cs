@@ -36,8 +36,8 @@ namespace Pulumi.Databricks
         /// });
         /// ```
         /// </summary>
-        public static Task<GetAlertsV2Result> InvokeAsync(InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAlertsV2Result>("databricks:index/getAlertsV2:getAlertsV2", InvokeArgs.Empty, options.WithDefaults());
+        public static Task<GetAlertsV2Result> InvokeAsync(GetAlertsV2Args? args = null, InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAlertsV2Result>("databricks:index/getAlertsV2:getAlertsV2", args ?? new GetAlertsV2Args(), options.WithDefaults());
 
         /// <summary>
         /// The SQL Alerts v2 data source allows you to retrieve a list of alerts in Databricks SQL that are accessible to the current user. This data source returns alerts ordered by their creation time.
@@ -64,8 +64,8 @@ namespace Pulumi.Databricks
         /// });
         /// ```
         /// </summary>
-        public static Output<GetAlertsV2Result> Invoke(InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.Invoke<GetAlertsV2Result>("databricks:index/getAlertsV2:getAlertsV2", InvokeArgs.Empty, options.WithDefaults());
+        public static Output<GetAlertsV2Result> Invoke(GetAlertsV2InvokeArgs? args = null, InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAlertsV2Result>("databricks:index/getAlertsV2:getAlertsV2", args ?? new GetAlertsV2InvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// The SQL Alerts v2 data source allows you to retrieve a list of alerts in Databricks SQL that are accessible to the current user. This data source returns alerts ordered by their creation time.
@@ -92,8 +92,37 @@ namespace Pulumi.Databricks
         /// });
         /// ```
         /// </summary>
-        public static Output<GetAlertsV2Result> Invoke(InvokeOutputOptions options)
-            => global::Pulumi.Deployment.Instance.Invoke<GetAlertsV2Result>("databricks:index/getAlertsV2:getAlertsV2", InvokeArgs.Empty, options.WithDefaults());
+        public static Output<GetAlertsV2Result> Invoke(GetAlertsV2InvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAlertsV2Result>("databricks:index/getAlertsV2:getAlertsV2", args ?? new GetAlertsV2InvokeArgs(), options.WithDefaults());
+    }
+
+
+    public sealed class GetAlertsV2Args : global::Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Workspace ID of the resource
+        /// </summary>
+        [Input("workspaceId")]
+        public string? WorkspaceId { get; set; }
+
+        public GetAlertsV2Args()
+        {
+        }
+        public static new GetAlertsV2Args Empty => new GetAlertsV2Args();
+    }
+
+    public sealed class GetAlertsV2InvokeArgs : global::Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Workspace ID of the resource
+        /// </summary>
+        [Input("workspaceId")]
+        public Input<string>? WorkspaceId { get; set; }
+
+        public GetAlertsV2InvokeArgs()
+        {
+        }
+        public static new GetAlertsV2InvokeArgs Empty => new GetAlertsV2InvokeArgs();
     }
 
 
@@ -105,15 +134,19 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<Outputs.GetAlertsV2ResultResult> Results;
+        public readonly string? WorkspaceId;
 
         [OutputConstructor]
         private GetAlertsV2Result(
             string id,
 
-            ImmutableArray<Outputs.GetAlertsV2ResultResult> results)
+            ImmutableArray<Outputs.GetAlertsV2ResultResult> results,
+
+            string? workspaceId)
         {
             Id = id;
             Results = results;
+            WorkspaceId = workspaceId;
         }
     }
 }

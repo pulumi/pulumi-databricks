@@ -72,6 +72,12 @@ namespace Pulumi.Databricks
     [DatabricksResourceType("databricks:index/catalog:Catalog")]
     public partial class Catalog : global::Pulumi.CustomResource
     {
+        [Output("browseOnly")]
+        public Output<bool?> BrowseOnly { get; private set; } = null!;
+
+        [Output("catalogType")]
+        public Output<string> CatalogType { get; private set; } = null!;
+
         /// <summary>
         /// User-supplied free-form text.
         /// </summary>
@@ -84,6 +90,15 @@ namespace Pulumi.Databricks
         [Output("connectionName")]
         public Output<string?> ConnectionName { get; private set; } = null!;
 
+        [Output("createdAt")]
+        public Output<int> CreatedAt { get; private set; } = null!;
+
+        [Output("createdBy")]
+        public Output<string> CreatedBy { get; private set; } = null!;
+
+        [Output("effectivePredictiveOptimizationFlag")]
+        public Output<Outputs.CatalogEffectivePredictiveOptimizationFlag> EffectivePredictiveOptimizationFlag { get; private set; } = null!;
+
         /// <summary>
         /// Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
         /// </summary>
@@ -95,6 +110,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("forceDestroy")]
         public Output<bool?> ForceDestroy { get; private set; } = null!;
+
+        [Output("fullName")]
+        public Output<string> FullName { get; private set; } = null!;
 
         /// <summary>
         /// Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
@@ -138,17 +156,32 @@ namespace Pulumi.Databricks
         [Output("providerName")]
         public Output<string?> ProviderName { get; private set; } = null!;
 
+        [Output("provisioningInfo")]
+        public Output<Outputs.CatalogProvisioningInfo?> ProvisioningInfo { get; private set; } = null!;
+
+        [Output("securableType")]
+        public Output<string> SecurableType { get; private set; } = null!;
+
         /// <summary>
         /// For Delta Sharing Catalogs: the name of the share under the share provider. Change forces creation of a new resource.
         /// </summary>
         [Output("shareName")]
         public Output<string?> ShareName { get; private set; } = null!;
 
+        [Output("storageLocation")]
+        public Output<string?> StorageLocation { get; private set; } = null!;
+
         /// <summary>
         /// Managed location of the catalog. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
         /// </summary>
         [Output("storageRoot")]
         public Output<string?> StorageRoot { get; private set; } = null!;
+
+        [Output("updatedAt")]
+        public Output<int> UpdatedAt { get; private set; } = null!;
+
+        [Output("updatedBy")]
+        public Output<string> UpdatedBy { get; private set; } = null!;
 
 
         /// <summary>
@@ -196,6 +229,9 @@ namespace Pulumi.Databricks
 
     public sealed class CatalogArgs : global::Pulumi.ResourceArgs
     {
+        [Input("browseOnly")]
+        public Input<bool>? BrowseOnly { get; set; }
+
         /// <summary>
         /// User-supplied free-form text.
         /// </summary>
@@ -207,6 +243,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("connectionName")]
         public Input<string>? ConnectionName { get; set; }
+
+        [Input("effectivePredictiveOptimizationFlag")]
+        public Input<Inputs.CatalogEffectivePredictiveOptimizationFlagArgs>? EffectivePredictiveOptimizationFlag { get; set; }
 
         /// <summary>
         /// Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
@@ -274,11 +313,17 @@ namespace Pulumi.Databricks
         [Input("providerName")]
         public Input<string>? ProviderName { get; set; }
 
+        [Input("provisioningInfo")]
+        public Input<Inputs.CatalogProvisioningInfoArgs>? ProvisioningInfo { get; set; }
+
         /// <summary>
         /// For Delta Sharing Catalogs: the name of the share under the share provider. Change forces creation of a new resource.
         /// </summary>
         [Input("shareName")]
         public Input<string>? ShareName { get; set; }
+
+        [Input("storageLocation")]
+        public Input<string>? StorageLocation { get; set; }
 
         /// <summary>
         /// Managed location of the catalog. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
@@ -294,6 +339,12 @@ namespace Pulumi.Databricks
 
     public sealed class CatalogState : global::Pulumi.ResourceArgs
     {
+        [Input("browseOnly")]
+        public Input<bool>? BrowseOnly { get; set; }
+
+        [Input("catalogType")]
+        public Input<string>? CatalogType { get; set; }
+
         /// <summary>
         /// User-supplied free-form text.
         /// </summary>
@@ -306,6 +357,15 @@ namespace Pulumi.Databricks
         [Input("connectionName")]
         public Input<string>? ConnectionName { get; set; }
 
+        [Input("createdAt")]
+        public Input<int>? CreatedAt { get; set; }
+
+        [Input("createdBy")]
+        public Input<string>? CreatedBy { get; set; }
+
+        [Input("effectivePredictiveOptimizationFlag")]
+        public Input<Inputs.CatalogEffectivePredictiveOptimizationFlagGetArgs>? EffectivePredictiveOptimizationFlag { get; set; }
+
         /// <summary>
         /// Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
         /// </summary>
@@ -317,6 +377,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("forceDestroy")]
         public Input<bool>? ForceDestroy { get; set; }
+
+        [Input("fullName")]
+        public Input<string>? FullName { get; set; }
 
         /// <summary>
         /// Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
@@ -372,17 +435,32 @@ namespace Pulumi.Databricks
         [Input("providerName")]
         public Input<string>? ProviderName { get; set; }
 
+        [Input("provisioningInfo")]
+        public Input<Inputs.CatalogProvisioningInfoGetArgs>? ProvisioningInfo { get; set; }
+
+        [Input("securableType")]
+        public Input<string>? SecurableType { get; set; }
+
         /// <summary>
         /// For Delta Sharing Catalogs: the name of the share under the share provider. Change forces creation of a new resource.
         /// </summary>
         [Input("shareName")]
         public Input<string>? ShareName { get; set; }
 
+        [Input("storageLocation")]
+        public Input<string>? StorageLocation { get; set; }
+
         /// <summary>
         /// Managed location of the catalog. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
         /// </summary>
         [Input("storageRoot")]
         public Input<string>? StorageRoot { get; set; }
+
+        [Input("updatedAt")]
+        public Input<int>? UpdatedAt { get; set; }
+
+        [Input("updatedBy")]
+        public Input<string>? UpdatedBy { get; set; }
 
         public CatalogState()
         {

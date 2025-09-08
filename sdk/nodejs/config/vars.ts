@@ -207,6 +207,14 @@ Object.defineProperty(exports, "metadataServiceUrl", {
     enumerable: true,
 });
 
+export declare const oauthCallbackPort: number | undefined;
+Object.defineProperty(exports, "oauthCallbackPort", {
+    get() {
+        return __config.getObject<number>("oauthCallbackPort");
+    },
+    enumerable: true,
+});
+
 export declare const oidcTokenEnv: string | undefined;
 Object.defineProperty(exports, "oidcTokenEnv", {
     get() {

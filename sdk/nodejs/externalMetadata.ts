@@ -46,7 +46,7 @@ import * as utilities from "./utilities";
  *
  * import {
  *
- *   id = name
+ *   id = "name"
  *
  *   to = databricks_external_metadata.this
  *
@@ -55,7 +55,7 @@ import * as utilities from "./utilities";
  * If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
  *
  * ```sh
- * $ pulumi import databricks:index/externalMetadata:ExternalMetadata databricks_external_metadata name
+ * $ pulumi import databricks:index/externalMetadata:ExternalMetadata databricks_external_metadata "name"
  * ```
  */
 export class ExternalMetadata extends pulumi.CustomResource {
@@ -138,6 +138,10 @@ export class ExternalMetadata extends pulumi.CustomResource {
      * URL associated with the external metadata object
      */
     declare public readonly url: pulumi.Output<string | undefined>;
+    /**
+     * Workspace ID of the resource
+     */
+    declare public readonly workspaceId: pulumi.Output<string | undefined>;
 
     /**
      * Create a ExternalMetadata resource with the given unique name, arguments, and options.
@@ -165,6 +169,7 @@ export class ExternalMetadata extends pulumi.CustomResource {
             resourceInputs["updateTime"] = state?.updateTime;
             resourceInputs["updatedBy"] = state?.updatedBy;
             resourceInputs["url"] = state?.url;
+            resourceInputs["workspaceId"] = state?.workspaceId;
         } else {
             const args = argsOrState as ExternalMetadataArgs | undefined;
             if (args?.entityType === undefined && !opts.urn) {
@@ -181,6 +186,7 @@ export class ExternalMetadata extends pulumi.CustomResource {
             resourceInputs["properties"] = args?.properties;
             resourceInputs["systemType"] = args?.systemType;
             resourceInputs["url"] = args?.url;
+            resourceInputs["workspaceId"] = args?.workspaceId;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["createdBy"] = undefined /*out*/;
             resourceInputs["metastoreId"] = undefined /*out*/;
@@ -248,6 +254,10 @@ export interface ExternalMetadataState {
      * URL associated with the external metadata object
      */
     url?: pulumi.Input<string>;
+    /**
+     * Workspace ID of the resource
+     */
+    workspaceId?: pulumi.Input<string>;
 }
 
 /**
@@ -286,4 +296,8 @@ export interface ExternalMetadataArgs {
      * URL associated with the external metadata object
      */
     url?: pulumi.Input<string>;
+    /**
+     * Workspace ID of the resource
+     */
+    workspaceId?: pulumi.Input<string>;
 }

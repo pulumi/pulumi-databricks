@@ -83,6 +83,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("task")]
         public Input<string>? Task { get; set; }
 
+        [Input("usagePolicyId")]
+        public Input<string>? UsagePolicyId { get; set; }
+
         public GetServingEndpointsEndpointInputArgs()
         {
         }

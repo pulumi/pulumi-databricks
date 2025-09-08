@@ -136,6 +136,13 @@ public final class GetServingEndpointsEndpoint extends com.pulumi.resources.Invo
         return Optional.ofNullable(this.task);
     }
 
+    @Import(name="usagePolicyId")
+    private @Nullable String usagePolicyId;
+
+    public Optional<String> usagePolicyId() {
+        return Optional.ofNullable(this.usagePolicyId);
+    }
+
     private GetServingEndpointsEndpoint() {}
 
     private GetServingEndpointsEndpoint(GetServingEndpointsEndpoint $) {
@@ -151,6 +158,7 @@ public final class GetServingEndpointsEndpoint extends com.pulumi.resources.Invo
         this.states = $.states;
         this.tags = $.tags;
         this.task = $.task;
+        this.usagePolicyId = $.usagePolicyId;
     }
 
     public static Builder builder() {
@@ -286,6 +294,11 @@ public final class GetServingEndpointsEndpoint extends com.pulumi.resources.Invo
 
         public Builder task(@Nullable String task) {
             $.task = task;
+            return this;
+        }
+
+        public Builder usagePolicyId(@Nullable String usagePolicyId) {
+            $.usagePolicyId = usagePolicyId;
             return this;
         }
 

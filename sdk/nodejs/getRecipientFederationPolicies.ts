@@ -6,10 +6,22 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-export function getRecipientFederationPolicies(opts?: pulumi.InvokeOptions): Promise<GetRecipientFederationPoliciesResult> {
+export function getRecipientFederationPolicies(args?: GetRecipientFederationPoliciesArgs, opts?: pulumi.InvokeOptions): Promise<GetRecipientFederationPoliciesResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getRecipientFederationPolicies:getRecipientFederationPolicies", {
+        "workspaceId": args.workspaceId,
     }, opts);
+}
+
+/**
+ * A collection of arguments for invoking getRecipientFederationPolicies.
+ */
+export interface GetRecipientFederationPoliciesArgs {
+    /**
+     * Workspace ID of the resource
+     */
+    workspaceId?: string;
 }
 
 /**
@@ -21,9 +33,22 @@ export interface GetRecipientFederationPoliciesResult {
      */
     readonly id: string;
     readonly policies: outputs.GetRecipientFederationPoliciesPolicy[];
+    readonly workspaceId?: string;
 }
-export function getRecipientFederationPoliciesOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRecipientFederationPoliciesResult> {
+export function getRecipientFederationPoliciesOutput(args?: GetRecipientFederationPoliciesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRecipientFederationPoliciesResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getRecipientFederationPolicies:getRecipientFederationPolicies", {
+        "workspaceId": args.workspaceId,
     }, opts);
+}
+
+/**
+ * A collection of arguments for invoking getRecipientFederationPolicies.
+ */
+export interface GetRecipientFederationPoliciesOutputArgs {
+    /**
+     * Workspace ID of the resource
+     */
+    workspaceId?: pulumi.Input<string>;
 }

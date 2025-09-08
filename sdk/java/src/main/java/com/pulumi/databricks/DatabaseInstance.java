@@ -152,7 +152,7 @@ import javax.annotation.Nullable;
  * 
  * import {
  * 
- *   id = name
+ *   id = &#34;name&#34;
  * 
  *   to = databricks_database_instance.this
  * 
@@ -161,7 +161,7 @@ import javax.annotation.Nullable;
  * If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
  * 
  * ```sh
- * $ pulumi import databricks:index/databaseInstance:DatabaseInstance databricks_database_instance name
+ * $ pulumi import databricks:index/databaseInstance:DatabaseInstance databricks_database_instance &#34;name&#34;
  * ```
  * 
  */
@@ -224,6 +224,24 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
      */
     public Output<String> creator() {
         return this.creator;
+    }
+    /**
+     * (boolean) - xref AIP-129. `enable_pg_native_login` is owned by the client, while `effective_enable_pg_native_login` is owned by the server.
+     * `enable_pg_native_login` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+     * `effective_enable_pg_native_login` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * 
+     */
+    @Export(name="effectiveEnablePgNativeLogin", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> effectiveEnablePgNativeLogin;
+
+    /**
+     * @return (boolean) - xref AIP-129. `enable_pg_native_login` is owned by the client, while `effective_enable_pg_native_login` is owned by the server.
+     * `enable_pg_native_login` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+     * `effective_enable_pg_native_login` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * 
+     */
+    public Output<Boolean> effectiveEnablePgNativeLogin() {
+        return this.effectiveEnablePgNativeLogin;
     }
     /**
      * (boolean) - xref AIP-129. `enable_readable_secondaries` is owned by the client, while `effective_enable_readable_secondaries` is owned by the server.
@@ -296,6 +314,20 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> effectiveStopped() {
         return this.effectiveStopped;
+    }
+    /**
+     * Whether the instance has PG native password login enabled. Defaults to true
+     * 
+     */
+    @Export(name="enablePgNativeLogin", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> enablePgNativeLogin;
+
+    /**
+     * @return Whether the instance has PG native password login enabled. Defaults to true
+     * 
+     */
+    public Output<Boolean> enablePgNativeLogin() {
+        return this.enablePgNativeLogin;
     }
     /**
      * Whether to enable secondaries to serve read-only traffic. Defaults to false
@@ -478,6 +510,20 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
      */
     public Output<String> uid() {
         return this.uid;
+    }
+    /**
+     * Workspace ID of the resource
+     * 
+     */
+    @Export(name="workspaceId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> workspaceId;
+
+    /**
+     * @return Workspace ID of the resource
+     * 
+     */
+    public Output<Optional<String>> workspaceId() {
+        return Codegen.optional(this.workspaceId);
     }
 
     /**

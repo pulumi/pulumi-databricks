@@ -6,6 +6,7 @@ package com.pulumi.databricks;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.AlertV2EvaluationArgs;
+import com.pulumi.databricks.inputs.AlertV2RunAsArgs;
 import com.pulumi.databricks.inputs.AlertV2ScheduleArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -100,8 +101,32 @@ public final class AlertV2Args extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Specifies the identity that will be used to run the alert.
+     * This field allows you to configure alerts to run as a specific user or service principal.
+     * - For user identity: Set `user_name` to the email of an active workspace user. Users can only set this to their own email.
+     * - For service principal: Set `service_principal_name` to the application ID. Requires the `servicePrincipal/user` role.
+     *   If not specified, the alert will run as the request user
+     * 
+     */
+    @Import(name="runAs")
+    private @Nullable Output<AlertV2RunAsArgs> runAs;
+
+    /**
+     * @return Specifies the identity that will be used to run the alert.
+     * This field allows you to configure alerts to run as a specific user or service principal.
+     * - For user identity: Set `user_name` to the email of an active workspace user. Users can only set this to their own email.
+     * - For service principal: Set `service_principal_name` to the application ID. Requires the `servicePrincipal/user` role.
+     *   If not specified, the alert will run as the request user
+     * 
+     */
+    public Optional<Output<AlertV2RunAsArgs>> runAs() {
+        return Optional.ofNullable(this.runAs);
+    }
+
+    /**
      * The run as username or application ID of service principal.
-     * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
+     * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
+     * Deprecated: Use `run_as` field instead. This field will be removed in a future release
      * 
      */
     @Import(name="runAsUserName")
@@ -109,7 +134,8 @@ public final class AlertV2Args extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The run as username or application ID of service principal.
-     * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
+     * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
+     * Deprecated: Use `run_as` field instead. This field will be removed in a future release
      * 
      */
     public Optional<Output<String>> runAsUserName() {
@@ -138,6 +164,21 @@ public final class AlertV2Args extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.warehouseId);
     }
 
+    /**
+     * Workspace ID of the resource
+     * 
+     */
+    @Import(name="workspaceId")
+    private @Nullable Output<String> workspaceId;
+
+    /**
+     * @return Workspace ID of the resource
+     * 
+     */
+    public Optional<Output<String>> workspaceId() {
+        return Optional.ofNullable(this.workspaceId);
+    }
+
     private AlertV2Args() {}
 
     private AlertV2Args(AlertV2Args $) {
@@ -147,9 +188,11 @@ public final class AlertV2Args extends com.pulumi.resources.ResourceArgs {
         this.evaluation = $.evaluation;
         this.parentPath = $.parentPath;
         this.queryText = $.queryText;
+        this.runAs = $.runAs;
         this.runAsUserName = $.runAsUserName;
         this.schedule = $.schedule;
         this.warehouseId = $.warehouseId;
+        this.workspaceId = $.workspaceId;
     }
 
     public static Builder builder() {
@@ -285,8 +328,38 @@ public final class AlertV2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param runAs Specifies the identity that will be used to run the alert.
+         * This field allows you to configure alerts to run as a specific user or service principal.
+         * - For user identity: Set `user_name` to the email of an active workspace user. Users can only set this to their own email.
+         * - For service principal: Set `service_principal_name` to the application ID. Requires the `servicePrincipal/user` role.
+         *   If not specified, the alert will run as the request user
+         * 
+         * @return builder
+         * 
+         */
+        public Builder runAs(@Nullable Output<AlertV2RunAsArgs> runAs) {
+            $.runAs = runAs;
+            return this;
+        }
+
+        /**
+         * @param runAs Specifies the identity that will be used to run the alert.
+         * This field allows you to configure alerts to run as a specific user or service principal.
+         * - For user identity: Set `user_name` to the email of an active workspace user. Users can only set this to their own email.
+         * - For service principal: Set `service_principal_name` to the application ID. Requires the `servicePrincipal/user` role.
+         *   If not specified, the alert will run as the request user
+         * 
+         * @return builder
+         * 
+         */
+        public Builder runAs(AlertV2RunAsArgs runAs) {
+            return runAs(Output.of(runAs));
+        }
+
+        /**
          * @param runAsUserName The run as username or application ID of service principal.
-         * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
+         * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
+         * Deprecated: Use `run_as` field instead. This field will be removed in a future release
          * 
          * @return builder
          * 
@@ -298,7 +371,8 @@ public final class AlertV2Args extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param runAsUserName The run as username or application ID of service principal.
-         * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
+         * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
+         * Deprecated: Use `run_as` field instead. This field will be removed in a future release
          * 
          * @return builder
          * 
@@ -335,6 +409,27 @@ public final class AlertV2Args extends com.pulumi.resources.ResourceArgs {
          */
         public Builder warehouseId(String warehouseId) {
             return warehouseId(Output.of(warehouseId));
+        }
+
+        /**
+         * @param workspaceId Workspace ID of the resource
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workspaceId(@Nullable Output<String> workspaceId) {
+            $.workspaceId = workspaceId;
+            return this;
+        }
+
+        /**
+         * @param workspaceId Workspace ID of the resource
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workspaceId(String workspaceId) {
+            return workspaceId(Output.of(workspaceId));
         }
 
         public AlertV2Args build() {

@@ -33,6 +33,8 @@ type LookupCleanRoomAutoApprovalRuleArgs struct {
 	CleanRoomName *string `pulumi:"cleanRoomName"`
 	// (string) - Collaborator alias of the runner covered by the rule
 	RunnerCollaboratorAlias *string `pulumi:"runnerCollaboratorAlias"`
+	// Workspace ID of the resource
+	WorkspaceId *string `pulumi:"workspaceId"`
 }
 
 // A collection of values returned by getCleanRoomAutoApprovalRule.
@@ -55,6 +57,7 @@ type LookupCleanRoomAutoApprovalRuleResult struct {
 	RuleOwnerCollaboratorAlias string `pulumi:"ruleOwnerCollaboratorAlias"`
 	// (string) - Collaborator alias of the runner covered by the rule
 	RunnerCollaboratorAlias *string `pulumi:"runnerCollaboratorAlias"`
+	WorkspaceId             *string `pulumi:"workspaceId"`
 }
 
 func LookupCleanRoomAutoApprovalRuleOutput(ctx *pulumi.Context, args LookupCleanRoomAutoApprovalRuleOutputArgs, opts ...pulumi.InvokeOption) LookupCleanRoomAutoApprovalRuleResultOutput {
@@ -78,6 +81,8 @@ type LookupCleanRoomAutoApprovalRuleOutputArgs struct {
 	CleanRoomName pulumi.StringPtrInput `pulumi:"cleanRoomName"`
 	// (string) - Collaborator alias of the runner covered by the rule
 	RunnerCollaboratorAlias pulumi.StringPtrInput `pulumi:"runnerCollaboratorAlias"`
+	// Workspace ID of the resource
+	WorkspaceId pulumi.StringPtrInput `pulumi:"workspaceId"`
 }
 
 func (LookupCleanRoomAutoApprovalRuleOutputArgs) ElementType() reflect.Type {
@@ -139,6 +144,10 @@ func (o LookupCleanRoomAutoApprovalRuleResultOutput) RuleOwnerCollaboratorAlias(
 // (string) - Collaborator alias of the runner covered by the rule
 func (o LookupCleanRoomAutoApprovalRuleResultOutput) RunnerCollaboratorAlias() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupCleanRoomAutoApprovalRuleResult) *string { return v.RunnerCollaboratorAlias }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupCleanRoomAutoApprovalRuleResultOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupCleanRoomAutoApprovalRuleResult) *string { return v.WorkspaceId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

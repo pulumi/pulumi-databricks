@@ -28,7 +28,7 @@ class GetRecipientFederationPolicyResult:
     """
     A collection of values returned by getRecipientFederationPolicy.
     """
-    def __init__(__self__, comment=None, create_time=None, id=None, name=None, oidc_policy=None, update_time=None):
+    def __init__(__self__, comment=None, create_time=None, id=None, name=None, oidc_policy=None, update_time=None, workspace_id=None):
         if comment and not isinstance(comment, str):
             raise TypeError("Expected argument 'comment' to be a str")
         pulumi.set(__self__, "comment", comment)
@@ -47,6 +47,9 @@ class GetRecipientFederationPolicyResult:
         if update_time and not isinstance(update_time, str):
             raise TypeError("Expected argument 'update_time' to be a str")
         pulumi.set(__self__, "update_time", update_time)
+        if workspace_id and not isinstance(workspace_id, str):
+            raise TypeError("Expected argument 'workspace_id' to be a str")
+        pulumi.set(__self__, "workspace_id", workspace_id)
 
     @_builtins.property
     @pulumi.getter
@@ -97,6 +100,11 @@ class GetRecipientFederationPolicyResult:
         """
         return pulumi.get(self, "update_time")
 
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "workspace_id")
+
 
 class AwaitableGetRecipientFederationPolicyResult(GetRecipientFederationPolicyResult):
     # pylint: disable=using-constant-test
@@ -109,12 +117,14 @@ class AwaitableGetRecipientFederationPolicyResult(GetRecipientFederationPolicyRe
             id=self.id,
             name=self.name,
             oidc_policy=self.oidc_policy,
-            update_time=self.update_time)
+            update_time=self.update_time,
+            workspace_id=self.workspace_id)
 
 
 def get_recipient_federation_policy(comment: Optional[_builtins.str] = None,
                                     name: Optional[_builtins.str] = None,
                                     oidc_policy: Optional[Union['GetRecipientFederationPolicyOidcPolicyArgs', 'GetRecipientFederationPolicyOidcPolicyArgsDict']] = None,
+                                    workspace_id: Optional[_builtins.str] = None,
                                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRecipientFederationPolicyResult:
     """
     Use this data source to access information about an existing resource.
@@ -123,11 +133,13 @@ def get_recipient_federation_policy(comment: Optional[_builtins.str] = None,
     :param _builtins.str name: Name of the federation policy. A recipient can have multiple policies with different names.
            The name must contain only lowercase alphanumeric characters, numbers, and hyphens
     :param Union['GetRecipientFederationPolicyOidcPolicyArgs', 'GetRecipientFederationPolicyOidcPolicyArgsDict'] oidc_policy: (OidcFederationPolicy) - Specifies the policy to use for validating OIDC claims in the federated tokens
+    :param _builtins.str workspace_id: Workspace ID of the resource
     """
     __args__ = dict()
     __args__['comment'] = comment
     __args__['name'] = name
     __args__['oidcPolicy'] = oidc_policy
+    __args__['workspaceId'] = workspace_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getRecipientFederationPolicy:getRecipientFederationPolicy', __args__, opts=opts, typ=GetRecipientFederationPolicyResult).value
 
@@ -137,10 +149,12 @@ def get_recipient_federation_policy(comment: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
         oidc_policy=pulumi.get(__ret__, 'oidc_policy'),
-        update_time=pulumi.get(__ret__, 'update_time'))
+        update_time=pulumi.get(__ret__, 'update_time'),
+        workspace_id=pulumi.get(__ret__, 'workspace_id'))
 def get_recipient_federation_policy_output(comment: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                            name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                            oidc_policy: Optional[pulumi.Input[Optional[Union['GetRecipientFederationPolicyOidcPolicyArgs', 'GetRecipientFederationPolicyOidcPolicyArgsDict']]]] = None,
+                                           workspace_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRecipientFederationPolicyResult]:
     """
     Use this data source to access information about an existing resource.
@@ -149,11 +163,13 @@ def get_recipient_federation_policy_output(comment: Optional[pulumi.Input[Option
     :param _builtins.str name: Name of the federation policy. A recipient can have multiple policies with different names.
            The name must contain only lowercase alphanumeric characters, numbers, and hyphens
     :param Union['GetRecipientFederationPolicyOidcPolicyArgs', 'GetRecipientFederationPolicyOidcPolicyArgsDict'] oidc_policy: (OidcFederationPolicy) - Specifies the policy to use for validating OIDC claims in the federated tokens
+    :param _builtins.str workspace_id: Workspace ID of the resource
     """
     __args__ = dict()
     __args__['comment'] = comment
     __args__['name'] = name
     __args__['oidcPolicy'] = oidc_policy
+    __args__['workspaceId'] = workspace_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getRecipientFederationPolicy:getRecipientFederationPolicy', __args__, opts=opts, typ=GetRecipientFederationPolicyResult)
     return __ret__.apply(lambda __response__: GetRecipientFederationPolicyResult(
@@ -162,4 +178,5 @@ def get_recipient_federation_policy_output(comment: Optional[pulumi.Input[Option
         id=pulumi.get(__response__, 'id'),
         name=pulumi.get(__response__, 'name'),
         oidc_policy=pulumi.get(__response__, 'oidc_policy'),
-        update_time=pulumi.get(__response__, 'update_time')))
+        update_time=pulumi.get(__response__, 'update_time'),
+        workspace_id=pulumi.get(__response__, 'workspace_id')))

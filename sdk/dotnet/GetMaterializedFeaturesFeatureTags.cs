@@ -11,14 +11,43 @@ namespace Pulumi.Databricks
 {
     public static class GetMaterializedFeaturesFeatureTags
     {
-        public static Task<GetMaterializedFeaturesFeatureTagsResult> InvokeAsync(InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.InvokeAsync<GetMaterializedFeaturesFeatureTagsResult>("databricks:index/getMaterializedFeaturesFeatureTags:getMaterializedFeaturesFeatureTags", InvokeArgs.Empty, options.WithDefaults());
+        public static Task<GetMaterializedFeaturesFeatureTagsResult> InvokeAsync(GetMaterializedFeaturesFeatureTagsArgs? args = null, InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetMaterializedFeaturesFeatureTagsResult>("databricks:index/getMaterializedFeaturesFeatureTags:getMaterializedFeaturesFeatureTags", args ?? new GetMaterializedFeaturesFeatureTagsArgs(), options.WithDefaults());
 
-        public static Output<GetMaterializedFeaturesFeatureTagsResult> Invoke(InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.Invoke<GetMaterializedFeaturesFeatureTagsResult>("databricks:index/getMaterializedFeaturesFeatureTags:getMaterializedFeaturesFeatureTags", InvokeArgs.Empty, options.WithDefaults());
+        public static Output<GetMaterializedFeaturesFeatureTagsResult> Invoke(GetMaterializedFeaturesFeatureTagsInvokeArgs? args = null, InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.Invoke<GetMaterializedFeaturesFeatureTagsResult>("databricks:index/getMaterializedFeaturesFeatureTags:getMaterializedFeaturesFeatureTags", args ?? new GetMaterializedFeaturesFeatureTagsInvokeArgs(), options.WithDefaults());
 
-        public static Output<GetMaterializedFeaturesFeatureTagsResult> Invoke(InvokeOutputOptions options)
-            => global::Pulumi.Deployment.Instance.Invoke<GetMaterializedFeaturesFeatureTagsResult>("databricks:index/getMaterializedFeaturesFeatureTags:getMaterializedFeaturesFeatureTags", InvokeArgs.Empty, options.WithDefaults());
+        public static Output<GetMaterializedFeaturesFeatureTagsResult> Invoke(GetMaterializedFeaturesFeatureTagsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetMaterializedFeaturesFeatureTagsResult>("databricks:index/getMaterializedFeaturesFeatureTags:getMaterializedFeaturesFeatureTags", args ?? new GetMaterializedFeaturesFeatureTagsInvokeArgs(), options.WithDefaults());
+    }
+
+
+    public sealed class GetMaterializedFeaturesFeatureTagsArgs : global::Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Workspace ID of the resource
+        /// </summary>
+        [Input("workspaceId")]
+        public string? WorkspaceId { get; set; }
+
+        public GetMaterializedFeaturesFeatureTagsArgs()
+        {
+        }
+        public static new GetMaterializedFeaturesFeatureTagsArgs Empty => new GetMaterializedFeaturesFeatureTagsArgs();
+    }
+
+    public sealed class GetMaterializedFeaturesFeatureTagsInvokeArgs : global::Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Workspace ID of the resource
+        /// </summary>
+        [Input("workspaceId")]
+        public Input<string>? WorkspaceId { get; set; }
+
+        public GetMaterializedFeaturesFeatureTagsInvokeArgs()
+        {
+        }
+        public static new GetMaterializedFeaturesFeatureTagsInvokeArgs Empty => new GetMaterializedFeaturesFeatureTagsInvokeArgs();
     }
 
 
@@ -30,15 +59,19 @@ namespace Pulumi.Databricks
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly string? WorkspaceId;
 
         [OutputConstructor]
         private GetMaterializedFeaturesFeatureTagsResult(
             ImmutableArray<Outputs.GetMaterializedFeaturesFeatureTagsFeatureTagResult> featureTags,
 
-            string id)
+            string id,
+
+            string? workspaceId)
         {
             FeatureTags = featureTags;
             Id = id;
+            WorkspaceId = workspaceId;
         }
     }
 }

@@ -29,6 +29,10 @@ namespace Pulumi.Databricks.Outputs
         /// Renewal period field for a serving endpoint rate limit. Currently, only `minute` is supported.
         /// </summary>
         public readonly string RenewalPeriod;
+        /// <summary>
+        /// Specifies how many tokens are allowed for a key within the renewal_period.
+        /// </summary>
+        public readonly int? Tokens;
 
         [OutputConstructor]
         private ModelServingAiGatewayRateLimit(
@@ -38,12 +42,15 @@ namespace Pulumi.Databricks.Outputs
 
             string? principal,
 
-            string renewalPeriod)
+            string renewalPeriod,
+
+            int? tokens)
         {
             Calls = calls;
             Key = key;
             Principal = principal;
             RenewalPeriod = renewalPeriod;
+            Tokens = tokens;
         }
     }
 }

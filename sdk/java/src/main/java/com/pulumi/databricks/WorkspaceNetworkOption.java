@@ -71,7 +71,7 @@ import javax.annotation.Nullable;
  * 
  * import {
  * 
- *   id = workspace_id
+ *   id = &#34;workspace_id&#34;
  * 
  *   to = databricks_workspace_network_option.this
  * 
@@ -80,7 +80,7 @@ import javax.annotation.Nullable;
  * If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
  * 
  * ```sh
- * $ pulumi import databricks:index/workspaceNetworkOption:WorkspaceNetworkOption databricks_workspace_network_option workspace_id
+ * $ pulumi import databricks:index/workspaceNetworkOption:WorkspaceNetworkOption databricks_workspace_network_option &#34;workspace_id&#34;
  * ```
  * 
  */

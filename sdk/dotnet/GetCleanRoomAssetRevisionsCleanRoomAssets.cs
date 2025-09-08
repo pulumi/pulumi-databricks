@@ -11,14 +11,55 @@ namespace Pulumi.Databricks
 {
     public static class GetCleanRoomAssetRevisionsCleanRoomAssets
     {
-        public static Task<GetCleanRoomAssetRevisionsCleanRoomAssetsResult> InvokeAsync(InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.InvokeAsync<GetCleanRoomAssetRevisionsCleanRoomAssetsResult>("databricks:index/getCleanRoomAssetRevisionsCleanRoomAssets:getCleanRoomAssetRevisionsCleanRoomAssets", InvokeArgs.Empty, options.WithDefaults());
+        public static Task<GetCleanRoomAssetRevisionsCleanRoomAssetsResult> InvokeAsync(GetCleanRoomAssetRevisionsCleanRoomAssetsArgs args, InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetCleanRoomAssetRevisionsCleanRoomAssetsResult>("databricks:index/getCleanRoomAssetRevisionsCleanRoomAssets:getCleanRoomAssetRevisionsCleanRoomAssets", args ?? new GetCleanRoomAssetRevisionsCleanRoomAssetsArgs(), options.WithDefaults());
 
-        public static Output<GetCleanRoomAssetRevisionsCleanRoomAssetsResult> Invoke(InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.Invoke<GetCleanRoomAssetRevisionsCleanRoomAssetsResult>("databricks:index/getCleanRoomAssetRevisionsCleanRoomAssets:getCleanRoomAssetRevisionsCleanRoomAssets", InvokeArgs.Empty, options.WithDefaults());
+        public static Output<GetCleanRoomAssetRevisionsCleanRoomAssetsResult> Invoke(GetCleanRoomAssetRevisionsCleanRoomAssetsInvokeArgs args, InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.Invoke<GetCleanRoomAssetRevisionsCleanRoomAssetsResult>("databricks:index/getCleanRoomAssetRevisionsCleanRoomAssets:getCleanRoomAssetRevisionsCleanRoomAssets", args ?? new GetCleanRoomAssetRevisionsCleanRoomAssetsInvokeArgs(), options.WithDefaults());
 
-        public static Output<GetCleanRoomAssetRevisionsCleanRoomAssetsResult> Invoke(InvokeOutputOptions options)
-            => global::Pulumi.Deployment.Instance.Invoke<GetCleanRoomAssetRevisionsCleanRoomAssetsResult>("databricks:index/getCleanRoomAssetRevisionsCleanRoomAssets:getCleanRoomAssetRevisionsCleanRoomAssets", InvokeArgs.Empty, options.WithDefaults());
+        public static Output<GetCleanRoomAssetRevisionsCleanRoomAssetsResult> Invoke(GetCleanRoomAssetRevisionsCleanRoomAssetsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetCleanRoomAssetRevisionsCleanRoomAssetsResult>("databricks:index/getCleanRoomAssetRevisionsCleanRoomAssets:getCleanRoomAssetRevisionsCleanRoomAssets", args ?? new GetCleanRoomAssetRevisionsCleanRoomAssetsInvokeArgs(), options.WithDefaults());
+    }
+
+
+    public sealed class GetCleanRoomAssetRevisionsCleanRoomAssetsArgs : global::Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Name of the asset
+        /// </summary>
+        [Input("name", required: true)]
+        public string Name { get; set; } = null!;
+
+        /// <summary>
+        /// Workspace ID of the resource
+        /// </summary>
+        [Input("workspaceId")]
+        public string? WorkspaceId { get; set; }
+
+        public GetCleanRoomAssetRevisionsCleanRoomAssetsArgs()
+        {
+        }
+        public static new GetCleanRoomAssetRevisionsCleanRoomAssetsArgs Empty => new GetCleanRoomAssetRevisionsCleanRoomAssetsArgs();
+    }
+
+    public sealed class GetCleanRoomAssetRevisionsCleanRoomAssetsInvokeArgs : global::Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Name of the asset
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// Workspace ID of the resource
+        /// </summary>
+        [Input("workspaceId")]
+        public Input<string>? WorkspaceId { get; set; }
+
+        public GetCleanRoomAssetRevisionsCleanRoomAssetsInvokeArgs()
+        {
+        }
+        public static new GetCleanRoomAssetRevisionsCleanRoomAssetsInvokeArgs Empty => new GetCleanRoomAssetRevisionsCleanRoomAssetsInvokeArgs();
     }
 
 
@@ -29,16 +70,27 @@ namespace Pulumi.Databricks
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// (string) - The name of the partition column
+        /// </summary>
+        public readonly string Name;
         public readonly ImmutableArray<Outputs.GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionResult> Revisions;
+        public readonly string? WorkspaceId;
 
         [OutputConstructor]
         private GetCleanRoomAssetRevisionsCleanRoomAssetsResult(
             string id,
 
-            ImmutableArray<Outputs.GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionResult> revisions)
+            string name,
+
+            ImmutableArray<Outputs.GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionResult> revisions,
+
+            string? workspaceId)
         {
             Id = id;
+            Name = name;
             Revisions = revisions;
+            WorkspaceId = workspaceId;
         }
     }
 }

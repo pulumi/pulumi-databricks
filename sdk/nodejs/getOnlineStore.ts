@@ -10,6 +10,7 @@ export function getOnlineStore(args: GetOnlineStoreArgs, opts?: pulumi.InvokeOpt
         "capacity": args.capacity,
         "name": args.name,
         "readReplicaCount": args.readReplicaCount,
+        "workspaceId": args.workspaceId,
     }, opts);
 }
 
@@ -29,6 +30,10 @@ export interface GetOnlineStoreArgs {
      * (integer) - The number of read replicas for the online store. Defaults to 0
      */
     readReplicaCount?: number;
+    /**
+     * Workspace ID of the resource
+     */
+    workspaceId?: string;
 }
 
 /**
@@ -63,6 +68,7 @@ export interface GetOnlineStoreResult {
      * (string) - The current state of the online store. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
      */
     readonly state: string;
+    readonly workspaceId?: string;
 }
 export function getOnlineStoreOutput(args: GetOnlineStoreOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetOnlineStoreResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -70,6 +76,7 @@ export function getOnlineStoreOutput(args: GetOnlineStoreOutputArgs, opts?: pulu
         "capacity": args.capacity,
         "name": args.name,
         "readReplicaCount": args.readReplicaCount,
+        "workspaceId": args.workspaceId,
     }, opts);
 }
 
@@ -89,4 +96,8 @@ export interface GetOnlineStoreOutputArgs {
      * (integer) - The number of read replicas for the online store. Defaults to 0
      */
     readReplicaCount?: pulumi.Input<number>;
+    /**
+     * Workspace ID of the resource
+     */
+    workspaceId?: pulumi.Input<string>;
 }

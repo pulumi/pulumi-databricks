@@ -159,6 +159,21 @@ public final class DatabaseSyncedDatabaseTableState extends com.pulumi.resources
         return Optional.ofNullable(this.unityCatalogProvisioningState);
     }
 
+    /**
+     * Workspace ID of the resource
+     * 
+     */
+    @Import(name="workspaceId")
+    private @Nullable Output<String> workspaceId;
+
+    /**
+     * @return Workspace ID of the resource
+     * 
+     */
+    public Optional<Output<String>> workspaceId() {
+        return Optional.ofNullable(this.workspaceId);
+    }
+
     private DatabaseSyncedDatabaseTableState() {}
 
     private DatabaseSyncedDatabaseTableState(DatabaseSyncedDatabaseTableState $) {
@@ -170,6 +185,7 @@ public final class DatabaseSyncedDatabaseTableState extends com.pulumi.resources
         this.name = $.name;
         this.spec = $.spec;
         this.unityCatalogProvisioningState = $.unityCatalogProvisioningState;
+        this.workspaceId = $.workspaceId;
     }
 
     public static Builder builder() {
@@ -374,6 +390,27 @@ public final class DatabaseSyncedDatabaseTableState extends com.pulumi.resources
          */
         public Builder unityCatalogProvisioningState(String unityCatalogProvisioningState) {
             return unityCatalogProvisioningState(Output.of(unityCatalogProvisioningState));
+        }
+
+        /**
+         * @param workspaceId Workspace ID of the resource
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workspaceId(@Nullable Output<String> workspaceId) {
+            $.workspaceId = workspaceId;
+            return this;
+        }
+
+        /**
+         * @param workspaceId Workspace ID of the resource
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workspaceId(String workspaceId) {
+            return workspaceId(Output.of(workspaceId));
         }
 
         public DatabaseSyncedDatabaseTableState build() {

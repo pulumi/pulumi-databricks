@@ -81,14 +81,14 @@ public final class GetCleanRoomAssetNotebookArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * (list of string) - collaborators that can run the notebook
+     * (list of string) - Aliases of collaborators that can run the notebook
      * 
      */
     @Import(name="runnerCollaboratorAliases")
     private @Nullable Output<List<String>> runnerCollaboratorAliases;
 
     /**
-     * @return (list of string) - collaborators that can run the notebook
+     * @return (list of string) - Aliases of collaborators that can run the notebook
      * 
      */
     public Optional<Output<List<String>>> runnerCollaboratorAliases() {
@@ -220,7 +220,7 @@ public final class GetCleanRoomAssetNotebookArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param runnerCollaboratorAliases (list of string) - collaborators that can run the notebook
+         * @param runnerCollaboratorAliases (list of string) - Aliases of collaborators that can run the notebook
          * 
          * @return builder
          * 
@@ -231,7 +231,7 @@ public final class GetCleanRoomAssetNotebookArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param runnerCollaboratorAliases (list of string) - collaborators that can run the notebook
+         * @param runnerCollaboratorAliases (list of string) - Aliases of collaborators that can run the notebook
          * 
          * @return builder
          * 
@@ -241,7 +241,7 @@ public final class GetCleanRoomAssetNotebookArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param runnerCollaboratorAliases (list of string) - collaborators that can run the notebook
+         * @param runnerCollaboratorAliases (list of string) - Aliases of collaborators that can run the notebook
          * 
          * @return builder
          * 

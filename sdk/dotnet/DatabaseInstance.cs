@@ -91,7 +91,7 @@ namespace Pulumi.Databricks
     /// 
     /// import {
     /// 
-    ///   id = name
+    ///   id = "name"
     /// 
     ///   to = databricks_database_instance.this
     /// 
@@ -100,7 +100,7 @@ namespace Pulumi.Databricks
     /// If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
     /// 
     /// ```sh
-    /// $ pulumi import databricks:index/databaseInstance:DatabaseInstance databricks_database_instance name
+    /// $ pulumi import databricks:index/databaseInstance:DatabaseInstance databricks_database_instance "name"
     /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/databaseInstance:DatabaseInstance")]
@@ -130,6 +130,14 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("creator")]
         public Output<string> Creator { get; private set; } = null!;
+
+        /// <summary>
+        /// (boolean) - xref AIP-129. `enable_pg_native_login` is owned by the client, while `effective_enable_pg_native_login` is owned by the server.
+        /// `enable_pg_native_login` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+        /// `effective_enable_pg_native_login` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+        /// </summary>
+        [Output("effectiveEnablePgNativeLogin")]
+        public Output<bool> EffectiveEnablePgNativeLogin { get; private set; } = null!;
 
         /// <summary>
         /// (boolean) - xref AIP-129. `enable_readable_secondaries` is owned by the client, while `effective_enable_readable_secondaries` is owned by the server.
@@ -162,6 +170,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("effectiveStopped")]
         public Output<bool> EffectiveStopped { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether the instance has PG native password login enabled. Defaults to true
+        /// </summary>
+        [Output("enablePgNativeLogin")]
+        public Output<bool> EnablePgNativeLogin { get; private set; } = null!;
 
         /// <summary>
         /// Whether to enable secondaries to serve read-only traffic. Defaults to false
@@ -242,6 +256,12 @@ namespace Pulumi.Databricks
         [Output("uid")]
         public Output<string> Uid { get; private set; } = null!;
 
+        /// <summary>
+        /// Workspace ID of the resource
+        /// </summary>
+        [Output("workspaceId")]
+        public Output<string?> WorkspaceId { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a DatabaseInstance resource with the given unique name, arguments, and options.
@@ -295,6 +315,12 @@ namespace Pulumi.Databricks
         public Input<string>? Capacity { get; set; }
 
         /// <summary>
+        /// Whether the instance has PG native password login enabled. Defaults to true
+        /// </summary>
+        [Input("enablePgNativeLogin")]
+        public Input<bool>? EnablePgNativeLogin { get; set; }
+
+        /// <summary>
         /// Whether to enable secondaries to serve read-only traffic. Defaults to false
         /// </summary>
         [Input("enableReadableSecondaries")]
@@ -342,6 +368,12 @@ namespace Pulumi.Databricks
         [Input("stopped")]
         public Input<bool>? Stopped { get; set; }
 
+        /// <summary>
+        /// Workspace ID of the resource
+        /// </summary>
+        [Input("workspaceId")]
+        public Input<string>? WorkspaceId { get; set; }
+
         public DatabaseInstanceArgs()
         {
         }
@@ -382,6 +414,14 @@ namespace Pulumi.Databricks
         public Input<string>? Creator { get; set; }
 
         /// <summary>
+        /// (boolean) - xref AIP-129. `enable_pg_native_login` is owned by the client, while `effective_enable_pg_native_login` is owned by the server.
+        /// `enable_pg_native_login` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+        /// `effective_enable_pg_native_login` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+        /// </summary>
+        [Input("effectiveEnablePgNativeLogin")]
+        public Input<bool>? EffectiveEnablePgNativeLogin { get; set; }
+
+        /// <summary>
         /// (boolean) - xref AIP-129. `enable_readable_secondaries` is owned by the client, while `effective_enable_readable_secondaries` is owned by the server.
         /// `enable_readable_secondaries` will only be set in Create/Update response messages if and only if the user provides the field via the request.
         /// `effective_enable_readable_secondaries` on the other hand will always bet set in all response messages (Create/Update/Get/List)
@@ -412,6 +452,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("effectiveStopped")]
         public Input<bool>? EffectiveStopped { get; set; }
+
+        /// <summary>
+        /// Whether the instance has PG native password login enabled. Defaults to true
+        /// </summary>
+        [Input("enablePgNativeLogin")]
+        public Input<bool>? EnablePgNativeLogin { get; set; }
 
         /// <summary>
         /// Whether to enable secondaries to serve read-only traffic. Defaults to false
@@ -491,6 +537,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("uid")]
         public Input<string>? Uid { get; set; }
+
+        /// <summary>
+        /// Workspace ID of the resource
+        /// </summary>
+        [Input("workspaceId")]
+        public Input<string>? WorkspaceId { get; set; }
 
         public DatabaseInstanceState()
         {

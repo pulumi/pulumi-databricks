@@ -11,14 +11,20 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-func GetOnlineStores(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetOnlineStoresResult, error) {
+func GetOnlineStores(ctx *pulumi.Context, args *GetOnlineStoresArgs, opts ...pulumi.InvokeOption) (*GetOnlineStoresResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetOnlineStoresResult
-	err := ctx.Invoke("databricks:index/getOnlineStores:getOnlineStores", nil, &rv, opts...)
+	err := ctx.Invoke("databricks:index/getOnlineStores:getOnlineStores", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &rv, nil
+}
+
+// A collection of arguments for invoking getOnlineStores.
+type GetOnlineStoresArgs struct {
+	// Workspace ID of the resource
+	WorkspaceId *string `pulumi:"workspaceId"`
 }
 
 // A collection of values returned by getOnlineStores.
@@ -26,13 +32,26 @@ type GetOnlineStoresResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id           string                       `pulumi:"id"`
 	OnlineStores []GetOnlineStoresOnlineStore `pulumi:"onlineStores"`
+	WorkspaceId  *string                      `pulumi:"workspaceId"`
 }
 
-func GetOnlineStoresOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetOnlineStoresResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetOnlineStoresResultOutput, error) {
-		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-		return ctx.InvokeOutput("databricks:index/getOnlineStores:getOnlineStores", nil, GetOnlineStoresResultOutput{}, options).(GetOnlineStoresResultOutput), nil
-	}).(GetOnlineStoresResultOutput)
+func GetOnlineStoresOutput(ctx *pulumi.Context, args GetOnlineStoresOutputArgs, opts ...pulumi.InvokeOption) GetOnlineStoresResultOutput {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (GetOnlineStoresResultOutput, error) {
+			args := v.(GetOnlineStoresArgs)
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("databricks:index/getOnlineStores:getOnlineStores", args, GetOnlineStoresResultOutput{}, options).(GetOnlineStoresResultOutput), nil
+		}).(GetOnlineStoresResultOutput)
+}
+
+// A collection of arguments for invoking getOnlineStores.
+type GetOnlineStoresOutputArgs struct {
+	// Workspace ID of the resource
+	WorkspaceId pulumi.StringPtrInput `pulumi:"workspaceId"`
+}
+
+func (GetOnlineStoresOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOnlineStoresArgs)(nil)).Elem()
 }
 
 // A collection of values returned by getOnlineStores.
@@ -57,6 +76,10 @@ func (o GetOnlineStoresResultOutput) Id() pulumi.StringOutput {
 
 func (o GetOnlineStoresResultOutput) OnlineStores() GetOnlineStoresOnlineStoreArrayOutput {
 	return o.ApplyT(func(v GetOnlineStoresResult) []GetOnlineStoresOnlineStore { return v.OnlineStores }).(GetOnlineStoresOnlineStoreArrayOutput)
+}
+
+func (o GetOnlineStoresResultOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOnlineStoresResult) *string { return v.WorkspaceId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

@@ -62,12 +62,28 @@ public final class GetRecipientFederationPolicyPlainArgs extends com.pulumi.reso
         return Optional.ofNullable(this.oidcPolicy);
     }
 
+    /**
+     * Workspace ID of the resource
+     * 
+     */
+    @Import(name="workspaceId")
+    private @Nullable String workspaceId;
+
+    /**
+     * @return Workspace ID of the resource
+     * 
+     */
+    public Optional<String> workspaceId() {
+        return Optional.ofNullable(this.workspaceId);
+    }
+
     private GetRecipientFederationPolicyPlainArgs() {}
 
     private GetRecipientFederationPolicyPlainArgs(GetRecipientFederationPolicyPlainArgs $) {
         this.comment = $.comment;
         this.name = $.name;
         this.oidcPolicy = $.oidcPolicy;
+        this.workspaceId = $.workspaceId;
     }
 
     public static Builder builder() {
@@ -119,6 +135,17 @@ public final class GetRecipientFederationPolicyPlainArgs extends com.pulumi.reso
          */
         public Builder oidcPolicy(@Nullable GetRecipientFederationPolicyOidcPolicy oidcPolicy) {
             $.oidcPolicy = oidcPolicy;
+            return this;
+        }
+
+        /**
+         * @param workspaceId Workspace ID of the resource
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workspaceId(@Nullable String workspaceId) {
+            $.workspaceId = workspaceId;
             return this;
         }
 

@@ -6,10 +6,22 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-export function getDatabaseDatabaseCatalogs(opts?: pulumi.InvokeOptions): Promise<GetDatabaseDatabaseCatalogsResult> {
+export function getDatabaseDatabaseCatalogs(args?: GetDatabaseDatabaseCatalogsArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabaseDatabaseCatalogsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getDatabaseDatabaseCatalogs:getDatabaseDatabaseCatalogs", {
+        "workspaceId": args.workspaceId,
     }, opts);
+}
+
+/**
+ * A collection of arguments for invoking getDatabaseDatabaseCatalogs.
+ */
+export interface GetDatabaseDatabaseCatalogsArgs {
+    /**
+     * Workspace ID of the resource
+     */
+    workspaceId?: string;
 }
 
 /**
@@ -21,9 +33,22 @@ export interface GetDatabaseDatabaseCatalogsResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly workspaceId?: string;
 }
-export function getDatabaseDatabaseCatalogsOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDatabaseDatabaseCatalogsResult> {
+export function getDatabaseDatabaseCatalogsOutput(args?: GetDatabaseDatabaseCatalogsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDatabaseDatabaseCatalogsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getDatabaseDatabaseCatalogs:getDatabaseDatabaseCatalogs", {
+        "workspaceId": args.workspaceId,
     }, opts);
+}
+
+/**
+ * A collection of arguments for invoking getDatabaseDatabaseCatalogs.
+ */
+export interface GetDatabaseDatabaseCatalogsOutputArgs {
+    /**
+     * Workspace ID of the resource
+     */
+    workspaceId?: pulumi.Input<string>;
 }

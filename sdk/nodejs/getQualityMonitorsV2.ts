@@ -22,10 +22,22 @@ import * as utilities from "./utilities";
  * const all = databricks.getQualityMonitorsV2({});
  * ```
  */
-export function getQualityMonitorsV2(opts?: pulumi.InvokeOptions): Promise<GetQualityMonitorsV2Result> {
+export function getQualityMonitorsV2(args?: GetQualityMonitorsV2Args, opts?: pulumi.InvokeOptions): Promise<GetQualityMonitorsV2Result> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getQualityMonitorsV2:getQualityMonitorsV2", {
+        "workspaceId": args.workspaceId,
     }, opts);
+}
+
+/**
+ * A collection of arguments for invoking getQualityMonitorsV2.
+ */
+export interface GetQualityMonitorsV2Args {
+    /**
+     * Workspace ID of the resource
+     */
+    workspaceId?: string;
 }
 
 /**
@@ -37,6 +49,7 @@ export interface GetQualityMonitorsV2Result {
      */
     readonly id: string;
     readonly qualityMonitors: outputs.GetQualityMonitorsV2QualityMonitor[];
+    readonly workspaceId?: string;
 }
 /**
  * This data source can be used to fetch the list of quality monitors v2.
@@ -54,8 +67,20 @@ export interface GetQualityMonitorsV2Result {
  * const all = databricks.getQualityMonitorsV2({});
  * ```
  */
-export function getQualityMonitorsV2Output(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetQualityMonitorsV2Result> {
+export function getQualityMonitorsV2Output(args?: GetQualityMonitorsV2OutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetQualityMonitorsV2Result> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getQualityMonitorsV2:getQualityMonitorsV2", {
+        "workspaceId": args.workspaceId,
     }, opts);
+}
+
+/**
+ * A collection of arguments for invoking getQualityMonitorsV2.
+ */
+export interface GetQualityMonitorsV2OutputArgs {
+    /**
+     * Workspace ID of the resource
+     */
+    workspaceId?: pulumi.Input<string>;
 }

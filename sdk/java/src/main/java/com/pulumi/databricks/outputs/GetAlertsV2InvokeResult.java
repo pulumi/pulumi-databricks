@@ -9,6 +9,8 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAlertsV2InvokeResult {
@@ -18,6 +20,7 @@ public final class GetAlertsV2InvokeResult {
      */
     private String id;
     private List<GetAlertsV2Result> results;
+    private @Nullable String workspaceId;
 
     private GetAlertsV2InvokeResult() {}
     /**
@@ -29,6 +32,9 @@ public final class GetAlertsV2InvokeResult {
     }
     public List<GetAlertsV2Result> results() {
         return this.results;
+    }
+    public Optional<String> workspaceId() {
+        return Optional.ofNullable(this.workspaceId);
     }
 
     public static Builder builder() {
@@ -42,11 +48,13 @@ public final class GetAlertsV2InvokeResult {
     public static final class Builder {
         private String id;
         private List<GetAlertsV2Result> results;
+        private @Nullable String workspaceId;
         public Builder() {}
         public Builder(GetAlertsV2InvokeResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
     	      this.results = defaults.results;
+    	      this.workspaceId = defaults.workspaceId;
         }
 
         @CustomType.Setter
@@ -68,10 +76,17 @@ public final class GetAlertsV2InvokeResult {
         public Builder results(GetAlertsV2Result... results) {
             return results(List.of(results));
         }
+        @CustomType.Setter
+        public Builder workspaceId(@Nullable String workspaceId) {
+
+            this.workspaceId = workspaceId;
+            return this;
+        }
         public GetAlertsV2InvokeResult build() {
             final var _resultValue = new GetAlertsV2InvokeResult();
             _resultValue.id = id;
             _resultValue.results = results;
+            _resultValue.workspaceId = workspaceId;
             return _resultValue;
         }
     }

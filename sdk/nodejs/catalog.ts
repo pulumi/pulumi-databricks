@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -84,6 +86,8 @@ export class Catalog extends pulumi.CustomResource {
         return obj['__pulumiType'] === Catalog.__pulumiType;
     }
 
+    declare public readonly browseOnly: pulumi.Output<boolean | undefined>;
+    declare public /*out*/ readonly catalogType: pulumi.Output<string>;
     /**
      * User-supplied free-form text.
      */
@@ -92,6 +96,9 @@ export class Catalog extends pulumi.CustomResource {
      * For Foreign Catalogs: the name of the connection to an external data source. Changes forces creation of a new resource.
      */
     declare public readonly connectionName: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<number>;
+    declare public /*out*/ readonly createdBy: pulumi.Output<string>;
+    declare public readonly effectivePredictiveOptimizationFlag: pulumi.Output<outputs.CatalogEffectivePredictiveOptimizationFlag>;
     /**
      * Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
      */
@@ -100,6 +107,7 @@ export class Catalog extends pulumi.CustomResource {
      * Delete catalog regardless of its contents.
      */
     declare public readonly forceDestroy: pulumi.Output<boolean | undefined>;
+    declare public /*out*/ readonly fullName: pulumi.Output<string>;
     /**
      * Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
      */
@@ -128,14 +136,19 @@ export class Catalog extends pulumi.CustomResource {
      * For Delta Sharing Catalogs: the name of the delta sharing provider. Change forces creation of a new resource.
      */
     declare public readonly providerName: pulumi.Output<string | undefined>;
+    declare public readonly provisioningInfo: pulumi.Output<outputs.CatalogProvisioningInfo | undefined>;
+    declare public /*out*/ readonly securableType: pulumi.Output<string>;
     /**
      * For Delta Sharing Catalogs: the name of the share under the share provider. Change forces creation of a new resource.
      */
     declare public readonly shareName: pulumi.Output<string | undefined>;
+    declare public readonly storageLocation: pulumi.Output<string | undefined>;
     /**
      * Managed location of the catalog. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
      */
     declare public readonly storageRoot: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly updatedAt: pulumi.Output<number>;
+    declare public /*out*/ readonly updatedBy: pulumi.Output<string>;
 
     /**
      * Create a Catalog resource with the given unique name, arguments, and options.
@@ -150,10 +163,16 @@ export class Catalog extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CatalogState | undefined;
+            resourceInputs["browseOnly"] = state?.browseOnly;
+            resourceInputs["catalogType"] = state?.catalogType;
             resourceInputs["comment"] = state?.comment;
             resourceInputs["connectionName"] = state?.connectionName;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["createdBy"] = state?.createdBy;
+            resourceInputs["effectivePredictiveOptimizationFlag"] = state?.effectivePredictiveOptimizationFlag;
             resourceInputs["enablePredictiveOptimization"] = state?.enablePredictiveOptimization;
             resourceInputs["forceDestroy"] = state?.forceDestroy;
+            resourceInputs["fullName"] = state?.fullName;
             resourceInputs["isolationMode"] = state?.isolationMode;
             resourceInputs["metastoreId"] = state?.metastoreId;
             resourceInputs["name"] = state?.name;
@@ -161,12 +180,19 @@ export class Catalog extends pulumi.CustomResource {
             resourceInputs["owner"] = state?.owner;
             resourceInputs["properties"] = state?.properties;
             resourceInputs["providerName"] = state?.providerName;
+            resourceInputs["provisioningInfo"] = state?.provisioningInfo;
+            resourceInputs["securableType"] = state?.securableType;
             resourceInputs["shareName"] = state?.shareName;
+            resourceInputs["storageLocation"] = state?.storageLocation;
             resourceInputs["storageRoot"] = state?.storageRoot;
+            resourceInputs["updatedAt"] = state?.updatedAt;
+            resourceInputs["updatedBy"] = state?.updatedBy;
         } else {
             const args = argsOrState as CatalogArgs | undefined;
+            resourceInputs["browseOnly"] = args?.browseOnly;
             resourceInputs["comment"] = args?.comment;
             resourceInputs["connectionName"] = args?.connectionName;
+            resourceInputs["effectivePredictiveOptimizationFlag"] = args?.effectivePredictiveOptimizationFlag;
             resourceInputs["enablePredictiveOptimization"] = args?.enablePredictiveOptimization;
             resourceInputs["forceDestroy"] = args?.forceDestroy;
             resourceInputs["isolationMode"] = args?.isolationMode;
@@ -176,8 +202,17 @@ export class Catalog extends pulumi.CustomResource {
             resourceInputs["owner"] = args?.owner;
             resourceInputs["properties"] = args?.properties;
             resourceInputs["providerName"] = args?.providerName;
+            resourceInputs["provisioningInfo"] = args?.provisioningInfo;
             resourceInputs["shareName"] = args?.shareName;
+            resourceInputs["storageLocation"] = args?.storageLocation;
             resourceInputs["storageRoot"] = args?.storageRoot;
+            resourceInputs["catalogType"] = undefined /*out*/;
+            resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["createdBy"] = undefined /*out*/;
+            resourceInputs["fullName"] = undefined /*out*/;
+            resourceInputs["securableType"] = undefined /*out*/;
+            resourceInputs["updatedAt"] = undefined /*out*/;
+            resourceInputs["updatedBy"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Catalog.__pulumiType, name, resourceInputs, opts);
@@ -188,6 +223,8 @@ export class Catalog extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Catalog resources.
  */
 export interface CatalogState {
+    browseOnly?: pulumi.Input<boolean>;
+    catalogType?: pulumi.Input<string>;
     /**
      * User-supplied free-form text.
      */
@@ -196,6 +233,9 @@ export interface CatalogState {
      * For Foreign Catalogs: the name of the connection to an external data source. Changes forces creation of a new resource.
      */
     connectionName?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<number>;
+    createdBy?: pulumi.Input<string>;
+    effectivePredictiveOptimizationFlag?: pulumi.Input<inputs.CatalogEffectivePredictiveOptimizationFlag>;
     /**
      * Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
      */
@@ -204,6 +244,7 @@ export interface CatalogState {
      * Delete catalog regardless of its contents.
      */
     forceDestroy?: pulumi.Input<boolean>;
+    fullName?: pulumi.Input<string>;
     /**
      * Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
      */
@@ -232,20 +273,26 @@ export interface CatalogState {
      * For Delta Sharing Catalogs: the name of the delta sharing provider. Change forces creation of a new resource.
      */
     providerName?: pulumi.Input<string>;
+    provisioningInfo?: pulumi.Input<inputs.CatalogProvisioningInfo>;
+    securableType?: pulumi.Input<string>;
     /**
      * For Delta Sharing Catalogs: the name of the share under the share provider. Change forces creation of a new resource.
      */
     shareName?: pulumi.Input<string>;
+    storageLocation?: pulumi.Input<string>;
     /**
      * Managed location of the catalog. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
      */
     storageRoot?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<number>;
+    updatedBy?: pulumi.Input<string>;
 }
 
 /**
  * The set of arguments for constructing a Catalog resource.
  */
 export interface CatalogArgs {
+    browseOnly?: pulumi.Input<boolean>;
     /**
      * User-supplied free-form text.
      */
@@ -254,6 +301,7 @@ export interface CatalogArgs {
      * For Foreign Catalogs: the name of the connection to an external data source. Changes forces creation of a new resource.
      */
     connectionName?: pulumi.Input<string>;
+    effectivePredictiveOptimizationFlag?: pulumi.Input<inputs.CatalogEffectivePredictiveOptimizationFlag>;
     /**
      * Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
      */
@@ -290,10 +338,12 @@ export interface CatalogArgs {
      * For Delta Sharing Catalogs: the name of the delta sharing provider. Change forces creation of a new resource.
      */
     providerName?: pulumi.Input<string>;
+    provisioningInfo?: pulumi.Input<inputs.CatalogProvisioningInfo>;
     /**
      * For Delta Sharing Catalogs: the name of the share under the share provider. Change forces creation of a new resource.
      */
     shareName?: pulumi.Input<string>;
+    storageLocation?: pulumi.Input<string>;
     /**
      * Managed location of the catalog. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
      */

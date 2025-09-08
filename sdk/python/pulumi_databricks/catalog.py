@@ -13,14 +13,18 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['CatalogArgs', 'Catalog']
 
 @pulumi.input_type
 class CatalogArgs:
     def __init__(__self__, *,
+                 browse_only: Optional[pulumi.Input[_builtins.bool]] = None,
                  comment: Optional[pulumi.Input[_builtins.str]] = None,
                  connection_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 effective_predictive_optimization_flag: Optional[pulumi.Input['CatalogEffectivePredictiveOptimizationFlagArgs']] = None,
                  enable_predictive_optimization: Optional[pulumi.Input[_builtins.str]] = None,
                  force_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
                  isolation_mode: Optional[pulumi.Input[_builtins.str]] = None,
@@ -30,7 +34,9 @@ class CatalogArgs:
                  owner: Optional[pulumi.Input[_builtins.str]] = None,
                  properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  provider_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 provisioning_info: Optional[pulumi.Input['CatalogProvisioningInfoArgs']] = None,
                  share_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 storage_location: Optional[pulumi.Input[_builtins.str]] = None,
                  storage_root: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Catalog resource.
@@ -48,10 +54,14 @@ class CatalogArgs:
         :param pulumi.Input[_builtins.str] share_name: For Delta Sharing Catalogs: the name of the share under the share provider. Change forces creation of a new resource.
         :param pulumi.Input[_builtins.str] storage_root: Managed location of the catalog. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
         """
+        if browse_only is not None:
+            pulumi.set(__self__, "browse_only", browse_only)
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
         if connection_name is not None:
             pulumi.set(__self__, "connection_name", connection_name)
+        if effective_predictive_optimization_flag is not None:
+            pulumi.set(__self__, "effective_predictive_optimization_flag", effective_predictive_optimization_flag)
         if enable_predictive_optimization is not None:
             pulumi.set(__self__, "enable_predictive_optimization", enable_predictive_optimization)
         if force_destroy is not None:
@@ -70,10 +80,23 @@ class CatalogArgs:
             pulumi.set(__self__, "properties", properties)
         if provider_name is not None:
             pulumi.set(__self__, "provider_name", provider_name)
+        if provisioning_info is not None:
+            pulumi.set(__self__, "provisioning_info", provisioning_info)
         if share_name is not None:
             pulumi.set(__self__, "share_name", share_name)
+        if storage_location is not None:
+            pulumi.set(__self__, "storage_location", storage_location)
         if storage_root is not None:
             pulumi.set(__self__, "storage_root", storage_root)
+
+    @_builtins.property
+    @pulumi.getter(name="browseOnly")
+    def browse_only(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        return pulumi.get(self, "browse_only")
+
+    @browse_only.setter
+    def browse_only(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "browse_only", value)
 
     @_builtins.property
     @pulumi.getter
@@ -98,6 +121,15 @@ class CatalogArgs:
     @connection_name.setter
     def connection_name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "connection_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="effectivePredictiveOptimizationFlag")
+    def effective_predictive_optimization_flag(self) -> Optional[pulumi.Input['CatalogEffectivePredictiveOptimizationFlagArgs']]:
+        return pulumi.get(self, "effective_predictive_optimization_flag")
+
+    @effective_predictive_optimization_flag.setter
+    def effective_predictive_optimization_flag(self, value: Optional[pulumi.Input['CatalogEffectivePredictiveOptimizationFlagArgs']]):
+        pulumi.set(self, "effective_predictive_optimization_flag", value)
 
     @_builtins.property
     @pulumi.getter(name="enablePredictiveOptimization")
@@ -208,6 +240,15 @@ class CatalogArgs:
         pulumi.set(self, "provider_name", value)
 
     @_builtins.property
+    @pulumi.getter(name="provisioningInfo")
+    def provisioning_info(self) -> Optional[pulumi.Input['CatalogProvisioningInfoArgs']]:
+        return pulumi.get(self, "provisioning_info")
+
+    @provisioning_info.setter
+    def provisioning_info(self, value: Optional[pulumi.Input['CatalogProvisioningInfoArgs']]):
+        pulumi.set(self, "provisioning_info", value)
+
+    @_builtins.property
     @pulumi.getter(name="shareName")
     def share_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -218,6 +259,15 @@ class CatalogArgs:
     @share_name.setter
     def share_name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "share_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="storageLocation")
+    def storage_location(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "storage_location")
+
+    @storage_location.setter
+    def storage_location(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "storage_location", value)
 
     @_builtins.property
     @pulumi.getter(name="storageRoot")
@@ -235,10 +285,16 @@ class CatalogArgs:
 @pulumi.input_type
 class _CatalogState:
     def __init__(__self__, *,
+                 browse_only: Optional[pulumi.Input[_builtins.bool]] = None,
+                 catalog_type: Optional[pulumi.Input[_builtins.str]] = None,
                  comment: Optional[pulumi.Input[_builtins.str]] = None,
                  connection_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 created_at: Optional[pulumi.Input[_builtins.int]] = None,
+                 created_by: Optional[pulumi.Input[_builtins.str]] = None,
+                 effective_predictive_optimization_flag: Optional[pulumi.Input['CatalogEffectivePredictiveOptimizationFlagArgs']] = None,
                  enable_predictive_optimization: Optional[pulumi.Input[_builtins.str]] = None,
                  force_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
+                 full_name: Optional[pulumi.Input[_builtins.str]] = None,
                  isolation_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  metastore_id: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -246,8 +302,13 @@ class _CatalogState:
                  owner: Optional[pulumi.Input[_builtins.str]] = None,
                  properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  provider_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 provisioning_info: Optional[pulumi.Input['CatalogProvisioningInfoArgs']] = None,
+                 securable_type: Optional[pulumi.Input[_builtins.str]] = None,
                  share_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_root: Optional[pulumi.Input[_builtins.str]] = None):
+                 storage_location: Optional[pulumi.Input[_builtins.str]] = None,
+                 storage_root: Optional[pulumi.Input[_builtins.str]] = None,
+                 updated_at: Optional[pulumi.Input[_builtins.int]] = None,
+                 updated_by: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Catalog resources.
         :param pulumi.Input[_builtins.str] comment: User-supplied free-form text.
@@ -264,14 +325,26 @@ class _CatalogState:
         :param pulumi.Input[_builtins.str] share_name: For Delta Sharing Catalogs: the name of the share under the share provider. Change forces creation of a new resource.
         :param pulumi.Input[_builtins.str] storage_root: Managed location of the catalog. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
         """
+        if browse_only is not None:
+            pulumi.set(__self__, "browse_only", browse_only)
+        if catalog_type is not None:
+            pulumi.set(__self__, "catalog_type", catalog_type)
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
         if connection_name is not None:
             pulumi.set(__self__, "connection_name", connection_name)
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
+        if created_by is not None:
+            pulumi.set(__self__, "created_by", created_by)
+        if effective_predictive_optimization_flag is not None:
+            pulumi.set(__self__, "effective_predictive_optimization_flag", effective_predictive_optimization_flag)
         if enable_predictive_optimization is not None:
             pulumi.set(__self__, "enable_predictive_optimization", enable_predictive_optimization)
         if force_destroy is not None:
             pulumi.set(__self__, "force_destroy", force_destroy)
+        if full_name is not None:
+            pulumi.set(__self__, "full_name", full_name)
         if isolation_mode is not None:
             pulumi.set(__self__, "isolation_mode", isolation_mode)
         if metastore_id is not None:
@@ -286,10 +359,38 @@ class _CatalogState:
             pulumi.set(__self__, "properties", properties)
         if provider_name is not None:
             pulumi.set(__self__, "provider_name", provider_name)
+        if provisioning_info is not None:
+            pulumi.set(__self__, "provisioning_info", provisioning_info)
+        if securable_type is not None:
+            pulumi.set(__self__, "securable_type", securable_type)
         if share_name is not None:
             pulumi.set(__self__, "share_name", share_name)
+        if storage_location is not None:
+            pulumi.set(__self__, "storage_location", storage_location)
         if storage_root is not None:
             pulumi.set(__self__, "storage_root", storage_root)
+        if updated_at is not None:
+            pulumi.set(__self__, "updated_at", updated_at)
+        if updated_by is not None:
+            pulumi.set(__self__, "updated_by", updated_by)
+
+    @_builtins.property
+    @pulumi.getter(name="browseOnly")
+    def browse_only(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        return pulumi.get(self, "browse_only")
+
+    @browse_only.setter
+    def browse_only(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "browse_only", value)
+
+    @_builtins.property
+    @pulumi.getter(name="catalogType")
+    def catalog_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "catalog_type")
+
+    @catalog_type.setter
+    def catalog_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "catalog_type", value)
 
     @_builtins.property
     @pulumi.getter
@@ -316,6 +417,33 @@ class _CatalogState:
         pulumi.set(self, "connection_name", value)
 
     @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "created_at", value)
+
+    @_builtins.property
+    @pulumi.getter(name="createdBy")
+    def created_by(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "created_by")
+
+    @created_by.setter
+    def created_by(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "created_by", value)
+
+    @_builtins.property
+    @pulumi.getter(name="effectivePredictiveOptimizationFlag")
+    def effective_predictive_optimization_flag(self) -> Optional[pulumi.Input['CatalogEffectivePredictiveOptimizationFlagArgs']]:
+        return pulumi.get(self, "effective_predictive_optimization_flag")
+
+    @effective_predictive_optimization_flag.setter
+    def effective_predictive_optimization_flag(self, value: Optional[pulumi.Input['CatalogEffectivePredictiveOptimizationFlagArgs']]):
+        pulumi.set(self, "effective_predictive_optimization_flag", value)
+
+    @_builtins.property
     @pulumi.getter(name="enablePredictiveOptimization")
     def enable_predictive_optimization(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -338,6 +466,15 @@ class _CatalogState:
     @force_destroy.setter
     def force_destroy(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "force_destroy", value)
+
+    @_builtins.property
+    @pulumi.getter(name="fullName")
+    def full_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "full_name")
+
+    @full_name.setter
+    def full_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "full_name", value)
 
     @_builtins.property
     @pulumi.getter(name="isolationMode")
@@ -424,6 +561,24 @@ class _CatalogState:
         pulumi.set(self, "provider_name", value)
 
     @_builtins.property
+    @pulumi.getter(name="provisioningInfo")
+    def provisioning_info(self) -> Optional[pulumi.Input['CatalogProvisioningInfoArgs']]:
+        return pulumi.get(self, "provisioning_info")
+
+    @provisioning_info.setter
+    def provisioning_info(self, value: Optional[pulumi.Input['CatalogProvisioningInfoArgs']]):
+        pulumi.set(self, "provisioning_info", value)
+
+    @_builtins.property
+    @pulumi.getter(name="securableType")
+    def securable_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "securable_type")
+
+    @securable_type.setter
+    def securable_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "securable_type", value)
+
+    @_builtins.property
     @pulumi.getter(name="shareName")
     def share_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -434,6 +589,15 @@ class _CatalogState:
     @share_name.setter
     def share_name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "share_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="storageLocation")
+    def storage_location(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "storage_location")
+
+    @storage_location.setter
+    def storage_location(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "storage_location", value)
 
     @_builtins.property
     @pulumi.getter(name="storageRoot")
@@ -447,6 +611,24 @@ class _CatalogState:
     def storage_root(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "storage_root", value)
 
+    @_builtins.property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "updated_at")
+
+    @updated_at.setter
+    def updated_at(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "updated_at", value)
+
+    @_builtins.property
+    @pulumi.getter(name="updatedBy")
+    def updated_by(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "updated_by")
+
+    @updated_by.setter
+    def updated_by(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "updated_by", value)
+
 
 @pulumi.type_token("databricks:index/catalog:Catalog")
 class Catalog(pulumi.CustomResource):
@@ -454,8 +636,10 @@ class Catalog(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 browse_only: Optional[pulumi.Input[_builtins.bool]] = None,
                  comment: Optional[pulumi.Input[_builtins.str]] = None,
                  connection_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 effective_predictive_optimization_flag: Optional[pulumi.Input[Union['CatalogEffectivePredictiveOptimizationFlagArgs', 'CatalogEffectivePredictiveOptimizationFlagArgsDict']]] = None,
                  enable_predictive_optimization: Optional[pulumi.Input[_builtins.str]] = None,
                  force_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
                  isolation_mode: Optional[pulumi.Input[_builtins.str]] = None,
@@ -465,7 +649,9 @@ class Catalog(pulumi.CustomResource):
                  owner: Optional[pulumi.Input[_builtins.str]] = None,
                  properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  provider_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 provisioning_info: Optional[pulumi.Input[Union['CatalogProvisioningInfoArgs', 'CatalogProvisioningInfoArgsDict']]] = None,
                  share_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 storage_location: Optional[pulumi.Input[_builtins.str]] = None,
                  storage_root: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
@@ -607,8 +793,10 @@ class Catalog(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 browse_only: Optional[pulumi.Input[_builtins.bool]] = None,
                  comment: Optional[pulumi.Input[_builtins.str]] = None,
                  connection_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 effective_predictive_optimization_flag: Optional[pulumi.Input[Union['CatalogEffectivePredictiveOptimizationFlagArgs', 'CatalogEffectivePredictiveOptimizationFlagArgsDict']]] = None,
                  enable_predictive_optimization: Optional[pulumi.Input[_builtins.str]] = None,
                  force_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
                  isolation_mode: Optional[pulumi.Input[_builtins.str]] = None,
@@ -618,7 +806,9 @@ class Catalog(pulumi.CustomResource):
                  owner: Optional[pulumi.Input[_builtins.str]] = None,
                  properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  provider_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 provisioning_info: Optional[pulumi.Input[Union['CatalogProvisioningInfoArgs', 'CatalogProvisioningInfoArgsDict']]] = None,
                  share_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 storage_location: Optional[pulumi.Input[_builtins.str]] = None,
                  storage_root: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -629,8 +819,10 @@ class Catalog(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = CatalogArgs.__new__(CatalogArgs)
 
+            __props__.__dict__["browse_only"] = browse_only
             __props__.__dict__["comment"] = comment
             __props__.__dict__["connection_name"] = connection_name
+            __props__.__dict__["effective_predictive_optimization_flag"] = effective_predictive_optimization_flag
             __props__.__dict__["enable_predictive_optimization"] = enable_predictive_optimization
             __props__.__dict__["force_destroy"] = force_destroy
             __props__.__dict__["isolation_mode"] = isolation_mode
@@ -640,8 +832,17 @@ class Catalog(pulumi.CustomResource):
             __props__.__dict__["owner"] = owner
             __props__.__dict__["properties"] = properties
             __props__.__dict__["provider_name"] = provider_name
+            __props__.__dict__["provisioning_info"] = provisioning_info
             __props__.__dict__["share_name"] = share_name
+            __props__.__dict__["storage_location"] = storage_location
             __props__.__dict__["storage_root"] = storage_root
+            __props__.__dict__["catalog_type"] = None
+            __props__.__dict__["created_at"] = None
+            __props__.__dict__["created_by"] = None
+            __props__.__dict__["full_name"] = None
+            __props__.__dict__["securable_type"] = None
+            __props__.__dict__["updated_at"] = None
+            __props__.__dict__["updated_by"] = None
         super(Catalog, __self__).__init__(
             'databricks:index/catalog:Catalog',
             resource_name,
@@ -652,10 +853,16 @@ class Catalog(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            browse_only: Optional[pulumi.Input[_builtins.bool]] = None,
+            catalog_type: Optional[pulumi.Input[_builtins.str]] = None,
             comment: Optional[pulumi.Input[_builtins.str]] = None,
             connection_name: Optional[pulumi.Input[_builtins.str]] = None,
+            created_at: Optional[pulumi.Input[_builtins.int]] = None,
+            created_by: Optional[pulumi.Input[_builtins.str]] = None,
+            effective_predictive_optimization_flag: Optional[pulumi.Input[Union['CatalogEffectivePredictiveOptimizationFlagArgs', 'CatalogEffectivePredictiveOptimizationFlagArgsDict']]] = None,
             enable_predictive_optimization: Optional[pulumi.Input[_builtins.str]] = None,
             force_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
+            full_name: Optional[pulumi.Input[_builtins.str]] = None,
             isolation_mode: Optional[pulumi.Input[_builtins.str]] = None,
             metastore_id: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -663,8 +870,13 @@ class Catalog(pulumi.CustomResource):
             owner: Optional[pulumi.Input[_builtins.str]] = None,
             properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             provider_name: Optional[pulumi.Input[_builtins.str]] = None,
+            provisioning_info: Optional[pulumi.Input[Union['CatalogProvisioningInfoArgs', 'CatalogProvisioningInfoArgsDict']]] = None,
+            securable_type: Optional[pulumi.Input[_builtins.str]] = None,
             share_name: Optional[pulumi.Input[_builtins.str]] = None,
-            storage_root: Optional[pulumi.Input[_builtins.str]] = None) -> 'Catalog':
+            storage_location: Optional[pulumi.Input[_builtins.str]] = None,
+            storage_root: Optional[pulumi.Input[_builtins.str]] = None,
+            updated_at: Optional[pulumi.Input[_builtins.int]] = None,
+            updated_by: Optional[pulumi.Input[_builtins.str]] = None) -> 'Catalog':
         """
         Get an existing Catalog resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -690,10 +902,16 @@ class Catalog(pulumi.CustomResource):
 
         __props__ = _CatalogState.__new__(_CatalogState)
 
+        __props__.__dict__["browse_only"] = browse_only
+        __props__.__dict__["catalog_type"] = catalog_type
         __props__.__dict__["comment"] = comment
         __props__.__dict__["connection_name"] = connection_name
+        __props__.__dict__["created_at"] = created_at
+        __props__.__dict__["created_by"] = created_by
+        __props__.__dict__["effective_predictive_optimization_flag"] = effective_predictive_optimization_flag
         __props__.__dict__["enable_predictive_optimization"] = enable_predictive_optimization
         __props__.__dict__["force_destroy"] = force_destroy
+        __props__.__dict__["full_name"] = full_name
         __props__.__dict__["isolation_mode"] = isolation_mode
         __props__.__dict__["metastore_id"] = metastore_id
         __props__.__dict__["name"] = name
@@ -701,9 +919,24 @@ class Catalog(pulumi.CustomResource):
         __props__.__dict__["owner"] = owner
         __props__.__dict__["properties"] = properties
         __props__.__dict__["provider_name"] = provider_name
+        __props__.__dict__["provisioning_info"] = provisioning_info
+        __props__.__dict__["securable_type"] = securable_type
         __props__.__dict__["share_name"] = share_name
+        __props__.__dict__["storage_location"] = storage_location
         __props__.__dict__["storage_root"] = storage_root
+        __props__.__dict__["updated_at"] = updated_at
+        __props__.__dict__["updated_by"] = updated_by
         return Catalog(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="browseOnly")
+    def browse_only(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        return pulumi.get(self, "browse_only")
+
+    @_builtins.property
+    @pulumi.getter(name="catalogType")
+    def catalog_type(self) -> pulumi.Output[_builtins.str]:
+        return pulumi.get(self, "catalog_type")
 
     @_builtins.property
     @pulumi.getter
@@ -722,6 +955,21 @@ class Catalog(pulumi.CustomResource):
         return pulumi.get(self, "connection_name")
 
     @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> pulumi.Output[_builtins.int]:
+        return pulumi.get(self, "created_at")
+
+    @_builtins.property
+    @pulumi.getter(name="createdBy")
+    def created_by(self) -> pulumi.Output[_builtins.str]:
+        return pulumi.get(self, "created_by")
+
+    @_builtins.property
+    @pulumi.getter(name="effectivePredictiveOptimizationFlag")
+    def effective_predictive_optimization_flag(self) -> pulumi.Output['outputs.CatalogEffectivePredictiveOptimizationFlag']:
+        return pulumi.get(self, "effective_predictive_optimization_flag")
+
+    @_builtins.property
     @pulumi.getter(name="enablePredictiveOptimization")
     def enable_predictive_optimization(self) -> pulumi.Output[_builtins.str]:
         """
@@ -736,6 +984,11 @@ class Catalog(pulumi.CustomResource):
         Delete catalog regardless of its contents.
         """
         return pulumi.get(self, "force_destroy")
+
+    @_builtins.property
+    @pulumi.getter(name="fullName")
+    def full_name(self) -> pulumi.Output[_builtins.str]:
+        return pulumi.get(self, "full_name")
 
     @_builtins.property
     @pulumi.getter(name="isolationMode")
@@ -794,6 +1047,16 @@ class Catalog(pulumi.CustomResource):
         return pulumi.get(self, "provider_name")
 
     @_builtins.property
+    @pulumi.getter(name="provisioningInfo")
+    def provisioning_info(self) -> pulumi.Output[Optional['outputs.CatalogProvisioningInfo']]:
+        return pulumi.get(self, "provisioning_info")
+
+    @_builtins.property
+    @pulumi.getter(name="securableType")
+    def securable_type(self) -> pulumi.Output[_builtins.str]:
+        return pulumi.get(self, "securable_type")
+
+    @_builtins.property
     @pulumi.getter(name="shareName")
     def share_name(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
@@ -802,10 +1065,25 @@ class Catalog(pulumi.CustomResource):
         return pulumi.get(self, "share_name")
 
     @_builtins.property
+    @pulumi.getter(name="storageLocation")
+    def storage_location(self) -> pulumi.Output[Optional[_builtins.str]]:
+        return pulumi.get(self, "storage_location")
+
+    @_builtins.property
     @pulumi.getter(name="storageRoot")
     def storage_root(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Managed location of the catalog. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
         """
         return pulumi.get(self, "storage_root")
+
+    @_builtins.property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> pulumi.Output[_builtins.int]:
+        return pulumi.get(self, "updated_at")
+
+    @_builtins.property
+    @pulumi.getter(name="updatedBy")
+    def updated_by(self) -> pulumi.Output[_builtins.str]:
+        return pulumi.get(self, "updated_by")
 

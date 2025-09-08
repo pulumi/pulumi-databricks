@@ -64,6 +64,8 @@ httpTimeoutSeconds: Optional[int]
 
 metadataServiceUrl: Optional[str]
 
+oauthCallbackPort: Optional[int]
+
 oidcTokenEnv: Optional[str]
 
 password: Optional[str]

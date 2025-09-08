@@ -12,6 +12,30 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class NotificationDestinationConfigMicrosoftTeamsGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("appId")]
+        public Input<string>? AppId { get; set; }
+
+        [Input("appIdSet")]
+        public Input<bool>? AppIdSet { get; set; }
+
+        [Input("authSecret")]
+        public Input<string>? AuthSecret { get; set; }
+
+        [Input("authSecretSet")]
+        public Input<bool>? AuthSecretSet { get; set; }
+
+        [Input("channelUrl")]
+        public Input<string>? ChannelUrl { get; set; }
+
+        [Input("channelUrlSet")]
+        public Input<bool>? ChannelUrlSet { get; set; }
+
+        [Input("tenantId")]
+        public Input<string>? TenantId { get; set; }
+
+        [Input("tenantIdSet")]
+        public Input<bool>? TenantIdSet { get; set; }
+
         [Input("url")]
         private Input<string>? _url;
 

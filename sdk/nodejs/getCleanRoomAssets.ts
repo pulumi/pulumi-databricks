@@ -20,10 +20,26 @@ import * as utilities from "./utilities";
  * const all = new databricks.index.CleanRoomsAsset("all", {});
  * ```
  */
-export function getCleanRoomAssets(opts?: pulumi.InvokeOptions): Promise<GetCleanRoomAssetsResult> {
+export function getCleanRoomAssets(args: GetCleanRoomAssetsArgs, opts?: pulumi.InvokeOptions): Promise<GetCleanRoomAssetsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getCleanRoomAssets:getCleanRoomAssets", {
+        "cleanRoomName": args.cleanRoomName,
+        "workspaceId": args.workspaceId,
     }, opts);
+}
+
+/**
+ * A collection of arguments for invoking getCleanRoomAssets.
+ */
+export interface GetCleanRoomAssetsArgs {
+    /**
+     * Name of the clean room
+     */
+    cleanRoomName: string;
+    /**
+     * Workspace ID of the resource
+     */
+    workspaceId?: string;
 }
 
 /**
@@ -32,9 +48,15 @@ export function getCleanRoomAssets(opts?: pulumi.InvokeOptions): Promise<GetClea
 export interface GetCleanRoomAssetsResult {
     readonly assets: outputs.GetCleanRoomAssetsAsset[];
     /**
+     * (string) - The name of the clean room this asset belongs to.
+     * This field is required for create operations and populated by the server for responses
+     */
+    readonly cleanRoomName: string;
+    /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly workspaceId?: string;
 }
 /**
  * This data source can be used to fetch the list of clean room assets.
@@ -50,8 +72,24 @@ export interface GetCleanRoomAssetsResult {
  * const all = new databricks.index.CleanRoomsAsset("all", {});
  * ```
  */
-export function getCleanRoomAssetsOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCleanRoomAssetsResult> {
+export function getCleanRoomAssetsOutput(args: GetCleanRoomAssetsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCleanRoomAssetsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getCleanRoomAssets:getCleanRoomAssets", {
+        "cleanRoomName": args.cleanRoomName,
+        "workspaceId": args.workspaceId,
     }, opts);
+}
+
+/**
+ * A collection of arguments for invoking getCleanRoomAssets.
+ */
+export interface GetCleanRoomAssetsOutputArgs {
+    /**
+     * Name of the clean room
+     */
+    cleanRoomName: pulumi.Input<string>;
+    /**
+     * Workspace ID of the resource
+     */
+    workspaceId?: pulumi.Input<string>;
 }

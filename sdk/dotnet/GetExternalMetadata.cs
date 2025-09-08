@@ -159,6 +159,12 @@ namespace Pulumi.Databricks
         [Input("url")]
         public string? Url { get; set; }
 
+        /// <summary>
+        /// Workspace ID of the resource
+        /// </summary>
+        [Input("workspaceId")]
+        public string? WorkspaceId { get; set; }
+
         public GetExternalMetadataArgs()
         {
         }
@@ -227,6 +233,12 @@ namespace Pulumi.Databricks
         [Input("url")]
         public Input<string>? Url { get; set; }
 
+        /// <summary>
+        /// Workspace ID of the resource
+        /// </summary>
+        [Input("workspaceId")]
+        public Input<string>? WorkspaceId { get; set; }
+
         public GetExternalMetadataInvokeArgs()
         {
         }
@@ -293,6 +305,7 @@ namespace Pulumi.Databricks
         /// (string) - URL associated with the external metadata object
         /// </summary>
         public readonly string? Url;
+        public readonly string? WorkspaceId;
 
         [OutputConstructor]
         private GetExternalMetadataResult(
@@ -322,7 +335,9 @@ namespace Pulumi.Databricks
 
             string updatedBy,
 
-            string? url)
+            string? url,
+
+            string? workspaceId)
         {
             Columns = columns;
             CreateTime = createTime;
@@ -338,6 +353,7 @@ namespace Pulumi.Databricks
             UpdateTime = updateTime;
             UpdatedBy = updatedBy;
             Url = url;
+            WorkspaceId = workspaceId;
         }
     }
 }

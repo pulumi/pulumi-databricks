@@ -77,6 +77,21 @@ public final class ModelServingAiGatewayRateLimitArgs extends com.pulumi.resourc
         return this.renewalPeriod;
     }
 
+    /**
+     * Specifies how many tokens are allowed for a key within the renewal_period.
+     * 
+     */
+    @Import(name="tokens")
+    private @Nullable Output<Integer> tokens;
+
+    /**
+     * @return Specifies how many tokens are allowed for a key within the renewal_period.
+     * 
+     */
+    public Optional<Output<Integer>> tokens() {
+        return Optional.ofNullable(this.tokens);
+    }
+
     private ModelServingAiGatewayRateLimitArgs() {}
 
     private ModelServingAiGatewayRateLimitArgs(ModelServingAiGatewayRateLimitArgs $) {
@@ -84,6 +99,7 @@ public final class ModelServingAiGatewayRateLimitArgs extends com.pulumi.resourc
         this.key = $.key;
         this.principal = $.principal;
         this.renewalPeriod = $.renewalPeriod;
+        this.tokens = $.tokens;
     }
 
     public static Builder builder() {
@@ -186,6 +202,27 @@ public final class ModelServingAiGatewayRateLimitArgs extends com.pulumi.resourc
          */
         public Builder renewalPeriod(String renewalPeriod) {
             return renewalPeriod(Output.of(renewalPeriod));
+        }
+
+        /**
+         * @param tokens Specifies how many tokens are allowed for a key within the renewal_period.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tokens(@Nullable Output<Integer> tokens) {
+            $.tokens = tokens;
+            return this;
+        }
+
+        /**
+         * @param tokens Specifies how many tokens are allowed for a key within the renewal_period.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tokens(Integer tokens) {
+            return tokens(Output.of(tokens));
         }
 
         public ModelServingAiGatewayRateLimitArgs build() {

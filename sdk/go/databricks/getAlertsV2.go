@@ -43,28 +43,47 @@ import (
 //	}
 //
 // ```
-func LookupAlertsV2(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*LookupAlertsV2Result, error) {
+func LookupAlertsV2(ctx *pulumi.Context, args *LookupAlertsV2Args, opts ...pulumi.InvokeOption) (*LookupAlertsV2Result, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAlertsV2Result
-	err := ctx.Invoke("databricks:index/getAlertsV2:getAlertsV2", nil, &rv, opts...)
+	err := ctx.Invoke("databricks:index/getAlertsV2:getAlertsV2", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &rv, nil
 }
 
+// A collection of arguments for invoking getAlertsV2.
+type LookupAlertsV2Args struct {
+	// Workspace ID of the resource
+	WorkspaceId *string `pulumi:"workspaceId"`
+}
+
 // A collection of values returned by getAlertsV2.
 type LookupAlertsV2Result struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id      string              `pulumi:"id"`
-	Results []GetAlertsV2Result `pulumi:"results"`
+	Id          string              `pulumi:"id"`
+	Results     []GetAlertsV2Result `pulumi:"results"`
+	WorkspaceId *string             `pulumi:"workspaceId"`
 }
 
-func LookupAlertsV2Output(ctx *pulumi.Context, opts ...pulumi.InvokeOption) LookupAlertsV2ResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (LookupAlertsV2ResultOutput, error) {
-		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-		return ctx.InvokeOutput("databricks:index/getAlertsV2:getAlertsV2", nil, LookupAlertsV2ResultOutput{}, options).(LookupAlertsV2ResultOutput), nil
-	}).(LookupAlertsV2ResultOutput)
+func LookupAlertsV2Output(ctx *pulumi.Context, args LookupAlertsV2OutputArgs, opts ...pulumi.InvokeOption) LookupAlertsV2ResultOutput {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (LookupAlertsV2ResultOutput, error) {
+			args := v.(LookupAlertsV2Args)
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("databricks:index/getAlertsV2:getAlertsV2", args, LookupAlertsV2ResultOutput{}, options).(LookupAlertsV2ResultOutput), nil
+		}).(LookupAlertsV2ResultOutput)
+}
+
+// A collection of arguments for invoking getAlertsV2.
+type LookupAlertsV2OutputArgs struct {
+	// Workspace ID of the resource
+	WorkspaceId pulumi.StringPtrInput `pulumi:"workspaceId"`
+}
+
+func (LookupAlertsV2OutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupAlertsV2Args)(nil)).Elem()
 }
 
 // A collection of values returned by getAlertsV2.
@@ -89,6 +108,10 @@ func (o LookupAlertsV2ResultOutput) Id() pulumi.StringOutput {
 
 func (o LookupAlertsV2ResultOutput) Results() GetAlertsV2ResultArrayOutput {
 	return o.ApplyT(func(v LookupAlertsV2Result) []GetAlertsV2Result { return v.Results }).(GetAlertsV2ResultArrayOutput)
+}
+
+func (o LookupAlertsV2ResultOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupAlertsV2Result) *string { return v.WorkspaceId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

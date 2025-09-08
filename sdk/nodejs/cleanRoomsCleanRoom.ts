@@ -19,7 +19,7 @@ import * as utilities from "./utilities";
  *
  * import {
  *
- *   id = name
+ *   id = "name"
  *
  *   to = databricks_clean_rooms_clean_room.this
  *
@@ -28,7 +28,7 @@ import * as utilities from "./utilities";
  * If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
  *
  * ```sh
- * $ pulumi import databricks:index/cleanRoomsCleanRoom:CleanRoomsCleanRoom databricks_clean_rooms_clean_room name
+ * $ pulumi import databricks:index/cleanRoomsCleanRoom:CleanRoomsCleanRoom databricks_clean_rooms_clean_room "name"
  * ```
  */
 export class CleanRoomsCleanRoom extends pulumi.CustomResource {
@@ -83,7 +83,7 @@ export class CleanRoomsCleanRoom extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly outputCatalog: pulumi.Output<outputs.CleanRoomsCleanRoomOutputCatalog>;
     /**
-     * This is Databricks username of the owner of the local clean room securable for permission management
+     * This is the Databricks username of the owner of the local clean room securable for permission management
      */
     declare public readonly owner: pulumi.Output<string | undefined>;
     /**
@@ -100,6 +100,10 @@ export class CleanRoomsCleanRoom extends pulumi.CustomResource {
      * (integer) - When the clean room was last updated, in epoch milliseconds
      */
     declare public /*out*/ readonly updatedAt: pulumi.Output<number>;
+    /**
+     * Workspace ID of the resource
+     */
+    declare public readonly workspaceId: pulumi.Output<string | undefined>;
 
     /**
      * Create a CleanRoomsCleanRoom resource with the given unique name, arguments, and options.
@@ -124,12 +128,14 @@ export class CleanRoomsCleanRoom extends pulumi.CustomResource {
             resourceInputs["remoteDetailedInfo"] = state?.remoteDetailedInfo;
             resourceInputs["status"] = state?.status;
             resourceInputs["updatedAt"] = state?.updatedAt;
+            resourceInputs["workspaceId"] = state?.workspaceId;
         } else {
             const args = argsOrState as CleanRoomsCleanRoomArgs | undefined;
             resourceInputs["comment"] = args?.comment;
             resourceInputs["name"] = args?.name;
             resourceInputs["owner"] = args?.owner;
             resourceInputs["remoteDetailedInfo"] = args?.remoteDetailedInfo;
+            resourceInputs["workspaceId"] = args?.workspaceId;
             resourceInputs["accessRestricted"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["localCollaboratorAlias"] = undefined /*out*/;
@@ -170,7 +176,7 @@ export interface CleanRoomsCleanRoomState {
      */
     outputCatalog?: pulumi.Input<inputs.CleanRoomsCleanRoomOutputCatalog>;
     /**
-     * This is Databricks username of the owner of the local clean room securable for permission management
+     * This is the Databricks username of the owner of the local clean room securable for permission management
      */
     owner?: pulumi.Input<string>;
     /**
@@ -187,6 +193,10 @@ export interface CleanRoomsCleanRoomState {
      * (integer) - When the clean room was last updated, in epoch milliseconds
      */
     updatedAt?: pulumi.Input<number>;
+    /**
+     * Workspace ID of the resource
+     */
+    workspaceId?: pulumi.Input<string>;
 }
 
 /**
@@ -200,7 +210,7 @@ export interface CleanRoomsCleanRoomArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * This is Databricks username of the owner of the local clean room securable for permission management
+     * This is the Databricks username of the owner of the local clean room securable for permission management
      */
     owner?: pulumi.Input<string>;
     /**
@@ -209,4 +219,8 @@ export interface CleanRoomsCleanRoomArgs {
      * This field will not be filled in the ListCleanRooms call
      */
     remoteDetailedInfo?: pulumi.Input<inputs.CleanRoomsCleanRoomRemoteDetailedInfo>;
+    /**
+     * Workspace ID of the resource
+     */
+    workspaceId?: pulumi.Input<string>;
 }

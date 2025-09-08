@@ -27,13 +27,16 @@ class GetDatabaseSyncedDatabaseTablesResult:
     """
     A collection of values returned by getDatabaseSyncedDatabaseTables.
     """
-    def __init__(__self__, id=None, synced_tables=None):
+    def __init__(__self__, id=None, synced_tables=None, workspace_id=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
         if synced_tables and not isinstance(synced_tables, list):
             raise TypeError("Expected argument 'synced_tables' to be a list")
         pulumi.set(__self__, "synced_tables", synced_tables)
+        if workspace_id and not isinstance(workspace_id, str):
+            raise TypeError("Expected argument 'workspace_id' to be a str")
+        pulumi.set(__self__, "workspace_id", workspace_id)
 
     @_builtins.property
     @pulumi.getter
@@ -48,6 +51,11 @@ class GetDatabaseSyncedDatabaseTablesResult:
     def synced_tables(self) -> Sequence['outputs.GetDatabaseSyncedDatabaseTablesSyncedTableResult']:
         return pulumi.get(self, "synced_tables")
 
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "workspace_id")
+
 
 class AwaitableGetDatabaseSyncedDatabaseTablesResult(GetDatabaseSyncedDatabaseTablesResult):
     # pylint: disable=using-constant-test
@@ -56,27 +64,38 @@ class AwaitableGetDatabaseSyncedDatabaseTablesResult(GetDatabaseSyncedDatabaseTa
             yield self
         return GetDatabaseSyncedDatabaseTablesResult(
             id=self.id,
-            synced_tables=self.synced_tables)
+            synced_tables=self.synced_tables,
+            workspace_id=self.workspace_id)
 
 
-def get_database_synced_database_tables(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDatabaseSyncedDatabaseTablesResult:
+def get_database_synced_database_tables(workspace_id: Optional[_builtins.str] = None,
+                                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDatabaseSyncedDatabaseTablesResult:
     """
     Use this data source to access information about an existing resource.
+
+    :param _builtins.str workspace_id: Workspace ID of the resource
     """
     __args__ = dict()
+    __args__['workspaceId'] = workspace_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getDatabaseSyncedDatabaseTables:getDatabaseSyncedDatabaseTables', __args__, opts=opts, typ=GetDatabaseSyncedDatabaseTablesResult).value
 
     return AwaitableGetDatabaseSyncedDatabaseTablesResult(
         id=pulumi.get(__ret__, 'id'),
-        synced_tables=pulumi.get(__ret__, 'synced_tables'))
-def get_database_synced_database_tables_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDatabaseSyncedDatabaseTablesResult]:
+        synced_tables=pulumi.get(__ret__, 'synced_tables'),
+        workspace_id=pulumi.get(__ret__, 'workspace_id'))
+def get_database_synced_database_tables_output(workspace_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDatabaseSyncedDatabaseTablesResult]:
     """
     Use this data source to access information about an existing resource.
+
+    :param _builtins.str workspace_id: Workspace ID of the resource
     """
     __args__ = dict()
+    __args__['workspaceId'] = workspace_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getDatabaseSyncedDatabaseTables:getDatabaseSyncedDatabaseTables', __args__, opts=opts, typ=GetDatabaseSyncedDatabaseTablesResult)
     return __ret__.apply(lambda __response__: GetDatabaseSyncedDatabaseTablesResult(
         id=pulumi.get(__response__, 'id'),
-        synced_tables=pulumi.get(__response__, 'synced_tables')))
+        synced_tables=pulumi.get(__response__, 'synced_tables'),
+        workspace_id=pulumi.get(__response__, 'workspace_id')))

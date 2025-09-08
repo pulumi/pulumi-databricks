@@ -9,6 +9,8 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetPolicyInfosResult {
@@ -17,7 +19,21 @@ public final class GetPolicyInfosResult {
      * 
      */
     private String id;
+    /**
+     * @return (string) - Full name of the securable on which the policy is defined.
+     * Required on create and ignored on update
+     * 
+     */
+    private String onSecurableFullname;
+    /**
+     * @return (string) - Type of the securable on which the policy is defined.
+     * Only `CATALOG`, `SCHEMA` and `TABLE` are supported at this moment.
+     * Required on create and ignored on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+     * 
+     */
+    private String onSecurableType;
     private List<GetPolicyInfosPolicy> policies;
+    private @Nullable String workspaceId;
 
     private GetPolicyInfosResult() {}
     /**
@@ -27,8 +43,28 @@ public final class GetPolicyInfosResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return (string) - Full name of the securable on which the policy is defined.
+     * Required on create and ignored on update
+     * 
+     */
+    public String onSecurableFullname() {
+        return this.onSecurableFullname;
+    }
+    /**
+     * @return (string) - Type of the securable on which the policy is defined.
+     * Only `CATALOG`, `SCHEMA` and `TABLE` are supported at this moment.
+     * Required on create and ignored on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+     * 
+     */
+    public String onSecurableType() {
+        return this.onSecurableType;
+    }
     public List<GetPolicyInfosPolicy> policies() {
         return this.policies;
+    }
+    public Optional<String> workspaceId() {
+        return Optional.ofNullable(this.workspaceId);
     }
 
     public static Builder builder() {
@@ -41,12 +77,18 @@ public final class GetPolicyInfosResult {
     @CustomType.Builder
     public static final class Builder {
         private String id;
+        private String onSecurableFullname;
+        private String onSecurableType;
         private List<GetPolicyInfosPolicy> policies;
+        private @Nullable String workspaceId;
         public Builder() {}
         public Builder(GetPolicyInfosResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
+    	      this.onSecurableFullname = defaults.onSecurableFullname;
+    	      this.onSecurableType = defaults.onSecurableType;
     	      this.policies = defaults.policies;
+    	      this.workspaceId = defaults.workspaceId;
         }
 
         @CustomType.Setter
@@ -55,6 +97,22 @@ public final class GetPolicyInfosResult {
               throw new MissingRequiredPropertyException("GetPolicyInfosResult", "id");
             }
             this.id = id;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder onSecurableFullname(String onSecurableFullname) {
+            if (onSecurableFullname == null) {
+              throw new MissingRequiredPropertyException("GetPolicyInfosResult", "onSecurableFullname");
+            }
+            this.onSecurableFullname = onSecurableFullname;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder onSecurableType(String onSecurableType) {
+            if (onSecurableType == null) {
+              throw new MissingRequiredPropertyException("GetPolicyInfosResult", "onSecurableType");
+            }
+            this.onSecurableType = onSecurableType;
             return this;
         }
         @CustomType.Setter
@@ -68,10 +126,19 @@ public final class GetPolicyInfosResult {
         public Builder policies(GetPolicyInfosPolicy... policies) {
             return policies(List.of(policies));
         }
+        @CustomType.Setter
+        public Builder workspaceId(@Nullable String workspaceId) {
+
+            this.workspaceId = workspaceId;
+            return this;
+        }
         public GetPolicyInfosResult build() {
             final var _resultValue = new GetPolicyInfosResult();
             _resultValue.id = id;
+            _resultValue.onSecurableFullname = onSecurableFullname;
+            _resultValue.onSecurableType = onSecurableType;
             _resultValue.policies = policies;
+            _resultValue.workspaceId = workspaceId;
             return _resultValue;
         }
     }

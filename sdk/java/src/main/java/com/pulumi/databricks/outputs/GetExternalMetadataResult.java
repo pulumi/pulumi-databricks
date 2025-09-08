@@ -84,6 +84,7 @@ public final class GetExternalMetadataResult {
      * 
      */
     private @Nullable String url;
+    private @Nullable String workspaceId;
 
     private GetExternalMetadataResult() {}
     /**
@@ -184,6 +185,9 @@ public final class GetExternalMetadataResult {
     public Optional<String> url() {
         return Optional.ofNullable(this.url);
     }
+    public Optional<String> workspaceId() {
+        return Optional.ofNullable(this.workspaceId);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -208,6 +212,7 @@ public final class GetExternalMetadataResult {
         private String updateTime;
         private String updatedBy;
         private @Nullable String url;
+        private @Nullable String workspaceId;
         public Builder() {}
         public Builder(GetExternalMetadataResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -225,6 +230,7 @@ public final class GetExternalMetadataResult {
     	      this.updateTime = defaults.updateTime;
     	      this.updatedBy = defaults.updatedBy;
     	      this.url = defaults.url;
+    	      this.workspaceId = defaults.workspaceId;
         }
 
         @CustomType.Setter
@@ -332,6 +338,12 @@ public final class GetExternalMetadataResult {
             this.url = url;
             return this;
         }
+        @CustomType.Setter
+        public Builder workspaceId(@Nullable String workspaceId) {
+
+            this.workspaceId = workspaceId;
+            return this;
+        }
         public GetExternalMetadataResult build() {
             final var _resultValue = new GetExternalMetadataResult();
             _resultValue.columns = columns;
@@ -348,6 +360,7 @@ public final class GetExternalMetadataResult {
             _resultValue.updateTime = updateTime;
             _resultValue.updatedBy = updatedBy;
             _resultValue.url = url;
+            _resultValue.workspaceId = workspaceId;
             return _resultValue;
         }
     }

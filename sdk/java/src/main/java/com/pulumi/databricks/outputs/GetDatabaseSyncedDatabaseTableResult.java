@@ -65,6 +65,7 @@ public final class GetDatabaseSyncedDatabaseTableResult {
      * 
      */
     private String unityCatalogProvisioningState;
+    private @Nullable String workspaceId;
 
     private GetDatabaseSyncedDatabaseTableResult() {}
     /**
@@ -136,6 +137,9 @@ public final class GetDatabaseSyncedDatabaseTableResult {
     public String unityCatalogProvisioningState() {
         return this.unityCatalogProvisioningState;
     }
+    public Optional<String> workspaceId() {
+        return Optional.ofNullable(this.workspaceId);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -155,6 +159,7 @@ public final class GetDatabaseSyncedDatabaseTableResult {
         private String name;
         private @Nullable GetDatabaseSyncedDatabaseTableSpec spec;
         private String unityCatalogProvisioningState;
+        private @Nullable String workspaceId;
         public Builder() {}
         public Builder(GetDatabaseSyncedDatabaseTableResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -167,6 +172,7 @@ public final class GetDatabaseSyncedDatabaseTableResult {
     	      this.name = defaults.name;
     	      this.spec = defaults.spec;
     	      this.unityCatalogProvisioningState = defaults.unityCatalogProvisioningState;
+    	      this.workspaceId = defaults.workspaceId;
         }
 
         @CustomType.Setter
@@ -239,6 +245,12 @@ public final class GetDatabaseSyncedDatabaseTableResult {
             this.unityCatalogProvisioningState = unityCatalogProvisioningState;
             return this;
         }
+        @CustomType.Setter
+        public Builder workspaceId(@Nullable String workspaceId) {
+
+            this.workspaceId = workspaceId;
+            return this;
+        }
         public GetDatabaseSyncedDatabaseTableResult build() {
             final var _resultValue = new GetDatabaseSyncedDatabaseTableResult();
             _resultValue.dataSynchronizationStatus = dataSynchronizationStatus;
@@ -250,6 +262,7 @@ public final class GetDatabaseSyncedDatabaseTableResult {
             _resultValue.name = name;
             _resultValue.spec = spec;
             _resultValue.unityCatalogProvisioningState = unityCatalogProvisioningState;
+            _resultValue.workspaceId = workspaceId;
             return _resultValue;
         }
     }

@@ -17,11 +17,16 @@ namespace Pulumi.Databricks.Outputs
         /// Indicate whether this continuous job is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pause_status` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pause_status`.
         /// </summary>
         public readonly string? PauseStatus;
+        public readonly string? TaskRetryMode;
 
         [OutputConstructor]
-        private JobContinuous(string? pauseStatus)
+        private JobContinuous(
+            string? pauseStatus,
+
+            string? taskRetryMode)
         {
             PauseStatus = pauseStatus;
+            TaskRetryMode = taskRetryMode;
         }
     }
 }

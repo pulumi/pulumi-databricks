@@ -74,7 +74,7 @@ import javax.annotation.Nullable;
  * 
  * import {
  * 
- *   id = policy_id
+ *   id = &#34;policy_id&#34;
  * 
  *   to = databricks_budget_policy.this
  * 
@@ -83,7 +83,7 @@ import javax.annotation.Nullable;
  * If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
  * 
  * ```sh
- * $ pulumi import databricks:index/budgetPolicy:BudgetPolicy databricks_budget_policy policy_id
+ * $ pulumi import databricks:index/budgetPolicy:BudgetPolicy databricks_budget_policy &#34;policy_id&#34;
  * ```
  * 
  */

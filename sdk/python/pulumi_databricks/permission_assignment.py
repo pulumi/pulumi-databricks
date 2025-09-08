@@ -24,8 +24,8 @@ class PermissionAssignmentArgs:
         """
         The set of arguments for constructing a PermissionAssignment resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] permissions: The list of workspace permissions to assign to the principal:
-               * `"USER"` - Can access the workspace with basic privileges.
-               * `"ADMIN"` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
+               * `"USER"` - Adds principal to the workspace `users` group. This gives basic workspace access.
+               * `"ADMIN"` - Adds principal to the workspace `admins` group. This gives workspace admin privileges to manage users and groups, workspace configurations, and more.
         :param pulumi.Input[_builtins.str] principal_id: Databricks ID of the user, service principal, or group. The principal ID can be retrieved using the account-level SCIM API, or using databricks_user, ServicePrincipal or Group data sources with account API (and has to be an account admin). A more sensible approach is to retrieve the list of `principal_id` as outputs from another Pulumi stack.
         """
         pulumi.set(__self__, "permissions", permissions)
@@ -36,8 +36,8 @@ class PermissionAssignmentArgs:
     def permissions(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
         """
         The list of workspace permissions to assign to the principal:
-        * `"USER"` - Can access the workspace with basic privileges.
-        * `"ADMIN"` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
+        * `"USER"` - Adds principal to the workspace `users` group. This gives basic workspace access.
+        * `"ADMIN"` - Adds principal to the workspace `admins` group. This gives workspace admin privileges to manage users and groups, workspace configurations, and more.
         """
         return pulumi.get(self, "permissions")
 
@@ -66,8 +66,8 @@ class _PermissionAssignmentState:
         """
         Input properties used for looking up and filtering PermissionAssignment resources.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] permissions: The list of workspace permissions to assign to the principal:
-               * `"USER"` - Can access the workspace with basic privileges.
-               * `"ADMIN"` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
+               * `"USER"` - Adds principal to the workspace `users` group. This gives basic workspace access.
+               * `"ADMIN"` - Adds principal to the workspace `admins` group. This gives workspace admin privileges to manage users and groups, workspace configurations, and more.
         :param pulumi.Input[_builtins.str] principal_id: Databricks ID of the user, service principal, or group. The principal ID can be retrieved using the account-level SCIM API, or using databricks_user, ServicePrincipal or Group data sources with account API (and has to be an account admin). A more sensible approach is to retrieve the list of `principal_id` as outputs from another Pulumi stack.
         """
         if permissions is not None:
@@ -80,8 +80,8 @@ class _PermissionAssignmentState:
     def permissions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of workspace permissions to assign to the principal:
-        * `"USER"` - Can access the workspace with basic privileges.
-        * `"ADMIN"` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
+        * `"USER"` - Adds principal to the workspace `users` group. This gives basic workspace access.
+        * `"ADMIN"` - Adds principal to the workspace `admins` group. This gives workspace admin privileges to manage users and groups, workspace configurations, and more.
         """
         return pulumi.get(self, "permissions")
 
@@ -112,7 +112,7 @@ class PermissionAssignment(pulumi.CustomResource):
                  principal_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        This resource is used to assign account-level users, service principals and groups to a Databricks workspace.
+        This resource is used to assign account-level users, service principals and groups to a Databricks workspace. To configure additional entitlements such as cluster creation, please use Entitlements
 
         > This resource can only be used with a workspace-level provider!
 
@@ -194,8 +194,8 @@ class PermissionAssignment(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] permissions: The list of workspace permissions to assign to the principal:
-               * `"USER"` - Can access the workspace with basic privileges.
-               * `"ADMIN"` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
+               * `"USER"` - Adds principal to the workspace `users` group. This gives basic workspace access.
+               * `"ADMIN"` - Adds principal to the workspace `admins` group. This gives workspace admin privileges to manage users and groups, workspace configurations, and more.
         :param pulumi.Input[_builtins.str] principal_id: Databricks ID of the user, service principal, or group. The principal ID can be retrieved using the account-level SCIM API, or using databricks_user, ServicePrincipal or Group data sources with account API (and has to be an account admin). A more sensible approach is to retrieve the list of `principal_id` as outputs from another Pulumi stack.
         """
         ...
@@ -205,7 +205,7 @@ class PermissionAssignment(pulumi.CustomResource):
                  args: PermissionAssignmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        This resource is used to assign account-level users, service principals and groups to a Databricks workspace.
+        This resource is used to assign account-level users, service principals and groups to a Databricks workspace. To configure additional entitlements such as cluster creation, please use Entitlements
 
         > This resource can only be used with a workspace-level provider!
 
@@ -336,8 +336,8 @@ class PermissionAssignment(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] permissions: The list of workspace permissions to assign to the principal:
-               * `"USER"` - Can access the workspace with basic privileges.
-               * `"ADMIN"` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
+               * `"USER"` - Adds principal to the workspace `users` group. This gives basic workspace access.
+               * `"ADMIN"` - Adds principal to the workspace `admins` group. This gives workspace admin privileges to manage users and groups, workspace configurations, and more.
         :param pulumi.Input[_builtins.str] principal_id: Databricks ID of the user, service principal, or group. The principal ID can be retrieved using the account-level SCIM API, or using databricks_user, ServicePrincipal or Group data sources with account API (and has to be an account admin). A more sensible approach is to retrieve the list of `principal_id` as outputs from another Pulumi stack.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -353,8 +353,8 @@ class PermissionAssignment(pulumi.CustomResource):
     def permissions(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
         The list of workspace permissions to assign to the principal:
-        * `"USER"` - Can access the workspace with basic privileges.
-        * `"ADMIN"` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
+        * `"USER"` - Adds principal to the workspace `users` group. This gives basic workspace access.
+        * `"ADMIN"` - Adds principal to the workspace `admins` group. This gives workspace admin privileges to manage users and groups, workspace configurations, and more.
         """
         return pulumi.get(self, "permissions")
 

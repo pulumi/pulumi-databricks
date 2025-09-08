@@ -39,6 +39,13 @@ public final class GetDatabaseInstancesDatabaseInstance {
      */
     private String creator;
     /**
+     * @return (boolean) - xref AIP-129. `enable_pg_native_login` is owned by the client, while `effective_enable_pg_native_login` is owned by the server.
+     * `enable_pg_native_login` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+     * `effective_enable_pg_native_login` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * 
+     */
+    private Boolean effectiveEnablePgNativeLogin;
+    /**
      * @return (boolean) - xref AIP-129. `enable_readable_secondaries` is owned by the client, while `effective_enable_readable_secondaries` is owned by the server.
      * `enable_readable_secondaries` will only be set in Create/Update response messages if and only if the user provides the field via the request.
      * `effective_enable_readable_secondaries` on the other hand will always bet set in all response messages (Create/Update/Get/List)
@@ -66,6 +73,11 @@ public final class GetDatabaseInstancesDatabaseInstance {
      * 
      */
     private Boolean effectiveStopped;
+    /**
+     * @return (boolean) - Whether the instance has PG native password login enabled. Defaults to true
+     * 
+     */
+    private Boolean enablePgNativeLogin;
     /**
      * @return (boolean) - Whether to enable secondaries to serve read-only traffic. Defaults to false
      * 
@@ -160,6 +172,15 @@ public final class GetDatabaseInstancesDatabaseInstance {
         return this.creator;
     }
     /**
+     * @return (boolean) - xref AIP-129. `enable_pg_native_login` is owned by the client, while `effective_enable_pg_native_login` is owned by the server.
+     * `enable_pg_native_login` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+     * `effective_enable_pg_native_login` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * 
+     */
+    public Boolean effectiveEnablePgNativeLogin() {
+        return this.effectiveEnablePgNativeLogin;
+    }
+    /**
      * @return (boolean) - xref AIP-129. `enable_readable_secondaries` is owned by the client, while `effective_enable_readable_secondaries` is owned by the server.
      * `enable_readable_secondaries` will only be set in Create/Update response messages if and only if the user provides the field via the request.
      * `effective_enable_readable_secondaries` on the other hand will always bet set in all response messages (Create/Update/Get/List)
@@ -194,6 +215,13 @@ public final class GetDatabaseInstancesDatabaseInstance {
      */
     public Boolean effectiveStopped() {
         return this.effectiveStopped;
+    }
+    /**
+     * @return (boolean) - Whether the instance has PG native password login enabled. Defaults to true
+     * 
+     */
+    public Boolean enablePgNativeLogin() {
+        return this.enablePgNativeLogin;
     }
     /**
      * @return (boolean) - Whether to enable secondaries to serve read-only traffic. Defaults to false
@@ -293,10 +321,12 @@ public final class GetDatabaseInstancesDatabaseInstance {
         private List<GetDatabaseInstancesDatabaseInstanceChildInstanceRef> childInstanceRefs;
         private String creationTime;
         private String creator;
+        private Boolean effectiveEnablePgNativeLogin;
         private Boolean effectiveEnableReadableSecondaries;
         private Integer effectiveNodeCount;
         private Integer effectiveRetentionWindowInDays;
         private Boolean effectiveStopped;
+        private Boolean enablePgNativeLogin;
         private @Nullable Boolean enableReadableSecondaries;
         private String name;
         private @Nullable Integer nodeCount;
@@ -315,10 +345,12 @@ public final class GetDatabaseInstancesDatabaseInstance {
     	      this.childInstanceRefs = defaults.childInstanceRefs;
     	      this.creationTime = defaults.creationTime;
     	      this.creator = defaults.creator;
+    	      this.effectiveEnablePgNativeLogin = defaults.effectiveEnablePgNativeLogin;
     	      this.effectiveEnableReadableSecondaries = defaults.effectiveEnableReadableSecondaries;
     	      this.effectiveNodeCount = defaults.effectiveNodeCount;
     	      this.effectiveRetentionWindowInDays = defaults.effectiveRetentionWindowInDays;
     	      this.effectiveStopped = defaults.effectiveStopped;
+    	      this.enablePgNativeLogin = defaults.enablePgNativeLogin;
     	      this.enableReadableSecondaries = defaults.enableReadableSecondaries;
     	      this.name = defaults.name;
     	      this.nodeCount = defaults.nodeCount;
@@ -366,6 +398,14 @@ public final class GetDatabaseInstancesDatabaseInstance {
             return this;
         }
         @CustomType.Setter
+        public Builder effectiveEnablePgNativeLogin(Boolean effectiveEnablePgNativeLogin) {
+            if (effectiveEnablePgNativeLogin == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesDatabaseInstance", "effectiveEnablePgNativeLogin");
+            }
+            this.effectiveEnablePgNativeLogin = effectiveEnablePgNativeLogin;
+            return this;
+        }
+        @CustomType.Setter
         public Builder effectiveEnableReadableSecondaries(Boolean effectiveEnableReadableSecondaries) {
             if (effectiveEnableReadableSecondaries == null) {
               throw new MissingRequiredPropertyException("GetDatabaseInstancesDatabaseInstance", "effectiveEnableReadableSecondaries");
@@ -395,6 +435,14 @@ public final class GetDatabaseInstancesDatabaseInstance {
               throw new MissingRequiredPropertyException("GetDatabaseInstancesDatabaseInstance", "effectiveStopped");
             }
             this.effectiveStopped = effectiveStopped;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder enablePgNativeLogin(Boolean enablePgNativeLogin) {
+            if (enablePgNativeLogin == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesDatabaseInstance", "enablePgNativeLogin");
+            }
+            this.enablePgNativeLogin = enablePgNativeLogin;
             return this;
         }
         @CustomType.Setter
@@ -481,10 +529,12 @@ public final class GetDatabaseInstancesDatabaseInstance {
             _resultValue.childInstanceRefs = childInstanceRefs;
             _resultValue.creationTime = creationTime;
             _resultValue.creator = creator;
+            _resultValue.effectiveEnablePgNativeLogin = effectiveEnablePgNativeLogin;
             _resultValue.effectiveEnableReadableSecondaries = effectiveEnableReadableSecondaries;
             _resultValue.effectiveNodeCount = effectiveNodeCount;
             _resultValue.effectiveRetentionWindowInDays = effectiveRetentionWindowInDays;
             _resultValue.effectiveStopped = effectiveStopped;
+            _resultValue.enablePgNativeLogin = enablePgNativeLogin;
             _resultValue.enableReadableSecondaries = enableReadableSecondaries;
             _resultValue.name = name;
             _resultValue.nodeCount = nodeCount;

@@ -192,6 +192,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.metadataServiceUrl);
     }
 
+    @Import(name="oauthCallbackPort", json=true)
+    private @Nullable Output<Integer> oauthCallbackPort;
+
+    public Optional<Output<Integer>> oauthCallbackPort() {
+        return Optional.ofNullable(this.oauthCallbackPort);
+    }
+
     @Import(name="oidcTokenEnv")
     private @Nullable Output<String> oidcTokenEnv;
 
@@ -290,6 +297,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.host = $.host;
         this.httpTimeoutSeconds = $.httpTimeoutSeconds;
         this.metadataServiceUrl = $.metadataServiceUrl;
+        this.oauthCallbackPort = $.oauthCallbackPort;
         this.oidcTokenEnv = $.oidcTokenEnv;
         this.password = $.password;
         this.profile = $.profile;
@@ -543,6 +551,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder metadataServiceUrl(String metadataServiceUrl) {
             return metadataServiceUrl(Output.of(metadataServiceUrl));
+        }
+
+        public Builder oauthCallbackPort(@Nullable Output<Integer> oauthCallbackPort) {
+            $.oauthCallbackPort = oauthCallbackPort;
+            return this;
+        }
+
+        public Builder oauthCallbackPort(Integer oauthCallbackPort) {
+            return oauthCallbackPort(Output.of(oauthCallbackPort));
         }
 
         public Builder oidcTokenEnv(@Nullable Output<String> oidcTokenEnv) {

@@ -57,7 +57,7 @@ import (
 //
 // import {
 //
-//	id = clean_room_name,name,asset_type
+//	id = "clean_room_name,name,asset_type"
 //
 //	to = databricks_clean_room_asset.this
 //
@@ -66,7 +66,7 @@ import (
 // If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
 //
 // ```sh
-// $ pulumi import databricks:index/cleanRoomAsset:CleanRoomAsset databricks_clean_room_asset clean_room_name,name,asset_type
+// $ pulumi import databricks:index/cleanRoomAsset:CleanRoomAsset databricks_clean_room_asset "clean_room_name,name,asset_type"
 // ```
 type CleanRoomAsset struct {
 	pulumi.CustomResourceState
@@ -114,6 +114,8 @@ type CleanRoomAsset struct {
 	// Local details for a volume that are only available to its owner.
 	// Present if and only if **asset_type** is **VOLUME**
 	VolumeLocalDetails CleanRoomAssetVolumeLocalDetailsPtrOutput `pulumi:"volumeLocalDetails"`
+	// Workspace ID of the resource
+	WorkspaceId pulumi.StringPtrOutput `pulumi:"workspaceId"`
 }
 
 // NewCleanRoomAsset registers a new resource with the given unique name, arguments, and options.
@@ -192,6 +194,8 @@ type cleanRoomAssetState struct {
 	// Local details for a volume that are only available to its owner.
 	// Present if and only if **asset_type** is **VOLUME**
 	VolumeLocalDetails *CleanRoomAssetVolumeLocalDetails `pulumi:"volumeLocalDetails"`
+	// Workspace ID of the resource
+	WorkspaceId *string `pulumi:"workspaceId"`
 }
 
 type CleanRoomAssetState struct {
@@ -238,6 +242,8 @@ type CleanRoomAssetState struct {
 	// Local details for a volume that are only available to its owner.
 	// Present if and only if **asset_type** is **VOLUME**
 	VolumeLocalDetails CleanRoomAssetVolumeLocalDetailsPtrInput
+	// Workspace ID of the resource
+	WorkspaceId pulumi.StringPtrInput
 }
 
 func (CleanRoomAssetState) ElementType() reflect.Type {
@@ -282,6 +288,8 @@ type cleanRoomAssetArgs struct {
 	// Local details for a volume that are only available to its owner.
 	// Present if and only if **asset_type** is **VOLUME**
 	VolumeLocalDetails *CleanRoomAssetVolumeLocalDetails `pulumi:"volumeLocalDetails"`
+	// Workspace ID of the resource
+	WorkspaceId *string `pulumi:"workspaceId"`
 }
 
 // The set of arguments for constructing a CleanRoomAsset resource.
@@ -323,6 +331,8 @@ type CleanRoomAssetArgs struct {
 	// Local details for a volume that are only available to its owner.
 	// Present if and only if **asset_type** is **VOLUME**
 	VolumeLocalDetails CleanRoomAssetVolumeLocalDetailsPtrInput
+	// Workspace ID of the resource
+	WorkspaceId pulumi.StringPtrInput
 }
 
 func (CleanRoomAssetArgs) ElementType() reflect.Type {
@@ -497,6 +507,11 @@ func (o CleanRoomAssetOutput) ViewLocalDetails() CleanRoomAssetViewLocalDetailsP
 // Present if and only if **asset_type** is **VOLUME**
 func (o CleanRoomAssetOutput) VolumeLocalDetails() CleanRoomAssetVolumeLocalDetailsPtrOutput {
 	return o.ApplyT(func(v *CleanRoomAsset) CleanRoomAssetVolumeLocalDetailsPtrOutput { return v.VolumeLocalDetails }).(CleanRoomAssetVolumeLocalDetailsPtrOutput)
+}
+
+// Workspace ID of the resource
+func (o CleanRoomAssetOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CleanRoomAsset) pulumi.StringPtrOutput { return v.WorkspaceId }).(pulumi.StringPtrOutput)
 }
 
 type CleanRoomAssetArrayOutput struct{ *pulumi.OutputState }

@@ -37,7 +37,7 @@ import * as utilities from "./utilities";
  *
  * import {
  *
- *   id = clean_room_name,name,asset_type
+ *   id = "clean_room_name,name,asset_type"
  *
  *   to = databricks_clean_room_asset.this
  *
@@ -46,7 +46,7 @@ import * as utilities from "./utilities";
  * If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
  *
  * ```sh
- * $ pulumi import databricks:index/cleanRoomAsset:CleanRoomAsset databricks_clean_room_asset clean_room_name,name,asset_type
+ * $ pulumi import databricks:index/cleanRoomAsset:CleanRoomAsset databricks_clean_room_asset "clean_room_name,name,asset_type"
  * ```
  */
 export class CleanRoomAsset extends pulumi.CustomResource {
@@ -148,6 +148,10 @@ export class CleanRoomAsset extends pulumi.CustomResource {
      * Present if and only if **asset_type** is **VOLUME**
      */
     declare public readonly volumeLocalDetails: pulumi.Output<outputs.CleanRoomAssetVolumeLocalDetails | undefined>;
+    /**
+     * Workspace ID of the resource
+     */
+    declare public readonly workspaceId: pulumi.Output<string | undefined>;
 
     /**
      * Create a CleanRoomAsset resource with the given unique name, arguments, and options.
@@ -176,6 +180,7 @@ export class CleanRoomAsset extends pulumi.CustomResource {
             resourceInputs["view"] = state?.view;
             resourceInputs["viewLocalDetails"] = state?.viewLocalDetails;
             resourceInputs["volumeLocalDetails"] = state?.volumeLocalDetails;
+            resourceInputs["workspaceId"] = state?.workspaceId;
         } else {
             const args = argsOrState as CleanRoomAssetArgs | undefined;
             if (args?.assetType === undefined && !opts.urn) {
@@ -192,6 +197,7 @@ export class CleanRoomAsset extends pulumi.CustomResource {
             resourceInputs["view"] = args?.view;
             resourceInputs["viewLocalDetails"] = args?.viewLocalDetails;
             resourceInputs["volumeLocalDetails"] = args?.volumeLocalDetails;
+            resourceInputs["workspaceId"] = args?.workspaceId;
             resourceInputs["addedAt"] = undefined /*out*/;
             resourceInputs["ownerCollaboratorAlias"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
@@ -276,6 +282,10 @@ export interface CleanRoomAssetState {
      * Present if and only if **asset_type** is **VOLUME**
      */
     volumeLocalDetails?: pulumi.Input<inputs.CleanRoomAssetVolumeLocalDetails>;
+    /**
+     * Workspace ID of the resource
+     */
+    workspaceId?: pulumi.Input<string>;
 }
 
 /**
@@ -341,4 +351,8 @@ export interface CleanRoomAssetArgs {
      * Present if and only if **asset_type** is **VOLUME**
      */
     volumeLocalDetails?: pulumi.Input<inputs.CleanRoomAssetVolumeLocalDetails>;
+    /**
+     * Workspace ID of the resource
+     */
+    workspaceId?: pulumi.Input<string>;
 }

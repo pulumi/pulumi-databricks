@@ -30,6 +30,49 @@ export interface AccessControlRuleSetGrantRule {
     role: string;
 }
 
+export interface AccountFederationPolicyOidcPolicy {
+    /**
+     * The allowed token audiences, as specified in the 'aud' claim of federated tokens.
+     * The audience identifier is intended to represent the recipient of the token.
+     * Can be any non-empty string value. As long as the audience in the token matches
+     * at least one audience in the policy, the token is considered a match. If audiences
+     * is unspecified, defaults to your Databricks account id
+     */
+    audiences?: string[];
+    /**
+     * The required token issuer, as specified in the 'iss' claim of federated tokens
+     */
+    issuer?: string;
+    /**
+     * The public keys used to validate the signature of federated tokens, in JWKS format.
+     * Most use cases should not need to specify this field. If jwksUri and jwksJson
+     * are both unspecified (recommended), Databricks automatically fetches the public
+     * keys from your issuer’s well known endpoint. Databricks strongly recommends
+     * relying on your issuer’s well known endpoint for discovering public keys
+     */
+    jwksJson?: string;
+    /**
+     * URL of the public keys used to validate the signature of federated tokens, in
+     * JWKS format. Most use cases should not need to specify this field. If jwksUri
+     * and jwksJson are both unspecified (recommended), Databricks automatically
+     * fetches the public keys from your issuer’s well known endpoint. Databricks
+     * strongly recommends relying on your issuer’s well known endpoint for discovering
+     * public keys
+     */
+    jwksUri?: string;
+    /**
+     * The required token subject, as specified in the subject claim of federated tokens.
+     * Must be specified for service principal federation policies. Must not be specified
+     * for account federation policies
+     */
+    subject?: string;
+    /**
+     * The claim that contains the subject of the token. If unspecified, the default value
+     * is 'sub'
+     */
+    subjectClaim?: string;
+}
+
 export interface AccountNetworkPolicyEgress {
     /**
      * The access policy enforced for egress traffic to the internet
@@ -96,6 +139,164 @@ export interface AccountNetworkPolicyEgressNetworkAccessPolicyEnforcement {
      * defaults to ENFORCED. Possible values are: `DRY_RUN`, `ENFORCED`
      */
     enforcementMode?: string;
+}
+
+export interface AccountSettingV2AibiDashboardEmbeddingAccessPolicy {
+    /**
+     * . Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
+     */
+    accessPolicyType: string;
+}
+
+export interface AccountSettingV2AibiDashboardEmbeddingApprovedDomains {
+    approvedDomains?: string[];
+}
+
+export interface AccountSettingV2AutomaticClusterUpdateWorkspace {
+    canToggle?: boolean;
+    enabled?: boolean;
+    enablementDetails?: outputs.AccountSettingV2AutomaticClusterUpdateWorkspaceEnablementDetails;
+    maintenanceWindow?: outputs.AccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindow;
+    restartEvenIfNoUpdatesAvailable?: boolean;
+}
+
+export interface AccountSettingV2AutomaticClusterUpdateWorkspaceEnablementDetails {
+    /**
+     * The feature is force enabled if compliance mode is active
+     */
+    forcedForComplianceMode?: boolean;
+    /**
+     * The feature is unavailable if the corresponding entitlement disabled (see getShieldEntitlementEnable)
+     */
+    unavailableForDisabledEntitlement?: boolean;
+    /**
+     * The feature is unavailable if the customer doesn't have enterprise tier
+     */
+    unavailableForNonEnterpriseTier?: boolean;
+}
+
+export interface AccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindow {
+    weekDayBasedSchedule?: outputs.AccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule;
+}
+
+export interface AccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule {
+    /**
+     * . Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
+     */
+    dayOfWeek?: string;
+    /**
+     * . Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
+     */
+    frequency?: string;
+    windowStartTime?: outputs.AccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime;
+}
+
+export interface AccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime {
+    hours?: number;
+    minutes?: number;
+}
+
+export interface AccountSettingV2BooleanVal {
+    value?: boolean;
+}
+
+export interface AccountSettingV2DefaultDataSecurityMode {
+    status: string;
+}
+
+export interface AccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy {
+    /**
+     * . Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
+     */
+    accessPolicyType: string;
+}
+
+export interface AccountSettingV2EffectiveAibiDashboardEmbeddingApprovedDomains {
+    approvedDomains?: string[];
+}
+
+export interface AccountSettingV2EffectiveAutomaticClusterUpdateWorkspace {
+    canToggle?: boolean;
+    enabled?: boolean;
+    enablementDetails?: outputs.AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetails;
+    maintenanceWindow?: outputs.AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindow;
+    restartEvenIfNoUpdatesAvailable?: boolean;
+}
+
+export interface AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetails {
+    /**
+     * The feature is force enabled if compliance mode is active
+     */
+    forcedForComplianceMode?: boolean;
+    /**
+     * The feature is unavailable if the corresponding entitlement disabled (see getShieldEntitlementEnable)
+     */
+    unavailableForDisabledEntitlement?: boolean;
+    /**
+     * The feature is unavailable if the customer doesn't have enterprise tier
+     */
+    unavailableForNonEnterpriseTier?: boolean;
+}
+
+export interface AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindow {
+    weekDayBasedSchedule?: outputs.AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule;
+}
+
+export interface AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule {
+    /**
+     * . Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
+     */
+    dayOfWeek?: string;
+    /**
+     * . Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
+     */
+    frequency?: string;
+    windowStartTime?: outputs.AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime;
+}
+
+export interface AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime {
+    hours?: number;
+    minutes?: number;
+}
+
+export interface AccountSettingV2EffectiveBooleanVal {
+    value?: boolean;
+}
+
+export interface AccountSettingV2EffectiveDefaultDataSecurityMode {
+    status: string;
+}
+
+export interface AccountSettingV2EffectiveIntegerVal {
+    value?: number;
+}
+
+export interface AccountSettingV2EffectivePersonalCompute {
+    value?: string;
+}
+
+export interface AccountSettingV2EffectiveRestrictWorkspaceAdmins {
+    status: string;
+}
+
+export interface AccountSettingV2EffectiveStringVal {
+    value?: string;
+}
+
+export interface AccountSettingV2IntegerVal {
+    value?: number;
+}
+
+export interface AccountSettingV2PersonalCompute {
+    value?: string;
+}
+
+export interface AccountSettingV2RestrictWorkspaceAdmins {
+    status: string;
+}
+
+export interface AccountSettingV2StringVal {
+    value?: string;
 }
 
 export interface AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicy {
@@ -165,6 +366,17 @@ export interface AlertConditionThresholdValue {
      * string value to compare against string results.
      */
     stringValue?: string;
+}
+
+export interface AlertV2EffectiveRunAs {
+    /**
+     * Application ID of an active service principal. Setting this field requires the `servicePrincipal/user` role
+     */
+    servicePrincipalName?: string;
+    /**
+     * The email of an active workspace user. Can only set this field to their own email
+     */
+    userName?: string;
 }
 
 export interface AlertV2Evaluation {
@@ -242,6 +454,17 @@ export interface AlertV2EvaluationThresholdValue {
     boolValue?: boolean;
     doubleValue?: number;
     stringValue?: string;
+}
+
+export interface AlertV2RunAs {
+    /**
+     * Application ID of an active service principal. Setting this field requires the `servicePrincipal/user` role
+     */
+    servicePrincipalName?: string;
+    /**
+     * The email of an active workspace user. Can only set this field to their own email
+     */
+    userName?: string;
 }
 
 export interface AlertV2Schedule {
@@ -469,6 +692,64 @@ export interface AppResourceUcSecurable {
     securableType: string;
 }
 
+export interface AppsSettingsCustomTemplateManifest {
+    /**
+     * The description of the template
+     */
+    description?: string;
+    /**
+     * The name of the template. It must contain only alphanumeric characters, hyphens, underscores, and whitespaces.
+     * It must be unique within the workspace
+     */
+    name: string;
+    resourceSpecs?: outputs.AppsSettingsCustomTemplateManifestResourceSpec[];
+    /**
+     * The manifest schema version, for now only 1 is allowed
+     */
+    version: number;
+}
+
+export interface AppsSettingsCustomTemplateManifestResourceSpec {
+    /**
+     * The description of the template
+     */
+    description?: string;
+    jobSpec?: outputs.AppsSettingsCustomTemplateManifestResourceSpecJobSpec;
+    /**
+     * The name of the template. It must contain only alphanumeric characters, hyphens, underscores, and whitespaces.
+     * It must be unique within the workspace
+     */
+    name: string;
+    secretSpec?: outputs.AppsSettingsCustomTemplateManifestResourceSpecSecretSpec;
+    servingEndpointSpec?: outputs.AppsSettingsCustomTemplateManifestResourceSpecServingEndpointSpec;
+    sqlWarehouseSpec?: outputs.AppsSettingsCustomTemplateManifestResourceSpecSqlWarehouseSpec;
+    ucSecurableSpec?: outputs.AppsSettingsCustomTemplateManifestResourceSpecUcSecurableSpec;
+}
+
+export interface AppsSettingsCustomTemplateManifestResourceSpecJobSpec {
+    permission: string;
+}
+
+export interface AppsSettingsCustomTemplateManifestResourceSpecSecretSpec {
+    permission: string;
+}
+
+export interface AppsSettingsCustomTemplateManifestResourceSpecServingEndpointSpec {
+    permission: string;
+}
+
+export interface AppsSettingsCustomTemplateManifestResourceSpecSqlWarehouseSpec {
+    permission: string;
+}
+
+export interface AppsSettingsCustomTemplateManifestResourceSpecUcSecurableSpec {
+    permission: string;
+    /**
+     * . Possible values are: `VOLUME`
+     */
+    securableType: string;
+}
+
 export interface ArtifactAllowlistArtifactMatcher {
     /**
      * The artifact path or maven coordinate.
@@ -603,6 +884,16 @@ export interface BudgetPolicyCustomTag {
     value?: string;
 }
 
+export interface CatalogEffectivePredictiveOptimizationFlag {
+    inheritedFromName?: string;
+    inheritedFromType?: string;
+    value: string;
+}
+
+export interface CatalogProvisioningInfo {
+    state?: string;
+}
+
 export interface CleanRoomAssetForeignTable {
     /**
      * (list of ColumnInfo) - The metadata information of the columns in the view
@@ -697,7 +988,7 @@ export interface CleanRoomAssetNotebook {
      */
     reviews: outputs.CleanRoomAssetNotebookReview[];
     /**
-     * collaborators that can run the notebook
+     * Aliases of collaborators that can run the notebook
      */
     runnerCollaboratorAliases?: string[];
 }
@@ -975,7 +1266,7 @@ export interface CleanRoomsCleanRoomRemoteDetailedInfoCollaborator {
      */
     displayName: string;
     /**
-     * The global Unity Catalog metastore id of the collaborator. The identifier is of format cloud:region:metastore-uuid
+     * The global Unity Catalog metastore ID of the collaborator. The identifier is of format cloud:region:metastore-uuid
      */
     globalMetastoreId?: string;
     /**
@@ -1022,7 +1313,7 @@ export interface CleanRoomsCleanRoomRemoteDetailedInfoCreator {
      */
     displayName: string;
     /**
-     * The global Unity Catalog metastore id of the collaborator. The identifier is of format cloud:region:metastore-uuid
+     * The global Unity Catalog metastore ID of the collaborator. The identifier is of format cloud:region:metastore-uuid
      */
     globalMetastoreId?: string;
     /**
@@ -1323,6 +1614,9 @@ export interface ClusterGcpAttributes {
      * Boot disk size in GB
      */
     bootDiskSize?: number;
+    /**
+     * The first `firstOnDemand` nodes of the cluster will be placed on on-demand instances. If this value is greater than 0, the cluster driver node will be placed on an on-demand instance. If this value is greater than or equal to the current cluster size, all nodes will be placed on on-demand instances. If this value is less than the current cluster size, `firstOnDemand` nodes will be placed on on-demand instances, and the remainder will be placed on availability instances. This value does not affect cluster size and cannot be mutated over the lifetime of a cluster.
+     */
     firstOnDemand?: number;
     /**
      * Google Service Account email address that the cluster uses to authenticate with Google Identity. This field is used for authentication with the GCS and BigQuery data sources.
@@ -1519,11 +1813,6 @@ export interface ClusterWorkloadTypeClients {
 export interface ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspace {
     complianceStandards: string[];
     isEnabled: boolean;
-}
-
-export interface ConnectionEnvironmentSettings {
-    environmentVersion?: string;
-    javaDependencies?: string[];
 }
 
 export interface ConnectionProvisioningInfo {
@@ -2068,6 +2357,132 @@ export interface ExternalLocationFileEventQueueProvidedSqs {
     queueUrl: string;
 }
 
+export interface GetAccountFederationPoliciesPolicy {
+    /**
+     * (string) - Creation time of the federation policy
+     */
+    createTime: string;
+    /**
+     * (string) - Description of the federation policy
+     */
+    description?: string;
+    /**
+     * (string) - Resource name for the federation policy. Example values include
+     * `accounts/<account-id>/federationPolicies/my-federation-policy` for Account Federation Policies, and
+     * `accounts/<account-id>/servicePrincipals/<service-principal-id>/federationPolicies/my-federation-policy`
+     * for Service Principal Federation Policies. Typically an output parameter, which does not need to be
+     * specified in create or update requests. If specified in a request, must match the value in the
+     * request URL
+     */
+    name: string;
+    /**
+     * (OidcFederationPolicy)
+     */
+    oidcPolicy?: outputs.GetAccountFederationPoliciesPolicyOidcPolicy;
+    /**
+     * (string) - The ID of the federation policy
+     */
+    policyId: string;
+    /**
+     * (integer) - The service principal ID that this federation policy applies to. Only set for service principal federation policies
+     */
+    servicePrincipalId: number;
+    /**
+     * (string) - Unique, immutable id of the federation policy
+     */
+    uid: string;
+    /**
+     * (string) - Last update time of the federation policy
+     */
+    updateTime: string;
+}
+
+export interface GetAccountFederationPoliciesPolicyOidcPolicy {
+    /**
+     * (list of string) - The allowed token audiences, as specified in the 'aud' claim of federated tokens.
+     * The audience identifier is intended to represent the recipient of the token.
+     * Can be any non-empty string value. As long as the audience in the token matches
+     * at least one audience in the policy, the token is considered a match. If audiences
+     * is unspecified, defaults to your Databricks account id
+     */
+    audiences?: string[];
+    /**
+     * (string) - The required token issuer, as specified in the 'iss' claim of federated tokens
+     */
+    issuer?: string;
+    /**
+     * (string) - The public keys used to validate the signature of federated tokens, in JWKS format.
+     * Most use cases should not need to specify this field. If jwksUri and jwksJson
+     * are both unspecified (recommended), Databricks automatically fetches the public
+     * keys from your issuer’s well known endpoint. Databricks strongly recommends
+     * relying on your issuer’s well known endpoint for discovering public keys
+     */
+    jwksJson?: string;
+    /**
+     * (string) - URL of the public keys used to validate the signature of federated tokens, in
+     * JWKS format. Most use cases should not need to specify this field. If jwksUri
+     * and jwksJson are both unspecified (recommended), Databricks automatically
+     * fetches the public keys from your issuer’s well known endpoint. Databricks
+     * strongly recommends relying on your issuer’s well known endpoint for discovering
+     * public keys
+     */
+    jwksUri?: string;
+    /**
+     * (string) - The required token subject, as specified in the subject claim of federated tokens.
+     * Must be specified for service principal federation policies. Must not be specified
+     * for account federation policies
+     */
+    subject?: string;
+    /**
+     * (string) - The claim that contains the subject of the token. If unspecified, the default value
+     * is 'sub'
+     */
+    subjectClaim?: string;
+}
+
+export interface GetAccountFederationPolicyOidcPolicy {
+    /**
+     * (list of string) - The allowed token audiences, as specified in the 'aud' claim of federated tokens.
+     * The audience identifier is intended to represent the recipient of the token.
+     * Can be any non-empty string value. As long as the audience in the token matches
+     * at least one audience in the policy, the token is considered a match. If audiences
+     * is unspecified, defaults to your Databricks account id
+     */
+    audiences?: string[];
+    /**
+     * (string) - The required token issuer, as specified in the 'iss' claim of federated tokens
+     */
+    issuer?: string;
+    /**
+     * (string) - The public keys used to validate the signature of federated tokens, in JWKS format.
+     * Most use cases should not need to specify this field. If jwksUri and jwksJson
+     * are both unspecified (recommended), Databricks automatically fetches the public
+     * keys from your issuer’s well known endpoint. Databricks strongly recommends
+     * relying on your issuer’s well known endpoint for discovering public keys
+     */
+    jwksJson?: string;
+    /**
+     * (string) - URL of the public keys used to validate the signature of federated tokens, in
+     * JWKS format. Most use cases should not need to specify this field. If jwksUri
+     * and jwksJson are both unspecified (recommended), Databricks automatically
+     * fetches the public keys from your issuer’s well known endpoint. Databricks
+     * strongly recommends relying on your issuer’s well known endpoint for discovering
+     * public keys
+     */
+    jwksUri?: string;
+    /**
+     * (string) - The required token subject, as specified in the subject claim of federated tokens.
+     * Must be specified for service principal federation policies. Must not be specified
+     * for account federation policies
+     */
+    subject?: string;
+    /**
+     * (string) - The claim that contains the subject of the token. If unspecified, the default value
+     * is 'sub'
+     */
+    subjectClaim?: string;
+}
+
 export interface GetAccountNetworkPoliciesItem {
     /**
      * (string) - The associated account ID for this Network Policy object
@@ -2231,6 +2646,271 @@ export interface GetAccountNetworkPolicyEgressNetworkAccessPolicyEnforcement {
     enforcementMode?: string;
 }
 
+export interface GetAccountSettingV2AibiDashboardEmbeddingAccessPolicy {
+    /**
+     * (string) - . Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
+     */
+    accessPolicyType: string;
+}
+
+export interface GetAccountSettingV2AibiDashboardEmbeddingApprovedDomains {
+    /**
+     * (list of string)
+     */
+    approvedDomains?: string[];
+}
+
+export interface GetAccountSettingV2AutomaticClusterUpdateWorkspace {
+    /**
+     * (boolean)
+     */
+    canToggle?: boolean;
+    /**
+     * (boolean)
+     */
+    enabled?: boolean;
+    /**
+     * (ClusterAutoRestartMessageEnablementDetails)
+     */
+    enablementDetails?: outputs.GetAccountSettingV2AutomaticClusterUpdateWorkspaceEnablementDetails;
+    /**
+     * (ClusterAutoRestartMessageMaintenanceWindow)
+     */
+    maintenanceWindow?: outputs.GetAccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindow;
+    /**
+     * (boolean)
+     */
+    restartEvenIfNoUpdatesAvailable?: boolean;
+}
+
+export interface GetAccountSettingV2AutomaticClusterUpdateWorkspaceEnablementDetails {
+    /**
+     * (boolean) - The feature is force enabled if compliance mode is active
+     */
+    forcedForComplianceMode?: boolean;
+    /**
+     * (boolean) - The feature is unavailable if the corresponding entitlement disabled (see getShieldEntitlementEnable)
+     */
+    unavailableForDisabledEntitlement?: boolean;
+    /**
+     * (boolean) - The feature is unavailable if the customer doesn't have enterprise tier
+     */
+    unavailableForNonEnterpriseTier?: boolean;
+}
+
+export interface GetAccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindow {
+    /**
+     * (ClusterAutoRestartMessageMaintenanceWindowWeekDayBasedSchedule)
+     */
+    weekDayBasedSchedule?: outputs.GetAccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule;
+}
+
+export interface GetAccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule {
+    /**
+     * (string) - . Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
+     */
+    dayOfWeek?: string;
+    /**
+     * (string) - . Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
+     */
+    frequency?: string;
+    /**
+     * (ClusterAutoRestartMessageMaintenanceWindowWindowStartTime)
+     */
+    windowStartTime?: outputs.GetAccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime;
+}
+
+export interface GetAccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime {
+    /**
+     * (integer)
+     */
+    hours?: number;
+    /**
+     * (integer)
+     */
+    minutes?: number;
+}
+
+export interface GetAccountSettingV2BooleanVal {
+    /**
+     * (string) - Represents a generic string value
+     */
+    value?: boolean;
+}
+
+export interface GetAccountSettingV2DefaultDataSecurityMode {
+    /**
+     * (string) - . Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
+     */
+    status: string;
+}
+
+export interface GetAccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy {
+    /**
+     * (string) - . Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
+     */
+    accessPolicyType: string;
+}
+
+export interface GetAccountSettingV2EffectiveAibiDashboardEmbeddingApprovedDomains {
+    /**
+     * (list of string)
+     */
+    approvedDomains?: string[];
+}
+
+export interface GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspace {
+    /**
+     * (boolean)
+     */
+    canToggle?: boolean;
+    /**
+     * (boolean)
+     */
+    enabled?: boolean;
+    /**
+     * (ClusterAutoRestartMessageEnablementDetails)
+     */
+    enablementDetails?: outputs.GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetails;
+    /**
+     * (ClusterAutoRestartMessageMaintenanceWindow)
+     */
+    maintenanceWindow?: outputs.GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindow;
+    /**
+     * (boolean)
+     */
+    restartEvenIfNoUpdatesAvailable?: boolean;
+}
+
+export interface GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetails {
+    /**
+     * (boolean) - The feature is force enabled if compliance mode is active
+     */
+    forcedForComplianceMode?: boolean;
+    /**
+     * (boolean) - The feature is unavailable if the corresponding entitlement disabled (see getShieldEntitlementEnable)
+     */
+    unavailableForDisabledEntitlement?: boolean;
+    /**
+     * (boolean) - The feature is unavailable if the customer doesn't have enterprise tier
+     */
+    unavailableForNonEnterpriseTier?: boolean;
+}
+
+export interface GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindow {
+    /**
+     * (ClusterAutoRestartMessageMaintenanceWindowWeekDayBasedSchedule)
+     */
+    weekDayBasedSchedule?: outputs.GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule;
+}
+
+export interface GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule {
+    /**
+     * (string) - . Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
+     */
+    dayOfWeek?: string;
+    /**
+     * (string) - . Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
+     */
+    frequency?: string;
+    /**
+     * (ClusterAutoRestartMessageMaintenanceWindowWindowStartTime)
+     */
+    windowStartTime?: outputs.GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime;
+}
+
+export interface GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime {
+    /**
+     * (integer)
+     */
+    hours?: number;
+    /**
+     * (integer)
+     */
+    minutes?: number;
+}
+
+export interface GetAccountSettingV2EffectiveBooleanVal {
+    /**
+     * (string) - Represents a generic string value
+     */
+    value?: boolean;
+}
+
+export interface GetAccountSettingV2EffectiveDefaultDataSecurityMode {
+    /**
+     * (string) - . Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
+     */
+    status: string;
+}
+
+export interface GetAccountSettingV2EffectiveIntegerVal {
+    /**
+     * (string) - Represents a generic string value
+     */
+    value?: number;
+}
+
+export interface GetAccountSettingV2EffectivePersonalCompute {
+    /**
+     * (string) - Represents a generic string value
+     */
+    value?: string;
+}
+
+export interface GetAccountSettingV2EffectiveRestrictWorkspaceAdmins {
+    /**
+     * (string) - . Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
+     */
+    status: string;
+}
+
+export interface GetAccountSettingV2EffectiveStringVal {
+    /**
+     * (string) - Represents a generic string value
+     */
+    value?: string;
+}
+
+export interface GetAccountSettingV2IntegerVal {
+    /**
+     * (string) - Represents a generic string value
+     */
+    value?: number;
+}
+
+export interface GetAccountSettingV2PersonalCompute {
+    /**
+     * (string) - Represents a generic string value
+     */
+    value?: string;
+}
+
+export interface GetAccountSettingV2RestrictWorkspaceAdmins {
+    /**
+     * (string) - . Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
+     */
+    status: string;
+}
+
+export interface GetAccountSettingV2StringVal {
+    /**
+     * (string) - Represents a generic string value
+     */
+    value?: string;
+}
+
+export interface GetAlertV2EffectiveRunAs {
+    /**
+     * (string) - Application ID of an active service principal. Setting this field requires the `servicePrincipal/user` role
+     */
+    servicePrincipalName?: string;
+    /**
+     * (string) - The email of an active workspace user. Can only set this field to their own email
+     */
+    userName?: string;
+}
+
 export interface GetAlertV2Evaluation {
     /**
      * (string) - Operator used for comparison in alert evaluation. Possible values are: `EQUAL`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `IS_NOT_NULL`, `IS_NULL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`
@@ -2344,6 +3024,17 @@ export interface GetAlertV2EvaluationThresholdValue {
     stringValue?: string;
 }
 
+export interface GetAlertV2RunAs {
+    /**
+     * (string) - Application ID of an active service principal. Setting this field requires the `servicePrincipal/user` role
+     */
+    servicePrincipalName?: string;
+    /**
+     * (string) - The email of an active workspace user. Can only set this field to their own email
+     */
+    userName?: string;
+}
+
 export interface GetAlertV2Schedule {
     /**
      * (string) - Indicate whether this schedule is paused or not. Possible values are: `PAUSED`, `UNPAUSED`
@@ -2380,6 +3071,12 @@ export interface GetAlertsV2Result {
      */
     displayName?: string;
     /**
+     * (AlertV2RunAs) - The actual identity that will be used to execute the alert.
+     * This is an output-only field that shows the resolved run-as identity after applying
+     * permissions and defaults
+     */
+    effectiveRunAs: outputs.GetAlertsV2ResultEffectiveRunAs;
+    /**
      * (AlertV2Evaluation)
      */
     evaluation?: outputs.GetAlertsV2ResultEvaluation;
@@ -2404,8 +3101,17 @@ export interface GetAlertsV2Result {
      */
     queryText?: string;
     /**
-     * (string) - The run as username or application ID of service principal.
-     * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
+     * (AlertV2RunAs) - Specifies the identity that will be used to run the alert.
+     * This field allows you to configure alerts to run as a specific user or service principal.
+     * - For user identity: Set `userName` to the email of an active workspace user. Users can only set this to their own email.
+     * - For service principal: Set `servicePrincipalName` to the application ID. Requires the `servicePrincipal/user` role.
+     * If not specified, the alert will run as the request user
+     */
+    runAs?: outputs.GetAlertsV2ResultRunAs;
+    /**
+     * (string, deprecated) - The run as username or application ID of service principal.
+     * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
+     * Deprecated: Use `runAs` field instead. This field will be removed in a future release
      */
     runAsUserName?: string;
     /**
@@ -2420,6 +3126,17 @@ export interface GetAlertsV2Result {
      * (string) - ID of the SQL warehouse attached to the alert
      */
     warehouseId?: string;
+}
+
+export interface GetAlertsV2ResultEffectiveRunAs {
+    /**
+     * (string) - Application ID of an active service principal. Setting this field requires the `servicePrincipal/user` role
+     */
+    servicePrincipalName?: string;
+    /**
+     * (string) - The email of an active workspace user. Can only set this field to their own email
+     */
+    userName?: string;
 }
 
 export interface GetAlertsV2ResultEvaluation {
@@ -2533,6 +3250,17 @@ export interface GetAlertsV2ResultEvaluationThresholdValue {
      * (string)
      */
     stringValue?: string;
+}
+
+export interface GetAlertsV2ResultRunAs {
+    /**
+     * (string) - Application ID of an active service principal. Setting this field requires the `servicePrincipal/user` role
+     */
+    servicePrincipalName?: string;
+    /**
+     * (string) - The email of an active workspace user. Can only set this field to their own email
+     */
+    userName?: string;
 }
 
 export interface GetAlertsV2ResultSchedule {
@@ -3117,6 +3845,217 @@ export interface GetAppsAppResourceUcSecurable {
     securableType: string;
 }
 
+export interface GetAppsSettingsCustomTemplateManifest {
+    /**
+     * (string) - Description of the App Resource
+     */
+    description?: string;
+    /**
+     * The name of the template. It must contain only alphanumeric characters, hyphens, underscores, and whitespaces.
+     * It must be unique within the workspace
+     */
+    name: string;
+    /**
+     * (list of AppManifestAppResourceSpec)
+     */
+    resourceSpecs?: outputs.GetAppsSettingsCustomTemplateManifestResourceSpec[];
+    /**
+     * (integer) - The manifest schema version, for now only 1 is allowed
+     */
+    version: number;
+}
+
+export interface GetAppsSettingsCustomTemplateManifestResourceSpec {
+    /**
+     * (string) - Description of the App Resource
+     */
+    description?: string;
+    /**
+     * (AppManifestAppResourceJobSpec)
+     */
+    jobSpec?: outputs.GetAppsSettingsCustomTemplateManifestResourceSpecJobSpec;
+    /**
+     * The name of the template. It must contain only alphanumeric characters, hyphens, underscores, and whitespaces.
+     * It must be unique within the workspace
+     */
+    name: string;
+    /**
+     * (AppManifestAppResourceSecretSpec)
+     */
+    secretSpec?: outputs.GetAppsSettingsCustomTemplateManifestResourceSpecSecretSpec;
+    /**
+     * (AppManifestAppResourceServingEndpointSpec)
+     */
+    servingEndpointSpec?: outputs.GetAppsSettingsCustomTemplateManifestResourceSpecServingEndpointSpec;
+    /**
+     * (AppManifestAppResourceSqlWarehouseSpec)
+     */
+    sqlWarehouseSpec?: outputs.GetAppsSettingsCustomTemplateManifestResourceSpecSqlWarehouseSpec;
+    /**
+     * (AppManifestAppResourceUcSecurableSpec)
+     */
+    ucSecurableSpec?: outputs.GetAppsSettingsCustomTemplateManifestResourceSpecUcSecurableSpec;
+}
+
+export interface GetAppsSettingsCustomTemplateManifestResourceSpecJobSpec {
+    /**
+     * (string) - . Possible values are: `MANAGE`, `READ_VOLUME`, `WRITE_VOLUME`
+     */
+    permission: string;
+}
+
+export interface GetAppsSettingsCustomTemplateManifestResourceSpecSecretSpec {
+    /**
+     * (string) - . Possible values are: `MANAGE`, `READ_VOLUME`, `WRITE_VOLUME`
+     */
+    permission: string;
+}
+
+export interface GetAppsSettingsCustomTemplateManifestResourceSpecServingEndpointSpec {
+    /**
+     * (string) - . Possible values are: `MANAGE`, `READ_VOLUME`, `WRITE_VOLUME`
+     */
+    permission: string;
+}
+
+export interface GetAppsSettingsCustomTemplateManifestResourceSpecSqlWarehouseSpec {
+    /**
+     * (string) - . Possible values are: `MANAGE`, `READ_VOLUME`, `WRITE_VOLUME`
+     */
+    permission: string;
+}
+
+export interface GetAppsSettingsCustomTemplateManifestResourceSpecUcSecurableSpec {
+    /**
+     * (string) - . Possible values are: `MANAGE`, `READ_VOLUME`, `WRITE_VOLUME`
+     */
+    permission: string;
+    /**
+     * (string) - . Possible values are: `VOLUME`
+     */
+    securableType: string;
+}
+
+export interface GetAppsSettingsCustomTemplatesTemplate {
+    /**
+     * (string)
+     */
+    creator: string;
+    /**
+     * (string) - Description of the App Resource
+     */
+    description?: string;
+    /**
+     * (string) - The Git provider of the template
+     */
+    gitProvider: string;
+    /**
+     * (string) - The Git repository URL that the template resides in
+     */
+    gitRepo: string;
+    /**
+     * (AppManifest) - The manifest of the template. It defines fields and default values when installing the template
+     */
+    manifest: outputs.GetAppsSettingsCustomTemplatesTemplateManifest;
+    /**
+     * (string) - Name of the App Resource
+     */
+    name: string;
+    /**
+     * (string) - The path to the template within the Git repository
+     */
+    path: string;
+}
+
+export interface GetAppsSettingsCustomTemplatesTemplateManifest {
+    /**
+     * (string) - Description of the App Resource
+     */
+    description?: string;
+    /**
+     * (string) - Name of the App Resource
+     */
+    name: string;
+    /**
+     * (list of AppManifestAppResourceSpec)
+     */
+    resourceSpecs?: outputs.GetAppsSettingsCustomTemplatesTemplateManifestResourceSpec[];
+    /**
+     * (integer) - The manifest schema version, for now only 1 is allowed
+     */
+    version: number;
+}
+
+export interface GetAppsSettingsCustomTemplatesTemplateManifestResourceSpec {
+    /**
+     * (string) - Description of the App Resource
+     */
+    description?: string;
+    /**
+     * (AppManifestAppResourceJobSpec)
+     */
+    jobSpec?: outputs.GetAppsSettingsCustomTemplatesTemplateManifestResourceSpecJobSpec;
+    /**
+     * (string) - Name of the App Resource
+     */
+    name: string;
+    /**
+     * (AppManifestAppResourceSecretSpec)
+     */
+    secretSpec?: outputs.GetAppsSettingsCustomTemplatesTemplateManifestResourceSpecSecretSpec;
+    /**
+     * (AppManifestAppResourceServingEndpointSpec)
+     */
+    servingEndpointSpec?: outputs.GetAppsSettingsCustomTemplatesTemplateManifestResourceSpecServingEndpointSpec;
+    /**
+     * (AppManifestAppResourceSqlWarehouseSpec)
+     */
+    sqlWarehouseSpec?: outputs.GetAppsSettingsCustomTemplatesTemplateManifestResourceSpecSqlWarehouseSpec;
+    /**
+     * (AppManifestAppResourceUcSecurableSpec)
+     */
+    ucSecurableSpec?: outputs.GetAppsSettingsCustomTemplatesTemplateManifestResourceSpecUcSecurableSpec;
+}
+
+export interface GetAppsSettingsCustomTemplatesTemplateManifestResourceSpecJobSpec {
+    /**
+     * (string) - . Possible values are: `MANAGE`, `READ_VOLUME`, `WRITE_VOLUME`
+     */
+    permission: string;
+}
+
+export interface GetAppsSettingsCustomTemplatesTemplateManifestResourceSpecSecretSpec {
+    /**
+     * (string) - . Possible values are: `MANAGE`, `READ_VOLUME`, `WRITE_VOLUME`
+     */
+    permission: string;
+}
+
+export interface GetAppsSettingsCustomTemplatesTemplateManifestResourceSpecServingEndpointSpec {
+    /**
+     * (string) - . Possible values are: `MANAGE`, `READ_VOLUME`, `WRITE_VOLUME`
+     */
+    permission: string;
+}
+
+export interface GetAppsSettingsCustomTemplatesTemplateManifestResourceSpecSqlWarehouseSpec {
+    /**
+     * (string) - . Possible values are: `MANAGE`, `READ_VOLUME`, `WRITE_VOLUME`
+     */
+    permission: string;
+}
+
+export interface GetAppsSettingsCustomTemplatesTemplateManifestResourceSpecUcSecurableSpec {
+    /**
+     * (string) - . Possible values are: `MANAGE`, `READ_VOLUME`, `WRITE_VOLUME`
+     */
+    permission: string;
+    /**
+     * (string) - . Possible values are: `VOLUME`
+     */
+    securableType: string;
+}
+
 export interface GetBudgetPoliciesPolicy {
     /**
      * (list of integer) - List of workspaces that this budget policy will be exclusively bound to.
@@ -3371,7 +4310,7 @@ export interface GetCleanRoomAssetNotebook {
      */
     reviews: outputs.GetCleanRoomAssetNotebookReview[];
     /**
-     * (list of string) - collaborators that can run the notebook
+     * (list of string) - Aliases of collaborators that can run the notebook
      */
     runnerCollaboratorAliases?: string[];
 }
@@ -3503,7 +4442,7 @@ export interface GetCleanRoomAssetRevisionsCleanRoomAssetNotebook {
      */
     reviews: outputs.GetCleanRoomAssetRevisionsCleanRoomAssetNotebookReview[];
     /**
-     * (list of string) - collaborators that can run the notebook
+     * (list of string) - Aliases of collaborators that can run the notebook
      */
     runnerCollaboratorAliases?: string[];
 }
@@ -3913,7 +4852,7 @@ export interface GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionNotebook {
      */
     reviews: outputs.GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionNotebookReview[];
     /**
-     * (list of string) - collaborators that can run the notebook
+     * (list of string) - Aliases of collaborators that can run the notebook
      */
     runnerCollaboratorAliases?: string[];
 }
@@ -4522,7 +5461,7 @@ export interface GetCleanRoomAssetsAssetNotebook {
      */
     reviews: outputs.GetCleanRoomAssetsAssetNotebookReview[];
     /**
-     * (list of string) - collaborators that can run the notebook
+     * (list of string) - Aliases of collaborators that can run the notebook
      */
     runnerCollaboratorAliases?: string[];
 }
@@ -4838,7 +5777,7 @@ export interface GetCleanRoomsCleanRoomRemoteDetailedInfoCollaborator {
      */
     displayName: string;
     /**
-     * (string) - The global Unity Catalog metastore id of the collaborator. The identifier is of format cloud:region:metastore-uuid
+     * (string) - The global Unity Catalog metastore ID of the collaborator. The identifier is of format cloud:region:metastore-uuid
      */
     globalMetastoreId?: string;
     /**
@@ -4885,7 +5824,7 @@ export interface GetCleanRoomsCleanRoomRemoteDetailedInfoCreator {
      */
     displayName: string;
     /**
-     * (string) - The global Unity Catalog metastore id of the collaborator. The identifier is of format cloud:region:metastore-uuid
+     * (string) - The global Unity Catalog metastore ID of the collaborator. The identifier is of format cloud:region:metastore-uuid
      */
     globalMetastoreId?: string;
     /**
@@ -5022,7 +5961,7 @@ export interface GetCleanRoomsCleanRoomsCleanRoom {
      */
     outputCatalog: outputs.GetCleanRoomsCleanRoomsCleanRoomOutputCatalog;
     /**
-     * (string) - This is Databricks username of the owner of the local clean room securable for permission management
+     * (string) - This is the Databricks username of the owner of the local clean room securable for permission management
      */
     owner?: string;
     /**
@@ -5100,7 +6039,7 @@ export interface GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoCollaborator 
      */
     displayName: string;
     /**
-     * (string) - The global Unity Catalog metastore id of the collaborator. The identifier is of format cloud:region:metastore-uuid
+     * (string) - The global Unity Catalog metastore ID of the collaborator. The identifier is of format cloud:region:metastore-uuid
      */
     globalMetastoreId?: string;
     /**
@@ -5147,7 +6086,7 @@ export interface GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoCreator {
      */
     displayName: string;
     /**
-     * (string) - The global Unity Catalog metastore id of the collaborator. The identifier is of format cloud:region:metastore-uuid
+     * (string) - The global Unity Catalog metastore ID of the collaborator. The identifier is of format cloud:region:metastore-uuid
      */
     globalMetastoreId?: string;
     /**
@@ -6017,6 +6956,12 @@ export interface GetDatabaseInstancesDatabaseInstance {
      */
     creator: string;
     /**
+     * (boolean) - xref AIP-129. `enablePgNativeLogin` is owned by the client, while `effectiveEnablePgNativeLogin` is owned by the server.
+     * `enablePgNativeLogin` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+     * `effectiveEnablePgNativeLogin` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     */
+    effectiveEnablePgNativeLogin: boolean;
+    /**
      * (boolean) - xref AIP-129. `enableReadableSecondaries` is owned by the client, while `effectiveEnableReadableSecondaries` is owned by the server.
      * `enableReadableSecondaries` will only be set in Create/Update response messages if and only if the user provides the field via the request.
      * `effectiveEnableReadableSecondaries` on the other hand will always bet set in all response messages (Create/Update/Get/List)
@@ -6040,6 +6985,10 @@ export interface GetDatabaseInstancesDatabaseInstance {
      * `effectiveStopped` on the other hand will always bet set in all response messages (Create/Update/Get/List)
      */
     effectiveStopped: boolean;
+    /**
+     * (boolean) - Whether the instance has PG native password login enabled. Defaults to true
+     */
+    enablePgNativeLogin: boolean;
     /**
      * (boolean) - Whether to enable secondaries to serve read-only traffic. Defaults to false
      */
@@ -6704,6 +7653,25 @@ export interface GetDbfsFilePathsPathList {
      * Path on DBFS for the file to perform listing
      */
     path?: string;
+}
+
+export interface GetEntityTagAssignmentsTagAssignment {
+    /**
+     * The fully qualified name of the entity to which the tag is assigned
+     */
+    entityName: string;
+    /**
+     * The type of the entity to which the tag is assigned. Allowed values are: catalogs, schemas, tables, columns, volumes
+     */
+    entityType: string;
+    /**
+     * (string) - The key of the tag
+     */
+    tagKey: string;
+    /**
+     * (string) - The value of the tag
+     */
+    tagValue?: string;
 }
 
 export interface GetExternalLocationExternalLocationInfo {
@@ -9106,7 +10074,7 @@ export interface GetPolicyInfosPolicy {
     exceptPrincipals?: string[];
     /**
      * (string) - Type of securables that the policy should take effect on.
-     * Only `table` is supported at this moment.
+     * Only `TABLE` is supported at this moment.
      * Required on create and optional on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
      */
     forSecurableType: string;
@@ -9116,13 +10084,13 @@ export interface GetPolicyInfosPolicy {
     id: string;
     /**
      * (list of MatchColumn) - Optional list of condition expressions used to match table columns.
-     * Only valid when `forSecurableType` is `table`.
+     * Only valid when `forSecurableType` is `TABLE`.
      * When specified, the policy only applies to tables whose columns satisfy all match conditions
      */
     matchColumns?: outputs.GetPolicyInfosPolicyMatchColumn[];
     /**
-     * (string) - Name of the policy. Required on create and ignored on update.
-     * To update the name, use the `newName` field
+     * (string) - Name of the policy. Required on create and optional on update.
+     * To rename the policy, set `name` to a different value on update
      */
     name?: string;
     /**
@@ -9634,6 +10602,132 @@ export interface GetSchemaSchemaInfoEffectivePredictiveOptimizationFlag {
     value: string;
 }
 
+export interface GetServicePrincipalFederationPoliciesPolicy {
+    /**
+     * (string) - Creation time of the federation policy
+     */
+    createTime: string;
+    /**
+     * (string) - Description of the federation policy
+     */
+    description?: string;
+    /**
+     * (string) - Resource name for the federation policy. Example values include
+     * `accounts/<account-id>/federationPolicies/my-federation-policy` for Account Federation Policies, and
+     * `accounts/<account-id>/servicePrincipals/<service-principal-id>/federationPolicies/my-federation-policy`
+     * for Service Principal Federation Policies. Typically an output parameter, which does not need to be
+     * specified in create or update requests. If specified in a request, must match the value in the
+     * request URL
+     */
+    name: string;
+    /**
+     * (OidcFederationPolicy)
+     */
+    oidcPolicy?: outputs.GetServicePrincipalFederationPoliciesPolicyOidcPolicy;
+    /**
+     * (string) - The ID of the federation policy
+     */
+    policyId: string;
+    /**
+     * The service principal id for the federation policy
+     */
+    servicePrincipalId: number;
+    /**
+     * (string) - Unique, immutable id of the federation policy
+     */
+    uid: string;
+    /**
+     * (string) - Last update time of the federation policy
+     */
+    updateTime: string;
+}
+
+export interface GetServicePrincipalFederationPoliciesPolicyOidcPolicy {
+    /**
+     * (list of string) - The allowed token audiences, as specified in the 'aud' claim of federated tokens.
+     * The audience identifier is intended to represent the recipient of the token.
+     * Can be any non-empty string value. As long as the audience in the token matches
+     * at least one audience in the policy, the token is considered a match. If audiences
+     * is unspecified, defaults to your Databricks account id
+     */
+    audiences?: string[];
+    /**
+     * (string) - The required token issuer, as specified in the 'iss' claim of federated tokens
+     */
+    issuer?: string;
+    /**
+     * (string) - The public keys used to validate the signature of federated tokens, in JWKS format.
+     * Most use cases should not need to specify this field. If jwksUri and jwksJson
+     * are both unspecified (recommended), Databricks automatically fetches the public
+     * keys from your issuer’s well known endpoint. Databricks strongly recommends
+     * relying on your issuer’s well known endpoint for discovering public keys
+     */
+    jwksJson?: string;
+    /**
+     * (string) - URL of the public keys used to validate the signature of federated tokens, in
+     * JWKS format. Most use cases should not need to specify this field. If jwksUri
+     * and jwksJson are both unspecified (recommended), Databricks automatically
+     * fetches the public keys from your issuer’s well known endpoint. Databricks
+     * strongly recommends relying on your issuer’s well known endpoint for discovering
+     * public keys
+     */
+    jwksUri?: string;
+    /**
+     * (string) - The required token subject, as specified in the subject claim of federated tokens.
+     * Must be specified for service principal federation policies. Must not be specified
+     * for account federation policies
+     */
+    subject?: string;
+    /**
+     * (string) - The claim that contains the subject of the token. If unspecified, the default value
+     * is 'sub'
+     */
+    subjectClaim?: string;
+}
+
+export interface GetServicePrincipalFederationPolicyOidcPolicy {
+    /**
+     * (list of string) - The allowed token audiences, as specified in the 'aud' claim of federated tokens.
+     * The audience identifier is intended to represent the recipient of the token.
+     * Can be any non-empty string value. As long as the audience in the token matches
+     * at least one audience in the policy, the token is considered a match. If audiences
+     * is unspecified, defaults to your Databricks account id
+     */
+    audiences?: string[];
+    /**
+     * (string) - The required token issuer, as specified in the 'iss' claim of federated tokens
+     */
+    issuer?: string;
+    /**
+     * (string) - The public keys used to validate the signature of federated tokens, in JWKS format.
+     * Most use cases should not need to specify this field. If jwksUri and jwksJson
+     * are both unspecified (recommended), Databricks automatically fetches the public
+     * keys from your issuer’s well known endpoint. Databricks strongly recommends
+     * relying on your issuer’s well known endpoint for discovering public keys
+     */
+    jwksJson?: string;
+    /**
+     * (string) - URL of the public keys used to validate the signature of federated tokens, in
+     * JWKS format. Most use cases should not need to specify this field. If jwksUri
+     * and jwksJson are both unspecified (recommended), Databricks automatically
+     * fetches the public keys from your issuer’s well known endpoint. Databricks
+     * strongly recommends relying on your issuer’s well known endpoint for discovering
+     * public keys
+     */
+    jwksUri?: string;
+    /**
+     * (string) - The required token subject, as specified in the subject claim of federated tokens.
+     * Must be specified for service principal federation policies. Must not be specified
+     * for account federation policies
+     */
+    subject?: string;
+    /**
+     * (string) - The claim that contains the subject of the token. If unspecified, the default value
+     * is 'sub'
+     */
+    subjectClaim?: string;
+}
+
 export interface GetServingEndpointsEndpoint {
     /**
      * A block with AI Gateway configuration for the serving endpoint.
@@ -9659,6 +10753,7 @@ export interface GetServingEndpointsEndpoint {
      */
     tags?: outputs.GetServingEndpointsEndpointTag[];
     task?: string;
+    usagePolicyId?: string;
 }
 
 export interface GetServingEndpointsEndpointAiGateway {
@@ -9715,6 +10810,7 @@ export interface GetServingEndpointsEndpointAiGatewayRateLimit {
     key?: string;
     principal?: string;
     renewalPeriod: string;
+    tokens?: number;
 }
 
 export interface GetServingEndpointsEndpointAiGatewayUsageTrackingConfig {
@@ -10254,6 +11350,39 @@ export interface GetTableTableInfoViewDependenciesDependencyTable {
     tableFullName: string;
 }
 
+export interface GetTagPoliciesTagPolicy {
+    /**
+     * (string)
+     */
+    description?: string;
+    /**
+     * (string)
+     */
+    id: string;
+    /**
+     * (string)
+     */
+    tagKey: string;
+    /**
+     * (list of Value)
+     */
+    values?: outputs.GetTagPoliciesTagPolicyValue[];
+}
+
+export interface GetTagPoliciesTagPolicyValue {
+    /**
+     * (string)
+     */
+    name: string;
+}
+
+export interface GetTagPolicyValue {
+    /**
+     * (string)
+     */
+    name: string;
+}
+
 export interface GetVolumeVolumeInfo {
     /**
      * the AWS access point to use when accessing s3 bucket for this volume's external location
@@ -10332,6 +11461,260 @@ export interface GetVolumeVolumeInfoEncryptionDetails {
 export interface GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetails {
     algorithm?: string;
     awsKmsKeyArn?: string;
+}
+
+export interface GetWorkspaceSettingV2AibiDashboardEmbeddingAccessPolicy {
+    /**
+     * (string) - . Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
+     */
+    accessPolicyType: string;
+}
+
+export interface GetWorkspaceSettingV2AibiDashboardEmbeddingApprovedDomains {
+    /**
+     * (list of string)
+     */
+    approvedDomains?: string[];
+}
+
+export interface GetWorkspaceSettingV2AutomaticClusterUpdateWorkspace {
+    /**
+     * (boolean)
+     */
+    canToggle?: boolean;
+    /**
+     * (boolean)
+     */
+    enabled?: boolean;
+    /**
+     * (ClusterAutoRestartMessageEnablementDetails)
+     */
+    enablementDetails?: outputs.GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetails;
+    /**
+     * (ClusterAutoRestartMessageMaintenanceWindow)
+     */
+    maintenanceWindow?: outputs.GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindow;
+    /**
+     * (boolean)
+     */
+    restartEvenIfNoUpdatesAvailable?: boolean;
+}
+
+export interface GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetails {
+    /**
+     * (boolean) - The feature is force enabled if compliance mode is active
+     */
+    forcedForComplianceMode?: boolean;
+    /**
+     * (boolean) - The feature is unavailable if the corresponding entitlement disabled (see getShieldEntitlementEnable)
+     */
+    unavailableForDisabledEntitlement?: boolean;
+    /**
+     * (boolean) - The feature is unavailable if the customer doesn't have enterprise tier
+     */
+    unavailableForNonEnterpriseTier?: boolean;
+}
+
+export interface GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindow {
+    /**
+     * (ClusterAutoRestartMessageMaintenanceWindowWeekDayBasedSchedule)
+     */
+    weekDayBasedSchedule?: outputs.GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule;
+}
+
+export interface GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule {
+    /**
+     * (string) - . Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
+     */
+    dayOfWeek?: string;
+    /**
+     * (string) - . Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
+     */
+    frequency?: string;
+    /**
+     * (ClusterAutoRestartMessageMaintenanceWindowWindowStartTime)
+     */
+    windowStartTime?: outputs.GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime;
+}
+
+export interface GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime {
+    /**
+     * (integer)
+     */
+    hours?: number;
+    /**
+     * (integer)
+     */
+    minutes?: number;
+}
+
+export interface GetWorkspaceSettingV2BooleanVal {
+    /**
+     * (string) - Represents a generic string value
+     */
+    value?: boolean;
+}
+
+export interface GetWorkspaceSettingV2DefaultDataSecurityMode {
+    /**
+     * (string) - . Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
+     */
+    status: string;
+}
+
+export interface GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy {
+    /**
+     * (string) - . Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
+     */
+    accessPolicyType: string;
+}
+
+export interface GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomains {
+    /**
+     * (list of string)
+     */
+    approvedDomains?: string[];
+}
+
+export interface GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspace {
+    /**
+     * (boolean)
+     */
+    canToggle?: boolean;
+    /**
+     * (boolean)
+     */
+    enabled?: boolean;
+    /**
+     * (ClusterAutoRestartMessageEnablementDetails)
+     */
+    enablementDetails?: outputs.GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetails;
+    /**
+     * (ClusterAutoRestartMessageMaintenanceWindow)
+     */
+    maintenanceWindow?: outputs.GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindow;
+    /**
+     * (boolean)
+     */
+    restartEvenIfNoUpdatesAvailable?: boolean;
+}
+
+export interface GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetails {
+    /**
+     * (boolean) - The feature is force enabled if compliance mode is active
+     */
+    forcedForComplianceMode?: boolean;
+    /**
+     * (boolean) - The feature is unavailable if the corresponding entitlement disabled (see getShieldEntitlementEnable)
+     */
+    unavailableForDisabledEntitlement?: boolean;
+    /**
+     * (boolean) - The feature is unavailable if the customer doesn't have enterprise tier
+     */
+    unavailableForNonEnterpriseTier?: boolean;
+}
+
+export interface GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindow {
+    /**
+     * (ClusterAutoRestartMessageMaintenanceWindowWeekDayBasedSchedule)
+     */
+    weekDayBasedSchedule?: outputs.GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule;
+}
+
+export interface GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule {
+    /**
+     * (string) - . Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
+     */
+    dayOfWeek?: string;
+    /**
+     * (string) - . Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
+     */
+    frequency?: string;
+    /**
+     * (ClusterAutoRestartMessageMaintenanceWindowWindowStartTime)
+     */
+    windowStartTime?: outputs.GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime;
+}
+
+export interface GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime {
+    /**
+     * (integer)
+     */
+    hours?: number;
+    /**
+     * (integer)
+     */
+    minutes?: number;
+}
+
+export interface GetWorkspaceSettingV2EffectiveBooleanVal {
+    /**
+     * (string) - Represents a generic string value
+     */
+    value?: boolean;
+}
+
+export interface GetWorkspaceSettingV2EffectiveDefaultDataSecurityMode {
+    /**
+     * (string) - . Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
+     */
+    status: string;
+}
+
+export interface GetWorkspaceSettingV2EffectiveIntegerVal {
+    /**
+     * (string) - Represents a generic string value
+     */
+    value?: number;
+}
+
+export interface GetWorkspaceSettingV2EffectivePersonalCompute {
+    /**
+     * (string) - Represents a generic string value
+     */
+    value?: string;
+}
+
+export interface GetWorkspaceSettingV2EffectiveRestrictWorkspaceAdmins {
+    /**
+     * (string) - . Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
+     */
+    status: string;
+}
+
+export interface GetWorkspaceSettingV2EffectiveStringVal {
+    /**
+     * (string) - Represents a generic string value
+     */
+    value?: string;
+}
+
+export interface GetWorkspaceSettingV2IntegerVal {
+    /**
+     * (string) - Represents a generic string value
+     */
+    value?: number;
+}
+
+export interface GetWorkspaceSettingV2PersonalCompute {
+    /**
+     * (string) - Represents a generic string value
+     */
+    value?: string;
+}
+
+export interface GetWorkspaceSettingV2RestrictWorkspaceAdmins {
+    /**
+     * (string) - . Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
+     */
+    status: string;
+}
+
+export interface GetWorkspaceSettingV2StringVal {
+    /**
+     * (string) - Represents a generic string value
+     */
+    value?: string;
 }
 
 export interface GrantsGrant {
@@ -10459,6 +11842,7 @@ export interface JobContinuous {
      * Indicate whether this continuous job is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pauseStatus` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pauseStatus`.
      */
     pauseStatus?: string;
+    taskRetryMode?: string;
 }
 
 export interface JobDbtTask {
@@ -13646,6 +15030,10 @@ export interface ModelServingAiGatewayRateLimit {
      * Renewal period field for a serving endpoint rate limit. Currently, only `minute` is supported.
      */
     renewalPeriod: string;
+    /**
+     * Specifies how many tokens are allowed for a key within the renewal_period.
+     */
+    tokens?: number;
 }
 
 export interface ModelServingAiGatewayUsageTrackingConfig {
@@ -14178,6 +15566,7 @@ export interface ModelServingProvisionedThroughputAiGatewayRateLimit {
     key?: string;
     principal?: string;
     renewalPeriod: string;
+    tokens?: number;
 }
 
 export interface ModelServingProvisionedThroughputAiGatewayUsageTrackingConfig {
@@ -14460,11 +15849,11 @@ export interface MwsNetworksGcpNetworkInfo {
      */
     networkProjectId: string;
     /**
-     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.87.1/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.88.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     podIpRangeName?: string;
     /**
-     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.87.1/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.88.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     serviceIpRangeName?: string;
     /**
@@ -14531,11 +15920,11 @@ export interface MwsWorkspacesExternalCustomerInfo {
 
 export interface MwsWorkspacesGcpManagedNetworkConfig {
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.87.1/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.88.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterPodIpRange?: string;
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.87.1/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.88.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterServiceIpRange?: string;
     subnetCidr: string;
@@ -14610,6 +15999,14 @@ export interface NotificationDestinationConfigGenericWebhook {
 }
 
 export interface NotificationDestinationConfigMicrosoftTeams {
+    appId?: string;
+    appIdSet?: boolean;
+    authSecret?: string;
+    authSecretSet?: boolean;
+    channelUrl?: string;
+    channelUrlSet?: boolean;
+    tenantId?: string;
+    tenantIdSet?: boolean;
     /**
      * The Microsoft Teams webhook URL.
      */
@@ -14626,10 +16023,16 @@ export interface NotificationDestinationConfigPagerduty {
 }
 
 export interface NotificationDestinationConfigSlack {
+    /**
+     * Slack channel ID for notifications.
+     */
     channelId?: string;
-    channelIdSet?: boolean;
+    channelIdSet: boolean;
+    /**
+     * OAuth token for Slack authentication.
+     */
     oauthToken?: string;
-    oauthTokenSet?: boolean;
+    oauthTokenSet: boolean;
     /**
      * The Slack webhook URL.
      */
@@ -14979,6 +16382,7 @@ export interface PipelineIngestionDefinition {
     connectionName?: string;
     ingestionGatewayId?: string;
     objects?: outputs.PipelineIngestionDefinitionObject[];
+    sourceConfigurations?: outputs.PipelineIngestionDefinitionSourceConfiguration[];
     sourceType?: string;
     tableConfiguration?: outputs.PipelineIngestionDefinitionTableConfiguration;
 }
@@ -15064,6 +16468,27 @@ export interface PipelineIngestionDefinitionObjectTableTableConfigurationQueryBa
     cursorColumns?: string[];
     deletionCondition?: string;
     hardDeletionSyncMinIntervalInSeconds?: number;
+}
+
+export interface PipelineIngestionDefinitionSourceConfiguration {
+    /**
+     * The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
+     */
+    catalog?: outputs.PipelineIngestionDefinitionSourceConfigurationCatalog;
+}
+
+export interface PipelineIngestionDefinitionSourceConfigurationCatalog {
+    postgres?: outputs.PipelineIngestionDefinitionSourceConfigurationCatalogPostgres;
+    sourceCatalog?: string;
+}
+
+export interface PipelineIngestionDefinitionSourceConfigurationCatalogPostgres {
+    slotConfig?: outputs.PipelineIngestionDefinitionSourceConfigurationCatalogPostgresSlotConfig;
+}
+
+export interface PipelineIngestionDefinitionSourceConfigurationCatalogPostgresSlotConfig {
+    publicationName?: string;
+    slotName?: string;
 }
 
 export interface PipelineIngestionDefinitionTableConfiguration {
@@ -15577,6 +17002,49 @@ export interface SecretScopeKeyvaultMetadata {
     resourceId: string;
 }
 
+export interface ServicePrincipalFederationPolicyOidcPolicy {
+    /**
+     * The allowed token audiences, as specified in the 'aud' claim of federated tokens.
+     * The audience identifier is intended to represent the recipient of the token.
+     * Can be any non-empty string value. As long as the audience in the token matches
+     * at least one audience in the policy, the token is considered a match. If audiences
+     * is unspecified, defaults to your Databricks account id
+     */
+    audiences?: string[];
+    /**
+     * The required token issuer, as specified in the 'iss' claim of federated tokens
+     */
+    issuer?: string;
+    /**
+     * The public keys used to validate the signature of federated tokens, in JWKS format.
+     * Most use cases should not need to specify this field. If jwksUri and jwksJson
+     * are both unspecified (recommended), Databricks automatically fetches the public
+     * keys from your issuer’s well known endpoint. Databricks strongly recommends
+     * relying on your issuer’s well known endpoint for discovering public keys
+     */
+    jwksJson?: string;
+    /**
+     * URL of the public keys used to validate the signature of federated tokens, in
+     * JWKS format. Most use cases should not need to specify this field. If jwksUri
+     * and jwksJson are both unspecified (recommended), Databricks automatically
+     * fetches the public keys from your issuer’s well known endpoint. Databricks
+     * strongly recommends relying on your issuer’s well known endpoint for discovering
+     * public keys
+     */
+    jwksUri?: string;
+    /**
+     * The required token subject, as specified in the subject claim of federated tokens.
+     * Must be specified for service principal federation policies. Must not be specified
+     * for account federation policies
+     */
+    subject?: string;
+    /**
+     * The claim that contains the subject of the token. If unspecified, the default value
+     * is 'sub'
+     */
+    subjectClaim?: string;
+}
+
 export interface ShareObject {
     addedAt: number;
     addedBy: string;
@@ -16039,6 +17507,10 @@ export interface TableColumn {
     typeText: string;
 }
 
+export interface TagPolicyValue {
+    name: string;
+}
+
 export interface VectorSearchEndpointEndpointStatus {
     /**
      * Additional status message.
@@ -16081,9 +17553,13 @@ export interface VectorSearchIndexDeltaSyncIndexSpec {
 
 export interface VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn {
     /**
-     * The name of the embedding model endpoint
+     * The name of the embedding model endpoint, used by default for both ingestion and querying.
      */
     embeddingModelEndpointName?: string;
+    /**
+     * The name of the embedding model endpoint which, if specified, is used for querying (not ingestion).
+     */
+    modelEndpointNameForQuery?: string;
     /**
      * The name of the column
      */
@@ -16122,6 +17598,10 @@ export interface VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumn {
      */
     embeddingModelEndpointName?: string;
     /**
+     * The name of the embedding model endpoint which, if specified, is used for querying (not ingestion).
+     */
+    modelEndpointNameForQuery?: string;
+    /**
      * The name of the column
      */
     name?: string;
@@ -16155,5 +17635,163 @@ export interface VectorSearchIndexStatus {
      * Whether the index is ready for search
      */
     ready?: boolean;
+}
+
+export interface WorkspaceSettingV2AibiDashboardEmbeddingAccessPolicy {
+    /**
+     * . Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
+     */
+    accessPolicyType: string;
+}
+
+export interface WorkspaceSettingV2AibiDashboardEmbeddingApprovedDomains {
+    approvedDomains?: string[];
+}
+
+export interface WorkspaceSettingV2AutomaticClusterUpdateWorkspace {
+    canToggle?: boolean;
+    enabled?: boolean;
+    enablementDetails?: outputs.WorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetails;
+    maintenanceWindow?: outputs.WorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindow;
+    restartEvenIfNoUpdatesAvailable?: boolean;
+}
+
+export interface WorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetails {
+    /**
+     * The feature is force enabled if compliance mode is active
+     */
+    forcedForComplianceMode?: boolean;
+    /**
+     * The feature is unavailable if the corresponding entitlement disabled (see getShieldEntitlementEnable)
+     */
+    unavailableForDisabledEntitlement?: boolean;
+    /**
+     * The feature is unavailable if the customer doesn't have enterprise tier
+     */
+    unavailableForNonEnterpriseTier?: boolean;
+}
+
+export interface WorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindow {
+    weekDayBasedSchedule?: outputs.WorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule;
+}
+
+export interface WorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule {
+    /**
+     * . Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
+     */
+    dayOfWeek?: string;
+    /**
+     * . Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
+     */
+    frequency?: string;
+    windowStartTime?: outputs.WorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime;
+}
+
+export interface WorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime {
+    hours?: number;
+    minutes?: number;
+}
+
+export interface WorkspaceSettingV2BooleanVal {
+    value?: boolean;
+}
+
+export interface WorkspaceSettingV2DefaultDataSecurityMode {
+    status: string;
+}
+
+export interface WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy {
+    /**
+     * . Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
+     */
+    accessPolicyType: string;
+}
+
+export interface WorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomains {
+    approvedDomains?: string[];
+}
+
+export interface WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspace {
+    canToggle?: boolean;
+    enabled?: boolean;
+    enablementDetails?: outputs.WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetails;
+    maintenanceWindow?: outputs.WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindow;
+    restartEvenIfNoUpdatesAvailable?: boolean;
+}
+
+export interface WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetails {
+    /**
+     * The feature is force enabled if compliance mode is active
+     */
+    forcedForComplianceMode?: boolean;
+    /**
+     * The feature is unavailable if the corresponding entitlement disabled (see getShieldEntitlementEnable)
+     */
+    unavailableForDisabledEntitlement?: boolean;
+    /**
+     * The feature is unavailable if the customer doesn't have enterprise tier
+     */
+    unavailableForNonEnterpriseTier?: boolean;
+}
+
+export interface WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindow {
+    weekDayBasedSchedule?: outputs.WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule;
+}
+
+export interface WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule {
+    /**
+     * . Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
+     */
+    dayOfWeek?: string;
+    /**
+     * . Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
+     */
+    frequency?: string;
+    windowStartTime?: outputs.WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime;
+}
+
+export interface WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime {
+    hours?: number;
+    minutes?: number;
+}
+
+export interface WorkspaceSettingV2EffectiveBooleanVal {
+    value?: boolean;
+}
+
+export interface WorkspaceSettingV2EffectiveDefaultDataSecurityMode {
+    status: string;
+}
+
+export interface WorkspaceSettingV2EffectiveIntegerVal {
+    value?: number;
+}
+
+export interface WorkspaceSettingV2EffectivePersonalCompute {
+    value?: string;
+}
+
+export interface WorkspaceSettingV2EffectiveRestrictWorkspaceAdmins {
+    status: string;
+}
+
+export interface WorkspaceSettingV2EffectiveStringVal {
+    value?: string;
+}
+
+export interface WorkspaceSettingV2IntegerVal {
+    value?: number;
+}
+
+export interface WorkspaceSettingV2PersonalCompute {
+    value?: string;
+}
+
+export interface WorkspaceSettingV2RestrictWorkspaceAdmins {
+    status: string;
+}
+
+export interface WorkspaceSettingV2StringVal {
+    value?: string;
 }
 

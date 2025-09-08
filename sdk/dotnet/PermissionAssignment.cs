@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
-    /// This resource is used to assign account-level users, service principals and groups to a Databricks workspace.
+    /// This resource is used to assign account-level users, service principals and groups to a Databricks workspace. To configure additional entitlements such as cluster creation, please use databricks.Entitlements
     /// 
     /// &gt; This resource can only be used with a workspace-level provider!
     /// 
@@ -146,8 +146,8 @@ namespace Pulumi.Databricks
     {
         /// <summary>
         /// The list of workspace permissions to assign to the principal:
-        /// * `"USER"` - Can access the workspace with basic privileges.
-        /// * `"ADMIN"` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
+        /// * `"USER"` - Adds principal to the workspace `users` group. This gives basic workspace access.
+        /// * `"ADMIN"` - Adds principal to the workspace `admins` group. This gives workspace admin privileges to manage users and groups, workspace configurations, and more.
         /// </summary>
         [Output("permissions")]
         public Output<ImmutableArray<string>> Permissions { get; private set; } = null!;
@@ -209,8 +209,8 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// The list of workspace permissions to assign to the principal:
-        /// * `"USER"` - Can access the workspace with basic privileges.
-        /// * `"ADMIN"` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
+        /// * `"USER"` - Adds principal to the workspace `users` group. This gives basic workspace access.
+        /// * `"ADMIN"` - Adds principal to the workspace `admins` group. This gives workspace admin privileges to manage users and groups, workspace configurations, and more.
         /// </summary>
         public InputList<string> Permissions
         {
@@ -237,8 +237,8 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// The list of workspace permissions to assign to the principal:
-        /// * `"USER"` - Can access the workspace with basic privileges.
-        /// * `"ADMIN"` - Can access the workspace and has workspace admin privileges to manage users and groups, workspace configurations, and more.
+        /// * `"USER"` - Adds principal to the workspace `users` group. This gives basic workspace access.
+        /// * `"ADMIN"` - Adds principal to the workspace `admins` group. This gives workspace admin privileges to manage users and groups, workspace configurations, and more.
         /// </summary>
         public InputList<string> Permissions
         {

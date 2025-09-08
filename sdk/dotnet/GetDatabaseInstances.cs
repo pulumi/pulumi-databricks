@@ -37,8 +37,8 @@ namespace Pulumi.Databricks
         /// });
         /// ```
         /// </summary>
-        public static Task<GetDatabaseInstancesResult> InvokeAsync(InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDatabaseInstancesResult>("databricks:index/getDatabaseInstances:getDatabaseInstances", InvokeArgs.Empty, options.WithDefaults());
+        public static Task<GetDatabaseInstancesResult> InvokeAsync(GetDatabaseInstancesArgs? args = null, InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDatabaseInstancesResult>("databricks:index/getDatabaseInstances:getDatabaseInstances", args ?? new GetDatabaseInstancesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source can be used to fetch the list of Database Instances within the workspace.
@@ -66,8 +66,8 @@ namespace Pulumi.Databricks
         /// });
         /// ```
         /// </summary>
-        public static Output<GetDatabaseInstancesResult> Invoke(InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.Invoke<GetDatabaseInstancesResult>("databricks:index/getDatabaseInstances:getDatabaseInstances", InvokeArgs.Empty, options.WithDefaults());
+        public static Output<GetDatabaseInstancesResult> Invoke(GetDatabaseInstancesInvokeArgs? args = null, InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.Invoke<GetDatabaseInstancesResult>("databricks:index/getDatabaseInstances:getDatabaseInstances", args ?? new GetDatabaseInstancesInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source can be used to fetch the list of Database Instances within the workspace.
@@ -95,8 +95,37 @@ namespace Pulumi.Databricks
         /// });
         /// ```
         /// </summary>
-        public static Output<GetDatabaseInstancesResult> Invoke(InvokeOutputOptions options)
-            => global::Pulumi.Deployment.Instance.Invoke<GetDatabaseInstancesResult>("databricks:index/getDatabaseInstances:getDatabaseInstances", InvokeArgs.Empty, options.WithDefaults());
+        public static Output<GetDatabaseInstancesResult> Invoke(GetDatabaseInstancesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetDatabaseInstancesResult>("databricks:index/getDatabaseInstances:getDatabaseInstances", args ?? new GetDatabaseInstancesInvokeArgs(), options.WithDefaults());
+    }
+
+
+    public sealed class GetDatabaseInstancesArgs : global::Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Workspace ID of the resource
+        /// </summary>
+        [Input("workspaceId")]
+        public string? WorkspaceId { get; set; }
+
+        public GetDatabaseInstancesArgs()
+        {
+        }
+        public static new GetDatabaseInstancesArgs Empty => new GetDatabaseInstancesArgs();
+    }
+
+    public sealed class GetDatabaseInstancesInvokeArgs : global::Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Workspace ID of the resource
+        /// </summary>
+        [Input("workspaceId")]
+        public Input<string>? WorkspaceId { get; set; }
+
+        public GetDatabaseInstancesInvokeArgs()
+        {
+        }
+        public static new GetDatabaseInstancesInvokeArgs Empty => new GetDatabaseInstancesInvokeArgs();
     }
 
 
@@ -108,15 +137,19 @@ namespace Pulumi.Databricks
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly string? WorkspaceId;
 
         [OutputConstructor]
         private GetDatabaseInstancesResult(
             ImmutableArray<Outputs.GetDatabaseInstancesDatabaseInstanceResult> databaseInstances,
 
-            string id)
+            string id,
+
+            string? workspaceId)
         {
             DatabaseInstances = databaseInstances;
             Id = id;
+            WorkspaceId = workspaceId;
         }
     }
 }

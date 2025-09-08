@@ -27,9 +27,11 @@ class AlertV2Args:
                  evaluation: Optional[pulumi.Input['AlertV2EvaluationArgs']] = None,
                  parent_path: Optional[pulumi.Input[_builtins.str]] = None,
                  query_text: Optional[pulumi.Input[_builtins.str]] = None,
+                 run_as: Optional[pulumi.Input['AlertV2RunAsArgs']] = None,
                  run_as_user_name: Optional[pulumi.Input[_builtins.str]] = None,
                  schedule: Optional[pulumi.Input['AlertV2ScheduleArgs']] = None,
-                 warehouse_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 warehouse_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AlertV2 resource.
         :param pulumi.Input[_builtins.str] custom_description: Custom description for the alert. support mustache template
@@ -37,9 +39,16 @@ class AlertV2Args:
         :param pulumi.Input[_builtins.str] display_name: The display name of the alert
         :param pulumi.Input[_builtins.str] parent_path: The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
         :param pulumi.Input[_builtins.str] query_text: Text of the query to be run
+        :param pulumi.Input['AlertV2RunAsArgs'] run_as: Specifies the identity that will be used to run the alert.
+               This field allows you to configure alerts to run as a specific user or service principal.
+               - For user identity: Set `user_name` to the email of an active workspace user. Users can only set this to their own email.
+               - For service principal: Set `service_principal_name` to the application ID. Requires the `servicePrincipal/user` role.
+               If not specified, the alert will run as the request user
         :param pulumi.Input[_builtins.str] run_as_user_name: The run as username or application ID of service principal.
-               On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
+               On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
+               Deprecated: Use `run_as` field instead. This field will be removed in a future release
         :param pulumi.Input[_builtins.str] warehouse_id: ID of the SQL warehouse attached to the alert
+        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID of the resource
         """
         if custom_description is not None:
             pulumi.set(__self__, "custom_description", custom_description)
@@ -53,12 +62,16 @@ class AlertV2Args:
             pulumi.set(__self__, "parent_path", parent_path)
         if query_text is not None:
             pulumi.set(__self__, "query_text", query_text)
+        if run_as is not None:
+            pulumi.set(__self__, "run_as", run_as)
         if run_as_user_name is not None:
             pulumi.set(__self__, "run_as_user_name", run_as_user_name)
         if schedule is not None:
             pulumi.set(__self__, "schedule", schedule)
         if warehouse_id is not None:
             pulumi.set(__self__, "warehouse_id", warehouse_id)
+        if workspace_id is not None:
+            pulumi.set(__self__, "workspace_id", workspace_id)
 
     @_builtins.property
     @pulumi.getter(name="customDescription")
@@ -130,11 +143,28 @@ class AlertV2Args:
         pulumi.set(self, "query_text", value)
 
     @_builtins.property
+    @pulumi.getter(name="runAs")
+    def run_as(self) -> Optional[pulumi.Input['AlertV2RunAsArgs']]:
+        """
+        Specifies the identity that will be used to run the alert.
+        This field allows you to configure alerts to run as a specific user or service principal.
+        - For user identity: Set `user_name` to the email of an active workspace user. Users can only set this to their own email.
+        - For service principal: Set `service_principal_name` to the application ID. Requires the `servicePrincipal/user` role.
+        If not specified, the alert will run as the request user
+        """
+        return pulumi.get(self, "run_as")
+
+    @run_as.setter
+    def run_as(self, value: Optional[pulumi.Input['AlertV2RunAsArgs']]):
+        pulumi.set(self, "run_as", value)
+
+    @_builtins.property
     @pulumi.getter(name="runAsUserName")
     def run_as_user_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The run as username or application ID of service principal.
-        On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
+        On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
+        Deprecated: Use `run_as` field instead. This field will be removed in a future release
         """
         return pulumi.get(self, "run_as_user_name")
 
@@ -163,6 +193,18 @@ class AlertV2Args:
     def warehouse_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "warehouse_id", value)
 
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Workspace ID of the resource
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "workspace_id", value)
+
 
 @pulumi.input_type
 class _AlertV2State:
@@ -171,29 +213,42 @@ class _AlertV2State:
                  custom_description: Optional[pulumi.Input[_builtins.str]] = None,
                  custom_summary: Optional[pulumi.Input[_builtins.str]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 effective_run_as: Optional[pulumi.Input['AlertV2EffectiveRunAsArgs']] = None,
                  evaluation: Optional[pulumi.Input['AlertV2EvaluationArgs']] = None,
                  lifecycle_state: Optional[pulumi.Input[_builtins.str]] = None,
                  owner_user_name: Optional[pulumi.Input[_builtins.str]] = None,
                  parent_path: Optional[pulumi.Input[_builtins.str]] = None,
                  query_text: Optional[pulumi.Input[_builtins.str]] = None,
+                 run_as: Optional[pulumi.Input['AlertV2RunAsArgs']] = None,
                  run_as_user_name: Optional[pulumi.Input[_builtins.str]] = None,
                  schedule: Optional[pulumi.Input['AlertV2ScheduleArgs']] = None,
                  update_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 warehouse_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 warehouse_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AlertV2 resources.
         :param pulumi.Input[_builtins.str] create_time: (string) - The timestamp indicating when the alert was created
         :param pulumi.Input[_builtins.str] custom_description: Custom description for the alert. support mustache template
         :param pulumi.Input[_builtins.str] custom_summary: Custom summary for the alert. support mustache template
         :param pulumi.Input[_builtins.str] display_name: The display name of the alert
+        :param pulumi.Input['AlertV2EffectiveRunAsArgs'] effective_run_as: (AlertV2RunAs) - The actual identity that will be used to execute the alert.
+               This is an output-only field that shows the resolved run-as identity after applying
+               permissions and defaults
         :param pulumi.Input[_builtins.str] lifecycle_state: (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `TRASHED`
         :param pulumi.Input[_builtins.str] owner_user_name: (string) - The owner's username. This field is set to "Unavailable" if the user has been deleted
         :param pulumi.Input[_builtins.str] parent_path: The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
         :param pulumi.Input[_builtins.str] query_text: Text of the query to be run
+        :param pulumi.Input['AlertV2RunAsArgs'] run_as: Specifies the identity that will be used to run the alert.
+               This field allows you to configure alerts to run as a specific user or service principal.
+               - For user identity: Set `user_name` to the email of an active workspace user. Users can only set this to their own email.
+               - For service principal: Set `service_principal_name` to the application ID. Requires the `servicePrincipal/user` role.
+               If not specified, the alert will run as the request user
         :param pulumi.Input[_builtins.str] run_as_user_name: The run as username or application ID of service principal.
-               On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
+               On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
+               Deprecated: Use `run_as` field instead. This field will be removed in a future release
         :param pulumi.Input[_builtins.str] update_time: (string) - The timestamp indicating when the alert was updated
         :param pulumi.Input[_builtins.str] warehouse_id: ID of the SQL warehouse attached to the alert
+        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID of the resource
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
@@ -203,6 +258,8 @@ class _AlertV2State:
             pulumi.set(__self__, "custom_summary", custom_summary)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if effective_run_as is not None:
+            pulumi.set(__self__, "effective_run_as", effective_run_as)
         if evaluation is not None:
             pulumi.set(__self__, "evaluation", evaluation)
         if lifecycle_state is not None:
@@ -213,6 +270,8 @@ class _AlertV2State:
             pulumi.set(__self__, "parent_path", parent_path)
         if query_text is not None:
             pulumi.set(__self__, "query_text", query_text)
+        if run_as is not None:
+            pulumi.set(__self__, "run_as", run_as)
         if run_as_user_name is not None:
             pulumi.set(__self__, "run_as_user_name", run_as_user_name)
         if schedule is not None:
@@ -221,6 +280,8 @@ class _AlertV2State:
             pulumi.set(__self__, "update_time", update_time)
         if warehouse_id is not None:
             pulumi.set(__self__, "warehouse_id", warehouse_id)
+        if workspace_id is not None:
+            pulumi.set(__self__, "workspace_id", workspace_id)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
@@ -269,6 +330,20 @@ class _AlertV2State:
     @display_name.setter
     def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "display_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="effectiveRunAs")
+    def effective_run_as(self) -> Optional[pulumi.Input['AlertV2EffectiveRunAsArgs']]:
+        """
+        (AlertV2RunAs) - The actual identity that will be used to execute the alert.
+        This is an output-only field that shows the resolved run-as identity after applying
+        permissions and defaults
+        """
+        return pulumi.get(self, "effective_run_as")
+
+    @effective_run_as.setter
+    def effective_run_as(self, value: Optional[pulumi.Input['AlertV2EffectiveRunAsArgs']]):
+        pulumi.set(self, "effective_run_as", value)
 
     @_builtins.property
     @pulumi.getter
@@ -328,11 +403,28 @@ class _AlertV2State:
         pulumi.set(self, "query_text", value)
 
     @_builtins.property
+    @pulumi.getter(name="runAs")
+    def run_as(self) -> Optional[pulumi.Input['AlertV2RunAsArgs']]:
+        """
+        Specifies the identity that will be used to run the alert.
+        This field allows you to configure alerts to run as a specific user or service principal.
+        - For user identity: Set `user_name` to the email of an active workspace user. Users can only set this to their own email.
+        - For service principal: Set `service_principal_name` to the application ID. Requires the `servicePrincipal/user` role.
+        If not specified, the alert will run as the request user
+        """
+        return pulumi.get(self, "run_as")
+
+    @run_as.setter
+    def run_as(self, value: Optional[pulumi.Input['AlertV2RunAsArgs']]):
+        pulumi.set(self, "run_as", value)
+
+    @_builtins.property
     @pulumi.getter(name="runAsUserName")
     def run_as_user_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The run as username or application ID of service principal.
-        On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
+        On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
+        Deprecated: Use `run_as` field instead. This field will be removed in a future release
         """
         return pulumi.get(self, "run_as_user_name")
 
@@ -373,6 +465,18 @@ class _AlertV2State:
     def warehouse_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "warehouse_id", value)
 
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Workspace ID of the resource
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "workspace_id", value)
+
 
 @pulumi.type_token("databricks:index/alertV2:AlertV2")
 class AlertV2(pulumi.CustomResource):
@@ -386,9 +490,11 @@ class AlertV2(pulumi.CustomResource):
                  evaluation: Optional[pulumi.Input[Union['AlertV2EvaluationArgs', 'AlertV2EvaluationArgsDict']]] = None,
                  parent_path: Optional[pulumi.Input[_builtins.str]] = None,
                  query_text: Optional[pulumi.Input[_builtins.str]] = None,
+                 run_as: Optional[pulumi.Input[Union['AlertV2RunAsArgs', 'AlertV2RunAsArgsDict']]] = None,
                  run_as_user_name: Optional[pulumi.Input[_builtins.str]] = None,
                  schedule: Optional[pulumi.Input[Union['AlertV2ScheduleArgs', 'AlertV2ScheduleArgsDict']]] = None,
                  warehouse_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
         The Alert v2 resource allows you to manage SQL alerts in Databricks SQL. Alerts monitor query results and notify you when specific conditions are met.
@@ -405,7 +511,7 @@ class AlertV2(pulumi.CustomResource):
 
         import {
 
-          id = id
+          id = "id"
 
           to = databricks_alert_v2.this
 
@@ -414,7 +520,7 @@ class AlertV2(pulumi.CustomResource):
         If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
 
         ```sh
-        $ pulumi import databricks:index/alertV2:AlertV2 databricks_alert_v2 id
+        $ pulumi import databricks:index/alertV2:AlertV2 databricks_alert_v2 "id"
         ```
 
         :param str resource_name: The name of the resource.
@@ -424,9 +530,16 @@ class AlertV2(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] display_name: The display name of the alert
         :param pulumi.Input[_builtins.str] parent_path: The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
         :param pulumi.Input[_builtins.str] query_text: Text of the query to be run
+        :param pulumi.Input[Union['AlertV2RunAsArgs', 'AlertV2RunAsArgsDict']] run_as: Specifies the identity that will be used to run the alert.
+               This field allows you to configure alerts to run as a specific user or service principal.
+               - For user identity: Set `user_name` to the email of an active workspace user. Users can only set this to their own email.
+               - For service principal: Set `service_principal_name` to the application ID. Requires the `servicePrincipal/user` role.
+               If not specified, the alert will run as the request user
         :param pulumi.Input[_builtins.str] run_as_user_name: The run as username or application ID of service principal.
-               On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
+               On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
+               Deprecated: Use `run_as` field instead. This field will be removed in a future release
         :param pulumi.Input[_builtins.str] warehouse_id: ID of the SQL warehouse attached to the alert
+        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID of the resource
         """
         ...
     @overload
@@ -449,7 +562,7 @@ class AlertV2(pulumi.CustomResource):
 
         import {
 
-          id = id
+          id = "id"
 
           to = databricks_alert_v2.this
 
@@ -458,7 +571,7 @@ class AlertV2(pulumi.CustomResource):
         If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
 
         ```sh
-        $ pulumi import databricks:index/alertV2:AlertV2 databricks_alert_v2 id
+        $ pulumi import databricks:index/alertV2:AlertV2 databricks_alert_v2 "id"
         ```
 
         :param str resource_name: The name of the resource.
@@ -482,9 +595,11 @@ class AlertV2(pulumi.CustomResource):
                  evaluation: Optional[pulumi.Input[Union['AlertV2EvaluationArgs', 'AlertV2EvaluationArgsDict']]] = None,
                  parent_path: Optional[pulumi.Input[_builtins.str]] = None,
                  query_text: Optional[pulumi.Input[_builtins.str]] = None,
+                 run_as: Optional[pulumi.Input[Union['AlertV2RunAsArgs', 'AlertV2RunAsArgsDict']]] = None,
                  run_as_user_name: Optional[pulumi.Input[_builtins.str]] = None,
                  schedule: Optional[pulumi.Input[Union['AlertV2ScheduleArgs', 'AlertV2ScheduleArgsDict']]] = None,
                  warehouse_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -500,10 +615,13 @@ class AlertV2(pulumi.CustomResource):
             __props__.__dict__["evaluation"] = evaluation
             __props__.__dict__["parent_path"] = parent_path
             __props__.__dict__["query_text"] = query_text
+            __props__.__dict__["run_as"] = run_as
             __props__.__dict__["run_as_user_name"] = run_as_user_name
             __props__.__dict__["schedule"] = schedule
             __props__.__dict__["warehouse_id"] = warehouse_id
+            __props__.__dict__["workspace_id"] = workspace_id
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["effective_run_as"] = None
             __props__.__dict__["lifecycle_state"] = None
             __props__.__dict__["owner_user_name"] = None
             __props__.__dict__["update_time"] = None
@@ -521,15 +639,18 @@ class AlertV2(pulumi.CustomResource):
             custom_description: Optional[pulumi.Input[_builtins.str]] = None,
             custom_summary: Optional[pulumi.Input[_builtins.str]] = None,
             display_name: Optional[pulumi.Input[_builtins.str]] = None,
+            effective_run_as: Optional[pulumi.Input[Union['AlertV2EffectiveRunAsArgs', 'AlertV2EffectiveRunAsArgsDict']]] = None,
             evaluation: Optional[pulumi.Input[Union['AlertV2EvaluationArgs', 'AlertV2EvaluationArgsDict']]] = None,
             lifecycle_state: Optional[pulumi.Input[_builtins.str]] = None,
             owner_user_name: Optional[pulumi.Input[_builtins.str]] = None,
             parent_path: Optional[pulumi.Input[_builtins.str]] = None,
             query_text: Optional[pulumi.Input[_builtins.str]] = None,
+            run_as: Optional[pulumi.Input[Union['AlertV2RunAsArgs', 'AlertV2RunAsArgsDict']]] = None,
             run_as_user_name: Optional[pulumi.Input[_builtins.str]] = None,
             schedule: Optional[pulumi.Input[Union['AlertV2ScheduleArgs', 'AlertV2ScheduleArgsDict']]] = None,
             update_time: Optional[pulumi.Input[_builtins.str]] = None,
-            warehouse_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'AlertV2':
+            warehouse_id: Optional[pulumi.Input[_builtins.str]] = None,
+            workspace_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'AlertV2':
         """
         Get an existing AlertV2 resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -541,14 +662,24 @@ class AlertV2(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] custom_description: Custom description for the alert. support mustache template
         :param pulumi.Input[_builtins.str] custom_summary: Custom summary for the alert. support mustache template
         :param pulumi.Input[_builtins.str] display_name: The display name of the alert
+        :param pulumi.Input[Union['AlertV2EffectiveRunAsArgs', 'AlertV2EffectiveRunAsArgsDict']] effective_run_as: (AlertV2RunAs) - The actual identity that will be used to execute the alert.
+               This is an output-only field that shows the resolved run-as identity after applying
+               permissions and defaults
         :param pulumi.Input[_builtins.str] lifecycle_state: (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `TRASHED`
         :param pulumi.Input[_builtins.str] owner_user_name: (string) - The owner's username. This field is set to "Unavailable" if the user has been deleted
         :param pulumi.Input[_builtins.str] parent_path: The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
         :param pulumi.Input[_builtins.str] query_text: Text of the query to be run
+        :param pulumi.Input[Union['AlertV2RunAsArgs', 'AlertV2RunAsArgsDict']] run_as: Specifies the identity that will be used to run the alert.
+               This field allows you to configure alerts to run as a specific user or service principal.
+               - For user identity: Set `user_name` to the email of an active workspace user. Users can only set this to their own email.
+               - For service principal: Set `service_principal_name` to the application ID. Requires the `servicePrincipal/user` role.
+               If not specified, the alert will run as the request user
         :param pulumi.Input[_builtins.str] run_as_user_name: The run as username or application ID of service principal.
-               On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
+               On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
+               Deprecated: Use `run_as` field instead. This field will be removed in a future release
         :param pulumi.Input[_builtins.str] update_time: (string) - The timestamp indicating when the alert was updated
         :param pulumi.Input[_builtins.str] warehouse_id: ID of the SQL warehouse attached to the alert
+        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID of the resource
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -558,15 +689,18 @@ class AlertV2(pulumi.CustomResource):
         __props__.__dict__["custom_description"] = custom_description
         __props__.__dict__["custom_summary"] = custom_summary
         __props__.__dict__["display_name"] = display_name
+        __props__.__dict__["effective_run_as"] = effective_run_as
         __props__.__dict__["evaluation"] = evaluation
         __props__.__dict__["lifecycle_state"] = lifecycle_state
         __props__.__dict__["owner_user_name"] = owner_user_name
         __props__.__dict__["parent_path"] = parent_path
         __props__.__dict__["query_text"] = query_text
+        __props__.__dict__["run_as"] = run_as
         __props__.__dict__["run_as_user_name"] = run_as_user_name
         __props__.__dict__["schedule"] = schedule
         __props__.__dict__["update_time"] = update_time
         __props__.__dict__["warehouse_id"] = warehouse_id
+        __props__.__dict__["workspace_id"] = workspace_id
         return AlertV2(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -600,6 +734,16 @@ class AlertV2(pulumi.CustomResource):
         The display name of the alert
         """
         return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter(name="effectiveRunAs")
+    def effective_run_as(self) -> pulumi.Output['outputs.AlertV2EffectiveRunAs']:
+        """
+        (AlertV2RunAs) - The actual identity that will be used to execute the alert.
+        This is an output-only field that shows the resolved run-as identity after applying
+        permissions and defaults
+        """
+        return pulumi.get(self, "effective_run_as")
 
     @_builtins.property
     @pulumi.getter
@@ -639,11 +783,24 @@ class AlertV2(pulumi.CustomResource):
         return pulumi.get(self, "query_text")
 
     @_builtins.property
+    @pulumi.getter(name="runAs")
+    def run_as(self) -> pulumi.Output[Optional['outputs.AlertV2RunAs']]:
+        """
+        Specifies the identity that will be used to run the alert.
+        This field allows you to configure alerts to run as a specific user or service principal.
+        - For user identity: Set `user_name` to the email of an active workspace user. Users can only set this to their own email.
+        - For service principal: Set `service_principal_name` to the application ID. Requires the `servicePrincipal/user` role.
+        If not specified, the alert will run as the request user
+        """
+        return pulumi.get(self, "run_as")
+
+    @_builtins.property
     @pulumi.getter(name="runAsUserName")
     def run_as_user_name(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         The run as username or application ID of service principal.
-        On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
+        On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
+        Deprecated: Use `run_as` field instead. This field will be removed in a future release
         """
         return pulumi.get(self, "run_as_user_name")
 
@@ -667,4 +824,12 @@ class AlertV2(pulumi.CustomResource):
         ID of the SQL warehouse attached to the alert
         """
         return pulumi.get(self, "warehouse_id")
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Workspace ID of the resource
+        """
+        return pulumi.get(self, "workspace_id")
 

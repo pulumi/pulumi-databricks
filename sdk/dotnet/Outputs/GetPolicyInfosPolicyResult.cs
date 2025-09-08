@@ -37,7 +37,7 @@ namespace Pulumi.Databricks.Outputs
         public readonly ImmutableArray<string> ExceptPrincipals;
         /// <summary>
         /// (string) - Type of securables that the policy should take effect on.
-        /// Only `table` is supported at this moment.
+        /// Only `TABLE` is supported at this moment.
         /// Required on create and optional on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
         /// </summary>
         public readonly string ForSecurableType;
@@ -47,13 +47,13 @@ namespace Pulumi.Databricks.Outputs
         public readonly string Id;
         /// <summary>
         /// (list of MatchColumn) - Optional list of condition expressions used to match table columns.
-        /// Only valid when `for_securable_type` is `table`.
+        /// Only valid when `for_securable_type` is `TABLE`.
         /// When specified, the policy only applies to tables whose columns satisfy all match conditions
         /// </summary>
         public readonly ImmutableArray<Outputs.GetPolicyInfosPolicyMatchColumnResult> MatchColumns;
         /// <summary>
-        /// (string) - Name of the policy. Required on create and ignored on update.
-        /// To update the name, use the `new_name` field
+        /// (string) - Name of the policy. Required on create and optional on update.
+        /// To rename the policy, set `name` to a different value on update
         /// </summary>
         public readonly string? Name;
         /// <summary>

@@ -28,7 +28,7 @@ class GetCleanRoomAssetResult:
     """
     A collection of values returned by getCleanRoomAsset.
     """
-    def __init__(__self__, added_at=None, asset_type=None, clean_room_name=None, foreign_table=None, foreign_table_local_details=None, id=None, name=None, notebook=None, owner_collaborator_alias=None, status=None, table=None, table_local_details=None, view=None, view_local_details=None, volume_local_details=None):
+    def __init__(__self__, added_at=None, asset_type=None, clean_room_name=None, foreign_table=None, foreign_table_local_details=None, id=None, name=None, notebook=None, owner_collaborator_alias=None, status=None, table=None, table_local_details=None, view=None, view_local_details=None, volume_local_details=None, workspace_id=None):
         if added_at and not isinstance(added_at, int):
             raise TypeError("Expected argument 'added_at' to be a int")
         pulumi.set(__self__, "added_at", added_at)
@@ -74,6 +74,9 @@ class GetCleanRoomAssetResult:
         if volume_local_details and not isinstance(volume_local_details, dict):
             raise TypeError("Expected argument 'volume_local_details' to be a dict")
         pulumi.set(__self__, "volume_local_details", volume_local_details)
+        if workspace_id and not isinstance(workspace_id, str):
+            raise TypeError("Expected argument 'workspace_id' to be a str")
+        pulumi.set(__self__, "workspace_id", workspace_id)
 
     @_builtins.property
     @pulumi.getter(name="addedAt")
@@ -204,6 +207,11 @@ class GetCleanRoomAssetResult:
         """
         return pulumi.get(self, "volume_local_details")
 
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "workspace_id")
+
 
 class AwaitableGetCleanRoomAssetResult(GetCleanRoomAssetResult):
     # pylint: disable=using-constant-test
@@ -225,7 +233,8 @@ class AwaitableGetCleanRoomAssetResult(GetCleanRoomAssetResult):
             table_local_details=self.table_local_details,
             view=self.view,
             view_local_details=self.view_local_details,
-            volume_local_details=self.volume_local_details)
+            volume_local_details=self.volume_local_details,
+            workspace_id=self.workspace_id)
 
 
 def get_clean_room_asset(asset_type: Optional[_builtins.str] = None,
@@ -239,6 +248,7 @@ def get_clean_room_asset(asset_type: Optional[_builtins.str] = None,
                          view: Optional[Union['GetCleanRoomAssetViewArgs', 'GetCleanRoomAssetViewArgsDict']] = None,
                          view_local_details: Optional[Union['GetCleanRoomAssetViewLocalDetailsArgs', 'GetCleanRoomAssetViewLocalDetailsArgsDict']] = None,
                          volume_local_details: Optional[Union['GetCleanRoomAssetVolumeLocalDetailsArgs', 'GetCleanRoomAssetVolumeLocalDetailsArgsDict']] = None,
+                         workspace_id: Optional[_builtins.str] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCleanRoomAssetResult:
     """
     This data source can be used to get a single clean room asset.
@@ -281,6 +291,7 @@ def get_clean_room_asset(asset_type: Optional[_builtins.str] = None,
            Present if and only if **asset_type** is **VIEW**
     :param Union['GetCleanRoomAssetVolumeLocalDetailsArgs', 'GetCleanRoomAssetVolumeLocalDetailsArgsDict'] volume_local_details: (CleanRoomAssetVolumeLocalDetails) - Local details for a volume that are only available to its owner.
            Present if and only if **asset_type** is **VOLUME**
+    :param _builtins.str workspace_id: Workspace ID of the resource
     """
     __args__ = dict()
     __args__['assetType'] = asset_type
@@ -294,6 +305,7 @@ def get_clean_room_asset(asset_type: Optional[_builtins.str] = None,
     __args__['view'] = view
     __args__['viewLocalDetails'] = view_local_details
     __args__['volumeLocalDetails'] = volume_local_details
+    __args__['workspaceId'] = workspace_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getCleanRoomAsset:getCleanRoomAsset', __args__, opts=opts, typ=GetCleanRoomAssetResult).value
 
@@ -312,7 +324,8 @@ def get_clean_room_asset(asset_type: Optional[_builtins.str] = None,
         table_local_details=pulumi.get(__ret__, 'table_local_details'),
         view=pulumi.get(__ret__, 'view'),
         view_local_details=pulumi.get(__ret__, 'view_local_details'),
-        volume_local_details=pulumi.get(__ret__, 'volume_local_details'))
+        volume_local_details=pulumi.get(__ret__, 'volume_local_details'),
+        workspace_id=pulumi.get(__ret__, 'workspace_id'))
 def get_clean_room_asset_output(asset_type: Optional[pulumi.Input[_builtins.str]] = None,
                                 clean_room_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                 foreign_table: Optional[pulumi.Input[Optional[Union['GetCleanRoomAssetForeignTableArgs', 'GetCleanRoomAssetForeignTableArgsDict']]]] = None,
@@ -324,6 +337,7 @@ def get_clean_room_asset_output(asset_type: Optional[pulumi.Input[_builtins.str]
                                 view: Optional[pulumi.Input[Optional[Union['GetCleanRoomAssetViewArgs', 'GetCleanRoomAssetViewArgsDict']]]] = None,
                                 view_local_details: Optional[pulumi.Input[Optional[Union['GetCleanRoomAssetViewLocalDetailsArgs', 'GetCleanRoomAssetViewLocalDetailsArgsDict']]]] = None,
                                 volume_local_details: Optional[pulumi.Input[Optional[Union['GetCleanRoomAssetVolumeLocalDetailsArgs', 'GetCleanRoomAssetVolumeLocalDetailsArgsDict']]]] = None,
+                                workspace_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCleanRoomAssetResult]:
     """
     This data source can be used to get a single clean room asset.
@@ -366,6 +380,7 @@ def get_clean_room_asset_output(asset_type: Optional[pulumi.Input[_builtins.str]
            Present if and only if **asset_type** is **VIEW**
     :param Union['GetCleanRoomAssetVolumeLocalDetailsArgs', 'GetCleanRoomAssetVolumeLocalDetailsArgsDict'] volume_local_details: (CleanRoomAssetVolumeLocalDetails) - Local details for a volume that are only available to its owner.
            Present if and only if **asset_type** is **VOLUME**
+    :param _builtins.str workspace_id: Workspace ID of the resource
     """
     __args__ = dict()
     __args__['assetType'] = asset_type
@@ -379,6 +394,7 @@ def get_clean_room_asset_output(asset_type: Optional[pulumi.Input[_builtins.str]
     __args__['view'] = view
     __args__['viewLocalDetails'] = view_local_details
     __args__['volumeLocalDetails'] = volume_local_details
+    __args__['workspaceId'] = workspace_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getCleanRoomAsset:getCleanRoomAsset', __args__, opts=opts, typ=GetCleanRoomAssetResult)
     return __ret__.apply(lambda __response__: GetCleanRoomAssetResult(
@@ -396,4 +412,5 @@ def get_clean_room_asset_output(asset_type: Optional[pulumi.Input[_builtins.str]
         table_local_details=pulumi.get(__response__, 'table_local_details'),
         view=pulumi.get(__response__, 'view'),
         view_local_details=pulumi.get(__response__, 'view_local_details'),
-        volume_local_details=pulumi.get(__response__, 'volume_local_details')))
+        volume_local_details=pulumi.get(__response__, 'volume_local_details'),
+        workspace_id=pulumi.get(__response__, 'workspace_id')))

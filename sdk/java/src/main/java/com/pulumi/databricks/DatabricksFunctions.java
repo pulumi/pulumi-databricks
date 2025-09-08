@@ -6,12 +6,22 @@ package com.pulumi.databricks;
 import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.databricks.Utilities;
+import com.pulumi.databricks.inputs.GetAccountFederationPolicyArgs;
+import com.pulumi.databricks.inputs.GetAccountFederationPolicyPlainArgs;
 import com.pulumi.databricks.inputs.GetAccountNetworkPolicyArgs;
 import com.pulumi.databricks.inputs.GetAccountNetworkPolicyPlainArgs;
+import com.pulumi.databricks.inputs.GetAccountSettingV2Args;
+import com.pulumi.databricks.inputs.GetAccountSettingV2PlainArgs;
 import com.pulumi.databricks.inputs.GetAlertV2Args;
 import com.pulumi.databricks.inputs.GetAlertV2PlainArgs;
+import com.pulumi.databricks.inputs.GetAlertsV2Args;
+import com.pulumi.databricks.inputs.GetAlertsV2PlainArgs;
 import com.pulumi.databricks.inputs.GetAppArgs;
 import com.pulumi.databricks.inputs.GetAppPlainArgs;
+import com.pulumi.databricks.inputs.GetAppsSettingsCustomTemplateArgs;
+import com.pulumi.databricks.inputs.GetAppsSettingsCustomTemplatePlainArgs;
+import com.pulumi.databricks.inputs.GetAppsSettingsCustomTemplatesArgs;
+import com.pulumi.databricks.inputs.GetAppsSettingsCustomTemplatesPlainArgs;
 import com.pulumi.databricks.inputs.GetAwsAssumeRolePolicyArgs;
 import com.pulumi.databricks.inputs.GetAwsAssumeRolePolicyPlainArgs;
 import com.pulumi.databricks.inputs.GetAwsBucketPolicyArgs;
@@ -32,10 +42,18 @@ import com.pulumi.databricks.inputs.GetCleanRoomAssetArgs;
 import com.pulumi.databricks.inputs.GetCleanRoomAssetPlainArgs;
 import com.pulumi.databricks.inputs.GetCleanRoomAssetRevisionsCleanRoomAssetArgs;
 import com.pulumi.databricks.inputs.GetCleanRoomAssetRevisionsCleanRoomAssetPlainArgs;
+import com.pulumi.databricks.inputs.GetCleanRoomAssetRevisionsCleanRoomAssetsArgs;
+import com.pulumi.databricks.inputs.GetCleanRoomAssetRevisionsCleanRoomAssetsPlainArgs;
+import com.pulumi.databricks.inputs.GetCleanRoomAssetsArgs;
+import com.pulumi.databricks.inputs.GetCleanRoomAssetsPlainArgs;
 import com.pulumi.databricks.inputs.GetCleanRoomAutoApprovalRuleArgs;
 import com.pulumi.databricks.inputs.GetCleanRoomAutoApprovalRulePlainArgs;
+import com.pulumi.databricks.inputs.GetCleanRoomAutoApprovalRulesArgs;
+import com.pulumi.databricks.inputs.GetCleanRoomAutoApprovalRulesPlainArgs;
 import com.pulumi.databricks.inputs.GetCleanRoomsCleanRoomArgs;
 import com.pulumi.databricks.inputs.GetCleanRoomsCleanRoomPlainArgs;
+import com.pulumi.databricks.inputs.GetCleanRoomsCleanRoomsArgs;
+import com.pulumi.databricks.inputs.GetCleanRoomsCleanRoomsPlainArgs;
 import com.pulumi.databricks.inputs.GetClusterArgs;
 import com.pulumi.databricks.inputs.GetClusterPlainArgs;
 import com.pulumi.databricks.inputs.GetClusterPolicyArgs;
@@ -50,22 +68,34 @@ import com.pulumi.databricks.inputs.GetDashboardsArgs;
 import com.pulumi.databricks.inputs.GetDashboardsPlainArgs;
 import com.pulumi.databricks.inputs.GetDatabaseDatabaseCatalogArgs;
 import com.pulumi.databricks.inputs.GetDatabaseDatabaseCatalogPlainArgs;
+import com.pulumi.databricks.inputs.GetDatabaseDatabaseCatalogsArgs;
+import com.pulumi.databricks.inputs.GetDatabaseDatabaseCatalogsPlainArgs;
 import com.pulumi.databricks.inputs.GetDatabaseInstanceArgs;
 import com.pulumi.databricks.inputs.GetDatabaseInstancePlainArgs;
+import com.pulumi.databricks.inputs.GetDatabaseInstancesArgs;
+import com.pulumi.databricks.inputs.GetDatabaseInstancesPlainArgs;
 import com.pulumi.databricks.inputs.GetDatabaseSyncedDatabaseTableArgs;
 import com.pulumi.databricks.inputs.GetDatabaseSyncedDatabaseTablePlainArgs;
+import com.pulumi.databricks.inputs.GetDatabaseSyncedDatabaseTablesArgs;
+import com.pulumi.databricks.inputs.GetDatabaseSyncedDatabaseTablesPlainArgs;
 import com.pulumi.databricks.inputs.GetDbfsFileArgs;
 import com.pulumi.databricks.inputs.GetDbfsFilePathsArgs;
 import com.pulumi.databricks.inputs.GetDbfsFilePathsPlainArgs;
 import com.pulumi.databricks.inputs.GetDbfsFilePlainArgs;
 import com.pulumi.databricks.inputs.GetDirectoryArgs;
 import com.pulumi.databricks.inputs.GetDirectoryPlainArgs;
+import com.pulumi.databricks.inputs.GetEntityTagAssignmentArgs;
+import com.pulumi.databricks.inputs.GetEntityTagAssignmentPlainArgs;
+import com.pulumi.databricks.inputs.GetEntityTagAssignmentsArgs;
+import com.pulumi.databricks.inputs.GetEntityTagAssignmentsPlainArgs;
 import com.pulumi.databricks.inputs.GetExternalLocationArgs;
 import com.pulumi.databricks.inputs.GetExternalLocationPlainArgs;
 import com.pulumi.databricks.inputs.GetExternalLocationsArgs;
 import com.pulumi.databricks.inputs.GetExternalLocationsPlainArgs;
 import com.pulumi.databricks.inputs.GetExternalMetadataArgs;
 import com.pulumi.databricks.inputs.GetExternalMetadataPlainArgs;
+import com.pulumi.databricks.inputs.GetExternalMetadatasArgs;
+import com.pulumi.databricks.inputs.GetExternalMetadatasPlainArgs;
 import com.pulumi.databricks.inputs.GetFunctionsArgs;
 import com.pulumi.databricks.inputs.GetFunctionsPlainArgs;
 import com.pulumi.databricks.inputs.GetGroupArgs;
@@ -80,6 +110,8 @@ import com.pulumi.databricks.inputs.GetJobsArgs;
 import com.pulumi.databricks.inputs.GetJobsPlainArgs;
 import com.pulumi.databricks.inputs.GetMaterializedFeaturesFeatureTagArgs;
 import com.pulumi.databricks.inputs.GetMaterializedFeaturesFeatureTagPlainArgs;
+import com.pulumi.databricks.inputs.GetMaterializedFeaturesFeatureTagsArgs;
+import com.pulumi.databricks.inputs.GetMaterializedFeaturesFeatureTagsPlainArgs;
 import com.pulumi.databricks.inputs.GetMetastoreArgs;
 import com.pulumi.databricks.inputs.GetMetastorePlainArgs;
 import com.pulumi.databricks.inputs.GetMetastoresArgs;
@@ -106,12 +138,20 @@ import com.pulumi.databricks.inputs.GetNotificationDestinationsArgs;
 import com.pulumi.databricks.inputs.GetNotificationDestinationsPlainArgs;
 import com.pulumi.databricks.inputs.GetOnlineStoreArgs;
 import com.pulumi.databricks.inputs.GetOnlineStorePlainArgs;
+import com.pulumi.databricks.inputs.GetOnlineStoresArgs;
+import com.pulumi.databricks.inputs.GetOnlineStoresPlainArgs;
 import com.pulumi.databricks.inputs.GetPipelinesArgs;
 import com.pulumi.databricks.inputs.GetPipelinesPlainArgs;
 import com.pulumi.databricks.inputs.GetPolicyInfoArgs;
 import com.pulumi.databricks.inputs.GetPolicyInfoPlainArgs;
+import com.pulumi.databricks.inputs.GetPolicyInfosArgs;
+import com.pulumi.databricks.inputs.GetPolicyInfosPlainArgs;
 import com.pulumi.databricks.inputs.GetQualityMonitorV2Args;
 import com.pulumi.databricks.inputs.GetQualityMonitorV2PlainArgs;
+import com.pulumi.databricks.inputs.GetQualityMonitorsV2Args;
+import com.pulumi.databricks.inputs.GetQualityMonitorsV2PlainArgs;
+import com.pulumi.databricks.inputs.GetRecipientFederationPoliciesArgs;
+import com.pulumi.databricks.inputs.GetRecipientFederationPoliciesPlainArgs;
 import com.pulumi.databricks.inputs.GetRecipientFederationPolicyArgs;
 import com.pulumi.databricks.inputs.GetRecipientFederationPolicyPlainArgs;
 import com.pulumi.databricks.inputs.GetRegisteredModelArgs;
@@ -123,6 +163,10 @@ import com.pulumi.databricks.inputs.GetSchemaPlainArgs;
 import com.pulumi.databricks.inputs.GetSchemasArgs;
 import com.pulumi.databricks.inputs.GetSchemasPlainArgs;
 import com.pulumi.databricks.inputs.GetServicePrincipalArgs;
+import com.pulumi.databricks.inputs.GetServicePrincipalFederationPoliciesArgs;
+import com.pulumi.databricks.inputs.GetServicePrincipalFederationPoliciesPlainArgs;
+import com.pulumi.databricks.inputs.GetServicePrincipalFederationPolicyArgs;
+import com.pulumi.databricks.inputs.GetServicePrincipalFederationPolicyPlainArgs;
 import com.pulumi.databricks.inputs.GetServicePrincipalPlainArgs;
 import com.pulumi.databricks.inputs.GetServicePrincipalsArgs;
 import com.pulumi.databricks.inputs.GetServicePrincipalsPlainArgs;
@@ -146,6 +190,10 @@ import com.pulumi.databricks.inputs.GetTableArgs;
 import com.pulumi.databricks.inputs.GetTablePlainArgs;
 import com.pulumi.databricks.inputs.GetTablesArgs;
 import com.pulumi.databricks.inputs.GetTablesPlainArgs;
+import com.pulumi.databricks.inputs.GetTagPoliciesArgs;
+import com.pulumi.databricks.inputs.GetTagPoliciesPlainArgs;
+import com.pulumi.databricks.inputs.GetTagPolicyArgs;
+import com.pulumi.databricks.inputs.GetTagPolicyPlainArgs;
 import com.pulumi.databricks.inputs.GetUserArgs;
 import com.pulumi.databricks.inputs.GetUserPlainArgs;
 import com.pulumi.databricks.inputs.GetViewsArgs;
@@ -156,14 +204,21 @@ import com.pulumi.databricks.inputs.GetVolumesArgs;
 import com.pulumi.databricks.inputs.GetVolumesPlainArgs;
 import com.pulumi.databricks.inputs.GetWorkspaceNetworkOptionArgs;
 import com.pulumi.databricks.inputs.GetWorkspaceNetworkOptionPlainArgs;
+import com.pulumi.databricks.inputs.GetWorkspaceSettingV2Args;
+import com.pulumi.databricks.inputs.GetWorkspaceSettingV2PlainArgs;
 import com.pulumi.databricks.inputs.GetZonesArgs;
 import com.pulumi.databricks.inputs.GetZonesPlainArgs;
+import com.pulumi.databricks.outputs.GetAccountFederationPoliciesResult;
+import com.pulumi.databricks.outputs.GetAccountFederationPolicyResult;
 import com.pulumi.databricks.outputs.GetAccountNetworkPoliciesResult;
 import com.pulumi.databricks.outputs.GetAccountNetworkPolicyResult;
+import com.pulumi.databricks.outputs.GetAccountSettingV2Result;
 import com.pulumi.databricks.outputs.GetAlertV2Result;
 import com.pulumi.databricks.outputs.GetAlertsV2InvokeResult;
 import com.pulumi.databricks.outputs.GetAppResult;
 import com.pulumi.databricks.outputs.GetAppsResult;
+import com.pulumi.databricks.outputs.GetAppsSettingsCustomTemplateResult;
+import com.pulumi.databricks.outputs.GetAppsSettingsCustomTemplatesResult;
 import com.pulumi.databricks.outputs.GetAwsAssumeRolePolicyResult;
 import com.pulumi.databricks.outputs.GetAwsBucketPolicyResult;
 import com.pulumi.databricks.outputs.GetAwsCrossAccountPolicyResult;
@@ -197,6 +252,8 @@ import com.pulumi.databricks.outputs.GetDatabaseSyncedDatabaseTablesResult;
 import com.pulumi.databricks.outputs.GetDbfsFilePathsResult;
 import com.pulumi.databricks.outputs.GetDbfsFileResult;
 import com.pulumi.databricks.outputs.GetDirectoryResult;
+import com.pulumi.databricks.outputs.GetEntityTagAssignmentResult;
+import com.pulumi.databricks.outputs.GetEntityTagAssignmentsResult;
 import com.pulumi.databricks.outputs.GetExternalLocationResult;
 import com.pulumi.databricks.outputs.GetExternalLocationsResult;
 import com.pulumi.databricks.outputs.GetExternalMetadataResult;
@@ -235,6 +292,8 @@ import com.pulumi.databricks.outputs.GetRegisteredModelResult;
 import com.pulumi.databricks.outputs.GetRegisteredModelVersionsResult;
 import com.pulumi.databricks.outputs.GetSchemaResult;
 import com.pulumi.databricks.outputs.GetSchemasResult;
+import com.pulumi.databricks.outputs.GetServicePrincipalFederationPoliciesResult;
+import com.pulumi.databricks.outputs.GetServicePrincipalFederationPolicyResult;
 import com.pulumi.databricks.outputs.GetServicePrincipalResult;
 import com.pulumi.databricks.outputs.GetServicePrincipalsResult;
 import com.pulumi.databricks.outputs.GetServingEndpointsResult;
@@ -247,11 +306,14 @@ import com.pulumi.databricks.outputs.GetStorageCredentialResult;
 import com.pulumi.databricks.outputs.GetStorageCredentialsResult;
 import com.pulumi.databricks.outputs.GetTableResult;
 import com.pulumi.databricks.outputs.GetTablesResult;
+import com.pulumi.databricks.outputs.GetTagPoliciesResult;
+import com.pulumi.databricks.outputs.GetTagPolicyResult;
 import com.pulumi.databricks.outputs.GetUserResult;
 import com.pulumi.databricks.outputs.GetViewsResult;
 import com.pulumi.databricks.outputs.GetVolumeResult;
 import com.pulumi.databricks.outputs.GetVolumesResult;
 import com.pulumi.databricks.outputs.GetWorkspaceNetworkOptionResult;
+import com.pulumi.databricks.outputs.GetWorkspaceSettingV2Result;
 import com.pulumi.databricks.outputs.GetZonesResult;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
@@ -260,6 +322,419 @@ import com.pulumi.resources.InvokeArgs;
 import java.util.concurrent.CompletableFuture;
 
 public final class DatabricksFunctions {
+    /**
+     * This data source can be used to fetch the list of account federation policies.
+     * 
+     * &gt; **Note** This data source can only be used with an account-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Getting a list of all account federation policies:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getAccountFederationPolicies(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetAccountFederationPoliciesResult> getAccountFederationPolicies() {
+        return getAccountFederationPolicies(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source can be used to fetch the list of account federation policies.
+     * 
+     * &gt; **Note** This data source can only be used with an account-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Getting a list of all account federation policies:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getAccountFederationPolicies(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetAccountFederationPoliciesResult> getAccountFederationPoliciesPlain() {
+        return getAccountFederationPoliciesPlain(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source can be used to fetch the list of account federation policies.
+     * 
+     * &gt; **Note** This data source can only be used with an account-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Getting a list of all account federation policies:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getAccountFederationPolicies(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetAccountFederationPoliciesResult> getAccountFederationPolicies(InvokeArgs args) {
+        return getAccountFederationPolicies(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source can be used to fetch the list of account federation policies.
+     * 
+     * &gt; **Note** This data source can only be used with an account-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Getting a list of all account federation policies:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getAccountFederationPolicies(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetAccountFederationPoliciesResult> getAccountFederationPoliciesPlain(InvokeArgs args) {
+        return getAccountFederationPoliciesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source can be used to fetch the list of account federation policies.
+     * 
+     * &gt; **Note** This data source can only be used with an account-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Getting a list of all account federation policies:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getAccountFederationPolicies(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetAccountFederationPoliciesResult> getAccountFederationPolicies(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getAccountFederationPolicies:getAccountFederationPolicies", TypeShape.of(GetAccountFederationPoliciesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source can be used to fetch the list of account federation policies.
+     * 
+     * &gt; **Note** This data source can only be used with an account-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Getting a list of all account federation policies:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getAccountFederationPolicies(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetAccountFederationPoliciesResult> getAccountFederationPolicies(InvokeArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getAccountFederationPolicies:getAccountFederationPolicies", TypeShape.of(GetAccountFederationPoliciesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source can be used to fetch the list of account federation policies.
+     * 
+     * &gt; **Note** This data source can only be used with an account-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Getting a list of all account federation policies:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getAccountFederationPolicies(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetAccountFederationPoliciesResult> getAccountFederationPoliciesPlain(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getAccountFederationPolicies:getAccountFederationPolicies", TypeShape.of(GetAccountFederationPoliciesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source can be used to get a single account federation policy.
+     * 
+     * &gt; **Note** This data source can only be used with an account-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Referring to an account federation policy by id:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetAccountFederationPolicyResult> getAccountFederationPolicy() {
+        return getAccountFederationPolicy(GetAccountFederationPolicyArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source can be used to get a single account federation policy.
+     * 
+     * &gt; **Note** This data source can only be used with an account-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Referring to an account federation policy by id:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetAccountFederationPolicyResult> getAccountFederationPolicyPlain() {
+        return getAccountFederationPolicyPlain(GetAccountFederationPolicyPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source can be used to get a single account federation policy.
+     * 
+     * &gt; **Note** This data source can only be used with an account-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Referring to an account federation policy by id:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetAccountFederationPolicyResult> getAccountFederationPolicy(GetAccountFederationPolicyArgs args) {
+        return getAccountFederationPolicy(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source can be used to get a single account federation policy.
+     * 
+     * &gt; **Note** This data source can only be used with an account-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Referring to an account federation policy by id:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetAccountFederationPolicyResult> getAccountFederationPolicyPlain(GetAccountFederationPolicyPlainArgs args) {
+        return getAccountFederationPolicyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source can be used to get a single account federation policy.
+     * 
+     * &gt; **Note** This data source can only be used with an account-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Referring to an account federation policy by id:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetAccountFederationPolicyResult> getAccountFederationPolicy(GetAccountFederationPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getAccountFederationPolicy:getAccountFederationPolicy", TypeShape.of(GetAccountFederationPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source can be used to get a single account federation policy.
+     * 
+     * &gt; **Note** This data source can only be used with an account-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Referring to an account federation policy by id:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetAccountFederationPolicyResult> getAccountFederationPolicy(GetAccountFederationPolicyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getAccountFederationPolicy:getAccountFederationPolicy", TypeShape.of(GetAccountFederationPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source can be used to get a single account federation policy.
+     * 
+     * &gt; **Note** This data source can only be used with an account-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Referring to an account federation policy by id:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetAccountFederationPolicyResult> getAccountFederationPolicyPlain(GetAccountFederationPolicyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getAccountFederationPolicy:getAccountFederationPolicy", TypeShape.of(GetAccountFederationPolicyResult.class), args, Utilities.withVersion(options));
+    }
     /**
      * This data source can be used to fetch the list of network policies.
      * 
@@ -673,6 +1148,27 @@ public final class DatabricksFunctions {
     public static CompletableFuture<GetAccountNetworkPolicyResult> getAccountNetworkPolicyPlain(GetAccountNetworkPolicyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getAccountNetworkPolicy:getAccountNetworkPolicy", TypeShape.of(GetAccountNetworkPolicyResult.class), args, Utilities.withVersion(options));
     }
+    public static Output<GetAccountSettingV2Result> getAccountSettingV2() {
+        return getAccountSettingV2(GetAccountSettingV2Args.Empty, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetAccountSettingV2Result> getAccountSettingV2Plain() {
+        return getAccountSettingV2Plain(GetAccountSettingV2PlainArgs.Empty, InvokeOptions.Empty);
+    }
+    public static Output<GetAccountSettingV2Result> getAccountSettingV2(GetAccountSettingV2Args args) {
+        return getAccountSettingV2(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetAccountSettingV2Result> getAccountSettingV2Plain(GetAccountSettingV2PlainArgs args) {
+        return getAccountSettingV2Plain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetAccountSettingV2Result> getAccountSettingV2(GetAccountSettingV2Args args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getAccountSettingV2:getAccountSettingV2", TypeShape.of(GetAccountSettingV2Result.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetAccountSettingV2Result> getAccountSettingV2(GetAccountSettingV2Args args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getAccountSettingV2:getAccountSettingV2", TypeShape.of(GetAccountSettingV2Result.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetAccountSettingV2Result> getAccountSettingV2Plain(GetAccountSettingV2PlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getAccountSettingV2:getAccountSettingV2", TypeShape.of(GetAccountSettingV2Result.class), args, Utilities.withVersion(options));
+    }
     /**
      * The SQL Alert v2 data source allows you to retrieve detailed information about a specific alert in Databricks SQL. This data source provides access to all alert properties, including its configuration, evaluation criteria, notification settings, and schedule.
      * 
@@ -866,7 +1362,7 @@ public final class DatabricksFunctions {
      * 
      */
     public static Output<GetAlertsV2InvokeResult> getAlertsV2() {
-        return getAlertsV2(InvokeArgs.Empty, InvokeOptions.Empty);
+        return getAlertsV2(GetAlertsV2Args.Empty, InvokeOptions.Empty);
     }
     /**
      * The SQL Alerts v2 data source allows you to retrieve a list of alerts in Databricks SQL that are accessible to the current user. This data source returns alerts ordered by their creation time.
@@ -914,7 +1410,7 @@ public final class DatabricksFunctions {
      * 
      */
     public static CompletableFuture<GetAlertsV2InvokeResult> getAlertsV2Plain() {
-        return getAlertsV2Plain(InvokeArgs.Empty, InvokeOptions.Empty);
+        return getAlertsV2Plain(GetAlertsV2PlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
      * The SQL Alerts v2 data source allows you to retrieve a list of alerts in Databricks SQL that are accessible to the current user. This data source returns alerts ordered by their creation time.
@@ -961,7 +1457,7 @@ public final class DatabricksFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
-    public static Output<GetAlertsV2InvokeResult> getAlertsV2(InvokeArgs args) {
+    public static Output<GetAlertsV2InvokeResult> getAlertsV2(GetAlertsV2Args args) {
         return getAlertsV2(args, InvokeOptions.Empty);
     }
     /**
@@ -1009,7 +1505,7 @@ public final class DatabricksFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
-    public static CompletableFuture<GetAlertsV2InvokeResult> getAlertsV2Plain(InvokeArgs args) {
+    public static CompletableFuture<GetAlertsV2InvokeResult> getAlertsV2Plain(GetAlertsV2PlainArgs args) {
         return getAlertsV2Plain(args, InvokeOptions.Empty);
     }
     /**
@@ -1057,7 +1553,7 @@ public final class DatabricksFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
-    public static Output<GetAlertsV2InvokeResult> getAlertsV2(InvokeArgs args, InvokeOptions options) {
+    public static Output<GetAlertsV2InvokeResult> getAlertsV2(GetAlertsV2Args args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getAlertsV2:getAlertsV2", TypeShape.of(GetAlertsV2InvokeResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1105,7 +1601,7 @@ public final class DatabricksFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
-    public static Output<GetAlertsV2InvokeResult> getAlertsV2(InvokeArgs args, InvokeOutputOptions options) {
+    public static Output<GetAlertsV2InvokeResult> getAlertsV2(GetAlertsV2Args args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getAlertsV2:getAlertsV2", TypeShape.of(GetAlertsV2InvokeResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1153,13 +1649,11 @@ public final class DatabricksFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
-    public static CompletableFuture<GetAlertsV2InvokeResult> getAlertsV2Plain(InvokeArgs args, InvokeOptions options) {
+    public static CompletableFuture<GetAlertsV2InvokeResult> getAlertsV2Plain(GetAlertsV2PlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getAlertsV2:getAlertsV2", TypeShape.of(GetAlertsV2InvokeResult.class), args, Utilities.withVersion(options));
     }
     /**
      * &gt; This data source can only be used with a workspace-level provider!
-     * 
-     * &gt; This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html).
      * 
      * [Databricks Apps](https://docs.databricks.com/en/dev-tools/databricks-apps/index.html) run directly on a customer’s Databricks instance, integrate with their data, use and extend Databricks services, and enable users to interact through single sign-on. This resource creates the application but does not handle app deployment, which should be handled separately as part of your CI/CD pipeline.
      * 
@@ -1217,8 +1711,6 @@ public final class DatabricksFunctions {
     /**
      * &gt; This data source can only be used with a workspace-level provider!
      * 
-     * &gt; This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html).
-     * 
      * [Databricks Apps](https://docs.databricks.com/en/dev-tools/databricks-apps/index.html) run directly on a customer’s Databricks instance, integrate with their data, use and extend Databricks services, and enable users to interact through single sign-on. This resource creates the application but does not handle app deployment, which should be handled separately as part of your CI/CD pipeline.
      * 
      * This data source allows you to fetch information about a Databricks App.
@@ -1274,8 +1766,6 @@ public final class DatabricksFunctions {
     }
     /**
      * &gt; This data source can only be used with a workspace-level provider!
-     * 
-     * &gt; This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html).
      * 
      * [Databricks Apps](https://docs.databricks.com/en/dev-tools/databricks-apps/index.html) run directly on a customer’s Databricks instance, integrate with their data, use and extend Databricks services, and enable users to interact through single sign-on. This resource creates the application but does not handle app deployment, which should be handled separately as part of your CI/CD pipeline.
      * 
@@ -1333,8 +1823,6 @@ public final class DatabricksFunctions {
     /**
      * &gt; This data source can only be used with a workspace-level provider!
      * 
-     * &gt; This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html).
-     * 
      * [Databricks Apps](https://docs.databricks.com/en/dev-tools/databricks-apps/index.html) run directly on a customer’s Databricks instance, integrate with their data, use and extend Databricks services, and enable users to interact through single sign-on. This resource creates the application but does not handle app deployment, which should be handled separately as part of your CI/CD pipeline.
      * 
      * This data source allows you to fetch information about a Databricks App.
@@ -1390,8 +1878,6 @@ public final class DatabricksFunctions {
     }
     /**
      * &gt; This data source can only be used with a workspace-level provider!
-     * 
-     * &gt; This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html).
      * 
      * [Databricks Apps](https://docs.databricks.com/en/dev-tools/databricks-apps/index.html) run directly on a customer’s Databricks instance, integrate with their data, use and extend Databricks services, and enable users to interact through single sign-on. This resource creates the application but does not handle app deployment, which should be handled separately as part of your CI/CD pipeline.
      * 
@@ -1449,8 +1935,6 @@ public final class DatabricksFunctions {
     /**
      * &gt; This data source can only be used with a workspace-level provider!
      * 
-     * &gt; This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html).
-     * 
      * [Databricks Apps](https://docs.databricks.com/en/dev-tools/databricks-apps/index.html) run directly on a customer’s Databricks instance, integrate with their data, use and extend Databricks services, and enable users to interact through single sign-on. This resource creates the application but does not handle app deployment, which should be handled separately as part of your CI/CD pipeline.
      * 
      * This data source allows you to fetch information about all Databricks Apps within a workspace.
@@ -1503,8 +1987,6 @@ public final class DatabricksFunctions {
     }
     /**
      * &gt; This data source can only be used with a workspace-level provider!
-     * 
-     * &gt; This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html).
      * 
      * [Databricks Apps](https://docs.databricks.com/en/dev-tools/databricks-apps/index.html) run directly on a customer’s Databricks instance, integrate with their data, use and extend Databricks services, and enable users to interact through single sign-on. This resource creates the application but does not handle app deployment, which should be handled separately as part of your CI/CD pipeline.
      * 
@@ -1559,8 +2041,6 @@ public final class DatabricksFunctions {
     /**
      * &gt; This data source can only be used with a workspace-level provider!
      * 
-     * &gt; This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html).
-     * 
      * [Databricks Apps](https://docs.databricks.com/en/dev-tools/databricks-apps/index.html) run directly on a customer’s Databricks instance, integrate with their data, use and extend Databricks services, and enable users to interact through single sign-on. This resource creates the application but does not handle app deployment, which should be handled separately as part of your CI/CD pipeline.
      * 
      * This data source allows you to fetch information about all Databricks Apps within a workspace.
@@ -1613,8 +2093,6 @@ public final class DatabricksFunctions {
     }
     /**
      * &gt; This data source can only be used with a workspace-level provider!
-     * 
-     * &gt; This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html).
      * 
      * [Databricks Apps](https://docs.databricks.com/en/dev-tools/databricks-apps/index.html) run directly on a customer’s Databricks instance, integrate with their data, use and extend Databricks services, and enable users to interact through single sign-on. This resource creates the application but does not handle app deployment, which should be handled separately as part of your CI/CD pipeline.
      * 
@@ -1669,8 +2147,6 @@ public final class DatabricksFunctions {
     /**
      * &gt; This data source can only be used with a workspace-level provider!
      * 
-     * &gt; This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html).
-     * 
      * [Databricks Apps](https://docs.databricks.com/en/dev-tools/databricks-apps/index.html) run directly on a customer’s Databricks instance, integrate with their data, use and extend Databricks services, and enable users to interact through single sign-on. This resource creates the application but does not handle app deployment, which should be handled separately as part of your CI/CD pipeline.
      * 
      * This data source allows you to fetch information about all Databricks Apps within a workspace.
@@ -1723,8 +2199,6 @@ public final class DatabricksFunctions {
     }
     /**
      * &gt; This data source can only be used with a workspace-level provider!
-     * 
-     * &gt; This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html).
      * 
      * [Databricks Apps](https://docs.databricks.com/en/dev-tools/databricks-apps/index.html) run directly on a customer’s Databricks instance, integrate with their data, use and extend Databricks services, and enable users to interact through single sign-on. This resource creates the application but does not handle app deployment, which should be handled separately as part of your CI/CD pipeline.
      * 
@@ -1779,8 +2253,6 @@ public final class DatabricksFunctions {
     /**
      * &gt; This data source can only be used with a workspace-level provider!
      * 
-     * &gt; This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html).
-     * 
      * [Databricks Apps](https://docs.databricks.com/en/dev-tools/databricks-apps/index.html) run directly on a customer’s Databricks instance, integrate with their data, use and extend Databricks services, and enable users to interact through single sign-on. This resource creates the application but does not handle app deployment, which should be handled separately as part of your CI/CD pipeline.
      * 
      * This data source allows you to fetch information about all Databricks Apps within a workspace.
@@ -1830,6 +2302,541 @@ public final class DatabricksFunctions {
      */
     public static CompletableFuture<GetAppsResult> getAppsPlain(InvokeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getApps:getApps", TypeShape.of(GetAppsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source can be used to get a single Custom Template.
+     * 
+     * ## Example Usage
+     * 
+     * Referring to a Custom Template by name:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAppsSettingsCustomTemplateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myTemplate = DatabricksFunctions.getAppsSettingsCustomTemplate(GetAppsSettingsCustomTemplateArgs.builder()
+     *             .name("my-custom-template")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetAppsSettingsCustomTemplateResult> getAppsSettingsCustomTemplate(GetAppsSettingsCustomTemplateArgs args) {
+        return getAppsSettingsCustomTemplate(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source can be used to get a single Custom Template.
+     * 
+     * ## Example Usage
+     * 
+     * Referring to a Custom Template by name:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAppsSettingsCustomTemplateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myTemplate = DatabricksFunctions.getAppsSettingsCustomTemplate(GetAppsSettingsCustomTemplateArgs.builder()
+     *             .name("my-custom-template")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetAppsSettingsCustomTemplateResult> getAppsSettingsCustomTemplatePlain(GetAppsSettingsCustomTemplatePlainArgs args) {
+        return getAppsSettingsCustomTemplatePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source can be used to get a single Custom Template.
+     * 
+     * ## Example Usage
+     * 
+     * Referring to a Custom Template by name:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAppsSettingsCustomTemplateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myTemplate = DatabricksFunctions.getAppsSettingsCustomTemplate(GetAppsSettingsCustomTemplateArgs.builder()
+     *             .name("my-custom-template")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetAppsSettingsCustomTemplateResult> getAppsSettingsCustomTemplate(GetAppsSettingsCustomTemplateArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getAppsSettingsCustomTemplate:getAppsSettingsCustomTemplate", TypeShape.of(GetAppsSettingsCustomTemplateResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source can be used to get a single Custom Template.
+     * 
+     * ## Example Usage
+     * 
+     * Referring to a Custom Template by name:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAppsSettingsCustomTemplateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myTemplate = DatabricksFunctions.getAppsSettingsCustomTemplate(GetAppsSettingsCustomTemplateArgs.builder()
+     *             .name("my-custom-template")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetAppsSettingsCustomTemplateResult> getAppsSettingsCustomTemplate(GetAppsSettingsCustomTemplateArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getAppsSettingsCustomTemplate:getAppsSettingsCustomTemplate", TypeShape.of(GetAppsSettingsCustomTemplateResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source can be used to get a single Custom Template.
+     * 
+     * ## Example Usage
+     * 
+     * Referring to a Custom Template by name:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAppsSettingsCustomTemplateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myTemplate = DatabricksFunctions.getAppsSettingsCustomTemplate(GetAppsSettingsCustomTemplateArgs.builder()
+     *             .name("my-custom-template")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetAppsSettingsCustomTemplateResult> getAppsSettingsCustomTemplatePlain(GetAppsSettingsCustomTemplatePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getAppsSettingsCustomTemplate:getAppsSettingsCustomTemplate", TypeShape.of(GetAppsSettingsCustomTemplateResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source can be used to fetch the list of Custom Templates within the workspace.
+     * The list can then be accessed via the data object&#39;s `templates` field.
+     * 
+     * ## Example Usage
+     * 
+     * Getting a list of all Custom Templates:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAppsSettingsCustomTemplatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getAppsSettingsCustomTemplates(GetAppsSettingsCustomTemplatesArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("allCustomTemplates", all.templates());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetAppsSettingsCustomTemplatesResult> getAppsSettingsCustomTemplates() {
+        return getAppsSettingsCustomTemplates(GetAppsSettingsCustomTemplatesArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source can be used to fetch the list of Custom Templates within the workspace.
+     * The list can then be accessed via the data object&#39;s `templates` field.
+     * 
+     * ## Example Usage
+     * 
+     * Getting a list of all Custom Templates:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAppsSettingsCustomTemplatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getAppsSettingsCustomTemplates(GetAppsSettingsCustomTemplatesArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("allCustomTemplates", all.templates());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetAppsSettingsCustomTemplatesResult> getAppsSettingsCustomTemplatesPlain() {
+        return getAppsSettingsCustomTemplatesPlain(GetAppsSettingsCustomTemplatesPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source can be used to fetch the list of Custom Templates within the workspace.
+     * The list can then be accessed via the data object&#39;s `templates` field.
+     * 
+     * ## Example Usage
+     * 
+     * Getting a list of all Custom Templates:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAppsSettingsCustomTemplatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getAppsSettingsCustomTemplates(GetAppsSettingsCustomTemplatesArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("allCustomTemplates", all.templates());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetAppsSettingsCustomTemplatesResult> getAppsSettingsCustomTemplates(GetAppsSettingsCustomTemplatesArgs args) {
+        return getAppsSettingsCustomTemplates(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source can be used to fetch the list of Custom Templates within the workspace.
+     * The list can then be accessed via the data object&#39;s `templates` field.
+     * 
+     * ## Example Usage
+     * 
+     * Getting a list of all Custom Templates:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAppsSettingsCustomTemplatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getAppsSettingsCustomTemplates(GetAppsSettingsCustomTemplatesArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("allCustomTemplates", all.templates());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetAppsSettingsCustomTemplatesResult> getAppsSettingsCustomTemplatesPlain(GetAppsSettingsCustomTemplatesPlainArgs args) {
+        return getAppsSettingsCustomTemplatesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source can be used to fetch the list of Custom Templates within the workspace.
+     * The list can then be accessed via the data object&#39;s `templates` field.
+     * 
+     * ## Example Usage
+     * 
+     * Getting a list of all Custom Templates:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAppsSettingsCustomTemplatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getAppsSettingsCustomTemplates(GetAppsSettingsCustomTemplatesArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("allCustomTemplates", all.templates());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetAppsSettingsCustomTemplatesResult> getAppsSettingsCustomTemplates(GetAppsSettingsCustomTemplatesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getAppsSettingsCustomTemplates:getAppsSettingsCustomTemplates", TypeShape.of(GetAppsSettingsCustomTemplatesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source can be used to fetch the list of Custom Templates within the workspace.
+     * The list can then be accessed via the data object&#39;s `templates` field.
+     * 
+     * ## Example Usage
+     * 
+     * Getting a list of all Custom Templates:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAppsSettingsCustomTemplatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getAppsSettingsCustomTemplates(GetAppsSettingsCustomTemplatesArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("allCustomTemplates", all.templates());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetAppsSettingsCustomTemplatesResult> getAppsSettingsCustomTemplates(GetAppsSettingsCustomTemplatesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getAppsSettingsCustomTemplates:getAppsSettingsCustomTemplates", TypeShape.of(GetAppsSettingsCustomTemplatesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source can be used to fetch the list of Custom Templates within the workspace.
+     * The list can then be accessed via the data object&#39;s `templates` field.
+     * 
+     * ## Example Usage
+     * 
+     * Getting a list of all Custom Templates:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAppsSettingsCustomTemplatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getAppsSettingsCustomTemplates(GetAppsSettingsCustomTemplatesArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("allCustomTemplates", all.templates());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetAppsSettingsCustomTemplatesResult> getAppsSettingsCustomTemplatesPlain(GetAppsSettingsCustomTemplatesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getAppsSettingsCustomTemplates:getAppsSettingsCustomTemplates", TypeShape.of(GetAppsSettingsCustomTemplatesResult.class), args, Utilities.withVersion(options));
     }
     /**
      * This data source constructs necessary AWS STS assume role policy for you.
@@ -4045,6 +5052,36 @@ public final class DatabricksFunctions {
      * Referring to a budget policy by id:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetBudgetPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getBudgetPolicy(GetBudgetPolicyArgs.builder()
+     *             .policyId("test")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4061,6 +5098,36 @@ public final class DatabricksFunctions {
      * Referring to a budget policy by id:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetBudgetPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getBudgetPolicy(GetBudgetPolicyArgs.builder()
+     *             .policyId("test")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4077,6 +5144,36 @@ public final class DatabricksFunctions {
      * Referring to a budget policy by id:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetBudgetPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getBudgetPolicy(GetBudgetPolicyArgs.builder()
+     *             .policyId("test")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4093,6 +5190,36 @@ public final class DatabricksFunctions {
      * Referring to a budget policy by id:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetBudgetPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getBudgetPolicy(GetBudgetPolicyArgs.builder()
+     *             .policyId("test")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4109,6 +5236,36 @@ public final class DatabricksFunctions {
      * Referring to a budget policy by id:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetBudgetPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getBudgetPolicy(GetBudgetPolicyArgs.builder()
+     *             .policyId("test")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4125,6 +5282,36 @@ public final class DatabricksFunctions {
      * Referring to a budget policy by id:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetBudgetPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getBudgetPolicy(GetBudgetPolicyArgs.builder()
+     *             .policyId("test")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4141,6 +5328,36 @@ public final class DatabricksFunctions {
      * Referring to a budget policy by id:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetBudgetPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getBudgetPolicy(GetBudgetPolicyArgs.builder()
+     *             .policyId("test")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5073,25 +6290,19 @@ public final class DatabricksFunctions {
     public static CompletableFuture<GetCleanRoomAssetRevisionsCleanRoomAssetResult> getCleanRoomAssetRevisionsCleanRoomAssetPlain(GetCleanRoomAssetRevisionsCleanRoomAssetPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getCleanRoomAssetRevisionsCleanRoomAsset:getCleanRoomAssetRevisionsCleanRoomAsset", TypeShape.of(GetCleanRoomAssetRevisionsCleanRoomAssetResult.class), args, Utilities.withVersion(options));
     }
-    public static Output<GetCleanRoomAssetRevisionsCleanRoomAssetsResult> getCleanRoomAssetRevisionsCleanRoomAssets() {
-        return getCleanRoomAssetRevisionsCleanRoomAssets(InvokeArgs.Empty, InvokeOptions.Empty);
-    }
-    public static CompletableFuture<GetCleanRoomAssetRevisionsCleanRoomAssetsResult> getCleanRoomAssetRevisionsCleanRoomAssetsPlain() {
-        return getCleanRoomAssetRevisionsCleanRoomAssetsPlain(InvokeArgs.Empty, InvokeOptions.Empty);
-    }
-    public static Output<GetCleanRoomAssetRevisionsCleanRoomAssetsResult> getCleanRoomAssetRevisionsCleanRoomAssets(InvokeArgs args) {
+    public static Output<GetCleanRoomAssetRevisionsCleanRoomAssetsResult> getCleanRoomAssetRevisionsCleanRoomAssets(GetCleanRoomAssetRevisionsCleanRoomAssetsArgs args) {
         return getCleanRoomAssetRevisionsCleanRoomAssets(args, InvokeOptions.Empty);
     }
-    public static CompletableFuture<GetCleanRoomAssetRevisionsCleanRoomAssetsResult> getCleanRoomAssetRevisionsCleanRoomAssetsPlain(InvokeArgs args) {
+    public static CompletableFuture<GetCleanRoomAssetRevisionsCleanRoomAssetsResult> getCleanRoomAssetRevisionsCleanRoomAssetsPlain(GetCleanRoomAssetRevisionsCleanRoomAssetsPlainArgs args) {
         return getCleanRoomAssetRevisionsCleanRoomAssetsPlain(args, InvokeOptions.Empty);
     }
-    public static Output<GetCleanRoomAssetRevisionsCleanRoomAssetsResult> getCleanRoomAssetRevisionsCleanRoomAssets(InvokeArgs args, InvokeOptions options) {
+    public static Output<GetCleanRoomAssetRevisionsCleanRoomAssetsResult> getCleanRoomAssetRevisionsCleanRoomAssets(GetCleanRoomAssetRevisionsCleanRoomAssetsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getCleanRoomAssetRevisionsCleanRoomAssets:getCleanRoomAssetRevisionsCleanRoomAssets", TypeShape.of(GetCleanRoomAssetRevisionsCleanRoomAssetsResult.class), args, Utilities.withVersion(options));
     }
-    public static Output<GetCleanRoomAssetRevisionsCleanRoomAssetsResult> getCleanRoomAssetRevisionsCleanRoomAssets(InvokeArgs args, InvokeOutputOptions options) {
+    public static Output<GetCleanRoomAssetRevisionsCleanRoomAssetsResult> getCleanRoomAssetRevisionsCleanRoomAssets(GetCleanRoomAssetRevisionsCleanRoomAssetsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getCleanRoomAssetRevisionsCleanRoomAssets:getCleanRoomAssetRevisionsCleanRoomAssets", TypeShape.of(GetCleanRoomAssetRevisionsCleanRoomAssetsResult.class), args, Utilities.withVersion(options));
     }
-    public static CompletableFuture<GetCleanRoomAssetRevisionsCleanRoomAssetsResult> getCleanRoomAssetRevisionsCleanRoomAssetsPlain(InvokeArgs args, InvokeOptions options) {
+    public static CompletableFuture<GetCleanRoomAssetRevisionsCleanRoomAssetsResult> getCleanRoomAssetRevisionsCleanRoomAssetsPlain(GetCleanRoomAssetRevisionsCleanRoomAssetsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getCleanRoomAssetRevisionsCleanRoomAssets:getCleanRoomAssetRevisionsCleanRoomAssets", TypeShape.of(GetCleanRoomAssetRevisionsCleanRoomAssetsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -5132,89 +6343,7 @@ public final class DatabricksFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
-    public static Output<GetCleanRoomAssetsResult> getCleanRoomAssets() {
-        return getCleanRoomAssets(InvokeArgs.Empty, InvokeOptions.Empty);
-    }
-    /**
-     * This data source can be used to fetch the list of clean room assets.
-     * 
-     * ## Example Usage
-     * 
-     * # Example: Clean Room Assets Datasource
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.databricks.cleanRoomsAsset;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         var all = new CleanRoomsAsset("all");
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
-     */
-    public static CompletableFuture<GetCleanRoomAssetsResult> getCleanRoomAssetsPlain() {
-        return getCleanRoomAssetsPlain(InvokeArgs.Empty, InvokeOptions.Empty);
-    }
-    /**
-     * This data source can be used to fetch the list of clean room assets.
-     * 
-     * ## Example Usage
-     * 
-     * # Example: Clean Room Assets Datasource
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.databricks.cleanRoomsAsset;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         var all = new CleanRoomsAsset("all");
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
-     */
-    public static Output<GetCleanRoomAssetsResult> getCleanRoomAssets(InvokeArgs args) {
+    public static Output<GetCleanRoomAssetsResult> getCleanRoomAssets(GetCleanRoomAssetsArgs args) {
         return getCleanRoomAssets(args, InvokeOptions.Empty);
     }
     /**
@@ -5255,7 +6384,7 @@ public final class DatabricksFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
-    public static CompletableFuture<GetCleanRoomAssetsResult> getCleanRoomAssetsPlain(InvokeArgs args) {
+    public static CompletableFuture<GetCleanRoomAssetsResult> getCleanRoomAssetsPlain(GetCleanRoomAssetsPlainArgs args) {
         return getCleanRoomAssetsPlain(args, InvokeOptions.Empty);
     }
     /**
@@ -5296,7 +6425,7 @@ public final class DatabricksFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
-    public static Output<GetCleanRoomAssetsResult> getCleanRoomAssets(InvokeArgs args, InvokeOptions options) {
+    public static Output<GetCleanRoomAssetsResult> getCleanRoomAssets(GetCleanRoomAssetsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getCleanRoomAssets:getCleanRoomAssets", TypeShape.of(GetCleanRoomAssetsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -5337,7 +6466,7 @@ public final class DatabricksFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
-    public static Output<GetCleanRoomAssetsResult> getCleanRoomAssets(InvokeArgs args, InvokeOutputOptions options) {
+    public static Output<GetCleanRoomAssetsResult> getCleanRoomAssets(GetCleanRoomAssetsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getCleanRoomAssets:getCleanRoomAssets", TypeShape.of(GetCleanRoomAssetsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -5378,7 +6507,7 @@ public final class DatabricksFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
-    public static CompletableFuture<GetCleanRoomAssetsResult> getCleanRoomAssetsPlain(InvokeArgs args, InvokeOptions options) {
+    public static CompletableFuture<GetCleanRoomAssetsResult> getCleanRoomAssetsPlain(GetCleanRoomAssetsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getCleanRoomAssets:getCleanRoomAssets", TypeShape.of(GetCleanRoomAssetsResult.class), args, Utilities.withVersion(options));
     }
     public static Output<GetCleanRoomAutoApprovalRuleResult> getCleanRoomAutoApprovalRule() {
@@ -5403,24 +6532,24 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getCleanRoomAutoApprovalRule:getCleanRoomAutoApprovalRule", TypeShape.of(GetCleanRoomAutoApprovalRuleResult.class), args, Utilities.withVersion(options));
     }
     public static Output<GetCleanRoomAutoApprovalRulesResult> getCleanRoomAutoApprovalRules() {
-        return getCleanRoomAutoApprovalRules(InvokeArgs.Empty, InvokeOptions.Empty);
+        return getCleanRoomAutoApprovalRules(GetCleanRoomAutoApprovalRulesArgs.Empty, InvokeOptions.Empty);
     }
     public static CompletableFuture<GetCleanRoomAutoApprovalRulesResult> getCleanRoomAutoApprovalRulesPlain() {
-        return getCleanRoomAutoApprovalRulesPlain(InvokeArgs.Empty, InvokeOptions.Empty);
+        return getCleanRoomAutoApprovalRulesPlain(GetCleanRoomAutoApprovalRulesPlainArgs.Empty, InvokeOptions.Empty);
     }
-    public static Output<GetCleanRoomAutoApprovalRulesResult> getCleanRoomAutoApprovalRules(InvokeArgs args) {
+    public static Output<GetCleanRoomAutoApprovalRulesResult> getCleanRoomAutoApprovalRules(GetCleanRoomAutoApprovalRulesArgs args) {
         return getCleanRoomAutoApprovalRules(args, InvokeOptions.Empty);
     }
-    public static CompletableFuture<GetCleanRoomAutoApprovalRulesResult> getCleanRoomAutoApprovalRulesPlain(InvokeArgs args) {
+    public static CompletableFuture<GetCleanRoomAutoApprovalRulesResult> getCleanRoomAutoApprovalRulesPlain(GetCleanRoomAutoApprovalRulesPlainArgs args) {
         return getCleanRoomAutoApprovalRulesPlain(args, InvokeOptions.Empty);
     }
-    public static Output<GetCleanRoomAutoApprovalRulesResult> getCleanRoomAutoApprovalRules(InvokeArgs args, InvokeOptions options) {
+    public static Output<GetCleanRoomAutoApprovalRulesResult> getCleanRoomAutoApprovalRules(GetCleanRoomAutoApprovalRulesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getCleanRoomAutoApprovalRules:getCleanRoomAutoApprovalRules", TypeShape.of(GetCleanRoomAutoApprovalRulesResult.class), args, Utilities.withVersion(options));
     }
-    public static Output<GetCleanRoomAutoApprovalRulesResult> getCleanRoomAutoApprovalRules(InvokeArgs args, InvokeOutputOptions options) {
+    public static Output<GetCleanRoomAutoApprovalRulesResult> getCleanRoomAutoApprovalRules(GetCleanRoomAutoApprovalRulesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getCleanRoomAutoApprovalRules:getCleanRoomAutoApprovalRules", TypeShape.of(GetCleanRoomAutoApprovalRulesResult.class), args, Utilities.withVersion(options));
     }
-    public static CompletableFuture<GetCleanRoomAutoApprovalRulesResult> getCleanRoomAutoApprovalRulesPlain(InvokeArgs args, InvokeOptions options) {
+    public static CompletableFuture<GetCleanRoomAutoApprovalRulesResult> getCleanRoomAutoApprovalRulesPlain(GetCleanRoomAutoApprovalRulesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getCleanRoomAutoApprovalRules:getCleanRoomAutoApprovalRules", TypeShape.of(GetCleanRoomAutoApprovalRulesResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -5772,7 +6901,7 @@ public final class DatabricksFunctions {
      * 
      */
     public static Output<GetCleanRoomsCleanRoomsResult> getCleanRoomsCleanRooms() {
-        return getCleanRoomsCleanRooms(InvokeArgs.Empty, InvokeOptions.Empty);
+        return getCleanRoomsCleanRooms(GetCleanRoomsCleanRoomsArgs.Empty, InvokeOptions.Empty);
     }
     /**
      * This data source can be used to fetch the list of clean rooms.
@@ -5815,7 +6944,7 @@ public final class DatabricksFunctions {
      * 
      */
     public static CompletableFuture<GetCleanRoomsCleanRoomsResult> getCleanRoomsCleanRoomsPlain() {
-        return getCleanRoomsCleanRoomsPlain(InvokeArgs.Empty, InvokeOptions.Empty);
+        return getCleanRoomsCleanRoomsPlain(GetCleanRoomsCleanRoomsPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
      * This data source can be used to fetch the list of clean rooms.
@@ -5857,7 +6986,7 @@ public final class DatabricksFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
-    public static Output<GetCleanRoomsCleanRoomsResult> getCleanRoomsCleanRooms(InvokeArgs args) {
+    public static Output<GetCleanRoomsCleanRoomsResult> getCleanRoomsCleanRooms(GetCleanRoomsCleanRoomsArgs args) {
         return getCleanRoomsCleanRooms(args, InvokeOptions.Empty);
     }
     /**
@@ -5900,7 +7029,7 @@ public final class DatabricksFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
-    public static CompletableFuture<GetCleanRoomsCleanRoomsResult> getCleanRoomsCleanRoomsPlain(InvokeArgs args) {
+    public static CompletableFuture<GetCleanRoomsCleanRoomsResult> getCleanRoomsCleanRoomsPlain(GetCleanRoomsCleanRoomsPlainArgs args) {
         return getCleanRoomsCleanRoomsPlain(args, InvokeOptions.Empty);
     }
     /**
@@ -5943,7 +7072,7 @@ public final class DatabricksFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
-    public static Output<GetCleanRoomsCleanRoomsResult> getCleanRoomsCleanRooms(InvokeArgs args, InvokeOptions options) {
+    public static Output<GetCleanRoomsCleanRoomsResult> getCleanRoomsCleanRooms(GetCleanRoomsCleanRoomsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getCleanRoomsCleanRooms:getCleanRoomsCleanRooms", TypeShape.of(GetCleanRoomsCleanRoomsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -5986,7 +7115,7 @@ public final class DatabricksFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
-    public static Output<GetCleanRoomsCleanRoomsResult> getCleanRoomsCleanRooms(InvokeArgs args, InvokeOutputOptions options) {
+    public static Output<GetCleanRoomsCleanRoomsResult> getCleanRoomsCleanRooms(GetCleanRoomsCleanRoomsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getCleanRoomsCleanRooms:getCleanRoomsCleanRooms", TypeShape.of(GetCleanRoomsCleanRoomsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -6029,7 +7158,7 @@ public final class DatabricksFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
-    public static CompletableFuture<GetCleanRoomsCleanRoomsResult> getCleanRoomsCleanRoomsPlain(InvokeArgs args, InvokeOptions options) {
+    public static CompletableFuture<GetCleanRoomsCleanRoomsResult> getCleanRoomsCleanRoomsPlain(GetCleanRoomsCleanRoomsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getCleanRoomsCleanRooms:getCleanRoomsCleanRooms", TypeShape.of(GetCleanRoomsCleanRoomsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -8570,24 +9699,24 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getDatabaseDatabaseCatalog:getDatabaseDatabaseCatalog", TypeShape.of(GetDatabaseDatabaseCatalogResult.class), args, Utilities.withVersion(options));
     }
     public static Output<GetDatabaseDatabaseCatalogsResult> getDatabaseDatabaseCatalogs() {
-        return getDatabaseDatabaseCatalogs(InvokeArgs.Empty, InvokeOptions.Empty);
+        return getDatabaseDatabaseCatalogs(GetDatabaseDatabaseCatalogsArgs.Empty, InvokeOptions.Empty);
     }
     public static CompletableFuture<GetDatabaseDatabaseCatalogsResult> getDatabaseDatabaseCatalogsPlain() {
-        return getDatabaseDatabaseCatalogsPlain(InvokeArgs.Empty, InvokeOptions.Empty);
+        return getDatabaseDatabaseCatalogsPlain(GetDatabaseDatabaseCatalogsPlainArgs.Empty, InvokeOptions.Empty);
     }
-    public static Output<GetDatabaseDatabaseCatalogsResult> getDatabaseDatabaseCatalogs(InvokeArgs args) {
+    public static Output<GetDatabaseDatabaseCatalogsResult> getDatabaseDatabaseCatalogs(GetDatabaseDatabaseCatalogsArgs args) {
         return getDatabaseDatabaseCatalogs(args, InvokeOptions.Empty);
     }
-    public static CompletableFuture<GetDatabaseDatabaseCatalogsResult> getDatabaseDatabaseCatalogsPlain(InvokeArgs args) {
+    public static CompletableFuture<GetDatabaseDatabaseCatalogsResult> getDatabaseDatabaseCatalogsPlain(GetDatabaseDatabaseCatalogsPlainArgs args) {
         return getDatabaseDatabaseCatalogsPlain(args, InvokeOptions.Empty);
     }
-    public static Output<GetDatabaseDatabaseCatalogsResult> getDatabaseDatabaseCatalogs(InvokeArgs args, InvokeOptions options) {
+    public static Output<GetDatabaseDatabaseCatalogsResult> getDatabaseDatabaseCatalogs(GetDatabaseDatabaseCatalogsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getDatabaseDatabaseCatalogs:getDatabaseDatabaseCatalogs", TypeShape.of(GetDatabaseDatabaseCatalogsResult.class), args, Utilities.withVersion(options));
     }
-    public static Output<GetDatabaseDatabaseCatalogsResult> getDatabaseDatabaseCatalogs(InvokeArgs args, InvokeOutputOptions options) {
+    public static Output<GetDatabaseDatabaseCatalogsResult> getDatabaseDatabaseCatalogs(GetDatabaseDatabaseCatalogsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getDatabaseDatabaseCatalogs:getDatabaseDatabaseCatalogs", TypeShape.of(GetDatabaseDatabaseCatalogsResult.class), args, Utilities.withVersion(options));
     }
-    public static CompletableFuture<GetDatabaseDatabaseCatalogsResult> getDatabaseDatabaseCatalogsPlain(InvokeArgs args, InvokeOptions options) {
+    public static CompletableFuture<GetDatabaseDatabaseCatalogsResult> getDatabaseDatabaseCatalogsPlain(GetDatabaseDatabaseCatalogsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getDatabaseDatabaseCatalogs:getDatabaseDatabaseCatalogs", TypeShape.of(GetDatabaseDatabaseCatalogsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -8827,6 +9956,7 @@ public final class DatabricksFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetDatabaseInstancesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -8840,7 +9970,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getDatabaseInstances(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     *         final var all = DatabricksFunctions.getDatabaseInstances(GetDatabaseInstancesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("allDatabaseInstances", all.databaseInstances());
      *     }
@@ -8851,7 +9982,7 @@ public final class DatabricksFunctions {
      * 
      */
     public static Output<GetDatabaseInstancesResult> getDatabaseInstances() {
-        return getDatabaseInstances(InvokeArgs.Empty, InvokeOptions.Empty);
+        return getDatabaseInstances(GetDatabaseInstancesArgs.Empty, InvokeOptions.Empty);
     }
     /**
      * This data source can be used to fetch the list of Database Instances within the workspace.
@@ -8870,6 +10001,7 @@ public final class DatabricksFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetDatabaseInstancesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -8883,7 +10015,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getDatabaseInstances(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     *         final var all = DatabricksFunctions.getDatabaseInstances(GetDatabaseInstancesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("allDatabaseInstances", all.databaseInstances());
      *     }
@@ -8894,7 +10027,7 @@ public final class DatabricksFunctions {
      * 
      */
     public static CompletableFuture<GetDatabaseInstancesResult> getDatabaseInstancesPlain() {
-        return getDatabaseInstancesPlain(InvokeArgs.Empty, InvokeOptions.Empty);
+        return getDatabaseInstancesPlain(GetDatabaseInstancesPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
      * This data source can be used to fetch the list of Database Instances within the workspace.
@@ -8913,6 +10046,7 @@ public final class DatabricksFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetDatabaseInstancesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -8926,7 +10060,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getDatabaseInstances(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     *         final var all = DatabricksFunctions.getDatabaseInstances(GetDatabaseInstancesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("allDatabaseInstances", all.databaseInstances());
      *     }
@@ -8936,7 +10071,7 @@ public final class DatabricksFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
-    public static Output<GetDatabaseInstancesResult> getDatabaseInstances(InvokeArgs args) {
+    public static Output<GetDatabaseInstancesResult> getDatabaseInstances(GetDatabaseInstancesArgs args) {
         return getDatabaseInstances(args, InvokeOptions.Empty);
     }
     /**
@@ -8956,6 +10091,7 @@ public final class DatabricksFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetDatabaseInstancesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -8969,7 +10105,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getDatabaseInstances(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     *         final var all = DatabricksFunctions.getDatabaseInstances(GetDatabaseInstancesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("allDatabaseInstances", all.databaseInstances());
      *     }
@@ -8979,7 +10116,7 @@ public final class DatabricksFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
-    public static CompletableFuture<GetDatabaseInstancesResult> getDatabaseInstancesPlain(InvokeArgs args) {
+    public static CompletableFuture<GetDatabaseInstancesResult> getDatabaseInstancesPlain(GetDatabaseInstancesPlainArgs args) {
         return getDatabaseInstancesPlain(args, InvokeOptions.Empty);
     }
     /**
@@ -8999,6 +10136,7 @@ public final class DatabricksFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetDatabaseInstancesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -9012,7 +10150,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getDatabaseInstances(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     *         final var all = DatabricksFunctions.getDatabaseInstances(GetDatabaseInstancesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("allDatabaseInstances", all.databaseInstances());
      *     }
@@ -9022,7 +10161,7 @@ public final class DatabricksFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
-    public static Output<GetDatabaseInstancesResult> getDatabaseInstances(InvokeArgs args, InvokeOptions options) {
+    public static Output<GetDatabaseInstancesResult> getDatabaseInstances(GetDatabaseInstancesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getDatabaseInstances:getDatabaseInstances", TypeShape.of(GetDatabaseInstancesResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -9042,6 +10181,7 @@ public final class DatabricksFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetDatabaseInstancesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -9055,7 +10195,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getDatabaseInstances(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     *         final var all = DatabricksFunctions.getDatabaseInstances(GetDatabaseInstancesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("allDatabaseInstances", all.databaseInstances());
      *     }
@@ -9065,7 +10206,7 @@ public final class DatabricksFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
-    public static Output<GetDatabaseInstancesResult> getDatabaseInstances(InvokeArgs args, InvokeOutputOptions options) {
+    public static Output<GetDatabaseInstancesResult> getDatabaseInstances(GetDatabaseInstancesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getDatabaseInstances:getDatabaseInstances", TypeShape.of(GetDatabaseInstancesResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -9085,6 +10226,7 @@ public final class DatabricksFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetDatabaseInstancesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -9098,7 +10240,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getDatabaseInstances(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     *         final var all = DatabricksFunctions.getDatabaseInstances(GetDatabaseInstancesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("allDatabaseInstances", all.databaseInstances());
      *     }
@@ -9108,7 +10251,7 @@ public final class DatabricksFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
-    public static CompletableFuture<GetDatabaseInstancesResult> getDatabaseInstancesPlain(InvokeArgs args, InvokeOptions options) {
+    public static CompletableFuture<GetDatabaseInstancesResult> getDatabaseInstancesPlain(GetDatabaseInstancesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getDatabaseInstances:getDatabaseInstances", TypeShape.of(GetDatabaseInstancesResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -9332,24 +10475,24 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getDatabaseSyncedDatabaseTable:getDatabaseSyncedDatabaseTable", TypeShape.of(GetDatabaseSyncedDatabaseTableResult.class), args, Utilities.withVersion(options));
     }
     public static Output<GetDatabaseSyncedDatabaseTablesResult> getDatabaseSyncedDatabaseTables() {
-        return getDatabaseSyncedDatabaseTables(InvokeArgs.Empty, InvokeOptions.Empty);
+        return getDatabaseSyncedDatabaseTables(GetDatabaseSyncedDatabaseTablesArgs.Empty, InvokeOptions.Empty);
     }
     public static CompletableFuture<GetDatabaseSyncedDatabaseTablesResult> getDatabaseSyncedDatabaseTablesPlain() {
-        return getDatabaseSyncedDatabaseTablesPlain(InvokeArgs.Empty, InvokeOptions.Empty);
+        return getDatabaseSyncedDatabaseTablesPlain(GetDatabaseSyncedDatabaseTablesPlainArgs.Empty, InvokeOptions.Empty);
     }
-    public static Output<GetDatabaseSyncedDatabaseTablesResult> getDatabaseSyncedDatabaseTables(InvokeArgs args) {
+    public static Output<GetDatabaseSyncedDatabaseTablesResult> getDatabaseSyncedDatabaseTables(GetDatabaseSyncedDatabaseTablesArgs args) {
         return getDatabaseSyncedDatabaseTables(args, InvokeOptions.Empty);
     }
-    public static CompletableFuture<GetDatabaseSyncedDatabaseTablesResult> getDatabaseSyncedDatabaseTablesPlain(InvokeArgs args) {
+    public static CompletableFuture<GetDatabaseSyncedDatabaseTablesResult> getDatabaseSyncedDatabaseTablesPlain(GetDatabaseSyncedDatabaseTablesPlainArgs args) {
         return getDatabaseSyncedDatabaseTablesPlain(args, InvokeOptions.Empty);
     }
-    public static Output<GetDatabaseSyncedDatabaseTablesResult> getDatabaseSyncedDatabaseTables(InvokeArgs args, InvokeOptions options) {
+    public static Output<GetDatabaseSyncedDatabaseTablesResult> getDatabaseSyncedDatabaseTables(GetDatabaseSyncedDatabaseTablesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getDatabaseSyncedDatabaseTables:getDatabaseSyncedDatabaseTables", TypeShape.of(GetDatabaseSyncedDatabaseTablesResult.class), args, Utilities.withVersion(options));
     }
-    public static Output<GetDatabaseSyncedDatabaseTablesResult> getDatabaseSyncedDatabaseTables(InvokeArgs args, InvokeOutputOptions options) {
+    public static Output<GetDatabaseSyncedDatabaseTablesResult> getDatabaseSyncedDatabaseTables(GetDatabaseSyncedDatabaseTablesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getDatabaseSyncedDatabaseTables:getDatabaseSyncedDatabaseTables", TypeShape.of(GetDatabaseSyncedDatabaseTablesResult.class), args, Utilities.withVersion(options));
     }
-    public static CompletableFuture<GetDatabaseSyncedDatabaseTablesResult> getDatabaseSyncedDatabaseTablesPlain(InvokeArgs args, InvokeOptions options) {
+    public static CompletableFuture<GetDatabaseSyncedDatabaseTablesResult> getDatabaseSyncedDatabaseTablesPlain(GetDatabaseSyncedDatabaseTablesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getDatabaseSyncedDatabaseTables:getDatabaseSyncedDatabaseTables", TypeShape.of(GetDatabaseSyncedDatabaseTablesResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -10121,6 +11264,36 @@ public final class DatabricksFunctions {
      */
     public static CompletableFuture<GetDirectoryResult> getDirectoryPlain(GetDirectoryPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getDirectory:getDirectory", TypeShape.of(GetDirectoryResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetEntityTagAssignmentResult> getEntityTagAssignment(GetEntityTagAssignmentArgs args) {
+        return getEntityTagAssignment(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetEntityTagAssignmentResult> getEntityTagAssignmentPlain(GetEntityTagAssignmentPlainArgs args) {
+        return getEntityTagAssignmentPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetEntityTagAssignmentResult> getEntityTagAssignment(GetEntityTagAssignmentArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getEntityTagAssignment:getEntityTagAssignment", TypeShape.of(GetEntityTagAssignmentResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetEntityTagAssignmentResult> getEntityTagAssignment(GetEntityTagAssignmentArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getEntityTagAssignment:getEntityTagAssignment", TypeShape.of(GetEntityTagAssignmentResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetEntityTagAssignmentResult> getEntityTagAssignmentPlain(GetEntityTagAssignmentPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getEntityTagAssignment:getEntityTagAssignment", TypeShape.of(GetEntityTagAssignmentResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetEntityTagAssignmentsResult> getEntityTagAssignments(GetEntityTagAssignmentsArgs args) {
+        return getEntityTagAssignments(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetEntityTagAssignmentsResult> getEntityTagAssignmentsPlain(GetEntityTagAssignmentsPlainArgs args) {
+        return getEntityTagAssignmentsPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetEntityTagAssignmentsResult> getEntityTagAssignments(GetEntityTagAssignmentsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getEntityTagAssignments:getEntityTagAssignments", TypeShape.of(GetEntityTagAssignmentsResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetEntityTagAssignmentsResult> getEntityTagAssignments(GetEntityTagAssignmentsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getEntityTagAssignments:getEntityTagAssignments", TypeShape.of(GetEntityTagAssignmentsResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetEntityTagAssignmentsResult> getEntityTagAssignmentsPlain(GetEntityTagAssignmentsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getEntityTagAssignments:getEntityTagAssignments", TypeShape.of(GetEntityTagAssignmentsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Retrieves details about a databricks.ExternalLocation that were created by Pulumi or manually.
@@ -10998,26 +12171,134 @@ public final class DatabricksFunctions {
      * 
      * &gt; **Note** This resource can only be used with an workspace-level provider!
      * 
+     * ## Example Usage
+     * 
+     * Getting a list of all external metadata objects:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetExternalMetadatasArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getExternalMetadatas(GetExternalMetadatasArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetExternalMetadatasResult> getExternalMetadatas() {
-        return getExternalMetadatas(InvokeArgs.Empty, InvokeOptions.Empty);
+        return getExternalMetadatas(GetExternalMetadatasArgs.Empty, InvokeOptions.Empty);
     }
     /**
      * This data source can be used to fetch the list of external metadata objects.
      * 
      * &gt; **Note** This resource can only be used with an workspace-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Getting a list of all external metadata objects:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetExternalMetadatasArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getExternalMetadatas(GetExternalMetadatasArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetExternalMetadatasResult> getExternalMetadatasPlain() {
-        return getExternalMetadatasPlain(InvokeArgs.Empty, InvokeOptions.Empty);
+        return getExternalMetadatasPlain(GetExternalMetadatasPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
      * This data source can be used to fetch the list of external metadata objects.
      * 
      * &gt; **Note** This resource can only be used with an workspace-level provider!
      * 
+     * ## Example Usage
+     * 
+     * Getting a list of all external metadata objects:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetExternalMetadatasArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getExternalMetadatas(GetExternalMetadatasArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
-    public static Output<GetExternalMetadatasResult> getExternalMetadatas(InvokeArgs args) {
+    public static Output<GetExternalMetadatasResult> getExternalMetadatas(GetExternalMetadatasArgs args) {
         return getExternalMetadatas(args, InvokeOptions.Empty);
     }
     /**
@@ -11025,8 +12306,44 @@ public final class DatabricksFunctions {
      * 
      * &gt; **Note** This resource can only be used with an workspace-level provider!
      * 
+     * ## Example Usage
+     * 
+     * Getting a list of all external metadata objects:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetExternalMetadatasArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getExternalMetadatas(GetExternalMetadatasArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
-    public static CompletableFuture<GetExternalMetadatasResult> getExternalMetadatasPlain(InvokeArgs args) {
+    public static CompletableFuture<GetExternalMetadatasResult> getExternalMetadatasPlain(GetExternalMetadatasPlainArgs args) {
         return getExternalMetadatasPlain(args, InvokeOptions.Empty);
     }
     /**
@@ -11034,8 +12351,44 @@ public final class DatabricksFunctions {
      * 
      * &gt; **Note** This resource can only be used with an workspace-level provider!
      * 
+     * ## Example Usage
+     * 
+     * Getting a list of all external metadata objects:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetExternalMetadatasArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getExternalMetadatas(GetExternalMetadatasArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
-    public static Output<GetExternalMetadatasResult> getExternalMetadatas(InvokeArgs args, InvokeOptions options) {
+    public static Output<GetExternalMetadatasResult> getExternalMetadatas(GetExternalMetadatasArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getExternalMetadatas:getExternalMetadatas", TypeShape.of(GetExternalMetadatasResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -11043,8 +12396,44 @@ public final class DatabricksFunctions {
      * 
      * &gt; **Note** This resource can only be used with an workspace-level provider!
      * 
+     * ## Example Usage
+     * 
+     * Getting a list of all external metadata objects:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetExternalMetadatasArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getExternalMetadatas(GetExternalMetadatasArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
-    public static Output<GetExternalMetadatasResult> getExternalMetadatas(InvokeArgs args, InvokeOutputOptions options) {
+    public static Output<GetExternalMetadatasResult> getExternalMetadatas(GetExternalMetadatasArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getExternalMetadatas:getExternalMetadatas", TypeShape.of(GetExternalMetadatasResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -11052,8 +12441,44 @@ public final class DatabricksFunctions {
      * 
      * &gt; **Note** This resource can only be used with an workspace-level provider!
      * 
+     * ## Example Usage
+     * 
+     * Getting a list of all external metadata objects:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetExternalMetadatasArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getExternalMetadatas(GetExternalMetadatasArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
-    public static CompletableFuture<GetExternalMetadatasResult> getExternalMetadatasPlain(InvokeArgs args, InvokeOptions options) {
+    public static CompletableFuture<GetExternalMetadatasResult> getExternalMetadatasPlain(GetExternalMetadatasPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getExternalMetadatas:getExternalMetadatas", TypeShape.of(GetExternalMetadatasResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -13814,24 +15239,24 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getMaterializedFeaturesFeatureTag:getMaterializedFeaturesFeatureTag", TypeShape.of(GetMaterializedFeaturesFeatureTagResult.class), args, Utilities.withVersion(options));
     }
     public static Output<GetMaterializedFeaturesFeatureTagsResult> getMaterializedFeaturesFeatureTags() {
-        return getMaterializedFeaturesFeatureTags(InvokeArgs.Empty, InvokeOptions.Empty);
+        return getMaterializedFeaturesFeatureTags(GetMaterializedFeaturesFeatureTagsArgs.Empty, InvokeOptions.Empty);
     }
     public static CompletableFuture<GetMaterializedFeaturesFeatureTagsResult> getMaterializedFeaturesFeatureTagsPlain() {
-        return getMaterializedFeaturesFeatureTagsPlain(InvokeArgs.Empty, InvokeOptions.Empty);
+        return getMaterializedFeaturesFeatureTagsPlain(GetMaterializedFeaturesFeatureTagsPlainArgs.Empty, InvokeOptions.Empty);
     }
-    public static Output<GetMaterializedFeaturesFeatureTagsResult> getMaterializedFeaturesFeatureTags(InvokeArgs args) {
+    public static Output<GetMaterializedFeaturesFeatureTagsResult> getMaterializedFeaturesFeatureTags(GetMaterializedFeaturesFeatureTagsArgs args) {
         return getMaterializedFeaturesFeatureTags(args, InvokeOptions.Empty);
     }
-    public static CompletableFuture<GetMaterializedFeaturesFeatureTagsResult> getMaterializedFeaturesFeatureTagsPlain(InvokeArgs args) {
+    public static CompletableFuture<GetMaterializedFeaturesFeatureTagsResult> getMaterializedFeaturesFeatureTagsPlain(GetMaterializedFeaturesFeatureTagsPlainArgs args) {
         return getMaterializedFeaturesFeatureTagsPlain(args, InvokeOptions.Empty);
     }
-    public static Output<GetMaterializedFeaturesFeatureTagsResult> getMaterializedFeaturesFeatureTags(InvokeArgs args, InvokeOptions options) {
+    public static Output<GetMaterializedFeaturesFeatureTagsResult> getMaterializedFeaturesFeatureTags(GetMaterializedFeaturesFeatureTagsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getMaterializedFeaturesFeatureTags:getMaterializedFeaturesFeatureTags", TypeShape.of(GetMaterializedFeaturesFeatureTagsResult.class), args, Utilities.withVersion(options));
     }
-    public static Output<GetMaterializedFeaturesFeatureTagsResult> getMaterializedFeaturesFeatureTags(InvokeArgs args, InvokeOutputOptions options) {
+    public static Output<GetMaterializedFeaturesFeatureTagsResult> getMaterializedFeaturesFeatureTags(GetMaterializedFeaturesFeatureTagsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getMaterializedFeaturesFeatureTags:getMaterializedFeaturesFeatureTags", TypeShape.of(GetMaterializedFeaturesFeatureTagsResult.class), args, Utilities.withVersion(options));
     }
-    public static CompletableFuture<GetMaterializedFeaturesFeatureTagsResult> getMaterializedFeaturesFeatureTagsPlain(InvokeArgs args, InvokeOptions options) {
+    public static CompletableFuture<GetMaterializedFeaturesFeatureTagsResult> getMaterializedFeaturesFeatureTagsPlain(GetMaterializedFeaturesFeatureTagsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getMaterializedFeaturesFeatureTags:getMaterializedFeaturesFeatureTags", TypeShape.of(GetMaterializedFeaturesFeatureTagsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -18828,24 +20253,24 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getOnlineStore:getOnlineStore", TypeShape.of(GetOnlineStoreResult.class), args, Utilities.withVersion(options));
     }
     public static Output<GetOnlineStoresResult> getOnlineStores() {
-        return getOnlineStores(InvokeArgs.Empty, InvokeOptions.Empty);
+        return getOnlineStores(GetOnlineStoresArgs.Empty, InvokeOptions.Empty);
     }
     public static CompletableFuture<GetOnlineStoresResult> getOnlineStoresPlain() {
-        return getOnlineStoresPlain(InvokeArgs.Empty, InvokeOptions.Empty);
+        return getOnlineStoresPlain(GetOnlineStoresPlainArgs.Empty, InvokeOptions.Empty);
     }
-    public static Output<GetOnlineStoresResult> getOnlineStores(InvokeArgs args) {
+    public static Output<GetOnlineStoresResult> getOnlineStores(GetOnlineStoresArgs args) {
         return getOnlineStores(args, InvokeOptions.Empty);
     }
-    public static CompletableFuture<GetOnlineStoresResult> getOnlineStoresPlain(InvokeArgs args) {
+    public static CompletableFuture<GetOnlineStoresResult> getOnlineStoresPlain(GetOnlineStoresPlainArgs args) {
         return getOnlineStoresPlain(args, InvokeOptions.Empty);
     }
-    public static Output<GetOnlineStoresResult> getOnlineStores(InvokeArgs args, InvokeOptions options) {
+    public static Output<GetOnlineStoresResult> getOnlineStores(GetOnlineStoresArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getOnlineStores:getOnlineStores", TypeShape.of(GetOnlineStoresResult.class), args, Utilities.withVersion(options));
     }
-    public static Output<GetOnlineStoresResult> getOnlineStores(InvokeArgs args, InvokeOutputOptions options) {
+    public static Output<GetOnlineStoresResult> getOnlineStores(GetOnlineStoresArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getOnlineStores:getOnlineStores", TypeShape.of(GetOnlineStoresResult.class), args, Utilities.withVersion(options));
     }
-    public static CompletableFuture<GetOnlineStoresResult> getOnlineStoresPlain(InvokeArgs args, InvokeOptions options) {
+    public static CompletableFuture<GetOnlineStoresResult> getOnlineStoresPlain(GetOnlineStoresPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getOnlineStores:getOnlineStores", TypeShape.of(GetOnlineStoresResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -19759,25 +21184,19 @@ public final class DatabricksFunctions {
     public static CompletableFuture<GetPolicyInfoResult> getPolicyInfoPlain(GetPolicyInfoPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getPolicyInfo:getPolicyInfo", TypeShape.of(GetPolicyInfoResult.class), args, Utilities.withVersion(options));
     }
-    public static Output<GetPolicyInfosResult> getPolicyInfos() {
-        return getPolicyInfos(InvokeArgs.Empty, InvokeOptions.Empty);
-    }
-    public static CompletableFuture<GetPolicyInfosResult> getPolicyInfosPlain() {
-        return getPolicyInfosPlain(InvokeArgs.Empty, InvokeOptions.Empty);
-    }
-    public static Output<GetPolicyInfosResult> getPolicyInfos(InvokeArgs args) {
+    public static Output<GetPolicyInfosResult> getPolicyInfos(GetPolicyInfosArgs args) {
         return getPolicyInfos(args, InvokeOptions.Empty);
     }
-    public static CompletableFuture<GetPolicyInfosResult> getPolicyInfosPlain(InvokeArgs args) {
+    public static CompletableFuture<GetPolicyInfosResult> getPolicyInfosPlain(GetPolicyInfosPlainArgs args) {
         return getPolicyInfosPlain(args, InvokeOptions.Empty);
     }
-    public static Output<GetPolicyInfosResult> getPolicyInfos(InvokeArgs args, InvokeOptions options) {
+    public static Output<GetPolicyInfosResult> getPolicyInfos(GetPolicyInfosArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getPolicyInfos:getPolicyInfos", TypeShape.of(GetPolicyInfosResult.class), args, Utilities.withVersion(options));
     }
-    public static Output<GetPolicyInfosResult> getPolicyInfos(InvokeArgs args, InvokeOutputOptions options) {
+    public static Output<GetPolicyInfosResult> getPolicyInfos(GetPolicyInfosArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getPolicyInfos:getPolicyInfos", TypeShape.of(GetPolicyInfosResult.class), args, Utilities.withVersion(options));
     }
-    public static CompletableFuture<GetPolicyInfosResult> getPolicyInfosPlain(InvokeArgs args, InvokeOptions options) {
+    public static CompletableFuture<GetPolicyInfosResult> getPolicyInfosPlain(GetPolicyInfosPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getPolicyInfos:getPolicyInfos", TypeShape.of(GetPolicyInfosResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -20058,6 +21477,7 @@ public final class DatabricksFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetQualityMonitorsV2Args;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -20071,7 +21491,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getQualityMonitorsV2(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     *         final var all = DatabricksFunctions.getQualityMonitorsV2(GetQualityMonitorsV2Args.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -20081,7 +21502,7 @@ public final class DatabricksFunctions {
      * 
      */
     public static Output<GetQualityMonitorsV2Result> getQualityMonitorsV2() {
-        return getQualityMonitorsV2(InvokeArgs.Empty, InvokeOptions.Empty);
+        return getQualityMonitorsV2(GetQualityMonitorsV2Args.Empty, InvokeOptions.Empty);
     }
     /**
      * This data source can be used to fetch the list of quality monitors v2.
@@ -20101,6 +21522,7 @@ public final class DatabricksFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetQualityMonitorsV2Args;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -20114,7 +21536,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getQualityMonitorsV2(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     *         final var all = DatabricksFunctions.getQualityMonitorsV2(GetQualityMonitorsV2Args.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -20124,7 +21547,7 @@ public final class DatabricksFunctions {
      * 
      */
     public static CompletableFuture<GetQualityMonitorsV2Result> getQualityMonitorsV2Plain() {
-        return getQualityMonitorsV2Plain(InvokeArgs.Empty, InvokeOptions.Empty);
+        return getQualityMonitorsV2Plain(GetQualityMonitorsV2PlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
      * This data source can be used to fetch the list of quality monitors v2.
@@ -20144,6 +21567,7 @@ public final class DatabricksFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetQualityMonitorsV2Args;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -20157,7 +21581,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getQualityMonitorsV2(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     *         final var all = DatabricksFunctions.getQualityMonitorsV2(GetQualityMonitorsV2Args.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -20166,7 +21591,7 @@ public final class DatabricksFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
-    public static Output<GetQualityMonitorsV2Result> getQualityMonitorsV2(InvokeArgs args) {
+    public static Output<GetQualityMonitorsV2Result> getQualityMonitorsV2(GetQualityMonitorsV2Args args) {
         return getQualityMonitorsV2(args, InvokeOptions.Empty);
     }
     /**
@@ -20187,6 +21612,7 @@ public final class DatabricksFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetQualityMonitorsV2Args;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -20200,7 +21626,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getQualityMonitorsV2(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     *         final var all = DatabricksFunctions.getQualityMonitorsV2(GetQualityMonitorsV2Args.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -20209,7 +21636,7 @@ public final class DatabricksFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
-    public static CompletableFuture<GetQualityMonitorsV2Result> getQualityMonitorsV2Plain(InvokeArgs args) {
+    public static CompletableFuture<GetQualityMonitorsV2Result> getQualityMonitorsV2Plain(GetQualityMonitorsV2PlainArgs args) {
         return getQualityMonitorsV2Plain(args, InvokeOptions.Empty);
     }
     /**
@@ -20230,6 +21657,7 @@ public final class DatabricksFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetQualityMonitorsV2Args;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -20243,7 +21671,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getQualityMonitorsV2(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     *         final var all = DatabricksFunctions.getQualityMonitorsV2(GetQualityMonitorsV2Args.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -20252,7 +21681,7 @@ public final class DatabricksFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
-    public static Output<GetQualityMonitorsV2Result> getQualityMonitorsV2(InvokeArgs args, InvokeOptions options) {
+    public static Output<GetQualityMonitorsV2Result> getQualityMonitorsV2(GetQualityMonitorsV2Args args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getQualityMonitorsV2:getQualityMonitorsV2", TypeShape.of(GetQualityMonitorsV2Result.class), args, Utilities.withVersion(options));
     }
     /**
@@ -20273,6 +21702,7 @@ public final class DatabricksFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetQualityMonitorsV2Args;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -20286,7 +21716,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getQualityMonitorsV2(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     *         final var all = DatabricksFunctions.getQualityMonitorsV2(GetQualityMonitorsV2Args.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -20295,7 +21726,7 @@ public final class DatabricksFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
-    public static Output<GetQualityMonitorsV2Result> getQualityMonitorsV2(InvokeArgs args, InvokeOutputOptions options) {
+    public static Output<GetQualityMonitorsV2Result> getQualityMonitorsV2(GetQualityMonitorsV2Args args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getQualityMonitorsV2:getQualityMonitorsV2", TypeShape.of(GetQualityMonitorsV2Result.class), args, Utilities.withVersion(options));
     }
     /**
@@ -20316,6 +21747,7 @@ public final class DatabricksFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetQualityMonitorsV2Args;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -20329,7 +21761,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getQualityMonitorsV2(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     *         final var all = DatabricksFunctions.getQualityMonitorsV2(GetQualityMonitorsV2Args.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -20338,28 +21771,28 @@ public final class DatabricksFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
-    public static CompletableFuture<GetQualityMonitorsV2Result> getQualityMonitorsV2Plain(InvokeArgs args, InvokeOptions options) {
+    public static CompletableFuture<GetQualityMonitorsV2Result> getQualityMonitorsV2Plain(GetQualityMonitorsV2PlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getQualityMonitorsV2:getQualityMonitorsV2", TypeShape.of(GetQualityMonitorsV2Result.class), args, Utilities.withVersion(options));
     }
     public static Output<GetRecipientFederationPoliciesResult> getRecipientFederationPolicies() {
-        return getRecipientFederationPolicies(InvokeArgs.Empty, InvokeOptions.Empty);
+        return getRecipientFederationPolicies(GetRecipientFederationPoliciesArgs.Empty, InvokeOptions.Empty);
     }
     public static CompletableFuture<GetRecipientFederationPoliciesResult> getRecipientFederationPoliciesPlain() {
-        return getRecipientFederationPoliciesPlain(InvokeArgs.Empty, InvokeOptions.Empty);
+        return getRecipientFederationPoliciesPlain(GetRecipientFederationPoliciesPlainArgs.Empty, InvokeOptions.Empty);
     }
-    public static Output<GetRecipientFederationPoliciesResult> getRecipientFederationPolicies(InvokeArgs args) {
+    public static Output<GetRecipientFederationPoliciesResult> getRecipientFederationPolicies(GetRecipientFederationPoliciesArgs args) {
         return getRecipientFederationPolicies(args, InvokeOptions.Empty);
     }
-    public static CompletableFuture<GetRecipientFederationPoliciesResult> getRecipientFederationPoliciesPlain(InvokeArgs args) {
+    public static CompletableFuture<GetRecipientFederationPoliciesResult> getRecipientFederationPoliciesPlain(GetRecipientFederationPoliciesPlainArgs args) {
         return getRecipientFederationPoliciesPlain(args, InvokeOptions.Empty);
     }
-    public static Output<GetRecipientFederationPoliciesResult> getRecipientFederationPolicies(InvokeArgs args, InvokeOptions options) {
+    public static Output<GetRecipientFederationPoliciesResult> getRecipientFederationPolicies(GetRecipientFederationPoliciesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getRecipientFederationPolicies:getRecipientFederationPolicies", TypeShape.of(GetRecipientFederationPoliciesResult.class), args, Utilities.withVersion(options));
     }
-    public static Output<GetRecipientFederationPoliciesResult> getRecipientFederationPolicies(InvokeArgs args, InvokeOutputOptions options) {
+    public static Output<GetRecipientFederationPoliciesResult> getRecipientFederationPolicies(GetRecipientFederationPoliciesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getRecipientFederationPolicies:getRecipientFederationPolicies", TypeShape.of(GetRecipientFederationPoliciesResult.class), args, Utilities.withVersion(options));
     }
-    public static CompletableFuture<GetRecipientFederationPoliciesResult> getRecipientFederationPoliciesPlain(InvokeArgs args, InvokeOptions options) {
+    public static CompletableFuture<GetRecipientFederationPoliciesResult> getRecipientFederationPoliciesPlain(GetRecipientFederationPoliciesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getRecipientFederationPolicies:getRecipientFederationPolicies", TypeShape.of(GetRecipientFederationPoliciesResult.class), args, Utilities.withVersion(options));
     }
     public static Output<GetRecipientFederationPolicyResult> getRecipientFederationPolicy() {
@@ -21969,6 +23402,348 @@ public final class DatabricksFunctions {
      */
     public static CompletableFuture<GetServicePrincipalResult> getServicePrincipalPlain(GetServicePrincipalPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getServicePrincipal:getServicePrincipal", TypeShape.of(GetServicePrincipalResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source can be used to fetch the list of federation policies for a service principal.
+     * 
+     * &gt; **Note** This data source can only be used with an account-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Getting a list of all service principal federation policies:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetServicePrincipalFederationPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getServicePrincipalFederationPolicies(GetServicePrincipalFederationPoliciesArgs.builder()
+     *             .servicePrincipalId(1234)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetServicePrincipalFederationPoliciesResult> getServicePrincipalFederationPolicies(GetServicePrincipalFederationPoliciesArgs args) {
+        return getServicePrincipalFederationPolicies(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source can be used to fetch the list of federation policies for a service principal.
+     * 
+     * &gt; **Note** This data source can only be used with an account-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Getting a list of all service principal federation policies:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetServicePrincipalFederationPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getServicePrincipalFederationPolicies(GetServicePrincipalFederationPoliciesArgs.builder()
+     *             .servicePrincipalId(1234)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetServicePrincipalFederationPoliciesResult> getServicePrincipalFederationPoliciesPlain(GetServicePrincipalFederationPoliciesPlainArgs args) {
+        return getServicePrincipalFederationPoliciesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source can be used to fetch the list of federation policies for a service principal.
+     * 
+     * &gt; **Note** This data source can only be used with an account-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Getting a list of all service principal federation policies:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetServicePrincipalFederationPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getServicePrincipalFederationPolicies(GetServicePrincipalFederationPoliciesArgs.builder()
+     *             .servicePrincipalId(1234)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetServicePrincipalFederationPoliciesResult> getServicePrincipalFederationPolicies(GetServicePrincipalFederationPoliciesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getServicePrincipalFederationPolicies:getServicePrincipalFederationPolicies", TypeShape.of(GetServicePrincipalFederationPoliciesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source can be used to fetch the list of federation policies for a service principal.
+     * 
+     * &gt; **Note** This data source can only be used with an account-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Getting a list of all service principal federation policies:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetServicePrincipalFederationPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getServicePrincipalFederationPolicies(GetServicePrincipalFederationPoliciesArgs.builder()
+     *             .servicePrincipalId(1234)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetServicePrincipalFederationPoliciesResult> getServicePrincipalFederationPolicies(GetServicePrincipalFederationPoliciesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getServicePrincipalFederationPolicies:getServicePrincipalFederationPolicies", TypeShape.of(GetServicePrincipalFederationPoliciesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source can be used to fetch the list of federation policies for a service principal.
+     * 
+     * &gt; **Note** This data source can only be used with an account-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Getting a list of all service principal federation policies:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetServicePrincipalFederationPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getServicePrincipalFederationPolicies(GetServicePrincipalFederationPoliciesArgs.builder()
+     *             .servicePrincipalId(1234)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetServicePrincipalFederationPoliciesResult> getServicePrincipalFederationPoliciesPlain(GetServicePrincipalFederationPoliciesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getServicePrincipalFederationPolicies:getServicePrincipalFederationPolicies", TypeShape.of(GetServicePrincipalFederationPoliciesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source can be used to get a single service principal federation policy.
+     * 
+     * &gt; **Note** This data source can only be used with an account-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Referring to a service principal federation policy by id:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetServicePrincipalFederationPolicyResult> getServicePrincipalFederationPolicy() {
+        return getServicePrincipalFederationPolicy(GetServicePrincipalFederationPolicyArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source can be used to get a single service principal federation policy.
+     * 
+     * &gt; **Note** This data source can only be used with an account-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Referring to a service principal federation policy by id:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetServicePrincipalFederationPolicyResult> getServicePrincipalFederationPolicyPlain() {
+        return getServicePrincipalFederationPolicyPlain(GetServicePrincipalFederationPolicyPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source can be used to get a single service principal federation policy.
+     * 
+     * &gt; **Note** This data source can only be used with an account-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Referring to a service principal federation policy by id:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetServicePrincipalFederationPolicyResult> getServicePrincipalFederationPolicy(GetServicePrincipalFederationPolicyArgs args) {
+        return getServicePrincipalFederationPolicy(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source can be used to get a single service principal federation policy.
+     * 
+     * &gt; **Note** This data source can only be used with an account-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Referring to a service principal federation policy by id:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetServicePrincipalFederationPolicyResult> getServicePrincipalFederationPolicyPlain(GetServicePrincipalFederationPolicyPlainArgs args) {
+        return getServicePrincipalFederationPolicyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source can be used to get a single service principal federation policy.
+     * 
+     * &gt; **Note** This data source can only be used with an account-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Referring to a service principal federation policy by id:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetServicePrincipalFederationPolicyResult> getServicePrincipalFederationPolicy(GetServicePrincipalFederationPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getServicePrincipalFederationPolicy:getServicePrincipalFederationPolicy", TypeShape.of(GetServicePrincipalFederationPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source can be used to get a single service principal federation policy.
+     * 
+     * &gt; **Note** This data source can only be used with an account-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Referring to a service principal federation policy by id:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetServicePrincipalFederationPolicyResult> getServicePrincipalFederationPolicy(GetServicePrincipalFederationPolicyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getServicePrincipalFederationPolicy:getServicePrincipalFederationPolicy", TypeShape.of(GetServicePrincipalFederationPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source can be used to get a single service principal federation policy.
+     * 
+     * &gt; **Note** This data source can only be used with an account-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Referring to a service principal federation policy by id:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetServicePrincipalFederationPolicyResult> getServicePrincipalFederationPolicyPlain(GetServicePrincipalFederationPolicyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getServicePrincipalFederationPolicy:getServicePrincipalFederationPolicy", TypeShape.of(GetServicePrincipalFederationPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Retrieves `application_ids` of all databricks.ServicePrincipal based on their `display_name`
@@ -26274,6 +28049,114 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getTables:getTables", TypeShape.of(GetTablesResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * This data source can be used to list all tag policies in the account.
+     * 
+     * &gt; **Note** This resource can only be used with an account-level provider!
+     * 
+     */
+    public static Output<GetTagPoliciesResult> getTagPolicies() {
+        return getTagPolicies(GetTagPoliciesArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source can be used to list all tag policies in the account.
+     * 
+     * &gt; **Note** This resource can only be used with an account-level provider!
+     * 
+     */
+    public static CompletableFuture<GetTagPoliciesResult> getTagPoliciesPlain() {
+        return getTagPoliciesPlain(GetTagPoliciesPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source can be used to list all tag policies in the account.
+     * 
+     * &gt; **Note** This resource can only be used with an account-level provider!
+     * 
+     */
+    public static Output<GetTagPoliciesResult> getTagPolicies(GetTagPoliciesArgs args) {
+        return getTagPolicies(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source can be used to list all tag policies in the account.
+     * 
+     * &gt; **Note** This resource can only be used with an account-level provider!
+     * 
+     */
+    public static CompletableFuture<GetTagPoliciesResult> getTagPoliciesPlain(GetTagPoliciesPlainArgs args) {
+        return getTagPoliciesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source can be used to list all tag policies in the account.
+     * 
+     * &gt; **Note** This resource can only be used with an account-level provider!
+     * 
+     */
+    public static Output<GetTagPoliciesResult> getTagPolicies(GetTagPoliciesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getTagPolicies:getTagPolicies", TypeShape.of(GetTagPoliciesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source can be used to list all tag policies in the account.
+     * 
+     * &gt; **Note** This resource can only be used with an account-level provider!
+     * 
+     */
+    public static Output<GetTagPoliciesResult> getTagPolicies(GetTagPoliciesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getTagPolicies:getTagPolicies", TypeShape.of(GetTagPoliciesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source can be used to list all tag policies in the account.
+     * 
+     * &gt; **Note** This resource can only be used with an account-level provider!
+     * 
+     */
+    public static CompletableFuture<GetTagPoliciesResult> getTagPoliciesPlain(GetTagPoliciesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getTagPolicies:getTagPolicies", TypeShape.of(GetTagPoliciesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source can be used to get a single tag policy by its tag key.
+     * 
+     * &gt; **Note** This resource can only be used with an account-level provider!
+     * 
+     */
+    public static Output<GetTagPolicyResult> getTagPolicy(GetTagPolicyArgs args) {
+        return getTagPolicy(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source can be used to get a single tag policy by its tag key.
+     * 
+     * &gt; **Note** This resource can only be used with an account-level provider!
+     * 
+     */
+    public static CompletableFuture<GetTagPolicyResult> getTagPolicyPlain(GetTagPolicyPlainArgs args) {
+        return getTagPolicyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source can be used to get a single tag policy by its tag key.
+     * 
+     * &gt; **Note** This resource can only be used with an account-level provider!
+     * 
+     */
+    public static Output<GetTagPolicyResult> getTagPolicy(GetTagPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getTagPolicy:getTagPolicy", TypeShape.of(GetTagPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source can be used to get a single tag policy by its tag key.
+     * 
+     * &gt; **Note** This resource can only be used with an account-level provider!
+     * 
+     */
+    public static Output<GetTagPolicyResult> getTagPolicy(GetTagPolicyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getTagPolicy:getTagPolicy", TypeShape.of(GetTagPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source can be used to get a single tag policy by its tag key.
+     * 
+     * &gt; **Note** This resource can only be used with an account-level provider!
+     * 
+     */
+    public static CompletableFuture<GetTagPolicyResult> getTagPolicyPlain(GetTagPolicyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getTagPolicy:getTagPolicy", TypeShape.of(GetTagPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * Retrieves information about databricks_user.
      * 
      * &gt; This data source can be used with an account or workspace-level provider.
@@ -28083,6 +29966,27 @@ public final class DatabricksFunctions {
      */
     public static CompletableFuture<GetWorkspaceNetworkOptionResult> getWorkspaceNetworkOptionPlain(GetWorkspaceNetworkOptionPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getWorkspaceNetworkOption:getWorkspaceNetworkOption", TypeShape.of(GetWorkspaceNetworkOptionResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetWorkspaceSettingV2Result> getWorkspaceSettingV2() {
+        return getWorkspaceSettingV2(GetWorkspaceSettingV2Args.Empty, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetWorkspaceSettingV2Result> getWorkspaceSettingV2Plain() {
+        return getWorkspaceSettingV2Plain(GetWorkspaceSettingV2PlainArgs.Empty, InvokeOptions.Empty);
+    }
+    public static Output<GetWorkspaceSettingV2Result> getWorkspaceSettingV2(GetWorkspaceSettingV2Args args) {
+        return getWorkspaceSettingV2(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetWorkspaceSettingV2Result> getWorkspaceSettingV2Plain(GetWorkspaceSettingV2PlainArgs args) {
+        return getWorkspaceSettingV2Plain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetWorkspaceSettingV2Result> getWorkspaceSettingV2(GetWorkspaceSettingV2Args args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getWorkspaceSettingV2:getWorkspaceSettingV2", TypeShape.of(GetWorkspaceSettingV2Result.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetWorkspaceSettingV2Result> getWorkspaceSettingV2(GetWorkspaceSettingV2Args args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getWorkspaceSettingV2:getWorkspaceSettingV2", TypeShape.of(GetWorkspaceSettingV2Result.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetWorkspaceSettingV2Result> getWorkspaceSettingV2Plain(GetWorkspaceSettingV2PlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getWorkspaceSettingV2:getWorkspaceSettingV2", TypeShape.of(GetWorkspaceSettingV2Result.class), args, Utilities.withVersion(options));
     }
     /**
      * This data source allows you to fetch all available AWS availability zones on your workspace on AWS.

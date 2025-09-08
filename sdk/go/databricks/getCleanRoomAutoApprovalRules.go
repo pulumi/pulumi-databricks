@@ -11,28 +11,47 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-func GetCleanRoomAutoApprovalRules(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetCleanRoomAutoApprovalRulesResult, error) {
+func GetCleanRoomAutoApprovalRules(ctx *pulumi.Context, args *GetCleanRoomAutoApprovalRulesArgs, opts ...pulumi.InvokeOption) (*GetCleanRoomAutoApprovalRulesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetCleanRoomAutoApprovalRulesResult
-	err := ctx.Invoke("databricks:index/getCleanRoomAutoApprovalRules:getCleanRoomAutoApprovalRules", nil, &rv, opts...)
+	err := ctx.Invoke("databricks:index/getCleanRoomAutoApprovalRules:getCleanRoomAutoApprovalRules", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &rv, nil
 }
 
+// A collection of arguments for invoking getCleanRoomAutoApprovalRules.
+type GetCleanRoomAutoApprovalRulesArgs struct {
+	// Workspace ID of the resource
+	WorkspaceId *string `pulumi:"workspaceId"`
+}
+
 // A collection of values returned by getCleanRoomAutoApprovalRules.
 type GetCleanRoomAutoApprovalRulesResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id    string                              `pulumi:"id"`
-	Rules []GetCleanRoomAutoApprovalRulesRule `pulumi:"rules"`
+	Id          string                              `pulumi:"id"`
+	Rules       []GetCleanRoomAutoApprovalRulesRule `pulumi:"rules"`
+	WorkspaceId *string                             `pulumi:"workspaceId"`
 }
 
-func GetCleanRoomAutoApprovalRulesOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetCleanRoomAutoApprovalRulesResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetCleanRoomAutoApprovalRulesResultOutput, error) {
-		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-		return ctx.InvokeOutput("databricks:index/getCleanRoomAutoApprovalRules:getCleanRoomAutoApprovalRules", nil, GetCleanRoomAutoApprovalRulesResultOutput{}, options).(GetCleanRoomAutoApprovalRulesResultOutput), nil
-	}).(GetCleanRoomAutoApprovalRulesResultOutput)
+func GetCleanRoomAutoApprovalRulesOutput(ctx *pulumi.Context, args GetCleanRoomAutoApprovalRulesOutputArgs, opts ...pulumi.InvokeOption) GetCleanRoomAutoApprovalRulesResultOutput {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (GetCleanRoomAutoApprovalRulesResultOutput, error) {
+			args := v.(GetCleanRoomAutoApprovalRulesArgs)
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("databricks:index/getCleanRoomAutoApprovalRules:getCleanRoomAutoApprovalRules", args, GetCleanRoomAutoApprovalRulesResultOutput{}, options).(GetCleanRoomAutoApprovalRulesResultOutput), nil
+		}).(GetCleanRoomAutoApprovalRulesResultOutput)
+}
+
+// A collection of arguments for invoking getCleanRoomAutoApprovalRules.
+type GetCleanRoomAutoApprovalRulesOutputArgs struct {
+	// Workspace ID of the resource
+	WorkspaceId pulumi.StringPtrInput `pulumi:"workspaceId"`
+}
+
+func (GetCleanRoomAutoApprovalRulesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCleanRoomAutoApprovalRulesArgs)(nil)).Elem()
 }
 
 // A collection of values returned by getCleanRoomAutoApprovalRules.
@@ -57,6 +76,10 @@ func (o GetCleanRoomAutoApprovalRulesResultOutput) Id() pulumi.StringOutput {
 
 func (o GetCleanRoomAutoApprovalRulesResultOutput) Rules() GetCleanRoomAutoApprovalRulesRuleArrayOutput {
 	return o.ApplyT(func(v GetCleanRoomAutoApprovalRulesResult) []GetCleanRoomAutoApprovalRulesRule { return v.Rules }).(GetCleanRoomAutoApprovalRulesRuleArrayOutput)
+}
+
+func (o GetCleanRoomAutoApprovalRulesResultOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCleanRoomAutoApprovalRulesResult) *string { return v.WorkspaceId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

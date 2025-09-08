@@ -10,7 +10,6 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.databricks.ConnectionArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.ConnectionState;
-import com.pulumi.databricks.outputs.ConnectionEnvironmentSettings;
 import com.pulumi.databricks.outputs.ConnectionProvisioningInfo;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -409,12 +408,6 @@ public class Connection extends com.pulumi.resources.CustomResource {
      */
     public Output<String> credentialType() {
         return this.credentialType;
-    }
-    @Export(name="environmentSettings", refs={ConnectionEnvironmentSettings.class}, tree="[0]")
-    private Output</* @Nullable */ ConnectionEnvironmentSettings> environmentSettings;
-
-    public Output<Optional<ConnectionEnvironmentSettings>> environmentSettings() {
-        return Codegen.optional(this.environmentSettings);
     }
     /**
      * Full name of connection.

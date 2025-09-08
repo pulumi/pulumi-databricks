@@ -218,6 +218,21 @@ public final class GetCleanRoomAssetPlainArgs extends com.pulumi.resources.Invok
         return Optional.ofNullable(this.volumeLocalDetails);
     }
 
+    /**
+     * Workspace ID of the resource
+     * 
+     */
+    @Import(name="workspaceId")
+    private @Nullable String workspaceId;
+
+    /**
+     * @return Workspace ID of the resource
+     * 
+     */
+    public Optional<String> workspaceId() {
+        return Optional.ofNullable(this.workspaceId);
+    }
+
     private GetCleanRoomAssetPlainArgs() {}
 
     private GetCleanRoomAssetPlainArgs(GetCleanRoomAssetPlainArgs $) {
@@ -232,6 +247,7 @@ public final class GetCleanRoomAssetPlainArgs extends com.pulumi.resources.Invok
         this.view = $.view;
         this.viewLocalDetails = $.viewLocalDetails;
         this.volumeLocalDetails = $.volumeLocalDetails;
+        this.workspaceId = $.workspaceId;
     }
 
     public static Builder builder() {
@@ -385,6 +401,17 @@ public final class GetCleanRoomAssetPlainArgs extends com.pulumi.resources.Invok
          */
         public Builder volumeLocalDetails(@Nullable GetCleanRoomAssetVolumeLocalDetails volumeLocalDetails) {
             $.volumeLocalDetails = volumeLocalDetails;
+            return this;
+        }
+
+        /**
+         * @param workspaceId Workspace ID of the resource
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workspaceId(@Nullable String workspaceId) {
+            $.workspaceId = workspaceId;
             return this;
         }
 

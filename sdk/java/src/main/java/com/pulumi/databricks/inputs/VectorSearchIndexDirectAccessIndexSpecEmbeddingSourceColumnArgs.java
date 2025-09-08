@@ -31,6 +31,21 @@ public final class VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnAr
     }
 
     /**
+     * The name of the embedding model endpoint which, if specified, is used for querying (not ingestion).
+     * 
+     */
+    @Import(name="modelEndpointNameForQuery")
+    private @Nullable Output<String> modelEndpointNameForQuery;
+
+    /**
+     * @return The name of the embedding model endpoint which, if specified, is used for querying (not ingestion).
+     * 
+     */
+    public Optional<Output<String>> modelEndpointNameForQuery() {
+        return Optional.ofNullable(this.modelEndpointNameForQuery);
+    }
+
+    /**
      * The name of the column
      * 
      */
@@ -49,6 +64,7 @@ public final class VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnAr
 
     private VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArgs(VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnArgs $) {
         this.embeddingModelEndpointName = $.embeddingModelEndpointName;
+        this.modelEndpointNameForQuery = $.modelEndpointNameForQuery;
         this.name = $.name;
     }
 
@@ -89,6 +105,27 @@ public final class VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumnAr
          */
         public Builder embeddingModelEndpointName(String embeddingModelEndpointName) {
             return embeddingModelEndpointName(Output.of(embeddingModelEndpointName));
+        }
+
+        /**
+         * @param modelEndpointNameForQuery The name of the embedding model endpoint which, if specified, is used for querying (not ingestion).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder modelEndpointNameForQuery(@Nullable Output<String> modelEndpointNameForQuery) {
+            $.modelEndpointNameForQuery = modelEndpointNameForQuery;
+            return this;
+        }
+
+        /**
+         * @param modelEndpointNameForQuery The name of the embedding model endpoint which, if specified, is used for querying (not ingestion).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder modelEndpointNameForQuery(String modelEndpointNameForQuery) {
+            return modelEndpointNameForQuery(Output.of(modelEndpointNameForQuery));
         }
 
         /**

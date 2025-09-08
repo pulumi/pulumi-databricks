@@ -24,7 +24,7 @@ import javax.annotation.Nullable;
  * 
  * import {
  * 
- *   id = name
+ *   id = &#34;name&#34;
  * 
  *   to = databricks_online_store.this
  * 
@@ -33,7 +33,7 @@ import javax.annotation.Nullable;
  * If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
  * 
  * ```sh
- * $ pulumi import databricks:index/onlineStore:OnlineStore databricks_online_store name
+ * $ pulumi import databricks:index/onlineStore:OnlineStore databricks_online_store &#34;name&#34;
  * ```
  * 
  */
@@ -122,6 +122,20 @@ public class OnlineStore extends com.pulumi.resources.CustomResource {
      */
     public Output<String> state() {
         return this.state;
+    }
+    /**
+     * Workspace ID of the resource
+     * 
+     */
+    @Export(name="workspaceId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> workspaceId;
+
+    /**
+     * @return Workspace ID of the resource
+     * 
+     */
+    public Output<Optional<String>> workspaceId() {
+        return Codegen.optional(this.workspaceId);
     }
 
     /**

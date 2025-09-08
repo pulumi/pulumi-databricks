@@ -17,6 +17,7 @@ public final class GetServingEndpointsEndpointAiGatewayRateLimit {
     private @Nullable String key;
     private @Nullable String principal;
     private String renewalPeriod;
+    private @Nullable Integer tokens;
 
     private GetServingEndpointsEndpointAiGatewayRateLimit() {}
     public Optional<Integer> calls() {
@@ -30,6 +31,9 @@ public final class GetServingEndpointsEndpointAiGatewayRateLimit {
     }
     public String renewalPeriod() {
         return this.renewalPeriod;
+    }
+    public Optional<Integer> tokens() {
+        return Optional.ofNullable(this.tokens);
     }
 
     public static Builder builder() {
@@ -45,6 +49,7 @@ public final class GetServingEndpointsEndpointAiGatewayRateLimit {
         private @Nullable String key;
         private @Nullable String principal;
         private String renewalPeriod;
+        private @Nullable Integer tokens;
         public Builder() {}
         public Builder(GetServingEndpointsEndpointAiGatewayRateLimit defaults) {
     	      Objects.requireNonNull(defaults);
@@ -52,6 +57,7 @@ public final class GetServingEndpointsEndpointAiGatewayRateLimit {
     	      this.key = defaults.key;
     	      this.principal = defaults.principal;
     	      this.renewalPeriod = defaults.renewalPeriod;
+    	      this.tokens = defaults.tokens;
         }
 
         @CustomType.Setter
@@ -80,12 +86,19 @@ public final class GetServingEndpointsEndpointAiGatewayRateLimit {
             this.renewalPeriod = renewalPeriod;
             return this;
         }
+        @CustomType.Setter
+        public Builder tokens(@Nullable Integer tokens) {
+
+            this.tokens = tokens;
+            return this;
+        }
         public GetServingEndpointsEndpointAiGatewayRateLimit build() {
             final var _resultValue = new GetServingEndpointsEndpointAiGatewayRateLimit();
             _resultValue.calls = calls;
             _resultValue.key = key;
             _resultValue.principal = principal;
             _resultValue.renewalPeriod = renewalPeriod;
+            _resultValue.tokens = tokens;
             return _resultValue;
         }
     }

@@ -23,13 +23,15 @@ class RecipientFederationPolicyArgs:
     def __init__(__self__, *,
                  comment: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
-                 oidc_policy: Optional[pulumi.Input['RecipientFederationPolicyOidcPolicyArgs']] = None):
+                 oidc_policy: Optional[pulumi.Input['RecipientFederationPolicyOidcPolicyArgs']] = None,
+                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a RecipientFederationPolicy resource.
         :param pulumi.Input[_builtins.str] comment: Description of the policy. This is a user-provided description
         :param pulumi.Input[_builtins.str] name: Name of the federation policy. A recipient can have multiple policies with different names.
                The name must contain only lowercase alphanumeric characters, numbers, and hyphens
         :param pulumi.Input['RecipientFederationPolicyOidcPolicyArgs'] oidc_policy: Specifies the policy to use for validating OIDC claims in the federated tokens
+        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID of the resource
         """
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
@@ -37,6 +39,8 @@ class RecipientFederationPolicyArgs:
             pulumi.set(__self__, "name", name)
         if oidc_policy is not None:
             pulumi.set(__self__, "oidc_policy", oidc_policy)
+        if workspace_id is not None:
+            pulumi.set(__self__, "workspace_id", workspace_id)
 
     @_builtins.property
     @pulumi.getter
@@ -75,6 +79,18 @@ class RecipientFederationPolicyArgs:
     def oidc_policy(self, value: Optional[pulumi.Input['RecipientFederationPolicyOidcPolicyArgs']]):
         pulumi.set(self, "oidc_policy", value)
 
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Workspace ID of the resource
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "workspace_id", value)
+
 
 @pulumi.input_type
 class _RecipientFederationPolicyState:
@@ -83,7 +99,8 @@ class _RecipientFederationPolicyState:
                  create_time: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  oidc_policy: Optional[pulumi.Input['RecipientFederationPolicyOidcPolicyArgs']] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 update_time: Optional[pulumi.Input[_builtins.str]] = None,
+                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RecipientFederationPolicy resources.
         :param pulumi.Input[_builtins.str] comment: Description of the policy. This is a user-provided description
@@ -92,6 +109,7 @@ class _RecipientFederationPolicyState:
                The name must contain only lowercase alphanumeric characters, numbers, and hyphens
         :param pulumi.Input['RecipientFederationPolicyOidcPolicyArgs'] oidc_policy: Specifies the policy to use for validating OIDC claims in the federated tokens
         :param pulumi.Input[_builtins.str] update_time: (string) - System-generated timestamp indicating when the policy was last updated
+        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID of the resource
         """
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
@@ -103,6 +121,8 @@ class _RecipientFederationPolicyState:
             pulumi.set(__self__, "oidc_policy", oidc_policy)
         if update_time is not None:
             pulumi.set(__self__, "update_time", update_time)
+        if workspace_id is not None:
+            pulumi.set(__self__, "workspace_id", workspace_id)
 
     @_builtins.property
     @pulumi.getter
@@ -165,6 +185,18 @@ class _RecipientFederationPolicyState:
     def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Workspace ID of the resource
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "workspace_id", value)
+
 
 @pulumi.type_token("databricks:index/recipientFederationPolicy:RecipientFederationPolicy")
 class RecipientFederationPolicy(pulumi.CustomResource):
@@ -175,6 +207,7 @@ class RecipientFederationPolicy(pulumi.CustomResource):
                  comment: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  oidc_policy: Optional[pulumi.Input[Union['RecipientFederationPolicyOidcPolicyArgs', 'RecipientFederationPolicyOidcPolicyArgsDict']]] = None,
+                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
         ## Import
@@ -185,7 +218,7 @@ class RecipientFederationPolicy(pulumi.CustomResource):
 
         import {
 
-          id = name
+          id = "name"
 
           to = databricks_recipient_federation_policy.this
 
@@ -194,7 +227,7 @@ class RecipientFederationPolicy(pulumi.CustomResource):
         If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
 
         ```sh
-        $ pulumi import databricks:index/recipientFederationPolicy:RecipientFederationPolicy databricks_recipient_federation_policy name
+        $ pulumi import databricks:index/recipientFederationPolicy:RecipientFederationPolicy databricks_recipient_federation_policy "name"
         ```
 
         :param str resource_name: The name of the resource.
@@ -203,6 +236,7 @@ class RecipientFederationPolicy(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Name of the federation policy. A recipient can have multiple policies with different names.
                The name must contain only lowercase alphanumeric characters, numbers, and hyphens
         :param pulumi.Input[Union['RecipientFederationPolicyOidcPolicyArgs', 'RecipientFederationPolicyOidcPolicyArgsDict']] oidc_policy: Specifies the policy to use for validating OIDC claims in the federated tokens
+        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID of the resource
         """
         ...
     @overload
@@ -219,7 +253,7 @@ class RecipientFederationPolicy(pulumi.CustomResource):
 
         import {
 
-          id = name
+          id = "name"
 
           to = databricks_recipient_federation_policy.this
 
@@ -228,7 +262,7 @@ class RecipientFederationPolicy(pulumi.CustomResource):
         If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
 
         ```sh
-        $ pulumi import databricks:index/recipientFederationPolicy:RecipientFederationPolicy databricks_recipient_federation_policy name
+        $ pulumi import databricks:index/recipientFederationPolicy:RecipientFederationPolicy databricks_recipient_federation_policy "name"
         ```
 
         :param str resource_name: The name of the resource.
@@ -249,6 +283,7 @@ class RecipientFederationPolicy(pulumi.CustomResource):
                  comment: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  oidc_policy: Optional[pulumi.Input[Union['RecipientFederationPolicyOidcPolicyArgs', 'RecipientFederationPolicyOidcPolicyArgsDict']]] = None,
+                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -261,6 +296,7 @@ class RecipientFederationPolicy(pulumi.CustomResource):
             __props__.__dict__["comment"] = comment
             __props__.__dict__["name"] = name
             __props__.__dict__["oidc_policy"] = oidc_policy
+            __props__.__dict__["workspace_id"] = workspace_id
             __props__.__dict__["create_time"] = None
             __props__.__dict__["update_time"] = None
         super(RecipientFederationPolicy, __self__).__init__(
@@ -277,7 +313,8 @@ class RecipientFederationPolicy(pulumi.CustomResource):
             create_time: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             oidc_policy: Optional[pulumi.Input[Union['RecipientFederationPolicyOidcPolicyArgs', 'RecipientFederationPolicyOidcPolicyArgsDict']]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'RecipientFederationPolicy':
+            update_time: Optional[pulumi.Input[_builtins.str]] = None,
+            workspace_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'RecipientFederationPolicy':
         """
         Get an existing RecipientFederationPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -291,6 +328,7 @@ class RecipientFederationPolicy(pulumi.CustomResource):
                The name must contain only lowercase alphanumeric characters, numbers, and hyphens
         :param pulumi.Input[Union['RecipientFederationPolicyOidcPolicyArgs', 'RecipientFederationPolicyOidcPolicyArgsDict']] oidc_policy: Specifies the policy to use for validating OIDC claims in the federated tokens
         :param pulumi.Input[_builtins.str] update_time: (string) - System-generated timestamp indicating when the policy was last updated
+        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID of the resource
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -301,6 +339,7 @@ class RecipientFederationPolicy(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["oidc_policy"] = oidc_policy
         __props__.__dict__["update_time"] = update_time
+        __props__.__dict__["workspace_id"] = workspace_id
         return RecipientFederationPolicy(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -343,4 +382,12 @@ class RecipientFederationPolicy(pulumi.CustomResource):
         (string) - System-generated timestamp indicating when the policy was last updated
         """
         return pulumi.get(self, "update_time")
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Workspace ID of the resource
+        """
+        return pulumi.get(self, "workspace_id")
 

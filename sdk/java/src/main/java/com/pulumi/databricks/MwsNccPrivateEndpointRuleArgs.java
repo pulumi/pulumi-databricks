@@ -146,14 +146,14 @@ public final class MwsNccPrivateEndpointRuleArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Example `com.amazonaws.vpce.us-east-1.vpce-svc-123abcc1298abc123`. The full target AWS endpoint service name that connects to the destination resources of the private endpoint.
+     * Example `com.amazonaws.vpce.us-east-1.vpce-svc-123abcc1298abc123`. The full target AWS endpoint service name that connects to the destination resources of the private endpoint. Change forces creation of a new resource.
      * 
      */
     @Import(name="endpointService")
     private @Nullable Output<String> endpointService;
 
     /**
-     * @return Example `com.amazonaws.vpce.us-east-1.vpce-svc-123abcc1298abc123`. The full target AWS endpoint service name that connects to the destination resources of the private endpoint.
+     * @return Example `com.amazonaws.vpce.us-east-1.vpce-svc-123abcc1298abc123`. The full target AWS endpoint service name that connects to the destination resources of the private endpoint. Change forces creation of a new resource.
      * 
      */
     public Optional<Output<String>> endpointService() {
@@ -486,7 +486,7 @@ public final class MwsNccPrivateEndpointRuleArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param endpointService Example `com.amazonaws.vpce.us-east-1.vpce-svc-123abcc1298abc123`. The full target AWS endpoint service name that connects to the destination resources of the private endpoint.
+         * @param endpointService Example `com.amazonaws.vpce.us-east-1.vpce-svc-123abcc1298abc123`. The full target AWS endpoint service name that connects to the destination resources of the private endpoint. Change forces creation of a new resource.
          * 
          * @return builder
          * 
@@ -497,7 +497,7 @@ public final class MwsNccPrivateEndpointRuleArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param endpointService Example `com.amazonaws.vpce.us-east-1.vpce-svc-123abcc1298abc123`. The full target AWS endpoint service name that connects to the destination resources of the private endpoint.
+         * @param endpointService Example `com.amazonaws.vpce.us-east-1.vpce-svc-123abcc1298abc123`. The full target AWS endpoint service name that connects to the destination resources of the private endpoint. Change forces creation of a new resource.
          * 
          * @return builder
          * 

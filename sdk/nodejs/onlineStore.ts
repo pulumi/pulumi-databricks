@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  *
  * import {
  *
- *   id = name
+ *   id = "name"
  *
  *   to = databricks_online_store.this
  *
@@ -22,7 +22,7 @@ import * as utilities from "./utilities";
  * If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
  *
  * ```sh
- * $ pulumi import databricks:index/onlineStore:OnlineStore databricks_online_store name
+ * $ pulumi import databricks:index/onlineStore:OnlineStore databricks_online_store "name"
  * ```
  */
 export class OnlineStore extends pulumi.CustomResource {
@@ -77,6 +77,10 @@ export class OnlineStore extends pulumi.CustomResource {
      * (string) - The current state of the online store. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
      */
     declare public /*out*/ readonly state: pulumi.Output<string>;
+    /**
+     * Workspace ID of the resource
+     */
+    declare public readonly workspaceId: pulumi.Output<string | undefined>;
 
     /**
      * Create a OnlineStore resource with the given unique name, arguments, and options.
@@ -97,6 +101,7 @@ export class OnlineStore extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["readReplicaCount"] = state?.readReplicaCount;
             resourceInputs["state"] = state?.state;
+            resourceInputs["workspaceId"] = state?.workspaceId;
         } else {
             const args = argsOrState as OnlineStoreArgs | undefined;
             if (args?.capacity === undefined && !opts.urn) {
@@ -105,6 +110,7 @@ export class OnlineStore extends pulumi.CustomResource {
             resourceInputs["capacity"] = args?.capacity;
             resourceInputs["name"] = args?.name;
             resourceInputs["readReplicaCount"] = args?.readReplicaCount;
+            resourceInputs["workspaceId"] = args?.workspaceId;
             resourceInputs["creationTime"] = undefined /*out*/;
             resourceInputs["creator"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
@@ -142,6 +148,10 @@ export interface OnlineStoreState {
      * (string) - The current state of the online store. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
      */
     state?: pulumi.Input<string>;
+    /**
+     * Workspace ID of the resource
+     */
+    workspaceId?: pulumi.Input<string>;
 }
 
 /**
@@ -160,4 +170,8 @@ export interface OnlineStoreArgs {
      * The number of read replicas for the online store. Defaults to 0
      */
     readReplicaCount?: pulumi.Input<number>;
+    /**
+     * Workspace ID of the resource
+     */
+    workspaceId?: pulumi.Input<string>;
 }

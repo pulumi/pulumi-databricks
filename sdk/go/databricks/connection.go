@@ -281,8 +281,7 @@ type Connection struct {
 	// Username of connection creator.
 	CreatedBy pulumi.StringOutput `pulumi:"createdBy"`
 	// The type of credential for this connection.
-	CredentialType      pulumi.StringOutput                    `pulumi:"credentialType"`
-	EnvironmentSettings ConnectionEnvironmentSettingsPtrOutput `pulumi:"environmentSettings"`
+	CredentialType pulumi.StringOutput `pulumi:"credentialType"`
 	// Full name of connection.
 	FullName pulumi.StringOutput `pulumi:"fullName"`
 	// Unique ID of the UC metastore for this connection.
@@ -356,8 +355,7 @@ type connectionState struct {
 	// Username of connection creator.
 	CreatedBy *string `pulumi:"createdBy"`
 	// The type of credential for this connection.
-	CredentialType      *string                        `pulumi:"credentialType"`
-	EnvironmentSettings *ConnectionEnvironmentSettings `pulumi:"environmentSettings"`
+	CredentialType *string `pulumi:"credentialType"`
 	// Full name of connection.
 	FullName *string `pulumi:"fullName"`
 	// Unique ID of the UC metastore for this connection.
@@ -395,8 +393,7 @@ type ConnectionState struct {
 	// Username of connection creator.
 	CreatedBy pulumi.StringPtrInput
 	// The type of credential for this connection.
-	CredentialType      pulumi.StringPtrInput
-	EnvironmentSettings ConnectionEnvironmentSettingsPtrInput
+	CredentialType pulumi.StringPtrInput
 	// Full name of connection.
 	FullName pulumi.StringPtrInput
 	// Unique ID of the UC metastore for this connection.
@@ -430,8 +427,7 @@ type connectionArgs struct {
 	// Free-form text. Change forces creation of a new resource.
 	Comment *string `pulumi:"comment"`
 	// Connection type. `MYSQL`, `POSTGRESQL`, `SNOWFLAKE`, `REDSHIFT` `SQLDW`, `SQLSERVER`, `DATABRICKS`, `SALESFORCE`, `BIGQUERY`, `WORKDAY_RAAS`, `HIVE_METASTORE`, `GA4_RAW_DATA`, `SERVICENOW`, `SALESFORCE_DATA_CLOUD`, `GLUE`, `ORACLE`, `TERADATA`, `HTTP` or `POWER_BI` are supported. Up-to-date list of connection type supported is in the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources). Change forces creation of a new resource.
-	ConnectionType      *string                        `pulumi:"connectionType"`
-	EnvironmentSettings *ConnectionEnvironmentSettings `pulumi:"environmentSettings"`
+	ConnectionType *string `pulumi:"connectionType"`
 	// Name of the Connection.
 	Name *string `pulumi:"name"`
 	// The key value of options required by the connection, e.g. `host`, `port`, `user`, `password`, `authorizationEndpoint`, `clientId`, `clientSecret` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
@@ -449,8 +445,7 @@ type ConnectionArgs struct {
 	// Free-form text. Change forces creation of a new resource.
 	Comment pulumi.StringPtrInput
 	// Connection type. `MYSQL`, `POSTGRESQL`, `SNOWFLAKE`, `REDSHIFT` `SQLDW`, `SQLSERVER`, `DATABRICKS`, `SALESFORCE`, `BIGQUERY`, `WORKDAY_RAAS`, `HIVE_METASTORE`, `GA4_RAW_DATA`, `SERVICENOW`, `SALESFORCE_DATA_CLOUD`, `GLUE`, `ORACLE`, `TERADATA`, `HTTP` or `POWER_BI` are supported. Up-to-date list of connection type supported is in the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources). Change forces creation of a new resource.
-	ConnectionType      pulumi.StringPtrInput
-	EnvironmentSettings ConnectionEnvironmentSettingsPtrInput
+	ConnectionType pulumi.StringPtrInput
 	// Name of the Connection.
 	Name pulumi.StringPtrInput
 	// The key value of options required by the connection, e.g. `host`, `port`, `user`, `password`, `authorizationEndpoint`, `clientId`, `clientSecret` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
@@ -578,10 +573,6 @@ func (o ConnectionOutput) CreatedBy() pulumi.StringOutput {
 // The type of credential for this connection.
 func (o ConnectionOutput) CredentialType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.CredentialType }).(pulumi.StringOutput)
-}
-
-func (o ConnectionOutput) EnvironmentSettings() ConnectionEnvironmentSettingsPtrOutput {
-	return o.ApplyT(func(v *Connection) ConnectionEnvironmentSettingsPtrOutput { return v.EnvironmentSettings }).(ConnectionEnvironmentSettingsPtrOutput)
 }
 
 // Full name of connection.

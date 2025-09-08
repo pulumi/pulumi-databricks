@@ -9,6 +9,8 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetCleanRoomAssetRevisionsCleanRoomAssetsResult {
@@ -17,7 +19,13 @@ public final class GetCleanRoomAssetRevisionsCleanRoomAssetsResult {
      * 
      */
     private String id;
+    /**
+     * @return (string) - The name of the partition column
+     * 
+     */
+    private String name;
     private List<GetCleanRoomAssetRevisionsCleanRoomAssetsRevision> revisions;
+    private @Nullable String workspaceId;
 
     private GetCleanRoomAssetRevisionsCleanRoomAssetsResult() {}
     /**
@@ -27,8 +35,18 @@ public final class GetCleanRoomAssetRevisionsCleanRoomAssetsResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return (string) - The name of the partition column
+     * 
+     */
+    public String name() {
+        return this.name;
+    }
     public List<GetCleanRoomAssetRevisionsCleanRoomAssetsRevision> revisions() {
         return this.revisions;
+    }
+    public Optional<String> workspaceId() {
+        return Optional.ofNullable(this.workspaceId);
     }
 
     public static Builder builder() {
@@ -41,12 +59,16 @@ public final class GetCleanRoomAssetRevisionsCleanRoomAssetsResult {
     @CustomType.Builder
     public static final class Builder {
         private String id;
+        private String name;
         private List<GetCleanRoomAssetRevisionsCleanRoomAssetsRevision> revisions;
+        private @Nullable String workspaceId;
         public Builder() {}
         public Builder(GetCleanRoomAssetRevisionsCleanRoomAssetsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
+    	      this.name = defaults.name;
     	      this.revisions = defaults.revisions;
+    	      this.workspaceId = defaults.workspaceId;
         }
 
         @CustomType.Setter
@@ -55,6 +77,14 @@ public final class GetCleanRoomAssetRevisionsCleanRoomAssetsResult {
               throw new MissingRequiredPropertyException("GetCleanRoomAssetRevisionsCleanRoomAssetsResult", "id");
             }
             this.id = id;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder name(String name) {
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetCleanRoomAssetRevisionsCleanRoomAssetsResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
@@ -68,10 +98,18 @@ public final class GetCleanRoomAssetRevisionsCleanRoomAssetsResult {
         public Builder revisions(GetCleanRoomAssetRevisionsCleanRoomAssetsRevision... revisions) {
             return revisions(List.of(revisions));
         }
+        @CustomType.Setter
+        public Builder workspaceId(@Nullable String workspaceId) {
+
+            this.workspaceId = workspaceId;
+            return this;
+        }
         public GetCleanRoomAssetRevisionsCleanRoomAssetsResult build() {
             final var _resultValue = new GetCleanRoomAssetRevisionsCleanRoomAssetsResult();
             _resultValue.id = id;
+            _resultValue.name = name;
             _resultValue.revisions = revisions;
+            _resultValue.workspaceId = workspaceId;
             return _resultValue;
         }
     }

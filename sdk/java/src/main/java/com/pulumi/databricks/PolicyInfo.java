@@ -28,7 +28,7 @@ import javax.annotation.Nullable;
  * 
  * import {
  * 
- *   id = on_securable_type,on_securable_fullname,name
+ *   id = &#34;on_securable_type,on_securable_fullname,name&#34;
  * 
  *   to = databricks_policy_info.this
  * 
@@ -37,7 +37,7 @@ import javax.annotation.Nullable;
  * If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
  * 
  * ```sh
- * $ pulumi import databricks:index/policyInfo:PolicyInfo databricks_policy_info on_securable_type,on_securable_fullname,name
+ * $ pulumi import databricks:index/policyInfo:PolicyInfo databricks_policy_info &#34;on_securable_type,on_securable_fullname,name&#34;
  * ```
  * 
  */
@@ -119,7 +119,7 @@ public class PolicyInfo extends com.pulumi.resources.CustomResource {
     }
     /**
      * Type of securables that the policy should take effect on.
-     * Only `table` is supported at this moment.
+     * Only `TABLE` is supported at this moment.
      * Required on create and optional on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
      * 
      */
@@ -128,7 +128,7 @@ public class PolicyInfo extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Type of securables that the policy should take effect on.
-     * Only `table` is supported at this moment.
+     * Only `TABLE` is supported at this moment.
      * Required on create and optional on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
      * 
      */
@@ -137,7 +137,7 @@ public class PolicyInfo extends com.pulumi.resources.CustomResource {
     }
     /**
      * Optional list of condition expressions used to match table columns.
-     * Only valid when `for_securable_type` is `table`.
+     * Only valid when `for_securable_type` is `TABLE`.
      * When specified, the policy only applies to tables whose columns satisfy all match conditions
      * 
      */
@@ -146,7 +146,7 @@ public class PolicyInfo extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Optional list of condition expressions used to match table columns.
-     * Only valid when `for_securable_type` is `table`.
+     * Only valid when `for_securable_type` is `TABLE`.
      * When specified, the policy only applies to tables whose columns satisfy all match conditions
      * 
      */
@@ -154,16 +154,16 @@ public class PolicyInfo extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.matchColumns);
     }
     /**
-     * Name of the policy. Required on create and ignored on update.
-     * To update the name, use the `new_name` field
+     * Name of the policy. Required on create and optional on update.
+     * To rename the policy, set `name` to a different value on update
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Name of the policy. Required on create and ignored on update.
-     * To update the name, use the `new_name` field
+     * @return Name of the policy. Required on create and optional on update.
+     * To rename the policy, set `name` to a different value on update
      * 
      */
     public Output<String> name() {
@@ -187,7 +187,7 @@ public class PolicyInfo extends com.pulumi.resources.CustomResource {
     }
     /**
      * Type of the securable on which the policy is defined.
-     * Only `catalog`, `schema` and `table` are supported at this moment.
+     * Only `CATALOG`, `SCHEMA` and `TABLE` are supported at this moment.
      * Required on create and ignored on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
      * 
      */
@@ -196,7 +196,7 @@ public class PolicyInfo extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Type of the securable on which the policy is defined.
-     * Only `catalog`, `schema` and `table` are supported at this moment.
+     * Only `CATALOG`, `SCHEMA` and `TABLE` are supported at this moment.
      * Required on create and ignored on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
      * 
      */
@@ -292,6 +292,20 @@ public class PolicyInfo extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> whenCondition() {
         return Codegen.optional(this.whenCondition);
+    }
+    /**
+     * Workspace ID of the resource
+     * 
+     */
+    @Export(name="workspaceId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> workspaceId;
+
+    /**
+     * @return Workspace ID of the resource
+     * 
+     */
+    public Output<Optional<String>> workspaceId() {
+        return Codegen.optional(this.workspaceId);
     }
 
     /**

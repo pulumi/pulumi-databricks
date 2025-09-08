@@ -29,6 +29,7 @@ export function getDatabaseSyncedDatabaseTable(args: GetDatabaseSyncedDatabaseTa
         "logicalDatabaseName": args.logicalDatabaseName,
         "name": args.name,
         "spec": args.spec,
+        "workspaceId": args.workspaceId,
     }, opts);
 }
 
@@ -55,6 +56,10 @@ export interface GetDatabaseSyncedDatabaseTableArgs {
      * (SyncedTableSpec)
      */
     spec?: inputs.GetDatabaseSyncedDatabaseTableSpec;
+    /**
+     * Workspace ID of the resource
+     */
+    workspaceId?: string;
 }
 
 /**
@@ -103,6 +108,7 @@ export interface GetDatabaseSyncedDatabaseTableResult {
      * may be in "PROVISIONING" as it runs asynchronously). Possible values are: `ACTIVE`, `DEGRADED`, `DELETING`, `FAILED`, `PROVISIONING`, `UPDATING`
      */
     readonly unityCatalogProvisioningState: string;
+    readonly workspaceId?: string;
 }
 /**
  * This data source can be used to get a single Synced Database Table.
@@ -127,6 +133,7 @@ export function getDatabaseSyncedDatabaseTableOutput(args: GetDatabaseSyncedData
         "logicalDatabaseName": args.logicalDatabaseName,
         "name": args.name,
         "spec": args.spec,
+        "workspaceId": args.workspaceId,
     }, opts);
 }
 
@@ -153,4 +160,8 @@ export interface GetDatabaseSyncedDatabaseTableOutputArgs {
      * (SyncedTableSpec)
      */
     spec?: pulumi.Input<inputs.GetDatabaseSyncedDatabaseTableSpecArgs>;
+    /**
+     * Workspace ID of the resource
+     */
+    workspaceId?: pulumi.Input<string>;
 }

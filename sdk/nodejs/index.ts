@@ -10,10 +10,20 @@ export type AccessControlRuleSet = import("./accessControlRuleSet").AccessContro
 export const AccessControlRuleSet: typeof import("./accessControlRuleSet").AccessControlRuleSet = null as any;
 utilities.lazyLoad(exports, ["AccessControlRuleSet"], () => require("./accessControlRuleSet"));
 
+export { AccountFederationPolicyArgs, AccountFederationPolicyState } from "./accountFederationPolicy";
+export type AccountFederationPolicy = import("./accountFederationPolicy").AccountFederationPolicy;
+export const AccountFederationPolicy: typeof import("./accountFederationPolicy").AccountFederationPolicy = null as any;
+utilities.lazyLoad(exports, ["AccountFederationPolicy"], () => require("./accountFederationPolicy"));
+
 export { AccountNetworkPolicyArgs, AccountNetworkPolicyState } from "./accountNetworkPolicy";
 export type AccountNetworkPolicy = import("./accountNetworkPolicy").AccountNetworkPolicy;
 export const AccountNetworkPolicy: typeof import("./accountNetworkPolicy").AccountNetworkPolicy = null as any;
 utilities.lazyLoad(exports, ["AccountNetworkPolicy"], () => require("./accountNetworkPolicy"));
+
+export { AccountSettingV2Args, AccountSettingV2State } from "./accountSettingV2";
+export type AccountSettingV2 = import("./accountSettingV2").AccountSettingV2;
+export const AccountSettingV2: typeof import("./accountSettingV2").AccountSettingV2 = null as any;
+utilities.lazyLoad(exports, ["AccountSettingV2"], () => require("./accountSettingV2"));
 
 export { AibiDashboardEmbeddingAccessPolicySettingArgs, AibiDashboardEmbeddingAccessPolicySettingState } from "./aibiDashboardEmbeddingAccessPolicySetting";
 export type AibiDashboardEmbeddingAccessPolicySetting = import("./aibiDashboardEmbeddingAccessPolicySetting").AibiDashboardEmbeddingAccessPolicySetting;
@@ -39,6 +49,11 @@ export { AppArgs, AppState } from "./app";
 export type App = import("./app").App;
 export const App: typeof import("./app").App = null as any;
 utilities.lazyLoad(exports, ["App"], () => require("./app"));
+
+export { AppsSettingsCustomTemplateArgs, AppsSettingsCustomTemplateState } from "./appsSettingsCustomTemplate";
+export type AppsSettingsCustomTemplate = import("./appsSettingsCustomTemplate").AppsSettingsCustomTemplate;
+export const AppsSettingsCustomTemplate: typeof import("./appsSettingsCustomTemplate").AppsSettingsCustomTemplate = null as any;
+utilities.lazyLoad(exports, ["AppsSettingsCustomTemplate"], () => require("./appsSettingsCustomTemplate"));
 
 export { ArtifactAllowlistArgs, ArtifactAllowlistState } from "./artifactAllowlist";
 export type ArtifactAllowlist = import("./artifactAllowlist").ArtifactAllowlist;
@@ -175,6 +190,11 @@ export type Entitlements = import("./entitlements").Entitlements;
 export const Entitlements: typeof import("./entitlements").Entitlements = null as any;
 utilities.lazyLoad(exports, ["Entitlements"], () => require("./entitlements"));
 
+export { EntityTagAssignmentArgs, EntityTagAssignmentState } from "./entityTagAssignment";
+export type EntityTagAssignment = import("./entityTagAssignment").EntityTagAssignment;
+export const EntityTagAssignment: typeof import("./entityTagAssignment").EntityTagAssignment = null as any;
+utilities.lazyLoad(exports, ["EntityTagAssignment"], () => require("./entityTagAssignment"));
+
 export { ExternalLocationArgs, ExternalLocationState } from "./externalLocation";
 export type ExternalLocation = import("./externalLocation").ExternalLocation;
 export const ExternalLocation: typeof import("./externalLocation").ExternalLocation = null as any;
@@ -190,6 +210,16 @@ export type File = import("./file").File;
 export const File: typeof import("./file").File = null as any;
 utilities.lazyLoad(exports, ["File"], () => require("./file"));
 
+export { GetAccountFederationPoliciesResult } from "./getAccountFederationPolicies";
+export const getAccountFederationPolicies: typeof import("./getAccountFederationPolicies").getAccountFederationPolicies = null as any;
+export const getAccountFederationPoliciesOutput: typeof import("./getAccountFederationPolicies").getAccountFederationPoliciesOutput = null as any;
+utilities.lazyLoad(exports, ["getAccountFederationPolicies","getAccountFederationPoliciesOutput"], () => require("./getAccountFederationPolicies"));
+
+export { GetAccountFederationPolicyArgs, GetAccountFederationPolicyResult, GetAccountFederationPolicyOutputArgs } from "./getAccountFederationPolicy";
+export const getAccountFederationPolicy: typeof import("./getAccountFederationPolicy").getAccountFederationPolicy = null as any;
+export const getAccountFederationPolicyOutput: typeof import("./getAccountFederationPolicy").getAccountFederationPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getAccountFederationPolicy","getAccountFederationPolicyOutput"], () => require("./getAccountFederationPolicy"));
+
 export { GetAccountNetworkPoliciesResult } from "./getAccountNetworkPolicies";
 export const getAccountNetworkPolicies: typeof import("./getAccountNetworkPolicies").getAccountNetworkPolicies = null as any;
 export const getAccountNetworkPoliciesOutput: typeof import("./getAccountNetworkPolicies").getAccountNetworkPoliciesOutput = null as any;
@@ -200,12 +230,17 @@ export const getAccountNetworkPolicy: typeof import("./getAccountNetworkPolicy")
 export const getAccountNetworkPolicyOutput: typeof import("./getAccountNetworkPolicy").getAccountNetworkPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getAccountNetworkPolicy","getAccountNetworkPolicyOutput"], () => require("./getAccountNetworkPolicy"));
 
+export { GetAccountSettingV2Args, GetAccountSettingV2Result, GetAccountSettingV2OutputArgs } from "./getAccountSettingV2";
+export const getAccountSettingV2: typeof import("./getAccountSettingV2").getAccountSettingV2 = null as any;
+export const getAccountSettingV2Output: typeof import("./getAccountSettingV2").getAccountSettingV2Output = null as any;
+utilities.lazyLoad(exports, ["getAccountSettingV2","getAccountSettingV2Output"], () => require("./getAccountSettingV2"));
+
 export { GetAlertV2Args, GetAlertV2Result, GetAlertV2OutputArgs } from "./getAlertV2";
 export const getAlertV2: typeof import("./getAlertV2").getAlertV2 = null as any;
 export const getAlertV2Output: typeof import("./getAlertV2").getAlertV2Output = null as any;
 utilities.lazyLoad(exports, ["getAlertV2","getAlertV2Output"], () => require("./getAlertV2"));
 
-export { GetAlertsV2Result } from "./getAlertsV2";
+export { GetAlertsV2Args, GetAlertsV2Result, GetAlertsV2OutputArgs } from "./getAlertsV2";
 export const getAlertsV2: typeof import("./getAlertsV2").getAlertsV2 = null as any;
 export const getAlertsV2Output: typeof import("./getAlertsV2").getAlertsV2Output = null as any;
 utilities.lazyLoad(exports, ["getAlertsV2","getAlertsV2Output"], () => require("./getAlertsV2"));
@@ -219,6 +254,16 @@ export { GetAppsResult } from "./getApps";
 export const getApps: typeof import("./getApps").getApps = null as any;
 export const getAppsOutput: typeof import("./getApps").getAppsOutput = null as any;
 utilities.lazyLoad(exports, ["getApps","getAppsOutput"], () => require("./getApps"));
+
+export { GetAppsSettingsCustomTemplateArgs, GetAppsSettingsCustomTemplateResult, GetAppsSettingsCustomTemplateOutputArgs } from "./getAppsSettingsCustomTemplate";
+export const getAppsSettingsCustomTemplate: typeof import("./getAppsSettingsCustomTemplate").getAppsSettingsCustomTemplate = null as any;
+export const getAppsSettingsCustomTemplateOutput: typeof import("./getAppsSettingsCustomTemplate").getAppsSettingsCustomTemplateOutput = null as any;
+utilities.lazyLoad(exports, ["getAppsSettingsCustomTemplate","getAppsSettingsCustomTemplateOutput"], () => require("./getAppsSettingsCustomTemplate"));
+
+export { GetAppsSettingsCustomTemplatesArgs, GetAppsSettingsCustomTemplatesResult, GetAppsSettingsCustomTemplatesOutputArgs } from "./getAppsSettingsCustomTemplates";
+export const getAppsSettingsCustomTemplates: typeof import("./getAppsSettingsCustomTemplates").getAppsSettingsCustomTemplates = null as any;
+export const getAppsSettingsCustomTemplatesOutput: typeof import("./getAppsSettingsCustomTemplates").getAppsSettingsCustomTemplatesOutput = null as any;
+utilities.lazyLoad(exports, ["getAppsSettingsCustomTemplates","getAppsSettingsCustomTemplatesOutput"], () => require("./getAppsSettingsCustomTemplates"));
 
 export { GetAwsAssumeRolePolicyArgs, GetAwsAssumeRolePolicyResult, GetAwsAssumeRolePolicyOutputArgs } from "./getAwsAssumeRolePolicy";
 export const getAwsAssumeRolePolicy: typeof import("./getAwsAssumeRolePolicy").getAwsAssumeRolePolicy = null as any;
@@ -275,12 +320,12 @@ export const getCleanRoomAssetRevisionsCleanRoomAsset: typeof import("./getClean
 export const getCleanRoomAssetRevisionsCleanRoomAssetOutput: typeof import("./getCleanRoomAssetRevisionsCleanRoomAsset").getCleanRoomAssetRevisionsCleanRoomAssetOutput = null as any;
 utilities.lazyLoad(exports, ["getCleanRoomAssetRevisionsCleanRoomAsset","getCleanRoomAssetRevisionsCleanRoomAssetOutput"], () => require("./getCleanRoomAssetRevisionsCleanRoomAsset"));
 
-export { GetCleanRoomAssetRevisionsCleanRoomAssetsResult } from "./getCleanRoomAssetRevisionsCleanRoomAssets";
+export { GetCleanRoomAssetRevisionsCleanRoomAssetsArgs, GetCleanRoomAssetRevisionsCleanRoomAssetsResult, GetCleanRoomAssetRevisionsCleanRoomAssetsOutputArgs } from "./getCleanRoomAssetRevisionsCleanRoomAssets";
 export const getCleanRoomAssetRevisionsCleanRoomAssets: typeof import("./getCleanRoomAssetRevisionsCleanRoomAssets").getCleanRoomAssetRevisionsCleanRoomAssets = null as any;
 export const getCleanRoomAssetRevisionsCleanRoomAssetsOutput: typeof import("./getCleanRoomAssetRevisionsCleanRoomAssets").getCleanRoomAssetRevisionsCleanRoomAssetsOutput = null as any;
 utilities.lazyLoad(exports, ["getCleanRoomAssetRevisionsCleanRoomAssets","getCleanRoomAssetRevisionsCleanRoomAssetsOutput"], () => require("./getCleanRoomAssetRevisionsCleanRoomAssets"));
 
-export { GetCleanRoomAssetsResult } from "./getCleanRoomAssets";
+export { GetCleanRoomAssetsArgs, GetCleanRoomAssetsResult, GetCleanRoomAssetsOutputArgs } from "./getCleanRoomAssets";
 export const getCleanRoomAssets: typeof import("./getCleanRoomAssets").getCleanRoomAssets = null as any;
 export const getCleanRoomAssetsOutput: typeof import("./getCleanRoomAssets").getCleanRoomAssetsOutput = null as any;
 utilities.lazyLoad(exports, ["getCleanRoomAssets","getCleanRoomAssetsOutput"], () => require("./getCleanRoomAssets"));
@@ -290,7 +335,7 @@ export const getCleanRoomAutoApprovalRule: typeof import("./getCleanRoomAutoAppr
 export const getCleanRoomAutoApprovalRuleOutput: typeof import("./getCleanRoomAutoApprovalRule").getCleanRoomAutoApprovalRuleOutput = null as any;
 utilities.lazyLoad(exports, ["getCleanRoomAutoApprovalRule","getCleanRoomAutoApprovalRuleOutput"], () => require("./getCleanRoomAutoApprovalRule"));
 
-export { GetCleanRoomAutoApprovalRulesResult } from "./getCleanRoomAutoApprovalRules";
+export { GetCleanRoomAutoApprovalRulesArgs, GetCleanRoomAutoApprovalRulesResult, GetCleanRoomAutoApprovalRulesOutputArgs } from "./getCleanRoomAutoApprovalRules";
 export const getCleanRoomAutoApprovalRules: typeof import("./getCleanRoomAutoApprovalRules").getCleanRoomAutoApprovalRules = null as any;
 export const getCleanRoomAutoApprovalRulesOutput: typeof import("./getCleanRoomAutoApprovalRules").getCleanRoomAutoApprovalRulesOutput = null as any;
 utilities.lazyLoad(exports, ["getCleanRoomAutoApprovalRules","getCleanRoomAutoApprovalRulesOutput"], () => require("./getCleanRoomAutoApprovalRules"));
@@ -300,7 +345,7 @@ export const getCleanRoomsCleanRoom: typeof import("./getCleanRoomsCleanRoom").g
 export const getCleanRoomsCleanRoomOutput: typeof import("./getCleanRoomsCleanRoom").getCleanRoomsCleanRoomOutput = null as any;
 utilities.lazyLoad(exports, ["getCleanRoomsCleanRoom","getCleanRoomsCleanRoomOutput"], () => require("./getCleanRoomsCleanRoom"));
 
-export { GetCleanRoomsCleanRoomsResult } from "./getCleanRoomsCleanRooms";
+export { GetCleanRoomsCleanRoomsArgs, GetCleanRoomsCleanRoomsResult, GetCleanRoomsCleanRoomsOutputArgs } from "./getCleanRoomsCleanRooms";
 export const getCleanRoomsCleanRooms: typeof import("./getCleanRoomsCleanRooms").getCleanRoomsCleanRooms = null as any;
 export const getCleanRoomsCleanRoomsOutput: typeof import("./getCleanRoomsCleanRooms").getCleanRoomsCleanRoomsOutput = null as any;
 utilities.lazyLoad(exports, ["getCleanRoomsCleanRooms","getCleanRoomsCleanRoomsOutput"], () => require("./getCleanRoomsCleanRooms"));
@@ -345,7 +390,7 @@ export const getDatabaseDatabaseCatalog: typeof import("./getDatabaseDatabaseCat
 export const getDatabaseDatabaseCatalogOutput: typeof import("./getDatabaseDatabaseCatalog").getDatabaseDatabaseCatalogOutput = null as any;
 utilities.lazyLoad(exports, ["getDatabaseDatabaseCatalog","getDatabaseDatabaseCatalogOutput"], () => require("./getDatabaseDatabaseCatalog"));
 
-export { GetDatabaseDatabaseCatalogsResult } from "./getDatabaseDatabaseCatalogs";
+export { GetDatabaseDatabaseCatalogsArgs, GetDatabaseDatabaseCatalogsResult, GetDatabaseDatabaseCatalogsOutputArgs } from "./getDatabaseDatabaseCatalogs";
 export const getDatabaseDatabaseCatalogs: typeof import("./getDatabaseDatabaseCatalogs").getDatabaseDatabaseCatalogs = null as any;
 export const getDatabaseDatabaseCatalogsOutput: typeof import("./getDatabaseDatabaseCatalogs").getDatabaseDatabaseCatalogsOutput = null as any;
 utilities.lazyLoad(exports, ["getDatabaseDatabaseCatalogs","getDatabaseDatabaseCatalogsOutput"], () => require("./getDatabaseDatabaseCatalogs"));
@@ -355,7 +400,7 @@ export const getDatabaseInstance: typeof import("./getDatabaseInstance").getData
 export const getDatabaseInstanceOutput: typeof import("./getDatabaseInstance").getDatabaseInstanceOutput = null as any;
 utilities.lazyLoad(exports, ["getDatabaseInstance","getDatabaseInstanceOutput"], () => require("./getDatabaseInstance"));
 
-export { GetDatabaseInstancesResult } from "./getDatabaseInstances";
+export { GetDatabaseInstancesArgs, GetDatabaseInstancesResult, GetDatabaseInstancesOutputArgs } from "./getDatabaseInstances";
 export const getDatabaseInstances: typeof import("./getDatabaseInstances").getDatabaseInstances = null as any;
 export const getDatabaseInstancesOutput: typeof import("./getDatabaseInstances").getDatabaseInstancesOutput = null as any;
 utilities.lazyLoad(exports, ["getDatabaseInstances","getDatabaseInstancesOutput"], () => require("./getDatabaseInstances"));
@@ -365,7 +410,7 @@ export const getDatabaseSyncedDatabaseTable: typeof import("./getDatabaseSyncedD
 export const getDatabaseSyncedDatabaseTableOutput: typeof import("./getDatabaseSyncedDatabaseTable").getDatabaseSyncedDatabaseTableOutput = null as any;
 utilities.lazyLoad(exports, ["getDatabaseSyncedDatabaseTable","getDatabaseSyncedDatabaseTableOutput"], () => require("./getDatabaseSyncedDatabaseTable"));
 
-export { GetDatabaseSyncedDatabaseTablesResult } from "./getDatabaseSyncedDatabaseTables";
+export { GetDatabaseSyncedDatabaseTablesArgs, GetDatabaseSyncedDatabaseTablesResult, GetDatabaseSyncedDatabaseTablesOutputArgs } from "./getDatabaseSyncedDatabaseTables";
 export const getDatabaseSyncedDatabaseTables: typeof import("./getDatabaseSyncedDatabaseTables").getDatabaseSyncedDatabaseTables = null as any;
 export const getDatabaseSyncedDatabaseTablesOutput: typeof import("./getDatabaseSyncedDatabaseTables").getDatabaseSyncedDatabaseTablesOutput = null as any;
 utilities.lazyLoad(exports, ["getDatabaseSyncedDatabaseTables","getDatabaseSyncedDatabaseTablesOutput"], () => require("./getDatabaseSyncedDatabaseTables"));
@@ -385,6 +430,16 @@ export const getDirectory: typeof import("./getDirectory").getDirectory = null a
 export const getDirectoryOutput: typeof import("./getDirectory").getDirectoryOutput = null as any;
 utilities.lazyLoad(exports, ["getDirectory","getDirectoryOutput"], () => require("./getDirectory"));
 
+export { GetEntityTagAssignmentArgs, GetEntityTagAssignmentResult, GetEntityTagAssignmentOutputArgs } from "./getEntityTagAssignment";
+export const getEntityTagAssignment: typeof import("./getEntityTagAssignment").getEntityTagAssignment = null as any;
+export const getEntityTagAssignmentOutput: typeof import("./getEntityTagAssignment").getEntityTagAssignmentOutput = null as any;
+utilities.lazyLoad(exports, ["getEntityTagAssignment","getEntityTagAssignmentOutput"], () => require("./getEntityTagAssignment"));
+
+export { GetEntityTagAssignmentsArgs, GetEntityTagAssignmentsResult, GetEntityTagAssignmentsOutputArgs } from "./getEntityTagAssignments";
+export const getEntityTagAssignments: typeof import("./getEntityTagAssignments").getEntityTagAssignments = null as any;
+export const getEntityTagAssignmentsOutput: typeof import("./getEntityTagAssignments").getEntityTagAssignmentsOutput = null as any;
+utilities.lazyLoad(exports, ["getEntityTagAssignments","getEntityTagAssignmentsOutput"], () => require("./getEntityTagAssignments"));
+
 export { GetExternalLocationArgs, GetExternalLocationResult, GetExternalLocationOutputArgs } from "./getExternalLocation";
 export const getExternalLocation: typeof import("./getExternalLocation").getExternalLocation = null as any;
 export const getExternalLocationOutput: typeof import("./getExternalLocation").getExternalLocationOutput = null as any;
@@ -400,7 +455,7 @@ export const getExternalMetadata: typeof import("./getExternalMetadata").getExte
 export const getExternalMetadataOutput: typeof import("./getExternalMetadata").getExternalMetadataOutput = null as any;
 utilities.lazyLoad(exports, ["getExternalMetadata","getExternalMetadataOutput"], () => require("./getExternalMetadata"));
 
-export { GetExternalMetadatasResult } from "./getExternalMetadatas";
+export { GetExternalMetadatasArgs, GetExternalMetadatasResult, GetExternalMetadatasOutputArgs } from "./getExternalMetadatas";
 export const getExternalMetadatas: typeof import("./getExternalMetadatas").getExternalMetadatas = null as any;
 export const getExternalMetadatasOutput: typeof import("./getExternalMetadatas").getExternalMetadatasOutput = null as any;
 utilities.lazyLoad(exports, ["getExternalMetadatas","getExternalMetadatasOutput"], () => require("./getExternalMetadatas"));
@@ -440,7 +495,7 @@ export const getMaterializedFeaturesFeatureTag: typeof import("./getMaterialized
 export const getMaterializedFeaturesFeatureTagOutput: typeof import("./getMaterializedFeaturesFeatureTag").getMaterializedFeaturesFeatureTagOutput = null as any;
 utilities.lazyLoad(exports, ["getMaterializedFeaturesFeatureTag","getMaterializedFeaturesFeatureTagOutput"], () => require("./getMaterializedFeaturesFeatureTag"));
 
-export { GetMaterializedFeaturesFeatureTagsResult } from "./getMaterializedFeaturesFeatureTags";
+export { GetMaterializedFeaturesFeatureTagsArgs, GetMaterializedFeaturesFeatureTagsResult, GetMaterializedFeaturesFeatureTagsOutputArgs } from "./getMaterializedFeaturesFeatureTags";
 export const getMaterializedFeaturesFeatureTags: typeof import("./getMaterializedFeaturesFeatureTags").getMaterializedFeaturesFeatureTags = null as any;
 export const getMaterializedFeaturesFeatureTagsOutput: typeof import("./getMaterializedFeaturesFeatureTags").getMaterializedFeaturesFeatureTagsOutput = null as any;
 utilities.lazyLoad(exports, ["getMaterializedFeaturesFeatureTags","getMaterializedFeaturesFeatureTagsOutput"], () => require("./getMaterializedFeaturesFeatureTags"));
@@ -515,7 +570,7 @@ export const getOnlineStore: typeof import("./getOnlineStore").getOnlineStore = 
 export const getOnlineStoreOutput: typeof import("./getOnlineStore").getOnlineStoreOutput = null as any;
 utilities.lazyLoad(exports, ["getOnlineStore","getOnlineStoreOutput"], () => require("./getOnlineStore"));
 
-export { GetOnlineStoresResult } from "./getOnlineStores";
+export { GetOnlineStoresArgs, GetOnlineStoresResult, GetOnlineStoresOutputArgs } from "./getOnlineStores";
 export const getOnlineStores: typeof import("./getOnlineStores").getOnlineStores = null as any;
 export const getOnlineStoresOutput: typeof import("./getOnlineStores").getOnlineStoresOutput = null as any;
 utilities.lazyLoad(exports, ["getOnlineStores","getOnlineStoresOutput"], () => require("./getOnlineStores"));
@@ -530,7 +585,7 @@ export const getPolicyInfo: typeof import("./getPolicyInfo").getPolicyInfo = nul
 export const getPolicyInfoOutput: typeof import("./getPolicyInfo").getPolicyInfoOutput = null as any;
 utilities.lazyLoad(exports, ["getPolicyInfo","getPolicyInfoOutput"], () => require("./getPolicyInfo"));
 
-export { GetPolicyInfosResult } from "./getPolicyInfos";
+export { GetPolicyInfosArgs, GetPolicyInfosResult, GetPolicyInfosOutputArgs } from "./getPolicyInfos";
 export const getPolicyInfos: typeof import("./getPolicyInfos").getPolicyInfos = null as any;
 export const getPolicyInfosOutput: typeof import("./getPolicyInfos").getPolicyInfosOutput = null as any;
 utilities.lazyLoad(exports, ["getPolicyInfos","getPolicyInfosOutput"], () => require("./getPolicyInfos"));
@@ -540,12 +595,12 @@ export const getQualityMonitorV2: typeof import("./getQualityMonitorV2").getQual
 export const getQualityMonitorV2Output: typeof import("./getQualityMonitorV2").getQualityMonitorV2Output = null as any;
 utilities.lazyLoad(exports, ["getQualityMonitorV2","getQualityMonitorV2Output"], () => require("./getQualityMonitorV2"));
 
-export { GetQualityMonitorsV2Result } from "./getQualityMonitorsV2";
+export { GetQualityMonitorsV2Args, GetQualityMonitorsV2Result, GetQualityMonitorsV2OutputArgs } from "./getQualityMonitorsV2";
 export const getQualityMonitorsV2: typeof import("./getQualityMonitorsV2").getQualityMonitorsV2 = null as any;
 export const getQualityMonitorsV2Output: typeof import("./getQualityMonitorsV2").getQualityMonitorsV2Output = null as any;
 utilities.lazyLoad(exports, ["getQualityMonitorsV2","getQualityMonitorsV2Output"], () => require("./getQualityMonitorsV2"));
 
-export { GetRecipientFederationPoliciesResult } from "./getRecipientFederationPolicies";
+export { GetRecipientFederationPoliciesArgs, GetRecipientFederationPoliciesResult, GetRecipientFederationPoliciesOutputArgs } from "./getRecipientFederationPolicies";
 export const getRecipientFederationPolicies: typeof import("./getRecipientFederationPolicies").getRecipientFederationPolicies = null as any;
 export const getRecipientFederationPoliciesOutput: typeof import("./getRecipientFederationPolicies").getRecipientFederationPoliciesOutput = null as any;
 utilities.lazyLoad(exports, ["getRecipientFederationPolicies","getRecipientFederationPoliciesOutput"], () => require("./getRecipientFederationPolicies"));
@@ -579,6 +634,16 @@ export { GetServicePrincipalArgs, GetServicePrincipalResult, GetServicePrincipal
 export const getServicePrincipal: typeof import("./getServicePrincipal").getServicePrincipal = null as any;
 export const getServicePrincipalOutput: typeof import("./getServicePrincipal").getServicePrincipalOutput = null as any;
 utilities.lazyLoad(exports, ["getServicePrincipal","getServicePrincipalOutput"], () => require("./getServicePrincipal"));
+
+export { GetServicePrincipalFederationPoliciesArgs, GetServicePrincipalFederationPoliciesResult, GetServicePrincipalFederationPoliciesOutputArgs } from "./getServicePrincipalFederationPolicies";
+export const getServicePrincipalFederationPolicies: typeof import("./getServicePrincipalFederationPolicies").getServicePrincipalFederationPolicies = null as any;
+export const getServicePrincipalFederationPoliciesOutput: typeof import("./getServicePrincipalFederationPolicies").getServicePrincipalFederationPoliciesOutput = null as any;
+utilities.lazyLoad(exports, ["getServicePrincipalFederationPolicies","getServicePrincipalFederationPoliciesOutput"], () => require("./getServicePrincipalFederationPolicies"));
+
+export { GetServicePrincipalFederationPolicyArgs, GetServicePrincipalFederationPolicyResult, GetServicePrincipalFederationPolicyOutputArgs } from "./getServicePrincipalFederationPolicy";
+export const getServicePrincipalFederationPolicy: typeof import("./getServicePrincipalFederationPolicy").getServicePrincipalFederationPolicy = null as any;
+export const getServicePrincipalFederationPolicyOutput: typeof import("./getServicePrincipalFederationPolicy").getServicePrincipalFederationPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getServicePrincipalFederationPolicy","getServicePrincipalFederationPolicyOutput"], () => require("./getServicePrincipalFederationPolicy"));
 
 export { GetServicePrincipalsArgs, GetServicePrincipalsResult, GetServicePrincipalsOutputArgs } from "./getServicePrincipals";
 export const getServicePrincipals: typeof import("./getServicePrincipals").getServicePrincipals = null as any;
@@ -635,6 +700,16 @@ export const getTables: typeof import("./getTables").getTables = null as any;
 export const getTablesOutput: typeof import("./getTables").getTablesOutput = null as any;
 utilities.lazyLoad(exports, ["getTables","getTablesOutput"], () => require("./getTables"));
 
+export { GetTagPoliciesArgs, GetTagPoliciesResult, GetTagPoliciesOutputArgs } from "./getTagPolicies";
+export const getTagPolicies: typeof import("./getTagPolicies").getTagPolicies = null as any;
+export const getTagPoliciesOutput: typeof import("./getTagPolicies").getTagPoliciesOutput = null as any;
+utilities.lazyLoad(exports, ["getTagPolicies","getTagPoliciesOutput"], () => require("./getTagPolicies"));
+
+export { GetTagPolicyArgs, GetTagPolicyResult, GetTagPolicyOutputArgs } from "./getTagPolicy";
+export const getTagPolicy: typeof import("./getTagPolicy").getTagPolicy = null as any;
+export const getTagPolicyOutput: typeof import("./getTagPolicy").getTagPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getTagPolicy","getTagPolicyOutput"], () => require("./getTagPolicy"));
+
 export { GetUserArgs, GetUserResult, GetUserOutputArgs } from "./getUser";
 export const getUser: typeof import("./getUser").getUser = null as any;
 export const getUserOutput: typeof import("./getUser").getUserOutput = null as any;
@@ -659,6 +734,11 @@ export { GetWorkspaceNetworkOptionArgs, GetWorkspaceNetworkOptionResult, GetWork
 export const getWorkspaceNetworkOption: typeof import("./getWorkspaceNetworkOption").getWorkspaceNetworkOption = null as any;
 export const getWorkspaceNetworkOptionOutput: typeof import("./getWorkspaceNetworkOption").getWorkspaceNetworkOptionOutput = null as any;
 utilities.lazyLoad(exports, ["getWorkspaceNetworkOption","getWorkspaceNetworkOptionOutput"], () => require("./getWorkspaceNetworkOption"));
+
+export { GetWorkspaceSettingV2Args, GetWorkspaceSettingV2Result, GetWorkspaceSettingV2OutputArgs } from "./getWorkspaceSettingV2";
+export const getWorkspaceSettingV2: typeof import("./getWorkspaceSettingV2").getWorkspaceSettingV2 = null as any;
+export const getWorkspaceSettingV2Output: typeof import("./getWorkspaceSettingV2").getWorkspaceSettingV2Output = null as any;
+utilities.lazyLoad(exports, ["getWorkspaceSettingV2","getWorkspaceSettingV2Output"], () => require("./getWorkspaceSettingV2"));
 
 export { GetZonesArgs, GetZonesResult, GetZonesOutputArgs } from "./getZones";
 export const getZones: typeof import("./getZones").getZones = null as any;
@@ -963,6 +1043,11 @@ export type ServicePrincipal = import("./servicePrincipal").ServicePrincipal;
 export const ServicePrincipal: typeof import("./servicePrincipal").ServicePrincipal = null as any;
 utilities.lazyLoad(exports, ["ServicePrincipal"], () => require("./servicePrincipal"));
 
+export { ServicePrincipalFederationPolicyArgs, ServicePrincipalFederationPolicyState } from "./servicePrincipalFederationPolicy";
+export type ServicePrincipalFederationPolicy = import("./servicePrincipalFederationPolicy").ServicePrincipalFederationPolicy;
+export const ServicePrincipalFederationPolicy: typeof import("./servicePrincipalFederationPolicy").ServicePrincipalFederationPolicy = null as any;
+utilities.lazyLoad(exports, ["ServicePrincipalFederationPolicy"], () => require("./servicePrincipalFederationPolicy"));
+
 export { ServicePrincipalRoleArgs, ServicePrincipalRoleState } from "./servicePrincipalRole";
 export type ServicePrincipalRole = import("./servicePrincipalRole").ServicePrincipalRole;
 export const ServicePrincipalRole: typeof import("./servicePrincipalRole").ServicePrincipalRole = null as any;
@@ -1038,6 +1123,11 @@ export type Table = import("./table").Table;
 export const Table: typeof import("./table").Table = null as any;
 utilities.lazyLoad(exports, ["Table"], () => require("./table"));
 
+export { TagPolicyArgs, TagPolicyState } from "./tagPolicy";
+export type TagPolicy = import("./tagPolicy").TagPolicy;
+export const TagPolicy: typeof import("./tagPolicy").TagPolicy = null as any;
+utilities.lazyLoad(exports, ["TagPolicy"], () => require("./tagPolicy"));
+
 export { TokenArgs, TokenState } from "./token";
 export type Token = import("./token").Token;
 export const Token: typeof import("./token").Token = null as any;
@@ -1093,6 +1183,11 @@ export type WorkspaceNetworkOption = import("./workspaceNetworkOption").Workspac
 export const WorkspaceNetworkOption: typeof import("./workspaceNetworkOption").WorkspaceNetworkOption = null as any;
 utilities.lazyLoad(exports, ["WorkspaceNetworkOption"], () => require("./workspaceNetworkOption"));
 
+export { WorkspaceSettingV2Args, WorkspaceSettingV2State } from "./workspaceSettingV2";
+export type WorkspaceSettingV2 = import("./workspaceSettingV2").WorkspaceSettingV2;
+export const WorkspaceSettingV2: typeof import("./workspaceSettingV2").WorkspaceSettingV2 = null as any;
+utilities.lazyLoad(exports, ["WorkspaceSettingV2"], () => require("./workspaceSettingV2"));
+
 
 // Export sub-modules:
 import * as config from "./config";
@@ -1109,8 +1204,12 @@ const _module = {
         switch (type) {
             case "databricks:index/accessControlRuleSet:AccessControlRuleSet":
                 return new AccessControlRuleSet(name, <any>undefined, { urn })
+            case "databricks:index/accountFederationPolicy:AccountFederationPolicy":
+                return new AccountFederationPolicy(name, <any>undefined, { urn })
             case "databricks:index/accountNetworkPolicy:AccountNetworkPolicy":
                 return new AccountNetworkPolicy(name, <any>undefined, { urn })
+            case "databricks:index/accountSettingV2:AccountSettingV2":
+                return new AccountSettingV2(name, <any>undefined, { urn })
             case "databricks:index/aibiDashboardEmbeddingAccessPolicySetting:AibiDashboardEmbeddingAccessPolicySetting":
                 return new AibiDashboardEmbeddingAccessPolicySetting(name, <any>undefined, { urn })
             case "databricks:index/aibiDashboardEmbeddingApprovedDomainsSetting:AibiDashboardEmbeddingApprovedDomainsSetting":
@@ -1121,6 +1220,8 @@ const _module = {
                 return new AlertV2(name, <any>undefined, { urn })
             case "databricks:index/app:App":
                 return new App(name, <any>undefined, { urn })
+            case "databricks:index/appsSettingsCustomTemplate:AppsSettingsCustomTemplate":
+                return new AppsSettingsCustomTemplate(name, <any>undefined, { urn })
             case "databricks:index/artifactAllowlist:ArtifactAllowlist":
                 return new ArtifactAllowlist(name, <any>undefined, { urn })
             case "databricks:index/automaticClusterUpdateWorkspaceSetting:AutomaticClusterUpdateWorkspaceSetting":
@@ -1175,6 +1276,8 @@ const _module = {
                 return new EnhancedSecurityMonitoringWorkspaceSetting(name, <any>undefined, { urn })
             case "databricks:index/entitlements:Entitlements":
                 return new Entitlements(name, <any>undefined, { urn })
+            case "databricks:index/entityTagAssignment:EntityTagAssignment":
+                return new EntityTagAssignment(name, <any>undefined, { urn })
             case "databricks:index/externalLocation:ExternalLocation":
                 return new ExternalLocation(name, <any>undefined, { urn })
             case "databricks:index/externalMetadata:ExternalMetadata":
@@ -1299,6 +1402,8 @@ const _module = {
                 return new SecretScope(name, <any>undefined, { urn })
             case "databricks:index/servicePrincipal:ServicePrincipal":
                 return new ServicePrincipal(name, <any>undefined, { urn })
+            case "databricks:index/servicePrincipalFederationPolicy:ServicePrincipalFederationPolicy":
+                return new ServicePrincipalFederationPolicy(name, <any>undefined, { urn })
             case "databricks:index/servicePrincipalRole:ServicePrincipalRole":
                 return new ServicePrincipalRole(name, <any>undefined, { urn })
             case "databricks:index/servicePrincipalSecret:ServicePrincipalSecret":
@@ -1329,6 +1434,8 @@ const _module = {
                 return new SystemSchema(name, <any>undefined, { urn })
             case "databricks:index/table:Table":
                 return new Table(name, <any>undefined, { urn })
+            case "databricks:index/tagPolicy:TagPolicy":
+                return new TagPolicy(name, <any>undefined, { urn })
             case "databricks:index/token:Token":
                 return new Token(name, <any>undefined, { urn })
             case "databricks:index/user:User":
@@ -1351,18 +1458,23 @@ const _module = {
                 return new WorkspaceFile(name, <any>undefined, { urn })
             case "databricks:index/workspaceNetworkOption:WorkspaceNetworkOption":
                 return new WorkspaceNetworkOption(name, <any>undefined, { urn })
+            case "databricks:index/workspaceSettingV2:WorkspaceSettingV2":
+                return new WorkspaceSettingV2(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
 pulumi.runtime.registerResourceModule("databricks", "index/accessControlRuleSet", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/accountFederationPolicy", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/accountNetworkPolicy", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/accountSettingV2", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/aibiDashboardEmbeddingAccessPolicySetting", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/aibiDashboardEmbeddingApprovedDomainsSetting", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/alert", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/alertV2", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/app", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/appsSettingsCustomTemplate", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/artifactAllowlist", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/automaticClusterUpdateWorkspaceSetting", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/budget", _module)
@@ -1390,6 +1502,7 @@ pulumi.runtime.registerResourceModule("databricks", "index/disableLegacyDbfsSett
 pulumi.runtime.registerResourceModule("databricks", "index/disableLegacyFeaturesSetting", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/enhancedSecurityMonitoringWorkspaceSetting", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/entitlements", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/entityTagAssignment", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/externalLocation", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/externalMetadata", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/file", _module)
@@ -1452,6 +1565,7 @@ pulumi.runtime.registerResourceModule("databricks", "index/secret", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/secretAcl", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/secretScope", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/servicePrincipal", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/servicePrincipalFederationPolicy", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/servicePrincipalRole", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/servicePrincipalSecret", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/share", _module)
@@ -1467,6 +1581,7 @@ pulumi.runtime.registerResourceModule("databricks", "index/sqlWidget", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/storageCredential", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/systemSchema", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/table", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/tagPolicy", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/token", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/user", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/userInstanceProfile", _module)
@@ -1478,6 +1593,7 @@ pulumi.runtime.registerResourceModule("databricks", "index/workspaceBinding", _m
 pulumi.runtime.registerResourceModule("databricks", "index/workspaceConf", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/workspaceFile", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/workspaceNetworkOption", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/workspaceSettingV2", _module)
 pulumi.runtime.registerResourcePackage("databricks", {
     version: utilities.getVersion(),
     constructProvider: (name: string, type: string, urn: string): pulumi.ProviderResource => {

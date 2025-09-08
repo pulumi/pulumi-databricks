@@ -9,6 +9,8 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetRecipientFederationPoliciesResult {
@@ -18,6 +20,7 @@ public final class GetRecipientFederationPoliciesResult {
      */
     private String id;
     private List<GetRecipientFederationPoliciesPolicy> policies;
+    private @Nullable String workspaceId;
 
     private GetRecipientFederationPoliciesResult() {}
     /**
@@ -29,6 +32,9 @@ public final class GetRecipientFederationPoliciesResult {
     }
     public List<GetRecipientFederationPoliciesPolicy> policies() {
         return this.policies;
+    }
+    public Optional<String> workspaceId() {
+        return Optional.ofNullable(this.workspaceId);
     }
 
     public static Builder builder() {
@@ -42,11 +48,13 @@ public final class GetRecipientFederationPoliciesResult {
     public static final class Builder {
         private String id;
         private List<GetRecipientFederationPoliciesPolicy> policies;
+        private @Nullable String workspaceId;
         public Builder() {}
         public Builder(GetRecipientFederationPoliciesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
     	      this.policies = defaults.policies;
+    	      this.workspaceId = defaults.workspaceId;
         }
 
         @CustomType.Setter
@@ -68,10 +76,17 @@ public final class GetRecipientFederationPoliciesResult {
         public Builder policies(GetRecipientFederationPoliciesPolicy... policies) {
             return policies(List.of(policies));
         }
+        @CustomType.Setter
+        public Builder workspaceId(@Nullable String workspaceId) {
+
+            this.workspaceId = workspaceId;
+            return this;
+        }
         public GetRecipientFederationPoliciesResult build() {
             final var _resultValue = new GetRecipientFederationPoliciesResult();
             _resultValue.id = id;
             _resultValue.policies = policies;
+            _resultValue.workspaceId = workspaceId;
             return _resultValue;
         }
     }

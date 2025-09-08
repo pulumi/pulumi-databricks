@@ -11,14 +11,43 @@ namespace Pulumi.Databricks
 {
     public static class GetRecipientFederationPolicies
     {
-        public static Task<GetRecipientFederationPoliciesResult> InvokeAsync(InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.InvokeAsync<GetRecipientFederationPoliciesResult>("databricks:index/getRecipientFederationPolicies:getRecipientFederationPolicies", InvokeArgs.Empty, options.WithDefaults());
+        public static Task<GetRecipientFederationPoliciesResult> InvokeAsync(GetRecipientFederationPoliciesArgs? args = null, InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetRecipientFederationPoliciesResult>("databricks:index/getRecipientFederationPolicies:getRecipientFederationPolicies", args ?? new GetRecipientFederationPoliciesArgs(), options.WithDefaults());
 
-        public static Output<GetRecipientFederationPoliciesResult> Invoke(InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.Invoke<GetRecipientFederationPoliciesResult>("databricks:index/getRecipientFederationPolicies:getRecipientFederationPolicies", InvokeArgs.Empty, options.WithDefaults());
+        public static Output<GetRecipientFederationPoliciesResult> Invoke(GetRecipientFederationPoliciesInvokeArgs? args = null, InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.Invoke<GetRecipientFederationPoliciesResult>("databricks:index/getRecipientFederationPolicies:getRecipientFederationPolicies", args ?? new GetRecipientFederationPoliciesInvokeArgs(), options.WithDefaults());
 
-        public static Output<GetRecipientFederationPoliciesResult> Invoke(InvokeOutputOptions options)
-            => global::Pulumi.Deployment.Instance.Invoke<GetRecipientFederationPoliciesResult>("databricks:index/getRecipientFederationPolicies:getRecipientFederationPolicies", InvokeArgs.Empty, options.WithDefaults());
+        public static Output<GetRecipientFederationPoliciesResult> Invoke(GetRecipientFederationPoliciesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetRecipientFederationPoliciesResult>("databricks:index/getRecipientFederationPolicies:getRecipientFederationPolicies", args ?? new GetRecipientFederationPoliciesInvokeArgs(), options.WithDefaults());
+    }
+
+
+    public sealed class GetRecipientFederationPoliciesArgs : global::Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Workspace ID of the resource
+        /// </summary>
+        [Input("workspaceId")]
+        public string? WorkspaceId { get; set; }
+
+        public GetRecipientFederationPoliciesArgs()
+        {
+        }
+        public static new GetRecipientFederationPoliciesArgs Empty => new GetRecipientFederationPoliciesArgs();
+    }
+
+    public sealed class GetRecipientFederationPoliciesInvokeArgs : global::Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Workspace ID of the resource
+        /// </summary>
+        [Input("workspaceId")]
+        public Input<string>? WorkspaceId { get; set; }
+
+        public GetRecipientFederationPoliciesInvokeArgs()
+        {
+        }
+        public static new GetRecipientFederationPoliciesInvokeArgs Empty => new GetRecipientFederationPoliciesInvokeArgs();
     }
 
 
@@ -30,15 +59,19 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<Outputs.GetRecipientFederationPoliciesPolicyResult> Policies;
+        public readonly string? WorkspaceId;
 
         [OutputConstructor]
         private GetRecipientFederationPoliciesResult(
             string id,
 
-            ImmutableArray<Outputs.GetRecipientFederationPoliciesPolicyResult> policies)
+            ImmutableArray<Outputs.GetRecipientFederationPoliciesPolicyResult> policies,
+
+            string? workspaceId)
         {
             Id = id;
             Policies = policies;
+            WorkspaceId = workspaceId;
         }
     }
 }

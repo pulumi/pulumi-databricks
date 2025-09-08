@@ -25,7 +25,7 @@ import (
 //
 // import {
 //
-//	id = id
+//	id = "id"
 //
 //	to = databricks_alert_v2.this
 //
@@ -34,7 +34,7 @@ import (
 // If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
 //
 // ```sh
-// $ pulumi import databricks:index/alertV2:AlertV2 databricks_alert_v2 id
+// $ pulumi import databricks:index/alertV2:AlertV2 databricks_alert_v2 "id"
 // ```
 type AlertV2 struct {
 	pulumi.CustomResourceState
@@ -46,8 +46,12 @@ type AlertV2 struct {
 	// Custom summary for the alert. support mustache template
 	CustomSummary pulumi.StringPtrOutput `pulumi:"customSummary"`
 	// The display name of the alert
-	DisplayName pulumi.StringPtrOutput     `pulumi:"displayName"`
-	Evaluation  AlertV2EvaluationPtrOutput `pulumi:"evaluation"`
+	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
+	// (AlertV2RunAs) - The actual identity that will be used to execute the alert.
+	// This is an output-only field that shows the resolved run-as identity after applying
+	// permissions and defaults
+	EffectiveRunAs AlertV2EffectiveRunAsOutput `pulumi:"effectiveRunAs"`
+	Evaluation     AlertV2EvaluationPtrOutput  `pulumi:"evaluation"`
 	// (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `TRASHED`
 	LifecycleState pulumi.StringOutput `pulumi:"lifecycleState"`
 	// (string) - The owner's username. This field is set to "Unavailable" if the user has been deleted
@@ -56,14 +60,23 @@ type AlertV2 struct {
 	ParentPath pulumi.StringPtrOutput `pulumi:"parentPath"`
 	// Text of the query to be run
 	QueryText pulumi.StringPtrOutput `pulumi:"queryText"`
+	// Specifies the identity that will be used to run the alert.
+	// This field allows you to configure alerts to run as a specific user or service principal.
+	// - For user identity: Set `userName` to the email of an active workspace user. Users can only set this to their own email.
+	// - For service principal: Set `servicePrincipalName` to the application ID. Requires the `servicePrincipal/user` role.
+	//   If not specified, the alert will run as the request user
+	RunAs AlertV2RunAsPtrOutput `pulumi:"runAs"`
 	// The run as username or application ID of service principal.
-	// On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
+	// On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
+	// Deprecated: Use `runAs` field instead. This field will be removed in a future release
 	RunAsUserName pulumi.StringPtrOutput   `pulumi:"runAsUserName"`
 	Schedule      AlertV2SchedulePtrOutput `pulumi:"schedule"`
 	// (string) - The timestamp indicating when the alert was updated
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 	// ID of the SQL warehouse attached to the alert
 	WarehouseId pulumi.StringPtrOutput `pulumi:"warehouseId"`
+	// Workspace ID of the resource
+	WorkspaceId pulumi.StringPtrOutput `pulumi:"workspaceId"`
 }
 
 // NewAlertV2 registers a new resource with the given unique name, arguments, and options.
@@ -103,8 +116,12 @@ type alertV2State struct {
 	// Custom summary for the alert. support mustache template
 	CustomSummary *string `pulumi:"customSummary"`
 	// The display name of the alert
-	DisplayName *string            `pulumi:"displayName"`
-	Evaluation  *AlertV2Evaluation `pulumi:"evaluation"`
+	DisplayName *string `pulumi:"displayName"`
+	// (AlertV2RunAs) - The actual identity that will be used to execute the alert.
+	// This is an output-only field that shows the resolved run-as identity after applying
+	// permissions and defaults
+	EffectiveRunAs *AlertV2EffectiveRunAs `pulumi:"effectiveRunAs"`
+	Evaluation     *AlertV2Evaluation     `pulumi:"evaluation"`
 	// (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `TRASHED`
 	LifecycleState *string `pulumi:"lifecycleState"`
 	// (string) - The owner's username. This field is set to "Unavailable" if the user has been deleted
@@ -113,14 +130,23 @@ type alertV2State struct {
 	ParentPath *string `pulumi:"parentPath"`
 	// Text of the query to be run
 	QueryText *string `pulumi:"queryText"`
+	// Specifies the identity that will be used to run the alert.
+	// This field allows you to configure alerts to run as a specific user or service principal.
+	// - For user identity: Set `userName` to the email of an active workspace user. Users can only set this to their own email.
+	// - For service principal: Set `servicePrincipalName` to the application ID. Requires the `servicePrincipal/user` role.
+	//   If not specified, the alert will run as the request user
+	RunAs *AlertV2RunAs `pulumi:"runAs"`
 	// The run as username or application ID of service principal.
-	// On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
+	// On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
+	// Deprecated: Use `runAs` field instead. This field will be removed in a future release
 	RunAsUserName *string          `pulumi:"runAsUserName"`
 	Schedule      *AlertV2Schedule `pulumi:"schedule"`
 	// (string) - The timestamp indicating when the alert was updated
 	UpdateTime *string `pulumi:"updateTime"`
 	// ID of the SQL warehouse attached to the alert
 	WarehouseId *string `pulumi:"warehouseId"`
+	// Workspace ID of the resource
+	WorkspaceId *string `pulumi:"workspaceId"`
 }
 
 type AlertV2State struct {
@@ -132,7 +158,11 @@ type AlertV2State struct {
 	CustomSummary pulumi.StringPtrInput
 	// The display name of the alert
 	DisplayName pulumi.StringPtrInput
-	Evaluation  AlertV2EvaluationPtrInput
+	// (AlertV2RunAs) - The actual identity that will be used to execute the alert.
+	// This is an output-only field that shows the resolved run-as identity after applying
+	// permissions and defaults
+	EffectiveRunAs AlertV2EffectiveRunAsPtrInput
+	Evaluation     AlertV2EvaluationPtrInput
 	// (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `TRASHED`
 	LifecycleState pulumi.StringPtrInput
 	// (string) - The owner's username. This field is set to "Unavailable" if the user has been deleted
@@ -141,14 +171,23 @@ type AlertV2State struct {
 	ParentPath pulumi.StringPtrInput
 	// Text of the query to be run
 	QueryText pulumi.StringPtrInput
+	// Specifies the identity that will be used to run the alert.
+	// This field allows you to configure alerts to run as a specific user or service principal.
+	// - For user identity: Set `userName` to the email of an active workspace user. Users can only set this to their own email.
+	// - For service principal: Set `servicePrincipalName` to the application ID. Requires the `servicePrincipal/user` role.
+	//   If not specified, the alert will run as the request user
+	RunAs AlertV2RunAsPtrInput
 	// The run as username or application ID of service principal.
-	// On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
+	// On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
+	// Deprecated: Use `runAs` field instead. This field will be removed in a future release
 	RunAsUserName pulumi.StringPtrInput
 	Schedule      AlertV2SchedulePtrInput
 	// (string) - The timestamp indicating when the alert was updated
 	UpdateTime pulumi.StringPtrInput
 	// ID of the SQL warehouse attached to the alert
 	WarehouseId pulumi.StringPtrInput
+	// Workspace ID of the resource
+	WorkspaceId pulumi.StringPtrInput
 }
 
 func (AlertV2State) ElementType() reflect.Type {
@@ -167,12 +206,21 @@ type alertV2Args struct {
 	ParentPath *string `pulumi:"parentPath"`
 	// Text of the query to be run
 	QueryText *string `pulumi:"queryText"`
+	// Specifies the identity that will be used to run the alert.
+	// This field allows you to configure alerts to run as a specific user or service principal.
+	// - For user identity: Set `userName` to the email of an active workspace user. Users can only set this to their own email.
+	// - For service principal: Set `servicePrincipalName` to the application ID. Requires the `servicePrincipal/user` role.
+	//   If not specified, the alert will run as the request user
+	RunAs *AlertV2RunAs `pulumi:"runAs"`
 	// The run as username or application ID of service principal.
-	// On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
+	// On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
+	// Deprecated: Use `runAs` field instead. This field will be removed in a future release
 	RunAsUserName *string          `pulumi:"runAsUserName"`
 	Schedule      *AlertV2Schedule `pulumi:"schedule"`
 	// ID of the SQL warehouse attached to the alert
 	WarehouseId *string `pulumi:"warehouseId"`
+	// Workspace ID of the resource
+	WorkspaceId *string `pulumi:"workspaceId"`
 }
 
 // The set of arguments for constructing a AlertV2 resource.
@@ -188,12 +236,21 @@ type AlertV2Args struct {
 	ParentPath pulumi.StringPtrInput
 	// Text of the query to be run
 	QueryText pulumi.StringPtrInput
+	// Specifies the identity that will be used to run the alert.
+	// This field allows you to configure alerts to run as a specific user or service principal.
+	// - For user identity: Set `userName` to the email of an active workspace user. Users can only set this to their own email.
+	// - For service principal: Set `servicePrincipalName` to the application ID. Requires the `servicePrincipal/user` role.
+	//   If not specified, the alert will run as the request user
+	RunAs AlertV2RunAsPtrInput
 	// The run as username or application ID of service principal.
-	// On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
+	// On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
+	// Deprecated: Use `runAs` field instead. This field will be removed in a future release
 	RunAsUserName pulumi.StringPtrInput
 	Schedule      AlertV2SchedulePtrInput
 	// ID of the SQL warehouse attached to the alert
 	WarehouseId pulumi.StringPtrInput
+	// Workspace ID of the resource
+	WorkspaceId pulumi.StringPtrInput
 }
 
 func (AlertV2Args) ElementType() reflect.Type {
@@ -303,6 +360,13 @@ func (o AlertV2Output) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AlertV2) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
+// (AlertV2RunAs) - The actual identity that will be used to execute the alert.
+// This is an output-only field that shows the resolved run-as identity after applying
+// permissions and defaults
+func (o AlertV2Output) EffectiveRunAs() AlertV2EffectiveRunAsOutput {
+	return o.ApplyT(func(v *AlertV2) AlertV2EffectiveRunAsOutput { return v.EffectiveRunAs }).(AlertV2EffectiveRunAsOutput)
+}
+
 func (o AlertV2Output) Evaluation() AlertV2EvaluationPtrOutput {
 	return o.ApplyT(func(v *AlertV2) AlertV2EvaluationPtrOutput { return v.Evaluation }).(AlertV2EvaluationPtrOutput)
 }
@@ -327,8 +391,18 @@ func (o AlertV2Output) QueryText() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AlertV2) pulumi.StringPtrOutput { return v.QueryText }).(pulumi.StringPtrOutput)
 }
 
+// Specifies the identity that will be used to run the alert.
+// This field allows you to configure alerts to run as a specific user or service principal.
+//   - For user identity: Set `userName` to the email of an active workspace user. Users can only set this to their own email.
+//   - For service principal: Set `servicePrincipalName` to the application ID. Requires the `servicePrincipal/user` role.
+//     If not specified, the alert will run as the request user
+func (o AlertV2Output) RunAs() AlertV2RunAsPtrOutput {
+	return o.ApplyT(func(v *AlertV2) AlertV2RunAsPtrOutput { return v.RunAs }).(AlertV2RunAsPtrOutput)
+}
+
 // The run as username or application ID of service principal.
-// On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
+// On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
+// Deprecated: Use `runAs` field instead. This field will be removed in a future release
 func (o AlertV2Output) RunAsUserName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AlertV2) pulumi.StringPtrOutput { return v.RunAsUserName }).(pulumi.StringPtrOutput)
 }
@@ -345,6 +419,11 @@ func (o AlertV2Output) UpdateTime() pulumi.StringOutput {
 // ID of the SQL warehouse attached to the alert
 func (o AlertV2Output) WarehouseId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AlertV2) pulumi.StringPtrOutput { return v.WarehouseId }).(pulumi.StringPtrOutput)
+}
+
+// Workspace ID of the resource
+func (o AlertV2Output) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertV2) pulumi.StringPtrOutput { return v.WorkspaceId }).(pulumi.StringPtrOutput)
 }
 
 type AlertV2ArrayOutput struct{ *pulumi.OutputState }

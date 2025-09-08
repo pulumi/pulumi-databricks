@@ -161,7 +161,7 @@ class AccountNetworkPolicy(pulumi.CustomResource):
 
         import {
 
-          id = network_policy_id
+          id = "network_policy_id"
 
           to = databricks_account_network_policy.this
 
@@ -170,7 +170,7 @@ class AccountNetworkPolicy(pulumi.CustomResource):
         If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
 
         ```sh
-        $ pulumi import databricks:index/accountNetworkPolicy:AccountNetworkPolicy databricks_account_network_policy network_policy_id
+        $ pulumi import databricks:index/accountNetworkPolicy:AccountNetworkPolicy databricks_account_network_policy "network_policy_id"
         ```
 
         :param str resource_name: The name of the resource.
@@ -206,7 +206,7 @@ class AccountNetworkPolicy(pulumi.CustomResource):
 
         import {
 
-          id = network_policy_id
+          id = "network_policy_id"
 
           to = databricks_account_network_policy.this
 
@@ -215,7 +215,7 @@ class AccountNetworkPolicy(pulumi.CustomResource):
         If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
 
         ```sh
-        $ pulumi import databricks:index/accountNetworkPolicy:AccountNetworkPolicy databricks_account_network_policy network_policy_id
+        $ pulumi import databricks:index/accountNetworkPolicy:AccountNetworkPolicy databricks_account_network_policy "network_policy_id"
         ```
 
         :param str resource_name: The name of the resource.

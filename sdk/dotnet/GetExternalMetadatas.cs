@@ -15,25 +15,105 @@ namespace Pulumi.Databricks
         /// This data source can be used to fetch the list of external metadata objects.
         /// 
         /// &gt; **Note** This resource can only be used with an workspace-level provider!
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Getting a list of all external metadata objects:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all = Databricks.GetExternalMetadatas.Invoke();
+        /// 
+        /// });
+        /// ```
         /// </summary>
-        public static Task<GetExternalMetadatasResult> InvokeAsync(InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.InvokeAsync<GetExternalMetadatasResult>("databricks:index/getExternalMetadatas:getExternalMetadatas", InvokeArgs.Empty, options.WithDefaults());
+        public static Task<GetExternalMetadatasResult> InvokeAsync(GetExternalMetadatasArgs? args = null, InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetExternalMetadatasResult>("databricks:index/getExternalMetadatas:getExternalMetadatas", args ?? new GetExternalMetadatasArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source can be used to fetch the list of external metadata objects.
         /// 
         /// &gt; **Note** This resource can only be used with an workspace-level provider!
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Getting a list of all external metadata objects:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all = Databricks.GetExternalMetadatas.Invoke();
+        /// 
+        /// });
+        /// ```
         /// </summary>
-        public static Output<GetExternalMetadatasResult> Invoke(InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.Invoke<GetExternalMetadatasResult>("databricks:index/getExternalMetadatas:getExternalMetadatas", InvokeArgs.Empty, options.WithDefaults());
+        public static Output<GetExternalMetadatasResult> Invoke(GetExternalMetadatasInvokeArgs? args = null, InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.Invoke<GetExternalMetadatasResult>("databricks:index/getExternalMetadatas:getExternalMetadatas", args ?? new GetExternalMetadatasInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source can be used to fetch the list of external metadata objects.
         /// 
         /// &gt; **Note** This resource can only be used with an workspace-level provider!
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Getting a list of all external metadata objects:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all = Databricks.GetExternalMetadatas.Invoke();
+        /// 
+        /// });
+        /// ```
         /// </summary>
-        public static Output<GetExternalMetadatasResult> Invoke(InvokeOutputOptions options)
-            => global::Pulumi.Deployment.Instance.Invoke<GetExternalMetadatasResult>("databricks:index/getExternalMetadatas:getExternalMetadatas", InvokeArgs.Empty, options.WithDefaults());
+        public static Output<GetExternalMetadatasResult> Invoke(GetExternalMetadatasInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetExternalMetadatasResult>("databricks:index/getExternalMetadatas:getExternalMetadatas", args ?? new GetExternalMetadatasInvokeArgs(), options.WithDefaults());
+    }
+
+
+    public sealed class GetExternalMetadatasArgs : global::Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Workspace ID of the resource
+        /// </summary>
+        [Input("workspaceId")]
+        public string? WorkspaceId { get; set; }
+
+        public GetExternalMetadatasArgs()
+        {
+        }
+        public static new GetExternalMetadatasArgs Empty => new GetExternalMetadatasArgs();
+    }
+
+    public sealed class GetExternalMetadatasInvokeArgs : global::Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Workspace ID of the resource
+        /// </summary>
+        [Input("workspaceId")]
+        public Input<string>? WorkspaceId { get; set; }
+
+        public GetExternalMetadatasInvokeArgs()
+        {
+        }
+        public static new GetExternalMetadatasInvokeArgs Empty => new GetExternalMetadatasInvokeArgs();
     }
 
 
@@ -45,15 +125,19 @@ namespace Pulumi.Databricks
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly string? WorkspaceId;
 
         [OutputConstructor]
         private GetExternalMetadatasResult(
             ImmutableArray<Outputs.GetExternalMetadatasExternalMetadataResult> externalMetadatas,
 
-            string id)
+            string id,
+
+            string? workspaceId)
         {
             ExternalMetadatas = externalMetadatas;
             Id = id;
+            WorkspaceId = workspaceId;
         }
     }
 }

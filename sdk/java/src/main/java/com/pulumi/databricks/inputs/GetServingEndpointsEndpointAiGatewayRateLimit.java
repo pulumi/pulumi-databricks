@@ -44,6 +44,13 @@ public final class GetServingEndpointsEndpointAiGatewayRateLimit extends com.pul
         return this.renewalPeriod;
     }
 
+    @Import(name="tokens")
+    private @Nullable Integer tokens;
+
+    public Optional<Integer> tokens() {
+        return Optional.ofNullable(this.tokens);
+    }
+
     private GetServingEndpointsEndpointAiGatewayRateLimit() {}
 
     private GetServingEndpointsEndpointAiGatewayRateLimit(GetServingEndpointsEndpointAiGatewayRateLimit $) {
@@ -51,6 +58,7 @@ public final class GetServingEndpointsEndpointAiGatewayRateLimit extends com.pul
         this.key = $.key;
         this.principal = $.principal;
         this.renewalPeriod = $.renewalPeriod;
+        this.tokens = $.tokens;
     }
 
     public static Builder builder() {
@@ -88,6 +96,11 @@ public final class GetServingEndpointsEndpointAiGatewayRateLimit extends com.pul
 
         public Builder renewalPeriod(String renewalPeriod) {
             $.renewalPeriod = renewalPeriod;
+            return this;
+        }
+
+        public Builder tokens(@Nullable Integer tokens) {
+            $.tokens = tokens;
             return this;
         }
 

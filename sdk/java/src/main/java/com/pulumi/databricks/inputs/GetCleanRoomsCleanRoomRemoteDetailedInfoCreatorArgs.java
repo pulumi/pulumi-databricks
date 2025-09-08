@@ -56,14 +56,14 @@ public final class GetCleanRoomsCleanRoomRemoteDetailedInfoCreatorArgs extends c
     }
 
     /**
-     * (string) - The global Unity Catalog metastore id of the collaborator. The identifier is of format cloud:region:metastore-uuid
+     * (string) - The global Unity Catalog metastore ID of the collaborator. The identifier is of format cloud:region:metastore-uuid
      * 
      */
     @Import(name="globalMetastoreId")
     private @Nullable Output<String> globalMetastoreId;
 
     /**
-     * @return (string) - The global Unity Catalog metastore id of the collaborator. The identifier is of format cloud:region:metastore-uuid
+     * @return (string) - The global Unity Catalog metastore ID of the collaborator. The identifier is of format cloud:region:metastore-uuid
      * 
      */
     public Optional<Output<String>> globalMetastoreId() {
@@ -205,7 +205,7 @@ public final class GetCleanRoomsCleanRoomRemoteDetailedInfoCreatorArgs extends c
         }
 
         /**
-         * @param globalMetastoreId (string) - The global Unity Catalog metastore id of the collaborator. The identifier is of format cloud:region:metastore-uuid
+         * @param globalMetastoreId (string) - The global Unity Catalog metastore ID of the collaborator. The identifier is of format cloud:region:metastore-uuid
          * 
          * @return builder
          * 
@@ -216,7 +216,7 @@ public final class GetCleanRoomsCleanRoomRemoteDetailedInfoCreatorArgs extends c
         }
 
         /**
-         * @param globalMetastoreId (string) - The global Unity Catalog metastore id of the collaborator. The identifier is of format cloud:region:metastore-uuid
+         * @param globalMetastoreId (string) - The global Unity Catalog metastore ID of the collaborator. The identifier is of format cloud:region:metastore-uuid
          * 
          * @return builder
          * 

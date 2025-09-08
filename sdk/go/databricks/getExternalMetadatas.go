@@ -14,28 +14,73 @@ import (
 // This data source can be used to fetch the list of external metadata objects.
 //
 // > **Note** This resource can only be used with an workspace-level provider!
-func GetExternalMetadatas(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetExternalMetadatasResult, error) {
+//
+// ## Example Usage
+//
+// Getting a list of all external metadata objects:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.GetExternalMetadatas(ctx, &databricks.GetExternalMetadatasArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+func GetExternalMetadatas(ctx *pulumi.Context, args *GetExternalMetadatasArgs, opts ...pulumi.InvokeOption) (*GetExternalMetadatasResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetExternalMetadatasResult
-	err := ctx.Invoke("databricks:index/getExternalMetadatas:getExternalMetadatas", nil, &rv, opts...)
+	err := ctx.Invoke("databricks:index/getExternalMetadatas:getExternalMetadatas", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &rv, nil
 }
 
+// A collection of arguments for invoking getExternalMetadatas.
+type GetExternalMetadatasArgs struct {
+	// Workspace ID of the resource
+	WorkspaceId *string `pulumi:"workspaceId"`
+}
+
 // A collection of values returned by getExternalMetadatas.
 type GetExternalMetadatasResult struct {
 	ExternalMetadatas []GetExternalMetadatasExternalMetadata `pulumi:"externalMetadatas"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	Id          string  `pulumi:"id"`
+	WorkspaceId *string `pulumi:"workspaceId"`
 }
 
-func GetExternalMetadatasOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetExternalMetadatasResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetExternalMetadatasResultOutput, error) {
-		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-		return ctx.InvokeOutput("databricks:index/getExternalMetadatas:getExternalMetadatas", nil, GetExternalMetadatasResultOutput{}, options).(GetExternalMetadatasResultOutput), nil
-	}).(GetExternalMetadatasResultOutput)
+func GetExternalMetadatasOutput(ctx *pulumi.Context, args GetExternalMetadatasOutputArgs, opts ...pulumi.InvokeOption) GetExternalMetadatasResultOutput {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (GetExternalMetadatasResultOutput, error) {
+			args := v.(GetExternalMetadatasArgs)
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("databricks:index/getExternalMetadatas:getExternalMetadatas", args, GetExternalMetadatasResultOutput{}, options).(GetExternalMetadatasResultOutput), nil
+		}).(GetExternalMetadatasResultOutput)
+}
+
+// A collection of arguments for invoking getExternalMetadatas.
+type GetExternalMetadatasOutputArgs struct {
+	// Workspace ID of the resource
+	WorkspaceId pulumi.StringPtrInput `pulumi:"workspaceId"`
+}
+
+func (GetExternalMetadatasOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExternalMetadatasArgs)(nil)).Elem()
 }
 
 // A collection of values returned by getExternalMetadatas.
@@ -60,6 +105,10 @@ func (o GetExternalMetadatasResultOutput) ExternalMetadatas() GetExternalMetadat
 // The provider-assigned unique ID for this managed resource.
 func (o GetExternalMetadatasResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetExternalMetadatasResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetExternalMetadatasResultOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetExternalMetadatasResult) *string { return v.WorkspaceId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

@@ -222,7 +222,6 @@ export class Connection extends pulumi.CustomResource {
      * The type of credential for this connection.
      */
     declare public /*out*/ readonly credentialType: pulumi.Output<string>;
-    declare public readonly environmentSettings: pulumi.Output<outputs.ConnectionEnvironmentSettings | undefined>;
     /**
      * Full name of connection.
      */
@@ -288,7 +287,6 @@ export class Connection extends pulumi.CustomResource {
             resourceInputs["createdAt"] = state?.createdAt;
             resourceInputs["createdBy"] = state?.createdBy;
             resourceInputs["credentialType"] = state?.credentialType;
-            resourceInputs["environmentSettings"] = state?.environmentSettings;
             resourceInputs["fullName"] = state?.fullName;
             resourceInputs["metastoreId"] = state?.metastoreId;
             resourceInputs["name"] = state?.name;
@@ -305,7 +303,6 @@ export class Connection extends pulumi.CustomResource {
             const args = argsOrState as ConnectionArgs | undefined;
             resourceInputs["comment"] = args?.comment;
             resourceInputs["connectionType"] = args?.connectionType;
-            resourceInputs["environmentSettings"] = args?.environmentSettings;
             resourceInputs["name"] = args?.name;
             resourceInputs["options"] = args?.options ? pulumi.secret(args.options) : undefined;
             resourceInputs["owner"] = args?.owner;
@@ -358,7 +355,6 @@ export interface ConnectionState {
      * The type of credential for this connection.
      */
     credentialType?: pulumi.Input<string>;
-    environmentSettings?: pulumi.Input<inputs.ConnectionEnvironmentSettings>;
     /**
      * Full name of connection.
      */
@@ -418,7 +414,6 @@ export interface ConnectionArgs {
      * Connection type. `MYSQL`, `POSTGRESQL`, `SNOWFLAKE`, `REDSHIFT` `SQLDW`, `SQLSERVER`, `DATABRICKS`, `SALESFORCE`, `BIGQUERY`, `WORKDAY_RAAS`, `HIVE_METASTORE`, `GA4_RAW_DATA`, `SERVICENOW`, `SALESFORCE_DATA_CLOUD`, `GLUE`, `ORACLE`, `TERADATA`, `HTTP` or `POWER_BI` are supported. Up-to-date list of connection type supported is in the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources). Change forces creation of a new resource.
      */
     connectionType?: pulumi.Input<string>;
-    environmentSettings?: pulumi.Input<inputs.ConnectionEnvironmentSettings>;
     /**
      * Name of the Connection.
      */

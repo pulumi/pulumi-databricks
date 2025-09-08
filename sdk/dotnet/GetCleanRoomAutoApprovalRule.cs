@@ -50,6 +50,12 @@ namespace Pulumi.Databricks
         [Input("runnerCollaboratorAlias")]
         public string? RunnerCollaboratorAlias { get; set; }
 
+        /// <summary>
+        /// Workspace ID of the resource
+        /// </summary>
+        [Input("workspaceId")]
+        public string? WorkspaceId { get; set; }
+
         public GetCleanRoomAutoApprovalRuleArgs()
         {
         }
@@ -83,6 +89,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("runnerCollaboratorAlias")]
         public Input<string>? RunnerCollaboratorAlias { get; set; }
+
+        /// <summary>
+        /// Workspace ID of the resource
+        /// </summary>
+        [Input("workspaceId")]
+        public Input<string>? WorkspaceId { get; set; }
 
         public GetCleanRoomAutoApprovalRuleInvokeArgs()
         {
@@ -128,6 +140,7 @@ namespace Pulumi.Databricks
         /// (string) - Collaborator alias of the runner covered by the rule
         /// </summary>
         public readonly string? RunnerCollaboratorAlias;
+        public readonly string? WorkspaceId;
 
         [OutputConstructor]
         private GetCleanRoomAutoApprovalRuleResult(
@@ -145,7 +158,9 @@ namespace Pulumi.Databricks
 
             string ruleOwnerCollaboratorAlias,
 
-            string? runnerCollaboratorAlias)
+            string? runnerCollaboratorAlias,
+
+            string? workspaceId)
         {
             AuthorCollaboratorAlias = authorCollaboratorAlias;
             AuthorScope = authorScope;
@@ -155,6 +170,7 @@ namespace Pulumi.Databricks
             RuleId = ruleId;
             RuleOwnerCollaboratorAlias = ruleOwnerCollaboratorAlias;
             RunnerCollaboratorAlias = runnerCollaboratorAlias;
+            WorkspaceId = workspaceId;
         }
     }
 }

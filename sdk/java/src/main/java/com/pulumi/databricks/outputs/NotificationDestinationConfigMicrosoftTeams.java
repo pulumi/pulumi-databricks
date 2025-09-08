@@ -12,6 +12,14 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class NotificationDestinationConfigMicrosoftTeams {
+    private @Nullable String appId;
+    private @Nullable Boolean appIdSet;
+    private @Nullable String authSecret;
+    private @Nullable Boolean authSecretSet;
+    private @Nullable String channelUrl;
+    private @Nullable Boolean channelUrlSet;
+    private @Nullable String tenantId;
+    private @Nullable Boolean tenantIdSet;
     /**
      * @return The Microsoft Teams webhook URL.
      * 
@@ -20,6 +28,30 @@ public final class NotificationDestinationConfigMicrosoftTeams {
     private @Nullable Boolean urlSet;
 
     private NotificationDestinationConfigMicrosoftTeams() {}
+    public Optional<String> appId() {
+        return Optional.ofNullable(this.appId);
+    }
+    public Optional<Boolean> appIdSet() {
+        return Optional.ofNullable(this.appIdSet);
+    }
+    public Optional<String> authSecret() {
+        return Optional.ofNullable(this.authSecret);
+    }
+    public Optional<Boolean> authSecretSet() {
+        return Optional.ofNullable(this.authSecretSet);
+    }
+    public Optional<String> channelUrl() {
+        return Optional.ofNullable(this.channelUrl);
+    }
+    public Optional<Boolean> channelUrlSet() {
+        return Optional.ofNullable(this.channelUrlSet);
+    }
+    public Optional<String> tenantId() {
+        return Optional.ofNullable(this.tenantId);
+    }
+    public Optional<Boolean> tenantIdSet() {
+        return Optional.ofNullable(this.tenantIdSet);
+    }
     /**
      * @return The Microsoft Teams webhook URL.
      * 
@@ -40,15 +72,79 @@ public final class NotificationDestinationConfigMicrosoftTeams {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String appId;
+        private @Nullable Boolean appIdSet;
+        private @Nullable String authSecret;
+        private @Nullable Boolean authSecretSet;
+        private @Nullable String channelUrl;
+        private @Nullable Boolean channelUrlSet;
+        private @Nullable String tenantId;
+        private @Nullable Boolean tenantIdSet;
         private @Nullable String url;
         private @Nullable Boolean urlSet;
         public Builder() {}
         public Builder(NotificationDestinationConfigMicrosoftTeams defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.appId = defaults.appId;
+    	      this.appIdSet = defaults.appIdSet;
+    	      this.authSecret = defaults.authSecret;
+    	      this.authSecretSet = defaults.authSecretSet;
+    	      this.channelUrl = defaults.channelUrl;
+    	      this.channelUrlSet = defaults.channelUrlSet;
+    	      this.tenantId = defaults.tenantId;
+    	      this.tenantIdSet = defaults.tenantIdSet;
     	      this.url = defaults.url;
     	      this.urlSet = defaults.urlSet;
         }
 
+        @CustomType.Setter
+        public Builder appId(@Nullable String appId) {
+
+            this.appId = appId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder appIdSet(@Nullable Boolean appIdSet) {
+
+            this.appIdSet = appIdSet;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder authSecret(@Nullable String authSecret) {
+
+            this.authSecret = authSecret;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder authSecretSet(@Nullable Boolean authSecretSet) {
+
+            this.authSecretSet = authSecretSet;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder channelUrl(@Nullable String channelUrl) {
+
+            this.channelUrl = channelUrl;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder channelUrlSet(@Nullable Boolean channelUrlSet) {
+
+            this.channelUrlSet = channelUrlSet;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder tenantId(@Nullable String tenantId) {
+
+            this.tenantId = tenantId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder tenantIdSet(@Nullable Boolean tenantIdSet) {
+
+            this.tenantIdSet = tenantIdSet;
+            return this;
+        }
         @CustomType.Setter
         public Builder url(@Nullable String url) {
 
@@ -63,6 +159,14 @@ public final class NotificationDestinationConfigMicrosoftTeams {
         }
         public NotificationDestinationConfigMicrosoftTeams build() {
             final var _resultValue = new NotificationDestinationConfigMicrosoftTeams();
+            _resultValue.appId = appId;
+            _resultValue.appIdSet = appIdSet;
+            _resultValue.authSecret = authSecret;
+            _resultValue.authSecretSet = authSecretSet;
+            _resultValue.channelUrl = channelUrl;
+            _resultValue.channelUrlSet = channelUrlSet;
+            _resultValue.tenantId = tenantId;
+            _resultValue.tenantIdSet = tenantIdSet;
             _resultValue.url = url;
             _resultValue.urlSet = urlSet;
             return _resultValue;

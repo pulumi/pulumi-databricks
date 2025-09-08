@@ -7,6 +7,8 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetQualityMonitorV2PlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -43,11 +45,27 @@ public final class GetQualityMonitorV2PlainArgs extends com.pulumi.resources.Inv
         return this.objectType;
     }
 
+    /**
+     * Workspace ID of the resource
+     * 
+     */
+    @Import(name="workspaceId")
+    private @Nullable String workspaceId;
+
+    /**
+     * @return Workspace ID of the resource
+     * 
+     */
+    public Optional<String> workspaceId() {
+        return Optional.ofNullable(this.workspaceId);
+    }
+
     private GetQualityMonitorV2PlainArgs() {}
 
     private GetQualityMonitorV2PlainArgs(GetQualityMonitorV2PlainArgs $) {
         this.objectId = $.objectId;
         this.objectType = $.objectType;
+        this.workspaceId = $.workspaceId;
     }
 
     public static Builder builder() {
@@ -87,6 +105,17 @@ public final class GetQualityMonitorV2PlainArgs extends com.pulumi.resources.Inv
          */
         public Builder objectType(String objectType) {
             $.objectType = objectType;
+            return this;
+        }
+
+        /**
+         * @param workspaceId Workspace ID of the resource
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workspaceId(@Nullable String workspaceId) {
+            $.workspaceId = workspaceId;
             return this;
         }
 

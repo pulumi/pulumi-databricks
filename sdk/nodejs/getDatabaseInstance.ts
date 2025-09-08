@@ -26,12 +26,14 @@ export function getDatabaseInstance(args: GetDatabaseInstanceArgs, opts?: pulumi
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getDatabaseInstance:getDatabaseInstance", {
         "capacity": args.capacity,
+        "enablePgNativeLogin": args.enablePgNativeLogin,
         "enableReadableSecondaries": args.enableReadableSecondaries,
         "name": args.name,
         "nodeCount": args.nodeCount,
         "parentInstanceRef": args.parentInstanceRef,
         "retentionWindowInDays": args.retentionWindowInDays,
         "stopped": args.stopped,
+        "workspaceId": args.workspaceId,
     }, opts);
 }
 
@@ -43,6 +45,10 @@ export interface GetDatabaseInstanceArgs {
      * (string) - The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
      */
     capacity?: string;
+    /**
+     * (boolean) - Whether the instance has PG native password login enabled. Defaults to true
+     */
+    enablePgNativeLogin?: boolean;
     /**
      * (boolean) - Whether to enable secondaries to serve read-only traffic. Defaults to false
      */
@@ -73,6 +79,10 @@ export interface GetDatabaseInstanceArgs {
      * (boolean) - Whether the instance is stopped
      */
     stopped?: boolean;
+    /**
+     * Workspace ID of the resource
+     */
+    workspaceId?: string;
 }
 
 /**
@@ -97,6 +107,12 @@ export interface GetDatabaseInstanceResult {
      */
     readonly creator: string;
     /**
+     * (boolean) - xref AIP-129. `enablePgNativeLogin` is owned by the client, while `effectiveEnablePgNativeLogin` is owned by the server.
+     * `enablePgNativeLogin` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+     * `effectiveEnablePgNativeLogin` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     */
+    readonly effectiveEnablePgNativeLogin: boolean;
+    /**
      * (boolean) - xref AIP-129. `enableReadableSecondaries` is owned by the client, while `effectiveEnableReadableSecondaries` is owned by the server.
      * `enableReadableSecondaries` will only be set in Create/Update response messages if and only if the user provides the field via the request.
      * `effectiveEnableReadableSecondaries` on the other hand will always bet set in all response messages (Create/Update/Get/List)
@@ -120,6 +136,10 @@ export interface GetDatabaseInstanceResult {
      * `effectiveStopped` on the other hand will always bet set in all response messages (Create/Update/Get/List)
      */
     readonly effectiveStopped: boolean;
+    /**
+     * (boolean) - Whether the instance has PG native password login enabled. Defaults to true
+     */
+    readonly enablePgNativeLogin: boolean;
     /**
      * (boolean) - Whether to enable secondaries to serve read-only traffic. Defaults to false
      */
@@ -175,6 +195,7 @@ export interface GetDatabaseInstanceResult {
      * (string) - Id of the ref database instance
      */
     readonly uid: string;
+    readonly workspaceId?: string;
 }
 /**
  * This data source can be used to get a single Database Instance.
@@ -196,12 +217,14 @@ export function getDatabaseInstanceOutput(args: GetDatabaseInstanceOutputArgs, o
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getDatabaseInstance:getDatabaseInstance", {
         "capacity": args.capacity,
+        "enablePgNativeLogin": args.enablePgNativeLogin,
         "enableReadableSecondaries": args.enableReadableSecondaries,
         "name": args.name,
         "nodeCount": args.nodeCount,
         "parentInstanceRef": args.parentInstanceRef,
         "retentionWindowInDays": args.retentionWindowInDays,
         "stopped": args.stopped,
+        "workspaceId": args.workspaceId,
     }, opts);
 }
 
@@ -213,6 +236,10 @@ export interface GetDatabaseInstanceOutputArgs {
      * (string) - The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
      */
     capacity?: pulumi.Input<string>;
+    /**
+     * (boolean) - Whether the instance has PG native password login enabled. Defaults to true
+     */
+    enablePgNativeLogin?: pulumi.Input<boolean>;
     /**
      * (boolean) - Whether to enable secondaries to serve read-only traffic. Defaults to false
      */
@@ -243,4 +270,8 @@ export interface GetDatabaseInstanceOutputArgs {
      * (boolean) - Whether the instance is stopped
      */
     stopped?: pulumi.Input<boolean>;
+    /**
+     * Workspace ID of the resource
+     */
+    workspaceId?: pulumi.Input<string>;
 }

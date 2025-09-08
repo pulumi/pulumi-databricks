@@ -87,6 +87,9 @@ public final class Config {
     public Optional<String> metadataServiceUrl() {
         return Codegen.stringProp("metadataServiceUrl").config(config).get();
     }
+    public Optional<Integer> oauthCallbackPort() {
+        return Codegen.integerProp("oauthCallbackPort").config(config).get();
+    }
     public Optional<String> oidcTokenEnv() {
         return Codegen.stringProp("oidcTokenEnv").config(config).get();
     }

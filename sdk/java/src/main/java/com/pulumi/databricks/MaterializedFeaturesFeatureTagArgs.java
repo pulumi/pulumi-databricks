@@ -30,11 +30,27 @@ public final class MaterializedFeaturesFeatureTagArgs extends com.pulumi.resourc
         return Optional.ofNullable(this.value);
     }
 
+    /**
+     * Workspace ID of the resource
+     * 
+     */
+    @Import(name="workspaceId")
+    private @Nullable Output<String> workspaceId;
+
+    /**
+     * @return Workspace ID of the resource
+     * 
+     */
+    public Optional<Output<String>> workspaceId() {
+        return Optional.ofNullable(this.workspaceId);
+    }
+
     private MaterializedFeaturesFeatureTagArgs() {}
 
     private MaterializedFeaturesFeatureTagArgs(MaterializedFeaturesFeatureTagArgs $) {
         this.key = $.key;
         this.value = $.value;
+        this.workspaceId = $.workspaceId;
     }
 
     public static Builder builder() {
@@ -71,6 +87,27 @@ public final class MaterializedFeaturesFeatureTagArgs extends com.pulumi.resourc
 
         public Builder value(String value) {
             return value(Output.of(value));
+        }
+
+        /**
+         * @param workspaceId Workspace ID of the resource
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workspaceId(@Nullable Output<String> workspaceId) {
+            $.workspaceId = workspaceId;
+            return this;
+        }
+
+        /**
+         * @param workspaceId Workspace ID of the resource
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workspaceId(String workspaceId) {
+            return workspaceId(Output.of(workspaceId));
         }
 
         public MaterializedFeaturesFeatureTagArgs build() {

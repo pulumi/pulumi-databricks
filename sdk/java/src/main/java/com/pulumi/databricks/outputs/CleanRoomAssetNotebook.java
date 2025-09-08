@@ -36,7 +36,7 @@ public final class CleanRoomAssetNotebook {
      */
     private @Nullable List<CleanRoomAssetNotebookReview> reviews;
     /**
-     * @return collaborators that can run the notebook
+     * @return Aliases of collaborators that can run the notebook
      * 
      */
     private @Nullable List<String> runnerCollaboratorAliases;
@@ -72,7 +72,7 @@ public final class CleanRoomAssetNotebook {
         return this.reviews == null ? List.of() : this.reviews;
     }
     /**
-     * @return collaborators that can run the notebook
+     * @return Aliases of collaborators that can run the notebook
      * 
      */
     public List<String> runnerCollaboratorAliases() {

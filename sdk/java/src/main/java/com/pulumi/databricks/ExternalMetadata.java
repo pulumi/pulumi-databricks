@@ -81,7 +81,7 @@ import javax.annotation.Nullable;
  * 
  * import {
  * 
- *   id = name
+ *   id = &#34;name&#34;
  * 
  *   to = databricks_external_metadata.this
  * 
@@ -90,7 +90,7 @@ import javax.annotation.Nullable;
  * If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
  * 
  * ```sh
- * $ pulumi import databricks:index/externalMetadata:ExternalMetadata databricks_external_metadata name
+ * $ pulumi import databricks:index/externalMetadata:ExternalMetadata databricks_external_metadata &#34;name&#34;
  * ```
  * 
  */
@@ -277,6 +277,20 @@ public class ExternalMetadata extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> url() {
         return Codegen.optional(this.url);
+    }
+    /**
+     * Workspace ID of the resource
+     * 
+     */
+    @Export(name="workspaceId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> workspaceId;
+
+    /**
+     * @return Workspace ID of the resource
+     * 
+     */
+    public Output<Optional<String>> workspaceId() {
+        return Codegen.optional(this.workspaceId);
     }
 
     /**

@@ -12,6 +12,7 @@ import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.QualityMonitorV2State;
 import com.pulumi.databricks.outputs.QualityMonitorV2AnomalyDetectionConfig;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -70,7 +71,7 @@ import javax.annotation.Nullable;
  * 
  * import {
  * 
- *   id = object_type,object_id
+ *   id = &#34;object_type,object_id&#34;
  * 
  *   to = databricks_quality_monitor_v2.this
  * 
@@ -79,7 +80,7 @@ import javax.annotation.Nullable;
  * If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
  * 
  * ```sh
- * $ pulumi import databricks:index/qualityMonitorV2:QualityMonitorV2 databricks_quality_monitor_v2 object_type,object_id
+ * $ pulumi import databricks:index/qualityMonitorV2:QualityMonitorV2 databricks_quality_monitor_v2 &#34;object_type,object_id&#34;
  * ```
  * 
  */
@@ -126,6 +127,20 @@ public class QualityMonitorV2 extends com.pulumi.resources.CustomResource {
      */
     public Output<String> objectType() {
         return this.objectType;
+    }
+    /**
+     * Workspace ID of the resource
+     * 
+     */
+    @Export(name="workspaceId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> workspaceId;
+
+    /**
+     * @return Workspace ID of the resource
+     * 
+     */
+    public Output<Optional<String>> workspaceId() {
+        return Codegen.optional(this.workspaceId);
     }
 
     /**

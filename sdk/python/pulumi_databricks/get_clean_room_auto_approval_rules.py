@@ -27,13 +27,16 @@ class GetCleanRoomAutoApprovalRulesResult:
     """
     A collection of values returned by getCleanRoomAutoApprovalRules.
     """
-    def __init__(__self__, id=None, rules=None):
+    def __init__(__self__, id=None, rules=None, workspace_id=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
         if rules and not isinstance(rules, list):
             raise TypeError("Expected argument 'rules' to be a list")
         pulumi.set(__self__, "rules", rules)
+        if workspace_id and not isinstance(workspace_id, str):
+            raise TypeError("Expected argument 'workspace_id' to be a str")
+        pulumi.set(__self__, "workspace_id", workspace_id)
 
     @_builtins.property
     @pulumi.getter
@@ -48,6 +51,11 @@ class GetCleanRoomAutoApprovalRulesResult:
     def rules(self) -> Sequence['outputs.GetCleanRoomAutoApprovalRulesRuleResult']:
         return pulumi.get(self, "rules")
 
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "workspace_id")
+
 
 class AwaitableGetCleanRoomAutoApprovalRulesResult(GetCleanRoomAutoApprovalRulesResult):
     # pylint: disable=using-constant-test
@@ -56,27 +64,38 @@ class AwaitableGetCleanRoomAutoApprovalRulesResult(GetCleanRoomAutoApprovalRules
             yield self
         return GetCleanRoomAutoApprovalRulesResult(
             id=self.id,
-            rules=self.rules)
+            rules=self.rules,
+            workspace_id=self.workspace_id)
 
 
-def get_clean_room_auto_approval_rules(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCleanRoomAutoApprovalRulesResult:
+def get_clean_room_auto_approval_rules(workspace_id: Optional[_builtins.str] = None,
+                                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCleanRoomAutoApprovalRulesResult:
     """
     Use this data source to access information about an existing resource.
+
+    :param _builtins.str workspace_id: Workspace ID of the resource
     """
     __args__ = dict()
+    __args__['workspaceId'] = workspace_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getCleanRoomAutoApprovalRules:getCleanRoomAutoApprovalRules', __args__, opts=opts, typ=GetCleanRoomAutoApprovalRulesResult).value
 
     return AwaitableGetCleanRoomAutoApprovalRulesResult(
         id=pulumi.get(__ret__, 'id'),
-        rules=pulumi.get(__ret__, 'rules'))
-def get_clean_room_auto_approval_rules_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCleanRoomAutoApprovalRulesResult]:
+        rules=pulumi.get(__ret__, 'rules'),
+        workspace_id=pulumi.get(__ret__, 'workspace_id'))
+def get_clean_room_auto_approval_rules_output(workspace_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCleanRoomAutoApprovalRulesResult]:
     """
     Use this data source to access information about an existing resource.
+
+    :param _builtins.str workspace_id: Workspace ID of the resource
     """
     __args__ = dict()
+    __args__['workspaceId'] = workspace_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getCleanRoomAutoApprovalRules:getCleanRoomAutoApprovalRules', __args__, opts=opts, typ=GetCleanRoomAutoApprovalRulesResult)
     return __ret__.apply(lambda __response__: GetCleanRoomAutoApprovalRulesResult(
         id=pulumi.get(__response__, 'id'),
-        rules=pulumi.get(__response__, 'rules')))
+        rules=pulumi.get(__response__, 'rules'),
+        workspace_id=pulumi.get(__response__, 'workspace_id')))

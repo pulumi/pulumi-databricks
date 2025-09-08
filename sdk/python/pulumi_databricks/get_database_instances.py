@@ -27,13 +27,16 @@ class GetDatabaseInstancesResult:
     """
     A collection of values returned by getDatabaseInstances.
     """
-    def __init__(__self__, database_instances=None, id=None):
+    def __init__(__self__, database_instances=None, id=None, workspace_id=None):
         if database_instances and not isinstance(database_instances, list):
             raise TypeError("Expected argument 'database_instances' to be a list")
         pulumi.set(__self__, "database_instances", database_instances)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if workspace_id and not isinstance(workspace_id, str):
+            raise TypeError("Expected argument 'workspace_id' to be a str")
+        pulumi.set(__self__, "workspace_id", workspace_id)
 
     @_builtins.property
     @pulumi.getter(name="databaseInstances")
@@ -48,6 +51,11 @@ class GetDatabaseInstancesResult:
         """
         return pulumi.get(self, "id")
 
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "workspace_id")
+
 
 class AwaitableGetDatabaseInstancesResult(GetDatabaseInstancesResult):
     # pylint: disable=using-constant-test
@@ -56,10 +64,12 @@ class AwaitableGetDatabaseInstancesResult(GetDatabaseInstancesResult):
             yield self
         return GetDatabaseInstancesResult(
             database_instances=self.database_instances,
-            id=self.id)
+            id=self.id,
+            workspace_id=self.workspace_id)
 
 
-def get_database_instances(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDatabaseInstancesResult:
+def get_database_instances(workspace_id: Optional[_builtins.str] = None,
+                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDatabaseInstancesResult:
     """
     This data source can be used to fetch the list of Database Instances within the workspace.
     The list can then be accessed via the data object's `database_instances` field.
@@ -75,15 +85,21 @@ def get_database_instances(opts: Optional[pulumi.InvokeOptions] = None) -> Await
     all = databricks.get_database_instances()
     pulumi.export("allDatabaseInstances", all.database_instances)
     ```
+
+
+    :param _builtins.str workspace_id: Workspace ID of the resource
     """
     __args__ = dict()
+    __args__['workspaceId'] = workspace_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getDatabaseInstances:getDatabaseInstances', __args__, opts=opts, typ=GetDatabaseInstancesResult).value
 
     return AwaitableGetDatabaseInstancesResult(
         database_instances=pulumi.get(__ret__, 'database_instances'),
-        id=pulumi.get(__ret__, 'id'))
-def get_database_instances_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDatabaseInstancesResult]:
+        id=pulumi.get(__ret__, 'id'),
+        workspace_id=pulumi.get(__ret__, 'workspace_id'))
+def get_database_instances_output(workspace_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDatabaseInstancesResult]:
     """
     This data source can be used to fetch the list of Database Instances within the workspace.
     The list can then be accessed via the data object's `database_instances` field.
@@ -99,10 +115,15 @@ def get_database_instances_output(opts: Optional[Union[pulumi.InvokeOptions, pul
     all = databricks.get_database_instances()
     pulumi.export("allDatabaseInstances", all.database_instances)
     ```
+
+
+    :param _builtins.str workspace_id: Workspace ID of the resource
     """
     __args__ = dict()
+    __args__['workspaceId'] = workspace_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getDatabaseInstances:getDatabaseInstances', __args__, opts=opts, typ=GetDatabaseInstancesResult)
     return __ret__.apply(lambda __response__: GetDatabaseInstancesResult(
         database_instances=pulumi.get(__response__, 'database_instances'),
-        id=pulumi.get(__response__, 'id')))
+        id=pulumi.get(__response__, 'id'),
+        workspace_id=pulumi.get(__response__, 'workspace_id')))

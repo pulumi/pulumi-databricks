@@ -132,6 +132,12 @@ namespace Pulumi.Databricks
         [Input("objectType", required: true)]
         public string ObjectType { get; set; } = null!;
 
+        /// <summary>
+        /// Workspace ID of the resource
+        /// </summary>
+        [Input("workspaceId")]
+        public string? WorkspaceId { get; set; }
+
         public GetQualityMonitorV2Args()
         {
         }
@@ -151,6 +157,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("objectType", required: true)]
         public Input<string> ObjectType { get; set; } = null!;
+
+        /// <summary>
+        /// Workspace ID of the resource
+        /// </summary>
+        [Input("workspaceId")]
+        public Input<string>? WorkspaceId { get; set; }
 
         public GetQualityMonitorV2InvokeArgs()
         {
@@ -178,6 +190,7 @@ namespace Pulumi.Databricks
         /// (string) - The type of the monitored object. Can be one of the following: schema
         /// </summary>
         public readonly string ObjectType;
+        public readonly string? WorkspaceId;
 
         [OutputConstructor]
         private GetQualityMonitorV2Result(
@@ -187,12 +200,15 @@ namespace Pulumi.Databricks
 
             string objectId,
 
-            string objectType)
+            string objectType,
+
+            string? workspaceId)
         {
             AnomalyDetectionConfig = anomalyDetectionConfig;
             Id = id;
             ObjectId = objectId;
             ObjectType = objectType;
+            WorkspaceId = workspaceId;
         }
     }
 }

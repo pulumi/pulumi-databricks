@@ -155,7 +155,7 @@ export class MwsNccPrivateEndpointRule extends pulumi.CustomResource {
      */
     declare public readonly endpointName: pulumi.Output<string>;
     /**
-     * Example `com.amazonaws.vpce.us-east-1.vpce-svc-123abcc1298abc123`. The full target AWS endpoint service name that connects to the destination resources of the private endpoint.
+     * Example `com.amazonaws.vpce.us-east-1.vpce-svc-123abcc1298abc123`. The full target AWS endpoint service name that connects to the destination resources of the private endpoint. Change forces creation of a new resource.
      */
     declare public readonly endpointService: pulumi.Output<string | undefined>;
     /**
@@ -284,7 +284,7 @@ export interface MwsNccPrivateEndpointRuleState {
      */
     endpointName?: pulumi.Input<string>;
     /**
-     * Example `com.amazonaws.vpce.us-east-1.vpce-svc-123abcc1298abc123`. The full target AWS endpoint service name that connects to the destination resources of the private endpoint.
+     * Example `com.amazonaws.vpce.us-east-1.vpce-svc-123abcc1298abc123`. The full target AWS endpoint service name that connects to the destination resources of the private endpoint. Change forces creation of a new resource.
      */
     endpointService?: pulumi.Input<string>;
     /**
@@ -358,7 +358,7 @@ export interface MwsNccPrivateEndpointRuleArgs {
      */
     endpointName?: pulumi.Input<string>;
     /**
-     * Example `com.amazonaws.vpce.us-east-1.vpce-svc-123abcc1298abc123`. The full target AWS endpoint service name that connects to the destination resources of the private endpoint.
+     * Example `com.amazonaws.vpce.us-east-1.vpce-svc-123abcc1298abc123`. The full target AWS endpoint service name that connects to the destination resources of the private endpoint. Change forces creation of a new resource.
      */
     endpointService?: pulumi.Input<string>;
     /**

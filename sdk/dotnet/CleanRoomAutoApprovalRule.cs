@@ -18,7 +18,7 @@ namespace Pulumi.Databricks
     /// 
     /// import {
     /// 
-    ///   id = rule_id
+    ///   id = "rule_id"
     /// 
     ///   to = databricks_clean_room_auto_approval_rule.this
     /// 
@@ -27,7 +27,7 @@ namespace Pulumi.Databricks
     /// If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
     /// 
     /// ```sh
-    /// $ pulumi import databricks:index/cleanRoomAutoApprovalRule:CleanRoomAutoApprovalRule databricks_clean_room_auto_approval_rule rule_id
+    /// $ pulumi import databricks:index/cleanRoomAutoApprovalRule:CleanRoomAutoApprovalRule databricks_clean_room_auto_approval_rule "rule_id"
     /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/cleanRoomAutoApprovalRule:CleanRoomAutoApprovalRule")]
@@ -76,6 +76,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("runnerCollaboratorAlias")]
         public Output<string?> RunnerCollaboratorAlias { get; private set; } = null!;
+
+        /// <summary>
+        /// Workspace ID of the resource
+        /// </summary>
+        [Output("workspaceId")]
+        public Output<string?> WorkspaceId { get; private set; } = null!;
 
 
         /// <summary>
@@ -149,6 +155,12 @@ namespace Pulumi.Databricks
         [Input("runnerCollaboratorAlias")]
         public Input<string>? RunnerCollaboratorAlias { get; set; }
 
+        /// <summary>
+        /// Workspace ID of the resource
+        /// </summary>
+        [Input("workspaceId")]
+        public Input<string>? WorkspaceId { get; set; }
+
         public CleanRoomAutoApprovalRuleArgs()
         {
         }
@@ -200,6 +212,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("runnerCollaboratorAlias")]
         public Input<string>? RunnerCollaboratorAlias { get; set; }
+
+        /// <summary>
+        /// Workspace ID of the resource
+        /// </summary>
+        [Input("workspaceId")]
+        public Input<string>? WorkspaceId { get; set; }
 
         public CleanRoomAutoApprovalRuleState()
         {
