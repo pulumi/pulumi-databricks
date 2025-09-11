@@ -30,23 +30,12 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v5
         with:
-          # Persist credentials so upgrade-provider can push a new branch.
-          persist-credentials: true
+          persist-credentials: false
 
       - name: Setup tools
         uses: ./.github/actions/setup-tools
         with:
           tools: pulumictl, pulumicli, nodejs, python, dotnet, go, java
-
-      - name: Install upgrade-provider
-        run: go install github.com/pulumi/upgrade-provider@main
-        shell: bash
-
-      - name: "Set up git identity"
-        run: |
-          git config --global user.name 'bot@pulumi.com'
-          git config --global user.email 'bot@pulumi.com'
-        shell: bash
 
       - name: Prepare local workspace
         # this runs install_plugins and upstream
