@@ -13,25 +13,77 @@ namespace Pulumi.Databricks.Inputs
     public sealed class NotificationDestinationConfigMicrosoftTeamsArgs : global::Pulumi.ResourceArgs
     {
         [Input("appId")]
-        public Input<string>? AppId { get; set; }
+        private Input<string>? _appId;
+
+        /// <summary>
+        /// App ID for Microsoft Teams App.
+        /// </summary>
+        public Input<string>? AppId
+        {
+            get => _appId;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _appId = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("appIdSet")]
         public Input<bool>? AppIdSet { get; set; }
 
         [Input("authSecret")]
-        public Input<string>? AuthSecret { get; set; }
+        private Input<string>? _authSecret;
+
+        /// <summary>
+        /// Secret for Microsoft Teams App authentication.
+        /// </summary>
+        public Input<string>? AuthSecret
+        {
+            get => _authSecret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _authSecret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("authSecretSet")]
         public Input<bool>? AuthSecretSet { get; set; }
 
         [Input("channelUrl")]
-        public Input<string>? ChannelUrl { get; set; }
+        private Input<string>? _channelUrl;
+
+        /// <summary>
+        /// Channel URL for Microsoft Teams App.
+        /// </summary>
+        public Input<string>? ChannelUrl
+        {
+            get => _channelUrl;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _channelUrl = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("channelUrlSet")]
         public Input<bool>? ChannelUrlSet { get; set; }
 
         [Input("tenantId")]
-        public Input<string>? TenantId { get; set; }
+        private Input<string>? _tenantId;
+
+        /// <summary>
+        /// Tenant ID for Microsoft Teams App.
+        /// </summary>
+        public Input<string>? TenantId
+        {
+            get => _tenantId;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _tenantId = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("tenantIdSet")]
         public Input<bool>? TenantIdSet { get; set; }

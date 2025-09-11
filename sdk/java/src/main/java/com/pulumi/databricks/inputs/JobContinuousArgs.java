@@ -30,9 +30,21 @@ public final class JobContinuousArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.pauseStatus);
     }
 
+    /**
+     * Controls task level retry behaviour. Allowed values are:
+     * * `NEVER` (default): The failed task will not be retried.
+     * * `ON_FAILURE`: Retry a failed task if at least one other task in the job is still running its first attempt. When this condition is no longer met or the retry limit is reached, the job run is cancelled and a new run is started.
+     * 
+     */
     @Import(name="taskRetryMode")
     private @Nullable Output<String> taskRetryMode;
 
+    /**
+     * @return Controls task level retry behaviour. Allowed values are:
+     * * `NEVER` (default): The failed task will not be retried.
+     * * `ON_FAILURE`: Retry a failed task if at least one other task in the job is still running its first attempt. When this condition is no longer met or the retry limit is reached, the job run is cancelled and a new run is started.
+     * 
+     */
     public Optional<Output<String>> taskRetryMode() {
         return Optional.ofNullable(this.taskRetryMode);
     }
@@ -83,11 +95,27 @@ public final class JobContinuousArgs extends com.pulumi.resources.ResourceArgs {
             return pauseStatus(Output.of(pauseStatus));
         }
 
+        /**
+         * @param taskRetryMode Controls task level retry behaviour. Allowed values are:
+         * * `NEVER` (default): The failed task will not be retried.
+         * * `ON_FAILURE`: Retry a failed task if at least one other task in the job is still running its first attempt. When this condition is no longer met or the retry limit is reached, the job run is cancelled and a new run is started.
+         * 
+         * @return builder
+         * 
+         */
         public Builder taskRetryMode(@Nullable Output<String> taskRetryMode) {
             $.taskRetryMode = taskRetryMode;
             return this;
         }
 
+        /**
+         * @param taskRetryMode Controls task level retry behaviour. Allowed values are:
+         * * `NEVER` (default): The failed task will not be retried.
+         * * `ON_FAILURE`: Retry a failed task if at least one other task in the job is still running its first attempt. When this condition is no longer met or the retry limit is reached, the job run is cancelled and a new run is started.
+         * 
+         * @return builder
+         * 
+         */
         public Builder taskRetryMode(String taskRetryMode) {
             return taskRetryMode(Output.of(taskRetryMode));
         }

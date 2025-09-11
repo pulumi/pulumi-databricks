@@ -18,6 +18,11 @@ namespace Pulumi.Databricks.Inputs
         [Input("pauseStatus")]
         public Input<string>? PauseStatus { get; set; }
 
+        /// <summary>
+        /// Controls task level retry behaviour. Allowed values are:
+        /// * `NEVER` (default): The failed task will not be retried.
+        /// * `ON_FAILURE`: Retry a failed task if at least one other task in the job is still running its first attempt. When this condition is no longer met or the retry limit is reached, the job run is cancelled and a new run is started.
+        /// </summary>
         [Input("taskRetryMode")]
         public Input<string>? TaskRetryMode { get; set; }
 

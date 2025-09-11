@@ -11343,6 +11343,9 @@ class JobContinuous(dict):
                  task_retry_mode: Optional[_builtins.str] = None):
         """
         :param _builtins.str pause_status: Indicate whether this continuous job is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pause_status` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pause_status`.
+        :param _builtins.str task_retry_mode: Controls task level retry behaviour. Allowed values are:
+               * `NEVER` (default): The failed task will not be retried.
+               * `ON_FAILURE`: Retry a failed task if at least one other task in the job is still running its first attempt. When this condition is no longer met or the retry limit is reached, the job run is cancelled and a new run is started.
         """
         if pause_status is not None:
             pulumi.set(__self__, "pause_status", pause_status)
@@ -11360,6 +11363,11 @@ class JobContinuous(dict):
     @_builtins.property
     @pulumi.getter(name="taskRetryMode")
     def task_retry_mode(self) -> Optional[_builtins.str]:
+        """
+        Controls task level retry behaviour. Allowed values are:
+        * `NEVER` (default): The failed task will not be retried.
+        * `ON_FAILURE`: Retry a failed task if at least one other task in the job is still running its first attempt. When this condition is no longer met or the retry limit is reached, the job run is cancelled and a new run is started.
+        """
         return pulumi.get(self, "task_retry_mode")
 
 
@@ -29841,13 +29849,13 @@ class MwsNetworksGcpNetworkInfo(dict):
 
     @_builtins.property
     @pulumi.getter(name="podIpRangeName")
-    @_utilities.deprecated("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.88.0/docs/guides/gcp-workspace#creating-a-vpc""")
+    @_utilities.deprecated("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.89.0/docs/guides/gcp-workspace#creating-a-vpc""")
     def pod_ip_range_name(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "pod_ip_range_name")
 
     @_builtins.property
     @pulumi.getter(name="serviceIpRangeName")
-    @_utilities.deprecated("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.88.0/docs/guides/gcp-workspace#creating-a-vpc""")
+    @_utilities.deprecated("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.89.0/docs/guides/gcp-workspace#creating-a-vpc""")
     def service_ip_range_name(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "service_ip_range_name")
 
@@ -30119,13 +30127,13 @@ class MwsWorkspacesGcpManagedNetworkConfig(dict):
 
     @_builtins.property
     @pulumi.getter(name="gkeClusterPodIpRange")
-    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.88.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.89.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
     def gke_cluster_pod_ip_range(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "gke_cluster_pod_ip_range")
 
     @_builtins.property
     @pulumi.getter(name="gkeClusterServiceIpRange")
-    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.88.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.89.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
     def gke_cluster_service_ip_range(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "gke_cluster_service_ip_range")
 
@@ -30482,6 +30490,10 @@ class NotificationDestinationConfigMicrosoftTeams(dict):
                  url: Optional[_builtins.str] = None,
                  url_set: Optional[_builtins.bool] = None):
         """
+        :param _builtins.str app_id: App ID for Microsoft Teams App.
+        :param _builtins.str auth_secret: Secret for Microsoft Teams App authentication.
+        :param _builtins.str channel_url: Channel URL for Microsoft Teams App.
+        :param _builtins.str tenant_id: Tenant ID for Microsoft Teams App.
         :param _builtins.str url: The Microsoft Teams webhook URL.
         """
         if app_id is not None:
@@ -30508,6 +30520,9 @@ class NotificationDestinationConfigMicrosoftTeams(dict):
     @_builtins.property
     @pulumi.getter(name="appId")
     def app_id(self) -> Optional[_builtins.str]:
+        """
+        App ID for Microsoft Teams App.
+        """
         return pulumi.get(self, "app_id")
 
     @_builtins.property
@@ -30518,6 +30533,9 @@ class NotificationDestinationConfigMicrosoftTeams(dict):
     @_builtins.property
     @pulumi.getter(name="authSecret")
     def auth_secret(self) -> Optional[_builtins.str]:
+        """
+        Secret for Microsoft Teams App authentication.
+        """
         return pulumi.get(self, "auth_secret")
 
     @_builtins.property
@@ -30528,6 +30546,9 @@ class NotificationDestinationConfigMicrosoftTeams(dict):
     @_builtins.property
     @pulumi.getter(name="channelUrl")
     def channel_url(self) -> Optional[_builtins.str]:
+        """
+        Channel URL for Microsoft Teams App.
+        """
         return pulumi.get(self, "channel_url")
 
     @_builtins.property
@@ -30538,6 +30559,9 @@ class NotificationDestinationConfigMicrosoftTeams(dict):
     @_builtins.property
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> Optional[_builtins.str]:
+        """
+        Tenant ID for Microsoft Teams App.
+        """
         return pulumi.get(self, "tenant_id")
 
     @_builtins.property

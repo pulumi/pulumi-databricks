@@ -13,12 +13,24 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class NotificationDestinationConfigMicrosoftTeams
     {
+        /// <summary>
+        /// App ID for Microsoft Teams App.
+        /// </summary>
         public readonly string? AppId;
         public readonly bool? AppIdSet;
+        /// <summary>
+        /// Secret for Microsoft Teams App authentication.
+        /// </summary>
         public readonly string? AuthSecret;
         public readonly bool? AuthSecretSet;
+        /// <summary>
+        /// Channel URL for Microsoft Teams App.
+        /// </summary>
         public readonly string? ChannelUrl;
         public readonly bool? ChannelUrlSet;
+        /// <summary>
+        /// Tenant ID for Microsoft Teams App.
+        /// </summary>
         public readonly string? TenantId;
         public readonly bool? TenantIdSet;
         /// <summary>
