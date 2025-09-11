@@ -16,9 +16,17 @@ public final class NotificationDestinationConfigMicrosoftTeamsArgs extends com.p
 
     public static final NotificationDestinationConfigMicrosoftTeamsArgs Empty = new NotificationDestinationConfigMicrosoftTeamsArgs();
 
+    /**
+     * App ID for Microsoft Teams App.
+     * 
+     */
     @Import(name="appId")
     private @Nullable Output<String> appId;
 
+    /**
+     * @return App ID for Microsoft Teams App.
+     * 
+     */
     public Optional<Output<String>> appId() {
         return Optional.ofNullable(this.appId);
     }
@@ -30,9 +38,17 @@ public final class NotificationDestinationConfigMicrosoftTeamsArgs extends com.p
         return Optional.ofNullable(this.appIdSet);
     }
 
+    /**
+     * Secret for Microsoft Teams App authentication.
+     * 
+     */
     @Import(name="authSecret")
     private @Nullable Output<String> authSecret;
 
+    /**
+     * @return Secret for Microsoft Teams App authentication.
+     * 
+     */
     public Optional<Output<String>> authSecret() {
         return Optional.ofNullable(this.authSecret);
     }
@@ -44,9 +60,17 @@ public final class NotificationDestinationConfigMicrosoftTeamsArgs extends com.p
         return Optional.ofNullable(this.authSecretSet);
     }
 
+    /**
+     * Channel URL for Microsoft Teams App.
+     * 
+     */
     @Import(name="channelUrl")
     private @Nullable Output<String> channelUrl;
 
+    /**
+     * @return Channel URL for Microsoft Teams App.
+     * 
+     */
     public Optional<Output<String>> channelUrl() {
         return Optional.ofNullable(this.channelUrl);
     }
@@ -58,9 +82,17 @@ public final class NotificationDestinationConfigMicrosoftTeamsArgs extends com.p
         return Optional.ofNullable(this.channelUrlSet);
     }
 
+    /**
+     * Tenant ID for Microsoft Teams App.
+     * 
+     */
     @Import(name="tenantId")
     private @Nullable Output<String> tenantId;
 
+    /**
+     * @return Tenant ID for Microsoft Teams App.
+     * 
+     */
     public Optional<Output<String>> tenantId() {
         return Optional.ofNullable(this.tenantId);
     }
@@ -127,11 +159,23 @@ public final class NotificationDestinationConfigMicrosoftTeamsArgs extends com.p
             $ = new NotificationDestinationConfigMicrosoftTeamsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param appId App ID for Microsoft Teams App.
+         * 
+         * @return builder
+         * 
+         */
         public Builder appId(@Nullable Output<String> appId) {
             $.appId = appId;
             return this;
         }
 
+        /**
+         * @param appId App ID for Microsoft Teams App.
+         * 
+         * @return builder
+         * 
+         */
         public Builder appId(String appId) {
             return appId(Output.of(appId));
         }
@@ -145,11 +189,23 @@ public final class NotificationDestinationConfigMicrosoftTeamsArgs extends com.p
             return appIdSet(Output.of(appIdSet));
         }
 
+        /**
+         * @param authSecret Secret for Microsoft Teams App authentication.
+         * 
+         * @return builder
+         * 
+         */
         public Builder authSecret(@Nullable Output<String> authSecret) {
             $.authSecret = authSecret;
             return this;
         }
 
+        /**
+         * @param authSecret Secret for Microsoft Teams App authentication.
+         * 
+         * @return builder
+         * 
+         */
         public Builder authSecret(String authSecret) {
             return authSecret(Output.of(authSecret));
         }
@@ -163,11 +219,23 @@ public final class NotificationDestinationConfigMicrosoftTeamsArgs extends com.p
             return authSecretSet(Output.of(authSecretSet));
         }
 
+        /**
+         * @param channelUrl Channel URL for Microsoft Teams App.
+         * 
+         * @return builder
+         * 
+         */
         public Builder channelUrl(@Nullable Output<String> channelUrl) {
             $.channelUrl = channelUrl;
             return this;
         }
 
+        /**
+         * @param channelUrl Channel URL for Microsoft Teams App.
+         * 
+         * @return builder
+         * 
+         */
         public Builder channelUrl(String channelUrl) {
             return channelUrl(Output.of(channelUrl));
         }
@@ -181,11 +249,23 @@ public final class NotificationDestinationConfigMicrosoftTeamsArgs extends com.p
             return channelUrlSet(Output.of(channelUrlSet));
         }
 
+        /**
+         * @param tenantId Tenant ID for Microsoft Teams App.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tenantId(@Nullable Output<String> tenantId) {
             $.tenantId = tenantId;
             return this;
         }
 
+        /**
+         * @param tenantId Tenant ID for Microsoft Teams App.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tenantId(String tenantId) {
             return tenantId(Output.of(tenantId));
         }

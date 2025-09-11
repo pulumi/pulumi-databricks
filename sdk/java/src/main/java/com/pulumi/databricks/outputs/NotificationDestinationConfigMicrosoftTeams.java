@@ -12,12 +12,28 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class NotificationDestinationConfigMicrosoftTeams {
+    /**
+     * @return App ID for Microsoft Teams App.
+     * 
+     */
     private @Nullable String appId;
     private @Nullable Boolean appIdSet;
+    /**
+     * @return Secret for Microsoft Teams App authentication.
+     * 
+     */
     private @Nullable String authSecret;
     private @Nullable Boolean authSecretSet;
+    /**
+     * @return Channel URL for Microsoft Teams App.
+     * 
+     */
     private @Nullable String channelUrl;
     private @Nullable Boolean channelUrlSet;
+    /**
+     * @return Tenant ID for Microsoft Teams App.
+     * 
+     */
     private @Nullable String tenantId;
     private @Nullable Boolean tenantIdSet;
     /**
@@ -28,24 +44,40 @@ public final class NotificationDestinationConfigMicrosoftTeams {
     private @Nullable Boolean urlSet;
 
     private NotificationDestinationConfigMicrosoftTeams() {}
+    /**
+     * @return App ID for Microsoft Teams App.
+     * 
+     */
     public Optional<String> appId() {
         return Optional.ofNullable(this.appId);
     }
     public Optional<Boolean> appIdSet() {
         return Optional.ofNullable(this.appIdSet);
     }
+    /**
+     * @return Secret for Microsoft Teams App authentication.
+     * 
+     */
     public Optional<String> authSecret() {
         return Optional.ofNullable(this.authSecret);
     }
     public Optional<Boolean> authSecretSet() {
         return Optional.ofNullable(this.authSecretSet);
     }
+    /**
+     * @return Channel URL for Microsoft Teams App.
+     * 
+     */
     public Optional<String> channelUrl() {
         return Optional.ofNullable(this.channelUrl);
     }
     public Optional<Boolean> channelUrlSet() {
         return Optional.ofNullable(this.channelUrlSet);
     }
+    /**
+     * @return Tenant ID for Microsoft Teams App.
+     * 
+     */
     public Optional<String> tenantId() {
         return Optional.ofNullable(this.tenantId);
     }
