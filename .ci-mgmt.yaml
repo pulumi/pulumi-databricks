@@ -1,5 +1,7 @@
 provider: databricks
 major-version: 1
+esc:
+  enabled: true
 env:
   DATABRICKS_USERNAME: ${{ secrets.DATABRICKS_USERNAME }}
   DATABRICKS_PASSWORD: ${{ secrets.DATABRICKS_PASSWORD}}
