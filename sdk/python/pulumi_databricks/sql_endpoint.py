@@ -31,6 +31,7 @@ class SqlEndpointArgs:
                  max_num_clusters: Optional[pulumi.Input[_builtins.int]] = None,
                  min_num_clusters: Optional[pulumi.Input[_builtins.int]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 no_wait: Optional[pulumi.Input[_builtins.bool]] = None,
                  spot_instance_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input['SqlEndpointTagsArgs']] = None,
                  warehouse_type: Optional[pulumi.Input[_builtins.str]] = None):
@@ -47,6 +48,7 @@ class SqlEndpointArgs:
         :param pulumi.Input[_builtins.int] max_num_clusters: Maximum number of clusters available when a SQL warehouse is running. This field is required. If multi-cluster load balancing is not enabled, this is default to `1`.
         :param pulumi.Input[_builtins.int] min_num_clusters: Minimum number of clusters available when a SQL warehouse is running. The default is `1`.
         :param pulumi.Input[_builtins.str] name: Name of the SQL warehouse. Must be unique.
+        :param pulumi.Input[_builtins.bool] no_wait: Whether to skip waiting for the SQL warehouse to start after creation. Default is `false`. When set to `true`, Pulumi will create the warehouse but won't wait for it to be in a running state before completing.
         :param pulumi.Input[_builtins.str] spot_instance_policy: The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`. This field is optional. Default is `COST_OPTIMIZED`.
         :param pulumi.Input['SqlEndpointTagsArgs'] tags: Databricks tags all endpoint resources with these tags.
         :param pulumi.Input[_builtins.str] warehouse_type: SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless) or [Azure](https://learn.microsoft.com/en-us/azure/databricks/sql/admin/create-sql-warehouse#--upgrade-a-pro-or-classic-sql-warehouse-to-a-serverless-sql-warehouse). Set to `PRO` or `CLASSIC`. If the field `enable_serverless_compute` has the value `true` either explicitly or through the default logic (see that field above for details), the default is `PRO`, which is required for serverless SQL warehouses. Otherwise, the default is `CLASSIC`.
@@ -70,6 +72,8 @@ class SqlEndpointArgs:
             pulumi.set(__self__, "min_num_clusters", min_num_clusters)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if no_wait is not None:
+            pulumi.set(__self__, "no_wait", no_wait)
         if spot_instance_policy is not None:
             pulumi.set(__self__, "spot_instance_policy", spot_instance_policy)
         if tags is not None:
@@ -197,6 +201,18 @@ class SqlEndpointArgs:
         pulumi.set(self, "name", value)
 
     @_builtins.property
+    @pulumi.getter(name="noWait")
+    def no_wait(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether to skip waiting for the SQL warehouse to start after creation. Default is `false`. When set to `true`, Pulumi will create the warehouse but won't wait for it to be in a running state before completing.
+        """
+        return pulumi.get(self, "no_wait")
+
+    @no_wait.setter
+    def no_wait(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "no_wait", value)
+
+    @_builtins.property
     @pulumi.getter(name="spotInstancePolicy")
     def spot_instance_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -249,6 +265,7 @@ class _SqlEndpointState:
                  max_num_clusters: Optional[pulumi.Input[_builtins.int]] = None,
                  min_num_clusters: Optional[pulumi.Input[_builtins.int]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 no_wait: Optional[pulumi.Input[_builtins.bool]] = None,
                  num_active_sessions: Optional[pulumi.Input[_builtins.int]] = None,
                  num_clusters: Optional[pulumi.Input[_builtins.int]] = None,
                  odbc_params: Optional[pulumi.Input['SqlEndpointOdbcParamsArgs']] = None,
@@ -272,6 +289,7 @@ class _SqlEndpointState:
         :param pulumi.Input[_builtins.int] max_num_clusters: Maximum number of clusters available when a SQL warehouse is running. This field is required. If multi-cluster load balancing is not enabled, this is default to `1`.
         :param pulumi.Input[_builtins.int] min_num_clusters: Minimum number of clusters available when a SQL warehouse is running. The default is `1`.
         :param pulumi.Input[_builtins.str] name: Name of the SQL warehouse. Must be unique.
+        :param pulumi.Input[_builtins.bool] no_wait: Whether to skip waiting for the SQL warehouse to start after creation. Default is `false`. When set to `true`, Pulumi will create the warehouse but won't wait for it to be in a running state before completing.
         :param pulumi.Input[_builtins.int] num_active_sessions: The current number of clusters used by the endpoint.
         :param pulumi.Input[_builtins.int] num_clusters: The current number of clusters used by the endpoint.
         :param pulumi.Input['SqlEndpointOdbcParamsArgs'] odbc_params: ODBC connection params: `odbc_params.hostname`, `odbc_params.path`, `odbc_params.protocol`, and `odbc_params.port`.
@@ -306,6 +324,8 @@ class _SqlEndpointState:
             pulumi.set(__self__, "min_num_clusters", min_num_clusters)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if no_wait is not None:
+            pulumi.set(__self__, "no_wait", no_wait)
         if num_active_sessions is not None:
             pulumi.set(__self__, "num_active_sessions", num_active_sessions)
         if num_clusters is not None:
@@ -477,6 +497,18 @@ class _SqlEndpointState:
         pulumi.set(self, "name", value)
 
     @_builtins.property
+    @pulumi.getter(name="noWait")
+    def no_wait(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether to skip waiting for the SQL warehouse to start after creation. Default is `false`. When set to `true`, Pulumi will create the warehouse but won't wait for it to be in a running state before completing.
+        """
+        return pulumi.get(self, "no_wait")
+
+    @no_wait.setter
+    def no_wait(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "no_wait", value)
+
+    @_builtins.property
     @pulumi.getter(name="numActiveSessions")
     def num_active_sessions(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
@@ -577,6 +609,7 @@ class SqlEndpoint(pulumi.CustomResource):
                  max_num_clusters: Optional[pulumi.Input[_builtins.int]] = None,
                  min_num_clusters: Optional[pulumi.Input[_builtins.int]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 no_wait: Optional[pulumi.Input[_builtins.bool]] = None,
                  spot_instance_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Union['SqlEndpointTagsArgs', 'SqlEndpointTagsArgsDict']]] = None,
                  warehouse_type: Optional[pulumi.Input[_builtins.str]] = None,
@@ -655,6 +688,7 @@ class SqlEndpoint(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] max_num_clusters: Maximum number of clusters available when a SQL warehouse is running. This field is required. If multi-cluster load balancing is not enabled, this is default to `1`.
         :param pulumi.Input[_builtins.int] min_num_clusters: Minimum number of clusters available when a SQL warehouse is running. The default is `1`.
         :param pulumi.Input[_builtins.str] name: Name of the SQL warehouse. Must be unique.
+        :param pulumi.Input[_builtins.bool] no_wait: Whether to skip waiting for the SQL warehouse to start after creation. Default is `false`. When set to `true`, Pulumi will create the warehouse but won't wait for it to be in a running state before completing.
         :param pulumi.Input[_builtins.str] spot_instance_policy: The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`. This field is optional. Default is `COST_OPTIMIZED`.
         :param pulumi.Input[Union['SqlEndpointTagsArgs', 'SqlEndpointTagsArgsDict']] tags: Databricks tags all endpoint resources with these tags.
         :param pulumi.Input[_builtins.str] warehouse_type: SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless) or [Azure](https://learn.microsoft.com/en-us/azure/databricks/sql/admin/create-sql-warehouse#--upgrade-a-pro-or-classic-sql-warehouse-to-a-serverless-sql-warehouse). Set to `PRO` or `CLASSIC`. If the field `enable_serverless_compute` has the value `true` either explicitly or through the default logic (see that field above for details), the default is `PRO`, which is required for serverless SQL warehouses. Otherwise, the default is `CLASSIC`.
@@ -751,6 +785,7 @@ class SqlEndpoint(pulumi.CustomResource):
                  max_num_clusters: Optional[pulumi.Input[_builtins.int]] = None,
                  min_num_clusters: Optional[pulumi.Input[_builtins.int]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 no_wait: Optional[pulumi.Input[_builtins.bool]] = None,
                  spot_instance_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Union['SqlEndpointTagsArgs', 'SqlEndpointTagsArgsDict']]] = None,
                  warehouse_type: Optional[pulumi.Input[_builtins.str]] = None,
@@ -775,6 +810,7 @@ class SqlEndpoint(pulumi.CustomResource):
             __props__.__dict__["max_num_clusters"] = max_num_clusters
             __props__.__dict__["min_num_clusters"] = min_num_clusters
             __props__.__dict__["name"] = name
+            __props__.__dict__["no_wait"] = no_wait
             __props__.__dict__["spot_instance_policy"] = spot_instance_policy
             __props__.__dict__["tags"] = tags
             __props__.__dict__["warehouse_type"] = warehouse_type
@@ -808,6 +844,7 @@ class SqlEndpoint(pulumi.CustomResource):
             max_num_clusters: Optional[pulumi.Input[_builtins.int]] = None,
             min_num_clusters: Optional[pulumi.Input[_builtins.int]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
+            no_wait: Optional[pulumi.Input[_builtins.bool]] = None,
             num_active_sessions: Optional[pulumi.Input[_builtins.int]] = None,
             num_clusters: Optional[pulumi.Input[_builtins.int]] = None,
             odbc_params: Optional[pulumi.Input[Union['SqlEndpointOdbcParamsArgs', 'SqlEndpointOdbcParamsArgsDict']]] = None,
@@ -836,6 +873,7 @@ class SqlEndpoint(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] max_num_clusters: Maximum number of clusters available when a SQL warehouse is running. This field is required. If multi-cluster load balancing is not enabled, this is default to `1`.
         :param pulumi.Input[_builtins.int] min_num_clusters: Minimum number of clusters available when a SQL warehouse is running. The default is `1`.
         :param pulumi.Input[_builtins.str] name: Name of the SQL warehouse. Must be unique.
+        :param pulumi.Input[_builtins.bool] no_wait: Whether to skip waiting for the SQL warehouse to start after creation. Default is `false`. When set to `true`, Pulumi will create the warehouse but won't wait for it to be in a running state before completing.
         :param pulumi.Input[_builtins.int] num_active_sessions: The current number of clusters used by the endpoint.
         :param pulumi.Input[_builtins.int] num_clusters: The current number of clusters used by the endpoint.
         :param pulumi.Input[Union['SqlEndpointOdbcParamsArgs', 'SqlEndpointOdbcParamsArgsDict']] odbc_params: ODBC connection params: `odbc_params.hostname`, `odbc_params.path`, `odbc_params.protocol`, and `odbc_params.port`.
@@ -861,6 +899,7 @@ class SqlEndpoint(pulumi.CustomResource):
         __props__.__dict__["max_num_clusters"] = max_num_clusters
         __props__.__dict__["min_num_clusters"] = min_num_clusters
         __props__.__dict__["name"] = name
+        __props__.__dict__["no_wait"] = no_wait
         __props__.__dict__["num_active_sessions"] = num_active_sessions
         __props__.__dict__["num_clusters"] = num_clusters
         __props__.__dict__["odbc_params"] = odbc_params
@@ -972,6 +1011,14 @@ class SqlEndpoint(pulumi.CustomResource):
         Name of the SQL warehouse. Must be unique.
         """
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="noWait")
+    def no_wait(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Whether to skip waiting for the SQL warehouse to start after creation. Default is `false`. When set to `true`, Pulumi will create the warehouse but won't wait for it to be in a running state before completing.
+        """
+        return pulumi.get(self, "no_wait")
 
     @_builtins.property
     @pulumi.getter(name="numActiveSessions")

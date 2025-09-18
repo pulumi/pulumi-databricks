@@ -290,6 +290,20 @@ public class SqlEndpoint extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
+     * Whether to skip waiting for the SQL warehouse to start after creation. Default is `false`. When set to `true`, Pulumi will create the warehouse but won&#39;t wait for it to be in a running state before completing.
+     * 
+     */
+    @Export(name="noWait", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> noWait;
+
+    /**
+     * @return Whether to skip waiting for the SQL warehouse to start after creation. Default is `false`. When set to `true`, Pulumi will create the warehouse but won&#39;t wait for it to be in a running state before completing.
+     * 
+     */
+    public Output<Optional<Boolean>> noWait() {
+        return Codegen.optional(this.noWait);
+    }
+    /**
      * The current number of clusters used by the endpoint.
      * 
      */

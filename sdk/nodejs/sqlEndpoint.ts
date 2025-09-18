@@ -148,6 +148,10 @@ export class SqlEndpoint extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
+     * Whether to skip waiting for the SQL warehouse to start after creation. Default is `false`. When set to `true`, Pulumi will create the warehouse but won't wait for it to be in a running state before completing.
+     */
+    declare public readonly noWait: pulumi.Output<boolean | undefined>;
+    /**
      * The current number of clusters used by the endpoint.
      */
     declare public /*out*/ readonly numActiveSessions: pulumi.Output<number>;
@@ -202,6 +206,7 @@ export class SqlEndpoint extends pulumi.CustomResource {
             resourceInputs["maxNumClusters"] = state?.maxNumClusters;
             resourceInputs["minNumClusters"] = state?.minNumClusters;
             resourceInputs["name"] = state?.name;
+            resourceInputs["noWait"] = state?.noWait;
             resourceInputs["numActiveSessions"] = state?.numActiveSessions;
             resourceInputs["numClusters"] = state?.numClusters;
             resourceInputs["odbcParams"] = state?.odbcParams;
@@ -224,6 +229,7 @@ export class SqlEndpoint extends pulumi.CustomResource {
             resourceInputs["maxNumClusters"] = args?.maxNumClusters;
             resourceInputs["minNumClusters"] = args?.minNumClusters;
             resourceInputs["name"] = args?.name;
+            resourceInputs["noWait"] = args?.noWait;
             resourceInputs["spotInstancePolicy"] = args?.spotInstancePolicy;
             resourceInputs["tags"] = args?.tags;
             resourceInputs["warehouseType"] = args?.warehouseType;
@@ -295,6 +301,10 @@ export interface SqlEndpointState {
      * Name of the SQL warehouse. Must be unique.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Whether to skip waiting for the SQL warehouse to start after creation. Default is `false`. When set to `true`, Pulumi will create the warehouse but won't wait for it to be in a running state before completing.
+     */
+    noWait?: pulumi.Input<boolean>;
     /**
      * The current number of clusters used by the endpoint.
      */
@@ -368,6 +378,10 @@ export interface SqlEndpointArgs {
      * Name of the SQL warehouse. Must be unique.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Whether to skip waiting for the SQL warehouse to start after creation. Default is `false`. When set to `true`, Pulumi will create the warehouse but won't wait for it to be in a running state before completing.
+     */
+    noWait?: pulumi.Input<boolean>;
     /**
      * The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`. This field is optional. Default is `COST_OPTIMIZED`.
      */

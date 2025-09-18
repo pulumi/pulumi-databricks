@@ -165,6 +165,12 @@ namespace Pulumi.Databricks
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// Whether to skip waiting for the SQL warehouse to start after creation. Default is `false`. When set to `true`, Pulumi will create the warehouse but won't wait for it to be in a running state before completing.
+        /// </summary>
+        [Output("noWait")]
+        public Output<bool?> NoWait { get; private set; } = null!;
+
+        /// <summary>
         /// The current number of clusters used by the endpoint.
         /// </summary>
         [Output("numActiveSessions")]
@@ -312,6 +318,12 @@ namespace Pulumi.Databricks
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// Whether to skip waiting for the SQL warehouse to start after creation. Default is `false`. When set to `true`, Pulumi will create the warehouse but won't wait for it to be in a running state before completing.
+        /// </summary>
+        [Input("noWait")]
+        public Input<bool>? NoWait { get; set; }
+
+        /// <summary>
         /// The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`. This field is optional. Default is `COST_OPTIMIZED`.
         /// </summary>
         [Input("spotInstancePolicy")]
@@ -419,6 +431,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Whether to skip waiting for the SQL warehouse to start after creation. Default is `false`. When set to `true`, Pulumi will create the warehouse but won't wait for it to be in a running state before completing.
+        /// </summary>
+        [Input("noWait")]
+        public Input<bool>? NoWait { get; set; }
 
         /// <summary>
         /// The current number of clusters used by the endpoint.

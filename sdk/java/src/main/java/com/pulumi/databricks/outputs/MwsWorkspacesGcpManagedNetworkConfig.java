@@ -14,36 +14,36 @@ import javax.annotation.Nullable;
 public final class MwsWorkspacesGcpManagedNetworkConfig {
     /**
      * @deprecated
-     * gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.89.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.90.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      * 
      */
-    @Deprecated /* gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.89.0/docs/guides/gcp-workspace#creating-a-databricks-workspace */
+    @Deprecated /* gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.90.0/docs/guides/gcp-workspace#creating-a-databricks-workspace */
     private @Nullable String gkeClusterPodIpRange;
     /**
      * @deprecated
-     * gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.89.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.90.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      * 
      */
-    @Deprecated /* gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.89.0/docs/guides/gcp-workspace#creating-a-databricks-workspace */
+    @Deprecated /* gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.90.0/docs/guides/gcp-workspace#creating-a-databricks-workspace */
     private @Nullable String gkeClusterServiceIpRange;
     private String subnetCidr;
 
     private MwsWorkspacesGcpManagedNetworkConfig() {}
     /**
      * @deprecated
-     * gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.89.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.90.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      * 
      */
-    @Deprecated /* gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.89.0/docs/guides/gcp-workspace#creating-a-databricks-workspace */
+    @Deprecated /* gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.90.0/docs/guides/gcp-workspace#creating-a-databricks-workspace */
     public Optional<String> gkeClusterPodIpRange() {
         return Optional.ofNullable(this.gkeClusterPodIpRange);
     }
     /**
      * @deprecated
-     * gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.89.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.90.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      * 
      */
-    @Deprecated /* gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.89.0/docs/guides/gcp-workspace#creating-a-databricks-workspace */
+    @Deprecated /* gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.90.0/docs/guides/gcp-workspace#creating-a-databricks-workspace */
     public Optional<String> gkeClusterServiceIpRange() {
         return Optional.ofNullable(this.gkeClusterServiceIpRange);
     }

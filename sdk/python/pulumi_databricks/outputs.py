@@ -29849,13 +29849,13 @@ class MwsNetworksGcpNetworkInfo(dict):
 
     @_builtins.property
     @pulumi.getter(name="podIpRangeName")
-    @_utilities.deprecated("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.89.0/docs/guides/gcp-workspace#creating-a-vpc""")
+    @_utilities.deprecated("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.90.0/docs/guides/gcp-workspace#creating-a-vpc""")
     def pod_ip_range_name(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "pod_ip_range_name")
 
     @_builtins.property
     @pulumi.getter(name="serviceIpRangeName")
-    @_utilities.deprecated("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.89.0/docs/guides/gcp-workspace#creating-a-vpc""")
+    @_utilities.deprecated("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.90.0/docs/guides/gcp-workspace#creating-a-vpc""")
     def service_ip_range_name(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "service_ip_range_name")
 
@@ -30127,13 +30127,13 @@ class MwsWorkspacesGcpManagedNetworkConfig(dict):
 
     @_builtins.property
     @pulumi.getter(name="gkeClusterPodIpRange")
-    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.89.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.90.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
     def gke_cluster_pod_ip_range(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "gke_cluster_pod_ip_range")
 
     @_builtins.property
     @pulumi.getter(name="gkeClusterServiceIpRange")
-    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.89.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.90.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
     def gke_cluster_service_ip_range(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "gke_cluster_service_ip_range")
 
