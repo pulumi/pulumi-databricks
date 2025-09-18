@@ -124,6 +124,8 @@ type SqlEndpoint struct {
 	MinNumClusters pulumi.IntPtrOutput `pulumi:"minNumClusters"`
 	// Name of the SQL warehouse. Must be unique.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Whether to skip waiting for the SQL warehouse to start after creation. Default is `false`. When set to `true`, Pulumi will create the warehouse but won't wait for it to be in a running state before completing.
+	NoWait pulumi.BoolPtrOutput `pulumi:"noWait"`
 	// The current number of clusters used by the endpoint.
 	NumActiveSessions pulumi.IntOutput `pulumi:"numActiveSessions"`
 	// The current number of clusters used by the endpoint.
@@ -200,6 +202,8 @@ type sqlEndpointState struct {
 	MinNumClusters *int `pulumi:"minNumClusters"`
 	// Name of the SQL warehouse. Must be unique.
 	Name *string `pulumi:"name"`
+	// Whether to skip waiting for the SQL warehouse to start after creation. Default is `false`. When set to `true`, Pulumi will create the warehouse but won't wait for it to be in a running state before completing.
+	NoWait *bool `pulumi:"noWait"`
 	// The current number of clusters used by the endpoint.
 	NumActiveSessions *int `pulumi:"numActiveSessions"`
 	// The current number of clusters used by the endpoint.
@@ -244,6 +248,8 @@ type SqlEndpointState struct {
 	MinNumClusters pulumi.IntPtrInput
 	// Name of the SQL warehouse. Must be unique.
 	Name pulumi.StringPtrInput
+	// Whether to skip waiting for the SQL warehouse to start after creation. Default is `false`. When set to `true`, Pulumi will create the warehouse but won't wait for it to be in a running state before completing.
+	NoWait pulumi.BoolPtrInput
 	// The current number of clusters used by the endpoint.
 	NumActiveSessions pulumi.IntPtrInput
 	// The current number of clusters used by the endpoint.
@@ -286,6 +292,8 @@ type sqlEndpointArgs struct {
 	MinNumClusters *int `pulumi:"minNumClusters"`
 	// Name of the SQL warehouse. Must be unique.
 	Name *string `pulumi:"name"`
+	// Whether to skip waiting for the SQL warehouse to start after creation. Default is `false`. When set to `true`, Pulumi will create the warehouse but won't wait for it to be in a running state before completing.
+	NoWait *bool `pulumi:"noWait"`
 	// The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`. This field is optional. Default is `COST_OPTIMIZED`.
 	SpotInstancePolicy *string `pulumi:"spotInstancePolicy"`
 	// Databricks tags all endpoint resources with these tags.
@@ -317,6 +325,8 @@ type SqlEndpointArgs struct {
 	MinNumClusters pulumi.IntPtrInput
 	// Name of the SQL warehouse. Must be unique.
 	Name pulumi.StringPtrInput
+	// Whether to skip waiting for the SQL warehouse to start after creation. Default is `false`. When set to `true`, Pulumi will create the warehouse but won't wait for it to be in a running state before completing.
+	NoWait pulumi.BoolPtrInput
 	// The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`. This field is optional. Default is `COST_OPTIMIZED`.
 	SpotInstancePolicy pulumi.StringPtrInput
 	// Databricks tags all endpoint resources with these tags.
@@ -476,6 +486,11 @@ func (o SqlEndpointOutput) MinNumClusters() pulumi.IntPtrOutput {
 // Name of the SQL warehouse. Must be unique.
 func (o SqlEndpointOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *SqlEndpoint) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Whether to skip waiting for the SQL warehouse to start after creation. Default is `false`. When set to `true`, Pulumi will create the warehouse but won't wait for it to be in a running state before completing.
+func (o SqlEndpointOutput) NoWait() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SqlEndpoint) pulumi.BoolPtrOutput { return v.NoWait }).(pulumi.BoolPtrOutput)
 }
 
 // The current number of clusters used by the endpoint.

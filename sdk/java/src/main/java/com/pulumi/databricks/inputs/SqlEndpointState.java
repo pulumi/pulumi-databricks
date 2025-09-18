@@ -214,6 +214,21 @@ public final class SqlEndpointState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Whether to skip waiting for the SQL warehouse to start after creation. Default is `false`. When set to `true`, Pulumi will create the warehouse but won&#39;t wait for it to be in a running state before completing.
+     * 
+     */
+    @Import(name="noWait")
+    private @Nullable Output<Boolean> noWait;
+
+    /**
+     * @return Whether to skip waiting for the SQL warehouse to start after creation. Default is `false`. When set to `true`, Pulumi will create the warehouse but won&#39;t wait for it to be in a running state before completing.
+     * 
+     */
+    public Optional<Output<Boolean>> noWait() {
+        return Optional.ofNullable(this.noWait);
+    }
+
+    /**
      * The current number of clusters used by the endpoint.
      * 
      */
@@ -334,6 +349,7 @@ public final class SqlEndpointState extends com.pulumi.resources.ResourceArgs {
         this.maxNumClusters = $.maxNumClusters;
         this.minNumClusters = $.minNumClusters;
         this.name = $.name;
+        this.noWait = $.noWait;
         this.numActiveSessions = $.numActiveSessions;
         this.numClusters = $.numClusters;
         this.odbcParams = $.odbcParams;
@@ -634,6 +650,27 @@ public final class SqlEndpointState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param noWait Whether to skip waiting for the SQL warehouse to start after creation. Default is `false`. When set to `true`, Pulumi will create the warehouse but won&#39;t wait for it to be in a running state before completing.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder noWait(@Nullable Output<Boolean> noWait) {
+            $.noWait = noWait;
+            return this;
+        }
+
+        /**
+         * @param noWait Whether to skip waiting for the SQL warehouse to start after creation. Default is `false`. When set to `true`, Pulumi will create the warehouse but won&#39;t wait for it to be in a running state before completing.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder noWait(Boolean noWait) {
+            return noWait(Output.of(noWait));
         }
 
         /**
