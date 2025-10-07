@@ -40,7 +40,7 @@ namespace Pulumi.Databricks
     public partial class WorkspaceFile : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The base64-encoded file content. Conflicts with `source`. Use of `content_base64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a workspace file with configuration properties for a data pipeline.
+        /// The base64-encoded file content. Conflicts with `Source`. Use of `ContentBase64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a workspace file with configuration properties for a data pipeline.
         /// </summary>
         [Output("contentBase64")]
         public Output<string?> ContentBase64 { get; private set; } = null!;
@@ -61,7 +61,7 @@ namespace Pulumi.Databricks
         public Output<string> Path { get; private set; } = null!;
 
         /// <summary>
-        /// Path to file on local filesystem. Conflicts with `content_base64`.
+        /// Path to file on local filesystem. Conflicts with `ContentBase64`.
         /// </summary>
         [Output("source")]
         public Output<string?> Source { get; private set; } = null!;
@@ -73,7 +73,7 @@ namespace Pulumi.Databricks
         public Output<string> Url { get; private set; } = null!;
 
         /// <summary>
-        /// path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+        /// path on Workspace File System (WSFS) in form of `/Workspace` + `Path`
         /// </summary>
         [Output("workspacePath")]
         public Output<string> WorkspacePath { get; private set; } = null!;
@@ -125,7 +125,7 @@ namespace Pulumi.Databricks
     public sealed class WorkspaceFileArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The base64-encoded file content. Conflicts with `source`. Use of `content_base64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a workspace file with configuration properties for a data pipeline.
+        /// The base64-encoded file content. Conflicts with `Source`. Use of `ContentBase64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a workspace file with configuration properties for a data pipeline.
         /// </summary>
         [Input("contentBase64")]
         public Input<string>? ContentBase64 { get; set; }
@@ -146,7 +146,7 @@ namespace Pulumi.Databricks
         public Input<string> Path { get; set; } = null!;
 
         /// <summary>
-        /// Path to file on local filesystem. Conflicts with `content_base64`.
+        /// Path to file on local filesystem. Conflicts with `ContentBase64`.
         /// </summary>
         [Input("source")]
         public Input<string>? Source { get; set; }
@@ -160,7 +160,7 @@ namespace Pulumi.Databricks
     public sealed class WorkspaceFileState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The base64-encoded file content. Conflicts with `source`. Use of `content_base64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a workspace file with configuration properties for a data pipeline.
+        /// The base64-encoded file content. Conflicts with `Source`. Use of `ContentBase64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a workspace file with configuration properties for a data pipeline.
         /// </summary>
         [Input("contentBase64")]
         public Input<string>? ContentBase64 { get; set; }
@@ -181,7 +181,7 @@ namespace Pulumi.Databricks
         public Input<string>? Path { get; set; }
 
         /// <summary>
-        /// Path to file on local filesystem. Conflicts with `content_base64`.
+        /// Path to file on local filesystem. Conflicts with `ContentBase64`.
         /// </summary>
         [Input("source")]
         public Input<string>? Source { get; set; }
@@ -193,7 +193,7 @@ namespace Pulumi.Databricks
         public Input<string>? Url { get; set; }
 
         /// <summary>
-        /// path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+        /// path on Workspace File System (WSFS) in form of `/Workspace` + `Path`
         /// </summary>
         [Input("workspacePath")]
         public Input<string>? WorkspacePath { get; set; }

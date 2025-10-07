@@ -15,6 +15,10 @@ namespace Pulumi.Databricks
         /// This data source can be used to get a single account federation policy.
         /// 
         /// &gt; **Note** This data source can only be used with an account-level provider!
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Referring to an account federation policy by id:
         /// </summary>
         public static Task<GetAccountFederationPolicyResult> InvokeAsync(GetAccountFederationPolicyArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccountFederationPolicyResult>("databricks:index/getAccountFederationPolicy:getAccountFederationPolicy", args ?? new GetAccountFederationPolicyArgs(), options.WithDefaults());
@@ -23,6 +27,10 @@ namespace Pulumi.Databricks
         /// This data source can be used to get a single account federation policy.
         /// 
         /// &gt; **Note** This data source can only be used with an account-level provider!
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Referring to an account federation policy by id:
         /// </summary>
         public static Output<GetAccountFederationPolicyResult> Invoke(GetAccountFederationPolicyInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccountFederationPolicyResult>("databricks:index/getAccountFederationPolicy:getAccountFederationPolicy", args ?? new GetAccountFederationPolicyInvokeArgs(), options.WithDefaults());
@@ -31,6 +39,10 @@ namespace Pulumi.Databricks
         /// This data source can be used to get a single account federation policy.
         /// 
         /// &gt; **Note** This data source can only be used with an account-level provider!
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Referring to an account federation policy by id:
         /// </summary>
         public static Output<GetAccountFederationPolicyResult> Invoke(GetAccountFederationPolicyInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccountFederationPolicyResult>("databricks:index/getAccountFederationPolicy:getAccountFederationPolicy", args ?? new GetAccountFederationPolicyInvokeArgs(), options.WithDefaults());

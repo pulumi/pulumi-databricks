@@ -18,7 +18,7 @@ namespace Pulumi.Databricks
     /// 
     /// ## Example Usage
     /// 
-    /// You can declare Pulumi-managed Git folder by specifying `url` attribute of Git repository. In addition to that you may need to specify `git_provider` attribute if Git provider doesn't belong to cloud Git providers (Github, GitLab, ...).  If `path` attribute isn't provided, then Git folder will be created in the default location:
+    /// You can declare Pulumi-managed Git folder by specifying `Url` attribute of Git repository. In addition to that you may need to specify `GitProvider` attribute if Git provider doesn't belong to cloud Git providers (Github, GitLab, ...).  If `Path` attribute isn't provided, then Git folder will be created in the default location:
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -79,7 +79,7 @@ namespace Pulumi.Databricks
     public partial class Repo : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// name of the branch for initial checkout. If not specified, the default branch of the repository will be used.  Conflicts with `tag`.  If `branch` is removed, and `tag` isn't specified, then the repository will stay at the previously checked out state.
+        /// name of the branch for initial checkout. If not specified, the default branch of the repository will be used.  Conflicts with `Tag`.  If `Branch` is removed, and `Tag` isn't specified, then the repository will stay at the previously checked out state.
         /// </summary>
         [Output("branch")]
         public Output<string> Branch { get; private set; } = null!;
@@ -106,7 +106,7 @@ namespace Pulumi.Databricks
         public Output<Outputs.RepoSparseCheckout?> SparseCheckout { get; private set; } = null!;
 
         /// <summary>
-        /// name of the tag for initial checkout.  Conflicts with `branch`.
+        /// name of the tag for initial checkout.  Conflicts with `Branch`.
         /// </summary>
         [Output("tag")]
         public Output<string?> Tag { get; private set; } = null!;
@@ -118,7 +118,7 @@ namespace Pulumi.Databricks
         public Output<string> Url { get; private set; } = null!;
 
         /// <summary>
-        /// path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+        /// path on Workspace File System (WSFS) in form of `/Workspace` + `Path`
         /// </summary>
         [Output("workspacePath")]
         public Output<string> WorkspacePath { get; private set; } = null!;
@@ -170,7 +170,7 @@ namespace Pulumi.Databricks
     public sealed class RepoArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// name of the branch for initial checkout. If not specified, the default branch of the repository will be used.  Conflicts with `tag`.  If `branch` is removed, and `tag` isn't specified, then the repository will stay at the previously checked out state.
+        /// name of the branch for initial checkout. If not specified, the default branch of the repository will be used.  Conflicts with `Tag`.  If `Branch` is removed, and `Tag` isn't specified, then the repository will stay at the previously checked out state.
         /// </summary>
         [Input("branch")]
         public Input<string>? Branch { get; set; }
@@ -197,7 +197,7 @@ namespace Pulumi.Databricks
         public Input<Inputs.RepoSparseCheckoutArgs>? SparseCheckout { get; set; }
 
         /// <summary>
-        /// name of the tag for initial checkout.  Conflicts with `branch`.
+        /// name of the tag for initial checkout.  Conflicts with `Branch`.
         /// </summary>
         [Input("tag")]
         public Input<string>? Tag { get; set; }
@@ -217,7 +217,7 @@ namespace Pulumi.Databricks
     public sealed class RepoState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// name of the branch for initial checkout. If not specified, the default branch of the repository will be used.  Conflicts with `tag`.  If `branch` is removed, and `tag` isn't specified, then the repository will stay at the previously checked out state.
+        /// name of the branch for initial checkout. If not specified, the default branch of the repository will be used.  Conflicts with `Tag`.  If `Branch` is removed, and `Tag` isn't specified, then the repository will stay at the previously checked out state.
         /// </summary>
         [Input("branch")]
         public Input<string>? Branch { get; set; }
@@ -244,7 +244,7 @@ namespace Pulumi.Databricks
         public Input<Inputs.RepoSparseCheckoutGetArgs>? SparseCheckout { get; set; }
 
         /// <summary>
-        /// name of the tag for initial checkout.  Conflicts with `branch`.
+        /// name of the tag for initial checkout.  Conflicts with `Branch`.
         /// </summary>
         [Input("tag")]
         public Input<string>? Tag { get; set; }
@@ -256,7 +256,7 @@ namespace Pulumi.Databricks
         public Input<string>? Url { get; set; }
 
         /// <summary>
-        /// path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+        /// path on Workspace File System (WSFS) in form of `/Workspace` + `Path`
         /// </summary>
         [Input("workspacePath")]
         public Input<string>? WorkspacePath { get; set; }

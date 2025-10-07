@@ -16,6 +16,9 @@ import * as utilities from "./utilities";
  * - Examine the schedule configuration
  *
  * ## Example Usage
+ *
+ * ### Retrieve Alert by ID
+ * This example retrieves a specific alert by its ID:
  */
 export function getAlertV2(args?: GetAlertV2Args, opts?: pulumi.InvokeOptions): Promise<GetAlertV2Result> {
     args = args || {};
@@ -179,6 +182,9 @@ export interface GetAlertV2Result {
  * - Examine the schedule configuration
  *
  * ## Example Usage
+ *
+ * ### Retrieve Alert by ID
+ * This example retrieves a specific alert by its ID:
  */
 export function getAlertV2Output(args?: GetAlertV2OutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAlertV2Result> {
     args = args || {};

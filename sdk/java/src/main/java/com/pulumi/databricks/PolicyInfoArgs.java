@@ -21,7 +21,7 @@ public final class PolicyInfoArgs extends com.pulumi.resources.ResourceArgs {
     public static final PolicyInfoArgs Empty = new PolicyInfoArgs();
 
     /**
-     * Options for column mask policies. Valid only if `policy_type` is `POLICY_TYPE_COLUMN_MASK`.
+     * Options for column mask policies. Valid only if `policyType` is `POLICY_TYPE_COLUMN_MASK`.
      * Required on create and optional on update. When specified on update,
      * the new options will replace the existing options as a whole
      * 
@@ -30,7 +30,7 @@ public final class PolicyInfoArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<PolicyInfoColumnMaskArgs> columnMask;
 
     /**
-     * @return Options for column mask policies. Valid only if `policy_type` is `POLICY_TYPE_COLUMN_MASK`.
+     * @return Options for column mask policies. Valid only if `policyType` is `POLICY_TYPE_COLUMN_MASK`.
      * Required on create and optional on update. When specified on update,
      * the new options will replace the existing options as a whole
      * 
@@ -90,7 +90,7 @@ public final class PolicyInfoArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Optional list of condition expressions used to match table columns.
-     * Only valid when `for_securable_type` is `TABLE`.
+     * Only valid when `forSecurableType` is `TABLE`.
      * When specified, the policy only applies to tables whose columns satisfy all match conditions
      * 
      */
@@ -99,7 +99,7 @@ public final class PolicyInfoArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Optional list of condition expressions used to match table columns.
-     * Only valid when `for_securable_type` is `TABLE`.
+     * Only valid when `forSecurableType` is `TABLE`.
      * When specified, the policy only applies to tables whose columns satisfy all match conditions
      * 
      */
@@ -176,7 +176,7 @@ public final class PolicyInfoArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Options for row filter policies. Valid only if `policy_type` is `POLICY_TYPE_ROW_FILTER`.
+     * Options for row filter policies. Valid only if `policyType` is `POLICY_TYPE_ROW_FILTER`.
      * Required on create and optional on update. When specified on update,
      * the new options will replace the existing options as a whole
      * 
@@ -185,7 +185,7 @@ public final class PolicyInfoArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<PolicyInfoRowFilterArgs> rowFilter;
 
     /**
-     * @return Options for row filter policies. Valid only if `policy_type` is `POLICY_TYPE_ROW_FILTER`.
+     * @return Options for row filter policies. Valid only if `policyType` is `POLICY_TYPE_ROW_FILTER`.
      * Required on create and optional on update. When specified on update,
      * the new options will replace the existing options as a whole
      * 
@@ -278,7 +278,7 @@ public final class PolicyInfoArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param columnMask Options for column mask policies. Valid only if `policy_type` is `POLICY_TYPE_COLUMN_MASK`.
+         * @param columnMask Options for column mask policies. Valid only if `policyType` is `POLICY_TYPE_COLUMN_MASK`.
          * Required on create and optional on update. When specified on update,
          * the new options will replace the existing options as a whole
          * 
@@ -291,7 +291,7 @@ public final class PolicyInfoArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param columnMask Options for column mask policies. Valid only if `policy_type` is `POLICY_TYPE_COLUMN_MASK`.
+         * @param columnMask Options for column mask policies. Valid only if `policyType` is `POLICY_TYPE_COLUMN_MASK`.
          * Required on create and optional on update. When specified on update,
          * the new options will replace the existing options as a whole
          * 
@@ -381,7 +381,7 @@ public final class PolicyInfoArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param matchColumns Optional list of condition expressions used to match table columns.
-         * Only valid when `for_securable_type` is `TABLE`.
+         * Only valid when `forSecurableType` is `TABLE`.
          * When specified, the policy only applies to tables whose columns satisfy all match conditions
          * 
          * @return builder
@@ -394,7 +394,7 @@ public final class PolicyInfoArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param matchColumns Optional list of condition expressions used to match table columns.
-         * Only valid when `for_securable_type` is `TABLE`.
+         * Only valid when `forSecurableType` is `TABLE`.
          * When specified, the policy only applies to tables whose columns satisfy all match conditions
          * 
          * @return builder
@@ -406,7 +406,7 @@ public final class PolicyInfoArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param matchColumns Optional list of condition expressions used to match table columns.
-         * Only valid when `for_securable_type` is `TABLE`.
+         * Only valid when `forSecurableType` is `TABLE`.
          * When specified, the policy only applies to tables whose columns satisfy all match conditions
          * 
          * @return builder
@@ -509,7 +509,7 @@ public final class PolicyInfoArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rowFilter Options for row filter policies. Valid only if `policy_type` is `POLICY_TYPE_ROW_FILTER`.
+         * @param rowFilter Options for row filter policies. Valid only if `policyType` is `POLICY_TYPE_ROW_FILTER`.
          * Required on create and optional on update. When specified on update,
          * the new options will replace the existing options as a whole
          * 
@@ -522,7 +522,7 @@ public final class PolicyInfoArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rowFilter Options for row filter policies. Valid only if `policy_type` is `POLICY_TYPE_ROW_FILTER`.
+         * @param rowFilter Options for row filter policies. Valid only if `policyType` is `POLICY_TYPE_ROW_FILTER`.
          * Required on create and optional on update. When specified on update,
          * the new options will replace the existing options as a whole
          * 

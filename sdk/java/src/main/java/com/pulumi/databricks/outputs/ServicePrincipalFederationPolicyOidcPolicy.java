@@ -28,7 +28,7 @@ public final class ServicePrincipalFederationPolicyOidcPolicy {
     private @Nullable String issuer;
     /**
      * @return The public keys used to validate the signature of federated tokens, in JWKS format.
-     * Most use cases should not need to specify this field. If jwks_uri and jwks_json
+     * Most use cases should not need to specify this field. If jwksUri and jwksJson
      * are both unspecified (recommended), Databricks automatically fetches the public
      * keys from your issuer’s well known endpoint. Databricks strongly recommends
      * relying on your issuer’s well known endpoint for discovering public keys
@@ -37,8 +37,8 @@ public final class ServicePrincipalFederationPolicyOidcPolicy {
     private @Nullable String jwksJson;
     /**
      * @return URL of the public keys used to validate the signature of federated tokens, in
-     * JWKS format. Most use cases should not need to specify this field. If jwks_uri
-     * and jwks_json are both unspecified (recommended), Databricks automatically
+     * JWKS format. Most use cases should not need to specify this field. If jwksUri
+     * and jwksJson are both unspecified (recommended), Databricks automatically
      * fetches the public keys from your issuer’s well known endpoint. Databricks
      * strongly recommends relying on your issuer’s well known endpoint for discovering
      * public keys
@@ -80,7 +80,7 @@ public final class ServicePrincipalFederationPolicyOidcPolicy {
     }
     /**
      * @return The public keys used to validate the signature of federated tokens, in JWKS format.
-     * Most use cases should not need to specify this field. If jwks_uri and jwks_json
+     * Most use cases should not need to specify this field. If jwksUri and jwksJson
      * are both unspecified (recommended), Databricks automatically fetches the public
      * keys from your issuer’s well known endpoint. Databricks strongly recommends
      * relying on your issuer’s well known endpoint for discovering public keys
@@ -91,8 +91,8 @@ public final class ServicePrincipalFederationPolicyOidcPolicy {
     }
     /**
      * @return URL of the public keys used to validate the signature of federated tokens, in
-     * JWKS format. Most use cases should not need to specify this field. If jwks_uri
-     * and jwks_json are both unspecified (recommended), Databricks automatically
+     * JWKS format. Most use cases should not need to specify this field. If jwksUri
+     * and jwksJson are both unspecified (recommended), Databricks automatically
      * fetches the public keys from your issuer’s well known endpoint. Databricks
      * strongly recommends relying on your issuer’s well known endpoint for discovering
      * public keys

@@ -19,6 +19,158 @@ import (
 //
 // ## Example Usage
 //
+// ### Creating a Synced Database Table inside a Database Catalog
+//
+// This example creates a Synced Database Table inside a Database Catalog.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewDatabaseSyncedDatabaseTable(ctx, "this", &databricks.DatabaseSyncedDatabaseTableArgs{
+//				Name:                pulumi.String("my_database_catalog.public.synced_table"),
+//				LogicalDatabaseName: pulumi.String("databricks_postgres"),
+//				Spec: &databricks.DatabaseSyncedDatabaseTableSpecArgs{
+//					Scheduling_policy:      "SNAPSHOT",
+//					Source_table_full_name: "source_delta.tpch.customer",
+//					Primary_key_columns: []string{
+//						"c_custkey",
+//					},
+//					Create_database_objects_if_missing: true,
+//					New_pipeline_spec: map[string]interface{}{
+//						"storageCatalog": "source_delta",
+//						"storageSchema":  "tpch",
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Creating a Synced Database Table inside a Standard Catalog
+//
+// This example creates a Synced Database Table inside a Standard Catalog.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewDatabaseSyncedDatabaseTable(ctx, "this", &databricks.DatabaseSyncedDatabaseTableArgs{
+//				Name:                 pulumi.String("my_standard_catalog.public.synced_table"),
+//				LogicalDatabaseName:  pulumi.String("databricks_postgres"),
+//				DatabaseInstanceName: pulumi.String("my-database-instance"),
+//				Spec: &databricks.DatabaseSyncedDatabaseTableSpecArgs{
+//					Scheduling_policy:      "SNAPSHOT",
+//					Source_table_full_name: "source_delta.tpch.customer",
+//					Primary_key_columns: []string{
+//						"c_custkey",
+//					},
+//					Create_database_objects_if_missing: true,
+//					New_pipeline_spec: map[string]interface{}{
+//						"storageCatalog": "source_delta",
+//						"storageSchema":  "tpch",
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Creating multiple Synced Database Tables and bin packing them into a single pipeline
+//
+// This example creates two Synced Database Tables. The first one specifies a new pipeline spec,
+// which generates a new pipeline. The second one utilizes the pipeline ID of the first table.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			instance, err := databricks.NewDatabaseInstance(ctx, "instance", &databricks.DatabaseInstanceArgs{
+//				Name:     pulumi.String("my-database-instance"),
+//				Capacity: pulumi.String("CU_1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			syncedTable1, err := databricks.NewDatabaseSyncedDatabaseTable(ctx, "synced_table_1", &databricks.DatabaseSyncedDatabaseTableArgs{
+//				Name:                 pulumi.String("my_standard_catalog.public.synced_table1"),
+//				LogicalDatabaseName:  pulumi.String("databricks_postgres"),
+//				DatabaseInstanceName: instance.Name,
+//				Spec: &databricks.DatabaseSyncedDatabaseTableSpecArgs{
+//					Scheduling_policy:      "SNAPSHOT",
+//					Source_table_full_name: "source_delta.tpch.customer",
+//					Primary_key_columns: []string{
+//						"c_custkey",
+//					},
+//					Create_database_objects_if_missing: true,
+//					New_pipeline_spec: map[string]interface{}{
+//						"storageCatalog": "source_delta",
+//						"storageSchema":  "tpch",
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewDatabaseSyncedDatabaseTable(ctx, "synced_table_2", &databricks.DatabaseSyncedDatabaseTableArgs{
+//				Name:                 pulumi.String("my_standard_catalog.public.synced_table2"),
+//				LogicalDatabaseName:  pulumi.String("databricks_postgres"),
+//				DatabaseInstanceName: instance.Name,
+//				Spec: &databricks.DatabaseSyncedDatabaseTableSpecArgs{
+//					Scheduling_policy:      "SNAPSHOT",
+//					Source_table_full_name: "source_delta.tpch.customer",
+//					Primary_key_columns: []string{
+//						"c_custkey",
+//					},
+//					Create_database_objects_if_missing: true,
+//					Existing_pipeline_id: syncedTable1.DataSynchronizationStatus.ApplyT(func(dataSynchronizationStatus databricks.DatabaseSyncedDatabaseTableDataSynchronizationStatus) (*string, error) {
+//						return &dataSynchronizationStatus.PipelineId, nil
+//					}).(pulumi.StringPtrOutput),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // As of Pulumi v1.5, resources can be imported through configuration.

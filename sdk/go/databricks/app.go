@@ -15,6 +15,65 @@ import (
 //
 // > This resource can only be used with a workspace-level provider!
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewApp(ctx, "this", &databricks.AppArgs{
+//				Name:        pulumi.String("my-custom-app"),
+//				Description: pulumi.String("My app"),
+//				Resources: databricks.AppResourceArray{
+//					&databricks.AppResourceArgs{
+//						Name: pulumi.String("sql-warehouse"),
+//						Sql_warehouse: map[string]interface{}{
+//							"id":         "e9ca293f79a74b5c",
+//							"permission": "CAN_MANAGE",
+//						},
+//					},
+//					&databricks.AppResourceArgs{
+//						Name: pulumi.String("serving-endpoint"),
+//						Serving_endpoint: map[string]interface{}{
+//							"name":       "databricks-meta-llama-3-1-70b-instruct",
+//							"permission": "CAN_MANAGE",
+//						},
+//					},
+//					&databricks.AppResourceArgs{
+//						Name: pulumi.String("job"),
+//						Job: &databricks.AppResourceJobArgs{
+//							Id:         pulumi.String("1234"),
+//							Permission: pulumi.String("CAN_MANAGE"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Related Resources
+//
+// The following resources are used in the same context:
+//
+// * SqlEndpoint to manage Databricks SQL [Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html).
+// * ModelServing to serve this model on a Databricks serving endpoint.
+// * Secret to manage [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
+// * Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code.
+//
 // ## Import
 //
 // This resource can be imported by name:

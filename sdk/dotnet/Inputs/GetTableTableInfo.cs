@@ -79,7 +79,7 @@ namespace Pulumi.Databricks.Inputs
         public string? MetastoreId { get; set; }
 
         /// <summary>
-        /// Full name of the databricks_table: _`catalog`.`schema`.`table`_
+        /// Full name of the databricks_table: _`Catalog`.`Schema`.`Table`_
         /// </summary>
         [Input("name")]
         public string? Name { get; set; }
@@ -146,13 +146,13 @@ namespace Pulumi.Databricks.Inputs
         public string? UpdatedBy { get; set; }
 
         /// <summary>
-        /// View definition SQL (when `table_type` is VIEW, MATERIALIZED_VIEW, or STREAMING_TABLE)
+        /// View definition SQL (when `TableType` is VIEW, MATERIALIZED_VIEW, or STREAMING_TABLE)
         /// </summary>
         [Input("viewDefinition")]
         public string? ViewDefinition { get; set; }
 
         /// <summary>
-        /// View dependencies (when `table_type` is VIEW or MATERIALIZED_VIEW, STREAMING_TABLE)
+        /// View dependencies (when `TableType` is VIEW or MATERIALIZED_VIEW, STREAMING_TABLE)
         /// </summary>
         [Input("viewDependencies")]
         public Inputs.GetTableTableInfoViewDependenciesArgs? ViewDependencies { get; set; }

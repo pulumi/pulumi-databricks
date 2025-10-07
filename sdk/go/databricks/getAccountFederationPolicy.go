@@ -14,6 +14,10 @@ import (
 // This data source can be used to get a single account federation policy.
 //
 // > **Note** This data source can only be used with an account-level provider!
+//
+// ## Example Usage
+//
+// Referring to an account federation policy by id:
 func LookupAccountFederationPolicy(ctx *pulumi.Context, args *LookupAccountFederationPolicyArgs, opts ...pulumi.InvokeOption) (*LookupAccountFederationPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAccountFederationPolicyResult

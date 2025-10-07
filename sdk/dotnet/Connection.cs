@@ -283,7 +283,7 @@ namespace Pulumi.Databricks
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The key value of options required by the connection, e.g. `host`, `port`, `user`, `password`, `authorization_endpoint`, `client_id`, `client_secret` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
+        /// The key value of options required by the connection, e.g. `Host`, `Port`, `User`, `Password`, `AuthorizationEndpoint`, `ClientId`, `ClientSecret` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
         /// </summary>
         [Output("options")]
         public Output<ImmutableDictionary<string, string>?> Options { get; private set; } = null!;
@@ -405,7 +405,7 @@ namespace Pulumi.Databricks
         private InputMap<string>? _options;
 
         /// <summary>
-        /// The key value of options required by the connection, e.g. `host`, `port`, `user`, `password`, `authorization_endpoint`, `client_id`, `client_secret` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
+        /// The key value of options required by the connection, e.g. `Host`, `Port`, `User`, `Password`, `AuthorizationEndpoint`, `ClientId`, `ClientSecret` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
         /// </summary>
         public InputMap<string> Options
         {
@@ -507,7 +507,7 @@ namespace Pulumi.Databricks
         private InputMap<string>? _options;
 
         /// <summary>
-        /// The key value of options required by the connection, e.g. `host`, `port`, `user`, `password`, `authorization_endpoint`, `client_id`, `client_secret` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
+        /// The key value of options required by the connection, e.g. `Host`, `Port`, `User`, `Password`, `AuthorizationEndpoint`, `ClientId`, `ClientSecret` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
         /// </summary>
         public InputMap<string> Options
         {

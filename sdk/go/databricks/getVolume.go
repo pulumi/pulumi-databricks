@@ -15,6 +15,44 @@ import (
 // A volume can be identified by its three-level (fully qualified) name (in the form of: `catalogName`.`schemaName`.`volumeName`) as input. This can be retrieved programmatically using getVolumes data source.
 //
 // > This data source can only be used with a workspace-level provider!
+//
+// ## Example Usage
+//
+// * Retrieve details of all volumes in in a _things_ Schema of a  _sandbox_ databricks_catalog:
+//
+// * Search for a specific volume by its fully qualified name
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.LookupVolume(ctx, &databricks.LookupVolumeArgs{
+//				Name: "catalog.schema.volume",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Related Resources
+//
+// The following resources are used in the same context:
+//
+// * Volume to manage volumes within Unity Catalog.
+// * Schema to manage schemas within Unity Catalog.
+// * Catalog to manage catalogs within Unity Catalog.
 func LookupVolume(ctx *pulumi.Context, args *LookupVolumeArgs, opts ...pulumi.InvokeOption) (*LookupVolumeResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupVolumeResult

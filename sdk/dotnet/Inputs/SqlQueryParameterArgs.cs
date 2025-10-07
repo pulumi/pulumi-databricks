@@ -35,9 +35,9 @@ namespace Pulumi.Databricks.Inputs
 
         /// <summary>
         /// The literal parameter marker that appears between double curly braces in the query text.
-        /// Parameters can have several different types. Type is specified using one of the following configuration blocks: `text`, `number`, `enum`, `query`, `date`, `datetime`, `datetimesec`, `date_range`, `datetime_range`, `datetimesec_range`.
+        /// Parameters can have several different types. Type is specified using one of the following configuration blocks: `Text`, `Number`, `Enum`, `Query`, `Date`, `Datetime`, `Datetimesec`, `DateRange`, `DatetimeRange`, `DatetimesecRange`.
         /// 
-        /// For `text`, `number`, `date`, `datetime`, `datetimesec` block
+        /// For `Text`, `Number`, `Date`, `Datetime`, `Datetimesec` block
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;

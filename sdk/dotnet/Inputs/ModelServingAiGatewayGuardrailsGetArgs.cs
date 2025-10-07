@@ -19,7 +19,7 @@ namespace Pulumi.Databricks.Inputs
         public Input<Inputs.ModelServingAiGatewayGuardrailsInputGetArgs>? Input { get; set; }
 
         /// <summary>
-        /// A block with configuration for output guardrail filters.  Has the same structure as `input` block.
+        /// A block with configuration for output guardrail filters.  Has the same structure as `Input` block.
         /// </summary>
         [Input("output")]
         public Input<Inputs.ModelServingAiGatewayGuardrailsOutputGetArgs>? Output { get; set; }

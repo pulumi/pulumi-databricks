@@ -26,7 +26,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly ImmutableArray<string> PrimaryKeyColumns;
         /// <summary>
-        /// empty block that specifies that pipeline runs continuously after generating the initial data.  Conflicts with `run_triggered`.
+        /// empty block that specifies that pipeline runs continuously after generating the initial data.  Conflicts with `RunTriggered`.
         /// </summary>
         public readonly Outputs.OnlineTableSpecRunContinuously? RunContinuously;
         /// <summary>

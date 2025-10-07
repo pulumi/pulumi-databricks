@@ -22,8 +22,8 @@ namespace Pulumi.Databricks
     /// 
     /// Every `databricks.Grant` resource must have exactly one securable identifier and the following arguments:
     /// 
-    /// - `principal` - User name, group name or service principal application ID.
-    /// - `privileges` - One or more privileges that are specific to a securable type.
+    /// - `Principal` - User name, group name or service principal application ID.
+    /// - `Privileges` - One or more privileges that are specific to a securable type.
     /// 
     /// For the latest list of privilege types that apply to each securable object in Unity Catalog, please refer to the [official documentation](https://docs.databricks.com/en/data-governance/unity-catalog/manage-privileges/privileges.html#privilege-types-by-securable-object-in-unity-catalog)
     /// 

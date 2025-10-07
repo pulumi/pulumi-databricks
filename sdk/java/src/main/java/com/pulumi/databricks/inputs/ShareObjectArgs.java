@@ -35,14 +35,14 @@ public final class ShareObjectArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to enable Change Data Feed (cdf) on the shared object. When this field is set, field `history_data_sharing_status` can not be set.
+     * Whether to enable Change Data Feed (cdf) on the shared object. When this field is set, field `historyDataSharingStatus` can not be set.
      * 
      */
     @Import(name="cdfEnabled")
     private @Nullable Output<Boolean> cdfEnabled;
 
     /**
-     * @return Whether to enable Change Data Feed (cdf) on the shared object. When this field is set, field `history_data_sharing_status` can not be set.
+     * @return Whether to enable Change Data Feed (cdf) on the shared object. When this field is set, field `historyDataSharingStatus` can not be set.
      * 
      */
     public Optional<Output<Boolean>> cdfEnabled() {
@@ -87,7 +87,7 @@ public final class ShareObjectArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to enable history sharing, one of: `ENABLED`, `DISABLED`. When a table has history sharing enabled, recipients can query table data by version, starting from the current table version. If not specified, clients can only query starting from the version of the object at the time it was added to the share. *NOTE*: The start_version should be less than or equal the current version of the object. When this field is set, field `cdf_enabled` can not be set.
+     * Whether to enable history sharing, one of: `ENABLED`, `DISABLED`. When a table has history sharing enabled, recipients can query table data by version, starting from the current table version. If not specified, clients can only query starting from the version of the object at the time it was added to the share. *NOTE*: The startVersion should be less than or equal the current version of the object. When this field is set, field `cdfEnabled` can not be set.
      * 
      * To share only part of a table when you add the table to a share, you can provide partition specifications. This is specified by a number of `partition` blocks. Each entry in `partition` block takes a list of `value` blocks. The field is documented below.
      * 
@@ -96,7 +96,7 @@ public final class ShareObjectArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> historyDataSharingStatus;
 
     /**
-     * @return Whether to enable history sharing, one of: `ENABLED`, `DISABLED`. When a table has history sharing enabled, recipients can query table data by version, starting from the current table version. If not specified, clients can only query starting from the version of the object at the time it was added to the share. *NOTE*: The start_version should be less than or equal the current version of the object. When this field is set, field `cdf_enabled` can not be set.
+     * @return Whether to enable history sharing, one of: `ENABLED`, `DISABLED`. When a table has history sharing enabled, recipients can query table data by version, starting from the current table version. If not specified, clients can only query starting from the version of the object at the time it was added to the share. *NOTE*: The startVersion should be less than or equal the current version of the object. When this field is set, field `cdfEnabled` can not be set.
      * 
      * To share only part of a table when you add the table to a share, you can provide partition specifications. This is specified by a number of `partition` blocks. Each entry in `partition` block takes a list of `value` blocks. The field is documented below.
      * 
@@ -128,14 +128,14 @@ public final class ShareObjectArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A user-provided new name for the data object within the share. If this new name is not provided, the object&#39;s original name will be used as the `shared_as` name. The `shared_as` name must be unique within a Share. Change forces creation of a new resource.
+     * A user-provided new name for the data object within the share. If this new name is not provided, the object&#39;s original name will be used as the `sharedAs` name. The `sharedAs` name must be unique within a Share. Change forces creation of a new resource.
      * 
      */
     @Import(name="sharedAs")
     private @Nullable Output<String> sharedAs;
 
     /**
-     * @return A user-provided new name for the data object within the share. If this new name is not provided, the object&#39;s original name will be used as the `shared_as` name. The `shared_as` name must be unique within a Share. Change forces creation of a new resource.
+     * @return A user-provided new name for the data object within the share. If this new name is not provided, the object&#39;s original name will be used as the `sharedAs` name. The `sharedAs` name must be unique within a Share. Change forces creation of a new resource.
      * 
      */
     public Optional<Output<String>> sharedAs() {
@@ -234,7 +234,7 @@ public final class ShareObjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cdfEnabled Whether to enable Change Data Feed (cdf) on the shared object. When this field is set, field `history_data_sharing_status` can not be set.
+         * @param cdfEnabled Whether to enable Change Data Feed (cdf) on the shared object. When this field is set, field `historyDataSharingStatus` can not be set.
          * 
          * @return builder
          * 
@@ -245,7 +245,7 @@ public final class ShareObjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cdfEnabled Whether to enable Change Data Feed (cdf) on the shared object. When this field is set, field `history_data_sharing_status` can not be set.
+         * @param cdfEnabled Whether to enable Change Data Feed (cdf) on the shared object. When this field is set, field `historyDataSharingStatus` can not be set.
          * 
          * @return builder
          * 
@@ -306,7 +306,7 @@ public final class ShareObjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param historyDataSharingStatus Whether to enable history sharing, one of: `ENABLED`, `DISABLED`. When a table has history sharing enabled, recipients can query table data by version, starting from the current table version. If not specified, clients can only query starting from the version of the object at the time it was added to the share. *NOTE*: The start_version should be less than or equal the current version of the object. When this field is set, field `cdf_enabled` can not be set.
+         * @param historyDataSharingStatus Whether to enable history sharing, one of: `ENABLED`, `DISABLED`. When a table has history sharing enabled, recipients can query table data by version, starting from the current table version. If not specified, clients can only query starting from the version of the object at the time it was added to the share. *NOTE*: The startVersion should be less than or equal the current version of the object. When this field is set, field `cdfEnabled` can not be set.
          * 
          * To share only part of a table when you add the table to a share, you can provide partition specifications. This is specified by a number of `partition` blocks. Each entry in `partition` block takes a list of `value` blocks. The field is documented below.
          * 
@@ -319,7 +319,7 @@ public final class ShareObjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param historyDataSharingStatus Whether to enable history sharing, one of: `ENABLED`, `DISABLED`. When a table has history sharing enabled, recipients can query table data by version, starting from the current table version. If not specified, clients can only query starting from the version of the object at the time it was added to the share. *NOTE*: The start_version should be less than or equal the current version of the object. When this field is set, field `cdf_enabled` can not be set.
+         * @param historyDataSharingStatus Whether to enable history sharing, one of: `ENABLED`, `DISABLED`. When a table has history sharing enabled, recipients can query table data by version, starting from the current table version. If not specified, clients can only query starting from the version of the object at the time it was added to the share. *NOTE*: The startVersion should be less than or equal the current version of the object. When this field is set, field `cdfEnabled` can not be set.
          * 
          * To share only part of a table when you add the table to a share, you can provide partition specifications. This is specified by a number of `partition` blocks. Each entry in `partition` block takes a list of `value` blocks. The field is documented below.
          * 
@@ -365,7 +365,7 @@ public final class ShareObjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sharedAs A user-provided new name for the data object within the share. If this new name is not provided, the object&#39;s original name will be used as the `shared_as` name. The `shared_as` name must be unique within a Share. Change forces creation of a new resource.
+         * @param sharedAs A user-provided new name for the data object within the share. If this new name is not provided, the object&#39;s original name will be used as the `sharedAs` name. The `sharedAs` name must be unique within a Share. Change forces creation of a new resource.
          * 
          * @return builder
          * 
@@ -376,7 +376,7 @@ public final class ShareObjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sharedAs A user-provided new name for the data object within the share. If this new name is not provided, the object&#39;s original name will be used as the `shared_as` name. The `shared_as` name must be unique within a Share. Change forces creation of a new resource.
+         * @param sharedAs A user-provided new name for the data object within the share. If this new name is not provided, the object&#39;s original name will be used as the `sharedAs` name. The `sharedAs` name must be unique within a Share. Change forces creation of a new resource.
          * 
          * @return builder
          * 

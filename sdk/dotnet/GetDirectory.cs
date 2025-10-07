@@ -109,7 +109,7 @@ namespace Pulumi.Databricks
         public string Path { get; set; } = null!;
 
         /// <summary>
-        /// path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+        /// path on Workspace File System (WSFS) in form of `/Workspace` + `Path`
         /// </summary>
         [Input("workspacePath")]
         public string? WorkspacePath { get; set; }
@@ -138,7 +138,7 @@ namespace Pulumi.Databricks
         public Input<string> Path { get; set; } = null!;
 
         /// <summary>
-        /// path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+        /// path on Workspace File System (WSFS) in form of `/Workspace` + `Path`
         /// </summary>
         [Input("workspacePath")]
         public Input<string>? WorkspacePath { get; set; }
@@ -160,7 +160,7 @@ namespace Pulumi.Databricks
         public readonly int ObjectId;
         public readonly string Path;
         /// <summary>
-        /// path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+        /// path on Workspace File System (WSFS) in form of `/Workspace` + `Path`
         /// </summary>
         public readonly string WorkspacePath;
 

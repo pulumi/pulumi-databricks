@@ -15,13 +15,13 @@ import javax.annotation.Nullable;
 public final class GetCleanRoomAutoApprovalRuleResult {
     /**
      * @return (string) - Collaborator alias of the author covered by the rule.
-     * Only one of `author_collaborator_alias` and `author_scope` can be set
+     * Only one of `authorCollaboratorAlias` and `authorScope` can be set
      * 
      */
     private @Nullable String authorCollaboratorAlias;
     /**
      * @return (string) - Scope of authors covered by the rule.
-     * Only one of `author_collaborator_alias` and `author_scope` can be set. Possible values are: `ANY_AUTHOR`
+     * Only one of `authorCollaboratorAlias` and `authorScope` can be set. Possible values are: `ANY_AUTHOR`
      * 
      */
     private @Nullable String authorScope;
@@ -60,7 +60,7 @@ public final class GetCleanRoomAutoApprovalRuleResult {
     private GetCleanRoomAutoApprovalRuleResult() {}
     /**
      * @return (string) - Collaborator alias of the author covered by the rule.
-     * Only one of `author_collaborator_alias` and `author_scope` can be set
+     * Only one of `authorCollaboratorAlias` and `authorScope` can be set
      * 
      */
     public Optional<String> authorCollaboratorAlias() {
@@ -68,7 +68,7 @@ public final class GetCleanRoomAutoApprovalRuleResult {
     }
     /**
      * @return (string) - Scope of authors covered by the rule.
-     * Only one of `author_collaborator_alias` and `author_scope` can be set. Possible values are: `ANY_AUTHOR`
+     * Only one of `authorCollaboratorAlias` and `authorScope` can be set. Possible values are: `ANY_AUTHOR`
      * 
      */
     public Optional<String> authorScope() {

@@ -31,7 +31,7 @@ public final class JobTaskSqlTaskDashboard {
      */
     private @Nullable Boolean pauseSubscriptions;
     /**
-     * @return a list of subscription blocks consisting out of one of the required fields: `user_name` for user emails or `destination_id` - for Alert destination&#39;s identifier.
+     * @return a list of subscription blocks consisting out of one of the required fields: `userName` for user emails or `destinationId` - for Alert destination&#39;s identifier.
      * 
      */
     private @Nullable List<JobTaskSqlTaskDashboardSubscription> subscriptions;
@@ -59,7 +59,7 @@ public final class JobTaskSqlTaskDashboard {
         return Optional.ofNullable(this.pauseSubscriptions);
     }
     /**
-     * @return a list of subscription blocks consisting out of one of the required fields: `user_name` for user emails or `destination_id` - for Alert destination&#39;s identifier.
+     * @return a list of subscription blocks consisting out of one of the required fields: `userName` for user emails or `destinationId` - for Alert destination&#39;s identifier.
      * 
      */
     public List<JobTaskSqlTaskDashboardSubscription> subscriptions() {

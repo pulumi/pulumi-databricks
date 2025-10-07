@@ -82,14 +82,14 @@ public final class JobTaskSqlTaskArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * block consisting of single string field: `query_id` - identifier of the Databricks Query (databricks_query).
+     * block consisting of single string field: `queryId` - identifier of the Databricks Query (databricks_query).
      * 
      */
     @Import(name="query")
     private @Nullable Output<JobTaskSqlTaskQueryArgs> query;
 
     /**
-     * @return block consisting of single string field: `query_id` - identifier of the Databricks Query (databricks_query).
+     * @return block consisting of single string field: `queryId` - identifier of the Databricks Query (databricks_query).
      * 
      */
     public Optional<Output<JobTaskSqlTaskQueryArgs>> query() {
@@ -225,7 +225,7 @@ public final class JobTaskSqlTaskArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param query block consisting of single string field: `query_id` - identifier of the Databricks Query (databricks_query).
+         * @param query block consisting of single string field: `queryId` - identifier of the Databricks Query (databricks_query).
          * 
          * @return builder
          * 
@@ -236,7 +236,7 @@ public final class JobTaskSqlTaskArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param query block consisting of single string field: `query_id` - identifier of the Databricks Query (databricks_query).
+         * @param query block consisting of single string field: `queryId` - identifier of the Databricks Query (databricks_query).
          * 
          * @return builder
          * 

@@ -25,7 +25,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; It may take 5 minutes to take effect and requires a restart of clusters and SQL warehouses.
  * 
- * &gt; Please also set the default namespace using databricks.DefaultNamespaceSetting to any value other than `hive_metastore` to avoid potential issues.
+ * &gt; Please also set the default namespace using databricks.DefaultNamespaceSetting to any value other than `hiveMetastore` to avoid potential issues.
  * 
  * ## Example Usage
  * 

@@ -21,18 +21,18 @@ public final class DatabaseSyncedDatabaseTableSpec {
      */
     private @Nullable Boolean createDatabaseObjectsIfMissing;
     /**
-     * @return At most one of existing_pipeline_id and new_pipeline_spec should be defined.
+     * @return At most one of existingPipelineId and newPipelineSpec should be defined.
      * 
-     * If existing_pipeline_id is defined, the synced table will be bin packed into the existing pipeline
+     * If existingPipelineId is defined, the synced table will be bin packed into the existing pipeline
      * referenced. This avoids creating a new pipeline and allows sharing existing compute.
-     * In this case, the scheduling_policy of this synced table must match the scheduling policy of the existing pipeline
+     * In this case, the schedulingPolicy of this synced table must match the scheduling policy of the existing pipeline
      * 
      */
     private @Nullable String existingPipelineId;
     /**
-     * @return At most one of existing_pipeline_id and new_pipeline_spec should be defined.
+     * @return At most one of existingPipelineId and newPipelineSpec should be defined.
      * 
-     * If new_pipeline_spec is defined, a new pipeline is created for this synced table. The location pointed to is used
+     * If newPipelineSpec is defined, a new pipeline is created for this synced table. The location pointed to is used
      * to store intermediate files (checkpoints, event logs etc). The caller must have write permissions to create Delta
      * tables in the specified catalog and schema. Again, note this requires write permissions, whereas the source table
      * only requires read permissions
@@ -70,20 +70,20 @@ public final class DatabaseSyncedDatabaseTableSpec {
         return Optional.ofNullable(this.createDatabaseObjectsIfMissing);
     }
     /**
-     * @return At most one of existing_pipeline_id and new_pipeline_spec should be defined.
+     * @return At most one of existingPipelineId and newPipelineSpec should be defined.
      * 
-     * If existing_pipeline_id is defined, the synced table will be bin packed into the existing pipeline
+     * If existingPipelineId is defined, the synced table will be bin packed into the existing pipeline
      * referenced. This avoids creating a new pipeline and allows sharing existing compute.
-     * In this case, the scheduling_policy of this synced table must match the scheduling policy of the existing pipeline
+     * In this case, the schedulingPolicy of this synced table must match the scheduling policy of the existing pipeline
      * 
      */
     public Optional<String> existingPipelineId() {
         return Optional.ofNullable(this.existingPipelineId);
     }
     /**
-     * @return At most one of existing_pipeline_id and new_pipeline_spec should be defined.
+     * @return At most one of existingPipelineId and newPipelineSpec should be defined.
      * 
-     * If new_pipeline_spec is defined, a new pipeline is created for this synced table. The location pointed to is used
+     * If newPipelineSpec is defined, a new pipeline is created for this synced table. The location pointed to is used
      * to store intermediate files (checkpoints, event logs etc). The caller must have write permissions to create Delta
      * tables in the specified catalog and schema. Again, note this requires write permissions, whereas the source table
      * only requires read permissions

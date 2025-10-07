@@ -30,9 +30,9 @@ public final class CleanRoomsCleanRoomRemoteDetailedInfo {
      * @return Collaborators in the central clean room. There should one and only one collaborator
      * in the list that satisfies the owner condition:
      * 
-     * 1. It has the creator&#39;s global_metastore_id (determined by caller of CreateCleanRoom).
+     * 1. It has the creator&#39;s globalMetastoreId (determined by caller of CreateCleanRoom).
      * 
-     * 2. Its invite_recipient_email is empty
+     * 2. Its inviteRecipientEmail is empty
      * 
      */
     private @Nullable List<CleanRoomsCleanRoomRemoteDetailedInfoCollaborator> collaborators;
@@ -72,9 +72,9 @@ public final class CleanRoomsCleanRoomRemoteDetailedInfo {
      * @return Collaborators in the central clean room. There should one and only one collaborator
      * in the list that satisfies the owner condition:
      * 
-     * 1. It has the creator&#39;s global_metastore_id (determined by caller of CreateCleanRoom).
+     * 1. It has the creator&#39;s globalMetastoreId (determined by caller of CreateCleanRoom).
      * 
-     * 2. Its invite_recipient_email is empty
+     * 2. Its inviteRecipientEmail is empty
      * 
      */
     public List<CleanRoomsCleanRoomRemoteDetailedInfoCollaborator> collaborators() {

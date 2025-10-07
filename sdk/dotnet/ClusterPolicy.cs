@@ -31,9 +31,9 @@ namespace Pulumi.Databricks
     /// 
     /// You can override built-in cluster policies by creating a `databricks.ClusterPolicy` resource with following attributes:
     /// 
-    /// * `name` - the name of the built-in cluster policy.
-    /// * `policy_family_id` - the ID of the cluster policy family used for built-in cluster policy.
-    /// * `policy_family_definition_overrides` - settings to override in the built-in cluster policy.
+    /// * `Name` - the name of the built-in cluster policy.
+    /// * `PolicyFamilyId` - the ID of the cluster policy family used for built-in cluster policy.
+    /// * `PolicyFamilyDefinitionOverrides` - settings to override in the built-in cluster policy.
     /// 
     /// You can obtain the list of defined cluster policies families using the `databricks policy-families list` command of the new [Databricks CLI](https://docs.databricks.com/en/dev-tools/cli/index.html), or via [list policy families](https://docs.databricks.com/api/workspace/policyfamilies/list) REST API.
     /// 
@@ -87,7 +87,7 @@ namespace Pulumi.Databricks
     /// * databricks.Library to install a [library](https://docs.databricks.com/libraries/index.html) on databricks_cluster.
     /// * databricks.getNodeType data to get the smallest node type for databricks.Cluster that fits search criteria, like amount of RAM or number of cores.
     /// * databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
-    /// * databricks.getSparkVersion data to get [Databricks Runtime (DBR)](https://docs.databricks.com/runtime/dbr.html) version that could be used for `spark_version` parameter in databricks.Cluster and other resources.
+    /// * databricks.getSparkVersion data to get [Databricks Runtime (DBR)](https://docs.databricks.com/runtime/dbr.html) version that could be used for `SparkVersion` parameter in databricks.Cluster and other resources.
     /// * databricks.UserInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_user.
     /// * databricks.WorkspaceConf to manage workspace configuration for expert usage.
     /// 
@@ -117,7 +117,7 @@ namespace Pulumi.Databricks
     public partial class ClusterPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition). Cannot be used with `policy_family_id`
+        /// Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition). Cannot be used with `PolicyFamilyId`
         /// </summary>
         [Output("definition")]
         public Output<string> Definition { get; private set; } = null!;
@@ -150,7 +150,7 @@ namespace Pulumi.Databricks
         public Output<string?> PolicyFamilyDefinitionOverrides { get; private set; } = null!;
 
         /// <summary>
-        /// ID of the policy family. The cluster policy's policy definition inherits the policy family's policy definition. Cannot be used with `definition`. Use `policy_family_definition_overrides` instead to customize the policy definition.
+        /// ID of the policy family. The cluster policy's policy definition inherits the policy family's policy definition. Cannot be used with `Definition`. Use `PolicyFamilyDefinitionOverrides` instead to customize the policy definition.
         /// </summary>
         [Output("policyFamilyId")]
         public Output<string?> PolicyFamilyId { get; private set; } = null!;
@@ -208,7 +208,7 @@ namespace Pulumi.Databricks
     public sealed class ClusterPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition). Cannot be used with `policy_family_id`
+        /// Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition). Cannot be used with `PolicyFamilyId`
         /// </summary>
         [Input("definition")]
         public Input<string>? Definition { get; set; }
@@ -246,7 +246,7 @@ namespace Pulumi.Databricks
         public Input<string>? PolicyFamilyDefinitionOverrides { get; set; }
 
         /// <summary>
-        /// ID of the policy family. The cluster policy's policy definition inherits the policy family's policy definition. Cannot be used with `definition`. Use `policy_family_definition_overrides` instead to customize the policy definition.
+        /// ID of the policy family. The cluster policy's policy definition inherits the policy family's policy definition. Cannot be used with `Definition`. Use `PolicyFamilyDefinitionOverrides` instead to customize the policy definition.
         /// </summary>
         [Input("policyFamilyId")]
         public Input<string>? PolicyFamilyId { get; set; }
@@ -260,7 +260,7 @@ namespace Pulumi.Databricks
     public sealed class ClusterPolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition). Cannot be used with `policy_family_id`
+        /// Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition). Cannot be used with `PolicyFamilyId`
         /// </summary>
         [Input("definition")]
         public Input<string>? Definition { get; set; }
@@ -298,7 +298,7 @@ namespace Pulumi.Databricks
         public Input<string>? PolicyFamilyDefinitionOverrides { get; set; }
 
         /// <summary>
-        /// ID of the policy family. The cluster policy's policy definition inherits the policy family's policy definition. Cannot be used with `definition`. Use `policy_family_definition_overrides` instead to customize the policy definition.
+        /// ID of the policy family. The cluster policy's policy definition inherits the policy family's policy definition. Cannot be used with `Definition`. Use `PolicyFamilyDefinitionOverrides` instead to customize the policy definition.
         /// </summary>
         [Input("policyFamilyId")]
         public Input<string>? PolicyFamilyId { get; set; }

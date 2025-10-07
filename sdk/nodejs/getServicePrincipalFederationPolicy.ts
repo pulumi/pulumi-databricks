@@ -10,6 +10,10 @@ import * as utilities from "./utilities";
  * This data source can be used to get a single service principal federation policy.
  *
  * > **Note** This data source can only be used with an account-level provider!
+ *
+ * ## Example Usage
+ *
+ * Referring to a service principal federation policy by id:
  */
 export function getServicePrincipalFederationPolicy(args?: GetServicePrincipalFederationPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetServicePrincipalFederationPolicyResult> {
     args = args || {};
@@ -94,6 +98,10 @@ export interface GetServicePrincipalFederationPolicyResult {
  * This data source can be used to get a single service principal federation policy.
  *
  * > **Note** This data source can only be used with an account-level provider!
+ *
+ * ## Example Usage
+ *
+ * Referring to a service principal federation policy by id:
  */
 export function getServicePrincipalFederationPolicyOutput(args?: GetServicePrincipalFederationPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetServicePrincipalFederationPolicyResult> {
     args = args || {};

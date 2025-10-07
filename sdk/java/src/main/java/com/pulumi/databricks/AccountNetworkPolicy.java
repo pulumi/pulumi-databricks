@@ -28,6 +28,55 @@ import javax.annotation.Nullable;
  * 
  * &gt; **Note** This resource can only be used with an account-level provider!
  * 
+ * ## Example Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.AccountNetworkPolicy;
+ * import com.pulumi.databricks.AccountNetworkPolicyArgs;
+ * import com.pulumi.databricks.inputs.AccountNetworkPolicyEgressArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleNetworkPolicy = new AccountNetworkPolicy("exampleNetworkPolicy", AccountNetworkPolicyArgs.builder()
+ *             .networkPolicyId("example-network-policy")
+ *             .egress(AccountNetworkPolicyEgressArgs.builder()
+ *                 .network_access(Map.ofEntries(
+ *                     Map.entry("restrictionMode", "RESTRICTED_ACCESS"),
+ *                     Map.entry("allowedInternetDestinations", List.of(Map.ofEntries(
+ *                         Map.entry("destination", "example.com"),
+ *                         Map.entry("internetDestinationType", "DNS_NAME")
+ *                     ))),
+ *                     Map.entry("allowedStorageDestinations", List.of(Map.ofEntries(
+ *                         Map.entry("bucketName", "example-aws-cloud-storage"),
+ *                         Map.entry("region", "us-west-1"),
+ *                         Map.entry("storageDestinationType", "AWS_S3")
+ *                     ))),
+ *                     Map.entry("policyEnforcement", Map.of("enforcementMode", "ENFORCED"))
+ *                 ))
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * As of Pulumi v1.5, resources can be imported through configuration.

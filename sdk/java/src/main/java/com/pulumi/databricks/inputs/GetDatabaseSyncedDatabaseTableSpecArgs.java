@@ -37,14 +37,14 @@ public final class GetDatabaseSyncedDatabaseTableSpecArgs extends com.pulumi.res
     }
 
     /**
-     * (string) - At most one of existing_pipeline_id and new_pipeline_spec should be defined.
+     * (string) - At most one of existingPipelineId and newPipelineSpec should be defined.
      * 
      */
     @Import(name="existingPipelineId", required=true)
     private Output<String> existingPipelineId;
 
     /**
-     * @return (string) - At most one of existing_pipeline_id and new_pipeline_spec should be defined.
+     * @return (string) - At most one of existingPipelineId and newPipelineSpec should be defined.
      * 
      */
     public Output<String> existingPipelineId() {
@@ -52,14 +52,14 @@ public final class GetDatabaseSyncedDatabaseTableSpecArgs extends com.pulumi.res
     }
 
     /**
-     * (NewPipelineSpec) - At most one of existing_pipeline_id and new_pipeline_spec should be defined.
+     * (NewPipelineSpec) - At most one of existingPipelineId and newPipelineSpec should be defined.
      * 
      */
     @Import(name="newPipelineSpec", required=true)
     private Output<GetDatabaseSyncedDatabaseTableSpecNewPipelineSpecArgs> newPipelineSpec;
 
     /**
-     * @return (NewPipelineSpec) - At most one of existing_pipeline_id and new_pipeline_spec should be defined.
+     * @return (NewPipelineSpec) - At most one of existingPipelineId and newPipelineSpec should be defined.
      * 
      */
     public Output<GetDatabaseSyncedDatabaseTableSpecNewPipelineSpecArgs> newPipelineSpec() {
@@ -180,7 +180,7 @@ public final class GetDatabaseSyncedDatabaseTableSpecArgs extends com.pulumi.res
         }
 
         /**
-         * @param existingPipelineId (string) - At most one of existing_pipeline_id and new_pipeline_spec should be defined.
+         * @param existingPipelineId (string) - At most one of existingPipelineId and newPipelineSpec should be defined.
          * 
          * @return builder
          * 
@@ -191,7 +191,7 @@ public final class GetDatabaseSyncedDatabaseTableSpecArgs extends com.pulumi.res
         }
 
         /**
-         * @param existingPipelineId (string) - At most one of existing_pipeline_id and new_pipeline_spec should be defined.
+         * @param existingPipelineId (string) - At most one of existingPipelineId and newPipelineSpec should be defined.
          * 
          * @return builder
          * 
@@ -201,7 +201,7 @@ public final class GetDatabaseSyncedDatabaseTableSpecArgs extends com.pulumi.res
         }
 
         /**
-         * @param newPipelineSpec (NewPipelineSpec) - At most one of existing_pipeline_id and new_pipeline_spec should be defined.
+         * @param newPipelineSpec (NewPipelineSpec) - At most one of existingPipelineId and newPipelineSpec should be defined.
          * 
          * @return builder
          * 
@@ -212,7 +212,7 @@ public final class GetDatabaseSyncedDatabaseTableSpecArgs extends com.pulumi.res
         }
 
         /**
-         * @param newPipelineSpec (NewPipelineSpec) - At most one of existing_pipeline_id and new_pipeline_spec should be defined.
+         * @param newPipelineSpec (NewPipelineSpec) - At most one of existingPipelineId and newPipelineSpec should be defined.
          * 
          * @return builder
          * 

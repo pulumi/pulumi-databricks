@@ -13,13 +13,13 @@ namespace Pulumi.Databricks.Inputs
     public sealed class JobTaskDashboardTaskSubscriptionSubscriberArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A snapshot of the dashboard will be sent to the destination when the `destination_id` field is present.
+        /// A snapshot of the dashboard will be sent to the destination when the `DestinationId` field is present.
         /// </summary>
         [Input("destinationId")]
         public Input<string>? DestinationId { get; set; }
 
         /// <summary>
-        /// A snapshot of the dashboard will be sent to the user's email when the `user_name` field is present.
+        /// A snapshot of the dashboard will be sent to the user's email when the `UserName` field is present.
         /// </summary>
         [Input("userName")]
         public Input<string>? UserName { get; set; }

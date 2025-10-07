@@ -40,14 +40,14 @@ public final class BudgetAlertConfigurationArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * The threshold for the budget alert to determine if it is in a triggered state. The number is evaluated based on `quantity_type`.
+     * The threshold for the budget alert to determine if it is in a triggered state. The number is evaluated based on `quantityType`.
      * 
      */
     @Import(name="quantityThreshold")
     private @Nullable Output<String> quantityThreshold;
 
     /**
-     * @return The threshold for the budget alert to determine if it is in a triggered state. The number is evaluated based on `quantity_type`.
+     * @return The threshold for the budget alert to determine if it is in a triggered state. The number is evaluated based on `quantityType`.
      * 
      */
     public Optional<Output<String>> quantityThreshold() {
@@ -55,14 +55,14 @@ public final class BudgetAlertConfigurationArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * The way to calculate cost for this budget alert. This is what quantity_threshold is measured in. (Enum: `LIST_PRICE_DOLLARS_USD`)
+     * The way to calculate cost for this budget alert. This is what quantityThreshold is measured in. (Enum: `LIST_PRICE_DOLLARS_USD`)
      * 
      */
     @Import(name="quantityType")
     private @Nullable Output<String> quantityType;
 
     /**
-     * @return The way to calculate cost for this budget alert. This is what quantity_threshold is measured in. (Enum: `LIST_PRICE_DOLLARS_USD`)
+     * @return The way to calculate cost for this budget alert. This is what quantityThreshold is measured in. (Enum: `LIST_PRICE_DOLLARS_USD`)
      * 
      */
     public Optional<Output<String>> quantityType() {
@@ -169,7 +169,7 @@ public final class BudgetAlertConfigurationArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param quantityThreshold The threshold for the budget alert to determine if it is in a triggered state. The number is evaluated based on `quantity_type`.
+         * @param quantityThreshold The threshold for the budget alert to determine if it is in a triggered state. The number is evaluated based on `quantityType`.
          * 
          * @return builder
          * 
@@ -180,7 +180,7 @@ public final class BudgetAlertConfigurationArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param quantityThreshold The threshold for the budget alert to determine if it is in a triggered state. The number is evaluated based on `quantity_type`.
+         * @param quantityThreshold The threshold for the budget alert to determine if it is in a triggered state. The number is evaluated based on `quantityType`.
          * 
          * @return builder
          * 
@@ -190,7 +190,7 @@ public final class BudgetAlertConfigurationArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param quantityType The way to calculate cost for this budget alert. This is what quantity_threshold is measured in. (Enum: `LIST_PRICE_DOLLARS_USD`)
+         * @param quantityType The way to calculate cost for this budget alert. This is what quantityThreshold is measured in. (Enum: `LIST_PRICE_DOLLARS_USD`)
          * 
          * @return builder
          * 
@@ -201,7 +201,7 @@ public final class BudgetAlertConfigurationArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param quantityType The way to calculate cost for this budget alert. This is what quantity_threshold is measured in. (Enum: `LIST_PRICE_DOLLARS_USD`)
+         * @param quantityType The way to calculate cost for this budget alert. This is what quantityThreshold is measured in. (Enum: `LIST_PRICE_DOLLARS_USD`)
          * 
          * @return builder
          * 

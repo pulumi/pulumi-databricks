@@ -19,17 +19,17 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly bool? CreateDatabaseObjectsIfMissing;
         /// <summary>
-        /// At most one of existing_pipeline_id and new_pipeline_spec should be defined.
+        /// At most one of ExistingPipelineId and NewPipelineSpec should be defined.
         /// 
-        /// If existing_pipeline_id is defined, the synced table will be bin packed into the existing pipeline
+        /// If ExistingPipelineId is defined, the synced table will be bin packed into the existing pipeline
         /// referenced. This avoids creating a new pipeline and allows sharing existing compute.
-        /// In this case, the scheduling_policy of this synced table must match the scheduling policy of the existing pipeline
+        /// In this case, the SchedulingPolicy of this synced table must match the scheduling policy of the existing pipeline
         /// </summary>
         public readonly string? ExistingPipelineId;
         /// <summary>
-        /// At most one of existing_pipeline_id and new_pipeline_spec should be defined.
+        /// At most one of ExistingPipelineId and NewPipelineSpec should be defined.
         /// 
-        /// If new_pipeline_spec is defined, a new pipeline is created for this synced table. The location pointed to is used
+        /// If NewPipelineSpec is defined, a new pipeline is created for this synced table. The location pointed to is used
         /// to store intermediate files (checkpoints, event logs etc). The caller must have write permissions to create Delta
         /// tables in the specified catalog and schema. Again, note this requires write permissions, whereas the source table
         /// only requires read permissions

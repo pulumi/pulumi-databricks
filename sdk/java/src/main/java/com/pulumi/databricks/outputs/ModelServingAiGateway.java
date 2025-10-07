@@ -32,12 +32,12 @@ public final class ModelServingAiGateway {
      */
     private @Nullable ModelServingAiGatewayInferenceTableConfig inferenceTableConfig;
     /**
-     * @return Block describing rate limits for AI gateway. For details see the description of `rate_limits` block above.
+     * @return Block describing rate limits for AI gateway. For details see the description of `rateLimits` block above.
      * 
      */
     private @Nullable List<ModelServingAiGatewayRateLimit> rateLimits;
     /**
-     * @return Block with configuration for payload logging using inference tables. For details see the description of `auto_capture_config` block above.
+     * @return Block with configuration for payload logging using inference tables. For details see the description of `autoCaptureConfig` block above.
      * 
      */
     private @Nullable ModelServingAiGatewayUsageTrackingConfig usageTrackingConfig;
@@ -65,14 +65,14 @@ public final class ModelServingAiGateway {
         return Optional.ofNullable(this.inferenceTableConfig);
     }
     /**
-     * @return Block describing rate limits for AI gateway. For details see the description of `rate_limits` block above.
+     * @return Block describing rate limits for AI gateway. For details see the description of `rateLimits` block above.
      * 
      */
     public List<ModelServingAiGatewayRateLimit> rateLimits() {
         return this.rateLimits == null ? List.of() : this.rateLimits;
     }
     /**
-     * @return Block with configuration for payload logging using inference tables. For details see the description of `auto_capture_config` block above.
+     * @return Block with configuration for payload logging using inference tables. For details see the description of `autoCaptureConfig` block above.
      * 
      */
     public Optional<ModelServingAiGatewayUsageTrackingConfig> usageTrackingConfig() {

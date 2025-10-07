@@ -26,7 +26,7 @@ public final class ModelServingConfigServedModel {
      */
     private @Nullable String instanceProfileArn;
     /**
-     * @return The maximum provisioned concurrency that the endpoint can scale up to. Conflicts with `workload_size`.
+     * @return The maximum provisioned concurrency that the endpoint can scale up to. Conflicts with `workloadSize`.
      * 
      */
     private @Nullable Integer maxProvisionedConcurrency;
@@ -36,7 +36,7 @@ public final class ModelServingConfigServedModel {
      */
     private @Nullable Integer maxProvisionedThroughput;
     /**
-     * @return The minimum provisioned concurrency that the endpoint can scale down to. Conflicts with `workload_size`.
+     * @return The minimum provisioned concurrency that the endpoint can scale down to. Conflicts with `workloadSize`.
      * 
      */
     private @Nullable Integer minProvisionedConcurrency;
@@ -93,7 +93,7 @@ public final class ModelServingConfigServedModel {
         return Optional.ofNullable(this.instanceProfileArn);
     }
     /**
-     * @return The maximum provisioned concurrency that the endpoint can scale up to. Conflicts with `workload_size`.
+     * @return The maximum provisioned concurrency that the endpoint can scale up to. Conflicts with `workloadSize`.
      * 
      */
     public Optional<Integer> maxProvisionedConcurrency() {
@@ -107,7 +107,7 @@ public final class ModelServingConfigServedModel {
         return Optional.ofNullable(this.maxProvisionedThroughput);
     }
     /**
-     * @return The minimum provisioned concurrency that the endpoint can scale down to. Conflicts with `workload_size`.
+     * @return The minimum provisioned concurrency that the endpoint can scale down to. Conflicts with `workloadSize`.
      * 
      */
     public Optional<Integer> minProvisionedConcurrency() {

@@ -162,6 +162,10 @@ def get_service_principal_federation_policy(description: Optional[_builtins.str]
 
     > **Note** This data source can only be used with an account-level provider!
 
+    ## Example Usage
+
+    Referring to a service principal federation policy by id:
+
 
     :param _builtins.str description: (string) - Description of the federation policy
     :param Union['GetServicePrincipalFederationPolicyOidcPolicyArgs', 'GetServicePrincipalFederationPolicyOidcPolicyArgsDict'] oidc_policy: (OidcFederationPolicy)
@@ -195,6 +199,10 @@ def get_service_principal_federation_policy_output(description: Optional[pulumi.
     This data source can be used to get a single service principal federation policy.
 
     > **Note** This data source can only be used with an account-level provider!
+
+    ## Example Usage
+
+    Referring to a service principal federation policy by id:
 
 
     :param _builtins.str description: (string) - Description of the federation policy

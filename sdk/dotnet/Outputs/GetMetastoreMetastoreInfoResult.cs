@@ -40,7 +40,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// Username/groupname/sp application_id of the metastore owner.
+        /// Username/groupname/sp ApplicationId of the metastore owner.
         /// </summary>
         public readonly string? Owner;
         public readonly string? PrivilegeModelVersion;

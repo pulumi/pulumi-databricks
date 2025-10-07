@@ -16,7 +16,7 @@ namespace Pulumi.Databricks
     /// 
     /// ## Example Usage
     /// 
-    /// You can declare a Pulumi-managed directory by specifying the `path` attribute of the corresponding directory.
+    /// You can declare a Pulumi-managed directory by specifying the `Path` attribute of the corresponding directory.
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -47,7 +47,7 @@ namespace Pulumi.Databricks
     /// - databricks.Notebook data to export a notebook from Databricks Workspace.
     /// - databricks.getNotebookPaths data to list notebooks in Databricks Workspace.
     /// - databricks.Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
-    /// - databricks.getSparkVersion data to get [Databricks Runtime (DBR)](https://docs.databricks.com/runtime/dbr.html) version that could be used for `spark_version` parameter in databricks.Cluster and other resources.
+    /// - databricks.getSparkVersion data to get [Databricks Runtime (DBR)](https://docs.databricks.com/runtime/dbr.html) version that could be used for `SparkVersion` parameter in databricks.Cluster and other resources.
     /// - databricks.WorkspaceConf to manage workspace configuration for expert usage.
     /// 
     /// ## Import
@@ -76,7 +76,7 @@ namespace Pulumi.Databricks
     public partial class Directory : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Whether or not to trigger a recursive delete of this directory and its resources when deleting this on Pulumi. Defaults to `false`
+        /// Whether or not to trigger a recursive delete of this directory and its resources when deleting this on Pulumi. Defaults to `False`
         /// </summary>
         [Output("deleteRecursive")]
         public Output<bool?> DeleteRecursive { get; private set; } = null!;
@@ -94,7 +94,7 @@ namespace Pulumi.Databricks
         public Output<string> Path { get; private set; } = null!;
 
         /// <summary>
-        /// path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+        /// path on Workspace File System (WSFS) in form of `/Workspace` + `Path`
         /// </summary>
         [Output("workspacePath")]
         public Output<string> WorkspacePath { get; private set; } = null!;
@@ -146,7 +146,7 @@ namespace Pulumi.Databricks
     public sealed class DirectoryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether or not to trigger a recursive delete of this directory and its resources when deleting this on Pulumi. Defaults to `false`
+        /// Whether or not to trigger a recursive delete of this directory and its resources when deleting this on Pulumi. Defaults to `False`
         /// </summary>
         [Input("deleteRecursive")]
         public Input<bool>? DeleteRecursive { get; set; }
@@ -172,7 +172,7 @@ namespace Pulumi.Databricks
     public sealed class DirectoryState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether or not to trigger a recursive delete of this directory and its resources when deleting this on Pulumi. Defaults to `false`
+        /// Whether or not to trigger a recursive delete of this directory and its resources when deleting this on Pulumi. Defaults to `False`
         /// </summary>
         [Input("deleteRecursive")]
         public Input<bool>? DeleteRecursive { get; set; }
@@ -190,7 +190,7 @@ namespace Pulumi.Databricks
         public Input<string>? Path { get; set; }
 
         /// <summary>
-        /// path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+        /// path on Workspace File System (WSFS) in form of `/Workspace` + `Path`
         /// </summary>
         [Input("workspacePath")]
         public Input<string>? WorkspacePath { get; set; }

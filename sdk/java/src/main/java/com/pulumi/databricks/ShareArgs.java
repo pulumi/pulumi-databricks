@@ -86,14 +86,14 @@ public final class ShareArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * User name/group name/sp application_id of the share owner.
+     * User name/group name/sp applicationId of the share owner.
      * 
      */
     @Import(name="owner")
     private @Nullable Output<String> owner;
 
     /**
-     * @return User name/group name/sp application_id of the share owner.
+     * @return User name/group name/sp applicationId of the share owner.
      * 
      */
     public Optional<Output<String>> owner() {
@@ -259,7 +259,7 @@ public final class ShareArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param owner User name/group name/sp application_id of the share owner.
+         * @param owner User name/group name/sp applicationId of the share owner.
          * 
          * @return builder
          * 
@@ -270,7 +270,7 @@ public final class ShareArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param owner User name/group name/sp application_id of the share owner.
+         * @param owner User name/group name/sp applicationId of the share owner.
          * 
          * @return builder
          * 

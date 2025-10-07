@@ -23,14 +23,14 @@ public final class QueryParameterArgs extends com.pulumi.resources.ResourceArgs 
     public static final QueryParameterArgs Empty = new QueryParameterArgs();
 
     /**
-     * Date-range query parameter value. Consists of following attributes (Can only specify one of `dynamic_date_range_value` or `date_range_value`):
+     * Date-range query parameter value. Consists of following attributes (Can only specify one of `dynamicDateRangeValue` or `dateRangeValue`):
      * 
      */
     @Import(name="dateRangeValue")
     private @Nullable Output<QueryParameterDateRangeValueArgs> dateRangeValue;
 
     /**
-     * @return Date-range query parameter value. Consists of following attributes (Can only specify one of `dynamic_date_range_value` or `date_range_value`):
+     * @return Date-range query parameter value. Consists of following attributes (Can only specify one of `dynamicDateRangeValue` or `dateRangeValue`):
      * 
      */
     public Optional<Output<QueryParameterDateRangeValueArgs>> dateRangeValue() {
@@ -38,14 +38,14 @@ public final class QueryParameterArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Date query parameter value. Consists of following attributes (Can only specify one of `dynamic_date_value` or `date_value`):
+     * Date query parameter value. Consists of following attributes (Can only specify one of `dynamicDateValue` or `dateValue`):
      * 
      */
     @Import(name="dateValue")
     private @Nullable Output<QueryParameterDateValueArgs> dateValue;
 
     /**
-     * @return Date query parameter value. Consists of following attributes (Can only specify one of `dynamic_date_value` or `date_value`):
+     * @return Date query parameter value. Consists of following attributes (Can only specify one of `dynamicDateValue` or `dateValue`):
      * 
      */
     public Optional<Output<QueryParameterDateValueArgs>> dateValue() {
@@ -174,7 +174,7 @@ public final class QueryParameterArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param dateRangeValue Date-range query parameter value. Consists of following attributes (Can only specify one of `dynamic_date_range_value` or `date_range_value`):
+         * @param dateRangeValue Date-range query parameter value. Consists of following attributes (Can only specify one of `dynamicDateRangeValue` or `dateRangeValue`):
          * 
          * @return builder
          * 
@@ -185,7 +185,7 @@ public final class QueryParameterArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param dateRangeValue Date-range query parameter value. Consists of following attributes (Can only specify one of `dynamic_date_range_value` or `date_range_value`):
+         * @param dateRangeValue Date-range query parameter value. Consists of following attributes (Can only specify one of `dynamicDateRangeValue` or `dateRangeValue`):
          * 
          * @return builder
          * 
@@ -195,7 +195,7 @@ public final class QueryParameterArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param dateValue Date query parameter value. Consists of following attributes (Can only specify one of `dynamic_date_value` or `date_value`):
+         * @param dateValue Date query parameter value. Consists of following attributes (Can only specify one of `dynamicDateValue` or `dateValue`):
          * 
          * @return builder
          * 
@@ -206,7 +206,7 @@ public final class QueryParameterArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param dateValue Date query parameter value. Consists of following attributes (Can only specify one of `dynamic_date_value` or `date_value`):
+         * @param dateValue Date query parameter value. Consists of following attributes (Can only specify one of `dynamicDateValue` or `dateValue`):
          * 
          * @return builder
          * 

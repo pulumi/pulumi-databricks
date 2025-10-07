@@ -15,12 +15,12 @@ namespace Pulumi.Databricks.Outputs
     {
         /// <summary>
         /// (string) - Collaborator alias of the author covered by the rule.
-        /// Only one of `author_collaborator_alias` and `author_scope` can be set
+        /// Only one of `AuthorCollaboratorAlias` and `AuthorScope` can be set
         /// </summary>
         public readonly string? AuthorCollaboratorAlias;
         /// <summary>
         /// (string) - Scope of authors covered by the rule.
-        /// Only one of `author_collaborator_alias` and `author_scope` can be set. Possible values are: `ANY_AUTHOR`
+        /// Only one of `AuthorCollaboratorAlias` and `AuthorScope` can be set. Possible values are: `ANY_AUTHOR`
         /// </summary>
         public readonly string? AuthorScope;
         public readonly string? CleanRoomName;

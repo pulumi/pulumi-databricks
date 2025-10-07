@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class JobEnvironment {
     /**
-     * @return an unique identifier of the Environment.  It will be referenced from `environment_key` attribute of corresponding task.
+     * @return an unique identifier of the Environment.  It will be referenced from `environmentKey` attribute of corresponding task.
      * 
      */
     private String environmentKey;
@@ -26,7 +26,7 @@ public final class JobEnvironment {
 
     private JobEnvironment() {}
     /**
-     * @return an unique identifier of the Environment.  It will be referenced from `environment_key` attribute of corresponding task.
+     * @return an unique identifier of the Environment.  It will be referenced from `environmentKey` attribute of corresponding task.
      * 
      */
     public String environmentKey() {

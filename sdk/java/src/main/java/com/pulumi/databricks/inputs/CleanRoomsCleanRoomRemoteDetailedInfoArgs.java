@@ -54,9 +54,9 @@ public final class CleanRoomsCleanRoomRemoteDetailedInfoArgs extends com.pulumi.
      * Collaborators in the central clean room. There should one and only one collaborator
      * in the list that satisfies the owner condition:
      * 
-     * 1. It has the creator&#39;s global_metastore_id (determined by caller of CreateCleanRoom).
+     * 1. It has the creator&#39;s globalMetastoreId (determined by caller of CreateCleanRoom).
      * 
-     * 2. Its invite_recipient_email is empty
+     * 2. Its inviteRecipientEmail is empty
      * 
      */
     @Import(name="collaborators")
@@ -66,9 +66,9 @@ public final class CleanRoomsCleanRoomRemoteDetailedInfoArgs extends com.pulumi.
      * @return Collaborators in the central clean room. There should one and only one collaborator
      * in the list that satisfies the owner condition:
      * 
-     * 1. It has the creator&#39;s global_metastore_id (determined by caller of CreateCleanRoom).
+     * 1. It has the creator&#39;s globalMetastoreId (determined by caller of CreateCleanRoom).
      * 
-     * 2. Its invite_recipient_email is empty
+     * 2. Its inviteRecipientEmail is empty
      * 
      */
     public Optional<Output<List<CleanRoomsCleanRoomRemoteDetailedInfoCollaboratorArgs>>> collaborators() {
@@ -203,9 +203,9 @@ public final class CleanRoomsCleanRoomRemoteDetailedInfoArgs extends com.pulumi.
          * @param collaborators Collaborators in the central clean room. There should one and only one collaborator
          * in the list that satisfies the owner condition:
          * 
-         * 1. It has the creator&#39;s global_metastore_id (determined by caller of CreateCleanRoom).
+         * 1. It has the creator&#39;s globalMetastoreId (determined by caller of CreateCleanRoom).
          * 
-         * 2. Its invite_recipient_email is empty
+         * 2. Its inviteRecipientEmail is empty
          * 
          * @return builder
          * 
@@ -219,9 +219,9 @@ public final class CleanRoomsCleanRoomRemoteDetailedInfoArgs extends com.pulumi.
          * @param collaborators Collaborators in the central clean room. There should one and only one collaborator
          * in the list that satisfies the owner condition:
          * 
-         * 1. It has the creator&#39;s global_metastore_id (determined by caller of CreateCleanRoom).
+         * 1. It has the creator&#39;s globalMetastoreId (determined by caller of CreateCleanRoom).
          * 
-         * 2. Its invite_recipient_email is empty
+         * 2. Its inviteRecipientEmail is empty
          * 
          * @return builder
          * 
@@ -234,9 +234,9 @@ public final class CleanRoomsCleanRoomRemoteDetailedInfoArgs extends com.pulumi.
          * @param collaborators Collaborators in the central clean room. There should one and only one collaborator
          * in the list that satisfies the owner condition:
          * 
-         * 1. It has the creator&#39;s global_metastore_id (determined by caller of CreateCleanRoom).
+         * 1. It has the creator&#39;s globalMetastoreId (determined by caller of CreateCleanRoom).
          * 
-         * 2. Its invite_recipient_email is empty
+         * 2. Its inviteRecipientEmail is empty
          * 
          * @return builder
          * 

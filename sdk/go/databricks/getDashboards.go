@@ -14,6 +14,53 @@ import (
 // This data source allows you to retrieve information about Databricks [Dashboards](https://docs.databricks.com/en/dashboards/index.html).
 //
 // > This data source can only be used with a workspace-level provider!
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			all, err := databricks.GetDashboards(ctx, &databricks.GetDashboardsArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			var splat0 []*string
+//			for _, val0 := range all.Dashboards {
+//				splat0 = append(splat0, val0.DashboardId)
+//			}
+//			var dashboardsPermissions []*databricks.Permissions
+//			for key0, val0 := range splat0 {
+//				__res, err := databricks.NewPermissions(ctx, fmt.Sprintf("dashboards_permissions-%v", key0), &databricks.PermissionsArgs{
+//					Depends: []interface{}{
+//						all,
+//					},
+//					DashboardId: pulumi.String(val0),
+//					AccessControls: databricks.PermissionsAccessControlArray{
+//						&databricks.PermissionsAccessControlArgs{
+//							GroupName:       pulumi.String("Example Group"),
+//							PermissionLevel: pulumi.String("CAN_MANAGE"),
+//						},
+//					},
+//				})
+//				if err != nil {
+//					return err
+//				}
+//				dashboardsPermissions = append(dashboardsPermissions, __res)
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetDashboards(ctx *pulumi.Context, args *GetDashboardsArgs, opts ...pulumi.InvokeOption) (*GetDashboardsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDashboardsResult

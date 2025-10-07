@@ -15,6 +15,10 @@ namespace Pulumi.Databricks
         /// This data source can be used to get a single service principal federation policy.
         /// 
         /// &gt; **Note** This data source can only be used with an account-level provider!
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Referring to a service principal federation policy by id:
         /// </summary>
         public static Task<GetServicePrincipalFederationPolicyResult> InvokeAsync(GetServicePrincipalFederationPolicyArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetServicePrincipalFederationPolicyResult>("databricks:index/getServicePrincipalFederationPolicy:getServicePrincipalFederationPolicy", args ?? new GetServicePrincipalFederationPolicyArgs(), options.WithDefaults());
@@ -23,6 +27,10 @@ namespace Pulumi.Databricks
         /// This data source can be used to get a single service principal federation policy.
         /// 
         /// &gt; **Note** This data source can only be used with an account-level provider!
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Referring to a service principal federation policy by id:
         /// </summary>
         public static Output<GetServicePrincipalFederationPolicyResult> Invoke(GetServicePrincipalFederationPolicyInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServicePrincipalFederationPolicyResult>("databricks:index/getServicePrincipalFederationPolicy:getServicePrincipalFederationPolicy", args ?? new GetServicePrincipalFederationPolicyInvokeArgs(), options.WithDefaults());
@@ -31,6 +39,10 @@ namespace Pulumi.Databricks
         /// This data source can be used to get a single service principal federation policy.
         /// 
         /// &gt; **Note** This data source can only be used with an account-level provider!
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Referring to a service principal federation policy by id:
         /// </summary>
         public static Output<GetServicePrincipalFederationPolicyResult> Invoke(GetServicePrincipalFederationPolicyInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetServicePrincipalFederationPolicyResult>("databricks:index/getServicePrincipalFederationPolicy:getServicePrincipalFederationPolicy", args ?? new GetServicePrincipalFederationPolicyInvokeArgs(), options.WithDefaults());

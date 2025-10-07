@@ -15,6 +15,97 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * ### Creating a Synced Database Table inside a Database Catalog
+ *
+ * This example creates a Synced Database Table inside a Database Catalog.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const _this = new databricks.DatabaseSyncedDatabaseTable("this", {
+ *     name: "my_database_catalog.public.synced_table",
+ *     logicalDatabaseName: "databricks_postgres",
+ *     spec: {
+ *         scheduling_policy: "SNAPSHOT",
+ *         source_table_full_name: "source_delta.tpch.customer",
+ *         primary_key_columns: ["c_custkey"],
+ *         create_database_objects_if_missing: true,
+ *         new_pipeline_spec: {
+ *             storageCatalog: "source_delta",
+ *             storageSchema: "tpch",
+ *         },
+ *     },
+ * });
+ * ```
+ *
+ * ### Creating a Synced Database Table inside a Standard Catalog
+ *
+ * This example creates a Synced Database Table inside a Standard Catalog.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const _this = new databricks.DatabaseSyncedDatabaseTable("this", {
+ *     name: "my_standard_catalog.public.synced_table",
+ *     logicalDatabaseName: "databricks_postgres",
+ *     databaseInstanceName: "my-database-instance",
+ *     spec: {
+ *         scheduling_policy: "SNAPSHOT",
+ *         source_table_full_name: "source_delta.tpch.customer",
+ *         primary_key_columns: ["c_custkey"],
+ *         create_database_objects_if_missing: true,
+ *         new_pipeline_spec: {
+ *             storageCatalog: "source_delta",
+ *             storageSchema: "tpch",
+ *         },
+ *     },
+ * });
+ * ```
+ *
+ * ### Creating multiple Synced Database Tables and bin packing them into a single pipeline
+ *
+ * This example creates two Synced Database Tables. The first one specifies a new pipeline spec,
+ * which generates a new pipeline. The second one utilizes the pipeline ID of the first table.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const instance = new databricks.DatabaseInstance("instance", {
+ *     name: "my-database-instance",
+ *     capacity: "CU_1",
+ * });
+ * const syncedTable1 = new databricks.DatabaseSyncedDatabaseTable("synced_table_1", {
+ *     name: "my_standard_catalog.public.synced_table1",
+ *     logicalDatabaseName: "databricks_postgres",
+ *     databaseInstanceName: instance.name,
+ *     spec: {
+ *         scheduling_policy: "SNAPSHOT",
+ *         source_table_full_name: "source_delta.tpch.customer",
+ *         primary_key_columns: ["c_custkey"],
+ *         create_database_objects_if_missing: true,
+ *         new_pipeline_spec: {
+ *             storageCatalog: "source_delta",
+ *             storageSchema: "tpch",
+ *         },
+ *     },
+ * });
+ * const syncedTable2 = new databricks.DatabaseSyncedDatabaseTable("synced_table_2", {
+ *     name: "my_standard_catalog.public.synced_table2",
+ *     logicalDatabaseName: "databricks_postgres",
+ *     databaseInstanceName: instance.name,
+ *     spec: {
+ *         scheduling_policy: "SNAPSHOT",
+ *         source_table_full_name: "source_delta.tpch.customer",
+ *         primary_key_columns: ["c_custkey"],
+ *         create_database_objects_if_missing: true,
+ *         existing_pipeline_id: syncedTable1.dataSynchronizationStatus.apply(dataSynchronizationStatus => dataSynchronizationStatus.pipelineId),
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * As of Pulumi v1.5, resources can be imported through configuration.

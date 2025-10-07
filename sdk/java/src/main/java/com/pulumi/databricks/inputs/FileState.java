@@ -92,14 +92,14 @@ public final class FileState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The full absolute path to the file. Conflicts with `content_base64`.
+     * The full absolute path to the file. Conflicts with `contentBase64`.
      * 
      */
     @Import(name="source")
     private @Nullable Output<String> source;
 
     /**
-     * @return The full absolute path to the file. Conflicts with `content_base64`.
+     * @return The full absolute path to the file. Conflicts with `contentBase64`.
      * 
      */
     public Optional<Output<String>> source() {
@@ -239,7 +239,7 @@ public final class FileState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param source The full absolute path to the file. Conflicts with `content_base64`.
+         * @param source The full absolute path to the file. Conflicts with `contentBase64`.
          * 
          * @return builder
          * 
@@ -250,7 +250,7 @@ public final class FileState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param source The full absolute path to the file. Conflicts with `content_base64`.
+         * @param source The full absolute path to the file. Conflicts with `contentBase64`.
          * 
          * @return builder
          * 

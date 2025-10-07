@@ -20,32 +20,32 @@ public final class MwsPrivateAccessSettingsArgs extends com.pulumi.resources.Res
 
     /**
      * @deprecated
-     * Configuring `account_id` at the resource-level is deprecated; please specify it in the `provider {}` configuration block instead
+     * Configuring `accountId` at the resource-level is deprecated; please specify it in the `provider {}` configuration block instead
      * 
      */
-    @Deprecated /* Configuring `account_id` at the resource-level is deprecated; please specify it in the `provider {}` configuration block instead */
+    @Deprecated /* Configuring `accountId` at the resource-level is deprecated; please specify it in the `provider {}` configuration block instead */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
      * @deprecated
-     * Configuring `account_id` at the resource-level is deprecated; please specify it in the `provider {}` configuration block instead
+     * Configuring `accountId` at the resource-level is deprecated; please specify it in the `provider {}` configuration block instead
      * 
      */
-    @Deprecated /* Configuring `account_id` at the resource-level is deprecated; please specify it in the `provider {}` configuration block instead */
+    @Deprecated /* Configuring `accountId` at the resource-level is deprecated; please specify it in the `provider {}` configuration block instead */
     public Optional<Output<String>> accountId() {
         return Optional.ofNullable(this.accountId);
     }
 
     /**
-     * An array of databricks.MwsVpcEndpoint `vpc_endpoint_id` (not `id`). Only used when `private_access_level` is set to `ENDPOINT`. This is an allow list of databricks.MwsVpcEndpoint that in your account that can connect to your databricks.MwsWorkspaces over AWS PrivateLink. If hybrid access to your workspace is enabled by setting `public_access_enabled` to true, then this control only works for PrivateLink connections. To control how your workspace is accessed via public internet, see the article for databricks_ip_access_list.
+     * An array of databricks.MwsVpcEndpoint `vpcEndpointId` (not `id`). Only used when `privateAccessLevel` is set to `ENDPOINT`. This is an allow list of databricks.MwsVpcEndpoint that in your account that can connect to your databricks.MwsWorkspaces over AWS PrivateLink. If hybrid access to your workspace is enabled by setting `publicAccessEnabled` to true, then this control only works for PrivateLink connections. To control how your workspace is accessed via public internet, see the article for databricks_ip_access_list.
      * 
      */
     @Import(name="allowedVpcEndpointIds")
     private @Nullable Output<List<String>> allowedVpcEndpointIds;
 
     /**
-     * @return An array of databricks.MwsVpcEndpoint `vpc_endpoint_id` (not `id`). Only used when `private_access_level` is set to `ENDPOINT`. This is an allow list of databricks.MwsVpcEndpoint that in your account that can connect to your databricks.MwsWorkspaces over AWS PrivateLink. If hybrid access to your workspace is enabled by setting `public_access_enabled` to true, then this control only works for PrivateLink connections. To control how your workspace is accessed via public internet, see the article for databricks_ip_access_list.
+     * @return An array of databricks.MwsVpcEndpoint `vpcEndpointId` (not `id`). Only used when `privateAccessLevel` is set to `ENDPOINT`. This is an allow list of databricks.MwsVpcEndpoint that in your account that can connect to your databricks.MwsWorkspaces over AWS PrivateLink. If hybrid access to your workspace is enabled by setting `publicAccessEnabled` to true, then this control only works for PrivateLink connections. To control how your workspace is accessed via public internet, see the article for databricks_ip_access_list.
      * 
      */
     public Optional<Output<List<String>>> allowedVpcEndpointIds() {
@@ -53,14 +53,14 @@ public final class MwsPrivateAccessSettingsArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * The private access level controls which VPC endpoints can connect to the UI or API of any workspace that attaches this private access settings object. `ACCOUNT` level access _(default)_ lets only databricks.MwsVpcEndpoint that are registered in your Databricks account connect to your databricks_mws_workspaces. `ENDPOINT` level access lets only specified databricks.MwsVpcEndpoint connect to your workspace. Please see the `allowed_vpc_endpoint_ids` documentation for more details.
+     * The private access level controls which VPC endpoints can connect to the UI or API of any workspace that attaches this private access settings object. `ACCOUNT` level access _(default)_ lets only databricks.MwsVpcEndpoint that are registered in your Databricks account connect to your databricks_mws_workspaces. `ENDPOINT` level access lets only specified databricks.MwsVpcEndpoint connect to your workspace. Please see the `allowedVpcEndpointIds` documentation for more details.
      * 
      */
     @Import(name="privateAccessLevel")
     private @Nullable Output<String> privateAccessLevel;
 
     /**
-     * @return The private access level controls which VPC endpoints can connect to the UI or API of any workspace that attaches this private access settings object. `ACCOUNT` level access _(default)_ lets only databricks.MwsVpcEndpoint that are registered in your Databricks account connect to your databricks_mws_workspaces. `ENDPOINT` level access lets only specified databricks.MwsVpcEndpoint connect to your workspace. Please see the `allowed_vpc_endpoint_ids` documentation for more details.
+     * @return The private access level controls which VPC endpoints can connect to the UI or API of any workspace that attaches this private access settings object. `ACCOUNT` level access _(default)_ lets only databricks.MwsVpcEndpoint that are registered in your Databricks account connect to your databricks_mws_workspaces. `ENDPOINT` level access lets only specified databricks.MwsVpcEndpoint connect to your workspace. Please see the `allowedVpcEndpointIds` documentation for more details.
      * 
      */
     public Optional<Output<String>> privateAccessLevel() {
@@ -161,10 +161,10 @@ public final class MwsPrivateAccessSettingsArgs extends com.pulumi.resources.Res
          * @return builder
          * 
          * @deprecated
-         * Configuring `account_id` at the resource-level is deprecated; please specify it in the `provider {}` configuration block instead
+         * Configuring `accountId` at the resource-level is deprecated; please specify it in the `provider {}` configuration block instead
          * 
          */
-        @Deprecated /* Configuring `account_id` at the resource-level is deprecated; please specify it in the `provider {}` configuration block instead */
+        @Deprecated /* Configuring `accountId` at the resource-level is deprecated; please specify it in the `provider {}` configuration block instead */
         public Builder accountId(@Nullable Output<String> accountId) {
             $.accountId = accountId;
             return this;
@@ -174,16 +174,16 @@ public final class MwsPrivateAccessSettingsArgs extends com.pulumi.resources.Res
          * @return builder
          * 
          * @deprecated
-         * Configuring `account_id` at the resource-level is deprecated; please specify it in the `provider {}` configuration block instead
+         * Configuring `accountId` at the resource-level is deprecated; please specify it in the `provider {}` configuration block instead
          * 
          */
-        @Deprecated /* Configuring `account_id` at the resource-level is deprecated; please specify it in the `provider {}` configuration block instead */
+        @Deprecated /* Configuring `accountId` at the resource-level is deprecated; please specify it in the `provider {}` configuration block instead */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
         }
 
         /**
-         * @param allowedVpcEndpointIds An array of databricks.MwsVpcEndpoint `vpc_endpoint_id` (not `id`). Only used when `private_access_level` is set to `ENDPOINT`. This is an allow list of databricks.MwsVpcEndpoint that in your account that can connect to your databricks.MwsWorkspaces over AWS PrivateLink. If hybrid access to your workspace is enabled by setting `public_access_enabled` to true, then this control only works for PrivateLink connections. To control how your workspace is accessed via public internet, see the article for databricks_ip_access_list.
+         * @param allowedVpcEndpointIds An array of databricks.MwsVpcEndpoint `vpcEndpointId` (not `id`). Only used when `privateAccessLevel` is set to `ENDPOINT`. This is an allow list of databricks.MwsVpcEndpoint that in your account that can connect to your databricks.MwsWorkspaces over AWS PrivateLink. If hybrid access to your workspace is enabled by setting `publicAccessEnabled` to true, then this control only works for PrivateLink connections. To control how your workspace is accessed via public internet, see the article for databricks_ip_access_list.
          * 
          * @return builder
          * 
@@ -194,7 +194,7 @@ public final class MwsPrivateAccessSettingsArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param allowedVpcEndpointIds An array of databricks.MwsVpcEndpoint `vpc_endpoint_id` (not `id`). Only used when `private_access_level` is set to `ENDPOINT`. This is an allow list of databricks.MwsVpcEndpoint that in your account that can connect to your databricks.MwsWorkspaces over AWS PrivateLink. If hybrid access to your workspace is enabled by setting `public_access_enabled` to true, then this control only works for PrivateLink connections. To control how your workspace is accessed via public internet, see the article for databricks_ip_access_list.
+         * @param allowedVpcEndpointIds An array of databricks.MwsVpcEndpoint `vpcEndpointId` (not `id`). Only used when `privateAccessLevel` is set to `ENDPOINT`. This is an allow list of databricks.MwsVpcEndpoint that in your account that can connect to your databricks.MwsWorkspaces over AWS PrivateLink. If hybrid access to your workspace is enabled by setting `publicAccessEnabled` to true, then this control only works for PrivateLink connections. To control how your workspace is accessed via public internet, see the article for databricks_ip_access_list.
          * 
          * @return builder
          * 
@@ -204,7 +204,7 @@ public final class MwsPrivateAccessSettingsArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param allowedVpcEndpointIds An array of databricks.MwsVpcEndpoint `vpc_endpoint_id` (not `id`). Only used when `private_access_level` is set to `ENDPOINT`. This is an allow list of databricks.MwsVpcEndpoint that in your account that can connect to your databricks.MwsWorkspaces over AWS PrivateLink. If hybrid access to your workspace is enabled by setting `public_access_enabled` to true, then this control only works for PrivateLink connections. To control how your workspace is accessed via public internet, see the article for databricks_ip_access_list.
+         * @param allowedVpcEndpointIds An array of databricks.MwsVpcEndpoint `vpcEndpointId` (not `id`). Only used when `privateAccessLevel` is set to `ENDPOINT`. This is an allow list of databricks.MwsVpcEndpoint that in your account that can connect to your databricks.MwsWorkspaces over AWS PrivateLink. If hybrid access to your workspace is enabled by setting `publicAccessEnabled` to true, then this control only works for PrivateLink connections. To control how your workspace is accessed via public internet, see the article for databricks_ip_access_list.
          * 
          * @return builder
          * 
@@ -214,7 +214,7 @@ public final class MwsPrivateAccessSettingsArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param privateAccessLevel The private access level controls which VPC endpoints can connect to the UI or API of any workspace that attaches this private access settings object. `ACCOUNT` level access _(default)_ lets only databricks.MwsVpcEndpoint that are registered in your Databricks account connect to your databricks_mws_workspaces. `ENDPOINT` level access lets only specified databricks.MwsVpcEndpoint connect to your workspace. Please see the `allowed_vpc_endpoint_ids` documentation for more details.
+         * @param privateAccessLevel The private access level controls which VPC endpoints can connect to the UI or API of any workspace that attaches this private access settings object. `ACCOUNT` level access _(default)_ lets only databricks.MwsVpcEndpoint that are registered in your Databricks account connect to your databricks_mws_workspaces. `ENDPOINT` level access lets only specified databricks.MwsVpcEndpoint connect to your workspace. Please see the `allowedVpcEndpointIds` documentation for more details.
          * 
          * @return builder
          * 
@@ -225,7 +225,7 @@ public final class MwsPrivateAccessSettingsArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param privateAccessLevel The private access level controls which VPC endpoints can connect to the UI or API of any workspace that attaches this private access settings object. `ACCOUNT` level access _(default)_ lets only databricks.MwsVpcEndpoint that are registered in your Databricks account connect to your databricks_mws_workspaces. `ENDPOINT` level access lets only specified databricks.MwsVpcEndpoint connect to your workspace. Please see the `allowed_vpc_endpoint_ids` documentation for more details.
+         * @param privateAccessLevel The private access level controls which VPC endpoints can connect to the UI or API of any workspace that attaches this private access settings object. `ACCOUNT` level access _(default)_ lets only databricks.MwsVpcEndpoint that are registered in your Databricks account connect to your databricks_mws_workspaces. `ENDPOINT` level access lets only specified databricks.MwsVpcEndpoint connect to your workspace. Please see the `allowedVpcEndpointIds` documentation for more details.
          * 
          * @return builder
          * 

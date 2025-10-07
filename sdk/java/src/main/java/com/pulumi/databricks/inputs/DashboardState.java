@@ -75,14 +75,14 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The path to the dashboard JSON file. Conflicts with `serialized_dashboard`.
+     * The path to the dashboard JSON file. Conflicts with `serializedDashboard`.
      * 
      */
     @Import(name="filePath")
     private @Nullable Output<String> filePath;
 
     /**
-     * @return The path to the dashboard JSON file. Conflicts with `serialized_dashboard`.
+     * @return The path to the dashboard JSON file. Conflicts with `serializedDashboard`.
      * 
      */
     public Optional<Output<String>> filePath() {
@@ -126,14 +126,14 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The contents of the dashboard in serialized string form. Conflicts with `file_path`.
+     * The contents of the dashboard in serialized string form. Conflicts with `filePath`.
      * 
      */
     @Import(name="serializedDashboard")
     private @Nullable Output<String> serializedDashboard;
 
     /**
-     * @return The contents of the dashboard in serialized string form. Conflicts with `file_path`.
+     * @return The contents of the dashboard in serialized string form. Conflicts with `filePath`.
      * 
      */
     public Optional<Output<String>> serializedDashboard() {
@@ -278,7 +278,7 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param filePath The path to the dashboard JSON file. Conflicts with `serialized_dashboard`.
+         * @param filePath The path to the dashboard JSON file. Conflicts with `serializedDashboard`.
          * 
          * @return builder
          * 
@@ -289,7 +289,7 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param filePath The path to the dashboard JSON file. Conflicts with `serialized_dashboard`.
+         * @param filePath The path to the dashboard JSON file. Conflicts with `serializedDashboard`.
          * 
          * @return builder
          * 
@@ -347,7 +347,7 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serializedDashboard The contents of the dashboard in serialized string form. Conflicts with `file_path`.
+         * @param serializedDashboard The contents of the dashboard in serialized string form. Conflicts with `filePath`.
          * 
          * @return builder
          * 
@@ -358,7 +358,7 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serializedDashboard The contents of the dashboard in serialized string form. Conflicts with `file_path`.
+         * @param serializedDashboard The contents of the dashboard in serialized string form. Conflicts with `filePath`.
          * 
          * @return builder
          * 

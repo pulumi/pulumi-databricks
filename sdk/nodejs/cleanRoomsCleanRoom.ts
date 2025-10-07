@@ -11,6 +11,39 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * # Example: Clean Room Resource
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const _this = new databricks.CleanRoomsCleanRoom("this", {
+ *     name: "example-clean-room",
+ *     owner: "example@databricks.com",
+ *     remoteDetailedInfo: {
+ *         cloud_vendor: "aws",
+ *         region: "us-west-2",
+ *         collaborators: [
+ *             {
+ *                 collaboratorAlias: "collaborator",
+ *                 globalMetastoreId: "aws:us-east-1:12345678-1234-1234-1234-123456789012",
+ *                 inviteRecipientEmail: "example@databricks.com",
+ *                 inviteRecipientWorkspaceId: 123456789012345,
+ *             },
+ *             {
+ *                 globalMetastoreId: "aws:us-east-1:12345678-1234-1234-1234-123456789012",
+ *                 collaboratorAlias: "creator",
+ *             },
+ *         ],
+ *         egress_network_policy: {
+ *             internetAccess: {
+ *                 restrictionMode: "RESTRICTED_ACCESS",
+ *             },
+ *         },
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * As of Pulumi v1.5, resources can be imported through configuration.

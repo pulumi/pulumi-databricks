@@ -19,7 +19,7 @@ namespace Pulumi.Databricks.Inputs
         public Input<string>? AccessPoint { get; set; }
 
         /// <summary>
-        /// indicates whether the principal is limited to retrieving metadata for the volume through the BROWSE privilege when include_browse is enabled in the request.
+        /// indicates whether the principal is limited to retrieving metadata for the volume through the BROWSE privilege when IncludeBrowse is enabled in the request.
         /// </summary>
         [Input("browseOnly")]
         public Input<bool>? BrowseOnly { get; set; }
@@ -67,7 +67,7 @@ namespace Pulumi.Databricks.Inputs
         public Input<string>? MetastoreId { get; set; }
 
         /// <summary>
-        /// a fully qualified name of databricks_volume: *`catalog`.`schema`.`volume`*
+        /// a fully qualified name of databricks_volume: *`Catalog`.`Schema`.`Volume`*
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

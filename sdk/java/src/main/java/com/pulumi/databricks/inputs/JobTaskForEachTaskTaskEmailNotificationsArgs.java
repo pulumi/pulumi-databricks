@@ -18,14 +18,14 @@ public final class JobTaskForEachTaskTaskEmailNotificationsArgs extends com.pulu
     public static final JobTaskForEachTaskTaskEmailNotificationsArgs Empty = new JobTaskForEachTaskTaskEmailNotificationsArgs();
 
     /**
-     * (Bool) don&#39;t send alert for skipped runs. (It&#39;s recommended to use the corresponding setting in the `notification_settings` configuration block).
+     * (Bool) don&#39;t send alert for skipped runs. (It&#39;s recommended to use the corresponding setting in the `notificationSettings` configuration block).
      * 
      */
     @Import(name="noAlertForSkippedRuns")
     private @Nullable Output<Boolean> noAlertForSkippedRuns;
 
     /**
-     * @return (Bool) don&#39;t send alert for skipped runs. (It&#39;s recommended to use the corresponding setting in the `notification_settings` configuration block).
+     * @return (Bool) don&#39;t send alert for skipped runs. (It&#39;s recommended to use the corresponding setting in the `notificationSettings` configuration block).
      * 
      */
     public Optional<Output<Boolean>> noAlertForSkippedRuns() {
@@ -141,7 +141,7 @@ public final class JobTaskForEachTaskTaskEmailNotificationsArgs extends com.pulu
         }
 
         /**
-         * @param noAlertForSkippedRuns (Bool) don&#39;t send alert for skipped runs. (It&#39;s recommended to use the corresponding setting in the `notification_settings` configuration block).
+         * @param noAlertForSkippedRuns (Bool) don&#39;t send alert for skipped runs. (It&#39;s recommended to use the corresponding setting in the `notificationSettings` configuration block).
          * 
          * @return builder
          * 
@@ -152,7 +152,7 @@ public final class JobTaskForEachTaskTaskEmailNotificationsArgs extends com.pulu
         }
 
         /**
-         * @param noAlertForSkippedRuns (Bool) don&#39;t send alert for skipped runs. (It&#39;s recommended to use the corresponding setting in the `notification_settings` configuration block).
+         * @param noAlertForSkippedRuns (Bool) don&#39;t send alert for skipped runs. (It&#39;s recommended to use the corresponding setting in the `notificationSettings` configuration block).
          * 
          * @return builder
          * 

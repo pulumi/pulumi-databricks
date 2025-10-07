@@ -14,7 +14,7 @@ namespace Pulumi.Databricks.Outputs
     public sealed class ModelServingConfigTrafficConfigRoute
     {
         /// <summary>
-        /// The name of the served entity this route configures traffic for. This needs to match the name of a `served_entity` block.
+        /// The name of the served entity this route configures traffic for. This needs to match the name of a `ServedEntity` block.
         /// </summary>
         public readonly string? ServedEntityName;
         public readonly string? ServedModelName;

@@ -23,11 +23,11 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly Outputs.ModelServingProvisionedThroughputAiGatewayInferenceTableConfig? InferenceTableConfig;
         /// <summary>
-        /// Block describing rate limits for AI gateway. For details see the description of `rate_limits` block above.
+        /// Block describing rate limits for AI gateway. For details see the description of `RateLimits` block above.
         /// </summary>
         public readonly ImmutableArray<Outputs.ModelServingProvisionedThroughputAiGatewayRateLimit> RateLimits;
         /// <summary>
-        /// Block with configuration for payload logging using inference tables. For details see the description of `auto_capture_config` block above.
+        /// Block with configuration for payload logging using inference tables. For details see the description of `AutoCaptureConfig` block above.
         /// </summary>
         public readonly Outputs.ModelServingProvisionedThroughputAiGatewayUsageTrackingConfig? UsageTrackingConfig;
 

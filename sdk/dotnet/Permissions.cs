@@ -10,13 +10,13 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
-    /// This resource allows you to generically manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspaces. It ensures that only _admins_, _authenticated principal_ and those declared within `access_control` blocks would have specified access. It is not possible to remove management rights from _admins_ group.
+    /// This resource allows you to generically manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspaces. It ensures that only _admins_, _authenticated principal_ and those declared within `AccessControl` blocks would have specified access. It is not possible to remove management rights from _admins_ group.
     /// 
     /// &gt; This resource can only be used with a workspace-level provider!
     /// 
     /// &gt; This resource is _authoritative_ for permissions on objects. Configuring this resource for an object will **OVERWRITE** any existing permissions of the same type unless imported, and changes made outside of Pulumi will be reset.
     /// 
-    /// &gt; It is not possible to lower permissions for `admins`, so Databricks Pulumi Provider removes those `access_control` blocks automatically.
+    /// &gt; It is not possible to lower permissions for `Admins`, so Databricks Pulumi Provider removes those `AccessControl` blocks automatically.
     /// 
     /// &gt; If multiple permission levels are specified for an identity (e.g. `CAN_RESTART` and `CAN_MANAGE` for a cluster), only the highest level permission is returned and will cause permanent drift.
     /// 
@@ -407,7 +407,7 @@ namespace Pulumi.Databricks
     /// 
     /// Valid [permission levels](https://docs.databricks.com/security/access-control/workspace-acl.html#notebook-permissions) for databricks.Notebook are: `CAN_READ`, `CAN_RUN`, `CAN_EDIT`, and `CAN_MANAGE`.
     /// 
-    /// A notebook could be specified by using either `notebook_path` or `notebook_id` attribute.  The value for the `notebook_id` is the object ID of the resource in the Databricks Workspace that is exposed as `object_id` attribute of the `databricks.Notebook` resource as shown below.
+    /// A notebook could be specified by using either `NotebookPath` or `NotebookId` attribute.  The value for the `NotebookId` is the object ID of the resource in the Databricks Workspace that is exposed as `ObjectId` attribute of the `databricks.Notebook` resource as shown below.
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -487,13 +487,13 @@ namespace Pulumi.Databricks
     /// });
     /// ```
     /// 
-    /// &gt; when importing a permissions resource, only the `notebook_id` is filled!
+    /// &gt; when importing a permissions resource, only the `NotebookId` is filled!
     /// 
     /// ## Workspace file usage
     /// 
     /// Valid permission levels for databricks.WorkspaceFile are: `CAN_READ`, `CAN_RUN`, `CAN_EDIT`, and `CAN_MANAGE`.
     /// 
-    /// A workspace file could be specified by using either `workspace_file_path` or `workspace_file_id` attribute.  The value for the `workspace_file_id` is the object ID of the resource in the Databricks Workspace that is exposed as `object_id` attribute of the `databricks.WorkspaceFile` resource as shown below.
+    /// A workspace file could be specified by using either `WorkspaceFilePath` or `WorkspaceFileId` attribute.  The value for the `WorkspaceFileId` is the object ID of the resource in the Databricks Workspace that is exposed as `ObjectId` attribute of the `databricks.WorkspaceFile` resource as shown below.
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -572,7 +572,7 @@ namespace Pulumi.Databricks
     /// });
     /// ```
     /// 
-    /// &gt; when importing a permissions resource, only the `workspace_file_id` is filled!
+    /// &gt; when importing a permissions resource, only the `WorkspaceFileId` is filled!
     /// 
     /// ## Folder usage
     /// 
@@ -583,7 +583,7 @@ namespace Pulumi.Databricks
     /// - All users (or service principals) have `CAN_MANAGE` permission for objects the user creates.
     /// - User home directory - The user (or service principal) has `CAN_MANAGE` permission. All other users (or service principals) can list their directories.
     /// 
-    /// A folder could be specified by using either `directory_path` or `directory_id` attribute.  The value for the `directory_id` is the object ID of the resource in the Databricks Workspace that is exposed as `object_id` attribute of the `databricks.Directory` resource as shown below.
+    /// A folder could be specified by using either `DirectoryPath` or `DirectoryId` attribute.  The value for the `DirectoryId` is the object ID of the resource in the Databricks Workspace that is exposed as `ObjectId` attribute of the `databricks.Directory` resource as shown below.
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -657,7 +657,7 @@ namespace Pulumi.Databricks
     /// });
     /// ```
     /// 
-    /// &gt; when importing a permissions resource, only the `directory_id` is filled!
+    /// &gt; when importing a permissions resource, only the `DirectoryId` is filled!
     /// 
     /// ## Repos usage
     /// 
@@ -771,7 +771,7 @@ namespace Pulumi.Databricks
     /// 
     /// ## MLflow Model usage
     /// 
-    /// Valid [permission levels](https://docs.databricks.com/security/access-control/workspace-acl.html#mlflow-model-permissions-1) for databricks.MlflowModel are: `CAN_READ`, `CAN_EDIT`, `CAN_MANAGE_STAGING_VERSIONS`, `CAN_MANAGE_PRODUCTION_VERSIONS`, and `CAN_MANAGE`. You can also manage permissions for all MLflow models by `registered_model_id = "root"`.
+    /// Valid [permission levels](https://docs.databricks.com/security/access-control/workspace-acl.html#mlflow-model-permissions-1) for databricks.MlflowModel are: `CAN_READ`, `CAN_EDIT`, `CAN_MANAGE_STAGING_VERSIONS`, `CAN_MANAGE_PRODUCTION_VERSIONS`, and `CAN_MANAGE`. You can also manage permissions for all MLflow models by `RegisteredModelId = "root"`.
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -893,7 +893,7 @@ namespace Pulumi.Databricks
     /// 
     /// Valid permission levels for databricks.VectorSearchEndpoint are: `CAN_USE` and `CAN_MANAGE`.
     /// 
-    /// &gt; You need to use the `endpoint_id` attribute of `databricks.VectorSearchEndpoint` as value for `vector_search_endpoint_id`, not the `id`!
+    /// &gt; You need to use the `EndpointId` attribute of `databricks.VectorSearchEndpoint` as value for `VectorSearchEndpointId`, not the `Id`!
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -1177,7 +1177,7 @@ namespace Pulumi.Databricks
     /// 
     /// [SQL queries](https://docs.databricks.com/sql/user/security/access-control/query-acl.html) have three possible permissions: `CAN_VIEW`, `CAN_RUN` and `CAN_MANAGE`:
     /// 
-    /// &gt; If you do not define an `access_control` block granting `CAN_MANAGE` explictly for the user calling this provider, Databricks Pulumi Provider will add `CAN_MANAGE` permission for the caller. This is a failsafe to prevent situations where the caller is locked out from making changes to the targeted `databricks.SqlQuery` resource when backend API do not apply permission inheritance correctly.
+    /// &gt; If you do not define an `AccessControl` block granting `CAN_MANAGE` explictly for the user calling this provider, Databricks Pulumi Provider will add `CAN_MANAGE` permission for the caller. This is a failsafe to prevent situations where the caller is locked out from making changes to the targeted `databricks.SqlQuery` resource when backend API do not apply permission inheritance correctly.
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -1386,7 +1386,7 @@ namespace Pulumi.Databricks
     /// 
     /// ## Secrets
     /// 
-    /// One can control access to databricks.Secret through `initial_manage_principal` argument on databricks.SecretScope or databricks_secret_acl, so that users (or service principals) can `READ`, `WRITE` or `MANAGE` entries within secret scope.
+    /// One can control access to databricks.Secret through `InitialManagePrincipal` argument on databricks.SecretScope or databricks_secret_acl, so that users (or service principals) can `READ`, `WRITE` or `MANAGE` entries within secret scope.
     /// 
     /// ## Tables, Views and Databases
     /// 

@@ -248,6 +248,20 @@ class AccountFederationPolicy(pulumi.CustomResource):
         * which IdP, or issuer, your Databricks account should accept tokens from
         * how to determine which Databricks user, or subject, a token is issued for
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        this = databricks.AccountFederationPolicy("this",
+            policy_id="my-policy",
+            oidc_policy={
+                "issuer": "https://myidp.example.com",
+                "subject_claim": "sub",
+            })
+        ```
+
         ## Import
 
         As of Pulumi v1.5, resources can be imported through configuration.
@@ -288,6 +302,20 @@ class AccountFederationPolicy(pulumi.CustomResource):
         An account federation policy specifies:
         * which IdP, or issuer, your Databricks account should accept tokens from
         * how to determine which Databricks user, or subject, a token is issued for
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        this = databricks.AccountFederationPolicy("this",
+            policy_id="my-policy",
+            oidc_policy={
+                "issuer": "https://myidp.example.com",
+                "subject_claim": "sub",
+            })
+        ```
 
         ## Import
 

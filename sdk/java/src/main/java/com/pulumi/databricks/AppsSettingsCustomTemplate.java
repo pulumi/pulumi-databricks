@@ -64,6 +64,108 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * ### Example with API Scopes
+ * 
+ * This example creates a custom template that declares required user API scopes.
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.AppsSettingsCustomTemplate;
+ * import com.pulumi.databricks.AppsSettingsCustomTemplateArgs;
+ * import com.pulumi.databricks.inputs.AppsSettingsCustomTemplateManifestArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var apiScopesExample = new AppsSettingsCustomTemplate("apiScopesExample", AppsSettingsCustomTemplateArgs.builder()
+ *             .name("my-api-template")
+ *             .description("A template that requests user API scopes")
+ *             .gitRepo("https://github.com/example/my-app.git")
+ *             .path("templates/app")
+ *             .gitProvider("github")
+ *             .manifest(AppsSettingsCustomTemplateManifestArgs.builder()
+ *                 .version(1)
+ *                 .name("my-databricks-app")
+ *                 .description("This app requires the SQL API scope.")
+ *                 .user_api_scopes(List.of("sql"))
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Example with Resource Requirements
+ * 
+ * This example defines a template that requests specific workspace resources with permissions granted.
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.AppsSettingsCustomTemplate;
+ * import com.pulumi.databricks.AppsSettingsCustomTemplateArgs;
+ * import com.pulumi.databricks.inputs.AppsSettingsCustomTemplateManifestArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var resourcesExample = new AppsSettingsCustomTemplate("resourcesExample", AppsSettingsCustomTemplateArgs.builder()
+ *             .name("my-resource-template")
+ *             .description("Template that requires secret and SQL warehouse access")
+ *             .gitRepo("https://github.com/example/resource-app.git")
+ *             .path("resource-template")
+ *             .gitProvider("github")
+ *             .manifest(AppsSettingsCustomTemplateManifestArgs.builder()
+ *                 .version(1)
+ *                 .name("resource-consuming-app")
+ *                 .description("This app requires access to a secret and SQL warehouse.")
+ *                 .resource_specs(List.of(                
+ *                     Map.ofEntries(
+ *                         Map.entry("name", "my-secret"),
+ *                         Map.entry("description", "A secret needed by the app"),
+ *                         Map.entry("secretSpec", Map.of("permission", "READ"))
+ *                     ),
+ *                     Map.ofEntries(
+ *                         Map.entry("name", "warehouse"),
+ *                         Map.entry("description", "Warehouse access"),
+ *                         Map.entry("sqlWarehouseSpec", Map.of("permission", "CAN_USE"))
+ *                     )))
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * As of Pulumi v1.5, resources can be imported through configuration.

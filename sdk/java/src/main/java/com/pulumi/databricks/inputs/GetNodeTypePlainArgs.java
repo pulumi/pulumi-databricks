@@ -61,14 +61,14 @@ public final class GetNodeTypePlainArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * Number of gigabytes per core available on instance. Conflicts with `min_memory_gb`. Defaults to _0_.
+     * Number of gigabytes per core available on instance. Conflicts with `minMemoryGb`. Defaults to _0_.
      * 
      */
     @Import(name="gbPerCore")
     private @Nullable Integer gbPerCore;
 
     /**
-     * @return Number of gigabytes per core available on instance. Conflicts with `min_memory_gb`. Defaults to _0_.
+     * @return Number of gigabytes per core available on instance. Conflicts with `minMemoryGb`. Defaults to _0_.
      * 
      */
     public Optional<Integer> gbPerCore() {
@@ -307,7 +307,7 @@ public final class GetNodeTypePlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param gbPerCore Number of gigabytes per core available on instance. Conflicts with `min_memory_gb`. Defaults to _0_.
+         * @param gbPerCore Number of gigabytes per core available on instance. Conflicts with `minMemoryGb`. Defaults to _0_.
          * 
          * @return builder
          * 

@@ -16,14 +16,14 @@ public final class GetCurrentMetastorePlainArgs extends com.pulumi.resources.Inv
     public static final GetCurrentMetastorePlainArgs Empty = new GetCurrentMetastorePlainArgs();
 
     /**
-     * metastore ID. Will be `no_metastore` if there is no metastore assigned for the current workspace
+     * metastore ID. Will be `noMetastore` if there is no metastore assigned for the current workspace
      * 
      */
     @Import(name="id")
     private @Nullable String id;
 
     /**
-     * @return metastore ID. Will be `no_metastore` if there is no metastore assigned for the current workspace
+     * @return metastore ID. Will be `noMetastore` if there is no metastore assigned for the current workspace
      * 
      */
     public Optional<String> id() {
@@ -71,7 +71,7 @@ public final class GetCurrentMetastorePlainArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param id metastore ID. Will be `no_metastore` if there is no metastore assigned for the current workspace
+         * @param id metastore ID. Will be `noMetastore` if there is no metastore assigned for the current workspace
          * 
          * @return builder
          * 

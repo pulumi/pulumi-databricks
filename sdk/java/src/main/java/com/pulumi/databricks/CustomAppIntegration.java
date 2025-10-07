@@ -197,14 +197,14 @@ public class CustomAppIntegration extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.redirectUrls);
     }
     /**
-     * OAuth scopes granted to the application. Supported scopes: `all-apis`, `sql`, `offline_access`, `openid`, `profile`, `email`.
+     * OAuth scopes granted to the application. Supported scopes: `all-apis`, `sql`, `offlineAccess`, `openid`, `profile`, `email`.
      * 
      */
     @Export(name="scopes", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> scopes;
 
     /**
-     * @return OAuth scopes granted to the application. Supported scopes: `all-apis`, `sql`, `offline_access`, `openid`, `profile`, `email`.
+     * @return OAuth scopes granted to the application. Supported scopes: `all-apis`, `sql`, `offlineAccess`, `openid`, `profile`, `email`.
      * 
      */
     public Output<Optional<List<String>>> scopes() {

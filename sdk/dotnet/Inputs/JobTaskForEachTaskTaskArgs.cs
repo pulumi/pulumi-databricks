@@ -61,7 +61,7 @@ namespace Pulumi.Databricks.Inputs
         public Input<Inputs.JobTaskForEachTaskTaskEmailNotificationsArgs>? EmailNotifications { get; set; }
 
         /// <summary>
-        /// identifier of an `environment` block that is used to specify libraries.  Required for some tasks (`spark_python_task`, `python_wheel_task`, ...) running on serverless compute.
+        /// identifier of an `Environment` block that is used to specify libraries.  Required for some tasks (`SparkPythonTask`, `PythonWheelTask`, ...) running on serverless compute.
         /// </summary>
         [Input("environmentKey")]
         public Input<string>? EnvironmentKey { get; set; }
@@ -82,7 +82,7 @@ namespace Pulumi.Databricks.Inputs
         public Input<Inputs.JobTaskForEachTaskTaskHealthArgs>? Health { get; set; }
 
         /// <summary>
-        /// Identifier of the Job cluster specified in the `job_cluster` block.
+        /// Identifier of the Job cluster specified in the `JobCluster` block.
         /// </summary>
         [Input("jobClusterKey")]
         public Input<string>? JobClusterKey { get; set; }
@@ -112,7 +112,7 @@ namespace Pulumi.Databricks.Inputs
         public Input<int>? MinRetryIntervalMillis { get; set; }
 
         /// <summary>
-        /// Task will run on a dedicated cluster.  See databricks.Cluster documentation for specification. *Some parameters, such as `autotermination_minutes`, `is_pinned`, `workload_type` aren't supported!*
+        /// Task will run on a dedicated cluster.  See databricks.Cluster documentation for specification. *Some parameters, such as `AutoterminationMinutes`, `IsPinned`, `WorkloadType` aren't supported!*
         /// </summary>
         [Input("newCluster")]
         public Input<Inputs.JobTaskForEachTaskTaskNewClusterArgs>? NewCluster { get; set; }
@@ -178,7 +178,7 @@ namespace Pulumi.Databricks.Inputs
         /// <summary>
         /// (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
         /// 
-        /// &gt; If no `job_cluster_key`, `existing_cluster_id`, or `new_cluster` were specified in task definition, then task will executed using serverless compute.
+        /// &gt; If no `JobClusterKey`, `ExistingClusterId`, or `NewCluster` were specified in task definition, then task will executed using serverless compute.
         /// </summary>
         [Input("webhookNotifications")]
         public Input<Inputs.JobTaskForEachTaskTaskWebhookNotificationsArgs>? WebhookNotifications { get; set; }

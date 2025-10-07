@@ -174,14 +174,14 @@ public final class GetExternalLocationExternalLocationInfo extends com.pulumi.re
     }
 
     /**
-     * Username/groupname/sp application_id of the external location owner.
+     * Username/groupname/sp applicationId of the external location owner.
      * 
      */
     @Import(name="owner")
     private @Nullable String owner;
 
     /**
-     * @return Username/groupname/sp application_id of the external location owner.
+     * @return Username/groupname/sp applicationId of the external location owner.
      * 
      */
     public Optional<String> owner() {
@@ -403,7 +403,7 @@ public final class GetExternalLocationExternalLocationInfo extends com.pulumi.re
         }
 
         /**
-         * @param owner Username/groupname/sp application_id of the external location owner.
+         * @param owner Username/groupname/sp applicationId of the external location owner.
          * 
          * @return builder
          * 

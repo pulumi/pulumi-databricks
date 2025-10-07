@@ -309,14 +309,14 @@ public final class GetTableTableInfoArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * View definition SQL (when `table_type` is VIEW, MATERIALIZED_VIEW, or STREAMING_TABLE)
+     * View definition SQL (when `tableType` is VIEW, MATERIALIZED_VIEW, or STREAMING_TABLE)
      * 
      */
     @Import(name="viewDefinition")
     private @Nullable Output<String> viewDefinition;
 
     /**
-     * @return View definition SQL (when `table_type` is VIEW, MATERIALIZED_VIEW, or STREAMING_TABLE)
+     * @return View definition SQL (when `tableType` is VIEW, MATERIALIZED_VIEW, or STREAMING_TABLE)
      * 
      */
     public Optional<Output<String>> viewDefinition() {
@@ -324,14 +324,14 @@ public final class GetTableTableInfoArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * View dependencies (when `table_type` is VIEW or MATERIALIZED_VIEW, STREAMING_TABLE)
+     * View dependencies (when `tableType` is VIEW or MATERIALIZED_VIEW, STREAMING_TABLE)
      * 
      */
     @Import(name="viewDependencies")
     private @Nullable Output<GetTableTableInfoViewDependenciesArgs> viewDependencies;
 
     /**
-     * @return View dependencies (when `table_type` is VIEW or MATERIALIZED_VIEW, STREAMING_TABLE)
+     * @return View dependencies (when `tableType` is VIEW or MATERIALIZED_VIEW, STREAMING_TABLE)
      * 
      */
     public Optional<Output<GetTableTableInfoViewDependenciesArgs>> viewDependencies() {
@@ -784,7 +784,7 @@ public final class GetTableTableInfoArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param viewDefinition View definition SQL (when `table_type` is VIEW, MATERIALIZED_VIEW, or STREAMING_TABLE)
+         * @param viewDefinition View definition SQL (when `tableType` is VIEW, MATERIALIZED_VIEW, or STREAMING_TABLE)
          * 
          * @return builder
          * 
@@ -795,7 +795,7 @@ public final class GetTableTableInfoArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param viewDefinition View definition SQL (when `table_type` is VIEW, MATERIALIZED_VIEW, or STREAMING_TABLE)
+         * @param viewDefinition View definition SQL (when `tableType` is VIEW, MATERIALIZED_VIEW, or STREAMING_TABLE)
          * 
          * @return builder
          * 
@@ -805,7 +805,7 @@ public final class GetTableTableInfoArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param viewDependencies View dependencies (when `table_type` is VIEW or MATERIALIZED_VIEW, STREAMING_TABLE)
+         * @param viewDependencies View dependencies (when `tableType` is VIEW or MATERIALIZED_VIEW, STREAMING_TABLE)
          * 
          * @return builder
          * 
@@ -816,7 +816,7 @@ public final class GetTableTableInfoArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param viewDependencies View dependencies (when `table_type` is VIEW or MATERIALIZED_VIEW, STREAMING_TABLE)
+         * @param viewDependencies View dependencies (when `tableType` is VIEW or MATERIALIZED_VIEW, STREAMING_TABLE)
          * 
          * @return builder
          * 

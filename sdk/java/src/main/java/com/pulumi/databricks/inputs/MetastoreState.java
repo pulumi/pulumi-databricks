@@ -61,14 +61,14 @@ public final class MetastoreState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Required along with `delta_sharing_scope`. Used to set expiration duration in seconds on recipient data access tokens. Set to 0 for unlimited duration.
+     * Required along with `deltaSharingScope`. Used to set expiration duration in seconds on recipient data access tokens. Set to 0 for unlimited duration.
      * 
      */
     @Import(name="deltaSharingRecipientTokenLifetimeInSeconds")
     private @Nullable Output<Integer> deltaSharingRecipientTokenLifetimeInSeconds;
 
     /**
-     * @return Required along with `delta_sharing_scope`. Used to set expiration duration in seconds on recipient data access tokens. Set to 0 for unlimited duration.
+     * @return Required along with `deltaSharingScope`. Used to set expiration duration in seconds on recipient data access tokens. Set to 0 for unlimited duration.
      * 
      */
     public Optional<Output<Integer>> deltaSharingRecipientTokenLifetimeInSeconds() {
@@ -76,14 +76,14 @@ public final class MetastoreState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Required along with `delta_sharing_recipient_token_lifetime_in_seconds`. Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.  INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
+     * Required along with `deltaSharingRecipientTokenLifetimeInSeconds`. Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.  INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
      * 
      */
     @Import(name="deltaSharingScope")
     private @Nullable Output<String> deltaSharingScope;
 
     /**
-     * @return Required along with `delta_sharing_recipient_token_lifetime_in_seconds`. Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.  INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
+     * @return Required along with `deltaSharingRecipientTokenLifetimeInSeconds`. Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.  INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
      * 
      */
     public Optional<Output<String>> deltaSharingScope() {
@@ -135,14 +135,14 @@ public final class MetastoreState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Username/groupname/sp application_id of the metastore owner.
+     * Username/groupname/sp applicationId of the metastore owner.
      * 
      */
     @Import(name="owner")
     private @Nullable Output<String> owner;
 
     /**
-     * @return Username/groupname/sp application_id of the metastore owner.
+     * @return Username/groupname/sp applicationId of the metastore owner.
      * 
      */
     public Optional<Output<String>> owner() {
@@ -165,14 +165,14 @@ public final class MetastoreState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Path on cloud storage account, where managed `databricks.Table` are stored. Change forces creation of a new resource. If no `storage_root` is defined for the metastore, each catalog must have a `storage_root` defined.
+     * Path on cloud storage account, where managed `databricks.Table` are stored. Change forces creation of a new resource. If no `storageRoot` is defined for the metastore, each catalog must have a `storageRoot` defined.
      * 
      */
     @Import(name="storageRoot")
     private @Nullable Output<String> storageRoot;
 
     /**
-     * @return Path on cloud storage account, where managed `databricks.Table` are stored. Change forces creation of a new resource. If no `storage_root` is defined for the metastore, each catalog must have a `storage_root` defined.
+     * @return Path on cloud storage account, where managed `databricks.Table` are stored. Change forces creation of a new resource. If no `storageRoot` is defined for the metastore, each catalog must have a `storageRoot` defined.
      * 
      */
     public Optional<Output<String>> storageRoot() {
@@ -298,7 +298,7 @@ public final class MetastoreState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deltaSharingRecipientTokenLifetimeInSeconds Required along with `delta_sharing_scope`. Used to set expiration duration in seconds on recipient data access tokens. Set to 0 for unlimited duration.
+         * @param deltaSharingRecipientTokenLifetimeInSeconds Required along with `deltaSharingScope`. Used to set expiration duration in seconds on recipient data access tokens. Set to 0 for unlimited duration.
          * 
          * @return builder
          * 
@@ -309,7 +309,7 @@ public final class MetastoreState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deltaSharingRecipientTokenLifetimeInSeconds Required along with `delta_sharing_scope`. Used to set expiration duration in seconds on recipient data access tokens. Set to 0 for unlimited duration.
+         * @param deltaSharingRecipientTokenLifetimeInSeconds Required along with `deltaSharingScope`. Used to set expiration duration in seconds on recipient data access tokens. Set to 0 for unlimited duration.
          * 
          * @return builder
          * 
@@ -319,7 +319,7 @@ public final class MetastoreState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deltaSharingScope Required along with `delta_sharing_recipient_token_lifetime_in_seconds`. Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.  INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
+         * @param deltaSharingScope Required along with `deltaSharingRecipientTokenLifetimeInSeconds`. Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.  INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
          * 
          * @return builder
          * 
@@ -330,7 +330,7 @@ public final class MetastoreState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deltaSharingScope Required along with `delta_sharing_recipient_token_lifetime_in_seconds`. Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.  INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
+         * @param deltaSharingScope Required along with `deltaSharingRecipientTokenLifetimeInSeconds`. Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.  INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
          * 
          * @return builder
          * 
@@ -400,7 +400,7 @@ public final class MetastoreState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param owner Username/groupname/sp application_id of the metastore owner.
+         * @param owner Username/groupname/sp applicationId of the metastore owner.
          * 
          * @return builder
          * 
@@ -411,7 +411,7 @@ public final class MetastoreState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param owner Username/groupname/sp application_id of the metastore owner.
+         * @param owner Username/groupname/sp applicationId of the metastore owner.
          * 
          * @return builder
          * 
@@ -442,7 +442,7 @@ public final class MetastoreState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param storageRoot Path on cloud storage account, where managed `databricks.Table` are stored. Change forces creation of a new resource. If no `storage_root` is defined for the metastore, each catalog must have a `storage_root` defined.
+         * @param storageRoot Path on cloud storage account, where managed `databricks.Table` are stored. Change forces creation of a new resource. If no `storageRoot` is defined for the metastore, each catalog must have a `storageRoot` defined.
          * 
          * @return builder
          * 
@@ -453,7 +453,7 @@ public final class MetastoreState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param storageRoot Path on cloud storage account, where managed `databricks.Table` are stored. Change forces creation of a new resource. If no `storage_root` is defined for the metastore, each catalog must have a `storage_root` defined.
+         * @param storageRoot Path on cloud storage account, where managed `databricks.Table` are stored. Change forces creation of a new resource. If no `storageRoot` is defined for the metastore, each catalog must have a `storageRoot` defined.
          * 
          * @return builder
          * 

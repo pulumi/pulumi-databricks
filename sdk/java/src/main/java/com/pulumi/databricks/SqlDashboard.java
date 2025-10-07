@@ -19,7 +19,7 @@ import javax.annotation.Nullable;
 /**
  * !&gt; This resource is deprecated! Please switch to databricks.Dashboard to author new AI/BI dashboards using the latest tooling.
  * 
- * This resource is used to manage [Legacy dashboards](https://docs.databricks.com/sql/user/dashboards/index.html). To manage [SQL resources](https://docs.databricks.com/sql/get-started/concepts.html) you must have `databricks_sql_access` on your databricks.Group or databricks_user.
+ * This resource is used to manage [Legacy dashboards](https://docs.databricks.com/sql/user/dashboards/index.html). To manage [SQL resources](https://docs.databricks.com/sql/get-started/concepts.html) you must have `databricksSqlAccess` on your databricks.Group or databricks_user.
  * 
  * &gt; documentation for this resource is a work in progress.
  * 

@@ -19,7 +19,7 @@ namespace Pulumi.Databricks.Inputs
         public Input<string>? Authorization { get; set; }
 
         /// <summary>
-        /// Enable/disable SSL certificate validation. Default is `true`. For self-signed certificates, this field must be `false` AND the destination server must disable certificate validation as well. For security purposes, it is encouraged to perform secret validation with the HMAC-encoded portion of the payload and acknowledge the risk associated with disabling hostname validation whereby it becomes more likely that requests can be maliciously routed to an unintended host.
+        /// Enable/disable SSL certificate validation. Default is `True`. For self-signed certificates, this field must be `False` AND the destination server must disable certificate validation as well. For security purposes, it is encouraged to perform secret validation with the HMAC-encoded portion of the payload and acknowledge the risk associated with disabling hostname validation whereby it becomes more likely that requests can be maliciously routed to an unintended host.
         /// </summary>
         [Input("enableSslVerification")]
         public Input<bool>? EnableSslVerification { get; set; }
@@ -28,7 +28,7 @@ namespace Pulumi.Databricks.Inputs
         private Input<string>? _secret;
 
         /// <summary>
-        /// Shared secret required for HMAC encoding payload. The HMAC-encoded payload will be sent in the header as `X-Databricks-Signature: encoded_payload`.
+        /// Shared secret required for HMAC encoding payload. The HMAC-encoded payload will be sent in the header as `X-Databricks-Signature: EncodedPayload`.
         /// </summary>
         public Input<string>? Secret
         {

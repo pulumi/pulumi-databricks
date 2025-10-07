@@ -13,7 +13,7 @@ namespace Pulumi.Databricks.Inputs
     public sealed class ClusterWorkloadTypeClientsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// boolean flag defining if it's possible to run Databricks Jobs on this cluster. Default: `true`.
+        /// boolean flag defining if it's possible to run Databricks Jobs on this cluster. Default: `True`.
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -42,7 +42,7 @@ namespace Pulumi.Databricks.Inputs
         public Input<bool>? Jobs { get; set; }
 
         /// <summary>
-        /// boolean flag defining if it's possible to run notebooks on this cluster. Default: `true`.
+        /// boolean flag defining if it's possible to run notebooks on this cluster. Default: `True`.
         /// </summary>
         [Input("notebooks")]
         public Input<bool>? Notebooks { get; set; }

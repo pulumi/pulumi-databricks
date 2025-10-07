@@ -24,7 +24,7 @@ public final class JobSparkPythonTask {
      */
     private String pythonFile;
     /**
-     * @return Location type of the Python file. When set to `WORKSPACE` or not specified, the file will be retrieved from the local Databricks workspace or cloud location (if the python_file has a URI format). When set to `GIT`, the Python file will be retrieved from a Git repository defined in `git_source`.
+     * @return Location type of the Python file. When set to `WORKSPACE` or not specified, the file will be retrieved from the local Databricks workspace or cloud location (if the pythonFile has a URI format). When set to `GIT`, the Python file will be retrieved from a Git repository defined in `gitSource`.
      * * `WORKSPACE`: The Python file is located in a Databricks workspace or at a cloud filesystem URI.
      * * `GIT`: The Python file is located in a remote Git repository.
      * 
@@ -47,7 +47,7 @@ public final class JobSparkPythonTask {
         return this.pythonFile;
     }
     /**
-     * @return Location type of the Python file. When set to `WORKSPACE` or not specified, the file will be retrieved from the local Databricks workspace or cloud location (if the python_file has a URI format). When set to `GIT`, the Python file will be retrieved from a Git repository defined in `git_source`.
+     * @return Location type of the Python file. When set to `WORKSPACE` or not specified, the file will be retrieved from the local Databricks workspace or cloud location (if the pythonFile has a URI format). When set to `GIT`, the Python file will be retrieved from a Git repository defined in `gitSource`.
      * * `WORKSPACE`: The Python file is located in a Databricks workspace or at a cloud filesystem URI.
      * * `GIT`: The Python file is located in a remote Git repository.
      * 

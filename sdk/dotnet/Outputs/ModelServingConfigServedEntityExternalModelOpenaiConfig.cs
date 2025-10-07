@@ -42,7 +42,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string? OpenaiApiKeyPlaintext;
         /// <summary>
-        /// This is an optional field to specify the type of OpenAI API to use. For Azure OpenAI, this field is required, and this parameter represents the preferred security access validation protocol. For access token validation, use `azure`. For authentication using Azure Active Directory (Azure AD) use, `azuread`.
+        /// This is an optional field to specify the type of OpenAI API to use. For Azure OpenAI, this field is required, and this parameter represents the preferred security access validation protocol. For access token validation, use `Azure`. For authentication using Azure Active Directory (Azure AD) use, `Azuread`.
         /// </summary>
         public readonly string? OpenaiApiType;
         /// <summary>

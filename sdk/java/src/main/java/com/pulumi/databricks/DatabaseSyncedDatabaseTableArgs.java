@@ -47,7 +47,7 @@ public final class DatabaseSyncedDatabaseTableArgs extends com.pulumi.resources.
      * 
      * When creating a synced table in a standard catalog, this field is required.
      * In this scenario, specifying this field will allow targeting an arbitrary postgres database.
-     * Note that this has implications for the `create_database_objects_is_missing` field in `spec`
+     * Note that this has implications for the `createDatabaseObjectsIsMissing` field in `spec`
      * 
      */
     @Import(name="logicalDatabaseName")
@@ -63,7 +63,7 @@ public final class DatabaseSyncedDatabaseTableArgs extends com.pulumi.resources.
      * 
      * When creating a synced table in a standard catalog, this field is required.
      * In this scenario, specifying this field will allow targeting an arbitrary postgres database.
-     * Note that this has implications for the `create_database_objects_is_missing` field in `spec`
+     * Note that this has implications for the `createDatabaseObjectsIsMissing` field in `spec`
      * 
      */
     public Optional<Output<String>> logicalDatabaseName() {
@@ -172,7 +172,7 @@ public final class DatabaseSyncedDatabaseTableArgs extends com.pulumi.resources.
          * 
          * When creating a synced table in a standard catalog, this field is required.
          * In this scenario, specifying this field will allow targeting an arbitrary postgres database.
-         * Note that this has implications for the `create_database_objects_is_missing` field in `spec`
+         * Note that this has implications for the `createDatabaseObjectsIsMissing` field in `spec`
          * 
          * @return builder
          * 
@@ -192,7 +192,7 @@ public final class DatabaseSyncedDatabaseTableArgs extends com.pulumi.resources.
          * 
          * When creating a synced table in a standard catalog, this field is required.
          * In this scenario, specifying this field will allow targeting an arbitrary postgres database.
-         * Note that this has implications for the `create_database_objects_is_missing` field in `spec`
+         * Note that this has implications for the `createDatabaseObjectsIsMissing` field in `spec`
          * 
          * @return builder
          * 

@@ -18,7 +18,7 @@ namespace Pulumi.Databricks
         /// 
         /// ## Example Usage
         /// 
-        /// Read  on a specific catalog `test`:
+        /// Read  on a specific catalog `Test`:
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -69,7 +69,7 @@ namespace Pulumi.Databricks
         /// 
         /// ## Example Usage
         /// 
-        /// Read  on a specific catalog `test`:
+        /// Read  on a specific catalog `Test`:
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -120,7 +120,7 @@ namespace Pulumi.Databricks
         /// 
         /// ## Example Usage
         /// 
-        /// Read  on a specific catalog `test`:
+        /// Read  on a specific catalog `Test`:
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -175,7 +175,7 @@ namespace Pulumi.Databricks
         public Inputs.GetCatalogCatalogInfoArgs? CatalogInfo { get; set; }
 
         /// <summary>
-        /// same as the `name`
+        /// same as the `Name`
         /// </summary>
         [Input("id")]
         public string? Id { get; set; }
@@ -201,7 +201,7 @@ namespace Pulumi.Databricks
         public Input<Inputs.GetCatalogCatalogInfoInputArgs>? CatalogInfo { get; set; }
 
         /// <summary>
-        /// same as the `name`
+        /// same as the `Name`
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
@@ -227,7 +227,7 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly Outputs.GetCatalogCatalogInfoResult CatalogInfo;
         /// <summary>
-        /// same as the `name`
+        /// same as the `Name`
         /// </summary>
         public readonly string Id;
         /// <summary>

@@ -29,9 +29,9 @@ import javax.annotation.Nullable;
  * 
  * &gt; This resource can only be used with a workspace-level provider!
  * 
- * &gt; It is important to know that different cloud service providers have different `node_type_id`, `disk_specs` and potentially other configurations.
+ * &gt; It is important to know that different cloud service providers have different `nodeTypeId`, `diskSpecs` and potentially other configurations.
  * 
- * &gt; &#34;auto&#34; `zone_id` is only supported for fleet node types.
+ * &gt; &#34;auto&#34; `zoneId` is only supported for fleet node types.
  * 
  * ## Example Usage
  * 
@@ -173,14 +173,14 @@ public class InstancePool extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.gcpAttributes);
     }
     /**
-     * (Integer) The number of minutes that idle instances in excess of the min_idle_instances are maintained by the pool before being terminated. If not specified, excess idle instances are terminated automatically after a default timeout period. If specified, the time must be between 0 and 10000 minutes. If you specify 0, excess idle instances are removed as soon as possible.
+     * (Integer) The number of minutes that idle instances in excess of the minIdleInstances are maintained by the pool before being terminated. If not specified, excess idle instances are terminated automatically after a default timeout period. If specified, the time must be between 0 and 10000 minutes. If you specify 0, excess idle instances are removed as soon as possible.
      * 
      */
     @Export(name="idleInstanceAutoterminationMinutes", refs={Integer.class}, tree="[0]")
     private Output<Integer> idleInstanceAutoterminationMinutes;
 
     /**
-     * @return (Integer) The number of minutes that idle instances in excess of the min_idle_instances are maintained by the pool before being terminated. If not specified, excess idle instances are terminated automatically after a default timeout period. If specified, the time must be between 0 and 10000 minutes. If you specify 0, excess idle instances are removed as soon as possible.
+     * @return (Integer) The number of minutes that idle instances in excess of the minIdleInstances are maintained by the pool before being terminated. If not specified, excess idle instances are terminated automatically after a default timeout period. If specified, the time must be between 0 and 10000 minutes. If you specify 0, excess idle instances are removed as soon as possible.
      * 
      */
     public Output<Integer> idleInstanceAutoterminationMinutes() {

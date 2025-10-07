@@ -50,14 +50,14 @@ public final class GetAccountNetworkPolicyEgressNetworkAccess extends com.pulumi
     }
 
     /**
-     * (EgressNetworkPolicyNetworkAccessPolicyPolicyEnforcement) - Optional. When policy_enforcement is not provided, we default to ENFORCE_MODE_ALL_SERVICES
+     * (EgressNetworkPolicyNetworkAccessPolicyPolicyEnforcement) - Optional. When policyEnforcement is not provided, we default to ENFORCE_MODE_ALL_SERVICES
      * 
      */
     @Import(name="policyEnforcement")
     private @Nullable GetAccountNetworkPolicyEgressNetworkAccessPolicyEnforcement policyEnforcement;
 
     /**
-     * @return (EgressNetworkPolicyNetworkAccessPolicyPolicyEnforcement) - Optional. When policy_enforcement is not provided, we default to ENFORCE_MODE_ALL_SERVICES
+     * @return (EgressNetworkPolicyNetworkAccessPolicyPolicyEnforcement) - Optional. When policyEnforcement is not provided, we default to ENFORCE_MODE_ALL_SERVICES
      * 
      */
     public Optional<GetAccountNetworkPolicyEgressNetworkAccessPolicyEnforcement> policyEnforcement() {
@@ -149,7 +149,7 @@ public final class GetAccountNetworkPolicyEgressNetworkAccess extends com.pulumi
         }
 
         /**
-         * @param policyEnforcement (EgressNetworkPolicyNetworkAccessPolicyPolicyEnforcement) - Optional. When policy_enforcement is not provided, we default to ENFORCE_MODE_ALL_SERVICES
+         * @param policyEnforcement (EgressNetworkPolicyNetworkAccessPolicyPolicyEnforcement) - Optional. When policyEnforcement is not provided, we default to ENFORCE_MODE_ALL_SERVICES
          * 
          * @return builder
          * 

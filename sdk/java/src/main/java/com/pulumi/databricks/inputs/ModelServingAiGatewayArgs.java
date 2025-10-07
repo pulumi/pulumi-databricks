@@ -66,14 +66,14 @@ public final class ModelServingAiGatewayArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Block describing rate limits for AI gateway. For details see the description of `rate_limits` block above.
+     * Block describing rate limits for AI gateway. For details see the description of `rateLimits` block above.
      * 
      */
     @Import(name="rateLimits")
     private @Nullable Output<List<ModelServingAiGatewayRateLimitArgs>> rateLimits;
 
     /**
-     * @return Block describing rate limits for AI gateway. For details see the description of `rate_limits` block above.
+     * @return Block describing rate limits for AI gateway. For details see the description of `rateLimits` block above.
      * 
      */
     public Optional<Output<List<ModelServingAiGatewayRateLimitArgs>>> rateLimits() {
@@ -81,14 +81,14 @@ public final class ModelServingAiGatewayArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Block with configuration for payload logging using inference tables. For details see the description of `auto_capture_config` block above.
+     * Block with configuration for payload logging using inference tables. For details see the description of `autoCaptureConfig` block above.
      * 
      */
     @Import(name="usageTrackingConfig")
     private @Nullable Output<ModelServingAiGatewayUsageTrackingConfigArgs> usageTrackingConfig;
 
     /**
-     * @return Block with configuration for payload logging using inference tables. For details see the description of `auto_capture_config` block above.
+     * @return Block with configuration for payload logging using inference tables. For details see the description of `autoCaptureConfig` block above.
      * 
      */
     public Optional<Output<ModelServingAiGatewayUsageTrackingConfigArgs>> usageTrackingConfig() {
@@ -187,7 +187,7 @@ public final class ModelServingAiGatewayArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param rateLimits Block describing rate limits for AI gateway. For details see the description of `rate_limits` block above.
+         * @param rateLimits Block describing rate limits for AI gateway. For details see the description of `rateLimits` block above.
          * 
          * @return builder
          * 
@@ -198,7 +198,7 @@ public final class ModelServingAiGatewayArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param rateLimits Block describing rate limits for AI gateway. For details see the description of `rate_limits` block above.
+         * @param rateLimits Block describing rate limits for AI gateway. For details see the description of `rateLimits` block above.
          * 
          * @return builder
          * 
@@ -208,7 +208,7 @@ public final class ModelServingAiGatewayArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param rateLimits Block describing rate limits for AI gateway. For details see the description of `rate_limits` block above.
+         * @param rateLimits Block describing rate limits for AI gateway. For details see the description of `rateLimits` block above.
          * 
          * @return builder
          * 
@@ -218,7 +218,7 @@ public final class ModelServingAiGatewayArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param usageTrackingConfig Block with configuration for payload logging using inference tables. For details see the description of `auto_capture_config` block above.
+         * @param usageTrackingConfig Block with configuration for payload logging using inference tables. For details see the description of `autoCaptureConfig` block above.
          * 
          * @return builder
          * 
@@ -229,7 +229,7 @@ public final class ModelServingAiGatewayArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param usageTrackingConfig Block with configuration for payload logging using inference tables. For details see the description of `auto_capture_config` block above.
+         * @param usageTrackingConfig Block with configuration for payload logging using inference tables. For details see the description of `autoCaptureConfig` block above.
          * 
          * @return builder
          * 

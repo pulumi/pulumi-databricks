@@ -38,7 +38,7 @@ public final class JobTaskForEachTaskTaskSqlTask {
      */
     private @Nullable Map<String,String> parameters;
     /**
-     * @return block consisting of single string field: `query_id` - identifier of the Databricks Query (databricks_query).
+     * @return block consisting of single string field: `queryId` - identifier of the Databricks Query (databricks_query).
      * 
      */
     private @Nullable JobTaskForEachTaskTaskSqlTaskQuery query;
@@ -78,7 +78,7 @@ public final class JobTaskForEachTaskTaskSqlTask {
         return this.parameters == null ? Map.of() : this.parameters;
     }
     /**
-     * @return block consisting of single string field: `query_id` - identifier of the Databricks Query (databricks_query).
+     * @return block consisting of single string field: `queryId` - identifier of the Databricks Query (databricks_query).
      * 
      */
     public Optional<JobTaskForEachTaskTaskSqlTaskQuery> query() {

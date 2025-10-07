@@ -23,6 +23,46 @@ import javax.annotation.Nullable;
  * * The identity provider (or issuer) from which the service principal can authenticate.
  * * The workload identity (or subject) that is permitted to authenticate as the Databricks service principal.
  * 
+ * ## Example Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.ServicePrincipalFederationPolicy;
+ * import com.pulumi.databricks.ServicePrincipalFederationPolicyArgs;
+ * import com.pulumi.databricks.inputs.ServicePrincipalFederationPolicyOidcPolicyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var this_ = new ServicePrincipalFederationPolicy("this", ServicePrincipalFederationPolicyArgs.builder()
+ *             .servicePrincipalId(1234)
+ *             .policyId("my-policy")
+ *             .oidcPolicy(ServicePrincipalFederationPolicyOidcPolicyArgs.builder()
+ *                 .issuer("https://myidp.example.com")
+ *                 .subject_claim("sub")
+ *                 .subject("subject-in-token-from-myidp")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * As of Pulumi v1.5, resources can be imported through configuration.

@@ -50,14 +50,14 @@ public final class JobTaskSqlTaskAlertArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * a list of subscription blocks consisting out of one of the required fields: `user_name` for user emails or `destination_id` - for Alert destination&#39;s identifier.
+     * a list of subscription blocks consisting out of one of the required fields: `userName` for user emails or `destinationId` - for Alert destination&#39;s identifier.
      * 
      */
     @Import(name="subscriptions")
     private @Nullable Output<List<JobTaskSqlTaskAlertSubscriptionArgs>> subscriptions;
 
     /**
-     * @return a list of subscription blocks consisting out of one of the required fields: `user_name` for user emails or `destination_id` - for Alert destination&#39;s identifier.
+     * @return a list of subscription blocks consisting out of one of the required fields: `userName` for user emails or `destinationId` - for Alert destination&#39;s identifier.
      * 
      */
     public Optional<Output<List<JobTaskSqlTaskAlertSubscriptionArgs>>> subscriptions() {
@@ -133,7 +133,7 @@ public final class JobTaskSqlTaskAlertArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param subscriptions a list of subscription blocks consisting out of one of the required fields: `user_name` for user emails or `destination_id` - for Alert destination&#39;s identifier.
+         * @param subscriptions a list of subscription blocks consisting out of one of the required fields: `userName` for user emails or `destinationId` - for Alert destination&#39;s identifier.
          * 
          * @return builder
          * 
@@ -144,7 +144,7 @@ public final class JobTaskSqlTaskAlertArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param subscriptions a list of subscription blocks consisting out of one of the required fields: `user_name` for user emails or `destination_id` - for Alert destination&#39;s identifier.
+         * @param subscriptions a list of subscription blocks consisting out of one of the required fields: `userName` for user emails or `destinationId` - for Alert destination&#39;s identifier.
          * 
          * @return builder
          * 
@@ -154,7 +154,7 @@ public final class JobTaskSqlTaskAlertArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param subscriptions a list of subscription blocks consisting out of one of the required fields: `user_name` for user emails or `destination_id` - for Alert destination&#39;s identifier.
+         * @param subscriptions a list of subscription blocks consisting out of one of the required fields: `userName` for user emails or `destinationId` - for Alert destination&#39;s identifier.
          * 
          * @return builder
          * 

@@ -69,7 +69,7 @@ import javax.annotation.Nullable;
  * - databricks.Notebook data to export a notebook from Databricks Workspace.
  * - databricks.getNotebookPaths data to list notebooks in Databricks Workspace.
  * - databricks.Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
- * - databricks.getSparkVersion data to get [Databricks Runtime (DBR)](https://docs.databricks.com/runtime/dbr.html) version that could be used for `spark_version` parameter in databricks.Cluster and other resources.
+ * - databricks.getSparkVersion data to get [Databricks Runtime (DBR)](https://docs.databricks.com/runtime/dbr.html) version that could be used for `sparkVersion` parameter in databricks.Cluster and other resources.
  * - databricks.WorkspaceConf to manage workspace configuration for expert usage.
  * 
  * ## Import

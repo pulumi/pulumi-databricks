@@ -313,6 +313,38 @@ class CleanRoomsCleanRoom(pulumi.CustomResource):
 
         ## Example Usage
 
+        # Example: Clean Room Resource
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        this = databricks.CleanRoomsCleanRoom("this",
+            name="example-clean-room",
+            owner="example@databricks.com",
+            remote_detailed_info={
+                "cloud_vendor": "aws",
+                "region": "us-west-2",
+                "collaborators": [
+                    {
+                        "collaborator_alias": "collaborator",
+                        "global_metastore_id": "aws:us-east-1:12345678-1234-1234-1234-123456789012",
+                        "invite_recipient_email": "example@databricks.com",
+                        "invite_recipient_workspace_id": 123456789012345,
+                    },
+                    {
+                        "global_metastore_id": "aws:us-east-1:12345678-1234-1234-1234-123456789012",
+                        "collaborator_alias": "creator",
+                    },
+                ],
+                "egress_network_policy": {
+                    "internetAccess": {
+                        "restrictionMode": "RESTRICTED_ACCESS",
+                    },
+                },
+            })
+        ```
+
         ## Import
 
         As of Pulumi v1.5, resources can be imported through configuration.
@@ -353,6 +385,38 @@ class CleanRoomsCleanRoom(pulumi.CustomResource):
         A Clean Room is a secure environment for data collaboration that enables multiple organizations to analyze their data together while maintaining privacy and security. Clean Rooms provide a controlled environment where data can be shared and analyzed without exposing the underlying raw data.
 
         ## Example Usage
+
+        # Example: Clean Room Resource
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        this = databricks.CleanRoomsCleanRoom("this",
+            name="example-clean-room",
+            owner="example@databricks.com",
+            remote_detailed_info={
+                "cloud_vendor": "aws",
+                "region": "us-west-2",
+                "collaborators": [
+                    {
+                        "collaborator_alias": "collaborator",
+                        "global_metastore_id": "aws:us-east-1:12345678-1234-1234-1234-123456789012",
+                        "invite_recipient_email": "example@databricks.com",
+                        "invite_recipient_workspace_id": 123456789012345,
+                    },
+                    {
+                        "global_metastore_id": "aws:us-east-1:12345678-1234-1234-1234-123456789012",
+                        "collaborator_alias": "creator",
+                    },
+                ],
+                "egress_network_policy": {
+                    "internetAccess": {
+                        "restrictionMode": "RESTRICTED_ACCESS",
+                    },
+                },
+            })
+        ```
 
         ## Import
 
