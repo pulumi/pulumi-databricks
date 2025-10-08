@@ -29,7 +29,7 @@ public final class GetMlflowExperimentResult {
      */
     private String experimentId;
     /**
-     * @return Unique identifier for the experiment. (same as `experiment_id`)
+     * @return Unique identifier for the experiment. (same as `experimentId`)
      * 
      */
     private String id;
@@ -77,7 +77,7 @@ public final class GetMlflowExperimentResult {
         return this.experimentId;
     }
     /**
-     * @return Unique identifier for the experiment. (same as `experiment_id`)
+     * @return Unique identifier for the experiment. (same as `experimentId`)
      * 
      */
     public String id() {

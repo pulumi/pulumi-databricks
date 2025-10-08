@@ -18,6 +18,29 @@ namespace Pulumi.Databricks
     /// * which IdP, or issuer, your Databricks account should accept tokens from
     /// * how to determine which Databricks user, or subject, a token is issued for
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @this = new Databricks.AccountFederationPolicy("this", new()
+    ///     {
+    ///         PolicyId = "my-policy",
+    ///         OidcPolicy = new Databricks.Inputs.AccountFederationPolicyOidcPolicyArgs
+    ///         {
+    ///             Issuer = "https://myidp.example.com",
+    ///             Subject_claim = "sub",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// As of Pulumi v1.5, resources can be imported through configuration.

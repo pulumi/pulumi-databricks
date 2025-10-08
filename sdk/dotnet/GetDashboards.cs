@@ -15,6 +15,42 @@ namespace Pulumi.Databricks
         /// This data source allows you to retrieve information about Databricks [Dashboards](https://docs.databricks.com/en/dashboards/index.html).
         /// 
         /// &gt; This data source can only be used with a workspace-level provider!
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using System.Threading.Tasks;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(async() =&gt; 
+        /// {
+        ///     var all = await Databricks.GetDashboards.InvokeAsync();
+        /// 
+        ///     var dashboardsPermissions = new List&lt;Databricks.Permissions&gt;();
+        ///     foreach (var range in all.Dashboards.Select(__item =&gt; __item.DashboardId).ToList().Select((v, k) =&gt; new { Key = k, Value = v }))
+        ///     {
+        ///         dashboardsPermissions.Add(new Databricks.Permissions($"dashboards_permissions-{range.Key}", new()
+        ///         {
+        ///             Depends = new[]
+        ///             {
+        ///                 all,
+        ///             },
+        ///             DashboardId = range.Value,
+        ///             AccessControls = new[]
+        ///             {
+        ///                 new Databricks.Inputs.PermissionsAccessControlArgs
+        ///                 {
+        ///                     GroupName = "Example Group",
+        ///                     PermissionLevel = "CAN_MANAGE",
+        ///                 },
+        ///             },
+        ///         }));
+        ///     }
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetDashboardsResult> InvokeAsync(GetDashboardsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDashboardsResult>("databricks:index/getDashboards:getDashboards", args ?? new GetDashboardsArgs(), options.WithDefaults());
@@ -23,6 +59,42 @@ namespace Pulumi.Databricks
         /// This data source allows you to retrieve information about Databricks [Dashboards](https://docs.databricks.com/en/dashboards/index.html).
         /// 
         /// &gt; This data source can only be used with a workspace-level provider!
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using System.Threading.Tasks;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(async() =&gt; 
+        /// {
+        ///     var all = await Databricks.GetDashboards.InvokeAsync();
+        /// 
+        ///     var dashboardsPermissions = new List&lt;Databricks.Permissions&gt;();
+        ///     foreach (var range in all.Dashboards.Select(__item =&gt; __item.DashboardId).ToList().Select((v, k) =&gt; new { Key = k, Value = v }))
+        ///     {
+        ///         dashboardsPermissions.Add(new Databricks.Permissions($"dashboards_permissions-{range.Key}", new()
+        ///         {
+        ///             Depends = new[]
+        ///             {
+        ///                 all,
+        ///             },
+        ///             DashboardId = range.Value,
+        ///             AccessControls = new[]
+        ///             {
+        ///                 new Databricks.Inputs.PermissionsAccessControlArgs
+        ///                 {
+        ///                     GroupName = "Example Group",
+        ///                     PermissionLevel = "CAN_MANAGE",
+        ///                 },
+        ///             },
+        ///         }));
+        ///     }
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetDashboardsResult> Invoke(GetDashboardsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDashboardsResult>("databricks:index/getDashboards:getDashboards", args ?? new GetDashboardsInvokeArgs(), options.WithDefaults());
@@ -31,6 +103,42 @@ namespace Pulumi.Databricks
         /// This data source allows you to retrieve information about Databricks [Dashboards](https://docs.databricks.com/en/dashboards/index.html).
         /// 
         /// &gt; This data source can only be used with a workspace-level provider!
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using System.Threading.Tasks;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(async() =&gt; 
+        /// {
+        ///     var all = await Databricks.GetDashboards.InvokeAsync();
+        /// 
+        ///     var dashboardsPermissions = new List&lt;Databricks.Permissions&gt;();
+        ///     foreach (var range in all.Dashboards.Select(__item =&gt; __item.DashboardId).ToList().Select((v, k) =&gt; new { Key = k, Value = v }))
+        ///     {
+        ///         dashboardsPermissions.Add(new Databricks.Permissions($"dashboards_permissions-{range.Key}", new()
+        ///         {
+        ///             Depends = new[]
+        ///             {
+        ///                 all,
+        ///             },
+        ///             DashboardId = range.Value,
+        ///             AccessControls = new[]
+        ///             {
+        ///                 new Databricks.Inputs.PermissionsAccessControlArgs
+        ///                 {
+        ///                     GroupName = "Example Group",
+        ///                     PermissionLevel = "CAN_MANAGE",
+        ///                 },
+        ///             },
+        ///         }));
+        ///     }
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetDashboardsResult> Invoke(GetDashboardsInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetDashboardsResult>("databricks:index/getDashboards:getDashboards", args ?? new GetDashboardsInvokeArgs(), options.WithDefaults());

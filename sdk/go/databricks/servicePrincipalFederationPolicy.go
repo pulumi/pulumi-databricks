@@ -17,6 +17,38 @@ import (
 // * The identity provider (or issuer) from which the service principal can authenticate.
 // * The workload identity (or subject) that is permitted to authenticate as the Databricks service principal.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewServicePrincipalFederationPolicy(ctx, "this", &databricks.ServicePrincipalFederationPolicyArgs{
+//				ServicePrincipalId: pulumi.Int(1234),
+//				PolicyId:           pulumi.String("my-policy"),
+//				OidcPolicy: &databricks.ServicePrincipalFederationPolicyOidcPolicyArgs{
+//					Issuer:        pulumi.String("https://myidp.example.com"),
+//					Subject_claim: "sub",
+//					Subject:       pulumi.String("subject-in-token-from-myidp"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // As of Pulumi v1.5, resources can be imported through configuration.

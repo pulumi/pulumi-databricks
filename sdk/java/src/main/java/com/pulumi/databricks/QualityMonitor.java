@@ -341,14 +341,14 @@ public class QualityMonitor extends com.pulumi.resources.CustomResource {
         return this.monitorVersion;
     }
     /**
-     * The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `email_addresses` containing a list of emails to notify:
+     * The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `emailAddresses` containing a list of emails to notify:
      * 
      */
     @Export(name="notifications", refs={QualityMonitorNotifications.class}, tree="[0]")
     private Output</* @Nullable */ QualityMonitorNotifications> notifications;
 
     /**
-     * @return The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `email_addresses` containing a list of emails to notify:
+     * @return The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `emailAddresses` containing a list of emails to notify:
      * 
      */
     public Output<Optional<QualityMonitorNotifications>> notifications() {

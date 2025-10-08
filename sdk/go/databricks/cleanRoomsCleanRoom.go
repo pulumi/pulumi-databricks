@@ -15,6 +15,54 @@ import (
 //
 // ## Example Usage
 //
+// # Example: Clean Room Resource
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewCleanRoomsCleanRoom(ctx, "this", &databricks.CleanRoomsCleanRoomArgs{
+//				Name:  pulumi.String("example-clean-room"),
+//				Owner: pulumi.String("example@databricks.com"),
+//				RemoteDetailedInfo: &databricks.CleanRoomsCleanRoomRemoteDetailedInfoArgs{
+//					Cloud_vendor: "aws",
+//					Region:       pulumi.String("us-west-2"),
+//					Collaborators: databricks.CleanRoomsCleanRoomRemoteDetailedInfoCollaboratorArray{
+//						&databricks.CleanRoomsCleanRoomRemoteDetailedInfoCollaboratorArgs{
+//							CollaboratorAlias:          pulumi.String("collaborator"),
+//							GlobalMetastoreId:          pulumi.String("aws:us-east-1:12345678-1234-1234-1234-123456789012"),
+//							InviteRecipientEmail:       pulumi.String("example@databricks.com"),
+//							InviteRecipientWorkspaceId: pulumi.Int(123456789012345),
+//						},
+//						&databricks.CleanRoomsCleanRoomRemoteDetailedInfoCollaboratorArgs{
+//							GlobalMetastoreId: pulumi.String("aws:us-east-1:12345678-1234-1234-1234-123456789012"),
+//							CollaboratorAlias: pulumi.String("creator"),
+//						},
+//					},
+//					Egress_network_policy: map[string]interface{}{
+//						"internetAccess": map[string]interface{}{
+//							"restrictionMode": "RESTRICTED_ACCESS",
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // As of Pulumi v1.5, resources can be imported through configuration.

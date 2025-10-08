@@ -45,24 +45,24 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
     public static final JobArgs Empty = new JobArgs();
 
     /**
-     * (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `spark_jar_task` or `spark_submit_task` or `spark_python_task` or `notebook_task` blocks.
+     * (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `sparkJarTask` or `sparkSubmitTask` or `sparkPythonTask` or `notebookTask` blocks.
      * 
      * @deprecated
-     * always_running will be replaced by control_run_state in the next major release.
+     * always_running will be replaced by controlRunState in the next major release.
      * 
      */
-    @Deprecated /* always_running will be replaced by control_run_state in the next major release. */
+    @Deprecated /* always_running will be replaced by controlRunState in the next major release. */
     @Import(name="alwaysRunning")
     private @Nullable Output<Boolean> alwaysRunning;
 
     /**
-     * @return (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `spark_jar_task` or `spark_submit_task` or `spark_python_task` or `notebook_task` blocks.
+     * @return (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `sparkJarTask` or `sparkSubmitTask` or `sparkPythonTask` or `notebookTask` blocks.
      * 
      * @deprecated
-     * always_running will be replaced by control_run_state in the next major release.
+     * always_running will be replaced by controlRunState in the next major release.
      * 
      */
-    @Deprecated /* always_running will be replaced by control_run_state in the next major release. */
+    @Deprecated /* always_running will be replaced by controlRunState in the next major release. */
     public Optional<Output<Boolean>> alwaysRunning() {
         return Optional.ofNullable(this.alwaysRunning);
     }
@@ -98,18 +98,18 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pause_status` by stopping the current active run. This flag cannot be set for non-continuous jobs.
+     * (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pauseStatus` by stopping the current active run. This flag cannot be set for non-continuous jobs.
      * 
-     * When migrating from `always_running` to `control_run_state`, set `continuous` as follows:
+     * When migrating from `alwaysRunning` to `controlRunState`, set `continuous` as follows:
      * 
      */
     @Import(name="controlRunState")
     private @Nullable Output<Boolean> controlRunState;
 
     /**
-     * @return (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pause_status` by stopping the current active run. This flag cannot be set for non-continuous jobs.
+     * @return (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pauseStatus` by stopping the current active run. This flag cannot be set for non-continuous jobs.
      * 
-     * When migrating from `always_running` to `control_run_state`, set `continuous` as follows:
+     * When migrating from `alwaysRunning` to `controlRunState`, set `continuous` as follows:
      * 
      */
     public Optional<Output<Boolean>> controlRunState() {
@@ -209,14 +209,14 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Specifies the a Git repository for task source code. See git_source Configuration Block below.
+     * Specifies the a Git repository for task source code. See gitSource Configuration Block below.
      * 
      */
     @Import(name="gitSource")
     private @Nullable Output<JobGitSourceArgs> gitSource;
 
     /**
-     * @return Specifies the a Git repository for task source code. See git_source Configuration Block below.
+     * @return Specifies the a Git repository for task source code. See gitSource Configuration Block below.
      * 
      */
     public Optional<Output<JobGitSourceArgs>> gitSource() {
@@ -488,14 +488,14 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The user or the service principal the job runs as. See run_as Configuration Block below.
+     * The user or the service principal the job runs as. See runAs Configuration Block below.
      * 
      */
     @Import(name="runAs")
     private @Nullable Output<JobRunAsArgs> runAs;
 
     /**
-     * @return The user or the service principal the job runs as. See run_as Configuration Block below.
+     * @return The user or the service principal the job runs as. See runAs Configuration Block below.
      * 
      */
     public Optional<Output<JobRunAsArgs>> runAs() {
@@ -740,30 +740,30 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param alwaysRunning (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `spark_jar_task` or `spark_submit_task` or `spark_python_task` or `notebook_task` blocks.
+         * @param alwaysRunning (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `sparkJarTask` or `sparkSubmitTask` or `sparkPythonTask` or `notebookTask` blocks.
          * 
          * @return builder
          * 
          * @deprecated
-         * always_running will be replaced by control_run_state in the next major release.
+         * always_running will be replaced by controlRunState in the next major release.
          * 
          */
-        @Deprecated /* always_running will be replaced by control_run_state in the next major release. */
+        @Deprecated /* always_running will be replaced by controlRunState in the next major release. */
         public Builder alwaysRunning(@Nullable Output<Boolean> alwaysRunning) {
             $.alwaysRunning = alwaysRunning;
             return this;
         }
 
         /**
-         * @param alwaysRunning (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `spark_jar_task` or `spark_submit_task` or `spark_python_task` or `notebook_task` blocks.
+         * @param alwaysRunning (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `sparkJarTask` or `sparkSubmitTask` or `sparkPythonTask` or `notebookTask` blocks.
          * 
          * @return builder
          * 
          * @deprecated
-         * always_running will be replaced by control_run_state in the next major release.
+         * always_running will be replaced by controlRunState in the next major release.
          * 
          */
-        @Deprecated /* always_running will be replaced by control_run_state in the next major release. */
+        @Deprecated /* always_running will be replaced by controlRunState in the next major release. */
         public Builder alwaysRunning(Boolean alwaysRunning) {
             return alwaysRunning(Output.of(alwaysRunning));
         }
@@ -811,9 +811,9 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param controlRunState (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pause_status` by stopping the current active run. This flag cannot be set for non-continuous jobs.
+         * @param controlRunState (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pauseStatus` by stopping the current active run. This flag cannot be set for non-continuous jobs.
          * 
-         * When migrating from `always_running` to `control_run_state`, set `continuous` as follows:
+         * When migrating from `alwaysRunning` to `controlRunState`, set `continuous` as follows:
          * 
          * @return builder
          * 
@@ -824,9 +824,9 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param controlRunState (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pause_status` by stopping the current active run. This flag cannot be set for non-continuous jobs.
+         * @param controlRunState (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pauseStatus` by stopping the current active run. This flag cannot be set for non-continuous jobs.
          * 
-         * When migrating from `always_running` to `control_run_state`, set `continuous` as follows:
+         * When migrating from `alwaysRunning` to `controlRunState`, set `continuous` as follows:
          * 
          * @return builder
          * 
@@ -964,7 +964,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param gitSource Specifies the a Git repository for task source code. See git_source Configuration Block below.
+         * @param gitSource Specifies the a Git repository for task source code. See gitSource Configuration Block below.
          * 
          * @return builder
          * 
@@ -975,7 +975,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param gitSource Specifies the a Git repository for task source code. See git_source Configuration Block below.
+         * @param gitSource Specifies the a Git repository for task source code. See gitSource Configuration Block below.
          * 
          * @return builder
          * 
@@ -1371,7 +1371,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param runAs The user or the service principal the job runs as. See run_as Configuration Block below.
+         * @param runAs The user or the service principal the job runs as. See runAs Configuration Block below.
          * 
          * @return builder
          * 
@@ -1382,7 +1382,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param runAs The user or the service principal the job runs as. See run_as Configuration Block below.
+         * @param runAs The user or the service principal the job runs as. See runAs Configuration Block below.
          * 
          * @return builder
          * 

@@ -22,7 +22,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string? InstanceProfileArn;
         /// <summary>
-        /// The maximum provisioned concurrency that the endpoint can scale up to. Conflicts with `workload_size`.
+        /// The maximum provisioned concurrency that the endpoint can scale up to. Conflicts with `WorkloadSize`.
         /// </summary>
         public readonly int? MaxProvisionedConcurrency;
         /// <summary>
@@ -30,7 +30,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly int? MaxProvisionedThroughput;
         /// <summary>
-        /// The minimum provisioned concurrency that the endpoint can scale down to. Conflicts with `workload_size`.
+        /// The minimum provisioned concurrency that the endpoint can scale down to. Conflicts with `WorkloadSize`.
         /// </summary>
         public readonly int? MinProvisionedConcurrency;
         /// <summary>
@@ -51,7 +51,7 @@ namespace Pulumi.Databricks.Outputs
         public readonly string? Name;
         public readonly int? ProvisionedModelUnits;
         /// <summary>
-        /// Whether the compute resources for the served model should scale down to zero. If `scale-to-zero` is enabled, the lower bound of the provisioned concurrency for each workload size will be 0. The default value is `true`.
+        /// Whether the compute resources for the served model should scale down to zero. If `scale-to-zero` is enabled, the lower bound of the provisioned concurrency for each workload size will be 0. The default value is `True`.
         /// </summary>
         public readonly bool? ScaleToZeroEnabled;
         /// <summary>

@@ -85,7 +85,7 @@ public final class RecipientFederationPolicyOidcPolicyArgs extends com.pulumi.re
      * * M2M flow (OAuth App access): Use `azp`.
      * - For other IdPs, refer to the specific IdP documentation.
      * 
-     * Supported `subject_claim` values are:
+     * Supported `subjectClaim` values are:
      * 
      */
     @Import(name="subjectClaim", required=true)
@@ -100,7 +100,7 @@ public final class RecipientFederationPolicyOidcPolicyArgs extends com.pulumi.re
      * * M2M flow (OAuth App access): Use `azp`.
      * - For other IdPs, refer to the specific IdP documentation.
      * 
-     * Supported `subject_claim` values are:
+     * Supported `subjectClaim` values are:
      * 
      */
     public Output<String> subjectClaim() {
@@ -232,7 +232,7 @@ public final class RecipientFederationPolicyOidcPolicyArgs extends com.pulumi.re
          * * M2M flow (OAuth App access): Use `azp`.
          * - For other IdPs, refer to the specific IdP documentation.
          * 
-         * Supported `subject_claim` values are:
+         * Supported `subjectClaim` values are:
          * 
          * @return builder
          * 
@@ -251,7 +251,7 @@ public final class RecipientFederationPolicyOidcPolicyArgs extends com.pulumi.re
          * * M2M flow (OAuth App access): Use `azp`.
          * - For other IdPs, refer to the specific IdP documentation.
          * 
-         * Supported `subject_claim` values are:
+         * Supported `subjectClaim` values are:
          * 
          * @return builder
          * 

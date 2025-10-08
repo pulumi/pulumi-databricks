@@ -22,6 +22,52 @@ namespace Pulumi.Databricks
     /// 
     /// &gt; **Note** This resource can only be used with an account-level provider!
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleNetworkPolicy = new Databricks.AccountNetworkPolicy("example_network_policy", new()
+    ///     {
+    ///         NetworkPolicyId = "example-network-policy",
+    ///         Egress = new Databricks.Inputs.AccountNetworkPolicyEgressArgs
+    ///         {
+    ///             Network_access = 
+    ///             {
+    ///                 { "restrictionMode", "RESTRICTED_ACCESS" },
+    ///                 { "allowedInternetDestinations", new[]
+    ///                 {
+    ///                     
+    ///                     {
+    ///                         { "destination", "example.com" },
+    ///                         { "internetDestinationType", "DNS_NAME" },
+    ///                     },
+    ///                 } },
+    ///                 { "allowedStorageDestinations", new[]
+    ///                 {
+    ///                     
+    ///                     {
+    ///                         { "bucketName", "example-aws-cloud-storage" },
+    ///                         { "region", "us-west-1" },
+    ///                         { "storageDestinationType", "AWS_S3" },
+    ///                     },
+    ///                 } },
+    ///                 { "policyEnforcement", 
+    ///                 {
+    ///                     { "enforcementMode", "ENFORCED" },
+    ///                 } },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// As of Pulumi v1.5, resources can be imported through configuration.

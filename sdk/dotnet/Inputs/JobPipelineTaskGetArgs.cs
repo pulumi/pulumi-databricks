@@ -15,7 +15,7 @@ namespace Pulumi.Databricks.Inputs
         /// <summary>
         /// (Bool) Specifies if there should be full refresh of the pipeline.
         /// 
-        /// &gt; The following configuration blocks are only supported inside a `task` block
+        /// &gt; The following configuration blocks are only supported inside a `Task` block
         /// </summary>
         [Input("fullRefresh")]
         public Input<bool>? FullRefresh { get; set; }

@@ -51,14 +51,14 @@ public final class AccountNetworkPolicyEgressNetworkAccessArgs extends com.pulum
     }
 
     /**
-     * Optional. When policy_enforcement is not provided, we default to ENFORCE_MODE_ALL_SERVICES
+     * Optional. When policyEnforcement is not provided, we default to ENFORCE_MODE_ALL_SERVICES
      * 
      */
     @Import(name="policyEnforcement")
     private @Nullable Output<AccountNetworkPolicyEgressNetworkAccessPolicyEnforcementArgs> policyEnforcement;
 
     /**
-     * @return Optional. When policy_enforcement is not provided, we default to ENFORCE_MODE_ALL_SERVICES
+     * @return Optional. When policyEnforcement is not provided, we default to ENFORCE_MODE_ALL_SERVICES
      * 
      */
     public Optional<Output<AccountNetworkPolicyEgressNetworkAccessPolicyEnforcementArgs>> policyEnforcement() {
@@ -170,7 +170,7 @@ public final class AccountNetworkPolicyEgressNetworkAccessArgs extends com.pulum
         }
 
         /**
-         * @param policyEnforcement Optional. When policy_enforcement is not provided, we default to ENFORCE_MODE_ALL_SERVICES
+         * @param policyEnforcement Optional. When policyEnforcement is not provided, we default to ENFORCE_MODE_ALL_SERVICES
          * 
          * @return builder
          * 
@@ -181,7 +181,7 @@ public final class AccountNetworkPolicyEgressNetworkAccessArgs extends com.pulum
         }
 
         /**
-         * @param policyEnforcement Optional. When policy_enforcement is not provided, we default to ENFORCE_MODE_ALL_SERVICES
+         * @param policyEnforcement Optional. When policyEnforcement is not provided, we default to ENFORCE_MODE_ALL_SERVICES
          * 
          * @return builder
          * 

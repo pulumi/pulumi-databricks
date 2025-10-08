@@ -16,7 +16,7 @@ namespace Pulumi.Databricks.Outputs
         /// <summary>
         /// array of paths (directories) that will be used for sparse checkout.  List of patterns could be updated in-place.
         /// 
-        /// Addition or removal of the `sparse_checkout` configuration block will lead to recreation of the Git folder.
+        /// Addition or removal of the `SparseCheckout` configuration block will lead to recreation of the Git folder.
         /// </summary>
         public readonly ImmutableArray<string> Patterns;
 

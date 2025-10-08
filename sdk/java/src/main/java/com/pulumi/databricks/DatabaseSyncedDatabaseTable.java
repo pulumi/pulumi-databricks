@@ -25,6 +25,170 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * ### Creating a Synced Database Table inside a Database Catalog
+ * 
+ * This example creates a Synced Database Table inside a Database Catalog.
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.DatabaseSyncedDatabaseTable;
+ * import com.pulumi.databricks.DatabaseSyncedDatabaseTableArgs;
+ * import com.pulumi.databricks.inputs.DatabaseSyncedDatabaseTableSpecArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var this_ = new DatabaseSyncedDatabaseTable("this", DatabaseSyncedDatabaseTableArgs.builder()
+ *             .name("my_database_catalog.public.synced_table")
+ *             .logicalDatabaseName("databricks_postgres")
+ *             .spec(DatabaseSyncedDatabaseTableSpecArgs.builder()
+ *                 .scheduling_policy("SNAPSHOT")
+ *                 .source_table_full_name("source_delta.tpch.customer")
+ *                 .primary_key_columns(List.of("c_custkey"))
+ *                 .create_database_objects_if_missing(true)
+ *                 .new_pipeline_spec(Map.ofEntries(
+ *                     Map.entry("storageCatalog", "source_delta"),
+ *                     Map.entry("storageSchema", "tpch")
+ *                 ))
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Creating a Synced Database Table inside a Standard Catalog
+ * 
+ * This example creates a Synced Database Table inside a Standard Catalog.
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.DatabaseSyncedDatabaseTable;
+ * import com.pulumi.databricks.DatabaseSyncedDatabaseTableArgs;
+ * import com.pulumi.databricks.inputs.DatabaseSyncedDatabaseTableSpecArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var this_ = new DatabaseSyncedDatabaseTable("this", DatabaseSyncedDatabaseTableArgs.builder()
+ *             .name("my_standard_catalog.public.synced_table")
+ *             .logicalDatabaseName("databricks_postgres")
+ *             .databaseInstanceName("my-database-instance")
+ *             .spec(DatabaseSyncedDatabaseTableSpecArgs.builder()
+ *                 .scheduling_policy("SNAPSHOT")
+ *                 .source_table_full_name("source_delta.tpch.customer")
+ *                 .primary_key_columns(List.of("c_custkey"))
+ *                 .create_database_objects_if_missing(true)
+ *                 .new_pipeline_spec(Map.ofEntries(
+ *                     Map.entry("storageCatalog", "source_delta"),
+ *                     Map.entry("storageSchema", "tpch")
+ *                 ))
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Creating multiple Synced Database Tables and bin packing them into a single pipeline
+ * 
+ * This example creates two Synced Database Tables. The first one specifies a new pipeline spec,
+ * which generates a new pipeline. The second one utilizes the pipeline ID of the first table.
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.DatabaseInstance;
+ * import com.pulumi.databricks.DatabaseInstanceArgs;
+ * import com.pulumi.databricks.DatabaseSyncedDatabaseTable;
+ * import com.pulumi.databricks.DatabaseSyncedDatabaseTableArgs;
+ * import com.pulumi.databricks.inputs.DatabaseSyncedDatabaseTableSpecArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var instance = new DatabaseInstance("instance", DatabaseInstanceArgs.builder()
+ *             .name("my-database-instance")
+ *             .capacity("CU_1")
+ *             .build());
+ * 
+ *         var syncedTable1 = new DatabaseSyncedDatabaseTable("syncedTable1", DatabaseSyncedDatabaseTableArgs.builder()
+ *             .name("my_standard_catalog.public.synced_table1")
+ *             .logicalDatabaseName("databricks_postgres")
+ *             .databaseInstanceName(instance.name())
+ *             .spec(DatabaseSyncedDatabaseTableSpecArgs.builder()
+ *                 .scheduling_policy("SNAPSHOT")
+ *                 .source_table_full_name("source_delta.tpch.customer")
+ *                 .primary_key_columns(List.of("c_custkey"))
+ *                 .create_database_objects_if_missing(true)
+ *                 .new_pipeline_spec(Map.ofEntries(
+ *                     Map.entry("storageCatalog", "source_delta"),
+ *                     Map.entry("storageSchema", "tpch")
+ *                 ))
+ *                 .build())
+ *             .build());
+ * 
+ *         var syncedTable2 = new DatabaseSyncedDatabaseTable("syncedTable2", DatabaseSyncedDatabaseTableArgs.builder()
+ *             .name("my_standard_catalog.public.synced_table2")
+ *             .logicalDatabaseName("databricks_postgres")
+ *             .databaseInstanceName(instance.name())
+ *             .spec(DatabaseSyncedDatabaseTableSpecArgs.builder()
+ *                 .scheduling_policy("SNAPSHOT")
+ *                 .source_table_full_name("source_delta.tpch.customer")
+ *                 .primary_key_columns(List.of("c_custkey"))
+ *                 .create_database_objects_if_missing(true)
+ *                 .existing_pipeline_id(syncedTable1.dataSynchronizationStatus().applyValue(_dataSynchronizationStatus -> _dataSynchronizationStatus.pipelineId()))
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * As of Pulumi v1.5, resources can be imported through configuration.
@@ -122,7 +286,7 @@ public class DatabaseSyncedDatabaseTable extends com.pulumi.resources.CustomReso
      * 
      * When creating a synced table in a standard catalog, this field is required.
      * In this scenario, specifying this field will allow targeting an arbitrary postgres database.
-     * Note that this has implications for the `create_database_objects_is_missing` field in `spec`
+     * Note that this has implications for the `createDatabaseObjectsIsMissing` field in `spec`
      * 
      */
     @Export(name="logicalDatabaseName", refs={String.class}, tree="[0]")
@@ -138,7 +302,7 @@ public class DatabaseSyncedDatabaseTable extends com.pulumi.resources.CustomReso
      * 
      * When creating a synced table in a standard catalog, this field is required.
      * In this scenario, specifying this field will allow targeting an arbitrary postgres database.
-     * Note that this has implications for the `create_database_objects_is_missing` field in `spec`
+     * Note that this has implications for the `createDatabaseObjectsIsMissing` field in `spec`
      * 
      */
     public Output<String> logicalDatabaseName() {

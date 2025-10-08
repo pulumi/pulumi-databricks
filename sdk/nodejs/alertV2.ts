@@ -13,6 +13,46 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * ### Basic Alert Example
+ * This example creates a basic alert that monitors a query and sends notifications to a user when the value exceeds a threshold:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const basicAlert = new databricks.AlertV2("basic_alert", {
+ *     displayName: "High Error Rate Alert",
+ *     queryText: "SELECT count(*) as error_count FROM logs WHERE level = 'ERROR' AND timestamp > now() - interval 1 hour",
+ *     warehouseId: "a7066a8ef796be84",
+ *     parentPath: "/Users/user@example.com",
+ *     evaluation: {
+ *         source: {
+ *             name: "error_count",
+ *             display: "Error Count",
+ *             aggregation: "COUNT",
+ *         },
+ *         comparison_operator: "GREATER_THAN",
+ *         threshold: {
+ *             value: {
+ *                 doubleValue: 100,
+ *             },
+ *         },
+ *         empty_result_state: "OK",
+ *         notification: {
+ *             subscriptions: [{
+ *                 userEmail: "user@example.com",
+ *             }],
+ *             notifyOnOk: true,
+ *         },
+ *     },
+ *     schedule: {
+ *         quartz_cron_schedule: "0 0/15 * * * ?",
+ *         timezone_id: "America/Los_Angeles",
+ *         pause_status: "UNPAUSED",
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * As of Pulumi v1.5, resources can be imported through configuration.

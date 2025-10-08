@@ -19,11 +19,11 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly bool CreateDatabaseObjectsIfMissing;
         /// <summary>
-        /// (string) - At most one of existing_pipeline_id and new_pipeline_spec should be defined.
+        /// (string) - At most one of ExistingPipelineId and NewPipelineSpec should be defined.
         /// </summary>
         public readonly string ExistingPipelineId;
         /// <summary>
-        /// (NewPipelineSpec) - At most one of existing_pipeline_id and new_pipeline_spec should be defined.
+        /// (NewPipelineSpec) - At most one of ExistingPipelineId and NewPipelineSpec should be defined.
         /// </summary>
         public readonly Outputs.GetDatabaseSyncedDatabaseTableSpecNewPipelineSpecResult NewPipelineSpec;
         /// <summary>

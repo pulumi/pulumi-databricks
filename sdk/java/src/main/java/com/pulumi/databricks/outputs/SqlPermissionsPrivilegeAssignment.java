@@ -12,7 +12,7 @@ import java.util.Objects;
 @CustomType
 public final class SqlPermissionsPrivilegeAssignment {
     /**
-     * @return `display_name` for a databricks.Group or databricks_user, `application_id` for a databricks_service_principal.
+     * @return `displayName` for a databricks.Group or databricks_user, `applicationId` for a databricks_service_principal.
      * 
      */
     private String principal;
@@ -45,7 +45,7 @@ public final class SqlPermissionsPrivilegeAssignment {
 
     private SqlPermissionsPrivilegeAssignment() {}
     /**
-     * @return `display_name` for a databricks.Group or databricks_user, `application_id` for a databricks_service_principal.
+     * @return `displayName` for a databricks.Group or databricks_user, `applicationId` for a databricks_service_principal.
      * 
      */
     public String principal() {

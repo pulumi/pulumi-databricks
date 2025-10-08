@@ -18,6 +18,141 @@ namespace Pulumi.Databricks
     /// 
     /// ## Example Usage
     /// 
+    /// ### Creating a Synced Database Table inside a Database Catalog
+    /// 
+    /// This example creates a Synced Database Table inside a Database Catalog.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @this = new Databricks.DatabaseSyncedDatabaseTable("this", new()
+    ///     {
+    ///         Name = "my_database_catalog.public.synced_table",
+    ///         LogicalDatabaseName = "databricks_postgres",
+    ///         Spec = new Databricks.Inputs.DatabaseSyncedDatabaseTableSpecArgs
+    ///         {
+    ///             Scheduling_policy = "SNAPSHOT",
+    ///             Source_table_full_name = "source_delta.tpch.customer",
+    ///             Primary_key_columns = new[]
+    ///             {
+    ///                 "c_custkey",
+    ///             },
+    ///             Create_database_objects_if_missing = true,
+    ///             New_pipeline_spec = 
+    ///             {
+    ///                 { "storageCatalog", "source_delta" },
+    ///                 { "storageSchema", "tpch" },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Creating a Synced Database Table inside a Standard Catalog
+    /// 
+    /// This example creates a Synced Database Table inside a Standard Catalog.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @this = new Databricks.DatabaseSyncedDatabaseTable("this", new()
+    ///     {
+    ///         Name = "my_standard_catalog.public.synced_table",
+    ///         LogicalDatabaseName = "databricks_postgres",
+    ///         DatabaseInstanceName = "my-database-instance",
+    ///         Spec = new Databricks.Inputs.DatabaseSyncedDatabaseTableSpecArgs
+    ///         {
+    ///             Scheduling_policy = "SNAPSHOT",
+    ///             Source_table_full_name = "source_delta.tpch.customer",
+    ///             Primary_key_columns = new[]
+    ///             {
+    ///                 "c_custkey",
+    ///             },
+    ///             Create_database_objects_if_missing = true,
+    ///             New_pipeline_spec = 
+    ///             {
+    ///                 { "storageCatalog", "source_delta" },
+    ///                 { "storageSchema", "tpch" },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Creating multiple Synced Database Tables and bin packing them into a single pipeline
+    /// 
+    /// This example creates two Synced Database Tables. The first one specifies a new pipeline spec,
+    /// which generates a new pipeline. The second one utilizes the pipeline ID of the first table.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var instance = new Databricks.DatabaseInstance("instance", new()
+    ///     {
+    ///         Name = "my-database-instance",
+    ///         Capacity = "CU_1",
+    ///     });
+    /// 
+    ///     var syncedTable1 = new Databricks.DatabaseSyncedDatabaseTable("synced_table_1", new()
+    ///     {
+    ///         Name = "my_standard_catalog.public.synced_table1",
+    ///         LogicalDatabaseName = "databricks_postgres",
+    ///         DatabaseInstanceName = instance.Name,
+    ///         Spec = new Databricks.Inputs.DatabaseSyncedDatabaseTableSpecArgs
+    ///         {
+    ///             Scheduling_policy = "SNAPSHOT",
+    ///             Source_table_full_name = "source_delta.tpch.customer",
+    ///             Primary_key_columns = new[]
+    ///             {
+    ///                 "c_custkey",
+    ///             },
+    ///             Create_database_objects_if_missing = true,
+    ///             New_pipeline_spec = 
+    ///             {
+    ///                 { "storageCatalog", "source_delta" },
+    ///                 { "storageSchema", "tpch" },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var syncedTable2 = new Databricks.DatabaseSyncedDatabaseTable("synced_table_2", new()
+    ///     {
+    ///         Name = "my_standard_catalog.public.synced_table2",
+    ///         LogicalDatabaseName = "databricks_postgres",
+    ///         DatabaseInstanceName = instance.Name,
+    ///         Spec = new Databricks.Inputs.DatabaseSyncedDatabaseTableSpecArgs
+    ///         {
+    ///             Scheduling_policy = "SNAPSHOT",
+    ///             Source_table_full_name = "source_delta.tpch.customer",
+    ///             Primary_key_columns = new[]
+    ///             {
+    ///                 "c_custkey",
+    ///             },
+    ///             Create_database_objects_if_missing = true,
+    ///             Existing_pipeline_id = syncedTable1.DataSynchronizationStatus.Apply(dataSynchronizationStatus =&gt; dataSynchronizationStatus.PipelineId),
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// As of Pulumi v1.5, resources can be imported through configuration.
@@ -79,7 +214,7 @@ namespace Pulumi.Databricks
         /// 
         /// When creating a synced table in a standard catalog, this field is required.
         /// In this scenario, specifying this field will allow targeting an arbitrary postgres database.
-        /// Note that this has implications for the `create_database_objects_is_missing` field in `spec`
+        /// Note that this has implications for the `CreateDatabaseObjectsIsMissing` field in `Spec`
         /// </summary>
         [Output("logicalDatabaseName")]
         public Output<string> LogicalDatabaseName { get; private set; } = null!;
@@ -172,7 +307,7 @@ namespace Pulumi.Databricks
         /// 
         /// When creating a synced table in a standard catalog, this field is required.
         /// In this scenario, specifying this field will allow targeting an arbitrary postgres database.
-        /// Note that this has implications for the `create_database_objects_is_missing` field in `spec`
+        /// Note that this has implications for the `CreateDatabaseObjectsIsMissing` field in `Spec`
         /// </summary>
         [Input("logicalDatabaseName")]
         public Input<string>? LogicalDatabaseName { get; set; }
@@ -238,7 +373,7 @@ namespace Pulumi.Databricks
         /// 
         /// When creating a synced table in a standard catalog, this field is required.
         /// In this scenario, specifying this field will allow targeting an arbitrary postgres database.
-        /// Note that this has implications for the `create_database_objects_is_missing` field in `spec`
+        /// Note that this has implications for the `CreateDatabaseObjectsIsMissing` field in `Spec`
         /// </summary>
         [Input("logicalDatabaseName")]
         public Input<string>? LogicalDatabaseName { get; set; }

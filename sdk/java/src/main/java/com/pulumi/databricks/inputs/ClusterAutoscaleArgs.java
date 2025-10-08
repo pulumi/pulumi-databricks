@@ -16,9 +16,9 @@ public final class ClusterAutoscaleArgs extends com.pulumi.resources.ResourceArg
     public static final ClusterAutoscaleArgs Empty = new ClusterAutoscaleArgs();
 
     /**
-     * The maximum number of workers to which the cluster can scale up when overloaded. max_workers must be strictly greater than min_workers.
+     * The maximum number of workers to which the cluster can scale up when overloaded. maxWorkers must be strictly greater than min_workers.
      * 
-     * To create a [single node cluster](https://docs.databricks.com/clusters/single-node.html), set `is_single_node = true` and `kind = &#34;CLASSIC_PREVIEW&#34;` for the cluster. Single-node clusters are suitable for small, non-distributed workloads like single-node machine learning use-cases.
+     * To create a [single node cluster](https://docs.databricks.com/clusters/single-node.html), set `isSingleNode = true` and `kind = &#34;CLASSIC_PREVIEW&#34;` for the cluster. Single-node clusters are suitable for small, non-distributed workloads like single-node machine learning use-cases.
      * 
      * <pre>
      * {@code
@@ -72,9 +72,9 @@ public final class ClusterAutoscaleArgs extends com.pulumi.resources.ResourceArg
     private @Nullable Output<Integer> maxWorkers;
 
     /**
-     * @return The maximum number of workers to which the cluster can scale up when overloaded. max_workers must be strictly greater than min_workers.
+     * @return The maximum number of workers to which the cluster can scale up when overloaded. maxWorkers must be strictly greater than min_workers.
      * 
-     * To create a [single node cluster](https://docs.databricks.com/clusters/single-node.html), set `is_single_node = true` and `kind = &#34;CLASSIC_PREVIEW&#34;` for the cluster. Single-node clusters are suitable for small, non-distributed workloads like single-node machine learning use-cases.
+     * To create a [single node cluster](https://docs.databricks.com/clusters/single-node.html), set `isSingleNode = true` and `kind = &#34;CLASSIC_PREVIEW&#34;` for the cluster. Single-node clusters are suitable for small, non-distributed workloads like single-node machine learning use-cases.
      * 
      * <pre>
      * {@code
@@ -169,9 +169,9 @@ public final class ClusterAutoscaleArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param maxWorkers The maximum number of workers to which the cluster can scale up when overloaded. max_workers must be strictly greater than min_workers.
+         * @param maxWorkers The maximum number of workers to which the cluster can scale up when overloaded. maxWorkers must be strictly greater than min_workers.
          * 
-         * To create a [single node cluster](https://docs.databricks.com/clusters/single-node.html), set `is_single_node = true` and `kind = &#34;CLASSIC_PREVIEW&#34;` for the cluster. Single-node clusters are suitable for small, non-distributed workloads like single-node machine learning use-cases.
+         * To create a [single node cluster](https://docs.databricks.com/clusters/single-node.html), set `isSingleNode = true` and `kind = &#34;CLASSIC_PREVIEW&#34;` for the cluster. Single-node clusters are suitable for small, non-distributed workloads like single-node machine learning use-cases.
          * 
          * <pre>
          * {@code
@@ -229,9 +229,9 @@ public final class ClusterAutoscaleArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param maxWorkers The maximum number of workers to which the cluster can scale up when overloaded. max_workers must be strictly greater than min_workers.
+         * @param maxWorkers The maximum number of workers to which the cluster can scale up when overloaded. maxWorkers must be strictly greater than min_workers.
          * 
-         * To create a [single node cluster](https://docs.databricks.com/clusters/single-node.html), set `is_single_node = true` and `kind = &#34;CLASSIC_PREVIEW&#34;` for the cluster. Single-node clusters are suitable for small, non-distributed workloads like single-node machine learning use-cases.
+         * To create a [single node cluster](https://docs.databricks.com/clusters/single-node.html), set `isSingleNode = true` and `kind = &#34;CLASSIC_PREVIEW&#34;` for the cluster. Single-node clusters are suitable for small, non-distributed workloads like single-node machine learning use-cases.
          * 
          * <pre>
          * {@code

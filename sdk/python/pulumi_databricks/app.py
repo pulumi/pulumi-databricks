@@ -488,6 +488,49 @@ class App(pulumi.CustomResource):
 
         > This resource can only be used with a workspace-level provider!
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        this = databricks.App("this",
+            name="my-custom-app",
+            description="My app",
+            resources=[
+                {
+                    "name": "sql-warehouse",
+                    "sql_warehouse": {
+                        "id": "e9ca293f79a74b5c",
+                        "permission": "CAN_MANAGE",
+                    },
+                },
+                {
+                    "name": "serving-endpoint",
+                    "serving_endpoint": {
+                        "name": "databricks-meta-llama-3-1-70b-instruct",
+                        "permission": "CAN_MANAGE",
+                    },
+                },
+                {
+                    "name": "job",
+                    "job": {
+                        "id": "1234",
+                        "permission": "CAN_MANAGE",
+                    },
+                },
+            ])
+        ```
+
+        ## Related Resources
+
+        The following resources are used in the same context:
+
+        * SqlEndpoint to manage Databricks SQL [Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html).
+        * ModelServing to serve this model on a Databricks serving endpoint.
+        * Secret to manage [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
+        * Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code.
+
         ## Import
 
         This resource can be imported by name:
@@ -528,6 +571,49 @@ class App(pulumi.CustomResource):
         [Databricks Apps](https://docs.databricks.com/en/dev-tools/databricks-apps/index.html) run directly on a customer's Databricks instance, integrate with their data, use and extend Databricks services, and enable users to interact through single sign-on. This resource creates the application but does not handle app deployment, which should be handled separately as part of your CI/CD pipeline.
 
         > This resource can only be used with a workspace-level provider!
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        this = databricks.App("this",
+            name="my-custom-app",
+            description="My app",
+            resources=[
+                {
+                    "name": "sql-warehouse",
+                    "sql_warehouse": {
+                        "id": "e9ca293f79a74b5c",
+                        "permission": "CAN_MANAGE",
+                    },
+                },
+                {
+                    "name": "serving-endpoint",
+                    "serving_endpoint": {
+                        "name": "databricks-meta-llama-3-1-70b-instruct",
+                        "permission": "CAN_MANAGE",
+                    },
+                },
+                {
+                    "name": "job",
+                    "job": {
+                        "id": "1234",
+                        "permission": "CAN_MANAGE",
+                    },
+                },
+            ])
+        ```
+
+        ## Related Resources
+
+        The following resources are used in the same context:
+
+        * SqlEndpoint to manage Databricks SQL [Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html).
+        * ModelServing to serve this model on a Databricks serving endpoint.
+        * Secret to manage [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
+        * Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code.
 
         ## Import
 

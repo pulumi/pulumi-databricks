@@ -503,6 +503,45 @@ class AlertV2(pulumi.CustomResource):
 
         ## Example Usage
 
+        ### Basic Alert Example
+        This example creates a basic alert that monitors a query and sends notifications to a user when the value exceeds a threshold:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        basic_alert = databricks.AlertV2("basic_alert",
+            display_name="High Error Rate Alert",
+            query_text="SELECT count(*) as error_count FROM logs WHERE level = 'ERROR' AND timestamp > now() - interval 1 hour",
+            warehouse_id="a7066a8ef796be84",
+            parent_path="/Users/user@example.com",
+            evaluation={
+                "source": {
+                    "name": "error_count",
+                    "display": "Error Count",
+                    "aggregation": "COUNT",
+                },
+                "comparison_operator": "GREATER_THAN",
+                "threshold": {
+                    "value": {
+                        "double_value": 100,
+                    },
+                },
+                "empty_result_state": "OK",
+                "notification": {
+                    "subscriptions": [{
+                        "user_email": "user@example.com",
+                    }],
+                    "notify_on_ok": True,
+                },
+            },
+            schedule={
+                "quartz_cron_schedule": "0 0/15 * * * ?",
+                "timezone_id": "America/Los_Angeles",
+                "pause_status": "UNPAUSED",
+            })
+        ```
+
         ## Import
 
         As of Pulumi v1.5, resources can be imported through configuration.
@@ -553,6 +592,45 @@ class AlertV2(pulumi.CustomResource):
         Alerts run on a schedule and evaluate query results against defined thresholds. When an alert is triggered, notifications can be sent to specified users or destinations.
 
         ## Example Usage
+
+        ### Basic Alert Example
+        This example creates a basic alert that monitors a query and sends notifications to a user when the value exceeds a threshold:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        basic_alert = databricks.AlertV2("basic_alert",
+            display_name="High Error Rate Alert",
+            query_text="SELECT count(*) as error_count FROM logs WHERE level = 'ERROR' AND timestamp > now() - interval 1 hour",
+            warehouse_id="a7066a8ef796be84",
+            parent_path="/Users/user@example.com",
+            evaluation={
+                "source": {
+                    "name": "error_count",
+                    "display": "Error Count",
+                    "aggregation": "COUNT",
+                },
+                "comparison_operator": "GREATER_THAN",
+                "threshold": {
+                    "value": {
+                        "double_value": 100,
+                    },
+                },
+                "empty_result_state": "OK",
+                "notification": {
+                    "subscriptions": [{
+                        "user_email": "user@example.com",
+                    }],
+                    "notify_on_ok": True,
+                },
+            },
+            schedule={
+                "quartz_cron_schedule": "0 0/15 * * * ?",
+                "timezone_id": "America/Los_Angeles",
+                "pause_status": "UNPAUSED",
+            })
+        ```
 
         ## Import
 

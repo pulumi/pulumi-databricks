@@ -84,14 +84,14 @@ public final class GetSparkVersionPlainArgs extends com.pulumi.resources.InvokeA
     }
 
     /**
-     * Databricks Runtime version, that can be used as `spark_version` field in databricks_job, databricks_cluster, or databricks_instance_pool.
+     * Databricks Runtime version, that can be used as `sparkVersion` field in databricks_job, databricks_cluster, or databricks_instance_pool.
      * 
      */
     @Import(name="id")
     private @Nullable String id;
 
     /**
-     * @return Databricks Runtime version, that can be used as `spark_version` field in databricks_job, databricks_cluster, or databricks_instance_pool.
+     * @return Databricks Runtime version, that can be used as `sparkVersion` field in databricks_job, databricks_cluster, or databricks_instance_pool.
      * 
      */
     public Optional<String> id() {
@@ -279,7 +279,7 @@ public final class GetSparkVersionPlainArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param id Databricks Runtime version, that can be used as `spark_version` field in databricks_job, databricks_cluster, or databricks_instance_pool.
+         * @param id Databricks Runtime version, that can be used as `sparkVersion` field in databricks_job, databricks_cluster, or databricks_instance_pool.
          * 
          * @return builder
          * 

@@ -94,14 +94,14 @@ public final class GetAwsCrossAccountPolicyArgs extends com.pulumi.resources.Inv
     }
 
     /**
-     * — ID of your AWS security group. When you add a security group restriction, you cannot reuse the cross-account IAM role or reference a credentials ID (`credentials_id`) for any other workspaces. For those other workspaces, you must create separate roles, policies, and credentials objects.
+     * — ID of your AWS security group. When you add a security group restriction, you cannot reuse the cross-account IAM role or reference a credentials ID (`credentialsId`) for any other workspaces. For those other workspaces, you must create separate roles, policies, and credentials objects.
      * 
      */
     @Import(name="securityGroupId")
     private @Nullable Output<String> securityGroupId;
 
     /**
-     * @return — ID of your AWS security group. When you add a security group restriction, you cannot reuse the cross-account IAM role or reference a credentials ID (`credentials_id`) for any other workspaces. For those other workspaces, you must create separate roles, policies, and credentials objects.
+     * @return — ID of your AWS security group. When you add a security group restriction, you cannot reuse the cross-account IAM role or reference a credentials ID (`credentialsId`) for any other workspaces. For those other workspaces, you must create separate roles, policies, and credentials objects.
      * 
      */
     public Optional<Output<String>> securityGroupId() {
@@ -272,7 +272,7 @@ public final class GetAwsCrossAccountPolicyArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param securityGroupId — ID of your AWS security group. When you add a security group restriction, you cannot reuse the cross-account IAM role or reference a credentials ID (`credentials_id`) for any other workspaces. For those other workspaces, you must create separate roles, policies, and credentials objects.
+         * @param securityGroupId — ID of your AWS security group. When you add a security group restriction, you cannot reuse the cross-account IAM role or reference a credentials ID (`credentialsId`) for any other workspaces. For those other workspaces, you must create separate roles, policies, and credentials objects.
          * 
          * @return builder
          * 
@@ -283,7 +283,7 @@ public final class GetAwsCrossAccountPolicyArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param securityGroupId — ID of your AWS security group. When you add a security group restriction, you cannot reuse the cross-account IAM role or reference a credentials ID (`credentials_id`) for any other workspaces. For those other workspaces, you must create separate roles, policies, and credentials objects.
+         * @param securityGroupId — ID of your AWS security group. When you add a security group restriction, you cannot reuse the cross-account IAM role or reference a credentials ID (`credentialsId`) for any other workspaces. For those other workspaces, you must create separate roles, policies, and credentials objects.
          * 
          * @return builder
          * 

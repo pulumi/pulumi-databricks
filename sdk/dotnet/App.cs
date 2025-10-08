@@ -14,6 +14,64 @@ namespace Pulumi.Databricks
     /// 
     /// &gt; This resource can only be used with a workspace-level provider!
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @this = new Databricks.App("this", new()
+    ///     {
+    ///         Name = "my-custom-app",
+    ///         Description = "My app",
+    ///         Resources = new[]
+    ///         {
+    ///             new Databricks.Inputs.AppResourceArgs
+    ///             {
+    ///                 Name = "sql-warehouse",
+    ///                 Sql_warehouse = 
+    ///                 {
+    ///                     { "id", "e9ca293f79a74b5c" },
+    ///                     { "permission", "CAN_MANAGE" },
+    ///                 },
+    ///             },
+    ///             new Databricks.Inputs.AppResourceArgs
+    ///             {
+    ///                 Name = "serving-endpoint",
+    ///                 Serving_endpoint = 
+    ///                 {
+    ///                     { "name", "databricks-meta-llama-3-1-70b-instruct" },
+    ///                     { "permission", "CAN_MANAGE" },
+    ///                 },
+    ///             },
+    ///             new Databricks.Inputs.AppResourceArgs
+    ///             {
+    ///                 Name = "job",
+    ///                 Job = new Databricks.Inputs.AppResourceJobArgs
+    ///                 {
+    ///                     Id = "1234",
+    ///                     Permission = "CAN_MANAGE",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Related Resources
+    /// 
+    /// The following resources are used in the same context:
+    /// 
+    /// * databricks.SqlEndpoint to manage Databricks SQL [Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html).
+    /// * databricks.ModelServing to serve this model on a Databricks serving endpoint.
+    /// * databricks.Secret to manage [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
+    /// * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code.
+    /// 
     /// ## Import
     /// 
     /// This resource can be imported by name:

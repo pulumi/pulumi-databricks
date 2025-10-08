@@ -22,6 +22,57 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * # Example: Clean Room Resource
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.CleanRoomsCleanRoom;
+ * import com.pulumi.databricks.CleanRoomsCleanRoomArgs;
+ * import com.pulumi.databricks.inputs.CleanRoomsCleanRoomRemoteDetailedInfoArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var this_ = new CleanRoomsCleanRoom("this", CleanRoomsCleanRoomArgs.builder()
+ *             .name("example-clean-room")
+ *             .owner("example}{@literal @}{@code databricks.com")
+ *             .remoteDetailedInfo(CleanRoomsCleanRoomRemoteDetailedInfoArgs.builder()
+ *                 .cloud_vendor("aws")
+ *                 .region("us-west-2")
+ *                 .collaborators(                
+ *                     CleanRoomsCleanRoomRemoteDetailedInfoCollaboratorArgs.builder()
+ *                         .collaboratorAlias("collaborator")
+ *                         .globalMetastoreId("aws:us-east-1:12345678-1234-1234-1234-123456789012")
+ *                         .inviteRecipientEmail("example}{@literal @}{@code databricks.com")
+ *                         .inviteRecipientWorkspaceId(123456789012345)
+ *                         .build(),
+ *                     CleanRoomsCleanRoomRemoteDetailedInfoCollaboratorArgs.builder()
+ *                         .globalMetastoreId("aws:us-east-1:12345678-1234-1234-1234-123456789012")
+ *                         .collaboratorAlias("creator")
+ *                         .build())
+ *                 .egress_network_policy(Map.of("internetAccess", Map.of("restrictionMode", "RESTRICTED_ACCESS")))
+ *                 .build())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * As of Pulumi v1.5, resources can be imported through configuration.

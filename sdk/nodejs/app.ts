@@ -11,6 +11,50 @@ import * as utilities from "./utilities";
  *
  * > This resource can only be used with a workspace-level provider!
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const _this = new databricks.App("this", {
+ *     name: "my-custom-app",
+ *     description: "My app",
+ *     resources: [
+ *         {
+ *             name: "sql-warehouse",
+ *             sql_warehouse: {
+ *                 id: "e9ca293f79a74b5c",
+ *                 permission: "CAN_MANAGE",
+ *             },
+ *         },
+ *         {
+ *             name: "serving-endpoint",
+ *             serving_endpoint: {
+ *                 name: "databricks-meta-llama-3-1-70b-instruct",
+ *                 permission: "CAN_MANAGE",
+ *             },
+ *         },
+ *         {
+ *             name: "job",
+ *             job: {
+ *                 id: "1234",
+ *                 permission: "CAN_MANAGE",
+ *             },
+ *         },
+ *     ],
+ * });
+ * ```
+ *
+ * ## Related Resources
+ *
+ * The following resources are used in the same context:
+ *
+ * * databricks.SqlEndpoint to manage Databricks SQL [Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html).
+ * * databricks.ModelServing to serve this model on a Databricks serving endpoint.
+ * * databricks.Secret to manage [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
+ * * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code.
+ *
  * ## Import
  *
  * This resource can be imported by name:

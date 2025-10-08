@@ -65,14 +65,14 @@ public final class JobTaskForEachTaskTaskSqlTaskDashboardArgs extends com.pulumi
     }
 
     /**
-     * a list of subscription blocks consisting out of one of the required fields: `user_name` for user emails or `destination_id` - for Alert destination&#39;s identifier.
+     * a list of subscription blocks consisting out of one of the required fields: `userName` for user emails or `destinationId` - for Alert destination&#39;s identifier.
      * 
      */
     @Import(name="subscriptions")
     private @Nullable Output<List<JobTaskForEachTaskTaskSqlTaskDashboardSubscriptionArgs>> subscriptions;
 
     /**
-     * @return a list of subscription blocks consisting out of one of the required fields: `user_name` for user emails or `destination_id` - for Alert destination&#39;s identifier.
+     * @return a list of subscription blocks consisting out of one of the required fields: `userName` for user emails or `destinationId` - for Alert destination&#39;s identifier.
      * 
      */
     public Optional<Output<List<JobTaskForEachTaskTaskSqlTaskDashboardSubscriptionArgs>>> subscriptions() {
@@ -170,7 +170,7 @@ public final class JobTaskForEachTaskTaskSqlTaskDashboardArgs extends com.pulumi
         }
 
         /**
-         * @param subscriptions a list of subscription blocks consisting out of one of the required fields: `user_name` for user emails or `destination_id` - for Alert destination&#39;s identifier.
+         * @param subscriptions a list of subscription blocks consisting out of one of the required fields: `userName` for user emails or `destinationId` - for Alert destination&#39;s identifier.
          * 
          * @return builder
          * 
@@ -181,7 +181,7 @@ public final class JobTaskForEachTaskTaskSqlTaskDashboardArgs extends com.pulumi
         }
 
         /**
-         * @param subscriptions a list of subscription blocks consisting out of one of the required fields: `user_name` for user emails or `destination_id` - for Alert destination&#39;s identifier.
+         * @param subscriptions a list of subscription blocks consisting out of one of the required fields: `userName` for user emails or `destinationId` - for Alert destination&#39;s identifier.
          * 
          * @return builder
          * 
@@ -191,7 +191,7 @@ public final class JobTaskForEachTaskTaskSqlTaskDashboardArgs extends com.pulumi
         }
 
         /**
-         * @param subscriptions a list of subscription blocks consisting out of one of the required fields: `user_name` for user emails or `destination_id` - for Alert destination&#39;s identifier.
+         * @param subscriptions a list of subscription blocks consisting out of one of the required fields: `userName` for user emails or `destinationId` - for Alert destination&#39;s identifier.
          * 
          * @return builder
          * 

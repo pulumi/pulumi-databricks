@@ -14,6 +14,52 @@ namespace Pulumi.Databricks
     /// 
     /// ## Example Usage
     /// 
+    /// # Example: Clean Room Resource
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @this = new Databricks.CleanRoomsCleanRoom("this", new()
+    ///     {
+    ///         Name = "example-clean-room",
+    ///         Owner = "example@databricks.com",
+    ///         RemoteDetailedInfo = new Databricks.Inputs.CleanRoomsCleanRoomRemoteDetailedInfoArgs
+    ///         {
+    ///             Cloud_vendor = "aws",
+    ///             Region = "us-west-2",
+    ///             Collaborators = new[]
+    ///             {
+    ///                 new Databricks.Inputs.CleanRoomsCleanRoomRemoteDetailedInfoCollaboratorArgs
+    ///                 {
+    ///                     CollaboratorAlias = "collaborator",
+    ///                     GlobalMetastoreId = "aws:us-east-1:12345678-1234-1234-1234-123456789012",
+    ///                     InviteRecipientEmail = "example@databricks.com",
+    ///                     InviteRecipientWorkspaceId = 123456789012345,
+    ///                 },
+    ///                 new Databricks.Inputs.CleanRoomsCleanRoomRemoteDetailedInfoCollaboratorArgs
+    ///                 {
+    ///                     GlobalMetastoreId = "aws:us-east-1:12345678-1234-1234-1234-123456789012",
+    ///                     CollaboratorAlias = "creator",
+    ///                 },
+    ///             },
+    ///             Egress_network_policy = 
+    ///             {
+    ///                 { "internetAccess", 
+    ///                 {
+    ///                     { "restrictionMode", "RESTRICTED_ACCESS" },
+    ///                 } },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// As of Pulumi v1.5, resources can be imported through configuration.

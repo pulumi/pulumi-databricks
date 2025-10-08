@@ -19,11 +19,11 @@ namespace Pulumi.Databricks.Outputs
         public readonly ImmutableArray<Outputs.BudgetAlertConfigurationActionConfiguration> ActionConfigurations;
         public readonly string? AlertConfigurationId;
         /// <summary>
-        /// The threshold for the budget alert to determine if it is in a triggered state. The number is evaluated based on `quantity_type`.
+        /// The threshold for the budget alert to determine if it is in a triggered state. The number is evaluated based on `QuantityType`.
         /// </summary>
         public readonly string? QuantityThreshold;
         /// <summary>
-        /// The way to calculate cost for this budget alert. This is what quantity_threshold is measured in. (Enum: `LIST_PRICE_DOLLARS_USD`)
+        /// The way to calculate cost for this budget alert. This is what QuantityThreshold is measured in. (Enum: `LIST_PRICE_DOLLARS_USD`)
         /// </summary>
         public readonly string? QuantityType;
         /// <summary>

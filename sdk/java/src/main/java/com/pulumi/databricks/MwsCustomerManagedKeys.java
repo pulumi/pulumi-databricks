@@ -21,7 +21,7 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * 
- * &gt; If you&#39;ve used the resource before, please add `use_cases = [&#34;MANAGED_SERVICES&#34;]` to keep the previous behaviour.
+ * &gt; If you&#39;ve used the resource before, please add `useCases = [&#34;MANAGED_SERVICES&#34;]` to keep the previous behaviour.
  * 
  * ### Customer-managed key for managed services
  * 
@@ -383,14 +383,14 @@ public class MwsCustomerManagedKeys extends com.pulumi.resources.CustomResource 
         return this.accountId;
     }
     /**
-     * This field is a block and is documented below. This conflicts with `gcp_key_info`
+     * This field is a block and is documented below. This conflicts with `gcpKeyInfo`
      * 
      */
     @Export(name="awsKeyInfo", refs={MwsCustomerManagedKeysAwsKeyInfo.class}, tree="[0]")
     private Output</* @Nullable */ MwsCustomerManagedKeysAwsKeyInfo> awsKeyInfo;
 
     /**
-     * @return This field is a block and is documented below. This conflicts with `gcp_key_info`
+     * @return This field is a block and is documented below. This conflicts with `gcpKeyInfo`
      * 
      */
     public Output<Optional<MwsCustomerManagedKeysAwsKeyInfo>> awsKeyInfo() {
@@ -425,21 +425,21 @@ public class MwsCustomerManagedKeys extends com.pulumi.resources.CustomResource 
         return this.customerManagedKeyId;
     }
     /**
-     * This field is a block and is documented below. This conflicts with `aws_key_info`
+     * This field is a block and is documented below. This conflicts with `awsKeyInfo`
      * 
      */
     @Export(name="gcpKeyInfo", refs={MwsCustomerManagedKeysGcpKeyInfo.class}, tree="[0]")
     private Output</* @Nullable */ MwsCustomerManagedKeysGcpKeyInfo> gcpKeyInfo;
 
     /**
-     * @return This field is a block and is documented below. This conflicts with `aws_key_info`
+     * @return This field is a block and is documented below. This conflicts with `awsKeyInfo`
      * 
      */
     public Output<Optional<MwsCustomerManagedKeysGcpKeyInfo>> gcpKeyInfo() {
         return Codegen.optional(this.gcpKeyInfo);
     }
     /**
-     * *(since v0.3.4)* List of use cases for which this key will be used. *If you&#39;ve used the resource before, please add `use_cases = [&#34;MANAGED_SERVICES&#34;]` to keep the previous behaviour.* Possible values are:
+     * *(since v0.3.4)* List of use cases for which this key will be used. *If you&#39;ve used the resource before, please add `useCases = [&#34;MANAGED_SERVICES&#34;]` to keep the previous behaviour.* Possible values are:
      * * `MANAGED_SERVICES` - for encryption of the workspace objects (notebooks, secrets) that are stored in the control plane
      * * `STORAGE` - for encryption of the DBFS Storage &amp; Cluster EBS Volumes
      * 
@@ -448,7 +448,7 @@ public class MwsCustomerManagedKeys extends com.pulumi.resources.CustomResource 
     private Output<List<String>> useCases;
 
     /**
-     * @return *(since v0.3.4)* List of use cases for which this key will be used. *If you&#39;ve used the resource before, please add `use_cases = [&#34;MANAGED_SERVICES&#34;]` to keep the previous behaviour.* Possible values are:
+     * @return *(since v0.3.4)* List of use cases for which this key will be used. *If you&#39;ve used the resource before, please add `useCases = [&#34;MANAGED_SERVICES&#34;]` to keep the previous behaviour.* Possible values are:
      * * `MANAGED_SERVICES` - for encryption of the workspace objects (notebooks, secrets) that are stored in the control plane
      * * `STORAGE` - for encryption of the DBFS Storage &amp; Cluster EBS Volumes
      * 

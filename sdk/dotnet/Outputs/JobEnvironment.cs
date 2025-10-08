@@ -14,7 +14,7 @@ namespace Pulumi.Databricks.Outputs
     public sealed class JobEnvironment
     {
         /// <summary>
-        /// an unique identifier of the Environment.  It will be referenced from `environment_key` attribute of corresponding task.
+        /// an unique identifier of the Environment.  It will be referenced from `EnvironmentKey` attribute of corresponding task.
         /// </summary>
         public readonly string EnvironmentKey;
         /// <summary>

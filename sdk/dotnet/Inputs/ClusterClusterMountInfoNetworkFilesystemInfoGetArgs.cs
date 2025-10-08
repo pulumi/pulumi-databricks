@@ -13,7 +13,7 @@ namespace Pulumi.Databricks.Inputs
     public sealed class ClusterClusterMountInfoNetworkFilesystemInfoGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// string that will be passed as options passed to the `mount` command.
+        /// string that will be passed as options passed to the `Mount` command.
         /// </summary>
         [Input("mountOptions")]
         public Input<string>? MountOptions { get; set; }

@@ -14,11 +14,11 @@ namespace Pulumi.Databricks.Outputs
     public sealed class JobGitSource
     {
         /// <summary>
-        /// name of the Git branch to use. Conflicts with `tag` and `commit`.
+        /// name of the Git branch to use. Conflicts with `Tag` and `Commit`.
         /// </summary>
         public readonly string? Branch;
         /// <summary>
-        /// hash of Git commit to use. Conflicts with `branch` and `tag`.
+        /// hash of Git commit to use. Conflicts with `Branch` and `Tag`.
         /// </summary>
         public readonly string? Commit;
         public readonly Outputs.JobGitSourceGitSnapshot? GitSnapshot;
@@ -28,7 +28,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string? Provider;
         /// <summary>
-        /// name of the Git branch to use. Conflicts with `branch` and `commit`.
+        /// name of the Git branch to use. Conflicts with `Branch` and `Commit`.
         /// </summary>
         public readonly string? Tag;
         /// <summary>

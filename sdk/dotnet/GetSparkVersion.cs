@@ -12,7 +12,7 @@ namespace Pulumi.Databricks
     public static class GetSparkVersion
     {
         /// <summary>
-        /// Gets [Databricks Runtime (DBR)](https://docs.databricks.com/runtime/dbr.html) version that could be used for `spark_version` parameter in databricks.Cluster and other resources that fits search criteria, like specific Spark or Scala version, ML or Genomics runtime, etc., similar to executing `databricks clusters spark-versions`, and filters it to return the latest version that matches criteria. Often used along databricks.getNodeType data source.
+        /// Gets [Databricks Runtime (DBR)](https://docs.databricks.com/runtime/dbr.html) version that could be used for `SparkVersion` parameter in databricks.Cluster and other resources that fits search criteria, like specific Spark or Scala version, ML or Genomics runtime, etc., similar to executing `databricks clusters spark-versions`, and filters it to return the latest version that matches criteria. Often used along databricks.getNodeType data source.
         /// 
         /// &gt; This data source can only be used with a workspace-level provider!
         /// 
@@ -72,7 +72,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSparkVersionResult>("databricks:index/getSparkVersion:getSparkVersion", args ?? new GetSparkVersionArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Gets [Databricks Runtime (DBR)](https://docs.databricks.com/runtime/dbr.html) version that could be used for `spark_version` parameter in databricks.Cluster and other resources that fits search criteria, like specific Spark or Scala version, ML or Genomics runtime, etc., similar to executing `databricks clusters spark-versions`, and filters it to return the latest version that matches criteria. Often used along databricks.getNodeType data source.
+        /// Gets [Databricks Runtime (DBR)](https://docs.databricks.com/runtime/dbr.html) version that could be used for `SparkVersion` parameter in databricks.Cluster and other resources that fits search criteria, like specific Spark or Scala version, ML or Genomics runtime, etc., similar to executing `databricks clusters spark-versions`, and filters it to return the latest version that matches criteria. Often used along databricks.getNodeType data source.
         /// 
         /// &gt; This data source can only be used with a workspace-level provider!
         /// 
@@ -132,7 +132,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.Invoke<GetSparkVersionResult>("databricks:index/getSparkVersion:getSparkVersion", args ?? new GetSparkVersionInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Gets [Databricks Runtime (DBR)](https://docs.databricks.com/runtime/dbr.html) version that could be used for `spark_version` parameter in databricks.Cluster and other resources that fits search criteria, like specific Spark or Scala version, ML or Genomics runtime, etc., similar to executing `databricks clusters spark-versions`, and filters it to return the latest version that matches criteria. Often used along databricks.getNodeType data source.
+        /// Gets [Databricks Runtime (DBR)](https://docs.databricks.com/runtime/dbr.html) version that could be used for `SparkVersion` parameter in databricks.Cluster and other resources that fits search criteria, like specific Spark or Scala version, ML or Genomics runtime, etc., similar to executing `databricks clusters spark-versions`, and filters it to return the latest version that matches criteria. Often used along databricks.getNodeType data source.
         /// 
         /// &gt; This data source can only be used with a workspace-level provider!
         /// 
@@ -196,55 +196,55 @@ namespace Pulumi.Databricks
     public sealed class GetSparkVersionArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// if we should limit the search only to runtimes that are in Beta stage. Default to `false`.
+        /// if we should limit the search only to runtimes that are in Beta stage. Default to `False`.
         /// </summary>
         [Input("beta")]
         public bool? Beta { get; set; }
 
         /// <summary>
-        /// if we should limit the search only to Genomics (HLS) runtimes. Default to `false`.
+        /// if we should limit the search only to Genomics (HLS) runtimes. Default to `False`.
         /// </summary>
         [Input("genomics")]
         public bool? Genomics { get; set; }
 
         /// <summary>
-        /// if we should limit the search only to runtimes that support GPUs. Default to `false`.
+        /// if we should limit the search only to runtimes that support GPUs. Default to `False`.
         /// </summary>
         [Input("gpu")]
         public bool? Gpu { get; set; }
 
         /// <summary>
-        /// if we should limit the search only to runtimes supporting AWS Graviton CPUs. Default to `false`. _Deprecated with DBR 14.0 release. DBR version compiled for Graviton will be automatically installed when nodes with Graviton CPUs are specified in the cluster configuration._
+        /// if we should limit the search only to runtimes supporting AWS Graviton CPUs. Default to `False`. _Deprecated with DBR 14.0 release. DBR version compiled for Graviton will be automatically installed when nodes with Graviton CPUs are specified in the cluster configuration._
         /// </summary>
         [Input("graviton")]
         public bool? Graviton { get; set; }
 
         /// <summary>
-        /// Databricks Runtime version, that can be used as `spark_version` field in databricks_job, databricks_cluster, or databricks_instance_pool.
+        /// Databricks Runtime version, that can be used as `SparkVersion` field in databricks_job, databricks_cluster, or databricks_instance_pool.
         /// </summary>
         [Input("id")]
         public string? Id { get; set; }
 
         /// <summary>
-        /// if we should return only the latest version if there is more than one result.  Default to `true`. If set to `false` and multiple versions are matching, throws an error.
+        /// if we should return only the latest version if there is more than one result.  Default to `True`. If set to `False` and multiple versions are matching, throws an error.
         /// </summary>
         [Input("latest")]
         public bool? Latest { get; set; }
 
         /// <summary>
-        /// if we should limit the search only to LTS (long term support) &amp; ESR (extended support) versions. Default to `false`.
+        /// if we should limit the search only to LTS (long term support) &amp; ESR (extended support) versions. Default to `False`.
         /// </summary>
         [Input("longTermSupport")]
         public bool? LongTermSupport { get; set; }
 
         /// <summary>
-        /// if we should limit the search only to ML runtimes. Default to `false`.
+        /// if we should limit the search only to ML runtimes. Default to `False`.
         /// </summary>
         [Input("ml")]
         public bool? Ml { get; set; }
 
         /// <summary>
-        /// if we should limit the search only to Photon runtimes. Default to `false`. *Deprecated with DBR 14.0 release. Specify `runtime_engine=\"PHOTON\"` in the cluster configuration instead!*
+        /// if we should limit the search only to Photon runtimes. Default to `False`. *Deprecated with DBR 14.0 release. Specify `runtime_engine=\"PHOTON\"` in the cluster configuration instead!*
         /// </summary>
         [Input("photon")]
         public bool? Photon { get; set; }
@@ -270,55 +270,55 @@ namespace Pulumi.Databricks
     public sealed class GetSparkVersionInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// if we should limit the search only to runtimes that are in Beta stage. Default to `false`.
+        /// if we should limit the search only to runtimes that are in Beta stage. Default to `False`.
         /// </summary>
         [Input("beta")]
         public Input<bool>? Beta { get; set; }
 
         /// <summary>
-        /// if we should limit the search only to Genomics (HLS) runtimes. Default to `false`.
+        /// if we should limit the search only to Genomics (HLS) runtimes. Default to `False`.
         /// </summary>
         [Input("genomics")]
         public Input<bool>? Genomics { get; set; }
 
         /// <summary>
-        /// if we should limit the search only to runtimes that support GPUs. Default to `false`.
+        /// if we should limit the search only to runtimes that support GPUs. Default to `False`.
         /// </summary>
         [Input("gpu")]
         public Input<bool>? Gpu { get; set; }
 
         /// <summary>
-        /// if we should limit the search only to runtimes supporting AWS Graviton CPUs. Default to `false`. _Deprecated with DBR 14.0 release. DBR version compiled for Graviton will be automatically installed when nodes with Graviton CPUs are specified in the cluster configuration._
+        /// if we should limit the search only to runtimes supporting AWS Graviton CPUs. Default to `False`. _Deprecated with DBR 14.0 release. DBR version compiled for Graviton will be automatically installed when nodes with Graviton CPUs are specified in the cluster configuration._
         /// </summary>
         [Input("graviton")]
         public Input<bool>? Graviton { get; set; }
 
         /// <summary>
-        /// Databricks Runtime version, that can be used as `spark_version` field in databricks_job, databricks_cluster, or databricks_instance_pool.
+        /// Databricks Runtime version, that can be used as `SparkVersion` field in databricks_job, databricks_cluster, or databricks_instance_pool.
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 
         /// <summary>
-        /// if we should return only the latest version if there is more than one result.  Default to `true`. If set to `false` and multiple versions are matching, throws an error.
+        /// if we should return only the latest version if there is more than one result.  Default to `True`. If set to `False` and multiple versions are matching, throws an error.
         /// </summary>
         [Input("latest")]
         public Input<bool>? Latest { get; set; }
 
         /// <summary>
-        /// if we should limit the search only to LTS (long term support) &amp; ESR (extended support) versions. Default to `false`.
+        /// if we should limit the search only to LTS (long term support) &amp; ESR (extended support) versions. Default to `False`.
         /// </summary>
         [Input("longTermSupport")]
         public Input<bool>? LongTermSupport { get; set; }
 
         /// <summary>
-        /// if we should limit the search only to ML runtimes. Default to `false`.
+        /// if we should limit the search only to ML runtimes. Default to `False`.
         /// </summary>
         [Input("ml")]
         public Input<bool>? Ml { get; set; }
 
         /// <summary>
-        /// if we should limit the search only to Photon runtimes. Default to `false`. *Deprecated with DBR 14.0 release. Specify `runtime_engine=\"PHOTON\"` in the cluster configuration instead!*
+        /// if we should limit the search only to Photon runtimes. Default to `False`. *Deprecated with DBR 14.0 release. Specify `runtime_engine=\"PHOTON\"` in the cluster configuration instead!*
         /// </summary>
         [Input("photon")]
         public Input<bool>? Photon { get; set; }
@@ -350,7 +350,7 @@ namespace Pulumi.Databricks
         public readonly bool? Gpu;
         public readonly bool? Graviton;
         /// <summary>
-        /// Databricks Runtime version, that can be used as `spark_version` field in databricks_job, databricks_cluster, or databricks_instance_pool.
+        /// Databricks Runtime version, that can be used as `SparkVersion` field in databricks_job, databricks_cluster, or databricks_instance_pool.
         /// </summary>
         public readonly string Id;
         public readonly bool? Latest;

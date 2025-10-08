@@ -92,7 +92,7 @@ namespace Pulumi.Databricks
     public partial class IpAccessList : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Boolean `true` or `false` indicating whether this list should be active.  Defaults to `true`
+        /// Boolean `True` or `False` indicating whether this list should be active.  Defaults to `True`
         /// </summary>
         [Output("enabled")]
         public Output<bool?> Enabled { get; private set; } = null!;
@@ -162,7 +162,7 @@ namespace Pulumi.Databricks
     public sealed class IpAccessListArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Boolean `true` or `false` indicating whether this list should be active.  Defaults to `true`
+        /// Boolean `True` or `False` indicating whether this list should be active.  Defaults to `True`
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -200,7 +200,7 @@ namespace Pulumi.Databricks
     public sealed class IpAccessListState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Boolean `true` or `false` indicating whether this list should be active.  Defaults to `true`
+        /// Boolean `True` or `False` indicating whether this list should be active.  Defaults to `True`
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }

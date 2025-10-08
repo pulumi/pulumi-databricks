@@ -15,6 +15,10 @@ namespace Pulumi.Databricks
         /// This data source can be used to get a single network policy.
         /// 
         /// &gt; **Note** This data source can only be used with an account-level provider!
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Referring to a network policy by id:
         /// </summary>
         public static Task<GetAccountNetworkPolicyResult> InvokeAsync(GetAccountNetworkPolicyArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccountNetworkPolicyResult>("databricks:index/getAccountNetworkPolicy:getAccountNetworkPolicy", args ?? new GetAccountNetworkPolicyArgs(), options.WithDefaults());
@@ -23,6 +27,10 @@ namespace Pulumi.Databricks
         /// This data source can be used to get a single network policy.
         /// 
         /// &gt; **Note** This data source can only be used with an account-level provider!
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Referring to a network policy by id:
         /// </summary>
         public static Output<GetAccountNetworkPolicyResult> Invoke(GetAccountNetworkPolicyInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccountNetworkPolicyResult>("databricks:index/getAccountNetworkPolicy:getAccountNetworkPolicy", args ?? new GetAccountNetworkPolicyInvokeArgs(), options.WithDefaults());
@@ -31,6 +39,10 @@ namespace Pulumi.Databricks
         /// This data source can be used to get a single network policy.
         /// 
         /// &gt; **Note** This data source can only be used with an account-level provider!
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Referring to a network policy by id:
         /// </summary>
         public static Output<GetAccountNetworkPolicyResult> Invoke(GetAccountNetworkPolicyInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccountNetworkPolicyResult>("databricks:index/getAccountNetworkPolicy:getAccountNetworkPolicy", args ?? new GetAccountNetworkPolicyInvokeArgs(), options.WithDefaults());

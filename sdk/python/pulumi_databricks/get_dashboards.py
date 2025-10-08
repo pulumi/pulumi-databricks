@@ -78,6 +78,24 @@ def get_dashboards(dashboard_name_contains: Optional[_builtins.str] = None,
 
     > This data source can only be used with a workspace-level provider!
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    all = databricks.get_dashboards()
+    dashboards_permissions = []
+    for range in [{"key": k, "value": v} for [k, v] in enumerate([__item.dashboard_id for __item in all.dashboards])]:
+        dashboards_permissions.append(databricks.Permissions(f"dashboards_permissions-{range['key']}",
+            depends=[all],
+            dashboard_id=range["value"],
+            access_controls=[{
+                "group_name": "Example Group",
+                "permission_level": "CAN_MANAGE",
+            }]))
+    ```
+
 
     :param _builtins.str dashboard_name_contains: A **case-insensitive** substring to filter Dashboards by their name.
     """
@@ -96,6 +114,24 @@ def get_dashboards_output(dashboard_name_contains: Optional[pulumi.Input[Optiona
     This data source allows you to retrieve information about Databricks [Dashboards](https://docs.databricks.com/en/dashboards/index.html).
 
     > This data source can only be used with a workspace-level provider!
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    all = databricks.get_dashboards()
+    dashboards_permissions = []
+    for range in [{"key": k, "value": v} for [k, v] in enumerate([__item.dashboard_id for __item in all.dashboards])]:
+        dashboards_permissions.append(databricks.Permissions(f"dashboards_permissions-{range['key']}",
+            depends=[all],
+            dashboard_id=range["value"],
+            access_controls=[{
+                "group_name": "Example Group",
+                "permission_level": "CAN_MANAGE",
+            }]))
+    ```
 
 
     :param _builtins.str dashboard_name_contains: A **case-insensitive** substring to filter Dashboards by their name.

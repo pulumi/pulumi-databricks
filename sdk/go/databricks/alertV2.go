@@ -17,6 +17,63 @@ import (
 //
 // ## Example Usage
 //
+// ### Basic Alert Example
+// This example creates a basic alert that monitors a query and sends notifications to a user when the value exceeds a threshold:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewAlertV2(ctx, "basic_alert", &databricks.AlertV2Args{
+//				DisplayName: pulumi.String("High Error Rate Alert"),
+//				QueryText:   pulumi.String("SELECT count(*) as error_count FROM logs WHERE level = 'ERROR' AND timestamp > now() - interval 1 hour"),
+//				WarehouseId: pulumi.String("a7066a8ef796be84"),
+//				ParentPath:  pulumi.String("/Users/user@example.com"),
+//				Evaluation: &databricks.AlertV2EvaluationArgs{
+//					Source: &databricks.AlertV2EvaluationSourceArgs{
+//						Name:        pulumi.String("error_count"),
+//						Display:     pulumi.String("Error Count"),
+//						Aggregation: pulumi.String("COUNT"),
+//					},
+//					Comparison_operator: "GREATER_THAN",
+//					Threshold: &databricks.AlertV2EvaluationThresholdArgs{
+//						Value: &databricks.AlertV2EvaluationThresholdValueArgs{
+//							DoubleValue: pulumi.Float64(100),
+//						},
+//					},
+//					Empty_result_state: "OK",
+//					Notification: &databricks.AlertV2EvaluationNotificationArgs{
+//						Subscriptions: databricks.AlertV2EvaluationNotificationSubscriptionArray{
+//							&databricks.AlertV2EvaluationNotificationSubscriptionArgs{
+//								UserEmail: pulumi.String("user@example.com"),
+//							},
+//						},
+//						NotifyOnOk: pulumi.Bool(true),
+//					},
+//				},
+//				Schedule: &databricks.AlertV2ScheduleArgs{
+//					Quartz_cron_schedule: "0 0/15 * * * ?",
+//					Timezone_id:          "America/Los_Angeles",
+//					Pause_status:         "UNPAUSED",
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // As of Pulumi v1.5, resources can be imported through configuration.

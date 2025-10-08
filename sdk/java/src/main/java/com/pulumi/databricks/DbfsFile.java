@@ -48,14 +48,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="databricks:index/dbfsFile:DbfsFile")
 public class DbfsFile extends com.pulumi.resources.CustomResource {
     /**
-     * Encoded file contents. Conflicts with `source`. Use of `content_base64` is discouraged, as it&#39;s increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a data pipeline configuration file.
+     * Encoded file contents. Conflicts with `source`. Use of `contentBase64` is discouraged, as it&#39;s increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a data pipeline configuration file.
      * 
      */
     @Export(name="contentBase64", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> contentBase64;
 
     /**
-     * @return Encoded file contents. Conflicts with `source`. Use of `content_base64` is discouraged, as it&#39;s increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a data pipeline configuration file.
+     * @return Encoded file contents. Conflicts with `source`. Use of `contentBase64` is discouraged, as it&#39;s increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a data pipeline configuration file.
      * 
      */
     public Output<Optional<String>> contentBase64() {
@@ -110,14 +110,14 @@ public class DbfsFile extends com.pulumi.resources.CustomResource {
         return this.path;
     }
     /**
-     * The full absolute path to the file. Conflicts with `content_base64`.
+     * The full absolute path to the file. Conflicts with `contentBase64`.
      * 
      */
     @Export(name="source", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> source;
 
     /**
-     * @return The full absolute path to the file. Conflicts with `content_base64`.
+     * @return The full absolute path to the file. Conflicts with `contentBase64`.
      * 
      */
     public Output<Optional<String>> source() {

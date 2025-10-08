@@ -15,6 +15,21 @@ import * as utilities from "./utilities";
  * * which IdP, or issuer, your Databricks account should accept tokens from
  * * how to determine which Databricks user, or subject, a token is issued for
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const _this = new databricks.AccountFederationPolicy("this", {
+ *     policyId: "my-policy",
+ *     oidcPolicy: {
+ *         issuer: "https://myidp.example.com",
+ *         subject_claim: "sub",
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * As of Pulumi v1.5, resources can be imported through configuration.

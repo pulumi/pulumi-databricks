@@ -16,14 +16,14 @@ public final class SqlPermissionsPrivilegeAssignmentArgs extends com.pulumi.reso
     public static final SqlPermissionsPrivilegeAssignmentArgs Empty = new SqlPermissionsPrivilegeAssignmentArgs();
 
     /**
-     * `display_name` for a databricks.Group or databricks_user, `application_id` for a databricks_service_principal.
+     * `displayName` for a databricks.Group or databricks_user, `applicationId` for a databricks_service_principal.
      * 
      */
     @Import(name="principal", required=true)
     private Output<String> principal;
 
     /**
-     * @return `display_name` for a databricks.Group or databricks_user, `application_id` for a databricks_service_principal.
+     * @return `displayName` for a databricks.Group or databricks_user, `applicationId` for a databricks_service_principal.
      * 
      */
     public Output<String> principal() {
@@ -113,7 +113,7 @@ public final class SqlPermissionsPrivilegeAssignmentArgs extends com.pulumi.reso
         }
 
         /**
-         * @param principal `display_name` for a databricks.Group or databricks_user, `application_id` for a databricks_service_principal.
+         * @param principal `displayName` for a databricks.Group or databricks_user, `applicationId` for a databricks_service_principal.
          * 
          * @return builder
          * 
@@ -124,7 +124,7 @@ public final class SqlPermissionsPrivilegeAssignmentArgs extends com.pulumi.reso
         }
 
         /**
-         * @param principal `display_name` for a databricks.Group or databricks_user, `application_id` for a databricks_service_principal.
+         * @param principal `displayName` for a databricks.Group or databricks_user, `applicationId` for a databricks_service_principal.
          * 
          * @return builder
          * 

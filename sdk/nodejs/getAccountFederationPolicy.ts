@@ -10,6 +10,10 @@ import * as utilities from "./utilities";
  * This data source can be used to get a single account federation policy.
  *
  * > **Note** This data source can only be used with an account-level provider!
+ *
+ * ## Example Usage
+ *
+ * Referring to an account federation policy by id:
  */
 export function getAccountFederationPolicy(args?: GetAccountFederationPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountFederationPolicyResult> {
     args = args || {};
@@ -94,6 +98,10 @@ export interface GetAccountFederationPolicyResult {
  * This data source can be used to get a single account federation policy.
  *
  * > **Note** This data source can only be used with an account-level provider!
+ *
+ * ## Example Usage
+ *
+ * Referring to an account federation policy by id:
  */
 export function getAccountFederationPolicyOutput(args?: GetAccountFederationPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountFederationPolicyResult> {
     args = args || {};

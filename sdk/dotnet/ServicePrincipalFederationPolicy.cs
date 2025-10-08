@@ -16,6 +16,31 @@ namespace Pulumi.Databricks
     /// * The identity provider (or issuer) from which the service principal can authenticate.
     /// * The workload identity (or subject) that is permitted to authenticate as the Databricks service principal.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @this = new Databricks.ServicePrincipalFederationPolicy("this", new()
+    ///     {
+    ///         ServicePrincipalId = 1234,
+    ///         PolicyId = "my-policy",
+    ///         OidcPolicy = new Databricks.Inputs.ServicePrincipalFederationPolicyOidcPolicyArgs
+    ///         {
+    ///             Issuer = "https://myidp.example.com",
+    ///             Subject_claim = "sub",
+    ///             Subject = "subject-in-token-from-myidp",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// As of Pulumi v1.5, resources can be imported through configuration.

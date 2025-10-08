@@ -614,6 +614,10 @@ public final class DatabricksFunctions {
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
      * 
+     * ## Example Usage
+     * 
+     * Referring to an account federation policy by id:
+     * 
      */
     public static Output<GetAccountFederationPolicyResult> getAccountFederationPolicy() {
         return getAccountFederationPolicy(GetAccountFederationPolicyArgs.Empty, InvokeOptions.Empty);
@@ -622,6 +626,10 @@ public final class DatabricksFunctions {
      * This data source can be used to get a single account federation policy.
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Referring to an account federation policy by id:
      * 
      */
     public static CompletableFuture<GetAccountFederationPolicyResult> getAccountFederationPolicyPlain() {
@@ -632,6 +640,10 @@ public final class DatabricksFunctions {
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
      * 
+     * ## Example Usage
+     * 
+     * Referring to an account federation policy by id:
+     * 
      */
     public static Output<GetAccountFederationPolicyResult> getAccountFederationPolicy(GetAccountFederationPolicyArgs args) {
         return getAccountFederationPolicy(args, InvokeOptions.Empty);
@@ -640,6 +652,10 @@ public final class DatabricksFunctions {
      * This data source can be used to get a single account federation policy.
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Referring to an account federation policy by id:
      * 
      */
     public static CompletableFuture<GetAccountFederationPolicyResult> getAccountFederationPolicyPlain(GetAccountFederationPolicyPlainArgs args) {
@@ -650,6 +666,10 @@ public final class DatabricksFunctions {
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
      * 
+     * ## Example Usage
+     * 
+     * Referring to an account federation policy by id:
+     * 
      */
     public static Output<GetAccountFederationPolicyResult> getAccountFederationPolicy(GetAccountFederationPolicyArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getAccountFederationPolicy:getAccountFederationPolicy", TypeShape.of(GetAccountFederationPolicyResult.class), args, Utilities.withVersion(options));
@@ -659,6 +679,10 @@ public final class DatabricksFunctions {
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
      * 
+     * ## Example Usage
+     * 
+     * Referring to an account federation policy by id:
+     * 
      */
     public static Output<GetAccountFederationPolicyResult> getAccountFederationPolicy(GetAccountFederationPolicyArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getAccountFederationPolicy:getAccountFederationPolicy", TypeShape.of(GetAccountFederationPolicyResult.class), args, Utilities.withVersion(options));
@@ -667,6 +691,10 @@ public final class DatabricksFunctions {
      * This data source can be used to get a single account federation policy.
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Referring to an account federation policy by id:
      * 
      */
     public static CompletableFuture<GetAccountFederationPolicyResult> getAccountFederationPolicyPlain(GetAccountFederationPolicyPlainArgs args, InvokeOptions options) {
@@ -964,6 +992,10 @@ public final class DatabricksFunctions {
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
      * 
+     * ## Example Usage
+     * 
+     * Referring to a network policy by id:
+     * 
      */
     public static Output<GetAccountNetworkPolicyResult> getAccountNetworkPolicy() {
         return getAccountNetworkPolicy(GetAccountNetworkPolicyArgs.Empty, InvokeOptions.Empty);
@@ -972,6 +1004,10 @@ public final class DatabricksFunctions {
      * This data source can be used to get a single network policy.
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Referring to a network policy by id:
      * 
      */
     public static CompletableFuture<GetAccountNetworkPolicyResult> getAccountNetworkPolicyPlain() {
@@ -982,6 +1018,10 @@ public final class DatabricksFunctions {
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
      * 
+     * ## Example Usage
+     * 
+     * Referring to a network policy by id:
+     * 
      */
     public static Output<GetAccountNetworkPolicyResult> getAccountNetworkPolicy(GetAccountNetworkPolicyArgs args) {
         return getAccountNetworkPolicy(args, InvokeOptions.Empty);
@@ -990,6 +1030,10 @@ public final class DatabricksFunctions {
      * This data source can be used to get a single network policy.
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Referring to a network policy by id:
      * 
      */
     public static CompletableFuture<GetAccountNetworkPolicyResult> getAccountNetworkPolicyPlain(GetAccountNetworkPolicyPlainArgs args) {
@@ -1000,6 +1044,10 @@ public final class DatabricksFunctions {
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
      * 
+     * ## Example Usage
+     * 
+     * Referring to a network policy by id:
+     * 
      */
     public static Output<GetAccountNetworkPolicyResult> getAccountNetworkPolicy(GetAccountNetworkPolicyArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getAccountNetworkPolicy:getAccountNetworkPolicy", TypeShape.of(GetAccountNetworkPolicyResult.class), args, Utilities.withVersion(options));
@@ -1009,6 +1057,10 @@ public final class DatabricksFunctions {
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
      * 
+     * ## Example Usage
+     * 
+     * Referring to a network policy by id:
+     * 
      */
     public static Output<GetAccountNetworkPolicyResult> getAccountNetworkPolicy(GetAccountNetworkPolicyArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getAccountNetworkPolicy:getAccountNetworkPolicy", TypeShape.of(GetAccountNetworkPolicyResult.class), args, Utilities.withVersion(options));
@@ -1017,6 +1069,10 @@ public final class DatabricksFunctions {
      * This data source can be used to get a single network policy.
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Referring to a network policy by id:
      * 
      */
     public static CompletableFuture<GetAccountNetworkPolicyResult> getAccountNetworkPolicyPlain(GetAccountNetworkPolicyPlainArgs args, InvokeOptions options) {
@@ -1054,6 +1110,9 @@ public final class DatabricksFunctions {
      * 
      * ## Example Usage
      * 
+     * ### Retrieve Alert by ID
+     * This example retrieves a specific alert by its ID:
+     * 
      */
     public static Output<GetAlertV2Result> getAlertV2() {
         return getAlertV2(GetAlertV2Args.Empty, InvokeOptions.Empty);
@@ -1068,6 +1127,9 @@ public final class DatabricksFunctions {
      * - Examine the schedule configuration
      * 
      * ## Example Usage
+     * 
+     * ### Retrieve Alert by ID
+     * This example retrieves a specific alert by its ID:
      * 
      */
     public static CompletableFuture<GetAlertV2Result> getAlertV2Plain() {
@@ -1084,6 +1146,9 @@ public final class DatabricksFunctions {
      * 
      * ## Example Usage
      * 
+     * ### Retrieve Alert by ID
+     * This example retrieves a specific alert by its ID:
+     * 
      */
     public static Output<GetAlertV2Result> getAlertV2(GetAlertV2Args args) {
         return getAlertV2(args, InvokeOptions.Empty);
@@ -1098,6 +1163,9 @@ public final class DatabricksFunctions {
      * - Examine the schedule configuration
      * 
      * ## Example Usage
+     * 
+     * ### Retrieve Alert by ID
+     * This example retrieves a specific alert by its ID:
      * 
      */
     public static CompletableFuture<GetAlertV2Result> getAlertV2Plain(GetAlertV2PlainArgs args) {
@@ -1114,6 +1182,9 @@ public final class DatabricksFunctions {
      * 
      * ## Example Usage
      * 
+     * ### Retrieve Alert by ID
+     * This example retrieves a specific alert by its ID:
+     * 
      */
     public static Output<GetAlertV2Result> getAlertV2(GetAlertV2Args args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getAlertV2:getAlertV2", TypeShape.of(GetAlertV2Result.class), args, Utilities.withVersion(options));
@@ -1129,6 +1200,9 @@ public final class DatabricksFunctions {
      * 
      * ## Example Usage
      * 
+     * ### Retrieve Alert by ID
+     * This example retrieves a specific alert by its ID:
+     * 
      */
     public static Output<GetAlertV2Result> getAlertV2(GetAlertV2Args args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getAlertV2:getAlertV2", TypeShape.of(GetAlertV2Result.class), args, Utilities.withVersion(options));
@@ -1143,6 +1217,9 @@ public final class DatabricksFunctions {
      * - Examine the schedule configuration
      * 
      * ## Example Usage
+     * 
+     * ### Retrieve Alert by ID
+     * This example retrieves a specific alert by its ID:
      * 
      */
     public static CompletableFuture<GetAlertV2Result> getAlertV2Plain(GetAlertV2PlainArgs args, InvokeOptions options) {
@@ -3350,7 +3427,7 @@ public final class DatabricksFunctions {
      * 
      * ## Example Usage
      * 
-     * For more detailed usage please see databricks.getAwsAssumeRolePolicy or databricks_aws_s3_mount pages.
+     * For more detailed usage please see databricks.getAwsAssumeRolePolicy or databricksAwsS3Mount pages.
      * 
      * <pre>
      * {@code
@@ -3402,7 +3479,7 @@ public final class DatabricksFunctions {
      * 
      * ## Example Usage
      * 
-     * For more detailed usage please see databricks.getAwsAssumeRolePolicy or databricks_aws_s3_mount pages.
+     * For more detailed usage please see databricks.getAwsAssumeRolePolicy or databricksAwsS3Mount pages.
      * 
      * <pre>
      * {@code
@@ -3454,7 +3531,7 @@ public final class DatabricksFunctions {
      * 
      * ## Example Usage
      * 
-     * For more detailed usage please see databricks.getAwsAssumeRolePolicy or databricks_aws_s3_mount pages.
+     * For more detailed usage please see databricks.getAwsAssumeRolePolicy or databricksAwsS3Mount pages.
      * 
      * <pre>
      * {@code
@@ -3506,7 +3583,7 @@ public final class DatabricksFunctions {
      * 
      * ## Example Usage
      * 
-     * For more detailed usage please see databricks.getAwsAssumeRolePolicy or databricks_aws_s3_mount pages.
+     * For more detailed usage please see databricks.getAwsAssumeRolePolicy or databricksAwsS3Mount pages.
      * 
      * <pre>
      * {@code
@@ -3558,7 +3635,7 @@ public final class DatabricksFunctions {
      * 
      * ## Example Usage
      * 
-     * For more detailed usage please see databricks.getAwsAssumeRolePolicy or databricks_aws_s3_mount pages.
+     * For more detailed usage please see databricks.getAwsAssumeRolePolicy or databricksAwsS3Mount pages.
      * 
      * <pre>
      * {@code
@@ -3610,7 +3687,7 @@ public final class DatabricksFunctions {
      * 
      * ## Example Usage
      * 
-     * For more detailed usage please see databricks.getAwsAssumeRolePolicy or databricks_aws_s3_mount pages.
+     * For more detailed usage please see databricks.getAwsAssumeRolePolicy or databricksAwsS3Mount pages.
      * 
      * <pre>
      * {@code
@@ -3662,7 +3739,7 @@ public final class DatabricksFunctions {
      * 
      * ## Example Usage
      * 
-     * For more detailed usage please see databricks.getAwsAssumeRolePolicy or databricks_aws_s3_mount pages.
+     * For more detailed usage please see databricks.getAwsAssumeRolePolicy or databricksAwsS3Mount pages.
      * 
      * <pre>
      * {@code
@@ -6782,6 +6859,10 @@ public final class DatabricksFunctions {
      * 
      * &gt; This data source can only be used with a workspace-level provider!
      * 
+     * ## Example Usage
+     * 
+     * Retrieve attributes of each SQL warehouses in a workspace
+     * 
      */
     public static Output<GetClusterResult> getCluster() {
         return getCluster(GetClusterArgs.Empty, InvokeOptions.Empty);
@@ -6790,6 +6871,10 @@ public final class DatabricksFunctions {
      * Retrieves information about a databricks.Cluster using its id. This could be retrieved programmatically using databricks.getClusters data source.
      * 
      * &gt; This data source can only be used with a workspace-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Retrieve attributes of each SQL warehouses in a workspace
      * 
      */
     public static CompletableFuture<GetClusterResult> getClusterPlain() {
@@ -6800,6 +6885,10 @@ public final class DatabricksFunctions {
      * 
      * &gt; This data source can only be used with a workspace-level provider!
      * 
+     * ## Example Usage
+     * 
+     * Retrieve attributes of each SQL warehouses in a workspace
+     * 
      */
     public static Output<GetClusterResult> getCluster(GetClusterArgs args) {
         return getCluster(args, InvokeOptions.Empty);
@@ -6808,6 +6897,10 @@ public final class DatabricksFunctions {
      * Retrieves information about a databricks.Cluster using its id. This could be retrieved programmatically using databricks.getClusters data source.
      * 
      * &gt; This data source can only be used with a workspace-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Retrieve attributes of each SQL warehouses in a workspace
      * 
      */
     public static CompletableFuture<GetClusterResult> getClusterPlain(GetClusterPlainArgs args) {
@@ -6818,6 +6911,10 @@ public final class DatabricksFunctions {
      * 
      * &gt; This data source can only be used with a workspace-level provider!
      * 
+     * ## Example Usage
+     * 
+     * Retrieve attributes of each SQL warehouses in a workspace
+     * 
      */
     public static Output<GetClusterResult> getCluster(GetClusterArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getCluster:getCluster", TypeShape.of(GetClusterResult.class), args, Utilities.withVersion(options));
@@ -6827,6 +6924,10 @@ public final class DatabricksFunctions {
      * 
      * &gt; This data source can only be used with a workspace-level provider!
      * 
+     * ## Example Usage
+     * 
+     * Retrieve attributes of each SQL warehouses in a workspace
+     * 
      */
     public static Output<GetClusterResult> getCluster(GetClusterArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getCluster:getCluster", TypeShape.of(GetClusterResult.class), args, Utilities.withVersion(options));
@@ -6835,6 +6936,10 @@ public final class DatabricksFunctions {
      * Retrieves information about a databricks.Cluster using its id. This could be retrieved programmatically using databricks.getClusters data source.
      * 
      * &gt; This data source can only be used with a workspace-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Retrieve attributes of each SQL warehouses in a workspace
      * 
      */
     public static CompletableFuture<GetClusterResult> getClusterPlain(GetClusterPlainArgs args, InvokeOptions options) {
@@ -8203,6 +8308,29 @@ public final class DatabricksFunctions {
      * 
      * &gt; This data source can be used with an account or workspace-level provider.
      * 
+     * ## Example Usage
+     * 
+     * Create cloud-specific databricks_storage_credential:
+     * 
+     * ## Exported attributes
+     * 
+     * Data source exposes the following attributes:
+     * 
+     * * `isAccount` - Whether the provider is configured at account-level
+     * * `accountId` - Account Id if provider is configured at account-level
+     * * `host` - Host of the Databricks workspace or account console
+     * * `cloudType` - Cloud type specified in the provider
+     * * `authType` - Auth type used by the provider
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * End to end workspace management guide
+     * * databricks.Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
+     * * databricks.Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
+     * * databricks.Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
+     * 
      */
     public static Output<GetCurrentConfigResult> getCurrentConfig() {
         return getCurrentConfig(GetCurrentConfigArgs.Empty, InvokeOptions.Empty);
@@ -8211,6 +8339,29 @@ public final class DatabricksFunctions {
      * Retrieves information about the currently configured provider to make a decision, for example, add a dynamic block based on the specific cloud.
      * 
      * &gt; This data source can be used with an account or workspace-level provider.
+     * 
+     * ## Example Usage
+     * 
+     * Create cloud-specific databricks_storage_credential:
+     * 
+     * ## Exported attributes
+     * 
+     * Data source exposes the following attributes:
+     * 
+     * * `isAccount` - Whether the provider is configured at account-level
+     * * `accountId` - Account Id if provider is configured at account-level
+     * * `host` - Host of the Databricks workspace or account console
+     * * `cloudType` - Cloud type specified in the provider
+     * * `authType` - Auth type used by the provider
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * End to end workspace management guide
+     * * databricks.Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
+     * * databricks.Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
+     * * databricks.Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
      * 
      */
     public static CompletableFuture<GetCurrentConfigResult> getCurrentConfigPlain() {
@@ -8221,6 +8372,29 @@ public final class DatabricksFunctions {
      * 
      * &gt; This data source can be used with an account or workspace-level provider.
      * 
+     * ## Example Usage
+     * 
+     * Create cloud-specific databricks_storage_credential:
+     * 
+     * ## Exported attributes
+     * 
+     * Data source exposes the following attributes:
+     * 
+     * * `isAccount` - Whether the provider is configured at account-level
+     * * `accountId` - Account Id if provider is configured at account-level
+     * * `host` - Host of the Databricks workspace or account console
+     * * `cloudType` - Cloud type specified in the provider
+     * * `authType` - Auth type used by the provider
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * End to end workspace management guide
+     * * databricks.Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
+     * * databricks.Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
+     * * databricks.Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
+     * 
      */
     public static Output<GetCurrentConfigResult> getCurrentConfig(GetCurrentConfigArgs args) {
         return getCurrentConfig(args, InvokeOptions.Empty);
@@ -8229,6 +8403,29 @@ public final class DatabricksFunctions {
      * Retrieves information about the currently configured provider to make a decision, for example, add a dynamic block based on the specific cloud.
      * 
      * &gt; This data source can be used with an account or workspace-level provider.
+     * 
+     * ## Example Usage
+     * 
+     * Create cloud-specific databricks_storage_credential:
+     * 
+     * ## Exported attributes
+     * 
+     * Data source exposes the following attributes:
+     * 
+     * * `isAccount` - Whether the provider is configured at account-level
+     * * `accountId` - Account Id if provider is configured at account-level
+     * * `host` - Host of the Databricks workspace or account console
+     * * `cloudType` - Cloud type specified in the provider
+     * * `authType` - Auth type used by the provider
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * End to end workspace management guide
+     * * databricks.Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
+     * * databricks.Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
+     * * databricks.Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
      * 
      */
     public static CompletableFuture<GetCurrentConfigResult> getCurrentConfigPlain(GetCurrentConfigPlainArgs args) {
@@ -8239,6 +8436,29 @@ public final class DatabricksFunctions {
      * 
      * &gt; This data source can be used with an account or workspace-level provider.
      * 
+     * ## Example Usage
+     * 
+     * Create cloud-specific databricks_storage_credential:
+     * 
+     * ## Exported attributes
+     * 
+     * Data source exposes the following attributes:
+     * 
+     * * `isAccount` - Whether the provider is configured at account-level
+     * * `accountId` - Account Id if provider is configured at account-level
+     * * `host` - Host of the Databricks workspace or account console
+     * * `cloudType` - Cloud type specified in the provider
+     * * `authType` - Auth type used by the provider
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * End to end workspace management guide
+     * * databricks.Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
+     * * databricks.Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
+     * * databricks.Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
+     * 
      */
     public static Output<GetCurrentConfigResult> getCurrentConfig(GetCurrentConfigArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getCurrentConfig:getCurrentConfig", TypeShape.of(GetCurrentConfigResult.class), args, Utilities.withVersion(options));
@@ -8248,6 +8468,29 @@ public final class DatabricksFunctions {
      * 
      * &gt; This data source can be used with an account or workspace-level provider.
      * 
+     * ## Example Usage
+     * 
+     * Create cloud-specific databricks_storage_credential:
+     * 
+     * ## Exported attributes
+     * 
+     * Data source exposes the following attributes:
+     * 
+     * * `isAccount` - Whether the provider is configured at account-level
+     * * `accountId` - Account Id if provider is configured at account-level
+     * * `host` - Host of the Databricks workspace or account console
+     * * `cloudType` - Cloud type specified in the provider
+     * * `authType` - Auth type used by the provider
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * End to end workspace management guide
+     * * databricks.Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
+     * * databricks.Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
+     * * databricks.Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
+     * 
      */
     public static Output<GetCurrentConfigResult> getCurrentConfig(GetCurrentConfigArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getCurrentConfig:getCurrentConfig", TypeShape.of(GetCurrentConfigResult.class), args, Utilities.withVersion(options));
@@ -8256,6 +8499,29 @@ public final class DatabricksFunctions {
      * Retrieves information about the currently configured provider to make a decision, for example, add a dynamic block based on the specific cloud.
      * 
      * &gt; This data source can be used with an account or workspace-level provider.
+     * 
+     * ## Example Usage
+     * 
+     * Create cloud-specific databricks_storage_credential:
+     * 
+     * ## Exported attributes
+     * 
+     * Data source exposes the following attributes:
+     * 
+     * * `isAccount` - Whether the provider is configured at account-level
+     * * `accountId` - Account Id if provider is configured at account-level
+     * * `host` - Host of the Databricks workspace or account console
+     * * `cloudType` - Cloud type specified in the provider
+     * * `authType` - Auth type used by the provider
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * End to end workspace management guide
+     * * databricks.Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
+     * * databricks.Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
+     * * databricks.Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
      * 
      */
     public static CompletableFuture<GetCurrentConfigResult> getCurrentConfigPlain(GetCurrentConfigPlainArgs args, InvokeOptions options) {
@@ -8700,6 +8966,53 @@ public final class DatabricksFunctions {
      * 
      * &gt; This data source can only be used with a workspace-level provider!
      * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetDashboardsArgs;
+     * import com.pulumi.databricks.Permissions;
+     * import com.pulumi.databricks.PermissionsArgs;
+     * import com.pulumi.databricks.inputs.PermissionsAccessControlArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getDashboards(GetDashboardsArgs.builder()
+     *             .build());
+     * 
+     *         for (var range : KeyedValue.of(all.dashboards().stream().map(element -> element.dashboardId()).collect(toList()))) {
+     *             new Permissions("dashboardsPermissions-" + range.key(), PermissionsArgs.builder()
+     *                 .depends(List.of(all))
+     *                 .dashboardId(range.value())
+     *                 .accessControls(PermissionsAccessControlArgs.builder()
+     *                     .groupName("Example Group")
+     *                     .permissionLevel("CAN_MANAGE")
+     *                     .build())
+     *                 .build());
+     *         }
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetDashboardsResult> getDashboards() {
         return getDashboards(GetDashboardsArgs.Empty, InvokeOptions.Empty);
@@ -8708,6 +9021,53 @@ public final class DatabricksFunctions {
      * This data source allows you to retrieve information about Databricks [Dashboards](https://docs.databricks.com/en/dashboards/index.html).
      * 
      * &gt; This data source can only be used with a workspace-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetDashboardsArgs;
+     * import com.pulumi.databricks.Permissions;
+     * import com.pulumi.databricks.PermissionsArgs;
+     * import com.pulumi.databricks.inputs.PermissionsAccessControlArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getDashboards(GetDashboardsArgs.builder()
+     *             .build());
+     * 
+     *         for (var range : KeyedValue.of(all.dashboards().stream().map(element -> element.dashboardId()).collect(toList()))) {
+     *             new Permissions("dashboardsPermissions-" + range.key(), PermissionsArgs.builder()
+     *                 .depends(List.of(all))
+     *                 .dashboardId(range.value())
+     *                 .accessControls(PermissionsAccessControlArgs.builder()
+     *                     .groupName("Example Group")
+     *                     .permissionLevel("CAN_MANAGE")
+     *                     .build())
+     *                 .build());
+     *         }
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetDashboardsResult> getDashboardsPlain() {
@@ -8718,6 +9078,53 @@ public final class DatabricksFunctions {
      * 
      * &gt; This data source can only be used with a workspace-level provider!
      * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetDashboardsArgs;
+     * import com.pulumi.databricks.Permissions;
+     * import com.pulumi.databricks.PermissionsArgs;
+     * import com.pulumi.databricks.inputs.PermissionsAccessControlArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getDashboards(GetDashboardsArgs.builder()
+     *             .build());
+     * 
+     *         for (var range : KeyedValue.of(all.dashboards().stream().map(element -> element.dashboardId()).collect(toList()))) {
+     *             new Permissions("dashboardsPermissions-" + range.key(), PermissionsArgs.builder()
+     *                 .depends(List.of(all))
+     *                 .dashboardId(range.value())
+     *                 .accessControls(PermissionsAccessControlArgs.builder()
+     *                     .groupName("Example Group")
+     *                     .permissionLevel("CAN_MANAGE")
+     *                     .build())
+     *                 .build());
+     *         }
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetDashboardsResult> getDashboards(GetDashboardsArgs args) {
         return getDashboards(args, InvokeOptions.Empty);
@@ -8726,6 +9133,53 @@ public final class DatabricksFunctions {
      * This data source allows you to retrieve information about Databricks [Dashboards](https://docs.databricks.com/en/dashboards/index.html).
      * 
      * &gt; This data source can only be used with a workspace-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetDashboardsArgs;
+     * import com.pulumi.databricks.Permissions;
+     * import com.pulumi.databricks.PermissionsArgs;
+     * import com.pulumi.databricks.inputs.PermissionsAccessControlArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getDashboards(GetDashboardsArgs.builder()
+     *             .build());
+     * 
+     *         for (var range : KeyedValue.of(all.dashboards().stream().map(element -> element.dashboardId()).collect(toList()))) {
+     *             new Permissions("dashboardsPermissions-" + range.key(), PermissionsArgs.builder()
+     *                 .depends(List.of(all))
+     *                 .dashboardId(range.value())
+     *                 .accessControls(PermissionsAccessControlArgs.builder()
+     *                     .groupName("Example Group")
+     *                     .permissionLevel("CAN_MANAGE")
+     *                     .build())
+     *                 .build());
+     *         }
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetDashboardsResult> getDashboardsPlain(GetDashboardsPlainArgs args) {
@@ -8736,6 +9190,53 @@ public final class DatabricksFunctions {
      * 
      * &gt; This data source can only be used with a workspace-level provider!
      * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetDashboardsArgs;
+     * import com.pulumi.databricks.Permissions;
+     * import com.pulumi.databricks.PermissionsArgs;
+     * import com.pulumi.databricks.inputs.PermissionsAccessControlArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getDashboards(GetDashboardsArgs.builder()
+     *             .build());
+     * 
+     *         for (var range : KeyedValue.of(all.dashboards().stream().map(element -> element.dashboardId()).collect(toList()))) {
+     *             new Permissions("dashboardsPermissions-" + range.key(), PermissionsArgs.builder()
+     *                 .depends(List.of(all))
+     *                 .dashboardId(range.value())
+     *                 .accessControls(PermissionsAccessControlArgs.builder()
+     *                     .groupName("Example Group")
+     *                     .permissionLevel("CAN_MANAGE")
+     *                     .build())
+     *                 .build());
+     *         }
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetDashboardsResult> getDashboards(GetDashboardsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getDashboards:getDashboards", TypeShape.of(GetDashboardsResult.class), args, Utilities.withVersion(options));
@@ -8745,6 +9246,53 @@ public final class DatabricksFunctions {
      * 
      * &gt; This data source can only be used with a workspace-level provider!
      * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetDashboardsArgs;
+     * import com.pulumi.databricks.Permissions;
+     * import com.pulumi.databricks.PermissionsArgs;
+     * import com.pulumi.databricks.inputs.PermissionsAccessControlArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getDashboards(GetDashboardsArgs.builder()
+     *             .build());
+     * 
+     *         for (var range : KeyedValue.of(all.dashboards().stream().map(element -> element.dashboardId()).collect(toList()))) {
+     *             new Permissions("dashboardsPermissions-" + range.key(), PermissionsArgs.builder()
+     *                 .depends(List.of(all))
+     *                 .dashboardId(range.value())
+     *                 .accessControls(PermissionsAccessControlArgs.builder()
+     *                     .groupName("Example Group")
+     *                     .permissionLevel("CAN_MANAGE")
+     *                     .build())
+     *                 .build());
+     *         }
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetDashboardsResult> getDashboards(GetDashboardsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getDashboards:getDashboards", TypeShape.of(GetDashboardsResult.class), args, Utilities.withVersion(options));
@@ -8753,6 +9301,53 @@ public final class DatabricksFunctions {
      * This data source allows you to retrieve information about Databricks [Dashboards](https://docs.databricks.com/en/dashboards/index.html).
      * 
      * &gt; This data source can only be used with a workspace-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetDashboardsArgs;
+     * import com.pulumi.databricks.Permissions;
+     * import com.pulumi.databricks.PermissionsArgs;
+     * import com.pulumi.databricks.inputs.PermissionsAccessControlArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getDashboards(GetDashboardsArgs.builder()
+     *             .build());
+     * 
+     *         for (var range : KeyedValue.of(all.dashboards().stream().map(element -> element.dashboardId()).collect(toList()))) {
+     *             new Permissions("dashboardsPermissions-" + range.key(), PermissionsArgs.builder()
+     *                 .depends(List.of(all))
+     *                 .dashboardId(range.value())
+     *                 .accessControls(PermissionsAccessControlArgs.builder()
+     *                     .groupName("Example Group")
+     *                     .permissionLevel("CAN_MANAGE")
+     *                     .build())
+     *                 .build());
+     *         }
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetDashboardsResult> getDashboardsPlain(GetDashboardsPlainArgs args, InvokeOptions options) {
@@ -9201,7 +9796,7 @@ public final class DatabricksFunctions {
     }
     /**
      * This data source can be used to fetch the list of Database Instances within the workspace.
-     * The list can then be accessed via the data object&#39;s `database_instances` field.
+     * The list can then be accessed via the data object&#39;s `databaseInstances` field.
      * 
      * ## Example Usage
      * 
@@ -9244,7 +9839,7 @@ public final class DatabricksFunctions {
     }
     /**
      * This data source can be used to fetch the list of Database Instances within the workspace.
-     * The list can then be accessed via the data object&#39;s `database_instances` field.
+     * The list can then be accessed via the data object&#39;s `databaseInstances` field.
      * 
      * ## Example Usage
      * 
@@ -9287,7 +9882,7 @@ public final class DatabricksFunctions {
     }
     /**
      * This data source can be used to fetch the list of Database Instances within the workspace.
-     * The list can then be accessed via the data object&#39;s `database_instances` field.
+     * The list can then be accessed via the data object&#39;s `databaseInstances` field.
      * 
      * ## Example Usage
      * 
@@ -9330,7 +9925,7 @@ public final class DatabricksFunctions {
     }
     /**
      * This data source can be used to fetch the list of Database Instances within the workspace.
-     * The list can then be accessed via the data object&#39;s `database_instances` field.
+     * The list can then be accessed via the data object&#39;s `databaseInstances` field.
      * 
      * ## Example Usage
      * 
@@ -9373,7 +9968,7 @@ public final class DatabricksFunctions {
     }
     /**
      * This data source can be used to fetch the list of Database Instances within the workspace.
-     * The list can then be accessed via the data object&#39;s `database_instances` field.
+     * The list can then be accessed via the data object&#39;s `databaseInstances` field.
      * 
      * ## Example Usage
      * 
@@ -9416,7 +10011,7 @@ public final class DatabricksFunctions {
     }
     /**
      * This data source can be used to fetch the list of Database Instances within the workspace.
-     * The list can then be accessed via the data object&#39;s `database_instances` field.
+     * The list can then be accessed via the data object&#39;s `databaseInstances` field.
      * 
      * ## Example Usage
      * 
@@ -9459,7 +10054,7 @@ public final class DatabricksFunctions {
     }
     /**
      * This data source can be used to fetch the list of Database Instances within the workspace.
-     * The list can then be accessed via the data object&#39;s `database_instances` field.
+     * The list can then be accessed via the data object&#39;s `databaseInstances` field.
      * 
      * ## Example Usage
      * 
@@ -17353,7 +17948,7 @@ public final class DatabricksFunctions {
      * The following resources are used in the same context:
      * 
      * * databricks.MwsWorkspaces to manage Databricks Workspaces on AWS and GCP.
-     * * databricks.MetastoreAssignment to assign databricks.Metastore to databricks.MwsWorkspaces or azurerm_databricks_workspace
+     * * databricks.MetastoreAssignment to assign databricks.Metastore to databricks.MwsWorkspaces or azurermDatabricksWorkspace
      * 
      */
     public static Output<GetMwsWorkspacesResult> getMwsWorkspaces() {
@@ -17402,7 +17997,7 @@ public final class DatabricksFunctions {
      * The following resources are used in the same context:
      * 
      * * databricks.MwsWorkspaces to manage Databricks Workspaces on AWS and GCP.
-     * * databricks.MetastoreAssignment to assign databricks.Metastore to databricks.MwsWorkspaces or azurerm_databricks_workspace
+     * * databricks.MetastoreAssignment to assign databricks.Metastore to databricks.MwsWorkspaces or azurermDatabricksWorkspace
      * 
      */
     public static CompletableFuture<GetMwsWorkspacesResult> getMwsWorkspacesPlain() {
@@ -17451,7 +18046,7 @@ public final class DatabricksFunctions {
      * The following resources are used in the same context:
      * 
      * * databricks.MwsWorkspaces to manage Databricks Workspaces on AWS and GCP.
-     * * databricks.MetastoreAssignment to assign databricks.Metastore to databricks.MwsWorkspaces or azurerm_databricks_workspace
+     * * databricks.MetastoreAssignment to assign databricks.Metastore to databricks.MwsWorkspaces or azurermDatabricksWorkspace
      * 
      */
     public static Output<GetMwsWorkspacesResult> getMwsWorkspaces(InvokeArgs args) {
@@ -17500,7 +18095,7 @@ public final class DatabricksFunctions {
      * The following resources are used in the same context:
      * 
      * * databricks.MwsWorkspaces to manage Databricks Workspaces on AWS and GCP.
-     * * databricks.MetastoreAssignment to assign databricks.Metastore to databricks.MwsWorkspaces or azurerm_databricks_workspace
+     * * databricks.MetastoreAssignment to assign databricks.Metastore to databricks.MwsWorkspaces or azurermDatabricksWorkspace
      * 
      */
     public static CompletableFuture<GetMwsWorkspacesResult> getMwsWorkspacesPlain(InvokeArgs args) {
@@ -17549,7 +18144,7 @@ public final class DatabricksFunctions {
      * The following resources are used in the same context:
      * 
      * * databricks.MwsWorkspaces to manage Databricks Workspaces on AWS and GCP.
-     * * databricks.MetastoreAssignment to assign databricks.Metastore to databricks.MwsWorkspaces or azurerm_databricks_workspace
+     * * databricks.MetastoreAssignment to assign databricks.Metastore to databricks.MwsWorkspaces or azurermDatabricksWorkspace
      * 
      */
     public static Output<GetMwsWorkspacesResult> getMwsWorkspaces(InvokeArgs args, InvokeOptions options) {
@@ -17598,7 +18193,7 @@ public final class DatabricksFunctions {
      * The following resources are used in the same context:
      * 
      * * databricks.MwsWorkspaces to manage Databricks Workspaces on AWS and GCP.
-     * * databricks.MetastoreAssignment to assign databricks.Metastore to databricks.MwsWorkspaces or azurerm_databricks_workspace
+     * * databricks.MetastoreAssignment to assign databricks.Metastore to databricks.MwsWorkspaces or azurermDatabricksWorkspace
      * 
      */
     public static Output<GetMwsWorkspacesResult> getMwsWorkspaces(InvokeArgs args, InvokeOutputOptions options) {
@@ -17647,7 +18242,7 @@ public final class DatabricksFunctions {
      * The following resources are used in the same context:
      * 
      * * databricks.MwsWorkspaces to manage Databricks Workspaces on AWS and GCP.
-     * * databricks.MetastoreAssignment to assign databricks.Metastore to databricks.MwsWorkspaces or azurerm_databricks_workspace
+     * * databricks.MetastoreAssignment to assign databricks.Metastore to databricks.MwsWorkspaces or azurermDatabricksWorkspace
      * 
      */
     public static CompletableFuture<GetMwsWorkspacesResult> getMwsWorkspacesPlain(InvokeArgs args, InvokeOptions options) {
@@ -17658,7 +18253,7 @@ public final class DatabricksFunctions {
      * 
      * &gt; This data source can only be used with a workspace-level provider!
      * 
-     * &gt; This is experimental functionality, which aims to simplify things. In case of wrong parameters given (e.g. `min_gpus = 876`) or no nodes matching, data source will return cloud-default node type, even though it doesn&#39;t match search criteria specified by data source arguments: [i3.xlarge](https://aws.amazon.com/ec2/instance-types/i3/) for AWS or [Standard_D3_v2](https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-sizes-specs#dv2-series) for Azure.
+     * &gt; This is experimental functionality, which aims to simplify things. In case of wrong parameters given (e.g. `minGpus = 876`) or no nodes matching, data source will return cloud-default node type, even though it doesn&#39;t match search criteria specified by data source arguments: [i3.xlarge](https://aws.amazon.com/ec2/instance-types/i3/) for AWS or [Standard_D3_v2](https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-sizes-specs#dv2-series) for Azure.
      * 
      * ## Example Usage
      * 
@@ -17735,7 +18330,7 @@ public final class DatabricksFunctions {
      * 
      * &gt; This data source can only be used with a workspace-level provider!
      * 
-     * &gt; This is experimental functionality, which aims to simplify things. In case of wrong parameters given (e.g. `min_gpus = 876`) or no nodes matching, data source will return cloud-default node type, even though it doesn&#39;t match search criteria specified by data source arguments: [i3.xlarge](https://aws.amazon.com/ec2/instance-types/i3/) for AWS or [Standard_D3_v2](https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-sizes-specs#dv2-series) for Azure.
+     * &gt; This is experimental functionality, which aims to simplify things. In case of wrong parameters given (e.g. `minGpus = 876`) or no nodes matching, data source will return cloud-default node type, even though it doesn&#39;t match search criteria specified by data source arguments: [i3.xlarge](https://aws.amazon.com/ec2/instance-types/i3/) for AWS or [Standard_D3_v2](https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-sizes-specs#dv2-series) for Azure.
      * 
      * ## Example Usage
      * 
@@ -17812,7 +18407,7 @@ public final class DatabricksFunctions {
      * 
      * &gt; This data source can only be used with a workspace-level provider!
      * 
-     * &gt; This is experimental functionality, which aims to simplify things. In case of wrong parameters given (e.g. `min_gpus = 876`) or no nodes matching, data source will return cloud-default node type, even though it doesn&#39;t match search criteria specified by data source arguments: [i3.xlarge](https://aws.amazon.com/ec2/instance-types/i3/) for AWS or [Standard_D3_v2](https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-sizes-specs#dv2-series) for Azure.
+     * &gt; This is experimental functionality, which aims to simplify things. In case of wrong parameters given (e.g. `minGpus = 876`) or no nodes matching, data source will return cloud-default node type, even though it doesn&#39;t match search criteria specified by data source arguments: [i3.xlarge](https://aws.amazon.com/ec2/instance-types/i3/) for AWS or [Standard_D3_v2](https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-sizes-specs#dv2-series) for Azure.
      * 
      * ## Example Usage
      * 
@@ -17889,7 +18484,7 @@ public final class DatabricksFunctions {
      * 
      * &gt; This data source can only be used with a workspace-level provider!
      * 
-     * &gt; This is experimental functionality, which aims to simplify things. In case of wrong parameters given (e.g. `min_gpus = 876`) or no nodes matching, data source will return cloud-default node type, even though it doesn&#39;t match search criteria specified by data source arguments: [i3.xlarge](https://aws.amazon.com/ec2/instance-types/i3/) for AWS or [Standard_D3_v2](https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-sizes-specs#dv2-series) for Azure.
+     * &gt; This is experimental functionality, which aims to simplify things. In case of wrong parameters given (e.g. `minGpus = 876`) or no nodes matching, data source will return cloud-default node type, even though it doesn&#39;t match search criteria specified by data source arguments: [i3.xlarge](https://aws.amazon.com/ec2/instance-types/i3/) for AWS or [Standard_D3_v2](https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-sizes-specs#dv2-series) for Azure.
      * 
      * ## Example Usage
      * 
@@ -17966,7 +18561,7 @@ public final class DatabricksFunctions {
      * 
      * &gt; This data source can only be used with a workspace-level provider!
      * 
-     * &gt; This is experimental functionality, which aims to simplify things. In case of wrong parameters given (e.g. `min_gpus = 876`) or no nodes matching, data source will return cloud-default node type, even though it doesn&#39;t match search criteria specified by data source arguments: [i3.xlarge](https://aws.amazon.com/ec2/instance-types/i3/) for AWS or [Standard_D3_v2](https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-sizes-specs#dv2-series) for Azure.
+     * &gt; This is experimental functionality, which aims to simplify things. In case of wrong parameters given (e.g. `minGpus = 876`) or no nodes matching, data source will return cloud-default node type, even though it doesn&#39;t match search criteria specified by data source arguments: [i3.xlarge](https://aws.amazon.com/ec2/instance-types/i3/) for AWS or [Standard_D3_v2](https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-sizes-specs#dv2-series) for Azure.
      * 
      * ## Example Usage
      * 
@@ -18043,7 +18638,7 @@ public final class DatabricksFunctions {
      * 
      * &gt; This data source can only be used with a workspace-level provider!
      * 
-     * &gt; This is experimental functionality, which aims to simplify things. In case of wrong parameters given (e.g. `min_gpus = 876`) or no nodes matching, data source will return cloud-default node type, even though it doesn&#39;t match search criteria specified by data source arguments: [i3.xlarge](https://aws.amazon.com/ec2/instance-types/i3/) for AWS or [Standard_D3_v2](https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-sizes-specs#dv2-series) for Azure.
+     * &gt; This is experimental functionality, which aims to simplify things. In case of wrong parameters given (e.g. `minGpus = 876`) or no nodes matching, data source will return cloud-default node type, even though it doesn&#39;t match search criteria specified by data source arguments: [i3.xlarge](https://aws.amazon.com/ec2/instance-types/i3/) for AWS or [Standard_D3_v2](https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-sizes-specs#dv2-series) for Azure.
      * 
      * ## Example Usage
      * 
@@ -18120,7 +18715,7 @@ public final class DatabricksFunctions {
      * 
      * &gt; This data source can only be used with a workspace-level provider!
      * 
-     * &gt; This is experimental functionality, which aims to simplify things. In case of wrong parameters given (e.g. `min_gpus = 876`) or no nodes matching, data source will return cloud-default node type, even though it doesn&#39;t match search criteria specified by data source arguments: [i3.xlarge](https://aws.amazon.com/ec2/instance-types/i3/) for AWS or [Standard_D3_v2](https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-sizes-specs#dv2-series) for Azure.
+     * &gt; This is experimental functionality, which aims to simplify things. In case of wrong parameters given (e.g. `minGpus = 876`) or no nodes matching, data source will return cloud-default node type, even though it doesn&#39;t match search criteria specified by data source arguments: [i3.xlarge](https://aws.amazon.com/ec2/instance-types/i3/) for AWS or [Standard_D3_v2](https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-sizes-specs#dv2-series) for Azure.
      * 
      * ## Example Usage
      * 
@@ -21139,9 +21734,53 @@ public final class DatabricksFunctions {
     }
     /**
      * Retrieves details about databricks.Schema that was created by Pulumi or manually.
-     * A schema can be identified by its two-level (fully qualified) name (in the form of: `catalog_name`.`schema_name`) as input. This can be retrieved programmatically using databricks.getSchemas data source.
+     * A schema can be identified by its two-level (fully qualified) name (in the form of: `catalogName`.`schemaName`) as input. This can be retrieved programmatically using databricks.getSchemas data source.
      * 
      * &gt; This data source can only be used with a workspace-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * * Retrieve details of all schemas in in a _sandbox_ databricks_catalog:
+     * 
+     * * Search for a specific schema by its fully qualified name:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetSchemaArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getSchema(GetSchemaArgs.builder()
+     *             .name("catalog.schema")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.Schema to manage schemas within Unity Catalog.
+     * * databricks.Catalog to manage catalogs within Unity Catalog.
      * 
      */
     public static Output<GetSchemaResult> getSchema(GetSchemaArgs args) {
@@ -21149,9 +21788,53 @@ public final class DatabricksFunctions {
     }
     /**
      * Retrieves details about databricks.Schema that was created by Pulumi or manually.
-     * A schema can be identified by its two-level (fully qualified) name (in the form of: `catalog_name`.`schema_name`) as input. This can be retrieved programmatically using databricks.getSchemas data source.
+     * A schema can be identified by its two-level (fully qualified) name (in the form of: `catalogName`.`schemaName`) as input. This can be retrieved programmatically using databricks.getSchemas data source.
      * 
      * &gt; This data source can only be used with a workspace-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * * Retrieve details of all schemas in in a _sandbox_ databricks_catalog:
+     * 
+     * * Search for a specific schema by its fully qualified name:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetSchemaArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getSchema(GetSchemaArgs.builder()
+     *             .name("catalog.schema")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.Schema to manage schemas within Unity Catalog.
+     * * databricks.Catalog to manage catalogs within Unity Catalog.
      * 
      */
     public static CompletableFuture<GetSchemaResult> getSchemaPlain(GetSchemaPlainArgs args) {
@@ -21159,9 +21842,53 @@ public final class DatabricksFunctions {
     }
     /**
      * Retrieves details about databricks.Schema that was created by Pulumi or manually.
-     * A schema can be identified by its two-level (fully qualified) name (in the form of: `catalog_name`.`schema_name`) as input. This can be retrieved programmatically using databricks.getSchemas data source.
+     * A schema can be identified by its two-level (fully qualified) name (in the form of: `catalogName`.`schemaName`) as input. This can be retrieved programmatically using databricks.getSchemas data source.
      * 
      * &gt; This data source can only be used with a workspace-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * * Retrieve details of all schemas in in a _sandbox_ databricks_catalog:
+     * 
+     * * Search for a specific schema by its fully qualified name:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetSchemaArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getSchema(GetSchemaArgs.builder()
+     *             .name("catalog.schema")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.Schema to manage schemas within Unity Catalog.
+     * * databricks.Catalog to manage catalogs within Unity Catalog.
      * 
      */
     public static Output<GetSchemaResult> getSchema(GetSchemaArgs args, InvokeOptions options) {
@@ -21169,9 +21896,53 @@ public final class DatabricksFunctions {
     }
     /**
      * Retrieves details about databricks.Schema that was created by Pulumi or manually.
-     * A schema can be identified by its two-level (fully qualified) name (in the form of: `catalog_name`.`schema_name`) as input. This can be retrieved programmatically using databricks.getSchemas data source.
+     * A schema can be identified by its two-level (fully qualified) name (in the form of: `catalogName`.`schemaName`) as input. This can be retrieved programmatically using databricks.getSchemas data source.
      * 
      * &gt; This data source can only be used with a workspace-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * * Retrieve details of all schemas in in a _sandbox_ databricks_catalog:
+     * 
+     * * Search for a specific schema by its fully qualified name:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetSchemaArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getSchema(GetSchemaArgs.builder()
+     *             .name("catalog.schema")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.Schema to manage schemas within Unity Catalog.
+     * * databricks.Catalog to manage catalogs within Unity Catalog.
      * 
      */
     public static Output<GetSchemaResult> getSchema(GetSchemaArgs args, InvokeOutputOptions options) {
@@ -21179,9 +21950,53 @@ public final class DatabricksFunctions {
     }
     /**
      * Retrieves details about databricks.Schema that was created by Pulumi or manually.
-     * A schema can be identified by its two-level (fully qualified) name (in the form of: `catalog_name`.`schema_name`) as input. This can be retrieved programmatically using databricks.getSchemas data source.
+     * A schema can be identified by its two-level (fully qualified) name (in the form of: `catalogName`.`schemaName`) as input. This can be retrieved programmatically using databricks.getSchemas data source.
      * 
      * &gt; This data source can only be used with a workspace-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * * Retrieve details of all schemas in in a _sandbox_ databricks_catalog:
+     * 
+     * * Search for a specific schema by its fully qualified name:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetSchemaArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getSchema(GetSchemaArgs.builder()
+     *             .name("catalog.schema")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.Schema to manage schemas within Unity Catalog.
+     * * databricks.Catalog to manage catalogs within Unity Catalog.
      * 
      */
     public static CompletableFuture<GetSchemaResult> getSchemaPlain(GetSchemaPlainArgs args, InvokeOptions options) {
@@ -21510,7 +22325,7 @@ public final class DatabricksFunctions {
      * - databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.
      * - databricks.GroupMember to attach users and groups as group members.
      * - databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
-     * - databricks_service principal to manage service principals
+     * - databricksService principal to manage service principals
      * 
      */
     public static Output<GetServicePrincipalResult> getServicePrincipal() {
@@ -21579,7 +22394,7 @@ public final class DatabricksFunctions {
      * - databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.
      * - databricks.GroupMember to attach users and groups as group members.
      * - databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
-     * - databricks_service principal to manage service principals
+     * - databricksService principal to manage service principals
      * 
      */
     public static CompletableFuture<GetServicePrincipalResult> getServicePrincipalPlain() {
@@ -21648,7 +22463,7 @@ public final class DatabricksFunctions {
      * - databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.
      * - databricks.GroupMember to attach users and groups as group members.
      * - databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
-     * - databricks_service principal to manage service principals
+     * - databricksService principal to manage service principals
      * 
      */
     public static Output<GetServicePrincipalResult> getServicePrincipal(GetServicePrincipalArgs args) {
@@ -21717,7 +22532,7 @@ public final class DatabricksFunctions {
      * - databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.
      * - databricks.GroupMember to attach users and groups as group members.
      * - databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
-     * - databricks_service principal to manage service principals
+     * - databricksService principal to manage service principals
      * 
      */
     public static CompletableFuture<GetServicePrincipalResult> getServicePrincipalPlain(GetServicePrincipalPlainArgs args) {
@@ -21786,7 +22601,7 @@ public final class DatabricksFunctions {
      * - databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.
      * - databricks.GroupMember to attach users and groups as group members.
      * - databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
-     * - databricks_service principal to manage service principals
+     * - databricksService principal to manage service principals
      * 
      */
     public static Output<GetServicePrincipalResult> getServicePrincipal(GetServicePrincipalArgs args, InvokeOptions options) {
@@ -21855,7 +22670,7 @@ public final class DatabricksFunctions {
      * - databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.
      * - databricks.GroupMember to attach users and groups as group members.
      * - databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
-     * - databricks_service principal to manage service principals
+     * - databricksService principal to manage service principals
      * 
      */
     public static Output<GetServicePrincipalResult> getServicePrincipal(GetServicePrincipalArgs args, InvokeOutputOptions options) {
@@ -21924,7 +22739,7 @@ public final class DatabricksFunctions {
      * - databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.
      * - databricks.GroupMember to attach users and groups as group members.
      * - databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
-     * - databricks_service principal to manage service principals
+     * - databricksService principal to manage service principals
      * 
      */
     public static CompletableFuture<GetServicePrincipalResult> getServicePrincipalPlain(GetServicePrincipalPlainArgs args, InvokeOptions options) {
@@ -22155,6 +22970,10 @@ public final class DatabricksFunctions {
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
      * 
+     * ## Example Usage
+     * 
+     * Referring to a service principal federation policy by id:
+     * 
      */
     public static Output<GetServicePrincipalFederationPolicyResult> getServicePrincipalFederationPolicy() {
         return getServicePrincipalFederationPolicy(GetServicePrincipalFederationPolicyArgs.Empty, InvokeOptions.Empty);
@@ -22163,6 +22982,10 @@ public final class DatabricksFunctions {
      * This data source can be used to get a single service principal federation policy.
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Referring to a service principal federation policy by id:
      * 
      */
     public static CompletableFuture<GetServicePrincipalFederationPolicyResult> getServicePrincipalFederationPolicyPlain() {
@@ -22173,6 +22996,10 @@ public final class DatabricksFunctions {
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
      * 
+     * ## Example Usage
+     * 
+     * Referring to a service principal federation policy by id:
+     * 
      */
     public static Output<GetServicePrincipalFederationPolicyResult> getServicePrincipalFederationPolicy(GetServicePrincipalFederationPolicyArgs args) {
         return getServicePrincipalFederationPolicy(args, InvokeOptions.Empty);
@@ -22181,6 +23008,10 @@ public final class DatabricksFunctions {
      * This data source can be used to get a single service principal federation policy.
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Referring to a service principal federation policy by id:
      * 
      */
     public static CompletableFuture<GetServicePrincipalFederationPolicyResult> getServicePrincipalFederationPolicyPlain(GetServicePrincipalFederationPolicyPlainArgs args) {
@@ -22191,6 +23022,10 @@ public final class DatabricksFunctions {
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
      * 
+     * ## Example Usage
+     * 
+     * Referring to a service principal federation policy by id:
+     * 
      */
     public static Output<GetServicePrincipalFederationPolicyResult> getServicePrincipalFederationPolicy(GetServicePrincipalFederationPolicyArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getServicePrincipalFederationPolicy:getServicePrincipalFederationPolicy", TypeShape.of(GetServicePrincipalFederationPolicyResult.class), args, Utilities.withVersion(options));
@@ -22199,6 +23034,10 @@ public final class DatabricksFunctions {
      * This data source can be used to get a single service principal federation policy.
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Referring to a service principal federation policy by id:
      * 
      */
     public static Output<GetServicePrincipalFederationPolicyResult> getServicePrincipalFederationPolicy(GetServicePrincipalFederationPolicyArgs args, InvokeOutputOptions options) {
@@ -22209,12 +23048,16 @@ public final class DatabricksFunctions {
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
      * 
+     * ## Example Usage
+     * 
+     * Referring to a service principal federation policy by id:
+     * 
      */
     public static CompletableFuture<GetServicePrincipalFederationPolicyResult> getServicePrincipalFederationPolicyPlain(GetServicePrincipalFederationPolicyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getServicePrincipalFederationPolicy:getServicePrincipalFederationPolicy", TypeShape.of(GetServicePrincipalFederationPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Retrieves `application_ids` of all databricks.ServicePrincipal based on their `display_name`
+     * Retrieves `applicationIds` of all databricks.ServicePrincipal based on their `displayName`
      * 
      * &gt; This data source can be used with an account or workspace-level provider.
      * 
@@ -22223,7 +23066,7 @@ public final class DatabricksFunctions {
         return getServicePrincipals(GetServicePrincipalsArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * Retrieves `application_ids` of all databricks.ServicePrincipal based on their `display_name`
+     * Retrieves `applicationIds` of all databricks.ServicePrincipal based on their `displayName`
      * 
      * &gt; This data source can be used with an account or workspace-level provider.
      * 
@@ -22232,7 +23075,7 @@ public final class DatabricksFunctions {
         return getServicePrincipalsPlain(GetServicePrincipalsPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * Retrieves `application_ids` of all databricks.ServicePrincipal based on their `display_name`
+     * Retrieves `applicationIds` of all databricks.ServicePrincipal based on their `displayName`
      * 
      * &gt; This data source can be used with an account or workspace-level provider.
      * 
@@ -22241,7 +23084,7 @@ public final class DatabricksFunctions {
         return getServicePrincipals(args, InvokeOptions.Empty);
     }
     /**
-     * Retrieves `application_ids` of all databricks.ServicePrincipal based on their `display_name`
+     * Retrieves `applicationIds` of all databricks.ServicePrincipal based on their `displayName`
      * 
      * &gt; This data source can be used with an account or workspace-level provider.
      * 
@@ -22250,7 +23093,7 @@ public final class DatabricksFunctions {
         return getServicePrincipalsPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Retrieves `application_ids` of all databricks.ServicePrincipal based on their `display_name`
+     * Retrieves `applicationIds` of all databricks.ServicePrincipal based on their `displayName`
      * 
      * &gt; This data source can be used with an account or workspace-level provider.
      * 
@@ -22259,7 +23102,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getServicePrincipals:getServicePrincipals", TypeShape.of(GetServicePrincipalsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Retrieves `application_ids` of all databricks.ServicePrincipal based on their `display_name`
+     * Retrieves `applicationIds` of all databricks.ServicePrincipal based on their `displayName`
      * 
      * &gt; This data source can be used with an account or workspace-level provider.
      * 
@@ -22268,7 +23111,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getServicePrincipals:getServicePrincipals", TypeShape.of(GetServicePrincipalsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Retrieves `application_ids` of all databricks.ServicePrincipal based on their `display_name`
+     * Retrieves `applicationIds` of all databricks.ServicePrincipal based on their `displayName`
      * 
      * &gt; This data source can be used with an account or workspace-level provider.
      * 
@@ -23509,7 +24352,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getShares:getShares", TypeShape.of(GetSharesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Gets [Databricks Runtime (DBR)](https://docs.databricks.com/runtime/dbr.html) version that could be used for `spark_version` parameter in databricks.Cluster and other resources that fits search criteria, like specific Spark or Scala version, ML or Genomics runtime, etc., similar to executing `databricks clusters spark-versions`, and filters it to return the latest version that matches criteria. Often used along databricks.getNodeType data source.
+     * Gets [Databricks Runtime (DBR)](https://docs.databricks.com/runtime/dbr.html) version that could be used for `sparkVersion` parameter in databricks.Cluster and other resources that fits search criteria, like specific Spark or Scala version, ML or Genomics runtime, etc., similar to executing `databricks clusters spark-versions`, and filters it to return the latest version that matches criteria. Often used along databricks.getNodeType data source.
      * 
      * &gt; This data source can only be used with a workspace-level provider!
      * 
@@ -23586,7 +24429,7 @@ public final class DatabricksFunctions {
         return getSparkVersion(GetSparkVersionArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * Gets [Databricks Runtime (DBR)](https://docs.databricks.com/runtime/dbr.html) version that could be used for `spark_version` parameter in databricks.Cluster and other resources that fits search criteria, like specific Spark or Scala version, ML or Genomics runtime, etc., similar to executing `databricks clusters spark-versions`, and filters it to return the latest version that matches criteria. Often used along databricks.getNodeType data source.
+     * Gets [Databricks Runtime (DBR)](https://docs.databricks.com/runtime/dbr.html) version that could be used for `sparkVersion` parameter in databricks.Cluster and other resources that fits search criteria, like specific Spark or Scala version, ML or Genomics runtime, etc., similar to executing `databricks clusters spark-versions`, and filters it to return the latest version that matches criteria. Often used along databricks.getNodeType data source.
      * 
      * &gt; This data source can only be used with a workspace-level provider!
      * 
@@ -23663,7 +24506,7 @@ public final class DatabricksFunctions {
         return getSparkVersionPlain(GetSparkVersionPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * Gets [Databricks Runtime (DBR)](https://docs.databricks.com/runtime/dbr.html) version that could be used for `spark_version` parameter in databricks.Cluster and other resources that fits search criteria, like specific Spark or Scala version, ML or Genomics runtime, etc., similar to executing `databricks clusters spark-versions`, and filters it to return the latest version that matches criteria. Often used along databricks.getNodeType data source.
+     * Gets [Databricks Runtime (DBR)](https://docs.databricks.com/runtime/dbr.html) version that could be used for `sparkVersion` parameter in databricks.Cluster and other resources that fits search criteria, like specific Spark or Scala version, ML or Genomics runtime, etc., similar to executing `databricks clusters spark-versions`, and filters it to return the latest version that matches criteria. Often used along databricks.getNodeType data source.
      * 
      * &gt; This data source can only be used with a workspace-level provider!
      * 
@@ -23740,7 +24583,7 @@ public final class DatabricksFunctions {
         return getSparkVersion(args, InvokeOptions.Empty);
     }
     /**
-     * Gets [Databricks Runtime (DBR)](https://docs.databricks.com/runtime/dbr.html) version that could be used for `spark_version` parameter in databricks.Cluster and other resources that fits search criteria, like specific Spark or Scala version, ML or Genomics runtime, etc., similar to executing `databricks clusters spark-versions`, and filters it to return the latest version that matches criteria. Often used along databricks.getNodeType data source.
+     * Gets [Databricks Runtime (DBR)](https://docs.databricks.com/runtime/dbr.html) version that could be used for `sparkVersion` parameter in databricks.Cluster and other resources that fits search criteria, like specific Spark or Scala version, ML or Genomics runtime, etc., similar to executing `databricks clusters spark-versions`, and filters it to return the latest version that matches criteria. Often used along databricks.getNodeType data source.
      * 
      * &gt; This data source can only be used with a workspace-level provider!
      * 
@@ -23817,7 +24660,7 @@ public final class DatabricksFunctions {
         return getSparkVersionPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Gets [Databricks Runtime (DBR)](https://docs.databricks.com/runtime/dbr.html) version that could be used for `spark_version` parameter in databricks.Cluster and other resources that fits search criteria, like specific Spark or Scala version, ML or Genomics runtime, etc., similar to executing `databricks clusters spark-versions`, and filters it to return the latest version that matches criteria. Often used along databricks.getNodeType data source.
+     * Gets [Databricks Runtime (DBR)](https://docs.databricks.com/runtime/dbr.html) version that could be used for `sparkVersion` parameter in databricks.Cluster and other resources that fits search criteria, like specific Spark or Scala version, ML or Genomics runtime, etc., similar to executing `databricks clusters spark-versions`, and filters it to return the latest version that matches criteria. Often used along databricks.getNodeType data source.
      * 
      * &gt; This data source can only be used with a workspace-level provider!
      * 
@@ -23894,7 +24737,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getSparkVersion:getSparkVersion", TypeShape.of(GetSparkVersionResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Gets [Databricks Runtime (DBR)](https://docs.databricks.com/runtime/dbr.html) version that could be used for `spark_version` parameter in databricks.Cluster and other resources that fits search criteria, like specific Spark or Scala version, ML or Genomics runtime, etc., similar to executing `databricks clusters spark-versions`, and filters it to return the latest version that matches criteria. Often used along databricks.getNodeType data source.
+     * Gets [Databricks Runtime (DBR)](https://docs.databricks.com/runtime/dbr.html) version that could be used for `sparkVersion` parameter in databricks.Cluster and other resources that fits search criteria, like specific Spark or Scala version, ML or Genomics runtime, etc., similar to executing `databricks clusters spark-versions`, and filters it to return the latest version that matches criteria. Often used along databricks.getNodeType data source.
      * 
      * &gt; This data source can only be used with a workspace-level provider!
      * 
@@ -23971,7 +24814,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getSparkVersion:getSparkVersion", TypeShape.of(GetSparkVersionResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Gets [Databricks Runtime (DBR)](https://docs.databricks.com/runtime/dbr.html) version that could be used for `spark_version` parameter in databricks.Cluster and other resources that fits search criteria, like specific Spark or Scala version, ML or Genomics runtime, etc., similar to executing `databricks clusters spark-versions`, and filters it to return the latest version that matches criteria. Often used along databricks.getNodeType data source.
+     * Gets [Databricks Runtime (DBR)](https://docs.databricks.com/runtime/dbr.html) version that could be used for `sparkVersion` parameter in databricks.Cluster and other resources that fits search criteria, like specific Spark or Scala version, ML or Genomics runtime, etc., similar to executing `databricks clusters spark-versions`, and filters it to return the latest version that matches criteria. Often used along databricks.getNodeType data source.
      * 
      * &gt; This data source can only be used with a workspace-level provider!
      * 
@@ -24052,6 +24895,53 @@ public final class DatabricksFunctions {
      * 
      * &gt; This data source can only be used with a workspace-level provider!
      * 
+     * ## Example Usage
+     * 
+     * * Retrieve attributes of each SQL warehouses in a workspace:
+     * 
+     * * Search for a specific SQL Warehouse by name:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetSqlWarehouseArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getSqlWarehouse(GetSqlWarehouseArgs.builder()
+     *             .name("Starter Warehouse")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Related resources
+     * 
+     * The following resources are often used in the same context:
+     * 
+     * * End to end workspace management guide.
+     * * databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.
+     * * databricks.SqlDashboard to manage Databricks SQL [Dashboards](https://docs.databricks.com/sql/user/dashboards/index.html).
+     * * databricks.SqlGlobalConfig to configure the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all databricks.getSqlWarehouse of workspace.
+     * * databricks.Grants to manage data access in Unity Catalog.
+     * 
      */
     public static Output<GetSqlWarehouseResult> getSqlWarehouse() {
         return getSqlWarehouse(GetSqlWarehouseArgs.Empty, InvokeOptions.Empty);
@@ -24060,6 +24950,53 @@ public final class DatabricksFunctions {
      * Retrieves information about a databricks.getSqlWarehouse using its id. This could be retrieved programmatically using databricks.getSqlWarehouses data source.
      * 
      * &gt; This data source can only be used with a workspace-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * * Retrieve attributes of each SQL warehouses in a workspace:
+     * 
+     * * Search for a specific SQL Warehouse by name:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetSqlWarehouseArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getSqlWarehouse(GetSqlWarehouseArgs.builder()
+     *             .name("Starter Warehouse")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Related resources
+     * 
+     * The following resources are often used in the same context:
+     * 
+     * * End to end workspace management guide.
+     * * databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.
+     * * databricks.SqlDashboard to manage Databricks SQL [Dashboards](https://docs.databricks.com/sql/user/dashboards/index.html).
+     * * databricks.SqlGlobalConfig to configure the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all databricks.getSqlWarehouse of workspace.
+     * * databricks.Grants to manage data access in Unity Catalog.
      * 
      */
     public static CompletableFuture<GetSqlWarehouseResult> getSqlWarehousePlain() {
@@ -24070,6 +25007,53 @@ public final class DatabricksFunctions {
      * 
      * &gt; This data source can only be used with a workspace-level provider!
      * 
+     * ## Example Usage
+     * 
+     * * Retrieve attributes of each SQL warehouses in a workspace:
+     * 
+     * * Search for a specific SQL Warehouse by name:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetSqlWarehouseArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getSqlWarehouse(GetSqlWarehouseArgs.builder()
+     *             .name("Starter Warehouse")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Related resources
+     * 
+     * The following resources are often used in the same context:
+     * 
+     * * End to end workspace management guide.
+     * * databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.
+     * * databricks.SqlDashboard to manage Databricks SQL [Dashboards](https://docs.databricks.com/sql/user/dashboards/index.html).
+     * * databricks.SqlGlobalConfig to configure the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all databricks.getSqlWarehouse of workspace.
+     * * databricks.Grants to manage data access in Unity Catalog.
+     * 
      */
     public static Output<GetSqlWarehouseResult> getSqlWarehouse(GetSqlWarehouseArgs args) {
         return getSqlWarehouse(args, InvokeOptions.Empty);
@@ -24078,6 +25062,53 @@ public final class DatabricksFunctions {
      * Retrieves information about a databricks.getSqlWarehouse using its id. This could be retrieved programmatically using databricks.getSqlWarehouses data source.
      * 
      * &gt; This data source can only be used with a workspace-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * * Retrieve attributes of each SQL warehouses in a workspace:
+     * 
+     * * Search for a specific SQL Warehouse by name:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetSqlWarehouseArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getSqlWarehouse(GetSqlWarehouseArgs.builder()
+     *             .name("Starter Warehouse")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Related resources
+     * 
+     * The following resources are often used in the same context:
+     * 
+     * * End to end workspace management guide.
+     * * databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.
+     * * databricks.SqlDashboard to manage Databricks SQL [Dashboards](https://docs.databricks.com/sql/user/dashboards/index.html).
+     * * databricks.SqlGlobalConfig to configure the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all databricks.getSqlWarehouse of workspace.
+     * * databricks.Grants to manage data access in Unity Catalog.
      * 
      */
     public static CompletableFuture<GetSqlWarehouseResult> getSqlWarehousePlain(GetSqlWarehousePlainArgs args) {
@@ -24088,6 +25119,53 @@ public final class DatabricksFunctions {
      * 
      * &gt; This data source can only be used with a workspace-level provider!
      * 
+     * ## Example Usage
+     * 
+     * * Retrieve attributes of each SQL warehouses in a workspace:
+     * 
+     * * Search for a specific SQL Warehouse by name:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetSqlWarehouseArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getSqlWarehouse(GetSqlWarehouseArgs.builder()
+     *             .name("Starter Warehouse")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Related resources
+     * 
+     * The following resources are often used in the same context:
+     * 
+     * * End to end workspace management guide.
+     * * databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.
+     * * databricks.SqlDashboard to manage Databricks SQL [Dashboards](https://docs.databricks.com/sql/user/dashboards/index.html).
+     * * databricks.SqlGlobalConfig to configure the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all databricks.getSqlWarehouse of workspace.
+     * * databricks.Grants to manage data access in Unity Catalog.
+     * 
      */
     public static Output<GetSqlWarehouseResult> getSqlWarehouse(GetSqlWarehouseArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getSqlWarehouse:getSqlWarehouse", TypeShape.of(GetSqlWarehouseResult.class), args, Utilities.withVersion(options));
@@ -24097,6 +25175,53 @@ public final class DatabricksFunctions {
      * 
      * &gt; This data source can only be used with a workspace-level provider!
      * 
+     * ## Example Usage
+     * 
+     * * Retrieve attributes of each SQL warehouses in a workspace:
+     * 
+     * * Search for a specific SQL Warehouse by name:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetSqlWarehouseArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getSqlWarehouse(GetSqlWarehouseArgs.builder()
+     *             .name("Starter Warehouse")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Related resources
+     * 
+     * The following resources are often used in the same context:
+     * 
+     * * End to end workspace management guide.
+     * * databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.
+     * * databricks.SqlDashboard to manage Databricks SQL [Dashboards](https://docs.databricks.com/sql/user/dashboards/index.html).
+     * * databricks.SqlGlobalConfig to configure the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all databricks.getSqlWarehouse of workspace.
+     * * databricks.Grants to manage data access in Unity Catalog.
+     * 
      */
     public static Output<GetSqlWarehouseResult> getSqlWarehouse(GetSqlWarehouseArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getSqlWarehouse:getSqlWarehouse", TypeShape.of(GetSqlWarehouseResult.class), args, Utilities.withVersion(options));
@@ -24105,6 +25230,53 @@ public final class DatabricksFunctions {
      * Retrieves information about a databricks.getSqlWarehouse using its id. This could be retrieved programmatically using databricks.getSqlWarehouses data source.
      * 
      * &gt; This data source can only be used with a workspace-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * * Retrieve attributes of each SQL warehouses in a workspace:
+     * 
+     * * Search for a specific SQL Warehouse by name:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetSqlWarehouseArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getSqlWarehouse(GetSqlWarehouseArgs.builder()
+     *             .name("Starter Warehouse")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Related resources
+     * 
+     * The following resources are often used in the same context:
+     * 
+     * * End to end workspace management guide.
+     * * databricks.InstanceProfile to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount.
+     * * databricks.SqlDashboard to manage Databricks SQL [Dashboards](https://docs.databricks.com/sql/user/dashboards/index.html).
+     * * databricks.SqlGlobalConfig to configure the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all databricks.getSqlWarehouse of workspace.
+     * * databricks.Grants to manage data access in Unity Catalog.
      * 
      */
     public static CompletableFuture<GetSqlWarehouseResult> getSqlWarehousePlain(GetSqlWarehousePlainArgs args, InvokeOptions options) {
@@ -26999,9 +28171,54 @@ public final class DatabricksFunctions {
     }
     /**
      * Retrieves details about databricks.Volume that was created by Pulumi or manually.
-     * A volume can be identified by its three-level (fully qualified) name (in the form of: `catalog_name`.`schema_name`.`volume_name`) as input. This can be retrieved programmatically using databricks.getVolumes data source.
+     * A volume can be identified by its three-level (fully qualified) name (in the form of: `catalogName`.`schemaName`.`volumeName`) as input. This can be retrieved programmatically using databricks.getVolumes data source.
      * 
      * &gt; This data source can only be used with a workspace-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * * Retrieve details of all volumes in in a _things_ databricks.Schema of a  _sandbox_ databricks_catalog:
+     * 
+     * * Search for a specific volume by its fully qualified name
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetVolumeArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getVolume(GetVolumeArgs.builder()
+     *             .name("catalog.schema.volume")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.Volume to manage volumes within Unity Catalog.
+     * * databricks.Schema to manage schemas within Unity Catalog.
+     * * databricks.Catalog to manage catalogs within Unity Catalog.
      * 
      */
     public static Output<GetVolumeResult> getVolume(GetVolumeArgs args) {
@@ -27009,9 +28226,54 @@ public final class DatabricksFunctions {
     }
     /**
      * Retrieves details about databricks.Volume that was created by Pulumi or manually.
-     * A volume can be identified by its three-level (fully qualified) name (in the form of: `catalog_name`.`schema_name`.`volume_name`) as input. This can be retrieved programmatically using databricks.getVolumes data source.
+     * A volume can be identified by its three-level (fully qualified) name (in the form of: `catalogName`.`schemaName`.`volumeName`) as input. This can be retrieved programmatically using databricks.getVolumes data source.
      * 
      * &gt; This data source can only be used with a workspace-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * * Retrieve details of all volumes in in a _things_ databricks.Schema of a  _sandbox_ databricks_catalog:
+     * 
+     * * Search for a specific volume by its fully qualified name
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetVolumeArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getVolume(GetVolumeArgs.builder()
+     *             .name("catalog.schema.volume")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.Volume to manage volumes within Unity Catalog.
+     * * databricks.Schema to manage schemas within Unity Catalog.
+     * * databricks.Catalog to manage catalogs within Unity Catalog.
      * 
      */
     public static CompletableFuture<GetVolumeResult> getVolumePlain(GetVolumePlainArgs args) {
@@ -27019,9 +28281,54 @@ public final class DatabricksFunctions {
     }
     /**
      * Retrieves details about databricks.Volume that was created by Pulumi or manually.
-     * A volume can be identified by its three-level (fully qualified) name (in the form of: `catalog_name`.`schema_name`.`volume_name`) as input. This can be retrieved programmatically using databricks.getVolumes data source.
+     * A volume can be identified by its three-level (fully qualified) name (in the form of: `catalogName`.`schemaName`.`volumeName`) as input. This can be retrieved programmatically using databricks.getVolumes data source.
      * 
      * &gt; This data source can only be used with a workspace-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * * Retrieve details of all volumes in in a _things_ databricks.Schema of a  _sandbox_ databricks_catalog:
+     * 
+     * * Search for a specific volume by its fully qualified name
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetVolumeArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getVolume(GetVolumeArgs.builder()
+     *             .name("catalog.schema.volume")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.Volume to manage volumes within Unity Catalog.
+     * * databricks.Schema to manage schemas within Unity Catalog.
+     * * databricks.Catalog to manage catalogs within Unity Catalog.
      * 
      */
     public static Output<GetVolumeResult> getVolume(GetVolumeArgs args, InvokeOptions options) {
@@ -27029,9 +28336,54 @@ public final class DatabricksFunctions {
     }
     /**
      * Retrieves details about databricks.Volume that was created by Pulumi or manually.
-     * A volume can be identified by its three-level (fully qualified) name (in the form of: `catalog_name`.`schema_name`.`volume_name`) as input. This can be retrieved programmatically using databricks.getVolumes data source.
+     * A volume can be identified by its three-level (fully qualified) name (in the form of: `catalogName`.`schemaName`.`volumeName`) as input. This can be retrieved programmatically using databricks.getVolumes data source.
      * 
      * &gt; This data source can only be used with a workspace-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * * Retrieve details of all volumes in in a _things_ databricks.Schema of a  _sandbox_ databricks_catalog:
+     * 
+     * * Search for a specific volume by its fully qualified name
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetVolumeArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getVolume(GetVolumeArgs.builder()
+     *             .name("catalog.schema.volume")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.Volume to manage volumes within Unity Catalog.
+     * * databricks.Schema to manage schemas within Unity Catalog.
+     * * databricks.Catalog to manage catalogs within Unity Catalog.
      * 
      */
     public static Output<GetVolumeResult> getVolume(GetVolumeArgs args, InvokeOutputOptions options) {
@@ -27039,9 +28391,54 @@ public final class DatabricksFunctions {
     }
     /**
      * Retrieves details about databricks.Volume that was created by Pulumi or manually.
-     * A volume can be identified by its three-level (fully qualified) name (in the form of: `catalog_name`.`schema_name`.`volume_name`) as input. This can be retrieved programmatically using databricks.getVolumes data source.
+     * A volume can be identified by its three-level (fully qualified) name (in the form of: `catalogName`.`schemaName`.`volumeName`) as input. This can be retrieved programmatically using databricks.getVolumes data source.
      * 
      * &gt; This data source can only be used with a workspace-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * * Retrieve details of all volumes in in a _things_ databricks.Schema of a  _sandbox_ databricks_catalog:
+     * 
+     * * Search for a specific volume by its fully qualified name
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetVolumeArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getVolume(GetVolumeArgs.builder()
+     *             .name("catalog.schema.volume")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Related Resources
+     * 
+     * The following resources are used in the same context:
+     * 
+     * * databricks.Volume to manage volumes within Unity Catalog.
+     * * databricks.Schema to manage schemas within Unity Catalog.
+     * * databricks.Catalog to manage catalogs within Unity Catalog.
      * 
      */
     public static CompletableFuture<GetVolumeResult> getVolumePlain(GetVolumePlainArgs args, InvokeOptions options) {

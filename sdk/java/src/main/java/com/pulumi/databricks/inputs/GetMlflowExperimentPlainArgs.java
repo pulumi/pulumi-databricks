@@ -63,14 +63,14 @@ public final class GetMlflowExperimentPlainArgs extends com.pulumi.resources.Inv
     }
 
     /**
-     * Unique identifier for the experiment. (same as `experiment_id`)
+     * Unique identifier for the experiment. (same as `experimentId`)
      * 
      */
     @Import(name="id")
     private @Nullable String id;
 
     /**
-     * @return Unique identifier for the experiment. (same as `experiment_id`)
+     * @return Unique identifier for the experiment. (same as `experimentId`)
      * 
      */
     public Optional<String> id() {
@@ -202,7 +202,7 @@ public final class GetMlflowExperimentPlainArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param id Unique identifier for the experiment. (same as `experiment_id`)
+         * @param id Unique identifier for the experiment. (same as `experimentId`)
          * 
          * @return builder
          * 

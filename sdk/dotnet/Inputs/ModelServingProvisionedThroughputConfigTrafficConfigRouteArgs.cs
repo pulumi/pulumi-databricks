@@ -13,7 +13,7 @@ namespace Pulumi.Databricks.Inputs
     public sealed class ModelServingProvisionedThroughputConfigTrafficConfigRouteArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the served entity this route configures traffic for. This needs to match the name of a `served_entity` block.
+        /// The name of the served entity this route configures traffic for. This needs to match the name of a `ServedEntity` block.
         /// </summary>
         [Input("servedEntityName")]
         public Input<string>? ServedEntityName { get; set; }

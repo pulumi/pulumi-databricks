@@ -197,7 +197,7 @@ namespace Pulumi.Databricks
         public readonly string ObjectType;
         public readonly string Path;
         /// <summary>
-        /// path on Workspace File System (WSFS) in form of `/Workspace` + `path`
+        /// path on Workspace File System (WSFS) in form of `/Workspace` + `Path`
         /// </summary>
         public readonly string WorkspacePath;
 

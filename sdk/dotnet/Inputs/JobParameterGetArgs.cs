@@ -15,7 +15,7 @@ namespace Pulumi.Databricks.Inputs
         /// <summary>
         /// Default value of the parameter.
         /// 
-        /// *You can use this block only together with `task` blocks, not with the legacy tasks specification!*
+        /// *You can use this block only together with `Task` blocks, not with the legacy tasks specification!*
         /// </summary>
         [Input("default", required: true)]
         public Input<string> Default { get; set; } = null!;

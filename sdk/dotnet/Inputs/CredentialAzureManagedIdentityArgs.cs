@@ -27,7 +27,7 @@ namespace Pulumi.Databricks.Inputs
         /// <summary>
         /// The Resource ID of the Azure User Assigned Managed Identity associated with Azure Databricks Access Connector, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.ManagedIdentity/userAssignedIdentities/user-managed-identity-name`.
         /// 
-        /// `azure_service_principal` optional configuration block to use service principal as credential details for Azure. Only applicable when purpose is `STORAGE` (Legacy):
+        /// `AzureServicePrincipal` optional configuration block to use service principal as credential details for Azure. Only applicable when purpose is `STORAGE` (Legacy):
         /// </summary>
         [Input("managedIdentityId")]
         public Input<string>? ManagedIdentityId { get; set; }

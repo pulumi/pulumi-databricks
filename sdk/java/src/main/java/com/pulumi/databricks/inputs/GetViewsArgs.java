@@ -33,14 +33,14 @@ public final class GetViewsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * set of databricks_view full names: *`catalog`.`schema`.`view`*
+     * set of databricksView full names: *`catalog`.`schema`.`view`*
      * 
      */
     @Import(name="ids")
     private @Nullable Output<List<String>> ids;
 
     /**
-     * @return set of databricks_view full names: *`catalog`.`schema`.`view`*
+     * @return set of databricksView full names: *`catalog`.`schema`.`view`*
      * 
      */
     public Optional<Output<List<String>>> ids() {
@@ -110,7 +110,7 @@ public final class GetViewsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param ids set of databricks_view full names: *`catalog`.`schema`.`view`*
+         * @param ids set of databricksView full names: *`catalog`.`schema`.`view`*
          * 
          * @return builder
          * 
@@ -121,7 +121,7 @@ public final class GetViewsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param ids set of databricks_view full names: *`catalog`.`schema`.`view`*
+         * @param ids set of databricksView full names: *`catalog`.`schema`.`view`*
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class GetViewsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param ids set of databricks_view full names: *`catalog`.`schema`.`view`*
+         * @param ids set of databricksView full names: *`catalog`.`schema`.`view`*
          * 
          * @return builder
          * 

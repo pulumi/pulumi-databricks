@@ -87,12 +87,12 @@ public final class GetTableTableInfo {
     private @Nullable Integer updatedAt;
     private @Nullable String updatedBy;
     /**
-     * @return View definition SQL (when `table_type` is VIEW, MATERIALIZED_VIEW, or STREAMING_TABLE)
+     * @return View definition SQL (when `tableType` is VIEW, MATERIALIZED_VIEW, or STREAMING_TABLE)
      * 
      */
     private @Nullable String viewDefinition;
     /**
-     * @return View dependencies (when `table_type` is VIEW or MATERIALIZED_VIEW, STREAMING_TABLE)
+     * @return View dependencies (when `tableType` is VIEW or MATERIALIZED_VIEW, STREAMING_TABLE)
      * 
      */
     private @Nullable GetTableTableInfoViewDependencies viewDependencies;
@@ -224,14 +224,14 @@ public final class GetTableTableInfo {
         return Optional.ofNullable(this.updatedBy);
     }
     /**
-     * @return View definition SQL (when `table_type` is VIEW, MATERIALIZED_VIEW, or STREAMING_TABLE)
+     * @return View definition SQL (when `tableType` is VIEW, MATERIALIZED_VIEW, or STREAMING_TABLE)
      * 
      */
     public Optional<String> viewDefinition() {
         return Optional.ofNullable(this.viewDefinition);
     }
     /**
-     * @return View dependencies (when `table_type` is VIEW or MATERIALIZED_VIEW, STREAMING_TABLE)
+     * @return View dependencies (when `tableType` is VIEW or MATERIALIZED_VIEW, STREAMING_TABLE)
      * 
      */
     public Optional<GetTableTableInfoViewDependencies> viewDependencies() {

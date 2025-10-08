@@ -325,6 +325,92 @@ class DatabaseSyncedDatabaseTable(pulumi.CustomResource):
 
         ## Example Usage
 
+        ### Creating a Synced Database Table inside a Database Catalog
+
+        This example creates a Synced Database Table inside a Database Catalog.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        this = databricks.DatabaseSyncedDatabaseTable("this",
+            name="my_database_catalog.public.synced_table",
+            logical_database_name="databricks_postgres",
+            spec={
+                "scheduling_policy": "SNAPSHOT",
+                "source_table_full_name": "source_delta.tpch.customer",
+                "primary_key_columns": ["c_custkey"],
+                "create_database_objects_if_missing": True,
+                "new_pipeline_spec": {
+                    "storageCatalog": "source_delta",
+                    "storageSchema": "tpch",
+                },
+            })
+        ```
+
+        ### Creating a Synced Database Table inside a Standard Catalog
+
+        This example creates a Synced Database Table inside a Standard Catalog.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        this = databricks.DatabaseSyncedDatabaseTable("this",
+            name="my_standard_catalog.public.synced_table",
+            logical_database_name="databricks_postgres",
+            database_instance_name="my-database-instance",
+            spec={
+                "scheduling_policy": "SNAPSHOT",
+                "source_table_full_name": "source_delta.tpch.customer",
+                "primary_key_columns": ["c_custkey"],
+                "create_database_objects_if_missing": True,
+                "new_pipeline_spec": {
+                    "storageCatalog": "source_delta",
+                    "storageSchema": "tpch",
+                },
+            })
+        ```
+
+        ### Creating multiple Synced Database Tables and bin packing them into a single pipeline
+
+        This example creates two Synced Database Tables. The first one specifies a new pipeline spec,
+        which generates a new pipeline. The second one utilizes the pipeline ID of the first table.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        instance = databricks.DatabaseInstance("instance",
+            name="my-database-instance",
+            capacity="CU_1")
+        synced_table1 = databricks.DatabaseSyncedDatabaseTable("synced_table_1",
+            name="my_standard_catalog.public.synced_table1",
+            logical_database_name="databricks_postgres",
+            database_instance_name=instance.name,
+            spec={
+                "scheduling_policy": "SNAPSHOT",
+                "source_table_full_name": "source_delta.tpch.customer",
+                "primary_key_columns": ["c_custkey"],
+                "create_database_objects_if_missing": True,
+                "new_pipeline_spec": {
+                    "storageCatalog": "source_delta",
+                    "storageSchema": "tpch",
+                },
+            })
+        synced_table2 = databricks.DatabaseSyncedDatabaseTable("synced_table_2",
+            name="my_standard_catalog.public.synced_table2",
+            logical_database_name="databricks_postgres",
+            database_instance_name=instance.name,
+            spec={
+                "scheduling_policy": "SNAPSHOT",
+                "source_table_full_name": "source_delta.tpch.customer",
+                "primary_key_columns": ["c_custkey"],
+                "create_database_objects_if_missing": True,
+                "existing_pipeline_id": synced_table1.data_synchronization_status.pipeline_id,
+            })
+        ```
+
         ## Import
 
         As of Pulumi v1.5, resources can be imported through configuration.
@@ -378,6 +464,92 @@ class DatabaseSyncedDatabaseTable(pulumi.CustomResource):
         Synced Database Tables can be bin packed inside a single pipeline to optimize costs.
 
         ## Example Usage
+
+        ### Creating a Synced Database Table inside a Database Catalog
+
+        This example creates a Synced Database Table inside a Database Catalog.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        this = databricks.DatabaseSyncedDatabaseTable("this",
+            name="my_database_catalog.public.synced_table",
+            logical_database_name="databricks_postgres",
+            spec={
+                "scheduling_policy": "SNAPSHOT",
+                "source_table_full_name": "source_delta.tpch.customer",
+                "primary_key_columns": ["c_custkey"],
+                "create_database_objects_if_missing": True,
+                "new_pipeline_spec": {
+                    "storageCatalog": "source_delta",
+                    "storageSchema": "tpch",
+                },
+            })
+        ```
+
+        ### Creating a Synced Database Table inside a Standard Catalog
+
+        This example creates a Synced Database Table inside a Standard Catalog.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        this = databricks.DatabaseSyncedDatabaseTable("this",
+            name="my_standard_catalog.public.synced_table",
+            logical_database_name="databricks_postgres",
+            database_instance_name="my-database-instance",
+            spec={
+                "scheduling_policy": "SNAPSHOT",
+                "source_table_full_name": "source_delta.tpch.customer",
+                "primary_key_columns": ["c_custkey"],
+                "create_database_objects_if_missing": True,
+                "new_pipeline_spec": {
+                    "storageCatalog": "source_delta",
+                    "storageSchema": "tpch",
+                },
+            })
+        ```
+
+        ### Creating multiple Synced Database Tables and bin packing them into a single pipeline
+
+        This example creates two Synced Database Tables. The first one specifies a new pipeline spec,
+        which generates a new pipeline. The second one utilizes the pipeline ID of the first table.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        instance = databricks.DatabaseInstance("instance",
+            name="my-database-instance",
+            capacity="CU_1")
+        synced_table1 = databricks.DatabaseSyncedDatabaseTable("synced_table_1",
+            name="my_standard_catalog.public.synced_table1",
+            logical_database_name="databricks_postgres",
+            database_instance_name=instance.name,
+            spec={
+                "scheduling_policy": "SNAPSHOT",
+                "source_table_full_name": "source_delta.tpch.customer",
+                "primary_key_columns": ["c_custkey"],
+                "create_database_objects_if_missing": True,
+                "new_pipeline_spec": {
+                    "storageCatalog": "source_delta",
+                    "storageSchema": "tpch",
+                },
+            })
+        synced_table2 = databricks.DatabaseSyncedDatabaseTable("synced_table_2",
+            name="my_standard_catalog.public.synced_table2",
+            logical_database_name="databricks_postgres",
+            database_instance_name=instance.name,
+            spec={
+                "scheduling_policy": "SNAPSHOT",
+                "source_table_full_name": "source_delta.tpch.customer",
+                "primary_key_columns": ["c_custkey"],
+                "create_database_objects_if_missing": True,
+                "existing_pipeline_id": synced_table1.data_synchronization_status.pipeline_id,
+            })
+        ```
 
         ## Import
 

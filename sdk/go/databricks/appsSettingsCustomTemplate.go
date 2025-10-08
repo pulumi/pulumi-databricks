@@ -52,6 +52,99 @@ import (
 //
 // ```
 //
+// ### Example with API Scopes
+//
+// This example creates a custom template that declares required user API scopes.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewAppsSettingsCustomTemplate(ctx, "api_scopes_example", &databricks.AppsSettingsCustomTemplateArgs{
+//				Name:        pulumi.String("my-api-template"),
+//				Description: pulumi.String("A template that requests user API scopes"),
+//				GitRepo:     pulumi.String("https://github.com/example/my-app.git"),
+//				Path:        pulumi.String("templates/app"),
+//				GitProvider: pulumi.String("github"),
+//				Manifest: &databricks.AppsSettingsCustomTemplateManifestArgs{
+//					Version:     pulumi.Int(1),
+//					Name:        pulumi.String("my-databricks-app"),
+//					Description: pulumi.String("This app requires the SQL API scope."),
+//					User_api_scopes: []string{
+//						"sql",
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Example with Resource Requirements
+//
+// This example defines a template that requests specific workspace resources with permissions granted.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewAppsSettingsCustomTemplate(ctx, "resources_example", &databricks.AppsSettingsCustomTemplateArgs{
+//				Name:        pulumi.String("my-resource-template"),
+//				Description: pulumi.String("Template that requires secret and SQL warehouse access"),
+//				GitRepo:     pulumi.String("https://github.com/example/resource-app.git"),
+//				Path:        pulumi.String("resource-template"),
+//				GitProvider: pulumi.String("github"),
+//				Manifest: &databricks.AppsSettingsCustomTemplateManifestArgs{
+//					Version:     pulumi.Int(1),
+//					Name:        pulumi.String("resource-consuming-app"),
+//					Description: pulumi.String("This app requires access to a secret and SQL warehouse."),
+//					Resource_specs: []interface{}{
+//						map[string]interface{}{
+//							"name":        "my-secret",
+//							"description": "A secret needed by the app",
+//							"secretSpec": map[string]interface{}{
+//								"permission": "READ",
+//							},
+//						},
+//						map[string]interface{}{
+//							"name":        "warehouse",
+//							"description": "Warehouse access",
+//							"sqlWarehouseSpec": map[string]interface{}{
+//								"permission": "CAN_USE",
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // As of Pulumi v1.5, resources can be imported through configuration.

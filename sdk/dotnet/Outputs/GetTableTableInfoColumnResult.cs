@@ -19,7 +19,7 @@ namespace Pulumi.Databricks.Outputs
         public readonly string? Comment;
         public readonly Outputs.GetTableTableInfoColumnMaskResult? Mask;
         /// <summary>
-        /// Full name of the databricks_table: _`catalog`.`schema`.`table`_
+        /// Full name of the databricks_table: _`Catalog`.`Schema`.`Table`_
         /// </summary>
         public readonly string? Name;
         public readonly bool? Nullable;

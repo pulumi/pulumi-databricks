@@ -14,15 +14,15 @@ namespace Pulumi.Databricks
     /// 
     /// &gt; This resource can only be used with an account-level provider!
     /// 
-    /// &gt; The `gke_config` argument is now deprecated and no longer supported. If you have already created a workspace using these fields, it is safe to remove them from your Pulumi template.
+    /// &gt; The `GkeConfig` argument is now deprecated and no longer supported. If you have already created a workspace using these fields, it is safe to remove them from your Pulumi template.
     /// 
-    /// &gt; On Azure you need to use azurerm_databricks_workspace resource to create Azure Databricks workspaces.
+    /// &gt; On Azure you need to use AzurermDatabricksWorkspace resource to create Azure Databricks workspaces.
     /// 
     /// ## Example Usage
     /// 
     /// ### Creating a serverless workspace in AWS
     /// 
-    /// Creating a serverless workspace does not require any prerequisite resources. Simply specify `compute_mode = "SERVERLESS"` when creating the workspace. Serverless workspaces must not include `credentials_id` or `storage_configuration_id`.
+    /// Creating a serverless workspace does not require any prerequisite resources. Simply specify `ComputeMode = "SERVERLESS"` when creating the workspace. Serverless workspaces must not include `CredentialsId` or `StorageConfigurationId`.
     /// 
     /// To use serverless workspaces, you must enroll in the [Default Storage preview](https://docs.databricks.com/aws/en/storage/express-storage).
     /// 
@@ -253,7 +253,7 @@ namespace Pulumi.Databricks
     /// });
     /// ```
     /// 
-    /// In order to create a [Databricks Workspace that leverages AWS PrivateLink](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html) please ensure that you have read and understood the [Enable Private Link](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html) documentation and then customise the example above with the relevant examples from mws_vpc_endpoint, mws_private_access_settings and mws_networks.
+    /// In order to create a [Databricks Workspace that leverages AWS PrivateLink](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html) please ensure that you have read and understood the [Enable Private Link](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html) documentation and then customise the example above with the relevant examples from mws_vpc_endpoint, MwsPrivateAccessSettings and mws_networks.
     /// 
     /// ### Creating a workspace on GCP
     /// 
@@ -309,7 +309,7 @@ namespace Pulumi.Databricks
     /// });
     /// ```
     /// 
-    /// In order to create a [Databricks Workspace that leverages GCP Private Service Connect](https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/private-service-connect.html) please ensure that you have read and understood the [Enable Private Service Connect](https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/private-service-connect.html) documentation and then customise the example above with the relevant examples from mws_vpc_endpoint, mws_private_access_settings and mws_networks.
+    /// In order to create a [Databricks Workspace that leverages GCP Private Service Connect](https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/private-service-connect.html) please ensure that you have read and understood the [Enable Private Service Connect](https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/private-service-connect.html) documentation and then customise the example above with the relevant examples from mws_vpc_endpoint, MwsPrivateAccessSettings and mws_networks.
     /// 
     /// ## Import
     /// 
@@ -370,7 +370,7 @@ namespace Pulumi.Databricks
         public Output<Outputs.MwsWorkspacesCloudResourceContainer?> CloudResourceContainer { get; private set; } = null!;
 
         /// <summary>
-        /// The compute mode for the workspace. When unset, a classic workspace is created, and both `credentials_id` and `storage_configuration_id` must be specified. When set to `SERVERLESS`, the resulting workspace is a serverless workspace, and `credentials_id` and `storage_configuration_id` must not be set. The only allowed value for this is `SERVERLESS`. Changing this field requires recreation of the workspace.
+        /// The compute mode for the workspace. When unset, a classic workspace is created, and both `CredentialsId` and `StorageConfigurationId` must be specified. When set to `SERVERLESS`, the resulting workspace is a serverless workspace, and `CredentialsId` and `StorageConfigurationId` must not be set. The only allowed value for this is `SERVERLESS`. Changing this field requires recreation of the workspace.
         /// 
         /// &gt; Databricks strongly recommends using OAuth instead of PATs for user account client authentication and authorization due to the improved security
         /// </summary>
@@ -384,13 +384,13 @@ namespace Pulumi.Databricks
         public Output<int> CreationTime { get; private set; } = null!;
 
         /// <summary>
-        /// `credentials_id` from credentials. This must not be specified when `compute_mode` is set to `SERVERLESS`.
+        /// `CredentialsId` from credentials. This must not be specified when `ComputeMode` is set to `SERVERLESS`.
         /// </summary>
         [Output("credentialsId")]
         public Output<string?> CredentialsId { get; private set; } = null!;
 
         /// <summary>
-        /// The custom tags key-value pairing that is attached to this workspace. These tags will be applied to clusters automatically in addition to any `default_tags` or `custom_tags` on a cluster level. Please note it can take up to an hour for custom_tags to be set due to scheduling on Control Plane. After custom tags are applied, they can be modified however they can never be completely removed.
+        /// The custom tags key-value pairing that is attached to this workspace. These tags will be applied to clusters automatically in addition to any `DefaultTags` or `CustomTags` on a cluster level. Please note it can take up to an hour for CustomTags to be set due to scheduling on Control Plane. After custom tags are applied, they can be modified however they can never be completely removed.
         /// </summary>
         [Output("customTags")]
         public Output<ImmutableDictionary<string, string>?> CustomTags { get; private set; } = null!;
@@ -435,13 +435,13 @@ namespace Pulumi.Databricks
         public Output<string?> Location { get; private set; } = null!;
 
         /// <summary>
-        /// `customer_managed_key_id` from customer managed keys with `use_cases` set to `MANAGED_SERVICES`. This is used to encrypt the workspace's notebook and secret data in the control plane.
+        /// `CustomerManagedKeyId` from customer managed keys with `UseCases` set to `MANAGED_SERVICES`. This is used to encrypt the workspace's notebook and secret data in the control plane.
         /// </summary>
         [Output("managedServicesCustomerManagedKeyId")]
         public Output<string?> ManagedServicesCustomerManagedKeyId { get; private set; } = null!;
 
         /// <summary>
-        /// `network_id` from networks.
+        /// `NetworkId` from networks.
         /// </summary>
         [Output("networkId")]
         public Output<string?> NetworkId { get; private set; } = null!;
@@ -459,13 +459,13 @@ namespace Pulumi.Databricks
         public Output<string?> PrivateAccessSettingsId { get; private set; } = null!;
 
         /// <summary>
-        /// `storage_configuration_id` from storage configuration. This must not be specified when `compute_mode` is set to `SERVERLESS`.
+        /// `StorageConfigurationId` from storage configuration. This must not be specified when `ComputeMode` is set to `SERVERLESS`.
         /// </summary>
         [Output("storageConfigurationId")]
         public Output<string?> StorageConfigurationId { get; private set; } = null!;
 
         /// <summary>
-        /// `customer_managed_key_id` from customer managed keys with `use_cases` set to `STORAGE`. This is used to encrypt the DBFS Storage &amp; Cluster Volumes.
+        /// `CustomerManagedKeyId` from customer managed keys with `UseCases` set to `STORAGE`. This is used to encrypt the DBFS Storage &amp; Cluster Volumes.
         /// </summary>
         [Output("storageCustomerManagedKeyId")]
         public Output<string?> StorageCustomerManagedKeyId { get; private set; } = null!;
@@ -585,7 +585,7 @@ namespace Pulumi.Databricks
         public Input<Inputs.MwsWorkspacesCloudResourceContainerArgs>? CloudResourceContainer { get; set; }
 
         /// <summary>
-        /// The compute mode for the workspace. When unset, a classic workspace is created, and both `credentials_id` and `storage_configuration_id` must be specified. When set to `SERVERLESS`, the resulting workspace is a serverless workspace, and `credentials_id` and `storage_configuration_id` must not be set. The only allowed value for this is `SERVERLESS`. Changing this field requires recreation of the workspace.
+        /// The compute mode for the workspace. When unset, a classic workspace is created, and both `CredentialsId` and `StorageConfigurationId` must be specified. When set to `SERVERLESS`, the resulting workspace is a serverless workspace, and `CredentialsId` and `StorageConfigurationId` must not be set. The only allowed value for this is `SERVERLESS`. Changing this field requires recreation of the workspace.
         /// 
         /// &gt; Databricks strongly recommends using OAuth instead of PATs for user account client authentication and authorization due to the improved security
         /// </summary>
@@ -599,7 +599,7 @@ namespace Pulumi.Databricks
         public Input<int>? CreationTime { get; set; }
 
         /// <summary>
-        /// `credentials_id` from credentials. This must not be specified when `compute_mode` is set to `SERVERLESS`.
+        /// `CredentialsId` from credentials. This must not be specified when `ComputeMode` is set to `SERVERLESS`.
         /// </summary>
         [Input("credentialsId")]
         public Input<string>? CredentialsId { get; set; }
@@ -608,7 +608,7 @@ namespace Pulumi.Databricks
         private InputMap<string>? _customTags;
 
         /// <summary>
-        /// The custom tags key-value pairing that is attached to this workspace. These tags will be applied to clusters automatically in addition to any `default_tags` or `custom_tags` on a cluster level. Please note it can take up to an hour for custom_tags to be set due to scheduling on Control Plane. After custom tags are applied, they can be modified however they can never be completely removed.
+        /// The custom tags key-value pairing that is attached to this workspace. These tags will be applied to clusters automatically in addition to any `DefaultTags` or `CustomTags` on a cluster level. Please note it can take up to an hour for CustomTags to be set due to scheduling on Control Plane. After custom tags are applied, they can be modified however they can never be completely removed.
         /// </summary>
         public InputMap<string> CustomTags
         {
@@ -644,13 +644,13 @@ namespace Pulumi.Databricks
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// `customer_managed_key_id` from customer managed keys with `use_cases` set to `MANAGED_SERVICES`. This is used to encrypt the workspace's notebook and secret data in the control plane.
+        /// `CustomerManagedKeyId` from customer managed keys with `UseCases` set to `MANAGED_SERVICES`. This is used to encrypt the workspace's notebook and secret data in the control plane.
         /// </summary>
         [Input("managedServicesCustomerManagedKeyId")]
         public Input<string>? ManagedServicesCustomerManagedKeyId { get; set; }
 
         /// <summary>
-        /// `network_id` from networks.
+        /// `NetworkId` from networks.
         /// </summary>
         [Input("networkId")]
         public Input<string>? NetworkId { get; set; }
@@ -668,13 +668,13 @@ namespace Pulumi.Databricks
         public Input<string>? PrivateAccessSettingsId { get; set; }
 
         /// <summary>
-        /// `storage_configuration_id` from storage configuration. This must not be specified when `compute_mode` is set to `SERVERLESS`.
+        /// `StorageConfigurationId` from storage configuration. This must not be specified when `ComputeMode` is set to `SERVERLESS`.
         /// </summary>
         [Input("storageConfigurationId")]
         public Input<string>? StorageConfigurationId { get; set; }
 
         /// <summary>
-        /// `customer_managed_key_id` from customer managed keys with `use_cases` set to `STORAGE`. This is used to encrypt the DBFS Storage &amp; Cluster Volumes.
+        /// `CustomerManagedKeyId` from customer managed keys with `UseCases` set to `STORAGE`. This is used to encrypt the DBFS Storage &amp; Cluster Volumes.
         /// </summary>
         [Input("storageCustomerManagedKeyId")]
         public Input<string>? StorageCustomerManagedKeyId { get; set; }
@@ -752,7 +752,7 @@ namespace Pulumi.Databricks
         public Input<Inputs.MwsWorkspacesCloudResourceContainerGetArgs>? CloudResourceContainer { get; set; }
 
         /// <summary>
-        /// The compute mode for the workspace. When unset, a classic workspace is created, and both `credentials_id` and `storage_configuration_id` must be specified. When set to `SERVERLESS`, the resulting workspace is a serverless workspace, and `credentials_id` and `storage_configuration_id` must not be set. The only allowed value for this is `SERVERLESS`. Changing this field requires recreation of the workspace.
+        /// The compute mode for the workspace. When unset, a classic workspace is created, and both `CredentialsId` and `StorageConfigurationId` must be specified. When set to `SERVERLESS`, the resulting workspace is a serverless workspace, and `CredentialsId` and `StorageConfigurationId` must not be set. The only allowed value for this is `SERVERLESS`. Changing this field requires recreation of the workspace.
         /// 
         /// &gt; Databricks strongly recommends using OAuth instead of PATs for user account client authentication and authorization due to the improved security
         /// </summary>
@@ -766,7 +766,7 @@ namespace Pulumi.Databricks
         public Input<int>? CreationTime { get; set; }
 
         /// <summary>
-        /// `credentials_id` from credentials. This must not be specified when `compute_mode` is set to `SERVERLESS`.
+        /// `CredentialsId` from credentials. This must not be specified when `ComputeMode` is set to `SERVERLESS`.
         /// </summary>
         [Input("credentialsId")]
         public Input<string>? CredentialsId { get; set; }
@@ -775,7 +775,7 @@ namespace Pulumi.Databricks
         private InputMap<string>? _customTags;
 
         /// <summary>
-        /// The custom tags key-value pairing that is attached to this workspace. These tags will be applied to clusters automatically in addition to any `default_tags` or `custom_tags` on a cluster level. Please note it can take up to an hour for custom_tags to be set due to scheduling on Control Plane. After custom tags are applied, they can be modified however they can never be completely removed.
+        /// The custom tags key-value pairing that is attached to this workspace. These tags will be applied to clusters automatically in addition to any `DefaultTags` or `CustomTags` on a cluster level. Please note it can take up to an hour for CustomTags to be set due to scheduling on Control Plane. After custom tags are applied, they can be modified however they can never be completely removed.
         /// </summary>
         public InputMap<string> CustomTags
         {
@@ -823,13 +823,13 @@ namespace Pulumi.Databricks
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// `customer_managed_key_id` from customer managed keys with `use_cases` set to `MANAGED_SERVICES`. This is used to encrypt the workspace's notebook and secret data in the control plane.
+        /// `CustomerManagedKeyId` from customer managed keys with `UseCases` set to `MANAGED_SERVICES`. This is used to encrypt the workspace's notebook and secret data in the control plane.
         /// </summary>
         [Input("managedServicesCustomerManagedKeyId")]
         public Input<string>? ManagedServicesCustomerManagedKeyId { get; set; }
 
         /// <summary>
-        /// `network_id` from networks.
+        /// `NetworkId` from networks.
         /// </summary>
         [Input("networkId")]
         public Input<string>? NetworkId { get; set; }
@@ -847,13 +847,13 @@ namespace Pulumi.Databricks
         public Input<string>? PrivateAccessSettingsId { get; set; }
 
         /// <summary>
-        /// `storage_configuration_id` from storage configuration. This must not be specified when `compute_mode` is set to `SERVERLESS`.
+        /// `StorageConfigurationId` from storage configuration. This must not be specified when `ComputeMode` is set to `SERVERLESS`.
         /// </summary>
         [Input("storageConfigurationId")]
         public Input<string>? StorageConfigurationId { get; set; }
 
         /// <summary>
-        /// `customer_managed_key_id` from customer managed keys with `use_cases` set to `STORAGE`. This is used to encrypt the DBFS Storage &amp; Cluster Volumes.
+        /// `CustomerManagedKeyId` from customer managed keys with `UseCases` set to `STORAGE`. This is used to encrypt the DBFS Storage &amp; Cluster Volumes.
         /// </summary>
         [Input("storageCustomerManagedKeyId")]
         public Input<string>? StorageCustomerManagedKeyId { get; set; }

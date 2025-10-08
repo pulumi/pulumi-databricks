@@ -40,8 +40,8 @@ import javax.annotation.Nullable;
  * You can override built-in cluster policies by creating a `databricks.ClusterPolicy` resource with following attributes:
  * 
  * * `name` - the name of the built-in cluster policy.
- * * `policy_family_id` - the ID of the cluster policy family used for built-in cluster policy.
- * * `policy_family_definition_overrides` - settings to override in the built-in cluster policy.
+ * * `policyFamilyId` - the ID of the cluster policy family used for built-in cluster policy.
+ * * `policyFamilyDefinitionOverrides` - settings to override in the built-in cluster policy.
  * 
  * You can obtain the list of defined cluster policies families using the `databricks policy-families list` command of the new [Databricks CLI](https://docs.databricks.com/en/dev-tools/cli/index.html), or via [list policy families](https://docs.databricks.com/api/workspace/policyfamilies/list) REST API.
  * 
@@ -108,7 +108,7 @@ import javax.annotation.Nullable;
  * * databricks.Library to install a [library](https://docs.databricks.com/libraries/index.html) on databricks_cluster.
  * * databricks.getNodeType data to get the smallest node type for databricks.Cluster that fits search criteria, like amount of RAM or number of cores.
  * * databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
- * * databricks.getSparkVersion data to get [Databricks Runtime (DBR)](https://docs.databricks.com/runtime/dbr.html) version that could be used for `spark_version` parameter in databricks.Cluster and other resources.
+ * * databricks.getSparkVersion data to get [Databricks Runtime (DBR)](https://docs.databricks.com/runtime/dbr.html) version that could be used for `sparkVersion` parameter in databricks.Cluster and other resources.
  * * databricks.UserInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_user.
  * * databricks.WorkspaceConf to manage workspace configuration for expert usage.
  * 
@@ -138,14 +138,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="databricks:index/clusterPolicy:ClusterPolicy")
 public class ClusterPolicy extends com.pulumi.resources.CustomResource {
     /**
-     * Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition). Cannot be used with `policy_family_id`
+     * Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition). Cannot be used with `policyFamilyId`
      * 
      */
     @Export(name="definition", refs={String.class}, tree="[0]")
     private Output<String> definition;
 
     /**
-     * @return Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition). Cannot be used with `policy_family_id`
+     * @return Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition). Cannot be used with `policyFamilyId`
      * 
      */
     public Output<String> definition() {
@@ -214,14 +214,14 @@ public class ClusterPolicy extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.policyFamilyDefinitionOverrides);
     }
     /**
-     * ID of the policy family. The cluster policy&#39;s policy definition inherits the policy family&#39;s policy definition. Cannot be used with `definition`. Use `policy_family_definition_overrides` instead to customize the policy definition.
+     * ID of the policy family. The cluster policy&#39;s policy definition inherits the policy family&#39;s policy definition. Cannot be used with `definition`. Use `policyFamilyDefinitionOverrides` instead to customize the policy definition.
      * 
      */
     @Export(name="policyFamilyId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> policyFamilyId;
 
     /**
-     * @return ID of the policy family. The cluster policy&#39;s policy definition inherits the policy family&#39;s policy definition. Cannot be used with `definition`. Use `policy_family_definition_overrides` instead to customize the policy definition.
+     * @return ID of the policy family. The cluster policy&#39;s policy definition inherits the policy family&#39;s policy definition. Cannot be used with `definition`. Use `policyFamilyDefinitionOverrides` instead to customize the policy definition.
      * 
      */
     public Output<Optional<String>> policyFamilyId() {

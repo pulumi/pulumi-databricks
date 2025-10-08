@@ -14,7 +14,7 @@ namespace Pulumi.Databricks.Outputs
     public sealed class JobJobCluster
     {
         /// <summary>
-        /// Identifier that can be referenced in `task` block, so that cluster is shared between tasks
+        /// Identifier that can be referenced in `Task` block, so that cluster is shared between tasks
         /// </summary>
         public readonly string JobClusterKey;
         /// <summary>

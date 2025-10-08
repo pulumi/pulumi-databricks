@@ -16,7 +16,7 @@ namespace Pulumi.Databricks
     /// 
     /// ## Example Usage
     /// 
-    /// Dashboard using `serialized_dashboard` attribute:
+    /// Dashboard using `SerializedDashboard` attribute:
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -43,7 +43,7 @@ namespace Pulumi.Databricks
     /// });
     /// ```
     /// 
-    /// Dashboard using `file_path` attribute:
+    /// Dashboard using `FilePath` attribute:
     /// 
     /// ## Import
     /// 
@@ -86,7 +86,7 @@ namespace Pulumi.Databricks
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to embed credentials in the dashboard. Default is `true`.
+        /// Whether to embed credentials in the dashboard. Default is `True`.
         /// </summary>
         [Output("embedCredentials")]
         public Output<bool?> EmbedCredentials { get; private set; } = null!;
@@ -95,7 +95,7 @@ namespace Pulumi.Databricks
         public Output<string> Etag { get; private set; } = null!;
 
         /// <summary>
-        /// The path to the dashboard JSON file. Conflicts with `serialized_dashboard`.
+        /// The path to the dashboard JSON file. Conflicts with `SerializedDashboard`.
         /// </summary>
         [Output("filePath")]
         public Output<string?> FilePath { get; private set; } = null!;
@@ -116,7 +116,7 @@ namespace Pulumi.Databricks
         public Output<string> Path { get; private set; } = null!;
 
         /// <summary>
-        /// The contents of the dashboard in serialized string form. Conflicts with `file_path`.
+        /// The contents of the dashboard in serialized string form. Conflicts with `FilePath`.
         /// </summary>
         [Output("serializedDashboard")]
         public Output<string?> SerializedDashboard { get; private set; } = null!;
@@ -192,7 +192,7 @@ namespace Pulumi.Databricks
         public Input<string> DisplayName { get; set; } = null!;
 
         /// <summary>
-        /// Whether to embed credentials in the dashboard. Default is `true`.
+        /// Whether to embed credentials in the dashboard. Default is `True`.
         /// </summary>
         [Input("embedCredentials")]
         public Input<bool>? EmbedCredentials { get; set; }
@@ -201,7 +201,7 @@ namespace Pulumi.Databricks
         public Input<string>? Etag { get; set; }
 
         /// <summary>
-        /// The path to the dashboard JSON file. Conflicts with `serialized_dashboard`.
+        /// The path to the dashboard JSON file. Conflicts with `SerializedDashboard`.
         /// </summary>
         [Input("filePath")]
         public Input<string>? FilePath { get; set; }
@@ -222,7 +222,7 @@ namespace Pulumi.Databricks
         public Input<string>? Path { get; set; }
 
         /// <summary>
-        /// The contents of the dashboard in serialized string form. Conflicts with `file_path`.
+        /// The contents of the dashboard in serialized string form. Conflicts with `FilePath`.
         /// </summary>
         [Input("serializedDashboard")]
         public Input<string>? SerializedDashboard { get; set; }
@@ -260,7 +260,7 @@ namespace Pulumi.Databricks
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// Whether to embed credentials in the dashboard. Default is `true`.
+        /// Whether to embed credentials in the dashboard. Default is `True`.
         /// </summary>
         [Input("embedCredentials")]
         public Input<bool>? EmbedCredentials { get; set; }
@@ -269,7 +269,7 @@ namespace Pulumi.Databricks
         public Input<string>? Etag { get; set; }
 
         /// <summary>
-        /// The path to the dashboard JSON file. Conflicts with `serialized_dashboard`.
+        /// The path to the dashboard JSON file. Conflicts with `SerializedDashboard`.
         /// </summary>
         [Input("filePath")]
         public Input<string>? FilePath { get; set; }
@@ -290,7 +290,7 @@ namespace Pulumi.Databricks
         public Input<string>? Path { get; set; }
 
         /// <summary>
-        /// The contents of the dashboard in serialized string form. Conflicts with `file_path`.
+        /// The contents of the dashboard in serialized string form. Conflicts with `FilePath`.
         /// </summary>
         [Input("serializedDashboard")]
         public Input<string>? SerializedDashboard { get; set; }

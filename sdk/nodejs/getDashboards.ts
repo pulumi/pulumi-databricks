@@ -10,6 +10,28 @@ import * as utilities from "./utilities";
  * This data source allows you to retrieve information about Databricks [Dashboards](https://docs.databricks.com/en/dashboards/index.html).
  *
  * > This data source can only be used with a workspace-level provider!
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * export = async () => {
+ *     const all = await databricks.getDashboards({});
+ *     const dashboardsPermissions: databricks.Permissions[] = [];
+ *     for (const range of all.dashboards.map(__item => __item.dashboardId).map((v, k) => ({key: k, value: v}))) {
+ *         dashboardsPermissions.push(new databricks.Permissions(`dashboards_permissions-${range.key}`, {
+ *             depends: [all],
+ *             dashboardId: range.value,
+ *             accessControls: [{
+ *                 groupName: "Example Group",
+ *                 permissionLevel: "CAN_MANAGE",
+ *             }],
+ *         }));
+ *     }
+ * }
+ * ```
  */
 export function getDashboards(args?: GetDashboardsArgs, opts?: pulumi.InvokeOptions): Promise<GetDashboardsResult> {
     args = args || {};
@@ -47,6 +69,28 @@ export interface GetDashboardsResult {
  * This data source allows you to retrieve information about Databricks [Dashboards](https://docs.databricks.com/en/dashboards/index.html).
  *
  * > This data source can only be used with a workspace-level provider!
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * export = async () => {
+ *     const all = await databricks.getDashboards({});
+ *     const dashboardsPermissions: databricks.Permissions[] = [];
+ *     for (const range of all.dashboards.map(__item => __item.dashboardId).map((v, k) => ({key: k, value: v}))) {
+ *         dashboardsPermissions.push(new databricks.Permissions(`dashboards_permissions-${range.key}`, {
+ *             depends: [all],
+ *             dashboardId: range.value,
+ *             accessControls: [{
+ *                 groupName: "Example Group",
+ *                 permissionLevel: "CAN_MANAGE",
+ *             }],
+ *         }));
+ *     }
+ * }
+ * ```
  */
 export function getDashboardsOutput(args?: GetDashboardsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDashboardsResult> {
     args = args || {};

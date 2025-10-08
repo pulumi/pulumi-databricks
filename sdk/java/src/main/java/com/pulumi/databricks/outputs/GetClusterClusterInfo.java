@@ -67,7 +67,7 @@ public final class GetClusterClusterInfo {
     private @Nullable GetClusterClusterInfoDockerImage dockerImage;
     private @Nullable GetClusterClusterInfoDriver driver;
     /**
-     * @return similar to `instance_pool_id`, but for driver node.
+     * @return similar to `instancePoolId`, but for driver node.
      * 
      */
     private @Nullable String driverInstancePoolId;
@@ -225,7 +225,7 @@ public final class GetClusterClusterInfo {
         return Optional.ofNullable(this.driver);
     }
     /**
-     * @return similar to `instance_pool_id`, but for driver node.
+     * @return similar to `instancePoolId`, but for driver node.
      * 
      */
     public Optional<String> driverInstancePoolId() {

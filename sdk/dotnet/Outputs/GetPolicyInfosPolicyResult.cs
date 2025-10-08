@@ -14,7 +14,7 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetPolicyInfosPolicyResult
     {
         /// <summary>
-        /// (ColumnMaskOptions) - Options for column mask policies. Valid only if `policy_type` is `POLICY_TYPE_COLUMN_MASK`.
+        /// (ColumnMaskOptions) - Options for column mask policies. Valid only if `PolicyType` is `POLICY_TYPE_COLUMN_MASK`.
         /// Required on create and optional on update. When specified on update,
         /// the new options will replace the existing options as a whole
         /// </summary>
@@ -47,13 +47,13 @@ namespace Pulumi.Databricks.Outputs
         public readonly string Id;
         /// <summary>
         /// (list of MatchColumn) - Optional list of condition expressions used to match table columns.
-        /// Only valid when `for_securable_type` is `TABLE`.
+        /// Only valid when `ForSecurableType` is `TABLE`.
         /// When specified, the policy only applies to tables whose columns satisfy all match conditions
         /// </summary>
         public readonly ImmutableArray<Outputs.GetPolicyInfosPolicyMatchColumnResult> MatchColumns;
         /// <summary>
         /// (string) - Name of the policy. Required on create and optional on update.
-        /// To rename the policy, set `name` to a different value on update
+        /// To rename the policy, set `Name` to a different value on update
         /// </summary>
         public readonly string? Name;
         /// <summary>
@@ -69,7 +69,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string PolicyType;
         /// <summary>
-        /// (RowFilterOptions) - Options for row filter policies. Valid only if `policy_type` is `POLICY_TYPE_ROW_FILTER`.
+        /// (RowFilterOptions) - Options for row filter policies. Valid only if `PolicyType` is `POLICY_TYPE_ROW_FILTER`.
         /// Required on create and optional on update. When specified on update,
         /// the new options will replace the existing options as a whole
         /// </summary>

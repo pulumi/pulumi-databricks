@@ -19,12 +19,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class QueryParameter {
     /**
-     * @return Date-range query parameter value. Consists of following attributes (Can only specify one of `dynamic_date_range_value` or `date_range_value`):
+     * @return Date-range query parameter value. Consists of following attributes (Can only specify one of `dynamicDateRangeValue` or `dateRangeValue`):
      * 
      */
     private @Nullable QueryParameterDateRangeValue dateRangeValue;
     /**
-     * @return Date query parameter value. Consists of following attributes (Can only specify one of `dynamic_date_value` or `date_value`):
+     * @return Date query parameter value. Consists of following attributes (Can only specify one of `dynamicDateValue` or `dateValue`):
      * 
      */
     private @Nullable QueryParameterDateValue dateValue;
@@ -61,14 +61,14 @@ public final class QueryParameter {
 
     private QueryParameter() {}
     /**
-     * @return Date-range query parameter value. Consists of following attributes (Can only specify one of `dynamic_date_range_value` or `date_range_value`):
+     * @return Date-range query parameter value. Consists of following attributes (Can only specify one of `dynamicDateRangeValue` or `dateRangeValue`):
      * 
      */
     public Optional<QueryParameterDateRangeValue> dateRangeValue() {
         return Optional.ofNullable(this.dateRangeValue);
     }
     /**
-     * @return Date query parameter value. Consists of following attributes (Can only specify one of `dynamic_date_value` or `date_value`):
+     * @return Date query parameter value. Consists of following attributes (Can only specify one of `dynamicDateValue` or `dateValue`):
      * 
      */
     public Optional<QueryParameterDateValue> dateValue() {

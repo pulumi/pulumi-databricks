@@ -61,7 +61,7 @@ namespace Pulumi.Databricks.Inputs
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Username/groupname/sp application_id of the metastore owner.
+        /// Username/groupname/sp ApplicationId of the metastore owner.
         /// </summary>
         [Input("owner")]
         public Input<string>? Owner { get; set; }

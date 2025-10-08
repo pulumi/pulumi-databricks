@@ -22,7 +22,7 @@ namespace Pulumi.Databricks
     /// 
     /// ### Databricks Sharing with non databricks recipient
     /// 
-    /// Setting `authentication_type` type to `TOKEN` creates a temporary url to download a credentials file. This is used to
+    /// Setting `AuthenticationType` type to `TOKEN` creates a temporary url to download a credentials file. This is used to
     /// authenticate to the sharing server to access data. This is for when the recipient is not using Databricks.
     /// 
     /// ```csharp
@@ -98,7 +98,7 @@ namespace Pulumi.Databricks
         public Output<string> AuthenticationType { get; private set; } = null!;
 
         /// <summary>
-        /// Cloud vendor of the recipient's Unity Catalog Metstore. This field is only present when the authentication_type is `DATABRICKS`.
+        /// Cloud vendor of the recipient's Unity Catalog Metstore. This field is only present when the AuthenticationType is `DATABRICKS`.
         /// </summary>
         [Output("cloud")]
         public Output<string> Cloud { get; private set; } = null!;
@@ -122,7 +122,7 @@ namespace Pulumi.Databricks
         public Output<string> CreatedBy { get; private set; } = null!;
 
         /// <summary>
-        /// Required when `authentication_type` is `DATABRICKS`.
+        /// Required when `AuthenticationType` is `DATABRICKS`.
         /// </summary>
         [Output("dataRecipientGlobalMetastoreId")]
         public Output<string?> DataRecipientGlobalMetastoreId { get; private set; } = null!;
@@ -140,7 +140,7 @@ namespace Pulumi.Databricks
         public Output<Outputs.RecipientIpAccessList?> IpAccessList { get; private set; } = null!;
 
         /// <summary>
-        /// Unique identifier of recipient's Unity Catalog metastore. This field is only present when the authentication_type is `DATABRICKS`.
+        /// Unique identifier of recipient's Unity Catalog metastore. This field is only present when the AuthenticationType is `DATABRICKS`.
         /// </summary>
         [Output("metastoreId")]
         public Output<string> MetastoreId { get; private set; } = null!;
@@ -152,7 +152,7 @@ namespace Pulumi.Databricks
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Username/groupname/sp application_id of the recipient owner.
+        /// Username/groupname/sp ApplicationId of the recipient owner.
         /// </summary>
         [Output("owner")]
         public Output<string?> Owner { get; private set; } = null!;
@@ -164,7 +164,7 @@ namespace Pulumi.Databricks
         public Output<Outputs.RecipientPropertiesKvpairs?> PropertiesKvpairs { get; private set; } = null!;
 
         /// <summary>
-        /// Cloud region of the recipient's Unity Catalog Metstore. This field is only present when the authentication_type is `DATABRICKS`.
+        /// Cloud region of the recipient's Unity Catalog Metstore. This field is only present when the AuthenticationType is `DATABRICKS`.
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
@@ -176,7 +176,7 @@ namespace Pulumi.Databricks
         public Output<string?> SharingCode { get; private set; } = null!;
 
         /// <summary>
-        /// List of Recipient Tokens. This field is only present when the authentication_type is TOKEN. Each list element is an object with following attributes:
+        /// List of Recipient Tokens. This field is only present when the AuthenticationType is TOKEN. Each list element is an object with following attributes:
         /// </summary>
         [Output("tokens")]
         public Output<ImmutableArray<Outputs.RecipientToken>> Tokens { get; private set; } = null!;
@@ -256,7 +256,7 @@ namespace Pulumi.Databricks
         public Input<string>? Comment { get; set; }
 
         /// <summary>
-        /// Required when `authentication_type` is `DATABRICKS`.
+        /// Required when `AuthenticationType` is `DATABRICKS`.
         /// </summary>
         [Input("dataRecipientGlobalMetastoreId")]
         public Input<string>? DataRecipientGlobalMetastoreId { get; set; }
@@ -280,7 +280,7 @@ namespace Pulumi.Databricks
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Username/groupname/sp application_id of the recipient owner.
+        /// Username/groupname/sp ApplicationId of the recipient owner.
         /// </summary>
         [Input("owner")]
         public Input<string>? Owner { get; set; }
@@ -311,7 +311,7 @@ namespace Pulumi.Databricks
         private InputList<Inputs.RecipientTokenArgs>? _tokens;
 
         /// <summary>
-        /// List of Recipient Tokens. This field is only present when the authentication_type is TOKEN. Each list element is an object with following attributes:
+        /// List of Recipient Tokens. This field is only present when the AuthenticationType is TOKEN. Each list element is an object with following attributes:
         /// </summary>
         public InputList<Inputs.RecipientTokenArgs> Tokens
         {
@@ -343,7 +343,7 @@ namespace Pulumi.Databricks
         public Input<string>? AuthenticationType { get; set; }
 
         /// <summary>
-        /// Cloud vendor of the recipient's Unity Catalog Metstore. This field is only present when the authentication_type is `DATABRICKS`.
+        /// Cloud vendor of the recipient's Unity Catalog Metstore. This field is only present when the AuthenticationType is `DATABRICKS`.
         /// </summary>
         [Input("cloud")]
         public Input<string>? Cloud { get; set; }
@@ -367,7 +367,7 @@ namespace Pulumi.Databricks
         public Input<string>? CreatedBy { get; set; }
 
         /// <summary>
-        /// Required when `authentication_type` is `DATABRICKS`.
+        /// Required when `AuthenticationType` is `DATABRICKS`.
         /// </summary>
         [Input("dataRecipientGlobalMetastoreId")]
         public Input<string>? DataRecipientGlobalMetastoreId { get; set; }
@@ -385,7 +385,7 @@ namespace Pulumi.Databricks
         public Input<Inputs.RecipientIpAccessListGetArgs>? IpAccessList { get; set; }
 
         /// <summary>
-        /// Unique identifier of recipient's Unity Catalog metastore. This field is only present when the authentication_type is `DATABRICKS`.
+        /// Unique identifier of recipient's Unity Catalog metastore. This field is only present when the AuthenticationType is `DATABRICKS`.
         /// </summary>
         [Input("metastoreId")]
         public Input<string>? MetastoreId { get; set; }
@@ -397,7 +397,7 @@ namespace Pulumi.Databricks
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Username/groupname/sp application_id of the recipient owner.
+        /// Username/groupname/sp ApplicationId of the recipient owner.
         /// </summary>
         [Input("owner")]
         public Input<string>? Owner { get; set; }
@@ -409,7 +409,7 @@ namespace Pulumi.Databricks
         public Input<Inputs.RecipientPropertiesKvpairsGetArgs>? PropertiesKvpairs { get; set; }
 
         /// <summary>
-        /// Cloud region of the recipient's Unity Catalog Metstore. This field is only present when the authentication_type is `DATABRICKS`.
+        /// Cloud region of the recipient's Unity Catalog Metstore. This field is only present when the AuthenticationType is `DATABRICKS`.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
@@ -434,7 +434,7 @@ namespace Pulumi.Databricks
         private InputList<Inputs.RecipientTokenGetArgs>? _tokens;
 
         /// <summary>
-        /// List of Recipient Tokens. This field is only present when the authentication_type is TOKEN. Each list element is an object with following attributes:
+        /// List of Recipient Tokens. This field is only present when the AuthenticationType is TOKEN. Each list element is an object with following attributes:
         /// </summary>
         public InputList<Inputs.RecipientTokenGetArgs> Tokens
         {

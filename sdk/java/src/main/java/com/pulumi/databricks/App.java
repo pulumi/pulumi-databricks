@@ -27,6 +27,73 @@ import javax.annotation.Nullable;
  * 
  * &gt; This resource can only be used with a workspace-level provider!
  * 
+ * ## Example Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.App;
+ * import com.pulumi.databricks.AppArgs;
+ * import com.pulumi.databricks.inputs.AppResourceArgs;
+ * import com.pulumi.databricks.inputs.AppResourceJobArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var this_ = new App("this", AppArgs.builder()
+ *             .name("my-custom-app")
+ *             .description("My app")
+ *             .resources(            
+ *                 AppResourceArgs.builder()
+ *                     .name("sql-warehouse")
+ *                     .sql_warehouse(Map.ofEntries(
+ *                         Map.entry("id", "e9ca293f79a74b5c"),
+ *                         Map.entry("permission", "CAN_MANAGE")
+ *                     ))
+ *                     .build(),
+ *                 AppResourceArgs.builder()
+ *                     .name("serving-endpoint")
+ *                     .serving_endpoint(Map.ofEntries(
+ *                         Map.entry("name", "databricks-meta-llama-3-1-70b-instruct"),
+ *                         Map.entry("permission", "CAN_MANAGE")
+ *                     ))
+ *                     .build(),
+ *                 AppResourceArgs.builder()
+ *                     .name("job")
+ *                     .job(AppResourceJobArgs.builder()
+ *                         .id("1234")
+ *                         .permission("CAN_MANAGE")
+ *                         .build())
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ## Related Resources
+ * 
+ * The following resources are used in the same context:
+ * 
+ * * databricks.SqlEndpoint to manage Databricks SQL [Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html).
+ * * databricks.ModelServing to serve this model on a Databricks serving endpoint.
+ * * databricks.Secret to manage [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
+ * * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code.
+ * 
  * ## Import
  * 
  * This resource can be imported by name:

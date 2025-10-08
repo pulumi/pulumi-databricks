@@ -14,7 +14,7 @@ namespace Pulumi.Databricks.Outputs
     public sealed class ClusterWorkloadTypeClients
     {
         /// <summary>
-        /// boolean flag defining if it's possible to run Databricks Jobs on this cluster. Default: `true`.
+        /// boolean flag defining if it's possible to run Databricks Jobs on this cluster. Default: `True`.
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -41,7 +41,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly bool? Jobs;
         /// <summary>
-        /// boolean flag defining if it's possible to run notebooks on this cluster. Default: `true`.
+        /// boolean flag defining if it's possible to run notebooks on this cluster. Default: `True`.
         /// </summary>
         public readonly bool? Notebooks;
 

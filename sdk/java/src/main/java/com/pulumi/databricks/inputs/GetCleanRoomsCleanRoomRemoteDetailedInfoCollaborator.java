@@ -90,7 +90,7 @@ public final class GetCleanRoomsCleanRoomRemoteDetailedInfoCollaborator extends 
 
     /**
      * (integer) - Workspace ID of the user who is receiving the clean room &#34;invitation&#34;. Must be specified if
-     * invite_recipient_email is specified.
+     * inviteRecipientEmail is specified.
      * It should be empty when the collaborator is the creator of the clean room
      * 
      */
@@ -99,7 +99,7 @@ public final class GetCleanRoomsCleanRoomRemoteDetailedInfoCollaborator extends 
 
     /**
      * @return (integer) - Workspace ID of the user who is receiving the clean room &#34;invitation&#34;. Must be specified if
-     * invite_recipient_email is specified.
+     * inviteRecipientEmail is specified.
      * It should be empty when the collaborator is the creator of the clean room
      * 
      */
@@ -205,7 +205,7 @@ public final class GetCleanRoomsCleanRoomRemoteDetailedInfoCollaborator extends 
 
         /**
          * @param inviteRecipientWorkspaceId (integer) - Workspace ID of the user who is receiving the clean room &#34;invitation&#34;. Must be specified if
-         * invite_recipient_email is specified.
+         * inviteRecipientEmail is specified.
          * It should be empty when the collaborator is the creator of the clean room
          * 
          * @return builder

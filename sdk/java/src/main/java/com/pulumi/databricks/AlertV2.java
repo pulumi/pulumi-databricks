@@ -25,6 +25,74 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * ### Basic Alert Example
+ * This example creates a basic alert that monitors a query and sends notifications to a user when the value exceeds a threshold:
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.AlertV2;
+ * import com.pulumi.databricks.AlertV2Args;
+ * import com.pulumi.databricks.inputs.AlertV2EvaluationArgs;
+ * import com.pulumi.databricks.inputs.AlertV2EvaluationSourceArgs;
+ * import com.pulumi.databricks.inputs.AlertV2EvaluationThresholdArgs;
+ * import com.pulumi.databricks.inputs.AlertV2EvaluationThresholdValueArgs;
+ * import com.pulumi.databricks.inputs.AlertV2EvaluationNotificationArgs;
+ * import com.pulumi.databricks.inputs.AlertV2ScheduleArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var basicAlert = new AlertV2("basicAlert", AlertV2Args.builder()
+ *             .displayName("High Error Rate Alert")
+ *             .queryText("SELECT count(*) as error_count FROM logs WHERE level = 'ERROR' AND timestamp > now() - interval 1 hour")
+ *             .warehouseId("a7066a8ef796be84")
+ *             .parentPath("/Users/user}{@literal @}{@code example.com")
+ *             .evaluation(AlertV2EvaluationArgs.builder()
+ *                 .source(AlertV2EvaluationSourceArgs.builder()
+ *                     .name("error_count")
+ *                     .display("Error Count")
+ *                     .aggregation("COUNT")
+ *                     .build())
+ *                 .comparison_operator("GREATER_THAN")
+ *                 .threshold(AlertV2EvaluationThresholdArgs.builder()
+ *                     .value(AlertV2EvaluationThresholdValueArgs.builder()
+ *                         .doubleValue(100.0)
+ *                         .build())
+ *                     .build())
+ *                 .empty_result_state("OK")
+ *                 .notification(AlertV2EvaluationNotificationArgs.builder()
+ *                     .subscriptions(AlertV2EvaluationNotificationSubscriptionArgs.builder()
+ *                         .userEmail("user}{@literal @}{@code example.com")
+ *                         .build())
+ *                     .notifyOnOk(true)
+ *                     .build())
+ *                 .build())
+ *             .schedule(AlertV2ScheduleArgs.builder()
+ *                 .quartz_cron_schedule("0 0/15 * * * ?")
+ *                 .timezone_id("America/Los_Angeles")
+ *                 .pause_status("UNPAUSED")
+ *                 .build())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * As of Pulumi v1.5, resources can be imported through configuration.
@@ -187,8 +255,8 @@ public class AlertV2 extends com.pulumi.resources.CustomResource {
     /**
      * Specifies the identity that will be used to run the alert.
      * This field allows you to configure alerts to run as a specific user or service principal.
-     * - For user identity: Set `user_name` to the email of an active workspace user. Users can only set this to their own email.
-     * - For service principal: Set `service_principal_name` to the application ID. Requires the `servicePrincipal/user` role.
+     * - For user identity: Set `userName` to the email of an active workspace user. Users can only set this to their own email.
+     * - For service principal: Set `servicePrincipalName` to the application ID. Requires the `servicePrincipal/user` role.
      *   If not specified, the alert will run as the request user
      * 
      */
@@ -198,8 +266,8 @@ public class AlertV2 extends com.pulumi.resources.CustomResource {
     /**
      * @return Specifies the identity that will be used to run the alert.
      * This field allows you to configure alerts to run as a specific user or service principal.
-     * - For user identity: Set `user_name` to the email of an active workspace user. Users can only set this to their own email.
-     * - For service principal: Set `service_principal_name` to the application ID. Requires the `servicePrincipal/user` role.
+     * - For user identity: Set `userName` to the email of an active workspace user. Users can only set this to their own email.
+     * - For service principal: Set `servicePrincipalName` to the application ID. Requires the `servicePrincipal/user` role.
      *   If not specified, the alert will run as the request user
      * 
      */
@@ -209,7 +277,7 @@ public class AlertV2 extends com.pulumi.resources.CustomResource {
     /**
      * The run as username or application ID of service principal.
      * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
-     * Deprecated: Use `run_as` field instead. This field will be removed in a future release
+     * Deprecated: Use `runAs` field instead. This field will be removed in a future release
      * 
      */
     @Export(name="runAsUserName", refs={String.class}, tree="[0]")
@@ -218,7 +286,7 @@ public class AlertV2 extends com.pulumi.resources.CustomResource {
     /**
      * @return The run as username or application ID of service principal.
      * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
-     * Deprecated: Use `run_as` field instead. This field will be removed in a future release
+     * Deprecated: Use `runAs` field instead. This field will be removed in a future release
      * 
      */
     public Output<Optional<String>> runAsUserName() {

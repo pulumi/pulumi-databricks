@@ -20,14 +20,14 @@ public final class GetFunctionsFunction extends com.pulumi.resources.InvokeArgs 
     public static final GetFunctionsFunction Empty = new GetFunctionsFunction();
 
     /**
-     * Indicates whether the principal is limited to retrieving metadata for the associated object through the `BROWSE` privilege when `include_browse` is enabled in the request.
+     * Indicates whether the principal is limited to retrieving metadata for the associated object through the `BROWSE` privilege when `includeBrowse` is enabled in the request.
      * 
      */
     @Import(name="browseOnly")
     private @Nullable Boolean browseOnly;
 
     /**
-     * @return Indicates whether the principal is limited to retrieving metadata for the associated object through the `BROWSE` privilege when `include_browse` is enabled in the request.
+     * @return Indicates whether the principal is limited to retrieving metadata for the associated object through the `BROWSE` privilege when `includeBrowse` is enabled in the request.
      * 
      */
     public Optional<Boolean> browseOnly() {
@@ -305,14 +305,14 @@ public final class GetFunctionsFunction extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * Table function return parameters.  See `input_params` for description.
+     * Table function return parameters.  See `inputParams` for description.
      * 
      */
     @Import(name="returnParams")
     private @Nullable GetFunctionsFunctionReturnParams returnParams;
 
     /**
-     * @return Table function return parameters.  See `input_params` for description.
+     * @return Table function return parameters.  See `inputParams` for description.
      * 
      */
     public Optional<GetFunctionsFunctionReturnParams> returnParams() {
@@ -320,14 +320,14 @@ public final class GetFunctionsFunction extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * Function language (`SQL` or `EXTERNAL`). When `EXTERNAL` is used, the language of the routine function should be specified in the `external_language` field, and the `return_params` of the function cannot be used (as `TABLE` return type is not supported), and the `sql_data_access` field must be `NO_SQL`.
+     * Function language (`SQL` or `EXTERNAL`). When `EXTERNAL` is used, the language of the routine function should be specified in the `externalLanguage` field, and the `returnParams` of the function cannot be used (as `TABLE` return type is not supported), and the `sqlDataAccess` field must be `NO_SQL`.
      * 
      */
     @Import(name="routineBody")
     private @Nullable String routineBody;
 
     /**
-     * @return Function language (`SQL` or `EXTERNAL`). When `EXTERNAL` is used, the language of the routine function should be specified in the `external_language` field, and the `return_params` of the function cannot be used (as `TABLE` return type is not supported), and the `sql_data_access` field must be `NO_SQL`.
+     * @return Function language (`SQL` or `EXTERNAL`). When `EXTERNAL` is used, the language of the routine function should be specified in the `externalLanguage` field, and the `returnParams` of the function cannot be used (as `TABLE` return type is not supported), and the `sqlDataAccess` field must be `NO_SQL`.
      * 
      */
     public Optional<String> routineBody() {
@@ -523,7 +523,7 @@ public final class GetFunctionsFunction extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param browseOnly Indicates whether the principal is limited to retrieving metadata for the associated object through the `BROWSE` privilege when `include_browse` is enabled in the request.
+         * @param browseOnly Indicates whether the principal is limited to retrieving metadata for the associated object through the `BROWSE` privilege when `includeBrowse` is enabled in the request.
          * 
          * @return builder
          * 
@@ -732,7 +732,7 @@ public final class GetFunctionsFunction extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param returnParams Table function return parameters.  See `input_params` for description.
+         * @param returnParams Table function return parameters.  See `inputParams` for description.
          * 
          * @return builder
          * 
@@ -743,7 +743,7 @@ public final class GetFunctionsFunction extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param routineBody Function language (`SQL` or `EXTERNAL`). When `EXTERNAL` is used, the language of the routine function should be specified in the `external_language` field, and the `return_params` of the function cannot be used (as `TABLE` return type is not supported), and the `sql_data_access` field must be `NO_SQL`.
+         * @param routineBody Function language (`SQL` or `EXTERNAL`). When `EXTERNAL` is used, the language of the routine function should be specified in the `externalLanguage` field, and the `returnParams` of the function cannot be used (as `TABLE` return type is not supported), and the `sqlDataAccess` field must be `NO_SQL`.
          * 
          * @return builder
          * 

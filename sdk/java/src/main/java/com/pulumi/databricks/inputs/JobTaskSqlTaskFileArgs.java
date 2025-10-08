@@ -17,7 +17,7 @@ public final class JobTaskSqlTaskFileArgs extends com.pulumi.resources.ResourceA
     public static final JobTaskSqlTaskFileArgs Empty = new JobTaskSqlTaskFileArgs();
 
     /**
-     * If `source` is `GIT`: Relative path to the file in the repository specified in the `git_source` block with SQL commands to execute. If `source` is `WORKSPACE`: Absolute path to the file in the workspace with SQL commands to execute.
+     * If `source` is `GIT`: Relative path to the file in the repository specified in the `gitSource` block with SQL commands to execute. If `source` is `WORKSPACE`: Absolute path to the file in the workspace with SQL commands to execute.
      * 
      * Example
      * 
@@ -96,7 +96,7 @@ public final class JobTaskSqlTaskFileArgs extends com.pulumi.resources.ResourceA
     private Output<String> path;
 
     /**
-     * @return If `source` is `GIT`: Relative path to the file in the repository specified in the `git_source` block with SQL commands to execute. If `source` is `WORKSPACE`: Absolute path to the file in the workspace with SQL commands to execute.
+     * @return If `source` is `GIT`: Relative path to the file in the repository specified in the `gitSource` block with SQL commands to execute. If `source` is `WORKSPACE`: Absolute path to the file in the workspace with SQL commands to execute.
      * 
      * Example
      * 
@@ -216,7 +216,7 @@ public final class JobTaskSqlTaskFileArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param path If `source` is `GIT`: Relative path to the file in the repository specified in the `git_source` block with SQL commands to execute. If `source` is `WORKSPACE`: Absolute path to the file in the workspace with SQL commands to execute.
+         * @param path If `source` is `GIT`: Relative path to the file in the repository specified in the `gitSource` block with SQL commands to execute. If `source` is `WORKSPACE`: Absolute path to the file in the workspace with SQL commands to execute.
          * 
          * Example
          * 
@@ -299,7 +299,7 @@ public final class JobTaskSqlTaskFileArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param path If `source` is `GIT`: Relative path to the file in the repository specified in the `git_source` block with SQL commands to execute. If `source` is `WORKSPACE`: Absolute path to the file in the workspace with SQL commands to execute.
+         * @param path If `source` is `GIT`: Relative path to the file in the repository specified in the `gitSource` block with SQL commands to execute. If `source` is `WORKSPACE`: Absolute path to the file in the workspace with SQL commands to execute.
          * 
          * Example
          * 

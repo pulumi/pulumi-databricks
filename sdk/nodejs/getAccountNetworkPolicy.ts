@@ -10,6 +10,10 @@ import * as utilities from "./utilities";
  * This data source can be used to get a single network policy.
  *
  * > **Note** This data source can only be used with an account-level provider!
+ *
+ * ## Example Usage
+ *
+ * Referring to a network policy by id:
  */
 export function getAccountNetworkPolicy(args?: GetAccountNetworkPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountNetworkPolicyResult> {
     args = args || {};
@@ -64,6 +68,10 @@ export interface GetAccountNetworkPolicyResult {
  * This data source can be used to get a single network policy.
  *
  * > **Note** This data source can only be used with an account-level provider!
+ *
+ * ## Example Usage
+ *
+ * Referring to a network policy by id:
  */
 export function getAccountNetworkPolicyOutput(args?: GetAccountNetworkPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountNetworkPolicyResult> {
     args = args || {};

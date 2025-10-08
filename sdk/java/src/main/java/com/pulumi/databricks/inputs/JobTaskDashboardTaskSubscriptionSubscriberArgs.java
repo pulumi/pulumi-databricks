@@ -16,14 +16,14 @@ public final class JobTaskDashboardTaskSubscriptionSubscriberArgs extends com.pu
     public static final JobTaskDashboardTaskSubscriptionSubscriberArgs Empty = new JobTaskDashboardTaskSubscriptionSubscriberArgs();
 
     /**
-     * A snapshot of the dashboard will be sent to the destination when the `destination_id` field is present.
+     * A snapshot of the dashboard will be sent to the destination when the `destinationId` field is present.
      * 
      */
     @Import(name="destinationId")
     private @Nullable Output<String> destinationId;
 
     /**
-     * @return A snapshot of the dashboard will be sent to the destination when the `destination_id` field is present.
+     * @return A snapshot of the dashboard will be sent to the destination when the `destinationId` field is present.
      * 
      */
     public Optional<Output<String>> destinationId() {
@@ -31,14 +31,14 @@ public final class JobTaskDashboardTaskSubscriptionSubscriberArgs extends com.pu
     }
 
     /**
-     * A snapshot of the dashboard will be sent to the user&#39;s email when the `user_name` field is present.
+     * A snapshot of the dashboard will be sent to the user&#39;s email when the `userName` field is present.
      * 
      */
     @Import(name="userName")
     private @Nullable Output<String> userName;
 
     /**
-     * @return A snapshot of the dashboard will be sent to the user&#39;s email when the `user_name` field is present.
+     * @return A snapshot of the dashboard will be sent to the user&#39;s email when the `userName` field is present.
      * 
      */
     public Optional<Output<String>> userName() {
@@ -71,7 +71,7 @@ public final class JobTaskDashboardTaskSubscriptionSubscriberArgs extends com.pu
         }
 
         /**
-         * @param destinationId A snapshot of the dashboard will be sent to the destination when the `destination_id` field is present.
+         * @param destinationId A snapshot of the dashboard will be sent to the destination when the `destinationId` field is present.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class JobTaskDashboardTaskSubscriptionSubscriberArgs extends com.pu
         }
 
         /**
-         * @param destinationId A snapshot of the dashboard will be sent to the destination when the `destination_id` field is present.
+         * @param destinationId A snapshot of the dashboard will be sent to the destination when the `destinationId` field is present.
          * 
          * @return builder
          * 
@@ -92,7 +92,7 @@ public final class JobTaskDashboardTaskSubscriptionSubscriberArgs extends com.pu
         }
 
         /**
-         * @param userName A snapshot of the dashboard will be sent to the user&#39;s email when the `user_name` field is present.
+         * @param userName A snapshot of the dashboard will be sent to the user&#39;s email when the `userName` field is present.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class JobTaskDashboardTaskSubscriptionSubscriberArgs extends com.pu
         }
 
         /**
-         * @param userName A snapshot of the dashboard will be sent to the user&#39;s email when the `user_name` field is present.
+         * @param userName A snapshot of the dashboard will be sent to the user&#39;s email when the `userName` field is present.
          * 
          * @return builder
          * 
