@@ -58,7 +58,7 @@ namespace Pulumi.Databricks
         public string? ExperimentId { get; set; }
 
         /// <summary>
-        /// Unique identifier for the experiment. (same as `experiment_id`)
+        /// Unique identifier for the experiment. (same as `ExperimentId`)
         /// </summary>
         [Input("id")]
         public string? Id { get; set; }
@@ -70,7 +70,7 @@ namespace Pulumi.Databricks
         public int? LastUpdateTime { get; set; }
 
         /// <summary>
-        /// Current life cycle stage of the experiment: `active` or `deleted`.
+        /// Current life cycle stage of the experiment: `Active` or `Deleted`.
         /// </summary>
         [Input("lifecycleStage")]
         public string? LifecycleStage { get; set; }
@@ -120,7 +120,7 @@ namespace Pulumi.Databricks
         public Input<string>? ExperimentId { get; set; }
 
         /// <summary>
-        /// Unique identifier for the experiment. (same as `experiment_id`)
+        /// Unique identifier for the experiment. (same as `ExperimentId`)
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
@@ -132,7 +132,7 @@ namespace Pulumi.Databricks
         public Input<int>? LastUpdateTime { get; set; }
 
         /// <summary>
-        /// Current life cycle stage of the experiment: `active` or `deleted`.
+        /// Current life cycle stage of the experiment: `Active` or `Deleted`.
         /// </summary>
         [Input("lifecycleStage")]
         public Input<string>? LifecycleStage { get; set; }
@@ -174,11 +174,11 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly int CreationTime;
         /// <summary>
-        /// Unique identifier for the experiment. (same as `id`)
+        /// Unique identifier for the experiment. (same as `Id`)
         /// </summary>
         public readonly string ExperimentId;
         /// <summary>
-        /// Unique identifier for the experiment. (same as `experiment_id`)
+        /// Unique identifier for the experiment. (same as `ExperimentId`)
         /// </summary>
         public readonly string Id;
         /// <summary>
@@ -186,7 +186,7 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly int LastUpdateTime;
         /// <summary>
-        /// Current life cycle stage of the experiment: `active` or `deleted`.
+        /// Current life cycle stage of the experiment: `Active` or `Deleted`.
         /// </summary>
         public readonly string LifecycleStage;
         /// <summary>

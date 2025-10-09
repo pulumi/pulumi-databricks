@@ -14,7 +14,7 @@ namespace Pulumi.Databricks.Outputs
     public sealed class AlertConditionThresholdValue
     {
         /// <summary>
-        /// boolean value (`true` or `false`) to compare against boolean results.
+        /// boolean value (`True` or `False`) to compare against boolean results.
         /// </summary>
         public readonly bool? BoolValue;
         /// <summary>

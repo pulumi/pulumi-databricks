@@ -16,14 +16,14 @@ public final class JobContinuousArgs extends com.pulumi.resources.ResourceArgs {
     public static final JobContinuousArgs Empty = new JobContinuousArgs();
 
     /**
-     * Indicate whether this continuous job is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pause_status` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pause_status`.
+     * Indicate whether this continuous job is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pauseStatus` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pauseStatus`.
      * 
      */
     @Import(name="pauseStatus")
     private @Nullable Output<String> pauseStatus;
 
     /**
-     * @return Indicate whether this continuous job is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pause_status` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pause_status`.
+     * @return Indicate whether this continuous job is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pauseStatus` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pauseStatus`.
      * 
      */
     public Optional<Output<String>> pauseStatus() {
@@ -75,7 +75,7 @@ public final class JobContinuousArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pauseStatus Indicate whether this continuous job is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pause_status` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pause_status`.
+         * @param pauseStatus Indicate whether this continuous job is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pauseStatus` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pauseStatus`.
          * 
          * @return builder
          * 
@@ -86,7 +86,7 @@ public final class JobContinuousArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pauseStatus Indicate whether this continuous job is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pause_status` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pause_status`.
+         * @param pauseStatus Indicate whether this continuous job is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pauseStatus` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pauseStatus`.
          * 
          * @return builder
          * 

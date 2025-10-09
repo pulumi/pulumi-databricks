@@ -22,6 +22,8 @@ namespace Pulumi.Databricks
     /// 
     /// &gt; **Note** This resource can only be used with an account-level provider!
     /// 
+    /// ## Example Usage
+    /// 
     /// ## Import
     /// 
     /// As of Pulumi v1.5, resources can be imported through configuration.

@@ -14,7 +14,7 @@ namespace Pulumi.Databricks
     /// 
     /// &gt; This resource can only be used with a workspace-level provider!
     /// 
-    /// &gt; If you replace `served_models` with `served_entities` in an existing serving endpoint, the serving endpoint will briefly go into an update state (~30 seconds) and increment the config version.
+    /// &gt; If you replace `ServedModels` with `ServedEntities` in an existing serving endpoint, the serving endpoint will briefly go into an update state (~30 seconds) and increment the config version.
     /// 
     /// ## Example Usage
     /// 
@@ -250,7 +250,7 @@ namespace Pulumi.Databricks
         public Output<string?> BudgetPolicyId { get; private set; } = null!;
 
         /// <summary>
-        /// The model serving endpoint configuration. This is optional and can be added and modified after creation. If `config` was provided in a previous apply but is not provided in the current apply, no change to the model serving endpoint will occur. To recreate the model serving endpoint without the `config` block, the model serving endpoint must be destroyed and recreated.
+        /// The model serving endpoint configuration. This is optional and can be added and modified after creation. If `Config` was provided in a previous apply but is not provided in the current apply, no change to the model serving endpoint will occur. To recreate the model serving endpoint without the `Config` block, the model serving endpoint must be destroyed and recreated.
         /// </summary>
         [Output("config")]
         public Output<Outputs.ModelServingConfig> Config { get; private set; } = null!;
@@ -362,7 +362,7 @@ namespace Pulumi.Databricks
         public Input<string>? BudgetPolicyId { get; set; }
 
         /// <summary>
-        /// The model serving endpoint configuration. This is optional and can be added and modified after creation. If `config` was provided in a previous apply but is not provided in the current apply, no change to the model serving endpoint will occur. To recreate the model serving endpoint without the `config` block, the model serving endpoint must be destroyed and recreated.
+        /// The model serving endpoint configuration. This is optional and can be added and modified after creation. If `Config` was provided in a previous apply but is not provided in the current apply, no change to the model serving endpoint will occur. To recreate the model serving endpoint without the `Config` block, the model serving endpoint must be destroyed and recreated.
         /// </summary>
         [Input("config")]
         public Input<Inputs.ModelServingConfigArgs>? Config { get; set; }
@@ -437,7 +437,7 @@ namespace Pulumi.Databricks
         public Input<string>? BudgetPolicyId { get; set; }
 
         /// <summary>
-        /// The model serving endpoint configuration. This is optional and can be added and modified after creation. If `config` was provided in a previous apply but is not provided in the current apply, no change to the model serving endpoint will occur. To recreate the model serving endpoint without the `config` block, the model serving endpoint must be destroyed and recreated.
+        /// The model serving endpoint configuration. This is optional and can be added and modified after creation. If `Config` was provided in a previous apply but is not provided in the current apply, no change to the model serving endpoint will occur. To recreate the model serving endpoint without the `Config` block, the model serving endpoint must be destroyed and recreated.
         /// </summary>
         [Input("config")]
         public Input<Inputs.ModelServingConfigGetArgs>? Config { get; set; }

@@ -42,7 +42,7 @@ namespace Pulumi.Databricks
     public partial class DbfsFile : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Encoded file contents. Conflicts with `source`. Use of `content_base64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a data pipeline configuration file.
+        /// Encoded file contents. Conflicts with `Source`. Use of `ContentBase64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a data pipeline configuration file.
         /// </summary>
         [Output("contentBase64")]
         public Output<string?> ContentBase64 { get; private set; } = null!;
@@ -69,7 +69,7 @@ namespace Pulumi.Databricks
         public Output<string> Path { get; private set; } = null!;
 
         /// <summary>
-        /// The full absolute path to the file. Conflicts with `content_base64`.
+        /// The full absolute path to the file. Conflicts with `ContentBase64`.
         /// </summary>
         [Output("source")]
         public Output<string?> Source { get; private set; } = null!;
@@ -121,7 +121,7 @@ namespace Pulumi.Databricks
     public sealed class DbfsFileArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Encoded file contents. Conflicts with `source`. Use of `content_base64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a data pipeline configuration file.
+        /// Encoded file contents. Conflicts with `Source`. Use of `ContentBase64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a data pipeline configuration file.
         /// </summary>
         [Input("contentBase64")]
         public Input<string>? ContentBase64 { get; set; }
@@ -136,7 +136,7 @@ namespace Pulumi.Databricks
         public Input<string> Path { get; set; } = null!;
 
         /// <summary>
-        /// The full absolute path to the file. Conflicts with `content_base64`.
+        /// The full absolute path to the file. Conflicts with `ContentBase64`.
         /// </summary>
         [Input("source")]
         public Input<string>? Source { get; set; }
@@ -150,7 +150,7 @@ namespace Pulumi.Databricks
     public sealed class DbfsFileState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Encoded file contents. Conflicts with `source`. Use of `content_base64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a data pipeline configuration file.
+        /// Encoded file contents. Conflicts with `Source`. Use of `ContentBase64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a data pipeline configuration file.
         /// </summary>
         [Input("contentBase64")]
         public Input<string>? ContentBase64 { get; set; }
@@ -177,7 +177,7 @@ namespace Pulumi.Databricks
         public Input<string>? Path { get; set; }
 
         /// <summary>
-        /// The full absolute path to the file. Conflicts with `content_base64`.
+        /// The full absolute path to the file. Conflicts with `ContentBase64`.
         /// </summary>
         [Input("source")]
         public Input<string>? Source { get; set; }

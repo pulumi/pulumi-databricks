@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ModelServingConfigTrafficConfigRoute {
     /**
-     * @return The name of the served entity this route configures traffic for. This needs to match the name of a `served_entity` block.
+     * @return The name of the served entity this route configures traffic for. This needs to match the name of a `servedEntity` block.
      * 
      */
     private @Nullable String servedEntityName;
@@ -27,7 +27,7 @@ public final class ModelServingConfigTrafficConfigRoute {
 
     private ModelServingConfigTrafficConfigRoute() {}
     /**
-     * @return The name of the served entity this route configures traffic for. This needs to match the name of a `served_entity` block.
+     * @return The name of the served entity this route configures traffic for. This needs to match the name of a `servedEntity` block.
      * 
      */
     public Optional<String> servedEntityName() {

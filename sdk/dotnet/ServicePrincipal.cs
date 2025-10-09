@@ -21,9 +21,9 @@ namespace Pulumi.Databricks
     /// 
     /// &gt; To assign account level service principals to workspace use databricks_mws_permission_assignment.
     /// 
-    /// &gt; Entitlements, like, `allow_cluster_create`, `allow_instance_pool_create`, `databricks_sql_access`, `workspace_access`, `workspace-consume` applicable only for workspace-level service principals. Use databricks.Entitlements resource to assign entitlements inside a workspace to account-level service principals.
+    /// &gt; Entitlements, like, `AllowClusterCreate`, `AllowInstancePoolCreate`, `DatabricksSqlAccess`, `WorkspaceAccess`, `workspace-consume` applicable only for workspace-level service principals. Use databricks.Entitlements resource to assign entitlements inside a workspace to account-level service principals.
     /// 
-    /// The default behavior when deleting a `databricks.ServicePrincipal` resource depends on whether the provider is configured at the workspace-level or account-level. When the provider is configured at the workspace-level, the service principal will be deleted from the workspace. When the provider is configured at the account-level, the service principal will be deactivated but not deleted. When the provider is configured at the account level, to delete the service principal from the account when the resource is deleted, set `disable_as_user_deletion = false`. Conversely, when the provider is configured at the account-level, to deactivate the service principal when the resource is deleted, set `disable_as_user_deletion = true`.
+    /// The default behavior when deleting a `databricks.ServicePrincipal` resource depends on whether the provider is configured at the workspace-level or account-level. When the provider is configured at the workspace-level, the service principal will be deleted from the workspace. When the provider is configured at the account-level, the service principal will be deactivated but not deleted. When the provider is configured at the account level, to delete the service principal from the account when the resource is deleted, set `DisableAsUserDeletion = false`. Conversely, when the provider is configured at the account-level, to deactivate the service principal when the resource is deleted, set `DisableAsUserDeletion = true`.
     /// 
     /// ## Example Usage
     /// 
@@ -45,7 +45,7 @@ namespace Pulumi.Databricks
     /// });
     /// ```
     /// 
-    /// Creating service principal with administrative permissions - referencing special `admins` databricks.Group in databricks.GroupMember resource:
+    /// Creating service principal with administrative permissions - referencing special `Admins` databricks.Group in databricks.GroupMember resource:
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -180,13 +180,13 @@ namespace Pulumi.Databricks
         public Output<bool?> Active { get; private set; } = null!;
 
         /// <summary>
-        /// Allow the service principal to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and `cluster_id` argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within the boundaries of that specific policy.
+        /// Allow the service principal to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and `ClusterId` argument. Everyone without `AllowClusterCreate` argument set, but with permission to use Cluster Policy would be able to create clusters, but within the boundaries of that specific policy.
         /// </summary>
         [Output("allowClusterCreate")]
         public Output<bool?> AllowClusterCreate { get; private set; } = null!;
 
         /// <summary>
-        /// Allow the service principal to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and instance_pool_id argument.
+        /// Allow the service principal to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and InstancePoolId argument.
         /// </summary>
         [Output("allowInstancePoolCreate")]
         public Output<bool?> AllowInstancePoolCreate { get; private set; } = null!;
@@ -204,7 +204,7 @@ namespace Pulumi.Databricks
         public Output<bool?> DatabricksSqlAccess { get; private set; } = null!;
 
         /// <summary>
-        /// Deactivate the service principal when deleting the resource, rather than deleting the service principal entirely. Defaults to `true` when the provider is configured at the account-level and `false` when configured at the workspace-level. This flag is exclusive to force_delete_repos and force_delete_home_dir flags.
+        /// Deactivate the service principal when deleting the resource, rather than deleting the service principal entirely. Defaults to `True` when the provider is configured at the account-level and `False` when configured at the workspace-level. This flag is exclusive to ForceDeleteRepos and ForceDeleteHomeDir flags.
         /// </summary>
         [Output("disableAsUserDeletion")]
         public Output<bool?> DisableAsUserDeletion { get; private set; } = null!;
@@ -258,7 +258,7 @@ namespace Pulumi.Databricks
         public Output<bool?> WorkspaceAccess { get; private set; } = null!;
 
         /// <summary>
-        /// This is a field to allow the service principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspace_access` or `databricks_sql_access`.
+        /// This is a field to allow the service principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `WorkspaceAccess` or `DatabricksSqlAccess`.
         /// </summary>
         [Output("workspaceConsume")]
         public Output<bool?> WorkspaceConsume { get; private set; } = null!;
@@ -322,13 +322,13 @@ namespace Pulumi.Databricks
         public Input<bool>? Active { get; set; }
 
         /// <summary>
-        /// Allow the service principal to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and `cluster_id` argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within the boundaries of that specific policy.
+        /// Allow the service principal to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and `ClusterId` argument. Everyone without `AllowClusterCreate` argument set, but with permission to use Cluster Policy would be able to create clusters, but within the boundaries of that specific policy.
         /// </summary>
         [Input("allowClusterCreate")]
         public Input<bool>? AllowClusterCreate { get; set; }
 
         /// <summary>
-        /// Allow the service principal to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and instance_pool_id argument.
+        /// Allow the service principal to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and InstancePoolId argument.
         /// </summary>
         [Input("allowInstancePoolCreate")]
         public Input<bool>? AllowInstancePoolCreate { get; set; }
@@ -346,7 +346,7 @@ namespace Pulumi.Databricks
         public Input<bool>? DatabricksSqlAccess { get; set; }
 
         /// <summary>
-        /// Deactivate the service principal when deleting the resource, rather than deleting the service principal entirely. Defaults to `true` when the provider is configured at the account-level and `false` when configured at the workspace-level. This flag is exclusive to force_delete_repos and force_delete_home_dir flags.
+        /// Deactivate the service principal when deleting the resource, rather than deleting the service principal entirely. Defaults to `True` when the provider is configured at the account-level and `False` when configured at the workspace-level. This flag is exclusive to ForceDeleteRepos and ForceDeleteHomeDir flags.
         /// </summary>
         [Input("disableAsUserDeletion")]
         public Input<bool>? DisableAsUserDeletion { get; set; }
@@ -400,7 +400,7 @@ namespace Pulumi.Databricks
         public Input<bool>? WorkspaceAccess { get; set; }
 
         /// <summary>
-        /// This is a field to allow the service principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspace_access` or `databricks_sql_access`.
+        /// This is a field to allow the service principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `WorkspaceAccess` or `DatabricksSqlAccess`.
         /// </summary>
         [Input("workspaceConsume")]
         public Input<bool>? WorkspaceConsume { get; set; }
@@ -426,13 +426,13 @@ namespace Pulumi.Databricks
         public Input<bool>? Active { get; set; }
 
         /// <summary>
-        /// Allow the service principal to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and `cluster_id` argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within the boundaries of that specific policy.
+        /// Allow the service principal to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and `ClusterId` argument. Everyone without `AllowClusterCreate` argument set, but with permission to use Cluster Policy would be able to create clusters, but within the boundaries of that specific policy.
         /// </summary>
         [Input("allowClusterCreate")]
         public Input<bool>? AllowClusterCreate { get; set; }
 
         /// <summary>
-        /// Allow the service principal to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and instance_pool_id argument.
+        /// Allow the service principal to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and InstancePoolId argument.
         /// </summary>
         [Input("allowInstancePoolCreate")]
         public Input<bool>? AllowInstancePoolCreate { get; set; }
@@ -450,7 +450,7 @@ namespace Pulumi.Databricks
         public Input<bool>? DatabricksSqlAccess { get; set; }
 
         /// <summary>
-        /// Deactivate the service principal when deleting the resource, rather than deleting the service principal entirely. Defaults to `true` when the provider is configured at the account-level and `false` when configured at the workspace-level. This flag is exclusive to force_delete_repos and force_delete_home_dir flags.
+        /// Deactivate the service principal when deleting the resource, rather than deleting the service principal entirely. Defaults to `True` when the provider is configured at the account-level and `False` when configured at the workspace-level. This flag is exclusive to ForceDeleteRepos and ForceDeleteHomeDir flags.
         /// </summary>
         [Input("disableAsUserDeletion")]
         public Input<bool>? DisableAsUserDeletion { get; set; }
@@ -504,7 +504,7 @@ namespace Pulumi.Databricks
         public Input<bool>? WorkspaceAccess { get; set; }
 
         /// <summary>
-        /// This is a field to allow the service principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspace_access` or `databricks_sql_access`.
+        /// This is a field to allow the service principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `WorkspaceAccess` or `DatabricksSqlAccess`.
         /// </summary>
         [Input("workspaceConsume")]
         public Input<bool>? WorkspaceConsume { get; set; }

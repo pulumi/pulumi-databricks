@@ -110,14 +110,14 @@ public final class LakehouseMonitorArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `email_addresses` containing a list of emails to notify:
+     * The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `emailAddresses` containing a list of emails to notify:
      * 
      */
     @Import(name="notifications")
     private @Nullable Output<LakehouseMonitorNotificationsArgs> notifications;
 
     /**
-     * @return The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `email_addresses` containing a list of emails to notify:
+     * @return The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `emailAddresses` containing a list of emails to notify:
      * 
      */
     public Optional<Output<LakehouseMonitorNotificationsArgs>> notifications() {
@@ -409,7 +409,7 @@ public final class LakehouseMonitorArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param notifications The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `email_addresses` containing a list of emails to notify:
+         * @param notifications The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `emailAddresses` containing a list of emails to notify:
          * 
          * @return builder
          * 
@@ -420,7 +420,7 @@ public final class LakehouseMonitorArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param notifications The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `email_addresses` containing a list of emails to notify:
+         * @param notifications The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `emailAddresses` containing a list of emails to notify:
          * 
          * @return builder
          * 

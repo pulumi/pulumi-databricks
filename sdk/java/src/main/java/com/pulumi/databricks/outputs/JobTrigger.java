@@ -21,7 +21,7 @@ public final class JobTrigger {
      */
     private @Nullable JobTriggerFileArrival fileArrival;
     /**
-     * @return Indicate whether this trigger is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pause_status` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pause_status`.
+     * @return Indicate whether this trigger is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pauseStatus` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pauseStatus`.
      * 
      */
     private @Nullable String pauseStatus;
@@ -42,7 +42,7 @@ public final class JobTrigger {
         return Optional.ofNullable(this.fileArrival);
     }
     /**
-     * @return Indicate whether this trigger is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pause_status` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pause_status`.
+     * @return Indicate whether this trigger is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pauseStatus` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pauseStatus`.
      * 
      */
     public Optional<String> pauseStatus() {

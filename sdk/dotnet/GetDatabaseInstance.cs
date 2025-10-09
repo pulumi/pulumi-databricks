@@ -252,33 +252,33 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string Creator;
         /// <summary>
-        /// (boolean) - xref AIP-129. `enable_pg_native_login` is owned by the client, while `effective_enable_pg_native_login` is owned by the server.
-        /// `enable_pg_native_login` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-        /// `effective_enable_pg_native_login` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+        /// (boolean) - xref AIP-129. `EnablePgNativeLogin` is owned by the client, while `EffectiveEnablePgNativeLogin` is owned by the server.
+        /// `EnablePgNativeLogin` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+        /// `EffectiveEnablePgNativeLogin` on the other hand will always bet set in all response messages (Create/Update/Get/List)
         /// </summary>
         public readonly bool EffectiveEnablePgNativeLogin;
         /// <summary>
-        /// (boolean) - xref AIP-129. `enable_readable_secondaries` is owned by the client, while `effective_enable_readable_secondaries` is owned by the server.
-        /// `enable_readable_secondaries` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-        /// `effective_enable_readable_secondaries` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+        /// (boolean) - xref AIP-129. `EnableReadableSecondaries` is owned by the client, while `EffectiveEnableReadableSecondaries` is owned by the server.
+        /// `EnableReadableSecondaries` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+        /// `EffectiveEnableReadableSecondaries` on the other hand will always bet set in all response messages (Create/Update/Get/List)
         /// </summary>
         public readonly bool EffectiveEnableReadableSecondaries;
         /// <summary>
-        /// (integer) - xref AIP-129. `node_count` is owned by the client, while `effective_node_count` is owned by the server.
-        /// `node_count` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-        /// `effective_node_count` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+        /// (integer) - xref AIP-129. `NodeCount` is owned by the client, while `EffectiveNodeCount` is owned by the server.
+        /// `NodeCount` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+        /// `EffectiveNodeCount` on the other hand will always bet set in all response messages (Create/Update/Get/List)
         /// </summary>
         public readonly int EffectiveNodeCount;
         /// <summary>
-        /// (integer) - xref AIP-129. `retention_window_in_days` is owned by the client, while `effective_retention_window_in_days` is owned by the server.
-        /// `retention_window_in_days` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-        /// `effective_retention_window_in_days` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+        /// (integer) - xref AIP-129. `RetentionWindowInDays` is owned by the client, while `EffectiveRetentionWindowInDays` is owned by the server.
+        /// `RetentionWindowInDays` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+        /// `EffectiveRetentionWindowInDays` on the other hand will always bet set in all response messages (Create/Update/Get/List)
         /// </summary>
         public readonly int EffectiveRetentionWindowInDays;
         /// <summary>
-        /// (boolean) - xref AIP-129. `stopped` is owned by the client, while `effective_stopped` is owned by the server.
-        /// `stopped` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-        /// `effective_stopped` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+        /// (boolean) - xref AIP-129. `Stopped` is owned by the client, while `EffectiveStopped` is owned by the server.
+        /// `Stopped` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+        /// `EffectiveStopped` on the other hand will always bet set in all response messages (Create/Update/Get/List)
         /// </summary>
         public readonly bool EffectiveStopped;
         /// <summary>
@@ -315,7 +315,7 @@ namespace Pulumi.Databricks
         public readonly string PgVersion;
         /// <summary>
         /// (string) - The DNS endpoint to connect to the instance for read only access. This is only available if
-        /// enable_readable_secondaries is true
+        /// EnableReadableSecondaries is true
         /// </summary>
         public readonly string ReadOnlyDns;
         /// <summary>

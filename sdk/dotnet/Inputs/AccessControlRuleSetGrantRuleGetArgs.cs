@@ -17,9 +17,9 @@ namespace Pulumi.Databricks.Inputs
 
         /// <summary>
         /// a list of principals who are granted a role. The following format is supported:
-        /// * `users/{username}` (also exposed as `acl_principal_id` attribute of `databricks.User` resource).
-        /// * `groups/{groupname}` (also exposed as `acl_principal_id` attribute of `databricks.Group` resource).
-        /// * `servicePrincipals/{applicationId}` (also exposed as `acl_principal_id` attribute of `databricks.ServicePrincipal` resource).
+        /// * `users/{username}` (also exposed as `AclPrincipalId` attribute of `databricks.User` resource).
+        /// * `groups/{groupname}` (also exposed as `AclPrincipalId` attribute of `databricks.Group` resource).
+        /// * `servicePrincipals/{applicationId}` (also exposed as `AclPrincipalId` attribute of `databricks.ServicePrincipal` resource).
         /// </summary>
         public InputList<string> Principals
         {
@@ -28,7 +28,7 @@ namespace Pulumi.Databricks.Inputs
         }
 
         /// <summary>
-        /// Role to be granted. The supported roles are listed below. For more information about these roles, refer to [service principal roles](https://docs.databricks.com/security/auth-authz/access-control/service-principal-acl.html#service-principal-roles), [group roles](https://docs.databricks.com/en/administration-guide/users-groups/groups.html#manage-roles-on-an-account-group-using-the-workspace-admin-settings-page), [marketplace roles](https://docs.databricks.com/en/marketplace/get-started-provider.html#assign-the-marketplace-admin-role) or [budget policy permissions](https://docs.databricks.com/aws/en/admin/usage/budget-policies#manage-budget-policy-permissions), depending on the `name` defined:
+        /// Role to be granted. The supported roles are listed below. For more information about these roles, refer to [service principal roles](https://docs.databricks.com/security/auth-authz/access-control/service-principal-acl.html#service-principal-roles), [group roles](https://docs.databricks.com/en/administration-guide/users-groups/groups.html#manage-roles-on-an-account-group-using-the-workspace-admin-settings-page), [marketplace roles](https://docs.databricks.com/en/marketplace/get-started-provider.html#assign-the-marketplace-admin-role) or [budget policy permissions](https://docs.databricks.com/aws/en/admin/usage/budget-policies#manage-budget-policy-permissions), depending on the `Name` defined:
         /// * `accounts/{account_id}/ruleSets/default`
         /// * `roles/marketplace.admin` - Databricks Marketplace administrator.
         /// * `roles/billing.admin` - Billing administrator.

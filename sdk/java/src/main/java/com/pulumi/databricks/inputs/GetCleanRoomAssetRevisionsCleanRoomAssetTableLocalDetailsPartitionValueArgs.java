@@ -76,7 +76,7 @@ public final class GetCleanRoomAssetRevisionsCleanRoomAssetTableLocalDetailsPart
 
     /**
      * (string) - The value of the partition column. When this value is not set, it means `null` value.
-     * When this field is set, field `recipient_property_key` can not be set
+     * When this field is set, field `recipientPropertyKey` can not be set
      * 
      */
     @Import(name="value")
@@ -84,7 +84,7 @@ public final class GetCleanRoomAssetRevisionsCleanRoomAssetTableLocalDetailsPart
 
     /**
      * @return (string) - The value of the partition column. When this value is not set, it means `null` value.
-     * When this field is set, field `recipient_property_key` can not be set
+     * When this field is set, field `recipientPropertyKey` can not be set
      * 
      */
     public Optional<Output<String>> value() {
@@ -197,7 +197,7 @@ public final class GetCleanRoomAssetRevisionsCleanRoomAssetTableLocalDetailsPart
 
         /**
          * @param value (string) - The value of the partition column. When this value is not set, it means `null` value.
-         * When this field is set, field `recipient_property_key` can not be set
+         * When this field is set, field `recipientPropertyKey` can not be set
          * 
          * @return builder
          * 
@@ -209,7 +209,7 @@ public final class GetCleanRoomAssetRevisionsCleanRoomAssetTableLocalDetailsPart
 
         /**
          * @param value (string) - The value of the partition column. When this value is not set, it means `null` value.
-         * When this field is set, field `recipient_property_key` can not be set
+         * When this field is set, field `recipientPropertyKey` can not be set
          * 
          * @return builder
          * 

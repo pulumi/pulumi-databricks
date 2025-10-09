@@ -65,7 +65,7 @@ public final class JobTaskForEachTaskTask {
      */
     private @Nullable JobTaskForEachTaskTaskEmailNotifications emailNotifications;
     /**
-     * @return identifier of an `environment` block that is used to specify libraries.  Required for some tasks (`spark_python_task`, `python_wheel_task`, ...) running on serverless compute.
+     * @return identifier of an `environment` block that is used to specify libraries.  Required for some tasks (`sparkPythonTask`, `pythonWheelTask`, ...) running on serverless compute.
      * 
      */
     private @Nullable String environmentKey;
@@ -81,7 +81,7 @@ public final class JobTaskForEachTaskTask {
      */
     private @Nullable JobTaskForEachTaskTaskHealth health;
     /**
-     * @return Identifier of the Job cluster specified in the `job_cluster` block.
+     * @return Identifier of the Job cluster specified in the `jobCluster` block.
      * 
      */
     private @Nullable String jobClusterKey;
@@ -101,7 +101,7 @@ public final class JobTaskForEachTaskTask {
      */
     private @Nullable Integer minRetryIntervalMillis;
     /**
-     * @return Task will run on a dedicated cluster.  See databricks.Cluster documentation for specification. *Some parameters, such as `autotermination_minutes`, `is_pinned`, `workload_type` aren&#39;t supported!*
+     * @return Task will run on a dedicated cluster.  See databricks.Cluster documentation for specification. *Some parameters, such as `autoterminationMinutes`, `isPinned`, `workloadType` aren&#39;t supported!*
      * 
      */
     private @Nullable JobTaskForEachTaskTaskNewCluster newCluster;
@@ -143,7 +143,7 @@ public final class JobTaskForEachTaskTask {
     /**
      * @return (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
      * 
-     * &gt; If no `job_cluster_key`, `existing_cluster_id`, or `new_cluster` were specified in task definition, then task will executed using serverless compute.
+     * &gt; If no `jobClusterKey`, `existingClusterId`, or `newCluster` were specified in task definition, then task will executed using serverless compute.
      * 
      */
     private @Nullable JobTaskForEachTaskTaskWebhookNotifications webhookNotifications;
@@ -196,7 +196,7 @@ public final class JobTaskForEachTaskTask {
         return Optional.ofNullable(this.emailNotifications);
     }
     /**
-     * @return identifier of an `environment` block that is used to specify libraries.  Required for some tasks (`spark_python_task`, `python_wheel_task`, ...) running on serverless compute.
+     * @return identifier of an `environment` block that is used to specify libraries.  Required for some tasks (`sparkPythonTask`, `pythonWheelTask`, ...) running on serverless compute.
      * 
      */
     public Optional<String> environmentKey() {
@@ -220,7 +220,7 @@ public final class JobTaskForEachTaskTask {
         return Optional.ofNullable(this.health);
     }
     /**
-     * @return Identifier of the Job cluster specified in the `job_cluster` block.
+     * @return Identifier of the Job cluster specified in the `jobCluster` block.
      * 
      */
     public Optional<String> jobClusterKey() {
@@ -248,7 +248,7 @@ public final class JobTaskForEachTaskTask {
         return Optional.ofNullable(this.minRetryIntervalMillis);
     }
     /**
-     * @return Task will run on a dedicated cluster.  See databricks.Cluster documentation for specification. *Some parameters, such as `autotermination_minutes`, `is_pinned`, `workload_type` aren&#39;t supported!*
+     * @return Task will run on a dedicated cluster.  See databricks.Cluster documentation for specification. *Some parameters, such as `autoterminationMinutes`, `isPinned`, `workloadType` aren&#39;t supported!*
      * 
      */
     public Optional<JobTaskForEachTaskTaskNewCluster> newCluster() {
@@ -320,7 +320,7 @@ public final class JobTaskForEachTaskTask {
     /**
      * @return (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
      * 
-     * &gt; If no `job_cluster_key`, `existing_cluster_id`, or `new_cluster` were specified in task definition, then task will executed using serverless compute.
+     * &gt; If no `jobClusterKey`, `existingClusterId`, or `newCluster` were specified in task definition, then task will executed using serverless compute.
      * 
      */
     public Optional<JobTaskForEachTaskTaskWebhookNotifications> webhookNotifications() {

@@ -30,7 +30,7 @@ namespace Pulumi.Databricks.Inputs
         /// <summary>
         /// R2 API token secret access key
         /// 
-        /// `azure_service_principal` optional configuration block to use service principal as credential details for Azure (Legacy):
+        /// `AzureServicePrincipal` optional configuration block to use service principal as credential details for Azure (Legacy):
         /// </summary>
         public Input<string>? SecretAccessKey
         {

@@ -18,7 +18,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly Outputs.ModelServingProvisionedThroughputAiGatewayGuardrailsInput? Input;
         /// <summary>
-        /// A block with configuration for output guardrail filters.  Has the same structure as `input` block.
+        /// A block with configuration for output guardrail filters.  Has the same structure as `Input` block.
         /// </summary>
         public readonly Outputs.ModelServingProvisionedThroughputAiGatewayGuardrailsOutput? Output;
 

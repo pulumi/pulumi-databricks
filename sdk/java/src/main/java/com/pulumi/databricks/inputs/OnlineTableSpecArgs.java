@@ -65,14 +65,14 @@ public final class OnlineTableSpecArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * empty block that specifies that pipeline runs continuously after generating the initial data.  Conflicts with `run_triggered`.
+     * empty block that specifies that pipeline runs continuously after generating the initial data.  Conflicts with `runTriggered`.
      * 
      */
     @Import(name="runContinuously")
     private @Nullable Output<OnlineTableSpecRunContinuouslyArgs> runContinuously;
 
     /**
-     * @return empty block that specifies that pipeline runs continuously after generating the initial data.  Conflicts with `run_triggered`.
+     * @return empty block that specifies that pipeline runs continuously after generating the initial data.  Conflicts with `runTriggered`.
      * 
      */
     public Optional<Output<OnlineTableSpecRunContinuouslyArgs>> runContinuously() {
@@ -228,7 +228,7 @@ public final class OnlineTableSpecArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param runContinuously empty block that specifies that pipeline runs continuously after generating the initial data.  Conflicts with `run_triggered`.
+         * @param runContinuously empty block that specifies that pipeline runs continuously after generating the initial data.  Conflicts with `runTriggered`.
          * 
          * @return builder
          * 
@@ -239,7 +239,7 @@ public final class OnlineTableSpecArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param runContinuously empty block that specifies that pipeline runs continuously after generating the initial data.  Conflicts with `run_triggered`.
+         * @param runContinuously empty block that specifies that pipeline runs continuously after generating the initial data.  Conflicts with `runTriggered`.
          * 
          * @return builder
          * 

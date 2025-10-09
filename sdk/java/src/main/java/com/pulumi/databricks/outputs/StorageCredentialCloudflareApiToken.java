@@ -23,7 +23,7 @@ public final class StorageCredentialCloudflareApiToken {
     /**
      * @return R2 API token secret access key
      * 
-     * `azure_service_principal` optional configuration block to use service principal as credential details for Azure (Legacy):
+     * `azureServicePrincipal` optional configuration block to use service principal as credential details for Azure (Legacy):
      * 
      */
     private String secretAccessKey;
@@ -46,7 +46,7 @@ public final class StorageCredentialCloudflareApiToken {
     /**
      * @return R2 API token secret access key
      * 
-     * `azure_service_principal` optional configuration block to use service principal as credential details for Azure (Legacy):
+     * `azureServicePrincipal` optional configuration block to use service principal as credential details for Azure (Legacy):
      * 
      */
     public String secretAccessKey() {

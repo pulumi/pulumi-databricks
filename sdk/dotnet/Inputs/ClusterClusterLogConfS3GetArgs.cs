@@ -13,7 +13,7 @@ namespace Pulumi.Databricks.Inputs
     public sealed class ClusterClusterLogConfS3GetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Set canned access control list, e.g. `bucket-owner-full-control`. If `canned_cal` is set, the cluster instance profile must have `s3:PutObjectAcl` permission on the destination bucket and prefix. The full list of possible canned ACLs can be found [here](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl). By default, only the object owner gets full control. If you are using a cross-account role for writing data, you may want to set `bucket-owner-full-control` to make bucket owners able to read the logs.
+        /// Set canned access control list, e.g. `bucket-owner-full-control`. If `CannedCal` is set, the cluster instance profile must have `s3:PutObjectAcl` permission on the destination bucket and prefix. The full list of possible canned ACLs can be found [here](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl). By default, only the object owner gets full control. If you are using a cross-account role for writing data, you may want to set `bucket-owner-full-control` to make bucket owners able to read the logs.
         /// </summary>
         [Input("cannedAcl")]
         public Input<string>? CannedAcl { get; set; }
@@ -37,7 +37,7 @@ namespace Pulumi.Databricks.Inputs
         public Input<string>? EncryptionType { get; set; }
 
         /// <summary>
-        /// S3 endpoint, e.g. &lt;https://s3-us-west-2.amazonaws.com&gt;. Either `region` or `endpoint` needs to be set. If both are set, the endpoint is used.
+        /// S3 endpoint, e.g. &lt;https://s3-us-west-2.amazonaws.com&gt;. Either `Region` or `Endpoint` needs to be set. If both are set, the endpoint is used.
         /// </summary>
         [Input("endpoint")]
         public Input<string>? Endpoint { get; set; }
@@ -49,7 +49,7 @@ namespace Pulumi.Databricks.Inputs
         public Input<string>? KmsKey { get; set; }
 
         /// <summary>
-        /// S3 region, e.g. `us-west-2`. Either `region` or `endpoint` must be set. If both are set, the endpoint is used.
+        /// S3 region, e.g. `us-west-2`. Either `Region` or `Endpoint` must be set. If both are set, the endpoint is used.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }

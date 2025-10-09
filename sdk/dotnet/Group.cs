@@ -16,9 +16,9 @@ namespace Pulumi.Databricks
     /// 
     /// &gt; To assign an account level group to a workspace use databricks_mws_permission_assignment.
     /// 
-    /// &gt; Entitlements, like, `allow_cluster_create`, `allow_instance_pool_create`, `databricks_sql_access`, `workspace_access` applicable only for workspace-level groups.  Use databricks.Entitlements resource to assign entitlements inside a workspace to account-level groups.
+    /// &gt; Entitlements, like, `AllowClusterCreate`, `AllowInstancePoolCreate`, `DatabricksSqlAccess`, `WorkspaceAccess` applicable only for workspace-level groups.  Use databricks.Entitlements resource to assign entitlements inside a workspace to account-level groups.
     /// 
-    /// To create account groups in the Databricks account, the provider must be configured accordingly. On AWS deployment with `host = "https://accounts.cloud.databricks.com"` and `account_id = "00000000-0000-0000-0000-000000000000"`. On Azure deployments `host = "https://accounts.azuredatabricks.net"`, `account_id = "00000000-0000-0000-0000-000000000000"` and using AAD tokens as authentication.
+    /// To create account groups in the Databricks account, the provider must be configured accordingly. On AWS deployment with `host = "https://accounts.cloud.databricks.com"` and `AccountId = "00000000-0000-0000-0000-000000000000"`. On Azure deployments `host = "https://accounts.azuredatabricks.net"`, `AccountId = "00000000-0000-0000-0000-000000000000"` and using AAD tokens as authentication.
     /// 
     /// Recommended to use along with Identity Provider SCIM provisioning to populate users into those groups:
     /// 
@@ -147,13 +147,13 @@ namespace Pulumi.Databricks
         public Output<string> AclPrincipalId { get; private set; } = null!;
 
         /// <summary>
-        /// This is a field to allow the group to have cluster create privileges. More fine grained permissions could be assigned with databricks.Permissions and cluster_id argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
+        /// This is a field to allow the group to have cluster create privileges. More fine grained permissions could be assigned with databricks.Permissions and ClusterId argument. Everyone without `AllowClusterCreate` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
         /// </summary>
         [Output("allowClusterCreate")]
         public Output<bool?> AllowClusterCreate { get; private set; } = null!;
 
         /// <summary>
-        /// This is a field to allow the group to have instance pool create privileges. More fine grained permissions could be assigned with databricks.Permissions and instance_pool_id argument.
+        /// This is a field to allow the group to have instance pool create privileges. More fine grained permissions could be assigned with databricks.Permissions and InstancePoolId argument.
         /// </summary>
         [Output("allowInstancePoolCreate")]
         public Output<bool?> AllowInstancePoolCreate { get; private set; } = null!;
@@ -192,7 +192,7 @@ namespace Pulumi.Databricks
         public Output<bool?> WorkspaceAccess { get; private set; } = null!;
 
         /// <summary>
-        /// This is a field to allow the group to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspace_access` or `databricks_sql_access`.
+        /// This is a field to allow the group to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `WorkspaceAccess` or `DatabricksSqlAccess`.
         /// </summary>
         [Output("workspaceConsume")]
         public Output<bool?> WorkspaceConsume { get; private set; } = null!;
@@ -250,13 +250,13 @@ namespace Pulumi.Databricks
         public Input<string>? AclPrincipalId { get; set; }
 
         /// <summary>
-        /// This is a field to allow the group to have cluster create privileges. More fine grained permissions could be assigned with databricks.Permissions and cluster_id argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
+        /// This is a field to allow the group to have cluster create privileges. More fine grained permissions could be assigned with databricks.Permissions and ClusterId argument. Everyone without `AllowClusterCreate` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
         /// </summary>
         [Input("allowClusterCreate")]
         public Input<bool>? AllowClusterCreate { get; set; }
 
         /// <summary>
-        /// This is a field to allow the group to have instance pool create privileges. More fine grained permissions could be assigned with databricks.Permissions and instance_pool_id argument.
+        /// This is a field to allow the group to have instance pool create privileges. More fine grained permissions could be assigned with databricks.Permissions and InstancePoolId argument.
         /// </summary>
         [Input("allowInstancePoolCreate")]
         public Input<bool>? AllowInstancePoolCreate { get; set; }
@@ -295,7 +295,7 @@ namespace Pulumi.Databricks
         public Input<bool>? WorkspaceAccess { get; set; }
 
         /// <summary>
-        /// This is a field to allow the group to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspace_access` or `databricks_sql_access`.
+        /// This is a field to allow the group to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `WorkspaceAccess` or `DatabricksSqlAccess`.
         /// </summary>
         [Input("workspaceConsume")]
         public Input<bool>? WorkspaceConsume { get; set; }
@@ -315,13 +315,13 @@ namespace Pulumi.Databricks
         public Input<string>? AclPrincipalId { get; set; }
 
         /// <summary>
-        /// This is a field to allow the group to have cluster create privileges. More fine grained permissions could be assigned with databricks.Permissions and cluster_id argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
+        /// This is a field to allow the group to have cluster create privileges. More fine grained permissions could be assigned with databricks.Permissions and ClusterId argument. Everyone without `AllowClusterCreate` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
         /// </summary>
         [Input("allowClusterCreate")]
         public Input<bool>? AllowClusterCreate { get; set; }
 
         /// <summary>
-        /// This is a field to allow the group to have instance pool create privileges. More fine grained permissions could be assigned with databricks.Permissions and instance_pool_id argument.
+        /// This is a field to allow the group to have instance pool create privileges. More fine grained permissions could be assigned with databricks.Permissions and InstancePoolId argument.
         /// </summary>
         [Input("allowInstancePoolCreate")]
         public Input<bool>? AllowInstancePoolCreate { get; set; }
@@ -360,7 +360,7 @@ namespace Pulumi.Databricks
         public Input<bool>? WorkspaceAccess { get; set; }
 
         /// <summary>
-        /// This is a field to allow the group to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspace_access` or `databricks_sql_access`.
+        /// This is a field to allow the group to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `WorkspaceAccess` or `DatabricksSqlAccess`.
         /// </summary>
         [Input("workspaceConsume")]
         public Input<bool>? WorkspaceConsume { get; set; }

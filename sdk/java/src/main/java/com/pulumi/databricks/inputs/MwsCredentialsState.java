@@ -20,10 +20,10 @@ public final class MwsCredentialsState extends com.pulumi.resources.ResourceArgs
      * **(Deprecated)** Maintained for backwards compatibility and will be removed in a later version. It should now be specified under a provider instance where `host = &#34;https://accounts.cloud.databricks.com&#34;`
      * 
      * @deprecated
-     * `account_id` should be set as part of the Databricks Config, not in the resource.
+     * `accountId` should be set as part of the Databricks Config, not in the resource.
      * 
      */
-    @Deprecated /* `account_id` should be set as part of the Databricks Config, not in the resource. */
+    @Deprecated /* `accountId` should be set as part of the Databricks Config, not in the resource. */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
@@ -31,10 +31,10 @@ public final class MwsCredentialsState extends com.pulumi.resources.ResourceArgs
      * @return **(Deprecated)** Maintained for backwards compatibility and will be removed in a later version. It should now be specified under a provider instance where `host = &#34;https://accounts.cloud.databricks.com&#34;`
      * 
      * @deprecated
-     * `account_id` should be set as part of the Databricks Config, not in the resource.
+     * `accountId` should be set as part of the Databricks Config, not in the resource.
      * 
      */
-    @Deprecated /* `account_id` should be set as part of the Databricks Config, not in the resource. */
+    @Deprecated /* `accountId` should be set as part of the Databricks Config, not in the resource. */
     public Optional<Output<String>> accountId() {
         return Optional.ofNullable(this.accountId);
     }
@@ -141,10 +141,10 @@ public final class MwsCredentialsState extends com.pulumi.resources.ResourceArgs
          * @return builder
          * 
          * @deprecated
-         * `account_id` should be set as part of the Databricks Config, not in the resource.
+         * `accountId` should be set as part of the Databricks Config, not in the resource.
          * 
          */
-        @Deprecated /* `account_id` should be set as part of the Databricks Config, not in the resource. */
+        @Deprecated /* `accountId` should be set as part of the Databricks Config, not in the resource. */
         public Builder accountId(@Nullable Output<String> accountId) {
             $.accountId = accountId;
             return this;
@@ -156,10 +156,10 @@ public final class MwsCredentialsState extends com.pulumi.resources.ResourceArgs
          * @return builder
          * 
          * @deprecated
-         * `account_id` should be set as part of the Databricks Config, not in the resource.
+         * `accountId` should be set as part of the Databricks Config, not in the resource.
          * 
          */
-        @Deprecated /* `account_id` should be set as part of the Databricks Config, not in the resource. */
+        @Deprecated /* `accountId` should be set as part of the Databricks Config, not in the resource. */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
         }

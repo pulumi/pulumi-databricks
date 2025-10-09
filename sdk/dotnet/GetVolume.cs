@@ -13,7 +13,7 @@ namespace Pulumi.Databricks
     {
         /// <summary>
         /// Retrieves details about databricks.Volume that was created by Pulumi or manually. 
-        /// A volume can be identified by its three-level (fully qualified) name (in the form of: `catalog_name`.`schema_name`.`volume_name`) as input. This can be retrieved programmatically using databricks.getVolumes data source.
+        /// A volume can be identified by its three-level (fully qualified) name (in the form of: `CatalogName`.`SchemaName`.`VolumeName`) as input. This can be retrieved programmatically using databricks.getVolumes data source.
         /// 
         /// &gt; This data source can only be used with a workspace-level provider!
         /// 
@@ -71,7 +71,7 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// Retrieves details about databricks.Volume that was created by Pulumi or manually. 
-        /// A volume can be identified by its three-level (fully qualified) name (in the form of: `catalog_name`.`schema_name`.`volume_name`) as input. This can be retrieved programmatically using databricks.getVolumes data source.
+        /// A volume can be identified by its three-level (fully qualified) name (in the form of: `CatalogName`.`SchemaName`.`VolumeName`) as input. This can be retrieved programmatically using databricks.getVolumes data source.
         /// 
         /// &gt; This data source can only be used with a workspace-level provider!
         /// 
@@ -129,7 +129,7 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// Retrieves details about databricks.Volume that was created by Pulumi or manually. 
-        /// A volume can be identified by its three-level (fully qualified) name (in the form of: `catalog_name`.`schema_name`.`volume_name`) as input. This can be retrieved programmatically using databricks.getVolumes data source.
+        /// A volume can be identified by its three-level (fully qualified) name (in the form of: `CatalogName`.`SchemaName`.`VolumeName`) as input. This can be retrieved programmatically using databricks.getVolumes data source.
         /// 
         /// &gt; This data source can only be used with a workspace-level provider!
         /// 
@@ -196,7 +196,7 @@ namespace Pulumi.Databricks
         public string? Id { get; set; }
 
         /// <summary>
-        /// a fully qualified name of databricks_volume: *`catalog`.`schema`.`volume`*
+        /// a fully qualified name of databricks_volume: *`Catalog`.`Schema`.`Volume`*
         /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
@@ -222,7 +222,7 @@ namespace Pulumi.Databricks
         public Input<string>? Id { get; set; }
 
         /// <summary>
-        /// a fully qualified name of databricks_volume: *`catalog`.`schema`.`volume`*
+        /// a fully qualified name of databricks_volume: *`Catalog`.`Schema`.`Volume`*
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;

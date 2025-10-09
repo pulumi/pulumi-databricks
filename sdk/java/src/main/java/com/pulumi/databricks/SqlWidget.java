@@ -22,7 +22,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; Please switch to databricks.Dashboard to author new AI/BI dashboards using the latest tooling
  * 
- * To manage [SQL resources](https://docs.databricks.com/sql/get-started/concepts.html) you must have `databricks_sql_access` on your databricks.Group or databricks_user.
+ * To manage [SQL resources](https://docs.databricks.com/sql/get-started/concepts.html) you must have `databricksSqlAccess` on your databricks.Group or databricks_user.
  * 
  * &gt; documentation for this resource is a work in progress.
  * 

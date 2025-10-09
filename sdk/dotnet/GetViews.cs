@@ -18,7 +18,7 @@ namespace Pulumi.Databricks
         /// 
         /// ## Example Usage
         /// 
-        /// Granting `SELECT` and `MODIFY` to `sensitive` group on all views in a _things_ databricks.Schema from _sandbox_ databricks_catalog.
+        /// Granting `SELECT` and `MODIFY` to `Sensitive` group on all views in a _things_ databricks.Schema from _sandbox_ databricks_catalog.
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -75,7 +75,7 @@ namespace Pulumi.Databricks
         /// 
         /// ## Example Usage
         /// 
-        /// Granting `SELECT` and `MODIFY` to `sensitive` group on all views in a _things_ databricks.Schema from _sandbox_ databricks_catalog.
+        /// Granting `SELECT` and `MODIFY` to `Sensitive` group on all views in a _things_ databricks.Schema from _sandbox_ databricks_catalog.
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -132,7 +132,7 @@ namespace Pulumi.Databricks
         /// 
         /// ## Example Usage
         /// 
-        /// Granting `SELECT` and `MODIFY` to `sensitive` group on all views in a _things_ databricks.Schema from _sandbox_ databricks_catalog.
+        /// Granting `SELECT` and `MODIFY` to `Sensitive` group on all views in a _things_ databricks.Schema from _sandbox_ databricks_catalog.
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -196,7 +196,7 @@ namespace Pulumi.Databricks
         private List<string>? _ids;
 
         /// <summary>
-        /// set of databricks_view full names: *`catalog`.`schema`.`view`*
+        /// set of DatabricksView full names: *`Catalog`.`Schema`.`View`*
         /// </summary>
         public List<string> Ids
         {
@@ -228,7 +228,7 @@ namespace Pulumi.Databricks
         private InputList<string>? _ids;
 
         /// <summary>
-        /// set of databricks_view full names: *`catalog`.`schema`.`view`*
+        /// set of DatabricksView full names: *`Catalog`.`Schema`.`View`*
         /// </summary>
         public InputList<string> Ids
         {
@@ -258,7 +258,7 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// set of databricks_view full names: *`catalog`.`schema`.`view`*
+        /// set of DatabricksView full names: *`Catalog`.`Schema`.`View`*
         /// </summary>
         public readonly ImmutableArray<string> Ids;
         public readonly string SchemaName;

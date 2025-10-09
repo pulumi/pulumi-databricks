@@ -20,12 +20,12 @@ public final class BudgetAlertConfiguration {
     private @Nullable List<BudgetAlertConfigurationActionConfiguration> actionConfigurations;
     private @Nullable String alertConfigurationId;
     /**
-     * @return The threshold for the budget alert to determine if it is in a triggered state. The number is evaluated based on `quantity_type`.
+     * @return The threshold for the budget alert to determine if it is in a triggered state. The number is evaluated based on `quantityType`.
      * 
      */
     private @Nullable String quantityThreshold;
     /**
-     * @return The way to calculate cost for this budget alert. This is what quantity_threshold is measured in. (Enum: `LIST_PRICE_DOLLARS_USD`)
+     * @return The way to calculate cost for this budget alert. This is what quantityThreshold is measured in. (Enum: `LIST_PRICE_DOLLARS_USD`)
      * 
      */
     private @Nullable String quantityType;
@@ -52,14 +52,14 @@ public final class BudgetAlertConfiguration {
         return Optional.ofNullable(this.alertConfigurationId);
     }
     /**
-     * @return The threshold for the budget alert to determine if it is in a triggered state. The number is evaluated based on `quantity_type`.
+     * @return The threshold for the budget alert to determine if it is in a triggered state. The number is evaluated based on `quantityType`.
      * 
      */
     public Optional<String> quantityThreshold() {
         return Optional.ofNullable(this.quantityThreshold);
     }
     /**
-     * @return The way to calculate cost for this budget alert. This is what quantity_threshold is measured in. (Enum: `LIST_PRICE_DOLLARS_USD`)
+     * @return The way to calculate cost for this budget alert. This is what quantityThreshold is measured in. (Enum: `LIST_PRICE_DOLLARS_USD`)
      * 
      */
     public Optional<String> quantityType() {

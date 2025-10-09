@@ -163,8 +163,8 @@ namespace Pulumi.Databricks
         public Output<int?> DeactivatedAt { get; private set; } = null!;
 
         /// <summary>
-        /// * On Azure: List of domain names of target private link service. Only used by private endpoints to customer-managed private endpoint services. Conflicts with `group_id`.
-        /// * On AWS: List of target resource FQDNs accessible via the VPC endpoint service. Only used by private endpoints towards a VPC endpoint service behind a customer-managed VPC endpoint service. Conflicts with `resource_names`.
+        /// * On Azure: List of domain names of target private link service. Only used by private endpoints to customer-managed private endpoint services. Conflicts with `GroupId`.
+        /// * On AWS: List of target resource FQDNs accessible via the VPC endpoint service. Only used by private endpoints towards a VPC endpoint service behind a customer-managed VPC endpoint service. Conflicts with `ResourceNames`.
         /// </summary>
         [Output("domainNames")]
         public Output<ImmutableArray<string>> DomainNames { get; private set; } = null!;
@@ -188,7 +188,7 @@ namespace Pulumi.Databricks
         public Output<string?> EndpointService { get; private set; } = null!;
 
         /// <summary>
-        /// Not used by customer-managed private endpoint services. The sub-resource type (group ID) of the target resource. Must be one of supported resource types (i.e., `blob`, `dfs`, `sqlServer` , etc. Consult the [Azure documentation](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview#private-link-resource) for full list of supported resources). Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for `blob` and one for `dfs`. Change forces creation of a new resource. Conflicts with `domain_names`.
+        /// Not used by customer-managed private endpoint services. The sub-resource type (group ID) of the target resource. Must be one of supported resource types (i.e., `Blob`, `Dfs`, `sqlServer` , etc. Consult the [Azure documentation](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview#private-link-resource) for full list of supported resources). Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for `Blob` and one for `Dfs`. Change forces creation of a new resource. Conflicts with `DomainNames`.
         /// </summary>
         [Output("groupId")]
         public Output<string?> GroupId { get; private set; } = null!;
@@ -206,7 +206,7 @@ namespace Pulumi.Databricks
         public Output<string?> ResourceId { get; private set; } = null!;
 
         /// <summary>
-        /// Only used by private endpoints towards AWS S3 service. List of globally unique S3 bucket names that will be accessed via the VPC endpoint. The bucket names must be in the same region as the NCC/endpoint service. Conflict with `domain_names`.
+        /// Only used by private endpoints towards AWS S3 service. List of globally unique S3 bucket names that will be accessed via the VPC endpoint. The bucket names must be in the same region as the NCC/endpoint service. Conflict with `DomainNames`.
         /// </summary>
         [Output("resourceNames")]
         public Output<ImmutableArray<string>> ResourceNames { get; private set; } = null!;
@@ -312,8 +312,8 @@ namespace Pulumi.Databricks
         private InputList<string>? _domainNames;
 
         /// <summary>
-        /// * On Azure: List of domain names of target private link service. Only used by private endpoints to customer-managed private endpoint services. Conflicts with `group_id`.
-        /// * On AWS: List of target resource FQDNs accessible via the VPC endpoint service. Only used by private endpoints towards a VPC endpoint service behind a customer-managed VPC endpoint service. Conflicts with `resource_names`.
+        /// * On Azure: List of domain names of target private link service. Only used by private endpoints to customer-managed private endpoint services. Conflicts with `GroupId`.
+        /// * On AWS: List of target resource FQDNs accessible via the VPC endpoint service. Only used by private endpoints towards a VPC endpoint service behind a customer-managed VPC endpoint service. Conflicts with `ResourceNames`.
         /// </summary>
         public InputList<string> DomainNames
         {
@@ -340,7 +340,7 @@ namespace Pulumi.Databricks
         public Input<string>? EndpointService { get; set; }
 
         /// <summary>
-        /// Not used by customer-managed private endpoint services. The sub-resource type (group ID) of the target resource. Must be one of supported resource types (i.e., `blob`, `dfs`, `sqlServer` , etc. Consult the [Azure documentation](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview#private-link-resource) for full list of supported resources). Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for `blob` and one for `dfs`. Change forces creation of a new resource. Conflicts with `domain_names`.
+        /// Not used by customer-managed private endpoint services. The sub-resource type (group ID) of the target resource. Must be one of supported resource types (i.e., `Blob`, `Dfs`, `sqlServer` , etc. Consult the [Azure documentation](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview#private-link-resource) for full list of supported resources). Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for `Blob` and one for `Dfs`. Change forces creation of a new resource. Conflicts with `DomainNames`.
         /// </summary>
         [Input("groupId")]
         public Input<string>? GroupId { get; set; }
@@ -361,7 +361,7 @@ namespace Pulumi.Databricks
         private InputList<string>? _resourceNames;
 
         /// <summary>
-        /// Only used by private endpoints towards AWS S3 service. List of globally unique S3 bucket names that will be accessed via the VPC endpoint. The bucket names must be in the same region as the NCC/endpoint service. Conflict with `domain_names`.
+        /// Only used by private endpoints towards AWS S3 service. List of globally unique S3 bucket names that will be accessed via the VPC endpoint. The bucket names must be in the same region as the NCC/endpoint service. Conflict with `DomainNames`.
         /// </summary>
         public InputList<string> ResourceNames
         {
@@ -432,8 +432,8 @@ namespace Pulumi.Databricks
         private InputList<string>? _domainNames;
 
         /// <summary>
-        /// * On Azure: List of domain names of target private link service. Only used by private endpoints to customer-managed private endpoint services. Conflicts with `group_id`.
-        /// * On AWS: List of target resource FQDNs accessible via the VPC endpoint service. Only used by private endpoints towards a VPC endpoint service behind a customer-managed VPC endpoint service. Conflicts with `resource_names`.
+        /// * On Azure: List of domain names of target private link service. Only used by private endpoints to customer-managed private endpoint services. Conflicts with `GroupId`.
+        /// * On AWS: List of target resource FQDNs accessible via the VPC endpoint service. Only used by private endpoints towards a VPC endpoint service behind a customer-managed VPC endpoint service. Conflicts with `ResourceNames`.
         /// </summary>
         public InputList<string> DomainNames
         {
@@ -460,7 +460,7 @@ namespace Pulumi.Databricks
         public Input<string>? EndpointService { get; set; }
 
         /// <summary>
-        /// Not used by customer-managed private endpoint services. The sub-resource type (group ID) of the target resource. Must be one of supported resource types (i.e., `blob`, `dfs`, `sqlServer` , etc. Consult the [Azure documentation](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview#private-link-resource) for full list of supported resources). Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for `blob` and one for `dfs`. Change forces creation of a new resource. Conflicts with `domain_names`.
+        /// Not used by customer-managed private endpoint services. The sub-resource type (group ID) of the target resource. Must be one of supported resource types (i.e., `Blob`, `Dfs`, `sqlServer` , etc. Consult the [Azure documentation](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview#private-link-resource) for full list of supported resources). Note that to connect to workspace root storage (root DBFS), you need two endpoints, one for `Blob` and one for `Dfs`. Change forces creation of a new resource. Conflicts with `DomainNames`.
         /// </summary>
         [Input("groupId")]
         public Input<string>? GroupId { get; set; }
@@ -481,7 +481,7 @@ namespace Pulumi.Databricks
         private InputList<string>? _resourceNames;
 
         /// <summary>
-        /// Only used by private endpoints towards AWS S3 service. List of globally unique S3 bucket names that will be accessed via the VPC endpoint. The bucket names must be in the same region as the NCC/endpoint service. Conflict with `domain_names`.
+        /// Only used by private endpoints towards AWS S3 service. List of globally unique S3 bucket names that will be accessed via the VPC endpoint. The bucket names must be in the same region as the NCC/endpoint service. Conflict with `DomainNames`.
         /// </summary>
         public InputList<string> ResourceNames
         {

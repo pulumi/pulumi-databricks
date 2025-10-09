@@ -24,7 +24,7 @@ public final class GetUserResult {
      */
     private Boolean active;
     /**
-     * @return Alphanumeric representation of user local name. e.g. `mr_foo`.
+     * @return Alphanumeric representation of user local name. e.g. `mrFoo`.
      * 
      */
     private String alphanumeric;
@@ -77,7 +77,7 @@ public final class GetUserResult {
         return this.active;
     }
     /**
-     * @return Alphanumeric representation of user local name. e.g. `mr_foo`.
+     * @return Alphanumeric representation of user local name. e.g. `mrFoo`.
      * 
      */
     public String alphanumeric() {

@@ -12,7 +12,7 @@ namespace Pulumi.Databricks
     /// <summary>
     /// !&gt; This resource is deprecated! Please switch to databricks_query.
     /// 
-    /// To manage [SQLA resources](https://docs.databricks.com/sql/get-started/concepts.html) you must have `databricks_sql_access` on your databricks.Group or databricks_user.
+    /// To manage [SQLA resources](https://docs.databricks.com/sql/get-started/concepts.html) you must have `DatabricksSqlAccess` on your databricks.Group or databricks_user.
     /// 
     /// &gt; documentation for this resource is a work in progress.
     /// 
@@ -129,7 +129,7 @@ namespace Pulumi.Databricks
     /// 
     /// ## Troubleshooting
     /// 
-    /// In case you see `Error: cannot create sql query: Internal Server Error` during `pulumi up`; double check that you are using the correct `data_source_id`
+    /// In case you see `Error: cannot create sql query: Internal Server Error` during `pulumi up`; double check that you are using the correct `DataSourceId`
     /// 
     /// Operations on `databricks.SqlQuery` schedules are ⛔️ deprecated. You can create, update or delete a schedule for SQLA and other Databricks resources using the databricks.Job resource.
     /// 
@@ -206,7 +206,7 @@ namespace Pulumi.Databricks
         public Output<string> Query { get; private set; } = null!;
 
         /// <summary>
-        /// Run as role. Possible values are `viewer`, `owner`.
+        /// Run as role. Possible values are `Viewer`, `Owner`.
         /// </summary>
         [Output("runAsRole")]
         public Output<string?> RunAsRole { get; private set; } = null!;
@@ -308,7 +308,7 @@ namespace Pulumi.Databricks
         public Input<string> Query { get; set; } = null!;
 
         /// <summary>
-        /// Run as role. Possible values are `viewer`, `owner`.
+        /// Run as role. Possible values are `Viewer`, `Owner`.
         /// </summary>
         [Input("runAsRole")]
         public Input<string>? RunAsRole { get; set; }
@@ -377,7 +377,7 @@ namespace Pulumi.Databricks
         public Input<string>? Query { get; set; }
 
         /// <summary>
-        /// Run as role. Possible values are `viewer`, `owner`.
+        /// Run as role. Possible values are `Viewer`, `Owner`.
         /// </summary>
         [Input("runAsRole")]
         public Input<string>? RunAsRole { get; set; }

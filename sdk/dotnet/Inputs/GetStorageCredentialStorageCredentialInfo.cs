@@ -79,7 +79,7 @@ namespace Pulumi.Databricks.Inputs
         public string? Name { get; set; }
 
         /// <summary>
-        /// Username/groupname/sp application_id of the storage credential owner.
+        /// Username/groupname/sp ApplicationId of the storage credential owner.
         /// </summary>
         [Input("owner")]
         public string? Owner { get; set; }

@@ -15,6 +15,17 @@ import (
 //
 // > This resource can only be used with a workspace-level provider!
 //
+// ## Example Usage
+//
+// ## Related Resources
+//
+// The following resources are used in the same context:
+//
+// * SqlEndpoint to manage Databricks SQL [Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html).
+// * ModelServing to serve this model on a Databricks serving endpoint.
+// * Secret to manage [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
+// * Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code.
+//
 // ## Import
 //
 // This resource can be imported by name:

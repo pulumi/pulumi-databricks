@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class JobTaskSqlTaskFile {
     /**
-     * @return If `source` is `GIT`: Relative path to the file in the repository specified in the `git_source` block with SQL commands to execute. If `source` is `WORKSPACE`: Absolute path to the file in the workspace with SQL commands to execute.
+     * @return If `source` is `GIT`: Relative path to the file in the repository specified in the `gitSource` block with SQL commands to execute. If `source` is `WORKSPACE`: Absolute path to the file in the workspace with SQL commands to execute.
      * 
      * Example
      * 
@@ -97,7 +97,7 @@ public final class JobTaskSqlTaskFile {
 
     private JobTaskSqlTaskFile() {}
     /**
-     * @return If `source` is `GIT`: Relative path to the file in the repository specified in the `git_source` block with SQL commands to execute. If `source` is `WORKSPACE`: Absolute path to the file in the workspace with SQL commands to execute.
+     * @return If `source` is `GIT`: Relative path to the file in the repository specified in the `gitSource` block with SQL commands to execute. If `source` is `WORKSPACE`: Absolute path to the file in the workspace with SQL commands to execute.
      * 
      * Example
      * 

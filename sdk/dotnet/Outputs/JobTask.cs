@@ -36,7 +36,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly Outputs.JobTaskEmailNotifications? EmailNotifications;
         /// <summary>
-        /// identifier of an `environment` block that is used to specify libraries.  Required for some tasks (`spark_python_task`, `python_wheel_task`, ...) running on serverless compute.
+        /// identifier of an `Environment` block that is used to specify libraries.  Required for some tasks (`SparkPythonTask`, `PythonWheelTask`, ...) running on serverless compute.
         /// </summary>
         public readonly string? EnvironmentKey;
         /// <summary>
@@ -50,7 +50,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly Outputs.JobTaskHealth? Health;
         /// <summary>
-        /// Identifier of the Job cluster specified in the `job_cluster` block.
+        /// Identifier of the Job cluster specified in the `JobCluster` block.
         /// </summary>
         public readonly string? JobClusterKey;
         /// <summary>
@@ -66,7 +66,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly int? MinRetryIntervalMillis;
         /// <summary>
-        /// Task will run on a dedicated cluster.  See databricks.Cluster documentation for specification. *Some parameters, such as `autotermination_minutes`, `is_pinned`, `workload_type` aren't supported!*
+        /// Task will run on a dedicated cluster.  See databricks.Cluster documentation for specification. *Some parameters, such as `AutoterminationMinutes`, `IsPinned`, `WorkloadType` aren't supported!*
         /// </summary>
         public readonly Outputs.JobTaskNewCluster? NewCluster;
         public readonly Outputs.JobTaskNotebookTask? NotebookTask;
@@ -102,7 +102,7 @@ namespace Pulumi.Databricks.Outputs
         /// <summary>
         /// (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
         /// 
-        /// &gt; If no `job_cluster_key`, `existing_cluster_id`, or `new_cluster` were specified in task definition, then task will executed using serverless compute.
+        /// &gt; If no `JobClusterKey`, `ExistingClusterId`, or `NewCluster` were specified in task definition, then task will executed using serverless compute.
         /// </summary>
         public readonly Outputs.JobTaskWebhookNotifications? WebhookNotifications;
 

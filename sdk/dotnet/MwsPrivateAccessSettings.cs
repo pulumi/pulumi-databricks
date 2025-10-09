@@ -114,7 +114,7 @@ namespace Pulumi.Databricks
     /// * Provisioning Databricks on AWS with Private Link guide.
     /// * Provisioning AWS Databricks workspaces with a Hub &amp; Spoke firewall for data exfiltration protection guide.
     /// * Provisioning Databricks workspaces on GCP with Private Service Connect guide.
-    /// * databricks.MwsVpcEndpoint to register aws_vpc_endpoint resources with Databricks such that they can be used as part of a databricks.MwsNetworks configuration.
+    /// * databricks.MwsVpcEndpoint to register AwsVpcEndpoint resources with Databricks such that they can be used as part of a databricks.MwsNetworks configuration.
     /// * databricks.MwsNetworks to [configure VPC](https://docs.databricks.com/administration-guide/cloud-configurations/aws/customer-managed-vpc.html) &amp; subnets for new workspaces within AWS.
     /// * databricks.MwsWorkspaces to set up [AWS and GCP workspaces](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1).
     /// 
@@ -145,13 +145,13 @@ namespace Pulumi.Databricks
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// An array of databricks.MwsVpcEndpoint `vpc_endpoint_id` (not `id`). Only used when `private_access_level` is set to `ENDPOINT`. This is an allow list of databricks.MwsVpcEndpoint that in your account that can connect to your databricks.MwsWorkspaces over AWS PrivateLink. If hybrid access to your workspace is enabled by setting `public_access_enabled` to true, then this control only works for PrivateLink connections. To control how your workspace is accessed via public internet, see the article for databricks_ip_access_list.
+        /// An array of databricks.MwsVpcEndpoint `VpcEndpointId` (not `Id`). Only used when `PrivateAccessLevel` is set to `ENDPOINT`. This is an allow list of databricks.MwsVpcEndpoint that in your account that can connect to your databricks.MwsWorkspaces over AWS PrivateLink. If hybrid access to your workspace is enabled by setting `PublicAccessEnabled` to true, then this control only works for PrivateLink connections. To control how your workspace is accessed via public internet, see the article for databricks_ip_access_list.
         /// </summary>
         [Output("allowedVpcEndpointIds")]
         public Output<ImmutableArray<string>> AllowedVpcEndpointIds { get; private set; } = null!;
 
         /// <summary>
-        /// The private access level controls which VPC endpoints can connect to the UI or API of any workspace that attaches this private access settings object. `ACCOUNT` level access _(default)_ lets only databricks.MwsVpcEndpoint that are registered in your Databricks account connect to your databricks_mws_workspaces. `ENDPOINT` level access lets only specified databricks.MwsVpcEndpoint connect to your workspace. Please see the `allowed_vpc_endpoint_ids` documentation for more details.
+        /// The private access level controls which VPC endpoints can connect to the UI or API of any workspace that attaches this private access settings object. `ACCOUNT` level access _(default)_ lets only databricks.MwsVpcEndpoint that are registered in your Databricks account connect to your databricks_mws_workspaces. `ENDPOINT` level access lets only specified databricks.MwsVpcEndpoint connect to your workspace. Please see the `AllowedVpcEndpointIds` documentation for more details.
         /// </summary>
         [Output("privateAccessLevel")]
         public Output<string?> PrivateAccessLevel { get; private set; } = null!;
@@ -169,7 +169,7 @@ namespace Pulumi.Databricks
         public Output<string> PrivateAccessSettingsName { get; private set; } = null!;
 
         /// <summary>
-        /// If `true`, the databricks.MwsWorkspaces can be accessed over the databricks.MwsVpcEndpoint as well as over the public network. In such a case, you could also configure an databricks.IpAccessList for the workspace, to restrict the source networks that could be used to access it over the public network. If `false`, the workspace can be accessed only over VPC endpoints, and not over the public network. Once explicitly set, this field becomes mandatory.
+        /// If `True`, the databricks.MwsWorkspaces can be accessed over the databricks.MwsVpcEndpoint as well as over the public network. In such a case, you could also configure an databricks.IpAccessList for the workspace, to restrict the source networks that could be used to access it over the public network. If `False`, the workspace can be accessed only over VPC endpoints, and not over the public network. Once explicitly set, this field becomes mandatory.
         /// </summary>
         [Output("publicAccessEnabled")]
         public Output<bool?> PublicAccessEnabled { get; private set; } = null!;
@@ -233,7 +233,7 @@ namespace Pulumi.Databricks
         private InputList<string>? _allowedVpcEndpointIds;
 
         /// <summary>
-        /// An array of databricks.MwsVpcEndpoint `vpc_endpoint_id` (not `id`). Only used when `private_access_level` is set to `ENDPOINT`. This is an allow list of databricks.MwsVpcEndpoint that in your account that can connect to your databricks.MwsWorkspaces over AWS PrivateLink. If hybrid access to your workspace is enabled by setting `public_access_enabled` to true, then this control only works for PrivateLink connections. To control how your workspace is accessed via public internet, see the article for databricks_ip_access_list.
+        /// An array of databricks.MwsVpcEndpoint `VpcEndpointId` (not `Id`). Only used when `PrivateAccessLevel` is set to `ENDPOINT`. This is an allow list of databricks.MwsVpcEndpoint that in your account that can connect to your databricks.MwsWorkspaces over AWS PrivateLink. If hybrid access to your workspace is enabled by setting `PublicAccessEnabled` to true, then this control only works for PrivateLink connections. To control how your workspace is accessed via public internet, see the article for databricks_ip_access_list.
         /// </summary>
         public InputList<string> AllowedVpcEndpointIds
         {
@@ -242,7 +242,7 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
-        /// The private access level controls which VPC endpoints can connect to the UI or API of any workspace that attaches this private access settings object. `ACCOUNT` level access _(default)_ lets only databricks.MwsVpcEndpoint that are registered in your Databricks account connect to your databricks_mws_workspaces. `ENDPOINT` level access lets only specified databricks.MwsVpcEndpoint connect to your workspace. Please see the `allowed_vpc_endpoint_ids` documentation for more details.
+        /// The private access level controls which VPC endpoints can connect to the UI or API of any workspace that attaches this private access settings object. `ACCOUNT` level access _(default)_ lets only databricks.MwsVpcEndpoint that are registered in your Databricks account connect to your databricks_mws_workspaces. `ENDPOINT` level access lets only specified databricks.MwsVpcEndpoint connect to your workspace. Please see the `AllowedVpcEndpointIds` documentation for more details.
         /// </summary>
         [Input("privateAccessLevel")]
         public Input<string>? PrivateAccessLevel { get; set; }
@@ -260,7 +260,7 @@ namespace Pulumi.Databricks
         public Input<string> PrivateAccessSettingsName { get; set; } = null!;
 
         /// <summary>
-        /// If `true`, the databricks.MwsWorkspaces can be accessed over the databricks.MwsVpcEndpoint as well as over the public network. In such a case, you could also configure an databricks.IpAccessList for the workspace, to restrict the source networks that could be used to access it over the public network. If `false`, the workspace can be accessed only over VPC endpoints, and not over the public network. Once explicitly set, this field becomes mandatory.
+        /// If `True`, the databricks.MwsWorkspaces can be accessed over the databricks.MwsVpcEndpoint as well as over the public network. In such a case, you could also configure an databricks.IpAccessList for the workspace, to restrict the source networks that could be used to access it over the public network. If `False`, the workspace can be accessed only over VPC endpoints, and not over the public network. Once explicitly set, this field becomes mandatory.
         /// </summary>
         [Input("publicAccessEnabled")]
         public Input<bool>? PublicAccessEnabled { get; set; }
@@ -286,7 +286,7 @@ namespace Pulumi.Databricks
         private InputList<string>? _allowedVpcEndpointIds;
 
         /// <summary>
-        /// An array of databricks.MwsVpcEndpoint `vpc_endpoint_id` (not `id`). Only used when `private_access_level` is set to `ENDPOINT`. This is an allow list of databricks.MwsVpcEndpoint that in your account that can connect to your databricks.MwsWorkspaces over AWS PrivateLink. If hybrid access to your workspace is enabled by setting `public_access_enabled` to true, then this control only works for PrivateLink connections. To control how your workspace is accessed via public internet, see the article for databricks_ip_access_list.
+        /// An array of databricks.MwsVpcEndpoint `VpcEndpointId` (not `Id`). Only used when `PrivateAccessLevel` is set to `ENDPOINT`. This is an allow list of databricks.MwsVpcEndpoint that in your account that can connect to your databricks.MwsWorkspaces over AWS PrivateLink. If hybrid access to your workspace is enabled by setting `PublicAccessEnabled` to true, then this control only works for PrivateLink connections. To control how your workspace is accessed via public internet, see the article for databricks_ip_access_list.
         /// </summary>
         public InputList<string> AllowedVpcEndpointIds
         {
@@ -295,7 +295,7 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
-        /// The private access level controls which VPC endpoints can connect to the UI or API of any workspace that attaches this private access settings object. `ACCOUNT` level access _(default)_ lets only databricks.MwsVpcEndpoint that are registered in your Databricks account connect to your databricks_mws_workspaces. `ENDPOINT` level access lets only specified databricks.MwsVpcEndpoint connect to your workspace. Please see the `allowed_vpc_endpoint_ids` documentation for more details.
+        /// The private access level controls which VPC endpoints can connect to the UI or API of any workspace that attaches this private access settings object. `ACCOUNT` level access _(default)_ lets only databricks.MwsVpcEndpoint that are registered in your Databricks account connect to your databricks_mws_workspaces. `ENDPOINT` level access lets only specified databricks.MwsVpcEndpoint connect to your workspace. Please see the `AllowedVpcEndpointIds` documentation for more details.
         /// </summary>
         [Input("privateAccessLevel")]
         public Input<string>? PrivateAccessLevel { get; set; }
@@ -313,7 +313,7 @@ namespace Pulumi.Databricks
         public Input<string>? PrivateAccessSettingsName { get; set; }
 
         /// <summary>
-        /// If `true`, the databricks.MwsWorkspaces can be accessed over the databricks.MwsVpcEndpoint as well as over the public network. In such a case, you could also configure an databricks.IpAccessList for the workspace, to restrict the source networks that could be used to access it over the public network. If `false`, the workspace can be accessed only over VPC endpoints, and not over the public network. Once explicitly set, this field becomes mandatory.
+        /// If `True`, the databricks.MwsWorkspaces can be accessed over the databricks.MwsVpcEndpoint as well as over the public network. In such a case, you could also configure an databricks.IpAccessList for the workspace, to restrict the source networks that could be used to access it over the public network. If `False`, the workspace can be accessed only over VPC endpoints, and not over the public network. Once explicitly set, this field becomes mandatory.
         /// </summary>
         [Input("publicAccessEnabled")]
         public Input<bool>? PublicAccessEnabled { get; set; }

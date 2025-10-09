@@ -13,7 +13,7 @@ namespace Pulumi.Databricks.Inputs
     public sealed class JobTaskSqlTaskFileGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// If `source` is `GIT`: Relative path to the file in the repository specified in the `git_source` block with SQL commands to execute. If `source` is `WORKSPACE`: Absolute path to the file in the workspace with SQL commands to execute.
+        /// If `Source` is `GIT`: Relative path to the file in the repository specified in the `GitSource` block with SQL commands to execute. If `Source` is `WORKSPACE`: Absolute path to the file in the workspace with SQL commands to execute.
         /// 
         /// Example
         /// 

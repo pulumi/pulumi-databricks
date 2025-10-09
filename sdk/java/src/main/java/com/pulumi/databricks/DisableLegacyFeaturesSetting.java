@@ -19,7 +19,7 @@ import javax.annotation.Nullable;
  * 
  * The `databricks.DisableLegacyFeaturesSetting` resource allows you to disable legacy features on newly created workspaces.
  * 
- * &gt; Before disabling legacy features, make sure that default catalog for the workspace is set to value different than `hive_metastore`!  You can set it using the databricks.DefaultNamespaceSetting resource.
+ * &gt; Before disabling legacy features, make sure that default catalog for the workspace is set to value different than `hiveMetastore`!  You can set it using the databricks.DefaultNamespaceSetting resource.
  * 
  * When this setting is on, the following applies to new workspaces:
  * 
@@ -79,8 +79,8 @@ import javax.annotation.Nullable;
  * 
  * The following resources are often used in the same context:
  * 
- * * databricks.DisableLegacyAccessSetting to disable legacy access, enabled by default when creating new workspaces with the `disable_legacy_features` account level setting turned on.
- * * databricks.DisableLegacyDbfsSetting to disable legacy DBFS, enabled by default when creating new workspaces with the `disable_legacy_features` account level setting turned on.
+ * * databricks.DisableLegacyAccessSetting to disable legacy access, enabled by default when creating new workspaces with the `disableLegacyFeatures` account level setting turned on.
+ * * databricks.DisableLegacyDbfsSetting to disable legacy DBFS, enabled by default when creating new workspaces with the `disableLegacyFeatures` account level setting turned on.
  * 
  * ## Import
  * 

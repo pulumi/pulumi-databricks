@@ -62,14 +62,14 @@ public final class ShareObjectPartitionValueArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * The value of the partition column. When this value is not set, it means null value. When this field is set, field `recipient_property_key` can not be set.
+     * The value of the partition column. When this value is not set, it means null value. When this field is set, field `recipientPropertyKey` can not be set.
      * 
      */
     @Import(name="value")
     private @Nullable Output<String> value;
 
     /**
-     * @return The value of the partition column. When this value is not set, it means null value. When this field is set, field `recipient_property_key` can not be set.
+     * @return The value of the partition column. When this value is not set, it means null value. When this field is set, field `recipientPropertyKey` can not be set.
      * 
      */
     public Optional<Output<String>> value() {
@@ -167,7 +167,7 @@ public final class ShareObjectPartitionValueArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param value The value of the partition column. When this value is not set, it means null value. When this field is set, field `recipient_property_key` can not be set.
+         * @param value The value of the partition column. When this value is not set, it means null value. When this field is set, field `recipientPropertyKey` can not be set.
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class ShareObjectPartitionValueArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param value The value of the partition column. When this value is not set, it means null value. When this field is set, field `recipient_property_key` can not be set.
+         * @param value The value of the partition column. When this value is not set, it means null value. When this field is set, field `recipientPropertyKey` can not be set.
          * 
          * @return builder
          * 

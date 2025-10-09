@@ -36,7 +36,7 @@ public final class MlflowWebhookState extends com.pulumi.resources.ResourceArgs 
     /**
      * The list of events that will trigger execution of Databricks job or POSTing to an URL, for example, `MODEL_VERSION_CREATED`, `MODEL_VERSION_TRANSITIONED_STAGE`, `TRANSITION_REQUEST_CREATED`, etc.  Refer to the [Webhooks API documentation](https://docs.databricks.com/dev-tools/api/latest/mlflow.html#operation/create-registry-webhook) for a full list of supported events.
      * 
-     * Configuration must include one of `http_url_spec` or `job_spec` blocks, but not both.
+     * Configuration must include one of `httpUrlSpec` or `jobSpec` blocks, but not both.
      * 
      */
     @Import(name="events")
@@ -45,7 +45,7 @@ public final class MlflowWebhookState extends com.pulumi.resources.ResourceArgs 
     /**
      * @return The list of events that will trigger execution of Databricks job or POSTing to an URL, for example, `MODEL_VERSION_CREATED`, `MODEL_VERSION_TRANSITIONED_STAGE`, `TRANSITION_REQUEST_CREATED`, etc.  Refer to the [Webhooks API documentation](https://docs.databricks.com/dev-tools/api/latest/mlflow.html#operation/create-registry-webhook) for a full list of supported events.
      * 
-     * Configuration must include one of `http_url_spec` or `job_spec` blocks, but not both.
+     * Configuration must include one of `httpUrlSpec` or `jobSpec` blocks, but not both.
      * 
      */
     public Optional<Output<List<String>>> events() {
@@ -149,7 +149,7 @@ public final class MlflowWebhookState extends com.pulumi.resources.ResourceArgs 
         /**
          * @param events The list of events that will trigger execution of Databricks job or POSTing to an URL, for example, `MODEL_VERSION_CREATED`, `MODEL_VERSION_TRANSITIONED_STAGE`, `TRANSITION_REQUEST_CREATED`, etc.  Refer to the [Webhooks API documentation](https://docs.databricks.com/dev-tools/api/latest/mlflow.html#operation/create-registry-webhook) for a full list of supported events.
          * 
-         * Configuration must include one of `http_url_spec` or `job_spec` blocks, but not both.
+         * Configuration must include one of `httpUrlSpec` or `jobSpec` blocks, but not both.
          * 
          * @return builder
          * 
@@ -162,7 +162,7 @@ public final class MlflowWebhookState extends com.pulumi.resources.ResourceArgs 
         /**
          * @param events The list of events that will trigger execution of Databricks job or POSTing to an URL, for example, `MODEL_VERSION_CREATED`, `MODEL_VERSION_TRANSITIONED_STAGE`, `TRANSITION_REQUEST_CREATED`, etc.  Refer to the [Webhooks API documentation](https://docs.databricks.com/dev-tools/api/latest/mlflow.html#operation/create-registry-webhook) for a full list of supported events.
          * 
-         * Configuration must include one of `http_url_spec` or `job_spec` blocks, but not both.
+         * Configuration must include one of `httpUrlSpec` or `jobSpec` blocks, but not both.
          * 
          * @return builder
          * 
@@ -174,7 +174,7 @@ public final class MlflowWebhookState extends com.pulumi.resources.ResourceArgs 
         /**
          * @param events The list of events that will trigger execution of Databricks job or POSTing to an URL, for example, `MODEL_VERSION_CREATED`, `MODEL_VERSION_TRANSITIONED_STAGE`, `TRANSITION_REQUEST_CREATED`, etc.  Refer to the [Webhooks API documentation](https://docs.databricks.com/dev-tools/api/latest/mlflow.html#operation/create-registry-webhook) for a full list of supported events.
          * 
-         * Configuration must include one of `http_url_spec` or `job_spec` blocks, but not both.
+         * Configuration must include one of `httpUrlSpec` or `jobSpec` blocks, but not both.
          * 
          * @return builder
          * 

@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ShareObjectPartition {
     /**
-     * @return The value of the partition column. When this value is not set, it means null value. When this field is set, field `recipient_property_key` can not be set.
+     * @return The value of the partition column. When this value is not set, it means null value. When this field is set, field `recipientPropertyKey` can not be set.
      * 
      */
     private @Nullable List<ShareObjectPartitionValue> values;
 
     private ShareObjectPartition() {}
     /**
-     * @return The value of the partition column. When this value is not set, it means null value. When this field is set, field `recipient_property_key` can not be set.
+     * @return The value of the partition column. When this value is not set, it means null value. When this field is set, field `recipientPropertyKey` can not be set.
      * 
      */
     public List<ShareObjectPartitionValue> values() {

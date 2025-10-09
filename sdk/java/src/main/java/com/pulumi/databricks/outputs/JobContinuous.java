@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class JobContinuous {
     /**
-     * @return Indicate whether this continuous job is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pause_status` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pause_status`.
+     * @return Indicate whether this continuous job is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pauseStatus` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pauseStatus`.
      * 
      */
     private @Nullable String pauseStatus;
@@ -26,7 +26,7 @@ public final class JobContinuous {
 
     private JobContinuous() {}
     /**
-     * @return Indicate whether this continuous job is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pause_status` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pause_status`.
+     * @return Indicate whether this continuous job is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pauseStatus` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pauseStatus`.
      * 
      */
     public Optional<String> pauseStatus() {

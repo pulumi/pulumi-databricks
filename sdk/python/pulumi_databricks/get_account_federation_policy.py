@@ -162,6 +162,10 @@ def get_account_federation_policy(description: Optional[_builtins.str] = None,
 
     > **Note** This data source can only be used with an account-level provider!
 
+    ## Example Usage
+
+    Referring to an account federation policy by id:
+
 
     :param _builtins.str description: (string) - Description of the federation policy
     :param Union['GetAccountFederationPolicyOidcPolicyArgs', 'GetAccountFederationPolicyOidcPolicyArgsDict'] oidc_policy: (OidcFederationPolicy)
@@ -195,6 +199,10 @@ def get_account_federation_policy_output(description: Optional[pulumi.Input[Opti
     This data source can be used to get a single account federation policy.
 
     > **Note** This data source can only be used with an account-level provider!
+
+    ## Example Usage
+
+    Referring to an account federation policy by id:
 
 
     :param _builtins.str description: (string) - Description of the federation policy

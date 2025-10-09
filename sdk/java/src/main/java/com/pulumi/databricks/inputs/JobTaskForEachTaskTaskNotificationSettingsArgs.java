@@ -16,14 +16,14 @@ public final class JobTaskForEachTaskTaskNotificationSettingsArgs extends com.pu
     public static final JobTaskForEachTaskTaskNotificationSettingsArgs Empty = new JobTaskForEachTaskTaskNotificationSettingsArgs();
 
     /**
-     * (Bool) do not send notifications to recipients specified in `on_start` for the retried runs and do not send notifications to recipients specified in `on_failure` until the last retry of the run.
+     * (Bool) do not send notifications to recipients specified in `onStart` for the retried runs and do not send notifications to recipients specified in `onFailure` until the last retry of the run.
      * 
      */
     @Import(name="alertOnLastAttempt")
     private @Nullable Output<Boolean> alertOnLastAttempt;
 
     /**
-     * @return (Bool) do not send notifications to recipients specified in `on_start` for the retried runs and do not send notifications to recipients specified in `on_failure` until the last retry of the run.
+     * @return (Bool) do not send notifications to recipients specified in `onStart` for the retried runs and do not send notifications to recipients specified in `onFailure` until the last retry of the run.
      * 
      */
     public Optional<Output<Boolean>> alertOnLastAttempt() {
@@ -91,7 +91,7 @@ public final class JobTaskForEachTaskTaskNotificationSettingsArgs extends com.pu
         }
 
         /**
-         * @param alertOnLastAttempt (Bool) do not send notifications to recipients specified in `on_start` for the retried runs and do not send notifications to recipients specified in `on_failure` until the last retry of the run.
+         * @param alertOnLastAttempt (Bool) do not send notifications to recipients specified in `onStart` for the retried runs and do not send notifications to recipients specified in `onFailure` until the last retry of the run.
          * 
          * @return builder
          * 
@@ -102,7 +102,7 @@ public final class JobTaskForEachTaskTaskNotificationSettingsArgs extends com.pu
         }
 
         /**
-         * @param alertOnLastAttempt (Bool) do not send notifications to recipients specified in `on_start` for the retried runs and do not send notifications to recipients specified in `on_failure` until the last retry of the run.
+         * @param alertOnLastAttempt (Bool) do not send notifications to recipients specified in `onStart` for the retried runs and do not send notifications to recipients specified in `onFailure` until the last retry of the run.
          * 
          * @return builder
          * 

@@ -13,13 +13,13 @@ namespace Pulumi.Databricks.Inputs
     public sealed class QueryParameterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Date-range query parameter value. Consists of following attributes (Can only specify one of `dynamic_date_range_value` or `date_range_value`):
+        /// Date-range query parameter value. Consists of following attributes (Can only specify one of `DynamicDateRangeValue` or `DateRangeValue`):
         /// </summary>
         [Input("dateRangeValue")]
         public Input<Inputs.QueryParameterDateRangeValueArgs>? DateRangeValue { get; set; }
 
         /// <summary>
-        /// Date query parameter value. Consists of following attributes (Can only specify one of `dynamic_date_value` or `date_value`):
+        /// Date query parameter value. Consists of following attributes (Can only specify one of `DynamicDateValue` or `DateValue`):
         /// </summary>
         [Input("dateValue")]
         public Input<Inputs.QueryParameterDateValueArgs>? DateValue { get; set; }

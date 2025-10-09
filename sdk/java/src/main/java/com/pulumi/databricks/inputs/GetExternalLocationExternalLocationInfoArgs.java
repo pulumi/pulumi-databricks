@@ -175,14 +175,14 @@ public final class GetExternalLocationExternalLocationInfoArgs extends com.pulum
     }
 
     /**
-     * Username/groupname/sp application_id of the external location owner.
+     * Username/groupname/sp applicationId of the external location owner.
      * 
      */
     @Import(name="owner")
     private @Nullable Output<String> owner;
 
     /**
-     * @return Username/groupname/sp application_id of the external location owner.
+     * @return Username/groupname/sp applicationId of the external location owner.
      * 
      */
     public Optional<Output<String>> owner() {
@@ -504,7 +504,7 @@ public final class GetExternalLocationExternalLocationInfoArgs extends com.pulum
         }
 
         /**
-         * @param owner Username/groupname/sp application_id of the external location owner.
+         * @param owner Username/groupname/sp applicationId of the external location owner.
          * 
          * @return builder
          * 
@@ -515,7 +515,7 @@ public final class GetExternalLocationExternalLocationInfoArgs extends com.pulum
         }
 
         /**
-         * @param owner Username/groupname/sp application_id of the external location owner.
+         * @param owner Username/groupname/sp applicationId of the external location owner.
          * 
          * @return builder
          * 

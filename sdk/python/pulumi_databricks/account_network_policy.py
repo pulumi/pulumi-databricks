@@ -153,6 +153,8 @@ class AccountNetworkPolicy(pulumi.CustomResource):
 
         > **Note** This resource can only be used with an account-level provider!
 
+        ## Example Usage
+
         ## Import
 
         As of Pulumi v1.5, resources can be imported through configuration.
@@ -197,6 +199,8 @@ class AccountNetworkPolicy(pulumi.CustomResource):
         The `default-policy` provides a baseline security configuration that ensures all workspaces have network access controls in place.
 
         > **Note** This resource can only be used with an account-level provider!
+
+        ## Example Usage
 
         ## Import
 

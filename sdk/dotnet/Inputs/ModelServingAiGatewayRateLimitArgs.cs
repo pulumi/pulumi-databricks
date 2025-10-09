@@ -19,7 +19,7 @@ namespace Pulumi.Databricks.Inputs
         public Input<int>? Calls { get; set; }
 
         /// <summary>
-        /// Key field for a serving endpoint rate limit. Currently, `user`, `user_group`, `service_principal`, and `endpoint` are supported, with `endpoint` being the default if not specified.
+        /// Key field for a serving endpoint rate limit. Currently, `User`, `UserGroup`, `ServicePrincipal`, and `Endpoint` are supported, with `Endpoint` being the default if not specified.
         /// </summary>
         [Input("key")]
         public Input<string>? Key { get; set; }
@@ -31,7 +31,7 @@ namespace Pulumi.Databricks.Inputs
         public Input<string>? Principal { get; set; }
 
         /// <summary>
-        /// Renewal period field for a serving endpoint rate limit. Currently, only `minute` is supported.
+        /// Renewal period field for a serving endpoint rate limit. Currently, only `Minute` is supported.
         /// </summary>
         [Input("renewalPeriod", required: true)]
         public Input<string> RenewalPeriod { get; set; } = null!;

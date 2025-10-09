@@ -14,7 +14,7 @@ namespace Pulumi.Databricks.Outputs
     public sealed class JobSchedule
     {
         /// <summary>
-        /// Indicate whether this schedule is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pause_status` field is omitted and a schedule is provided, the server will default to using `UNPAUSED` as a value for `pause_status`.
+        /// Indicate whether this schedule is paused or not. Either `PAUSED` or `UNPAUSED`. When the `PauseStatus` field is omitted and a schedule is provided, the server will default to using `UNPAUSED` as a value for `PauseStatus`.
         /// </summary>
         public readonly string? PauseStatus;
         /// <summary>

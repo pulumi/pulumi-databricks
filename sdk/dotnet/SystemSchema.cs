@@ -14,11 +14,11 @@ namespace Pulumi.Databricks
     /// 
     /// &gt; This resource can only be used with a workspace-level provider!
     /// 
-    /// &gt; Certain system schemas (such as `billing`) may be auto-enabled once GA and should not be manually declared in Pulumi configurations.  Certain schemas can't also be disabled completely.
+    /// &gt; Certain system schemas (such as `Billing`) may be auto-enabled once GA and should not be manually declared in Pulumi configurations.  Certain schemas can't also be disabled completely.
     /// 
     /// ## Example Usage
     /// 
-    /// Enable the system schema `access`
+    /// Enable the system schema `Access`
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

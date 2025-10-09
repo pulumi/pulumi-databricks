@@ -21,6 +21,9 @@ namespace Pulumi.Databricks
         /// - Examine the schedule configuration
         /// 
         /// ## Example Usage
+        /// 
+        /// ### Retrieve Alert by ID
+        /// This example retrieves a specific alert by its ID:
         /// </summary>
         public static Task<GetAlertV2Result> InvokeAsync(GetAlertV2Args? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAlertV2Result>("databricks:index/getAlertV2:getAlertV2", args ?? new GetAlertV2Args(), options.WithDefaults());
@@ -35,6 +38,9 @@ namespace Pulumi.Databricks
         /// - Examine the schedule configuration
         /// 
         /// ## Example Usage
+        /// 
+        /// ### Retrieve Alert by ID
+        /// This example retrieves a specific alert by its ID:
         /// </summary>
         public static Output<GetAlertV2Result> Invoke(GetAlertV2InvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAlertV2Result>("databricks:index/getAlertV2:getAlertV2", args ?? new GetAlertV2InvokeArgs(), options.WithDefaults());
@@ -49,6 +55,9 @@ namespace Pulumi.Databricks
         /// - Examine the schedule configuration
         /// 
         /// ## Example Usage
+        /// 
+        /// ### Retrieve Alert by ID
+        /// This example retrieves a specific alert by its ID:
         /// </summary>
         public static Output<GetAlertV2Result> Invoke(GetAlertV2InvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetAlertV2Result>("databricks:index/getAlertV2:getAlertV2", args ?? new GetAlertV2InvokeArgs(), options.WithDefaults());
@@ -96,8 +105,8 @@ namespace Pulumi.Databricks
         /// <summary>
         /// (AlertV2RunAs) - Specifies the identity that will be used to run the alert.
         /// This field allows you to configure alerts to run as a specific user or service principal.
-        /// - For user identity: Set `user_name` to the email of an active workspace user. Users can only set this to their own email.
-        /// - For service principal: Set `service_principal_name` to the application ID. Requires the `servicePrincipal/user` role.
+        /// - For user identity: Set `UserName` to the email of an active workspace user. Users can only set this to their own email.
+        /// - For service principal: Set `ServicePrincipalName` to the application ID. Requires the `servicePrincipal/user` role.
         /// If not specified, the alert will run as the request user
         /// </summary>
         [Input("runAs")]
@@ -106,7 +115,7 @@ namespace Pulumi.Databricks
         /// <summary>
         /// (string, deprecated) - The run as username or application ID of service principal.
         /// On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
-        /// Deprecated: Use `run_as` field instead. This field will be removed in a future release
+        /// Deprecated: Use `RunAs` field instead. This field will be removed in a future release
         /// </summary>
         [Input("runAsUserName")]
         public string? RunAsUserName { get; set; }
@@ -176,8 +185,8 @@ namespace Pulumi.Databricks
         /// <summary>
         /// (AlertV2RunAs) - Specifies the identity that will be used to run the alert.
         /// This field allows you to configure alerts to run as a specific user or service principal.
-        /// - For user identity: Set `user_name` to the email of an active workspace user. Users can only set this to their own email.
-        /// - For service principal: Set `service_principal_name` to the application ID. Requires the `servicePrincipal/user` role.
+        /// - For user identity: Set `UserName` to the email of an active workspace user. Users can only set this to their own email.
+        /// - For service principal: Set `ServicePrincipalName` to the application ID. Requires the `servicePrincipal/user` role.
         /// If not specified, the alert will run as the request user
         /// </summary>
         [Input("runAs")]
@@ -186,7 +195,7 @@ namespace Pulumi.Databricks
         /// <summary>
         /// (string, deprecated) - The run as username or application ID of service principal.
         /// On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
-        /// Deprecated: Use `run_as` field instead. This field will be removed in a future release
+        /// Deprecated: Use `RunAs` field instead. This field will be removed in a future release
         /// </summary>
         [Input("runAsUserName")]
         public Input<string>? RunAsUserName { get; set; }
@@ -268,15 +277,15 @@ namespace Pulumi.Databricks
         /// <summary>
         /// (AlertV2RunAs) - Specifies the identity that will be used to run the alert.
         /// This field allows you to configure alerts to run as a specific user or service principal.
-        /// - For user identity: Set `user_name` to the email of an active workspace user. Users can only set this to their own email.
-        /// - For service principal: Set `service_principal_name` to the application ID. Requires the `servicePrincipal/user` role.
+        /// - For user identity: Set `UserName` to the email of an active workspace user. Users can only set this to their own email.
+        /// - For service principal: Set `ServicePrincipalName` to the application ID. Requires the `servicePrincipal/user` role.
         /// If not specified, the alert will run as the request user
         /// </summary>
         public readonly Outputs.GetAlertV2RunAsResult? RunAs;
         /// <summary>
         /// (string, deprecated) - The run as username or application ID of service principal.
         /// On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
-        /// Deprecated: Use `run_as` field instead. This field will be removed in a future release
+        /// Deprecated: Use `RunAs` field instead. This field will be removed in a future release
         /// </summary>
         public readonly string? RunAsUserName;
         /// <summary>

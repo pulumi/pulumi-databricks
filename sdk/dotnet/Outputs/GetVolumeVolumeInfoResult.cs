@@ -18,7 +18,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string? AccessPoint;
         /// <summary>
-        /// indicates whether the principal is limited to retrieving metadata for the volume through the BROWSE privilege when include_browse is enabled in the request.
+        /// indicates whether the principal is limited to retrieving metadata for the volume through the BROWSE privilege when IncludeBrowse is enabled in the request.
         /// </summary>
         public readonly bool? BrowseOnly;
         /// <summary>
@@ -50,7 +50,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string? MetastoreId;
         /// <summary>
-        /// a fully qualified name of databricks_volume: *`catalog`.`schema`.`volume`*
+        /// a fully qualified name of databricks_volume: *`Catalog`.`Schema`.`Volume`*
         /// </summary>
         public readonly string? Name;
         /// <summary>

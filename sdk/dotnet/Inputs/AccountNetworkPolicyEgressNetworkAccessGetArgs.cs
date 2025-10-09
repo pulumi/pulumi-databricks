@@ -37,7 +37,7 @@ namespace Pulumi.Databricks.Inputs
         }
 
         /// <summary>
-        /// Optional. When policy_enforcement is not provided, we default to ENFORCE_MODE_ALL_SERVICES
+        /// Optional. When PolicyEnforcement is not provided, we default to ENFORCE_MODE_ALL_SERVICES
         /// </summary>
         [Input("policyEnforcement")]
         public Input<Inputs.AccountNetworkPolicyEgressNetworkAccessPolicyEnforcementGetArgs>? PolicyEnforcement { get; set; }

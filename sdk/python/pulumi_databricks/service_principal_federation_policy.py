@@ -246,6 +246,8 @@ class ServicePrincipalFederationPolicy(pulumi.CustomResource):
         * The identity provider (or issuer) from which the service principal can authenticate.
         * The workload identity (or subject) that is permitted to authenticate as the Databricks service principal.
 
+        ## Example Usage
+
         ## Import
 
         As of Pulumi v1.5, resources can be imported through configuration.
@@ -284,6 +286,8 @@ class ServicePrincipalFederationPolicy(pulumi.CustomResource):
         A service principal federation policy is associated with a service principal in your Databricks account, and specifies:
         * The identity provider (or issuer) from which the service principal can authenticate.
         * The workload identity (or subject) that is permitted to authenticate as the Databricks service principal.
+
+        ## Example Usage
 
         ## Import
 

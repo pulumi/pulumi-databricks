@@ -605,7 +605,7 @@ import javax.annotation.Nullable;
  * 
  * ## Storage credential grants
  * 
- * You can grant `ALL_PRIVILEGES`, `CREATE_EXTERNAL_LOCATION`, `CREATE_EXTERNAL_TABLE`, `MANAGE`, `READ_FILES` and `WRITE_FILES` privileges to databricks.StorageCredential id specified in `storage_credential` attribute:
+ * You can grant `ALL_PRIVILEGES`, `CREATE_EXTERNAL_LOCATION`, `CREATE_EXTERNAL_TABLE`, `MANAGE`, `READ_FILES` and `WRITE_FILES` privileges to databricks.StorageCredential id specified in `storageCredential` attribute:
  * 
  * <pre>
  * {@code
@@ -656,7 +656,7 @@ import javax.annotation.Nullable;
  * 
  * ## External location grants
  * 
- * You can grant `ALL_PRIVILEGES`, `CREATE_EXTERNAL_TABLE`, `CREATE_MANAGED_STORAGE`, `CREATE EXTERNAL VOLUME`, `MANAGE`, `READ_FILES` and `WRITE_FILES` privileges to databricks.ExternalLocation id specified in `external_location` attribute:
+ * You can grant `ALL_PRIVILEGES`, `CREATE_EXTERNAL_TABLE`, `CREATE_MANAGED_STORAGE`, `CREATE EXTERNAL VOLUME`, `MANAGE`, `READ_FILES` and `WRITE_FILES` privileges to databricks.ExternalLocation id specified in `externalLocation` attribute:
  * 
  * <pre>
  * {@code
@@ -726,7 +726,7 @@ import javax.annotation.Nullable;
  * 
  * ## Connection grants
  * 
- * You can grant `ALL_PRIVILEGES`, `MANAGE`, `USE_CONNECTION` and `CREATE_FOREIGN_CATALOG` to databricks.Connection specified in `foreign_connection` attribute:
+ * You can grant `ALL_PRIVILEGES`, `MANAGE`, `USE_CONNECTION` and `CREATE_FOREIGN_CATALOG` to databricks.Connection specified in `foreignConnection` attribute:
  * 
  * <pre>
  * {@code

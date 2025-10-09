@@ -17,7 +17,7 @@ namespace Pulumi.Databricks.Outputs
         /// <summary>
         /// The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
         /// 
-        /// `azure_managed_identity` optional configuration block for using managed identity as credential details for Azure (recommended over service principal):
+        /// `AzureManagedIdentity` optional configuration block for using managed identity as credential details for Azure (recommended over service principal):
         /// </summary>
         public readonly string RoleArn;
         public readonly string? UnityCatalogIamArn;

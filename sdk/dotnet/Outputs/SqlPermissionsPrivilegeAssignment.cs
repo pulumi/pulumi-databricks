@@ -14,7 +14,7 @@ namespace Pulumi.Databricks.Outputs
     public sealed class SqlPermissionsPrivilegeAssignment
     {
         /// <summary>
-        /// `display_name` for a databricks.Group or databricks_user, `application_id` for a databricks_service_principal.
+        /// `DisplayName` for a databricks.Group or databricks_user, `ApplicationId` for a databricks_service_principal.
         /// </summary>
         public readonly string Principal;
         /// <summary>
