@@ -12,7 +12,7 @@ namespace Pulumi.Databricks
     /// <summary>
     /// Within a metastore, Unity Catalog provides a 3-level namespace for organizing data: Catalogs, Databases (also called Schemas), and Tables / Views.
     /// 
-    /// A `databricks.Catalog` is contained within databricks.Metastore and can contain databricks_schema. By default, Databricks creates `default` schema for every new catalog, but Pulumi plugin is removing this auto-created schema, so that resource destruction could be done in a clean way.
+    /// A `databricks.Catalog` is contained within databricks.Metastore and can contain databricks_schema. By default, Databricks creates `Default` schema for every new catalog, but Pulumi plugin is removing this auto-created schema, so that resource destruction could be done in a clean way.
     /// 
     /// &gt; This resource can only be used with a workspace-level provider!
     /// 
@@ -139,7 +139,7 @@ namespace Pulumi.Databricks
         public Output<ImmutableDictionary<string, string>?> Options { get; private set; } = null!;
 
         /// <summary>
-        /// Username/groupname/sp application_id of the catalog owner.
+        /// Username/groupname/sp ApplicationId of the catalog owner.
         /// </summary>
         [Output("owner")]
         public Output<string> Owner { get; private set; } = null!;
@@ -290,7 +290,7 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
-        /// Username/groupname/sp application_id of the catalog owner.
+        /// Username/groupname/sp ApplicationId of the catalog owner.
         /// </summary>
         [Input("owner")]
         public Input<string>? Owner { get; set; }
@@ -412,7 +412,7 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
-        /// Username/groupname/sp application_id of the catalog owner.
+        /// Username/groupname/sp ApplicationId of the catalog owner.
         /// </summary>
         [Input("owner")]
         public Input<string>? Owner { get; set; }

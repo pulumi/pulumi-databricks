@@ -50,9 +50,9 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
- * &gt; In Pulumi configuration, it is recommended to define tasks in alphabetical order of their `task_key` arguments, so that you get consistent and readable diff. Whenever tasks are added or removed, or `task_key` is renamed, you&#39;ll observe a change in the majority of tasks. It&#39;s related to the fact that the current version of the provider treats `task` blocks as an ordered list. Alternatively, `task` block could have been an unordered set, though end-users would see the entire block replaced upon a change in single property of the task.
+ * &gt; In Pulumi configuration, it is recommended to define tasks in alphabetical order of their `taskKey` arguments, so that you get consistent and readable diff. Whenever tasks are added or removed, or `taskKey` is renamed, you&#39;ll observe a change in the majority of tasks. It&#39;s related to the fact that the current version of the provider treats `task` blocks as an ordered list. Alternatively, `task` block could have been an unordered set, though end-users would see the entire block replaced upon a change in single property of the task.
  * 
- * It is possible to create [a Databricks job](https://docs.databricks.com/aws/en/jobs/) using `task` blocks. A single task is defined with the `task` block containing one of the `*_task` blocks, `task_key`, and additional arguments described below.
+ * It is possible to create [a Databricks job](https://docs.databricks.com/aws/en/jobs/) using `task` blocks. A single task is defined with the `task` block containing one of the `*_task` blocks, `taskKey`, and additional arguments described below.
  * 
  * <pre>
  * {@code
@@ -169,18 +169,18 @@ import javax.annotation.Nullable;
 @ResourceType(type="databricks:index/job:Job")
 public class Job extends com.pulumi.resources.CustomResource {
     /**
-     * (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `spark_jar_task` or `spark_submit_task` or `spark_python_task` or `notebook_task` blocks.
+     * (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `sparkJarTask` or `sparkSubmitTask` or `sparkPythonTask` or `notebookTask` blocks.
      * 
      * @deprecated
-     * always_running will be replaced by control_run_state in the next major release.
+     * always_running will be replaced by controlRunState in the next major release.
      * 
      */
-    @Deprecated /* always_running will be replaced by control_run_state in the next major release. */
+    @Deprecated /* always_running will be replaced by controlRunState in the next major release. */
     @Export(name="alwaysRunning", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> alwaysRunning;
 
     /**
-     * @return (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `spark_jar_task` or `spark_submit_task` or `spark_python_task` or `notebook_task` blocks.
+     * @return (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `sparkJarTask` or `sparkSubmitTask` or `sparkPythonTask` or `notebookTask` blocks.
      * 
      */
     public Output<Optional<Boolean>> alwaysRunning() {
@@ -215,18 +215,18 @@ public class Job extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.continuous);
     }
     /**
-     * (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pause_status` by stopping the current active run. This flag cannot be set for non-continuous jobs.
+     * (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pauseStatus` by stopping the current active run. This flag cannot be set for non-continuous jobs.
      * 
-     * When migrating from `always_running` to `control_run_state`, set `continuous` as follows:
+     * When migrating from `alwaysRunning` to `controlRunState`, set `continuous` as follows:
      * 
      */
     @Export(name="controlRunState", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> controlRunState;
 
     /**
-     * @return (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pause_status` by stopping the current active run. This flag cannot be set for non-continuous jobs.
+     * @return (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pauseStatus` by stopping the current active run. This flag cannot be set for non-continuous jobs.
      * 
-     * When migrating from `always_running` to `control_run_state`, set `continuous` as follows:
+     * When migrating from `alwaysRunning` to `controlRunState`, set `continuous` as follows:
      * 
      */
     public Output<Optional<Boolean>> controlRunState() {
@@ -311,14 +311,14 @@ public class Job extends com.pulumi.resources.CustomResource {
         return this.format;
     }
     /**
-     * Specifies the a Git repository for task source code. See git_source Configuration Block below.
+     * Specifies the a Git repository for task source code. See gitSource Configuration Block below.
      * 
      */
     @Export(name="gitSource", refs={JobGitSource.class}, tree="[0]")
     private Output</* @Nullable */ JobGitSource> gitSource;
 
     /**
-     * @return Specifies the a Git repository for task source code. See git_source Configuration Block below.
+     * @return Specifies the a Git repository for task source code. See gitSource Configuration Block below.
      * 
      */
     public Output<Optional<JobGitSource>> gitSource() {
@@ -539,14 +539,14 @@ public class Job extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.retryOnTimeout);
     }
     /**
-     * The user or the service principal the job runs as. See run_as Configuration Block below.
+     * The user or the service principal the job runs as. See runAs Configuration Block below.
      * 
      */
     @Export(name="runAs", refs={JobRunAs.class}, tree="[0]")
     private Output<JobRunAs> runAs;
 
     /**
-     * @return The user or the service principal the job runs as. See run_as Configuration Block below.
+     * @return The user or the service principal the job runs as. See runAs Configuration Block below.
      * 
      */
     public Output<JobRunAs> runAs() {

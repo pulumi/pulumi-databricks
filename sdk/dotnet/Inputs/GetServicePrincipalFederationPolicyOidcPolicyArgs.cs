@@ -36,7 +36,7 @@ namespace Pulumi.Databricks.Inputs
 
         /// <summary>
         /// (string) - The public keys used to validate the signature of federated tokens, in JWKS format.
-        /// Most use cases should not need to specify this field. If jwks_uri and jwks_json
+        /// Most use cases should not need to specify this field. If JwksUri and JwksJson
         /// are both unspecified (recommended), Databricks automatically fetches the public
         /// keys from your issuer’s well known endpoint. Databricks strongly recommends
         /// relying on your issuer’s well known endpoint for discovering public keys
@@ -46,8 +46,8 @@ namespace Pulumi.Databricks.Inputs
 
         /// <summary>
         /// (string) - URL of the public keys used to validate the signature of federated tokens, in
-        /// JWKS format. Most use cases should not need to specify this field. If jwks_uri
-        /// and jwks_json are both unspecified (recommended), Databricks automatically
+        /// JWKS format. Most use cases should not need to specify this field. If JwksUri
+        /// and JwksJson are both unspecified (recommended), Databricks automatically
         /// fetches the public keys from your issuer’s well known endpoint. Databricks
         /// strongly recommends relying on your issuer’s well known endpoint for discovering
         /// public keys

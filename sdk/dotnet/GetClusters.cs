@@ -346,7 +346,7 @@ namespace Pulumi.Databricks
         public string? ClusterNameContains { get; set; }
 
         /// <summary>
-        /// Filters to apply to the listed clusters. See filter_by Configuration Block below for details.
+        /// Filters to apply to the listed clusters. See FilterBy Configuration Block below for details.
         /// </summary>
         [Input("filterBy")]
         public Inputs.GetClustersFilterByArgs? FilterBy { get; set; }
@@ -381,7 +381,7 @@ namespace Pulumi.Databricks
         public Input<string>? ClusterNameContains { get; set; }
 
         /// <summary>
-        /// Filters to apply to the listed clusters. See filter_by Configuration Block below for details.
+        /// Filters to apply to the listed clusters. See FilterBy Configuration Block below for details.
         /// </summary>
         [Input("filterBy")]
         public Input<Inputs.GetClustersFilterByInputArgs>? FilterBy { get; set; }

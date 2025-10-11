@@ -19,14 +19,14 @@ public final class VectorSearchIndexArgs extends com.pulumi.resources.ResourceAr
     public static final VectorSearchIndexArgs Empty = new VectorSearchIndexArgs();
 
     /**
-     * Specification for Delta Sync Index. Required if `index_type` is `DELTA_SYNC`. This field is a block and is documented below.
+     * Specification for Delta Sync Index. Required if `indexType` is `DELTA_SYNC`. This field is a block and is documented below.
      * 
      */
     @Import(name="deltaSyncIndexSpec")
     private @Nullable Output<VectorSearchIndexDeltaSyncIndexSpecArgs> deltaSyncIndexSpec;
 
     /**
-     * @return Specification for Delta Sync Index. Required if `index_type` is `DELTA_SYNC`. This field is a block and is documented below.
+     * @return Specification for Delta Sync Index. Required if `indexType` is `DELTA_SYNC`. This field is a block and is documented below.
      * 
      */
     public Optional<Output<VectorSearchIndexDeltaSyncIndexSpecArgs>> deltaSyncIndexSpec() {
@@ -34,14 +34,14 @@ public final class VectorSearchIndexArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Specification for Direct Vector Access Index. Required if `index_type` is `DIRECT_ACCESS`. This field is a block and is documented below.
+     * Specification for Direct Vector Access Index. Required if `indexType` is `DIRECT_ACCESS`. This field is a block and is documented below.
      * 
      */
     @Import(name="directAccessIndexSpec")
     private @Nullable Output<VectorSearchIndexDirectAccessIndexSpecArgs> directAccessIndexSpec;
 
     /**
-     * @return Specification for Direct Vector Access Index. Required if `index_type` is `DIRECT_ACCESS`. This field is a block and is documented below.
+     * @return Specification for Direct Vector Access Index. Required if `indexType` is `DIRECT_ACCESS`. This field is a block and is documented below.
      * 
      */
     public Optional<Output<VectorSearchIndexDirectAccessIndexSpecArgs>> directAccessIndexSpec() {
@@ -142,7 +142,7 @@ public final class VectorSearchIndexArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param deltaSyncIndexSpec Specification for Delta Sync Index. Required if `index_type` is `DELTA_SYNC`. This field is a block and is documented below.
+         * @param deltaSyncIndexSpec Specification for Delta Sync Index. Required if `indexType` is `DELTA_SYNC`. This field is a block and is documented below.
          * 
          * @return builder
          * 
@@ -153,7 +153,7 @@ public final class VectorSearchIndexArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param deltaSyncIndexSpec Specification for Delta Sync Index. Required if `index_type` is `DELTA_SYNC`. This field is a block and is documented below.
+         * @param deltaSyncIndexSpec Specification for Delta Sync Index. Required if `indexType` is `DELTA_SYNC`. This field is a block and is documented below.
          * 
          * @return builder
          * 
@@ -163,7 +163,7 @@ public final class VectorSearchIndexArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param directAccessIndexSpec Specification for Direct Vector Access Index. Required if `index_type` is `DIRECT_ACCESS`. This field is a block and is documented below.
+         * @param directAccessIndexSpec Specification for Direct Vector Access Index. Required if `indexType` is `DIRECT_ACCESS`. This field is a block and is documented below.
          * 
          * @return builder
          * 
@@ -174,7 +174,7 @@ public final class VectorSearchIndexArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param directAccessIndexSpec Specification for Direct Vector Access Index. Required if `index_type` is `DIRECT_ACCESS`. This field is a block and is documented below.
+         * @param directAccessIndexSpec Specification for Direct Vector Access Index. Required if `indexType` is `DIRECT_ACCESS`. This field is a block and is documented below.
          * 
          * @return builder
          * 

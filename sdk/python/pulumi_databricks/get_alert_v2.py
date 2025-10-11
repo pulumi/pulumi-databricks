@@ -271,6 +271,9 @@ def get_alert_v2(custom_description: Optional[_builtins.str] = None,
 
     ## Example Usage
 
+    ### Retrieve Alert by ID
+    This example retrieves a specific alert by its ID:
+
 
     :param _builtins.str custom_description: (string) - Custom description for the alert. support mustache template
     :param _builtins.str custom_summary: (string) - Custom summary for the alert. support mustache template
@@ -345,6 +348,9 @@ def get_alert_v2_output(custom_description: Optional[pulumi.Input[Optional[_buil
     - Examine the schedule configuration
 
     ## Example Usage
+
+    ### Retrieve Alert by ID
+    This example retrieves a specific alert by its ID:
 
 
     :param _builtins.str custom_description: (string) - Custom description for the alert. support mustache template

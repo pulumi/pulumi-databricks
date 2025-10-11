@@ -135,14 +135,14 @@ public final class GetMetastoreMetastoreInfoArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Username/groupname/sp application_id of the metastore owner.
+     * Username/groupname/sp applicationId of the metastore owner.
      * 
      */
     @Import(name="owner")
     private @Nullable Output<String> owner;
 
     /**
-     * @return Username/groupname/sp application_id of the metastore owner.
+     * @return Username/groupname/sp applicationId of the metastore owner.
      * 
      */
     public Optional<Output<String>> owner() {
@@ -416,7 +416,7 @@ public final class GetMetastoreMetastoreInfoArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param owner Username/groupname/sp application_id of the metastore owner.
+         * @param owner Username/groupname/sp applicationId of the metastore owner.
          * 
          * @return builder
          * 
@@ -427,7 +427,7 @@ public final class GetMetastoreMetastoreInfoArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param owner Username/groupname/sp application_id of the metastore owner.
+         * @param owner Username/groupname/sp applicationId of the metastore owner.
          * 
          * @return builder
          * 

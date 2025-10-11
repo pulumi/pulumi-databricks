@@ -25,7 +25,7 @@ namespace Pulumi.Databricks.Inputs
         public Input<string> Inputs { get; set; } = null!;
 
         /// <summary>
-        /// Task to run against the `inputs` list.
+        /// Task to run against the `Inputs` list.
         /// </summary>
         [Input("task", required: true)]
         public Input<Inputs.JobTaskForEachTaskTaskArgs> Task { get; set; } = null!;

@@ -25,7 +25,7 @@ public final class CredentialAwsIamRoleArgs extends com.pulumi.resources.Resourc
     /**
      * The Amazon Resource Name (ARN) of the AWS IAM role you want to use to setup the trust policy, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
      * 
-     * `azure_managed_identity` optional configuration block for using managed identity as credential details for Azure (recommended over `azure_service_principal`):
+     * `azureManagedIdentity` optional configuration block for using managed identity as credential details for Azure (recommended over `azureServicePrincipal`):
      * 
      */
     @Import(name="roleArn")
@@ -34,7 +34,7 @@ public final class CredentialAwsIamRoleArgs extends com.pulumi.resources.Resourc
     /**
      * @return The Amazon Resource Name (ARN) of the AWS IAM role you want to use to setup the trust policy, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
      * 
-     * `azure_managed_identity` optional configuration block for using managed identity as credential details for Azure (recommended over `azure_service_principal`):
+     * `azureManagedIdentity` optional configuration block for using managed identity as credential details for Azure (recommended over `azureServicePrincipal`):
      * 
      */
     public Optional<Output<String>> roleArn() {
@@ -86,7 +86,7 @@ public final class CredentialAwsIamRoleArgs extends com.pulumi.resources.Resourc
         /**
          * @param roleArn The Amazon Resource Name (ARN) of the AWS IAM role you want to use to setup the trust policy, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
          * 
-         * `azure_managed_identity` optional configuration block for using managed identity as credential details for Azure (recommended over `azure_service_principal`):
+         * `azureManagedIdentity` optional configuration block for using managed identity as credential details for Azure (recommended over `azureServicePrincipal`):
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class CredentialAwsIamRoleArgs extends com.pulumi.resources.Resourc
         /**
          * @param roleArn The Amazon Resource Name (ARN) of the AWS IAM role you want to use to setup the trust policy, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
          * 
-         * `azure_managed_identity` optional configuration block for using managed identity as credential details for Azure (recommended over `azure_service_principal`):
+         * `azureManagedIdentity` optional configuration block for using managed identity as credential details for Azure (recommended over `azureServicePrincipal`):
          * 
          * @return builder
          * 

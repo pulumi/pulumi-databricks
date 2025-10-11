@@ -47,7 +47,7 @@ public final class StorageCredentialCloudflareApiTokenArgs extends com.pulumi.re
     /**
      * R2 API token secret access key
      * 
-     * `azure_service_principal` optional configuration block to use service principal as credential details for Azure (Legacy):
+     * `azureServicePrincipal` optional configuration block to use service principal as credential details for Azure (Legacy):
      * 
      */
     @Import(name="secretAccessKey", required=true)
@@ -56,7 +56,7 @@ public final class StorageCredentialCloudflareApiTokenArgs extends com.pulumi.re
     /**
      * @return R2 API token secret access key
      * 
-     * `azure_service_principal` optional configuration block to use service principal as credential details for Azure (Legacy):
+     * `azureServicePrincipal` optional configuration block to use service principal as credential details for Azure (Legacy):
      * 
      */
     public Output<String> secretAccessKey() {
@@ -134,7 +134,7 @@ public final class StorageCredentialCloudflareApiTokenArgs extends com.pulumi.re
         /**
          * @param secretAccessKey R2 API token secret access key
          * 
-         * `azure_service_principal` optional configuration block to use service principal as credential details for Azure (Legacy):
+         * `azureServicePrincipal` optional configuration block to use service principal as credential details for Azure (Legacy):
          * 
          * @return builder
          * 
@@ -147,7 +147,7 @@ public final class StorageCredentialCloudflareApiTokenArgs extends com.pulumi.re
         /**
          * @param secretAccessKey R2 API token secret access key
          * 
-         * `azure_service_principal` optional configuration block to use service principal as credential details for Azure (Legacy):
+         * `azureServicePrincipal` optional configuration block to use service principal as credential details for Azure (Legacy):
          * 
          * @return builder
          * 

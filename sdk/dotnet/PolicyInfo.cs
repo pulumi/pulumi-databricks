@@ -34,7 +34,7 @@ namespace Pulumi.Databricks
     public partial class PolicyInfo : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Options for column mask policies. Valid only if `policy_type` is `POLICY_TYPE_COLUMN_MASK`.
+        /// Options for column mask policies. Valid only if `PolicyType` is `POLICY_TYPE_COLUMN_MASK`.
         /// Required on create and optional on update. When specified on update,
         /// the new options will replace the existing options as a whole
         /// </summary>
@@ -75,7 +75,7 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// Optional list of condition expressions used to match table columns.
-        /// Only valid when `for_securable_type` is `TABLE`.
+        /// Only valid when `ForSecurableType` is `TABLE`.
         /// When specified, the policy only applies to tables whose columns satisfy all match conditions
         /// </summary>
         [Output("matchColumns")]
@@ -83,7 +83,7 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// Name of the policy. Required on create and optional on update.
-        /// To rename the policy, set `name` to a different value on update
+        /// To rename the policy, set `Name` to a different value on update
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -110,7 +110,7 @@ namespace Pulumi.Databricks
         public Output<string> PolicyType { get; private set; } = null!;
 
         /// <summary>
-        /// Options for row filter policies. Valid only if `policy_type` is `POLICY_TYPE_ROW_FILTER`.
+        /// Options for row filter policies. Valid only if `PolicyType` is `POLICY_TYPE_ROW_FILTER`.
         /// Required on create and optional on update. When specified on update,
         /// the new options will replace the existing options as a whole
         /// </summary>
@@ -195,7 +195,7 @@ namespace Pulumi.Databricks
     public sealed class PolicyInfoArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Options for column mask policies. Valid only if `policy_type` is `POLICY_TYPE_COLUMN_MASK`.
+        /// Options for column mask policies. Valid only if `PolicyType` is `POLICY_TYPE_COLUMN_MASK`.
         /// Required on create and optional on update. When specified on update,
         /// the new options will replace the existing options as a whole
         /// </summary>
@@ -233,7 +233,7 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// Optional list of condition expressions used to match table columns.
-        /// Only valid when `for_securable_type` is `TABLE`.
+        /// Only valid when `ForSecurableType` is `TABLE`.
         /// When specified, the policy only applies to tables whose columns satisfy all match conditions
         /// </summary>
         public InputList<Inputs.PolicyInfoMatchColumnArgs> MatchColumns
@@ -244,7 +244,7 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// Name of the policy. Required on create and optional on update.
-        /// To rename the policy, set `name` to a different value on update
+        /// To rename the policy, set `Name` to a different value on update
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -271,7 +271,7 @@ namespace Pulumi.Databricks
         public Input<string> PolicyType { get; set; } = null!;
 
         /// <summary>
-        /// Options for row filter policies. Valid only if `policy_type` is `POLICY_TYPE_ROW_FILTER`.
+        /// Options for row filter policies. Valid only if `PolicyType` is `POLICY_TYPE_ROW_FILTER`.
         /// Required on create and optional on update. When specified on update,
         /// the new options will replace the existing options as a whole
         /// </summary>
@@ -312,7 +312,7 @@ namespace Pulumi.Databricks
     public sealed class PolicyInfoState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Options for column mask policies. Valid only if `policy_type` is `POLICY_TYPE_COLUMN_MASK`.
+        /// Options for column mask policies. Valid only if `PolicyType` is `POLICY_TYPE_COLUMN_MASK`.
         /// Required on create and optional on update. When specified on update,
         /// the new options will replace the existing options as a whole
         /// </summary>
@@ -362,7 +362,7 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// Optional list of condition expressions used to match table columns.
-        /// Only valid when `for_securable_type` is `TABLE`.
+        /// Only valid when `ForSecurableType` is `TABLE`.
         /// When specified, the policy only applies to tables whose columns satisfy all match conditions
         /// </summary>
         public InputList<Inputs.PolicyInfoMatchColumnGetArgs> MatchColumns
@@ -373,7 +373,7 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// Name of the policy. Required on create and optional on update.
-        /// To rename the policy, set `name` to a different value on update
+        /// To rename the policy, set `Name` to a different value on update
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -400,7 +400,7 @@ namespace Pulumi.Databricks
         public Input<string>? PolicyType { get; set; }
 
         /// <summary>
-        /// Options for row filter policies. Valid only if `policy_type` is `POLICY_TYPE_ROW_FILTER`.
+        /// Options for row filter policies. Valid only if `PolicyType` is `POLICY_TYPE_ROW_FILTER`.
         /// Required on create and optional on update. When specified on update,
         /// the new options will replace the existing options as a whole
         /// </summary>

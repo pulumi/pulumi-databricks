@@ -143,7 +143,7 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// list of objects with `path` and `language` attributes
+        /// list of objects with `Path` and `Language` attributes
         /// </summary>
         public readonly ImmutableArray<Outputs.GetNotebookPathsNotebookPathListResult> NotebookPathLists;
         public readonly string Path;

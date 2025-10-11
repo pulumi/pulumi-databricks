@@ -131,14 +131,14 @@ public final class CustomAppIntegrationState extends com.pulumi.resources.Resour
     }
 
     /**
-     * OAuth scopes granted to the application. Supported scopes: `all-apis`, `sql`, `offline_access`, `openid`, `profile`, `email`.
+     * OAuth scopes granted to the application. Supported scopes: `all-apis`, `sql`, `offlineAccess`, `openid`, `profile`, `email`.
      * 
      */
     @Import(name="scopes")
     private @Nullable Output<List<String>> scopes;
 
     /**
-     * @return OAuth scopes granted to the application. Supported scopes: `all-apis`, `sql`, `offline_access`, `openid`, `profile`, `email`.
+     * @return OAuth scopes granted to the application. Supported scopes: `all-apis`, `sql`, `offlineAccess`, `openid`, `profile`, `email`.
      * 
      */
     public Optional<Output<List<String>>> scopes() {
@@ -358,7 +358,7 @@ public final class CustomAppIntegrationState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param scopes OAuth scopes granted to the application. Supported scopes: `all-apis`, `sql`, `offline_access`, `openid`, `profile`, `email`.
+         * @param scopes OAuth scopes granted to the application. Supported scopes: `all-apis`, `sql`, `offlineAccess`, `openid`, `profile`, `email`.
          * 
          * @return builder
          * 
@@ -369,7 +369,7 @@ public final class CustomAppIntegrationState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param scopes OAuth scopes granted to the application. Supported scopes: `all-apis`, `sql`, `offline_access`, `openid`, `profile`, `email`.
+         * @param scopes OAuth scopes granted to the application. Supported scopes: `all-apis`, `sql`, `offlineAccess`, `openid`, `profile`, `email`.
          * 
          * @return builder
          * 
@@ -379,7 +379,7 @@ public final class CustomAppIntegrationState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param scopes OAuth scopes granted to the application. Supported scopes: `all-apis`, `sql`, `offline_access`, `openid`, `profile`, `email`.
+         * @param scopes OAuth scopes granted to the application. Supported scopes: `all-apis`, `sql`, `offlineAccess`, `openid`, `profile`, `email`.
          * 
          * @return builder
          * 

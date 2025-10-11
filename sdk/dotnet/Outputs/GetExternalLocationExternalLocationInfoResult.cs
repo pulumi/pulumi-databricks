@@ -51,7 +51,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// Username/groupname/sp application_id of the external location owner.
+        /// Username/groupname/sp ApplicationId of the external location owner.
         /// </summary>
         public readonly string? Owner;
         /// <summary>

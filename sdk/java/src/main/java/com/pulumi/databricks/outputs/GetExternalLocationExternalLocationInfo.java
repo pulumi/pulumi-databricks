@@ -61,7 +61,7 @@ public final class GetExternalLocationExternalLocationInfo {
      */
     private @Nullable String name;
     /**
-     * @return Username/groupname/sp application_id of the external location owner.
+     * @return Username/groupname/sp applicationId of the external location owner.
      * 
      */
     private @Nullable String owner;
@@ -159,7 +159,7 @@ public final class GetExternalLocationExternalLocationInfo {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return Username/groupname/sp application_id of the external location owner.
+     * @return Username/groupname/sp applicationId of the external location owner.
      * 
      */
     public Optional<String> owner() {

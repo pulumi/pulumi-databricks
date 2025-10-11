@@ -77,7 +77,7 @@ public final class SqlQueryParameterArgs extends com.pulumi.resources.ResourceAr
 
     /**
      * The literal parameter marker that appears between double curly braces in the query text.
-     * Parameters can have several different types. Type is specified using one of the following configuration blocks: `text`, `number`, `enum`, `query`, `date`, `datetime`, `datetimesec`, `date_range`, `datetime_range`, `datetimesec_range`.
+     * Parameters can have several different types. Type is specified using one of the following configuration blocks: `text`, `number`, `enum`, `query`, `date`, `datetime`, `datetimesec`, `dateRange`, `datetimeRange`, `datetimesecRange`.
      * 
      * For `text`, `number`, `date`, `datetime`, `datetimesec` block
      * 
@@ -87,7 +87,7 @@ public final class SqlQueryParameterArgs extends com.pulumi.resources.ResourceAr
 
     /**
      * @return The literal parameter marker that appears between double curly braces in the query text.
-     * Parameters can have several different types. Type is specified using one of the following configuration blocks: `text`, `number`, `enum`, `query`, `date`, `datetime`, `datetimesec`, `date_range`, `datetime_range`, `datetimesec_range`.
+     * Parameters can have several different types. Type is specified using one of the following configuration blocks: `text`, `number`, `enum`, `query`, `date`, `datetime`, `datetimesec`, `dateRange`, `datetimeRange`, `datetimesecRange`.
      * 
      * For `text`, `number`, `date`, `datetime`, `datetimesec` block
      * 
@@ -240,7 +240,7 @@ public final class SqlQueryParameterArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param name The literal parameter marker that appears between double curly braces in the query text.
-         * Parameters can have several different types. Type is specified using one of the following configuration blocks: `text`, `number`, `enum`, `query`, `date`, `datetime`, `datetimesec`, `date_range`, `datetime_range`, `datetimesec_range`.
+         * Parameters can have several different types. Type is specified using one of the following configuration blocks: `text`, `number`, `enum`, `query`, `date`, `datetime`, `datetimesec`, `dateRange`, `datetimeRange`, `datetimesecRange`.
          * 
          * For `text`, `number`, `date`, `datetime`, `datetimesec` block
          * 
@@ -254,7 +254,7 @@ public final class SqlQueryParameterArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param name The literal parameter marker that appears between double curly braces in the query text.
-         * Parameters can have several different types. Type is specified using one of the following configuration blocks: `text`, `number`, `enum`, `query`, `date`, `datetime`, `datetimesec`, `date_range`, `datetime_range`, `datetimesec_range`.
+         * Parameters can have several different types. Type is specified using one of the following configuration blocks: `text`, `number`, `enum`, `query`, `date`, `datetime`, `datetimesec`, `dateRange`, `datetimeRange`, `datetimesecRange`.
          * 
          * For `text`, `number`, `date`, `datetime`, `datetimesec` block
          * 

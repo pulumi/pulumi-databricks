@@ -308,14 +308,14 @@ public final class GetTableTableInfo extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * View definition SQL (when `table_type` is VIEW, MATERIALIZED_VIEW, or STREAMING_TABLE)
+     * View definition SQL (when `tableType` is VIEW, MATERIALIZED_VIEW, or STREAMING_TABLE)
      * 
      */
     @Import(name="viewDefinition")
     private @Nullable String viewDefinition;
 
     /**
-     * @return View definition SQL (when `table_type` is VIEW, MATERIALIZED_VIEW, or STREAMING_TABLE)
+     * @return View definition SQL (when `tableType` is VIEW, MATERIALIZED_VIEW, or STREAMING_TABLE)
      * 
      */
     public Optional<String> viewDefinition() {
@@ -323,14 +323,14 @@ public final class GetTableTableInfo extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * View dependencies (when `table_type` is VIEW or MATERIALIZED_VIEW, STREAMING_TABLE)
+     * View dependencies (when `tableType` is VIEW or MATERIALIZED_VIEW, STREAMING_TABLE)
      * 
      */
     @Import(name="viewDependencies")
     private @Nullable GetTableTableInfoViewDependencies viewDependencies;
 
     /**
-     * @return View dependencies (when `table_type` is VIEW or MATERIALIZED_VIEW, STREAMING_TABLE)
+     * @return View dependencies (when `tableType` is VIEW or MATERIALIZED_VIEW, STREAMING_TABLE)
      * 
      */
     public Optional<GetTableTableInfoViewDependencies> viewDependencies() {
@@ -611,7 +611,7 @@ public final class GetTableTableInfo extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param viewDefinition View definition SQL (when `table_type` is VIEW, MATERIALIZED_VIEW, or STREAMING_TABLE)
+         * @param viewDefinition View definition SQL (when `tableType` is VIEW, MATERIALIZED_VIEW, or STREAMING_TABLE)
          * 
          * @return builder
          * 
@@ -622,7 +622,7 @@ public final class GetTableTableInfo extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param viewDependencies View dependencies (when `table_type` is VIEW or MATERIALIZED_VIEW, STREAMING_TABLE)
+         * @param viewDependencies View dependencies (when `tableType` is VIEW or MATERIALIZED_VIEW, STREAMING_TABLE)
          * 
          * @return builder
          * 

@@ -20,7 +20,7 @@ public final class GetVolumeVolumeInfo {
      */
     private @Nullable String accessPoint;
     /**
-     * @return indicates whether the principal is limited to retrieving metadata for the volume through the BROWSE privilege when include_browse is enabled in the request.
+     * @return indicates whether the principal is limited to retrieving metadata for the volume through the BROWSE privilege when includeBrowse is enabled in the request.
      * 
      */
     private @Nullable Boolean browseOnly;
@@ -109,7 +109,7 @@ public final class GetVolumeVolumeInfo {
         return Optional.ofNullable(this.accessPoint);
     }
     /**
-     * @return indicates whether the principal is limited to retrieving metadata for the volume through the BROWSE privilege when include_browse is enabled in the request.
+     * @return indicates whether the principal is limited to retrieving metadata for the volume through the BROWSE privilege when includeBrowse is enabled in the request.
      * 
      */
     public Optional<Boolean> browseOnly() {

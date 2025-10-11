@@ -146,19 +146,19 @@ public final class GetGroupPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     /**
      * @deprecated
-     * Please use `users`, `service_principals`, and `child_groups` instead
+     * Please use `users`, `servicePrincipals`, and `childGroups` instead
      * 
      */
-    @Deprecated /* Please use `users`, `service_principals`, and `child_groups` instead */
+    @Deprecated /* Please use `users`, `servicePrincipals`, and `childGroups` instead */
     @Import(name="members")
     private @Nullable List<String> members;
 
     /**
      * @deprecated
-     * Please use `users`, `service_principals`, and `child_groups` instead
+     * Please use `users`, `servicePrincipals`, and `childGroups` instead
      * 
      */
-    @Deprecated /* Please use `users`, `service_principals`, and `child_groups` instead */
+    @Deprecated /* Please use `users`, `servicePrincipals`, and `childGroups` instead */
     public Optional<List<String>> members() {
         return Optional.ofNullable(this.members);
     }
@@ -387,10 +387,10 @@ public final class GetGroupPlainArgs extends com.pulumi.resources.InvokeArgs {
          * @return builder
          * 
          * @deprecated
-         * Please use `users`, `service_principals`, and `child_groups` instead
+         * Please use `users`, `servicePrincipals`, and `childGroups` instead
          * 
          */
-        @Deprecated /* Please use `users`, `service_principals`, and `child_groups` instead */
+        @Deprecated /* Please use `users`, `servicePrincipals`, and `childGroups` instead */
         public Builder members(@Nullable List<String> members) {
             $.members = members;
             return this;
@@ -400,10 +400,10 @@ public final class GetGroupPlainArgs extends com.pulumi.resources.InvokeArgs {
          * @return builder
          * 
          * @deprecated
-         * Please use `users`, `service_principals`, and `child_groups` instead
+         * Please use `users`, `servicePrincipals`, and `childGroups` instead
          * 
          */
-        @Deprecated /* Please use `users`, `service_principals`, and `child_groups` instead */
+        @Deprecated /* Please use `users`, `servicePrincipals`, and `childGroups` instead */
         public Builder members(String... members) {
             return members(List.of(members));
         }

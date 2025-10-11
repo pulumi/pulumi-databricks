@@ -64,14 +64,14 @@ public class SqlTable extends com.pulumi.resources.CustomResource {
         return this.clusterId;
     }
     /**
-     * a subset of columns to liquid cluster the table by. For automatic clustering, set `cluster_keys` to `[&#34;AUTO&#34;]`. To turn off clustering, set it to `[&#34;NONE&#34;]`. Conflicts with `partitions`.
+     * a subset of columns to liquid cluster the table by. For automatic clustering, set `clusterKeys` to `[&#34;AUTO&#34;]`. To turn off clustering, set it to `[&#34;NONE&#34;]`. Conflicts with `partitions`.
      * 
      */
     @Export(name="clusterKeys", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> clusterKeys;
 
     /**
-     * @return a subset of columns to liquid cluster the table by. For automatic clustering, set `cluster_keys` to `[&#34;AUTO&#34;]`. To turn off clustering, set it to `[&#34;NONE&#34;]`. Conflicts with `partitions`.
+     * @return a subset of columns to liquid cluster the table by. For automatic clustering, set `clusterKeys` to `[&#34;AUTO&#34;]`. To turn off clustering, set it to `[&#34;NONE&#34;]`. Conflicts with `partitions`.
      * 
      */
     public Output<Optional<List<String>>> clusterKeys() {
@@ -146,28 +146,28 @@ public class SqlTable extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.options);
     }
     /**
-     * User name/group name/sp application_id of the table owner.
+     * User name/group name/sp applicationId of the table owner.
      * 
      */
     @Export(name="owner", refs={String.class}, tree="[0]")
     private Output<String> owner;
 
     /**
-     * @return User name/group name/sp application_id of the table owner.
+     * @return User name/group name/sp applicationId of the table owner.
      * 
      */
     public Output<String> owner() {
         return this.owner;
     }
     /**
-     * a subset of columns to partition the table by. Change forces the creation of a new resource. Conflicts with `cluster_keys`.
+     * a subset of columns to partition the table by. Change forces the creation of a new resource. Conflicts with `clusterKeys`.
      * 
      */
     @Export(name="partitions", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> partitions;
 
     /**
-     * @return a subset of columns to partition the table by. Change forces the creation of a new resource. Conflicts with `cluster_keys`.
+     * @return a subset of columns to partition the table by. Change forces the creation of a new resource. Conflicts with `clusterKeys`.
      * 
      */
     public Output<List<String>> partitions() {
@@ -244,28 +244,28 @@ public class SqlTable extends com.pulumi.resources.CustomResource {
         return this.tableType;
     }
     /**
-     * SQL text defining the view (for `table_type == &#34;VIEW&#34;`). Not supported for `MANAGED` or `EXTERNAL` table_type.
+     * SQL text defining the view (for `tableType == &#34;VIEW&#34;`). Not supported for `MANAGED` or `EXTERNAL` table_type.
      * 
      */
     @Export(name="viewDefinition", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> viewDefinition;
 
     /**
-     * @return SQL text defining the view (for `table_type == &#34;VIEW&#34;`). Not supported for `MANAGED` or `EXTERNAL` table_type.
+     * @return SQL text defining the view (for `tableType == &#34;VIEW&#34;`). Not supported for `MANAGED` or `EXTERNAL` table_type.
      * 
      */
     public Output<Optional<String>> viewDefinition() {
         return Codegen.optional(this.viewDefinition);
     }
     /**
-     * All table CRUD operations must be executed on a running cluster or SQL warehouse. If a `warehouse_id` is specified, that SQL warehouse will be used to execute SQL commands to manage this table. Conflicts with `cluster_id`.
+     * All table CRUD operations must be executed on a running cluster or SQL warehouse. If a `warehouseId` is specified, that SQL warehouse will be used to execute SQL commands to manage this table. Conflicts with `clusterId`.
      * 
      */
     @Export(name="warehouseId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> warehouseId;
 
     /**
-     * @return All table CRUD operations must be executed on a running cluster or SQL warehouse. If a `warehouse_id` is specified, that SQL warehouse will be used to execute SQL commands to manage this table. Conflicts with `cluster_id`.
+     * @return All table CRUD operations must be executed on a running cluster or SQL warehouse. If a `warehouseId` is specified, that SQL warehouse will be used to execute SQL commands to manage this table. Conflicts with `clusterId`.
      * 
      */
     public Output<Optional<String>> warehouseId() {

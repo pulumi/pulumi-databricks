@@ -146,14 +146,14 @@ namespace Pulumi.Databricks
     {
         /// <summary>
         /// The list of workspace permissions to assign to the principal:
-        /// * `"USER"` - Adds principal to the workspace `users` group. This gives basic workspace access.
-        /// * `"ADMIN"` - Adds principal to the workspace `admins` group. This gives workspace admin privileges to manage users and groups, workspace configurations, and more.
+        /// * `"USER"` - Adds principal to the workspace `Users` group. This gives basic workspace access.
+        /// * `"ADMIN"` - Adds principal to the workspace `Admins` group. This gives workspace admin privileges to manage users and groups, workspace configurations, and more.
         /// </summary>
         [Output("permissions")]
         public Output<ImmutableArray<string>> Permissions { get; private set; } = null!;
 
         /// <summary>
-        /// Databricks ID of the user, service principal, or group. The principal ID can be retrieved using the account-level SCIM API, or using databricks_user, databricks.ServicePrincipal or databricks.Group data sources with account API (and has to be an account admin). A more sensible approach is to retrieve the list of `principal_id` as outputs from another Pulumi stack.
+        /// Databricks ID of the user, service principal, or group. The principal ID can be retrieved using the account-level SCIM API, or using databricks_user, databricks.ServicePrincipal or databricks.Group data sources with account API (and has to be an account admin). A more sensible approach is to retrieve the list of `PrincipalId` as outputs from another Pulumi stack.
         /// </summary>
         [Output("principalId")]
         public Output<string> PrincipalId { get; private set; } = null!;
@@ -209,8 +209,8 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// The list of workspace permissions to assign to the principal:
-        /// * `"USER"` - Adds principal to the workspace `users` group. This gives basic workspace access.
-        /// * `"ADMIN"` - Adds principal to the workspace `admins` group. This gives workspace admin privileges to manage users and groups, workspace configurations, and more.
+        /// * `"USER"` - Adds principal to the workspace `Users` group. This gives basic workspace access.
+        /// * `"ADMIN"` - Adds principal to the workspace `Admins` group. This gives workspace admin privileges to manage users and groups, workspace configurations, and more.
         /// </summary>
         public InputList<string> Permissions
         {
@@ -219,7 +219,7 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
-        /// Databricks ID of the user, service principal, or group. The principal ID can be retrieved using the account-level SCIM API, or using databricks_user, databricks.ServicePrincipal or databricks.Group data sources with account API (and has to be an account admin). A more sensible approach is to retrieve the list of `principal_id` as outputs from another Pulumi stack.
+        /// Databricks ID of the user, service principal, or group. The principal ID can be retrieved using the account-level SCIM API, or using databricks_user, databricks.ServicePrincipal or databricks.Group data sources with account API (and has to be an account admin). A more sensible approach is to retrieve the list of `PrincipalId` as outputs from another Pulumi stack.
         /// </summary>
         [Input("principalId", required: true)]
         public Input<string> PrincipalId { get; set; } = null!;
@@ -237,8 +237,8 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// The list of workspace permissions to assign to the principal:
-        /// * `"USER"` - Adds principal to the workspace `users` group. This gives basic workspace access.
-        /// * `"ADMIN"` - Adds principal to the workspace `admins` group. This gives workspace admin privileges to manage users and groups, workspace configurations, and more.
+        /// * `"USER"` - Adds principal to the workspace `Users` group. This gives basic workspace access.
+        /// * `"ADMIN"` - Adds principal to the workspace `Admins` group. This gives workspace admin privileges to manage users and groups, workspace configurations, and more.
         /// </summary>
         public InputList<string> Permissions
         {
@@ -247,7 +247,7 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
-        /// Databricks ID of the user, service principal, or group. The principal ID can be retrieved using the account-level SCIM API, or using databricks_user, databricks.ServicePrincipal or databricks.Group data sources with account API (and has to be an account admin). A more sensible approach is to retrieve the list of `principal_id` as outputs from another Pulumi stack.
+        /// Databricks ID of the user, service principal, or group. The principal ID can be retrieved using the account-level SCIM API, or using databricks_user, databricks.ServicePrincipal or databricks.Group data sources with account API (and has to be an account admin). A more sensible approach is to retrieve the list of `PrincipalId` as outputs from another Pulumi stack.
         /// </summary>
         [Input("principalId")]
         public Input<string>? PrincipalId { get; set; }

@@ -136,8 +136,8 @@ namespace Pulumi.Databricks
     {
         /// <summary>
         /// The list of workspace permissions to assign to the principal:
-        /// * `"USER"` - Adds principal to the workspace `users` group. This gives basic workspace access.
-        /// * `"ADMIN"` - Adds principal to the workspace `admins` group. This gives workspace admin privileges to manage users and groups, workspace configurations, and more.
+        /// * `"USER"` - Adds principal to the workspace `Users` group. This gives basic workspace access.
+        /// * `"ADMIN"` - Adds principal to the workspace `Admins` group. This gives workspace admin privileges to manage users and groups, workspace configurations, and more.
         /// </summary>
         [Output("permissions")]
         public Output<ImmutableArray<string>> Permissions { get; private set; } = null!;
@@ -205,8 +205,8 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// The list of workspace permissions to assign to the principal:
-        /// * `"USER"` - Adds principal to the workspace `users` group. This gives basic workspace access.
-        /// * `"ADMIN"` - Adds principal to the workspace `admins` group. This gives workspace admin privileges to manage users and groups, workspace configurations, and more.
+        /// * `"USER"` - Adds principal to the workspace `Users` group. This gives basic workspace access.
+        /// * `"ADMIN"` - Adds principal to the workspace `Admins` group. This gives workspace admin privileges to manage users and groups, workspace configurations, and more.
         /// </summary>
         public InputList<string> Permissions
         {
@@ -239,8 +239,8 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// The list of workspace permissions to assign to the principal:
-        /// * `"USER"` - Adds principal to the workspace `users` group. This gives basic workspace access.
-        /// * `"ADMIN"` - Adds principal to the workspace `admins` group. This gives workspace admin privileges to manage users and groups, workspace configurations, and more.
+        /// * `"USER"` - Adds principal to the workspace `Users` group. This gives basic workspace access.
+        /// * `"ADMIN"` - Adds principal to the workspace `Admins` group. This gives workspace admin privileges to manage users and groups, workspace configurations, and more.
         /// </summary>
         public InputList<string> Permissions
         {

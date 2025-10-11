@@ -16,7 +16,7 @@ namespace Pulumi.Databricks.Inputs
         private InputMap<string>? _baseParameters;
 
         /// <summary>
-        /// (Map) Base parameters to be used for each run of this job. If the run is initiated by a call to run-now with parameters specified, the two parameters maps will be merged. If the same key is specified in base_parameters and in run-now, the value from run-now will be used. If the notebook takes a parameter that is not specified in the job's base_parameters or the run-now override parameters, the default value from the notebook will be used. Retrieve these parameters in a notebook using `dbutils.widgets.get`.
+        /// (Map) Base parameters to be used for each run of this job. If the run is initiated by a call to run-now with parameters specified, the two parameters maps will be merged. If the same key is specified in BaseParameters and in run-now, the value from run-now will be used. If the notebook takes a parameter that is not specified in the job's BaseParameters or the run-now override parameters, the default value from the notebook will be used. Retrieve these parameters in a notebook using `dbutils.widgets.get`.
         /// </summary>
         public InputMap<string> BaseParameters
         {
@@ -31,7 +31,7 @@ namespace Pulumi.Databricks.Inputs
         public Input<string> NotebookPath { get; set; } = null!;
 
         /// <summary>
-        /// Location type of the notebook, can only be `WORKSPACE` or `GIT`. When set to `WORKSPACE`, the notebook will be retrieved from the local Databricks workspace. When set to `GIT`, the notebook will be retrieved from a Git repository defined in `git_source`. If the value is empty, the task will use `GIT` if `git_source` is defined and `WORKSPACE` otherwise.
+        /// Location type of the notebook, can only be `WORKSPACE` or `GIT`. When set to `WORKSPACE`, the notebook will be retrieved from the local Databricks workspace. When set to `GIT`, the notebook will be retrieved from a Git repository defined in `GitSource`. If the value is empty, the task will use `GIT` if `GitSource` is defined and `WORKSPACE` otherwise.
         /// </summary>
         [Input("source")]
         public Input<string>? Source { get; set; }

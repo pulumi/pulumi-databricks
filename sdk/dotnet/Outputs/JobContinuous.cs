@@ -14,7 +14,7 @@ namespace Pulumi.Databricks.Outputs
     public sealed class JobContinuous
     {
         /// <summary>
-        /// Indicate whether this continuous job is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pause_status` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pause_status`.
+        /// Indicate whether this continuous job is paused or not. Either `PAUSED` or `UNPAUSED`. When the `PauseStatus` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `PauseStatus`.
         /// </summary>
         public readonly string? PauseStatus;
         /// <summary>

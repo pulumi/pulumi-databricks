@@ -20,13 +20,13 @@ namespace Pulumi.Databricks.Inputs
         public Input<bool> CreateDatabaseObjectsIfMissing { get; set; } = null!;
 
         /// <summary>
-        /// (string) - At most one of existing_pipeline_id and new_pipeline_spec should be defined.
+        /// (string) - At most one of ExistingPipelineId and NewPipelineSpec should be defined.
         /// </summary>
         [Input("existingPipelineId", required: true)]
         public Input<string> ExistingPipelineId { get; set; } = null!;
 
         /// <summary>
-        /// (NewPipelineSpec) - At most one of existing_pipeline_id and new_pipeline_spec should be defined.
+        /// (NewPipelineSpec) - At most one of ExistingPipelineId and NewPipelineSpec should be defined.
         /// </summary>
         [Input("newPipelineSpec", required: true)]
         public Input<Inputs.GetDatabaseSyncedDatabaseTableSpecNewPipelineSpecInputArgs> NewPipelineSpec { get; set; } = null!;

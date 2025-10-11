@@ -146,14 +146,14 @@ public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * identifier of an `environment` block that is used to specify libraries.  Required for some tasks (`spark_python_task`, `python_wheel_task`, ...) running on serverless compute.
+     * identifier of an `environment` block that is used to specify libraries.  Required for some tasks (`sparkPythonTask`, `pythonWheelTask`, ...) running on serverless compute.
      * 
      */
     @Import(name="environmentKey")
     private @Nullable Output<String> environmentKey;
 
     /**
-     * @return identifier of an `environment` block that is used to specify libraries.  Required for some tasks (`spark_python_task`, `python_wheel_task`, ...) running on serverless compute.
+     * @return identifier of an `environment` block that is used to specify libraries.  Required for some tasks (`sparkPythonTask`, `pythonWheelTask`, ...) running on serverless compute.
      * 
      */
     public Optional<Output<String>> environmentKey() {
@@ -205,14 +205,14 @@ public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Identifier of the Job cluster specified in the `job_cluster` block.
+     * Identifier of the Job cluster specified in the `jobCluster` block.
      * 
      */
     @Import(name="jobClusterKey")
     private @Nullable Output<String> jobClusterKey;
 
     /**
-     * @return Identifier of the Job cluster specified in the `job_cluster` block.
+     * @return Identifier of the Job cluster specified in the `jobCluster` block.
      * 
      */
     public Optional<Output<String>> jobClusterKey() {
@@ -265,14 +265,14 @@ public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Task will run on a dedicated cluster.  See databricks.Cluster documentation for specification. *Some parameters, such as `autotermination_minutes`, `is_pinned`, `workload_type` aren&#39;t supported!*
+     * Task will run on a dedicated cluster.  See databricks.Cluster documentation for specification. *Some parameters, such as `autoterminationMinutes`, `isPinned`, `workloadType` aren&#39;t supported!*
      * 
      */
     @Import(name="newCluster")
     private @Nullable Output<JobTaskNewClusterArgs> newCluster;
 
     /**
-     * @return Task will run on a dedicated cluster.  See databricks.Cluster documentation for specification. *Some parameters, such as `autotermination_minutes`, `is_pinned`, `workload_type` aren&#39;t supported!*
+     * @return Task will run on a dedicated cluster.  See databricks.Cluster documentation for specification. *Some parameters, such as `autoterminationMinutes`, `isPinned`, `workloadType` aren&#39;t supported!*
      * 
      */
     public Optional<Output<JobTaskNewClusterArgs>> newCluster() {
@@ -422,7 +422,7 @@ public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
      * 
-     * &gt; If no `job_cluster_key`, `existing_cluster_id`, or `new_cluster` were specified in task definition, then task will executed using serverless compute.
+     * &gt; If no `jobClusterKey`, `existingClusterId`, or `newCluster` were specified in task definition, then task will executed using serverless compute.
      * 
      */
     @Import(name="webhookNotifications")
@@ -431,7 +431,7 @@ public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
      * 
-     * &gt; If no `job_cluster_key`, `existing_cluster_id`, or `new_cluster` were specified in task definition, then task will executed using serverless compute.
+     * &gt; If no `jobClusterKey`, `existingClusterId`, or `newCluster` were specified in task definition, then task will executed using serverless compute.
      * 
      */
     public Optional<Output<JobTaskWebhookNotificationsArgs>> webhookNotifications() {
@@ -645,7 +645,7 @@ public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param environmentKey identifier of an `environment` block that is used to specify libraries.  Required for some tasks (`spark_python_task`, `python_wheel_task`, ...) running on serverless compute.
+         * @param environmentKey identifier of an `environment` block that is used to specify libraries.  Required for some tasks (`sparkPythonTask`, `pythonWheelTask`, ...) running on serverless compute.
          * 
          * @return builder
          * 
@@ -656,7 +656,7 @@ public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param environmentKey identifier of an `environment` block that is used to specify libraries.  Required for some tasks (`spark_python_task`, `python_wheel_task`, ...) running on serverless compute.
+         * @param environmentKey identifier of an `environment` block that is used to specify libraries.  Required for some tasks (`sparkPythonTask`, `pythonWheelTask`, ...) running on serverless compute.
          * 
          * @return builder
          * 
@@ -726,7 +726,7 @@ public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param jobClusterKey Identifier of the Job cluster specified in the `job_cluster` block.
+         * @param jobClusterKey Identifier of the Job cluster specified in the `jobCluster` block.
          * 
          * @return builder
          * 
@@ -737,7 +737,7 @@ public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param jobClusterKey Identifier of the Job cluster specified in the `job_cluster` block.
+         * @param jobClusterKey Identifier of the Job cluster specified in the `jobCluster` block.
          * 
          * @return builder
          * 
@@ -820,7 +820,7 @@ public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param newCluster Task will run on a dedicated cluster.  See databricks.Cluster documentation for specification. *Some parameters, such as `autotermination_minutes`, `is_pinned`, `workload_type` aren&#39;t supported!*
+         * @param newCluster Task will run on a dedicated cluster.  See databricks.Cluster documentation for specification. *Some parameters, such as `autoterminationMinutes`, `isPinned`, `workloadType` aren&#39;t supported!*
          * 
          * @return builder
          * 
@@ -831,7 +831,7 @@ public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param newCluster Task will run on a dedicated cluster.  See databricks.Cluster documentation for specification. *Some parameters, such as `autotermination_minutes`, `is_pinned`, `workload_type` aren&#39;t supported!*
+         * @param newCluster Task will run on a dedicated cluster.  See databricks.Cluster documentation for specification. *Some parameters, such as `autoterminationMinutes`, `isPinned`, `workloadType` aren&#39;t supported!*
          * 
          * @return builder
          * 
@@ -1031,7 +1031,7 @@ public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param webhookNotifications (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
          * 
-         * &gt; If no `job_cluster_key`, `existing_cluster_id`, or `new_cluster` were specified in task definition, then task will executed using serverless compute.
+         * &gt; If no `jobClusterKey`, `existingClusterId`, or `newCluster` were specified in task definition, then task will executed using serverless compute.
          * 
          * @return builder
          * 
@@ -1044,7 +1044,7 @@ public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param webhookNotifications (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
          * 
-         * &gt; If no `job_cluster_key`, `existing_cluster_id`, or `new_cluster` were specified in task definition, then task will executed using serverless compute.
+         * &gt; If no `jobClusterKey`, `existingClusterId`, or `newCluster` were specified in task definition, then task will executed using serverless compute.
          * 
          * @return builder
          * 

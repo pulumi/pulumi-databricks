@@ -14,9 +14,9 @@ namespace Pulumi.Databricks
     /// 
     /// &gt; This resource can only be used with a workspace-level provider!
     /// 
-    /// &gt; It is important to know that different cloud service providers have different `node_type_id`, `disk_specs` and potentially other configurations.
+    /// &gt; It is important to know that different cloud service providers have different `NodeTypeId`, `DiskSpecs` and potentially other configurations.
     /// 
-    /// &gt; "auto" `zone_id` is only supported for fleet node types.
+    /// &gt; "auto" `ZoneId` is only supported for fleet node types.
     /// 
     /// ## Example Usage
     /// 
@@ -112,7 +112,7 @@ namespace Pulumi.Databricks
         public Output<Outputs.InstancePoolGcpAttributes?> GcpAttributes { get; private set; } = null!;
 
         /// <summary>
-        /// (Integer) The number of minutes that idle instances in excess of the min_idle_instances are maintained by the pool before being terminated. If not specified, excess idle instances are terminated automatically after a default timeout period. If specified, the time must be between 0 and 10000 minutes. If you specify 0, excess idle instances are removed as soon as possible.
+        /// (Integer) The number of minutes that idle instances in excess of the MinIdleInstances are maintained by the pool before being terminated. If not specified, excess idle instances are terminated automatically after a default timeout period. If specified, the time must be between 0 and 10000 minutes. If you specify 0, excess idle instances are removed as soon as possible.
         /// </summary>
         [Output("idleInstanceAutoterminationMinutes")]
         public Output<int> IdleInstanceAutoterminationMinutes { get; private set; } = null!;
@@ -233,7 +233,7 @@ namespace Pulumi.Databricks
         public Input<Inputs.InstancePoolGcpAttributesArgs>? GcpAttributes { get; set; }
 
         /// <summary>
-        /// (Integer) The number of minutes that idle instances in excess of the min_idle_instances are maintained by the pool before being terminated. If not specified, excess idle instances are terminated automatically after a default timeout period. If specified, the time must be between 0 and 10000 minutes. If you specify 0, excess idle instances are removed as soon as possible.
+        /// (Integer) The number of minutes that idle instances in excess of the MinIdleInstances are maintained by the pool before being terminated. If not specified, excess idle instances are terminated automatically after a default timeout period. If specified, the time must be between 0 and 10000 minutes. If you specify 0, excess idle instances are removed as soon as possible.
         /// </summary>
         [Input("idleInstanceAutoterminationMinutes", required: true)]
         public Input<int> IdleInstanceAutoterminationMinutes { get; set; } = null!;
@@ -327,7 +327,7 @@ namespace Pulumi.Databricks
         public Input<Inputs.InstancePoolGcpAttributesGetArgs>? GcpAttributes { get; set; }
 
         /// <summary>
-        /// (Integer) The number of minutes that idle instances in excess of the min_idle_instances are maintained by the pool before being terminated. If not specified, excess idle instances are terminated automatically after a default timeout period. If specified, the time must be between 0 and 10000 minutes. If you specify 0, excess idle instances are removed as soon as possible.
+        /// (Integer) The number of minutes that idle instances in excess of the MinIdleInstances are maintained by the pool before being terminated. If not specified, excess idle instances are terminated automatically after a default timeout period. If specified, the time must be between 0 and 10000 minutes. If you specify 0, excess idle instances are removed as soon as possible.
         /// </summary>
         [Input("idleInstanceAutoterminationMinutes")]
         public Input<int>? IdleInstanceAutoterminationMinutes { get; set; }

@@ -42,7 +42,7 @@ namespace Pulumi.Databricks
         /// The following resources are used in the same context:
         /// 
         /// * databricks.MwsWorkspaces to manage Databricks Workspaces on AWS and GCP.
-        /// * databricks.MetastoreAssignment to assign databricks.Metastore to databricks.MwsWorkspaces or azurerm_databricks_workspace
+        /// * databricks.MetastoreAssignment to assign databricks.Metastore to databricks.MwsWorkspaces or AzurermDatabricksWorkspace
         /// </summary>
         public static Task<GetMwsWorkspacesResult> InvokeAsync(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetMwsWorkspacesResult>("databricks:index/getMwsWorkspaces:getMwsWorkspaces", InvokeArgs.Empty, options.WithDefaults());
@@ -78,7 +78,7 @@ namespace Pulumi.Databricks
         /// The following resources are used in the same context:
         /// 
         /// * databricks.MwsWorkspaces to manage Databricks Workspaces on AWS and GCP.
-        /// * databricks.MetastoreAssignment to assign databricks.Metastore to databricks.MwsWorkspaces or azurerm_databricks_workspace
+        /// * databricks.MetastoreAssignment to assign databricks.Metastore to databricks.MwsWorkspaces or AzurermDatabricksWorkspace
         /// </summary>
         public static Output<GetMwsWorkspacesResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetMwsWorkspacesResult>("databricks:index/getMwsWorkspaces:getMwsWorkspaces", InvokeArgs.Empty, options.WithDefaults());
@@ -114,7 +114,7 @@ namespace Pulumi.Databricks
         /// The following resources are used in the same context:
         /// 
         /// * databricks.MwsWorkspaces to manage Databricks Workspaces on AWS and GCP.
-        /// * databricks.MetastoreAssignment to assign databricks.Metastore to databricks.MwsWorkspaces or azurerm_databricks_workspace
+        /// * databricks.MetastoreAssignment to assign databricks.Metastore to databricks.MwsWorkspaces or AzurermDatabricksWorkspace
         /// </summary>
         public static Output<GetMwsWorkspacesResult> Invoke(InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetMwsWorkspacesResult>("databricks:index/getMwsWorkspaces:getMwsWorkspaces", InvokeArgs.Empty, options.WithDefaults());

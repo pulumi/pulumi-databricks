@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class JobTaskForEachTaskTaskSqlTaskAlertSubscription {
     /**
-     * @return A snapshot of the dashboard will be sent to the destination when the `destination_id` field is present.
+     * @return A snapshot of the dashboard will be sent to the destination when the `destinationId` field is present.
      * 
      */
     private @Nullable String destinationId;
@@ -20,7 +20,7 @@ public final class JobTaskForEachTaskTaskSqlTaskAlertSubscription {
 
     private JobTaskForEachTaskTaskSqlTaskAlertSubscription() {}
     /**
-     * @return A snapshot of the dashboard will be sent to the destination when the `destination_id` field is present.
+     * @return A snapshot of the dashboard will be sent to the destination when the `destinationId` field is present.
      * 
      */
     public Optional<String> destinationId() {

@@ -33,7 +33,7 @@ import javax.annotation.Nullable;
  * 
  * ### Databricks Sharing with non databricks recipient
  * 
- * Setting `authentication_type` type to `TOKEN` creates a temporary url to download a credentials file. This is used to
+ * Setting `authenticationType` type to `TOKEN` creates a temporary url to download a credentials file. This is used to
  * authenticate to the sharing server to access data. This is for when the recipient is not using Databricks.
  * 
  * <pre>
@@ -144,14 +144,14 @@ public class Recipient extends com.pulumi.resources.CustomResource {
         return this.authenticationType;
     }
     /**
-     * Cloud vendor of the recipient&#39;s Unity Catalog Metstore. This field is only present when the authentication_type is `DATABRICKS`.
+     * Cloud vendor of the recipient&#39;s Unity Catalog Metstore. This field is only present when the authenticationType is `DATABRICKS`.
      * 
      */
     @Export(name="cloud", refs={String.class}, tree="[0]")
     private Output<String> cloud;
 
     /**
-     * @return Cloud vendor of the recipient&#39;s Unity Catalog Metstore. This field is only present when the authentication_type is `DATABRICKS`.
+     * @return Cloud vendor of the recipient&#39;s Unity Catalog Metstore. This field is only present when the authenticationType is `DATABRICKS`.
      * 
      */
     public Output<String> cloud() {
@@ -200,14 +200,14 @@ public class Recipient extends com.pulumi.resources.CustomResource {
         return this.createdBy;
     }
     /**
-     * Required when `authentication_type` is `DATABRICKS`.
+     * Required when `authenticationType` is `DATABRICKS`.
      * 
      */
     @Export(name="dataRecipientGlobalMetastoreId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> dataRecipientGlobalMetastoreId;
 
     /**
-     * @return Required when `authentication_type` is `DATABRICKS`.
+     * @return Required when `authenticationType` is `DATABRICKS`.
      * 
      */
     public Output<Optional<String>> dataRecipientGlobalMetastoreId() {
@@ -242,14 +242,14 @@ public class Recipient extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.ipAccessList);
     }
     /**
-     * Unique identifier of recipient&#39;s Unity Catalog metastore. This field is only present when the authentication_type is `DATABRICKS`.
+     * Unique identifier of recipient&#39;s Unity Catalog metastore. This field is only present when the authenticationType is `DATABRICKS`.
      * 
      */
     @Export(name="metastoreId", refs={String.class}, tree="[0]")
     private Output<String> metastoreId;
 
     /**
-     * @return Unique identifier of recipient&#39;s Unity Catalog metastore. This field is only present when the authentication_type is `DATABRICKS`.
+     * @return Unique identifier of recipient&#39;s Unity Catalog metastore. This field is only present when the authenticationType is `DATABRICKS`.
      * 
      */
     public Output<String> metastoreId() {
@@ -270,14 +270,14 @@ public class Recipient extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Username/groupname/sp application_id of the recipient owner.
+     * Username/groupname/sp applicationId of the recipient owner.
      * 
      */
     @Export(name="owner", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> owner;
 
     /**
-     * @return Username/groupname/sp application_id of the recipient owner.
+     * @return Username/groupname/sp applicationId of the recipient owner.
      * 
      */
     public Output<Optional<String>> owner() {
@@ -298,14 +298,14 @@ public class Recipient extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.propertiesKvpairs);
     }
     /**
-     * Cloud region of the recipient&#39;s Unity Catalog Metstore. This field is only present when the authentication_type is `DATABRICKS`.
+     * Cloud region of the recipient&#39;s Unity Catalog Metstore. This field is only present when the authenticationType is `DATABRICKS`.
      * 
      */
     @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
-     * @return Cloud region of the recipient&#39;s Unity Catalog Metstore. This field is only present when the authentication_type is `DATABRICKS`.
+     * @return Cloud region of the recipient&#39;s Unity Catalog Metstore. This field is only present when the authenticationType is `DATABRICKS`.
      * 
      */
     public Output<String> region() {
@@ -326,14 +326,14 @@ public class Recipient extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.sharingCode);
     }
     /**
-     * List of Recipient Tokens. This field is only present when the authentication_type is TOKEN. Each list element is an object with following attributes:
+     * List of Recipient Tokens. This field is only present when the authenticationType is TOKEN. Each list element is an object with following attributes:
      * 
      */
     @Export(name="tokens", refs={List.class,RecipientToken.class}, tree="[0,1]")
     private Output<List<RecipientToken>> tokens;
 
     /**
-     * @return List of Recipient Tokens. This field is only present when the authentication_type is TOKEN. Each list element is an object with following attributes:
+     * @return List of Recipient Tokens. This field is only present when the authenticationType is TOKEN. Each list element is an object with following attributes:
      * 
      */
     public Output<List<RecipientToken>> tokens() {

@@ -14,7 +14,7 @@ namespace Pulumi.Databricks.Outputs
     public sealed class JobTaskForEachTaskTaskWebhookNotifications
     {
         /// <summary>
-        /// (List) list of notification IDs to call when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
+        /// (List) list of notification IDs to call when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `Health` block.
         /// </summary>
         public readonly ImmutableArray<Outputs.JobTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceeded> OnDurationWarningThresholdExceededs;
         /// <summary>
@@ -28,7 +28,7 @@ namespace Pulumi.Databricks.Outputs
         /// <summary>
         /// (List) list of notification IDs to call when any streaming backlog thresholds are exceeded for any stream.
         /// 
-        /// Note that the `id` is not to be confused with the name of the alert destination. The `id` can be retrieved through the API or the URL of Databricks UI `https://&lt;workspace host&gt;/sql/destinations/&lt;notification id&gt;?o=&lt;workspace id&gt;`
+        /// Note that the `Id` is not to be confused with the name of the alert destination. The `Id` can be retrieved through the API or the URL of Databricks UI `https://&lt;workspace host&gt;/sql/destinations/&lt;notification id&gt;?o=&lt;workspace id&gt;`
         /// 
         /// Example
         /// </summary>

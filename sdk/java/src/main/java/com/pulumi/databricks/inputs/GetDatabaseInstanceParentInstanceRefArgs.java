@@ -44,9 +44,9 @@ public final class GetDatabaseInstanceParentInstanceRefArgs extends com.pulumi.r
     }
 
     /**
-     * (string) - xref AIP-129. `lsn` is owned by the client, while `effective_lsn` is owned by the server.
+     * (string) - xref AIP-129. `lsn` is owned by the client, while `effectiveLsn` is owned by the server.
      * `lsn` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-     * `effective_lsn` on the other hand will always bet set in all response messages (Create/Update/Get/List).
+     * `effectiveLsn` on the other hand will always bet set in all response messages (Create/Update/Get/List).
      * For a parent ref instance, this is the LSN on the parent instance from which the
      * instance was created.
      * For a child ref instance, this is the LSN on the instance from which the child instance
@@ -57,9 +57,9 @@ public final class GetDatabaseInstanceParentInstanceRefArgs extends com.pulumi.r
     private Output<String> effectiveLsn;
 
     /**
-     * @return (string) - xref AIP-129. `lsn` is owned by the client, while `effective_lsn` is owned by the server.
+     * @return (string) - xref AIP-129. `lsn` is owned by the client, while `effectiveLsn` is owned by the server.
      * `lsn` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-     * `effective_lsn` on the other hand will always bet set in all response messages (Create/Update/Get/List).
+     * `effectiveLsn` on the other hand will always bet set in all response messages (Create/Update/Get/List).
      * For a parent ref instance, this is the LSN on the parent instance from which the
      * instance was created.
      * For a child ref instance, this is the LSN on the instance from which the child instance
@@ -177,9 +177,9 @@ public final class GetDatabaseInstanceParentInstanceRefArgs extends com.pulumi.r
         }
 
         /**
-         * @param effectiveLsn (string) - xref AIP-129. `lsn` is owned by the client, while `effective_lsn` is owned by the server.
+         * @param effectiveLsn (string) - xref AIP-129. `lsn` is owned by the client, while `effectiveLsn` is owned by the server.
          * `lsn` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-         * `effective_lsn` on the other hand will always bet set in all response messages (Create/Update/Get/List).
+         * `effectiveLsn` on the other hand will always bet set in all response messages (Create/Update/Get/List).
          * For a parent ref instance, this is the LSN on the parent instance from which the
          * instance was created.
          * For a child ref instance, this is the LSN on the instance from which the child instance
@@ -194,9 +194,9 @@ public final class GetDatabaseInstanceParentInstanceRefArgs extends com.pulumi.r
         }
 
         /**
-         * @param effectiveLsn (string) - xref AIP-129. `lsn` is owned by the client, while `effective_lsn` is owned by the server.
+         * @param effectiveLsn (string) - xref AIP-129. `lsn` is owned by the client, while `effectiveLsn` is owned by the server.
          * `lsn` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-         * `effective_lsn` on the other hand will always bet set in all response messages (Create/Update/Get/List).
+         * `effectiveLsn` on the other hand will always bet set in all response messages (Create/Update/Get/List).
          * For a parent ref instance, this is the LSN on the parent instance from which the
          * instance was created.
          * For a child ref instance, this is the LSN on the instance from which the child instance

@@ -14,11 +14,11 @@ namespace Pulumi.Databricks.Outputs
     public sealed class QueryParameter
     {
         /// <summary>
-        /// Date-range query parameter value. Consists of following attributes (Can only specify one of `dynamic_date_range_value` or `date_range_value`):
+        /// Date-range query parameter value. Consists of following attributes (Can only specify one of `DynamicDateRangeValue` or `DateRangeValue`):
         /// </summary>
         public readonly Outputs.QueryParameterDateRangeValue? DateRangeValue;
         /// <summary>
-        /// Date query parameter value. Consists of following attributes (Can only specify one of `dynamic_date_value` or `date_value`):
+        /// Date query parameter value. Consists of following attributes (Can only specify one of `DynamicDateValue` or `DateValue`):
         /// </summary>
         public readonly Outputs.QueryParameterDateValue? DateValue;
         /// <summary>

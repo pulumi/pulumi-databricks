@@ -26,7 +26,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; This resource can only be used with a workspace-level provider!
  * 
- * &gt; If you replace `served_models` with `served_entities` in an existing serving endpoint, the serving endpoint will briefly go into an update state (~30 seconds) and increment the config version.
+ * &gt; If you replace `servedModels` with `servedEntities` in an existing serving endpoint, the serving endpoint will briefly go into an update state (~30 seconds) and increment the config version.
  * 
  * ## Example Usage
  * 

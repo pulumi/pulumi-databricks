@@ -31,7 +31,7 @@ public final class SqlQueryParameter {
     private @Nullable SqlQueryParameterEnum enum_;
     /**
      * @return The literal parameter marker that appears between double curly braces in the query text.
-     * Parameters can have several different types. Type is specified using one of the following configuration blocks: `text`, `number`, `enum`, `query`, `date`, `datetime`, `datetimesec`, `date_range`, `datetime_range`, `datetimesec_range`.
+     * Parameters can have several different types. Type is specified using one of the following configuration blocks: `text`, `number`, `enum`, `query`, `date`, `datetime`, `datetimesec`, `dateRange`, `datetimeRange`, `datetimesecRange`.
      * 
      * For `text`, `number`, `date`, `datetime`, `datetimesec` block
      * 
@@ -74,7 +74,7 @@ public final class SqlQueryParameter {
     }
     /**
      * @return The literal parameter marker that appears between double curly braces in the query text.
-     * Parameters can have several different types. Type is specified using one of the following configuration blocks: `text`, `number`, `enum`, `query`, `date`, `datetime`, `datetimesec`, `date_range`, `datetime_range`, `datetimesec_range`.
+     * Parameters can have several different types. Type is specified using one of the following configuration blocks: `text`, `number`, `enum`, `query`, `date`, `datetime`, `datetimesec`, `dateRange`, `datetimeRange`, `datetimesecRange`.
      * 
      * For `text`, `number`, `date`, `datetime`, `datetimesec` block
      * 

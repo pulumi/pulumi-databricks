@@ -24,7 +24,7 @@ namespace Pulumi.Databricks.Outputs
         public readonly string? QuartzCronSchedule;
         /// <summary>
         /// A Java timezone id. The schedule will be resolved using this timezone.
-        /// This will be combined with the quartz_cron_schedule to determine the schedule.
+        /// This will be combined with the QuartzCronSchedule to determine the schedule.
         /// See https://docs.databricks.com/sql/language-manual/sql-ref-syntax-aux-conf-mgmt-set-timezone.html for details
         /// </summary>
         public readonly string? TimezoneId;

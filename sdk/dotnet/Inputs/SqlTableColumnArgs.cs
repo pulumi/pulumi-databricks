@@ -19,7 +19,7 @@ namespace Pulumi.Databricks.Inputs
         public Input<string>? Comment { get; set; }
 
         /// <summary>
-        /// Whether the field is an identity column. Can be `default`, `always`, or unset. It is unset by default.
+        /// Whether the field is an identity column. Can be `Default`, `Always`, or unset. It is unset by default.
         /// </summary>
         [Input("identity")]
         public Input<string>? Identity { get; set; }
@@ -31,7 +31,7 @@ namespace Pulumi.Databricks.Inputs
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// Whether field is nullable (Default: `true`)
+        /// Whether field is nullable (Default: `True`)
         /// </summary>
         [Input("nullable")]
         public Input<bool>? Nullable { get; set; }

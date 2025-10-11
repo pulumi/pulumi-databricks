@@ -20,7 +20,7 @@ namespace Pulumi.Databricks
     /// 
     /// ## Example Usage
     /// 
-    /// In order to manage a file on Unity Catalog Volumes with Pulumi, you must specify the `source` attribute containing the full path to the file on the local filesystem.
+    /// In order to manage a file on Unity Catalog Volumes with Pulumi, you must specify the `Source` attribute containing the full path to the file on the local filesystem.
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -70,7 +70,7 @@ namespace Pulumi.Databricks
     /// });
     /// ```
     /// 
-    /// You can also inline sources through `content_base64`  attribute.
+    /// You can also inline sources through `ContentBase64`  attribute.
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -129,7 +129,7 @@ namespace Pulumi.Databricks
     public partial class File : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Contents in base 64 format. Conflicts with `source`.
+        /// Contents in base 64 format. Conflicts with `Source`.
         /// </summary>
         [Output("contentBase64")]
         public Output<string?> ContentBase64 { get; private set; } = null!;
@@ -159,7 +159,7 @@ namespace Pulumi.Databricks
         public Output<bool?> RemoteFileModified { get; private set; } = null!;
 
         /// <summary>
-        /// The full absolute path to the file. Conflicts with `content_base64`.
+        /// The full absolute path to the file. Conflicts with `ContentBase64`.
         /// </summary>
         [Output("source")]
         public Output<string?> Source { get; private set; } = null!;
@@ -211,7 +211,7 @@ namespace Pulumi.Databricks
     public sealed class FileArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Contents in base 64 format. Conflicts with `source`.
+        /// Contents in base 64 format. Conflicts with `Source`.
         /// </summary>
         [Input("contentBase64")]
         public Input<string>? ContentBase64 { get; set; }
@@ -229,7 +229,7 @@ namespace Pulumi.Databricks
         public Input<bool>? RemoteFileModified { get; set; }
 
         /// <summary>
-        /// The full absolute path to the file. Conflicts with `content_base64`.
+        /// The full absolute path to the file. Conflicts with `ContentBase64`.
         /// </summary>
         [Input("source")]
         public Input<string>? Source { get; set; }
@@ -243,7 +243,7 @@ namespace Pulumi.Databricks
     public sealed class FileState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Contents in base 64 format. Conflicts with `source`.
+        /// Contents in base 64 format. Conflicts with `Source`.
         /// </summary>
         [Input("contentBase64")]
         public Input<string>? ContentBase64 { get; set; }
@@ -273,7 +273,7 @@ namespace Pulumi.Databricks
         public Input<bool>? RemoteFileModified { get; set; }
 
         /// <summary>
-        /// The full absolute path to the file. Conflicts with `content_base64`.
+        /// The full absolute path to the file. Conflicts with `ContentBase64`.
         /// </summary>
         [Input("source")]
         public Input<string>? Source { get; set; }

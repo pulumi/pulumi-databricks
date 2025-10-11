@@ -54,7 +54,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly Outputs.ModelServingConfigServedEntityExternalModelPalmConfig? PalmConfig;
         /// <summary>
-        /// The name of the provider for the external model. Currently, the supported providers are `ai21labs`, `anthropic`, `amazon-bedrock`, `cohere`, `databricks-model-serving`, `google-cloud-vertex-ai`, `openai`, and `palm`.
+        /// The name of the provider for the external model. Currently, the supported providers are `Ai21labs`, `Anthropic`, `amazon-bedrock`, `Cohere`, `databricks-model-serving`, `google-cloud-vertex-ai`, `Openai`, and `Palm`.
         /// </summary>
         public readonly string Provider;
         /// <summary>

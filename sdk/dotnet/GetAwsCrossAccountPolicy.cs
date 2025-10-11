@@ -18,7 +18,7 @@ namespace Pulumi.Databricks
         /// 
         /// ## Example Usage
         /// 
-        /// For more detailed usage please see databricks.getAwsAssumeRolePolicy or databricks_aws_s3_mount pages.
+        /// For more detailed usage please see databricks.getAwsAssumeRolePolicy or DatabricksAwsS3Mount pages.
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -52,7 +52,7 @@ namespace Pulumi.Databricks
         /// 
         /// ## Example Usage
         /// 
-        /// For more detailed usage please see databricks.getAwsAssumeRolePolicy or databricks_aws_s3_mount pages.
+        /// For more detailed usage please see databricks.getAwsAssumeRolePolicy or DatabricksAwsS3Mount pages.
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -86,7 +86,7 @@ namespace Pulumi.Databricks
         /// 
         /// ## Example Usage
         /// 
-        /// For more detailed usage please see databricks.getAwsAssumeRolePolicy or databricks_aws_s3_mount pages.
+        /// For more detailed usage please see databricks.getAwsAssumeRolePolicy or DatabricksAwsS3Mount pages.
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -124,7 +124,7 @@ namespace Pulumi.Databricks
         public string? AwsAccountId { get; set; }
 
         /// <summary>
-        /// AWS partition. The options are `aws`, `aws-us-gov`, or `aws-us-gov-dod`. Defaults to `aws`
+        /// AWS partition. The options are `Aws`, `aws-us-gov`, or `aws-us-gov-dod`. Defaults to `Aws`
         /// </summary>
         [Input("awsPartition")]
         public string? AwsPartition { get; set; }
@@ -134,7 +134,7 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// List of Data IAM role ARNs that are explicitly granted `iam:PassRole` action.
-        /// The below arguments are only valid for `restricted` policy type
+        /// The below arguments are only valid for `Restricted` policy type
         /// </summary>
         public List<string> PassRoles
         {
@@ -143,7 +143,7 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
-        /// The type of cross account policy to generated: `managed` for Databricks-managed VPC and `customer` for customer-managed VPC, `restricted` for customer-managed VPC with policy restrictions
+        /// The type of cross account policy to generated: `Managed` for Databricks-managed VPC and `Customer` for customer-managed VPC, `Restricted` for customer-managed VPC with policy restrictions
         /// </summary>
         [Input("policyType")]
         public string? PolicyType { get; set; }
@@ -155,7 +155,7 @@ namespace Pulumi.Databricks
         public string? Region { get; set; }
 
         /// <summary>
-        /// — ID of your AWS security group. When you add a security group restriction, you cannot reuse the cross-account IAM role or reference a credentials ID (`credentials_id`) for any other workspaces. For those other workspaces, you must create separate roles, policies, and credentials objects.
+        /// — ID of your AWS security group. When you add a security group restriction, you cannot reuse the cross-account IAM role or reference a credentials ID (`CredentialsId`) for any other workspaces. For those other workspaces, you must create separate roles, policies, and credentials objects.
         /// </summary>
         [Input("securityGroupId")]
         public string? SecurityGroupId { get; set; }
@@ -181,7 +181,7 @@ namespace Pulumi.Databricks
         public Input<string>? AwsAccountId { get; set; }
 
         /// <summary>
-        /// AWS partition. The options are `aws`, `aws-us-gov`, or `aws-us-gov-dod`. Defaults to `aws`
+        /// AWS partition. The options are `Aws`, `aws-us-gov`, or `aws-us-gov-dod`. Defaults to `Aws`
         /// </summary>
         [Input("awsPartition")]
         public Input<string>? AwsPartition { get; set; }
@@ -191,7 +191,7 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// List of Data IAM role ARNs that are explicitly granted `iam:PassRole` action.
-        /// The below arguments are only valid for `restricted` policy type
+        /// The below arguments are only valid for `Restricted` policy type
         /// </summary>
         public InputList<string> PassRoles
         {
@@ -200,7 +200,7 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
-        /// The type of cross account policy to generated: `managed` for Databricks-managed VPC and `customer` for customer-managed VPC, `restricted` for customer-managed VPC with policy restrictions
+        /// The type of cross account policy to generated: `Managed` for Databricks-managed VPC and `Customer` for customer-managed VPC, `Restricted` for customer-managed VPC with policy restrictions
         /// </summary>
         [Input("policyType")]
         public Input<string>? PolicyType { get; set; }
@@ -212,7 +212,7 @@ namespace Pulumi.Databricks
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// — ID of your AWS security group. When you add a security group restriction, you cannot reuse the cross-account IAM role or reference a credentials ID (`credentials_id`) for any other workspaces. For those other workspaces, you must create separate roles, policies, and credentials objects.
+        /// — ID of your AWS security group. When you add a security group restriction, you cannot reuse the cross-account IAM role or reference a credentials ID (`CredentialsId`) for any other workspaces. For those other workspaces, you must create separate roles, policies, and credentials objects.
         /// </summary>
         [Input("securityGroupId")]
         public Input<string>? SecurityGroupId { get; set; }

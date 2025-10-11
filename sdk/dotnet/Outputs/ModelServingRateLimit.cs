@@ -18,11 +18,11 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly int Calls;
         /// <summary>
-        /// Key field for a serving endpoint rate limit. Currently, `user`, `user_group`, `service_principal`, and `endpoint` are supported, with `endpoint` being the default if not specified.
+        /// Key field for a serving endpoint rate limit. Currently, `User`, `UserGroup`, `ServicePrincipal`, and `Endpoint` are supported, with `Endpoint` being the default if not specified.
         /// </summary>
         public readonly string? Key;
         /// <summary>
-        /// Renewal period field for a serving endpoint rate limit. Currently, only `minute` is supported.
+        /// Renewal period field for a serving endpoint rate limit. Currently, only `Minute` is supported.
         /// </summary>
         public readonly string RenewalPeriod;
 

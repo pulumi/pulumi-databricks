@@ -41,7 +41,7 @@ import javax.annotation.Nullable;
 public class CleanRoomAutoApprovalRule extends com.pulumi.resources.CustomResource {
     /**
      * Collaborator alias of the author covered by the rule.
-     * Only one of `author_collaborator_alias` and `author_scope` can be set
+     * Only one of `authorCollaboratorAlias` and `authorScope` can be set
      * 
      */
     @Export(name="authorCollaboratorAlias", refs={String.class}, tree="[0]")
@@ -49,7 +49,7 @@ public class CleanRoomAutoApprovalRule extends com.pulumi.resources.CustomResour
 
     /**
      * @return Collaborator alias of the author covered by the rule.
-     * Only one of `author_collaborator_alias` and `author_scope` can be set
+     * Only one of `authorCollaboratorAlias` and `authorScope` can be set
      * 
      */
     public Output<Optional<String>> authorCollaboratorAlias() {
@@ -57,7 +57,7 @@ public class CleanRoomAutoApprovalRule extends com.pulumi.resources.CustomResour
     }
     /**
      * Scope of authors covered by the rule.
-     * Only one of `author_collaborator_alias` and `author_scope` can be set. Possible values are: `ANY_AUTHOR`
+     * Only one of `authorCollaboratorAlias` and `authorScope` can be set. Possible values are: `ANY_AUTHOR`
      * 
      */
     @Export(name="authorScope", refs={String.class}, tree="[0]")
@@ -65,7 +65,7 @@ public class CleanRoomAutoApprovalRule extends com.pulumi.resources.CustomResour
 
     /**
      * @return Scope of authors covered by the rule.
-     * Only one of `author_collaborator_alias` and `author_scope` can be set. Possible values are: `ANY_AUTHOR`
+     * Only one of `authorCollaboratorAlias` and `authorScope` can be set. Possible values are: `ANY_AUTHOR`
      * 
      */
     public Output<Optional<String>> authorScope() {

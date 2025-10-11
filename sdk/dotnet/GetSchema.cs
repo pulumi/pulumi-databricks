@@ -13,7 +13,7 @@ namespace Pulumi.Databricks
     {
         /// <summary>
         /// Retrieves details about databricks.Schema that was created by Pulumi or manually. 
-        /// A schema can be identified by its two-level (fully qualified) name (in the form of: `catalog_name`.`schema_name`) as input. This can be retrieved programmatically using databricks.getSchemas data source.
+        /// A schema can be identified by its two-level (fully qualified) name (in the form of: `CatalogName`.`SchemaName`) as input. This can be retrieved programmatically using databricks.getSchemas data source.
         /// 
         /// &gt; This data source can only be used with a workspace-level provider!
         /// 
@@ -69,7 +69,7 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// Retrieves details about databricks.Schema that was created by Pulumi or manually. 
-        /// A schema can be identified by its two-level (fully qualified) name (in the form of: `catalog_name`.`schema_name`) as input. This can be retrieved programmatically using databricks.getSchemas data source.
+        /// A schema can be identified by its two-level (fully qualified) name (in the form of: `CatalogName`.`SchemaName`) as input. This can be retrieved programmatically using databricks.getSchemas data source.
         /// 
         /// &gt; This data source can only be used with a workspace-level provider!
         /// 
@@ -125,7 +125,7 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// Retrieves details about databricks.Schema that was created by Pulumi or manually. 
-        /// A schema can be identified by its two-level (fully qualified) name (in the form of: `catalog_name`.`schema_name`) as input. This can be retrieved programmatically using databricks.getSchemas data source.
+        /// A schema can be identified by its two-level (fully qualified) name (in the form of: `CatalogName`.`SchemaName`) as input. This can be retrieved programmatically using databricks.getSchemas data source.
         /// 
         /// &gt; This data source can only be used with a workspace-level provider!
         /// 
@@ -190,7 +190,7 @@ namespace Pulumi.Databricks
         public string? Id { get; set; }
 
         /// <summary>
-        /// a fully qualified name of databricks_schema: *`catalog`.`schema`*
+        /// a fully qualified name of databricks_schema: *`Catalog`.`Schema`*
         /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
@@ -216,7 +216,7 @@ namespace Pulumi.Databricks
         public Input<string>? Id { get; set; }
 
         /// <summary>
-        /// a fully qualified name of databricks_schema: *`catalog`.`schema`*
+        /// a fully qualified name of databricks_schema: *`Catalog`.`Schema`*
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;

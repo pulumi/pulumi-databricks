@@ -19,14 +19,14 @@ public final class ModelServingConfigServedEntityExternalModelCustomProviderConf
     public static final ModelServingConfigServedEntityExternalModelCustomProviderConfigArgs Empty = new ModelServingConfigServedEntityExternalModelCustomProviderConfigArgs();
 
     /**
-     * API key authentication for the custom provider API. Conflicts with `bearer_token_auth`.
+     * API key authentication for the custom provider API. Conflicts with `bearerTokenAuth`.
      * 
      */
     @Import(name="apiKeyAuth")
     private @Nullable Output<ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthArgs> apiKeyAuth;
 
     /**
-     * @return API key authentication for the custom provider API. Conflicts with `bearer_token_auth`.
+     * @return API key authentication for the custom provider API. Conflicts with `bearerTokenAuth`.
      * 
      */
     public Optional<Output<ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthArgs>> apiKeyAuth() {
@@ -34,14 +34,14 @@ public final class ModelServingConfigServedEntityExternalModelCustomProviderConf
     }
 
     /**
-     * bearer token authentication for the custom provider API.  Conflicts with `api_key_auth`.
+     * bearer token authentication for the custom provider API.  Conflicts with `apiKeyAuth`.
      * 
      */
     @Import(name="bearerTokenAuth")
     private @Nullable Output<ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthArgs> bearerTokenAuth;
 
     /**
-     * @return bearer token authentication for the custom provider API.  Conflicts with `api_key_auth`.
+     * @return bearer token authentication for the custom provider API.  Conflicts with `apiKeyAuth`.
      * 
      */
     public Optional<Output<ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthArgs>> bearerTokenAuth() {
@@ -90,7 +90,7 @@ public final class ModelServingConfigServedEntityExternalModelCustomProviderConf
         }
 
         /**
-         * @param apiKeyAuth API key authentication for the custom provider API. Conflicts with `bearer_token_auth`.
+         * @param apiKeyAuth API key authentication for the custom provider API. Conflicts with `bearerTokenAuth`.
          * 
          * @return builder
          * 
@@ -101,7 +101,7 @@ public final class ModelServingConfigServedEntityExternalModelCustomProviderConf
         }
 
         /**
-         * @param apiKeyAuth API key authentication for the custom provider API. Conflicts with `bearer_token_auth`.
+         * @param apiKeyAuth API key authentication for the custom provider API. Conflicts with `bearerTokenAuth`.
          * 
          * @return builder
          * 
@@ -111,7 +111,7 @@ public final class ModelServingConfigServedEntityExternalModelCustomProviderConf
         }
 
         /**
-         * @param bearerTokenAuth bearer token authentication for the custom provider API.  Conflicts with `api_key_auth`.
+         * @param bearerTokenAuth bearer token authentication for the custom provider API.  Conflicts with `apiKeyAuth`.
          * 
          * @return builder
          * 
@@ -122,7 +122,7 @@ public final class ModelServingConfigServedEntityExternalModelCustomProviderConf
         }
 
         /**
-         * @param bearerTokenAuth bearer token authentication for the custom provider API.  Conflicts with `api_key_auth`.
+         * @param bearerTokenAuth bearer token authentication for the custom provider API.  Conflicts with `apiKeyAuth`.
          * 
          * @return builder
          * 

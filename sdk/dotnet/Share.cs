@@ -18,7 +18,7 @@ namespace Pulumi.Databricks
     /// 
     /// ## Example Usage
     /// 
-    /// &gt; In Pulumi configuration, it is recommended to define objects in alphabetical order of their `name` arguments, so that you get consistent and readable diff. Whenever objects are added or removed, or `name` is renamed, you'll observe a change in the majority of tasks. It's related to the fact that the current version of the provider treats `object` blocks as an ordered list. Alternatively, `object` block could have been an unordered set, though end-users would see the entire block replaced upon a change in single property of the task.
+    /// &gt; In Pulumi configuration, it is recommended to define objects in alphabetical order of their `Name` arguments, so that you get consistent and readable diff. Whenever objects are added or removed, or `Name` is renamed, you'll observe a change in the majority of tasks. It's related to the fact that the current version of the provider treats `Object` blocks as an ordered list. Alternatively, `Object` block could have been an unordered set, though end-users would see the entire block replaced upon a change in single property of the task.
     /// 
     /// Creating a Delta Sharing share and add some existing tables to it
     /// 
@@ -193,7 +193,7 @@ namespace Pulumi.Databricks
         public Output<ImmutableArray<Outputs.ShareObject>> Objects { get; private set; } = null!;
 
         /// <summary>
-        /// User name/group name/sp application_id of the share owner.
+        /// User name/group name/sp ApplicationId of the share owner.
         /// </summary>
         [Output("owner")]
         public Output<string?> Owner { get; private set; } = null!;
@@ -289,7 +289,7 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
-        /// User name/group name/sp application_id of the share owner.
+        /// User name/group name/sp ApplicationId of the share owner.
         /// </summary>
         [Input("owner")]
         public Input<string>? Owner { get; set; }
@@ -347,7 +347,7 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
-        /// User name/group name/sp application_id of the share owner.
+        /// User name/group name/sp ApplicationId of the share owner.
         /// </summary>
         [Input("owner")]
         public Input<string>? Owner { get; set; }

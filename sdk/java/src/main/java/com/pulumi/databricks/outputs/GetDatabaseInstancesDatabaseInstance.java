@@ -39,37 +39,37 @@ public final class GetDatabaseInstancesDatabaseInstance {
      */
     private String creator;
     /**
-     * @return (boolean) - xref AIP-129. `enable_pg_native_login` is owned by the client, while `effective_enable_pg_native_login` is owned by the server.
-     * `enable_pg_native_login` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-     * `effective_enable_pg_native_login` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * @return (boolean) - xref AIP-129. `enablePgNativeLogin` is owned by the client, while `effectiveEnablePgNativeLogin` is owned by the server.
+     * `enablePgNativeLogin` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+     * `effectiveEnablePgNativeLogin` on the other hand will always bet set in all response messages (Create/Update/Get/List)
      * 
      */
     private Boolean effectiveEnablePgNativeLogin;
     /**
-     * @return (boolean) - xref AIP-129. `enable_readable_secondaries` is owned by the client, while `effective_enable_readable_secondaries` is owned by the server.
-     * `enable_readable_secondaries` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-     * `effective_enable_readable_secondaries` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * @return (boolean) - xref AIP-129. `enableReadableSecondaries` is owned by the client, while `effectiveEnableReadableSecondaries` is owned by the server.
+     * `enableReadableSecondaries` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+     * `effectiveEnableReadableSecondaries` on the other hand will always bet set in all response messages (Create/Update/Get/List)
      * 
      */
     private Boolean effectiveEnableReadableSecondaries;
     /**
-     * @return (integer) - xref AIP-129. `node_count` is owned by the client, while `effective_node_count` is owned by the server.
-     * `node_count` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-     * `effective_node_count` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * @return (integer) - xref AIP-129. `nodeCount` is owned by the client, while `effectiveNodeCount` is owned by the server.
+     * `nodeCount` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+     * `effectiveNodeCount` on the other hand will always bet set in all response messages (Create/Update/Get/List)
      * 
      */
     private Integer effectiveNodeCount;
     /**
-     * @return (integer) - xref AIP-129. `retention_window_in_days` is owned by the client, while `effective_retention_window_in_days` is owned by the server.
-     * `retention_window_in_days` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-     * `effective_retention_window_in_days` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * @return (integer) - xref AIP-129. `retentionWindowInDays` is owned by the client, while `effectiveRetentionWindowInDays` is owned by the server.
+     * `retentionWindowInDays` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+     * `effectiveRetentionWindowInDays` on the other hand will always bet set in all response messages (Create/Update/Get/List)
      * 
      */
     private Integer effectiveRetentionWindowInDays;
     /**
-     * @return (boolean) - xref AIP-129. `stopped` is owned by the client, while `effective_stopped` is owned by the server.
+     * @return (boolean) - xref AIP-129. `stopped` is owned by the client, while `effectiveStopped` is owned by the server.
      * `stopped` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-     * `effective_stopped` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * `effectiveStopped` on the other hand will always bet set in all response messages (Create/Update/Get/List)
      * 
      */
     private Boolean effectiveStopped;
@@ -109,7 +109,7 @@ public final class GetDatabaseInstancesDatabaseInstance {
     private String pgVersion;
     /**
      * @return (string) - The DNS endpoint to connect to the instance for read only access. This is only available if
-     * enable_readable_secondaries is true
+     * enableReadableSecondaries is true
      * 
      */
     private String readOnlyDns;
@@ -172,45 +172,45 @@ public final class GetDatabaseInstancesDatabaseInstance {
         return this.creator;
     }
     /**
-     * @return (boolean) - xref AIP-129. `enable_pg_native_login` is owned by the client, while `effective_enable_pg_native_login` is owned by the server.
-     * `enable_pg_native_login` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-     * `effective_enable_pg_native_login` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * @return (boolean) - xref AIP-129. `enablePgNativeLogin` is owned by the client, while `effectiveEnablePgNativeLogin` is owned by the server.
+     * `enablePgNativeLogin` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+     * `effectiveEnablePgNativeLogin` on the other hand will always bet set in all response messages (Create/Update/Get/List)
      * 
      */
     public Boolean effectiveEnablePgNativeLogin() {
         return this.effectiveEnablePgNativeLogin;
     }
     /**
-     * @return (boolean) - xref AIP-129. `enable_readable_secondaries` is owned by the client, while `effective_enable_readable_secondaries` is owned by the server.
-     * `enable_readable_secondaries` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-     * `effective_enable_readable_secondaries` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * @return (boolean) - xref AIP-129. `enableReadableSecondaries` is owned by the client, while `effectiveEnableReadableSecondaries` is owned by the server.
+     * `enableReadableSecondaries` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+     * `effectiveEnableReadableSecondaries` on the other hand will always bet set in all response messages (Create/Update/Get/List)
      * 
      */
     public Boolean effectiveEnableReadableSecondaries() {
         return this.effectiveEnableReadableSecondaries;
     }
     /**
-     * @return (integer) - xref AIP-129. `node_count` is owned by the client, while `effective_node_count` is owned by the server.
-     * `node_count` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-     * `effective_node_count` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * @return (integer) - xref AIP-129. `nodeCount` is owned by the client, while `effectiveNodeCount` is owned by the server.
+     * `nodeCount` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+     * `effectiveNodeCount` on the other hand will always bet set in all response messages (Create/Update/Get/List)
      * 
      */
     public Integer effectiveNodeCount() {
         return this.effectiveNodeCount;
     }
     /**
-     * @return (integer) - xref AIP-129. `retention_window_in_days` is owned by the client, while `effective_retention_window_in_days` is owned by the server.
-     * `retention_window_in_days` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-     * `effective_retention_window_in_days` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * @return (integer) - xref AIP-129. `retentionWindowInDays` is owned by the client, while `effectiveRetentionWindowInDays` is owned by the server.
+     * `retentionWindowInDays` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+     * `effectiveRetentionWindowInDays` on the other hand will always bet set in all response messages (Create/Update/Get/List)
      * 
      */
     public Integer effectiveRetentionWindowInDays() {
         return this.effectiveRetentionWindowInDays;
     }
     /**
-     * @return (boolean) - xref AIP-129. `stopped` is owned by the client, while `effective_stopped` is owned by the server.
+     * @return (boolean) - xref AIP-129. `stopped` is owned by the client, while `effectiveStopped` is owned by the server.
      * `stopped` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-     * `effective_stopped` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * `effectiveStopped` on the other hand will always bet set in all response messages (Create/Update/Get/List)
      * 
      */
     public Boolean effectiveStopped() {
@@ -264,7 +264,7 @@ public final class GetDatabaseInstancesDatabaseInstance {
     }
     /**
      * @return (string) - The DNS endpoint to connect to the instance for read only access. This is only available if
-     * enable_readable_secondaries is true
+     * enableReadableSecondaries is true
      * 
      */
     public String readOnlyDns() {

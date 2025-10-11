@@ -14,6 +14,10 @@ import (
 // Retrieves information about a Cluster using its id. This could be retrieved programmatically using getClusters data source.
 //
 // > This data source can only be used with a workspace-level provider!
+//
+// ## Example Usage
+//
+// Retrieve attributes of each SQL warehouses in a workspace
 func LookupCluster(ctx *pulumi.Context, args *LookupClusterArgs, opts ...pulumi.InvokeOption) (*LookupClusterResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupClusterResult

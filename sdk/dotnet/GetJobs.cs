@@ -355,7 +355,7 @@ namespace Pulumi.Databricks
         public string? JobNameContains { get; set; }
 
         /// <summary>
-        /// Attribute to use for keys in the returned map of databricks.Job ids by. Possible values are `name` (default) or `id`. Setting to `id` uses the job ID as the map key, allowing duplicate job names.
+        /// Attribute to use for keys in the returned map of databricks.Job ids by. Possible values are `Name` (default) or `Id`. Setting to `Id` uses the job ID as the map key, allowing duplicate job names.
         /// </summary>
         [Input("key")]
         public string? Key { get; set; }
@@ -387,7 +387,7 @@ namespace Pulumi.Databricks
         public Input<string>? JobNameContains { get; set; }
 
         /// <summary>
-        /// Attribute to use for keys in the returned map of databricks.Job ids by. Possible values are `name` (default) or `id`. Setting to `id` uses the job ID as the map key, allowing duplicate job names.
+        /// Attribute to use for keys in the returned map of databricks.Job ids by. Possible values are `Name` (default) or `Id`. Setting to `Id` uses the job ID as the map key, allowing duplicate job names.
         /// </summary>
         [Input("key")]
         public Input<string>? Key { get; set; }

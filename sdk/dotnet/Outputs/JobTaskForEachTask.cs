@@ -22,7 +22,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string Inputs;
         /// <summary>
-        /// Task to run against the `inputs` list.
+        /// Task to run against the `Inputs` list.
         /// </summary>
         public readonly Outputs.JobTaskForEachTaskTask Task;
 

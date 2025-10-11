@@ -45,7 +45,7 @@ namespace Pulumi.Databricks
         public Output<string> ClusterId { get; private set; } = null!;
 
         /// <summary>
-        /// a subset of columns to liquid cluster the table by. For automatic clustering, set `cluster_keys` to `["AUTO"]`. To turn off clustering, set it to `["NONE"]`. Conflicts with `partitions`.
+        /// a subset of columns to liquid cluster the table by. For automatic clustering, set `ClusterKeys` to `["AUTO"]`. To turn off clustering, set it to `["NONE"]`. Conflicts with `Partitions`.
         /// </summary>
         [Output("clusterKeys")]
         public Output<ImmutableArray<string>> ClusterKeys { get; private set; } = null!;
@@ -81,13 +81,13 @@ namespace Pulumi.Databricks
         public Output<ImmutableDictionary<string, string>?> Options { get; private set; } = null!;
 
         /// <summary>
-        /// User name/group name/sp application_id of the table owner.
+        /// User name/group name/sp ApplicationId of the table owner.
         /// </summary>
         [Output("owner")]
         public Output<string> Owner { get; private set; } = null!;
 
         /// <summary>
-        /// a subset of columns to partition the table by. Change forces the creation of a new resource. Conflicts with `cluster_keys`.
+        /// a subset of columns to partition the table by. Change forces the creation of a new resource. Conflicts with `ClusterKeys`.
         /// </summary>
         [Output("partitions")]
         public Output<ImmutableArray<string>> Partitions { get; private set; } = null!;
@@ -123,13 +123,13 @@ namespace Pulumi.Databricks
         public Output<string> TableType { get; private set; } = null!;
 
         /// <summary>
-        /// SQL text defining the view (for `table_type == "VIEW"`). Not supported for `MANAGED` or `EXTERNAL` table_type.
+        /// SQL text defining the view (for `TableType == "VIEW"`). Not supported for `MANAGED` or `EXTERNAL` table_type.
         /// </summary>
         [Output("viewDefinition")]
         public Output<string?> ViewDefinition { get; private set; } = null!;
 
         /// <summary>
-        /// All table CRUD operations must be executed on a running cluster or SQL warehouse. If a `warehouse_id` is specified, that SQL warehouse will be used to execute SQL commands to manage this table. Conflicts with `cluster_id`.
+        /// All table CRUD operations must be executed on a running cluster or SQL warehouse. If a `WarehouseId` is specified, that SQL warehouse will be used to execute SQL commands to manage this table. Conflicts with `ClusterId`.
         /// </summary>
         [Output("warehouseId")]
         public Output<string?> WarehouseId { get; private set; } = null!;
@@ -193,7 +193,7 @@ namespace Pulumi.Databricks
         private InputList<string>? _clusterKeys;
 
         /// <summary>
-        /// a subset of columns to liquid cluster the table by. For automatic clustering, set `cluster_keys` to `["AUTO"]`. To turn off clustering, set it to `["NONE"]`. Conflicts with `partitions`.
+        /// a subset of columns to liquid cluster the table by. For automatic clustering, set `ClusterKeys` to `["AUTO"]`. To turn off clustering, set it to `["NONE"]`. Conflicts with `Partitions`.
         /// </summary>
         public InputList<string> ClusterKeys
         {
@@ -240,7 +240,7 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
-        /// User name/group name/sp application_id of the table owner.
+        /// User name/group name/sp ApplicationId of the table owner.
         /// </summary>
         [Input("owner")]
         public Input<string>? Owner { get; set; }
@@ -249,7 +249,7 @@ namespace Pulumi.Databricks
         private InputList<string>? _partitions;
 
         /// <summary>
-        /// a subset of columns to partition the table by. Change forces the creation of a new resource. Conflicts with `cluster_keys`.
+        /// a subset of columns to partition the table by. Change forces the creation of a new resource. Conflicts with `ClusterKeys`.
         /// </summary>
         public InputList<string> Partitions
         {
@@ -294,13 +294,13 @@ namespace Pulumi.Databricks
         public Input<string> TableType { get; set; } = null!;
 
         /// <summary>
-        /// SQL text defining the view (for `table_type == "VIEW"`). Not supported for `MANAGED` or `EXTERNAL` table_type.
+        /// SQL text defining the view (for `TableType == "VIEW"`). Not supported for `MANAGED` or `EXTERNAL` table_type.
         /// </summary>
         [Input("viewDefinition")]
         public Input<string>? ViewDefinition { get; set; }
 
         /// <summary>
-        /// All table CRUD operations must be executed on a running cluster or SQL warehouse. If a `warehouse_id` is specified, that SQL warehouse will be used to execute SQL commands to manage this table. Conflicts with `cluster_id`.
+        /// All table CRUD operations must be executed on a running cluster or SQL warehouse. If a `WarehouseId` is specified, that SQL warehouse will be used to execute SQL commands to manage this table. Conflicts with `ClusterId`.
         /// </summary>
         [Input("warehouseId")]
         public Input<string>? WarehouseId { get; set; }
@@ -326,7 +326,7 @@ namespace Pulumi.Databricks
         private InputList<string>? _clusterKeys;
 
         /// <summary>
-        /// a subset of columns to liquid cluster the table by. For automatic clustering, set `cluster_keys` to `["AUTO"]`. To turn off clustering, set it to `["NONE"]`. Conflicts with `partitions`.
+        /// a subset of columns to liquid cluster the table by. For automatic clustering, set `ClusterKeys` to `["AUTO"]`. To turn off clustering, set it to `["NONE"]`. Conflicts with `Partitions`.
         /// </summary>
         public InputList<string> ClusterKeys
         {
@@ -381,7 +381,7 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
-        /// User name/group name/sp application_id of the table owner.
+        /// User name/group name/sp ApplicationId of the table owner.
         /// </summary>
         [Input("owner")]
         public Input<string>? Owner { get; set; }
@@ -390,7 +390,7 @@ namespace Pulumi.Databricks
         private InputList<string>? _partitions;
 
         /// <summary>
-        /// a subset of columns to partition the table by. Change forces the creation of a new resource. Conflicts with `cluster_keys`.
+        /// a subset of columns to partition the table by. Change forces the creation of a new resource. Conflicts with `ClusterKeys`.
         /// </summary>
         public InputList<string> Partitions
         {
@@ -435,13 +435,13 @@ namespace Pulumi.Databricks
         public Input<string>? TableType { get; set; }
 
         /// <summary>
-        /// SQL text defining the view (for `table_type == "VIEW"`). Not supported for `MANAGED` or `EXTERNAL` table_type.
+        /// SQL text defining the view (for `TableType == "VIEW"`). Not supported for `MANAGED` or `EXTERNAL` table_type.
         /// </summary>
         [Input("viewDefinition")]
         public Input<string>? ViewDefinition { get; set; }
 
         /// <summary>
-        /// All table CRUD operations must be executed on a running cluster or SQL warehouse. If a `warehouse_id` is specified, that SQL warehouse will be used to execute SQL commands to manage this table. Conflicts with `cluster_id`.
+        /// All table CRUD operations must be executed on a running cluster or SQL warehouse. If a `WarehouseId` is specified, that SQL warehouse will be used to execute SQL commands to manage this table. Conflicts with `ClusterId`.
         /// </summary>
         [Input("warehouseId")]
         public Input<string>? WarehouseId { get; set; }

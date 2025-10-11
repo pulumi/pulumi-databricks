@@ -20,7 +20,7 @@ public final class GetDbfsFilePathsResult {
     private String id;
     private String path;
     /**
-     * @return returns list of objects with `path` and `file_size` attributes in each
+     * @return returns list of objects with `path` and `fileSize` attributes in each
      * 
      */
     private List<GetDbfsFilePathsPathList> pathLists;
@@ -38,7 +38,7 @@ public final class GetDbfsFilePathsResult {
         return this.path;
     }
     /**
-     * @return returns list of objects with `path` and `file_size` attributes in each
+     * @return returns list of objects with `path` and `fileSize` attributes in each
      * 
      */
     public List<GetDbfsFilePathsPathList> pathLists() {

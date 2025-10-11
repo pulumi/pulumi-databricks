@@ -16,7 +16,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Enables you to register aws_vpc_endpoint resources or gcp vpc_endpoint resources with Databricks such that they can be used as part of a databricks.MwsNetworks configuration.
+ * Enables you to register awsVpcEndpoint resources or gcp vpcEndpoint resources with Databricks such that they can be used as part of a databricks.MwsNetworks configuration.
  * 
  * &gt; This resource can only be used with an account-level provider!
  * 
@@ -26,7 +26,7 @@ import javax.annotation.Nullable;
  * 
  * ### Databricks on AWS usage
  * 
- * Before using this resource, you will need to create the necessary VPC Endpoints as per your [VPC endpoint requirements](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html#vpc-endpoint-requirements). You can use the aws_vpc_endpoint resource for this, for example:
+ * Before using this resource, you will need to create the necessary VPC Endpoints as per your [VPC endpoint requirements](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html#vpc-endpoint-requirements). You can use the awsVpcEndpoint resource for this, for example:
  * 
  * <pre>
  * {@code

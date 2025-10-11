@@ -108,7 +108,7 @@ namespace Pulumi.Databricks
         public Output<int> CreationTime { get; private set; } = null!;
 
         /// <summary>
-        /// (String) id of storage config to be used for `databricks_mws_workspace` resource.
+        /// (String) id of storage config to be used for `DatabricksMwsWorkspace` resource.
         /// </summary>
         [Output("storageConfigurationId")]
         public Output<string> StorageConfigurationId { get; private set; } = null!;
@@ -231,7 +231,7 @@ namespace Pulumi.Databricks
         public Input<int>? CreationTime { get; set; }
 
         /// <summary>
-        /// (String) id of storage config to be used for `databricks_mws_workspace` resource.
+        /// (String) id of storage config to be used for `DatabricksMwsWorkspace` resource.
         /// </summary>
         [Input("storageConfigurationId")]
         public Input<string>? StorageConfigurationId { get; set; }

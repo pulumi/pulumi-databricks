@@ -68,7 +68,7 @@ public final class GetStorageCredentialStorageCredentialInfo {
      */
     private @Nullable String name;
     /**
-     * @return Username/groupname/sp application_id of the storage credential owner.
+     * @return Username/groupname/sp applicationId of the storage credential owner.
      * 
      */
     private @Nullable String owner;
@@ -166,7 +166,7 @@ public final class GetStorageCredentialStorageCredentialInfo {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return Username/groupname/sp application_id of the storage credential owner.
+     * @return Username/groupname/sp applicationId of the storage credential owner.
      * 
      */
     public Optional<String> owner() {

@@ -16,9 +16,9 @@ namespace Pulumi.Databricks
     /// 
     /// ## Example Usage
     /// 
-    /// &gt; In Pulumi configuration, it is recommended to define tasks in alphabetical order of their `task_key` arguments, so that you get consistent and readable diff. Whenever tasks are added or removed, or `task_key` is renamed, you'll observe a change in the majority of tasks. It's related to the fact that the current version of the provider treats `task` blocks as an ordered list. Alternatively, `task` block could have been an unordered set, though end-users would see the entire block replaced upon a change in single property of the task.
+    /// &gt; In Pulumi configuration, it is recommended to define tasks in alphabetical order of their `TaskKey` arguments, so that you get consistent and readable diff. Whenever tasks are added or removed, or `TaskKey` is renamed, you'll observe a change in the majority of tasks. It's related to the fact that the current version of the provider treats `Task` blocks as an ordered list. Alternatively, `Task` block could have been an unordered set, though end-users would see the entire block replaced upon a change in single property of the task.
     /// 
-    /// It is possible to create [a Databricks job](https://docs.databricks.com/aws/en/jobs/) using `task` blocks. A single task is defined with the `task` block containing one of the `*_task` blocks, `task_key`, and additional arguments described below.
+    /// It is possible to create [a Databricks job](https://docs.databricks.com/aws/en/jobs/) using `Task` blocks. A single task is defined with the `Task` block containing one of the `*_task` blocks, `TaskKey`, and additional arguments described below.
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -133,7 +133,7 @@ namespace Pulumi.Databricks
     public partial class Job : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `spark_jar_task` or `spark_submit_task` or `spark_python_task` or `notebook_task` blocks.
+        /// (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `Parameters` specified in `SparkJarTask` or `SparkSubmitTask` or `SparkPythonTask` or `NotebookTask` blocks.
         /// </summary>
         [Output("alwaysRunning")]
         public Output<bool?> AlwaysRunning { get; private set; } = null!;
@@ -151,9 +151,9 @@ namespace Pulumi.Databricks
         public Output<Outputs.JobContinuous?> Continuous { get; private set; } = null!;
 
         /// <summary>
-        /// (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pause_status` by stopping the current active run. This flag cannot be set for non-continuous jobs.
+        /// (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `PauseStatus` by stopping the current active run. This flag cannot be set for non-continuous jobs.
         /// 
-        /// When migrating from `always_running` to `control_run_state`, set `continuous` as follows:
+        /// When migrating from `AlwaysRunning` to `ControlRunState`, set `Continuous` as follows:
         /// </summary>
         [Output("controlRunState")]
         public Output<bool?> ControlRunState { get; private set; } = null!;
@@ -192,7 +192,7 @@ namespace Pulumi.Databricks
         public Output<string> Format { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the a Git repository for task source code. See git_source Configuration Block below.
+        /// Specifies the a Git repository for task source code. See GitSource Configuration Block below.
         /// </summary>
         [Output("gitSource")]
         public Output<Outputs.JobGitSource?> GitSource { get; private set; } = null!;
@@ -278,7 +278,7 @@ namespace Pulumi.Databricks
         public Output<bool?> RetryOnTimeout { get; private set; } = null!;
 
         /// <summary>
-        /// The user or the service principal the job runs as. See run_as Configuration Block below.
+        /// The user or the service principal the job runs as. See RunAs Configuration Block below.
         /// </summary>
         [Output("runAs")]
         public Output<Outputs.JobRunAs> RunAs { get; private set; } = null!;
@@ -387,7 +387,7 @@ namespace Pulumi.Databricks
     public sealed class JobArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `spark_jar_task` or `spark_submit_task` or `spark_python_task` or `notebook_task` blocks.
+        /// (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `Parameters` specified in `SparkJarTask` or `SparkSubmitTask` or `SparkPythonTask` or `NotebookTask` blocks.
         /// </summary>
         [Input("alwaysRunning")]
         public Input<bool>? AlwaysRunning { get; set; }
@@ -405,9 +405,9 @@ namespace Pulumi.Databricks
         public Input<Inputs.JobContinuousArgs>? Continuous { get; set; }
 
         /// <summary>
-        /// (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pause_status` by stopping the current active run. This flag cannot be set for non-continuous jobs.
+        /// (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `PauseStatus` by stopping the current active run. This flag cannot be set for non-continuous jobs.
         /// 
-        /// When migrating from `always_running` to `control_run_state`, set `continuous` as follows:
+        /// When migrating from `AlwaysRunning` to `ControlRunState`, set `Continuous` as follows:
         /// </summary>
         [Input("controlRunState")]
         public Input<bool>? ControlRunState { get; set; }
@@ -451,7 +451,7 @@ namespace Pulumi.Databricks
         public Input<string>? Format { get; set; }
 
         /// <summary>
-        /// Specifies the a Git repository for task source code. See git_source Configuration Block below.
+        /// Specifies the a Git repository for task source code. See GitSource Configuration Block below.
         /// </summary>
         [Input("gitSource")]
         public Input<Inputs.JobGitSourceArgs>? GitSource { get; set; }
@@ -555,7 +555,7 @@ namespace Pulumi.Databricks
         public Input<bool>? RetryOnTimeout { get; set; }
 
         /// <summary>
-        /// The user or the service principal the job runs as. See run_as Configuration Block below.
+        /// The user or the service principal the job runs as. See RunAs Configuration Block below.
         /// </summary>
         [Input("runAs")]
         public Input<Inputs.JobRunAsArgs>? RunAs { get; set; }
@@ -632,7 +632,7 @@ namespace Pulumi.Databricks
     public sealed class JobState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `parameters` specified in `spark_jar_task` or `spark_submit_task` or `spark_python_task` or `notebook_task` blocks.
+        /// (Bool) Whenever the job is always running, like a Spark Streaming application, on every update restart the current active run or start it again, if nothing it is not running. False by default. Any job runs are started with `Parameters` specified in `SparkJarTask` or `SparkSubmitTask` or `SparkPythonTask` or `NotebookTask` blocks.
         /// </summary>
         [Input("alwaysRunning")]
         public Input<bool>? AlwaysRunning { get; set; }
@@ -650,9 +650,9 @@ namespace Pulumi.Databricks
         public Input<Inputs.JobContinuousGetArgs>? Continuous { get; set; }
 
         /// <summary>
-        /// (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `pause_status` by stopping the current active run. This flag cannot be set for non-continuous jobs.
+        /// (Bool) If true, the Databricks provider will stop and start the job as needed to ensure that the active run for the job reflects the deployed configuration. For continuous jobs, the provider respects the `PauseStatus` by stopping the current active run. This flag cannot be set for non-continuous jobs.
         /// 
-        /// When migrating from `always_running` to `control_run_state`, set `continuous` as follows:
+        /// When migrating from `AlwaysRunning` to `ControlRunState`, set `Continuous` as follows:
         /// </summary>
         [Input("controlRunState")]
         public Input<bool>? ControlRunState { get; set; }
@@ -696,7 +696,7 @@ namespace Pulumi.Databricks
         public Input<string>? Format { get; set; }
 
         /// <summary>
-        /// Specifies the a Git repository for task source code. See git_source Configuration Block below.
+        /// Specifies the a Git repository for task source code. See GitSource Configuration Block below.
         /// </summary>
         [Input("gitSource")]
         public Input<Inputs.JobGitSourceGetArgs>? GitSource { get; set; }
@@ -800,7 +800,7 @@ namespace Pulumi.Databricks
         public Input<bool>? RetryOnTimeout { get; set; }
 
         /// <summary>
-        /// The user or the service principal the job runs as. See run_as Configuration Block below.
+        /// The user or the service principal the job runs as. See RunAs Configuration Block below.
         /// </summary>
         [Input("runAs")]
         public Input<Inputs.JobRunAsGetArgs>? RunAs { get; set; }

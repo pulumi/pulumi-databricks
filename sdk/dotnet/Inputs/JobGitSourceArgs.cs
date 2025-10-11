@@ -13,13 +13,13 @@ namespace Pulumi.Databricks.Inputs
     public sealed class JobGitSourceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// name of the Git branch to use. Conflicts with `tag` and `commit`.
+        /// name of the Git branch to use. Conflicts with `Tag` and `Commit`.
         /// </summary>
         [Input("branch")]
         public Input<string>? Branch { get; set; }
 
         /// <summary>
-        /// hash of Git commit to use. Conflicts with `branch` and `tag`.
+        /// hash of Git commit to use. Conflicts with `Branch` and `Tag`.
         /// </summary>
         [Input("commit")]
         public Input<string>? Commit { get; set; }
@@ -37,7 +37,7 @@ namespace Pulumi.Databricks.Inputs
         public Input<string>? Provider { get; set; }
 
         /// <summary>
-        /// name of the Git branch to use. Conflicts with `branch` and `commit`.
+        /// name of the Git branch to use. Conflicts with `Branch` and `Commit`.
         /// </summary>
         [Input("tag")]
         public Input<string>? Tag { get; set; }

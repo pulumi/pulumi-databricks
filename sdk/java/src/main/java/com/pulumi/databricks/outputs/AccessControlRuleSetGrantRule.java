@@ -14,9 +14,9 @@ import javax.annotation.Nullable;
 public final class AccessControlRuleSetGrantRule {
     /**
      * @return a list of principals who are granted a role. The following format is supported:
-     * * `users/{username}` (also exposed as `acl_principal_id` attribute of `databricks.User` resource).
-     * * `groups/{groupname}` (also exposed as `acl_principal_id` attribute of `databricks.Group` resource).
-     * * `servicePrincipals/{applicationId}` (also exposed as `acl_principal_id` attribute of `databricks.ServicePrincipal` resource).
+     * * `users/{username}` (also exposed as `aclPrincipalId` attribute of `databricks.User` resource).
+     * * `groups/{groupname}` (also exposed as `aclPrincipalId` attribute of `databricks.Group` resource).
+     * * `servicePrincipals/{applicationId}` (also exposed as `aclPrincipalId` attribute of `databricks.ServicePrincipal` resource).
      * 
      */
     private @Nullable List<String> principals;
@@ -40,9 +40,9 @@ public final class AccessControlRuleSetGrantRule {
     private AccessControlRuleSetGrantRule() {}
     /**
      * @return a list of principals who are granted a role. The following format is supported:
-     * * `users/{username}` (also exposed as `acl_principal_id` attribute of `databricks.User` resource).
-     * * `groups/{groupname}` (also exposed as `acl_principal_id` attribute of `databricks.Group` resource).
-     * * `servicePrincipals/{applicationId}` (also exposed as `acl_principal_id` attribute of `databricks.ServicePrincipal` resource).
+     * * `users/{username}` (also exposed as `aclPrincipalId` attribute of `databricks.User` resource).
+     * * `groups/{groupname}` (also exposed as `aclPrincipalId` attribute of `databricks.Group` resource).
+     * * `servicePrincipals/{applicationId}` (also exposed as `aclPrincipalId` attribute of `databricks.ServicePrincipal` resource).
      * 
      */
     public List<String> principals() {

@@ -313,6 +313,8 @@ class CleanRoomsCleanRoom(pulumi.CustomResource):
 
         ## Example Usage
 
+        # Example: Clean Room Resource
+
         ## Import
 
         As of Pulumi v1.5, resources can be imported through configuration.
@@ -353,6 +355,8 @@ class CleanRoomsCleanRoom(pulumi.CustomResource):
         A Clean Room is a secure environment for data collaboration that enables multiple organizations to analyze their data together while maintaining privacy and security. Clean Rooms provide a controlled environment where data can be shared and analyzed without exposing the underlying raw data.
 
         ## Example Usage
+
+        # Example: Clean Room Resource
 
         ## Import
 

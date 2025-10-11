@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 public final class GetCleanRoomAssetRevisionsCleanRoomAssetTableLocalDetailsPartition {
     /**
      * @return (string) - The value of the partition column. When this value is not set, it means `null` value.
-     * When this field is set, field `recipient_property_key` can not be set
+     * When this field is set, field `recipientPropertyKey` can not be set
      * 
      */
     private @Nullable List<GetCleanRoomAssetRevisionsCleanRoomAssetTableLocalDetailsPartitionValue> values;
@@ -21,7 +21,7 @@ public final class GetCleanRoomAssetRevisionsCleanRoomAssetTableLocalDetailsPart
     private GetCleanRoomAssetRevisionsCleanRoomAssetTableLocalDetailsPartition() {}
     /**
      * @return (string) - The value of the partition column. When this value is not set, it means `null` value.
-     * When this field is set, field `recipient_property_key` can not be set
+     * When this field is set, field `recipientPropertyKey` can not be set
      * 
      */
     public List<GetCleanRoomAssetRevisionsCleanRoomAssetTableLocalDetailsPartitionValue> values() {

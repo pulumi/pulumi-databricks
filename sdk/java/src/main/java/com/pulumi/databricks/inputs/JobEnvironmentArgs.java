@@ -18,14 +18,14 @@ public final class JobEnvironmentArgs extends com.pulumi.resources.ResourceArgs 
     public static final JobEnvironmentArgs Empty = new JobEnvironmentArgs();
 
     /**
-     * an unique identifier of the Environment.  It will be referenced from `environment_key` attribute of corresponding task.
+     * an unique identifier of the Environment.  It will be referenced from `environmentKey` attribute of corresponding task.
      * 
      */
     @Import(name="environmentKey", required=true)
     private Output<String> environmentKey;
 
     /**
-     * @return an unique identifier of the Environment.  It will be referenced from `environment_key` attribute of corresponding task.
+     * @return an unique identifier of the Environment.  It will be referenced from `environmentKey` attribute of corresponding task.
      * 
      */
     public Output<String> environmentKey() {
@@ -73,7 +73,7 @@ public final class JobEnvironmentArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param environmentKey an unique identifier of the Environment.  It will be referenced from `environment_key` attribute of corresponding task.
+         * @param environmentKey an unique identifier of the Environment.  It will be referenced from `environmentKey` attribute of corresponding task.
          * 
          * @return builder
          * 
@@ -84,7 +84,7 @@ public final class JobEnvironmentArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param environmentKey an unique identifier of the Environment.  It will be referenced from `environment_key` attribute of corresponding task.
+         * @param environmentKey an unique identifier of the Environment.  It will be referenced from `environmentKey` attribute of corresponding task.
          * 
          * @return builder
          * 

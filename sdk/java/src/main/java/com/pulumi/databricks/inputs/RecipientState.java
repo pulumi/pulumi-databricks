@@ -59,14 +59,14 @@ public final class RecipientState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Cloud vendor of the recipient&#39;s Unity Catalog Metstore. This field is only present when the authentication_type is `DATABRICKS`.
+     * Cloud vendor of the recipient&#39;s Unity Catalog Metstore. This field is only present when the authenticationType is `DATABRICKS`.
      * 
      */
     @Import(name="cloud")
     private @Nullable Output<String> cloud;
 
     /**
-     * @return Cloud vendor of the recipient&#39;s Unity Catalog Metstore. This field is only present when the authentication_type is `DATABRICKS`.
+     * @return Cloud vendor of the recipient&#39;s Unity Catalog Metstore. This field is only present when the authenticationType is `DATABRICKS`.
      * 
      */
     public Optional<Output<String>> cloud() {
@@ -119,14 +119,14 @@ public final class RecipientState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Required when `authentication_type` is `DATABRICKS`.
+     * Required when `authenticationType` is `DATABRICKS`.
      * 
      */
     @Import(name="dataRecipientGlobalMetastoreId")
     private @Nullable Output<String> dataRecipientGlobalMetastoreId;
 
     /**
-     * @return Required when `authentication_type` is `DATABRICKS`.
+     * @return Required when `authenticationType` is `DATABRICKS`.
      * 
      */
     public Optional<Output<String>> dataRecipientGlobalMetastoreId() {
@@ -164,14 +164,14 @@ public final class RecipientState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Unique identifier of recipient&#39;s Unity Catalog metastore. This field is only present when the authentication_type is `DATABRICKS`.
+     * Unique identifier of recipient&#39;s Unity Catalog metastore. This field is only present when the authenticationType is `DATABRICKS`.
      * 
      */
     @Import(name="metastoreId")
     private @Nullable Output<String> metastoreId;
 
     /**
-     * @return Unique identifier of recipient&#39;s Unity Catalog metastore. This field is only present when the authentication_type is `DATABRICKS`.
+     * @return Unique identifier of recipient&#39;s Unity Catalog metastore. This field is only present when the authenticationType is `DATABRICKS`.
      * 
      */
     public Optional<Output<String>> metastoreId() {
@@ -194,14 +194,14 @@ public final class RecipientState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Username/groupname/sp application_id of the recipient owner.
+     * Username/groupname/sp applicationId of the recipient owner.
      * 
      */
     @Import(name="owner")
     private @Nullable Output<String> owner;
 
     /**
-     * @return Username/groupname/sp application_id of the recipient owner.
+     * @return Username/groupname/sp applicationId of the recipient owner.
      * 
      */
     public Optional<Output<String>> owner() {
@@ -224,14 +224,14 @@ public final class RecipientState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Cloud region of the recipient&#39;s Unity Catalog Metstore. This field is only present when the authentication_type is `DATABRICKS`.
+     * Cloud region of the recipient&#39;s Unity Catalog Metstore. This field is only present when the authenticationType is `DATABRICKS`.
      * 
      */
     @Import(name="region")
     private @Nullable Output<String> region;
 
     /**
-     * @return Cloud region of the recipient&#39;s Unity Catalog Metstore. This field is only present when the authentication_type is `DATABRICKS`.
+     * @return Cloud region of the recipient&#39;s Unity Catalog Metstore. This field is only present when the authenticationType is `DATABRICKS`.
      * 
      */
     public Optional<Output<String>> region() {
@@ -254,14 +254,14 @@ public final class RecipientState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List of Recipient Tokens. This field is only present when the authentication_type is TOKEN. Each list element is an object with following attributes:
+     * List of Recipient Tokens. This field is only present when the authenticationType is TOKEN. Each list element is an object with following attributes:
      * 
      */
     @Import(name="tokens")
     private @Nullable Output<List<RecipientTokenArgs>> tokens;
 
     /**
-     * @return List of Recipient Tokens. This field is only present when the authentication_type is TOKEN. Each list element is an object with following attributes:
+     * @return List of Recipient Tokens. This field is only present when the authenticationType is TOKEN. Each list element is an object with following attributes:
      * 
      */
     public Optional<Output<List<RecipientTokenArgs>>> tokens() {
@@ -392,7 +392,7 @@ public final class RecipientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cloud Cloud vendor of the recipient&#39;s Unity Catalog Metstore. This field is only present when the authentication_type is `DATABRICKS`.
+         * @param cloud Cloud vendor of the recipient&#39;s Unity Catalog Metstore. This field is only present when the authenticationType is `DATABRICKS`.
          * 
          * @return builder
          * 
@@ -403,7 +403,7 @@ public final class RecipientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cloud Cloud vendor of the recipient&#39;s Unity Catalog Metstore. This field is only present when the authentication_type is `DATABRICKS`.
+         * @param cloud Cloud vendor of the recipient&#39;s Unity Catalog Metstore. This field is only present when the authenticationType is `DATABRICKS`.
          * 
          * @return builder
          * 
@@ -476,7 +476,7 @@ public final class RecipientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dataRecipientGlobalMetastoreId Required when `authentication_type` is `DATABRICKS`.
+         * @param dataRecipientGlobalMetastoreId Required when `authenticationType` is `DATABRICKS`.
          * 
          * @return builder
          * 
@@ -487,7 +487,7 @@ public final class RecipientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dataRecipientGlobalMetastoreId Required when `authentication_type` is `DATABRICKS`.
+         * @param dataRecipientGlobalMetastoreId Required when `authenticationType` is `DATABRICKS`.
          * 
          * @return builder
          * 
@@ -539,7 +539,7 @@ public final class RecipientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param metastoreId Unique identifier of recipient&#39;s Unity Catalog metastore. This field is only present when the authentication_type is `DATABRICKS`.
+         * @param metastoreId Unique identifier of recipient&#39;s Unity Catalog metastore. This field is only present when the authenticationType is `DATABRICKS`.
          * 
          * @return builder
          * 
@@ -550,7 +550,7 @@ public final class RecipientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param metastoreId Unique identifier of recipient&#39;s Unity Catalog metastore. This field is only present when the authentication_type is `DATABRICKS`.
+         * @param metastoreId Unique identifier of recipient&#39;s Unity Catalog metastore. This field is only present when the authenticationType is `DATABRICKS`.
          * 
          * @return builder
          * 
@@ -581,7 +581,7 @@ public final class RecipientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param owner Username/groupname/sp application_id of the recipient owner.
+         * @param owner Username/groupname/sp applicationId of the recipient owner.
          * 
          * @return builder
          * 
@@ -592,7 +592,7 @@ public final class RecipientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param owner Username/groupname/sp application_id of the recipient owner.
+         * @param owner Username/groupname/sp applicationId of the recipient owner.
          * 
          * @return builder
          * 
@@ -623,7 +623,7 @@ public final class RecipientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param region Cloud region of the recipient&#39;s Unity Catalog Metstore. This field is only present when the authentication_type is `DATABRICKS`.
+         * @param region Cloud region of the recipient&#39;s Unity Catalog Metstore. This field is only present when the authenticationType is `DATABRICKS`.
          * 
          * @return builder
          * 
@@ -634,7 +634,7 @@ public final class RecipientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param region Cloud region of the recipient&#39;s Unity Catalog Metstore. This field is only present when the authentication_type is `DATABRICKS`.
+         * @param region Cloud region of the recipient&#39;s Unity Catalog Metstore. This field is only present when the authenticationType is `DATABRICKS`.
          * 
          * @return builder
          * 
@@ -665,7 +665,7 @@ public final class RecipientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tokens List of Recipient Tokens. This field is only present when the authentication_type is TOKEN. Each list element is an object with following attributes:
+         * @param tokens List of Recipient Tokens. This field is only present when the authenticationType is TOKEN. Each list element is an object with following attributes:
          * 
          * @return builder
          * 
@@ -676,7 +676,7 @@ public final class RecipientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tokens List of Recipient Tokens. This field is only present when the authentication_type is TOKEN. Each list element is an object with following attributes:
+         * @param tokens List of Recipient Tokens. This field is only present when the authenticationType is TOKEN. Each list element is an object with following attributes:
          * 
          * @return builder
          * 
@@ -686,7 +686,7 @@ public final class RecipientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tokens List of Recipient Tokens. This field is only present when the authentication_type is TOKEN. Each list element is an object with following attributes:
+         * @param tokens List of Recipient Tokens. This field is only present when the authenticationType is TOKEN. Each list element is an object with following attributes:
          * 
          * @return builder
          * 

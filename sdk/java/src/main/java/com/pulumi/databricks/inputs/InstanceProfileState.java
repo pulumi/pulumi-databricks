@@ -32,14 +32,14 @@ public final class InstanceProfileState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * `ARN` attribute of `aws_iam_instance_profile` output, the EC2 instance profile association to AWS IAM role. This ARN would be validated upon resource creation.
+     * `ARN` attribute of `awsIamInstanceProfile` output, the EC2 instance profile association to AWS IAM role. This ARN would be validated upon resource creation.
      * 
      */
     @Import(name="instanceProfileArn")
     private @Nullable Output<String> instanceProfileArn;
 
     /**
-     * @return `ARN` attribute of `aws_iam_instance_profile` output, the EC2 instance profile association to AWS IAM role. This ARN would be validated upon resource creation.
+     * @return `ARN` attribute of `awsIamInstanceProfile` output, the EC2 instance profile association to AWS IAM role. This ARN would be validated upon resource creation.
      * 
      */
     public Optional<Output<String>> instanceProfileArn() {
@@ -125,7 +125,7 @@ public final class InstanceProfileState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param instanceProfileArn `ARN` attribute of `aws_iam_instance_profile` output, the EC2 instance profile association to AWS IAM role. This ARN would be validated upon resource creation.
+         * @param instanceProfileArn `ARN` attribute of `awsIamInstanceProfile` output, the EC2 instance profile association to AWS IAM role. This ARN would be validated upon resource creation.
          * 
          * @return builder
          * 
@@ -136,7 +136,7 @@ public final class InstanceProfileState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param instanceProfileArn `ARN` attribute of `aws_iam_instance_profile` output, the EC2 instance profile association to AWS IAM role. This ARN would be validated upon resource creation.
+         * @param instanceProfileArn `ARN` attribute of `awsIamInstanceProfile` output, the EC2 instance profile association to AWS IAM role. This ARN would be validated upon resource creation.
          * 
          * @return builder
          * 

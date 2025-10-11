@@ -14,11 +14,11 @@ namespace Pulumi.Databricks.Outputs
     public sealed class ModelServingConfigServedEntityExternalModelCustomProviderConfig
     {
         /// <summary>
-        /// API key authentication for the custom provider API. Conflicts with `bearer_token_auth`.
+        /// API key authentication for the custom provider API. Conflicts with `BearerTokenAuth`.
         /// </summary>
         public readonly Outputs.ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuth? ApiKeyAuth;
         /// <summary>
-        /// bearer token authentication for the custom provider API.  Conflicts with `api_key_auth`.
+        /// bearer token authentication for the custom provider API.  Conflicts with `ApiKeyAuth`.
         /// </summary>
         public readonly Outputs.ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuth? BearerTokenAuth;
         /// <summary>

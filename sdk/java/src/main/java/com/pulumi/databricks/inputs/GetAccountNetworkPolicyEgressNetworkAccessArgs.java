@@ -51,14 +51,14 @@ public final class GetAccountNetworkPolicyEgressNetworkAccessArgs extends com.pu
     }
 
     /**
-     * (EgressNetworkPolicyNetworkAccessPolicyPolicyEnforcement) - Optional. When policy_enforcement is not provided, we default to ENFORCE_MODE_ALL_SERVICES
+     * (EgressNetworkPolicyNetworkAccessPolicyPolicyEnforcement) - Optional. When policyEnforcement is not provided, we default to ENFORCE_MODE_ALL_SERVICES
      * 
      */
     @Import(name="policyEnforcement")
     private @Nullable Output<GetAccountNetworkPolicyEgressNetworkAccessPolicyEnforcementArgs> policyEnforcement;
 
     /**
-     * @return (EgressNetworkPolicyNetworkAccessPolicyPolicyEnforcement) - Optional. When policy_enforcement is not provided, we default to ENFORCE_MODE_ALL_SERVICES
+     * @return (EgressNetworkPolicyNetworkAccessPolicyPolicyEnforcement) - Optional. When policyEnforcement is not provided, we default to ENFORCE_MODE_ALL_SERVICES
      * 
      */
     public Optional<Output<GetAccountNetworkPolicyEgressNetworkAccessPolicyEnforcementArgs>> policyEnforcement() {
@@ -170,7 +170,7 @@ public final class GetAccountNetworkPolicyEgressNetworkAccessArgs extends com.pu
         }
 
         /**
-         * @param policyEnforcement (EgressNetworkPolicyNetworkAccessPolicyPolicyEnforcement) - Optional. When policy_enforcement is not provided, we default to ENFORCE_MODE_ALL_SERVICES
+         * @param policyEnforcement (EgressNetworkPolicyNetworkAccessPolicyPolicyEnforcement) - Optional. When policyEnforcement is not provided, we default to ENFORCE_MODE_ALL_SERVICES
          * 
          * @return builder
          * 
@@ -181,7 +181,7 @@ public final class GetAccountNetworkPolicyEgressNetworkAccessArgs extends com.pu
         }
 
         /**
-         * @param policyEnforcement (EgressNetworkPolicyNetworkAccessPolicyPolicyEnforcement) - Optional. When policy_enforcement is not provided, we default to ENFORCE_MODE_ALL_SERVICES
+         * @param policyEnforcement (EgressNetworkPolicyNetworkAccessPolicyPolicyEnforcement) - Optional. When policyEnforcement is not provided, we default to ENFORCE_MODE_ALL_SERVICES
          * 
          * @return builder
          * 

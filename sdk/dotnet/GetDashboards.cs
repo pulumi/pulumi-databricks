@@ -15,6 +15,8 @@ namespace Pulumi.Databricks
         /// This data source allows you to retrieve information about Databricks [Dashboards](https://docs.databricks.com/en/dashboards/index.html).
         /// 
         /// &gt; This data source can only be used with a workspace-level provider!
+        /// 
+        /// ## Example Usage
         /// </summary>
         public static Task<GetDashboardsResult> InvokeAsync(GetDashboardsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDashboardsResult>("databricks:index/getDashboards:getDashboards", args ?? new GetDashboardsArgs(), options.WithDefaults());
@@ -23,6 +25,8 @@ namespace Pulumi.Databricks
         /// This data source allows you to retrieve information about Databricks [Dashboards](https://docs.databricks.com/en/dashboards/index.html).
         /// 
         /// &gt; This data source can only be used with a workspace-level provider!
+        /// 
+        /// ## Example Usage
         /// </summary>
         public static Output<GetDashboardsResult> Invoke(GetDashboardsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDashboardsResult>("databricks:index/getDashboards:getDashboards", args ?? new GetDashboardsInvokeArgs(), options.WithDefaults());
@@ -31,6 +35,8 @@ namespace Pulumi.Databricks
         /// This data source allows you to retrieve information about Databricks [Dashboards](https://docs.databricks.com/en/dashboards/index.html).
         /// 
         /// &gt; This data source can only be used with a workspace-level provider!
+        /// 
+        /// ## Example Usage
         /// </summary>
         public static Output<GetDashboardsResult> Invoke(GetDashboardsInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetDashboardsResult>("databricks:index/getDashboards:getDashboards", args ?? new GetDashboardsInvokeArgs(), options.WithDefaults());

@@ -36,14 +36,14 @@ public final class GetDatabaseSyncedDatabaseTableSpec extends com.pulumi.resourc
     }
 
     /**
-     * (string) - At most one of existing_pipeline_id and new_pipeline_spec should be defined.
+     * (string) - At most one of existingPipelineId and newPipelineSpec should be defined.
      * 
      */
     @Import(name="existingPipelineId", required=true)
     private String existingPipelineId;
 
     /**
-     * @return (string) - At most one of existing_pipeline_id and new_pipeline_spec should be defined.
+     * @return (string) - At most one of existingPipelineId and newPipelineSpec should be defined.
      * 
      */
     public String existingPipelineId() {
@@ -51,14 +51,14 @@ public final class GetDatabaseSyncedDatabaseTableSpec extends com.pulumi.resourc
     }
 
     /**
-     * (NewPipelineSpec) - At most one of existing_pipeline_id and new_pipeline_spec should be defined.
+     * (NewPipelineSpec) - At most one of existingPipelineId and newPipelineSpec should be defined.
      * 
      */
     @Import(name="newPipelineSpec", required=true)
     private GetDatabaseSyncedDatabaseTableSpecNewPipelineSpec newPipelineSpec;
 
     /**
-     * @return (NewPipelineSpec) - At most one of existing_pipeline_id and new_pipeline_spec should be defined.
+     * @return (NewPipelineSpec) - At most one of existingPipelineId and newPipelineSpec should be defined.
      * 
      */
     public GetDatabaseSyncedDatabaseTableSpecNewPipelineSpec newPipelineSpec() {
@@ -168,7 +168,7 @@ public final class GetDatabaseSyncedDatabaseTableSpec extends com.pulumi.resourc
         }
 
         /**
-         * @param existingPipelineId (string) - At most one of existing_pipeline_id and new_pipeline_spec should be defined.
+         * @param existingPipelineId (string) - At most one of existingPipelineId and newPipelineSpec should be defined.
          * 
          * @return builder
          * 
@@ -179,7 +179,7 @@ public final class GetDatabaseSyncedDatabaseTableSpec extends com.pulumi.resourc
         }
 
         /**
-         * @param newPipelineSpec (NewPipelineSpec) - At most one of existing_pipeline_id and new_pipeline_spec should be defined.
+         * @param newPipelineSpec (NewPipelineSpec) - At most one of existingPipelineId and newPipelineSpec should be defined.
          * 
          * @return builder
          * 

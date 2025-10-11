@@ -17,6 +17,111 @@ import (
 //
 // In a Unity Catalog-enabled Databricks workspace, a share is a securable object registered in Unity Catalog. A `Share` is contained within a databricks_metastore. If you remove a share from your Unity Catalog metastore, all recipients of that share lose the ability to access it.
 //
+// ## Example Usage
+//
+// > In Pulumi configuration, it is recommended to define objects in alphabetical order of their `name` arguments, so that you get consistent and readable diff. Whenever objects are added or removed, or `name` is renamed, you'll observe a change in the majority of tasks. It's related to the fact that the current version of the provider treats `object` blocks as an ordered list. Alternatively, `object` block could have been an unordered set, though end-users would see the entire block replaced upon a change in single property of the task.
+//
+// # Creating a Delta Sharing share and add some existing tables to it
+//
+// Creating a Delta Sharing share and add a schema to it(including all current and future tables).
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewShare(ctx, "schema_share", &databricks.ShareArgs{
+//				Name: pulumi.String("schema_share"),
+//				Objects: databricks.ShareObjectArray{
+//					&databricks.ShareObjectArgs{
+//						Name:                     pulumi.String("catalog_name.schema_name"),
+//						DataObjectType:           pulumi.String("SCHEMA"),
+//						HistoryDataSharingStatus: pulumi.String("ENABLED"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// # Creating a Delta Sharing share and share a table with partitions spec and history
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewShare(ctx, "some", &databricks.ShareArgs{
+//				Name: pulumi.String("my_share"),
+//				Objects: databricks.ShareObjectArray{
+//					&databricks.ShareObjectArgs{
+//						Name:                     pulumi.String("my_catalog.my_schema.my_table"),
+//						DataObjectType:           pulumi.String("TABLE"),
+//						HistoryDataSharingStatus: pulumi.String("ENABLED"),
+//						Partitions: databricks.ShareObjectPartitionArray{
+//							&databricks.ShareObjectPartitionArgs{
+//								Values: databricks.ShareObjectPartitionValueArray{
+//									&databricks.ShareObjectPartitionValueArgs{
+//										Name:  pulumi.String("year"),
+//										Op:    pulumi.String("EQUAL"),
+//										Value: pulumi.String("2009"),
+//									},
+//									&databricks.ShareObjectPartitionValueArgs{
+//										Name:  pulumi.String("month"),
+//										Op:    pulumi.String("EQUAL"),
+//										Value: pulumi.String("12"),
+//									},
+//								},
+//							},
+//							&databricks.ShareObjectPartitionArgs{
+//								Values: databricks.ShareObjectPartitionValueArray{
+//									&databricks.ShareObjectPartitionValueArgs{
+//										Name:  pulumi.String("year"),
+//										Op:    pulumi.String("EQUAL"),
+//										Value: pulumi.String("2010"),
+//									},
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Related Resources
+//
+// The following resources are often used in the same context:
+//
+// * Recipient to create Delta Sharing recipients.
+// * Grants to manage Delta Sharing permissions.
+// * getShares to read existing Delta Sharing shares.
+//
 // ## Import
 //
 // The share resource can be imported using the name of the share.

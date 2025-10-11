@@ -15,6 +15,43 @@ import (
 // A schema can be identified by its two-level (fully qualified) name (in the form of: `catalogName`.`schemaName`) as input. This can be retrieved programmatically using getSchemas data source.
 //
 // > This data source can only be used with a workspace-level provider!
+//
+// ## Example Usage
+//
+// * Retrieve details of all schemas in in a _sandbox_ databricks_catalog:
+//
+// * Search for a specific schema by its fully qualified name:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.LookupSchema(ctx, &databricks.LookupSchemaArgs{
+//				Name: "catalog.schema",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Related Resources
+//
+// The following resources are used in the same context:
+//
+// * Schema to manage schemas within Unity Catalog.
+// * Catalog to manage catalogs within Unity Catalog.
 func LookupSchema(ctx *pulumi.Context, args *LookupSchemaArgs, opts ...pulumi.InvokeOption) (*LookupSchemaResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupSchemaResult

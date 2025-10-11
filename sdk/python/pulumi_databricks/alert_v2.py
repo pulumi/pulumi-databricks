@@ -503,6 +503,9 @@ class AlertV2(pulumi.CustomResource):
 
         ## Example Usage
 
+        ### Basic Alert Example
+        This example creates a basic alert that monitors a query and sends notifications to a user when the value exceeds a threshold:
+
         ## Import
 
         As of Pulumi v1.5, resources can be imported through configuration.
@@ -553,6 +556,9 @@ class AlertV2(pulumi.CustomResource):
         Alerts run on a schedule and evaluate query results against defined thresholds. When an alert is triggered, notifications can be sent to specified users or destinations.
 
         ## Example Usage
+
+        ### Basic Alert Example
+        This example creates a basic alert that monitors a query and sends notifications to a user when the value exceeds a threshold:
 
         ## Import
 

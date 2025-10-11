@@ -13,9 +13,9 @@ namespace Pulumi.Databricks.Inputs
     public sealed class ClusterAutoscaleGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The maximum number of workers to which the cluster can scale up when overloaded. max_workers must be strictly greater than min_workers.
+        /// The maximum number of workers to which the cluster can scale up when overloaded. MaxWorkers must be strictly greater than min_workers.
         /// 
-        /// To create a [single node cluster](https://docs.databricks.com/clusters/single-node.html), set `is_single_node = true` and `kind = "CLASSIC_PREVIEW"` for the cluster. Single-node clusters are suitable for small, non-distributed workloads like single-node machine learning use-cases.
+        /// To create a [single node cluster](https://docs.databricks.com/clusters/single-node.html), set `IsSingleNode = true` and `kind = "CLASSIC_PREVIEW"` for the cluster. Single-node clusters are suitable for small, non-distributed workloads like single-node machine learning use-cases.
         /// 
         /// ```csharp
         /// using System.Collections.Generic;

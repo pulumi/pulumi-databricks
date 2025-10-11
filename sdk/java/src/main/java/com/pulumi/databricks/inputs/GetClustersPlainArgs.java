@@ -32,14 +32,14 @@ public final class GetClustersPlainArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * Filters to apply to the listed clusters. See filter_by Configuration Block below for details.
+     * Filters to apply to the listed clusters. See filterBy Configuration Block below for details.
      * 
      */
     @Import(name="filterBy")
     private @Nullable GetClustersFilterBy filterBy;
 
     /**
-     * @return Filters to apply to the listed clusters. See filter_by Configuration Block below for details.
+     * @return Filters to apply to the listed clusters. See filterBy Configuration Block below for details.
      * 
      */
     public Optional<GetClustersFilterBy> filterBy() {
@@ -107,7 +107,7 @@ public final class GetClustersPlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param filterBy Filters to apply to the listed clusters. See filter_by Configuration Block below for details.
+         * @param filterBy Filters to apply to the listed clusters. See filterBy Configuration Block below for details.
          * 
          * @return builder
          * 

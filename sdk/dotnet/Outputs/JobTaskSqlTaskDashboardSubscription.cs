@@ -14,7 +14,7 @@ namespace Pulumi.Databricks.Outputs
     public sealed class JobTaskSqlTaskDashboardSubscription
     {
         /// <summary>
-        /// A snapshot of the dashboard will be sent to the destination when the `destination_id` field is present.
+        /// A snapshot of the dashboard will be sent to the destination when the `DestinationId` field is present.
         /// </summary>
         public readonly string? DestinationId;
         public readonly string? UserName;

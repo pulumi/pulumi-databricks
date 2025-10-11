@@ -16,14 +16,14 @@ public final class JobTaskSqlTaskAlertSubscriptionArgs extends com.pulumi.resour
     public static final JobTaskSqlTaskAlertSubscriptionArgs Empty = new JobTaskSqlTaskAlertSubscriptionArgs();
 
     /**
-     * A snapshot of the dashboard will be sent to the destination when the `destination_id` field is present.
+     * A snapshot of the dashboard will be sent to the destination when the `destinationId` field is present.
      * 
      */
     @Import(name="destinationId")
     private @Nullable Output<String> destinationId;
 
     /**
-     * @return A snapshot of the dashboard will be sent to the destination when the `destination_id` field is present.
+     * @return A snapshot of the dashboard will be sent to the destination when the `destinationId` field is present.
      * 
      */
     public Optional<Output<String>> destinationId() {
@@ -63,7 +63,7 @@ public final class JobTaskSqlTaskAlertSubscriptionArgs extends com.pulumi.resour
         }
 
         /**
-         * @param destinationId A snapshot of the dashboard will be sent to the destination when the `destination_id` field is present.
+         * @param destinationId A snapshot of the dashboard will be sent to the destination when the `destinationId` field is present.
          * 
          * @return builder
          * 
@@ -74,7 +74,7 @@ public final class JobTaskSqlTaskAlertSubscriptionArgs extends com.pulumi.resour
         }
 
         /**
-         * @param destinationId A snapshot of the dashboard will be sent to the destination when the `destination_id` field is present.
+         * @param destinationId A snapshot of the dashboard will be sent to the destination when the `destinationId` field is present.
          * 
          * @return builder
          * 

@@ -17,14 +17,14 @@ public final class ModelServingProvisionedThroughputConfigTrafficConfigArgs exte
     public static final ModelServingProvisionedThroughputConfigTrafficConfigArgs Empty = new ModelServingProvisionedThroughputConfigTrafficConfigArgs();
 
     /**
-     * Each block represents a route that defines traffic to each served entity. Each `served_entity` block needs to have a corresponding `routes` block.
+     * Each block represents a route that defines traffic to each served entity. Each `servedEntity` block needs to have a corresponding `routes` block.
      * 
      */
     @Import(name="routes")
     private @Nullable Output<List<ModelServingProvisionedThroughputConfigTrafficConfigRouteArgs>> routes;
 
     /**
-     * @return Each block represents a route that defines traffic to each served entity. Each `served_entity` block needs to have a corresponding `routes` block.
+     * @return Each block represents a route that defines traffic to each served entity. Each `servedEntity` block needs to have a corresponding `routes` block.
      * 
      */
     public Optional<Output<List<ModelServingProvisionedThroughputConfigTrafficConfigRouteArgs>>> routes() {
@@ -56,7 +56,7 @@ public final class ModelServingProvisionedThroughputConfigTrafficConfigArgs exte
         }
 
         /**
-         * @param routes Each block represents a route that defines traffic to each served entity. Each `served_entity` block needs to have a corresponding `routes` block.
+         * @param routes Each block represents a route that defines traffic to each served entity. Each `servedEntity` block needs to have a corresponding `routes` block.
          * 
          * @return builder
          * 
@@ -67,7 +67,7 @@ public final class ModelServingProvisionedThroughputConfigTrafficConfigArgs exte
         }
 
         /**
-         * @param routes Each block represents a route that defines traffic to each served entity. Each `served_entity` block needs to have a corresponding `routes` block.
+         * @param routes Each block represents a route that defines traffic to each served entity. Each `servedEntity` block needs to have a corresponding `routes` block.
          * 
          * @return builder
          * 
@@ -77,7 +77,7 @@ public final class ModelServingProvisionedThroughputConfigTrafficConfigArgs exte
         }
 
         /**
-         * @param routes Each block represents a route that defines traffic to each served entity. Each `served_entity` block needs to have a corresponding `routes` block.
+         * @param routes Each block represents a route that defines traffic to each served entity. Each `servedEntity` block needs to have a corresponding `routes` block.
          * 
          * @return builder
          * 

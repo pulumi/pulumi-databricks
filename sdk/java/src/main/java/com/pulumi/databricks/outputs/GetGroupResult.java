@@ -58,10 +58,10 @@ public final class GetGroupResult {
     private List<String> instanceProfiles;
     /**
      * @deprecated
-     * Please use `users`, `service_principals`, and `child_groups` instead
+     * Please use `users`, `servicePrincipals`, and `childGroups` instead
      * 
      */
-    @Deprecated /* Please use `users`, `service_principals`, and `child_groups` instead */
+    @Deprecated /* Please use `users`, `servicePrincipals`, and `childGroups` instead */
     private List<String> members;
     private @Nullable Boolean recursive;
     /**
@@ -142,10 +142,10 @@ public final class GetGroupResult {
     }
     /**
      * @deprecated
-     * Please use `users`, `service_principals`, and `child_groups` instead
+     * Please use `users`, `servicePrincipals`, and `childGroups` instead
      * 
      */
-    @Deprecated /* Please use `users`, `service_principals`, and `child_groups` instead */
+    @Deprecated /* Please use `users`, `servicePrincipals`, and `childGroups` instead */
     public List<String> members() {
         return this.members;
     }
