@@ -143,7 +143,7 @@ namespace Pulumi.Databricks
     public partial class Pipeline : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Optional boolean flag. If false, deployment will fail if name conflicts with that of another pipeline. default is `false`.
+        /// Optional boolean flag. If false, deployment will fail if name conflicts with that of another pipeline. default is `False`.
         /// </summary>
         [Output("allowDuplicateNames")]
         public Output<bool?> AllowDuplicateNames { get; private set; } = null!;
@@ -155,7 +155,7 @@ namespace Pulumi.Databricks
         public Output<string?> BudgetPolicyId { get; private set; } = null!;
 
         /// <summary>
-        /// The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
+        /// The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `Storage`).
         /// </summary>
         [Output("catalog")]
         public Output<string?> Catalog { get; private set; } = null!;
@@ -173,7 +173,7 @@ namespace Pulumi.Databricks
         public Output<string> ClusterId { get; private set; } = null!;
 
         /// <summary>
-        /// blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that Lakeflow Declarative Pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/api/workspace/pipelines/create#clusters).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
+        /// blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that Lakeflow Declarative Pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/api/workspace/pipelines/create#clusters).*  Also, note that `Autoscale` block is extended with the `Mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
         /// </summary>
         [Output("clusters")]
         public Output<ImmutableArray<Outputs.PipelineCluster>> Clusters { get; private set; } = null!;
@@ -185,7 +185,7 @@ namespace Pulumi.Databricks
         public Output<ImmutableDictionary<string, string>?> Configuration { get; private set; } = null!;
 
         /// <summary>
-        /// A flag indicating whether to run the pipeline continuously. The default value is `false`.
+        /// A flag indicating whether to run the pipeline continuously. The default value is `False`.
         /// </summary>
         [Output("continuous")]
         public Output<bool?> Continuous { get; private set; } = null!;
@@ -200,13 +200,13 @@ namespace Pulumi.Databricks
         public Output<Outputs.PipelineDeployment?> Deployment { get; private set; } = null!;
 
         /// <summary>
-        /// A flag indicating whether to run the pipeline in development mode. The default value is `false`.
+        /// A flag indicating whether to run the pipeline in development mode. The default value is `False`.
         /// </summary>
         [Output("development")]
         public Output<bool?> Development { get; private set; } = null!;
 
         /// <summary>
-        /// optional name of the [product edition](https://docs.databricks.com/aws/en/dlt/configure-pipeline#choose-a-product-edition). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).  Not required when `serverless` is set to `true`.
+        /// optional name of the [product edition](https://docs.databricks.com/aws/en/dlt/configure-pipeline#choose-a-product-edition). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).  Not required when `Serverless` is set to `True`.
         /// </summary>
         [Output("edition")]
         public Output<string?> Edition { get; private set; } = null!;
@@ -263,7 +263,7 @@ namespace Pulumi.Databricks
         public Output<ImmutableArray<Outputs.PipelineNotification>> Notifications { get; private set; } = null!;
 
         /// <summary>
-        /// A flag indicating whether to use Photon engine. The default value is `false`.
+        /// A flag indicating whether to use Photon engine. The default value is `False`.
         /// </summary>
         [Output("photon")]
         public Output<bool?> Photon { get; private set; } = null!;
@@ -290,7 +290,7 @@ namespace Pulumi.Databricks
         public Output<string?> Schema { get; private set; } = null!;
 
         /// <summary>
-        /// An optional flag indicating if serverless compute should be used for this Lakeflow Declarative Pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
+        /// An optional flag indicating if serverless compute should be used for this Lakeflow Declarative Pipeline.  Requires `Catalog` to be set, as it could be used only with Unity Catalog.
         /// </summary>
         [Output("serverless")]
         public Output<bool?> Serverless { get; private set; } = null!;
@@ -299,7 +299,7 @@ namespace Pulumi.Databricks
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
-        /// A location on cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
+        /// A location on cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `Catalog`).
         /// </summary>
         [Output("storage")]
         public Output<string?> Storage { get; private set; } = null!;
@@ -372,7 +372,7 @@ namespace Pulumi.Databricks
     public sealed class PipelineArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Optional boolean flag. If false, deployment will fail if name conflicts with that of another pipeline. default is `false`.
+        /// Optional boolean flag. If false, deployment will fail if name conflicts with that of another pipeline. default is `False`.
         /// </summary>
         [Input("allowDuplicateNames")]
         public Input<bool>? AllowDuplicateNames { get; set; }
@@ -384,7 +384,7 @@ namespace Pulumi.Databricks
         public Input<string>? BudgetPolicyId { get; set; }
 
         /// <summary>
-        /// The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
+        /// The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `Storage`).
         /// </summary>
         [Input("catalog")]
         public Input<string>? Catalog { get; set; }
@@ -405,7 +405,7 @@ namespace Pulumi.Databricks
         private InputList<Inputs.PipelineClusterArgs>? _clusters;
 
         /// <summary>
-        /// blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that Lakeflow Declarative Pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/api/workspace/pipelines/create#clusters).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
+        /// blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that Lakeflow Declarative Pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/api/workspace/pipelines/create#clusters).*  Also, note that `Autoscale` block is extended with the `Mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
         /// </summary>
         public InputList<Inputs.PipelineClusterArgs> Clusters
         {
@@ -426,7 +426,7 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
-        /// A flag indicating whether to run the pipeline continuously. The default value is `false`.
+        /// A flag indicating whether to run the pipeline continuously. The default value is `False`.
         /// </summary>
         [Input("continuous")]
         public Input<bool>? Continuous { get; set; }
@@ -441,13 +441,13 @@ namespace Pulumi.Databricks
         public Input<Inputs.PipelineDeploymentArgs>? Deployment { get; set; }
 
         /// <summary>
-        /// A flag indicating whether to run the pipeline in development mode. The default value is `false`.
+        /// A flag indicating whether to run the pipeline in development mode. The default value is `False`.
         /// </summary>
         [Input("development")]
         public Input<bool>? Development { get; set; }
 
         /// <summary>
-        /// optional name of the [product edition](https://docs.databricks.com/aws/en/dlt/configure-pipeline#choose-a-product-edition). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).  Not required when `serverless` is set to `true`.
+        /// optional name of the [product edition](https://docs.databricks.com/aws/en/dlt/configure-pipeline#choose-a-product-edition). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).  Not required when `Serverless` is set to `True`.
         /// </summary>
         [Input("edition")]
         public Input<string>? Edition { get; set; }
@@ -520,7 +520,7 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
-        /// A flag indicating whether to use Photon engine. The default value is `false`.
+        /// A flag indicating whether to use Photon engine. The default value is `False`.
         /// </summary>
         [Input("photon")]
         public Input<bool>? Photon { get; set; }
@@ -547,7 +547,7 @@ namespace Pulumi.Databricks
         public Input<string>? Schema { get; set; }
 
         /// <summary>
-        /// An optional flag indicating if serverless compute should be used for this Lakeflow Declarative Pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
+        /// An optional flag indicating if serverless compute should be used for this Lakeflow Declarative Pipeline.  Requires `Catalog` to be set, as it could be used only with Unity Catalog.
         /// </summary>
         [Input("serverless")]
         public Input<bool>? Serverless { get; set; }
@@ -556,7 +556,7 @@ namespace Pulumi.Databricks
         public Input<string>? State { get; set; }
 
         /// <summary>
-        /// A location on cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
+        /// A location on cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `Catalog`).
         /// </summary>
         [Input("storage")]
         public Input<string>? Storage { get; set; }
@@ -597,7 +597,7 @@ namespace Pulumi.Databricks
     public sealed class PipelineState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Optional boolean flag. If false, deployment will fail if name conflicts with that of another pipeline. default is `false`.
+        /// Optional boolean flag. If false, deployment will fail if name conflicts with that of another pipeline. default is `False`.
         /// </summary>
         [Input("allowDuplicateNames")]
         public Input<bool>? AllowDuplicateNames { get; set; }
@@ -609,7 +609,7 @@ namespace Pulumi.Databricks
         public Input<string>? BudgetPolicyId { get; set; }
 
         /// <summary>
-        /// The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
+        /// The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `Storage`).
         /// </summary>
         [Input("catalog")]
         public Input<string>? Catalog { get; set; }
@@ -630,7 +630,7 @@ namespace Pulumi.Databricks
         private InputList<Inputs.PipelineClusterGetArgs>? _clusters;
 
         /// <summary>
-        /// blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that Lakeflow Declarative Pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/api/workspace/pipelines/create#clusters).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
+        /// blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that Lakeflow Declarative Pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/api/workspace/pipelines/create#clusters).*  Also, note that `Autoscale` block is extended with the `Mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
         /// </summary>
         public InputList<Inputs.PipelineClusterGetArgs> Clusters
         {
@@ -651,7 +651,7 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
-        /// A flag indicating whether to run the pipeline continuously. The default value is `false`.
+        /// A flag indicating whether to run the pipeline continuously. The default value is `False`.
         /// </summary>
         [Input("continuous")]
         public Input<bool>? Continuous { get; set; }
@@ -666,13 +666,13 @@ namespace Pulumi.Databricks
         public Input<Inputs.PipelineDeploymentGetArgs>? Deployment { get; set; }
 
         /// <summary>
-        /// A flag indicating whether to run the pipeline in development mode. The default value is `false`.
+        /// A flag indicating whether to run the pipeline in development mode. The default value is `False`.
         /// </summary>
         [Input("development")]
         public Input<bool>? Development { get; set; }
 
         /// <summary>
-        /// optional name of the [product edition](https://docs.databricks.com/aws/en/dlt/configure-pipeline#choose-a-product-edition). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).  Not required when `serverless` is set to `true`.
+        /// optional name of the [product edition](https://docs.databricks.com/aws/en/dlt/configure-pipeline#choose-a-product-edition). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).  Not required when `Serverless` is set to `True`.
         /// </summary>
         [Input("edition")]
         public Input<string>? Edition { get; set; }
@@ -745,7 +745,7 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
-        /// A flag indicating whether to use Photon engine. The default value is `false`.
+        /// A flag indicating whether to use Photon engine. The default value is `False`.
         /// </summary>
         [Input("photon")]
         public Input<bool>? Photon { get; set; }
@@ -772,7 +772,7 @@ namespace Pulumi.Databricks
         public Input<string>? Schema { get; set; }
 
         /// <summary>
-        /// An optional flag indicating if serverless compute should be used for this Lakeflow Declarative Pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
+        /// An optional flag indicating if serverless compute should be used for this Lakeflow Declarative Pipeline.  Requires `Catalog` to be set, as it could be used only with Unity Catalog.
         /// </summary>
         [Input("serverless")]
         public Input<bool>? Serverless { get; set; }
@@ -781,7 +781,7 @@ namespace Pulumi.Databricks
         public Input<string>? State { get; set; }
 
         /// <summary>
-        /// A location on cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
+        /// A location on cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `Catalog`).
         /// </summary>
         [Input("storage")]
         public Input<string>? Storage { get; set; }

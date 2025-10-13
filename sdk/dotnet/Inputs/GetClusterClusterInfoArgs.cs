@@ -90,7 +90,7 @@ namespace Pulumi.Databricks.Inputs
         public Input<Inputs.GetClusterClusterInfoDriverInputArgs>? Driver { get; set; }
 
         /// <summary>
-        /// similar to `instance_pool_id`, but for driver node.
+        /// similar to `InstancePoolId`, but for driver node.
         /// </summary>
         [Input("driverInstancePoolId")]
         public Input<string>? DriverInstancePoolId { get; set; }

@@ -24,7 +24,7 @@ public final class GetSparkVersionResult {
     @Deprecated /* Not required anymore - it's automatically enabled on the Graviton-based node types */
     private @Nullable Boolean graviton;
     /**
-     * @return Databricks Runtime version, that can be used as `spark_version` field in databricks_job, databricks_cluster, or databricks_instance_pool.
+     * @return Databricks Runtime version, that can be used as `sparkVersion` field in databricks_job, databricks_cluster, or databricks_instance_pool.
      * 
      */
     private String id;
@@ -61,7 +61,7 @@ public final class GetSparkVersionResult {
         return Optional.ofNullable(this.graviton);
     }
     /**
-     * @return Databricks Runtime version, that can be used as `spark_version` field in databricks_job, databricks_cluster, or databricks_instance_pool.
+     * @return Databricks Runtime version, that can be used as `sparkVersion` field in databricks_job, databricks_cluster, or databricks_instance_pool.
      * 
      */
     public String id() {

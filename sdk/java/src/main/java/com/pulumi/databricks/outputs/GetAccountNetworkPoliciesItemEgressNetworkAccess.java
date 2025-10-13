@@ -27,7 +27,7 @@ public final class GetAccountNetworkPoliciesItemEgressNetworkAccess {
      */
     private @Nullable List<GetAccountNetworkPoliciesItemEgressNetworkAccessAllowedStorageDestination> allowedStorageDestinations;
     /**
-     * @return (EgressNetworkPolicyNetworkAccessPolicyPolicyEnforcement) - Optional. When policy_enforcement is not provided, we default to ENFORCE_MODE_ALL_SERVICES
+     * @return (EgressNetworkPolicyNetworkAccessPolicyPolicyEnforcement) - Optional. When policyEnforcement is not provided, we default to ENFORCE_MODE_ALL_SERVICES
      * 
      */
     private @Nullable GetAccountNetworkPoliciesItemEgressNetworkAccessPolicyEnforcement policyEnforcement;
@@ -53,7 +53,7 @@ public final class GetAccountNetworkPoliciesItemEgressNetworkAccess {
         return this.allowedStorageDestinations == null ? List.of() : this.allowedStorageDestinations;
     }
     /**
-     * @return (EgressNetworkPolicyNetworkAccessPolicyPolicyEnforcement) - Optional. When policy_enforcement is not provided, we default to ENFORCE_MODE_ALL_SERVICES
+     * @return (EgressNetworkPolicyNetworkAccessPolicyPolicyEnforcement) - Optional. When policyEnforcement is not provided, we default to ENFORCE_MODE_ALL_SERVICES
      * 
      */
     public Optional<GetAccountNetworkPoliciesItemEgressNetworkAccessPolicyEnforcement> policyEnforcement() {

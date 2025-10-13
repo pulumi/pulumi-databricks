@@ -94,13 +94,13 @@ namespace Pulumi.Databricks
         public Output<string?> DeltaSharingOrganizationName { get; private set; } = null!;
 
         /// <summary>
-        /// Required along with `delta_sharing_scope`. Used to set expiration duration in seconds on recipient data access tokens. Set to 0 for unlimited duration.
+        /// Required along with `DeltaSharingScope`. Used to set expiration duration in seconds on recipient data access tokens. Set to 0 for unlimited duration.
         /// </summary>
         [Output("deltaSharingRecipientTokenLifetimeInSeconds")]
         public Output<int?> DeltaSharingRecipientTokenLifetimeInSeconds { get; private set; } = null!;
 
         /// <summary>
-        /// Required along with `delta_sharing_recipient_token_lifetime_in_seconds`. Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.  INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
+        /// Required along with `DeltaSharingRecipientTokenLifetimeInSeconds`. Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.  INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
         /// </summary>
         [Output("deltaSharingScope")]
         public Output<string?> DeltaSharingScope { get; private set; } = null!;
@@ -124,7 +124,7 @@ namespace Pulumi.Databricks
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Username/groupname/sp application_id of the metastore owner.
+        /// Username/groupname/sp ApplicationId of the metastore owner.
         /// </summary>
         [Output("owner")]
         public Output<string> Owner { get; private set; } = null!;
@@ -136,7 +136,7 @@ namespace Pulumi.Databricks
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
-        /// Path on cloud storage account, where managed `databricks.Table` are stored. Change forces creation of a new resource. If no `storage_root` is defined for the metastore, each catalog must have a `storage_root` defined.
+        /// Path on cloud storage account, where managed `databricks.Table` are stored. Change forces creation of a new resource. If no `StorageRoot` is defined for the metastore, each catalog must have a `StorageRoot` defined.
         /// </summary>
         [Output("storageRoot")]
         public Output<string?> StorageRoot { get; private set; } = null!;
@@ -215,13 +215,13 @@ namespace Pulumi.Databricks
         public Input<string>? DeltaSharingOrganizationName { get; set; }
 
         /// <summary>
-        /// Required along with `delta_sharing_scope`. Used to set expiration duration in seconds on recipient data access tokens. Set to 0 for unlimited duration.
+        /// Required along with `DeltaSharingScope`. Used to set expiration duration in seconds on recipient data access tokens. Set to 0 for unlimited duration.
         /// </summary>
         [Input("deltaSharingRecipientTokenLifetimeInSeconds")]
         public Input<int>? DeltaSharingRecipientTokenLifetimeInSeconds { get; set; }
 
         /// <summary>
-        /// Required along with `delta_sharing_recipient_token_lifetime_in_seconds`. Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.  INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
+        /// Required along with `DeltaSharingRecipientTokenLifetimeInSeconds`. Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.  INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
         /// </summary>
         [Input("deltaSharingScope")]
         public Input<string>? DeltaSharingScope { get; set; }
@@ -245,7 +245,7 @@ namespace Pulumi.Databricks
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Username/groupname/sp application_id of the metastore owner.
+        /// Username/groupname/sp ApplicationId of the metastore owner.
         /// </summary>
         [Input("owner")]
         public Input<string>? Owner { get; set; }
@@ -257,7 +257,7 @@ namespace Pulumi.Databricks
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// Path on cloud storage account, where managed `databricks.Table` are stored. Change forces creation of a new resource. If no `storage_root` is defined for the metastore, each catalog must have a `storage_root` defined.
+        /// Path on cloud storage account, where managed `databricks.Table` are stored. Change forces creation of a new resource. If no `StorageRoot` is defined for the metastore, each catalog must have a `StorageRoot` defined.
         /// </summary>
         [Input("storageRoot")]
         public Input<string>? StorageRoot { get; set; }
@@ -298,13 +298,13 @@ namespace Pulumi.Databricks
         public Input<string>? DeltaSharingOrganizationName { get; set; }
 
         /// <summary>
-        /// Required along with `delta_sharing_scope`. Used to set expiration duration in seconds on recipient data access tokens. Set to 0 for unlimited duration.
+        /// Required along with `DeltaSharingScope`. Used to set expiration duration in seconds on recipient data access tokens. Set to 0 for unlimited duration.
         /// </summary>
         [Input("deltaSharingRecipientTokenLifetimeInSeconds")]
         public Input<int>? DeltaSharingRecipientTokenLifetimeInSeconds { get; set; }
 
         /// <summary>
-        /// Required along with `delta_sharing_recipient_token_lifetime_in_seconds`. Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.  INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
+        /// Required along with `DeltaSharingRecipientTokenLifetimeInSeconds`. Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.  INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
         /// </summary>
         [Input("deltaSharingScope")]
         public Input<string>? DeltaSharingScope { get; set; }
@@ -328,7 +328,7 @@ namespace Pulumi.Databricks
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Username/groupname/sp application_id of the metastore owner.
+        /// Username/groupname/sp ApplicationId of the metastore owner.
         /// </summary>
         [Input("owner")]
         public Input<string>? Owner { get; set; }
@@ -340,7 +340,7 @@ namespace Pulumi.Databricks
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// Path on cloud storage account, where managed `databricks.Table` are stored. Change forces creation of a new resource. If no `storage_root` is defined for the metastore, each catalog must have a `storage_root` defined.
+        /// Path on cloud storage account, where managed `databricks.Table` are stored. Change forces creation of a new resource. If no `StorageRoot` is defined for the metastore, each catalog must have a `StorageRoot` defined.
         /// </summary>
         [Input("storageRoot")]
         public Input<string>? StorageRoot { get; set; }

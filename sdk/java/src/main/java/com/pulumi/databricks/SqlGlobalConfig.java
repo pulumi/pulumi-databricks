@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  * 
  * ### Azure example
  * 
- * For Azure you should use the `data_access_config` to provide the service principal configuration. You can use the Databricks SQL Admin Console UI to help you generate the right configuration values.
+ * For Azure you should use the `dataAccessConfig` to provide the service principal configuration. You can use the Databricks SQL Admin Console UI to help you generate the right configuration values.
  * 
  * <pre>
  * {@code

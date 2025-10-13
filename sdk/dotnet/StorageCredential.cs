@@ -215,7 +215,7 @@ namespace Pulumi.Databricks
         /// <summary>
         /// Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
         /// 
-        /// `aws_iam_role` optional configuration block for credential details for AWS:
+        /// `AwsIamRole` optional configuration block for credential details for AWS:
         /// </summary>
         [Output("isolationMode")]
         public Output<string> IsolationMode { get; private set; } = null!;
@@ -233,7 +233,7 @@ namespace Pulumi.Databricks
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Username/groupname/sp application_id of the storage credential owner.
+        /// Username/groupname/sp ApplicationId of the storage credential owner.
         /// </summary>
         [Output("owner")]
         public Output<string> Owner { get; private set; } = null!;
@@ -338,7 +338,7 @@ namespace Pulumi.Databricks
         /// <summary>
         /// Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
         /// 
-        /// `aws_iam_role` optional configuration block for credential details for AWS:
+        /// `AwsIamRole` optional configuration block for credential details for AWS:
         /// </summary>
         [Input("isolationMode")]
         public Input<string>? IsolationMode { get; set; }
@@ -356,7 +356,7 @@ namespace Pulumi.Databricks
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Username/groupname/sp application_id of the storage credential owner.
+        /// Username/groupname/sp ApplicationId of the storage credential owner.
         /// </summary>
         [Input("owner")]
         public Input<string>? Owner { get; set; }
@@ -417,7 +417,7 @@ namespace Pulumi.Databricks
         /// <summary>
         /// Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
         /// 
-        /// `aws_iam_role` optional configuration block for credential details for AWS:
+        /// `AwsIamRole` optional configuration block for credential details for AWS:
         /// </summary>
         [Input("isolationMode")]
         public Input<string>? IsolationMode { get; set; }
@@ -435,7 +435,7 @@ namespace Pulumi.Databricks
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Username/groupname/sp application_id of the storage credential owner.
+        /// Username/groupname/sp ApplicationId of the storage credential owner.
         /// </summary>
         [Input("owner")]
         public Input<string>? Owner { get; set; }

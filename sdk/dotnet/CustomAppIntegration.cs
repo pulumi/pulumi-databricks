@@ -89,7 +89,7 @@ namespace Pulumi.Databricks
         public Output<string> ClientSecret { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates whether an OAuth client secret is required to authenticate this client. Default to `false`. Change requires a new resource.
+        /// Indicates whether an OAuth client secret is required to authenticate this client. Default to `False`. Change requires a new resource.
         /// </summary>
         [Output("confidential")]
         public Output<bool?> Confidential { get; private set; } = null!;
@@ -122,7 +122,7 @@ namespace Pulumi.Databricks
         public Output<ImmutableArray<string>> RedirectUrls { get; private set; } = null!;
 
         /// <summary>
-        /// OAuth scopes granted to the application. Supported scopes: `all-apis`, `sql`, `offline_access`, `openid`, `profile`, `email`.
+        /// OAuth scopes granted to the application. Supported scopes: `all-apis`, `Sql`, `OfflineAccess`, `Openid`, `Profile`, `Email`.
         /// </summary>
         [Output("scopes")]
         public Output<ImmutableArray<string>> Scopes { get; private set; } = null!;
@@ -206,7 +206,7 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
-        /// Indicates whether an OAuth client secret is required to authenticate this client. Default to `false`. Change requires a new resource.
+        /// Indicates whether an OAuth client secret is required to authenticate this client. Default to `False`. Change requires a new resource.
         /// </summary>
         [Input("confidential")]
         public Input<bool>? Confidential { get; set; }
@@ -248,7 +248,7 @@ namespace Pulumi.Databricks
         private InputList<string>? _scopes;
 
         /// <summary>
-        /// OAuth scopes granted to the application. Supported scopes: `all-apis`, `sql`, `offline_access`, `openid`, `profile`, `email`.
+        /// OAuth scopes granted to the application. Supported scopes: `all-apis`, `Sql`, `OfflineAccess`, `Openid`, `Profile`, `Email`.
         /// </summary>
         public InputList<string> Scopes
         {
@@ -298,7 +298,7 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
-        /// Indicates whether an OAuth client secret is required to authenticate this client. Default to `false`. Change requires a new resource.
+        /// Indicates whether an OAuth client secret is required to authenticate this client. Default to `False`. Change requires a new resource.
         /// </summary>
         [Input("confidential")]
         public Input<bool>? Confidential { get; set; }
@@ -340,7 +340,7 @@ namespace Pulumi.Databricks
         private InputList<string>? _scopes;
 
         /// <summary>
-        /// OAuth scopes granted to the application. Supported scopes: `all-apis`, `sql`, `offline_access`, `openid`, `profile`, `email`.
+        /// OAuth scopes granted to the application. Supported scopes: `all-apis`, `Sql`, `OfflineAccess`, `Openid`, `Profile`, `Email`.
         /// </summary>
         public InputList<string> Scopes
         {

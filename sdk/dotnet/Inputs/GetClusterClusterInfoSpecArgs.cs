@@ -69,7 +69,7 @@ namespace Pulumi.Databricks.Inputs
         public Input<Inputs.GetClusterClusterInfoSpecDockerImageInputArgs>? DockerImage { get; set; }
 
         /// <summary>
-        /// similar to `instance_pool_id`, but for driver node.
+        /// similar to `InstancePoolId`, but for driver node.
         /// </summary>
         [Input("driverInstancePoolId", required: true)]
         public Input<string> DriverInstancePoolId { get; set; } = null!;

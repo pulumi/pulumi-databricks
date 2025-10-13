@@ -117,7 +117,7 @@ namespace Pulumi.Databricks
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Username/groupname/sp application_id of the schema owner.
+        /// Username/groupname/sp ApplicationId of the schema owner.
         /// </summary>
         [Output("owner")]
         public Output<string> Owner { get; private set; } = null!;
@@ -220,7 +220,7 @@ namespace Pulumi.Databricks
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Username/groupname/sp application_id of the schema owner.
+        /// Username/groupname/sp ApplicationId of the schema owner.
         /// </summary>
         [Input("owner")]
         public Input<string>? Owner { get; set; }
@@ -285,7 +285,7 @@ namespace Pulumi.Databricks
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Username/groupname/sp application_id of the schema owner.
+        /// Username/groupname/sp ApplicationId of the schema owner.
         /// </summary>
         [Input("owner")]
         public Input<string>? Owner { get; set; }

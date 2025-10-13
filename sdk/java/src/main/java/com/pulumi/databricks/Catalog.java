@@ -243,14 +243,14 @@ public class Catalog extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.options);
     }
     /**
-     * Username/groupname/sp application_id of the catalog owner.
+     * Username/groupname/sp applicationId of the catalog owner.
      * 
      */
     @Export(name="owner", refs={String.class}, tree="[0]")
     private Output<String> owner;
 
     /**
-     * @return Username/groupname/sp application_id of the catalog owner.
+     * @return Username/groupname/sp applicationId of the catalog owner.
      * 
      */
     public Output<String> owner() {

@@ -19,6 +19,8 @@ import (
 // * which IdP, or issuer, your Databricks account should accept tokens from
 // * how to determine which Databricks user, or subject, a token is issued for
 //
+// ## Example Usage
+//
 // ## Import
 //
 // As of Pulumi v1.5, resources can be imported through configuration.

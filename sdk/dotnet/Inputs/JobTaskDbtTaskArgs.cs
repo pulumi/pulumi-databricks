@@ -31,27 +31,27 @@ namespace Pulumi.Databricks.Inputs
         }
 
         /// <summary>
-        /// The relative path to the directory in the repository specified by `git_source` where dbt should look in for the `profiles.yml` file. If not specified, defaults to the repository's root directory. Equivalent to passing `--profile-dir` to a dbt command.
+        /// The relative path to the directory in the repository specified by `GitSource` where dbt should look in for the `profiles.yml` file. If not specified, defaults to the repository's root directory. Equivalent to passing `--profile-dir` to a dbt command.
         /// </summary>
         [Input("profilesDirectory")]
         public Input<string>? ProfilesDirectory { get; set; }
 
         /// <summary>
         /// The path where dbt should look for `dbt_project.yml`. Equivalent to passing `--project-dir` to the dbt CLI.
-        /// * If `source` is `GIT`: Relative path to the directory in the repository specified in the `git_source` block. Defaults to the repository's root directory when not specified.
-        /// * If `source` is `WORKSPACE`: Absolute path to the folder in the workspace.
+        /// * If `Source` is `GIT`: Relative path to the directory in the repository specified in the `GitSource` block. Defaults to the repository's root directory when not specified.
+        /// * If `Source` is `WORKSPACE`: Absolute path to the folder in the workspace.
         /// </summary>
         [Input("projectDirectory")]
         public Input<string>? ProjectDirectory { get; set; }
 
         /// <summary>
-        /// The name of the schema dbt should run in. Defaults to `default`.
+        /// The name of the schema dbt should run in. Defaults to `Default`.
         /// </summary>
         [Input("schema")]
         public Input<string>? Schema { get; set; }
 
         /// <summary>
-        /// The source of the project. Possible values are `WORKSPACE` and `GIT`.  Defaults to `GIT` if a `git_source` block is present in the job definition.
+        /// The source of the project. Possible values are `WORKSPACE` and `GIT`.  Defaults to `GIT` if a `GitSource` block is present in the job definition.
         /// </summary>
         [Input("source")]
         public Input<string>? Source { get; set; }
@@ -59,7 +59,7 @@ namespace Pulumi.Databricks.Inputs
         /// <summary>
         /// The ID of the SQL warehouse that dbt should execute against.
         /// 
-        /// You also need to include a `git_source` block to configure the repository that contains the dbt project.
+        /// You also need to include a `GitSource` block to configure the repository that contains the dbt project.
         /// </summary>
         [Input("warehouseId")]
         public Input<string>? WarehouseId { get; set; }

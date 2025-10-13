@@ -12,7 +12,7 @@ import java.util.Objects;
 @CustomType
 public final class GetCurrentMetastoreResult {
     /**
-     * @return metastore ID. Will be `no_metastore` if there is no metastore assigned for the current workspace
+     * @return metastore ID. Will be `noMetastore` if there is no metastore assigned for the current workspace
      * 
      */
     private String id;
@@ -24,7 +24,7 @@ public final class GetCurrentMetastoreResult {
 
     private GetCurrentMetastoreResult() {}
     /**
-     * @return metastore ID. Will be `no_metastore` if there is no metastore assigned for the current workspace
+     * @return metastore ID. Will be `noMetastore` if there is no metastore assigned for the current workspace
      * 
      */
     public String id() {

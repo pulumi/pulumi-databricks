@@ -22,6 +22,8 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * # Example: Clean Room Resource
+ * 
  * ## Import
  * 
  * As of Pulumi v1.5, resources can be imported through configuration.

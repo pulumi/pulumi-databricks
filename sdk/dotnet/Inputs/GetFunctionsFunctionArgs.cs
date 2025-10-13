@@ -13,7 +13,7 @@ namespace Pulumi.Databricks.Inputs
     public sealed class GetFunctionsFunctionInputArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Indicates whether the principal is limited to retrieving metadata for the associated object through the `BROWSE` privilege when `include_browse` is enabled in the request.
+        /// Indicates whether the principal is limited to retrieving metadata for the associated object through the `BROWSE` privilege when `IncludeBrowse` is enabled in the request.
         /// </summary>
         [Input("browseOnly")]
         public Input<bool>? BrowseOnly { get; set; }
@@ -127,13 +127,13 @@ namespace Pulumi.Databricks.Inputs
         public Input<string>? Properties { get; set; }
 
         /// <summary>
-        /// Table function return parameters.  See `input_params` for description.
+        /// Table function return parameters.  See `InputParams` for description.
         /// </summary>
         [Input("returnParams")]
         public Input<Inputs.GetFunctionsFunctionReturnParamsInputArgs>? ReturnParams { get; set; }
 
         /// <summary>
-        /// Function language (`SQL` or `EXTERNAL`). When `EXTERNAL` is used, the language of the routine function should be specified in the `external_language` field, and the `return_params` of the function cannot be used (as `TABLE` return type is not supported), and the `sql_data_access` field must be `NO_SQL`.
+        /// Function language (`SQL` or `EXTERNAL`). When `EXTERNAL` is used, the language of the routine function should be specified in the `ExternalLanguage` field, and the `ReturnParams` of the function cannot be used (as `TABLE` return type is not supported), and the `SqlDataAccess` field must be `NO_SQL`.
         /// </summary>
         [Input("routineBody")]
         public Input<string>? RoutineBody { get; set; }

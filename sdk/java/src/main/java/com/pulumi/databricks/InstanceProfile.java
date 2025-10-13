@@ -227,7 +227,7 @@ import javax.annotation.Nullable;
  * 
  * ## Usage with Databricks SQL serverless
  * 
- * When the instance profile ARN and its associated IAM role ARN don&#39;t match and the instance profile is intended for use with Databricks SQL serverless, the `iam_role_arn` parameter can be specified.
+ * When the instance profile ARN and its associated IAM role ARN don&#39;t match and the instance profile is intended for use with Databricks SQL serverless, the `iamRoleArn` parameter can be specified.
  * 
  * <pre>
  * {@code
@@ -330,14 +330,14 @@ public class InstanceProfile extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.iamRoleArn);
     }
     /**
-     * `ARN` attribute of `aws_iam_instance_profile` output, the EC2 instance profile association to AWS IAM role. This ARN would be validated upon resource creation.
+     * `ARN` attribute of `awsIamInstanceProfile` output, the EC2 instance profile association to AWS IAM role. This ARN would be validated upon resource creation.
      * 
      */
     @Export(name="instanceProfileArn", refs={String.class}, tree="[0]")
     private Output<String> instanceProfileArn;
 
     /**
-     * @return `ARN` attribute of `aws_iam_instance_profile` output, the EC2 instance profile association to AWS IAM role. This ARN would be validated upon resource creation.
+     * @return `ARN` attribute of `awsIamInstanceProfile` output, the EC2 instance profile association to AWS IAM role. This ARN would be validated upon resource creation.
      * 
      */
     public Output<String> instanceProfileArn() {

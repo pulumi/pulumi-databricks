@@ -18,14 +18,14 @@ public final class NotebookArgs extends com.pulumi.resources.ResourceArgs {
     public static final NotebookArgs Empty = new NotebookArgs();
 
     /**
-     * The base64-encoded notebook source code. Conflicts with `source`. Use of `content_base64` is discouraged, as it&#39;s increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a notebook with configuration properties for a data pipeline.
+     * The base64-encoded notebook source code. Conflicts with `source`. Use of `contentBase64` is discouraged, as it&#39;s increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a notebook with configuration properties for a data pipeline.
      * 
      */
     @Import(name="contentBase64")
     private @Nullable Output<String> contentBase64;
 
     /**
-     * @return The base64-encoded notebook source code. Conflicts with `source`. Use of `content_base64` is discouraged, as it&#39;s increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a notebook with configuration properties for a data pipeline.
+     * @return The base64-encoded notebook source code. Conflicts with `source`. Use of `contentBase64` is discouraged, as it&#39;s increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a notebook with configuration properties for a data pipeline.
      * 
      */
     public Optional<Output<String>> contentBase64() {
@@ -111,14 +111,14 @@ public final class NotebookArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Path to notebook in source code format on local filesystem. Conflicts with `content_base64`.
+     * Path to notebook in source code format on local filesystem. Conflicts with `contentBase64`.
      * 
      */
     @Import(name="source")
     private @Nullable Output<String> source;
 
     /**
-     * @return Path to notebook in source code format on local filesystem. Conflicts with `content_base64`.
+     * @return Path to notebook in source code format on local filesystem. Conflicts with `contentBase64`.
      * 
      */
     public Optional<Output<String>> source() {
@@ -157,7 +157,7 @@ public final class NotebookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param contentBase64 The base64-encoded notebook source code. Conflicts with `source`. Use of `content_base64` is discouraged, as it&#39;s increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a notebook with configuration properties for a data pipeline.
+         * @param contentBase64 The base64-encoded notebook source code. Conflicts with `source`. Use of `contentBase64` is discouraged, as it&#39;s increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a notebook with configuration properties for a data pipeline.
          * 
          * @return builder
          * 
@@ -168,7 +168,7 @@ public final class NotebookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param contentBase64 The base64-encoded notebook source code. Conflicts with `source`. Use of `content_base64` is discouraged, as it&#39;s increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a notebook with configuration properties for a data pipeline.
+         * @param contentBase64 The base64-encoded notebook source code. Conflicts with `source`. Use of `contentBase64` is discouraged, as it&#39;s increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a notebook with configuration properties for a data pipeline.
          * 
          * @return builder
          * 
@@ -284,7 +284,7 @@ public final class NotebookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param source Path to notebook in source code format on local filesystem. Conflicts with `content_base64`.
+         * @param source Path to notebook in source code format on local filesystem. Conflicts with `contentBase64`.
          * 
          * @return builder
          * 
@@ -295,7 +295,7 @@ public final class NotebookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param source Path to notebook in source code format on local filesystem. Conflicts with `content_base64`.
+         * @param source Path to notebook in source code format on local filesystem. Conflicts with `contentBase64`.
          * 
          * @return builder
          * 

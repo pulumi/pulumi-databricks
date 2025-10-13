@@ -83,18 +83,18 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * (boolean) - xref AIP-129. `enable_pg_native_login` is owned by the client, while `effective_enable_pg_native_login` is owned by the server.
-     * `enable_pg_native_login` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-     * `effective_enable_pg_native_login` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * (boolean) - xref AIP-129. `enablePgNativeLogin` is owned by the client, while `effectiveEnablePgNativeLogin` is owned by the server.
+     * `enablePgNativeLogin` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+     * `effectiveEnablePgNativeLogin` on the other hand will always bet set in all response messages (Create/Update/Get/List)
      * 
      */
     @Import(name="effectiveEnablePgNativeLogin")
     private @Nullable Output<Boolean> effectiveEnablePgNativeLogin;
 
     /**
-     * @return (boolean) - xref AIP-129. `enable_pg_native_login` is owned by the client, while `effective_enable_pg_native_login` is owned by the server.
-     * `enable_pg_native_login` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-     * `effective_enable_pg_native_login` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * @return (boolean) - xref AIP-129. `enablePgNativeLogin` is owned by the client, while `effectiveEnablePgNativeLogin` is owned by the server.
+     * `enablePgNativeLogin` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+     * `effectiveEnablePgNativeLogin` on the other hand will always bet set in all response messages (Create/Update/Get/List)
      * 
      */
     public Optional<Output<Boolean>> effectiveEnablePgNativeLogin() {
@@ -102,18 +102,18 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * (boolean) - xref AIP-129. `enable_readable_secondaries` is owned by the client, while `effective_enable_readable_secondaries` is owned by the server.
-     * `enable_readable_secondaries` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-     * `effective_enable_readable_secondaries` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * (boolean) - xref AIP-129. `enableReadableSecondaries` is owned by the client, while `effectiveEnableReadableSecondaries` is owned by the server.
+     * `enableReadableSecondaries` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+     * `effectiveEnableReadableSecondaries` on the other hand will always bet set in all response messages (Create/Update/Get/List)
      * 
      */
     @Import(name="effectiveEnableReadableSecondaries")
     private @Nullable Output<Boolean> effectiveEnableReadableSecondaries;
 
     /**
-     * @return (boolean) - xref AIP-129. `enable_readable_secondaries` is owned by the client, while `effective_enable_readable_secondaries` is owned by the server.
-     * `enable_readable_secondaries` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-     * `effective_enable_readable_secondaries` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * @return (boolean) - xref AIP-129. `enableReadableSecondaries` is owned by the client, while `effectiveEnableReadableSecondaries` is owned by the server.
+     * `enableReadableSecondaries` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+     * `effectiveEnableReadableSecondaries` on the other hand will always bet set in all response messages (Create/Update/Get/List)
      * 
      */
     public Optional<Output<Boolean>> effectiveEnableReadableSecondaries() {
@@ -121,18 +121,18 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * (integer) - xref AIP-129. `node_count` is owned by the client, while `effective_node_count` is owned by the server.
-     * `node_count` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-     * `effective_node_count` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * (integer) - xref AIP-129. `nodeCount` is owned by the client, while `effectiveNodeCount` is owned by the server.
+     * `nodeCount` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+     * `effectiveNodeCount` on the other hand will always bet set in all response messages (Create/Update/Get/List)
      * 
      */
     @Import(name="effectiveNodeCount")
     private @Nullable Output<Integer> effectiveNodeCount;
 
     /**
-     * @return (integer) - xref AIP-129. `node_count` is owned by the client, while `effective_node_count` is owned by the server.
-     * `node_count` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-     * `effective_node_count` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * @return (integer) - xref AIP-129. `nodeCount` is owned by the client, while `effectiveNodeCount` is owned by the server.
+     * `nodeCount` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+     * `effectiveNodeCount` on the other hand will always bet set in all response messages (Create/Update/Get/List)
      * 
      */
     public Optional<Output<Integer>> effectiveNodeCount() {
@@ -140,18 +140,18 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * (integer) - xref AIP-129. `retention_window_in_days` is owned by the client, while `effective_retention_window_in_days` is owned by the server.
-     * `retention_window_in_days` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-     * `effective_retention_window_in_days` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * (integer) - xref AIP-129. `retentionWindowInDays` is owned by the client, while `effectiveRetentionWindowInDays` is owned by the server.
+     * `retentionWindowInDays` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+     * `effectiveRetentionWindowInDays` on the other hand will always bet set in all response messages (Create/Update/Get/List)
      * 
      */
     @Import(name="effectiveRetentionWindowInDays")
     private @Nullable Output<Integer> effectiveRetentionWindowInDays;
 
     /**
-     * @return (integer) - xref AIP-129. `retention_window_in_days` is owned by the client, while `effective_retention_window_in_days` is owned by the server.
-     * `retention_window_in_days` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-     * `effective_retention_window_in_days` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * @return (integer) - xref AIP-129. `retentionWindowInDays` is owned by the client, while `effectiveRetentionWindowInDays` is owned by the server.
+     * `retentionWindowInDays` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+     * `effectiveRetentionWindowInDays` on the other hand will always bet set in all response messages (Create/Update/Get/List)
      * 
      */
     public Optional<Output<Integer>> effectiveRetentionWindowInDays() {
@@ -159,18 +159,18 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * (boolean) - xref AIP-129. `stopped` is owned by the client, while `effective_stopped` is owned by the server.
+     * (boolean) - xref AIP-129. `stopped` is owned by the client, while `effectiveStopped` is owned by the server.
      * `stopped` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-     * `effective_stopped` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * `effectiveStopped` on the other hand will always bet set in all response messages (Create/Update/Get/List)
      * 
      */
     @Import(name="effectiveStopped")
     private @Nullable Output<Boolean> effectiveStopped;
 
     /**
-     * @return (boolean) - xref AIP-129. `stopped` is owned by the client, while `effective_stopped` is owned by the server.
+     * @return (boolean) - xref AIP-129. `stopped` is owned by the client, while `effectiveStopped` is owned by the server.
      * `stopped` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-     * `effective_stopped` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * `effectiveStopped` on the other hand will always bet set in all response messages (Create/Update/Get/List)
      * 
      */
     public Optional<Output<Boolean>> effectiveStopped() {
@@ -292,7 +292,7 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
 
     /**
      * (string) - The DNS endpoint to connect to the instance for read only access. This is only available if
-     * enable_readable_secondaries is true
+     * enableReadableSecondaries is true
      * 
      */
     @Import(name="readOnlyDns")
@@ -300,7 +300,7 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
 
     /**
      * @return (string) - The DNS endpoint to connect to the instance for read only access. This is only available if
-     * enable_readable_secondaries is true
+     * enableReadableSecondaries is true
      * 
      */
     public Optional<Output<String>> readOnlyDns() {
@@ -545,9 +545,9 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param effectiveEnablePgNativeLogin (boolean) - xref AIP-129. `enable_pg_native_login` is owned by the client, while `effective_enable_pg_native_login` is owned by the server.
-         * `enable_pg_native_login` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-         * `effective_enable_pg_native_login` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+         * @param effectiveEnablePgNativeLogin (boolean) - xref AIP-129. `enablePgNativeLogin` is owned by the client, while `effectiveEnablePgNativeLogin` is owned by the server.
+         * `enablePgNativeLogin` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+         * `effectiveEnablePgNativeLogin` on the other hand will always bet set in all response messages (Create/Update/Get/List)
          * 
          * @return builder
          * 
@@ -558,9 +558,9 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param effectiveEnablePgNativeLogin (boolean) - xref AIP-129. `enable_pg_native_login` is owned by the client, while `effective_enable_pg_native_login` is owned by the server.
-         * `enable_pg_native_login` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-         * `effective_enable_pg_native_login` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+         * @param effectiveEnablePgNativeLogin (boolean) - xref AIP-129. `enablePgNativeLogin` is owned by the client, while `effectiveEnablePgNativeLogin` is owned by the server.
+         * `enablePgNativeLogin` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+         * `effectiveEnablePgNativeLogin` on the other hand will always bet set in all response messages (Create/Update/Get/List)
          * 
          * @return builder
          * 
@@ -570,9 +570,9 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param effectiveEnableReadableSecondaries (boolean) - xref AIP-129. `enable_readable_secondaries` is owned by the client, while `effective_enable_readable_secondaries` is owned by the server.
-         * `enable_readable_secondaries` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-         * `effective_enable_readable_secondaries` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+         * @param effectiveEnableReadableSecondaries (boolean) - xref AIP-129. `enableReadableSecondaries` is owned by the client, while `effectiveEnableReadableSecondaries` is owned by the server.
+         * `enableReadableSecondaries` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+         * `effectiveEnableReadableSecondaries` on the other hand will always bet set in all response messages (Create/Update/Get/List)
          * 
          * @return builder
          * 
@@ -583,9 +583,9 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param effectiveEnableReadableSecondaries (boolean) - xref AIP-129. `enable_readable_secondaries` is owned by the client, while `effective_enable_readable_secondaries` is owned by the server.
-         * `enable_readable_secondaries` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-         * `effective_enable_readable_secondaries` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+         * @param effectiveEnableReadableSecondaries (boolean) - xref AIP-129. `enableReadableSecondaries` is owned by the client, while `effectiveEnableReadableSecondaries` is owned by the server.
+         * `enableReadableSecondaries` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+         * `effectiveEnableReadableSecondaries` on the other hand will always bet set in all response messages (Create/Update/Get/List)
          * 
          * @return builder
          * 
@@ -595,9 +595,9 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param effectiveNodeCount (integer) - xref AIP-129. `node_count` is owned by the client, while `effective_node_count` is owned by the server.
-         * `node_count` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-         * `effective_node_count` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+         * @param effectiveNodeCount (integer) - xref AIP-129. `nodeCount` is owned by the client, while `effectiveNodeCount` is owned by the server.
+         * `nodeCount` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+         * `effectiveNodeCount` on the other hand will always bet set in all response messages (Create/Update/Get/List)
          * 
          * @return builder
          * 
@@ -608,9 +608,9 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param effectiveNodeCount (integer) - xref AIP-129. `node_count` is owned by the client, while `effective_node_count` is owned by the server.
-         * `node_count` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-         * `effective_node_count` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+         * @param effectiveNodeCount (integer) - xref AIP-129. `nodeCount` is owned by the client, while `effectiveNodeCount` is owned by the server.
+         * `nodeCount` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+         * `effectiveNodeCount` on the other hand will always bet set in all response messages (Create/Update/Get/List)
          * 
          * @return builder
          * 
@@ -620,9 +620,9 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param effectiveRetentionWindowInDays (integer) - xref AIP-129. `retention_window_in_days` is owned by the client, while `effective_retention_window_in_days` is owned by the server.
-         * `retention_window_in_days` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-         * `effective_retention_window_in_days` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+         * @param effectiveRetentionWindowInDays (integer) - xref AIP-129. `retentionWindowInDays` is owned by the client, while `effectiveRetentionWindowInDays` is owned by the server.
+         * `retentionWindowInDays` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+         * `effectiveRetentionWindowInDays` on the other hand will always bet set in all response messages (Create/Update/Get/List)
          * 
          * @return builder
          * 
@@ -633,9 +633,9 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param effectiveRetentionWindowInDays (integer) - xref AIP-129. `retention_window_in_days` is owned by the client, while `effective_retention_window_in_days` is owned by the server.
-         * `retention_window_in_days` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-         * `effective_retention_window_in_days` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+         * @param effectiveRetentionWindowInDays (integer) - xref AIP-129. `retentionWindowInDays` is owned by the client, while `effectiveRetentionWindowInDays` is owned by the server.
+         * `retentionWindowInDays` will only be set in Create/Update response messages if and only if the user provides the field via the request.
+         * `effectiveRetentionWindowInDays` on the other hand will always bet set in all response messages (Create/Update/Get/List)
          * 
          * @return builder
          * 
@@ -645,9 +645,9 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param effectiveStopped (boolean) - xref AIP-129. `stopped` is owned by the client, while `effective_stopped` is owned by the server.
+         * @param effectiveStopped (boolean) - xref AIP-129. `stopped` is owned by the client, while `effectiveStopped` is owned by the server.
          * `stopped` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-         * `effective_stopped` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+         * `effectiveStopped` on the other hand will always bet set in all response messages (Create/Update/Get/List)
          * 
          * @return builder
          * 
@@ -658,9 +658,9 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param effectiveStopped (boolean) - xref AIP-129. `stopped` is owned by the client, while `effective_stopped` is owned by the server.
+         * @param effectiveStopped (boolean) - xref AIP-129. `stopped` is owned by the client, while `effectiveStopped` is owned by the server.
          * `stopped` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-         * `effective_stopped` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+         * `effectiveStopped` on the other hand will always bet set in all response messages (Create/Update/Get/List)
          * 
          * @return builder
          * 
@@ -826,7 +826,7 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param readOnlyDns (string) - The DNS endpoint to connect to the instance for read only access. This is only available if
-         * enable_readable_secondaries is true
+         * enableReadableSecondaries is true
          * 
          * @return builder
          * 
@@ -838,7 +838,7 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param readOnlyDns (string) - The DNS endpoint to connect to the instance for read only access. This is only available if
-         * enable_readable_secondaries is true
+         * enableReadableSecondaries is true
          * 
          * @return builder
          * 

@@ -21,7 +21,7 @@ public final class GetPolicyInfoArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetPolicyInfoArgs Empty = new GetPolicyInfoArgs();
 
     /**
-     * (ColumnMaskOptions) - Options for column mask policies. Valid only if `policy_type` is `POLICY_TYPE_COLUMN_MASK`.
+     * (ColumnMaskOptions) - Options for column mask policies. Valid only if `policyType` is `POLICY_TYPE_COLUMN_MASK`.
      * Required on create and optional on update. When specified on update,
      * the new options will replace the existing options as a whole
      * 
@@ -30,7 +30,7 @@ public final class GetPolicyInfoArgs extends com.pulumi.resources.InvokeArgs {
     private @Nullable Output<GetPolicyInfoColumnMaskArgs> columnMask;
 
     /**
-     * @return (ColumnMaskOptions) - Options for column mask policies. Valid only if `policy_type` is `POLICY_TYPE_COLUMN_MASK`.
+     * @return (ColumnMaskOptions) - Options for column mask policies. Valid only if `policyType` is `POLICY_TYPE_COLUMN_MASK`.
      * Required on create and optional on update. When specified on update,
      * the new options will replace the existing options as a whole
      * 
@@ -90,7 +90,7 @@ public final class GetPolicyInfoArgs extends com.pulumi.resources.InvokeArgs {
 
     /**
      * (list of MatchColumn) - Optional list of condition expressions used to match table columns.
-     * Only valid when `for_securable_type` is `TABLE`.
+     * Only valid when `forSecurableType` is `TABLE`.
      * When specified, the policy only applies to tables whose columns satisfy all match conditions
      * 
      */
@@ -99,7 +99,7 @@ public final class GetPolicyInfoArgs extends com.pulumi.resources.InvokeArgs {
 
     /**
      * @return (list of MatchColumn) - Optional list of condition expressions used to match table columns.
-     * Only valid when `for_securable_type` is `TABLE`.
+     * Only valid when `forSecurableType` is `TABLE`.
      * When specified, the policy only applies to tables whose columns satisfy all match conditions
      * 
      */
@@ -176,7 +176,7 @@ public final class GetPolicyInfoArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * (RowFilterOptions) - Options for row filter policies. Valid only if `policy_type` is `POLICY_TYPE_ROW_FILTER`.
+     * (RowFilterOptions) - Options for row filter policies. Valid only if `policyType` is `POLICY_TYPE_ROW_FILTER`.
      * Required on create and optional on update. When specified on update,
      * the new options will replace the existing options as a whole
      * 
@@ -185,7 +185,7 @@ public final class GetPolicyInfoArgs extends com.pulumi.resources.InvokeArgs {
     private @Nullable Output<GetPolicyInfoRowFilterArgs> rowFilter;
 
     /**
-     * @return (RowFilterOptions) - Options for row filter policies. Valid only if `policy_type` is `POLICY_TYPE_ROW_FILTER`.
+     * @return (RowFilterOptions) - Options for row filter policies. Valid only if `policyType` is `POLICY_TYPE_ROW_FILTER`.
      * Required on create and optional on update. When specified on update,
      * the new options will replace the existing options as a whole
      * 
@@ -278,7 +278,7 @@ public final class GetPolicyInfoArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param columnMask (ColumnMaskOptions) - Options for column mask policies. Valid only if `policy_type` is `POLICY_TYPE_COLUMN_MASK`.
+         * @param columnMask (ColumnMaskOptions) - Options for column mask policies. Valid only if `policyType` is `POLICY_TYPE_COLUMN_MASK`.
          * Required on create and optional on update. When specified on update,
          * the new options will replace the existing options as a whole
          * 
@@ -291,7 +291,7 @@ public final class GetPolicyInfoArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param columnMask (ColumnMaskOptions) - Options for column mask policies. Valid only if `policy_type` is `POLICY_TYPE_COLUMN_MASK`.
+         * @param columnMask (ColumnMaskOptions) - Options for column mask policies. Valid only if `policyType` is `POLICY_TYPE_COLUMN_MASK`.
          * Required on create and optional on update. When specified on update,
          * the new options will replace the existing options as a whole
          * 
@@ -381,7 +381,7 @@ public final class GetPolicyInfoArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param matchColumns (list of MatchColumn) - Optional list of condition expressions used to match table columns.
-         * Only valid when `for_securable_type` is `TABLE`.
+         * Only valid when `forSecurableType` is `TABLE`.
          * When specified, the policy only applies to tables whose columns satisfy all match conditions
          * 
          * @return builder
@@ -394,7 +394,7 @@ public final class GetPolicyInfoArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param matchColumns (list of MatchColumn) - Optional list of condition expressions used to match table columns.
-         * Only valid when `for_securable_type` is `TABLE`.
+         * Only valid when `forSecurableType` is `TABLE`.
          * When specified, the policy only applies to tables whose columns satisfy all match conditions
          * 
          * @return builder
@@ -406,7 +406,7 @@ public final class GetPolicyInfoArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param matchColumns (list of MatchColumn) - Optional list of condition expressions used to match table columns.
-         * Only valid when `for_securable_type` is `TABLE`.
+         * Only valid when `forSecurableType` is `TABLE`.
          * When specified, the policy only applies to tables whose columns satisfy all match conditions
          * 
          * @return builder
@@ -509,7 +509,7 @@ public final class GetPolicyInfoArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param rowFilter (RowFilterOptions) - Options for row filter policies. Valid only if `policy_type` is `POLICY_TYPE_ROW_FILTER`.
+         * @param rowFilter (RowFilterOptions) - Options for row filter policies. Valid only if `policyType` is `POLICY_TYPE_ROW_FILTER`.
          * Required on create and optional on update. When specified on update,
          * the new options will replace the existing options as a whole
          * 
@@ -522,7 +522,7 @@ public final class GetPolicyInfoArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param rowFilter (RowFilterOptions) - Options for row filter policies. Valid only if `policy_type` is `POLICY_TYPE_ROW_FILTER`.
+         * @param rowFilter (RowFilterOptions) - Options for row filter policies. Valid only if `policyType` is `POLICY_TYPE_ROW_FILTER`.
          * Required on create and optional on update. When specified on update,
          * the new options will replace the existing options as a whole
          * 

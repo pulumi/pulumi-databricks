@@ -29,12 +29,12 @@ namespace Pulumi.Databricks.Outputs
         public readonly string? Op;
         /// <summary>
         /// (string) - The key of a Delta Sharing recipient's property. For example "databricks-account-id".
-        /// When this field is set, field `value` can not be set
+        /// When this field is set, field `Value` can not be set
         /// </summary>
         public readonly string? RecipientPropertyKey;
         /// <summary>
-        /// (string) - The value of the partition column. When this value is not set, it means `null` value.
-        /// When this field is set, field `recipient_property_key` can not be set
+        /// (string) - The value of the partition column. When this value is not set, it means `Null` value.
+        /// When this field is set, field `RecipientPropertyKey` can not be set
         /// </summary>
         public readonly string? Value;
 

@@ -15,12 +15,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ModelServingConfigServedEntityExternalModelCustomProviderConfig {
     /**
-     * @return API key authentication for the custom provider API. Conflicts with `bearer_token_auth`.
+     * @return API key authentication for the custom provider API. Conflicts with `bearerTokenAuth`.
      * 
      */
     private @Nullable ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuth apiKeyAuth;
     /**
-     * @return bearer token authentication for the custom provider API.  Conflicts with `api_key_auth`.
+     * @return bearer token authentication for the custom provider API.  Conflicts with `apiKeyAuth`.
      * 
      */
     private @Nullable ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuth bearerTokenAuth;
@@ -32,14 +32,14 @@ public final class ModelServingConfigServedEntityExternalModelCustomProviderConf
 
     private ModelServingConfigServedEntityExternalModelCustomProviderConfig() {}
     /**
-     * @return API key authentication for the custom provider API. Conflicts with `bearer_token_auth`.
+     * @return API key authentication for the custom provider API. Conflicts with `bearerTokenAuth`.
      * 
      */
     public Optional<ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuth> apiKeyAuth() {
         return Optional.ofNullable(this.apiKeyAuth);
     }
     /**
-     * @return bearer token authentication for the custom provider API.  Conflicts with `api_key_auth`.
+     * @return bearer token authentication for the custom provider API.  Conflicts with `apiKeyAuth`.
      * 
      */
     public Optional<ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuth> bearerTokenAuth() {

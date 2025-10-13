@@ -13,6 +13,9 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * ### Basic Alert Example
+ * This example creates a basic alert that monitors a query and sends notifications to a user when the value exceeds a threshold:
+ *
  * ## Import
  *
  * As of Pulumi v1.5, resources can be imported through configuration.

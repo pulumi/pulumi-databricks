@@ -73,7 +73,7 @@ namespace Pulumi.Databricks.Inputs
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Username/group name/sp application_id of the metastore owner.
+        /// Username/group name/sp ApplicationId of the metastore owner.
         /// </summary>
         [Input("owner")]
         public Input<string>? Owner { get; set; }
@@ -97,13 +97,13 @@ namespace Pulumi.Databricks.Inputs
         public Input<string>? StorageRoot { get; set; }
 
         /// <summary>
-        /// ID of a storage credential used for the `storage_root`.
+        /// ID of a storage credential used for the `StorageRoot`.
         /// </summary>
         [Input("storageRootCredentialId")]
         public Input<string>? StorageRootCredentialId { get; set; }
 
         /// <summary>
-        /// Name of a storage credential used for the `storage_root`.
+        /// Name of a storage credential used for the `StorageRoot`.
         /// </summary>
         [Input("storageRootCredentialName")]
         public Input<string>? StorageRootCredentialName { get; set; }

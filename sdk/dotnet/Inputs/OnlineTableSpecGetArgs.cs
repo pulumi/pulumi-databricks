@@ -37,7 +37,7 @@ namespace Pulumi.Databricks.Inputs
         }
 
         /// <summary>
-        /// empty block that specifies that pipeline runs continuously after generating the initial data.  Conflicts with `run_triggered`.
+        /// empty block that specifies that pipeline runs continuously after generating the initial data.  Conflicts with `RunTriggered`.
         /// </summary>
         [Input("runContinuously")]
         public Input<Inputs.OnlineTableSpecRunContinuouslyGetArgs>? RunContinuously { get; set; }

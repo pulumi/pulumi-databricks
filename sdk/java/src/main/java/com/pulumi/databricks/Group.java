@@ -22,9 +22,9 @@ import javax.annotation.Nullable;
  * 
  * &gt; To assign an account level group to a workspace use databricks_mws_permission_assignment.
  * 
- * &gt; Entitlements, like, `allow_cluster_create`, `allow_instance_pool_create`, `databricks_sql_access`, `workspace_access` applicable only for workspace-level groups.  Use databricks.Entitlements resource to assign entitlements inside a workspace to account-level groups.
+ * &gt; Entitlements, like, `allowClusterCreate`, `allowInstancePoolCreate`, `databricksSqlAccess`, `workspaceAccess` applicable only for workspace-level groups.  Use databricks.Entitlements resource to assign entitlements inside a workspace to account-level groups.
  * 
- * To create account groups in the Databricks account, the provider must be configured accordingly. On AWS deployment with `host = &#34;https://accounts.cloud.databricks.com&#34;` and `account_id = &#34;00000000-0000-0000-0000-000000000000&#34;`. On Azure deployments `host = &#34;https://accounts.azuredatabricks.net&#34;`, `account_id = &#34;00000000-0000-0000-0000-000000000000&#34;` and using AAD tokens as authentication.
+ * To create account groups in the Databricks account, the provider must be configured accordingly. On AWS deployment with `host = &#34;https://accounts.cloud.databricks.com&#34;` and `accountId = &#34;00000000-0000-0000-0000-000000000000&#34;`. On Azure deployments `host = &#34;https://accounts.azuredatabricks.net&#34;`, `accountId = &#34;00000000-0000-0000-0000-000000000000&#34;` and using AAD tokens as authentication.
  * 
  * Recommended to use along with Identity Provider SCIM provisioning to populate users into those groups:
  * 
@@ -223,28 +223,28 @@ public class Group extends com.pulumi.resources.CustomResource {
         return this.aclPrincipalId;
     }
     /**
-     * This is a field to allow the group to have cluster create privileges. More fine grained permissions could be assigned with databricks.Permissions and cluster_id argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
+     * This is a field to allow the group to have cluster create privileges. More fine grained permissions could be assigned with databricks.Permissions and clusterId argument. Everyone without `allowClusterCreate` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
      * 
      */
     @Export(name="allowClusterCreate", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> allowClusterCreate;
 
     /**
-     * @return This is a field to allow the group to have cluster create privileges. More fine grained permissions could be assigned with databricks.Permissions and cluster_id argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
+     * @return This is a field to allow the group to have cluster create privileges. More fine grained permissions could be assigned with databricks.Permissions and clusterId argument. Everyone without `allowClusterCreate` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
      * 
      */
     public Output<Optional<Boolean>> allowClusterCreate() {
         return Codegen.optional(this.allowClusterCreate);
     }
     /**
-     * This is a field to allow the group to have instance pool create privileges. More fine grained permissions could be assigned with databricks.Permissions and instance_pool_id argument.
+     * This is a field to allow the group to have instance pool create privileges. More fine grained permissions could be assigned with databricks.Permissions and instancePoolId argument.
      * 
      */
     @Export(name="allowInstancePoolCreate", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> allowInstancePoolCreate;
 
     /**
-     * @return This is a field to allow the group to have instance pool create privileges. More fine grained permissions could be assigned with databricks.Permissions and instance_pool_id argument.
+     * @return This is a field to allow the group to have instance pool create privileges. More fine grained permissions could be assigned with databricks.Permissions and instancePoolId argument.
      * 
      */
     public Output<Optional<Boolean>> allowInstancePoolCreate() {
@@ -327,14 +327,14 @@ public class Group extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.workspaceAccess);
     }
     /**
-     * This is a field to allow the group to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn&#39;t be used with `workspace_access` or `databricks_sql_access`.
+     * This is a field to allow the group to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn&#39;t be used with `workspaceAccess` or `databricksSqlAccess`.
      * 
      */
     @Export(name="workspaceConsume", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> workspaceConsume;
 
     /**
-     * @return This is a field to allow the group to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn&#39;t be used with `workspace_access` or `databricks_sql_access`.
+     * @return This is a field to allow the group to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn&#39;t be used with `workspaceAccess` or `databricksSqlAccess`.
      * 
      */
     public Output<Optional<Boolean>> workspaceConsume() {

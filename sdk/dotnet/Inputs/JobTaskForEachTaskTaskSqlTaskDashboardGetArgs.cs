@@ -34,7 +34,7 @@ namespace Pulumi.Databricks.Inputs
         private InputList<Inputs.JobTaskForEachTaskTaskSqlTaskDashboardSubscriptionGetArgs>? _subscriptions;
 
         /// <summary>
-        /// a list of subscription blocks consisting out of one of the required fields: `user_name` for user emails or `destination_id` - for Alert destination's identifier.
+        /// a list of subscription blocks consisting out of one of the required fields: `UserName` for user emails or `DestinationId` - for Alert destination's identifier.
         /// </summary>
         public InputList<Inputs.JobTaskForEachTaskTaskSqlTaskDashboardSubscriptionGetArgs> Subscriptions
         {

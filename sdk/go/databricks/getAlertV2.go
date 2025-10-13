@@ -20,6 +20,9 @@ import (
 // - Examine the schedule configuration
 //
 // ## Example Usage
+//
+// ### Retrieve Alert by ID
+// This example retrieves a specific alert by its ID:
 func LookupAlertV2(ctx *pulumi.Context, args *LookupAlertV2Args, opts ...pulumi.InvokeOption) (*LookupAlertV2Result, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAlertV2Result

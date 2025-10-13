@@ -14,6 +14,10 @@ import (
 // This data source can be used to get a single network policy.
 //
 // > **Note** This data source can only be used with an account-level provider!
+//
+// ## Example Usage
+//
+// Referring to a network policy by id:
 func LookupAccountNetworkPolicy(ctx *pulumi.Context, args *LookupAccountNetworkPolicyArgs, opts ...pulumi.InvokeOption) (*LookupAccountNetworkPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAccountNetworkPolicyResult

@@ -21,7 +21,7 @@ namespace Pulumi.Databricks.Inputs
         }
 
         /// <summary>
-        /// Full name of the databricks_table: _`catalog`.`schema`.`table`_
+        /// Full name of the databricks_table: _`Catalog`.`Schema`.`Table`_
         /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;

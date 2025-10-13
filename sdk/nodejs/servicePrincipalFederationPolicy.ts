@@ -13,6 +13,8 @@ import * as utilities from "./utilities";
  * * The identity provider (or issuer) from which the service principal can authenticate.
  * * The workload identity (or subject) that is permitted to authenticate as the Databricks service principal.
  *
+ * ## Example Usage
+ *
  * ## Import
  *
  * As of Pulumi v1.5, resources can be imported through configuration.

@@ -41,7 +41,7 @@ public final class CleanRoomsCleanRoomRemoteDetailedInfoCollaborator {
     private @Nullable String inviteRecipientEmail;
     /**
      * @return Workspace ID of the user who is receiving the clean room &#34;invitation&#34;. Must be specified if
-     * invite_recipient_email is specified.
+     * inviteRecipientEmail is specified.
      * It should be empty when the collaborator is the creator of the clean room
      * 
      */
@@ -90,7 +90,7 @@ public final class CleanRoomsCleanRoomRemoteDetailedInfoCollaborator {
     }
     /**
      * @return Workspace ID of the user who is receiving the clean room &#34;invitation&#34;. Must be specified if
-     * invite_recipient_email is specified.
+     * inviteRecipientEmail is specified.
      * It should be empty when the collaborator is the creator of the clean room
      * 
      */

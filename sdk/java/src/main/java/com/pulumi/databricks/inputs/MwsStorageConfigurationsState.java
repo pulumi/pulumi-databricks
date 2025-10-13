@@ -54,14 +54,14 @@ public final class MwsStorageConfigurationsState extends com.pulumi.resources.Re
     }
 
     /**
-     * (String) id of storage config to be used for `databricks_mws_workspace` resource.
+     * (String) id of storage config to be used for `databricksMwsWorkspace` resource.
      * 
      */
     @Import(name="storageConfigurationId")
     private @Nullable Output<String> storageConfigurationId;
 
     /**
-     * @return (String) id of storage config to be used for `databricks_mws_workspace` resource.
+     * @return (String) id of storage config to be used for `databricksMwsWorkspace` resource.
      * 
      */
     public Optional<Output<String>> storageConfigurationId() {
@@ -163,7 +163,7 @@ public final class MwsStorageConfigurationsState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param storageConfigurationId (String) id of storage config to be used for `databricks_mws_workspace` resource.
+         * @param storageConfigurationId (String) id of storage config to be used for `databricksMwsWorkspace` resource.
          * 
          * @return builder
          * 
@@ -174,7 +174,7 @@ public final class MwsStorageConfigurationsState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param storageConfigurationId (String) id of storage config to be used for `databricks_mws_workspace` resource.
+         * @param storageConfigurationId (String) id of storage config to be used for `databricksMwsWorkspace` resource.
          * 
          * @return builder
          * 

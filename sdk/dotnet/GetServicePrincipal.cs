@@ -58,7 +58,7 @@ namespace Pulumi.Databricks
         /// - databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.
         /// - databricks.GroupMember to attach users and groups as group members.
         /// - databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
-        /// - databricks_service principal to manage service principals
+        /// - DatabricksService principal to manage service principals
         /// </summary>
         public static Task<GetServicePrincipalResult> InvokeAsync(GetServicePrincipalArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetServicePrincipalResult>("databricks:index/getServicePrincipal:getServicePrincipal", args ?? new GetServicePrincipalArgs(), options.WithDefaults());
@@ -110,7 +110,7 @@ namespace Pulumi.Databricks
         /// - databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.
         /// - databricks.GroupMember to attach users and groups as group members.
         /// - databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
-        /// - databricks_service principal to manage service principals
+        /// - DatabricksService principal to manage service principals
         /// </summary>
         public static Output<GetServicePrincipalResult> Invoke(GetServicePrincipalInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServicePrincipalResult>("databricks:index/getServicePrincipal:getServicePrincipal", args ?? new GetServicePrincipalInvokeArgs(), options.WithDefaults());
@@ -162,7 +162,7 @@ namespace Pulumi.Databricks
         /// - databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.
         /// - databricks.GroupMember to attach users and groups as group members.
         /// - databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
-        /// - databricks_service principal to manage service principals
+        /// - DatabricksService principal to manage service principals
         /// </summary>
         public static Output<GetServicePrincipalResult> Invoke(GetServicePrincipalInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetServicePrincipalResult>("databricks:index/getServicePrincipal:getServicePrincipal", args ?? new GetServicePrincipalInvokeArgs(), options.WithDefaults());
@@ -336,7 +336,7 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string Repos;
         /// <summary>
-        /// same as `id`.
+        /// same as `Id`.
         /// </summary>
         public readonly string ScimId;
         public readonly string SpId;

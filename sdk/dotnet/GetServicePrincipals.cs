@@ -12,7 +12,7 @@ namespace Pulumi.Databricks
     public static class GetServicePrincipals
     {
         /// <summary>
-        /// Retrieves `application_ids` of all databricks.ServicePrincipal based on their `display_name`
+        /// Retrieves `ApplicationIds` of all databricks.ServicePrincipal based on their `DisplayName`
         /// 
         /// &gt; This data source can be used with an account or workspace-level provider.
         /// </summary>
@@ -20,7 +20,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetServicePrincipalsResult>("databricks:index/getServicePrincipals:getServicePrincipals", args ?? new GetServicePrincipalsArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Retrieves `application_ids` of all databricks.ServicePrincipal based on their `display_name`
+        /// Retrieves `ApplicationIds` of all databricks.ServicePrincipal based on their `DisplayName`
         /// 
         /// &gt; This data source can be used with an account or workspace-level provider.
         /// </summary>
@@ -28,7 +28,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.Invoke<GetServicePrincipalsResult>("databricks:index/getServicePrincipals:getServicePrincipals", args ?? new GetServicePrincipalsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Retrieves `application_ids` of all databricks.ServicePrincipal based on their `display_name`
+        /// Retrieves `ApplicationIds` of all databricks.ServicePrincipal based on their `DisplayName`
         /// 
         /// &gt; This data source can be used with an account or workspace-level provider.
         /// </summary>
@@ -43,7 +43,7 @@ namespace Pulumi.Databricks
         private List<string>? _applicationIds;
 
         /// <summary>
-        /// List of `application_ids` of service principals.  Individual service principal can be retrieved using databricks.ServicePrincipal data source
+        /// List of `ApplicationIds` of service principals.  Individual service principal can be retrieved using databricks.ServicePrincipal data source
         /// </summary>
         public List<string> ApplicationIds
         {
@@ -69,7 +69,7 @@ namespace Pulumi.Databricks
         private InputList<string>? _applicationIds;
 
         /// <summary>
-        /// List of `application_ids` of service principals.  Individual service principal can be retrieved using databricks.ServicePrincipal data source
+        /// List of `ApplicationIds` of service principals.  Individual service principal can be retrieved using databricks.ServicePrincipal data source
         /// </summary>
         public InputList<string> ApplicationIds
         {
@@ -94,7 +94,7 @@ namespace Pulumi.Databricks
     public sealed class GetServicePrincipalsResult
     {
         /// <summary>
-        /// List of `application_ids` of service principals.  Individual service principal can be retrieved using databricks.ServicePrincipal data source
+        /// List of `ApplicationIds` of service principals.  Individual service principal can be retrieved using databricks.ServicePrincipal data source
         /// </summary>
         public readonly ImmutableArray<string> ApplicationIds;
         public readonly string DisplayNameContains;

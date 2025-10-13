@@ -43,7 +43,7 @@ public final class RecipientFederationPolicyOidcPolicy {
      * * M2M flow (OAuth App access): Use `azp`.
      * - For other IdPs, refer to the specific IdP documentation.
      * 
-     * Supported `subject_claim` values are:
+     * Supported `subjectClaim` values are:
      * 
      */
     private String subjectClaim;
@@ -86,7 +86,7 @@ public final class RecipientFederationPolicyOidcPolicy {
      * * M2M flow (OAuth App access): Use `azp`.
      * - For other IdPs, refer to the specific IdP documentation.
      * 
-     * Supported `subject_claim` values are:
+     * Supported `subjectClaim` values are:
      * 
      */
     public String subjectClaim() {

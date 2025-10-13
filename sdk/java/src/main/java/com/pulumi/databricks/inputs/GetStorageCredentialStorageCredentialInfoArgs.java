@@ -186,14 +186,14 @@ public final class GetStorageCredentialStorageCredentialInfoArgs extends com.pul
     }
 
     /**
-     * Username/groupname/sp application_id of the storage credential owner.
+     * Username/groupname/sp applicationId of the storage credential owner.
      * 
      */
     @Import(name="owner")
     private @Nullable Output<String> owner;
 
     /**
-     * @return Username/groupname/sp application_id of the storage credential owner.
+     * @return Username/groupname/sp applicationId of the storage credential owner.
      * 
      */
     public Optional<Output<String>> owner() {
@@ -519,7 +519,7 @@ public final class GetStorageCredentialStorageCredentialInfoArgs extends com.pul
         }
 
         /**
-         * @param owner Username/groupname/sp application_id of the storage credential owner.
+         * @param owner Username/groupname/sp applicationId of the storage credential owner.
          * 
          * @return builder
          * 
@@ -530,7 +530,7 @@ public final class GetStorageCredentialStorageCredentialInfoArgs extends com.pul
         }
 
         /**
-         * @param owner Username/groupname/sp application_id of the storage credential owner.
+         * @param owner Username/groupname/sp applicationId of the storage credential owner.
          * 
          * @return builder
          * 

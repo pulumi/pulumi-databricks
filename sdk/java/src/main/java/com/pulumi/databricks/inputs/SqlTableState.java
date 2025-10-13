@@ -41,14 +41,14 @@ public final class SqlTableState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * a subset of columns to liquid cluster the table by. For automatic clustering, set `cluster_keys` to `[&#34;AUTO&#34;]`. To turn off clustering, set it to `[&#34;NONE&#34;]`. Conflicts with `partitions`.
+     * a subset of columns to liquid cluster the table by. For automatic clustering, set `clusterKeys` to `[&#34;AUTO&#34;]`. To turn off clustering, set it to `[&#34;NONE&#34;]`. Conflicts with `partitions`.
      * 
      */
     @Import(name="clusterKeys")
     private @Nullable Output<List<String>> clusterKeys;
 
     /**
-     * @return a subset of columns to liquid cluster the table by. For automatic clustering, set `cluster_keys` to `[&#34;AUTO&#34;]`. To turn off clustering, set it to `[&#34;NONE&#34;]`. Conflicts with `partitions`.
+     * @return a subset of columns to liquid cluster the table by. For automatic clustering, set `clusterKeys` to `[&#34;AUTO&#34;]`. To turn off clustering, set it to `[&#34;NONE&#34;]`. Conflicts with `partitions`.
      * 
      */
     public Optional<Output<List<String>>> clusterKeys() {
@@ -130,14 +130,14 @@ public final class SqlTableState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * User name/group name/sp application_id of the table owner.
+     * User name/group name/sp applicationId of the table owner.
      * 
      */
     @Import(name="owner")
     private @Nullable Output<String> owner;
 
     /**
-     * @return User name/group name/sp application_id of the table owner.
+     * @return User name/group name/sp applicationId of the table owner.
      * 
      */
     public Optional<Output<String>> owner() {
@@ -145,14 +145,14 @@ public final class SqlTableState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * a subset of columns to partition the table by. Change forces the creation of a new resource. Conflicts with `cluster_keys`.
+     * a subset of columns to partition the table by. Change forces the creation of a new resource. Conflicts with `clusterKeys`.
      * 
      */
     @Import(name="partitions")
     private @Nullable Output<List<String>> partitions;
 
     /**
-     * @return a subset of columns to partition the table by. Change forces the creation of a new resource. Conflicts with `cluster_keys`.
+     * @return a subset of columns to partition the table by. Change forces the creation of a new resource. Conflicts with `clusterKeys`.
      * 
      */
     public Optional<Output<List<String>>> partitions() {
@@ -235,14 +235,14 @@ public final class SqlTableState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * SQL text defining the view (for `table_type == &#34;VIEW&#34;`). Not supported for `MANAGED` or `EXTERNAL` table_type.
+     * SQL text defining the view (for `tableType == &#34;VIEW&#34;`). Not supported for `MANAGED` or `EXTERNAL` table_type.
      * 
      */
     @Import(name="viewDefinition")
     private @Nullable Output<String> viewDefinition;
 
     /**
-     * @return SQL text defining the view (for `table_type == &#34;VIEW&#34;`). Not supported for `MANAGED` or `EXTERNAL` table_type.
+     * @return SQL text defining the view (for `tableType == &#34;VIEW&#34;`). Not supported for `MANAGED` or `EXTERNAL` table_type.
      * 
      */
     public Optional<Output<String>> viewDefinition() {
@@ -250,14 +250,14 @@ public final class SqlTableState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * All table CRUD operations must be executed on a running cluster or SQL warehouse. If a `warehouse_id` is specified, that SQL warehouse will be used to execute SQL commands to manage this table. Conflicts with `cluster_id`.
+     * All table CRUD operations must be executed on a running cluster or SQL warehouse. If a `warehouseId` is specified, that SQL warehouse will be used to execute SQL commands to manage this table. Conflicts with `clusterId`.
      * 
      */
     @Import(name="warehouseId")
     private @Nullable Output<String> warehouseId;
 
     /**
-     * @return All table CRUD operations must be executed on a running cluster or SQL warehouse. If a `warehouse_id` is specified, that SQL warehouse will be used to execute SQL commands to manage this table. Conflicts with `cluster_id`.
+     * @return All table CRUD operations must be executed on a running cluster or SQL warehouse. If a `warehouseId` is specified, that SQL warehouse will be used to execute SQL commands to manage this table. Conflicts with `clusterId`.
      * 
      */
     public Optional<Output<String>> warehouseId() {
@@ -336,7 +336,7 @@ public final class SqlTableState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clusterKeys a subset of columns to liquid cluster the table by. For automatic clustering, set `cluster_keys` to `[&#34;AUTO&#34;]`. To turn off clustering, set it to `[&#34;NONE&#34;]`. Conflicts with `partitions`.
+         * @param clusterKeys a subset of columns to liquid cluster the table by. For automatic clustering, set `clusterKeys` to `[&#34;AUTO&#34;]`. To turn off clustering, set it to `[&#34;NONE&#34;]`. Conflicts with `partitions`.
          * 
          * @return builder
          * 
@@ -347,7 +347,7 @@ public final class SqlTableState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clusterKeys a subset of columns to liquid cluster the table by. For automatic clustering, set `cluster_keys` to `[&#34;AUTO&#34;]`. To turn off clustering, set it to `[&#34;NONE&#34;]`. Conflicts with `partitions`.
+         * @param clusterKeys a subset of columns to liquid cluster the table by. For automatic clustering, set `clusterKeys` to `[&#34;AUTO&#34;]`. To turn off clustering, set it to `[&#34;NONE&#34;]`. Conflicts with `partitions`.
          * 
          * @return builder
          * 
@@ -357,7 +357,7 @@ public final class SqlTableState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clusterKeys a subset of columns to liquid cluster the table by. For automatic clustering, set `cluster_keys` to `[&#34;AUTO&#34;]`. To turn off clustering, set it to `[&#34;NONE&#34;]`. Conflicts with `partitions`.
+         * @param clusterKeys a subset of columns to liquid cluster the table by. For automatic clustering, set `clusterKeys` to `[&#34;AUTO&#34;]`. To turn off clustering, set it to `[&#34;NONE&#34;]`. Conflicts with `partitions`.
          * 
          * @return builder
          * 
@@ -473,7 +473,7 @@ public final class SqlTableState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param owner User name/group name/sp application_id of the table owner.
+         * @param owner User name/group name/sp applicationId of the table owner.
          * 
          * @return builder
          * 
@@ -484,7 +484,7 @@ public final class SqlTableState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param owner User name/group name/sp application_id of the table owner.
+         * @param owner User name/group name/sp applicationId of the table owner.
          * 
          * @return builder
          * 
@@ -494,7 +494,7 @@ public final class SqlTableState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param partitions a subset of columns to partition the table by. Change forces the creation of a new resource. Conflicts with `cluster_keys`.
+         * @param partitions a subset of columns to partition the table by. Change forces the creation of a new resource. Conflicts with `clusterKeys`.
          * 
          * @return builder
          * 
@@ -505,7 +505,7 @@ public final class SqlTableState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param partitions a subset of columns to partition the table by. Change forces the creation of a new resource. Conflicts with `cluster_keys`.
+         * @param partitions a subset of columns to partition the table by. Change forces the creation of a new resource. Conflicts with `clusterKeys`.
          * 
          * @return builder
          * 
@@ -515,7 +515,7 @@ public final class SqlTableState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param partitions a subset of columns to partition the table by. Change forces the creation of a new resource. Conflicts with `cluster_keys`.
+         * @param partitions a subset of columns to partition the table by. Change forces the creation of a new resource. Conflicts with `clusterKeys`.
          * 
          * @return builder
          * 
@@ -630,7 +630,7 @@ public final class SqlTableState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param viewDefinition SQL text defining the view (for `table_type == &#34;VIEW&#34;`). Not supported for `MANAGED` or `EXTERNAL` table_type.
+         * @param viewDefinition SQL text defining the view (for `tableType == &#34;VIEW&#34;`). Not supported for `MANAGED` or `EXTERNAL` table_type.
          * 
          * @return builder
          * 
@@ -641,7 +641,7 @@ public final class SqlTableState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param viewDefinition SQL text defining the view (for `table_type == &#34;VIEW&#34;`). Not supported for `MANAGED` or `EXTERNAL` table_type.
+         * @param viewDefinition SQL text defining the view (for `tableType == &#34;VIEW&#34;`). Not supported for `MANAGED` or `EXTERNAL` table_type.
          * 
          * @return builder
          * 
@@ -651,7 +651,7 @@ public final class SqlTableState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param warehouseId All table CRUD operations must be executed on a running cluster or SQL warehouse. If a `warehouse_id` is specified, that SQL warehouse will be used to execute SQL commands to manage this table. Conflicts with `cluster_id`.
+         * @param warehouseId All table CRUD operations must be executed on a running cluster or SQL warehouse. If a `warehouseId` is specified, that SQL warehouse will be used to execute SQL commands to manage this table. Conflicts with `clusterId`.
          * 
          * @return builder
          * 
@@ -662,7 +662,7 @@ public final class SqlTableState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param warehouseId All table CRUD operations must be executed on a running cluster or SQL warehouse. If a `warehouse_id` is specified, that SQL warehouse will be used to execute SQL commands to manage this table. Conflicts with `cluster_id`.
+         * @param warehouseId All table CRUD operations must be executed on a running cluster or SQL warehouse. If a `warehouseId` is specified, that SQL warehouse will be used to execute SQL commands to manage this table. Conflicts with `clusterId`.
          * 
          * @return builder
          * 

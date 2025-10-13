@@ -38,7 +38,7 @@ namespace Pulumi.Databricks
     /// });
     /// ```
     /// 
-    /// A token can be automatically rotated by taking a dependency on the `time_rotating` resource:
+    /// A token can be automatically rotated by taking a dependency on the `TimeRotating` resource:
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

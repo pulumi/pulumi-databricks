@@ -17,13 +17,13 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * This resource allows you to generically manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspaces. It ensures that only _admins_, _authenticated principal_ and those declared within `access_control` blocks would have specified access. It is not possible to remove management rights from _admins_ group.
+ * This resource allows you to generically manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspaces. It ensures that only _admins_, _authenticated principal_ and those declared within `accessControl` blocks would have specified access. It is not possible to remove management rights from _admins_ group.
  * 
  * &gt; This resource can only be used with a workspace-level provider!
  * 
  * &gt; This resource is _authoritative_ for permissions on objects. Configuring this resource for an object will **OVERWRITE** any existing permissions of the same type unless imported, and changes made outside of Pulumi will be reset.
  * 
- * &gt; It is not possible to lower permissions for `admins`, so Databricks Pulumi Provider removes those `access_control` blocks automatically.
+ * &gt; It is not possible to lower permissions for `admins`, so Databricks Pulumi Provider removes those `accessControl` blocks automatically.
  * 
  * &gt; If multiple permission levels are specified for an identity (e.g. `CAN_RESTART` and `CAN_MANAGE` for a cluster), only the highest level permission is returned and will cause permanent drift.
  * 
@@ -472,7 +472,7 @@ import javax.annotation.Nullable;
  * 
  * Valid [permission levels](https://docs.databricks.com/security/access-control/workspace-acl.html#notebook-permissions) for databricks.Notebook are: `CAN_READ`, `CAN_RUN`, `CAN_EDIT`, and `CAN_MANAGE`.
  * 
- * A notebook could be specified by using either `notebook_path` or `notebook_id` attribute.  The value for the `notebook_id` is the object ID of the resource in the Databricks Workspace that is exposed as `object_id` attribute of the `databricks.Notebook` resource as shown below.
+ * A notebook could be specified by using either `notebookPath` or `notebookId` attribute.  The value for the `notebookId` is the object ID of the resource in the Databricks Workspace that is exposed as `objectId` attribute of the `databricks.Notebook` resource as shown below.
  * 
  * <pre>
  * {@code
@@ -558,13 +558,13 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
- * &gt; when importing a permissions resource, only the `notebook_id` is filled!
+ * &gt; when importing a permissions resource, only the `notebookId` is filled!
  * 
  * ## Workspace file usage
  * 
  * Valid permission levels for databricks.WorkspaceFile are: `CAN_READ`, `CAN_RUN`, `CAN_EDIT`, and `CAN_MANAGE`.
  * 
- * A workspace file could be specified by using either `workspace_file_path` or `workspace_file_id` attribute.  The value for the `workspace_file_id` is the object ID of the resource in the Databricks Workspace that is exposed as `object_id` attribute of the `databricks.WorkspaceFile` resource as shown below.
+ * A workspace file could be specified by using either `workspaceFilePath` or `workspaceFileId` attribute.  The value for the `workspaceFileId` is the object ID of the resource in the Databricks Workspace that is exposed as `objectId` attribute of the `databricks.WorkspaceFile` resource as shown below.
  * 
  * <pre>
  * {@code
@@ -649,7 +649,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
- * &gt; when importing a permissions resource, only the `workspace_file_id` is filled!
+ * &gt; when importing a permissions resource, only the `workspaceFileId` is filled!
  * 
  * ## Folder usage
  * 
@@ -660,7 +660,7 @@ import javax.annotation.Nullable;
  * - All users (or service principals) have `CAN_MANAGE` permission for objects the user creates.
  * - User home directory - The user (or service principal) has `CAN_MANAGE` permission. All other users (or service principals) can list their directories.
  * 
- * A folder could be specified by using either `directory_path` or `directory_id` attribute.  The value for the `directory_id` is the object ID of the resource in the Databricks Workspace that is exposed as `object_id` attribute of the `databricks.Directory` resource as shown below.
+ * A folder could be specified by using either `directoryPath` or `directoryId` attribute.  The value for the `directoryId` is the object ID of the resource in the Databricks Workspace that is exposed as `objectId` attribute of the `databricks.Directory` resource as shown below.
  * 
  * <pre>
  * {@code
@@ -740,7 +740,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
- * &gt; when importing a permissions resource, only the `directory_id` is filled!
+ * &gt; when importing a permissions resource, only the `directoryId` is filled!
  * 
  * ## Repos usage
  * 
@@ -879,7 +879,7 @@ import javax.annotation.Nullable;
  * 
  * ## MLflow Model usage
  * 
- * Valid [permission levels](https://docs.databricks.com/security/access-control/workspace-acl.html#mlflow-model-permissions-1) for databricks.MlflowModel are: `CAN_READ`, `CAN_EDIT`, `CAN_MANAGE_STAGING_VERSIONS`, `CAN_MANAGE_PRODUCTION_VERSIONS`, and `CAN_MANAGE`. You can also manage permissions for all MLflow models by `registered_model_id = &#34;root&#34;`.
+ * Valid [permission levels](https://docs.databricks.com/security/access-control/workspace-acl.html#mlflow-model-permissions-1) for databricks.MlflowModel are: `CAN_READ`, `CAN_EDIT`, `CAN_MANAGE_STAGING_VERSIONS`, `CAN_MANAGE_PRODUCTION_VERSIONS`, and `CAN_MANAGE`. You can also manage permissions for all MLflow models by `registeredModelId = &#34;root&#34;`.
  * 
  * <pre>
  * {@code
@@ -1021,7 +1021,7 @@ import javax.annotation.Nullable;
  * 
  * Valid permission levels for databricks.VectorSearchEndpoint are: `CAN_USE` and `CAN_MANAGE`.
  * 
- * &gt; You need to use the `endpoint_id` attribute of `databricks.VectorSearchEndpoint` as value for `vector_search_endpoint_id`, not the `id`!
+ * &gt; You need to use the `endpointId` attribute of `databricks.VectorSearchEndpoint` as value for `vectorSearchEndpointId`, not the `id`!
  * 
  * <pre>
  * {@code
@@ -1379,7 +1379,7 @@ import javax.annotation.Nullable;
  * 
  * [SQL queries](https://docs.databricks.com/sql/user/security/access-control/query-acl.html) have three possible permissions: `CAN_VIEW`, `CAN_RUN` and `CAN_MANAGE`:
  * 
- * &gt; If you do not define an `access_control` block granting `CAN_MANAGE` explictly for the user calling this provider, Databricks Pulumi Provider will add `CAN_MANAGE` permission for the caller. This is a failsafe to prevent situations where the caller is locked out from making changes to the targeted `databricks.SqlQuery` resource when backend API do not apply permission inheritance correctly.
+ * &gt; If you do not define an `accessControl` block granting `CAN_MANAGE` explictly for the user calling this provider, Databricks Pulumi Provider will add `CAN_MANAGE` permission for the caller. This is a failsafe to prevent situations where the caller is locked out from making changes to the targeted `databricks.SqlQuery` resource when backend API do not apply permission inheritance correctly.
  * 
  * <pre>
  * {@code
@@ -1650,7 +1650,7 @@ import javax.annotation.Nullable;
  * 
  * ## Secrets
  * 
- * One can control access to databricks.Secret through `initial_manage_principal` argument on databricks.SecretScope or databricks_secret_acl, so that users (or service principals) can `READ`, `WRITE` or `MANAGE` entries within secret scope.
+ * One can control access to databricks.Secret through `initialManagePrincipal` argument on databricks.SecretScope or databricks_secret_acl, so that users (or service principals) can `READ`, `WRITE` or `MANAGE` entries within secret scope.
  * 
  * ## Tables, Views and Databases
  * 

@@ -13,7 +13,7 @@ namespace Pulumi.Databricks.Inputs
     public sealed class AlertConditionThresholdValueGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// boolean value (`true` or `false`) to compare against boolean results.
+        /// boolean value (`True` or `False`) to compare against boolean results.
         /// </summary>
         [Input("boolValue")]
         public Input<bool>? BoolValue { get; set; }

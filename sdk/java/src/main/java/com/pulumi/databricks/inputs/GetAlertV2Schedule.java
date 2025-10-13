@@ -48,7 +48,7 @@ public final class GetAlertV2Schedule extends com.pulumi.resources.InvokeArgs {
 
     /**
      * (string) - A Java timezone id. The schedule will be resolved using this timezone.
-     * This will be combined with the quartz_cron_schedule to determine the schedule.
+     * This will be combined with the quartzCronSchedule to determine the schedule.
      * See https://docs.databricks.com/sql/language-manual/sql-ref-syntax-aux-conf-mgmt-set-timezone.html for details
      * 
      */
@@ -57,7 +57,7 @@ public final class GetAlertV2Schedule extends com.pulumi.resources.InvokeArgs {
 
     /**
      * @return (string) - A Java timezone id. The schedule will be resolved using this timezone.
-     * This will be combined with the quartz_cron_schedule to determine the schedule.
+     * This will be combined with the quartzCronSchedule to determine the schedule.
      * See https://docs.databricks.com/sql/language-manual/sql-ref-syntax-aux-conf-mgmt-set-timezone.html for details
      * 
      */
@@ -116,7 +116,7 @@ public final class GetAlertV2Schedule extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param timezoneId (string) - A Java timezone id. The schedule will be resolved using this timezone.
-         * This will be combined with the quartz_cron_schedule to determine the schedule.
+         * This will be combined with the quartzCronSchedule to determine the schedule.
          * See https://docs.databricks.com/sql/language-manual/sql-ref-syntax-aux-conf-mgmt-set-timezone.html for details
          * 
          * @return builder

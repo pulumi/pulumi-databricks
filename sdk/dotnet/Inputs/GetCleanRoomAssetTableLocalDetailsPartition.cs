@@ -16,8 +16,8 @@ namespace Pulumi.Databricks.Inputs
         private List<Inputs.GetCleanRoomAssetTableLocalDetailsPartitionValueArgs>? _values;
 
         /// <summary>
-        /// (string) - The value of the partition column. When this value is not set, it means `null` value.
-        /// When this field is set, field `recipient_property_key` can not be set
+        /// (string) - The value of the partition column. When this value is not set, it means `Null` value.
+        /// When this field is set, field `RecipientPropertyKey` can not be set
         /// </summary>
         public List<Inputs.GetCleanRoomAssetTableLocalDetailsPartitionValueArgs> Values
         {

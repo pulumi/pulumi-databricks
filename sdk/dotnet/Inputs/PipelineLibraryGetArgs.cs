@@ -13,13 +13,13 @@ namespace Pulumi.Databricks.Inputs
     public sealed class PipelineLibraryGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// specifies path to a file in Databricks Workspace to include as source. Actual path is specified as `path` attribute inside the block.
+        /// specifies path to a file in Databricks Workspace to include as source. Actual path is specified as `Path` attribute inside the block.
         /// </summary>
         [Input("file")]
         public Input<Inputs.PipelineLibraryFileGetArgs>? File { get; set; }
 
         /// <summary>
-        /// The unified field to include source code. Each entry should have the `include` attribute that can specify a notebook path, a file path, or a folder path that ends `/**` (to include everything from that folder). This field cannot be used together with `notebook` or `file`.
+        /// The unified field to include source code. Each entry should have the `Include` attribute that can specify a notebook path, a file path, or a folder path that ends `/**` (to include everything from that folder). This field cannot be used together with `Notebook` or `File`.
         /// </summary>
         [Input("glob")]
         public Input<Inputs.PipelineLibraryGlobGetArgs>? Glob { get; set; }
@@ -31,7 +31,7 @@ namespace Pulumi.Databricks.Inputs
         public Input<Inputs.PipelineLibraryMavenGetArgs>? Maven { get; set; }
 
         /// <summary>
-        /// specifies path to a Databricks Notebook to include as source. Actual path is specified as `path` attribute inside the block.
+        /// specifies path to a Databricks Notebook to include as source. Actual path is specified as `Path` attribute inside the block.
         /// </summary>
         [Input("notebook")]
         public Input<Inputs.PipelineLibraryNotebookGetArgs>? Notebook { get; set; }

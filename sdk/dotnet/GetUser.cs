@@ -225,7 +225,7 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly bool Active;
         /// <summary>
-        /// Alphanumeric representation of user local name. e.g. `mr_foo`.
+        /// Alphanumeric representation of user local name. e.g. `MrFoo`.
         /// </summary>
         public readonly string Alphanumeric;
         public readonly string ApplicationId;

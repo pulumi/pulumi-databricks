@@ -11,6 +11,17 @@ import * as utilities from "./utilities";
  *
  * > This resource can only be used with a workspace-level provider!
  *
+ * ## Example Usage
+ *
+ * ## Related Resources
+ *
+ * The following resources are used in the same context:
+ *
+ * * databricks.SqlEndpoint to manage Databricks SQL [Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html).
+ * * databricks.ModelServing to serve this model on a Databricks serving endpoint.
+ * * databricks.Secret to manage [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
+ * * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code.
+ *
  * ## Import
  *
  * This resource can be imported by name:

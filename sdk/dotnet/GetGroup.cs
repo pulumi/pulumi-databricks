@@ -236,7 +236,7 @@ namespace Pulumi.Databricks
 
         [Input("members")]
         private List<string>? _members;
-        [Obsolete(@"Please use `users`, `service_principals`, and `child_groups` instead")]
+        [Obsolete(@"Please use `Users`, `ServicePrincipals`, and `ChildGroups` instead")]
         public List<string> Members
         {
             get => _members ?? (_members = new List<string>());
@@ -358,7 +358,7 @@ namespace Pulumi.Databricks
 
         [Input("members")]
         private InputList<string>? _members;
-        [Obsolete(@"Please use `users`, `service_principals`, and `child_groups` instead")]
+        [Obsolete(@"Please use `Users`, `ServicePrincipals`, and `ChildGroups` instead")]
         public InputList<string> Members
         {
             get => _members ?? (_members = new InputList<string>());

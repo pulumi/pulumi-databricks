@@ -148,14 +148,14 @@ public class MwsStorageConfigurations extends com.pulumi.resources.CustomResourc
         return this.creationTime;
     }
     /**
-     * (String) id of storage config to be used for `databricks_mws_workspace` resource.
+     * (String) id of storage config to be used for `databricksMwsWorkspace` resource.
      * 
      */
     @Export(name="storageConfigurationId", refs={String.class}, tree="[0]")
     private Output<String> storageConfigurationId;
 
     /**
-     * @return (String) id of storage config to be used for `databricks_mws_workspace` resource.
+     * @return (String) id of storage config to be used for `databricksMwsWorkspace` resource.
      * 
      */
     public Output<String> storageConfigurationId() {

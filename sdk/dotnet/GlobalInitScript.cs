@@ -40,7 +40,7 @@ namespace Pulumi.Databricks
     public partial class GlobalInitScript : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The base64-encoded source code global init script. Conflicts with `source`. Use of `content_base64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances
+        /// The base64-encoded source code global init script. Conflicts with `Source`. Use of `ContentBase64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances
         /// </summary>
         [Output("contentBase64")]
         public Output<string?> ContentBase64 { get; private set; } = null!;
@@ -67,7 +67,7 @@ namespace Pulumi.Databricks
         public Output<int> Position { get; private set; } = null!;
 
         /// <summary>
-        /// Path to script's source code on local filesystem. Conflicts with `content_base64`
+        /// Path to script's source code on local filesystem. Conflicts with `ContentBase64`
         /// </summary>
         [Output("source")]
         public Output<string?> Source { get; private set; } = null!;
@@ -119,7 +119,7 @@ namespace Pulumi.Databricks
     public sealed class GlobalInitScriptArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The base64-encoded source code global init script. Conflicts with `source`. Use of `content_base64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances
+        /// The base64-encoded source code global init script. Conflicts with `Source`. Use of `ContentBase64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances
         /// </summary>
         [Input("contentBase64")]
         public Input<string>? ContentBase64 { get; set; }
@@ -146,7 +146,7 @@ namespace Pulumi.Databricks
         public Input<int>? Position { get; set; }
 
         /// <summary>
-        /// Path to script's source code on local filesystem. Conflicts with `content_base64`
+        /// Path to script's source code on local filesystem. Conflicts with `ContentBase64`
         /// </summary>
         [Input("source")]
         public Input<string>? Source { get; set; }
@@ -160,7 +160,7 @@ namespace Pulumi.Databricks
     public sealed class GlobalInitScriptState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The base64-encoded source code global init script. Conflicts with `source`. Use of `content_base64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances
+        /// The base64-encoded source code global init script. Conflicts with `Source`. Use of `ContentBase64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances
         /// </summary>
         [Input("contentBase64")]
         public Input<string>? ContentBase64 { get; set; }
@@ -187,7 +187,7 @@ namespace Pulumi.Databricks
         public Input<int>? Position { get; set; }
 
         /// <summary>
-        /// Path to script's source code on local filesystem. Conflicts with `content_base64`
+        /// Path to script's source code on local filesystem. Conflicts with `ContentBase64`
         /// </summary>
         [Input("source")]
         public Input<string>? Source { get; set; }

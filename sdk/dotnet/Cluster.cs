@@ -96,7 +96,7 @@ namespace Pulumi.Databricks
         public Output<ImmutableDictionary<string, string>?> CustomTags { get; private set; } = null!;
 
         /// <summary>
-        /// Select the security features of the cluster (see [API docs](https://docs.databricks.com/api/workspace/clusters/create#data_security_mode) for full list of values). [Unity Catalog requires](https://docs.databricks.com/data-governance/unity-catalog/compute.html#create-clusters--sql-warehouses-with-unity-catalog-access) `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. If omitted, default security features are enabled. To disable security features use `NONE` or legacy mode `NO_ISOLATION`.  If `kind` is specified, then the following options are available:
+        /// Select the security features of the cluster (see [API docs](https://docs.databricks.com/api/workspace/clusters/create#data_security_mode) for full list of values). [Unity Catalog requires](https://docs.databricks.com/data-governance/unity-catalog/compute.html#create-clusters--sql-warehouses-with-unity-catalog-access) `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. If omitted, default security features are enabled. To disable security features use `NONE` or legacy mode `NO_ISOLATION`.  If `Kind` is specified, then the following options are available:
         /// * `DATA_SECURITY_MODE_AUTO`: Databricks will choose the most appropriate access mode depending on your compute configuration.
         /// * `DATA_SECURITY_MODE_STANDARD`: Alias for `USER_ISOLATION`.
         /// * `DATA_SECURITY_MODE_DEDICATED`: Alias for `SINGLE_USER`.
@@ -105,7 +105,7 @@ namespace Pulumi.Databricks
         public Output<string?> DataSecurityMode { get; private set; } = null!;
 
         /// <summary>
-        /// (map) Tags that are added by Databricks by default, regardless of any `custom_tags` that may have been added. These include: Vendor: Databricks, Creator: &lt;username_of_creator&gt;, ClusterName: &lt;name_of_cluster&gt;, ClusterId: &lt;id_of_cluster&gt;, Name: &lt;Databricks internal use&gt;, and any workspace and pool tags.
+        /// (map) Tags that are added by Databricks by default, regardless of any `CustomTags` that may have been added. These include: Vendor: Databricks, Creator: &lt;username_of_creator&gt;, ClusterName: &lt;name_of_cluster&gt;, ClusterId: &lt;id_of_cluster&gt;, Name: &lt;Databricks internal use&gt;, and any workspace and pool tags.
         /// </summary>
         [Output("defaultTags")]
         public Output<ImmutableDictionary<string, string>> DefaultTags { get; private set; } = null!;
@@ -114,19 +114,19 @@ namespace Pulumi.Databricks
         public Output<Outputs.ClusterDockerImage?> DockerImage { get; private set; } = null!;
 
         /// <summary>
-        /// similar to `instance_pool_id`, but for driver node. If omitted, and `instance_pool_id` is specified, then the driver will be allocated from that pool.
+        /// similar to `InstancePoolId`, but for driver node. If omitted, and `InstancePoolId` is specified, then the driver will be allocated from that pool.
         /// </summary>
         [Output("driverInstancePoolId")]
         public Output<string> DriverInstancePoolId { get; private set; } = null!;
 
         /// <summary>
-        /// The node type of the Spark driver. This field is optional; if unset, API will set the driver node type to the same value as `node_type_id` defined above.
+        /// The node type of the Spark driver. This field is optional; if unset, API will set the driver node type to the same value as `NodeTypeId` defined above.
         /// </summary>
         [Output("driverNodeTypeId")]
         public Output<string> DriverNodeTypeId { get; private set; } = null!;
 
         /// <summary>
-        /// If you don't want to allocate a fixed number of EBS volumes at cluster creation time, use autoscaling local storage. With autoscaling local storage, Databricks monitors the amount of free disk space available on your cluster's Spark workers. If a worker begins to run too low on disk, Databricks automatically attaches a new EBS volume to the worker before it runs out of disk space. EBS volumes are attached up to a limit of 5 TB of total disk space per instance (including the instance's local storage). To scale down EBS usage, make sure you have `autotermination_minutes` and `autoscale` attributes set. More documentation available at [cluster configuration page](https://docs.databricks.com/clusters/configure.html#autoscaling-local-storage-1).
+        /// If you don't want to allocate a fixed number of EBS volumes at cluster creation time, use autoscaling local storage. With autoscaling local storage, Databricks monitors the amount of free disk space available on your cluster's Spark workers. If a worker begins to run too low on disk, Databricks automatically attaches a new EBS volume to the worker before it runs out of disk space. EBS volumes are attached up to a limit of 5 TB of total disk space per instance (including the instance's local storage). To scale down EBS usage, make sure you have `AutoterminationMinutes` and `Autoscale` attributes set. More documentation available at [cluster configuration page](https://docs.databricks.com/clusters/configure.html#autoscaling-local-storage-1).
         /// </summary>
         [Output("enableElasticDisk")]
         public Output<bool> EnableElasticDisk { get; private set; } = null!;
@@ -156,13 +156,13 @@ namespace Pulumi.Databricks
         public Output<string?> InstancePoolId { get; private set; } = null!;
 
         /// <summary>
-        /// boolean value specifying if the cluster is pinned (not pinned by default). You must be a Databricks administrator to use this.  The pinned clusters' maximum number is [limited to 100](https://docs.databricks.com/clusters/clusters-manage.html#pin-a-cluster), so `apply` may fail if you have more than that (this number may change over time, so check Databricks documentation for actual number).
+        /// boolean value specifying if the cluster is pinned (not pinned by default). You must be a Databricks administrator to use this.  The pinned clusters' maximum number is [limited to 100](https://docs.databricks.com/clusters/clusters-manage.html#pin-a-cluster), so `Apply` may fail if you have more than that (this number may change over time, so check Databricks documentation for actual number).
         /// </summary>
         [Output("isPinned")]
         public Output<bool?> IsPinned { get; private set; } = null!;
 
         /// <summary>
-        /// When set to true, Databricks will automatically set single node related `custom_tags`, `spark_conf`, and `num_workers`.
+        /// When set to true, Databricks will automatically set single node related `CustomTags`, `SparkConf`, and `NumWorkers`.
         /// </summary>
         [Output("isSingleNode")]
         public Output<bool?> IsSingleNode { get; private set; } = null!;
@@ -225,19 +225,19 @@ namespace Pulumi.Databricks
         public Output<bool?> NoWait { get; private set; } = null!;
 
         /// <summary>
-        /// Any supported databricks.getNodeType id. If `instance_pool_id` is specified, this field is not needed.
+        /// Any supported databricks.getNodeType id. If `InstancePoolId` is specified, this field is not needed.
         /// </summary>
         [Output("nodeTypeId")]
         public Output<string> NodeTypeId { get; private set; } = null!;
 
         /// <summary>
-        /// Number of worker nodes that this cluster should have. A cluster has one Spark driver and `num_workers` executors for a total of `num_workers` + 1 Spark nodes.
+        /// Number of worker nodes that this cluster should have. A cluster has one Spark driver and `NumWorkers` executors for a total of `NumWorkers` + 1 Spark nodes.
         /// </summary>
         [Output("numWorkers")]
         public Output<int?> NumWorkers { get; private set; } = null!;
 
         /// <summary>
-        /// Identifier of Cluster Policy to validate cluster and preset certain defaults. *The primary use for cluster policies is to allow users to create policy-scoped clusters via UI rather than sharing configuration for API-created clusters.* For example, when you specify `policy_id` of [external metastore](https://docs.databricks.com/administration-guide/clusters/policies.html#external-metastore-policy) policy, you still have to fill in relevant keys for `spark_conf`.  If relevant fields aren't filled in, then it will cause the configuration drift detected on each plan/apply, and Pulumi will try to apply the detected changes.
+        /// Identifier of Cluster Policy to validate cluster and preset certain defaults. *The primary use for cluster policies is to allow users to create policy-scoped clusters via UI rather than sharing configuration for API-created clusters.* For example, when you specify `PolicyId` of [external metastore](https://docs.databricks.com/administration-guide/clusters/policies.html#external-metastore-policy) policy, you still have to fill in relevant keys for `SparkConf`.  If relevant fields aren't filled in, then it will cause the configuration drift detected on each plan/apply, and Pulumi will try to apply the detected changes.
         /// </summary>
         [Output("policyId")]
         public Output<string?> PolicyId { get; private set; } = null!;
@@ -246,13 +246,13 @@ namespace Pulumi.Databricks
         public Output<int?> RemoteDiskThroughput { get; private set; } = null!;
 
         /// <summary>
-        /// The type of runtime engine to use. If not specified, the runtime engine type is inferred based on the spark_version value. Allowed values include: `PHOTON`, `STANDARD`.
+        /// The type of runtime engine to use. If not specified, the runtime engine type is inferred based on the SparkVersion value. Allowed values include: `PHOTON`, `STANDARD`.
         /// </summary>
         [Output("runtimeEngine")]
         public Output<string?> RuntimeEngine { get; private set; } = null!;
 
         /// <summary>
-        /// The optional user name of the user (or group name if `kind` if specified) to assign to an interactive cluster. This field is required when using `data_security_mode` set to `SINGLE_USER` or AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
+        /// The optional user name of the user (or group name if `Kind` if specified) to assign to an interactive cluster. This field is required when using `DataSecurityMode` set to `SINGLE_USER` or AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
         /// </summary>
         [Output("singleUserName")]
         public Output<string?> SingleUserName { get; private set; } = null!;
@@ -260,7 +260,7 @@ namespace Pulumi.Databricks
         /// <summary>
         /// should have following items:
         /// * `spark.databricks.repl.allowedLanguages` set to a list of supported languages, for example: `python,sql`, or `python,sql,r`.  Scala is not supported!
-        /// * `spark.databricks.cluster.profile` set to `serverless`
+        /// * `spark.databricks.cluster.profile` set to `Serverless`
         /// </summary>
         [Output("sparkConf")]
         public Output<ImmutableDictionary<string, string>?> SparkConf { get; private set; } = null!;
@@ -296,7 +296,7 @@ namespace Pulumi.Databricks
         public Output<string> Url { get; private set; } = null!;
 
         /// <summary>
-        /// Whenever ML runtime should be selected or not.  Actual runtime is determined by `spark_version` (DBR release), this field `use_ml_runtime`, and whether `node_type_id` is GPU node or not.
+        /// Whenever ML runtime should be selected or not.  Actual runtime is determined by `SparkVersion` (DBR release), this field `UseMlRuntime`, and whether `NodeTypeId` is GPU node or not.
         /// </summary>
         [Output("useMlRuntime")]
         public Output<bool?> UseMlRuntime { get; private set; } = null!;
@@ -431,7 +431,7 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
-        /// Select the security features of the cluster (see [API docs](https://docs.databricks.com/api/workspace/clusters/create#data_security_mode) for full list of values). [Unity Catalog requires](https://docs.databricks.com/data-governance/unity-catalog/compute.html#create-clusters--sql-warehouses-with-unity-catalog-access) `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. If omitted, default security features are enabled. To disable security features use `NONE` or legacy mode `NO_ISOLATION`.  If `kind` is specified, then the following options are available:
+        /// Select the security features of the cluster (see [API docs](https://docs.databricks.com/api/workspace/clusters/create#data_security_mode) for full list of values). [Unity Catalog requires](https://docs.databricks.com/data-governance/unity-catalog/compute.html#create-clusters--sql-warehouses-with-unity-catalog-access) `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. If omitted, default security features are enabled. To disable security features use `NONE` or legacy mode `NO_ISOLATION`.  If `Kind` is specified, then the following options are available:
         /// * `DATA_SECURITY_MODE_AUTO`: Databricks will choose the most appropriate access mode depending on your compute configuration.
         /// * `DATA_SECURITY_MODE_STANDARD`: Alias for `USER_ISOLATION`.
         /// * `DATA_SECURITY_MODE_DEDICATED`: Alias for `SINGLE_USER`.
@@ -443,19 +443,19 @@ namespace Pulumi.Databricks
         public Input<Inputs.ClusterDockerImageArgs>? DockerImage { get; set; }
 
         /// <summary>
-        /// similar to `instance_pool_id`, but for driver node. If omitted, and `instance_pool_id` is specified, then the driver will be allocated from that pool.
+        /// similar to `InstancePoolId`, but for driver node. If omitted, and `InstancePoolId` is specified, then the driver will be allocated from that pool.
         /// </summary>
         [Input("driverInstancePoolId")]
         public Input<string>? DriverInstancePoolId { get; set; }
 
         /// <summary>
-        /// The node type of the Spark driver. This field is optional; if unset, API will set the driver node type to the same value as `node_type_id` defined above.
+        /// The node type of the Spark driver. This field is optional; if unset, API will set the driver node type to the same value as `NodeTypeId` defined above.
         /// </summary>
         [Input("driverNodeTypeId")]
         public Input<string>? DriverNodeTypeId { get; set; }
 
         /// <summary>
-        /// If you don't want to allocate a fixed number of EBS volumes at cluster creation time, use autoscaling local storage. With autoscaling local storage, Databricks monitors the amount of free disk space available on your cluster's Spark workers. If a worker begins to run too low on disk, Databricks automatically attaches a new EBS volume to the worker before it runs out of disk space. EBS volumes are attached up to a limit of 5 TB of total disk space per instance (including the instance's local storage). To scale down EBS usage, make sure you have `autotermination_minutes` and `autoscale` attributes set. More documentation available at [cluster configuration page](https://docs.databricks.com/clusters/configure.html#autoscaling-local-storage-1).
+        /// If you don't want to allocate a fixed number of EBS volumes at cluster creation time, use autoscaling local storage. With autoscaling local storage, Databricks monitors the amount of free disk space available on your cluster's Spark workers. If a worker begins to run too low on disk, Databricks automatically attaches a new EBS volume to the worker before it runs out of disk space. EBS volumes are attached up to a limit of 5 TB of total disk space per instance (including the instance's local storage). To scale down EBS usage, make sure you have `AutoterminationMinutes` and `Autoscale` attributes set. More documentation available at [cluster configuration page](https://docs.databricks.com/clusters/configure.html#autoscaling-local-storage-1).
         /// </summary>
         [Input("enableElasticDisk")]
         public Input<bool>? EnableElasticDisk { get; set; }
@@ -490,13 +490,13 @@ namespace Pulumi.Databricks
         public Input<string>? InstancePoolId { get; set; }
 
         /// <summary>
-        /// boolean value specifying if the cluster is pinned (not pinned by default). You must be a Databricks administrator to use this.  The pinned clusters' maximum number is [limited to 100](https://docs.databricks.com/clusters/clusters-manage.html#pin-a-cluster), so `apply` may fail if you have more than that (this number may change over time, so check Databricks documentation for actual number).
+        /// boolean value specifying if the cluster is pinned (not pinned by default). You must be a Databricks administrator to use this.  The pinned clusters' maximum number is [limited to 100](https://docs.databricks.com/clusters/clusters-manage.html#pin-a-cluster), so `Apply` may fail if you have more than that (this number may change over time, so check Databricks documentation for actual number).
         /// </summary>
         [Input("isPinned")]
         public Input<bool>? IsPinned { get; set; }
 
         /// <summary>
-        /// When set to true, Databricks will automatically set single node related `custom_tags`, `spark_conf`, and `num_workers`.
+        /// When set to true, Databricks will automatically set single node related `CustomTags`, `SparkConf`, and `NumWorkers`.
         /// </summary>
         [Input("isSingleNode")]
         public Input<bool>? IsSingleNode { get; set; }
@@ -564,19 +564,19 @@ namespace Pulumi.Databricks
         public Input<bool>? NoWait { get; set; }
 
         /// <summary>
-        /// Any supported databricks.getNodeType id. If `instance_pool_id` is specified, this field is not needed.
+        /// Any supported databricks.getNodeType id. If `InstancePoolId` is specified, this field is not needed.
         /// </summary>
         [Input("nodeTypeId")]
         public Input<string>? NodeTypeId { get; set; }
 
         /// <summary>
-        /// Number of worker nodes that this cluster should have. A cluster has one Spark driver and `num_workers` executors for a total of `num_workers` + 1 Spark nodes.
+        /// Number of worker nodes that this cluster should have. A cluster has one Spark driver and `NumWorkers` executors for a total of `NumWorkers` + 1 Spark nodes.
         /// </summary>
         [Input("numWorkers")]
         public Input<int>? NumWorkers { get; set; }
 
         /// <summary>
-        /// Identifier of Cluster Policy to validate cluster and preset certain defaults. *The primary use for cluster policies is to allow users to create policy-scoped clusters via UI rather than sharing configuration for API-created clusters.* For example, when you specify `policy_id` of [external metastore](https://docs.databricks.com/administration-guide/clusters/policies.html#external-metastore-policy) policy, you still have to fill in relevant keys for `spark_conf`.  If relevant fields aren't filled in, then it will cause the configuration drift detected on each plan/apply, and Pulumi will try to apply the detected changes.
+        /// Identifier of Cluster Policy to validate cluster and preset certain defaults. *The primary use for cluster policies is to allow users to create policy-scoped clusters via UI rather than sharing configuration for API-created clusters.* For example, when you specify `PolicyId` of [external metastore](https://docs.databricks.com/administration-guide/clusters/policies.html#external-metastore-policy) policy, you still have to fill in relevant keys for `SparkConf`.  If relevant fields aren't filled in, then it will cause the configuration drift detected on each plan/apply, and Pulumi will try to apply the detected changes.
         /// </summary>
         [Input("policyId")]
         public Input<string>? PolicyId { get; set; }
@@ -585,13 +585,13 @@ namespace Pulumi.Databricks
         public Input<int>? RemoteDiskThroughput { get; set; }
 
         /// <summary>
-        /// The type of runtime engine to use. If not specified, the runtime engine type is inferred based on the spark_version value. Allowed values include: `PHOTON`, `STANDARD`.
+        /// The type of runtime engine to use. If not specified, the runtime engine type is inferred based on the SparkVersion value. Allowed values include: `PHOTON`, `STANDARD`.
         /// </summary>
         [Input("runtimeEngine")]
         public Input<string>? RuntimeEngine { get; set; }
 
         /// <summary>
-        /// The optional user name of the user (or group name if `kind` if specified) to assign to an interactive cluster. This field is required when using `data_security_mode` set to `SINGLE_USER` or AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
+        /// The optional user name of the user (or group name if `Kind` if specified) to assign to an interactive cluster. This field is required when using `DataSecurityMode` set to `SINGLE_USER` or AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
         /// </summary>
         [Input("singleUserName")]
         public Input<string>? SingleUserName { get; set; }
@@ -602,7 +602,7 @@ namespace Pulumi.Databricks
         /// <summary>
         /// should have following items:
         /// * `spark.databricks.repl.allowedLanguages` set to a list of supported languages, for example: `python,sql`, or `python,sql,r`.  Scala is not supported!
-        /// * `spark.databricks.cluster.profile` set to `serverless`
+        /// * `spark.databricks.cluster.profile` set to `Serverless`
         /// </summary>
         public InputMap<string> SparkConf
         {
@@ -644,7 +644,7 @@ namespace Pulumi.Databricks
         public Input<int>? TotalInitialRemoteDiskSize { get; set; }
 
         /// <summary>
-        /// Whenever ML runtime should be selected or not.  Actual runtime is determined by `spark_version` (DBR release), this field `use_ml_runtime`, and whether `node_type_id` is GPU node or not.
+        /// Whenever ML runtime should be selected or not.  Actual runtime is determined by `SparkVersion` (DBR release), this field `UseMlRuntime`, and whether `NodeTypeId` is GPU node or not.
         /// </summary>
         [Input("useMlRuntime")]
         public Input<bool>? UseMlRuntime { get; set; }
@@ -744,7 +744,7 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
-        /// Select the security features of the cluster (see [API docs](https://docs.databricks.com/api/workspace/clusters/create#data_security_mode) for full list of values). [Unity Catalog requires](https://docs.databricks.com/data-governance/unity-catalog/compute.html#create-clusters--sql-warehouses-with-unity-catalog-access) `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. If omitted, default security features are enabled. To disable security features use `NONE` or legacy mode `NO_ISOLATION`.  If `kind` is specified, then the following options are available:
+        /// Select the security features of the cluster (see [API docs](https://docs.databricks.com/api/workspace/clusters/create#data_security_mode) for full list of values). [Unity Catalog requires](https://docs.databricks.com/data-governance/unity-catalog/compute.html#create-clusters--sql-warehouses-with-unity-catalog-access) `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. If omitted, default security features are enabled. To disable security features use `NONE` or legacy mode `NO_ISOLATION`.  If `Kind` is specified, then the following options are available:
         /// * `DATA_SECURITY_MODE_AUTO`: Databricks will choose the most appropriate access mode depending on your compute configuration.
         /// * `DATA_SECURITY_MODE_STANDARD`: Alias for `USER_ISOLATION`.
         /// * `DATA_SECURITY_MODE_DEDICATED`: Alias for `SINGLE_USER`.
@@ -756,7 +756,7 @@ namespace Pulumi.Databricks
         private InputMap<string>? _defaultTags;
 
         /// <summary>
-        /// (map) Tags that are added by Databricks by default, regardless of any `custom_tags` that may have been added. These include: Vendor: Databricks, Creator: &lt;username_of_creator&gt;, ClusterName: &lt;name_of_cluster&gt;, ClusterId: &lt;id_of_cluster&gt;, Name: &lt;Databricks internal use&gt;, and any workspace and pool tags.
+        /// (map) Tags that are added by Databricks by default, regardless of any `CustomTags` that may have been added. These include: Vendor: Databricks, Creator: &lt;username_of_creator&gt;, ClusterName: &lt;name_of_cluster&gt;, ClusterId: &lt;id_of_cluster&gt;, Name: &lt;Databricks internal use&gt;, and any workspace and pool tags.
         /// </summary>
         public InputMap<string> DefaultTags
         {
@@ -768,19 +768,19 @@ namespace Pulumi.Databricks
         public Input<Inputs.ClusterDockerImageGetArgs>? DockerImage { get; set; }
 
         /// <summary>
-        /// similar to `instance_pool_id`, but for driver node. If omitted, and `instance_pool_id` is specified, then the driver will be allocated from that pool.
+        /// similar to `InstancePoolId`, but for driver node. If omitted, and `InstancePoolId` is specified, then the driver will be allocated from that pool.
         /// </summary>
         [Input("driverInstancePoolId")]
         public Input<string>? DriverInstancePoolId { get; set; }
 
         /// <summary>
-        /// The node type of the Spark driver. This field is optional; if unset, API will set the driver node type to the same value as `node_type_id` defined above.
+        /// The node type of the Spark driver. This field is optional; if unset, API will set the driver node type to the same value as `NodeTypeId` defined above.
         /// </summary>
         [Input("driverNodeTypeId")]
         public Input<string>? DriverNodeTypeId { get; set; }
 
         /// <summary>
-        /// If you don't want to allocate a fixed number of EBS volumes at cluster creation time, use autoscaling local storage. With autoscaling local storage, Databricks monitors the amount of free disk space available on your cluster's Spark workers. If a worker begins to run too low on disk, Databricks automatically attaches a new EBS volume to the worker before it runs out of disk space. EBS volumes are attached up to a limit of 5 TB of total disk space per instance (including the instance's local storage). To scale down EBS usage, make sure you have `autotermination_minutes` and `autoscale` attributes set. More documentation available at [cluster configuration page](https://docs.databricks.com/clusters/configure.html#autoscaling-local-storage-1).
+        /// If you don't want to allocate a fixed number of EBS volumes at cluster creation time, use autoscaling local storage. With autoscaling local storage, Databricks monitors the amount of free disk space available on your cluster's Spark workers. If a worker begins to run too low on disk, Databricks automatically attaches a new EBS volume to the worker before it runs out of disk space. EBS volumes are attached up to a limit of 5 TB of total disk space per instance (including the instance's local storage). To scale down EBS usage, make sure you have `AutoterminationMinutes` and `Autoscale` attributes set. More documentation available at [cluster configuration page](https://docs.databricks.com/clusters/configure.html#autoscaling-local-storage-1).
         /// </summary>
         [Input("enableElasticDisk")]
         public Input<bool>? EnableElasticDisk { get; set; }
@@ -815,13 +815,13 @@ namespace Pulumi.Databricks
         public Input<string>? InstancePoolId { get; set; }
 
         /// <summary>
-        /// boolean value specifying if the cluster is pinned (not pinned by default). You must be a Databricks administrator to use this.  The pinned clusters' maximum number is [limited to 100](https://docs.databricks.com/clusters/clusters-manage.html#pin-a-cluster), so `apply` may fail if you have more than that (this number may change over time, so check Databricks documentation for actual number).
+        /// boolean value specifying if the cluster is pinned (not pinned by default). You must be a Databricks administrator to use this.  The pinned clusters' maximum number is [limited to 100](https://docs.databricks.com/clusters/clusters-manage.html#pin-a-cluster), so `Apply` may fail if you have more than that (this number may change over time, so check Databricks documentation for actual number).
         /// </summary>
         [Input("isPinned")]
         public Input<bool>? IsPinned { get; set; }
 
         /// <summary>
-        /// When set to true, Databricks will automatically set single node related `custom_tags`, `spark_conf`, and `num_workers`.
+        /// When set to true, Databricks will automatically set single node related `CustomTags`, `SparkConf`, and `NumWorkers`.
         /// </summary>
         [Input("isSingleNode")]
         public Input<bool>? IsSingleNode { get; set; }
@@ -889,19 +889,19 @@ namespace Pulumi.Databricks
         public Input<bool>? NoWait { get; set; }
 
         /// <summary>
-        /// Any supported databricks.getNodeType id. If `instance_pool_id` is specified, this field is not needed.
+        /// Any supported databricks.getNodeType id. If `InstancePoolId` is specified, this field is not needed.
         /// </summary>
         [Input("nodeTypeId")]
         public Input<string>? NodeTypeId { get; set; }
 
         /// <summary>
-        /// Number of worker nodes that this cluster should have. A cluster has one Spark driver and `num_workers` executors for a total of `num_workers` + 1 Spark nodes.
+        /// Number of worker nodes that this cluster should have. A cluster has one Spark driver and `NumWorkers` executors for a total of `NumWorkers` + 1 Spark nodes.
         /// </summary>
         [Input("numWorkers")]
         public Input<int>? NumWorkers { get; set; }
 
         /// <summary>
-        /// Identifier of Cluster Policy to validate cluster and preset certain defaults. *The primary use for cluster policies is to allow users to create policy-scoped clusters via UI rather than sharing configuration for API-created clusters.* For example, when you specify `policy_id` of [external metastore](https://docs.databricks.com/administration-guide/clusters/policies.html#external-metastore-policy) policy, you still have to fill in relevant keys for `spark_conf`.  If relevant fields aren't filled in, then it will cause the configuration drift detected on each plan/apply, and Pulumi will try to apply the detected changes.
+        /// Identifier of Cluster Policy to validate cluster and preset certain defaults. *The primary use for cluster policies is to allow users to create policy-scoped clusters via UI rather than sharing configuration for API-created clusters.* For example, when you specify `PolicyId` of [external metastore](https://docs.databricks.com/administration-guide/clusters/policies.html#external-metastore-policy) policy, you still have to fill in relevant keys for `SparkConf`.  If relevant fields aren't filled in, then it will cause the configuration drift detected on each plan/apply, and Pulumi will try to apply the detected changes.
         /// </summary>
         [Input("policyId")]
         public Input<string>? PolicyId { get; set; }
@@ -910,13 +910,13 @@ namespace Pulumi.Databricks
         public Input<int>? RemoteDiskThroughput { get; set; }
 
         /// <summary>
-        /// The type of runtime engine to use. If not specified, the runtime engine type is inferred based on the spark_version value. Allowed values include: `PHOTON`, `STANDARD`.
+        /// The type of runtime engine to use. If not specified, the runtime engine type is inferred based on the SparkVersion value. Allowed values include: `PHOTON`, `STANDARD`.
         /// </summary>
         [Input("runtimeEngine")]
         public Input<string>? RuntimeEngine { get; set; }
 
         /// <summary>
-        /// The optional user name of the user (or group name if `kind` if specified) to assign to an interactive cluster. This field is required when using `data_security_mode` set to `SINGLE_USER` or AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
+        /// The optional user name of the user (or group name if `Kind` if specified) to assign to an interactive cluster. This field is required when using `DataSecurityMode` set to `SINGLE_USER` or AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
         /// </summary>
         [Input("singleUserName")]
         public Input<string>? SingleUserName { get; set; }
@@ -927,7 +927,7 @@ namespace Pulumi.Databricks
         /// <summary>
         /// should have following items:
         /// * `spark.databricks.repl.allowedLanguages` set to a list of supported languages, for example: `python,sql`, or `python,sql,r`.  Scala is not supported!
-        /// * `spark.databricks.cluster.profile` set to `serverless`
+        /// * `spark.databricks.cluster.profile` set to `Serverless`
         /// </summary>
         public InputMap<string> SparkConf
         {
@@ -978,7 +978,7 @@ namespace Pulumi.Databricks
         public Input<string>? Url { get; set; }
 
         /// <summary>
-        /// Whenever ML runtime should be selected or not.  Actual runtime is determined by `spark_version` (DBR release), this field `use_ml_runtime`, and whether `node_type_id` is GPU node or not.
+        /// Whenever ML runtime should be selected or not.  Actual runtime is determined by `SparkVersion` (DBR release), this field `UseMlRuntime`, and whether `NodeTypeId` is GPU node or not.
         /// </summary>
         [Input("useMlRuntime")]
         public Input<bool>? UseMlRuntime { get; set; }

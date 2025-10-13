@@ -18,7 +18,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetPolicyInfosPolicy {
     /**
-     * @return (ColumnMaskOptions) - Options for column mask policies. Valid only if `policy_type` is `POLICY_TYPE_COLUMN_MASK`.
+     * @return (ColumnMaskOptions) - Options for column mask policies. Valid only if `policyType` is `POLICY_TYPE_COLUMN_MASK`.
      * Required on create and optional on update. When specified on update,
      * the new options will replace the existing options as a whole
      * 
@@ -58,7 +58,7 @@ public final class GetPolicyInfosPolicy {
     private String id;
     /**
      * @return (list of MatchColumn) - Optional list of condition expressions used to match table columns.
-     * Only valid when `for_securable_type` is `TABLE`.
+     * Only valid when `forSecurableType` is `TABLE`.
      * When specified, the policy only applies to tables whose columns satisfy all match conditions
      * 
      */
@@ -85,7 +85,7 @@ public final class GetPolicyInfosPolicy {
      */
     private String policyType;
     /**
-     * @return (RowFilterOptions) - Options for row filter policies. Valid only if `policy_type` is `POLICY_TYPE_ROW_FILTER`.
+     * @return (RowFilterOptions) - Options for row filter policies. Valid only if `policyType` is `POLICY_TYPE_ROW_FILTER`.
      * Required on create and optional on update. When specified on update,
      * the new options will replace the existing options as a whole
      * 
@@ -115,7 +115,7 @@ public final class GetPolicyInfosPolicy {
 
     private GetPolicyInfosPolicy() {}
     /**
-     * @return (ColumnMaskOptions) - Options for column mask policies. Valid only if `policy_type` is `POLICY_TYPE_COLUMN_MASK`.
+     * @return (ColumnMaskOptions) - Options for column mask policies. Valid only if `policyType` is `POLICY_TYPE_COLUMN_MASK`.
      * Required on create and optional on update. When specified on update,
      * the new options will replace the existing options as a whole
      * 
@@ -169,7 +169,7 @@ public final class GetPolicyInfosPolicy {
     }
     /**
      * @return (list of MatchColumn) - Optional list of condition expressions used to match table columns.
-     * Only valid when `for_securable_type` is `TABLE`.
+     * Only valid when `forSecurableType` is `TABLE`.
      * When specified, the policy only applies to tables whose columns satisfy all match conditions
      * 
      */
@@ -206,7 +206,7 @@ public final class GetPolicyInfosPolicy {
         return this.policyType;
     }
     /**
-     * @return (RowFilterOptions) - Options for row filter policies. Valid only if `policy_type` is `POLICY_TYPE_ROW_FILTER`.
+     * @return (RowFilterOptions) - Options for row filter policies. Valid only if `policyType` is `POLICY_TYPE_ROW_FILTER`.
      * Required on create and optional on update. When specified on update,
      * the new options will replace the existing options as a whole
      * 

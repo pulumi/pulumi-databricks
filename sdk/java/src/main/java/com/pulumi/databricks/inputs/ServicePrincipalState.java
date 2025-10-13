@@ -47,14 +47,14 @@ public final class ServicePrincipalState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Allow the service principal to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and `cluster_id` argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within the boundaries of that specific policy.
+     * Allow the service principal to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and `clusterId` argument. Everyone without `allowClusterCreate` argument set, but with permission to use Cluster Policy would be able to create clusters, but within the boundaries of that specific policy.
      * 
      */
     @Import(name="allowClusterCreate")
     private @Nullable Output<Boolean> allowClusterCreate;
 
     /**
-     * @return Allow the service principal to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and `cluster_id` argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within the boundaries of that specific policy.
+     * @return Allow the service principal to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and `clusterId` argument. Everyone without `allowClusterCreate` argument set, but with permission to use Cluster Policy would be able to create clusters, but within the boundaries of that specific policy.
      * 
      */
     public Optional<Output<Boolean>> allowClusterCreate() {
@@ -62,14 +62,14 @@ public final class ServicePrincipalState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Allow the service principal to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and instance_pool_id argument.
+     * Allow the service principal to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and instancePoolId argument.
      * 
      */
     @Import(name="allowInstancePoolCreate")
     private @Nullable Output<Boolean> allowInstancePoolCreate;
 
     /**
-     * @return Allow the service principal to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and instance_pool_id argument.
+     * @return Allow the service principal to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and instancePoolId argument.
      * 
      */
     public Optional<Output<Boolean>> allowInstancePoolCreate() {
@@ -107,14 +107,14 @@ public final class ServicePrincipalState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Deactivate the service principal when deleting the resource, rather than deleting the service principal entirely. Defaults to `true` when the provider is configured at the account-level and `false` when configured at the workspace-level. This flag is exclusive to force_delete_repos and force_delete_home_dir flags.
+     * Deactivate the service principal when deleting the resource, rather than deleting the service principal entirely. Defaults to `true` when the provider is configured at the account-level and `false` when configured at the workspace-level. This flag is exclusive to forceDeleteRepos and forceDeleteHomeDir flags.
      * 
      */
     @Import(name="disableAsUserDeletion")
     private @Nullable Output<Boolean> disableAsUserDeletion;
 
     /**
-     * @return Deactivate the service principal when deleting the resource, rather than deleting the service principal entirely. Defaults to `true` when the provider is configured at the account-level and `false` when configured at the workspace-level. This flag is exclusive to force_delete_repos and force_delete_home_dir flags.
+     * @return Deactivate the service principal when deleting the resource, rather than deleting the service principal entirely. Defaults to `true` when the provider is configured at the account-level and `false` when configured at the workspace-level. This flag is exclusive to forceDeleteRepos and forceDeleteHomeDir flags.
      * 
      */
     public Optional<Output<Boolean>> disableAsUserDeletion() {
@@ -242,14 +242,14 @@ public final class ServicePrincipalState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * This is a field to allow the service principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn&#39;t be used with `workspace_access` or `databricks_sql_access`.
+     * This is a field to allow the service principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn&#39;t be used with `workspaceAccess` or `databricksSqlAccess`.
      * 
      */
     @Import(name="workspaceConsume")
     private @Nullable Output<Boolean> workspaceConsume;
 
     /**
-     * @return This is a field to allow the service principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn&#39;t be used with `workspace_access` or `databricks_sql_access`.
+     * @return This is a field to allow the service principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn&#39;t be used with `workspaceAccess` or `databricksSqlAccess`.
      * 
      */
     public Optional<Output<Boolean>> workspaceConsume() {
@@ -338,7 +338,7 @@ public final class ServicePrincipalState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param allowClusterCreate Allow the service principal to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and `cluster_id` argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within the boundaries of that specific policy.
+         * @param allowClusterCreate Allow the service principal to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and `clusterId` argument. Everyone without `allowClusterCreate` argument set, but with permission to use Cluster Policy would be able to create clusters, but within the boundaries of that specific policy.
          * 
          * @return builder
          * 
@@ -349,7 +349,7 @@ public final class ServicePrincipalState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param allowClusterCreate Allow the service principal to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and `cluster_id` argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within the boundaries of that specific policy.
+         * @param allowClusterCreate Allow the service principal to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and `clusterId` argument. Everyone without `allowClusterCreate` argument set, but with permission to use Cluster Policy would be able to create clusters, but within the boundaries of that specific policy.
          * 
          * @return builder
          * 
@@ -359,7 +359,7 @@ public final class ServicePrincipalState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param allowInstancePoolCreate Allow the service principal to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and instance_pool_id argument.
+         * @param allowInstancePoolCreate Allow the service principal to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and instancePoolId argument.
          * 
          * @return builder
          * 
@@ -370,7 +370,7 @@ public final class ServicePrincipalState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param allowInstancePoolCreate Allow the service principal to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and instance_pool_id argument.
+         * @param allowInstancePoolCreate Allow the service principal to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and instancePoolId argument.
          * 
          * @return builder
          * 
@@ -422,7 +422,7 @@ public final class ServicePrincipalState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param disableAsUserDeletion Deactivate the service principal when deleting the resource, rather than deleting the service principal entirely. Defaults to `true` when the provider is configured at the account-level and `false` when configured at the workspace-level. This flag is exclusive to force_delete_repos and force_delete_home_dir flags.
+         * @param disableAsUserDeletion Deactivate the service principal when deleting the resource, rather than deleting the service principal entirely. Defaults to `true` when the provider is configured at the account-level and `false` when configured at the workspace-level. This flag is exclusive to forceDeleteRepos and forceDeleteHomeDir flags.
          * 
          * @return builder
          * 
@@ -433,7 +433,7 @@ public final class ServicePrincipalState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param disableAsUserDeletion Deactivate the service principal when deleting the resource, rather than deleting the service principal entirely. Defaults to `true` when the provider is configured at the account-level and `false` when configured at the workspace-level. This flag is exclusive to force_delete_repos and force_delete_home_dir flags.
+         * @param disableAsUserDeletion Deactivate the service principal when deleting the resource, rather than deleting the service principal entirely. Defaults to `true` when the provider is configured at the account-level and `false` when configured at the workspace-level. This flag is exclusive to forceDeleteRepos and forceDeleteHomeDir flags.
          * 
          * @return builder
          * 
@@ -611,7 +611,7 @@ public final class ServicePrincipalState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param workspaceConsume This is a field to allow the service principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn&#39;t be used with `workspace_access` or `databricks_sql_access`.
+         * @param workspaceConsume This is a field to allow the service principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn&#39;t be used with `workspaceAccess` or `databricksSqlAccess`.
          * 
          * @return builder
          * 
@@ -622,7 +622,7 @@ public final class ServicePrincipalState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param workspaceConsume This is a field to allow the service principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn&#39;t be used with `workspace_access` or `databricks_sql_access`.
+         * @param workspaceConsume This is a field to allow the service principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn&#39;t be used with `workspaceAccess` or `databricksSqlAccess`.
          * 
          * @return builder
          * 

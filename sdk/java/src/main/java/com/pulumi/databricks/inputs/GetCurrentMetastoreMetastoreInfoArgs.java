@@ -167,14 +167,14 @@ public final class GetCurrentMetastoreMetastoreInfoArgs extends com.pulumi.resou
     }
 
     /**
-     * Username/group name/sp application_id of the metastore owner.
+     * Username/group name/sp applicationId of the metastore owner.
      * 
      */
     @Import(name="owner")
     private @Nullable Output<String> owner;
 
     /**
-     * @return Username/group name/sp application_id of the metastore owner.
+     * @return Username/group name/sp applicationId of the metastore owner.
      * 
      */
     public Optional<Output<String>> owner() {
@@ -227,14 +227,14 @@ public final class GetCurrentMetastoreMetastoreInfoArgs extends com.pulumi.resou
     }
 
     /**
-     * ID of a storage credential used for the `storage_root`.
+     * ID of a storage credential used for the `storageRoot`.
      * 
      */
     @Import(name="storageRootCredentialId")
     private @Nullable Output<String> storageRootCredentialId;
 
     /**
-     * @return ID of a storage credential used for the `storage_root`.
+     * @return ID of a storage credential used for the `storageRoot`.
      * 
      */
     public Optional<Output<String>> storageRootCredentialId() {
@@ -242,14 +242,14 @@ public final class GetCurrentMetastoreMetastoreInfoArgs extends com.pulumi.resou
     }
 
     /**
-     * Name of a storage credential used for the `storage_root`.
+     * Name of a storage credential used for the `storageRoot`.
      * 
      */
     @Import(name="storageRootCredentialName")
     private @Nullable Output<String> storageRootCredentialName;
 
     /**
-     * @return Name of a storage credential used for the `storage_root`.
+     * @return Name of a storage credential used for the `storageRoot`.
      * 
      */
     public Optional<Output<String>> storageRootCredentialName() {
@@ -536,7 +536,7 @@ public final class GetCurrentMetastoreMetastoreInfoArgs extends com.pulumi.resou
         }
 
         /**
-         * @param owner Username/group name/sp application_id of the metastore owner.
+         * @param owner Username/group name/sp applicationId of the metastore owner.
          * 
          * @return builder
          * 
@@ -547,7 +547,7 @@ public final class GetCurrentMetastoreMetastoreInfoArgs extends com.pulumi.resou
         }
 
         /**
-         * @param owner Username/group name/sp application_id of the metastore owner.
+         * @param owner Username/group name/sp applicationId of the metastore owner.
          * 
          * @return builder
          * 
@@ -620,7 +620,7 @@ public final class GetCurrentMetastoreMetastoreInfoArgs extends com.pulumi.resou
         }
 
         /**
-         * @param storageRootCredentialId ID of a storage credential used for the `storage_root`.
+         * @param storageRootCredentialId ID of a storage credential used for the `storageRoot`.
          * 
          * @return builder
          * 
@@ -631,7 +631,7 @@ public final class GetCurrentMetastoreMetastoreInfoArgs extends com.pulumi.resou
         }
 
         /**
-         * @param storageRootCredentialId ID of a storage credential used for the `storage_root`.
+         * @param storageRootCredentialId ID of a storage credential used for the `storageRoot`.
          * 
          * @return builder
          * 
@@ -641,7 +641,7 @@ public final class GetCurrentMetastoreMetastoreInfoArgs extends com.pulumi.resou
         }
 
         /**
-         * @param storageRootCredentialName Name of a storage credential used for the `storage_root`.
+         * @param storageRootCredentialName Name of a storage credential used for the `storageRoot`.
          * 
          * @return builder
          * 
@@ -652,7 +652,7 @@ public final class GetCurrentMetastoreMetastoreInfoArgs extends com.pulumi.resou
         }
 
         /**
-         * @param storageRootCredentialName Name of a storage credential used for the `storage_root`.
+         * @param storageRootCredentialName Name of a storage credential used for the `storageRoot`.
          * 
          * @return builder
          * 

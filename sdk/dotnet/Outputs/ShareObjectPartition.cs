@@ -14,7 +14,7 @@ namespace Pulumi.Databricks.Outputs
     public sealed class ShareObjectPartition
     {
         /// <summary>
-        /// The value of the partition column. When this value is not set, it means null value. When this field is set, field `recipient_property_key` can not be set.
+        /// The value of the partition column. When this value is not set, it means null value. When this field is set, field `RecipientPropertyKey` can not be set.
         /// </summary>
         public readonly ImmutableArray<Outputs.ShareObjectPartitionValue> Values;
 

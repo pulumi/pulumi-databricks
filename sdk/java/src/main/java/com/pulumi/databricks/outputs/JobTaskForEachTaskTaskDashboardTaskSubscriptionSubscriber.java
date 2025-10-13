@@ -12,26 +12,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriber {
     /**
-     * @return A snapshot of the dashboard will be sent to the destination when the `destination_id` field is present.
+     * @return A snapshot of the dashboard will be sent to the destination when the `destinationId` field is present.
      * 
      */
     private @Nullable String destinationId;
     /**
-     * @return A snapshot of the dashboard will be sent to the user&#39;s email when the `user_name` field is present.
+     * @return A snapshot of the dashboard will be sent to the user&#39;s email when the `userName` field is present.
      * 
      */
     private @Nullable String userName;
 
     private JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriber() {}
     /**
-     * @return A snapshot of the dashboard will be sent to the destination when the `destination_id` field is present.
+     * @return A snapshot of the dashboard will be sent to the destination when the `destinationId` field is present.
      * 
      */
     public Optional<String> destinationId() {
         return Optional.ofNullable(this.destinationId);
     }
     /**
-     * @return A snapshot of the dashboard will be sent to the user&#39;s email when the `user_name` field is present.
+     * @return A snapshot of the dashboard will be sent to the user&#39;s email when the `userName` field is present.
      * 
      */
     public Optional<String> userName() {

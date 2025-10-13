@@ -31,7 +31,7 @@ public final class ModelServingConfigServedEntity {
      */
     private @Nullable Map<String,String> environmentVars;
     /**
-     * @return The external model to be served. NOTE: Only one of `external_model` and (`entity_name`, `entity_version`, `workload_size`, `workload_type`, and `scale_to_zero_enabled`) can be specified with the latter set being used for custom model serving for a Databricks registered model. When an `external_model` is present, the served entities list can only have one `served_entity` object. An existing endpoint with `external_model` can not be updated to an endpoint without `external_model`. If the endpoint is created without `external_model`, users cannot update it to add `external_model` later.
+     * @return The external model to be served. NOTE: Only one of `externalModel` and (`entityName`, `entityVersion`, `workloadSize`, `workloadType`, and `scaleToZeroEnabled`) can be specified with the latter set being used for custom model serving for a Databricks registered model. When an `externalModel` is present, the served entities list can only have one `servedEntity` object. An existing endpoint with `externalModel` can not be updated to an endpoint without `externalModel`. If the endpoint is created without `externalModel`, users cannot update it to add `externalModel` later.
      * 
      */
     private @Nullable ModelServingConfigServedEntityExternalModel externalModel;
@@ -41,7 +41,7 @@ public final class ModelServingConfigServedEntity {
      */
     private @Nullable String instanceProfileArn;
     /**
-     * @return The maximum provisioned concurrency that the endpoint can scale up to. Conflicts with `workload_size`.
+     * @return The maximum provisioned concurrency that the endpoint can scale up to. Conflicts with `workloadSize`.
      * 
      */
     private @Nullable Integer maxProvisionedConcurrency;
@@ -51,7 +51,7 @@ public final class ModelServingConfigServedEntity {
      */
     private @Nullable Integer maxProvisionedThroughput;
     /**
-     * @return The minimum provisioned concurrency that the endpoint can scale down to. Conflicts with `workload_size`.
+     * @return The minimum provisioned concurrency that the endpoint can scale down to. Conflicts with `workloadSize`.
      * 
      */
     private @Nullable Integer minProvisionedConcurrency;
@@ -72,7 +72,7 @@ public final class ModelServingConfigServedEntity {
      */
     private @Nullable Boolean scaleToZeroEnabled;
     /**
-     * @return The workload size of the served entity. The workload size corresponds to a range of provisioned concurrency that the compute autoscales between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are `Small` (4 - 4 provisioned concurrency), `Medium` (8 - 16 provisioned concurrency), and `Large` (16 - 64 provisioned concurrency). If `scale-to-zero` is enabled, the lower bound of the provisioned concurrency for each workload size is 0. Conflicts with `min_provisioned_concurrency` and `max_provisioned_concurrency`.
+     * @return The workload size of the served entity. The workload size corresponds to a range of provisioned concurrency that the compute autoscales between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are `Small` (4 - 4 provisioned concurrency), `Medium` (8 - 16 provisioned concurrency), and `Large` (16 - 64 provisioned concurrency). If `scale-to-zero` is enabled, the lower bound of the provisioned concurrency for each workload size is 0. Conflicts with `minProvisionedConcurrency` and `maxProvisionedConcurrency`.
      * 
      */
     private @Nullable String workloadSize;
@@ -105,7 +105,7 @@ public final class ModelServingConfigServedEntity {
         return this.environmentVars == null ? Map.of() : this.environmentVars;
     }
     /**
-     * @return The external model to be served. NOTE: Only one of `external_model` and (`entity_name`, `entity_version`, `workload_size`, `workload_type`, and `scale_to_zero_enabled`) can be specified with the latter set being used for custom model serving for a Databricks registered model. When an `external_model` is present, the served entities list can only have one `served_entity` object. An existing endpoint with `external_model` can not be updated to an endpoint without `external_model`. If the endpoint is created without `external_model`, users cannot update it to add `external_model` later.
+     * @return The external model to be served. NOTE: Only one of `externalModel` and (`entityName`, `entityVersion`, `workloadSize`, `workloadType`, and `scaleToZeroEnabled`) can be specified with the latter set being used for custom model serving for a Databricks registered model. When an `externalModel` is present, the served entities list can only have one `servedEntity` object. An existing endpoint with `externalModel` can not be updated to an endpoint without `externalModel`. If the endpoint is created without `externalModel`, users cannot update it to add `externalModel` later.
      * 
      */
     public Optional<ModelServingConfigServedEntityExternalModel> externalModel() {
@@ -119,7 +119,7 @@ public final class ModelServingConfigServedEntity {
         return Optional.ofNullable(this.instanceProfileArn);
     }
     /**
-     * @return The maximum provisioned concurrency that the endpoint can scale up to. Conflicts with `workload_size`.
+     * @return The maximum provisioned concurrency that the endpoint can scale up to. Conflicts with `workloadSize`.
      * 
      */
     public Optional<Integer> maxProvisionedConcurrency() {
@@ -133,7 +133,7 @@ public final class ModelServingConfigServedEntity {
         return Optional.ofNullable(this.maxProvisionedThroughput);
     }
     /**
-     * @return The minimum provisioned concurrency that the endpoint can scale down to. Conflicts with `workload_size`.
+     * @return The minimum provisioned concurrency that the endpoint can scale down to. Conflicts with `workloadSize`.
      * 
      */
     public Optional<Integer> minProvisionedConcurrency() {
@@ -164,7 +164,7 @@ public final class ModelServingConfigServedEntity {
         return Optional.ofNullable(this.scaleToZeroEnabled);
     }
     /**
-     * @return The workload size of the served entity. The workload size corresponds to a range of provisioned concurrency that the compute autoscales between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are `Small` (4 - 4 provisioned concurrency), `Medium` (8 - 16 provisioned concurrency), and `Large` (16 - 64 provisioned concurrency). If `scale-to-zero` is enabled, the lower bound of the provisioned concurrency for each workload size is 0. Conflicts with `min_provisioned_concurrency` and `max_provisioned_concurrency`.
+     * @return The workload size of the served entity. The workload size corresponds to a range of provisioned concurrency that the compute autoscales between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are `Small` (4 - 4 provisioned concurrency), `Medium` (8 - 16 provisioned concurrency), and `Large` (16 - 64 provisioned concurrency). If `scale-to-zero` is enabled, the lower bound of the provisioned concurrency for each workload size is 0. Conflicts with `minProvisionedConcurrency` and `maxProvisionedConcurrency`.
      * 
      */
     public Optional<String> workloadSize() {

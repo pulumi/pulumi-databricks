@@ -46,14 +46,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="databricks:index/notebook:Notebook")
 public class Notebook extends com.pulumi.resources.CustomResource {
     /**
-     * The base64-encoded notebook source code. Conflicts with `source`. Use of `content_base64` is discouraged, as it&#39;s increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a notebook with configuration properties for a data pipeline.
+     * The base64-encoded notebook source code. Conflicts with `source`. Use of `contentBase64` is discouraged, as it&#39;s increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a notebook with configuration properties for a data pipeline.
      * 
      */
     @Export(name="contentBase64", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> contentBase64;
 
     /**
-     * @return The base64-encoded notebook source code. Conflicts with `source`. Use of `content_base64` is discouraged, as it&#39;s increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a notebook with configuration properties for a data pipeline.
+     * @return The base64-encoded notebook source code. Conflicts with `source`. Use of `contentBase64` is discouraged, as it&#39;s increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a notebook with configuration properties for a data pipeline.
      * 
      */
     public Output<Optional<String>> contentBase64() {
@@ -126,14 +126,14 @@ public class Notebook extends com.pulumi.resources.CustomResource {
         return this.path;
     }
     /**
-     * Path to notebook in source code format on local filesystem. Conflicts with `content_base64`.
+     * Path to notebook in source code format on local filesystem. Conflicts with `contentBase64`.
      * 
      */
     @Export(name="source", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> source;
 
     /**
-     * @return Path to notebook in source code format on local filesystem. Conflicts with `content_base64`.
+     * @return Path to notebook in source code format on local filesystem. Conflicts with `contentBase64`.
      * 
      */
     public Output<Optional<String>> source() {

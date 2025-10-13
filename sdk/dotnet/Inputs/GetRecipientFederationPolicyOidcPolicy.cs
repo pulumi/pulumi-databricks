@@ -36,9 +36,9 @@ namespace Pulumi.Databricks.Inputs
         /// (string) - The required token subject, as specified in the subject claim of federated tokens.
         /// The subject claim identifies the identity of the user or machine accessing the resource.
         /// Examples for Entra ID (AAD):
-        /// - U2M flow (group access): If the subject claim is `groups`, this must be the Object ID of the group in Entra ID.
-        /// - U2M flow (user access): If the subject claim is `oid`, this must be the Object ID of the user in Entra ID.
-        /// - M2M flow (OAuth App access): If the subject claim is `azp`, this must be the client ID of the OAuth app registered in Entra ID
+        /// - U2M flow (group access): If the subject claim is `Groups`, this must be the Object ID of the group in Entra ID.
+        /// - U2M flow (user access): If the subject claim is `Oid`, this must be the Object ID of the user in Entra ID.
+        /// - M2M flow (OAuth App access): If the subject claim is `Azp`, this must be the client ID of the OAuth app registered in Entra ID
         /// </summary>
         [Input("subject", required: true)]
         public string Subject { get; set; } = null!;
@@ -47,9 +47,9 @@ namespace Pulumi.Databricks.Inputs
         /// (string) - The claim that contains the subject of the token.
         /// Depending on the identity provider and the use case (U2M or M2M), this can vary:
         /// - For Entra ID (AAD):
-        /// * U2M flow (group access): Use `groups`.
-        /// * U2M flow (user access): Use `oid`.
-        /// * M2M flow (OAuth App access): Use `azp`.
+        /// * U2M flow (group access): Use `Groups`.
+        /// * U2M flow (user access): Use `Oid`.
+        /// * M2M flow (OAuth App access): Use `Azp`.
         /// - For other IdPs, refer to the specific IdP documentation.
         /// </summary>
         [Input("subjectClaim", required: true)]

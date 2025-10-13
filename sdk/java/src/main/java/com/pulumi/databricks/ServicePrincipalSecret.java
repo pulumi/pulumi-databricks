@@ -59,7 +59,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
- * A secret can be automatically rotated by taking a dependency on the `time_rotating` resource:
+ * A secret can be automatically rotated by taking a dependency on the `timeRotating` resource:
  * 
  * <pre>
  * {@code

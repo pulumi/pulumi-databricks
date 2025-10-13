@@ -54,7 +54,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string? MetastoreId;
         /// <summary>
-        /// a fully qualified name of databricks_schema: *`catalog`.`schema`*
+        /// a fully qualified name of databricks_schema: *`Catalog`.`Schema`*
         /// </summary>
         public readonly string? Name;
         /// <summary>

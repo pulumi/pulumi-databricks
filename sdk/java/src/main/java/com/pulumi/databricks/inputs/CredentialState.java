@@ -125,7 +125,7 @@ public final class CredentialState extends com.pulumi.resources.ResourceArgs {
     /**
      * Whether the credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically restrict access to only from the current workspace.
      * 
-     * `aws_iam_role` optional configuration block for credential details for AWS:
+     * `awsIamRole` optional configuration block for credential details for AWS:
      * 
      */
     @Import(name="isolationMode")
@@ -134,7 +134,7 @@ public final class CredentialState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Whether the credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically restrict access to only from the current workspace.
      * 
-     * `aws_iam_role` optional configuration block for credential details for AWS:
+     * `awsIamRole` optional configuration block for credential details for AWS:
      * 
      */
     public Optional<Output<String>> isolationMode() {
@@ -164,14 +164,14 @@ public final class CredentialState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Username/groupname/sp application_id of the credential owner.
+     * Username/groupname/sp applicationId of the credential owner.
      * 
      */
     @Import(name="owner")
     private @Nullable Output<String> owner;
 
     /**
-     * @return Username/groupname/sp application_id of the credential owner.
+     * @return Username/groupname/sp applicationId of the credential owner.
      * 
      */
     public Optional<Output<String>> owner() {
@@ -426,7 +426,7 @@ public final class CredentialState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param isolationMode Whether the credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically restrict access to only from the current workspace.
          * 
-         * `aws_iam_role` optional configuration block for credential details for AWS:
+         * `awsIamRole` optional configuration block for credential details for AWS:
          * 
          * @return builder
          * 
@@ -439,7 +439,7 @@ public final class CredentialState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param isolationMode Whether the credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically restrict access to only from the current workspace.
          * 
-         * `aws_iam_role` optional configuration block for credential details for AWS:
+         * `awsIamRole` optional configuration block for credential details for AWS:
          * 
          * @return builder
          * 
@@ -479,7 +479,7 @@ public final class CredentialState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param owner Username/groupname/sp application_id of the credential owner.
+         * @param owner Username/groupname/sp applicationId of the credential owner.
          * 
          * @return builder
          * 
@@ -490,7 +490,7 @@ public final class CredentialState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param owner Username/groupname/sp application_id of the credential owner.
+         * @param owner Username/groupname/sp applicationId of the credential owner.
          * 
          * @return builder
          * 

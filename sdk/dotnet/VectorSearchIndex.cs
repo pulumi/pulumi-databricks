@@ -80,13 +80,13 @@ namespace Pulumi.Databricks
         public Output<string> Creator { get; private set; } = null!;
 
         /// <summary>
-        /// Specification for Delta Sync Index. Required if `index_type` is `DELTA_SYNC`. This field is a block and is documented below.
+        /// Specification for Delta Sync Index. Required if `IndexType` is `DELTA_SYNC`. This field is a block and is documented below.
         /// </summary>
         [Output("deltaSyncIndexSpec")]
         public Output<Outputs.VectorSearchIndexDeltaSyncIndexSpec?> DeltaSyncIndexSpec { get; private set; } = null!;
 
         /// <summary>
-        /// Specification for Direct Vector Access Index. Required if `index_type` is `DIRECT_ACCESS`. This field is a block and is documented below.
+        /// Specification for Direct Vector Access Index. Required if `IndexType` is `DIRECT_ACCESS`. This field is a block and is documented below.
         /// </summary>
         [Output("directAccessIndexSpec")]
         public Output<Outputs.VectorSearchIndexDirectAccessIndexSpec?> DirectAccessIndexSpec { get; private set; } = null!;
@@ -170,13 +170,13 @@ namespace Pulumi.Databricks
     public sealed class VectorSearchIndexArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specification for Delta Sync Index. Required if `index_type` is `DELTA_SYNC`. This field is a block and is documented below.
+        /// Specification for Delta Sync Index. Required if `IndexType` is `DELTA_SYNC`. This field is a block and is documented below.
         /// </summary>
         [Input("deltaSyncIndexSpec")]
         public Input<Inputs.VectorSearchIndexDeltaSyncIndexSpecArgs>? DeltaSyncIndexSpec { get; set; }
 
         /// <summary>
-        /// Specification for Direct Vector Access Index. Required if `index_type` is `DIRECT_ACCESS`. This field is a block and is documented below.
+        /// Specification for Direct Vector Access Index. Required if `IndexType` is `DIRECT_ACCESS`. This field is a block and is documented below.
         /// </summary>
         [Input("directAccessIndexSpec")]
         public Input<Inputs.VectorSearchIndexDirectAccessIndexSpecArgs>? DirectAccessIndexSpec { get; set; }
@@ -222,13 +222,13 @@ namespace Pulumi.Databricks
         public Input<string>? Creator { get; set; }
 
         /// <summary>
-        /// Specification for Delta Sync Index. Required if `index_type` is `DELTA_SYNC`. This field is a block and is documented below.
+        /// Specification for Delta Sync Index. Required if `IndexType` is `DELTA_SYNC`. This field is a block and is documented below.
         /// </summary>
         [Input("deltaSyncIndexSpec")]
         public Input<Inputs.VectorSearchIndexDeltaSyncIndexSpecGetArgs>? DeltaSyncIndexSpec { get; set; }
 
         /// <summary>
-        /// Specification for Direct Vector Access Index. Required if `index_type` is `DIRECT_ACCESS`. This field is a block and is documented below.
+        /// Specification for Direct Vector Access Index. Required if `IndexType` is `DIRECT_ACCESS`. This field is a block and is documented below.
         /// </summary>
         [Input("directAccessIndexSpec")]
         public Input<Inputs.VectorSearchIndexDirectAccessIndexSpecGetArgs>? DirectAccessIndexSpec { get; set; }

@@ -14,7 +14,7 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetFunctionsFunctionResult
     {
         /// <summary>
-        /// Indicates whether the principal is limited to retrieving metadata for the associated object through the `BROWSE` privilege when `include_browse` is enabled in the request.
+        /// Indicates whether the principal is limited to retrieving metadata for the associated object through the `BROWSE` privilege when `IncludeBrowse` is enabled in the request.
         /// </summary>
         public readonly bool? BrowseOnly;
         /// <summary>
@@ -90,11 +90,11 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string? Properties;
         /// <summary>
-        /// Table function return parameters.  See `input_params` for description.
+        /// Table function return parameters.  See `InputParams` for description.
         /// </summary>
         public readonly Outputs.GetFunctionsFunctionReturnParamsResult? ReturnParams;
         /// <summary>
-        /// Function language (`SQL` or `EXTERNAL`). When `EXTERNAL` is used, the language of the routine function should be specified in the `external_language` field, and the `return_params` of the function cannot be used (as `TABLE` return type is not supported), and the `sql_data_access` field must be `NO_SQL`.
+        /// Function language (`SQL` or `EXTERNAL`). When `EXTERNAL` is used, the language of the routine function should be specified in the `ExternalLanguage` field, and the `ReturnParams` of the function cannot be used (as `TABLE` return type is not supported), and the `SqlDataAccess` field must be `NO_SQL`.
         /// </summary>
         public readonly string? RoutineBody;
         /// <summary>

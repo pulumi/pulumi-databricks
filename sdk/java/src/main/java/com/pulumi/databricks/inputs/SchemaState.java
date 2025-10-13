@@ -100,14 +100,14 @@ public final class SchemaState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Username/groupname/sp application_id of the schema owner.
+     * Username/groupname/sp applicationId of the schema owner.
      * 
      */
     @Import(name="owner")
     private @Nullable Output<String> owner;
 
     /**
-     * @return Username/groupname/sp application_id of the schema owner.
+     * @return Username/groupname/sp applicationId of the schema owner.
      * 
      */
     public Optional<Output<String>> owner() {
@@ -307,7 +307,7 @@ public final class SchemaState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param owner Username/groupname/sp application_id of the schema owner.
+         * @param owner Username/groupname/sp applicationId of the schema owner.
          * 
          * @return builder
          * 
@@ -318,7 +318,7 @@ public final class SchemaState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param owner Username/groupname/sp application_id of the schema owner.
+         * @param owner Username/groupname/sp applicationId of the schema owner.
          * 
          * @return builder
          * 

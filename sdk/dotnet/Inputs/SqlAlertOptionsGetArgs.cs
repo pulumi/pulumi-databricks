@@ -31,7 +31,7 @@ namespace Pulumi.Databricks.Inputs
         public Input<string>? CustomSubject { get; set; }
 
         /// <summary>
-        /// State that alert evaluates to when query result is empty.  Currently supported values are `unknown`, `triggered`, `ok` - check [API documentation](https://docs.databricks.com/api/workspace/alerts/create) for full list of supported values.
+        /// State that alert evaluates to when query result is empty.  Currently supported values are `Unknown`, `Triggered`, `Ok` - check [API documentation](https://docs.databricks.com/api/workspace/alerts/create) for full list of supported values.
         /// </summary>
         [Input("emptyResultState")]
         public Input<string>? EmptyResultState { get; set; }

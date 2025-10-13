@@ -14,7 +14,7 @@ namespace Pulumi.Databricks.Outputs
     public sealed class ClusterClusterMountInfoNetworkFilesystemInfo
     {
         /// <summary>
-        /// string that will be passed as options passed to the `mount` command.
+        /// string that will be passed as options passed to the `Mount` command.
         /// </summary>
         public readonly string? MountOptions;
         /// <summary>

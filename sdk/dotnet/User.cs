@@ -16,11 +16,11 @@ namespace Pulumi.Databricks
     /// 
     /// &gt; To assign account level users to workspace use databricks_mws_permission_assignment.
     /// 
-    /// &gt; Entitlements, like, `allow_cluster_create`, `allow_instance_pool_create`, `databricks_sql_access`, `workspace_access`, `workspace_consume` applicable only for workspace-level users.  Use databricks.Entitlements resource to assign entitlements inside a workspace to account-level users.
+    /// &gt; Entitlements, like, `AllowClusterCreate`, `AllowInstancePoolCreate`, `DatabricksSqlAccess`, `WorkspaceAccess`, `WorkspaceConsume` applicable only for workspace-level users.  Use databricks.Entitlements resource to assign entitlements inside a workspace to account-level users.
     /// 
     /// To create users in the Databricks account, the provider must be configured with `host = "https://accounts.cloud.databricks.com"` on AWS deployments or `host = "https://accounts.azuredatabricks.net"` and authenticate using AAD tokens on Azure deployments.
     /// 
-    /// The default behavior when deleting a `databricks.User` resource depends on whether the provider is configured at the workspace-level or account-level. When the provider is configured at the workspace-level, the user will be deleted from the workspace. When the provider is configured at the account-level, the user will be deactivated but not deleted. When the provider is configured at the account level, to delete the user from the account when the resource is deleted, set `disable_as_user_deletion = false`. Conversely, when the provider is configured at the account-level, to deactivate the user when the resource is deleted, set `disable_as_user_deletion = true`.
+    /// The default behavior when deleting a `databricks.User` resource depends on whether the provider is configured at the workspace-level or account-level. When the provider is configured at the workspace-level, the user will be deleted from the workspace. When the provider is configured at the account-level, the user will be deactivated but not deleted. When the provider is configured at the account level, to delete the user from the account when the resource is deleted, set `DisableAsUserDeletion = false`. Conversely, when the provider is configured at the account-level, to deactivate the user when the resource is deleted, set `DisableAsUserDeletion = true`.
     /// 
     /// ## Example Usage
     /// 
@@ -42,7 +42,7 @@ namespace Pulumi.Databricks
     /// });
     /// ```
     /// 
-    /// Creating user with administrative permissions - referencing special `admins` databricks.Group in databricks.GroupMember resource:
+    /// Creating user with administrative permissions - referencing special `Admins` databricks.Group in databricks.GroupMember resource:
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -179,13 +179,13 @@ namespace Pulumi.Databricks
         public Output<bool?> Active { get; private set; } = null!;
 
         /// <summary>
-        /// Allow the user to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and `cluster_id` argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
+        /// Allow the user to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and `ClusterId` argument. Everyone without `AllowClusterCreate` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
         /// </summary>
         [Output("allowClusterCreate")]
         public Output<bool?> AllowClusterCreate { get; private set; } = null!;
 
         /// <summary>
-        /// Allow the user to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and instance_pool_id argument.
+        /// Allow the user to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and InstancePoolId argument.
         /// </summary>
         [Output("allowInstancePoolCreate")]
         public Output<bool?> AllowInstancePoolCreate { get; private set; } = null!;
@@ -197,7 +197,7 @@ namespace Pulumi.Databricks
         public Output<bool?> DatabricksSqlAccess { get; private set; } = null!;
 
         /// <summary>
-        /// Deactivate the user when deleting the resource, rather than deleting the user entirely. Defaults to `true` when the provider is configured at the account-level and `false` when configured at the workspace-level. This flag is exclusive to force_delete_repos and force_delete_home_dir flags.
+        /// Deactivate the user when deleting the resource, rather than deleting the user entirely. Defaults to `True` when the provider is configured at the account-level and `False` when configured at the workspace-level. This flag is exclusive to ForceDeleteRepos and ForceDeleteHomeDir flags.
         /// </summary>
         [Output("disableAsUserDeletion")]
         public Output<bool> DisableAsUserDeletion { get; private set; } = null!;
@@ -257,7 +257,7 @@ namespace Pulumi.Databricks
         public Output<bool?> WorkspaceAccess { get; private set; } = null!;
 
         /// <summary>
-        /// This is a field to allow the user to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspace_access` or `databricks_sql_access`.
+        /// This is a field to allow the user to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `WorkspaceAccess` or `DatabricksSqlAccess`.
         /// </summary>
         [Output("workspaceConsume")]
         public Output<bool?> WorkspaceConsume { get; private set; } = null!;
@@ -321,13 +321,13 @@ namespace Pulumi.Databricks
         public Input<bool>? Active { get; set; }
 
         /// <summary>
-        /// Allow the user to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and `cluster_id` argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
+        /// Allow the user to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and `ClusterId` argument. Everyone without `AllowClusterCreate` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
         /// </summary>
         [Input("allowClusterCreate")]
         public Input<bool>? AllowClusterCreate { get; set; }
 
         /// <summary>
-        /// Allow the user to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and instance_pool_id argument.
+        /// Allow the user to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and InstancePoolId argument.
         /// </summary>
         [Input("allowInstancePoolCreate")]
         public Input<bool>? AllowInstancePoolCreate { get; set; }
@@ -339,7 +339,7 @@ namespace Pulumi.Databricks
         public Input<bool>? DatabricksSqlAccess { get; set; }
 
         /// <summary>
-        /// Deactivate the user when deleting the resource, rather than deleting the user entirely. Defaults to `true` when the provider is configured at the account-level and `false` when configured at the workspace-level. This flag is exclusive to force_delete_repos and force_delete_home_dir flags.
+        /// Deactivate the user when deleting the resource, rather than deleting the user entirely. Defaults to `True` when the provider is configured at the account-level and `False` when configured at the workspace-level. This flag is exclusive to ForceDeleteRepos and ForceDeleteHomeDir flags.
         /// </summary>
         [Input("disableAsUserDeletion")]
         public Input<bool>? DisableAsUserDeletion { get; set; }
@@ -399,7 +399,7 @@ namespace Pulumi.Databricks
         public Input<bool>? WorkspaceAccess { get; set; }
 
         /// <summary>
-        /// This is a field to allow the user to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspace_access` or `databricks_sql_access`.
+        /// This is a field to allow the user to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `WorkspaceAccess` or `DatabricksSqlAccess`.
         /// </summary>
         [Input("workspaceConsume")]
         public Input<bool>? WorkspaceConsume { get; set; }
@@ -425,13 +425,13 @@ namespace Pulumi.Databricks
         public Input<bool>? Active { get; set; }
 
         /// <summary>
-        /// Allow the user to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and `cluster_id` argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
+        /// Allow the user to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and `ClusterId` argument. Everyone without `AllowClusterCreate` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
         /// </summary>
         [Input("allowClusterCreate")]
         public Input<bool>? AllowClusterCreate { get; set; }
 
         /// <summary>
-        /// Allow the user to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and instance_pool_id argument.
+        /// Allow the user to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and InstancePoolId argument.
         /// </summary>
         [Input("allowInstancePoolCreate")]
         public Input<bool>? AllowInstancePoolCreate { get; set; }
@@ -443,7 +443,7 @@ namespace Pulumi.Databricks
         public Input<bool>? DatabricksSqlAccess { get; set; }
 
         /// <summary>
-        /// Deactivate the user when deleting the resource, rather than deleting the user entirely. Defaults to `true` when the provider is configured at the account-level and `false` when configured at the workspace-level. This flag is exclusive to force_delete_repos and force_delete_home_dir flags.
+        /// Deactivate the user when deleting the resource, rather than deleting the user entirely. Defaults to `True` when the provider is configured at the account-level and `False` when configured at the workspace-level. This flag is exclusive to ForceDeleteRepos and ForceDeleteHomeDir flags.
         /// </summary>
         [Input("disableAsUserDeletion")]
         public Input<bool>? DisableAsUserDeletion { get; set; }
@@ -503,7 +503,7 @@ namespace Pulumi.Databricks
         public Input<bool>? WorkspaceAccess { get; set; }
 
         /// <summary>
-        /// This is a field to allow the user to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspace_access` or `databricks_sql_access`.
+        /// This is a field to allow the user to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `WorkspaceAccess` or `DatabricksSqlAccess`.
         /// </summary>
         [Input("workspaceConsume")]
         public Input<bool>? WorkspaceConsume { get; set; }

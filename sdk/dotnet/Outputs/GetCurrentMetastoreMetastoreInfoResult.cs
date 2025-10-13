@@ -52,7 +52,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// Username/group name/sp application_id of the metastore owner.
+        /// Username/group name/sp ApplicationId of the metastore owner.
         /// </summary>
         public readonly string? Owner;
         /// <summary>
@@ -68,11 +68,11 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string? StorageRoot;
         /// <summary>
-        /// ID of a storage credential used for the `storage_root`.
+        /// ID of a storage credential used for the `StorageRoot`.
         /// </summary>
         public readonly string? StorageRootCredentialId;
         /// <summary>
-        /// Name of a storage credential used for the `storage_root`.
+        /// Name of a storage credential used for the `StorageRoot`.
         /// </summary>
         public readonly string? StorageRootCredentialName;
         /// <summary>

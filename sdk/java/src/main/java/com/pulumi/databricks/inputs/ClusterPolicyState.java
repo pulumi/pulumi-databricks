@@ -19,14 +19,14 @@ public final class ClusterPolicyState extends com.pulumi.resources.ResourceArgs 
     public static final ClusterPolicyState Empty = new ClusterPolicyState();
 
     /**
-     * Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition). Cannot be used with `policy_family_id`
+     * Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition). Cannot be used with `policyFamilyId`
      * 
      */
     @Import(name="definition")
     private @Nullable Output<String> definition;
 
     /**
-     * @return Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition). Cannot be used with `policy_family_id`
+     * @return Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition). Cannot be used with `policyFamilyId`
      * 
      */
     public Optional<Output<String>> definition() {
@@ -101,14 +101,14 @@ public final class ClusterPolicyState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * ID of the policy family. The cluster policy&#39;s policy definition inherits the policy family&#39;s policy definition. Cannot be used with `definition`. Use `policy_family_definition_overrides` instead to customize the policy definition.
+     * ID of the policy family. The cluster policy&#39;s policy definition inherits the policy family&#39;s policy definition. Cannot be used with `definition`. Use `policyFamilyDefinitionOverrides` instead to customize the policy definition.
      * 
      */
     @Import(name="policyFamilyId")
     private @Nullable Output<String> policyFamilyId;
 
     /**
-     * @return ID of the policy family. The cluster policy&#39;s policy definition inherits the policy family&#39;s policy definition. Cannot be used with `definition`. Use `policy_family_definition_overrides` instead to customize the policy definition.
+     * @return ID of the policy family. The cluster policy&#39;s policy definition inherits the policy family&#39;s policy definition. Cannot be used with `definition`. Use `policyFamilyDefinitionOverrides` instead to customize the policy definition.
      * 
      */
     public Optional<Output<String>> policyFamilyId() {
@@ -162,7 +162,7 @@ public final class ClusterPolicyState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param definition Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition). Cannot be used with `policy_family_id`
+         * @param definition Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition). Cannot be used with `policyFamilyId`
          * 
          * @return builder
          * 
@@ -173,7 +173,7 @@ public final class ClusterPolicyState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param definition Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition). Cannot be used with `policy_family_id`
+         * @param definition Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition). Cannot be used with `policyFamilyId`
          * 
          * @return builder
          * 
@@ -280,7 +280,7 @@ public final class ClusterPolicyState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param policyFamilyId ID of the policy family. The cluster policy&#39;s policy definition inherits the policy family&#39;s policy definition. Cannot be used with `definition`. Use `policy_family_definition_overrides` instead to customize the policy definition.
+         * @param policyFamilyId ID of the policy family. The cluster policy&#39;s policy definition inherits the policy family&#39;s policy definition. Cannot be used with `definition`. Use `policyFamilyDefinitionOverrides` instead to customize the policy definition.
          * 
          * @return builder
          * 
@@ -291,7 +291,7 @@ public final class ClusterPolicyState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param policyFamilyId ID of the policy family. The cluster policy&#39;s policy definition inherits the policy family&#39;s policy definition. Cannot be used with `definition`. Use `policy_family_definition_overrides` instead to customize the policy definition.
+         * @param policyFamilyId ID of the policy family. The cluster policy&#39;s policy definition inherits the policy family&#39;s policy definition. Cannot be used with `definition`. Use `policyFamilyDefinitionOverrides` instead to customize the policy definition.
          * 
          * @return builder
          * 

@@ -37,7 +37,7 @@ namespace Pulumi.Databricks.Inputs
         }
 
         /// <summary>
-        /// The external model to be served. NOTE: Only one of `external_model` and (`entity_name`, `entity_version`, `workload_size`, `workload_type`, and `scale_to_zero_enabled`) can be specified with the latter set being used for custom model serving for a Databricks registered model. When an `external_model` is present, the served entities list can only have one `served_entity` object. An existing endpoint with `external_model` can not be updated to an endpoint without `external_model`. If the endpoint is created without `external_model`, users cannot update it to add `external_model` later.
+        /// The external model to be served. NOTE: Only one of `ExternalModel` and (`EntityName`, `EntityVersion`, `WorkloadSize`, `WorkloadType`, and `ScaleToZeroEnabled`) can be specified with the latter set being used for custom model serving for a Databricks registered model. When an `ExternalModel` is present, the served entities list can only have one `ServedEntity` object. An existing endpoint with `ExternalModel` can not be updated to an endpoint without `ExternalModel`. If the endpoint is created without `ExternalModel`, users cannot update it to add `ExternalModel` later.
         /// </summary>
         [Input("externalModel")]
         public Input<Inputs.ModelServingConfigServedEntityExternalModelGetArgs>? ExternalModel { get; set; }
@@ -49,7 +49,7 @@ namespace Pulumi.Databricks.Inputs
         public Input<string>? InstanceProfileArn { get; set; }
 
         /// <summary>
-        /// The maximum provisioned concurrency that the endpoint can scale up to. Conflicts with `workload_size`.
+        /// The maximum provisioned concurrency that the endpoint can scale up to. Conflicts with `WorkloadSize`.
         /// </summary>
         [Input("maxProvisionedConcurrency")]
         public Input<int>? MaxProvisionedConcurrency { get; set; }
@@ -61,7 +61,7 @@ namespace Pulumi.Databricks.Inputs
         public Input<int>? MaxProvisionedThroughput { get; set; }
 
         /// <summary>
-        /// The minimum provisioned concurrency that the endpoint can scale down to. Conflicts with `workload_size`.
+        /// The minimum provisioned concurrency that the endpoint can scale down to. Conflicts with `WorkloadSize`.
         /// </summary>
         [Input("minProvisionedConcurrency")]
         public Input<int>? MinProvisionedConcurrency { get; set; }
@@ -88,7 +88,7 @@ namespace Pulumi.Databricks.Inputs
         public Input<bool>? ScaleToZeroEnabled { get; set; }
 
         /// <summary>
-        /// The workload size of the served entity. The workload size corresponds to a range of provisioned concurrency that the compute autoscales between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are `Small` (4 - 4 provisioned concurrency), `Medium` (8 - 16 provisioned concurrency), and `Large` (16 - 64 provisioned concurrency). If `scale-to-zero` is enabled, the lower bound of the provisioned concurrency for each workload size is 0. Conflicts with `min_provisioned_concurrency` and `max_provisioned_concurrency`.
+        /// The workload size of the served entity. The workload size corresponds to a range of provisioned concurrency that the compute autoscales between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are `Small` (4 - 4 provisioned concurrency), `Medium` (8 - 16 provisioned concurrency), and `Large` (16 - 64 provisioned concurrency). If `scale-to-zero` is enabled, the lower bound of the provisioned concurrency for each workload size is 0. Conflicts with `MinProvisionedConcurrency` and `MaxProvisionedConcurrency`.
         /// </summary>
         [Input("workloadSize")]
         public Input<string>? WorkloadSize { get; set; }

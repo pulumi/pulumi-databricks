@@ -36,14 +36,14 @@ public final class MwsCustomerManagedKeysArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * This field is a block and is documented below. This conflicts with `gcp_key_info`
+     * This field is a block and is documented below. This conflicts with `gcpKeyInfo`
      * 
      */
     @Import(name="awsKeyInfo")
     private @Nullable Output<MwsCustomerManagedKeysAwsKeyInfoArgs> awsKeyInfo;
 
     /**
-     * @return This field is a block and is documented below. This conflicts with `gcp_key_info`
+     * @return This field is a block and is documented below. This conflicts with `gcpKeyInfo`
      * 
      */
     public Optional<Output<MwsCustomerManagedKeysAwsKeyInfoArgs>> awsKeyInfo() {
@@ -81,14 +81,14 @@ public final class MwsCustomerManagedKeysArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * This field is a block and is documented below. This conflicts with `aws_key_info`
+     * This field is a block and is documented below. This conflicts with `awsKeyInfo`
      * 
      */
     @Import(name="gcpKeyInfo")
     private @Nullable Output<MwsCustomerManagedKeysGcpKeyInfoArgs> gcpKeyInfo;
 
     /**
-     * @return This field is a block and is documented below. This conflicts with `aws_key_info`
+     * @return This field is a block and is documented below. This conflicts with `awsKeyInfo`
      * 
      */
     public Optional<Output<MwsCustomerManagedKeysGcpKeyInfoArgs>> gcpKeyInfo() {
@@ -96,7 +96,7 @@ public final class MwsCustomerManagedKeysArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * *(since v0.3.4)* List of use cases for which this key will be used. *If you&#39;ve used the resource before, please add `use_cases = [&#34;MANAGED_SERVICES&#34;]` to keep the previous behaviour.* Possible values are:
+     * *(since v0.3.4)* List of use cases for which this key will be used. *If you&#39;ve used the resource before, please add `useCases = [&#34;MANAGED_SERVICES&#34;]` to keep the previous behaviour.* Possible values are:
      * * `MANAGED_SERVICES` - for encryption of the workspace objects (notebooks, secrets) that are stored in the control plane
      * * `STORAGE` - for encryption of the DBFS Storage &amp; Cluster EBS Volumes
      * 
@@ -105,7 +105,7 @@ public final class MwsCustomerManagedKeysArgs extends com.pulumi.resources.Resou
     private Output<List<String>> useCases;
 
     /**
-     * @return *(since v0.3.4)* List of use cases for which this key will be used. *If you&#39;ve used the resource before, please add `use_cases = [&#34;MANAGED_SERVICES&#34;]` to keep the previous behaviour.* Possible values are:
+     * @return *(since v0.3.4)* List of use cases for which this key will be used. *If you&#39;ve used the resource before, please add `useCases = [&#34;MANAGED_SERVICES&#34;]` to keep the previous behaviour.* Possible values are:
      * * `MANAGED_SERVICES` - for encryption of the workspace objects (notebooks, secrets) that are stored in the control plane
      * * `STORAGE` - for encryption of the DBFS Storage &amp; Cluster EBS Volumes
      * 
@@ -165,7 +165,7 @@ public final class MwsCustomerManagedKeysArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param awsKeyInfo This field is a block and is documented below. This conflicts with `gcp_key_info`
+         * @param awsKeyInfo This field is a block and is documented below. This conflicts with `gcpKeyInfo`
          * 
          * @return builder
          * 
@@ -176,7 +176,7 @@ public final class MwsCustomerManagedKeysArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param awsKeyInfo This field is a block and is documented below. This conflicts with `gcp_key_info`
+         * @param awsKeyInfo This field is a block and is documented below. This conflicts with `gcpKeyInfo`
          * 
          * @return builder
          * 
@@ -228,7 +228,7 @@ public final class MwsCustomerManagedKeysArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param gcpKeyInfo This field is a block and is documented below. This conflicts with `aws_key_info`
+         * @param gcpKeyInfo This field is a block and is documented below. This conflicts with `awsKeyInfo`
          * 
          * @return builder
          * 
@@ -239,7 +239,7 @@ public final class MwsCustomerManagedKeysArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param gcpKeyInfo This field is a block and is documented below. This conflicts with `aws_key_info`
+         * @param gcpKeyInfo This field is a block and is documented below. This conflicts with `awsKeyInfo`
          * 
          * @return builder
          * 
@@ -249,7 +249,7 @@ public final class MwsCustomerManagedKeysArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param useCases *(since v0.3.4)* List of use cases for which this key will be used. *If you&#39;ve used the resource before, please add `use_cases = [&#34;MANAGED_SERVICES&#34;]` to keep the previous behaviour.* Possible values are:
+         * @param useCases *(since v0.3.4)* List of use cases for which this key will be used. *If you&#39;ve used the resource before, please add `useCases = [&#34;MANAGED_SERVICES&#34;]` to keep the previous behaviour.* Possible values are:
          * * `MANAGED_SERVICES` - for encryption of the workspace objects (notebooks, secrets) that are stored in the control plane
          * * `STORAGE` - for encryption of the DBFS Storage &amp; Cluster EBS Volumes
          * 
@@ -262,7 +262,7 @@ public final class MwsCustomerManagedKeysArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param useCases *(since v0.3.4)* List of use cases for which this key will be used. *If you&#39;ve used the resource before, please add `use_cases = [&#34;MANAGED_SERVICES&#34;]` to keep the previous behaviour.* Possible values are:
+         * @param useCases *(since v0.3.4)* List of use cases for which this key will be used. *If you&#39;ve used the resource before, please add `useCases = [&#34;MANAGED_SERVICES&#34;]` to keep the previous behaviour.* Possible values are:
          * * `MANAGED_SERVICES` - for encryption of the workspace objects (notebooks, secrets) that are stored in the control plane
          * * `STORAGE` - for encryption of the DBFS Storage &amp; Cluster EBS Volumes
          * 
@@ -274,7 +274,7 @@ public final class MwsCustomerManagedKeysArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param useCases *(since v0.3.4)* List of use cases for which this key will be used. *If you&#39;ve used the resource before, please add `use_cases = [&#34;MANAGED_SERVICES&#34;]` to keep the previous behaviour.* Possible values are:
+         * @param useCases *(since v0.3.4)* List of use cases for which this key will be used. *If you&#39;ve used the resource before, please add `useCases = [&#34;MANAGED_SERVICES&#34;]` to keep the previous behaviour.* Possible values are:
          * * `MANAGED_SERVICES` - for encryption of the workspace objects (notebooks, secrets) that are stored in the control plane
          * * `STORAGE` - for encryption of the DBFS Storage &amp; Cluster EBS Volumes
          * 

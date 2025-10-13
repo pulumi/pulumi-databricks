@@ -89,7 +89,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
- * You can also inline sources through `content_base64`  attribute.
+ * You can also inline sources through `contentBase64`  attribute.
  * 
  * <pre>
  * {@code
@@ -232,14 +232,14 @@ public class File extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.remoteFileModified);
     }
     /**
-     * The full absolute path to the file. Conflicts with `content_base64`.
+     * The full absolute path to the file. Conflicts with `contentBase64`.
      * 
      */
     @Export(name="source", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> source;
 
     /**
-     * @return The full absolute path to the file. Conflicts with `content_base64`.
+     * @return The full absolute path to the file. Conflicts with `contentBase64`.
      * 
      */
     public Output<Optional<String>> source() {

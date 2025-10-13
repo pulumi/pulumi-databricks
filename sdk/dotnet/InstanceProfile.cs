@@ -166,7 +166,7 @@ namespace Pulumi.Databricks
     /// 
     /// ## Granting access to all users
     /// 
-    /// You can make instance profile available to all users by associating it with the special group called `users` through databricks.Group data source.
+    /// You can make instance profile available to all users by associating it with the special group called `Users` through databricks.Group data source.
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -197,7 +197,7 @@ namespace Pulumi.Databricks
     /// 
     /// ## Usage with Databricks SQL serverless
     /// 
-    /// When the instance profile ARN and its associated IAM role ARN don't match and the instance profile is intended for use with Databricks SQL serverless, the `iam_role_arn` parameter can be specified.
+    /// When the instance profile ARN and its associated IAM role ARN don't match and the instance profile is intended for use with Databricks SQL serverless, the `IamRoleArn` parameter can be specified.
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -299,7 +299,7 @@ namespace Pulumi.Databricks
         public Output<string?> IamRoleArn { get; private set; } = null!;
 
         /// <summary>
-        /// `ARN` attribute of `aws_iam_instance_profile` output, the EC2 instance profile association to AWS IAM role. This ARN would be validated upon resource creation.
+        /// `ARN` attribute of `AwsIamInstanceProfile` output, the EC2 instance profile association to AWS IAM role. This ARN would be validated upon resource creation.
         /// </summary>
         [Output("instanceProfileArn")]
         public Output<string> InstanceProfileArn { get; private set; } = null!;
@@ -369,7 +369,7 @@ namespace Pulumi.Databricks
         public Input<string>? IamRoleArn { get; set; }
 
         /// <summary>
-        /// `ARN` attribute of `aws_iam_instance_profile` output, the EC2 instance profile association to AWS IAM role. This ARN would be validated upon resource creation.
+        /// `ARN` attribute of `AwsIamInstanceProfile` output, the EC2 instance profile association to AWS IAM role. This ARN would be validated upon resource creation.
         /// </summary>
         [Input("instanceProfileArn", required: true)]
         public Input<string> InstanceProfileArn { get; set; } = null!;
@@ -401,7 +401,7 @@ namespace Pulumi.Databricks
         public Input<string>? IamRoleArn { get; set; }
 
         /// <summary>
-        /// `ARN` attribute of `aws_iam_instance_profile` output, the EC2 instance profile association to AWS IAM role. This ARN would be validated upon resource creation.
+        /// `ARN` attribute of `AwsIamInstanceProfile` output, the EC2 instance profile association to AWS IAM role. This ARN would be validated upon resource creation.
         /// </summary>
         [Input("instanceProfileArn")]
         public Input<string>? InstanceProfileArn { get; set; }

@@ -18,14 +18,14 @@ public final class GlobalInitScriptState extends com.pulumi.resources.ResourceAr
     public static final GlobalInitScriptState Empty = new GlobalInitScriptState();
 
     /**
-     * The base64-encoded source code global init script. Conflicts with `source`. Use of `content_base64` is discouraged, as it&#39;s increasing memory footprint of Pulumi state and should only be used in exceptional circumstances
+     * The base64-encoded source code global init script. Conflicts with `source`. Use of `contentBase64` is discouraged, as it&#39;s increasing memory footprint of Pulumi state and should only be used in exceptional circumstances
      * 
      */
     @Import(name="contentBase64")
     private @Nullable Output<String> contentBase64;
 
     /**
-     * @return The base64-encoded source code global init script. Conflicts with `source`. Use of `content_base64` is discouraged, as it&#39;s increasing memory footprint of Pulumi state and should only be used in exceptional circumstances
+     * @return The base64-encoded source code global init script. Conflicts with `source`. Use of `contentBase64` is discouraged, as it&#39;s increasing memory footprint of Pulumi state and should only be used in exceptional circumstances
      * 
      */
     public Optional<Output<String>> contentBase64() {
@@ -85,14 +85,14 @@ public final class GlobalInitScriptState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Path to script&#39;s source code on local filesystem. Conflicts with `content_base64`
+     * Path to script&#39;s source code on local filesystem. Conflicts with `contentBase64`
      * 
      */
     @Import(name="source")
     private @Nullable Output<String> source;
 
     /**
-     * @return Path to script&#39;s source code on local filesystem. Conflicts with `content_base64`
+     * @return Path to script&#39;s source code on local filesystem. Conflicts with `contentBase64`
      * 
      */
     public Optional<Output<String>> source() {
@@ -129,7 +129,7 @@ public final class GlobalInitScriptState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param contentBase64 The base64-encoded source code global init script. Conflicts with `source`. Use of `content_base64` is discouraged, as it&#39;s increasing memory footprint of Pulumi state and should only be used in exceptional circumstances
+         * @param contentBase64 The base64-encoded source code global init script. Conflicts with `source`. Use of `contentBase64` is discouraged, as it&#39;s increasing memory footprint of Pulumi state and should only be used in exceptional circumstances
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class GlobalInitScriptState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param contentBase64 The base64-encoded source code global init script. Conflicts with `source`. Use of `content_base64` is discouraged, as it&#39;s increasing memory footprint of Pulumi state and should only be used in exceptional circumstances
+         * @param contentBase64 The base64-encoded source code global init script. Conflicts with `source`. Use of `contentBase64` is discouraged, as it&#39;s increasing memory footprint of Pulumi state and should only be used in exceptional circumstances
          * 
          * @return builder
          * 
@@ -222,7 +222,7 @@ public final class GlobalInitScriptState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param source Path to script&#39;s source code on local filesystem. Conflicts with `content_base64`
+         * @param source Path to script&#39;s source code on local filesystem. Conflicts with `contentBase64`
          * 
          * @return builder
          * 
@@ -233,7 +233,7 @@ public final class GlobalInitScriptState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param source Path to script&#39;s source code on local filesystem. Conflicts with `content_base64`
+         * @param source Path to script&#39;s source code on local filesystem. Conflicts with `contentBase64`
          * 
          * @return builder
          * 

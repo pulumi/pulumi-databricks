@@ -24,7 +24,7 @@ public final class MlflowWebhookHttpUrlSpec {
      */
     private @Nullable Boolean enableSslVerification;
     /**
-     * @return Shared secret required for HMAC encoding payload. The HMAC-encoded payload will be sent in the header as `X-Databricks-Signature: encoded_payload`.
+     * @return Shared secret required for HMAC encoding payload. The HMAC-encoded payload will be sent in the header as `X-Databricks-Signature: encodedPayload`.
      * 
      */
     private @Nullable String secret;
@@ -50,7 +50,7 @@ public final class MlflowWebhookHttpUrlSpec {
         return Optional.ofNullable(this.enableSslVerification);
     }
     /**
-     * @return Shared secret required for HMAC encoding payload. The HMAC-encoded payload will be sent in the header as `X-Databricks-Signature: encoded_payload`.
+     * @return Shared secret required for HMAC encoding payload. The HMAC-encoded payload will be sent in the header as `X-Databricks-Signature: encodedPayload`.
      * 
      */
     public Optional<String> secret() {

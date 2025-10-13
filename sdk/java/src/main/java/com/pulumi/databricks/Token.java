@@ -57,7 +57,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
- * A token can be automatically rotated by taking a dependency on the `time_rotating` resource:
+ * A token can be automatically rotated by taking a dependency on the `timeRotating` resource:
  * 
  * <pre>
  * {@code

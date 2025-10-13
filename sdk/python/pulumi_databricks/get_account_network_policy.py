@@ -96,6 +96,10 @@ def get_account_network_policy(account_id: Optional[_builtins.str] = None,
 
     > **Note** This data source can only be used with an account-level provider!
 
+    ## Example Usage
+
+    Referring to a network policy by id:
+
 
     :param _builtins.str account_id: (string) - The associated account ID for this Network Policy object
     :param Union['GetAccountNetworkPolicyEgressArgs', 'GetAccountNetworkPolicyEgressArgsDict'] egress: (NetworkPolicyEgress) - The network policies applying for egress traffic
@@ -121,6 +125,10 @@ def get_account_network_policy_output(account_id: Optional[pulumi.Input[Optional
     This data source can be used to get a single network policy.
 
     > **Note** This data source can only be used with an account-level provider!
+
+    ## Example Usage
+
+    Referring to a network policy by id:
 
 
     :param _builtins.str account_id: (string) - The associated account ID for this Network Policy object

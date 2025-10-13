@@ -65,14 +65,14 @@ public final class ModelServingConfigServedEntityArgs extends com.pulumi.resourc
     }
 
     /**
-     * The external model to be served. NOTE: Only one of `external_model` and (`entity_name`, `entity_version`, `workload_size`, `workload_type`, and `scale_to_zero_enabled`) can be specified with the latter set being used for custom model serving for a Databricks registered model. When an `external_model` is present, the served entities list can only have one `served_entity` object. An existing endpoint with `external_model` can not be updated to an endpoint without `external_model`. If the endpoint is created without `external_model`, users cannot update it to add `external_model` later.
+     * The external model to be served. NOTE: Only one of `externalModel` and (`entityName`, `entityVersion`, `workloadSize`, `workloadType`, and `scaleToZeroEnabled`) can be specified with the latter set being used for custom model serving for a Databricks registered model. When an `externalModel` is present, the served entities list can only have one `servedEntity` object. An existing endpoint with `externalModel` can not be updated to an endpoint without `externalModel`. If the endpoint is created without `externalModel`, users cannot update it to add `externalModel` later.
      * 
      */
     @Import(name="externalModel")
     private @Nullable Output<ModelServingConfigServedEntityExternalModelArgs> externalModel;
 
     /**
-     * @return The external model to be served. NOTE: Only one of `external_model` and (`entity_name`, `entity_version`, `workload_size`, `workload_type`, and `scale_to_zero_enabled`) can be specified with the latter set being used for custom model serving for a Databricks registered model. When an `external_model` is present, the served entities list can only have one `served_entity` object. An existing endpoint with `external_model` can not be updated to an endpoint without `external_model`. If the endpoint is created without `external_model`, users cannot update it to add `external_model` later.
+     * @return The external model to be served. NOTE: Only one of `externalModel` and (`entityName`, `entityVersion`, `workloadSize`, `workloadType`, and `scaleToZeroEnabled`) can be specified with the latter set being used for custom model serving for a Databricks registered model. When an `externalModel` is present, the served entities list can only have one `servedEntity` object. An existing endpoint with `externalModel` can not be updated to an endpoint without `externalModel`. If the endpoint is created without `externalModel`, users cannot update it to add `externalModel` later.
      * 
      */
     public Optional<Output<ModelServingConfigServedEntityExternalModelArgs>> externalModel() {
@@ -95,14 +95,14 @@ public final class ModelServingConfigServedEntityArgs extends com.pulumi.resourc
     }
 
     /**
-     * The maximum provisioned concurrency that the endpoint can scale up to. Conflicts with `workload_size`.
+     * The maximum provisioned concurrency that the endpoint can scale up to. Conflicts with `workloadSize`.
      * 
      */
     @Import(name="maxProvisionedConcurrency")
     private @Nullable Output<Integer> maxProvisionedConcurrency;
 
     /**
-     * @return The maximum provisioned concurrency that the endpoint can scale up to. Conflicts with `workload_size`.
+     * @return The maximum provisioned concurrency that the endpoint can scale up to. Conflicts with `workloadSize`.
      * 
      */
     public Optional<Output<Integer>> maxProvisionedConcurrency() {
@@ -125,14 +125,14 @@ public final class ModelServingConfigServedEntityArgs extends com.pulumi.resourc
     }
 
     /**
-     * The minimum provisioned concurrency that the endpoint can scale down to. Conflicts with `workload_size`.
+     * The minimum provisioned concurrency that the endpoint can scale down to. Conflicts with `workloadSize`.
      * 
      */
     @Import(name="minProvisionedConcurrency")
     private @Nullable Output<Integer> minProvisionedConcurrency;
 
     /**
-     * @return The minimum provisioned concurrency that the endpoint can scale down to. Conflicts with `workload_size`.
+     * @return The minimum provisioned concurrency that the endpoint can scale down to. Conflicts with `workloadSize`.
      * 
      */
     public Optional<Output<Integer>> minProvisionedConcurrency() {
@@ -192,14 +192,14 @@ public final class ModelServingConfigServedEntityArgs extends com.pulumi.resourc
     }
 
     /**
-     * The workload size of the served entity. The workload size corresponds to a range of provisioned concurrency that the compute autoscales between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are `Small` (4 - 4 provisioned concurrency), `Medium` (8 - 16 provisioned concurrency), and `Large` (16 - 64 provisioned concurrency). If `scale-to-zero` is enabled, the lower bound of the provisioned concurrency for each workload size is 0. Conflicts with `min_provisioned_concurrency` and `max_provisioned_concurrency`.
+     * The workload size of the served entity. The workload size corresponds to a range of provisioned concurrency that the compute autoscales between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are `Small` (4 - 4 provisioned concurrency), `Medium` (8 - 16 provisioned concurrency), and `Large` (16 - 64 provisioned concurrency). If `scale-to-zero` is enabled, the lower bound of the provisioned concurrency for each workload size is 0. Conflicts with `minProvisionedConcurrency` and `maxProvisionedConcurrency`.
      * 
      */
     @Import(name="workloadSize")
     private @Nullable Output<String> workloadSize;
 
     /**
-     * @return The workload size of the served entity. The workload size corresponds to a range of provisioned concurrency that the compute autoscales between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are `Small` (4 - 4 provisioned concurrency), `Medium` (8 - 16 provisioned concurrency), and `Large` (16 - 64 provisioned concurrency). If `scale-to-zero` is enabled, the lower bound of the provisioned concurrency for each workload size is 0. Conflicts with `min_provisioned_concurrency` and `max_provisioned_concurrency`.
+     * @return The workload size of the served entity. The workload size corresponds to a range of provisioned concurrency that the compute autoscales between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are `Small` (4 - 4 provisioned concurrency), `Medium` (8 - 16 provisioned concurrency), and `Large` (16 - 64 provisioned concurrency). If `scale-to-zero` is enabled, the lower bound of the provisioned concurrency for each workload size is 0. Conflicts with `minProvisionedConcurrency` and `maxProvisionedConcurrency`.
      * 
      */
     public Optional<Output<String>> workloadSize() {
@@ -322,7 +322,7 @@ public final class ModelServingConfigServedEntityArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param externalModel The external model to be served. NOTE: Only one of `external_model` and (`entity_name`, `entity_version`, `workload_size`, `workload_type`, and `scale_to_zero_enabled`) can be specified with the latter set being used for custom model serving for a Databricks registered model. When an `external_model` is present, the served entities list can only have one `served_entity` object. An existing endpoint with `external_model` can not be updated to an endpoint without `external_model`. If the endpoint is created without `external_model`, users cannot update it to add `external_model` later.
+         * @param externalModel The external model to be served. NOTE: Only one of `externalModel` and (`entityName`, `entityVersion`, `workloadSize`, `workloadType`, and `scaleToZeroEnabled`) can be specified with the latter set being used for custom model serving for a Databricks registered model. When an `externalModel` is present, the served entities list can only have one `servedEntity` object. An existing endpoint with `externalModel` can not be updated to an endpoint without `externalModel`. If the endpoint is created without `externalModel`, users cannot update it to add `externalModel` later.
          * 
          * @return builder
          * 
@@ -333,7 +333,7 @@ public final class ModelServingConfigServedEntityArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param externalModel The external model to be served. NOTE: Only one of `external_model` and (`entity_name`, `entity_version`, `workload_size`, `workload_type`, and `scale_to_zero_enabled`) can be specified with the latter set being used for custom model serving for a Databricks registered model. When an `external_model` is present, the served entities list can only have one `served_entity` object. An existing endpoint with `external_model` can not be updated to an endpoint without `external_model`. If the endpoint is created without `external_model`, users cannot update it to add `external_model` later.
+         * @param externalModel The external model to be served. NOTE: Only one of `externalModel` and (`entityName`, `entityVersion`, `workloadSize`, `workloadType`, and `scaleToZeroEnabled`) can be specified with the latter set being used for custom model serving for a Databricks registered model. When an `externalModel` is present, the served entities list can only have one `servedEntity` object. An existing endpoint with `externalModel` can not be updated to an endpoint without `externalModel`. If the endpoint is created without `externalModel`, users cannot update it to add `externalModel` later.
          * 
          * @return builder
          * 
@@ -364,7 +364,7 @@ public final class ModelServingConfigServedEntityArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param maxProvisionedConcurrency The maximum provisioned concurrency that the endpoint can scale up to. Conflicts with `workload_size`.
+         * @param maxProvisionedConcurrency The maximum provisioned concurrency that the endpoint can scale up to. Conflicts with `workloadSize`.
          * 
          * @return builder
          * 
@@ -375,7 +375,7 @@ public final class ModelServingConfigServedEntityArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param maxProvisionedConcurrency The maximum provisioned concurrency that the endpoint can scale up to. Conflicts with `workload_size`.
+         * @param maxProvisionedConcurrency The maximum provisioned concurrency that the endpoint can scale up to. Conflicts with `workloadSize`.
          * 
          * @return builder
          * 
@@ -406,7 +406,7 @@ public final class ModelServingConfigServedEntityArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param minProvisionedConcurrency The minimum provisioned concurrency that the endpoint can scale down to. Conflicts with `workload_size`.
+         * @param minProvisionedConcurrency The minimum provisioned concurrency that the endpoint can scale down to. Conflicts with `workloadSize`.
          * 
          * @return builder
          * 
@@ -417,7 +417,7 @@ public final class ModelServingConfigServedEntityArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param minProvisionedConcurrency The minimum provisioned concurrency that the endpoint can scale down to. Conflicts with `workload_size`.
+         * @param minProvisionedConcurrency The minimum provisioned concurrency that the endpoint can scale down to. Conflicts with `workloadSize`.
          * 
          * @return builder
          * 
@@ -499,7 +499,7 @@ public final class ModelServingConfigServedEntityArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param workloadSize The workload size of the served entity. The workload size corresponds to a range of provisioned concurrency that the compute autoscales between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are `Small` (4 - 4 provisioned concurrency), `Medium` (8 - 16 provisioned concurrency), and `Large` (16 - 64 provisioned concurrency). If `scale-to-zero` is enabled, the lower bound of the provisioned concurrency for each workload size is 0. Conflicts with `min_provisioned_concurrency` and `max_provisioned_concurrency`.
+         * @param workloadSize The workload size of the served entity. The workload size corresponds to a range of provisioned concurrency that the compute autoscales between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are `Small` (4 - 4 provisioned concurrency), `Medium` (8 - 16 provisioned concurrency), and `Large` (16 - 64 provisioned concurrency). If `scale-to-zero` is enabled, the lower bound of the provisioned concurrency for each workload size is 0. Conflicts with `minProvisionedConcurrency` and `maxProvisionedConcurrency`.
          * 
          * @return builder
          * 
@@ -510,7 +510,7 @@ public final class ModelServingConfigServedEntityArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param workloadSize The workload size of the served entity. The workload size corresponds to a range of provisioned concurrency that the compute autoscales between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are `Small` (4 - 4 provisioned concurrency), `Medium` (8 - 16 provisioned concurrency), and `Large` (16 - 64 provisioned concurrency). If `scale-to-zero` is enabled, the lower bound of the provisioned concurrency for each workload size is 0. Conflicts with `min_provisioned_concurrency` and `max_provisioned_concurrency`.
+         * @param workloadSize The workload size of the served entity. The workload size corresponds to a range of provisioned concurrency that the compute autoscales between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are `Small` (4 - 4 provisioned concurrency), `Medium` (8 - 16 provisioned concurrency), and `Large` (16 - 64 provisioned concurrency). If `scale-to-zero` is enabled, the lower bound of the provisioned concurrency for each workload size is 0. Conflicts with `minProvisionedConcurrency` and `maxProvisionedConcurrency`.
          * 
          * @return builder
          * 

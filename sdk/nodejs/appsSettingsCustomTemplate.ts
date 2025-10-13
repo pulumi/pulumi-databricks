@@ -32,6 +32,14 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
+ * ### Example with API Scopes
+ *
+ * This example creates a custom template that declares required user API scopes.
+ *
+ * ### Example with Resource Requirements
+ *
+ * This example defines a template that requests specific workspace resources with permissions granted.
+ *
  * ## Import
  *
  * As of Pulumi v1.5, resources can be imported through configuration.

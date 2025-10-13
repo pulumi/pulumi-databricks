@@ -36,22 +36,22 @@ public final class DatabaseSyncedDatabaseTableSpecArgs extends com.pulumi.resour
     }
 
     /**
-     * At most one of existing_pipeline_id and new_pipeline_spec should be defined.
+     * At most one of existingPipelineId and newPipelineSpec should be defined.
      * 
-     * If existing_pipeline_id is defined, the synced table will be bin packed into the existing pipeline
+     * If existingPipelineId is defined, the synced table will be bin packed into the existing pipeline
      * referenced. This avoids creating a new pipeline and allows sharing existing compute.
-     * In this case, the scheduling_policy of this synced table must match the scheduling policy of the existing pipeline
+     * In this case, the schedulingPolicy of this synced table must match the scheduling policy of the existing pipeline
      * 
      */
     @Import(name="existingPipelineId")
     private @Nullable Output<String> existingPipelineId;
 
     /**
-     * @return At most one of existing_pipeline_id and new_pipeline_spec should be defined.
+     * @return At most one of existingPipelineId and newPipelineSpec should be defined.
      * 
-     * If existing_pipeline_id is defined, the synced table will be bin packed into the existing pipeline
+     * If existingPipelineId is defined, the synced table will be bin packed into the existing pipeline
      * referenced. This avoids creating a new pipeline and allows sharing existing compute.
-     * In this case, the scheduling_policy of this synced table must match the scheduling policy of the existing pipeline
+     * In this case, the schedulingPolicy of this synced table must match the scheduling policy of the existing pipeline
      * 
      */
     public Optional<Output<String>> existingPipelineId() {
@@ -59,9 +59,9 @@ public final class DatabaseSyncedDatabaseTableSpecArgs extends com.pulumi.resour
     }
 
     /**
-     * At most one of existing_pipeline_id and new_pipeline_spec should be defined.
+     * At most one of existingPipelineId and newPipelineSpec should be defined.
      * 
-     * If new_pipeline_spec is defined, a new pipeline is created for this synced table. The location pointed to is used
+     * If newPipelineSpec is defined, a new pipeline is created for this synced table. The location pointed to is used
      * to store intermediate files (checkpoints, event logs etc). The caller must have write permissions to create Delta
      * tables in the specified catalog and schema. Again, note this requires write permissions, whereas the source table
      * only requires read permissions
@@ -71,9 +71,9 @@ public final class DatabaseSyncedDatabaseTableSpecArgs extends com.pulumi.resour
     private @Nullable Output<DatabaseSyncedDatabaseTableSpecNewPipelineSpecArgs> newPipelineSpec;
 
     /**
-     * @return At most one of existing_pipeline_id and new_pipeline_spec should be defined.
+     * @return At most one of existingPipelineId and newPipelineSpec should be defined.
      * 
-     * If new_pipeline_spec is defined, a new pipeline is created for this synced table. The location pointed to is used
+     * If newPipelineSpec is defined, a new pipeline is created for this synced table. The location pointed to is used
      * to store intermediate files (checkpoints, event logs etc). The caller must have write permissions to create Delta
      * tables in the specified catalog and schema. Again, note this requires write permissions, whereas the source table
      * only requires read permissions
@@ -197,11 +197,11 @@ public final class DatabaseSyncedDatabaseTableSpecArgs extends com.pulumi.resour
         }
 
         /**
-         * @param existingPipelineId At most one of existing_pipeline_id and new_pipeline_spec should be defined.
+         * @param existingPipelineId At most one of existingPipelineId and newPipelineSpec should be defined.
          * 
-         * If existing_pipeline_id is defined, the synced table will be bin packed into the existing pipeline
+         * If existingPipelineId is defined, the synced table will be bin packed into the existing pipeline
          * referenced. This avoids creating a new pipeline and allows sharing existing compute.
-         * In this case, the scheduling_policy of this synced table must match the scheduling policy of the existing pipeline
+         * In this case, the schedulingPolicy of this synced table must match the scheduling policy of the existing pipeline
          * 
          * @return builder
          * 
@@ -212,11 +212,11 @@ public final class DatabaseSyncedDatabaseTableSpecArgs extends com.pulumi.resour
         }
 
         /**
-         * @param existingPipelineId At most one of existing_pipeline_id and new_pipeline_spec should be defined.
+         * @param existingPipelineId At most one of existingPipelineId and newPipelineSpec should be defined.
          * 
-         * If existing_pipeline_id is defined, the synced table will be bin packed into the existing pipeline
+         * If existingPipelineId is defined, the synced table will be bin packed into the existing pipeline
          * referenced. This avoids creating a new pipeline and allows sharing existing compute.
-         * In this case, the scheduling_policy of this synced table must match the scheduling policy of the existing pipeline
+         * In this case, the schedulingPolicy of this synced table must match the scheduling policy of the existing pipeline
          * 
          * @return builder
          * 
@@ -226,9 +226,9 @@ public final class DatabaseSyncedDatabaseTableSpecArgs extends com.pulumi.resour
         }
 
         /**
-         * @param newPipelineSpec At most one of existing_pipeline_id and new_pipeline_spec should be defined.
+         * @param newPipelineSpec At most one of existingPipelineId and newPipelineSpec should be defined.
          * 
-         * If new_pipeline_spec is defined, a new pipeline is created for this synced table. The location pointed to is used
+         * If newPipelineSpec is defined, a new pipeline is created for this synced table. The location pointed to is used
          * to store intermediate files (checkpoints, event logs etc). The caller must have write permissions to create Delta
          * tables in the specified catalog and schema. Again, note this requires write permissions, whereas the source table
          * only requires read permissions
@@ -242,9 +242,9 @@ public final class DatabaseSyncedDatabaseTableSpecArgs extends com.pulumi.resour
         }
 
         /**
-         * @param newPipelineSpec At most one of existing_pipeline_id and new_pipeline_spec should be defined.
+         * @param newPipelineSpec At most one of existingPipelineId and newPipelineSpec should be defined.
          * 
-         * If new_pipeline_spec is defined, a new pipeline is created for this synced table. The location pointed to is used
+         * If newPipelineSpec is defined, a new pipeline is created for this synced table. The location pointed to is used
          * to store intermediate files (checkpoints, event logs etc). The caller must have write permissions to create Delta
          * tables in the specified catalog and schema. Again, note this requires write permissions, whereas the source table
          * only requires read permissions

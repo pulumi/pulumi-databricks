@@ -55,7 +55,7 @@ public final class GetAccountFederationPolicyOidcPolicy extends com.pulumi.resou
 
     /**
      * (string) - The public keys used to validate the signature of federated tokens, in JWKS format.
-     * Most use cases should not need to specify this field. If jwks_uri and jwks_json
+     * Most use cases should not need to specify this field. If jwksUri and jwksJson
      * are both unspecified (recommended), Databricks automatically fetches the public
      * keys from your issuer’s well known endpoint. Databricks strongly recommends
      * relying on your issuer’s well known endpoint for discovering public keys
@@ -66,7 +66,7 @@ public final class GetAccountFederationPolicyOidcPolicy extends com.pulumi.resou
 
     /**
      * @return (string) - The public keys used to validate the signature of federated tokens, in JWKS format.
-     * Most use cases should not need to specify this field. If jwks_uri and jwks_json
+     * Most use cases should not need to specify this field. If jwksUri and jwksJson
      * are both unspecified (recommended), Databricks automatically fetches the public
      * keys from your issuer’s well known endpoint. Databricks strongly recommends
      * relying on your issuer’s well known endpoint for discovering public keys
@@ -78,8 +78,8 @@ public final class GetAccountFederationPolicyOidcPolicy extends com.pulumi.resou
 
     /**
      * (string) - URL of the public keys used to validate the signature of federated tokens, in
-     * JWKS format. Most use cases should not need to specify this field. If jwks_uri
-     * and jwks_json are both unspecified (recommended), Databricks automatically
+     * JWKS format. Most use cases should not need to specify this field. If jwksUri
+     * and jwksJson are both unspecified (recommended), Databricks automatically
      * fetches the public keys from your issuer’s well known endpoint. Databricks
      * strongly recommends relying on your issuer’s well known endpoint for discovering
      * public keys
@@ -90,8 +90,8 @@ public final class GetAccountFederationPolicyOidcPolicy extends com.pulumi.resou
 
     /**
      * @return (string) - URL of the public keys used to validate the signature of federated tokens, in
-     * JWKS format. Most use cases should not need to specify this field. If jwks_uri
-     * and jwks_json are both unspecified (recommended), Databricks automatically
+     * JWKS format. Most use cases should not need to specify this field. If jwksUri
+     * and jwksJson are both unspecified (recommended), Databricks automatically
      * fetches the public keys from your issuer’s well known endpoint. Databricks
      * strongly recommends relying on your issuer’s well known endpoint for discovering
      * public keys
@@ -208,7 +208,7 @@ public final class GetAccountFederationPolicyOidcPolicy extends com.pulumi.resou
 
         /**
          * @param jwksJson (string) - The public keys used to validate the signature of federated tokens, in JWKS format.
-         * Most use cases should not need to specify this field. If jwks_uri and jwks_json
+         * Most use cases should not need to specify this field. If jwksUri and jwksJson
          * are both unspecified (recommended), Databricks automatically fetches the public
          * keys from your issuer’s well known endpoint. Databricks strongly recommends
          * relying on your issuer’s well known endpoint for discovering public keys
@@ -223,8 +223,8 @@ public final class GetAccountFederationPolicyOidcPolicy extends com.pulumi.resou
 
         /**
          * @param jwksUri (string) - URL of the public keys used to validate the signature of federated tokens, in
-         * JWKS format. Most use cases should not need to specify this field. If jwks_uri
-         * and jwks_json are both unspecified (recommended), Databricks automatically
+         * JWKS format. Most use cases should not need to specify this field. If jwksUri
+         * and jwksJson are both unspecified (recommended), Databricks automatically
          * fetches the public keys from your issuer’s well known endpoint. Databricks
          * strongly recommends relying on your issuer’s well known endpoint for discovering
          * public keys
