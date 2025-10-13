@@ -33,14 +33,14 @@ public final class GetVolumeVolumeInfo extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * indicates whether the principal is limited to retrieving metadata for the volume through the BROWSE privilege when include_browse is enabled in the request.
+     * indicates whether the principal is limited to retrieving metadata for the volume through the BROWSE privilege when includeBrowse is enabled in the request.
      * 
      */
     @Import(name="browseOnly")
     private @Nullable Boolean browseOnly;
 
     /**
-     * @return indicates whether the principal is limited to retrieving metadata for the volume through the BROWSE privilege when include_browse is enabled in the request.
+     * @return indicates whether the principal is limited to retrieving metadata for the volume through the BROWSE privilege when includeBrowse is enabled in the request.
      * 
      */
     public Optional<Boolean> browseOnly() {
@@ -324,7 +324,7 @@ public final class GetVolumeVolumeInfo extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param browseOnly indicates whether the principal is limited to retrieving metadata for the volume through the BROWSE privilege when include_browse is enabled in the request.
+         * @param browseOnly indicates whether the principal is limited to retrieving metadata for the volume through the BROWSE privilege when includeBrowse is enabled in the request.
          * 
          * @return builder
          * 

@@ -24,13 +24,13 @@ public final class JobTaskForEachTaskTaskDbtTask {
      */
     private List<String> commands;
     /**
-     * @return The relative path to the directory in the repository specified by `git_source` where dbt should look in for the `profiles.yml` file. If not specified, defaults to the repository&#39;s root directory. Equivalent to passing `--profile-dir` to a dbt command.
+     * @return The relative path to the directory in the repository specified by `gitSource` where dbt should look in for the `profiles.yml` file. If not specified, defaults to the repository&#39;s root directory. Equivalent to passing `--profile-dir` to a dbt command.
      * 
      */
     private @Nullable String profilesDirectory;
     /**
      * @return The path where dbt should look for `dbt_project.yml`. Equivalent to passing `--project-dir` to the dbt CLI.
-     * * If `source` is `GIT`: Relative path to the directory in the repository specified in the `git_source` block. Defaults to the repository&#39;s root directory when not specified.
+     * * If `source` is `GIT`: Relative path to the directory in the repository specified in the `gitSource` block. Defaults to the repository&#39;s root directory when not specified.
      * * If `source` is `WORKSPACE`: Absolute path to the folder in the workspace.
      * 
      */
@@ -41,14 +41,14 @@ public final class JobTaskForEachTaskTaskDbtTask {
      */
     private @Nullable String schema;
     /**
-     * @return The source of the project. Possible values are `WORKSPACE` and `GIT`.  Defaults to `GIT` if a `git_source` block is present in the job definition.
+     * @return The source of the project. Possible values are `WORKSPACE` and `GIT`.  Defaults to `GIT` if a `gitSource` block is present in the job definition.
      * 
      */
     private @Nullable String source;
     /**
      * @return The ID of the SQL warehouse that dbt should execute against.
      * 
-     * You also need to include a `git_source` block to configure the repository that contains the dbt project.
+     * You also need to include a `gitSource` block to configure the repository that contains the dbt project.
      * 
      */
     private @Nullable String warehouseId;
@@ -69,7 +69,7 @@ public final class JobTaskForEachTaskTaskDbtTask {
         return this.commands;
     }
     /**
-     * @return The relative path to the directory in the repository specified by `git_source` where dbt should look in for the `profiles.yml` file. If not specified, defaults to the repository&#39;s root directory. Equivalent to passing `--profile-dir` to a dbt command.
+     * @return The relative path to the directory in the repository specified by `gitSource` where dbt should look in for the `profiles.yml` file. If not specified, defaults to the repository&#39;s root directory. Equivalent to passing `--profile-dir` to a dbt command.
      * 
      */
     public Optional<String> profilesDirectory() {
@@ -77,7 +77,7 @@ public final class JobTaskForEachTaskTaskDbtTask {
     }
     /**
      * @return The path where dbt should look for `dbt_project.yml`. Equivalent to passing `--project-dir` to the dbt CLI.
-     * * If `source` is `GIT`: Relative path to the directory in the repository specified in the `git_source` block. Defaults to the repository&#39;s root directory when not specified.
+     * * If `source` is `GIT`: Relative path to the directory in the repository specified in the `gitSource` block. Defaults to the repository&#39;s root directory when not specified.
      * * If `source` is `WORKSPACE`: Absolute path to the folder in the workspace.
      * 
      */
@@ -92,7 +92,7 @@ public final class JobTaskForEachTaskTaskDbtTask {
         return Optional.ofNullable(this.schema);
     }
     /**
-     * @return The source of the project. Possible values are `WORKSPACE` and `GIT`.  Defaults to `GIT` if a `git_source` block is present in the job definition.
+     * @return The source of the project. Possible values are `WORKSPACE` and `GIT`.  Defaults to `GIT` if a `gitSource` block is present in the job definition.
      * 
      */
     public Optional<String> source() {
@@ -101,7 +101,7 @@ public final class JobTaskForEachTaskTaskDbtTask {
     /**
      * @return The ID of the SQL warehouse that dbt should execute against.
      * 
-     * You also need to include a `git_source` block to configure the repository that contains the dbt project.
+     * You also need to include a `gitSource` block to configure the repository that contains the dbt project.
      * 
      */
     public Optional<String> warehouseId() {

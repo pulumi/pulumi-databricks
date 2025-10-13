@@ -17,14 +17,14 @@ public final class GetServicePrincipalsArgs extends com.pulumi.resources.InvokeA
     public static final GetServicePrincipalsArgs Empty = new GetServicePrincipalsArgs();
 
     /**
-     * List of `application_ids` of service principals.  Individual service principal can be retrieved using databricks.ServicePrincipal data source
+     * List of `applicationIds` of service principals.  Individual service principal can be retrieved using databricks.ServicePrincipal data source
      * 
      */
     @Import(name="applicationIds")
     private @Nullable Output<List<String>> applicationIds;
 
     /**
-     * @return List of `application_ids` of service principals.  Individual service principal can be retrieved using databricks.ServicePrincipal data source
+     * @return List of `applicationIds` of service principals.  Individual service principal can be retrieved using databricks.ServicePrincipal data source
      * 
      */
     public Optional<Output<List<String>>> applicationIds() {
@@ -72,7 +72,7 @@ public final class GetServicePrincipalsArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param applicationIds List of `application_ids` of service principals.  Individual service principal can be retrieved using databricks.ServicePrincipal data source
+         * @param applicationIds List of `applicationIds` of service principals.  Individual service principal can be retrieved using databricks.ServicePrincipal data source
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class GetServicePrincipalsArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param applicationIds List of `application_ids` of service principals.  Individual service principal can be retrieved using databricks.ServicePrincipal data source
+         * @param applicationIds List of `applicationIds` of service principals.  Individual service principal can be retrieved using databricks.ServicePrincipal data source
          * 
          * @return builder
          * 
@@ -93,7 +93,7 @@ public final class GetServicePrincipalsArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param applicationIds List of `application_ids` of service principals.  Individual service principal can be retrieved using databricks.ServicePrincipal data source
+         * @param applicationIds List of `applicationIds` of service principals.  Individual service principal can be retrieved using databricks.ServicePrincipal data source
          * 
          * @return builder
          * 

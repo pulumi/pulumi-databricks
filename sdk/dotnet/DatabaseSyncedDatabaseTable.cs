@@ -18,6 +18,19 @@ namespace Pulumi.Databricks
     /// 
     /// ## Example Usage
     /// 
+    /// ### Creating a Synced Database Table inside a Database Catalog
+    /// 
+    /// This example creates a Synced Database Table inside a Database Catalog.
+    /// 
+    /// ### Creating a Synced Database Table inside a Standard Catalog
+    /// 
+    /// This example creates a Synced Database Table inside a Standard Catalog.
+    /// 
+    /// ### Creating multiple Synced Database Tables and bin packing them into a single pipeline
+    /// 
+    /// This example creates two Synced Database Tables. The first one specifies a new pipeline spec,
+    /// which generates a new pipeline. The second one utilizes the pipeline ID of the first table.
+    /// 
     /// ## Import
     /// 
     /// As of Pulumi v1.5, resources can be imported through configuration.
@@ -79,7 +92,7 @@ namespace Pulumi.Databricks
         /// 
         /// When creating a synced table in a standard catalog, this field is required.
         /// In this scenario, specifying this field will allow targeting an arbitrary postgres database.
-        /// Note that this has implications for the `create_database_objects_is_missing` field in `spec`
+        /// Note that this has implications for the `CreateDatabaseObjectsIsMissing` field in `Spec`
         /// </summary>
         [Output("logicalDatabaseName")]
         public Output<string> LogicalDatabaseName { get; private set; } = null!;
@@ -172,7 +185,7 @@ namespace Pulumi.Databricks
         /// 
         /// When creating a synced table in a standard catalog, this field is required.
         /// In this scenario, specifying this field will allow targeting an arbitrary postgres database.
-        /// Note that this has implications for the `create_database_objects_is_missing` field in `spec`
+        /// Note that this has implications for the `CreateDatabaseObjectsIsMissing` field in `Spec`
         /// </summary>
         [Input("logicalDatabaseName")]
         public Input<string>? LogicalDatabaseName { get; set; }
@@ -238,7 +251,7 @@ namespace Pulumi.Databricks
         /// 
         /// When creating a synced table in a standard catalog, this field is required.
         /// In this scenario, specifying this field will allow targeting an arbitrary postgres database.
-        /// Note that this has implications for the `create_database_objects_is_missing` field in `spec`
+        /// Note that this has implications for the `CreateDatabaseObjectsIsMissing` field in `Spec`
         /// </summary>
         [Input("logicalDatabaseName")]
         public Input<string>? LogicalDatabaseName { get; set; }

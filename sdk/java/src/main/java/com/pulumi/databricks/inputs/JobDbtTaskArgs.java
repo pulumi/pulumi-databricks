@@ -48,14 +48,14 @@ public final class JobDbtTaskArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The relative path to the directory in the repository specified by `git_source` where dbt should look in for the `profiles.yml` file. If not specified, defaults to the repository&#39;s root directory. Equivalent to passing `--profile-dir` to a dbt command.
+     * The relative path to the directory in the repository specified by `gitSource` where dbt should look in for the `profiles.yml` file. If not specified, defaults to the repository&#39;s root directory. Equivalent to passing `--profile-dir` to a dbt command.
      * 
      */
     @Import(name="profilesDirectory")
     private @Nullable Output<String> profilesDirectory;
 
     /**
-     * @return The relative path to the directory in the repository specified by `git_source` where dbt should look in for the `profiles.yml` file. If not specified, defaults to the repository&#39;s root directory. Equivalent to passing `--profile-dir` to a dbt command.
+     * @return The relative path to the directory in the repository specified by `gitSource` where dbt should look in for the `profiles.yml` file. If not specified, defaults to the repository&#39;s root directory. Equivalent to passing `--profile-dir` to a dbt command.
      * 
      */
     public Optional<Output<String>> profilesDirectory() {
@@ -64,7 +64,7 @@ public final class JobDbtTaskArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The path where dbt should look for `dbt_project.yml`. Equivalent to passing `--project-dir` to the dbt CLI.
-     * * If `source` is `GIT`: Relative path to the directory in the repository specified in the `git_source` block. Defaults to the repository&#39;s root directory when not specified.
+     * * If `source` is `GIT`: Relative path to the directory in the repository specified in the `gitSource` block. Defaults to the repository&#39;s root directory when not specified.
      * * If `source` is `WORKSPACE`: Absolute path to the folder in the workspace.
      * 
      */
@@ -73,7 +73,7 @@ public final class JobDbtTaskArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The path where dbt should look for `dbt_project.yml`. Equivalent to passing `--project-dir` to the dbt CLI.
-     * * If `source` is `GIT`: Relative path to the directory in the repository specified in the `git_source` block. Defaults to the repository&#39;s root directory when not specified.
+     * * If `source` is `GIT`: Relative path to the directory in the repository specified in the `gitSource` block. Defaults to the repository&#39;s root directory when not specified.
      * * If `source` is `WORKSPACE`: Absolute path to the folder in the workspace.
      * 
      */
@@ -97,14 +97,14 @@ public final class JobDbtTaskArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The source of the project. Possible values are `WORKSPACE` and `GIT`.  Defaults to `GIT` if a `git_source` block is present in the job definition.
+     * The source of the project. Possible values are `WORKSPACE` and `GIT`.  Defaults to `GIT` if a `gitSource` block is present in the job definition.
      * 
      */
     @Import(name="source")
     private @Nullable Output<String> source;
 
     /**
-     * @return The source of the project. Possible values are `WORKSPACE` and `GIT`.  Defaults to `GIT` if a `git_source` block is present in the job definition.
+     * @return The source of the project. Possible values are `WORKSPACE` and `GIT`.  Defaults to `GIT` if a `gitSource` block is present in the job definition.
      * 
      */
     public Optional<Output<String>> source() {
@@ -114,7 +114,7 @@ public final class JobDbtTaskArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The ID of the SQL warehouse that dbt should execute against.
      * 
-     * You also need to include a `git_source` block to configure the repository that contains the dbt project.
+     * You also need to include a `gitSource` block to configure the repository that contains the dbt project.
      * 
      */
     @Import(name="warehouseId")
@@ -123,7 +123,7 @@ public final class JobDbtTaskArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The ID of the SQL warehouse that dbt should execute against.
      * 
-     * You also need to include a `git_source` block to configure the repository that contains the dbt project.
+     * You also need to include a `gitSource` block to configure the repository that contains the dbt project.
      * 
      */
     public Optional<Output<String>> warehouseId() {
@@ -213,7 +213,7 @@ public final class JobDbtTaskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param profilesDirectory The relative path to the directory in the repository specified by `git_source` where dbt should look in for the `profiles.yml` file. If not specified, defaults to the repository&#39;s root directory. Equivalent to passing `--profile-dir` to a dbt command.
+         * @param profilesDirectory The relative path to the directory in the repository specified by `gitSource` where dbt should look in for the `profiles.yml` file. If not specified, defaults to the repository&#39;s root directory. Equivalent to passing `--profile-dir` to a dbt command.
          * 
          * @return builder
          * 
@@ -224,7 +224,7 @@ public final class JobDbtTaskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param profilesDirectory The relative path to the directory in the repository specified by `git_source` where dbt should look in for the `profiles.yml` file. If not specified, defaults to the repository&#39;s root directory. Equivalent to passing `--profile-dir` to a dbt command.
+         * @param profilesDirectory The relative path to the directory in the repository specified by `gitSource` where dbt should look in for the `profiles.yml` file. If not specified, defaults to the repository&#39;s root directory. Equivalent to passing `--profile-dir` to a dbt command.
          * 
          * @return builder
          * 
@@ -235,7 +235,7 @@ public final class JobDbtTaskArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param projectDirectory The path where dbt should look for `dbt_project.yml`. Equivalent to passing `--project-dir` to the dbt CLI.
-         * * If `source` is `GIT`: Relative path to the directory in the repository specified in the `git_source` block. Defaults to the repository&#39;s root directory when not specified.
+         * * If `source` is `GIT`: Relative path to the directory in the repository specified in the `gitSource` block. Defaults to the repository&#39;s root directory when not specified.
          * * If `source` is `WORKSPACE`: Absolute path to the folder in the workspace.
          * 
          * @return builder
@@ -248,7 +248,7 @@ public final class JobDbtTaskArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param projectDirectory The path where dbt should look for `dbt_project.yml`. Equivalent to passing `--project-dir` to the dbt CLI.
-         * * If `source` is `GIT`: Relative path to the directory in the repository specified in the `git_source` block. Defaults to the repository&#39;s root directory when not specified.
+         * * If `source` is `GIT`: Relative path to the directory in the repository specified in the `gitSource` block. Defaults to the repository&#39;s root directory when not specified.
          * * If `source` is `WORKSPACE`: Absolute path to the folder in the workspace.
          * 
          * @return builder
@@ -280,7 +280,7 @@ public final class JobDbtTaskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param source The source of the project. Possible values are `WORKSPACE` and `GIT`.  Defaults to `GIT` if a `git_source` block is present in the job definition.
+         * @param source The source of the project. Possible values are `WORKSPACE` and `GIT`.  Defaults to `GIT` if a `gitSource` block is present in the job definition.
          * 
          * @return builder
          * 
@@ -291,7 +291,7 @@ public final class JobDbtTaskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param source The source of the project. Possible values are `WORKSPACE` and `GIT`.  Defaults to `GIT` if a `git_source` block is present in the job definition.
+         * @param source The source of the project. Possible values are `WORKSPACE` and `GIT`.  Defaults to `GIT` if a `gitSource` block is present in the job definition.
          * 
          * @return builder
          * 
@@ -303,7 +303,7 @@ public final class JobDbtTaskArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param warehouseId The ID of the SQL warehouse that dbt should execute against.
          * 
-         * You also need to include a `git_source` block to configure the repository that contains the dbt project.
+         * You also need to include a `gitSource` block to configure the repository that contains the dbt project.
          * 
          * @return builder
          * 
@@ -316,7 +316,7 @@ public final class JobDbtTaskArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param warehouseId The ID of the SQL warehouse that dbt should execute against.
          * 
-         * You also need to include a `git_source` block to configure the repository that contains the dbt project.
+         * You also need to include a `gitSource` block to configure the repository that contains the dbt project.
          * 
          * @return builder
          * 

@@ -61,7 +61,7 @@ public final class GetCurrentMetastoreMetastoreInfo {
      */
     private @Nullable String name;
     /**
-     * @return Username/group name/sp application_id of the metastore owner.
+     * @return Username/group name/sp applicationId of the metastore owner.
      * 
      */
     private @Nullable String owner;
@@ -81,12 +81,12 @@ public final class GetCurrentMetastoreMetastoreInfo {
      */
     private @Nullable String storageRoot;
     /**
-     * @return ID of a storage credential used for the `storage_root`.
+     * @return ID of a storage credential used for the `storageRoot`.
      * 
      */
     private @Nullable String storageRootCredentialId;
     /**
-     * @return Name of a storage credential used for the `storage_root`.
+     * @return Name of a storage credential used for the `storageRoot`.
      * 
      */
     private @Nullable String storageRootCredentialName;
@@ -172,7 +172,7 @@ public final class GetCurrentMetastoreMetastoreInfo {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return Username/group name/sp application_id of the metastore owner.
+     * @return Username/group name/sp applicationId of the metastore owner.
      * 
      */
     public Optional<String> owner() {
@@ -200,14 +200,14 @@ public final class GetCurrentMetastoreMetastoreInfo {
         return Optional.ofNullable(this.storageRoot);
     }
     /**
-     * @return ID of a storage credential used for the `storage_root`.
+     * @return ID of a storage credential used for the `storageRoot`.
      * 
      */
     public Optional<String> storageRootCredentialId() {
         return Optional.ofNullable(this.storageRootCredentialId);
     }
     /**
-     * @return Name of a storage credential used for the `storage_root`.
+     * @return Name of a storage credential used for the `storageRoot`.
      * 
      */
     public Optional<String> storageRootCredentialName() {

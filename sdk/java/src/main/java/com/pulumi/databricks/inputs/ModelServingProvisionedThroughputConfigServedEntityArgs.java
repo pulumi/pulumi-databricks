@@ -48,14 +48,14 @@ public final class ModelServingProvisionedThroughputConfigServedEntityArgs exten
     }
 
     /**
-     * The name of a served entity. It must be unique across an endpoint. A served entity name can consist of alphanumeric characters, dashes, and underscores. If not specified for an external model, this field will be created from the `entity_name` and `entity_version`
+     * The name of a served entity. It must be unique across an endpoint. A served entity name can consist of alphanumeric characters, dashes, and underscores. If not specified for an external model, this field will be created from the `entityName` and `entityVersion`
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of a served entity. It must be unique across an endpoint. A served entity name can consist of alphanumeric characters, dashes, and underscores. If not specified for an external model, this field will be created from the `entity_name` and `entity_version`
+     * @return The name of a served entity. It must be unique across an endpoint. A served entity name can consist of alphanumeric characters, dashes, and underscores. If not specified for an external model, this field will be created from the `entityName` and `entityVersion`
      * 
      */
     public Optional<Output<String>> name() {
@@ -147,7 +147,7 @@ public final class ModelServingProvisionedThroughputConfigServedEntityArgs exten
         }
 
         /**
-         * @param name The name of a served entity. It must be unique across an endpoint. A served entity name can consist of alphanumeric characters, dashes, and underscores. If not specified for an external model, this field will be created from the `entity_name` and `entity_version`
+         * @param name The name of a served entity. It must be unique across an endpoint. A served entity name can consist of alphanumeric characters, dashes, and underscores. If not specified for an external model, this field will be created from the `entityName` and `entityVersion`
          * 
          * @return builder
          * 
@@ -158,7 +158,7 @@ public final class ModelServingProvisionedThroughputConfigServedEntityArgs exten
         }
 
         /**
-         * @param name The name of a served entity. It must be unique across an endpoint. A served entity name can consist of alphanumeric characters, dashes, and underscores. If not specified for an external model, this field will be created from the `entity_name` and `entity_version`
+         * @param name The name of a served entity. It must be unique across an endpoint. A served entity name can consist of alphanumeric characters, dashes, and underscores. If not specified for an external model, this field will be created from the `entityName` and `entityVersion`
          * 
          * @return builder
          * 

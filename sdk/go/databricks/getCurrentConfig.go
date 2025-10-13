@@ -14,6 +14,29 @@ import (
 // Retrieves information about the currently configured provider to make a decision, for example, add a dynamic block based on the specific cloud.
 //
 // > This data source can be used with an account or workspace-level provider.
+//
+// ## Example Usage
+//
+// Create cloud-specific databricks_storage_credential:
+//
+// ## Exported attributes
+//
+// Data source exposes the following attributes:
+//
+// * `isAccount` - Whether the provider is configured at account-level
+// * `accountId` - Account Id if provider is configured at account-level
+// * `host` - Host of the Databricks workspace or account console
+// * `cloudType` - Cloud type specified in the provider
+// * `authType` - Auth type used by the provider
+//
+// ## Related Resources
+//
+// The following resources are used in the same context:
+//
+// * End to end workspace management guide
+// * Directory to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
+// * Notebook to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html).
+// * Repo to manage [Databricks Repos](https://docs.databricks.com/repos.html).
 func GetCurrentConfig(ctx *pulumi.Context, args *GetCurrentConfigArgs, opts ...pulumi.InvokeOption) (*GetCurrentConfigResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetCurrentConfigResult

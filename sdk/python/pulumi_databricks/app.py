@@ -488,6 +488,17 @@ class App(pulumi.CustomResource):
 
         > This resource can only be used with a workspace-level provider!
 
+        ## Example Usage
+
+        ## Related Resources
+
+        The following resources are used in the same context:
+
+        * SqlEndpoint to manage Databricks SQL [Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html).
+        * ModelServing to serve this model on a Databricks serving endpoint.
+        * Secret to manage [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
+        * Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code.
+
         ## Import
 
         This resource can be imported by name:
@@ -528,6 +539,17 @@ class App(pulumi.CustomResource):
         [Databricks Apps](https://docs.databricks.com/en/dev-tools/databricks-apps/index.html) run directly on a customer's Databricks instance, integrate with their data, use and extend Databricks services, and enable users to interact through single sign-on. This resource creates the application but does not handle app deployment, which should be handled separately as part of your CI/CD pipeline.
 
         > This resource can only be used with a workspace-level provider!
+
+        ## Example Usage
+
+        ## Related Resources
+
+        The following resources are used in the same context:
+
+        * SqlEndpoint to manage Databricks SQL [Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html).
+        * ModelServing to serve this model on a Databricks serving endpoint.
+        * Secret to manage [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
+        * Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code.
 
         ## Import
 

@@ -44,7 +44,7 @@ namespace Pulumi.Databricks.Inputs
 
         /// <summary>
         /// (integer) - Workspace ID of the user who is receiving the clean room "invitation". Must be specified if
-        /// invite_recipient_email is specified.
+        /// InviteRecipientEmail is specified.
         /// It should be empty when the collaborator is the creator of the clean room
         /// </summary>
         [Input("inviteRecipientWorkspaceId", required: true)]

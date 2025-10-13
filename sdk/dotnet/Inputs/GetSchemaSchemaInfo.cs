@@ -73,7 +73,7 @@ namespace Pulumi.Databricks.Inputs
         public string? MetastoreId { get; set; }
 
         /// <summary>
-        /// a fully qualified name of databricks_schema: *`catalog`.`schema`*
+        /// a fully qualified name of databricks_schema: *`Catalog`.`Schema`*
         /// </summary>
         [Input("name")]
         public string? Name { get; set; }

@@ -177,7 +177,7 @@ namespace Pulumi.Databricks
         public readonly string Id;
         public readonly string Path;
         /// <summary>
-        /// returns list of objects with `path` and `file_size` attributes in each
+        /// returns list of objects with `Path` and `FileSize` attributes in each
         /// </summary>
         public readonly ImmutableArray<Outputs.GetDbfsFilePathsPathListResult> PathLists;
         public readonly bool Recursive;

@@ -63,14 +63,14 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The key value of options required by the connection, e.g. `host`, `port`, `user`, `password`, `authorization_endpoint`, `client_id`, `client_secret` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
+     * The key value of options required by the connection, e.g. `host`, `port`, `user`, `password`, `authorizationEndpoint`, `clientId`, `clientSecret` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
      * 
      */
     @Import(name="options")
     private @Nullable Output<Map<String,String>> options;
 
     /**
-     * @return The key value of options required by the connection, e.g. `host`, `port`, `user`, `password`, `authorization_endpoint`, `client_id`, `client_secret` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
+     * @return The key value of options required by the connection, e.g. `host`, `port`, `user`, `password`, `authorizationEndpoint`, `clientId`, `clientSecret` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
      * 
      */
     public Optional<Output<Map<String,String>>> options() {
@@ -216,7 +216,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param options The key value of options required by the connection, e.g. `host`, `port`, `user`, `password`, `authorization_endpoint`, `client_id`, `client_secret` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
+         * @param options The key value of options required by the connection, e.g. `host`, `port`, `user`, `password`, `authorizationEndpoint`, `clientId`, `clientSecret` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
          * 
          * @return builder
          * 
@@ -227,7 +227,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param options The key value of options required by the connection, e.g. `host`, `port`, `user`, `password`, `authorization_endpoint`, `client_id`, `client_secret` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
+         * @param options The key value of options required by the connection, e.g. `host`, `port`, `user`, `password`, `authorizationEndpoint`, `clientId`, `clientSecret` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
          * 
          * @return builder
          * 

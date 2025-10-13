@@ -14,6 +14,46 @@ import (
 // Retrieves information about a getSqlWarehouse using its id. This could be retrieved programmatically using getSqlWarehouses data source.
 //
 // > This data source can only be used with a workspace-level provider!
+//
+// ## Example Usage
+//
+// * Retrieve attributes of each SQL warehouses in a workspace:
+//
+// * Search for a specific SQL Warehouse by name:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.GetSqlWarehouse(ctx, &databricks.GetSqlWarehouseArgs{
+//				Name: pulumi.StringRef("Starter Warehouse"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Related resources
+//
+// The following resources are often used in the same context:
+//
+// * End to end workspace management guide.
+// * InstanceProfile to manage AWS EC2 instance profiles that users can launch Cluster and access data, like databricks_mount.
+// * SqlDashboard to manage Databricks SQL [Dashboards](https://docs.databricks.com/sql/user/dashboards/index.html).
+// * SqlGlobalConfig to configure the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all getSqlWarehouse of workspace.
+// * Grants to manage data access in Unity Catalog.
 func GetSqlWarehouse(ctx *pulumi.Context, args *GetSqlWarehouseArgs, opts ...pulumi.InvokeOption) (*GetSqlWarehouseResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSqlWarehouseResult

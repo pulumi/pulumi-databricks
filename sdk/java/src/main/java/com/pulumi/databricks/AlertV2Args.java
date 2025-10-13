@@ -103,8 +103,8 @@ public final class AlertV2Args extends com.pulumi.resources.ResourceArgs {
     /**
      * Specifies the identity that will be used to run the alert.
      * This field allows you to configure alerts to run as a specific user or service principal.
-     * - For user identity: Set `user_name` to the email of an active workspace user. Users can only set this to their own email.
-     * - For service principal: Set `service_principal_name` to the application ID. Requires the `servicePrincipal/user` role.
+     * - For user identity: Set `userName` to the email of an active workspace user. Users can only set this to their own email.
+     * - For service principal: Set `servicePrincipalName` to the application ID. Requires the `servicePrincipal/user` role.
      *   If not specified, the alert will run as the request user
      * 
      */
@@ -114,8 +114,8 @@ public final class AlertV2Args extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Specifies the identity that will be used to run the alert.
      * This field allows you to configure alerts to run as a specific user or service principal.
-     * - For user identity: Set `user_name` to the email of an active workspace user. Users can only set this to their own email.
-     * - For service principal: Set `service_principal_name` to the application ID. Requires the `servicePrincipal/user` role.
+     * - For user identity: Set `userName` to the email of an active workspace user. Users can only set this to their own email.
+     * - For service principal: Set `servicePrincipalName` to the application ID. Requires the `servicePrincipal/user` role.
      *   If not specified, the alert will run as the request user
      * 
      */
@@ -126,7 +126,7 @@ public final class AlertV2Args extends com.pulumi.resources.ResourceArgs {
     /**
      * The run as username or application ID of service principal.
      * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
-     * Deprecated: Use `run_as` field instead. This field will be removed in a future release
+     * Deprecated: Use `runAs` field instead. This field will be removed in a future release
      * 
      */
     @Import(name="runAsUserName")
@@ -135,7 +135,7 @@ public final class AlertV2Args extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The run as username or application ID of service principal.
      * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
-     * Deprecated: Use `run_as` field instead. This field will be removed in a future release
+     * Deprecated: Use `runAs` field instead. This field will be removed in a future release
      * 
      */
     public Optional<Output<String>> runAsUserName() {
@@ -330,8 +330,8 @@ public final class AlertV2Args extends com.pulumi.resources.ResourceArgs {
         /**
          * @param runAs Specifies the identity that will be used to run the alert.
          * This field allows you to configure alerts to run as a specific user or service principal.
-         * - For user identity: Set `user_name` to the email of an active workspace user. Users can only set this to their own email.
-         * - For service principal: Set `service_principal_name` to the application ID. Requires the `servicePrincipal/user` role.
+         * - For user identity: Set `userName` to the email of an active workspace user. Users can only set this to their own email.
+         * - For service principal: Set `servicePrincipalName` to the application ID. Requires the `servicePrincipal/user` role.
          *   If not specified, the alert will run as the request user
          * 
          * @return builder
@@ -345,8 +345,8 @@ public final class AlertV2Args extends com.pulumi.resources.ResourceArgs {
         /**
          * @param runAs Specifies the identity that will be used to run the alert.
          * This field allows you to configure alerts to run as a specific user or service principal.
-         * - For user identity: Set `user_name` to the email of an active workspace user. Users can only set this to their own email.
-         * - For service principal: Set `service_principal_name` to the application ID. Requires the `servicePrincipal/user` role.
+         * - For user identity: Set `userName` to the email of an active workspace user. Users can only set this to their own email.
+         * - For service principal: Set `servicePrincipalName` to the application ID. Requires the `servicePrincipal/user` role.
          *   If not specified, the alert will run as the request user
          * 
          * @return builder
@@ -359,7 +359,7 @@ public final class AlertV2Args extends com.pulumi.resources.ResourceArgs {
         /**
          * @param runAsUserName The run as username or application ID of service principal.
          * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
-         * Deprecated: Use `run_as` field instead. This field will be removed in a future release
+         * Deprecated: Use `runAs` field instead. This field will be removed in a future release
          * 
          * @return builder
          * 
@@ -372,7 +372,7 @@ public final class AlertV2Args extends com.pulumi.resources.ResourceArgs {
         /**
          * @param runAsUserName The run as username or application ID of service principal.
          * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
-         * Deprecated: Use `run_as` field instead. This field will be removed in a future release
+         * Deprecated: Use `runAs` field instead. This field will be removed in a future release
          * 
          * @return builder
          * 

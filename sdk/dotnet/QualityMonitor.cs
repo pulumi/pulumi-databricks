@@ -217,7 +217,7 @@ namespace Pulumi.Databricks
         public Output<int> MonitorVersion { get; private set; } = null!;
 
         /// <summary>
-        /// The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `email_addresses` containing a list of emails to notify:
+        /// The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `EmailAddresses` containing a list of emails to notify:
         /// </summary>
         [Output("notifications")]
         public Output<Outputs.QualityMonitorNotifications?> Notifications { get; private set; } = null!;
@@ -375,7 +375,7 @@ namespace Pulumi.Databricks
         public Input<string>? MonitorId { get; set; }
 
         /// <summary>
-        /// The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `email_addresses` containing a list of emails to notify:
+        /// The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `EmailAddresses` containing a list of emails to notify:
         /// </summary>
         [Input("notifications")]
         public Input<Inputs.QualityMonitorNotificationsArgs>? Notifications { get; set; }
@@ -507,7 +507,7 @@ namespace Pulumi.Databricks
         public Input<int>? MonitorVersion { get; set; }
 
         /// <summary>
-        /// The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `email_addresses` containing a list of emails to notify:
+        /// The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `EmailAddresses` containing a list of emails to notify:
         /// </summary>
         [Input("notifications")]
         public Input<Inputs.QualityMonitorNotificationsGetArgs>? Notifications { get; set; }

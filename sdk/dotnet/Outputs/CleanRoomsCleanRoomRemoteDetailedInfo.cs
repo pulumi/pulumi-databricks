@@ -25,9 +25,9 @@ namespace Pulumi.Databricks.Outputs
         /// Collaborators in the central clean room. There should one and only one collaborator
         /// in the list that satisfies the owner condition:
         /// 
-        /// 1. It has the creator's global_metastore_id (determined by caller of CreateCleanRoom).
+        /// 1. It has the creator's GlobalMetastoreId (determined by caller of CreateCleanRoom).
         /// 
-        /// 2. Its invite_recipient_email is empty
+        /// 2. Its InviteRecipientEmail is empty
         /// </summary>
         public readonly ImmutableArray<Outputs.CleanRoomsCleanRoomRemoteDetailedInfoCollaborator> Collaborators;
         /// <summary>

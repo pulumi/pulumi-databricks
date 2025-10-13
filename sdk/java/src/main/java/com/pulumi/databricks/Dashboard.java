@@ -22,7 +22,7 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
- * Dashboard using `serialized_dashboard` attribute:
+ * Dashboard using `serializedDashboard` attribute:
  * 
  * <pre>
  * {@code
@@ -65,7 +65,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
- * Dashboard using `file_path` attribute:
+ * Dashboard using `filePath` attribute:
  * 
  * ## Import
  * 
@@ -145,14 +145,14 @@ public class Dashboard extends com.pulumi.resources.CustomResource {
         return this.etag;
     }
     /**
-     * The path to the dashboard JSON file. Conflicts with `serialized_dashboard`.
+     * The path to the dashboard JSON file. Conflicts with `serializedDashboard`.
      * 
      */
     @Export(name="filePath", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> filePath;
 
     /**
-     * @return The path to the dashboard JSON file. Conflicts with `serialized_dashboard`.
+     * @return The path to the dashboard JSON file. Conflicts with `serializedDashboard`.
      * 
      */
     public Output<Optional<String>> filePath() {
@@ -191,14 +191,14 @@ public class Dashboard extends com.pulumi.resources.CustomResource {
         return this.path;
     }
     /**
-     * The contents of the dashboard in serialized string form. Conflicts with `file_path`.
+     * The contents of the dashboard in serialized string form. Conflicts with `filePath`.
      * 
      */
     @Export(name="serializedDashboard", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> serializedDashboard;
 
     /**
-     * @return The contents of the dashboard in serialized string form. Conflicts with `file_path`.
+     * @return The contents of the dashboard in serialized string form. Conflicts with `filePath`.
      * 
      */
     public Output<Optional<String>> serializedDashboard() {

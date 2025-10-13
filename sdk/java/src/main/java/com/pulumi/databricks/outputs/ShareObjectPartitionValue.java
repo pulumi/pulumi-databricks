@@ -28,7 +28,7 @@ public final class ShareObjectPartitionValue {
      */
     private @Nullable String recipientPropertyKey;
     /**
-     * @return The value of the partition column. When this value is not set, it means null value. When this field is set, field `recipient_property_key` can not be set.
+     * @return The value of the partition column. When this value is not set, it means null value. When this field is set, field `recipientPropertyKey` can not be set.
      * 
      */
     private @Nullable String value;
@@ -56,7 +56,7 @@ public final class ShareObjectPartitionValue {
         return Optional.ofNullable(this.recipientPropertyKey);
     }
     /**
-     * @return The value of the partition column. When this value is not set, it means null value. When this field is set, field `recipient_property_key` can not be set.
+     * @return The value of the partition column. When this value is not set, it means null value. When this field is set, field `recipientPropertyKey` can not be set.
      * 
      */
     public Optional<String> value() {

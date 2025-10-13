@@ -22,7 +22,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetAccountNetworkPoliciesItemEgressNetworkAccessAllowedStorageDestinationResult> AllowedStorageDestinations;
         /// <summary>
-        /// (EgressNetworkPolicyNetworkAccessPolicyPolicyEnforcement) - Optional. When policy_enforcement is not provided, we default to ENFORCE_MODE_ALL_SERVICES
+        /// (EgressNetworkPolicyNetworkAccessPolicyPolicyEnforcement) - Optional. When PolicyEnforcement is not provided, we default to ENFORCE_MODE_ALL_SERVICES
         /// </summary>
         public readonly Outputs.GetAccountNetworkPoliciesItemEgressNetworkAccessPolicyEnforcementResult? PolicyEnforcement;
         /// <summary>

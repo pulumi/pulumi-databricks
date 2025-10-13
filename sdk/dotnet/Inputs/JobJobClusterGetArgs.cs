@@ -13,7 +13,7 @@ namespace Pulumi.Databricks.Inputs
     public sealed class JobJobClusterGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Identifier that can be referenced in `task` block, so that cluster is shared between tasks
+        /// Identifier that can be referenced in `Task` block, so that cluster is shared between tasks
         /// </summary>
         [Input("jobClusterKey", required: true)]
         public Input<string> JobClusterKey { get; set; } = null!;

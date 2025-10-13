@@ -102,14 +102,14 @@ public final class ExternalLocationState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * indicates if managed file events are enabled for this external location.  Requires `file_event_queue` block.
+     * indicates if managed file events are enabled for this external location.  Requires `fileEventQueue` block.
      * 
      */
     @Import(name="enableFileEvents")
     private @Nullable Output<Boolean> enableFileEvents;
 
     /**
-     * @return indicates if managed file events are enabled for this external location.  Requires `file_event_queue` block.
+     * @return indicates if managed file events are enabled for this external location.  Requires `fileEventQueue` block.
      * 
      */
     public Optional<Output<Boolean>> enableFileEvents() {
@@ -213,14 +213,14 @@ public final class ExternalLocationState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Username/groupname/sp application_id of the external location owner.
+     * Username/groupname/sp applicationId of the external location owner.
      * 
      */
     @Import(name="owner")
     private @Nullable Output<String> owner;
 
     /**
-     * @return Username/groupname/sp application_id of the external location owner.
+     * @return Username/groupname/sp applicationId of the external location owner.
      * 
      */
     public Optional<Output<String>> owner() {
@@ -461,7 +461,7 @@ public final class ExternalLocationState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param enableFileEvents indicates if managed file events are enabled for this external location.  Requires `file_event_queue` block.
+         * @param enableFileEvents indicates if managed file events are enabled for this external location.  Requires `fileEventQueue` block.
          * 
          * @return builder
          * 
@@ -472,7 +472,7 @@ public final class ExternalLocationState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param enableFileEvents indicates if managed file events are enabled for this external location.  Requires `file_event_queue` block.
+         * @param enableFileEvents indicates if managed file events are enabled for this external location.  Requires `fileEventQueue` block.
          * 
          * @return builder
          * 
@@ -614,7 +614,7 @@ public final class ExternalLocationState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param owner Username/groupname/sp application_id of the external location owner.
+         * @param owner Username/groupname/sp applicationId of the external location owner.
          * 
          * @return builder
          * 
@@ -625,7 +625,7 @@ public final class ExternalLocationState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param owner Username/groupname/sp application_id of the external location owner.
+         * @param owner Username/groupname/sp applicationId of the external location owner.
          * 
          * @return builder
          * 

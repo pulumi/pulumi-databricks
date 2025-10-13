@@ -14,6 +14,10 @@ import (
 // This data source can be used to get a single service principal federation policy.
 //
 // > **Note** This data source can only be used with an account-level provider!
+//
+// ## Example Usage
+//
+// Referring to a service principal federation policy by id:
 func LookupServicePrincipalFederationPolicy(ctx *pulumi.Context, args *LookupServicePrincipalFederationPolicyArgs, opts ...pulumi.InvokeOption) (*LookupServicePrincipalFederationPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupServicePrincipalFederationPolicyResult

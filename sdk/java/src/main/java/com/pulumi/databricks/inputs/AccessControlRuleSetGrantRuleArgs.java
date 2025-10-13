@@ -19,9 +19,9 @@ public final class AccessControlRuleSetGrantRuleArgs extends com.pulumi.resource
 
     /**
      * a list of principals who are granted a role. The following format is supported:
-     * * `users/{username}` (also exposed as `acl_principal_id` attribute of `databricks.User` resource).
-     * * `groups/{groupname}` (also exposed as `acl_principal_id` attribute of `databricks.Group` resource).
-     * * `servicePrincipals/{applicationId}` (also exposed as `acl_principal_id` attribute of `databricks.ServicePrincipal` resource).
+     * * `users/{username}` (also exposed as `aclPrincipalId` attribute of `databricks.User` resource).
+     * * `groups/{groupname}` (also exposed as `aclPrincipalId` attribute of `databricks.Group` resource).
+     * * `servicePrincipals/{applicationId}` (also exposed as `aclPrincipalId` attribute of `databricks.ServicePrincipal` resource).
      * 
      */
     @Import(name="principals")
@@ -29,9 +29,9 @@ public final class AccessControlRuleSetGrantRuleArgs extends com.pulumi.resource
 
     /**
      * @return a list of principals who are granted a role. The following format is supported:
-     * * `users/{username}` (also exposed as `acl_principal_id` attribute of `databricks.User` resource).
-     * * `groups/{groupname}` (also exposed as `acl_principal_id` attribute of `databricks.Group` resource).
-     * * `servicePrincipals/{applicationId}` (also exposed as `acl_principal_id` attribute of `databricks.ServicePrincipal` resource).
+     * * `users/{username}` (also exposed as `aclPrincipalId` attribute of `databricks.User` resource).
+     * * `groups/{groupname}` (also exposed as `aclPrincipalId` attribute of `databricks.Group` resource).
+     * * `servicePrincipals/{applicationId}` (also exposed as `aclPrincipalId` attribute of `databricks.ServicePrincipal` resource).
      * 
      */
     public Optional<Output<List<String>>> principals() {
@@ -102,9 +102,9 @@ public final class AccessControlRuleSetGrantRuleArgs extends com.pulumi.resource
 
         /**
          * @param principals a list of principals who are granted a role. The following format is supported:
-         * * `users/{username}` (also exposed as `acl_principal_id` attribute of `databricks.User` resource).
-         * * `groups/{groupname}` (also exposed as `acl_principal_id` attribute of `databricks.Group` resource).
-         * * `servicePrincipals/{applicationId}` (also exposed as `acl_principal_id` attribute of `databricks.ServicePrincipal` resource).
+         * * `users/{username}` (also exposed as `aclPrincipalId` attribute of `databricks.User` resource).
+         * * `groups/{groupname}` (also exposed as `aclPrincipalId` attribute of `databricks.Group` resource).
+         * * `servicePrincipals/{applicationId}` (also exposed as `aclPrincipalId` attribute of `databricks.ServicePrincipal` resource).
          * 
          * @return builder
          * 
@@ -116,9 +116,9 @@ public final class AccessControlRuleSetGrantRuleArgs extends com.pulumi.resource
 
         /**
          * @param principals a list of principals who are granted a role. The following format is supported:
-         * * `users/{username}` (also exposed as `acl_principal_id` attribute of `databricks.User` resource).
-         * * `groups/{groupname}` (also exposed as `acl_principal_id` attribute of `databricks.Group` resource).
-         * * `servicePrincipals/{applicationId}` (also exposed as `acl_principal_id` attribute of `databricks.ServicePrincipal` resource).
+         * * `users/{username}` (also exposed as `aclPrincipalId` attribute of `databricks.User` resource).
+         * * `groups/{groupname}` (also exposed as `aclPrincipalId` attribute of `databricks.Group` resource).
+         * * `servicePrincipals/{applicationId}` (also exposed as `aclPrincipalId` attribute of `databricks.ServicePrincipal` resource).
          * 
          * @return builder
          * 
@@ -129,9 +129,9 @@ public final class AccessControlRuleSetGrantRuleArgs extends com.pulumi.resource
 
         /**
          * @param principals a list of principals who are granted a role. The following format is supported:
-         * * `users/{username}` (also exposed as `acl_principal_id` attribute of `databricks.User` resource).
-         * * `groups/{groupname}` (also exposed as `acl_principal_id` attribute of `databricks.Group` resource).
-         * * `servicePrincipals/{applicationId}` (also exposed as `acl_principal_id` attribute of `databricks.ServicePrincipal` resource).
+         * * `users/{username}` (also exposed as `aclPrincipalId` attribute of `databricks.User` resource).
+         * * `groups/{groupname}` (also exposed as `aclPrincipalId` attribute of `databricks.Group` resource).
+         * * `servicePrincipals/{applicationId}` (also exposed as `aclPrincipalId` attribute of `databricks.ServicePrincipal` resource).
          * 
          * @return builder
          * 

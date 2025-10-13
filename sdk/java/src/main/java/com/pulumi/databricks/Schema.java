@@ -177,14 +177,14 @@ public class Schema extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Username/groupname/sp application_id of the schema owner.
+     * Username/groupname/sp applicationId of the schema owner.
      * 
      */
     @Export(name="owner", refs={String.class}, tree="[0]")
     private Output<String> owner;
 
     /**
-     * @return Username/groupname/sp application_id of the schema owner.
+     * @return Username/groupname/sp applicationId of the schema owner.
      * 
      */
     public Output<String> owner() {

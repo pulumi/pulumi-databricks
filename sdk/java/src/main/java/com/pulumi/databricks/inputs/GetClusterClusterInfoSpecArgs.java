@@ -140,14 +140,14 @@ public final class GetClusterClusterInfoSpecArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * similar to `instance_pool_id`, but for driver node.
+     * similar to `instancePoolId`, but for driver node.
      * 
      */
     @Import(name="driverInstancePoolId", required=true)
     private Output<String> driverInstancePoolId;
 
     /**
-     * @return similar to `instance_pool_id`, but for driver node.
+     * @return similar to `instancePoolId`, but for driver node.
      * 
      */
     public Output<String> driverInstancePoolId() {
@@ -629,7 +629,7 @@ public final class GetClusterClusterInfoSpecArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param driverInstancePoolId similar to `instance_pool_id`, but for driver node.
+         * @param driverInstancePoolId similar to `instancePoolId`, but for driver node.
          * 
          * @return builder
          * 
@@ -640,7 +640,7 @@ public final class GetClusterClusterInfoSpecArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param driverInstancePoolId similar to `instance_pool_id`, but for driver node.
+         * @param driverInstancePoolId similar to `instancePoolId`, but for driver node.
          * 
          * @return builder
          * 

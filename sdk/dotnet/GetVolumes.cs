@@ -160,7 +160,7 @@ namespace Pulumi.Databricks
         private List<string>? _ids;
 
         /// <summary>
-        /// a list of databricks.Volume full names: *`catalog`.`schema`.`volume`*
+        /// a list of databricks.Volume full names: *`Catalog`.`Schema`.`Volume`*
         /// </summary>
         public List<string> Ids
         {
@@ -192,7 +192,7 @@ namespace Pulumi.Databricks
         private InputList<string>? _ids;
 
         /// <summary>
-        /// a list of databricks.Volume full names: *`catalog`.`schema`.`volume`*
+        /// a list of databricks.Volume full names: *`Catalog`.`Schema`.`Volume`*
         /// </summary>
         public InputList<string> Ids
         {
@@ -222,7 +222,7 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// a list of databricks.Volume full names: *`catalog`.`schema`.`volume`*
+        /// a list of databricks.Volume full names: *`Catalog`.`Schema`.`Volume`*
         /// </summary>
         public readonly ImmutableArray<string> Ids;
         public readonly string SchemaName;

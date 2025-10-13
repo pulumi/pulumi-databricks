@@ -25,6 +25,9 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * ### Basic Alert Example
+ * This example creates a basic alert that monitors a query and sends notifications to a user when the value exceeds a threshold:
+ * 
  * ## Import
  * 
  * As of Pulumi v1.5, resources can be imported through configuration.
@@ -187,8 +190,8 @@ public class AlertV2 extends com.pulumi.resources.CustomResource {
     /**
      * Specifies the identity that will be used to run the alert.
      * This field allows you to configure alerts to run as a specific user or service principal.
-     * - For user identity: Set `user_name` to the email of an active workspace user. Users can only set this to their own email.
-     * - For service principal: Set `service_principal_name` to the application ID. Requires the `servicePrincipal/user` role.
+     * - For user identity: Set `userName` to the email of an active workspace user. Users can only set this to their own email.
+     * - For service principal: Set `servicePrincipalName` to the application ID. Requires the `servicePrincipal/user` role.
      *   If not specified, the alert will run as the request user
      * 
      */
@@ -198,8 +201,8 @@ public class AlertV2 extends com.pulumi.resources.CustomResource {
     /**
      * @return Specifies the identity that will be used to run the alert.
      * This field allows you to configure alerts to run as a specific user or service principal.
-     * - For user identity: Set `user_name` to the email of an active workspace user. Users can only set this to their own email.
-     * - For service principal: Set `service_principal_name` to the application ID. Requires the `servicePrincipal/user` role.
+     * - For user identity: Set `userName` to the email of an active workspace user. Users can only set this to their own email.
+     * - For service principal: Set `servicePrincipalName` to the application ID. Requires the `servicePrincipal/user` role.
      *   If not specified, the alert will run as the request user
      * 
      */
@@ -209,7 +212,7 @@ public class AlertV2 extends com.pulumi.resources.CustomResource {
     /**
      * The run as username or application ID of service principal.
      * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
-     * Deprecated: Use `run_as` field instead. This field will be removed in a future release
+     * Deprecated: Use `runAs` field instead. This field will be removed in a future release
      * 
      */
     @Export(name="runAsUserName", refs={String.class}, tree="[0]")
@@ -218,7 +221,7 @@ public class AlertV2 extends com.pulumi.resources.CustomResource {
     /**
      * @return The run as username or application ID of service principal.
      * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
-     * Deprecated: Use `run_as` field instead. This field will be removed in a future release
+     * Deprecated: Use `runAs` field instead. This field will be removed in a future release
      * 
      */
     public Output<Optional<String>> runAsUserName() {

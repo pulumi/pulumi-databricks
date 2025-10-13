@@ -86,7 +86,7 @@ namespace Pulumi.Databricks
         public Output<string> SecurableName { get; private set; } = null!;
 
         /// <summary>
-        /// Type of securable. Default to `catalog`. Change forces creation of a new resource.
+        /// Type of securable. Default to `Catalog`. Change forces creation of a new resource.
         /// </summary>
         [Output("securableType")]
         public Output<string?> SecurableType { get; private set; } = null!;
@@ -159,7 +159,7 @@ namespace Pulumi.Databricks
         public Input<string>? SecurableName { get; set; }
 
         /// <summary>
-        /// Type of securable. Default to `catalog`. Change forces creation of a new resource.
+        /// Type of securable. Default to `Catalog`. Change forces creation of a new resource.
         /// </summary>
         [Input("securableType")]
         public Input<string>? SecurableType { get; set; }
@@ -194,7 +194,7 @@ namespace Pulumi.Databricks
         public Input<string>? SecurableName { get; set; }
 
         /// <summary>
-        /// Type of securable. Default to `catalog`. Change forces creation of a new resource.
+        /// Type of securable. Default to `Catalog`. Change forces creation of a new resource.
         /// </summary>
         [Input("securableType")]
         public Input<string>? SecurableType { get; set; }

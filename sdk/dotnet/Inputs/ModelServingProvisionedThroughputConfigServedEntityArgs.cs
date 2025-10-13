@@ -25,7 +25,7 @@ namespace Pulumi.Databricks.Inputs
         public Input<string> EntityVersion { get; set; } = null!;
 
         /// <summary>
-        /// The name of a served entity. It must be unique across an endpoint. A served entity name can consist of alphanumeric characters, dashes, and underscores. If not specified for an external model, this field will be created from the `entity_name` and `entity_version`
+        /// The name of a served entity. It must be unique across an endpoint. A served entity name can consist of alphanumeric characters, dashes, and underscores. If not specified for an external model, this field will be created from the `EntityName` and `EntityVersion`
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

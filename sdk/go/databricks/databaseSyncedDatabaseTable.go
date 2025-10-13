@@ -19,6 +19,19 @@ import (
 //
 // ## Example Usage
 //
+// ### Creating a Synced Database Table inside a Database Catalog
+//
+// This example creates a Synced Database Table inside a Database Catalog.
+//
+// ### Creating a Synced Database Table inside a Standard Catalog
+//
+// This example creates a Synced Database Table inside a Standard Catalog.
+//
+// ### Creating multiple Synced Database Tables and bin packing them into a single pipeline
+//
+// This example creates two Synced Database Tables. The first one specifies a new pipeline spec,
+// which generates a new pipeline. The second one utilizes the pipeline ID of the first table.
+//
 // ## Import
 //
 // As of Pulumi v1.5, resources can be imported through configuration.

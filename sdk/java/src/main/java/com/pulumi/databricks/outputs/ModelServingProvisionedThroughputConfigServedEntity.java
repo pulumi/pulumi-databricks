@@ -24,7 +24,7 @@ public final class ModelServingProvisionedThroughputConfigServedEntity {
      */
     private String entityVersion;
     /**
-     * @return The name of a served entity. It must be unique across an endpoint. A served entity name can consist of alphanumeric characters, dashes, and underscores. If not specified for an external model, this field will be created from the `entity_name` and `entity_version`
+     * @return The name of a served entity. It must be unique across an endpoint. A served entity name can consist of alphanumeric characters, dashes, and underscores. If not specified for an external model, this field will be created from the `entityName` and `entityVersion`
      * 
      */
     private @Nullable String name;
@@ -50,7 +50,7 @@ public final class ModelServingProvisionedThroughputConfigServedEntity {
         return this.entityVersion;
     }
     /**
-     * @return The name of a served entity. It must be unique across an endpoint. A served entity name can consist of alphanumeric characters, dashes, and underscores. If not specified for an external model, this field will be created from the `entity_name` and `entity_version`
+     * @return The name of a served entity. It must be unique across an endpoint. A served entity name can consist of alphanumeric characters, dashes, and underscores. If not specified for an external model, this field will be created from the `entityName` and `entityVersion`
      * 
      */
     public Optional<String> name() {

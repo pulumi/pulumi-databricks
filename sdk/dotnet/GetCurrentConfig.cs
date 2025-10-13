@@ -46,11 +46,11 @@ namespace Pulumi.Databricks
         /// 
         /// Data source exposes the following attributes:
         /// 
-        /// * `is_account` - Whether the provider is configured at account-level
-        /// * `account_id` - Account Id if provider is configured at account-level
-        /// * `host` - Host of the Databricks workspace or account console
-        /// * `cloud_type` - Cloud type specified in the provider
-        /// * `auth_type` - Auth type used by the provider
+        /// * `IsAccount` - Whether the provider is configured at account-level
+        /// * `AccountId` - Account Id if provider is configured at account-level
+        /// * `Host` - Host of the Databricks workspace or account console
+        /// * `CloudType` - Cloud type specified in the provider
+        /// * `AuthType` - Auth type used by the provider
         /// 
         /// ## Related Resources
         /// 
@@ -99,11 +99,11 @@ namespace Pulumi.Databricks
         /// 
         /// Data source exposes the following attributes:
         /// 
-        /// * `is_account` - Whether the provider is configured at account-level
-        /// * `account_id` - Account Id if provider is configured at account-level
-        /// * `host` - Host of the Databricks workspace or account console
-        /// * `cloud_type` - Cloud type specified in the provider
-        /// * `auth_type` - Auth type used by the provider
+        /// * `IsAccount` - Whether the provider is configured at account-level
+        /// * `AccountId` - Account Id if provider is configured at account-level
+        /// * `Host` - Host of the Databricks workspace or account console
+        /// * `CloudType` - Cloud type specified in the provider
+        /// * `AuthType` - Auth type used by the provider
         /// 
         /// ## Related Resources
         /// 
@@ -152,11 +152,11 @@ namespace Pulumi.Databricks
         /// 
         /// Data source exposes the following attributes:
         /// 
-        /// * `is_account` - Whether the provider is configured at account-level
-        /// * `account_id` - Account Id if provider is configured at account-level
-        /// * `host` - Host of the Databricks workspace or account console
-        /// * `cloud_type` - Cloud type specified in the provider
-        /// * `auth_type` - Auth type used by the provider
+        /// * `IsAccount` - Whether the provider is configured at account-level
+        /// * `AccountId` - Account Id if provider is configured at account-level
+        /// * `Host` - Host of the Databricks workspace or account console
+        /// * `CloudType` - Cloud type specified in the provider
+        /// * `AuthType` - Auth type used by the provider
         /// 
         /// ## Related Resources
         /// 

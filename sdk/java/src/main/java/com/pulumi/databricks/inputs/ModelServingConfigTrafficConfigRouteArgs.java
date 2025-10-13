@@ -18,14 +18,14 @@ public final class ModelServingConfigTrafficConfigRouteArgs extends com.pulumi.r
     public static final ModelServingConfigTrafficConfigRouteArgs Empty = new ModelServingConfigTrafficConfigRouteArgs();
 
     /**
-     * The name of the served entity this route configures traffic for. This needs to match the name of a `served_entity` block.
+     * The name of the served entity this route configures traffic for. This needs to match the name of a `servedEntity` block.
      * 
      */
     @Import(name="servedEntityName")
     private @Nullable Output<String> servedEntityName;
 
     /**
-     * @return The name of the served entity this route configures traffic for. This needs to match the name of a `served_entity` block.
+     * @return The name of the served entity this route configures traffic for. This needs to match the name of a `servedEntity` block.
      * 
      */
     public Optional<Output<String>> servedEntityName() {
@@ -81,7 +81,7 @@ public final class ModelServingConfigTrafficConfigRouteArgs extends com.pulumi.r
         }
 
         /**
-         * @param servedEntityName The name of the served entity this route configures traffic for. This needs to match the name of a `served_entity` block.
+         * @param servedEntityName The name of the served entity this route configures traffic for. This needs to match the name of a `servedEntity` block.
          * 
          * @return builder
          * 
@@ -92,7 +92,7 @@ public final class ModelServingConfigTrafficConfigRouteArgs extends com.pulumi.r
         }
 
         /**
-         * @param servedEntityName The name of the served entity this route configures traffic for. This needs to match the name of a `served_entity` block.
+         * @param servedEntityName The name of the served entity this route configures traffic for. This needs to match the name of a `servedEntity` block.
          * 
          * @return builder
          * 

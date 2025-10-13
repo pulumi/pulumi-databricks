@@ -31,7 +31,7 @@ namespace Pulumi.Databricks.Inputs
         private InputList<Inputs.ModelServingProvisionedThroughputAiGatewayRateLimitArgs>? _rateLimits;
 
         /// <summary>
-        /// Block describing rate limits for AI gateway. For details see the description of `rate_limits` block above.
+        /// Block describing rate limits for AI gateway. For details see the description of `RateLimits` block above.
         /// </summary>
         public InputList<Inputs.ModelServingProvisionedThroughputAiGatewayRateLimitArgs> RateLimits
         {
@@ -40,7 +40,7 @@ namespace Pulumi.Databricks.Inputs
         }
 
         /// <summary>
-        /// Block with configuration for payload logging using inference tables. For details see the description of `auto_capture_config` block above.
+        /// Block with configuration for payload logging using inference tables. For details see the description of `AutoCaptureConfig` block above.
         /// </summary>
         [Input("usageTrackingConfig")]
         public Input<Inputs.ModelServingProvisionedThroughputAiGatewayUsageTrackingConfigArgs>? UsageTrackingConfig { get; set; }

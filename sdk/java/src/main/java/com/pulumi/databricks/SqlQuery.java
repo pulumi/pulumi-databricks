@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
 /**
  * !&gt; This resource is deprecated! Please switch to databricks_query.
  * 
- * To manage [SQLA resources](https://docs.databricks.com/sql/get-started/concepts.html) you must have `databricks_sql_access` on your databricks.Group or databricks_user.
+ * To manage [SQLA resources](https://docs.databricks.com/sql/get-started/concepts.html) you must have `databricksSqlAccess` on your databricks.Group or databricks_user.
  * 
  * &gt; documentation for this resource is a work in progress.
  * 
@@ -158,7 +158,7 @@ import javax.annotation.Nullable;
  * 
  * ## Troubleshooting
  * 
- * In case you see `Error: cannot create sql query: Internal Server Error` during `pulumi up`; double check that you are using the correct `data_source_id`
+ * In case you see `Error: cannot create sql query: Internal Server Error` during `pulumi up`; double check that you are using the correct `dataSourceId`
  * 
  * Operations on `databricks.SqlQuery` schedules are ⛔️ deprecated. You can create, update or delete a schedule for SQLA and other Databricks resources using the databricks.Job resource.
  * 
@@ -296,10 +296,10 @@ public class SqlQuery extends com.pulumi.resources.CustomResource {
     }
     /**
      * @deprecated
-     * Operations on `databricks.SqlQuery` schedules are deprecated. Please use `databricks.Job` resource to schedule a `sql_task`.
+     * Operations on `databricks.SqlQuery` schedules are deprecated. Please use `databricks.Job` resource to schedule a `sqlTask`.
      * 
      */
-    @Deprecated /* Operations on `databricks.SqlQuery` schedules are deprecated. Please use `databricks.Job` resource to schedule a `sql_task`. */
+    @Deprecated /* Operations on `databricks.SqlQuery` schedules are deprecated. Please use `databricks.Job` resource to schedule a `sqlTask`. */
     @Export(name="schedule", refs={SqlQuerySchedule.class}, tree="[0]")
     private Output</* @Nullable */ SqlQuerySchedule> schedule;
 

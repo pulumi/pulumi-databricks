@@ -235,14 +235,14 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (map) Tags that are added by Databricks by default, regardless of any `custom_tags` that may have been added. These include: Vendor: Databricks, Creator: &lt;username_of_creator&gt;, ClusterName: &lt;name_of_cluster&gt;, ClusterId: &lt;id_of_cluster&gt;, Name: &lt;Databricks internal use&gt;, and any workspace and pool tags.
+     * (map) Tags that are added by Databricks by default, regardless of any `customTags` that may have been added. These include: Vendor: Databricks, Creator: &lt;username_of_creator&gt;, ClusterName: &lt;name_of_cluster&gt;, ClusterId: &lt;id_of_cluster&gt;, Name: &lt;Databricks internal use&gt;, and any workspace and pool tags.
      * 
      */
     @Import(name="defaultTags")
     private @Nullable Output<Map<String,String>> defaultTags;
 
     /**
-     * @return (map) Tags that are added by Databricks by default, regardless of any `custom_tags` that may have been added. These include: Vendor: Databricks, Creator: &lt;username_of_creator&gt;, ClusterName: &lt;name_of_cluster&gt;, ClusterId: &lt;id_of_cluster&gt;, Name: &lt;Databricks internal use&gt;, and any workspace and pool tags.
+     * @return (map) Tags that are added by Databricks by default, regardless of any `customTags` that may have been added. These include: Vendor: Databricks, Creator: &lt;username_of_creator&gt;, ClusterName: &lt;name_of_cluster&gt;, ClusterId: &lt;id_of_cluster&gt;, Name: &lt;Databricks internal use&gt;, and any workspace and pool tags.
      * 
      */
     public Optional<Output<Map<String,String>>> defaultTags() {
@@ -257,14 +257,14 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * similar to `instance_pool_id`, but for driver node. If omitted, and `instance_pool_id` is specified, then the driver will be allocated from that pool.
+     * similar to `instancePoolId`, but for driver node. If omitted, and `instancePoolId` is specified, then the driver will be allocated from that pool.
      * 
      */
     @Import(name="driverInstancePoolId")
     private @Nullable Output<String> driverInstancePoolId;
 
     /**
-     * @return similar to `instance_pool_id`, but for driver node. If omitted, and `instance_pool_id` is specified, then the driver will be allocated from that pool.
+     * @return similar to `instancePoolId`, but for driver node. If omitted, and `instancePoolId` is specified, then the driver will be allocated from that pool.
      * 
      */
     public Optional<Output<String>> driverInstancePoolId() {
@@ -272,14 +272,14 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The node type of the Spark driver. This field is optional; if unset, API will set the driver node type to the same value as `node_type_id` defined above.
+     * The node type of the Spark driver. This field is optional; if unset, API will set the driver node type to the same value as `nodeTypeId` defined above.
      * 
      */
     @Import(name="driverNodeTypeId")
     private @Nullable Output<String> driverNodeTypeId;
 
     /**
-     * @return The node type of the Spark driver. This field is optional; if unset, API will set the driver node type to the same value as `node_type_id` defined above.
+     * @return The node type of the Spark driver. This field is optional; if unset, API will set the driver node type to the same value as `nodeTypeId` defined above.
      * 
      */
     public Optional<Output<String>> driverNodeTypeId() {
@@ -287,14 +287,14 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * If you don&#39;t want to allocate a fixed number of EBS volumes at cluster creation time, use autoscaling local storage. With autoscaling local storage, Databricks monitors the amount of free disk space available on your cluster&#39;s Spark workers. If a worker begins to run too low on disk, Databricks automatically attaches a new EBS volume to the worker before it runs out of disk space. EBS volumes are attached up to a limit of 5 TB of total disk space per instance (including the instance&#39;s local storage). To scale down EBS usage, make sure you have `autotermination_minutes` and `autoscale` attributes set. More documentation available at [cluster configuration page](https://docs.databricks.com/clusters/configure.html#autoscaling-local-storage-1).
+     * If you don&#39;t want to allocate a fixed number of EBS volumes at cluster creation time, use autoscaling local storage. With autoscaling local storage, Databricks monitors the amount of free disk space available on your cluster&#39;s Spark workers. If a worker begins to run too low on disk, Databricks automatically attaches a new EBS volume to the worker before it runs out of disk space. EBS volumes are attached up to a limit of 5 TB of total disk space per instance (including the instance&#39;s local storage). To scale down EBS usage, make sure you have `autoterminationMinutes` and `autoscale` attributes set. More documentation available at [cluster configuration page](https://docs.databricks.com/clusters/configure.html#autoscaling-local-storage-1).
      * 
      */
     @Import(name="enableElasticDisk")
     private @Nullable Output<Boolean> enableElasticDisk;
 
     /**
-     * @return If you don&#39;t want to allocate a fixed number of EBS volumes at cluster creation time, use autoscaling local storage. With autoscaling local storage, Databricks monitors the amount of free disk space available on your cluster&#39;s Spark workers. If a worker begins to run too low on disk, Databricks automatically attaches a new EBS volume to the worker before it runs out of disk space. EBS volumes are attached up to a limit of 5 TB of total disk space per instance (including the instance&#39;s local storage). To scale down EBS usage, make sure you have `autotermination_minutes` and `autoscale` attributes set. More documentation available at [cluster configuration page](https://docs.databricks.com/clusters/configure.html#autoscaling-local-storage-1).
+     * @return If you don&#39;t want to allocate a fixed number of EBS volumes at cluster creation time, use autoscaling local storage. With autoscaling local storage, Databricks monitors the amount of free disk space available on your cluster&#39;s Spark workers. If a worker begins to run too low on disk, Databricks automatically attaches a new EBS volume to the worker before it runs out of disk space. EBS volumes are attached up to a limit of 5 TB of total disk space per instance (including the instance&#39;s local storage). To scale down EBS usage, make sure you have `autoterminationMinutes` and `autoscale` attributes set. More documentation available at [cluster configuration page](https://docs.databricks.com/clusters/configure.html#autoscaling-local-storage-1).
      * 
      */
     public Optional<Output<Boolean>> enableElasticDisk() {
@@ -376,14 +376,14 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * When set to true, Databricks will automatically set single node related `custom_tags`, `spark_conf`, and `num_workers`.
+     * When set to true, Databricks will automatically set single node related `customTags`, `sparkConf`, and `numWorkers`.
      * 
      */
     @Import(name="isSingleNode")
     private @Nullable Output<Boolean> isSingleNode;
 
     /**
-     * @return When set to true, Databricks will automatically set single node related `custom_tags`, `spark_conf`, and `num_workers`.
+     * @return When set to true, Databricks will automatically set single node related `customTags`, `sparkConf`, and `numWorkers`.
      * 
      */
     public Optional<Output<Boolean>> isSingleNode() {
@@ -542,14 +542,14 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Any supported databricks.getNodeType id. If `instance_pool_id` is specified, this field is not needed.
+     * Any supported databricks.getNodeType id. If `instancePoolId` is specified, this field is not needed.
      * 
      */
     @Import(name="nodeTypeId")
     private @Nullable Output<String> nodeTypeId;
 
     /**
-     * @return Any supported databricks.getNodeType id. If `instance_pool_id` is specified, this field is not needed.
+     * @return Any supported databricks.getNodeType id. If `instancePoolId` is specified, this field is not needed.
      * 
      */
     public Optional<Output<String>> nodeTypeId() {
@@ -557,14 +557,14 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Number of worker nodes that this cluster should have. A cluster has one Spark driver and `num_workers` executors for a total of `num_workers` + 1 Spark nodes.
+     * Number of worker nodes that this cluster should have. A cluster has one Spark driver and `numWorkers` executors for a total of `numWorkers` + 1 Spark nodes.
      * 
      */
     @Import(name="numWorkers")
     private @Nullable Output<Integer> numWorkers;
 
     /**
-     * @return Number of worker nodes that this cluster should have. A cluster has one Spark driver and `num_workers` executors for a total of `num_workers` + 1 Spark nodes.
+     * @return Number of worker nodes that this cluster should have. A cluster has one Spark driver and `numWorkers` executors for a total of `numWorkers` + 1 Spark nodes.
      * 
      */
     public Optional<Output<Integer>> numWorkers() {
@@ -572,14 +572,14 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Identifier of Cluster Policy to validate cluster and preset certain defaults. *The primary use for cluster policies is to allow users to create policy-scoped clusters via UI rather than sharing configuration for API-created clusters.* For example, when you specify `policy_id` of [external metastore](https://docs.databricks.com/administration-guide/clusters/policies.html#external-metastore-policy) policy, you still have to fill in relevant keys for `spark_conf`.  If relevant fields aren&#39;t filled in, then it will cause the configuration drift detected on each plan/apply, and Pulumi will try to apply the detected changes.
+     * Identifier of Cluster Policy to validate cluster and preset certain defaults. *The primary use for cluster policies is to allow users to create policy-scoped clusters via UI rather than sharing configuration for API-created clusters.* For example, when you specify `policyId` of [external metastore](https://docs.databricks.com/administration-guide/clusters/policies.html#external-metastore-policy) policy, you still have to fill in relevant keys for `sparkConf`.  If relevant fields aren&#39;t filled in, then it will cause the configuration drift detected on each plan/apply, and Pulumi will try to apply the detected changes.
      * 
      */
     @Import(name="policyId")
     private @Nullable Output<String> policyId;
 
     /**
-     * @return Identifier of Cluster Policy to validate cluster and preset certain defaults. *The primary use for cluster policies is to allow users to create policy-scoped clusters via UI rather than sharing configuration for API-created clusters.* For example, when you specify `policy_id` of [external metastore](https://docs.databricks.com/administration-guide/clusters/policies.html#external-metastore-policy) policy, you still have to fill in relevant keys for `spark_conf`.  If relevant fields aren&#39;t filled in, then it will cause the configuration drift detected on each plan/apply, and Pulumi will try to apply the detected changes.
+     * @return Identifier of Cluster Policy to validate cluster and preset certain defaults. *The primary use for cluster policies is to allow users to create policy-scoped clusters via UI rather than sharing configuration for API-created clusters.* For example, when you specify `policyId` of [external metastore](https://docs.databricks.com/administration-guide/clusters/policies.html#external-metastore-policy) policy, you still have to fill in relevant keys for `sparkConf`.  If relevant fields aren&#39;t filled in, then it will cause the configuration drift detected on each plan/apply, and Pulumi will try to apply the detected changes.
      * 
      */
     public Optional<Output<String>> policyId() {
@@ -594,14 +594,14 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The type of runtime engine to use. If not specified, the runtime engine type is inferred based on the spark_version value. Allowed values include: `PHOTON`, `STANDARD`.
+     * The type of runtime engine to use. If not specified, the runtime engine type is inferred based on the sparkVersion value. Allowed values include: `PHOTON`, `STANDARD`.
      * 
      */
     @Import(name="runtimeEngine")
     private @Nullable Output<String> runtimeEngine;
 
     /**
-     * @return The type of runtime engine to use. If not specified, the runtime engine type is inferred based on the spark_version value. Allowed values include: `PHOTON`, `STANDARD`.
+     * @return The type of runtime engine to use. If not specified, the runtime engine type is inferred based on the sparkVersion value. Allowed values include: `PHOTON`, `STANDARD`.
      * 
      */
     public Optional<Output<String>> runtimeEngine() {
@@ -609,14 +609,14 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The optional user name of the user (or group name if `kind` if specified) to assign to an interactive cluster. This field is required when using `data_security_mode` set to `SINGLE_USER` or AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
+     * The optional user name of the user (or group name if `kind` if specified) to assign to an interactive cluster. This field is required when using `dataSecurityMode` set to `SINGLE_USER` or AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
      * 
      */
     @Import(name="singleUserName")
     private @Nullable Output<String> singleUserName;
 
     /**
-     * @return The optional user name of the user (or group name if `kind` if specified) to assign to an interactive cluster. This field is required when using `data_security_mode` set to `SINGLE_USER` or AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
+     * @return The optional user name of the user (or group name if `kind` if specified) to assign to an interactive cluster. This field is required when using `dataSecurityMode` set to `SINGLE_USER` or AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
      * 
      */
     public Optional<Output<String>> singleUserName() {
@@ -717,14 +717,14 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whenever ML runtime should be selected or not.  Actual runtime is determined by `spark_version` (DBR release), this field `use_ml_runtime`, and whether `node_type_id` is GPU node or not.
+     * Whenever ML runtime should be selected or not.  Actual runtime is determined by `sparkVersion` (DBR release), this field `useMlRuntime`, and whether `nodeTypeId` is GPU node or not.
      * 
      */
     @Import(name="useMlRuntime")
     private @Nullable Output<Boolean> useMlRuntime;
 
     /**
-     * @return Whenever ML runtime should be selected or not.  Actual runtime is determined by `spark_version` (DBR release), this field `use_ml_runtime`, and whether `node_type_id` is GPU node or not.
+     * @return Whenever ML runtime should be selected or not.  Actual runtime is determined by `sparkVersion` (DBR release), this field `useMlRuntime`, and whether `nodeTypeId` is GPU node or not.
      * 
      */
     public Optional<Output<Boolean>> useMlRuntime() {
@@ -1054,7 +1054,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param defaultTags (map) Tags that are added by Databricks by default, regardless of any `custom_tags` that may have been added. These include: Vendor: Databricks, Creator: &lt;username_of_creator&gt;, ClusterName: &lt;name_of_cluster&gt;, ClusterId: &lt;id_of_cluster&gt;, Name: &lt;Databricks internal use&gt;, and any workspace and pool tags.
+         * @param defaultTags (map) Tags that are added by Databricks by default, regardless of any `customTags` that may have been added. These include: Vendor: Databricks, Creator: &lt;username_of_creator&gt;, ClusterName: &lt;name_of_cluster&gt;, ClusterId: &lt;id_of_cluster&gt;, Name: &lt;Databricks internal use&gt;, and any workspace and pool tags.
          * 
          * @return builder
          * 
@@ -1065,7 +1065,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param defaultTags (map) Tags that are added by Databricks by default, regardless of any `custom_tags` that may have been added. These include: Vendor: Databricks, Creator: &lt;username_of_creator&gt;, ClusterName: &lt;name_of_cluster&gt;, ClusterId: &lt;id_of_cluster&gt;, Name: &lt;Databricks internal use&gt;, and any workspace and pool tags.
+         * @param defaultTags (map) Tags that are added by Databricks by default, regardless of any `customTags` that may have been added. These include: Vendor: Databricks, Creator: &lt;username_of_creator&gt;, ClusterName: &lt;name_of_cluster&gt;, ClusterId: &lt;id_of_cluster&gt;, Name: &lt;Databricks internal use&gt;, and any workspace and pool tags.
          * 
          * @return builder
          * 
@@ -1084,7 +1084,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param driverInstancePoolId similar to `instance_pool_id`, but for driver node. If omitted, and `instance_pool_id` is specified, then the driver will be allocated from that pool.
+         * @param driverInstancePoolId similar to `instancePoolId`, but for driver node. If omitted, and `instancePoolId` is specified, then the driver will be allocated from that pool.
          * 
          * @return builder
          * 
@@ -1095,7 +1095,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param driverInstancePoolId similar to `instance_pool_id`, but for driver node. If omitted, and `instance_pool_id` is specified, then the driver will be allocated from that pool.
+         * @param driverInstancePoolId similar to `instancePoolId`, but for driver node. If omitted, and `instancePoolId` is specified, then the driver will be allocated from that pool.
          * 
          * @return builder
          * 
@@ -1105,7 +1105,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param driverNodeTypeId The node type of the Spark driver. This field is optional; if unset, API will set the driver node type to the same value as `node_type_id` defined above.
+         * @param driverNodeTypeId The node type of the Spark driver. This field is optional; if unset, API will set the driver node type to the same value as `nodeTypeId` defined above.
          * 
          * @return builder
          * 
@@ -1116,7 +1116,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param driverNodeTypeId The node type of the Spark driver. This field is optional; if unset, API will set the driver node type to the same value as `node_type_id` defined above.
+         * @param driverNodeTypeId The node type of the Spark driver. This field is optional; if unset, API will set the driver node type to the same value as `nodeTypeId` defined above.
          * 
          * @return builder
          * 
@@ -1126,7 +1126,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableElasticDisk If you don&#39;t want to allocate a fixed number of EBS volumes at cluster creation time, use autoscaling local storage. With autoscaling local storage, Databricks monitors the amount of free disk space available on your cluster&#39;s Spark workers. If a worker begins to run too low on disk, Databricks automatically attaches a new EBS volume to the worker before it runs out of disk space. EBS volumes are attached up to a limit of 5 TB of total disk space per instance (including the instance&#39;s local storage). To scale down EBS usage, make sure you have `autotermination_minutes` and `autoscale` attributes set. More documentation available at [cluster configuration page](https://docs.databricks.com/clusters/configure.html#autoscaling-local-storage-1).
+         * @param enableElasticDisk If you don&#39;t want to allocate a fixed number of EBS volumes at cluster creation time, use autoscaling local storage. With autoscaling local storage, Databricks monitors the amount of free disk space available on your cluster&#39;s Spark workers. If a worker begins to run too low on disk, Databricks automatically attaches a new EBS volume to the worker before it runs out of disk space. EBS volumes are attached up to a limit of 5 TB of total disk space per instance (including the instance&#39;s local storage). To scale down EBS usage, make sure you have `autoterminationMinutes` and `autoscale` attributes set. More documentation available at [cluster configuration page](https://docs.databricks.com/clusters/configure.html#autoscaling-local-storage-1).
          * 
          * @return builder
          * 
@@ -1137,7 +1137,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableElasticDisk If you don&#39;t want to allocate a fixed number of EBS volumes at cluster creation time, use autoscaling local storage. With autoscaling local storage, Databricks monitors the amount of free disk space available on your cluster&#39;s Spark workers. If a worker begins to run too low on disk, Databricks automatically attaches a new EBS volume to the worker before it runs out of disk space. EBS volumes are attached up to a limit of 5 TB of total disk space per instance (including the instance&#39;s local storage). To scale down EBS usage, make sure you have `autotermination_minutes` and `autoscale` attributes set. More documentation available at [cluster configuration page](https://docs.databricks.com/clusters/configure.html#autoscaling-local-storage-1).
+         * @param enableElasticDisk If you don&#39;t want to allocate a fixed number of EBS volumes at cluster creation time, use autoscaling local storage. With autoscaling local storage, Databricks monitors the amount of free disk space available on your cluster&#39;s Spark workers. If a worker begins to run too low on disk, Databricks automatically attaches a new EBS volume to the worker before it runs out of disk space. EBS volumes are attached up to a limit of 5 TB of total disk space per instance (including the instance&#39;s local storage). To scale down EBS usage, make sure you have `autoterminationMinutes` and `autoscale` attributes set. More documentation available at [cluster configuration page](https://docs.databricks.com/clusters/configure.html#autoscaling-local-storage-1).
          * 
          * @return builder
          * 
@@ -1253,7 +1253,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param isSingleNode When set to true, Databricks will automatically set single node related `custom_tags`, `spark_conf`, and `num_workers`.
+         * @param isSingleNode When set to true, Databricks will automatically set single node related `customTags`, `sparkConf`, and `numWorkers`.
          * 
          * @return builder
          * 
@@ -1264,7 +1264,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param isSingleNode When set to true, Databricks will automatically set single node related `custom_tags`, `spark_conf`, and `num_workers`.
+         * @param isSingleNode When set to true, Databricks will automatically set single node related `customTags`, `sparkConf`, and `numWorkers`.
          * 
          * @return builder
          * 
@@ -1443,7 +1443,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodeTypeId Any supported databricks.getNodeType id. If `instance_pool_id` is specified, this field is not needed.
+         * @param nodeTypeId Any supported databricks.getNodeType id. If `instancePoolId` is specified, this field is not needed.
          * 
          * @return builder
          * 
@@ -1454,7 +1454,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodeTypeId Any supported databricks.getNodeType id. If `instance_pool_id` is specified, this field is not needed.
+         * @param nodeTypeId Any supported databricks.getNodeType id. If `instancePoolId` is specified, this field is not needed.
          * 
          * @return builder
          * 
@@ -1464,7 +1464,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param numWorkers Number of worker nodes that this cluster should have. A cluster has one Spark driver and `num_workers` executors for a total of `num_workers` + 1 Spark nodes.
+         * @param numWorkers Number of worker nodes that this cluster should have. A cluster has one Spark driver and `numWorkers` executors for a total of `numWorkers` + 1 Spark nodes.
          * 
          * @return builder
          * 
@@ -1475,7 +1475,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param numWorkers Number of worker nodes that this cluster should have. A cluster has one Spark driver and `num_workers` executors for a total of `num_workers` + 1 Spark nodes.
+         * @param numWorkers Number of worker nodes that this cluster should have. A cluster has one Spark driver and `numWorkers` executors for a total of `numWorkers` + 1 Spark nodes.
          * 
          * @return builder
          * 
@@ -1485,7 +1485,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param policyId Identifier of Cluster Policy to validate cluster and preset certain defaults. *The primary use for cluster policies is to allow users to create policy-scoped clusters via UI rather than sharing configuration for API-created clusters.* For example, when you specify `policy_id` of [external metastore](https://docs.databricks.com/administration-guide/clusters/policies.html#external-metastore-policy) policy, you still have to fill in relevant keys for `spark_conf`.  If relevant fields aren&#39;t filled in, then it will cause the configuration drift detected on each plan/apply, and Pulumi will try to apply the detected changes.
+         * @param policyId Identifier of Cluster Policy to validate cluster and preset certain defaults. *The primary use for cluster policies is to allow users to create policy-scoped clusters via UI rather than sharing configuration for API-created clusters.* For example, when you specify `policyId` of [external metastore](https://docs.databricks.com/administration-guide/clusters/policies.html#external-metastore-policy) policy, you still have to fill in relevant keys for `sparkConf`.  If relevant fields aren&#39;t filled in, then it will cause the configuration drift detected on each plan/apply, and Pulumi will try to apply the detected changes.
          * 
          * @return builder
          * 
@@ -1496,7 +1496,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param policyId Identifier of Cluster Policy to validate cluster and preset certain defaults. *The primary use for cluster policies is to allow users to create policy-scoped clusters via UI rather than sharing configuration for API-created clusters.* For example, when you specify `policy_id` of [external metastore](https://docs.databricks.com/administration-guide/clusters/policies.html#external-metastore-policy) policy, you still have to fill in relevant keys for `spark_conf`.  If relevant fields aren&#39;t filled in, then it will cause the configuration drift detected on each plan/apply, and Pulumi will try to apply the detected changes.
+         * @param policyId Identifier of Cluster Policy to validate cluster and preset certain defaults. *The primary use for cluster policies is to allow users to create policy-scoped clusters via UI rather than sharing configuration for API-created clusters.* For example, when you specify `policyId` of [external metastore](https://docs.databricks.com/administration-guide/clusters/policies.html#external-metastore-policy) policy, you still have to fill in relevant keys for `sparkConf`.  If relevant fields aren&#39;t filled in, then it will cause the configuration drift detected on each plan/apply, and Pulumi will try to apply the detected changes.
          * 
          * @return builder
          * 
@@ -1515,7 +1515,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param runtimeEngine The type of runtime engine to use. If not specified, the runtime engine type is inferred based on the spark_version value. Allowed values include: `PHOTON`, `STANDARD`.
+         * @param runtimeEngine The type of runtime engine to use. If not specified, the runtime engine type is inferred based on the sparkVersion value. Allowed values include: `PHOTON`, `STANDARD`.
          * 
          * @return builder
          * 
@@ -1526,7 +1526,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param runtimeEngine The type of runtime engine to use. If not specified, the runtime engine type is inferred based on the spark_version value. Allowed values include: `PHOTON`, `STANDARD`.
+         * @param runtimeEngine The type of runtime engine to use. If not specified, the runtime engine type is inferred based on the sparkVersion value. Allowed values include: `PHOTON`, `STANDARD`.
          * 
          * @return builder
          * 
@@ -1536,7 +1536,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param singleUserName The optional user name of the user (or group name if `kind` if specified) to assign to an interactive cluster. This field is required when using `data_security_mode` set to `SINGLE_USER` or AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
+         * @param singleUserName The optional user name of the user (or group name if `kind` if specified) to assign to an interactive cluster. This field is required when using `dataSecurityMode` set to `SINGLE_USER` or AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
          * 
          * @return builder
          * 
@@ -1547,7 +1547,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param singleUserName The optional user name of the user (or group name if `kind` if specified) to assign to an interactive cluster. This field is required when using `data_security_mode` set to `SINGLE_USER` or AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
+         * @param singleUserName The optional user name of the user (or group name if `kind` if specified) to assign to an interactive cluster. This field is required when using `dataSecurityMode` set to `SINGLE_USER` or AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
          * 
          * @return builder
          * 
@@ -1694,7 +1694,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param useMlRuntime Whenever ML runtime should be selected or not.  Actual runtime is determined by `spark_version` (DBR release), this field `use_ml_runtime`, and whether `node_type_id` is GPU node or not.
+         * @param useMlRuntime Whenever ML runtime should be selected or not.  Actual runtime is determined by `sparkVersion` (DBR release), this field `useMlRuntime`, and whether `nodeTypeId` is GPU node or not.
          * 
          * @return builder
          * 
@@ -1705,7 +1705,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param useMlRuntime Whenever ML runtime should be selected or not.  Actual runtime is determined by `spark_version` (DBR release), this field `use_ml_runtime`, and whether `node_type_id` is GPU node or not.
+         * @param useMlRuntime Whenever ML runtime should be selected or not.  Actual runtime is determined by `sparkVersion` (DBR release), this field `useMlRuntime`, and whether `nodeTypeId` is GPU node or not.
          * 
          * @return builder
          * 

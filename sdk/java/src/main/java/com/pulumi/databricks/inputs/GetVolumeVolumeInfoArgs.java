@@ -34,14 +34,14 @@ public final class GetVolumeVolumeInfoArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * indicates whether the principal is limited to retrieving metadata for the volume through the BROWSE privilege when include_browse is enabled in the request.
+     * indicates whether the principal is limited to retrieving metadata for the volume through the BROWSE privilege when includeBrowse is enabled in the request.
      * 
      */
     @Import(name="browseOnly")
     private @Nullable Output<Boolean> browseOnly;
 
     /**
-     * @return indicates whether the principal is limited to retrieving metadata for the volume through the BROWSE privilege when include_browse is enabled in the request.
+     * @return indicates whether the principal is limited to retrieving metadata for the volume through the BROWSE privilege when includeBrowse is enabled in the request.
      * 
      */
     public Optional<Output<Boolean>> browseOnly() {
@@ -335,7 +335,7 @@ public final class GetVolumeVolumeInfoArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param browseOnly indicates whether the principal is limited to retrieving metadata for the volume through the BROWSE privilege when include_browse is enabled in the request.
+         * @param browseOnly indicates whether the principal is limited to retrieving metadata for the volume through the BROWSE privilege when includeBrowse is enabled in the request.
          * 
          * @return builder
          * 
@@ -346,7 +346,7 @@ public final class GetVolumeVolumeInfoArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param browseOnly indicates whether the principal is limited to retrieving metadata for the volume through the BROWSE privilege when include_browse is enabled in the request.
+         * @param browseOnly indicates whether the principal is limited to retrieving metadata for the volume through the BROWSE privilege when includeBrowse is enabled in the request.
          * 
          * @return builder
          * 

@@ -28,15 +28,15 @@ import javax.annotation.Nullable;
  * 
  * &gt; This resource can only be used with an account-level provider!
  * 
- * &gt; The `gke_config` argument is now deprecated and no longer supported. If you have already created a workspace using these fields, it is safe to remove them from your Pulumi template.
+ * &gt; The `gkeConfig` argument is now deprecated and no longer supported. If you have already created a workspace using these fields, it is safe to remove them from your Pulumi template.
  * 
- * &gt; On Azure you need to use azurerm_databricks_workspace resource to create Azure Databricks workspaces.
+ * &gt; On Azure you need to use azurermDatabricksWorkspace resource to create Azure Databricks workspaces.
  * 
  * ## Example Usage
  * 
  * ### Creating a serverless workspace in AWS
  * 
- * Creating a serverless workspace does not require any prerequisite resources. Simply specify `compute_mode = &#34;SERVERLESS&#34;` when creating the workspace. Serverless workspaces must not include `credentials_id` or `storage_configuration_id`.
+ * Creating a serverless workspace does not require any prerequisite resources. Simply specify `computeMode = &#34;SERVERLESS&#34;` when creating the workspace. Serverless workspaces must not include `credentialsId` or `storageConfigurationId`.
  * 
  * To use serverless workspaces, you must enroll in the [Default Storage preview](https://docs.databricks.com/aws/en/storage/express-storage).
  * 
@@ -308,7 +308,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
- * In order to create a [Databricks Workspace that leverages AWS PrivateLink](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html) please ensure that you have read and understood the [Enable Private Link](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html) documentation and then customise the example above with the relevant examples from mws_vpc_endpoint, mws_private_access_settings and mws_networks.
+ * In order to create a [Databricks Workspace that leverages AWS PrivateLink](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html) please ensure that you have read and understood the [Enable Private Link](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html) documentation and then customise the example above with the relevant examples from mws_vpc_endpoint, mwsPrivateAccessSettings and mws_networks.
  * 
  * ### Creating a workspace on GCP
  * 
@@ -379,7 +379,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
- * In order to create a [Databricks Workspace that leverages GCP Private Service Connect](https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/private-service-connect.html) please ensure that you have read and understood the [Enable Private Service Connect](https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/private-service-connect.html) documentation and then customise the example above with the relevant examples from mws_vpc_endpoint, mws_private_access_settings and mws_networks.
+ * In order to create a [Databricks Workspace that leverages GCP Private Service Connect](https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/private-service-connect.html) please ensure that you have read and understood the [Enable Private Service Connect](https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/private-service-connect.html) documentation and then customise the example above with the relevant examples from mws_vpc_endpoint, mwsPrivateAccessSettings and mws_networks.
  * 
  * ## Import
  * 
@@ -467,7 +467,7 @@ public class MwsWorkspaces extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.cloudResourceContainer);
     }
     /**
-     * The compute mode for the workspace. When unset, a classic workspace is created, and both `credentials_id` and `storage_configuration_id` must be specified. When set to `SERVERLESS`, the resulting workspace is a serverless workspace, and `credentials_id` and `storage_configuration_id` must not be set. The only allowed value for this is `SERVERLESS`. Changing this field requires recreation of the workspace.
+     * The compute mode for the workspace. When unset, a classic workspace is created, and both `credentialsId` and `storageConfigurationId` must be specified. When set to `SERVERLESS`, the resulting workspace is a serverless workspace, and `credentialsId` and `storageConfigurationId` must not be set. The only allowed value for this is `SERVERLESS`. Changing this field requires recreation of the workspace.
      * 
      * &gt; Databricks strongly recommends using OAuth instead of PATs for user account client authentication and authorization due to the improved security
      * 
@@ -476,7 +476,7 @@ public class MwsWorkspaces extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> computeMode;
 
     /**
-     * @return The compute mode for the workspace. When unset, a classic workspace is created, and both `credentials_id` and `storage_configuration_id` must be specified. When set to `SERVERLESS`, the resulting workspace is a serverless workspace, and `credentials_id` and `storage_configuration_id` must not be set. The only allowed value for this is `SERVERLESS`. Changing this field requires recreation of the workspace.
+     * @return The compute mode for the workspace. When unset, a classic workspace is created, and both `credentialsId` and `storageConfigurationId` must be specified. When set to `SERVERLESS`, the resulting workspace is a serverless workspace, and `credentialsId` and `storageConfigurationId` must not be set. The only allowed value for this is `SERVERLESS`. Changing this field requires recreation of the workspace.
      * 
      * &gt; Databricks strongly recommends using OAuth instead of PATs for user account client authentication and authorization due to the improved security
      * 
@@ -499,28 +499,28 @@ public class MwsWorkspaces extends com.pulumi.resources.CustomResource {
         return this.creationTime;
     }
     /**
-     * `credentials_id` from credentials. This must not be specified when `compute_mode` is set to `SERVERLESS`.
+     * `credentialsId` from credentials. This must not be specified when `computeMode` is set to `SERVERLESS`.
      * 
      */
     @Export(name="credentialsId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> credentialsId;
 
     /**
-     * @return `credentials_id` from credentials. This must not be specified when `compute_mode` is set to `SERVERLESS`.
+     * @return `credentialsId` from credentials. This must not be specified when `computeMode` is set to `SERVERLESS`.
      * 
      */
     public Output<Optional<String>> credentialsId() {
         return Codegen.optional(this.credentialsId);
     }
     /**
-     * The custom tags key-value pairing that is attached to this workspace. These tags will be applied to clusters automatically in addition to any `default_tags` or `custom_tags` on a cluster level. Please note it can take up to an hour for custom_tags to be set due to scheduling on Control Plane. After custom tags are applied, they can be modified however they can never be completely removed.
+     * The custom tags key-value pairing that is attached to this workspace. These tags will be applied to clusters automatically in addition to any `defaultTags` or `customTags` on a cluster level. Please note it can take up to an hour for customTags to be set due to scheduling on Control Plane. After custom tags are applied, they can be modified however they can never be completely removed.
      * 
      */
     @Export(name="customTags", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> customTags;
 
     /**
-     * @return The custom tags key-value pairing that is attached to this workspace. These tags will be applied to clusters automatically in addition to any `default_tags` or `custom_tags` on a cluster level. Please note it can take up to an hour for custom_tags to be set due to scheduling on Control Plane. After custom tags are applied, they can be modified however they can never be completely removed.
+     * @return The custom tags key-value pairing that is attached to this workspace. These tags will be applied to clusters automatically in addition to any `defaultTags` or `customTags` on a cluster level. Please note it can take up to an hour for customTags to be set due to scheduling on Control Plane. After custom tags are applied, they can be modified however they can never be completely removed.
      * 
      */
     public Output<Optional<Map<String,String>>> customTags() {
@@ -528,10 +528,10 @@ public class MwsWorkspaces extends com.pulumi.resources.CustomResource {
     }
     /**
      * @deprecated
-     * Use managed_services_customer_managed_key_id instead
+     * Use managedServicesCustomerManagedKeyId instead
      * 
      */
-    @Deprecated /* Use managed_services_customer_managed_key_id instead */
+    @Deprecated /* Use managedServicesCustomerManagedKeyId instead */
     @Export(name="customerManagedKeyId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> customerManagedKeyId;
 
@@ -625,28 +625,28 @@ public class MwsWorkspaces extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.location);
     }
     /**
-     * `customer_managed_key_id` from customer managed keys with `use_cases` set to `MANAGED_SERVICES`. This is used to encrypt the workspace&#39;s notebook and secret data in the control plane.
+     * `customerManagedKeyId` from customer managed keys with `useCases` set to `MANAGED_SERVICES`. This is used to encrypt the workspace&#39;s notebook and secret data in the control plane.
      * 
      */
     @Export(name="managedServicesCustomerManagedKeyId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> managedServicesCustomerManagedKeyId;
 
     /**
-     * @return `customer_managed_key_id` from customer managed keys with `use_cases` set to `MANAGED_SERVICES`. This is used to encrypt the workspace&#39;s notebook and secret data in the control plane.
+     * @return `customerManagedKeyId` from customer managed keys with `useCases` set to `MANAGED_SERVICES`. This is used to encrypt the workspace&#39;s notebook and secret data in the control plane.
      * 
      */
     public Output<Optional<String>> managedServicesCustomerManagedKeyId() {
         return Codegen.optional(this.managedServicesCustomerManagedKeyId);
     }
     /**
-     * `network_id` from networks.
+     * `networkId` from networks.
      * 
      */
     @Export(name="networkId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> networkId;
 
     /**
-     * @return `network_id` from networks.
+     * @return `networkId` from networks.
      * 
      */
     public Output<Optional<String>> networkId() {
@@ -681,28 +681,28 @@ public class MwsWorkspaces extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.privateAccessSettingsId);
     }
     /**
-     * `storage_configuration_id` from storage configuration. This must not be specified when `compute_mode` is set to `SERVERLESS`.
+     * `storageConfigurationId` from storage configuration. This must not be specified when `computeMode` is set to `SERVERLESS`.
      * 
      */
     @Export(name="storageConfigurationId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> storageConfigurationId;
 
     /**
-     * @return `storage_configuration_id` from storage configuration. This must not be specified when `compute_mode` is set to `SERVERLESS`.
+     * @return `storageConfigurationId` from storage configuration. This must not be specified when `computeMode` is set to `SERVERLESS`.
      * 
      */
     public Output<Optional<String>> storageConfigurationId() {
         return Codegen.optional(this.storageConfigurationId);
     }
     /**
-     * `customer_managed_key_id` from customer managed keys with `use_cases` set to `STORAGE`. This is used to encrypt the DBFS Storage &amp; Cluster Volumes.
+     * `customerManagedKeyId` from customer managed keys with `useCases` set to `STORAGE`. This is used to encrypt the DBFS Storage &amp; Cluster Volumes.
      * 
      */
     @Export(name="storageCustomerManagedKeyId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> storageCustomerManagedKeyId;
 
     /**
-     * @return `customer_managed_key_id` from customer managed keys with `use_cases` set to `STORAGE`. This is used to encrypt the DBFS Storage &amp; Cluster Volumes.
+     * @return `customerManagedKeyId` from customer managed keys with `useCases` set to `STORAGE`. This is used to encrypt the DBFS Storage &amp; Cluster Volumes.
      * 
      */
     public Output<Optional<String>> storageCustomerManagedKeyId() {

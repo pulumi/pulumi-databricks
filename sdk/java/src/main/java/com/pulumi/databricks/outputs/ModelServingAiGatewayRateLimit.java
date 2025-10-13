@@ -19,7 +19,7 @@ public final class ModelServingAiGatewayRateLimit {
      */
     private @Nullable Integer calls;
     /**
-     * @return Key field for a serving endpoint rate limit. Currently, `user`, `user_group`, `service_principal`, and `endpoint` are supported, with `endpoint` being the default if not specified.
+     * @return Key field for a serving endpoint rate limit. Currently, `user`, `userGroup`, `servicePrincipal`, and `endpoint` are supported, with `endpoint` being the default if not specified.
      * 
      */
     private @Nullable String key;
@@ -48,7 +48,7 @@ public final class ModelServingAiGatewayRateLimit {
         return Optional.ofNullable(this.calls);
     }
     /**
-     * @return Key field for a serving endpoint rate limit. Currently, `user`, `user_group`, `service_principal`, and `endpoint` are supported, with `endpoint` being the default if not specified.
+     * @return Key field for a serving endpoint rate limit. Currently, `user`, `userGroup`, `servicePrincipal`, and `endpoint` are supported, with `endpoint` being the default if not specified.
      * 
      */
     public Optional<String> key() {

@@ -19,7 +19,7 @@ namespace Pulumi.Databricks.Inputs
         public Input<Inputs.JobTriggerFileArrivalGetArgs>? FileArrival { get; set; }
 
         /// <summary>
-        /// Indicate whether this trigger is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pause_status` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pause_status`.
+        /// Indicate whether this trigger is paused or not. Either `PAUSED` or `UNPAUSED`. When the `PauseStatus` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `PauseStatus`.
         /// </summary>
         [Input("pauseStatus")]
         public Input<string>? PauseStatus { get; set; }

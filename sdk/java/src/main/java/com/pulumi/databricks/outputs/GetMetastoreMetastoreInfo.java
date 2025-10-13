@@ -45,7 +45,7 @@ public final class GetMetastoreMetastoreInfo {
      */
     private @Nullable String name;
     /**
-     * @return Username/groupname/sp application_id of the metastore owner.
+     * @return Username/groupname/sp applicationId of the metastore owner.
      * 
      */
     private @Nullable String owner;
@@ -120,7 +120,7 @@ public final class GetMetastoreMetastoreInfo {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return Username/groupname/sp application_id of the metastore owner.
+     * @return Username/groupname/sp applicationId of the metastore owner.
      * 
      */
     public Optional<String> owner() {

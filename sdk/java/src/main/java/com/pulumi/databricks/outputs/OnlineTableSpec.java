@@ -31,7 +31,7 @@ public final class OnlineTableSpec {
      */
     private @Nullable List<String> primaryKeyColumns;
     /**
-     * @return empty block that specifies that pipeline runs continuously after generating the initial data.  Conflicts with `run_triggered`.
+     * @return empty block that specifies that pipeline runs continuously after generating the initial data.  Conflicts with `runTriggered`.
      * 
      */
     private @Nullable OnlineTableSpecRunContinuously runContinuously;
@@ -74,7 +74,7 @@ public final class OnlineTableSpec {
         return this.primaryKeyColumns == null ? List.of() : this.primaryKeyColumns;
     }
     /**
-     * @return empty block that specifies that pipeline runs continuously after generating the initial data.  Conflicts with `run_triggered`.
+     * @return empty block that specifies that pipeline runs continuously after generating the initial data.  Conflicts with `runTriggered`.
      * 
      */
     public Optional<OnlineTableSpecRunContinuously> runContinuously() {

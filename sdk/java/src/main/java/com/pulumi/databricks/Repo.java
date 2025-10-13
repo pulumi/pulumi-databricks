@@ -24,7 +24,7 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
- * You can declare Pulumi-managed Git folder by specifying `url` attribute of Git repository. In addition to that you may need to specify `git_provider` attribute if Git provider doesn&#39;t belong to cloud Git providers (Github, GitLab, ...).  If `path` attribute isn&#39;t provided, then Git folder will be created in the default location:
+ * You can declare Pulumi-managed Git folder by specifying `url` attribute of Git repository. In addition to that you may need to specify `gitProvider` attribute if Git provider doesn&#39;t belong to cloud Git providers (Github, GitLab, ...).  If `path` attribute isn&#39;t provided, then Git folder will be created in the default location:
  * 
  * <pre>
  * {@code

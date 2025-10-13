@@ -192,14 +192,14 @@ public class ExternalLocation extends com.pulumi.resources.CustomResource {
         return this.credentialName;
     }
     /**
-     * indicates if managed file events are enabled for this external location.  Requires `file_event_queue` block.
+     * indicates if managed file events are enabled for this external location.  Requires `fileEventQueue` block.
      * 
      */
     @Export(name="enableFileEvents", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enableFileEvents;
 
     /**
-     * @return indicates if managed file events are enabled for this external location.  Requires `file_event_queue` block.
+     * @return indicates if managed file events are enabled for this external location.  Requires `fileEventQueue` block.
      * 
      */
     public Output<Optional<Boolean>> enableFileEvents() {
@@ -294,14 +294,14 @@ public class ExternalLocation extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Username/groupname/sp application_id of the external location owner.
+     * Username/groupname/sp applicationId of the external location owner.
      * 
      */
     @Export(name="owner", refs={String.class}, tree="[0]")
     private Output<String> owner;
 
     /**
-     * @return Username/groupname/sp application_id of the external location owner.
+     * @return Username/groupname/sp applicationId of the external location owner.
      * 
      */
     public Output<String> owner() {

@@ -26,7 +26,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly bool? PauseSubscriptions;
         /// <summary>
-        /// a list of subscription blocks consisting out of one of the required fields: `user_name` for user emails or `destination_id` - for Alert destination's identifier.
+        /// a list of subscription blocks consisting out of one of the required fields: `UserName` for user emails or `DestinationId` - for Alert destination's identifier.
         /// </summary>
         public readonly ImmutableArray<Outputs.JobTaskSqlTaskDashboardSubscription> Subscriptions;
 

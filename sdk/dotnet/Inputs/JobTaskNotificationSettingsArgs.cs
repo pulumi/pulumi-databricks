@@ -13,7 +13,7 @@ namespace Pulumi.Databricks.Inputs
     public sealed class JobTaskNotificationSettingsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// (Bool) do not send notifications to recipients specified in `on_start` for the retried runs and do not send notifications to recipients specified in `on_failure` until the last retry of the run.
+        /// (Bool) do not send notifications to recipients specified in `OnStart` for the retried runs and do not send notifications to recipients specified in `OnFailure` until the last retry of the run.
         /// </summary>
         [Input("alertOnLastAttempt")]
         public Input<bool>? AlertOnLastAttempt { get; set; }

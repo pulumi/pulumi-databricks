@@ -12,7 +12,7 @@ namespace Pulumi.Databricks
     /// <summary>
     /// ## Example Usage
     /// 
-    /// &gt; If you've used the resource before, please add `use_cases = ["MANAGED_SERVICES"]` to keep the previous behaviour.
+    /// &gt; If you've used the resource before, please add `UseCases = ["MANAGED_SERVICES"]` to keep the previous behaviour.
     /// 
     /// ### Customer-managed key for managed services
     /// 
@@ -413,7 +413,7 @@ namespace Pulumi.Databricks
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// This field is a block and is documented below. This conflicts with `gcp_key_info`
+        /// This field is a block and is documented below. This conflicts with `GcpKeyInfo`
         /// </summary>
         [Output("awsKeyInfo")]
         public Output<Outputs.MwsCustomerManagedKeysAwsKeyInfo?> AwsKeyInfo { get; private set; } = null!;
@@ -431,13 +431,13 @@ namespace Pulumi.Databricks
         public Output<string> CustomerManagedKeyId { get; private set; } = null!;
 
         /// <summary>
-        /// This field is a block and is documented below. This conflicts with `aws_key_info`
+        /// This field is a block and is documented below. This conflicts with `AwsKeyInfo`
         /// </summary>
         [Output("gcpKeyInfo")]
         public Output<Outputs.MwsCustomerManagedKeysGcpKeyInfo?> GcpKeyInfo { get; private set; } = null!;
 
         /// <summary>
-        /// *(since v0.3.4)* List of use cases for which this key will be used. *If you've used the resource before, please add `use_cases = ["MANAGED_SERVICES"]` to keep the previous behaviour.* Possible values are:
+        /// *(since v0.3.4)* List of use cases for which this key will be used. *If you've used the resource before, please add `UseCases = ["MANAGED_SERVICES"]` to keep the previous behaviour.* Possible values are:
         /// * `MANAGED_SERVICES` - for encryption of the workspace objects (notebooks, secrets) that are stored in the control plane
         /// * `STORAGE` - for encryption of the DBFS Storage &amp; Cluster EBS Volumes
         /// </summary>
@@ -497,7 +497,7 @@ namespace Pulumi.Databricks
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// This field is a block and is documented below. This conflicts with `gcp_key_info`
+        /// This field is a block and is documented below. This conflicts with `GcpKeyInfo`
         /// </summary>
         [Input("awsKeyInfo")]
         public Input<Inputs.MwsCustomerManagedKeysAwsKeyInfoArgs>? AwsKeyInfo { get; set; }
@@ -515,7 +515,7 @@ namespace Pulumi.Databricks
         public Input<string>? CustomerManagedKeyId { get; set; }
 
         /// <summary>
-        /// This field is a block and is documented below. This conflicts with `aws_key_info`
+        /// This field is a block and is documented below. This conflicts with `AwsKeyInfo`
         /// </summary>
         [Input("gcpKeyInfo")]
         public Input<Inputs.MwsCustomerManagedKeysGcpKeyInfoArgs>? GcpKeyInfo { get; set; }
@@ -524,7 +524,7 @@ namespace Pulumi.Databricks
         private InputList<string>? _useCases;
 
         /// <summary>
-        /// *(since v0.3.4)* List of use cases for which this key will be used. *If you've used the resource before, please add `use_cases = ["MANAGED_SERVICES"]` to keep the previous behaviour.* Possible values are:
+        /// *(since v0.3.4)* List of use cases for which this key will be used. *If you've used the resource before, please add `UseCases = ["MANAGED_SERVICES"]` to keep the previous behaviour.* Possible values are:
         /// * `MANAGED_SERVICES` - for encryption of the workspace objects (notebooks, secrets) that are stored in the control plane
         /// * `STORAGE` - for encryption of the DBFS Storage &amp; Cluster EBS Volumes
         /// </summary>
@@ -549,7 +549,7 @@ namespace Pulumi.Databricks
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// This field is a block and is documented below. This conflicts with `gcp_key_info`
+        /// This field is a block and is documented below. This conflicts with `GcpKeyInfo`
         /// </summary>
         [Input("awsKeyInfo")]
         public Input<Inputs.MwsCustomerManagedKeysAwsKeyInfoGetArgs>? AwsKeyInfo { get; set; }
@@ -567,7 +567,7 @@ namespace Pulumi.Databricks
         public Input<string>? CustomerManagedKeyId { get; set; }
 
         /// <summary>
-        /// This field is a block and is documented below. This conflicts with `aws_key_info`
+        /// This field is a block and is documented below. This conflicts with `AwsKeyInfo`
         /// </summary>
         [Input("gcpKeyInfo")]
         public Input<Inputs.MwsCustomerManagedKeysGcpKeyInfoGetArgs>? GcpKeyInfo { get; set; }
@@ -576,7 +576,7 @@ namespace Pulumi.Databricks
         private InputList<string>? _useCases;
 
         /// <summary>
-        /// *(since v0.3.4)* List of use cases for which this key will be used. *If you've used the resource before, please add `use_cases = ["MANAGED_SERVICES"]` to keep the previous behaviour.* Possible values are:
+        /// *(since v0.3.4)* List of use cases for which this key will be used. *If you've used the resource before, please add `UseCases = ["MANAGED_SERVICES"]` to keep the previous behaviour.* Possible values are:
         /// * `MANAGED_SERVICES` - for encryption of the workspace objects (notebooks, secrets) that are stored in the control plane
         /// * `STORAGE` - for encryption of the DBFS Storage &amp; Cluster EBS Volumes
         /// </summary>

@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class JobTaskEmailNotifications {
     /**
-     * @return (Bool) don&#39;t send alert for skipped runs. (It&#39;s recommended to use the corresponding setting in the `notification_settings` configuration block).
+     * @return (Bool) don&#39;t send alert for skipped runs. (It&#39;s recommended to use the corresponding setting in the `notificationSettings` configuration block).
      * 
      */
     private @Nullable Boolean noAlertForSkippedRuns;
@@ -48,7 +48,7 @@ public final class JobTaskEmailNotifications {
 
     private JobTaskEmailNotifications() {}
     /**
-     * @return (Bool) don&#39;t send alert for skipped runs. (It&#39;s recommended to use the corresponding setting in the `notification_settings` configuration block).
+     * @return (Bool) don&#39;t send alert for skipped runs. (It&#39;s recommended to use the corresponding setting in the `notificationSettings` configuration block).
      * 
      */
     public Optional<Boolean> noAlertForSkippedRuns() {

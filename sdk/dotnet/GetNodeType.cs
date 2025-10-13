@@ -16,7 +16,7 @@ namespace Pulumi.Databricks
         /// 
         /// &gt; This data source can only be used with a workspace-level provider!
         /// 
-        /// &gt; This is experimental functionality, which aims to simplify things. In case of wrong parameters given (e.g. `min_gpus = 876`) or no nodes matching, data source will return cloud-default node type, even though it doesn't match search criteria specified by data source arguments: [i3.xlarge](https://aws.amazon.com/ec2/instance-types/i3/) for AWS or [Standard_D3_v2](https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-sizes-specs#dv2-series) for Azure.
+        /// &gt; This is experimental functionality, which aims to simplify things. In case of wrong parameters given (e.g. `MinGpus = 876`) or no nodes matching, data source will return cloud-default node type, even though it doesn't match search criteria specified by data source arguments: [i3.xlarge](https://aws.amazon.com/ec2/instance-types/i3/) for AWS or [Standard_D3_v2](https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-sizes-specs#dv2-series) for Azure.
         /// 
         /// ## Example Usage
         /// 
@@ -76,7 +76,7 @@ namespace Pulumi.Databricks
         /// 
         /// &gt; This data source can only be used with a workspace-level provider!
         /// 
-        /// &gt; This is experimental functionality, which aims to simplify things. In case of wrong parameters given (e.g. `min_gpus = 876`) or no nodes matching, data source will return cloud-default node type, even though it doesn't match search criteria specified by data source arguments: [i3.xlarge](https://aws.amazon.com/ec2/instance-types/i3/) for AWS or [Standard_D3_v2](https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-sizes-specs#dv2-series) for Azure.
+        /// &gt; This is experimental functionality, which aims to simplify things. In case of wrong parameters given (e.g. `MinGpus = 876`) or no nodes matching, data source will return cloud-default node type, even though it doesn't match search criteria specified by data source arguments: [i3.xlarge](https://aws.amazon.com/ec2/instance-types/i3/) for AWS or [Standard_D3_v2](https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-sizes-specs#dv2-series) for Azure.
         /// 
         /// ## Example Usage
         /// 
@@ -136,7 +136,7 @@ namespace Pulumi.Databricks
         /// 
         /// &gt; This data source can only be used with a workspace-level provider!
         /// 
-        /// &gt; This is experimental functionality, which aims to simplify things. In case of wrong parameters given (e.g. `min_gpus = 876`) or no nodes matching, data source will return cloud-default node type, even though it doesn't match search criteria specified by data source arguments: [i3.xlarge](https://aws.amazon.com/ec2/instance-types/i3/) for AWS or [Standard_D3_v2](https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-sizes-specs#dv2-series) for Azure.
+        /// &gt; This is experimental functionality, which aims to simplify things. In case of wrong parameters given (e.g. `MinGpus = 876`) or no nodes matching, data source will return cloud-default node type, even though it doesn't match search criteria specified by data source arguments: [i3.xlarge](https://aws.amazon.com/ec2/instance-types/i3/) for AWS or [Standard_D3_v2](https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-sizes-specs#dv2-series) for Azure.
         /// 
         /// ## Example Usage
         /// 
@@ -215,7 +215,7 @@ namespace Pulumi.Databricks
         public bool? Fleet { get; set; }
 
         /// <summary>
-        /// Number of gigabytes per core available on instance. Conflicts with `min_memory_gb`. Defaults to _0_.
+        /// Number of gigabytes per core available on instance. Conflicts with `MinMemoryGb`. Defaults to _0_.
         /// </summary>
         [Input("gbPerCore")]
         public int? GbPerCore { get; set; }
@@ -314,7 +314,7 @@ namespace Pulumi.Databricks
         public Input<bool>? Fleet { get; set; }
 
         /// <summary>
-        /// Number of gigabytes per core available on instance. Conflicts with `min_memory_gb`. Defaults to _0_.
+        /// Number of gigabytes per core available on instance. Conflicts with `MinMemoryGb`. Defaults to _0_.
         /// </summary>
         [Input("gbPerCore")]
         public Input<int>? GbPerCore { get; set; }

@@ -77,7 +77,7 @@ public final class MwsWorkspacesArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The compute mode for the workspace. When unset, a classic workspace is created, and both `credentials_id` and `storage_configuration_id` must be specified. When set to `SERVERLESS`, the resulting workspace is a serverless workspace, and `credentials_id` and `storage_configuration_id` must not be set. The only allowed value for this is `SERVERLESS`. Changing this field requires recreation of the workspace.
+     * The compute mode for the workspace. When unset, a classic workspace is created, and both `credentialsId` and `storageConfigurationId` must be specified. When set to `SERVERLESS`, the resulting workspace is a serverless workspace, and `credentialsId` and `storageConfigurationId` must not be set. The only allowed value for this is `SERVERLESS`. Changing this field requires recreation of the workspace.
      * 
      * &gt; Databricks strongly recommends using OAuth instead of PATs for user account client authentication and authorization due to the improved security
      * 
@@ -86,7 +86,7 @@ public final class MwsWorkspacesArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> computeMode;
 
     /**
-     * @return The compute mode for the workspace. When unset, a classic workspace is created, and both `credentials_id` and `storage_configuration_id` must be specified. When set to `SERVERLESS`, the resulting workspace is a serverless workspace, and `credentials_id` and `storage_configuration_id` must not be set. The only allowed value for this is `SERVERLESS`. Changing this field requires recreation of the workspace.
+     * @return The compute mode for the workspace. When unset, a classic workspace is created, and both `credentialsId` and `storageConfigurationId` must be specified. When set to `SERVERLESS`, the resulting workspace is a serverless workspace, and `credentialsId` and `storageConfigurationId` must not be set. The only allowed value for this is `SERVERLESS`. Changing this field requires recreation of the workspace.
      * 
      * &gt; Databricks strongly recommends using OAuth instead of PATs for user account client authentication and authorization due to the improved security
      * 
@@ -111,14 +111,14 @@ public final class MwsWorkspacesArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * `credentials_id` from credentials. This must not be specified when `compute_mode` is set to `SERVERLESS`.
+     * `credentialsId` from credentials. This must not be specified when `computeMode` is set to `SERVERLESS`.
      * 
      */
     @Import(name="credentialsId")
     private @Nullable Output<String> credentialsId;
 
     /**
-     * @return `credentials_id` from credentials. This must not be specified when `compute_mode` is set to `SERVERLESS`.
+     * @return `credentialsId` from credentials. This must not be specified when `computeMode` is set to `SERVERLESS`.
      * 
      */
     public Optional<Output<String>> credentialsId() {
@@ -126,14 +126,14 @@ public final class MwsWorkspacesArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The custom tags key-value pairing that is attached to this workspace. These tags will be applied to clusters automatically in addition to any `default_tags` or `custom_tags` on a cluster level. Please note it can take up to an hour for custom_tags to be set due to scheduling on Control Plane. After custom tags are applied, they can be modified however they can never be completely removed.
+     * The custom tags key-value pairing that is attached to this workspace. These tags will be applied to clusters automatically in addition to any `defaultTags` or `customTags` on a cluster level. Please note it can take up to an hour for customTags to be set due to scheduling on Control Plane. After custom tags are applied, they can be modified however they can never be completely removed.
      * 
      */
     @Import(name="customTags")
     private @Nullable Output<Map<String,String>> customTags;
 
     /**
-     * @return The custom tags key-value pairing that is attached to this workspace. These tags will be applied to clusters automatically in addition to any `default_tags` or `custom_tags` on a cluster level. Please note it can take up to an hour for custom_tags to be set due to scheduling on Control Plane. After custom tags are applied, they can be modified however they can never be completely removed.
+     * @return The custom tags key-value pairing that is attached to this workspace. These tags will be applied to clusters automatically in addition to any `defaultTags` or `customTags` on a cluster level. Please note it can take up to an hour for customTags to be set due to scheduling on Control Plane. After custom tags are applied, they can be modified however they can never be completely removed.
      * 
      */
     public Optional<Output<Map<String,String>>> customTags() {
@@ -142,19 +142,19 @@ public final class MwsWorkspacesArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @deprecated
-     * Use managed_services_customer_managed_key_id instead
+     * Use managedServicesCustomerManagedKeyId instead
      * 
      */
-    @Deprecated /* Use managed_services_customer_managed_key_id instead */
+    @Deprecated /* Use managedServicesCustomerManagedKeyId instead */
     @Import(name="customerManagedKeyId")
     private @Nullable Output<String> customerManagedKeyId;
 
     /**
      * @deprecated
-     * Use managed_services_customer_managed_key_id instead
+     * Use managedServicesCustomerManagedKeyId instead
      * 
      */
-    @Deprecated /* Use managed_services_customer_managed_key_id instead */
+    @Deprecated /* Use managedServicesCustomerManagedKeyId instead */
     public Optional<Output<String>> customerManagedKeyId() {
         return Optional.ofNullable(this.customerManagedKeyId);
     }
@@ -230,14 +230,14 @@ public final class MwsWorkspacesArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * `customer_managed_key_id` from customer managed keys with `use_cases` set to `MANAGED_SERVICES`. This is used to encrypt the workspace&#39;s notebook and secret data in the control plane.
+     * `customerManagedKeyId` from customer managed keys with `useCases` set to `MANAGED_SERVICES`. This is used to encrypt the workspace&#39;s notebook and secret data in the control plane.
      * 
      */
     @Import(name="managedServicesCustomerManagedKeyId")
     private @Nullable Output<String> managedServicesCustomerManagedKeyId;
 
     /**
-     * @return `customer_managed_key_id` from customer managed keys with `use_cases` set to `MANAGED_SERVICES`. This is used to encrypt the workspace&#39;s notebook and secret data in the control plane.
+     * @return `customerManagedKeyId` from customer managed keys with `useCases` set to `MANAGED_SERVICES`. This is used to encrypt the workspace&#39;s notebook and secret data in the control plane.
      * 
      */
     public Optional<Output<String>> managedServicesCustomerManagedKeyId() {
@@ -245,14 +245,14 @@ public final class MwsWorkspacesArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * `network_id` from networks.
+     * `networkId` from networks.
      * 
      */
     @Import(name="networkId")
     private @Nullable Output<String> networkId;
 
     /**
-     * @return `network_id` from networks.
+     * @return `networkId` from networks.
      * 
      */
     public Optional<Output<String>> networkId() {
@@ -290,14 +290,14 @@ public final class MwsWorkspacesArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * `storage_configuration_id` from storage configuration. This must not be specified when `compute_mode` is set to `SERVERLESS`.
+     * `storageConfigurationId` from storage configuration. This must not be specified when `computeMode` is set to `SERVERLESS`.
      * 
      */
     @Import(name="storageConfigurationId")
     private @Nullable Output<String> storageConfigurationId;
 
     /**
-     * @return `storage_configuration_id` from storage configuration. This must not be specified when `compute_mode` is set to `SERVERLESS`.
+     * @return `storageConfigurationId` from storage configuration. This must not be specified when `computeMode` is set to `SERVERLESS`.
      * 
      */
     public Optional<Output<String>> storageConfigurationId() {
@@ -305,14 +305,14 @@ public final class MwsWorkspacesArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * `customer_managed_key_id` from customer managed keys with `use_cases` set to `STORAGE`. This is used to encrypt the DBFS Storage &amp; Cluster Volumes.
+     * `customerManagedKeyId` from customer managed keys with `useCases` set to `STORAGE`. This is used to encrypt the DBFS Storage &amp; Cluster Volumes.
      * 
      */
     @Import(name="storageCustomerManagedKeyId")
     private @Nullable Output<String> storageCustomerManagedKeyId;
 
     /**
-     * @return `customer_managed_key_id` from customer managed keys with `use_cases` set to `STORAGE`. This is used to encrypt the DBFS Storage &amp; Cluster Volumes.
+     * @return `customerManagedKeyId` from customer managed keys with `useCases` set to `STORAGE`. This is used to encrypt the DBFS Storage &amp; Cluster Volumes.
      * 
      */
     public Optional<Output<String>> storageCustomerManagedKeyId() {
@@ -524,7 +524,7 @@ public final class MwsWorkspacesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param computeMode The compute mode for the workspace. When unset, a classic workspace is created, and both `credentials_id` and `storage_configuration_id` must be specified. When set to `SERVERLESS`, the resulting workspace is a serverless workspace, and `credentials_id` and `storage_configuration_id` must not be set. The only allowed value for this is `SERVERLESS`. Changing this field requires recreation of the workspace.
+         * @param computeMode The compute mode for the workspace. When unset, a classic workspace is created, and both `credentialsId` and `storageConfigurationId` must be specified. When set to `SERVERLESS`, the resulting workspace is a serverless workspace, and `credentialsId` and `storageConfigurationId` must not be set. The only allowed value for this is `SERVERLESS`. Changing this field requires recreation of the workspace.
          * 
          * &gt; Databricks strongly recommends using OAuth instead of PATs for user account client authentication and authorization due to the improved security
          * 
@@ -537,7 +537,7 @@ public final class MwsWorkspacesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param computeMode The compute mode for the workspace. When unset, a classic workspace is created, and both `credentials_id` and `storage_configuration_id` must be specified. When set to `SERVERLESS`, the resulting workspace is a serverless workspace, and `credentials_id` and `storage_configuration_id` must not be set. The only allowed value for this is `SERVERLESS`. Changing this field requires recreation of the workspace.
+         * @param computeMode The compute mode for the workspace. When unset, a classic workspace is created, and both `credentialsId` and `storageConfigurationId` must be specified. When set to `SERVERLESS`, the resulting workspace is a serverless workspace, and `credentialsId` and `storageConfigurationId` must not be set. The only allowed value for this is `SERVERLESS`. Changing this field requires recreation of the workspace.
          * 
          * &gt; Databricks strongly recommends using OAuth instead of PATs for user account client authentication and authorization due to the improved security
          * 
@@ -570,7 +570,7 @@ public final class MwsWorkspacesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param credentialsId `credentials_id` from credentials. This must not be specified when `compute_mode` is set to `SERVERLESS`.
+         * @param credentialsId `credentialsId` from credentials. This must not be specified when `computeMode` is set to `SERVERLESS`.
          * 
          * @return builder
          * 
@@ -581,7 +581,7 @@ public final class MwsWorkspacesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param credentialsId `credentials_id` from credentials. This must not be specified when `compute_mode` is set to `SERVERLESS`.
+         * @param credentialsId `credentialsId` from credentials. This must not be specified when `computeMode` is set to `SERVERLESS`.
          * 
          * @return builder
          * 
@@ -591,7 +591,7 @@ public final class MwsWorkspacesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param customTags The custom tags key-value pairing that is attached to this workspace. These tags will be applied to clusters automatically in addition to any `default_tags` or `custom_tags` on a cluster level. Please note it can take up to an hour for custom_tags to be set due to scheduling on Control Plane. After custom tags are applied, they can be modified however they can never be completely removed.
+         * @param customTags The custom tags key-value pairing that is attached to this workspace. These tags will be applied to clusters automatically in addition to any `defaultTags` or `customTags` on a cluster level. Please note it can take up to an hour for customTags to be set due to scheduling on Control Plane. After custom tags are applied, they can be modified however they can never be completely removed.
          * 
          * @return builder
          * 
@@ -602,7 +602,7 @@ public final class MwsWorkspacesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param customTags The custom tags key-value pairing that is attached to this workspace. These tags will be applied to clusters automatically in addition to any `default_tags` or `custom_tags` on a cluster level. Please note it can take up to an hour for custom_tags to be set due to scheduling on Control Plane. After custom tags are applied, they can be modified however they can never be completely removed.
+         * @param customTags The custom tags key-value pairing that is attached to this workspace. These tags will be applied to clusters automatically in addition to any `defaultTags` or `customTags` on a cluster level. Please note it can take up to an hour for customTags to be set due to scheduling on Control Plane. After custom tags are applied, they can be modified however they can never be completely removed.
          * 
          * @return builder
          * 
@@ -615,10 +615,10 @@ public final class MwsWorkspacesArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Use managed_services_customer_managed_key_id instead
+         * Use managedServicesCustomerManagedKeyId instead
          * 
          */
-        @Deprecated /* Use managed_services_customer_managed_key_id instead */
+        @Deprecated /* Use managedServicesCustomerManagedKeyId instead */
         public Builder customerManagedKeyId(@Nullable Output<String> customerManagedKeyId) {
             $.customerManagedKeyId = customerManagedKeyId;
             return this;
@@ -628,10 +628,10 @@ public final class MwsWorkspacesArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Use managed_services_customer_managed_key_id instead
+         * Use managedServicesCustomerManagedKeyId instead
          * 
          */
-        @Deprecated /* Use managed_services_customer_managed_key_id instead */
+        @Deprecated /* Use managedServicesCustomerManagedKeyId instead */
         public Builder customerManagedKeyId(String customerManagedKeyId) {
             return customerManagedKeyId(Output.of(customerManagedKeyId));
         }
@@ -731,7 +731,7 @@ public final class MwsWorkspacesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param managedServicesCustomerManagedKeyId `customer_managed_key_id` from customer managed keys with `use_cases` set to `MANAGED_SERVICES`. This is used to encrypt the workspace&#39;s notebook and secret data in the control plane.
+         * @param managedServicesCustomerManagedKeyId `customerManagedKeyId` from customer managed keys with `useCases` set to `MANAGED_SERVICES`. This is used to encrypt the workspace&#39;s notebook and secret data in the control plane.
          * 
          * @return builder
          * 
@@ -742,7 +742,7 @@ public final class MwsWorkspacesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param managedServicesCustomerManagedKeyId `customer_managed_key_id` from customer managed keys with `use_cases` set to `MANAGED_SERVICES`. This is used to encrypt the workspace&#39;s notebook and secret data in the control plane.
+         * @param managedServicesCustomerManagedKeyId `customerManagedKeyId` from customer managed keys with `useCases` set to `MANAGED_SERVICES`. This is used to encrypt the workspace&#39;s notebook and secret data in the control plane.
          * 
          * @return builder
          * 
@@ -752,7 +752,7 @@ public final class MwsWorkspacesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param networkId `network_id` from networks.
+         * @param networkId `networkId` from networks.
          * 
          * @return builder
          * 
@@ -763,7 +763,7 @@ public final class MwsWorkspacesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param networkId `network_id` from networks.
+         * @param networkId `networkId` from networks.
          * 
          * @return builder
          * 
@@ -815,7 +815,7 @@ public final class MwsWorkspacesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param storageConfigurationId `storage_configuration_id` from storage configuration. This must not be specified when `compute_mode` is set to `SERVERLESS`.
+         * @param storageConfigurationId `storageConfigurationId` from storage configuration. This must not be specified when `computeMode` is set to `SERVERLESS`.
          * 
          * @return builder
          * 
@@ -826,7 +826,7 @@ public final class MwsWorkspacesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param storageConfigurationId `storage_configuration_id` from storage configuration. This must not be specified when `compute_mode` is set to `SERVERLESS`.
+         * @param storageConfigurationId `storageConfigurationId` from storage configuration. This must not be specified when `computeMode` is set to `SERVERLESS`.
          * 
          * @return builder
          * 
@@ -836,7 +836,7 @@ public final class MwsWorkspacesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param storageCustomerManagedKeyId `customer_managed_key_id` from customer managed keys with `use_cases` set to `STORAGE`. This is used to encrypt the DBFS Storage &amp; Cluster Volumes.
+         * @param storageCustomerManagedKeyId `customerManagedKeyId` from customer managed keys with `useCases` set to `STORAGE`. This is used to encrypt the DBFS Storage &amp; Cluster Volumes.
          * 
          * @return builder
          * 
@@ -847,7 +847,7 @@ public final class MwsWorkspacesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param storageCustomerManagedKeyId `customer_managed_key_id` from customer managed keys with `use_cases` set to `STORAGE`. This is used to encrypt the DBFS Storage &amp; Cluster Volumes.
+         * @param storageCustomerManagedKeyId `customerManagedKeyId` from customer managed keys with `useCases` set to `STORAGE`. This is used to encrypt the DBFS Storage &amp; Cluster Volumes.
          * 
          * @return builder
          * 

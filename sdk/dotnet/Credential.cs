@@ -14,7 +14,7 @@ namespace Pulumi.Databricks
     /// 
     /// &gt; This resource can only be used with a workspace-level provider!
     /// 
-    /// The type of credential to be created is determined by the `purpose` field, which should be either `SERVICE` or `STORAGE`.
+    /// The type of credential to be created is determined by the `Purpose` field, which should be either `SERVICE` or `STORAGE`.
     /// The caller must be a metastore admin or have the metastore privilege `CREATE_STORAGE_CREDENTIAL` for storage credentials, or `CREATE_SERVICE_CREDENTIAL` for service credentials. The user who creates the credential can delegate ownership to another user or group to manage permissions on it
     /// 
     /// On AWS, the IAM role for a credential requires a trust policy. See [documentation](https://docs.databricks.com/en/connect/unity-catalog/cloud-services/service-credentials.html#step-1-create-an-iam-role) for more details. The data source databricks.getAwsUnityCatalogAssumeRolePolicy can be used to create the necessary AWS Unity Catalog assume role policy.
@@ -208,7 +208,7 @@ namespace Pulumi.Databricks
         /// <summary>
         /// Whether the credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically restrict access to only from the current workspace.
         /// 
-        /// `aws_iam_role` optional configuration block for credential details for AWS:
+        /// `AwsIamRole` optional configuration block for credential details for AWS:
         /// </summary>
         [Output("isolationMode")]
         public Output<string> IsolationMode { get; private set; } = null!;
@@ -223,7 +223,7 @@ namespace Pulumi.Databricks
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Username/groupname/sp application_id of the credential owner.
+        /// Username/groupname/sp ApplicationId of the credential owner.
         /// </summary>
         [Output("owner")]
         public Output<string> Owner { get; private set; } = null!;
@@ -340,7 +340,7 @@ namespace Pulumi.Databricks
         /// <summary>
         /// Whether the credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically restrict access to only from the current workspace.
         /// 
-        /// `aws_iam_role` optional configuration block for credential details for AWS:
+        /// `AwsIamRole` optional configuration block for credential details for AWS:
         /// </summary>
         [Input("isolationMode")]
         public Input<string>? IsolationMode { get; set; }
@@ -355,7 +355,7 @@ namespace Pulumi.Databricks
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Username/groupname/sp application_id of the credential owner.
+        /// Username/groupname/sp ApplicationId of the credential owner.
         /// </summary>
         [Input("owner")]
         public Input<string>? Owner { get; set; }
@@ -440,7 +440,7 @@ namespace Pulumi.Databricks
         /// <summary>
         /// Whether the credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically restrict access to only from the current workspace.
         /// 
-        /// `aws_iam_role` optional configuration block for credential details for AWS:
+        /// `AwsIamRole` optional configuration block for credential details for AWS:
         /// </summary>
         [Input("isolationMode")]
         public Input<string>? IsolationMode { get; set; }
@@ -455,7 +455,7 @@ namespace Pulumi.Databricks
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Username/groupname/sp application_id of the credential owner.
+        /// Username/groupname/sp ApplicationId of the credential owner.
         /// </summary>
         [Input("owner")]
         public Input<string>? Owner { get; set; }

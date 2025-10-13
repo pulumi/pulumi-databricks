@@ -19,7 +19,7 @@ namespace Pulumi.Databricks
         /// 
         /// ## Example Usage
         /// 
-        /// Referring to a quality monitor by uc object type (currently only support `schema`) and object id:
+        /// Referring to a quality monitor by uc object type (currently only support `Schema`) and object id:
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -54,7 +54,7 @@ namespace Pulumi.Databricks
         /// 
         /// ## Example Usage
         /// 
-        /// Referring to a quality monitor by uc object type (currently only support `schema`) and object id:
+        /// Referring to a quality monitor by uc object type (currently only support `Schema`) and object id:
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -89,7 +89,7 @@ namespace Pulumi.Databricks
         /// 
         /// ## Example Usage
         /// 
-        /// Referring to a quality monitor by uc object type (currently only support `schema`) and object id:
+        /// Referring to a quality monitor by uc object type (currently only support `Schema`) and object id:
         /// 
         /// ```csharp
         /// using System.Collections.Generic;

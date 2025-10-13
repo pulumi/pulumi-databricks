@@ -299,7 +299,7 @@ public class Credential extends com.pulumi.resources.CustomResource {
     /**
      * Whether the credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically restrict access to only from the current workspace.
      * 
-     * `aws_iam_role` optional configuration block for credential details for AWS:
+     * `awsIamRole` optional configuration block for credential details for AWS:
      * 
      */
     @Export(name="isolationMode", refs={String.class}, tree="[0]")
@@ -308,7 +308,7 @@ public class Credential extends com.pulumi.resources.CustomResource {
     /**
      * @return Whether the credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically restrict access to only from the current workspace.
      * 
-     * `aws_iam_role` optional configuration block for credential details for AWS:
+     * `awsIamRole` optional configuration block for credential details for AWS:
      * 
      */
     public Output<String> isolationMode() {
@@ -335,14 +335,14 @@ public class Credential extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Username/groupname/sp application_id of the credential owner.
+     * Username/groupname/sp applicationId of the credential owner.
      * 
      */
     @Export(name="owner", refs={String.class}, tree="[0]")
     private Output<String> owner;
 
     /**
-     * @return Username/groupname/sp application_id of the credential owner.
+     * @return Username/groupname/sp applicationId of the credential owner.
      * 
      */
     public Output<String> owner() {

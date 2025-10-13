@@ -54,7 +54,7 @@ public final class GetClusterClusterInfoSpec {
     private @Nullable String dataSecurityMode;
     private @Nullable GetClusterClusterInfoSpecDockerImage dockerImage;
     /**
-     * @return similar to `instance_pool_id`, but for driver node.
+     * @return similar to `instancePoolId`, but for driver node.
      * 
      */
     private String driverInstancePoolId;
@@ -185,7 +185,7 @@ public final class GetClusterClusterInfoSpec {
         return Optional.ofNullable(this.dockerImage);
     }
     /**
-     * @return similar to `instance_pool_id`, but for driver node.
+     * @return similar to `instancePoolId`, but for driver node.
      * 
      */
     public String driverInstancePoolId() {

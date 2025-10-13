@@ -35,14 +35,14 @@ namespace Pulumi.Databricks
     {
         /// <summary>
         /// Collaborator alias of the author covered by the rule.
-        /// Only one of `author_collaborator_alias` and `author_scope` can be set
+        /// Only one of `AuthorCollaboratorAlias` and `AuthorScope` can be set
         /// </summary>
         [Output("authorCollaboratorAlias")]
         public Output<string?> AuthorCollaboratorAlias { get; private set; } = null!;
 
         /// <summary>
         /// Scope of authors covered by the rule.
-        /// Only one of `author_collaborator_alias` and `author_scope` can be set. Possible values are: `ANY_AUTHOR`
+        /// Only one of `AuthorCollaboratorAlias` and `AuthorScope` can be set. Possible values are: `ANY_AUTHOR`
         /// </summary>
         [Output("authorScope")]
         public Output<string?> AuthorScope { get; private set; } = null!;
@@ -131,14 +131,14 @@ namespace Pulumi.Databricks
     {
         /// <summary>
         /// Collaborator alias of the author covered by the rule.
-        /// Only one of `author_collaborator_alias` and `author_scope` can be set
+        /// Only one of `AuthorCollaboratorAlias` and `AuthorScope` can be set
         /// </summary>
         [Input("authorCollaboratorAlias")]
         public Input<string>? AuthorCollaboratorAlias { get; set; }
 
         /// <summary>
         /// Scope of authors covered by the rule.
-        /// Only one of `author_collaborator_alias` and `author_scope` can be set. Possible values are: `ANY_AUTHOR`
+        /// Only one of `AuthorCollaboratorAlias` and `AuthorScope` can be set. Possible values are: `ANY_AUTHOR`
         /// </summary>
         [Input("authorScope")]
         public Input<string>? AuthorScope { get; set; }
@@ -171,14 +171,14 @@ namespace Pulumi.Databricks
     {
         /// <summary>
         /// Collaborator alias of the author covered by the rule.
-        /// Only one of `author_collaborator_alias` and `author_scope` can be set
+        /// Only one of `AuthorCollaboratorAlias` and `AuthorScope` can be set
         /// </summary>
         [Input("authorCollaboratorAlias")]
         public Input<string>? AuthorCollaboratorAlias { get; set; }
 
         /// <summary>
         /// Scope of authors covered by the rule.
-        /// Only one of `author_collaborator_alias` and `author_scope` can be set. Possible values are: `ANY_AUTHOR`
+        /// Only one of `AuthorCollaboratorAlias` and `AuthorScope` can be set. Possible values are: `ANY_AUTHOR`
         /// </summary>
         [Input("authorScope")]
         public Input<string>? AuthorScope { get; set; }

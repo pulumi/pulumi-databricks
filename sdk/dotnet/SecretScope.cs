@@ -74,7 +74,7 @@ namespace Pulumi.Databricks
         public Output<string> BackendType { get; private set; } = null!;
 
         /// <summary>
-        /// The principal with the only possible value `users` that is initially granted `MANAGE` permission to the created scope.  If it's omitted, then the databricks.SecretAcl with `MANAGE` permission applied to the scope is assigned to the API request issuer's user identity (see [documentation](https://docs.databricks.com/dev-tools/api/latest/secrets.html#create-secret-scope)). This part of the state cannot be imported.
+        /// The principal with the only possible value `Users` that is initially granted `MANAGE` permission to the created scope.  If it's omitted, then the databricks.SecretAcl with `MANAGE` permission applied to the scope is assigned to the API request issuer's user identity (see [documentation](https://docs.databricks.com/dev-tools/api/latest/secrets.html#create-secret-scope)). This part of the state cannot be imported.
         /// </summary>
         [Output("initialManagePrincipal")]
         public Output<string?> InitialManagePrincipal { get; private set; } = null!;
@@ -141,7 +141,7 @@ namespace Pulumi.Databricks
         public Input<string>? BackendType { get; set; }
 
         /// <summary>
-        /// The principal with the only possible value `users` that is initially granted `MANAGE` permission to the created scope.  If it's omitted, then the databricks.SecretAcl with `MANAGE` permission applied to the scope is assigned to the API request issuer's user identity (see [documentation](https://docs.databricks.com/dev-tools/api/latest/secrets.html#create-secret-scope)). This part of the state cannot be imported.
+        /// The principal with the only possible value `Users` that is initially granted `MANAGE` permission to the created scope.  If it's omitted, then the databricks.SecretAcl with `MANAGE` permission applied to the scope is assigned to the API request issuer's user identity (see [documentation](https://docs.databricks.com/dev-tools/api/latest/secrets.html#create-secret-scope)). This part of the state cannot be imported.
         /// </summary>
         [Input("initialManagePrincipal")]
         public Input<string>? InitialManagePrincipal { get; set; }
@@ -170,7 +170,7 @@ namespace Pulumi.Databricks
         public Input<string>? BackendType { get; set; }
 
         /// <summary>
-        /// The principal with the only possible value `users` that is initially granted `MANAGE` permission to the created scope.  If it's omitted, then the databricks.SecretAcl with `MANAGE` permission applied to the scope is assigned to the API request issuer's user identity (see [documentation](https://docs.databricks.com/dev-tools/api/latest/secrets.html#create-secret-scope)). This part of the state cannot be imported.
+        /// The principal with the only possible value `Users` that is initially granted `MANAGE` permission to the created scope.  If it's omitted, then the databricks.SecretAcl with `MANAGE` permission applied to the scope is assigned to the API request issuer's user identity (see [documentation](https://docs.databricks.com/dev-tools/api/latest/secrets.html#create-secret-scope)). This part of the state cannot be imported.
         /// </summary>
         [Input("initialManagePrincipal")]
         public Input<string>? InitialManagePrincipal { get; set; }

@@ -50,14 +50,14 @@ public final class ModelServingConfigServedModelArgs extends com.pulumi.resource
     }
 
     /**
-     * The maximum provisioned concurrency that the endpoint can scale up to. Conflicts with `workload_size`.
+     * The maximum provisioned concurrency that the endpoint can scale up to. Conflicts with `workloadSize`.
      * 
      */
     @Import(name="maxProvisionedConcurrency")
     private @Nullable Output<Integer> maxProvisionedConcurrency;
 
     /**
-     * @return The maximum provisioned concurrency that the endpoint can scale up to. Conflicts with `workload_size`.
+     * @return The maximum provisioned concurrency that the endpoint can scale up to. Conflicts with `workloadSize`.
      * 
      */
     public Optional<Output<Integer>> maxProvisionedConcurrency() {
@@ -80,14 +80,14 @@ public final class ModelServingConfigServedModelArgs extends com.pulumi.resource
     }
 
     /**
-     * The minimum provisioned concurrency that the endpoint can scale down to. Conflicts with `workload_size`.
+     * The minimum provisioned concurrency that the endpoint can scale down to. Conflicts with `workloadSize`.
      * 
      */
     @Import(name="minProvisionedConcurrency")
     private @Nullable Output<Integer> minProvisionedConcurrency;
 
     /**
-     * @return The minimum provisioned concurrency that the endpoint can scale down to. Conflicts with `workload_size`.
+     * @return The minimum provisioned concurrency that the endpoint can scale down to. Conflicts with `workloadSize`.
      * 
      */
     public Optional<Output<Integer>> minProvisionedConcurrency() {
@@ -285,7 +285,7 @@ public final class ModelServingConfigServedModelArgs extends com.pulumi.resource
         }
 
         /**
-         * @param maxProvisionedConcurrency The maximum provisioned concurrency that the endpoint can scale up to. Conflicts with `workload_size`.
+         * @param maxProvisionedConcurrency The maximum provisioned concurrency that the endpoint can scale up to. Conflicts with `workloadSize`.
          * 
          * @return builder
          * 
@@ -296,7 +296,7 @@ public final class ModelServingConfigServedModelArgs extends com.pulumi.resource
         }
 
         /**
-         * @param maxProvisionedConcurrency The maximum provisioned concurrency that the endpoint can scale up to. Conflicts with `workload_size`.
+         * @param maxProvisionedConcurrency The maximum provisioned concurrency that the endpoint can scale up to. Conflicts with `workloadSize`.
          * 
          * @return builder
          * 
@@ -327,7 +327,7 @@ public final class ModelServingConfigServedModelArgs extends com.pulumi.resource
         }
 
         /**
-         * @param minProvisionedConcurrency The minimum provisioned concurrency that the endpoint can scale down to. Conflicts with `workload_size`.
+         * @param minProvisionedConcurrency The minimum provisioned concurrency that the endpoint can scale down to. Conflicts with `workloadSize`.
          * 
          * @return builder
          * 
@@ -338,7 +338,7 @@ public final class ModelServingConfigServedModelArgs extends com.pulumi.resource
         }
 
         /**
-         * @param minProvisionedConcurrency The minimum provisioned concurrency that the endpoint can scale down to. Conflicts with `workload_size`.
+         * @param minProvisionedConcurrency The minimum provisioned concurrency that the endpoint can scale down to. Conflicts with `workloadSize`.
          * 
          * @return builder
          * 

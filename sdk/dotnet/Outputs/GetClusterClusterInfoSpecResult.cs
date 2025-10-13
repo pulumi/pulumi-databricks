@@ -37,7 +37,7 @@ namespace Pulumi.Databricks.Outputs
         public readonly string? DataSecurityMode;
         public readonly Outputs.GetClusterClusterInfoSpecDockerImageResult? DockerImage;
         /// <summary>
-        /// similar to `instance_pool_id`, but for driver node.
+        /// similar to `InstancePoolId`, but for driver node.
         /// </summary>
         public readonly string DriverInstancePoolId;
         /// <summary>

@@ -48,14 +48,14 @@ public final class MlflowWebhookHttpUrlSpecArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Shared secret required for HMAC encoding payload. The HMAC-encoded payload will be sent in the header as `X-Databricks-Signature: encoded_payload`.
+     * Shared secret required for HMAC encoding payload. The HMAC-encoded payload will be sent in the header as `X-Databricks-Signature: encodedPayload`.
      * 
      */
     @Import(name="secret")
     private @Nullable Output<String> secret;
 
     /**
-     * @return Shared secret required for HMAC encoding payload. The HMAC-encoded payload will be sent in the header as `X-Databricks-Signature: encoded_payload`.
+     * @return Shared secret required for HMAC encoding payload. The HMAC-encoded payload will be sent in the header as `X-Databricks-Signature: encodedPayload`.
      * 
      */
     public Optional<Output<String>> secret() {
@@ -147,7 +147,7 @@ public final class MlflowWebhookHttpUrlSpecArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param secret Shared secret required for HMAC encoding payload. The HMAC-encoded payload will be sent in the header as `X-Databricks-Signature: encoded_payload`.
+         * @param secret Shared secret required for HMAC encoding payload. The HMAC-encoded payload will be sent in the header as `X-Databricks-Signature: encodedPayload`.
          * 
          * @return builder
          * 
@@ -158,7 +158,7 @@ public final class MlflowWebhookHttpUrlSpecArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param secret Shared secret required for HMAC encoding payload. The HMAC-encoded payload will be sent in the header as `X-Databricks-Signature: encoded_payload`.
+         * @param secret Shared secret required for HMAC encoding payload. The HMAC-encoded payload will be sent in the header as `X-Databricks-Signature: encodedPayload`.
          * 
          * @return builder
          * 

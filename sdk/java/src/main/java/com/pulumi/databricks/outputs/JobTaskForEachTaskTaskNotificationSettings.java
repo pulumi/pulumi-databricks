@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class JobTaskForEachTaskTaskNotificationSettings {
     /**
-     * @return (Bool) do not send notifications to recipients specified in `on_start` for the retried runs and do not send notifications to recipients specified in `on_failure` until the last retry of the run.
+     * @return (Bool) do not send notifications to recipients specified in `onStart` for the retried runs and do not send notifications to recipients specified in `onFailure` until the last retry of the run.
      * 
      */
     private @Nullable Boolean alertOnLastAttempt;
@@ -31,7 +31,7 @@ public final class JobTaskForEachTaskTaskNotificationSettings {
 
     private JobTaskForEachTaskTaskNotificationSettings() {}
     /**
-     * @return (Bool) do not send notifications to recipients specified in `on_start` for the retried runs and do not send notifications to recipients specified in `on_failure` until the last retry of the run.
+     * @return (Bool) do not send notifications to recipients specified in `onStart` for the retried runs and do not send notifications to recipients specified in `onFailure` until the last retry of the run.
      * 
      */
     public Optional<Boolean> alertOnLastAttempt() {

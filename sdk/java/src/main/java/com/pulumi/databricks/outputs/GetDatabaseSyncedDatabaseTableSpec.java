@@ -22,12 +22,12 @@ public final class GetDatabaseSyncedDatabaseTableSpec {
      */
     private Boolean createDatabaseObjectsIfMissing;
     /**
-     * @return (string) - At most one of existing_pipeline_id and new_pipeline_spec should be defined.
+     * @return (string) - At most one of existingPipelineId and newPipelineSpec should be defined.
      * 
      */
     private String existingPipelineId;
     /**
-     * @return (NewPipelineSpec) - At most one of existing_pipeline_id and new_pipeline_spec should be defined.
+     * @return (NewPipelineSpec) - At most one of existingPipelineId and newPipelineSpec should be defined.
      * 
      */
     private GetDatabaseSyncedDatabaseTableSpecNewPipelineSpec newPipelineSpec;
@@ -62,14 +62,14 @@ public final class GetDatabaseSyncedDatabaseTableSpec {
         return this.createDatabaseObjectsIfMissing;
     }
     /**
-     * @return (string) - At most one of existing_pipeline_id and new_pipeline_spec should be defined.
+     * @return (string) - At most one of existingPipelineId and newPipelineSpec should be defined.
      * 
      */
     public String existingPipelineId() {
         return this.existingPipelineId;
     }
     /**
-     * @return (NewPipelineSpec) - At most one of existing_pipeline_id and new_pipeline_spec should be defined.
+     * @return (NewPipelineSpec) - At most one of existingPipelineId and newPipelineSpec should be defined.
      * 
      */
     public GetDatabaseSyncedDatabaseTableSpecNewPipelineSpec newPipelineSpec() {

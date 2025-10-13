@@ -76,8 +76,8 @@ public final class GetAlertV2Result {
     /**
      * @return (AlertV2RunAs) - Specifies the identity that will be used to run the alert.
      * This field allows you to configure alerts to run as a specific user or service principal.
-     * - For user identity: Set `user_name` to the email of an active workspace user. Users can only set this to their own email.
-     * - For service principal: Set `service_principal_name` to the application ID. Requires the `servicePrincipal/user` role.
+     * - For user identity: Set `userName` to the email of an active workspace user. Users can only set this to their own email.
+     * - For service principal: Set `servicePrincipalName` to the application ID. Requires the `servicePrincipal/user` role.
      *   If not specified, the alert will run as the request user
      * 
      */
@@ -85,7 +85,7 @@ public final class GetAlertV2Result {
     /**
      * @return (string, deprecated) - The run as username or application ID of service principal.
      * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
-     * Deprecated: Use `run_as` field instead. This field will be removed in a future release
+     * Deprecated: Use `runAs` field instead. This field will be removed in a future release
      * 
      */
     private @Nullable String runAsUserName;
@@ -189,8 +189,8 @@ public final class GetAlertV2Result {
     /**
      * @return (AlertV2RunAs) - Specifies the identity that will be used to run the alert.
      * This field allows you to configure alerts to run as a specific user or service principal.
-     * - For user identity: Set `user_name` to the email of an active workspace user. Users can only set this to their own email.
-     * - For service principal: Set `service_principal_name` to the application ID. Requires the `servicePrincipal/user` role.
+     * - For user identity: Set `userName` to the email of an active workspace user. Users can only set this to their own email.
+     * - For service principal: Set `servicePrincipalName` to the application ID. Requires the `servicePrincipal/user` role.
      *   If not specified, the alert will run as the request user
      * 
      */
@@ -200,7 +200,7 @@ public final class GetAlertV2Result {
     /**
      * @return (string, deprecated) - The run as username or application ID of service principal.
      * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
-     * Deprecated: Use `run_as` field instead. This field will be removed in a future release
+     * Deprecated: Use `runAs` field instead. This field will be removed in a future release
      * 
      */
     public Optional<String> runAsUserName() {

@@ -17,7 +17,7 @@ public final class GetCleanRoomAutoApprovalRuleArgs extends com.pulumi.resources
 
     /**
      * (string) - Collaborator alias of the author covered by the rule.
-     * Only one of `author_collaborator_alias` and `author_scope` can be set
+     * Only one of `authorCollaboratorAlias` and `authorScope` can be set
      * 
      */
     @Import(name="authorCollaboratorAlias")
@@ -25,7 +25,7 @@ public final class GetCleanRoomAutoApprovalRuleArgs extends com.pulumi.resources
 
     /**
      * @return (string) - Collaborator alias of the author covered by the rule.
-     * Only one of `author_collaborator_alias` and `author_scope` can be set
+     * Only one of `authorCollaboratorAlias` and `authorScope` can be set
      * 
      */
     public Optional<Output<String>> authorCollaboratorAlias() {
@@ -34,7 +34,7 @@ public final class GetCleanRoomAutoApprovalRuleArgs extends com.pulumi.resources
 
     /**
      * (string) - Scope of authors covered by the rule.
-     * Only one of `author_collaborator_alias` and `author_scope` can be set. Possible values are: `ANY_AUTHOR`
+     * Only one of `authorCollaboratorAlias` and `authorScope` can be set. Possible values are: `ANY_AUTHOR`
      * 
      */
     @Import(name="authorScope")
@@ -42,7 +42,7 @@ public final class GetCleanRoomAutoApprovalRuleArgs extends com.pulumi.resources
 
     /**
      * @return (string) - Scope of authors covered by the rule.
-     * Only one of `author_collaborator_alias` and `author_scope` can be set. Possible values are: `ANY_AUTHOR`
+     * Only one of `authorCollaboratorAlias` and `authorScope` can be set. Possible values are: `ANY_AUTHOR`
      * 
      */
     public Optional<Output<String>> authorScope() {
@@ -124,7 +124,7 @@ public final class GetCleanRoomAutoApprovalRuleArgs extends com.pulumi.resources
 
         /**
          * @param authorCollaboratorAlias (string) - Collaborator alias of the author covered by the rule.
-         * Only one of `author_collaborator_alias` and `author_scope` can be set
+         * Only one of `authorCollaboratorAlias` and `authorScope` can be set
          * 
          * @return builder
          * 
@@ -136,7 +136,7 @@ public final class GetCleanRoomAutoApprovalRuleArgs extends com.pulumi.resources
 
         /**
          * @param authorCollaboratorAlias (string) - Collaborator alias of the author covered by the rule.
-         * Only one of `author_collaborator_alias` and `author_scope` can be set
+         * Only one of `authorCollaboratorAlias` and `authorScope` can be set
          * 
          * @return builder
          * 
@@ -147,7 +147,7 @@ public final class GetCleanRoomAutoApprovalRuleArgs extends com.pulumi.resources
 
         /**
          * @param authorScope (string) - Scope of authors covered by the rule.
-         * Only one of `author_collaborator_alias` and `author_scope` can be set. Possible values are: `ANY_AUTHOR`
+         * Only one of `authorCollaboratorAlias` and `authorScope` can be set. Possible values are: `ANY_AUTHOR`
          * 
          * @return builder
          * 
@@ -159,7 +159,7 @@ public final class GetCleanRoomAutoApprovalRuleArgs extends com.pulumi.resources
 
         /**
          * @param authorScope (string) - Scope of authors covered by the rule.
-         * Only one of `author_collaborator_alias` and `author_scope` can be set. Possible values are: `ANY_AUTHOR`
+         * Only one of `authorCollaboratorAlias` and `authorScope` can be set. Possible values are: `ANY_AUTHOR`
          * 
          * @return builder
          * 
