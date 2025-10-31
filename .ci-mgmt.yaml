@@ -10,22 +10,6 @@ env:
 providerDefaultBranch: main
 makeTemplate: bridged
 allowMissingDocs: true
-plugins:
-    - name: terraform
-      version: "1.0.16"
-      kind: converter
-    - name: random
-      version: "4.8.2"
-    - name: aws
-      version: "6.31.0"
-    - name: time
-      version: "0.0.13"
-    - name: azure
-      version: "5.66.1"
-    - name: docker
-      version: "4.5.1"
-    - name: std
-      version: "1.6.2"
 pulumiConvert: 1
 registryDocs: true
 license:
