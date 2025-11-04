@@ -32,6 +32,7 @@ import (
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfgen"
+	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/walk"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
@@ -243,28 +244,7 @@ func Provider() tfbridge.ProviderInfo {
 					return attr(state, "objectId", "objectType"), nil
 				},
 			},
-			"databricks_clean_room_auto_approval_rule": {
-				ComputeID: tfbridge.DelegateIDField(
-					"ruleId",
-					"databricks",
-					"https://github.com/pulumi/pulumi-databricks",
-				),
-			},
 			"databricks_database_database_catalog": {
-				ComputeID: tfbridge.DelegateIDField(
-					"name",
-					"databricks",
-					"https://github.com/pulumi/pulumi-databricks",
-				),
-			},
-			"databricks_clean_room_asset": {
-				ComputeID: tfbridge.DelegateIDField(
-					"cleanRoomName",
-					"databricks",
-					"https://github.com/pulumi/pulumi-databricks",
-				),
-			},
-			"databricks_clean_rooms_clean_room": {
 				ComputeID: tfbridge.DelegateIDField(
 					"name",
 					"databricks",
@@ -374,6 +354,49 @@ func Provider() tfbridge.ProviderInfo {
 
 	prov.SetAutonaming(255, "-")
 	tfbridge.MustTraverseProperties(&prov, "workspace-id", setWorkspaceIDToString)
+
+	// moveProviderConfigCallback re-roots overrides that ended up on provider_config.Fields.
+	// PF single-nested blocks are exposed as TypeMap in the shim, so the traversal we run for
+	// workspace_id stops at `.provider_config.workspace_id`. That records overrides directly on
+	// SchemaInfo.Fields, but the bridge validator expects collection-like shapes to keep custom
+	// fields under Elem.Fields. This helper lifts any overrides we recorded back onto the Elem so
+	// tfgen passes validation while still preserving existing Elem overrides (if we had any).
+	moveProviderConfigCallback := func(res shim.Resource, info *tfbridge.SchemaInfo) bool {
+		if info == nil || len(info.Fields) == 0 {
+			return true
+		}
+		schema, ok := res.Schema().GetOk("provider_config")
+		if !ok || schema.Type() != shim.TypeMap {
+			return true
+		}
+		if info.Elem == nil {
+			info.Elem = &tfbridge.SchemaInfo{}
+		}
+		if info.Elem.Fields == nil {
+			info.Elem.Fields = map[string]*tfbridge.SchemaInfo{}
+		}
+		for k, v := range info.Fields {
+			info.Elem.Fields[k] = v
+		}
+		info.Fields = nil
+		return true
+	}
+
+	prov.P.ResourcesMap().Range(func(key string, value shim.Resource) bool {
+		if resInfo, ok := prov.Resources[key]; ok {
+			if pc, ok := resInfo.Fields["provider_config"]; ok {
+				return moveProviderConfigCallback(value, pc)
+			}
+		}
+		return true
+	})
+
+	prov.P.DataSourcesMap().Range(func(key string, value shim.Resource) bool {
+		if dsInfo, ok := prov.DataSources[key]; ok {
+			moveProviderConfigCallback(value, dsInfo.Fields["provider_config"])
+		}
+		return true
+	})
 
 	prov.MustApplyAutoAliases()
 

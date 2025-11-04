@@ -300,142 +300,6 @@
                 "current": "databricks:index/catalogWorkspaceBinding:CatalogWorkspaceBinding",
                 "majorVersion": 1
             },
-            "databricks_clean_room_asset": {
-                "current": "databricks:index/cleanRoomAsset:CleanRoomAsset",
-                "majorVersion": 1,
-                "fields": {
-                    "foreign_table": {
-                        "fields": {
-                            "columns": {
-                                "maxItemsOne": false,
-                                "elem": {
-                                    "fields": {
-                                        "mask": {
-                                            "fields": {
-                                                "using_column_names": {
-                                                    "maxItemsOne": false
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "notebook": {
-                        "fields": {
-                            "reviews": {
-                                "maxItemsOne": false
-                            },
-                            "runner_collaborator_aliases": {
-                                "maxItemsOne": false
-                            }
-                        }
-                    },
-                    "table": {
-                        "fields": {
-                            "columns": {
-                                "maxItemsOne": false,
-                                "elem": {
-                                    "fields": {
-                                        "mask": {
-                                            "fields": {
-                                                "using_column_names": {
-                                                    "maxItemsOne": false
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "table_local_details": {
-                        "fields": {
-                            "partitions": {
-                                "maxItemsOne": false,
-                                "elem": {
-                                    "fields": {
-                                        "value": {
-                                            "maxItemsOne": false
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "view": {
-                        "fields": {
-                            "columns": {
-                                "maxItemsOne": false,
-                                "elem": {
-                                    "fields": {
-                                        "mask": {
-                                            "fields": {
-                                                "using_column_names": {
-                                                    "maxItemsOne": false
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            },
-            "databricks_clean_room_auto_approval_rule": {
-                "current": "databricks:index/cleanRoomAutoApprovalRule:CleanRoomAutoApprovalRule",
-                "majorVersion": 1
-            },
-            "databricks_clean_rooms_clean_room": {
-                "current": "databricks:index/cleanRoomsCleanRoom:CleanRoomsCleanRoom",
-                "majorVersion": 1,
-                "fields": {
-                    "remote_detailed_info": {
-                        "fields": {
-                            "collaborators": {
-                                "maxItemsOne": false
-                            },
-                            "compliance_security_profile": {
-                                "fields": {
-                                    "compliance_standards": {
-                                        "maxItemsOne": false
-                                    }
-                                }
-                            },
-                            "egress_network_policy": {
-                                "fields": {
-                                    "internet_access": {
-                                        "fields": {
-                                            "allowed_internet_destinations": {
-                                                "maxItemsOne": false
-                                            },
-                                            "allowed_storage_destinations": {
-                                                "maxItemsOne": false,
-                                                "elem": {
-                                                    "fields": {
-                                                        "allowed_paths": {
-                                                            "maxItemsOne": false
-                                                        }
-                                                    }
-                                                }
-                                            },
-                                            "log_only_mode": {
-                                                "fields": {
-                                                    "workloads": {
-                                                        "maxItemsOne": false
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            },
             "databricks_cluster": {
                 "current": "databricks:index/cluster:Cluster",
                 "majorVersion": 1,
@@ -546,6 +410,9 @@
                             }
                         }
                     },
+                    "provider_config": {
+                        "maxItemsOne": true
+                    },
                     "ssh_public_keys": {
                         "maxItemsOne": false
                     },
@@ -581,6 +448,9 @@
                                             }
                                         }
                                     }
+                                },
+                                "provider_config": {
+                                    "maxItemsOne": true
                                 },
                                 "pypi": {
                                     "maxItemsOne": true
@@ -655,6 +525,58 @@
                 "current": "databricks:index/dashboard:Dashboard",
                 "majorVersion": 1
             },
+            "databricks_data_quality_monitor": {
+                "current": "databricks:index/dataQualityMonitor:DataQualityMonitor",
+                "majorVersion": 1,
+                "fields": {
+                    "data_profiling_config": {
+                        "fields": {
+                            "custom_metrics": {
+                                "maxItemsOne": false,
+                                "elem": {
+                                    "fields": {
+                                        "input_columns": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                }
+                            },
+                            "inference_log": {
+                                "fields": {
+                                    "granularities": {
+                                        "maxItemsOne": false
+                                    }
+                                }
+                            },
+                            "notification_settings": {
+                                "fields": {
+                                    "on_failure": {
+                                        "fields": {
+                                            "email_addresses": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "slicing_exprs": {
+                                "maxItemsOne": false
+                            },
+                            "time_series": {
+                                "fields": {
+                                    "granularities": {
+                                        "maxItemsOne": false
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "databricks_data_quality_refresh": {
+                "current": "databricks:index/dataQualityRefresh:DataQualityRefresh",
+                "majorVersion": 1
+            },
             "databricks_database_database_catalog": {
                 "current": "databricks:index/databaseDatabaseCatalog:DatabaseDatabaseCatalog",
                 "majorVersion": 1
@@ -664,6 +586,12 @@
                 "majorVersion": 1,
                 "fields": {
                     "child_instance_refs": {
+                        "maxItemsOne": false
+                    },
+                    "custom_tags": {
+                        "maxItemsOne": false
+                    },
+                    "effective_custom_tags": {
                         "maxItemsOne": false
                     }
                 }
@@ -791,6 +719,37 @@
                         "maxItemsOne": false
                     }
                 }
+            },
+            "databricks_feature_engineering_feature": {
+                "current": "databricks:index/featureEngineeringFeature:FeatureEngineeringFeature",
+                "majorVersion": 1,
+                "fields": {
+                    "function": {
+                        "fields": {
+                            "extra_parameters": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    },
+                    "inputs": {
+                        "maxItemsOne": false
+                    },
+                    "source": {
+                        "fields": {
+                            "delta_table_source": {
+                                "fields": {
+                                    "entity_columns": {
+                                        "maxItemsOne": false
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "databricks_feature_engineering_materialized_feature": {
+                "current": "databricks:index/featureEngineeringMaterializedFeature:FeatureEngineeringMaterializedFeature",
+                "majorVersion": 1
             },
             "databricks_file": {
                 "current": "databricks:index/file:File",
@@ -965,7 +924,7 @@
                                             "dependencies": {
                                                 "maxItemsOne": false
                                             },
-                                            "jar_dependencies": {
+                                            "java_dependencies": {
                                                 "maxItemsOne": false
                                             }
                                         }
@@ -1108,11 +1067,17 @@
                                                                 }
                                                             }
                                                         },
+                                                        "provider_config": {
+                                                            "maxItemsOne": true
+                                                        },
                                                         "pypi": {
                                                             "maxItemsOne": true
                                                         }
                                                     }
                                                 }
+                                            },
+                                            "provider_config": {
+                                                "maxItemsOne": true
                                             },
                                             "ssh_public_keys": {
                                                 "maxItemsOne": false
@@ -1149,6 +1114,9 @@
                                             }
                                         }
                                     }
+                                },
+                                "provider_config": {
+                                    "maxItemsOne": true
                                 },
                                 "pypi": {
                                     "maxItemsOne": true
@@ -1260,11 +1228,17 @@
                                                     }
                                                 }
                                             },
+                                            "provider_config": {
+                                                "maxItemsOne": true
+                                            },
                                             "pypi": {
                                                 "maxItemsOne": true
                                             }
                                         }
                                     }
+                                },
+                                "provider_config": {
+                                    "maxItemsOne": true
                                 },
                                 "ssh_public_keys": {
                                     "maxItemsOne": false
@@ -1292,6 +1266,9 @@
                         "maxItemsOne": false
                     },
                     "pipeline_task": {
+                        "maxItemsOne": true
+                    },
+                    "provider_config": {
                         "maxItemsOne": true
                     },
                     "python_wheel_task": {
@@ -1523,6 +1500,9 @@
                                                                             }
                                                                         }
                                                                     },
+                                                                    "provider_config": {
+                                                                        "maxItemsOne": true
+                                                                    },
                                                                     "pypi": {
                                                                         "maxItemsOne": true
                                                                     }
@@ -1633,11 +1613,17 @@
                                                                                         }
                                                                                     }
                                                                                 },
+                                                                                "provider_config": {
+                                                                                    "maxItemsOne": true
+                                                                                },
                                                                                 "pypi": {
                                                                                     "maxItemsOne": true
                                                                                 }
                                                                             }
                                                                         }
+                                                                    },
+                                                                    "provider_config": {
+                                                                        "maxItemsOne": true
                                                                     },
                                                                     "ssh_public_keys": {
                                                                         "maxItemsOne": false
@@ -1837,6 +1823,9 @@
                                                     }
                                                 }
                                             },
+                                            "provider_config": {
+                                                "maxItemsOne": true
+                                            },
                                             "pypi": {
                                                 "maxItemsOne": true
                                             }
@@ -1950,11 +1939,17 @@
                                                                 }
                                                             }
                                                         },
+                                                        "provider_config": {
+                                                            "maxItemsOne": true
+                                                        },
                                                         "pypi": {
                                                             "maxItemsOne": true
                                                         }
                                                     }
                                                 }
+                                            },
+                                            "provider_config": {
+                                                "maxItemsOne": true
                                             },
                                             "ssh_public_keys": {
                                                 "maxItemsOne": false
@@ -2124,16 +2119,6 @@
                                 "periodic": {
                                     "maxItemsOne": true
                                 },
-                                "table": {
-                                    "maxItemsOne": true,
-                                    "elem": {
-                                        "fields": {
-                                            "table_names": {
-                                                "maxItemsOne": false
-                                            }
-                                        }
-                                    }
-                                },
                                 "table_update": {
                                     "maxItemsOne": true,
                                     "elem": {
@@ -2262,6 +2247,9 @@
                                 }
                             }
                         }
+                    },
+                    "provider_config": {
+                        "maxItemsOne": true
                     },
                     "pypi": {
                         "maxItemsOne": true
@@ -3095,6 +3083,16 @@
                                                                     },
                                                                     "sequence_by": {
                                                                         "maxItemsOne": false
+                                                                    },
+                                                                    "workday_report_parameters": {
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "report_parameters": {
+                                                                                    "maxItemsOne": false
+                                                                                }
+                                                                            }
+                                                                        }
                                                                     }
                                                                 }
                                                             }
@@ -3131,6 +3129,16 @@
                                                                     },
                                                                     "sequence_by": {
                                                                         "maxItemsOne": false
+                                                                    },
+                                                                    "workday_report_parameters": {
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "report_parameters": {
+                                                                                    "maxItemsOne": false
+                                                                                }
+                                                                            }
+                                                                        }
                                                                     }
                                                                 }
                                                             }
@@ -3167,6 +3175,16 @@
                                                                     },
                                                                     "sequence_by": {
                                                                         "maxItemsOne": false
+                                                                    },
+                                                                    "workday_report_parameters": {
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "report_parameters": {
+                                                                                    "maxItemsOne": false
+                                                                                }
+                                                                            }
+                                                                        }
                                                                     }
                                                                 }
                                                             }
@@ -3226,6 +3244,16 @@
                                             },
                                             "sequence_by": {
                                                 "maxItemsOne": false
+                                            },
+                                            "workday_report_parameters": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "report_parameters": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
                                             }
                                         }
                                     }
@@ -3390,6 +3418,9 @@
                             }
                         }
                     },
+                    "provider_config": {
+                        "maxItemsOne": true
+                    },
                     "schedule": {
                         "maxItemsOne": true
                     },
@@ -3498,22 +3529,14 @@
                     }
                 }
             },
-            "databricks_recipient_federation_policy": {
-                "current": "databricks:index/recipientFederationPolicy:RecipientFederationPolicy",
-                "majorVersion": 1,
-                "fields": {
-                    "oidc_policy": {
-                        "fields": {
-                            "audiences": {
-                                "maxItemsOne": false
-                            }
-                        }
-                    }
-                }
-            },
             "databricks_registered_model": {
                 "current": "databricks:index/registeredModel:RegisteredModel",
-                "majorVersion": 1
+                "majorVersion": 1,
+                "fields": {
+                    "aliases": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "databricks_repo": {
                 "current": "databricks:index/repo:Repo",
@@ -3537,6 +3560,15 @@
                 "fields": {
                     "restrict_workspace_admins": {
                         "maxItemsOne": true
+                    }
+                }
+            },
+            "databricks_rfa_access_request_destinations": {
+                "current": "databricks:index/rfaAccessRequestDestinations:RfaAccessRequestDestinations",
+                "majorVersion": 1,
+                "fields": {
+                    "destinations": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -3606,6 +3638,9 @@
                                 }
                             }
                         }
+                    },
+                    "provider_config": {
+                        "maxItemsOne": true
                     }
                 }
             },
@@ -4106,7 +4141,7 @@
                 "current": "databricks:index/getAlertsV2:getAlertsV2",
                 "majorVersion": 1,
                 "fields": {
-                    "results": {
+                    "alerts": {
                         "maxItemsOne": false,
                         "elem": {
                             "fields": {
@@ -4272,6 +4307,9 @@
                                 }
                             }
                         }
+                    },
+                    "provider_config": {
+                        "maxItemsOne": true
                     }
                 }
             },
@@ -4281,472 +4319,9 @@
                 "fields": {
                     "ids": {
                         "maxItemsOne": false
-                    }
-                }
-            },
-            "databricks_clean_room_asset": {
-                "current": "databricks:index/getCleanRoomAsset:getCleanRoomAsset",
-                "majorVersion": 1,
-                "fields": {
-                    "foreign_table": {
-                        "fields": {
-                            "columns": {
-                                "maxItemsOne": false,
-                                "elem": {
-                                    "fields": {
-                                        "mask": {
-                                            "fields": {
-                                                "using_column_names": {
-                                                    "maxItemsOne": false
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
                     },
-                    "notebook": {
-                        "fields": {
-                            "reviews": {
-                                "maxItemsOne": false
-                            },
-                            "runner_collaborator_aliases": {
-                                "maxItemsOne": false
-                            }
-                        }
-                    },
-                    "table": {
-                        "fields": {
-                            "columns": {
-                                "maxItemsOne": false,
-                                "elem": {
-                                    "fields": {
-                                        "mask": {
-                                            "fields": {
-                                                "using_column_names": {
-                                                    "maxItemsOne": false
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "table_local_details": {
-                        "fields": {
-                            "partitions": {
-                                "maxItemsOne": false,
-                                "elem": {
-                                    "fields": {
-                                        "value": {
-                                            "maxItemsOne": false
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "view": {
-                        "fields": {
-                            "columns": {
-                                "maxItemsOne": false,
-                                "elem": {
-                                    "fields": {
-                                        "mask": {
-                                            "fields": {
-                                                "using_column_names": {
-                                                    "maxItemsOne": false
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            },
-            "databricks_clean_room_asset_revisions_clean_room_asset": {
-                "current": "databricks:index/getCleanRoomAssetRevisionsCleanRoomAsset:getCleanRoomAssetRevisionsCleanRoomAsset",
-                "majorVersion": 1,
-                "fields": {
-                    "foreign_table": {
-                        "fields": {
-                            "columns": {
-                                "maxItemsOne": false,
-                                "elem": {
-                                    "fields": {
-                                        "mask": {
-                                            "fields": {
-                                                "using_column_names": {
-                                                    "maxItemsOne": false
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "notebook": {
-                        "fields": {
-                            "reviews": {
-                                "maxItemsOne": false
-                            },
-                            "runner_collaborator_aliases": {
-                                "maxItemsOne": false
-                            }
-                        }
-                    },
-                    "table": {
-                        "fields": {
-                            "columns": {
-                                "maxItemsOne": false,
-                                "elem": {
-                                    "fields": {
-                                        "mask": {
-                                            "fields": {
-                                                "using_column_names": {
-                                                    "maxItemsOne": false
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "table_local_details": {
-                        "fields": {
-                            "partitions": {
-                                "maxItemsOne": false,
-                                "elem": {
-                                    "fields": {
-                                        "value": {
-                                            "maxItemsOne": false
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "view": {
-                        "fields": {
-                            "columns": {
-                                "maxItemsOne": false,
-                                "elem": {
-                                    "fields": {
-                                        "mask": {
-                                            "fields": {
-                                                "using_column_names": {
-                                                    "maxItemsOne": false
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            },
-            "databricks_clean_room_asset_revisions_clean_room_assets": {
-                "current": "databricks:index/getCleanRoomAssetRevisionsCleanRoomAssets:getCleanRoomAssetRevisionsCleanRoomAssets",
-                "majorVersion": 1,
-                "fields": {
-                    "revisions": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "foreign_table": {
-                                    "fields": {
-                                        "columns": {
-                                            "maxItemsOne": false,
-                                            "elem": {
-                                                "fields": {
-                                                    "mask": {
-                                                        "fields": {
-                                                            "using_column_names": {
-                                                                "maxItemsOne": false
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                },
-                                "notebook": {
-                                    "fields": {
-                                        "reviews": {
-                                            "maxItemsOne": false
-                                        },
-                                        "runner_collaborator_aliases": {
-                                            "maxItemsOne": false
-                                        }
-                                    }
-                                },
-                                "table": {
-                                    "fields": {
-                                        "columns": {
-                                            "maxItemsOne": false,
-                                            "elem": {
-                                                "fields": {
-                                                    "mask": {
-                                                        "fields": {
-                                                            "using_column_names": {
-                                                                "maxItemsOne": false
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                },
-                                "table_local_details": {
-                                    "fields": {
-                                        "partitions": {
-                                            "maxItemsOne": false,
-                                            "elem": {
-                                                "fields": {
-                                                    "value": {
-                                                        "maxItemsOne": false
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                },
-                                "view": {
-                                    "fields": {
-                                        "columns": {
-                                            "maxItemsOne": false,
-                                            "elem": {
-                                                "fields": {
-                                                    "mask": {
-                                                        "fields": {
-                                                            "using_column_names": {
-                                                                "maxItemsOne": false
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            },
-            "databricks_clean_room_assets": {
-                "current": "databricks:index/getCleanRoomAssets:getCleanRoomAssets",
-                "majorVersion": 1,
-                "fields": {
-                    "assets": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "foreign_table": {
-                                    "fields": {
-                                        "columns": {
-                                            "maxItemsOne": false,
-                                            "elem": {
-                                                "fields": {
-                                                    "mask": {
-                                                        "fields": {
-                                                            "using_column_names": {
-                                                                "maxItemsOne": false
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                },
-                                "notebook": {
-                                    "fields": {
-                                        "reviews": {
-                                            "maxItemsOne": false
-                                        },
-                                        "runner_collaborator_aliases": {
-                                            "maxItemsOne": false
-                                        }
-                                    }
-                                },
-                                "table": {
-                                    "fields": {
-                                        "columns": {
-                                            "maxItemsOne": false,
-                                            "elem": {
-                                                "fields": {
-                                                    "mask": {
-                                                        "fields": {
-                                                            "using_column_names": {
-                                                                "maxItemsOne": false
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                },
-                                "table_local_details": {
-                                    "fields": {
-                                        "partitions": {
-                                            "maxItemsOne": false,
-                                            "elem": {
-                                                "fields": {
-                                                    "value": {
-                                                        "maxItemsOne": false
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                },
-                                "view": {
-                                    "fields": {
-                                        "columns": {
-                                            "maxItemsOne": false,
-                                            "elem": {
-                                                "fields": {
-                                                    "mask": {
-                                                        "fields": {
-                                                            "using_column_names": {
-                                                                "maxItemsOne": false
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            },
-            "databricks_clean_room_auto_approval_rule": {
-                "current": "databricks:index/getCleanRoomAutoApprovalRule:getCleanRoomAutoApprovalRule",
-                "majorVersion": 1
-            },
-            "databricks_clean_room_auto_approval_rules": {
-                "current": "databricks:index/getCleanRoomAutoApprovalRules:getCleanRoomAutoApprovalRules",
-                "majorVersion": 1,
-                "fields": {
-                    "rules": {
-                        "maxItemsOne": false
-                    }
-                }
-            },
-            "databricks_clean_rooms_clean_room": {
-                "current": "databricks:index/getCleanRoomsCleanRoom:getCleanRoomsCleanRoom",
-                "majorVersion": 1,
-                "fields": {
-                    "remote_detailed_info": {
-                        "fields": {
-                            "collaborators": {
-                                "maxItemsOne": false
-                            },
-                            "compliance_security_profile": {
-                                "fields": {
-                                    "compliance_standards": {
-                                        "maxItemsOne": false
-                                    }
-                                }
-                            },
-                            "egress_network_policy": {
-                                "fields": {
-                                    "internet_access": {
-                                        "fields": {
-                                            "allowed_internet_destinations": {
-                                                "maxItemsOne": false
-                                            },
-                                            "allowed_storage_destinations": {
-                                                "maxItemsOne": false,
-                                                "elem": {
-                                                    "fields": {
-                                                        "allowed_paths": {
-                                                            "maxItemsOne": false
-                                                        }
-                                                    }
-                                                }
-                                            },
-                                            "log_only_mode": {
-                                                "fields": {
-                                                    "workloads": {
-                                                        "maxItemsOne": false
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            },
-            "databricks_clean_rooms_clean_rooms": {
-                "current": "databricks:index/getCleanRoomsCleanRooms:getCleanRoomsCleanRooms",
-                "majorVersion": 1,
-                "fields": {
-                    "clean_rooms": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "remote_detailed_info": {
-                                    "fields": {
-                                        "collaborators": {
-                                            "maxItemsOne": false
-                                        },
-                                        "compliance_security_profile": {
-                                            "fields": {
-                                                "compliance_standards": {
-                                                    "maxItemsOne": false
-                                                }
-                                            }
-                                        },
-                                        "egress_network_policy": {
-                                            "fields": {
-                                                "internet_access": {
-                                                    "fields": {
-                                                        "allowed_internet_destinations": {
-                                                            "maxItemsOne": false
-                                                        },
-                                                        "allowed_storage_destinations": {
-                                                            "maxItemsOne": false,
-                                                            "elem": {
-                                                                "fields": {
-                                                                    "allowed_paths": {
-                                                                        "maxItemsOne": false
-                                                                    }
-                                                                }
-                                                            }
-                                                        },
-                                                        "log_only_mode": {
-                                                            "fields": {
-                                                                "workloads": {
-                                                                    "maxItemsOne": false
-                                                                }
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
+                    "provider_config": {
+                        "maxItemsOne": true
                     }
                 }
             },
@@ -4958,11 +4533,17 @@
                                                                 }
                                                             }
                                                         },
+                                                        "provider_config": {
+                                                            "maxItemsOne": true
+                                                        },
                                                         "pypi": {
                                                             "maxItemsOne": true
                                                         }
                                                     }
                                                 }
+                                            },
+                                            "provider_config": {
+                                                "maxItemsOne": true
                                             },
                                             "ssh_public_keys": {
                                                 "maxItemsOne": false
@@ -4998,12 +4579,20 @@
                                 }
                             }
                         }
+                    },
+                    "provider_config": {
+                        "maxItemsOne": true
                     }
                 }
             },
             "databricks_cluster_policy": {
                 "current": "databricks:index/getClusterPolicy:getClusterPolicy",
-                "majorVersion": 1
+                "majorVersion": 1,
+                "fields": {
+                    "provider_config": {
+                        "maxItemsOne": true
+                    }
+                }
             },
             "databricks_clusters": {
                 "current": "databricks:index/getClusters:getClusters",
@@ -5024,6 +4613,9 @@
                     },
                     "ids": {
                         "maxItemsOne": false
+                    },
+                    "provider_config": {
+                        "maxItemsOne": true
                     }
                 }
             },
@@ -5037,6 +4629,9 @@
                 "fields": {
                     "metastore_info": {
                         "maxItemsOne": true
+                    },
+                    "provider_config": {
+                        "maxItemsOne": true
                     }
                 }
             },
@@ -5049,6 +4644,122 @@
                 "majorVersion": 1,
                 "fields": {
                     "dashboards": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "databricks_data_quality_monitor": {
+                "current": "databricks:index/getDataQualityMonitor:getDataQualityMonitor",
+                "majorVersion": 1,
+                "fields": {
+                    "data_profiling_config": {
+                        "fields": {
+                            "custom_metrics": {
+                                "maxItemsOne": false,
+                                "elem": {
+                                    "fields": {
+                                        "input_columns": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                }
+                            },
+                            "inference_log": {
+                                "fields": {
+                                    "granularities": {
+                                        "maxItemsOne": false
+                                    }
+                                }
+                            },
+                            "notification_settings": {
+                                "fields": {
+                                    "on_failure": {
+                                        "fields": {
+                                            "email_addresses": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "slicing_exprs": {
+                                "maxItemsOne": false
+                            },
+                            "time_series": {
+                                "fields": {
+                                    "granularities": {
+                                        "maxItemsOne": false
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "databricks_data_quality_monitors": {
+                "current": "databricks:index/getDataQualityMonitors:getDataQualityMonitors",
+                "majorVersion": 1,
+                "fields": {
+                    "monitors": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "data_profiling_config": {
+                                    "fields": {
+                                        "custom_metrics": {
+                                            "maxItemsOne": false,
+                                            "elem": {
+                                                "fields": {
+                                                    "input_columns": {
+                                                        "maxItemsOne": false
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        "inference_log": {
+                                            "fields": {
+                                                "granularities": {
+                                                    "maxItemsOne": false
+                                                }
+                                            }
+                                        },
+                                        "notification_settings": {
+                                            "fields": {
+                                                "on_failure": {
+                                                    "fields": {
+                                                        "email_addresses": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        "slicing_exprs": {
+                                            "maxItemsOne": false
+                                        },
+                                        "time_series": {
+                                            "fields": {
+                                                "granularities": {
+                                                    "maxItemsOne": false
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "databricks_data_quality_refresh": {
+                "current": "databricks:index/getDataQualityRefresh:getDataQualityRefresh",
+                "majorVersion": 1
+            },
+            "databricks_data_quality_refreshes": {
+                "current": "databricks:index/getDataQualityRefreshes:getDataQualityRefreshes",
+                "majorVersion": 1,
+                "fields": {
+                    "refreshes": {
                         "maxItemsOne": false
                     }
                 }
@@ -5072,6 +4783,12 @@
                 "fields": {
                     "child_instance_refs": {
                         "maxItemsOne": false
+                    },
+                    "custom_tags": {
+                        "maxItemsOne": false
+                    },
+                    "effective_custom_tags": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -5084,6 +4801,12 @@
                         "elem": {
                             "fields": {
                                 "child_instance_refs": {
+                                    "maxItemsOne": false
+                                },
+                                "custom_tags": {
+                                    "maxItemsOne": false
+                                },
+                                "effective_custom_tags": {
                                     "maxItemsOne": false
                                 }
                             }
@@ -5139,7 +4862,12 @@
             },
             "databricks_directory": {
                 "current": "databricks:index/getDirectory:getDirectory",
-                "majorVersion": 1
+                "majorVersion": 1,
+                "fields": {
+                    "provider_config": {
+                        "maxItemsOne": true
+                    }
+                }
             },
             "databricks_entity_tag_assignment": {
                 "current": "databricks:index/getEntityTagAssignment:getEntityTagAssignment",
@@ -5199,6 +4927,9 @@
                                 }
                             }
                         }
+                    },
+                    "provider_config": {
+                        "maxItemsOne": true
                     }
                 }
             },
@@ -5208,6 +4939,9 @@
                 "fields": {
                     "names": {
                         "maxItemsOne": false
+                    },
+                    "provider_config": {
+                        "maxItemsOne": true
                     }
                 }
             },
@@ -5233,6 +4967,80 @@
                                 }
                             }
                         }
+                    }
+                }
+            },
+            "databricks_feature_engineering_feature": {
+                "current": "databricks:index/getFeatureEngineeringFeature:getFeatureEngineeringFeature",
+                "majorVersion": 1,
+                "fields": {
+                    "function": {
+                        "fields": {
+                            "extra_parameters": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    },
+                    "inputs": {
+                        "maxItemsOne": false
+                    },
+                    "source": {
+                        "fields": {
+                            "delta_table_source": {
+                                "fields": {
+                                    "entity_columns": {
+                                        "maxItemsOne": false
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "databricks_feature_engineering_features": {
+                "current": "databricks:index/getFeatureEngineeringFeatures:getFeatureEngineeringFeatures",
+                "majorVersion": 1,
+                "fields": {
+                    "features": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "function": {
+                                    "fields": {
+                                        "extra_parameters": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                },
+                                "inputs": {
+                                    "maxItemsOne": false
+                                },
+                                "source": {
+                                    "fields": {
+                                        "delta_table_source": {
+                                            "fields": {
+                                                "entity_columns": {
+                                                    "maxItemsOne": false
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "databricks_feature_engineering_materialized_feature": {
+                "current": "databricks:index/getFeatureEngineeringMaterializedFeature:getFeatureEngineeringMaterializedFeature",
+                "majorVersion": 1
+            },
+            "databricks_feature_engineering_materialized_features": {
+                "current": "databricks:index/getFeatureEngineeringMaterializedFeatures:getFeatureEngineeringMaterializedFeatures",
+                "majorVersion": 1,
+                "fields": {
+                    "materialized_features": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -5364,6 +5172,9 @@
                 "fields": {
                     "instance_profiles": {
                         "maxItemsOne": false
+                    },
+                    "provider_config": {
+                        "maxItemsOne": true
                     }
                 }
             },
@@ -5428,7 +5239,7 @@
                                                                     "dependencies": {
                                                                         "maxItemsOne": false
                                                                     },
-                                                                    "jar_dependencies": {
+                                                                    "java_dependencies": {
                                                                         "maxItemsOne": false
                                                                     }
                                                                 }
@@ -5573,6 +5384,9 @@
                                                                     }
                                                                 }
                                                             }
+                                                        },
+                                                        "provider_config": {
+                                                            "maxItemsOne": true
                                                         },
                                                         "pypi": {
                                                             "maxItemsOne": true
@@ -5886,6 +5700,9 @@
                                                                                                     }
                                                                                                 }
                                                                                             },
+                                                                                            "provider_config": {
+                                                                                                "maxItemsOne": true
+                                                                                            },
                                                                                             "pypi": {
                                                                                                 "maxItemsOne": true
                                                                                             }
@@ -6137,6 +5954,9 @@
                                                                                 }
                                                                             }
                                                                         }
+                                                                    },
+                                                                    "provider_config": {
+                                                                        "maxItemsOne": true
                                                                     },
                                                                     "pypi": {
                                                                         "maxItemsOne": true
@@ -6415,7 +6235,12 @@
             },
             "databricks_jobs": {
                 "current": "databricks:index/getJobs:getJobs",
-                "majorVersion": 1
+                "majorVersion": 1,
+                "fields": {
+                    "provider_config": {
+                        "maxItemsOne": true
+                    }
+                }
             },
             "databricks_materialized_features_feature_tag": {
                 "current": "databricks:index/getMaterializedFeaturesFeatureTag:getMaterializedFeaturesFeatureTag",
@@ -6447,6 +6272,9 @@
                 "current": "databricks:index/getMlflowExperiment:getMlflowExperiment",
                 "majorVersion": 1,
                 "fields": {
+                    "provider_config": {
+                        "maxItemsOne": true
+                    },
                     "tags": {
                         "maxItemsOne": false
                     }
@@ -6466,6 +6294,9 @@
                             }
                         }
                     },
+                    "provider_config": {
+                        "maxItemsOne": true
+                    },
                     "tags": {
                         "maxItemsOne": false
                     }
@@ -6477,6 +6308,9 @@
                 "fields": {
                     "names": {
                         "maxItemsOne": false
+                    },
+                    "provider_config": {
+                        "maxItemsOne": true
                     }
                 }
             },
@@ -6572,7 +6406,12 @@
             },
             "databricks_node_type": {
                 "current": "databricks:index/getNodeType:getNodeType",
-                "majorVersion": 1
+                "majorVersion": 1,
+                "fields": {
+                    "provider_config": {
+                        "maxItemsOne": true
+                    }
+                }
             },
             "databricks_notebook": {
                 "current": "databricks:index/getNotebook:getNotebook",
@@ -6615,6 +6454,9 @@
                 "fields": {
                     "ids": {
                         "maxItemsOne": false
+                    },
+                    "provider_config": {
+                        "maxItemsOne": true
                     }
                 }
             },
@@ -6696,39 +6538,6 @@
                     }
                 }
             },
-            "databricks_recipient_federation_policies": {
-                "current": "databricks:index/getRecipientFederationPolicies:getRecipientFederationPolicies",
-                "majorVersion": 1,
-                "fields": {
-                    "policies": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "oidc_policy": {
-                                    "fields": {
-                                        "audiences": {
-                                            "maxItemsOne": false
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            },
-            "databricks_recipient_federation_policy": {
-                "current": "databricks:index/getRecipientFederationPolicy:getRecipientFederationPolicy",
-                "majorVersion": 1,
-                "fields": {
-                    "oidc_policy": {
-                        "fields": {
-                            "audiences": {
-                                "maxItemsOne": false
-                            }
-                        }
-                    }
-                }
-            },
             "databricks_registered_model": {
                 "current": "databricks:index/getRegisteredModel:getRegisteredModel",
                 "majorVersion": 1,
@@ -6787,10 +6596,22 @@
                     }
                 }
             },
+            "databricks_rfa_access_request_destinations": {
+                "current": "databricks:index/getRfaAccessRequestDestinations:getRfaAccessRequestDestinations",
+                "majorVersion": 1,
+                "fields": {
+                    "destinations": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "databricks_schema": {
                 "current": "databricks:index/getSchema:getSchema",
                 "majorVersion": 1,
                 "fields": {
+                    "provider_config": {
+                        "maxItemsOne": true
+                    },
                     "schema_info": {
                         "maxItemsOne": true,
                         "elem": {
@@ -6809,6 +6630,9 @@
                 "fields": {
                     "ids": {
                         "maxItemsOne": false
+                    },
+                    "provider_config": {
+                        "maxItemsOne": true
                     }
                 }
             },
@@ -7033,7 +6857,12 @@
             },
             "databricks_spark_version": {
                 "current": "databricks:index/getSparkVersion:getSparkVersion",
-                "majorVersion": 1
+                "majorVersion": 1,
+                "fields": {
+                    "provider_config": {
+                        "maxItemsOne": true
+                    }
+                }
             },
             "databricks_sql_warehouse": {
                 "current": "databricks:index/getSqlWarehouse:getSqlWarehouse",
@@ -7055,6 +6884,9 @@
                     "odbc_params": {
                         "maxItemsOne": true
                     },
+                    "provider_config": {
+                        "maxItemsOne": true
+                    },
                     "tags": {
                         "maxItemsOne": true,
                         "elem": {
@@ -7073,6 +6905,9 @@
                 "fields": {
                     "ids": {
                         "maxItemsOne": false
+                    },
+                    "provider_config": {
+                        "maxItemsOne": true
                     }
                 }
             },
@@ -7080,6 +6915,9 @@
                 "current": "databricks:index/getStorageCredential:getStorageCredential",
                 "majorVersion": 1,
                 "fields": {
+                    "provider_config": {
+                        "maxItemsOne": true
+                    },
                     "storage_credential_info": {
                         "maxItemsOne": true,
                         "elem": {
@@ -7110,6 +6948,9 @@
                 "fields": {
                     "names": {
                         "maxItemsOne": false
+                    },
+                    "provider_config": {
+                        "maxItemsOne": true
                     }
                 }
             },
@@ -7117,6 +6958,9 @@
                 "current": "databricks:index/getTable:getTable",
                 "majorVersion": 1,
                 "fields": {
+                    "provider_config": {
+                        "maxItemsOne": true
+                    },
                     "table_info": {
                         "maxItemsOne": true,
                         "elem": {
@@ -7260,6 +7104,9 @@
                 "fields": {
                     "ids": {
                         "maxItemsOne": false
+                    },
+                    "provider_config": {
+                        "maxItemsOne": true
                     }
                 }
             },
@@ -7298,6 +7145,9 @@
                 "fields": {
                     "ids": {
                         "maxItemsOne": false
+                    },
+                    "provider_config": {
+                        "maxItemsOne": true
                     }
                 }
             },
@@ -7305,6 +7155,9 @@
                 "current": "databricks:index/getVolume:getVolume",
                 "majorVersion": 1,
                 "fields": {
+                    "provider_config": {
+                        "maxItemsOne": true
+                    },
                     "volume_info": {
                         "maxItemsOne": true,
                         "elem": {
@@ -7361,6 +7214,9 @@
                 "current": "databricks:index/getZones:getZones",
                 "majorVersion": 1,
                 "fields": {
+                    "provider_config": {
+                        "maxItemsOne": true
+                    },
                     "zones": {
                         "maxItemsOne": false
                     }
@@ -7410,9 +7266,6 @@
             "databricks:index/budgetPolicy:BudgetPolicy": 1,
             "databricks:index/catalog:Catalog": 0,
             "databricks:index/catalogWorkspaceBinding:CatalogWorkspaceBinding": 0,
-            "databricks:index/cleanRoomAsset:CleanRoomAsset": 1,
-            "databricks:index/cleanRoomAutoApprovalRule:CleanRoomAutoApprovalRule": 1,
-            "databricks:index/cleanRoomsCleanRoom:CleanRoomsCleanRoom": 1,
             "databricks:index/cluster:Cluster": 0,
             "databricks:index/clusterPolicy:ClusterPolicy": 0,
             "databricks:index/complianceSecurityProfileWorkspaceSetting:ComplianceSecurityProfileWorkspaceSetting": 0,
@@ -7420,6 +7273,8 @@
             "databricks:index/credential:Credential": 0,
             "databricks:index/customAppIntegration:CustomAppIntegration": 0,
             "databricks:index/dashboard:Dashboard": 0,
+            "databricks:index/dataQualityMonitor:DataQualityMonitor": 1,
+            "databricks:index/dataQualityRefresh:DataQualityRefresh": 1,
             "databricks:index/databaseDatabaseCatalog:DatabaseDatabaseCatalog": 1,
             "databricks:index/databaseInstance:DatabaseInstance": 1,
             "databricks:index/databaseSyncedDatabaseTable:DatabaseSyncedDatabaseTable": 1,
@@ -7434,6 +7289,8 @@
             "databricks:index/entityTagAssignment:EntityTagAssignment": 1,
             "databricks:index/externalLocation:ExternalLocation": 0,
             "databricks:index/externalMetadata:ExternalMetadata": 1,
+            "databricks:index/featureEngineeringFeature:FeatureEngineeringFeature": 1,
+            "databricks:index/featureEngineeringMaterializedFeature:FeatureEngineeringMaterializedFeature": 1,
             "databricks:index/file:File": 0,
             "databricks:index/gitCredential:GitCredential": 0,
             "databricks:index/globalInitScript:GlobalInitScript": 0,
@@ -7485,10 +7342,10 @@
             "databricks:index/qualityMonitorV2:QualityMonitorV2": 1,
             "databricks:index/query:Query": 0,
             "databricks:index/recipient:Recipient": 0,
-            "databricks:index/recipientFederationPolicy:RecipientFederationPolicy": 1,
             "databricks:index/registeredModel:RegisteredModel": 0,
             "databricks:index/repo:Repo": 0,
             "databricks:index/restrictWorkspaceAdminsSetting:RestrictWorkspaceAdminsSetting": 0,
+            "databricks:index/rfaAccessRequestDestinations:RfaAccessRequestDestinations": 1,
             "databricks:index/schema:Schema": 0,
             "databricks:index/secret:Secret": 0,
             "databricks:index/secretAcl:SecretAcl": 0,
@@ -7497,7 +7354,7 @@
             "databricks:index/servicePrincipalFederationPolicy:ServicePrincipalFederationPolicy": 1,
             "databricks:index/servicePrincipalRole:ServicePrincipalRole": 0,
             "databricks:index/servicePrincipalSecret:ServicePrincipalSecret": 0,
-            "databricks:index/share:Share": 0,
+            "databricks:index/share:Share": 1,
             "databricks:index/sqlAlert:SqlAlert": 0,
             "databricks:index/sqlDashboard:SqlDashboard": 0,
             "databricks:index/sqlEndpoint:SqlEndpoint": 0,
@@ -7545,14 +7402,6 @@
             "databricks:index/getBudgetPolicy:getBudgetPolicy": 1,
             "databricks:index/getCatalog:getCatalog": 0,
             "databricks:index/getCatalogs:getCatalogs": 0,
-            "databricks:index/getCleanRoomAsset:getCleanRoomAsset": 1,
-            "databricks:index/getCleanRoomAssetRevisionsCleanRoomAsset:getCleanRoomAssetRevisionsCleanRoomAsset": 1,
-            "databricks:index/getCleanRoomAssetRevisionsCleanRoomAssets:getCleanRoomAssetRevisionsCleanRoomAssets": 1,
-            "databricks:index/getCleanRoomAssets:getCleanRoomAssets": 1,
-            "databricks:index/getCleanRoomAutoApprovalRule:getCleanRoomAutoApprovalRule": 1,
-            "databricks:index/getCleanRoomAutoApprovalRules:getCleanRoomAutoApprovalRules": 1,
-            "databricks:index/getCleanRoomsCleanRoom:getCleanRoomsCleanRoom": 1,
-            "databricks:index/getCleanRoomsCleanRooms:getCleanRoomsCleanRooms": 1,
             "databricks:index/getCluster:getCluster": 0,
             "databricks:index/getClusterPolicy:getClusterPolicy": 0,
             "databricks:index/getClusters:getClusters": 0,
@@ -7560,6 +7409,10 @@
             "databricks:index/getCurrentMetastore:getCurrentMetastore": 0,
             "databricks:index/getCurrentUser:getCurrentUser": 0,
             "databricks:index/getDashboards:getDashboards": 1,
+            "databricks:index/getDataQualityMonitor:getDataQualityMonitor": 1,
+            "databricks:index/getDataQualityMonitors:getDataQualityMonitors": 1,
+            "databricks:index/getDataQualityRefresh:getDataQualityRefresh": 1,
+            "databricks:index/getDataQualityRefreshes:getDataQualityRefreshes": 1,
             "databricks:index/getDatabaseDatabaseCatalog:getDatabaseDatabaseCatalog": 1,
             "databricks:index/getDatabaseDatabaseCatalogs:getDatabaseDatabaseCatalogs": 1,
             "databricks:index/getDatabaseInstance:getDatabaseInstance": 1,
@@ -7575,6 +7428,10 @@
             "databricks:index/getExternalLocations:getExternalLocations": 0,
             "databricks:index/getExternalMetadata:getExternalMetadata": 1,
             "databricks:index/getExternalMetadatas:getExternalMetadatas": 1,
+            "databricks:index/getFeatureEngineeringFeature:getFeatureEngineeringFeature": 1,
+            "databricks:index/getFeatureEngineeringFeatures:getFeatureEngineeringFeatures": 1,
+            "databricks:index/getFeatureEngineeringMaterializedFeature:getFeatureEngineeringMaterializedFeature": 1,
+            "databricks:index/getFeatureEngineeringMaterializedFeatures:getFeatureEngineeringMaterializedFeatures": 1,
             "databricks:index/getFunctions:getFunctions": 1,
             "databricks:index/getGroup:getGroup": 0,
             "databricks:index/getInstancePool:getInstancePool": 0,
@@ -7603,10 +7460,9 @@
             "databricks:index/getPolicyInfos:getPolicyInfos": 1,
             "databricks:index/getQualityMonitorV2:getQualityMonitorV2": 1,
             "databricks:index/getQualityMonitorsV2:getQualityMonitorsV2": 1,
-            "databricks:index/getRecipientFederationPolicies:getRecipientFederationPolicies": 1,
-            "databricks:index/getRecipientFederationPolicy:getRecipientFederationPolicy": 1,
             "databricks:index/getRegisteredModel:getRegisteredModel": 1,
             "databricks:index/getRegisteredModelVersions:getRegisteredModelVersions": 1,
+            "databricks:index/getRfaAccessRequestDestinations:getRfaAccessRequestDestinations": 1,
             "databricks:index/getSchema:getSchema": 0,
             "databricks:index/getSchemas:getSchemas": 0,
             "databricks:index/getServicePrincipal:getServicePrincipal": 0,
@@ -7614,8 +7470,8 @@
             "databricks:index/getServicePrincipalFederationPolicy:getServicePrincipalFederationPolicy": 1,
             "databricks:index/getServicePrincipals:getServicePrincipals": 0,
             "databricks:index/getServingEndpoints:getServingEndpoints": 1,
-            "databricks:index/getShare:getShare": 0,
-            "databricks:index/getShares:getShares": 0,
+            "databricks:index/getShare:getShare": 1,
+            "databricks:index/getShares:getShares": 1,
             "databricks:index/getSparkVersion:getSparkVersion": 0,
             "databricks:index/getSqlWarehouse:getSqlWarehouse": 0,
             "databricks:index/getSqlWarehouses:getSqlWarehouses": 0,
@@ -10557,11 +10413,8 @@
     },
     "workspace-id": {
         "resources": {
-            "databricks_alert_v2": [
-                "workspace_id"
-            ],
-            "databricks_apps_settings_custom_template": [
-                "workspace_id"
+            "databricks_app": [
+                "provider_config.workspace_id"
             ],
             "databricks_budget": [
                 "filter.$.workspace_id"
@@ -10569,32 +10422,28 @@
             "databricks_catalog_workspace_binding": [
                 "workspace_id"
             ],
-            "databricks_clean_room_asset": [
-                "workspace_id"
+            "databricks_cluster": [
+                "provider_config.$.workspace_id"
             ],
-            "databricks_clean_room_auto_approval_rule": [
-                "workspace_id"
+            "databricks_cluster_policy": [
+                "libraries.$.provider_config.$.workspace_id"
             ],
-            "databricks_clean_rooms_clean_room": [
-                "workspace_id"
+            "databricks_job": [
+                "job_cluster.$.new_cluster.$.library.$.provider_config.$.workspace_id",
+                "job_cluster.$.new_cluster.$.provider_config.$.workspace_id",
+                "library.$.provider_config.$.workspace_id",
+                "new_cluster.$.library.$.provider_config.$.workspace_id",
+                "new_cluster.$.provider_config.$.workspace_id",
+                "provider_config.$.workspace_id",
+                "task.$.for_each_task.$.task.$.library.$.provider_config.$.workspace_id",
+                "task.$.for_each_task.$.task.$.new_cluster.$.library.$.provider_config.$.workspace_id",
+                "task.$.for_each_task.$.task.$.new_cluster.$.provider_config.$.workspace_id",
+                "task.$.library.$.provider_config.$.workspace_id",
+                "task.$.new_cluster.$.library.$.provider_config.$.workspace_id",
+                "task.$.new_cluster.$.provider_config.$.workspace_id"
             ],
-            "databricks_database_database_catalog": [
-                "workspace_id"
-            ],
-            "databricks_database_instance": [
-                "workspace_id"
-            ],
-            "databricks_database_synced_database_table": [
-                "workspace_id"
-            ],
-            "databricks_entity_tag_assignment": [
-                "workspace_id"
-            ],
-            "databricks_external_metadata": [
-                "workspace_id"
-            ],
-            "databricks_materialized_features_feature_tag": [
-                "workspace_id"
+            "databricks_library": [
+                "provider_config.$.workspace_id"
             ],
             "databricks_metastore_assignment": [
                 "workspace_id"
@@ -10611,139 +10460,146 @@
             "databricks_mws_workspaces": [
                 "workspace_id"
             ],
-            "databricks_online_store": [
-                "workspace_id"
+            "databricks_quality_monitor": [
+                "provider_config.$.workspace_id"
             ],
-            "databricks_policy_info": [
-                "workspace_id"
-            ],
-            "databricks_quality_monitor_v2": [
-                "workspace_id"
-            ],
-            "databricks_recipient_federation_policy": [
-                "workspace_id"
-            ],
-            "databricks_tag_policy": [
-                "workspace_id"
+            "databricks_share": [
+                "provider_config.$.workspace_id"
             ],
             "databricks_workspace_binding": [
                 "workspace_id"
             ],
             "databricks_workspace_network_option": [
                 "workspace_id"
-            ],
-            "databricks_workspace_setting_v2": [
-                "workspace_id"
             ]
         },
         "dataSources": {
-            "databricks_alert_v2": [
-                "workspace_id"
+            "databricks_app": [
+                "provider_config.workspace_id"
             ],
-            "databricks_alerts_v2": [
-                "workspace_id"
+            "databricks_apps": [
+                "provider_config.workspace_id"
             ],
-            "databricks_apps_settings_custom_template": [
-                "workspace_id"
+            "databricks_catalog": [
+                "provider_config.$.workspace_id"
             ],
-            "databricks_apps_settings_custom_templates": [
-                "workspace_id"
+            "databricks_catalogs": [
+                "provider_config.$.workspace_id"
             ],
-            "databricks_clean_room_asset": [
-                "workspace_id"
+            "databricks_cluster": [
+                "cluster_info.$.spec.$.library.$.provider_config.$.workspace_id",
+                "cluster_info.$.spec.$.provider_config.$.workspace_id",
+                "provider_config.$.workspace_id"
             ],
-            "databricks_clean_room_asset_revisions_clean_room_asset": [
-                "workspace_id"
+            "databricks_cluster_policy": [
+                "provider_config.$.workspace_id"
             ],
-            "databricks_clean_room_asset_revisions_clean_room_assets": [
-                "workspace_id"
+            "databricks_clusters": [
+                "provider_config.$.workspace_id"
             ],
-            "databricks_clean_room_assets": [
-                "workspace_id"
+            "databricks_current_metastore": [
+                "provider_config.$.workspace_id"
             ],
-            "databricks_clean_room_auto_approval_rule": [
-                "workspace_id"
+            "databricks_dashboards": [
+                "provider_config.workspace_id"
             ],
-            "databricks_clean_room_auto_approval_rules": [
-                "workspace_id"
+            "databricks_directory": [
+                "provider_config.$.workspace_id"
             ],
-            "databricks_clean_rooms_clean_room": [
-                "workspace_id"
+            "databricks_external_location": [
+                "provider_config.$.workspace_id"
             ],
-            "databricks_clean_rooms_clean_rooms": [
-                "workspace_id"
+            "databricks_external_locations": [
+                "provider_config.$.workspace_id"
             ],
-            "databricks_database_database_catalog": [
-                "workspace_id"
+            "databricks_functions": [
+                "provider_config.workspace_id"
             ],
-            "databricks_database_database_catalogs": [
-                "workspace_id"
+            "databricks_instance_profiles": [
+                "provider_config.$.workspace_id"
             ],
-            "databricks_database_instance": [
-                "workspace_id"
+            "databricks_job": [
+                "job_settings.$.settings.$.library.$.provider_config.$.workspace_id",
+                "job_settings.$.settings.$.task.$.for_each_task.$.task.$.library.$.provider_config.$.workspace_id",
+                "job_settings.$.settings.$.task.$.library.$.provider_config.$.workspace_id"
             ],
-            "databricks_database_instances": [
-                "workspace_id"
+            "databricks_jobs": [
+                "provider_config.$.workspace_id"
             ],
-            "databricks_database_synced_database_table": [
-                "workspace_id"
+            "databricks_mlflow_experiment": [
+                "provider_config.$.workspace_id"
             ],
-            "databricks_database_synced_database_tables": [
-                "workspace_id"
+            "databricks_mlflow_model": [
+                "provider_config.$.workspace_id"
             ],
-            "databricks_entity_tag_assignment": [
-                "workspace_id"
+            "databricks_mlflow_models": [
+                "provider_config.$.workspace_id"
             ],
-            "databricks_entity_tag_assignments": [
-                "workspace_id"
+            "databricks_node_type": [
+                "provider_config.$.workspace_id"
             ],
-            "databricks_external_metadata": [
-                "workspace_id"
+            "databricks_notification_destinations": [
+                "provider_config.workspace_id"
             ],
-            "databricks_external_metadatas": [
-                "workspace_id"
+            "databricks_pipelines": [
+                "provider_config.$.workspace_id"
             ],
-            "databricks_materialized_features_feature_tag": [
-                "workspace_id"
+            "databricks_registered_model": [
+                "provider_config.workspace_id"
             ],
-            "databricks_materialized_features_feature_tags": [
-                "workspace_id"
+            "databricks_registered_model_versions": [
+                "provider_config.workspace_id"
             ],
-            "databricks_online_store": [
-                "workspace_id"
+            "databricks_schema": [
+                "provider_config.$.workspace_id"
             ],
-            "databricks_online_stores": [
-                "workspace_id"
+            "databricks_schemas": [
+                "provider_config.$.workspace_id"
             ],
-            "databricks_policy_info": [
-                "workspace_id"
+            "databricks_serving_endpoints": [
+                "provider_config.workspace_id"
             ],
-            "databricks_policy_infos": [
-                "workspace_id"
+            "databricks_share": [
+                "provider_config.workspace_id"
             ],
-            "databricks_quality_monitor_v2": [
-                "workspace_id"
+            "databricks_shares": [
+                "provider_config.workspace_id"
             ],
-            "databricks_quality_monitors_v2": [
-                "workspace_id"
+            "databricks_spark_version": [
+                "provider_config.$.workspace_id"
             ],
-            "databricks_recipient_federation_policies": [
-                "workspace_id"
+            "databricks_sql_warehouse": [
+                "provider_config.$.workspace_id"
             ],
-            "databricks_recipient_federation_policy": [
-                "workspace_id"
+            "databricks_sql_warehouses": [
+                "provider_config.$.workspace_id"
             ],
-            "databricks_tag_policies": [
-                "workspace_id"
+            "databricks_storage_credential": [
+                "provider_config.$.workspace_id"
             ],
-            "databricks_tag_policy": [
-                "workspace_id"
+            "databricks_storage_credentials": [
+                "provider_config.$.workspace_id"
+            ],
+            "databricks_table": [
+                "provider_config.$.workspace_id"
+            ],
+            "databricks_tables": [
+                "provider_config.$.workspace_id"
+            ],
+            "databricks_views": [
+                "provider_config.$.workspace_id"
+            ],
+            "databricks_volume": [
+                "provider_config.$.workspace_id"
+            ],
+            "databricks_volumes": [
+                "provider_config.workspace_id"
             ],
             "databricks_workspace_network_option": [
                 "workspace_id"
             ],
-            "databricks_workspace_setting_v2": [
-                "workspace_id"
+            "databricks_zones": [
+                "provider_config.$.workspace_id"
             ]
         }
     }
