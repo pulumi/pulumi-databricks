@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -46,6 +48,7 @@ export function getSqlWarehouses(args?: GetSqlWarehousesArgs, opts?: pulumi.Invo
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getSqlWarehouses:getSqlWarehouses", {
         "ids": args.ids,
+        "providerConfig": args.providerConfig,
         "warehouseNameContains": args.warehouseNameContains,
     }, opts);
 }
@@ -58,6 +61,10 @@ export interface GetSqlWarehousesArgs {
      * list of databricks.SqlEndpoint ids
      */
     ids?: string[];
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: inputs.GetSqlWarehousesProviderConfig;
     /**
      * Only return databricks.SqlEndpoint ids that match the given name string.
      */
@@ -76,6 +83,7 @@ export interface GetSqlWarehousesResult {
      * list of databricks.SqlEndpoint ids
      */
     readonly ids: string[];
+    readonly providerConfig?: outputs.GetSqlWarehousesProviderConfig;
     readonly warehouseNameContains?: string;
 }
 /**
@@ -120,6 +128,7 @@ export function getSqlWarehousesOutput(args?: GetSqlWarehousesOutputArgs, opts?:
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getSqlWarehouses:getSqlWarehouses", {
         "ids": args.ids,
+        "providerConfig": args.providerConfig,
         "warehouseNameContains": args.warehouseNameContains,
     }, opts);
 }
@@ -132,6 +141,10 @@ export interface GetSqlWarehousesOutputArgs {
      * list of databricks.SqlEndpoint ids
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.GetSqlWarehousesProviderConfigArgs>;
     /**
      * Only return databricks.SqlEndpoint ids that match the given name string.
      */

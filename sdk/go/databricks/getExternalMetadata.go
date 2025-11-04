@@ -11,6 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+//
 // This data source can be used to get a single external metadata object.
 //
 // > **Note** This resource can only be used with an workspace-level provider!
@@ -54,24 +56,8 @@ func LookupExternalMetadata(ctx *pulumi.Context, args *LookupExternalMetadataArg
 
 // A collection of arguments for invoking getExternalMetadata.
 type LookupExternalMetadataArgs struct {
-	// (list of string) - List of columns associated with the external metadata object
-	Columns []string `pulumi:"columns"`
-	// (string) - User-provided free-form text description
-	Description *string `pulumi:"description"`
-	// (string) - Type of entity within the external system
-	EntityType string `pulumi:"entityType"`
 	// Name of the external metadata object
 	Name string `pulumi:"name"`
-	// (string) - Owner of the external metadata object
-	Owner *string `pulumi:"owner"`
-	// (object) - A map of key-value properties attached to the external metadata object
-	Properties map[string]string `pulumi:"properties"`
-	// (string) - Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `TABLEAU`, `TERADATA`, `WORKDAY`
-	SystemType string `pulumi:"systemType"`
-	// (string) - URL associated with the external metadata object
-	Url *string `pulumi:"url"`
-	// Workspace ID of the resource
-	WorkspaceId *string `pulumi:"workspaceId"`
 }
 
 // A collection of values returned by getExternalMetadata.
@@ -83,7 +69,7 @@ type LookupExternalMetadataResult struct {
 	// (string) - Username of external metadata object creator
 	CreatedBy string `pulumi:"createdBy"`
 	// (string) - User-provided free-form text description
-	Description *string `pulumi:"description"`
+	Description string `pulumi:"description"`
 	// (string) - Type of entity within the external system
 	EntityType string `pulumi:"entityType"`
 	// (string) - Unique identifier of the external metadata object
@@ -93,18 +79,17 @@ type LookupExternalMetadataResult struct {
 	// (string) - Name of the external metadata object
 	Name string `pulumi:"name"`
 	// (string) - Owner of the external metadata object
-	Owner *string `pulumi:"owner"`
+	Owner string `pulumi:"owner"`
 	// (object) - A map of key-value properties attached to the external metadata object
 	Properties map[string]string `pulumi:"properties"`
-	// (string) - Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `TABLEAU`, `TERADATA`, `WORKDAY`
+	// (string) - Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `STREAM_NATIVE`, `TABLEAU`, `TERADATA`, `WORKDAY`
 	SystemType string `pulumi:"systemType"`
 	// (string) - Time at which this external metadata object was last modified
 	UpdateTime string `pulumi:"updateTime"`
 	// (string) - Username of user who last modified external metadata object
 	UpdatedBy string `pulumi:"updatedBy"`
 	// (string) - URL associated with the external metadata object
-	Url         *string `pulumi:"url"`
-	WorkspaceId *string `pulumi:"workspaceId"`
+	Url string `pulumi:"url"`
 }
 
 func LookupExternalMetadataOutput(ctx *pulumi.Context, args LookupExternalMetadataOutputArgs, opts ...pulumi.InvokeOption) LookupExternalMetadataResultOutput {
@@ -118,24 +103,8 @@ func LookupExternalMetadataOutput(ctx *pulumi.Context, args LookupExternalMetada
 
 // A collection of arguments for invoking getExternalMetadata.
 type LookupExternalMetadataOutputArgs struct {
-	// (list of string) - List of columns associated with the external metadata object
-	Columns pulumi.StringArrayInput `pulumi:"columns"`
-	// (string) - User-provided free-form text description
-	Description pulumi.StringPtrInput `pulumi:"description"`
-	// (string) - Type of entity within the external system
-	EntityType pulumi.StringInput `pulumi:"entityType"`
 	// Name of the external metadata object
 	Name pulumi.StringInput `pulumi:"name"`
-	// (string) - Owner of the external metadata object
-	Owner pulumi.StringPtrInput `pulumi:"owner"`
-	// (object) - A map of key-value properties attached to the external metadata object
-	Properties pulumi.StringMapInput `pulumi:"properties"`
-	// (string) - Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `TABLEAU`, `TERADATA`, `WORKDAY`
-	SystemType pulumi.StringInput `pulumi:"systemType"`
-	// (string) - URL associated with the external metadata object
-	Url pulumi.StringPtrInput `pulumi:"url"`
-	// Workspace ID of the resource
-	WorkspaceId pulumi.StringPtrInput `pulumi:"workspaceId"`
 }
 
 func (LookupExternalMetadataOutputArgs) ElementType() reflect.Type {
@@ -173,8 +142,8 @@ func (o LookupExternalMetadataResultOutput) CreatedBy() pulumi.StringOutput {
 }
 
 // (string) - User-provided free-form text description
-func (o LookupExternalMetadataResultOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupExternalMetadataResult) *string { return v.Description }).(pulumi.StringPtrOutput)
+func (o LookupExternalMetadataResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupExternalMetadataResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
 // (string) - Type of entity within the external system
@@ -198,8 +167,8 @@ func (o LookupExternalMetadataResultOutput) Name() pulumi.StringOutput {
 }
 
 // (string) - Owner of the external metadata object
-func (o LookupExternalMetadataResultOutput) Owner() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupExternalMetadataResult) *string { return v.Owner }).(pulumi.StringPtrOutput)
+func (o LookupExternalMetadataResultOutput) Owner() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupExternalMetadataResult) string { return v.Owner }).(pulumi.StringOutput)
 }
 
 // (object) - A map of key-value properties attached to the external metadata object
@@ -207,7 +176,7 @@ func (o LookupExternalMetadataResultOutput) Properties() pulumi.StringMapOutput 
 	return o.ApplyT(func(v LookupExternalMetadataResult) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
 }
 
-// (string) - Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `TABLEAU`, `TERADATA`, `WORKDAY`
+// (string) - Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `STREAM_NATIVE`, `TABLEAU`, `TERADATA`, `WORKDAY`
 func (o LookupExternalMetadataResultOutput) SystemType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupExternalMetadataResult) string { return v.SystemType }).(pulumi.StringOutput)
 }
@@ -223,12 +192,8 @@ func (o LookupExternalMetadataResultOutput) UpdatedBy() pulumi.StringOutput {
 }
 
 // (string) - URL associated with the external metadata object
-func (o LookupExternalMetadataResultOutput) Url() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupExternalMetadataResult) *string { return v.Url }).(pulumi.StringPtrOutput)
-}
-
-func (o LookupExternalMetadataResultOutput) WorkspaceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupExternalMetadataResult) *string { return v.WorkspaceId }).(pulumi.StringPtrOutput)
+func (o LookupExternalMetadataResultOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupExternalMetadataResult) string { return v.Url }).(pulumi.StringOutput)
 }
 
 func init() {

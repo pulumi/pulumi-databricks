@@ -13,6 +13,7 @@ import com.pulumi.databricks.outputs.JobTaskNewClusterDockerImage;
 import com.pulumi.databricks.outputs.JobTaskNewClusterGcpAttributes;
 import com.pulumi.databricks.outputs.JobTaskNewClusterInitScript;
 import com.pulumi.databricks.outputs.JobTaskNewClusterLibrary;
+import com.pulumi.databricks.outputs.JobTaskNewClusterProviderConfig;
 import com.pulumi.databricks.outputs.JobTaskNewClusterWorkloadType;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -55,6 +56,11 @@ public final class JobTaskNewCluster {
     private @Nullable String nodeTypeId;
     private @Nullable Integer numWorkers;
     private @Nullable String policyId;
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    private @Nullable JobTaskNewClusterProviderConfig providerConfig;
     private @Nullable Integer remoteDiskThroughput;
     private @Nullable String runtimeEngine;
     private @Nullable String singleUserName;
@@ -153,6 +159,13 @@ public final class JobTaskNewCluster {
     public Optional<String> policyId() {
         return Optional.ofNullable(this.policyId);
     }
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Optional<JobTaskNewClusterProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
     public Optional<Integer> remoteDiskThroughput() {
         return Optional.ofNullable(this.remoteDiskThroughput);
     }
@@ -223,6 +236,7 @@ public final class JobTaskNewCluster {
         private @Nullable String nodeTypeId;
         private @Nullable Integer numWorkers;
         private @Nullable String policyId;
+        private @Nullable JobTaskNewClusterProviderConfig providerConfig;
         private @Nullable Integer remoteDiskThroughput;
         private @Nullable String runtimeEngine;
         private @Nullable String singleUserName;
@@ -262,6 +276,7 @@ public final class JobTaskNewCluster {
     	      this.nodeTypeId = defaults.nodeTypeId;
     	      this.numWorkers = defaults.numWorkers;
     	      this.policyId = defaults.policyId;
+    	      this.providerConfig = defaults.providerConfig;
     	      this.remoteDiskThroughput = defaults.remoteDiskThroughput;
     	      this.runtimeEngine = defaults.runtimeEngine;
     	      this.singleUserName = defaults.singleUserName;
@@ -443,6 +458,12 @@ public final class JobTaskNewCluster {
             return this;
         }
         @CustomType.Setter
+        public Builder providerConfig(@Nullable JobTaskNewClusterProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder remoteDiskThroughput(@Nullable Integer remoteDiskThroughput) {
 
             this.remoteDiskThroughput = remoteDiskThroughput;
@@ -533,6 +554,7 @@ public final class JobTaskNewCluster {
             _resultValue.nodeTypeId = nodeTypeId;
             _resultValue.numWorkers = numWorkers;
             _resultValue.policyId = policyId;
+            _resultValue.providerConfig = providerConfig;
             _resultValue.remoteDiskThroughput = remoteDiskThroughput;
             _resultValue.runtimeEngine = runtimeEngine;
             _resultValue.singleUserName = singleUserName;

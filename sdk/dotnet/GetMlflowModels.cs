@@ -108,6 +108,12 @@ namespace Pulumi.Databricks
             set => _names = value;
         }
 
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Inputs.GetMlflowModelsProviderConfigArgs? ProviderConfig { get; set; }
+
         public GetMlflowModelsArgs()
         {
         }
@@ -128,6 +134,12 @@ namespace Pulumi.Databricks
             set => _names = value;
         }
 
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.GetMlflowModelsProviderConfigInputArgs>? ProviderConfig { get; set; }
+
         public GetMlflowModelsInvokeArgs()
         {
         }
@@ -146,15 +158,19 @@ namespace Pulumi.Databricks
         /// List of names of databricks_mlflow_model
         /// </summary>
         public readonly ImmutableArray<string> Names;
+        public readonly Outputs.GetMlflowModelsProviderConfigResult? ProviderConfig;
 
         [OutputConstructor]
         private GetMlflowModelsResult(
             string id,
 
-            ImmutableArray<string> names)
+            ImmutableArray<string> names,
+
+            Outputs.GetMlflowModelsProviderConfigResult? providerConfig)
         {
             Id = id;
             Names = names;
+            ProviderConfig = providerConfig;
         }
     }
 }

@@ -4,22 +4,33 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetBudgetPoliciesFilterBy;
 import com.pulumi.databricks.outputs.GetBudgetPoliciesPolicy;
+import com.pulumi.databricks.outputs.GetBudgetPoliciesSortSpec;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetBudgetPoliciesResult {
+    private @Nullable GetBudgetPoliciesFilterBy filterBy;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
+    private @Nullable Integer pageSize;
     private List<GetBudgetPoliciesPolicy> policies;
+    private @Nullable GetBudgetPoliciesSortSpec sortSpec;
 
     private GetBudgetPoliciesResult() {}
+    public Optional<GetBudgetPoliciesFilterBy> filterBy() {
+        return Optional.ofNullable(this.filterBy);
+    }
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -27,8 +38,14 @@ public final class GetBudgetPoliciesResult {
     public String id() {
         return this.id;
     }
+    public Optional<Integer> pageSize() {
+        return Optional.ofNullable(this.pageSize);
+    }
     public List<GetBudgetPoliciesPolicy> policies() {
         return this.policies;
+    }
+    public Optional<GetBudgetPoliciesSortSpec> sortSpec() {
+        return Optional.ofNullable(this.sortSpec);
     }
 
     public static Builder builder() {
@@ -40,21 +57,39 @@ public final class GetBudgetPoliciesResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable GetBudgetPoliciesFilterBy filterBy;
         private String id;
+        private @Nullable Integer pageSize;
         private List<GetBudgetPoliciesPolicy> policies;
+        private @Nullable GetBudgetPoliciesSortSpec sortSpec;
         public Builder() {}
         public Builder(GetBudgetPoliciesResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.filterBy = defaults.filterBy;
     	      this.id = defaults.id;
+    	      this.pageSize = defaults.pageSize;
     	      this.policies = defaults.policies;
+    	      this.sortSpec = defaults.sortSpec;
         }
 
+        @CustomType.Setter
+        public Builder filterBy(@Nullable GetBudgetPoliciesFilterBy filterBy) {
+
+            this.filterBy = filterBy;
+            return this;
+        }
         @CustomType.Setter
         public Builder id(String id) {
             if (id == null) {
               throw new MissingRequiredPropertyException("GetBudgetPoliciesResult", "id");
             }
             this.id = id;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder pageSize(@Nullable Integer pageSize) {
+
+            this.pageSize = pageSize;
             return this;
         }
         @CustomType.Setter
@@ -68,10 +103,19 @@ public final class GetBudgetPoliciesResult {
         public Builder policies(GetBudgetPoliciesPolicy... policies) {
             return policies(List.of(policies));
         }
+        @CustomType.Setter
+        public Builder sortSpec(@Nullable GetBudgetPoliciesSortSpec sortSpec) {
+
+            this.sortSpec = sortSpec;
+            return this;
+        }
         public GetBudgetPoliciesResult build() {
             final var _resultValue = new GetBudgetPoliciesResult();
+            _resultValue.filterBy = filterBy;
             _resultValue.id = id;
+            _resultValue.pageSize = pageSize;
             _resultValue.policies = policies;
+            _resultValue.sortSpec = sortSpec;
             return _resultValue;
         }
     }

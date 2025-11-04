@@ -6,6 +6,7 @@ package com.pulumi.databricks.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.JobJobClusterNewClusterLibraryCran;
 import com.pulumi.databricks.outputs.JobJobClusterNewClusterLibraryMaven;
+import com.pulumi.databricks.outputs.JobJobClusterNewClusterLibraryProviderConfig;
 import com.pulumi.databricks.outputs.JobJobClusterNewClusterLibraryPypi;
 import java.lang.String;
 import java.util.Objects;
@@ -24,6 +25,11 @@ public final class JobJobClusterNewClusterLibrary {
     private @Nullable String egg;
     private @Nullable String jar;
     private @Nullable JobJobClusterNewClusterLibraryMaven maven;
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    private @Nullable JobJobClusterNewClusterLibraryProviderConfig providerConfig;
     private @Nullable JobJobClusterNewClusterLibraryPypi pypi;
     private @Nullable String requirements;
     private @Nullable String whl;
@@ -46,6 +52,13 @@ public final class JobJobClusterNewClusterLibrary {
     }
     public Optional<JobJobClusterNewClusterLibraryMaven> maven() {
         return Optional.ofNullable(this.maven);
+    }
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Optional<JobJobClusterNewClusterLibraryProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
     }
     public Optional<JobJobClusterNewClusterLibraryPypi> pypi() {
         return Optional.ofNullable(this.pypi);
@@ -70,6 +83,7 @@ public final class JobJobClusterNewClusterLibrary {
         private @Nullable String egg;
         private @Nullable String jar;
         private @Nullable JobJobClusterNewClusterLibraryMaven maven;
+        private @Nullable JobJobClusterNewClusterLibraryProviderConfig providerConfig;
         private @Nullable JobJobClusterNewClusterLibraryPypi pypi;
         private @Nullable String requirements;
         private @Nullable String whl;
@@ -80,6 +94,7 @@ public final class JobJobClusterNewClusterLibrary {
     	      this.egg = defaults.egg;
     	      this.jar = defaults.jar;
     	      this.maven = defaults.maven;
+    	      this.providerConfig = defaults.providerConfig;
     	      this.pypi = defaults.pypi;
     	      this.requirements = defaults.requirements;
     	      this.whl = defaults.whl;
@@ -110,6 +125,12 @@ public final class JobJobClusterNewClusterLibrary {
             return this;
         }
         @CustomType.Setter
+        public Builder providerConfig(@Nullable JobJobClusterNewClusterLibraryProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder pypi(@Nullable JobJobClusterNewClusterLibraryPypi pypi) {
 
             this.pypi = pypi;
@@ -133,6 +154,7 @@ public final class JobJobClusterNewClusterLibrary {
             _resultValue.egg = egg;
             _resultValue.jar = jar;
             _resultValue.maven = maven;
+            _resultValue.providerConfig = providerConfig;
             _resultValue.pypi = pypi;
             _resultValue.requirements = requirements;
             _resultValue.whl = whl;

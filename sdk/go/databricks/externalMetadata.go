@@ -12,6 +12,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+//
 // To enrich lineage with workloads that are run outside of Databricks (for example, first mile ETL or last mile BI),
 // Unity Catalog is introducing the external metadata object. UC lets you add external metadata objects to augment the data lineage it captures automatically, giving you an end-to-end lineage view in UC.
 // This is useful when you want to capture where data came from (for example, Salesforce or MySQL) before it was ingested into UC or where data is being consumed outside UC (for example, Tableau or PowerBI).
@@ -77,7 +79,7 @@ import (
 // If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
 //
 // ```sh
-// $ pulumi import databricks:index/externalMetadata:ExternalMetadata databricks_external_metadata "name"
+// $ pulumi import databricks:index/externalMetadata:ExternalMetadata this "name"
 // ```
 type ExternalMetadata struct {
 	pulumi.CustomResourceState
@@ -100,7 +102,7 @@ type ExternalMetadata struct {
 	Owner pulumi.StringPtrOutput `pulumi:"owner"`
 	// A map of key-value properties attached to the external metadata object
 	Properties pulumi.StringMapOutput `pulumi:"properties"`
-	// Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `TABLEAU`, `TERADATA`, `WORKDAY`
+	// Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `STREAM_NATIVE`, `TABLEAU`, `TERADATA`, `WORKDAY`
 	SystemType pulumi.StringOutput `pulumi:"systemType"`
 	// (string) - Time at which this external metadata object was last modified
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -108,8 +110,6 @@ type ExternalMetadata struct {
 	UpdatedBy pulumi.StringOutput `pulumi:"updatedBy"`
 	// URL associated with the external metadata object
 	Url pulumi.StringPtrOutput `pulumi:"url"`
-	// Workspace ID of the resource
-	WorkspaceId pulumi.StringPtrOutput `pulumi:"workspaceId"`
 }
 
 // NewExternalMetadata registers a new resource with the given unique name, arguments, and options.
@@ -166,7 +166,7 @@ type externalMetadataState struct {
 	Owner *string `pulumi:"owner"`
 	// A map of key-value properties attached to the external metadata object
 	Properties map[string]string `pulumi:"properties"`
-	// Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `TABLEAU`, `TERADATA`, `WORKDAY`
+	// Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `STREAM_NATIVE`, `TABLEAU`, `TERADATA`, `WORKDAY`
 	SystemType *string `pulumi:"systemType"`
 	// (string) - Time at which this external metadata object was last modified
 	UpdateTime *string `pulumi:"updateTime"`
@@ -174,8 +174,6 @@ type externalMetadataState struct {
 	UpdatedBy *string `pulumi:"updatedBy"`
 	// URL associated with the external metadata object
 	Url *string `pulumi:"url"`
-	// Workspace ID of the resource
-	WorkspaceId *string `pulumi:"workspaceId"`
 }
 
 type ExternalMetadataState struct {
@@ -197,7 +195,7 @@ type ExternalMetadataState struct {
 	Owner pulumi.StringPtrInput
 	// A map of key-value properties attached to the external metadata object
 	Properties pulumi.StringMapInput
-	// Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `TABLEAU`, `TERADATA`, `WORKDAY`
+	// Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `STREAM_NATIVE`, `TABLEAU`, `TERADATA`, `WORKDAY`
 	SystemType pulumi.StringPtrInput
 	// (string) - Time at which this external metadata object was last modified
 	UpdateTime pulumi.StringPtrInput
@@ -205,8 +203,6 @@ type ExternalMetadataState struct {
 	UpdatedBy pulumi.StringPtrInput
 	// URL associated with the external metadata object
 	Url pulumi.StringPtrInput
-	// Workspace ID of the resource
-	WorkspaceId pulumi.StringPtrInput
 }
 
 func (ExternalMetadataState) ElementType() reflect.Type {
@@ -226,12 +222,10 @@ type externalMetadataArgs struct {
 	Owner *string `pulumi:"owner"`
 	// A map of key-value properties attached to the external metadata object
 	Properties map[string]string `pulumi:"properties"`
-	// Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `TABLEAU`, `TERADATA`, `WORKDAY`
+	// Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `STREAM_NATIVE`, `TABLEAU`, `TERADATA`, `WORKDAY`
 	SystemType string `pulumi:"systemType"`
 	// URL associated with the external metadata object
 	Url *string `pulumi:"url"`
-	// Workspace ID of the resource
-	WorkspaceId *string `pulumi:"workspaceId"`
 }
 
 // The set of arguments for constructing a ExternalMetadata resource.
@@ -248,12 +242,10 @@ type ExternalMetadataArgs struct {
 	Owner pulumi.StringPtrInput
 	// A map of key-value properties attached to the external metadata object
 	Properties pulumi.StringMapInput
-	// Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `TABLEAU`, `TERADATA`, `WORKDAY`
+	// Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `STREAM_NATIVE`, `TABLEAU`, `TERADATA`, `WORKDAY`
 	SystemType pulumi.StringInput
 	// URL associated with the external metadata object
 	Url pulumi.StringPtrInput
-	// Workspace ID of the resource
-	WorkspaceId pulumi.StringPtrInput
 }
 
 func (ExternalMetadataArgs) ElementType() reflect.Type {
@@ -388,7 +380,7 @@ func (o ExternalMetadataOutput) Properties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ExternalMetadata) pulumi.StringMapOutput { return v.Properties }).(pulumi.StringMapOutput)
 }
 
-// Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `TABLEAU`, `TERADATA`, `WORKDAY`
+// Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `STREAM_NATIVE`, `TABLEAU`, `TERADATA`, `WORKDAY`
 func (o ExternalMetadataOutput) SystemType() pulumi.StringOutput {
 	return o.ApplyT(func(v *ExternalMetadata) pulumi.StringOutput { return v.SystemType }).(pulumi.StringOutput)
 }
@@ -406,11 +398,6 @@ func (o ExternalMetadataOutput) UpdatedBy() pulumi.StringOutput {
 // URL associated with the external metadata object
 func (o ExternalMetadataOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ExternalMetadata) pulumi.StringPtrOutput { return v.Url }).(pulumi.StringPtrOutput)
-}
-
-// Workspace ID of the resource
-func (o ExternalMetadataOutput) WorkspaceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ExternalMetadata) pulumi.StringPtrOutput { return v.WorkspaceId }).(pulumi.StringPtrOutput)
 }
 
 type ExternalMetadataArrayOutput struct{ *pulumi.OutputState }

@@ -7,6 +7,8 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
  * Service principal federation policies allow automated workloads running outside of Databricks to access Databricks APIs without the need for Databricks secrets. Your application (workload) authenticates to Databricks as a Databricks service principal using tokens issued by the workload runtime, for example Github Actions.
  *
  * A service principal federation policy is associated with a service principal in your Databricks account, and specifies:
@@ -32,7 +34,7 @@ import * as utilities from "./utilities";
  * If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
  *
  * ```sh
- * $ pulumi import databricks:index/servicePrincipalFederationPolicy:ServicePrincipalFederationPolicy databricks_service_principal_federation_policy "service_principal_id,policy_id"
+ * $ pulumi import databricks:index/servicePrincipalFederationPolicy:ServicePrincipalFederationPolicy this "service_principal_id,policy_id"
  * ```
  */
 export class ServicePrincipalFederationPolicy extends pulumi.CustomResource {
@@ -82,11 +84,11 @@ export class ServicePrincipalFederationPolicy extends pulumi.CustomResource {
     declare public /*out*/ readonly name: pulumi.Output<string>;
     declare public readonly oidcPolicy: pulumi.Output<outputs.ServicePrincipalFederationPolicyOidcPolicy | undefined>;
     /**
-     * (string) - The ID of the federation policy
+     * (string) - The ID of the federation policy. Output only
      */
     declare public readonly policyId: pulumi.Output<string>;
     /**
-     * (integer) - The service principal ID that this federation policy applies to. Only set for service principal federation policies
+     * (integer) - The service principal ID that this federation policy applies to. Output only. Only set for service principal federation policies
      */
     declare public readonly servicePrincipalId: pulumi.Output<number>;
     /**
@@ -158,11 +160,11 @@ export interface ServicePrincipalFederationPolicyState {
     name?: pulumi.Input<string>;
     oidcPolicy?: pulumi.Input<inputs.ServicePrincipalFederationPolicyOidcPolicy>;
     /**
-     * (string) - The ID of the federation policy
+     * (string) - The ID of the federation policy. Output only
      */
     policyId?: pulumi.Input<string>;
     /**
-     * (integer) - The service principal ID that this federation policy applies to. Only set for service principal federation policies
+     * (integer) - The service principal ID that this federation policy applies to. Output only. Only set for service principal federation policies
      */
     servicePrincipalId?: pulumi.Input<number>;
     /**
@@ -185,11 +187,11 @@ export interface ServicePrincipalFederationPolicyArgs {
     description?: pulumi.Input<string>;
     oidcPolicy?: pulumi.Input<inputs.ServicePrincipalFederationPolicyOidcPolicy>;
     /**
-     * (string) - The ID of the federation policy
+     * (string) - The ID of the federation policy. Output only
      */
     policyId?: pulumi.Input<string>;
     /**
-     * (integer) - The service principal ID that this federation policy applies to. Only set for service principal federation policies
+     * (integer) - The service principal ID that this federation policy applies to. Output only. Only set for service principal federation policies
      */
     servicePrincipalId?: pulumi.Input<number>;
 }

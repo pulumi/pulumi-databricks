@@ -27,16 +27,16 @@ class GetAppsSettingsCustomTemplatesResult:
     """
     A collection of values returned by getAppsSettingsCustomTemplates.
     """
-    def __init__(__self__, id=None, templates=None, workspace_id=None):
+    def __init__(__self__, id=None, page_size=None, templates=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if page_size and not isinstance(page_size, int):
+            raise TypeError("Expected argument 'page_size' to be a int")
+        pulumi.set(__self__, "page_size", page_size)
         if templates and not isinstance(templates, list):
             raise TypeError("Expected argument 'templates' to be a list")
         pulumi.set(__self__, "templates", templates)
-        if workspace_id and not isinstance(workspace_id, str):
-            raise TypeError("Expected argument 'workspace_id' to be a str")
-        pulumi.set(__self__, "workspace_id", workspace_id)
 
     @_builtins.property
     @pulumi.getter
@@ -47,14 +47,14 @@ class GetAppsSettingsCustomTemplatesResult:
         return pulumi.get(self, "id")
 
     @_builtins.property
+    @pulumi.getter(name="pageSize")
+    def page_size(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "page_size")
+
+    @_builtins.property
     @pulumi.getter
     def templates(self) -> Sequence['outputs.GetAppsSettingsCustomTemplatesTemplateResult']:
         return pulumi.get(self, "templates")
-
-    @_builtins.property
-    @pulumi.getter(name="workspaceId")
-    def workspace_id(self) -> Optional[_builtins.str]:
-        return pulumi.get(self, "workspace_id")
 
 
 class AwaitableGetAppsSettingsCustomTemplatesResult(GetAppsSettingsCustomTemplatesResult):
@@ -64,13 +64,15 @@ class AwaitableGetAppsSettingsCustomTemplatesResult(GetAppsSettingsCustomTemplat
             yield self
         return GetAppsSettingsCustomTemplatesResult(
             id=self.id,
-            templates=self.templates,
-            workspace_id=self.workspace_id)
+            page_size=self.page_size,
+            templates=self.templates)
 
 
-def get_apps_settings_custom_templates(workspace_id: Optional[_builtins.str] = None,
+def get_apps_settings_custom_templates(page_size: Optional[_builtins.int] = None,
                                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAppsSettingsCustomTemplatesResult:
     """
+    [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
     This data source can be used to fetch the list of Custom Templates within the workspace.
     The list can then be accessed via the data object's `templates` field.
 
@@ -87,20 +89,22 @@ def get_apps_settings_custom_templates(workspace_id: Optional[_builtins.str] = N
     ```
 
 
-    :param _builtins.str workspace_id: Workspace ID of the resource
+    :param _builtins.int page_size: Upper bound for items returned
     """
     __args__ = dict()
-    __args__['workspaceId'] = workspace_id
+    __args__['pageSize'] = page_size
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getAppsSettingsCustomTemplates:getAppsSettingsCustomTemplates', __args__, opts=opts, typ=GetAppsSettingsCustomTemplatesResult).value
 
     return AwaitableGetAppsSettingsCustomTemplatesResult(
         id=pulumi.get(__ret__, 'id'),
-        templates=pulumi.get(__ret__, 'templates'),
-        workspace_id=pulumi.get(__ret__, 'workspace_id'))
-def get_apps_settings_custom_templates_output(workspace_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+        page_size=pulumi.get(__ret__, 'page_size'),
+        templates=pulumi.get(__ret__, 'templates'))
+def get_apps_settings_custom_templates_output(page_size: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
                                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAppsSettingsCustomTemplatesResult]:
     """
+    [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
     This data source can be used to fetch the list of Custom Templates within the workspace.
     The list can then be accessed via the data object's `templates` field.
 
@@ -117,13 +121,13 @@ def get_apps_settings_custom_templates_output(workspace_id: Optional[pulumi.Inpu
     ```
 
 
-    :param _builtins.str workspace_id: Workspace ID of the resource
+    :param _builtins.int page_size: Upper bound for items returned
     """
     __args__ = dict()
-    __args__['workspaceId'] = workspace_id
+    __args__['pageSize'] = page_size
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getAppsSettingsCustomTemplates:getAppsSettingsCustomTemplates', __args__, opts=opts, typ=GetAppsSettingsCustomTemplatesResult)
     return __ret__.apply(lambda __response__: GetAppsSettingsCustomTemplatesResult(
         id=pulumi.get(__response__, 'id'),
-        templates=pulumi.get(__response__, 'templates'),
-        workspace_id=pulumi.get(__response__, 'workspace_id')))
+        page_size=pulumi.get(__response__, 'page_size'),
+        templates=pulumi.get(__response__, 'templates')))

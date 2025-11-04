@@ -28,7 +28,7 @@ class GetSqlWarehouseResult:
     """
     A collection of values returned by getSqlWarehouse.
     """
-    def __init__(__self__, auto_stop_mins=None, channel=None, cluster_size=None, creator_name=None, data_source_id=None, enable_photon=None, enable_serverless_compute=None, health=None, id=None, instance_profile_arn=None, jdbc_url=None, max_num_clusters=None, min_num_clusters=None, name=None, num_active_sessions=None, num_clusters=None, odbc_params=None, spot_instance_policy=None, state=None, tags=None, warehouse_type=None):
+    def __init__(__self__, auto_stop_mins=None, channel=None, cluster_size=None, creator_name=None, data_source_id=None, enable_photon=None, enable_serverless_compute=None, health=None, id=None, instance_profile_arn=None, jdbc_url=None, max_num_clusters=None, min_num_clusters=None, name=None, num_active_sessions=None, num_clusters=None, odbc_params=None, provider_config=None, spot_instance_policy=None, state=None, tags=None, warehouse_type=None):
         if auto_stop_mins and not isinstance(auto_stop_mins, int):
             raise TypeError("Expected argument 'auto_stop_mins' to be a int")
         pulumi.set(__self__, "auto_stop_mins", auto_stop_mins)
@@ -80,6 +80,9 @@ class GetSqlWarehouseResult:
         if odbc_params and not isinstance(odbc_params, dict):
             raise TypeError("Expected argument 'odbc_params' to be a dict")
         pulumi.set(__self__, "odbc_params", odbc_params)
+        if provider_config and not isinstance(provider_config, dict):
+            raise TypeError("Expected argument 'provider_config' to be a dict")
+        pulumi.set(__self__, "provider_config", provider_config)
         if spot_instance_policy and not isinstance(spot_instance_policy, str):
             raise TypeError("Expected argument 'spot_instance_policy' to be a str")
         pulumi.set(__self__, "spot_instance_policy", spot_instance_policy)
@@ -227,6 +230,11 @@ class GetSqlWarehouseResult:
         return pulumi.get(self, "odbc_params")
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional['outputs.GetSqlWarehouseProviderConfigResult']:
+        return pulumi.get(self, "provider_config")
+
+    @_builtins.property
     @pulumi.getter(name="spotInstancePolicy")
     def spot_instance_policy(self) -> _builtins.str:
         """
@@ -282,6 +290,7 @@ class AwaitableGetSqlWarehouseResult(GetSqlWarehouseResult):
             num_active_sessions=self.num_active_sessions,
             num_clusters=self.num_clusters,
             odbc_params=self.odbc_params,
+            provider_config=self.provider_config,
             spot_instance_policy=self.spot_instance_policy,
             state=self.state,
             tags=self.tags,
@@ -305,6 +314,7 @@ def get_sql_warehouse(auto_stop_mins: Optional[_builtins.int] = None,
                       num_active_sessions: Optional[_builtins.int] = None,
                       num_clusters: Optional[_builtins.int] = None,
                       odbc_params: Optional[Union['GetSqlWarehouseOdbcParamsArgs', 'GetSqlWarehouseOdbcParamsArgsDict']] = None,
+                      provider_config: Optional[Union['GetSqlWarehouseProviderConfigArgs', 'GetSqlWarehouseProviderConfigArgsDict']] = None,
                       spot_instance_policy: Optional[_builtins.str] = None,
                       state: Optional[_builtins.str] = None,
                       tags: Optional[Union['GetSqlWarehouseTagsArgs', 'GetSqlWarehouseTagsArgsDict']] = None,
@@ -386,6 +396,7 @@ def get_sql_warehouse(auto_stop_mins: Optional[_builtins.int] = None,
     __args__['numActiveSessions'] = num_active_sessions
     __args__['numClusters'] = num_clusters
     __args__['odbcParams'] = odbc_params
+    __args__['providerConfig'] = provider_config
     __args__['spotInstancePolicy'] = spot_instance_policy
     __args__['state'] = state
     __args__['tags'] = tags
@@ -411,6 +422,7 @@ def get_sql_warehouse(auto_stop_mins: Optional[_builtins.int] = None,
         num_active_sessions=pulumi.get(__ret__, 'num_active_sessions'),
         num_clusters=pulumi.get(__ret__, 'num_clusters'),
         odbc_params=pulumi.get(__ret__, 'odbc_params'),
+        provider_config=pulumi.get(__ret__, 'provider_config'),
         spot_instance_policy=pulumi.get(__ret__, 'spot_instance_policy'),
         state=pulumi.get(__ret__, 'state'),
         tags=pulumi.get(__ret__, 'tags'),
@@ -432,6 +444,7 @@ def get_sql_warehouse_output(auto_stop_mins: Optional[pulumi.Input[Optional[_bui
                              num_active_sessions: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
                              num_clusters: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
                              odbc_params: Optional[pulumi.Input[Optional[Union['GetSqlWarehouseOdbcParamsArgs', 'GetSqlWarehouseOdbcParamsArgsDict']]]] = None,
+                             provider_config: Optional[pulumi.Input[Optional[Union['GetSqlWarehouseProviderConfigArgs', 'GetSqlWarehouseProviderConfigArgsDict']]]] = None,
                              spot_instance_policy: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                              state: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                              tags: Optional[pulumi.Input[Optional[Union['GetSqlWarehouseTagsArgs', 'GetSqlWarehouseTagsArgsDict']]]] = None,
@@ -513,6 +526,7 @@ def get_sql_warehouse_output(auto_stop_mins: Optional[pulumi.Input[Optional[_bui
     __args__['numActiveSessions'] = num_active_sessions
     __args__['numClusters'] = num_clusters
     __args__['odbcParams'] = odbc_params
+    __args__['providerConfig'] = provider_config
     __args__['spotInstancePolicy'] = spot_instance_policy
     __args__['state'] = state
     __args__['tags'] = tags
@@ -537,6 +551,7 @@ def get_sql_warehouse_output(auto_stop_mins: Optional[pulumi.Input[Optional[_bui
         num_active_sessions=pulumi.get(__response__, 'num_active_sessions'),
         num_clusters=pulumi.get(__response__, 'num_clusters'),
         odbc_params=pulumi.get(__response__, 'odbc_params'),
+        provider_config=pulumi.get(__response__, 'provider_config'),
         spot_instance_policy=pulumi.get(__response__, 'spot_instance_policy'),
         state=pulumi.get(__response__, 'state'),
         tags=pulumi.get(__response__, 'tags'),

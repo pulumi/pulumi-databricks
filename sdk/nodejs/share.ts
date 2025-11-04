@@ -156,11 +156,12 @@ export class Share extends pulumi.CustomResource {
     /**
      * Time when the share was created.
      */
-    declare public readonly createdAt: pulumi.Output<number>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<number>;
     /**
      * The principal that created the share.
      */
-    declare public readonly createdBy: pulumi.Output<string>;
+    declare public /*out*/ readonly createdBy: pulumi.Output<string>;
+    declare public /*out*/ readonly effectiveOwner: pulumi.Output<string>;
     /**
      * Name of share. Change forces creation of a new resource.
      */
@@ -170,10 +171,14 @@ export class Share extends pulumi.CustomResource {
      * User name/group name/sp applicationId of the share owner.
      */
     declare public readonly owner: pulumi.Output<string | undefined>;
-    declare public readonly storageLocation: pulumi.Output<string | undefined>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    declare public readonly providerConfig: pulumi.Output<outputs.ShareProviderConfig | undefined>;
+    declare public /*out*/ readonly storageLocation: pulumi.Output<string>;
     declare public readonly storageRoot: pulumi.Output<string | undefined>;
-    declare public readonly updatedAt: pulumi.Output<number>;
-    declare public readonly updatedBy: pulumi.Output<string>;
+    declare public /*out*/ readonly updatedAt: pulumi.Output<number>;
+    declare public /*out*/ readonly updatedBy: pulumi.Output<string>;
 
     /**
      * Create a Share resource with the given unique name, arguments, and options.
@@ -191,9 +196,11 @@ export class Share extends pulumi.CustomResource {
             resourceInputs["comment"] = state?.comment;
             resourceInputs["createdAt"] = state?.createdAt;
             resourceInputs["createdBy"] = state?.createdBy;
+            resourceInputs["effectiveOwner"] = state?.effectiveOwner;
             resourceInputs["name"] = state?.name;
             resourceInputs["objects"] = state?.objects;
             resourceInputs["owner"] = state?.owner;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["storageLocation"] = state?.storageLocation;
             resourceInputs["storageRoot"] = state?.storageRoot;
             resourceInputs["updatedAt"] = state?.updatedAt;
@@ -201,15 +208,17 @@ export class Share extends pulumi.CustomResource {
         } else {
             const args = argsOrState as ShareArgs | undefined;
             resourceInputs["comment"] = args?.comment;
-            resourceInputs["createdAt"] = args?.createdAt;
-            resourceInputs["createdBy"] = args?.createdBy;
             resourceInputs["name"] = args?.name;
             resourceInputs["objects"] = args?.objects;
             resourceInputs["owner"] = args?.owner;
-            resourceInputs["storageLocation"] = args?.storageLocation;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["storageRoot"] = args?.storageRoot;
-            resourceInputs["updatedAt"] = args?.updatedAt;
-            resourceInputs["updatedBy"] = args?.updatedBy;
+            resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["createdBy"] = undefined /*out*/;
+            resourceInputs["effectiveOwner"] = undefined /*out*/;
+            resourceInputs["storageLocation"] = undefined /*out*/;
+            resourceInputs["updatedAt"] = undefined /*out*/;
+            resourceInputs["updatedBy"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Share.__pulumiType, name, resourceInputs, opts);
@@ -232,6 +241,7 @@ export interface ShareState {
      * The principal that created the share.
      */
     createdBy?: pulumi.Input<string>;
+    effectiveOwner?: pulumi.Input<string>;
     /**
      * Name of share. Change forces creation of a new resource.
      */
@@ -241,6 +251,10 @@ export interface ShareState {
      * User name/group name/sp applicationId of the share owner.
      */
     owner?: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.ShareProviderConfig>;
     storageLocation?: pulumi.Input<string>;
     storageRoot?: pulumi.Input<string>;
     updatedAt?: pulumi.Input<number>;
@@ -256,14 +270,6 @@ export interface ShareArgs {
      */
     comment?: pulumi.Input<string>;
     /**
-     * Time when the share was created.
-     */
-    createdAt?: pulumi.Input<number>;
-    /**
-     * The principal that created the share.
-     */
-    createdBy?: pulumi.Input<string>;
-    /**
      * Name of share. Change forces creation of a new resource.
      */
     name?: pulumi.Input<string>;
@@ -272,8 +278,9 @@ export interface ShareArgs {
      * User name/group name/sp applicationId of the share owner.
      */
     owner?: pulumi.Input<string>;
-    storageLocation?: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.ShareProviderConfig>;
     storageRoot?: pulumi.Input<string>;
-    updatedAt?: pulumi.Input<number>;
-    updatedBy?: pulumi.Input<string>;
 }

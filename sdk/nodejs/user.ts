@@ -160,7 +160,7 @@ export class User extends pulumi.CustomResource {
      */
     declare public readonly allowInstancePoolCreate: pulumi.Output<boolean | undefined>;
     /**
-     * This is a field to allow the user to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
+     * This is a field to allow the user to have access to [Databricks SQL](https://databricks.com/product/databricks-sql)  UI, [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one) and through databricks_sql_endpoint.
      */
     declare public readonly databricksSqlAccess: pulumi.Output<boolean | undefined>;
     /**
@@ -200,11 +200,11 @@ export class User extends pulumi.CustomResource {
      */
     declare public readonly userName: pulumi.Output<string>;
     /**
-     * This is a field to allow the user to have access to a Databricks Workspace.
+     * This is a field to allow the user to have access to a Databricks Workspace UI and [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).
      */
     declare public readonly workspaceAccess: pulumi.Output<boolean | undefined>;
     /**
-     * This is a field to allow the user to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspaceAccess` or `databricksSqlAccess`.
+     * This is a field to allow the user to have access only to [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).  Couldn't be used with `workspaceAccess` or `databricksSqlAccess`.
      */
     declare public readonly workspaceConsume: pulumi.Output<boolean | undefined>;
 
@@ -285,7 +285,7 @@ export interface UserState {
      */
     allowInstancePoolCreate?: pulumi.Input<boolean>;
     /**
-     * This is a field to allow the user to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
+     * This is a field to allow the user to have access to [Databricks SQL](https://databricks.com/product/databricks-sql)  UI, [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one) and through databricks_sql_endpoint.
      */
     databricksSqlAccess?: pulumi.Input<boolean>;
     /**
@@ -325,11 +325,11 @@ export interface UserState {
      */
     userName?: pulumi.Input<string>;
     /**
-     * This is a field to allow the user to have access to a Databricks Workspace.
+     * This is a field to allow the user to have access to a Databricks Workspace UI and [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).
      */
     workspaceAccess?: pulumi.Input<boolean>;
     /**
-     * This is a field to allow the user to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspaceAccess` or `databricksSqlAccess`.
+     * This is a field to allow the user to have access only to [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).  Couldn't be used with `workspaceAccess` or `databricksSqlAccess`.
      */
     workspaceConsume?: pulumi.Input<boolean>;
 }
@@ -355,7 +355,7 @@ export interface UserArgs {
      */
     allowInstancePoolCreate?: pulumi.Input<boolean>;
     /**
-     * This is a field to allow the user to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
+     * This is a field to allow the user to have access to [Databricks SQL](https://databricks.com/product/databricks-sql)  UI, [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one) and through databricks_sql_endpoint.
      */
     databricksSqlAccess?: pulumi.Input<boolean>;
     /**
@@ -395,11 +395,11 @@ export interface UserArgs {
      */
     userName: pulumi.Input<string>;
     /**
-     * This is a field to allow the user to have access to a Databricks Workspace.
+     * This is a field to allow the user to have access to a Databricks Workspace UI and [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).
      */
     workspaceAccess?: pulumi.Input<boolean>;
     /**
-     * This is a field to allow the user to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspaceAccess` or `databricksSqlAccess`.
+     * This is a field to allow the user to have access only to [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).  Couldn't be used with `workspaceAccess` or `databricksSqlAccess`.
      */
     workspaceConsume?: pulumi.Input<boolean>;
 }

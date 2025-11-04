@@ -360,6 +360,12 @@ namespace Pulumi.Databricks
         [Input("key")]
         public string? Key { get; set; }
 
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Inputs.GetJobsProviderConfigArgs? ProviderConfig { get; set; }
+
         public GetJobsArgs()
         {
         }
@@ -392,6 +398,12 @@ namespace Pulumi.Databricks
         [Input("key")]
         public Input<string>? Key { get; set; }
 
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.GetJobsProviderConfigInputArgs>? ProviderConfig { get; set; }
+
         public GetJobsInvokeArgs()
         {
         }
@@ -412,6 +424,7 @@ namespace Pulumi.Databricks
         public readonly ImmutableDictionary<string, string> Ids;
         public readonly string? JobNameContains;
         public readonly string? Key;
+        public readonly Outputs.GetJobsProviderConfigResult? ProviderConfig;
 
         [OutputConstructor]
         private GetJobsResult(
@@ -421,12 +434,15 @@ namespace Pulumi.Databricks
 
             string? jobNameContains,
 
-            string? key)
+            string? key,
+
+            Outputs.GetJobsProviderConfigResult? providerConfig)
         {
             Id = id;
             Ids = ids;
             JobNameContains = jobNameContains;
             Key = key;
+            ProviderConfig = providerConfig;
         }
     }
 }

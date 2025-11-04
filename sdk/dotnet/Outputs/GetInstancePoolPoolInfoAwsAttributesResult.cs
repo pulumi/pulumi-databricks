@@ -14,6 +14,7 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetInstancePoolPoolInfoAwsAttributesResult
     {
         public readonly string? Availability;
+        public readonly string? InstanceProfileArn;
         public readonly int? SpotBidPricePercent;
         public readonly string ZoneId;
 
@@ -21,11 +22,14 @@ namespace Pulumi.Databricks.Outputs
         private GetInstancePoolPoolInfoAwsAttributesResult(
             string? availability,
 
+            string? instanceProfileArn,
+
             int? spotBidPricePercent,
 
             string zoneId)
         {
             Availability = availability;
+            InstanceProfileArn = instanceProfileArn;
             SpotBidPricePercent = spotBidPricePercent;
             ZoneId = zoneId;
         }

@@ -5,6 +5,50 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
+ * This resource allows you to create, update, list, and delete tag assignments on Unity Catalog entities.
+ *
+ * ## Example Usage
+ *
+ * ### Basic tag assignment to a catalog
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const catalogTag = new databricks.EntityTagAssignment("catalog_tag", {
+ *     entityType: "catalogs",
+ *     entityName: "production_catalog",
+ *     tagKey: "environment",
+ *     tagValue: "production",
+ * });
+ * const schemaTag = new databricks.EntityTagAssignment("schema_tag", {
+ *     entityType: "schemas",
+ *     entityName: "production_catalog.sales_data",
+ *     tagKey: "owner",
+ *     tagValue: "sales-team",
+ * });
+ * const tableTag = new databricks.EntityTagAssignment("table_tag", {
+ *     entityType: "tables",
+ *     entityName: "production_catalog.sales_data.customer_orders",
+ *     tagKey: "data_classification",
+ *     tagValue: "confidential",
+ * });
+ * const columnTag = new databricks.EntityTagAssignment("column_tag", {
+ *     entityType: "columns",
+ *     entityName: "production_catalog.sales_data.customers.email_address",
+ *     tagKey: "pii",
+ *     tagValue: "email",
+ * });
+ * const volumeTag = new databricks.EntityTagAssignment("volume_tag", {
+ *     entityType: "volumes",
+ *     entityName: "production_catalog.raw_data.landing_zone",
+ *     tagKey: "purpose",
+ *     tagValue: "data_ingestion",
+ * });
+ * ```
+ *
  * ## Import
  *
  * As of Pulumi v1.5, resources can be imported through configuration.
@@ -22,7 +66,7 @@ import * as utilities from "./utilities";
  * If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
  *
  * ```sh
- * $ pulumi import databricks:index/entityTagAssignment:EntityTagAssignment databricks_entity_tag_assignment "entity_type,entity_name,tag_key"
+ * $ pulumi import databricks:index/entityTagAssignment:EntityTagAssignment this "entity_type,entity_name,tag_key"
  * ```
  */
 export class EntityTagAssignment extends pulumi.CustomResource {
@@ -69,10 +113,6 @@ export class EntityTagAssignment extends pulumi.CustomResource {
      * The value of the tag
      */
     declare public readonly tagValue: pulumi.Output<string | undefined>;
-    /**
-     * Workspace ID of the resource
-     */
-    declare public readonly workspaceId: pulumi.Output<string | undefined>;
 
     /**
      * Create a EntityTagAssignment resource with the given unique name, arguments, and options.
@@ -91,7 +131,6 @@ export class EntityTagAssignment extends pulumi.CustomResource {
             resourceInputs["entityType"] = state?.entityType;
             resourceInputs["tagKey"] = state?.tagKey;
             resourceInputs["tagValue"] = state?.tagValue;
-            resourceInputs["workspaceId"] = state?.workspaceId;
         } else {
             const args = argsOrState as EntityTagAssignmentArgs | undefined;
             if (args?.entityName === undefined && !opts.urn) {
@@ -107,7 +146,6 @@ export class EntityTagAssignment extends pulumi.CustomResource {
             resourceInputs["entityType"] = args?.entityType;
             resourceInputs["tagKey"] = args?.tagKey;
             resourceInputs["tagValue"] = args?.tagValue;
-            resourceInputs["workspaceId"] = args?.workspaceId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(EntityTagAssignment.__pulumiType, name, resourceInputs, opts);
@@ -134,10 +172,6 @@ export interface EntityTagAssignmentState {
      * The value of the tag
      */
     tagValue?: pulumi.Input<string>;
-    /**
-     * Workspace ID of the resource
-     */
-    workspaceId?: pulumi.Input<string>;
 }
 
 /**
@@ -160,8 +194,4 @@ export interface EntityTagAssignmentArgs {
      * The value of the tag
      */
     tagValue?: pulumi.Input<string>;
-    /**
-     * Workspace ID of the resource
-     */
-    workspaceId?: pulumi.Input<string>;
 }

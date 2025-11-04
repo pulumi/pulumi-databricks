@@ -45,8 +45,6 @@ __all__ = [
     'AccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgsDict',
     'AccountSettingV2BooleanValArgs',
     'AccountSettingV2BooleanValArgsDict',
-    'AccountSettingV2DefaultDataSecurityModeArgs',
-    'AccountSettingV2DefaultDataSecurityModeArgsDict',
     'AccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgs',
     'AccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgsDict',
     'AccountSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgs',
@@ -63,8 +61,6 @@ __all__ = [
     'AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgsDict',
     'AccountSettingV2EffectiveBooleanValArgs',
     'AccountSettingV2EffectiveBooleanValArgsDict',
-    'AccountSettingV2EffectiveDefaultDataSecurityModeArgs',
-    'AccountSettingV2EffectiveDefaultDataSecurityModeArgsDict',
     'AccountSettingV2EffectiveIntegerValArgs',
     'AccountSettingV2EffectiveIntegerValArgsDict',
     'AccountSettingV2EffectivePersonalComputeArgs',
@@ -131,10 +127,14 @@ __all__ = [
     'AppPendingDeploymentDeploymentArtifactsArgsDict',
     'AppPendingDeploymentStatusArgs',
     'AppPendingDeploymentStatusArgsDict',
+    'AppProviderConfigArgs',
+    'AppProviderConfigArgsDict',
     'AppResourceArgs',
     'AppResourceArgsDict',
     'AppResourceDatabaseArgs',
     'AppResourceDatabaseArgsDict',
+    'AppResourceGenieSpaceArgs',
+    'AppResourceGenieSpaceArgsDict',
     'AppResourceJobArgs',
     'AppResourceJobArgsDict',
     'AppResourceSecretArgs',
@@ -189,60 +189,6 @@ __all__ = [
     'CatalogEffectivePredictiveOptimizationFlagArgsDict',
     'CatalogProvisioningInfoArgs',
     'CatalogProvisioningInfoArgsDict',
-    'CleanRoomAssetForeignTableArgs',
-    'CleanRoomAssetForeignTableArgsDict',
-    'CleanRoomAssetForeignTableColumnArgs',
-    'CleanRoomAssetForeignTableColumnArgsDict',
-    'CleanRoomAssetForeignTableColumnMaskArgs',
-    'CleanRoomAssetForeignTableColumnMaskArgsDict',
-    'CleanRoomAssetForeignTableLocalDetailsArgs',
-    'CleanRoomAssetForeignTableLocalDetailsArgsDict',
-    'CleanRoomAssetNotebookArgs',
-    'CleanRoomAssetNotebookArgsDict',
-    'CleanRoomAssetNotebookReviewArgs',
-    'CleanRoomAssetNotebookReviewArgsDict',
-    'CleanRoomAssetTableArgs',
-    'CleanRoomAssetTableArgsDict',
-    'CleanRoomAssetTableColumnArgs',
-    'CleanRoomAssetTableColumnArgsDict',
-    'CleanRoomAssetTableColumnMaskArgs',
-    'CleanRoomAssetTableColumnMaskArgsDict',
-    'CleanRoomAssetTableLocalDetailsArgs',
-    'CleanRoomAssetTableLocalDetailsArgsDict',
-    'CleanRoomAssetTableLocalDetailsPartitionArgs',
-    'CleanRoomAssetTableLocalDetailsPartitionArgsDict',
-    'CleanRoomAssetTableLocalDetailsPartitionValueArgs',
-    'CleanRoomAssetTableLocalDetailsPartitionValueArgsDict',
-    'CleanRoomAssetViewArgs',
-    'CleanRoomAssetViewArgsDict',
-    'CleanRoomAssetViewColumnArgs',
-    'CleanRoomAssetViewColumnArgsDict',
-    'CleanRoomAssetViewColumnMaskArgs',
-    'CleanRoomAssetViewColumnMaskArgsDict',
-    'CleanRoomAssetViewLocalDetailsArgs',
-    'CleanRoomAssetViewLocalDetailsArgsDict',
-    'CleanRoomAssetVolumeLocalDetailsArgs',
-    'CleanRoomAssetVolumeLocalDetailsArgsDict',
-    'CleanRoomsCleanRoomOutputCatalogArgs',
-    'CleanRoomsCleanRoomOutputCatalogArgsDict',
-    'CleanRoomsCleanRoomRemoteDetailedInfoArgs',
-    'CleanRoomsCleanRoomRemoteDetailedInfoArgsDict',
-    'CleanRoomsCleanRoomRemoteDetailedInfoCollaboratorArgs',
-    'CleanRoomsCleanRoomRemoteDetailedInfoCollaboratorArgsDict',
-    'CleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfileArgs',
-    'CleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfileArgsDict',
-    'CleanRoomsCleanRoomRemoteDetailedInfoCreatorArgs',
-    'CleanRoomsCleanRoomRemoteDetailedInfoCreatorArgsDict',
-    'CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyArgs',
-    'CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyArgsDict',
-    'CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessArgs',
-    'CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessArgsDict',
-    'CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedInternetDestinationArgs',
-    'CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedInternetDestinationArgsDict',
-    'CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedStorageDestinationArgs',
-    'CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedStorageDestinationArgsDict',
-    'CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyModeArgs',
-    'CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyModeArgsDict',
     'ClusterAutoscaleArgs',
     'ClusterAutoscaleArgsDict',
     'ClusterAwsAttributesArgs',
@@ -299,8 +245,12 @@ __all__ = [
     'ClusterPolicyLibraryCranArgsDict',
     'ClusterPolicyLibraryMavenArgs',
     'ClusterPolicyLibraryMavenArgsDict',
+    'ClusterPolicyLibraryProviderConfigArgs',
+    'ClusterPolicyLibraryProviderConfigArgsDict',
     'ClusterPolicyLibraryPypiArgs',
     'ClusterPolicyLibraryPypiArgsDict',
+    'ClusterProviderConfigArgs',
+    'ClusterProviderConfigArgsDict',
     'ClusterWorkloadTypeArgs',
     'ClusterWorkloadTypeArgsDict',
     'ClusterWorkloadTypeClientsArgs',
@@ -319,8 +269,30 @@ __all__ = [
     'CredentialDatabricksGcpServiceAccountArgsDict',
     'CustomAppIntegrationTokenAccessPolicyArgs',
     'CustomAppIntegrationTokenAccessPolicyArgsDict',
+    'DataQualityMonitorAnomalyDetectionConfigArgs',
+    'DataQualityMonitorAnomalyDetectionConfigArgsDict',
+    'DataQualityMonitorDataProfilingConfigArgs',
+    'DataQualityMonitorDataProfilingConfigArgsDict',
+    'DataQualityMonitorDataProfilingConfigCustomMetricArgs',
+    'DataQualityMonitorDataProfilingConfigCustomMetricArgsDict',
+    'DataQualityMonitorDataProfilingConfigInferenceLogArgs',
+    'DataQualityMonitorDataProfilingConfigInferenceLogArgsDict',
+    'DataQualityMonitorDataProfilingConfigNotificationSettingsArgs',
+    'DataQualityMonitorDataProfilingConfigNotificationSettingsArgsDict',
+    'DataQualityMonitorDataProfilingConfigNotificationSettingsOnFailureArgs',
+    'DataQualityMonitorDataProfilingConfigNotificationSettingsOnFailureArgsDict',
+    'DataQualityMonitorDataProfilingConfigScheduleArgs',
+    'DataQualityMonitorDataProfilingConfigScheduleArgsDict',
+    'DataQualityMonitorDataProfilingConfigSnapshotArgs',
+    'DataQualityMonitorDataProfilingConfigSnapshotArgsDict',
+    'DataQualityMonitorDataProfilingConfigTimeSeriesArgs',
+    'DataQualityMonitorDataProfilingConfigTimeSeriesArgsDict',
     'DatabaseInstanceChildInstanceRefArgs',
     'DatabaseInstanceChildInstanceRefArgsDict',
+    'DatabaseInstanceCustomTagArgs',
+    'DatabaseInstanceCustomTagArgsDict',
+    'DatabaseInstanceEffectiveCustomTagArgs',
+    'DatabaseInstanceEffectiveCustomTagArgsDict',
     'DatabaseInstanceParentInstanceRefArgs',
     'DatabaseInstanceParentInstanceRefArgsDict',
     'DatabaseSyncedDatabaseTableDataSynchronizationStatusArgs',
@@ -375,6 +347,26 @@ __all__ = [
     'ExternalLocationFileEventQueueProvidedPubsubArgsDict',
     'ExternalLocationFileEventQueueProvidedSqsArgs',
     'ExternalLocationFileEventQueueProvidedSqsArgsDict',
+    'FeatureEngineeringFeatureFunctionArgs',
+    'FeatureEngineeringFeatureFunctionArgsDict',
+    'FeatureEngineeringFeatureFunctionExtraParameterArgs',
+    'FeatureEngineeringFeatureFunctionExtraParameterArgsDict',
+    'FeatureEngineeringFeatureSourceArgs',
+    'FeatureEngineeringFeatureSourceArgsDict',
+    'FeatureEngineeringFeatureSourceDeltaTableSourceArgs',
+    'FeatureEngineeringFeatureSourceDeltaTableSourceArgsDict',
+    'FeatureEngineeringFeatureTimeWindowArgs',
+    'FeatureEngineeringFeatureTimeWindowArgsDict',
+    'FeatureEngineeringFeatureTimeWindowContinuousArgs',
+    'FeatureEngineeringFeatureTimeWindowContinuousArgsDict',
+    'FeatureEngineeringFeatureTimeWindowSlidingArgs',
+    'FeatureEngineeringFeatureTimeWindowSlidingArgsDict',
+    'FeatureEngineeringFeatureTimeWindowTumblingArgs',
+    'FeatureEngineeringFeatureTimeWindowTumblingArgsDict',
+    'FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgs',
+    'FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgsDict',
+    'FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgs',
+    'FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgsDict',
     'GrantsGrantArgs',
     'GrantsGrantArgsDict',
     'InstancePoolAwsAttributesArgs',
@@ -473,8 +465,12 @@ __all__ = [
     'JobJobClusterNewClusterLibraryCranArgsDict',
     'JobJobClusterNewClusterLibraryMavenArgs',
     'JobJobClusterNewClusterLibraryMavenArgsDict',
+    'JobJobClusterNewClusterLibraryProviderConfigArgs',
+    'JobJobClusterNewClusterLibraryProviderConfigArgsDict',
     'JobJobClusterNewClusterLibraryPypiArgs',
     'JobJobClusterNewClusterLibraryPypiArgsDict',
+    'JobJobClusterNewClusterProviderConfigArgs',
+    'JobJobClusterNewClusterProviderConfigArgsDict',
     'JobJobClusterNewClusterWorkloadTypeArgs',
     'JobJobClusterNewClusterWorkloadTypeArgsDict',
     'JobJobClusterNewClusterWorkloadTypeClientsArgs',
@@ -485,6 +481,8 @@ __all__ = [
     'JobLibraryCranArgsDict',
     'JobLibraryMavenArgs',
     'JobLibraryMavenArgsDict',
+    'JobLibraryProviderConfigArgs',
+    'JobLibraryProviderConfigArgsDict',
     'JobLibraryPypiArgs',
     'JobLibraryPypiArgsDict',
     'JobNewClusterArgs',
@@ -537,8 +535,12 @@ __all__ = [
     'JobNewClusterLibraryCranArgsDict',
     'JobNewClusterLibraryMavenArgs',
     'JobNewClusterLibraryMavenArgsDict',
+    'JobNewClusterLibraryProviderConfigArgs',
+    'JobNewClusterLibraryProviderConfigArgsDict',
     'JobNewClusterLibraryPypiArgs',
     'JobNewClusterLibraryPypiArgsDict',
+    'JobNewClusterProviderConfigArgs',
+    'JobNewClusterProviderConfigArgsDict',
     'JobNewClusterWorkloadTypeArgs',
     'JobNewClusterWorkloadTypeArgsDict',
     'JobNewClusterWorkloadTypeClientsArgs',
@@ -551,6 +553,8 @@ __all__ = [
     'JobParameterArgsDict',
     'JobPipelineTaskArgs',
     'JobPipelineTaskArgsDict',
+    'JobProviderConfigArgs',
+    'JobProviderConfigArgsDict',
     'JobPythonWheelTaskArgs',
     'JobPythonWheelTaskArgsDict',
     'JobQueueArgs',
@@ -627,6 +631,8 @@ __all__ = [
     'JobTaskForEachTaskTaskLibraryCranArgsDict',
     'JobTaskForEachTaskTaskLibraryMavenArgs',
     'JobTaskForEachTaskTaskLibraryMavenArgsDict',
+    'JobTaskForEachTaskTaskLibraryProviderConfigArgs',
+    'JobTaskForEachTaskTaskLibraryProviderConfigArgsDict',
     'JobTaskForEachTaskTaskLibraryPypiArgs',
     'JobTaskForEachTaskTaskLibraryPypiArgsDict',
     'JobTaskForEachTaskTaskNewClusterArgs',
@@ -679,8 +685,12 @@ __all__ = [
     'JobTaskForEachTaskTaskNewClusterLibraryCranArgsDict',
     'JobTaskForEachTaskTaskNewClusterLibraryMavenArgs',
     'JobTaskForEachTaskTaskNewClusterLibraryMavenArgsDict',
+    'JobTaskForEachTaskTaskNewClusterLibraryProviderConfigArgs',
+    'JobTaskForEachTaskTaskNewClusterLibraryProviderConfigArgsDict',
     'JobTaskForEachTaskTaskNewClusterLibraryPypiArgs',
     'JobTaskForEachTaskTaskNewClusterLibraryPypiArgsDict',
+    'JobTaskForEachTaskTaskNewClusterProviderConfigArgs',
+    'JobTaskForEachTaskTaskNewClusterProviderConfigArgsDict',
     'JobTaskForEachTaskTaskNewClusterWorkloadTypeArgs',
     'JobTaskForEachTaskTaskNewClusterWorkloadTypeArgsDict',
     'JobTaskForEachTaskTaskNewClusterWorkloadTypeClientsArgs',
@@ -749,6 +759,8 @@ __all__ = [
     'JobTaskLibraryCranArgsDict',
     'JobTaskLibraryMavenArgs',
     'JobTaskLibraryMavenArgsDict',
+    'JobTaskLibraryProviderConfigArgs',
+    'JobTaskLibraryProviderConfigArgsDict',
     'JobTaskLibraryPypiArgs',
     'JobTaskLibraryPypiArgsDict',
     'JobTaskNewClusterArgs',
@@ -801,8 +813,12 @@ __all__ = [
     'JobTaskNewClusterLibraryCranArgsDict',
     'JobTaskNewClusterLibraryMavenArgs',
     'JobTaskNewClusterLibraryMavenArgsDict',
+    'JobTaskNewClusterLibraryProviderConfigArgs',
+    'JobTaskNewClusterLibraryProviderConfigArgsDict',
     'JobTaskNewClusterLibraryPypiArgs',
     'JobTaskNewClusterLibraryPypiArgsDict',
+    'JobTaskNewClusterProviderConfigArgs',
+    'JobTaskNewClusterProviderConfigArgsDict',
     'JobTaskNewClusterWorkloadTypeArgs',
     'JobTaskNewClusterWorkloadTypeArgsDict',
     'JobTaskNewClusterWorkloadTypeClientsArgs',
@@ -863,8 +879,6 @@ __all__ = [
     'JobTriggerFileArrivalArgsDict',
     'JobTriggerPeriodicArgs',
     'JobTriggerPeriodicArgsDict',
-    'JobTriggerTableArgs',
-    'JobTriggerTableArgsDict',
     'JobTriggerTableUpdateArgs',
     'JobTriggerTableUpdateArgsDict',
     'JobWebhookNotificationsArgs',
@@ -901,6 +915,8 @@ __all__ = [
     'LibraryCranArgsDict',
     'LibraryMavenArgs',
     'LibraryMavenArgsDict',
+    'LibraryProviderConfigArgs',
+    'LibraryProviderConfigArgsDict',
     'LibraryPypiArgs',
     'LibraryPypiArgsDict',
     'MetastoreDataAccessAwsIamRoleArgs',
@@ -1157,18 +1173,30 @@ __all__ = [
     'PipelineIngestionDefinitionObjectReportTableConfigurationArgsDict',
     'PipelineIngestionDefinitionObjectReportTableConfigurationQueryBasedConnectorConfigArgs',
     'PipelineIngestionDefinitionObjectReportTableConfigurationQueryBasedConnectorConfigArgsDict',
+    'PipelineIngestionDefinitionObjectReportTableConfigurationWorkdayReportParametersArgs',
+    'PipelineIngestionDefinitionObjectReportTableConfigurationWorkdayReportParametersArgsDict',
+    'PipelineIngestionDefinitionObjectReportTableConfigurationWorkdayReportParametersReportParameterArgs',
+    'PipelineIngestionDefinitionObjectReportTableConfigurationWorkdayReportParametersReportParameterArgsDict',
     'PipelineIngestionDefinitionObjectSchemaArgs',
     'PipelineIngestionDefinitionObjectSchemaArgsDict',
     'PipelineIngestionDefinitionObjectSchemaTableConfigurationArgs',
     'PipelineIngestionDefinitionObjectSchemaTableConfigurationArgsDict',
     'PipelineIngestionDefinitionObjectSchemaTableConfigurationQueryBasedConnectorConfigArgs',
     'PipelineIngestionDefinitionObjectSchemaTableConfigurationQueryBasedConnectorConfigArgsDict',
+    'PipelineIngestionDefinitionObjectSchemaTableConfigurationWorkdayReportParametersArgs',
+    'PipelineIngestionDefinitionObjectSchemaTableConfigurationWorkdayReportParametersArgsDict',
+    'PipelineIngestionDefinitionObjectSchemaTableConfigurationWorkdayReportParametersReportParameterArgs',
+    'PipelineIngestionDefinitionObjectSchemaTableConfigurationWorkdayReportParametersReportParameterArgsDict',
     'PipelineIngestionDefinitionObjectTableArgs',
     'PipelineIngestionDefinitionObjectTableArgsDict',
     'PipelineIngestionDefinitionObjectTableTableConfigurationArgs',
     'PipelineIngestionDefinitionObjectTableTableConfigurationArgsDict',
     'PipelineIngestionDefinitionObjectTableTableConfigurationQueryBasedConnectorConfigArgs',
     'PipelineIngestionDefinitionObjectTableTableConfigurationQueryBasedConnectorConfigArgsDict',
+    'PipelineIngestionDefinitionObjectTableTableConfigurationWorkdayReportParametersArgs',
+    'PipelineIngestionDefinitionObjectTableTableConfigurationWorkdayReportParametersArgsDict',
+    'PipelineIngestionDefinitionObjectTableTableConfigurationWorkdayReportParametersReportParameterArgs',
+    'PipelineIngestionDefinitionObjectTableTableConfigurationWorkdayReportParametersReportParameterArgsDict',
     'PipelineIngestionDefinitionSourceConfigurationArgs',
     'PipelineIngestionDefinitionSourceConfigurationArgsDict',
     'PipelineIngestionDefinitionSourceConfigurationCatalogArgs',
@@ -1181,6 +1209,10 @@ __all__ = [
     'PipelineIngestionDefinitionTableConfigurationArgsDict',
     'PipelineIngestionDefinitionTableConfigurationQueryBasedConnectorConfigArgs',
     'PipelineIngestionDefinitionTableConfigurationQueryBasedConnectorConfigArgsDict',
+    'PipelineIngestionDefinitionTableConfigurationWorkdayReportParametersArgs',
+    'PipelineIngestionDefinitionTableConfigurationWorkdayReportParametersArgsDict',
+    'PipelineIngestionDefinitionTableConfigurationWorkdayReportParametersReportParameterArgs',
+    'PipelineIngestionDefinitionTableConfigurationWorkdayReportParametersReportParameterArgsDict',
     'PipelineLatestUpdateArgs',
     'PipelineLatestUpdateArgsDict',
     'PipelineLibraryArgs',
@@ -1227,6 +1259,8 @@ __all__ = [
     'QualityMonitorNotificationsOnFailureArgsDict',
     'QualityMonitorNotificationsOnNewClassificationTagDetectedArgs',
     'QualityMonitorNotificationsOnNewClassificationTagDetectedArgsDict',
+    'QualityMonitorProviderConfigArgs',
+    'QualityMonitorProviderConfigArgsDict',
     'QualityMonitorScheduleArgs',
     'QualityMonitorScheduleArgsDict',
     'QualityMonitorSnapshotArgs',
@@ -1255,18 +1289,22 @@ __all__ = [
     'QueryParameterQueryBackedValueMultiValuesOptionsArgsDict',
     'QueryParameterTextValueArgs',
     'QueryParameterTextValueArgsDict',
-    'RecipientFederationPolicyOidcPolicyArgs',
-    'RecipientFederationPolicyOidcPolicyArgsDict',
     'RecipientIpAccessListArgs',
     'RecipientIpAccessListArgsDict',
     'RecipientPropertiesKvpairsArgs',
     'RecipientPropertiesKvpairsArgsDict',
     'RecipientTokenArgs',
     'RecipientTokenArgsDict',
+    'RegisteredModelAliasArgs',
+    'RegisteredModelAliasArgsDict',
     'RepoSparseCheckoutArgs',
     'RepoSparseCheckoutArgsDict',
     'RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgs',
     'RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgsDict',
+    'RfaAccessRequestDestinationsDestinationArgs',
+    'RfaAccessRequestDestinationsDestinationArgsDict',
+    'RfaAccessRequestDestinationsSecurableArgs',
+    'RfaAccessRequestDestinationsSecurableArgsDict',
     'SecretScopeKeyvaultMetadataArgs',
     'SecretScopeKeyvaultMetadataArgsDict',
     'ServicePrincipalFederationPolicyOidcPolicyArgs',
@@ -1277,6 +1315,8 @@ __all__ = [
     'ShareObjectPartitionArgsDict',
     'ShareObjectPartitionValueArgs',
     'ShareObjectPartitionValueArgsDict',
+    'ShareProviderConfigArgs',
+    'ShareProviderConfigArgsDict',
     'SqlAlertOptionsArgs',
     'SqlAlertOptionsArgsDict',
     'SqlEndpointChannelArgs',
@@ -1387,8 +1427,6 @@ __all__ = [
     'WorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgsDict',
     'WorkspaceSettingV2BooleanValArgs',
     'WorkspaceSettingV2BooleanValArgsDict',
-    'WorkspaceSettingV2DefaultDataSecurityModeArgs',
-    'WorkspaceSettingV2DefaultDataSecurityModeArgsDict',
     'WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgs',
     'WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgsDict',
     'WorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgs',
@@ -1405,8 +1443,6 @@ __all__ = [
     'WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgsDict',
     'WorkspaceSettingV2EffectiveBooleanValArgs',
     'WorkspaceSettingV2EffectiveBooleanValArgsDict',
-    'WorkspaceSettingV2EffectiveDefaultDataSecurityModeArgs',
-    'WorkspaceSettingV2EffectiveDefaultDataSecurityModeArgsDict',
     'WorkspaceSettingV2EffectiveIntegerValArgs',
     'WorkspaceSettingV2EffectiveIntegerValArgsDict',
     'WorkspaceSettingV2EffectivePersonalComputeArgs',
@@ -1423,190 +1459,24 @@ __all__ = [
     'WorkspaceSettingV2RestrictWorkspaceAdminsArgsDict',
     'WorkspaceSettingV2StringValArgs',
     'WorkspaceSettingV2StringValArgsDict',
-    'GetAccountFederationPolicyOidcPolicyArgs',
-    'GetAccountFederationPolicyOidcPolicyArgsDict',
-    'GetAccountNetworkPolicyEgressArgs',
-    'GetAccountNetworkPolicyEgressArgsDict',
-    'GetAccountNetworkPolicyEgressNetworkAccessArgs',
-    'GetAccountNetworkPolicyEgressNetworkAccessArgsDict',
-    'GetAccountNetworkPolicyEgressNetworkAccessAllowedInternetDestinationArgs',
-    'GetAccountNetworkPolicyEgressNetworkAccessAllowedInternetDestinationArgsDict',
-    'GetAccountNetworkPolicyEgressNetworkAccessAllowedStorageDestinationArgs',
-    'GetAccountNetworkPolicyEgressNetworkAccessAllowedStorageDestinationArgsDict',
-    'GetAccountNetworkPolicyEgressNetworkAccessPolicyEnforcementArgs',
-    'GetAccountNetworkPolicyEgressNetworkAccessPolicyEnforcementArgsDict',
-    'GetAccountSettingV2AibiDashboardEmbeddingAccessPolicyArgs',
-    'GetAccountSettingV2AibiDashboardEmbeddingAccessPolicyArgsDict',
-    'GetAccountSettingV2AibiDashboardEmbeddingApprovedDomainsArgs',
-    'GetAccountSettingV2AibiDashboardEmbeddingApprovedDomainsArgsDict',
-    'GetAccountSettingV2AutomaticClusterUpdateWorkspaceArgs',
-    'GetAccountSettingV2AutomaticClusterUpdateWorkspaceArgsDict',
-    'GetAccountSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsArgs',
-    'GetAccountSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsArgsDict',
-    'GetAccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowArgs',
-    'GetAccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowArgsDict',
-    'GetAccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgs',
-    'GetAccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgsDict',
-    'GetAccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs',
-    'GetAccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgsDict',
-    'GetAccountSettingV2BooleanValArgs',
-    'GetAccountSettingV2BooleanValArgsDict',
-    'GetAccountSettingV2DefaultDataSecurityModeArgs',
-    'GetAccountSettingV2DefaultDataSecurityModeArgsDict',
-    'GetAccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgs',
-    'GetAccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgsDict',
-    'GetAccountSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgs',
-    'GetAccountSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgsDict',
-    'GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgs',
-    'GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgsDict',
-    'GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsArgs',
-    'GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsArgsDict',
-    'GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowArgs',
-    'GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowArgsDict',
-    'GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgs',
-    'GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgsDict',
-    'GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs',
-    'GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgsDict',
-    'GetAccountSettingV2EffectiveDefaultDataSecurityModeArgs',
-    'GetAccountSettingV2EffectiveDefaultDataSecurityModeArgsDict',
-    'GetAccountSettingV2EffectivePersonalComputeArgs',
-    'GetAccountSettingV2EffectivePersonalComputeArgsDict',
-    'GetAccountSettingV2EffectiveRestrictWorkspaceAdminsArgs',
-    'GetAccountSettingV2EffectiveRestrictWorkspaceAdminsArgsDict',
-    'GetAccountSettingV2IntegerValArgs',
-    'GetAccountSettingV2IntegerValArgsDict',
-    'GetAccountSettingV2PersonalComputeArgs',
-    'GetAccountSettingV2PersonalComputeArgsDict',
-    'GetAccountSettingV2RestrictWorkspaceAdminsArgs',
-    'GetAccountSettingV2RestrictWorkspaceAdminsArgsDict',
-    'GetAccountSettingV2StringValArgs',
-    'GetAccountSettingV2StringValArgsDict',
-    'GetAlertV2EvaluationArgs',
-    'GetAlertV2EvaluationArgsDict',
-    'GetAlertV2EvaluationNotificationArgs',
-    'GetAlertV2EvaluationNotificationArgsDict',
-    'GetAlertV2EvaluationNotificationSubscriptionArgs',
-    'GetAlertV2EvaluationNotificationSubscriptionArgsDict',
-    'GetAlertV2EvaluationSourceArgs',
-    'GetAlertV2EvaluationSourceArgsDict',
-    'GetAlertV2EvaluationThresholdArgs',
-    'GetAlertV2EvaluationThresholdArgsDict',
-    'GetAlertV2EvaluationThresholdColumnArgs',
-    'GetAlertV2EvaluationThresholdColumnArgsDict',
-    'GetAlertV2EvaluationThresholdValueArgs',
-    'GetAlertV2EvaluationThresholdValueArgsDict',
-    'GetAlertV2RunAsArgs',
-    'GetAlertV2RunAsArgsDict',
-    'GetAlertV2ScheduleArgs',
-    'GetAlertV2ScheduleArgsDict',
-    'GetAppsSettingsCustomTemplateManifestArgs',
-    'GetAppsSettingsCustomTemplateManifestArgsDict',
-    'GetAppsSettingsCustomTemplateManifestResourceSpecArgs',
-    'GetAppsSettingsCustomTemplateManifestResourceSpecArgsDict',
-    'GetAppsSettingsCustomTemplateManifestResourceSpecJobSpecArgs',
-    'GetAppsSettingsCustomTemplateManifestResourceSpecJobSpecArgsDict',
-    'GetAppsSettingsCustomTemplateManifestResourceSpecSecretSpecArgs',
-    'GetAppsSettingsCustomTemplateManifestResourceSpecSecretSpecArgsDict',
-    'GetAppsSettingsCustomTemplateManifestResourceSpecServingEndpointSpecArgs',
-    'GetAppsSettingsCustomTemplateManifestResourceSpecServingEndpointSpecArgsDict',
-    'GetAppsSettingsCustomTemplateManifestResourceSpecSqlWarehouseSpecArgs',
-    'GetAppsSettingsCustomTemplateManifestResourceSpecSqlWarehouseSpecArgsDict',
-    'GetAppsSettingsCustomTemplateManifestResourceSpecUcSecurableSpecArgs',
-    'GetAppsSettingsCustomTemplateManifestResourceSpecUcSecurableSpecArgsDict',
-    'GetBudgetPolicyCustomTagArgs',
-    'GetBudgetPolicyCustomTagArgsDict',
+    'GetAppProviderConfigArgs',
+    'GetAppProviderConfigArgsDict',
+    'GetAppsProviderConfigArgs',
+    'GetAppsProviderConfigArgsDict',
+    'GetBudgetPoliciesFilterByArgs',
+    'GetBudgetPoliciesFilterByArgsDict',
+    'GetBudgetPoliciesSortSpecArgs',
+    'GetBudgetPoliciesSortSpecArgsDict',
     'GetCatalogCatalogInfoArgs',
     'GetCatalogCatalogInfoArgsDict',
     'GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagArgs',
     'GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagArgsDict',
     'GetCatalogCatalogInfoProvisioningInfoArgs',
     'GetCatalogCatalogInfoProvisioningInfoArgsDict',
-    'GetCleanRoomAssetForeignTableArgs',
-    'GetCleanRoomAssetForeignTableArgsDict',
-    'GetCleanRoomAssetForeignTableColumnArgs',
-    'GetCleanRoomAssetForeignTableColumnArgsDict',
-    'GetCleanRoomAssetForeignTableColumnMaskArgs',
-    'GetCleanRoomAssetForeignTableColumnMaskArgsDict',
-    'GetCleanRoomAssetForeignTableLocalDetailsArgs',
-    'GetCleanRoomAssetForeignTableLocalDetailsArgsDict',
-    'GetCleanRoomAssetNotebookArgs',
-    'GetCleanRoomAssetNotebookArgsDict',
-    'GetCleanRoomAssetNotebookReviewArgs',
-    'GetCleanRoomAssetNotebookReviewArgsDict',
-    'GetCleanRoomAssetRevisionsCleanRoomAssetForeignTableArgs',
-    'GetCleanRoomAssetRevisionsCleanRoomAssetForeignTableArgsDict',
-    'GetCleanRoomAssetRevisionsCleanRoomAssetForeignTableColumnArgs',
-    'GetCleanRoomAssetRevisionsCleanRoomAssetForeignTableColumnArgsDict',
-    'GetCleanRoomAssetRevisionsCleanRoomAssetForeignTableColumnMaskArgs',
-    'GetCleanRoomAssetRevisionsCleanRoomAssetForeignTableColumnMaskArgsDict',
-    'GetCleanRoomAssetRevisionsCleanRoomAssetForeignTableLocalDetailsArgs',
-    'GetCleanRoomAssetRevisionsCleanRoomAssetForeignTableLocalDetailsArgsDict',
-    'GetCleanRoomAssetRevisionsCleanRoomAssetNotebookArgs',
-    'GetCleanRoomAssetRevisionsCleanRoomAssetNotebookArgsDict',
-    'GetCleanRoomAssetRevisionsCleanRoomAssetNotebookReviewArgs',
-    'GetCleanRoomAssetRevisionsCleanRoomAssetNotebookReviewArgsDict',
-    'GetCleanRoomAssetRevisionsCleanRoomAssetTableArgs',
-    'GetCleanRoomAssetRevisionsCleanRoomAssetTableArgsDict',
-    'GetCleanRoomAssetRevisionsCleanRoomAssetTableColumnArgs',
-    'GetCleanRoomAssetRevisionsCleanRoomAssetTableColumnArgsDict',
-    'GetCleanRoomAssetRevisionsCleanRoomAssetTableColumnMaskArgs',
-    'GetCleanRoomAssetRevisionsCleanRoomAssetTableColumnMaskArgsDict',
-    'GetCleanRoomAssetRevisionsCleanRoomAssetTableLocalDetailsArgs',
-    'GetCleanRoomAssetRevisionsCleanRoomAssetTableLocalDetailsArgsDict',
-    'GetCleanRoomAssetRevisionsCleanRoomAssetTableLocalDetailsPartitionArgs',
-    'GetCleanRoomAssetRevisionsCleanRoomAssetTableLocalDetailsPartitionArgsDict',
-    'GetCleanRoomAssetRevisionsCleanRoomAssetTableLocalDetailsPartitionValueArgs',
-    'GetCleanRoomAssetRevisionsCleanRoomAssetTableLocalDetailsPartitionValueArgsDict',
-    'GetCleanRoomAssetRevisionsCleanRoomAssetViewArgs',
-    'GetCleanRoomAssetRevisionsCleanRoomAssetViewArgsDict',
-    'GetCleanRoomAssetRevisionsCleanRoomAssetViewColumnArgs',
-    'GetCleanRoomAssetRevisionsCleanRoomAssetViewColumnArgsDict',
-    'GetCleanRoomAssetRevisionsCleanRoomAssetViewColumnMaskArgs',
-    'GetCleanRoomAssetRevisionsCleanRoomAssetViewColumnMaskArgsDict',
-    'GetCleanRoomAssetRevisionsCleanRoomAssetViewLocalDetailsArgs',
-    'GetCleanRoomAssetRevisionsCleanRoomAssetViewLocalDetailsArgsDict',
-    'GetCleanRoomAssetRevisionsCleanRoomAssetVolumeLocalDetailsArgs',
-    'GetCleanRoomAssetRevisionsCleanRoomAssetVolumeLocalDetailsArgsDict',
-    'GetCleanRoomAssetTableArgs',
-    'GetCleanRoomAssetTableArgsDict',
-    'GetCleanRoomAssetTableColumnArgs',
-    'GetCleanRoomAssetTableColumnArgsDict',
-    'GetCleanRoomAssetTableColumnMaskArgs',
-    'GetCleanRoomAssetTableColumnMaskArgsDict',
-    'GetCleanRoomAssetTableLocalDetailsArgs',
-    'GetCleanRoomAssetTableLocalDetailsArgsDict',
-    'GetCleanRoomAssetTableLocalDetailsPartitionArgs',
-    'GetCleanRoomAssetTableLocalDetailsPartitionArgsDict',
-    'GetCleanRoomAssetTableLocalDetailsPartitionValueArgs',
-    'GetCleanRoomAssetTableLocalDetailsPartitionValueArgsDict',
-    'GetCleanRoomAssetViewArgs',
-    'GetCleanRoomAssetViewArgsDict',
-    'GetCleanRoomAssetViewColumnArgs',
-    'GetCleanRoomAssetViewColumnArgsDict',
-    'GetCleanRoomAssetViewColumnMaskArgs',
-    'GetCleanRoomAssetViewColumnMaskArgsDict',
-    'GetCleanRoomAssetViewLocalDetailsArgs',
-    'GetCleanRoomAssetViewLocalDetailsArgsDict',
-    'GetCleanRoomAssetVolumeLocalDetailsArgs',
-    'GetCleanRoomAssetVolumeLocalDetailsArgsDict',
-    'GetCleanRoomsCleanRoomRemoteDetailedInfoArgs',
-    'GetCleanRoomsCleanRoomRemoteDetailedInfoArgsDict',
-    'GetCleanRoomsCleanRoomRemoteDetailedInfoCollaboratorArgs',
-    'GetCleanRoomsCleanRoomRemoteDetailedInfoCollaboratorArgsDict',
-    'GetCleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfileArgs',
-    'GetCleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfileArgsDict',
-    'GetCleanRoomsCleanRoomRemoteDetailedInfoCreatorArgs',
-    'GetCleanRoomsCleanRoomRemoteDetailedInfoCreatorArgsDict',
-    'GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyArgs',
-    'GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyArgsDict',
-    'GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessArgs',
-    'GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessArgsDict',
-    'GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedInternetDestinationArgs',
-    'GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedInternetDestinationArgsDict',
-    'GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedStorageDestinationArgs',
-    'GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedStorageDestinationArgsDict',
-    'GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyModeArgs',
-    'GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyModeArgsDict',
+    'GetCatalogProviderConfigArgs',
+    'GetCatalogProviderConfigArgsDict',
+    'GetCatalogsProviderConfigArgs',
+    'GetCatalogsProviderConfigArgsDict',
     'GetClusterClusterInfoArgs',
     'GetClusterClusterInfoArgsDict',
     'GetClusterClusterInfoAutoscaleArgs',
@@ -1707,8 +1577,12 @@ __all__ = [
     'GetClusterClusterInfoSpecLibraryCranArgsDict',
     'GetClusterClusterInfoSpecLibraryMavenArgs',
     'GetClusterClusterInfoSpecLibraryMavenArgsDict',
+    'GetClusterClusterInfoSpecLibraryProviderConfigArgs',
+    'GetClusterClusterInfoSpecLibraryProviderConfigArgsDict',
     'GetClusterClusterInfoSpecLibraryPypiArgs',
     'GetClusterClusterInfoSpecLibraryPypiArgsDict',
+    'GetClusterClusterInfoSpecProviderConfigArgs',
+    'GetClusterClusterInfoSpecProviderConfigArgsDict',
     'GetClusterClusterInfoSpecWorkloadTypeArgs',
     'GetClusterClusterInfoSpecWorkloadTypeArgsDict',
     'GetClusterClusterInfoSpecWorkloadTypeClientsArgs',
@@ -1719,16 +1593,22 @@ __all__ = [
     'GetClusterClusterInfoWorkloadTypeArgsDict',
     'GetClusterClusterInfoWorkloadTypeClientsArgs',
     'GetClusterClusterInfoWorkloadTypeClientsArgsDict',
+    'GetClusterPolicyProviderConfigArgs',
+    'GetClusterPolicyProviderConfigArgsDict',
+    'GetClusterProviderConfigArgs',
+    'GetClusterProviderConfigArgsDict',
     'GetClustersFilterByArgs',
     'GetClustersFilterByArgsDict',
+    'GetClustersProviderConfigArgs',
+    'GetClustersProviderConfigArgsDict',
     'GetCurrentMetastoreMetastoreInfoArgs',
     'GetCurrentMetastoreMetastoreInfoArgsDict',
-    'GetDatabaseInstanceParentInstanceRefArgs',
-    'GetDatabaseInstanceParentInstanceRefArgsDict',
-    'GetDatabaseSyncedDatabaseTableSpecArgs',
-    'GetDatabaseSyncedDatabaseTableSpecArgsDict',
-    'GetDatabaseSyncedDatabaseTableSpecNewPipelineSpecArgs',
-    'GetDatabaseSyncedDatabaseTableSpecNewPipelineSpecArgsDict',
+    'GetCurrentMetastoreProviderConfigArgs',
+    'GetCurrentMetastoreProviderConfigArgsDict',
+    'GetDashboardsProviderConfigArgs',
+    'GetDashboardsProviderConfigArgsDict',
+    'GetDirectoryProviderConfigArgs',
+    'GetDirectoryProviderConfigArgsDict',
     'GetExternalLocationExternalLocationInfoArgs',
     'GetExternalLocationExternalLocationInfoArgsDict',
     'GetExternalLocationExternalLocationInfoEncryptionDetailsArgs',
@@ -1749,6 +1629,10 @@ __all__ = [
     'GetExternalLocationExternalLocationInfoFileEventQueueProvidedPubsubArgsDict',
     'GetExternalLocationExternalLocationInfoFileEventQueueProvidedSqsArgs',
     'GetExternalLocationExternalLocationInfoFileEventQueueProvidedSqsArgsDict',
+    'GetExternalLocationProviderConfigArgs',
+    'GetExternalLocationProviderConfigArgsDict',
+    'GetExternalLocationsProviderConfigArgs',
+    'GetExternalLocationsProviderConfigArgsDict',
     'GetFunctionsFunctionArgs',
     'GetFunctionsFunctionArgsDict',
     'GetFunctionsFunctionInputParamsArgs',
@@ -1771,6 +1655,8 @@ __all__ = [
     'GetFunctionsFunctionRoutineDependenciesDependencyFunctionArgsDict',
     'GetFunctionsFunctionRoutineDependenciesDependencyTableArgs',
     'GetFunctionsFunctionRoutineDependenciesDependencyTableArgsDict',
+    'GetFunctionsProviderConfigArgs',
+    'GetFunctionsProviderConfigArgsDict',
     'GetInstancePoolPoolInfoArgs',
     'GetInstancePoolPoolInfoArgsDict',
     'GetInstancePoolPoolInfoAwsAttributesArgs',
@@ -1799,6 +1685,8 @@ __all__ = [
     'GetInstancePoolPoolInfoStatsArgsDict',
     'GetInstanceProfilesInstanceProfileArgs',
     'GetInstanceProfilesInstanceProfileArgsDict',
+    'GetInstanceProfilesProviderConfigArgs',
+    'GetInstanceProfilesProviderConfigArgsDict',
     'GetJobJobSettingsArgs',
     'GetJobJobSettingsArgsDict',
     'GetJobJobSettingsSettingsArgs',
@@ -1875,6 +1763,8 @@ __all__ = [
     'GetJobJobSettingsSettingsLibraryCranArgsDict',
     'GetJobJobSettingsSettingsLibraryMavenArgs',
     'GetJobJobSettingsSettingsLibraryMavenArgsDict',
+    'GetJobJobSettingsSettingsLibraryProviderConfigArgs',
+    'GetJobJobSettingsSettingsLibraryProviderConfigArgsDict',
     'GetJobJobSettingsSettingsLibraryPypiArgs',
     'GetJobJobSettingsSettingsLibraryPypiArgsDict',
     'GetJobJobSettingsSettingsNewClusterArgs',
@@ -1989,6 +1879,8 @@ __all__ = [
     'GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranArgsDict',
     'GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryMavenArgs',
     'GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryMavenArgsDict',
+    'GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryProviderConfigArgs',
+    'GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryProviderConfigArgsDict',
     'GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryPypiArgs',
     'GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryPypiArgsDict',
     'GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterArgs',
@@ -2093,6 +1985,8 @@ __all__ = [
     'GetJobJobSettingsSettingsTaskLibraryCranArgsDict',
     'GetJobJobSettingsSettingsTaskLibraryMavenArgs',
     'GetJobJobSettingsSettingsTaskLibraryMavenArgsDict',
+    'GetJobJobSettingsSettingsTaskLibraryProviderConfigArgs',
+    'GetJobJobSettingsSettingsTaskLibraryProviderConfigArgsDict',
     'GetJobJobSettingsSettingsTaskLibraryPypiArgs',
     'GetJobJobSettingsSettingsTaskLibraryPypiArgsDict',
     'GetJobJobSettingsSettingsTaskNewClusterArgs',
@@ -2207,16 +2101,24 @@ __all__ = [
     'GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededArgsDict',
     'GetJobJobSettingsSettingsWebhookNotificationsOnSuccessArgs',
     'GetJobJobSettingsSettingsWebhookNotificationsOnSuccessArgsDict',
+    'GetJobsProviderConfigArgs',
+    'GetJobsProviderConfigArgsDict',
     'GetMetastoreMetastoreInfoArgs',
     'GetMetastoreMetastoreInfoArgsDict',
+    'GetMlflowExperimentProviderConfigArgs',
+    'GetMlflowExperimentProviderConfigArgsDict',
     'GetMlflowExperimentTagArgs',
     'GetMlflowExperimentTagArgsDict',
     'GetMlflowModelLatestVersionArgs',
     'GetMlflowModelLatestVersionArgsDict',
     'GetMlflowModelLatestVersionTagArgs',
     'GetMlflowModelLatestVersionTagArgsDict',
+    'GetMlflowModelProviderConfigArgs',
+    'GetMlflowModelProviderConfigArgsDict',
     'GetMlflowModelTagArgs',
     'GetMlflowModelTagArgsDict',
+    'GetMlflowModelsProviderConfigArgs',
+    'GetMlflowModelsProviderConfigArgsDict',
     'GetMwsNetworkConnectivityConfigEgressConfigArgs',
     'GetMwsNetworkConnectivityConfigEgressConfigArgsDict',
     'GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesArgs',
@@ -2231,22 +2133,18 @@ __all__ = [
     'GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArgsDict',
     'GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArgs',
     'GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArgsDict',
-    'GetPolicyInfoColumnMaskArgs',
-    'GetPolicyInfoColumnMaskArgsDict',
-    'GetPolicyInfoColumnMaskUsingArgs',
-    'GetPolicyInfoColumnMaskUsingArgsDict',
-    'GetPolicyInfoMatchColumnArgs',
-    'GetPolicyInfoMatchColumnArgsDict',
-    'GetPolicyInfoRowFilterArgs',
-    'GetPolicyInfoRowFilterArgsDict',
-    'GetPolicyInfoRowFilterUsingArgs',
-    'GetPolicyInfoRowFilterUsingArgsDict',
-    'GetRecipientFederationPolicyOidcPolicyArgs',
-    'GetRecipientFederationPolicyOidcPolicyArgsDict',
+    'GetNodeTypeProviderConfigArgs',
+    'GetNodeTypeProviderConfigArgsDict',
+    'GetNotificationDestinationsProviderConfigArgs',
+    'GetNotificationDestinationsProviderConfigArgsDict',
+    'GetPipelinesProviderConfigArgs',
+    'GetPipelinesProviderConfigArgsDict',
     'GetRegisteredModelModelInfoArgs',
     'GetRegisteredModelModelInfoArgsDict',
     'GetRegisteredModelModelInfoAliasArgs',
     'GetRegisteredModelModelInfoAliasArgsDict',
+    'GetRegisteredModelProviderConfigArgs',
+    'GetRegisteredModelProviderConfigArgsDict',
     'GetRegisteredModelVersionsModelVersionArgs',
     'GetRegisteredModelVersionsModelVersionArgsDict',
     'GetRegisteredModelVersionsModelVersionAliasArgs',
@@ -2263,12 +2161,16 @@ __all__ = [
     'GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionArgsDict',
     'GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableArgs',
     'GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableArgsDict',
+    'GetRegisteredModelVersionsProviderConfigArgs',
+    'GetRegisteredModelVersionsProviderConfigArgsDict',
+    'GetSchemaProviderConfigArgs',
+    'GetSchemaProviderConfigArgsDict',
     'GetSchemaSchemaInfoArgs',
     'GetSchemaSchemaInfoArgsDict',
     'GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagArgs',
     'GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagArgsDict',
-    'GetServicePrincipalFederationPolicyOidcPolicyArgs',
-    'GetServicePrincipalFederationPolicyOidcPolicyArgsDict',
+    'GetSchemasProviderConfigArgs',
+    'GetSchemasProviderConfigArgsDict',
     'GetServingEndpointsEndpointArgs',
     'GetServingEndpointsEndpointArgsDict',
     'GetServingEndpointsEndpointAiGatewayArgs',
@@ -2327,12 +2229,20 @@ __all__ = [
     'GetServingEndpointsEndpointStateArgsDict',
     'GetServingEndpointsEndpointTagArgs',
     'GetServingEndpointsEndpointTagArgsDict',
+    'GetServingEndpointsProviderConfigArgs',
+    'GetServingEndpointsProviderConfigArgsDict',
     'GetShareObjectArgs',
     'GetShareObjectArgsDict',
     'GetShareObjectPartitionArgs',
     'GetShareObjectPartitionArgsDict',
     'GetShareObjectPartitionValueArgs',
     'GetShareObjectPartitionValueArgsDict',
+    'GetShareProviderConfigArgs',
+    'GetShareProviderConfigArgsDict',
+    'GetSharesProviderConfigArgs',
+    'GetSharesProviderConfigArgsDict',
+    'GetSparkVersionProviderConfigArgs',
+    'GetSparkVersionProviderConfigArgsDict',
     'GetSqlWarehouseChannelArgs',
     'GetSqlWarehouseChannelArgsDict',
     'GetSqlWarehouseHealthArgs',
@@ -2341,10 +2251,16 @@ __all__ = [
     'GetSqlWarehouseHealthFailureReasonArgsDict',
     'GetSqlWarehouseOdbcParamsArgs',
     'GetSqlWarehouseOdbcParamsArgsDict',
+    'GetSqlWarehouseProviderConfigArgs',
+    'GetSqlWarehouseProviderConfigArgsDict',
     'GetSqlWarehouseTagsArgs',
     'GetSqlWarehouseTagsArgsDict',
     'GetSqlWarehouseTagsCustomTagArgs',
     'GetSqlWarehouseTagsCustomTagArgsDict',
+    'GetSqlWarehousesProviderConfigArgs',
+    'GetSqlWarehousesProviderConfigArgsDict',
+    'GetStorageCredentialProviderConfigArgs',
+    'GetStorageCredentialProviderConfigArgsDict',
     'GetStorageCredentialStorageCredentialInfoArgs',
     'GetStorageCredentialStorageCredentialInfoArgsDict',
     'GetStorageCredentialStorageCredentialInfoAwsIamRoleArgs',
@@ -2357,6 +2273,10 @@ __all__ = [
     'GetStorageCredentialStorageCredentialInfoCloudflareApiTokenArgsDict',
     'GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAccountArgs',
     'GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAccountArgsDict',
+    'GetStorageCredentialsProviderConfigArgs',
+    'GetStorageCredentialsProviderConfigArgsDict',
+    'GetTableProviderConfigArgs',
+    'GetTableProviderConfigArgsDict',
     'GetTableTableInfoArgs',
     'GetTableTableInfoArgsDict',
     'GetTableTableInfoColumnArgs',
@@ -2397,60 +2317,22 @@ __all__ = [
     'GetTableTableInfoViewDependenciesDependencyFunctionArgsDict',
     'GetTableTableInfoViewDependenciesDependencyTableArgs',
     'GetTableTableInfoViewDependenciesDependencyTableArgsDict',
-    'GetTagPolicyValueArgs',
-    'GetTagPolicyValueArgsDict',
+    'GetTablesProviderConfigArgs',
+    'GetTablesProviderConfigArgsDict',
+    'GetViewsProviderConfigArgs',
+    'GetViewsProviderConfigArgsDict',
+    'GetVolumeProviderConfigArgs',
+    'GetVolumeProviderConfigArgsDict',
     'GetVolumeVolumeInfoArgs',
     'GetVolumeVolumeInfoArgsDict',
     'GetVolumeVolumeInfoEncryptionDetailsArgs',
     'GetVolumeVolumeInfoEncryptionDetailsArgsDict',
     'GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsArgs',
     'GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsArgsDict',
-    'GetWorkspaceSettingV2AibiDashboardEmbeddingAccessPolicyArgs',
-    'GetWorkspaceSettingV2AibiDashboardEmbeddingAccessPolicyArgsDict',
-    'GetWorkspaceSettingV2AibiDashboardEmbeddingApprovedDomainsArgs',
-    'GetWorkspaceSettingV2AibiDashboardEmbeddingApprovedDomainsArgsDict',
-    'GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceArgs',
-    'GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceArgsDict',
-    'GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsArgs',
-    'GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsArgsDict',
-    'GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowArgs',
-    'GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowArgsDict',
-    'GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgs',
-    'GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgsDict',
-    'GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs',
-    'GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgsDict',
-    'GetWorkspaceSettingV2BooleanValArgs',
-    'GetWorkspaceSettingV2BooleanValArgsDict',
-    'GetWorkspaceSettingV2DefaultDataSecurityModeArgs',
-    'GetWorkspaceSettingV2DefaultDataSecurityModeArgsDict',
-    'GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgs',
-    'GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgsDict',
-    'GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgs',
-    'GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgsDict',
-    'GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgs',
-    'GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgsDict',
-    'GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsArgs',
-    'GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsArgsDict',
-    'GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowArgs',
-    'GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowArgsDict',
-    'GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgs',
-    'GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgsDict',
-    'GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs',
-    'GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgsDict',
-    'GetWorkspaceSettingV2EffectiveDefaultDataSecurityModeArgs',
-    'GetWorkspaceSettingV2EffectiveDefaultDataSecurityModeArgsDict',
-    'GetWorkspaceSettingV2EffectivePersonalComputeArgs',
-    'GetWorkspaceSettingV2EffectivePersonalComputeArgsDict',
-    'GetWorkspaceSettingV2EffectiveRestrictWorkspaceAdminsArgs',
-    'GetWorkspaceSettingV2EffectiveRestrictWorkspaceAdminsArgsDict',
-    'GetWorkspaceSettingV2IntegerValArgs',
-    'GetWorkspaceSettingV2IntegerValArgsDict',
-    'GetWorkspaceSettingV2PersonalComputeArgs',
-    'GetWorkspaceSettingV2PersonalComputeArgsDict',
-    'GetWorkspaceSettingV2RestrictWorkspaceAdminsArgs',
-    'GetWorkspaceSettingV2RestrictWorkspaceAdminsArgsDict',
-    'GetWorkspaceSettingV2StringValArgs',
-    'GetWorkspaceSettingV2StringValArgsDict',
+    'GetVolumesProviderConfigArgs',
+    'GetVolumesProviderConfigArgsDict',
+    'GetZonesProviderConfigArgs',
+    'GetZonesProviderConfigArgsDict',
 ]
 
 MYPY = False
@@ -3066,7 +2948,7 @@ if not MYPY:
     class AccountSettingV2AibiDashboardEmbeddingAccessPolicyArgsDict(TypedDict):
         access_policy_type: pulumi.Input[_builtins.str]
         """
-        . Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
+        Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
         """
 elif False:
     AccountSettingV2AibiDashboardEmbeddingAccessPolicyArgsDict: TypeAlias = Mapping[str, Any]
@@ -3076,7 +2958,7 @@ class AccountSettingV2AibiDashboardEmbeddingAccessPolicyArgs:
     def __init__(__self__, *,
                  access_policy_type: pulumi.Input[_builtins.str]):
         """
-        :param pulumi.Input[_builtins.str] access_policy_type: . Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
+        :param pulumi.Input[_builtins.str] access_policy_type: Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
         """
         pulumi.set(__self__, "access_policy_type", access_policy_type)
 
@@ -3084,7 +2966,7 @@ class AccountSettingV2AibiDashboardEmbeddingAccessPolicyArgs:
     @pulumi.getter(name="accessPolicyType")
     def access_policy_type(self) -> pulumi.Input[_builtins.str]:
         """
-        . Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
+        Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
         """
         return pulumi.get(self, "access_policy_type")
 
@@ -3290,11 +3172,11 @@ if not MYPY:
     class AccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgsDict(TypedDict):
         day_of_week: NotRequired[pulumi.Input[_builtins.str]]
         """
-        . Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
+        Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
         """
         frequency: NotRequired[pulumi.Input[_builtins.str]]
         """
-        . Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
+        Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
         """
         window_start_time: NotRequired[pulumi.Input['AccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgsDict']]
 elif False:
@@ -3307,8 +3189,8 @@ class AccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBas
                  frequency: Optional[pulumi.Input[_builtins.str]] = None,
                  window_start_time: Optional[pulumi.Input['AccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs']] = None):
         """
-        :param pulumi.Input[_builtins.str] day_of_week: . Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
-        :param pulumi.Input[_builtins.str] frequency: . Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
+        :param pulumi.Input[_builtins.str] day_of_week: Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
+        :param pulumi.Input[_builtins.str] frequency: Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
         """
         if day_of_week is not None:
             pulumi.set(__self__, "day_of_week", day_of_week)
@@ -3321,7 +3203,7 @@ class AccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBas
     @pulumi.getter(name="dayOfWeek")
     def day_of_week(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        . Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
+        Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
         """
         return pulumi.get(self, "day_of_week")
 
@@ -3333,7 +3215,7 @@ class AccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBas
     @pulumi.getter
     def frequency(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        . Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
+        Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
         """
         return pulumi.get(self, "frequency")
 
@@ -3411,32 +3293,10 @@ class AccountSettingV2BooleanValArgs:
 
 
 if not MYPY:
-    class AccountSettingV2DefaultDataSecurityModeArgsDict(TypedDict):
-        status: pulumi.Input[_builtins.str]
-elif False:
-    AccountSettingV2DefaultDataSecurityModeArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class AccountSettingV2DefaultDataSecurityModeArgs:
-    def __init__(__self__, *,
-                 status: pulumi.Input[_builtins.str]):
-        pulumi.set(__self__, "status", status)
-
-    @_builtins.property
-    @pulumi.getter
-    def status(self) -> pulumi.Input[_builtins.str]:
-        return pulumi.get(self, "status")
-
-    @status.setter
-    def status(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "status", value)
-
-
-if not MYPY:
     class AccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgsDict(TypedDict):
         access_policy_type: pulumi.Input[_builtins.str]
         """
-        . Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
+        Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
         """
 elif False:
     AccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgsDict: TypeAlias = Mapping[str, Any]
@@ -3446,7 +3306,7 @@ class AccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgs:
     def __init__(__self__, *,
                  access_policy_type: pulumi.Input[_builtins.str]):
         """
-        :param pulumi.Input[_builtins.str] access_policy_type: . Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
+        :param pulumi.Input[_builtins.str] access_policy_type: Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
         """
         pulumi.set(__self__, "access_policy_type", access_policy_type)
 
@@ -3454,7 +3314,7 @@ class AccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgs:
     @pulumi.getter(name="accessPolicyType")
     def access_policy_type(self) -> pulumi.Input[_builtins.str]:
         """
-        . Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
+        Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
         """
         return pulumi.get(self, "access_policy_type")
 
@@ -3660,11 +3520,11 @@ if not MYPY:
     class AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgsDict(TypedDict):
         day_of_week: NotRequired[pulumi.Input[_builtins.str]]
         """
-        . Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
+        Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
         """
         frequency: NotRequired[pulumi.Input[_builtins.str]]
         """
-        . Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
+        Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
         """
         window_start_time: NotRequired[pulumi.Input['AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgsDict']]
 elif False:
@@ -3677,8 +3537,8 @@ class AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowW
                  frequency: Optional[pulumi.Input[_builtins.str]] = None,
                  window_start_time: Optional[pulumi.Input['AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs']] = None):
         """
-        :param pulumi.Input[_builtins.str] day_of_week: . Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
-        :param pulumi.Input[_builtins.str] frequency: . Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
+        :param pulumi.Input[_builtins.str] day_of_week: Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
+        :param pulumi.Input[_builtins.str] frequency: Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
         """
         if day_of_week is not None:
             pulumi.set(__self__, "day_of_week", day_of_week)
@@ -3691,7 +3551,7 @@ class AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowW
     @pulumi.getter(name="dayOfWeek")
     def day_of_week(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        . Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
+        Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
         """
         return pulumi.get(self, "day_of_week")
 
@@ -3703,7 +3563,7 @@ class AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowW
     @pulumi.getter
     def frequency(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        . Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
+        Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
         """
         return pulumi.get(self, "frequency")
 
@@ -3781,28 +3641,6 @@ class AccountSettingV2EffectiveBooleanValArgs:
 
 
 if not MYPY:
-    class AccountSettingV2EffectiveDefaultDataSecurityModeArgsDict(TypedDict):
-        status: pulumi.Input[_builtins.str]
-elif False:
-    AccountSettingV2EffectiveDefaultDataSecurityModeArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class AccountSettingV2EffectiveDefaultDataSecurityModeArgs:
-    def __init__(__self__, *,
-                 status: pulumi.Input[_builtins.str]):
-        pulumi.set(__self__, "status", status)
-
-    @_builtins.property
-    @pulumi.getter
-    def status(self) -> pulumi.Input[_builtins.str]:
-        return pulumi.get(self, "status")
-
-    @status.setter
-    def status(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "status", value)
-
-
-if not MYPY:
     class AccountSettingV2EffectiveIntegerValArgsDict(TypedDict):
         value: NotRequired[pulumi.Input[_builtins.int]]
 elif False:
@@ -3851,6 +3689,9 @@ class AccountSettingV2EffectivePersonalComputeArgs:
 if not MYPY:
     class AccountSettingV2EffectiveRestrictWorkspaceAdminsArgsDict(TypedDict):
         status: pulumi.Input[_builtins.str]
+        """
+        Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
+        """
 elif False:
     AccountSettingV2EffectiveRestrictWorkspaceAdminsArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -3858,11 +3699,17 @@ elif False:
 class AccountSettingV2EffectiveRestrictWorkspaceAdminsArgs:
     def __init__(__self__, *,
                  status: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] status: Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
+        """
         pulumi.set(__self__, "status", status)
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> pulumi.Input[_builtins.str]:
+        """
+        Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
+        """
         return pulumi.get(self, "status")
 
     @status.setter
@@ -3942,6 +3789,9 @@ class AccountSettingV2PersonalComputeArgs:
 if not MYPY:
     class AccountSettingV2RestrictWorkspaceAdminsArgsDict(TypedDict):
         status: pulumi.Input[_builtins.str]
+        """
+        Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
+        """
 elif False:
     AccountSettingV2RestrictWorkspaceAdminsArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -3949,11 +3799,17 @@ elif False:
 class AccountSettingV2RestrictWorkspaceAdminsArgs:
     def __init__(__self__, *,
                  status: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] status: Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
+        """
         pulumi.set(__self__, "status", status)
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> pulumi.Input[_builtins.str]:
+        """
+        Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
+        """
         return pulumi.get(self, "status")
 
     @status.setter
@@ -4355,13 +4211,17 @@ class AlertV2EffectiveRunAsArgs:
 
 if not MYPY:
     class AlertV2EvaluationArgsDict(TypedDict):
-        comparison_operator: NotRequired[pulumi.Input[_builtins.str]]
+        comparison_operator: pulumi.Input[_builtins.str]
         """
         Operator used for comparison in alert evaluation. Possible values are: `EQUAL`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `IS_NOT_NULL`, `IS_NULL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`
         """
+        source: pulumi.Input['AlertV2EvaluationSourceArgsDict']
+        """
+        Source column from result to use to evaluate alert
+        """
         empty_result_state: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Alert state if result is empty. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
+        Alert state if result is empty. Please avoid setting this field to be `UNKNOWN` because `UNKNOWN` state is planned to be deprecated. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
         """
         last_evaluated_at: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -4370,10 +4230,6 @@ if not MYPY:
         notification: NotRequired[pulumi.Input['AlertV2EvaluationNotificationArgsDict']]
         """
         User or Notification Destination to notify when alert is triggered
-        """
-        source: NotRequired[pulumi.Input['AlertV2EvaluationSourceArgsDict']]
-        """
-        Source column from result to use to evaluate alert
         """
         state: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -4389,32 +4245,30 @@ elif False:
 @pulumi.input_type
 class AlertV2EvaluationArgs:
     def __init__(__self__, *,
-                 comparison_operator: Optional[pulumi.Input[_builtins.str]] = None,
+                 comparison_operator: pulumi.Input[_builtins.str],
+                 source: pulumi.Input['AlertV2EvaluationSourceArgs'],
                  empty_result_state: Optional[pulumi.Input[_builtins.str]] = None,
                  last_evaluated_at: Optional[pulumi.Input[_builtins.str]] = None,
                  notification: Optional[pulumi.Input['AlertV2EvaluationNotificationArgs']] = None,
-                 source: Optional[pulumi.Input['AlertV2EvaluationSourceArgs']] = None,
                  state: Optional[pulumi.Input[_builtins.str]] = None,
                  threshold: Optional[pulumi.Input['AlertV2EvaluationThresholdArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] comparison_operator: Operator used for comparison in alert evaluation. Possible values are: `EQUAL`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `IS_NOT_NULL`, `IS_NULL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`
-        :param pulumi.Input[_builtins.str] empty_result_state: Alert state if result is empty. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
+        :param pulumi.Input['AlertV2EvaluationSourceArgs'] source: Source column from result to use to evaluate alert
+        :param pulumi.Input[_builtins.str] empty_result_state: Alert state if result is empty. Please avoid setting this field to be `UNKNOWN` because `UNKNOWN` state is planned to be deprecated. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
         :param pulumi.Input[_builtins.str] last_evaluated_at: (string) - Timestamp of the last evaluation
         :param pulumi.Input['AlertV2EvaluationNotificationArgs'] notification: User or Notification Destination to notify when alert is triggered
-        :param pulumi.Input['AlertV2EvaluationSourceArgs'] source: Source column from result to use to evaluate alert
         :param pulumi.Input[_builtins.str] state: (string) - Latest state of alert evaluation. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
         :param pulumi.Input['AlertV2EvaluationThresholdArgs'] threshold: Threshold to user for alert evaluation, can be a column or a value
         """
-        if comparison_operator is not None:
-            pulumi.set(__self__, "comparison_operator", comparison_operator)
+        pulumi.set(__self__, "comparison_operator", comparison_operator)
+        pulumi.set(__self__, "source", source)
         if empty_result_state is not None:
             pulumi.set(__self__, "empty_result_state", empty_result_state)
         if last_evaluated_at is not None:
             pulumi.set(__self__, "last_evaluated_at", last_evaluated_at)
         if notification is not None:
             pulumi.set(__self__, "notification", notification)
-        if source is not None:
-            pulumi.set(__self__, "source", source)
         if state is not None:
             pulumi.set(__self__, "state", state)
         if threshold is not None:
@@ -4422,21 +4276,33 @@ class AlertV2EvaluationArgs:
 
     @_builtins.property
     @pulumi.getter(name="comparisonOperator")
-    def comparison_operator(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comparison_operator(self) -> pulumi.Input[_builtins.str]:
         """
         Operator used for comparison in alert evaluation. Possible values are: `EQUAL`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `IS_NOT_NULL`, `IS_NULL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`
         """
         return pulumi.get(self, "comparison_operator")
 
     @comparison_operator.setter
-    def comparison_operator(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comparison_operator(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "comparison_operator", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def source(self) -> pulumi.Input['AlertV2EvaluationSourceArgs']:
+        """
+        Source column from result to use to evaluate alert
+        """
+        return pulumi.get(self, "source")
+
+    @source.setter
+    def source(self, value: pulumi.Input['AlertV2EvaluationSourceArgs']):
+        pulumi.set(self, "source", value)
 
     @_builtins.property
     @pulumi.getter(name="emptyResultState")
     def empty_result_state(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Alert state if result is empty. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
+        Alert state if result is empty. Please avoid setting this field to be `UNKNOWN` because `UNKNOWN` state is planned to be deprecated. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
         """
         return pulumi.get(self, "empty_result_state")
 
@@ -4470,18 +4336,6 @@ class AlertV2EvaluationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def source(self) -> Optional[pulumi.Input['AlertV2EvaluationSourceArgs']]:
-        """
-        Source column from result to use to evaluate alert
-        """
-        return pulumi.get(self, "source")
-
-    @source.setter
-    def source(self, value: Optional[pulumi.Input['AlertV2EvaluationSourceArgs']]):
-        pulumi.set(self, "source", value)
-
-    @_builtins.property
-    @pulumi.getter
     def state(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         (string) - Latest state of alert evaluation. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
@@ -4507,6 +4361,8 @@ class AlertV2EvaluationArgs:
 
 if not MYPY:
     class AlertV2EvaluationNotificationArgsDict(TypedDict):
+        effective_notify_on_ok: NotRequired[pulumi.Input[_builtins.bool]]
+        effective_retrigger_seconds: NotRequired[pulumi.Input[_builtins.int]]
         notify_on_ok: NotRequired[pulumi.Input[_builtins.bool]]
         """
         Whether to notify alert subscribers when alert returns back to normal
@@ -4522,6 +4378,8 @@ elif False:
 @pulumi.input_type
 class AlertV2EvaluationNotificationArgs:
     def __init__(__self__, *,
+                 effective_notify_on_ok: Optional[pulumi.Input[_builtins.bool]] = None,
+                 effective_retrigger_seconds: Optional[pulumi.Input[_builtins.int]] = None,
                  notify_on_ok: Optional[pulumi.Input[_builtins.bool]] = None,
                  retrigger_seconds: Optional[pulumi.Input[_builtins.int]] = None,
                  subscriptions: Optional[pulumi.Input[Sequence[pulumi.Input['AlertV2EvaluationNotificationSubscriptionArgs']]]] = None):
@@ -4529,12 +4387,34 @@ class AlertV2EvaluationNotificationArgs:
         :param pulumi.Input[_builtins.bool] notify_on_ok: Whether to notify alert subscribers when alert returns back to normal
         :param pulumi.Input[_builtins.int] retrigger_seconds: Number of seconds an alert must wait after being triggered to rearm itself. After rearming, it can be triggered again. If 0 or not specified, the alert will not be triggered again
         """
+        if effective_notify_on_ok is not None:
+            pulumi.set(__self__, "effective_notify_on_ok", effective_notify_on_ok)
+        if effective_retrigger_seconds is not None:
+            pulumi.set(__self__, "effective_retrigger_seconds", effective_retrigger_seconds)
         if notify_on_ok is not None:
             pulumi.set(__self__, "notify_on_ok", notify_on_ok)
         if retrigger_seconds is not None:
             pulumi.set(__self__, "retrigger_seconds", retrigger_seconds)
         if subscriptions is not None:
             pulumi.set(__self__, "subscriptions", subscriptions)
+
+    @_builtins.property
+    @pulumi.getter(name="effectiveNotifyOnOk")
+    def effective_notify_on_ok(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        return pulumi.get(self, "effective_notify_on_ok")
+
+    @effective_notify_on_ok.setter
+    def effective_notify_on_ok(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "effective_notify_on_ok", value)
+
+    @_builtins.property
+    @pulumi.getter(name="effectiveRetriggerSeconds")
+    def effective_retrigger_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "effective_retrigger_seconds")
+
+    @effective_retrigger_seconds.setter
+    def effective_retrigger_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "effective_retrigger_seconds", value)
 
     @_builtins.property
     @pulumi.getter(name="notifyOnOk")
@@ -4608,36 +4488,44 @@ class AlertV2EvaluationNotificationSubscriptionArgs:
 
 if not MYPY:
     class AlertV2EvaluationSourceArgsDict(TypedDict):
+        name: pulumi.Input[_builtins.str]
         aggregation: NotRequired[pulumi.Input[_builtins.str]]
         """
-        . Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
+        Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
         """
         display: NotRequired[pulumi.Input[_builtins.str]]
-        name: NotRequired[pulumi.Input[_builtins.str]]
 elif False:
     AlertV2EvaluationSourceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AlertV2EvaluationSourceArgs:
     def __init__(__self__, *,
+                 name: pulumi.Input[_builtins.str],
                  aggregation: Optional[pulumi.Input[_builtins.str]] = None,
-                 display: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 display: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] aggregation: . Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
+        :param pulumi.Input[_builtins.str] aggregation: Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
         """
+        pulumi.set(__self__, "name", name)
         if aggregation is not None:
             pulumi.set(__self__, "aggregation", aggregation)
         if display is not None:
             pulumi.set(__self__, "display", display)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
     def aggregation(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        . Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
+        Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
         """
         return pulumi.get(self, "aggregation")
 
@@ -4653,15 +4541,6 @@ class AlertV2EvaluationSourceArgs:
     @display.setter
     def display(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "display", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "name", value)
 
 
 if not MYPY:
@@ -4702,36 +4581,44 @@ class AlertV2EvaluationThresholdArgs:
 
 if not MYPY:
     class AlertV2EvaluationThresholdColumnArgsDict(TypedDict):
+        name: pulumi.Input[_builtins.str]
         aggregation: NotRequired[pulumi.Input[_builtins.str]]
         """
-        . Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
+        Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
         """
         display: NotRequired[pulumi.Input[_builtins.str]]
-        name: NotRequired[pulumi.Input[_builtins.str]]
 elif False:
     AlertV2EvaluationThresholdColumnArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AlertV2EvaluationThresholdColumnArgs:
     def __init__(__self__, *,
+                 name: pulumi.Input[_builtins.str],
                  aggregation: Optional[pulumi.Input[_builtins.str]] = None,
-                 display: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 display: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] aggregation: . Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
+        :param pulumi.Input[_builtins.str] aggregation: Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
         """
+        pulumi.set(__self__, "name", name)
         if aggregation is not None:
             pulumi.set(__self__, "aggregation", aggregation)
         if display is not None:
             pulumi.set(__self__, "display", display)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
     def aggregation(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        . Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
+        Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
         """
         return pulumi.get(self, "aggregation")
 
@@ -4747,15 +4634,6 @@ class AlertV2EvaluationThresholdColumnArgs:
     @display.setter
     def display(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "display", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "name", value)
 
 
 if not MYPY:
@@ -4861,20 +4739,20 @@ class AlertV2RunAsArgs:
 
 if not MYPY:
     class AlertV2ScheduleArgsDict(TypedDict):
-        pause_status: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Indicate whether this schedule is paused or not. Possible values are: `PAUSED`, `UNPAUSED`
-        """
-        quartz_cron_schedule: NotRequired[pulumi.Input[_builtins.str]]
+        quartz_cron_schedule: pulumi.Input[_builtins.str]
         """
         A cron expression using quartz syntax that specifies the schedule for this pipeline.
         Should use the quartz format described here: http://www.quartz-scheduler.org/documentation/quartz-2.1.7/tutorials/tutorial-lesson-06.html
         """
-        timezone_id: NotRequired[pulumi.Input[_builtins.str]]
+        timezone_id: pulumi.Input[_builtins.str]
         """
         A Java timezone id. The schedule will be resolved using this timezone.
         This will be combined with the quartz_cron_schedule to determine the schedule.
         See https://docs.databricks.com/sql/language-manual/sql-ref-syntax-aux-conf-mgmt-set-timezone.html for details
+        """
+        pause_status: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Indicate whether this schedule is paused or not. Possible values are: `PAUSED`, `UNPAUSED`
         """
 elif False:
     AlertV2ScheduleArgsDict: TypeAlias = Mapping[str, Any]
@@ -4882,23 +4760,48 @@ elif False:
 @pulumi.input_type
 class AlertV2ScheduleArgs:
     def __init__(__self__, *,
-                 pause_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 quartz_cron_schedule: Optional[pulumi.Input[_builtins.str]] = None,
-                 timezone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 quartz_cron_schedule: pulumi.Input[_builtins.str],
+                 timezone_id: pulumi.Input[_builtins.str],
+                 pause_status: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] pause_status: Indicate whether this schedule is paused or not. Possible values are: `PAUSED`, `UNPAUSED`
         :param pulumi.Input[_builtins.str] quartz_cron_schedule: A cron expression using quartz syntax that specifies the schedule for this pipeline.
                Should use the quartz format described here: http://www.quartz-scheduler.org/documentation/quartz-2.1.7/tutorials/tutorial-lesson-06.html
         :param pulumi.Input[_builtins.str] timezone_id: A Java timezone id. The schedule will be resolved using this timezone.
                This will be combined with the quartz_cron_schedule to determine the schedule.
                See https://docs.databricks.com/sql/language-manual/sql-ref-syntax-aux-conf-mgmt-set-timezone.html for details
+        :param pulumi.Input[_builtins.str] pause_status: Indicate whether this schedule is paused or not. Possible values are: `PAUSED`, `UNPAUSED`
         """
+        pulumi.set(__self__, "quartz_cron_schedule", quartz_cron_schedule)
+        pulumi.set(__self__, "timezone_id", timezone_id)
         if pause_status is not None:
             pulumi.set(__self__, "pause_status", pause_status)
-        if quartz_cron_schedule is not None:
-            pulumi.set(__self__, "quartz_cron_schedule", quartz_cron_schedule)
-        if timezone_id is not None:
-            pulumi.set(__self__, "timezone_id", timezone_id)
+
+    @_builtins.property
+    @pulumi.getter(name="quartzCronSchedule")
+    def quartz_cron_schedule(self) -> pulumi.Input[_builtins.str]:
+        """
+        A cron expression using quartz syntax that specifies the schedule for this pipeline.
+        Should use the quartz format described here: http://www.quartz-scheduler.org/documentation/quartz-2.1.7/tutorials/tutorial-lesson-06.html
+        """
+        return pulumi.get(self, "quartz_cron_schedule")
+
+    @quartz_cron_schedule.setter
+    def quartz_cron_schedule(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "quartz_cron_schedule", value)
+
+    @_builtins.property
+    @pulumi.getter(name="timezoneId")
+    def timezone_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        A Java timezone id. The schedule will be resolved using this timezone.
+        This will be combined with the quartz_cron_schedule to determine the schedule.
+        See https://docs.databricks.com/sql/language-manual/sql-ref-syntax-aux-conf-mgmt-set-timezone.html for details
+        """
+        return pulumi.get(self, "timezone_id")
+
+    @timezone_id.setter
+    def timezone_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "timezone_id", value)
 
     @_builtins.property
     @pulumi.getter(name="pauseStatus")
@@ -4911,33 +4814,6 @@ class AlertV2ScheduleArgs:
     @pause_status.setter
     def pause_status(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "pause_status", value)
-
-    @_builtins.property
-    @pulumi.getter(name="quartzCronSchedule")
-    def quartz_cron_schedule(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        A cron expression using quartz syntax that specifies the schedule for this pipeline.
-        Should use the quartz format described here: http://www.quartz-scheduler.org/documentation/quartz-2.1.7/tutorials/tutorial-lesson-06.html
-        """
-        return pulumi.get(self, "quartz_cron_schedule")
-
-    @quartz_cron_schedule.setter
-    def quartz_cron_schedule(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "quartz_cron_schedule", value)
-
-    @_builtins.property
-    @pulumi.getter(name="timezoneId")
-    def timezone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        A Java timezone id. The schedule will be resolved using this timezone.
-        This will be combined with the quartz_cron_schedule to determine the schedule.
-        See https://docs.databricks.com/sql/language-manual/sql-ref-syntax-aux-conf-mgmt-set-timezone.html for details
-        """
-        return pulumi.get(self, "timezone_id")
-
-    @timezone_id.setter
-    def timezone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "timezone_id", value)
 
 
 if not MYPY:
@@ -5469,6 +5345,28 @@ class AppPendingDeploymentStatusArgs:
 
 
 if not MYPY:
+    class AppProviderConfigArgsDict(TypedDict):
+        workspace_id: pulumi.Input[_builtins.str]
+elif False:
+    AppProviderConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AppProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: pulumi.Input[_builtins.str]):
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "workspace_id", value)
+
+
+if not MYPY:
     class AppResourceArgsDict(TypedDict):
         name: pulumi.Input[_builtins.str]
         """
@@ -5483,6 +5381,10 @@ if not MYPY:
         The description of the resource.
 
         Exactly one of the following attributes must be provided:
+        """
+        genie_space: NotRequired[pulumi.Input['AppResourceGenieSpaceArgsDict']]
+        """
+        attribute
         """
         job: NotRequired[pulumi.Input['AppResourceJobArgsDict']]
         """
@@ -5513,6 +5415,7 @@ class AppResourceArgs:
                  name: pulumi.Input[_builtins.str],
                  database: Optional[pulumi.Input['AppResourceDatabaseArgs']] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 genie_space: Optional[pulumi.Input['AppResourceGenieSpaceArgs']] = None,
                  job: Optional[pulumi.Input['AppResourceJobArgs']] = None,
                  secret: Optional[pulumi.Input['AppResourceSecretArgs']] = None,
                  serving_endpoint: Optional[pulumi.Input['AppResourceServingEndpointArgs']] = None,
@@ -5524,6 +5427,7 @@ class AppResourceArgs:
         :param pulumi.Input[_builtins.str] description: The description of the resource.
                
                Exactly one of the following attributes must be provided:
+        :param pulumi.Input['AppResourceGenieSpaceArgs'] genie_space: attribute
         :param pulumi.Input['AppResourceJobArgs'] job: attribute
         :param pulumi.Input['AppResourceSecretArgs'] secret: attribute
         :param pulumi.Input['AppResourceServingEndpointArgs'] serving_endpoint: attribute
@@ -5535,6 +5439,8 @@ class AppResourceArgs:
             pulumi.set(__self__, "database", database)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if genie_space is not None:
+            pulumi.set(__self__, "genie_space", genie_space)
         if job is not None:
             pulumi.set(__self__, "job", job)
         if secret is not None:
@@ -5583,6 +5489,18 @@ class AppResourceArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="genieSpace")
+    def genie_space(self) -> Optional[pulumi.Input['AppResourceGenieSpaceArgs']]:
+        """
+        attribute
+        """
+        return pulumi.get(self, "genie_space")
+
+    @genie_space.setter
+    def genie_space(self, value: Optional[pulumi.Input['AppResourceGenieSpaceArgs']]):
+        pulumi.set(self, "genie_space", value)
 
     @_builtins.property
     @pulumi.getter
@@ -5712,6 +5630,68 @@ class AppResourceDatabaseArgs:
     @permission.setter
     def permission(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "permission", value)
+
+
+if not MYPY:
+    class AppResourceGenieSpaceArgsDict(TypedDict):
+        name: pulumi.Input[_builtins.str]
+        """
+        The name of Genie Space.
+        """
+        permission: pulumi.Input[_builtins.str]
+        space_id: pulumi.Input[_builtins.str]
+        """
+        The unique ID of Genie Space.
+        """
+elif False:
+    AppResourceGenieSpaceArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AppResourceGenieSpaceArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[_builtins.str],
+                 permission: pulumi.Input[_builtins.str],
+                 space_id: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] name: The name of Genie Space.
+        :param pulumi.Input[_builtins.str] space_id: The unique ID of Genie Space.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "permission", permission)
+        pulumi.set(__self__, "space_id", space_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        The name of Genie Space.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def permission(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "permission")
+
+    @permission.setter
+    def permission(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "permission", value)
+
+    @_builtins.property
+    @pulumi.getter(name="spaceId")
+    def space_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        The unique ID of Genie Space.
+        """
+        return pulumi.get(self, "space_id")
+
+    @space_id.setter
+    def space_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "space_id", value)
 
 
 if not MYPY:
@@ -6300,7 +6280,7 @@ if not MYPY:
         permission: pulumi.Input[_builtins.str]
         securable_type: pulumi.Input[_builtins.str]
         """
-        . Possible values are: `VOLUME`
+        Possible values are: `TABLE`, `VOLUME`
         """
 elif False:
     AppsSettingsCustomTemplateManifestResourceSpecUcSecurableSpecArgsDict: TypeAlias = Mapping[str, Any]
@@ -6311,7 +6291,7 @@ class AppsSettingsCustomTemplateManifestResourceSpecUcSecurableSpecArgs:
                  permission: pulumi.Input[_builtins.str],
                  securable_type: pulumi.Input[_builtins.str]):
         """
-        :param pulumi.Input[_builtins.str] securable_type: . Possible values are: `VOLUME`
+        :param pulumi.Input[_builtins.str] securable_type: Possible values are: `TABLE`, `VOLUME`
         """
         pulumi.set(__self__, "permission", permission)
         pulumi.set(__self__, "securable_type", securable_type)
@@ -6329,7 +6309,7 @@ class AppsSettingsCustomTemplateManifestResourceSpecUcSecurableSpecArgs:
     @pulumi.getter(name="securableType")
     def securable_type(self) -> pulumi.Input[_builtins.str]:
         """
-        . Possible values are: `VOLUME`
+        Possible values are: `TABLE`, `VOLUME`
         """
         return pulumi.get(self, "securable_type")
 
@@ -7142,2437 +7122,6 @@ class CatalogProvisioningInfoArgs:
     @state.setter
     def state(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "state", value)
-
-
-if not MYPY:
-    class CleanRoomAssetForeignTableArgsDict(TypedDict):
-        columns: NotRequired[pulumi.Input[Sequence[pulumi.Input['CleanRoomAssetForeignTableColumnArgsDict']]]]
-        """
-        (list of ColumnInfo) - The metadata information of the columns in the view
-        """
-elif False:
-    CleanRoomAssetForeignTableArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class CleanRoomAssetForeignTableArgs:
-    def __init__(__self__, *,
-                 columns: Optional[pulumi.Input[Sequence[pulumi.Input['CleanRoomAssetForeignTableColumnArgs']]]] = None):
-        """
-        :param pulumi.Input[Sequence[pulumi.Input['CleanRoomAssetForeignTableColumnArgs']]] columns: (list of ColumnInfo) - The metadata information of the columns in the view
-        """
-        if columns is not None:
-            pulumi.set(__self__, "columns", columns)
-
-    @_builtins.property
-    @pulumi.getter
-    def columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CleanRoomAssetForeignTableColumnArgs']]]]:
-        """
-        (list of ColumnInfo) - The metadata information of the columns in the view
-        """
-        return pulumi.get(self, "columns")
-
-    @columns.setter
-    def columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CleanRoomAssetForeignTableColumnArgs']]]]):
-        pulumi.set(self, "columns", value)
-
-
-if not MYPY:
-    class CleanRoomAssetForeignTableColumnArgsDict(TypedDict):
-        comment: NotRequired[pulumi.Input[_builtins.str]]
-        mask: NotRequired[pulumi.Input['CleanRoomAssetForeignTableColumnMaskArgsDict']]
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A fully qualified name that uniquely identifies the asset within the clean room.
-        This is also the name displayed in the clean room UI.
-
-        For UC securable assets (tables, volumes, etc.), the format is *shared_catalog*.*shared_schema*.*asset_name*
-
-        For notebooks, the name is the notebook file name.
-        For jar analyses, the name is the jar analysis name
-        """
-        nullable: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether field may be Null (default: true)
-        """
-        partition_index: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Partition index for column
-        """
-        position: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Ordinal position of column (starting at position 0)
-        """
-        type_interval_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Format of IntervalType
-        """
-        type_json: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Full data type specification, JSON-serialized
-        """
-        type_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        . Possible values are: `ARRAY`, `BINARY`, `BOOLEAN`, `BYTE`, `CHAR`, `DATE`, `DECIMAL`, `DOUBLE`, `FLOAT`, `GEOGRAPHY`, `GEOMETRY`, `INT`, `INTERVAL`, `LONG`, `MAP`, `NULL`, `SHORT`, `STRING`, `STRUCT`, `TABLE_TYPE`, `TIMESTAMP`, `TIMESTAMP_NTZ`, `USER_DEFINED_TYPE`, `VARIANT`
-        """
-        type_precision: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Digits of precision; required for DecimalTypes
-        """
-        type_scale: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Digits to right of decimal; Required for DecimalTypes
-        """
-        type_text: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Full data type specification as SQL/catalogString text
-        """
-elif False:
-    CleanRoomAssetForeignTableColumnArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class CleanRoomAssetForeignTableColumnArgs:
-    def __init__(__self__, *,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 mask: Optional[pulumi.Input['CleanRoomAssetForeignTableColumnMaskArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 nullable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 partition_index: Optional[pulumi.Input[_builtins.int]] = None,
-                 position: Optional[pulumi.Input[_builtins.int]] = None,
-                 type_interval_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 type_json: Optional[pulumi.Input[_builtins.str]] = None,
-                 type_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 type_precision: Optional[pulumi.Input[_builtins.int]] = None,
-                 type_scale: Optional[pulumi.Input[_builtins.int]] = None,
-                 type_text: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.str] name: A fully qualified name that uniquely identifies the asset within the clean room.
-               This is also the name displayed in the clean room UI.
-               
-               For UC securable assets (tables, volumes, etc.), the format is *shared_catalog*.*shared_schema*.*asset_name*
-               
-               For notebooks, the name is the notebook file name.
-               For jar analyses, the name is the jar analysis name
-        :param pulumi.Input[_builtins.bool] nullable: Whether field may be Null (default: true)
-        :param pulumi.Input[_builtins.int] partition_index: Partition index for column
-        :param pulumi.Input[_builtins.int] position: Ordinal position of column (starting at position 0)
-        :param pulumi.Input[_builtins.str] type_interval_type: Format of IntervalType
-        :param pulumi.Input[_builtins.str] type_json: Full data type specification, JSON-serialized
-        :param pulumi.Input[_builtins.str] type_name: . Possible values are: `ARRAY`, `BINARY`, `BOOLEAN`, `BYTE`, `CHAR`, `DATE`, `DECIMAL`, `DOUBLE`, `FLOAT`, `GEOGRAPHY`, `GEOMETRY`, `INT`, `INTERVAL`, `LONG`, `MAP`, `NULL`, `SHORT`, `STRING`, `STRUCT`, `TABLE_TYPE`, `TIMESTAMP`, `TIMESTAMP_NTZ`, `USER_DEFINED_TYPE`, `VARIANT`
-        :param pulumi.Input[_builtins.int] type_precision: Digits of precision; required for DecimalTypes
-        :param pulumi.Input[_builtins.int] type_scale: Digits to right of decimal; Required for DecimalTypes
-        :param pulumi.Input[_builtins.str] type_text: Full data type specification as SQL/catalogString text
-        """
-        if comment is not None:
-            pulumi.set(__self__, "comment", comment)
-        if mask is not None:
-            pulumi.set(__self__, "mask", mask)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if nullable is not None:
-            pulumi.set(__self__, "nullable", nullable)
-        if partition_index is not None:
-            pulumi.set(__self__, "partition_index", partition_index)
-        if position is not None:
-            pulumi.set(__self__, "position", position)
-        if type_interval_type is not None:
-            pulumi.set(__self__, "type_interval_type", type_interval_type)
-        if type_json is not None:
-            pulumi.set(__self__, "type_json", type_json)
-        if type_name is not None:
-            pulumi.set(__self__, "type_name", type_name)
-        if type_precision is not None:
-            pulumi.set(__self__, "type_precision", type_precision)
-        if type_scale is not None:
-            pulumi.set(__self__, "type_scale", type_scale)
-        if type_text is not None:
-            pulumi.set(__self__, "type_text", type_text)
-
-    @_builtins.property
-    @pulumi.getter
-    def comment(self) -> Optional[pulumi.Input[_builtins.str]]:
-        return pulumi.get(self, "comment")
-
-    @comment.setter
-    def comment(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "comment", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def mask(self) -> Optional[pulumi.Input['CleanRoomAssetForeignTableColumnMaskArgs']]:
-        return pulumi.get(self, "mask")
-
-    @mask.setter
-    def mask(self, value: Optional[pulumi.Input['CleanRoomAssetForeignTableColumnMaskArgs']]):
-        pulumi.set(self, "mask", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        A fully qualified name that uniquely identifies the asset within the clean room.
-        This is also the name displayed in the clean room UI.
-
-        For UC securable assets (tables, volumes, etc.), the format is *shared_catalog*.*shared_schema*.*asset_name*
-
-        For notebooks, the name is the notebook file name.
-        For jar analyses, the name is the jar analysis name
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "name", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def nullable(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Whether field may be Null (default: true)
-        """
-        return pulumi.get(self, "nullable")
-
-    @nullable.setter
-    def nullable(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "nullable", value)
-
-    @_builtins.property
-    @pulumi.getter(name="partitionIndex")
-    def partition_index(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Partition index for column
-        """
-        return pulumi.get(self, "partition_index")
-
-    @partition_index.setter
-    def partition_index(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "partition_index", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def position(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Ordinal position of column (starting at position 0)
-        """
-        return pulumi.get(self, "position")
-
-    @position.setter
-    def position(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "position", value)
-
-    @_builtins.property
-    @pulumi.getter(name="typeIntervalType")
-    def type_interval_type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Format of IntervalType
-        """
-        return pulumi.get(self, "type_interval_type")
-
-    @type_interval_type.setter
-    def type_interval_type(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "type_interval_type", value)
-
-    @_builtins.property
-    @pulumi.getter(name="typeJson")
-    def type_json(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Full data type specification, JSON-serialized
-        """
-        return pulumi.get(self, "type_json")
-
-    @type_json.setter
-    def type_json(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "type_json", value)
-
-    @_builtins.property
-    @pulumi.getter(name="typeName")
-    def type_name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        . Possible values are: `ARRAY`, `BINARY`, `BOOLEAN`, `BYTE`, `CHAR`, `DATE`, `DECIMAL`, `DOUBLE`, `FLOAT`, `GEOGRAPHY`, `GEOMETRY`, `INT`, `INTERVAL`, `LONG`, `MAP`, `NULL`, `SHORT`, `STRING`, `STRUCT`, `TABLE_TYPE`, `TIMESTAMP`, `TIMESTAMP_NTZ`, `USER_DEFINED_TYPE`, `VARIANT`
-        """
-        return pulumi.get(self, "type_name")
-
-    @type_name.setter
-    def type_name(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "type_name", value)
-
-    @_builtins.property
-    @pulumi.getter(name="typePrecision")
-    def type_precision(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Digits of precision; required for DecimalTypes
-        """
-        return pulumi.get(self, "type_precision")
-
-    @type_precision.setter
-    def type_precision(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "type_precision", value)
-
-    @_builtins.property
-    @pulumi.getter(name="typeScale")
-    def type_scale(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Digits to right of decimal; Required for DecimalTypes
-        """
-        return pulumi.get(self, "type_scale")
-
-    @type_scale.setter
-    def type_scale(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "type_scale", value)
-
-    @_builtins.property
-    @pulumi.getter(name="typeText")
-    def type_text(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Full data type specification as SQL/catalogString text
-        """
-        return pulumi.get(self, "type_text")
-
-    @type_text.setter
-    def type_text(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "type_text", value)
-
-
-if not MYPY:
-    class CleanRoomAssetForeignTableColumnMaskArgsDict(TypedDict):
-        function_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The full name of the column mask SQL UDF
-        """
-        using_column_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The list of additional table columns to be passed as input to the column mask function. The
-        first arg of the mask function should be of the type of the column being masked and the
-        types of the rest of the args should match the types of columns in 'using_column_names'
-        """
-elif False:
-    CleanRoomAssetForeignTableColumnMaskArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class CleanRoomAssetForeignTableColumnMaskArgs:
-    def __init__(__self__, *,
-                 function_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 using_column_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
-        """
-        :param pulumi.Input[_builtins.str] function_name: The full name of the column mask SQL UDF
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] using_column_names: The list of additional table columns to be passed as input to the column mask function. The
-               first arg of the mask function should be of the type of the column being masked and the
-               types of the rest of the args should match the types of columns in 'using_column_names'
-        """
-        if function_name is not None:
-            pulumi.set(__self__, "function_name", function_name)
-        if using_column_names is not None:
-            pulumi.set(__self__, "using_column_names", using_column_names)
-
-    @_builtins.property
-    @pulumi.getter(name="functionName")
-    def function_name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The full name of the column mask SQL UDF
-        """
-        return pulumi.get(self, "function_name")
-
-    @function_name.setter
-    def function_name(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "function_name", value)
-
-    @_builtins.property
-    @pulumi.getter(name="usingColumnNames")
-    def using_column_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        The list of additional table columns to be passed as input to the column mask function. The
-        first arg of the mask function should be of the type of the column being masked and the
-        types of the rest of the args should match the types of columns in 'using_column_names'
-        """
-        return pulumi.get(self, "using_column_names")
-
-    @using_column_names.setter
-    def using_column_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
-        pulumi.set(self, "using_column_names", value)
-
-
-if not MYPY:
-    class CleanRoomAssetForeignTableLocalDetailsArgsDict(TypedDict):
-        local_name: pulumi.Input[_builtins.str]
-elif False:
-    CleanRoomAssetForeignTableLocalDetailsArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class CleanRoomAssetForeignTableLocalDetailsArgs:
-    def __init__(__self__, *,
-                 local_name: pulumi.Input[_builtins.str]):
-        pulumi.set(__self__, "local_name", local_name)
-
-    @_builtins.property
-    @pulumi.getter(name="localName")
-    def local_name(self) -> pulumi.Input[_builtins.str]:
-        return pulumi.get(self, "local_name")
-
-    @local_name.setter
-    def local_name(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "local_name", value)
-
-
-if not MYPY:
-    class CleanRoomAssetNotebookArgsDict(TypedDict):
-        notebook_content: pulumi.Input[_builtins.str]
-        """
-        Base 64 representation of the notebook contents.
-        This is the same format as returned by :method:workspace/export with the format of **HTML**
-        """
-        etag: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (string) - Server generated etag that represents the notebook version
-        """
-        review_state: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (string) - Top-level status derived from all reviews. Possible values are: `APPROVED`, `PENDING`, `REJECTED`
-        """
-        reviews: NotRequired[pulumi.Input[Sequence[pulumi.Input['CleanRoomAssetNotebookReviewArgsDict']]]]
-        """
-        (list of CleanRoomNotebookReview) - All existing approvals or rejections
-        """
-        runner_collaborator_aliases: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Aliases of collaborators that can run the notebook
-        """
-elif False:
-    CleanRoomAssetNotebookArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class CleanRoomAssetNotebookArgs:
-    def __init__(__self__, *,
-                 notebook_content: pulumi.Input[_builtins.str],
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 review_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 reviews: Optional[pulumi.Input[Sequence[pulumi.Input['CleanRoomAssetNotebookReviewArgs']]]] = None,
-                 runner_collaborator_aliases: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
-        """
-        :param pulumi.Input[_builtins.str] notebook_content: Base 64 representation of the notebook contents.
-               This is the same format as returned by :method:workspace/export with the format of **HTML**
-        :param pulumi.Input[_builtins.str] etag: (string) - Server generated etag that represents the notebook version
-        :param pulumi.Input[_builtins.str] review_state: (string) - Top-level status derived from all reviews. Possible values are: `APPROVED`, `PENDING`, `REJECTED`
-        :param pulumi.Input[Sequence[pulumi.Input['CleanRoomAssetNotebookReviewArgs']]] reviews: (list of CleanRoomNotebookReview) - All existing approvals or rejections
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] runner_collaborator_aliases: Aliases of collaborators that can run the notebook
-        """
-        pulumi.set(__self__, "notebook_content", notebook_content)
-        if etag is not None:
-            pulumi.set(__self__, "etag", etag)
-        if review_state is not None:
-            pulumi.set(__self__, "review_state", review_state)
-        if reviews is not None:
-            pulumi.set(__self__, "reviews", reviews)
-        if runner_collaborator_aliases is not None:
-            pulumi.set(__self__, "runner_collaborator_aliases", runner_collaborator_aliases)
-
-    @_builtins.property
-    @pulumi.getter(name="notebookContent")
-    def notebook_content(self) -> pulumi.Input[_builtins.str]:
-        """
-        Base 64 representation of the notebook contents.
-        This is the same format as returned by :method:workspace/export with the format of **HTML**
-        """
-        return pulumi.get(self, "notebook_content")
-
-    @notebook_content.setter
-    def notebook_content(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "notebook_content", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        (string) - Server generated etag that represents the notebook version
-        """
-        return pulumi.get(self, "etag")
-
-    @etag.setter
-    def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "etag", value)
-
-    @_builtins.property
-    @pulumi.getter(name="reviewState")
-    def review_state(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        (string) - Top-level status derived from all reviews. Possible values are: `APPROVED`, `PENDING`, `REJECTED`
-        """
-        return pulumi.get(self, "review_state")
-
-    @review_state.setter
-    def review_state(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "review_state", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def reviews(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CleanRoomAssetNotebookReviewArgs']]]]:
-        """
-        (list of CleanRoomNotebookReview) - All existing approvals or rejections
-        """
-        return pulumi.get(self, "reviews")
-
-    @reviews.setter
-    def reviews(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CleanRoomAssetNotebookReviewArgs']]]]):
-        pulumi.set(self, "reviews", value)
-
-    @_builtins.property
-    @pulumi.getter(name="runnerCollaboratorAliases")
-    def runner_collaborator_aliases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        Aliases of collaborators that can run the notebook
-        """
-        return pulumi.get(self, "runner_collaborator_aliases")
-
-    @runner_collaborator_aliases.setter
-    def runner_collaborator_aliases(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
-        pulumi.set(self, "runner_collaborator_aliases", value)
-
-
-if not MYPY:
-    class CleanRoomAssetNotebookReviewArgsDict(TypedDict):
-        comment: NotRequired[pulumi.Input[_builtins.str]]
-        created_at_millis: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        When the review was submitted, in epoch milliseconds
-        """
-        review_state: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (string) - Top-level status derived from all reviews. Possible values are: `APPROVED`, `PENDING`, `REJECTED`
-        """
-        review_sub_reason: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specified when the review was not explicitly made by a user. Possible values are: `AUTO_APPROVED`, `BACKFILLED`
-        """
-        reviewer_collaborator_alias: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Collaborator alias of the reviewer
-        """
-elif False:
-    CleanRoomAssetNotebookReviewArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class CleanRoomAssetNotebookReviewArgs:
-    def __init__(__self__, *,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 created_at_millis: Optional[pulumi.Input[_builtins.int]] = None,
-                 review_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 review_sub_reason: Optional[pulumi.Input[_builtins.str]] = None,
-                 reviewer_collaborator_alias: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.int] created_at_millis: When the review was submitted, in epoch milliseconds
-        :param pulumi.Input[_builtins.str] review_state: (string) - Top-level status derived from all reviews. Possible values are: `APPROVED`, `PENDING`, `REJECTED`
-        :param pulumi.Input[_builtins.str] review_sub_reason: Specified when the review was not explicitly made by a user. Possible values are: `AUTO_APPROVED`, `BACKFILLED`
-        :param pulumi.Input[_builtins.str] reviewer_collaborator_alias: Collaborator alias of the reviewer
-        """
-        if comment is not None:
-            pulumi.set(__self__, "comment", comment)
-        if created_at_millis is not None:
-            pulumi.set(__self__, "created_at_millis", created_at_millis)
-        if review_state is not None:
-            pulumi.set(__self__, "review_state", review_state)
-        if review_sub_reason is not None:
-            pulumi.set(__self__, "review_sub_reason", review_sub_reason)
-        if reviewer_collaborator_alias is not None:
-            pulumi.set(__self__, "reviewer_collaborator_alias", reviewer_collaborator_alias)
-
-    @_builtins.property
-    @pulumi.getter
-    def comment(self) -> Optional[pulumi.Input[_builtins.str]]:
-        return pulumi.get(self, "comment")
-
-    @comment.setter
-    def comment(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "comment", value)
-
-    @_builtins.property
-    @pulumi.getter(name="createdAtMillis")
-    def created_at_millis(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        When the review was submitted, in epoch milliseconds
-        """
-        return pulumi.get(self, "created_at_millis")
-
-    @created_at_millis.setter
-    def created_at_millis(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "created_at_millis", value)
-
-    @_builtins.property
-    @pulumi.getter(name="reviewState")
-    def review_state(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        (string) - Top-level status derived from all reviews. Possible values are: `APPROVED`, `PENDING`, `REJECTED`
-        """
-        return pulumi.get(self, "review_state")
-
-    @review_state.setter
-    def review_state(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "review_state", value)
-
-    @_builtins.property
-    @pulumi.getter(name="reviewSubReason")
-    def review_sub_reason(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specified when the review was not explicitly made by a user. Possible values are: `AUTO_APPROVED`, `BACKFILLED`
-        """
-        return pulumi.get(self, "review_sub_reason")
-
-    @review_sub_reason.setter
-    def review_sub_reason(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "review_sub_reason", value)
-
-    @_builtins.property
-    @pulumi.getter(name="reviewerCollaboratorAlias")
-    def reviewer_collaborator_alias(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Collaborator alias of the reviewer
-        """
-        return pulumi.get(self, "reviewer_collaborator_alias")
-
-    @reviewer_collaborator_alias.setter
-    def reviewer_collaborator_alias(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "reviewer_collaborator_alias", value)
-
-
-if not MYPY:
-    class CleanRoomAssetTableArgsDict(TypedDict):
-        columns: NotRequired[pulumi.Input[Sequence[pulumi.Input['CleanRoomAssetTableColumnArgsDict']]]]
-        """
-        (list of ColumnInfo) - The metadata information of the columns in the view
-        """
-elif False:
-    CleanRoomAssetTableArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class CleanRoomAssetTableArgs:
-    def __init__(__self__, *,
-                 columns: Optional[pulumi.Input[Sequence[pulumi.Input['CleanRoomAssetTableColumnArgs']]]] = None):
-        """
-        :param pulumi.Input[Sequence[pulumi.Input['CleanRoomAssetTableColumnArgs']]] columns: (list of ColumnInfo) - The metadata information of the columns in the view
-        """
-        if columns is not None:
-            pulumi.set(__self__, "columns", columns)
-
-    @_builtins.property
-    @pulumi.getter
-    def columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CleanRoomAssetTableColumnArgs']]]]:
-        """
-        (list of ColumnInfo) - The metadata information of the columns in the view
-        """
-        return pulumi.get(self, "columns")
-
-    @columns.setter
-    def columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CleanRoomAssetTableColumnArgs']]]]):
-        pulumi.set(self, "columns", value)
-
-
-if not MYPY:
-    class CleanRoomAssetTableColumnArgsDict(TypedDict):
-        comment: NotRequired[pulumi.Input[_builtins.str]]
-        mask: NotRequired[pulumi.Input['CleanRoomAssetTableColumnMaskArgsDict']]
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A fully qualified name that uniquely identifies the asset within the clean room.
-        This is also the name displayed in the clean room UI.
-
-        For UC securable assets (tables, volumes, etc.), the format is *shared_catalog*.*shared_schema*.*asset_name*
-
-        For notebooks, the name is the notebook file name.
-        For jar analyses, the name is the jar analysis name
-        """
-        nullable: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether field may be Null (default: true)
-        """
-        partition_index: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Partition index for column
-        """
-        position: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Ordinal position of column (starting at position 0)
-        """
-        type_interval_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Format of IntervalType
-        """
-        type_json: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Full data type specification, JSON-serialized
-        """
-        type_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        . Possible values are: `ARRAY`, `BINARY`, `BOOLEAN`, `BYTE`, `CHAR`, `DATE`, `DECIMAL`, `DOUBLE`, `FLOAT`, `GEOGRAPHY`, `GEOMETRY`, `INT`, `INTERVAL`, `LONG`, `MAP`, `NULL`, `SHORT`, `STRING`, `STRUCT`, `TABLE_TYPE`, `TIMESTAMP`, `TIMESTAMP_NTZ`, `USER_DEFINED_TYPE`, `VARIANT`
-        """
-        type_precision: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Digits of precision; required for DecimalTypes
-        """
-        type_scale: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Digits to right of decimal; Required for DecimalTypes
-        """
-        type_text: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Full data type specification as SQL/catalogString text
-        """
-elif False:
-    CleanRoomAssetTableColumnArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class CleanRoomAssetTableColumnArgs:
-    def __init__(__self__, *,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 mask: Optional[pulumi.Input['CleanRoomAssetTableColumnMaskArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 nullable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 partition_index: Optional[pulumi.Input[_builtins.int]] = None,
-                 position: Optional[pulumi.Input[_builtins.int]] = None,
-                 type_interval_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 type_json: Optional[pulumi.Input[_builtins.str]] = None,
-                 type_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 type_precision: Optional[pulumi.Input[_builtins.int]] = None,
-                 type_scale: Optional[pulumi.Input[_builtins.int]] = None,
-                 type_text: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.str] name: A fully qualified name that uniquely identifies the asset within the clean room.
-               This is also the name displayed in the clean room UI.
-               
-               For UC securable assets (tables, volumes, etc.), the format is *shared_catalog*.*shared_schema*.*asset_name*
-               
-               For notebooks, the name is the notebook file name.
-               For jar analyses, the name is the jar analysis name
-        :param pulumi.Input[_builtins.bool] nullable: Whether field may be Null (default: true)
-        :param pulumi.Input[_builtins.int] partition_index: Partition index for column
-        :param pulumi.Input[_builtins.int] position: Ordinal position of column (starting at position 0)
-        :param pulumi.Input[_builtins.str] type_interval_type: Format of IntervalType
-        :param pulumi.Input[_builtins.str] type_json: Full data type specification, JSON-serialized
-        :param pulumi.Input[_builtins.str] type_name: . Possible values are: `ARRAY`, `BINARY`, `BOOLEAN`, `BYTE`, `CHAR`, `DATE`, `DECIMAL`, `DOUBLE`, `FLOAT`, `GEOGRAPHY`, `GEOMETRY`, `INT`, `INTERVAL`, `LONG`, `MAP`, `NULL`, `SHORT`, `STRING`, `STRUCT`, `TABLE_TYPE`, `TIMESTAMP`, `TIMESTAMP_NTZ`, `USER_DEFINED_TYPE`, `VARIANT`
-        :param pulumi.Input[_builtins.int] type_precision: Digits of precision; required for DecimalTypes
-        :param pulumi.Input[_builtins.int] type_scale: Digits to right of decimal; Required for DecimalTypes
-        :param pulumi.Input[_builtins.str] type_text: Full data type specification as SQL/catalogString text
-        """
-        if comment is not None:
-            pulumi.set(__self__, "comment", comment)
-        if mask is not None:
-            pulumi.set(__self__, "mask", mask)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if nullable is not None:
-            pulumi.set(__self__, "nullable", nullable)
-        if partition_index is not None:
-            pulumi.set(__self__, "partition_index", partition_index)
-        if position is not None:
-            pulumi.set(__self__, "position", position)
-        if type_interval_type is not None:
-            pulumi.set(__self__, "type_interval_type", type_interval_type)
-        if type_json is not None:
-            pulumi.set(__self__, "type_json", type_json)
-        if type_name is not None:
-            pulumi.set(__self__, "type_name", type_name)
-        if type_precision is not None:
-            pulumi.set(__self__, "type_precision", type_precision)
-        if type_scale is not None:
-            pulumi.set(__self__, "type_scale", type_scale)
-        if type_text is not None:
-            pulumi.set(__self__, "type_text", type_text)
-
-    @_builtins.property
-    @pulumi.getter
-    def comment(self) -> Optional[pulumi.Input[_builtins.str]]:
-        return pulumi.get(self, "comment")
-
-    @comment.setter
-    def comment(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "comment", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def mask(self) -> Optional[pulumi.Input['CleanRoomAssetTableColumnMaskArgs']]:
-        return pulumi.get(self, "mask")
-
-    @mask.setter
-    def mask(self, value: Optional[pulumi.Input['CleanRoomAssetTableColumnMaskArgs']]):
-        pulumi.set(self, "mask", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        A fully qualified name that uniquely identifies the asset within the clean room.
-        This is also the name displayed in the clean room UI.
-
-        For UC securable assets (tables, volumes, etc.), the format is *shared_catalog*.*shared_schema*.*asset_name*
-
-        For notebooks, the name is the notebook file name.
-        For jar analyses, the name is the jar analysis name
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "name", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def nullable(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Whether field may be Null (default: true)
-        """
-        return pulumi.get(self, "nullable")
-
-    @nullable.setter
-    def nullable(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "nullable", value)
-
-    @_builtins.property
-    @pulumi.getter(name="partitionIndex")
-    def partition_index(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Partition index for column
-        """
-        return pulumi.get(self, "partition_index")
-
-    @partition_index.setter
-    def partition_index(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "partition_index", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def position(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Ordinal position of column (starting at position 0)
-        """
-        return pulumi.get(self, "position")
-
-    @position.setter
-    def position(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "position", value)
-
-    @_builtins.property
-    @pulumi.getter(name="typeIntervalType")
-    def type_interval_type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Format of IntervalType
-        """
-        return pulumi.get(self, "type_interval_type")
-
-    @type_interval_type.setter
-    def type_interval_type(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "type_interval_type", value)
-
-    @_builtins.property
-    @pulumi.getter(name="typeJson")
-    def type_json(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Full data type specification, JSON-serialized
-        """
-        return pulumi.get(self, "type_json")
-
-    @type_json.setter
-    def type_json(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "type_json", value)
-
-    @_builtins.property
-    @pulumi.getter(name="typeName")
-    def type_name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        . Possible values are: `ARRAY`, `BINARY`, `BOOLEAN`, `BYTE`, `CHAR`, `DATE`, `DECIMAL`, `DOUBLE`, `FLOAT`, `GEOGRAPHY`, `GEOMETRY`, `INT`, `INTERVAL`, `LONG`, `MAP`, `NULL`, `SHORT`, `STRING`, `STRUCT`, `TABLE_TYPE`, `TIMESTAMP`, `TIMESTAMP_NTZ`, `USER_DEFINED_TYPE`, `VARIANT`
-        """
-        return pulumi.get(self, "type_name")
-
-    @type_name.setter
-    def type_name(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "type_name", value)
-
-    @_builtins.property
-    @pulumi.getter(name="typePrecision")
-    def type_precision(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Digits of precision; required for DecimalTypes
-        """
-        return pulumi.get(self, "type_precision")
-
-    @type_precision.setter
-    def type_precision(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "type_precision", value)
-
-    @_builtins.property
-    @pulumi.getter(name="typeScale")
-    def type_scale(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Digits to right of decimal; Required for DecimalTypes
-        """
-        return pulumi.get(self, "type_scale")
-
-    @type_scale.setter
-    def type_scale(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "type_scale", value)
-
-    @_builtins.property
-    @pulumi.getter(name="typeText")
-    def type_text(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Full data type specification as SQL/catalogString text
-        """
-        return pulumi.get(self, "type_text")
-
-    @type_text.setter
-    def type_text(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "type_text", value)
-
-
-if not MYPY:
-    class CleanRoomAssetTableColumnMaskArgsDict(TypedDict):
-        function_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The full name of the column mask SQL UDF
-        """
-        using_column_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The list of additional table columns to be passed as input to the column mask function. The
-        first arg of the mask function should be of the type of the column being masked and the
-        types of the rest of the args should match the types of columns in 'using_column_names'
-        """
-elif False:
-    CleanRoomAssetTableColumnMaskArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class CleanRoomAssetTableColumnMaskArgs:
-    def __init__(__self__, *,
-                 function_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 using_column_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
-        """
-        :param pulumi.Input[_builtins.str] function_name: The full name of the column mask SQL UDF
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] using_column_names: The list of additional table columns to be passed as input to the column mask function. The
-               first arg of the mask function should be of the type of the column being masked and the
-               types of the rest of the args should match the types of columns in 'using_column_names'
-        """
-        if function_name is not None:
-            pulumi.set(__self__, "function_name", function_name)
-        if using_column_names is not None:
-            pulumi.set(__self__, "using_column_names", using_column_names)
-
-    @_builtins.property
-    @pulumi.getter(name="functionName")
-    def function_name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The full name of the column mask SQL UDF
-        """
-        return pulumi.get(self, "function_name")
-
-    @function_name.setter
-    def function_name(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "function_name", value)
-
-    @_builtins.property
-    @pulumi.getter(name="usingColumnNames")
-    def using_column_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        The list of additional table columns to be passed as input to the column mask function. The
-        first arg of the mask function should be of the type of the column being masked and the
-        types of the rest of the args should match the types of columns in 'using_column_names'
-        """
-        return pulumi.get(self, "using_column_names")
-
-    @using_column_names.setter
-    def using_column_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
-        pulumi.set(self, "using_column_names", value)
-
-
-if not MYPY:
-    class CleanRoomAssetTableLocalDetailsArgsDict(TypedDict):
-        local_name: pulumi.Input[_builtins.str]
-        partitions: NotRequired[pulumi.Input[Sequence[pulumi.Input['CleanRoomAssetTableLocalDetailsPartitionArgsDict']]]]
-        """
-        Partition filtering specification for a shared table
-        """
-elif False:
-    CleanRoomAssetTableLocalDetailsArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class CleanRoomAssetTableLocalDetailsArgs:
-    def __init__(__self__, *,
-                 local_name: pulumi.Input[_builtins.str],
-                 partitions: Optional[pulumi.Input[Sequence[pulumi.Input['CleanRoomAssetTableLocalDetailsPartitionArgs']]]] = None):
-        """
-        :param pulumi.Input[Sequence[pulumi.Input['CleanRoomAssetTableLocalDetailsPartitionArgs']]] partitions: Partition filtering specification for a shared table
-        """
-        pulumi.set(__self__, "local_name", local_name)
-        if partitions is not None:
-            pulumi.set(__self__, "partitions", partitions)
-
-    @_builtins.property
-    @pulumi.getter(name="localName")
-    def local_name(self) -> pulumi.Input[_builtins.str]:
-        return pulumi.get(self, "local_name")
-
-    @local_name.setter
-    def local_name(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "local_name", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def partitions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CleanRoomAssetTableLocalDetailsPartitionArgs']]]]:
-        """
-        Partition filtering specification for a shared table
-        """
-        return pulumi.get(self, "partitions")
-
-    @partitions.setter
-    def partitions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CleanRoomAssetTableLocalDetailsPartitionArgs']]]]):
-        pulumi.set(self, "partitions", value)
-
-
-if not MYPY:
-    class CleanRoomAssetTableLocalDetailsPartitionArgsDict(TypedDict):
-        values: NotRequired[pulumi.Input[Sequence[pulumi.Input['CleanRoomAssetTableLocalDetailsPartitionValueArgsDict']]]]
-        """
-        The value of the partition column. When this value is not set, it means `null` value.
-        When this field is set, field `recipient_property_key` can not be set
-        """
-elif False:
-    CleanRoomAssetTableLocalDetailsPartitionArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class CleanRoomAssetTableLocalDetailsPartitionArgs:
-    def __init__(__self__, *,
-                 values: Optional[pulumi.Input[Sequence[pulumi.Input['CleanRoomAssetTableLocalDetailsPartitionValueArgs']]]] = None):
-        """
-        :param pulumi.Input[Sequence[pulumi.Input['CleanRoomAssetTableLocalDetailsPartitionValueArgs']]] values: The value of the partition column. When this value is not set, it means `null` value.
-               When this field is set, field `recipient_property_key` can not be set
-        """
-        if values is not None:
-            pulumi.set(__self__, "values", values)
-
-    @_builtins.property
-    @pulumi.getter
-    def values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CleanRoomAssetTableLocalDetailsPartitionValueArgs']]]]:
-        """
-        The value of the partition column. When this value is not set, it means `null` value.
-        When this field is set, field `recipient_property_key` can not be set
-        """
-        return pulumi.get(self, "values")
-
-    @values.setter
-    def values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CleanRoomAssetTableLocalDetailsPartitionValueArgs']]]]):
-        pulumi.set(self, "values", value)
-
-
-if not MYPY:
-    class CleanRoomAssetTableLocalDetailsPartitionValueArgsDict(TypedDict):
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A fully qualified name that uniquely identifies the asset within the clean room.
-        This is also the name displayed in the clean room UI.
-
-        For UC securable assets (tables, volumes, etc.), the format is *shared_catalog*.*shared_schema*.*asset_name*
-
-        For notebooks, the name is the notebook file name.
-        For jar analyses, the name is the jar analysis name
-        """
-        op: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The operator to apply for the value. Possible values are: `EQUAL`, `LIKE`
-        """
-        recipient_property_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The key of a Delta Sharing recipient's property. For example "databricks-account-id".
-        When this field is set, field `value` can not be set
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The value of the partition column. When this value is not set, it means `null` value.
-        When this field is set, field `recipient_property_key` can not be set
-        """
-elif False:
-    CleanRoomAssetTableLocalDetailsPartitionValueArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class CleanRoomAssetTableLocalDetailsPartitionValueArgs:
-    def __init__(__self__, *,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 op: Optional[pulumi.Input[_builtins.str]] = None,
-                 recipient_property_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.str] name: A fully qualified name that uniquely identifies the asset within the clean room.
-               This is also the name displayed in the clean room UI.
-               
-               For UC securable assets (tables, volumes, etc.), the format is *shared_catalog*.*shared_schema*.*asset_name*
-               
-               For notebooks, the name is the notebook file name.
-               For jar analyses, the name is the jar analysis name
-        :param pulumi.Input[_builtins.str] op: The operator to apply for the value. Possible values are: `EQUAL`, `LIKE`
-        :param pulumi.Input[_builtins.str] recipient_property_key: The key of a Delta Sharing recipient's property. For example "databricks-account-id".
-               When this field is set, field `value` can not be set
-        :param pulumi.Input[_builtins.str] value: The value of the partition column. When this value is not set, it means `null` value.
-               When this field is set, field `recipient_property_key` can not be set
-        """
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if op is not None:
-            pulumi.set(__self__, "op", op)
-        if recipient_property_key is not None:
-            pulumi.set(__self__, "recipient_property_key", recipient_property_key)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        A fully qualified name that uniquely identifies the asset within the clean room.
-        This is also the name displayed in the clean room UI.
-
-        For UC securable assets (tables, volumes, etc.), the format is *shared_catalog*.*shared_schema*.*asset_name*
-
-        For notebooks, the name is the notebook file name.
-        For jar analyses, the name is the jar analysis name
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "name", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def op(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The operator to apply for the value. Possible values are: `EQUAL`, `LIKE`
-        """
-        return pulumi.get(self, "op")
-
-    @op.setter
-    def op(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "op", value)
-
-    @_builtins.property
-    @pulumi.getter(name="recipientPropertyKey")
-    def recipient_property_key(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The key of a Delta Sharing recipient's property. For example "databricks-account-id".
-        When this field is set, field `value` can not be set
-        """
-        return pulumi.get(self, "recipient_property_key")
-
-    @recipient_property_key.setter
-    def recipient_property_key(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "recipient_property_key", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The value of the partition column. When this value is not set, it means `null` value.
-        When this field is set, field `recipient_property_key` can not be set
-        """
-        return pulumi.get(self, "value")
-
-    @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "value", value)
-
-
-if not MYPY:
-    class CleanRoomAssetViewArgsDict(TypedDict):
-        columns: NotRequired[pulumi.Input[Sequence[pulumi.Input['CleanRoomAssetViewColumnArgsDict']]]]
-        """
-        (list of ColumnInfo) - The metadata information of the columns in the view
-        """
-elif False:
-    CleanRoomAssetViewArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class CleanRoomAssetViewArgs:
-    def __init__(__self__, *,
-                 columns: Optional[pulumi.Input[Sequence[pulumi.Input['CleanRoomAssetViewColumnArgs']]]] = None):
-        """
-        :param pulumi.Input[Sequence[pulumi.Input['CleanRoomAssetViewColumnArgs']]] columns: (list of ColumnInfo) - The metadata information of the columns in the view
-        """
-        if columns is not None:
-            pulumi.set(__self__, "columns", columns)
-
-    @_builtins.property
-    @pulumi.getter
-    def columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CleanRoomAssetViewColumnArgs']]]]:
-        """
-        (list of ColumnInfo) - The metadata information of the columns in the view
-        """
-        return pulumi.get(self, "columns")
-
-    @columns.setter
-    def columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CleanRoomAssetViewColumnArgs']]]]):
-        pulumi.set(self, "columns", value)
-
-
-if not MYPY:
-    class CleanRoomAssetViewColumnArgsDict(TypedDict):
-        comment: NotRequired[pulumi.Input[_builtins.str]]
-        mask: NotRequired[pulumi.Input['CleanRoomAssetViewColumnMaskArgsDict']]
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A fully qualified name that uniquely identifies the asset within the clean room.
-        This is also the name displayed in the clean room UI.
-
-        For UC securable assets (tables, volumes, etc.), the format is *shared_catalog*.*shared_schema*.*asset_name*
-
-        For notebooks, the name is the notebook file name.
-        For jar analyses, the name is the jar analysis name
-        """
-        nullable: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether field may be Null (default: true)
-        """
-        partition_index: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Partition index for column
-        """
-        position: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Ordinal position of column (starting at position 0)
-        """
-        type_interval_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Format of IntervalType
-        """
-        type_json: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Full data type specification, JSON-serialized
-        """
-        type_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        . Possible values are: `ARRAY`, `BINARY`, `BOOLEAN`, `BYTE`, `CHAR`, `DATE`, `DECIMAL`, `DOUBLE`, `FLOAT`, `GEOGRAPHY`, `GEOMETRY`, `INT`, `INTERVAL`, `LONG`, `MAP`, `NULL`, `SHORT`, `STRING`, `STRUCT`, `TABLE_TYPE`, `TIMESTAMP`, `TIMESTAMP_NTZ`, `USER_DEFINED_TYPE`, `VARIANT`
-        """
-        type_precision: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Digits of precision; required for DecimalTypes
-        """
-        type_scale: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Digits to right of decimal; Required for DecimalTypes
-        """
-        type_text: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Full data type specification as SQL/catalogString text
-        """
-elif False:
-    CleanRoomAssetViewColumnArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class CleanRoomAssetViewColumnArgs:
-    def __init__(__self__, *,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 mask: Optional[pulumi.Input['CleanRoomAssetViewColumnMaskArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 nullable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 partition_index: Optional[pulumi.Input[_builtins.int]] = None,
-                 position: Optional[pulumi.Input[_builtins.int]] = None,
-                 type_interval_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 type_json: Optional[pulumi.Input[_builtins.str]] = None,
-                 type_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 type_precision: Optional[pulumi.Input[_builtins.int]] = None,
-                 type_scale: Optional[pulumi.Input[_builtins.int]] = None,
-                 type_text: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.str] name: A fully qualified name that uniquely identifies the asset within the clean room.
-               This is also the name displayed in the clean room UI.
-               
-               For UC securable assets (tables, volumes, etc.), the format is *shared_catalog*.*shared_schema*.*asset_name*
-               
-               For notebooks, the name is the notebook file name.
-               For jar analyses, the name is the jar analysis name
-        :param pulumi.Input[_builtins.bool] nullable: Whether field may be Null (default: true)
-        :param pulumi.Input[_builtins.int] partition_index: Partition index for column
-        :param pulumi.Input[_builtins.int] position: Ordinal position of column (starting at position 0)
-        :param pulumi.Input[_builtins.str] type_interval_type: Format of IntervalType
-        :param pulumi.Input[_builtins.str] type_json: Full data type specification, JSON-serialized
-        :param pulumi.Input[_builtins.str] type_name: . Possible values are: `ARRAY`, `BINARY`, `BOOLEAN`, `BYTE`, `CHAR`, `DATE`, `DECIMAL`, `DOUBLE`, `FLOAT`, `GEOGRAPHY`, `GEOMETRY`, `INT`, `INTERVAL`, `LONG`, `MAP`, `NULL`, `SHORT`, `STRING`, `STRUCT`, `TABLE_TYPE`, `TIMESTAMP`, `TIMESTAMP_NTZ`, `USER_DEFINED_TYPE`, `VARIANT`
-        :param pulumi.Input[_builtins.int] type_precision: Digits of precision; required for DecimalTypes
-        :param pulumi.Input[_builtins.int] type_scale: Digits to right of decimal; Required for DecimalTypes
-        :param pulumi.Input[_builtins.str] type_text: Full data type specification as SQL/catalogString text
-        """
-        if comment is not None:
-            pulumi.set(__self__, "comment", comment)
-        if mask is not None:
-            pulumi.set(__self__, "mask", mask)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if nullable is not None:
-            pulumi.set(__self__, "nullable", nullable)
-        if partition_index is not None:
-            pulumi.set(__self__, "partition_index", partition_index)
-        if position is not None:
-            pulumi.set(__self__, "position", position)
-        if type_interval_type is not None:
-            pulumi.set(__self__, "type_interval_type", type_interval_type)
-        if type_json is not None:
-            pulumi.set(__self__, "type_json", type_json)
-        if type_name is not None:
-            pulumi.set(__self__, "type_name", type_name)
-        if type_precision is not None:
-            pulumi.set(__self__, "type_precision", type_precision)
-        if type_scale is not None:
-            pulumi.set(__self__, "type_scale", type_scale)
-        if type_text is not None:
-            pulumi.set(__self__, "type_text", type_text)
-
-    @_builtins.property
-    @pulumi.getter
-    def comment(self) -> Optional[pulumi.Input[_builtins.str]]:
-        return pulumi.get(self, "comment")
-
-    @comment.setter
-    def comment(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "comment", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def mask(self) -> Optional[pulumi.Input['CleanRoomAssetViewColumnMaskArgs']]:
-        return pulumi.get(self, "mask")
-
-    @mask.setter
-    def mask(self, value: Optional[pulumi.Input['CleanRoomAssetViewColumnMaskArgs']]):
-        pulumi.set(self, "mask", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        A fully qualified name that uniquely identifies the asset within the clean room.
-        This is also the name displayed in the clean room UI.
-
-        For UC securable assets (tables, volumes, etc.), the format is *shared_catalog*.*shared_schema*.*asset_name*
-
-        For notebooks, the name is the notebook file name.
-        For jar analyses, the name is the jar analysis name
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "name", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def nullable(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Whether field may be Null (default: true)
-        """
-        return pulumi.get(self, "nullable")
-
-    @nullable.setter
-    def nullable(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "nullable", value)
-
-    @_builtins.property
-    @pulumi.getter(name="partitionIndex")
-    def partition_index(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Partition index for column
-        """
-        return pulumi.get(self, "partition_index")
-
-    @partition_index.setter
-    def partition_index(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "partition_index", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def position(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Ordinal position of column (starting at position 0)
-        """
-        return pulumi.get(self, "position")
-
-    @position.setter
-    def position(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "position", value)
-
-    @_builtins.property
-    @pulumi.getter(name="typeIntervalType")
-    def type_interval_type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Format of IntervalType
-        """
-        return pulumi.get(self, "type_interval_type")
-
-    @type_interval_type.setter
-    def type_interval_type(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "type_interval_type", value)
-
-    @_builtins.property
-    @pulumi.getter(name="typeJson")
-    def type_json(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Full data type specification, JSON-serialized
-        """
-        return pulumi.get(self, "type_json")
-
-    @type_json.setter
-    def type_json(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "type_json", value)
-
-    @_builtins.property
-    @pulumi.getter(name="typeName")
-    def type_name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        . Possible values are: `ARRAY`, `BINARY`, `BOOLEAN`, `BYTE`, `CHAR`, `DATE`, `DECIMAL`, `DOUBLE`, `FLOAT`, `GEOGRAPHY`, `GEOMETRY`, `INT`, `INTERVAL`, `LONG`, `MAP`, `NULL`, `SHORT`, `STRING`, `STRUCT`, `TABLE_TYPE`, `TIMESTAMP`, `TIMESTAMP_NTZ`, `USER_DEFINED_TYPE`, `VARIANT`
-        """
-        return pulumi.get(self, "type_name")
-
-    @type_name.setter
-    def type_name(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "type_name", value)
-
-    @_builtins.property
-    @pulumi.getter(name="typePrecision")
-    def type_precision(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Digits of precision; required for DecimalTypes
-        """
-        return pulumi.get(self, "type_precision")
-
-    @type_precision.setter
-    def type_precision(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "type_precision", value)
-
-    @_builtins.property
-    @pulumi.getter(name="typeScale")
-    def type_scale(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Digits to right of decimal; Required for DecimalTypes
-        """
-        return pulumi.get(self, "type_scale")
-
-    @type_scale.setter
-    def type_scale(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "type_scale", value)
-
-    @_builtins.property
-    @pulumi.getter(name="typeText")
-    def type_text(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Full data type specification as SQL/catalogString text
-        """
-        return pulumi.get(self, "type_text")
-
-    @type_text.setter
-    def type_text(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "type_text", value)
-
-
-if not MYPY:
-    class CleanRoomAssetViewColumnMaskArgsDict(TypedDict):
-        function_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The full name of the column mask SQL UDF
-        """
-        using_column_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The list of additional table columns to be passed as input to the column mask function. The
-        first arg of the mask function should be of the type of the column being masked and the
-        types of the rest of the args should match the types of columns in 'using_column_names'
-        """
-elif False:
-    CleanRoomAssetViewColumnMaskArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class CleanRoomAssetViewColumnMaskArgs:
-    def __init__(__self__, *,
-                 function_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 using_column_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
-        """
-        :param pulumi.Input[_builtins.str] function_name: The full name of the column mask SQL UDF
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] using_column_names: The list of additional table columns to be passed as input to the column mask function. The
-               first arg of the mask function should be of the type of the column being masked and the
-               types of the rest of the args should match the types of columns in 'using_column_names'
-        """
-        if function_name is not None:
-            pulumi.set(__self__, "function_name", function_name)
-        if using_column_names is not None:
-            pulumi.set(__self__, "using_column_names", using_column_names)
-
-    @_builtins.property
-    @pulumi.getter(name="functionName")
-    def function_name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The full name of the column mask SQL UDF
-        """
-        return pulumi.get(self, "function_name")
-
-    @function_name.setter
-    def function_name(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "function_name", value)
-
-    @_builtins.property
-    @pulumi.getter(name="usingColumnNames")
-    def using_column_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        The list of additional table columns to be passed as input to the column mask function. The
-        first arg of the mask function should be of the type of the column being masked and the
-        types of the rest of the args should match the types of columns in 'using_column_names'
-        """
-        return pulumi.get(self, "using_column_names")
-
-    @using_column_names.setter
-    def using_column_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
-        pulumi.set(self, "using_column_names", value)
-
-
-if not MYPY:
-    class CleanRoomAssetViewLocalDetailsArgsDict(TypedDict):
-        local_name: pulumi.Input[_builtins.str]
-elif False:
-    CleanRoomAssetViewLocalDetailsArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class CleanRoomAssetViewLocalDetailsArgs:
-    def __init__(__self__, *,
-                 local_name: pulumi.Input[_builtins.str]):
-        pulumi.set(__self__, "local_name", local_name)
-
-    @_builtins.property
-    @pulumi.getter(name="localName")
-    def local_name(self) -> pulumi.Input[_builtins.str]:
-        return pulumi.get(self, "local_name")
-
-    @local_name.setter
-    def local_name(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "local_name", value)
-
-
-if not MYPY:
-    class CleanRoomAssetVolumeLocalDetailsArgsDict(TypedDict):
-        local_name: pulumi.Input[_builtins.str]
-elif False:
-    CleanRoomAssetVolumeLocalDetailsArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class CleanRoomAssetVolumeLocalDetailsArgs:
-    def __init__(__self__, *,
-                 local_name: pulumi.Input[_builtins.str]):
-        pulumi.set(__self__, "local_name", local_name)
-
-    @_builtins.property
-    @pulumi.getter(name="localName")
-    def local_name(self) -> pulumi.Input[_builtins.str]:
-        return pulumi.get(self, "local_name")
-
-    @local_name.setter
-    def local_name(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "local_name", value)
-
-
-if not MYPY:
-    class CleanRoomsCleanRoomOutputCatalogArgsDict(TypedDict):
-        catalog_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the output catalog in UC.
-        It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements).
-        The field will always exist if status is CREATED
-        """
-        status: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (string) - . Possible values are: `CREATED`, `NOT_CREATED`, `NOT_ELIGIBLE`
-        """
-elif False:
-    CleanRoomsCleanRoomOutputCatalogArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class CleanRoomsCleanRoomOutputCatalogArgs:
-    def __init__(__self__, *,
-                 catalog_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.str] catalog_name: The name of the output catalog in UC.
-               It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements).
-               The field will always exist if status is CREATED
-        :param pulumi.Input[_builtins.str] status: (string) - . Possible values are: `CREATED`, `NOT_CREATED`, `NOT_ELIGIBLE`
-        """
-        if catalog_name is not None:
-            pulumi.set(__self__, "catalog_name", catalog_name)
-        if status is not None:
-            pulumi.set(__self__, "status", status)
-
-    @_builtins.property
-    @pulumi.getter(name="catalogName")
-    def catalog_name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The name of the output catalog in UC.
-        It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements).
-        The field will always exist if status is CREATED
-        """
-        return pulumi.get(self, "catalog_name")
-
-    @catalog_name.setter
-    def catalog_name(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "catalog_name", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        (string) - . Possible values are: `CREATED`, `NOT_CREATED`, `NOT_ELIGIBLE`
-        """
-        return pulumi.get(self, "status")
-
-    @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "status", value)
-
-
-if not MYPY:
-    class CleanRoomsCleanRoomRemoteDetailedInfoArgsDict(TypedDict):
-        central_clean_room_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (string) - Central clean room ID
-        """
-        cloud_vendor: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Cloud vendor (aws,azure,gcp) of the central clean room
-        """
-        collaborators: NotRequired[pulumi.Input[Sequence[pulumi.Input['CleanRoomsCleanRoomRemoteDetailedInfoCollaboratorArgsDict']]]]
-        """
-        Collaborators in the central clean room. There should one and only one collaborator
-        in the list that satisfies the owner condition:
-
-        1. It has the creator's global_metastore_id (determined by caller of CreateCleanRoom).
-
-        2. Its invite_recipient_email is empty
-        """
-        compliance_security_profile: NotRequired[pulumi.Input['CleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfileArgsDict']]
-        """
-        (ComplianceSecurityProfile)
-        """
-        creator: NotRequired[pulumi.Input['CleanRoomsCleanRoomRemoteDetailedInfoCreatorArgsDict']]
-        """
-        (CleanRoomCollaborator) - Collaborator who creates the clean room
-        """
-        egress_network_policy: NotRequired[pulumi.Input['CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyArgsDict']]
-        """
-        Egress network policy to apply to the central clean room workspace
-        """
-        region: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    CleanRoomsCleanRoomRemoteDetailedInfoArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class CleanRoomsCleanRoomRemoteDetailedInfoArgs:
-    def __init__(__self__, *,
-                 central_clean_room_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloud_vendor: Optional[pulumi.Input[_builtins.str]] = None,
-                 collaborators: Optional[pulumi.Input[Sequence[pulumi.Input['CleanRoomsCleanRoomRemoteDetailedInfoCollaboratorArgs']]]] = None,
-                 compliance_security_profile: Optional[pulumi.Input['CleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfileArgs']] = None,
-                 creator: Optional[pulumi.Input['CleanRoomsCleanRoomRemoteDetailedInfoCreatorArgs']] = None,
-                 egress_network_policy: Optional[pulumi.Input['CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyArgs']] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.str] central_clean_room_id: (string) - Central clean room ID
-        :param pulumi.Input[_builtins.str] cloud_vendor: Cloud vendor (aws,azure,gcp) of the central clean room
-        :param pulumi.Input[Sequence[pulumi.Input['CleanRoomsCleanRoomRemoteDetailedInfoCollaboratorArgs']]] collaborators: Collaborators in the central clean room. There should one and only one collaborator
-               in the list that satisfies the owner condition:
-               
-               1. It has the creator's global_metastore_id (determined by caller of CreateCleanRoom).
-               
-               2. Its invite_recipient_email is empty
-        :param pulumi.Input['CleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfileArgs'] compliance_security_profile: (ComplianceSecurityProfile)
-        :param pulumi.Input['CleanRoomsCleanRoomRemoteDetailedInfoCreatorArgs'] creator: (CleanRoomCollaborator) - Collaborator who creates the clean room
-        :param pulumi.Input['CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyArgs'] egress_network_policy: Egress network policy to apply to the central clean room workspace
-        """
-        if central_clean_room_id is not None:
-            pulumi.set(__self__, "central_clean_room_id", central_clean_room_id)
-        if cloud_vendor is not None:
-            pulumi.set(__self__, "cloud_vendor", cloud_vendor)
-        if collaborators is not None:
-            pulumi.set(__self__, "collaborators", collaborators)
-        if compliance_security_profile is not None:
-            pulumi.set(__self__, "compliance_security_profile", compliance_security_profile)
-        if creator is not None:
-            pulumi.set(__self__, "creator", creator)
-        if egress_network_policy is not None:
-            pulumi.set(__self__, "egress_network_policy", egress_network_policy)
-        if region is not None:
-            pulumi.set(__self__, "region", region)
-
-    @_builtins.property
-    @pulumi.getter(name="centralCleanRoomId")
-    def central_clean_room_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        (string) - Central clean room ID
-        """
-        return pulumi.get(self, "central_clean_room_id")
-
-    @central_clean_room_id.setter
-    def central_clean_room_id(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "central_clean_room_id", value)
-
-    @_builtins.property
-    @pulumi.getter(name="cloudVendor")
-    def cloud_vendor(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Cloud vendor (aws,azure,gcp) of the central clean room
-        """
-        return pulumi.get(self, "cloud_vendor")
-
-    @cloud_vendor.setter
-    def cloud_vendor(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "cloud_vendor", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def collaborators(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CleanRoomsCleanRoomRemoteDetailedInfoCollaboratorArgs']]]]:
-        """
-        Collaborators in the central clean room. There should one and only one collaborator
-        in the list that satisfies the owner condition:
-
-        1. It has the creator's global_metastore_id (determined by caller of CreateCleanRoom).
-
-        2. Its invite_recipient_email is empty
-        """
-        return pulumi.get(self, "collaborators")
-
-    @collaborators.setter
-    def collaborators(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CleanRoomsCleanRoomRemoteDetailedInfoCollaboratorArgs']]]]):
-        pulumi.set(self, "collaborators", value)
-
-    @_builtins.property
-    @pulumi.getter(name="complianceSecurityProfile")
-    def compliance_security_profile(self) -> Optional[pulumi.Input['CleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfileArgs']]:
-        """
-        (ComplianceSecurityProfile)
-        """
-        return pulumi.get(self, "compliance_security_profile")
-
-    @compliance_security_profile.setter
-    def compliance_security_profile(self, value: Optional[pulumi.Input['CleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfileArgs']]):
-        pulumi.set(self, "compliance_security_profile", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def creator(self) -> Optional[pulumi.Input['CleanRoomsCleanRoomRemoteDetailedInfoCreatorArgs']]:
-        """
-        (CleanRoomCollaborator) - Collaborator who creates the clean room
-        """
-        return pulumi.get(self, "creator")
-
-    @creator.setter
-    def creator(self, value: Optional[pulumi.Input['CleanRoomsCleanRoomRemoteDetailedInfoCreatorArgs']]):
-        pulumi.set(self, "creator", value)
-
-    @_builtins.property
-    @pulumi.getter(name="egressNetworkPolicy")
-    def egress_network_policy(self) -> Optional[pulumi.Input['CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyArgs']]:
-        """
-        Egress network policy to apply to the central clean room workspace
-        """
-        return pulumi.get(self, "egress_network_policy")
-
-    @egress_network_policy.setter
-    def egress_network_policy(self, value: Optional[pulumi.Input['CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyArgs']]):
-        pulumi.set(self, "egress_network_policy", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        return pulumi.get(self, "region")
-
-    @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "region", value)
-
-
-if not MYPY:
-    class CleanRoomsCleanRoomRemoteDetailedInfoCollaboratorArgsDict(TypedDict):
-        collaborator_alias: pulumi.Input[_builtins.str]
-        """
-        Collaborator alias specified by the clean room creator. It is unique across all collaborators of this clean room, and used to derive
-        multiple values internally such as catalog alias and clean room name for single metastore clean rooms.
-        It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements)
-        """
-        display_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (string) - Generated display name for the collaborator. In the case of a single metastore clean room, it is the clean
-        room name. For x-metastore clean rooms, it is the organization name of the metastore. It is not restricted to
-        these values and could change in the future
-        """
-        global_metastore_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The global Unity Catalog metastore ID of the collaborator. The identifier is of format cloud:region:metastore-uuid
-        """
-        invite_recipient_email: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Email of the user who is receiving the clean room "invitation". It should be empty
-        for the creator of the clean room, and non-empty for the invitees of the clean room.
-        It is only returned in the output when clean room creator calls GET
-        """
-        invite_recipient_workspace_id: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Workspace ID of the user who is receiving the clean room "invitation". Must be specified if
-        invite_recipient_email is specified.
-        It should be empty when the collaborator is the creator of the clean room
-        """
-        organization_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (string) - Organization name
-        configured in the metastore
-        """
-elif False:
-    CleanRoomsCleanRoomRemoteDetailedInfoCollaboratorArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class CleanRoomsCleanRoomRemoteDetailedInfoCollaboratorArgs:
-    def __init__(__self__, *,
-                 collaborator_alias: pulumi.Input[_builtins.str],
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 global_metastore_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 invite_recipient_email: Optional[pulumi.Input[_builtins.str]] = None,
-                 invite_recipient_workspace_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 organization_name: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.str] collaborator_alias: Collaborator alias specified by the clean room creator. It is unique across all collaborators of this clean room, and used to derive
-               multiple values internally such as catalog alias and clean room name for single metastore clean rooms.
-               It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements)
-        :param pulumi.Input[_builtins.str] display_name: (string) - Generated display name for the collaborator. In the case of a single metastore clean room, it is the clean
-               room name. For x-metastore clean rooms, it is the organization name of the metastore. It is not restricted to
-               these values and could change in the future
-        :param pulumi.Input[_builtins.str] global_metastore_id: The global Unity Catalog metastore ID of the collaborator. The identifier is of format cloud:region:metastore-uuid
-        :param pulumi.Input[_builtins.str] invite_recipient_email: Email of the user who is receiving the clean room "invitation". It should be empty
-               for the creator of the clean room, and non-empty for the invitees of the clean room.
-               It is only returned in the output when clean room creator calls GET
-        :param pulumi.Input[_builtins.int] invite_recipient_workspace_id: Workspace ID of the user who is receiving the clean room "invitation". Must be specified if
-               invite_recipient_email is specified.
-               It should be empty when the collaborator is the creator of the clean room
-        :param pulumi.Input[_builtins.str] organization_name: (string) - Organization name
-               configured in the metastore
-        """
-        pulumi.set(__self__, "collaborator_alias", collaborator_alias)
-        if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
-        if global_metastore_id is not None:
-            pulumi.set(__self__, "global_metastore_id", global_metastore_id)
-        if invite_recipient_email is not None:
-            pulumi.set(__self__, "invite_recipient_email", invite_recipient_email)
-        if invite_recipient_workspace_id is not None:
-            pulumi.set(__self__, "invite_recipient_workspace_id", invite_recipient_workspace_id)
-        if organization_name is not None:
-            pulumi.set(__self__, "organization_name", organization_name)
-
-    @_builtins.property
-    @pulumi.getter(name="collaboratorAlias")
-    def collaborator_alias(self) -> pulumi.Input[_builtins.str]:
-        """
-        Collaborator alias specified by the clean room creator. It is unique across all collaborators of this clean room, and used to derive
-        multiple values internally such as catalog alias and clean room name for single metastore clean rooms.
-        It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements)
-        """
-        return pulumi.get(self, "collaborator_alias")
-
-    @collaborator_alias.setter
-    def collaborator_alias(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "collaborator_alias", value)
-
-    @_builtins.property
-    @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        (string) - Generated display name for the collaborator. In the case of a single metastore clean room, it is the clean
-        room name. For x-metastore clean rooms, it is the organization name of the metastore. It is not restricted to
-        these values and could change in the future
-        """
-        return pulumi.get(self, "display_name")
-
-    @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "display_name", value)
-
-    @_builtins.property
-    @pulumi.getter(name="globalMetastoreId")
-    def global_metastore_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The global Unity Catalog metastore ID of the collaborator. The identifier is of format cloud:region:metastore-uuid
-        """
-        return pulumi.get(self, "global_metastore_id")
-
-    @global_metastore_id.setter
-    def global_metastore_id(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "global_metastore_id", value)
-
-    @_builtins.property
-    @pulumi.getter(name="inviteRecipientEmail")
-    def invite_recipient_email(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Email of the user who is receiving the clean room "invitation". It should be empty
-        for the creator of the clean room, and non-empty for the invitees of the clean room.
-        It is only returned in the output when clean room creator calls GET
-        """
-        return pulumi.get(self, "invite_recipient_email")
-
-    @invite_recipient_email.setter
-    def invite_recipient_email(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "invite_recipient_email", value)
-
-    @_builtins.property
-    @pulumi.getter(name="inviteRecipientWorkspaceId")
-    def invite_recipient_workspace_id(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Workspace ID of the user who is receiving the clean room "invitation". Must be specified if
-        invite_recipient_email is specified.
-        It should be empty when the collaborator is the creator of the clean room
-        """
-        return pulumi.get(self, "invite_recipient_workspace_id")
-
-    @invite_recipient_workspace_id.setter
-    def invite_recipient_workspace_id(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "invite_recipient_workspace_id", value)
-
-    @_builtins.property
-    @pulumi.getter(name="organizationName")
-    def organization_name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        (string) - Organization name
-        configured in the metastore
-        """
-        return pulumi.get(self, "organization_name")
-
-    @organization_name.setter
-    def organization_name(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "organization_name", value)
-
-
-if not MYPY:
-    class CleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfileArgsDict(TypedDict):
-        compliance_standards: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The list of compliance standards that the compliance security profile is configured to enforce
-        """
-        is_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether the compliance security profile is enabled
-        """
-elif False:
-    CleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfileArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class CleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfileArgs:
-    def __init__(__self__, *,
-                 compliance_standards: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 is_enabled: Optional[pulumi.Input[_builtins.bool]] = None):
-        """
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] compliance_standards: The list of compliance standards that the compliance security profile is configured to enforce
-        :param pulumi.Input[_builtins.bool] is_enabled: Whether the compliance security profile is enabled
-        """
-        if compliance_standards is not None:
-            pulumi.set(__self__, "compliance_standards", compliance_standards)
-        if is_enabled is not None:
-            pulumi.set(__self__, "is_enabled", is_enabled)
-
-    @_builtins.property
-    @pulumi.getter(name="complianceStandards")
-    def compliance_standards(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        The list of compliance standards that the compliance security profile is configured to enforce
-        """
-        return pulumi.get(self, "compliance_standards")
-
-    @compliance_standards.setter
-    def compliance_standards(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
-        pulumi.set(self, "compliance_standards", value)
-
-    @_builtins.property
-    @pulumi.getter(name="isEnabled")
-    def is_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Whether the compliance security profile is enabled
-        """
-        return pulumi.get(self, "is_enabled")
-
-    @is_enabled.setter
-    def is_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "is_enabled", value)
-
-
-if not MYPY:
-    class CleanRoomsCleanRoomRemoteDetailedInfoCreatorArgsDict(TypedDict):
-        collaborator_alias: pulumi.Input[_builtins.str]
-        """
-        Collaborator alias specified by the clean room creator. It is unique across all collaborators of this clean room, and used to derive
-        multiple values internally such as catalog alias and clean room name for single metastore clean rooms.
-        It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements)
-        """
-        display_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (string) - Generated display name for the collaborator. In the case of a single metastore clean room, it is the clean
-        room name. For x-metastore clean rooms, it is the organization name of the metastore. It is not restricted to
-        these values and could change in the future
-        """
-        global_metastore_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The global Unity Catalog metastore ID of the collaborator. The identifier is of format cloud:region:metastore-uuid
-        """
-        invite_recipient_email: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Email of the user who is receiving the clean room "invitation". It should be empty
-        for the creator of the clean room, and non-empty for the invitees of the clean room.
-        It is only returned in the output when clean room creator calls GET
-        """
-        invite_recipient_workspace_id: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Workspace ID of the user who is receiving the clean room "invitation". Must be specified if
-        invite_recipient_email is specified.
-        It should be empty when the collaborator is the creator of the clean room
-        """
-        organization_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (string) - Organization name
-        configured in the metastore
-        """
-elif False:
-    CleanRoomsCleanRoomRemoteDetailedInfoCreatorArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class CleanRoomsCleanRoomRemoteDetailedInfoCreatorArgs:
-    def __init__(__self__, *,
-                 collaborator_alias: pulumi.Input[_builtins.str],
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 global_metastore_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 invite_recipient_email: Optional[pulumi.Input[_builtins.str]] = None,
-                 invite_recipient_workspace_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 organization_name: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.str] collaborator_alias: Collaborator alias specified by the clean room creator. It is unique across all collaborators of this clean room, and used to derive
-               multiple values internally such as catalog alias and clean room name for single metastore clean rooms.
-               It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements)
-        :param pulumi.Input[_builtins.str] display_name: (string) - Generated display name for the collaborator. In the case of a single metastore clean room, it is the clean
-               room name. For x-metastore clean rooms, it is the organization name of the metastore. It is not restricted to
-               these values and could change in the future
-        :param pulumi.Input[_builtins.str] global_metastore_id: The global Unity Catalog metastore ID of the collaborator. The identifier is of format cloud:region:metastore-uuid
-        :param pulumi.Input[_builtins.str] invite_recipient_email: Email of the user who is receiving the clean room "invitation". It should be empty
-               for the creator of the clean room, and non-empty for the invitees of the clean room.
-               It is only returned in the output when clean room creator calls GET
-        :param pulumi.Input[_builtins.int] invite_recipient_workspace_id: Workspace ID of the user who is receiving the clean room "invitation". Must be specified if
-               invite_recipient_email is specified.
-               It should be empty when the collaborator is the creator of the clean room
-        :param pulumi.Input[_builtins.str] organization_name: (string) - Organization name
-               configured in the metastore
-        """
-        pulumi.set(__self__, "collaborator_alias", collaborator_alias)
-        if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
-        if global_metastore_id is not None:
-            pulumi.set(__self__, "global_metastore_id", global_metastore_id)
-        if invite_recipient_email is not None:
-            pulumi.set(__self__, "invite_recipient_email", invite_recipient_email)
-        if invite_recipient_workspace_id is not None:
-            pulumi.set(__self__, "invite_recipient_workspace_id", invite_recipient_workspace_id)
-        if organization_name is not None:
-            pulumi.set(__self__, "organization_name", organization_name)
-
-    @_builtins.property
-    @pulumi.getter(name="collaboratorAlias")
-    def collaborator_alias(self) -> pulumi.Input[_builtins.str]:
-        """
-        Collaborator alias specified by the clean room creator. It is unique across all collaborators of this clean room, and used to derive
-        multiple values internally such as catalog alias and clean room name for single metastore clean rooms.
-        It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements)
-        """
-        return pulumi.get(self, "collaborator_alias")
-
-    @collaborator_alias.setter
-    def collaborator_alias(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "collaborator_alias", value)
-
-    @_builtins.property
-    @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        (string) - Generated display name for the collaborator. In the case of a single metastore clean room, it is the clean
-        room name. For x-metastore clean rooms, it is the organization name of the metastore. It is not restricted to
-        these values and could change in the future
-        """
-        return pulumi.get(self, "display_name")
-
-    @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "display_name", value)
-
-    @_builtins.property
-    @pulumi.getter(name="globalMetastoreId")
-    def global_metastore_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The global Unity Catalog metastore ID of the collaborator. The identifier is of format cloud:region:metastore-uuid
-        """
-        return pulumi.get(self, "global_metastore_id")
-
-    @global_metastore_id.setter
-    def global_metastore_id(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "global_metastore_id", value)
-
-    @_builtins.property
-    @pulumi.getter(name="inviteRecipientEmail")
-    def invite_recipient_email(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Email of the user who is receiving the clean room "invitation". It should be empty
-        for the creator of the clean room, and non-empty for the invitees of the clean room.
-        It is only returned in the output when clean room creator calls GET
-        """
-        return pulumi.get(self, "invite_recipient_email")
-
-    @invite_recipient_email.setter
-    def invite_recipient_email(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "invite_recipient_email", value)
-
-    @_builtins.property
-    @pulumi.getter(name="inviteRecipientWorkspaceId")
-    def invite_recipient_workspace_id(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Workspace ID of the user who is receiving the clean room "invitation". Must be specified if
-        invite_recipient_email is specified.
-        It should be empty when the collaborator is the creator of the clean room
-        """
-        return pulumi.get(self, "invite_recipient_workspace_id")
-
-    @invite_recipient_workspace_id.setter
-    def invite_recipient_workspace_id(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "invite_recipient_workspace_id", value)
-
-    @_builtins.property
-    @pulumi.getter(name="organizationName")
-    def organization_name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        (string) - Organization name
-        configured in the metastore
-        """
-        return pulumi.get(self, "organization_name")
-
-    @organization_name.setter
-    def organization_name(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "organization_name", value)
-
-
-if not MYPY:
-    class CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyArgsDict(TypedDict):
-        internet_access: NotRequired[pulumi.Input['CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessArgsDict']]
-        """
-        The access policy enforced for egress traffic to the internet
-        """
-elif False:
-    CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyArgs:
-    def __init__(__self__, *,
-                 internet_access: Optional[pulumi.Input['CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessArgs']] = None):
-        """
-        :param pulumi.Input['CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessArgs'] internet_access: The access policy enforced for egress traffic to the internet
-        """
-        if internet_access is not None:
-            pulumi.set(__self__, "internet_access", internet_access)
-
-    @_builtins.property
-    @pulumi.getter(name="internetAccess")
-    def internet_access(self) -> Optional[pulumi.Input['CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessArgs']]:
-        """
-        The access policy enforced for egress traffic to the internet
-        """
-        return pulumi.get(self, "internet_access")
-
-    @internet_access.setter
-    def internet_access(self, value: Optional[pulumi.Input['CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessArgs']]):
-        pulumi.set(self, "internet_access", value)
-
-
-if not MYPY:
-    class CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessArgsDict(TypedDict):
-        allowed_internet_destinations: NotRequired[pulumi.Input[Sequence[pulumi.Input['CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedInternetDestinationArgsDict']]]]
-        allowed_storage_destinations: NotRequired[pulumi.Input[Sequence[pulumi.Input['CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedStorageDestinationArgsDict']]]]
-        log_only_mode: NotRequired[pulumi.Input['CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyModeArgsDict']]
-        """
-        Optional. If not specified, assume the policy is enforced for all workloads
-        """
-        restriction_mode: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        . Possible values are: `FULL_ACCESS`, `PRIVATE_ACCESS_ONLY`, `RESTRICTED_ACCESS`
-        """
-elif False:
-    CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessArgs:
-    def __init__(__self__, *,
-                 allowed_internet_destinations: Optional[pulumi.Input[Sequence[pulumi.Input['CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedInternetDestinationArgs']]]] = None,
-                 allowed_storage_destinations: Optional[pulumi.Input[Sequence[pulumi.Input['CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedStorageDestinationArgs']]]] = None,
-                 log_only_mode: Optional[pulumi.Input['CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyModeArgs']] = None,
-                 restriction_mode: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        :param pulumi.Input['CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyModeArgs'] log_only_mode: Optional. If not specified, assume the policy is enforced for all workloads
-        :param pulumi.Input[_builtins.str] restriction_mode: . Possible values are: `FULL_ACCESS`, `PRIVATE_ACCESS_ONLY`, `RESTRICTED_ACCESS`
-        """
-        if allowed_internet_destinations is not None:
-            pulumi.set(__self__, "allowed_internet_destinations", allowed_internet_destinations)
-        if allowed_storage_destinations is not None:
-            pulumi.set(__self__, "allowed_storage_destinations", allowed_storage_destinations)
-        if log_only_mode is not None:
-            pulumi.set(__self__, "log_only_mode", log_only_mode)
-        if restriction_mode is not None:
-            pulumi.set(__self__, "restriction_mode", restriction_mode)
-
-    @_builtins.property
-    @pulumi.getter(name="allowedInternetDestinations")
-    def allowed_internet_destinations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedInternetDestinationArgs']]]]:
-        return pulumi.get(self, "allowed_internet_destinations")
-
-    @allowed_internet_destinations.setter
-    def allowed_internet_destinations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedInternetDestinationArgs']]]]):
-        pulumi.set(self, "allowed_internet_destinations", value)
-
-    @_builtins.property
-    @pulumi.getter(name="allowedStorageDestinations")
-    def allowed_storage_destinations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedStorageDestinationArgs']]]]:
-        return pulumi.get(self, "allowed_storage_destinations")
-
-    @allowed_storage_destinations.setter
-    def allowed_storage_destinations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedStorageDestinationArgs']]]]):
-        pulumi.set(self, "allowed_storage_destinations", value)
-
-    @_builtins.property
-    @pulumi.getter(name="logOnlyMode")
-    def log_only_mode(self) -> Optional[pulumi.Input['CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyModeArgs']]:
-        """
-        Optional. If not specified, assume the policy is enforced for all workloads
-        """
-        return pulumi.get(self, "log_only_mode")
-
-    @log_only_mode.setter
-    def log_only_mode(self, value: Optional[pulumi.Input['CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyModeArgs']]):
-        pulumi.set(self, "log_only_mode", value)
-
-    @_builtins.property
-    @pulumi.getter(name="restrictionMode")
-    def restriction_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        . Possible values are: `FULL_ACCESS`, `PRIVATE_ACCESS_ONLY`, `RESTRICTED_ACCESS`
-        """
-        return pulumi.get(self, "restriction_mode")
-
-    @restriction_mode.setter
-    def restriction_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "restriction_mode", value)
-
-
-if not MYPY:
-    class CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedInternetDestinationArgsDict(TypedDict):
-        destination: NotRequired[pulumi.Input[_builtins.str]]
-        protocol: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        . Possible values are: `TCP`
-        """
-        type: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedInternetDestinationArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedInternetDestinationArgs:
-    def __init__(__self__, *,
-                 destination: Optional[pulumi.Input[_builtins.str]] = None,
-                 protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.str] protocol: . Possible values are: `TCP`
-        """
-        if destination is not None:
-            pulumi.set(__self__, "destination", destination)
-        if protocol is not None:
-            pulumi.set(__self__, "protocol", protocol)
-        if type is not None:
-            pulumi.set(__self__, "type", type)
-
-    @_builtins.property
-    @pulumi.getter
-    def destination(self) -> Optional[pulumi.Input[_builtins.str]]:
-        return pulumi.get(self, "destination")
-
-    @destination.setter
-    def destination(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "destination", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        . Possible values are: `TCP`
-        """
-        return pulumi.get(self, "protocol")
-
-    @protocol.setter
-    def protocol(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "protocol", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        return pulumi.get(self, "type")
-
-    @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "type", value)
-
-
-if not MYPY:
-    class CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedStorageDestinationArgsDict(TypedDict):
-        allowed_paths: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        azure_container: NotRequired[pulumi.Input[_builtins.str]]
-        azure_dns_zone: NotRequired[pulumi.Input[_builtins.str]]
-        azure_storage_account: NotRequired[pulumi.Input[_builtins.str]]
-        azure_storage_service: NotRequired[pulumi.Input[_builtins.str]]
-        bucket_name: NotRequired[pulumi.Input[_builtins.str]]
-        region: NotRequired[pulumi.Input[_builtins.str]]
-        type: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedStorageDestinationArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedStorageDestinationArgs:
-    def __init__(__self__, *,
-                 allowed_paths: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 azure_container: Optional[pulumi.Input[_builtins.str]] = None,
-                 azure_dns_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                 azure_storage_account: Optional[pulumi.Input[_builtins.str]] = None,
-                 azure_storage_service: Optional[pulumi.Input[_builtins.str]] = None,
-                 bucket_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
-        if allowed_paths is not None:
-            pulumi.set(__self__, "allowed_paths", allowed_paths)
-        if azure_container is not None:
-            pulumi.set(__self__, "azure_container", azure_container)
-        if azure_dns_zone is not None:
-            pulumi.set(__self__, "azure_dns_zone", azure_dns_zone)
-        if azure_storage_account is not None:
-            pulumi.set(__self__, "azure_storage_account", azure_storage_account)
-        if azure_storage_service is not None:
-            pulumi.set(__self__, "azure_storage_service", azure_storage_service)
-        if bucket_name is not None:
-            pulumi.set(__self__, "bucket_name", bucket_name)
-        if region is not None:
-            pulumi.set(__self__, "region", region)
-        if type is not None:
-            pulumi.set(__self__, "type", type)
-
-    @_builtins.property
-    @pulumi.getter(name="allowedPaths")
-    def allowed_paths(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        return pulumi.get(self, "allowed_paths")
-
-    @allowed_paths.setter
-    def allowed_paths(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
-        pulumi.set(self, "allowed_paths", value)
-
-    @_builtins.property
-    @pulumi.getter(name="azureContainer")
-    def azure_container(self) -> Optional[pulumi.Input[_builtins.str]]:
-        return pulumi.get(self, "azure_container")
-
-    @azure_container.setter
-    def azure_container(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "azure_container", value)
-
-    @_builtins.property
-    @pulumi.getter(name="azureDnsZone")
-    def azure_dns_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
-        return pulumi.get(self, "azure_dns_zone")
-
-    @azure_dns_zone.setter
-    def azure_dns_zone(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "azure_dns_zone", value)
-
-    @_builtins.property
-    @pulumi.getter(name="azureStorageAccount")
-    def azure_storage_account(self) -> Optional[pulumi.Input[_builtins.str]]:
-        return pulumi.get(self, "azure_storage_account")
-
-    @azure_storage_account.setter
-    def azure_storage_account(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "azure_storage_account", value)
-
-    @_builtins.property
-    @pulumi.getter(name="azureStorageService")
-    def azure_storage_service(self) -> Optional[pulumi.Input[_builtins.str]]:
-        return pulumi.get(self, "azure_storage_service")
-
-    @azure_storage_service.setter
-    def azure_storage_service(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "azure_storage_service", value)
-
-    @_builtins.property
-    @pulumi.getter(name="bucketName")
-    def bucket_name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        return pulumi.get(self, "bucket_name")
-
-    @bucket_name.setter
-    def bucket_name(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "bucket_name", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        return pulumi.get(self, "region")
-
-    @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "region", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        return pulumi.get(self, "type")
-
-    @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "type", value)
-
-
-if not MYPY:
-    class CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyModeArgsDict(TypedDict):
-        log_only_mode_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        . Possible values are: `ALL_SERVICES`, `SELECTED_SERVICES`
-        """
-        workloads: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-elif False:
-    CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyModeArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyModeArgs:
-    def __init__(__self__, *,
-                 log_only_mode_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 workloads: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
-        """
-        :param pulumi.Input[_builtins.str] log_only_mode_type: . Possible values are: `ALL_SERVICES`, `SELECTED_SERVICES`
-        """
-        if log_only_mode_type is not None:
-            pulumi.set(__self__, "log_only_mode_type", log_only_mode_type)
-        if workloads is not None:
-            pulumi.set(__self__, "workloads", workloads)
-
-    @_builtins.property
-    @pulumi.getter(name="logOnlyModeType")
-    def log_only_mode_type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        . Possible values are: `ALL_SERVICES`, `SELECTED_SERVICES`
-        """
-        return pulumi.get(self, "log_only_mode_type")
-
-    @log_only_mode_type.setter
-    def log_only_mode_type(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "log_only_mode_type", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def workloads(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        return pulumi.get(self, "workloads")
-
-    @workloads.setter
-    def workloads(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
-        pulumi.set(self, "workloads", value)
 
 
 if not MYPY:
@@ -11408,6 +8957,7 @@ if not MYPY:
         egg: NotRequired[pulumi.Input[_builtins.str]]
         jar: NotRequired[pulumi.Input[_builtins.str]]
         maven: NotRequired[pulumi.Input['ClusterPolicyLibraryMavenArgsDict']]
+        provider_config: NotRequired[pulumi.Input['ClusterPolicyLibraryProviderConfigArgsDict']]
         pypi: NotRequired[pulumi.Input['ClusterPolicyLibraryPypiArgsDict']]
         requirements: NotRequired[pulumi.Input[_builtins.str]]
         whl: NotRequired[pulumi.Input[_builtins.str]]
@@ -11421,6 +8971,7 @@ class ClusterPolicyLibraryArgs:
                  egg: Optional[pulumi.Input[_builtins.str]] = None,
                  jar: Optional[pulumi.Input[_builtins.str]] = None,
                  maven: Optional[pulumi.Input['ClusterPolicyLibraryMavenArgs']] = None,
+                 provider_config: Optional[pulumi.Input['ClusterPolicyLibraryProviderConfigArgs']] = None,
                  pypi: Optional[pulumi.Input['ClusterPolicyLibraryPypiArgs']] = None,
                  requirements: Optional[pulumi.Input[_builtins.str]] = None,
                  whl: Optional[pulumi.Input[_builtins.str]] = None):
@@ -11435,6 +8986,8 @@ class ClusterPolicyLibraryArgs:
             pulumi.set(__self__, "jar", jar)
         if maven is not None:
             pulumi.set(__self__, "maven", maven)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if pypi is not None:
             pulumi.set(__self__, "pypi", pypi)
         if requirements is not None:
@@ -11478,6 +9031,15 @@ class ClusterPolicyLibraryArgs:
     @maven.setter
     def maven(self, value: Optional[pulumi.Input['ClusterPolicyLibraryMavenArgs']]):
         pulumi.set(self, "maven", value)
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['ClusterPolicyLibraryProviderConfigArgs']]:
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['ClusterPolicyLibraryProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter
@@ -11591,6 +9153,28 @@ class ClusterPolicyLibraryMavenArgs:
 
 
 if not MYPY:
+    class ClusterPolicyLibraryProviderConfigArgsDict(TypedDict):
+        workspace_id: pulumi.Input[_builtins.str]
+elif False:
+    ClusterPolicyLibraryProviderConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ClusterPolicyLibraryProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: pulumi.Input[_builtins.str]):
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "workspace_id", value)
+
+
+if not MYPY:
     class ClusterPolicyLibraryPypiArgsDict(TypedDict):
         package: pulumi.Input[_builtins.str]
         repo: NotRequired[pulumi.Input[_builtins.str]]
@@ -11623,6 +9207,109 @@ class ClusterPolicyLibraryPypiArgs:
     @repo.setter
     def repo(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "repo", value)
+
+
+if not MYPY:
+    class ClusterProviderConfigArgsDict(TypedDict):
+        workspace_id: pulumi.Input[_builtins.str]
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+
+        The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        smallest = databricks.get_node_type(local_disk=True)
+        latest_lts = databricks.get_spark_version(long_term_support=True)
+        shared_autoscaling = databricks.Cluster("shared_autoscaling",
+            cluster_name="Shared Autoscaling",
+            spark_version=latest_lts.id,
+            node_type_id=smallest.id,
+            autotermination_minutes=20,
+            autoscale={
+                "min_workers": 1,
+                "max_workers": 50,
+            },
+            spark_conf={
+                "spark.databricks.io.cache.enabled": "true",
+                "spark.databricks.io.cache.maxDiskUsage": "50g",
+                "spark.databricks.io.cache.maxMetaDataCache": "1g",
+            })
+        ```
+        """
+elif False:
+    ClusterProviderConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ClusterProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+               
+               The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
+               
+               ```python
+               import pulumi
+               import pulumi_databricks as databricks
+               
+               smallest = databricks.get_node_type(local_disk=True)
+               latest_lts = databricks.get_spark_version(long_term_support=True)
+               shared_autoscaling = databricks.Cluster("shared_autoscaling",
+                   cluster_name="Shared Autoscaling",
+                   spark_version=latest_lts.id,
+                   node_type_id=smallest.id,
+                   autotermination_minutes=20,
+                   autoscale={
+                       "min_workers": 1,
+                       "max_workers": 50,
+                   },
+                   spark_conf={
+                       "spark.databricks.io.cache.enabled": "true",
+                       "spark.databricks.io.cache.maxDiskUsage": "50g",
+                       "spark.databricks.io.cache.maxMetaDataCache": "1g",
+                   })
+               ```
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+
+        The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        smallest = databricks.get_node_type(local_disk=True)
+        latest_lts = databricks.get_spark_version(long_term_support=True)
+        shared_autoscaling = databricks.Cluster("shared_autoscaling",
+            cluster_name="Shared Autoscaling",
+            spark_version=latest_lts.id,
+            node_type_id=smallest.id,
+            autotermination_minutes=20,
+            autoscale={
+                "min_workers": 1,
+                "max_workers": 50,
+            },
+            spark_conf={
+                "spark.databricks.io.cache.enabled": "true",
+                "spark.databricks.io.cache.maxDiskUsage": "50g",
+                "spark.databricks.io.cache.maxMetaDataCache": "1g",
+            })
+        ```
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "workspace_id", value)
 
 
 if not MYPY:
@@ -12075,10 +9762,12 @@ class CredentialDatabricksGcpServiceAccountArgs:
 
 if not MYPY:
     class CustomAppIntegrationTokenAccessPolicyArgsDict(TypedDict):
+        absolute_session_lifetime_in_minutes: NotRequired[pulumi.Input[_builtins.int]]
         access_token_ttl_in_minutes: NotRequired[pulumi.Input[_builtins.int]]
         """
         access token time to live (TTL) in minutes.
         """
+        enable_single_use_refresh_tokens: NotRequired[pulumi.Input[_builtins.bool]]
         refresh_token_ttl_in_minutes: NotRequired[pulumi.Input[_builtins.int]]
         """
         refresh token TTL in minutes. The TTL of refresh token cannot be lower than TTL of access token.
@@ -12089,16 +9778,31 @@ elif False:
 @pulumi.input_type
 class CustomAppIntegrationTokenAccessPolicyArgs:
     def __init__(__self__, *,
+                 absolute_session_lifetime_in_minutes: Optional[pulumi.Input[_builtins.int]] = None,
                  access_token_ttl_in_minutes: Optional[pulumi.Input[_builtins.int]] = None,
+                 enable_single_use_refresh_tokens: Optional[pulumi.Input[_builtins.bool]] = None,
                  refresh_token_ttl_in_minutes: Optional[pulumi.Input[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] access_token_ttl_in_minutes: access token time to live (TTL) in minutes.
         :param pulumi.Input[_builtins.int] refresh_token_ttl_in_minutes: refresh token TTL in minutes. The TTL of refresh token cannot be lower than TTL of access token.
         """
+        if absolute_session_lifetime_in_minutes is not None:
+            pulumi.set(__self__, "absolute_session_lifetime_in_minutes", absolute_session_lifetime_in_minutes)
         if access_token_ttl_in_minutes is not None:
             pulumi.set(__self__, "access_token_ttl_in_minutes", access_token_ttl_in_minutes)
+        if enable_single_use_refresh_tokens is not None:
+            pulumi.set(__self__, "enable_single_use_refresh_tokens", enable_single_use_refresh_tokens)
         if refresh_token_ttl_in_minutes is not None:
             pulumi.set(__self__, "refresh_token_ttl_in_minutes", refresh_token_ttl_in_minutes)
+
+    @_builtins.property
+    @pulumi.getter(name="absoluteSessionLifetimeInMinutes")
+    def absolute_session_lifetime_in_minutes(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "absolute_session_lifetime_in_minutes")
+
+    @absolute_session_lifetime_in_minutes.setter
+    def absolute_session_lifetime_in_minutes(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "absolute_session_lifetime_in_minutes", value)
 
     @_builtins.property
     @pulumi.getter(name="accessTokenTtlInMinutes")
@@ -12113,6 +9817,15 @@ class CustomAppIntegrationTokenAccessPolicyArgs:
         pulumi.set(self, "access_token_ttl_in_minutes", value)
 
     @_builtins.property
+    @pulumi.getter(name="enableSingleUseRefreshTokens")
+    def enable_single_use_refresh_tokens(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        return pulumi.get(self, "enable_single_use_refresh_tokens")
+
+    @enable_single_use_refresh_tokens.setter
+    def enable_single_use_refresh_tokens(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "enable_single_use_refresh_tokens", value)
+
+    @_builtins.property
     @pulumi.getter(name="refreshTokenTtlInMinutes")
     def refresh_token_ttl_in_minutes(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
@@ -12123,6 +9836,802 @@ class CustomAppIntegrationTokenAccessPolicyArgs:
     @refresh_token_ttl_in_minutes.setter
     def refresh_token_ttl_in_minutes(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "refresh_token_ttl_in_minutes", value)
+
+
+if not MYPY:
+    class DataQualityMonitorAnomalyDetectionConfigArgsDict(TypedDict):
+        pass
+elif False:
+    DataQualityMonitorAnomalyDetectionConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DataQualityMonitorAnomalyDetectionConfigArgs:
+    def __init__(__self__):
+        pass
+
+
+if not MYPY:
+    class DataQualityMonitorDataProfilingConfigArgsDict(TypedDict):
+        output_schema_id: pulumi.Input[_builtins.str]
+        """
+        ID of the schema where output tables are created
+        """
+        assets_dir: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Field for specifying the absolute path to a custom directory to store data-monitoring
+        assets. Normally prepopulated to a default user location via UI and Python APIs
+        """
+        baseline_table_name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Baseline table name.
+        Baseline data is used to compute drift from the data in the monitored `table_name`.
+        The baseline table and the monitored table shall have the same schema
+        """
+        custom_metrics: NotRequired[pulumi.Input[Sequence[pulumi.Input['DataQualityMonitorDataProfilingConfigCustomMetricArgsDict']]]]
+        """
+        Custom metrics
+        """
+        dashboard_id: NotRequired[pulumi.Input[_builtins.str]]
+        drift_metrics_table_name: NotRequired[pulumi.Input[_builtins.str]]
+        effective_warehouse_id: NotRequired[pulumi.Input[_builtins.str]]
+        inference_log: NotRequired[pulumi.Input['DataQualityMonitorDataProfilingConfigInferenceLogArgsDict']]
+        """
+        `Analysis Configuration` for monitoring inference log tables
+        """
+        latest_monitor_failure_message: NotRequired[pulumi.Input[_builtins.str]]
+        monitor_version: NotRequired[pulumi.Input[_builtins.int]]
+        monitored_table_name: NotRequired[pulumi.Input[_builtins.str]]
+        notification_settings: NotRequired[pulumi.Input['DataQualityMonitorDataProfilingConfigNotificationSettingsArgsDict']]
+        """
+        Field for specifying notification settings
+        """
+        profile_metrics_table_name: NotRequired[pulumi.Input[_builtins.str]]
+        schedule: NotRequired[pulumi.Input['DataQualityMonitorDataProfilingConfigScheduleArgsDict']]
+        """
+        The cron schedule
+        """
+        skip_builtin_dashboard: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Whether to skip creating a default dashboard summarizing data quality metrics
+        """
+        slicing_exprs: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        List of column expressions to slice data with for targeted analysis. The data is grouped by
+        each expression independently, resulting in a separate slice for each predicate and its
+        complements. For example `slicing_exprs=[“col_1”, “col_2 > 10”]` will generate the following
+        slices: two slices for `col_2 > 10` (True and False), and one slice per unique value in
+        `col1`. For high-cardinality columns, only the top 100 unique values by frequency will
+        generate slices
+        """
+        snapshot: NotRequired[pulumi.Input['DataQualityMonitorDataProfilingConfigSnapshotArgsDict']]
+        """
+        `Analysis Configuration` for monitoring snapshot tables
+        """
+        status: NotRequired[pulumi.Input[_builtins.str]]
+        time_series: NotRequired[pulumi.Input['DataQualityMonitorDataProfilingConfigTimeSeriesArgsDict']]
+        """
+        `Analysis Configuration` for monitoring time series tables
+        """
+        warehouse_id: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Optional argument to specify the warehouse for dashboard creation. If not specified, the first running
+        warehouse will be used
+        """
+elif False:
+    DataQualityMonitorDataProfilingConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DataQualityMonitorDataProfilingConfigArgs:
+    def __init__(__self__, *,
+                 output_schema_id: pulumi.Input[_builtins.str],
+                 assets_dir: Optional[pulumi.Input[_builtins.str]] = None,
+                 baseline_table_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 custom_metrics: Optional[pulumi.Input[Sequence[pulumi.Input['DataQualityMonitorDataProfilingConfigCustomMetricArgs']]]] = None,
+                 dashboard_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 drift_metrics_table_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 effective_warehouse_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 inference_log: Optional[pulumi.Input['DataQualityMonitorDataProfilingConfigInferenceLogArgs']] = None,
+                 latest_monitor_failure_message: Optional[pulumi.Input[_builtins.str]] = None,
+                 monitor_version: Optional[pulumi.Input[_builtins.int]] = None,
+                 monitored_table_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 notification_settings: Optional[pulumi.Input['DataQualityMonitorDataProfilingConfigNotificationSettingsArgs']] = None,
+                 profile_metrics_table_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 schedule: Optional[pulumi.Input['DataQualityMonitorDataProfilingConfigScheduleArgs']] = None,
+                 skip_builtin_dashboard: Optional[pulumi.Input[_builtins.bool]] = None,
+                 slicing_exprs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 snapshot: Optional[pulumi.Input['DataQualityMonitorDataProfilingConfigSnapshotArgs']] = None,
+                 status: Optional[pulumi.Input[_builtins.str]] = None,
+                 time_series: Optional[pulumi.Input['DataQualityMonitorDataProfilingConfigTimeSeriesArgs']] = None,
+                 warehouse_id: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] output_schema_id: ID of the schema where output tables are created
+        :param pulumi.Input[_builtins.str] assets_dir: Field for specifying the absolute path to a custom directory to store data-monitoring
+               assets. Normally prepopulated to a default user location via UI and Python APIs
+        :param pulumi.Input[_builtins.str] baseline_table_name: Baseline table name.
+               Baseline data is used to compute drift from the data in the monitored `table_name`.
+               The baseline table and the monitored table shall have the same schema
+        :param pulumi.Input[Sequence[pulumi.Input['DataQualityMonitorDataProfilingConfigCustomMetricArgs']]] custom_metrics: Custom metrics
+        :param pulumi.Input['DataQualityMonitorDataProfilingConfigInferenceLogArgs'] inference_log: `Analysis Configuration` for monitoring inference log tables
+        :param pulumi.Input['DataQualityMonitorDataProfilingConfigNotificationSettingsArgs'] notification_settings: Field for specifying notification settings
+        :param pulumi.Input['DataQualityMonitorDataProfilingConfigScheduleArgs'] schedule: The cron schedule
+        :param pulumi.Input[_builtins.bool] skip_builtin_dashboard: Whether to skip creating a default dashboard summarizing data quality metrics
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] slicing_exprs: List of column expressions to slice data with for targeted analysis. The data is grouped by
+               each expression independently, resulting in a separate slice for each predicate and its
+               complements. For example `slicing_exprs=[“col_1”, “col_2 > 10”]` will generate the following
+               slices: two slices for `col_2 > 10` (True and False), and one slice per unique value in
+               `col1`. For high-cardinality columns, only the top 100 unique values by frequency will
+               generate slices
+        :param pulumi.Input['DataQualityMonitorDataProfilingConfigSnapshotArgs'] snapshot: `Analysis Configuration` for monitoring snapshot tables
+        :param pulumi.Input['DataQualityMonitorDataProfilingConfigTimeSeriesArgs'] time_series: `Analysis Configuration` for monitoring time series tables
+        :param pulumi.Input[_builtins.str] warehouse_id: Optional argument to specify the warehouse for dashboard creation. If not specified, the first running
+               warehouse will be used
+        """
+        pulumi.set(__self__, "output_schema_id", output_schema_id)
+        if assets_dir is not None:
+            pulumi.set(__self__, "assets_dir", assets_dir)
+        if baseline_table_name is not None:
+            pulumi.set(__self__, "baseline_table_name", baseline_table_name)
+        if custom_metrics is not None:
+            pulumi.set(__self__, "custom_metrics", custom_metrics)
+        if dashboard_id is not None:
+            pulumi.set(__self__, "dashboard_id", dashboard_id)
+        if drift_metrics_table_name is not None:
+            pulumi.set(__self__, "drift_metrics_table_name", drift_metrics_table_name)
+        if effective_warehouse_id is not None:
+            pulumi.set(__self__, "effective_warehouse_id", effective_warehouse_id)
+        if inference_log is not None:
+            pulumi.set(__self__, "inference_log", inference_log)
+        if latest_monitor_failure_message is not None:
+            pulumi.set(__self__, "latest_monitor_failure_message", latest_monitor_failure_message)
+        if monitor_version is not None:
+            pulumi.set(__self__, "monitor_version", monitor_version)
+        if monitored_table_name is not None:
+            pulumi.set(__self__, "monitored_table_name", monitored_table_name)
+        if notification_settings is not None:
+            pulumi.set(__self__, "notification_settings", notification_settings)
+        if profile_metrics_table_name is not None:
+            pulumi.set(__self__, "profile_metrics_table_name", profile_metrics_table_name)
+        if schedule is not None:
+            pulumi.set(__self__, "schedule", schedule)
+        if skip_builtin_dashboard is not None:
+            pulumi.set(__self__, "skip_builtin_dashboard", skip_builtin_dashboard)
+        if slicing_exprs is not None:
+            pulumi.set(__self__, "slicing_exprs", slicing_exprs)
+        if snapshot is not None:
+            pulumi.set(__self__, "snapshot", snapshot)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if time_series is not None:
+            pulumi.set(__self__, "time_series", time_series)
+        if warehouse_id is not None:
+            pulumi.set(__self__, "warehouse_id", warehouse_id)
+
+    @_builtins.property
+    @pulumi.getter(name="outputSchemaId")
+    def output_schema_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        ID of the schema where output tables are created
+        """
+        return pulumi.get(self, "output_schema_id")
+
+    @output_schema_id.setter
+    def output_schema_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "output_schema_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="assetsDir")
+    def assets_dir(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Field for specifying the absolute path to a custom directory to store data-monitoring
+        assets. Normally prepopulated to a default user location via UI and Python APIs
+        """
+        return pulumi.get(self, "assets_dir")
+
+    @assets_dir.setter
+    def assets_dir(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "assets_dir", value)
+
+    @_builtins.property
+    @pulumi.getter(name="baselineTableName")
+    def baseline_table_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Baseline table name.
+        Baseline data is used to compute drift from the data in the monitored `table_name`.
+        The baseline table and the monitored table shall have the same schema
+        """
+        return pulumi.get(self, "baseline_table_name")
+
+    @baseline_table_name.setter
+    def baseline_table_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "baseline_table_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="customMetrics")
+    def custom_metrics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DataQualityMonitorDataProfilingConfigCustomMetricArgs']]]]:
+        """
+        Custom metrics
+        """
+        return pulumi.get(self, "custom_metrics")
+
+    @custom_metrics.setter
+    def custom_metrics(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DataQualityMonitorDataProfilingConfigCustomMetricArgs']]]]):
+        pulumi.set(self, "custom_metrics", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dashboardId")
+    def dashboard_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "dashboard_id")
+
+    @dashboard_id.setter
+    def dashboard_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "dashboard_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="driftMetricsTableName")
+    def drift_metrics_table_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "drift_metrics_table_name")
+
+    @drift_metrics_table_name.setter
+    def drift_metrics_table_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "drift_metrics_table_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="effectiveWarehouseId")
+    def effective_warehouse_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "effective_warehouse_id")
+
+    @effective_warehouse_id.setter
+    def effective_warehouse_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "effective_warehouse_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="inferenceLog")
+    def inference_log(self) -> Optional[pulumi.Input['DataQualityMonitorDataProfilingConfigInferenceLogArgs']]:
+        """
+        `Analysis Configuration` for monitoring inference log tables
+        """
+        return pulumi.get(self, "inference_log")
+
+    @inference_log.setter
+    def inference_log(self, value: Optional[pulumi.Input['DataQualityMonitorDataProfilingConfigInferenceLogArgs']]):
+        pulumi.set(self, "inference_log", value)
+
+    @_builtins.property
+    @pulumi.getter(name="latestMonitorFailureMessage")
+    def latest_monitor_failure_message(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "latest_monitor_failure_message")
+
+    @latest_monitor_failure_message.setter
+    def latest_monitor_failure_message(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "latest_monitor_failure_message", value)
+
+    @_builtins.property
+    @pulumi.getter(name="monitorVersion")
+    def monitor_version(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "monitor_version")
+
+    @monitor_version.setter
+    def monitor_version(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "monitor_version", value)
+
+    @_builtins.property
+    @pulumi.getter(name="monitoredTableName")
+    def monitored_table_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "monitored_table_name")
+
+    @monitored_table_name.setter
+    def monitored_table_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "monitored_table_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="notificationSettings")
+    def notification_settings(self) -> Optional[pulumi.Input['DataQualityMonitorDataProfilingConfigNotificationSettingsArgs']]:
+        """
+        Field for specifying notification settings
+        """
+        return pulumi.get(self, "notification_settings")
+
+    @notification_settings.setter
+    def notification_settings(self, value: Optional[pulumi.Input['DataQualityMonitorDataProfilingConfigNotificationSettingsArgs']]):
+        pulumi.set(self, "notification_settings", value)
+
+    @_builtins.property
+    @pulumi.getter(name="profileMetricsTableName")
+    def profile_metrics_table_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "profile_metrics_table_name")
+
+    @profile_metrics_table_name.setter
+    def profile_metrics_table_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "profile_metrics_table_name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def schedule(self) -> Optional[pulumi.Input['DataQualityMonitorDataProfilingConfigScheduleArgs']]:
+        """
+        The cron schedule
+        """
+        return pulumi.get(self, "schedule")
+
+    @schedule.setter
+    def schedule(self, value: Optional[pulumi.Input['DataQualityMonitorDataProfilingConfigScheduleArgs']]):
+        pulumi.set(self, "schedule", value)
+
+    @_builtins.property
+    @pulumi.getter(name="skipBuiltinDashboard")
+    def skip_builtin_dashboard(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether to skip creating a default dashboard summarizing data quality metrics
+        """
+        return pulumi.get(self, "skip_builtin_dashboard")
+
+    @skip_builtin_dashboard.setter
+    def skip_builtin_dashboard(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "skip_builtin_dashboard", value)
+
+    @_builtins.property
+    @pulumi.getter(name="slicingExprs")
+    def slicing_exprs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        List of column expressions to slice data with for targeted analysis. The data is grouped by
+        each expression independently, resulting in a separate slice for each predicate and its
+        complements. For example `slicing_exprs=[“col_1”, “col_2 > 10”]` will generate the following
+        slices: two slices for `col_2 > 10` (True and False), and one slice per unique value in
+        `col1`. For high-cardinality columns, only the top 100 unique values by frequency will
+        generate slices
+        """
+        return pulumi.get(self, "slicing_exprs")
+
+    @slicing_exprs.setter
+    def slicing_exprs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "slicing_exprs", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def snapshot(self) -> Optional[pulumi.Input['DataQualityMonitorDataProfilingConfigSnapshotArgs']]:
+        """
+        `Analysis Configuration` for monitoring snapshot tables
+        """
+        return pulumi.get(self, "snapshot")
+
+    @snapshot.setter
+    def snapshot(self, value: Optional[pulumi.Input['DataQualityMonitorDataProfilingConfigSnapshotArgs']]):
+        pulumi.set(self, "snapshot", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "status", value)
+
+    @_builtins.property
+    @pulumi.getter(name="timeSeries")
+    def time_series(self) -> Optional[pulumi.Input['DataQualityMonitorDataProfilingConfigTimeSeriesArgs']]:
+        """
+        `Analysis Configuration` for monitoring time series tables
+        """
+        return pulumi.get(self, "time_series")
+
+    @time_series.setter
+    def time_series(self, value: Optional[pulumi.Input['DataQualityMonitorDataProfilingConfigTimeSeriesArgs']]):
+        pulumi.set(self, "time_series", value)
+
+    @_builtins.property
+    @pulumi.getter(name="warehouseId")
+    def warehouse_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Optional argument to specify the warehouse for dashboard creation. If not specified, the first running
+        warehouse will be used
+        """
+        return pulumi.get(self, "warehouse_id")
+
+    @warehouse_id.setter
+    def warehouse_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "warehouse_id", value)
+
+
+if not MYPY:
+    class DataQualityMonitorDataProfilingConfigCustomMetricArgsDict(TypedDict):
+        definition: pulumi.Input[_builtins.str]
+        """
+        Jinja template for a SQL expression that specifies how to compute the metric. See [create metric definition](https://docs.databricks.com/en/lakehouse-monitoring/custom-metrics.html#create-definition)
+        """
+        input_columns: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+        """
+        A list of column names in the input table the metric should be computed for.
+        Can use ``":table"`` to indicate that the metric needs information from multiple columns
+        """
+        name: pulumi.Input[_builtins.str]
+        """
+        Name of the metric in the output tables
+        """
+        output_data_type: pulumi.Input[_builtins.str]
+        """
+        The output type of the custom metric
+        """
+        type: pulumi.Input[_builtins.str]
+        """
+        The type of the custom metric. Possible values are: `DATA_PROFILING_CUSTOM_METRIC_TYPE_AGGREGATE`, `DATA_PROFILING_CUSTOM_METRIC_TYPE_DERIVED`, `DATA_PROFILING_CUSTOM_METRIC_TYPE_DRIFT`
+        """
+elif False:
+    DataQualityMonitorDataProfilingConfigCustomMetricArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DataQualityMonitorDataProfilingConfigCustomMetricArgs:
+    def __init__(__self__, *,
+                 definition: pulumi.Input[_builtins.str],
+                 input_columns: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
+                 name: pulumi.Input[_builtins.str],
+                 output_data_type: pulumi.Input[_builtins.str],
+                 type: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] definition: Jinja template for a SQL expression that specifies how to compute the metric. See [create metric definition](https://docs.databricks.com/en/lakehouse-monitoring/custom-metrics.html#create-definition)
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] input_columns: A list of column names in the input table the metric should be computed for.
+               Can use ``":table"`` to indicate that the metric needs information from multiple columns
+        :param pulumi.Input[_builtins.str] name: Name of the metric in the output tables
+        :param pulumi.Input[_builtins.str] output_data_type: The output type of the custom metric
+        :param pulumi.Input[_builtins.str] type: The type of the custom metric. Possible values are: `DATA_PROFILING_CUSTOM_METRIC_TYPE_AGGREGATE`, `DATA_PROFILING_CUSTOM_METRIC_TYPE_DERIVED`, `DATA_PROFILING_CUSTOM_METRIC_TYPE_DRIFT`
+        """
+        pulumi.set(__self__, "definition", definition)
+        pulumi.set(__self__, "input_columns", input_columns)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "output_data_type", output_data_type)
+        pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def definition(self) -> pulumi.Input[_builtins.str]:
+        """
+        Jinja template for a SQL expression that specifies how to compute the metric. See [create metric definition](https://docs.databricks.com/en/lakehouse-monitoring/custom-metrics.html#create-definition)
+        """
+        return pulumi.get(self, "definition")
+
+    @definition.setter
+    def definition(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "definition", value)
+
+    @_builtins.property
+    @pulumi.getter(name="inputColumns")
+    def input_columns(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
+        """
+        A list of column names in the input table the metric should be computed for.
+        Can use ``":table"`` to indicate that the metric needs information from multiple columns
+        """
+        return pulumi.get(self, "input_columns")
+
+    @input_columns.setter
+    def input_columns(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        pulumi.set(self, "input_columns", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        Name of the metric in the output tables
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="outputDataType")
+    def output_data_type(self) -> pulumi.Input[_builtins.str]:
+        """
+        The output type of the custom metric
+        """
+        return pulumi.get(self, "output_data_type")
+
+    @output_data_type.setter
+    def output_data_type(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "output_data_type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[_builtins.str]:
+        """
+        The type of the custom metric. Possible values are: `DATA_PROFILING_CUSTOM_METRIC_TYPE_AGGREGATE`, `DATA_PROFILING_CUSTOM_METRIC_TYPE_DERIVED`, `DATA_PROFILING_CUSTOM_METRIC_TYPE_DRIFT`
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "type", value)
+
+
+if not MYPY:
+    class DataQualityMonitorDataProfilingConfigInferenceLogArgsDict(TypedDict):
+        granularities: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+        model_id_column: pulumi.Input[_builtins.str]
+        """
+        Column for the model identifier
+        """
+        prediction_column: pulumi.Input[_builtins.str]
+        """
+        Column for the prediction
+        """
+        problem_type: pulumi.Input[_builtins.str]
+        """
+        Problem type the model aims to solve. Possible values are: `INFERENCE_PROBLEM_TYPE_CLASSIFICATION`, `INFERENCE_PROBLEM_TYPE_REGRESSION`
+        """
+        timestamp_column: pulumi.Input[_builtins.str]
+        label_column: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Column for the label
+        """
+elif False:
+    DataQualityMonitorDataProfilingConfigInferenceLogArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DataQualityMonitorDataProfilingConfigInferenceLogArgs:
+    def __init__(__self__, *,
+                 granularities: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
+                 model_id_column: pulumi.Input[_builtins.str],
+                 prediction_column: pulumi.Input[_builtins.str],
+                 problem_type: pulumi.Input[_builtins.str],
+                 timestamp_column: pulumi.Input[_builtins.str],
+                 label_column: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] model_id_column: Column for the model identifier
+        :param pulumi.Input[_builtins.str] prediction_column: Column for the prediction
+        :param pulumi.Input[_builtins.str] problem_type: Problem type the model aims to solve. Possible values are: `INFERENCE_PROBLEM_TYPE_CLASSIFICATION`, `INFERENCE_PROBLEM_TYPE_REGRESSION`
+        :param pulumi.Input[_builtins.str] label_column: Column for the label
+        """
+        pulumi.set(__self__, "granularities", granularities)
+        pulumi.set(__self__, "model_id_column", model_id_column)
+        pulumi.set(__self__, "prediction_column", prediction_column)
+        pulumi.set(__self__, "problem_type", problem_type)
+        pulumi.set(__self__, "timestamp_column", timestamp_column)
+        if label_column is not None:
+            pulumi.set(__self__, "label_column", label_column)
+
+    @_builtins.property
+    @pulumi.getter
+    def granularities(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
+        return pulumi.get(self, "granularities")
+
+    @granularities.setter
+    def granularities(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        pulumi.set(self, "granularities", value)
+
+    @_builtins.property
+    @pulumi.getter(name="modelIdColumn")
+    def model_id_column(self) -> pulumi.Input[_builtins.str]:
+        """
+        Column for the model identifier
+        """
+        return pulumi.get(self, "model_id_column")
+
+    @model_id_column.setter
+    def model_id_column(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "model_id_column", value)
+
+    @_builtins.property
+    @pulumi.getter(name="predictionColumn")
+    def prediction_column(self) -> pulumi.Input[_builtins.str]:
+        """
+        Column for the prediction
+        """
+        return pulumi.get(self, "prediction_column")
+
+    @prediction_column.setter
+    def prediction_column(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "prediction_column", value)
+
+    @_builtins.property
+    @pulumi.getter(name="problemType")
+    def problem_type(self) -> pulumi.Input[_builtins.str]:
+        """
+        Problem type the model aims to solve. Possible values are: `INFERENCE_PROBLEM_TYPE_CLASSIFICATION`, `INFERENCE_PROBLEM_TYPE_REGRESSION`
+        """
+        return pulumi.get(self, "problem_type")
+
+    @problem_type.setter
+    def problem_type(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "problem_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="timestampColumn")
+    def timestamp_column(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "timestamp_column")
+
+    @timestamp_column.setter
+    def timestamp_column(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "timestamp_column", value)
+
+    @_builtins.property
+    @pulumi.getter(name="labelColumn")
+    def label_column(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Column for the label
+        """
+        return pulumi.get(self, "label_column")
+
+    @label_column.setter
+    def label_column(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "label_column", value)
+
+
+if not MYPY:
+    class DataQualityMonitorDataProfilingConfigNotificationSettingsArgsDict(TypedDict):
+        on_failure: NotRequired[pulumi.Input['DataQualityMonitorDataProfilingConfigNotificationSettingsOnFailureArgsDict']]
+        """
+        Destinations to send notifications on failure/timeout
+        """
+elif False:
+    DataQualityMonitorDataProfilingConfigNotificationSettingsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DataQualityMonitorDataProfilingConfigNotificationSettingsArgs:
+    def __init__(__self__, *,
+                 on_failure: Optional[pulumi.Input['DataQualityMonitorDataProfilingConfigNotificationSettingsOnFailureArgs']] = None):
+        """
+        :param pulumi.Input['DataQualityMonitorDataProfilingConfigNotificationSettingsOnFailureArgs'] on_failure: Destinations to send notifications on failure/timeout
+        """
+        if on_failure is not None:
+            pulumi.set(__self__, "on_failure", on_failure)
+
+    @_builtins.property
+    @pulumi.getter(name="onFailure")
+    def on_failure(self) -> Optional[pulumi.Input['DataQualityMonitorDataProfilingConfigNotificationSettingsOnFailureArgs']]:
+        """
+        Destinations to send notifications on failure/timeout
+        """
+        return pulumi.get(self, "on_failure")
+
+    @on_failure.setter
+    def on_failure(self, value: Optional[pulumi.Input['DataQualityMonitorDataProfilingConfigNotificationSettingsOnFailureArgs']]):
+        pulumi.set(self, "on_failure", value)
+
+
+if not MYPY:
+    class DataQualityMonitorDataProfilingConfigNotificationSettingsOnFailureArgsDict(TypedDict):
+        email_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        The list of email addresses to send the notification to. A maximum of 5 email addresses is supported
+        """
+elif False:
+    DataQualityMonitorDataProfilingConfigNotificationSettingsOnFailureArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DataQualityMonitorDataProfilingConfigNotificationSettingsOnFailureArgs:
+    def __init__(__self__, *,
+                 email_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] email_addresses: The list of email addresses to send the notification to. A maximum of 5 email addresses is supported
+        """
+        if email_addresses is not None:
+            pulumi.set(__self__, "email_addresses", email_addresses)
+
+    @_builtins.property
+    @pulumi.getter(name="emailAddresses")
+    def email_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The list of email addresses to send the notification to. A maximum of 5 email addresses is supported
+        """
+        return pulumi.get(self, "email_addresses")
+
+    @email_addresses.setter
+    def email_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "email_addresses", value)
+
+
+if not MYPY:
+    class DataQualityMonitorDataProfilingConfigScheduleArgsDict(TypedDict):
+        quartz_cron_expression: pulumi.Input[_builtins.str]
+        """
+        The expression that determines when to run the monitor. See [examples](https://www.quartz-scheduler.org/documentation/quartz-2.3.0/tutorials/crontrigger.html)
+        """
+        timezone_id: pulumi.Input[_builtins.str]
+        """
+        A Java timezone id. The schedule for a job will be resolved with respect to this timezone.
+        See `Java TimeZone <http://docs.oracle.com/javase/7/docs/api/java/util/TimeZone.html>`_ for details.
+        The timezone id (e.g., ``America/Los_Angeles``) in which to evaluate the quartz expression
+        """
+        pause_status: NotRequired[pulumi.Input[_builtins.str]]
+elif False:
+    DataQualityMonitorDataProfilingConfigScheduleArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DataQualityMonitorDataProfilingConfigScheduleArgs:
+    def __init__(__self__, *,
+                 quartz_cron_expression: pulumi.Input[_builtins.str],
+                 timezone_id: pulumi.Input[_builtins.str],
+                 pause_status: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] quartz_cron_expression: The expression that determines when to run the monitor. See [examples](https://www.quartz-scheduler.org/documentation/quartz-2.3.0/tutorials/crontrigger.html)
+        :param pulumi.Input[_builtins.str] timezone_id: A Java timezone id. The schedule for a job will be resolved with respect to this timezone.
+               See `Java TimeZone <http://docs.oracle.com/javase/7/docs/api/java/util/TimeZone.html>`_ for details.
+               The timezone id (e.g., ``America/Los_Angeles``) in which to evaluate the quartz expression
+        """
+        pulumi.set(__self__, "quartz_cron_expression", quartz_cron_expression)
+        pulumi.set(__self__, "timezone_id", timezone_id)
+        if pause_status is not None:
+            pulumi.set(__self__, "pause_status", pause_status)
+
+    @_builtins.property
+    @pulumi.getter(name="quartzCronExpression")
+    def quartz_cron_expression(self) -> pulumi.Input[_builtins.str]:
+        """
+        The expression that determines when to run the monitor. See [examples](https://www.quartz-scheduler.org/documentation/quartz-2.3.0/tutorials/crontrigger.html)
+        """
+        return pulumi.get(self, "quartz_cron_expression")
+
+    @quartz_cron_expression.setter
+    def quartz_cron_expression(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "quartz_cron_expression", value)
+
+    @_builtins.property
+    @pulumi.getter(name="timezoneId")
+    def timezone_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        A Java timezone id. The schedule for a job will be resolved with respect to this timezone.
+        See `Java TimeZone <http://docs.oracle.com/javase/7/docs/api/java/util/TimeZone.html>`_ for details.
+        The timezone id (e.g., ``America/Los_Angeles``) in which to evaluate the quartz expression
+        """
+        return pulumi.get(self, "timezone_id")
+
+    @timezone_id.setter
+    def timezone_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "timezone_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="pauseStatus")
+    def pause_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "pause_status")
+
+    @pause_status.setter
+    def pause_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "pause_status", value)
+
+
+if not MYPY:
+    class DataQualityMonitorDataProfilingConfigSnapshotArgsDict(TypedDict):
+        pass
+elif False:
+    DataQualityMonitorDataProfilingConfigSnapshotArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DataQualityMonitorDataProfilingConfigSnapshotArgs:
+    def __init__(__self__):
+        pass
+
+
+if not MYPY:
+    class DataQualityMonitorDataProfilingConfigTimeSeriesArgsDict(TypedDict):
+        granularities: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+        timestamp_column: pulumi.Input[_builtins.str]
+elif False:
+    DataQualityMonitorDataProfilingConfigTimeSeriesArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DataQualityMonitorDataProfilingConfigTimeSeriesArgs:
+    def __init__(__self__, *,
+                 granularities: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
+                 timestamp_column: pulumi.Input[_builtins.str]):
+        pulumi.set(__self__, "granularities", granularities)
+        pulumi.set(__self__, "timestamp_column", timestamp_column)
+
+    @_builtins.property
+    @pulumi.getter
+    def granularities(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
+        return pulumi.get(self, "granularities")
+
+    @granularities.setter
+    def granularities(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        pulumi.set(self, "granularities", value)
+
+    @_builtins.property
+    @pulumi.getter(name="timestampColumn")
+    def timestamp_column(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "timestamp_column")
+
+    @timestamp_column.setter
+    def timestamp_column(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "timestamp_column", value)
 
 
 if not MYPY:
@@ -12139,10 +10648,7 @@ if not MYPY:
         """
         effective_lsn: NotRequired[pulumi.Input[_builtins.str]]
         """
-        (string) - xref AIP-129. `lsn` is owned by the client, while `effective_lsn` is owned by the server.
-        `lsn` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-        `effective_lsn` on the other hand will always bet set in all response messages (Create/Update/Get/List).
-        For a parent ref instance, this is the LSN on the parent instance from which the
+        (string) - For a parent ref instance, this is the LSN on the parent instance from which the
         instance was created.
         For a child ref instance, this is the LSN on the instance from which the child instance
         was created
@@ -12181,10 +10687,7 @@ class DatabaseInstanceChildInstanceRefArgs:
                instance was created.
                Input: For specifying the point in time to create a child instance. Optional.
                Output: Only populated if provided as input to create a child instance
-        :param pulumi.Input[_builtins.str] effective_lsn: (string) - xref AIP-129. `lsn` is owned by the client, while `effective_lsn` is owned by the server.
-               `lsn` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-               `effective_lsn` on the other hand will always bet set in all response messages (Create/Update/Get/List).
-               For a parent ref instance, this is the LSN on the parent instance from which the
+        :param pulumi.Input[_builtins.str] effective_lsn: (string) - For a parent ref instance, this is the LSN on the parent instance from which the
                instance was created.
                For a child ref instance, this is the LSN on the instance from which the child instance
                was created
@@ -12228,10 +10731,7 @@ class DatabaseInstanceChildInstanceRefArgs:
     @pulumi.getter(name="effectiveLsn")
     def effective_lsn(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        (string) - xref AIP-129. `lsn` is owned by the client, while `effective_lsn` is owned by the server.
-        `lsn` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-        `effective_lsn` on the other hand will always bet set in all response messages (Create/Update/Get/List).
-        For a parent ref instance, this is the LSN on the parent instance from which the
+        (string) - For a parent ref instance, this is the LSN on the parent instance from which the
         instance was created.
         For a child ref instance, this is the LSN on the instance from which the child instance
         was created
@@ -12283,6 +10783,110 @@ class DatabaseInstanceChildInstanceRefArgs:
 
 
 if not MYPY:
+    class DatabaseInstanceCustomTagArgsDict(TypedDict):
+        key: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The key of the custom tag
+        """
+        value: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The value of the custom tag
+        """
+elif False:
+    DatabaseInstanceCustomTagArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DatabaseInstanceCustomTagArgs:
+    def __init__(__self__, *,
+                 key: Optional[pulumi.Input[_builtins.str]] = None,
+                 value: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] key: The key of the custom tag
+        :param pulumi.Input[_builtins.str] value: The value of the custom tag
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The key of the custom tag
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The value of the custom tag
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class DatabaseInstanceEffectiveCustomTagArgsDict(TypedDict):
+        key: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The key of the custom tag
+        """
+        value: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The value of the custom tag
+        """
+elif False:
+    DatabaseInstanceEffectiveCustomTagArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DatabaseInstanceEffectiveCustomTagArgs:
+    def __init__(__self__, *,
+                 key: Optional[pulumi.Input[_builtins.str]] = None,
+                 value: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] key: The key of the custom tag
+        :param pulumi.Input[_builtins.str] value: The value of the custom tag
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The key of the custom tag
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The value of the custom tag
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "value", value)
+
+
+if not MYPY:
     class DatabaseInstanceParentInstanceRefArgsDict(TypedDict):
         branch_time: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -12296,10 +10900,7 @@ if not MYPY:
         """
         effective_lsn: NotRequired[pulumi.Input[_builtins.str]]
         """
-        (string) - xref AIP-129. `lsn` is owned by the client, while `effective_lsn` is owned by the server.
-        `lsn` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-        `effective_lsn` on the other hand will always bet set in all response messages (Create/Update/Get/List).
-        For a parent ref instance, this is the LSN on the parent instance from which the
+        (string) - For a parent ref instance, this is the LSN on the parent instance from which the
         instance was created.
         For a child ref instance, this is the LSN on the instance from which the child instance
         was created
@@ -12338,10 +10939,7 @@ class DatabaseInstanceParentInstanceRefArgs:
                instance was created.
                Input: For specifying the point in time to create a child instance. Optional.
                Output: Only populated if provided as input to create a child instance
-        :param pulumi.Input[_builtins.str] effective_lsn: (string) - xref AIP-129. `lsn` is owned by the client, while `effective_lsn` is owned by the server.
-               `lsn` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-               `effective_lsn` on the other hand will always bet set in all response messages (Create/Update/Get/List).
-               For a parent ref instance, this is the LSN on the parent instance from which the
+        :param pulumi.Input[_builtins.str] effective_lsn: (string) - For a parent ref instance, this is the LSN on the parent instance from which the
                instance was created.
                For a child ref instance, this is the LSN on the instance from which the child instance
                was created
@@ -12385,10 +10983,7 @@ class DatabaseInstanceParentInstanceRefArgs:
     @pulumi.getter(name="effectiveLsn")
     def effective_lsn(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        (string) - xref AIP-129. `lsn` is owned by the client, while `effective_lsn` is owned by the server.
-        `lsn` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-        `effective_lsn` on the other hand will always bet set in all response messages (Create/Update/Get/List).
-        For a parent ref instance, this is the LSN on the parent instance from which the
+        (string) - For a parent ref instance, this is the LSN on the parent instance from which the
         instance was created.
         For a child ref instance, this is the LSN on the instance from which the child instance
         was created
@@ -13992,7 +12587,7 @@ if not MYPY:
     class ExternalLocationFileEventQueueManagedAqsArgsDict(TypedDict):
         resource_group: pulumi.Input[_builtins.str]
         """
-        The Azure resource group.
+        The name of the Azure resource group.
         """
         subscription_id: pulumi.Input[_builtins.str]
         """
@@ -14014,7 +12609,7 @@ class ExternalLocationFileEventQueueManagedAqsArgs:
                  managed_resource_id: Optional[pulumi.Input[_builtins.str]] = None,
                  queue_url: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] resource_group: The Azure resource group.
+        :param pulumi.Input[_builtins.str] resource_group: The name of the Azure resource group.
         :param pulumi.Input[_builtins.str] subscription_id: The Azure subscription ID.
         :param pulumi.Input[_builtins.str] managed_resource_id: The ID of the managed resource.
         """
@@ -14029,7 +12624,7 @@ class ExternalLocationFileEventQueueManagedAqsArgs:
     @pulumi.getter(name="resourceGroup")
     def resource_group(self) -> pulumi.Input[_builtins.str]:
         """
-        The Azure resource group.
+        The name of the Azure resource group.
         """
         return pulumi.get(self, "resource_group")
 
@@ -14177,7 +12772,7 @@ if not MYPY:
         managed_resource_id: NotRequired[pulumi.Input[_builtins.str]]
         resource_group: NotRequired[pulumi.Input[_builtins.str]]
         """
-        The Azure resource group.
+        The name of the Azure resource group.
         """
         subscription_id: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -14195,7 +12790,7 @@ class ExternalLocationFileEventQueueProvidedAqsArgs:
                  subscription_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] queue_url: The URL of the queue.
-        :param pulumi.Input[_builtins.str] resource_group: The Azure resource group.
+        :param pulumi.Input[_builtins.str] resource_group: The name of the Azure resource group.
         :param pulumi.Input[_builtins.str] subscription_id: The Azure subscription ID.
         """
         pulumi.set(__self__, "queue_url", queue_url)
@@ -14231,7 +12826,7 @@ class ExternalLocationFileEventQueueProvidedAqsArgs:
     @pulumi.getter(name="resourceGroup")
     def resource_group(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The Azure resource group.
+        The name of the Azure resource group.
         """
         return pulumi.get(self, "resource_group")
 
@@ -14341,6 +12936,559 @@ class ExternalLocationFileEventQueueProvidedSqsArgs:
 
 
 if not MYPY:
+    class FeatureEngineeringFeatureFunctionArgsDict(TypedDict):
+        function_type: pulumi.Input[_builtins.str]
+        """
+        The type of the function. Possible values are: `APPROX_COUNT_DISTINCT`, `APPROX_PERCENTILE`, `AVG`, `COUNT`, `FIRST`, `LAST`, `MAX`, `MIN`, `STDDEV_POP`, `STDDEV_SAMP`, `SUM`, `VAR_POP`, `VAR_SAMP`
+        """
+        extra_parameters: NotRequired[pulumi.Input[Sequence[pulumi.Input['FeatureEngineeringFeatureFunctionExtraParameterArgsDict']]]]
+        """
+        Extra parameters for parameterized functions
+        """
+elif False:
+    FeatureEngineeringFeatureFunctionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class FeatureEngineeringFeatureFunctionArgs:
+    def __init__(__self__, *,
+                 function_type: pulumi.Input[_builtins.str],
+                 extra_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureEngineeringFeatureFunctionExtraParameterArgs']]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] function_type: The type of the function. Possible values are: `APPROX_COUNT_DISTINCT`, `APPROX_PERCENTILE`, `AVG`, `COUNT`, `FIRST`, `LAST`, `MAX`, `MIN`, `STDDEV_POP`, `STDDEV_SAMP`, `SUM`, `VAR_POP`, `VAR_SAMP`
+        :param pulumi.Input[Sequence[pulumi.Input['FeatureEngineeringFeatureFunctionExtraParameterArgs']]] extra_parameters: Extra parameters for parameterized functions
+        """
+        pulumi.set(__self__, "function_type", function_type)
+        if extra_parameters is not None:
+            pulumi.set(__self__, "extra_parameters", extra_parameters)
+
+    @_builtins.property
+    @pulumi.getter(name="functionType")
+    def function_type(self) -> pulumi.Input[_builtins.str]:
+        """
+        The type of the function. Possible values are: `APPROX_COUNT_DISTINCT`, `APPROX_PERCENTILE`, `AVG`, `COUNT`, `FIRST`, `LAST`, `MAX`, `MIN`, `STDDEV_POP`, `STDDEV_SAMP`, `SUM`, `VAR_POP`, `VAR_SAMP`
+        """
+        return pulumi.get(self, "function_type")
+
+    @function_type.setter
+    def function_type(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "function_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="extraParameters")
+    def extra_parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FeatureEngineeringFeatureFunctionExtraParameterArgs']]]]:
+        """
+        Extra parameters for parameterized functions
+        """
+        return pulumi.get(self, "extra_parameters")
+
+    @extra_parameters.setter
+    def extra_parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureEngineeringFeatureFunctionExtraParameterArgs']]]]):
+        pulumi.set(self, "extra_parameters", value)
+
+
+if not MYPY:
+    class FeatureEngineeringFeatureFunctionExtraParameterArgsDict(TypedDict):
+        key: pulumi.Input[_builtins.str]
+        """
+        The name of the parameter
+        """
+        value: pulumi.Input[_builtins.str]
+        """
+        The value of the parameter
+        """
+elif False:
+    FeatureEngineeringFeatureFunctionExtraParameterArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class FeatureEngineeringFeatureFunctionExtraParameterArgs:
+    def __init__(__self__, *,
+                 key: pulumi.Input[_builtins.str],
+                 value: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] key: The name of the parameter
+        :param pulumi.Input[_builtins.str] value: The value of the parameter
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> pulumi.Input[_builtins.str]:
+        """
+        The name of the parameter
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[_builtins.str]:
+        """
+        The value of the parameter
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class FeatureEngineeringFeatureSourceArgsDict(TypedDict):
+        delta_table_source: NotRequired[pulumi.Input['FeatureEngineeringFeatureSourceDeltaTableSourceArgsDict']]
+elif False:
+    FeatureEngineeringFeatureSourceArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class FeatureEngineeringFeatureSourceArgs:
+    def __init__(__self__, *,
+                 delta_table_source: Optional[pulumi.Input['FeatureEngineeringFeatureSourceDeltaTableSourceArgs']] = None):
+        if delta_table_source is not None:
+            pulumi.set(__self__, "delta_table_source", delta_table_source)
+
+    @_builtins.property
+    @pulumi.getter(name="deltaTableSource")
+    def delta_table_source(self) -> Optional[pulumi.Input['FeatureEngineeringFeatureSourceDeltaTableSourceArgs']]:
+        return pulumi.get(self, "delta_table_source")
+
+    @delta_table_source.setter
+    def delta_table_source(self, value: Optional[pulumi.Input['FeatureEngineeringFeatureSourceDeltaTableSourceArgs']]):
+        pulumi.set(self, "delta_table_source", value)
+
+
+if not MYPY:
+    class FeatureEngineeringFeatureSourceDeltaTableSourceArgsDict(TypedDict):
+        entity_columns: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+        """
+        The entity columns of the Delta table
+        """
+        full_name: pulumi.Input[_builtins.str]
+        """
+        The full three-part name (catalog, schema, name) of the feature
+        """
+        timeseries_column: pulumi.Input[_builtins.str]
+        """
+        The timeseries column of the Delta table
+        """
+elif False:
+    FeatureEngineeringFeatureSourceDeltaTableSourceArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class FeatureEngineeringFeatureSourceDeltaTableSourceArgs:
+    def __init__(__self__, *,
+                 entity_columns: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
+                 full_name: pulumi.Input[_builtins.str],
+                 timeseries_column: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] entity_columns: The entity columns of the Delta table
+        :param pulumi.Input[_builtins.str] full_name: The full three-part name (catalog, schema, name) of the feature
+        :param pulumi.Input[_builtins.str] timeseries_column: The timeseries column of the Delta table
+        """
+        pulumi.set(__self__, "entity_columns", entity_columns)
+        pulumi.set(__self__, "full_name", full_name)
+        pulumi.set(__self__, "timeseries_column", timeseries_column)
+
+    @_builtins.property
+    @pulumi.getter(name="entityColumns")
+    def entity_columns(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
+        """
+        The entity columns of the Delta table
+        """
+        return pulumi.get(self, "entity_columns")
+
+    @entity_columns.setter
+    def entity_columns(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        pulumi.set(self, "entity_columns", value)
+
+    @_builtins.property
+    @pulumi.getter(name="fullName")
+    def full_name(self) -> pulumi.Input[_builtins.str]:
+        """
+        The full three-part name (catalog, schema, name) of the feature
+        """
+        return pulumi.get(self, "full_name")
+
+    @full_name.setter
+    def full_name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "full_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="timeseriesColumn")
+    def timeseries_column(self) -> pulumi.Input[_builtins.str]:
+        """
+        The timeseries column of the Delta table
+        """
+        return pulumi.get(self, "timeseries_column")
+
+    @timeseries_column.setter
+    def timeseries_column(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "timeseries_column", value)
+
+
+if not MYPY:
+    class FeatureEngineeringFeatureTimeWindowArgsDict(TypedDict):
+        continuous: NotRequired[pulumi.Input['FeatureEngineeringFeatureTimeWindowContinuousArgsDict']]
+        sliding: NotRequired[pulumi.Input['FeatureEngineeringFeatureTimeWindowSlidingArgsDict']]
+        tumbling: NotRequired[pulumi.Input['FeatureEngineeringFeatureTimeWindowTumblingArgsDict']]
+elif False:
+    FeatureEngineeringFeatureTimeWindowArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class FeatureEngineeringFeatureTimeWindowArgs:
+    def __init__(__self__, *,
+                 continuous: Optional[pulumi.Input['FeatureEngineeringFeatureTimeWindowContinuousArgs']] = None,
+                 sliding: Optional[pulumi.Input['FeatureEngineeringFeatureTimeWindowSlidingArgs']] = None,
+                 tumbling: Optional[pulumi.Input['FeatureEngineeringFeatureTimeWindowTumblingArgs']] = None):
+        if continuous is not None:
+            pulumi.set(__self__, "continuous", continuous)
+        if sliding is not None:
+            pulumi.set(__self__, "sliding", sliding)
+        if tumbling is not None:
+            pulumi.set(__self__, "tumbling", tumbling)
+
+    @_builtins.property
+    @pulumi.getter
+    def continuous(self) -> Optional[pulumi.Input['FeatureEngineeringFeatureTimeWindowContinuousArgs']]:
+        return pulumi.get(self, "continuous")
+
+    @continuous.setter
+    def continuous(self, value: Optional[pulumi.Input['FeatureEngineeringFeatureTimeWindowContinuousArgs']]):
+        pulumi.set(self, "continuous", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def sliding(self) -> Optional[pulumi.Input['FeatureEngineeringFeatureTimeWindowSlidingArgs']]:
+        return pulumi.get(self, "sliding")
+
+    @sliding.setter
+    def sliding(self, value: Optional[pulumi.Input['FeatureEngineeringFeatureTimeWindowSlidingArgs']]):
+        pulumi.set(self, "sliding", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def tumbling(self) -> Optional[pulumi.Input['FeatureEngineeringFeatureTimeWindowTumblingArgs']]:
+        return pulumi.get(self, "tumbling")
+
+    @tumbling.setter
+    def tumbling(self, value: Optional[pulumi.Input['FeatureEngineeringFeatureTimeWindowTumblingArgs']]):
+        pulumi.set(self, "tumbling", value)
+
+
+if not MYPY:
+    class FeatureEngineeringFeatureTimeWindowContinuousArgsDict(TypedDict):
+        window_duration: pulumi.Input[_builtins.str]
+        offset: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The offset of the continuous window (must be non-positive)
+        """
+elif False:
+    FeatureEngineeringFeatureTimeWindowContinuousArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class FeatureEngineeringFeatureTimeWindowContinuousArgs:
+    def __init__(__self__, *,
+                 window_duration: pulumi.Input[_builtins.str],
+                 offset: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] offset: The offset of the continuous window (must be non-positive)
+        """
+        pulumi.set(__self__, "window_duration", window_duration)
+        if offset is not None:
+            pulumi.set(__self__, "offset", offset)
+
+    @_builtins.property
+    @pulumi.getter(name="windowDuration")
+    def window_duration(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "window_duration")
+
+    @window_duration.setter
+    def window_duration(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "window_duration", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def offset(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The offset of the continuous window (must be non-positive)
+        """
+        return pulumi.get(self, "offset")
+
+    @offset.setter
+    def offset(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "offset", value)
+
+
+if not MYPY:
+    class FeatureEngineeringFeatureTimeWindowSlidingArgsDict(TypedDict):
+        slide_duration: pulumi.Input[_builtins.str]
+        """
+        The slide duration (interval by which windows advance, must be positive and less than duration)
+        """
+        window_duration: pulumi.Input[_builtins.str]
+elif False:
+    FeatureEngineeringFeatureTimeWindowSlidingArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class FeatureEngineeringFeatureTimeWindowSlidingArgs:
+    def __init__(__self__, *,
+                 slide_duration: pulumi.Input[_builtins.str],
+                 window_duration: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] slide_duration: The slide duration (interval by which windows advance, must be positive and less than duration)
+        """
+        pulumi.set(__self__, "slide_duration", slide_duration)
+        pulumi.set(__self__, "window_duration", window_duration)
+
+    @_builtins.property
+    @pulumi.getter(name="slideDuration")
+    def slide_duration(self) -> pulumi.Input[_builtins.str]:
+        """
+        The slide duration (interval by which windows advance, must be positive and less than duration)
+        """
+        return pulumi.get(self, "slide_duration")
+
+    @slide_duration.setter
+    def slide_duration(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "slide_duration", value)
+
+    @_builtins.property
+    @pulumi.getter(name="windowDuration")
+    def window_duration(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "window_duration")
+
+    @window_duration.setter
+    def window_duration(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "window_duration", value)
+
+
+if not MYPY:
+    class FeatureEngineeringFeatureTimeWindowTumblingArgsDict(TypedDict):
+        window_duration: pulumi.Input[_builtins.str]
+elif False:
+    FeatureEngineeringFeatureTimeWindowTumblingArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class FeatureEngineeringFeatureTimeWindowTumblingArgs:
+    def __init__(__self__, *,
+                 window_duration: pulumi.Input[_builtins.str]):
+        pulumi.set(__self__, "window_duration", window_duration)
+
+    @_builtins.property
+    @pulumi.getter(name="windowDuration")
+    def window_duration(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "window_duration")
+
+    @window_duration.setter
+    def window_duration(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "window_duration", value)
+
+
+if not MYPY:
+    class FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgsDict(TypedDict):
+        catalog_name: pulumi.Input[_builtins.str]
+        """
+        The Unity Catalog catalog name
+        """
+        schema_name: pulumi.Input[_builtins.str]
+        """
+        The Unity Catalog schema name
+        """
+        table_name_prefix: pulumi.Input[_builtins.str]
+        """
+        Prefix for Unity Catalog table name.
+        The materialized feature will be stored in a table with this prefix and a generated postfix
+        """
+elif False:
+    FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgs:
+    def __init__(__self__, *,
+                 catalog_name: pulumi.Input[_builtins.str],
+                 schema_name: pulumi.Input[_builtins.str],
+                 table_name_prefix: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] catalog_name: The Unity Catalog catalog name
+        :param pulumi.Input[_builtins.str] schema_name: The Unity Catalog schema name
+        :param pulumi.Input[_builtins.str] table_name_prefix: Prefix for Unity Catalog table name.
+               The materialized feature will be stored in a table with this prefix and a generated postfix
+        """
+        pulumi.set(__self__, "catalog_name", catalog_name)
+        pulumi.set(__self__, "schema_name", schema_name)
+        pulumi.set(__self__, "table_name_prefix", table_name_prefix)
+
+    @_builtins.property
+    @pulumi.getter(name="catalogName")
+    def catalog_name(self) -> pulumi.Input[_builtins.str]:
+        """
+        The Unity Catalog catalog name
+        """
+        return pulumi.get(self, "catalog_name")
+
+    @catalog_name.setter
+    def catalog_name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "catalog_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="schemaName")
+    def schema_name(self) -> pulumi.Input[_builtins.str]:
+        """
+        The Unity Catalog schema name
+        """
+        return pulumi.get(self, "schema_name")
+
+    @schema_name.setter
+    def schema_name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "schema_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="tableNamePrefix")
+    def table_name_prefix(self) -> pulumi.Input[_builtins.str]:
+        """
+        Prefix for Unity Catalog table name.
+        The materialized feature will be stored in a table with this prefix and a generated postfix
+        """
+        return pulumi.get(self, "table_name_prefix")
+
+    @table_name_prefix.setter
+    def table_name_prefix(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "table_name_prefix", value)
+
+
+if not MYPY:
+    class FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgsDict(TypedDict):
+        capacity: pulumi.Input[_builtins.str]
+        """
+        The capacity of the online store. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
+        """
+        name: pulumi.Input[_builtins.str]
+        """
+        The name of the online store. This is the unique identifier for the online store
+        """
+        creation_time: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (string) - The timestamp when the online store was created
+        """
+        creator: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (string) - The email of the creator of the online store
+        """
+        read_replica_count: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        The number of read replicas for the online store. Defaults to 0
+        """
+        state: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (string) - The current state of the online store. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
+        """
+elif False:
+    FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgs:
+    def __init__(__self__, *,
+                 capacity: pulumi.Input[_builtins.str],
+                 name: pulumi.Input[_builtins.str],
+                 creation_time: Optional[pulumi.Input[_builtins.str]] = None,
+                 creator: Optional[pulumi.Input[_builtins.str]] = None,
+                 read_replica_count: Optional[pulumi.Input[_builtins.int]] = None,
+                 state: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] capacity: The capacity of the online store. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
+        :param pulumi.Input[_builtins.str] name: The name of the online store. This is the unique identifier for the online store
+        :param pulumi.Input[_builtins.str] creation_time: (string) - The timestamp when the online store was created
+        :param pulumi.Input[_builtins.str] creator: (string) - The email of the creator of the online store
+        :param pulumi.Input[_builtins.int] read_replica_count: The number of read replicas for the online store. Defaults to 0
+        :param pulumi.Input[_builtins.str] state: (string) - The current state of the online store. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
+        """
+        pulumi.set(__self__, "capacity", capacity)
+        pulumi.set(__self__, "name", name)
+        if creation_time is not None:
+            pulumi.set(__self__, "creation_time", creation_time)
+        if creator is not None:
+            pulumi.set(__self__, "creator", creator)
+        if read_replica_count is not None:
+            pulumi.set(__self__, "read_replica_count", read_replica_count)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @_builtins.property
+    @pulumi.getter
+    def capacity(self) -> pulumi.Input[_builtins.str]:
+        """
+        The capacity of the online store. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
+        """
+        return pulumi.get(self, "capacity")
+
+    @capacity.setter
+    def capacity(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "capacity", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        The name of the online store. This is the unique identifier for the online store
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="creationTime")
+    def creation_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (string) - The timestamp when the online store was created
+        """
+        return pulumi.get(self, "creation_time")
+
+    @creation_time.setter
+    def creation_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "creation_time", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def creator(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (string) - The email of the creator of the online store
+        """
+        return pulumi.get(self, "creator")
+
+    @creator.setter
+    def creator(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "creator", value)
+
+    @_builtins.property
+    @pulumi.getter(name="readReplicaCount")
+    def read_replica_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The number of read replicas for the online store. Defaults to 0
+        """
+        return pulumi.get(self, "read_replica_count")
+
+    @read_replica_count.setter
+    def read_replica_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "read_replica_count", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (string) - The current state of the online store. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "state", value)
+
+
+if not MYPY:
     class GrantsGrantArgsDict(TypedDict):
         principal: pulumi.Input[_builtins.str]
         privileges: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
@@ -14380,6 +13528,10 @@ if not MYPY:
         """
         (String) Availability type used for all instances in the pool. Only `ON_DEMAND` and `SPOT` are supported.
         """
+        instance_profile_arn: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Nodes belonging to the pool will only be placed on AWS instances with this instance profile. Please see InstanceProfile resource documentation for extended examples on adding a valid instance profile using Pulumi.
+        """
         spot_bid_price_percent: NotRequired[pulumi.Input[_builtins.int]]
         """
         (Integer) The max price for AWS spot instances, as a percentage of the corresponding instance type's on-demand price. For example, if this field is set to 50, and the instance pool needs a new i3.xlarge spot instance, then the max price is half of the price of on-demand i3.xlarge instances. Similarly, if this field is set to 200, the max price is twice the price of on-demand i3.xlarge instances. If not specified, the *default value is 100*. When spot instances are requested for this instance pool, only spot instances whose max price percentage matches this field are considered. *For safety, this field cannot be greater than 10000.*
@@ -14395,15 +13547,19 @@ elif False:
 class InstancePoolAwsAttributesArgs:
     def __init__(__self__, *,
                  availability: Optional[pulumi.Input[_builtins.str]] = None,
+                 instance_profile_arn: Optional[pulumi.Input[_builtins.str]] = None,
                  spot_bid_price_percent: Optional[pulumi.Input[_builtins.int]] = None,
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] availability: (String) Availability type used for all instances in the pool. Only `ON_DEMAND` and `SPOT` are supported.
+        :param pulumi.Input[_builtins.str] instance_profile_arn: Nodes belonging to the pool will only be placed on AWS instances with this instance profile. Please see InstanceProfile resource documentation for extended examples on adding a valid instance profile using Pulumi.
         :param pulumi.Input[_builtins.int] spot_bid_price_percent: (Integer) The max price for AWS spot instances, as a percentage of the corresponding instance type's on-demand price. For example, if this field is set to 50, and the instance pool needs a new i3.xlarge spot instance, then the max price is half of the price of on-demand i3.xlarge instances. Similarly, if this field is set to 200, the max price is twice the price of on-demand i3.xlarge instances. If not specified, the *default value is 100*. When spot instances are requested for this instance pool, only spot instances whose max price percentage matches this field are considered. *For safety, this field cannot be greater than 10000.*
         :param pulumi.Input[_builtins.str] zone_id: (String) Identifier for the availability zone/datacenter in which the instance pool resides. This string is of the form like `"us-west-2a"`. The provided availability zone must be in the same region as the Databricks deployment. For example, `"us-west-2a"` is not a valid zone ID if the Databricks deployment resides in the `"us-east-1"` region. If not specified, a default zone is used. You can find the list of available zones as well as the default value by using the [List Zones API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistavailablezones).
         """
         if availability is not None:
             pulumi.set(__self__, "availability", availability)
+        if instance_profile_arn is not None:
+            pulumi.set(__self__, "instance_profile_arn", instance_profile_arn)
         if spot_bid_price_percent is not None:
             pulumi.set(__self__, "spot_bid_price_percent", spot_bid_price_percent)
         if zone_id is not None:
@@ -14420,6 +13576,18 @@ class InstancePoolAwsAttributesArgs:
     @availability.setter
     def availability(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "availability", value)
+
+    @_builtins.property
+    @pulumi.getter(name="instanceProfileArn")
+    def instance_profile_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Nodes belonging to the pool will only be placed on AWS instances with this instance profile. Please see InstanceProfile resource documentation for extended examples on adding a valid instance profile using Pulumi.
+        """
+        return pulumi.get(self, "instance_profile_arn")
+
+    @instance_profile_arn.setter
+    def instance_profile_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "instance_profile_arn", value)
 
     @_builtins.property
     @pulumi.getter(name="spotBidPricePercent")
@@ -15421,7 +14589,7 @@ if not MYPY:
         """
         client version used by the environment. Each version comes with a specific Python version and a set of Python packages.
         """
-        jar_dependencies: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        java_dependencies: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
 elif False:
     JobEnvironmentSpecArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -15431,7 +14599,7 @@ class JobEnvironmentSpecArgs:
                  client: Optional[pulumi.Input[_builtins.str]] = None,
                  dependencies: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  environment_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 jar_dependencies: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 java_dependencies: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dependencies: List of pip dependencies, as supported by the version of pip in this environment. Each dependency is a pip requirement file line.  See [API docs](https://docs.databricks.com/api/workspace/jobs/create#environments-spec-dependencies) for more information.
         :param pulumi.Input[_builtins.str] environment_version: client version used by the environment. Each version comes with a specific Python version and a set of Python packages.
@@ -15442,8 +14610,8 @@ class JobEnvironmentSpecArgs:
             pulumi.set(__self__, "dependencies", dependencies)
         if environment_version is not None:
             pulumi.set(__self__, "environment_version", environment_version)
-        if jar_dependencies is not None:
-            pulumi.set(__self__, "jar_dependencies", jar_dependencies)
+        if java_dependencies is not None:
+            pulumi.set(__self__, "java_dependencies", java_dependencies)
 
     @_builtins.property
     @pulumi.getter
@@ -15479,13 +14647,13 @@ class JobEnvironmentSpecArgs:
         pulumi.set(self, "environment_version", value)
 
     @_builtins.property
-    @pulumi.getter(name="jarDependencies")
-    def jar_dependencies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        return pulumi.get(self, "jar_dependencies")
+    @pulumi.getter(name="javaDependencies")
+    def java_dependencies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        return pulumi.get(self, "java_dependencies")
 
-    @jar_dependencies.setter
-    def jar_dependencies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
-        pulumi.set(self, "jar_dependencies", value)
+    @java_dependencies.setter
+    def java_dependencies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "java_dependencies", value)
 
 
 if not MYPY:
@@ -15876,6 +15044,10 @@ if not MYPY:
         node_type_id: NotRequired[pulumi.Input[_builtins.str]]
         num_workers: NotRequired[pulumi.Input[_builtins.int]]
         policy_id: NotRequired[pulumi.Input[_builtins.str]]
+        provider_config: NotRequired[pulumi.Input['JobJobClusterNewClusterProviderConfigArgsDict']]
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
         remote_disk_throughput: NotRequired[pulumi.Input[_builtins.int]]
         runtime_engine: NotRequired[pulumi.Input[_builtins.str]]
         single_user_name: NotRequired[pulumi.Input[_builtins.str]]
@@ -15921,6 +15093,7 @@ class JobJobClusterNewClusterArgs:
                  node_type_id: Optional[pulumi.Input[_builtins.str]] = None,
                  num_workers: Optional[pulumi.Input[_builtins.int]] = None,
                  policy_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['JobJobClusterNewClusterProviderConfigArgs']] = None,
                  remote_disk_throughput: Optional[pulumi.Input[_builtins.int]] = None,
                  runtime_engine: Optional[pulumi.Input[_builtins.str]] = None,
                  single_user_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -15933,6 +15106,7 @@ class JobJobClusterNewClusterArgs:
                  workload_type: Optional[pulumi.Input['JobJobClusterNewClusterWorkloadTypeArgs']] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['JobJobClusterNewClusterLibraryArgs']]] libraries: (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
+        :param pulumi.Input['JobJobClusterNewClusterProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input['JobJobClusterNewClusterWorkloadTypeArgs'] workload_type: isn't supported
         """
         if __apply_policy_default_values_allow_lists is not None:
@@ -15987,6 +15161,8 @@ class JobJobClusterNewClusterArgs:
             pulumi.set(__self__, "num_workers", num_workers)
         if policy_id is not None:
             pulumi.set(__self__, "policy_id", policy_id)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if remote_disk_throughput is not None:
             pulumi.set(__self__, "remote_disk_throughput", remote_disk_throughput)
         if runtime_engine is not None:
@@ -16244,6 +15420,18 @@ class JobJobClusterNewClusterArgs:
     @policy_id.setter
     def policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "policy_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['JobJobClusterNewClusterProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['JobJobClusterNewClusterProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="remoteDiskThroughput")
@@ -17419,6 +16607,10 @@ if not MYPY:
         egg: NotRequired[pulumi.Input[_builtins.str]]
         jar: NotRequired[pulumi.Input[_builtins.str]]
         maven: NotRequired[pulumi.Input['JobJobClusterNewClusterLibraryMavenArgsDict']]
+        provider_config: NotRequired[pulumi.Input['JobJobClusterNewClusterLibraryProviderConfigArgsDict']]
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
         pypi: NotRequired[pulumi.Input['JobJobClusterNewClusterLibraryPypiArgsDict']]
         requirements: NotRequired[pulumi.Input[_builtins.str]]
         whl: NotRequired[pulumi.Input[_builtins.str]]
@@ -17432,9 +16624,13 @@ class JobJobClusterNewClusterLibraryArgs:
                  egg: Optional[pulumi.Input[_builtins.str]] = None,
                  jar: Optional[pulumi.Input[_builtins.str]] = None,
                  maven: Optional[pulumi.Input['JobJobClusterNewClusterLibraryMavenArgs']] = None,
+                 provider_config: Optional[pulumi.Input['JobJobClusterNewClusterLibraryProviderConfigArgs']] = None,
                  pypi: Optional[pulumi.Input['JobJobClusterNewClusterLibraryPypiArgs']] = None,
                  requirements: Optional[pulumi.Input[_builtins.str]] = None,
                  whl: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input['JobJobClusterNewClusterLibraryProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        """
         if cran is not None:
             pulumi.set(__self__, "cran", cran)
         if egg is not None:
@@ -17446,6 +16642,8 @@ class JobJobClusterNewClusterLibraryArgs:
             pulumi.set(__self__, "jar", jar)
         if maven is not None:
             pulumi.set(__self__, "maven", maven)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if pypi is not None:
             pulumi.set(__self__, "pypi", pypi)
         if requirements is not None:
@@ -17489,6 +16687,18 @@ class JobJobClusterNewClusterLibraryArgs:
     @maven.setter
     def maven(self, value: Optional[pulumi.Input['JobJobClusterNewClusterLibraryMavenArgs']]):
         pulumi.set(self, "maven", value)
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['JobJobClusterNewClusterLibraryProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['JobJobClusterNewClusterLibraryProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter
@@ -17602,6 +16812,37 @@ class JobJobClusterNewClusterLibraryMavenArgs:
 
 
 if not MYPY:
+    class JobJobClusterNewClusterLibraryProviderConfigArgsDict(TypedDict):
+        workspace_id: pulumi.Input[_builtins.str]
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+elif False:
+    JobJobClusterNewClusterLibraryProviderConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class JobJobClusterNewClusterLibraryProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "workspace_id", value)
+
+
+if not MYPY:
     class JobJobClusterNewClusterLibraryPypiArgsDict(TypedDict):
         package: pulumi.Input[_builtins.str]
         repo: NotRequired[pulumi.Input[_builtins.str]]
@@ -17634,6 +16875,37 @@ class JobJobClusterNewClusterLibraryPypiArgs:
     @repo.setter
     def repo(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "repo", value)
+
+
+if not MYPY:
+    class JobJobClusterNewClusterProviderConfigArgsDict(TypedDict):
+        workspace_id: pulumi.Input[_builtins.str]
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+elif False:
+    JobJobClusterNewClusterProviderConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class JobJobClusterNewClusterProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "workspace_id", value)
 
 
 if not MYPY:
@@ -17700,6 +16972,10 @@ if not MYPY:
         egg: NotRequired[pulumi.Input[_builtins.str]]
         jar: NotRequired[pulumi.Input[_builtins.str]]
         maven: NotRequired[pulumi.Input['JobLibraryMavenArgsDict']]
+        provider_config: NotRequired[pulumi.Input['JobLibraryProviderConfigArgsDict']]
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
         pypi: NotRequired[pulumi.Input['JobLibraryPypiArgsDict']]
         requirements: NotRequired[pulumi.Input[_builtins.str]]
         whl: NotRequired[pulumi.Input[_builtins.str]]
@@ -17713,9 +16989,13 @@ class JobLibraryArgs:
                  egg: Optional[pulumi.Input[_builtins.str]] = None,
                  jar: Optional[pulumi.Input[_builtins.str]] = None,
                  maven: Optional[pulumi.Input['JobLibraryMavenArgs']] = None,
+                 provider_config: Optional[pulumi.Input['JobLibraryProviderConfigArgs']] = None,
                  pypi: Optional[pulumi.Input['JobLibraryPypiArgs']] = None,
                  requirements: Optional[pulumi.Input[_builtins.str]] = None,
                  whl: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input['JobLibraryProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        """
         if cran is not None:
             pulumi.set(__self__, "cran", cran)
         if egg is not None:
@@ -17727,6 +17007,8 @@ class JobLibraryArgs:
             pulumi.set(__self__, "jar", jar)
         if maven is not None:
             pulumi.set(__self__, "maven", maven)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if pypi is not None:
             pulumi.set(__self__, "pypi", pypi)
         if requirements is not None:
@@ -17770,6 +17052,18 @@ class JobLibraryArgs:
     @maven.setter
     def maven(self, value: Optional[pulumi.Input['JobLibraryMavenArgs']]):
         pulumi.set(self, "maven", value)
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['JobLibraryProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['JobLibraryProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter
@@ -17883,6 +17177,37 @@ class JobLibraryMavenArgs:
 
 
 if not MYPY:
+    class JobLibraryProviderConfigArgsDict(TypedDict):
+        workspace_id: pulumi.Input[_builtins.str]
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+elif False:
+    JobLibraryProviderConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class JobLibraryProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "workspace_id", value)
+
+
+if not MYPY:
     class JobLibraryPypiArgsDict(TypedDict):
         package: pulumi.Input[_builtins.str]
         repo: NotRequired[pulumi.Input[_builtins.str]]
@@ -17947,6 +17272,10 @@ if not MYPY:
         node_type_id: NotRequired[pulumi.Input[_builtins.str]]
         num_workers: NotRequired[pulumi.Input[_builtins.int]]
         policy_id: NotRequired[pulumi.Input[_builtins.str]]
+        provider_config: NotRequired[pulumi.Input['JobNewClusterProviderConfigArgsDict']]
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
         remote_disk_throughput: NotRequired[pulumi.Input[_builtins.int]]
         runtime_engine: NotRequired[pulumi.Input[_builtins.str]]
         single_user_name: NotRequired[pulumi.Input[_builtins.str]]
@@ -17991,6 +17320,7 @@ class JobNewClusterArgs:
                  node_type_id: Optional[pulumi.Input[_builtins.str]] = None,
                  num_workers: Optional[pulumi.Input[_builtins.int]] = None,
                  policy_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['JobNewClusterProviderConfigArgs']] = None,
                  remote_disk_throughput: Optional[pulumi.Input[_builtins.int]] = None,
                  runtime_engine: Optional[pulumi.Input[_builtins.str]] = None,
                  single_user_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -18003,6 +17333,7 @@ class JobNewClusterArgs:
                  workload_type: Optional[pulumi.Input['JobNewClusterWorkloadTypeArgs']] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['JobNewClusterLibraryArgs']]] libraries: (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
+        :param pulumi.Input['JobNewClusterProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input['JobNewClusterWorkloadTypeArgs'] workload_type: isn't supported
         """
         if apply_policy_default_values is not None:
@@ -18055,6 +17386,8 @@ class JobNewClusterArgs:
             pulumi.set(__self__, "num_workers", num_workers)
         if policy_id is not None:
             pulumi.set(__self__, "policy_id", policy_id)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if remote_disk_throughput is not None:
             pulumi.set(__self__, "remote_disk_throughput", remote_disk_throughput)
         if runtime_engine is not None:
@@ -18303,6 +17636,18 @@ class JobNewClusterArgs:
     @policy_id.setter
     def policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "policy_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['JobNewClusterProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['JobNewClusterProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="remoteDiskThroughput")
@@ -19478,6 +18823,10 @@ if not MYPY:
         egg: NotRequired[pulumi.Input[_builtins.str]]
         jar: NotRequired[pulumi.Input[_builtins.str]]
         maven: NotRequired[pulumi.Input['JobNewClusterLibraryMavenArgsDict']]
+        provider_config: NotRequired[pulumi.Input['JobNewClusterLibraryProviderConfigArgsDict']]
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
         pypi: NotRequired[pulumi.Input['JobNewClusterLibraryPypiArgsDict']]
         requirements: NotRequired[pulumi.Input[_builtins.str]]
         whl: NotRequired[pulumi.Input[_builtins.str]]
@@ -19491,9 +18840,13 @@ class JobNewClusterLibraryArgs:
                  egg: Optional[pulumi.Input[_builtins.str]] = None,
                  jar: Optional[pulumi.Input[_builtins.str]] = None,
                  maven: Optional[pulumi.Input['JobNewClusterLibraryMavenArgs']] = None,
+                 provider_config: Optional[pulumi.Input['JobNewClusterLibraryProviderConfigArgs']] = None,
                  pypi: Optional[pulumi.Input['JobNewClusterLibraryPypiArgs']] = None,
                  requirements: Optional[pulumi.Input[_builtins.str]] = None,
                  whl: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input['JobNewClusterLibraryProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        """
         if cran is not None:
             pulumi.set(__self__, "cran", cran)
         if egg is not None:
@@ -19505,6 +18858,8 @@ class JobNewClusterLibraryArgs:
             pulumi.set(__self__, "jar", jar)
         if maven is not None:
             pulumi.set(__self__, "maven", maven)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if pypi is not None:
             pulumi.set(__self__, "pypi", pypi)
         if requirements is not None:
@@ -19548,6 +18903,18 @@ class JobNewClusterLibraryArgs:
     @maven.setter
     def maven(self, value: Optional[pulumi.Input['JobNewClusterLibraryMavenArgs']]):
         pulumi.set(self, "maven", value)
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['JobNewClusterLibraryProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['JobNewClusterLibraryProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter
@@ -19661,6 +19028,37 @@ class JobNewClusterLibraryMavenArgs:
 
 
 if not MYPY:
+    class JobNewClusterLibraryProviderConfigArgsDict(TypedDict):
+        workspace_id: pulumi.Input[_builtins.str]
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+elif False:
+    JobNewClusterLibraryProviderConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class JobNewClusterLibraryProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "workspace_id", value)
+
+
+if not MYPY:
     class JobNewClusterLibraryPypiArgsDict(TypedDict):
         package: pulumi.Input[_builtins.str]
         repo: NotRequired[pulumi.Input[_builtins.str]]
@@ -19693,6 +19091,37 @@ class JobNewClusterLibraryPypiArgs:
     @repo.setter
     def repo(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "repo", value)
+
+
+if not MYPY:
+    class JobNewClusterProviderConfigArgsDict(TypedDict):
+        workspace_id: pulumi.Input[_builtins.str]
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+elif False:
+    JobNewClusterProviderConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class JobNewClusterProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "workspace_id", value)
 
 
 if not MYPY:
@@ -20013,6 +19442,37 @@ class JobPipelineTaskArgs:
     @full_refresh.setter
     def full_refresh(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "full_refresh", value)
+
+
+if not MYPY:
+    class JobProviderConfigArgsDict(TypedDict):
+        workspace_id: pulumi.Input[_builtins.str]
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+elif False:
+    JobProviderConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class JobProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "workspace_id", value)
 
 
 if not MYPY:
@@ -20543,6 +20003,7 @@ if not MYPY:
         """
         A flag to disable auto optimization in serverless tasks.
         """
+        disabled: NotRequired[pulumi.Input[_builtins.bool]]
         email_notifications: NotRequired[pulumi.Input['JobTaskEmailNotificationsArgsDict']]
         """
         An optional block to specify a set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This block is documented below.
@@ -20628,6 +20089,7 @@ class JobTaskArgs:
                  depends_ons: Optional[pulumi.Input[Sequence[pulumi.Input['JobTaskDependsOnArgs']]]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  disable_auto_optimization: Optional[pulumi.Input[_builtins.bool]] = None,
+                 disabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  email_notifications: Optional[pulumi.Input['JobTaskEmailNotificationsArgs']] = None,
                  environment_key: Optional[pulumi.Input[_builtins.str]] = None,
                  existing_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -20695,6 +20157,8 @@ class JobTaskArgs:
             pulumi.set(__self__, "description", description)
         if disable_auto_optimization is not None:
             pulumi.set(__self__, "disable_auto_optimization", disable_auto_optimization)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
         if email_notifications is not None:
             pulumi.set(__self__, "email_notifications", email_notifications)
         if environment_key is not None:
@@ -20848,6 +20312,15 @@ class JobTaskArgs:
     @disable_auto_optimization.setter
     def disable_auto_optimization(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "disable_auto_optimization", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def disabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        return pulumi.get(self, "disabled")
+
+    @disabled.setter
+    def disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "disabled", value)
 
     @_builtins.property
     @pulumi.getter(name="emailNotifications")
@@ -22023,6 +21496,7 @@ if not MYPY:
         """
         A flag to disable auto optimization in serverless tasks.
         """
+        disabled: NotRequired[pulumi.Input[_builtins.bool]]
         email_notifications: NotRequired[pulumi.Input['JobTaskForEachTaskTaskEmailNotificationsArgsDict']]
         """
         An optional block to specify a set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This block is documented below.
@@ -22107,6 +21581,7 @@ class JobTaskForEachTaskTaskArgs:
                  depends_ons: Optional[pulumi.Input[Sequence[pulumi.Input['JobTaskForEachTaskTaskDependsOnArgs']]]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  disable_auto_optimization: Optional[pulumi.Input[_builtins.bool]] = None,
+                 disabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  email_notifications: Optional[pulumi.Input['JobTaskForEachTaskTaskEmailNotificationsArgs']] = None,
                  environment_key: Optional[pulumi.Input[_builtins.str]] = None,
                  existing_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -22173,6 +21648,8 @@ class JobTaskForEachTaskTaskArgs:
             pulumi.set(__self__, "description", description)
         if disable_auto_optimization is not None:
             pulumi.set(__self__, "disable_auto_optimization", disable_auto_optimization)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
         if email_notifications is not None:
             pulumi.set(__self__, "email_notifications", email_notifications)
         if environment_key is not None:
@@ -22324,6 +21801,15 @@ class JobTaskForEachTaskTaskArgs:
     @disable_auto_optimization.setter
     def disable_auto_optimization(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "disable_auto_optimization", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def disabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        return pulumi.get(self, "disabled")
+
+    @disabled.setter
+    def disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "disabled", value)
 
     @_builtins.property
     @pulumi.getter(name="emailNotifications")
@@ -23662,6 +23148,10 @@ if not MYPY:
         egg: NotRequired[pulumi.Input[_builtins.str]]
         jar: NotRequired[pulumi.Input[_builtins.str]]
         maven: NotRequired[pulumi.Input['JobTaskForEachTaskTaskLibraryMavenArgsDict']]
+        provider_config: NotRequired[pulumi.Input['JobTaskForEachTaskTaskLibraryProviderConfigArgsDict']]
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
         pypi: NotRequired[pulumi.Input['JobTaskForEachTaskTaskLibraryPypiArgsDict']]
         requirements: NotRequired[pulumi.Input[_builtins.str]]
         whl: NotRequired[pulumi.Input[_builtins.str]]
@@ -23675,9 +23165,13 @@ class JobTaskForEachTaskTaskLibraryArgs:
                  egg: Optional[pulumi.Input[_builtins.str]] = None,
                  jar: Optional[pulumi.Input[_builtins.str]] = None,
                  maven: Optional[pulumi.Input['JobTaskForEachTaskTaskLibraryMavenArgs']] = None,
+                 provider_config: Optional[pulumi.Input['JobTaskForEachTaskTaskLibraryProviderConfigArgs']] = None,
                  pypi: Optional[pulumi.Input['JobTaskForEachTaskTaskLibraryPypiArgs']] = None,
                  requirements: Optional[pulumi.Input[_builtins.str]] = None,
                  whl: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input['JobTaskForEachTaskTaskLibraryProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        """
         if cran is not None:
             pulumi.set(__self__, "cran", cran)
         if egg is not None:
@@ -23689,6 +23183,8 @@ class JobTaskForEachTaskTaskLibraryArgs:
             pulumi.set(__self__, "jar", jar)
         if maven is not None:
             pulumi.set(__self__, "maven", maven)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if pypi is not None:
             pulumi.set(__self__, "pypi", pypi)
         if requirements is not None:
@@ -23732,6 +23228,18 @@ class JobTaskForEachTaskTaskLibraryArgs:
     @maven.setter
     def maven(self, value: Optional[pulumi.Input['JobTaskForEachTaskTaskLibraryMavenArgs']]):
         pulumi.set(self, "maven", value)
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['JobTaskForEachTaskTaskLibraryProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['JobTaskForEachTaskTaskLibraryProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter
@@ -23845,6 +23353,37 @@ class JobTaskForEachTaskTaskLibraryMavenArgs:
 
 
 if not MYPY:
+    class JobTaskForEachTaskTaskLibraryProviderConfigArgsDict(TypedDict):
+        workspace_id: pulumi.Input[_builtins.str]
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+elif False:
+    JobTaskForEachTaskTaskLibraryProviderConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class JobTaskForEachTaskTaskLibraryProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "workspace_id", value)
+
+
+if not MYPY:
     class JobTaskForEachTaskTaskLibraryPypiArgsDict(TypedDict):
         package: pulumi.Input[_builtins.str]
         repo: NotRequired[pulumi.Input[_builtins.str]]
@@ -23909,6 +23448,10 @@ if not MYPY:
         node_type_id: NotRequired[pulumi.Input[_builtins.str]]
         num_workers: NotRequired[pulumi.Input[_builtins.int]]
         policy_id: NotRequired[pulumi.Input[_builtins.str]]
+        provider_config: NotRequired[pulumi.Input['JobTaskForEachTaskTaskNewClusterProviderConfigArgsDict']]
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
         remote_disk_throughput: NotRequired[pulumi.Input[_builtins.int]]
         runtime_engine: NotRequired[pulumi.Input[_builtins.str]]
         single_user_name: NotRequired[pulumi.Input[_builtins.str]]
@@ -23953,6 +23496,7 @@ class JobTaskForEachTaskTaskNewClusterArgs:
                  node_type_id: Optional[pulumi.Input[_builtins.str]] = None,
                  num_workers: Optional[pulumi.Input[_builtins.int]] = None,
                  policy_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['JobTaskForEachTaskTaskNewClusterProviderConfigArgs']] = None,
                  remote_disk_throughput: Optional[pulumi.Input[_builtins.int]] = None,
                  runtime_engine: Optional[pulumi.Input[_builtins.str]] = None,
                  single_user_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -23965,6 +23509,7 @@ class JobTaskForEachTaskTaskNewClusterArgs:
                  workload_type: Optional[pulumi.Input['JobTaskForEachTaskTaskNewClusterWorkloadTypeArgs']] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['JobTaskForEachTaskTaskNewClusterLibraryArgs']]] libraries: (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
+        :param pulumi.Input['JobTaskForEachTaskTaskNewClusterProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input['JobTaskForEachTaskTaskNewClusterWorkloadTypeArgs'] workload_type: isn't supported
         """
         if apply_policy_default_values is not None:
@@ -24017,6 +23562,8 @@ class JobTaskForEachTaskTaskNewClusterArgs:
             pulumi.set(__self__, "num_workers", num_workers)
         if policy_id is not None:
             pulumi.set(__self__, "policy_id", policy_id)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if remote_disk_throughput is not None:
             pulumi.set(__self__, "remote_disk_throughput", remote_disk_throughput)
         if runtime_engine is not None:
@@ -24265,6 +23812,18 @@ class JobTaskForEachTaskTaskNewClusterArgs:
     @policy_id.setter
     def policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "policy_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['JobTaskForEachTaskTaskNewClusterProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['JobTaskForEachTaskTaskNewClusterProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="remoteDiskThroughput")
@@ -25440,6 +24999,10 @@ if not MYPY:
         egg: NotRequired[pulumi.Input[_builtins.str]]
         jar: NotRequired[pulumi.Input[_builtins.str]]
         maven: NotRequired[pulumi.Input['JobTaskForEachTaskTaskNewClusterLibraryMavenArgsDict']]
+        provider_config: NotRequired[pulumi.Input['JobTaskForEachTaskTaskNewClusterLibraryProviderConfigArgsDict']]
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
         pypi: NotRequired[pulumi.Input['JobTaskForEachTaskTaskNewClusterLibraryPypiArgsDict']]
         requirements: NotRequired[pulumi.Input[_builtins.str]]
         whl: NotRequired[pulumi.Input[_builtins.str]]
@@ -25453,9 +25016,13 @@ class JobTaskForEachTaskTaskNewClusterLibraryArgs:
                  egg: Optional[pulumi.Input[_builtins.str]] = None,
                  jar: Optional[pulumi.Input[_builtins.str]] = None,
                  maven: Optional[pulumi.Input['JobTaskForEachTaskTaskNewClusterLibraryMavenArgs']] = None,
+                 provider_config: Optional[pulumi.Input['JobTaskForEachTaskTaskNewClusterLibraryProviderConfigArgs']] = None,
                  pypi: Optional[pulumi.Input['JobTaskForEachTaskTaskNewClusterLibraryPypiArgs']] = None,
                  requirements: Optional[pulumi.Input[_builtins.str]] = None,
                  whl: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input['JobTaskForEachTaskTaskNewClusterLibraryProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        """
         if cran is not None:
             pulumi.set(__self__, "cran", cran)
         if egg is not None:
@@ -25467,6 +25034,8 @@ class JobTaskForEachTaskTaskNewClusterLibraryArgs:
             pulumi.set(__self__, "jar", jar)
         if maven is not None:
             pulumi.set(__self__, "maven", maven)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if pypi is not None:
             pulumi.set(__self__, "pypi", pypi)
         if requirements is not None:
@@ -25510,6 +25079,18 @@ class JobTaskForEachTaskTaskNewClusterLibraryArgs:
     @maven.setter
     def maven(self, value: Optional[pulumi.Input['JobTaskForEachTaskTaskNewClusterLibraryMavenArgs']]):
         pulumi.set(self, "maven", value)
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['JobTaskForEachTaskTaskNewClusterLibraryProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['JobTaskForEachTaskTaskNewClusterLibraryProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter
@@ -25623,6 +25204,37 @@ class JobTaskForEachTaskTaskNewClusterLibraryMavenArgs:
 
 
 if not MYPY:
+    class JobTaskForEachTaskTaskNewClusterLibraryProviderConfigArgsDict(TypedDict):
+        workspace_id: pulumi.Input[_builtins.str]
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+elif False:
+    JobTaskForEachTaskTaskNewClusterLibraryProviderConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class JobTaskForEachTaskTaskNewClusterLibraryProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "workspace_id", value)
+
+
+if not MYPY:
     class JobTaskForEachTaskTaskNewClusterLibraryPypiArgsDict(TypedDict):
         package: pulumi.Input[_builtins.str]
         repo: NotRequired[pulumi.Input[_builtins.str]]
@@ -25655,6 +25267,37 @@ class JobTaskForEachTaskTaskNewClusterLibraryPypiArgs:
     @repo.setter
     def repo(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "repo", value)
+
+
+if not MYPY:
+    class JobTaskForEachTaskTaskNewClusterProviderConfigArgsDict(TypedDict):
+        workspace_id: pulumi.Input[_builtins.str]
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+elif False:
+    JobTaskForEachTaskTaskNewClusterProviderConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class JobTaskForEachTaskTaskNewClusterProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "workspace_id", value)
 
 
 if not MYPY:
@@ -27866,6 +27509,10 @@ if not MYPY:
         egg: NotRequired[pulumi.Input[_builtins.str]]
         jar: NotRequired[pulumi.Input[_builtins.str]]
         maven: NotRequired[pulumi.Input['JobTaskLibraryMavenArgsDict']]
+        provider_config: NotRequired[pulumi.Input['JobTaskLibraryProviderConfigArgsDict']]
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
         pypi: NotRequired[pulumi.Input['JobTaskLibraryPypiArgsDict']]
         requirements: NotRequired[pulumi.Input[_builtins.str]]
         whl: NotRequired[pulumi.Input[_builtins.str]]
@@ -27879,9 +27526,13 @@ class JobTaskLibraryArgs:
                  egg: Optional[pulumi.Input[_builtins.str]] = None,
                  jar: Optional[pulumi.Input[_builtins.str]] = None,
                  maven: Optional[pulumi.Input['JobTaskLibraryMavenArgs']] = None,
+                 provider_config: Optional[pulumi.Input['JobTaskLibraryProviderConfigArgs']] = None,
                  pypi: Optional[pulumi.Input['JobTaskLibraryPypiArgs']] = None,
                  requirements: Optional[pulumi.Input[_builtins.str]] = None,
                  whl: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input['JobTaskLibraryProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        """
         if cran is not None:
             pulumi.set(__self__, "cran", cran)
         if egg is not None:
@@ -27893,6 +27544,8 @@ class JobTaskLibraryArgs:
             pulumi.set(__self__, "jar", jar)
         if maven is not None:
             pulumi.set(__self__, "maven", maven)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if pypi is not None:
             pulumi.set(__self__, "pypi", pypi)
         if requirements is not None:
@@ -27936,6 +27589,18 @@ class JobTaskLibraryArgs:
     @maven.setter
     def maven(self, value: Optional[pulumi.Input['JobTaskLibraryMavenArgs']]):
         pulumi.set(self, "maven", value)
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['JobTaskLibraryProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['JobTaskLibraryProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter
@@ -28049,6 +27714,37 @@ class JobTaskLibraryMavenArgs:
 
 
 if not MYPY:
+    class JobTaskLibraryProviderConfigArgsDict(TypedDict):
+        workspace_id: pulumi.Input[_builtins.str]
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+elif False:
+    JobTaskLibraryProviderConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class JobTaskLibraryProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "workspace_id", value)
+
+
+if not MYPY:
     class JobTaskLibraryPypiArgsDict(TypedDict):
         package: pulumi.Input[_builtins.str]
         repo: NotRequired[pulumi.Input[_builtins.str]]
@@ -28114,6 +27810,10 @@ if not MYPY:
         node_type_id: NotRequired[pulumi.Input[_builtins.str]]
         num_workers: NotRequired[pulumi.Input[_builtins.int]]
         policy_id: NotRequired[pulumi.Input[_builtins.str]]
+        provider_config: NotRequired[pulumi.Input['JobTaskNewClusterProviderConfigArgsDict']]
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
         remote_disk_throughput: NotRequired[pulumi.Input[_builtins.int]]
         runtime_engine: NotRequired[pulumi.Input[_builtins.str]]
         single_user_name: NotRequired[pulumi.Input[_builtins.str]]
@@ -28159,6 +27859,7 @@ class JobTaskNewClusterArgs:
                  node_type_id: Optional[pulumi.Input[_builtins.str]] = None,
                  num_workers: Optional[pulumi.Input[_builtins.int]] = None,
                  policy_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['JobTaskNewClusterProviderConfigArgs']] = None,
                  remote_disk_throughput: Optional[pulumi.Input[_builtins.int]] = None,
                  runtime_engine: Optional[pulumi.Input[_builtins.str]] = None,
                  single_user_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -28171,6 +27872,7 @@ class JobTaskNewClusterArgs:
                  workload_type: Optional[pulumi.Input['JobTaskNewClusterWorkloadTypeArgs']] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['JobTaskNewClusterLibraryArgs']]] libraries: (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
+        :param pulumi.Input['JobTaskNewClusterProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input['JobTaskNewClusterWorkloadTypeArgs'] workload_type: isn't supported
         """
         if __apply_policy_default_values_allow_lists is not None:
@@ -28225,6 +27927,8 @@ class JobTaskNewClusterArgs:
             pulumi.set(__self__, "num_workers", num_workers)
         if policy_id is not None:
             pulumi.set(__self__, "policy_id", policy_id)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if remote_disk_throughput is not None:
             pulumi.set(__self__, "remote_disk_throughput", remote_disk_throughput)
         if runtime_engine is not None:
@@ -28482,6 +28186,18 @@ class JobTaskNewClusterArgs:
     @policy_id.setter
     def policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "policy_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['JobTaskNewClusterProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['JobTaskNewClusterProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="remoteDiskThroughput")
@@ -29657,6 +29373,10 @@ if not MYPY:
         egg: NotRequired[pulumi.Input[_builtins.str]]
         jar: NotRequired[pulumi.Input[_builtins.str]]
         maven: NotRequired[pulumi.Input['JobTaskNewClusterLibraryMavenArgsDict']]
+        provider_config: NotRequired[pulumi.Input['JobTaskNewClusterLibraryProviderConfigArgsDict']]
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
         pypi: NotRequired[pulumi.Input['JobTaskNewClusterLibraryPypiArgsDict']]
         requirements: NotRequired[pulumi.Input[_builtins.str]]
         whl: NotRequired[pulumi.Input[_builtins.str]]
@@ -29670,9 +29390,13 @@ class JobTaskNewClusterLibraryArgs:
                  egg: Optional[pulumi.Input[_builtins.str]] = None,
                  jar: Optional[pulumi.Input[_builtins.str]] = None,
                  maven: Optional[pulumi.Input['JobTaskNewClusterLibraryMavenArgs']] = None,
+                 provider_config: Optional[pulumi.Input['JobTaskNewClusterLibraryProviderConfigArgs']] = None,
                  pypi: Optional[pulumi.Input['JobTaskNewClusterLibraryPypiArgs']] = None,
                  requirements: Optional[pulumi.Input[_builtins.str]] = None,
                  whl: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input['JobTaskNewClusterLibraryProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        """
         if cran is not None:
             pulumi.set(__self__, "cran", cran)
         if egg is not None:
@@ -29684,6 +29408,8 @@ class JobTaskNewClusterLibraryArgs:
             pulumi.set(__self__, "jar", jar)
         if maven is not None:
             pulumi.set(__self__, "maven", maven)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if pypi is not None:
             pulumi.set(__self__, "pypi", pypi)
         if requirements is not None:
@@ -29727,6 +29453,18 @@ class JobTaskNewClusterLibraryArgs:
     @maven.setter
     def maven(self, value: Optional[pulumi.Input['JobTaskNewClusterLibraryMavenArgs']]):
         pulumi.set(self, "maven", value)
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['JobTaskNewClusterLibraryProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['JobTaskNewClusterLibraryProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter
@@ -29840,6 +29578,37 @@ class JobTaskNewClusterLibraryMavenArgs:
 
 
 if not MYPY:
+    class JobTaskNewClusterLibraryProviderConfigArgsDict(TypedDict):
+        workspace_id: pulumi.Input[_builtins.str]
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+elif False:
+    JobTaskNewClusterLibraryProviderConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class JobTaskNewClusterLibraryProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "workspace_id", value)
+
+
+if not MYPY:
     class JobTaskNewClusterLibraryPypiArgsDict(TypedDict):
         package: pulumi.Input[_builtins.str]
         repo: NotRequired[pulumi.Input[_builtins.str]]
@@ -29872,6 +29641,37 @@ class JobTaskNewClusterLibraryPypiArgs:
     @repo.setter
     def repo(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "repo", value)
+
+
+if not MYPY:
+    class JobTaskNewClusterProviderConfigArgsDict(TypedDict):
+        workspace_id: pulumi.Input[_builtins.str]
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+elif False:
+    JobTaskNewClusterProviderConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class JobTaskNewClusterProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "workspace_id", value)
 
 
 if not MYPY:
@@ -31830,8 +31630,10 @@ if not MYPY:
         """
         configuration block to define a trigger for Periodic Triggers consisting of the following attributes:
         """
-        table: NotRequired[pulumi.Input['JobTriggerTableArgsDict']]
         table_update: NotRequired[pulumi.Input['JobTriggerTableUpdateArgsDict']]
+        """
+        configuration block to define a trigger for [Table Updates](https://docs.databricks.com/aws/en/jobs/trigger-table-update) consisting of following attributes:
+        """
 elif False:
     JobTriggerArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -31841,12 +31643,12 @@ class JobTriggerArgs:
                  file_arrival: Optional[pulumi.Input['JobTriggerFileArrivalArgs']] = None,
                  pause_status: Optional[pulumi.Input[_builtins.str]] = None,
                  periodic: Optional[pulumi.Input['JobTriggerPeriodicArgs']] = None,
-                 table: Optional[pulumi.Input['JobTriggerTableArgs']] = None,
                  table_update: Optional[pulumi.Input['JobTriggerTableUpdateArgs']] = None):
         """
         :param pulumi.Input['JobTriggerFileArrivalArgs'] file_arrival: configuration block to define a trigger for [File Arrival events](https://learn.microsoft.com/en-us/azure/databricks/workflows/jobs/file-arrival-triggers) consisting of following attributes:
         :param pulumi.Input[_builtins.str] pause_status: Indicate whether this trigger is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pause_status` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pause_status`.
         :param pulumi.Input['JobTriggerPeriodicArgs'] periodic: configuration block to define a trigger for Periodic Triggers consisting of the following attributes:
+        :param pulumi.Input['JobTriggerTableUpdateArgs'] table_update: configuration block to define a trigger for [Table Updates](https://docs.databricks.com/aws/en/jobs/trigger-table-update) consisting of following attributes:
         """
         if file_arrival is not None:
             pulumi.set(__self__, "file_arrival", file_arrival)
@@ -31854,8 +31656,6 @@ class JobTriggerArgs:
             pulumi.set(__self__, "pause_status", pause_status)
         if periodic is not None:
             pulumi.set(__self__, "periodic", periodic)
-        if table is not None:
-            pulumi.set(__self__, "table", table)
         if table_update is not None:
             pulumi.set(__self__, "table_update", table_update)
 
@@ -31896,17 +31696,11 @@ class JobTriggerArgs:
         pulumi.set(self, "periodic", value)
 
     @_builtins.property
-    @pulumi.getter
-    def table(self) -> Optional[pulumi.Input['JobTriggerTableArgs']]:
-        return pulumi.get(self, "table")
-
-    @table.setter
-    def table(self, value: Optional[pulumi.Input['JobTriggerTableArgs']]):
-        pulumi.set(self, "table", value)
-
-    @_builtins.property
     @pulumi.getter(name="tableUpdate")
     def table_update(self) -> Optional[pulumi.Input['JobTriggerTableUpdateArgs']]:
+        """
+        configuration block to define a trigger for [Table Updates](https://docs.databricks.com/aws/en/jobs/trigger-table-update) consisting of following attributes:
+        """
         return pulumi.get(self, "table_update")
 
     @table_update.setter
@@ -31989,11 +31783,11 @@ if not MYPY:
     class JobTriggerPeriodicArgsDict(TypedDict):
         interval: pulumi.Input[_builtins.int]
         """
-        Specifies the interval at which the job should run. This value is required.
+        Specifies the interval at which the job should run.
         """
         unit: pulumi.Input[_builtins.str]
         """
-        Options are {"DAYS", "HOURS", "WEEKS"}.
+        The unit of time for the interval.  Possible values are: `DAYS`, `HOURS`, `WEEKS`.
         """
 elif False:
     JobTriggerPeriodicArgsDict: TypeAlias = Mapping[str, Any]
@@ -32004,8 +31798,8 @@ class JobTriggerPeriodicArgs:
                  interval: pulumi.Input[_builtins.int],
                  unit: pulumi.Input[_builtins.str]):
         """
-        :param pulumi.Input[_builtins.int] interval: Specifies the interval at which the job should run. This value is required.
-        :param pulumi.Input[_builtins.str] unit: Options are {"DAYS", "HOURS", "WEEKS"}.
+        :param pulumi.Input[_builtins.int] interval: Specifies the interval at which the job should run.
+        :param pulumi.Input[_builtins.str] unit: The unit of time for the interval.  Possible values are: `DAYS`, `HOURS`, `WEEKS`.
         """
         pulumi.set(__self__, "interval", interval)
         pulumi.set(__self__, "unit", unit)
@@ -32014,7 +31808,7 @@ class JobTriggerPeriodicArgs:
     @pulumi.getter
     def interval(self) -> pulumi.Input[_builtins.int]:
         """
-        Specifies the interval at which the job should run. This value is required.
+        Specifies the interval at which the job should run.
         """
         return pulumi.get(self, "interval")
 
@@ -32026,7 +31820,7 @@ class JobTriggerPeriodicArgs:
     @pulumi.getter
     def unit(self) -> pulumi.Input[_builtins.str]:
         """
-        Options are {"DAYS", "HOURS", "WEEKS"}.
+        The unit of time for the interval.  Possible values are: `DAYS`, `HOURS`, `WEEKS`.
         """
         return pulumi.get(self, "unit")
 
@@ -32036,87 +31830,15 @@ class JobTriggerPeriodicArgs:
 
 
 if not MYPY:
-    class JobTriggerTableArgsDict(TypedDict):
-        condition: NotRequired[pulumi.Input[_builtins.str]]
-        min_time_between_triggers_seconds: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
-        """
-        table_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        wait_after_last_change_seconds: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
-        """
-elif False:
-    JobTriggerTableArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class JobTriggerTableArgs:
-    def __init__(__self__, *,
-                 condition: Optional[pulumi.Input[_builtins.str]] = None,
-                 min_time_between_triggers_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 table_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 wait_after_last_change_seconds: Optional[pulumi.Input[_builtins.int]] = None):
-        """
-        :param pulumi.Input[_builtins.int] min_time_between_triggers_seconds: If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
-        :param pulumi.Input[_builtins.int] wait_after_last_change_seconds: If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
-        """
-        if condition is not None:
-            pulumi.set(__self__, "condition", condition)
-        if min_time_between_triggers_seconds is not None:
-            pulumi.set(__self__, "min_time_between_triggers_seconds", min_time_between_triggers_seconds)
-        if table_names is not None:
-            pulumi.set(__self__, "table_names", table_names)
-        if wait_after_last_change_seconds is not None:
-            pulumi.set(__self__, "wait_after_last_change_seconds", wait_after_last_change_seconds)
-
-    @_builtins.property
-    @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input[_builtins.str]]:
-        return pulumi.get(self, "condition")
-
-    @condition.setter
-    def condition(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "condition", value)
-
-    @_builtins.property
-    @pulumi.getter(name="minTimeBetweenTriggersSeconds")
-    def min_time_between_triggers_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
-        """
-        return pulumi.get(self, "min_time_between_triggers_seconds")
-
-    @min_time_between_triggers_seconds.setter
-    def min_time_between_triggers_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "min_time_between_triggers_seconds", value)
-
-    @_builtins.property
-    @pulumi.getter(name="tableNames")
-    def table_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        return pulumi.get(self, "table_names")
-
-    @table_names.setter
-    def table_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
-        pulumi.set(self, "table_names", value)
-
-    @_builtins.property
-    @pulumi.getter(name="waitAfterLastChangeSeconds")
-    def wait_after_last_change_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
-        """
-        return pulumi.get(self, "wait_after_last_change_seconds")
-
-    @wait_after_last_change_seconds.setter
-    def wait_after_last_change_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "wait_after_last_change_seconds", value)
-
-
-if not MYPY:
     class JobTriggerTableUpdateArgsDict(TypedDict):
         table_names: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+        """
+        A non-empty list of tables to monitor for changes. The table name must be in the format `catalog_name.schema_name.table_name`.
+        """
         condition: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The table(s) condition based on which to trigger a job run.  Possible values are `ANY_UPDATED`, `ALL_UPDATED`.
+        """
         min_time_between_triggers_seconds: NotRequired[pulumi.Input[_builtins.int]]
         """
         If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
@@ -32136,6 +31858,8 @@ class JobTriggerTableUpdateArgs:
                  min_time_between_triggers_seconds: Optional[pulumi.Input[_builtins.int]] = None,
                  wait_after_last_change_seconds: Optional[pulumi.Input[_builtins.int]] = None):
         """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] table_names: A non-empty list of tables to monitor for changes. The table name must be in the format `catalog_name.schema_name.table_name`.
+        :param pulumi.Input[_builtins.str] condition: The table(s) condition based on which to trigger a job run.  Possible values are `ANY_UPDATED`, `ALL_UPDATED`.
         :param pulumi.Input[_builtins.int] min_time_between_triggers_seconds: If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
         :param pulumi.Input[_builtins.int] wait_after_last_change_seconds: If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
         """
@@ -32150,6 +31874,9 @@ class JobTriggerTableUpdateArgs:
     @_builtins.property
     @pulumi.getter(name="tableNames")
     def table_names(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
+        """
+        A non-empty list of tables to monitor for changes. The table name must be in the format `catalog_name.schema_name.table_name`.
+        """
         return pulumi.get(self, "table_names")
 
     @table_names.setter
@@ -32159,6 +31886,9 @@ class JobTriggerTableUpdateArgs:
     @_builtins.property
     @pulumi.getter
     def condition(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The table(s) condition based on which to trigger a job run.  Possible values are `ANY_UPDATED`, `ALL_UPDATED`.
+        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -32979,7 +32709,13 @@ class LakehouseMonitorTimeSeriesArgs:
 if not MYPY:
     class LibraryCranArgsDict(TypedDict):
         package: pulumi.Input[_builtins.str]
+        """
+        The name of the CRAN package to install.
+        """
         repo: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The repository where the package can be found. If not specified, the default CRAN repo is used.
+        """
 elif False:
     LibraryCranArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -32988,6 +32724,10 @@ class LibraryCranArgs:
     def __init__(__self__, *,
                  package: pulumi.Input[_builtins.str],
                  repo: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] package: The name of the CRAN package to install.
+        :param pulumi.Input[_builtins.str] repo: The repository where the package can be found. If not specified, the default CRAN repo is used.
+        """
         pulumi.set(__self__, "package", package)
         if repo is not None:
             pulumi.set(__self__, "repo", repo)
@@ -32995,6 +32735,9 @@ class LibraryCranArgs:
     @_builtins.property
     @pulumi.getter
     def package(self) -> pulumi.Input[_builtins.str]:
+        """
+        The name of the CRAN package to install.
+        """
         return pulumi.get(self, "package")
 
     @package.setter
@@ -33004,6 +32747,9 @@ class LibraryCranArgs:
     @_builtins.property
     @pulumi.getter
     def repo(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The repository where the package can be found. If not specified, the default CRAN repo is used.
+        """
         return pulumi.get(self, "repo")
 
     @repo.setter
@@ -33014,8 +32760,17 @@ class LibraryCranArgs:
 if not MYPY:
     class LibraryMavenArgsDict(TypedDict):
         coordinates: pulumi.Input[_builtins.str]
+        """
+        Gradle-style Maven coordinates. For example: `org.jsoup:jsoup:1.7.2`.
+        """
         exclusions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        List of dependencies to exclude. For example: `["slf4j:slf4j", "*:hadoop-client"]`. See [Maven dependency exclusions](https://maven.apache.org/guides/introduction/introduction-to-optional-and-excludes-dependencies.html) for more information.
+        """
         repo: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Maven repository to install the Maven package from. If omitted, both Maven Central Repository and Spark Packages are searched.
+        """
 elif False:
     LibraryMavenArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -33025,6 +32780,11 @@ class LibraryMavenArgs:
                  coordinates: pulumi.Input[_builtins.str],
                  exclusions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  repo: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] coordinates: Gradle-style Maven coordinates. For example: `org.jsoup:jsoup:1.7.2`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] exclusions: List of dependencies to exclude. For example: `["slf4j:slf4j", "*:hadoop-client"]`. See [Maven dependency exclusions](https://maven.apache.org/guides/introduction/introduction-to-optional-and-excludes-dependencies.html) for more information.
+        :param pulumi.Input[_builtins.str] repo: Maven repository to install the Maven package from. If omitted, both Maven Central Repository and Spark Packages are searched.
+        """
         pulumi.set(__self__, "coordinates", coordinates)
         if exclusions is not None:
             pulumi.set(__self__, "exclusions", exclusions)
@@ -33034,6 +32794,9 @@ class LibraryMavenArgs:
     @_builtins.property
     @pulumi.getter
     def coordinates(self) -> pulumi.Input[_builtins.str]:
+        """
+        Gradle-style Maven coordinates. For example: `org.jsoup:jsoup:1.7.2`.
+        """
         return pulumi.get(self, "coordinates")
 
     @coordinates.setter
@@ -33043,6 +32806,9 @@ class LibraryMavenArgs:
     @_builtins.property
     @pulumi.getter
     def exclusions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        List of dependencies to exclude. For example: `["slf4j:slf4j", "*:hadoop-client"]`. See [Maven dependency exclusions](https://maven.apache.org/guides/introduction/introduction-to-optional-and-excludes-dependencies.html) for more information.
+        """
         return pulumi.get(self, "exclusions")
 
     @exclusions.setter
@@ -33052,6 +32818,9 @@ class LibraryMavenArgs:
     @_builtins.property
     @pulumi.getter
     def repo(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Maven repository to install the Maven package from. If omitted, both Maven Central Repository and Spark Packages are searched.
+        """
         return pulumi.get(self, "repo")
 
     @repo.setter
@@ -33060,9 +32829,46 @@ class LibraryMavenArgs:
 
 
 if not MYPY:
+    class LibraryProviderConfigArgsDict(TypedDict):
+        workspace_id: pulumi.Input[_builtins.str]
+        """
+        Workspace ID that the resource belongs to. This workspace must be part of the account that the provider is configured with.
+        """
+elif False:
+    LibraryProviderConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class LibraryProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID that the resource belongs to. This workspace must be part of the account that the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Workspace ID that the resource belongs to. This workspace must be part of the account that the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "workspace_id", value)
+
+
+if not MYPY:
     class LibraryPypiArgsDict(TypedDict):
         package: pulumi.Input[_builtins.str]
+        """
+        The name of the PyPI package to install. An optional exact version specification is also supported. For example: `simplejson` or `simplejson==3.8.0`.
+        """
         repo: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The repository where the package can be found. If not specified, the default pip index is used.
+        """
 elif False:
     LibraryPypiArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -33071,6 +32877,10 @@ class LibraryPypiArgs:
     def __init__(__self__, *,
                  package: pulumi.Input[_builtins.str],
                  repo: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] package: The name of the PyPI package to install. An optional exact version specification is also supported. For example: `simplejson` or `simplejson==3.8.0`.
+        :param pulumi.Input[_builtins.str] repo: The repository where the package can be found. If not specified, the default pip index is used.
+        """
         pulumi.set(__self__, "package", package)
         if repo is not None:
             pulumi.set(__self__, "repo", repo)
@@ -33078,6 +32888,9 @@ class LibraryPypiArgs:
     @_builtins.property
     @pulumi.getter
     def package(self) -> pulumi.Input[_builtins.str]:
+        """
+        The name of the PyPI package to install. An optional exact version specification is also supported. For example: `simplejson` or `simplejson==3.8.0`.
+        """
         return pulumi.get(self, "package")
 
     @package.setter
@@ -33087,6 +32900,9 @@ class LibraryPypiArgs:
     @_builtins.property
     @pulumi.getter
     def repo(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The repository where the package can be found. If not specified, the default pip index is used.
+        """
         return pulumi.get(self, "repo")
 
     @repo.setter
@@ -38617,13 +38433,13 @@ class MwsNetworksGcpNetworkInfoArgs:
         pulumi.set(__self__, "subnet_region", subnet_region)
         pulumi.set(__self__, "vpc_id", vpc_id)
         if pod_ip_range_name is not None:
-            warnings.warn("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.90.0/docs/guides/gcp-workspace#creating-a-vpc""", DeprecationWarning)
-            pulumi.log.warn("""pod_ip_range_name is deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.90.0/docs/guides/gcp-workspace#creating-a-vpc""")
+            warnings.warn("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.96.0/docs/guides/gcp-workspace#creating-a-vpc""", DeprecationWarning)
+            pulumi.log.warn("""pod_ip_range_name is deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.96.0/docs/guides/gcp-workspace#creating-a-vpc""")
         if pod_ip_range_name is not None:
             pulumi.set(__self__, "pod_ip_range_name", pod_ip_range_name)
         if service_ip_range_name is not None:
-            warnings.warn("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.90.0/docs/guides/gcp-workspace#creating-a-vpc""", DeprecationWarning)
-            pulumi.log.warn("""service_ip_range_name is deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.90.0/docs/guides/gcp-workspace#creating-a-vpc""")
+            warnings.warn("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.96.0/docs/guides/gcp-workspace#creating-a-vpc""", DeprecationWarning)
+            pulumi.log.warn("""service_ip_range_name is deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.96.0/docs/guides/gcp-workspace#creating-a-vpc""")
         if service_ip_range_name is not None:
             pulumi.set(__self__, "service_ip_range_name", service_ip_range_name)
 
@@ -38677,7 +38493,7 @@ class MwsNetworksGcpNetworkInfoArgs:
 
     @_builtins.property
     @pulumi.getter(name="podIpRangeName")
-    @_utilities.deprecated("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.90.0/docs/guides/gcp-workspace#creating-a-vpc""")
+    @_utilities.deprecated("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.96.0/docs/guides/gcp-workspace#creating-a-vpc""")
     def pod_ip_range_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "pod_ip_range_name")
 
@@ -38687,7 +38503,7 @@ class MwsNetworksGcpNetworkInfoArgs:
 
     @_builtins.property
     @pulumi.getter(name="serviceIpRangeName")
-    @_utilities.deprecated("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.90.0/docs/guides/gcp-workspace#creating-a-vpc""")
+    @_utilities.deprecated("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.96.0/docs/guides/gcp-workspace#creating-a-vpc""")
     def service_ip_range_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "service_ip_range_name")
 
@@ -38963,13 +38779,13 @@ class MwsWorkspacesGcpManagedNetworkConfigArgs:
                  gke_cluster_service_ip_range: Optional[pulumi.Input[_builtins.str]] = None):
         pulumi.set(__self__, "subnet_cidr", subnet_cidr)
         if gke_cluster_pod_ip_range is not None:
-            warnings.warn("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.90.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""", DeprecationWarning)
-            pulumi.log.warn("""gke_cluster_pod_ip_range is deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.90.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+            warnings.warn("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.96.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""", DeprecationWarning)
+            pulumi.log.warn("""gke_cluster_pod_ip_range is deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.96.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
         if gke_cluster_pod_ip_range is not None:
             pulumi.set(__self__, "gke_cluster_pod_ip_range", gke_cluster_pod_ip_range)
         if gke_cluster_service_ip_range is not None:
-            warnings.warn("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.90.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""", DeprecationWarning)
-            pulumi.log.warn("""gke_cluster_service_ip_range is deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.90.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+            warnings.warn("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.96.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""", DeprecationWarning)
+            pulumi.log.warn("""gke_cluster_service_ip_range is deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.96.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
         if gke_cluster_service_ip_range is not None:
             pulumi.set(__self__, "gke_cluster_service_ip_range", gke_cluster_service_ip_range)
 
@@ -38984,7 +38800,7 @@ class MwsWorkspacesGcpManagedNetworkConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="gkeClusterPodIpRange")
-    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.90.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.96.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
     def gke_cluster_pod_ip_range(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "gke_cluster_pod_ip_range")
 
@@ -38994,7 +38810,7 @@ class MwsWorkspacesGcpManagedNetworkConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="gkeClusterServiceIpRange")
-    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.90.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.96.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
     def gke_cluster_service_ip_range(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "gke_cluster_service_ip_range")
 
@@ -41999,6 +41815,7 @@ if not MYPY:
     class PipelineIngestionDefinitionArgsDict(TypedDict):
         connection_name: NotRequired[pulumi.Input[_builtins.str]]
         ingestion_gateway_id: NotRequired[pulumi.Input[_builtins.str]]
+        netsuite_jar_path: NotRequired[pulumi.Input[_builtins.str]]
         objects: NotRequired[pulumi.Input[Sequence[pulumi.Input['PipelineIngestionDefinitionObjectArgsDict']]]]
         source_configurations: NotRequired[pulumi.Input[Sequence[pulumi.Input['PipelineIngestionDefinitionSourceConfigurationArgsDict']]]]
         source_type: NotRequired[pulumi.Input[_builtins.str]]
@@ -42011,6 +41828,7 @@ class PipelineIngestionDefinitionArgs:
     def __init__(__self__, *,
                  connection_name: Optional[pulumi.Input[_builtins.str]] = None,
                  ingestion_gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 netsuite_jar_path: Optional[pulumi.Input[_builtins.str]] = None,
                  objects: Optional[pulumi.Input[Sequence[pulumi.Input['PipelineIngestionDefinitionObjectArgs']]]] = None,
                  source_configurations: Optional[pulumi.Input[Sequence[pulumi.Input['PipelineIngestionDefinitionSourceConfigurationArgs']]]] = None,
                  source_type: Optional[pulumi.Input[_builtins.str]] = None,
@@ -42019,6 +41837,8 @@ class PipelineIngestionDefinitionArgs:
             pulumi.set(__self__, "connection_name", connection_name)
         if ingestion_gateway_id is not None:
             pulumi.set(__self__, "ingestion_gateway_id", ingestion_gateway_id)
+        if netsuite_jar_path is not None:
+            pulumi.set(__self__, "netsuite_jar_path", netsuite_jar_path)
         if objects is not None:
             pulumi.set(__self__, "objects", objects)
         if source_configurations is not None:
@@ -42045,6 +41865,15 @@ class PipelineIngestionDefinitionArgs:
     @ingestion_gateway_id.setter
     def ingestion_gateway_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "ingestion_gateway_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="netsuiteJarPath")
+    def netsuite_jar_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "netsuite_jar_path")
+
+    @netsuite_jar_path.setter
+    def netsuite_jar_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "netsuite_jar_path", value)
 
     @_builtins.property
     @pulumi.getter
@@ -42222,6 +42051,7 @@ if not MYPY:
         salesforce_include_formula_fields: NotRequired[pulumi.Input[_builtins.bool]]
         scd_type: NotRequired[pulumi.Input[_builtins.str]]
         sequence_bies: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        workday_report_parameters: NotRequired[pulumi.Input['PipelineIngestionDefinitionObjectReportTableConfigurationWorkdayReportParametersArgsDict']]
 elif False:
     PipelineIngestionDefinitionObjectReportTableConfigurationArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -42234,7 +42064,8 @@ class PipelineIngestionDefinitionObjectReportTableConfigurationArgs:
                  query_based_connector_config: Optional[pulumi.Input['PipelineIngestionDefinitionObjectReportTableConfigurationQueryBasedConnectorConfigArgs']] = None,
                  salesforce_include_formula_fields: Optional[pulumi.Input[_builtins.bool]] = None,
                  scd_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 sequence_bies: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 sequence_bies: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 workday_report_parameters: Optional[pulumi.Input['PipelineIngestionDefinitionObjectReportTableConfigurationWorkdayReportParametersArgs']] = None):
         if exclude_columns is not None:
             pulumi.set(__self__, "exclude_columns", exclude_columns)
         if include_columns is not None:
@@ -42249,6 +42080,8 @@ class PipelineIngestionDefinitionObjectReportTableConfigurationArgs:
             pulumi.set(__self__, "scd_type", scd_type)
         if sequence_bies is not None:
             pulumi.set(__self__, "sequence_bies", sequence_bies)
+        if workday_report_parameters is not None:
+            pulumi.set(__self__, "workday_report_parameters", workday_report_parameters)
 
     @_builtins.property
     @pulumi.getter(name="excludeColumns")
@@ -42313,6 +42146,15 @@ class PipelineIngestionDefinitionObjectReportTableConfigurationArgs:
     def sequence_bies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "sequence_bies", value)
 
+    @_builtins.property
+    @pulumi.getter(name="workdayReportParameters")
+    def workday_report_parameters(self) -> Optional[pulumi.Input['PipelineIngestionDefinitionObjectReportTableConfigurationWorkdayReportParametersArgs']]:
+        return pulumi.get(self, "workday_report_parameters")
+
+    @workday_report_parameters.setter
+    def workday_report_parameters(self, value: Optional[pulumi.Input['PipelineIngestionDefinitionObjectReportTableConfigurationWorkdayReportParametersArgs']]):
+        pulumi.set(self, "workday_report_parameters", value)
+
 
 if not MYPY:
     class PipelineIngestionDefinitionObjectReportTableConfigurationQueryBasedConnectorConfigArgsDict(TypedDict):
@@ -42361,6 +42203,91 @@ class PipelineIngestionDefinitionObjectReportTableConfigurationQueryBasedConnect
     @hard_deletion_sync_min_interval_in_seconds.setter
     def hard_deletion_sync_min_interval_in_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "hard_deletion_sync_min_interval_in_seconds", value)
+
+
+if not MYPY:
+    class PipelineIngestionDefinitionObjectReportTableConfigurationWorkdayReportParametersArgsDict(TypedDict):
+        incremental: NotRequired[pulumi.Input[_builtins.bool]]
+        parameters: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+        report_parameters: NotRequired[pulumi.Input[Sequence[pulumi.Input['PipelineIngestionDefinitionObjectReportTableConfigurationWorkdayReportParametersReportParameterArgsDict']]]]
+elif False:
+    PipelineIngestionDefinitionObjectReportTableConfigurationWorkdayReportParametersArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PipelineIngestionDefinitionObjectReportTableConfigurationWorkdayReportParametersArgs:
+    def __init__(__self__, *,
+                 incremental: Optional[pulumi.Input[_builtins.bool]] = None,
+                 parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 report_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['PipelineIngestionDefinitionObjectReportTableConfigurationWorkdayReportParametersReportParameterArgs']]]] = None):
+        if incremental is not None:
+            pulumi.set(__self__, "incremental", incremental)
+        if parameters is not None:
+            pulumi.set(__self__, "parameters", parameters)
+        if report_parameters is not None:
+            pulumi.set(__self__, "report_parameters", report_parameters)
+
+    @_builtins.property
+    @pulumi.getter
+    def incremental(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        return pulumi.get(self, "incremental")
+
+    @incremental.setter
+    def incremental(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "incremental", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def parameters(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        return pulumi.get(self, "parameters")
+
+    @parameters.setter
+    def parameters(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "parameters", value)
+
+    @_builtins.property
+    @pulumi.getter(name="reportParameters")
+    def report_parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PipelineIngestionDefinitionObjectReportTableConfigurationWorkdayReportParametersReportParameterArgs']]]]:
+        return pulumi.get(self, "report_parameters")
+
+    @report_parameters.setter
+    def report_parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PipelineIngestionDefinitionObjectReportTableConfigurationWorkdayReportParametersReportParameterArgs']]]]):
+        pulumi.set(self, "report_parameters", value)
+
+
+if not MYPY:
+    class PipelineIngestionDefinitionObjectReportTableConfigurationWorkdayReportParametersReportParameterArgsDict(TypedDict):
+        key: NotRequired[pulumi.Input[_builtins.str]]
+        value: NotRequired[pulumi.Input[_builtins.str]]
+elif False:
+    PipelineIngestionDefinitionObjectReportTableConfigurationWorkdayReportParametersReportParameterArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PipelineIngestionDefinitionObjectReportTableConfigurationWorkdayReportParametersReportParameterArgs:
+    def __init__(__self__, *,
+                 key: Optional[pulumi.Input[_builtins.str]] = None,
+                 value: Optional[pulumi.Input[_builtins.str]] = None):
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "value", value)
 
 
 if not MYPY:
@@ -42444,6 +42371,7 @@ if not MYPY:
         salesforce_include_formula_fields: NotRequired[pulumi.Input[_builtins.bool]]
         scd_type: NotRequired[pulumi.Input[_builtins.str]]
         sequence_bies: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        workday_report_parameters: NotRequired[pulumi.Input['PipelineIngestionDefinitionObjectSchemaTableConfigurationWorkdayReportParametersArgsDict']]
 elif False:
     PipelineIngestionDefinitionObjectSchemaTableConfigurationArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -42456,7 +42384,8 @@ class PipelineIngestionDefinitionObjectSchemaTableConfigurationArgs:
                  query_based_connector_config: Optional[pulumi.Input['PipelineIngestionDefinitionObjectSchemaTableConfigurationQueryBasedConnectorConfigArgs']] = None,
                  salesforce_include_formula_fields: Optional[pulumi.Input[_builtins.bool]] = None,
                  scd_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 sequence_bies: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 sequence_bies: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 workday_report_parameters: Optional[pulumi.Input['PipelineIngestionDefinitionObjectSchemaTableConfigurationWorkdayReportParametersArgs']] = None):
         if exclude_columns is not None:
             pulumi.set(__self__, "exclude_columns", exclude_columns)
         if include_columns is not None:
@@ -42471,6 +42400,8 @@ class PipelineIngestionDefinitionObjectSchemaTableConfigurationArgs:
             pulumi.set(__self__, "scd_type", scd_type)
         if sequence_bies is not None:
             pulumi.set(__self__, "sequence_bies", sequence_bies)
+        if workday_report_parameters is not None:
+            pulumi.set(__self__, "workday_report_parameters", workday_report_parameters)
 
     @_builtins.property
     @pulumi.getter(name="excludeColumns")
@@ -42535,6 +42466,15 @@ class PipelineIngestionDefinitionObjectSchemaTableConfigurationArgs:
     def sequence_bies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "sequence_bies", value)
 
+    @_builtins.property
+    @pulumi.getter(name="workdayReportParameters")
+    def workday_report_parameters(self) -> Optional[pulumi.Input['PipelineIngestionDefinitionObjectSchemaTableConfigurationWorkdayReportParametersArgs']]:
+        return pulumi.get(self, "workday_report_parameters")
+
+    @workday_report_parameters.setter
+    def workday_report_parameters(self, value: Optional[pulumi.Input['PipelineIngestionDefinitionObjectSchemaTableConfigurationWorkdayReportParametersArgs']]):
+        pulumi.set(self, "workday_report_parameters", value)
+
 
 if not MYPY:
     class PipelineIngestionDefinitionObjectSchemaTableConfigurationQueryBasedConnectorConfigArgsDict(TypedDict):
@@ -42583,6 +42523,91 @@ class PipelineIngestionDefinitionObjectSchemaTableConfigurationQueryBasedConnect
     @hard_deletion_sync_min_interval_in_seconds.setter
     def hard_deletion_sync_min_interval_in_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "hard_deletion_sync_min_interval_in_seconds", value)
+
+
+if not MYPY:
+    class PipelineIngestionDefinitionObjectSchemaTableConfigurationWorkdayReportParametersArgsDict(TypedDict):
+        incremental: NotRequired[pulumi.Input[_builtins.bool]]
+        parameters: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+        report_parameters: NotRequired[pulumi.Input[Sequence[pulumi.Input['PipelineIngestionDefinitionObjectSchemaTableConfigurationWorkdayReportParametersReportParameterArgsDict']]]]
+elif False:
+    PipelineIngestionDefinitionObjectSchemaTableConfigurationWorkdayReportParametersArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PipelineIngestionDefinitionObjectSchemaTableConfigurationWorkdayReportParametersArgs:
+    def __init__(__self__, *,
+                 incremental: Optional[pulumi.Input[_builtins.bool]] = None,
+                 parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 report_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['PipelineIngestionDefinitionObjectSchemaTableConfigurationWorkdayReportParametersReportParameterArgs']]]] = None):
+        if incremental is not None:
+            pulumi.set(__self__, "incremental", incremental)
+        if parameters is not None:
+            pulumi.set(__self__, "parameters", parameters)
+        if report_parameters is not None:
+            pulumi.set(__self__, "report_parameters", report_parameters)
+
+    @_builtins.property
+    @pulumi.getter
+    def incremental(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        return pulumi.get(self, "incremental")
+
+    @incremental.setter
+    def incremental(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "incremental", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def parameters(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        return pulumi.get(self, "parameters")
+
+    @parameters.setter
+    def parameters(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "parameters", value)
+
+    @_builtins.property
+    @pulumi.getter(name="reportParameters")
+    def report_parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PipelineIngestionDefinitionObjectSchemaTableConfigurationWorkdayReportParametersReportParameterArgs']]]]:
+        return pulumi.get(self, "report_parameters")
+
+    @report_parameters.setter
+    def report_parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PipelineIngestionDefinitionObjectSchemaTableConfigurationWorkdayReportParametersReportParameterArgs']]]]):
+        pulumi.set(self, "report_parameters", value)
+
+
+if not MYPY:
+    class PipelineIngestionDefinitionObjectSchemaTableConfigurationWorkdayReportParametersReportParameterArgsDict(TypedDict):
+        key: NotRequired[pulumi.Input[_builtins.str]]
+        value: NotRequired[pulumi.Input[_builtins.str]]
+elif False:
+    PipelineIngestionDefinitionObjectSchemaTableConfigurationWorkdayReportParametersReportParameterArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PipelineIngestionDefinitionObjectSchemaTableConfigurationWorkdayReportParametersReportParameterArgs:
+    def __init__(__self__, *,
+                 key: Optional[pulumi.Input[_builtins.str]] = None,
+                 value: Optional[pulumi.Input[_builtins.str]] = None):
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "value", value)
 
 
 if not MYPY:
@@ -42692,6 +42717,7 @@ if not MYPY:
         salesforce_include_formula_fields: NotRequired[pulumi.Input[_builtins.bool]]
         scd_type: NotRequired[pulumi.Input[_builtins.str]]
         sequence_bies: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        workday_report_parameters: NotRequired[pulumi.Input['PipelineIngestionDefinitionObjectTableTableConfigurationWorkdayReportParametersArgsDict']]
 elif False:
     PipelineIngestionDefinitionObjectTableTableConfigurationArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -42704,7 +42730,8 @@ class PipelineIngestionDefinitionObjectTableTableConfigurationArgs:
                  query_based_connector_config: Optional[pulumi.Input['PipelineIngestionDefinitionObjectTableTableConfigurationQueryBasedConnectorConfigArgs']] = None,
                  salesforce_include_formula_fields: Optional[pulumi.Input[_builtins.bool]] = None,
                  scd_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 sequence_bies: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 sequence_bies: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 workday_report_parameters: Optional[pulumi.Input['PipelineIngestionDefinitionObjectTableTableConfigurationWorkdayReportParametersArgs']] = None):
         if exclude_columns is not None:
             pulumi.set(__self__, "exclude_columns", exclude_columns)
         if include_columns is not None:
@@ -42719,6 +42746,8 @@ class PipelineIngestionDefinitionObjectTableTableConfigurationArgs:
             pulumi.set(__self__, "scd_type", scd_type)
         if sequence_bies is not None:
             pulumi.set(__self__, "sequence_bies", sequence_bies)
+        if workday_report_parameters is not None:
+            pulumi.set(__self__, "workday_report_parameters", workday_report_parameters)
 
     @_builtins.property
     @pulumi.getter(name="excludeColumns")
@@ -42783,6 +42812,15 @@ class PipelineIngestionDefinitionObjectTableTableConfigurationArgs:
     def sequence_bies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "sequence_bies", value)
 
+    @_builtins.property
+    @pulumi.getter(name="workdayReportParameters")
+    def workday_report_parameters(self) -> Optional[pulumi.Input['PipelineIngestionDefinitionObjectTableTableConfigurationWorkdayReportParametersArgs']]:
+        return pulumi.get(self, "workday_report_parameters")
+
+    @workday_report_parameters.setter
+    def workday_report_parameters(self, value: Optional[pulumi.Input['PipelineIngestionDefinitionObjectTableTableConfigurationWorkdayReportParametersArgs']]):
+        pulumi.set(self, "workday_report_parameters", value)
+
 
 if not MYPY:
     class PipelineIngestionDefinitionObjectTableTableConfigurationQueryBasedConnectorConfigArgsDict(TypedDict):
@@ -42831,6 +42869,91 @@ class PipelineIngestionDefinitionObjectTableTableConfigurationQueryBasedConnecto
     @hard_deletion_sync_min_interval_in_seconds.setter
     def hard_deletion_sync_min_interval_in_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "hard_deletion_sync_min_interval_in_seconds", value)
+
+
+if not MYPY:
+    class PipelineIngestionDefinitionObjectTableTableConfigurationWorkdayReportParametersArgsDict(TypedDict):
+        incremental: NotRequired[pulumi.Input[_builtins.bool]]
+        parameters: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+        report_parameters: NotRequired[pulumi.Input[Sequence[pulumi.Input['PipelineIngestionDefinitionObjectTableTableConfigurationWorkdayReportParametersReportParameterArgsDict']]]]
+elif False:
+    PipelineIngestionDefinitionObjectTableTableConfigurationWorkdayReportParametersArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PipelineIngestionDefinitionObjectTableTableConfigurationWorkdayReportParametersArgs:
+    def __init__(__self__, *,
+                 incremental: Optional[pulumi.Input[_builtins.bool]] = None,
+                 parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 report_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['PipelineIngestionDefinitionObjectTableTableConfigurationWorkdayReportParametersReportParameterArgs']]]] = None):
+        if incremental is not None:
+            pulumi.set(__self__, "incremental", incremental)
+        if parameters is not None:
+            pulumi.set(__self__, "parameters", parameters)
+        if report_parameters is not None:
+            pulumi.set(__self__, "report_parameters", report_parameters)
+
+    @_builtins.property
+    @pulumi.getter
+    def incremental(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        return pulumi.get(self, "incremental")
+
+    @incremental.setter
+    def incremental(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "incremental", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def parameters(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        return pulumi.get(self, "parameters")
+
+    @parameters.setter
+    def parameters(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "parameters", value)
+
+    @_builtins.property
+    @pulumi.getter(name="reportParameters")
+    def report_parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PipelineIngestionDefinitionObjectTableTableConfigurationWorkdayReportParametersReportParameterArgs']]]]:
+        return pulumi.get(self, "report_parameters")
+
+    @report_parameters.setter
+    def report_parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PipelineIngestionDefinitionObjectTableTableConfigurationWorkdayReportParametersReportParameterArgs']]]]):
+        pulumi.set(self, "report_parameters", value)
+
+
+if not MYPY:
+    class PipelineIngestionDefinitionObjectTableTableConfigurationWorkdayReportParametersReportParameterArgsDict(TypedDict):
+        key: NotRequired[pulumi.Input[_builtins.str]]
+        value: NotRequired[pulumi.Input[_builtins.str]]
+elif False:
+    PipelineIngestionDefinitionObjectTableTableConfigurationWorkdayReportParametersReportParameterArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PipelineIngestionDefinitionObjectTableTableConfigurationWorkdayReportParametersReportParameterArgs:
+    def __init__(__self__, *,
+                 key: Optional[pulumi.Input[_builtins.str]] = None,
+                 value: Optional[pulumi.Input[_builtins.str]] = None):
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "value", value)
 
 
 if not MYPY:
@@ -42969,6 +43092,7 @@ if not MYPY:
         salesforce_include_formula_fields: NotRequired[pulumi.Input[_builtins.bool]]
         scd_type: NotRequired[pulumi.Input[_builtins.str]]
         sequence_bies: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        workday_report_parameters: NotRequired[pulumi.Input['PipelineIngestionDefinitionTableConfigurationWorkdayReportParametersArgsDict']]
 elif False:
     PipelineIngestionDefinitionTableConfigurationArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -42981,7 +43105,8 @@ class PipelineIngestionDefinitionTableConfigurationArgs:
                  query_based_connector_config: Optional[pulumi.Input['PipelineIngestionDefinitionTableConfigurationQueryBasedConnectorConfigArgs']] = None,
                  salesforce_include_formula_fields: Optional[pulumi.Input[_builtins.bool]] = None,
                  scd_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 sequence_bies: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 sequence_bies: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 workday_report_parameters: Optional[pulumi.Input['PipelineIngestionDefinitionTableConfigurationWorkdayReportParametersArgs']] = None):
         if exclude_columns is not None:
             pulumi.set(__self__, "exclude_columns", exclude_columns)
         if include_columns is not None:
@@ -42996,6 +43121,8 @@ class PipelineIngestionDefinitionTableConfigurationArgs:
             pulumi.set(__self__, "scd_type", scd_type)
         if sequence_bies is not None:
             pulumi.set(__self__, "sequence_bies", sequence_bies)
+        if workday_report_parameters is not None:
+            pulumi.set(__self__, "workday_report_parameters", workday_report_parameters)
 
     @_builtins.property
     @pulumi.getter(name="excludeColumns")
@@ -43060,6 +43187,15 @@ class PipelineIngestionDefinitionTableConfigurationArgs:
     def sequence_bies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "sequence_bies", value)
 
+    @_builtins.property
+    @pulumi.getter(name="workdayReportParameters")
+    def workday_report_parameters(self) -> Optional[pulumi.Input['PipelineIngestionDefinitionTableConfigurationWorkdayReportParametersArgs']]:
+        return pulumi.get(self, "workday_report_parameters")
+
+    @workday_report_parameters.setter
+    def workday_report_parameters(self, value: Optional[pulumi.Input['PipelineIngestionDefinitionTableConfigurationWorkdayReportParametersArgs']]):
+        pulumi.set(self, "workday_report_parameters", value)
+
 
 if not MYPY:
     class PipelineIngestionDefinitionTableConfigurationQueryBasedConnectorConfigArgsDict(TypedDict):
@@ -43108,6 +43244,91 @@ class PipelineIngestionDefinitionTableConfigurationQueryBasedConnectorConfigArgs
     @hard_deletion_sync_min_interval_in_seconds.setter
     def hard_deletion_sync_min_interval_in_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "hard_deletion_sync_min_interval_in_seconds", value)
+
+
+if not MYPY:
+    class PipelineIngestionDefinitionTableConfigurationWorkdayReportParametersArgsDict(TypedDict):
+        incremental: NotRequired[pulumi.Input[_builtins.bool]]
+        parameters: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+        report_parameters: NotRequired[pulumi.Input[Sequence[pulumi.Input['PipelineIngestionDefinitionTableConfigurationWorkdayReportParametersReportParameterArgsDict']]]]
+elif False:
+    PipelineIngestionDefinitionTableConfigurationWorkdayReportParametersArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PipelineIngestionDefinitionTableConfigurationWorkdayReportParametersArgs:
+    def __init__(__self__, *,
+                 incremental: Optional[pulumi.Input[_builtins.bool]] = None,
+                 parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 report_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['PipelineIngestionDefinitionTableConfigurationWorkdayReportParametersReportParameterArgs']]]] = None):
+        if incremental is not None:
+            pulumi.set(__self__, "incremental", incremental)
+        if parameters is not None:
+            pulumi.set(__self__, "parameters", parameters)
+        if report_parameters is not None:
+            pulumi.set(__self__, "report_parameters", report_parameters)
+
+    @_builtins.property
+    @pulumi.getter
+    def incremental(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        return pulumi.get(self, "incremental")
+
+    @incremental.setter
+    def incremental(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "incremental", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def parameters(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        return pulumi.get(self, "parameters")
+
+    @parameters.setter
+    def parameters(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "parameters", value)
+
+    @_builtins.property
+    @pulumi.getter(name="reportParameters")
+    def report_parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PipelineIngestionDefinitionTableConfigurationWorkdayReportParametersReportParameterArgs']]]]:
+        return pulumi.get(self, "report_parameters")
+
+    @report_parameters.setter
+    def report_parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PipelineIngestionDefinitionTableConfigurationWorkdayReportParametersReportParameterArgs']]]]):
+        pulumi.set(self, "report_parameters", value)
+
+
+if not MYPY:
+    class PipelineIngestionDefinitionTableConfigurationWorkdayReportParametersReportParameterArgsDict(TypedDict):
+        key: NotRequired[pulumi.Input[_builtins.str]]
+        value: NotRequired[pulumi.Input[_builtins.str]]
+elif False:
+    PipelineIngestionDefinitionTableConfigurationWorkdayReportParametersReportParameterArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PipelineIngestionDefinitionTableConfigurationWorkdayReportParametersReportParameterArgs:
+    def __init__(__self__, *,
+                 key: Optional[pulumi.Input[_builtins.str]] = None,
+                 value: Optional[pulumi.Input[_builtins.str]] = None):
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "value", value)
 
 
 if not MYPY:
@@ -43971,6 +44192,9 @@ class QualityMonitorCustomMetricArgs:
 if not MYPY:
     class QualityMonitorDataClassificationConfigArgsDict(TypedDict):
         enabled: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Whether to enable data classification
+        """
 elif False:
     QualityMonitorDataClassificationConfigArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -43978,12 +44202,18 @@ elif False:
 class QualityMonitorDataClassificationConfigArgs:
     def __init__(__self__, *,
                  enabled: Optional[pulumi.Input[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] enabled: Whether to enable data classification
+        """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
 
     @_builtins.property
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether to enable data classification
+        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -44234,6 +44464,37 @@ class QualityMonitorNotificationsOnNewClassificationTagDetectedArgs:
     @email_addresses.setter
     def email_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "email_addresses", value)
+
+
+if not MYPY:
+    class QualityMonitorProviderConfigArgsDict(TypedDict):
+        workspace_id: pulumi.Input[_builtins.str]
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+elif False:
+    QualityMonitorProviderConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class QualityMonitorProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "workspace_id", value)
 
 
 if not MYPY:
@@ -45148,140 +45409,6 @@ class QueryParameterTextValueArgs:
 
 
 if not MYPY:
-    class RecipientFederationPolicyOidcPolicyArgsDict(TypedDict):
-        issuer: pulumi.Input[_builtins.str]
-        """
-        The required token issuer, as specified in the 'iss' claim of federated tokens
-        """
-        subject: pulumi.Input[_builtins.str]
-        """
-        The required token subject, as specified in the subject claim of federated tokens.
-        The subject claim identifies the identity of the user or machine accessing the resource.
-        Examples for Entra ID (AAD):
-        - U2M flow (group access): If the subject claim is `groups`, this must be the Object ID of the group in Entra ID.
-        - U2M flow (user access): If the subject claim is `oid`, this must be the Object ID of the user in Entra ID.
-        - M2M flow (OAuth App access): If the subject claim is `azp`, this must be the client ID of the OAuth app registered in Entra ID
-        """
-        subject_claim: pulumi.Input[_builtins.str]
-        """
-        The claim that contains the subject of the token.
-        Depending on the identity provider and the use case (U2M or M2M), this can vary:
-        - For Entra ID (AAD):
-        * U2M flow (group access): Use `groups`.
-        * U2M flow (user access): Use `oid`.
-        * M2M flow (OAuth App access): Use `azp`.
-        - For other IdPs, refer to the specific IdP documentation.
-
-        Supported `subject_claim` values are:
-        """
-        audiences: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The allowed token audiences, as specified in the 'aud' claim of federated tokens.
-        The audience identifier is intended to represent the recipient of the token.
-        Can be any non-empty string value. As long as the audience in the token matches at least one audience in the policy,
-        """
-elif False:
-    RecipientFederationPolicyOidcPolicyArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class RecipientFederationPolicyOidcPolicyArgs:
-    def __init__(__self__, *,
-                 issuer: pulumi.Input[_builtins.str],
-                 subject: pulumi.Input[_builtins.str],
-                 subject_claim: pulumi.Input[_builtins.str],
-                 audiences: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
-        """
-        :param pulumi.Input[_builtins.str] issuer: The required token issuer, as specified in the 'iss' claim of federated tokens
-        :param pulumi.Input[_builtins.str] subject: The required token subject, as specified in the subject claim of federated tokens.
-               The subject claim identifies the identity of the user or machine accessing the resource.
-               Examples for Entra ID (AAD):
-               - U2M flow (group access): If the subject claim is `groups`, this must be the Object ID of the group in Entra ID.
-               - U2M flow (user access): If the subject claim is `oid`, this must be the Object ID of the user in Entra ID.
-               - M2M flow (OAuth App access): If the subject claim is `azp`, this must be the client ID of the OAuth app registered in Entra ID
-        :param pulumi.Input[_builtins.str] subject_claim: The claim that contains the subject of the token.
-               Depending on the identity provider and the use case (U2M or M2M), this can vary:
-               - For Entra ID (AAD):
-               * U2M flow (group access): Use `groups`.
-               * U2M flow (user access): Use `oid`.
-               * M2M flow (OAuth App access): Use `azp`.
-               - For other IdPs, refer to the specific IdP documentation.
-               
-               Supported `subject_claim` values are:
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] audiences: The allowed token audiences, as specified in the 'aud' claim of federated tokens.
-               The audience identifier is intended to represent the recipient of the token.
-               Can be any non-empty string value. As long as the audience in the token matches at least one audience in the policy,
-        """
-        pulumi.set(__self__, "issuer", issuer)
-        pulumi.set(__self__, "subject", subject)
-        pulumi.set(__self__, "subject_claim", subject_claim)
-        if audiences is not None:
-            pulumi.set(__self__, "audiences", audiences)
-
-    @_builtins.property
-    @pulumi.getter
-    def issuer(self) -> pulumi.Input[_builtins.str]:
-        """
-        The required token issuer, as specified in the 'iss' claim of federated tokens
-        """
-        return pulumi.get(self, "issuer")
-
-    @issuer.setter
-    def issuer(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "issuer", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def subject(self) -> pulumi.Input[_builtins.str]:
-        """
-        The required token subject, as specified in the subject claim of federated tokens.
-        The subject claim identifies the identity of the user or machine accessing the resource.
-        Examples for Entra ID (AAD):
-        - U2M flow (group access): If the subject claim is `groups`, this must be the Object ID of the group in Entra ID.
-        - U2M flow (user access): If the subject claim is `oid`, this must be the Object ID of the user in Entra ID.
-        - M2M flow (OAuth App access): If the subject claim is `azp`, this must be the client ID of the OAuth app registered in Entra ID
-        """
-        return pulumi.get(self, "subject")
-
-    @subject.setter
-    def subject(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "subject", value)
-
-    @_builtins.property
-    @pulumi.getter(name="subjectClaim")
-    def subject_claim(self) -> pulumi.Input[_builtins.str]:
-        """
-        The claim that contains the subject of the token.
-        Depending on the identity provider and the use case (U2M or M2M), this can vary:
-        - For Entra ID (AAD):
-        * U2M flow (group access): Use `groups`.
-        * U2M flow (user access): Use `oid`.
-        * M2M flow (OAuth App access): Use `azp`.
-        - For other IdPs, refer to the specific IdP documentation.
-
-        Supported `subject_claim` values are:
-        """
-        return pulumi.get(self, "subject_claim")
-
-    @subject_claim.setter
-    def subject_claim(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "subject_claim", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def audiences(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        The allowed token audiences, as specified in the 'aud' claim of federated tokens.
-        The audience identifier is intended to represent the recipient of the token.
-        Can be any non-empty string value. As long as the audience in the token matches at least one audience in the policy,
-        """
-        return pulumi.get(self, "audiences")
-
-    @audiences.setter
-    def audiences(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
-        pulumi.set(self, "audiences", value)
-
-
-if not MYPY:
     class RecipientIpAccessListArgsDict(TypedDict):
         allowed_ip_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
         """
@@ -45497,6 +45624,117 @@ class RecipientTokenArgs:
 
 
 if not MYPY:
+    class RegisteredModelAliasArgsDict(TypedDict):
+        alias_name: NotRequired[pulumi.Input[_builtins.str]]
+        catalog_name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The name of the catalog where the schema and the registered model reside. *Change of this parameter forces recreation of the resource.*
+        """
+        id: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Equal to the full name of the model (`catalog_name.schema_name.name`) and used to identify the model uniquely across the metastore.
+        """
+        model_name: NotRequired[pulumi.Input[_builtins.str]]
+        schema_name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*
+        """
+        version_num: NotRequired[pulumi.Input[_builtins.int]]
+elif False:
+    RegisteredModelAliasArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RegisteredModelAliasArgs:
+    def __init__(__self__, *,
+                 alias_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 catalog_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 id: Optional[pulumi.Input[_builtins.str]] = None,
+                 model_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 schema_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 version_num: Optional[pulumi.Input[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.str] catalog_name: The name of the catalog where the schema and the registered model reside. *Change of this parameter forces recreation of the resource.*
+        :param pulumi.Input[_builtins.str] id: Equal to the full name of the model (`catalog_name.schema_name.name`) and used to identify the model uniquely across the metastore.
+        :param pulumi.Input[_builtins.str] schema_name: The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*
+        """
+        if alias_name is not None:
+            pulumi.set(__self__, "alias_name", alias_name)
+        if catalog_name is not None:
+            pulumi.set(__self__, "catalog_name", catalog_name)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if model_name is not None:
+            pulumi.set(__self__, "model_name", model_name)
+        if schema_name is not None:
+            pulumi.set(__self__, "schema_name", schema_name)
+        if version_num is not None:
+            pulumi.set(__self__, "version_num", version_num)
+
+    @_builtins.property
+    @pulumi.getter(name="aliasName")
+    def alias_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "alias_name")
+
+    @alias_name.setter
+    def alias_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "alias_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="catalogName")
+    def catalog_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The name of the catalog where the schema and the registered model reside. *Change of this parameter forces recreation of the resource.*
+        """
+        return pulumi.get(self, "catalog_name")
+
+    @catalog_name.setter
+    def catalog_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "catalog_name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Equal to the full name of the model (`catalog_name.schema_name.name`) and used to identify the model uniquely across the metastore.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="modelName")
+    def model_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "model_name")
+
+    @model_name.setter
+    def model_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "model_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="schemaName")
+    def schema_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*
+        """
+        return pulumi.get(self, "schema_name")
+
+    @schema_name.setter
+    def schema_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "schema_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="versionNum")
+    def version_num(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "version_num")
+
+    @version_num.setter
+    def version_num(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "version_num", value)
+
+
+if not MYPY:
     class RepoSparseCheckoutArgsDict(TypedDict):
         patterns: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
         """
@@ -45562,6 +45800,171 @@ class RestrictWorkspaceAdminsSettingRestrictWorkspaceAdminsArgs:
     @status.setter
     def status(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "status", value)
+
+
+if not MYPY:
+    class RfaAccessRequestDestinationsDestinationArgsDict(TypedDict):
+        destination_id: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The identifier for the destination. This is the email address for EMAIL destinations, the URL for URL destinations,
+        or the unique Databricks notification destination ID for all other external destinations
+        """
+        destination_type: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The type of the destination. Possible values are: `EMAIL`, `GENERIC_WEBHOOK`, `MICROSOFT_TEAMS`, `SLACK`, `URL`
+        """
+        special_destination: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        This field is used to denote whether the destination is the email of the owner of the securable object.
+        The special destination cannot be assigned to a securable and only represents the default destination of the securable.
+        The securable types that support default special destinations are: "catalog", "external_location", "connection", "credential", and "metastore".
+        The **destination_type** of a **special_destination** is always EMAIL. Possible values are: `SPECIAL_DESTINATION_CATALOG_OWNER`, `SPECIAL_DESTINATION_CONNECTION_OWNER`, `SPECIAL_DESTINATION_CREDENTIAL_OWNER`, `SPECIAL_DESTINATION_EXTERNAL_LOCATION_OWNER`, `SPECIAL_DESTINATION_METASTORE_OWNER`
+        """
+elif False:
+    RfaAccessRequestDestinationsDestinationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RfaAccessRequestDestinationsDestinationArgs:
+    def __init__(__self__, *,
+                 destination_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 destination_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 special_destination: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] destination_id: The identifier for the destination. This is the email address for EMAIL destinations, the URL for URL destinations,
+               or the unique Databricks notification destination ID for all other external destinations
+        :param pulumi.Input[_builtins.str] destination_type: The type of the destination. Possible values are: `EMAIL`, `GENERIC_WEBHOOK`, `MICROSOFT_TEAMS`, `SLACK`, `URL`
+        :param pulumi.Input[_builtins.str] special_destination: This field is used to denote whether the destination is the email of the owner of the securable object.
+               The special destination cannot be assigned to a securable and only represents the default destination of the securable.
+               The securable types that support default special destinations are: "catalog", "external_location", "connection", "credential", and "metastore".
+               The **destination_type** of a **special_destination** is always EMAIL. Possible values are: `SPECIAL_DESTINATION_CATALOG_OWNER`, `SPECIAL_DESTINATION_CONNECTION_OWNER`, `SPECIAL_DESTINATION_CREDENTIAL_OWNER`, `SPECIAL_DESTINATION_EXTERNAL_LOCATION_OWNER`, `SPECIAL_DESTINATION_METASTORE_OWNER`
+        """
+        if destination_id is not None:
+            pulumi.set(__self__, "destination_id", destination_id)
+        if destination_type is not None:
+            pulumi.set(__self__, "destination_type", destination_type)
+        if special_destination is not None:
+            pulumi.set(__self__, "special_destination", special_destination)
+
+    @_builtins.property
+    @pulumi.getter(name="destinationId")
+    def destination_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The identifier for the destination. This is the email address for EMAIL destinations, the URL for URL destinations,
+        or the unique Databricks notification destination ID for all other external destinations
+        """
+        return pulumi.get(self, "destination_id")
+
+    @destination_id.setter
+    def destination_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "destination_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="destinationType")
+    def destination_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The type of the destination. Possible values are: `EMAIL`, `GENERIC_WEBHOOK`, `MICROSOFT_TEAMS`, `SLACK`, `URL`
+        """
+        return pulumi.get(self, "destination_type")
+
+    @destination_type.setter
+    def destination_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "destination_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="specialDestination")
+    def special_destination(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        This field is used to denote whether the destination is the email of the owner of the securable object.
+        The special destination cannot be assigned to a securable and only represents the default destination of the securable.
+        The securable types that support default special destinations are: "catalog", "external_location", "connection", "credential", and "metastore".
+        The **destination_type** of a **special_destination** is always EMAIL. Possible values are: `SPECIAL_DESTINATION_CATALOG_OWNER`, `SPECIAL_DESTINATION_CONNECTION_OWNER`, `SPECIAL_DESTINATION_CREDENTIAL_OWNER`, `SPECIAL_DESTINATION_EXTERNAL_LOCATION_OWNER`, `SPECIAL_DESTINATION_METASTORE_OWNER`
+        """
+        return pulumi.get(self, "special_destination")
+
+    @special_destination.setter
+    def special_destination(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "special_destination", value)
+
+
+if not MYPY:
+    class RfaAccessRequestDestinationsSecurableArgsDict(TypedDict):
+        full_name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Required. The full name of the catalog/schema/table.
+        Optional if resource_name is present
+        """
+        provider_share: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Optional. The name of the Share object that contains the securable when the securable is
+        getting shared in D2D Delta Sharing
+        """
+        type: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Required. The type of securable (catalog/schema/table).
+        Optional if resource_name is present. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+        """
+elif False:
+    RfaAccessRequestDestinationsSecurableArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RfaAccessRequestDestinationsSecurableArgs:
+    def __init__(__self__, *,
+                 full_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_share: Optional[pulumi.Input[_builtins.str]] = None,
+                 type: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] full_name: Required. The full name of the catalog/schema/table.
+               Optional if resource_name is present
+        :param pulumi.Input[_builtins.str] provider_share: Optional. The name of the Share object that contains the securable when the securable is
+               getting shared in D2D Delta Sharing
+        :param pulumi.Input[_builtins.str] type: Required. The type of securable (catalog/schema/table).
+               Optional if resource_name is present. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+        """
+        if full_name is not None:
+            pulumi.set(__self__, "full_name", full_name)
+        if provider_share is not None:
+            pulumi.set(__self__, "provider_share", provider_share)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter(name="fullName")
+    def full_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Required. The full name of the catalog/schema/table.
+        Optional if resource_name is present
+        """
+        return pulumi.get(self, "full_name")
+
+    @full_name.setter
+    def full_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "full_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="providerShare")
+    def provider_share(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Optional. The name of the Share object that contains the securable when the securable is
+        getting shared in D2D Delta Sharing
+        """
+        return pulumi.get(self, "provider_share")
+
+    @provider_share.setter
+    def provider_share(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "provider_share", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Required. The type of securable (catalog/schema/table).
+        Optional if resource_name is present. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "type", value)
 
 
 if not MYPY:
@@ -45799,6 +46202,11 @@ if not MYPY:
         Description about the object.
         """
         content: NotRequired[pulumi.Input[_builtins.str]]
+        effective_cdf_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+        effective_history_data_sharing_status: NotRequired[pulumi.Input[_builtins.str]]
+        effective_shared_as: NotRequired[pulumi.Input[_builtins.str]]
+        effective_start_version: NotRequired[pulumi.Input[_builtins.int]]
+        effective_string_shared_as: NotRequired[pulumi.Input[_builtins.str]]
         history_data_sharing_status: NotRequired[pulumi.Input[_builtins.str]]
         """
         Whether to enable history sharing, one of: `ENABLED`, `DISABLED`. When a table has history sharing enabled, recipients can query table data by version, starting from the current table version. If not specified, clients can only query starting from the version of the object at the time it was added to the share. *NOTE*: The start_version should be less than or equal the current version of the object. When this field is set, field `cdf_enabled` can not be set.
@@ -45832,6 +46240,11 @@ class ShareObjectArgs:
                  cdf_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  comment: Optional[pulumi.Input[_builtins.str]] = None,
                  content: Optional[pulumi.Input[_builtins.str]] = None,
+                 effective_cdf_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 effective_history_data_sharing_status: Optional[pulumi.Input[_builtins.str]] = None,
+                 effective_shared_as: Optional[pulumi.Input[_builtins.str]] = None,
+                 effective_start_version: Optional[pulumi.Input[_builtins.int]] = None,
+                 effective_string_shared_as: Optional[pulumi.Input[_builtins.str]] = None,
                  history_data_sharing_status: Optional[pulumi.Input[_builtins.str]] = None,
                  partitions: Optional[pulumi.Input[Sequence[pulumi.Input['ShareObjectPartitionArgs']]]] = None,
                  shared_as: Optional[pulumi.Input[_builtins.str]] = None,
@@ -45862,6 +46275,16 @@ class ShareObjectArgs:
             pulumi.set(__self__, "comment", comment)
         if content is not None:
             pulumi.set(__self__, "content", content)
+        if effective_cdf_enabled is not None:
+            pulumi.set(__self__, "effective_cdf_enabled", effective_cdf_enabled)
+        if effective_history_data_sharing_status is not None:
+            pulumi.set(__self__, "effective_history_data_sharing_status", effective_history_data_sharing_status)
+        if effective_shared_as is not None:
+            pulumi.set(__self__, "effective_shared_as", effective_shared_as)
+        if effective_start_version is not None:
+            pulumi.set(__self__, "effective_start_version", effective_start_version)
+        if effective_string_shared_as is not None:
+            pulumi.set(__self__, "effective_string_shared_as", effective_string_shared_as)
         if history_data_sharing_status is not None:
             pulumi.set(__self__, "history_data_sharing_status", history_data_sharing_status)
         if partitions is not None:
@@ -45949,6 +46372,51 @@ class ShareObjectArgs:
     @content.setter
     def content(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "content", value)
+
+    @_builtins.property
+    @pulumi.getter(name="effectiveCdfEnabled")
+    def effective_cdf_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        return pulumi.get(self, "effective_cdf_enabled")
+
+    @effective_cdf_enabled.setter
+    def effective_cdf_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "effective_cdf_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="effectiveHistoryDataSharingStatus")
+    def effective_history_data_sharing_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "effective_history_data_sharing_status")
+
+    @effective_history_data_sharing_status.setter
+    def effective_history_data_sharing_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "effective_history_data_sharing_status", value)
+
+    @_builtins.property
+    @pulumi.getter(name="effectiveSharedAs")
+    def effective_shared_as(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "effective_shared_as")
+
+    @effective_shared_as.setter
+    def effective_shared_as(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "effective_shared_as", value)
+
+    @_builtins.property
+    @pulumi.getter(name="effectiveStartVersion")
+    def effective_start_version(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "effective_start_version")
+
+    @effective_start_version.setter
+    def effective_start_version(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "effective_start_version", value)
+
+    @_builtins.property
+    @pulumi.getter(name="effectiveStringSharedAs")
+    def effective_string_shared_as(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "effective_string_shared_as")
+
+    @effective_string_shared_as.setter
+    def effective_string_shared_as(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "effective_string_shared_as", value)
 
     @_builtins.property
     @pulumi.getter(name="historyDataSharingStatus")
@@ -46139,6 +46607,37 @@ class ShareObjectPartitionValueArgs:
     @value.setter
     def value(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class ShareProviderConfigArgsDict(TypedDict):
+        workspace_id: pulumi.Input[_builtins.str]
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+elif False:
+    ShareProviderConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ShareProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "workspace_id", value)
 
 
 if not MYPY:
@@ -48002,12 +48501,18 @@ if not MYPY:
     class StorageCredentialAwsIamRoleArgsDict(TypedDict):
         role_arn: pulumi.Input[_builtins.str]
         """
-        The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
+        The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`.
 
         `azure_managed_identity` optional configuration block for using managed identity as credential details for Azure (recommended over service principal):
         """
         external_id: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The external ID used in role assumption to prevent the confused deputy problem.
+        """
         unity_catalog_iam_arn: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The Amazon Resource Name (ARN) of the AWS IAM user managed by Databricks. This is the identity that is going to assume the AWS IAM role.
+        """
 elif False:
     StorageCredentialAwsIamRoleArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -48018,9 +48523,11 @@ class StorageCredentialAwsIamRoleArgs:
                  external_id: Optional[pulumi.Input[_builtins.str]] = None,
                  unity_catalog_iam_arn: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] role_arn: The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
+        :param pulumi.Input[_builtins.str] role_arn: The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`.
                
                `azure_managed_identity` optional configuration block for using managed identity as credential details for Azure (recommended over service principal):
+        :param pulumi.Input[_builtins.str] external_id: The external ID used in role assumption to prevent the confused deputy problem.
+        :param pulumi.Input[_builtins.str] unity_catalog_iam_arn: The Amazon Resource Name (ARN) of the AWS IAM user managed by Databricks. This is the identity that is going to assume the AWS IAM role.
         """
         pulumi.set(__self__, "role_arn", role_arn)
         if external_id is not None:
@@ -48032,7 +48539,7 @@ class StorageCredentialAwsIamRoleArgs:
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> pulumi.Input[_builtins.str]:
         """
-        The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
+        The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`.
 
         `azure_managed_identity` optional configuration block for using managed identity as credential details for Azure (recommended over service principal):
         """
@@ -48045,6 +48552,9 @@ class StorageCredentialAwsIamRoleArgs:
     @_builtins.property
     @pulumi.getter(name="externalId")
     def external_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The external ID used in role assumption to prevent the confused deputy problem.
+        """
         return pulumi.get(self, "external_id")
 
     @external_id.setter
@@ -48054,6 +48564,9 @@ class StorageCredentialAwsIamRoleArgs:
     @_builtins.property
     @pulumi.getter(name="unityCatalogIamArn")
     def unity_catalog_iam_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The Amazon Resource Name (ARN) of the AWS IAM user managed by Databricks. This is the identity that is going to assume the AWS IAM role.
+        """
         return pulumi.get(self, "unity_catalog_iam_arn")
 
     @unity_catalog_iam_arn.setter
@@ -49164,7 +49677,7 @@ if not MYPY:
     class WorkspaceSettingV2AibiDashboardEmbeddingAccessPolicyArgsDict(TypedDict):
         access_policy_type: pulumi.Input[_builtins.str]
         """
-        . Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
+        Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
         """
 elif False:
     WorkspaceSettingV2AibiDashboardEmbeddingAccessPolicyArgsDict: TypeAlias = Mapping[str, Any]
@@ -49174,7 +49687,7 @@ class WorkspaceSettingV2AibiDashboardEmbeddingAccessPolicyArgs:
     def __init__(__self__, *,
                  access_policy_type: pulumi.Input[_builtins.str]):
         """
-        :param pulumi.Input[_builtins.str] access_policy_type: . Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
+        :param pulumi.Input[_builtins.str] access_policy_type: Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
         """
         pulumi.set(__self__, "access_policy_type", access_policy_type)
 
@@ -49182,7 +49695,7 @@ class WorkspaceSettingV2AibiDashboardEmbeddingAccessPolicyArgs:
     @pulumi.getter(name="accessPolicyType")
     def access_policy_type(self) -> pulumi.Input[_builtins.str]:
         """
-        . Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
+        Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
         """
         return pulumi.get(self, "access_policy_type")
 
@@ -49388,11 +49901,11 @@ if not MYPY:
     class WorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgsDict(TypedDict):
         day_of_week: NotRequired[pulumi.Input[_builtins.str]]
         """
-        . Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
+        Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
         """
         frequency: NotRequired[pulumi.Input[_builtins.str]]
         """
-        . Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
+        Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
         """
         window_start_time: NotRequired[pulumi.Input['WorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgsDict']]
 elif False:
@@ -49405,8 +49918,8 @@ class WorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayB
                  frequency: Optional[pulumi.Input[_builtins.str]] = None,
                  window_start_time: Optional[pulumi.Input['WorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs']] = None):
         """
-        :param pulumi.Input[_builtins.str] day_of_week: . Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
-        :param pulumi.Input[_builtins.str] frequency: . Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
+        :param pulumi.Input[_builtins.str] day_of_week: Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
+        :param pulumi.Input[_builtins.str] frequency: Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
         """
         if day_of_week is not None:
             pulumi.set(__self__, "day_of_week", day_of_week)
@@ -49419,7 +49932,7 @@ class WorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayB
     @pulumi.getter(name="dayOfWeek")
     def day_of_week(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        . Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
+        Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
         """
         return pulumi.get(self, "day_of_week")
 
@@ -49431,7 +49944,7 @@ class WorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayB
     @pulumi.getter
     def frequency(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        . Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
+        Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
         """
         return pulumi.get(self, "frequency")
 
@@ -49509,32 +50022,10 @@ class WorkspaceSettingV2BooleanValArgs:
 
 
 if not MYPY:
-    class WorkspaceSettingV2DefaultDataSecurityModeArgsDict(TypedDict):
-        status: pulumi.Input[_builtins.str]
-elif False:
-    WorkspaceSettingV2DefaultDataSecurityModeArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class WorkspaceSettingV2DefaultDataSecurityModeArgs:
-    def __init__(__self__, *,
-                 status: pulumi.Input[_builtins.str]):
-        pulumi.set(__self__, "status", status)
-
-    @_builtins.property
-    @pulumi.getter
-    def status(self) -> pulumi.Input[_builtins.str]:
-        return pulumi.get(self, "status")
-
-    @status.setter
-    def status(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "status", value)
-
-
-if not MYPY:
     class WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgsDict(TypedDict):
         access_policy_type: pulumi.Input[_builtins.str]
         """
-        . Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
+        Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
         """
 elif False:
     WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgsDict: TypeAlias = Mapping[str, Any]
@@ -49544,7 +50035,7 @@ class WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgs:
     def __init__(__self__, *,
                  access_policy_type: pulumi.Input[_builtins.str]):
         """
-        :param pulumi.Input[_builtins.str] access_policy_type: . Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
+        :param pulumi.Input[_builtins.str] access_policy_type: Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
         """
         pulumi.set(__self__, "access_policy_type", access_policy_type)
 
@@ -49552,7 +50043,7 @@ class WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgs:
     @pulumi.getter(name="accessPolicyType")
     def access_policy_type(self) -> pulumi.Input[_builtins.str]:
         """
-        . Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
+        Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
         """
         return pulumi.get(self, "access_policy_type")
 
@@ -49758,11 +50249,11 @@ if not MYPY:
     class WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgsDict(TypedDict):
         day_of_week: NotRequired[pulumi.Input[_builtins.str]]
         """
-        . Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
+        Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
         """
         frequency: NotRequired[pulumi.Input[_builtins.str]]
         """
-        . Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
+        Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
         """
         window_start_time: NotRequired[pulumi.Input['WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgsDict']]
 elif False:
@@ -49775,8 +50266,8 @@ class WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindo
                  frequency: Optional[pulumi.Input[_builtins.str]] = None,
                  window_start_time: Optional[pulumi.Input['WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs']] = None):
         """
-        :param pulumi.Input[_builtins.str] day_of_week: . Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
-        :param pulumi.Input[_builtins.str] frequency: . Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
+        :param pulumi.Input[_builtins.str] day_of_week: Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
+        :param pulumi.Input[_builtins.str] frequency: Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
         """
         if day_of_week is not None:
             pulumi.set(__self__, "day_of_week", day_of_week)
@@ -49789,7 +50280,7 @@ class WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindo
     @pulumi.getter(name="dayOfWeek")
     def day_of_week(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        . Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
+        Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
         """
         return pulumi.get(self, "day_of_week")
 
@@ -49801,7 +50292,7 @@ class WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindo
     @pulumi.getter
     def frequency(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        . Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
+        Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
         """
         return pulumi.get(self, "frequency")
 
@@ -49879,28 +50370,6 @@ class WorkspaceSettingV2EffectiveBooleanValArgs:
 
 
 if not MYPY:
-    class WorkspaceSettingV2EffectiveDefaultDataSecurityModeArgsDict(TypedDict):
-        status: pulumi.Input[_builtins.str]
-elif False:
-    WorkspaceSettingV2EffectiveDefaultDataSecurityModeArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class WorkspaceSettingV2EffectiveDefaultDataSecurityModeArgs:
-    def __init__(__self__, *,
-                 status: pulumi.Input[_builtins.str]):
-        pulumi.set(__self__, "status", status)
-
-    @_builtins.property
-    @pulumi.getter
-    def status(self) -> pulumi.Input[_builtins.str]:
-        return pulumi.get(self, "status")
-
-    @status.setter
-    def status(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "status", value)
-
-
-if not MYPY:
     class WorkspaceSettingV2EffectiveIntegerValArgsDict(TypedDict):
         value: NotRequired[pulumi.Input[_builtins.int]]
 elif False:
@@ -49949,6 +50418,9 @@ class WorkspaceSettingV2EffectivePersonalComputeArgs:
 if not MYPY:
     class WorkspaceSettingV2EffectiveRestrictWorkspaceAdminsArgsDict(TypedDict):
         status: pulumi.Input[_builtins.str]
+        """
+        Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
+        """
 elif False:
     WorkspaceSettingV2EffectiveRestrictWorkspaceAdminsArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -49956,11 +50428,17 @@ elif False:
 class WorkspaceSettingV2EffectiveRestrictWorkspaceAdminsArgs:
     def __init__(__self__, *,
                  status: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] status: Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
+        """
         pulumi.set(__self__, "status", status)
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> pulumi.Input[_builtins.str]:
+        """
+        Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
+        """
         return pulumi.get(self, "status")
 
     @status.setter
@@ -50040,6 +50518,9 @@ class WorkspaceSettingV2PersonalComputeArgs:
 if not MYPY:
     class WorkspaceSettingV2RestrictWorkspaceAdminsArgsDict(TypedDict):
         status: pulumi.Input[_builtins.str]
+        """
+        Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
+        """
 elif False:
     WorkspaceSettingV2RestrictWorkspaceAdminsArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -50047,11 +50528,17 @@ elif False:
 class WorkspaceSettingV2RestrictWorkspaceAdminsArgs:
     def __init__(__self__, *,
                  status: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] status: Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
+        """
         pulumi.set(__self__, "status", status)
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> pulumi.Input[_builtins.str]:
+        """
+        Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
+        """
         return pulumi.get(self, "status")
 
     @status.setter
@@ -50083,2777 +50570,186 @@ class WorkspaceSettingV2StringValArgs:
 
 
 if not MYPY:
-    class GetAccountFederationPolicyOidcPolicyArgsDict(TypedDict):
-        audiences: NotRequired[Sequence[_builtins.str]]
-        """
-        (list of string) - The allowed token audiences, as specified in the 'aud' claim of federated tokens.
-        The audience identifier is intended to represent the recipient of the token.
-        Can be any non-empty string value. As long as the audience in the token matches
-        at least one audience in the policy, the token is considered a match. If audiences
-        is unspecified, defaults to your Databricks account id
-        """
-        issuer: NotRequired[_builtins.str]
-        """
-        (string) - The required token issuer, as specified in the 'iss' claim of federated tokens
-        """
-        jwks_json: NotRequired[_builtins.str]
-        """
-        (string) - The public keys used to validate the signature of federated tokens, in JWKS format.
-        Most use cases should not need to specify this field. If jwks_uri and jwks_json
-        are both unspecified (recommended), Databricks automatically fetches the public
-        keys from your issuer’s well known endpoint. Databricks strongly recommends
-        relying on your issuer’s well known endpoint for discovering public keys
-        """
-        jwks_uri: NotRequired[_builtins.str]
-        """
-        (string) - URL of the public keys used to validate the signature of federated tokens, in
-        JWKS format. Most use cases should not need to specify this field. If jwks_uri
-        and jwks_json are both unspecified (recommended), Databricks automatically
-        fetches the public keys from your issuer’s well known endpoint. Databricks
-        strongly recommends relying on your issuer’s well known endpoint for discovering
-        public keys
-        """
-        subject: NotRequired[_builtins.str]
-        """
-        (string) - The required token subject, as specified in the subject claim of federated tokens.
-        Must be specified for service principal federation policies. Must not be specified
-        for account federation policies
-        """
-        subject_claim: NotRequired[_builtins.str]
-        """
-        (string) - The claim that contains the subject of the token. If unspecified, the default value
-        is 'sub'
-        """
+    class GetAppProviderConfigArgsDict(TypedDict):
+        workspace_id: _builtins.str
 elif False:
-    GetAccountFederationPolicyOidcPolicyArgsDict: TypeAlias = Mapping[str, Any]
+    GetAppProviderConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GetAccountFederationPolicyOidcPolicyArgs:
+class GetAppProviderConfigArgs:
     def __init__(__self__, *,
-                 audiences: Optional[Sequence[_builtins.str]] = None,
-                 issuer: Optional[_builtins.str] = None,
-                 jwks_json: Optional[_builtins.str] = None,
-                 jwks_uri: Optional[_builtins.str] = None,
-                 subject: Optional[_builtins.str] = None,
-                 subject_claim: Optional[_builtins.str] = None):
-        """
-        :param Sequence[_builtins.str] audiences: (list of string) - The allowed token audiences, as specified in the 'aud' claim of federated tokens.
-               The audience identifier is intended to represent the recipient of the token.
-               Can be any non-empty string value. As long as the audience in the token matches
-               at least one audience in the policy, the token is considered a match. If audiences
-               is unspecified, defaults to your Databricks account id
-        :param _builtins.str issuer: (string) - The required token issuer, as specified in the 'iss' claim of federated tokens
-        :param _builtins.str jwks_json: (string) - The public keys used to validate the signature of federated tokens, in JWKS format.
-               Most use cases should not need to specify this field. If jwks_uri and jwks_json
-               are both unspecified (recommended), Databricks automatically fetches the public
-               keys from your issuer’s well known endpoint. Databricks strongly recommends
-               relying on your issuer’s well known endpoint for discovering public keys
-        :param _builtins.str jwks_uri: (string) - URL of the public keys used to validate the signature of federated tokens, in
-               JWKS format. Most use cases should not need to specify this field. If jwks_uri
-               and jwks_json are both unspecified (recommended), Databricks automatically
-               fetches the public keys from your issuer’s well known endpoint. Databricks
-               strongly recommends relying on your issuer’s well known endpoint for discovering
-               public keys
-        :param _builtins.str subject: (string) - The required token subject, as specified in the subject claim of federated tokens.
-               Must be specified for service principal federation policies. Must not be specified
-               for account federation policies
-        :param _builtins.str subject_claim: (string) - The claim that contains the subject of the token. If unspecified, the default value
-               is 'sub'
-        """
-        if audiences is not None:
-            pulumi.set(__self__, "audiences", audiences)
-        if issuer is not None:
-            pulumi.set(__self__, "issuer", issuer)
-        if jwks_json is not None:
-            pulumi.set(__self__, "jwks_json", jwks_json)
-        if jwks_uri is not None:
-            pulumi.set(__self__, "jwks_uri", jwks_uri)
-        if subject is not None:
-            pulumi.set(__self__, "subject", subject)
-        if subject_claim is not None:
-            pulumi.set(__self__, "subject_claim", subject_claim)
+                 workspace_id: _builtins.str):
+        pulumi.set(__self__, "workspace_id", workspace_id)
 
     @_builtins.property
-    @pulumi.getter
-    def audiences(self) -> Optional[Sequence[_builtins.str]]:
-        """
-        (list of string) - The allowed token audiences, as specified in the 'aud' claim of federated tokens.
-        The audience identifier is intended to represent the recipient of the token.
-        Can be any non-empty string value. As long as the audience in the token matches
-        at least one audience in the policy, the token is considered a match. If audiences
-        is unspecified, defaults to your Databricks account id
-        """
-        return pulumi.get(self, "audiences")
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.str:
+        return pulumi.get(self, "workspace_id")
 
-    @audiences.setter
-    def audiences(self, value: Optional[Sequence[_builtins.str]]):
-        pulumi.set(self, "audiences", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def issuer(self) -> Optional[_builtins.str]:
-        """
-        (string) - The required token issuer, as specified in the 'iss' claim of federated tokens
-        """
-        return pulumi.get(self, "issuer")
-
-    @issuer.setter
-    def issuer(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "issuer", value)
-
-    @_builtins.property
-    @pulumi.getter(name="jwksJson")
-    def jwks_json(self) -> Optional[_builtins.str]:
-        """
-        (string) - The public keys used to validate the signature of federated tokens, in JWKS format.
-        Most use cases should not need to specify this field. If jwks_uri and jwks_json
-        are both unspecified (recommended), Databricks automatically fetches the public
-        keys from your issuer’s well known endpoint. Databricks strongly recommends
-        relying on your issuer’s well known endpoint for discovering public keys
-        """
-        return pulumi.get(self, "jwks_json")
-
-    @jwks_json.setter
-    def jwks_json(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "jwks_json", value)
-
-    @_builtins.property
-    @pulumi.getter(name="jwksUri")
-    def jwks_uri(self) -> Optional[_builtins.str]:
-        """
-        (string) - URL of the public keys used to validate the signature of federated tokens, in
-        JWKS format. Most use cases should not need to specify this field. If jwks_uri
-        and jwks_json are both unspecified (recommended), Databricks automatically
-        fetches the public keys from your issuer’s well known endpoint. Databricks
-        strongly recommends relying on your issuer’s well known endpoint for discovering
-        public keys
-        """
-        return pulumi.get(self, "jwks_uri")
-
-    @jwks_uri.setter
-    def jwks_uri(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "jwks_uri", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def subject(self) -> Optional[_builtins.str]:
-        """
-        (string) - The required token subject, as specified in the subject claim of federated tokens.
-        Must be specified for service principal federation policies. Must not be specified
-        for account federation policies
-        """
-        return pulumi.get(self, "subject")
-
-    @subject.setter
-    def subject(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "subject", value)
-
-    @_builtins.property
-    @pulumi.getter(name="subjectClaim")
-    def subject_claim(self) -> Optional[_builtins.str]:
-        """
-        (string) - The claim that contains the subject of the token. If unspecified, the default value
-        is 'sub'
-        """
-        return pulumi.get(self, "subject_claim")
-
-    @subject_claim.setter
-    def subject_claim(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "subject_claim", value)
+    @workspace_id.setter
+    def workspace_id(self, value: _builtins.str):
+        pulumi.set(self, "workspace_id", value)
 
 
 if not MYPY:
-    class GetAccountNetworkPolicyEgressArgsDict(TypedDict):
-        network_access: NotRequired['GetAccountNetworkPolicyEgressNetworkAccessArgsDict']
-        """
-        (EgressNetworkPolicyNetworkAccessPolicy) - The access policy enforced for egress traffic to the internet
-        """
+    class GetAppsProviderConfigArgsDict(TypedDict):
+        workspace_id: _builtins.str
 elif False:
-    GetAccountNetworkPolicyEgressArgsDict: TypeAlias = Mapping[str, Any]
+    GetAppsProviderConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GetAccountNetworkPolicyEgressArgs:
+class GetAppsProviderConfigArgs:
     def __init__(__self__, *,
-                 network_access: Optional['GetAccountNetworkPolicyEgressNetworkAccessArgs'] = None):
-        """
-        :param 'GetAccountNetworkPolicyEgressNetworkAccessArgs' network_access: (EgressNetworkPolicyNetworkAccessPolicy) - The access policy enforced for egress traffic to the internet
-        """
-        if network_access is not None:
-            pulumi.set(__self__, "network_access", network_access)
+                 workspace_id: _builtins.str):
+        pulumi.set(__self__, "workspace_id", workspace_id)
 
     @_builtins.property
-    @pulumi.getter(name="networkAccess")
-    def network_access(self) -> Optional['GetAccountNetworkPolicyEgressNetworkAccessArgs']:
-        """
-        (EgressNetworkPolicyNetworkAccessPolicy) - The access policy enforced for egress traffic to the internet
-        """
-        return pulumi.get(self, "network_access")
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.str:
+        return pulumi.get(self, "workspace_id")
 
-    @network_access.setter
-    def network_access(self, value: Optional['GetAccountNetworkPolicyEgressNetworkAccessArgs']):
-        pulumi.set(self, "network_access", value)
+    @workspace_id.setter
+    def workspace_id(self, value: _builtins.str):
+        pulumi.set(self, "workspace_id", value)
 
 
 if not MYPY:
-    class GetAccountNetworkPolicyEgressNetworkAccessArgsDict(TypedDict):
-        restriction_mode: _builtins.str
+    class GetBudgetPoliciesFilterByArgsDict(TypedDict):
+        creator_user_id: NotRequired[_builtins.int]
         """
-        (string) - The restriction mode that controls how serverless workloads can access the internet. Possible values are: `FULL_ACCESS`, `RESTRICTED_ACCESS`
+        The policy creator user id to be filtered on.
+        If unspecified, all policies will be returned
         """
-        allowed_internet_destinations: NotRequired[Sequence['GetAccountNetworkPolicyEgressNetworkAccessAllowedInternetDestinationArgsDict']]
+        creator_user_name: NotRequired[_builtins.str]
         """
-        (list of EgressNetworkPolicyNetworkAccessPolicyInternetDestination) - List of internet destinations that serverless workloads are allowed to access when in RESTRICTED_ACCESS mode
+        The policy creator user name to be filtered on.
+        If unspecified, all policies will be returned
         """
-        allowed_storage_destinations: NotRequired[Sequence['GetAccountNetworkPolicyEgressNetworkAccessAllowedStorageDestinationArgsDict']]
+        policy_name: NotRequired[_builtins.str]
         """
-        (list of EgressNetworkPolicyNetworkAccessPolicyStorageDestination) - List of storage destinations that serverless workloads are allowed to access when in RESTRICTED_ACCESS mode
-        """
-        policy_enforcement: NotRequired['GetAccountNetworkPolicyEgressNetworkAccessPolicyEnforcementArgsDict']
-        """
-        (EgressNetworkPolicyNetworkAccessPolicyPolicyEnforcement) - Optional. When policy_enforcement is not provided, we default to ENFORCE_MODE_ALL_SERVICES
+        (string) - The name of the policy.
+        - Must be unique among active policies.
+        - Can contain only characters from the ISO 8859-1 (latin1) set.
+        - Can't start with reserved keywords such as `databricks:default-policy`
         """
 elif False:
-    GetAccountNetworkPolicyEgressNetworkAccessArgsDict: TypeAlias = Mapping[str, Any]
+    GetBudgetPoliciesFilterByArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GetAccountNetworkPolicyEgressNetworkAccessArgs:
+class GetBudgetPoliciesFilterByArgs:
     def __init__(__self__, *,
-                 restriction_mode: _builtins.str,
-                 allowed_internet_destinations: Optional[Sequence['GetAccountNetworkPolicyEgressNetworkAccessAllowedInternetDestinationArgs']] = None,
-                 allowed_storage_destinations: Optional[Sequence['GetAccountNetworkPolicyEgressNetworkAccessAllowedStorageDestinationArgs']] = None,
-                 policy_enforcement: Optional['GetAccountNetworkPolicyEgressNetworkAccessPolicyEnforcementArgs'] = None):
+                 creator_user_id: Optional[_builtins.int] = None,
+                 creator_user_name: Optional[_builtins.str] = None,
+                 policy_name: Optional[_builtins.str] = None):
         """
-        :param _builtins.str restriction_mode: (string) - The restriction mode that controls how serverless workloads can access the internet. Possible values are: `FULL_ACCESS`, `RESTRICTED_ACCESS`
-        :param Sequence['GetAccountNetworkPolicyEgressNetworkAccessAllowedInternetDestinationArgs'] allowed_internet_destinations: (list of EgressNetworkPolicyNetworkAccessPolicyInternetDestination) - List of internet destinations that serverless workloads are allowed to access when in RESTRICTED_ACCESS mode
-        :param Sequence['GetAccountNetworkPolicyEgressNetworkAccessAllowedStorageDestinationArgs'] allowed_storage_destinations: (list of EgressNetworkPolicyNetworkAccessPolicyStorageDestination) - List of storage destinations that serverless workloads are allowed to access when in RESTRICTED_ACCESS mode
-        :param 'GetAccountNetworkPolicyEgressNetworkAccessPolicyEnforcementArgs' policy_enforcement: (EgressNetworkPolicyNetworkAccessPolicyPolicyEnforcement) - Optional. When policy_enforcement is not provided, we default to ENFORCE_MODE_ALL_SERVICES
+        :param _builtins.int creator_user_id: The policy creator user id to be filtered on.
+               If unspecified, all policies will be returned
+        :param _builtins.str creator_user_name: The policy creator user name to be filtered on.
+               If unspecified, all policies will be returned
+        :param _builtins.str policy_name: (string) - The name of the policy.
+               - Must be unique among active policies.
+               - Can contain only characters from the ISO 8859-1 (latin1) set.
+               - Can't start with reserved keywords such as `databricks:default-policy`
         """
-        pulumi.set(__self__, "restriction_mode", restriction_mode)
-        if allowed_internet_destinations is not None:
-            pulumi.set(__self__, "allowed_internet_destinations", allowed_internet_destinations)
-        if allowed_storage_destinations is not None:
-            pulumi.set(__self__, "allowed_storage_destinations", allowed_storage_destinations)
-        if policy_enforcement is not None:
-            pulumi.set(__self__, "policy_enforcement", policy_enforcement)
+        if creator_user_id is not None:
+            pulumi.set(__self__, "creator_user_id", creator_user_id)
+        if creator_user_name is not None:
+            pulumi.set(__self__, "creator_user_name", creator_user_name)
+        if policy_name is not None:
+            pulumi.set(__self__, "policy_name", policy_name)
 
     @_builtins.property
-    @pulumi.getter(name="restrictionMode")
-    def restriction_mode(self) -> _builtins.str:
+    @pulumi.getter(name="creatorUserId")
+    def creator_user_id(self) -> Optional[_builtins.int]:
         """
-        (string) - The restriction mode that controls how serverless workloads can access the internet. Possible values are: `FULL_ACCESS`, `RESTRICTED_ACCESS`
+        The policy creator user id to be filtered on.
+        If unspecified, all policies will be returned
         """
-        return pulumi.get(self, "restriction_mode")
+        return pulumi.get(self, "creator_user_id")
 
-    @restriction_mode.setter
-    def restriction_mode(self, value: _builtins.str):
-        pulumi.set(self, "restriction_mode", value)
-
-    @_builtins.property
-    @pulumi.getter(name="allowedInternetDestinations")
-    def allowed_internet_destinations(self) -> Optional[Sequence['GetAccountNetworkPolicyEgressNetworkAccessAllowedInternetDestinationArgs']]:
-        """
-        (list of EgressNetworkPolicyNetworkAccessPolicyInternetDestination) - List of internet destinations that serverless workloads are allowed to access when in RESTRICTED_ACCESS mode
-        """
-        return pulumi.get(self, "allowed_internet_destinations")
-
-    @allowed_internet_destinations.setter
-    def allowed_internet_destinations(self, value: Optional[Sequence['GetAccountNetworkPolicyEgressNetworkAccessAllowedInternetDestinationArgs']]):
-        pulumi.set(self, "allowed_internet_destinations", value)
+    @creator_user_id.setter
+    def creator_user_id(self, value: Optional[_builtins.int]):
+        pulumi.set(self, "creator_user_id", value)
 
     @_builtins.property
-    @pulumi.getter(name="allowedStorageDestinations")
-    def allowed_storage_destinations(self) -> Optional[Sequence['GetAccountNetworkPolicyEgressNetworkAccessAllowedStorageDestinationArgs']]:
+    @pulumi.getter(name="creatorUserName")
+    def creator_user_name(self) -> Optional[_builtins.str]:
         """
-        (list of EgressNetworkPolicyNetworkAccessPolicyStorageDestination) - List of storage destinations that serverless workloads are allowed to access when in RESTRICTED_ACCESS mode
+        The policy creator user name to be filtered on.
+        If unspecified, all policies will be returned
         """
-        return pulumi.get(self, "allowed_storage_destinations")
+        return pulumi.get(self, "creator_user_name")
 
-    @allowed_storage_destinations.setter
-    def allowed_storage_destinations(self, value: Optional[Sequence['GetAccountNetworkPolicyEgressNetworkAccessAllowedStorageDestinationArgs']]):
-        pulumi.set(self, "allowed_storage_destinations", value)
+    @creator_user_name.setter
+    def creator_user_name(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "creator_user_name", value)
 
     @_builtins.property
-    @pulumi.getter(name="policyEnforcement")
-    def policy_enforcement(self) -> Optional['GetAccountNetworkPolicyEgressNetworkAccessPolicyEnforcementArgs']:
+    @pulumi.getter(name="policyName")
+    def policy_name(self) -> Optional[_builtins.str]:
         """
-        (EgressNetworkPolicyNetworkAccessPolicyPolicyEnforcement) - Optional. When policy_enforcement is not provided, we default to ENFORCE_MODE_ALL_SERVICES
+        (string) - The name of the policy.
+        - Must be unique among active policies.
+        - Can contain only characters from the ISO 8859-1 (latin1) set.
+        - Can't start with reserved keywords such as `databricks:default-policy`
         """
-        return pulumi.get(self, "policy_enforcement")
+        return pulumi.get(self, "policy_name")
 
-    @policy_enforcement.setter
-    def policy_enforcement(self, value: Optional['GetAccountNetworkPolicyEgressNetworkAccessPolicyEnforcementArgs']):
-        pulumi.set(self, "policy_enforcement", value)
+    @policy_name.setter
+    def policy_name(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "policy_name", value)
 
 
 if not MYPY:
-    class GetAccountNetworkPolicyEgressNetworkAccessAllowedInternetDestinationArgsDict(TypedDict):
-        destination: NotRequired[_builtins.str]
+    class GetBudgetPoliciesSortSpecArgsDict(TypedDict):
+        descending: NotRequired[_builtins.bool]
         """
-        (string) - The internet destination to which access will be allowed. Format dependent on the destination type
+        Whether to sort in descending order
         """
-        internet_destination_type: NotRequired[_builtins.str]
+        field: NotRequired[_builtins.str]
         """
-        (string) - The type of internet destination. Currently only DNS_NAME is supported. Possible values are: `DNS_NAME`
-        """
-elif False:
-    GetAccountNetworkPolicyEgressNetworkAccessAllowedInternetDestinationArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetAccountNetworkPolicyEgressNetworkAccessAllowedInternetDestinationArgs:
-    def __init__(__self__, *,
-                 destination: Optional[_builtins.str] = None,
-                 internet_destination_type: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str destination: (string) - The internet destination to which access will be allowed. Format dependent on the destination type
-        :param _builtins.str internet_destination_type: (string) - The type of internet destination. Currently only DNS_NAME is supported. Possible values are: `DNS_NAME`
-        """
-        if destination is not None:
-            pulumi.set(__self__, "destination", destination)
-        if internet_destination_type is not None:
-            pulumi.set(__self__, "internet_destination_type", internet_destination_type)
-
-    @_builtins.property
-    @pulumi.getter
-    def destination(self) -> Optional[_builtins.str]:
-        """
-        (string) - The internet destination to which access will be allowed. Format dependent on the destination type
-        """
-        return pulumi.get(self, "destination")
-
-    @destination.setter
-    def destination(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "destination", value)
-
-    @_builtins.property
-    @pulumi.getter(name="internetDestinationType")
-    def internet_destination_type(self) -> Optional[_builtins.str]:
-        """
-        (string) - The type of internet destination. Currently only DNS_NAME is supported. Possible values are: `DNS_NAME`
-        """
-        return pulumi.get(self, "internet_destination_type")
-
-    @internet_destination_type.setter
-    def internet_destination_type(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "internet_destination_type", value)
-
-
-if not MYPY:
-    class GetAccountNetworkPolicyEgressNetworkAccessAllowedStorageDestinationArgsDict(TypedDict):
-        azure_storage_account: NotRequired[_builtins.str]
-        """
-        (string) - The Azure storage account name
-        """
-        azure_storage_service: NotRequired[_builtins.str]
-        """
-        (string) - The Azure storage service type (blob, dfs, etc.)
-        """
-        bucket_name: NotRequired[_builtins.str]
-        """
-        (string)
-        """
-        region: NotRequired[_builtins.str]
-        """
-        (string)
-        """
-        storage_destination_type: NotRequired[_builtins.str]
-        """
-        (string) - The type of storage destination. Possible values are: `AWS_S3`, `AZURE_STORAGE`, `GOOGLE_CLOUD_STORAGE`
+        The filed to sort by. Possible values are: `POLICY_NAME`
         """
 elif False:
-    GetAccountNetworkPolicyEgressNetworkAccessAllowedStorageDestinationArgsDict: TypeAlias = Mapping[str, Any]
+    GetBudgetPoliciesSortSpecArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GetAccountNetworkPolicyEgressNetworkAccessAllowedStorageDestinationArgs:
+class GetBudgetPoliciesSortSpecArgs:
     def __init__(__self__, *,
-                 azure_storage_account: Optional[_builtins.str] = None,
-                 azure_storage_service: Optional[_builtins.str] = None,
-                 bucket_name: Optional[_builtins.str] = None,
-                 region: Optional[_builtins.str] = None,
-                 storage_destination_type: Optional[_builtins.str] = None):
+                 descending: Optional[_builtins.bool] = None,
+                 field: Optional[_builtins.str] = None):
         """
-        :param _builtins.str azure_storage_account: (string) - The Azure storage account name
-        :param _builtins.str azure_storage_service: (string) - The Azure storage service type (blob, dfs, etc.)
-        :param _builtins.str bucket_name: (string)
-        :param _builtins.str region: (string)
-        :param _builtins.str storage_destination_type: (string) - The type of storage destination. Possible values are: `AWS_S3`, `AZURE_STORAGE`, `GOOGLE_CLOUD_STORAGE`
+        :param _builtins.bool descending: Whether to sort in descending order
+        :param _builtins.str field: The filed to sort by. Possible values are: `POLICY_NAME`
         """
-        if azure_storage_account is not None:
-            pulumi.set(__self__, "azure_storage_account", azure_storage_account)
-        if azure_storage_service is not None:
-            pulumi.set(__self__, "azure_storage_service", azure_storage_service)
-        if bucket_name is not None:
-            pulumi.set(__self__, "bucket_name", bucket_name)
-        if region is not None:
-            pulumi.set(__self__, "region", region)
-        if storage_destination_type is not None:
-            pulumi.set(__self__, "storage_destination_type", storage_destination_type)
-
-    @_builtins.property
-    @pulumi.getter(name="azureStorageAccount")
-    def azure_storage_account(self) -> Optional[_builtins.str]:
-        """
-        (string) - The Azure storage account name
-        """
-        return pulumi.get(self, "azure_storage_account")
-
-    @azure_storage_account.setter
-    def azure_storage_account(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "azure_storage_account", value)
-
-    @_builtins.property
-    @pulumi.getter(name="azureStorageService")
-    def azure_storage_service(self) -> Optional[_builtins.str]:
-        """
-        (string) - The Azure storage service type (blob, dfs, etc.)
-        """
-        return pulumi.get(self, "azure_storage_service")
-
-    @azure_storage_service.setter
-    def azure_storage_service(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "azure_storage_service", value)
-
-    @_builtins.property
-    @pulumi.getter(name="bucketName")
-    def bucket_name(self) -> Optional[_builtins.str]:
-        """
-        (string)
-        """
-        return pulumi.get(self, "bucket_name")
-
-    @bucket_name.setter
-    def bucket_name(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "bucket_name", value)
+        if descending is not None:
+            pulumi.set(__self__, "descending", descending)
+        if field is not None:
+            pulumi.set(__self__, "field", field)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[_builtins.str]:
+    def descending(self) -> Optional[_builtins.bool]:
         """
-        (string)
+        Whether to sort in descending order
         """
-        return pulumi.get(self, "region")
+        return pulumi.get(self, "descending")
 
-    @region.setter
-    def region(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "region", value)
-
-    @_builtins.property
-    @pulumi.getter(name="storageDestinationType")
-    def storage_destination_type(self) -> Optional[_builtins.str]:
-        """
-        (string) - The type of storage destination. Possible values are: `AWS_S3`, `AZURE_STORAGE`, `GOOGLE_CLOUD_STORAGE`
-        """
-        return pulumi.get(self, "storage_destination_type")
-
-    @storage_destination_type.setter
-    def storage_destination_type(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "storage_destination_type", value)
-
-
-if not MYPY:
-    class GetAccountNetworkPolicyEgressNetworkAccessPolicyEnforcementArgsDict(TypedDict):
-        dry_run_mode_product_filters: NotRequired[Sequence[_builtins.str]]
-        """
-        (list of string) - When empty, it means dry run for all products.
-        When non-empty, it means dry run for specific products and for the other products, they will run in enforced mode
-        """
-        enforcement_mode: NotRequired[_builtins.str]
-        """
-        (string) - The mode of policy enforcement. ENFORCED blocks traffic that violates policy,
-        while DRY_RUN only logs violations without blocking. When not specified,
-        defaults to ENFORCED. Possible values are: `DRY_RUN`, `ENFORCED`
-        """
-elif False:
-    GetAccountNetworkPolicyEgressNetworkAccessPolicyEnforcementArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetAccountNetworkPolicyEgressNetworkAccessPolicyEnforcementArgs:
-    def __init__(__self__, *,
-                 dry_run_mode_product_filters: Optional[Sequence[_builtins.str]] = None,
-                 enforcement_mode: Optional[_builtins.str] = None):
-        """
-        :param Sequence[_builtins.str] dry_run_mode_product_filters: (list of string) - When empty, it means dry run for all products.
-               When non-empty, it means dry run for specific products and for the other products, they will run in enforced mode
-        :param _builtins.str enforcement_mode: (string) - The mode of policy enforcement. ENFORCED blocks traffic that violates policy,
-               while DRY_RUN only logs violations without blocking. When not specified,
-               defaults to ENFORCED. Possible values are: `DRY_RUN`, `ENFORCED`
-        """
-        if dry_run_mode_product_filters is not None:
-            pulumi.set(__self__, "dry_run_mode_product_filters", dry_run_mode_product_filters)
-        if enforcement_mode is not None:
-            pulumi.set(__self__, "enforcement_mode", enforcement_mode)
-
-    @_builtins.property
-    @pulumi.getter(name="dryRunModeProductFilters")
-    def dry_run_mode_product_filters(self) -> Optional[Sequence[_builtins.str]]:
-        """
-        (list of string) - When empty, it means dry run for all products.
-        When non-empty, it means dry run for specific products and for the other products, they will run in enforced mode
-        """
-        return pulumi.get(self, "dry_run_mode_product_filters")
-
-    @dry_run_mode_product_filters.setter
-    def dry_run_mode_product_filters(self, value: Optional[Sequence[_builtins.str]]):
-        pulumi.set(self, "dry_run_mode_product_filters", value)
-
-    @_builtins.property
-    @pulumi.getter(name="enforcementMode")
-    def enforcement_mode(self) -> Optional[_builtins.str]:
-        """
-        (string) - The mode of policy enforcement. ENFORCED blocks traffic that violates policy,
-        while DRY_RUN only logs violations without blocking. When not specified,
-        defaults to ENFORCED. Possible values are: `DRY_RUN`, `ENFORCED`
-        """
-        return pulumi.get(self, "enforcement_mode")
-
-    @enforcement_mode.setter
-    def enforcement_mode(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "enforcement_mode", value)
-
-
-if not MYPY:
-    class GetAccountSettingV2AibiDashboardEmbeddingAccessPolicyArgsDict(TypedDict):
-        access_policy_type: _builtins.str
-        """
-        (string) - . Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
-        """
-elif False:
-    GetAccountSettingV2AibiDashboardEmbeddingAccessPolicyArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetAccountSettingV2AibiDashboardEmbeddingAccessPolicyArgs:
-    def __init__(__self__, *,
-                 access_policy_type: _builtins.str):
-        """
-        :param _builtins.str access_policy_type: (string) - . Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
-        """
-        pulumi.set(__self__, "access_policy_type", access_policy_type)
-
-    @_builtins.property
-    @pulumi.getter(name="accessPolicyType")
-    def access_policy_type(self) -> _builtins.str:
-        """
-        (string) - . Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
-        """
-        return pulumi.get(self, "access_policy_type")
-
-    @access_policy_type.setter
-    def access_policy_type(self, value: _builtins.str):
-        pulumi.set(self, "access_policy_type", value)
-
-
-if not MYPY:
-    class GetAccountSettingV2AibiDashboardEmbeddingApprovedDomainsArgsDict(TypedDict):
-        approved_domains: NotRequired[Sequence[_builtins.str]]
-        """
-        (list of string)
-        """
-elif False:
-    GetAccountSettingV2AibiDashboardEmbeddingApprovedDomainsArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetAccountSettingV2AibiDashboardEmbeddingApprovedDomainsArgs:
-    def __init__(__self__, *,
-                 approved_domains: Optional[Sequence[_builtins.str]] = None):
-        """
-        :param Sequence[_builtins.str] approved_domains: (list of string)
-        """
-        if approved_domains is not None:
-            pulumi.set(__self__, "approved_domains", approved_domains)
-
-    @_builtins.property
-    @pulumi.getter(name="approvedDomains")
-    def approved_domains(self) -> Optional[Sequence[_builtins.str]]:
-        """
-        (list of string)
-        """
-        return pulumi.get(self, "approved_domains")
-
-    @approved_domains.setter
-    def approved_domains(self, value: Optional[Sequence[_builtins.str]]):
-        pulumi.set(self, "approved_domains", value)
-
-
-if not MYPY:
-    class GetAccountSettingV2AutomaticClusterUpdateWorkspaceArgsDict(TypedDict):
-        can_toggle: NotRequired[_builtins.bool]
-        """
-        (boolean)
-        """
-        enabled: NotRequired[_builtins.bool]
-        """
-        (boolean)
-        """
-        enablement_details: NotRequired['GetAccountSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsArgsDict']
-        """
-        (ClusterAutoRestartMessageEnablementDetails)
-        """
-        maintenance_window: NotRequired['GetAccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowArgsDict']
-        """
-        (ClusterAutoRestartMessageMaintenanceWindow)
-        """
-        restart_even_if_no_updates_available: NotRequired[_builtins.bool]
-        """
-        (boolean)
-        """
-elif False:
-    GetAccountSettingV2AutomaticClusterUpdateWorkspaceArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetAccountSettingV2AutomaticClusterUpdateWorkspaceArgs:
-    def __init__(__self__, *,
-                 can_toggle: Optional[_builtins.bool] = None,
-                 enabled: Optional[_builtins.bool] = None,
-                 enablement_details: Optional['GetAccountSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsArgs'] = None,
-                 maintenance_window: Optional['GetAccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowArgs'] = None,
-                 restart_even_if_no_updates_available: Optional[_builtins.bool] = None):
-        """
-        :param _builtins.bool can_toggle: (boolean)
-        :param _builtins.bool enabled: (boolean)
-        :param 'GetAccountSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsArgs' enablement_details: (ClusterAutoRestartMessageEnablementDetails)
-        :param 'GetAccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowArgs' maintenance_window: (ClusterAutoRestartMessageMaintenanceWindow)
-        :param _builtins.bool restart_even_if_no_updates_available: (boolean)
-        """
-        if can_toggle is not None:
-            pulumi.set(__self__, "can_toggle", can_toggle)
-        if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
-        if enablement_details is not None:
-            pulumi.set(__self__, "enablement_details", enablement_details)
-        if maintenance_window is not None:
-            pulumi.set(__self__, "maintenance_window", maintenance_window)
-        if restart_even_if_no_updates_available is not None:
-            pulumi.set(__self__, "restart_even_if_no_updates_available", restart_even_if_no_updates_available)
-
-    @_builtins.property
-    @pulumi.getter(name="canToggle")
-    def can_toggle(self) -> Optional[_builtins.bool]:
-        """
-        (boolean)
-        """
-        return pulumi.get(self, "can_toggle")
-
-    @can_toggle.setter
-    def can_toggle(self, value: Optional[_builtins.bool]):
-        pulumi.set(self, "can_toggle", value)
+    @descending.setter
+    def descending(self, value: Optional[_builtins.bool]):
+        pulumi.set(self, "descending", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[_builtins.bool]:
+    def field(self) -> Optional[_builtins.str]:
         """
-        (boolean)
+        The filed to sort by. Possible values are: `POLICY_NAME`
         """
-        return pulumi.get(self, "enabled")
+        return pulumi.get(self, "field")
 
-    @enabled.setter
-    def enabled(self, value: Optional[_builtins.bool]):
-        pulumi.set(self, "enabled", value)
-
-    @_builtins.property
-    @pulumi.getter(name="enablementDetails")
-    def enablement_details(self) -> Optional['GetAccountSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsArgs']:
-        """
-        (ClusterAutoRestartMessageEnablementDetails)
-        """
-        return pulumi.get(self, "enablement_details")
-
-    @enablement_details.setter
-    def enablement_details(self, value: Optional['GetAccountSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsArgs']):
-        pulumi.set(self, "enablement_details", value)
-
-    @_builtins.property
-    @pulumi.getter(name="maintenanceWindow")
-    def maintenance_window(self) -> Optional['GetAccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowArgs']:
-        """
-        (ClusterAutoRestartMessageMaintenanceWindow)
-        """
-        return pulumi.get(self, "maintenance_window")
-
-    @maintenance_window.setter
-    def maintenance_window(self, value: Optional['GetAccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowArgs']):
-        pulumi.set(self, "maintenance_window", value)
-
-    @_builtins.property
-    @pulumi.getter(name="restartEvenIfNoUpdatesAvailable")
-    def restart_even_if_no_updates_available(self) -> Optional[_builtins.bool]:
-        """
-        (boolean)
-        """
-        return pulumi.get(self, "restart_even_if_no_updates_available")
-
-    @restart_even_if_no_updates_available.setter
-    def restart_even_if_no_updates_available(self, value: Optional[_builtins.bool]):
-        pulumi.set(self, "restart_even_if_no_updates_available", value)
-
-
-if not MYPY:
-    class GetAccountSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsArgsDict(TypedDict):
-        forced_for_compliance_mode: NotRequired[_builtins.bool]
-        """
-        (boolean) - The feature is force enabled if compliance mode is active
-        """
-        unavailable_for_disabled_entitlement: NotRequired[_builtins.bool]
-        """
-        (boolean) - The feature is unavailable if the corresponding entitlement disabled (see getShieldEntitlementEnable)
-        """
-        unavailable_for_non_enterprise_tier: NotRequired[_builtins.bool]
-        """
-        (boolean) - The feature is unavailable if the customer doesn't have enterprise tier
-        """
-elif False:
-    GetAccountSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetAccountSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsArgs:
-    def __init__(__self__, *,
-                 forced_for_compliance_mode: Optional[_builtins.bool] = None,
-                 unavailable_for_disabled_entitlement: Optional[_builtins.bool] = None,
-                 unavailable_for_non_enterprise_tier: Optional[_builtins.bool] = None):
-        """
-        :param _builtins.bool forced_for_compliance_mode: (boolean) - The feature is force enabled if compliance mode is active
-        :param _builtins.bool unavailable_for_disabled_entitlement: (boolean) - The feature is unavailable if the corresponding entitlement disabled (see getShieldEntitlementEnable)
-        :param _builtins.bool unavailable_for_non_enterprise_tier: (boolean) - The feature is unavailable if the customer doesn't have enterprise tier
-        """
-        if forced_for_compliance_mode is not None:
-            pulumi.set(__self__, "forced_for_compliance_mode", forced_for_compliance_mode)
-        if unavailable_for_disabled_entitlement is not None:
-            pulumi.set(__self__, "unavailable_for_disabled_entitlement", unavailable_for_disabled_entitlement)
-        if unavailable_for_non_enterprise_tier is not None:
-            pulumi.set(__self__, "unavailable_for_non_enterprise_tier", unavailable_for_non_enterprise_tier)
-
-    @_builtins.property
-    @pulumi.getter(name="forcedForComplianceMode")
-    def forced_for_compliance_mode(self) -> Optional[_builtins.bool]:
-        """
-        (boolean) - The feature is force enabled if compliance mode is active
-        """
-        return pulumi.get(self, "forced_for_compliance_mode")
-
-    @forced_for_compliance_mode.setter
-    def forced_for_compliance_mode(self, value: Optional[_builtins.bool]):
-        pulumi.set(self, "forced_for_compliance_mode", value)
-
-    @_builtins.property
-    @pulumi.getter(name="unavailableForDisabledEntitlement")
-    def unavailable_for_disabled_entitlement(self) -> Optional[_builtins.bool]:
-        """
-        (boolean) - The feature is unavailable if the corresponding entitlement disabled (see getShieldEntitlementEnable)
-        """
-        return pulumi.get(self, "unavailable_for_disabled_entitlement")
-
-    @unavailable_for_disabled_entitlement.setter
-    def unavailable_for_disabled_entitlement(self, value: Optional[_builtins.bool]):
-        pulumi.set(self, "unavailable_for_disabled_entitlement", value)
-
-    @_builtins.property
-    @pulumi.getter(name="unavailableForNonEnterpriseTier")
-    def unavailable_for_non_enterprise_tier(self) -> Optional[_builtins.bool]:
-        """
-        (boolean) - The feature is unavailable if the customer doesn't have enterprise tier
-        """
-        return pulumi.get(self, "unavailable_for_non_enterprise_tier")
-
-    @unavailable_for_non_enterprise_tier.setter
-    def unavailable_for_non_enterprise_tier(self, value: Optional[_builtins.bool]):
-        pulumi.set(self, "unavailable_for_non_enterprise_tier", value)
-
-
-if not MYPY:
-    class GetAccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowArgsDict(TypedDict):
-        week_day_based_schedule: NotRequired['GetAccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgsDict']
-        """
-        (ClusterAutoRestartMessageMaintenanceWindowWeekDayBasedSchedule)
-        """
-elif False:
-    GetAccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetAccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowArgs:
-    def __init__(__self__, *,
-                 week_day_based_schedule: Optional['GetAccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgs'] = None):
-        """
-        :param 'GetAccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgs' week_day_based_schedule: (ClusterAutoRestartMessageMaintenanceWindowWeekDayBasedSchedule)
-        """
-        if week_day_based_schedule is not None:
-            pulumi.set(__self__, "week_day_based_schedule", week_day_based_schedule)
-
-    @_builtins.property
-    @pulumi.getter(name="weekDayBasedSchedule")
-    def week_day_based_schedule(self) -> Optional['GetAccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgs']:
-        """
-        (ClusterAutoRestartMessageMaintenanceWindowWeekDayBasedSchedule)
-        """
-        return pulumi.get(self, "week_day_based_schedule")
-
-    @week_day_based_schedule.setter
-    def week_day_based_schedule(self, value: Optional['GetAccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgs']):
-        pulumi.set(self, "week_day_based_schedule", value)
-
-
-if not MYPY:
-    class GetAccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgsDict(TypedDict):
-        day_of_week: NotRequired[_builtins.str]
-        """
-        (string) - . Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
-        """
-        frequency: NotRequired[_builtins.str]
-        """
-        (string) - . Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
-        """
-        window_start_time: NotRequired['GetAccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgsDict']
-        """
-        (ClusterAutoRestartMessageMaintenanceWindowWindowStartTime)
-        """
-elif False:
-    GetAccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetAccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgs:
-    def __init__(__self__, *,
-                 day_of_week: Optional[_builtins.str] = None,
-                 frequency: Optional[_builtins.str] = None,
-                 window_start_time: Optional['GetAccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs'] = None):
-        """
-        :param _builtins.str day_of_week: (string) - . Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
-        :param _builtins.str frequency: (string) - . Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
-        :param 'GetAccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs' window_start_time: (ClusterAutoRestartMessageMaintenanceWindowWindowStartTime)
-        """
-        if day_of_week is not None:
-            pulumi.set(__self__, "day_of_week", day_of_week)
-        if frequency is not None:
-            pulumi.set(__self__, "frequency", frequency)
-        if window_start_time is not None:
-            pulumi.set(__self__, "window_start_time", window_start_time)
-
-    @_builtins.property
-    @pulumi.getter(name="dayOfWeek")
-    def day_of_week(self) -> Optional[_builtins.str]:
-        """
-        (string) - . Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
-        """
-        return pulumi.get(self, "day_of_week")
-
-    @day_of_week.setter
-    def day_of_week(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "day_of_week", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def frequency(self) -> Optional[_builtins.str]:
-        """
-        (string) - . Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
-        """
-        return pulumi.get(self, "frequency")
-
-    @frequency.setter
-    def frequency(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "frequency", value)
-
-    @_builtins.property
-    @pulumi.getter(name="windowStartTime")
-    def window_start_time(self) -> Optional['GetAccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs']:
-        """
-        (ClusterAutoRestartMessageMaintenanceWindowWindowStartTime)
-        """
-        return pulumi.get(self, "window_start_time")
-
-    @window_start_time.setter
-    def window_start_time(self, value: Optional['GetAccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs']):
-        pulumi.set(self, "window_start_time", value)
-
-
-if not MYPY:
-    class GetAccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgsDict(TypedDict):
-        hours: NotRequired[_builtins.int]
-        """
-        (integer)
-        """
-        minutes: NotRequired[_builtins.int]
-        """
-        (integer)
-        """
-elif False:
-    GetAccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetAccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs:
-    def __init__(__self__, *,
-                 hours: Optional[_builtins.int] = None,
-                 minutes: Optional[_builtins.int] = None):
-        """
-        :param _builtins.int hours: (integer)
-        :param _builtins.int minutes: (integer)
-        """
-        if hours is not None:
-            pulumi.set(__self__, "hours", hours)
-        if minutes is not None:
-            pulumi.set(__self__, "minutes", minutes)
-
-    @_builtins.property
-    @pulumi.getter
-    def hours(self) -> Optional[_builtins.int]:
-        """
-        (integer)
-        """
-        return pulumi.get(self, "hours")
-
-    @hours.setter
-    def hours(self, value: Optional[_builtins.int]):
-        pulumi.set(self, "hours", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def minutes(self) -> Optional[_builtins.int]:
-        """
-        (integer)
-        """
-        return pulumi.get(self, "minutes")
-
-    @minutes.setter
-    def minutes(self, value: Optional[_builtins.int]):
-        pulumi.set(self, "minutes", value)
-
-
-if not MYPY:
-    class GetAccountSettingV2BooleanValArgsDict(TypedDict):
-        value: NotRequired[_builtins.bool]
-        """
-        (string) - Represents a generic string value
-        """
-elif False:
-    GetAccountSettingV2BooleanValArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetAccountSettingV2BooleanValArgs:
-    def __init__(__self__, *,
-                 value: Optional[_builtins.bool] = None):
-        """
-        :param _builtins.bool value: (string) - Represents a generic string value
-        """
-        if value is not None:
-            pulumi.set(__self__, "value", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def value(self) -> Optional[_builtins.bool]:
-        """
-        (string) - Represents a generic string value
-        """
-        return pulumi.get(self, "value")
-
-    @value.setter
-    def value(self, value: Optional[_builtins.bool]):
-        pulumi.set(self, "value", value)
-
-
-if not MYPY:
-    class GetAccountSettingV2DefaultDataSecurityModeArgsDict(TypedDict):
-        status: _builtins.str
-        """
-        (string) - . Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
-        """
-elif False:
-    GetAccountSettingV2DefaultDataSecurityModeArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetAccountSettingV2DefaultDataSecurityModeArgs:
-    def __init__(__self__, *,
-                 status: _builtins.str):
-        """
-        :param _builtins.str status: (string) - . Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
-        """
-        pulumi.set(__self__, "status", status)
-
-    @_builtins.property
-    @pulumi.getter
-    def status(self) -> _builtins.str:
-        """
-        (string) - . Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
-        """
-        return pulumi.get(self, "status")
-
-    @status.setter
-    def status(self, value: _builtins.str):
-        pulumi.set(self, "status", value)
-
-
-if not MYPY:
-    class GetAccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgsDict(TypedDict):
-        access_policy_type: _builtins.str
-        """
-        (string) - . Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
-        """
-elif False:
-    GetAccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetAccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgs:
-    def __init__(__self__, *,
-                 access_policy_type: _builtins.str):
-        """
-        :param _builtins.str access_policy_type: (string) - . Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
-        """
-        pulumi.set(__self__, "access_policy_type", access_policy_type)
-
-    @_builtins.property
-    @pulumi.getter(name="accessPolicyType")
-    def access_policy_type(self) -> _builtins.str:
-        """
-        (string) - . Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
-        """
-        return pulumi.get(self, "access_policy_type")
-
-    @access_policy_type.setter
-    def access_policy_type(self, value: _builtins.str):
-        pulumi.set(self, "access_policy_type", value)
-
-
-if not MYPY:
-    class GetAccountSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgsDict(TypedDict):
-        approved_domains: NotRequired[Sequence[_builtins.str]]
-        """
-        (list of string)
-        """
-elif False:
-    GetAccountSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetAccountSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgs:
-    def __init__(__self__, *,
-                 approved_domains: Optional[Sequence[_builtins.str]] = None):
-        """
-        :param Sequence[_builtins.str] approved_domains: (list of string)
-        """
-        if approved_domains is not None:
-            pulumi.set(__self__, "approved_domains", approved_domains)
-
-    @_builtins.property
-    @pulumi.getter(name="approvedDomains")
-    def approved_domains(self) -> Optional[Sequence[_builtins.str]]:
-        """
-        (list of string)
-        """
-        return pulumi.get(self, "approved_domains")
-
-    @approved_domains.setter
-    def approved_domains(self, value: Optional[Sequence[_builtins.str]]):
-        pulumi.set(self, "approved_domains", value)
-
-
-if not MYPY:
-    class GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgsDict(TypedDict):
-        can_toggle: NotRequired[_builtins.bool]
-        """
-        (boolean)
-        """
-        enabled: NotRequired[_builtins.bool]
-        """
-        (boolean)
-        """
-        enablement_details: NotRequired['GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsArgsDict']
-        """
-        (ClusterAutoRestartMessageEnablementDetails)
-        """
-        maintenance_window: NotRequired['GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowArgsDict']
-        """
-        (ClusterAutoRestartMessageMaintenanceWindow)
-        """
-        restart_even_if_no_updates_available: NotRequired[_builtins.bool]
-        """
-        (boolean)
-        """
-elif False:
-    GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgs:
-    def __init__(__self__, *,
-                 can_toggle: Optional[_builtins.bool] = None,
-                 enabled: Optional[_builtins.bool] = None,
-                 enablement_details: Optional['GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsArgs'] = None,
-                 maintenance_window: Optional['GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowArgs'] = None,
-                 restart_even_if_no_updates_available: Optional[_builtins.bool] = None):
-        """
-        :param _builtins.bool can_toggle: (boolean)
-        :param _builtins.bool enabled: (boolean)
-        :param 'GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsArgs' enablement_details: (ClusterAutoRestartMessageEnablementDetails)
-        :param 'GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowArgs' maintenance_window: (ClusterAutoRestartMessageMaintenanceWindow)
-        :param _builtins.bool restart_even_if_no_updates_available: (boolean)
-        """
-        if can_toggle is not None:
-            pulumi.set(__self__, "can_toggle", can_toggle)
-        if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
-        if enablement_details is not None:
-            pulumi.set(__self__, "enablement_details", enablement_details)
-        if maintenance_window is not None:
-            pulumi.set(__self__, "maintenance_window", maintenance_window)
-        if restart_even_if_no_updates_available is not None:
-            pulumi.set(__self__, "restart_even_if_no_updates_available", restart_even_if_no_updates_available)
-
-    @_builtins.property
-    @pulumi.getter(name="canToggle")
-    def can_toggle(self) -> Optional[_builtins.bool]:
-        """
-        (boolean)
-        """
-        return pulumi.get(self, "can_toggle")
-
-    @can_toggle.setter
-    def can_toggle(self, value: Optional[_builtins.bool]):
-        pulumi.set(self, "can_toggle", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def enabled(self) -> Optional[_builtins.bool]:
-        """
-        (boolean)
-        """
-        return pulumi.get(self, "enabled")
-
-    @enabled.setter
-    def enabled(self, value: Optional[_builtins.bool]):
-        pulumi.set(self, "enabled", value)
-
-    @_builtins.property
-    @pulumi.getter(name="enablementDetails")
-    def enablement_details(self) -> Optional['GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsArgs']:
-        """
-        (ClusterAutoRestartMessageEnablementDetails)
-        """
-        return pulumi.get(self, "enablement_details")
-
-    @enablement_details.setter
-    def enablement_details(self, value: Optional['GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsArgs']):
-        pulumi.set(self, "enablement_details", value)
-
-    @_builtins.property
-    @pulumi.getter(name="maintenanceWindow")
-    def maintenance_window(self) -> Optional['GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowArgs']:
-        """
-        (ClusterAutoRestartMessageMaintenanceWindow)
-        """
-        return pulumi.get(self, "maintenance_window")
-
-    @maintenance_window.setter
-    def maintenance_window(self, value: Optional['GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowArgs']):
-        pulumi.set(self, "maintenance_window", value)
-
-    @_builtins.property
-    @pulumi.getter(name="restartEvenIfNoUpdatesAvailable")
-    def restart_even_if_no_updates_available(self) -> Optional[_builtins.bool]:
-        """
-        (boolean)
-        """
-        return pulumi.get(self, "restart_even_if_no_updates_available")
-
-    @restart_even_if_no_updates_available.setter
-    def restart_even_if_no_updates_available(self, value: Optional[_builtins.bool]):
-        pulumi.set(self, "restart_even_if_no_updates_available", value)
-
-
-if not MYPY:
-    class GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsArgsDict(TypedDict):
-        forced_for_compliance_mode: NotRequired[_builtins.bool]
-        """
-        (boolean) - The feature is force enabled if compliance mode is active
-        """
-        unavailable_for_disabled_entitlement: NotRequired[_builtins.bool]
-        """
-        (boolean) - The feature is unavailable if the corresponding entitlement disabled (see getShieldEntitlementEnable)
-        """
-        unavailable_for_non_enterprise_tier: NotRequired[_builtins.bool]
-        """
-        (boolean) - The feature is unavailable if the customer doesn't have enterprise tier
-        """
-elif False:
-    GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsArgs:
-    def __init__(__self__, *,
-                 forced_for_compliance_mode: Optional[_builtins.bool] = None,
-                 unavailable_for_disabled_entitlement: Optional[_builtins.bool] = None,
-                 unavailable_for_non_enterprise_tier: Optional[_builtins.bool] = None):
-        """
-        :param _builtins.bool forced_for_compliance_mode: (boolean) - The feature is force enabled if compliance mode is active
-        :param _builtins.bool unavailable_for_disabled_entitlement: (boolean) - The feature is unavailable if the corresponding entitlement disabled (see getShieldEntitlementEnable)
-        :param _builtins.bool unavailable_for_non_enterprise_tier: (boolean) - The feature is unavailable if the customer doesn't have enterprise tier
-        """
-        if forced_for_compliance_mode is not None:
-            pulumi.set(__self__, "forced_for_compliance_mode", forced_for_compliance_mode)
-        if unavailable_for_disabled_entitlement is not None:
-            pulumi.set(__self__, "unavailable_for_disabled_entitlement", unavailable_for_disabled_entitlement)
-        if unavailable_for_non_enterprise_tier is not None:
-            pulumi.set(__self__, "unavailable_for_non_enterprise_tier", unavailable_for_non_enterprise_tier)
-
-    @_builtins.property
-    @pulumi.getter(name="forcedForComplianceMode")
-    def forced_for_compliance_mode(self) -> Optional[_builtins.bool]:
-        """
-        (boolean) - The feature is force enabled if compliance mode is active
-        """
-        return pulumi.get(self, "forced_for_compliance_mode")
-
-    @forced_for_compliance_mode.setter
-    def forced_for_compliance_mode(self, value: Optional[_builtins.bool]):
-        pulumi.set(self, "forced_for_compliance_mode", value)
-
-    @_builtins.property
-    @pulumi.getter(name="unavailableForDisabledEntitlement")
-    def unavailable_for_disabled_entitlement(self) -> Optional[_builtins.bool]:
-        """
-        (boolean) - The feature is unavailable if the corresponding entitlement disabled (see getShieldEntitlementEnable)
-        """
-        return pulumi.get(self, "unavailable_for_disabled_entitlement")
-
-    @unavailable_for_disabled_entitlement.setter
-    def unavailable_for_disabled_entitlement(self, value: Optional[_builtins.bool]):
-        pulumi.set(self, "unavailable_for_disabled_entitlement", value)
-
-    @_builtins.property
-    @pulumi.getter(name="unavailableForNonEnterpriseTier")
-    def unavailable_for_non_enterprise_tier(self) -> Optional[_builtins.bool]:
-        """
-        (boolean) - The feature is unavailable if the customer doesn't have enterprise tier
-        """
-        return pulumi.get(self, "unavailable_for_non_enterprise_tier")
-
-    @unavailable_for_non_enterprise_tier.setter
-    def unavailable_for_non_enterprise_tier(self, value: Optional[_builtins.bool]):
-        pulumi.set(self, "unavailable_for_non_enterprise_tier", value)
-
-
-if not MYPY:
-    class GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowArgsDict(TypedDict):
-        week_day_based_schedule: NotRequired['GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgsDict']
-        """
-        (ClusterAutoRestartMessageMaintenanceWindowWeekDayBasedSchedule)
-        """
-elif False:
-    GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowArgs:
-    def __init__(__self__, *,
-                 week_day_based_schedule: Optional['GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgs'] = None):
-        """
-        :param 'GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgs' week_day_based_schedule: (ClusterAutoRestartMessageMaintenanceWindowWeekDayBasedSchedule)
-        """
-        if week_day_based_schedule is not None:
-            pulumi.set(__self__, "week_day_based_schedule", week_day_based_schedule)
-
-    @_builtins.property
-    @pulumi.getter(name="weekDayBasedSchedule")
-    def week_day_based_schedule(self) -> Optional['GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgs']:
-        """
-        (ClusterAutoRestartMessageMaintenanceWindowWeekDayBasedSchedule)
-        """
-        return pulumi.get(self, "week_day_based_schedule")
-
-    @week_day_based_schedule.setter
-    def week_day_based_schedule(self, value: Optional['GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgs']):
-        pulumi.set(self, "week_day_based_schedule", value)
-
-
-if not MYPY:
-    class GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgsDict(TypedDict):
-        day_of_week: NotRequired[_builtins.str]
-        """
-        (string) - . Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
-        """
-        frequency: NotRequired[_builtins.str]
-        """
-        (string) - . Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
-        """
-        window_start_time: NotRequired['GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgsDict']
-        """
-        (ClusterAutoRestartMessageMaintenanceWindowWindowStartTime)
-        """
-elif False:
-    GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgs:
-    def __init__(__self__, *,
-                 day_of_week: Optional[_builtins.str] = None,
-                 frequency: Optional[_builtins.str] = None,
-                 window_start_time: Optional['GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs'] = None):
-        """
-        :param _builtins.str day_of_week: (string) - . Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
-        :param _builtins.str frequency: (string) - . Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
-        :param 'GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs' window_start_time: (ClusterAutoRestartMessageMaintenanceWindowWindowStartTime)
-        """
-        if day_of_week is not None:
-            pulumi.set(__self__, "day_of_week", day_of_week)
-        if frequency is not None:
-            pulumi.set(__self__, "frequency", frequency)
-        if window_start_time is not None:
-            pulumi.set(__self__, "window_start_time", window_start_time)
-
-    @_builtins.property
-    @pulumi.getter(name="dayOfWeek")
-    def day_of_week(self) -> Optional[_builtins.str]:
-        """
-        (string) - . Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
-        """
-        return pulumi.get(self, "day_of_week")
-
-    @day_of_week.setter
-    def day_of_week(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "day_of_week", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def frequency(self) -> Optional[_builtins.str]:
-        """
-        (string) - . Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
-        """
-        return pulumi.get(self, "frequency")
-
-    @frequency.setter
-    def frequency(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "frequency", value)
-
-    @_builtins.property
-    @pulumi.getter(name="windowStartTime")
-    def window_start_time(self) -> Optional['GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs']:
-        """
-        (ClusterAutoRestartMessageMaintenanceWindowWindowStartTime)
-        """
-        return pulumi.get(self, "window_start_time")
-
-    @window_start_time.setter
-    def window_start_time(self, value: Optional['GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs']):
-        pulumi.set(self, "window_start_time", value)
-
-
-if not MYPY:
-    class GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgsDict(TypedDict):
-        hours: NotRequired[_builtins.int]
-        """
-        (integer)
-        """
-        minutes: NotRequired[_builtins.int]
-        """
-        (integer)
-        """
-elif False:
-    GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs:
-    def __init__(__self__, *,
-                 hours: Optional[_builtins.int] = None,
-                 minutes: Optional[_builtins.int] = None):
-        """
-        :param _builtins.int hours: (integer)
-        :param _builtins.int minutes: (integer)
-        """
-        if hours is not None:
-            pulumi.set(__self__, "hours", hours)
-        if minutes is not None:
-            pulumi.set(__self__, "minutes", minutes)
-
-    @_builtins.property
-    @pulumi.getter
-    def hours(self) -> Optional[_builtins.int]:
-        """
-        (integer)
-        """
-        return pulumi.get(self, "hours")
-
-    @hours.setter
-    def hours(self, value: Optional[_builtins.int]):
-        pulumi.set(self, "hours", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def minutes(self) -> Optional[_builtins.int]:
-        """
-        (integer)
-        """
-        return pulumi.get(self, "minutes")
-
-    @minutes.setter
-    def minutes(self, value: Optional[_builtins.int]):
-        pulumi.set(self, "minutes", value)
-
-
-if not MYPY:
-    class GetAccountSettingV2EffectiveDefaultDataSecurityModeArgsDict(TypedDict):
-        status: _builtins.str
-        """
-        (string) - . Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
-        """
-elif False:
-    GetAccountSettingV2EffectiveDefaultDataSecurityModeArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetAccountSettingV2EffectiveDefaultDataSecurityModeArgs:
-    def __init__(__self__, *,
-                 status: _builtins.str):
-        """
-        :param _builtins.str status: (string) - . Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
-        """
-        pulumi.set(__self__, "status", status)
-
-    @_builtins.property
-    @pulumi.getter
-    def status(self) -> _builtins.str:
-        """
-        (string) - . Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
-        """
-        return pulumi.get(self, "status")
-
-    @status.setter
-    def status(self, value: _builtins.str):
-        pulumi.set(self, "status", value)
-
-
-if not MYPY:
-    class GetAccountSettingV2EffectivePersonalComputeArgsDict(TypedDict):
-        value: NotRequired[_builtins.str]
-        """
-        (string) - Represents a generic string value
-        """
-elif False:
-    GetAccountSettingV2EffectivePersonalComputeArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetAccountSettingV2EffectivePersonalComputeArgs:
-    def __init__(__self__, *,
-                 value: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str value: (string) - Represents a generic string value
-        """
-        if value is not None:
-            pulumi.set(__self__, "value", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def value(self) -> Optional[_builtins.str]:
-        """
-        (string) - Represents a generic string value
-        """
-        return pulumi.get(self, "value")
-
-    @value.setter
-    def value(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "value", value)
-
-
-if not MYPY:
-    class GetAccountSettingV2EffectiveRestrictWorkspaceAdminsArgsDict(TypedDict):
-        status: _builtins.str
-        """
-        (string) - . Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
-        """
-elif False:
-    GetAccountSettingV2EffectiveRestrictWorkspaceAdminsArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetAccountSettingV2EffectiveRestrictWorkspaceAdminsArgs:
-    def __init__(__self__, *,
-                 status: _builtins.str):
-        """
-        :param _builtins.str status: (string) - . Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
-        """
-        pulumi.set(__self__, "status", status)
-
-    @_builtins.property
-    @pulumi.getter
-    def status(self) -> _builtins.str:
-        """
-        (string) - . Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
-        """
-        return pulumi.get(self, "status")
-
-    @status.setter
-    def status(self, value: _builtins.str):
-        pulumi.set(self, "status", value)
-
-
-if not MYPY:
-    class GetAccountSettingV2IntegerValArgsDict(TypedDict):
-        value: NotRequired[_builtins.int]
-        """
-        (string) - Represents a generic string value
-        """
-elif False:
-    GetAccountSettingV2IntegerValArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetAccountSettingV2IntegerValArgs:
-    def __init__(__self__, *,
-                 value: Optional[_builtins.int] = None):
-        """
-        :param _builtins.int value: (string) - Represents a generic string value
-        """
-        if value is not None:
-            pulumi.set(__self__, "value", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def value(self) -> Optional[_builtins.int]:
-        """
-        (string) - Represents a generic string value
-        """
-        return pulumi.get(self, "value")
-
-    @value.setter
-    def value(self, value: Optional[_builtins.int]):
-        pulumi.set(self, "value", value)
-
-
-if not MYPY:
-    class GetAccountSettingV2PersonalComputeArgsDict(TypedDict):
-        value: NotRequired[_builtins.str]
-        """
-        (string) - Represents a generic string value
-        """
-elif False:
-    GetAccountSettingV2PersonalComputeArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetAccountSettingV2PersonalComputeArgs:
-    def __init__(__self__, *,
-                 value: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str value: (string) - Represents a generic string value
-        """
-        if value is not None:
-            pulumi.set(__self__, "value", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def value(self) -> Optional[_builtins.str]:
-        """
-        (string) - Represents a generic string value
-        """
-        return pulumi.get(self, "value")
-
-    @value.setter
-    def value(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "value", value)
-
-
-if not MYPY:
-    class GetAccountSettingV2RestrictWorkspaceAdminsArgsDict(TypedDict):
-        status: _builtins.str
-        """
-        (string) - . Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
-        """
-elif False:
-    GetAccountSettingV2RestrictWorkspaceAdminsArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetAccountSettingV2RestrictWorkspaceAdminsArgs:
-    def __init__(__self__, *,
-                 status: _builtins.str):
-        """
-        :param _builtins.str status: (string) - . Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
-        """
-        pulumi.set(__self__, "status", status)
-
-    @_builtins.property
-    @pulumi.getter
-    def status(self) -> _builtins.str:
-        """
-        (string) - . Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
-        """
-        return pulumi.get(self, "status")
-
-    @status.setter
-    def status(self, value: _builtins.str):
-        pulumi.set(self, "status", value)
-
-
-if not MYPY:
-    class GetAccountSettingV2StringValArgsDict(TypedDict):
-        value: NotRequired[_builtins.str]
-        """
-        (string) - Represents a generic string value
-        """
-elif False:
-    GetAccountSettingV2StringValArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetAccountSettingV2StringValArgs:
-    def __init__(__self__, *,
-                 value: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str value: (string) - Represents a generic string value
-        """
-        if value is not None:
-            pulumi.set(__self__, "value", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def value(self) -> Optional[_builtins.str]:
-        """
-        (string) - Represents a generic string value
-        """
-        return pulumi.get(self, "value")
-
-    @value.setter
-    def value(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "value", value)
-
-
-if not MYPY:
-    class GetAlertV2EvaluationArgsDict(TypedDict):
-        last_evaluated_at: _builtins.str
-        """
-        (string) - Timestamp of the last evaluation
-        """
-        state: _builtins.str
-        """
-        (string) - Latest state of alert evaluation. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
-        """
-        comparison_operator: NotRequired[_builtins.str]
-        """
-        (string) - Operator used for comparison in alert evaluation. Possible values are: `EQUAL`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `IS_NOT_NULL`, `IS_NULL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`
-        """
-        empty_result_state: NotRequired[_builtins.str]
-        """
-        (string) - Alert state if result is empty. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
-        """
-        notification: NotRequired['GetAlertV2EvaluationNotificationArgsDict']
-        """
-        (AlertV2Notification) - User or Notification Destination to notify when alert is triggered
-        """
-        source: NotRequired['GetAlertV2EvaluationSourceArgsDict']
-        """
-        (AlertV2OperandColumn) - Source column from result to use to evaluate alert
-        """
-        threshold: NotRequired['GetAlertV2EvaluationThresholdArgsDict']
-        """
-        (AlertV2Operand) - Threshold to user for alert evaluation, can be a column or a value
-        """
-elif False:
-    GetAlertV2EvaluationArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetAlertV2EvaluationArgs:
-    def __init__(__self__, *,
-                 last_evaluated_at: _builtins.str,
-                 state: _builtins.str,
-                 comparison_operator: Optional[_builtins.str] = None,
-                 empty_result_state: Optional[_builtins.str] = None,
-                 notification: Optional['GetAlertV2EvaluationNotificationArgs'] = None,
-                 source: Optional['GetAlertV2EvaluationSourceArgs'] = None,
-                 threshold: Optional['GetAlertV2EvaluationThresholdArgs'] = None):
-        """
-        :param _builtins.str last_evaluated_at: (string) - Timestamp of the last evaluation
-        :param _builtins.str state: (string) - Latest state of alert evaluation. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
-        :param _builtins.str comparison_operator: (string) - Operator used for comparison in alert evaluation. Possible values are: `EQUAL`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `IS_NOT_NULL`, `IS_NULL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`
-        :param _builtins.str empty_result_state: (string) - Alert state if result is empty. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
-        :param 'GetAlertV2EvaluationNotificationArgs' notification: (AlertV2Notification) - User or Notification Destination to notify when alert is triggered
-        :param 'GetAlertV2EvaluationSourceArgs' source: (AlertV2OperandColumn) - Source column from result to use to evaluate alert
-        :param 'GetAlertV2EvaluationThresholdArgs' threshold: (AlertV2Operand) - Threshold to user for alert evaluation, can be a column or a value
-        """
-        pulumi.set(__self__, "last_evaluated_at", last_evaluated_at)
-        pulumi.set(__self__, "state", state)
-        if comparison_operator is not None:
-            pulumi.set(__self__, "comparison_operator", comparison_operator)
-        if empty_result_state is not None:
-            pulumi.set(__self__, "empty_result_state", empty_result_state)
-        if notification is not None:
-            pulumi.set(__self__, "notification", notification)
-        if source is not None:
-            pulumi.set(__self__, "source", source)
-        if threshold is not None:
-            pulumi.set(__self__, "threshold", threshold)
-
-    @_builtins.property
-    @pulumi.getter(name="lastEvaluatedAt")
-    def last_evaluated_at(self) -> _builtins.str:
-        """
-        (string) - Timestamp of the last evaluation
-        """
-        return pulumi.get(self, "last_evaluated_at")
-
-    @last_evaluated_at.setter
-    def last_evaluated_at(self, value: _builtins.str):
-        pulumi.set(self, "last_evaluated_at", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def state(self) -> _builtins.str:
-        """
-        (string) - Latest state of alert evaluation. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
-        """
-        return pulumi.get(self, "state")
-
-    @state.setter
-    def state(self, value: _builtins.str):
-        pulumi.set(self, "state", value)
-
-    @_builtins.property
-    @pulumi.getter(name="comparisonOperator")
-    def comparison_operator(self) -> Optional[_builtins.str]:
-        """
-        (string) - Operator used for comparison in alert evaluation. Possible values are: `EQUAL`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `IS_NOT_NULL`, `IS_NULL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`
-        """
-        return pulumi.get(self, "comparison_operator")
-
-    @comparison_operator.setter
-    def comparison_operator(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "comparison_operator", value)
-
-    @_builtins.property
-    @pulumi.getter(name="emptyResultState")
-    def empty_result_state(self) -> Optional[_builtins.str]:
-        """
-        (string) - Alert state if result is empty. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
-        """
-        return pulumi.get(self, "empty_result_state")
-
-    @empty_result_state.setter
-    def empty_result_state(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "empty_result_state", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def notification(self) -> Optional['GetAlertV2EvaluationNotificationArgs']:
-        """
-        (AlertV2Notification) - User or Notification Destination to notify when alert is triggered
-        """
-        return pulumi.get(self, "notification")
-
-    @notification.setter
-    def notification(self, value: Optional['GetAlertV2EvaluationNotificationArgs']):
-        pulumi.set(self, "notification", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def source(self) -> Optional['GetAlertV2EvaluationSourceArgs']:
-        """
-        (AlertV2OperandColumn) - Source column from result to use to evaluate alert
-        """
-        return pulumi.get(self, "source")
-
-    @source.setter
-    def source(self, value: Optional['GetAlertV2EvaluationSourceArgs']):
-        pulumi.set(self, "source", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def threshold(self) -> Optional['GetAlertV2EvaluationThresholdArgs']:
-        """
-        (AlertV2Operand) - Threshold to user for alert evaluation, can be a column or a value
-        """
-        return pulumi.get(self, "threshold")
-
-    @threshold.setter
-    def threshold(self, value: Optional['GetAlertV2EvaluationThresholdArgs']):
-        pulumi.set(self, "threshold", value)
-
-
-if not MYPY:
-    class GetAlertV2EvaluationNotificationArgsDict(TypedDict):
-        notify_on_ok: NotRequired[_builtins.bool]
-        """
-        (boolean) - Whether to notify alert subscribers when alert returns back to normal
-        """
-        retrigger_seconds: NotRequired[_builtins.int]
-        """
-        (integer) - Number of seconds an alert must wait after being triggered to rearm itself. After rearming, it can be triggered again. If 0 or not specified, the alert will not be triggered again
-        """
-        subscriptions: NotRequired[Sequence['GetAlertV2EvaluationNotificationSubscriptionArgsDict']]
-        """
-        (list of AlertV2Subscription)
-        """
-elif False:
-    GetAlertV2EvaluationNotificationArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetAlertV2EvaluationNotificationArgs:
-    def __init__(__self__, *,
-                 notify_on_ok: Optional[_builtins.bool] = None,
-                 retrigger_seconds: Optional[_builtins.int] = None,
-                 subscriptions: Optional[Sequence['GetAlertV2EvaluationNotificationSubscriptionArgs']] = None):
-        """
-        :param _builtins.bool notify_on_ok: (boolean) - Whether to notify alert subscribers when alert returns back to normal
-        :param _builtins.int retrigger_seconds: (integer) - Number of seconds an alert must wait after being triggered to rearm itself. After rearming, it can be triggered again. If 0 or not specified, the alert will not be triggered again
-        :param Sequence['GetAlertV2EvaluationNotificationSubscriptionArgs'] subscriptions: (list of AlertV2Subscription)
-        """
-        if notify_on_ok is not None:
-            pulumi.set(__self__, "notify_on_ok", notify_on_ok)
-        if retrigger_seconds is not None:
-            pulumi.set(__self__, "retrigger_seconds", retrigger_seconds)
-        if subscriptions is not None:
-            pulumi.set(__self__, "subscriptions", subscriptions)
-
-    @_builtins.property
-    @pulumi.getter(name="notifyOnOk")
-    def notify_on_ok(self) -> Optional[_builtins.bool]:
-        """
-        (boolean) - Whether to notify alert subscribers when alert returns back to normal
-        """
-        return pulumi.get(self, "notify_on_ok")
-
-    @notify_on_ok.setter
-    def notify_on_ok(self, value: Optional[_builtins.bool]):
-        pulumi.set(self, "notify_on_ok", value)
-
-    @_builtins.property
-    @pulumi.getter(name="retriggerSeconds")
-    def retrigger_seconds(self) -> Optional[_builtins.int]:
-        """
-        (integer) - Number of seconds an alert must wait after being triggered to rearm itself. After rearming, it can be triggered again. If 0 or not specified, the alert will not be triggered again
-        """
-        return pulumi.get(self, "retrigger_seconds")
-
-    @retrigger_seconds.setter
-    def retrigger_seconds(self, value: Optional[_builtins.int]):
-        pulumi.set(self, "retrigger_seconds", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def subscriptions(self) -> Optional[Sequence['GetAlertV2EvaluationNotificationSubscriptionArgs']]:
-        """
-        (list of AlertV2Subscription)
-        """
-        return pulumi.get(self, "subscriptions")
-
-    @subscriptions.setter
-    def subscriptions(self, value: Optional[Sequence['GetAlertV2EvaluationNotificationSubscriptionArgs']]):
-        pulumi.set(self, "subscriptions", value)
-
-
-if not MYPY:
-    class GetAlertV2EvaluationNotificationSubscriptionArgsDict(TypedDict):
-        destination_id: NotRequired[_builtins.str]
-        """
-        (string)
-        """
-        user_email: NotRequired[_builtins.str]
-        """
-        (string)
-        """
-elif False:
-    GetAlertV2EvaluationNotificationSubscriptionArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetAlertV2EvaluationNotificationSubscriptionArgs:
-    def __init__(__self__, *,
-                 destination_id: Optional[_builtins.str] = None,
-                 user_email: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str destination_id: (string)
-        :param _builtins.str user_email: (string)
-        """
-        if destination_id is not None:
-            pulumi.set(__self__, "destination_id", destination_id)
-        if user_email is not None:
-            pulumi.set(__self__, "user_email", user_email)
-
-    @_builtins.property
-    @pulumi.getter(name="destinationId")
-    def destination_id(self) -> Optional[_builtins.str]:
-        """
-        (string)
-        """
-        return pulumi.get(self, "destination_id")
-
-    @destination_id.setter
-    def destination_id(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "destination_id", value)
-
-    @_builtins.property
-    @pulumi.getter(name="userEmail")
-    def user_email(self) -> Optional[_builtins.str]:
-        """
-        (string)
-        """
-        return pulumi.get(self, "user_email")
-
-    @user_email.setter
-    def user_email(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "user_email", value)
-
-
-if not MYPY:
-    class GetAlertV2EvaluationSourceArgsDict(TypedDict):
-        aggregation: NotRequired[_builtins.str]
-        """
-        (string) - . Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
-        """
-        display: NotRequired[_builtins.str]
-        """
-        (string)
-        """
-        name: NotRequired[_builtins.str]
-        """
-        (string)
-        """
-elif False:
-    GetAlertV2EvaluationSourceArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetAlertV2EvaluationSourceArgs:
-    def __init__(__self__, *,
-                 aggregation: Optional[_builtins.str] = None,
-                 display: Optional[_builtins.str] = None,
-                 name: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str aggregation: (string) - . Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
-        :param _builtins.str display: (string)
-        :param _builtins.str name: (string)
-        """
-        if aggregation is not None:
-            pulumi.set(__self__, "aggregation", aggregation)
-        if display is not None:
-            pulumi.set(__self__, "display", display)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-
-    @_builtins.property
-    @pulumi.getter
-    def aggregation(self) -> Optional[_builtins.str]:
-        """
-        (string) - . Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
-        """
-        return pulumi.get(self, "aggregation")
-
-    @aggregation.setter
-    def aggregation(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "aggregation", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def display(self) -> Optional[_builtins.str]:
-        """
-        (string)
-        """
-        return pulumi.get(self, "display")
-
-    @display.setter
-    def display(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "display", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def name(self) -> Optional[_builtins.str]:
-        """
-        (string)
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "name", value)
-
-
-if not MYPY:
-    class GetAlertV2EvaluationThresholdArgsDict(TypedDict):
-        column: NotRequired['GetAlertV2EvaluationThresholdColumnArgsDict']
-        """
-        (AlertV2OperandColumn)
-        """
-        value: NotRequired['GetAlertV2EvaluationThresholdValueArgsDict']
-        """
-        (AlertV2OperandValue)
-        """
-elif False:
-    GetAlertV2EvaluationThresholdArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetAlertV2EvaluationThresholdArgs:
-    def __init__(__self__, *,
-                 column: Optional['GetAlertV2EvaluationThresholdColumnArgs'] = None,
-                 value: Optional['GetAlertV2EvaluationThresholdValueArgs'] = None):
-        """
-        :param 'GetAlertV2EvaluationThresholdColumnArgs' column: (AlertV2OperandColumn)
-        :param 'GetAlertV2EvaluationThresholdValueArgs' value: (AlertV2OperandValue)
-        """
-        if column is not None:
-            pulumi.set(__self__, "column", column)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def column(self) -> Optional['GetAlertV2EvaluationThresholdColumnArgs']:
-        """
-        (AlertV2OperandColumn)
-        """
-        return pulumi.get(self, "column")
-
-    @column.setter
-    def column(self, value: Optional['GetAlertV2EvaluationThresholdColumnArgs']):
-        pulumi.set(self, "column", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def value(self) -> Optional['GetAlertV2EvaluationThresholdValueArgs']:
-        """
-        (AlertV2OperandValue)
-        """
-        return pulumi.get(self, "value")
-
-    @value.setter
-    def value(self, value: Optional['GetAlertV2EvaluationThresholdValueArgs']):
-        pulumi.set(self, "value", value)
-
-
-if not MYPY:
-    class GetAlertV2EvaluationThresholdColumnArgsDict(TypedDict):
-        aggregation: NotRequired[_builtins.str]
-        """
-        (string) - . Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
-        """
-        display: NotRequired[_builtins.str]
-        """
-        (string)
-        """
-        name: NotRequired[_builtins.str]
-        """
-        (string)
-        """
-elif False:
-    GetAlertV2EvaluationThresholdColumnArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetAlertV2EvaluationThresholdColumnArgs:
-    def __init__(__self__, *,
-                 aggregation: Optional[_builtins.str] = None,
-                 display: Optional[_builtins.str] = None,
-                 name: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str aggregation: (string) - . Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
-        :param _builtins.str display: (string)
-        :param _builtins.str name: (string)
-        """
-        if aggregation is not None:
-            pulumi.set(__self__, "aggregation", aggregation)
-        if display is not None:
-            pulumi.set(__self__, "display", display)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-
-    @_builtins.property
-    @pulumi.getter
-    def aggregation(self) -> Optional[_builtins.str]:
-        """
-        (string) - . Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
-        """
-        return pulumi.get(self, "aggregation")
-
-    @aggregation.setter
-    def aggregation(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "aggregation", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def display(self) -> Optional[_builtins.str]:
-        """
-        (string)
-        """
-        return pulumi.get(self, "display")
-
-    @display.setter
-    def display(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "display", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def name(self) -> Optional[_builtins.str]:
-        """
-        (string)
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "name", value)
-
-
-if not MYPY:
-    class GetAlertV2EvaluationThresholdValueArgsDict(TypedDict):
-        bool_value: NotRequired[_builtins.bool]
-        """
-        (boolean)
-        """
-        double_value: NotRequired[_builtins.float]
-        """
-        (number)
-        """
-        string_value: NotRequired[_builtins.str]
-        """
-        (string)
-        """
-elif False:
-    GetAlertV2EvaluationThresholdValueArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetAlertV2EvaluationThresholdValueArgs:
-    def __init__(__self__, *,
-                 bool_value: Optional[_builtins.bool] = None,
-                 double_value: Optional[_builtins.float] = None,
-                 string_value: Optional[_builtins.str] = None):
-        """
-        :param _builtins.bool bool_value: (boolean)
-        :param _builtins.float double_value: (number)
-        :param _builtins.str string_value: (string)
-        """
-        if bool_value is not None:
-            pulumi.set(__self__, "bool_value", bool_value)
-        if double_value is not None:
-            pulumi.set(__self__, "double_value", double_value)
-        if string_value is not None:
-            pulumi.set(__self__, "string_value", string_value)
-
-    @_builtins.property
-    @pulumi.getter(name="boolValue")
-    def bool_value(self) -> Optional[_builtins.bool]:
-        """
-        (boolean)
-        """
-        return pulumi.get(self, "bool_value")
-
-    @bool_value.setter
-    def bool_value(self, value: Optional[_builtins.bool]):
-        pulumi.set(self, "bool_value", value)
-
-    @_builtins.property
-    @pulumi.getter(name="doubleValue")
-    def double_value(self) -> Optional[_builtins.float]:
-        """
-        (number)
-        """
-        return pulumi.get(self, "double_value")
-
-    @double_value.setter
-    def double_value(self, value: Optional[_builtins.float]):
-        pulumi.set(self, "double_value", value)
-
-    @_builtins.property
-    @pulumi.getter(name="stringValue")
-    def string_value(self) -> Optional[_builtins.str]:
-        """
-        (string)
-        """
-        return pulumi.get(self, "string_value")
-
-    @string_value.setter
-    def string_value(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "string_value", value)
-
-
-if not MYPY:
-    class GetAlertV2RunAsArgsDict(TypedDict):
-        service_principal_name: NotRequired[_builtins.str]
-        """
-        (string) - Application ID of an active service principal. Setting this field requires the `servicePrincipal/user` role
-        """
-        user_name: NotRequired[_builtins.str]
-        """
-        (string) - The email of an active workspace user. Can only set this field to their own email
-        """
-elif False:
-    GetAlertV2RunAsArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetAlertV2RunAsArgs:
-    def __init__(__self__, *,
-                 service_principal_name: Optional[_builtins.str] = None,
-                 user_name: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str service_principal_name: (string) - Application ID of an active service principal. Setting this field requires the `servicePrincipal/user` role
-        :param _builtins.str user_name: (string) - The email of an active workspace user. Can only set this field to their own email
-        """
-        if service_principal_name is not None:
-            pulumi.set(__self__, "service_principal_name", service_principal_name)
-        if user_name is not None:
-            pulumi.set(__self__, "user_name", user_name)
-
-    @_builtins.property
-    @pulumi.getter(name="servicePrincipalName")
-    def service_principal_name(self) -> Optional[_builtins.str]:
-        """
-        (string) - Application ID of an active service principal. Setting this field requires the `servicePrincipal/user` role
-        """
-        return pulumi.get(self, "service_principal_name")
-
-    @service_principal_name.setter
-    def service_principal_name(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "service_principal_name", value)
-
-    @_builtins.property
-    @pulumi.getter(name="userName")
-    def user_name(self) -> Optional[_builtins.str]:
-        """
-        (string) - The email of an active workspace user. Can only set this field to their own email
-        """
-        return pulumi.get(self, "user_name")
-
-    @user_name.setter
-    def user_name(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "user_name", value)
-
-
-if not MYPY:
-    class GetAlertV2ScheduleArgsDict(TypedDict):
-        pause_status: NotRequired[_builtins.str]
-        """
-        (string) - Indicate whether this schedule is paused or not. Possible values are: `PAUSED`, `UNPAUSED`
-        """
-        quartz_cron_schedule: NotRequired[_builtins.str]
-        """
-        (string) - A cron expression using quartz syntax that specifies the schedule for this pipeline.
-        Should use the quartz format described here: http://www.quartz-scheduler.org/documentation/quartz-2.1.7/tutorials/tutorial-lesson-06.html
-        """
-        timezone_id: NotRequired[_builtins.str]
-        """
-        (string) - A Java timezone id. The schedule will be resolved using this timezone.
-        This will be combined with the quartz_cron_schedule to determine the schedule.
-        See https://docs.databricks.com/sql/language-manual/sql-ref-syntax-aux-conf-mgmt-set-timezone.html for details
-        """
-elif False:
-    GetAlertV2ScheduleArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetAlertV2ScheduleArgs:
-    def __init__(__self__, *,
-                 pause_status: Optional[_builtins.str] = None,
-                 quartz_cron_schedule: Optional[_builtins.str] = None,
-                 timezone_id: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str pause_status: (string) - Indicate whether this schedule is paused or not. Possible values are: `PAUSED`, `UNPAUSED`
-        :param _builtins.str quartz_cron_schedule: (string) - A cron expression using quartz syntax that specifies the schedule for this pipeline.
-               Should use the quartz format described here: http://www.quartz-scheduler.org/documentation/quartz-2.1.7/tutorials/tutorial-lesson-06.html
-        :param _builtins.str timezone_id: (string) - A Java timezone id. The schedule will be resolved using this timezone.
-               This will be combined with the quartz_cron_schedule to determine the schedule.
-               See https://docs.databricks.com/sql/language-manual/sql-ref-syntax-aux-conf-mgmt-set-timezone.html for details
-        """
-        if pause_status is not None:
-            pulumi.set(__self__, "pause_status", pause_status)
-        if quartz_cron_schedule is not None:
-            pulumi.set(__self__, "quartz_cron_schedule", quartz_cron_schedule)
-        if timezone_id is not None:
-            pulumi.set(__self__, "timezone_id", timezone_id)
-
-    @_builtins.property
-    @pulumi.getter(name="pauseStatus")
-    def pause_status(self) -> Optional[_builtins.str]:
-        """
-        (string) - Indicate whether this schedule is paused or not. Possible values are: `PAUSED`, `UNPAUSED`
-        """
-        return pulumi.get(self, "pause_status")
-
-    @pause_status.setter
-    def pause_status(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "pause_status", value)
-
-    @_builtins.property
-    @pulumi.getter(name="quartzCronSchedule")
-    def quartz_cron_schedule(self) -> Optional[_builtins.str]:
-        """
-        (string) - A cron expression using quartz syntax that specifies the schedule for this pipeline.
-        Should use the quartz format described here: http://www.quartz-scheduler.org/documentation/quartz-2.1.7/tutorials/tutorial-lesson-06.html
-        """
-        return pulumi.get(self, "quartz_cron_schedule")
-
-    @quartz_cron_schedule.setter
-    def quartz_cron_schedule(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "quartz_cron_schedule", value)
-
-    @_builtins.property
-    @pulumi.getter(name="timezoneId")
-    def timezone_id(self) -> Optional[_builtins.str]:
-        """
-        (string) - A Java timezone id. The schedule will be resolved using this timezone.
-        This will be combined with the quartz_cron_schedule to determine the schedule.
-        See https://docs.databricks.com/sql/language-manual/sql-ref-syntax-aux-conf-mgmt-set-timezone.html for details
-        """
-        return pulumi.get(self, "timezone_id")
-
-    @timezone_id.setter
-    def timezone_id(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "timezone_id", value)
-
-
-if not MYPY:
-    class GetAppsSettingsCustomTemplateManifestArgsDict(TypedDict):
-        name: _builtins.str
-        """
-        The name of the template. It must contain only alphanumeric characters, hyphens, underscores, and whitespaces.
-        It must be unique within the workspace
-        """
-        version: _builtins.int
-        """
-        (integer) - The manifest schema version, for now only 1 is allowed
-        """
-        description: NotRequired[_builtins.str]
-        """
-        (string) - Description of the App Resource
-        """
-        resource_specs: NotRequired[Sequence['GetAppsSettingsCustomTemplateManifestResourceSpecArgsDict']]
-        """
-        (list of AppManifestAppResourceSpec)
-        """
-elif False:
-    GetAppsSettingsCustomTemplateManifestArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetAppsSettingsCustomTemplateManifestArgs:
-    def __init__(__self__, *,
-                 name: _builtins.str,
-                 version: _builtins.int,
-                 description: Optional[_builtins.str] = None,
-                 resource_specs: Optional[Sequence['GetAppsSettingsCustomTemplateManifestResourceSpecArgs']] = None):
-        """
-        :param _builtins.str name: The name of the template. It must contain only alphanumeric characters, hyphens, underscores, and whitespaces.
-               It must be unique within the workspace
-        :param _builtins.int version: (integer) - The manifest schema version, for now only 1 is allowed
-        :param _builtins.str description: (string) - Description of the App Resource
-        :param Sequence['GetAppsSettingsCustomTemplateManifestResourceSpecArgs'] resource_specs: (list of AppManifestAppResourceSpec)
-        """
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "version", version)
-        if description is not None:
-            pulumi.set(__self__, "description", description)
-        if resource_specs is not None:
-            pulumi.set(__self__, "resource_specs", resource_specs)
-
-    @_builtins.property
-    @pulumi.getter
-    def name(self) -> _builtins.str:
-        """
-        The name of the template. It must contain only alphanumeric characters, hyphens, underscores, and whitespaces.
-        It must be unique within the workspace
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: _builtins.str):
-        pulumi.set(self, "name", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def version(self) -> _builtins.int:
-        """
-        (integer) - The manifest schema version, for now only 1 is allowed
-        """
-        return pulumi.get(self, "version")
-
-    @version.setter
-    def version(self, value: _builtins.int):
-        pulumi.set(self, "version", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def description(self) -> Optional[_builtins.str]:
-        """
-        (string) - Description of the App Resource
-        """
-        return pulumi.get(self, "description")
-
-    @description.setter
-    def description(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "description", value)
-
-    @_builtins.property
-    @pulumi.getter(name="resourceSpecs")
-    def resource_specs(self) -> Optional[Sequence['GetAppsSettingsCustomTemplateManifestResourceSpecArgs']]:
-        """
-        (list of AppManifestAppResourceSpec)
-        """
-        return pulumi.get(self, "resource_specs")
-
-    @resource_specs.setter
-    def resource_specs(self, value: Optional[Sequence['GetAppsSettingsCustomTemplateManifestResourceSpecArgs']]):
-        pulumi.set(self, "resource_specs", value)
-
-
-if not MYPY:
-    class GetAppsSettingsCustomTemplateManifestResourceSpecArgsDict(TypedDict):
-        name: _builtins.str
-        """
-        The name of the template. It must contain only alphanumeric characters, hyphens, underscores, and whitespaces.
-        It must be unique within the workspace
-        """
-        description: NotRequired[_builtins.str]
-        """
-        (string) - Description of the App Resource
-        """
-        job_spec: NotRequired['GetAppsSettingsCustomTemplateManifestResourceSpecJobSpecArgsDict']
-        """
-        (AppManifestAppResourceJobSpec)
-        """
-        secret_spec: NotRequired['GetAppsSettingsCustomTemplateManifestResourceSpecSecretSpecArgsDict']
-        """
-        (AppManifestAppResourceSecretSpec)
-        """
-        serving_endpoint_spec: NotRequired['GetAppsSettingsCustomTemplateManifestResourceSpecServingEndpointSpecArgsDict']
-        """
-        (AppManifestAppResourceServingEndpointSpec)
-        """
-        sql_warehouse_spec: NotRequired['GetAppsSettingsCustomTemplateManifestResourceSpecSqlWarehouseSpecArgsDict']
-        """
-        (AppManifestAppResourceSqlWarehouseSpec)
-        """
-        uc_securable_spec: NotRequired['GetAppsSettingsCustomTemplateManifestResourceSpecUcSecurableSpecArgsDict']
-        """
-        (AppManifestAppResourceUcSecurableSpec)
-        """
-elif False:
-    GetAppsSettingsCustomTemplateManifestResourceSpecArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetAppsSettingsCustomTemplateManifestResourceSpecArgs:
-    def __init__(__self__, *,
-                 name: _builtins.str,
-                 description: Optional[_builtins.str] = None,
-                 job_spec: Optional['GetAppsSettingsCustomTemplateManifestResourceSpecJobSpecArgs'] = None,
-                 secret_spec: Optional['GetAppsSettingsCustomTemplateManifestResourceSpecSecretSpecArgs'] = None,
-                 serving_endpoint_spec: Optional['GetAppsSettingsCustomTemplateManifestResourceSpecServingEndpointSpecArgs'] = None,
-                 sql_warehouse_spec: Optional['GetAppsSettingsCustomTemplateManifestResourceSpecSqlWarehouseSpecArgs'] = None,
-                 uc_securable_spec: Optional['GetAppsSettingsCustomTemplateManifestResourceSpecUcSecurableSpecArgs'] = None):
-        """
-        :param _builtins.str name: The name of the template. It must contain only alphanumeric characters, hyphens, underscores, and whitespaces.
-               It must be unique within the workspace
-        :param _builtins.str description: (string) - Description of the App Resource
-        :param 'GetAppsSettingsCustomTemplateManifestResourceSpecJobSpecArgs' job_spec: (AppManifestAppResourceJobSpec)
-        :param 'GetAppsSettingsCustomTemplateManifestResourceSpecSecretSpecArgs' secret_spec: (AppManifestAppResourceSecretSpec)
-        :param 'GetAppsSettingsCustomTemplateManifestResourceSpecServingEndpointSpecArgs' serving_endpoint_spec: (AppManifestAppResourceServingEndpointSpec)
-        :param 'GetAppsSettingsCustomTemplateManifestResourceSpecSqlWarehouseSpecArgs' sql_warehouse_spec: (AppManifestAppResourceSqlWarehouseSpec)
-        :param 'GetAppsSettingsCustomTemplateManifestResourceSpecUcSecurableSpecArgs' uc_securable_spec: (AppManifestAppResourceUcSecurableSpec)
-        """
-        pulumi.set(__self__, "name", name)
-        if description is not None:
-            pulumi.set(__self__, "description", description)
-        if job_spec is not None:
-            pulumi.set(__self__, "job_spec", job_spec)
-        if secret_spec is not None:
-            pulumi.set(__self__, "secret_spec", secret_spec)
-        if serving_endpoint_spec is not None:
-            pulumi.set(__self__, "serving_endpoint_spec", serving_endpoint_spec)
-        if sql_warehouse_spec is not None:
-            pulumi.set(__self__, "sql_warehouse_spec", sql_warehouse_spec)
-        if uc_securable_spec is not None:
-            pulumi.set(__self__, "uc_securable_spec", uc_securable_spec)
-
-    @_builtins.property
-    @pulumi.getter
-    def name(self) -> _builtins.str:
-        """
-        The name of the template. It must contain only alphanumeric characters, hyphens, underscores, and whitespaces.
-        It must be unique within the workspace
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: _builtins.str):
-        pulumi.set(self, "name", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def description(self) -> Optional[_builtins.str]:
-        """
-        (string) - Description of the App Resource
-        """
-        return pulumi.get(self, "description")
-
-    @description.setter
-    def description(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "description", value)
-
-    @_builtins.property
-    @pulumi.getter(name="jobSpec")
-    def job_spec(self) -> Optional['GetAppsSettingsCustomTemplateManifestResourceSpecJobSpecArgs']:
-        """
-        (AppManifestAppResourceJobSpec)
-        """
-        return pulumi.get(self, "job_spec")
-
-    @job_spec.setter
-    def job_spec(self, value: Optional['GetAppsSettingsCustomTemplateManifestResourceSpecJobSpecArgs']):
-        pulumi.set(self, "job_spec", value)
-
-    @_builtins.property
-    @pulumi.getter(name="secretSpec")
-    def secret_spec(self) -> Optional['GetAppsSettingsCustomTemplateManifestResourceSpecSecretSpecArgs']:
-        """
-        (AppManifestAppResourceSecretSpec)
-        """
-        return pulumi.get(self, "secret_spec")
-
-    @secret_spec.setter
-    def secret_spec(self, value: Optional['GetAppsSettingsCustomTemplateManifestResourceSpecSecretSpecArgs']):
-        pulumi.set(self, "secret_spec", value)
-
-    @_builtins.property
-    @pulumi.getter(name="servingEndpointSpec")
-    def serving_endpoint_spec(self) -> Optional['GetAppsSettingsCustomTemplateManifestResourceSpecServingEndpointSpecArgs']:
-        """
-        (AppManifestAppResourceServingEndpointSpec)
-        """
-        return pulumi.get(self, "serving_endpoint_spec")
-
-    @serving_endpoint_spec.setter
-    def serving_endpoint_spec(self, value: Optional['GetAppsSettingsCustomTemplateManifestResourceSpecServingEndpointSpecArgs']):
-        pulumi.set(self, "serving_endpoint_spec", value)
-
-    @_builtins.property
-    @pulumi.getter(name="sqlWarehouseSpec")
-    def sql_warehouse_spec(self) -> Optional['GetAppsSettingsCustomTemplateManifestResourceSpecSqlWarehouseSpecArgs']:
-        """
-        (AppManifestAppResourceSqlWarehouseSpec)
-        """
-        return pulumi.get(self, "sql_warehouse_spec")
-
-    @sql_warehouse_spec.setter
-    def sql_warehouse_spec(self, value: Optional['GetAppsSettingsCustomTemplateManifestResourceSpecSqlWarehouseSpecArgs']):
-        pulumi.set(self, "sql_warehouse_spec", value)
-
-    @_builtins.property
-    @pulumi.getter(name="ucSecurableSpec")
-    def uc_securable_spec(self) -> Optional['GetAppsSettingsCustomTemplateManifestResourceSpecUcSecurableSpecArgs']:
-        """
-        (AppManifestAppResourceUcSecurableSpec)
-        """
-        return pulumi.get(self, "uc_securable_spec")
-
-    @uc_securable_spec.setter
-    def uc_securable_spec(self, value: Optional['GetAppsSettingsCustomTemplateManifestResourceSpecUcSecurableSpecArgs']):
-        pulumi.set(self, "uc_securable_spec", value)
-
-
-if not MYPY:
-    class GetAppsSettingsCustomTemplateManifestResourceSpecJobSpecArgsDict(TypedDict):
-        permission: _builtins.str
-        """
-        (string) - . Possible values are: `MANAGE`, `READ_VOLUME`, `WRITE_VOLUME`
-        """
-elif False:
-    GetAppsSettingsCustomTemplateManifestResourceSpecJobSpecArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetAppsSettingsCustomTemplateManifestResourceSpecJobSpecArgs:
-    def __init__(__self__, *,
-                 permission: _builtins.str):
-        """
-        :param _builtins.str permission: (string) - . Possible values are: `MANAGE`, `READ_VOLUME`, `WRITE_VOLUME`
-        """
-        pulumi.set(__self__, "permission", permission)
-
-    @_builtins.property
-    @pulumi.getter
-    def permission(self) -> _builtins.str:
-        """
-        (string) - . Possible values are: `MANAGE`, `READ_VOLUME`, `WRITE_VOLUME`
-        """
-        return pulumi.get(self, "permission")
-
-    @permission.setter
-    def permission(self, value: _builtins.str):
-        pulumi.set(self, "permission", value)
-
-
-if not MYPY:
-    class GetAppsSettingsCustomTemplateManifestResourceSpecSecretSpecArgsDict(TypedDict):
-        permission: _builtins.str
-        """
-        (string) - . Possible values are: `MANAGE`, `READ_VOLUME`, `WRITE_VOLUME`
-        """
-elif False:
-    GetAppsSettingsCustomTemplateManifestResourceSpecSecretSpecArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetAppsSettingsCustomTemplateManifestResourceSpecSecretSpecArgs:
-    def __init__(__self__, *,
-                 permission: _builtins.str):
-        """
-        :param _builtins.str permission: (string) - . Possible values are: `MANAGE`, `READ_VOLUME`, `WRITE_VOLUME`
-        """
-        pulumi.set(__self__, "permission", permission)
-
-    @_builtins.property
-    @pulumi.getter
-    def permission(self) -> _builtins.str:
-        """
-        (string) - . Possible values are: `MANAGE`, `READ_VOLUME`, `WRITE_VOLUME`
-        """
-        return pulumi.get(self, "permission")
-
-    @permission.setter
-    def permission(self, value: _builtins.str):
-        pulumi.set(self, "permission", value)
-
-
-if not MYPY:
-    class GetAppsSettingsCustomTemplateManifestResourceSpecServingEndpointSpecArgsDict(TypedDict):
-        permission: _builtins.str
-        """
-        (string) - . Possible values are: `MANAGE`, `READ_VOLUME`, `WRITE_VOLUME`
-        """
-elif False:
-    GetAppsSettingsCustomTemplateManifestResourceSpecServingEndpointSpecArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetAppsSettingsCustomTemplateManifestResourceSpecServingEndpointSpecArgs:
-    def __init__(__self__, *,
-                 permission: _builtins.str):
-        """
-        :param _builtins.str permission: (string) - . Possible values are: `MANAGE`, `READ_VOLUME`, `WRITE_VOLUME`
-        """
-        pulumi.set(__self__, "permission", permission)
-
-    @_builtins.property
-    @pulumi.getter
-    def permission(self) -> _builtins.str:
-        """
-        (string) - . Possible values are: `MANAGE`, `READ_VOLUME`, `WRITE_VOLUME`
-        """
-        return pulumi.get(self, "permission")
-
-    @permission.setter
-    def permission(self, value: _builtins.str):
-        pulumi.set(self, "permission", value)
-
-
-if not MYPY:
-    class GetAppsSettingsCustomTemplateManifestResourceSpecSqlWarehouseSpecArgsDict(TypedDict):
-        permission: _builtins.str
-        """
-        (string) - . Possible values are: `MANAGE`, `READ_VOLUME`, `WRITE_VOLUME`
-        """
-elif False:
-    GetAppsSettingsCustomTemplateManifestResourceSpecSqlWarehouseSpecArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetAppsSettingsCustomTemplateManifestResourceSpecSqlWarehouseSpecArgs:
-    def __init__(__self__, *,
-                 permission: _builtins.str):
-        """
-        :param _builtins.str permission: (string) - . Possible values are: `MANAGE`, `READ_VOLUME`, `WRITE_VOLUME`
-        """
-        pulumi.set(__self__, "permission", permission)
-
-    @_builtins.property
-    @pulumi.getter
-    def permission(self) -> _builtins.str:
-        """
-        (string) - . Possible values are: `MANAGE`, `READ_VOLUME`, `WRITE_VOLUME`
-        """
-        return pulumi.get(self, "permission")
-
-    @permission.setter
-    def permission(self, value: _builtins.str):
-        pulumi.set(self, "permission", value)
-
-
-if not MYPY:
-    class GetAppsSettingsCustomTemplateManifestResourceSpecUcSecurableSpecArgsDict(TypedDict):
-        permission: _builtins.str
-        """
-        (string) - . Possible values are: `MANAGE`, `READ_VOLUME`, `WRITE_VOLUME`
-        """
-        securable_type: _builtins.str
-        """
-        (string) - . Possible values are: `VOLUME`
-        """
-elif False:
-    GetAppsSettingsCustomTemplateManifestResourceSpecUcSecurableSpecArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetAppsSettingsCustomTemplateManifestResourceSpecUcSecurableSpecArgs:
-    def __init__(__self__, *,
-                 permission: _builtins.str,
-                 securable_type: _builtins.str):
-        """
-        :param _builtins.str permission: (string) - . Possible values are: `MANAGE`, `READ_VOLUME`, `WRITE_VOLUME`
-        :param _builtins.str securable_type: (string) - . Possible values are: `VOLUME`
-        """
-        pulumi.set(__self__, "permission", permission)
-        pulumi.set(__self__, "securable_type", securable_type)
-
-    @_builtins.property
-    @pulumi.getter
-    def permission(self) -> _builtins.str:
-        """
-        (string) - . Possible values are: `MANAGE`, `READ_VOLUME`, `WRITE_VOLUME`
-        """
-        return pulumi.get(self, "permission")
-
-    @permission.setter
-    def permission(self, value: _builtins.str):
-        pulumi.set(self, "permission", value)
-
-    @_builtins.property
-    @pulumi.getter(name="securableType")
-    def securable_type(self) -> _builtins.str:
-        """
-        (string) - . Possible values are: `VOLUME`
-        """
-        return pulumi.get(self, "securable_type")
-
-    @securable_type.setter
-    def securable_type(self, value: _builtins.str):
-        pulumi.set(self, "securable_type", value)
-
-
-if not MYPY:
-    class GetBudgetPolicyCustomTagArgsDict(TypedDict):
-        key: _builtins.str
-        """
-        (string) - The key of the tag.
-        - Must be unique among all custom tags of the same policy
-        - Cannot be “budget-policy-name”, “budget-policy-id” or "budget-policy-resolution-result" -
-        these tags are preserved
-        """
-        value: NotRequired[_builtins.str]
-        """
-        (string) - The value of the tag
-        """
-elif False:
-    GetBudgetPolicyCustomTagArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetBudgetPolicyCustomTagArgs:
-    def __init__(__self__, *,
-                 key: _builtins.str,
-                 value: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str key: (string) - The key of the tag.
-               - Must be unique among all custom tags of the same policy
-               - Cannot be “budget-policy-name”, “budget-policy-id” or "budget-policy-resolution-result" -
-               these tags are preserved
-        :param _builtins.str value: (string) - The value of the tag
-        """
-        pulumi.set(__self__, "key", key)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def key(self) -> _builtins.str:
-        """
-        (string) - The key of the tag.
-        - Must be unique among all custom tags of the same policy
-        - Cannot be “budget-policy-name”, “budget-policy-id” or "budget-policy-resolution-result" -
-        these tags are preserved
-        """
-        return pulumi.get(self, "key")
-
-    @key.setter
-    def key(self, value: _builtins.str):
-        pulumi.set(self, "key", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def value(self) -> Optional[_builtins.str]:
-        """
-        (string) - The value of the tag
-        """
-        return pulumi.get(self, "value")
-
-    @value.setter
-    def value(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "value", value)
+    @field.setter
+    def field(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "field", value)
 
 
 if not MYPY:
@@ -53386,4151 +51282,65 @@ class GetCatalogCatalogInfoProvisioningInfoArgs:
 
 
 if not MYPY:
-    class GetCleanRoomAssetForeignTableArgsDict(TypedDict):
-        columns: Sequence['GetCleanRoomAssetForeignTableColumnArgsDict']
+    class GetCatalogProviderConfigArgsDict(TypedDict):
+        workspace_id: _builtins.str
         """
-        (list of ColumnInfo) - The metadata information of the columns in the view
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
         """
 elif False:
-    GetCleanRoomAssetForeignTableArgsDict: TypeAlias = Mapping[str, Any]
+    GetCatalogProviderConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GetCleanRoomAssetForeignTableArgs:
+class GetCatalogProviderConfigArgs:
     def __init__(__self__, *,
-                 columns: Sequence['GetCleanRoomAssetForeignTableColumnArgs']):
+                 workspace_id: _builtins.str):
         """
-        :param Sequence['GetCleanRoomAssetForeignTableColumnArgs'] columns: (list of ColumnInfo) - The metadata information of the columns in the view
+        :param _builtins.str workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
         """
-        pulumi.set(__self__, "columns", columns)
+        pulumi.set(__self__, "workspace_id", workspace_id)
 
     @_builtins.property
-    @pulumi.getter
-    def columns(self) -> Sequence['GetCleanRoomAssetForeignTableColumnArgs']:
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.str:
         """
-        (list of ColumnInfo) - The metadata information of the columns in the view
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
         """
-        return pulumi.get(self, "columns")
+        return pulumi.get(self, "workspace_id")
 
-    @columns.setter
-    def columns(self, value: Sequence['GetCleanRoomAssetForeignTableColumnArgs']):
-        pulumi.set(self, "columns", value)
+    @workspace_id.setter
+    def workspace_id(self, value: _builtins.str):
+        pulumi.set(self, "workspace_id", value)
 
 
 if not MYPY:
-    class GetCleanRoomAssetForeignTableColumnArgsDict(TypedDict):
-        comment: NotRequired[_builtins.str]
+    class GetCatalogsProviderConfigArgsDict(TypedDict):
+        workspace_id: _builtins.str
         """
-        (string) - User-provided free-form text description
-        """
-        mask: NotRequired['GetCleanRoomAssetForeignTableColumnMaskArgsDict']
-        """
-        (ColumnMask)
-        """
-        name: NotRequired[_builtins.str]
-        """
-        A fully qualified name that uniquely identifies the asset within the clean room.
-        This is also the name displayed in the clean room UI.
-
-        For UC securable assets (tables, volumes, etc.), the format is *shared_catalog*.*shared_schema*.*asset_name*
-
-        For notebooks, the name is the notebook file name.
-        For jar analyses, the name is the jar analysis name
-        """
-        nullable: NotRequired[_builtins.bool]
-        """
-        (boolean) - Whether field may be Null (default: true)
-        """
-        partition_index: NotRequired[_builtins.int]
-        """
-        (integer) - Partition index for column
-        """
-        position: NotRequired[_builtins.int]
-        """
-        (integer) - Ordinal position of column (starting at position 0)
-        """
-        type_interval_type: NotRequired[_builtins.str]
-        """
-        (string) - Format of IntervalType
-        """
-        type_json: NotRequired[_builtins.str]
-        """
-        (string) - Full data type specification, JSON-serialized
-        """
-        type_name: NotRequired[_builtins.str]
-        """
-        (string) - . Possible values are: `ARRAY`, `BINARY`, `BOOLEAN`, `BYTE`, `CHAR`, `DATE`, `DECIMAL`, `DOUBLE`, `FLOAT`, `GEOGRAPHY`, `GEOMETRY`, `INT`, `INTERVAL`, `LONG`, `MAP`, `NULL`, `SHORT`, `STRING`, `STRUCT`, `TABLE_TYPE`, `TIMESTAMP`, `TIMESTAMP_NTZ`, `USER_DEFINED_TYPE`, `VARIANT`
-        """
-        type_precision: NotRequired[_builtins.int]
-        """
-        (integer) - Digits of precision; required for DecimalTypes
-        """
-        type_scale: NotRequired[_builtins.int]
-        """
-        (integer) - Digits to right of decimal; Required for DecimalTypes
-        """
-        type_text: NotRequired[_builtins.str]
-        """
-        (string) - Full data type specification as SQL/catalogString text
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
         """
 elif False:
-    GetCleanRoomAssetForeignTableColumnArgsDict: TypeAlias = Mapping[str, Any]
+    GetCatalogsProviderConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GetCleanRoomAssetForeignTableColumnArgs:
+class GetCatalogsProviderConfigArgs:
     def __init__(__self__, *,
-                 comment: Optional[_builtins.str] = None,
-                 mask: Optional['GetCleanRoomAssetForeignTableColumnMaskArgs'] = None,
-                 name: Optional[_builtins.str] = None,
-                 nullable: Optional[_builtins.bool] = None,
-                 partition_index: Optional[_builtins.int] = None,
-                 position: Optional[_builtins.int] = None,
-                 type_interval_type: Optional[_builtins.str] = None,
-                 type_json: Optional[_builtins.str] = None,
-                 type_name: Optional[_builtins.str] = None,
-                 type_precision: Optional[_builtins.int] = None,
-                 type_scale: Optional[_builtins.int] = None,
-                 type_text: Optional[_builtins.str] = None):
+                 workspace_id: _builtins.str):
         """
-        :param _builtins.str comment: (string) - User-provided free-form text description
-        :param 'GetCleanRoomAssetForeignTableColumnMaskArgs' mask: (ColumnMask)
-        :param _builtins.str name: A fully qualified name that uniquely identifies the asset within the clean room.
-               This is also the name displayed in the clean room UI.
-               
-               For UC securable assets (tables, volumes, etc.), the format is *shared_catalog*.*shared_schema*.*asset_name*
-               
-               For notebooks, the name is the notebook file name.
-               For jar analyses, the name is the jar analysis name
-        :param _builtins.bool nullable: (boolean) - Whether field may be Null (default: true)
-        :param _builtins.int partition_index: (integer) - Partition index for column
-        :param _builtins.int position: (integer) - Ordinal position of column (starting at position 0)
-        :param _builtins.str type_interval_type: (string) - Format of IntervalType
-        :param _builtins.str type_json: (string) - Full data type specification, JSON-serialized
-        :param _builtins.str type_name: (string) - . Possible values are: `ARRAY`, `BINARY`, `BOOLEAN`, `BYTE`, `CHAR`, `DATE`, `DECIMAL`, `DOUBLE`, `FLOAT`, `GEOGRAPHY`, `GEOMETRY`, `INT`, `INTERVAL`, `LONG`, `MAP`, `NULL`, `SHORT`, `STRING`, `STRUCT`, `TABLE_TYPE`, `TIMESTAMP`, `TIMESTAMP_NTZ`, `USER_DEFINED_TYPE`, `VARIANT`
-        :param _builtins.int type_precision: (integer) - Digits of precision; required for DecimalTypes
-        :param _builtins.int type_scale: (integer) - Digits to right of decimal; Required for DecimalTypes
-        :param _builtins.str type_text: (string) - Full data type specification as SQL/catalogString text
+        :param _builtins.str workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
         """
-        if comment is not None:
-            pulumi.set(__self__, "comment", comment)
-        if mask is not None:
-            pulumi.set(__self__, "mask", mask)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if nullable is not None:
-            pulumi.set(__self__, "nullable", nullable)
-        if partition_index is not None:
-            pulumi.set(__self__, "partition_index", partition_index)
-        if position is not None:
-            pulumi.set(__self__, "position", position)
-        if type_interval_type is not None:
-            pulumi.set(__self__, "type_interval_type", type_interval_type)
-        if type_json is not None:
-            pulumi.set(__self__, "type_json", type_json)
-        if type_name is not None:
-            pulumi.set(__self__, "type_name", type_name)
-        if type_precision is not None:
-            pulumi.set(__self__, "type_precision", type_precision)
-        if type_scale is not None:
-            pulumi.set(__self__, "type_scale", type_scale)
-        if type_text is not None:
-            pulumi.set(__self__, "type_text", type_text)
+        pulumi.set(__self__, "workspace_id", workspace_id)
 
     @_builtins.property
-    @pulumi.getter
-    def comment(self) -> Optional[_builtins.str]:
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.str:
         """
-        (string) - User-provided free-form text description
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
         """
-        return pulumi.get(self, "comment")
+        return pulumi.get(self, "workspace_id")
 
-    @comment.setter
-    def comment(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "comment", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def mask(self) -> Optional['GetCleanRoomAssetForeignTableColumnMaskArgs']:
-        """
-        (ColumnMask)
-        """
-        return pulumi.get(self, "mask")
-
-    @mask.setter
-    def mask(self, value: Optional['GetCleanRoomAssetForeignTableColumnMaskArgs']):
-        pulumi.set(self, "mask", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def name(self) -> Optional[_builtins.str]:
-        """
-        A fully qualified name that uniquely identifies the asset within the clean room.
-        This is also the name displayed in the clean room UI.
-
-        For UC securable assets (tables, volumes, etc.), the format is *shared_catalog*.*shared_schema*.*asset_name*
-
-        For notebooks, the name is the notebook file name.
-        For jar analyses, the name is the jar analysis name
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "name", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def nullable(self) -> Optional[_builtins.bool]:
-        """
-        (boolean) - Whether field may be Null (default: true)
-        """
-        return pulumi.get(self, "nullable")
-
-    @nullable.setter
-    def nullable(self, value: Optional[_builtins.bool]):
-        pulumi.set(self, "nullable", value)
-
-    @_builtins.property
-    @pulumi.getter(name="partitionIndex")
-    def partition_index(self) -> Optional[_builtins.int]:
-        """
-        (integer) - Partition index for column
-        """
-        return pulumi.get(self, "partition_index")
-
-    @partition_index.setter
-    def partition_index(self, value: Optional[_builtins.int]):
-        pulumi.set(self, "partition_index", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def position(self) -> Optional[_builtins.int]:
-        """
-        (integer) - Ordinal position of column (starting at position 0)
-        """
-        return pulumi.get(self, "position")
-
-    @position.setter
-    def position(self, value: Optional[_builtins.int]):
-        pulumi.set(self, "position", value)
-
-    @_builtins.property
-    @pulumi.getter(name="typeIntervalType")
-    def type_interval_type(self) -> Optional[_builtins.str]:
-        """
-        (string) - Format of IntervalType
-        """
-        return pulumi.get(self, "type_interval_type")
-
-    @type_interval_type.setter
-    def type_interval_type(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "type_interval_type", value)
-
-    @_builtins.property
-    @pulumi.getter(name="typeJson")
-    def type_json(self) -> Optional[_builtins.str]:
-        """
-        (string) - Full data type specification, JSON-serialized
-        """
-        return pulumi.get(self, "type_json")
-
-    @type_json.setter
-    def type_json(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "type_json", value)
-
-    @_builtins.property
-    @pulumi.getter(name="typeName")
-    def type_name(self) -> Optional[_builtins.str]:
-        """
-        (string) - . Possible values are: `ARRAY`, `BINARY`, `BOOLEAN`, `BYTE`, `CHAR`, `DATE`, `DECIMAL`, `DOUBLE`, `FLOAT`, `GEOGRAPHY`, `GEOMETRY`, `INT`, `INTERVAL`, `LONG`, `MAP`, `NULL`, `SHORT`, `STRING`, `STRUCT`, `TABLE_TYPE`, `TIMESTAMP`, `TIMESTAMP_NTZ`, `USER_DEFINED_TYPE`, `VARIANT`
-        """
-        return pulumi.get(self, "type_name")
-
-    @type_name.setter
-    def type_name(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "type_name", value)
-
-    @_builtins.property
-    @pulumi.getter(name="typePrecision")
-    def type_precision(self) -> Optional[_builtins.int]:
-        """
-        (integer) - Digits of precision; required for DecimalTypes
-        """
-        return pulumi.get(self, "type_precision")
-
-    @type_precision.setter
-    def type_precision(self, value: Optional[_builtins.int]):
-        pulumi.set(self, "type_precision", value)
-
-    @_builtins.property
-    @pulumi.getter(name="typeScale")
-    def type_scale(self) -> Optional[_builtins.int]:
-        """
-        (integer) - Digits to right of decimal; Required for DecimalTypes
-        """
-        return pulumi.get(self, "type_scale")
-
-    @type_scale.setter
-    def type_scale(self, value: Optional[_builtins.int]):
-        pulumi.set(self, "type_scale", value)
-
-    @_builtins.property
-    @pulumi.getter(name="typeText")
-    def type_text(self) -> Optional[_builtins.str]:
-        """
-        (string) - Full data type specification as SQL/catalogString text
-        """
-        return pulumi.get(self, "type_text")
-
-    @type_text.setter
-    def type_text(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "type_text", value)
-
-
-if not MYPY:
-    class GetCleanRoomAssetForeignTableColumnMaskArgsDict(TypedDict):
-        function_name: NotRequired[_builtins.str]
-        """
-        (string) - The full name of the column mask SQL UDF
-        """
-        using_column_names: NotRequired[Sequence[_builtins.str]]
-        """
-        (list of string) - The list of additional table columns to be passed as input to the column mask function. The
-        first arg of the mask function should be of the type of the column being masked and the
-        types of the rest of the args should match the types of columns in 'using_column_names'
-        """
-elif False:
-    GetCleanRoomAssetForeignTableColumnMaskArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetCleanRoomAssetForeignTableColumnMaskArgs:
-    def __init__(__self__, *,
-                 function_name: Optional[_builtins.str] = None,
-                 using_column_names: Optional[Sequence[_builtins.str]] = None):
-        """
-        :param _builtins.str function_name: (string) - The full name of the column mask SQL UDF
-        :param Sequence[_builtins.str] using_column_names: (list of string) - The list of additional table columns to be passed as input to the column mask function. The
-               first arg of the mask function should be of the type of the column being masked and the
-               types of the rest of the args should match the types of columns in 'using_column_names'
-        """
-        if function_name is not None:
-            pulumi.set(__self__, "function_name", function_name)
-        if using_column_names is not None:
-            pulumi.set(__self__, "using_column_names", using_column_names)
-
-    @_builtins.property
-    @pulumi.getter(name="functionName")
-    def function_name(self) -> Optional[_builtins.str]:
-        """
-        (string) - The full name of the column mask SQL UDF
-        """
-        return pulumi.get(self, "function_name")
-
-    @function_name.setter
-    def function_name(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "function_name", value)
-
-    @_builtins.property
-    @pulumi.getter(name="usingColumnNames")
-    def using_column_names(self) -> Optional[Sequence[_builtins.str]]:
-        """
-        (list of string) - The list of additional table columns to be passed as input to the column mask function. The
-        first arg of the mask function should be of the type of the column being masked and the
-        types of the rest of the args should match the types of columns in 'using_column_names'
-        """
-        return pulumi.get(self, "using_column_names")
-
-    @using_column_names.setter
-    def using_column_names(self, value: Optional[Sequence[_builtins.str]]):
-        pulumi.set(self, "using_column_names", value)
-
-
-if not MYPY:
-    class GetCleanRoomAssetForeignTableLocalDetailsArgsDict(TypedDict):
-        local_name: _builtins.str
-        """
-        (string) - The fully qualified name of the volume in its owner's local metastore,
-        in the format of *catalog*.*schema*.*volume_name*
-        """
-elif False:
-    GetCleanRoomAssetForeignTableLocalDetailsArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetCleanRoomAssetForeignTableLocalDetailsArgs:
-    def __init__(__self__, *,
-                 local_name: _builtins.str):
-        """
-        :param _builtins.str local_name: (string) - The fully qualified name of the volume in its owner's local metastore,
-               in the format of *catalog*.*schema*.*volume_name*
-        """
-        pulumi.set(__self__, "local_name", local_name)
-
-    @_builtins.property
-    @pulumi.getter(name="localName")
-    def local_name(self) -> _builtins.str:
-        """
-        (string) - The fully qualified name of the volume in its owner's local metastore,
-        in the format of *catalog*.*schema*.*volume_name*
-        """
-        return pulumi.get(self, "local_name")
-
-    @local_name.setter
-    def local_name(self, value: _builtins.str):
-        pulumi.set(self, "local_name", value)
-
-
-if not MYPY:
-    class GetCleanRoomAssetNotebookArgsDict(TypedDict):
-        etag: _builtins.str
-        """
-        (string) - Server generated etag that represents the notebook version
-        """
-        notebook_content: _builtins.str
-        """
-        (string) - Base 64 representation of the notebook contents.
-        This is the same format as returned by :method:workspace/export with the format of **HTML**
-        """
-        review_state: _builtins.str
-        """
-        (string) - Review outcome. Possible values are: `APPROVED`, `PENDING`, `REJECTED`
-        """
-        reviews: Sequence['GetCleanRoomAssetNotebookReviewArgsDict']
-        """
-        (list of CleanRoomNotebookReview) - All existing approvals or rejections
-        """
-        runner_collaborator_aliases: NotRequired[Sequence[_builtins.str]]
-        """
-        (list of string) - Aliases of collaborators that can run the notebook
-        """
-elif False:
-    GetCleanRoomAssetNotebookArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetCleanRoomAssetNotebookArgs:
-    def __init__(__self__, *,
-                 etag: _builtins.str,
-                 notebook_content: _builtins.str,
-                 review_state: _builtins.str,
-                 reviews: Sequence['GetCleanRoomAssetNotebookReviewArgs'],
-                 runner_collaborator_aliases: Optional[Sequence[_builtins.str]] = None):
-        """
-        :param _builtins.str etag: (string) - Server generated etag that represents the notebook version
-        :param _builtins.str notebook_content: (string) - Base 64 representation of the notebook contents.
-               This is the same format as returned by :method:workspace/export with the format of **HTML**
-        :param _builtins.str review_state: (string) - Review outcome. Possible values are: `APPROVED`, `PENDING`, `REJECTED`
-        :param Sequence['GetCleanRoomAssetNotebookReviewArgs'] reviews: (list of CleanRoomNotebookReview) - All existing approvals or rejections
-        :param Sequence[_builtins.str] runner_collaborator_aliases: (list of string) - Aliases of collaborators that can run the notebook
-        """
-        pulumi.set(__self__, "etag", etag)
-        pulumi.set(__self__, "notebook_content", notebook_content)
-        pulumi.set(__self__, "review_state", review_state)
-        pulumi.set(__self__, "reviews", reviews)
-        if runner_collaborator_aliases is not None:
-            pulumi.set(__self__, "runner_collaborator_aliases", runner_collaborator_aliases)
-
-    @_builtins.property
-    @pulumi.getter
-    def etag(self) -> _builtins.str:
-        """
-        (string) - Server generated etag that represents the notebook version
-        """
-        return pulumi.get(self, "etag")
-
-    @etag.setter
-    def etag(self, value: _builtins.str):
-        pulumi.set(self, "etag", value)
-
-    @_builtins.property
-    @pulumi.getter(name="notebookContent")
-    def notebook_content(self) -> _builtins.str:
-        """
-        (string) - Base 64 representation of the notebook contents.
-        This is the same format as returned by :method:workspace/export with the format of **HTML**
-        """
-        return pulumi.get(self, "notebook_content")
-
-    @notebook_content.setter
-    def notebook_content(self, value: _builtins.str):
-        pulumi.set(self, "notebook_content", value)
-
-    @_builtins.property
-    @pulumi.getter(name="reviewState")
-    def review_state(self) -> _builtins.str:
-        """
-        (string) - Review outcome. Possible values are: `APPROVED`, `PENDING`, `REJECTED`
-        """
-        return pulumi.get(self, "review_state")
-
-    @review_state.setter
-    def review_state(self, value: _builtins.str):
-        pulumi.set(self, "review_state", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def reviews(self) -> Sequence['GetCleanRoomAssetNotebookReviewArgs']:
-        """
-        (list of CleanRoomNotebookReview) - All existing approvals or rejections
-        """
-        return pulumi.get(self, "reviews")
-
-    @reviews.setter
-    def reviews(self, value: Sequence['GetCleanRoomAssetNotebookReviewArgs']):
-        pulumi.set(self, "reviews", value)
-
-    @_builtins.property
-    @pulumi.getter(name="runnerCollaboratorAliases")
-    def runner_collaborator_aliases(self) -> Optional[Sequence[_builtins.str]]:
-        """
-        (list of string) - Aliases of collaborators that can run the notebook
-        """
-        return pulumi.get(self, "runner_collaborator_aliases")
-
-    @runner_collaborator_aliases.setter
-    def runner_collaborator_aliases(self, value: Optional[Sequence[_builtins.str]]):
-        pulumi.set(self, "runner_collaborator_aliases", value)
-
-
-if not MYPY:
-    class GetCleanRoomAssetNotebookReviewArgsDict(TypedDict):
-        comment: NotRequired[_builtins.str]
-        """
-        (string) - User-provided free-form text description
-        """
-        created_at_millis: NotRequired[_builtins.int]
-        """
-        (integer) - When the review was submitted, in epoch milliseconds
-        """
-        review_state: NotRequired[_builtins.str]
-        """
-        (string) - Review outcome. Possible values are: `APPROVED`, `PENDING`, `REJECTED`
-        """
-        review_sub_reason: NotRequired[_builtins.str]
-        """
-        (string) - Specified when the review was not explicitly made by a user. Possible values are: `AUTO_APPROVED`, `BACKFILLED`
-        """
-        reviewer_collaborator_alias: NotRequired[_builtins.str]
-        """
-        (string) - Collaborator alias of the reviewer
-        """
-elif False:
-    GetCleanRoomAssetNotebookReviewArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetCleanRoomAssetNotebookReviewArgs:
-    def __init__(__self__, *,
-                 comment: Optional[_builtins.str] = None,
-                 created_at_millis: Optional[_builtins.int] = None,
-                 review_state: Optional[_builtins.str] = None,
-                 review_sub_reason: Optional[_builtins.str] = None,
-                 reviewer_collaborator_alias: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str comment: (string) - User-provided free-form text description
-        :param _builtins.int created_at_millis: (integer) - When the review was submitted, in epoch milliseconds
-        :param _builtins.str review_state: (string) - Review outcome. Possible values are: `APPROVED`, `PENDING`, `REJECTED`
-        :param _builtins.str review_sub_reason: (string) - Specified when the review was not explicitly made by a user. Possible values are: `AUTO_APPROVED`, `BACKFILLED`
-        :param _builtins.str reviewer_collaborator_alias: (string) - Collaborator alias of the reviewer
-        """
-        if comment is not None:
-            pulumi.set(__self__, "comment", comment)
-        if created_at_millis is not None:
-            pulumi.set(__self__, "created_at_millis", created_at_millis)
-        if review_state is not None:
-            pulumi.set(__self__, "review_state", review_state)
-        if review_sub_reason is not None:
-            pulumi.set(__self__, "review_sub_reason", review_sub_reason)
-        if reviewer_collaborator_alias is not None:
-            pulumi.set(__self__, "reviewer_collaborator_alias", reviewer_collaborator_alias)
-
-    @_builtins.property
-    @pulumi.getter
-    def comment(self) -> Optional[_builtins.str]:
-        """
-        (string) - User-provided free-form text description
-        """
-        return pulumi.get(self, "comment")
-
-    @comment.setter
-    def comment(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "comment", value)
-
-    @_builtins.property
-    @pulumi.getter(name="createdAtMillis")
-    def created_at_millis(self) -> Optional[_builtins.int]:
-        """
-        (integer) - When the review was submitted, in epoch milliseconds
-        """
-        return pulumi.get(self, "created_at_millis")
-
-    @created_at_millis.setter
-    def created_at_millis(self, value: Optional[_builtins.int]):
-        pulumi.set(self, "created_at_millis", value)
-
-    @_builtins.property
-    @pulumi.getter(name="reviewState")
-    def review_state(self) -> Optional[_builtins.str]:
-        """
-        (string) - Review outcome. Possible values are: `APPROVED`, `PENDING`, `REJECTED`
-        """
-        return pulumi.get(self, "review_state")
-
-    @review_state.setter
-    def review_state(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "review_state", value)
-
-    @_builtins.property
-    @pulumi.getter(name="reviewSubReason")
-    def review_sub_reason(self) -> Optional[_builtins.str]:
-        """
-        (string) - Specified when the review was not explicitly made by a user. Possible values are: `AUTO_APPROVED`, `BACKFILLED`
-        """
-        return pulumi.get(self, "review_sub_reason")
-
-    @review_sub_reason.setter
-    def review_sub_reason(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "review_sub_reason", value)
-
-    @_builtins.property
-    @pulumi.getter(name="reviewerCollaboratorAlias")
-    def reviewer_collaborator_alias(self) -> Optional[_builtins.str]:
-        """
-        (string) - Collaborator alias of the reviewer
-        """
-        return pulumi.get(self, "reviewer_collaborator_alias")
-
-    @reviewer_collaborator_alias.setter
-    def reviewer_collaborator_alias(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "reviewer_collaborator_alias", value)
-
-
-if not MYPY:
-    class GetCleanRoomAssetRevisionsCleanRoomAssetForeignTableArgsDict(TypedDict):
-        columns: Sequence['GetCleanRoomAssetRevisionsCleanRoomAssetForeignTableColumnArgsDict']
-        """
-        (list of ColumnInfo) - The metadata information of the columns in the view
-        """
-elif False:
-    GetCleanRoomAssetRevisionsCleanRoomAssetForeignTableArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetCleanRoomAssetRevisionsCleanRoomAssetForeignTableArgs:
-    def __init__(__self__, *,
-                 columns: Sequence['GetCleanRoomAssetRevisionsCleanRoomAssetForeignTableColumnArgs']):
-        """
-        :param Sequence['GetCleanRoomAssetRevisionsCleanRoomAssetForeignTableColumnArgs'] columns: (list of ColumnInfo) - The metadata information of the columns in the view
-        """
-        pulumi.set(__self__, "columns", columns)
-
-    @_builtins.property
-    @pulumi.getter
-    def columns(self) -> Sequence['GetCleanRoomAssetRevisionsCleanRoomAssetForeignTableColumnArgs']:
-        """
-        (list of ColumnInfo) - The metadata information of the columns in the view
-        """
-        return pulumi.get(self, "columns")
-
-    @columns.setter
-    def columns(self, value: Sequence['GetCleanRoomAssetRevisionsCleanRoomAssetForeignTableColumnArgs']):
-        pulumi.set(self, "columns", value)
-
-
-if not MYPY:
-    class GetCleanRoomAssetRevisionsCleanRoomAssetForeignTableColumnArgsDict(TypedDict):
-        comment: NotRequired[_builtins.str]
-        """
-        (string) - User-provided free-form text description
-        """
-        mask: NotRequired['GetCleanRoomAssetRevisionsCleanRoomAssetForeignTableColumnMaskArgsDict']
-        """
-        (ColumnMask)
-        """
-        name: NotRequired[_builtins.str]
-        """
-        A fully qualified name that uniquely identifies the asset within the clean room.
-        This is also the name displayed in the clean room UI.
-
-        For UC securable assets (tables, volumes, etc.), the format is *shared_catalog*.*shared_schema*.*asset_name*
-
-        For notebooks, the name is the notebook file name.
-        For jar analyses, the name is the jar analysis name
-        """
-        nullable: NotRequired[_builtins.bool]
-        """
-        (boolean) - Whether field may be Null (default: true)
-        """
-        partition_index: NotRequired[_builtins.int]
-        """
-        (integer) - Partition index for column
-        """
-        position: NotRequired[_builtins.int]
-        """
-        (integer) - Ordinal position of column (starting at position 0)
-        """
-        type_interval_type: NotRequired[_builtins.str]
-        """
-        (string) - Format of IntervalType
-        """
-        type_json: NotRequired[_builtins.str]
-        """
-        (string) - Full data type specification, JSON-serialized
-        """
-        type_name: NotRequired[_builtins.str]
-        """
-        (string) - . Possible values are: `ARRAY`, `BINARY`, `BOOLEAN`, `BYTE`, `CHAR`, `DATE`, `DECIMAL`, `DOUBLE`, `FLOAT`, `GEOGRAPHY`, `GEOMETRY`, `INT`, `INTERVAL`, `LONG`, `MAP`, `NULL`, `SHORT`, `STRING`, `STRUCT`, `TABLE_TYPE`, `TIMESTAMP`, `TIMESTAMP_NTZ`, `USER_DEFINED_TYPE`, `VARIANT`
-        """
-        type_precision: NotRequired[_builtins.int]
-        """
-        (integer) - Digits of precision; required for DecimalTypes
-        """
-        type_scale: NotRequired[_builtins.int]
-        """
-        (integer) - Digits to right of decimal; Required for DecimalTypes
-        """
-        type_text: NotRequired[_builtins.str]
-        """
-        (string) - Full data type specification as SQL/catalogString text
-        """
-elif False:
-    GetCleanRoomAssetRevisionsCleanRoomAssetForeignTableColumnArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetCleanRoomAssetRevisionsCleanRoomAssetForeignTableColumnArgs:
-    def __init__(__self__, *,
-                 comment: Optional[_builtins.str] = None,
-                 mask: Optional['GetCleanRoomAssetRevisionsCleanRoomAssetForeignTableColumnMaskArgs'] = None,
-                 name: Optional[_builtins.str] = None,
-                 nullable: Optional[_builtins.bool] = None,
-                 partition_index: Optional[_builtins.int] = None,
-                 position: Optional[_builtins.int] = None,
-                 type_interval_type: Optional[_builtins.str] = None,
-                 type_json: Optional[_builtins.str] = None,
-                 type_name: Optional[_builtins.str] = None,
-                 type_precision: Optional[_builtins.int] = None,
-                 type_scale: Optional[_builtins.int] = None,
-                 type_text: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str comment: (string) - User-provided free-form text description
-        :param 'GetCleanRoomAssetRevisionsCleanRoomAssetForeignTableColumnMaskArgs' mask: (ColumnMask)
-        :param _builtins.str name: A fully qualified name that uniquely identifies the asset within the clean room.
-               This is also the name displayed in the clean room UI.
-               
-               For UC securable assets (tables, volumes, etc.), the format is *shared_catalog*.*shared_schema*.*asset_name*
-               
-               For notebooks, the name is the notebook file name.
-               For jar analyses, the name is the jar analysis name
-        :param _builtins.bool nullable: (boolean) - Whether field may be Null (default: true)
-        :param _builtins.int partition_index: (integer) - Partition index for column
-        :param _builtins.int position: (integer) - Ordinal position of column (starting at position 0)
-        :param _builtins.str type_interval_type: (string) - Format of IntervalType
-        :param _builtins.str type_json: (string) - Full data type specification, JSON-serialized
-        :param _builtins.str type_name: (string) - . Possible values are: `ARRAY`, `BINARY`, `BOOLEAN`, `BYTE`, `CHAR`, `DATE`, `DECIMAL`, `DOUBLE`, `FLOAT`, `GEOGRAPHY`, `GEOMETRY`, `INT`, `INTERVAL`, `LONG`, `MAP`, `NULL`, `SHORT`, `STRING`, `STRUCT`, `TABLE_TYPE`, `TIMESTAMP`, `TIMESTAMP_NTZ`, `USER_DEFINED_TYPE`, `VARIANT`
-        :param _builtins.int type_precision: (integer) - Digits of precision; required for DecimalTypes
-        :param _builtins.int type_scale: (integer) - Digits to right of decimal; Required for DecimalTypes
-        :param _builtins.str type_text: (string) - Full data type specification as SQL/catalogString text
-        """
-        if comment is not None:
-            pulumi.set(__self__, "comment", comment)
-        if mask is not None:
-            pulumi.set(__self__, "mask", mask)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if nullable is not None:
-            pulumi.set(__self__, "nullable", nullable)
-        if partition_index is not None:
-            pulumi.set(__self__, "partition_index", partition_index)
-        if position is not None:
-            pulumi.set(__self__, "position", position)
-        if type_interval_type is not None:
-            pulumi.set(__self__, "type_interval_type", type_interval_type)
-        if type_json is not None:
-            pulumi.set(__self__, "type_json", type_json)
-        if type_name is not None:
-            pulumi.set(__self__, "type_name", type_name)
-        if type_precision is not None:
-            pulumi.set(__self__, "type_precision", type_precision)
-        if type_scale is not None:
-            pulumi.set(__self__, "type_scale", type_scale)
-        if type_text is not None:
-            pulumi.set(__self__, "type_text", type_text)
-
-    @_builtins.property
-    @pulumi.getter
-    def comment(self) -> Optional[_builtins.str]:
-        """
-        (string) - User-provided free-form text description
-        """
-        return pulumi.get(self, "comment")
-
-    @comment.setter
-    def comment(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "comment", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def mask(self) -> Optional['GetCleanRoomAssetRevisionsCleanRoomAssetForeignTableColumnMaskArgs']:
-        """
-        (ColumnMask)
-        """
-        return pulumi.get(self, "mask")
-
-    @mask.setter
-    def mask(self, value: Optional['GetCleanRoomAssetRevisionsCleanRoomAssetForeignTableColumnMaskArgs']):
-        pulumi.set(self, "mask", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def name(self) -> Optional[_builtins.str]:
-        """
-        A fully qualified name that uniquely identifies the asset within the clean room.
-        This is also the name displayed in the clean room UI.
-
-        For UC securable assets (tables, volumes, etc.), the format is *shared_catalog*.*shared_schema*.*asset_name*
-
-        For notebooks, the name is the notebook file name.
-        For jar analyses, the name is the jar analysis name
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "name", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def nullable(self) -> Optional[_builtins.bool]:
-        """
-        (boolean) - Whether field may be Null (default: true)
-        """
-        return pulumi.get(self, "nullable")
-
-    @nullable.setter
-    def nullable(self, value: Optional[_builtins.bool]):
-        pulumi.set(self, "nullable", value)
-
-    @_builtins.property
-    @pulumi.getter(name="partitionIndex")
-    def partition_index(self) -> Optional[_builtins.int]:
-        """
-        (integer) - Partition index for column
-        """
-        return pulumi.get(self, "partition_index")
-
-    @partition_index.setter
-    def partition_index(self, value: Optional[_builtins.int]):
-        pulumi.set(self, "partition_index", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def position(self) -> Optional[_builtins.int]:
-        """
-        (integer) - Ordinal position of column (starting at position 0)
-        """
-        return pulumi.get(self, "position")
-
-    @position.setter
-    def position(self, value: Optional[_builtins.int]):
-        pulumi.set(self, "position", value)
-
-    @_builtins.property
-    @pulumi.getter(name="typeIntervalType")
-    def type_interval_type(self) -> Optional[_builtins.str]:
-        """
-        (string) - Format of IntervalType
-        """
-        return pulumi.get(self, "type_interval_type")
-
-    @type_interval_type.setter
-    def type_interval_type(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "type_interval_type", value)
-
-    @_builtins.property
-    @pulumi.getter(name="typeJson")
-    def type_json(self) -> Optional[_builtins.str]:
-        """
-        (string) - Full data type specification, JSON-serialized
-        """
-        return pulumi.get(self, "type_json")
-
-    @type_json.setter
-    def type_json(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "type_json", value)
-
-    @_builtins.property
-    @pulumi.getter(name="typeName")
-    def type_name(self) -> Optional[_builtins.str]:
-        """
-        (string) - . Possible values are: `ARRAY`, `BINARY`, `BOOLEAN`, `BYTE`, `CHAR`, `DATE`, `DECIMAL`, `DOUBLE`, `FLOAT`, `GEOGRAPHY`, `GEOMETRY`, `INT`, `INTERVAL`, `LONG`, `MAP`, `NULL`, `SHORT`, `STRING`, `STRUCT`, `TABLE_TYPE`, `TIMESTAMP`, `TIMESTAMP_NTZ`, `USER_DEFINED_TYPE`, `VARIANT`
-        """
-        return pulumi.get(self, "type_name")
-
-    @type_name.setter
-    def type_name(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "type_name", value)
-
-    @_builtins.property
-    @pulumi.getter(name="typePrecision")
-    def type_precision(self) -> Optional[_builtins.int]:
-        """
-        (integer) - Digits of precision; required for DecimalTypes
-        """
-        return pulumi.get(self, "type_precision")
-
-    @type_precision.setter
-    def type_precision(self, value: Optional[_builtins.int]):
-        pulumi.set(self, "type_precision", value)
-
-    @_builtins.property
-    @pulumi.getter(name="typeScale")
-    def type_scale(self) -> Optional[_builtins.int]:
-        """
-        (integer) - Digits to right of decimal; Required for DecimalTypes
-        """
-        return pulumi.get(self, "type_scale")
-
-    @type_scale.setter
-    def type_scale(self, value: Optional[_builtins.int]):
-        pulumi.set(self, "type_scale", value)
-
-    @_builtins.property
-    @pulumi.getter(name="typeText")
-    def type_text(self) -> Optional[_builtins.str]:
-        """
-        (string) - Full data type specification as SQL/catalogString text
-        """
-        return pulumi.get(self, "type_text")
-
-    @type_text.setter
-    def type_text(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "type_text", value)
-
-
-if not MYPY:
-    class GetCleanRoomAssetRevisionsCleanRoomAssetForeignTableColumnMaskArgsDict(TypedDict):
-        function_name: NotRequired[_builtins.str]
-        """
-        (string) - The full name of the column mask SQL UDF
-        """
-        using_column_names: NotRequired[Sequence[_builtins.str]]
-        """
-        (list of string) - The list of additional table columns to be passed as input to the column mask function. The
-        first arg of the mask function should be of the type of the column being masked and the
-        types of the rest of the args should match the types of columns in 'using_column_names'
-        """
-elif False:
-    GetCleanRoomAssetRevisionsCleanRoomAssetForeignTableColumnMaskArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetCleanRoomAssetRevisionsCleanRoomAssetForeignTableColumnMaskArgs:
-    def __init__(__self__, *,
-                 function_name: Optional[_builtins.str] = None,
-                 using_column_names: Optional[Sequence[_builtins.str]] = None):
-        """
-        :param _builtins.str function_name: (string) - The full name of the column mask SQL UDF
-        :param Sequence[_builtins.str] using_column_names: (list of string) - The list of additional table columns to be passed as input to the column mask function. The
-               first arg of the mask function should be of the type of the column being masked and the
-               types of the rest of the args should match the types of columns in 'using_column_names'
-        """
-        if function_name is not None:
-            pulumi.set(__self__, "function_name", function_name)
-        if using_column_names is not None:
-            pulumi.set(__self__, "using_column_names", using_column_names)
-
-    @_builtins.property
-    @pulumi.getter(name="functionName")
-    def function_name(self) -> Optional[_builtins.str]:
-        """
-        (string) - The full name of the column mask SQL UDF
-        """
-        return pulumi.get(self, "function_name")
-
-    @function_name.setter
-    def function_name(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "function_name", value)
-
-    @_builtins.property
-    @pulumi.getter(name="usingColumnNames")
-    def using_column_names(self) -> Optional[Sequence[_builtins.str]]:
-        """
-        (list of string) - The list of additional table columns to be passed as input to the column mask function. The
-        first arg of the mask function should be of the type of the column being masked and the
-        types of the rest of the args should match the types of columns in 'using_column_names'
-        """
-        return pulumi.get(self, "using_column_names")
-
-    @using_column_names.setter
-    def using_column_names(self, value: Optional[Sequence[_builtins.str]]):
-        pulumi.set(self, "using_column_names", value)
-
-
-if not MYPY:
-    class GetCleanRoomAssetRevisionsCleanRoomAssetForeignTableLocalDetailsArgsDict(TypedDict):
-        local_name: _builtins.str
-        """
-        (string) - The fully qualified name of the volume in its owner's local metastore,
-        in the format of *catalog*.*schema*.*volume_name*
-        """
-elif False:
-    GetCleanRoomAssetRevisionsCleanRoomAssetForeignTableLocalDetailsArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetCleanRoomAssetRevisionsCleanRoomAssetForeignTableLocalDetailsArgs:
-    def __init__(__self__, *,
-                 local_name: _builtins.str):
-        """
-        :param _builtins.str local_name: (string) - The fully qualified name of the volume in its owner's local metastore,
-               in the format of *catalog*.*schema*.*volume_name*
-        """
-        pulumi.set(__self__, "local_name", local_name)
-
-    @_builtins.property
-    @pulumi.getter(name="localName")
-    def local_name(self) -> _builtins.str:
-        """
-        (string) - The fully qualified name of the volume in its owner's local metastore,
-        in the format of *catalog*.*schema*.*volume_name*
-        """
-        return pulumi.get(self, "local_name")
-
-    @local_name.setter
-    def local_name(self, value: _builtins.str):
-        pulumi.set(self, "local_name", value)
-
-
-if not MYPY:
-    class GetCleanRoomAssetRevisionsCleanRoomAssetNotebookArgsDict(TypedDict):
-        etag: _builtins.str
-        """
-        (string) - Server generated etag that represents the notebook version
-        """
-        notebook_content: _builtins.str
-        """
-        (string) - Base 64 representation of the notebook contents.
-        This is the same format as returned by :method:workspace/export with the format of **HTML**
-        """
-        review_state: _builtins.str
-        """
-        (string) - Review outcome. Possible values are: `APPROVED`, `PENDING`, `REJECTED`
-        """
-        reviews: Sequence['GetCleanRoomAssetRevisionsCleanRoomAssetNotebookReviewArgsDict']
-        """
-        (list of CleanRoomNotebookReview) - All existing approvals or rejections
-        """
-        runner_collaborator_aliases: NotRequired[Sequence[_builtins.str]]
-        """
-        (list of string) - Aliases of collaborators that can run the notebook
-        """
-elif False:
-    GetCleanRoomAssetRevisionsCleanRoomAssetNotebookArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetCleanRoomAssetRevisionsCleanRoomAssetNotebookArgs:
-    def __init__(__self__, *,
-                 etag: _builtins.str,
-                 notebook_content: _builtins.str,
-                 review_state: _builtins.str,
-                 reviews: Sequence['GetCleanRoomAssetRevisionsCleanRoomAssetNotebookReviewArgs'],
-                 runner_collaborator_aliases: Optional[Sequence[_builtins.str]] = None):
-        """
-        :param _builtins.str etag: (string) - Server generated etag that represents the notebook version
-        :param _builtins.str notebook_content: (string) - Base 64 representation of the notebook contents.
-               This is the same format as returned by :method:workspace/export with the format of **HTML**
-        :param _builtins.str review_state: (string) - Review outcome. Possible values are: `APPROVED`, `PENDING`, `REJECTED`
-        :param Sequence['GetCleanRoomAssetRevisionsCleanRoomAssetNotebookReviewArgs'] reviews: (list of CleanRoomNotebookReview) - All existing approvals or rejections
-        :param Sequence[_builtins.str] runner_collaborator_aliases: (list of string) - Aliases of collaborators that can run the notebook
-        """
-        pulumi.set(__self__, "etag", etag)
-        pulumi.set(__self__, "notebook_content", notebook_content)
-        pulumi.set(__self__, "review_state", review_state)
-        pulumi.set(__self__, "reviews", reviews)
-        if runner_collaborator_aliases is not None:
-            pulumi.set(__self__, "runner_collaborator_aliases", runner_collaborator_aliases)
-
-    @_builtins.property
-    @pulumi.getter
-    def etag(self) -> _builtins.str:
-        """
-        (string) - Server generated etag that represents the notebook version
-        """
-        return pulumi.get(self, "etag")
-
-    @etag.setter
-    def etag(self, value: _builtins.str):
-        pulumi.set(self, "etag", value)
-
-    @_builtins.property
-    @pulumi.getter(name="notebookContent")
-    def notebook_content(self) -> _builtins.str:
-        """
-        (string) - Base 64 representation of the notebook contents.
-        This is the same format as returned by :method:workspace/export with the format of **HTML**
-        """
-        return pulumi.get(self, "notebook_content")
-
-    @notebook_content.setter
-    def notebook_content(self, value: _builtins.str):
-        pulumi.set(self, "notebook_content", value)
-
-    @_builtins.property
-    @pulumi.getter(name="reviewState")
-    def review_state(self) -> _builtins.str:
-        """
-        (string) - Review outcome. Possible values are: `APPROVED`, `PENDING`, `REJECTED`
-        """
-        return pulumi.get(self, "review_state")
-
-    @review_state.setter
-    def review_state(self, value: _builtins.str):
-        pulumi.set(self, "review_state", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def reviews(self) -> Sequence['GetCleanRoomAssetRevisionsCleanRoomAssetNotebookReviewArgs']:
-        """
-        (list of CleanRoomNotebookReview) - All existing approvals or rejections
-        """
-        return pulumi.get(self, "reviews")
-
-    @reviews.setter
-    def reviews(self, value: Sequence['GetCleanRoomAssetRevisionsCleanRoomAssetNotebookReviewArgs']):
-        pulumi.set(self, "reviews", value)
-
-    @_builtins.property
-    @pulumi.getter(name="runnerCollaboratorAliases")
-    def runner_collaborator_aliases(self) -> Optional[Sequence[_builtins.str]]:
-        """
-        (list of string) - Aliases of collaborators that can run the notebook
-        """
-        return pulumi.get(self, "runner_collaborator_aliases")
-
-    @runner_collaborator_aliases.setter
-    def runner_collaborator_aliases(self, value: Optional[Sequence[_builtins.str]]):
-        pulumi.set(self, "runner_collaborator_aliases", value)
-
-
-if not MYPY:
-    class GetCleanRoomAssetRevisionsCleanRoomAssetNotebookReviewArgsDict(TypedDict):
-        comment: NotRequired[_builtins.str]
-        """
-        (string) - User-provided free-form text description
-        """
-        created_at_millis: NotRequired[_builtins.int]
-        """
-        (integer) - When the review was submitted, in epoch milliseconds
-        """
-        review_state: NotRequired[_builtins.str]
-        """
-        (string) - Review outcome. Possible values are: `APPROVED`, `PENDING`, `REJECTED`
-        """
-        review_sub_reason: NotRequired[_builtins.str]
-        """
-        (string) - Specified when the review was not explicitly made by a user. Possible values are: `AUTO_APPROVED`, `BACKFILLED`
-        """
-        reviewer_collaborator_alias: NotRequired[_builtins.str]
-        """
-        (string) - Collaborator alias of the reviewer
-        """
-elif False:
-    GetCleanRoomAssetRevisionsCleanRoomAssetNotebookReviewArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetCleanRoomAssetRevisionsCleanRoomAssetNotebookReviewArgs:
-    def __init__(__self__, *,
-                 comment: Optional[_builtins.str] = None,
-                 created_at_millis: Optional[_builtins.int] = None,
-                 review_state: Optional[_builtins.str] = None,
-                 review_sub_reason: Optional[_builtins.str] = None,
-                 reviewer_collaborator_alias: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str comment: (string) - User-provided free-form text description
-        :param _builtins.int created_at_millis: (integer) - When the review was submitted, in epoch milliseconds
-        :param _builtins.str review_state: (string) - Review outcome. Possible values are: `APPROVED`, `PENDING`, `REJECTED`
-        :param _builtins.str review_sub_reason: (string) - Specified when the review was not explicitly made by a user. Possible values are: `AUTO_APPROVED`, `BACKFILLED`
-        :param _builtins.str reviewer_collaborator_alias: (string) - Collaborator alias of the reviewer
-        """
-        if comment is not None:
-            pulumi.set(__self__, "comment", comment)
-        if created_at_millis is not None:
-            pulumi.set(__self__, "created_at_millis", created_at_millis)
-        if review_state is not None:
-            pulumi.set(__self__, "review_state", review_state)
-        if review_sub_reason is not None:
-            pulumi.set(__self__, "review_sub_reason", review_sub_reason)
-        if reviewer_collaborator_alias is not None:
-            pulumi.set(__self__, "reviewer_collaborator_alias", reviewer_collaborator_alias)
-
-    @_builtins.property
-    @pulumi.getter
-    def comment(self) -> Optional[_builtins.str]:
-        """
-        (string) - User-provided free-form text description
-        """
-        return pulumi.get(self, "comment")
-
-    @comment.setter
-    def comment(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "comment", value)
-
-    @_builtins.property
-    @pulumi.getter(name="createdAtMillis")
-    def created_at_millis(self) -> Optional[_builtins.int]:
-        """
-        (integer) - When the review was submitted, in epoch milliseconds
-        """
-        return pulumi.get(self, "created_at_millis")
-
-    @created_at_millis.setter
-    def created_at_millis(self, value: Optional[_builtins.int]):
-        pulumi.set(self, "created_at_millis", value)
-
-    @_builtins.property
-    @pulumi.getter(name="reviewState")
-    def review_state(self) -> Optional[_builtins.str]:
-        """
-        (string) - Review outcome. Possible values are: `APPROVED`, `PENDING`, `REJECTED`
-        """
-        return pulumi.get(self, "review_state")
-
-    @review_state.setter
-    def review_state(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "review_state", value)
-
-    @_builtins.property
-    @pulumi.getter(name="reviewSubReason")
-    def review_sub_reason(self) -> Optional[_builtins.str]:
-        """
-        (string) - Specified when the review was not explicitly made by a user. Possible values are: `AUTO_APPROVED`, `BACKFILLED`
-        """
-        return pulumi.get(self, "review_sub_reason")
-
-    @review_sub_reason.setter
-    def review_sub_reason(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "review_sub_reason", value)
-
-    @_builtins.property
-    @pulumi.getter(name="reviewerCollaboratorAlias")
-    def reviewer_collaborator_alias(self) -> Optional[_builtins.str]:
-        """
-        (string) - Collaborator alias of the reviewer
-        """
-        return pulumi.get(self, "reviewer_collaborator_alias")
-
-    @reviewer_collaborator_alias.setter
-    def reviewer_collaborator_alias(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "reviewer_collaborator_alias", value)
-
-
-if not MYPY:
-    class GetCleanRoomAssetRevisionsCleanRoomAssetTableArgsDict(TypedDict):
-        columns: Sequence['GetCleanRoomAssetRevisionsCleanRoomAssetTableColumnArgsDict']
-        """
-        (list of ColumnInfo) - The metadata information of the columns in the view
-        """
-elif False:
-    GetCleanRoomAssetRevisionsCleanRoomAssetTableArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetCleanRoomAssetRevisionsCleanRoomAssetTableArgs:
-    def __init__(__self__, *,
-                 columns: Sequence['GetCleanRoomAssetRevisionsCleanRoomAssetTableColumnArgs']):
-        """
-        :param Sequence['GetCleanRoomAssetRevisionsCleanRoomAssetTableColumnArgs'] columns: (list of ColumnInfo) - The metadata information of the columns in the view
-        """
-        pulumi.set(__self__, "columns", columns)
-
-    @_builtins.property
-    @pulumi.getter
-    def columns(self) -> Sequence['GetCleanRoomAssetRevisionsCleanRoomAssetTableColumnArgs']:
-        """
-        (list of ColumnInfo) - The metadata information of the columns in the view
-        """
-        return pulumi.get(self, "columns")
-
-    @columns.setter
-    def columns(self, value: Sequence['GetCleanRoomAssetRevisionsCleanRoomAssetTableColumnArgs']):
-        pulumi.set(self, "columns", value)
-
-
-if not MYPY:
-    class GetCleanRoomAssetRevisionsCleanRoomAssetTableColumnArgsDict(TypedDict):
-        comment: NotRequired[_builtins.str]
-        """
-        (string) - User-provided free-form text description
-        """
-        mask: NotRequired['GetCleanRoomAssetRevisionsCleanRoomAssetTableColumnMaskArgsDict']
-        """
-        (ColumnMask)
-        """
-        name: NotRequired[_builtins.str]
-        """
-        A fully qualified name that uniquely identifies the asset within the clean room.
-        This is also the name displayed in the clean room UI.
-
-        For UC securable assets (tables, volumes, etc.), the format is *shared_catalog*.*shared_schema*.*asset_name*
-
-        For notebooks, the name is the notebook file name.
-        For jar analyses, the name is the jar analysis name
-        """
-        nullable: NotRequired[_builtins.bool]
-        """
-        (boolean) - Whether field may be Null (default: true)
-        """
-        partition_index: NotRequired[_builtins.int]
-        """
-        (integer) - Partition index for column
-        """
-        position: NotRequired[_builtins.int]
-        """
-        (integer) - Ordinal position of column (starting at position 0)
-        """
-        type_interval_type: NotRequired[_builtins.str]
-        """
-        (string) - Format of IntervalType
-        """
-        type_json: NotRequired[_builtins.str]
-        """
-        (string) - Full data type specification, JSON-serialized
-        """
-        type_name: NotRequired[_builtins.str]
-        """
-        (string) - . Possible values are: `ARRAY`, `BINARY`, `BOOLEAN`, `BYTE`, `CHAR`, `DATE`, `DECIMAL`, `DOUBLE`, `FLOAT`, `GEOGRAPHY`, `GEOMETRY`, `INT`, `INTERVAL`, `LONG`, `MAP`, `NULL`, `SHORT`, `STRING`, `STRUCT`, `TABLE_TYPE`, `TIMESTAMP`, `TIMESTAMP_NTZ`, `USER_DEFINED_TYPE`, `VARIANT`
-        """
-        type_precision: NotRequired[_builtins.int]
-        """
-        (integer) - Digits of precision; required for DecimalTypes
-        """
-        type_scale: NotRequired[_builtins.int]
-        """
-        (integer) - Digits to right of decimal; Required for DecimalTypes
-        """
-        type_text: NotRequired[_builtins.str]
-        """
-        (string) - Full data type specification as SQL/catalogString text
-        """
-elif False:
-    GetCleanRoomAssetRevisionsCleanRoomAssetTableColumnArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetCleanRoomAssetRevisionsCleanRoomAssetTableColumnArgs:
-    def __init__(__self__, *,
-                 comment: Optional[_builtins.str] = None,
-                 mask: Optional['GetCleanRoomAssetRevisionsCleanRoomAssetTableColumnMaskArgs'] = None,
-                 name: Optional[_builtins.str] = None,
-                 nullable: Optional[_builtins.bool] = None,
-                 partition_index: Optional[_builtins.int] = None,
-                 position: Optional[_builtins.int] = None,
-                 type_interval_type: Optional[_builtins.str] = None,
-                 type_json: Optional[_builtins.str] = None,
-                 type_name: Optional[_builtins.str] = None,
-                 type_precision: Optional[_builtins.int] = None,
-                 type_scale: Optional[_builtins.int] = None,
-                 type_text: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str comment: (string) - User-provided free-form text description
-        :param 'GetCleanRoomAssetRevisionsCleanRoomAssetTableColumnMaskArgs' mask: (ColumnMask)
-        :param _builtins.str name: A fully qualified name that uniquely identifies the asset within the clean room.
-               This is also the name displayed in the clean room UI.
-               
-               For UC securable assets (tables, volumes, etc.), the format is *shared_catalog*.*shared_schema*.*asset_name*
-               
-               For notebooks, the name is the notebook file name.
-               For jar analyses, the name is the jar analysis name
-        :param _builtins.bool nullable: (boolean) - Whether field may be Null (default: true)
-        :param _builtins.int partition_index: (integer) - Partition index for column
-        :param _builtins.int position: (integer) - Ordinal position of column (starting at position 0)
-        :param _builtins.str type_interval_type: (string) - Format of IntervalType
-        :param _builtins.str type_json: (string) - Full data type specification, JSON-serialized
-        :param _builtins.str type_name: (string) - . Possible values are: `ARRAY`, `BINARY`, `BOOLEAN`, `BYTE`, `CHAR`, `DATE`, `DECIMAL`, `DOUBLE`, `FLOAT`, `GEOGRAPHY`, `GEOMETRY`, `INT`, `INTERVAL`, `LONG`, `MAP`, `NULL`, `SHORT`, `STRING`, `STRUCT`, `TABLE_TYPE`, `TIMESTAMP`, `TIMESTAMP_NTZ`, `USER_DEFINED_TYPE`, `VARIANT`
-        :param _builtins.int type_precision: (integer) - Digits of precision; required for DecimalTypes
-        :param _builtins.int type_scale: (integer) - Digits to right of decimal; Required for DecimalTypes
-        :param _builtins.str type_text: (string) - Full data type specification as SQL/catalogString text
-        """
-        if comment is not None:
-            pulumi.set(__self__, "comment", comment)
-        if mask is not None:
-            pulumi.set(__self__, "mask", mask)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if nullable is not None:
-            pulumi.set(__self__, "nullable", nullable)
-        if partition_index is not None:
-            pulumi.set(__self__, "partition_index", partition_index)
-        if position is not None:
-            pulumi.set(__self__, "position", position)
-        if type_interval_type is not None:
-            pulumi.set(__self__, "type_interval_type", type_interval_type)
-        if type_json is not None:
-            pulumi.set(__self__, "type_json", type_json)
-        if type_name is not None:
-            pulumi.set(__self__, "type_name", type_name)
-        if type_precision is not None:
-            pulumi.set(__self__, "type_precision", type_precision)
-        if type_scale is not None:
-            pulumi.set(__self__, "type_scale", type_scale)
-        if type_text is not None:
-            pulumi.set(__self__, "type_text", type_text)
-
-    @_builtins.property
-    @pulumi.getter
-    def comment(self) -> Optional[_builtins.str]:
-        """
-        (string) - User-provided free-form text description
-        """
-        return pulumi.get(self, "comment")
-
-    @comment.setter
-    def comment(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "comment", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def mask(self) -> Optional['GetCleanRoomAssetRevisionsCleanRoomAssetTableColumnMaskArgs']:
-        """
-        (ColumnMask)
-        """
-        return pulumi.get(self, "mask")
-
-    @mask.setter
-    def mask(self, value: Optional['GetCleanRoomAssetRevisionsCleanRoomAssetTableColumnMaskArgs']):
-        pulumi.set(self, "mask", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def name(self) -> Optional[_builtins.str]:
-        """
-        A fully qualified name that uniquely identifies the asset within the clean room.
-        This is also the name displayed in the clean room UI.
-
-        For UC securable assets (tables, volumes, etc.), the format is *shared_catalog*.*shared_schema*.*asset_name*
-
-        For notebooks, the name is the notebook file name.
-        For jar analyses, the name is the jar analysis name
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "name", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def nullable(self) -> Optional[_builtins.bool]:
-        """
-        (boolean) - Whether field may be Null (default: true)
-        """
-        return pulumi.get(self, "nullable")
-
-    @nullable.setter
-    def nullable(self, value: Optional[_builtins.bool]):
-        pulumi.set(self, "nullable", value)
-
-    @_builtins.property
-    @pulumi.getter(name="partitionIndex")
-    def partition_index(self) -> Optional[_builtins.int]:
-        """
-        (integer) - Partition index for column
-        """
-        return pulumi.get(self, "partition_index")
-
-    @partition_index.setter
-    def partition_index(self, value: Optional[_builtins.int]):
-        pulumi.set(self, "partition_index", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def position(self) -> Optional[_builtins.int]:
-        """
-        (integer) - Ordinal position of column (starting at position 0)
-        """
-        return pulumi.get(self, "position")
-
-    @position.setter
-    def position(self, value: Optional[_builtins.int]):
-        pulumi.set(self, "position", value)
-
-    @_builtins.property
-    @pulumi.getter(name="typeIntervalType")
-    def type_interval_type(self) -> Optional[_builtins.str]:
-        """
-        (string) - Format of IntervalType
-        """
-        return pulumi.get(self, "type_interval_type")
-
-    @type_interval_type.setter
-    def type_interval_type(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "type_interval_type", value)
-
-    @_builtins.property
-    @pulumi.getter(name="typeJson")
-    def type_json(self) -> Optional[_builtins.str]:
-        """
-        (string) - Full data type specification, JSON-serialized
-        """
-        return pulumi.get(self, "type_json")
-
-    @type_json.setter
-    def type_json(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "type_json", value)
-
-    @_builtins.property
-    @pulumi.getter(name="typeName")
-    def type_name(self) -> Optional[_builtins.str]:
-        """
-        (string) - . Possible values are: `ARRAY`, `BINARY`, `BOOLEAN`, `BYTE`, `CHAR`, `DATE`, `DECIMAL`, `DOUBLE`, `FLOAT`, `GEOGRAPHY`, `GEOMETRY`, `INT`, `INTERVAL`, `LONG`, `MAP`, `NULL`, `SHORT`, `STRING`, `STRUCT`, `TABLE_TYPE`, `TIMESTAMP`, `TIMESTAMP_NTZ`, `USER_DEFINED_TYPE`, `VARIANT`
-        """
-        return pulumi.get(self, "type_name")
-
-    @type_name.setter
-    def type_name(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "type_name", value)
-
-    @_builtins.property
-    @pulumi.getter(name="typePrecision")
-    def type_precision(self) -> Optional[_builtins.int]:
-        """
-        (integer) - Digits of precision; required for DecimalTypes
-        """
-        return pulumi.get(self, "type_precision")
-
-    @type_precision.setter
-    def type_precision(self, value: Optional[_builtins.int]):
-        pulumi.set(self, "type_precision", value)
-
-    @_builtins.property
-    @pulumi.getter(name="typeScale")
-    def type_scale(self) -> Optional[_builtins.int]:
-        """
-        (integer) - Digits to right of decimal; Required for DecimalTypes
-        """
-        return pulumi.get(self, "type_scale")
-
-    @type_scale.setter
-    def type_scale(self, value: Optional[_builtins.int]):
-        pulumi.set(self, "type_scale", value)
-
-    @_builtins.property
-    @pulumi.getter(name="typeText")
-    def type_text(self) -> Optional[_builtins.str]:
-        """
-        (string) - Full data type specification as SQL/catalogString text
-        """
-        return pulumi.get(self, "type_text")
-
-    @type_text.setter
-    def type_text(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "type_text", value)
-
-
-if not MYPY:
-    class GetCleanRoomAssetRevisionsCleanRoomAssetTableColumnMaskArgsDict(TypedDict):
-        function_name: NotRequired[_builtins.str]
-        """
-        (string) - The full name of the column mask SQL UDF
-        """
-        using_column_names: NotRequired[Sequence[_builtins.str]]
-        """
-        (list of string) - The list of additional table columns to be passed as input to the column mask function. The
-        first arg of the mask function should be of the type of the column being masked and the
-        types of the rest of the args should match the types of columns in 'using_column_names'
-        """
-elif False:
-    GetCleanRoomAssetRevisionsCleanRoomAssetTableColumnMaskArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetCleanRoomAssetRevisionsCleanRoomAssetTableColumnMaskArgs:
-    def __init__(__self__, *,
-                 function_name: Optional[_builtins.str] = None,
-                 using_column_names: Optional[Sequence[_builtins.str]] = None):
-        """
-        :param _builtins.str function_name: (string) - The full name of the column mask SQL UDF
-        :param Sequence[_builtins.str] using_column_names: (list of string) - The list of additional table columns to be passed as input to the column mask function. The
-               first arg of the mask function should be of the type of the column being masked and the
-               types of the rest of the args should match the types of columns in 'using_column_names'
-        """
-        if function_name is not None:
-            pulumi.set(__self__, "function_name", function_name)
-        if using_column_names is not None:
-            pulumi.set(__self__, "using_column_names", using_column_names)
-
-    @_builtins.property
-    @pulumi.getter(name="functionName")
-    def function_name(self) -> Optional[_builtins.str]:
-        """
-        (string) - The full name of the column mask SQL UDF
-        """
-        return pulumi.get(self, "function_name")
-
-    @function_name.setter
-    def function_name(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "function_name", value)
-
-    @_builtins.property
-    @pulumi.getter(name="usingColumnNames")
-    def using_column_names(self) -> Optional[Sequence[_builtins.str]]:
-        """
-        (list of string) - The list of additional table columns to be passed as input to the column mask function. The
-        first arg of the mask function should be of the type of the column being masked and the
-        types of the rest of the args should match the types of columns in 'using_column_names'
-        """
-        return pulumi.get(self, "using_column_names")
-
-    @using_column_names.setter
-    def using_column_names(self, value: Optional[Sequence[_builtins.str]]):
-        pulumi.set(self, "using_column_names", value)
-
-
-if not MYPY:
-    class GetCleanRoomAssetRevisionsCleanRoomAssetTableLocalDetailsArgsDict(TypedDict):
-        local_name: _builtins.str
-        """
-        (string) - The fully qualified name of the volume in its owner's local metastore,
-        in the format of *catalog*.*schema*.*volume_name*
-        """
-        partitions: NotRequired[Sequence['GetCleanRoomAssetRevisionsCleanRoomAssetTableLocalDetailsPartitionArgsDict']]
-        """
-        (list of Partition) - Partition filtering specification for a shared table
-        """
-elif False:
-    GetCleanRoomAssetRevisionsCleanRoomAssetTableLocalDetailsArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetCleanRoomAssetRevisionsCleanRoomAssetTableLocalDetailsArgs:
-    def __init__(__self__, *,
-                 local_name: _builtins.str,
-                 partitions: Optional[Sequence['GetCleanRoomAssetRevisionsCleanRoomAssetTableLocalDetailsPartitionArgs']] = None):
-        """
-        :param _builtins.str local_name: (string) - The fully qualified name of the volume in its owner's local metastore,
-               in the format of *catalog*.*schema*.*volume_name*
-        :param Sequence['GetCleanRoomAssetRevisionsCleanRoomAssetTableLocalDetailsPartitionArgs'] partitions: (list of Partition) - Partition filtering specification for a shared table
-        """
-        pulumi.set(__self__, "local_name", local_name)
-        if partitions is not None:
-            pulumi.set(__self__, "partitions", partitions)
-
-    @_builtins.property
-    @pulumi.getter(name="localName")
-    def local_name(self) -> _builtins.str:
-        """
-        (string) - The fully qualified name of the volume in its owner's local metastore,
-        in the format of *catalog*.*schema*.*volume_name*
-        """
-        return pulumi.get(self, "local_name")
-
-    @local_name.setter
-    def local_name(self, value: _builtins.str):
-        pulumi.set(self, "local_name", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def partitions(self) -> Optional[Sequence['GetCleanRoomAssetRevisionsCleanRoomAssetTableLocalDetailsPartitionArgs']]:
-        """
-        (list of Partition) - Partition filtering specification for a shared table
-        """
-        return pulumi.get(self, "partitions")
-
-    @partitions.setter
-    def partitions(self, value: Optional[Sequence['GetCleanRoomAssetRevisionsCleanRoomAssetTableLocalDetailsPartitionArgs']]):
-        pulumi.set(self, "partitions", value)
-
-
-if not MYPY:
-    class GetCleanRoomAssetRevisionsCleanRoomAssetTableLocalDetailsPartitionArgsDict(TypedDict):
-        values: NotRequired[Sequence['GetCleanRoomAssetRevisionsCleanRoomAssetTableLocalDetailsPartitionValueArgsDict']]
-        """
-        (string) - The value of the partition column. When this value is not set, it means `null` value.
-        When this field is set, field `recipient_property_key` can not be set
-        """
-elif False:
-    GetCleanRoomAssetRevisionsCleanRoomAssetTableLocalDetailsPartitionArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetCleanRoomAssetRevisionsCleanRoomAssetTableLocalDetailsPartitionArgs:
-    def __init__(__self__, *,
-                 values: Optional[Sequence['GetCleanRoomAssetRevisionsCleanRoomAssetTableLocalDetailsPartitionValueArgs']] = None):
-        """
-        :param Sequence['GetCleanRoomAssetRevisionsCleanRoomAssetTableLocalDetailsPartitionValueArgs'] values: (string) - The value of the partition column. When this value is not set, it means `null` value.
-               When this field is set, field `recipient_property_key` can not be set
-        """
-        if values is not None:
-            pulumi.set(__self__, "values", values)
-
-    @_builtins.property
-    @pulumi.getter
-    def values(self) -> Optional[Sequence['GetCleanRoomAssetRevisionsCleanRoomAssetTableLocalDetailsPartitionValueArgs']]:
-        """
-        (string) - The value of the partition column. When this value is not set, it means `null` value.
-        When this field is set, field `recipient_property_key` can not be set
-        """
-        return pulumi.get(self, "values")
-
-    @values.setter
-    def values(self, value: Optional[Sequence['GetCleanRoomAssetRevisionsCleanRoomAssetTableLocalDetailsPartitionValueArgs']]):
-        pulumi.set(self, "values", value)
-
-
-if not MYPY:
-    class GetCleanRoomAssetRevisionsCleanRoomAssetTableLocalDetailsPartitionValueArgsDict(TypedDict):
-        name: NotRequired[_builtins.str]
-        """
-        A fully qualified name that uniquely identifies the asset within the clean room.
-        This is also the name displayed in the clean room UI.
-
-        For UC securable assets (tables, volumes, etc.), the format is *shared_catalog*.*shared_schema*.*asset_name*
-
-        For notebooks, the name is the notebook file name.
-        For jar analyses, the name is the jar analysis name
-        """
-        op: NotRequired[_builtins.str]
-        """
-        (string) - The operator to apply for the value. Possible values are: `EQUAL`, `LIKE`
-        """
-        recipient_property_key: NotRequired[_builtins.str]
-        """
-        (string) - The key of a Delta Sharing recipient's property. For example "databricks-account-id".
-        When this field is set, field `value` can not be set
-        """
-        value: NotRequired[_builtins.str]
-        """
-        (string) - The value of the partition column. When this value is not set, it means `null` value.
-        When this field is set, field `recipient_property_key` can not be set
-        """
-elif False:
-    GetCleanRoomAssetRevisionsCleanRoomAssetTableLocalDetailsPartitionValueArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetCleanRoomAssetRevisionsCleanRoomAssetTableLocalDetailsPartitionValueArgs:
-    def __init__(__self__, *,
-                 name: Optional[_builtins.str] = None,
-                 op: Optional[_builtins.str] = None,
-                 recipient_property_key: Optional[_builtins.str] = None,
-                 value: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str name: A fully qualified name that uniquely identifies the asset within the clean room.
-               This is also the name displayed in the clean room UI.
-               
-               For UC securable assets (tables, volumes, etc.), the format is *shared_catalog*.*shared_schema*.*asset_name*
-               
-               For notebooks, the name is the notebook file name.
-               For jar analyses, the name is the jar analysis name
-        :param _builtins.str op: (string) - The operator to apply for the value. Possible values are: `EQUAL`, `LIKE`
-        :param _builtins.str recipient_property_key: (string) - The key of a Delta Sharing recipient's property. For example "databricks-account-id".
-               When this field is set, field `value` can not be set
-        :param _builtins.str value: (string) - The value of the partition column. When this value is not set, it means `null` value.
-               When this field is set, field `recipient_property_key` can not be set
-        """
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if op is not None:
-            pulumi.set(__self__, "op", op)
-        if recipient_property_key is not None:
-            pulumi.set(__self__, "recipient_property_key", recipient_property_key)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def name(self) -> Optional[_builtins.str]:
-        """
-        A fully qualified name that uniquely identifies the asset within the clean room.
-        This is also the name displayed in the clean room UI.
-
-        For UC securable assets (tables, volumes, etc.), the format is *shared_catalog*.*shared_schema*.*asset_name*
-
-        For notebooks, the name is the notebook file name.
-        For jar analyses, the name is the jar analysis name
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "name", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def op(self) -> Optional[_builtins.str]:
-        """
-        (string) - The operator to apply for the value. Possible values are: `EQUAL`, `LIKE`
-        """
-        return pulumi.get(self, "op")
-
-    @op.setter
-    def op(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "op", value)
-
-    @_builtins.property
-    @pulumi.getter(name="recipientPropertyKey")
-    def recipient_property_key(self) -> Optional[_builtins.str]:
-        """
-        (string) - The key of a Delta Sharing recipient's property. For example "databricks-account-id".
-        When this field is set, field `value` can not be set
-        """
-        return pulumi.get(self, "recipient_property_key")
-
-    @recipient_property_key.setter
-    def recipient_property_key(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "recipient_property_key", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def value(self) -> Optional[_builtins.str]:
-        """
-        (string) - The value of the partition column. When this value is not set, it means `null` value.
-        When this field is set, field `recipient_property_key` can not be set
-        """
-        return pulumi.get(self, "value")
-
-    @value.setter
-    def value(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "value", value)
-
-
-if not MYPY:
-    class GetCleanRoomAssetRevisionsCleanRoomAssetViewArgsDict(TypedDict):
-        columns: Sequence['GetCleanRoomAssetRevisionsCleanRoomAssetViewColumnArgsDict']
-        """
-        (list of ColumnInfo) - The metadata information of the columns in the view
-        """
-elif False:
-    GetCleanRoomAssetRevisionsCleanRoomAssetViewArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetCleanRoomAssetRevisionsCleanRoomAssetViewArgs:
-    def __init__(__self__, *,
-                 columns: Sequence['GetCleanRoomAssetRevisionsCleanRoomAssetViewColumnArgs']):
-        """
-        :param Sequence['GetCleanRoomAssetRevisionsCleanRoomAssetViewColumnArgs'] columns: (list of ColumnInfo) - The metadata information of the columns in the view
-        """
-        pulumi.set(__self__, "columns", columns)
-
-    @_builtins.property
-    @pulumi.getter
-    def columns(self) -> Sequence['GetCleanRoomAssetRevisionsCleanRoomAssetViewColumnArgs']:
-        """
-        (list of ColumnInfo) - The metadata information of the columns in the view
-        """
-        return pulumi.get(self, "columns")
-
-    @columns.setter
-    def columns(self, value: Sequence['GetCleanRoomAssetRevisionsCleanRoomAssetViewColumnArgs']):
-        pulumi.set(self, "columns", value)
-
-
-if not MYPY:
-    class GetCleanRoomAssetRevisionsCleanRoomAssetViewColumnArgsDict(TypedDict):
-        comment: NotRequired[_builtins.str]
-        """
-        (string) - User-provided free-form text description
-        """
-        mask: NotRequired['GetCleanRoomAssetRevisionsCleanRoomAssetViewColumnMaskArgsDict']
-        """
-        (ColumnMask)
-        """
-        name: NotRequired[_builtins.str]
-        """
-        A fully qualified name that uniquely identifies the asset within the clean room.
-        This is also the name displayed in the clean room UI.
-
-        For UC securable assets (tables, volumes, etc.), the format is *shared_catalog*.*shared_schema*.*asset_name*
-
-        For notebooks, the name is the notebook file name.
-        For jar analyses, the name is the jar analysis name
-        """
-        nullable: NotRequired[_builtins.bool]
-        """
-        (boolean) - Whether field may be Null (default: true)
-        """
-        partition_index: NotRequired[_builtins.int]
-        """
-        (integer) - Partition index for column
-        """
-        position: NotRequired[_builtins.int]
-        """
-        (integer) - Ordinal position of column (starting at position 0)
-        """
-        type_interval_type: NotRequired[_builtins.str]
-        """
-        (string) - Format of IntervalType
-        """
-        type_json: NotRequired[_builtins.str]
-        """
-        (string) - Full data type specification, JSON-serialized
-        """
-        type_name: NotRequired[_builtins.str]
-        """
-        (string) - . Possible values are: `ARRAY`, `BINARY`, `BOOLEAN`, `BYTE`, `CHAR`, `DATE`, `DECIMAL`, `DOUBLE`, `FLOAT`, `GEOGRAPHY`, `GEOMETRY`, `INT`, `INTERVAL`, `LONG`, `MAP`, `NULL`, `SHORT`, `STRING`, `STRUCT`, `TABLE_TYPE`, `TIMESTAMP`, `TIMESTAMP_NTZ`, `USER_DEFINED_TYPE`, `VARIANT`
-        """
-        type_precision: NotRequired[_builtins.int]
-        """
-        (integer) - Digits of precision; required for DecimalTypes
-        """
-        type_scale: NotRequired[_builtins.int]
-        """
-        (integer) - Digits to right of decimal; Required for DecimalTypes
-        """
-        type_text: NotRequired[_builtins.str]
-        """
-        (string) - Full data type specification as SQL/catalogString text
-        """
-elif False:
-    GetCleanRoomAssetRevisionsCleanRoomAssetViewColumnArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetCleanRoomAssetRevisionsCleanRoomAssetViewColumnArgs:
-    def __init__(__self__, *,
-                 comment: Optional[_builtins.str] = None,
-                 mask: Optional['GetCleanRoomAssetRevisionsCleanRoomAssetViewColumnMaskArgs'] = None,
-                 name: Optional[_builtins.str] = None,
-                 nullable: Optional[_builtins.bool] = None,
-                 partition_index: Optional[_builtins.int] = None,
-                 position: Optional[_builtins.int] = None,
-                 type_interval_type: Optional[_builtins.str] = None,
-                 type_json: Optional[_builtins.str] = None,
-                 type_name: Optional[_builtins.str] = None,
-                 type_precision: Optional[_builtins.int] = None,
-                 type_scale: Optional[_builtins.int] = None,
-                 type_text: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str comment: (string) - User-provided free-form text description
-        :param 'GetCleanRoomAssetRevisionsCleanRoomAssetViewColumnMaskArgs' mask: (ColumnMask)
-        :param _builtins.str name: A fully qualified name that uniquely identifies the asset within the clean room.
-               This is also the name displayed in the clean room UI.
-               
-               For UC securable assets (tables, volumes, etc.), the format is *shared_catalog*.*shared_schema*.*asset_name*
-               
-               For notebooks, the name is the notebook file name.
-               For jar analyses, the name is the jar analysis name
-        :param _builtins.bool nullable: (boolean) - Whether field may be Null (default: true)
-        :param _builtins.int partition_index: (integer) - Partition index for column
-        :param _builtins.int position: (integer) - Ordinal position of column (starting at position 0)
-        :param _builtins.str type_interval_type: (string) - Format of IntervalType
-        :param _builtins.str type_json: (string) - Full data type specification, JSON-serialized
-        :param _builtins.str type_name: (string) - . Possible values are: `ARRAY`, `BINARY`, `BOOLEAN`, `BYTE`, `CHAR`, `DATE`, `DECIMAL`, `DOUBLE`, `FLOAT`, `GEOGRAPHY`, `GEOMETRY`, `INT`, `INTERVAL`, `LONG`, `MAP`, `NULL`, `SHORT`, `STRING`, `STRUCT`, `TABLE_TYPE`, `TIMESTAMP`, `TIMESTAMP_NTZ`, `USER_DEFINED_TYPE`, `VARIANT`
-        :param _builtins.int type_precision: (integer) - Digits of precision; required for DecimalTypes
-        :param _builtins.int type_scale: (integer) - Digits to right of decimal; Required for DecimalTypes
-        :param _builtins.str type_text: (string) - Full data type specification as SQL/catalogString text
-        """
-        if comment is not None:
-            pulumi.set(__self__, "comment", comment)
-        if mask is not None:
-            pulumi.set(__self__, "mask", mask)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if nullable is not None:
-            pulumi.set(__self__, "nullable", nullable)
-        if partition_index is not None:
-            pulumi.set(__self__, "partition_index", partition_index)
-        if position is not None:
-            pulumi.set(__self__, "position", position)
-        if type_interval_type is not None:
-            pulumi.set(__self__, "type_interval_type", type_interval_type)
-        if type_json is not None:
-            pulumi.set(__self__, "type_json", type_json)
-        if type_name is not None:
-            pulumi.set(__self__, "type_name", type_name)
-        if type_precision is not None:
-            pulumi.set(__self__, "type_precision", type_precision)
-        if type_scale is not None:
-            pulumi.set(__self__, "type_scale", type_scale)
-        if type_text is not None:
-            pulumi.set(__self__, "type_text", type_text)
-
-    @_builtins.property
-    @pulumi.getter
-    def comment(self) -> Optional[_builtins.str]:
-        """
-        (string) - User-provided free-form text description
-        """
-        return pulumi.get(self, "comment")
-
-    @comment.setter
-    def comment(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "comment", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def mask(self) -> Optional['GetCleanRoomAssetRevisionsCleanRoomAssetViewColumnMaskArgs']:
-        """
-        (ColumnMask)
-        """
-        return pulumi.get(self, "mask")
-
-    @mask.setter
-    def mask(self, value: Optional['GetCleanRoomAssetRevisionsCleanRoomAssetViewColumnMaskArgs']):
-        pulumi.set(self, "mask", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def name(self) -> Optional[_builtins.str]:
-        """
-        A fully qualified name that uniquely identifies the asset within the clean room.
-        This is also the name displayed in the clean room UI.
-
-        For UC securable assets (tables, volumes, etc.), the format is *shared_catalog*.*shared_schema*.*asset_name*
-
-        For notebooks, the name is the notebook file name.
-        For jar analyses, the name is the jar analysis name
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "name", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def nullable(self) -> Optional[_builtins.bool]:
-        """
-        (boolean) - Whether field may be Null (default: true)
-        """
-        return pulumi.get(self, "nullable")
-
-    @nullable.setter
-    def nullable(self, value: Optional[_builtins.bool]):
-        pulumi.set(self, "nullable", value)
-
-    @_builtins.property
-    @pulumi.getter(name="partitionIndex")
-    def partition_index(self) -> Optional[_builtins.int]:
-        """
-        (integer) - Partition index for column
-        """
-        return pulumi.get(self, "partition_index")
-
-    @partition_index.setter
-    def partition_index(self, value: Optional[_builtins.int]):
-        pulumi.set(self, "partition_index", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def position(self) -> Optional[_builtins.int]:
-        """
-        (integer) - Ordinal position of column (starting at position 0)
-        """
-        return pulumi.get(self, "position")
-
-    @position.setter
-    def position(self, value: Optional[_builtins.int]):
-        pulumi.set(self, "position", value)
-
-    @_builtins.property
-    @pulumi.getter(name="typeIntervalType")
-    def type_interval_type(self) -> Optional[_builtins.str]:
-        """
-        (string) - Format of IntervalType
-        """
-        return pulumi.get(self, "type_interval_type")
-
-    @type_interval_type.setter
-    def type_interval_type(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "type_interval_type", value)
-
-    @_builtins.property
-    @pulumi.getter(name="typeJson")
-    def type_json(self) -> Optional[_builtins.str]:
-        """
-        (string) - Full data type specification, JSON-serialized
-        """
-        return pulumi.get(self, "type_json")
-
-    @type_json.setter
-    def type_json(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "type_json", value)
-
-    @_builtins.property
-    @pulumi.getter(name="typeName")
-    def type_name(self) -> Optional[_builtins.str]:
-        """
-        (string) - . Possible values are: `ARRAY`, `BINARY`, `BOOLEAN`, `BYTE`, `CHAR`, `DATE`, `DECIMAL`, `DOUBLE`, `FLOAT`, `GEOGRAPHY`, `GEOMETRY`, `INT`, `INTERVAL`, `LONG`, `MAP`, `NULL`, `SHORT`, `STRING`, `STRUCT`, `TABLE_TYPE`, `TIMESTAMP`, `TIMESTAMP_NTZ`, `USER_DEFINED_TYPE`, `VARIANT`
-        """
-        return pulumi.get(self, "type_name")
-
-    @type_name.setter
-    def type_name(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "type_name", value)
-
-    @_builtins.property
-    @pulumi.getter(name="typePrecision")
-    def type_precision(self) -> Optional[_builtins.int]:
-        """
-        (integer) - Digits of precision; required for DecimalTypes
-        """
-        return pulumi.get(self, "type_precision")
-
-    @type_precision.setter
-    def type_precision(self, value: Optional[_builtins.int]):
-        pulumi.set(self, "type_precision", value)
-
-    @_builtins.property
-    @pulumi.getter(name="typeScale")
-    def type_scale(self) -> Optional[_builtins.int]:
-        """
-        (integer) - Digits to right of decimal; Required for DecimalTypes
-        """
-        return pulumi.get(self, "type_scale")
-
-    @type_scale.setter
-    def type_scale(self, value: Optional[_builtins.int]):
-        pulumi.set(self, "type_scale", value)
-
-    @_builtins.property
-    @pulumi.getter(name="typeText")
-    def type_text(self) -> Optional[_builtins.str]:
-        """
-        (string) - Full data type specification as SQL/catalogString text
-        """
-        return pulumi.get(self, "type_text")
-
-    @type_text.setter
-    def type_text(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "type_text", value)
-
-
-if not MYPY:
-    class GetCleanRoomAssetRevisionsCleanRoomAssetViewColumnMaskArgsDict(TypedDict):
-        function_name: NotRequired[_builtins.str]
-        """
-        (string) - The full name of the column mask SQL UDF
-        """
-        using_column_names: NotRequired[Sequence[_builtins.str]]
-        """
-        (list of string) - The list of additional table columns to be passed as input to the column mask function. The
-        first arg of the mask function should be of the type of the column being masked and the
-        types of the rest of the args should match the types of columns in 'using_column_names'
-        """
-elif False:
-    GetCleanRoomAssetRevisionsCleanRoomAssetViewColumnMaskArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetCleanRoomAssetRevisionsCleanRoomAssetViewColumnMaskArgs:
-    def __init__(__self__, *,
-                 function_name: Optional[_builtins.str] = None,
-                 using_column_names: Optional[Sequence[_builtins.str]] = None):
-        """
-        :param _builtins.str function_name: (string) - The full name of the column mask SQL UDF
-        :param Sequence[_builtins.str] using_column_names: (list of string) - The list of additional table columns to be passed as input to the column mask function. The
-               first arg of the mask function should be of the type of the column being masked and the
-               types of the rest of the args should match the types of columns in 'using_column_names'
-        """
-        if function_name is not None:
-            pulumi.set(__self__, "function_name", function_name)
-        if using_column_names is not None:
-            pulumi.set(__self__, "using_column_names", using_column_names)
-
-    @_builtins.property
-    @pulumi.getter(name="functionName")
-    def function_name(self) -> Optional[_builtins.str]:
-        """
-        (string) - The full name of the column mask SQL UDF
-        """
-        return pulumi.get(self, "function_name")
-
-    @function_name.setter
-    def function_name(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "function_name", value)
-
-    @_builtins.property
-    @pulumi.getter(name="usingColumnNames")
-    def using_column_names(self) -> Optional[Sequence[_builtins.str]]:
-        """
-        (list of string) - The list of additional table columns to be passed as input to the column mask function. The
-        first arg of the mask function should be of the type of the column being masked and the
-        types of the rest of the args should match the types of columns in 'using_column_names'
-        """
-        return pulumi.get(self, "using_column_names")
-
-    @using_column_names.setter
-    def using_column_names(self, value: Optional[Sequence[_builtins.str]]):
-        pulumi.set(self, "using_column_names", value)
-
-
-if not MYPY:
-    class GetCleanRoomAssetRevisionsCleanRoomAssetViewLocalDetailsArgsDict(TypedDict):
-        local_name: _builtins.str
-        """
-        (string) - The fully qualified name of the volume in its owner's local metastore,
-        in the format of *catalog*.*schema*.*volume_name*
-        """
-elif False:
-    GetCleanRoomAssetRevisionsCleanRoomAssetViewLocalDetailsArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetCleanRoomAssetRevisionsCleanRoomAssetViewLocalDetailsArgs:
-    def __init__(__self__, *,
-                 local_name: _builtins.str):
-        """
-        :param _builtins.str local_name: (string) - The fully qualified name of the volume in its owner's local metastore,
-               in the format of *catalog*.*schema*.*volume_name*
-        """
-        pulumi.set(__self__, "local_name", local_name)
-
-    @_builtins.property
-    @pulumi.getter(name="localName")
-    def local_name(self) -> _builtins.str:
-        """
-        (string) - The fully qualified name of the volume in its owner's local metastore,
-        in the format of *catalog*.*schema*.*volume_name*
-        """
-        return pulumi.get(self, "local_name")
-
-    @local_name.setter
-    def local_name(self, value: _builtins.str):
-        pulumi.set(self, "local_name", value)
-
-
-if not MYPY:
-    class GetCleanRoomAssetRevisionsCleanRoomAssetVolumeLocalDetailsArgsDict(TypedDict):
-        local_name: _builtins.str
-        """
-        (string) - The fully qualified name of the volume in its owner's local metastore,
-        in the format of *catalog*.*schema*.*volume_name*
-        """
-elif False:
-    GetCleanRoomAssetRevisionsCleanRoomAssetVolumeLocalDetailsArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetCleanRoomAssetRevisionsCleanRoomAssetVolumeLocalDetailsArgs:
-    def __init__(__self__, *,
-                 local_name: _builtins.str):
-        """
-        :param _builtins.str local_name: (string) - The fully qualified name of the volume in its owner's local metastore,
-               in the format of *catalog*.*schema*.*volume_name*
-        """
-        pulumi.set(__self__, "local_name", local_name)
-
-    @_builtins.property
-    @pulumi.getter(name="localName")
-    def local_name(self) -> _builtins.str:
-        """
-        (string) - The fully qualified name of the volume in its owner's local metastore,
-        in the format of *catalog*.*schema*.*volume_name*
-        """
-        return pulumi.get(self, "local_name")
-
-    @local_name.setter
-    def local_name(self, value: _builtins.str):
-        pulumi.set(self, "local_name", value)
-
-
-if not MYPY:
-    class GetCleanRoomAssetTableArgsDict(TypedDict):
-        columns: Sequence['GetCleanRoomAssetTableColumnArgsDict']
-        """
-        (list of ColumnInfo) - The metadata information of the columns in the view
-        """
-elif False:
-    GetCleanRoomAssetTableArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetCleanRoomAssetTableArgs:
-    def __init__(__self__, *,
-                 columns: Sequence['GetCleanRoomAssetTableColumnArgs']):
-        """
-        :param Sequence['GetCleanRoomAssetTableColumnArgs'] columns: (list of ColumnInfo) - The metadata information of the columns in the view
-        """
-        pulumi.set(__self__, "columns", columns)
-
-    @_builtins.property
-    @pulumi.getter
-    def columns(self) -> Sequence['GetCleanRoomAssetTableColumnArgs']:
-        """
-        (list of ColumnInfo) - The metadata information of the columns in the view
-        """
-        return pulumi.get(self, "columns")
-
-    @columns.setter
-    def columns(self, value: Sequence['GetCleanRoomAssetTableColumnArgs']):
-        pulumi.set(self, "columns", value)
-
-
-if not MYPY:
-    class GetCleanRoomAssetTableColumnArgsDict(TypedDict):
-        comment: NotRequired[_builtins.str]
-        """
-        (string) - User-provided free-form text description
-        """
-        mask: NotRequired['GetCleanRoomAssetTableColumnMaskArgsDict']
-        """
-        (ColumnMask)
-        """
-        name: NotRequired[_builtins.str]
-        """
-        A fully qualified name that uniquely identifies the asset within the clean room.
-        This is also the name displayed in the clean room UI.
-
-        For UC securable assets (tables, volumes, etc.), the format is *shared_catalog*.*shared_schema*.*asset_name*
-
-        For notebooks, the name is the notebook file name.
-        For jar analyses, the name is the jar analysis name
-        """
-        nullable: NotRequired[_builtins.bool]
-        """
-        (boolean) - Whether field may be Null (default: true)
-        """
-        partition_index: NotRequired[_builtins.int]
-        """
-        (integer) - Partition index for column
-        """
-        position: NotRequired[_builtins.int]
-        """
-        (integer) - Ordinal position of column (starting at position 0)
-        """
-        type_interval_type: NotRequired[_builtins.str]
-        """
-        (string) - Format of IntervalType
-        """
-        type_json: NotRequired[_builtins.str]
-        """
-        (string) - Full data type specification, JSON-serialized
-        """
-        type_name: NotRequired[_builtins.str]
-        """
-        (string) - . Possible values are: `ARRAY`, `BINARY`, `BOOLEAN`, `BYTE`, `CHAR`, `DATE`, `DECIMAL`, `DOUBLE`, `FLOAT`, `GEOGRAPHY`, `GEOMETRY`, `INT`, `INTERVAL`, `LONG`, `MAP`, `NULL`, `SHORT`, `STRING`, `STRUCT`, `TABLE_TYPE`, `TIMESTAMP`, `TIMESTAMP_NTZ`, `USER_DEFINED_TYPE`, `VARIANT`
-        """
-        type_precision: NotRequired[_builtins.int]
-        """
-        (integer) - Digits of precision; required for DecimalTypes
-        """
-        type_scale: NotRequired[_builtins.int]
-        """
-        (integer) - Digits to right of decimal; Required for DecimalTypes
-        """
-        type_text: NotRequired[_builtins.str]
-        """
-        (string) - Full data type specification as SQL/catalogString text
-        """
-elif False:
-    GetCleanRoomAssetTableColumnArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetCleanRoomAssetTableColumnArgs:
-    def __init__(__self__, *,
-                 comment: Optional[_builtins.str] = None,
-                 mask: Optional['GetCleanRoomAssetTableColumnMaskArgs'] = None,
-                 name: Optional[_builtins.str] = None,
-                 nullable: Optional[_builtins.bool] = None,
-                 partition_index: Optional[_builtins.int] = None,
-                 position: Optional[_builtins.int] = None,
-                 type_interval_type: Optional[_builtins.str] = None,
-                 type_json: Optional[_builtins.str] = None,
-                 type_name: Optional[_builtins.str] = None,
-                 type_precision: Optional[_builtins.int] = None,
-                 type_scale: Optional[_builtins.int] = None,
-                 type_text: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str comment: (string) - User-provided free-form text description
-        :param 'GetCleanRoomAssetTableColumnMaskArgs' mask: (ColumnMask)
-        :param _builtins.str name: A fully qualified name that uniquely identifies the asset within the clean room.
-               This is also the name displayed in the clean room UI.
-               
-               For UC securable assets (tables, volumes, etc.), the format is *shared_catalog*.*shared_schema*.*asset_name*
-               
-               For notebooks, the name is the notebook file name.
-               For jar analyses, the name is the jar analysis name
-        :param _builtins.bool nullable: (boolean) - Whether field may be Null (default: true)
-        :param _builtins.int partition_index: (integer) - Partition index for column
-        :param _builtins.int position: (integer) - Ordinal position of column (starting at position 0)
-        :param _builtins.str type_interval_type: (string) - Format of IntervalType
-        :param _builtins.str type_json: (string) - Full data type specification, JSON-serialized
-        :param _builtins.str type_name: (string) - . Possible values are: `ARRAY`, `BINARY`, `BOOLEAN`, `BYTE`, `CHAR`, `DATE`, `DECIMAL`, `DOUBLE`, `FLOAT`, `GEOGRAPHY`, `GEOMETRY`, `INT`, `INTERVAL`, `LONG`, `MAP`, `NULL`, `SHORT`, `STRING`, `STRUCT`, `TABLE_TYPE`, `TIMESTAMP`, `TIMESTAMP_NTZ`, `USER_DEFINED_TYPE`, `VARIANT`
-        :param _builtins.int type_precision: (integer) - Digits of precision; required for DecimalTypes
-        :param _builtins.int type_scale: (integer) - Digits to right of decimal; Required for DecimalTypes
-        :param _builtins.str type_text: (string) - Full data type specification as SQL/catalogString text
-        """
-        if comment is not None:
-            pulumi.set(__self__, "comment", comment)
-        if mask is not None:
-            pulumi.set(__self__, "mask", mask)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if nullable is not None:
-            pulumi.set(__self__, "nullable", nullable)
-        if partition_index is not None:
-            pulumi.set(__self__, "partition_index", partition_index)
-        if position is not None:
-            pulumi.set(__self__, "position", position)
-        if type_interval_type is not None:
-            pulumi.set(__self__, "type_interval_type", type_interval_type)
-        if type_json is not None:
-            pulumi.set(__self__, "type_json", type_json)
-        if type_name is not None:
-            pulumi.set(__self__, "type_name", type_name)
-        if type_precision is not None:
-            pulumi.set(__self__, "type_precision", type_precision)
-        if type_scale is not None:
-            pulumi.set(__self__, "type_scale", type_scale)
-        if type_text is not None:
-            pulumi.set(__self__, "type_text", type_text)
-
-    @_builtins.property
-    @pulumi.getter
-    def comment(self) -> Optional[_builtins.str]:
-        """
-        (string) - User-provided free-form text description
-        """
-        return pulumi.get(self, "comment")
-
-    @comment.setter
-    def comment(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "comment", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def mask(self) -> Optional['GetCleanRoomAssetTableColumnMaskArgs']:
-        """
-        (ColumnMask)
-        """
-        return pulumi.get(self, "mask")
-
-    @mask.setter
-    def mask(self, value: Optional['GetCleanRoomAssetTableColumnMaskArgs']):
-        pulumi.set(self, "mask", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def name(self) -> Optional[_builtins.str]:
-        """
-        A fully qualified name that uniquely identifies the asset within the clean room.
-        This is also the name displayed in the clean room UI.
-
-        For UC securable assets (tables, volumes, etc.), the format is *shared_catalog*.*shared_schema*.*asset_name*
-
-        For notebooks, the name is the notebook file name.
-        For jar analyses, the name is the jar analysis name
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "name", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def nullable(self) -> Optional[_builtins.bool]:
-        """
-        (boolean) - Whether field may be Null (default: true)
-        """
-        return pulumi.get(self, "nullable")
-
-    @nullable.setter
-    def nullable(self, value: Optional[_builtins.bool]):
-        pulumi.set(self, "nullable", value)
-
-    @_builtins.property
-    @pulumi.getter(name="partitionIndex")
-    def partition_index(self) -> Optional[_builtins.int]:
-        """
-        (integer) - Partition index for column
-        """
-        return pulumi.get(self, "partition_index")
-
-    @partition_index.setter
-    def partition_index(self, value: Optional[_builtins.int]):
-        pulumi.set(self, "partition_index", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def position(self) -> Optional[_builtins.int]:
-        """
-        (integer) - Ordinal position of column (starting at position 0)
-        """
-        return pulumi.get(self, "position")
-
-    @position.setter
-    def position(self, value: Optional[_builtins.int]):
-        pulumi.set(self, "position", value)
-
-    @_builtins.property
-    @pulumi.getter(name="typeIntervalType")
-    def type_interval_type(self) -> Optional[_builtins.str]:
-        """
-        (string) - Format of IntervalType
-        """
-        return pulumi.get(self, "type_interval_type")
-
-    @type_interval_type.setter
-    def type_interval_type(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "type_interval_type", value)
-
-    @_builtins.property
-    @pulumi.getter(name="typeJson")
-    def type_json(self) -> Optional[_builtins.str]:
-        """
-        (string) - Full data type specification, JSON-serialized
-        """
-        return pulumi.get(self, "type_json")
-
-    @type_json.setter
-    def type_json(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "type_json", value)
-
-    @_builtins.property
-    @pulumi.getter(name="typeName")
-    def type_name(self) -> Optional[_builtins.str]:
-        """
-        (string) - . Possible values are: `ARRAY`, `BINARY`, `BOOLEAN`, `BYTE`, `CHAR`, `DATE`, `DECIMAL`, `DOUBLE`, `FLOAT`, `GEOGRAPHY`, `GEOMETRY`, `INT`, `INTERVAL`, `LONG`, `MAP`, `NULL`, `SHORT`, `STRING`, `STRUCT`, `TABLE_TYPE`, `TIMESTAMP`, `TIMESTAMP_NTZ`, `USER_DEFINED_TYPE`, `VARIANT`
-        """
-        return pulumi.get(self, "type_name")
-
-    @type_name.setter
-    def type_name(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "type_name", value)
-
-    @_builtins.property
-    @pulumi.getter(name="typePrecision")
-    def type_precision(self) -> Optional[_builtins.int]:
-        """
-        (integer) - Digits of precision; required for DecimalTypes
-        """
-        return pulumi.get(self, "type_precision")
-
-    @type_precision.setter
-    def type_precision(self, value: Optional[_builtins.int]):
-        pulumi.set(self, "type_precision", value)
-
-    @_builtins.property
-    @pulumi.getter(name="typeScale")
-    def type_scale(self) -> Optional[_builtins.int]:
-        """
-        (integer) - Digits to right of decimal; Required for DecimalTypes
-        """
-        return pulumi.get(self, "type_scale")
-
-    @type_scale.setter
-    def type_scale(self, value: Optional[_builtins.int]):
-        pulumi.set(self, "type_scale", value)
-
-    @_builtins.property
-    @pulumi.getter(name="typeText")
-    def type_text(self) -> Optional[_builtins.str]:
-        """
-        (string) - Full data type specification as SQL/catalogString text
-        """
-        return pulumi.get(self, "type_text")
-
-    @type_text.setter
-    def type_text(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "type_text", value)
-
-
-if not MYPY:
-    class GetCleanRoomAssetTableColumnMaskArgsDict(TypedDict):
-        function_name: NotRequired[_builtins.str]
-        """
-        (string) - The full name of the column mask SQL UDF
-        """
-        using_column_names: NotRequired[Sequence[_builtins.str]]
-        """
-        (list of string) - The list of additional table columns to be passed as input to the column mask function. The
-        first arg of the mask function should be of the type of the column being masked and the
-        types of the rest of the args should match the types of columns in 'using_column_names'
-        """
-elif False:
-    GetCleanRoomAssetTableColumnMaskArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetCleanRoomAssetTableColumnMaskArgs:
-    def __init__(__self__, *,
-                 function_name: Optional[_builtins.str] = None,
-                 using_column_names: Optional[Sequence[_builtins.str]] = None):
-        """
-        :param _builtins.str function_name: (string) - The full name of the column mask SQL UDF
-        :param Sequence[_builtins.str] using_column_names: (list of string) - The list of additional table columns to be passed as input to the column mask function. The
-               first arg of the mask function should be of the type of the column being masked and the
-               types of the rest of the args should match the types of columns in 'using_column_names'
-        """
-        if function_name is not None:
-            pulumi.set(__self__, "function_name", function_name)
-        if using_column_names is not None:
-            pulumi.set(__self__, "using_column_names", using_column_names)
-
-    @_builtins.property
-    @pulumi.getter(name="functionName")
-    def function_name(self) -> Optional[_builtins.str]:
-        """
-        (string) - The full name of the column mask SQL UDF
-        """
-        return pulumi.get(self, "function_name")
-
-    @function_name.setter
-    def function_name(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "function_name", value)
-
-    @_builtins.property
-    @pulumi.getter(name="usingColumnNames")
-    def using_column_names(self) -> Optional[Sequence[_builtins.str]]:
-        """
-        (list of string) - The list of additional table columns to be passed as input to the column mask function. The
-        first arg of the mask function should be of the type of the column being masked and the
-        types of the rest of the args should match the types of columns in 'using_column_names'
-        """
-        return pulumi.get(self, "using_column_names")
-
-    @using_column_names.setter
-    def using_column_names(self, value: Optional[Sequence[_builtins.str]]):
-        pulumi.set(self, "using_column_names", value)
-
-
-if not MYPY:
-    class GetCleanRoomAssetTableLocalDetailsArgsDict(TypedDict):
-        local_name: _builtins.str
-        """
-        (string) - The fully qualified name of the volume in its owner's local metastore,
-        in the format of *catalog*.*schema*.*volume_name*
-        """
-        partitions: NotRequired[Sequence['GetCleanRoomAssetTableLocalDetailsPartitionArgsDict']]
-        """
-        (list of Partition) - Partition filtering specification for a shared table
-        """
-elif False:
-    GetCleanRoomAssetTableLocalDetailsArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetCleanRoomAssetTableLocalDetailsArgs:
-    def __init__(__self__, *,
-                 local_name: _builtins.str,
-                 partitions: Optional[Sequence['GetCleanRoomAssetTableLocalDetailsPartitionArgs']] = None):
-        """
-        :param _builtins.str local_name: (string) - The fully qualified name of the volume in its owner's local metastore,
-               in the format of *catalog*.*schema*.*volume_name*
-        :param Sequence['GetCleanRoomAssetTableLocalDetailsPartitionArgs'] partitions: (list of Partition) - Partition filtering specification for a shared table
-        """
-        pulumi.set(__self__, "local_name", local_name)
-        if partitions is not None:
-            pulumi.set(__self__, "partitions", partitions)
-
-    @_builtins.property
-    @pulumi.getter(name="localName")
-    def local_name(self) -> _builtins.str:
-        """
-        (string) - The fully qualified name of the volume in its owner's local metastore,
-        in the format of *catalog*.*schema*.*volume_name*
-        """
-        return pulumi.get(self, "local_name")
-
-    @local_name.setter
-    def local_name(self, value: _builtins.str):
-        pulumi.set(self, "local_name", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def partitions(self) -> Optional[Sequence['GetCleanRoomAssetTableLocalDetailsPartitionArgs']]:
-        """
-        (list of Partition) - Partition filtering specification for a shared table
-        """
-        return pulumi.get(self, "partitions")
-
-    @partitions.setter
-    def partitions(self, value: Optional[Sequence['GetCleanRoomAssetTableLocalDetailsPartitionArgs']]):
-        pulumi.set(self, "partitions", value)
-
-
-if not MYPY:
-    class GetCleanRoomAssetTableLocalDetailsPartitionArgsDict(TypedDict):
-        values: NotRequired[Sequence['GetCleanRoomAssetTableLocalDetailsPartitionValueArgsDict']]
-        """
-        (string) - The value of the partition column. When this value is not set, it means `null` value.
-        When this field is set, field `recipient_property_key` can not be set
-        """
-elif False:
-    GetCleanRoomAssetTableLocalDetailsPartitionArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetCleanRoomAssetTableLocalDetailsPartitionArgs:
-    def __init__(__self__, *,
-                 values: Optional[Sequence['GetCleanRoomAssetTableLocalDetailsPartitionValueArgs']] = None):
-        """
-        :param Sequence['GetCleanRoomAssetTableLocalDetailsPartitionValueArgs'] values: (string) - The value of the partition column. When this value is not set, it means `null` value.
-               When this field is set, field `recipient_property_key` can not be set
-        """
-        if values is not None:
-            pulumi.set(__self__, "values", values)
-
-    @_builtins.property
-    @pulumi.getter
-    def values(self) -> Optional[Sequence['GetCleanRoomAssetTableLocalDetailsPartitionValueArgs']]:
-        """
-        (string) - The value of the partition column. When this value is not set, it means `null` value.
-        When this field is set, field `recipient_property_key` can not be set
-        """
-        return pulumi.get(self, "values")
-
-    @values.setter
-    def values(self, value: Optional[Sequence['GetCleanRoomAssetTableLocalDetailsPartitionValueArgs']]):
-        pulumi.set(self, "values", value)
-
-
-if not MYPY:
-    class GetCleanRoomAssetTableLocalDetailsPartitionValueArgsDict(TypedDict):
-        name: NotRequired[_builtins.str]
-        """
-        A fully qualified name that uniquely identifies the asset within the clean room.
-        This is also the name displayed in the clean room UI.
-
-        For UC securable assets (tables, volumes, etc.), the format is *shared_catalog*.*shared_schema*.*asset_name*
-
-        For notebooks, the name is the notebook file name.
-        For jar analyses, the name is the jar analysis name
-        """
-        op: NotRequired[_builtins.str]
-        """
-        (string) - The operator to apply for the value. Possible values are: `EQUAL`, `LIKE`
-        """
-        recipient_property_key: NotRequired[_builtins.str]
-        """
-        (string) - The key of a Delta Sharing recipient's property. For example "databricks-account-id".
-        When this field is set, field `value` can not be set
-        """
-        value: NotRequired[_builtins.str]
-        """
-        (string) - The value of the partition column. When this value is not set, it means `null` value.
-        When this field is set, field `recipient_property_key` can not be set
-        """
-elif False:
-    GetCleanRoomAssetTableLocalDetailsPartitionValueArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetCleanRoomAssetTableLocalDetailsPartitionValueArgs:
-    def __init__(__self__, *,
-                 name: Optional[_builtins.str] = None,
-                 op: Optional[_builtins.str] = None,
-                 recipient_property_key: Optional[_builtins.str] = None,
-                 value: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str name: A fully qualified name that uniquely identifies the asset within the clean room.
-               This is also the name displayed in the clean room UI.
-               
-               For UC securable assets (tables, volumes, etc.), the format is *shared_catalog*.*shared_schema*.*asset_name*
-               
-               For notebooks, the name is the notebook file name.
-               For jar analyses, the name is the jar analysis name
-        :param _builtins.str op: (string) - The operator to apply for the value. Possible values are: `EQUAL`, `LIKE`
-        :param _builtins.str recipient_property_key: (string) - The key of a Delta Sharing recipient's property. For example "databricks-account-id".
-               When this field is set, field `value` can not be set
-        :param _builtins.str value: (string) - The value of the partition column. When this value is not set, it means `null` value.
-               When this field is set, field `recipient_property_key` can not be set
-        """
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if op is not None:
-            pulumi.set(__self__, "op", op)
-        if recipient_property_key is not None:
-            pulumi.set(__self__, "recipient_property_key", recipient_property_key)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def name(self) -> Optional[_builtins.str]:
-        """
-        A fully qualified name that uniquely identifies the asset within the clean room.
-        This is also the name displayed in the clean room UI.
-
-        For UC securable assets (tables, volumes, etc.), the format is *shared_catalog*.*shared_schema*.*asset_name*
-
-        For notebooks, the name is the notebook file name.
-        For jar analyses, the name is the jar analysis name
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "name", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def op(self) -> Optional[_builtins.str]:
-        """
-        (string) - The operator to apply for the value. Possible values are: `EQUAL`, `LIKE`
-        """
-        return pulumi.get(self, "op")
-
-    @op.setter
-    def op(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "op", value)
-
-    @_builtins.property
-    @pulumi.getter(name="recipientPropertyKey")
-    def recipient_property_key(self) -> Optional[_builtins.str]:
-        """
-        (string) - The key of a Delta Sharing recipient's property. For example "databricks-account-id".
-        When this field is set, field `value` can not be set
-        """
-        return pulumi.get(self, "recipient_property_key")
-
-    @recipient_property_key.setter
-    def recipient_property_key(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "recipient_property_key", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def value(self) -> Optional[_builtins.str]:
-        """
-        (string) - The value of the partition column. When this value is not set, it means `null` value.
-        When this field is set, field `recipient_property_key` can not be set
-        """
-        return pulumi.get(self, "value")
-
-    @value.setter
-    def value(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "value", value)
-
-
-if not MYPY:
-    class GetCleanRoomAssetViewArgsDict(TypedDict):
-        columns: Sequence['GetCleanRoomAssetViewColumnArgsDict']
-        """
-        (list of ColumnInfo) - The metadata information of the columns in the view
-        """
-elif False:
-    GetCleanRoomAssetViewArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetCleanRoomAssetViewArgs:
-    def __init__(__self__, *,
-                 columns: Sequence['GetCleanRoomAssetViewColumnArgs']):
-        """
-        :param Sequence['GetCleanRoomAssetViewColumnArgs'] columns: (list of ColumnInfo) - The metadata information of the columns in the view
-        """
-        pulumi.set(__self__, "columns", columns)
-
-    @_builtins.property
-    @pulumi.getter
-    def columns(self) -> Sequence['GetCleanRoomAssetViewColumnArgs']:
-        """
-        (list of ColumnInfo) - The metadata information of the columns in the view
-        """
-        return pulumi.get(self, "columns")
-
-    @columns.setter
-    def columns(self, value: Sequence['GetCleanRoomAssetViewColumnArgs']):
-        pulumi.set(self, "columns", value)
-
-
-if not MYPY:
-    class GetCleanRoomAssetViewColumnArgsDict(TypedDict):
-        comment: NotRequired[_builtins.str]
-        """
-        (string) - User-provided free-form text description
-        """
-        mask: NotRequired['GetCleanRoomAssetViewColumnMaskArgsDict']
-        """
-        (ColumnMask)
-        """
-        name: NotRequired[_builtins.str]
-        """
-        A fully qualified name that uniquely identifies the asset within the clean room.
-        This is also the name displayed in the clean room UI.
-
-        For UC securable assets (tables, volumes, etc.), the format is *shared_catalog*.*shared_schema*.*asset_name*
-
-        For notebooks, the name is the notebook file name.
-        For jar analyses, the name is the jar analysis name
-        """
-        nullable: NotRequired[_builtins.bool]
-        """
-        (boolean) - Whether field may be Null (default: true)
-        """
-        partition_index: NotRequired[_builtins.int]
-        """
-        (integer) - Partition index for column
-        """
-        position: NotRequired[_builtins.int]
-        """
-        (integer) - Ordinal position of column (starting at position 0)
-        """
-        type_interval_type: NotRequired[_builtins.str]
-        """
-        (string) - Format of IntervalType
-        """
-        type_json: NotRequired[_builtins.str]
-        """
-        (string) - Full data type specification, JSON-serialized
-        """
-        type_name: NotRequired[_builtins.str]
-        """
-        (string) - . Possible values are: `ARRAY`, `BINARY`, `BOOLEAN`, `BYTE`, `CHAR`, `DATE`, `DECIMAL`, `DOUBLE`, `FLOAT`, `GEOGRAPHY`, `GEOMETRY`, `INT`, `INTERVAL`, `LONG`, `MAP`, `NULL`, `SHORT`, `STRING`, `STRUCT`, `TABLE_TYPE`, `TIMESTAMP`, `TIMESTAMP_NTZ`, `USER_DEFINED_TYPE`, `VARIANT`
-        """
-        type_precision: NotRequired[_builtins.int]
-        """
-        (integer) - Digits of precision; required for DecimalTypes
-        """
-        type_scale: NotRequired[_builtins.int]
-        """
-        (integer) - Digits to right of decimal; Required for DecimalTypes
-        """
-        type_text: NotRequired[_builtins.str]
-        """
-        (string) - Full data type specification as SQL/catalogString text
-        """
-elif False:
-    GetCleanRoomAssetViewColumnArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetCleanRoomAssetViewColumnArgs:
-    def __init__(__self__, *,
-                 comment: Optional[_builtins.str] = None,
-                 mask: Optional['GetCleanRoomAssetViewColumnMaskArgs'] = None,
-                 name: Optional[_builtins.str] = None,
-                 nullable: Optional[_builtins.bool] = None,
-                 partition_index: Optional[_builtins.int] = None,
-                 position: Optional[_builtins.int] = None,
-                 type_interval_type: Optional[_builtins.str] = None,
-                 type_json: Optional[_builtins.str] = None,
-                 type_name: Optional[_builtins.str] = None,
-                 type_precision: Optional[_builtins.int] = None,
-                 type_scale: Optional[_builtins.int] = None,
-                 type_text: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str comment: (string) - User-provided free-form text description
-        :param 'GetCleanRoomAssetViewColumnMaskArgs' mask: (ColumnMask)
-        :param _builtins.str name: A fully qualified name that uniquely identifies the asset within the clean room.
-               This is also the name displayed in the clean room UI.
-               
-               For UC securable assets (tables, volumes, etc.), the format is *shared_catalog*.*shared_schema*.*asset_name*
-               
-               For notebooks, the name is the notebook file name.
-               For jar analyses, the name is the jar analysis name
-        :param _builtins.bool nullable: (boolean) - Whether field may be Null (default: true)
-        :param _builtins.int partition_index: (integer) - Partition index for column
-        :param _builtins.int position: (integer) - Ordinal position of column (starting at position 0)
-        :param _builtins.str type_interval_type: (string) - Format of IntervalType
-        :param _builtins.str type_json: (string) - Full data type specification, JSON-serialized
-        :param _builtins.str type_name: (string) - . Possible values are: `ARRAY`, `BINARY`, `BOOLEAN`, `BYTE`, `CHAR`, `DATE`, `DECIMAL`, `DOUBLE`, `FLOAT`, `GEOGRAPHY`, `GEOMETRY`, `INT`, `INTERVAL`, `LONG`, `MAP`, `NULL`, `SHORT`, `STRING`, `STRUCT`, `TABLE_TYPE`, `TIMESTAMP`, `TIMESTAMP_NTZ`, `USER_DEFINED_TYPE`, `VARIANT`
-        :param _builtins.int type_precision: (integer) - Digits of precision; required for DecimalTypes
-        :param _builtins.int type_scale: (integer) - Digits to right of decimal; Required for DecimalTypes
-        :param _builtins.str type_text: (string) - Full data type specification as SQL/catalogString text
-        """
-        if comment is not None:
-            pulumi.set(__self__, "comment", comment)
-        if mask is not None:
-            pulumi.set(__self__, "mask", mask)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if nullable is not None:
-            pulumi.set(__self__, "nullable", nullable)
-        if partition_index is not None:
-            pulumi.set(__self__, "partition_index", partition_index)
-        if position is not None:
-            pulumi.set(__self__, "position", position)
-        if type_interval_type is not None:
-            pulumi.set(__self__, "type_interval_type", type_interval_type)
-        if type_json is not None:
-            pulumi.set(__self__, "type_json", type_json)
-        if type_name is not None:
-            pulumi.set(__self__, "type_name", type_name)
-        if type_precision is not None:
-            pulumi.set(__self__, "type_precision", type_precision)
-        if type_scale is not None:
-            pulumi.set(__self__, "type_scale", type_scale)
-        if type_text is not None:
-            pulumi.set(__self__, "type_text", type_text)
-
-    @_builtins.property
-    @pulumi.getter
-    def comment(self) -> Optional[_builtins.str]:
-        """
-        (string) - User-provided free-form text description
-        """
-        return pulumi.get(self, "comment")
-
-    @comment.setter
-    def comment(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "comment", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def mask(self) -> Optional['GetCleanRoomAssetViewColumnMaskArgs']:
-        """
-        (ColumnMask)
-        """
-        return pulumi.get(self, "mask")
-
-    @mask.setter
-    def mask(self, value: Optional['GetCleanRoomAssetViewColumnMaskArgs']):
-        pulumi.set(self, "mask", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def name(self) -> Optional[_builtins.str]:
-        """
-        A fully qualified name that uniquely identifies the asset within the clean room.
-        This is also the name displayed in the clean room UI.
-
-        For UC securable assets (tables, volumes, etc.), the format is *shared_catalog*.*shared_schema*.*asset_name*
-
-        For notebooks, the name is the notebook file name.
-        For jar analyses, the name is the jar analysis name
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "name", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def nullable(self) -> Optional[_builtins.bool]:
-        """
-        (boolean) - Whether field may be Null (default: true)
-        """
-        return pulumi.get(self, "nullable")
-
-    @nullable.setter
-    def nullable(self, value: Optional[_builtins.bool]):
-        pulumi.set(self, "nullable", value)
-
-    @_builtins.property
-    @pulumi.getter(name="partitionIndex")
-    def partition_index(self) -> Optional[_builtins.int]:
-        """
-        (integer) - Partition index for column
-        """
-        return pulumi.get(self, "partition_index")
-
-    @partition_index.setter
-    def partition_index(self, value: Optional[_builtins.int]):
-        pulumi.set(self, "partition_index", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def position(self) -> Optional[_builtins.int]:
-        """
-        (integer) - Ordinal position of column (starting at position 0)
-        """
-        return pulumi.get(self, "position")
-
-    @position.setter
-    def position(self, value: Optional[_builtins.int]):
-        pulumi.set(self, "position", value)
-
-    @_builtins.property
-    @pulumi.getter(name="typeIntervalType")
-    def type_interval_type(self) -> Optional[_builtins.str]:
-        """
-        (string) - Format of IntervalType
-        """
-        return pulumi.get(self, "type_interval_type")
-
-    @type_interval_type.setter
-    def type_interval_type(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "type_interval_type", value)
-
-    @_builtins.property
-    @pulumi.getter(name="typeJson")
-    def type_json(self) -> Optional[_builtins.str]:
-        """
-        (string) - Full data type specification, JSON-serialized
-        """
-        return pulumi.get(self, "type_json")
-
-    @type_json.setter
-    def type_json(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "type_json", value)
-
-    @_builtins.property
-    @pulumi.getter(name="typeName")
-    def type_name(self) -> Optional[_builtins.str]:
-        """
-        (string) - . Possible values are: `ARRAY`, `BINARY`, `BOOLEAN`, `BYTE`, `CHAR`, `DATE`, `DECIMAL`, `DOUBLE`, `FLOAT`, `GEOGRAPHY`, `GEOMETRY`, `INT`, `INTERVAL`, `LONG`, `MAP`, `NULL`, `SHORT`, `STRING`, `STRUCT`, `TABLE_TYPE`, `TIMESTAMP`, `TIMESTAMP_NTZ`, `USER_DEFINED_TYPE`, `VARIANT`
-        """
-        return pulumi.get(self, "type_name")
-
-    @type_name.setter
-    def type_name(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "type_name", value)
-
-    @_builtins.property
-    @pulumi.getter(name="typePrecision")
-    def type_precision(self) -> Optional[_builtins.int]:
-        """
-        (integer) - Digits of precision; required for DecimalTypes
-        """
-        return pulumi.get(self, "type_precision")
-
-    @type_precision.setter
-    def type_precision(self, value: Optional[_builtins.int]):
-        pulumi.set(self, "type_precision", value)
-
-    @_builtins.property
-    @pulumi.getter(name="typeScale")
-    def type_scale(self) -> Optional[_builtins.int]:
-        """
-        (integer) - Digits to right of decimal; Required for DecimalTypes
-        """
-        return pulumi.get(self, "type_scale")
-
-    @type_scale.setter
-    def type_scale(self, value: Optional[_builtins.int]):
-        pulumi.set(self, "type_scale", value)
-
-    @_builtins.property
-    @pulumi.getter(name="typeText")
-    def type_text(self) -> Optional[_builtins.str]:
-        """
-        (string) - Full data type specification as SQL/catalogString text
-        """
-        return pulumi.get(self, "type_text")
-
-    @type_text.setter
-    def type_text(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "type_text", value)
-
-
-if not MYPY:
-    class GetCleanRoomAssetViewColumnMaskArgsDict(TypedDict):
-        function_name: NotRequired[_builtins.str]
-        """
-        (string) - The full name of the column mask SQL UDF
-        """
-        using_column_names: NotRequired[Sequence[_builtins.str]]
-        """
-        (list of string) - The list of additional table columns to be passed as input to the column mask function. The
-        first arg of the mask function should be of the type of the column being masked and the
-        types of the rest of the args should match the types of columns in 'using_column_names'
-        """
-elif False:
-    GetCleanRoomAssetViewColumnMaskArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetCleanRoomAssetViewColumnMaskArgs:
-    def __init__(__self__, *,
-                 function_name: Optional[_builtins.str] = None,
-                 using_column_names: Optional[Sequence[_builtins.str]] = None):
-        """
-        :param _builtins.str function_name: (string) - The full name of the column mask SQL UDF
-        :param Sequence[_builtins.str] using_column_names: (list of string) - The list of additional table columns to be passed as input to the column mask function. The
-               first arg of the mask function should be of the type of the column being masked and the
-               types of the rest of the args should match the types of columns in 'using_column_names'
-        """
-        if function_name is not None:
-            pulumi.set(__self__, "function_name", function_name)
-        if using_column_names is not None:
-            pulumi.set(__self__, "using_column_names", using_column_names)
-
-    @_builtins.property
-    @pulumi.getter(name="functionName")
-    def function_name(self) -> Optional[_builtins.str]:
-        """
-        (string) - The full name of the column mask SQL UDF
-        """
-        return pulumi.get(self, "function_name")
-
-    @function_name.setter
-    def function_name(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "function_name", value)
-
-    @_builtins.property
-    @pulumi.getter(name="usingColumnNames")
-    def using_column_names(self) -> Optional[Sequence[_builtins.str]]:
-        """
-        (list of string) - The list of additional table columns to be passed as input to the column mask function. The
-        first arg of the mask function should be of the type of the column being masked and the
-        types of the rest of the args should match the types of columns in 'using_column_names'
-        """
-        return pulumi.get(self, "using_column_names")
-
-    @using_column_names.setter
-    def using_column_names(self, value: Optional[Sequence[_builtins.str]]):
-        pulumi.set(self, "using_column_names", value)
-
-
-if not MYPY:
-    class GetCleanRoomAssetViewLocalDetailsArgsDict(TypedDict):
-        local_name: _builtins.str
-        """
-        (string) - The fully qualified name of the volume in its owner's local metastore,
-        in the format of *catalog*.*schema*.*volume_name*
-        """
-elif False:
-    GetCleanRoomAssetViewLocalDetailsArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetCleanRoomAssetViewLocalDetailsArgs:
-    def __init__(__self__, *,
-                 local_name: _builtins.str):
-        """
-        :param _builtins.str local_name: (string) - The fully qualified name of the volume in its owner's local metastore,
-               in the format of *catalog*.*schema*.*volume_name*
-        """
-        pulumi.set(__self__, "local_name", local_name)
-
-    @_builtins.property
-    @pulumi.getter(name="localName")
-    def local_name(self) -> _builtins.str:
-        """
-        (string) - The fully qualified name of the volume in its owner's local metastore,
-        in the format of *catalog*.*schema*.*volume_name*
-        """
-        return pulumi.get(self, "local_name")
-
-    @local_name.setter
-    def local_name(self, value: _builtins.str):
-        pulumi.set(self, "local_name", value)
-
-
-if not MYPY:
-    class GetCleanRoomAssetVolumeLocalDetailsArgsDict(TypedDict):
-        local_name: _builtins.str
-        """
-        (string) - The fully qualified name of the volume in its owner's local metastore,
-        in the format of *catalog*.*schema*.*volume_name*
-        """
-elif False:
-    GetCleanRoomAssetVolumeLocalDetailsArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetCleanRoomAssetVolumeLocalDetailsArgs:
-    def __init__(__self__, *,
-                 local_name: _builtins.str):
-        """
-        :param _builtins.str local_name: (string) - The fully qualified name of the volume in its owner's local metastore,
-               in the format of *catalog*.*schema*.*volume_name*
-        """
-        pulumi.set(__self__, "local_name", local_name)
-
-    @_builtins.property
-    @pulumi.getter(name="localName")
-    def local_name(self) -> _builtins.str:
-        """
-        (string) - The fully qualified name of the volume in its owner's local metastore,
-        in the format of *catalog*.*schema*.*volume_name*
-        """
-        return pulumi.get(self, "local_name")
-
-    @local_name.setter
-    def local_name(self, value: _builtins.str):
-        pulumi.set(self, "local_name", value)
-
-
-if not MYPY:
-    class GetCleanRoomsCleanRoomRemoteDetailedInfoArgsDict(TypedDict):
-        central_clean_room_id: _builtins.str
-        """
-        (string) - Central clean room ID
-        """
-        compliance_security_profile: 'GetCleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfileArgsDict'
-        """
-        (ComplianceSecurityProfile)
-        """
-        creator: 'GetCleanRoomsCleanRoomRemoteDetailedInfoCreatorArgsDict'
-        """
-        (CleanRoomCollaborator) - Collaborator who creates the clean room
-        """
-        cloud_vendor: NotRequired[_builtins.str]
-        """
-        (string) - Cloud vendor (aws,azure,gcp) of the central clean room
-        """
-        collaborators: NotRequired[Sequence['GetCleanRoomsCleanRoomRemoteDetailedInfoCollaboratorArgsDict']]
-        """
-        (list of CleanRoomCollaborator) - Collaborators in the central clean room. There should one and only one collaborator
-        in the list that satisfies the owner condition:
-        """
-        egress_network_policy: NotRequired['GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyArgsDict']
-        """
-        (EgressNetworkPolicy) - Egress network policy to apply to the central clean room workspace
-        """
-        region: NotRequired[_builtins.str]
-        """
-        (string)
-        """
-elif False:
-    GetCleanRoomsCleanRoomRemoteDetailedInfoArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetCleanRoomsCleanRoomRemoteDetailedInfoArgs:
-    def __init__(__self__, *,
-                 central_clean_room_id: _builtins.str,
-                 compliance_security_profile: 'GetCleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfileArgs',
-                 creator: 'GetCleanRoomsCleanRoomRemoteDetailedInfoCreatorArgs',
-                 cloud_vendor: Optional[_builtins.str] = None,
-                 collaborators: Optional[Sequence['GetCleanRoomsCleanRoomRemoteDetailedInfoCollaboratorArgs']] = None,
-                 egress_network_policy: Optional['GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyArgs'] = None,
-                 region: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str central_clean_room_id: (string) - Central clean room ID
-        :param 'GetCleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfileArgs' compliance_security_profile: (ComplianceSecurityProfile)
-        :param 'GetCleanRoomsCleanRoomRemoteDetailedInfoCreatorArgs' creator: (CleanRoomCollaborator) - Collaborator who creates the clean room
-        :param _builtins.str cloud_vendor: (string) - Cloud vendor (aws,azure,gcp) of the central clean room
-        :param Sequence['GetCleanRoomsCleanRoomRemoteDetailedInfoCollaboratorArgs'] collaborators: (list of CleanRoomCollaborator) - Collaborators in the central clean room. There should one and only one collaborator
-               in the list that satisfies the owner condition:
-        :param 'GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyArgs' egress_network_policy: (EgressNetworkPolicy) - Egress network policy to apply to the central clean room workspace
-        :param _builtins.str region: (string)
-        """
-        pulumi.set(__self__, "central_clean_room_id", central_clean_room_id)
-        pulumi.set(__self__, "compliance_security_profile", compliance_security_profile)
-        pulumi.set(__self__, "creator", creator)
-        if cloud_vendor is not None:
-            pulumi.set(__self__, "cloud_vendor", cloud_vendor)
-        if collaborators is not None:
-            pulumi.set(__self__, "collaborators", collaborators)
-        if egress_network_policy is not None:
-            pulumi.set(__self__, "egress_network_policy", egress_network_policy)
-        if region is not None:
-            pulumi.set(__self__, "region", region)
-
-    @_builtins.property
-    @pulumi.getter(name="centralCleanRoomId")
-    def central_clean_room_id(self) -> _builtins.str:
-        """
-        (string) - Central clean room ID
-        """
-        return pulumi.get(self, "central_clean_room_id")
-
-    @central_clean_room_id.setter
-    def central_clean_room_id(self, value: _builtins.str):
-        pulumi.set(self, "central_clean_room_id", value)
-
-    @_builtins.property
-    @pulumi.getter(name="complianceSecurityProfile")
-    def compliance_security_profile(self) -> 'GetCleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfileArgs':
-        """
-        (ComplianceSecurityProfile)
-        """
-        return pulumi.get(self, "compliance_security_profile")
-
-    @compliance_security_profile.setter
-    def compliance_security_profile(self, value: 'GetCleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfileArgs'):
-        pulumi.set(self, "compliance_security_profile", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def creator(self) -> 'GetCleanRoomsCleanRoomRemoteDetailedInfoCreatorArgs':
-        """
-        (CleanRoomCollaborator) - Collaborator who creates the clean room
-        """
-        return pulumi.get(self, "creator")
-
-    @creator.setter
-    def creator(self, value: 'GetCleanRoomsCleanRoomRemoteDetailedInfoCreatorArgs'):
-        pulumi.set(self, "creator", value)
-
-    @_builtins.property
-    @pulumi.getter(name="cloudVendor")
-    def cloud_vendor(self) -> Optional[_builtins.str]:
-        """
-        (string) - Cloud vendor (aws,azure,gcp) of the central clean room
-        """
-        return pulumi.get(self, "cloud_vendor")
-
-    @cloud_vendor.setter
-    def cloud_vendor(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "cloud_vendor", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def collaborators(self) -> Optional[Sequence['GetCleanRoomsCleanRoomRemoteDetailedInfoCollaboratorArgs']]:
-        """
-        (list of CleanRoomCollaborator) - Collaborators in the central clean room. There should one and only one collaborator
-        in the list that satisfies the owner condition:
-        """
-        return pulumi.get(self, "collaborators")
-
-    @collaborators.setter
-    def collaborators(self, value: Optional[Sequence['GetCleanRoomsCleanRoomRemoteDetailedInfoCollaboratorArgs']]):
-        pulumi.set(self, "collaborators", value)
-
-    @_builtins.property
-    @pulumi.getter(name="egressNetworkPolicy")
-    def egress_network_policy(self) -> Optional['GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyArgs']:
-        """
-        (EgressNetworkPolicy) - Egress network policy to apply to the central clean room workspace
-        """
-        return pulumi.get(self, "egress_network_policy")
-
-    @egress_network_policy.setter
-    def egress_network_policy(self, value: Optional['GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyArgs']):
-        pulumi.set(self, "egress_network_policy", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def region(self) -> Optional[_builtins.str]:
-        """
-        (string)
-        """
-        return pulumi.get(self, "region")
-
-    @region.setter
-    def region(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "region", value)
-
-
-if not MYPY:
-    class GetCleanRoomsCleanRoomRemoteDetailedInfoCollaboratorArgsDict(TypedDict):
-        collaborator_alias: _builtins.str
-        """
-        (string) - Collaborator alias specified by the clean room creator. It is unique across all collaborators of this clean room, and used to derive
-        multiple values internally such as catalog alias and clean room name for single metastore clean rooms.
-        It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements)
-        """
-        display_name: _builtins.str
-        """
-        (string) - Generated display name for the collaborator. In the case of a single metastore clean room, it is the clean
-        room name. For x-metastore clean rooms, it is the organization name of the metastore. It is not restricted to
-        these values and could change in the future
-        """
-        invite_recipient_workspace_id: _builtins.int
-        """
-        (integer) - Workspace ID of the user who is receiving the clean room "invitation". Must be specified if
-        invite_recipient_email is specified.
-        It should be empty when the collaborator is the creator of the clean room
-        """
-        organization_name: _builtins.str
-        """
-        (string) - Organization name
-        configured in the metastore
-        """
-        global_metastore_id: NotRequired[_builtins.str]
-        """
-        (string) - The global Unity Catalog metastore ID of the collaborator. The identifier is of format cloud:region:metastore-uuid
-        """
-        invite_recipient_email: NotRequired[_builtins.str]
-        """
-        (string) - Email of the user who is receiving the clean room "invitation". It should be empty
-        for the creator of the clean room, and non-empty for the invitees of the clean room.
-        It is only returned in the output when clean room creator calls GET
-        """
-elif False:
-    GetCleanRoomsCleanRoomRemoteDetailedInfoCollaboratorArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetCleanRoomsCleanRoomRemoteDetailedInfoCollaboratorArgs:
-    def __init__(__self__, *,
-                 collaborator_alias: _builtins.str,
-                 display_name: _builtins.str,
-                 invite_recipient_workspace_id: _builtins.int,
-                 organization_name: _builtins.str,
-                 global_metastore_id: Optional[_builtins.str] = None,
-                 invite_recipient_email: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str collaborator_alias: (string) - Collaborator alias specified by the clean room creator. It is unique across all collaborators of this clean room, and used to derive
-               multiple values internally such as catalog alias and clean room name for single metastore clean rooms.
-               It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements)
-        :param _builtins.str display_name: (string) - Generated display name for the collaborator. In the case of a single metastore clean room, it is the clean
-               room name. For x-metastore clean rooms, it is the organization name of the metastore. It is not restricted to
-               these values and could change in the future
-        :param _builtins.int invite_recipient_workspace_id: (integer) - Workspace ID of the user who is receiving the clean room "invitation". Must be specified if
-               invite_recipient_email is specified.
-               It should be empty when the collaborator is the creator of the clean room
-        :param _builtins.str organization_name: (string) - Organization name
-               configured in the metastore
-        :param _builtins.str global_metastore_id: (string) - The global Unity Catalog metastore ID of the collaborator. The identifier is of format cloud:region:metastore-uuid
-        :param _builtins.str invite_recipient_email: (string) - Email of the user who is receiving the clean room "invitation". It should be empty
-               for the creator of the clean room, and non-empty for the invitees of the clean room.
-               It is only returned in the output when clean room creator calls GET
-        """
-        pulumi.set(__self__, "collaborator_alias", collaborator_alias)
-        pulumi.set(__self__, "display_name", display_name)
-        pulumi.set(__self__, "invite_recipient_workspace_id", invite_recipient_workspace_id)
-        pulumi.set(__self__, "organization_name", organization_name)
-        if global_metastore_id is not None:
-            pulumi.set(__self__, "global_metastore_id", global_metastore_id)
-        if invite_recipient_email is not None:
-            pulumi.set(__self__, "invite_recipient_email", invite_recipient_email)
-
-    @_builtins.property
-    @pulumi.getter(name="collaboratorAlias")
-    def collaborator_alias(self) -> _builtins.str:
-        """
-        (string) - Collaborator alias specified by the clean room creator. It is unique across all collaborators of this clean room, and used to derive
-        multiple values internally such as catalog alias and clean room name for single metastore clean rooms.
-        It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements)
-        """
-        return pulumi.get(self, "collaborator_alias")
-
-    @collaborator_alias.setter
-    def collaborator_alias(self, value: _builtins.str):
-        pulumi.set(self, "collaborator_alias", value)
-
-    @_builtins.property
-    @pulumi.getter(name="displayName")
-    def display_name(self) -> _builtins.str:
-        """
-        (string) - Generated display name for the collaborator. In the case of a single metastore clean room, it is the clean
-        room name. For x-metastore clean rooms, it is the organization name of the metastore. It is not restricted to
-        these values and could change in the future
-        """
-        return pulumi.get(self, "display_name")
-
-    @display_name.setter
-    def display_name(self, value: _builtins.str):
-        pulumi.set(self, "display_name", value)
-
-    @_builtins.property
-    @pulumi.getter(name="inviteRecipientWorkspaceId")
-    def invite_recipient_workspace_id(self) -> _builtins.int:
-        """
-        (integer) - Workspace ID of the user who is receiving the clean room "invitation". Must be specified if
-        invite_recipient_email is specified.
-        It should be empty when the collaborator is the creator of the clean room
-        """
-        return pulumi.get(self, "invite_recipient_workspace_id")
-
-    @invite_recipient_workspace_id.setter
-    def invite_recipient_workspace_id(self, value: _builtins.int):
-        pulumi.set(self, "invite_recipient_workspace_id", value)
-
-    @_builtins.property
-    @pulumi.getter(name="organizationName")
-    def organization_name(self) -> _builtins.str:
-        """
-        (string) - Organization name
-        configured in the metastore
-        """
-        return pulumi.get(self, "organization_name")
-
-    @organization_name.setter
-    def organization_name(self, value: _builtins.str):
-        pulumi.set(self, "organization_name", value)
-
-    @_builtins.property
-    @pulumi.getter(name="globalMetastoreId")
-    def global_metastore_id(self) -> Optional[_builtins.str]:
-        """
-        (string) - The global Unity Catalog metastore ID of the collaborator. The identifier is of format cloud:region:metastore-uuid
-        """
-        return pulumi.get(self, "global_metastore_id")
-
-    @global_metastore_id.setter
-    def global_metastore_id(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "global_metastore_id", value)
-
-    @_builtins.property
-    @pulumi.getter(name="inviteRecipientEmail")
-    def invite_recipient_email(self) -> Optional[_builtins.str]:
-        """
-        (string) - Email of the user who is receiving the clean room "invitation". It should be empty
-        for the creator of the clean room, and non-empty for the invitees of the clean room.
-        It is only returned in the output when clean room creator calls GET
-        """
-        return pulumi.get(self, "invite_recipient_email")
-
-    @invite_recipient_email.setter
-    def invite_recipient_email(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "invite_recipient_email", value)
-
-
-if not MYPY:
-    class GetCleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfileArgsDict(TypedDict):
-        compliance_standards: NotRequired[Sequence[_builtins.str]]
-        """
-        (list of ComplianceStandard) - The list of compliance standards that the compliance security profile is configured to enforce
-        """
-        is_enabled: NotRequired[_builtins.bool]
-        """
-        (boolean) - Whether the compliance security profile is enabled
-        """
-elif False:
-    GetCleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfileArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetCleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfileArgs:
-    def __init__(__self__, *,
-                 compliance_standards: Optional[Sequence[_builtins.str]] = None,
-                 is_enabled: Optional[_builtins.bool] = None):
-        """
-        :param Sequence[_builtins.str] compliance_standards: (list of ComplianceStandard) - The list of compliance standards that the compliance security profile is configured to enforce
-        :param _builtins.bool is_enabled: (boolean) - Whether the compliance security profile is enabled
-        """
-        if compliance_standards is not None:
-            pulumi.set(__self__, "compliance_standards", compliance_standards)
-        if is_enabled is not None:
-            pulumi.set(__self__, "is_enabled", is_enabled)
-
-    @_builtins.property
-    @pulumi.getter(name="complianceStandards")
-    def compliance_standards(self) -> Optional[Sequence[_builtins.str]]:
-        """
-        (list of ComplianceStandard) - The list of compliance standards that the compliance security profile is configured to enforce
-        """
-        return pulumi.get(self, "compliance_standards")
-
-    @compliance_standards.setter
-    def compliance_standards(self, value: Optional[Sequence[_builtins.str]]):
-        pulumi.set(self, "compliance_standards", value)
-
-    @_builtins.property
-    @pulumi.getter(name="isEnabled")
-    def is_enabled(self) -> Optional[_builtins.bool]:
-        """
-        (boolean) - Whether the compliance security profile is enabled
-        """
-        return pulumi.get(self, "is_enabled")
-
-    @is_enabled.setter
-    def is_enabled(self, value: Optional[_builtins.bool]):
-        pulumi.set(self, "is_enabled", value)
-
-
-if not MYPY:
-    class GetCleanRoomsCleanRoomRemoteDetailedInfoCreatorArgsDict(TypedDict):
-        collaborator_alias: _builtins.str
-        """
-        (string) - Collaborator alias specified by the clean room creator. It is unique across all collaborators of this clean room, and used to derive
-        multiple values internally such as catalog alias and clean room name for single metastore clean rooms.
-        It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements)
-        """
-        display_name: _builtins.str
-        """
-        (string) - Generated display name for the collaborator. In the case of a single metastore clean room, it is the clean
-        room name. For x-metastore clean rooms, it is the organization name of the metastore. It is not restricted to
-        these values and could change in the future
-        """
-        invite_recipient_workspace_id: _builtins.int
-        """
-        (integer) - Workspace ID of the user who is receiving the clean room "invitation". Must be specified if
-        invite_recipient_email is specified.
-        It should be empty when the collaborator is the creator of the clean room
-        """
-        organization_name: _builtins.str
-        """
-        (string) - Organization name
-        configured in the metastore
-        """
-        global_metastore_id: NotRequired[_builtins.str]
-        """
-        (string) - The global Unity Catalog metastore ID of the collaborator. The identifier is of format cloud:region:metastore-uuid
-        """
-        invite_recipient_email: NotRequired[_builtins.str]
-        """
-        (string) - Email of the user who is receiving the clean room "invitation". It should be empty
-        for the creator of the clean room, and non-empty for the invitees of the clean room.
-        It is only returned in the output when clean room creator calls GET
-        """
-elif False:
-    GetCleanRoomsCleanRoomRemoteDetailedInfoCreatorArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetCleanRoomsCleanRoomRemoteDetailedInfoCreatorArgs:
-    def __init__(__self__, *,
-                 collaborator_alias: _builtins.str,
-                 display_name: _builtins.str,
-                 invite_recipient_workspace_id: _builtins.int,
-                 organization_name: _builtins.str,
-                 global_metastore_id: Optional[_builtins.str] = None,
-                 invite_recipient_email: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str collaborator_alias: (string) - Collaborator alias specified by the clean room creator. It is unique across all collaborators of this clean room, and used to derive
-               multiple values internally such as catalog alias and clean room name for single metastore clean rooms.
-               It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements)
-        :param _builtins.str display_name: (string) - Generated display name for the collaborator. In the case of a single metastore clean room, it is the clean
-               room name. For x-metastore clean rooms, it is the organization name of the metastore. It is not restricted to
-               these values and could change in the future
-        :param _builtins.int invite_recipient_workspace_id: (integer) - Workspace ID of the user who is receiving the clean room "invitation". Must be specified if
-               invite_recipient_email is specified.
-               It should be empty when the collaborator is the creator of the clean room
-        :param _builtins.str organization_name: (string) - Organization name
-               configured in the metastore
-        :param _builtins.str global_metastore_id: (string) - The global Unity Catalog metastore ID of the collaborator. The identifier is of format cloud:region:metastore-uuid
-        :param _builtins.str invite_recipient_email: (string) - Email of the user who is receiving the clean room "invitation". It should be empty
-               for the creator of the clean room, and non-empty for the invitees of the clean room.
-               It is only returned in the output when clean room creator calls GET
-        """
-        pulumi.set(__self__, "collaborator_alias", collaborator_alias)
-        pulumi.set(__self__, "display_name", display_name)
-        pulumi.set(__self__, "invite_recipient_workspace_id", invite_recipient_workspace_id)
-        pulumi.set(__self__, "organization_name", organization_name)
-        if global_metastore_id is not None:
-            pulumi.set(__self__, "global_metastore_id", global_metastore_id)
-        if invite_recipient_email is not None:
-            pulumi.set(__self__, "invite_recipient_email", invite_recipient_email)
-
-    @_builtins.property
-    @pulumi.getter(name="collaboratorAlias")
-    def collaborator_alias(self) -> _builtins.str:
-        """
-        (string) - Collaborator alias specified by the clean room creator. It is unique across all collaborators of this clean room, and used to derive
-        multiple values internally such as catalog alias and clean room name for single metastore clean rooms.
-        It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements)
-        """
-        return pulumi.get(self, "collaborator_alias")
-
-    @collaborator_alias.setter
-    def collaborator_alias(self, value: _builtins.str):
-        pulumi.set(self, "collaborator_alias", value)
-
-    @_builtins.property
-    @pulumi.getter(name="displayName")
-    def display_name(self) -> _builtins.str:
-        """
-        (string) - Generated display name for the collaborator. In the case of a single metastore clean room, it is the clean
-        room name. For x-metastore clean rooms, it is the organization name of the metastore. It is not restricted to
-        these values and could change in the future
-        """
-        return pulumi.get(self, "display_name")
-
-    @display_name.setter
-    def display_name(self, value: _builtins.str):
-        pulumi.set(self, "display_name", value)
-
-    @_builtins.property
-    @pulumi.getter(name="inviteRecipientWorkspaceId")
-    def invite_recipient_workspace_id(self) -> _builtins.int:
-        """
-        (integer) - Workspace ID of the user who is receiving the clean room "invitation". Must be specified if
-        invite_recipient_email is specified.
-        It should be empty when the collaborator is the creator of the clean room
-        """
-        return pulumi.get(self, "invite_recipient_workspace_id")
-
-    @invite_recipient_workspace_id.setter
-    def invite_recipient_workspace_id(self, value: _builtins.int):
-        pulumi.set(self, "invite_recipient_workspace_id", value)
-
-    @_builtins.property
-    @pulumi.getter(name="organizationName")
-    def organization_name(self) -> _builtins.str:
-        """
-        (string) - Organization name
-        configured in the metastore
-        """
-        return pulumi.get(self, "organization_name")
-
-    @organization_name.setter
-    def organization_name(self, value: _builtins.str):
-        pulumi.set(self, "organization_name", value)
-
-    @_builtins.property
-    @pulumi.getter(name="globalMetastoreId")
-    def global_metastore_id(self) -> Optional[_builtins.str]:
-        """
-        (string) - The global Unity Catalog metastore ID of the collaborator. The identifier is of format cloud:region:metastore-uuid
-        """
-        return pulumi.get(self, "global_metastore_id")
-
-    @global_metastore_id.setter
-    def global_metastore_id(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "global_metastore_id", value)
-
-    @_builtins.property
-    @pulumi.getter(name="inviteRecipientEmail")
-    def invite_recipient_email(self) -> Optional[_builtins.str]:
-        """
-        (string) - Email of the user who is receiving the clean room "invitation". It should be empty
-        for the creator of the clean room, and non-empty for the invitees of the clean room.
-        It is only returned in the output when clean room creator calls GET
-        """
-        return pulumi.get(self, "invite_recipient_email")
-
-    @invite_recipient_email.setter
-    def invite_recipient_email(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "invite_recipient_email", value)
-
-
-if not MYPY:
-    class GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyArgsDict(TypedDict):
-        internet_access: NotRequired['GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessArgsDict']
-        """
-        (EgressNetworkPolicyInternetAccessPolicy) - The access policy enforced for egress traffic to the internet
-        """
-elif False:
-    GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyArgs:
-    def __init__(__self__, *,
-                 internet_access: Optional['GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessArgs'] = None):
-        """
-        :param 'GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessArgs' internet_access: (EgressNetworkPolicyInternetAccessPolicy) - The access policy enforced for egress traffic to the internet
-        """
-        if internet_access is not None:
-            pulumi.set(__self__, "internet_access", internet_access)
-
-    @_builtins.property
-    @pulumi.getter(name="internetAccess")
-    def internet_access(self) -> Optional['GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessArgs']:
-        """
-        (EgressNetworkPolicyInternetAccessPolicy) - The access policy enforced for egress traffic to the internet
-        """
-        return pulumi.get(self, "internet_access")
-
-    @internet_access.setter
-    def internet_access(self, value: Optional['GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessArgs']):
-        pulumi.set(self, "internet_access", value)
-
-
-if not MYPY:
-    class GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessArgsDict(TypedDict):
-        allowed_internet_destinations: NotRequired[Sequence['GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedInternetDestinationArgsDict']]
-        """
-        (list of EgressNetworkPolicyInternetAccessPolicyInternetDestination)
-        """
-        allowed_storage_destinations: NotRequired[Sequence['GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedStorageDestinationArgsDict']]
-        """
-        (list of EgressNetworkPolicyInternetAccessPolicyStorageDestination)
-        """
-        log_only_mode: NotRequired['GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyModeArgsDict']
-        """
-        (EgressNetworkPolicyInternetAccessPolicyLogOnlyMode) - Optional. If not specified, assume the policy is enforced for all workloads
-        """
-        restriction_mode: NotRequired[_builtins.str]
-        """
-        (string) - . Possible values are: `FULL_ACCESS`, `PRIVATE_ACCESS_ONLY`, `RESTRICTED_ACCESS`
-        """
-elif False:
-    GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessArgs:
-    def __init__(__self__, *,
-                 allowed_internet_destinations: Optional[Sequence['GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedInternetDestinationArgs']] = None,
-                 allowed_storage_destinations: Optional[Sequence['GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedStorageDestinationArgs']] = None,
-                 log_only_mode: Optional['GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyModeArgs'] = None,
-                 restriction_mode: Optional[_builtins.str] = None):
-        """
-        :param Sequence['GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedInternetDestinationArgs'] allowed_internet_destinations: (list of EgressNetworkPolicyInternetAccessPolicyInternetDestination)
-        :param Sequence['GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedStorageDestinationArgs'] allowed_storage_destinations: (list of EgressNetworkPolicyInternetAccessPolicyStorageDestination)
-        :param 'GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyModeArgs' log_only_mode: (EgressNetworkPolicyInternetAccessPolicyLogOnlyMode) - Optional. If not specified, assume the policy is enforced for all workloads
-        :param _builtins.str restriction_mode: (string) - . Possible values are: `FULL_ACCESS`, `PRIVATE_ACCESS_ONLY`, `RESTRICTED_ACCESS`
-        """
-        if allowed_internet_destinations is not None:
-            pulumi.set(__self__, "allowed_internet_destinations", allowed_internet_destinations)
-        if allowed_storage_destinations is not None:
-            pulumi.set(__self__, "allowed_storage_destinations", allowed_storage_destinations)
-        if log_only_mode is not None:
-            pulumi.set(__self__, "log_only_mode", log_only_mode)
-        if restriction_mode is not None:
-            pulumi.set(__self__, "restriction_mode", restriction_mode)
-
-    @_builtins.property
-    @pulumi.getter(name="allowedInternetDestinations")
-    def allowed_internet_destinations(self) -> Optional[Sequence['GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedInternetDestinationArgs']]:
-        """
-        (list of EgressNetworkPolicyInternetAccessPolicyInternetDestination)
-        """
-        return pulumi.get(self, "allowed_internet_destinations")
-
-    @allowed_internet_destinations.setter
-    def allowed_internet_destinations(self, value: Optional[Sequence['GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedInternetDestinationArgs']]):
-        pulumi.set(self, "allowed_internet_destinations", value)
-
-    @_builtins.property
-    @pulumi.getter(name="allowedStorageDestinations")
-    def allowed_storage_destinations(self) -> Optional[Sequence['GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedStorageDestinationArgs']]:
-        """
-        (list of EgressNetworkPolicyInternetAccessPolicyStorageDestination)
-        """
-        return pulumi.get(self, "allowed_storage_destinations")
-
-    @allowed_storage_destinations.setter
-    def allowed_storage_destinations(self, value: Optional[Sequence['GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedStorageDestinationArgs']]):
-        pulumi.set(self, "allowed_storage_destinations", value)
-
-    @_builtins.property
-    @pulumi.getter(name="logOnlyMode")
-    def log_only_mode(self) -> Optional['GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyModeArgs']:
-        """
-        (EgressNetworkPolicyInternetAccessPolicyLogOnlyMode) - Optional. If not specified, assume the policy is enforced for all workloads
-        """
-        return pulumi.get(self, "log_only_mode")
-
-    @log_only_mode.setter
-    def log_only_mode(self, value: Optional['GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyModeArgs']):
-        pulumi.set(self, "log_only_mode", value)
-
-    @_builtins.property
-    @pulumi.getter(name="restrictionMode")
-    def restriction_mode(self) -> Optional[_builtins.str]:
-        """
-        (string) - . Possible values are: `FULL_ACCESS`, `PRIVATE_ACCESS_ONLY`, `RESTRICTED_ACCESS`
-        """
-        return pulumi.get(self, "restriction_mode")
-
-    @restriction_mode.setter
-    def restriction_mode(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "restriction_mode", value)
-
-
-if not MYPY:
-    class GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedInternetDestinationArgsDict(TypedDict):
-        destination: NotRequired[_builtins.str]
-        """
-        (string)
-        """
-        protocol: NotRequired[_builtins.str]
-        """
-        (string) - . Possible values are: `TCP`
-        """
-        type: NotRequired[_builtins.str]
-        """
-        (string) - . Possible values are: `AWS_S3`, `AZURE_STORAGE`, `CLOUDFLARE_R2`, `GOOGLE_CLOUD_STORAGE`
-        """
-elif False:
-    GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedInternetDestinationArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedInternetDestinationArgs:
-    def __init__(__self__, *,
-                 destination: Optional[_builtins.str] = None,
-                 protocol: Optional[_builtins.str] = None,
-                 type: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str destination: (string)
-        :param _builtins.str protocol: (string) - . Possible values are: `TCP`
-        :param _builtins.str type: (string) - . Possible values are: `AWS_S3`, `AZURE_STORAGE`, `CLOUDFLARE_R2`, `GOOGLE_CLOUD_STORAGE`
-        """
-        if destination is not None:
-            pulumi.set(__self__, "destination", destination)
-        if protocol is not None:
-            pulumi.set(__self__, "protocol", protocol)
-        if type is not None:
-            pulumi.set(__self__, "type", type)
-
-    @_builtins.property
-    @pulumi.getter
-    def destination(self) -> Optional[_builtins.str]:
-        """
-        (string)
-        """
-        return pulumi.get(self, "destination")
-
-    @destination.setter
-    def destination(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "destination", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def protocol(self) -> Optional[_builtins.str]:
-        """
-        (string) - . Possible values are: `TCP`
-        """
-        return pulumi.get(self, "protocol")
-
-    @protocol.setter
-    def protocol(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "protocol", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def type(self) -> Optional[_builtins.str]:
-        """
-        (string) - . Possible values are: `AWS_S3`, `AZURE_STORAGE`, `CLOUDFLARE_R2`, `GOOGLE_CLOUD_STORAGE`
-        """
-        return pulumi.get(self, "type")
-
-    @type.setter
-    def type(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "type", value)
-
-
-if not MYPY:
-    class GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedStorageDestinationArgsDict(TypedDict):
-        allowed_paths: NotRequired[Sequence[_builtins.str]]
-        """
-        (list of string)
-        """
-        azure_container: NotRequired[_builtins.str]
-        """
-        (string)
-        """
-        azure_dns_zone: NotRequired[_builtins.str]
-        """
-        (string)
-        """
-        azure_storage_account: NotRequired[_builtins.str]
-        """
-        (string)
-        """
-        azure_storage_service: NotRequired[_builtins.str]
-        """
-        (string)
-        """
-        bucket_name: NotRequired[_builtins.str]
-        """
-        (string)
-        """
-        region: NotRequired[_builtins.str]
-        """
-        (string)
-        """
-        type: NotRequired[_builtins.str]
-        """
-        (string) - . Possible values are: `AWS_S3`, `AZURE_STORAGE`, `CLOUDFLARE_R2`, `GOOGLE_CLOUD_STORAGE`
-        """
-elif False:
-    GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedStorageDestinationArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedStorageDestinationArgs:
-    def __init__(__self__, *,
-                 allowed_paths: Optional[Sequence[_builtins.str]] = None,
-                 azure_container: Optional[_builtins.str] = None,
-                 azure_dns_zone: Optional[_builtins.str] = None,
-                 azure_storage_account: Optional[_builtins.str] = None,
-                 azure_storage_service: Optional[_builtins.str] = None,
-                 bucket_name: Optional[_builtins.str] = None,
-                 region: Optional[_builtins.str] = None,
-                 type: Optional[_builtins.str] = None):
-        """
-        :param Sequence[_builtins.str] allowed_paths: (list of string)
-        :param _builtins.str azure_container: (string)
-        :param _builtins.str azure_dns_zone: (string)
-        :param _builtins.str azure_storage_account: (string)
-        :param _builtins.str azure_storage_service: (string)
-        :param _builtins.str bucket_name: (string)
-        :param _builtins.str region: (string)
-        :param _builtins.str type: (string) - . Possible values are: `AWS_S3`, `AZURE_STORAGE`, `CLOUDFLARE_R2`, `GOOGLE_CLOUD_STORAGE`
-        """
-        if allowed_paths is not None:
-            pulumi.set(__self__, "allowed_paths", allowed_paths)
-        if azure_container is not None:
-            pulumi.set(__self__, "azure_container", azure_container)
-        if azure_dns_zone is not None:
-            pulumi.set(__self__, "azure_dns_zone", azure_dns_zone)
-        if azure_storage_account is not None:
-            pulumi.set(__self__, "azure_storage_account", azure_storage_account)
-        if azure_storage_service is not None:
-            pulumi.set(__self__, "azure_storage_service", azure_storage_service)
-        if bucket_name is not None:
-            pulumi.set(__self__, "bucket_name", bucket_name)
-        if region is not None:
-            pulumi.set(__self__, "region", region)
-        if type is not None:
-            pulumi.set(__self__, "type", type)
-
-    @_builtins.property
-    @pulumi.getter(name="allowedPaths")
-    def allowed_paths(self) -> Optional[Sequence[_builtins.str]]:
-        """
-        (list of string)
-        """
-        return pulumi.get(self, "allowed_paths")
-
-    @allowed_paths.setter
-    def allowed_paths(self, value: Optional[Sequence[_builtins.str]]):
-        pulumi.set(self, "allowed_paths", value)
-
-    @_builtins.property
-    @pulumi.getter(name="azureContainer")
-    def azure_container(self) -> Optional[_builtins.str]:
-        """
-        (string)
-        """
-        return pulumi.get(self, "azure_container")
-
-    @azure_container.setter
-    def azure_container(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "azure_container", value)
-
-    @_builtins.property
-    @pulumi.getter(name="azureDnsZone")
-    def azure_dns_zone(self) -> Optional[_builtins.str]:
-        """
-        (string)
-        """
-        return pulumi.get(self, "azure_dns_zone")
-
-    @azure_dns_zone.setter
-    def azure_dns_zone(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "azure_dns_zone", value)
-
-    @_builtins.property
-    @pulumi.getter(name="azureStorageAccount")
-    def azure_storage_account(self) -> Optional[_builtins.str]:
-        """
-        (string)
-        """
-        return pulumi.get(self, "azure_storage_account")
-
-    @azure_storage_account.setter
-    def azure_storage_account(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "azure_storage_account", value)
-
-    @_builtins.property
-    @pulumi.getter(name="azureStorageService")
-    def azure_storage_service(self) -> Optional[_builtins.str]:
-        """
-        (string)
-        """
-        return pulumi.get(self, "azure_storage_service")
-
-    @azure_storage_service.setter
-    def azure_storage_service(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "azure_storage_service", value)
-
-    @_builtins.property
-    @pulumi.getter(name="bucketName")
-    def bucket_name(self) -> Optional[_builtins.str]:
-        """
-        (string)
-        """
-        return pulumi.get(self, "bucket_name")
-
-    @bucket_name.setter
-    def bucket_name(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "bucket_name", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def region(self) -> Optional[_builtins.str]:
-        """
-        (string)
-        """
-        return pulumi.get(self, "region")
-
-    @region.setter
-    def region(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "region", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def type(self) -> Optional[_builtins.str]:
-        """
-        (string) - . Possible values are: `AWS_S3`, `AZURE_STORAGE`, `CLOUDFLARE_R2`, `GOOGLE_CLOUD_STORAGE`
-        """
-        return pulumi.get(self, "type")
-
-    @type.setter
-    def type(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "type", value)
-
-
-if not MYPY:
-    class GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyModeArgsDict(TypedDict):
-        log_only_mode_type: NotRequired[_builtins.str]
-        """
-        (string) - . Possible values are: `ALL_SERVICES`, `SELECTED_SERVICES`
-        """
-        workloads: NotRequired[Sequence[_builtins.str]]
-        """
-        (list of string)
-        """
-elif False:
-    GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyModeArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyModeArgs:
-    def __init__(__self__, *,
-                 log_only_mode_type: Optional[_builtins.str] = None,
-                 workloads: Optional[Sequence[_builtins.str]] = None):
-        """
-        :param _builtins.str log_only_mode_type: (string) - . Possible values are: `ALL_SERVICES`, `SELECTED_SERVICES`
-        :param Sequence[_builtins.str] workloads: (list of string)
-        """
-        if log_only_mode_type is not None:
-            pulumi.set(__self__, "log_only_mode_type", log_only_mode_type)
-        if workloads is not None:
-            pulumi.set(__self__, "workloads", workloads)
-
-    @_builtins.property
-    @pulumi.getter(name="logOnlyModeType")
-    def log_only_mode_type(self) -> Optional[_builtins.str]:
-        """
-        (string) - . Possible values are: `ALL_SERVICES`, `SELECTED_SERVICES`
-        """
-        return pulumi.get(self, "log_only_mode_type")
-
-    @log_only_mode_type.setter
-    def log_only_mode_type(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "log_only_mode_type", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def workloads(self) -> Optional[Sequence[_builtins.str]]:
-        """
-        (list of string)
-        """
-        return pulumi.get(self, "workloads")
-
-    @workloads.setter
-    def workloads(self, value: Optional[Sequence[_builtins.str]]):
-        pulumi.set(self, "workloads", value)
+    @workspace_id.setter
+    def workspace_id(self, value: _builtins.str):
+        pulumi.set(self, "workspace_id", value)
 
 
 if not MYPY:
@@ -59641,6 +53451,10 @@ if not MYPY:
         """
         Identifier of Cluster Policy to validate cluster and preset certain defaults.
         """
+        provider_config: NotRequired['GetClusterClusterInfoSpecProviderConfigArgsDict']
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
         remote_disk_throughput: NotRequired[_builtins.int]
         runtime_engine: NotRequired[_builtins.str]
         """
@@ -59700,6 +53514,7 @@ class GetClusterClusterInfoSpecArgs:
                  libraries: Optional[Sequence['GetClusterClusterInfoSpecLibraryArgs']] = None,
                  num_workers: Optional[_builtins.int] = None,
                  policy_id: Optional[_builtins.str] = None,
+                 provider_config: Optional['GetClusterClusterInfoSpecProviderConfigArgs'] = None,
                  remote_disk_throughput: Optional[_builtins.int] = None,
                  runtime_engine: Optional[_builtins.str] = None,
                  single_user_name: Optional[_builtins.str] = None,
@@ -59723,6 +53538,7 @@ class GetClusterClusterInfoSpecArgs:
         :param _builtins.str idempotency_token: An optional token to guarantee the idempotency of cluster creation requests.
         :param _builtins.str instance_pool_id: The pool of idle instances the cluster is attached to.
         :param _builtins.str policy_id: Identifier of Cluster Policy to validate cluster and preset certain defaults.
+        :param 'GetClusterClusterInfoSpecProviderConfigArgs' provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param _builtins.str runtime_engine: The type of runtime of the cluster
         :param _builtins.str single_user_name: The optional user name of the user to assign to an interactive cluster. This field is required when using standard AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
         :param Mapping[str, _builtins.str] spark_conf: Map with key-value pairs to fine-tune Spark clusters.
@@ -59774,6 +53590,8 @@ class GetClusterClusterInfoSpecArgs:
             pulumi.set(__self__, "num_workers", num_workers)
         if policy_id is not None:
             pulumi.set(__self__, "policy_id", policy_id)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if remote_disk_throughput is not None:
             pulumi.set(__self__, "remote_disk_throughput", remote_disk_throughput)
         if runtime_engine is not None:
@@ -60055,6 +53873,18 @@ class GetClusterClusterInfoSpecArgs:
     @policy_id.setter
     def policy_id(self, value: Optional[_builtins.str]):
         pulumi.set(self, "policy_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional['GetClusterClusterInfoSpecProviderConfigArgs']:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional['GetClusterClusterInfoSpecProviderConfigArgs']):
+        pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="remoteDiskThroughput")
@@ -61227,6 +55057,10 @@ if not MYPY:
         egg: NotRequired[_builtins.str]
         jar: NotRequired[_builtins.str]
         maven: NotRequired['GetClusterClusterInfoSpecLibraryMavenArgsDict']
+        provider_config: NotRequired['GetClusterClusterInfoSpecLibraryProviderConfigArgsDict']
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
         pypi: NotRequired['GetClusterClusterInfoSpecLibraryPypiArgsDict']
         requirements: NotRequired[_builtins.str]
         whl: NotRequired[_builtins.str]
@@ -61240,9 +55074,13 @@ class GetClusterClusterInfoSpecLibraryArgs:
                  egg: Optional[_builtins.str] = None,
                  jar: Optional[_builtins.str] = None,
                  maven: Optional['GetClusterClusterInfoSpecLibraryMavenArgs'] = None,
+                 provider_config: Optional['GetClusterClusterInfoSpecLibraryProviderConfigArgs'] = None,
                  pypi: Optional['GetClusterClusterInfoSpecLibraryPypiArgs'] = None,
                  requirements: Optional[_builtins.str] = None,
                  whl: Optional[_builtins.str] = None):
+        """
+        :param 'GetClusterClusterInfoSpecLibraryProviderConfigArgs' provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+        """
         if cran is not None:
             pulumi.set(__self__, "cran", cran)
         if egg is not None:
@@ -61254,6 +55092,8 @@ class GetClusterClusterInfoSpecLibraryArgs:
             pulumi.set(__self__, "jar", jar)
         if maven is not None:
             pulumi.set(__self__, "maven", maven)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if pypi is not None:
             pulumi.set(__self__, "pypi", pypi)
         if requirements is not None:
@@ -61297,6 +55137,18 @@ class GetClusterClusterInfoSpecLibraryArgs:
     @maven.setter
     def maven(self, value: Optional['GetClusterClusterInfoSpecLibraryMavenArgs']):
         pulumi.set(self, "maven", value)
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional['GetClusterClusterInfoSpecLibraryProviderConfigArgs']:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional['GetClusterClusterInfoSpecLibraryProviderConfigArgs']):
+        pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter
@@ -61410,6 +55262,37 @@ class GetClusterClusterInfoSpecLibraryMavenArgs:
 
 
 if not MYPY:
+    class GetClusterClusterInfoSpecLibraryProviderConfigArgsDict(TypedDict):
+        workspace_id: _builtins.str
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+elif False:
+    GetClusterClusterInfoSpecLibraryProviderConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetClusterClusterInfoSpecLibraryProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: _builtins.str):
+        """
+        :param _builtins.str workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.str:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: _builtins.str):
+        pulumi.set(self, "workspace_id", value)
+
+
+if not MYPY:
     class GetClusterClusterInfoSpecLibraryPypiArgsDict(TypedDict):
         package: _builtins.str
         repo: NotRequired[_builtins.str]
@@ -61442,6 +55325,37 @@ class GetClusterClusterInfoSpecLibraryPypiArgs:
     @repo.setter
     def repo(self, value: Optional[_builtins.str]):
         pulumi.set(self, "repo", value)
+
+
+if not MYPY:
+    class GetClusterClusterInfoSpecProviderConfigArgsDict(TypedDict):
+        workspace_id: _builtins.str
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+elif False:
+    GetClusterClusterInfoSpecProviderConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetClusterClusterInfoSpecProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: _builtins.str):
+        """
+        :param _builtins.str workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.str:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: _builtins.str):
+        pulumi.set(self, "workspace_id", value)
 
 
 if not MYPY:
@@ -61610,6 +55524,68 @@ class GetClusterClusterInfoWorkloadTypeClientsArgs:
 
 
 if not MYPY:
+    class GetClusterPolicyProviderConfigArgsDict(TypedDict):
+        workspace_id: _builtins.str
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+elif False:
+    GetClusterPolicyProviderConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetClusterPolicyProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: _builtins.str):
+        """
+        :param _builtins.str workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.str:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: _builtins.str):
+        pulumi.set(self, "workspace_id", value)
+
+
+if not MYPY:
+    class GetClusterProviderConfigArgsDict(TypedDict):
+        workspace_id: _builtins.str
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+elif False:
+    GetClusterProviderConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetClusterProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: _builtins.str):
+        """
+        :param _builtins.str workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.str:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: _builtins.str):
+        pulumi.set(self, "workspace_id", value)
+
+
+if not MYPY:
     class GetClustersFilterByArgsDict(TypedDict):
         cluster_sources: NotRequired[Sequence[_builtins.str]]
         """
@@ -61699,6 +55675,37 @@ class GetClustersFilterByArgs:
     @policy_id.setter
     def policy_id(self, value: Optional[_builtins.str]):
         pulumi.set(self, "policy_id", value)
+
+
+if not MYPY:
+    class GetClustersProviderConfigArgsDict(TypedDict):
+        workspace_id: _builtins.str
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+elif False:
+    GetClustersProviderConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetClustersProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: _builtins.str):
+        """
+        :param _builtins.str workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.str:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: _builtins.str):
+        pulumi.set(self, "workspace_id", value)
 
 
 if not MYPY:
@@ -62080,353 +56087,87 @@ class GetCurrentMetastoreMetastoreInfoArgs:
 
 
 if not MYPY:
-    class GetDatabaseInstanceParentInstanceRefArgsDict(TypedDict):
-        effective_lsn: _builtins.str
+    class GetCurrentMetastoreProviderConfigArgsDict(TypedDict):
+        workspace_id: _builtins.str
         """
-        (string) - xref AIP-129. `lsn` is owned by the client, while `effective_lsn` is owned by the server.
-        `lsn` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-        `effective_lsn` on the other hand will always bet set in all response messages (Create/Update/Get/List).
-        For a parent ref instance, this is the LSN on the parent instance from which the
-        instance was created.
-        For a child ref instance, this is the LSN on the instance from which the child instance
-        was created
-        """
-        uid: _builtins.str
-        """
-        (string) - Id of the ref database instance
-        """
-        branch_time: NotRequired[_builtins.str]
-        """
-        (string) - Branch time of the ref database instance.
-        For a parent ref instance, this is the point in time on the parent instance from which the
-        instance was created.
-        For a child ref instance, this is the point in time on the instance from which the child
-        instance was created.
-        Input: For specifying the point in time to create a child instance. Optional.
-        Output: Only populated if provided as input to create a child instance
-        """
-        lsn: NotRequired[_builtins.str]
-        """
-        (string) - User-specified WAL LSN of the ref database instance.
-        """
-        name: NotRequired[_builtins.str]
-        """
-        The name of the instance. This is the unique identifier for the instance
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
         """
 elif False:
-    GetDatabaseInstanceParentInstanceRefArgsDict: TypeAlias = Mapping[str, Any]
+    GetCurrentMetastoreProviderConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GetDatabaseInstanceParentInstanceRefArgs:
+class GetCurrentMetastoreProviderConfigArgs:
     def __init__(__self__, *,
-                 effective_lsn: _builtins.str,
-                 uid: _builtins.str,
-                 branch_time: Optional[_builtins.str] = None,
-                 lsn: Optional[_builtins.str] = None,
-                 name: Optional[_builtins.str] = None):
+                 workspace_id: _builtins.str):
         """
-        :param _builtins.str effective_lsn: (string) - xref AIP-129. `lsn` is owned by the client, while `effective_lsn` is owned by the server.
-               `lsn` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-               `effective_lsn` on the other hand will always bet set in all response messages (Create/Update/Get/List).
-               For a parent ref instance, this is the LSN on the parent instance from which the
-               instance was created.
-               For a child ref instance, this is the LSN on the instance from which the child instance
-               was created
-        :param _builtins.str uid: (string) - Id of the ref database instance
-        :param _builtins.str branch_time: (string) - Branch time of the ref database instance.
-               For a parent ref instance, this is the point in time on the parent instance from which the
-               instance was created.
-               For a child ref instance, this is the point in time on the instance from which the child
-               instance was created.
-               Input: For specifying the point in time to create a child instance. Optional.
-               Output: Only populated if provided as input to create a child instance
-        :param _builtins.str lsn: (string) - User-specified WAL LSN of the ref database instance.
-        :param _builtins.str name: The name of the instance. This is the unique identifier for the instance
+        :param _builtins.str workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
         """
-        pulumi.set(__self__, "effective_lsn", effective_lsn)
-        pulumi.set(__self__, "uid", uid)
-        if branch_time is not None:
-            pulumi.set(__self__, "branch_time", branch_time)
-        if lsn is not None:
-            pulumi.set(__self__, "lsn", lsn)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "workspace_id", workspace_id)
 
     @_builtins.property
-    @pulumi.getter(name="effectiveLsn")
-    def effective_lsn(self) -> _builtins.str:
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.str:
         """
-        (string) - xref AIP-129. `lsn` is owned by the client, while `effective_lsn` is owned by the server.
-        `lsn` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-        `effective_lsn` on the other hand will always bet set in all response messages (Create/Update/Get/List).
-        For a parent ref instance, this is the LSN on the parent instance from which the
-        instance was created.
-        For a child ref instance, this is the LSN on the instance from which the child instance
-        was created
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
         """
-        return pulumi.get(self, "effective_lsn")
+        return pulumi.get(self, "workspace_id")
 
-    @effective_lsn.setter
-    def effective_lsn(self, value: _builtins.str):
-        pulumi.set(self, "effective_lsn", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def uid(self) -> _builtins.str:
-        """
-        (string) - Id of the ref database instance
-        """
-        return pulumi.get(self, "uid")
-
-    @uid.setter
-    def uid(self, value: _builtins.str):
-        pulumi.set(self, "uid", value)
-
-    @_builtins.property
-    @pulumi.getter(name="branchTime")
-    def branch_time(self) -> Optional[_builtins.str]:
-        """
-        (string) - Branch time of the ref database instance.
-        For a parent ref instance, this is the point in time on the parent instance from which the
-        instance was created.
-        For a child ref instance, this is the point in time on the instance from which the child
-        instance was created.
-        Input: For specifying the point in time to create a child instance. Optional.
-        Output: Only populated if provided as input to create a child instance
-        """
-        return pulumi.get(self, "branch_time")
-
-    @branch_time.setter
-    def branch_time(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "branch_time", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def lsn(self) -> Optional[_builtins.str]:
-        """
-        (string) - User-specified WAL LSN of the ref database instance.
-        """
-        return pulumi.get(self, "lsn")
-
-    @lsn.setter
-    def lsn(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "lsn", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def name(self) -> Optional[_builtins.str]:
-        """
-        The name of the instance. This is the unique identifier for the instance
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "name", value)
+    @workspace_id.setter
+    def workspace_id(self, value: _builtins.str):
+        pulumi.set(self, "workspace_id", value)
 
 
 if not MYPY:
-    class GetDatabaseSyncedDatabaseTableSpecArgsDict(TypedDict):
-        create_database_objects_if_missing: _builtins.bool
-        """
-        (boolean) - If true, the synced table's logical database and schema resources in PG
-        will be created if they do not already exist
-        """
-        existing_pipeline_id: _builtins.str
-        """
-        (string) - At most one of existing_pipeline_id and new_pipeline_spec should be defined.
-        """
-        new_pipeline_spec: 'GetDatabaseSyncedDatabaseTableSpecNewPipelineSpecArgsDict'
-        """
-        (NewPipelineSpec) - At most one of existing_pipeline_id and new_pipeline_spec should be defined.
-        """
-        primary_key_columns: NotRequired[Sequence[_builtins.str]]
-        """
-        (list of string) - Primary Key columns to be used for data insert/update in the destination
-        """
-        scheduling_policy: NotRequired[_builtins.str]
-        """
-        (string) - Scheduling policy of the underlying pipeline. Possible values are: `CONTINUOUS`, `SNAPSHOT`, `TRIGGERED`
-        """
-        source_table_full_name: NotRequired[_builtins.str]
-        """
-        (string) - Three-part (catalog, schema, table) name of the source Delta table
-        """
-        timeseries_key: NotRequired[_builtins.str]
-        """
-        (string) - Time series key to deduplicate (tie-break) rows with the same primary key
-        """
+    class GetDashboardsProviderConfigArgsDict(TypedDict):
+        workspace_id: _builtins.str
 elif False:
-    GetDatabaseSyncedDatabaseTableSpecArgsDict: TypeAlias = Mapping[str, Any]
+    GetDashboardsProviderConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GetDatabaseSyncedDatabaseTableSpecArgs:
+class GetDashboardsProviderConfigArgs:
     def __init__(__self__, *,
-                 create_database_objects_if_missing: _builtins.bool,
-                 existing_pipeline_id: _builtins.str,
-                 new_pipeline_spec: 'GetDatabaseSyncedDatabaseTableSpecNewPipelineSpecArgs',
-                 primary_key_columns: Optional[Sequence[_builtins.str]] = None,
-                 scheduling_policy: Optional[_builtins.str] = None,
-                 source_table_full_name: Optional[_builtins.str] = None,
-                 timeseries_key: Optional[_builtins.str] = None):
-        """
-        :param _builtins.bool create_database_objects_if_missing: (boolean) - If true, the synced table's logical database and schema resources in PG
-               will be created if they do not already exist
-        :param _builtins.str existing_pipeline_id: (string) - At most one of existing_pipeline_id and new_pipeline_spec should be defined.
-        :param 'GetDatabaseSyncedDatabaseTableSpecNewPipelineSpecArgs' new_pipeline_spec: (NewPipelineSpec) - At most one of existing_pipeline_id and new_pipeline_spec should be defined.
-        :param Sequence[_builtins.str] primary_key_columns: (list of string) - Primary Key columns to be used for data insert/update in the destination
-        :param _builtins.str scheduling_policy: (string) - Scheduling policy of the underlying pipeline. Possible values are: `CONTINUOUS`, `SNAPSHOT`, `TRIGGERED`
-        :param _builtins.str source_table_full_name: (string) - Three-part (catalog, schema, table) name of the source Delta table
-        :param _builtins.str timeseries_key: (string) - Time series key to deduplicate (tie-break) rows with the same primary key
-        """
-        pulumi.set(__self__, "create_database_objects_if_missing", create_database_objects_if_missing)
-        pulumi.set(__self__, "existing_pipeline_id", existing_pipeline_id)
-        pulumi.set(__self__, "new_pipeline_spec", new_pipeline_spec)
-        if primary_key_columns is not None:
-            pulumi.set(__self__, "primary_key_columns", primary_key_columns)
-        if scheduling_policy is not None:
-            pulumi.set(__self__, "scheduling_policy", scheduling_policy)
-        if source_table_full_name is not None:
-            pulumi.set(__self__, "source_table_full_name", source_table_full_name)
-        if timeseries_key is not None:
-            pulumi.set(__self__, "timeseries_key", timeseries_key)
+                 workspace_id: _builtins.str):
+        pulumi.set(__self__, "workspace_id", workspace_id)
 
     @_builtins.property
-    @pulumi.getter(name="createDatabaseObjectsIfMissing")
-    def create_database_objects_if_missing(self) -> _builtins.bool:
-        """
-        (boolean) - If true, the synced table's logical database and schema resources in PG
-        will be created if they do not already exist
-        """
-        return pulumi.get(self, "create_database_objects_if_missing")
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.str:
+        return pulumi.get(self, "workspace_id")
 
-    @create_database_objects_if_missing.setter
-    def create_database_objects_if_missing(self, value: _builtins.bool):
-        pulumi.set(self, "create_database_objects_if_missing", value)
-
-    @_builtins.property
-    @pulumi.getter(name="existingPipelineId")
-    def existing_pipeline_id(self) -> _builtins.str:
-        """
-        (string) - At most one of existing_pipeline_id and new_pipeline_spec should be defined.
-        """
-        return pulumi.get(self, "existing_pipeline_id")
-
-    @existing_pipeline_id.setter
-    def existing_pipeline_id(self, value: _builtins.str):
-        pulumi.set(self, "existing_pipeline_id", value)
-
-    @_builtins.property
-    @pulumi.getter(name="newPipelineSpec")
-    def new_pipeline_spec(self) -> 'GetDatabaseSyncedDatabaseTableSpecNewPipelineSpecArgs':
-        """
-        (NewPipelineSpec) - At most one of existing_pipeline_id and new_pipeline_spec should be defined.
-        """
-        return pulumi.get(self, "new_pipeline_spec")
-
-    @new_pipeline_spec.setter
-    def new_pipeline_spec(self, value: 'GetDatabaseSyncedDatabaseTableSpecNewPipelineSpecArgs'):
-        pulumi.set(self, "new_pipeline_spec", value)
-
-    @_builtins.property
-    @pulumi.getter(name="primaryKeyColumns")
-    def primary_key_columns(self) -> Optional[Sequence[_builtins.str]]:
-        """
-        (list of string) - Primary Key columns to be used for data insert/update in the destination
-        """
-        return pulumi.get(self, "primary_key_columns")
-
-    @primary_key_columns.setter
-    def primary_key_columns(self, value: Optional[Sequence[_builtins.str]]):
-        pulumi.set(self, "primary_key_columns", value)
-
-    @_builtins.property
-    @pulumi.getter(name="schedulingPolicy")
-    def scheduling_policy(self) -> Optional[_builtins.str]:
-        """
-        (string) - Scheduling policy of the underlying pipeline. Possible values are: `CONTINUOUS`, `SNAPSHOT`, `TRIGGERED`
-        """
-        return pulumi.get(self, "scheduling_policy")
-
-    @scheduling_policy.setter
-    def scheduling_policy(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "scheduling_policy", value)
-
-    @_builtins.property
-    @pulumi.getter(name="sourceTableFullName")
-    def source_table_full_name(self) -> Optional[_builtins.str]:
-        """
-        (string) - Three-part (catalog, schema, table) name of the source Delta table
-        """
-        return pulumi.get(self, "source_table_full_name")
-
-    @source_table_full_name.setter
-    def source_table_full_name(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "source_table_full_name", value)
-
-    @_builtins.property
-    @pulumi.getter(name="timeseriesKey")
-    def timeseries_key(self) -> Optional[_builtins.str]:
-        """
-        (string) - Time series key to deduplicate (tie-break) rows with the same primary key
-        """
-        return pulumi.get(self, "timeseries_key")
-
-    @timeseries_key.setter
-    def timeseries_key(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "timeseries_key", value)
+    @workspace_id.setter
+    def workspace_id(self, value: _builtins.str):
+        pulumi.set(self, "workspace_id", value)
 
 
 if not MYPY:
-    class GetDatabaseSyncedDatabaseTableSpecNewPipelineSpecArgsDict(TypedDict):
-        storage_catalog: NotRequired[_builtins.str]
+    class GetDirectoryProviderConfigArgsDict(TypedDict):
+        workspace_id: _builtins.str
         """
-        (string) - This field needs to be specified if the destination catalog is a managed postgres catalog.
-        """
-        storage_schema: NotRequired[_builtins.str]
-        """
-        (string) - This field needs to be specified if the destination catalog is a managed postgres catalog.
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
         """
 elif False:
-    GetDatabaseSyncedDatabaseTableSpecNewPipelineSpecArgsDict: TypeAlias = Mapping[str, Any]
+    GetDirectoryProviderConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GetDatabaseSyncedDatabaseTableSpecNewPipelineSpecArgs:
+class GetDirectoryProviderConfigArgs:
     def __init__(__self__, *,
-                 storage_catalog: Optional[_builtins.str] = None,
-                 storage_schema: Optional[_builtins.str] = None):
+                 workspace_id: _builtins.str):
         """
-        :param _builtins.str storage_catalog: (string) - This field needs to be specified if the destination catalog is a managed postgres catalog.
-        :param _builtins.str storage_schema: (string) - This field needs to be specified if the destination catalog is a managed postgres catalog.
+        :param _builtins.str workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
         """
-        if storage_catalog is not None:
-            pulumi.set(__self__, "storage_catalog", storage_catalog)
-        if storage_schema is not None:
-            pulumi.set(__self__, "storage_schema", storage_schema)
+        pulumi.set(__self__, "workspace_id", workspace_id)
 
     @_builtins.property
-    @pulumi.getter(name="storageCatalog")
-    def storage_catalog(self) -> Optional[_builtins.str]:
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.str:
         """
-        (string) - This field needs to be specified if the destination catalog is a managed postgres catalog.
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
         """
-        return pulumi.get(self, "storage_catalog")
+        return pulumi.get(self, "workspace_id")
 
-    @storage_catalog.setter
-    def storage_catalog(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "storage_catalog", value)
-
-    @_builtins.property
-    @pulumi.getter(name="storageSchema")
-    def storage_schema(self) -> Optional[_builtins.str]:
-        """
-        (string) - This field needs to be specified if the destination catalog is a managed postgres catalog.
-        """
-        return pulumi.get(self, "storage_schema")
-
-    @storage_schema.setter
-    def storage_schema(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "storage_schema", value)
+    @workspace_id.setter
+    def workspace_id(self, value: _builtins.str):
+        pulumi.set(self, "workspace_id", value)
 
 
 if not MYPY:
@@ -63204,6 +56945,68 @@ class GetExternalLocationExternalLocationInfoFileEventQueueProvidedSqsArgs:
     @queue_url.setter
     def queue_url(self, value: Optional[_builtins.str]):
         pulumi.set(self, "queue_url", value)
+
+
+if not MYPY:
+    class GetExternalLocationProviderConfigArgsDict(TypedDict):
+        workspace_id: _builtins.str
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+elif False:
+    GetExternalLocationProviderConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetExternalLocationProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: _builtins.str):
+        """
+        :param _builtins.str workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.str:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: _builtins.str):
+        pulumi.set(self, "workspace_id", value)
+
+
+if not MYPY:
+    class GetExternalLocationsProviderConfigArgsDict(TypedDict):
+        workspace_id: _builtins.str
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+elif False:
+    GetExternalLocationsProviderConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetExternalLocationsProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: _builtins.str):
+        """
+        :param _builtins.str workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.str:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: _builtins.str):
+        pulumi.set(self, "workspace_id", value)
 
 
 if not MYPY:
@@ -64554,6 +58357,28 @@ class GetFunctionsFunctionRoutineDependenciesDependencyTableArgs:
 
 
 if not MYPY:
+    class GetFunctionsProviderConfigArgsDict(TypedDict):
+        workspace_id: _builtins.str
+elif False:
+    GetFunctionsProviderConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetFunctionsProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: _builtins.str):
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.str:
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: _builtins.str):
+        pulumi.set(self, "workspace_id", value)
+
+
+if not MYPY:
     class GetInstancePoolPoolInfoArgsDict(TypedDict):
         default_tags: Mapping[str, _builtins.str]
         idle_instance_autotermination_minutes: _builtins.int
@@ -64797,6 +58622,7 @@ if not MYPY:
     class GetInstancePoolPoolInfoAwsAttributesArgsDict(TypedDict):
         zone_id: _builtins.str
         availability: NotRequired[_builtins.str]
+        instance_profile_arn: NotRequired[_builtins.str]
         spot_bid_price_percent: NotRequired[_builtins.int]
 elif False:
     GetInstancePoolPoolInfoAwsAttributesArgsDict: TypeAlias = Mapping[str, Any]
@@ -64806,10 +58632,13 @@ class GetInstancePoolPoolInfoAwsAttributesArgs:
     def __init__(__self__, *,
                  zone_id: _builtins.str,
                  availability: Optional[_builtins.str] = None,
+                 instance_profile_arn: Optional[_builtins.str] = None,
                  spot_bid_price_percent: Optional[_builtins.int] = None):
         pulumi.set(__self__, "zone_id", zone_id)
         if availability is not None:
             pulumi.set(__self__, "availability", availability)
+        if instance_profile_arn is not None:
+            pulumi.set(__self__, "instance_profile_arn", instance_profile_arn)
         if spot_bid_price_percent is not None:
             pulumi.set(__self__, "spot_bid_price_percent", spot_bid_price_percent)
 
@@ -64830,6 +58659,15 @@ class GetInstancePoolPoolInfoAwsAttributesArgs:
     @availability.setter
     def availability(self, value: Optional[_builtins.str]):
         pulumi.set(self, "availability", value)
+
+    @_builtins.property
+    @pulumi.getter(name="instanceProfileArn")
+    def instance_profile_arn(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "instance_profile_arn")
+
+    @instance_profile_arn.setter
+    def instance_profile_arn(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "instance_profile_arn", value)
 
     @_builtins.property
     @pulumi.getter(name="spotBidPricePercent")
@@ -65378,6 +59216,37 @@ class GetInstanceProfilesInstanceProfileArgs:
     @role_arn.setter
     def role_arn(self, value: _builtins.str):
         pulumi.set(self, "role_arn", value)
+
+
+if not MYPY:
+    class GetInstanceProfilesProviderConfigArgsDict(TypedDict):
+        workspace_id: _builtins.str
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+elif False:
+    GetInstanceProfilesProviderConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetInstanceProfilesProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: _builtins.str):
+        """
+        :param _builtins.str workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.str:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: _builtins.str):
+        pulumi.set(self, "workspace_id", value)
 
 
 if not MYPY:
@@ -66225,7 +60094,7 @@ if not MYPY:
         client: NotRequired[_builtins.str]
         dependencies: NotRequired[Sequence[_builtins.str]]
         environment_version: NotRequired[_builtins.str]
-        jar_dependencies: NotRequired[Sequence[_builtins.str]]
+        java_dependencies: NotRequired[Sequence[_builtins.str]]
 elif False:
     GetJobJobSettingsSettingsEnvironmentSpecArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -66235,15 +60104,15 @@ class GetJobJobSettingsSettingsEnvironmentSpecArgs:
                  client: Optional[_builtins.str] = None,
                  dependencies: Optional[Sequence[_builtins.str]] = None,
                  environment_version: Optional[_builtins.str] = None,
-                 jar_dependencies: Optional[Sequence[_builtins.str]] = None):
+                 java_dependencies: Optional[Sequence[_builtins.str]] = None):
         if client is not None:
             pulumi.set(__self__, "client", client)
         if dependencies is not None:
             pulumi.set(__self__, "dependencies", dependencies)
         if environment_version is not None:
             pulumi.set(__self__, "environment_version", environment_version)
-        if jar_dependencies is not None:
-            pulumi.set(__self__, "jar_dependencies", jar_dependencies)
+        if java_dependencies is not None:
+            pulumi.set(__self__, "java_dependencies", java_dependencies)
 
     @_builtins.property
     @pulumi.getter
@@ -66273,13 +60142,13 @@ class GetJobJobSettingsSettingsEnvironmentSpecArgs:
         pulumi.set(self, "environment_version", value)
 
     @_builtins.property
-    @pulumi.getter(name="jarDependencies")
-    def jar_dependencies(self) -> Optional[Sequence[_builtins.str]]:
-        return pulumi.get(self, "jar_dependencies")
+    @pulumi.getter(name="javaDependencies")
+    def java_dependencies(self) -> Optional[Sequence[_builtins.str]]:
+        return pulumi.get(self, "java_dependencies")
 
-    @jar_dependencies.setter
-    def jar_dependencies(self, value: Optional[Sequence[_builtins.str]]):
-        pulumi.set(self, "jar_dependencies", value)
+    @java_dependencies.setter
+    def java_dependencies(self, value: Optional[Sequence[_builtins.str]]):
+        pulumi.set(self, "java_dependencies", value)
 
 
 if not MYPY:
@@ -67905,6 +61774,7 @@ if not MYPY:
         egg: NotRequired[_builtins.str]
         jar: NotRequired[_builtins.str]
         maven: NotRequired['GetJobJobSettingsSettingsLibraryMavenArgsDict']
+        provider_config: NotRequired['GetJobJobSettingsSettingsLibraryProviderConfigArgsDict']
         pypi: NotRequired['GetJobJobSettingsSettingsLibraryPypiArgsDict']
         requirements: NotRequired[_builtins.str]
         whl: NotRequired[_builtins.str]
@@ -67918,6 +61788,7 @@ class GetJobJobSettingsSettingsLibraryArgs:
                  egg: Optional[_builtins.str] = None,
                  jar: Optional[_builtins.str] = None,
                  maven: Optional['GetJobJobSettingsSettingsLibraryMavenArgs'] = None,
+                 provider_config: Optional['GetJobJobSettingsSettingsLibraryProviderConfigArgs'] = None,
                  pypi: Optional['GetJobJobSettingsSettingsLibraryPypiArgs'] = None,
                  requirements: Optional[_builtins.str] = None,
                  whl: Optional[_builtins.str] = None):
@@ -67932,6 +61803,8 @@ class GetJobJobSettingsSettingsLibraryArgs:
             pulumi.set(__self__, "jar", jar)
         if maven is not None:
             pulumi.set(__self__, "maven", maven)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if pypi is not None:
             pulumi.set(__self__, "pypi", pypi)
         if requirements is not None:
@@ -67975,6 +61848,15 @@ class GetJobJobSettingsSettingsLibraryArgs:
     @maven.setter
     def maven(self, value: Optional['GetJobJobSettingsSettingsLibraryMavenArgs']):
         pulumi.set(self, "maven", value)
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional['GetJobJobSettingsSettingsLibraryProviderConfigArgs']:
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional['GetJobJobSettingsSettingsLibraryProviderConfigArgs']):
+        pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter
@@ -68085,6 +61967,28 @@ class GetJobJobSettingsSettingsLibraryMavenArgs:
     @repo.setter
     def repo(self, value: Optional[_builtins.str]):
         pulumi.set(self, "repo", value)
+
+
+if not MYPY:
+    class GetJobJobSettingsSettingsLibraryProviderConfigArgsDict(TypedDict):
+        workspace_id: _builtins.str
+elif False:
+    GetJobJobSettingsSettingsLibraryProviderConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetJobJobSettingsSettingsLibraryProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: _builtins.str):
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.str:
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: _builtins.str):
+        pulumi.set(self, "workspace_id", value)
 
 
 if not MYPY:
@@ -71710,6 +65614,7 @@ if not MYPY:
         egg: NotRequired[_builtins.str]
         jar: NotRequired[_builtins.str]
         maven: NotRequired['GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryMavenArgsDict']
+        provider_config: NotRequired['GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryProviderConfigArgsDict']
         pypi: NotRequired['GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryPypiArgsDict']
         requirements: NotRequired[_builtins.str]
         whl: NotRequired[_builtins.str]
@@ -71723,6 +65628,7 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryArgs:
                  egg: Optional[_builtins.str] = None,
                  jar: Optional[_builtins.str] = None,
                  maven: Optional['GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryMavenArgs'] = None,
+                 provider_config: Optional['GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryProviderConfigArgs'] = None,
                  pypi: Optional['GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryPypiArgs'] = None,
                  requirements: Optional[_builtins.str] = None,
                  whl: Optional[_builtins.str] = None):
@@ -71737,6 +65643,8 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryArgs:
             pulumi.set(__self__, "jar", jar)
         if maven is not None:
             pulumi.set(__self__, "maven", maven)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if pypi is not None:
             pulumi.set(__self__, "pypi", pypi)
         if requirements is not None:
@@ -71780,6 +65688,15 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryArgs:
     @maven.setter
     def maven(self, value: Optional['GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryMavenArgs']):
         pulumi.set(self, "maven", value)
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional['GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryProviderConfigArgs']:
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional['GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryProviderConfigArgs']):
+        pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter
@@ -71890,6 +65807,28 @@ class GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryMavenArgs:
     @repo.setter
     def repo(self, value: Optional[_builtins.str]):
         pulumi.set(self, "repo", value)
+
+
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryProviderConfigArgsDict(TypedDict):
+        workspace_id: _builtins.str
+elif False:
+    GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryProviderConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: _builtins.str):
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.str:
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: _builtins.str):
+        pulumi.set(self, "workspace_id", value)
 
 
 if not MYPY:
@@ -74520,6 +68459,7 @@ if not MYPY:
         egg: NotRequired[_builtins.str]
         jar: NotRequired[_builtins.str]
         maven: NotRequired['GetJobJobSettingsSettingsTaskLibraryMavenArgsDict']
+        provider_config: NotRequired['GetJobJobSettingsSettingsTaskLibraryProviderConfigArgsDict']
         pypi: NotRequired['GetJobJobSettingsSettingsTaskLibraryPypiArgsDict']
         requirements: NotRequired[_builtins.str]
         whl: NotRequired[_builtins.str]
@@ -74533,6 +68473,7 @@ class GetJobJobSettingsSettingsTaskLibraryArgs:
                  egg: Optional[_builtins.str] = None,
                  jar: Optional[_builtins.str] = None,
                  maven: Optional['GetJobJobSettingsSettingsTaskLibraryMavenArgs'] = None,
+                 provider_config: Optional['GetJobJobSettingsSettingsTaskLibraryProviderConfigArgs'] = None,
                  pypi: Optional['GetJobJobSettingsSettingsTaskLibraryPypiArgs'] = None,
                  requirements: Optional[_builtins.str] = None,
                  whl: Optional[_builtins.str] = None):
@@ -74547,6 +68488,8 @@ class GetJobJobSettingsSettingsTaskLibraryArgs:
             pulumi.set(__self__, "jar", jar)
         if maven is not None:
             pulumi.set(__self__, "maven", maven)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if pypi is not None:
             pulumi.set(__self__, "pypi", pypi)
         if requirements is not None:
@@ -74590,6 +68533,15 @@ class GetJobJobSettingsSettingsTaskLibraryArgs:
     @maven.setter
     def maven(self, value: Optional['GetJobJobSettingsSettingsTaskLibraryMavenArgs']):
         pulumi.set(self, "maven", value)
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional['GetJobJobSettingsSettingsTaskLibraryProviderConfigArgs']:
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional['GetJobJobSettingsSettingsTaskLibraryProviderConfigArgs']):
+        pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter
@@ -74700,6 +68652,28 @@ class GetJobJobSettingsSettingsTaskLibraryMavenArgs:
     @repo.setter
     def repo(self, value: Optional[_builtins.str]):
         pulumi.set(self, "repo", value)
+
+
+if not MYPY:
+    class GetJobJobSettingsSettingsTaskLibraryProviderConfigArgsDict(TypedDict):
+        workspace_id: _builtins.str
+elif False:
+    GetJobJobSettingsSettingsTaskLibraryProviderConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetJobJobSettingsSettingsTaskLibraryProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: _builtins.str):
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.str:
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: _builtins.str):
+        pulumi.set(self, "workspace_id", value)
 
 
 if not MYPY:
@@ -77692,6 +71666,37 @@ class GetJobJobSettingsSettingsWebhookNotificationsOnSuccessArgs:
 
 
 if not MYPY:
+    class GetJobsProviderConfigArgsDict(TypedDict):
+        workspace_id: _builtins.str
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+elif False:
+    GetJobsProviderConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetJobsProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: _builtins.str):
+        """
+        :param _builtins.str workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.str:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: _builtins.str):
+        pulumi.set(self, "workspace_id", value)
+
+
+if not MYPY:
     class GetMetastoreMetastoreInfoArgsDict(TypedDict):
         cloud: NotRequired[_builtins.str]
         created_at: NotRequired[_builtins.int]
@@ -78007,6 +72012,37 @@ class GetMetastoreMetastoreInfoArgs:
 
 
 if not MYPY:
+    class GetMlflowExperimentProviderConfigArgsDict(TypedDict):
+        workspace_id: _builtins.str
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+elif False:
+    GetMlflowExperimentProviderConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetMlflowExperimentProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: _builtins.str):
+        """
+        :param _builtins.str workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.str:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: _builtins.str):
+        pulumi.set(self, "workspace_id", value)
+
+
+if not MYPY:
     class GetMlflowExperimentTagArgsDict(TypedDict):
         key: NotRequired[_builtins.str]
         value: NotRequired[_builtins.str]
@@ -78288,6 +72324,37 @@ class GetMlflowModelLatestVersionTagArgs:
 
 
 if not MYPY:
+    class GetMlflowModelProviderConfigArgsDict(TypedDict):
+        workspace_id: _builtins.str
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+elif False:
+    GetMlflowModelProviderConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetMlflowModelProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: _builtins.str):
+        """
+        :param _builtins.str workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.str:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: _builtins.str):
+        pulumi.set(self, "workspace_id", value)
+
+
+if not MYPY:
     class GetMlflowModelTagArgsDict(TypedDict):
         key: NotRequired[_builtins.str]
         value: NotRequired[_builtins.str]
@@ -78321,6 +72388,37 @@ class GetMlflowModelTagArgs:
     @value.setter
     def value(self, value: Optional[_builtins.str]):
         pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class GetMlflowModelsProviderConfigArgsDict(TypedDict):
+        workspace_id: _builtins.str
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+elif False:
+    GetMlflowModelsProviderConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetMlflowModelsProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: _builtins.str):
+        """
+        :param _builtins.str workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.str:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: _builtins.str):
+        pulumi.set(self, "workspace_id", value)
 
 
 if not MYPY:
@@ -79039,438 +73137,87 @@ class GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpoint
 
 
 if not MYPY:
-    class GetPolicyInfoColumnMaskArgsDict(TypedDict):
-        function_name: _builtins.str
+    class GetNodeTypeProviderConfigArgsDict(TypedDict):
+        workspace_id: _builtins.str
         """
-        (string) - The fully qualified name of the row filter function.
-        The function is called on each row of the target table. It should return a boolean value
-        indicating whether the row should be visible to the user.
-        Required on create and update
-        """
-        on_column: _builtins.str
-        """
-        (string) - The alias of the column to be masked. The alias must refer to one of matched columns.
-        The values of the column is passed to the column mask function as the first argument.
-        Required on create and update
-        """
-        usings: NotRequired[Sequence['GetPolicyInfoColumnMaskUsingArgsDict']]
-        """
-        (list of FunctionArgument) - Optional list of column aliases or constant literals to be passed as arguments to the row filter function.
-        The type of each column should match the positional argument of the row filter function
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
         """
 elif False:
-    GetPolicyInfoColumnMaskArgsDict: TypeAlias = Mapping[str, Any]
+    GetNodeTypeProviderConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GetPolicyInfoColumnMaskArgs:
+class GetNodeTypeProviderConfigArgs:
     def __init__(__self__, *,
-                 function_name: _builtins.str,
-                 on_column: _builtins.str,
-                 usings: Optional[Sequence['GetPolicyInfoColumnMaskUsingArgs']] = None):
+                 workspace_id: _builtins.str):
         """
-        :param _builtins.str function_name: (string) - The fully qualified name of the row filter function.
-               The function is called on each row of the target table. It should return a boolean value
-               indicating whether the row should be visible to the user.
-               Required on create and update
-        :param _builtins.str on_column: (string) - The alias of the column to be masked. The alias must refer to one of matched columns.
-               The values of the column is passed to the column mask function as the first argument.
-               Required on create and update
-        :param Sequence['GetPolicyInfoColumnMaskUsingArgs'] usings: (list of FunctionArgument) - Optional list of column aliases or constant literals to be passed as arguments to the row filter function.
-               The type of each column should match the positional argument of the row filter function
+        :param _builtins.str workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
         """
-        pulumi.set(__self__, "function_name", function_name)
-        pulumi.set(__self__, "on_column", on_column)
-        if usings is not None:
-            pulumi.set(__self__, "usings", usings)
+        pulumi.set(__self__, "workspace_id", workspace_id)
 
     @_builtins.property
-    @pulumi.getter(name="functionName")
-    def function_name(self) -> _builtins.str:
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.str:
         """
-        (string) - The fully qualified name of the row filter function.
-        The function is called on each row of the target table. It should return a boolean value
-        indicating whether the row should be visible to the user.
-        Required on create and update
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
         """
-        return pulumi.get(self, "function_name")
+        return pulumi.get(self, "workspace_id")
 
-    @function_name.setter
-    def function_name(self, value: _builtins.str):
-        pulumi.set(self, "function_name", value)
-
-    @_builtins.property
-    @pulumi.getter(name="onColumn")
-    def on_column(self) -> _builtins.str:
-        """
-        (string) - The alias of the column to be masked. The alias must refer to one of matched columns.
-        The values of the column is passed to the column mask function as the first argument.
-        Required on create and update
-        """
-        return pulumi.get(self, "on_column")
-
-    @on_column.setter
-    def on_column(self, value: _builtins.str):
-        pulumi.set(self, "on_column", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def usings(self) -> Optional[Sequence['GetPolicyInfoColumnMaskUsingArgs']]:
-        """
-        (list of FunctionArgument) - Optional list of column aliases or constant literals to be passed as arguments to the row filter function.
-        The type of each column should match the positional argument of the row filter function
-        """
-        return pulumi.get(self, "usings")
-
-    @usings.setter
-    def usings(self, value: Optional[Sequence['GetPolicyInfoColumnMaskUsingArgs']]):
-        pulumi.set(self, "usings", value)
+    @workspace_id.setter
+    def workspace_id(self, value: _builtins.str):
+        pulumi.set(self, "workspace_id", value)
 
 
 if not MYPY:
-    class GetPolicyInfoColumnMaskUsingArgsDict(TypedDict):
-        alias: NotRequired[_builtins.str]
-        """
-        (string) - Optional alias of the matched column
-        """
-        constant: NotRequired[_builtins.str]
-        """
-        (string) - A constant literal
-        """
+    class GetNotificationDestinationsProviderConfigArgsDict(TypedDict):
+        workspace_id: _builtins.str
 elif False:
-    GetPolicyInfoColumnMaskUsingArgsDict: TypeAlias = Mapping[str, Any]
+    GetNotificationDestinationsProviderConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GetPolicyInfoColumnMaskUsingArgs:
+class GetNotificationDestinationsProviderConfigArgs:
     def __init__(__self__, *,
-                 alias: Optional[_builtins.str] = None,
-                 constant: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str alias: (string) - Optional alias of the matched column
-        :param _builtins.str constant: (string) - A constant literal
-        """
-        if alias is not None:
-            pulumi.set(__self__, "alias", alias)
-        if constant is not None:
-            pulumi.set(__self__, "constant", constant)
+                 workspace_id: _builtins.str):
+        pulumi.set(__self__, "workspace_id", workspace_id)
 
     @_builtins.property
-    @pulumi.getter
-    def alias(self) -> Optional[_builtins.str]:
-        """
-        (string) - Optional alias of the matched column
-        """
-        return pulumi.get(self, "alias")
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.str:
+        return pulumi.get(self, "workspace_id")
 
-    @alias.setter
-    def alias(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "alias", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def constant(self) -> Optional[_builtins.str]:
-        """
-        (string) - A constant literal
-        """
-        return pulumi.get(self, "constant")
-
-    @constant.setter
-    def constant(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "constant", value)
+    @workspace_id.setter
+    def workspace_id(self, value: _builtins.str):
+        pulumi.set(self, "workspace_id", value)
 
 
 if not MYPY:
-    class GetPolicyInfoMatchColumnArgsDict(TypedDict):
-        alias: NotRequired[_builtins.str]
+    class GetPipelinesProviderConfigArgsDict(TypedDict):
+        workspace_id: _builtins.str
         """
-        (string) - Optional alias of the matched column
-        """
-        condition: NotRequired[_builtins.str]
-        """
-        (string) - The condition expression used to match a table column
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
         """
 elif False:
-    GetPolicyInfoMatchColumnArgsDict: TypeAlias = Mapping[str, Any]
+    GetPipelinesProviderConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GetPolicyInfoMatchColumnArgs:
+class GetPipelinesProviderConfigArgs:
     def __init__(__self__, *,
-                 alias: Optional[_builtins.str] = None,
-                 condition: Optional[_builtins.str] = None):
+                 workspace_id: _builtins.str):
         """
-        :param _builtins.str alias: (string) - Optional alias of the matched column
-        :param _builtins.str condition: (string) - The condition expression used to match a table column
+        :param _builtins.str workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
         """
-        if alias is not None:
-            pulumi.set(__self__, "alias", alias)
-        if condition is not None:
-            pulumi.set(__self__, "condition", condition)
+        pulumi.set(__self__, "workspace_id", workspace_id)
 
     @_builtins.property
-    @pulumi.getter
-    def alias(self) -> Optional[_builtins.str]:
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.str:
         """
-        (string) - Optional alias of the matched column
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
         """
-        return pulumi.get(self, "alias")
+        return pulumi.get(self, "workspace_id")
 
-    @alias.setter
-    def alias(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "alias", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def condition(self) -> Optional[_builtins.str]:
-        """
-        (string) - The condition expression used to match a table column
-        """
-        return pulumi.get(self, "condition")
-
-    @condition.setter
-    def condition(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "condition", value)
-
-
-if not MYPY:
-    class GetPolicyInfoRowFilterArgsDict(TypedDict):
-        function_name: _builtins.str
-        """
-        (string) - The fully qualified name of the row filter function.
-        The function is called on each row of the target table. It should return a boolean value
-        indicating whether the row should be visible to the user.
-        Required on create and update
-        """
-        usings: NotRequired[Sequence['GetPolicyInfoRowFilterUsingArgsDict']]
-        """
-        (list of FunctionArgument) - Optional list of column aliases or constant literals to be passed as arguments to the row filter function.
-        The type of each column should match the positional argument of the row filter function
-        """
-elif False:
-    GetPolicyInfoRowFilterArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetPolicyInfoRowFilterArgs:
-    def __init__(__self__, *,
-                 function_name: _builtins.str,
-                 usings: Optional[Sequence['GetPolicyInfoRowFilterUsingArgs']] = None):
-        """
-        :param _builtins.str function_name: (string) - The fully qualified name of the row filter function.
-               The function is called on each row of the target table. It should return a boolean value
-               indicating whether the row should be visible to the user.
-               Required on create and update
-        :param Sequence['GetPolicyInfoRowFilterUsingArgs'] usings: (list of FunctionArgument) - Optional list of column aliases or constant literals to be passed as arguments to the row filter function.
-               The type of each column should match the positional argument of the row filter function
-        """
-        pulumi.set(__self__, "function_name", function_name)
-        if usings is not None:
-            pulumi.set(__self__, "usings", usings)
-
-    @_builtins.property
-    @pulumi.getter(name="functionName")
-    def function_name(self) -> _builtins.str:
-        """
-        (string) - The fully qualified name of the row filter function.
-        The function is called on each row of the target table. It should return a boolean value
-        indicating whether the row should be visible to the user.
-        Required on create and update
-        """
-        return pulumi.get(self, "function_name")
-
-    @function_name.setter
-    def function_name(self, value: _builtins.str):
-        pulumi.set(self, "function_name", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def usings(self) -> Optional[Sequence['GetPolicyInfoRowFilterUsingArgs']]:
-        """
-        (list of FunctionArgument) - Optional list of column aliases or constant literals to be passed as arguments to the row filter function.
-        The type of each column should match the positional argument of the row filter function
-        """
-        return pulumi.get(self, "usings")
-
-    @usings.setter
-    def usings(self, value: Optional[Sequence['GetPolicyInfoRowFilterUsingArgs']]):
-        pulumi.set(self, "usings", value)
-
-
-if not MYPY:
-    class GetPolicyInfoRowFilterUsingArgsDict(TypedDict):
-        alias: NotRequired[_builtins.str]
-        """
-        (string) - Optional alias of the matched column
-        """
-        constant: NotRequired[_builtins.str]
-        """
-        (string) - A constant literal
-        """
-elif False:
-    GetPolicyInfoRowFilterUsingArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetPolicyInfoRowFilterUsingArgs:
-    def __init__(__self__, *,
-                 alias: Optional[_builtins.str] = None,
-                 constant: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str alias: (string) - Optional alias of the matched column
-        :param _builtins.str constant: (string) - A constant literal
-        """
-        if alias is not None:
-            pulumi.set(__self__, "alias", alias)
-        if constant is not None:
-            pulumi.set(__self__, "constant", constant)
-
-    @_builtins.property
-    @pulumi.getter
-    def alias(self) -> Optional[_builtins.str]:
-        """
-        (string) - Optional alias of the matched column
-        """
-        return pulumi.get(self, "alias")
-
-    @alias.setter
-    def alias(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "alias", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def constant(self) -> Optional[_builtins.str]:
-        """
-        (string) - A constant literal
-        """
-        return pulumi.get(self, "constant")
-
-    @constant.setter
-    def constant(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "constant", value)
-
-
-if not MYPY:
-    class GetRecipientFederationPolicyOidcPolicyArgsDict(TypedDict):
-        issuer: _builtins.str
-        """
-        (string) - The required token issuer, as specified in the 'iss' claim of federated tokens
-        """
-        subject: _builtins.str
-        """
-        (string) - The required token subject, as specified in the subject claim of federated tokens.
-        The subject claim identifies the identity of the user or machine accessing the resource.
-        Examples for Entra ID (AAD):
-        - U2M flow (group access): If the subject claim is `groups`, this must be the Object ID of the group in Entra ID.
-        - U2M flow (user access): If the subject claim is `oid`, this must be the Object ID of the user in Entra ID.
-        - M2M flow (OAuth App access): If the subject claim is `azp`, this must be the client ID of the OAuth app registered in Entra ID
-        """
-        subject_claim: _builtins.str
-        """
-        (string) - The claim that contains the subject of the token.
-        Depending on the identity provider and the use case (U2M or M2M), this can vary:
-        - For Entra ID (AAD):
-        * U2M flow (group access): Use `groups`.
-        * U2M flow (user access): Use `oid`.
-        * M2M flow (OAuth App access): Use `azp`.
-        - For other IdPs, refer to the specific IdP documentation.
-        """
-        audiences: NotRequired[Sequence[_builtins.str]]
-        """
-        (list of string) - The allowed token audiences, as specified in the 'aud' claim of federated tokens.
-        The audience identifier is intended to represent the recipient of the token.
-        Can be any non-empty string value. As long as the audience in the token matches at least one audience in the policy,
-        """
-elif False:
-    GetRecipientFederationPolicyOidcPolicyArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetRecipientFederationPolicyOidcPolicyArgs:
-    def __init__(__self__, *,
-                 issuer: _builtins.str,
-                 subject: _builtins.str,
-                 subject_claim: _builtins.str,
-                 audiences: Optional[Sequence[_builtins.str]] = None):
-        """
-        :param _builtins.str issuer: (string) - The required token issuer, as specified in the 'iss' claim of federated tokens
-        :param _builtins.str subject: (string) - The required token subject, as specified in the subject claim of federated tokens.
-               The subject claim identifies the identity of the user or machine accessing the resource.
-               Examples for Entra ID (AAD):
-               - U2M flow (group access): If the subject claim is `groups`, this must be the Object ID of the group in Entra ID.
-               - U2M flow (user access): If the subject claim is `oid`, this must be the Object ID of the user in Entra ID.
-               - M2M flow (OAuth App access): If the subject claim is `azp`, this must be the client ID of the OAuth app registered in Entra ID
-        :param _builtins.str subject_claim: (string) - The claim that contains the subject of the token.
-               Depending on the identity provider and the use case (U2M or M2M), this can vary:
-               - For Entra ID (AAD):
-               * U2M flow (group access): Use `groups`.
-               * U2M flow (user access): Use `oid`.
-               * M2M flow (OAuth App access): Use `azp`.
-               - For other IdPs, refer to the specific IdP documentation.
-        :param Sequence[_builtins.str] audiences: (list of string) - The allowed token audiences, as specified in the 'aud' claim of federated tokens.
-               The audience identifier is intended to represent the recipient of the token.
-               Can be any non-empty string value. As long as the audience in the token matches at least one audience in the policy,
-        """
-        pulumi.set(__self__, "issuer", issuer)
-        pulumi.set(__self__, "subject", subject)
-        pulumi.set(__self__, "subject_claim", subject_claim)
-        if audiences is not None:
-            pulumi.set(__self__, "audiences", audiences)
-
-    @_builtins.property
-    @pulumi.getter
-    def issuer(self) -> _builtins.str:
-        """
-        (string) - The required token issuer, as specified in the 'iss' claim of federated tokens
-        """
-        return pulumi.get(self, "issuer")
-
-    @issuer.setter
-    def issuer(self, value: _builtins.str):
-        pulumi.set(self, "issuer", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def subject(self) -> _builtins.str:
-        """
-        (string) - The required token subject, as specified in the subject claim of federated tokens.
-        The subject claim identifies the identity of the user or machine accessing the resource.
-        Examples for Entra ID (AAD):
-        - U2M flow (group access): If the subject claim is `groups`, this must be the Object ID of the group in Entra ID.
-        - U2M flow (user access): If the subject claim is `oid`, this must be the Object ID of the user in Entra ID.
-        - M2M flow (OAuth App access): If the subject claim is `azp`, this must be the client ID of the OAuth app registered in Entra ID
-        """
-        return pulumi.get(self, "subject")
-
-    @subject.setter
-    def subject(self, value: _builtins.str):
-        pulumi.set(self, "subject", value)
-
-    @_builtins.property
-    @pulumi.getter(name="subjectClaim")
-    def subject_claim(self) -> _builtins.str:
-        """
-        (string) - The claim that contains the subject of the token.
-        Depending on the identity provider and the use case (U2M or M2M), this can vary:
-        - For Entra ID (AAD):
-        * U2M flow (group access): Use `groups`.
-        * U2M flow (user access): Use `oid`.
-        * M2M flow (OAuth App access): Use `azp`.
-        - For other IdPs, refer to the specific IdP documentation.
-        """
-        return pulumi.get(self, "subject_claim")
-
-    @subject_claim.setter
-    def subject_claim(self, value: _builtins.str):
-        pulumi.set(self, "subject_claim", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def audiences(self) -> Optional[Sequence[_builtins.str]]:
-        """
-        (list of string) - The allowed token audiences, as specified in the 'aud' claim of federated tokens.
-        The audience identifier is intended to represent the recipient of the token.
-        Can be any non-empty string value. As long as the audience in the token matches at least one audience in the policy,
-        """
-        return pulumi.get(self, "audiences")
-
-    @audiences.setter
-    def audiences(self, value: Optional[Sequence[_builtins.str]]):
-        pulumi.set(self, "audiences", value)
+    @workspace_id.setter
+    def workspace_id(self, value: _builtins.str):
+        pulumi.set(self, "workspace_id", value)
 
 
 if not MYPY:
@@ -79764,6 +73511,16 @@ if not MYPY:
         """
         string with the name of alias
         """
+        catalog_name: NotRequired[_builtins.str]
+        """
+        The name of the catalog where the schema and the registered model reside.
+        """
+        id: NotRequired[_builtins.str]
+        model_name: NotRequired[_builtins.str]
+        schema_name: NotRequired[_builtins.str]
+        """
+        The name of the schema where the registered model resides.
+        """
         version_num: NotRequired[_builtins.int]
         """
         associated model version
@@ -79775,13 +73532,27 @@ elif False:
 class GetRegisteredModelModelInfoAliasArgs:
     def __init__(__self__, *,
                  alias_name: Optional[_builtins.str] = None,
+                 catalog_name: Optional[_builtins.str] = None,
+                 id: Optional[_builtins.str] = None,
+                 model_name: Optional[_builtins.str] = None,
+                 schema_name: Optional[_builtins.str] = None,
                  version_num: Optional[_builtins.int] = None):
         """
         :param _builtins.str alias_name: string with the name of alias
+        :param _builtins.str catalog_name: The name of the catalog where the schema and the registered model reside.
+        :param _builtins.str schema_name: The name of the schema where the registered model resides.
         :param _builtins.int version_num: associated model version
         """
         if alias_name is not None:
             pulumi.set(__self__, "alias_name", alias_name)
+        if catalog_name is not None:
+            pulumi.set(__self__, "catalog_name", catalog_name)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if model_name is not None:
+            pulumi.set(__self__, "model_name", model_name)
+        if schema_name is not None:
+            pulumi.set(__self__, "schema_name", schema_name)
         if version_num is not None:
             pulumi.set(__self__, "version_num", version_num)
 
@@ -79798,6 +73569,48 @@ class GetRegisteredModelModelInfoAliasArgs:
         pulumi.set(self, "alias_name", value)
 
     @_builtins.property
+    @pulumi.getter(name="catalogName")
+    def catalog_name(self) -> Optional[_builtins.str]:
+        """
+        The name of the catalog where the schema and the registered model reside.
+        """
+        return pulumi.get(self, "catalog_name")
+
+    @catalog_name.setter
+    def catalog_name(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "catalog_name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="modelName")
+    def model_name(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "model_name")
+
+    @model_name.setter
+    def model_name(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "model_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="schemaName")
+    def schema_name(self) -> Optional[_builtins.str]:
+        """
+        The name of the schema where the registered model resides.
+        """
+        return pulumi.get(self, "schema_name")
+
+    @schema_name.setter
+    def schema_name(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "schema_name", value)
+
+    @_builtins.property
     @pulumi.getter(name="versionNum")
     def version_num(self) -> Optional[_builtins.int]:
         """
@@ -79811,12 +73624,33 @@ class GetRegisteredModelModelInfoAliasArgs:
 
 
 if not MYPY:
+    class GetRegisteredModelProviderConfigArgsDict(TypedDict):
+        workspace_id: _builtins.str
+elif False:
+    GetRegisteredModelProviderConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetRegisteredModelProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: _builtins.str):
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.str:
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: _builtins.str):
+        pulumi.set(self, "workspace_id", value)
+
+
+if not MYPY:
     class GetRegisteredModelVersionsModelVersionArgsDict(TypedDict):
         aliases: NotRequired[Sequence['GetRegisteredModelVersionsModelVersionAliasArgsDict']]
         """
         the list of aliases associated with this model. Each item is object consisting of following attributes:
         """
-        browse_only: NotRequired[_builtins.bool]
         catalog_name: NotRequired[_builtins.str]
         """
         The name of the catalog where the schema and the registered model reside.
@@ -79889,7 +73723,6 @@ elif False:
 class GetRegisteredModelVersionsModelVersionArgs:
     def __init__(__self__, *,
                  aliases: Optional[Sequence['GetRegisteredModelVersionsModelVersionAliasArgs']] = None,
-                 browse_only: Optional[_builtins.bool] = None,
                  catalog_name: Optional[_builtins.str] = None,
                  comment: Optional[_builtins.str] = None,
                  created_at: Optional[_builtins.int] = None,
@@ -79928,8 +73761,6 @@ class GetRegisteredModelVersionsModelVersionArgs:
         """
         if aliases is not None:
             pulumi.set(__self__, "aliases", aliases)
-        if browse_only is not None:
-            pulumi.set(__self__, "browse_only", browse_only)
         if catalog_name is not None:
             pulumi.set(__self__, "catalog_name", catalog_name)
         if comment is not None:
@@ -79976,15 +73807,6 @@ class GetRegisteredModelVersionsModelVersionArgs:
     @aliases.setter
     def aliases(self, value: Optional[Sequence['GetRegisteredModelVersionsModelVersionAliasArgs']]):
         pulumi.set(self, "aliases", value)
-
-    @_builtins.property
-    @pulumi.getter(name="browseOnly")
-    def browse_only(self) -> Optional[_builtins.bool]:
-        return pulumi.get(self, "browse_only")
-
-    @browse_only.setter
-    def browse_only(self, value: Optional[_builtins.bool]):
-        pulumi.set(self, "browse_only", value)
 
     @_builtins.property
     @pulumi.getter(name="catalogName")
@@ -80194,6 +74016,19 @@ if not MYPY:
         """
         string with the name of alias
         """
+        catalog_name: NotRequired[_builtins.str]
+        """
+        The name of the catalog where the schema and the registered model reside.
+        """
+        id: NotRequired[_builtins.str]
+        """
+        The unique identifier of the model version
+        """
+        model_name: NotRequired[_builtins.str]
+        schema_name: NotRequired[_builtins.str]
+        """
+        The name of the schema where the registered model resides.
+        """
         version_num: NotRequired[_builtins.int]
         """
         associated model version
@@ -80205,13 +74040,28 @@ elif False:
 class GetRegisteredModelVersionsModelVersionAliasArgs:
     def __init__(__self__, *,
                  alias_name: Optional[_builtins.str] = None,
+                 catalog_name: Optional[_builtins.str] = None,
+                 id: Optional[_builtins.str] = None,
+                 model_name: Optional[_builtins.str] = None,
+                 schema_name: Optional[_builtins.str] = None,
                  version_num: Optional[_builtins.int] = None):
         """
         :param _builtins.str alias_name: string with the name of alias
+        :param _builtins.str catalog_name: The name of the catalog where the schema and the registered model reside.
+        :param _builtins.str id: The unique identifier of the model version
+        :param _builtins.str schema_name: The name of the schema where the registered model resides.
         :param _builtins.int version_num: associated model version
         """
         if alias_name is not None:
             pulumi.set(__self__, "alias_name", alias_name)
+        if catalog_name is not None:
+            pulumi.set(__self__, "catalog_name", catalog_name)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if model_name is not None:
+            pulumi.set(__self__, "model_name", model_name)
+        if schema_name is not None:
+            pulumi.set(__self__, "schema_name", schema_name)
         if version_num is not None:
             pulumi.set(__self__, "version_num", version_num)
 
@@ -80226,6 +74076,51 @@ class GetRegisteredModelVersionsModelVersionAliasArgs:
     @alias_name.setter
     def alias_name(self, value: Optional[_builtins.str]):
         pulumi.set(self, "alias_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="catalogName")
+    def catalog_name(self) -> Optional[_builtins.str]:
+        """
+        The name of the catalog where the schema and the registered model reside.
+        """
+        return pulumi.get(self, "catalog_name")
+
+    @catalog_name.setter
+    def catalog_name(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "catalog_name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[_builtins.str]:
+        """
+        The unique identifier of the model version
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="modelName")
+    def model_name(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "model_name")
+
+    @model_name.setter
+    def model_name(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "model_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="schemaName")
+    def schema_name(self) -> Optional[_builtins.str]:
+        """
+        The name of the schema where the registered model resides.
+        """
+        return pulumi.get(self, "schema_name")
+
+    @schema_name.setter
+    def schema_name(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "schema_name", value)
 
     @_builtins.property
     @pulumi.getter(name="versionNum")
@@ -80456,6 +74351,59 @@ class GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTabl
     @table_full_name.setter
     def table_full_name(self, value: _builtins.str):
         pulumi.set(self, "table_full_name", value)
+
+
+if not MYPY:
+    class GetRegisteredModelVersionsProviderConfigArgsDict(TypedDict):
+        workspace_id: _builtins.str
+elif False:
+    GetRegisteredModelVersionsProviderConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetRegisteredModelVersionsProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: _builtins.str):
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.str:
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: _builtins.str):
+        pulumi.set(self, "workspace_id", value)
+
+
+if not MYPY:
+    class GetSchemaProviderConfigArgsDict(TypedDict):
+        workspace_id: _builtins.str
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+elif False:
+    GetSchemaProviderConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetSchemaProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: _builtins.str):
+        """
+        :param _builtins.str workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.str:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: _builtins.str):
+        pulumi.set(self, "workspace_id", value)
 
 
 if not MYPY:
@@ -80879,183 +74827,34 @@ class GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagArgs:
 
 
 if not MYPY:
-    class GetServicePrincipalFederationPolicyOidcPolicyArgsDict(TypedDict):
-        audiences: NotRequired[Sequence[_builtins.str]]
+    class GetSchemasProviderConfigArgsDict(TypedDict):
+        workspace_id: _builtins.str
         """
-        (list of string) - The allowed token audiences, as specified in the 'aud' claim of federated tokens.
-        The audience identifier is intended to represent the recipient of the token.
-        Can be any non-empty string value. As long as the audience in the token matches
-        at least one audience in the policy, the token is considered a match. If audiences
-        is unspecified, defaults to your Databricks account id
-        """
-        issuer: NotRequired[_builtins.str]
-        """
-        (string) - The required token issuer, as specified in the 'iss' claim of federated tokens
-        """
-        jwks_json: NotRequired[_builtins.str]
-        """
-        (string) - The public keys used to validate the signature of federated tokens, in JWKS format.
-        Most use cases should not need to specify this field. If jwks_uri and jwks_json
-        are both unspecified (recommended), Databricks automatically fetches the public
-        keys from your issuer’s well known endpoint. Databricks strongly recommends
-        relying on your issuer’s well known endpoint for discovering public keys
-        """
-        jwks_uri: NotRequired[_builtins.str]
-        """
-        (string) - URL of the public keys used to validate the signature of federated tokens, in
-        JWKS format. Most use cases should not need to specify this field. If jwks_uri
-        and jwks_json are both unspecified (recommended), Databricks automatically
-        fetches the public keys from your issuer’s well known endpoint. Databricks
-        strongly recommends relying on your issuer’s well known endpoint for discovering
-        public keys
-        """
-        subject: NotRequired[_builtins.str]
-        """
-        (string) - The required token subject, as specified in the subject claim of federated tokens.
-        Must be specified for service principal federation policies. Must not be specified
-        for account federation policies
-        """
-        subject_claim: NotRequired[_builtins.str]
-        """
-        (string) - The claim that contains the subject of the token. If unspecified, the default value
-        is 'sub'
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
         """
 elif False:
-    GetServicePrincipalFederationPolicyOidcPolicyArgsDict: TypeAlias = Mapping[str, Any]
+    GetSchemasProviderConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GetServicePrincipalFederationPolicyOidcPolicyArgs:
+class GetSchemasProviderConfigArgs:
     def __init__(__self__, *,
-                 audiences: Optional[Sequence[_builtins.str]] = None,
-                 issuer: Optional[_builtins.str] = None,
-                 jwks_json: Optional[_builtins.str] = None,
-                 jwks_uri: Optional[_builtins.str] = None,
-                 subject: Optional[_builtins.str] = None,
-                 subject_claim: Optional[_builtins.str] = None):
+                 workspace_id: _builtins.str):
         """
-        :param Sequence[_builtins.str] audiences: (list of string) - The allowed token audiences, as specified in the 'aud' claim of federated tokens.
-               The audience identifier is intended to represent the recipient of the token.
-               Can be any non-empty string value. As long as the audience in the token matches
-               at least one audience in the policy, the token is considered a match. If audiences
-               is unspecified, defaults to your Databricks account id
-        :param _builtins.str issuer: (string) - The required token issuer, as specified in the 'iss' claim of federated tokens
-        :param _builtins.str jwks_json: (string) - The public keys used to validate the signature of federated tokens, in JWKS format.
-               Most use cases should not need to specify this field. If jwks_uri and jwks_json
-               are both unspecified (recommended), Databricks automatically fetches the public
-               keys from your issuer’s well known endpoint. Databricks strongly recommends
-               relying on your issuer’s well known endpoint for discovering public keys
-        :param _builtins.str jwks_uri: (string) - URL of the public keys used to validate the signature of federated tokens, in
-               JWKS format. Most use cases should not need to specify this field. If jwks_uri
-               and jwks_json are both unspecified (recommended), Databricks automatically
-               fetches the public keys from your issuer’s well known endpoint. Databricks
-               strongly recommends relying on your issuer’s well known endpoint for discovering
-               public keys
-        :param _builtins.str subject: (string) - The required token subject, as specified in the subject claim of federated tokens.
-               Must be specified for service principal federation policies. Must not be specified
-               for account federation policies
-        :param _builtins.str subject_claim: (string) - The claim that contains the subject of the token. If unspecified, the default value
-               is 'sub'
+        :param _builtins.str workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
         """
-        if audiences is not None:
-            pulumi.set(__self__, "audiences", audiences)
-        if issuer is not None:
-            pulumi.set(__self__, "issuer", issuer)
-        if jwks_json is not None:
-            pulumi.set(__self__, "jwks_json", jwks_json)
-        if jwks_uri is not None:
-            pulumi.set(__self__, "jwks_uri", jwks_uri)
-        if subject is not None:
-            pulumi.set(__self__, "subject", subject)
-        if subject_claim is not None:
-            pulumi.set(__self__, "subject_claim", subject_claim)
+        pulumi.set(__self__, "workspace_id", workspace_id)
 
     @_builtins.property
-    @pulumi.getter
-    def audiences(self) -> Optional[Sequence[_builtins.str]]:
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.str:
         """
-        (list of string) - The allowed token audiences, as specified in the 'aud' claim of federated tokens.
-        The audience identifier is intended to represent the recipient of the token.
-        Can be any non-empty string value. As long as the audience in the token matches
-        at least one audience in the policy, the token is considered a match. If audiences
-        is unspecified, defaults to your Databricks account id
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
         """
-        return pulumi.get(self, "audiences")
+        return pulumi.get(self, "workspace_id")
 
-    @audiences.setter
-    def audiences(self, value: Optional[Sequence[_builtins.str]]):
-        pulumi.set(self, "audiences", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def issuer(self) -> Optional[_builtins.str]:
-        """
-        (string) - The required token issuer, as specified in the 'iss' claim of federated tokens
-        """
-        return pulumi.get(self, "issuer")
-
-    @issuer.setter
-    def issuer(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "issuer", value)
-
-    @_builtins.property
-    @pulumi.getter(name="jwksJson")
-    def jwks_json(self) -> Optional[_builtins.str]:
-        """
-        (string) - The public keys used to validate the signature of federated tokens, in JWKS format.
-        Most use cases should not need to specify this field. If jwks_uri and jwks_json
-        are both unspecified (recommended), Databricks automatically fetches the public
-        keys from your issuer’s well known endpoint. Databricks strongly recommends
-        relying on your issuer’s well known endpoint for discovering public keys
-        """
-        return pulumi.get(self, "jwks_json")
-
-    @jwks_json.setter
-    def jwks_json(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "jwks_json", value)
-
-    @_builtins.property
-    @pulumi.getter(name="jwksUri")
-    def jwks_uri(self) -> Optional[_builtins.str]:
-        """
-        (string) - URL of the public keys used to validate the signature of federated tokens, in
-        JWKS format. Most use cases should not need to specify this field. If jwks_uri
-        and jwks_json are both unspecified (recommended), Databricks automatically
-        fetches the public keys from your issuer’s well known endpoint. Databricks
-        strongly recommends relying on your issuer’s well known endpoint for discovering
-        public keys
-        """
-        return pulumi.get(self, "jwks_uri")
-
-    @jwks_uri.setter
-    def jwks_uri(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "jwks_uri", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def subject(self) -> Optional[_builtins.str]:
-        """
-        (string) - The required token subject, as specified in the subject claim of federated tokens.
-        Must be specified for service principal federation policies. Must not be specified
-        for account federation policies
-        """
-        return pulumi.get(self, "subject")
-
-    @subject.setter
-    def subject(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "subject", value)
-
-    @_builtins.property
-    @pulumi.getter(name="subjectClaim")
-    def subject_claim(self) -> Optional[_builtins.str]:
-        """
-        (string) - The claim that contains the subject of the token. If unspecified, the default value
-        is 'sub'
-        """
-        return pulumi.get(self, "subject_claim")
-
-    @subject_claim.setter
-    def subject_claim(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "subject_claim", value)
+    @workspace_id.setter
+    def workspace_id(self, value: _builtins.str):
+        pulumi.set(self, "workspace_id", value)
 
 
 if not MYPY:
@@ -82880,13 +76679,36 @@ class GetServingEndpointsEndpointTagArgs:
 
 
 if not MYPY:
+    class GetServingEndpointsProviderConfigArgsDict(TypedDict):
+        workspace_id: _builtins.str
+elif False:
+    GetServingEndpointsProviderConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetServingEndpointsProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: _builtins.str):
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.str:
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: _builtins.str):
+        pulumi.set(self, "workspace_id", value)
+
+
+if not MYPY:
     class GetShareObjectArgsDict(TypedDict):
         added_at: _builtins.int
         added_by: _builtins.str
-        data_object_type: _builtins.str
-        """
-        Type of the object.
-        """
+        effective_cdf_enabled: _builtins.bool
+        effective_history_data_sharing_status: _builtins.str
+        effective_shared_as: _builtins.str
+        effective_start_version: _builtins.int
+        effective_string_shared_as: _builtins.str
         name: _builtins.str
         """
         The name of the share
@@ -82898,6 +76720,10 @@ if not MYPY:
         Description about the object.
         """
         content: NotRequired[_builtins.str]
+        data_object_type: NotRequired[_builtins.str]
+        """
+        Type of the object.
+        """
         history_data_sharing_status: NotRequired[_builtins.str]
         partitions: NotRequired[Sequence['GetShareObjectPartitionArgsDict']]
         shared_as: NotRequired[_builtins.str]
@@ -82911,25 +76737,34 @@ class GetShareObjectArgs:
     def __init__(__self__, *,
                  added_at: _builtins.int,
                  added_by: _builtins.str,
-                 data_object_type: _builtins.str,
+                 effective_cdf_enabled: _builtins.bool,
+                 effective_history_data_sharing_status: _builtins.str,
+                 effective_shared_as: _builtins.str,
+                 effective_start_version: _builtins.int,
+                 effective_string_shared_as: _builtins.str,
                  name: _builtins.str,
                  status: _builtins.str,
                  cdf_enabled: Optional[_builtins.bool] = None,
                  comment: Optional[_builtins.str] = None,
                  content: Optional[_builtins.str] = None,
+                 data_object_type: Optional[_builtins.str] = None,
                  history_data_sharing_status: Optional[_builtins.str] = None,
                  partitions: Optional[Sequence['GetShareObjectPartitionArgs']] = None,
                  shared_as: Optional[_builtins.str] = None,
                  start_version: Optional[_builtins.int] = None,
                  string_shared_as: Optional[_builtins.str] = None):
         """
-        :param _builtins.str data_object_type: Type of the object.
         :param _builtins.str name: The name of the share
         :param _builtins.str comment: Description about the object.
+        :param _builtins.str data_object_type: Type of the object.
         """
         pulumi.set(__self__, "added_at", added_at)
         pulumi.set(__self__, "added_by", added_by)
-        pulumi.set(__self__, "data_object_type", data_object_type)
+        pulumi.set(__self__, "effective_cdf_enabled", effective_cdf_enabled)
+        pulumi.set(__self__, "effective_history_data_sharing_status", effective_history_data_sharing_status)
+        pulumi.set(__self__, "effective_shared_as", effective_shared_as)
+        pulumi.set(__self__, "effective_start_version", effective_start_version)
+        pulumi.set(__self__, "effective_string_shared_as", effective_string_shared_as)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "status", status)
         if cdf_enabled is not None:
@@ -82938,6 +76773,8 @@ class GetShareObjectArgs:
             pulumi.set(__self__, "comment", comment)
         if content is not None:
             pulumi.set(__self__, "content", content)
+        if data_object_type is not None:
+            pulumi.set(__self__, "data_object_type", data_object_type)
         if history_data_sharing_status is not None:
             pulumi.set(__self__, "history_data_sharing_status", history_data_sharing_status)
         if partitions is not None:
@@ -82968,16 +76805,49 @@ class GetShareObjectArgs:
         pulumi.set(self, "added_by", value)
 
     @_builtins.property
-    @pulumi.getter(name="dataObjectType")
-    def data_object_type(self) -> _builtins.str:
-        """
-        Type of the object.
-        """
-        return pulumi.get(self, "data_object_type")
+    @pulumi.getter(name="effectiveCdfEnabled")
+    def effective_cdf_enabled(self) -> _builtins.bool:
+        return pulumi.get(self, "effective_cdf_enabled")
 
-    @data_object_type.setter
-    def data_object_type(self, value: _builtins.str):
-        pulumi.set(self, "data_object_type", value)
+    @effective_cdf_enabled.setter
+    def effective_cdf_enabled(self, value: _builtins.bool):
+        pulumi.set(self, "effective_cdf_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="effectiveHistoryDataSharingStatus")
+    def effective_history_data_sharing_status(self) -> _builtins.str:
+        return pulumi.get(self, "effective_history_data_sharing_status")
+
+    @effective_history_data_sharing_status.setter
+    def effective_history_data_sharing_status(self, value: _builtins.str):
+        pulumi.set(self, "effective_history_data_sharing_status", value)
+
+    @_builtins.property
+    @pulumi.getter(name="effectiveSharedAs")
+    def effective_shared_as(self) -> _builtins.str:
+        return pulumi.get(self, "effective_shared_as")
+
+    @effective_shared_as.setter
+    def effective_shared_as(self, value: _builtins.str):
+        pulumi.set(self, "effective_shared_as", value)
+
+    @_builtins.property
+    @pulumi.getter(name="effectiveStartVersion")
+    def effective_start_version(self) -> _builtins.int:
+        return pulumi.get(self, "effective_start_version")
+
+    @effective_start_version.setter
+    def effective_start_version(self, value: _builtins.int):
+        pulumi.set(self, "effective_start_version", value)
+
+    @_builtins.property
+    @pulumi.getter(name="effectiveStringSharedAs")
+    def effective_string_shared_as(self) -> _builtins.str:
+        return pulumi.get(self, "effective_string_shared_as")
+
+    @effective_string_shared_as.setter
+    def effective_string_shared_as(self, value: _builtins.str):
+        pulumi.set(self, "effective_string_shared_as", value)
 
     @_builtins.property
     @pulumi.getter
@@ -83029,6 +76899,18 @@ class GetShareObjectArgs:
     @content.setter
     def content(self, value: Optional[_builtins.str]):
         pulumi.set(self, "content", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dataObjectType")
+    def data_object_type(self) -> Optional[_builtins.str]:
+        """
+        Type of the object.
+        """
+        return pulumi.get(self, "data_object_type")
+
+    @data_object_type.setter
+    def data_object_type(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "data_object_type", value)
 
     @_builtins.property
     @pulumi.getter(name="historyDataSharingStatus")
@@ -83101,11 +76983,11 @@ class GetShareObjectPartitionArgs:
 
 if not MYPY:
     class GetShareObjectPartitionValueArgsDict(TypedDict):
-        name: _builtins.str
+        name: NotRequired[_builtins.str]
         """
         The name of the share
         """
-        op: _builtins.str
+        op: NotRequired[_builtins.str]
         recipient_property_key: NotRequired[_builtins.str]
         value: NotRequired[_builtins.str]
 elif False:
@@ -83114,15 +76996,17 @@ elif False:
 @pulumi.input_type
 class GetShareObjectPartitionValueArgs:
     def __init__(__self__, *,
-                 name: _builtins.str,
-                 op: _builtins.str,
+                 name: Optional[_builtins.str] = None,
+                 op: Optional[_builtins.str] = None,
                  recipient_property_key: Optional[_builtins.str] = None,
                  value: Optional[_builtins.str] = None):
         """
         :param _builtins.str name: The name of the share
         """
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "op", op)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if op is not None:
+            pulumi.set(__self__, "op", op)
         if recipient_property_key is not None:
             pulumi.set(__self__, "recipient_property_key", recipient_property_key)
         if value is not None:
@@ -83130,23 +77014,23 @@ class GetShareObjectPartitionValueArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> _builtins.str:
+    def name(self) -> Optional[_builtins.str]:
         """
         The name of the share
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: _builtins.str):
+    def name(self, value: Optional[_builtins.str]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def op(self) -> _builtins.str:
+    def op(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "op")
 
     @op.setter
-    def op(self, value: _builtins.str):
+    def op(self, value: Optional[_builtins.str]):
         pulumi.set(self, "op", value)
 
     @_builtins.property
@@ -83166,6 +77050,99 @@ class GetShareObjectPartitionValueArgs:
     @value.setter
     def value(self, value: Optional[_builtins.str]):
         pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class GetShareProviderConfigArgsDict(TypedDict):
+        workspace_id: _builtins.str
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+elif False:
+    GetShareProviderConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetShareProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: _builtins.str):
+        """
+        :param _builtins.str workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.str:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: _builtins.str):
+        pulumi.set(self, "workspace_id", value)
+
+
+if not MYPY:
+    class GetSharesProviderConfigArgsDict(TypedDict):
+        workspace_id: _builtins.str
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+elif False:
+    GetSharesProviderConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetSharesProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: _builtins.str):
+        """
+        :param _builtins.str workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.str:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: _builtins.str):
+        pulumi.set(self, "workspace_id", value)
+
+
+if not MYPY:
+    class GetSparkVersionProviderConfigArgsDict(TypedDict):
+        workspace_id: _builtins.str
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+elif False:
+    GetSparkVersionProviderConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetSparkVersionProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: _builtins.str):
+        """
+        :param _builtins.str workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.str:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: _builtins.str):
+        pulumi.set(self, "workspace_id", value)
 
 
 if not MYPY:
@@ -83400,6 +77377,28 @@ class GetSqlWarehouseOdbcParamsArgs:
 
 
 if not MYPY:
+    class GetSqlWarehouseProviderConfigArgsDict(TypedDict):
+        workspace_id: _builtins.str
+elif False:
+    GetSqlWarehouseProviderConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetSqlWarehouseProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: _builtins.str):
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.str:
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: _builtins.str):
+        pulumi.set(self, "workspace_id", value)
+
+
+if not MYPY:
     class GetSqlWarehouseTagsArgsDict(TypedDict):
         custom_tags: NotRequired[Sequence['GetSqlWarehouseTagsCustomTagArgsDict']]
 elif False:
@@ -83456,6 +77455,68 @@ class GetSqlWarehouseTagsCustomTagArgs:
     @value.setter
     def value(self, value: Optional[_builtins.str]):
         pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class GetSqlWarehousesProviderConfigArgsDict(TypedDict):
+        workspace_id: _builtins.str
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+elif False:
+    GetSqlWarehousesProviderConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetSqlWarehousesProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: _builtins.str):
+        """
+        :param _builtins.str workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.str:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: _builtins.str):
+        pulumi.set(self, "workspace_id", value)
+
+
+if not MYPY:
+    class GetStorageCredentialProviderConfigArgsDict(TypedDict):
+        workspace_id: _builtins.str
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+elif False:
+    GetStorageCredentialProviderConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetStorageCredentialProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: _builtins.str):
+        """
+        :param _builtins.str workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.str:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: _builtins.str):
+        pulumi.set(self, "workspace_id", value)
 
 
 if not MYPY:
@@ -84084,6 +78145,68 @@ class GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAccountArgs:
 
 
 if not MYPY:
+    class GetStorageCredentialsProviderConfigArgsDict(TypedDict):
+        workspace_id: _builtins.str
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+elif False:
+    GetStorageCredentialsProviderConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetStorageCredentialsProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: _builtins.str):
+        """
+        :param _builtins.str workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.str:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: _builtins.str):
+        pulumi.set(self, "workspace_id", value)
+
+
+if not MYPY:
+    class GetTableProviderConfigArgsDict(TypedDict):
+        workspace_id: _builtins.str
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+elif False:
+    GetTableProviderConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetTableProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: _builtins.str):
+        """
+        :param _builtins.str workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.str:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: _builtins.str):
+        pulumi.set(self, "workspace_id", value)
+
+
+if not MYPY:
     class GetTableTableInfoArgsDict(TypedDict):
         access_point: NotRequired[_builtins.str]
         browse_only: NotRequired[_builtins.bool]
@@ -84134,6 +78257,9 @@ if not MYPY:
         storage_location: NotRequired[_builtins.str]
         table_constraints: NotRequired[Sequence['GetTableTableInfoTableConstraintArgsDict']]
         table_id: NotRequired[_builtins.str]
+        """
+        The unique identifier of the table.
+        """
         table_type: NotRequired[_builtins.str]
         """
         Table type, e.g. MANAGED, EXTERNAL, VIEW
@@ -84195,6 +78321,7 @@ class GetTableTableInfoArgs:
         :param _builtins.str name: Full name of the databricks_table: _`catalog`.`schema`.`table`_
         :param _builtins.str owner: Current owner of the table
         :param _builtins.str schema_name: Name of parent schema relative to its parent catalog.
+        :param _builtins.str table_id: The unique identifier of the table.
         :param _builtins.str table_type: Table type, e.g. MANAGED, EXTERNAL, VIEW
         :param _builtins.str view_definition: View definition SQL (when `table_type` is VIEW, MATERIALIZED_VIEW, or STREAMING_TABLE)
         :param 'GetTableTableInfoViewDependenciesArgs' view_dependencies: View dependencies (when `table_type` is VIEW or MATERIALIZED_VIEW, STREAMING_TABLE)
@@ -84533,6 +78660,9 @@ class GetTableTableInfoArgs:
     @_builtins.property
     @pulumi.getter(name="tableId")
     def table_id(self) -> Optional[_builtins.str]:
+        """
+        The unique identifier of the table.
+        """
         return pulumi.get(self, "table_id")
 
     @table_id.setter
@@ -85656,34 +79786,96 @@ class GetTableTableInfoViewDependenciesDependencyTableArgs:
 
 
 if not MYPY:
-    class GetTagPolicyValueArgsDict(TypedDict):
-        name: _builtins.str
+    class GetTablesProviderConfigArgsDict(TypedDict):
+        workspace_id: _builtins.str
         """
-        (string)
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
         """
 elif False:
-    GetTagPolicyValueArgsDict: TypeAlias = Mapping[str, Any]
+    GetTablesProviderConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GetTagPolicyValueArgs:
+class GetTablesProviderConfigArgs:
     def __init__(__self__, *,
-                 name: _builtins.str):
+                 workspace_id: _builtins.str):
         """
-        :param _builtins.str name: (string)
+        :param _builtins.str workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
         """
-        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "workspace_id", workspace_id)
 
     @_builtins.property
-    @pulumi.getter
-    def name(self) -> _builtins.str:
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.str:
         """
-        (string)
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
         """
-        return pulumi.get(self, "name")
+        return pulumi.get(self, "workspace_id")
 
-    @name.setter
-    def name(self, value: _builtins.str):
-        pulumi.set(self, "name", value)
+    @workspace_id.setter
+    def workspace_id(self, value: _builtins.str):
+        pulumi.set(self, "workspace_id", value)
+
+
+if not MYPY:
+    class GetViewsProviderConfigArgsDict(TypedDict):
+        workspace_id: _builtins.str
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+elif False:
+    GetViewsProviderConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetViewsProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: _builtins.str):
+        """
+        :param _builtins.str workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.str:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: _builtins.str):
+        pulumi.set(self, "workspace_id", value)
+
+
+if not MYPY:
+    class GetVolumeProviderConfigArgsDict(TypedDict):
+        workspace_id: _builtins.str
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+elif False:
+    GetVolumeProviderConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetVolumeProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: _builtins.str):
+        """
+        :param _builtins.str workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.str:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: _builtins.str):
+        pulumi.set(self, "workspace_id", value)
 
 
 if not MYPY:
@@ -86098,1092 +80290,64 @@ class GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsArgs:
 
 
 if not MYPY:
-    class GetWorkspaceSettingV2AibiDashboardEmbeddingAccessPolicyArgsDict(TypedDict):
-        access_policy_type: _builtins.str
+    class GetVolumesProviderConfigArgsDict(TypedDict):
+        workspace_id: _builtins.str
         """
-        (string) - . Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
         """
 elif False:
-    GetWorkspaceSettingV2AibiDashboardEmbeddingAccessPolicyArgsDict: TypeAlias = Mapping[str, Any]
+    GetVolumesProviderConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GetWorkspaceSettingV2AibiDashboardEmbeddingAccessPolicyArgs:
+class GetVolumesProviderConfigArgs:
     def __init__(__self__, *,
-                 access_policy_type: _builtins.str):
+                 workspace_id: _builtins.str):
         """
-        :param _builtins.str access_policy_type: (string) - . Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
+        :param _builtins.str workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
         """
-        pulumi.set(__self__, "access_policy_type", access_policy_type)
+        pulumi.set(__self__, "workspace_id", workspace_id)
 
     @_builtins.property
-    @pulumi.getter(name="accessPolicyType")
-    def access_policy_type(self) -> _builtins.str:
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.str:
         """
-        (string) - . Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
         """
-        return pulumi.get(self, "access_policy_type")
+        return pulumi.get(self, "workspace_id")
 
-    @access_policy_type.setter
-    def access_policy_type(self, value: _builtins.str):
-        pulumi.set(self, "access_policy_type", value)
+    @workspace_id.setter
+    def workspace_id(self, value: _builtins.str):
+        pulumi.set(self, "workspace_id", value)
 
 
 if not MYPY:
-    class GetWorkspaceSettingV2AibiDashboardEmbeddingApprovedDomainsArgsDict(TypedDict):
-        approved_domains: NotRequired[Sequence[_builtins.str]]
+    class GetZonesProviderConfigArgsDict(TypedDict):
+        workspace_id: _builtins.str
         """
-        (list of string)
-        """
-elif False:
-    GetWorkspaceSettingV2AibiDashboardEmbeddingApprovedDomainsArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetWorkspaceSettingV2AibiDashboardEmbeddingApprovedDomainsArgs:
-    def __init__(__self__, *,
-                 approved_domains: Optional[Sequence[_builtins.str]] = None):
-        """
-        :param Sequence[_builtins.str] approved_domains: (list of string)
-        """
-        if approved_domains is not None:
-            pulumi.set(__self__, "approved_domains", approved_domains)
-
-    @_builtins.property
-    @pulumi.getter(name="approvedDomains")
-    def approved_domains(self) -> Optional[Sequence[_builtins.str]]:
-        """
-        (list of string)
-        """
-        return pulumi.get(self, "approved_domains")
-
-    @approved_domains.setter
-    def approved_domains(self, value: Optional[Sequence[_builtins.str]]):
-        pulumi.set(self, "approved_domains", value)
-
-
-if not MYPY:
-    class GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceArgsDict(TypedDict):
-        can_toggle: NotRequired[_builtins.bool]
-        """
-        (boolean)
-        """
-        enabled: NotRequired[_builtins.bool]
-        """
-        (boolean)
-        """
-        enablement_details: NotRequired['GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsArgsDict']
-        """
-        (ClusterAutoRestartMessageEnablementDetails)
-        """
-        maintenance_window: NotRequired['GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowArgsDict']
-        """
-        (ClusterAutoRestartMessageMaintenanceWindow)
-        """
-        restart_even_if_no_updates_available: NotRequired[_builtins.bool]
-        """
-        (boolean)
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
         """
 elif False:
-    GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceArgsDict: TypeAlias = Mapping[str, Any]
+    GetZonesProviderConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceArgs:
+class GetZonesProviderConfigArgs:
     def __init__(__self__, *,
-                 can_toggle: Optional[_builtins.bool] = None,
-                 enabled: Optional[_builtins.bool] = None,
-                 enablement_details: Optional['GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsArgs'] = None,
-                 maintenance_window: Optional['GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowArgs'] = None,
-                 restart_even_if_no_updates_available: Optional[_builtins.bool] = None):
+                 workspace_id: _builtins.str):
         """
-        :param _builtins.bool can_toggle: (boolean)
-        :param _builtins.bool enabled: (boolean)
-        :param 'GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsArgs' enablement_details: (ClusterAutoRestartMessageEnablementDetails)
-        :param 'GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowArgs' maintenance_window: (ClusterAutoRestartMessageMaintenanceWindow)
-        :param _builtins.bool restart_even_if_no_updates_available: (boolean)
+        :param _builtins.str workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
         """
-        if can_toggle is not None:
-            pulumi.set(__self__, "can_toggle", can_toggle)
-        if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
-        if enablement_details is not None:
-            pulumi.set(__self__, "enablement_details", enablement_details)
-        if maintenance_window is not None:
-            pulumi.set(__self__, "maintenance_window", maintenance_window)
-        if restart_even_if_no_updates_available is not None:
-            pulumi.set(__self__, "restart_even_if_no_updates_available", restart_even_if_no_updates_available)
+        pulumi.set(__self__, "workspace_id", workspace_id)
 
     @_builtins.property
-    @pulumi.getter(name="canToggle")
-    def can_toggle(self) -> Optional[_builtins.bool]:
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.str:
         """
-        (boolean)
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
         """
-        return pulumi.get(self, "can_toggle")
+        return pulumi.get(self, "workspace_id")
 
-    @can_toggle.setter
-    def can_toggle(self, value: Optional[_builtins.bool]):
-        pulumi.set(self, "can_toggle", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def enabled(self) -> Optional[_builtins.bool]:
-        """
-        (boolean)
-        """
-        return pulumi.get(self, "enabled")
-
-    @enabled.setter
-    def enabled(self, value: Optional[_builtins.bool]):
-        pulumi.set(self, "enabled", value)
-
-    @_builtins.property
-    @pulumi.getter(name="enablementDetails")
-    def enablement_details(self) -> Optional['GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsArgs']:
-        """
-        (ClusterAutoRestartMessageEnablementDetails)
-        """
-        return pulumi.get(self, "enablement_details")
-
-    @enablement_details.setter
-    def enablement_details(self, value: Optional['GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsArgs']):
-        pulumi.set(self, "enablement_details", value)
-
-    @_builtins.property
-    @pulumi.getter(name="maintenanceWindow")
-    def maintenance_window(self) -> Optional['GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowArgs']:
-        """
-        (ClusterAutoRestartMessageMaintenanceWindow)
-        """
-        return pulumi.get(self, "maintenance_window")
-
-    @maintenance_window.setter
-    def maintenance_window(self, value: Optional['GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowArgs']):
-        pulumi.set(self, "maintenance_window", value)
-
-    @_builtins.property
-    @pulumi.getter(name="restartEvenIfNoUpdatesAvailable")
-    def restart_even_if_no_updates_available(self) -> Optional[_builtins.bool]:
-        """
-        (boolean)
-        """
-        return pulumi.get(self, "restart_even_if_no_updates_available")
-
-    @restart_even_if_no_updates_available.setter
-    def restart_even_if_no_updates_available(self, value: Optional[_builtins.bool]):
-        pulumi.set(self, "restart_even_if_no_updates_available", value)
-
-
-if not MYPY:
-    class GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsArgsDict(TypedDict):
-        forced_for_compliance_mode: NotRequired[_builtins.bool]
-        """
-        (boolean) - The feature is force enabled if compliance mode is active
-        """
-        unavailable_for_disabled_entitlement: NotRequired[_builtins.bool]
-        """
-        (boolean) - The feature is unavailable if the corresponding entitlement disabled (see getShieldEntitlementEnable)
-        """
-        unavailable_for_non_enterprise_tier: NotRequired[_builtins.bool]
-        """
-        (boolean) - The feature is unavailable if the customer doesn't have enterprise tier
-        """
-elif False:
-    GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsArgs:
-    def __init__(__self__, *,
-                 forced_for_compliance_mode: Optional[_builtins.bool] = None,
-                 unavailable_for_disabled_entitlement: Optional[_builtins.bool] = None,
-                 unavailable_for_non_enterprise_tier: Optional[_builtins.bool] = None):
-        """
-        :param _builtins.bool forced_for_compliance_mode: (boolean) - The feature is force enabled if compliance mode is active
-        :param _builtins.bool unavailable_for_disabled_entitlement: (boolean) - The feature is unavailable if the corresponding entitlement disabled (see getShieldEntitlementEnable)
-        :param _builtins.bool unavailable_for_non_enterprise_tier: (boolean) - The feature is unavailable if the customer doesn't have enterprise tier
-        """
-        if forced_for_compliance_mode is not None:
-            pulumi.set(__self__, "forced_for_compliance_mode", forced_for_compliance_mode)
-        if unavailable_for_disabled_entitlement is not None:
-            pulumi.set(__self__, "unavailable_for_disabled_entitlement", unavailable_for_disabled_entitlement)
-        if unavailable_for_non_enterprise_tier is not None:
-            pulumi.set(__self__, "unavailable_for_non_enterprise_tier", unavailable_for_non_enterprise_tier)
-
-    @_builtins.property
-    @pulumi.getter(name="forcedForComplianceMode")
-    def forced_for_compliance_mode(self) -> Optional[_builtins.bool]:
-        """
-        (boolean) - The feature is force enabled if compliance mode is active
-        """
-        return pulumi.get(self, "forced_for_compliance_mode")
-
-    @forced_for_compliance_mode.setter
-    def forced_for_compliance_mode(self, value: Optional[_builtins.bool]):
-        pulumi.set(self, "forced_for_compliance_mode", value)
-
-    @_builtins.property
-    @pulumi.getter(name="unavailableForDisabledEntitlement")
-    def unavailable_for_disabled_entitlement(self) -> Optional[_builtins.bool]:
-        """
-        (boolean) - The feature is unavailable if the corresponding entitlement disabled (see getShieldEntitlementEnable)
-        """
-        return pulumi.get(self, "unavailable_for_disabled_entitlement")
-
-    @unavailable_for_disabled_entitlement.setter
-    def unavailable_for_disabled_entitlement(self, value: Optional[_builtins.bool]):
-        pulumi.set(self, "unavailable_for_disabled_entitlement", value)
-
-    @_builtins.property
-    @pulumi.getter(name="unavailableForNonEnterpriseTier")
-    def unavailable_for_non_enterprise_tier(self) -> Optional[_builtins.bool]:
-        """
-        (boolean) - The feature is unavailable if the customer doesn't have enterprise tier
-        """
-        return pulumi.get(self, "unavailable_for_non_enterprise_tier")
-
-    @unavailable_for_non_enterprise_tier.setter
-    def unavailable_for_non_enterprise_tier(self, value: Optional[_builtins.bool]):
-        pulumi.set(self, "unavailable_for_non_enterprise_tier", value)
-
-
-if not MYPY:
-    class GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowArgsDict(TypedDict):
-        week_day_based_schedule: NotRequired['GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgsDict']
-        """
-        (ClusterAutoRestartMessageMaintenanceWindowWeekDayBasedSchedule)
-        """
-elif False:
-    GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowArgs:
-    def __init__(__self__, *,
-                 week_day_based_schedule: Optional['GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgs'] = None):
-        """
-        :param 'GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgs' week_day_based_schedule: (ClusterAutoRestartMessageMaintenanceWindowWeekDayBasedSchedule)
-        """
-        if week_day_based_schedule is not None:
-            pulumi.set(__self__, "week_day_based_schedule", week_day_based_schedule)
-
-    @_builtins.property
-    @pulumi.getter(name="weekDayBasedSchedule")
-    def week_day_based_schedule(self) -> Optional['GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgs']:
-        """
-        (ClusterAutoRestartMessageMaintenanceWindowWeekDayBasedSchedule)
-        """
-        return pulumi.get(self, "week_day_based_schedule")
-
-    @week_day_based_schedule.setter
-    def week_day_based_schedule(self, value: Optional['GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgs']):
-        pulumi.set(self, "week_day_based_schedule", value)
-
-
-if not MYPY:
-    class GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgsDict(TypedDict):
-        day_of_week: NotRequired[_builtins.str]
-        """
-        (string) - . Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
-        """
-        frequency: NotRequired[_builtins.str]
-        """
-        (string) - . Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
-        """
-        window_start_time: NotRequired['GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgsDict']
-        """
-        (ClusterAutoRestartMessageMaintenanceWindowWindowStartTime)
-        """
-elif False:
-    GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgs:
-    def __init__(__self__, *,
-                 day_of_week: Optional[_builtins.str] = None,
-                 frequency: Optional[_builtins.str] = None,
-                 window_start_time: Optional['GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs'] = None):
-        """
-        :param _builtins.str day_of_week: (string) - . Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
-        :param _builtins.str frequency: (string) - . Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
-        :param 'GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs' window_start_time: (ClusterAutoRestartMessageMaintenanceWindowWindowStartTime)
-        """
-        if day_of_week is not None:
-            pulumi.set(__self__, "day_of_week", day_of_week)
-        if frequency is not None:
-            pulumi.set(__self__, "frequency", frequency)
-        if window_start_time is not None:
-            pulumi.set(__self__, "window_start_time", window_start_time)
-
-    @_builtins.property
-    @pulumi.getter(name="dayOfWeek")
-    def day_of_week(self) -> Optional[_builtins.str]:
-        """
-        (string) - . Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
-        """
-        return pulumi.get(self, "day_of_week")
-
-    @day_of_week.setter
-    def day_of_week(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "day_of_week", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def frequency(self) -> Optional[_builtins.str]:
-        """
-        (string) - . Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
-        """
-        return pulumi.get(self, "frequency")
-
-    @frequency.setter
-    def frequency(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "frequency", value)
-
-    @_builtins.property
-    @pulumi.getter(name="windowStartTime")
-    def window_start_time(self) -> Optional['GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs']:
-        """
-        (ClusterAutoRestartMessageMaintenanceWindowWindowStartTime)
-        """
-        return pulumi.get(self, "window_start_time")
-
-    @window_start_time.setter
-    def window_start_time(self, value: Optional['GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs']):
-        pulumi.set(self, "window_start_time", value)
-
-
-if not MYPY:
-    class GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgsDict(TypedDict):
-        hours: NotRequired[_builtins.int]
-        """
-        (integer)
-        """
-        minutes: NotRequired[_builtins.int]
-        """
-        (integer)
-        """
-elif False:
-    GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs:
-    def __init__(__self__, *,
-                 hours: Optional[_builtins.int] = None,
-                 minutes: Optional[_builtins.int] = None):
-        """
-        :param _builtins.int hours: (integer)
-        :param _builtins.int minutes: (integer)
-        """
-        if hours is not None:
-            pulumi.set(__self__, "hours", hours)
-        if minutes is not None:
-            pulumi.set(__self__, "minutes", minutes)
-
-    @_builtins.property
-    @pulumi.getter
-    def hours(self) -> Optional[_builtins.int]:
-        """
-        (integer)
-        """
-        return pulumi.get(self, "hours")
-
-    @hours.setter
-    def hours(self, value: Optional[_builtins.int]):
-        pulumi.set(self, "hours", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def minutes(self) -> Optional[_builtins.int]:
-        """
-        (integer)
-        """
-        return pulumi.get(self, "minutes")
-
-    @minutes.setter
-    def minutes(self, value: Optional[_builtins.int]):
-        pulumi.set(self, "minutes", value)
-
-
-if not MYPY:
-    class GetWorkspaceSettingV2BooleanValArgsDict(TypedDict):
-        value: NotRequired[_builtins.bool]
-        """
-        (string) - Represents a generic string value
-        """
-elif False:
-    GetWorkspaceSettingV2BooleanValArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetWorkspaceSettingV2BooleanValArgs:
-    def __init__(__self__, *,
-                 value: Optional[_builtins.bool] = None):
-        """
-        :param _builtins.bool value: (string) - Represents a generic string value
-        """
-        if value is not None:
-            pulumi.set(__self__, "value", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def value(self) -> Optional[_builtins.bool]:
-        """
-        (string) - Represents a generic string value
-        """
-        return pulumi.get(self, "value")
-
-    @value.setter
-    def value(self, value: Optional[_builtins.bool]):
-        pulumi.set(self, "value", value)
-
-
-if not MYPY:
-    class GetWorkspaceSettingV2DefaultDataSecurityModeArgsDict(TypedDict):
-        status: _builtins.str
-        """
-        (string) - . Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
-        """
-elif False:
-    GetWorkspaceSettingV2DefaultDataSecurityModeArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetWorkspaceSettingV2DefaultDataSecurityModeArgs:
-    def __init__(__self__, *,
-                 status: _builtins.str):
-        """
-        :param _builtins.str status: (string) - . Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
-        """
-        pulumi.set(__self__, "status", status)
-
-    @_builtins.property
-    @pulumi.getter
-    def status(self) -> _builtins.str:
-        """
-        (string) - . Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
-        """
-        return pulumi.get(self, "status")
-
-    @status.setter
-    def status(self, value: _builtins.str):
-        pulumi.set(self, "status", value)
-
-
-if not MYPY:
-    class GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgsDict(TypedDict):
-        access_policy_type: _builtins.str
-        """
-        (string) - . Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
-        """
-elif False:
-    GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgs:
-    def __init__(__self__, *,
-                 access_policy_type: _builtins.str):
-        """
-        :param _builtins.str access_policy_type: (string) - . Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
-        """
-        pulumi.set(__self__, "access_policy_type", access_policy_type)
-
-    @_builtins.property
-    @pulumi.getter(name="accessPolicyType")
-    def access_policy_type(self) -> _builtins.str:
-        """
-        (string) - . Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
-        """
-        return pulumi.get(self, "access_policy_type")
-
-    @access_policy_type.setter
-    def access_policy_type(self, value: _builtins.str):
-        pulumi.set(self, "access_policy_type", value)
-
-
-if not MYPY:
-    class GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgsDict(TypedDict):
-        approved_domains: NotRequired[Sequence[_builtins.str]]
-        """
-        (list of string)
-        """
-elif False:
-    GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgs:
-    def __init__(__self__, *,
-                 approved_domains: Optional[Sequence[_builtins.str]] = None):
-        """
-        :param Sequence[_builtins.str] approved_domains: (list of string)
-        """
-        if approved_domains is not None:
-            pulumi.set(__self__, "approved_domains", approved_domains)
-
-    @_builtins.property
-    @pulumi.getter(name="approvedDomains")
-    def approved_domains(self) -> Optional[Sequence[_builtins.str]]:
-        """
-        (list of string)
-        """
-        return pulumi.get(self, "approved_domains")
-
-    @approved_domains.setter
-    def approved_domains(self, value: Optional[Sequence[_builtins.str]]):
-        pulumi.set(self, "approved_domains", value)
-
-
-if not MYPY:
-    class GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgsDict(TypedDict):
-        can_toggle: NotRequired[_builtins.bool]
-        """
-        (boolean)
-        """
-        enabled: NotRequired[_builtins.bool]
-        """
-        (boolean)
-        """
-        enablement_details: NotRequired['GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsArgsDict']
-        """
-        (ClusterAutoRestartMessageEnablementDetails)
-        """
-        maintenance_window: NotRequired['GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowArgsDict']
-        """
-        (ClusterAutoRestartMessageMaintenanceWindow)
-        """
-        restart_even_if_no_updates_available: NotRequired[_builtins.bool]
-        """
-        (boolean)
-        """
-elif False:
-    GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgs:
-    def __init__(__self__, *,
-                 can_toggle: Optional[_builtins.bool] = None,
-                 enabled: Optional[_builtins.bool] = None,
-                 enablement_details: Optional['GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsArgs'] = None,
-                 maintenance_window: Optional['GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowArgs'] = None,
-                 restart_even_if_no_updates_available: Optional[_builtins.bool] = None):
-        """
-        :param _builtins.bool can_toggle: (boolean)
-        :param _builtins.bool enabled: (boolean)
-        :param 'GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsArgs' enablement_details: (ClusterAutoRestartMessageEnablementDetails)
-        :param 'GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowArgs' maintenance_window: (ClusterAutoRestartMessageMaintenanceWindow)
-        :param _builtins.bool restart_even_if_no_updates_available: (boolean)
-        """
-        if can_toggle is not None:
-            pulumi.set(__self__, "can_toggle", can_toggle)
-        if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
-        if enablement_details is not None:
-            pulumi.set(__self__, "enablement_details", enablement_details)
-        if maintenance_window is not None:
-            pulumi.set(__self__, "maintenance_window", maintenance_window)
-        if restart_even_if_no_updates_available is not None:
-            pulumi.set(__self__, "restart_even_if_no_updates_available", restart_even_if_no_updates_available)
-
-    @_builtins.property
-    @pulumi.getter(name="canToggle")
-    def can_toggle(self) -> Optional[_builtins.bool]:
-        """
-        (boolean)
-        """
-        return pulumi.get(self, "can_toggle")
-
-    @can_toggle.setter
-    def can_toggle(self, value: Optional[_builtins.bool]):
-        pulumi.set(self, "can_toggle", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def enabled(self) -> Optional[_builtins.bool]:
-        """
-        (boolean)
-        """
-        return pulumi.get(self, "enabled")
-
-    @enabled.setter
-    def enabled(self, value: Optional[_builtins.bool]):
-        pulumi.set(self, "enabled", value)
-
-    @_builtins.property
-    @pulumi.getter(name="enablementDetails")
-    def enablement_details(self) -> Optional['GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsArgs']:
-        """
-        (ClusterAutoRestartMessageEnablementDetails)
-        """
-        return pulumi.get(self, "enablement_details")
-
-    @enablement_details.setter
-    def enablement_details(self, value: Optional['GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsArgs']):
-        pulumi.set(self, "enablement_details", value)
-
-    @_builtins.property
-    @pulumi.getter(name="maintenanceWindow")
-    def maintenance_window(self) -> Optional['GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowArgs']:
-        """
-        (ClusterAutoRestartMessageMaintenanceWindow)
-        """
-        return pulumi.get(self, "maintenance_window")
-
-    @maintenance_window.setter
-    def maintenance_window(self, value: Optional['GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowArgs']):
-        pulumi.set(self, "maintenance_window", value)
-
-    @_builtins.property
-    @pulumi.getter(name="restartEvenIfNoUpdatesAvailable")
-    def restart_even_if_no_updates_available(self) -> Optional[_builtins.bool]:
-        """
-        (boolean)
-        """
-        return pulumi.get(self, "restart_even_if_no_updates_available")
-
-    @restart_even_if_no_updates_available.setter
-    def restart_even_if_no_updates_available(self, value: Optional[_builtins.bool]):
-        pulumi.set(self, "restart_even_if_no_updates_available", value)
-
-
-if not MYPY:
-    class GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsArgsDict(TypedDict):
-        forced_for_compliance_mode: NotRequired[_builtins.bool]
-        """
-        (boolean) - The feature is force enabled if compliance mode is active
-        """
-        unavailable_for_disabled_entitlement: NotRequired[_builtins.bool]
-        """
-        (boolean) - The feature is unavailable if the corresponding entitlement disabled (see getShieldEntitlementEnable)
-        """
-        unavailable_for_non_enterprise_tier: NotRequired[_builtins.bool]
-        """
-        (boolean) - The feature is unavailable if the customer doesn't have enterprise tier
-        """
-elif False:
-    GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsArgs:
-    def __init__(__self__, *,
-                 forced_for_compliance_mode: Optional[_builtins.bool] = None,
-                 unavailable_for_disabled_entitlement: Optional[_builtins.bool] = None,
-                 unavailable_for_non_enterprise_tier: Optional[_builtins.bool] = None):
-        """
-        :param _builtins.bool forced_for_compliance_mode: (boolean) - The feature is force enabled if compliance mode is active
-        :param _builtins.bool unavailable_for_disabled_entitlement: (boolean) - The feature is unavailable if the corresponding entitlement disabled (see getShieldEntitlementEnable)
-        :param _builtins.bool unavailable_for_non_enterprise_tier: (boolean) - The feature is unavailable if the customer doesn't have enterprise tier
-        """
-        if forced_for_compliance_mode is not None:
-            pulumi.set(__self__, "forced_for_compliance_mode", forced_for_compliance_mode)
-        if unavailable_for_disabled_entitlement is not None:
-            pulumi.set(__self__, "unavailable_for_disabled_entitlement", unavailable_for_disabled_entitlement)
-        if unavailable_for_non_enterprise_tier is not None:
-            pulumi.set(__self__, "unavailable_for_non_enterprise_tier", unavailable_for_non_enterprise_tier)
-
-    @_builtins.property
-    @pulumi.getter(name="forcedForComplianceMode")
-    def forced_for_compliance_mode(self) -> Optional[_builtins.bool]:
-        """
-        (boolean) - The feature is force enabled if compliance mode is active
-        """
-        return pulumi.get(self, "forced_for_compliance_mode")
-
-    @forced_for_compliance_mode.setter
-    def forced_for_compliance_mode(self, value: Optional[_builtins.bool]):
-        pulumi.set(self, "forced_for_compliance_mode", value)
-
-    @_builtins.property
-    @pulumi.getter(name="unavailableForDisabledEntitlement")
-    def unavailable_for_disabled_entitlement(self) -> Optional[_builtins.bool]:
-        """
-        (boolean) - The feature is unavailable if the corresponding entitlement disabled (see getShieldEntitlementEnable)
-        """
-        return pulumi.get(self, "unavailable_for_disabled_entitlement")
-
-    @unavailable_for_disabled_entitlement.setter
-    def unavailable_for_disabled_entitlement(self, value: Optional[_builtins.bool]):
-        pulumi.set(self, "unavailable_for_disabled_entitlement", value)
-
-    @_builtins.property
-    @pulumi.getter(name="unavailableForNonEnterpriseTier")
-    def unavailable_for_non_enterprise_tier(self) -> Optional[_builtins.bool]:
-        """
-        (boolean) - The feature is unavailable if the customer doesn't have enterprise tier
-        """
-        return pulumi.get(self, "unavailable_for_non_enterprise_tier")
-
-    @unavailable_for_non_enterprise_tier.setter
-    def unavailable_for_non_enterprise_tier(self, value: Optional[_builtins.bool]):
-        pulumi.set(self, "unavailable_for_non_enterprise_tier", value)
-
-
-if not MYPY:
-    class GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowArgsDict(TypedDict):
-        week_day_based_schedule: NotRequired['GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgsDict']
-        """
-        (ClusterAutoRestartMessageMaintenanceWindowWeekDayBasedSchedule)
-        """
-elif False:
-    GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowArgs:
-    def __init__(__self__, *,
-                 week_day_based_schedule: Optional['GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgs'] = None):
-        """
-        :param 'GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgs' week_day_based_schedule: (ClusterAutoRestartMessageMaintenanceWindowWeekDayBasedSchedule)
-        """
-        if week_day_based_schedule is not None:
-            pulumi.set(__self__, "week_day_based_schedule", week_day_based_schedule)
-
-    @_builtins.property
-    @pulumi.getter(name="weekDayBasedSchedule")
-    def week_day_based_schedule(self) -> Optional['GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgs']:
-        """
-        (ClusterAutoRestartMessageMaintenanceWindowWeekDayBasedSchedule)
-        """
-        return pulumi.get(self, "week_day_based_schedule")
-
-    @week_day_based_schedule.setter
-    def week_day_based_schedule(self, value: Optional['GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgs']):
-        pulumi.set(self, "week_day_based_schedule", value)
-
-
-if not MYPY:
-    class GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgsDict(TypedDict):
-        day_of_week: NotRequired[_builtins.str]
-        """
-        (string) - . Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
-        """
-        frequency: NotRequired[_builtins.str]
-        """
-        (string) - . Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
-        """
-        window_start_time: NotRequired['GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgsDict']
-        """
-        (ClusterAutoRestartMessageMaintenanceWindowWindowStartTime)
-        """
-elif False:
-    GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgs:
-    def __init__(__self__, *,
-                 day_of_week: Optional[_builtins.str] = None,
-                 frequency: Optional[_builtins.str] = None,
-                 window_start_time: Optional['GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs'] = None):
-        """
-        :param _builtins.str day_of_week: (string) - . Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
-        :param _builtins.str frequency: (string) - . Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
-        :param 'GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs' window_start_time: (ClusterAutoRestartMessageMaintenanceWindowWindowStartTime)
-        """
-        if day_of_week is not None:
-            pulumi.set(__self__, "day_of_week", day_of_week)
-        if frequency is not None:
-            pulumi.set(__self__, "frequency", frequency)
-        if window_start_time is not None:
-            pulumi.set(__self__, "window_start_time", window_start_time)
-
-    @_builtins.property
-    @pulumi.getter(name="dayOfWeek")
-    def day_of_week(self) -> Optional[_builtins.str]:
-        """
-        (string) - . Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
-        """
-        return pulumi.get(self, "day_of_week")
-
-    @day_of_week.setter
-    def day_of_week(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "day_of_week", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def frequency(self) -> Optional[_builtins.str]:
-        """
-        (string) - . Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
-        """
-        return pulumi.get(self, "frequency")
-
-    @frequency.setter
-    def frequency(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "frequency", value)
-
-    @_builtins.property
-    @pulumi.getter(name="windowStartTime")
-    def window_start_time(self) -> Optional['GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs']:
-        """
-        (ClusterAutoRestartMessageMaintenanceWindowWindowStartTime)
-        """
-        return pulumi.get(self, "window_start_time")
-
-    @window_start_time.setter
-    def window_start_time(self, value: Optional['GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs']):
-        pulumi.set(self, "window_start_time", value)
-
-
-if not MYPY:
-    class GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgsDict(TypedDict):
-        hours: NotRequired[_builtins.int]
-        """
-        (integer)
-        """
-        minutes: NotRequired[_builtins.int]
-        """
-        (integer)
-        """
-elif False:
-    GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs:
-    def __init__(__self__, *,
-                 hours: Optional[_builtins.int] = None,
-                 minutes: Optional[_builtins.int] = None):
-        """
-        :param _builtins.int hours: (integer)
-        :param _builtins.int minutes: (integer)
-        """
-        if hours is not None:
-            pulumi.set(__self__, "hours", hours)
-        if minutes is not None:
-            pulumi.set(__self__, "minutes", minutes)
-
-    @_builtins.property
-    @pulumi.getter
-    def hours(self) -> Optional[_builtins.int]:
-        """
-        (integer)
-        """
-        return pulumi.get(self, "hours")
-
-    @hours.setter
-    def hours(self, value: Optional[_builtins.int]):
-        pulumi.set(self, "hours", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def minutes(self) -> Optional[_builtins.int]:
-        """
-        (integer)
-        """
-        return pulumi.get(self, "minutes")
-
-    @minutes.setter
-    def minutes(self, value: Optional[_builtins.int]):
-        pulumi.set(self, "minutes", value)
-
-
-if not MYPY:
-    class GetWorkspaceSettingV2EffectiveDefaultDataSecurityModeArgsDict(TypedDict):
-        status: _builtins.str
-        """
-        (string) - . Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
-        """
-elif False:
-    GetWorkspaceSettingV2EffectiveDefaultDataSecurityModeArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetWorkspaceSettingV2EffectiveDefaultDataSecurityModeArgs:
-    def __init__(__self__, *,
-                 status: _builtins.str):
-        """
-        :param _builtins.str status: (string) - . Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
-        """
-        pulumi.set(__self__, "status", status)
-
-    @_builtins.property
-    @pulumi.getter
-    def status(self) -> _builtins.str:
-        """
-        (string) - . Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
-        """
-        return pulumi.get(self, "status")
-
-    @status.setter
-    def status(self, value: _builtins.str):
-        pulumi.set(self, "status", value)
-
-
-if not MYPY:
-    class GetWorkspaceSettingV2EffectivePersonalComputeArgsDict(TypedDict):
-        value: NotRequired[_builtins.str]
-        """
-        (string) - Represents a generic string value
-        """
-elif False:
-    GetWorkspaceSettingV2EffectivePersonalComputeArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetWorkspaceSettingV2EffectivePersonalComputeArgs:
-    def __init__(__self__, *,
-                 value: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str value: (string) - Represents a generic string value
-        """
-        if value is not None:
-            pulumi.set(__self__, "value", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def value(self) -> Optional[_builtins.str]:
-        """
-        (string) - Represents a generic string value
-        """
-        return pulumi.get(self, "value")
-
-    @value.setter
-    def value(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "value", value)
-
-
-if not MYPY:
-    class GetWorkspaceSettingV2EffectiveRestrictWorkspaceAdminsArgsDict(TypedDict):
-        status: _builtins.str
-        """
-        (string) - . Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
-        """
-elif False:
-    GetWorkspaceSettingV2EffectiveRestrictWorkspaceAdminsArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetWorkspaceSettingV2EffectiveRestrictWorkspaceAdminsArgs:
-    def __init__(__self__, *,
-                 status: _builtins.str):
-        """
-        :param _builtins.str status: (string) - . Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
-        """
-        pulumi.set(__self__, "status", status)
-
-    @_builtins.property
-    @pulumi.getter
-    def status(self) -> _builtins.str:
-        """
-        (string) - . Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
-        """
-        return pulumi.get(self, "status")
-
-    @status.setter
-    def status(self, value: _builtins.str):
-        pulumi.set(self, "status", value)
-
-
-if not MYPY:
-    class GetWorkspaceSettingV2IntegerValArgsDict(TypedDict):
-        value: NotRequired[_builtins.int]
-        """
-        (string) - Represents a generic string value
-        """
-elif False:
-    GetWorkspaceSettingV2IntegerValArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetWorkspaceSettingV2IntegerValArgs:
-    def __init__(__self__, *,
-                 value: Optional[_builtins.int] = None):
-        """
-        :param _builtins.int value: (string) - Represents a generic string value
-        """
-        if value is not None:
-            pulumi.set(__self__, "value", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def value(self) -> Optional[_builtins.int]:
-        """
-        (string) - Represents a generic string value
-        """
-        return pulumi.get(self, "value")
-
-    @value.setter
-    def value(self, value: Optional[_builtins.int]):
-        pulumi.set(self, "value", value)
-
-
-if not MYPY:
-    class GetWorkspaceSettingV2PersonalComputeArgsDict(TypedDict):
-        value: NotRequired[_builtins.str]
-        """
-        (string) - Represents a generic string value
-        """
-elif False:
-    GetWorkspaceSettingV2PersonalComputeArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetWorkspaceSettingV2PersonalComputeArgs:
-    def __init__(__self__, *,
-                 value: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str value: (string) - Represents a generic string value
-        """
-        if value is not None:
-            pulumi.set(__self__, "value", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def value(self) -> Optional[_builtins.str]:
-        """
-        (string) - Represents a generic string value
-        """
-        return pulumi.get(self, "value")
-
-    @value.setter
-    def value(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "value", value)
-
-
-if not MYPY:
-    class GetWorkspaceSettingV2RestrictWorkspaceAdminsArgsDict(TypedDict):
-        status: _builtins.str
-        """
-        (string) - . Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
-        """
-elif False:
-    GetWorkspaceSettingV2RestrictWorkspaceAdminsArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetWorkspaceSettingV2RestrictWorkspaceAdminsArgs:
-    def __init__(__self__, *,
-                 status: _builtins.str):
-        """
-        :param _builtins.str status: (string) - . Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
-        """
-        pulumi.set(__self__, "status", status)
-
-    @_builtins.property
-    @pulumi.getter
-    def status(self) -> _builtins.str:
-        """
-        (string) - . Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
-        """
-        return pulumi.get(self, "status")
-
-    @status.setter
-    def status(self, value: _builtins.str):
-        pulumi.set(self, "status", value)
-
-
-if not MYPY:
-    class GetWorkspaceSettingV2StringValArgsDict(TypedDict):
-        value: NotRequired[_builtins.str]
-        """
-        (string) - Represents a generic string value
-        """
-elif False:
-    GetWorkspaceSettingV2StringValArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetWorkspaceSettingV2StringValArgs:
-    def __init__(__self__, *,
-                 value: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str value: (string) - Represents a generic string value
-        """
-        if value is not None:
-            pulumi.set(__self__, "value", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def value(self) -> Optional[_builtins.str]:
-        """
-        (string) - Represents a generic string value
-        """
-        return pulumi.get(self, "value")
-
-    @value.setter
-    def value(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "value", value)
+    @workspace_id.setter
+    def workspace_id(self, value: _builtins.str):
+        pulumi.set(self, "workspace_id", value)
 
 

@@ -6,26 +6,19 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-export function getAccountSettingV2(args?: GetAccountSettingV2Args, opts?: pulumi.InvokeOptions): Promise<GetAccountSettingV2Result> {
-    args = args || {};
+/**
+ * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
+ * This data source can be used to get a single account setting.
+ *
+ * ## Example Usage
+ *
+ * Referring to a setting by id
+ */
+export function getAccountSettingV2(args: GetAccountSettingV2Args, opts?: pulumi.InvokeOptions): Promise<GetAccountSettingV2Result> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getAccountSettingV2:getAccountSettingV2", {
-        "aibiDashboardEmbeddingAccessPolicy": args.aibiDashboardEmbeddingAccessPolicy,
-        "aibiDashboardEmbeddingApprovedDomains": args.aibiDashboardEmbeddingApprovedDomains,
-        "automaticClusterUpdateWorkspace": args.automaticClusterUpdateWorkspace,
-        "booleanVal": args.booleanVal,
-        "defaultDataSecurityMode": args.defaultDataSecurityMode,
-        "effectiveAibiDashboardEmbeddingAccessPolicy": args.effectiveAibiDashboardEmbeddingAccessPolicy,
-        "effectiveAibiDashboardEmbeddingApprovedDomains": args.effectiveAibiDashboardEmbeddingApprovedDomains,
-        "effectiveAutomaticClusterUpdateWorkspace": args.effectiveAutomaticClusterUpdateWorkspace,
-        "effectiveDefaultDataSecurityMode": args.effectiveDefaultDataSecurityMode,
-        "effectivePersonalCompute": args.effectivePersonalCompute,
-        "effectiveRestrictWorkspaceAdmins": args.effectiveRestrictWorkspaceAdmins,
-        "integerVal": args.integerVal,
         "name": args.name,
-        "personalCompute": args.personalCompute,
-        "restrictWorkspaceAdmins": args.restrictWorkspaceAdmins,
-        "stringVal": args.stringVal,
     }, opts);
 }
 
@@ -34,69 +27,9 @@ export function getAccountSettingV2(args?: GetAccountSettingV2Args, opts?: pulum
  */
 export interface GetAccountSettingV2Args {
     /**
-     * (AibiDashboardEmbeddingAccessPolicy)
-     */
-    aibiDashboardEmbeddingAccessPolicy?: inputs.GetAccountSettingV2AibiDashboardEmbeddingAccessPolicy;
-    /**
-     * (AibiDashboardEmbeddingApprovedDomains)
-     */
-    aibiDashboardEmbeddingApprovedDomains?: inputs.GetAccountSettingV2AibiDashboardEmbeddingApprovedDomains;
-    /**
-     * (ClusterAutoRestartMessage) - todo: Mark these Public after onboarded to DSL
-     */
-    automaticClusterUpdateWorkspace?: inputs.GetAccountSettingV2AutomaticClusterUpdateWorkspace;
-    /**
-     * (BooleanMessage)
-     */
-    booleanVal?: inputs.GetAccountSettingV2BooleanVal;
-    /**
-     * (DefaultDataSecurityModeMessage)
-     */
-    defaultDataSecurityMode?: inputs.GetAccountSettingV2DefaultDataSecurityMode;
-    /**
-     * (AibiDashboardEmbeddingAccessPolicy)
-     */
-    effectiveAibiDashboardEmbeddingAccessPolicy?: inputs.GetAccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy;
-    /**
-     * (AibiDashboardEmbeddingApprovedDomains)
-     */
-    effectiveAibiDashboardEmbeddingApprovedDomains?: inputs.GetAccountSettingV2EffectiveAibiDashboardEmbeddingApprovedDomains;
-    /**
-     * (ClusterAutoRestartMessage)
-     */
-    effectiveAutomaticClusterUpdateWorkspace?: inputs.GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspace;
-    /**
-     * (DefaultDataSecurityModeMessage)
-     */
-    effectiveDefaultDataSecurityMode?: inputs.GetAccountSettingV2EffectiveDefaultDataSecurityMode;
-    /**
-     * (PersonalComputeMessage)
-     */
-    effectivePersonalCompute?: inputs.GetAccountSettingV2EffectivePersonalCompute;
-    /**
-     * (RestrictWorkspaceAdminsMessage)
-     */
-    effectiveRestrictWorkspaceAdmins?: inputs.GetAccountSettingV2EffectiveRestrictWorkspaceAdmins;
-    /**
-     * (IntegerMessage)
-     */
-    integerVal?: inputs.GetAccountSettingV2IntegerVal;
-    /**
      * Name of the setting
      */
-    name?: string;
-    /**
-     * (PersonalComputeMessage)
-     */
-    personalCompute?: inputs.GetAccountSettingV2PersonalCompute;
-    /**
-     * (RestrictWorkspaceAdminsMessage)
-     */
-    restrictWorkspaceAdmins?: inputs.GetAccountSettingV2RestrictWorkspaceAdmins;
-    /**
-     * (StringMessage)
-     */
-    stringVal?: inputs.GetAccountSettingV2StringVal;
+    name: string;
 }
 
 /**
@@ -106,43 +39,35 @@ export interface GetAccountSettingV2Result {
     /**
      * (AibiDashboardEmbeddingAccessPolicy)
      */
-    readonly aibiDashboardEmbeddingAccessPolicy?: outputs.GetAccountSettingV2AibiDashboardEmbeddingAccessPolicy;
+    readonly aibiDashboardEmbeddingAccessPolicy: outputs.GetAccountSettingV2AibiDashboardEmbeddingAccessPolicy;
     /**
      * (AibiDashboardEmbeddingApprovedDomains)
      */
-    readonly aibiDashboardEmbeddingApprovedDomains?: outputs.GetAccountSettingV2AibiDashboardEmbeddingApprovedDomains;
-    /**
-     * (ClusterAutoRestartMessage) - todo: Mark these Public after onboarded to DSL
-     */
-    readonly automaticClusterUpdateWorkspace?: outputs.GetAccountSettingV2AutomaticClusterUpdateWorkspace;
-    /**
-     * (BooleanMessage)
-     */
-    readonly booleanVal?: outputs.GetAccountSettingV2BooleanVal;
-    /**
-     * (DefaultDataSecurityModeMessage)
-     */
-    readonly defaultDataSecurityMode?: outputs.GetAccountSettingV2DefaultDataSecurityMode;
-    /**
-     * (AibiDashboardEmbeddingAccessPolicy)
-     */
-    readonly effectiveAibiDashboardEmbeddingAccessPolicy?: outputs.GetAccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy;
-    /**
-     * (AibiDashboardEmbeddingApprovedDomains)
-     */
-    readonly effectiveAibiDashboardEmbeddingApprovedDomains?: outputs.GetAccountSettingV2EffectiveAibiDashboardEmbeddingApprovedDomains;
+    readonly aibiDashboardEmbeddingApprovedDomains: outputs.GetAccountSettingV2AibiDashboardEmbeddingApprovedDomains;
     /**
      * (ClusterAutoRestartMessage)
      */
-    readonly effectiveAutomaticClusterUpdateWorkspace?: outputs.GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspace;
+    readonly automaticClusterUpdateWorkspace: outputs.GetAccountSettingV2AutomaticClusterUpdateWorkspace;
+    /**
+     * (BooleanMessage)
+     */
+    readonly booleanVal: outputs.GetAccountSettingV2BooleanVal;
+    /**
+     * (AibiDashboardEmbeddingAccessPolicy)
+     */
+    readonly effectiveAibiDashboardEmbeddingAccessPolicy: outputs.GetAccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy;
+    /**
+     * (AibiDashboardEmbeddingApprovedDomains)
+     */
+    readonly effectiveAibiDashboardEmbeddingApprovedDomains: outputs.GetAccountSettingV2EffectiveAibiDashboardEmbeddingApprovedDomains;
+    /**
+     * (ClusterAutoRestartMessage)
+     */
+    readonly effectiveAutomaticClusterUpdateWorkspace: outputs.GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspace;
     /**
      * (BooleanMessage)
      */
     readonly effectiveBooleanVal: outputs.GetAccountSettingV2EffectiveBooleanVal;
-    /**
-     * (DefaultDataSecurityModeMessage)
-     */
-    readonly effectiveDefaultDataSecurityMode?: outputs.GetAccountSettingV2EffectiveDefaultDataSecurityMode;
     /**
      * (IntegerMessage)
      */
@@ -150,11 +75,11 @@ export interface GetAccountSettingV2Result {
     /**
      * (PersonalComputeMessage)
      */
-    readonly effectivePersonalCompute?: outputs.GetAccountSettingV2EffectivePersonalCompute;
+    readonly effectivePersonalCompute: outputs.GetAccountSettingV2EffectivePersonalCompute;
     /**
      * (RestrictWorkspaceAdminsMessage)
      */
-    readonly effectiveRestrictWorkspaceAdmins?: outputs.GetAccountSettingV2EffectiveRestrictWorkspaceAdmins;
+    readonly effectiveRestrictWorkspaceAdmins: outputs.GetAccountSettingV2EffectiveRestrictWorkspaceAdmins;
     /**
      * (StringMessage)
      */
@@ -166,44 +91,37 @@ export interface GetAccountSettingV2Result {
     /**
      * (IntegerMessage)
      */
-    readonly integerVal?: outputs.GetAccountSettingV2IntegerVal;
+    readonly integerVal: outputs.GetAccountSettingV2IntegerVal;
     /**
      * (string) - Name of the setting
      */
-    readonly name?: string;
+    readonly name: string;
     /**
      * (PersonalComputeMessage)
      */
-    readonly personalCompute?: outputs.GetAccountSettingV2PersonalCompute;
+    readonly personalCompute: outputs.GetAccountSettingV2PersonalCompute;
     /**
      * (RestrictWorkspaceAdminsMessage)
      */
-    readonly restrictWorkspaceAdmins?: outputs.GetAccountSettingV2RestrictWorkspaceAdmins;
+    readonly restrictWorkspaceAdmins: outputs.GetAccountSettingV2RestrictWorkspaceAdmins;
     /**
      * (StringMessage)
      */
-    readonly stringVal?: outputs.GetAccountSettingV2StringVal;
+    readonly stringVal: outputs.GetAccountSettingV2StringVal;
 }
-export function getAccountSettingV2Output(args?: GetAccountSettingV2OutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountSettingV2Result> {
-    args = args || {};
+/**
+ * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
+ * This data source can be used to get a single account setting.
+ *
+ * ## Example Usage
+ *
+ * Referring to a setting by id
+ */
+export function getAccountSettingV2Output(args: GetAccountSettingV2OutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountSettingV2Result> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getAccountSettingV2:getAccountSettingV2", {
-        "aibiDashboardEmbeddingAccessPolicy": args.aibiDashboardEmbeddingAccessPolicy,
-        "aibiDashboardEmbeddingApprovedDomains": args.aibiDashboardEmbeddingApprovedDomains,
-        "automaticClusterUpdateWorkspace": args.automaticClusterUpdateWorkspace,
-        "booleanVal": args.booleanVal,
-        "defaultDataSecurityMode": args.defaultDataSecurityMode,
-        "effectiveAibiDashboardEmbeddingAccessPolicy": args.effectiveAibiDashboardEmbeddingAccessPolicy,
-        "effectiveAibiDashboardEmbeddingApprovedDomains": args.effectiveAibiDashboardEmbeddingApprovedDomains,
-        "effectiveAutomaticClusterUpdateWorkspace": args.effectiveAutomaticClusterUpdateWorkspace,
-        "effectiveDefaultDataSecurityMode": args.effectiveDefaultDataSecurityMode,
-        "effectivePersonalCompute": args.effectivePersonalCompute,
-        "effectiveRestrictWorkspaceAdmins": args.effectiveRestrictWorkspaceAdmins,
-        "integerVal": args.integerVal,
         "name": args.name,
-        "personalCompute": args.personalCompute,
-        "restrictWorkspaceAdmins": args.restrictWorkspaceAdmins,
-        "stringVal": args.stringVal,
     }, opts);
 }
 
@@ -212,67 +130,7 @@ export function getAccountSettingV2Output(args?: GetAccountSettingV2OutputArgs, 
  */
 export interface GetAccountSettingV2OutputArgs {
     /**
-     * (AibiDashboardEmbeddingAccessPolicy)
-     */
-    aibiDashboardEmbeddingAccessPolicy?: pulumi.Input<inputs.GetAccountSettingV2AibiDashboardEmbeddingAccessPolicyArgs>;
-    /**
-     * (AibiDashboardEmbeddingApprovedDomains)
-     */
-    aibiDashboardEmbeddingApprovedDomains?: pulumi.Input<inputs.GetAccountSettingV2AibiDashboardEmbeddingApprovedDomainsArgs>;
-    /**
-     * (ClusterAutoRestartMessage) - todo: Mark these Public after onboarded to DSL
-     */
-    automaticClusterUpdateWorkspace?: pulumi.Input<inputs.GetAccountSettingV2AutomaticClusterUpdateWorkspaceArgs>;
-    /**
-     * (BooleanMessage)
-     */
-    booleanVal?: pulumi.Input<inputs.GetAccountSettingV2BooleanValArgs>;
-    /**
-     * (DefaultDataSecurityModeMessage)
-     */
-    defaultDataSecurityMode?: pulumi.Input<inputs.GetAccountSettingV2DefaultDataSecurityModeArgs>;
-    /**
-     * (AibiDashboardEmbeddingAccessPolicy)
-     */
-    effectiveAibiDashboardEmbeddingAccessPolicy?: pulumi.Input<inputs.GetAccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgs>;
-    /**
-     * (AibiDashboardEmbeddingApprovedDomains)
-     */
-    effectiveAibiDashboardEmbeddingApprovedDomains?: pulumi.Input<inputs.GetAccountSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgs>;
-    /**
-     * (ClusterAutoRestartMessage)
-     */
-    effectiveAutomaticClusterUpdateWorkspace?: pulumi.Input<inputs.GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgs>;
-    /**
-     * (DefaultDataSecurityModeMessage)
-     */
-    effectiveDefaultDataSecurityMode?: pulumi.Input<inputs.GetAccountSettingV2EffectiveDefaultDataSecurityModeArgs>;
-    /**
-     * (PersonalComputeMessage)
-     */
-    effectivePersonalCompute?: pulumi.Input<inputs.GetAccountSettingV2EffectivePersonalComputeArgs>;
-    /**
-     * (RestrictWorkspaceAdminsMessage)
-     */
-    effectiveRestrictWorkspaceAdmins?: pulumi.Input<inputs.GetAccountSettingV2EffectiveRestrictWorkspaceAdminsArgs>;
-    /**
-     * (IntegerMessage)
-     */
-    integerVal?: pulumi.Input<inputs.GetAccountSettingV2IntegerValArgs>;
-    /**
      * Name of the setting
      */
-    name?: pulumi.Input<string>;
-    /**
-     * (PersonalComputeMessage)
-     */
-    personalCompute?: pulumi.Input<inputs.GetAccountSettingV2PersonalComputeArgs>;
-    /**
-     * (RestrictWorkspaceAdminsMessage)
-     */
-    restrictWorkspaceAdmins?: pulumi.Input<inputs.GetAccountSettingV2RestrictWorkspaceAdminsArgs>;
-    /**
-     * (StringMessage)
-     */
-    stringVal?: pulumi.Input<inputs.GetAccountSettingV2StringValArgs>;
+    name: pulumi.Input<string>;
 }

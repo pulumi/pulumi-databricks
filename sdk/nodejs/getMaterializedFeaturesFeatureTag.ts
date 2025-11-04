@@ -4,12 +4,13 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ */
 export function getMaterializedFeaturesFeatureTag(args: GetMaterializedFeaturesFeatureTagArgs, opts?: pulumi.InvokeOptions): Promise<GetMaterializedFeaturesFeatureTagResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getMaterializedFeaturesFeatureTag:getMaterializedFeaturesFeatureTag", {
         "key": args.key,
-        "value": args.value,
-        "workspaceId": args.workspaceId,
     }, opts);
 }
 
@@ -18,14 +19,6 @@ export function getMaterializedFeaturesFeatureTag(args: GetMaterializedFeaturesF
  */
 export interface GetMaterializedFeaturesFeatureTagArgs {
     key: string;
-    /**
-     * (string)
-     */
-    value?: string;
-    /**
-     * Workspace ID of the resource
-     */
-    workspaceId?: string;
 }
 
 /**
@@ -43,15 +36,15 @@ export interface GetMaterializedFeaturesFeatureTagResult {
     /**
      * (string)
      */
-    readonly value?: string;
-    readonly workspaceId?: string;
+    readonly value: string;
 }
+/**
+ * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ */
 export function getMaterializedFeaturesFeatureTagOutput(args: GetMaterializedFeaturesFeatureTagOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMaterializedFeaturesFeatureTagResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getMaterializedFeaturesFeatureTag:getMaterializedFeaturesFeatureTag", {
         "key": args.key,
-        "value": args.value,
-        "workspaceId": args.workspaceId,
     }, opts);
 }
 
@@ -60,12 +53,4 @@ export function getMaterializedFeaturesFeatureTagOutput(args: GetMaterializedFea
  */
 export interface GetMaterializedFeaturesFeatureTagOutputArgs {
     key: pulumi.Input<string>;
-    /**
-     * (string)
-     */
-    value?: pulumi.Input<string>;
-    /**
-     * Workspace ID of the resource
-     */
-    workspaceId?: pulumi.Input<string>;
 }

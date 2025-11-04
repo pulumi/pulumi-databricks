@@ -5,6 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
  * This data source can be used to get a single external metadata object.
  *
  * > **Note** This resource can only be used with an workspace-level provider!
@@ -25,15 +27,7 @@ import * as utilities from "./utilities";
 export function getExternalMetadata(args: GetExternalMetadataArgs, opts?: pulumi.InvokeOptions): Promise<GetExternalMetadataResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getExternalMetadata:getExternalMetadata", {
-        "columns": args.columns,
-        "description": args.description,
-        "entityType": args.entityType,
         "name": args.name,
-        "owner": args.owner,
-        "properties": args.properties,
-        "systemType": args.systemType,
-        "url": args.url,
-        "workspaceId": args.workspaceId,
     }, opts);
 }
 
@@ -42,41 +36,9 @@ export function getExternalMetadata(args: GetExternalMetadataArgs, opts?: pulumi
  */
 export interface GetExternalMetadataArgs {
     /**
-     * (list of string) - List of columns associated with the external metadata object
-     */
-    columns?: string[];
-    /**
-     * (string) - User-provided free-form text description
-     */
-    description?: string;
-    /**
-     * (string) - Type of entity within the external system
-     */
-    entityType: string;
-    /**
      * Name of the external metadata object
      */
     name: string;
-    /**
-     * (string) - Owner of the external metadata object
-     */
-    owner?: string;
-    /**
-     * (object) - A map of key-value properties attached to the external metadata object
-     */
-    properties?: {[key: string]: string};
-    /**
-     * (string) - Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `TABLEAU`, `TERADATA`, `WORKDAY`
-     */
-    systemType: string;
-    /**
-     * (string) - URL associated with the external metadata object
-     */
-    url?: string;
-    /**
-     * Workspace ID of the resource
-     */
-    workspaceId?: string;
 }
 
 /**
@@ -86,7 +48,7 @@ export interface GetExternalMetadataResult {
     /**
      * (list of string) - List of columns associated with the external metadata object
      */
-    readonly columns?: string[];
+    readonly columns: string[];
     /**
      * (string) - Time at which this external metadata object was created
      */
@@ -98,7 +60,7 @@ export interface GetExternalMetadataResult {
     /**
      * (string) - User-provided free-form text description
      */
-    readonly description?: string;
+    readonly description: string;
     /**
      * (string) - Type of entity within the external system
      */
@@ -118,13 +80,13 @@ export interface GetExternalMetadataResult {
     /**
      * (string) - Owner of the external metadata object
      */
-    readonly owner?: string;
+    readonly owner: string;
     /**
      * (object) - A map of key-value properties attached to the external metadata object
      */
-    readonly properties?: {[key: string]: string};
+    readonly properties: {[key: string]: string};
     /**
-     * (string) - Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `TABLEAU`, `TERADATA`, `WORKDAY`
+     * (string) - Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `STREAM_NATIVE`, `TABLEAU`, `TERADATA`, `WORKDAY`
      */
     readonly systemType: string;
     /**
@@ -138,10 +100,11 @@ export interface GetExternalMetadataResult {
     /**
      * (string) - URL associated with the external metadata object
      */
-    readonly url?: string;
-    readonly workspaceId?: string;
+    readonly url: string;
 }
 /**
+ * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
  * This data source can be used to get a single external metadata object.
  *
  * > **Note** This resource can only be used with an workspace-level provider!
@@ -162,15 +125,7 @@ export interface GetExternalMetadataResult {
 export function getExternalMetadataOutput(args: GetExternalMetadataOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetExternalMetadataResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getExternalMetadata:getExternalMetadata", {
-        "columns": args.columns,
-        "description": args.description,
-        "entityType": args.entityType,
         "name": args.name,
-        "owner": args.owner,
-        "properties": args.properties,
-        "systemType": args.systemType,
-        "url": args.url,
-        "workspaceId": args.workspaceId,
     }, opts);
 }
 
@@ -179,39 +134,7 @@ export function getExternalMetadataOutput(args: GetExternalMetadataOutputArgs, o
  */
 export interface GetExternalMetadataOutputArgs {
     /**
-     * (list of string) - List of columns associated with the external metadata object
-     */
-    columns?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * (string) - User-provided free-form text description
-     */
-    description?: pulumi.Input<string>;
-    /**
-     * (string) - Type of entity within the external system
-     */
-    entityType: pulumi.Input<string>;
-    /**
      * Name of the external metadata object
      */
     name: pulumi.Input<string>;
-    /**
-     * (string) - Owner of the external metadata object
-     */
-    owner?: pulumi.Input<string>;
-    /**
-     * (object) - A map of key-value properties attached to the external metadata object
-     */
-    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * (string) - Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `TABLEAU`, `TERADATA`, `WORKDAY`
-     */
-    systemType: pulumi.Input<string>;
-    /**
-     * (string) - URL associated with the external metadata object
-     */
-    url?: pulumi.Input<string>;
-    /**
-     * Workspace ID of the resource
-     */
-    workspaceId?: pulumi.Input<string>;
 }

@@ -217,7 +217,7 @@ type User struct {
 	AllowClusterCreate pulumi.BoolPtrOutput `pulumi:"allowClusterCreate"`
 	// Allow the user to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and instancePoolId argument.
 	AllowInstancePoolCreate pulumi.BoolPtrOutput `pulumi:"allowInstancePoolCreate"`
-	// This is a field to allow the user to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
+	// This is a field to allow the user to have access to [Databricks SQL](https://databricks.com/product/databricks-sql)  UI, [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one) and through databricks_sql_endpoint.
 	DatabricksSqlAccess pulumi.BoolPtrOutput `pulumi:"databricksSqlAccess"`
 	// Deactivate the user when deleting the resource, rather than deleting the user entirely. Defaults to `true` when the provider is configured at the account-level and `false` when configured at the workspace-level. This flag is exclusive to forceDeleteRepos and forceDeleteHomeDir flags.
 	DisableAsUserDeletion pulumi.BoolOutput `pulumi:"disableAsUserDeletion"`
@@ -237,9 +237,9 @@ type User struct {
 	Repos pulumi.StringOutput `pulumi:"repos"`
 	// This is the username of the given user and will be their form of access and identity.  Provided username will be converted to lower case if it contains upper case characters.
 	UserName pulumi.StringOutput `pulumi:"userName"`
-	// This is a field to allow the user to have access to a Databricks Workspace.
+	// This is a field to allow the user to have access to a Databricks Workspace UI and [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).
 	WorkspaceAccess pulumi.BoolPtrOutput `pulumi:"workspaceAccess"`
-	// This is a field to allow the user to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspaceAccess` or `databricksSqlAccess`.
+	// This is a field to allow the user to have access only to [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).  Couldn't be used with `workspaceAccess` or `databricksSqlAccess`.
 	WorkspaceConsume pulumi.BoolPtrOutput `pulumi:"workspaceConsume"`
 }
 
@@ -284,7 +284,7 @@ type userState struct {
 	AllowClusterCreate *bool `pulumi:"allowClusterCreate"`
 	// Allow the user to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and instancePoolId argument.
 	AllowInstancePoolCreate *bool `pulumi:"allowInstancePoolCreate"`
-	// This is a field to allow the user to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
+	// This is a field to allow the user to have access to [Databricks SQL](https://databricks.com/product/databricks-sql)  UI, [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one) and through databricks_sql_endpoint.
 	DatabricksSqlAccess *bool `pulumi:"databricksSqlAccess"`
 	// Deactivate the user when deleting the resource, rather than deleting the user entirely. Defaults to `true` when the provider is configured at the account-level and `false` when configured at the workspace-level. This flag is exclusive to forceDeleteRepos and forceDeleteHomeDir flags.
 	DisableAsUserDeletion *bool `pulumi:"disableAsUserDeletion"`
@@ -304,9 +304,9 @@ type userState struct {
 	Repos *string `pulumi:"repos"`
 	// This is the username of the given user and will be their form of access and identity.  Provided username will be converted to lower case if it contains upper case characters.
 	UserName *string `pulumi:"userName"`
-	// This is a field to allow the user to have access to a Databricks Workspace.
+	// This is a field to allow the user to have access to a Databricks Workspace UI and [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).
 	WorkspaceAccess *bool `pulumi:"workspaceAccess"`
-	// This is a field to allow the user to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspaceAccess` or `databricksSqlAccess`.
+	// This is a field to allow the user to have access only to [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).  Couldn't be used with `workspaceAccess` or `databricksSqlAccess`.
 	WorkspaceConsume *bool `pulumi:"workspaceConsume"`
 }
 
@@ -319,7 +319,7 @@ type UserState struct {
 	AllowClusterCreate pulumi.BoolPtrInput
 	// Allow the user to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and instancePoolId argument.
 	AllowInstancePoolCreate pulumi.BoolPtrInput
-	// This is a field to allow the user to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
+	// This is a field to allow the user to have access to [Databricks SQL](https://databricks.com/product/databricks-sql)  UI, [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one) and through databricks_sql_endpoint.
 	DatabricksSqlAccess pulumi.BoolPtrInput
 	// Deactivate the user when deleting the resource, rather than deleting the user entirely. Defaults to `true` when the provider is configured at the account-level and `false` when configured at the workspace-level. This flag is exclusive to forceDeleteRepos and forceDeleteHomeDir flags.
 	DisableAsUserDeletion pulumi.BoolPtrInput
@@ -339,9 +339,9 @@ type UserState struct {
 	Repos pulumi.StringPtrInput
 	// This is the username of the given user and will be their form of access and identity.  Provided username will be converted to lower case if it contains upper case characters.
 	UserName pulumi.StringPtrInput
-	// This is a field to allow the user to have access to a Databricks Workspace.
+	// This is a field to allow the user to have access to a Databricks Workspace UI and [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).
 	WorkspaceAccess pulumi.BoolPtrInput
-	// This is a field to allow the user to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspaceAccess` or `databricksSqlAccess`.
+	// This is a field to allow the user to have access only to [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).  Couldn't be used with `workspaceAccess` or `databricksSqlAccess`.
 	WorkspaceConsume pulumi.BoolPtrInput
 }
 
@@ -358,7 +358,7 @@ type userArgs struct {
 	AllowClusterCreate *bool `pulumi:"allowClusterCreate"`
 	// Allow the user to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and instancePoolId argument.
 	AllowInstancePoolCreate *bool `pulumi:"allowInstancePoolCreate"`
-	// This is a field to allow the user to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
+	// This is a field to allow the user to have access to [Databricks SQL](https://databricks.com/product/databricks-sql)  UI, [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one) and through databricks_sql_endpoint.
 	DatabricksSqlAccess *bool `pulumi:"databricksSqlAccess"`
 	// Deactivate the user when deleting the resource, rather than deleting the user entirely. Defaults to `true` when the provider is configured at the account-level and `false` when configured at the workspace-level. This flag is exclusive to forceDeleteRepos and forceDeleteHomeDir flags.
 	DisableAsUserDeletion *bool `pulumi:"disableAsUserDeletion"`
@@ -378,9 +378,9 @@ type userArgs struct {
 	Repos *string `pulumi:"repos"`
 	// This is the username of the given user and will be their form of access and identity.  Provided username will be converted to lower case if it contains upper case characters.
 	UserName string `pulumi:"userName"`
-	// This is a field to allow the user to have access to a Databricks Workspace.
+	// This is a field to allow the user to have access to a Databricks Workspace UI and [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).
 	WorkspaceAccess *bool `pulumi:"workspaceAccess"`
-	// This is a field to allow the user to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspaceAccess` or `databricksSqlAccess`.
+	// This is a field to allow the user to have access only to [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).  Couldn't be used with `workspaceAccess` or `databricksSqlAccess`.
 	WorkspaceConsume *bool `pulumi:"workspaceConsume"`
 }
 
@@ -394,7 +394,7 @@ type UserArgs struct {
 	AllowClusterCreate pulumi.BoolPtrInput
 	// Allow the user to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and instancePoolId argument.
 	AllowInstancePoolCreate pulumi.BoolPtrInput
-	// This is a field to allow the user to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
+	// This is a field to allow the user to have access to [Databricks SQL](https://databricks.com/product/databricks-sql)  UI, [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one) and through databricks_sql_endpoint.
 	DatabricksSqlAccess pulumi.BoolPtrInput
 	// Deactivate the user when deleting the resource, rather than deleting the user entirely. Defaults to `true` when the provider is configured at the account-level and `false` when configured at the workspace-level. This flag is exclusive to forceDeleteRepos and forceDeleteHomeDir flags.
 	DisableAsUserDeletion pulumi.BoolPtrInput
@@ -414,9 +414,9 @@ type UserArgs struct {
 	Repos pulumi.StringPtrInput
 	// This is the username of the given user and will be their form of access and identity.  Provided username will be converted to lower case if it contains upper case characters.
 	UserName pulumi.StringInput
-	// This is a field to allow the user to have access to a Databricks Workspace.
+	// This is a field to allow the user to have access to a Databricks Workspace UI and [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).
 	WorkspaceAccess pulumi.BoolPtrInput
-	// This is a field to allow the user to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspaceAccess` or `databricksSqlAccess`.
+	// This is a field to allow the user to have access only to [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).  Couldn't be used with `workspaceAccess` or `databricksSqlAccess`.
 	WorkspaceConsume pulumi.BoolPtrInput
 }
 
@@ -527,7 +527,7 @@ func (o UserOutput) AllowInstancePoolCreate() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.BoolPtrOutput { return v.AllowInstancePoolCreate }).(pulumi.BoolPtrOutput)
 }
 
-// This is a field to allow the user to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
+// This is a field to allow the user to have access to [Databricks SQL](https://databricks.com/product/databricks-sql)  UI, [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one) and through databricks_sql_endpoint.
 func (o UserOutput) DatabricksSqlAccess() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.BoolPtrOutput { return v.DatabricksSqlAccess }).(pulumi.BoolPtrOutput)
 }
@@ -577,12 +577,12 @@ func (o UserOutput) UserName() pulumi.StringOutput {
 	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.UserName }).(pulumi.StringOutput)
 }
 
-// This is a field to allow the user to have access to a Databricks Workspace.
+// This is a field to allow the user to have access to a Databricks Workspace UI and [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).
 func (o UserOutput) WorkspaceAccess() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.BoolPtrOutput { return v.WorkspaceAccess }).(pulumi.BoolPtrOutput)
 }
 
-// This is a field to allow the user to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspaceAccess` or `databricksSqlAccess`.
+// This is a field to allow the user to have access only to [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).  Couldn't be used with `workspaceAccess` or `databricksSqlAccess`.
 func (o UserOutput) WorkspaceConsume() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.BoolPtrOutput { return v.WorkspaceConsume }).(pulumi.BoolPtrOutput)
 }

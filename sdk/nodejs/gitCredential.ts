@@ -98,11 +98,15 @@ export class GitCredential extends pulumi.CustomResource {
      */
     declare public readonly force: pulumi.Output<boolean | undefined>;
     /**
+     * The email associated with your Git provider user account. Used for authentication with the remote repository and also sets the author & committer identity for commits.
+     */
+    declare public readonly gitEmail: pulumi.Output<string | undefined>;
+    /**
      * case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Git Credentials API documentation](https://docs.databricks.com/dev-tools/api/latest/gitcredentials.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`, `azureDevOpsServicesAad`.
      */
     declare public readonly gitProvider: pulumi.Output<string>;
     /**
-     * user name at Git provider.
+     * user name at Git provider.  For most Git providers it is only used to set the Git committer & author names for commits, however it may be required for authentication depending on your Git provider / token requirements.
      */
     declare public readonly gitUsername: pulumi.Output<string | undefined>;
     /**
@@ -132,6 +136,7 @@ export class GitCredential extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as GitCredentialState | undefined;
             resourceInputs["force"] = state?.force;
+            resourceInputs["gitEmail"] = state?.gitEmail;
             resourceInputs["gitProvider"] = state?.gitProvider;
             resourceInputs["gitUsername"] = state?.gitUsername;
             resourceInputs["isDefaultForProvider"] = state?.isDefaultForProvider;
@@ -143,6 +148,7 @@ export class GitCredential extends pulumi.CustomResource {
                 throw new Error("Missing required property 'gitProvider'");
             }
             resourceInputs["force"] = args?.force;
+            resourceInputs["gitEmail"] = args?.gitEmail;
             resourceInputs["gitProvider"] = args?.gitProvider;
             resourceInputs["gitUsername"] = args?.gitUsername;
             resourceInputs["isDefaultForProvider"] = args?.isDefaultForProvider;
@@ -163,11 +169,15 @@ export interface GitCredentialState {
      */
     force?: pulumi.Input<boolean>;
     /**
+     * The email associated with your Git provider user account. Used for authentication with the remote repository and also sets the author & committer identity for commits.
+     */
+    gitEmail?: pulumi.Input<string>;
+    /**
      * case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Git Credentials API documentation](https://docs.databricks.com/dev-tools/api/latest/gitcredentials.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`, `azureDevOpsServicesAad`.
      */
     gitProvider?: pulumi.Input<string>;
     /**
-     * user name at Git provider.
+     * user name at Git provider.  For most Git providers it is only used to set the Git committer & author names for commits, however it may be required for authentication depending on your Git provider / token requirements.
      */
     gitUsername?: pulumi.Input<string>;
     /**
@@ -193,11 +203,15 @@ export interface GitCredentialArgs {
      */
     force?: pulumi.Input<boolean>;
     /**
+     * The email associated with your Git provider user account. Used for authentication with the remote repository and also sets the author & committer identity for commits.
+     */
+    gitEmail?: pulumi.Input<string>;
+    /**
      * case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Git Credentials API documentation](https://docs.databricks.com/dev-tools/api/latest/gitcredentials.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`, `azureDevOpsServicesAad`.
      */
     gitProvider: pulumi.Input<string>;
     /**
-     * user name at Git provider.
+     * user name at Git provider.  For most Git providers it is only used to set the Git committer & author names for commits, however it may be required for authentication depending on your Git provider / token requirements.
      */
     gitUsername?: pulumi.Input<string>;
     /**

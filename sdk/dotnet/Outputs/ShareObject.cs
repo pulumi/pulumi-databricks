@@ -28,6 +28,11 @@ namespace Pulumi.Databricks.Outputs
         /// Type of the data object, currently `TABLE`, `VIEW`, `SCHEMA`, `VOLUME`, and `MODEL` are supported.
         /// </summary>
         public readonly string DataObjectType;
+        public readonly bool? EffectiveCdfEnabled;
+        public readonly string? EffectiveHistoryDataSharingStatus;
+        public readonly string? EffectiveSharedAs;
+        public readonly int? EffectiveStartVersion;
+        public readonly string? EffectiveStringSharedAs;
         /// <summary>
         /// Whether to enable history sharing, one of: `ENABLED`, `DISABLED`. When a table has history sharing enabled, recipients can query table data by version, starting from the current table version. If not specified, clients can only query starting from the version of the object at the time it was added to the share. *NOTE*: The StartVersion should be less than or equal the current version of the object. When this field is set, field `CdfEnabled` can not be set.
         /// 
@@ -67,6 +72,16 @@ namespace Pulumi.Databricks.Outputs
 
             string dataObjectType,
 
+            bool? effectiveCdfEnabled,
+
+            string? effectiveHistoryDataSharingStatus,
+
+            string? effectiveSharedAs,
+
+            int? effectiveStartVersion,
+
+            string? effectiveStringSharedAs,
+
             string? historyDataSharingStatus,
 
             string name,
@@ -87,6 +102,11 @@ namespace Pulumi.Databricks.Outputs
             Comment = comment;
             Content = content;
             DataObjectType = dataObjectType;
+            EffectiveCdfEnabled = effectiveCdfEnabled;
+            EffectiveHistoryDataSharingStatus = effectiveHistoryDataSharingStatus;
+            EffectiveSharedAs = effectiveSharedAs;
+            EffectiveStartVersion = effectiveStartVersion;
+            EffectiveStringSharedAs = effectiveStringSharedAs;
             HistoryDataSharingStatus = historyDataSharingStatus;
             Name = name;
             Partitions = partitions;

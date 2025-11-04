@@ -36,7 +36,6 @@ class CatalogArgs:
                  provider_name: Optional[pulumi.Input[_builtins.str]] = None,
                  provisioning_info: Optional[pulumi.Input['CatalogProvisioningInfoArgs']] = None,
                  share_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_location: Optional[pulumi.Input[_builtins.str]] = None,
                  storage_root: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Catalog resource.
@@ -84,8 +83,6 @@ class CatalogArgs:
             pulumi.set(__self__, "provisioning_info", provisioning_info)
         if share_name is not None:
             pulumi.set(__self__, "share_name", share_name)
-        if storage_location is not None:
-            pulumi.set(__self__, "storage_location", storage_location)
         if storage_root is not None:
             pulumi.set(__self__, "storage_root", storage_root)
 
@@ -261,15 +258,6 @@ class CatalogArgs:
         pulumi.set(self, "share_name", value)
 
     @_builtins.property
-    @pulumi.getter(name="storageLocation")
-    def storage_location(self) -> Optional[pulumi.Input[_builtins.str]]:
-        return pulumi.get(self, "storage_location")
-
-    @storage_location.setter
-    def storage_location(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "storage_location", value)
-
-    @_builtins.property
     @pulumi.getter(name="storageRoot")
     def storage_root(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -311,8 +299,11 @@ class _CatalogState:
                  updated_by: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Catalog resources.
+        :param pulumi.Input[_builtins.str] catalog_type: the type of the catalog.
         :param pulumi.Input[_builtins.str] comment: User-supplied free-form text.
         :param pulumi.Input[_builtins.str] connection_name: For Foreign Catalogs: the name of the connection to an external data source. Changes forces creation of a new resource.
+        :param pulumi.Input[_builtins.int] created_at: time at which this catalog was created, in epoch milliseconds.
+        :param pulumi.Input[_builtins.str] created_by: username of catalog creator.
         :param pulumi.Input[_builtins.str] enable_predictive_optimization: Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
         :param pulumi.Input[_builtins.bool] force_destroy: Delete catalog regardless of its contents.
         :param pulumi.Input[_builtins.str] isolation_mode: Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
@@ -322,8 +313,12 @@ class _CatalogState:
         :param pulumi.Input[_builtins.str] owner: Username/groupname/sp application_id of the catalog owner.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] properties: Extensible Catalog properties.
         :param pulumi.Input[_builtins.str] provider_name: For Delta Sharing Catalogs: the name of the delta sharing provider. Change forces creation of a new resource.
+        :param pulumi.Input[_builtins.str] securable_type: the type of Unity Catalog securable.
         :param pulumi.Input[_builtins.str] share_name: For Delta Sharing Catalogs: the name of the share under the share provider. Change forces creation of a new resource.
+        :param pulumi.Input[_builtins.str] storage_location: effective storage Location URL (full path) for managed tables within catalog.
         :param pulumi.Input[_builtins.str] storage_root: Managed location of the catalog. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
+        :param pulumi.Input[_builtins.int] updated_at: time at which this catalog was last modified, in epoch milliseconds..
+        :param pulumi.Input[_builtins.str] updated_by: username of user who last modified catalog.
         """
         if browse_only is not None:
             pulumi.set(__self__, "browse_only", browse_only)
@@ -386,6 +381,9 @@ class _CatalogState:
     @_builtins.property
     @pulumi.getter(name="catalogType")
     def catalog_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        the type of the catalog.
+        """
         return pulumi.get(self, "catalog_type")
 
     @catalog_type.setter
@@ -419,6 +417,9 @@ class _CatalogState:
     @_builtins.property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        time at which this catalog was created, in epoch milliseconds.
+        """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
@@ -428,6 +429,9 @@ class _CatalogState:
     @_builtins.property
     @pulumi.getter(name="createdBy")
     def created_by(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        username of catalog creator.
+        """
         return pulumi.get(self, "created_by")
 
     @created_by.setter
@@ -572,6 +576,9 @@ class _CatalogState:
     @_builtins.property
     @pulumi.getter(name="securableType")
     def securable_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        the type of Unity Catalog securable.
+        """
         return pulumi.get(self, "securable_type")
 
     @securable_type.setter
@@ -593,6 +600,9 @@ class _CatalogState:
     @_builtins.property
     @pulumi.getter(name="storageLocation")
     def storage_location(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        effective storage Location URL (full path) for managed tables within catalog.
+        """
         return pulumi.get(self, "storage_location")
 
     @storage_location.setter
@@ -614,6 +624,9 @@ class _CatalogState:
     @_builtins.property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        time at which this catalog was last modified, in epoch milliseconds..
+        """
         return pulumi.get(self, "updated_at")
 
     @updated_at.setter
@@ -623,6 +636,9 @@ class _CatalogState:
     @_builtins.property
     @pulumi.getter(name="updatedBy")
     def updated_by(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        username of user who last modified catalog.
+        """
         return pulumi.get(self, "updated_by")
 
     @updated_by.setter
@@ -651,7 +667,6 @@ class Catalog(pulumi.CustomResource):
                  provider_name: Optional[pulumi.Input[_builtins.str]] = None,
                  provisioning_info: Optional[pulumi.Input[Union['CatalogProvisioningInfoArgs', 'CatalogProvisioningInfoArgsDict']]] = None,
                  share_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_location: Optional[pulumi.Input[_builtins.str]] = None,
                  storage_root: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
@@ -808,7 +823,6 @@ class Catalog(pulumi.CustomResource):
                  provider_name: Optional[pulumi.Input[_builtins.str]] = None,
                  provisioning_info: Optional[pulumi.Input[Union['CatalogProvisioningInfoArgs', 'CatalogProvisioningInfoArgsDict']]] = None,
                  share_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_location: Optional[pulumi.Input[_builtins.str]] = None,
                  storage_root: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -834,13 +848,13 @@ class Catalog(pulumi.CustomResource):
             __props__.__dict__["provider_name"] = provider_name
             __props__.__dict__["provisioning_info"] = provisioning_info
             __props__.__dict__["share_name"] = share_name
-            __props__.__dict__["storage_location"] = storage_location
             __props__.__dict__["storage_root"] = storage_root
             __props__.__dict__["catalog_type"] = None
             __props__.__dict__["created_at"] = None
             __props__.__dict__["created_by"] = None
             __props__.__dict__["full_name"] = None
             __props__.__dict__["securable_type"] = None
+            __props__.__dict__["storage_location"] = None
             __props__.__dict__["updated_at"] = None
             __props__.__dict__["updated_by"] = None
         super(Catalog, __self__).__init__(
@@ -884,8 +898,11 @@ class Catalog(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] catalog_type: the type of the catalog.
         :param pulumi.Input[_builtins.str] comment: User-supplied free-form text.
         :param pulumi.Input[_builtins.str] connection_name: For Foreign Catalogs: the name of the connection to an external data source. Changes forces creation of a new resource.
+        :param pulumi.Input[_builtins.int] created_at: time at which this catalog was created, in epoch milliseconds.
+        :param pulumi.Input[_builtins.str] created_by: username of catalog creator.
         :param pulumi.Input[_builtins.str] enable_predictive_optimization: Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
         :param pulumi.Input[_builtins.bool] force_destroy: Delete catalog regardless of its contents.
         :param pulumi.Input[_builtins.str] isolation_mode: Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
@@ -895,8 +912,12 @@ class Catalog(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] owner: Username/groupname/sp application_id of the catalog owner.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] properties: Extensible Catalog properties.
         :param pulumi.Input[_builtins.str] provider_name: For Delta Sharing Catalogs: the name of the delta sharing provider. Change forces creation of a new resource.
+        :param pulumi.Input[_builtins.str] securable_type: the type of Unity Catalog securable.
         :param pulumi.Input[_builtins.str] share_name: For Delta Sharing Catalogs: the name of the share under the share provider. Change forces creation of a new resource.
+        :param pulumi.Input[_builtins.str] storage_location: effective storage Location URL (full path) for managed tables within catalog.
         :param pulumi.Input[_builtins.str] storage_root: Managed location of the catalog. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
+        :param pulumi.Input[_builtins.int] updated_at: time at which this catalog was last modified, in epoch milliseconds..
+        :param pulumi.Input[_builtins.str] updated_by: username of user who last modified catalog.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -936,6 +957,9 @@ class Catalog(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="catalogType")
     def catalog_type(self) -> pulumi.Output[_builtins.str]:
+        """
+        the type of the catalog.
+        """
         return pulumi.get(self, "catalog_type")
 
     @_builtins.property
@@ -957,11 +981,17 @@ class Catalog(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> pulumi.Output[_builtins.int]:
+        """
+        time at which this catalog was created, in epoch milliseconds.
+        """
         return pulumi.get(self, "created_at")
 
     @_builtins.property
     @pulumi.getter(name="createdBy")
     def created_by(self) -> pulumi.Output[_builtins.str]:
+        """
+        username of catalog creator.
+        """
         return pulumi.get(self, "created_by")
 
     @_builtins.property
@@ -1054,6 +1084,9 @@ class Catalog(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="securableType")
     def securable_type(self) -> pulumi.Output[_builtins.str]:
+        """
+        the type of Unity Catalog securable.
+        """
         return pulumi.get(self, "securable_type")
 
     @_builtins.property
@@ -1066,7 +1099,10 @@ class Catalog(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="storageLocation")
-    def storage_location(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def storage_location(self) -> pulumi.Output[_builtins.str]:
+        """
+        effective storage Location URL (full path) for managed tables within catalog.
+        """
         return pulumi.get(self, "storage_location")
 
     @_builtins.property
@@ -1080,10 +1116,16 @@ class Catalog(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> pulumi.Output[_builtins.int]:
+        """
+        time at which this catalog was last modified, in epoch milliseconds..
+        """
         return pulumi.get(self, "updated_at")
 
     @_builtins.property
     @pulumi.getter(name="updatedBy")
     def updated_by(self) -> pulumi.Output[_builtins.str]:
+        """
+        username of user who last modified catalog.
+        """
         return pulumi.get(self, "updated_by")
 

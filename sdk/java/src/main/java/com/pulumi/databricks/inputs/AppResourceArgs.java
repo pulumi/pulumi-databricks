@@ -6,6 +6,7 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.AppResourceDatabaseArgs;
+import com.pulumi.databricks.inputs.AppResourceGenieSpaceArgs;
 import com.pulumi.databricks.inputs.AppResourceJobArgs;
 import com.pulumi.databricks.inputs.AppResourceSecretArgs;
 import com.pulumi.databricks.inputs.AppResourceServingEndpointArgs;
@@ -54,6 +55,21 @@ public final class AppResourceArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * attribute
+     * 
+     */
+    @Import(name="genieSpace")
+    private @Nullable Output<AppResourceGenieSpaceArgs> genieSpace;
+
+    /**
+     * @return attribute
+     * 
+     */
+    public Optional<Output<AppResourceGenieSpaceArgs>> genieSpace() {
+        return Optional.ofNullable(this.genieSpace);
     }
 
     /**
@@ -151,6 +167,7 @@ public final class AppResourceArgs extends com.pulumi.resources.ResourceArgs {
     private AppResourceArgs(AppResourceArgs $) {
         this.database = $.database;
         this.description = $.description;
+        this.genieSpace = $.genieSpace;
         this.job = $.job;
         this.name = $.name;
         this.secret = $.secret;
@@ -221,6 +238,27 @@ public final class AppResourceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param genieSpace attribute
+         * 
+         * @return builder
+         * 
+         */
+        public Builder genieSpace(@Nullable Output<AppResourceGenieSpaceArgs> genieSpace) {
+            $.genieSpace = genieSpace;
+            return this;
+        }
+
+        /**
+         * @param genieSpace attribute
+         * 
+         * @return builder
+         * 
+         */
+        public Builder genieSpace(AppResourceGenieSpaceArgs genieSpace) {
+            return genieSpace(Output.of(genieSpace));
         }
 
         /**

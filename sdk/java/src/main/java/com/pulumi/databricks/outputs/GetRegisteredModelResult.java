@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetRegisteredModelModelInfo;
+import com.pulumi.databricks.outputs.GetRegisteredModelProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
@@ -32,6 +33,7 @@ public final class GetRegisteredModelResult {
      * 
      */
     private List<GetRegisteredModelModelInfo> modelInfos;
+    private @Nullable GetRegisteredModelProviderConfig providerConfig;
 
     private GetRegisteredModelResult() {}
     /**
@@ -61,6 +63,9 @@ public final class GetRegisteredModelResult {
     public List<GetRegisteredModelModelInfo> modelInfos() {
         return this.modelInfos;
     }
+    public Optional<GetRegisteredModelProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -76,6 +81,7 @@ public final class GetRegisteredModelResult {
         private @Nullable Boolean includeAliases;
         private @Nullable Boolean includeBrowse;
         private List<GetRegisteredModelModelInfo> modelInfos;
+        private @Nullable GetRegisteredModelProviderConfig providerConfig;
         public Builder() {}
         public Builder(GetRegisteredModelResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -84,6 +90,7 @@ public final class GetRegisteredModelResult {
     	      this.includeAliases = defaults.includeAliases;
     	      this.includeBrowse = defaults.includeBrowse;
     	      this.modelInfos = defaults.modelInfos;
+    	      this.providerConfig = defaults.providerConfig;
         }
 
         @CustomType.Setter
@@ -125,6 +132,12 @@ public final class GetRegisteredModelResult {
         public Builder modelInfos(GetRegisteredModelModelInfo... modelInfos) {
             return modelInfos(List.of(modelInfos));
         }
+        @CustomType.Setter
+        public Builder providerConfig(@Nullable GetRegisteredModelProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
+            return this;
+        }
         public GetRegisteredModelResult build() {
             final var _resultValue = new GetRegisteredModelResult();
             _resultValue.fullName = fullName;
@@ -132,6 +145,7 @@ public final class GetRegisteredModelResult {
             _resultValue.includeAliases = includeAliases;
             _resultValue.includeBrowse = includeBrowse;
             _resultValue.modelInfos = modelInfos;
+            _resultValue.providerConfig = providerConfig;
             return _resultValue;
         }
     }

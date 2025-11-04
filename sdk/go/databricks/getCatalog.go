@@ -81,6 +81,8 @@ type LookupCatalogArgs struct {
 	Id *string `pulumi:"id"`
 	// name of the catalog
 	Name string `pulumi:"name"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *GetCatalogProviderConfig `pulumi:"providerConfig"`
 }
 
 // A collection of values returned by getCatalog.
@@ -90,7 +92,8 @@ type LookupCatalogResult struct {
 	// same as the `name`
 	Id string `pulumi:"id"`
 	// Name of the catalog
-	Name string `pulumi:"name"`
+	Name           string                    `pulumi:"name"`
+	ProviderConfig *GetCatalogProviderConfig `pulumi:"providerConfig"`
 }
 
 func LookupCatalogOutput(ctx *pulumi.Context, args LookupCatalogOutputArgs, opts ...pulumi.InvokeOption) LookupCatalogResultOutput {
@@ -110,6 +113,8 @@ type LookupCatalogOutputArgs struct {
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// name of the catalog
 	Name pulumi.StringInput `pulumi:"name"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig GetCatalogProviderConfigPtrInput `pulumi:"providerConfig"`
 }
 
 func (LookupCatalogOutputArgs) ElementType() reflect.Type {
@@ -144,6 +149,10 @@ func (o LookupCatalogResultOutput) Id() pulumi.StringOutput {
 // Name of the catalog
 func (o LookupCatalogResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCatalogResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupCatalogResultOutput) ProviderConfig() GetCatalogProviderConfigPtrOutput {
+	return o.ApplyT(func(v LookupCatalogResult) *GetCatalogProviderConfig { return v.ProviderConfig }).(GetCatalogProviderConfigPtrOutput)
 }
 
 func init() {

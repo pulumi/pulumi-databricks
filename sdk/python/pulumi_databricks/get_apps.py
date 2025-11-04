@@ -14,6 +14,7 @@ else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetAppsResult',
@@ -27,13 +28,16 @@ class GetAppsResult:
     """
     A collection of values returned by getApps.
     """
-    def __init__(__self__, apps=None, id=None):
+    def __init__(__self__, apps=None, id=None, provider_config=None):
         if apps and not isinstance(apps, list):
             raise TypeError("Expected argument 'apps' to be a list")
         pulumi.set(__self__, "apps", apps)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if provider_config and not isinstance(provider_config, dict):
+            raise TypeError("Expected argument 'provider_config' to be a dict")
+        pulumi.set(__self__, "provider_config", provider_config)
 
     @_builtins.property
     @pulumi.getter
@@ -48,6 +52,11 @@ class GetAppsResult:
         """
         return pulumi.get(self, "id")
 
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional['outputs.GetAppsProviderConfigResult']:
+        return pulumi.get(self, "provider_config")
+
 
 class AwaitableGetAppsResult(GetAppsResult):
     # pylint: disable=using-constant-test
@@ -56,10 +65,12 @@ class AwaitableGetAppsResult(GetAppsResult):
             yield self
         return GetAppsResult(
             apps=self.apps,
-            id=self.id)
+            id=self.id,
+            provider_config=self.provider_config)
 
 
-def get_apps(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAppsResult:
+def get_apps(provider_config: Optional[Union['GetAppsProviderConfigArgs', 'GetAppsProviderConfigArgsDict']] = None,
+             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAppsResult:
     """
     > This data source can only be used with a workspace-level provider!
 
@@ -87,13 +98,16 @@ def get_apps(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAppsRes
     * Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code.
     """
     __args__ = dict()
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getApps:getApps', __args__, opts=opts, typ=GetAppsResult).value
 
     return AwaitableGetAppsResult(
         apps=pulumi.get(__ret__, 'apps'),
-        id=pulumi.get(__ret__, 'id'))
-def get_apps_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAppsResult]:
+        id=pulumi.get(__ret__, 'id'),
+        provider_config=pulumi.get(__ret__, 'provider_config'))
+def get_apps_output(provider_config: Optional[pulumi.Input[Optional[Union['GetAppsProviderConfigArgs', 'GetAppsProviderConfigArgsDict']]]] = None,
+                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAppsResult]:
     """
     > This data source can only be used with a workspace-level provider!
 
@@ -121,8 +135,10 @@ def get_apps_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutp
     * Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code.
     """
     __args__ = dict()
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getApps:getApps', __args__, opts=opts, typ=GetAppsResult)
     return __ret__.apply(lambda __response__: GetAppsResult(
         apps=pulumi.get(__response__, 'apps'),
-        id=pulumi.get(__response__, 'id')))
+        id=pulumi.get(__response__, 'id'),
+        provider_config=pulumi.get(__response__, 'provider_config')))

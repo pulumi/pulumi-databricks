@@ -66,6 +66,12 @@ namespace Pulumi.Databricks
         public Output<string?> BudgetPolicyId { get; private set; } = null!;
 
         /// <summary>
+        /// A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`, `LIQUID`.
+        /// </summary>
+        [Output("computeSize")]
+        public Output<string> ComputeSize { get; private set; } = null!;
+
+        /// <summary>
         /// attribute
         /// </summary>
         [Output("computeStatus")]
@@ -125,12 +131,18 @@ namespace Pulumi.Databricks
         [Output("pendingDeployment")]
         public Output<Outputs.AppPendingDeployment> PendingDeployment { get; private set; } = null!;
 
+        [Output("providerConfig")]
+        public Output<Outputs.AppProviderConfig?> ProviderConfig { get; private set; } = null!;
+
         /// <summary>
         /// A list of resources that the app have access to.
         /// </summary>
         [Output("resources")]
         public Output<ImmutableArray<Outputs.AppResource>> Resources { get; private set; } = null!;
 
+        /// <summary>
+        /// client_id (application_id) of the app service principal
+        /// </summary>
         [Output("servicePrincipalClientId")]
         public Output<string> ServicePrincipalClientId { get; private set; } = null!;
 
@@ -223,6 +235,12 @@ namespace Pulumi.Databricks
         public Input<string>? BudgetPolicyId { get; set; }
 
         /// <summary>
+        /// A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`, `LIQUID`.
+        /// </summary>
+        [Input("computeSize")]
+        public Input<string>? ComputeSize { get; set; }
+
+        /// <summary>
         /// The description of the app.
         /// </summary>
         [Input("description")]
@@ -236,6 +254,9 @@ namespace Pulumi.Databricks
 
         [Input("noCompute")]
         public Input<bool>? NoCompute { get; set; }
+
+        [Input("providerConfig")]
+        public Input<Inputs.AppProviderConfigArgs>? ProviderConfig { get; set; }
 
         [Input("resources")]
         private InputList<Inputs.AppResourceArgs>? _resources;
@@ -283,6 +304,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("budgetPolicyId")]
         public Input<string>? BudgetPolicyId { get; set; }
+
+        /// <summary>
+        /// A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`, `LIQUID`.
+        /// </summary>
+        [Input("computeSize")]
+        public Input<string>? ComputeSize { get; set; }
 
         /// <summary>
         /// attribute
@@ -350,6 +377,9 @@ namespace Pulumi.Databricks
         [Input("pendingDeployment")]
         public Input<Inputs.AppPendingDeploymentGetArgs>? PendingDeployment { get; set; }
 
+        [Input("providerConfig")]
+        public Input<Inputs.AppProviderConfigGetArgs>? ProviderConfig { get; set; }
+
         [Input("resources")]
         private InputList<Inputs.AppResourceGetArgs>? _resources;
 
@@ -362,6 +392,9 @@ namespace Pulumi.Databricks
             set => _resources = value;
         }
 
+        /// <summary>
+        /// client_id (application_id) of the app service principal
+        /// </summary>
         [Input("servicePrincipalClientId")]
         public Input<string>? ServicePrincipalClientId { get; set; }
 

@@ -4,6 +4,8 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -14,25 +16,41 @@ public final class GetMaterializedFeaturesFeatureTagsPlainArgs extends com.pulum
 
     public static final GetMaterializedFeaturesFeatureTagsPlainArgs Empty = new GetMaterializedFeaturesFeatureTagsPlainArgs();
 
-    /**
-     * Workspace ID of the resource
-     * 
-     */
-    @Import(name="workspaceId")
-    private @Nullable String workspaceId;
+    @Import(name="featureName", required=true)
+    private String featureName;
+
+    public String featureName() {
+        return this.featureName;
+    }
 
     /**
-     * @return Workspace ID of the resource
+     * The maximum number of results to return
      * 
      */
-    public Optional<String> workspaceId() {
-        return Optional.ofNullable(this.workspaceId);
+    @Import(name="pageSize")
+    private @Nullable Integer pageSize;
+
+    /**
+     * @return The maximum number of results to return
+     * 
+     */
+    public Optional<Integer> pageSize() {
+        return Optional.ofNullable(this.pageSize);
+    }
+
+    @Import(name="tableName", required=true)
+    private String tableName;
+
+    public String tableName() {
+        return this.tableName;
     }
 
     private GetMaterializedFeaturesFeatureTagsPlainArgs() {}
 
     private GetMaterializedFeaturesFeatureTagsPlainArgs(GetMaterializedFeaturesFeatureTagsPlainArgs $) {
-        this.workspaceId = $.workspaceId;
+        this.featureName = $.featureName;
+        this.pageSize = $.pageSize;
+        this.tableName = $.tableName;
     }
 
     public static Builder builder() {
@@ -53,18 +71,34 @@ public final class GetMaterializedFeaturesFeatureTagsPlainArgs extends com.pulum
             $ = new GetMaterializedFeaturesFeatureTagsPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        public Builder featureName(String featureName) {
+            $.featureName = featureName;
+            return this;
+        }
+
         /**
-         * @param workspaceId Workspace ID of the resource
+         * @param pageSize The maximum number of results to return
          * 
          * @return builder
          * 
          */
-        public Builder workspaceId(@Nullable String workspaceId) {
-            $.workspaceId = workspaceId;
+        public Builder pageSize(@Nullable Integer pageSize) {
+            $.pageSize = pageSize;
+            return this;
+        }
+
+        public Builder tableName(String tableName) {
+            $.tableName = tableName;
             return this;
         }
 
         public GetMaterializedFeaturesFeatureTagsPlainArgs build() {
+            if ($.featureName == null) {
+                throw new MissingRequiredPropertyException("GetMaterializedFeaturesFeatureTagsPlainArgs", "featureName");
+            }
+            if ($.tableName == null) {
+                throw new MissingRequiredPropertyException("GetMaterializedFeaturesFeatureTagsPlainArgs", "tableName");
+            }
             return $;
         }
     }

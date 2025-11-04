@@ -4,10 +4,13 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetDirectoryProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDirectoryResult {
@@ -18,6 +21,7 @@ public final class GetDirectoryResult {
      */
     private Integer objectId;
     private String path;
+    private @Nullable GetDirectoryProviderConfig providerConfig;
     /**
      * @return path on Workspace File System (WSFS) in form of `/Workspace` + `path`
      * 
@@ -37,6 +41,9 @@ public final class GetDirectoryResult {
     }
     public String path() {
         return this.path;
+    }
+    public Optional<GetDirectoryProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
     }
     /**
      * @return path on Workspace File System (WSFS) in form of `/Workspace` + `path`
@@ -58,6 +65,7 @@ public final class GetDirectoryResult {
         private String id;
         private Integer objectId;
         private String path;
+        private @Nullable GetDirectoryProviderConfig providerConfig;
         private String workspacePath;
         public Builder() {}
         public Builder(GetDirectoryResult defaults) {
@@ -65,6 +73,7 @@ public final class GetDirectoryResult {
     	      this.id = defaults.id;
     	      this.objectId = defaults.objectId;
     	      this.path = defaults.path;
+    	      this.providerConfig = defaults.providerConfig;
     	      this.workspacePath = defaults.workspacePath;
         }
 
@@ -93,6 +102,12 @@ public final class GetDirectoryResult {
             return this;
         }
         @CustomType.Setter
+        public Builder providerConfig(@Nullable GetDirectoryProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder workspacePath(String workspacePath) {
             if (workspacePath == null) {
               throw new MissingRequiredPropertyException("GetDirectoryResult", "workspacePath");
@@ -105,6 +120,7 @@ public final class GetDirectoryResult {
             _resultValue.id = id;
             _resultValue.objectId = objectId;
             _resultValue.path = path;
+            _resultValue.providerConfig = providerConfig;
             _resultValue.workspacePath = workspacePath;
             return _resultValue;
         }

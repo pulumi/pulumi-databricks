@@ -9,16 +9,19 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetTagPoliciesTagPolicy {
     /**
+     * @return (string) - Timestamp when the tag policy was created
+     * 
+     */
+    private String createTime;
+    /**
      * @return (string)
      * 
      */
-    private @Nullable String description;
+    private String description;
     /**
      * @return (string)
      * 
@@ -30,18 +33,30 @@ public final class GetTagPoliciesTagPolicy {
      */
     private String tagKey;
     /**
+     * @return (string) - Timestamp when the tag policy was last updated
+     * 
+     */
+    private String updateTime;
+    /**
      * @return (list of Value)
      * 
      */
-    private @Nullable List<GetTagPoliciesTagPolicyValue> values;
+    private List<GetTagPoliciesTagPolicyValue> values;
 
     private GetTagPoliciesTagPolicy() {}
+    /**
+     * @return (string) - Timestamp when the tag policy was created
+     * 
+     */
+    public String createTime() {
+        return this.createTime;
+    }
     /**
      * @return (string)
      * 
      */
-    public Optional<String> description() {
-        return Optional.ofNullable(this.description);
+    public String description() {
+        return this.description;
     }
     /**
      * @return (string)
@@ -58,11 +73,18 @@ public final class GetTagPoliciesTagPolicy {
         return this.tagKey;
     }
     /**
+     * @return (string) - Timestamp when the tag policy was last updated
+     * 
+     */
+    public String updateTime() {
+        return this.updateTime;
+    }
+    /**
      * @return (list of Value)
      * 
      */
     public List<GetTagPoliciesTagPolicyValue> values() {
-        return this.values == null ? List.of() : this.values;
+        return this.values;
     }
 
     public static Builder builder() {
@@ -74,22 +96,36 @@ public final class GetTagPoliciesTagPolicy {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String description;
+        private String createTime;
+        private String description;
         private String id;
         private String tagKey;
-        private @Nullable List<GetTagPoliciesTagPolicyValue> values;
+        private String updateTime;
+        private List<GetTagPoliciesTagPolicyValue> values;
         public Builder() {}
         public Builder(GetTagPoliciesTagPolicy defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.createTime = defaults.createTime;
     	      this.description = defaults.description;
     	      this.id = defaults.id;
     	      this.tagKey = defaults.tagKey;
+    	      this.updateTime = defaults.updateTime;
     	      this.values = defaults.values;
         }
 
         @CustomType.Setter
-        public Builder description(@Nullable String description) {
-
+        public Builder createTime(String createTime) {
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetTagPoliciesTagPolicy", "createTime");
+            }
+            this.createTime = createTime;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder description(String description) {
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetTagPoliciesTagPolicy", "description");
+            }
             this.description = description;
             return this;
         }
@@ -110,8 +146,18 @@ public final class GetTagPoliciesTagPolicy {
             return this;
         }
         @CustomType.Setter
-        public Builder values(@Nullable List<GetTagPoliciesTagPolicyValue> values) {
-
+        public Builder updateTime(String updateTime) {
+            if (updateTime == null) {
+              throw new MissingRequiredPropertyException("GetTagPoliciesTagPolicy", "updateTime");
+            }
+            this.updateTime = updateTime;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder values(List<GetTagPoliciesTagPolicyValue> values) {
+            if (values == null) {
+              throw new MissingRequiredPropertyException("GetTagPoliciesTagPolicy", "values");
+            }
             this.values = values;
             return this;
         }
@@ -120,9 +166,11 @@ public final class GetTagPoliciesTagPolicy {
         }
         public GetTagPoliciesTagPolicy build() {
             final var _resultValue = new GetTagPoliciesTagPolicy();
+            _resultValue.createTime = createTime;
             _resultValue.description = description;
             _resultValue.id = id;
             _resultValue.tagKey = tagKey;
+            _resultValue.updateTime = updateTime;
             _resultValue.values = values;
             return _resultValue;
         }

@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -33,6 +35,7 @@ export function getStorageCredentials(args?: GetStorageCredentialsArgs, opts?: p
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getStorageCredentials:getStorageCredentials", {
         "names": args.names,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -44,6 +47,10 @@ export interface GetStorageCredentialsArgs {
      * List of names of databricks.StorageCredential in the metastore
      */
     names?: string[];
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: inputs.GetStorageCredentialsProviderConfig;
 }
 
 /**
@@ -58,6 +65,7 @@ export interface GetStorageCredentialsResult {
      * List of names of databricks.StorageCredential in the metastore
      */
     readonly names: string[];
+    readonly providerConfig?: outputs.GetStorageCredentialsProviderConfig;
 }
 /**
  * Retrieves a list of databricks.StorageCredential objects, that were created by Pulumi or manually, so that special handling could be applied.
@@ -88,6 +96,7 @@ export function getStorageCredentialsOutput(args?: GetStorageCredentialsOutputAr
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getStorageCredentials:getStorageCredentials", {
         "names": args.names,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -99,4 +108,8 @@ export interface GetStorageCredentialsOutputArgs {
      * List of names of databricks.StorageCredential in the metastore
      */
     names?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.GetStorageCredentialsProviderConfigArgs>;
 }

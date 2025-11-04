@@ -28,7 +28,7 @@ class GetRegisteredModelVersionsResult:
     """
     A collection of values returned by getRegisteredModelVersions.
     """
-    def __init__(__self__, full_name=None, id=None, model_versions=None):
+    def __init__(__self__, full_name=None, id=None, model_versions=None, provider_config=None):
         if full_name and not isinstance(full_name, str):
             raise TypeError("Expected argument 'full_name' to be a str")
         pulumi.set(__self__, "full_name", full_name)
@@ -38,6 +38,9 @@ class GetRegisteredModelVersionsResult:
         if model_versions and not isinstance(model_versions, list):
             raise TypeError("Expected argument 'model_versions' to be a list")
         pulumi.set(__self__, "model_versions", model_versions)
+        if provider_config and not isinstance(provider_config, dict):
+            raise TypeError("Expected argument 'provider_config' to be a dict")
+        pulumi.set(__self__, "provider_config", provider_config)
 
     @_builtins.property
     @pulumi.getter(name="fullName")
@@ -63,6 +66,11 @@ class GetRegisteredModelVersionsResult:
         """
         return pulumi.get(self, "model_versions")
 
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional['outputs.GetRegisteredModelVersionsProviderConfigResult']:
+        return pulumi.get(self, "provider_config")
+
 
 class AwaitableGetRegisteredModelVersionsResult(GetRegisteredModelVersionsResult):
     # pylint: disable=using-constant-test
@@ -72,11 +80,13 @@ class AwaitableGetRegisteredModelVersionsResult(GetRegisteredModelVersionsResult
         return GetRegisteredModelVersionsResult(
             full_name=self.full_name,
             id=self.id,
-            model_versions=self.model_versions)
+            model_versions=self.model_versions,
+            provider_config=self.provider_config)
 
 
 def get_registered_model_versions(full_name: Optional[_builtins.str] = None,
                                   model_versions: Optional[Sequence[Union['GetRegisteredModelVersionsModelVersionArgs', 'GetRegisteredModelVersionsModelVersionArgsDict']]] = None,
+                                  provider_config: Optional[Union['GetRegisteredModelVersionsProviderConfigArgs', 'GetRegisteredModelVersionsProviderConfigArgsDict']] = None,
                                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRegisteredModelVersionsResult:
     """
     This resource allows you to get information about versions of [Model in Unity Catalog](https://docs.databricks.com/en/mlflow/models-in-uc.html).
@@ -108,15 +118,18 @@ def get_registered_model_versions(full_name: Optional[_builtins.str] = None,
     __args__ = dict()
     __args__['fullName'] = full_name
     __args__['modelVersions'] = model_versions
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getRegisteredModelVersions:getRegisteredModelVersions', __args__, opts=opts, typ=GetRegisteredModelVersionsResult).value
 
     return AwaitableGetRegisteredModelVersionsResult(
         full_name=pulumi.get(__ret__, 'full_name'),
         id=pulumi.get(__ret__, 'id'),
-        model_versions=pulumi.get(__ret__, 'model_versions'))
+        model_versions=pulumi.get(__ret__, 'model_versions'),
+        provider_config=pulumi.get(__ret__, 'provider_config'))
 def get_registered_model_versions_output(full_name: Optional[pulumi.Input[_builtins.str]] = None,
                                          model_versions: Optional[pulumi.Input[Optional[Sequence[Union['GetRegisteredModelVersionsModelVersionArgs', 'GetRegisteredModelVersionsModelVersionArgsDict']]]]] = None,
+                                         provider_config: Optional[pulumi.Input[Optional[Union['GetRegisteredModelVersionsProviderConfigArgs', 'GetRegisteredModelVersionsProviderConfigArgsDict']]]] = None,
                                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRegisteredModelVersionsResult]:
     """
     This resource allows you to get information about versions of [Model in Unity Catalog](https://docs.databricks.com/en/mlflow/models-in-uc.html).
@@ -148,9 +161,11 @@ def get_registered_model_versions_output(full_name: Optional[pulumi.Input[_built
     __args__ = dict()
     __args__['fullName'] = full_name
     __args__['modelVersions'] = model_versions
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getRegisteredModelVersions:getRegisteredModelVersions', __args__, opts=opts, typ=GetRegisteredModelVersionsResult)
     return __ret__.apply(lambda __response__: GetRegisteredModelVersionsResult(
         full_name=pulumi.get(__response__, 'full_name'),
         id=pulumi.get(__response__, 'id'),
-        model_versions=pulumi.get(__response__, 'model_versions')))
+        model_versions=pulumi.get(__response__, 'model_versions'),
+        provider_config=pulumi.get(__response__, 'provider_config')))

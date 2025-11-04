@@ -11,12 +11,162 @@ namespace Pulumi.Databricks
 {
     public static class GetEntityTagAssignments
     {
+        /// <summary>
+        /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// This data source allows you to retrieve tag assignments that have been applied to a particular entity in Unity Catalog.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ### Get all tag assignments for a catalog
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var catalogTags = Databricks.GetEntityTagAssignments.Invoke(new()
+        ///     {
+        ///         EntityType = "catalogs",
+        ///         EntityName = "production_catalog",
+        ///     });
+        /// 
+        ///     var schemaTags = Databricks.GetEntityTagAssignments.Invoke(new()
+        ///     {
+        ///         EntityType = "schemas",
+        ///         EntityName = "production_catalog.sales_data",
+        ///     });
+        /// 
+        ///     var tableTags = Databricks.GetEntityTagAssignments.Invoke(new()
+        ///     {
+        ///         EntityType = "tables",
+        ///         EntityName = "production_catalog.sales_data.customer_orders",
+        ///     });
+        /// 
+        ///     var columnTags = Databricks.GetEntityTagAssignments.Invoke(new()
+        ///     {
+        ///         EntityType = "columns",
+        ///         EntityName = "production_catalog.customer_data.users.email_address",
+        ///     });
+        /// 
+        ///     var volumeTags = Databricks.GetEntityTagAssignments.Invoke(new()
+        ///     {
+        ///         EntityType = "volumes",
+        ///         EntityName = "production_catalog.raw_data.landing_zone",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Task<GetEntityTagAssignmentsResult> InvokeAsync(GetEntityTagAssignmentsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetEntityTagAssignmentsResult>("databricks:index/getEntityTagAssignments:getEntityTagAssignments", args ?? new GetEntityTagAssignmentsArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// This data source allows you to retrieve tag assignments that have been applied to a particular entity in Unity Catalog.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ### Get all tag assignments for a catalog
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var catalogTags = Databricks.GetEntityTagAssignments.Invoke(new()
+        ///     {
+        ///         EntityType = "catalogs",
+        ///         EntityName = "production_catalog",
+        ///     });
+        /// 
+        ///     var schemaTags = Databricks.GetEntityTagAssignments.Invoke(new()
+        ///     {
+        ///         EntityType = "schemas",
+        ///         EntityName = "production_catalog.sales_data",
+        ///     });
+        /// 
+        ///     var tableTags = Databricks.GetEntityTagAssignments.Invoke(new()
+        ///     {
+        ///         EntityType = "tables",
+        ///         EntityName = "production_catalog.sales_data.customer_orders",
+        ///     });
+        /// 
+        ///     var columnTags = Databricks.GetEntityTagAssignments.Invoke(new()
+        ///     {
+        ///         EntityType = "columns",
+        ///         EntityName = "production_catalog.customer_data.users.email_address",
+        ///     });
+        /// 
+        ///     var volumeTags = Databricks.GetEntityTagAssignments.Invoke(new()
+        ///     {
+        ///         EntityType = "volumes",
+        ///         EntityName = "production_catalog.raw_data.landing_zone",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetEntityTagAssignmentsResult> Invoke(GetEntityTagAssignmentsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetEntityTagAssignmentsResult>("databricks:index/getEntityTagAssignments:getEntityTagAssignments", args ?? new GetEntityTagAssignmentsInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// This data source allows you to retrieve tag assignments that have been applied to a particular entity in Unity Catalog.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ### Get all tag assignments for a catalog
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var catalogTags = Databricks.GetEntityTagAssignments.Invoke(new()
+        ///     {
+        ///         EntityType = "catalogs",
+        ///         EntityName = "production_catalog",
+        ///     });
+        /// 
+        ///     var schemaTags = Databricks.GetEntityTagAssignments.Invoke(new()
+        ///     {
+        ///         EntityType = "schemas",
+        ///         EntityName = "production_catalog.sales_data",
+        ///     });
+        /// 
+        ///     var tableTags = Databricks.GetEntityTagAssignments.Invoke(new()
+        ///     {
+        ///         EntityType = "tables",
+        ///         EntityName = "production_catalog.sales_data.customer_orders",
+        ///     });
+        /// 
+        ///     var columnTags = Databricks.GetEntityTagAssignments.Invoke(new()
+        ///     {
+        ///         EntityType = "columns",
+        ///         EntityName = "production_catalog.customer_data.users.email_address",
+        ///     });
+        /// 
+        ///     var volumeTags = Databricks.GetEntityTagAssignments.Invoke(new()
+        ///     {
+        ///         EntityType = "volumes",
+        ///         EntityName = "production_catalog.raw_data.landing_zone",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetEntityTagAssignmentsResult> Invoke(GetEntityTagAssignmentsInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetEntityTagAssignmentsResult>("databricks:index/getEntityTagAssignments:getEntityTagAssignments", args ?? new GetEntityTagAssignmentsInvokeArgs(), options.WithDefaults());
     }
@@ -37,10 +187,10 @@ namespace Pulumi.Databricks
         public string EntityType { get; set; } = null!;
 
         /// <summary>
-        /// Workspace ID of the resource
+        /// Optional. Maximum number of tag assignments to return in a single page
         /// </summary>
-        [Input("workspaceId")]
-        public string? WorkspaceId { get; set; }
+        [Input("maxResults")]
+        public int? MaxResults { get; set; }
 
         public GetEntityTagAssignmentsArgs()
         {
@@ -63,10 +213,10 @@ namespace Pulumi.Databricks
         public Input<string> EntityType { get; set; } = null!;
 
         /// <summary>
-        /// Workspace ID of the resource
+        /// Optional. Maximum number of tag assignments to return in a single page
         /// </summary>
-        [Input("workspaceId")]
-        public Input<string>? WorkspaceId { get; set; }
+        [Input("maxResults")]
+        public Input<int>? MaxResults { get; set; }
 
         public GetEntityTagAssignmentsInvokeArgs()
         {
@@ -90,8 +240,8 @@ namespace Pulumi.Databricks
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly int? MaxResults;
         public readonly ImmutableArray<Outputs.GetEntityTagAssignmentsTagAssignmentResult> TagAssignments;
-        public readonly string? WorkspaceId;
 
         [OutputConstructor]
         private GetEntityTagAssignmentsResult(
@@ -101,15 +251,15 @@ namespace Pulumi.Databricks
 
             string id,
 
-            ImmutableArray<Outputs.GetEntityTagAssignmentsTagAssignmentResult> tagAssignments,
+            int? maxResults,
 
-            string? workspaceId)
+            ImmutableArray<Outputs.GetEntityTagAssignmentsTagAssignmentResult> tagAssignments)
         {
             EntityName = entityName;
             EntityType = entityType;
             Id = id;
+            MaxResults = maxResults;
             TagAssignments = tagAssignments;
-            WorkspaceId = workspaceId;
         }
     }
 }

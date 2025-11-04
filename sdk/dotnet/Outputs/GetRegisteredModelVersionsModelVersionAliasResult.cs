@@ -18,6 +18,19 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string? AliasName;
         /// <summary>
+        /// The name of the catalog where the schema and the registered model reside.
+        /// </summary>
+        public readonly string? CatalogName;
+        /// <summary>
+        /// The unique identifier of the model version
+        /// </summary>
+        public readonly string? Id;
+        public readonly string? ModelName;
+        /// <summary>
+        /// The name of the schema where the registered model resides.
+        /// </summary>
+        public readonly string? SchemaName;
+        /// <summary>
         /// associated model version
         /// </summary>
         public readonly int? VersionNum;
@@ -26,9 +39,21 @@ namespace Pulumi.Databricks.Outputs
         private GetRegisteredModelVersionsModelVersionAliasResult(
             string? aliasName,
 
+            string? catalogName,
+
+            string? id,
+
+            string? modelName,
+
+            string? schemaName,
+
             int? versionNum)
         {
             AliasName = aliasName;
+            CatalogName = catalogName;
+            Id = id;
+            ModelName = modelName;
+            SchemaName = schemaName;
             VersionNum = versionNum;
         }
     }

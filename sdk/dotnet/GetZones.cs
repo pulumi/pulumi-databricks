@@ -96,6 +96,12 @@ namespace Pulumi.Databricks
         [Input("id")]
         public string? Id { get; set; }
 
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Inputs.GetZonesProviderConfigArgs? ProviderConfig { get; set; }
+
         [Input("zones")]
         private List<string>? _zones;
 
@@ -128,6 +134,12 @@ namespace Pulumi.Databricks
         [Input("id")]
         public Input<string>? Id { get; set; }
 
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.GetZonesProviderConfigInputArgs>? ProviderConfig { get; set; }
+
         [Input("zones")]
         private InputList<string>? _zones;
 
@@ -158,6 +170,7 @@ namespace Pulumi.Databricks
         /// The id for the zone object.
         /// </summary>
         public readonly string Id;
+        public readonly Outputs.GetZonesProviderConfigResult? ProviderConfig;
         /// <summary>
         /// This is a list of all the zones available for your subnets in your Databricks workspace.
         /// </summary>
@@ -169,10 +182,13 @@ namespace Pulumi.Databricks
 
             string id,
 
+            Outputs.GetZonesProviderConfigResult? providerConfig,
+
             ImmutableArray<string> zones)
         {
             DefaultZone = defaultZone;
             Id = id;
+            ProviderConfig = providerConfig;
             Zones = zones;
         }
     }

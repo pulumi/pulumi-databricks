@@ -51,6 +51,7 @@ export function getServingEndpoints(args?: GetServingEndpointsArgs, opts?: pulum
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getServingEndpoints:getServingEndpoints", {
         "endpoints": args.endpoints,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -62,6 +63,7 @@ export interface GetServingEndpointsArgs {
      * List of objects describing the serving endpoints. Each object consists of following attributes:
      */
     endpoints?: inputs.GetServingEndpointsEndpoint[];
+    providerConfig?: inputs.GetServingEndpointsProviderConfig;
 }
 
 /**
@@ -76,6 +78,7 @@ export interface GetServingEndpointsResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly providerConfig?: outputs.GetServingEndpointsProviderConfig;
 }
 /**
  * This resource allows you to get information about [Model Serving](https://docs.databricks.com/machine-learning/model-serving/index.html) endpoints in Databricks.
@@ -122,6 +125,7 @@ export function getServingEndpointsOutput(args?: GetServingEndpointsOutputArgs, 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getServingEndpoints:getServingEndpoints", {
         "endpoints": args.endpoints,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -133,4 +137,5 @@ export interface GetServingEndpointsOutputArgs {
      * List of objects describing the serving endpoints. Each object consists of following attributes:
      */
     endpoints?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointArgs>[]>;
+    providerConfig?: pulumi.Input<inputs.GetServingEndpointsProviderConfigArgs>;
 }

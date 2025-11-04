@@ -79,13 +79,16 @@ import (
 type Catalog struct {
 	pulumi.CustomResourceState
 
-	BrowseOnly  pulumi.BoolPtrOutput `pulumi:"browseOnly"`
-	CatalogType pulumi.StringOutput  `pulumi:"catalogType"`
+	BrowseOnly pulumi.BoolPtrOutput `pulumi:"browseOnly"`
+	// the type of the catalog.
+	CatalogType pulumi.StringOutput `pulumi:"catalogType"`
 	// User-supplied free-form text.
 	Comment pulumi.StringPtrOutput `pulumi:"comment"`
 	// For Foreign Catalogs: the name of the connection to an external data source. Changes forces creation of a new resource.
-	ConnectionName                      pulumi.StringPtrOutput                           `pulumi:"connectionName"`
-	CreatedAt                           pulumi.IntOutput                                 `pulumi:"createdAt"`
+	ConnectionName pulumi.StringPtrOutput `pulumi:"connectionName"`
+	// time at which this catalog was created, in epoch milliseconds.
+	CreatedAt pulumi.IntOutput `pulumi:"createdAt"`
+	// username of catalog creator.
 	CreatedBy                           pulumi.StringOutput                              `pulumi:"createdBy"`
 	EffectivePredictiveOptimizationFlag CatalogEffectivePredictiveOptimizationFlagOutput `pulumi:"effectivePredictiveOptimizationFlag"`
 	// Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
@@ -108,14 +111,18 @@ type Catalog struct {
 	// For Delta Sharing Catalogs: the name of the delta sharing provider. Change forces creation of a new resource.
 	ProviderName     pulumi.StringPtrOutput           `pulumi:"providerName"`
 	ProvisioningInfo CatalogProvisioningInfoPtrOutput `pulumi:"provisioningInfo"`
-	SecurableType    pulumi.StringOutput              `pulumi:"securableType"`
+	// the type of Unity Catalog securable.
+	SecurableType pulumi.StringOutput `pulumi:"securableType"`
 	// For Delta Sharing Catalogs: the name of the share under the share provider. Change forces creation of a new resource.
-	ShareName       pulumi.StringPtrOutput `pulumi:"shareName"`
-	StorageLocation pulumi.StringPtrOutput `pulumi:"storageLocation"`
+	ShareName pulumi.StringPtrOutput `pulumi:"shareName"`
+	// effective storage Location URL (full path) for managed tables within catalog.
+	StorageLocation pulumi.StringOutput `pulumi:"storageLocation"`
 	// Managed location of the catalog. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
 	StorageRoot pulumi.StringPtrOutput `pulumi:"storageRoot"`
-	UpdatedAt   pulumi.IntOutput       `pulumi:"updatedAt"`
-	UpdatedBy   pulumi.StringOutput    `pulumi:"updatedBy"`
+	// time at which this catalog was last modified, in epoch milliseconds..
+	UpdatedAt pulumi.IntOutput `pulumi:"updatedAt"`
+	// username of user who last modified catalog.
+	UpdatedBy pulumi.StringOutput `pulumi:"updatedBy"`
 }
 
 // NewCatalog registers a new resource with the given unique name, arguments, and options.
@@ -148,13 +155,16 @@ func GetCatalog(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Catalog resources.
 type catalogState struct {
-	BrowseOnly  *bool   `pulumi:"browseOnly"`
+	BrowseOnly *bool `pulumi:"browseOnly"`
+	// the type of the catalog.
 	CatalogType *string `pulumi:"catalogType"`
 	// User-supplied free-form text.
 	Comment *string `pulumi:"comment"`
 	// For Foreign Catalogs: the name of the connection to an external data source. Changes forces creation of a new resource.
-	ConnectionName                      *string                                     `pulumi:"connectionName"`
-	CreatedAt                           *int                                        `pulumi:"createdAt"`
+	ConnectionName *string `pulumi:"connectionName"`
+	// time at which this catalog was created, in epoch milliseconds.
+	CreatedAt *int `pulumi:"createdAt"`
+	// username of catalog creator.
 	CreatedBy                           *string                                     `pulumi:"createdBy"`
 	EffectivePredictiveOptimizationFlag *CatalogEffectivePredictiveOptimizationFlag `pulumi:"effectivePredictiveOptimizationFlag"`
 	// Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
@@ -177,24 +187,31 @@ type catalogState struct {
 	// For Delta Sharing Catalogs: the name of the delta sharing provider. Change forces creation of a new resource.
 	ProviderName     *string                  `pulumi:"providerName"`
 	ProvisioningInfo *CatalogProvisioningInfo `pulumi:"provisioningInfo"`
-	SecurableType    *string                  `pulumi:"securableType"`
+	// the type of Unity Catalog securable.
+	SecurableType *string `pulumi:"securableType"`
 	// For Delta Sharing Catalogs: the name of the share under the share provider. Change forces creation of a new resource.
-	ShareName       *string `pulumi:"shareName"`
+	ShareName *string `pulumi:"shareName"`
+	// effective storage Location URL (full path) for managed tables within catalog.
 	StorageLocation *string `pulumi:"storageLocation"`
 	// Managed location of the catalog. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
 	StorageRoot *string `pulumi:"storageRoot"`
-	UpdatedAt   *int    `pulumi:"updatedAt"`
-	UpdatedBy   *string `pulumi:"updatedBy"`
+	// time at which this catalog was last modified, in epoch milliseconds..
+	UpdatedAt *int `pulumi:"updatedAt"`
+	// username of user who last modified catalog.
+	UpdatedBy *string `pulumi:"updatedBy"`
 }
 
 type CatalogState struct {
-	BrowseOnly  pulumi.BoolPtrInput
+	BrowseOnly pulumi.BoolPtrInput
+	// the type of the catalog.
 	CatalogType pulumi.StringPtrInput
 	// User-supplied free-form text.
 	Comment pulumi.StringPtrInput
 	// For Foreign Catalogs: the name of the connection to an external data source. Changes forces creation of a new resource.
-	ConnectionName                      pulumi.StringPtrInput
-	CreatedAt                           pulumi.IntPtrInput
+	ConnectionName pulumi.StringPtrInput
+	// time at which this catalog was created, in epoch milliseconds.
+	CreatedAt pulumi.IntPtrInput
+	// username of catalog creator.
 	CreatedBy                           pulumi.StringPtrInput
 	EffectivePredictiveOptimizationFlag CatalogEffectivePredictiveOptimizationFlagPtrInput
 	// Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
@@ -217,14 +234,18 @@ type CatalogState struct {
 	// For Delta Sharing Catalogs: the name of the delta sharing provider. Change forces creation of a new resource.
 	ProviderName     pulumi.StringPtrInput
 	ProvisioningInfo CatalogProvisioningInfoPtrInput
-	SecurableType    pulumi.StringPtrInput
+	// the type of Unity Catalog securable.
+	SecurableType pulumi.StringPtrInput
 	// For Delta Sharing Catalogs: the name of the share under the share provider. Change forces creation of a new resource.
-	ShareName       pulumi.StringPtrInput
+	ShareName pulumi.StringPtrInput
+	// effective storage Location URL (full path) for managed tables within catalog.
 	StorageLocation pulumi.StringPtrInput
 	// Managed location of the catalog. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
 	StorageRoot pulumi.StringPtrInput
-	UpdatedAt   pulumi.IntPtrInput
-	UpdatedBy   pulumi.StringPtrInput
+	// time at which this catalog was last modified, in epoch milliseconds..
+	UpdatedAt pulumi.IntPtrInput
+	// username of user who last modified catalog.
+	UpdatedBy pulumi.StringPtrInput
 }
 
 func (CatalogState) ElementType() reflect.Type {
@@ -258,8 +279,7 @@ type catalogArgs struct {
 	ProviderName     *string                  `pulumi:"providerName"`
 	ProvisioningInfo *CatalogProvisioningInfo `pulumi:"provisioningInfo"`
 	// For Delta Sharing Catalogs: the name of the share under the share provider. Change forces creation of a new resource.
-	ShareName       *string `pulumi:"shareName"`
-	StorageLocation *string `pulumi:"storageLocation"`
+	ShareName *string `pulumi:"shareName"`
 	// Managed location of the catalog. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
 	StorageRoot *string `pulumi:"storageRoot"`
 }
@@ -292,8 +312,7 @@ type CatalogArgs struct {
 	ProviderName     pulumi.StringPtrInput
 	ProvisioningInfo CatalogProvisioningInfoPtrInput
 	// For Delta Sharing Catalogs: the name of the share under the share provider. Change forces creation of a new resource.
-	ShareName       pulumi.StringPtrInput
-	StorageLocation pulumi.StringPtrInput
+	ShareName pulumi.StringPtrInput
 	// Managed location of the catalog. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
 	StorageRoot pulumi.StringPtrInput
 }
@@ -389,6 +408,7 @@ func (o CatalogOutput) BrowseOnly() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Catalog) pulumi.BoolPtrOutput { return v.BrowseOnly }).(pulumi.BoolPtrOutput)
 }
 
+// the type of the catalog.
 func (o CatalogOutput) CatalogType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Catalog) pulumi.StringOutput { return v.CatalogType }).(pulumi.StringOutput)
 }
@@ -403,10 +423,12 @@ func (o CatalogOutput) ConnectionName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Catalog) pulumi.StringPtrOutput { return v.ConnectionName }).(pulumi.StringPtrOutput)
 }
 
+// time at which this catalog was created, in epoch milliseconds.
 func (o CatalogOutput) CreatedAt() pulumi.IntOutput {
 	return o.ApplyT(func(v *Catalog) pulumi.IntOutput { return v.CreatedAt }).(pulumi.IntOutput)
 }
 
+// username of catalog creator.
 func (o CatalogOutput) CreatedBy() pulumi.StringOutput {
 	return o.ApplyT(func(v *Catalog) pulumi.StringOutput { return v.CreatedBy }).(pulumi.StringOutput)
 }
@@ -470,6 +492,7 @@ func (o CatalogOutput) ProvisioningInfo() CatalogProvisioningInfoPtrOutput {
 	return o.ApplyT(func(v *Catalog) CatalogProvisioningInfoPtrOutput { return v.ProvisioningInfo }).(CatalogProvisioningInfoPtrOutput)
 }
 
+// the type of Unity Catalog securable.
 func (o CatalogOutput) SecurableType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Catalog) pulumi.StringOutput { return v.SecurableType }).(pulumi.StringOutput)
 }
@@ -479,8 +502,9 @@ func (o CatalogOutput) ShareName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Catalog) pulumi.StringPtrOutput { return v.ShareName }).(pulumi.StringPtrOutput)
 }
 
-func (o CatalogOutput) StorageLocation() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Catalog) pulumi.StringPtrOutput { return v.StorageLocation }).(pulumi.StringPtrOutput)
+// effective storage Location URL (full path) for managed tables within catalog.
+func (o CatalogOutput) StorageLocation() pulumi.StringOutput {
+	return o.ApplyT(func(v *Catalog) pulumi.StringOutput { return v.StorageLocation }).(pulumi.StringOutput)
 }
 
 // Managed location of the catalog. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
@@ -488,10 +512,12 @@ func (o CatalogOutput) StorageRoot() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Catalog) pulumi.StringPtrOutput { return v.StorageRoot }).(pulumi.StringPtrOutput)
 }
 
+// time at which this catalog was last modified, in epoch milliseconds..
 func (o CatalogOutput) UpdatedAt() pulumi.IntOutput {
 	return o.ApplyT(func(v *Catalog) pulumi.IntOutput { return v.UpdatedAt }).(pulumi.IntOutput)
 }
 
+// username of user who last modified catalog.
 func (o CatalogOutput) UpdatedBy() pulumi.StringOutput {
 	return o.ApplyT(func(v *Catalog) pulumi.StringOutput { return v.UpdatedBy }).(pulumi.StringOutput)
 }

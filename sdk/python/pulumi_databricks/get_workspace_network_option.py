@@ -47,7 +47,7 @@ class GetWorkspaceNetworkOptionResult:
 
     @_builtins.property
     @pulumi.getter(name="networkPolicyId")
-    def network_policy_id(self) -> Optional[_builtins.str]:
+    def network_policy_id(self) -> _builtins.str:
         """
         (string) - The network policy ID to apply to the workspace. This controls the network access rules
         for all serverless compute resources in the workspace. Each workspace can only be
@@ -58,7 +58,7 @@ class GetWorkspaceNetworkOptionResult:
 
     @_builtins.property
     @pulumi.getter(name="workspaceId")
-    def workspace_id(self) -> Optional[_builtins.str]:
+    def workspace_id(self) -> _builtins.str:
         """
         (integer) - The workspace ID
         """
@@ -76,10 +76,11 @@ class AwaitableGetWorkspaceNetworkOptionResult(GetWorkspaceNetworkOptionResult):
             workspace_id=self.workspace_id)
 
 
-def get_workspace_network_option(network_policy_id: Optional[_builtins.str] = None,
-                                 workspace_id: Optional[_builtins.str] = None,
+def get_workspace_network_option(workspace_id: Optional[_builtins.str] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetWorkspaceNetworkOptionResult:
     """
+    [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
     This data source can be used to get a single workspace network option.
 
     > **Note** This data source can only be used with an account-level provider!
@@ -96,14 +97,9 @@ def get_workspace_network_option(network_policy_id: Optional[_builtins.str] = No
     ```
 
 
-    :param _builtins.str network_policy_id: (string) - The network policy ID to apply to the workspace. This controls the network access rules
-           for all serverless compute resources in the workspace. Each workspace can only be
-           linked to one policy at a time. If no policy is explicitly assigned,
-           the workspace will use 'default-policy'
     :param _builtins.str workspace_id: The workspace ID
     """
     __args__ = dict()
-    __args__['networkPolicyId'] = network_policy_id
     __args__['workspaceId'] = workspace_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getWorkspaceNetworkOption:getWorkspaceNetworkOption', __args__, opts=opts, typ=GetWorkspaceNetworkOptionResult).value
@@ -112,10 +108,11 @@ def get_workspace_network_option(network_policy_id: Optional[_builtins.str] = No
         id=pulumi.get(__ret__, 'id'),
         network_policy_id=pulumi.get(__ret__, 'network_policy_id'),
         workspace_id=pulumi.get(__ret__, 'workspace_id'))
-def get_workspace_network_option_output(network_policy_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                        workspace_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_workspace_network_option_output(workspace_id: Optional[pulumi.Input[_builtins.str]] = None,
                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWorkspaceNetworkOptionResult]:
     """
+    [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
     This data source can be used to get a single workspace network option.
 
     > **Note** This data source can only be used with an account-level provider!
@@ -132,14 +129,9 @@ def get_workspace_network_option_output(network_policy_id: Optional[pulumi.Input
     ```
 
 
-    :param _builtins.str network_policy_id: (string) - The network policy ID to apply to the workspace. This controls the network access rules
-           for all serverless compute resources in the workspace. Each workspace can only be
-           linked to one policy at a time. If no policy is explicitly assigned,
-           the workspace will use 'default-policy'
     :param _builtins.str workspace_id: The workspace ID
     """
     __args__ = dict()
-    __args__['networkPolicyId'] = network_policy_id
     __args__['workspaceId'] = workspace_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getWorkspaceNetworkOption:getWorkspaceNetworkOption', __args__, opts=opts, typ=GetWorkspaceNetworkOptionResult)

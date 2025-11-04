@@ -6,31 +6,13 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GetOnlineStoreArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetOnlineStoreArgs Empty = new GetOnlineStoreArgs();
-
-    /**
-     * (string) - The capacity of the online store. Valid values are &#34;CU_1&#34;, &#34;CU_2&#34;, &#34;CU_4&#34;, &#34;CU_8&#34;
-     * 
-     */
-    @Import(name="capacity", required=true)
-    private Output<String> capacity;
-
-    /**
-     * @return (string) - The capacity of the online store. Valid values are &#34;CU_1&#34;, &#34;CU_2&#34;, &#34;CU_4&#34;, &#34;CU_8&#34;
-     * 
-     */
-    public Output<String> capacity() {
-        return this.capacity;
-    }
 
     /**
      * The name of the online store. This is the unique identifier for the online store
@@ -47,43 +29,10 @@ public final class GetOnlineStoreArgs extends com.pulumi.resources.InvokeArgs {
         return this.name;
     }
 
-    /**
-     * (integer) - The number of read replicas for the online store. Defaults to 0
-     * 
-     */
-    @Import(name="readReplicaCount")
-    private @Nullable Output<Integer> readReplicaCount;
-
-    /**
-     * @return (integer) - The number of read replicas for the online store. Defaults to 0
-     * 
-     */
-    public Optional<Output<Integer>> readReplicaCount() {
-        return Optional.ofNullable(this.readReplicaCount);
-    }
-
-    /**
-     * Workspace ID of the resource
-     * 
-     */
-    @Import(name="workspaceId")
-    private @Nullable Output<String> workspaceId;
-
-    /**
-     * @return Workspace ID of the resource
-     * 
-     */
-    public Optional<Output<String>> workspaceId() {
-        return Optional.ofNullable(this.workspaceId);
-    }
-
     private GetOnlineStoreArgs() {}
 
     private GetOnlineStoreArgs(GetOnlineStoreArgs $) {
-        this.capacity = $.capacity;
         this.name = $.name;
-        this.readReplicaCount = $.readReplicaCount;
-        this.workspaceId = $.workspaceId;
     }
 
     public static Builder builder() {
@@ -102,27 +51,6 @@ public final class GetOnlineStoreArgs extends com.pulumi.resources.InvokeArgs {
 
         public Builder(GetOnlineStoreArgs defaults) {
             $ = new GetOnlineStoreArgs(Objects.requireNonNull(defaults));
-        }
-
-        /**
-         * @param capacity (string) - The capacity of the online store. Valid values are &#34;CU_1&#34;, &#34;CU_2&#34;, &#34;CU_4&#34;, &#34;CU_8&#34;
-         * 
-         * @return builder
-         * 
-         */
-        public Builder capacity(Output<String> capacity) {
-            $.capacity = capacity;
-            return this;
-        }
-
-        /**
-         * @param capacity (string) - The capacity of the online store. Valid values are &#34;CU_1&#34;, &#34;CU_2&#34;, &#34;CU_4&#34;, &#34;CU_8&#34;
-         * 
-         * @return builder
-         * 
-         */
-        public Builder capacity(String capacity) {
-            return capacity(Output.of(capacity));
         }
 
         /**
@@ -146,52 +74,7 @@ public final class GetOnlineStoreArgs extends com.pulumi.resources.InvokeArgs {
             return name(Output.of(name));
         }
 
-        /**
-         * @param readReplicaCount (integer) - The number of read replicas for the online store. Defaults to 0
-         * 
-         * @return builder
-         * 
-         */
-        public Builder readReplicaCount(@Nullable Output<Integer> readReplicaCount) {
-            $.readReplicaCount = readReplicaCount;
-            return this;
-        }
-
-        /**
-         * @param readReplicaCount (integer) - The number of read replicas for the online store. Defaults to 0
-         * 
-         * @return builder
-         * 
-         */
-        public Builder readReplicaCount(Integer readReplicaCount) {
-            return readReplicaCount(Output.of(readReplicaCount));
-        }
-
-        /**
-         * @param workspaceId Workspace ID of the resource
-         * 
-         * @return builder
-         * 
-         */
-        public Builder workspaceId(@Nullable Output<String> workspaceId) {
-            $.workspaceId = workspaceId;
-            return this;
-        }
-
-        /**
-         * @param workspaceId Workspace ID of the resource
-         * 
-         * @return builder
-         * 
-         */
-        public Builder workspaceId(String workspaceId) {
-            return workspaceId(Output.of(workspaceId));
-        }
-
         public GetOnlineStoreArgs build() {
-            if ($.capacity == null) {
-                throw new MissingRequiredPropertyException("GetOnlineStoreArgs", "capacity");
-            }
             if ($.name == null) {
                 throw new MissingRequiredPropertyException("GetOnlineStoreArgs", "name");
             }

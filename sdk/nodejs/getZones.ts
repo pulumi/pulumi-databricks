@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -24,6 +26,7 @@ export function getZones(args?: GetZonesArgs, opts?: pulumi.InvokeOptions): Prom
     return pulumi.runtime.invoke("databricks:index/getZones:getZones", {
         "defaultZone": args.defaultZone,
         "id": args.id,
+        "providerConfig": args.providerConfig,
         "zones": args.zones,
     }, opts);
 }
@@ -40,6 +43,10 @@ export interface GetZonesArgs {
      * The id for the zone object.
      */
     id?: string;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: inputs.GetZonesProviderConfig;
     /**
      * This is a list of all the zones available for your subnets in your Databricks workspace.
      */
@@ -58,6 +65,7 @@ export interface GetZonesResult {
      * The id for the zone object.
      */
     readonly id: string;
+    readonly providerConfig?: outputs.GetZonesProviderConfig;
     /**
      * This is a list of all the zones available for your subnets in your Databricks workspace.
      */
@@ -83,6 +91,7 @@ export function getZonesOutput(args?: GetZonesOutputArgs, opts?: pulumi.InvokeOu
     return pulumi.runtime.invokeOutput("databricks:index/getZones:getZones", {
         "defaultZone": args.defaultZone,
         "id": args.id,
+        "providerConfig": args.providerConfig,
         "zones": args.zones,
     }, opts);
 }
@@ -99,6 +108,10 @@ export interface GetZonesOutputArgs {
      * The id for the zone object.
      */
     id?: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.GetZonesProviderConfigArgs>;
     /**
      * This is a list of all the zones available for your subnets in your Databricks workspace.
      */

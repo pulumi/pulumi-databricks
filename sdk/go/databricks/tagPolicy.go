@@ -12,9 +12,49 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+//
 // Define tag policies to manage governed tags in your account.
 //
-// > **Note** This resource can only be used with an account-level provider!
+// > **Note** This resource can only be used with a workspace-level provider!
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewTagPolicy(ctx, "example_tag_policy", &databricks.TagPolicyArgs{
+//				TagKey:      pulumi.String("example_tag_key"),
+//				Description: pulumi.String("Example description."),
+//				Values: databricks.TagPolicyValueArray{
+//					&databricks.TagPolicyValueArgs{
+//						Name: pulumi.String("example_value_1"),
+//					},
+//					&databricks.TagPolicyValueArgs{
+//						Name: pulumi.String("example_value_2"),
+//					},
+//					&databricks.TagPolicyValueArgs{
+//						Name: pulumi.String("example_value_3"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -33,16 +73,18 @@ import (
 // If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
 //
 // ```sh
-// $ pulumi import databricks:index/tagPolicy:TagPolicy databricks_tag_policy "tag_key"
+// $ pulumi import databricks:index/tagPolicy:TagPolicy this "tag_key"
 // ```
 type TagPolicy struct {
 	pulumi.CustomResourceState
 
-	Description pulumi.StringPtrOutput    `pulumi:"description"`
-	TagKey      pulumi.StringOutput       `pulumi:"tagKey"`
-	Values      TagPolicyValueArrayOutput `pulumi:"values"`
-	// Workspace ID of the resource
-	WorkspaceId pulumi.StringPtrOutput `pulumi:"workspaceId"`
+	// (string) - Timestamp when the tag policy was created
+	CreateTime  pulumi.StringOutput    `pulumi:"createTime"`
+	Description pulumi.StringPtrOutput `pulumi:"description"`
+	TagKey      pulumi.StringOutput    `pulumi:"tagKey"`
+	// (string) - Timestamp when the tag policy was last updated
+	UpdateTime pulumi.StringOutput       `pulumi:"updateTime"`
+	Values     TagPolicyValueArrayOutput `pulumi:"values"`
 }
 
 // NewTagPolicy registers a new resource with the given unique name, arguments, and options.
@@ -78,19 +120,23 @@ func GetTagPolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering TagPolicy resources.
 type tagPolicyState struct {
-	Description *string          `pulumi:"description"`
-	TagKey      *string          `pulumi:"tagKey"`
-	Values      []TagPolicyValue `pulumi:"values"`
-	// Workspace ID of the resource
-	WorkspaceId *string `pulumi:"workspaceId"`
+	// (string) - Timestamp when the tag policy was created
+	CreateTime  *string `pulumi:"createTime"`
+	Description *string `pulumi:"description"`
+	TagKey      *string `pulumi:"tagKey"`
+	// (string) - Timestamp when the tag policy was last updated
+	UpdateTime *string          `pulumi:"updateTime"`
+	Values     []TagPolicyValue `pulumi:"values"`
 }
 
 type TagPolicyState struct {
+	// (string) - Timestamp when the tag policy was created
+	CreateTime  pulumi.StringPtrInput
 	Description pulumi.StringPtrInput
 	TagKey      pulumi.StringPtrInput
-	Values      TagPolicyValueArrayInput
-	// Workspace ID of the resource
-	WorkspaceId pulumi.StringPtrInput
+	// (string) - Timestamp when the tag policy was last updated
+	UpdateTime pulumi.StringPtrInput
+	Values     TagPolicyValueArrayInput
 }
 
 func (TagPolicyState) ElementType() reflect.Type {
@@ -101,8 +147,6 @@ type tagPolicyArgs struct {
 	Description *string          `pulumi:"description"`
 	TagKey      string           `pulumi:"tagKey"`
 	Values      []TagPolicyValue `pulumi:"values"`
-	// Workspace ID of the resource
-	WorkspaceId *string `pulumi:"workspaceId"`
 }
 
 // The set of arguments for constructing a TagPolicy resource.
@@ -110,8 +154,6 @@ type TagPolicyArgs struct {
 	Description pulumi.StringPtrInput
 	TagKey      pulumi.StringInput
 	Values      TagPolicyValueArrayInput
-	// Workspace ID of the resource
-	WorkspaceId pulumi.StringPtrInput
 }
 
 func (TagPolicyArgs) ElementType() reflect.Type {
@@ -201,6 +243,11 @@ func (o TagPolicyOutput) ToTagPolicyOutputWithContext(ctx context.Context) TagPo
 	return o
 }
 
+// (string) - Timestamp when the tag policy was created
+func (o TagPolicyOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *TagPolicy) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
 func (o TagPolicyOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TagPolicy) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -209,13 +256,13 @@ func (o TagPolicyOutput) TagKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *TagPolicy) pulumi.StringOutput { return v.TagKey }).(pulumi.StringOutput)
 }
 
-func (o TagPolicyOutput) Values() TagPolicyValueArrayOutput {
-	return o.ApplyT(func(v *TagPolicy) TagPolicyValueArrayOutput { return v.Values }).(TagPolicyValueArrayOutput)
+// (string) - Timestamp when the tag policy was last updated
+func (o TagPolicyOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *TagPolicy) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
 }
 
-// Workspace ID of the resource
-func (o TagPolicyOutput) WorkspaceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TagPolicy) pulumi.StringPtrOutput { return v.WorkspaceId }).(pulumi.StringPtrOutput)
+func (o TagPolicyOutput) Values() TagPolicyValueArrayOutput {
+	return o.ApplyT(func(v *TagPolicy) TagPolicyValueArrayOutput { return v.Values }).(TagPolicyValueArrayOutput)
 }
 
 type TagPolicyArrayOutput struct{ *pulumi.OutputState }

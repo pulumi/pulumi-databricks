@@ -51,6 +51,9 @@ namespace Pulumi.Databricks
         [Input("dashboardNameContains")]
         public string? DashboardNameContains { get; set; }
 
+        [Input("providerConfig")]
+        public Inputs.GetDashboardsProviderConfigArgs? ProviderConfig { get; set; }
+
         public GetDashboardsArgs()
         {
         }
@@ -64,6 +67,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("dashboardNameContains")]
         public Input<string>? DashboardNameContains { get; set; }
+
+        [Input("providerConfig")]
+        public Input<Inputs.GetDashboardsProviderConfigInputArgs>? ProviderConfig { get; set; }
 
         public GetDashboardsInvokeArgs()
         {
@@ -84,6 +90,7 @@ namespace Pulumi.Databricks
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly Outputs.GetDashboardsProviderConfigResult? ProviderConfig;
 
         [OutputConstructor]
         private GetDashboardsResult(
@@ -91,11 +98,14 @@ namespace Pulumi.Databricks
 
             ImmutableArray<Outputs.GetDashboardsDashboardResult> dashboards,
 
-            string id)
+            string id,
+
+            Outputs.GetDashboardsProviderConfigResult? providerConfig)
         {
             DashboardNameContains = dashboardNameContains;
             Dashboards = dashboards;
             Id = id;
+            ProviderConfig = providerConfig;
         }
     }
 }

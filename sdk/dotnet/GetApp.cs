@@ -135,6 +135,9 @@ namespace Pulumi.Databricks
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
+        [Input("providerConfig")]
+        public Inputs.GetAppProviderConfigArgs? ProviderConfig { get; set; }
+
         public GetAppArgs()
         {
         }
@@ -148,6 +151,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
+
+        [Input("providerConfig")]
+        public Input<Inputs.GetAppProviderConfigInputArgs>? ProviderConfig { get; set; }
 
         public GetAppInvokeArgs()
         {
@@ -168,9 +174,10 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Name of the serving endpoint to grant permission on.
+        /// The name of Genie Space.
         /// </summary>
         public readonly string Name;
+        public readonly Outputs.GetAppProviderConfigResult? ProviderConfig;
 
         [OutputConstructor]
         private GetAppResult(
@@ -178,11 +185,14 @@ namespace Pulumi.Databricks
 
             string id,
 
-            string name)
+            string name,
+
+            Outputs.GetAppProviderConfigResult? providerConfig)
         {
             App = app;
             Id = id;
             Name = name;
+            ProviderConfig = providerConfig;
         }
     }
 }

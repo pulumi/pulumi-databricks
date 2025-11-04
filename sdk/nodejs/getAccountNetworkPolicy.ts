@@ -7,6 +7,8 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
  * This data source can be used to get a single network policy.
  *
  * > **Note** This data source can only be used with an account-level provider!
@@ -15,12 +17,9 @@ import * as utilities from "./utilities";
  *
  * Referring to a network policy by id:
  */
-export function getAccountNetworkPolicy(args?: GetAccountNetworkPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountNetworkPolicyResult> {
-    args = args || {};
+export function getAccountNetworkPolicy(args: GetAccountNetworkPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountNetworkPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getAccountNetworkPolicy:getAccountNetworkPolicy", {
-        "accountId": args.accountId,
-        "egress": args.egress,
         "networkPolicyId": args.networkPolicyId,
     }, opts);
 }
@@ -30,17 +29,9 @@ export function getAccountNetworkPolicy(args?: GetAccountNetworkPolicyArgs, opts
  */
 export interface GetAccountNetworkPolicyArgs {
     /**
-     * (string) - The associated account ID for this Network Policy object
-     */
-    accountId?: string;
-    /**
-     * (NetworkPolicyEgress) - The network policies applying for egress traffic
-     */
-    egress?: inputs.GetAccountNetworkPolicyEgress;
-    /**
      * The unique identifier for the network policy
      */
-    networkPolicyId?: string;
+    networkPolicyId: string;
 }
 
 /**
@@ -50,11 +41,11 @@ export interface GetAccountNetworkPolicyResult {
     /**
      * (string) - The associated account ID for this Network Policy object
      */
-    readonly accountId?: string;
+    readonly accountId: string;
     /**
      * (NetworkPolicyEgress) - The network policies applying for egress traffic
      */
-    readonly egress?: outputs.GetAccountNetworkPolicyEgress;
+    readonly egress: outputs.GetAccountNetworkPolicyEgress;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -62,9 +53,11 @@ export interface GetAccountNetworkPolicyResult {
     /**
      * (string) - The unique identifier for the network policy
      */
-    readonly networkPolicyId?: string;
+    readonly networkPolicyId: string;
 }
 /**
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
  * This data source can be used to get a single network policy.
  *
  * > **Note** This data source can only be used with an account-level provider!
@@ -73,12 +66,9 @@ export interface GetAccountNetworkPolicyResult {
  *
  * Referring to a network policy by id:
  */
-export function getAccountNetworkPolicyOutput(args?: GetAccountNetworkPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountNetworkPolicyResult> {
-    args = args || {};
+export function getAccountNetworkPolicyOutput(args: GetAccountNetworkPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountNetworkPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getAccountNetworkPolicy:getAccountNetworkPolicy", {
-        "accountId": args.accountId,
-        "egress": args.egress,
         "networkPolicyId": args.networkPolicyId,
     }, opts);
 }
@@ -88,15 +78,7 @@ export function getAccountNetworkPolicyOutput(args?: GetAccountNetworkPolicyOutp
  */
 export interface GetAccountNetworkPolicyOutputArgs {
     /**
-     * (string) - The associated account ID for this Network Policy object
-     */
-    accountId?: pulumi.Input<string>;
-    /**
-     * (NetworkPolicyEgress) - The network policies applying for egress traffic
-     */
-    egress?: pulumi.Input<inputs.GetAccountNetworkPolicyEgressArgs>;
-    /**
      * The unique identifier for the network policy
      */
-    networkPolicyId?: pulumi.Input<string>;
+    networkPolicyId: pulumi.Input<string>;
 }

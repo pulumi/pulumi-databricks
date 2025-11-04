@@ -11,6 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
 func GetPolicyInfos(ctx *pulumi.Context, args *GetPolicyInfosArgs, opts ...pulumi.InvokeOption) (*GetPolicyInfosResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetPolicyInfosResult
@@ -23,18 +24,25 @@ func GetPolicyInfos(ctx *pulumi.Context, args *GetPolicyInfosArgs, opts ...pulum
 
 // A collection of arguments for invoking getPolicyInfos.
 type GetPolicyInfosArgs struct {
+	// Optional. Whether to include policies defined on parent securables.
+	// By default, the inherited policies are not included
+	IncludeInherited *bool `pulumi:"includeInherited"`
+	// Optional.  Maximum number of policies to return on a single page (page length).
+	// - When not set or set to 0, the page length is set to a server configured value (recommended);
+	// - When set to a value greater than 0, the page length is the minimum of this value and a server configured value;
+	MaxResults *int `pulumi:"maxResults"`
 	// Required. The fully qualified name of securable to list policies for
 	OnSecurableFullname string `pulumi:"onSecurableFullname"`
 	// Required. The type of the securable to list policies for
 	OnSecurableType string `pulumi:"onSecurableType"`
-	// Workspace ID of the resource
-	WorkspaceId *string `pulumi:"workspaceId"`
 }
 
 // A collection of values returned by getPolicyInfos.
 type GetPolicyInfosResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	Id               string `pulumi:"id"`
+	IncludeInherited *bool  `pulumi:"includeInherited"`
+	MaxResults       *int   `pulumi:"maxResults"`
 	// (string) - Full name of the securable on which the policy is defined.
 	// Required on create and ignored on update
 	OnSecurableFullname string `pulumi:"onSecurableFullname"`
@@ -43,7 +51,6 @@ type GetPolicyInfosResult struct {
 	// Required on create and ignored on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
 	OnSecurableType string                 `pulumi:"onSecurableType"`
 	Policies        []GetPolicyInfosPolicy `pulumi:"policies"`
-	WorkspaceId     *string                `pulumi:"workspaceId"`
 }
 
 func GetPolicyInfosOutput(ctx *pulumi.Context, args GetPolicyInfosOutputArgs, opts ...pulumi.InvokeOption) GetPolicyInfosResultOutput {
@@ -57,12 +64,17 @@ func GetPolicyInfosOutput(ctx *pulumi.Context, args GetPolicyInfosOutputArgs, op
 
 // A collection of arguments for invoking getPolicyInfos.
 type GetPolicyInfosOutputArgs struct {
+	// Optional. Whether to include policies defined on parent securables.
+	// By default, the inherited policies are not included
+	IncludeInherited pulumi.BoolPtrInput `pulumi:"includeInherited"`
+	// Optional.  Maximum number of policies to return on a single page (page length).
+	// - When not set or set to 0, the page length is set to a server configured value (recommended);
+	// - When set to a value greater than 0, the page length is the minimum of this value and a server configured value;
+	MaxResults pulumi.IntPtrInput `pulumi:"maxResults"`
 	// Required. The fully qualified name of securable to list policies for
 	OnSecurableFullname pulumi.StringInput `pulumi:"onSecurableFullname"`
 	// Required. The type of the securable to list policies for
 	OnSecurableType pulumi.StringInput `pulumi:"onSecurableType"`
-	// Workspace ID of the resource
-	WorkspaceId pulumi.StringPtrInput `pulumi:"workspaceId"`
 }
 
 func (GetPolicyInfosOutputArgs) ElementType() reflect.Type {
@@ -89,6 +101,14 @@ func (o GetPolicyInfosResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPolicyInfosResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+func (o GetPolicyInfosResultOutput) IncludeInherited() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetPolicyInfosResult) *bool { return v.IncludeInherited }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetPolicyInfosResultOutput) MaxResults() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetPolicyInfosResult) *int { return v.MaxResults }).(pulumi.IntPtrOutput)
+}
+
 // (string) - Full name of the securable on which the policy is defined.
 // Required on create and ignored on update
 func (o GetPolicyInfosResultOutput) OnSecurableFullname() pulumi.StringOutput {
@@ -104,10 +124,6 @@ func (o GetPolicyInfosResultOutput) OnSecurableType() pulumi.StringOutput {
 
 func (o GetPolicyInfosResultOutput) Policies() GetPolicyInfosPolicyArrayOutput {
 	return o.ApplyT(func(v GetPolicyInfosResult) []GetPolicyInfosPolicy { return v.Policies }).(GetPolicyInfosPolicyArrayOutput)
-}
-
-func (o GetPolicyInfosResultOutput) WorkspaceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetPolicyInfosResult) *string { return v.WorkspaceId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

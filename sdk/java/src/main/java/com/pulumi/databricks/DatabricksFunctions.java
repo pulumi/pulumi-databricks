@@ -6,6 +6,8 @@ package com.pulumi.databricks;
 import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.databricks.Utilities;
+import com.pulumi.databricks.inputs.GetAccountFederationPoliciesArgs;
+import com.pulumi.databricks.inputs.GetAccountFederationPoliciesPlainArgs;
 import com.pulumi.databricks.inputs.GetAccountFederationPolicyArgs;
 import com.pulumi.databricks.inputs.GetAccountFederationPolicyPlainArgs;
 import com.pulumi.databricks.inputs.GetAccountNetworkPolicyArgs;
@@ -18,6 +20,8 @@ import com.pulumi.databricks.inputs.GetAlertsV2Args;
 import com.pulumi.databricks.inputs.GetAlertsV2PlainArgs;
 import com.pulumi.databricks.inputs.GetAppArgs;
 import com.pulumi.databricks.inputs.GetAppPlainArgs;
+import com.pulumi.databricks.inputs.GetAppsArgs;
+import com.pulumi.databricks.inputs.GetAppsPlainArgs;
 import com.pulumi.databricks.inputs.GetAppsSettingsCustomTemplateArgs;
 import com.pulumi.databricks.inputs.GetAppsSettingsCustomTemplatePlainArgs;
 import com.pulumi.databricks.inputs.GetAppsSettingsCustomTemplatesArgs;
@@ -32,28 +36,14 @@ import com.pulumi.databricks.inputs.GetAwsUnityCatalogAssumeRolePolicyArgs;
 import com.pulumi.databricks.inputs.GetAwsUnityCatalogAssumeRolePolicyPlainArgs;
 import com.pulumi.databricks.inputs.GetAwsUnityCatalogPolicyArgs;
 import com.pulumi.databricks.inputs.GetAwsUnityCatalogPolicyPlainArgs;
+import com.pulumi.databricks.inputs.GetBudgetPoliciesArgs;
+import com.pulumi.databricks.inputs.GetBudgetPoliciesPlainArgs;
 import com.pulumi.databricks.inputs.GetBudgetPolicyArgs;
 import com.pulumi.databricks.inputs.GetBudgetPolicyPlainArgs;
 import com.pulumi.databricks.inputs.GetCatalogArgs;
 import com.pulumi.databricks.inputs.GetCatalogPlainArgs;
 import com.pulumi.databricks.inputs.GetCatalogsArgs;
 import com.pulumi.databricks.inputs.GetCatalogsPlainArgs;
-import com.pulumi.databricks.inputs.GetCleanRoomAssetArgs;
-import com.pulumi.databricks.inputs.GetCleanRoomAssetPlainArgs;
-import com.pulumi.databricks.inputs.GetCleanRoomAssetRevisionsCleanRoomAssetArgs;
-import com.pulumi.databricks.inputs.GetCleanRoomAssetRevisionsCleanRoomAssetPlainArgs;
-import com.pulumi.databricks.inputs.GetCleanRoomAssetRevisionsCleanRoomAssetsArgs;
-import com.pulumi.databricks.inputs.GetCleanRoomAssetRevisionsCleanRoomAssetsPlainArgs;
-import com.pulumi.databricks.inputs.GetCleanRoomAssetsArgs;
-import com.pulumi.databricks.inputs.GetCleanRoomAssetsPlainArgs;
-import com.pulumi.databricks.inputs.GetCleanRoomAutoApprovalRuleArgs;
-import com.pulumi.databricks.inputs.GetCleanRoomAutoApprovalRulePlainArgs;
-import com.pulumi.databricks.inputs.GetCleanRoomAutoApprovalRulesArgs;
-import com.pulumi.databricks.inputs.GetCleanRoomAutoApprovalRulesPlainArgs;
-import com.pulumi.databricks.inputs.GetCleanRoomsCleanRoomArgs;
-import com.pulumi.databricks.inputs.GetCleanRoomsCleanRoomPlainArgs;
-import com.pulumi.databricks.inputs.GetCleanRoomsCleanRoomsArgs;
-import com.pulumi.databricks.inputs.GetCleanRoomsCleanRoomsPlainArgs;
 import com.pulumi.databricks.inputs.GetClusterArgs;
 import com.pulumi.databricks.inputs.GetClusterPlainArgs;
 import com.pulumi.databricks.inputs.GetClusterPolicyArgs;
@@ -66,6 +56,14 @@ import com.pulumi.databricks.inputs.GetCurrentMetastoreArgs;
 import com.pulumi.databricks.inputs.GetCurrentMetastorePlainArgs;
 import com.pulumi.databricks.inputs.GetDashboardsArgs;
 import com.pulumi.databricks.inputs.GetDashboardsPlainArgs;
+import com.pulumi.databricks.inputs.GetDataQualityMonitorArgs;
+import com.pulumi.databricks.inputs.GetDataQualityMonitorPlainArgs;
+import com.pulumi.databricks.inputs.GetDataQualityMonitorsArgs;
+import com.pulumi.databricks.inputs.GetDataQualityMonitorsPlainArgs;
+import com.pulumi.databricks.inputs.GetDataQualityRefreshArgs;
+import com.pulumi.databricks.inputs.GetDataQualityRefreshPlainArgs;
+import com.pulumi.databricks.inputs.GetDataQualityRefreshesArgs;
+import com.pulumi.databricks.inputs.GetDataQualityRefreshesPlainArgs;
 import com.pulumi.databricks.inputs.GetDatabaseDatabaseCatalogArgs;
 import com.pulumi.databricks.inputs.GetDatabaseDatabaseCatalogPlainArgs;
 import com.pulumi.databricks.inputs.GetDatabaseDatabaseCatalogsArgs;
@@ -96,6 +94,14 @@ import com.pulumi.databricks.inputs.GetExternalMetadataArgs;
 import com.pulumi.databricks.inputs.GetExternalMetadataPlainArgs;
 import com.pulumi.databricks.inputs.GetExternalMetadatasArgs;
 import com.pulumi.databricks.inputs.GetExternalMetadatasPlainArgs;
+import com.pulumi.databricks.inputs.GetFeatureEngineeringFeatureArgs;
+import com.pulumi.databricks.inputs.GetFeatureEngineeringFeaturePlainArgs;
+import com.pulumi.databricks.inputs.GetFeatureEngineeringFeaturesArgs;
+import com.pulumi.databricks.inputs.GetFeatureEngineeringFeaturesPlainArgs;
+import com.pulumi.databricks.inputs.GetFeatureEngineeringMaterializedFeatureArgs;
+import com.pulumi.databricks.inputs.GetFeatureEngineeringMaterializedFeaturePlainArgs;
+import com.pulumi.databricks.inputs.GetFeatureEngineeringMaterializedFeaturesArgs;
+import com.pulumi.databricks.inputs.GetFeatureEngineeringMaterializedFeaturesPlainArgs;
 import com.pulumi.databricks.inputs.GetFunctionsArgs;
 import com.pulumi.databricks.inputs.GetFunctionsPlainArgs;
 import com.pulumi.databricks.inputs.GetGroupArgs;
@@ -150,10 +156,6 @@ import com.pulumi.databricks.inputs.GetQualityMonitorV2Args;
 import com.pulumi.databricks.inputs.GetQualityMonitorV2PlainArgs;
 import com.pulumi.databricks.inputs.GetQualityMonitorsV2Args;
 import com.pulumi.databricks.inputs.GetQualityMonitorsV2PlainArgs;
-import com.pulumi.databricks.inputs.GetRecipientFederationPoliciesArgs;
-import com.pulumi.databricks.inputs.GetRecipientFederationPoliciesPlainArgs;
-import com.pulumi.databricks.inputs.GetRecipientFederationPolicyArgs;
-import com.pulumi.databricks.inputs.GetRecipientFederationPolicyPlainArgs;
 import com.pulumi.databricks.inputs.GetRegisteredModelArgs;
 import com.pulumi.databricks.inputs.GetRegisteredModelPlainArgs;
 import com.pulumi.databricks.inputs.GetRegisteredModelVersionsArgs;
@@ -214,7 +216,7 @@ import com.pulumi.databricks.outputs.GetAccountNetworkPoliciesResult;
 import com.pulumi.databricks.outputs.GetAccountNetworkPolicyResult;
 import com.pulumi.databricks.outputs.GetAccountSettingV2Result;
 import com.pulumi.databricks.outputs.GetAlertV2Result;
-import com.pulumi.databricks.outputs.GetAlertsV2InvokeResult;
+import com.pulumi.databricks.outputs.GetAlertsV2Result;
 import com.pulumi.databricks.outputs.GetAppResult;
 import com.pulumi.databricks.outputs.GetAppsResult;
 import com.pulumi.databricks.outputs.GetAppsSettingsCustomTemplateResult;
@@ -228,14 +230,6 @@ import com.pulumi.databricks.outputs.GetBudgetPoliciesResult;
 import com.pulumi.databricks.outputs.GetBudgetPolicyResult;
 import com.pulumi.databricks.outputs.GetCatalogResult;
 import com.pulumi.databricks.outputs.GetCatalogsResult;
-import com.pulumi.databricks.outputs.GetCleanRoomAssetResult;
-import com.pulumi.databricks.outputs.GetCleanRoomAssetRevisionsCleanRoomAssetResult;
-import com.pulumi.databricks.outputs.GetCleanRoomAssetRevisionsCleanRoomAssetsResult;
-import com.pulumi.databricks.outputs.GetCleanRoomAssetsResult;
-import com.pulumi.databricks.outputs.GetCleanRoomAutoApprovalRuleResult;
-import com.pulumi.databricks.outputs.GetCleanRoomAutoApprovalRulesResult;
-import com.pulumi.databricks.outputs.GetCleanRoomsCleanRoomResult;
-import com.pulumi.databricks.outputs.GetCleanRoomsCleanRoomsResult;
 import com.pulumi.databricks.outputs.GetClusterPolicyResult;
 import com.pulumi.databricks.outputs.GetClusterResult;
 import com.pulumi.databricks.outputs.GetClustersResult;
@@ -243,6 +237,10 @@ import com.pulumi.databricks.outputs.GetCurrentConfigResult;
 import com.pulumi.databricks.outputs.GetCurrentMetastoreResult;
 import com.pulumi.databricks.outputs.GetCurrentUserResult;
 import com.pulumi.databricks.outputs.GetDashboardsResult;
+import com.pulumi.databricks.outputs.GetDataQualityMonitorResult;
+import com.pulumi.databricks.outputs.GetDataQualityMonitorsResult;
+import com.pulumi.databricks.outputs.GetDataQualityRefreshResult;
+import com.pulumi.databricks.outputs.GetDataQualityRefreshesResult;
 import com.pulumi.databricks.outputs.GetDatabaseDatabaseCatalogResult;
 import com.pulumi.databricks.outputs.GetDatabaseDatabaseCatalogsResult;
 import com.pulumi.databricks.outputs.GetDatabaseInstanceResult;
@@ -258,6 +256,10 @@ import com.pulumi.databricks.outputs.GetExternalLocationResult;
 import com.pulumi.databricks.outputs.GetExternalLocationsResult;
 import com.pulumi.databricks.outputs.GetExternalMetadataResult;
 import com.pulumi.databricks.outputs.GetExternalMetadatasResult;
+import com.pulumi.databricks.outputs.GetFeatureEngineeringFeatureResult;
+import com.pulumi.databricks.outputs.GetFeatureEngineeringFeaturesResult;
+import com.pulumi.databricks.outputs.GetFeatureEngineeringMaterializedFeatureResult;
+import com.pulumi.databricks.outputs.GetFeatureEngineeringMaterializedFeaturesResult;
 import com.pulumi.databricks.outputs.GetFunctionsResult;
 import com.pulumi.databricks.outputs.GetGroupResult;
 import com.pulumi.databricks.outputs.GetInstancePoolResult;
@@ -286,10 +288,9 @@ import com.pulumi.databricks.outputs.GetPolicyInfoResult;
 import com.pulumi.databricks.outputs.GetPolicyInfosResult;
 import com.pulumi.databricks.outputs.GetQualityMonitorV2Result;
 import com.pulumi.databricks.outputs.GetQualityMonitorsV2Result;
-import com.pulumi.databricks.outputs.GetRecipientFederationPoliciesResult;
-import com.pulumi.databricks.outputs.GetRecipientFederationPolicyResult;
 import com.pulumi.databricks.outputs.GetRegisteredModelResult;
 import com.pulumi.databricks.outputs.GetRegisteredModelVersionsResult;
+import com.pulumi.databricks.outputs.GetRfaAccessRequestDestinationsResult;
 import com.pulumi.databricks.outputs.GetSchemaResult;
 import com.pulumi.databricks.outputs.GetSchemasResult;
 import com.pulumi.databricks.outputs.GetServicePrincipalFederationPoliciesResult;
@@ -323,6 +324,8 @@ import java.util.concurrent.CompletableFuture;
 
 public final class DatabricksFunctions {
     /**
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to fetch the list of account federation policies.
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
@@ -339,6 +342,7 @@ public final class DatabricksFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAccountFederationPoliciesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -352,7 +356,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getAccountFederationPolicies(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     *         final var all = DatabricksFunctions.getAccountFederationPolicies(GetAccountFederationPoliciesArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -361,9 +366,11 @@ public final class DatabricksFunctions {
      * 
      */
     public static Output<GetAccountFederationPoliciesResult> getAccountFederationPolicies() {
-        return getAccountFederationPolicies(InvokeArgs.Empty, InvokeOptions.Empty);
+        return getAccountFederationPolicies(GetAccountFederationPoliciesArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to fetch the list of account federation policies.
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
@@ -380,6 +387,7 @@ public final class DatabricksFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAccountFederationPoliciesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -393,7 +401,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getAccountFederationPolicies(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     *         final var all = DatabricksFunctions.getAccountFederationPolicies(GetAccountFederationPoliciesArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -402,9 +411,11 @@ public final class DatabricksFunctions {
      * 
      */
     public static CompletableFuture<GetAccountFederationPoliciesResult> getAccountFederationPoliciesPlain() {
-        return getAccountFederationPoliciesPlain(InvokeArgs.Empty, InvokeOptions.Empty);
+        return getAccountFederationPoliciesPlain(GetAccountFederationPoliciesPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to fetch the list of account federation policies.
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
@@ -421,6 +432,7 @@ public final class DatabricksFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAccountFederationPoliciesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -434,7 +446,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getAccountFederationPolicies(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     *         final var all = DatabricksFunctions.getAccountFederationPolicies(GetAccountFederationPoliciesArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -442,10 +455,12 @@ public final class DatabricksFunctions {
      * </pre>
      * 
      */
-    public static Output<GetAccountFederationPoliciesResult> getAccountFederationPolicies(InvokeArgs args) {
+    public static Output<GetAccountFederationPoliciesResult> getAccountFederationPolicies(GetAccountFederationPoliciesArgs args) {
         return getAccountFederationPolicies(args, InvokeOptions.Empty);
     }
     /**
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to fetch the list of account federation policies.
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
@@ -462,6 +477,7 @@ public final class DatabricksFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAccountFederationPoliciesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -475,7 +491,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getAccountFederationPolicies(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     *         final var all = DatabricksFunctions.getAccountFederationPolicies(GetAccountFederationPoliciesArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -483,10 +500,12 @@ public final class DatabricksFunctions {
      * </pre>
      * 
      */
-    public static CompletableFuture<GetAccountFederationPoliciesResult> getAccountFederationPoliciesPlain(InvokeArgs args) {
+    public static CompletableFuture<GetAccountFederationPoliciesResult> getAccountFederationPoliciesPlain(GetAccountFederationPoliciesPlainArgs args) {
         return getAccountFederationPoliciesPlain(args, InvokeOptions.Empty);
     }
     /**
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to fetch the list of account federation policies.
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
@@ -503,6 +522,7 @@ public final class DatabricksFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAccountFederationPoliciesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -516,7 +536,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getAccountFederationPolicies(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     *         final var all = DatabricksFunctions.getAccountFederationPolicies(GetAccountFederationPoliciesArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -524,10 +545,12 @@ public final class DatabricksFunctions {
      * </pre>
      * 
      */
-    public static Output<GetAccountFederationPoliciesResult> getAccountFederationPolicies(InvokeArgs args, InvokeOptions options) {
+    public static Output<GetAccountFederationPoliciesResult> getAccountFederationPolicies(GetAccountFederationPoliciesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getAccountFederationPolicies:getAccountFederationPolicies", TypeShape.of(GetAccountFederationPoliciesResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to fetch the list of account federation policies.
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
@@ -544,6 +567,7 @@ public final class DatabricksFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAccountFederationPoliciesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -557,7 +581,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getAccountFederationPolicies(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     *         final var all = DatabricksFunctions.getAccountFederationPolicies(GetAccountFederationPoliciesArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -565,10 +590,12 @@ public final class DatabricksFunctions {
      * </pre>
      * 
      */
-    public static Output<GetAccountFederationPoliciesResult> getAccountFederationPolicies(InvokeArgs args, InvokeOutputOptions options) {
+    public static Output<GetAccountFederationPoliciesResult> getAccountFederationPolicies(GetAccountFederationPoliciesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getAccountFederationPolicies:getAccountFederationPolicies", TypeShape.of(GetAccountFederationPoliciesResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to fetch the list of account federation policies.
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
@@ -585,6 +612,7 @@ public final class DatabricksFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAccountFederationPoliciesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -598,7 +626,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getAccountFederationPolicies(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     *         final var all = DatabricksFunctions.getAccountFederationPolicies(GetAccountFederationPoliciesArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -606,36 +635,12 @@ public final class DatabricksFunctions {
      * </pre>
      * 
      */
-    public static CompletableFuture<GetAccountFederationPoliciesResult> getAccountFederationPoliciesPlain(InvokeArgs args, InvokeOptions options) {
+    public static CompletableFuture<GetAccountFederationPoliciesResult> getAccountFederationPoliciesPlain(GetAccountFederationPoliciesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getAccountFederationPolicies:getAccountFederationPolicies", TypeShape.of(GetAccountFederationPoliciesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source can be used to get a single account federation policy.
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
-     * &gt; **Note** This data source can only be used with an account-level provider!
-     * 
-     * ## Example Usage
-     * 
-     * Referring to an account federation policy by id:
-     * 
-     */
-    public static Output<GetAccountFederationPolicyResult> getAccountFederationPolicy() {
-        return getAccountFederationPolicy(GetAccountFederationPolicyArgs.Empty, InvokeOptions.Empty);
-    }
-    /**
-     * This data source can be used to get a single account federation policy.
-     * 
-     * &gt; **Note** This data source can only be used with an account-level provider!
-     * 
-     * ## Example Usage
-     * 
-     * Referring to an account federation policy by id:
-     * 
-     */
-    public static CompletableFuture<GetAccountFederationPolicyResult> getAccountFederationPolicyPlain() {
-        return getAccountFederationPolicyPlain(GetAccountFederationPolicyPlainArgs.Empty, InvokeOptions.Empty);
-    }
-    /**
      * This data source can be used to get a single account federation policy.
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
@@ -649,6 +654,8 @@ public final class DatabricksFunctions {
         return getAccountFederationPolicy(args, InvokeOptions.Empty);
     }
     /**
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to get a single account federation policy.
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
@@ -662,6 +669,8 @@ public final class DatabricksFunctions {
         return getAccountFederationPolicyPlain(args, InvokeOptions.Empty);
     }
     /**
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to get a single account federation policy.
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
@@ -675,6 +684,8 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getAccountFederationPolicy:getAccountFederationPolicy", TypeShape.of(GetAccountFederationPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to get a single account federation policy.
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
@@ -688,6 +699,8 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getAccountFederationPolicy:getAccountFederationPolicy", TypeShape.of(GetAccountFederationPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to get a single account federation policy.
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
@@ -701,6 +714,8 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getAccountFederationPolicy:getAccountFederationPolicy", TypeShape.of(GetAccountFederationPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to fetch the list of network policies.
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
@@ -742,6 +757,8 @@ public final class DatabricksFunctions {
         return getAccountNetworkPolicies(InvokeArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to fetch the list of network policies.
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
@@ -783,6 +800,8 @@ public final class DatabricksFunctions {
         return getAccountNetworkPoliciesPlain(InvokeArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to fetch the list of network policies.
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
@@ -824,6 +843,8 @@ public final class DatabricksFunctions {
         return getAccountNetworkPolicies(args, InvokeOptions.Empty);
     }
     /**
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to fetch the list of network policies.
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
@@ -865,6 +886,8 @@ public final class DatabricksFunctions {
         return getAccountNetworkPoliciesPlain(args, InvokeOptions.Empty);
     }
     /**
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to fetch the list of network policies.
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
@@ -906,6 +929,8 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getAccountNetworkPolicies:getAccountNetworkPolicies", TypeShape.of(GetAccountNetworkPoliciesResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to fetch the list of network policies.
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
@@ -947,6 +972,8 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getAccountNetworkPolicies:getAccountNetworkPolicies", TypeShape.of(GetAccountNetworkPoliciesResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to fetch the list of network policies.
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
@@ -988,32 +1015,8 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getAccountNetworkPolicies:getAccountNetworkPolicies", TypeShape.of(GetAccountNetworkPoliciesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source can be used to get a single network policy.
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
-     * &gt; **Note** This data source can only be used with an account-level provider!
-     * 
-     * ## Example Usage
-     * 
-     * Referring to a network policy by id:
-     * 
-     */
-    public static Output<GetAccountNetworkPolicyResult> getAccountNetworkPolicy() {
-        return getAccountNetworkPolicy(GetAccountNetworkPolicyArgs.Empty, InvokeOptions.Empty);
-    }
-    /**
-     * This data source can be used to get a single network policy.
-     * 
-     * &gt; **Note** This data source can only be used with an account-level provider!
-     * 
-     * ## Example Usage
-     * 
-     * Referring to a network policy by id:
-     * 
-     */
-    public static CompletableFuture<GetAccountNetworkPolicyResult> getAccountNetworkPolicyPlain() {
-        return getAccountNetworkPolicyPlain(GetAccountNetworkPolicyPlainArgs.Empty, InvokeOptions.Empty);
-    }
-    /**
      * This data source can be used to get a single network policy.
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
@@ -1027,6 +1030,8 @@ public final class DatabricksFunctions {
         return getAccountNetworkPolicy(args, InvokeOptions.Empty);
     }
     /**
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to get a single network policy.
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
@@ -1040,6 +1045,8 @@ public final class DatabricksFunctions {
         return getAccountNetworkPolicyPlain(args, InvokeOptions.Empty);
     }
     /**
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to get a single network policy.
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
@@ -1053,6 +1060,8 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getAccountNetworkPolicy:getAccountNetworkPolicy", TypeShape.of(GetAccountNetworkPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to get a single network policy.
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
@@ -1066,6 +1075,8 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getAccountNetworkPolicy:getAccountNetworkPolicy", TypeShape.of(GetAccountNetworkPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to get a single network policy.
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
@@ -1078,28 +1089,74 @@ public final class DatabricksFunctions {
     public static CompletableFuture<GetAccountNetworkPolicyResult> getAccountNetworkPolicyPlain(GetAccountNetworkPolicyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getAccountNetworkPolicy:getAccountNetworkPolicy", TypeShape.of(GetAccountNetworkPolicyResult.class), args, Utilities.withVersion(options));
     }
-    public static Output<GetAccountSettingV2Result> getAccountSettingV2() {
-        return getAccountSettingV2(GetAccountSettingV2Args.Empty, InvokeOptions.Empty);
-    }
-    public static CompletableFuture<GetAccountSettingV2Result> getAccountSettingV2Plain() {
-        return getAccountSettingV2Plain(GetAccountSettingV2PlainArgs.Empty, InvokeOptions.Empty);
-    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source can be used to get a single account setting.
+     * 
+     * ## Example Usage
+     * 
+     * Referring to a setting by id
+     * 
+     */
     public static Output<GetAccountSettingV2Result> getAccountSettingV2(GetAccountSettingV2Args args) {
         return getAccountSettingV2(args, InvokeOptions.Empty);
     }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source can be used to get a single account setting.
+     * 
+     * ## Example Usage
+     * 
+     * Referring to a setting by id
+     * 
+     */
     public static CompletableFuture<GetAccountSettingV2Result> getAccountSettingV2Plain(GetAccountSettingV2PlainArgs args) {
         return getAccountSettingV2Plain(args, InvokeOptions.Empty);
     }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source can be used to get a single account setting.
+     * 
+     * ## Example Usage
+     * 
+     * Referring to a setting by id
+     * 
+     */
     public static Output<GetAccountSettingV2Result> getAccountSettingV2(GetAccountSettingV2Args args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getAccountSettingV2:getAccountSettingV2", TypeShape.of(GetAccountSettingV2Result.class), args, Utilities.withVersion(options));
     }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source can be used to get a single account setting.
+     * 
+     * ## Example Usage
+     * 
+     * Referring to a setting by id
+     * 
+     */
     public static Output<GetAccountSettingV2Result> getAccountSettingV2(GetAccountSettingV2Args args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getAccountSettingV2:getAccountSettingV2", TypeShape.of(GetAccountSettingV2Result.class), args, Utilities.withVersion(options));
     }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source can be used to get a single account setting.
+     * 
+     * ## Example Usage
+     * 
+     * Referring to a setting by id
+     * 
+     */
     public static CompletableFuture<GetAccountSettingV2Result> getAccountSettingV2Plain(GetAccountSettingV2PlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getAccountSettingV2:getAccountSettingV2", TypeShape.of(GetAccountSettingV2Result.class), args, Utilities.withVersion(options));
     }
     /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * The SQL Alert v2 data source allows you to retrieve detailed information about a specific alert in Databricks SQL. This data source provides access to all alert properties, including its configuration, evaluation criteria, notification settings, and schedule.
      * 
      * You can use this data source to:
@@ -1113,47 +1170,44 @@ public final class DatabricksFunctions {
      * ### Retrieve Alert by ID
      * This example retrieves a specific alert by its ID:
      * 
-     */
-    public static Output<GetAlertV2Result> getAlertV2() {
-        return getAlertV2(GetAlertV2Args.Empty, InvokeOptions.Empty);
-    }
-    /**
-     * The SQL Alert v2 data source allows you to retrieve detailed information about a specific alert in Databricks SQL. This data source provides access to all alert properties, including its configuration, evaluation criteria, notification settings, and schedule.
+     * <pre>
+     * {@code
+     * package generated_program;
      * 
-     * You can use this data source to:
-     * - Retrieve alert details for reference in other resources
-     * - Check the current state and configuration of an alert
-     * - Verify notification settings and subscribers
-     * - Examine the schedule configuration
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAlertV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
-     * ## Example Usage
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
      * 
-     * ### Retrieve Alert by ID
-     * This example retrieves a specific alert by its ID:
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getAlertV2(GetAlertV2Args.builder()
+     *             .id("123")
+     *             .build());
      * 
-     */
-    public static CompletableFuture<GetAlertV2Result> getAlertV2Plain() {
-        return getAlertV2Plain(GetAlertV2PlainArgs.Empty, InvokeOptions.Empty);
-    }
-    /**
-     * The SQL Alert v2 data source allows you to retrieve detailed information about a specific alert in Databricks SQL. This data source provides access to all alert properties, including its configuration, evaluation criteria, notification settings, and schedule.
-     * 
-     * You can use this data source to:
-     * - Retrieve alert details for reference in other resources
-     * - Check the current state and configuration of an alert
-     * - Verify notification settings and subscribers
-     * - Examine the schedule configuration
-     * 
-     * ## Example Usage
-     * 
-     * ### Retrieve Alert by ID
-     * This example retrieves a specific alert by its ID:
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetAlertV2Result> getAlertV2(GetAlertV2Args args) {
         return getAlertV2(args, InvokeOptions.Empty);
     }
     /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * The SQL Alert v2 data source allows you to retrieve detailed information about a specific alert in Databricks SQL. This data source provides access to all alert properties, including its configuration, evaluation criteria, notification settings, and schedule.
      * 
      * You can use this data source to:
@@ -1166,12 +1220,45 @@ public final class DatabricksFunctions {
      * 
      * ### Retrieve Alert by ID
      * This example retrieves a specific alert by its ID:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAlertV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getAlertV2(GetAlertV2Args.builder()
+     *             .id("123")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetAlertV2Result> getAlertV2Plain(GetAlertV2PlainArgs args) {
         return getAlertV2Plain(args, InvokeOptions.Empty);
     }
     /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * The SQL Alert v2 data source allows you to retrieve detailed information about a specific alert in Databricks SQL. This data source provides access to all alert properties, including its configuration, evaluation criteria, notification settings, and schedule.
      * 
      * You can use this data source to:
@@ -1184,12 +1271,45 @@ public final class DatabricksFunctions {
      * 
      * ### Retrieve Alert by ID
      * This example retrieves a specific alert by its ID:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAlertV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getAlertV2(GetAlertV2Args.builder()
+     *             .id("123")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetAlertV2Result> getAlertV2(GetAlertV2Args args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getAlertV2:getAlertV2", TypeShape.of(GetAlertV2Result.class), args, Utilities.withVersion(options));
     }
     /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * The SQL Alert v2 data source allows you to retrieve detailed information about a specific alert in Databricks SQL. This data source provides access to all alert properties, including its configuration, evaluation criteria, notification settings, and schedule.
      * 
      * You can use this data source to:
@@ -1202,12 +1322,45 @@ public final class DatabricksFunctions {
      * 
      * ### Retrieve Alert by ID
      * This example retrieves a specific alert by its ID:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAlertV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getAlertV2(GetAlertV2Args.builder()
+     *             .id("123")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetAlertV2Result> getAlertV2(GetAlertV2Args args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getAlertV2:getAlertV2", TypeShape.of(GetAlertV2Result.class), args, Utilities.withVersion(options));
     }
     /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * The SQL Alert v2 data source allows you to retrieve detailed information about a specific alert in Databricks SQL. This data source provides access to all alert properties, including its configuration, evaluation criteria, notification settings, and schedule.
      * 
      * You can use this data source to:
@@ -1221,11 +1374,44 @@ public final class DatabricksFunctions {
      * ### Retrieve Alert by ID
      * This example retrieves a specific alert by its ID:
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAlertV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getAlertV2(GetAlertV2Args.builder()
+     *             .id("123")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static CompletableFuture<GetAlertV2Result> getAlertV2Plain(GetAlertV2PlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getAlertV2:getAlertV2", TypeShape.of(GetAlertV2Result.class), args, Utilities.withVersion(options));
     }
     /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * The SQL Alerts v2 data source allows you to retrieve a list of alerts in Databricks SQL that are accessible to the current user. This data source returns alerts ordered by their creation time.
      * 
      * You can use this data source to:
@@ -1268,10 +1454,12 @@ public final class DatabricksFunctions {
      * </pre>
      * 
      */
-    public static Output<GetAlertsV2InvokeResult> getAlertsV2() {
+    public static Output<GetAlertsV2Result> getAlertsV2() {
         return getAlertsV2(GetAlertsV2Args.Empty, InvokeOptions.Empty);
     }
     /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * The SQL Alerts v2 data source allows you to retrieve a list of alerts in Databricks SQL that are accessible to the current user. This data source returns alerts ordered by their creation time.
      * 
      * You can use this data source to:
@@ -1314,10 +1502,12 @@ public final class DatabricksFunctions {
      * </pre>
      * 
      */
-    public static CompletableFuture<GetAlertsV2InvokeResult> getAlertsV2Plain() {
+    public static CompletableFuture<GetAlertsV2Result> getAlertsV2Plain() {
         return getAlertsV2Plain(GetAlertsV2PlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * The SQL Alerts v2 data source allows you to retrieve a list of alerts in Databricks SQL that are accessible to the current user. This data source returns alerts ordered by their creation time.
      * 
      * You can use this data source to:
@@ -1360,10 +1550,12 @@ public final class DatabricksFunctions {
      * </pre>
      * 
      */
-    public static Output<GetAlertsV2InvokeResult> getAlertsV2(GetAlertsV2Args args) {
+    public static Output<GetAlertsV2Result> getAlertsV2(GetAlertsV2Args args) {
         return getAlertsV2(args, InvokeOptions.Empty);
     }
     /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * The SQL Alerts v2 data source allows you to retrieve a list of alerts in Databricks SQL that are accessible to the current user. This data source returns alerts ordered by their creation time.
      * 
      * You can use this data source to:
@@ -1406,10 +1598,12 @@ public final class DatabricksFunctions {
      * </pre>
      * 
      */
-    public static CompletableFuture<GetAlertsV2InvokeResult> getAlertsV2Plain(GetAlertsV2PlainArgs args) {
+    public static CompletableFuture<GetAlertsV2Result> getAlertsV2Plain(GetAlertsV2PlainArgs args) {
         return getAlertsV2Plain(args, InvokeOptions.Empty);
     }
     /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * The SQL Alerts v2 data source allows you to retrieve a list of alerts in Databricks SQL that are accessible to the current user. This data source returns alerts ordered by their creation time.
      * 
      * You can use this data source to:
@@ -1452,10 +1646,12 @@ public final class DatabricksFunctions {
      * </pre>
      * 
      */
-    public static Output<GetAlertsV2InvokeResult> getAlertsV2(GetAlertsV2Args args, InvokeOptions options) {
-        return Deployment.getInstance().invoke("databricks:index/getAlertsV2:getAlertsV2", TypeShape.of(GetAlertsV2InvokeResult.class), args, Utilities.withVersion(options));
+    public static Output<GetAlertsV2Result> getAlertsV2(GetAlertsV2Args args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getAlertsV2:getAlertsV2", TypeShape.of(GetAlertsV2Result.class), args, Utilities.withVersion(options));
     }
     /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * The SQL Alerts v2 data source allows you to retrieve a list of alerts in Databricks SQL that are accessible to the current user. This data source returns alerts ordered by their creation time.
      * 
      * You can use this data source to:
@@ -1498,10 +1694,12 @@ public final class DatabricksFunctions {
      * </pre>
      * 
      */
-    public static Output<GetAlertsV2InvokeResult> getAlertsV2(GetAlertsV2Args args, InvokeOutputOptions options) {
-        return Deployment.getInstance().invoke("databricks:index/getAlertsV2:getAlertsV2", TypeShape.of(GetAlertsV2InvokeResult.class), args, Utilities.withVersion(options));
+    public static Output<GetAlertsV2Result> getAlertsV2(GetAlertsV2Args args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getAlertsV2:getAlertsV2", TypeShape.of(GetAlertsV2Result.class), args, Utilities.withVersion(options));
     }
     /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * The SQL Alerts v2 data source allows you to retrieve a list of alerts in Databricks SQL that are accessible to the current user. This data source returns alerts ordered by their creation time.
      * 
      * You can use this data source to:
@@ -1544,8 +1742,8 @@ public final class DatabricksFunctions {
      * </pre>
      * 
      */
-    public static CompletableFuture<GetAlertsV2InvokeResult> getAlertsV2Plain(GetAlertsV2PlainArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invokeAsync("databricks:index/getAlertsV2:getAlertsV2", TypeShape.of(GetAlertsV2InvokeResult.class), args, Utilities.withVersion(options));
+    public static CompletableFuture<GetAlertsV2Result> getAlertsV2Plain(GetAlertsV2PlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getAlertsV2:getAlertsV2", TypeShape.of(GetAlertsV2Result.class), args, Utilities.withVersion(options));
     }
     /**
      * &gt; This data source can only be used with a workspace-level provider!
@@ -1834,6 +2032,7 @@ public final class DatabricksFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAppsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1847,7 +2046,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var allApps = DatabricksFunctions.getApps(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     *         final var allApps = DatabricksFunctions.getApps(GetAppsArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -1866,7 +2066,7 @@ public final class DatabricksFunctions {
      * 
      */
     public static Output<GetAppsResult> getApps() {
-        return getApps(InvokeArgs.Empty, InvokeOptions.Empty);
+        return getApps(GetAppsArgs.Empty, InvokeOptions.Empty);
     }
     /**
      * &gt; This data source can only be used with a workspace-level provider!
@@ -1885,6 +2085,7 @@ public final class DatabricksFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAppsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1898,7 +2099,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var allApps = DatabricksFunctions.getApps(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     *         final var allApps = DatabricksFunctions.getApps(GetAppsArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -1917,7 +2119,7 @@ public final class DatabricksFunctions {
      * 
      */
     public static CompletableFuture<GetAppsResult> getAppsPlain() {
-        return getAppsPlain(InvokeArgs.Empty, InvokeOptions.Empty);
+        return getAppsPlain(GetAppsPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
      * &gt; This data source can only be used with a workspace-level provider!
@@ -1936,6 +2138,7 @@ public final class DatabricksFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAppsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1949,7 +2152,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var allApps = DatabricksFunctions.getApps(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     *         final var allApps = DatabricksFunctions.getApps(GetAppsArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -1967,7 +2171,7 @@ public final class DatabricksFunctions {
      * * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code.
      * 
      */
-    public static Output<GetAppsResult> getApps(InvokeArgs args) {
+    public static Output<GetAppsResult> getApps(GetAppsArgs args) {
         return getApps(args, InvokeOptions.Empty);
     }
     /**
@@ -1987,6 +2191,7 @@ public final class DatabricksFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAppsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -2000,7 +2205,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var allApps = DatabricksFunctions.getApps(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     *         final var allApps = DatabricksFunctions.getApps(GetAppsArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -2018,7 +2224,7 @@ public final class DatabricksFunctions {
      * * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code.
      * 
      */
-    public static CompletableFuture<GetAppsResult> getAppsPlain(InvokeArgs args) {
+    public static CompletableFuture<GetAppsResult> getAppsPlain(GetAppsPlainArgs args) {
         return getAppsPlain(args, InvokeOptions.Empty);
     }
     /**
@@ -2038,6 +2244,7 @@ public final class DatabricksFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAppsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -2051,7 +2258,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var allApps = DatabricksFunctions.getApps(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     *         final var allApps = DatabricksFunctions.getApps(GetAppsArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -2069,7 +2277,7 @@ public final class DatabricksFunctions {
      * * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code.
      * 
      */
-    public static Output<GetAppsResult> getApps(InvokeArgs args, InvokeOptions options) {
+    public static Output<GetAppsResult> getApps(GetAppsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getApps:getApps", TypeShape.of(GetAppsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -2089,6 +2297,7 @@ public final class DatabricksFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAppsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -2102,7 +2311,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var allApps = DatabricksFunctions.getApps(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     *         final var allApps = DatabricksFunctions.getApps(GetAppsArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -2120,7 +2330,7 @@ public final class DatabricksFunctions {
      * * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code.
      * 
      */
-    public static Output<GetAppsResult> getApps(InvokeArgs args, InvokeOutputOptions options) {
+    public static Output<GetAppsResult> getApps(GetAppsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getApps:getApps", TypeShape.of(GetAppsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -2140,6 +2350,7 @@ public final class DatabricksFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAppsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -2153,7 +2364,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var allApps = DatabricksFunctions.getApps(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     *         final var allApps = DatabricksFunctions.getApps(GetAppsArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -2171,10 +2383,12 @@ public final class DatabricksFunctions {
      * * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code.
      * 
      */
-    public static CompletableFuture<GetAppsResult> getAppsPlain(InvokeArgs args, InvokeOptions options) {
+    public static CompletableFuture<GetAppsResult> getAppsPlain(GetAppsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getApps:getApps", TypeShape.of(GetAppsResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to get a single Custom Template.
      * 
      * ## Example Usage
@@ -2217,6 +2431,8 @@ public final class DatabricksFunctions {
         return getAppsSettingsCustomTemplate(args, InvokeOptions.Empty);
     }
     /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to get a single Custom Template.
      * 
      * ## Example Usage
@@ -2259,6 +2475,8 @@ public final class DatabricksFunctions {
         return getAppsSettingsCustomTemplatePlain(args, InvokeOptions.Empty);
     }
     /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to get a single Custom Template.
      * 
      * ## Example Usage
@@ -2301,6 +2519,8 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getAppsSettingsCustomTemplate:getAppsSettingsCustomTemplate", TypeShape.of(GetAppsSettingsCustomTemplateResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to get a single Custom Template.
      * 
      * ## Example Usage
@@ -2343,6 +2563,8 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getAppsSettingsCustomTemplate:getAppsSettingsCustomTemplate", TypeShape.of(GetAppsSettingsCustomTemplateResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to get a single Custom Template.
      * 
      * ## Example Usage
@@ -2385,6 +2607,8 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getAppsSettingsCustomTemplate:getAppsSettingsCustomTemplate", TypeShape.of(GetAppsSettingsCustomTemplateResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to fetch the list of Custom Templates within the workspace.
      * The list can then be accessed via the data object&#39;s `templates` field.
      * 
@@ -2428,6 +2652,8 @@ public final class DatabricksFunctions {
         return getAppsSettingsCustomTemplates(GetAppsSettingsCustomTemplatesArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to fetch the list of Custom Templates within the workspace.
      * The list can then be accessed via the data object&#39;s `templates` field.
      * 
@@ -2471,6 +2697,8 @@ public final class DatabricksFunctions {
         return getAppsSettingsCustomTemplatesPlain(GetAppsSettingsCustomTemplatesPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to fetch the list of Custom Templates within the workspace.
      * The list can then be accessed via the data object&#39;s `templates` field.
      * 
@@ -2514,6 +2742,8 @@ public final class DatabricksFunctions {
         return getAppsSettingsCustomTemplates(args, InvokeOptions.Empty);
     }
     /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to fetch the list of Custom Templates within the workspace.
      * The list can then be accessed via the data object&#39;s `templates` field.
      * 
@@ -2557,6 +2787,8 @@ public final class DatabricksFunctions {
         return getAppsSettingsCustomTemplatesPlain(args, InvokeOptions.Empty);
     }
     /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to fetch the list of Custom Templates within the workspace.
      * The list can then be accessed via the data object&#39;s `templates` field.
      * 
@@ -2600,6 +2832,8 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getAppsSettingsCustomTemplates:getAppsSettingsCustomTemplates", TypeShape.of(GetAppsSettingsCustomTemplatesResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to fetch the list of Custom Templates within the workspace.
      * The list can then be accessed via the data object&#39;s `templates` field.
      * 
@@ -2643,6 +2877,8 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getAppsSettingsCustomTemplates:getAppsSettingsCustomTemplates", TypeShape.of(GetAppsSettingsCustomTemplatesResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to fetch the list of Custom Templates within the workspace.
      * The list can then be accessed via the data object&#39;s `templates` field.
      * 
@@ -3144,8 +3380,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.aws.s3.BucketV2;
-     * import com.pulumi.aws.s3.BucketV2Args;
+     * import com.pulumi.aws.s3.Bucket;
+     * import com.pulumi.aws.s3.BucketArgs;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetAwsBucketPolicyArgs;
      * import com.pulumi.aws.s3.BucketPolicy;
@@ -3163,17 +3399,17 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var thisBucketV2 = new BucketV2("thisBucketV2", BucketV2Args.builder()
+     *         var thisBucket = new Bucket("thisBucket", BucketArgs.builder()
      *             .bucket("<unique_bucket_name>")
      *             .forceDestroy(true)
      *             .build());
      * 
      *         final var this = DatabricksFunctions.getAwsBucketPolicy(GetAwsBucketPolicyArgs.builder()
-     *             .bucket(thisBucketV2.bucket())
+     *             .bucket(thisBucket.bucket())
      *             .build());
      * 
      *         var thisBucketPolicy = new BucketPolicy("thisBucketPolicy", BucketPolicyArgs.builder()
-     *             .bucket(thisBucketV2.id())
+     *             .bucket(thisBucket.id())
      *             .policy(this_.applyValue(_this_ -> _this_.json()))
      *             .build());
      * 
@@ -3202,8 +3438,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.aws.s3.BucketV2;
-     * import com.pulumi.aws.s3.BucketV2Args;
+     * import com.pulumi.aws.s3.Bucket;
+     * import com.pulumi.aws.s3.BucketArgs;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetAwsBucketPolicyArgs;
      * import com.pulumi.aws.s3.BucketPolicy;
@@ -3221,17 +3457,17 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var thisBucketV2 = new BucketV2("thisBucketV2", BucketV2Args.builder()
+     *         var thisBucket = new Bucket("thisBucket", BucketArgs.builder()
      *             .bucket("<unique_bucket_name>")
      *             .forceDestroy(true)
      *             .build());
      * 
      *         final var this = DatabricksFunctions.getAwsBucketPolicy(GetAwsBucketPolicyArgs.builder()
-     *             .bucket(thisBucketV2.bucket())
+     *             .bucket(thisBucket.bucket())
      *             .build());
      * 
      *         var thisBucketPolicy = new BucketPolicy("thisBucketPolicy", BucketPolicyArgs.builder()
-     *             .bucket(thisBucketV2.id())
+     *             .bucket(thisBucket.id())
      *             .policy(this_.applyValue(_this_ -> _this_.json()))
      *             .build());
      * 
@@ -3260,8 +3496,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.aws.s3.BucketV2;
-     * import com.pulumi.aws.s3.BucketV2Args;
+     * import com.pulumi.aws.s3.Bucket;
+     * import com.pulumi.aws.s3.BucketArgs;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetAwsBucketPolicyArgs;
      * import com.pulumi.aws.s3.BucketPolicy;
@@ -3279,17 +3515,17 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var thisBucketV2 = new BucketV2("thisBucketV2", BucketV2Args.builder()
+     *         var thisBucket = new Bucket("thisBucket", BucketArgs.builder()
      *             .bucket("<unique_bucket_name>")
      *             .forceDestroy(true)
      *             .build());
      * 
      *         final var this = DatabricksFunctions.getAwsBucketPolicy(GetAwsBucketPolicyArgs.builder()
-     *             .bucket(thisBucketV2.bucket())
+     *             .bucket(thisBucket.bucket())
      *             .build());
      * 
      *         var thisBucketPolicy = new BucketPolicy("thisBucketPolicy", BucketPolicyArgs.builder()
-     *             .bucket(thisBucketV2.id())
+     *             .bucket(thisBucket.id())
      *             .policy(this_.applyValue(_this_ -> _this_.json()))
      *             .build());
      * 
@@ -3318,8 +3554,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.aws.s3.BucketV2;
-     * import com.pulumi.aws.s3.BucketV2Args;
+     * import com.pulumi.aws.s3.Bucket;
+     * import com.pulumi.aws.s3.BucketArgs;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetAwsBucketPolicyArgs;
      * import com.pulumi.aws.s3.BucketPolicy;
@@ -3337,17 +3573,17 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var thisBucketV2 = new BucketV2("thisBucketV2", BucketV2Args.builder()
+     *         var thisBucket = new Bucket("thisBucket", BucketArgs.builder()
      *             .bucket("<unique_bucket_name>")
      *             .forceDestroy(true)
      *             .build());
      * 
      *         final var this = DatabricksFunctions.getAwsBucketPolicy(GetAwsBucketPolicyArgs.builder()
-     *             .bucket(thisBucketV2.bucket())
+     *             .bucket(thisBucket.bucket())
      *             .build());
      * 
      *         var thisBucketPolicy = new BucketPolicy("thisBucketPolicy", BucketPolicyArgs.builder()
-     *             .bucket(thisBucketV2.id())
+     *             .bucket(thisBucket.id())
      *             .policy(this_.applyValue(_this_ -> _this_.json()))
      *             .build());
      * 
@@ -3376,8 +3612,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.aws.s3.BucketV2;
-     * import com.pulumi.aws.s3.BucketV2Args;
+     * import com.pulumi.aws.s3.Bucket;
+     * import com.pulumi.aws.s3.BucketArgs;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetAwsBucketPolicyArgs;
      * import com.pulumi.aws.s3.BucketPolicy;
@@ -3395,17 +3631,17 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var thisBucketV2 = new BucketV2("thisBucketV2", BucketV2Args.builder()
+     *         var thisBucket = new Bucket("thisBucket", BucketArgs.builder()
      *             .bucket("<unique_bucket_name>")
      *             .forceDestroy(true)
      *             .build());
      * 
      *         final var this = DatabricksFunctions.getAwsBucketPolicy(GetAwsBucketPolicyArgs.builder()
-     *             .bucket(thisBucketV2.bucket())
+     *             .bucket(thisBucket.bucket())
      *             .build());
      * 
      *         var thisBucketPolicy = new BucketPolicy("thisBucketPolicy", BucketPolicyArgs.builder()
-     *             .bucket(thisBucketV2.id())
+     *             .bucket(thisBucket.id())
      *             .policy(this_.applyValue(_this_ -> _this_.json()))
      *             .build());
      * 
@@ -4535,6 +4771,8 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getAwsUnityCatalogPolicy:getAwsUnityCatalogPolicy", TypeShape.of(GetAwsUnityCatalogPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to fetch the list of budget policies.
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
@@ -4551,6 +4789,7 @@ public final class DatabricksFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetBudgetPoliciesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -4564,7 +4803,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getBudgetPolicies(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     *         final var all = DatabricksFunctions.getBudgetPolicies(GetBudgetPoliciesArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -4573,9 +4813,11 @@ public final class DatabricksFunctions {
      * 
      */
     public static Output<GetBudgetPoliciesResult> getBudgetPolicies() {
-        return getBudgetPolicies(InvokeArgs.Empty, InvokeOptions.Empty);
+        return getBudgetPolicies(GetBudgetPoliciesArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to fetch the list of budget policies.
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
@@ -4592,6 +4834,7 @@ public final class DatabricksFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetBudgetPoliciesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -4605,7 +4848,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getBudgetPolicies(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     *         final var all = DatabricksFunctions.getBudgetPolicies(GetBudgetPoliciesArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -4614,9 +4858,11 @@ public final class DatabricksFunctions {
      * 
      */
     public static CompletableFuture<GetBudgetPoliciesResult> getBudgetPoliciesPlain() {
-        return getBudgetPoliciesPlain(InvokeArgs.Empty, InvokeOptions.Empty);
+        return getBudgetPoliciesPlain(GetBudgetPoliciesPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to fetch the list of budget policies.
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
@@ -4633,6 +4879,7 @@ public final class DatabricksFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetBudgetPoliciesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -4646,7 +4893,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getBudgetPolicies(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     *         final var all = DatabricksFunctions.getBudgetPolicies(GetBudgetPoliciesArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -4654,10 +4902,12 @@ public final class DatabricksFunctions {
      * </pre>
      * 
      */
-    public static Output<GetBudgetPoliciesResult> getBudgetPolicies(InvokeArgs args) {
+    public static Output<GetBudgetPoliciesResult> getBudgetPolicies(GetBudgetPoliciesArgs args) {
         return getBudgetPolicies(args, InvokeOptions.Empty);
     }
     /**
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to fetch the list of budget policies.
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
@@ -4674,6 +4924,7 @@ public final class DatabricksFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetBudgetPoliciesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -4687,7 +4938,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getBudgetPolicies(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     *         final var all = DatabricksFunctions.getBudgetPolicies(GetBudgetPoliciesArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -4695,10 +4947,12 @@ public final class DatabricksFunctions {
      * </pre>
      * 
      */
-    public static CompletableFuture<GetBudgetPoliciesResult> getBudgetPoliciesPlain(InvokeArgs args) {
+    public static CompletableFuture<GetBudgetPoliciesResult> getBudgetPoliciesPlain(GetBudgetPoliciesPlainArgs args) {
         return getBudgetPoliciesPlain(args, InvokeOptions.Empty);
     }
     /**
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to fetch the list of budget policies.
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
@@ -4715,6 +4969,7 @@ public final class DatabricksFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetBudgetPoliciesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -4728,7 +4983,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getBudgetPolicies(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     *         final var all = DatabricksFunctions.getBudgetPolicies(GetBudgetPoliciesArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -4736,10 +4992,12 @@ public final class DatabricksFunctions {
      * </pre>
      * 
      */
-    public static Output<GetBudgetPoliciesResult> getBudgetPolicies(InvokeArgs args, InvokeOptions options) {
+    public static Output<GetBudgetPoliciesResult> getBudgetPolicies(GetBudgetPoliciesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getBudgetPolicies:getBudgetPolicies", TypeShape.of(GetBudgetPoliciesResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to fetch the list of budget policies.
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
@@ -4756,6 +5014,7 @@ public final class DatabricksFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetBudgetPoliciesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -4769,7 +5028,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getBudgetPolicies(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     *         final var all = DatabricksFunctions.getBudgetPolicies(GetBudgetPoliciesArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -4777,10 +5037,12 @@ public final class DatabricksFunctions {
      * </pre>
      * 
      */
-    public static Output<GetBudgetPoliciesResult> getBudgetPolicies(InvokeArgs args, InvokeOutputOptions options) {
+    public static Output<GetBudgetPoliciesResult> getBudgetPolicies(GetBudgetPoliciesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getBudgetPolicies:getBudgetPolicies", TypeShape.of(GetBudgetPoliciesResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to fetch the list of budget policies.
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
@@ -4797,6 +5059,7 @@ public final class DatabricksFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetBudgetPoliciesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -4810,7 +5073,8 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getBudgetPolicies(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     *         final var all = DatabricksFunctions.getBudgetPolicies(GetBudgetPoliciesArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -4818,98 +5082,12 @@ public final class DatabricksFunctions {
      * </pre>
      * 
      */
-    public static CompletableFuture<GetBudgetPoliciesResult> getBudgetPoliciesPlain(InvokeArgs args, InvokeOptions options) {
+    public static CompletableFuture<GetBudgetPoliciesResult> getBudgetPoliciesPlain(GetBudgetPoliciesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getBudgetPolicies:getBudgetPolicies", TypeShape.of(GetBudgetPoliciesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source can be used to get a single budget policy.
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
-     * &gt; **Note** This data source can only be used with an account-level provider!
-     * 
-     * ## Example Usage
-     * 
-     * Referring to a budget policy by id:
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.databricks.DatabricksFunctions;
-     * import com.pulumi.databricks.inputs.GetBudgetPolicyArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var this = DatabricksFunctions.getBudgetPolicy(GetBudgetPolicyArgs.builder()
-     *             .policyId("test")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
-    public static Output<GetBudgetPolicyResult> getBudgetPolicy() {
-        return getBudgetPolicy(GetBudgetPolicyArgs.Empty, InvokeOptions.Empty);
-    }
-    /**
-     * This data source can be used to get a single budget policy.
-     * 
-     * &gt; **Note** This data source can only be used with an account-level provider!
-     * 
-     * ## Example Usage
-     * 
-     * Referring to a budget policy by id:
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.databricks.DatabricksFunctions;
-     * import com.pulumi.databricks.inputs.GetBudgetPolicyArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var this = DatabricksFunctions.getBudgetPolicy(GetBudgetPolicyArgs.builder()
-     *             .policyId("test")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
-    public static CompletableFuture<GetBudgetPolicyResult> getBudgetPolicyPlain() {
-        return getBudgetPolicyPlain(GetBudgetPolicyPlainArgs.Empty, InvokeOptions.Empty);
-    }
-    /**
      * This data source can be used to get a single budget policy.
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
@@ -4954,6 +5132,8 @@ public final class DatabricksFunctions {
         return getBudgetPolicy(args, InvokeOptions.Empty);
     }
     /**
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to get a single budget policy.
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
@@ -4998,6 +5178,8 @@ public final class DatabricksFunctions {
         return getBudgetPolicyPlain(args, InvokeOptions.Empty);
     }
     /**
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to get a single budget policy.
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
@@ -5042,6 +5224,8 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getBudgetPolicy:getBudgetPolicy", TypeShape.of(GetBudgetPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to get a single budget policy.
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
@@ -5086,6 +5270,8 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getBudgetPolicy:getBudgetPolicy", TypeShape.of(GetBudgetPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to get a single budget policy.
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
@@ -5795,1064 +5981,6 @@ public final class DatabricksFunctions {
      */
     public static CompletableFuture<GetCatalogsResult> getCatalogsPlain(GetCatalogsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getCatalogs:getCatalogs", TypeShape.of(GetCatalogsResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * This data source can be used to get a single clean room asset.
-     * 
-     * ## Example Usage
-     * 
-     * # Example: Clean Room Asset Datasource
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.databricks.cleanRoomsAsset;
-     * import com.pulumi.databricks.cleanRoomsAssetArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         var this_ = new CleanRoomsAsset("this", CleanRoomsAssetArgs.builder()
-     *             .name("example-cleanroom-asset")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
-    public static Output<GetCleanRoomAssetResult> getCleanRoomAsset(GetCleanRoomAssetArgs args) {
-        return getCleanRoomAsset(args, InvokeOptions.Empty);
-    }
-    /**
-     * This data source can be used to get a single clean room asset.
-     * 
-     * ## Example Usage
-     * 
-     * # Example: Clean Room Asset Datasource
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.databricks.cleanRoomsAsset;
-     * import com.pulumi.databricks.cleanRoomsAssetArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         var this_ = new CleanRoomsAsset("this", CleanRoomsAssetArgs.builder()
-     *             .name("example-cleanroom-asset")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
-    public static CompletableFuture<GetCleanRoomAssetResult> getCleanRoomAssetPlain(GetCleanRoomAssetPlainArgs args) {
-        return getCleanRoomAssetPlain(args, InvokeOptions.Empty);
-    }
-    /**
-     * This data source can be used to get a single clean room asset.
-     * 
-     * ## Example Usage
-     * 
-     * # Example: Clean Room Asset Datasource
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.databricks.cleanRoomsAsset;
-     * import com.pulumi.databricks.cleanRoomsAssetArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         var this_ = new CleanRoomsAsset("this", CleanRoomsAssetArgs.builder()
-     *             .name("example-cleanroom-asset")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
-    public static Output<GetCleanRoomAssetResult> getCleanRoomAsset(GetCleanRoomAssetArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invoke("databricks:index/getCleanRoomAsset:getCleanRoomAsset", TypeShape.of(GetCleanRoomAssetResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * This data source can be used to get a single clean room asset.
-     * 
-     * ## Example Usage
-     * 
-     * # Example: Clean Room Asset Datasource
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.databricks.cleanRoomsAsset;
-     * import com.pulumi.databricks.cleanRoomsAssetArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         var this_ = new CleanRoomsAsset("this", CleanRoomsAssetArgs.builder()
-     *             .name("example-cleanroom-asset")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
-    public static Output<GetCleanRoomAssetResult> getCleanRoomAsset(GetCleanRoomAssetArgs args, InvokeOutputOptions options) {
-        return Deployment.getInstance().invoke("databricks:index/getCleanRoomAsset:getCleanRoomAsset", TypeShape.of(GetCleanRoomAssetResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * This data source can be used to get a single clean room asset.
-     * 
-     * ## Example Usage
-     * 
-     * # Example: Clean Room Asset Datasource
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.databricks.cleanRoomsAsset;
-     * import com.pulumi.databricks.cleanRoomsAssetArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         var this_ = new CleanRoomsAsset("this", CleanRoomsAssetArgs.builder()
-     *             .name("example-cleanroom-asset")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
-    public static CompletableFuture<GetCleanRoomAssetResult> getCleanRoomAssetPlain(GetCleanRoomAssetPlainArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invokeAsync("databricks:index/getCleanRoomAsset:getCleanRoomAsset", TypeShape.of(GetCleanRoomAssetResult.class), args, Utilities.withVersion(options));
-    }
-    public static Output<GetCleanRoomAssetRevisionsCleanRoomAssetResult> getCleanRoomAssetRevisionsCleanRoomAsset(GetCleanRoomAssetRevisionsCleanRoomAssetArgs args) {
-        return getCleanRoomAssetRevisionsCleanRoomAsset(args, InvokeOptions.Empty);
-    }
-    public static CompletableFuture<GetCleanRoomAssetRevisionsCleanRoomAssetResult> getCleanRoomAssetRevisionsCleanRoomAssetPlain(GetCleanRoomAssetRevisionsCleanRoomAssetPlainArgs args) {
-        return getCleanRoomAssetRevisionsCleanRoomAssetPlain(args, InvokeOptions.Empty);
-    }
-    public static Output<GetCleanRoomAssetRevisionsCleanRoomAssetResult> getCleanRoomAssetRevisionsCleanRoomAsset(GetCleanRoomAssetRevisionsCleanRoomAssetArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invoke("databricks:index/getCleanRoomAssetRevisionsCleanRoomAsset:getCleanRoomAssetRevisionsCleanRoomAsset", TypeShape.of(GetCleanRoomAssetRevisionsCleanRoomAssetResult.class), args, Utilities.withVersion(options));
-    }
-    public static Output<GetCleanRoomAssetRevisionsCleanRoomAssetResult> getCleanRoomAssetRevisionsCleanRoomAsset(GetCleanRoomAssetRevisionsCleanRoomAssetArgs args, InvokeOutputOptions options) {
-        return Deployment.getInstance().invoke("databricks:index/getCleanRoomAssetRevisionsCleanRoomAsset:getCleanRoomAssetRevisionsCleanRoomAsset", TypeShape.of(GetCleanRoomAssetRevisionsCleanRoomAssetResult.class), args, Utilities.withVersion(options));
-    }
-    public static CompletableFuture<GetCleanRoomAssetRevisionsCleanRoomAssetResult> getCleanRoomAssetRevisionsCleanRoomAssetPlain(GetCleanRoomAssetRevisionsCleanRoomAssetPlainArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invokeAsync("databricks:index/getCleanRoomAssetRevisionsCleanRoomAsset:getCleanRoomAssetRevisionsCleanRoomAsset", TypeShape.of(GetCleanRoomAssetRevisionsCleanRoomAssetResult.class), args, Utilities.withVersion(options));
-    }
-    public static Output<GetCleanRoomAssetRevisionsCleanRoomAssetsResult> getCleanRoomAssetRevisionsCleanRoomAssets(GetCleanRoomAssetRevisionsCleanRoomAssetsArgs args) {
-        return getCleanRoomAssetRevisionsCleanRoomAssets(args, InvokeOptions.Empty);
-    }
-    public static CompletableFuture<GetCleanRoomAssetRevisionsCleanRoomAssetsResult> getCleanRoomAssetRevisionsCleanRoomAssetsPlain(GetCleanRoomAssetRevisionsCleanRoomAssetsPlainArgs args) {
-        return getCleanRoomAssetRevisionsCleanRoomAssetsPlain(args, InvokeOptions.Empty);
-    }
-    public static Output<GetCleanRoomAssetRevisionsCleanRoomAssetsResult> getCleanRoomAssetRevisionsCleanRoomAssets(GetCleanRoomAssetRevisionsCleanRoomAssetsArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invoke("databricks:index/getCleanRoomAssetRevisionsCleanRoomAssets:getCleanRoomAssetRevisionsCleanRoomAssets", TypeShape.of(GetCleanRoomAssetRevisionsCleanRoomAssetsResult.class), args, Utilities.withVersion(options));
-    }
-    public static Output<GetCleanRoomAssetRevisionsCleanRoomAssetsResult> getCleanRoomAssetRevisionsCleanRoomAssets(GetCleanRoomAssetRevisionsCleanRoomAssetsArgs args, InvokeOutputOptions options) {
-        return Deployment.getInstance().invoke("databricks:index/getCleanRoomAssetRevisionsCleanRoomAssets:getCleanRoomAssetRevisionsCleanRoomAssets", TypeShape.of(GetCleanRoomAssetRevisionsCleanRoomAssetsResult.class), args, Utilities.withVersion(options));
-    }
-    public static CompletableFuture<GetCleanRoomAssetRevisionsCleanRoomAssetsResult> getCleanRoomAssetRevisionsCleanRoomAssetsPlain(GetCleanRoomAssetRevisionsCleanRoomAssetsPlainArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invokeAsync("databricks:index/getCleanRoomAssetRevisionsCleanRoomAssets:getCleanRoomAssetRevisionsCleanRoomAssets", TypeShape.of(GetCleanRoomAssetRevisionsCleanRoomAssetsResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * This data source can be used to fetch the list of clean room assets.
-     * 
-     * ## Example Usage
-     * 
-     * # Example: Clean Room Assets Datasource
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.databricks.cleanRoomsAsset;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         var all = new CleanRoomsAsset("all");
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
-    public static Output<GetCleanRoomAssetsResult> getCleanRoomAssets(GetCleanRoomAssetsArgs args) {
-        return getCleanRoomAssets(args, InvokeOptions.Empty);
-    }
-    /**
-     * This data source can be used to fetch the list of clean room assets.
-     * 
-     * ## Example Usage
-     * 
-     * # Example: Clean Room Assets Datasource
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.databricks.cleanRoomsAsset;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         var all = new CleanRoomsAsset("all");
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
-    public static CompletableFuture<GetCleanRoomAssetsResult> getCleanRoomAssetsPlain(GetCleanRoomAssetsPlainArgs args) {
-        return getCleanRoomAssetsPlain(args, InvokeOptions.Empty);
-    }
-    /**
-     * This data source can be used to fetch the list of clean room assets.
-     * 
-     * ## Example Usage
-     * 
-     * # Example: Clean Room Assets Datasource
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.databricks.cleanRoomsAsset;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         var all = new CleanRoomsAsset("all");
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
-    public static Output<GetCleanRoomAssetsResult> getCleanRoomAssets(GetCleanRoomAssetsArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invoke("databricks:index/getCleanRoomAssets:getCleanRoomAssets", TypeShape.of(GetCleanRoomAssetsResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * This data source can be used to fetch the list of clean room assets.
-     * 
-     * ## Example Usage
-     * 
-     * # Example: Clean Room Assets Datasource
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.databricks.cleanRoomsAsset;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         var all = new CleanRoomsAsset("all");
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
-    public static Output<GetCleanRoomAssetsResult> getCleanRoomAssets(GetCleanRoomAssetsArgs args, InvokeOutputOptions options) {
-        return Deployment.getInstance().invoke("databricks:index/getCleanRoomAssets:getCleanRoomAssets", TypeShape.of(GetCleanRoomAssetsResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * This data source can be used to fetch the list of clean room assets.
-     * 
-     * ## Example Usage
-     * 
-     * # Example: Clean Room Assets Datasource
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.databricks.cleanRoomsAsset;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         var all = new CleanRoomsAsset("all");
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
-    public static CompletableFuture<GetCleanRoomAssetsResult> getCleanRoomAssetsPlain(GetCleanRoomAssetsPlainArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invokeAsync("databricks:index/getCleanRoomAssets:getCleanRoomAssets", TypeShape.of(GetCleanRoomAssetsResult.class), args, Utilities.withVersion(options));
-    }
-    public static Output<GetCleanRoomAutoApprovalRuleResult> getCleanRoomAutoApprovalRule() {
-        return getCleanRoomAutoApprovalRule(GetCleanRoomAutoApprovalRuleArgs.Empty, InvokeOptions.Empty);
-    }
-    public static CompletableFuture<GetCleanRoomAutoApprovalRuleResult> getCleanRoomAutoApprovalRulePlain() {
-        return getCleanRoomAutoApprovalRulePlain(GetCleanRoomAutoApprovalRulePlainArgs.Empty, InvokeOptions.Empty);
-    }
-    public static Output<GetCleanRoomAutoApprovalRuleResult> getCleanRoomAutoApprovalRule(GetCleanRoomAutoApprovalRuleArgs args) {
-        return getCleanRoomAutoApprovalRule(args, InvokeOptions.Empty);
-    }
-    public static CompletableFuture<GetCleanRoomAutoApprovalRuleResult> getCleanRoomAutoApprovalRulePlain(GetCleanRoomAutoApprovalRulePlainArgs args) {
-        return getCleanRoomAutoApprovalRulePlain(args, InvokeOptions.Empty);
-    }
-    public static Output<GetCleanRoomAutoApprovalRuleResult> getCleanRoomAutoApprovalRule(GetCleanRoomAutoApprovalRuleArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invoke("databricks:index/getCleanRoomAutoApprovalRule:getCleanRoomAutoApprovalRule", TypeShape.of(GetCleanRoomAutoApprovalRuleResult.class), args, Utilities.withVersion(options));
-    }
-    public static Output<GetCleanRoomAutoApprovalRuleResult> getCleanRoomAutoApprovalRule(GetCleanRoomAutoApprovalRuleArgs args, InvokeOutputOptions options) {
-        return Deployment.getInstance().invoke("databricks:index/getCleanRoomAutoApprovalRule:getCleanRoomAutoApprovalRule", TypeShape.of(GetCleanRoomAutoApprovalRuleResult.class), args, Utilities.withVersion(options));
-    }
-    public static CompletableFuture<GetCleanRoomAutoApprovalRuleResult> getCleanRoomAutoApprovalRulePlain(GetCleanRoomAutoApprovalRulePlainArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invokeAsync("databricks:index/getCleanRoomAutoApprovalRule:getCleanRoomAutoApprovalRule", TypeShape.of(GetCleanRoomAutoApprovalRuleResult.class), args, Utilities.withVersion(options));
-    }
-    public static Output<GetCleanRoomAutoApprovalRulesResult> getCleanRoomAutoApprovalRules() {
-        return getCleanRoomAutoApprovalRules(GetCleanRoomAutoApprovalRulesArgs.Empty, InvokeOptions.Empty);
-    }
-    public static CompletableFuture<GetCleanRoomAutoApprovalRulesResult> getCleanRoomAutoApprovalRulesPlain() {
-        return getCleanRoomAutoApprovalRulesPlain(GetCleanRoomAutoApprovalRulesPlainArgs.Empty, InvokeOptions.Empty);
-    }
-    public static Output<GetCleanRoomAutoApprovalRulesResult> getCleanRoomAutoApprovalRules(GetCleanRoomAutoApprovalRulesArgs args) {
-        return getCleanRoomAutoApprovalRules(args, InvokeOptions.Empty);
-    }
-    public static CompletableFuture<GetCleanRoomAutoApprovalRulesResult> getCleanRoomAutoApprovalRulesPlain(GetCleanRoomAutoApprovalRulesPlainArgs args) {
-        return getCleanRoomAutoApprovalRulesPlain(args, InvokeOptions.Empty);
-    }
-    public static Output<GetCleanRoomAutoApprovalRulesResult> getCleanRoomAutoApprovalRules(GetCleanRoomAutoApprovalRulesArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invoke("databricks:index/getCleanRoomAutoApprovalRules:getCleanRoomAutoApprovalRules", TypeShape.of(GetCleanRoomAutoApprovalRulesResult.class), args, Utilities.withVersion(options));
-    }
-    public static Output<GetCleanRoomAutoApprovalRulesResult> getCleanRoomAutoApprovalRules(GetCleanRoomAutoApprovalRulesArgs args, InvokeOutputOptions options) {
-        return Deployment.getInstance().invoke("databricks:index/getCleanRoomAutoApprovalRules:getCleanRoomAutoApprovalRules", TypeShape.of(GetCleanRoomAutoApprovalRulesResult.class), args, Utilities.withVersion(options));
-    }
-    public static CompletableFuture<GetCleanRoomAutoApprovalRulesResult> getCleanRoomAutoApprovalRulesPlain(GetCleanRoomAutoApprovalRulesPlainArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invokeAsync("databricks:index/getCleanRoomAutoApprovalRules:getCleanRoomAutoApprovalRules", TypeShape.of(GetCleanRoomAutoApprovalRulesResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * This data source can be used to get a single clean room.
-     * 
-     * ## Example Usage
-     * 
-     * # Example: Datasource (Singular) Artifact
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.databricks.DatabricksFunctions;
-     * import com.pulumi.databricks.inputs.GetCleanRoomsCleanRoomArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = DatabricksFunctions.getCleanRoomsCleanRoom(GetCleanRoomsCleanRoomArgs.builder()
-     *             .name("example-clean-room")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
-    public static Output<GetCleanRoomsCleanRoomResult> getCleanRoomsCleanRoom() {
-        return getCleanRoomsCleanRoom(GetCleanRoomsCleanRoomArgs.Empty, InvokeOptions.Empty);
-    }
-    /**
-     * This data source can be used to get a single clean room.
-     * 
-     * ## Example Usage
-     * 
-     * # Example: Datasource (Singular) Artifact
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.databricks.DatabricksFunctions;
-     * import com.pulumi.databricks.inputs.GetCleanRoomsCleanRoomArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = DatabricksFunctions.getCleanRoomsCleanRoom(GetCleanRoomsCleanRoomArgs.builder()
-     *             .name("example-clean-room")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
-    public static CompletableFuture<GetCleanRoomsCleanRoomResult> getCleanRoomsCleanRoomPlain() {
-        return getCleanRoomsCleanRoomPlain(GetCleanRoomsCleanRoomPlainArgs.Empty, InvokeOptions.Empty);
-    }
-    /**
-     * This data source can be used to get a single clean room.
-     * 
-     * ## Example Usage
-     * 
-     * # Example: Datasource (Singular) Artifact
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.databricks.DatabricksFunctions;
-     * import com.pulumi.databricks.inputs.GetCleanRoomsCleanRoomArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = DatabricksFunctions.getCleanRoomsCleanRoom(GetCleanRoomsCleanRoomArgs.builder()
-     *             .name("example-clean-room")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
-    public static Output<GetCleanRoomsCleanRoomResult> getCleanRoomsCleanRoom(GetCleanRoomsCleanRoomArgs args) {
-        return getCleanRoomsCleanRoom(args, InvokeOptions.Empty);
-    }
-    /**
-     * This data source can be used to get a single clean room.
-     * 
-     * ## Example Usage
-     * 
-     * # Example: Datasource (Singular) Artifact
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.databricks.DatabricksFunctions;
-     * import com.pulumi.databricks.inputs.GetCleanRoomsCleanRoomArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = DatabricksFunctions.getCleanRoomsCleanRoom(GetCleanRoomsCleanRoomArgs.builder()
-     *             .name("example-clean-room")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
-    public static CompletableFuture<GetCleanRoomsCleanRoomResult> getCleanRoomsCleanRoomPlain(GetCleanRoomsCleanRoomPlainArgs args) {
-        return getCleanRoomsCleanRoomPlain(args, InvokeOptions.Empty);
-    }
-    /**
-     * This data source can be used to get a single clean room.
-     * 
-     * ## Example Usage
-     * 
-     * # Example: Datasource (Singular) Artifact
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.databricks.DatabricksFunctions;
-     * import com.pulumi.databricks.inputs.GetCleanRoomsCleanRoomArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = DatabricksFunctions.getCleanRoomsCleanRoom(GetCleanRoomsCleanRoomArgs.builder()
-     *             .name("example-clean-room")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
-    public static Output<GetCleanRoomsCleanRoomResult> getCleanRoomsCleanRoom(GetCleanRoomsCleanRoomArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invoke("databricks:index/getCleanRoomsCleanRoom:getCleanRoomsCleanRoom", TypeShape.of(GetCleanRoomsCleanRoomResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * This data source can be used to get a single clean room.
-     * 
-     * ## Example Usage
-     * 
-     * # Example: Datasource (Singular) Artifact
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.databricks.DatabricksFunctions;
-     * import com.pulumi.databricks.inputs.GetCleanRoomsCleanRoomArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = DatabricksFunctions.getCleanRoomsCleanRoom(GetCleanRoomsCleanRoomArgs.builder()
-     *             .name("example-clean-room")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
-    public static Output<GetCleanRoomsCleanRoomResult> getCleanRoomsCleanRoom(GetCleanRoomsCleanRoomArgs args, InvokeOutputOptions options) {
-        return Deployment.getInstance().invoke("databricks:index/getCleanRoomsCleanRoom:getCleanRoomsCleanRoom", TypeShape.of(GetCleanRoomsCleanRoomResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * This data source can be used to get a single clean room.
-     * 
-     * ## Example Usage
-     * 
-     * # Example: Datasource (Singular) Artifact
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.databricks.DatabricksFunctions;
-     * import com.pulumi.databricks.inputs.GetCleanRoomsCleanRoomArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = DatabricksFunctions.getCleanRoomsCleanRoom(GetCleanRoomsCleanRoomArgs.builder()
-     *             .name("example-clean-room")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
-    public static CompletableFuture<GetCleanRoomsCleanRoomResult> getCleanRoomsCleanRoomPlain(GetCleanRoomsCleanRoomPlainArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invokeAsync("databricks:index/getCleanRoomsCleanRoom:getCleanRoomsCleanRoom", TypeShape.of(GetCleanRoomsCleanRoomResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * This data source can be used to fetch the list of clean rooms.
-     * 
-     * ## Example Usage
-     * 
-     * # Example: Clean Room Datasource (Plural)
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.databricks.DatabricksFunctions;
-     * import com.pulumi.databricks.inputs.GetCleanRoomsCleanRoomArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getCleanRoomsCleanRoom(GetCleanRoomsCleanRoomArgs.builder()
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
-    public static Output<GetCleanRoomsCleanRoomsResult> getCleanRoomsCleanRooms() {
-        return getCleanRoomsCleanRooms(GetCleanRoomsCleanRoomsArgs.Empty, InvokeOptions.Empty);
-    }
-    /**
-     * This data source can be used to fetch the list of clean rooms.
-     * 
-     * ## Example Usage
-     * 
-     * # Example: Clean Room Datasource (Plural)
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.databricks.DatabricksFunctions;
-     * import com.pulumi.databricks.inputs.GetCleanRoomsCleanRoomArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getCleanRoomsCleanRoom(GetCleanRoomsCleanRoomArgs.builder()
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
-    public static CompletableFuture<GetCleanRoomsCleanRoomsResult> getCleanRoomsCleanRoomsPlain() {
-        return getCleanRoomsCleanRoomsPlain(GetCleanRoomsCleanRoomsPlainArgs.Empty, InvokeOptions.Empty);
-    }
-    /**
-     * This data source can be used to fetch the list of clean rooms.
-     * 
-     * ## Example Usage
-     * 
-     * # Example: Clean Room Datasource (Plural)
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.databricks.DatabricksFunctions;
-     * import com.pulumi.databricks.inputs.GetCleanRoomsCleanRoomArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getCleanRoomsCleanRoom(GetCleanRoomsCleanRoomArgs.builder()
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
-    public static Output<GetCleanRoomsCleanRoomsResult> getCleanRoomsCleanRooms(GetCleanRoomsCleanRoomsArgs args) {
-        return getCleanRoomsCleanRooms(args, InvokeOptions.Empty);
-    }
-    /**
-     * This data source can be used to fetch the list of clean rooms.
-     * 
-     * ## Example Usage
-     * 
-     * # Example: Clean Room Datasource (Plural)
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.databricks.DatabricksFunctions;
-     * import com.pulumi.databricks.inputs.GetCleanRoomsCleanRoomArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getCleanRoomsCleanRoom(GetCleanRoomsCleanRoomArgs.builder()
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
-    public static CompletableFuture<GetCleanRoomsCleanRoomsResult> getCleanRoomsCleanRoomsPlain(GetCleanRoomsCleanRoomsPlainArgs args) {
-        return getCleanRoomsCleanRoomsPlain(args, InvokeOptions.Empty);
-    }
-    /**
-     * This data source can be used to fetch the list of clean rooms.
-     * 
-     * ## Example Usage
-     * 
-     * # Example: Clean Room Datasource (Plural)
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.databricks.DatabricksFunctions;
-     * import com.pulumi.databricks.inputs.GetCleanRoomsCleanRoomArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getCleanRoomsCleanRoom(GetCleanRoomsCleanRoomArgs.builder()
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
-    public static Output<GetCleanRoomsCleanRoomsResult> getCleanRoomsCleanRooms(GetCleanRoomsCleanRoomsArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invoke("databricks:index/getCleanRoomsCleanRooms:getCleanRoomsCleanRooms", TypeShape.of(GetCleanRoomsCleanRoomsResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * This data source can be used to fetch the list of clean rooms.
-     * 
-     * ## Example Usage
-     * 
-     * # Example: Clean Room Datasource (Plural)
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.databricks.DatabricksFunctions;
-     * import com.pulumi.databricks.inputs.GetCleanRoomsCleanRoomArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getCleanRoomsCleanRoom(GetCleanRoomsCleanRoomArgs.builder()
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
-    public static Output<GetCleanRoomsCleanRoomsResult> getCleanRoomsCleanRooms(GetCleanRoomsCleanRoomsArgs args, InvokeOutputOptions options) {
-        return Deployment.getInstance().invoke("databricks:index/getCleanRoomsCleanRooms:getCleanRoomsCleanRooms", TypeShape.of(GetCleanRoomsCleanRoomsResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * This data source can be used to fetch the list of clean rooms.
-     * 
-     * ## Example Usage
-     * 
-     * # Example: Clean Room Datasource (Plural)
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.databricks.DatabricksFunctions;
-     * import com.pulumi.databricks.inputs.GetCleanRoomsCleanRoomArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var all = DatabricksFunctions.getCleanRoomsCleanRoom(GetCleanRoomsCleanRoomArgs.builder()
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
-    public static CompletableFuture<GetCleanRoomsCleanRoomsResult> getCleanRoomsCleanRoomsPlain(GetCleanRoomsCleanRoomsPlainArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invokeAsync("databricks:index/getCleanRoomsCleanRooms:getCleanRoomsCleanRooms", TypeShape.of(GetCleanRoomsCleanRoomsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Retrieves information about a databricks.Cluster using its id. This could be retrieved programmatically using databricks.getClusters data source.
@@ -9039,6 +8167,1279 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getDashboards:getDashboards", TypeShape.of(GetDashboardsResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source can be used to fetch a data quality monitor.
+     * 
+     * For the `table` `objectType`, the caller must either:
+     * 1. be an owner of the table&#39;s parent catalog
+     * 2. have **USE_CATALOG** on the table&#39;s parent catalog and be an owner of the table&#39;s parent schema.
+     * 3. have the following permissions:
+     *    - **USE_CATALOG** on the table&#39;s parent catalog
+     *    - **USE_SCHEMA** on the table&#39;s parent schema
+     *    - **SELECT** privilege on the table.
+     * 
+     * &gt; **Note** This data source can only be used with a workspace-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Getting a data quality monitor by Unity Catalog object type (currently supports `schema` and `table`) and object id:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetSchemaArgs;
+     * import com.pulumi.databricks.inputs.GetDataQualityMonitorArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getSchema(GetSchemaArgs.builder()
+     *             .name("my_catalog.my_schema")
+     *             .build());
+     * 
+     *         final var thisGetDataQualityMonitor = DatabricksFunctions.getDataQualityMonitor(GetDataQualityMonitorArgs.builder()
+     *             .objectType("schema")
+     *             .objectId(this_.schemaInfo().schemaId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetDataQualityMonitorResult> getDataQualityMonitor(GetDataQualityMonitorArgs args) {
+        return getDataQualityMonitor(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source can be used to fetch a data quality monitor.
+     * 
+     * For the `table` `objectType`, the caller must either:
+     * 1. be an owner of the table&#39;s parent catalog
+     * 2. have **USE_CATALOG** on the table&#39;s parent catalog and be an owner of the table&#39;s parent schema.
+     * 3. have the following permissions:
+     *    - **USE_CATALOG** on the table&#39;s parent catalog
+     *    - **USE_SCHEMA** on the table&#39;s parent schema
+     *    - **SELECT** privilege on the table.
+     * 
+     * &gt; **Note** This data source can only be used with a workspace-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Getting a data quality monitor by Unity Catalog object type (currently supports `schema` and `table`) and object id:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetSchemaArgs;
+     * import com.pulumi.databricks.inputs.GetDataQualityMonitorArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getSchema(GetSchemaArgs.builder()
+     *             .name("my_catalog.my_schema")
+     *             .build());
+     * 
+     *         final var thisGetDataQualityMonitor = DatabricksFunctions.getDataQualityMonitor(GetDataQualityMonitorArgs.builder()
+     *             .objectType("schema")
+     *             .objectId(this_.schemaInfo().schemaId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetDataQualityMonitorResult> getDataQualityMonitorPlain(GetDataQualityMonitorPlainArgs args) {
+        return getDataQualityMonitorPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source can be used to fetch a data quality monitor.
+     * 
+     * For the `table` `objectType`, the caller must either:
+     * 1. be an owner of the table&#39;s parent catalog
+     * 2. have **USE_CATALOG** on the table&#39;s parent catalog and be an owner of the table&#39;s parent schema.
+     * 3. have the following permissions:
+     *    - **USE_CATALOG** on the table&#39;s parent catalog
+     *    - **USE_SCHEMA** on the table&#39;s parent schema
+     *    - **SELECT** privilege on the table.
+     * 
+     * &gt; **Note** This data source can only be used with a workspace-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Getting a data quality monitor by Unity Catalog object type (currently supports `schema` and `table`) and object id:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetSchemaArgs;
+     * import com.pulumi.databricks.inputs.GetDataQualityMonitorArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getSchema(GetSchemaArgs.builder()
+     *             .name("my_catalog.my_schema")
+     *             .build());
+     * 
+     *         final var thisGetDataQualityMonitor = DatabricksFunctions.getDataQualityMonitor(GetDataQualityMonitorArgs.builder()
+     *             .objectType("schema")
+     *             .objectId(this_.schemaInfo().schemaId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetDataQualityMonitorResult> getDataQualityMonitor(GetDataQualityMonitorArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getDataQualityMonitor:getDataQualityMonitor", TypeShape.of(GetDataQualityMonitorResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source can be used to fetch a data quality monitor.
+     * 
+     * For the `table` `objectType`, the caller must either:
+     * 1. be an owner of the table&#39;s parent catalog
+     * 2. have **USE_CATALOG** on the table&#39;s parent catalog and be an owner of the table&#39;s parent schema.
+     * 3. have the following permissions:
+     *    - **USE_CATALOG** on the table&#39;s parent catalog
+     *    - **USE_SCHEMA** on the table&#39;s parent schema
+     *    - **SELECT** privilege on the table.
+     * 
+     * &gt; **Note** This data source can only be used with a workspace-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Getting a data quality monitor by Unity Catalog object type (currently supports `schema` and `table`) and object id:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetSchemaArgs;
+     * import com.pulumi.databricks.inputs.GetDataQualityMonitorArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getSchema(GetSchemaArgs.builder()
+     *             .name("my_catalog.my_schema")
+     *             .build());
+     * 
+     *         final var thisGetDataQualityMonitor = DatabricksFunctions.getDataQualityMonitor(GetDataQualityMonitorArgs.builder()
+     *             .objectType("schema")
+     *             .objectId(this_.schemaInfo().schemaId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetDataQualityMonitorResult> getDataQualityMonitor(GetDataQualityMonitorArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getDataQualityMonitor:getDataQualityMonitor", TypeShape.of(GetDataQualityMonitorResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source can be used to fetch a data quality monitor.
+     * 
+     * For the `table` `objectType`, the caller must either:
+     * 1. be an owner of the table&#39;s parent catalog
+     * 2. have **USE_CATALOG** on the table&#39;s parent catalog and be an owner of the table&#39;s parent schema.
+     * 3. have the following permissions:
+     *    - **USE_CATALOG** on the table&#39;s parent catalog
+     *    - **USE_SCHEMA** on the table&#39;s parent schema
+     *    - **SELECT** privilege on the table.
+     * 
+     * &gt; **Note** This data source can only be used with a workspace-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Getting a data quality monitor by Unity Catalog object type (currently supports `schema` and `table`) and object id:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetSchemaArgs;
+     * import com.pulumi.databricks.inputs.GetDataQualityMonitorArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getSchema(GetSchemaArgs.builder()
+     *             .name("my_catalog.my_schema")
+     *             .build());
+     * 
+     *         final var thisGetDataQualityMonitor = DatabricksFunctions.getDataQualityMonitor(GetDataQualityMonitorArgs.builder()
+     *             .objectType("schema")
+     *             .objectId(this_.schemaInfo().schemaId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetDataQualityMonitorResult> getDataQualityMonitorPlain(GetDataQualityMonitorPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getDataQualityMonitor:getDataQualityMonitor", TypeShape.of(GetDataQualityMonitorResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source can be used to fetch the list of data quality monitors.
+     * 
+     * For the `table` `objectType`, the caller must either:
+     * 1. be an owner of the table&#39;s parent catalog
+     * 2. have **USE_CATALOG** on the table&#39;s parent catalog and be an owner of the table&#39;s parent schema.
+     * 3. have the following permissions:
+     *     - **USE_CATALOG** on the table&#39;s parent catalog
+     *     - **USE_SCHEMA** on the table&#39;s parent schema
+     *     - **SELECT** privilege on the table.
+     * 
+     * &gt; **Note** This data source can only be used with a workspace-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Getting a list of all data quality monitors:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetDataQualityMonitorsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getDataQualityMonitors(GetDataQualityMonitorsArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetDataQualityMonitorsResult> getDataQualityMonitors() {
+        return getDataQualityMonitors(GetDataQualityMonitorsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source can be used to fetch the list of data quality monitors.
+     * 
+     * For the `table` `objectType`, the caller must either:
+     * 1. be an owner of the table&#39;s parent catalog
+     * 2. have **USE_CATALOG** on the table&#39;s parent catalog and be an owner of the table&#39;s parent schema.
+     * 3. have the following permissions:
+     *     - **USE_CATALOG** on the table&#39;s parent catalog
+     *     - **USE_SCHEMA** on the table&#39;s parent schema
+     *     - **SELECT** privilege on the table.
+     * 
+     * &gt; **Note** This data source can only be used with a workspace-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Getting a list of all data quality monitors:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetDataQualityMonitorsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getDataQualityMonitors(GetDataQualityMonitorsArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetDataQualityMonitorsResult> getDataQualityMonitorsPlain() {
+        return getDataQualityMonitorsPlain(GetDataQualityMonitorsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source can be used to fetch the list of data quality monitors.
+     * 
+     * For the `table` `objectType`, the caller must either:
+     * 1. be an owner of the table&#39;s parent catalog
+     * 2. have **USE_CATALOG** on the table&#39;s parent catalog and be an owner of the table&#39;s parent schema.
+     * 3. have the following permissions:
+     *     - **USE_CATALOG** on the table&#39;s parent catalog
+     *     - **USE_SCHEMA** on the table&#39;s parent schema
+     *     - **SELECT** privilege on the table.
+     * 
+     * &gt; **Note** This data source can only be used with a workspace-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Getting a list of all data quality monitors:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetDataQualityMonitorsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getDataQualityMonitors(GetDataQualityMonitorsArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetDataQualityMonitorsResult> getDataQualityMonitors(GetDataQualityMonitorsArgs args) {
+        return getDataQualityMonitors(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source can be used to fetch the list of data quality monitors.
+     * 
+     * For the `table` `objectType`, the caller must either:
+     * 1. be an owner of the table&#39;s parent catalog
+     * 2. have **USE_CATALOG** on the table&#39;s parent catalog and be an owner of the table&#39;s parent schema.
+     * 3. have the following permissions:
+     *     - **USE_CATALOG** on the table&#39;s parent catalog
+     *     - **USE_SCHEMA** on the table&#39;s parent schema
+     *     - **SELECT** privilege on the table.
+     * 
+     * &gt; **Note** This data source can only be used with a workspace-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Getting a list of all data quality monitors:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetDataQualityMonitorsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getDataQualityMonitors(GetDataQualityMonitorsArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetDataQualityMonitorsResult> getDataQualityMonitorsPlain(GetDataQualityMonitorsPlainArgs args) {
+        return getDataQualityMonitorsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source can be used to fetch the list of data quality monitors.
+     * 
+     * For the `table` `objectType`, the caller must either:
+     * 1. be an owner of the table&#39;s parent catalog
+     * 2. have **USE_CATALOG** on the table&#39;s parent catalog and be an owner of the table&#39;s parent schema.
+     * 3. have the following permissions:
+     *     - **USE_CATALOG** on the table&#39;s parent catalog
+     *     - **USE_SCHEMA** on the table&#39;s parent schema
+     *     - **SELECT** privilege on the table.
+     * 
+     * &gt; **Note** This data source can only be used with a workspace-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Getting a list of all data quality monitors:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetDataQualityMonitorsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getDataQualityMonitors(GetDataQualityMonitorsArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetDataQualityMonitorsResult> getDataQualityMonitors(GetDataQualityMonitorsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getDataQualityMonitors:getDataQualityMonitors", TypeShape.of(GetDataQualityMonitorsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source can be used to fetch the list of data quality monitors.
+     * 
+     * For the `table` `objectType`, the caller must either:
+     * 1. be an owner of the table&#39;s parent catalog
+     * 2. have **USE_CATALOG** on the table&#39;s parent catalog and be an owner of the table&#39;s parent schema.
+     * 3. have the following permissions:
+     *     - **USE_CATALOG** on the table&#39;s parent catalog
+     *     - **USE_SCHEMA** on the table&#39;s parent schema
+     *     - **SELECT** privilege on the table.
+     * 
+     * &gt; **Note** This data source can only be used with a workspace-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Getting a list of all data quality monitors:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetDataQualityMonitorsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getDataQualityMonitors(GetDataQualityMonitorsArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetDataQualityMonitorsResult> getDataQualityMonitors(GetDataQualityMonitorsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getDataQualityMonitors:getDataQualityMonitors", TypeShape.of(GetDataQualityMonitorsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source can be used to fetch the list of data quality monitors.
+     * 
+     * For the `table` `objectType`, the caller must either:
+     * 1. be an owner of the table&#39;s parent catalog
+     * 2. have **USE_CATALOG** on the table&#39;s parent catalog and be an owner of the table&#39;s parent schema.
+     * 3. have the following permissions:
+     *     - **USE_CATALOG** on the table&#39;s parent catalog
+     *     - **USE_SCHEMA** on the table&#39;s parent schema
+     *     - **SELECT** privilege on the table.
+     * 
+     * &gt; **Note** This data source can only be used with a workspace-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Getting a list of all data quality monitors:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetDataQualityMonitorsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getDataQualityMonitors(GetDataQualityMonitorsArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetDataQualityMonitorsResult> getDataQualityMonitorsPlain(GetDataQualityMonitorsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getDataQualityMonitors:getDataQualityMonitors", TypeShape.of(GetDataQualityMonitorsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source can be used to fetch a data quality refresh on a Unity Catalog table.
+     * 
+     * The caller must either:
+     * 1. be an owner of the table&#39;s parent catalog
+     * 2. have **USE_CATALOG** on the table&#39;s parent catalog and be an owner of the table&#39;s parent schema.
+     * 3. have the following permissions:
+     *    - **USE_CATALOG** on the table&#39;s parent catalog
+     *    - **USE_SCHEMA** on the table&#39;s parent schema
+     *    - **SELECT** privilege on the table.
+     * 
+     * &gt; **Note** This data source can only be used with a workspace-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Getting a data quality refresh by Unity Catalog object type (currently supports `table`) and object id:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetTableArgs;
+     * import com.pulumi.databricks.inputs.GetDataQualityRefreshArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getTable(GetTableArgs.builder()
+     *             .name("my_catalog.my_schema.my_table")
+     *             .build());
+     * 
+     *         final var thisGetDataQualityRefresh = DatabricksFunctions.getDataQualityRefresh(GetDataQualityRefreshArgs.builder()
+     *             .objectType("table")
+     *             .objectId(this_.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetDataQualityRefreshResult> getDataQualityRefresh(GetDataQualityRefreshArgs args) {
+        return getDataQualityRefresh(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source can be used to fetch a data quality refresh on a Unity Catalog table.
+     * 
+     * The caller must either:
+     * 1. be an owner of the table&#39;s parent catalog
+     * 2. have **USE_CATALOG** on the table&#39;s parent catalog and be an owner of the table&#39;s parent schema.
+     * 3. have the following permissions:
+     *    - **USE_CATALOG** on the table&#39;s parent catalog
+     *    - **USE_SCHEMA** on the table&#39;s parent schema
+     *    - **SELECT** privilege on the table.
+     * 
+     * &gt; **Note** This data source can only be used with a workspace-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Getting a data quality refresh by Unity Catalog object type (currently supports `table`) and object id:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetTableArgs;
+     * import com.pulumi.databricks.inputs.GetDataQualityRefreshArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getTable(GetTableArgs.builder()
+     *             .name("my_catalog.my_schema.my_table")
+     *             .build());
+     * 
+     *         final var thisGetDataQualityRefresh = DatabricksFunctions.getDataQualityRefresh(GetDataQualityRefreshArgs.builder()
+     *             .objectType("table")
+     *             .objectId(this_.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetDataQualityRefreshResult> getDataQualityRefreshPlain(GetDataQualityRefreshPlainArgs args) {
+        return getDataQualityRefreshPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source can be used to fetch a data quality refresh on a Unity Catalog table.
+     * 
+     * The caller must either:
+     * 1. be an owner of the table&#39;s parent catalog
+     * 2. have **USE_CATALOG** on the table&#39;s parent catalog and be an owner of the table&#39;s parent schema.
+     * 3. have the following permissions:
+     *    - **USE_CATALOG** on the table&#39;s parent catalog
+     *    - **USE_SCHEMA** on the table&#39;s parent schema
+     *    - **SELECT** privilege on the table.
+     * 
+     * &gt; **Note** This data source can only be used with a workspace-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Getting a data quality refresh by Unity Catalog object type (currently supports `table`) and object id:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetTableArgs;
+     * import com.pulumi.databricks.inputs.GetDataQualityRefreshArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getTable(GetTableArgs.builder()
+     *             .name("my_catalog.my_schema.my_table")
+     *             .build());
+     * 
+     *         final var thisGetDataQualityRefresh = DatabricksFunctions.getDataQualityRefresh(GetDataQualityRefreshArgs.builder()
+     *             .objectType("table")
+     *             .objectId(this_.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetDataQualityRefreshResult> getDataQualityRefresh(GetDataQualityRefreshArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getDataQualityRefresh:getDataQualityRefresh", TypeShape.of(GetDataQualityRefreshResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source can be used to fetch a data quality refresh on a Unity Catalog table.
+     * 
+     * The caller must either:
+     * 1. be an owner of the table&#39;s parent catalog
+     * 2. have **USE_CATALOG** on the table&#39;s parent catalog and be an owner of the table&#39;s parent schema.
+     * 3. have the following permissions:
+     *    - **USE_CATALOG** on the table&#39;s parent catalog
+     *    - **USE_SCHEMA** on the table&#39;s parent schema
+     *    - **SELECT** privilege on the table.
+     * 
+     * &gt; **Note** This data source can only be used with a workspace-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Getting a data quality refresh by Unity Catalog object type (currently supports `table`) and object id:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetTableArgs;
+     * import com.pulumi.databricks.inputs.GetDataQualityRefreshArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getTable(GetTableArgs.builder()
+     *             .name("my_catalog.my_schema.my_table")
+     *             .build());
+     * 
+     *         final var thisGetDataQualityRefresh = DatabricksFunctions.getDataQualityRefresh(GetDataQualityRefreshArgs.builder()
+     *             .objectType("table")
+     *             .objectId(this_.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetDataQualityRefreshResult> getDataQualityRefresh(GetDataQualityRefreshArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getDataQualityRefresh:getDataQualityRefresh", TypeShape.of(GetDataQualityRefreshResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source can be used to fetch a data quality refresh on a Unity Catalog table.
+     * 
+     * The caller must either:
+     * 1. be an owner of the table&#39;s parent catalog
+     * 2. have **USE_CATALOG** on the table&#39;s parent catalog and be an owner of the table&#39;s parent schema.
+     * 3. have the following permissions:
+     *    - **USE_CATALOG** on the table&#39;s parent catalog
+     *    - **USE_SCHEMA** on the table&#39;s parent schema
+     *    - **SELECT** privilege on the table.
+     * 
+     * &gt; **Note** This data source can only be used with a workspace-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Getting a data quality refresh by Unity Catalog object type (currently supports `table`) and object id:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetTableArgs;
+     * import com.pulumi.databricks.inputs.GetDataQualityRefreshArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getTable(GetTableArgs.builder()
+     *             .name("my_catalog.my_schema.my_table")
+     *             .build());
+     * 
+     *         final var thisGetDataQualityRefresh = DatabricksFunctions.getDataQualityRefresh(GetDataQualityRefreshArgs.builder()
+     *             .objectType("table")
+     *             .objectId(this_.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetDataQualityRefreshResult> getDataQualityRefreshPlain(GetDataQualityRefreshPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getDataQualityRefresh:getDataQualityRefresh", TypeShape.of(GetDataQualityRefreshResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source can be used to fetch the list of data quality refreshes on a Unity Catalog table.
+     * 
+     * The caller must either:
+     * 1. be an owner of the table&#39;s parent catalog
+     * 2. have **USE_CATALOG** on the table&#39;s parent catalog and be an owner of the table&#39;s parent schema.
+     * 3. have the following permissions:
+     *    - **USE_CATALOG** on the table&#39;s parent catalog
+     *    - **USE_SCHEMA** on the table&#39;s parent schema
+     *    - **SELECT** privilege on the table.
+     * 
+     * &gt; **Note** This data source can only be used with a workspace-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Getting a list of all data quality refresh for a given table:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetTableArgs;
+     * import com.pulumi.databricks.inputs.GetDataQualityRefreshesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getTable(GetTableArgs.builder()
+     *             .name("my_catalog.my_schema.my_table")
+     *             .build());
+     * 
+     *         final var all = DatabricksFunctions.getDataQualityRefreshes(GetDataQualityRefreshesArgs.builder()
+     *             .objectType("table")
+     *             .objectId(this_.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetDataQualityRefreshesResult> getDataQualityRefreshes(GetDataQualityRefreshesArgs args) {
+        return getDataQualityRefreshes(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source can be used to fetch the list of data quality refreshes on a Unity Catalog table.
+     * 
+     * The caller must either:
+     * 1. be an owner of the table&#39;s parent catalog
+     * 2. have **USE_CATALOG** on the table&#39;s parent catalog and be an owner of the table&#39;s parent schema.
+     * 3. have the following permissions:
+     *    - **USE_CATALOG** on the table&#39;s parent catalog
+     *    - **USE_SCHEMA** on the table&#39;s parent schema
+     *    - **SELECT** privilege on the table.
+     * 
+     * &gt; **Note** This data source can only be used with a workspace-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Getting a list of all data quality refresh for a given table:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetTableArgs;
+     * import com.pulumi.databricks.inputs.GetDataQualityRefreshesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getTable(GetTableArgs.builder()
+     *             .name("my_catalog.my_schema.my_table")
+     *             .build());
+     * 
+     *         final var all = DatabricksFunctions.getDataQualityRefreshes(GetDataQualityRefreshesArgs.builder()
+     *             .objectType("table")
+     *             .objectId(this_.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetDataQualityRefreshesResult> getDataQualityRefreshesPlain(GetDataQualityRefreshesPlainArgs args) {
+        return getDataQualityRefreshesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source can be used to fetch the list of data quality refreshes on a Unity Catalog table.
+     * 
+     * The caller must either:
+     * 1. be an owner of the table&#39;s parent catalog
+     * 2. have **USE_CATALOG** on the table&#39;s parent catalog and be an owner of the table&#39;s parent schema.
+     * 3. have the following permissions:
+     *    - **USE_CATALOG** on the table&#39;s parent catalog
+     *    - **USE_SCHEMA** on the table&#39;s parent schema
+     *    - **SELECT** privilege on the table.
+     * 
+     * &gt; **Note** This data source can only be used with a workspace-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Getting a list of all data quality refresh for a given table:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetTableArgs;
+     * import com.pulumi.databricks.inputs.GetDataQualityRefreshesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getTable(GetTableArgs.builder()
+     *             .name("my_catalog.my_schema.my_table")
+     *             .build());
+     * 
+     *         final var all = DatabricksFunctions.getDataQualityRefreshes(GetDataQualityRefreshesArgs.builder()
+     *             .objectType("table")
+     *             .objectId(this_.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetDataQualityRefreshesResult> getDataQualityRefreshes(GetDataQualityRefreshesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getDataQualityRefreshes:getDataQualityRefreshes", TypeShape.of(GetDataQualityRefreshesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source can be used to fetch the list of data quality refreshes on a Unity Catalog table.
+     * 
+     * The caller must either:
+     * 1. be an owner of the table&#39;s parent catalog
+     * 2. have **USE_CATALOG** on the table&#39;s parent catalog and be an owner of the table&#39;s parent schema.
+     * 3. have the following permissions:
+     *    - **USE_CATALOG** on the table&#39;s parent catalog
+     *    - **USE_SCHEMA** on the table&#39;s parent schema
+     *    - **SELECT** privilege on the table.
+     * 
+     * &gt; **Note** This data source can only be used with a workspace-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Getting a list of all data quality refresh for a given table:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetTableArgs;
+     * import com.pulumi.databricks.inputs.GetDataQualityRefreshesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getTable(GetTableArgs.builder()
+     *             .name("my_catalog.my_schema.my_table")
+     *             .build());
+     * 
+     *         final var all = DatabricksFunctions.getDataQualityRefreshes(GetDataQualityRefreshesArgs.builder()
+     *             .objectType("table")
+     *             .objectId(this_.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetDataQualityRefreshesResult> getDataQualityRefreshes(GetDataQualityRefreshesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getDataQualityRefreshes:getDataQualityRefreshes", TypeShape.of(GetDataQualityRefreshesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source can be used to fetch the list of data quality refreshes on a Unity Catalog table.
+     * 
+     * The caller must either:
+     * 1. be an owner of the table&#39;s parent catalog
+     * 2. have **USE_CATALOG** on the table&#39;s parent catalog and be an owner of the table&#39;s parent schema.
+     * 3. have the following permissions:
+     *    - **USE_CATALOG** on the table&#39;s parent catalog
+     *    - **USE_SCHEMA** on the table&#39;s parent schema
+     *    - **SELECT** privilege on the table.
+     * 
+     * &gt; **Note** This data source can only be used with a workspace-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Getting a list of all data quality refresh for a given table:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetTableArgs;
+     * import com.pulumi.databricks.inputs.GetDataQualityRefreshesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getTable(GetTableArgs.builder()
+     *             .name("my_catalog.my_schema.my_table")
+     *             .build());
+     * 
+     *         final var all = DatabricksFunctions.getDataQualityRefreshes(GetDataQualityRefreshesArgs.builder()
+     *             .objectType("table")
+     *             .objectId(this_.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetDataQualityRefreshesResult> getDataQualityRefreshesPlain(GetDataQualityRefreshesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getDataQualityRefreshes:getDataQualityRefreshes", TypeShape.of(GetDataQualityRefreshesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to get a single Database Catalog.
      * 
      * ## Example Usage
@@ -9081,6 +9482,8 @@ public final class DatabricksFunctions {
         return getDatabaseDatabaseCatalog(args, InvokeOptions.Empty);
     }
     /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to get a single Database Catalog.
      * 
      * ## Example Usage
@@ -9123,6 +9526,8 @@ public final class DatabricksFunctions {
         return getDatabaseDatabaseCatalogPlain(args, InvokeOptions.Empty);
     }
     /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to get a single Database Catalog.
      * 
      * ## Example Usage
@@ -9165,6 +9570,8 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getDatabaseDatabaseCatalog:getDatabaseDatabaseCatalog", TypeShape.of(GetDatabaseDatabaseCatalogResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to get a single Database Catalog.
      * 
      * ## Example Usage
@@ -9207,6 +9614,8 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getDatabaseDatabaseCatalog:getDatabaseDatabaseCatalog", TypeShape.of(GetDatabaseDatabaseCatalogResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to get a single Database Catalog.
      * 
      * ## Example Usage
@@ -9248,28 +9657,44 @@ public final class DatabricksFunctions {
     public static CompletableFuture<GetDatabaseDatabaseCatalogResult> getDatabaseDatabaseCatalogPlain(GetDatabaseDatabaseCatalogPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getDatabaseDatabaseCatalog:getDatabaseDatabaseCatalog", TypeShape.of(GetDatabaseDatabaseCatalogResult.class), args, Utilities.withVersion(options));
     }
-    public static Output<GetDatabaseDatabaseCatalogsResult> getDatabaseDatabaseCatalogs() {
-        return getDatabaseDatabaseCatalogs(GetDatabaseDatabaseCatalogsArgs.Empty, InvokeOptions.Empty);
-    }
-    public static CompletableFuture<GetDatabaseDatabaseCatalogsResult> getDatabaseDatabaseCatalogsPlain() {
-        return getDatabaseDatabaseCatalogsPlain(GetDatabaseDatabaseCatalogsPlainArgs.Empty, InvokeOptions.Empty);
-    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
     public static Output<GetDatabaseDatabaseCatalogsResult> getDatabaseDatabaseCatalogs(GetDatabaseDatabaseCatalogsArgs args) {
         return getDatabaseDatabaseCatalogs(args, InvokeOptions.Empty);
     }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
     public static CompletableFuture<GetDatabaseDatabaseCatalogsResult> getDatabaseDatabaseCatalogsPlain(GetDatabaseDatabaseCatalogsPlainArgs args) {
         return getDatabaseDatabaseCatalogsPlain(args, InvokeOptions.Empty);
     }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
     public static Output<GetDatabaseDatabaseCatalogsResult> getDatabaseDatabaseCatalogs(GetDatabaseDatabaseCatalogsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getDatabaseDatabaseCatalogs:getDatabaseDatabaseCatalogs", TypeShape.of(GetDatabaseDatabaseCatalogsResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
     public static Output<GetDatabaseDatabaseCatalogsResult> getDatabaseDatabaseCatalogs(GetDatabaseDatabaseCatalogsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getDatabaseDatabaseCatalogs:getDatabaseDatabaseCatalogs", TypeShape.of(GetDatabaseDatabaseCatalogsResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
     public static CompletableFuture<GetDatabaseDatabaseCatalogsResult> getDatabaseDatabaseCatalogsPlain(GetDatabaseDatabaseCatalogsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getDatabaseDatabaseCatalogs:getDatabaseDatabaseCatalogs", TypeShape.of(GetDatabaseDatabaseCatalogsResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to get a single Database Instance.
      * 
      * ## Example Usage
@@ -9312,6 +9737,8 @@ public final class DatabricksFunctions {
         return getDatabaseInstance(args, InvokeOptions.Empty);
     }
     /**
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to get a single Database Instance.
      * 
      * ## Example Usage
@@ -9354,6 +9781,8 @@ public final class DatabricksFunctions {
         return getDatabaseInstancePlain(args, InvokeOptions.Empty);
     }
     /**
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to get a single Database Instance.
      * 
      * ## Example Usage
@@ -9396,6 +9825,8 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getDatabaseInstance:getDatabaseInstance", TypeShape.of(GetDatabaseInstanceResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to get a single Database Instance.
      * 
      * ## Example Usage
@@ -9438,6 +9869,8 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getDatabaseInstance:getDatabaseInstance", TypeShape.of(GetDatabaseInstanceResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to get a single Database Instance.
      * 
      * ## Example Usage
@@ -9480,6 +9913,8 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getDatabaseInstance:getDatabaseInstance", TypeShape.of(GetDatabaseInstanceResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to fetch the list of Database Instances within the workspace.
      * The list can then be accessed via the data object&#39;s `databaseInstances` field.
      * 
@@ -9523,6 +9958,8 @@ public final class DatabricksFunctions {
         return getDatabaseInstances(GetDatabaseInstancesArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to fetch the list of Database Instances within the workspace.
      * The list can then be accessed via the data object&#39;s `databaseInstances` field.
      * 
@@ -9566,6 +10003,8 @@ public final class DatabricksFunctions {
         return getDatabaseInstancesPlain(GetDatabaseInstancesPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to fetch the list of Database Instances within the workspace.
      * The list can then be accessed via the data object&#39;s `databaseInstances` field.
      * 
@@ -9609,6 +10048,8 @@ public final class DatabricksFunctions {
         return getDatabaseInstances(args, InvokeOptions.Empty);
     }
     /**
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to fetch the list of Database Instances within the workspace.
      * The list can then be accessed via the data object&#39;s `databaseInstances` field.
      * 
@@ -9652,6 +10093,8 @@ public final class DatabricksFunctions {
         return getDatabaseInstancesPlain(args, InvokeOptions.Empty);
     }
     /**
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to fetch the list of Database Instances within the workspace.
      * The list can then be accessed via the data object&#39;s `databaseInstances` field.
      * 
@@ -9695,6 +10138,8 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getDatabaseInstances:getDatabaseInstances", TypeShape.of(GetDatabaseInstancesResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to fetch the list of Database Instances within the workspace.
      * The list can then be accessed via the data object&#39;s `databaseInstances` field.
      * 
@@ -9738,6 +10183,8 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getDatabaseInstances:getDatabaseInstances", TypeShape.of(GetDatabaseInstancesResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to fetch the list of Database Instances within the workspace.
      * The list can then be accessed via the data object&#39;s `databaseInstances` field.
      * 
@@ -9781,6 +10228,8 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getDatabaseInstances:getDatabaseInstances", TypeShape.of(GetDatabaseInstancesResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to get a single Synced Database Table.
      * 
      * ## Example Usage
@@ -9823,6 +10272,8 @@ public final class DatabricksFunctions {
         return getDatabaseSyncedDatabaseTable(args, InvokeOptions.Empty);
     }
     /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to get a single Synced Database Table.
      * 
      * ## Example Usage
@@ -9865,6 +10316,8 @@ public final class DatabricksFunctions {
         return getDatabaseSyncedDatabaseTablePlain(args, InvokeOptions.Empty);
     }
     /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to get a single Synced Database Table.
      * 
      * ## Example Usage
@@ -9907,6 +10360,8 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getDatabaseSyncedDatabaseTable:getDatabaseSyncedDatabaseTable", TypeShape.of(GetDatabaseSyncedDatabaseTableResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to get a single Synced Database Table.
      * 
      * ## Example Usage
@@ -9949,6 +10404,8 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getDatabaseSyncedDatabaseTable:getDatabaseSyncedDatabaseTable", TypeShape.of(GetDatabaseSyncedDatabaseTableResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to get a single Synced Database Table.
      * 
      * ## Example Usage
@@ -9990,24 +10447,38 @@ public final class DatabricksFunctions {
     public static CompletableFuture<GetDatabaseSyncedDatabaseTableResult> getDatabaseSyncedDatabaseTablePlain(GetDatabaseSyncedDatabaseTablePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getDatabaseSyncedDatabaseTable:getDatabaseSyncedDatabaseTable", TypeShape.of(GetDatabaseSyncedDatabaseTableResult.class), args, Utilities.withVersion(options));
     }
-    public static Output<GetDatabaseSyncedDatabaseTablesResult> getDatabaseSyncedDatabaseTables() {
-        return getDatabaseSyncedDatabaseTables(GetDatabaseSyncedDatabaseTablesArgs.Empty, InvokeOptions.Empty);
-    }
-    public static CompletableFuture<GetDatabaseSyncedDatabaseTablesResult> getDatabaseSyncedDatabaseTablesPlain() {
-        return getDatabaseSyncedDatabaseTablesPlain(GetDatabaseSyncedDatabaseTablesPlainArgs.Empty, InvokeOptions.Empty);
-    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
     public static Output<GetDatabaseSyncedDatabaseTablesResult> getDatabaseSyncedDatabaseTables(GetDatabaseSyncedDatabaseTablesArgs args) {
         return getDatabaseSyncedDatabaseTables(args, InvokeOptions.Empty);
     }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
     public static CompletableFuture<GetDatabaseSyncedDatabaseTablesResult> getDatabaseSyncedDatabaseTablesPlain(GetDatabaseSyncedDatabaseTablesPlainArgs args) {
         return getDatabaseSyncedDatabaseTablesPlain(args, InvokeOptions.Empty);
     }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
     public static Output<GetDatabaseSyncedDatabaseTablesResult> getDatabaseSyncedDatabaseTables(GetDatabaseSyncedDatabaseTablesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getDatabaseSyncedDatabaseTables:getDatabaseSyncedDatabaseTables", TypeShape.of(GetDatabaseSyncedDatabaseTablesResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
     public static Output<GetDatabaseSyncedDatabaseTablesResult> getDatabaseSyncedDatabaseTables(GetDatabaseSyncedDatabaseTablesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getDatabaseSyncedDatabaseTables:getDatabaseSyncedDatabaseTables", TypeShape.of(GetDatabaseSyncedDatabaseTablesResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
     public static CompletableFuture<GetDatabaseSyncedDatabaseTablesResult> getDatabaseSyncedDatabaseTablesPlain(GetDatabaseSyncedDatabaseTablesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getDatabaseSyncedDatabaseTables:getDatabaseSyncedDatabaseTables", TypeShape.of(GetDatabaseSyncedDatabaseTablesResult.class), args, Utilities.withVersion(options));
     }
@@ -10751,33 +11222,678 @@ public final class DatabricksFunctions {
     public static CompletableFuture<GetDirectoryResult> getDirectoryPlain(GetDirectoryPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getDirectory:getDirectory", TypeShape.of(GetDirectoryResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source allows you to get information about a tag assignment for a specific entity using the entity type, entity name, and tag key.
+     * 
+     * ## Example Usage
+     * 
+     * ### Get environment tag from a catalog
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetEntityTagAssignmentArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var catalogTag = DatabricksFunctions.getEntityTagAssignment(GetEntityTagAssignmentArgs.builder()
+     *             .entityType("catalogs")
+     *             .entityName("production_catalog")
+     *             .tagKey("environment")
+     *             .build());
+     * 
+     *         final var schemaTag = DatabricksFunctions.getEntityTagAssignment(GetEntityTagAssignmentArgs.builder()
+     *             .entityType("schemas")
+     *             .entityName("production_catalog.analytics_data")
+     *             .tagKey("cost_center")
+     *             .build());
+     * 
+     *         final var tableTag = DatabricksFunctions.getEntityTagAssignment(GetEntityTagAssignmentArgs.builder()
+     *             .entityType("tables")
+     *             .entityName("production_catalog.sales_data.customer_orders")
+     *             .tagKey("owner")
+     *             .build());
+     * 
+     *         final var columnTag = DatabricksFunctions.getEntityTagAssignment(GetEntityTagAssignmentArgs.builder()
+     *             .entityType("columns")
+     *             .entityName("production_catalog.customer_data.users.email_address")
+     *             .tagKey("pii_classification")
+     *             .build());
+     * 
+     *         final var volumeTag = DatabricksFunctions.getEntityTagAssignment(GetEntityTagAssignmentArgs.builder()
+     *             .entityType("volumes")
+     *             .entityName("production_catalog.raw_data.landing_zone")
+     *             .tagKey("purpose")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
     public static Output<GetEntityTagAssignmentResult> getEntityTagAssignment(GetEntityTagAssignmentArgs args) {
         return getEntityTagAssignment(args, InvokeOptions.Empty);
     }
+    /**
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source allows you to get information about a tag assignment for a specific entity using the entity type, entity name, and tag key.
+     * 
+     * ## Example Usage
+     * 
+     * ### Get environment tag from a catalog
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetEntityTagAssignmentArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var catalogTag = DatabricksFunctions.getEntityTagAssignment(GetEntityTagAssignmentArgs.builder()
+     *             .entityType("catalogs")
+     *             .entityName("production_catalog")
+     *             .tagKey("environment")
+     *             .build());
+     * 
+     *         final var schemaTag = DatabricksFunctions.getEntityTagAssignment(GetEntityTagAssignmentArgs.builder()
+     *             .entityType("schemas")
+     *             .entityName("production_catalog.analytics_data")
+     *             .tagKey("cost_center")
+     *             .build());
+     * 
+     *         final var tableTag = DatabricksFunctions.getEntityTagAssignment(GetEntityTagAssignmentArgs.builder()
+     *             .entityType("tables")
+     *             .entityName("production_catalog.sales_data.customer_orders")
+     *             .tagKey("owner")
+     *             .build());
+     * 
+     *         final var columnTag = DatabricksFunctions.getEntityTagAssignment(GetEntityTagAssignmentArgs.builder()
+     *             .entityType("columns")
+     *             .entityName("production_catalog.customer_data.users.email_address")
+     *             .tagKey("pii_classification")
+     *             .build());
+     * 
+     *         final var volumeTag = DatabricksFunctions.getEntityTagAssignment(GetEntityTagAssignmentArgs.builder()
+     *             .entityType("volumes")
+     *             .entityName("production_catalog.raw_data.landing_zone")
+     *             .tagKey("purpose")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
     public static CompletableFuture<GetEntityTagAssignmentResult> getEntityTagAssignmentPlain(GetEntityTagAssignmentPlainArgs args) {
         return getEntityTagAssignmentPlain(args, InvokeOptions.Empty);
     }
+    /**
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source allows you to get information about a tag assignment for a specific entity using the entity type, entity name, and tag key.
+     * 
+     * ## Example Usage
+     * 
+     * ### Get environment tag from a catalog
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetEntityTagAssignmentArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var catalogTag = DatabricksFunctions.getEntityTagAssignment(GetEntityTagAssignmentArgs.builder()
+     *             .entityType("catalogs")
+     *             .entityName("production_catalog")
+     *             .tagKey("environment")
+     *             .build());
+     * 
+     *         final var schemaTag = DatabricksFunctions.getEntityTagAssignment(GetEntityTagAssignmentArgs.builder()
+     *             .entityType("schemas")
+     *             .entityName("production_catalog.analytics_data")
+     *             .tagKey("cost_center")
+     *             .build());
+     * 
+     *         final var tableTag = DatabricksFunctions.getEntityTagAssignment(GetEntityTagAssignmentArgs.builder()
+     *             .entityType("tables")
+     *             .entityName("production_catalog.sales_data.customer_orders")
+     *             .tagKey("owner")
+     *             .build());
+     * 
+     *         final var columnTag = DatabricksFunctions.getEntityTagAssignment(GetEntityTagAssignmentArgs.builder()
+     *             .entityType("columns")
+     *             .entityName("production_catalog.customer_data.users.email_address")
+     *             .tagKey("pii_classification")
+     *             .build());
+     * 
+     *         final var volumeTag = DatabricksFunctions.getEntityTagAssignment(GetEntityTagAssignmentArgs.builder()
+     *             .entityType("volumes")
+     *             .entityName("production_catalog.raw_data.landing_zone")
+     *             .tagKey("purpose")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
     public static Output<GetEntityTagAssignmentResult> getEntityTagAssignment(GetEntityTagAssignmentArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getEntityTagAssignment:getEntityTagAssignment", TypeShape.of(GetEntityTagAssignmentResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source allows you to get information about a tag assignment for a specific entity using the entity type, entity name, and tag key.
+     * 
+     * ## Example Usage
+     * 
+     * ### Get environment tag from a catalog
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetEntityTagAssignmentArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var catalogTag = DatabricksFunctions.getEntityTagAssignment(GetEntityTagAssignmentArgs.builder()
+     *             .entityType("catalogs")
+     *             .entityName("production_catalog")
+     *             .tagKey("environment")
+     *             .build());
+     * 
+     *         final var schemaTag = DatabricksFunctions.getEntityTagAssignment(GetEntityTagAssignmentArgs.builder()
+     *             .entityType("schemas")
+     *             .entityName("production_catalog.analytics_data")
+     *             .tagKey("cost_center")
+     *             .build());
+     * 
+     *         final var tableTag = DatabricksFunctions.getEntityTagAssignment(GetEntityTagAssignmentArgs.builder()
+     *             .entityType("tables")
+     *             .entityName("production_catalog.sales_data.customer_orders")
+     *             .tagKey("owner")
+     *             .build());
+     * 
+     *         final var columnTag = DatabricksFunctions.getEntityTagAssignment(GetEntityTagAssignmentArgs.builder()
+     *             .entityType("columns")
+     *             .entityName("production_catalog.customer_data.users.email_address")
+     *             .tagKey("pii_classification")
+     *             .build());
+     * 
+     *         final var volumeTag = DatabricksFunctions.getEntityTagAssignment(GetEntityTagAssignmentArgs.builder()
+     *             .entityType("volumes")
+     *             .entityName("production_catalog.raw_data.landing_zone")
+     *             .tagKey("purpose")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
     public static Output<GetEntityTagAssignmentResult> getEntityTagAssignment(GetEntityTagAssignmentArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getEntityTagAssignment:getEntityTagAssignment", TypeShape.of(GetEntityTagAssignmentResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source allows you to get information about a tag assignment for a specific entity using the entity type, entity name, and tag key.
+     * 
+     * ## Example Usage
+     * 
+     * ### Get environment tag from a catalog
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetEntityTagAssignmentArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var catalogTag = DatabricksFunctions.getEntityTagAssignment(GetEntityTagAssignmentArgs.builder()
+     *             .entityType("catalogs")
+     *             .entityName("production_catalog")
+     *             .tagKey("environment")
+     *             .build());
+     * 
+     *         final var schemaTag = DatabricksFunctions.getEntityTagAssignment(GetEntityTagAssignmentArgs.builder()
+     *             .entityType("schemas")
+     *             .entityName("production_catalog.analytics_data")
+     *             .tagKey("cost_center")
+     *             .build());
+     * 
+     *         final var tableTag = DatabricksFunctions.getEntityTagAssignment(GetEntityTagAssignmentArgs.builder()
+     *             .entityType("tables")
+     *             .entityName("production_catalog.sales_data.customer_orders")
+     *             .tagKey("owner")
+     *             .build());
+     * 
+     *         final var columnTag = DatabricksFunctions.getEntityTagAssignment(GetEntityTagAssignmentArgs.builder()
+     *             .entityType("columns")
+     *             .entityName("production_catalog.customer_data.users.email_address")
+     *             .tagKey("pii_classification")
+     *             .build());
+     * 
+     *         final var volumeTag = DatabricksFunctions.getEntityTagAssignment(GetEntityTagAssignmentArgs.builder()
+     *             .entityType("volumes")
+     *             .entityName("production_catalog.raw_data.landing_zone")
+     *             .tagKey("purpose")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
     public static CompletableFuture<GetEntityTagAssignmentResult> getEntityTagAssignmentPlain(GetEntityTagAssignmentPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getEntityTagAssignment:getEntityTagAssignment", TypeShape.of(GetEntityTagAssignmentResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source allows you to retrieve tag assignments that have been applied to a particular entity in Unity Catalog.
+     * 
+     * ## Example Usage
+     * 
+     * ### Get all tag assignments for a catalog
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetEntityTagAssignmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var catalogTags = DatabricksFunctions.getEntityTagAssignments(GetEntityTagAssignmentsArgs.builder()
+     *             .entityType("catalogs")
+     *             .entityName("production_catalog")
+     *             .build());
+     * 
+     *         final var schemaTags = DatabricksFunctions.getEntityTagAssignments(GetEntityTagAssignmentsArgs.builder()
+     *             .entityType("schemas")
+     *             .entityName("production_catalog.sales_data")
+     *             .build());
+     * 
+     *         final var tableTags = DatabricksFunctions.getEntityTagAssignments(GetEntityTagAssignmentsArgs.builder()
+     *             .entityType("tables")
+     *             .entityName("production_catalog.sales_data.customer_orders")
+     *             .build());
+     * 
+     *         final var columnTags = DatabricksFunctions.getEntityTagAssignments(GetEntityTagAssignmentsArgs.builder()
+     *             .entityType("columns")
+     *             .entityName("production_catalog.customer_data.users.email_address")
+     *             .build());
+     * 
+     *         final var volumeTags = DatabricksFunctions.getEntityTagAssignments(GetEntityTagAssignmentsArgs.builder()
+     *             .entityType("volumes")
+     *             .entityName("production_catalog.raw_data.landing_zone")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
     public static Output<GetEntityTagAssignmentsResult> getEntityTagAssignments(GetEntityTagAssignmentsArgs args) {
         return getEntityTagAssignments(args, InvokeOptions.Empty);
     }
+    /**
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source allows you to retrieve tag assignments that have been applied to a particular entity in Unity Catalog.
+     * 
+     * ## Example Usage
+     * 
+     * ### Get all tag assignments for a catalog
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetEntityTagAssignmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var catalogTags = DatabricksFunctions.getEntityTagAssignments(GetEntityTagAssignmentsArgs.builder()
+     *             .entityType("catalogs")
+     *             .entityName("production_catalog")
+     *             .build());
+     * 
+     *         final var schemaTags = DatabricksFunctions.getEntityTagAssignments(GetEntityTagAssignmentsArgs.builder()
+     *             .entityType("schemas")
+     *             .entityName("production_catalog.sales_data")
+     *             .build());
+     * 
+     *         final var tableTags = DatabricksFunctions.getEntityTagAssignments(GetEntityTagAssignmentsArgs.builder()
+     *             .entityType("tables")
+     *             .entityName("production_catalog.sales_data.customer_orders")
+     *             .build());
+     * 
+     *         final var columnTags = DatabricksFunctions.getEntityTagAssignments(GetEntityTagAssignmentsArgs.builder()
+     *             .entityType("columns")
+     *             .entityName("production_catalog.customer_data.users.email_address")
+     *             .build());
+     * 
+     *         final var volumeTags = DatabricksFunctions.getEntityTagAssignments(GetEntityTagAssignmentsArgs.builder()
+     *             .entityType("volumes")
+     *             .entityName("production_catalog.raw_data.landing_zone")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
     public static CompletableFuture<GetEntityTagAssignmentsResult> getEntityTagAssignmentsPlain(GetEntityTagAssignmentsPlainArgs args) {
         return getEntityTagAssignmentsPlain(args, InvokeOptions.Empty);
     }
+    /**
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source allows you to retrieve tag assignments that have been applied to a particular entity in Unity Catalog.
+     * 
+     * ## Example Usage
+     * 
+     * ### Get all tag assignments for a catalog
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetEntityTagAssignmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var catalogTags = DatabricksFunctions.getEntityTagAssignments(GetEntityTagAssignmentsArgs.builder()
+     *             .entityType("catalogs")
+     *             .entityName("production_catalog")
+     *             .build());
+     * 
+     *         final var schemaTags = DatabricksFunctions.getEntityTagAssignments(GetEntityTagAssignmentsArgs.builder()
+     *             .entityType("schemas")
+     *             .entityName("production_catalog.sales_data")
+     *             .build());
+     * 
+     *         final var tableTags = DatabricksFunctions.getEntityTagAssignments(GetEntityTagAssignmentsArgs.builder()
+     *             .entityType("tables")
+     *             .entityName("production_catalog.sales_data.customer_orders")
+     *             .build());
+     * 
+     *         final var columnTags = DatabricksFunctions.getEntityTagAssignments(GetEntityTagAssignmentsArgs.builder()
+     *             .entityType("columns")
+     *             .entityName("production_catalog.customer_data.users.email_address")
+     *             .build());
+     * 
+     *         final var volumeTags = DatabricksFunctions.getEntityTagAssignments(GetEntityTagAssignmentsArgs.builder()
+     *             .entityType("volumes")
+     *             .entityName("production_catalog.raw_data.landing_zone")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
     public static Output<GetEntityTagAssignmentsResult> getEntityTagAssignments(GetEntityTagAssignmentsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getEntityTagAssignments:getEntityTagAssignments", TypeShape.of(GetEntityTagAssignmentsResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source allows you to retrieve tag assignments that have been applied to a particular entity in Unity Catalog.
+     * 
+     * ## Example Usage
+     * 
+     * ### Get all tag assignments for a catalog
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetEntityTagAssignmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var catalogTags = DatabricksFunctions.getEntityTagAssignments(GetEntityTagAssignmentsArgs.builder()
+     *             .entityType("catalogs")
+     *             .entityName("production_catalog")
+     *             .build());
+     * 
+     *         final var schemaTags = DatabricksFunctions.getEntityTagAssignments(GetEntityTagAssignmentsArgs.builder()
+     *             .entityType("schemas")
+     *             .entityName("production_catalog.sales_data")
+     *             .build());
+     * 
+     *         final var tableTags = DatabricksFunctions.getEntityTagAssignments(GetEntityTagAssignmentsArgs.builder()
+     *             .entityType("tables")
+     *             .entityName("production_catalog.sales_data.customer_orders")
+     *             .build());
+     * 
+     *         final var columnTags = DatabricksFunctions.getEntityTagAssignments(GetEntityTagAssignmentsArgs.builder()
+     *             .entityType("columns")
+     *             .entityName("production_catalog.customer_data.users.email_address")
+     *             .build());
+     * 
+     *         final var volumeTags = DatabricksFunctions.getEntityTagAssignments(GetEntityTagAssignmentsArgs.builder()
+     *             .entityType("volumes")
+     *             .entityName("production_catalog.raw_data.landing_zone")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
     public static Output<GetEntityTagAssignmentsResult> getEntityTagAssignments(GetEntityTagAssignmentsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getEntityTagAssignments:getEntityTagAssignments", TypeShape.of(GetEntityTagAssignmentsResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source allows you to retrieve tag assignments that have been applied to a particular entity in Unity Catalog.
+     * 
+     * ## Example Usage
+     * 
+     * ### Get all tag assignments for a catalog
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetEntityTagAssignmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var catalogTags = DatabricksFunctions.getEntityTagAssignments(GetEntityTagAssignmentsArgs.builder()
+     *             .entityType("catalogs")
+     *             .entityName("production_catalog")
+     *             .build());
+     * 
+     *         final var schemaTags = DatabricksFunctions.getEntityTagAssignments(GetEntityTagAssignmentsArgs.builder()
+     *             .entityType("schemas")
+     *             .entityName("production_catalog.sales_data")
+     *             .build());
+     * 
+     *         final var tableTags = DatabricksFunctions.getEntityTagAssignments(GetEntityTagAssignmentsArgs.builder()
+     *             .entityType("tables")
+     *             .entityName("production_catalog.sales_data.customer_orders")
+     *             .build());
+     * 
+     *         final var columnTags = DatabricksFunctions.getEntityTagAssignments(GetEntityTagAssignmentsArgs.builder()
+     *             .entityType("columns")
+     *             .entityName("production_catalog.customer_data.users.email_address")
+     *             .build());
+     * 
+     *         final var volumeTags = DatabricksFunctions.getEntityTagAssignments(GetEntityTagAssignmentsArgs.builder()
+     *             .entityType("volumes")
+     *             .entityName("production_catalog.raw_data.landing_zone")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
     public static CompletableFuture<GetEntityTagAssignmentsResult> getEntityTagAssignmentsPlain(GetEntityTagAssignmentsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getEntityTagAssignments:getEntityTagAssignments", TypeShape.of(GetEntityTagAssignmentsResult.class), args, Utilities.withVersion(options));
     }
@@ -11399,6 +12515,8 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getExternalLocations:getExternalLocations", TypeShape.of(GetExternalLocationsResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to get a single external metadata object.
      * 
      * &gt; **Note** This resource can only be used with an workspace-level provider!
@@ -11443,6 +12561,8 @@ public final class DatabricksFunctions {
         return getExternalMetadata(args, InvokeOptions.Empty);
     }
     /**
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to get a single external metadata object.
      * 
      * &gt; **Note** This resource can only be used with an workspace-level provider!
@@ -11487,6 +12607,8 @@ public final class DatabricksFunctions {
         return getExternalMetadataPlain(args, InvokeOptions.Empty);
     }
     /**
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to get a single external metadata object.
      * 
      * &gt; **Note** This resource can only be used with an workspace-level provider!
@@ -11531,6 +12653,8 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getExternalMetadata:getExternalMetadata", TypeShape.of(GetExternalMetadataResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to get a single external metadata object.
      * 
      * &gt; **Note** This resource can only be used with an workspace-level provider!
@@ -11575,6 +12699,8 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getExternalMetadata:getExternalMetadata", TypeShape.of(GetExternalMetadataResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to get a single external metadata object.
      * 
      * &gt; **Note** This resource can only be used with an workspace-level provider!
@@ -11619,6 +12745,8 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getExternalMetadata:getExternalMetadata", TypeShape.of(GetExternalMetadataResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to fetch the list of external metadata objects.
      * 
      * &gt; **Note** This resource can only be used with an workspace-level provider!
@@ -11662,6 +12790,8 @@ public final class DatabricksFunctions {
         return getExternalMetadatas(GetExternalMetadatasArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to fetch the list of external metadata objects.
      * 
      * &gt; **Note** This resource can only be used with an workspace-level provider!
@@ -11705,6 +12835,8 @@ public final class DatabricksFunctions {
         return getExternalMetadatasPlain(GetExternalMetadatasPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to fetch the list of external metadata objects.
      * 
      * &gt; **Note** This resource can only be used with an workspace-level provider!
@@ -11748,6 +12880,8 @@ public final class DatabricksFunctions {
         return getExternalMetadatas(args, InvokeOptions.Empty);
     }
     /**
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to fetch the list of external metadata objects.
      * 
      * &gt; **Note** This resource can only be used with an workspace-level provider!
@@ -11791,6 +12925,8 @@ public final class DatabricksFunctions {
         return getExternalMetadatasPlain(args, InvokeOptions.Empty);
     }
     /**
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to fetch the list of external metadata objects.
      * 
      * &gt; **Note** This resource can only be used with an workspace-level provider!
@@ -11834,6 +12970,8 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getExternalMetadatas:getExternalMetadatas", TypeShape.of(GetExternalMetadatasResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to fetch the list of external metadata objects.
      * 
      * &gt; **Note** This resource can only be used with an workspace-level provider!
@@ -11877,6 +13015,8 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getExternalMetadatas:getExternalMetadatas", TypeShape.of(GetExternalMetadatasResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to fetch the list of external metadata objects.
      * 
      * &gt; **Note** This resource can only be used with an workspace-level provider!
@@ -11918,6 +13058,174 @@ public final class DatabricksFunctions {
      */
     public static CompletableFuture<GetExternalMetadatasResult> getExternalMetadatasPlain(GetExternalMetadatasPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getExternalMetadatas:getExternalMetadatas", TypeShape.of(GetExternalMetadatasResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetFeatureEngineeringFeatureResult> getFeatureEngineeringFeature(GetFeatureEngineeringFeatureArgs args) {
+        return getFeatureEngineeringFeature(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetFeatureEngineeringFeatureResult> getFeatureEngineeringFeaturePlain(GetFeatureEngineeringFeaturePlainArgs args) {
+        return getFeatureEngineeringFeaturePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetFeatureEngineeringFeatureResult> getFeatureEngineeringFeature(GetFeatureEngineeringFeatureArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getFeatureEngineeringFeature:getFeatureEngineeringFeature", TypeShape.of(GetFeatureEngineeringFeatureResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetFeatureEngineeringFeatureResult> getFeatureEngineeringFeature(GetFeatureEngineeringFeatureArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getFeatureEngineeringFeature:getFeatureEngineeringFeature", TypeShape.of(GetFeatureEngineeringFeatureResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetFeatureEngineeringFeatureResult> getFeatureEngineeringFeaturePlain(GetFeatureEngineeringFeaturePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getFeatureEngineeringFeature:getFeatureEngineeringFeature", TypeShape.of(GetFeatureEngineeringFeatureResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetFeatureEngineeringFeaturesResult> getFeatureEngineeringFeatures() {
+        return getFeatureEngineeringFeatures(GetFeatureEngineeringFeaturesArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetFeatureEngineeringFeaturesResult> getFeatureEngineeringFeaturesPlain() {
+        return getFeatureEngineeringFeaturesPlain(GetFeatureEngineeringFeaturesPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetFeatureEngineeringFeaturesResult> getFeatureEngineeringFeatures(GetFeatureEngineeringFeaturesArgs args) {
+        return getFeatureEngineeringFeatures(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetFeatureEngineeringFeaturesResult> getFeatureEngineeringFeaturesPlain(GetFeatureEngineeringFeaturesPlainArgs args) {
+        return getFeatureEngineeringFeaturesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetFeatureEngineeringFeaturesResult> getFeatureEngineeringFeatures(GetFeatureEngineeringFeaturesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getFeatureEngineeringFeatures:getFeatureEngineeringFeatures", TypeShape.of(GetFeatureEngineeringFeaturesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetFeatureEngineeringFeaturesResult> getFeatureEngineeringFeatures(GetFeatureEngineeringFeaturesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getFeatureEngineeringFeatures:getFeatureEngineeringFeatures", TypeShape.of(GetFeatureEngineeringFeaturesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetFeatureEngineeringFeaturesResult> getFeatureEngineeringFeaturesPlain(GetFeatureEngineeringFeaturesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getFeatureEngineeringFeatures:getFeatureEngineeringFeatures", TypeShape.of(GetFeatureEngineeringFeaturesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetFeatureEngineeringMaterializedFeatureResult> getFeatureEngineeringMaterializedFeature(GetFeatureEngineeringMaterializedFeatureArgs args) {
+        return getFeatureEngineeringMaterializedFeature(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetFeatureEngineeringMaterializedFeatureResult> getFeatureEngineeringMaterializedFeaturePlain(GetFeatureEngineeringMaterializedFeaturePlainArgs args) {
+        return getFeatureEngineeringMaterializedFeaturePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetFeatureEngineeringMaterializedFeatureResult> getFeatureEngineeringMaterializedFeature(GetFeatureEngineeringMaterializedFeatureArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getFeatureEngineeringMaterializedFeature:getFeatureEngineeringMaterializedFeature", TypeShape.of(GetFeatureEngineeringMaterializedFeatureResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetFeatureEngineeringMaterializedFeatureResult> getFeatureEngineeringMaterializedFeature(GetFeatureEngineeringMaterializedFeatureArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getFeatureEngineeringMaterializedFeature:getFeatureEngineeringMaterializedFeature", TypeShape.of(GetFeatureEngineeringMaterializedFeatureResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetFeatureEngineeringMaterializedFeatureResult> getFeatureEngineeringMaterializedFeaturePlain(GetFeatureEngineeringMaterializedFeaturePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getFeatureEngineeringMaterializedFeature:getFeatureEngineeringMaterializedFeature", TypeShape.of(GetFeatureEngineeringMaterializedFeatureResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetFeatureEngineeringMaterializedFeaturesResult> getFeatureEngineeringMaterializedFeatures() {
+        return getFeatureEngineeringMaterializedFeatures(GetFeatureEngineeringMaterializedFeaturesArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetFeatureEngineeringMaterializedFeaturesResult> getFeatureEngineeringMaterializedFeaturesPlain() {
+        return getFeatureEngineeringMaterializedFeaturesPlain(GetFeatureEngineeringMaterializedFeaturesPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetFeatureEngineeringMaterializedFeaturesResult> getFeatureEngineeringMaterializedFeatures(GetFeatureEngineeringMaterializedFeaturesArgs args) {
+        return getFeatureEngineeringMaterializedFeatures(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetFeatureEngineeringMaterializedFeaturesResult> getFeatureEngineeringMaterializedFeaturesPlain(GetFeatureEngineeringMaterializedFeaturesPlainArgs args) {
+        return getFeatureEngineeringMaterializedFeaturesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetFeatureEngineeringMaterializedFeaturesResult> getFeatureEngineeringMaterializedFeatures(GetFeatureEngineeringMaterializedFeaturesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getFeatureEngineeringMaterializedFeatures:getFeatureEngineeringMaterializedFeatures", TypeShape.of(GetFeatureEngineeringMaterializedFeaturesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetFeatureEngineeringMaterializedFeaturesResult> getFeatureEngineeringMaterializedFeatures(GetFeatureEngineeringMaterializedFeaturesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getFeatureEngineeringMaterializedFeatures:getFeatureEngineeringMaterializedFeatures", TypeShape.of(GetFeatureEngineeringMaterializedFeaturesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetFeatureEngineeringMaterializedFeaturesResult> getFeatureEngineeringMaterializedFeaturesPlain(GetFeatureEngineeringMaterializedFeaturesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getFeatureEngineeringMaterializedFeatures:getFeatureEngineeringMaterializedFeatures", TypeShape.of(GetFeatureEngineeringMaterializedFeaturesResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Retrieves a list of [User-Defined Functions (UDFs) registered in the Unity Catalog](https://docs.databricks.com/en/udf/unity-catalog.html).
@@ -14561,39 +15869,73 @@ public final class DatabricksFunctions {
     public static CompletableFuture<GetJobsResult> getJobsPlain(GetJobsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getJobs:getJobs", TypeShape.of(GetJobsResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
     public static Output<GetMaterializedFeaturesFeatureTagResult> getMaterializedFeaturesFeatureTag(GetMaterializedFeaturesFeatureTagArgs args) {
         return getMaterializedFeaturesFeatureTag(args, InvokeOptions.Empty);
     }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
     public static CompletableFuture<GetMaterializedFeaturesFeatureTagResult> getMaterializedFeaturesFeatureTagPlain(GetMaterializedFeaturesFeatureTagPlainArgs args) {
         return getMaterializedFeaturesFeatureTagPlain(args, InvokeOptions.Empty);
     }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
     public static Output<GetMaterializedFeaturesFeatureTagResult> getMaterializedFeaturesFeatureTag(GetMaterializedFeaturesFeatureTagArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getMaterializedFeaturesFeatureTag:getMaterializedFeaturesFeatureTag", TypeShape.of(GetMaterializedFeaturesFeatureTagResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
     public static Output<GetMaterializedFeaturesFeatureTagResult> getMaterializedFeaturesFeatureTag(GetMaterializedFeaturesFeatureTagArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getMaterializedFeaturesFeatureTag:getMaterializedFeaturesFeatureTag", TypeShape.of(GetMaterializedFeaturesFeatureTagResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
     public static CompletableFuture<GetMaterializedFeaturesFeatureTagResult> getMaterializedFeaturesFeatureTagPlain(GetMaterializedFeaturesFeatureTagPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getMaterializedFeaturesFeatureTag:getMaterializedFeaturesFeatureTag", TypeShape.of(GetMaterializedFeaturesFeatureTagResult.class), args, Utilities.withVersion(options));
     }
-    public static Output<GetMaterializedFeaturesFeatureTagsResult> getMaterializedFeaturesFeatureTags() {
-        return getMaterializedFeaturesFeatureTags(GetMaterializedFeaturesFeatureTagsArgs.Empty, InvokeOptions.Empty);
-    }
-    public static CompletableFuture<GetMaterializedFeaturesFeatureTagsResult> getMaterializedFeaturesFeatureTagsPlain() {
-        return getMaterializedFeaturesFeatureTagsPlain(GetMaterializedFeaturesFeatureTagsPlainArgs.Empty, InvokeOptions.Empty);
-    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
     public static Output<GetMaterializedFeaturesFeatureTagsResult> getMaterializedFeaturesFeatureTags(GetMaterializedFeaturesFeatureTagsArgs args) {
         return getMaterializedFeaturesFeatureTags(args, InvokeOptions.Empty);
     }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
     public static CompletableFuture<GetMaterializedFeaturesFeatureTagsResult> getMaterializedFeaturesFeatureTagsPlain(GetMaterializedFeaturesFeatureTagsPlainArgs args) {
         return getMaterializedFeaturesFeatureTagsPlain(args, InvokeOptions.Empty);
     }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
     public static Output<GetMaterializedFeaturesFeatureTagsResult> getMaterializedFeaturesFeatureTags(GetMaterializedFeaturesFeatureTagsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getMaterializedFeaturesFeatureTags:getMaterializedFeaturesFeatureTags", TypeShape.of(GetMaterializedFeaturesFeatureTagsResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
     public static Output<GetMaterializedFeaturesFeatureTagsResult> getMaterializedFeaturesFeatureTags(GetMaterializedFeaturesFeatureTagsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getMaterializedFeaturesFeatureTags:getMaterializedFeaturesFeatureTags", TypeShape.of(GetMaterializedFeaturesFeatureTagsResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
     public static CompletableFuture<GetMaterializedFeaturesFeatureTagsResult> getMaterializedFeaturesFeatureTagsPlain(GetMaterializedFeaturesFeatureTagsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getMaterializedFeaturesFeatureTags:getMaterializedFeaturesFeatureTags", TypeShape.of(GetMaterializedFeaturesFeatureTagsResult.class), args, Utilities.withVersion(options));
     }
@@ -14613,8 +15955,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.aws.s3.BucketV2;
-     * import com.pulumi.aws.s3.BucketV2Args;
+     * import com.pulumi.aws.s3.Bucket;
+     * import com.pulumi.aws.s3.BucketArgs;
      * import com.pulumi.databricks.Metastore;
      * import com.pulumi.databricks.MetastoreArgs;
      * import com.pulumi.databricks.DatabricksFunctions;
@@ -14632,7 +15974,7 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var metastore = new BucketV2("metastore", BucketV2Args.builder()
+     *         var metastore = new Bucket("metastore", BucketArgs.builder()
      *             .bucket(String.format("%s-metastore", prefix))
      *             .forceDestroy(true)
      *             .build());
@@ -14682,8 +16024,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.aws.s3.BucketV2;
-     * import com.pulumi.aws.s3.BucketV2Args;
+     * import com.pulumi.aws.s3.Bucket;
+     * import com.pulumi.aws.s3.BucketArgs;
      * import com.pulumi.databricks.Metastore;
      * import com.pulumi.databricks.MetastoreArgs;
      * import com.pulumi.databricks.DatabricksFunctions;
@@ -14701,7 +16043,7 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var metastore = new BucketV2("metastore", BucketV2Args.builder()
+     *         var metastore = new Bucket("metastore", BucketArgs.builder()
      *             .bucket(String.format("%s-metastore", prefix))
      *             .forceDestroy(true)
      *             .build());
@@ -14751,8 +16093,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.aws.s3.BucketV2;
-     * import com.pulumi.aws.s3.BucketV2Args;
+     * import com.pulumi.aws.s3.Bucket;
+     * import com.pulumi.aws.s3.BucketArgs;
      * import com.pulumi.databricks.Metastore;
      * import com.pulumi.databricks.MetastoreArgs;
      * import com.pulumi.databricks.DatabricksFunctions;
@@ -14770,7 +16112,7 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var metastore = new BucketV2("metastore", BucketV2Args.builder()
+     *         var metastore = new Bucket("metastore", BucketArgs.builder()
      *             .bucket(String.format("%s-metastore", prefix))
      *             .forceDestroy(true)
      *             .build());
@@ -14820,8 +16162,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.aws.s3.BucketV2;
-     * import com.pulumi.aws.s3.BucketV2Args;
+     * import com.pulumi.aws.s3.Bucket;
+     * import com.pulumi.aws.s3.BucketArgs;
      * import com.pulumi.databricks.Metastore;
      * import com.pulumi.databricks.MetastoreArgs;
      * import com.pulumi.databricks.DatabricksFunctions;
@@ -14839,7 +16181,7 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var metastore = new BucketV2("metastore", BucketV2Args.builder()
+     *         var metastore = new Bucket("metastore", BucketArgs.builder()
      *             .bucket(String.format("%s-metastore", prefix))
      *             .forceDestroy(true)
      *             .build());
@@ -14889,8 +16231,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.aws.s3.BucketV2;
-     * import com.pulumi.aws.s3.BucketV2Args;
+     * import com.pulumi.aws.s3.Bucket;
+     * import com.pulumi.aws.s3.BucketArgs;
      * import com.pulumi.databricks.Metastore;
      * import com.pulumi.databricks.MetastoreArgs;
      * import com.pulumi.databricks.DatabricksFunctions;
@@ -14908,7 +16250,7 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var metastore = new BucketV2("metastore", BucketV2Args.builder()
+     *         var metastore = new Bucket("metastore", BucketArgs.builder()
      *             .bucket(String.format("%s-metastore", prefix))
      *             .forceDestroy(true)
      *             .build());
@@ -14958,8 +16300,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.aws.s3.BucketV2;
-     * import com.pulumi.aws.s3.BucketV2Args;
+     * import com.pulumi.aws.s3.Bucket;
+     * import com.pulumi.aws.s3.BucketArgs;
      * import com.pulumi.databricks.Metastore;
      * import com.pulumi.databricks.MetastoreArgs;
      * import com.pulumi.databricks.DatabricksFunctions;
@@ -14977,7 +16319,7 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var metastore = new BucketV2("metastore", BucketV2Args.builder()
+     *         var metastore = new Bucket("metastore", BucketArgs.builder()
      *             .bucket(String.format("%s-metastore", prefix))
      *             .forceDestroy(true)
      *             .build());
@@ -15027,8 +16369,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.aws.s3.BucketV2;
-     * import com.pulumi.aws.s3.BucketV2Args;
+     * import com.pulumi.aws.s3.Bucket;
+     * import com.pulumi.aws.s3.BucketArgs;
      * import com.pulumi.databricks.Metastore;
      * import com.pulumi.databricks.MetastoreArgs;
      * import com.pulumi.databricks.DatabricksFunctions;
@@ -15046,7 +16388,7 @@ public final class DatabricksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var metastore = new BucketV2("metastore", BucketV2Args.builder()
+     *         var metastore = new Bucket("metastore", BucketArgs.builder()
      *             .bucket(String.format("%s-metastore", prefix))
      *             .forceDestroy(true)
      *             .build());
@@ -19399,39 +20741,87 @@ public final class DatabricksFunctions {
     public static CompletableFuture<GetNotificationDestinationsResult> getNotificationDestinationsPlain(GetNotificationDestinationsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getNotificationDestinations:getNotificationDestinations", TypeShape.of(GetNotificationDestinationsResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
     public static Output<GetOnlineStoreResult> getOnlineStore(GetOnlineStoreArgs args) {
         return getOnlineStore(args, InvokeOptions.Empty);
     }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
     public static CompletableFuture<GetOnlineStoreResult> getOnlineStorePlain(GetOnlineStorePlainArgs args) {
         return getOnlineStorePlain(args, InvokeOptions.Empty);
     }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
     public static Output<GetOnlineStoreResult> getOnlineStore(GetOnlineStoreArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getOnlineStore:getOnlineStore", TypeShape.of(GetOnlineStoreResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
     public static Output<GetOnlineStoreResult> getOnlineStore(GetOnlineStoreArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getOnlineStore:getOnlineStore", TypeShape.of(GetOnlineStoreResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
     public static CompletableFuture<GetOnlineStoreResult> getOnlineStorePlain(GetOnlineStorePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getOnlineStore:getOnlineStore", TypeShape.of(GetOnlineStoreResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
     public static Output<GetOnlineStoresResult> getOnlineStores() {
         return getOnlineStores(GetOnlineStoresArgs.Empty, InvokeOptions.Empty);
     }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
     public static CompletableFuture<GetOnlineStoresResult> getOnlineStoresPlain() {
         return getOnlineStoresPlain(GetOnlineStoresPlainArgs.Empty, InvokeOptions.Empty);
     }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
     public static Output<GetOnlineStoresResult> getOnlineStores(GetOnlineStoresArgs args) {
         return getOnlineStores(args, InvokeOptions.Empty);
     }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
     public static CompletableFuture<GetOnlineStoresResult> getOnlineStoresPlain(GetOnlineStoresPlainArgs args) {
         return getOnlineStoresPlain(args, InvokeOptions.Empty);
     }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
     public static Output<GetOnlineStoresResult> getOnlineStores(GetOnlineStoresArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getOnlineStores:getOnlineStores", TypeShape.of(GetOnlineStoresResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
     public static Output<GetOnlineStoresResult> getOnlineStores(GetOnlineStoresArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getOnlineStores:getOnlineStores", TypeShape.of(GetOnlineStoresResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
     public static CompletableFuture<GetOnlineStoresResult> getOnlineStoresPlain(GetOnlineStoresPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getOnlineStores:getOnlineStores", TypeShape.of(GetOnlineStoresResult.class), args, Utilities.withVersion(options));
     }
@@ -20289,37 +21679,79 @@ public final class DatabricksFunctions {
     public static CompletableFuture<GetPipelinesResult> getPipelinesPlain(GetPipelinesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getPipelines:getPipelines", TypeShape.of(GetPipelinesResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
     public static Output<GetPolicyInfoResult> getPolicyInfo(GetPolicyInfoArgs args) {
         return getPolicyInfo(args, InvokeOptions.Empty);
     }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
     public static CompletableFuture<GetPolicyInfoResult> getPolicyInfoPlain(GetPolicyInfoPlainArgs args) {
         return getPolicyInfoPlain(args, InvokeOptions.Empty);
     }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
     public static Output<GetPolicyInfoResult> getPolicyInfo(GetPolicyInfoArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getPolicyInfo:getPolicyInfo", TypeShape.of(GetPolicyInfoResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
     public static Output<GetPolicyInfoResult> getPolicyInfo(GetPolicyInfoArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getPolicyInfo:getPolicyInfo", TypeShape.of(GetPolicyInfoResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
     public static CompletableFuture<GetPolicyInfoResult> getPolicyInfoPlain(GetPolicyInfoPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getPolicyInfo:getPolicyInfo", TypeShape.of(GetPolicyInfoResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
     public static Output<GetPolicyInfosResult> getPolicyInfos(GetPolicyInfosArgs args) {
         return getPolicyInfos(args, InvokeOptions.Empty);
     }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
     public static CompletableFuture<GetPolicyInfosResult> getPolicyInfosPlain(GetPolicyInfosPlainArgs args) {
         return getPolicyInfosPlain(args, InvokeOptions.Empty);
     }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
     public static Output<GetPolicyInfosResult> getPolicyInfos(GetPolicyInfosArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getPolicyInfos:getPolicyInfos", TypeShape.of(GetPolicyInfosResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
     public static Output<GetPolicyInfosResult> getPolicyInfos(GetPolicyInfosArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getPolicyInfos:getPolicyInfos", TypeShape.of(GetPolicyInfosResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
     public static CompletableFuture<GetPolicyInfosResult> getPolicyInfosPlain(GetPolicyInfosPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getPolicyInfos:getPolicyInfos", TypeShape.of(GetPolicyInfosResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to fetch a quality monitors v2.
      * 
      * &gt; **Note** This data source can only be used with an workspace-level provider!
@@ -20370,6 +21802,8 @@ public final class DatabricksFunctions {
         return getQualityMonitorV2(args, InvokeOptions.Empty);
     }
     /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to fetch a quality monitors v2.
      * 
      * &gt; **Note** This data source can only be used with an workspace-level provider!
@@ -20420,6 +21854,8 @@ public final class DatabricksFunctions {
         return getQualityMonitorV2Plain(args, InvokeOptions.Empty);
     }
     /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to fetch a quality monitors v2.
      * 
      * &gt; **Note** This data source can only be used with an workspace-level provider!
@@ -20470,6 +21906,8 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getQualityMonitorV2:getQualityMonitorV2", TypeShape.of(GetQualityMonitorV2Result.class), args, Utilities.withVersion(options));
     }
     /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to fetch a quality monitors v2.
      * 
      * &gt; **Note** This data source can only be used with an workspace-level provider!
@@ -20520,6 +21958,8 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getQualityMonitorV2:getQualityMonitorV2", TypeShape.of(GetQualityMonitorV2Result.class), args, Utilities.withVersion(options));
     }
     /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to fetch a quality monitors v2.
      * 
      * &gt; **Note** This data source can only be used with an workspace-level provider!
@@ -20570,6 +22010,8 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getQualityMonitorV2:getQualityMonitorV2", TypeShape.of(GetQualityMonitorV2Result.class), args, Utilities.withVersion(options));
     }
     /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to fetch the list of quality monitors v2.
      * 
      * &gt; **Note** This data source can only be used with an workspace-level provider!
@@ -20613,6 +22055,8 @@ public final class DatabricksFunctions {
         return getQualityMonitorsV2(GetQualityMonitorsV2Args.Empty, InvokeOptions.Empty);
     }
     /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to fetch the list of quality monitors v2.
      * 
      * &gt; **Note** This data source can only be used with an workspace-level provider!
@@ -20656,6 +22100,8 @@ public final class DatabricksFunctions {
         return getQualityMonitorsV2Plain(GetQualityMonitorsV2PlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to fetch the list of quality monitors v2.
      * 
      * &gt; **Note** This data source can only be used with an workspace-level provider!
@@ -20699,6 +22145,8 @@ public final class DatabricksFunctions {
         return getQualityMonitorsV2(args, InvokeOptions.Empty);
     }
     /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to fetch the list of quality monitors v2.
      * 
      * &gt; **Note** This data source can only be used with an workspace-level provider!
@@ -20742,6 +22190,8 @@ public final class DatabricksFunctions {
         return getQualityMonitorsV2Plain(args, InvokeOptions.Empty);
     }
     /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to fetch the list of quality monitors v2.
      * 
      * &gt; **Note** This data source can only be used with an workspace-level provider!
@@ -20785,6 +22235,8 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getQualityMonitorsV2:getQualityMonitorsV2", TypeShape.of(GetQualityMonitorsV2Result.class), args, Utilities.withVersion(options));
     }
     /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to fetch the list of quality monitors v2.
      * 
      * &gt; **Note** This data source can only be used with an workspace-level provider!
@@ -20828,6 +22280,8 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getQualityMonitorsV2:getQualityMonitorsV2", TypeShape.of(GetQualityMonitorsV2Result.class), args, Utilities.withVersion(options));
     }
     /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to fetch the list of quality monitors v2.
      * 
      * &gt; **Note** This data source can only be used with an workspace-level provider!
@@ -20869,48 +22323,6 @@ public final class DatabricksFunctions {
      */
     public static CompletableFuture<GetQualityMonitorsV2Result> getQualityMonitorsV2Plain(GetQualityMonitorsV2PlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getQualityMonitorsV2:getQualityMonitorsV2", TypeShape.of(GetQualityMonitorsV2Result.class), args, Utilities.withVersion(options));
-    }
-    public static Output<GetRecipientFederationPoliciesResult> getRecipientFederationPolicies() {
-        return getRecipientFederationPolicies(GetRecipientFederationPoliciesArgs.Empty, InvokeOptions.Empty);
-    }
-    public static CompletableFuture<GetRecipientFederationPoliciesResult> getRecipientFederationPoliciesPlain() {
-        return getRecipientFederationPoliciesPlain(GetRecipientFederationPoliciesPlainArgs.Empty, InvokeOptions.Empty);
-    }
-    public static Output<GetRecipientFederationPoliciesResult> getRecipientFederationPolicies(GetRecipientFederationPoliciesArgs args) {
-        return getRecipientFederationPolicies(args, InvokeOptions.Empty);
-    }
-    public static CompletableFuture<GetRecipientFederationPoliciesResult> getRecipientFederationPoliciesPlain(GetRecipientFederationPoliciesPlainArgs args) {
-        return getRecipientFederationPoliciesPlain(args, InvokeOptions.Empty);
-    }
-    public static Output<GetRecipientFederationPoliciesResult> getRecipientFederationPolicies(GetRecipientFederationPoliciesArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invoke("databricks:index/getRecipientFederationPolicies:getRecipientFederationPolicies", TypeShape.of(GetRecipientFederationPoliciesResult.class), args, Utilities.withVersion(options));
-    }
-    public static Output<GetRecipientFederationPoliciesResult> getRecipientFederationPolicies(GetRecipientFederationPoliciesArgs args, InvokeOutputOptions options) {
-        return Deployment.getInstance().invoke("databricks:index/getRecipientFederationPolicies:getRecipientFederationPolicies", TypeShape.of(GetRecipientFederationPoliciesResult.class), args, Utilities.withVersion(options));
-    }
-    public static CompletableFuture<GetRecipientFederationPoliciesResult> getRecipientFederationPoliciesPlain(GetRecipientFederationPoliciesPlainArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invokeAsync("databricks:index/getRecipientFederationPolicies:getRecipientFederationPolicies", TypeShape.of(GetRecipientFederationPoliciesResult.class), args, Utilities.withVersion(options));
-    }
-    public static Output<GetRecipientFederationPolicyResult> getRecipientFederationPolicy() {
-        return getRecipientFederationPolicy(GetRecipientFederationPolicyArgs.Empty, InvokeOptions.Empty);
-    }
-    public static CompletableFuture<GetRecipientFederationPolicyResult> getRecipientFederationPolicyPlain() {
-        return getRecipientFederationPolicyPlain(GetRecipientFederationPolicyPlainArgs.Empty, InvokeOptions.Empty);
-    }
-    public static Output<GetRecipientFederationPolicyResult> getRecipientFederationPolicy(GetRecipientFederationPolicyArgs args) {
-        return getRecipientFederationPolicy(args, InvokeOptions.Empty);
-    }
-    public static CompletableFuture<GetRecipientFederationPolicyResult> getRecipientFederationPolicyPlain(GetRecipientFederationPolicyPlainArgs args) {
-        return getRecipientFederationPolicyPlain(args, InvokeOptions.Empty);
-    }
-    public static Output<GetRecipientFederationPolicyResult> getRecipientFederationPolicy(GetRecipientFederationPolicyArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invoke("databricks:index/getRecipientFederationPolicy:getRecipientFederationPolicy", TypeShape.of(GetRecipientFederationPolicyResult.class), args, Utilities.withVersion(options));
-    }
-    public static Output<GetRecipientFederationPolicyResult> getRecipientFederationPolicy(GetRecipientFederationPolicyArgs args, InvokeOutputOptions options) {
-        return Deployment.getInstance().invoke("databricks:index/getRecipientFederationPolicy:getRecipientFederationPolicy", TypeShape.of(GetRecipientFederationPolicyResult.class), args, Utilities.withVersion(options));
-    }
-    public static CompletableFuture<GetRecipientFederationPolicyResult> getRecipientFederationPolicyPlain(GetRecipientFederationPolicyPlainArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invokeAsync("databricks:index/getRecipientFederationPolicy:getRecipientFederationPolicy", TypeShape.of(GetRecipientFederationPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
      * This resource allows you to get information about [Model in Unity Catalog](https://docs.databricks.com/en/mlflow/models-in-uc.html) in Databricks.
@@ -21416,6 +22828,97 @@ public final class DatabricksFunctions {
      */
     public static CompletableFuture<GetRegisteredModelVersionsResult> getRegisteredModelVersionsPlain(GetRegisteredModelVersionsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getRegisteredModelVersions:getRegisteredModelVersions", TypeShape.of(GetRegisteredModelVersionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source can be used to get the Request for Access (RFA) access request destinations for a specific securable object.
+     * 
+     * ## Example Usage
+     * 
+     * Referring to RFA access request destinations by securable type and full name:
+     * 
+     */
+    public static Output<GetRfaAccessRequestDestinationsResult> getRfaAccessRequestDestinations() {
+        return getRfaAccessRequestDestinations(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source can be used to get the Request for Access (RFA) access request destinations for a specific securable object.
+     * 
+     * ## Example Usage
+     * 
+     * Referring to RFA access request destinations by securable type and full name:
+     * 
+     */
+    public static CompletableFuture<GetRfaAccessRequestDestinationsResult> getRfaAccessRequestDestinationsPlain() {
+        return getRfaAccessRequestDestinationsPlain(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source can be used to get the Request for Access (RFA) access request destinations for a specific securable object.
+     * 
+     * ## Example Usage
+     * 
+     * Referring to RFA access request destinations by securable type and full name:
+     * 
+     */
+    public static Output<GetRfaAccessRequestDestinationsResult> getRfaAccessRequestDestinations(InvokeArgs args) {
+        return getRfaAccessRequestDestinations(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source can be used to get the Request for Access (RFA) access request destinations for a specific securable object.
+     * 
+     * ## Example Usage
+     * 
+     * Referring to RFA access request destinations by securable type and full name:
+     * 
+     */
+    public static CompletableFuture<GetRfaAccessRequestDestinationsResult> getRfaAccessRequestDestinationsPlain(InvokeArgs args) {
+        return getRfaAccessRequestDestinationsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source can be used to get the Request for Access (RFA) access request destinations for a specific securable object.
+     * 
+     * ## Example Usage
+     * 
+     * Referring to RFA access request destinations by securable type and full name:
+     * 
+     */
+    public static Output<GetRfaAccessRequestDestinationsResult> getRfaAccessRequestDestinations(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getRfaAccessRequestDestinations:getRfaAccessRequestDestinations", TypeShape.of(GetRfaAccessRequestDestinationsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source can be used to get the Request for Access (RFA) access request destinations for a specific securable object.
+     * 
+     * ## Example Usage
+     * 
+     * Referring to RFA access request destinations by securable type and full name:
+     * 
+     */
+    public static Output<GetRfaAccessRequestDestinationsResult> getRfaAccessRequestDestinations(InvokeArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getRfaAccessRequestDestinations:getRfaAccessRequestDestinations", TypeShape.of(GetRfaAccessRequestDestinationsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source can be used to get the Request for Access (RFA) access request destinations for a specific securable object.
+     * 
+     * ## Example Usage
+     * 
+     * Referring to RFA access request destinations by securable type and full name:
+     * 
+     */
+    public static CompletableFuture<GetRfaAccessRequestDestinationsResult> getRfaAccessRequestDestinationsPlain(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getRfaAccessRequestDestinations:getRfaAccessRequestDestinations", TypeShape.of(GetRfaAccessRequestDestinationsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Retrieves details about databricks.Schema that was created by Pulumi or manually.
@@ -22431,6 +23934,8 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getServicePrincipal:getServicePrincipal", TypeShape.of(GetServicePrincipalResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to fetch the list of federation policies for a service principal.
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
@@ -22475,6 +23980,8 @@ public final class DatabricksFunctions {
         return getServicePrincipalFederationPolicies(args, InvokeOptions.Empty);
     }
     /**
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to fetch the list of federation policies for a service principal.
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
@@ -22519,6 +24026,8 @@ public final class DatabricksFunctions {
         return getServicePrincipalFederationPoliciesPlain(args, InvokeOptions.Empty);
     }
     /**
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to fetch the list of federation policies for a service principal.
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
@@ -22563,6 +24072,8 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getServicePrincipalFederationPolicies:getServicePrincipalFederationPolicies", TypeShape.of(GetServicePrincipalFederationPoliciesResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to fetch the list of federation policies for a service principal.
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
@@ -22607,6 +24118,8 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getServicePrincipalFederationPolicies:getServicePrincipalFederationPolicies", TypeShape.of(GetServicePrincipalFederationPoliciesResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to fetch the list of federation policies for a service principal.
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
@@ -22651,32 +24164,8 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getServicePrincipalFederationPolicies:getServicePrincipalFederationPolicies", TypeShape.of(GetServicePrincipalFederationPoliciesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source can be used to get a single service principal federation policy.
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
-     * &gt; **Note** This data source can only be used with an account-level provider!
-     * 
-     * ## Example Usage
-     * 
-     * Referring to a service principal federation policy by id:
-     * 
-     */
-    public static Output<GetServicePrincipalFederationPolicyResult> getServicePrincipalFederationPolicy() {
-        return getServicePrincipalFederationPolicy(GetServicePrincipalFederationPolicyArgs.Empty, InvokeOptions.Empty);
-    }
-    /**
-     * This data source can be used to get a single service principal federation policy.
-     * 
-     * &gt; **Note** This data source can only be used with an account-level provider!
-     * 
-     * ## Example Usage
-     * 
-     * Referring to a service principal federation policy by id:
-     * 
-     */
-    public static CompletableFuture<GetServicePrincipalFederationPolicyResult> getServicePrincipalFederationPolicyPlain() {
-        return getServicePrincipalFederationPolicyPlain(GetServicePrincipalFederationPolicyPlainArgs.Empty, InvokeOptions.Empty);
-    }
-    /**
      * This data source can be used to get a single service principal federation policy.
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
@@ -22690,6 +24179,8 @@ public final class DatabricksFunctions {
         return getServicePrincipalFederationPolicy(args, InvokeOptions.Empty);
     }
     /**
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to get a single service principal federation policy.
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
@@ -22703,6 +24194,8 @@ public final class DatabricksFunctions {
         return getServicePrincipalFederationPolicyPlain(args, InvokeOptions.Empty);
     }
     /**
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to get a single service principal federation policy.
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
@@ -22716,6 +24209,8 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getServicePrincipalFederationPolicy:getServicePrincipalFederationPolicy", TypeShape.of(GetServicePrincipalFederationPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to get a single service principal federation policy.
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
@@ -22729,6 +24224,8 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getServicePrincipalFederationPolicy:getServicePrincipalFederationPolicy", TypeShape.of(GetServicePrincipalFederationPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to get a single service principal federation policy.
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
@@ -26882,108 +28379,552 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getTables:getTables", TypeShape.of(GetTablesResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to list all tag policies in the account.
      * 
-     * &gt; **Note** This resource can only be used with an account-level provider!
+     * &gt; **Note** This resource can only be used with a workspace-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Getting a list of all tag policies:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetTagPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getTagPolicies(GetTagPoliciesArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("allTagPolicies", all.tagPolicies());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetTagPoliciesResult> getTagPolicies() {
         return getTagPolicies(GetTagPoliciesArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to list all tag policies in the account.
      * 
-     * &gt; **Note** This resource can only be used with an account-level provider!
+     * &gt; **Note** This resource can only be used with a workspace-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Getting a list of all tag policies:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetTagPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getTagPolicies(GetTagPoliciesArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("allTagPolicies", all.tagPolicies());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetTagPoliciesResult> getTagPoliciesPlain() {
         return getTagPoliciesPlain(GetTagPoliciesPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to list all tag policies in the account.
      * 
-     * &gt; **Note** This resource can only be used with an account-level provider!
+     * &gt; **Note** This resource can only be used with a workspace-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Getting a list of all tag policies:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetTagPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getTagPolicies(GetTagPoliciesArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("allTagPolicies", all.tagPolicies());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetTagPoliciesResult> getTagPolicies(GetTagPoliciesArgs args) {
         return getTagPolicies(args, InvokeOptions.Empty);
     }
     /**
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to list all tag policies in the account.
      * 
-     * &gt; **Note** This resource can only be used with an account-level provider!
+     * &gt; **Note** This resource can only be used with a workspace-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Getting a list of all tag policies:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetTagPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getTagPolicies(GetTagPoliciesArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("allTagPolicies", all.tagPolicies());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetTagPoliciesResult> getTagPoliciesPlain(GetTagPoliciesPlainArgs args) {
         return getTagPoliciesPlain(args, InvokeOptions.Empty);
     }
     /**
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to list all tag policies in the account.
      * 
-     * &gt; **Note** This resource can only be used with an account-level provider!
+     * &gt; **Note** This resource can only be used with a workspace-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Getting a list of all tag policies:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetTagPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getTagPolicies(GetTagPoliciesArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("allTagPolicies", all.tagPolicies());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetTagPoliciesResult> getTagPolicies(GetTagPoliciesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getTagPolicies:getTagPolicies", TypeShape.of(GetTagPoliciesResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to list all tag policies in the account.
      * 
-     * &gt; **Note** This resource can only be used with an account-level provider!
+     * &gt; **Note** This resource can only be used with a workspace-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Getting a list of all tag policies:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetTagPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getTagPolicies(GetTagPoliciesArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("allTagPolicies", all.tagPolicies());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetTagPoliciesResult> getTagPolicies(GetTagPoliciesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getTagPolicies:getTagPolicies", TypeShape.of(GetTagPoliciesResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to list all tag policies in the account.
      * 
-     * &gt; **Note** This resource can only be used with an account-level provider!
+     * &gt; **Note** This resource can only be used with a workspace-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Getting a list of all tag policies:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetTagPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getTagPolicies(GetTagPoliciesArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("allTagPolicies", all.tagPolicies());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetTagPoliciesResult> getTagPoliciesPlain(GetTagPoliciesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getTagPolicies:getTagPolicies", TypeShape.of(GetTagPoliciesResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to get a single tag policy by its tag key.
      * 
-     * &gt; **Note** This resource can only be used with an account-level provider!
+     * &gt; **Note** This resource can only be used with a workspace-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Referring to a tag policy by its tag key:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetTagPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleTagPolicy = DatabricksFunctions.getTagPolicy(GetTagPolicyArgs.builder()
+     *             .tagKey("example_tag_key")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetTagPolicyResult> getTagPolicy(GetTagPolicyArgs args) {
         return getTagPolicy(args, InvokeOptions.Empty);
     }
     /**
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to get a single tag policy by its tag key.
      * 
-     * &gt; **Note** This resource can only be used with an account-level provider!
+     * &gt; **Note** This resource can only be used with a workspace-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Referring to a tag policy by its tag key:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetTagPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleTagPolicy = DatabricksFunctions.getTagPolicy(GetTagPolicyArgs.builder()
+     *             .tagKey("example_tag_key")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetTagPolicyResult> getTagPolicyPlain(GetTagPolicyPlainArgs args) {
         return getTagPolicyPlain(args, InvokeOptions.Empty);
     }
     /**
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to get a single tag policy by its tag key.
      * 
-     * &gt; **Note** This resource can only be used with an account-level provider!
+     * &gt; **Note** This resource can only be used with a workspace-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Referring to a tag policy by its tag key:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetTagPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleTagPolicy = DatabricksFunctions.getTagPolicy(GetTagPolicyArgs.builder()
+     *             .tagKey("example_tag_key")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetTagPolicyResult> getTagPolicy(GetTagPolicyArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getTagPolicy:getTagPolicy", TypeShape.of(GetTagPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to get a single tag policy by its tag key.
      * 
-     * &gt; **Note** This resource can only be used with an account-level provider!
+     * &gt; **Note** This resource can only be used with a workspace-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Referring to a tag policy by its tag key:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetTagPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleTagPolicy = DatabricksFunctions.getTagPolicy(GetTagPolicyArgs.builder()
+     *             .tagKey("example_tag_key")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetTagPolicyResult> getTagPolicy(GetTagPolicyArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getTagPolicy:getTagPolicy", TypeShape.of(GetTagPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to get a single tag policy by its tag key.
      * 
-     * &gt; **Note** This resource can only be used with an account-level provider!
+     * &gt; **Note** This resource can only be used with a workspace-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Referring to a tag policy by its tag key:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetTagPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleTagPolicy = DatabricksFunctions.getTagPolicy(GetTagPolicyArgs.builder()
+     *             .tagKey("example_tag_key")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetTagPolicyResult> getTagPolicyPlain(GetTagPolicyPlainArgs args, InvokeOptions options) {
@@ -28420,94 +30361,8 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getVolumes:getVolumes", TypeShape.of(GetVolumesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source can be used to get a single workspace network option.
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
-     * &gt; **Note** This data source can only be used with an account-level provider!
-     * 
-     * ## Example Usage
-     * 
-     * Referring to a network policy by id:
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.databricks.DatabricksFunctions;
-     * import com.pulumi.databricks.inputs.GetWorkspaceNetworkOptionArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var this = DatabricksFunctions.getWorkspaceNetworkOption(GetWorkspaceNetworkOptionArgs.builder()
-     *             .workspaceId("9999999999999999")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
-    public static Output<GetWorkspaceNetworkOptionResult> getWorkspaceNetworkOption() {
-        return getWorkspaceNetworkOption(GetWorkspaceNetworkOptionArgs.Empty, InvokeOptions.Empty);
-    }
-    /**
-     * This data source can be used to get a single workspace network option.
-     * 
-     * &gt; **Note** This data source can only be used with an account-level provider!
-     * 
-     * ## Example Usage
-     * 
-     * Referring to a network policy by id:
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.databricks.DatabricksFunctions;
-     * import com.pulumi.databricks.inputs.GetWorkspaceNetworkOptionArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var this = DatabricksFunctions.getWorkspaceNetworkOption(GetWorkspaceNetworkOptionArgs.builder()
-     *             .workspaceId("9999999999999999")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
-    public static CompletableFuture<GetWorkspaceNetworkOptionResult> getWorkspaceNetworkOptionPlain() {
-        return getWorkspaceNetworkOptionPlain(GetWorkspaceNetworkOptionPlainArgs.Empty, InvokeOptions.Empty);
-    }
-    /**
      * This data source can be used to get a single workspace network option.
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
@@ -28552,6 +30407,8 @@ public final class DatabricksFunctions {
         return getWorkspaceNetworkOption(args, InvokeOptions.Empty);
     }
     /**
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to get a single workspace network option.
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
@@ -28596,6 +30453,8 @@ public final class DatabricksFunctions {
         return getWorkspaceNetworkOptionPlain(args, InvokeOptions.Empty);
     }
     /**
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to get a single workspace network option.
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
@@ -28640,6 +30499,8 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getWorkspaceNetworkOption:getWorkspaceNetworkOption", TypeShape.of(GetWorkspaceNetworkOptionResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to get a single workspace network option.
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
@@ -28684,6 +30545,8 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getWorkspaceNetworkOption:getWorkspaceNetworkOption", TypeShape.of(GetWorkspaceNetworkOptionResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
      * This data source can be used to get a single workspace network option.
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
@@ -28727,24 +30590,68 @@ public final class DatabricksFunctions {
     public static CompletableFuture<GetWorkspaceNetworkOptionResult> getWorkspaceNetworkOptionPlain(GetWorkspaceNetworkOptionPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getWorkspaceNetworkOption:getWorkspaceNetworkOption", TypeShape.of(GetWorkspaceNetworkOptionResult.class), args, Utilities.withVersion(options));
     }
-    public static Output<GetWorkspaceSettingV2Result> getWorkspaceSettingV2() {
-        return getWorkspaceSettingV2(GetWorkspaceSettingV2Args.Empty, InvokeOptions.Empty);
-    }
-    public static CompletableFuture<GetWorkspaceSettingV2Result> getWorkspaceSettingV2Plain() {
-        return getWorkspaceSettingV2Plain(GetWorkspaceSettingV2PlainArgs.Empty, InvokeOptions.Empty);
-    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source can be used to get a single account setting.
+     * 
+     * ## Example Usage
+     * 
+     * Referring to a setting by id
+     * 
+     */
     public static Output<GetWorkspaceSettingV2Result> getWorkspaceSettingV2(GetWorkspaceSettingV2Args args) {
         return getWorkspaceSettingV2(args, InvokeOptions.Empty);
     }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source can be used to get a single account setting.
+     * 
+     * ## Example Usage
+     * 
+     * Referring to a setting by id
+     * 
+     */
     public static CompletableFuture<GetWorkspaceSettingV2Result> getWorkspaceSettingV2Plain(GetWorkspaceSettingV2PlainArgs args) {
         return getWorkspaceSettingV2Plain(args, InvokeOptions.Empty);
     }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source can be used to get a single account setting.
+     * 
+     * ## Example Usage
+     * 
+     * Referring to a setting by id
+     * 
+     */
     public static Output<GetWorkspaceSettingV2Result> getWorkspaceSettingV2(GetWorkspaceSettingV2Args args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getWorkspaceSettingV2:getWorkspaceSettingV2", TypeShape.of(GetWorkspaceSettingV2Result.class), args, Utilities.withVersion(options));
     }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source can be used to get a single account setting.
+     * 
+     * ## Example Usage
+     * 
+     * Referring to a setting by id
+     * 
+     */
     public static Output<GetWorkspaceSettingV2Result> getWorkspaceSettingV2(GetWorkspaceSettingV2Args args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getWorkspaceSettingV2:getWorkspaceSettingV2", TypeShape.of(GetWorkspaceSettingV2Result.class), args, Utilities.withVersion(options));
     }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source can be used to get a single account setting.
+     * 
+     * ## Example Usage
+     * 
+     * Referring to a setting by id
+     * 
+     */
     public static CompletableFuture<GetWorkspaceSettingV2Result> getWorkspaceSettingV2Plain(GetWorkspaceSettingV2PlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getWorkspaceSettingV2:getWorkspaceSettingV2", TypeShape.of(GetWorkspaceSettingV2Result.class), args, Utilities.withVersion(options));
     }

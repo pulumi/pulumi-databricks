@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.AlertV2EvaluationNotification;
 import com.pulumi.databricks.outputs.AlertV2EvaluationSource;
 import com.pulumi.databricks.outputs.AlertV2EvaluationThreshold;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -18,9 +19,9 @@ public final class AlertV2Evaluation {
      * @return Operator used for comparison in alert evaluation. Possible values are: `EQUAL`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `IS_NOT_NULL`, `IS_NULL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`
      * 
      */
-    private @Nullable String comparisonOperator;
+    private String comparisonOperator;
     /**
-     * @return Alert state if result is empty. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
+     * @return Alert state if result is empty. Please avoid setting this field to be `UNKNOWN` because `UNKNOWN` state is planned to be deprecated. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
      * 
      */
     private @Nullable String emptyResultState;
@@ -38,7 +39,7 @@ public final class AlertV2Evaluation {
      * @return Source column from result to use to evaluate alert
      * 
      */
-    private @Nullable AlertV2EvaluationSource source;
+    private AlertV2EvaluationSource source;
     /**
      * @return (string) - Latest state of alert evaluation. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
      * 
@@ -55,11 +56,11 @@ public final class AlertV2Evaluation {
      * @return Operator used for comparison in alert evaluation. Possible values are: `EQUAL`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `IS_NOT_NULL`, `IS_NULL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`
      * 
      */
-    public Optional<String> comparisonOperator() {
-        return Optional.ofNullable(this.comparisonOperator);
+    public String comparisonOperator() {
+        return this.comparisonOperator;
     }
     /**
-     * @return Alert state if result is empty. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
+     * @return Alert state if result is empty. Please avoid setting this field to be `UNKNOWN` because `UNKNOWN` state is planned to be deprecated. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
      * 
      */
     public Optional<String> emptyResultState() {
@@ -83,8 +84,8 @@ public final class AlertV2Evaluation {
      * @return Source column from result to use to evaluate alert
      * 
      */
-    public Optional<AlertV2EvaluationSource> source() {
-        return Optional.ofNullable(this.source);
+    public AlertV2EvaluationSource source() {
+        return this.source;
     }
     /**
      * @return (string) - Latest state of alert evaluation. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
@@ -110,11 +111,11 @@ public final class AlertV2Evaluation {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String comparisonOperator;
+        private String comparisonOperator;
         private @Nullable String emptyResultState;
         private @Nullable String lastEvaluatedAt;
         private @Nullable AlertV2EvaluationNotification notification;
-        private @Nullable AlertV2EvaluationSource source;
+        private AlertV2EvaluationSource source;
         private @Nullable String state;
         private @Nullable AlertV2EvaluationThreshold threshold;
         public Builder() {}
@@ -130,8 +131,10 @@ public final class AlertV2Evaluation {
         }
 
         @CustomType.Setter
-        public Builder comparisonOperator(@Nullable String comparisonOperator) {
-
+        public Builder comparisonOperator(String comparisonOperator) {
+            if (comparisonOperator == null) {
+              throw new MissingRequiredPropertyException("AlertV2Evaluation", "comparisonOperator");
+            }
             this.comparisonOperator = comparisonOperator;
             return this;
         }
@@ -154,8 +157,10 @@ public final class AlertV2Evaluation {
             return this;
         }
         @CustomType.Setter
-        public Builder source(@Nullable AlertV2EvaluationSource source) {
-
+        public Builder source(AlertV2EvaluationSource source) {
+            if (source == null) {
+              throw new MissingRequiredPropertyException("AlertV2Evaluation", "source");
+            }
             this.source = source;
             return this;
         }

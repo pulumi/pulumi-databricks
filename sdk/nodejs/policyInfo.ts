@@ -7,6 +7,8 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
  * ## Import
  *
  * As of Pulumi v1.5, resources can be imported through configuration.
@@ -24,7 +26,7 @@ import * as utilities from "./utilities";
  * If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
  *
  * ```sh
- * $ pulumi import databricks:index/policyInfo:PolicyInfo databricks_policy_info "on_securable_type,on_securable_fullname,name"
+ * $ pulumi import databricks:index/policyInfo:PolicyInfo this "on_securable_type,on_securable_fullname,name"
  * ```
  */
 export class PolicyInfo extends pulumi.CustomResource {
@@ -132,10 +134,6 @@ export class PolicyInfo extends pulumi.CustomResource {
      * Optional condition when the policy should take effect
      */
     declare public readonly whenCondition: pulumi.Output<string | undefined>;
-    /**
-     * Workspace ID of the resource
-     */
-    declare public readonly workspaceId: pulumi.Output<string | undefined>;
 
     /**
      * Create a PolicyInfo resource with the given unique name, arguments, and options.
@@ -166,7 +164,6 @@ export class PolicyInfo extends pulumi.CustomResource {
             resourceInputs["updatedAt"] = state?.updatedAt;
             resourceInputs["updatedBy"] = state?.updatedBy;
             resourceInputs["whenCondition"] = state?.whenCondition;
-            resourceInputs["workspaceId"] = state?.workspaceId;
         } else {
             const args = argsOrState as PolicyInfoArgs | undefined;
             if (args?.forSecurableType === undefined && !opts.urn) {
@@ -190,7 +187,6 @@ export class PolicyInfo extends pulumi.CustomResource {
             resourceInputs["rowFilter"] = args?.rowFilter;
             resourceInputs["toPrincipals"] = args?.toPrincipals;
             resourceInputs["whenCondition"] = args?.whenCondition;
-            resourceInputs["workspaceId"] = args?.workspaceId;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["createdBy"] = undefined /*out*/;
             resourceInputs["updatedAt"] = undefined /*out*/;
@@ -282,10 +278,6 @@ export interface PolicyInfoState {
      * Optional condition when the policy should take effect
      */
     whenCondition?: pulumi.Input<string>;
-    /**
-     * Workspace ID of the resource
-     */
-    workspaceId?: pulumi.Input<string>;
 }
 
 /**
@@ -353,8 +345,4 @@ export interface PolicyInfoArgs {
      * Optional condition when the policy should take effect
      */
     whenCondition?: pulumi.Input<string>;
-    /**
-     * Workspace ID of the resource
-     */
-    workspaceId?: pulumi.Input<string>;
 }

@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -46,18 +47,18 @@ public final class GetEntityTagAssignmentsPlainArgs extends com.pulumi.resources
     }
 
     /**
-     * Workspace ID of the resource
+     * Optional. Maximum number of tag assignments to return in a single page
      * 
      */
-    @Import(name="workspaceId")
-    private @Nullable String workspaceId;
+    @Import(name="maxResults")
+    private @Nullable Integer maxResults;
 
     /**
-     * @return Workspace ID of the resource
+     * @return Optional. Maximum number of tag assignments to return in a single page
      * 
      */
-    public Optional<String> workspaceId() {
-        return Optional.ofNullable(this.workspaceId);
+    public Optional<Integer> maxResults() {
+        return Optional.ofNullable(this.maxResults);
     }
 
     private GetEntityTagAssignmentsPlainArgs() {}
@@ -65,7 +66,7 @@ public final class GetEntityTagAssignmentsPlainArgs extends com.pulumi.resources
     private GetEntityTagAssignmentsPlainArgs(GetEntityTagAssignmentsPlainArgs $) {
         this.entityName = $.entityName;
         this.entityType = $.entityType;
-        this.workspaceId = $.workspaceId;
+        this.maxResults = $.maxResults;
     }
 
     public static Builder builder() {
@@ -109,13 +110,13 @@ public final class GetEntityTagAssignmentsPlainArgs extends com.pulumi.resources
         }
 
         /**
-         * @param workspaceId Workspace ID of the resource
+         * @param maxResults Optional. Maximum number of tag assignments to return in a single page
          * 
          * @return builder
          * 
          */
-        public Builder workspaceId(@Nullable String workspaceId) {
-            $.workspaceId = workspaceId;
+        public Builder maxResults(@Nullable Integer maxResults) {
+            $.maxResults = maxResults;
             return this;
         }
 

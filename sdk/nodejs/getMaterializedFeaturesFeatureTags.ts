@@ -6,11 +6,15 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-export function getMaterializedFeaturesFeatureTags(args?: GetMaterializedFeaturesFeatureTagsArgs, opts?: pulumi.InvokeOptions): Promise<GetMaterializedFeaturesFeatureTagsResult> {
-    args = args || {};
+/**
+ * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ */
+export function getMaterializedFeaturesFeatureTags(args: GetMaterializedFeaturesFeatureTagsArgs, opts?: pulumi.InvokeOptions): Promise<GetMaterializedFeaturesFeatureTagsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getMaterializedFeaturesFeatureTags:getMaterializedFeaturesFeatureTags", {
-        "workspaceId": args.workspaceId,
+        "featureName": args.featureName,
+        "pageSize": args.pageSize,
+        "tableName": args.tableName,
     }, opts);
 }
 
@@ -18,28 +22,36 @@ export function getMaterializedFeaturesFeatureTags(args?: GetMaterializedFeature
  * A collection of arguments for invoking getMaterializedFeaturesFeatureTags.
  */
 export interface GetMaterializedFeaturesFeatureTagsArgs {
+    featureName: string;
     /**
-     * Workspace ID of the resource
+     * The maximum number of results to return
      */
-    workspaceId?: string;
+    pageSize?: number;
+    tableName: string;
 }
 
 /**
  * A collection of values returned by getMaterializedFeaturesFeatureTags.
  */
 export interface GetMaterializedFeaturesFeatureTagsResult {
+    readonly featureName: string;
     readonly featureTags: outputs.GetMaterializedFeaturesFeatureTagsFeatureTag[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    readonly workspaceId?: string;
+    readonly pageSize?: number;
+    readonly tableName: string;
 }
-export function getMaterializedFeaturesFeatureTagsOutput(args?: GetMaterializedFeaturesFeatureTagsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMaterializedFeaturesFeatureTagsResult> {
-    args = args || {};
+/**
+ * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ */
+export function getMaterializedFeaturesFeatureTagsOutput(args: GetMaterializedFeaturesFeatureTagsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMaterializedFeaturesFeatureTagsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getMaterializedFeaturesFeatureTags:getMaterializedFeaturesFeatureTags", {
-        "workspaceId": args.workspaceId,
+        "featureName": args.featureName,
+        "pageSize": args.pageSize,
+        "tableName": args.tableName,
     }, opts);
 }
 
@@ -47,8 +59,10 @@ export function getMaterializedFeaturesFeatureTagsOutput(args?: GetMaterializedF
  * A collection of arguments for invoking getMaterializedFeaturesFeatureTags.
  */
 export interface GetMaterializedFeaturesFeatureTagsOutputArgs {
+    featureName: pulumi.Input<string>;
     /**
-     * Workspace ID of the resource
+     * The maximum number of results to return
      */
-    workspaceId?: pulumi.Input<string>;
+    pageSize?: pulumi.Input<number>;
+    tableName: pulumi.Input<string>;
 }

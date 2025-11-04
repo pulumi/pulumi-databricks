@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"errors"
 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -81,33 +80,35 @@ import (
 type RegisteredModel struct {
 	pulumi.CustomResourceState
 
+	Aliases    RegisteredModelAliasArrayOutput `pulumi:"aliases"`
+	BrowseOnly pulumi.BoolPtrOutput            `pulumi:"browseOnly"`
 	// The name of the catalog where the schema and the registered model reside. *Change of this parameter forces recreation of the resource.*
-	CatalogName pulumi.StringOutput `pulumi:"catalogName"`
+	CatalogName pulumi.StringPtrOutput `pulumi:"catalogName"`
 	// The comment attached to the registered model.
-	Comment pulumi.StringPtrOutput `pulumi:"comment"`
+	Comment     pulumi.StringPtrOutput `pulumi:"comment"`
+	CreatedAt   pulumi.IntOutput       `pulumi:"createdAt"`
+	CreatedBy   pulumi.StringOutput    `pulumi:"createdBy"`
+	FullName    pulumi.StringOutput    `pulumi:"fullName"`
+	MetastoreId pulumi.StringOutput    `pulumi:"metastoreId"`
 	// The name of the registered model.  *Change of this parameter forces recreation of the resource.*
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Name of the registered model owner.
 	Owner pulumi.StringOutput `pulumi:"owner"`
 	// The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*
-	SchemaName pulumi.StringOutput `pulumi:"schemaName"`
+	SchemaName pulumi.StringPtrOutput `pulumi:"schemaName"`
 	// The storage location under which model version data files are stored. *Change of this parameter forces recreation of the resource.*
 	StorageLocation pulumi.StringOutput `pulumi:"storageLocation"`
+	UpdatedAt       pulumi.IntOutput    `pulumi:"updatedAt"`
+	UpdatedBy       pulumi.StringOutput `pulumi:"updatedBy"`
 }
 
 // NewRegisteredModel registers a new resource with the given unique name, arguments, and options.
 func NewRegisteredModel(ctx *pulumi.Context,
 	name string, args *RegisteredModelArgs, opts ...pulumi.ResourceOption) (*RegisteredModel, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &RegisteredModelArgs{}
 	}
 
-	if args.CatalogName == nil {
-		return nil, errors.New("invalid value for required argument 'CatalogName'")
-	}
-	if args.SchemaName == nil {
-		return nil, errors.New("invalid value for required argument 'SchemaName'")
-	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource RegisteredModel
 	err := ctx.RegisterResource("databricks:index/registeredModel:RegisteredModel", name, args, &resource, opts...)
@@ -131,10 +132,16 @@ func GetRegisteredModel(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering RegisteredModel resources.
 type registeredModelState struct {
+	Aliases    []RegisteredModelAlias `pulumi:"aliases"`
+	BrowseOnly *bool                  `pulumi:"browseOnly"`
 	// The name of the catalog where the schema and the registered model reside. *Change of this parameter forces recreation of the resource.*
 	CatalogName *string `pulumi:"catalogName"`
 	// The comment attached to the registered model.
-	Comment *string `pulumi:"comment"`
+	Comment     *string `pulumi:"comment"`
+	CreatedAt   *int    `pulumi:"createdAt"`
+	CreatedBy   *string `pulumi:"createdBy"`
+	FullName    *string `pulumi:"fullName"`
+	MetastoreId *string `pulumi:"metastoreId"`
 	// The name of the registered model.  *Change of this parameter forces recreation of the resource.*
 	Name *string `pulumi:"name"`
 	// Name of the registered model owner.
@@ -143,13 +150,21 @@ type registeredModelState struct {
 	SchemaName *string `pulumi:"schemaName"`
 	// The storage location under which model version data files are stored. *Change of this parameter forces recreation of the resource.*
 	StorageLocation *string `pulumi:"storageLocation"`
+	UpdatedAt       *int    `pulumi:"updatedAt"`
+	UpdatedBy       *string `pulumi:"updatedBy"`
 }
 
 type RegisteredModelState struct {
+	Aliases    RegisteredModelAliasArrayInput
+	BrowseOnly pulumi.BoolPtrInput
 	// The name of the catalog where the schema and the registered model reside. *Change of this parameter forces recreation of the resource.*
 	CatalogName pulumi.StringPtrInput
 	// The comment attached to the registered model.
-	Comment pulumi.StringPtrInput
+	Comment     pulumi.StringPtrInput
+	CreatedAt   pulumi.IntPtrInput
+	CreatedBy   pulumi.StringPtrInput
+	FullName    pulumi.StringPtrInput
+	MetastoreId pulumi.StringPtrInput
 	// The name of the registered model.  *Change of this parameter forces recreation of the resource.*
 	Name pulumi.StringPtrInput
 	// Name of the registered model owner.
@@ -158,6 +173,8 @@ type RegisteredModelState struct {
 	SchemaName pulumi.StringPtrInput
 	// The storage location under which model version data files are stored. *Change of this parameter forces recreation of the resource.*
 	StorageLocation pulumi.StringPtrInput
+	UpdatedAt       pulumi.IntPtrInput
+	UpdatedBy       pulumi.StringPtrInput
 }
 
 func (RegisteredModelState) ElementType() reflect.Type {
@@ -165,34 +182,50 @@ func (RegisteredModelState) ElementType() reflect.Type {
 }
 
 type registeredModelArgs struct {
+	Aliases    []RegisteredModelAlias `pulumi:"aliases"`
+	BrowseOnly *bool                  `pulumi:"browseOnly"`
 	// The name of the catalog where the schema and the registered model reside. *Change of this parameter forces recreation of the resource.*
-	CatalogName string `pulumi:"catalogName"`
+	CatalogName *string `pulumi:"catalogName"`
 	// The comment attached to the registered model.
-	Comment *string `pulumi:"comment"`
+	Comment     *string `pulumi:"comment"`
+	CreatedAt   *int    `pulumi:"createdAt"`
+	CreatedBy   *string `pulumi:"createdBy"`
+	FullName    *string `pulumi:"fullName"`
+	MetastoreId *string `pulumi:"metastoreId"`
 	// The name of the registered model.  *Change of this parameter forces recreation of the resource.*
 	Name *string `pulumi:"name"`
 	// Name of the registered model owner.
 	Owner *string `pulumi:"owner"`
 	// The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*
-	SchemaName string `pulumi:"schemaName"`
+	SchemaName *string `pulumi:"schemaName"`
 	// The storage location under which model version data files are stored. *Change of this parameter forces recreation of the resource.*
 	StorageLocation *string `pulumi:"storageLocation"`
+	UpdatedAt       *int    `pulumi:"updatedAt"`
+	UpdatedBy       *string `pulumi:"updatedBy"`
 }
 
 // The set of arguments for constructing a RegisteredModel resource.
 type RegisteredModelArgs struct {
+	Aliases    RegisteredModelAliasArrayInput
+	BrowseOnly pulumi.BoolPtrInput
 	// The name of the catalog where the schema and the registered model reside. *Change of this parameter forces recreation of the resource.*
-	CatalogName pulumi.StringInput
+	CatalogName pulumi.StringPtrInput
 	// The comment attached to the registered model.
-	Comment pulumi.StringPtrInput
+	Comment     pulumi.StringPtrInput
+	CreatedAt   pulumi.IntPtrInput
+	CreatedBy   pulumi.StringPtrInput
+	FullName    pulumi.StringPtrInput
+	MetastoreId pulumi.StringPtrInput
 	// The name of the registered model.  *Change of this parameter forces recreation of the resource.*
 	Name pulumi.StringPtrInput
 	// Name of the registered model owner.
 	Owner pulumi.StringPtrInput
 	// The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*
-	SchemaName pulumi.StringInput
+	SchemaName pulumi.StringPtrInput
 	// The storage location under which model version data files are stored. *Change of this parameter forces recreation of the resource.*
 	StorageLocation pulumi.StringPtrInput
+	UpdatedAt       pulumi.IntPtrInput
+	UpdatedBy       pulumi.StringPtrInput
 }
 
 func (RegisteredModelArgs) ElementType() reflect.Type {
@@ -282,14 +315,38 @@ func (o RegisteredModelOutput) ToRegisteredModelOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o RegisteredModelOutput) Aliases() RegisteredModelAliasArrayOutput {
+	return o.ApplyT(func(v *RegisteredModel) RegisteredModelAliasArrayOutput { return v.Aliases }).(RegisteredModelAliasArrayOutput)
+}
+
+func (o RegisteredModelOutput) BrowseOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RegisteredModel) pulumi.BoolPtrOutput { return v.BrowseOnly }).(pulumi.BoolPtrOutput)
+}
+
 // The name of the catalog where the schema and the registered model reside. *Change of this parameter forces recreation of the resource.*
-func (o RegisteredModelOutput) CatalogName() pulumi.StringOutput {
-	return o.ApplyT(func(v *RegisteredModel) pulumi.StringOutput { return v.CatalogName }).(pulumi.StringOutput)
+func (o RegisteredModelOutput) CatalogName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegisteredModel) pulumi.StringPtrOutput { return v.CatalogName }).(pulumi.StringPtrOutput)
 }
 
 // The comment attached to the registered model.
 func (o RegisteredModelOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegisteredModel) pulumi.StringPtrOutput { return v.Comment }).(pulumi.StringPtrOutput)
+}
+
+func (o RegisteredModelOutput) CreatedAt() pulumi.IntOutput {
+	return o.ApplyT(func(v *RegisteredModel) pulumi.IntOutput { return v.CreatedAt }).(pulumi.IntOutput)
+}
+
+func (o RegisteredModelOutput) CreatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegisteredModel) pulumi.StringOutput { return v.CreatedBy }).(pulumi.StringOutput)
+}
+
+func (o RegisteredModelOutput) FullName() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegisteredModel) pulumi.StringOutput { return v.FullName }).(pulumi.StringOutput)
+}
+
+func (o RegisteredModelOutput) MetastoreId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegisteredModel) pulumi.StringOutput { return v.MetastoreId }).(pulumi.StringOutput)
 }
 
 // The name of the registered model.  *Change of this parameter forces recreation of the resource.*
@@ -303,13 +360,21 @@ func (o RegisteredModelOutput) Owner() pulumi.StringOutput {
 }
 
 // The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*
-func (o RegisteredModelOutput) SchemaName() pulumi.StringOutput {
-	return o.ApplyT(func(v *RegisteredModel) pulumi.StringOutput { return v.SchemaName }).(pulumi.StringOutput)
+func (o RegisteredModelOutput) SchemaName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegisteredModel) pulumi.StringPtrOutput { return v.SchemaName }).(pulumi.StringPtrOutput)
 }
 
 // The storage location under which model version data files are stored. *Change of this parameter forces recreation of the resource.*
 func (o RegisteredModelOutput) StorageLocation() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegisteredModel) pulumi.StringOutput { return v.StorageLocation }).(pulumi.StringOutput)
+}
+
+func (o RegisteredModelOutput) UpdatedAt() pulumi.IntOutput {
+	return o.ApplyT(func(v *RegisteredModel) pulumi.IntOutput { return v.UpdatedAt }).(pulumi.IntOutput)
+}
+
+func (o RegisteredModelOutput) UpdatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegisteredModel) pulumi.StringOutput { return v.UpdatedBy }).(pulumi.StringOutput)
 }
 
 type RegisteredModelArrayOutput struct{ *pulumi.OutputState }

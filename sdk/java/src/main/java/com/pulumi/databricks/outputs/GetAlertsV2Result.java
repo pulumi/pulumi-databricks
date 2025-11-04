@@ -4,227 +4,38 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.databricks.outputs.GetAlertsV2ResultEffectiveRunAs;
-import com.pulumi.databricks.outputs.GetAlertsV2ResultEvaluation;
-import com.pulumi.databricks.outputs.GetAlertsV2ResultRunAs;
-import com.pulumi.databricks.outputs.GetAlertsV2ResultSchedule;
+import com.pulumi.databricks.outputs.GetAlertsV2Alert;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAlertsV2Result {
+    private List<GetAlertsV2Alert> alerts;
     /**
-     * @return (string) - The timestamp indicating when the alert was created
-     * 
-     */
-    private String createTime;
-    /**
-     * @return (string) - Custom description for the alert. support mustache template
-     * 
-     */
-    private @Nullable String customDescription;
-    /**
-     * @return (string) - Custom summary for the alert. support mustache template
-     * 
-     */
-    private @Nullable String customSummary;
-    /**
-     * @return (string) - The display name of the alert
-     * 
-     */
-    private @Nullable String displayName;
-    /**
-     * @return (AlertV2RunAs) - The actual identity that will be used to execute the alert.
-     * This is an output-only field that shows the resolved run-as identity after applying
-     * permissions and defaults
-     * 
-     */
-    private GetAlertsV2ResultEffectiveRunAs effectiveRunAs;
-    /**
-     * @return (AlertV2Evaluation)
-     * 
-     */
-    private @Nullable GetAlertsV2ResultEvaluation evaluation;
-    /**
-     * @return (string) - UUID identifying the alert
+     * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
-    /**
-     * @return (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `TRASHED`
-     * 
-     */
-    private String lifecycleState;
-    /**
-     * @return (string) - The owner&#39;s username. This field is set to &#34;Unavailable&#34; if the user has been deleted
-     * 
-     */
-    private String ownerUserName;
-    /**
-     * @return (string) - The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
-     * 
-     */
-    private @Nullable String parentPath;
-    /**
-     * @return (string) - Text of the query to be run
-     * 
-     */
-    private @Nullable String queryText;
-    /**
-     * @return (AlertV2RunAs) - Specifies the identity that will be used to run the alert.
-     * This field allows you to configure alerts to run as a specific user or service principal.
-     * - For user identity: Set `userName` to the email of an active workspace user. Users can only set this to their own email.
-     * - For service principal: Set `servicePrincipalName` to the application ID. Requires the `servicePrincipal/user` role.
-     *   If not specified, the alert will run as the request user
-     * 
-     */
-    private @Nullable GetAlertsV2ResultRunAs runAs;
-    /**
-     * @return (string, deprecated) - The run as username or application ID of service principal.
-     * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
-     * Deprecated: Use `runAs` field instead. This field will be removed in a future release
-     * 
-     */
-    private @Nullable String runAsUserName;
-    /**
-     * @return (CronSchedule)
-     * 
-     */
-    private @Nullable GetAlertsV2ResultSchedule schedule;
-    /**
-     * @return (string) - The timestamp indicating when the alert was updated
-     * 
-     */
-    private String updateTime;
-    /**
-     * @return (string) - ID of the SQL warehouse attached to the alert
-     * 
-     */
-    private @Nullable String warehouseId;
+    private @Nullable Integer pageSize;
 
     private GetAlertsV2Result() {}
-    /**
-     * @return (string) - The timestamp indicating when the alert was created
-     * 
-     */
-    public String createTime() {
-        return this.createTime;
+    public List<GetAlertsV2Alert> alerts() {
+        return this.alerts;
     }
     /**
-     * @return (string) - Custom description for the alert. support mustache template
-     * 
-     */
-    public Optional<String> customDescription() {
-        return Optional.ofNullable(this.customDescription);
-    }
-    /**
-     * @return (string) - Custom summary for the alert. support mustache template
-     * 
-     */
-    public Optional<String> customSummary() {
-        return Optional.ofNullable(this.customSummary);
-    }
-    /**
-     * @return (string) - The display name of the alert
-     * 
-     */
-    public Optional<String> displayName() {
-        return Optional.ofNullable(this.displayName);
-    }
-    /**
-     * @return (AlertV2RunAs) - The actual identity that will be used to execute the alert.
-     * This is an output-only field that shows the resolved run-as identity after applying
-     * permissions and defaults
-     * 
-     */
-    public GetAlertsV2ResultEffectiveRunAs effectiveRunAs() {
-        return this.effectiveRunAs;
-    }
-    /**
-     * @return (AlertV2Evaluation)
-     * 
-     */
-    public Optional<GetAlertsV2ResultEvaluation> evaluation() {
-        return Optional.ofNullable(this.evaluation);
-    }
-    /**
-     * @return (string) - UUID identifying the alert
+     * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     public String id() {
         return this.id;
     }
-    /**
-     * @return (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `TRASHED`
-     * 
-     */
-    public String lifecycleState() {
-        return this.lifecycleState;
-    }
-    /**
-     * @return (string) - The owner&#39;s username. This field is set to &#34;Unavailable&#34; if the user has been deleted
-     * 
-     */
-    public String ownerUserName() {
-        return this.ownerUserName;
-    }
-    /**
-     * @return (string) - The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
-     * 
-     */
-    public Optional<String> parentPath() {
-        return Optional.ofNullable(this.parentPath);
-    }
-    /**
-     * @return (string) - Text of the query to be run
-     * 
-     */
-    public Optional<String> queryText() {
-        return Optional.ofNullable(this.queryText);
-    }
-    /**
-     * @return (AlertV2RunAs) - Specifies the identity that will be used to run the alert.
-     * This field allows you to configure alerts to run as a specific user or service principal.
-     * - For user identity: Set `userName` to the email of an active workspace user. Users can only set this to their own email.
-     * - For service principal: Set `servicePrincipalName` to the application ID. Requires the `servicePrincipal/user` role.
-     *   If not specified, the alert will run as the request user
-     * 
-     */
-    public Optional<GetAlertsV2ResultRunAs> runAs() {
-        return Optional.ofNullable(this.runAs);
-    }
-    /**
-     * @return (string, deprecated) - The run as username or application ID of service principal.
-     * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
-     * Deprecated: Use `runAs` field instead. This field will be removed in a future release
-     * 
-     */
-    public Optional<String> runAsUserName() {
-        return Optional.ofNullable(this.runAsUserName);
-    }
-    /**
-     * @return (CronSchedule)
-     * 
-     */
-    public Optional<GetAlertsV2ResultSchedule> schedule() {
-        return Optional.ofNullable(this.schedule);
-    }
-    /**
-     * @return (string) - The timestamp indicating when the alert was updated
-     * 
-     */
-    public String updateTime() {
-        return this.updateTime;
-    }
-    /**
-     * @return (string) - ID of the SQL warehouse attached to the alert
-     * 
-     */
-    public Optional<String> warehouseId() {
-        return Optional.ofNullable(this.warehouseId);
+    public Optional<Integer> pageSize() {
+        return Optional.ofNullable(this.pageSize);
     }
 
     public static Builder builder() {
@@ -236,82 +47,27 @@ public final class GetAlertsV2Result {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String createTime;
-        private @Nullable String customDescription;
-        private @Nullable String customSummary;
-        private @Nullable String displayName;
-        private GetAlertsV2ResultEffectiveRunAs effectiveRunAs;
-        private @Nullable GetAlertsV2ResultEvaluation evaluation;
+        private List<GetAlertsV2Alert> alerts;
         private String id;
-        private String lifecycleState;
-        private String ownerUserName;
-        private @Nullable String parentPath;
-        private @Nullable String queryText;
-        private @Nullable GetAlertsV2ResultRunAs runAs;
-        private @Nullable String runAsUserName;
-        private @Nullable GetAlertsV2ResultSchedule schedule;
-        private String updateTime;
-        private @Nullable String warehouseId;
+        private @Nullable Integer pageSize;
         public Builder() {}
         public Builder(GetAlertsV2Result defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.createTime = defaults.createTime;
-    	      this.customDescription = defaults.customDescription;
-    	      this.customSummary = defaults.customSummary;
-    	      this.displayName = defaults.displayName;
-    	      this.effectiveRunAs = defaults.effectiveRunAs;
-    	      this.evaluation = defaults.evaluation;
+    	      this.alerts = defaults.alerts;
     	      this.id = defaults.id;
-    	      this.lifecycleState = defaults.lifecycleState;
-    	      this.ownerUserName = defaults.ownerUserName;
-    	      this.parentPath = defaults.parentPath;
-    	      this.queryText = defaults.queryText;
-    	      this.runAs = defaults.runAs;
-    	      this.runAsUserName = defaults.runAsUserName;
-    	      this.schedule = defaults.schedule;
-    	      this.updateTime = defaults.updateTime;
-    	      this.warehouseId = defaults.warehouseId;
+    	      this.pageSize = defaults.pageSize;
         }
 
         @CustomType.Setter
-        public Builder createTime(String createTime) {
-            if (createTime == null) {
-              throw new MissingRequiredPropertyException("GetAlertsV2Result", "createTime");
+        public Builder alerts(List<GetAlertsV2Alert> alerts) {
+            if (alerts == null) {
+              throw new MissingRequiredPropertyException("GetAlertsV2Result", "alerts");
             }
-            this.createTime = createTime;
+            this.alerts = alerts;
             return this;
         }
-        @CustomType.Setter
-        public Builder customDescription(@Nullable String customDescription) {
-
-            this.customDescription = customDescription;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder customSummary(@Nullable String customSummary) {
-
-            this.customSummary = customSummary;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder displayName(@Nullable String displayName) {
-
-            this.displayName = displayName;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder effectiveRunAs(GetAlertsV2ResultEffectiveRunAs effectiveRunAs) {
-            if (effectiveRunAs == null) {
-              throw new MissingRequiredPropertyException("GetAlertsV2Result", "effectiveRunAs");
-            }
-            this.effectiveRunAs = effectiveRunAs;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder evaluation(@Nullable GetAlertsV2ResultEvaluation evaluation) {
-
-            this.evaluation = evaluation;
-            return this;
+        public Builder alerts(GetAlertsV2Alert... alerts) {
+            return alerts(List.of(alerts));
         }
         @CustomType.Setter
         public Builder id(String id) {
@@ -322,83 +78,16 @@ public final class GetAlertsV2Result {
             return this;
         }
         @CustomType.Setter
-        public Builder lifecycleState(String lifecycleState) {
-            if (lifecycleState == null) {
-              throw new MissingRequiredPropertyException("GetAlertsV2Result", "lifecycleState");
-            }
-            this.lifecycleState = lifecycleState;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder ownerUserName(String ownerUserName) {
-            if (ownerUserName == null) {
-              throw new MissingRequiredPropertyException("GetAlertsV2Result", "ownerUserName");
-            }
-            this.ownerUserName = ownerUserName;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder parentPath(@Nullable String parentPath) {
+        public Builder pageSize(@Nullable Integer pageSize) {
 
-            this.parentPath = parentPath;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder queryText(@Nullable String queryText) {
-
-            this.queryText = queryText;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder runAs(@Nullable GetAlertsV2ResultRunAs runAs) {
-
-            this.runAs = runAs;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder runAsUserName(@Nullable String runAsUserName) {
-
-            this.runAsUserName = runAsUserName;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder schedule(@Nullable GetAlertsV2ResultSchedule schedule) {
-
-            this.schedule = schedule;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder updateTime(String updateTime) {
-            if (updateTime == null) {
-              throw new MissingRequiredPropertyException("GetAlertsV2Result", "updateTime");
-            }
-            this.updateTime = updateTime;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder warehouseId(@Nullable String warehouseId) {
-
-            this.warehouseId = warehouseId;
+            this.pageSize = pageSize;
             return this;
         }
         public GetAlertsV2Result build() {
             final var _resultValue = new GetAlertsV2Result();
-            _resultValue.createTime = createTime;
-            _resultValue.customDescription = customDescription;
-            _resultValue.customSummary = customSummary;
-            _resultValue.displayName = displayName;
-            _resultValue.effectiveRunAs = effectiveRunAs;
-            _resultValue.evaluation = evaluation;
+            _resultValue.alerts = alerts;
             _resultValue.id = id;
-            _resultValue.lifecycleState = lifecycleState;
-            _resultValue.ownerUserName = ownerUserName;
-            _resultValue.parentPath = parentPath;
-            _resultValue.queryText = queryText;
-            _resultValue.runAs = runAs;
-            _resultValue.runAsUserName = runAsUserName;
-            _resultValue.schedule = schedule;
-            _resultValue.updateTime = updateTime;
-            _resultValue.warehouseId = warehouseId;
+            _resultValue.pageSize = pageSize;
             return _resultValue;
         }
     }

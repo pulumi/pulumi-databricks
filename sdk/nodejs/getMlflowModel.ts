@@ -65,6 +65,7 @@ export function getMlflowModel(args: GetMlflowModelArgs, opts?: pulumi.InvokeOpt
         "latestVersions": args.latestVersions,
         "name": args.name,
         "permissionLevel": args.permissionLevel,
+        "providerConfig": args.providerConfig,
         "tags": args.tags,
         "userId": args.userId,
     }, opts);
@@ -90,6 +91,10 @@ export interface GetMlflowModelArgs {
      * Permission level of the requesting user on the object. For what is allowed at each level, see MLflow Model permissions.
      */
     permissionLevel?: string;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: inputs.GetMlflowModelProviderConfig;
     /**
      * Array of tags associated with the model.
      */
@@ -124,6 +129,7 @@ export interface GetMlflowModelResult {
      * Permission level of the requesting user on the object. For what is allowed at each level, see MLflow Model permissions.
      */
     readonly permissionLevel: string;
+    readonly providerConfig?: outputs.GetMlflowModelProviderConfig;
     /**
      * Array of tags associated with the model.
      */
@@ -192,6 +198,7 @@ export function getMlflowModelOutput(args: GetMlflowModelOutputArgs, opts?: pulu
         "latestVersions": args.latestVersions,
         "name": args.name,
         "permissionLevel": args.permissionLevel,
+        "providerConfig": args.providerConfig,
         "tags": args.tags,
         "userId": args.userId,
     }, opts);
@@ -217,6 +224,10 @@ export interface GetMlflowModelOutputArgs {
      * Permission level of the requesting user on the object. For what is allowed at each level, see MLflow Model permissions.
      */
     permissionLevel?: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.GetMlflowModelProviderConfigArgs>;
     /**
      * Array of tags associated with the model.
      */

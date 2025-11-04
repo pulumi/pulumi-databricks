@@ -12,6 +12,8 @@ namespace Pulumi.Databricks
     public static class GetQualityMonitorV2
     {
         /// <summary>
+        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
         /// This data source can be used to fetch a quality monitors v2.
         /// 
         /// &gt; **Note** This data source can only be used with an workspace-level provider!
@@ -47,6 +49,8 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetQualityMonitorV2Result>("databricks:index/getQualityMonitorV2:getQualityMonitorV2", args ?? new GetQualityMonitorV2Args(), options.WithDefaults());
 
         /// <summary>
+        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
         /// This data source can be used to fetch a quality monitors v2.
         /// 
         /// &gt; **Note** This data source can only be used with an workspace-level provider!
@@ -82,6 +86,8 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.Invoke<GetQualityMonitorV2Result>("databricks:index/getQualityMonitorV2:getQualityMonitorV2", args ?? new GetQualityMonitorV2InvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
         /// This data source can be used to fetch a quality monitors v2.
         /// 
         /// &gt; **Note** This data source can only be used with an workspace-level provider!
@@ -132,12 +138,6 @@ namespace Pulumi.Databricks
         [Input("objectType", required: true)]
         public string ObjectType { get; set; } = null!;
 
-        /// <summary>
-        /// Workspace ID of the resource
-        /// </summary>
-        [Input("workspaceId")]
-        public string? WorkspaceId { get; set; }
-
         public GetQualityMonitorV2Args()
         {
         }
@@ -157,12 +157,6 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("objectType", required: true)]
         public Input<string> ObjectType { get; set; } = null!;
-
-        /// <summary>
-        /// Workspace ID of the resource
-        /// </summary>
-        [Input("workspaceId")]
-        public Input<string>? WorkspaceId { get; set; }
 
         public GetQualityMonitorV2InvokeArgs()
         {
@@ -190,7 +184,6 @@ namespace Pulumi.Databricks
         /// (string) - The type of the monitored object. Can be one of the following: schema
         /// </summary>
         public readonly string ObjectType;
-        public readonly string? WorkspaceId;
 
         [OutputConstructor]
         private GetQualityMonitorV2Result(
@@ -200,15 +193,12 @@ namespace Pulumi.Databricks
 
             string objectId,
 
-            string objectType,
-
-            string? workspaceId)
+            string objectType)
         {
             AnomalyDetectionConfig = anomalyDetectionConfig;
             Id = id;
             ObjectId = objectId;
             ObjectType = objectType;
-            WorkspaceId = workspaceId;
         }
     }
 }

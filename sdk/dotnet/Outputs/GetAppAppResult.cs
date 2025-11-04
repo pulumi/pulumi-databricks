@@ -23,6 +23,10 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string? BudgetPolicyId;
         /// <summary>
+        /// (Optional) A string specifying compute size for the App.
+        /// </summary>
+        public readonly string? ComputeSize;
+        /// <summary>
         /// attribute
         /// </summary>
         public readonly Outputs.GetAppAppComputeStatusResult ComputeStatus;
@@ -65,6 +69,9 @@ namespace Pulumi.Databricks.Outputs
         /// A list of resources that the app have access to.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetAppAppResourceResult> Resources;
+        /// <summary>
+        /// client_id (application_id) of the app service principal
+        /// </summary>
         public readonly string ServicePrincipalClientId;
         /// <summary>
         /// id of the app service principal
@@ -95,6 +102,8 @@ namespace Pulumi.Databricks.Outputs
             Outputs.GetAppAppAppStatusResult appStatus,
 
             string? budgetPolicyId,
+
+            string? computeSize,
 
             Outputs.GetAppAppComputeStatusResult computeStatus,
 
@@ -139,6 +148,7 @@ namespace Pulumi.Databricks.Outputs
             ActiveDeployment = activeDeployment;
             AppStatus = appStatus;
             BudgetPolicyId = budgetPolicyId;
+            ComputeSize = computeSize;
             ComputeStatus = computeStatus;
             CreateTime = createTime;
             Creator = creator;

@@ -24,8 +24,7 @@ class DatabaseSyncedDatabaseTableArgs:
                  database_instance_name: Optional[pulumi.Input[_builtins.str]] = None,
                  logical_database_name: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
-                 spec: Optional[pulumi.Input['DatabaseSyncedDatabaseTableSpecArgs']] = None,
-                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 spec: Optional[pulumi.Input['DatabaseSyncedDatabaseTableSpecArgs']] = None):
         """
         The set of arguments for constructing a DatabaseSyncedDatabaseTable resource.
         :param pulumi.Input[_builtins.str] database_instance_name: Name of the target database instance. This is required when creating synced database tables in standard catalogs.
@@ -43,7 +42,6 @@ class DatabaseSyncedDatabaseTableArgs:
                In this scenario, specifying this field will allow targeting an arbitrary postgres database.
                Note that this has implications for the `create_database_objects_is_missing` field in `spec`
         :param pulumi.Input[_builtins.str] name: Full three-part (catalog, schema, table) name of the table
-        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID of the resource
         """
         if database_instance_name is not None:
             pulumi.set(__self__, "database_instance_name", database_instance_name)
@@ -53,8 +51,6 @@ class DatabaseSyncedDatabaseTableArgs:
             pulumi.set(__self__, "name", name)
         if spec is not None:
             pulumi.set(__self__, "spec", spec)
-        if workspace_id is not None:
-            pulumi.set(__self__, "workspace_id", workspace_id)
 
     @_builtins.property
     @pulumi.getter(name="databaseInstanceName")
@@ -113,18 +109,6 @@ class DatabaseSyncedDatabaseTableArgs:
     def spec(self, value: Optional[pulumi.Input['DatabaseSyncedDatabaseTableSpecArgs']]):
         pulumi.set(self, "spec", value)
 
-    @_builtins.property
-    @pulumi.getter(name="workspaceId")
-    def workspace_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Workspace ID of the resource
-        """
-        return pulumi.get(self, "workspace_id")
-
-    @workspace_id.setter
-    def workspace_id(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "workspace_id", value)
-
 
 @pulumi.input_type
 class _DatabaseSyncedDatabaseTableState:
@@ -136,8 +120,7 @@ class _DatabaseSyncedDatabaseTableState:
                  logical_database_name: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  spec: Optional[pulumi.Input['DatabaseSyncedDatabaseTableSpecArgs']] = None,
-                 unity_catalog_provisioning_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 unity_catalog_provisioning_state: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DatabaseSyncedDatabaseTable resources.
         :param pulumi.Input['DatabaseSyncedDatabaseTableDataSynchronizationStatusArgs'] data_synchronization_status: (SyncedTableStatus) - Synced Table data synchronization status
@@ -162,7 +145,6 @@ class _DatabaseSyncedDatabaseTableState:
         :param pulumi.Input[_builtins.str] unity_catalog_provisioning_state: (string) - The provisioning state of the synced table entity in Unity Catalog. This is distinct from the
                state of the data synchronization pipeline (i.e. the table may be in "ACTIVE" but the pipeline
                may be in "PROVISIONING" as it runs asynchronously). Possible values are: `ACTIVE`, `DEGRADED`, `DELETING`, `FAILED`, `PROVISIONING`, `UPDATING`
-        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID of the resource
         """
         if data_synchronization_status is not None:
             pulumi.set(__self__, "data_synchronization_status", data_synchronization_status)
@@ -180,8 +162,6 @@ class _DatabaseSyncedDatabaseTableState:
             pulumi.set(__self__, "spec", spec)
         if unity_catalog_provisioning_state is not None:
             pulumi.set(__self__, "unity_catalog_provisioning_state", unity_catalog_provisioning_state)
-        if workspace_id is not None:
-            pulumi.set(__self__, "workspace_id", workspace_id)
 
     @_builtins.property
     @pulumi.getter(name="dataSynchronizationStatus")
@@ -291,18 +271,6 @@ class _DatabaseSyncedDatabaseTableState:
     def unity_catalog_provisioning_state(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "unity_catalog_provisioning_state", value)
 
-    @_builtins.property
-    @pulumi.getter(name="workspaceId")
-    def workspace_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Workspace ID of the resource
-        """
-        return pulumi.get(self, "workspace_id")
-
-    @workspace_id.setter
-    def workspace_id(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "workspace_id", value)
-
 
 @pulumi.type_token("databricks:index/databaseSyncedDatabaseTable:DatabaseSyncedDatabaseTable")
 class DatabaseSyncedDatabaseTable(pulumi.CustomResource):
@@ -314,9 +282,10 @@ class DatabaseSyncedDatabaseTable(pulumi.CustomResource):
                  logical_database_name: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  spec: Optional[pulumi.Input[Union['DatabaseSyncedDatabaseTableSpecArgs', 'DatabaseSyncedDatabaseTableSpecArgsDict']]] = None,
-                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
         Lakebase Synced Database Tables are Postgres tables automatically synced from a source table inside Unity Catalog.
         They can be used to serve realtime queries without the operational overhead of managing ETL pipelines.
 
@@ -338,6 +307,15 @@ class DatabaseSyncedDatabaseTable(pulumi.CustomResource):
         This example creates two Synced Database Tables. The first one specifies a new pipeline spec,
         which generates a new pipeline. The second one utilizes the pipeline ID of the first table.
 
+        ### Creating a Synced Database Table with a custom Jobs schedule
+
+        This example creates a Synced Database Table and customizes the pipeline schedule. It assumes you already have
+
+        - A database instance named `"my-database-instance"`
+        - A standard catalog named `"my_standard_catalog"`
+        - A schema in the standard catalog named `"default"`
+        - A source delta table named `"source_delta.schema.customer"` with the primary key `"c_custkey"`
+
         ## Import
 
         As of Pulumi v1.5, resources can be imported through configuration.
@@ -355,7 +333,7 @@ class DatabaseSyncedDatabaseTable(pulumi.CustomResource):
         If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
 
         ```sh
-        $ pulumi import databricks:index/databaseSyncedDatabaseTable:DatabaseSyncedDatabaseTable databricks_database_synced_database_table "name"
+        $ pulumi import databricks:index/databaseSyncedDatabaseTable:DatabaseSyncedDatabaseTable this "name"
         ```
 
         :param str resource_name: The name of the resource.
@@ -375,7 +353,6 @@ class DatabaseSyncedDatabaseTable(pulumi.CustomResource):
                In this scenario, specifying this field will allow targeting an arbitrary postgres database.
                Note that this has implications for the `create_database_objects_is_missing` field in `spec`
         :param pulumi.Input[_builtins.str] name: Full three-part (catalog, schema, table) name of the table
-        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID of the resource
         """
         ...
     @overload
@@ -384,6 +361,8 @@ class DatabaseSyncedDatabaseTable(pulumi.CustomResource):
                  args: Optional[DatabaseSyncedDatabaseTableArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
         Lakebase Synced Database Tables are Postgres tables automatically synced from a source table inside Unity Catalog.
         They can be used to serve realtime queries without the operational overhead of managing ETL pipelines.
 
@@ -405,6 +384,15 @@ class DatabaseSyncedDatabaseTable(pulumi.CustomResource):
         This example creates two Synced Database Tables. The first one specifies a new pipeline spec,
         which generates a new pipeline. The second one utilizes the pipeline ID of the first table.
 
+        ### Creating a Synced Database Table with a custom Jobs schedule
+
+        This example creates a Synced Database Table and customizes the pipeline schedule. It assumes you already have
+
+        - A database instance named `"my-database-instance"`
+        - A standard catalog named `"my_standard_catalog"`
+        - A schema in the standard catalog named `"default"`
+        - A source delta table named `"source_delta.schema.customer"` with the primary key `"c_custkey"`
+
         ## Import
 
         As of Pulumi v1.5, resources can be imported through configuration.
@@ -422,7 +410,7 @@ class DatabaseSyncedDatabaseTable(pulumi.CustomResource):
         If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
 
         ```sh
-        $ pulumi import databricks:index/databaseSyncedDatabaseTable:DatabaseSyncedDatabaseTable databricks_database_synced_database_table "name"
+        $ pulumi import databricks:index/databaseSyncedDatabaseTable:DatabaseSyncedDatabaseTable this "name"
         ```
 
         :param str resource_name: The name of the resource.
@@ -444,7 +432,6 @@ class DatabaseSyncedDatabaseTable(pulumi.CustomResource):
                  logical_database_name: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  spec: Optional[pulumi.Input[Union['DatabaseSyncedDatabaseTableSpecArgs', 'DatabaseSyncedDatabaseTableSpecArgsDict']]] = None,
-                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -458,7 +445,6 @@ class DatabaseSyncedDatabaseTable(pulumi.CustomResource):
             __props__.__dict__["logical_database_name"] = logical_database_name
             __props__.__dict__["name"] = name
             __props__.__dict__["spec"] = spec
-            __props__.__dict__["workspace_id"] = workspace_id
             __props__.__dict__["data_synchronization_status"] = None
             __props__.__dict__["effective_database_instance_name"] = None
             __props__.__dict__["effective_logical_database_name"] = None
@@ -480,8 +466,7 @@ class DatabaseSyncedDatabaseTable(pulumi.CustomResource):
             logical_database_name: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             spec: Optional[pulumi.Input[Union['DatabaseSyncedDatabaseTableSpecArgs', 'DatabaseSyncedDatabaseTableSpecArgsDict']]] = None,
-            unity_catalog_provisioning_state: Optional[pulumi.Input[_builtins.str]] = None,
-            workspace_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'DatabaseSyncedDatabaseTable':
+            unity_catalog_provisioning_state: Optional[pulumi.Input[_builtins.str]] = None) -> 'DatabaseSyncedDatabaseTable':
         """
         Get an existing DatabaseSyncedDatabaseTable resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -511,7 +496,6 @@ class DatabaseSyncedDatabaseTable(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] unity_catalog_provisioning_state: (string) - The provisioning state of the synced table entity in Unity Catalog. This is distinct from the
                state of the data synchronization pipeline (i.e. the table may be in "ACTIVE" but the pipeline
                may be in "PROVISIONING" as it runs asynchronously). Possible values are: `ACTIVE`, `DEGRADED`, `DELETING`, `FAILED`, `PROVISIONING`, `UPDATING`
-        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID of the resource
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -525,7 +509,6 @@ class DatabaseSyncedDatabaseTable(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["spec"] = spec
         __props__.__dict__["unity_catalog_provisioning_state"] = unity_catalog_provisioning_state
-        __props__.__dict__["workspace_id"] = workspace_id
         return DatabaseSyncedDatabaseTable(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -603,12 +586,4 @@ class DatabaseSyncedDatabaseTable(pulumi.CustomResource):
         may be in "PROVISIONING" as it runs asynchronously). Possible values are: `ACTIVE`, `DEGRADED`, `DELETING`, `FAILED`, `PROVISIONING`, `UPDATING`
         """
         return pulumi.get(self, "unity_catalog_provisioning_state")
-
-    @_builtins.property
-    @pulumi.getter(name="workspaceId")
-    def workspace_id(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Workspace ID of the resource
-        """
-        return pulumi.get(self, "workspace_id")
 

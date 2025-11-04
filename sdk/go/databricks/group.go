@@ -180,7 +180,7 @@ type Group struct {
 	AllowClusterCreate pulumi.BoolPtrOutput `pulumi:"allowClusterCreate"`
 	// This is a field to allow the group to have instance pool create privileges. More fine grained permissions could be assigned with Permissions and instancePoolId argument.
 	AllowInstancePoolCreate pulumi.BoolPtrOutput `pulumi:"allowInstancePoolCreate"`
-	// This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
+	// This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql)  UI, [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one) and through databricks_sql_endpoint.
 	DatabricksSqlAccess pulumi.BoolPtrOutput `pulumi:"databricksSqlAccess"`
 	// This is the display name for the given group.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
@@ -189,9 +189,9 @@ type Group struct {
 	// Ignore `cannot create group: Group with name X already exists.` errors and implicitly import the specific group into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
 	Force pulumi.BoolPtrOutput `pulumi:"force"`
 	Url   pulumi.StringOutput  `pulumi:"url"`
-	// This is a field to allow the group to have access to a Databricks Workspace.
+	// This is a field to allow the group to have access to a Databricks Workspace UI and [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).
 	WorkspaceAccess pulumi.BoolPtrOutput `pulumi:"workspaceAccess"`
-	// This is a field to allow the group to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspaceAccess` or `databricksSqlAccess`.
+	// This is a field to allow the group to have access only to [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).  Couldn't be used with `workspaceAccess` or `databricksSqlAccess`.
 	WorkspaceConsume pulumi.BoolPtrOutput `pulumi:"workspaceConsume"`
 }
 
@@ -231,7 +231,7 @@ type groupState struct {
 	AllowClusterCreate *bool `pulumi:"allowClusterCreate"`
 	// This is a field to allow the group to have instance pool create privileges. More fine grained permissions could be assigned with Permissions and instancePoolId argument.
 	AllowInstancePoolCreate *bool `pulumi:"allowInstancePoolCreate"`
-	// This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
+	// This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql)  UI, [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one) and through databricks_sql_endpoint.
 	DatabricksSqlAccess *bool `pulumi:"databricksSqlAccess"`
 	// This is the display name for the given group.
 	DisplayName *string `pulumi:"displayName"`
@@ -240,9 +240,9 @@ type groupState struct {
 	// Ignore `cannot create group: Group with name X already exists.` errors and implicitly import the specific group into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
 	Force *bool   `pulumi:"force"`
 	Url   *string `pulumi:"url"`
-	// This is a field to allow the group to have access to a Databricks Workspace.
+	// This is a field to allow the group to have access to a Databricks Workspace UI and [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).
 	WorkspaceAccess *bool `pulumi:"workspaceAccess"`
-	// This is a field to allow the group to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspaceAccess` or `databricksSqlAccess`.
+	// This is a field to allow the group to have access only to [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).  Couldn't be used with `workspaceAccess` or `databricksSqlAccess`.
 	WorkspaceConsume *bool `pulumi:"workspaceConsume"`
 }
 
@@ -253,7 +253,7 @@ type GroupState struct {
 	AllowClusterCreate pulumi.BoolPtrInput
 	// This is a field to allow the group to have instance pool create privileges. More fine grained permissions could be assigned with Permissions and instancePoolId argument.
 	AllowInstancePoolCreate pulumi.BoolPtrInput
-	// This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
+	// This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql)  UI, [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one) and through databricks_sql_endpoint.
 	DatabricksSqlAccess pulumi.BoolPtrInput
 	// This is the display name for the given group.
 	DisplayName pulumi.StringPtrInput
@@ -262,9 +262,9 @@ type GroupState struct {
 	// Ignore `cannot create group: Group with name X already exists.` errors and implicitly import the specific group into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
 	Force pulumi.BoolPtrInput
 	Url   pulumi.StringPtrInput
-	// This is a field to allow the group to have access to a Databricks Workspace.
+	// This is a field to allow the group to have access to a Databricks Workspace UI and [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).
 	WorkspaceAccess pulumi.BoolPtrInput
-	// This is a field to allow the group to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspaceAccess` or `databricksSqlAccess`.
+	// This is a field to allow the group to have access only to [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).  Couldn't be used with `workspaceAccess` or `databricksSqlAccess`.
 	WorkspaceConsume pulumi.BoolPtrInput
 }
 
@@ -279,7 +279,7 @@ type groupArgs struct {
 	AllowClusterCreate *bool `pulumi:"allowClusterCreate"`
 	// This is a field to allow the group to have instance pool create privileges. More fine grained permissions could be assigned with Permissions and instancePoolId argument.
 	AllowInstancePoolCreate *bool `pulumi:"allowInstancePoolCreate"`
-	// This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
+	// This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql)  UI, [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one) and through databricks_sql_endpoint.
 	DatabricksSqlAccess *bool `pulumi:"databricksSqlAccess"`
 	// This is the display name for the given group.
 	DisplayName *string `pulumi:"displayName"`
@@ -288,9 +288,9 @@ type groupArgs struct {
 	// Ignore `cannot create group: Group with name X already exists.` errors and implicitly import the specific group into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
 	Force *bool   `pulumi:"force"`
 	Url   *string `pulumi:"url"`
-	// This is a field to allow the group to have access to a Databricks Workspace.
+	// This is a field to allow the group to have access to a Databricks Workspace UI and [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).
 	WorkspaceAccess *bool `pulumi:"workspaceAccess"`
-	// This is a field to allow the group to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspaceAccess` or `databricksSqlAccess`.
+	// This is a field to allow the group to have access only to [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).  Couldn't be used with `workspaceAccess` or `databricksSqlAccess`.
 	WorkspaceConsume *bool `pulumi:"workspaceConsume"`
 }
 
@@ -302,7 +302,7 @@ type GroupArgs struct {
 	AllowClusterCreate pulumi.BoolPtrInput
 	// This is a field to allow the group to have instance pool create privileges. More fine grained permissions could be assigned with Permissions and instancePoolId argument.
 	AllowInstancePoolCreate pulumi.BoolPtrInput
-	// This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
+	// This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql)  UI, [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one) and through databricks_sql_endpoint.
 	DatabricksSqlAccess pulumi.BoolPtrInput
 	// This is the display name for the given group.
 	DisplayName pulumi.StringPtrInput
@@ -311,9 +311,9 @@ type GroupArgs struct {
 	// Ignore `cannot create group: Group with name X already exists.` errors and implicitly import the specific group into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
 	Force pulumi.BoolPtrInput
 	Url   pulumi.StringPtrInput
-	// This is a field to allow the group to have access to a Databricks Workspace.
+	// This is a field to allow the group to have access to a Databricks Workspace UI and [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).
 	WorkspaceAccess pulumi.BoolPtrInput
-	// This is a field to allow the group to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspaceAccess` or `databricksSqlAccess`.
+	// This is a field to allow the group to have access only to [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).  Couldn't be used with `workspaceAccess` or `databricksSqlAccess`.
 	WorkspaceConsume pulumi.BoolPtrInput
 }
 
@@ -419,7 +419,7 @@ func (o GroupOutput) AllowInstancePoolCreate() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Group) pulumi.BoolPtrOutput { return v.AllowInstancePoolCreate }).(pulumi.BoolPtrOutput)
 }
 
-// This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
+// This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql)  UI, [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one) and through databricks_sql_endpoint.
 func (o GroupOutput) DatabricksSqlAccess() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Group) pulumi.BoolPtrOutput { return v.DatabricksSqlAccess }).(pulumi.BoolPtrOutput)
 }
@@ -443,12 +443,12 @@ func (o GroupOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
 }
 
-// This is a field to allow the group to have access to a Databricks Workspace.
+// This is a field to allow the group to have access to a Databricks Workspace UI and [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).
 func (o GroupOutput) WorkspaceAccess() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Group) pulumi.BoolPtrOutput { return v.WorkspaceAccess }).(pulumi.BoolPtrOutput)
 }
 
-// This is a field to allow the group to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspaceAccess` or `databricksSqlAccess`.
+// This is a field to allow the group to have access only to [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).  Couldn't be used with `workspaceAccess` or `databricksSqlAccess`.
 func (o GroupOutput) WorkspaceConsume() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Group) pulumi.BoolPtrOutput { return v.WorkspaceConsume }).(pulumi.BoolPtrOutput)
 }

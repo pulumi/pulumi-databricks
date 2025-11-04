@@ -19,6 +19,8 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * 
  * The Alert v2 resource allows you to manage SQL alerts in Databricks SQL. Alerts monitor query results and notify you when specific conditions are met.
  * 
  * Alerts run on a schedule and evaluate query results against defined thresholds. When an alert is triggered, notifications can be sent to specified users or destinations.
@@ -45,7 +47,7 @@ import javax.annotation.Nullable;
  * If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
  * 
  * ```sh
- * $ pulumi import databricks:index/alertV2:AlertV2 databricks_alert_v2 &#34;id&#34;
+ * $ pulumi import databricks:index/alertV2:AlertV2 this &#34;id&#34;
  * ```
  * 
  */
@@ -98,14 +100,14 @@ public class AlertV2 extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="displayName", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> displayName;
+    private Output<String> displayName;
 
     /**
      * @return The display name of the alert
      * 
      */
-    public Output<Optional<String>> displayName() {
-        return Codegen.optional(this.displayName);
+    public Output<String> displayName() {
+        return this.displayName;
     }
     /**
      * (AlertV2RunAs) - The actual identity that will be used to execute the alert.
@@ -126,20 +128,20 @@ public class AlertV2 extends com.pulumi.resources.CustomResource {
         return this.effectiveRunAs;
     }
     @Export(name="evaluation", refs={AlertV2Evaluation.class}, tree="[0]")
-    private Output</* @Nullable */ AlertV2Evaluation> evaluation;
+    private Output<AlertV2Evaluation> evaluation;
 
-    public Output<Optional<AlertV2Evaluation>> evaluation() {
-        return Codegen.optional(this.evaluation);
+    public Output<AlertV2Evaluation> evaluation() {
+        return this.evaluation;
     }
     /**
-     * (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `TRASHED`
+     * (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `DELETED`
      * 
      */
     @Export(name="lifecycleState", refs={String.class}, tree="[0]")
     private Output<String> lifecycleState;
 
     /**
-     * @return (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `TRASHED`
+     * @return (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `DELETED`
      * 
      */
     public Output<String> lifecycleState() {
@@ -178,14 +180,14 @@ public class AlertV2 extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="queryText", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> queryText;
+    private Output<String> queryText;
 
     /**
      * @return Text of the query to be run
      * 
      */
-    public Output<Optional<String>> queryText() {
-        return Codegen.optional(this.queryText);
+    public Output<String> queryText() {
+        return this.queryText;
     }
     /**
      * Specifies the identity that will be used to run the alert.
@@ -228,10 +230,10 @@ public class AlertV2 extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.runAsUserName);
     }
     @Export(name="schedule", refs={AlertV2Schedule.class}, tree="[0]")
-    private Output</* @Nullable */ AlertV2Schedule> schedule;
+    private Output<AlertV2Schedule> schedule;
 
-    public Output<Optional<AlertV2Schedule>> schedule() {
-        return Codegen.optional(this.schedule);
+    public Output<AlertV2Schedule> schedule() {
+        return this.schedule;
     }
     /**
      * (string) - The timestamp indicating when the alert was updated
@@ -252,28 +254,14 @@ public class AlertV2 extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="warehouseId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> warehouseId;
+    private Output<String> warehouseId;
 
     /**
      * @return ID of the SQL warehouse attached to the alert
      * 
      */
-    public Output<Optional<String>> warehouseId() {
-        return Codegen.optional(this.warehouseId);
-    }
-    /**
-     * Workspace ID of the resource
-     * 
-     */
-    @Export(name="workspaceId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> workspaceId;
-
-    /**
-     * @return Workspace ID of the resource
-     * 
-     */
-    public Output<Optional<String>> workspaceId() {
-        return Codegen.optional(this.workspaceId);
+    public Output<String> warehouseId() {
+        return this.warehouseId;
     }
 
     /**
@@ -288,7 +276,7 @@ public class AlertV2 extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AlertV2(java.lang.String name, @Nullable AlertV2Args args) {
+    public AlertV2(java.lang.String name, AlertV2Args args) {
         this(name, args, null);
     }
     /**
@@ -297,7 +285,7 @@ public class AlertV2 extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AlertV2(java.lang.String name, @Nullable AlertV2Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public AlertV2(java.lang.String name, AlertV2Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("databricks:index/alertV2:AlertV2", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
@@ -305,7 +293,7 @@ public class AlertV2 extends com.pulumi.resources.CustomResource {
         super("databricks:index/alertV2:AlertV2", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static AlertV2Args makeArgs(@Nullable AlertV2Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    private static AlertV2Args makeArgs(AlertV2Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         if (options != null && options.getUrn().isPresent()) {
             return null;
         }

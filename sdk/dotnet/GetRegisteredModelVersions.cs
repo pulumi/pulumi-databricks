@@ -138,6 +138,9 @@ namespace Pulumi.Databricks
             set => _modelVersions = value;
         }
 
+        [Input("providerConfig")]
+        public Inputs.GetRegisteredModelVersionsProviderConfigArgs? ProviderConfig { get; set; }
+
         public GetRegisteredModelVersionsArgs()
         {
         }
@@ -164,6 +167,9 @@ namespace Pulumi.Databricks
             set => _modelVersions = value;
         }
 
+        [Input("providerConfig")]
+        public Input<Inputs.GetRegisteredModelVersionsProviderConfigInputArgs>? ProviderConfig { get; set; }
+
         public GetRegisteredModelVersionsInvokeArgs()
         {
         }
@@ -186,6 +192,7 @@ namespace Pulumi.Databricks
         /// list of objects describing the model versions. Each object consists of following attributes:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetRegisteredModelVersionsModelVersionResult> ModelVersions;
+        public readonly Outputs.GetRegisteredModelVersionsProviderConfigResult? ProviderConfig;
 
         [OutputConstructor]
         private GetRegisteredModelVersionsResult(
@@ -193,11 +200,14 @@ namespace Pulumi.Databricks
 
             string id,
 
-            ImmutableArray<Outputs.GetRegisteredModelVersionsModelVersionResult> modelVersions)
+            ImmutableArray<Outputs.GetRegisteredModelVersionsModelVersionResult> modelVersions,
+
+            Outputs.GetRegisteredModelVersionsProviderConfigResult? providerConfig)
         {
             FullName = fullName;
             Id = id;
             ModelVersions = modelVersions;
+            ProviderConfig = providerConfig;
         }
     }
 }

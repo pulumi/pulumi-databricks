@@ -83,7 +83,8 @@ func GetServingEndpoints(ctx *pulumi.Context, args *GetServingEndpointsArgs, opt
 // A collection of arguments for invoking getServingEndpoints.
 type GetServingEndpointsArgs struct {
 	// List of objects describing the serving endpoints. Each object consists of following attributes:
-	Endpoints []GetServingEndpointsEndpoint `pulumi:"endpoints"`
+	Endpoints      []GetServingEndpointsEndpoint      `pulumi:"endpoints"`
+	ProviderConfig *GetServingEndpointsProviderConfig `pulumi:"providerConfig"`
 }
 
 // A collection of values returned by getServingEndpoints.
@@ -91,7 +92,8 @@ type GetServingEndpointsResult struct {
 	// List of objects describing the serving endpoints. Each object consists of following attributes:
 	Endpoints []GetServingEndpointsEndpoint `pulumi:"endpoints"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	Id             string                             `pulumi:"id"`
+	ProviderConfig *GetServingEndpointsProviderConfig `pulumi:"providerConfig"`
 }
 
 func GetServingEndpointsOutput(ctx *pulumi.Context, args GetServingEndpointsOutputArgs, opts ...pulumi.InvokeOption) GetServingEndpointsResultOutput {
@@ -106,7 +108,8 @@ func GetServingEndpointsOutput(ctx *pulumi.Context, args GetServingEndpointsOutp
 // A collection of arguments for invoking getServingEndpoints.
 type GetServingEndpointsOutputArgs struct {
 	// List of objects describing the serving endpoints. Each object consists of following attributes:
-	Endpoints GetServingEndpointsEndpointArrayInput `pulumi:"endpoints"`
+	Endpoints      GetServingEndpointsEndpointArrayInput     `pulumi:"endpoints"`
+	ProviderConfig GetServingEndpointsProviderConfigPtrInput `pulumi:"providerConfig"`
 }
 
 func (GetServingEndpointsOutputArgs) ElementType() reflect.Type {
@@ -136,6 +139,10 @@ func (o GetServingEndpointsResultOutput) Endpoints() GetServingEndpointsEndpoint
 // The provider-assigned unique ID for this managed resource.
 func (o GetServingEndpointsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServingEndpointsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetServingEndpointsResultOutput) ProviderConfig() GetServingEndpointsProviderConfigPtrOutput {
+	return o.ApplyT(func(v GetServingEndpointsResult) *GetServingEndpointsProviderConfig { return v.ProviderConfig }).(GetServingEndpointsProviderConfigPtrOutput)
 }
 
 func init() {

@@ -16,16 +16,32 @@ public final class LibraryCranArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final LibraryCranArgs Empty = new LibraryCranArgs();
 
+    /**
+     * The name of the CRAN package to install.
+     * 
+     */
     @Import(name="package", required=true)
     private Output<String> package_;
 
+    /**
+     * @return The name of the CRAN package to install.
+     * 
+     */
     public Output<String> package_() {
         return this.package_;
     }
 
+    /**
+     * The repository where the package can be found. If not specified, the default CRAN repo is used.
+     * 
+     */
     @Import(name="repo")
     private @Nullable Output<String> repo;
 
+    /**
+     * @return The repository where the package can be found. If not specified, the default CRAN repo is used.
+     * 
+     */
     public Optional<Output<String>> repo() {
         return Optional.ofNullable(this.repo);
     }
@@ -55,20 +71,44 @@ public final class LibraryCranArgs extends com.pulumi.resources.ResourceArgs {
             $ = new LibraryCranArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param package_ The name of the CRAN package to install.
+         * 
+         * @return builder
+         * 
+         */
         public Builder package_(Output<String> package_) {
             $.package_ = package_;
             return this;
         }
 
+        /**
+         * @param package_ The name of the CRAN package to install.
+         * 
+         * @return builder
+         * 
+         */
         public Builder package_(String package_) {
             return package_(Output.of(package_));
         }
 
+        /**
+         * @param repo The repository where the package can be found. If not specified, the default CRAN repo is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder repo(@Nullable Output<String> repo) {
             $.repo = repo;
             return this;
         }
 
+        /**
+         * @param repo The repository where the package can be found. If not specified, the default CRAN repo is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder repo(String repo) {
             return repo(Output.of(repo));
         }

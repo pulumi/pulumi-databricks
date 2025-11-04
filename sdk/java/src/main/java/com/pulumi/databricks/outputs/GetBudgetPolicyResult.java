@@ -10,8 +10,6 @@ import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetBudgetPolicyResult {
@@ -20,12 +18,12 @@ public final class GetBudgetPolicyResult {
      * An empty binding implies that this budget policy is open to any workspace in the account
      * 
      */
-    private @Nullable List<Integer> bindingWorkspaceIds;
+    private List<Integer> bindingWorkspaceIds;
     /**
      * @return (list of CustomPolicyTag) - A list of tags defined by the customer. At most 20 entries are allowed per policy
      * 
      */
-    private @Nullable List<GetBudgetPolicyCustomTag> customTags;
+    private List<GetBudgetPolicyCustomTag> customTags;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -43,7 +41,7 @@ public final class GetBudgetPolicyResult {
      * - Can&#39;t start with reserved keywords such as `databricks:default-policy`
      * 
      */
-    private @Nullable String policyName;
+    private String policyName;
 
     private GetBudgetPolicyResult() {}
     /**
@@ -52,14 +50,14 @@ public final class GetBudgetPolicyResult {
      * 
      */
     public List<Integer> bindingWorkspaceIds() {
-        return this.bindingWorkspaceIds == null ? List.of() : this.bindingWorkspaceIds;
+        return this.bindingWorkspaceIds;
     }
     /**
      * @return (list of CustomPolicyTag) - A list of tags defined by the customer. At most 20 entries are allowed per policy
      * 
      */
     public List<GetBudgetPolicyCustomTag> customTags() {
-        return this.customTags == null ? List.of() : this.customTags;
+        return this.customTags;
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -82,8 +80,8 @@ public final class GetBudgetPolicyResult {
      * - Can&#39;t start with reserved keywords such as `databricks:default-policy`
      * 
      */
-    public Optional<String> policyName() {
-        return Optional.ofNullable(this.policyName);
+    public String policyName() {
+        return this.policyName;
     }
 
     public static Builder builder() {
@@ -95,11 +93,11 @@ public final class GetBudgetPolicyResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable List<Integer> bindingWorkspaceIds;
-        private @Nullable List<GetBudgetPolicyCustomTag> customTags;
+        private List<Integer> bindingWorkspaceIds;
+        private List<GetBudgetPolicyCustomTag> customTags;
         private String id;
         private String policyId;
-        private @Nullable String policyName;
+        private String policyName;
         public Builder() {}
         public Builder(GetBudgetPolicyResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -111,8 +109,10 @@ public final class GetBudgetPolicyResult {
         }
 
         @CustomType.Setter
-        public Builder bindingWorkspaceIds(@Nullable List<Integer> bindingWorkspaceIds) {
-
+        public Builder bindingWorkspaceIds(List<Integer> bindingWorkspaceIds) {
+            if (bindingWorkspaceIds == null) {
+              throw new MissingRequiredPropertyException("GetBudgetPolicyResult", "bindingWorkspaceIds");
+            }
             this.bindingWorkspaceIds = bindingWorkspaceIds;
             return this;
         }
@@ -120,8 +120,10 @@ public final class GetBudgetPolicyResult {
             return bindingWorkspaceIds(List.of(bindingWorkspaceIds));
         }
         @CustomType.Setter
-        public Builder customTags(@Nullable List<GetBudgetPolicyCustomTag> customTags) {
-
+        public Builder customTags(List<GetBudgetPolicyCustomTag> customTags) {
+            if (customTags == null) {
+              throw new MissingRequiredPropertyException("GetBudgetPolicyResult", "customTags");
+            }
             this.customTags = customTags;
             return this;
         }
@@ -145,8 +147,10 @@ public final class GetBudgetPolicyResult {
             return this;
         }
         @CustomType.Setter
-        public Builder policyName(@Nullable String policyName) {
-
+        public Builder policyName(String policyName) {
+            if (policyName == null) {
+              throw new MissingRequiredPropertyException("GetBudgetPolicyResult", "policyName");
+            }
             this.policyName = policyName;
             return this;
         }

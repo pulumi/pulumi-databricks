@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetNotificationDestinationsNotificationDestination;
+import com.pulumi.databricks.outputs.GetNotificationDestinationsProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
@@ -25,6 +26,7 @@ public final class GetNotificationDestinationsResult {
      * 
      */
     private List<GetNotificationDestinationsNotificationDestination> notificationDestinations;
+    private @Nullable GetNotificationDestinationsProviderConfig providerConfig;
     private @Nullable String type;
 
     private GetNotificationDestinationsResult() {}
@@ -45,6 +47,9 @@ public final class GetNotificationDestinationsResult {
     public List<GetNotificationDestinationsNotificationDestination> notificationDestinations() {
         return this.notificationDestinations;
     }
+    public Optional<GetNotificationDestinationsProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }
@@ -61,6 +66,7 @@ public final class GetNotificationDestinationsResult {
         private @Nullable String displayNameContains;
         private String id;
         private List<GetNotificationDestinationsNotificationDestination> notificationDestinations;
+        private @Nullable GetNotificationDestinationsProviderConfig providerConfig;
         private @Nullable String type;
         public Builder() {}
         public Builder(GetNotificationDestinationsResult defaults) {
@@ -68,6 +74,7 @@ public final class GetNotificationDestinationsResult {
     	      this.displayNameContains = defaults.displayNameContains;
     	      this.id = defaults.id;
     	      this.notificationDestinations = defaults.notificationDestinations;
+    	      this.providerConfig = defaults.providerConfig;
     	      this.type = defaults.type;
         }
 
@@ -97,6 +104,12 @@ public final class GetNotificationDestinationsResult {
             return notificationDestinations(List.of(notificationDestinations));
         }
         @CustomType.Setter
+        public Builder providerConfig(@Nullable GetNotificationDestinationsProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder type(@Nullable String type) {
 
             this.type = type;
@@ -107,6 +120,7 @@ public final class GetNotificationDestinationsResult {
             _resultValue.displayNameContains = displayNameContains;
             _resultValue.id = id;
             _resultValue.notificationDestinations = notificationDestinations;
+            _resultValue.providerConfig = providerConfig;
             _resultValue.type = type;
             return _resultValue;
         }

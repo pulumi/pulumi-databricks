@@ -135,6 +135,12 @@ namespace Pulumi.Databricks
             set => _names = value;
         }
 
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Inputs.GetExternalLocationsProviderConfigArgs? ProviderConfig { get; set; }
+
         public GetExternalLocationsArgs()
         {
         }
@@ -155,6 +161,12 @@ namespace Pulumi.Databricks
             set => _names = value;
         }
 
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.GetExternalLocationsProviderConfigInputArgs>? ProviderConfig { get; set; }
+
         public GetExternalLocationsInvokeArgs()
         {
         }
@@ -173,15 +185,19 @@ namespace Pulumi.Databricks
         /// List of names of databricks.ExternalLocation in the metastore
         /// </summary>
         public readonly ImmutableArray<string> Names;
+        public readonly Outputs.GetExternalLocationsProviderConfigResult? ProviderConfig;
 
         [OutputConstructor]
         private GetExternalLocationsResult(
             string id,
 
-            ImmutableArray<string> names)
+            ImmutableArray<string> names,
+
+            Outputs.GetExternalLocationsProviderConfigResult? providerConfig)
         {
             Id = id;
             Names = names;
+            ProviderConfig = providerConfig;
         }
     }
 }

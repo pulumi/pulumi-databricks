@@ -6,6 +6,8 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.DatabaseInstanceChildInstanceRefArgs;
+import com.pulumi.databricks.inputs.DatabaseInstanceCustomTagArgs;
+import com.pulumi.databricks.inputs.DatabaseInstanceEffectiveCustomTagArgs;
 import com.pulumi.databricks.inputs.DatabaseInstanceParentInstanceRefArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -83,18 +85,59 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * (boolean) - xref AIP-129. `enablePgNativeLogin` is owned by the client, while `effectiveEnablePgNativeLogin` is owned by the server.
-     * `enablePgNativeLogin` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-     * `effectiveEnablePgNativeLogin` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * Custom tags associated with the instance. This field is only included on create and update responses
+     * 
+     */
+    @Import(name="customTags")
+    private @Nullable Output<List<DatabaseInstanceCustomTagArgs>> customTags;
+
+    /**
+     * @return Custom tags associated with the instance. This field is only included on create and update responses
+     * 
+     */
+    public Optional<Output<List<DatabaseInstanceCustomTagArgs>>> customTags() {
+        return Optional.ofNullable(this.customTags);
+    }
+
+    /**
+     * (string, deprecated) - Deprecated. The sku of the instance; this field will always match the value of capacity
+     * 
+     */
+    @Import(name="effectiveCapacity")
+    private @Nullable Output<String> effectiveCapacity;
+
+    /**
+     * @return (string, deprecated) - Deprecated. The sku of the instance; this field will always match the value of capacity
+     * 
+     */
+    public Optional<Output<String>> effectiveCapacity() {
+        return Optional.ofNullable(this.effectiveCapacity);
+    }
+
+    /**
+     * (list of CustomTag) - The recorded custom tags associated with the instance
+     * 
+     */
+    @Import(name="effectiveCustomTags")
+    private @Nullable Output<List<DatabaseInstanceEffectiveCustomTagArgs>> effectiveCustomTags;
+
+    /**
+     * @return (list of CustomTag) - The recorded custom tags associated with the instance
+     * 
+     */
+    public Optional<Output<List<DatabaseInstanceEffectiveCustomTagArgs>>> effectiveCustomTags() {
+        return Optional.ofNullable(this.effectiveCustomTags);
+    }
+
+    /**
+     * (boolean) - Whether the instance has PG native password login enabled
      * 
      */
     @Import(name="effectiveEnablePgNativeLogin")
     private @Nullable Output<Boolean> effectiveEnablePgNativeLogin;
 
     /**
-     * @return (boolean) - xref AIP-129. `enablePgNativeLogin` is owned by the client, while `effectiveEnablePgNativeLogin` is owned by the server.
-     * `enablePgNativeLogin` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-     * `effectiveEnablePgNativeLogin` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * @return (boolean) - Whether the instance has PG native password login enabled
      * 
      */
     public Optional<Output<Boolean>> effectiveEnablePgNativeLogin() {
@@ -102,18 +145,14 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * (boolean) - xref AIP-129. `enableReadableSecondaries` is owned by the client, while `effectiveEnableReadableSecondaries` is owned by the server.
-     * `enableReadableSecondaries` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-     * `effectiveEnableReadableSecondaries` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * (boolean) - Whether secondaries serving read-only traffic are enabled. Defaults to false
      * 
      */
     @Import(name="effectiveEnableReadableSecondaries")
     private @Nullable Output<Boolean> effectiveEnableReadableSecondaries;
 
     /**
-     * @return (boolean) - xref AIP-129. `enableReadableSecondaries` is owned by the client, while `effectiveEnableReadableSecondaries` is owned by the server.
-     * `enableReadableSecondaries` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-     * `effectiveEnableReadableSecondaries` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * @return (boolean) - Whether secondaries serving read-only traffic are enabled. Defaults to false
      * 
      */
     public Optional<Output<Boolean>> effectiveEnableReadableSecondaries() {
@@ -121,18 +160,16 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * (integer) - xref AIP-129. `nodeCount` is owned by the client, while `effectiveNodeCount` is owned by the server.
-     * `nodeCount` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-     * `effectiveNodeCount` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * (integer) - The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
+     * 1 primary and 0 secondaries
      * 
      */
     @Import(name="effectiveNodeCount")
     private @Nullable Output<Integer> effectiveNodeCount;
 
     /**
-     * @return (integer) - xref AIP-129. `nodeCount` is owned by the client, while `effectiveNodeCount` is owned by the server.
-     * `nodeCount` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-     * `effectiveNodeCount` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * @return (integer) - The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
+     * 1 primary and 0 secondaries
      * 
      */
     public Optional<Output<Integer>> effectiveNodeCount() {
@@ -140,18 +177,16 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * (integer) - xref AIP-129. `retentionWindowInDays` is owned by the client, while `effectiveRetentionWindowInDays` is owned by the server.
-     * `retentionWindowInDays` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-     * `effectiveRetentionWindowInDays` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * (integer) - The retention window for the instance. This is the time window in days
+     * for which the historical data is retained
      * 
      */
     @Import(name="effectiveRetentionWindowInDays")
     private @Nullable Output<Integer> effectiveRetentionWindowInDays;
 
     /**
-     * @return (integer) - xref AIP-129. `retentionWindowInDays` is owned by the client, while `effectiveRetentionWindowInDays` is owned by the server.
-     * `retentionWindowInDays` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-     * `effectiveRetentionWindowInDays` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * @return (integer) - The retention window for the instance. This is the time window in days
+     * for which the historical data is retained
      * 
      */
     public Optional<Output<Integer>> effectiveRetentionWindowInDays() {
@@ -159,18 +194,14 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * (boolean) - xref AIP-129. `stopped` is owned by the client, while `effectiveStopped` is owned by the server.
-     * `stopped` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-     * `effectiveStopped` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * (boolean) - Whether the instance is stopped
      * 
      */
     @Import(name="effectiveStopped")
     private @Nullable Output<Boolean> effectiveStopped;
 
     /**
-     * @return (boolean) - xref AIP-129. `stopped` is owned by the client, while `effectiveStopped` is owned by the server.
-     * `stopped` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-     * `effectiveStopped` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * @return (boolean) - Whether the instance is stopped
      * 
      */
     public Optional<Output<Boolean>> effectiveStopped() {
@@ -178,14 +209,29 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Whether the instance has PG native password login enabled. Defaults to true
+     * (string) - The policy that is applied to the instance
+     * 
+     */
+    @Import(name="effectiveUsagePolicyId")
+    private @Nullable Output<String> effectiveUsagePolicyId;
+
+    /**
+     * @return (string) - The policy that is applied to the instance
+     * 
+     */
+    public Optional<Output<String>> effectiveUsagePolicyId() {
+        return Optional.ofNullable(this.effectiveUsagePolicyId);
+    }
+
+    /**
+     * Whether to enable PG native password login on the instance. Defaults to false
      * 
      */
     @Import(name="enablePgNativeLogin")
     private @Nullable Output<Boolean> enablePgNativeLogin;
 
     /**
-     * @return Whether the instance has PG native password login enabled. Defaults to true
+     * @return Whether to enable PG native password login on the instance. Defaults to false
      * 
      */
     public Optional<Output<Boolean>> enablePgNativeLogin() {
@@ -224,7 +270,7 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
 
     /**
      * The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
-     * 1 primary and 0 secondaries
+     * 1 primary and 0 secondaries. This field is input only, see effectiveNodeCount for the output
      * 
      */
     @Import(name="nodeCount")
@@ -232,7 +278,7 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
 
     /**
      * @return The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
-     * 1 primary and 0 secondaries
+     * 1 primary and 0 secondaries. This field is input only, see effectiveNodeCount for the output
      * 
      */
     public Optional<Output<Integer>> nodeCount() {
@@ -357,14 +403,14 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Whether the instance is stopped
+     * Whether to stop the instance. An input only param, see effectiveStopped for the output
      * 
      */
     @Import(name="stopped")
     private @Nullable Output<Boolean> stopped;
 
     /**
-     * @return Whether the instance is stopped
+     * @return Whether to stop the instance. An input only param, see effectiveStopped for the output
      * 
      */
     public Optional<Output<Boolean>> stopped() {
@@ -387,18 +433,18 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Workspace ID of the resource
+     * The desired usage policy to associate with the instance
      * 
      */
-    @Import(name="workspaceId")
-    private @Nullable Output<String> workspaceId;
+    @Import(name="usagePolicyId")
+    private @Nullable Output<String> usagePolicyId;
 
     /**
-     * @return Workspace ID of the resource
+     * @return The desired usage policy to associate with the instance
      * 
      */
-    public Optional<Output<String>> workspaceId() {
-        return Optional.ofNullable(this.workspaceId);
+    public Optional<Output<String>> usagePolicyId() {
+        return Optional.ofNullable(this.usagePolicyId);
     }
 
     private DatabaseInstanceState() {}
@@ -408,11 +454,15 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         this.childInstanceRefs = $.childInstanceRefs;
         this.creationTime = $.creationTime;
         this.creator = $.creator;
+        this.customTags = $.customTags;
+        this.effectiveCapacity = $.effectiveCapacity;
+        this.effectiveCustomTags = $.effectiveCustomTags;
         this.effectiveEnablePgNativeLogin = $.effectiveEnablePgNativeLogin;
         this.effectiveEnableReadableSecondaries = $.effectiveEnableReadableSecondaries;
         this.effectiveNodeCount = $.effectiveNodeCount;
         this.effectiveRetentionWindowInDays = $.effectiveRetentionWindowInDays;
         this.effectiveStopped = $.effectiveStopped;
+        this.effectiveUsagePolicyId = $.effectiveUsagePolicyId;
         this.enablePgNativeLogin = $.enablePgNativeLogin;
         this.enableReadableSecondaries = $.enableReadableSecondaries;
         this.name = $.name;
@@ -426,7 +476,7 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         this.state = $.state;
         this.stopped = $.stopped;
         this.uid = $.uid;
-        this.workspaceId = $.workspaceId;
+        this.usagePolicyId = $.usagePolicyId;
     }
 
     public static Builder builder() {
@@ -545,9 +595,90 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param effectiveEnablePgNativeLogin (boolean) - xref AIP-129. `enablePgNativeLogin` is owned by the client, while `effectiveEnablePgNativeLogin` is owned by the server.
-         * `enablePgNativeLogin` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-         * `effectiveEnablePgNativeLogin` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+         * @param customTags Custom tags associated with the instance. This field is only included on create and update responses
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customTags(@Nullable Output<List<DatabaseInstanceCustomTagArgs>> customTags) {
+            $.customTags = customTags;
+            return this;
+        }
+
+        /**
+         * @param customTags Custom tags associated with the instance. This field is only included on create and update responses
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customTags(List<DatabaseInstanceCustomTagArgs> customTags) {
+            return customTags(Output.of(customTags));
+        }
+
+        /**
+         * @param customTags Custom tags associated with the instance. This field is only included on create and update responses
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customTags(DatabaseInstanceCustomTagArgs... customTags) {
+            return customTags(List.of(customTags));
+        }
+
+        /**
+         * @param effectiveCapacity (string, deprecated) - Deprecated. The sku of the instance; this field will always match the value of capacity
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveCapacity(@Nullable Output<String> effectiveCapacity) {
+            $.effectiveCapacity = effectiveCapacity;
+            return this;
+        }
+
+        /**
+         * @param effectiveCapacity (string, deprecated) - Deprecated. The sku of the instance; this field will always match the value of capacity
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveCapacity(String effectiveCapacity) {
+            return effectiveCapacity(Output.of(effectiveCapacity));
+        }
+
+        /**
+         * @param effectiveCustomTags (list of CustomTag) - The recorded custom tags associated with the instance
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveCustomTags(@Nullable Output<List<DatabaseInstanceEffectiveCustomTagArgs>> effectiveCustomTags) {
+            $.effectiveCustomTags = effectiveCustomTags;
+            return this;
+        }
+
+        /**
+         * @param effectiveCustomTags (list of CustomTag) - The recorded custom tags associated with the instance
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveCustomTags(List<DatabaseInstanceEffectiveCustomTagArgs> effectiveCustomTags) {
+            return effectiveCustomTags(Output.of(effectiveCustomTags));
+        }
+
+        /**
+         * @param effectiveCustomTags (list of CustomTag) - The recorded custom tags associated with the instance
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveCustomTags(DatabaseInstanceEffectiveCustomTagArgs... effectiveCustomTags) {
+            return effectiveCustomTags(List.of(effectiveCustomTags));
+        }
+
+        /**
+         * @param effectiveEnablePgNativeLogin (boolean) - Whether the instance has PG native password login enabled
          * 
          * @return builder
          * 
@@ -558,9 +689,7 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param effectiveEnablePgNativeLogin (boolean) - xref AIP-129. `enablePgNativeLogin` is owned by the client, while `effectiveEnablePgNativeLogin` is owned by the server.
-         * `enablePgNativeLogin` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-         * `effectiveEnablePgNativeLogin` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+         * @param effectiveEnablePgNativeLogin (boolean) - Whether the instance has PG native password login enabled
          * 
          * @return builder
          * 
@@ -570,9 +699,7 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param effectiveEnableReadableSecondaries (boolean) - xref AIP-129. `enableReadableSecondaries` is owned by the client, while `effectiveEnableReadableSecondaries` is owned by the server.
-         * `enableReadableSecondaries` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-         * `effectiveEnableReadableSecondaries` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+         * @param effectiveEnableReadableSecondaries (boolean) - Whether secondaries serving read-only traffic are enabled. Defaults to false
          * 
          * @return builder
          * 
@@ -583,9 +710,7 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param effectiveEnableReadableSecondaries (boolean) - xref AIP-129. `enableReadableSecondaries` is owned by the client, while `effectiveEnableReadableSecondaries` is owned by the server.
-         * `enableReadableSecondaries` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-         * `effectiveEnableReadableSecondaries` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+         * @param effectiveEnableReadableSecondaries (boolean) - Whether secondaries serving read-only traffic are enabled. Defaults to false
          * 
          * @return builder
          * 
@@ -595,9 +720,8 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param effectiveNodeCount (integer) - xref AIP-129. `nodeCount` is owned by the client, while `effectiveNodeCount` is owned by the server.
-         * `nodeCount` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-         * `effectiveNodeCount` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+         * @param effectiveNodeCount (integer) - The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
+         * 1 primary and 0 secondaries
          * 
          * @return builder
          * 
@@ -608,9 +732,8 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param effectiveNodeCount (integer) - xref AIP-129. `nodeCount` is owned by the client, while `effectiveNodeCount` is owned by the server.
-         * `nodeCount` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-         * `effectiveNodeCount` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+         * @param effectiveNodeCount (integer) - The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
+         * 1 primary and 0 secondaries
          * 
          * @return builder
          * 
@@ -620,9 +743,8 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param effectiveRetentionWindowInDays (integer) - xref AIP-129. `retentionWindowInDays` is owned by the client, while `effectiveRetentionWindowInDays` is owned by the server.
-         * `retentionWindowInDays` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-         * `effectiveRetentionWindowInDays` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+         * @param effectiveRetentionWindowInDays (integer) - The retention window for the instance. This is the time window in days
+         * for which the historical data is retained
          * 
          * @return builder
          * 
@@ -633,9 +755,8 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param effectiveRetentionWindowInDays (integer) - xref AIP-129. `retentionWindowInDays` is owned by the client, while `effectiveRetentionWindowInDays` is owned by the server.
-         * `retentionWindowInDays` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-         * `effectiveRetentionWindowInDays` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+         * @param effectiveRetentionWindowInDays (integer) - The retention window for the instance. This is the time window in days
+         * for which the historical data is retained
          * 
          * @return builder
          * 
@@ -645,9 +766,7 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param effectiveStopped (boolean) - xref AIP-129. `stopped` is owned by the client, while `effectiveStopped` is owned by the server.
-         * `stopped` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-         * `effectiveStopped` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+         * @param effectiveStopped (boolean) - Whether the instance is stopped
          * 
          * @return builder
          * 
@@ -658,9 +777,7 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param effectiveStopped (boolean) - xref AIP-129. `stopped` is owned by the client, while `effectiveStopped` is owned by the server.
-         * `stopped` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-         * `effectiveStopped` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+         * @param effectiveStopped (boolean) - Whether the instance is stopped
          * 
          * @return builder
          * 
@@ -670,7 +787,28 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param enablePgNativeLogin Whether the instance has PG native password login enabled. Defaults to true
+         * @param effectiveUsagePolicyId (string) - The policy that is applied to the instance
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveUsagePolicyId(@Nullable Output<String> effectiveUsagePolicyId) {
+            $.effectiveUsagePolicyId = effectiveUsagePolicyId;
+            return this;
+        }
+
+        /**
+         * @param effectiveUsagePolicyId (string) - The policy that is applied to the instance
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveUsagePolicyId(String effectiveUsagePolicyId) {
+            return effectiveUsagePolicyId(Output.of(effectiveUsagePolicyId));
+        }
+
+        /**
+         * @param enablePgNativeLogin Whether to enable PG native password login on the instance. Defaults to false
          * 
          * @return builder
          * 
@@ -681,7 +819,7 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param enablePgNativeLogin Whether the instance has PG native password login enabled. Defaults to true
+         * @param enablePgNativeLogin Whether to enable PG native password login on the instance. Defaults to false
          * 
          * @return builder
          * 
@@ -734,7 +872,7 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param nodeCount The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
-         * 1 primary and 0 secondaries
+         * 1 primary and 0 secondaries. This field is input only, see effectiveNodeCount for the output
          * 
          * @return builder
          * 
@@ -746,7 +884,7 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param nodeCount The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
-         * 1 primary and 0 secondaries
+         * 1 primary and 0 secondaries. This field is input only, see effectiveNodeCount for the output
          * 
          * @return builder
          * 
@@ -915,7 +1053,7 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param stopped Whether the instance is stopped
+         * @param stopped Whether to stop the instance. An input only param, see effectiveStopped for the output
          * 
          * @return builder
          * 
@@ -926,7 +1064,7 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param stopped Whether the instance is stopped
+         * @param stopped Whether to stop the instance. An input only param, see effectiveStopped for the output
          * 
          * @return builder
          * 
@@ -957,24 +1095,24 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param workspaceId Workspace ID of the resource
+         * @param usagePolicyId The desired usage policy to associate with the instance
          * 
          * @return builder
          * 
          */
-        public Builder workspaceId(@Nullable Output<String> workspaceId) {
-            $.workspaceId = workspaceId;
+        public Builder usagePolicyId(@Nullable Output<String> usagePolicyId) {
+            $.usagePolicyId = usagePolicyId;
             return this;
         }
 
         /**
-         * @param workspaceId Workspace ID of the resource
+         * @param usagePolicyId The desired usage policy to associate with the instance
          * 
          * @return builder
          * 
          */
-        public Builder workspaceId(String workspaceId) {
-            return workspaceId(Output.of(workspaceId));
+        public Builder usagePolicyId(String usagePolicyId) {
+            return usagePolicyId(Output.of(usagePolicyId));
         }
 
         public DatabaseInstanceState build() {

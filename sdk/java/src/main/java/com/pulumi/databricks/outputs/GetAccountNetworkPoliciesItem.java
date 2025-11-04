@@ -5,10 +5,9 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetAccountNetworkPoliciesItemEgress;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAccountNetworkPoliciesItem {
@@ -16,39 +15,39 @@ public final class GetAccountNetworkPoliciesItem {
      * @return (string) - The associated account ID for this Network Policy object
      * 
      */
-    private @Nullable String accountId;
+    private String accountId;
     /**
      * @return (NetworkPolicyEgress) - The network policies applying for egress traffic
      * 
      */
-    private @Nullable GetAccountNetworkPoliciesItemEgress egress;
+    private GetAccountNetworkPoliciesItemEgress egress;
     /**
      * @return (string) - The unique identifier for the network policy
      * 
      */
-    private @Nullable String networkPolicyId;
+    private String networkPolicyId;
 
     private GetAccountNetworkPoliciesItem() {}
     /**
      * @return (string) - The associated account ID for this Network Policy object
      * 
      */
-    public Optional<String> accountId() {
-        return Optional.ofNullable(this.accountId);
+    public String accountId() {
+        return this.accountId;
     }
     /**
      * @return (NetworkPolicyEgress) - The network policies applying for egress traffic
      * 
      */
-    public Optional<GetAccountNetworkPoliciesItemEgress> egress() {
-        return Optional.ofNullable(this.egress);
+    public GetAccountNetworkPoliciesItemEgress egress() {
+        return this.egress;
     }
     /**
      * @return (string) - The unique identifier for the network policy
      * 
      */
-    public Optional<String> networkPolicyId() {
-        return Optional.ofNullable(this.networkPolicyId);
+    public String networkPolicyId() {
+        return this.networkPolicyId;
     }
 
     public static Builder builder() {
@@ -60,9 +59,9 @@ public final class GetAccountNetworkPoliciesItem {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String accountId;
-        private @Nullable GetAccountNetworkPoliciesItemEgress egress;
-        private @Nullable String networkPolicyId;
+        private String accountId;
+        private GetAccountNetworkPoliciesItemEgress egress;
+        private String networkPolicyId;
         public Builder() {}
         public Builder(GetAccountNetworkPoliciesItem defaults) {
     	      Objects.requireNonNull(defaults);
@@ -72,20 +71,26 @@ public final class GetAccountNetworkPoliciesItem {
         }
 
         @CustomType.Setter
-        public Builder accountId(@Nullable String accountId) {
-
+        public Builder accountId(String accountId) {
+            if (accountId == null) {
+              throw new MissingRequiredPropertyException("GetAccountNetworkPoliciesItem", "accountId");
+            }
             this.accountId = accountId;
             return this;
         }
         @CustomType.Setter
-        public Builder egress(@Nullable GetAccountNetworkPoliciesItemEgress egress) {
-
+        public Builder egress(GetAccountNetworkPoliciesItemEgress egress) {
+            if (egress == null) {
+              throw new MissingRequiredPropertyException("GetAccountNetworkPoliciesItem", "egress");
+            }
             this.egress = egress;
             return this;
         }
         @CustomType.Setter
-        public Builder networkPolicyId(@Nullable String networkPolicyId) {
-
+        public Builder networkPolicyId(String networkPolicyId) {
+            if (networkPolicyId == null) {
+              throw new MissingRequiredPropertyException("GetAccountNetworkPoliciesItem", "networkPolicyId");
+            }
             this.networkPolicyId = networkPolicyId;
             return this;
         }

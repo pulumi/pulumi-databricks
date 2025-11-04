@@ -24,6 +24,12 @@ namespace Pulumi.Databricks.Inputs
         [Input("maven")]
         public Input<Inputs.JobTaskLibraryMavenGetArgs>? Maven { get; set; }
 
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.JobTaskLibraryProviderConfigGetArgs>? ProviderConfig { get; set; }
+
         [Input("pypi")]
         public Input<Inputs.JobTaskLibraryPypiGetArgs>? Pypi { get; set; }
 

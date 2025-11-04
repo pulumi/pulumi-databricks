@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetSparkVersionProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
@@ -38,6 +39,7 @@ public final class GetSparkVersionResult {
      */
     @Deprecated /* Specify runtime_engine=""PHOTON"" in the cluster configuration */
     private @Nullable Boolean photon;
+    private @Nullable GetSparkVersionProviderConfig providerConfig;
     private @Nullable String scala;
     private @Nullable String sparkVersion;
 
@@ -85,6 +87,9 @@ public final class GetSparkVersionResult {
     public Optional<Boolean> photon() {
         return Optional.ofNullable(this.photon);
     }
+    public Optional<GetSparkVersionProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
     public Optional<String> scala() {
         return Optional.ofNullable(this.scala);
     }
@@ -110,6 +115,7 @@ public final class GetSparkVersionResult {
         private @Nullable Boolean longTermSupport;
         private @Nullable Boolean ml;
         private @Nullable Boolean photon;
+        private @Nullable GetSparkVersionProviderConfig providerConfig;
         private @Nullable String scala;
         private @Nullable String sparkVersion;
         public Builder() {}
@@ -124,6 +130,7 @@ public final class GetSparkVersionResult {
     	      this.longTermSupport = defaults.longTermSupport;
     	      this.ml = defaults.ml;
     	      this.photon = defaults.photon;
+    	      this.providerConfig = defaults.providerConfig;
     	      this.scala = defaults.scala;
     	      this.sparkVersion = defaults.sparkVersion;
         }
@@ -185,6 +192,12 @@ public final class GetSparkVersionResult {
             return this;
         }
         @CustomType.Setter
+        public Builder providerConfig(@Nullable GetSparkVersionProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder scala(@Nullable String scala) {
 
             this.scala = scala;
@@ -207,6 +220,7 @@ public final class GetSparkVersionResult {
             _resultValue.longTermSupport = longTermSupport;
             _resultValue.ml = ml;
             _resultValue.photon = photon;
+            _resultValue.providerConfig = providerConfig;
             _resultValue.scala = scala;
             _resultValue.sparkVersion = sparkVersion;
             return _resultValue;

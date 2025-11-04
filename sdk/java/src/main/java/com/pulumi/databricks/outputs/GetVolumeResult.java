@@ -4,10 +4,13 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetVolumeProviderConfig;
 import com.pulumi.databricks.outputs.GetVolumeVolumeInfo;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetVolumeResult {
@@ -21,6 +24,7 @@ public final class GetVolumeResult {
      * 
      */
     private String name;
+    private @Nullable GetVolumeProviderConfig providerConfig;
     /**
      * @return `VolumeInfo` object for a Unity Catalog volume. This contains the following attributes:
      * 
@@ -42,6 +46,9 @@ public final class GetVolumeResult {
     public String name() {
         return this.name;
     }
+    public Optional<GetVolumeProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
     /**
      * @return `VolumeInfo` object for a Unity Catalog volume. This contains the following attributes:
      * 
@@ -61,12 +68,14 @@ public final class GetVolumeResult {
     public static final class Builder {
         private String id;
         private String name;
+        private @Nullable GetVolumeProviderConfig providerConfig;
         private GetVolumeVolumeInfo volumeInfo;
         public Builder() {}
         public Builder(GetVolumeResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
     	      this.name = defaults.name;
+    	      this.providerConfig = defaults.providerConfig;
     	      this.volumeInfo = defaults.volumeInfo;
         }
 
@@ -87,6 +96,12 @@ public final class GetVolumeResult {
             return this;
         }
         @CustomType.Setter
+        public Builder providerConfig(@Nullable GetVolumeProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder volumeInfo(GetVolumeVolumeInfo volumeInfo) {
             if (volumeInfo == null) {
               throw new MissingRequiredPropertyException("GetVolumeResult", "volumeInfo");
@@ -98,6 +113,7 @@ public final class GetVolumeResult {
             final var _resultValue = new GetVolumeResult();
             _resultValue.id = id;
             _resultValue.name = name;
+            _resultValue.providerConfig = providerConfig;
             _resultValue.volumeInfo = volumeInfo;
             return _resultValue;
         }

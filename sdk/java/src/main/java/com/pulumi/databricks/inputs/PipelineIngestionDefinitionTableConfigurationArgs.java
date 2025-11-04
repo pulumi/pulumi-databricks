@@ -6,6 +6,7 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.PipelineIngestionDefinitionTableConfigurationQueryBasedConnectorConfigArgs;
+import com.pulumi.databricks.inputs.PipelineIngestionDefinitionTableConfigurationWorkdayReportParametersArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -67,6 +68,13 @@ public final class PipelineIngestionDefinitionTableConfigurationArgs extends com
         return Optional.ofNullable(this.sequenceBies);
     }
 
+    @Import(name="workdayReportParameters")
+    private @Nullable Output<PipelineIngestionDefinitionTableConfigurationWorkdayReportParametersArgs> workdayReportParameters;
+
+    public Optional<Output<PipelineIngestionDefinitionTableConfigurationWorkdayReportParametersArgs>> workdayReportParameters() {
+        return Optional.ofNullable(this.workdayReportParameters);
+    }
+
     private PipelineIngestionDefinitionTableConfigurationArgs() {}
 
     private PipelineIngestionDefinitionTableConfigurationArgs(PipelineIngestionDefinitionTableConfigurationArgs $) {
@@ -77,6 +85,7 @@ public final class PipelineIngestionDefinitionTableConfigurationArgs extends com
         this.salesforceIncludeFormulaFields = $.salesforceIncludeFormulaFields;
         this.scdType = $.scdType;
         this.sequenceBies = $.sequenceBies;
+        this.workdayReportParameters = $.workdayReportParameters;
     }
 
     public static Builder builder() {
@@ -174,6 +183,15 @@ public final class PipelineIngestionDefinitionTableConfigurationArgs extends com
 
         public Builder sequenceBies(String... sequenceBies) {
             return sequenceBies(List.of(sequenceBies));
+        }
+
+        public Builder workdayReportParameters(@Nullable Output<PipelineIngestionDefinitionTableConfigurationWorkdayReportParametersArgs> workdayReportParameters) {
+            $.workdayReportParameters = workdayReportParameters;
+            return this;
+        }
+
+        public Builder workdayReportParameters(PipelineIngestionDefinitionTableConfigurationWorkdayReportParametersArgs workdayReportParameters) {
+            return workdayReportParameters(Output.of(workdayReportParameters));
         }
 
         public PipelineIngestionDefinitionTableConfigurationArgs build() {

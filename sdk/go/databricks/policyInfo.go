@@ -12,6 +12,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+//
 // ## Import
 //
 // As of Pulumi v1.5, resources can be imported through configuration.
@@ -29,7 +31,7 @@ import (
 // If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
 //
 // ```sh
-// $ pulumi import databricks:index/policyInfo:PolicyInfo databricks_policy_info "on_securable_type,on_securable_fullname,name"
+// $ pulumi import databricks:index/policyInfo:PolicyInfo this "on_securable_type,on_securable_fullname,name"
 // ```
 type PolicyInfo struct {
 	pulumi.CustomResourceState
@@ -79,8 +81,6 @@ type PolicyInfo struct {
 	UpdatedBy pulumi.StringOutput `pulumi:"updatedBy"`
 	// Optional condition when the policy should take effect
 	WhenCondition pulumi.StringPtrOutput `pulumi:"whenCondition"`
-	// Workspace ID of the resource
-	WorkspaceId pulumi.StringPtrOutput `pulumi:"workspaceId"`
 }
 
 // NewPolicyInfo registers a new resource with the given unique name, arguments, and options.
@@ -167,8 +167,6 @@ type policyInfoState struct {
 	UpdatedBy *string `pulumi:"updatedBy"`
 	// Optional condition when the policy should take effect
 	WhenCondition *string `pulumi:"whenCondition"`
-	// Workspace ID of the resource
-	WorkspaceId *string `pulumi:"workspaceId"`
 }
 
 type PolicyInfoState struct {
@@ -217,8 +215,6 @@ type PolicyInfoState struct {
 	UpdatedBy pulumi.StringPtrInput
 	// Optional condition when the policy should take effect
 	WhenCondition pulumi.StringPtrInput
-	// Workspace ID of the resource
-	WorkspaceId pulumi.StringPtrInput
 }
 
 func (PolicyInfoState) ElementType() reflect.Type {
@@ -263,8 +259,6 @@ type policyInfoArgs struct {
 	ToPrincipals []string `pulumi:"toPrincipals"`
 	// Optional condition when the policy should take effect
 	WhenCondition *string `pulumi:"whenCondition"`
-	// Workspace ID of the resource
-	WorkspaceId *string `pulumi:"workspaceId"`
 }
 
 // The set of arguments for constructing a PolicyInfo resource.
@@ -306,8 +300,6 @@ type PolicyInfoArgs struct {
 	ToPrincipals pulumi.StringArrayInput
 	// Optional condition when the policy should take effect
 	WhenCondition pulumi.StringPtrInput
-	// Workspace ID of the resource
-	WorkspaceId pulumi.StringPtrInput
 }
 
 func (PolicyInfoArgs) ElementType() reflect.Type {
@@ -488,11 +480,6 @@ func (o PolicyInfoOutput) UpdatedBy() pulumi.StringOutput {
 // Optional condition when the policy should take effect
 func (o PolicyInfoOutput) WhenCondition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PolicyInfo) pulumi.StringPtrOutput { return v.WhenCondition }).(pulumi.StringPtrOutput)
-}
-
-// Workspace ID of the resource
-func (o PolicyInfoOutput) WorkspaceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PolicyInfo) pulumi.StringPtrOutput { return v.WorkspaceId }).(pulumi.StringPtrOutput)
 }
 
 type PolicyInfoArrayOutput struct{ *pulumi.OutputState }

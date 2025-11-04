@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.GetMlflowModelLatestVersion;
+import com.pulumi.databricks.inputs.GetMlflowModelProviderConfig;
 import com.pulumi.databricks.inputs.GetMlflowModelTag;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
@@ -79,6 +80,21 @@ public final class GetMlflowModelPlainArgs extends com.pulumi.resources.InvokeAr
     }
 
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable GetMlflowModelProviderConfig providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Optional<GetMlflowModelProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
+    /**
      * Array of tags associated with the model.
      * 
      */
@@ -115,6 +131,7 @@ public final class GetMlflowModelPlainArgs extends com.pulumi.resources.InvokeAr
         this.latestVersions = $.latestVersions;
         this.name = $.name;
         this.permissionLevel = $.permissionLevel;
+        this.providerConfig = $.providerConfig;
         this.tags = $.tags;
         this.userId = $.userId;
     }
@@ -188,6 +205,17 @@ public final class GetMlflowModelPlainArgs extends com.pulumi.resources.InvokeAr
          */
         public Builder permissionLevel(@Nullable String permissionLevel) {
             $.permissionLevel = permissionLevel;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable GetMlflowModelProviderConfig providerConfig) {
+            $.providerConfig = providerConfig;
             return this;
         }
 

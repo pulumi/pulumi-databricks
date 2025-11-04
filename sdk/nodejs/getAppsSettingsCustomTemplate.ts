@@ -7,6 +7,8 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
  * This data source can be used to get a single Custom Template.
  *
  * ## Example Usage
@@ -25,13 +27,7 @@ import * as utilities from "./utilities";
 export function getAppsSettingsCustomTemplate(args: GetAppsSettingsCustomTemplateArgs, opts?: pulumi.InvokeOptions): Promise<GetAppsSettingsCustomTemplateResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getAppsSettingsCustomTemplate:getAppsSettingsCustomTemplate", {
-        "description": args.description,
-        "gitProvider": args.gitProvider,
-        "gitRepo": args.gitRepo,
-        "manifest": args.manifest,
         "name": args.name,
-        "path": args.path,
-        "workspaceId": args.workspaceId,
     }, opts);
 }
 
@@ -40,34 +36,10 @@ export function getAppsSettingsCustomTemplate(args: GetAppsSettingsCustomTemplat
  */
 export interface GetAppsSettingsCustomTemplateArgs {
     /**
-     * (string) - Description of the App Resource
-     */
-    description?: string;
-    /**
-     * (string) - The Git provider of the template
-     */
-    gitProvider: string;
-    /**
-     * (string) - The Git repository URL that the template resides in
-     */
-    gitRepo: string;
-    /**
-     * (AppManifest) - The manifest of the template. It defines fields and default values when installing the template
-     */
-    manifest: inputs.GetAppsSettingsCustomTemplateManifest;
-    /**
      * The name of the template. It must contain only alphanumeric characters, hyphens, underscores, and whitespaces.
      * It must be unique within the workspace
      */
     name: string;
-    /**
-     * (string) - The path to the template within the Git repository
-     */
-    path: string;
-    /**
-     * Workspace ID of the resource
-     */
-    workspaceId?: string;
 }
 
 /**
@@ -81,7 +53,7 @@ export interface GetAppsSettingsCustomTemplateResult {
     /**
      * (string) - Description of the App Resource
      */
-    readonly description?: string;
+    readonly description: string;
     /**
      * (string) - The Git provider of the template
      */
@@ -106,9 +78,10 @@ export interface GetAppsSettingsCustomTemplateResult {
      * (string) - The path to the template within the Git repository
      */
     readonly path: string;
-    readonly workspaceId?: string;
 }
 /**
+ * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
  * This data source can be used to get a single Custom Template.
  *
  * ## Example Usage
@@ -127,13 +100,7 @@ export interface GetAppsSettingsCustomTemplateResult {
 export function getAppsSettingsCustomTemplateOutput(args: GetAppsSettingsCustomTemplateOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAppsSettingsCustomTemplateResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getAppsSettingsCustomTemplate:getAppsSettingsCustomTemplate", {
-        "description": args.description,
-        "gitProvider": args.gitProvider,
-        "gitRepo": args.gitRepo,
-        "manifest": args.manifest,
         "name": args.name,
-        "path": args.path,
-        "workspaceId": args.workspaceId,
     }, opts);
 }
 
@@ -142,32 +109,8 @@ export function getAppsSettingsCustomTemplateOutput(args: GetAppsSettingsCustomT
  */
 export interface GetAppsSettingsCustomTemplateOutputArgs {
     /**
-     * (string) - Description of the App Resource
-     */
-    description?: pulumi.Input<string>;
-    /**
-     * (string) - The Git provider of the template
-     */
-    gitProvider: pulumi.Input<string>;
-    /**
-     * (string) - The Git repository URL that the template resides in
-     */
-    gitRepo: pulumi.Input<string>;
-    /**
-     * (AppManifest) - The manifest of the template. It defines fields and default values when installing the template
-     */
-    manifest: pulumi.Input<inputs.GetAppsSettingsCustomTemplateManifestArgs>;
-    /**
      * The name of the template. It must contain only alphanumeric characters, hyphens, underscores, and whitespaces.
      * It must be unique within the workspace
      */
     name: pulumi.Input<string>;
-    /**
-     * (string) - The path to the template within the Git repository
-     */
-    path: pulumi.Input<string>;
-    /**
-     * Workspace ID of the resource
-     */
-    workspaceId?: pulumi.Input<string>;
 }

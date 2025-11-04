@@ -20,6 +20,8 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * 
  * ## Import
  * 
  * As of Pulumi v1.5, resources can be imported through configuration.
@@ -37,7 +39,7 @@ import javax.annotation.Nullable;
  * If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
  * 
  * ```sh
- * $ pulumi import databricks:index/policyInfo:PolicyInfo databricks_policy_info &#34;on_securable_type,on_securable_fullname,name&#34;
+ * $ pulumi import databricks:index/policyInfo:PolicyInfo this &#34;on_securable_type,on_securable_fullname,name&#34;
  * ```
  * 
  */
@@ -292,20 +294,6 @@ public class PolicyInfo extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> whenCondition() {
         return Codegen.optional(this.whenCondition);
-    }
-    /**
-     * Workspace ID of the resource
-     * 
-     */
-    @Export(name="workspaceId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> workspaceId;
-
-    /**
-     * @return Workspace ID of the resource
-     * 
-     */
-    public Output<Optional<String>> workspaceId() {
-        return Codegen.optional(this.workspaceId);
     }
 
     /**

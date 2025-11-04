@@ -18,6 +18,18 @@ public final class GetRegisteredModelModelInfoAlias {
      */
     private @Nullable String aliasName;
     /**
+     * @return The name of the catalog where the schema and the registered model reside.
+     * 
+     */
+    private @Nullable String catalogName;
+    private @Nullable String id;
+    private @Nullable String modelName;
+    /**
+     * @return The name of the schema where the registered model resides.
+     * 
+     */
+    private @Nullable String schemaName;
+    /**
      * @return associated model version
      * 
      */
@@ -30,6 +42,26 @@ public final class GetRegisteredModelModelInfoAlias {
      */
     public Optional<String> aliasName() {
         return Optional.ofNullable(this.aliasName);
+    }
+    /**
+     * @return The name of the catalog where the schema and the registered model reside.
+     * 
+     */
+    public Optional<String> catalogName() {
+        return Optional.ofNullable(this.catalogName);
+    }
+    public Optional<String> id() {
+        return Optional.ofNullable(this.id);
+    }
+    public Optional<String> modelName() {
+        return Optional.ofNullable(this.modelName);
+    }
+    /**
+     * @return The name of the schema where the registered model resides.
+     * 
+     */
+    public Optional<String> schemaName() {
+        return Optional.ofNullable(this.schemaName);
     }
     /**
      * @return associated model version
@@ -49,11 +81,19 @@ public final class GetRegisteredModelModelInfoAlias {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String aliasName;
+        private @Nullable String catalogName;
+        private @Nullable String id;
+        private @Nullable String modelName;
+        private @Nullable String schemaName;
         private @Nullable Integer versionNum;
         public Builder() {}
         public Builder(GetRegisteredModelModelInfoAlias defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.aliasName = defaults.aliasName;
+    	      this.catalogName = defaults.catalogName;
+    	      this.id = defaults.id;
+    	      this.modelName = defaults.modelName;
+    	      this.schemaName = defaults.schemaName;
     	      this.versionNum = defaults.versionNum;
         }
 
@@ -61,6 +101,30 @@ public final class GetRegisteredModelModelInfoAlias {
         public Builder aliasName(@Nullable String aliasName) {
 
             this.aliasName = aliasName;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder catalogName(@Nullable String catalogName) {
+
+            this.catalogName = catalogName;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder id(@Nullable String id) {
+
+            this.id = id;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder modelName(@Nullable String modelName) {
+
+            this.modelName = modelName;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder schemaName(@Nullable String schemaName) {
+
+            this.schemaName = schemaName;
             return this;
         }
         @CustomType.Setter
@@ -72,6 +136,10 @@ public final class GetRegisteredModelModelInfoAlias {
         public GetRegisteredModelModelInfoAlias build() {
             final var _resultValue = new GetRegisteredModelModelInfoAlias();
             _resultValue.aliasName = aliasName;
+            _resultValue.catalogName = catalogName;
+            _resultValue.id = id;
+            _resultValue.modelName = modelName;
+            _resultValue.schemaName = schemaName;
             _resultValue.versionNum = versionNum;
             return _resultValue;
         }

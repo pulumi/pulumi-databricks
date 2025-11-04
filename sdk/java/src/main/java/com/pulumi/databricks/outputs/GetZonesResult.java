@@ -4,10 +4,13 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetZonesProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetZonesResult {
@@ -21,6 +24,7 @@ public final class GetZonesResult {
      * 
      */
     private String id;
+    private @Nullable GetZonesProviderConfig providerConfig;
     /**
      * @return This is a list of all the zones available for your subnets in your Databricks workspace.
      * 
@@ -42,6 +46,9 @@ public final class GetZonesResult {
     public String id() {
         return this.id;
     }
+    public Optional<GetZonesProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
     /**
      * @return This is a list of all the zones available for your subnets in your Databricks workspace.
      * 
@@ -61,12 +68,14 @@ public final class GetZonesResult {
     public static final class Builder {
         private String defaultZone;
         private String id;
+        private @Nullable GetZonesProviderConfig providerConfig;
         private List<String> zones;
         public Builder() {}
         public Builder(GetZonesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.defaultZone = defaults.defaultZone;
     	      this.id = defaults.id;
+    	      this.providerConfig = defaults.providerConfig;
     	      this.zones = defaults.zones;
         }
 
@@ -87,6 +96,12 @@ public final class GetZonesResult {
             return this;
         }
         @CustomType.Setter
+        public Builder providerConfig(@Nullable GetZonesProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder zones(List<String> zones) {
             if (zones == null) {
               throw new MissingRequiredPropertyException("GetZonesResult", "zones");
@@ -101,6 +116,7 @@ public final class GetZonesResult {
             final var _resultValue = new GetZonesResult();
             _resultValue.defaultZone = defaultZone;
             _resultValue.id = id;
+            _resultValue.providerConfig = providerConfig;
             _resultValue.zones = zones;
             return _resultValue;
         }

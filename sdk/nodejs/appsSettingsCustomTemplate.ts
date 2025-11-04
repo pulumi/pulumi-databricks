@@ -7,6 +7,8 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
  * Custom App Templates store the metadata of custom app code hosted in an external Git repository, enabling users to reuse boilerplate code when creating apps.
  *
  * ## Example Usage
@@ -57,7 +59,7 @@ import * as utilities from "./utilities";
  * If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
  *
  * ```sh
- * $ pulumi import databricks:index/appsSettingsCustomTemplate:AppsSettingsCustomTemplate databricks_apps_settings_custom_template "name"
+ * $ pulumi import databricks:index/appsSettingsCustomTemplate:AppsSettingsCustomTemplate this "name"
  * ```
  */
 export class AppsSettingsCustomTemplate extends pulumi.CustomResource {
@@ -117,10 +119,6 @@ export class AppsSettingsCustomTemplate extends pulumi.CustomResource {
      * The path to the template within the Git repository
      */
     declare public readonly path: pulumi.Output<string>;
-    /**
-     * Workspace ID of the resource
-     */
-    declare public readonly workspaceId: pulumi.Output<string | undefined>;
 
     /**
      * Create a AppsSettingsCustomTemplate resource with the given unique name, arguments, and options.
@@ -142,7 +140,6 @@ export class AppsSettingsCustomTemplate extends pulumi.CustomResource {
             resourceInputs["manifest"] = state?.manifest;
             resourceInputs["name"] = state?.name;
             resourceInputs["path"] = state?.path;
-            resourceInputs["workspaceId"] = state?.workspaceId;
         } else {
             const args = argsOrState as AppsSettingsCustomTemplateArgs | undefined;
             if (args?.gitProvider === undefined && !opts.urn) {
@@ -163,7 +160,6 @@ export class AppsSettingsCustomTemplate extends pulumi.CustomResource {
             resourceInputs["manifest"] = args?.manifest;
             resourceInputs["name"] = args?.name;
             resourceInputs["path"] = args?.path;
-            resourceInputs["workspaceId"] = args?.workspaceId;
             resourceInputs["creator"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -204,10 +200,6 @@ export interface AppsSettingsCustomTemplateState {
      * The path to the template within the Git repository
      */
     path?: pulumi.Input<string>;
-    /**
-     * Workspace ID of the resource
-     */
-    workspaceId?: pulumi.Input<string>;
 }
 
 /**
@@ -239,8 +231,4 @@ export interface AppsSettingsCustomTemplateArgs {
      * The path to the template within the Git repository
      */
     path: pulumi.Input<string>;
-    /**
-     * Workspace ID of the resource
-     */
-    workspaceId?: pulumi.Input<string>;
 }

@@ -20,13 +20,13 @@ namespace Pulumi.Databricks.Outputs
         /// <summary>
         /// (string)
         /// </summary>
-        public readonly string? Value;
+        public readonly string Value;
 
         [OutputConstructor]
         private GetMaterializedFeaturesFeatureTagsFeatureTagResult(
             string key,
 
-            string? value)
+            string value)
         {
             Key = key;
             Value = value;

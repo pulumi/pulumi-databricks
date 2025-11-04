@@ -38,6 +38,7 @@ export function getExternalLocation(args: GetExternalLocationArgs, opts?: pulumi
         "externalLocationInfo": args.externalLocationInfo,
         "id": args.id,
         "name": args.name,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -57,6 +58,10 @@ export interface GetExternalLocationArgs {
      * The name of the external location
      */
     name: string;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: inputs.GetExternalLocationProviderConfig;
 }
 
 /**
@@ -72,6 +77,7 @@ export interface GetExternalLocationResult {
      */
     readonly id: string;
     readonly name: string;
+    readonly providerConfig?: outputs.GetExternalLocationProviderConfig;
 }
 /**
  * Retrieves details about a databricks.ExternalLocation that were created by Pulumi or manually.
@@ -105,6 +111,7 @@ export function getExternalLocationOutput(args: GetExternalLocationOutputArgs, o
         "externalLocationInfo": args.externalLocationInfo,
         "id": args.id,
         "name": args.name,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -124,4 +131,8 @@ export interface GetExternalLocationOutputArgs {
      * The name of the external location
      */
     name: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.GetExternalLocationProviderConfigArgs>;
 }

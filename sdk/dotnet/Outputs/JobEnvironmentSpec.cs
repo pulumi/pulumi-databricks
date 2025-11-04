@@ -22,7 +22,7 @@ namespace Pulumi.Databricks.Outputs
         /// client version used by the environment. Each version comes with a specific Python version and a set of Python packages.
         /// </summary>
         public readonly string? EnvironmentVersion;
-        public readonly ImmutableArray<string> JarDependencies;
+        public readonly ImmutableArray<string> JavaDependencies;
 
         [OutputConstructor]
         private JobEnvironmentSpec(
@@ -32,12 +32,12 @@ namespace Pulumi.Databricks.Outputs
 
             string? environmentVersion,
 
-            ImmutableArray<string> jarDependencies)
+            ImmutableArray<string> javaDependencies)
         {
             Client = client;
             Dependencies = dependencies;
             EnvironmentVersion = environmentVersion;
-            JarDependencies = jarDependencies;
+            JavaDependencies = javaDependencies;
         }
     }
 }

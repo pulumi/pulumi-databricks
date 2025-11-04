@@ -12,25 +12,94 @@ namespace Pulumi.Databricks
     public static class GetTagPolicies
     {
         /// <summary>
+        /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
         /// This data source can be used to list all tag policies in the account.
         /// 
-        /// &gt; **Note** This resource can only be used with an account-level provider!
+        /// &gt; **Note** This resource can only be used with a workspace-level provider!
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Getting a list of all tag policies:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all = Databricks.GetTagPolicies.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["allTagPolicies"] = all.Apply(getTagPoliciesResult =&gt; getTagPoliciesResult.TagPolicies),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetTagPoliciesResult> InvokeAsync(GetTagPoliciesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTagPoliciesResult>("databricks:index/getTagPolicies:getTagPolicies", args ?? new GetTagPoliciesArgs(), options.WithDefaults());
 
         /// <summary>
+        /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
         /// This data source can be used to list all tag policies in the account.
         /// 
-        /// &gt; **Note** This resource can only be used with an account-level provider!
+        /// &gt; **Note** This resource can only be used with a workspace-level provider!
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Getting a list of all tag policies:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all = Databricks.GetTagPolicies.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["allTagPolicies"] = all.Apply(getTagPoliciesResult =&gt; getTagPoliciesResult.TagPolicies),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetTagPoliciesResult> Invoke(GetTagPoliciesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTagPoliciesResult>("databricks:index/getTagPolicies:getTagPolicies", args ?? new GetTagPoliciesInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
         /// This data source can be used to list all tag policies in the account.
         /// 
-        /// &gt; **Note** This resource can only be used with an account-level provider!
+        /// &gt; **Note** This resource can only be used with a workspace-level provider!
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Getting a list of all tag policies:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all = Databricks.GetTagPolicies.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["allTagPolicies"] = all.Apply(getTagPoliciesResult =&gt; getTagPoliciesResult.TagPolicies),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetTagPoliciesResult> Invoke(GetTagPoliciesInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetTagPoliciesResult>("databricks:index/getTagPolicies:getTagPolicies", args ?? new GetTagPoliciesInvokeArgs(), options.WithDefaults());
@@ -40,10 +109,12 @@ namespace Pulumi.Databricks
     public sealed class GetTagPoliciesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Workspace ID of the resource
+        /// The maximum number of results to return in this request. Fewer results may be returned than requested. If
+        /// unspecified or set to 0, this defaults to 1000. The maximum value is 1000; values above 1000 will be coerced down
+        /// to 1000
         /// </summary>
-        [Input("workspaceId")]
-        public string? WorkspaceId { get; set; }
+        [Input("pageSize")]
+        public int? PageSize { get; set; }
 
         public GetTagPoliciesArgs()
         {
@@ -54,10 +125,12 @@ namespace Pulumi.Databricks
     public sealed class GetTagPoliciesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Workspace ID of the resource
+        /// The maximum number of results to return in this request. Fewer results may be returned than requested. If
+        /// unspecified or set to 0, this defaults to 1000. The maximum value is 1000; values above 1000 will be coerced down
+        /// to 1000
         /// </summary>
-        [Input("workspaceId")]
-        public Input<string>? WorkspaceId { get; set; }
+        [Input("pageSize")]
+        public Input<int>? PageSize { get; set; }
 
         public GetTagPoliciesInvokeArgs()
         {
@@ -73,20 +146,20 @@ namespace Pulumi.Databricks
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly int? PageSize;
         public readonly ImmutableArray<Outputs.GetTagPoliciesTagPolicyResult> TagPolicies;
-        public readonly string? WorkspaceId;
 
         [OutputConstructor]
         private GetTagPoliciesResult(
             string id,
 
-            ImmutableArray<Outputs.GetTagPoliciesTagPolicyResult> tagPolicies,
+            int? pageSize,
 
-            string? workspaceId)
+            ImmutableArray<Outputs.GetTagPoliciesTagPolicyResult> tagPolicies)
         {
             Id = id;
+            PageSize = pageSize;
             TagPolicies = tagPolicies;
-            WorkspaceId = workspaceId;
         }
     }
 }

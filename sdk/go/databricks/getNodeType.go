@@ -87,6 +87,8 @@ func GetNodeType(ctx *pulumi.Context, args *GetNodeTypeArgs, opts ...pulumi.Invo
 
 // A collection of arguments for invoking getNodeType.
 type GetNodeTypeArgs struct {
+	// if we should limit the search only to nodes with AWS Graviton or Azure Cobalt CPUs. Default to _false_.
+	Arm *bool `pulumi:"arm"`
 	// Node category, which can be one of (depending on the cloud environment, could be checked with `databricks clusters list-node-types -o json|jq '.node_types[]|.category'|sort |uniq`):
 	// * `General Purpose` (all clouds)
 	// * `General Purpose (HDD)` (Azure)
@@ -100,7 +102,9 @@ type GetNodeTypeArgs struct {
 	Fleet *bool `pulumi:"fleet"`
 	// Number of gigabytes per core available on instance. Conflicts with `minMemoryGb`. Defaults to _0_.
 	GbPerCore *int `pulumi:"gbPerCore"`
-	// if we should limit the search only to nodes with AWS Graviton or Azure Cobalt CPUs. Default to _false_.
+	// if we should limit the search only to nodes with AWS Graviton or Azure Cobalt CPUs. Default to _false_. *Use `arm` instead!*
+	//
+	// Deprecated: Use `arm` instead
 	Graviton *bool `pulumi:"graviton"`
 	// node type, that can be used for databricks_job, databricks_cluster, or databricks_instance_pool.
 	Id *string `pulumi:"id"`
@@ -120,27 +124,32 @@ type GetNodeTypeArgs struct {
 	PhotonDriverCapable *bool `pulumi:"photonDriverCapable"`
 	// Pick only nodes that can run Photon workers. Defaults to _false_.
 	PhotonWorkerCapable *bool `pulumi:"photonWorkerCapable"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *GetNodeTypeProviderConfig `pulumi:"providerConfig"`
 	// Pick only nodes that support port forwarding. Defaults to _false_.
 	SupportPortForwarding *bool `pulumi:"supportPortForwarding"`
 }
 
 // A collection of values returned by getNodeType.
 type GetNodeTypeResult struct {
+	Arm       *bool   `pulumi:"arm"`
 	Category  *string `pulumi:"category"`
 	Fleet     *bool   `pulumi:"fleet"`
 	GbPerCore *int    `pulumi:"gbPerCore"`
-	Graviton  *bool   `pulumi:"graviton"`
+	// Deprecated: Use `arm` instead
+	Graviton *bool `pulumi:"graviton"`
 	// node type, that can be used for databricks_job, databricks_cluster, or databricks_instance_pool.
-	Id                    string `pulumi:"id"`
-	IsIoCacheEnabled      *bool  `pulumi:"isIoCacheEnabled"`
-	LocalDisk             *bool  `pulumi:"localDisk"`
-	LocalDiskMinSize      *int   `pulumi:"localDiskMinSize"`
-	MinCores              *int   `pulumi:"minCores"`
-	MinGpus               *int   `pulumi:"minGpus"`
-	MinMemoryGb           *int   `pulumi:"minMemoryGb"`
-	PhotonDriverCapable   *bool  `pulumi:"photonDriverCapable"`
-	PhotonWorkerCapable   *bool  `pulumi:"photonWorkerCapable"`
-	SupportPortForwarding *bool  `pulumi:"supportPortForwarding"`
+	Id                    string                     `pulumi:"id"`
+	IsIoCacheEnabled      *bool                      `pulumi:"isIoCacheEnabled"`
+	LocalDisk             *bool                      `pulumi:"localDisk"`
+	LocalDiskMinSize      *int                       `pulumi:"localDiskMinSize"`
+	MinCores              *int                       `pulumi:"minCores"`
+	MinGpus               *int                       `pulumi:"minGpus"`
+	MinMemoryGb           *int                       `pulumi:"minMemoryGb"`
+	PhotonDriverCapable   *bool                      `pulumi:"photonDriverCapable"`
+	PhotonWorkerCapable   *bool                      `pulumi:"photonWorkerCapable"`
+	ProviderConfig        *GetNodeTypeProviderConfig `pulumi:"providerConfig"`
+	SupportPortForwarding *bool                      `pulumi:"supportPortForwarding"`
 }
 
 func GetNodeTypeOutput(ctx *pulumi.Context, args GetNodeTypeOutputArgs, opts ...pulumi.InvokeOption) GetNodeTypeResultOutput {
@@ -154,6 +163,8 @@ func GetNodeTypeOutput(ctx *pulumi.Context, args GetNodeTypeOutputArgs, opts ...
 
 // A collection of arguments for invoking getNodeType.
 type GetNodeTypeOutputArgs struct {
+	// if we should limit the search only to nodes with AWS Graviton or Azure Cobalt CPUs. Default to _false_.
+	Arm pulumi.BoolPtrInput `pulumi:"arm"`
 	// Node category, which can be one of (depending on the cloud environment, could be checked with `databricks clusters list-node-types -o json|jq '.node_types[]|.category'|sort |uniq`):
 	// * `General Purpose` (all clouds)
 	// * `General Purpose (HDD)` (Azure)
@@ -167,7 +178,9 @@ type GetNodeTypeOutputArgs struct {
 	Fleet pulumi.BoolPtrInput `pulumi:"fleet"`
 	// Number of gigabytes per core available on instance. Conflicts with `minMemoryGb`. Defaults to _0_.
 	GbPerCore pulumi.IntPtrInput `pulumi:"gbPerCore"`
-	// if we should limit the search only to nodes with AWS Graviton or Azure Cobalt CPUs. Default to _false_.
+	// if we should limit the search only to nodes with AWS Graviton or Azure Cobalt CPUs. Default to _false_. *Use `arm` instead!*
+	//
+	// Deprecated: Use `arm` instead
 	Graviton pulumi.BoolPtrInput `pulumi:"graviton"`
 	// node type, that can be used for databricks_job, databricks_cluster, or databricks_instance_pool.
 	Id pulumi.StringPtrInput `pulumi:"id"`
@@ -187,6 +200,8 @@ type GetNodeTypeOutputArgs struct {
 	PhotonDriverCapable pulumi.BoolPtrInput `pulumi:"photonDriverCapable"`
 	// Pick only nodes that can run Photon workers. Defaults to _false_.
 	PhotonWorkerCapable pulumi.BoolPtrInput `pulumi:"photonWorkerCapable"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig GetNodeTypeProviderConfigPtrInput `pulumi:"providerConfig"`
 	// Pick only nodes that support port forwarding. Defaults to _false_.
 	SupportPortForwarding pulumi.BoolPtrInput `pulumi:"supportPortForwarding"`
 }
@@ -210,6 +225,10 @@ func (o GetNodeTypeResultOutput) ToGetNodeTypeResultOutputWithContext(ctx contex
 	return o
 }
 
+func (o GetNodeTypeResultOutput) Arm() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetNodeTypeResult) *bool { return v.Arm }).(pulumi.BoolPtrOutput)
+}
+
 func (o GetNodeTypeResultOutput) Category() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetNodeTypeResult) *string { return v.Category }).(pulumi.StringPtrOutput)
 }
@@ -222,6 +241,7 @@ func (o GetNodeTypeResultOutput) GbPerCore() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetNodeTypeResult) *int { return v.GbPerCore }).(pulumi.IntPtrOutput)
 }
 
+// Deprecated: Use `arm` instead
 func (o GetNodeTypeResultOutput) Graviton() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetNodeTypeResult) *bool { return v.Graviton }).(pulumi.BoolPtrOutput)
 }
@@ -261,6 +281,10 @@ func (o GetNodeTypeResultOutput) PhotonDriverCapable() pulumi.BoolPtrOutput {
 
 func (o GetNodeTypeResultOutput) PhotonWorkerCapable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetNodeTypeResult) *bool { return v.PhotonWorkerCapable }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetNodeTypeResultOutput) ProviderConfig() GetNodeTypeProviderConfigPtrOutput {
+	return o.ApplyT(func(v GetNodeTypeResult) *GetNodeTypeProviderConfig { return v.ProviderConfig }).(GetNodeTypeProviderConfigPtrOutput)
 }
 
 func (o GetNodeTypeResultOutput) SupportPortForwarding() pulumi.BoolPtrOutput {

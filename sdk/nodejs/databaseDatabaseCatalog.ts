@@ -5,6 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
  * Database Catalogs are databases inside a Lakebase Database Instance which are synced into a Postgres Catalog inside Unity Catalog.
  *
  * ## Example Usage
@@ -70,7 +72,7 @@ import * as utilities from "./utilities";
  * If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
  *
  * ```sh
- * $ pulumi import databricks:index/databaseDatabaseCatalog:DatabaseDatabaseCatalog databricks_database_database_catalog "name"
+ * $ pulumi import databricks:index/databaseDatabaseCatalog:DatabaseDatabaseCatalog this "name"
  * ```
  */
 export class DatabaseDatabaseCatalog extends pulumi.CustomResource {
@@ -118,10 +120,6 @@ export class DatabaseDatabaseCatalog extends pulumi.CustomResource {
      * (string)
      */
     declare public /*out*/ readonly uid: pulumi.Output<string>;
-    /**
-     * Workspace ID of the resource
-     */
-    declare public readonly workspaceId: pulumi.Output<string | undefined>;
 
     /**
      * Create a DatabaseDatabaseCatalog resource with the given unique name, arguments, and options.
@@ -141,7 +139,6 @@ export class DatabaseDatabaseCatalog extends pulumi.CustomResource {
             resourceInputs["databaseName"] = state?.databaseName;
             resourceInputs["name"] = state?.name;
             resourceInputs["uid"] = state?.uid;
-            resourceInputs["workspaceId"] = state?.workspaceId;
         } else {
             const args = argsOrState as DatabaseDatabaseCatalogArgs | undefined;
             if (args?.databaseInstanceName === undefined && !opts.urn) {
@@ -154,7 +151,6 @@ export class DatabaseDatabaseCatalog extends pulumi.CustomResource {
             resourceInputs["databaseInstanceName"] = args?.databaseInstanceName;
             resourceInputs["databaseName"] = args?.databaseName;
             resourceInputs["name"] = args?.name;
-            resourceInputs["workspaceId"] = args?.workspaceId;
             resourceInputs["uid"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -183,10 +179,6 @@ export interface DatabaseDatabaseCatalogState {
      * (string)
      */
     uid?: pulumi.Input<string>;
-    /**
-     * Workspace ID of the resource
-     */
-    workspaceId?: pulumi.Input<string>;
 }
 
 /**
@@ -206,8 +198,4 @@ export interface DatabaseDatabaseCatalogArgs {
      * The name of the catalog in UC
      */
     name?: pulumi.Input<string>;
-    /**
-     * Workspace ID of the resource
-     */
-    workspaceId?: pulumi.Input<string>;
 }

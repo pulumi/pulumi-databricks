@@ -16,7 +16,7 @@ namespace Pulumi.Databricks.Inputs
         public Input<string> Permission { get; set; } = null!;
 
         /// <summary>
-        /// . Possible values are: `VOLUME`
+        /// Possible values are: `TABLE`, `VOLUME`
         /// </summary>
         [Input("securableType", required: true)]
         public Input<string> SecurableType { get; set; } = null!;

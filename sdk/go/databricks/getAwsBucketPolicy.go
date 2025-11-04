@@ -22,8 +22,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-aws/sdk/v6/go/aws/iam"
-//	"github.com/pulumi/pulumi-aws/sdk/v6/go/aws/s3"
+//	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/s3"
 //	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -31,7 +30,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			thisBucketV2, err := s3.NewBucketV2(ctx, "this", &s3.BucketV2Args{
+//			thisBucket, err := s3.NewBucket(ctx, "this", &s3.BucketArgs{
 //				Bucket:       pulumi.String("<unique_bucket_name>"),
 //				ForceDestroy: pulumi.Bool(true),
 //			})
@@ -39,10 +38,10 @@ import (
 //				return err
 //			}
 //			this := databricks.GetAwsBucketPolicyOutput(ctx, databricks.GetAwsBucketPolicyOutputArgs{
-//				Bucket: thisBucketV2.Bucket,
+//				Bucket: thisBucket.Bucket,
 //			}, nil)
 //			_, err = s3.NewBucketPolicy(ctx, "this", &s3.BucketPolicyArgs{
-//				Bucket: thisBucketV2.ID(),
+//				Bucket: thisBucket.ID(),
 //				Policy: pulumi.String(this.ApplyT(func(this databricks.GetAwsBucketPolicyResult) (*string, error) {
 //					return &this.Json, nil
 //				}).(pulumi.StringPtrOutput)),

@@ -11,6 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
 func LookupMaterializedFeaturesFeatureTag(ctx *pulumi.Context, args *LookupMaterializedFeaturesFeatureTagArgs, opts ...pulumi.InvokeOption) (*LookupMaterializedFeaturesFeatureTagResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupMaterializedFeaturesFeatureTagResult
@@ -24,10 +25,6 @@ func LookupMaterializedFeaturesFeatureTag(ctx *pulumi.Context, args *LookupMater
 // A collection of arguments for invoking getMaterializedFeaturesFeatureTag.
 type LookupMaterializedFeaturesFeatureTagArgs struct {
 	Key string `pulumi:"key"`
-	// (string)
-	Value *string `pulumi:"value"`
-	// Workspace ID of the resource
-	WorkspaceId *string `pulumi:"workspaceId"`
 }
 
 // A collection of values returned by getMaterializedFeaturesFeatureTag.
@@ -37,8 +34,7 @@ type LookupMaterializedFeaturesFeatureTagResult struct {
 	// (string)
 	Key string `pulumi:"key"`
 	// (string)
-	Value       *string `pulumi:"value"`
-	WorkspaceId *string `pulumi:"workspaceId"`
+	Value string `pulumi:"value"`
 }
 
 func LookupMaterializedFeaturesFeatureTagOutput(ctx *pulumi.Context, args LookupMaterializedFeaturesFeatureTagOutputArgs, opts ...pulumi.InvokeOption) LookupMaterializedFeaturesFeatureTagResultOutput {
@@ -53,10 +49,6 @@ func LookupMaterializedFeaturesFeatureTagOutput(ctx *pulumi.Context, args Lookup
 // A collection of arguments for invoking getMaterializedFeaturesFeatureTag.
 type LookupMaterializedFeaturesFeatureTagOutputArgs struct {
 	Key pulumi.StringInput `pulumi:"key"`
-	// (string)
-	Value pulumi.StringPtrInput `pulumi:"value"`
-	// Workspace ID of the resource
-	WorkspaceId pulumi.StringPtrInput `pulumi:"workspaceId"`
 }
 
 func (LookupMaterializedFeaturesFeatureTagOutputArgs) ElementType() reflect.Type {
@@ -89,12 +81,8 @@ func (o LookupMaterializedFeaturesFeatureTagResultOutput) Key() pulumi.StringOut
 }
 
 // (string)
-func (o LookupMaterializedFeaturesFeatureTagResultOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupMaterializedFeaturesFeatureTagResult) *string { return v.Value }).(pulumi.StringPtrOutput)
-}
-
-func (o LookupMaterializedFeaturesFeatureTagResultOutput) WorkspaceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupMaterializedFeaturesFeatureTagResult) *string { return v.WorkspaceId }).(pulumi.StringPtrOutput)
+func (o LookupMaterializedFeaturesFeatureTagResultOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMaterializedFeaturesFeatureTagResult) string { return v.Value }).(pulumi.StringOutput)
 }
 
 func init() {

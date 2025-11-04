@@ -8,8 +8,6 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDatabaseDatabaseCatalogResult {
@@ -43,7 +41,6 @@ public final class GetDatabaseDatabaseCatalogResult {
      * 
      */
     private String uid;
-    private @Nullable String workspaceId;
 
     private GetDatabaseDatabaseCatalogResult() {}
     /**
@@ -88,9 +85,6 @@ public final class GetDatabaseDatabaseCatalogResult {
     public String uid() {
         return this.uid;
     }
-    public Optional<String> workspaceId() {
-        return Optional.ofNullable(this.workspaceId);
-    }
 
     public static Builder builder() {
         return new Builder();
@@ -107,7 +101,6 @@ public final class GetDatabaseDatabaseCatalogResult {
         private String id;
         private String name;
         private String uid;
-        private @Nullable String workspaceId;
         public Builder() {}
         public Builder(GetDatabaseDatabaseCatalogResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -117,7 +110,6 @@ public final class GetDatabaseDatabaseCatalogResult {
     	      this.id = defaults.id;
     	      this.name = defaults.name;
     	      this.uid = defaults.uid;
-    	      this.workspaceId = defaults.workspaceId;
         }
 
         @CustomType.Setter
@@ -168,12 +160,6 @@ public final class GetDatabaseDatabaseCatalogResult {
             this.uid = uid;
             return this;
         }
-        @CustomType.Setter
-        public Builder workspaceId(@Nullable String workspaceId) {
-
-            this.workspaceId = workspaceId;
-            return this;
-        }
         public GetDatabaseDatabaseCatalogResult build() {
             final var _resultValue = new GetDatabaseDatabaseCatalogResult();
             _resultValue.createDatabaseIfNotExists = createDatabaseIfNotExists;
@@ -182,7 +168,6 @@ public final class GetDatabaseDatabaseCatalogResult {
             _resultValue.id = id;
             _resultValue.name = name;
             _resultValue.uid = uid;
-            _resultValue.workspaceId = workspaceId;
             return _resultValue;
         }
     }

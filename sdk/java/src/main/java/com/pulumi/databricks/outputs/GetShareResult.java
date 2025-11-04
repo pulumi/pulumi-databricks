@@ -5,14 +5,22 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetShareObject;
+import com.pulumi.databricks.outputs.GetShareProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetShareResult {
+    /**
+     * @return Description about the object.
+     * 
+     */
+    private @Nullable String comment;
     /**
      * @return Time when the share was created.
      * 
@@ -23,6 +31,7 @@ public final class GetShareResult {
      * 
      */
     private String createdBy;
+    private String effectiveOwner;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -32,14 +41,27 @@ public final class GetShareResult {
      * @return Full name of the object being shared.
      * 
      */
-    private String name;
+    private @Nullable String name;
     /**
      * @return arrays containing details of each object in the share.
      * 
      */
-    private List<GetShareObject> objects;
+    private @Nullable List<GetShareObject> objects;
+    private @Nullable String owner;
+    private @Nullable GetShareProviderConfig providerConfig;
+    private String storageLocation;
+    private @Nullable String storageRoot;
+    private Integer updatedAt;
+    private String updatedBy;
 
     private GetShareResult() {}
+    /**
+     * @return Description about the object.
+     * 
+     */
+    public Optional<String> comment() {
+        return Optional.ofNullable(this.comment);
+    }
     /**
      * @return Time when the share was created.
      * 
@@ -54,6 +76,9 @@ public final class GetShareResult {
     public String createdBy() {
         return this.createdBy;
     }
+    public String effectiveOwner() {
+        return this.effectiveOwner;
+    }
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -65,15 +90,33 @@ public final class GetShareResult {
      * @return Full name of the object being shared.
      * 
      */
-    public String name() {
-        return this.name;
+    public Optional<String> name() {
+        return Optional.ofNullable(this.name);
     }
     /**
      * @return arrays containing details of each object in the share.
      * 
      */
     public List<GetShareObject> objects() {
-        return this.objects;
+        return this.objects == null ? List.of() : this.objects;
+    }
+    public Optional<String> owner() {
+        return Optional.ofNullable(this.owner);
+    }
+    public Optional<GetShareProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+    public String storageLocation() {
+        return this.storageLocation;
+    }
+    public Optional<String> storageRoot() {
+        return Optional.ofNullable(this.storageRoot);
+    }
+    public Integer updatedAt() {
+        return this.updatedAt;
+    }
+    public String updatedBy() {
+        return this.updatedBy;
     }
 
     public static Builder builder() {
@@ -85,21 +128,43 @@ public final class GetShareResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String comment;
         private Integer createdAt;
         private String createdBy;
+        private String effectiveOwner;
         private String id;
-        private String name;
-        private List<GetShareObject> objects;
+        private @Nullable String name;
+        private @Nullable List<GetShareObject> objects;
+        private @Nullable String owner;
+        private @Nullable GetShareProviderConfig providerConfig;
+        private String storageLocation;
+        private @Nullable String storageRoot;
+        private Integer updatedAt;
+        private String updatedBy;
         public Builder() {}
         public Builder(GetShareResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.comment = defaults.comment;
     	      this.createdAt = defaults.createdAt;
     	      this.createdBy = defaults.createdBy;
+    	      this.effectiveOwner = defaults.effectiveOwner;
     	      this.id = defaults.id;
     	      this.name = defaults.name;
     	      this.objects = defaults.objects;
+    	      this.owner = defaults.owner;
+    	      this.providerConfig = defaults.providerConfig;
+    	      this.storageLocation = defaults.storageLocation;
+    	      this.storageRoot = defaults.storageRoot;
+    	      this.updatedAt = defaults.updatedAt;
+    	      this.updatedBy = defaults.updatedBy;
         }
 
+        @CustomType.Setter
+        public Builder comment(@Nullable String comment) {
+
+            this.comment = comment;
+            return this;
+        }
         @CustomType.Setter
         public Builder createdAt(Integer createdAt) {
             if (createdAt == null) {
@@ -117,6 +182,14 @@ public final class GetShareResult {
             return this;
         }
         @CustomType.Setter
+        public Builder effectiveOwner(String effectiveOwner) {
+            if (effectiveOwner == null) {
+              throw new MissingRequiredPropertyException("GetShareResult", "effectiveOwner");
+            }
+            this.effectiveOwner = effectiveOwner;
+            return this;
+        }
+        @CustomType.Setter
         public Builder id(String id) {
             if (id == null) {
               throw new MissingRequiredPropertyException("GetShareResult", "id");
@@ -125,31 +198,77 @@ public final class GetShareResult {
             return this;
         }
         @CustomType.Setter
-        public Builder name(String name) {
-            if (name == null) {
-              throw new MissingRequiredPropertyException("GetShareResult", "name");
-            }
+        public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
-        public Builder objects(List<GetShareObject> objects) {
-            if (objects == null) {
-              throw new MissingRequiredPropertyException("GetShareResult", "objects");
-            }
+        public Builder objects(@Nullable List<GetShareObject> objects) {
+
             this.objects = objects;
             return this;
         }
         public Builder objects(GetShareObject... objects) {
             return objects(List.of(objects));
         }
+        @CustomType.Setter
+        public Builder owner(@Nullable String owner) {
+
+            this.owner = owner;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder providerConfig(@Nullable GetShareProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder storageLocation(String storageLocation) {
+            if (storageLocation == null) {
+              throw new MissingRequiredPropertyException("GetShareResult", "storageLocation");
+            }
+            this.storageLocation = storageLocation;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder storageRoot(@Nullable String storageRoot) {
+
+            this.storageRoot = storageRoot;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder updatedAt(Integer updatedAt) {
+            if (updatedAt == null) {
+              throw new MissingRequiredPropertyException("GetShareResult", "updatedAt");
+            }
+            this.updatedAt = updatedAt;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder updatedBy(String updatedBy) {
+            if (updatedBy == null) {
+              throw new MissingRequiredPropertyException("GetShareResult", "updatedBy");
+            }
+            this.updatedBy = updatedBy;
+            return this;
+        }
         public GetShareResult build() {
             final var _resultValue = new GetShareResult();
+            _resultValue.comment = comment;
             _resultValue.createdAt = createdAt;
             _resultValue.createdBy = createdBy;
+            _resultValue.effectiveOwner = effectiveOwner;
             _resultValue.id = id;
             _resultValue.name = name;
             _resultValue.objects = objects;
+            _resultValue.owner = owner;
+            _resultValue.providerConfig = providerConfig;
+            _resultValue.storageLocation = storageLocation;
+            _resultValue.storageRoot = storageRoot;
+            _resultValue.updatedAt = updatedAt;
+            _resultValue.updatedBy = updatedBy;
             return _resultValue;
         }
     }

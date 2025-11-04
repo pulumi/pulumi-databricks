@@ -11,6 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+//
 // This data source can be used to fetch the list of account federation policies.
 //
 // > **Note** This data source can only be used with an account-level provider!
@@ -31,7 +33,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := databricks.GetAccountFederationPolicies(ctx, map[string]interface{}{}, nil)
+//			_, err := databricks.GetAccountFederationPolicies(ctx, &databricks.GetAccountFederationPoliciesArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}
@@ -40,28 +42,45 @@ import (
 //	}
 //
 // ```
-func GetAccountFederationPolicies(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetAccountFederationPoliciesResult, error) {
+func GetAccountFederationPolicies(ctx *pulumi.Context, args *GetAccountFederationPoliciesArgs, opts ...pulumi.InvokeOption) (*GetAccountFederationPoliciesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAccountFederationPoliciesResult
-	err := ctx.Invoke("databricks:index/getAccountFederationPolicies:getAccountFederationPolicies", nil, &rv, opts...)
+	err := ctx.Invoke("databricks:index/getAccountFederationPolicies:getAccountFederationPolicies", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &rv, nil
 }
 
+// A collection of arguments for invoking getAccountFederationPolicies.
+type GetAccountFederationPoliciesArgs struct {
+	PageSize *int `pulumi:"pageSize"`
+}
+
 // A collection of values returned by getAccountFederationPolicies.
 type GetAccountFederationPoliciesResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id       string                               `pulumi:"id"`
+	PageSize *int                                 `pulumi:"pageSize"`
 	Policies []GetAccountFederationPoliciesPolicy `pulumi:"policies"`
 }
 
-func GetAccountFederationPoliciesOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetAccountFederationPoliciesResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetAccountFederationPoliciesResultOutput, error) {
-		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-		return ctx.InvokeOutput("databricks:index/getAccountFederationPolicies:getAccountFederationPolicies", nil, GetAccountFederationPoliciesResultOutput{}, options).(GetAccountFederationPoliciesResultOutput), nil
-	}).(GetAccountFederationPoliciesResultOutput)
+func GetAccountFederationPoliciesOutput(ctx *pulumi.Context, args GetAccountFederationPoliciesOutputArgs, opts ...pulumi.InvokeOption) GetAccountFederationPoliciesResultOutput {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (GetAccountFederationPoliciesResultOutput, error) {
+			args := v.(GetAccountFederationPoliciesArgs)
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("databricks:index/getAccountFederationPolicies:getAccountFederationPolicies", args, GetAccountFederationPoliciesResultOutput{}, options).(GetAccountFederationPoliciesResultOutput), nil
+		}).(GetAccountFederationPoliciesResultOutput)
+}
+
+// A collection of arguments for invoking getAccountFederationPolicies.
+type GetAccountFederationPoliciesOutputArgs struct {
+	PageSize pulumi.IntPtrInput `pulumi:"pageSize"`
+}
+
+func (GetAccountFederationPoliciesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAccountFederationPoliciesArgs)(nil)).Elem()
 }
 
 // A collection of values returned by getAccountFederationPolicies.
@@ -82,6 +101,10 @@ func (o GetAccountFederationPoliciesResultOutput) ToGetAccountFederationPolicies
 // The provider-assigned unique ID for this managed resource.
 func (o GetAccountFederationPoliciesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccountFederationPoliciesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetAccountFederationPoliciesResultOutput) PageSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetAccountFederationPoliciesResult) *int { return v.PageSize }).(pulumi.IntPtrOutput)
 }
 
 func (o GetAccountFederationPoliciesResultOutput) Policies() GetAccountFederationPoliciesPolicyArrayOutput {

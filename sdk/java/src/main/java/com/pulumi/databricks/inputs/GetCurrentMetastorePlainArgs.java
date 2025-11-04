@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.GetCurrentMetastoreMetastoreInfo;
+import com.pulumi.databricks.inputs.GetCurrentMetastoreProviderConfig;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -45,11 +46,27 @@ public final class GetCurrentMetastorePlainArgs extends com.pulumi.resources.Inv
         return Optional.ofNullable(this.metastoreInfo);
     }
 
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable GetCurrentMetastoreProviderConfig providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Optional<GetCurrentMetastoreProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     private GetCurrentMetastorePlainArgs() {}
 
     private GetCurrentMetastorePlainArgs(GetCurrentMetastorePlainArgs $) {
         this.id = $.id;
         this.metastoreInfo = $.metastoreInfo;
+        this.providerConfig = $.providerConfig;
     }
 
     public static Builder builder() {
@@ -89,6 +106,17 @@ public final class GetCurrentMetastorePlainArgs extends com.pulumi.resources.Inv
          */
         public Builder metastoreInfo(@Nullable GetCurrentMetastoreMetastoreInfo metastoreInfo) {
             $.metastoreInfo = metastoreInfo;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable GetCurrentMetastoreProviderConfig providerConfig) {
+            $.providerConfig = providerConfig;
             return this;
         }
 

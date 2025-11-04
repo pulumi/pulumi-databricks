@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetZonesResult',
@@ -26,13 +28,16 @@ class GetZonesResult:
     """
     A collection of values returned by getZones.
     """
-    def __init__(__self__, default_zone=None, id=None, zones=None):
+    def __init__(__self__, default_zone=None, id=None, provider_config=None, zones=None):
         if default_zone and not isinstance(default_zone, str):
             raise TypeError("Expected argument 'default_zone' to be a str")
         pulumi.set(__self__, "default_zone", default_zone)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if provider_config and not isinstance(provider_config, dict):
+            raise TypeError("Expected argument 'provider_config' to be a dict")
+        pulumi.set(__self__, "provider_config", provider_config)
         if zones and not isinstance(zones, list):
             raise TypeError("Expected argument 'zones' to be a list")
         pulumi.set(__self__, "zones", zones)
@@ -54,6 +59,11 @@ class GetZonesResult:
         return pulumi.get(self, "id")
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional['outputs.GetZonesProviderConfigResult']:
+        return pulumi.get(self, "provider_config")
+
+    @_builtins.property
     @pulumi.getter
     def zones(self) -> Sequence[_builtins.str]:
         """
@@ -70,11 +80,13 @@ class AwaitableGetZonesResult(GetZonesResult):
         return GetZonesResult(
             default_zone=self.default_zone,
             id=self.id,
+            provider_config=self.provider_config,
             zones=self.zones)
 
 
 def get_zones(default_zone: Optional[_builtins.str] = None,
               id: Optional[_builtins.str] = None,
+              provider_config: Optional[Union['GetZonesProviderConfigArgs', 'GetZonesProviderConfigArgsDict']] = None,
               zones: Optional[Sequence[_builtins.str]] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZonesResult:
     """
@@ -94,11 +106,13 @@ def get_zones(default_zone: Optional[_builtins.str] = None,
 
     :param _builtins.str default_zone: This is the default zone that gets assigned to your workspace. This is the zone used by default for clusters and instance pools.
     :param _builtins.str id: The id for the zone object.
+    :param Union['GetZonesProviderConfigArgs', 'GetZonesProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     :param Sequence[_builtins.str] zones: This is a list of all the zones available for your subnets in your Databricks workspace.
     """
     __args__ = dict()
     __args__['defaultZone'] = default_zone
     __args__['id'] = id
+    __args__['providerConfig'] = provider_config
     __args__['zones'] = zones
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getZones:getZones', __args__, opts=opts, typ=GetZonesResult).value
@@ -106,9 +120,11 @@ def get_zones(default_zone: Optional[_builtins.str] = None,
     return AwaitableGetZonesResult(
         default_zone=pulumi.get(__ret__, 'default_zone'),
         id=pulumi.get(__ret__, 'id'),
+        provider_config=pulumi.get(__ret__, 'provider_config'),
         zones=pulumi.get(__ret__, 'zones'))
 def get_zones_output(default_zone: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                      id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                     provider_config: Optional[pulumi.Input[Optional[Union['GetZonesProviderConfigArgs', 'GetZonesProviderConfigArgsDict']]]] = None,
                      zones: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZonesResult]:
     """
@@ -128,15 +144,18 @@ def get_zones_output(default_zone: Optional[pulumi.Input[Optional[_builtins.str]
 
     :param _builtins.str default_zone: This is the default zone that gets assigned to your workspace. This is the zone used by default for clusters and instance pools.
     :param _builtins.str id: The id for the zone object.
+    :param Union['GetZonesProviderConfigArgs', 'GetZonesProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     :param Sequence[_builtins.str] zones: This is a list of all the zones available for your subnets in your Databricks workspace.
     """
     __args__ = dict()
     __args__['defaultZone'] = default_zone
     __args__['id'] = id
+    __args__['providerConfig'] = provider_config
     __args__['zones'] = zones
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getZones:getZones', __args__, opts=opts, typ=GetZonesResult)
     return __ret__.apply(lambda __response__: GetZonesResult(
         default_zone=pulumi.get(__response__, 'default_zone'),
         id=pulumi.get(__response__, 'id'),
+        provider_config=pulumi.get(__response__, 'provider_config'),
         zones=pulumi.get(__response__, 'zones')))

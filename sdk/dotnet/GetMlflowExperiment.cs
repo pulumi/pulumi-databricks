@@ -81,6 +81,12 @@ namespace Pulumi.Databricks
         [Input("name")]
         public string? Name { get; set; }
 
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Inputs.GetMlflowExperimentProviderConfigArgs? ProviderConfig { get; set; }
+
         [Input("tags")]
         private List<Inputs.GetMlflowExperimentTagArgs>? _tags;
 
@@ -143,6 +149,12 @@ namespace Pulumi.Databricks
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.GetMlflowExperimentProviderConfigInputArgs>? ProviderConfig { get; set; }
+
         [Input("tags")]
         private InputList<Inputs.GetMlflowExperimentTagInputArgs>? _tags;
 
@@ -193,6 +205,7 @@ namespace Pulumi.Databricks
         /// Path to experiment.
         /// </summary>
         public readonly string Name;
+        public readonly Outputs.GetMlflowExperimentProviderConfigResult? ProviderConfig;
         /// <summary>
         /// Additional metadata key-value pairs.
         /// </summary>
@@ -214,6 +227,8 @@ namespace Pulumi.Databricks
 
             string name,
 
+            Outputs.GetMlflowExperimentProviderConfigResult? providerConfig,
+
             ImmutableArray<Outputs.GetMlflowExperimentTagResult> tags)
         {
             ArtifactLocation = artifactLocation;
@@ -223,6 +238,7 @@ namespace Pulumi.Databricks
             LastUpdateTime = lastUpdateTime;
             LifecycleStage = lifecycleStage;
             Name = name;
+            ProviderConfig = providerConfig;
             Tags = tags;
         }
     }

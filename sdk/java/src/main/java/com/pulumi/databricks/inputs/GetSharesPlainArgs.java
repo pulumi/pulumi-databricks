@@ -4,6 +4,7 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetSharesProviderConfig;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -14,6 +15,21 @@ import javax.annotation.Nullable;
 public final class GetSharesPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetSharesPlainArgs Empty = new GetSharesPlainArgs();
+
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable GetSharesProviderConfig providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Optional<GetSharesProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
 
     /**
      * list of databricks.Share names.
@@ -33,6 +49,7 @@ public final class GetSharesPlainArgs extends com.pulumi.resources.InvokeArgs {
     private GetSharesPlainArgs() {}
 
     private GetSharesPlainArgs(GetSharesPlainArgs $) {
+        this.providerConfig = $.providerConfig;
         this.shares = $.shares;
     }
 
@@ -52,6 +69,17 @@ public final class GetSharesPlainArgs extends com.pulumi.resources.InvokeArgs {
 
         public Builder(GetSharesPlainArgs defaults) {
             $ = new GetSharesPlainArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable GetSharesProviderConfig providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
         }
 
         /**

@@ -14,7 +14,6 @@ else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
-from ._inputs import *
 
 __all__ = [
     'GetAccountNetworkPolicyResult',
@@ -44,7 +43,7 @@ class GetAccountNetworkPolicyResult:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[_builtins.str]:
+    def account_id(self) -> _builtins.str:
         """
         (string) - The associated account ID for this Network Policy object
         """
@@ -52,7 +51,7 @@ class GetAccountNetworkPolicyResult:
 
     @_builtins.property
     @pulumi.getter
-    def egress(self) -> Optional['outputs.GetAccountNetworkPolicyEgressResult']:
+    def egress(self) -> 'outputs.GetAccountNetworkPolicyEgressResult':
         """
         (NetworkPolicyEgress) - The network policies applying for egress traffic
         """
@@ -68,7 +67,7 @@ class GetAccountNetworkPolicyResult:
 
     @_builtins.property
     @pulumi.getter(name="networkPolicyId")
-    def network_policy_id(self) -> Optional[_builtins.str]:
+    def network_policy_id(self) -> _builtins.str:
         """
         (string) - The unique identifier for the network policy
         """
@@ -87,11 +86,11 @@ class AwaitableGetAccountNetworkPolicyResult(GetAccountNetworkPolicyResult):
             network_policy_id=self.network_policy_id)
 
 
-def get_account_network_policy(account_id: Optional[_builtins.str] = None,
-                               egress: Optional[Union['GetAccountNetworkPolicyEgressArgs', 'GetAccountNetworkPolicyEgressArgsDict']] = None,
-                               network_policy_id: Optional[_builtins.str] = None,
+def get_account_network_policy(network_policy_id: Optional[_builtins.str] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountNetworkPolicyResult:
     """
+    [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
     This data source can be used to get a single network policy.
 
     > **Note** This data source can only be used with an account-level provider!
@@ -101,13 +100,9 @@ def get_account_network_policy(account_id: Optional[_builtins.str] = None,
     Referring to a network policy by id:
 
 
-    :param _builtins.str account_id: (string) - The associated account ID for this Network Policy object
-    :param Union['GetAccountNetworkPolicyEgressArgs', 'GetAccountNetworkPolicyEgressArgsDict'] egress: (NetworkPolicyEgress) - The network policies applying for egress traffic
     :param _builtins.str network_policy_id: The unique identifier for the network policy
     """
     __args__ = dict()
-    __args__['accountId'] = account_id
-    __args__['egress'] = egress
     __args__['networkPolicyId'] = network_policy_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getAccountNetworkPolicy:getAccountNetworkPolicy', __args__, opts=opts, typ=GetAccountNetworkPolicyResult).value
@@ -117,11 +112,11 @@ def get_account_network_policy(account_id: Optional[_builtins.str] = None,
         egress=pulumi.get(__ret__, 'egress'),
         id=pulumi.get(__ret__, 'id'),
         network_policy_id=pulumi.get(__ret__, 'network_policy_id'))
-def get_account_network_policy_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                      egress: Optional[pulumi.Input[Optional[Union['GetAccountNetworkPolicyEgressArgs', 'GetAccountNetworkPolicyEgressArgsDict']]]] = None,
-                                      network_policy_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_account_network_policy_output(network_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountNetworkPolicyResult]:
     """
+    [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
     This data source can be used to get a single network policy.
 
     > **Note** This data source can only be used with an account-level provider!
@@ -131,13 +126,9 @@ def get_account_network_policy_output(account_id: Optional[pulumi.Input[Optional
     Referring to a network policy by id:
 
 
-    :param _builtins.str account_id: (string) - The associated account ID for this Network Policy object
-    :param Union['GetAccountNetworkPolicyEgressArgs', 'GetAccountNetworkPolicyEgressArgsDict'] egress: (NetworkPolicyEgress) - The network policies applying for egress traffic
     :param _builtins.str network_policy_id: The unique identifier for the network policy
     """
     __args__ = dict()
-    __args__['accountId'] = account_id
-    __args__['egress'] = egress
     __args__['networkPolicyId'] = network_policy_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getAccountNetworkPolicy:getAccountNetworkPolicy', __args__, opts=opts, typ=GetAccountNetworkPolicyResult)

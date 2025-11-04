@@ -17,6 +17,36 @@ public final class PermissionAssignmentState extends com.pulumi.resources.Resour
     public static final PermissionAssignmentState Empty = new PermissionAssignmentState();
 
     /**
+     * the display name of the assigned principal.
+     * 
+     */
+    @Import(name="displayName")
+    private @Nullable Output<String> displayName;
+
+    /**
+     * @return the display name of the assigned principal.
+     * 
+     */
+    public Optional<Output<String>> displayName() {
+        return Optional.ofNullable(this.displayName);
+    }
+
+    /**
+     * the group name to assign to a workspace.
+     * 
+     */
+    @Import(name="groupName")
+    private @Nullable Output<String> groupName;
+
+    /**
+     * @return the group name to assign to a workspace.
+     * 
+     */
+    public Optional<Output<String>> groupName() {
+        return Optional.ofNullable(this.groupName);
+    }
+
+    /**
      * The list of workspace permissions to assign to the principal:
      * * `&#34;USER&#34;` - Adds principal to the workspace `users` group. This gives basic workspace access.
      * * `&#34;ADMIN&#34;` - Adds principal to the workspace `admins` group. This gives workspace admin privileges to manage users and groups, workspace configurations, and more.
@@ -50,11 +80,45 @@ public final class PermissionAssignmentState extends com.pulumi.resources.Resour
         return Optional.ofNullable(this.principalId);
     }
 
+    /**
+     * the application ID of service principal to assign to a workspace.
+     * 
+     */
+    @Import(name="servicePrincipalName")
+    private @Nullable Output<String> servicePrincipalName;
+
+    /**
+     * @return the application ID of service principal to assign to a workspace.
+     * 
+     */
+    public Optional<Output<String>> servicePrincipalName() {
+        return Optional.ofNullable(this.servicePrincipalName);
+    }
+
+    /**
+     * the user name (email) to assign to a workspace.
+     * 
+     */
+    @Import(name="userName")
+    private @Nullable Output<String> userName;
+
+    /**
+     * @return the user name (email) to assign to a workspace.
+     * 
+     */
+    public Optional<Output<String>> userName() {
+        return Optional.ofNullable(this.userName);
+    }
+
     private PermissionAssignmentState() {}
 
     private PermissionAssignmentState(PermissionAssignmentState $) {
+        this.displayName = $.displayName;
+        this.groupName = $.groupName;
         this.permissions = $.permissions;
         this.principalId = $.principalId;
+        this.servicePrincipalName = $.servicePrincipalName;
+        this.userName = $.userName;
     }
 
     public static Builder builder() {
@@ -73,6 +137,48 @@ public final class PermissionAssignmentState extends com.pulumi.resources.Resour
 
         public Builder(PermissionAssignmentState defaults) {
             $ = new PermissionAssignmentState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param displayName the display name of the assigned principal.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder displayName(@Nullable Output<String> displayName) {
+            $.displayName = displayName;
+            return this;
+        }
+
+        /**
+         * @param displayName the display name of the assigned principal.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder displayName(String displayName) {
+            return displayName(Output.of(displayName));
+        }
+
+        /**
+         * @param groupName the group name to assign to a workspace.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder groupName(@Nullable Output<String> groupName) {
+            $.groupName = groupName;
+            return this;
+        }
+
+        /**
+         * @param groupName the group name to assign to a workspace.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder groupName(String groupName) {
+            return groupName(Output.of(groupName));
         }
 
         /**
@@ -131,6 +237,48 @@ public final class PermissionAssignmentState extends com.pulumi.resources.Resour
          */
         public Builder principalId(String principalId) {
             return principalId(Output.of(principalId));
+        }
+
+        /**
+         * @param servicePrincipalName the application ID of service principal to assign to a workspace.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder servicePrincipalName(@Nullable Output<String> servicePrincipalName) {
+            $.servicePrincipalName = servicePrincipalName;
+            return this;
+        }
+
+        /**
+         * @param servicePrincipalName the application ID of service principal to assign to a workspace.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder servicePrincipalName(String servicePrincipalName) {
+            return servicePrincipalName(Output.of(servicePrincipalName));
+        }
+
+        /**
+         * @param userName the user name (email) to assign to a workspace.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder userName(@Nullable Output<String> userName) {
+            $.userName = userName;
+            return this;
+        }
+
+        /**
+         * @param userName the user name (email) to assign to a workspace.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder userName(String userName) {
+            return userName(Output.of(userName));
         }
 
         public PermissionAssignmentState build() {

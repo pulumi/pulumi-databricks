@@ -196,6 +196,12 @@ namespace Pulumi.Databricks
     public sealed class GetNodeTypeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
+        /// if we should limit the search only to nodes with AWS Graviton or Azure Cobalt CPUs. Default to _false_.
+        /// </summary>
+        [Input("arm")]
+        public bool? Arm { get; set; }
+
+        /// <summary>
         /// Node category, which can be one of (depending on the cloud environment, could be checked with `databricks clusters list-node-types -o json|jq '.node_types[]|.category'|sort |uniq`):
         /// * `General Purpose` (all clouds)
         /// * `General Purpose (HDD)` (Azure)
@@ -221,7 +227,7 @@ namespace Pulumi.Databricks
         public int? GbPerCore { get; set; }
 
         /// <summary>
-        /// if we should limit the search only to nodes with AWS Graviton or Azure Cobalt CPUs. Default to _false_.
+        /// if we should limit the search only to nodes with AWS Graviton or Azure Cobalt CPUs. Default to _false_. *Use `Arm` instead!*
         /// </summary>
         [Input("graviton")]
         public bool? Graviton { get; set; }
@@ -281,6 +287,12 @@ namespace Pulumi.Databricks
         public bool? PhotonWorkerCapable { get; set; }
 
         /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Inputs.GetNodeTypeProviderConfigArgs? ProviderConfig { get; set; }
+
+        /// <summary>
         /// Pick only nodes that support port forwarding. Defaults to _false_.
         /// </summary>
         [Input("supportPortForwarding")]
@@ -294,6 +306,12 @@ namespace Pulumi.Databricks
 
     public sealed class GetNodeTypeInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// if we should limit the search only to nodes with AWS Graviton or Azure Cobalt CPUs. Default to _false_.
+        /// </summary>
+        [Input("arm")]
+        public Input<bool>? Arm { get; set; }
+
         /// <summary>
         /// Node category, which can be one of (depending on the cloud environment, could be checked with `databricks clusters list-node-types -o json|jq '.node_types[]|.category'|sort |uniq`):
         /// * `General Purpose` (all clouds)
@@ -320,7 +338,7 @@ namespace Pulumi.Databricks
         public Input<int>? GbPerCore { get; set; }
 
         /// <summary>
-        /// if we should limit the search only to nodes with AWS Graviton or Azure Cobalt CPUs. Default to _false_.
+        /// if we should limit the search only to nodes with AWS Graviton or Azure Cobalt CPUs. Default to _false_. *Use `Arm` instead!*
         /// </summary>
         [Input("graviton")]
         public Input<bool>? Graviton { get; set; }
@@ -380,6 +398,12 @@ namespace Pulumi.Databricks
         public Input<bool>? PhotonWorkerCapable { get; set; }
 
         /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.GetNodeTypeProviderConfigInputArgs>? ProviderConfig { get; set; }
+
+        /// <summary>
         /// Pick only nodes that support port forwarding. Defaults to _false_.
         /// </summary>
         [Input("supportPortForwarding")]
@@ -395,6 +419,7 @@ namespace Pulumi.Databricks
     [OutputType]
     public sealed class GetNodeTypeResult
     {
+        public readonly bool? Arm;
         public readonly string? Category;
         public readonly bool? Fleet;
         public readonly int? GbPerCore;
@@ -411,10 +436,13 @@ namespace Pulumi.Databricks
         public readonly int? MinMemoryGb;
         public readonly bool? PhotonDriverCapable;
         public readonly bool? PhotonWorkerCapable;
+        public readonly Outputs.GetNodeTypeProviderConfigResult? ProviderConfig;
         public readonly bool? SupportPortForwarding;
 
         [OutputConstructor]
         private GetNodeTypeResult(
+            bool? arm,
+
             string? category,
 
             bool? fleet,
@@ -441,8 +469,11 @@ namespace Pulumi.Databricks
 
             bool? photonWorkerCapable,
 
+            Outputs.GetNodeTypeProviderConfigResult? providerConfig,
+
             bool? supportPortForwarding)
         {
+            Arm = arm;
             Category = category;
             Fleet = fleet;
             GbPerCore = gbPerCore;
@@ -456,6 +487,7 @@ namespace Pulumi.Databricks
             MinMemoryGb = minMemoryGb;
             PhotonDriverCapable = photonDriverCapable;
             PhotonWorkerCapable = photonWorkerCapable;
+            ProviderConfig = providerConfig;
             SupportPortForwarding = supportPortForwarding;
         }
     }

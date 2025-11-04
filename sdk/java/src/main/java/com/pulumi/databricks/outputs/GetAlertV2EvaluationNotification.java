@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetAlertV2EvaluationNotificationSubscription;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.util.List;
@@ -14,6 +15,8 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAlertV2EvaluationNotification {
+    private Boolean effectiveNotifyOnOk;
+    private Integer effectiveRetriggerSeconds;
     /**
      * @return (boolean) - Whether to notify alert subscribers when alert returns back to normal
      * 
@@ -31,6 +34,12 @@ public final class GetAlertV2EvaluationNotification {
     private @Nullable List<GetAlertV2EvaluationNotificationSubscription> subscriptions;
 
     private GetAlertV2EvaluationNotification() {}
+    public Boolean effectiveNotifyOnOk() {
+        return this.effectiveNotifyOnOk;
+    }
+    public Integer effectiveRetriggerSeconds() {
+        return this.effectiveRetriggerSeconds;
+    }
     /**
      * @return (boolean) - Whether to notify alert subscribers when alert returns back to normal
      * 
@@ -62,17 +71,37 @@ public final class GetAlertV2EvaluationNotification {
     }
     @CustomType.Builder
     public static final class Builder {
+        private Boolean effectiveNotifyOnOk;
+        private Integer effectiveRetriggerSeconds;
         private @Nullable Boolean notifyOnOk;
         private @Nullable Integer retriggerSeconds;
         private @Nullable List<GetAlertV2EvaluationNotificationSubscription> subscriptions;
         public Builder() {}
         public Builder(GetAlertV2EvaluationNotification defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.effectiveNotifyOnOk = defaults.effectiveNotifyOnOk;
+    	      this.effectiveRetriggerSeconds = defaults.effectiveRetriggerSeconds;
     	      this.notifyOnOk = defaults.notifyOnOk;
     	      this.retriggerSeconds = defaults.retriggerSeconds;
     	      this.subscriptions = defaults.subscriptions;
         }
 
+        @CustomType.Setter
+        public Builder effectiveNotifyOnOk(Boolean effectiveNotifyOnOk) {
+            if (effectiveNotifyOnOk == null) {
+              throw new MissingRequiredPropertyException("GetAlertV2EvaluationNotification", "effectiveNotifyOnOk");
+            }
+            this.effectiveNotifyOnOk = effectiveNotifyOnOk;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder effectiveRetriggerSeconds(Integer effectiveRetriggerSeconds) {
+            if (effectiveRetriggerSeconds == null) {
+              throw new MissingRequiredPropertyException("GetAlertV2EvaluationNotification", "effectiveRetriggerSeconds");
+            }
+            this.effectiveRetriggerSeconds = effectiveRetriggerSeconds;
+            return this;
+        }
         @CustomType.Setter
         public Builder notifyOnOk(@Nullable Boolean notifyOnOk) {
 
@@ -96,6 +125,8 @@ public final class GetAlertV2EvaluationNotification {
         }
         public GetAlertV2EvaluationNotification build() {
             final var _resultValue = new GetAlertV2EvaluationNotification();
+            _resultValue.effectiveNotifyOnOk = effectiveNotifyOnOk;
+            _resultValue.effectiveRetriggerSeconds = effectiveRetriggerSeconds;
             _resultValue.notifyOnOk = notifyOnOk;
             _resultValue.retriggerSeconds = retriggerSeconds;
             _resultValue.subscriptions = subscriptions;

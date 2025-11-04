@@ -98,7 +98,8 @@ type GetSqlWarehouseArgs struct {
 	// The current number of clusters used by the endpoint.
 	NumClusters *int `pulumi:"numClusters"`
 	// ODBC connection params: `odbc_params.hostname`, `odbc_params.path`, `odbc_params.protocol`, and `odbc_params.port`.
-	OdbcParams *GetSqlWarehouseOdbcParams `pulumi:"odbcParams"`
+	OdbcParams     *GetSqlWarehouseOdbcParams     `pulumi:"odbcParams"`
+	ProviderConfig *GetSqlWarehouseProviderConfig `pulumi:"providerConfig"`
 	// The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`.
 	SpotInstancePolicy *string `pulumi:"spotInstancePolicy"`
 	// The current state of the endpoint.
@@ -143,7 +144,8 @@ type GetSqlWarehouseResult struct {
 	// The current number of clusters used by the endpoint.
 	NumClusters int `pulumi:"numClusters"`
 	// ODBC connection params: `odbc_params.hostname`, `odbc_params.path`, `odbc_params.protocol`, and `odbc_params.port`.
-	OdbcParams GetSqlWarehouseOdbcParams `pulumi:"odbcParams"`
+	OdbcParams     GetSqlWarehouseOdbcParams      `pulumi:"odbcParams"`
+	ProviderConfig *GetSqlWarehouseProviderConfig `pulumi:"providerConfig"`
 	// The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`.
 	SpotInstancePolicy string `pulumi:"spotInstancePolicy"`
 	// The current state of the endpoint.
@@ -197,7 +199,8 @@ type GetSqlWarehouseOutputArgs struct {
 	// The current number of clusters used by the endpoint.
 	NumClusters pulumi.IntPtrInput `pulumi:"numClusters"`
 	// ODBC connection params: `odbc_params.hostname`, `odbc_params.path`, `odbc_params.protocol`, and `odbc_params.port`.
-	OdbcParams GetSqlWarehouseOdbcParamsPtrInput `pulumi:"odbcParams"`
+	OdbcParams     GetSqlWarehouseOdbcParamsPtrInput     `pulumi:"odbcParams"`
+	ProviderConfig GetSqlWarehouseProviderConfigPtrInput `pulumi:"providerConfig"`
 	// The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`.
 	SpotInstancePolicy pulumi.StringPtrInput `pulumi:"spotInstancePolicy"`
 	// The current state of the endpoint.
@@ -309,6 +312,10 @@ func (o GetSqlWarehouseResultOutput) NumClusters() pulumi.IntOutput {
 // ODBC connection params: `odbc_params.hostname`, `odbc_params.path`, `odbc_params.protocol`, and `odbc_params.port`.
 func (o GetSqlWarehouseResultOutput) OdbcParams() GetSqlWarehouseOdbcParamsOutput {
 	return o.ApplyT(func(v GetSqlWarehouseResult) GetSqlWarehouseOdbcParams { return v.OdbcParams }).(GetSqlWarehouseOdbcParamsOutput)
+}
+
+func (o GetSqlWarehouseResultOutput) ProviderConfig() GetSqlWarehouseProviderConfigPtrOutput {
+	return o.ApplyT(func(v GetSqlWarehouseResult) *GetSqlWarehouseProviderConfig { return v.ProviderConfig }).(GetSqlWarehouseProviderConfigPtrOutput)
 }
 
 // The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`.

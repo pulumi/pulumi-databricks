@@ -10,6 +10,65 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
+    /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    /// 
+    /// This resource allows you to create, update, list, and delete tag assignments on Unity Catalog entities.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ### Basic tag assignment to a catalog
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var catalogTag = new Databricks.EntityTagAssignment("catalog_tag", new()
+    ///     {
+    ///         EntityType = "catalogs",
+    ///         EntityName = "production_catalog",
+    ///         TagKey = "environment",
+    ///         TagValue = "production",
+    ///     });
+    /// 
+    ///     var schemaTag = new Databricks.EntityTagAssignment("schema_tag", new()
+    ///     {
+    ///         EntityType = "schemas",
+    ///         EntityName = "production_catalog.sales_data",
+    ///         TagKey = "owner",
+    ///         TagValue = "sales-team",
+    ///     });
+    /// 
+    ///     var tableTag = new Databricks.EntityTagAssignment("table_tag", new()
+    ///     {
+    ///         EntityType = "tables",
+    ///         EntityName = "production_catalog.sales_data.customer_orders",
+    ///         TagKey = "data_classification",
+    ///         TagValue = "confidential",
+    ///     });
+    /// 
+    ///     var columnTag = new Databricks.EntityTagAssignment("column_tag", new()
+    ///     {
+    ///         EntityType = "columns",
+    ///         EntityName = "production_catalog.sales_data.customers.email_address",
+    ///         TagKey = "pii",
+    ///         TagValue = "email",
+    ///     });
+    /// 
+    ///     var volumeTag = new Databricks.EntityTagAssignment("volume_tag", new()
+    ///     {
+    ///         EntityType = "volumes",
+    ///         EntityName = "production_catalog.raw_data.landing_zone",
+    ///         TagKey = "purpose",
+    ///         TagValue = "data_ingestion",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// As of Pulumi v1.5, resources can be imported through configuration.
@@ -27,7 +86,7 @@ namespace Pulumi.Databricks
     /// If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
     /// 
     /// ```sh
-    /// $ pulumi import databricks:index/entityTagAssignment:EntityTagAssignment databricks_entity_tag_assignment "entity_type,entity_name,tag_key"
+    /// $ pulumi import databricks:index/entityTagAssignment:EntityTagAssignment this "entity_type,entity_name,tag_key"
     /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/entityTagAssignment:EntityTagAssignment")]
@@ -56,12 +115,6 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("tagValue")]
         public Output<string?> TagValue { get; private set; } = null!;
-
-        /// <summary>
-        /// Workspace ID of the resource
-        /// </summary>
-        [Output("workspaceId")]
-        public Output<string?> WorkspaceId { get; private set; } = null!;
 
 
         /// <summary>
@@ -133,12 +186,6 @@ namespace Pulumi.Databricks
         [Input("tagValue")]
         public Input<string>? TagValue { get; set; }
 
-        /// <summary>
-        /// Workspace ID of the resource
-        /// </summary>
-        [Input("workspaceId")]
-        public Input<string>? WorkspaceId { get; set; }
-
         public EntityTagAssignmentArgs()
         {
         }
@@ -170,12 +217,6 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("tagValue")]
         public Input<string>? TagValue { get; set; }
-
-        /// <summary>
-        /// Workspace ID of the resource
-        /// </summary>
-        [Input("workspaceId")]
-        public Input<string>? WorkspaceId { get; set; }
 
         public EntityTagAssignmentState()
         {

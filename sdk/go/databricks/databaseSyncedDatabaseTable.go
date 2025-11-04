@@ -11,6 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+//
 // Lakebase Synced Database Tables are Postgres tables automatically synced from a source table inside Unity Catalog.
 // They can be used to serve realtime queries without the operational overhead of managing ETL pipelines.
 //
@@ -32,6 +34,15 @@ import (
 // This example creates two Synced Database Tables. The first one specifies a new pipeline spec,
 // which generates a new pipeline. The second one utilizes the pipeline ID of the first table.
 //
+// ### Creating a Synced Database Table with a custom Jobs schedule
+//
+// This example creates a Synced Database Table and customizes the pipeline schedule. It assumes you already have
+//
+// - A database instance named `"my-database-instance"`
+// - A standard catalog named `"myStandardCatalog"`
+// - A schema in the standard catalog named `"default"`
+// - A source delta table named `"source_delta.schema.customer"` with the primary key `"cCustkey"`
+//
 // ## Import
 //
 // As of Pulumi v1.5, resources can be imported through configuration.
@@ -49,7 +60,7 @@ import (
 // If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
 //
 // ```sh
-// $ pulumi import databricks:index/databaseSyncedDatabaseTable:DatabaseSyncedDatabaseTable databricks_database_synced_database_table "name"
+// $ pulumi import databricks:index/databaseSyncedDatabaseTable:DatabaseSyncedDatabaseTable this "name"
 // ```
 type DatabaseSyncedDatabaseTable struct {
 	pulumi.CustomResourceState
@@ -84,8 +95,6 @@ type DatabaseSyncedDatabaseTable struct {
 	// state of the data synchronization pipeline (i.e. the table may be in "ACTIVE" but the pipeline
 	// may be in "PROVISIONING" as it runs asynchronously). Possible values are: `ACTIVE`, `DEGRADED`, `DELETING`, `FAILED`, `PROVISIONING`, `UPDATING`
 	UnityCatalogProvisioningState pulumi.StringOutput `pulumi:"unityCatalogProvisioningState"`
-	// Workspace ID of the resource
-	WorkspaceId pulumi.StringPtrOutput `pulumi:"workspaceId"`
 }
 
 // NewDatabaseSyncedDatabaseTable registers a new resource with the given unique name, arguments, and options.
@@ -148,8 +157,6 @@ type databaseSyncedDatabaseTableState struct {
 	// state of the data synchronization pipeline (i.e. the table may be in "ACTIVE" but the pipeline
 	// may be in "PROVISIONING" as it runs asynchronously). Possible values are: `ACTIVE`, `DEGRADED`, `DELETING`, `FAILED`, `PROVISIONING`, `UPDATING`
 	UnityCatalogProvisioningState *string `pulumi:"unityCatalogProvisioningState"`
-	// Workspace ID of the resource
-	WorkspaceId *string `pulumi:"workspaceId"`
 }
 
 type DatabaseSyncedDatabaseTableState struct {
@@ -183,8 +190,6 @@ type DatabaseSyncedDatabaseTableState struct {
 	// state of the data synchronization pipeline (i.e. the table may be in "ACTIVE" but the pipeline
 	// may be in "PROVISIONING" as it runs asynchronously). Possible values are: `ACTIVE`, `DEGRADED`, `DELETING`, `FAILED`, `PROVISIONING`, `UPDATING`
 	UnityCatalogProvisioningState pulumi.StringPtrInput
-	// Workspace ID of the resource
-	WorkspaceId pulumi.StringPtrInput
 }
 
 func (DatabaseSyncedDatabaseTableState) ElementType() reflect.Type {
@@ -211,8 +216,6 @@ type databaseSyncedDatabaseTableArgs struct {
 	// Full three-part (catalog, schema, table) name of the table
 	Name *string                          `pulumi:"name"`
 	Spec *DatabaseSyncedDatabaseTableSpec `pulumi:"spec"`
-	// Workspace ID of the resource
-	WorkspaceId *string `pulumi:"workspaceId"`
 }
 
 // The set of arguments for constructing a DatabaseSyncedDatabaseTable resource.
@@ -236,8 +239,6 @@ type DatabaseSyncedDatabaseTableArgs struct {
 	// Full three-part (catalog, schema, table) name of the table
 	Name pulumi.StringPtrInput
 	Spec DatabaseSyncedDatabaseTableSpecPtrInput
-	// Workspace ID of the resource
-	WorkspaceId pulumi.StringPtrInput
 }
 
 func (DatabaseSyncedDatabaseTableArgs) ElementType() reflect.Type {
@@ -381,11 +382,6 @@ func (o DatabaseSyncedDatabaseTableOutput) Spec() DatabaseSyncedDatabaseTableSpe
 // may be in "PROVISIONING" as it runs asynchronously). Possible values are: `ACTIVE`, `DEGRADED`, `DELETING`, `FAILED`, `PROVISIONING`, `UPDATING`
 func (o DatabaseSyncedDatabaseTableOutput) UnityCatalogProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabaseSyncedDatabaseTable) pulumi.StringOutput { return v.UnityCatalogProvisioningState }).(pulumi.StringOutput)
-}
-
-// Workspace ID of the resource
-func (o DatabaseSyncedDatabaseTableOutput) WorkspaceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DatabaseSyncedDatabaseTable) pulumi.StringPtrOutput { return v.WorkspaceId }).(pulumi.StringPtrOutput)
 }
 
 type DatabaseSyncedDatabaseTableArrayOutput struct{ *pulumi.OutputState }

@@ -14,9 +14,13 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetTagPoliciesTagPolicyResult
     {
         /// <summary>
+        /// (string) - Timestamp when the tag policy was created
+        /// </summary>
+        public readonly string CreateTime;
+        /// <summary>
         /// (string)
         /// </summary>
-        public readonly string? Description;
+        public readonly string Description;
         /// <summary>
         /// (string)
         /// </summary>
@@ -26,23 +30,33 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string TagKey;
         /// <summary>
+        /// (string) - Timestamp when the tag policy was last updated
+        /// </summary>
+        public readonly string UpdateTime;
+        /// <summary>
         /// (list of Value)
         /// </summary>
         public readonly ImmutableArray<Outputs.GetTagPoliciesTagPolicyValueResult> Values;
 
         [OutputConstructor]
         private GetTagPoliciesTagPolicyResult(
-            string? description,
+            string createTime,
+
+            string description,
 
             string id,
 
             string tagKey,
 
+            string updateTime,
+
             ImmutableArray<Outputs.GetTagPoliciesTagPolicyValueResult> values)
         {
+            CreateTime = createTime;
             Description = description;
             Id = id;
             TagKey = tagKey;
+            UpdateTime = updateTime;
             Values = values;
         }
     }

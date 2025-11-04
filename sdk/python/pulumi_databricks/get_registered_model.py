@@ -28,7 +28,7 @@ class GetRegisteredModelResult:
     """
     A collection of values returned by getRegisteredModel.
     """
-    def __init__(__self__, full_name=None, id=None, include_aliases=None, include_browse=None, model_infos=None):
+    def __init__(__self__, full_name=None, id=None, include_aliases=None, include_browse=None, model_infos=None, provider_config=None):
         if full_name and not isinstance(full_name, str):
             raise TypeError("Expected argument 'full_name' to be a str")
         pulumi.set(__self__, "full_name", full_name)
@@ -44,6 +44,9 @@ class GetRegisteredModelResult:
         if model_infos and not isinstance(model_infos, list):
             raise TypeError("Expected argument 'model_infos' to be a list")
         pulumi.set(__self__, "model_infos", model_infos)
+        if provider_config and not isinstance(provider_config, dict):
+            raise TypeError("Expected argument 'provider_config' to be a dict")
+        pulumi.set(__self__, "provider_config", provider_config)
 
     @_builtins.property
     @pulumi.getter(name="fullName")
@@ -79,6 +82,11 @@ class GetRegisteredModelResult:
         """
         return pulumi.get(self, "model_infos")
 
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional['outputs.GetRegisteredModelProviderConfigResult']:
+        return pulumi.get(self, "provider_config")
+
 
 class AwaitableGetRegisteredModelResult(GetRegisteredModelResult):
     # pylint: disable=using-constant-test
@@ -90,13 +98,15 @@ class AwaitableGetRegisteredModelResult(GetRegisteredModelResult):
             id=self.id,
             include_aliases=self.include_aliases,
             include_browse=self.include_browse,
-            model_infos=self.model_infos)
+            model_infos=self.model_infos,
+            provider_config=self.provider_config)
 
 
 def get_registered_model(full_name: Optional[_builtins.str] = None,
                          include_aliases: Optional[_builtins.bool] = None,
                          include_browse: Optional[_builtins.bool] = None,
                          model_infos: Optional[Sequence[Union['GetRegisteredModelModelInfoArgs', 'GetRegisteredModelModelInfoArgsDict']]] = None,
+                         provider_config: Optional[Union['GetRegisteredModelProviderConfigArgs', 'GetRegisteredModelProviderConfigArgsDict']] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRegisteredModelResult:
     """
     This resource allows you to get information about [Model in Unity Catalog](https://docs.databricks.com/en/mlflow/models-in-uc.html) in Databricks.
@@ -131,6 +141,7 @@ def get_registered_model(full_name: Optional[_builtins.str] = None,
     __args__['includeAliases'] = include_aliases
     __args__['includeBrowse'] = include_browse
     __args__['modelInfos'] = model_infos
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getRegisteredModel:getRegisteredModel', __args__, opts=opts, typ=GetRegisteredModelResult).value
 
@@ -139,11 +150,13 @@ def get_registered_model(full_name: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         include_aliases=pulumi.get(__ret__, 'include_aliases'),
         include_browse=pulumi.get(__ret__, 'include_browse'),
-        model_infos=pulumi.get(__ret__, 'model_infos'))
+        model_infos=pulumi.get(__ret__, 'model_infos'),
+        provider_config=pulumi.get(__ret__, 'provider_config'))
 def get_registered_model_output(full_name: Optional[pulumi.Input[_builtins.str]] = None,
                                 include_aliases: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
                                 include_browse: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
                                 model_infos: Optional[pulumi.Input[Optional[Sequence[Union['GetRegisteredModelModelInfoArgs', 'GetRegisteredModelModelInfoArgsDict']]]]] = None,
+                                provider_config: Optional[pulumi.Input[Optional[Union['GetRegisteredModelProviderConfigArgs', 'GetRegisteredModelProviderConfigArgsDict']]]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRegisteredModelResult]:
     """
     This resource allows you to get information about [Model in Unity Catalog](https://docs.databricks.com/en/mlflow/models-in-uc.html) in Databricks.
@@ -178,6 +191,7 @@ def get_registered_model_output(full_name: Optional[pulumi.Input[_builtins.str]]
     __args__['includeAliases'] = include_aliases
     __args__['includeBrowse'] = include_browse
     __args__['modelInfos'] = model_infos
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getRegisteredModel:getRegisteredModel', __args__, opts=opts, typ=GetRegisteredModelResult)
     return __ret__.apply(lambda __response__: GetRegisteredModelResult(
@@ -185,4 +199,5 @@ def get_registered_model_output(full_name: Optional[pulumi.Input[_builtins.str]]
         id=pulumi.get(__response__, 'id'),
         include_aliases=pulumi.get(__response__, 'include_aliases'),
         include_browse=pulumi.get(__response__, 'include_browse'),
-        model_infos=pulumi.get(__response__, 'model_infos')))
+        model_infos=pulumi.get(__response__, 'model_infos'),
+        provider_config=pulumi.get(__response__, 'provider_config')))

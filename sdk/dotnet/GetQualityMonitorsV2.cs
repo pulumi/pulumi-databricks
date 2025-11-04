@@ -12,6 +12,8 @@ namespace Pulumi.Databricks
     public static class GetQualityMonitorsV2
     {
         /// <summary>
+        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
         /// This data source can be used to fetch the list of quality monitors v2.
         /// 
         /// &gt; **Note** This data source can only be used with an workspace-level provider!
@@ -37,6 +39,8 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetQualityMonitorsV2Result>("databricks:index/getQualityMonitorsV2:getQualityMonitorsV2", args ?? new GetQualityMonitorsV2Args(), options.WithDefaults());
 
         /// <summary>
+        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
         /// This data source can be used to fetch the list of quality monitors v2.
         /// 
         /// &gt; **Note** This data source can only be used with an workspace-level provider!
@@ -62,6 +66,8 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.Invoke<GetQualityMonitorsV2Result>("databricks:index/getQualityMonitorsV2:getQualityMonitorsV2", args ?? new GetQualityMonitorsV2InvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
         /// This data source can be used to fetch the list of quality monitors v2.
         /// 
         /// &gt; **Note** This data source can only be used with an workspace-level provider!
@@ -90,11 +96,8 @@ namespace Pulumi.Databricks
 
     public sealed class GetQualityMonitorsV2Args : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Workspace ID of the resource
-        /// </summary>
-        [Input("workspaceId")]
-        public string? WorkspaceId { get; set; }
+        [Input("pageSize")]
+        public int? PageSize { get; set; }
 
         public GetQualityMonitorsV2Args()
         {
@@ -104,11 +107,8 @@ namespace Pulumi.Databricks
 
     public sealed class GetQualityMonitorsV2InvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Workspace ID of the resource
-        /// </summary>
-        [Input("workspaceId")]
-        public Input<string>? WorkspaceId { get; set; }
+        [Input("pageSize")]
+        public Input<int>? PageSize { get; set; }
 
         public GetQualityMonitorsV2InvokeArgs()
         {
@@ -124,20 +124,20 @@ namespace Pulumi.Databricks
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly int? PageSize;
         public readonly ImmutableArray<Outputs.GetQualityMonitorsV2QualityMonitorResult> QualityMonitors;
-        public readonly string? WorkspaceId;
 
         [OutputConstructor]
         private GetQualityMonitorsV2Result(
             string id,
 
-            ImmutableArray<Outputs.GetQualityMonitorsV2QualityMonitorResult> qualityMonitors,
+            int? pageSize,
 
-            string? workspaceId)
+            ImmutableArray<Outputs.GetQualityMonitorsV2QualityMonitorResult> qualityMonitors)
         {
             Id = id;
+            PageSize = pageSize;
             QualityMonitors = qualityMonitors;
-            WorkspaceId = workspaceId;
         }
     }
 }

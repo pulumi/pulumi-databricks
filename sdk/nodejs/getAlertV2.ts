@@ -7,6 +7,8 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
  * The SQL Alert v2 data source allows you to retrieve detailed information about a specific alert in Databricks SQL. This data source provides access to all alert properties, including its configuration, evaluation criteria, notification settings, and schedule.
  *
  * You can use this data source to:
@@ -19,22 +21,20 @@ import * as utilities from "./utilities";
  *
  * ### Retrieve Alert by ID
  * This example retrieves a specific alert by its ID:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const _this = databricks.getAlertV2({
+ *     id: "123",
+ * });
+ * ```
  */
-export function getAlertV2(args?: GetAlertV2Args, opts?: pulumi.InvokeOptions): Promise<GetAlertV2Result> {
-    args = args || {};
+export function getAlertV2(args: GetAlertV2Args, opts?: pulumi.InvokeOptions): Promise<GetAlertV2Result> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getAlertV2:getAlertV2", {
-        "customDescription": args.customDescription,
-        "customSummary": args.customSummary,
-        "displayName": args.displayName,
-        "evaluation": args.evaluation,
-        "parentPath": args.parentPath,
-        "queryText": args.queryText,
-        "runAs": args.runAs,
-        "runAsUserName": args.runAsUserName,
-        "schedule": args.schedule,
-        "warehouseId": args.warehouseId,
-        "workspaceId": args.workspaceId,
+        "id": args.id,
     }, opts);
 }
 
@@ -43,55 +43,9 @@ export function getAlertV2(args?: GetAlertV2Args, opts?: pulumi.InvokeOptions): 
  */
 export interface GetAlertV2Args {
     /**
-     * (string) - Custom description for the alert. support mustache template
+     * UUID identifying the alert
      */
-    customDescription?: string;
-    /**
-     * (string) - Custom summary for the alert. support mustache template
-     */
-    customSummary?: string;
-    /**
-     * (string) - The display name of the alert
-     */
-    displayName?: string;
-    /**
-     * (AlertV2Evaluation)
-     */
-    evaluation?: inputs.GetAlertV2Evaluation;
-    /**
-     * (string) - The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
-     */
-    parentPath?: string;
-    /**
-     * (string) - Text of the query to be run
-     */
-    queryText?: string;
-    /**
-     * (AlertV2RunAs) - Specifies the identity that will be used to run the alert.
-     * This field allows you to configure alerts to run as a specific user or service principal.
-     * - For user identity: Set `userName` to the email of an active workspace user. Users can only set this to their own email.
-     * - For service principal: Set `servicePrincipalName` to the application ID. Requires the `servicePrincipal/user` role.
-     * If not specified, the alert will run as the request user
-     */
-    runAs?: inputs.GetAlertV2RunAs;
-    /**
-     * (string, deprecated) - The run as username or application ID of service principal.
-     * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
-     * Deprecated: Use `runAs` field instead. This field will be removed in a future release
-     */
-    runAsUserName?: string;
-    /**
-     * (CronSchedule)
-     */
-    schedule?: inputs.GetAlertV2Schedule;
-    /**
-     * (string) - ID of the SQL warehouse attached to the alert
-     */
-    warehouseId?: string;
-    /**
-     * Workspace ID of the resource
-     */
-    workspaceId?: string;
+    id: string;
 }
 
 /**
@@ -105,15 +59,15 @@ export interface GetAlertV2Result {
     /**
      * (string) - Custom description for the alert. support mustache template
      */
-    readonly customDescription?: string;
+    readonly customDescription: string;
     /**
      * (string) - Custom summary for the alert. support mustache template
      */
-    readonly customSummary?: string;
+    readonly customSummary: string;
     /**
      * (string) - The display name of the alert
      */
-    readonly displayName?: string;
+    readonly displayName: string;
     /**
      * (AlertV2RunAs) - The actual identity that will be used to execute the alert.
      * This is an output-only field that shows the resolved run-as identity after applying
@@ -123,13 +77,13 @@ export interface GetAlertV2Result {
     /**
      * (AlertV2Evaluation)
      */
-    readonly evaluation?: outputs.GetAlertV2Evaluation;
+    readonly evaluation: outputs.GetAlertV2Evaluation;
     /**
      * (string) - UUID identifying the alert
      */
     readonly id: string;
     /**
-     * (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `TRASHED`
+     * (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `DELETED`
      */
     readonly lifecycleState: string;
     /**
@@ -139,11 +93,11 @@ export interface GetAlertV2Result {
     /**
      * (string) - The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
      */
-    readonly parentPath?: string;
+    readonly parentPath: string;
     /**
      * (string) - Text of the query to be run
      */
-    readonly queryText?: string;
+    readonly queryText: string;
     /**
      * (AlertV2RunAs) - Specifies the identity that will be used to run the alert.
      * This field allows you to configure alerts to run as a specific user or service principal.
@@ -151,17 +105,17 @@ export interface GetAlertV2Result {
      * - For service principal: Set `servicePrincipalName` to the application ID. Requires the `servicePrincipal/user` role.
      * If not specified, the alert will run as the request user
      */
-    readonly runAs?: outputs.GetAlertV2RunAs;
+    readonly runAs: outputs.GetAlertV2RunAs;
     /**
      * (string, deprecated) - The run as username or application ID of service principal.
      * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
      * Deprecated: Use `runAs` field instead. This field will be removed in a future release
      */
-    readonly runAsUserName?: string;
+    readonly runAsUserName: string;
     /**
      * (CronSchedule)
      */
-    readonly schedule?: outputs.GetAlertV2Schedule;
+    readonly schedule: outputs.GetAlertV2Schedule;
     /**
      * (string) - The timestamp indicating when the alert was updated
      */
@@ -169,10 +123,11 @@ export interface GetAlertV2Result {
     /**
      * (string) - ID of the SQL warehouse attached to the alert
      */
-    readonly warehouseId?: string;
-    readonly workspaceId?: string;
+    readonly warehouseId: string;
 }
 /**
+ * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
  * The SQL Alert v2 data source allows you to retrieve detailed information about a specific alert in Databricks SQL. This data source provides access to all alert properties, including its configuration, evaluation criteria, notification settings, and schedule.
  *
  * You can use this data source to:
@@ -185,22 +140,20 @@ export interface GetAlertV2Result {
  *
  * ### Retrieve Alert by ID
  * This example retrieves a specific alert by its ID:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const _this = databricks.getAlertV2({
+ *     id: "123",
+ * });
+ * ```
  */
-export function getAlertV2Output(args?: GetAlertV2OutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAlertV2Result> {
-    args = args || {};
+export function getAlertV2Output(args: GetAlertV2OutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAlertV2Result> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getAlertV2:getAlertV2", {
-        "customDescription": args.customDescription,
-        "customSummary": args.customSummary,
-        "displayName": args.displayName,
-        "evaluation": args.evaluation,
-        "parentPath": args.parentPath,
-        "queryText": args.queryText,
-        "runAs": args.runAs,
-        "runAsUserName": args.runAsUserName,
-        "schedule": args.schedule,
-        "warehouseId": args.warehouseId,
-        "workspaceId": args.workspaceId,
+        "id": args.id,
     }, opts);
 }
 
@@ -209,53 +162,7 @@ export function getAlertV2Output(args?: GetAlertV2OutputArgs, opts?: pulumi.Invo
  */
 export interface GetAlertV2OutputArgs {
     /**
-     * (string) - Custom description for the alert. support mustache template
+     * UUID identifying the alert
      */
-    customDescription?: pulumi.Input<string>;
-    /**
-     * (string) - Custom summary for the alert. support mustache template
-     */
-    customSummary?: pulumi.Input<string>;
-    /**
-     * (string) - The display name of the alert
-     */
-    displayName?: pulumi.Input<string>;
-    /**
-     * (AlertV2Evaluation)
-     */
-    evaluation?: pulumi.Input<inputs.GetAlertV2EvaluationArgs>;
-    /**
-     * (string) - The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
-     */
-    parentPath?: pulumi.Input<string>;
-    /**
-     * (string) - Text of the query to be run
-     */
-    queryText?: pulumi.Input<string>;
-    /**
-     * (AlertV2RunAs) - Specifies the identity that will be used to run the alert.
-     * This field allows you to configure alerts to run as a specific user or service principal.
-     * - For user identity: Set `userName` to the email of an active workspace user. Users can only set this to their own email.
-     * - For service principal: Set `servicePrincipalName` to the application ID. Requires the `servicePrincipal/user` role.
-     * If not specified, the alert will run as the request user
-     */
-    runAs?: pulumi.Input<inputs.GetAlertV2RunAsArgs>;
-    /**
-     * (string, deprecated) - The run as username or application ID of service principal.
-     * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
-     * Deprecated: Use `runAs` field instead. This field will be removed in a future release
-     */
-    runAsUserName?: pulumi.Input<string>;
-    /**
-     * (CronSchedule)
-     */
-    schedule?: pulumi.Input<inputs.GetAlertV2ScheduleArgs>;
-    /**
-     * (string) - ID of the SQL warehouse attached to the alert
-     */
-    warehouseId?: pulumi.Input<string>;
-    /**
-     * Workspace ID of the resource
-     */
-    workspaceId?: pulumi.Input<string>;
+    id: pulumi.Input<string>;
 }

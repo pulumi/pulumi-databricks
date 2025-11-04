@@ -12,6 +12,9 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class QualityMonitorDataClassificationConfigArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether to enable data classification
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 

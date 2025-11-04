@@ -12,13 +12,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class LibraryCran {
+    /**
+     * @return The name of the CRAN package to install.
+     * 
+     */
     private String package_;
+    /**
+     * @return The repository where the package can be found. If not specified, the default CRAN repo is used.
+     * 
+     */
     private @Nullable String repo;
 
     private LibraryCran() {}
+    /**
+     * @return The name of the CRAN package to install.
+     * 
+     */
     public String package_() {
         return this.package_;
     }
+    /**
+     * @return The repository where the package can be found. If not specified, the default CRAN repo is used.
+     * 
+     */
     public Optional<String> repo() {
         return Optional.ofNullable(this.repo);
     }

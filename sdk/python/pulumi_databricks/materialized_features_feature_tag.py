@@ -20,17 +20,13 @@ __all__ = ['MaterializedFeaturesFeatureTagArgs', 'MaterializedFeaturesFeatureTag
 class MaterializedFeaturesFeatureTagArgs:
     def __init__(__self__, *,
                  key: pulumi.Input[_builtins.str],
-                 value: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 value: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a MaterializedFeaturesFeatureTag resource.
-        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID of the resource
         """
         pulumi.set(__self__, "key", key)
         if value is not None:
             pulumi.set(__self__, "value", value)
-        if workspace_id is not None:
-            pulumi.set(__self__, "workspace_id", workspace_id)
 
     @_builtins.property
     @pulumi.getter
@@ -50,35 +46,19 @@ class MaterializedFeaturesFeatureTagArgs:
     def value(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "value", value)
 
-    @_builtins.property
-    @pulumi.getter(name="workspaceId")
-    def workspace_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Workspace ID of the resource
-        """
-        return pulumi.get(self, "workspace_id")
-
-    @workspace_id.setter
-    def workspace_id(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "workspace_id", value)
-
 
 @pulumi.input_type
 class _MaterializedFeaturesFeatureTagState:
     def __init__(__self__, *,
                  key: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 value: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MaterializedFeaturesFeatureTag resources.
-        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID of the resource
         """
         if key is not None:
             pulumi.set(__self__, "key", key)
         if value is not None:
             pulumi.set(__self__, "value", value)
-        if workspace_id is not None:
-            pulumi.set(__self__, "workspace_id", workspace_id)
 
     @_builtins.property
     @pulumi.getter
@@ -98,18 +78,6 @@ class _MaterializedFeaturesFeatureTagState:
     def value(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "value", value)
 
-    @_builtins.property
-    @pulumi.getter(name="workspaceId")
-    def workspace_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Workspace ID of the resource
-        """
-        return pulumi.get(self, "workspace_id")
-
-    @workspace_id.setter
-    def workspace_id(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "workspace_id", value)
-
 
 @pulumi.type_token("databricks:index/materializedFeaturesFeatureTag:MaterializedFeaturesFeatureTag")
 class MaterializedFeaturesFeatureTag(pulumi.CustomResource):
@@ -119,9 +87,10 @@ class MaterializedFeaturesFeatureTag(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  key: Optional[pulumi.Input[_builtins.str]] = None,
                  value: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
         ## Import
 
         As of Pulumi v1.5, resources can be imported through configuration.
@@ -139,12 +108,11 @@ class MaterializedFeaturesFeatureTag(pulumi.CustomResource):
         If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
 
         ```sh
-        $ pulumi import databricks:index/materializedFeaturesFeatureTag:MaterializedFeaturesFeatureTag databricks_materialized_features_feature_tag "key"
+        $ pulumi import databricks:index/materializedFeaturesFeatureTag:MaterializedFeaturesFeatureTag this "key"
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID of the resource
         """
         ...
     @overload
@@ -153,6 +121,8 @@ class MaterializedFeaturesFeatureTag(pulumi.CustomResource):
                  args: MaterializedFeaturesFeatureTagArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
         ## Import
 
         As of Pulumi v1.5, resources can be imported through configuration.
@@ -170,7 +140,7 @@ class MaterializedFeaturesFeatureTag(pulumi.CustomResource):
         If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
 
         ```sh
-        $ pulumi import databricks:index/materializedFeaturesFeatureTag:MaterializedFeaturesFeatureTag databricks_materialized_features_feature_tag "key"
+        $ pulumi import databricks:index/materializedFeaturesFeatureTag:MaterializedFeaturesFeatureTag this "key"
         ```
 
         :param str resource_name: The name of the resource.
@@ -190,7 +160,6 @@ class MaterializedFeaturesFeatureTag(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  key: Optional[pulumi.Input[_builtins.str]] = None,
                  value: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -204,7 +173,6 @@ class MaterializedFeaturesFeatureTag(pulumi.CustomResource):
                 raise TypeError("Missing required property 'key'")
             __props__.__dict__["key"] = key
             __props__.__dict__["value"] = value
-            __props__.__dict__["workspace_id"] = workspace_id
         super(MaterializedFeaturesFeatureTag, __self__).__init__(
             'databricks:index/materializedFeaturesFeatureTag:MaterializedFeaturesFeatureTag',
             resource_name,
@@ -216,8 +184,7 @@ class MaterializedFeaturesFeatureTag(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             key: Optional[pulumi.Input[_builtins.str]] = None,
-            value: Optional[pulumi.Input[_builtins.str]] = None,
-            workspace_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'MaterializedFeaturesFeatureTag':
+            value: Optional[pulumi.Input[_builtins.str]] = None) -> 'MaterializedFeaturesFeatureTag':
         """
         Get an existing MaterializedFeaturesFeatureTag resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -225,7 +192,6 @@ class MaterializedFeaturesFeatureTag(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID of the resource
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -233,7 +199,6 @@ class MaterializedFeaturesFeatureTag(pulumi.CustomResource):
 
         __props__.__dict__["key"] = key
         __props__.__dict__["value"] = value
-        __props__.__dict__["workspace_id"] = workspace_id
         return MaterializedFeaturesFeatureTag(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -245,12 +210,4 @@ class MaterializedFeaturesFeatureTag(pulumi.CustomResource):
     @pulumi.getter
     def value(self) -> pulumi.Output[Optional[_builtins.str]]:
         return pulumi.get(self, "value")
-
-    @_builtins.property
-    @pulumi.getter(name="workspaceId")
-    def workspace_id(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Workspace ID of the resource
-        """
-        return pulumi.get(self, "workspace_id")
 

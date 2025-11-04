@@ -5,10 +5,13 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetAppsApp;
+import com.pulumi.databricks.outputs.GetAppsProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAppsResult {
@@ -18,6 +21,7 @@ public final class GetAppsResult {
      * 
      */
     private String id;
+    private @Nullable GetAppsProviderConfig providerConfig;
 
     private GetAppsResult() {}
     public List<GetAppsApp> apps() {
@@ -29,6 +33,9 @@ public final class GetAppsResult {
      */
     public String id() {
         return this.id;
+    }
+    public Optional<GetAppsProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
     }
 
     public static Builder builder() {
@@ -42,11 +49,13 @@ public final class GetAppsResult {
     public static final class Builder {
         private List<GetAppsApp> apps;
         private String id;
+        private @Nullable GetAppsProviderConfig providerConfig;
         public Builder() {}
         public Builder(GetAppsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.apps = defaults.apps;
     	      this.id = defaults.id;
+    	      this.providerConfig = defaults.providerConfig;
         }
 
         @CustomType.Setter
@@ -68,10 +77,17 @@ public final class GetAppsResult {
             this.id = id;
             return this;
         }
+        @CustomType.Setter
+        public Builder providerConfig(@Nullable GetAppsProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
+            return this;
+        }
         public GetAppsResult build() {
             final var _resultValue = new GetAppsResult();
             _resultValue.apps = apps;
             _resultValue.id = id;
+            _resultValue.providerConfig = providerConfig;
             return _resultValue;
         }
     }

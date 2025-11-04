@@ -31,6 +31,7 @@ class QualityMonitorArgs:
                  latest_monitor_failure_msg: Optional[pulumi.Input[_builtins.str]] = None,
                  monitor_id: Optional[pulumi.Input[_builtins.str]] = None,
                  notifications: Optional[pulumi.Input['QualityMonitorNotificationsArgs']] = None,
+                 provider_config: Optional[pulumi.Input['QualityMonitorProviderConfigArgs']] = None,
                  schedule: Optional[pulumi.Input['QualityMonitorScheduleArgs']] = None,
                  skip_builtin_dashboard: Optional[pulumi.Input[_builtins.bool]] = None,
                  slicing_exprs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -49,6 +50,7 @@ class QualityMonitorArgs:
         :param pulumi.Input['QualityMonitorInferenceLogArgs'] inference_log: Configuration for the inference log monitor
         :param pulumi.Input[_builtins.str] monitor_id: ID of this monitor is the same as the full table name of the format `{catalog}.{schema_name}.{table_name}`
         :param pulumi.Input['QualityMonitorNotificationsArgs'] notifications: The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `email_addresses` containing a list of emails to notify:
+        :param pulumi.Input['QualityMonitorProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input['QualityMonitorScheduleArgs'] schedule: The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:
         :param pulumi.Input[_builtins.bool] skip_builtin_dashboard: Whether to skip creating a default dashboard summarizing data quality metrics.  (Can't be updated after creation).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] slicing_exprs: List of column expressions to slice data with for targeted analysis. The data is grouped by each expression independently, resulting in a separate slice for each predicate and its complements. For high-cardinality columns, only the top 100 unique values by frequency will generate slices.
@@ -73,6 +75,8 @@ class QualityMonitorArgs:
             pulumi.set(__self__, "monitor_id", monitor_id)
         if notifications is not None:
             pulumi.set(__self__, "notifications", notifications)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if schedule is not None:
             pulumi.set(__self__, "schedule", schedule)
         if skip_builtin_dashboard is not None:
@@ -205,6 +209,18 @@ class QualityMonitorArgs:
         pulumi.set(self, "notifications", value)
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['QualityMonitorProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['QualityMonitorProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
+    @_builtins.property
     @pulumi.getter
     def schedule(self) -> Optional[pulumi.Input['QualityMonitorScheduleArgs']]:
         """
@@ -293,6 +309,7 @@ class _QualityMonitorState:
                  notifications: Optional[pulumi.Input['QualityMonitorNotificationsArgs']] = None,
                  output_schema_name: Optional[pulumi.Input[_builtins.str]] = None,
                  profile_metrics_table_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['QualityMonitorProviderConfigArgs']] = None,
                  schedule: Optional[pulumi.Input['QualityMonitorScheduleArgs']] = None,
                  skip_builtin_dashboard: Optional[pulumi.Input[_builtins.bool]] = None,
                  slicing_exprs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -316,6 +333,7 @@ class _QualityMonitorState:
         :param pulumi.Input['QualityMonitorNotificationsArgs'] notifications: The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `email_addresses` containing a list of emails to notify:
         :param pulumi.Input[_builtins.str] output_schema_name: Schema where output metric tables are created
         :param pulumi.Input[_builtins.str] profile_metrics_table_name: The full name of the profile metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
+        :param pulumi.Input['QualityMonitorProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input['QualityMonitorScheduleArgs'] schedule: The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:
         :param pulumi.Input[_builtins.bool] skip_builtin_dashboard: Whether to skip creating a default dashboard summarizing data quality metrics.  (Can't be updated after creation).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] slicing_exprs: List of column expressions to slice data with for targeted analysis. The data is grouped by each expression independently, resulting in a separate slice for each predicate and its complements. For high-cardinality columns, only the top 100 unique values by frequency will generate slices.
@@ -351,6 +369,8 @@ class _QualityMonitorState:
             pulumi.set(__self__, "output_schema_name", output_schema_name)
         if profile_metrics_table_name is not None:
             pulumi.set(__self__, "profile_metrics_table_name", profile_metrics_table_name)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if schedule is not None:
             pulumi.set(__self__, "schedule", schedule)
         if skip_builtin_dashboard is not None:
@@ -523,6 +543,18 @@ class _QualityMonitorState:
         pulumi.set(self, "profile_metrics_table_name", value)
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['QualityMonitorProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['QualityMonitorProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
+    @_builtins.property
     @pulumi.getter
     def schedule(self) -> Optional[pulumi.Input['QualityMonitorScheduleArgs']]:
         """
@@ -634,6 +666,7 @@ class QualityMonitor(pulumi.CustomResource):
                  monitor_id: Optional[pulumi.Input[_builtins.str]] = None,
                  notifications: Optional[pulumi.Input[Union['QualityMonitorNotificationsArgs', 'QualityMonitorNotificationsArgsDict']]] = None,
                  output_schema_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['QualityMonitorProviderConfigArgs', 'QualityMonitorProviderConfigArgsDict']]] = None,
                  schedule: Optional[pulumi.Input[Union['QualityMonitorScheduleArgs', 'QualityMonitorScheduleArgsDict']]] = None,
                  skip_builtin_dashboard: Optional[pulumi.Input[_builtins.bool]] = None,
                  slicing_exprs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -750,6 +783,7 @@ class QualityMonitor(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] monitor_id: ID of this monitor is the same as the full table name of the format `{catalog}.{schema_name}.{table_name}`
         :param pulumi.Input[Union['QualityMonitorNotificationsArgs', 'QualityMonitorNotificationsArgsDict']] notifications: The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `email_addresses` containing a list of emails to notify:
         :param pulumi.Input[_builtins.str] output_schema_name: Schema where output metric tables are created
+        :param pulumi.Input[Union['QualityMonitorProviderConfigArgs', 'QualityMonitorProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[Union['QualityMonitorScheduleArgs', 'QualityMonitorScheduleArgsDict']] schedule: The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:
         :param pulumi.Input[_builtins.bool] skip_builtin_dashboard: Whether to skip creating a default dashboard summarizing data quality metrics.  (Can't be updated after creation).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] slicing_exprs: List of column expressions to slice data with for targeted analysis. The data is grouped by each expression independently, resulting in a separate slice for each predicate and its complements. For high-cardinality columns, only the top 100 unique values by frequency will generate slices.
@@ -885,6 +919,7 @@ class QualityMonitor(pulumi.CustomResource):
                  monitor_id: Optional[pulumi.Input[_builtins.str]] = None,
                  notifications: Optional[pulumi.Input[Union['QualityMonitorNotificationsArgs', 'QualityMonitorNotificationsArgsDict']]] = None,
                  output_schema_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['QualityMonitorProviderConfigArgs', 'QualityMonitorProviderConfigArgsDict']]] = None,
                  schedule: Optional[pulumi.Input[Union['QualityMonitorScheduleArgs', 'QualityMonitorScheduleArgsDict']]] = None,
                  skip_builtin_dashboard: Optional[pulumi.Input[_builtins.bool]] = None,
                  slicing_exprs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -914,6 +949,7 @@ class QualityMonitor(pulumi.CustomResource):
             if output_schema_name is None and not opts.urn:
                 raise TypeError("Missing required property 'output_schema_name'")
             __props__.__dict__["output_schema_name"] = output_schema_name
+            __props__.__dict__["provider_config"] = provider_config
             __props__.__dict__["schedule"] = schedule
             __props__.__dict__["skip_builtin_dashboard"] = skip_builtin_dashboard
             __props__.__dict__["slicing_exprs"] = slicing_exprs
@@ -951,6 +987,7 @@ class QualityMonitor(pulumi.CustomResource):
             notifications: Optional[pulumi.Input[Union['QualityMonitorNotificationsArgs', 'QualityMonitorNotificationsArgsDict']]] = None,
             output_schema_name: Optional[pulumi.Input[_builtins.str]] = None,
             profile_metrics_table_name: Optional[pulumi.Input[_builtins.str]] = None,
+            provider_config: Optional[pulumi.Input[Union['QualityMonitorProviderConfigArgs', 'QualityMonitorProviderConfigArgsDict']]] = None,
             schedule: Optional[pulumi.Input[Union['QualityMonitorScheduleArgs', 'QualityMonitorScheduleArgsDict']]] = None,
             skip_builtin_dashboard: Optional[pulumi.Input[_builtins.bool]] = None,
             slicing_exprs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -979,6 +1016,7 @@ class QualityMonitor(pulumi.CustomResource):
         :param pulumi.Input[Union['QualityMonitorNotificationsArgs', 'QualityMonitorNotificationsArgsDict']] notifications: The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `email_addresses` containing a list of emails to notify:
         :param pulumi.Input[_builtins.str] output_schema_name: Schema where output metric tables are created
         :param pulumi.Input[_builtins.str] profile_metrics_table_name: The full name of the profile metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
+        :param pulumi.Input[Union['QualityMonitorProviderConfigArgs', 'QualityMonitorProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[Union['QualityMonitorScheduleArgs', 'QualityMonitorScheduleArgsDict']] schedule: The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:
         :param pulumi.Input[_builtins.bool] skip_builtin_dashboard: Whether to skip creating a default dashboard summarizing data quality metrics.  (Can't be updated after creation).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] slicing_exprs: List of column expressions to slice data with for targeted analysis. The data is grouped by each expression independently, resulting in a separate slice for each predicate and its complements. For high-cardinality columns, only the top 100 unique values by frequency will generate slices.
@@ -1005,6 +1043,7 @@ class QualityMonitor(pulumi.CustomResource):
         __props__.__dict__["notifications"] = notifications
         __props__.__dict__["output_schema_name"] = output_schema_name
         __props__.__dict__["profile_metrics_table_name"] = profile_metrics_table_name
+        __props__.__dict__["provider_config"] = provider_config
         __props__.__dict__["schedule"] = schedule
         __props__.__dict__["skip_builtin_dashboard"] = skip_builtin_dashboard
         __props__.__dict__["slicing_exprs"] = slicing_exprs
@@ -1116,6 +1155,14 @@ class QualityMonitor(pulumi.CustomResource):
         The full name of the profile metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
         """
         return pulumi.get(self, "profile_metrics_table_name")
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> pulumi.Output[Optional['outputs.QualityMonitorProviderConfig']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
 
     @_builtins.property
     @pulumi.getter

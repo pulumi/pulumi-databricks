@@ -7,6 +7,8 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
  * This data source can be used to get a single Synced Database Table.
  *
  * ## Example Usage
@@ -25,11 +27,7 @@ import * as utilities from "./utilities";
 export function getDatabaseSyncedDatabaseTable(args: GetDatabaseSyncedDatabaseTableArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabaseSyncedDatabaseTableResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getDatabaseSyncedDatabaseTable:getDatabaseSyncedDatabaseTable", {
-        "databaseInstanceName": args.databaseInstanceName,
-        "logicalDatabaseName": args.logicalDatabaseName,
         "name": args.name,
-        "spec": args.spec,
-        "workspaceId": args.workspaceId,
     }, opts);
 }
 
@@ -38,28 +36,9 @@ export function getDatabaseSyncedDatabaseTable(args: GetDatabaseSyncedDatabaseTa
  */
 export interface GetDatabaseSyncedDatabaseTableArgs {
     /**
-     * (string) - Name of the target database instance. This is required when creating synced database tables in standard catalogs.
-     * This is optional when creating synced database tables in registered catalogs. If this field is specified
-     * when creating synced database tables in registered catalogs, the database instance name MUST
-     * match that of the registered catalog (or the request will be rejected)
-     */
-    databaseInstanceName?: string;
-    /**
-     * (string) - Target Postgres database object (logical database) name for this table.
-     */
-    logicalDatabaseName?: string;
-    /**
      * Full three-part (catalog, schema, table) name of the table
      */
     name: string;
-    /**
-     * (SyncedTableSpec)
-     */
-    spec?: inputs.GetDatabaseSyncedDatabaseTableSpec;
-    /**
-     * Workspace ID of the resource
-     */
-    workspaceId?: string;
 }
 
 /**
@@ -101,16 +80,17 @@ export interface GetDatabaseSyncedDatabaseTableResult {
     /**
      * (SyncedTableSpec)
      */
-    readonly spec?: outputs.GetDatabaseSyncedDatabaseTableSpec;
+    readonly spec: outputs.GetDatabaseSyncedDatabaseTableSpec;
     /**
      * (string) - The provisioning state of the synced table entity in Unity Catalog. This is distinct from the
      * state of the data synchronization pipeline (i.e. the table may be in "ACTIVE" but the pipeline
      * may be in "PROVISIONING" as it runs asynchronously). Possible values are: `ACTIVE`, `DEGRADED`, `DELETING`, `FAILED`, `PROVISIONING`, `UPDATING`
      */
     readonly unityCatalogProvisioningState: string;
-    readonly workspaceId?: string;
 }
 /**
+ * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
  * This data source can be used to get a single Synced Database Table.
  *
  * ## Example Usage
@@ -129,11 +109,7 @@ export interface GetDatabaseSyncedDatabaseTableResult {
 export function getDatabaseSyncedDatabaseTableOutput(args: GetDatabaseSyncedDatabaseTableOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDatabaseSyncedDatabaseTableResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getDatabaseSyncedDatabaseTable:getDatabaseSyncedDatabaseTable", {
-        "databaseInstanceName": args.databaseInstanceName,
-        "logicalDatabaseName": args.logicalDatabaseName,
         "name": args.name,
-        "spec": args.spec,
-        "workspaceId": args.workspaceId,
     }, opts);
 }
 
@@ -142,26 +118,7 @@ export function getDatabaseSyncedDatabaseTableOutput(args: GetDatabaseSyncedData
  */
 export interface GetDatabaseSyncedDatabaseTableOutputArgs {
     /**
-     * (string) - Name of the target database instance. This is required when creating synced database tables in standard catalogs.
-     * This is optional when creating synced database tables in registered catalogs. If this field is specified
-     * when creating synced database tables in registered catalogs, the database instance name MUST
-     * match that of the registered catalog (or the request will be rejected)
-     */
-    databaseInstanceName?: pulumi.Input<string>;
-    /**
-     * (string) - Target Postgres database object (logical database) name for this table.
-     */
-    logicalDatabaseName?: pulumi.Input<string>;
-    /**
      * Full three-part (catalog, schema, table) name of the table
      */
     name: pulumi.Input<string>;
-    /**
-     * (SyncedTableSpec)
-     */
-    spec?: pulumi.Input<inputs.GetDatabaseSyncedDatabaseTableSpecArgs>;
-    /**
-     * Workspace ID of the resource
-     */
-    workspaceId?: pulumi.Input<string>;
 }

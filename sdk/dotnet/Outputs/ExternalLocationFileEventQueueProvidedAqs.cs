@@ -19,7 +19,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string QueueUrl;
         /// <summary>
-        /// The Azure resource group.
+        /// The name of the Azure resource group.
         /// </summary>
         public readonly string? ResourceGroup;
         /// <summary>

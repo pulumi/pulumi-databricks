@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetStorageCredentialProviderConfigArgs;
 import com.pulumi.databricks.inputs.GetStorageCredentialStorageCredentialInfoArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
@@ -48,6 +49,21 @@ public final class GetStorageCredentialArgs extends com.pulumi.resources.InvokeA
     }
 
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<GetStorageCredentialProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Optional<Output<GetStorageCredentialProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
+    /**
      * array of objects with information about storage credential.
      * 
      */
@@ -67,6 +83,7 @@ public final class GetStorageCredentialArgs extends com.pulumi.resources.InvokeA
     private GetStorageCredentialArgs(GetStorageCredentialArgs $) {
         this.id = $.id;
         this.name = $.name;
+        this.providerConfig = $.providerConfig;
         this.storageCredentialInfo = $.storageCredentialInfo;
     }
 
@@ -128,6 +145,27 @@ public final class GetStorageCredentialArgs extends com.pulumi.resources.InvokeA
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<GetStorageCredentialProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(GetStorageCredentialProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         /**

@@ -5,6 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
  * This data source can be used to get a single workspace network option.
  *
  * > **Note** This data source can only be used with an account-level provider!
@@ -22,11 +24,9 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getWorkspaceNetworkOption(args?: GetWorkspaceNetworkOptionArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkspaceNetworkOptionResult> {
-    args = args || {};
+export function getWorkspaceNetworkOption(args: GetWorkspaceNetworkOptionArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkspaceNetworkOptionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getWorkspaceNetworkOption:getWorkspaceNetworkOption", {
-        "networkPolicyId": args.networkPolicyId,
         "workspaceId": args.workspaceId,
     }, opts);
 }
@@ -36,16 +36,9 @@ export function getWorkspaceNetworkOption(args?: GetWorkspaceNetworkOptionArgs, 
  */
 export interface GetWorkspaceNetworkOptionArgs {
     /**
-     * (string) - The network policy ID to apply to the workspace. This controls the network access rules
-     * for all serverless compute resources in the workspace. Each workspace can only be
-     * linked to one policy at a time. If no policy is explicitly assigned,
-     * the workspace will use 'default-policy'
-     */
-    networkPolicyId?: string;
-    /**
      * The workspace ID
      */
-    workspaceId?: string;
+    workspaceId: string;
 }
 
 /**
@@ -62,13 +55,15 @@ export interface GetWorkspaceNetworkOptionResult {
      * linked to one policy at a time. If no policy is explicitly assigned,
      * the workspace will use 'default-policy'
      */
-    readonly networkPolicyId?: string;
+    readonly networkPolicyId: string;
     /**
      * (integer) - The workspace ID
      */
-    readonly workspaceId?: string;
+    readonly workspaceId: string;
 }
 /**
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
  * This data source can be used to get a single workspace network option.
  *
  * > **Note** This data source can only be used with an account-level provider!
@@ -86,11 +81,9 @@ export interface GetWorkspaceNetworkOptionResult {
  * });
  * ```
  */
-export function getWorkspaceNetworkOptionOutput(args?: GetWorkspaceNetworkOptionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWorkspaceNetworkOptionResult> {
-    args = args || {};
+export function getWorkspaceNetworkOptionOutput(args: GetWorkspaceNetworkOptionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWorkspaceNetworkOptionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getWorkspaceNetworkOption:getWorkspaceNetworkOption", {
-        "networkPolicyId": args.networkPolicyId,
         "workspaceId": args.workspaceId,
     }, opts);
 }
@@ -100,14 +93,7 @@ export function getWorkspaceNetworkOptionOutput(args?: GetWorkspaceNetworkOption
  */
 export interface GetWorkspaceNetworkOptionOutputArgs {
     /**
-     * (string) - The network policy ID to apply to the workspace. This controls the network access rules
-     * for all serverless compute resources in the workspace. Each workspace can only be
-     * linked to one policy at a time. If no policy is explicitly assigned,
-     * the workspace will use 'default-policy'
-     */
-    networkPolicyId?: pulumi.Input<string>;
-    /**
      * The workspace ID
      */
-    workspaceId?: pulumi.Input<string>;
+    workspaceId: pulumi.Input<string>;
 }

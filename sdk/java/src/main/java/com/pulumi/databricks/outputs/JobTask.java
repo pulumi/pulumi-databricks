@@ -60,6 +60,7 @@ public final class JobTask {
      * 
      */
     private @Nullable Boolean disableAutoOptimization;
+    private @Nullable Boolean disabled;
     /**
      * @return An optional block to specify a set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This block is documented below.
      * 
@@ -189,6 +190,9 @@ public final class JobTask {
      */
     public Optional<Boolean> disableAutoOptimization() {
         return Optional.ofNullable(this.disableAutoOptimization);
+    }
+    public Optional<Boolean> disabled() {
+        return Optional.ofNullable(this.disabled);
     }
     /**
      * @return An optional block to specify a set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This block is documented below.
@@ -350,6 +354,7 @@ public final class JobTask {
         private @Nullable List<JobTaskDependsOn> dependsOns;
         private @Nullable String description;
         private @Nullable Boolean disableAutoOptimization;
+        private @Nullable Boolean disabled;
         private @Nullable JobTaskEmailNotifications emailNotifications;
         private @Nullable String environmentKey;
         private @Nullable String existingClusterId;
@@ -388,6 +393,7 @@ public final class JobTask {
     	      this.dependsOns = defaults.dependsOns;
     	      this.description = defaults.description;
     	      this.disableAutoOptimization = defaults.disableAutoOptimization;
+    	      this.disabled = defaults.disabled;
     	      this.emailNotifications = defaults.emailNotifications;
     	      this.environmentKey = defaults.environmentKey;
     	      this.existingClusterId = defaults.existingClusterId;
@@ -471,6 +477,12 @@ public final class JobTask {
         public Builder disableAutoOptimization(@Nullable Boolean disableAutoOptimization) {
 
             this.disableAutoOptimization = disableAutoOptimization;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder disabled(@Nullable Boolean disabled) {
+
+            this.disabled = disabled;
             return this;
         }
         @CustomType.Setter
@@ -645,6 +657,7 @@ public final class JobTask {
             _resultValue.dependsOns = dependsOns;
             _resultValue.description = description;
             _resultValue.disableAutoOptimization = disableAutoOptimization;
+            _resultValue.disabled = disabled;
             _resultValue.emailNotifications = emailNotifications;
             _resultValue.environmentKey = environmentKey;
             _resultValue.existingClusterId = existingClusterId;

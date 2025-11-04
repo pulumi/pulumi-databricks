@@ -24,7 +24,12 @@ namespace Pulumi.Databricks.Outputs
         /// <summary>
         /// Type of the object.
         /// </summary>
-        public readonly string DataObjectType;
+        public readonly string? DataObjectType;
+        public readonly bool EffectiveCdfEnabled;
+        public readonly string EffectiveHistoryDataSharingStatus;
+        public readonly string EffectiveSharedAs;
+        public readonly int EffectiveStartVersion;
+        public readonly string EffectiveStringSharedAs;
         public readonly string? HistoryDataSharingStatus;
         /// <summary>
         /// The name of the share
@@ -48,7 +53,17 @@ namespace Pulumi.Databricks.Outputs
 
             string? content,
 
-            string dataObjectType,
+            string? dataObjectType,
+
+            bool effectiveCdfEnabled,
+
+            string effectiveHistoryDataSharingStatus,
+
+            string effectiveSharedAs,
+
+            int effectiveStartVersion,
+
+            string effectiveStringSharedAs,
 
             string? historyDataSharingStatus,
 
@@ -70,6 +85,11 @@ namespace Pulumi.Databricks.Outputs
             Comment = comment;
             Content = content;
             DataObjectType = dataObjectType;
+            EffectiveCdfEnabled = effectiveCdfEnabled;
+            EffectiveHistoryDataSharingStatus = effectiveHistoryDataSharingStatus;
+            EffectiveSharedAs = effectiveSharedAs;
+            EffectiveStartVersion = effectiveStartVersion;
+            EffectiveStringSharedAs = effectiveStringSharedAs;
             HistoryDataSharingStatus = historyDataSharingStatus;
             Name = name;
             Partitions = partitions;

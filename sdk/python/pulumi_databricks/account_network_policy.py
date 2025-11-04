@@ -141,6 +141,8 @@ class AccountNetworkPolicy(pulumi.CustomResource):
                  network_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
         Network policies control which network destinations can be accessed from the Databricks environment.
 
         Each Databricks account includes a default policy named `default-policy`. This policy is:
@@ -172,7 +174,7 @@ class AccountNetworkPolicy(pulumi.CustomResource):
         If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
 
         ```sh
-        $ pulumi import databricks:index/accountNetworkPolicy:AccountNetworkPolicy databricks_account_network_policy "network_policy_id"
+        $ pulumi import databricks:index/accountNetworkPolicy:AccountNetworkPolicy this "network_policy_id"
         ```
 
         :param str resource_name: The name of the resource.
@@ -188,6 +190,8 @@ class AccountNetworkPolicy(pulumi.CustomResource):
                  args: Optional[AccountNetworkPolicyArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
         Network policies control which network destinations can be accessed from the Databricks environment.
 
         Each Databricks account includes a default policy named `default-policy`. This policy is:
@@ -219,7 +223,7 @@ class AccountNetworkPolicy(pulumi.CustomResource):
         If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
 
         ```sh
-        $ pulumi import databricks:index/accountNetworkPolicy:AccountNetworkPolicy databricks_account_network_policy "network_policy_id"
+        $ pulumi import databricks:index/accountNetworkPolicy:AccountNetworkPolicy this "network_policy_id"
         ```
 
         :param str resource_name: The name of the resource.

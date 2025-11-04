@@ -9,6 +9,7 @@ import com.pulumi.databricks.inputs.AppActiveDeploymentArgs;
 import com.pulumi.databricks.inputs.AppAppStatusArgs;
 import com.pulumi.databricks.inputs.AppComputeStatusArgs;
 import com.pulumi.databricks.inputs.AppPendingDeploymentArgs;
+import com.pulumi.databricks.inputs.AppProviderConfigArgs;
 import com.pulumi.databricks.inputs.AppResourceArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -58,6 +59,21 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> budgetPolicyId() {
         return Optional.ofNullable(this.budgetPolicyId);
+    }
+
+    /**
+     * A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`, `LIQUID`.
+     * 
+     */
+    @Import(name="computeSize")
+    private @Nullable Output<String> computeSize;
+
+    /**
+     * @return A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`, `LIQUID`.
+     * 
+     */
+    public Optional<Output<String>> computeSize() {
+        return Optional.ofNullable(this.computeSize);
     }
 
     /**
@@ -208,6 +224,13 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.pendingDeployment);
     }
 
+    @Import(name="providerConfig")
+    private @Nullable Output<AppProviderConfigArgs> providerConfig;
+
+    public Optional<Output<AppProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     /**
      * A list of resources that the app have access to.
      * 
@@ -223,9 +246,17 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.resources);
     }
 
+    /**
+     * client_id (application_id) of the app service principal
+     * 
+     */
     @Import(name="servicePrincipalClientId")
     private @Nullable Output<String> servicePrincipalClientId;
 
+    /**
+     * @return client_id (application_id) of the app service principal
+     * 
+     */
     public Optional<Output<String>> servicePrincipalClientId() {
         return Optional.ofNullable(this.servicePrincipalClientId);
     }
@@ -326,6 +357,7 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
         this.activeDeployment = $.activeDeployment;
         this.appStatus = $.appStatus;
         this.budgetPolicyId = $.budgetPolicyId;
+        this.computeSize = $.computeSize;
         this.computeStatus = $.computeStatus;
         this.createTime = $.createTime;
         this.creator = $.creator;
@@ -338,6 +370,7 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
         this.oauth2AppClientId = $.oauth2AppClientId;
         this.oauth2AppIntegrationId = $.oauth2AppIntegrationId;
         this.pendingDeployment = $.pendingDeployment;
+        this.providerConfig = $.providerConfig;
         this.resources = $.resources;
         this.servicePrincipalClientId = $.servicePrincipalClientId;
         this.servicePrincipalId = $.servicePrincipalId;
@@ -415,6 +448,27 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder budgetPolicyId(String budgetPolicyId) {
             return budgetPolicyId(Output.of(budgetPolicyId));
+        }
+
+        /**
+         * @param computeSize A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`, `LIQUID`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder computeSize(@Nullable Output<String> computeSize) {
+            $.computeSize = computeSize;
+            return this;
+        }
+
+        /**
+         * @param computeSize A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`, `LIQUID`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder computeSize(String computeSize) {
+            return computeSize(Output.of(computeSize));
         }
 
         /**
@@ -631,6 +685,15 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
             return pendingDeployment(Output.of(pendingDeployment));
         }
 
+        public Builder providerConfig(@Nullable Output<AppProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        public Builder providerConfig(AppProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
+        }
+
         /**
          * @param resources A list of resources that the app have access to.
          * 
@@ -662,11 +725,23 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
             return resources(List.of(resources));
         }
 
+        /**
+         * @param servicePrincipalClientId client_id (application_id) of the app service principal
+         * 
+         * @return builder
+         * 
+         */
         public Builder servicePrincipalClientId(@Nullable Output<String> servicePrincipalClientId) {
             $.servicePrincipalClientId = servicePrincipalClientId;
             return this;
         }
 
+        /**
+         * @param servicePrincipalClientId client_id (application_id) of the app service principal
+         * 
+         * @return builder
+         * 
+         */
         public Builder servicePrincipalClientId(String servicePrincipalClientId) {
             return servicePrincipalClientId(Output.of(servicePrincipalClientId));
         }

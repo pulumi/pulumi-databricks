@@ -8,8 +8,6 @@ import com.pulumi.databricks.outputs.GetAppsSettingsCustomTemplateManifest;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAppsSettingsCustomTemplateResult {
@@ -22,7 +20,7 @@ public final class GetAppsSettingsCustomTemplateResult {
      * @return (string) - Description of the App Resource
      * 
      */
-    private @Nullable String description;
+    private String description;
     /**
      * @return (string) - The Git provider of the template
      * 
@@ -53,7 +51,6 @@ public final class GetAppsSettingsCustomTemplateResult {
      * 
      */
     private String path;
-    private @Nullable String workspaceId;
 
     private GetAppsSettingsCustomTemplateResult() {}
     /**
@@ -67,8 +64,8 @@ public final class GetAppsSettingsCustomTemplateResult {
      * @return (string) - Description of the App Resource
      * 
      */
-    public Optional<String> description() {
-        return Optional.ofNullable(this.description);
+    public String description() {
+        return this.description;
     }
     /**
      * @return (string) - The Git provider of the template
@@ -112,9 +109,6 @@ public final class GetAppsSettingsCustomTemplateResult {
     public String path() {
         return this.path;
     }
-    public Optional<String> workspaceId() {
-        return Optional.ofNullable(this.workspaceId);
-    }
 
     public static Builder builder() {
         return new Builder();
@@ -126,14 +120,13 @@ public final class GetAppsSettingsCustomTemplateResult {
     @CustomType.Builder
     public static final class Builder {
         private String creator;
-        private @Nullable String description;
+        private String description;
         private String gitProvider;
         private String gitRepo;
         private String id;
         private GetAppsSettingsCustomTemplateManifest manifest;
         private String name;
         private String path;
-        private @Nullable String workspaceId;
         public Builder() {}
         public Builder(GetAppsSettingsCustomTemplateResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -145,7 +138,6 @@ public final class GetAppsSettingsCustomTemplateResult {
     	      this.manifest = defaults.manifest;
     	      this.name = defaults.name;
     	      this.path = defaults.path;
-    	      this.workspaceId = defaults.workspaceId;
         }
 
         @CustomType.Setter
@@ -157,8 +149,10 @@ public final class GetAppsSettingsCustomTemplateResult {
             return this;
         }
         @CustomType.Setter
-        public Builder description(@Nullable String description) {
-
+        public Builder description(String description) {
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetAppsSettingsCustomTemplateResult", "description");
+            }
             this.description = description;
             return this;
         }
@@ -210,12 +204,6 @@ public final class GetAppsSettingsCustomTemplateResult {
             this.path = path;
             return this;
         }
-        @CustomType.Setter
-        public Builder workspaceId(@Nullable String workspaceId) {
-
-            this.workspaceId = workspaceId;
-            return this;
-        }
         public GetAppsSettingsCustomTemplateResult build() {
             final var _resultValue = new GetAppsSettingsCustomTemplateResult();
             _resultValue.creator = creator;
@@ -226,7 +214,6 @@ public final class GetAppsSettingsCustomTemplateResult {
             _resultValue.manifest = manifest;
             _resultValue.name = name;
             _resultValue.path = path;
-            _resultValue.workspaceId = workspaceId;
             return _resultValue;
         }
     }

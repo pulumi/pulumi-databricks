@@ -14,7 +14,7 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetAppsSettingsCustomTemplateManifestResourceSpecSecretSpecResult
     {
         /// <summary>
-        /// (string) - . Possible values are: `MANAGE`, `READ_VOLUME`, `WRITE_VOLUME`
+        /// (string) - Possible values are: `MANAGE`, `READ_VOLUME`, `SELECT`, `WRITE_VOLUME`
         /// </summary>
         public readonly string Permission;
 

@@ -28,7 +28,7 @@ namespace Pulumi.Databricks.Outputs
         /// <summary>
         /// (string) - The value of the tag
         /// </summary>
-        public readonly string? TagValue;
+        public readonly string TagValue;
 
         [OutputConstructor]
         private GetEntityTagAssignmentsTagAssignmentResult(
@@ -38,7 +38,7 @@ namespace Pulumi.Databricks.Outputs
 
             string tagKey,
 
-            string? tagValue)
+            string tagValue)
         {
             EntityName = entityName;
             EntityType = entityType;

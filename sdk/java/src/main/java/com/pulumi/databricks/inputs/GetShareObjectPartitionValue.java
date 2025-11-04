@@ -4,7 +4,6 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -19,22 +18,22 @@ public final class GetShareObjectPartitionValue extends com.pulumi.resources.Inv
      * The name of the share
      * 
      */
-    @Import(name="name", required=true)
-    private String name;
+    @Import(name="name")
+    private @Nullable String name;
 
     /**
      * @return The name of the share
      * 
      */
-    public String name() {
-        return this.name;
+    public Optional<String> name() {
+        return Optional.ofNullable(this.name);
     }
 
-    @Import(name="op", required=true)
-    private String op;
+    @Import(name="op")
+    private @Nullable String op;
 
-    public String op() {
-        return this.op;
+    public Optional<String> op() {
+        return Optional.ofNullable(this.op);
     }
 
     @Import(name="recipientPropertyKey")
@@ -84,12 +83,12 @@ public final class GetShareObjectPartitionValue extends com.pulumi.resources.Inv
          * @return builder
          * 
          */
-        public Builder name(String name) {
+        public Builder name(@Nullable String name) {
             $.name = name;
             return this;
         }
 
-        public Builder op(String op) {
+        public Builder op(@Nullable String op) {
             $.op = op;
             return this;
         }
@@ -105,12 +104,6 @@ public final class GetShareObjectPartitionValue extends com.pulumi.resources.Inv
         }
 
         public GetShareObjectPartitionValue build() {
-            if ($.name == null) {
-                throw new MissingRequiredPropertyException("GetShareObjectPartitionValue", "name");
-            }
-            if ($.op == null) {
-                throw new MissingRequiredPropertyException("GetShareObjectPartitionValue", "op");
-            }
             return $;
         }
     }

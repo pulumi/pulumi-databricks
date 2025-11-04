@@ -17,6 +17,7 @@ namespace Pulumi.Databricks.Outputs
         public readonly string? Egg;
         public readonly string? Jar;
         public readonly Outputs.ClusterPolicyLibraryMaven? Maven;
+        public readonly Outputs.ClusterPolicyLibraryProviderConfig? ProviderConfig;
         public readonly Outputs.ClusterPolicyLibraryPypi? Pypi;
         public readonly string? Requirements;
         public readonly string? Whl;
@@ -31,6 +32,8 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.ClusterPolicyLibraryMaven? maven,
 
+            Outputs.ClusterPolicyLibraryProviderConfig? providerConfig,
+
             Outputs.ClusterPolicyLibraryPypi? pypi,
 
             string? requirements,
@@ -41,6 +44,7 @@ namespace Pulumi.Databricks.Outputs
             Egg = egg;
             Jar = jar;
             Maven = maven;
+            ProviderConfig = providerConfig;
             Pypi = pypi;
             Requirements = requirements;
             Whl = whl;

@@ -120,7 +120,7 @@ import * as utilities from "./utilities";
  * When using an account-level provider
  *
  * ```sh
- * $ pulumi import databricks:index/storageCredential:StorageCredential this <metastore_id>|<storage_credential_name>
+ * $ pulumi import databricks:index/storageCredential:StorageCredential this '<metastore_id>|<storage_credential_name>'
  * ```
  */
 export class StorageCredential extends pulumi.CustomResource {
@@ -151,6 +151,9 @@ export class StorageCredential extends pulumi.CustomResource {
         return obj['__pulumiType'] === StorageCredential.__pulumiType;
     }
 
+    /**
+     * exposes two additional attributes:
+     */
     declare public readonly awsIamRole: pulumi.Output<outputs.StorageCredentialAwsIamRole | undefined>;
     declare public readonly azureManagedIdentity: pulumi.Output<outputs.StorageCredentialAzureManagedIdentity | undefined>;
     declare public readonly azureServicePrincipal: pulumi.Output<outputs.StorageCredentialAzureServicePrincipal | undefined>;
@@ -254,6 +257,9 @@ export class StorageCredential extends pulumi.CustomResource {
  * Input properties used for looking up and filtering StorageCredential resources.
  */
 export interface StorageCredentialState {
+    /**
+     * exposes two additional attributes:
+     */
     awsIamRole?: pulumi.Input<inputs.StorageCredentialAwsIamRole>;
     azureManagedIdentity?: pulumi.Input<inputs.StorageCredentialAzureManagedIdentity>;
     azureServicePrincipal?: pulumi.Input<inputs.StorageCredentialAzureServicePrincipal>;
@@ -305,6 +311,9 @@ export interface StorageCredentialState {
  * The set of arguments for constructing a StorageCredential resource.
  */
 export interface StorageCredentialArgs {
+    /**
+     * exposes two additional attributes:
+     */
     awsIamRole?: pulumi.Input<inputs.StorageCredentialAwsIamRole>;
     azureManagedIdentity?: pulumi.Input<inputs.StorageCredentialAzureManagedIdentity>;
     azureServicePrincipal?: pulumi.Input<inputs.StorageCredentialAzureServicePrincipal>;

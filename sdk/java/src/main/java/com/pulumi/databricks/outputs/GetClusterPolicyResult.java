@@ -4,11 +4,14 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetClusterPolicyProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterPolicyResult {
@@ -48,6 +51,7 @@ public final class GetClusterPolicyResult {
      * 
      */
     private String policyFamilyId;
+    private @Nullable GetClusterPolicyProviderConfig providerConfig;
 
     private GetClusterPolicyResult() {}
     /**
@@ -102,6 +106,9 @@ public final class GetClusterPolicyResult {
     public String policyFamilyId() {
         return this.policyFamilyId;
     }
+    public Optional<GetClusterPolicyProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -120,6 +127,7 @@ public final class GetClusterPolicyResult {
         private String name;
         private String policyFamilyDefinitionOverrides;
         private String policyFamilyId;
+        private @Nullable GetClusterPolicyProviderConfig providerConfig;
         public Builder() {}
         public Builder(GetClusterPolicyResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -131,6 +139,7 @@ public final class GetClusterPolicyResult {
     	      this.name = defaults.name;
     	      this.policyFamilyDefinitionOverrides = defaults.policyFamilyDefinitionOverrides;
     	      this.policyFamilyId = defaults.policyFamilyId;
+    	      this.providerConfig = defaults.providerConfig;
         }
 
         @CustomType.Setter
@@ -197,6 +206,12 @@ public final class GetClusterPolicyResult {
             this.policyFamilyId = policyFamilyId;
             return this;
         }
+        @CustomType.Setter
+        public Builder providerConfig(@Nullable GetClusterPolicyProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
+            return this;
+        }
         public GetClusterPolicyResult build() {
             final var _resultValue = new GetClusterPolicyResult();
             _resultValue.definition = definition;
@@ -207,6 +222,7 @@ public final class GetClusterPolicyResult {
             _resultValue.name = name;
             _resultValue.policyFamilyDefinitionOverrides = policyFamilyDefinitionOverrides;
             _resultValue.policyFamilyId = policyFamilyId;
+            _resultValue.providerConfig = providerConfig;
             return _resultValue;
         }
     }

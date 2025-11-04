@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.AlertV2EvaluationNotificationArgs;
 import com.pulumi.databricks.inputs.AlertV2EvaluationSourceArgs;
 import com.pulumi.databricks.inputs.AlertV2EvaluationThresholdArgs;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -22,26 +23,26 @@ public final class AlertV2EvaluationArgs extends com.pulumi.resources.ResourceAr
      * Operator used for comparison in alert evaluation. Possible values are: `EQUAL`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `IS_NOT_NULL`, `IS_NULL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`
      * 
      */
-    @Import(name="comparisonOperator")
-    private @Nullable Output<String> comparisonOperator;
+    @Import(name="comparisonOperator", required=true)
+    private Output<String> comparisonOperator;
 
     /**
      * @return Operator used for comparison in alert evaluation. Possible values are: `EQUAL`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `IS_NOT_NULL`, `IS_NULL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`
      * 
      */
-    public Optional<Output<String>> comparisonOperator() {
-        return Optional.ofNullable(this.comparisonOperator);
+    public Output<String> comparisonOperator() {
+        return this.comparisonOperator;
     }
 
     /**
-     * Alert state if result is empty. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
+     * Alert state if result is empty. Please avoid setting this field to be `UNKNOWN` because `UNKNOWN` state is planned to be deprecated. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
      * 
      */
     @Import(name="emptyResultState")
     private @Nullable Output<String> emptyResultState;
 
     /**
-     * @return Alert state if result is empty. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
+     * @return Alert state if result is empty. Please avoid setting this field to be `UNKNOWN` because `UNKNOWN` state is planned to be deprecated. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
      * 
      */
     public Optional<Output<String>> emptyResultState() {
@@ -82,15 +83,15 @@ public final class AlertV2EvaluationArgs extends com.pulumi.resources.ResourceAr
      * Source column from result to use to evaluate alert
      * 
      */
-    @Import(name="source")
-    private @Nullable Output<AlertV2EvaluationSourceArgs> source;
+    @Import(name="source", required=true)
+    private Output<AlertV2EvaluationSourceArgs> source;
 
     /**
      * @return Source column from result to use to evaluate alert
      * 
      */
-    public Optional<Output<AlertV2EvaluationSourceArgs>> source() {
-        return Optional.ofNullable(this.source);
+    public Output<AlertV2EvaluationSourceArgs> source() {
+        return this.source;
     }
 
     /**
@@ -159,7 +160,7 @@ public final class AlertV2EvaluationArgs extends com.pulumi.resources.ResourceAr
          * @return builder
          * 
          */
-        public Builder comparisonOperator(@Nullable Output<String> comparisonOperator) {
+        public Builder comparisonOperator(Output<String> comparisonOperator) {
             $.comparisonOperator = comparisonOperator;
             return this;
         }
@@ -175,7 +176,7 @@ public final class AlertV2EvaluationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param emptyResultState Alert state if result is empty. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
+         * @param emptyResultState Alert state if result is empty. Please avoid setting this field to be `UNKNOWN` because `UNKNOWN` state is planned to be deprecated. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
          * 
          * @return builder
          * 
@@ -186,7 +187,7 @@ public final class AlertV2EvaluationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param emptyResultState Alert state if result is empty. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
+         * @param emptyResultState Alert state if result is empty. Please avoid setting this field to be `UNKNOWN` because `UNKNOWN` state is planned to be deprecated. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
          * 
          * @return builder
          * 
@@ -243,7 +244,7 @@ public final class AlertV2EvaluationArgs extends com.pulumi.resources.ResourceAr
          * @return builder
          * 
          */
-        public Builder source(@Nullable Output<AlertV2EvaluationSourceArgs> source) {
+        public Builder source(Output<AlertV2EvaluationSourceArgs> source) {
             $.source = source;
             return this;
         }
@@ -301,6 +302,12 @@ public final class AlertV2EvaluationArgs extends com.pulumi.resources.ResourceAr
         }
 
         public AlertV2EvaluationArgs build() {
+            if ($.comparisonOperator == null) {
+                throw new MissingRequiredPropertyException("AlertV2EvaluationArgs", "comparisonOperator");
+            }
+            if ($.source == null) {
+                throw new MissingRequiredPropertyException("AlertV2EvaluationArgs", "source");
+            }
             return $;
         }
     }

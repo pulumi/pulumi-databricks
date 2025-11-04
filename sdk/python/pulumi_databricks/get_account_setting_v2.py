@@ -14,7 +14,6 @@ else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
-from ._inputs import *
 
 __all__ = [
     'GetAccountSettingV2Result',
@@ -28,7 +27,7 @@ class GetAccountSettingV2Result:
     """
     A collection of values returned by getAccountSettingV2.
     """
-    def __init__(__self__, aibi_dashboard_embedding_access_policy=None, aibi_dashboard_embedding_approved_domains=None, automatic_cluster_update_workspace=None, boolean_val=None, default_data_security_mode=None, effective_aibi_dashboard_embedding_access_policy=None, effective_aibi_dashboard_embedding_approved_domains=None, effective_automatic_cluster_update_workspace=None, effective_boolean_val=None, effective_default_data_security_mode=None, effective_integer_val=None, effective_personal_compute=None, effective_restrict_workspace_admins=None, effective_string_val=None, id=None, integer_val=None, name=None, personal_compute=None, restrict_workspace_admins=None, string_val=None):
+    def __init__(__self__, aibi_dashboard_embedding_access_policy=None, aibi_dashboard_embedding_approved_domains=None, automatic_cluster_update_workspace=None, boolean_val=None, effective_aibi_dashboard_embedding_access_policy=None, effective_aibi_dashboard_embedding_approved_domains=None, effective_automatic_cluster_update_workspace=None, effective_boolean_val=None, effective_integer_val=None, effective_personal_compute=None, effective_restrict_workspace_admins=None, effective_string_val=None, id=None, integer_val=None, name=None, personal_compute=None, restrict_workspace_admins=None, string_val=None):
         if aibi_dashboard_embedding_access_policy and not isinstance(aibi_dashboard_embedding_access_policy, dict):
             raise TypeError("Expected argument 'aibi_dashboard_embedding_access_policy' to be a dict")
         pulumi.set(__self__, "aibi_dashboard_embedding_access_policy", aibi_dashboard_embedding_access_policy)
@@ -41,9 +40,6 @@ class GetAccountSettingV2Result:
         if boolean_val and not isinstance(boolean_val, dict):
             raise TypeError("Expected argument 'boolean_val' to be a dict")
         pulumi.set(__self__, "boolean_val", boolean_val)
-        if default_data_security_mode and not isinstance(default_data_security_mode, dict):
-            raise TypeError("Expected argument 'default_data_security_mode' to be a dict")
-        pulumi.set(__self__, "default_data_security_mode", default_data_security_mode)
         if effective_aibi_dashboard_embedding_access_policy and not isinstance(effective_aibi_dashboard_embedding_access_policy, dict):
             raise TypeError("Expected argument 'effective_aibi_dashboard_embedding_access_policy' to be a dict")
         pulumi.set(__self__, "effective_aibi_dashboard_embedding_access_policy", effective_aibi_dashboard_embedding_access_policy)
@@ -56,9 +52,6 @@ class GetAccountSettingV2Result:
         if effective_boolean_val and not isinstance(effective_boolean_val, dict):
             raise TypeError("Expected argument 'effective_boolean_val' to be a dict")
         pulumi.set(__self__, "effective_boolean_val", effective_boolean_val)
-        if effective_default_data_security_mode and not isinstance(effective_default_data_security_mode, dict):
-            raise TypeError("Expected argument 'effective_default_data_security_mode' to be a dict")
-        pulumi.set(__self__, "effective_default_data_security_mode", effective_default_data_security_mode)
         if effective_integer_val and not isinstance(effective_integer_val, dict):
             raise TypeError("Expected argument 'effective_integer_val' to be a dict")
         pulumi.set(__self__, "effective_integer_val", effective_integer_val)
@@ -92,7 +85,7 @@ class GetAccountSettingV2Result:
 
     @_builtins.property
     @pulumi.getter(name="aibiDashboardEmbeddingAccessPolicy")
-    def aibi_dashboard_embedding_access_policy(self) -> Optional['outputs.GetAccountSettingV2AibiDashboardEmbeddingAccessPolicyResult']:
+    def aibi_dashboard_embedding_access_policy(self) -> 'outputs.GetAccountSettingV2AibiDashboardEmbeddingAccessPolicyResult':
         """
         (AibiDashboardEmbeddingAccessPolicy)
         """
@@ -100,7 +93,7 @@ class GetAccountSettingV2Result:
 
     @_builtins.property
     @pulumi.getter(name="aibiDashboardEmbeddingApprovedDomains")
-    def aibi_dashboard_embedding_approved_domains(self) -> Optional['outputs.GetAccountSettingV2AibiDashboardEmbeddingApprovedDomainsResult']:
+    def aibi_dashboard_embedding_approved_domains(self) -> 'outputs.GetAccountSettingV2AibiDashboardEmbeddingApprovedDomainsResult':
         """
         (AibiDashboardEmbeddingApprovedDomains)
         """
@@ -108,31 +101,23 @@ class GetAccountSettingV2Result:
 
     @_builtins.property
     @pulumi.getter(name="automaticClusterUpdateWorkspace")
-    def automatic_cluster_update_workspace(self) -> Optional['outputs.GetAccountSettingV2AutomaticClusterUpdateWorkspaceResult']:
+    def automatic_cluster_update_workspace(self) -> 'outputs.GetAccountSettingV2AutomaticClusterUpdateWorkspaceResult':
         """
-        (ClusterAutoRestartMessage) - todo: Mark these Public after onboarded to DSL
+        (ClusterAutoRestartMessage)
         """
         return pulumi.get(self, "automatic_cluster_update_workspace")
 
     @_builtins.property
     @pulumi.getter(name="booleanVal")
-    def boolean_val(self) -> Optional['outputs.GetAccountSettingV2BooleanValResult']:
+    def boolean_val(self) -> 'outputs.GetAccountSettingV2BooleanValResult':
         """
         (BooleanMessage)
         """
         return pulumi.get(self, "boolean_val")
 
     @_builtins.property
-    @pulumi.getter(name="defaultDataSecurityMode")
-    def default_data_security_mode(self) -> Optional['outputs.GetAccountSettingV2DefaultDataSecurityModeResult']:
-        """
-        (DefaultDataSecurityModeMessage)
-        """
-        return pulumi.get(self, "default_data_security_mode")
-
-    @_builtins.property
     @pulumi.getter(name="effectiveAibiDashboardEmbeddingAccessPolicy")
-    def effective_aibi_dashboard_embedding_access_policy(self) -> Optional['outputs.GetAccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyResult']:
+    def effective_aibi_dashboard_embedding_access_policy(self) -> 'outputs.GetAccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyResult':
         """
         (AibiDashboardEmbeddingAccessPolicy)
         """
@@ -140,7 +125,7 @@ class GetAccountSettingV2Result:
 
     @_builtins.property
     @pulumi.getter(name="effectiveAibiDashboardEmbeddingApprovedDomains")
-    def effective_aibi_dashboard_embedding_approved_domains(self) -> Optional['outputs.GetAccountSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsResult']:
+    def effective_aibi_dashboard_embedding_approved_domains(self) -> 'outputs.GetAccountSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsResult':
         """
         (AibiDashboardEmbeddingApprovedDomains)
         """
@@ -148,7 +133,7 @@ class GetAccountSettingV2Result:
 
     @_builtins.property
     @pulumi.getter(name="effectiveAutomaticClusterUpdateWorkspace")
-    def effective_automatic_cluster_update_workspace(self) -> Optional['outputs.GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceResult']:
+    def effective_automatic_cluster_update_workspace(self) -> 'outputs.GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceResult':
         """
         (ClusterAutoRestartMessage)
         """
@@ -163,14 +148,6 @@ class GetAccountSettingV2Result:
         return pulumi.get(self, "effective_boolean_val")
 
     @_builtins.property
-    @pulumi.getter(name="effectiveDefaultDataSecurityMode")
-    def effective_default_data_security_mode(self) -> Optional['outputs.GetAccountSettingV2EffectiveDefaultDataSecurityModeResult']:
-        """
-        (DefaultDataSecurityModeMessage)
-        """
-        return pulumi.get(self, "effective_default_data_security_mode")
-
-    @_builtins.property
     @pulumi.getter(name="effectiveIntegerVal")
     def effective_integer_val(self) -> 'outputs.GetAccountSettingV2EffectiveIntegerValResult':
         """
@@ -180,7 +157,7 @@ class GetAccountSettingV2Result:
 
     @_builtins.property
     @pulumi.getter(name="effectivePersonalCompute")
-    def effective_personal_compute(self) -> Optional['outputs.GetAccountSettingV2EffectivePersonalComputeResult']:
+    def effective_personal_compute(self) -> 'outputs.GetAccountSettingV2EffectivePersonalComputeResult':
         """
         (PersonalComputeMessage)
         """
@@ -188,7 +165,7 @@ class GetAccountSettingV2Result:
 
     @_builtins.property
     @pulumi.getter(name="effectiveRestrictWorkspaceAdmins")
-    def effective_restrict_workspace_admins(self) -> Optional['outputs.GetAccountSettingV2EffectiveRestrictWorkspaceAdminsResult']:
+    def effective_restrict_workspace_admins(self) -> 'outputs.GetAccountSettingV2EffectiveRestrictWorkspaceAdminsResult':
         """
         (RestrictWorkspaceAdminsMessage)
         """
@@ -212,7 +189,7 @@ class GetAccountSettingV2Result:
 
     @_builtins.property
     @pulumi.getter(name="integerVal")
-    def integer_val(self) -> Optional['outputs.GetAccountSettingV2IntegerValResult']:
+    def integer_val(self) -> 'outputs.GetAccountSettingV2IntegerValResult':
         """
         (IntegerMessage)
         """
@@ -220,7 +197,7 @@ class GetAccountSettingV2Result:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[_builtins.str]:
+    def name(self) -> _builtins.str:
         """
         (string) - Name of the setting
         """
@@ -228,7 +205,7 @@ class GetAccountSettingV2Result:
 
     @_builtins.property
     @pulumi.getter(name="personalCompute")
-    def personal_compute(self) -> Optional['outputs.GetAccountSettingV2PersonalComputeResult']:
+    def personal_compute(self) -> 'outputs.GetAccountSettingV2PersonalComputeResult':
         """
         (PersonalComputeMessage)
         """
@@ -236,7 +213,7 @@ class GetAccountSettingV2Result:
 
     @_builtins.property
     @pulumi.getter(name="restrictWorkspaceAdmins")
-    def restrict_workspace_admins(self) -> Optional['outputs.GetAccountSettingV2RestrictWorkspaceAdminsResult']:
+    def restrict_workspace_admins(self) -> 'outputs.GetAccountSettingV2RestrictWorkspaceAdminsResult':
         """
         (RestrictWorkspaceAdminsMessage)
         """
@@ -244,7 +221,7 @@ class GetAccountSettingV2Result:
 
     @_builtins.property
     @pulumi.getter(name="stringVal")
-    def string_val(self) -> Optional['outputs.GetAccountSettingV2StringValResult']:
+    def string_val(self) -> 'outputs.GetAccountSettingV2StringValResult':
         """
         (StringMessage)
         """
@@ -261,12 +238,10 @@ class AwaitableGetAccountSettingV2Result(GetAccountSettingV2Result):
             aibi_dashboard_embedding_approved_domains=self.aibi_dashboard_embedding_approved_domains,
             automatic_cluster_update_workspace=self.automatic_cluster_update_workspace,
             boolean_val=self.boolean_val,
-            default_data_security_mode=self.default_data_security_mode,
             effective_aibi_dashboard_embedding_access_policy=self.effective_aibi_dashboard_embedding_access_policy,
             effective_aibi_dashboard_embedding_approved_domains=self.effective_aibi_dashboard_embedding_approved_domains,
             effective_automatic_cluster_update_workspace=self.effective_automatic_cluster_update_workspace,
             effective_boolean_val=self.effective_boolean_val,
-            effective_default_data_security_mode=self.effective_default_data_security_mode,
             effective_integer_val=self.effective_integer_val,
             effective_personal_compute=self.effective_personal_compute,
             effective_restrict_workspace_admins=self.effective_restrict_workspace_admins,
@@ -279,60 +254,22 @@ class AwaitableGetAccountSettingV2Result(GetAccountSettingV2Result):
             string_val=self.string_val)
 
 
-def get_account_setting_v2(aibi_dashboard_embedding_access_policy: Optional[Union['GetAccountSettingV2AibiDashboardEmbeddingAccessPolicyArgs', 'GetAccountSettingV2AibiDashboardEmbeddingAccessPolicyArgsDict']] = None,
-                           aibi_dashboard_embedding_approved_domains: Optional[Union['GetAccountSettingV2AibiDashboardEmbeddingApprovedDomainsArgs', 'GetAccountSettingV2AibiDashboardEmbeddingApprovedDomainsArgsDict']] = None,
-                           automatic_cluster_update_workspace: Optional[Union['GetAccountSettingV2AutomaticClusterUpdateWorkspaceArgs', 'GetAccountSettingV2AutomaticClusterUpdateWorkspaceArgsDict']] = None,
-                           boolean_val: Optional[Union['GetAccountSettingV2BooleanValArgs', 'GetAccountSettingV2BooleanValArgsDict']] = None,
-                           default_data_security_mode: Optional[Union['GetAccountSettingV2DefaultDataSecurityModeArgs', 'GetAccountSettingV2DefaultDataSecurityModeArgsDict']] = None,
-                           effective_aibi_dashboard_embedding_access_policy: Optional[Union['GetAccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgs', 'GetAccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgsDict']] = None,
-                           effective_aibi_dashboard_embedding_approved_domains: Optional[Union['GetAccountSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgs', 'GetAccountSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgsDict']] = None,
-                           effective_automatic_cluster_update_workspace: Optional[Union['GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgs', 'GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgsDict']] = None,
-                           effective_default_data_security_mode: Optional[Union['GetAccountSettingV2EffectiveDefaultDataSecurityModeArgs', 'GetAccountSettingV2EffectiveDefaultDataSecurityModeArgsDict']] = None,
-                           effective_personal_compute: Optional[Union['GetAccountSettingV2EffectivePersonalComputeArgs', 'GetAccountSettingV2EffectivePersonalComputeArgsDict']] = None,
-                           effective_restrict_workspace_admins: Optional[Union['GetAccountSettingV2EffectiveRestrictWorkspaceAdminsArgs', 'GetAccountSettingV2EffectiveRestrictWorkspaceAdminsArgsDict']] = None,
-                           integer_val: Optional[Union['GetAccountSettingV2IntegerValArgs', 'GetAccountSettingV2IntegerValArgsDict']] = None,
-                           name: Optional[_builtins.str] = None,
-                           personal_compute: Optional[Union['GetAccountSettingV2PersonalComputeArgs', 'GetAccountSettingV2PersonalComputeArgsDict']] = None,
-                           restrict_workspace_admins: Optional[Union['GetAccountSettingV2RestrictWorkspaceAdminsArgs', 'GetAccountSettingV2RestrictWorkspaceAdminsArgsDict']] = None,
-                           string_val: Optional[Union['GetAccountSettingV2StringValArgs', 'GetAccountSettingV2StringValArgsDict']] = None,
+def get_account_setting_v2(name: Optional[_builtins.str] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountSettingV2Result:
     """
-    Use this data source to access information about an existing resource.
+    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
-    :param Union['GetAccountSettingV2AibiDashboardEmbeddingAccessPolicyArgs', 'GetAccountSettingV2AibiDashboardEmbeddingAccessPolicyArgsDict'] aibi_dashboard_embedding_access_policy: (AibiDashboardEmbeddingAccessPolicy)
-    :param Union['GetAccountSettingV2AibiDashboardEmbeddingApprovedDomainsArgs', 'GetAccountSettingV2AibiDashboardEmbeddingApprovedDomainsArgsDict'] aibi_dashboard_embedding_approved_domains: (AibiDashboardEmbeddingApprovedDomains)
-    :param Union['GetAccountSettingV2AutomaticClusterUpdateWorkspaceArgs', 'GetAccountSettingV2AutomaticClusterUpdateWorkspaceArgsDict'] automatic_cluster_update_workspace: (ClusterAutoRestartMessage) - todo: Mark these Public after onboarded to DSL
-    :param Union['GetAccountSettingV2BooleanValArgs', 'GetAccountSettingV2BooleanValArgsDict'] boolean_val: (BooleanMessage)
-    :param Union['GetAccountSettingV2DefaultDataSecurityModeArgs', 'GetAccountSettingV2DefaultDataSecurityModeArgsDict'] default_data_security_mode: (DefaultDataSecurityModeMessage)
-    :param Union['GetAccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgs', 'GetAccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgsDict'] effective_aibi_dashboard_embedding_access_policy: (AibiDashboardEmbeddingAccessPolicy)
-    :param Union['GetAccountSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgs', 'GetAccountSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgsDict'] effective_aibi_dashboard_embedding_approved_domains: (AibiDashboardEmbeddingApprovedDomains)
-    :param Union['GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgs', 'GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgsDict'] effective_automatic_cluster_update_workspace: (ClusterAutoRestartMessage)
-    :param Union['GetAccountSettingV2EffectiveDefaultDataSecurityModeArgs', 'GetAccountSettingV2EffectiveDefaultDataSecurityModeArgsDict'] effective_default_data_security_mode: (DefaultDataSecurityModeMessage)
-    :param Union['GetAccountSettingV2EffectivePersonalComputeArgs', 'GetAccountSettingV2EffectivePersonalComputeArgsDict'] effective_personal_compute: (PersonalComputeMessage)
-    :param Union['GetAccountSettingV2EffectiveRestrictWorkspaceAdminsArgs', 'GetAccountSettingV2EffectiveRestrictWorkspaceAdminsArgsDict'] effective_restrict_workspace_admins: (RestrictWorkspaceAdminsMessage)
-    :param Union['GetAccountSettingV2IntegerValArgs', 'GetAccountSettingV2IntegerValArgsDict'] integer_val: (IntegerMessage)
+    This data source can be used to get a single account setting.
+
+    ## Example Usage
+
+    Referring to a setting by id
+
+
     :param _builtins.str name: Name of the setting
-    :param Union['GetAccountSettingV2PersonalComputeArgs', 'GetAccountSettingV2PersonalComputeArgsDict'] personal_compute: (PersonalComputeMessage)
-    :param Union['GetAccountSettingV2RestrictWorkspaceAdminsArgs', 'GetAccountSettingV2RestrictWorkspaceAdminsArgsDict'] restrict_workspace_admins: (RestrictWorkspaceAdminsMessage)
-    :param Union['GetAccountSettingV2StringValArgs', 'GetAccountSettingV2StringValArgsDict'] string_val: (StringMessage)
     """
     __args__ = dict()
-    __args__['aibiDashboardEmbeddingAccessPolicy'] = aibi_dashboard_embedding_access_policy
-    __args__['aibiDashboardEmbeddingApprovedDomains'] = aibi_dashboard_embedding_approved_domains
-    __args__['automaticClusterUpdateWorkspace'] = automatic_cluster_update_workspace
-    __args__['booleanVal'] = boolean_val
-    __args__['defaultDataSecurityMode'] = default_data_security_mode
-    __args__['effectiveAibiDashboardEmbeddingAccessPolicy'] = effective_aibi_dashboard_embedding_access_policy
-    __args__['effectiveAibiDashboardEmbeddingApprovedDomains'] = effective_aibi_dashboard_embedding_approved_domains
-    __args__['effectiveAutomaticClusterUpdateWorkspace'] = effective_automatic_cluster_update_workspace
-    __args__['effectiveDefaultDataSecurityMode'] = effective_default_data_security_mode
-    __args__['effectivePersonalCompute'] = effective_personal_compute
-    __args__['effectiveRestrictWorkspaceAdmins'] = effective_restrict_workspace_admins
-    __args__['integerVal'] = integer_val
     __args__['name'] = name
-    __args__['personalCompute'] = personal_compute
-    __args__['restrictWorkspaceAdmins'] = restrict_workspace_admins
-    __args__['stringVal'] = string_val
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getAccountSettingV2:getAccountSettingV2', __args__, opts=opts, typ=GetAccountSettingV2Result).value
 
@@ -341,12 +278,10 @@ def get_account_setting_v2(aibi_dashboard_embedding_access_policy: Optional[Unio
         aibi_dashboard_embedding_approved_domains=pulumi.get(__ret__, 'aibi_dashboard_embedding_approved_domains'),
         automatic_cluster_update_workspace=pulumi.get(__ret__, 'automatic_cluster_update_workspace'),
         boolean_val=pulumi.get(__ret__, 'boolean_val'),
-        default_data_security_mode=pulumi.get(__ret__, 'default_data_security_mode'),
         effective_aibi_dashboard_embedding_access_policy=pulumi.get(__ret__, 'effective_aibi_dashboard_embedding_access_policy'),
         effective_aibi_dashboard_embedding_approved_domains=pulumi.get(__ret__, 'effective_aibi_dashboard_embedding_approved_domains'),
         effective_automatic_cluster_update_workspace=pulumi.get(__ret__, 'effective_automatic_cluster_update_workspace'),
         effective_boolean_val=pulumi.get(__ret__, 'effective_boolean_val'),
-        effective_default_data_security_mode=pulumi.get(__ret__, 'effective_default_data_security_mode'),
         effective_integer_val=pulumi.get(__ret__, 'effective_integer_val'),
         effective_personal_compute=pulumi.get(__ret__, 'effective_personal_compute'),
         effective_restrict_workspace_admins=pulumi.get(__ret__, 'effective_restrict_workspace_admins'),
@@ -357,60 +292,22 @@ def get_account_setting_v2(aibi_dashboard_embedding_access_policy: Optional[Unio
         personal_compute=pulumi.get(__ret__, 'personal_compute'),
         restrict_workspace_admins=pulumi.get(__ret__, 'restrict_workspace_admins'),
         string_val=pulumi.get(__ret__, 'string_val'))
-def get_account_setting_v2_output(aibi_dashboard_embedding_access_policy: Optional[pulumi.Input[Optional[Union['GetAccountSettingV2AibiDashboardEmbeddingAccessPolicyArgs', 'GetAccountSettingV2AibiDashboardEmbeddingAccessPolicyArgsDict']]]] = None,
-                                  aibi_dashboard_embedding_approved_domains: Optional[pulumi.Input[Optional[Union['GetAccountSettingV2AibiDashboardEmbeddingApprovedDomainsArgs', 'GetAccountSettingV2AibiDashboardEmbeddingApprovedDomainsArgsDict']]]] = None,
-                                  automatic_cluster_update_workspace: Optional[pulumi.Input[Optional[Union['GetAccountSettingV2AutomaticClusterUpdateWorkspaceArgs', 'GetAccountSettingV2AutomaticClusterUpdateWorkspaceArgsDict']]]] = None,
-                                  boolean_val: Optional[pulumi.Input[Optional[Union['GetAccountSettingV2BooleanValArgs', 'GetAccountSettingV2BooleanValArgsDict']]]] = None,
-                                  default_data_security_mode: Optional[pulumi.Input[Optional[Union['GetAccountSettingV2DefaultDataSecurityModeArgs', 'GetAccountSettingV2DefaultDataSecurityModeArgsDict']]]] = None,
-                                  effective_aibi_dashboard_embedding_access_policy: Optional[pulumi.Input[Optional[Union['GetAccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgs', 'GetAccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgsDict']]]] = None,
-                                  effective_aibi_dashboard_embedding_approved_domains: Optional[pulumi.Input[Optional[Union['GetAccountSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgs', 'GetAccountSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgsDict']]]] = None,
-                                  effective_automatic_cluster_update_workspace: Optional[pulumi.Input[Optional[Union['GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgs', 'GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgsDict']]]] = None,
-                                  effective_default_data_security_mode: Optional[pulumi.Input[Optional[Union['GetAccountSettingV2EffectiveDefaultDataSecurityModeArgs', 'GetAccountSettingV2EffectiveDefaultDataSecurityModeArgsDict']]]] = None,
-                                  effective_personal_compute: Optional[pulumi.Input[Optional[Union['GetAccountSettingV2EffectivePersonalComputeArgs', 'GetAccountSettingV2EffectivePersonalComputeArgsDict']]]] = None,
-                                  effective_restrict_workspace_admins: Optional[pulumi.Input[Optional[Union['GetAccountSettingV2EffectiveRestrictWorkspaceAdminsArgs', 'GetAccountSettingV2EffectiveRestrictWorkspaceAdminsArgsDict']]]] = None,
-                                  integer_val: Optional[pulumi.Input[Optional[Union['GetAccountSettingV2IntegerValArgs', 'GetAccountSettingV2IntegerValArgsDict']]]] = None,
-                                  name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                  personal_compute: Optional[pulumi.Input[Optional[Union['GetAccountSettingV2PersonalComputeArgs', 'GetAccountSettingV2PersonalComputeArgsDict']]]] = None,
-                                  restrict_workspace_admins: Optional[pulumi.Input[Optional[Union['GetAccountSettingV2RestrictWorkspaceAdminsArgs', 'GetAccountSettingV2RestrictWorkspaceAdminsArgsDict']]]] = None,
-                                  string_val: Optional[pulumi.Input[Optional[Union['GetAccountSettingV2StringValArgs', 'GetAccountSettingV2StringValArgsDict']]]] = None,
+def get_account_setting_v2_output(name: Optional[pulumi.Input[_builtins.str]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountSettingV2Result]:
     """
-    Use this data source to access information about an existing resource.
+    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
-    :param Union['GetAccountSettingV2AibiDashboardEmbeddingAccessPolicyArgs', 'GetAccountSettingV2AibiDashboardEmbeddingAccessPolicyArgsDict'] aibi_dashboard_embedding_access_policy: (AibiDashboardEmbeddingAccessPolicy)
-    :param Union['GetAccountSettingV2AibiDashboardEmbeddingApprovedDomainsArgs', 'GetAccountSettingV2AibiDashboardEmbeddingApprovedDomainsArgsDict'] aibi_dashboard_embedding_approved_domains: (AibiDashboardEmbeddingApprovedDomains)
-    :param Union['GetAccountSettingV2AutomaticClusterUpdateWorkspaceArgs', 'GetAccountSettingV2AutomaticClusterUpdateWorkspaceArgsDict'] automatic_cluster_update_workspace: (ClusterAutoRestartMessage) - todo: Mark these Public after onboarded to DSL
-    :param Union['GetAccountSettingV2BooleanValArgs', 'GetAccountSettingV2BooleanValArgsDict'] boolean_val: (BooleanMessage)
-    :param Union['GetAccountSettingV2DefaultDataSecurityModeArgs', 'GetAccountSettingV2DefaultDataSecurityModeArgsDict'] default_data_security_mode: (DefaultDataSecurityModeMessage)
-    :param Union['GetAccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgs', 'GetAccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgsDict'] effective_aibi_dashboard_embedding_access_policy: (AibiDashboardEmbeddingAccessPolicy)
-    :param Union['GetAccountSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgs', 'GetAccountSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgsDict'] effective_aibi_dashboard_embedding_approved_domains: (AibiDashboardEmbeddingApprovedDomains)
-    :param Union['GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgs', 'GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgsDict'] effective_automatic_cluster_update_workspace: (ClusterAutoRestartMessage)
-    :param Union['GetAccountSettingV2EffectiveDefaultDataSecurityModeArgs', 'GetAccountSettingV2EffectiveDefaultDataSecurityModeArgsDict'] effective_default_data_security_mode: (DefaultDataSecurityModeMessage)
-    :param Union['GetAccountSettingV2EffectivePersonalComputeArgs', 'GetAccountSettingV2EffectivePersonalComputeArgsDict'] effective_personal_compute: (PersonalComputeMessage)
-    :param Union['GetAccountSettingV2EffectiveRestrictWorkspaceAdminsArgs', 'GetAccountSettingV2EffectiveRestrictWorkspaceAdminsArgsDict'] effective_restrict_workspace_admins: (RestrictWorkspaceAdminsMessage)
-    :param Union['GetAccountSettingV2IntegerValArgs', 'GetAccountSettingV2IntegerValArgsDict'] integer_val: (IntegerMessage)
+    This data source can be used to get a single account setting.
+
+    ## Example Usage
+
+    Referring to a setting by id
+
+
     :param _builtins.str name: Name of the setting
-    :param Union['GetAccountSettingV2PersonalComputeArgs', 'GetAccountSettingV2PersonalComputeArgsDict'] personal_compute: (PersonalComputeMessage)
-    :param Union['GetAccountSettingV2RestrictWorkspaceAdminsArgs', 'GetAccountSettingV2RestrictWorkspaceAdminsArgsDict'] restrict_workspace_admins: (RestrictWorkspaceAdminsMessage)
-    :param Union['GetAccountSettingV2StringValArgs', 'GetAccountSettingV2StringValArgsDict'] string_val: (StringMessage)
     """
     __args__ = dict()
-    __args__['aibiDashboardEmbeddingAccessPolicy'] = aibi_dashboard_embedding_access_policy
-    __args__['aibiDashboardEmbeddingApprovedDomains'] = aibi_dashboard_embedding_approved_domains
-    __args__['automaticClusterUpdateWorkspace'] = automatic_cluster_update_workspace
-    __args__['booleanVal'] = boolean_val
-    __args__['defaultDataSecurityMode'] = default_data_security_mode
-    __args__['effectiveAibiDashboardEmbeddingAccessPolicy'] = effective_aibi_dashboard_embedding_access_policy
-    __args__['effectiveAibiDashboardEmbeddingApprovedDomains'] = effective_aibi_dashboard_embedding_approved_domains
-    __args__['effectiveAutomaticClusterUpdateWorkspace'] = effective_automatic_cluster_update_workspace
-    __args__['effectiveDefaultDataSecurityMode'] = effective_default_data_security_mode
-    __args__['effectivePersonalCompute'] = effective_personal_compute
-    __args__['effectiveRestrictWorkspaceAdmins'] = effective_restrict_workspace_admins
-    __args__['integerVal'] = integer_val
     __args__['name'] = name
-    __args__['personalCompute'] = personal_compute
-    __args__['restrictWorkspaceAdmins'] = restrict_workspace_admins
-    __args__['stringVal'] = string_val
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getAccountSettingV2:getAccountSettingV2', __args__, opts=opts, typ=GetAccountSettingV2Result)
     return __ret__.apply(lambda __response__: GetAccountSettingV2Result(
@@ -418,12 +315,10 @@ def get_account_setting_v2_output(aibi_dashboard_embedding_access_policy: Option
         aibi_dashboard_embedding_approved_domains=pulumi.get(__response__, 'aibi_dashboard_embedding_approved_domains'),
         automatic_cluster_update_workspace=pulumi.get(__response__, 'automatic_cluster_update_workspace'),
         boolean_val=pulumi.get(__response__, 'boolean_val'),
-        default_data_security_mode=pulumi.get(__response__, 'default_data_security_mode'),
         effective_aibi_dashboard_embedding_access_policy=pulumi.get(__response__, 'effective_aibi_dashboard_embedding_access_policy'),
         effective_aibi_dashboard_embedding_approved_domains=pulumi.get(__response__, 'effective_aibi_dashboard_embedding_approved_domains'),
         effective_automatic_cluster_update_workspace=pulumi.get(__response__, 'effective_automatic_cluster_update_workspace'),
         effective_boolean_val=pulumi.get(__response__, 'effective_boolean_val'),
-        effective_default_data_security_mode=pulumi.get(__response__, 'effective_default_data_security_mode'),
         effective_integer_val=pulumi.get(__response__, 'effective_integer_val'),
         effective_personal_compute=pulumi.get(__response__, 'effective_personal_compute'),
         effective_restrict_workspace_admins=pulumi.get(__response__, 'effective_restrict_workspace_admins'),

@@ -10,6 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
+    /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    /// 
     /// ## Import
     /// 
     /// As of Pulumi v1.5, resources can be imported through configuration.
@@ -27,7 +29,7 @@ namespace Pulumi.Databricks
     /// If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
     /// 
     /// ```sh
-    /// $ pulumi import databricks:index/materializedFeaturesFeatureTag:MaterializedFeaturesFeatureTag databricks_materialized_features_feature_tag "key"
+    /// $ pulumi import databricks:index/materializedFeaturesFeatureTag:MaterializedFeaturesFeatureTag this "key"
     /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/materializedFeaturesFeatureTag:MaterializedFeaturesFeatureTag")]
@@ -38,12 +40,6 @@ namespace Pulumi.Databricks
 
         [Output("value")]
         public Output<string?> Value { get; private set; } = null!;
-
-        /// <summary>
-        /// Workspace ID of the resource
-        /// </summary>
-        [Output("workspaceId")]
-        public Output<string?> WorkspaceId { get; private set; } = null!;
 
 
         /// <summary>
@@ -97,12 +93,6 @@ namespace Pulumi.Databricks
         [Input("value")]
         public Input<string>? Value { get; set; }
 
-        /// <summary>
-        /// Workspace ID of the resource
-        /// </summary>
-        [Input("workspaceId")]
-        public Input<string>? WorkspaceId { get; set; }
-
         public MaterializedFeaturesFeatureTagArgs()
         {
         }
@@ -116,12 +106,6 @@ namespace Pulumi.Databricks
 
         [Input("value")]
         public Input<string>? Value { get; set; }
-
-        /// <summary>
-        /// Workspace ID of the resource
-        /// </summary>
-        [Input("workspaceId")]
-        public Input<string>? WorkspaceId { get; set; }
 
         public MaterializedFeaturesFeatureTagState()
         {

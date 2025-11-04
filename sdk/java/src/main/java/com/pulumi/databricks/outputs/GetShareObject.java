@@ -29,7 +29,12 @@ public final class GetShareObject {
      * @return Type of the object.
      * 
      */
-    private String dataObjectType;
+    private @Nullable String dataObjectType;
+    private Boolean effectiveCdfEnabled;
+    private String effectiveHistoryDataSharingStatus;
+    private String effectiveSharedAs;
+    private Integer effectiveStartVersion;
+    private String effectiveStringSharedAs;
     private @Nullable String historyDataSharingStatus;
     /**
      * @return The name of the share
@@ -66,8 +71,23 @@ public final class GetShareObject {
      * @return Type of the object.
      * 
      */
-    public String dataObjectType() {
-        return this.dataObjectType;
+    public Optional<String> dataObjectType() {
+        return Optional.ofNullable(this.dataObjectType);
+    }
+    public Boolean effectiveCdfEnabled() {
+        return this.effectiveCdfEnabled;
+    }
+    public String effectiveHistoryDataSharingStatus() {
+        return this.effectiveHistoryDataSharingStatus;
+    }
+    public String effectiveSharedAs() {
+        return this.effectiveSharedAs;
+    }
+    public Integer effectiveStartVersion() {
+        return this.effectiveStartVersion;
+    }
+    public String effectiveStringSharedAs() {
+        return this.effectiveStringSharedAs;
     }
     public Optional<String> historyDataSharingStatus() {
         return Optional.ofNullable(this.historyDataSharingStatus);
@@ -109,7 +129,12 @@ public final class GetShareObject {
         private @Nullable Boolean cdfEnabled;
         private @Nullable String comment;
         private @Nullable String content;
-        private String dataObjectType;
+        private @Nullable String dataObjectType;
+        private Boolean effectiveCdfEnabled;
+        private String effectiveHistoryDataSharingStatus;
+        private String effectiveSharedAs;
+        private Integer effectiveStartVersion;
+        private String effectiveStringSharedAs;
         private @Nullable String historyDataSharingStatus;
         private String name;
         private @Nullable List<GetShareObjectPartition> partitions;
@@ -126,6 +151,11 @@ public final class GetShareObject {
     	      this.comment = defaults.comment;
     	      this.content = defaults.content;
     	      this.dataObjectType = defaults.dataObjectType;
+    	      this.effectiveCdfEnabled = defaults.effectiveCdfEnabled;
+    	      this.effectiveHistoryDataSharingStatus = defaults.effectiveHistoryDataSharingStatus;
+    	      this.effectiveSharedAs = defaults.effectiveSharedAs;
+    	      this.effectiveStartVersion = defaults.effectiveStartVersion;
+    	      this.effectiveStringSharedAs = defaults.effectiveStringSharedAs;
     	      this.historyDataSharingStatus = defaults.historyDataSharingStatus;
     	      this.name = defaults.name;
     	      this.partitions = defaults.partitions;
@@ -170,11 +200,49 @@ public final class GetShareObject {
             return this;
         }
         @CustomType.Setter
-        public Builder dataObjectType(String dataObjectType) {
-            if (dataObjectType == null) {
-              throw new MissingRequiredPropertyException("GetShareObject", "dataObjectType");
-            }
+        public Builder dataObjectType(@Nullable String dataObjectType) {
+
             this.dataObjectType = dataObjectType;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder effectiveCdfEnabled(Boolean effectiveCdfEnabled) {
+            if (effectiveCdfEnabled == null) {
+              throw new MissingRequiredPropertyException("GetShareObject", "effectiveCdfEnabled");
+            }
+            this.effectiveCdfEnabled = effectiveCdfEnabled;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder effectiveHistoryDataSharingStatus(String effectiveHistoryDataSharingStatus) {
+            if (effectiveHistoryDataSharingStatus == null) {
+              throw new MissingRequiredPropertyException("GetShareObject", "effectiveHistoryDataSharingStatus");
+            }
+            this.effectiveHistoryDataSharingStatus = effectiveHistoryDataSharingStatus;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder effectiveSharedAs(String effectiveSharedAs) {
+            if (effectiveSharedAs == null) {
+              throw new MissingRequiredPropertyException("GetShareObject", "effectiveSharedAs");
+            }
+            this.effectiveSharedAs = effectiveSharedAs;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder effectiveStartVersion(Integer effectiveStartVersion) {
+            if (effectiveStartVersion == null) {
+              throw new MissingRequiredPropertyException("GetShareObject", "effectiveStartVersion");
+            }
+            this.effectiveStartVersion = effectiveStartVersion;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder effectiveStringSharedAs(String effectiveStringSharedAs) {
+            if (effectiveStringSharedAs == null) {
+              throw new MissingRequiredPropertyException("GetShareObject", "effectiveStringSharedAs");
+            }
+            this.effectiveStringSharedAs = effectiveStringSharedAs;
             return this;
         }
         @CustomType.Setter
@@ -234,6 +302,11 @@ public final class GetShareObject {
             _resultValue.comment = comment;
             _resultValue.content = content;
             _resultValue.dataObjectType = dataObjectType;
+            _resultValue.effectiveCdfEnabled = effectiveCdfEnabled;
+            _resultValue.effectiveHistoryDataSharingStatus = effectiveHistoryDataSharingStatus;
+            _resultValue.effectiveSharedAs = effectiveSharedAs;
+            _resultValue.effectiveStartVersion = effectiveStartVersion;
+            _resultValue.effectiveStringSharedAs = effectiveStringSharedAs;
             _resultValue.historyDataSharingStatus = historyDataSharingStatus;
             _resultValue.name = name;
             _resultValue.partitions = partitions;

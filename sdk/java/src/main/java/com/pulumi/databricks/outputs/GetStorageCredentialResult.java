@@ -4,10 +4,13 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetStorageCredentialProviderConfig;
 import com.pulumi.databricks.outputs.GetStorageCredentialStorageCredentialInfo;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetStorageCredentialResult {
@@ -17,6 +20,7 @@ public final class GetStorageCredentialResult {
      */
     private String id;
     private String name;
+    private @Nullable GetStorageCredentialProviderConfig providerConfig;
     /**
      * @return array of objects with information about storage credential.
      * 
@@ -33,6 +37,9 @@ public final class GetStorageCredentialResult {
     }
     public String name() {
         return this.name;
+    }
+    public Optional<GetStorageCredentialProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
     }
     /**
      * @return array of objects with information about storage credential.
@@ -53,12 +60,14 @@ public final class GetStorageCredentialResult {
     public static final class Builder {
         private String id;
         private String name;
+        private @Nullable GetStorageCredentialProviderConfig providerConfig;
         private GetStorageCredentialStorageCredentialInfo storageCredentialInfo;
         public Builder() {}
         public Builder(GetStorageCredentialResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
     	      this.name = defaults.name;
+    	      this.providerConfig = defaults.providerConfig;
     	      this.storageCredentialInfo = defaults.storageCredentialInfo;
         }
 
@@ -79,6 +88,12 @@ public final class GetStorageCredentialResult {
             return this;
         }
         @CustomType.Setter
+        public Builder providerConfig(@Nullable GetStorageCredentialProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder storageCredentialInfo(GetStorageCredentialStorageCredentialInfo storageCredentialInfo) {
             if (storageCredentialInfo == null) {
               throw new MissingRequiredPropertyException("GetStorageCredentialResult", "storageCredentialInfo");
@@ -90,6 +105,7 @@ public final class GetStorageCredentialResult {
             final var _resultValue = new GetStorageCredentialResult();
             _resultValue.id = id;
             _resultValue.name = name;
+            _resultValue.providerConfig = providerConfig;
             _resultValue.storageCredentialInfo = storageCredentialInfo;
             return _resultValue;
         }

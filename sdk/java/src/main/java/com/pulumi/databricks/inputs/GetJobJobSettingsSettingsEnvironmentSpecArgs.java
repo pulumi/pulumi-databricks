@@ -37,11 +37,11 @@ public final class GetJobJobSettingsSettingsEnvironmentSpecArgs extends com.pulu
         return Optional.ofNullable(this.environmentVersion);
     }
 
-    @Import(name="jarDependencies")
-    private @Nullable Output<List<String>> jarDependencies;
+    @Import(name="javaDependencies")
+    private @Nullable Output<List<String>> javaDependencies;
 
-    public Optional<Output<List<String>>> jarDependencies() {
-        return Optional.ofNullable(this.jarDependencies);
+    public Optional<Output<List<String>>> javaDependencies() {
+        return Optional.ofNullable(this.javaDependencies);
     }
 
     private GetJobJobSettingsSettingsEnvironmentSpecArgs() {}
@@ -50,7 +50,7 @@ public final class GetJobJobSettingsSettingsEnvironmentSpecArgs extends com.pulu
         this.client = $.client;
         this.dependencies = $.dependencies;
         this.environmentVersion = $.environmentVersion;
-        this.jarDependencies = $.jarDependencies;
+        this.javaDependencies = $.javaDependencies;
     }
 
     public static Builder builder() {
@@ -102,17 +102,17 @@ public final class GetJobJobSettingsSettingsEnvironmentSpecArgs extends com.pulu
             return environmentVersion(Output.of(environmentVersion));
         }
 
-        public Builder jarDependencies(@Nullable Output<List<String>> jarDependencies) {
-            $.jarDependencies = jarDependencies;
+        public Builder javaDependencies(@Nullable Output<List<String>> javaDependencies) {
+            $.javaDependencies = javaDependencies;
             return this;
         }
 
-        public Builder jarDependencies(List<String> jarDependencies) {
-            return jarDependencies(Output.of(jarDependencies));
+        public Builder javaDependencies(List<String> javaDependencies) {
+            return javaDependencies(Output.of(javaDependencies));
         }
 
-        public Builder jarDependencies(String... jarDependencies) {
-            return jarDependencies(List.of(jarDependencies));
+        public Builder javaDependencies(String... javaDependencies) {
+            return javaDependencies(List.of(javaDependencies));
         }
 
         public GetJobJobSettingsSettingsEnvironmentSpecArgs build() {

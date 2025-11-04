@@ -31,6 +31,11 @@ public final class GetAppsApp {
      */
     private @Nullable String budgetPolicyId;
     /**
+     * @return (Optional) A string specifying compute size for the App.
+     * 
+     */
+    private @Nullable String computeSize;
+    /**
      * @return attribute
      * 
      */
@@ -71,7 +76,7 @@ public final class GetAppsApp {
      */
     private String id;
     /**
-     * @return Name of the serving endpoint to grant permission on.
+     * @return The name of Genie Space.
      * 
      */
     private String name;
@@ -83,6 +88,10 @@ public final class GetAppsApp {
      * 
      */
     private @Nullable List<GetAppsAppResource> resources;
+    /**
+     * @return client_id (application_id) of the app service principal
+     * 
+     */
     private String servicePrincipalClientId;
     /**
      * @return id of the app service principal
@@ -128,6 +137,13 @@ public final class GetAppsApp {
      */
     public Optional<String> budgetPolicyId() {
         return Optional.ofNullable(this.budgetPolicyId);
+    }
+    /**
+     * @return (Optional) A string specifying compute size for the App.
+     * 
+     */
+    public Optional<String> computeSize() {
+        return Optional.ofNullable(this.computeSize);
     }
     /**
      * @return attribute
@@ -186,7 +202,7 @@ public final class GetAppsApp {
         return this.id;
     }
     /**
-     * @return Name of the serving endpoint to grant permission on.
+     * @return The name of Genie Space.
      * 
      */
     public String name() {
@@ -208,6 +224,10 @@ public final class GetAppsApp {
     public List<GetAppsAppResource> resources() {
         return this.resources == null ? List.of() : this.resources;
     }
+    /**
+     * @return client_id (application_id) of the app service principal
+     * 
+     */
     public String servicePrincipalClientId() {
         return this.servicePrincipalClientId;
     }
@@ -262,6 +282,7 @@ public final class GetAppsApp {
         private GetAppsAppActiveDeployment activeDeployment;
         private GetAppsAppAppStatus appStatus;
         private @Nullable String budgetPolicyId;
+        private @Nullable String computeSize;
         private GetAppsAppComputeStatus computeStatus;
         private String createTime;
         private String creator;
@@ -288,6 +309,7 @@ public final class GetAppsApp {
     	      this.activeDeployment = defaults.activeDeployment;
     	      this.appStatus = defaults.appStatus;
     	      this.budgetPolicyId = defaults.budgetPolicyId;
+    	      this.computeSize = defaults.computeSize;
     	      this.computeStatus = defaults.computeStatus;
     	      this.createTime = defaults.createTime;
     	      this.creator = defaults.creator;
@@ -330,6 +352,12 @@ public final class GetAppsApp {
         public Builder budgetPolicyId(@Nullable String budgetPolicyId) {
 
             this.budgetPolicyId = budgetPolicyId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder computeSize(@Nullable String computeSize) {
+
+            this.computeSize = computeSize;
             return this;
         }
         @CustomType.Setter
@@ -500,6 +528,7 @@ public final class GetAppsApp {
             _resultValue.activeDeployment = activeDeployment;
             _resultValue.appStatus = appStatus;
             _resultValue.budgetPolicyId = budgetPolicyId;
+            _resultValue.computeSize = computeSize;
             _resultValue.computeStatus = computeStatus;
             _resultValue.createTime = createTime;
             _resultValue.creator = creator;

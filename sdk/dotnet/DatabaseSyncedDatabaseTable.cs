@@ -10,6 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
+    /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    /// 
     /// Lakebase Synced Database Tables are Postgres tables automatically synced from a source table inside Unity Catalog.
     /// They can be used to serve realtime queries without the operational overhead of managing ETL pipelines.
     /// 
@@ -31,6 +33,15 @@ namespace Pulumi.Databricks
     /// This example creates two Synced Database Tables. The first one specifies a new pipeline spec,
     /// which generates a new pipeline. The second one utilizes the pipeline ID of the first table.
     /// 
+    /// ### Creating a Synced Database Table with a custom Jobs schedule
+    /// 
+    /// This example creates a Synced Database Table and customizes the pipeline schedule. It assumes you already have
+    /// 
+    /// - A database instance named `"my-database-instance"`
+    /// - A standard catalog named `"MyStandardCatalog"`
+    /// - A schema in the standard catalog named `"default"`
+    /// - A source delta table named `"source_delta.schema.customer"` with the primary key `"CCustkey"`
+    /// 
     /// ## Import
     /// 
     /// As of Pulumi v1.5, resources can be imported through configuration.
@@ -48,7 +59,7 @@ namespace Pulumi.Databricks
     /// If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
     /// 
     /// ```sh
-    /// $ pulumi import databricks:index/databaseSyncedDatabaseTable:DatabaseSyncedDatabaseTable databricks_database_synced_database_table "name"
+    /// $ pulumi import databricks:index/databaseSyncedDatabaseTable:DatabaseSyncedDatabaseTable this "name"
     /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/databaseSyncedDatabaseTable:DatabaseSyncedDatabaseTable")]
@@ -113,12 +124,6 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("unityCatalogProvisioningState")]
         public Output<string> UnityCatalogProvisioningState { get; private set; } = null!;
-
-        /// <summary>
-        /// Workspace ID of the resource
-        /// </summary>
-        [Output("workspaceId")]
-        public Output<string?> WorkspaceId { get; private set; } = null!;
 
 
         /// <summary>
@@ -199,12 +204,6 @@ namespace Pulumi.Databricks
         [Input("spec")]
         public Input<Inputs.DatabaseSyncedDatabaseTableSpecArgs>? Spec { get; set; }
 
-        /// <summary>
-        /// Workspace ID of the resource
-        /// </summary>
-        [Input("workspaceId")]
-        public Input<string>? WorkspaceId { get; set; }
-
         public DatabaseSyncedDatabaseTableArgs()
         {
         }
@@ -272,12 +271,6 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("unityCatalogProvisioningState")]
         public Input<string>? UnityCatalogProvisioningState { get; set; }
-
-        /// <summary>
-        /// Workspace ID of the resource
-        /// </summary>
-        [Input("workspaceId")]
-        public Input<string>? WorkspaceId { get; set; }
 
         public DatabaseSyncedDatabaseTableState()
         {

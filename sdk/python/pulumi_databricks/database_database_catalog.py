@@ -22,14 +22,12 @@ class DatabaseDatabaseCatalogArgs:
                  database_instance_name: pulumi.Input[_builtins.str],
                  database_name: pulumi.Input[_builtins.str],
                  create_database_if_not_exists: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DatabaseDatabaseCatalog resource.
         :param pulumi.Input[_builtins.str] database_instance_name: The name of the DatabaseInstance housing the database
         :param pulumi.Input[_builtins.str] database_name: The name of the database (in a instance) associated with the catalog
         :param pulumi.Input[_builtins.str] name: The name of the catalog in UC
-        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID of the resource
         """
         pulumi.set(__self__, "database_instance_name", database_instance_name)
         pulumi.set(__self__, "database_name", database_name)
@@ -37,8 +35,6 @@ class DatabaseDatabaseCatalogArgs:
             pulumi.set(__self__, "create_database_if_not_exists", create_database_if_not_exists)
         if name is not None:
             pulumi.set(__self__, "name", name)
-        if workspace_id is not None:
-            pulumi.set(__self__, "workspace_id", workspace_id)
 
     @_builtins.property
     @pulumi.getter(name="databaseInstanceName")
@@ -85,18 +81,6 @@ class DatabaseDatabaseCatalogArgs:
     def name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "name", value)
 
-    @_builtins.property
-    @pulumi.getter(name="workspaceId")
-    def workspace_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Workspace ID of the resource
-        """
-        return pulumi.get(self, "workspace_id")
-
-    @workspace_id.setter
-    def workspace_id(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "workspace_id", value)
-
 
 @pulumi.input_type
 class _DatabaseDatabaseCatalogState:
@@ -105,15 +89,13 @@ class _DatabaseDatabaseCatalogState:
                  database_instance_name: Optional[pulumi.Input[_builtins.str]] = None,
                  database_name: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
-                 uid: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 uid: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DatabaseDatabaseCatalog resources.
         :param pulumi.Input[_builtins.str] database_instance_name: The name of the DatabaseInstance housing the database
         :param pulumi.Input[_builtins.str] database_name: The name of the database (in a instance) associated with the catalog
         :param pulumi.Input[_builtins.str] name: The name of the catalog in UC
         :param pulumi.Input[_builtins.str] uid: (string)
-        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID of the resource
         """
         if create_database_if_not_exists is not None:
             pulumi.set(__self__, "create_database_if_not_exists", create_database_if_not_exists)
@@ -125,8 +107,6 @@ class _DatabaseDatabaseCatalogState:
             pulumi.set(__self__, "name", name)
         if uid is not None:
             pulumi.set(__self__, "uid", uid)
-        if workspace_id is not None:
-            pulumi.set(__self__, "workspace_id", workspace_id)
 
     @_builtins.property
     @pulumi.getter(name="createDatabaseIfNotExists")
@@ -185,18 +165,6 @@ class _DatabaseDatabaseCatalogState:
     def uid(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "uid", value)
 
-    @_builtins.property
-    @pulumi.getter(name="workspaceId")
-    def workspace_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Workspace ID of the resource
-        """
-        return pulumi.get(self, "workspace_id")
-
-    @workspace_id.setter
-    def workspace_id(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "workspace_id", value)
-
 
 @pulumi.type_token("databricks:index/databaseDatabaseCatalog:DatabaseDatabaseCatalog")
 class DatabaseDatabaseCatalog(pulumi.CustomResource):
@@ -208,9 +176,10 @@ class DatabaseDatabaseCatalog(pulumi.CustomResource):
                  database_instance_name: Optional[pulumi.Input[_builtins.str]] = None,
                  database_name: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
         Database Catalogs are databases inside a Lakebase Database Instance which are synced into a Postgres Catalog inside Unity Catalog.
 
         ## Example Usage
@@ -272,7 +241,7 @@ class DatabaseDatabaseCatalog(pulumi.CustomResource):
         If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
 
         ```sh
-        $ pulumi import databricks:index/databaseDatabaseCatalog:DatabaseDatabaseCatalog databricks_database_database_catalog "name"
+        $ pulumi import databricks:index/databaseDatabaseCatalog:DatabaseDatabaseCatalog this "name"
         ```
 
         :param str resource_name: The name of the resource.
@@ -280,7 +249,6 @@ class DatabaseDatabaseCatalog(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] database_instance_name: The name of the DatabaseInstance housing the database
         :param pulumi.Input[_builtins.str] database_name: The name of the database (in a instance) associated with the catalog
         :param pulumi.Input[_builtins.str] name: The name of the catalog in UC
-        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID of the resource
         """
         ...
     @overload
@@ -289,6 +257,8 @@ class DatabaseDatabaseCatalog(pulumi.CustomResource):
                  args: DatabaseDatabaseCatalogArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
         Database Catalogs are databases inside a Lakebase Database Instance which are synced into a Postgres Catalog inside Unity Catalog.
 
         ## Example Usage
@@ -350,7 +320,7 @@ class DatabaseDatabaseCatalog(pulumi.CustomResource):
         If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
 
         ```sh
-        $ pulumi import databricks:index/databaseDatabaseCatalog:DatabaseDatabaseCatalog databricks_database_database_catalog "name"
+        $ pulumi import databricks:index/databaseDatabaseCatalog:DatabaseDatabaseCatalog this "name"
         ```
 
         :param str resource_name: The name of the resource.
@@ -372,7 +342,6 @@ class DatabaseDatabaseCatalog(pulumi.CustomResource):
                  database_instance_name: Optional[pulumi.Input[_builtins.str]] = None,
                  database_name: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -390,7 +359,6 @@ class DatabaseDatabaseCatalog(pulumi.CustomResource):
                 raise TypeError("Missing required property 'database_name'")
             __props__.__dict__["database_name"] = database_name
             __props__.__dict__["name"] = name
-            __props__.__dict__["workspace_id"] = workspace_id
             __props__.__dict__["uid"] = None
         super(DatabaseDatabaseCatalog, __self__).__init__(
             'databricks:index/databaseDatabaseCatalog:DatabaseDatabaseCatalog',
@@ -406,8 +374,7 @@ class DatabaseDatabaseCatalog(pulumi.CustomResource):
             database_instance_name: Optional[pulumi.Input[_builtins.str]] = None,
             database_name: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
-            uid: Optional[pulumi.Input[_builtins.str]] = None,
-            workspace_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'DatabaseDatabaseCatalog':
+            uid: Optional[pulumi.Input[_builtins.str]] = None) -> 'DatabaseDatabaseCatalog':
         """
         Get an existing DatabaseDatabaseCatalog resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -419,7 +386,6 @@ class DatabaseDatabaseCatalog(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] database_name: The name of the database (in a instance) associated with the catalog
         :param pulumi.Input[_builtins.str] name: The name of the catalog in UC
         :param pulumi.Input[_builtins.str] uid: (string)
-        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID of the resource
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -430,7 +396,6 @@ class DatabaseDatabaseCatalog(pulumi.CustomResource):
         __props__.__dict__["database_name"] = database_name
         __props__.__dict__["name"] = name
         __props__.__dict__["uid"] = uid
-        __props__.__dict__["workspace_id"] = workspace_id
         return DatabaseDatabaseCatalog(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -469,12 +434,4 @@ class DatabaseDatabaseCatalog(pulumi.CustomResource):
         (string)
         """
         return pulumi.get(self, "uid")
-
-    @_builtins.property
-    @pulumi.getter(name="workspaceId")
-    def workspace_id(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Workspace ID of the resource
-        """
-        return pulumi.get(self, "workspace_id")
 

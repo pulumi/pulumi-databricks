@@ -22,6 +22,7 @@ export function getMlflowExperiment(args?: GetMlflowExperimentArgs, opts?: pulum
         "lastUpdateTime": args.lastUpdateTime,
         "lifecycleStage": args.lifecycleStage,
         "name": args.name,
+        "providerConfig": args.providerConfig,
         "tags": args.tags,
     }, opts);
 }
@@ -58,6 +59,10 @@ export interface GetMlflowExperimentArgs {
      * Path to experiment.
      */
     name?: string;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: inputs.GetMlflowExperimentProviderConfig;
     /**
      * Additional metadata key-value pairs.
      */
@@ -96,6 +101,7 @@ export interface GetMlflowExperimentResult {
      * Path to experiment.
      */
     readonly name: string;
+    readonly providerConfig?: outputs.GetMlflowExperimentProviderConfig;
     /**
      * Additional metadata key-value pairs.
      */
@@ -117,6 +123,7 @@ export function getMlflowExperimentOutput(args?: GetMlflowExperimentOutputArgs, 
         "lastUpdateTime": args.lastUpdateTime,
         "lifecycleStage": args.lifecycleStage,
         "name": args.name,
+        "providerConfig": args.providerConfig,
         "tags": args.tags,
     }, opts);
 }
@@ -153,6 +160,10 @@ export interface GetMlflowExperimentOutputArgs {
      * Path to experiment.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.GetMlflowExperimentProviderConfigArgs>;
     /**
      * Additional metadata key-value pairs.
      */

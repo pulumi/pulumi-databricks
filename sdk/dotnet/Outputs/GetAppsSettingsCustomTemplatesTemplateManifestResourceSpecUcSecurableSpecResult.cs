@@ -14,11 +14,11 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetAppsSettingsCustomTemplatesTemplateManifestResourceSpecUcSecurableSpecResult
     {
         /// <summary>
-        /// (string) - . Possible values are: `MANAGE`, `READ_VOLUME`, `WRITE_VOLUME`
+        /// (string) - Possible values are: `MANAGE`, `READ_VOLUME`, `SELECT`, `WRITE_VOLUME`
         /// </summary>
         public readonly string Permission;
         /// <summary>
-        /// (string) - . Possible values are: `VOLUME`
+        /// (string) - Possible values are: `TABLE`, `VOLUME`
         /// </summary>
         public readonly string SecurableType;
 

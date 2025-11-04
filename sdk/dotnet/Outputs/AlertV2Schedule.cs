@@ -21,21 +21,21 @@ namespace Pulumi.Databricks.Outputs
         /// A cron expression using quartz syntax that specifies the schedule for this pipeline.
         /// Should use the quartz format described here: http://www.quartz-scheduler.org/documentation/quartz-2.1.7/tutorials/tutorial-lesson-06.html
         /// </summary>
-        public readonly string? QuartzCronSchedule;
+        public readonly string QuartzCronSchedule;
         /// <summary>
         /// A Java timezone id. The schedule will be resolved using this timezone.
         /// This will be combined with the QuartzCronSchedule to determine the schedule.
         /// See https://docs.databricks.com/sql/language-manual/sql-ref-syntax-aux-conf-mgmt-set-timezone.html for details
         /// </summary>
-        public readonly string? TimezoneId;
+        public readonly string TimezoneId;
 
         [OutputConstructor]
         private AlertV2Schedule(
             string? pauseStatus,
 
-            string? quartzCronSchedule,
+            string quartzCronSchedule,
 
-            string? timezoneId)
+            string timezoneId)
         {
             PauseStatus = pauseStatus;
             QuartzCronSchedule = quartzCronSchedule;

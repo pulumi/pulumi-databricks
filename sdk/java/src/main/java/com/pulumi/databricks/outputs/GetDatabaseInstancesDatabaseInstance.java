@@ -5,6 +5,8 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetDatabaseInstancesDatabaseInstanceChildInstanceRef;
+import com.pulumi.databricks.outputs.GetDatabaseInstancesDatabaseInstanceCustomTag;
+import com.pulumi.databricks.outputs.GetDatabaseInstancesDatabaseInstanceEffectiveCustomTag;
 import com.pulumi.databricks.outputs.GetDatabaseInstancesDatabaseInstanceParentInstanceRef;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
@@ -12,8 +14,6 @@ import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDatabaseInstancesDatabaseInstance {
@@ -21,7 +21,7 @@ public final class GetDatabaseInstancesDatabaseInstance {
      * @return (string) - The sku of the instance. Valid values are &#34;CU_1&#34;, &#34;CU_2&#34;, &#34;CU_4&#34;, &#34;CU_8&#34;
      * 
      */
-    private @Nullable String capacity;
+    private String capacity;
     /**
      * @return (list of DatabaseInstanceRef) - The refs of the child instances. This is only available if the instance is
      * parent instance
@@ -39,42 +39,54 @@ public final class GetDatabaseInstancesDatabaseInstance {
      */
     private String creator;
     /**
-     * @return (boolean) - xref AIP-129. `enablePgNativeLogin` is owned by the client, while `effectiveEnablePgNativeLogin` is owned by the server.
-     * `enablePgNativeLogin` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-     * `effectiveEnablePgNativeLogin` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * @return (list of CustomTag) - Custom tags associated with the instance. This field is only included on create and update responses
+     * 
+     */
+    private List<GetDatabaseInstancesDatabaseInstanceCustomTag> customTags;
+    /**
+     * @return (string, deprecated) - Deprecated. The sku of the instance; this field will always match the value of capacity
+     * 
+     */
+    private String effectiveCapacity;
+    /**
+     * @return (list of CustomTag) - The recorded custom tags associated with the instance
+     * 
+     */
+    private List<GetDatabaseInstancesDatabaseInstanceEffectiveCustomTag> effectiveCustomTags;
+    /**
+     * @return (boolean) - Whether the instance has PG native password login enabled
      * 
      */
     private Boolean effectiveEnablePgNativeLogin;
     /**
-     * @return (boolean) - xref AIP-129. `enableReadableSecondaries` is owned by the client, while `effectiveEnableReadableSecondaries` is owned by the server.
-     * `enableReadableSecondaries` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-     * `effectiveEnableReadableSecondaries` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * @return (boolean) - Whether secondaries serving read-only traffic are enabled. Defaults to false
      * 
      */
     private Boolean effectiveEnableReadableSecondaries;
     /**
-     * @return (integer) - xref AIP-129. `nodeCount` is owned by the client, while `effectiveNodeCount` is owned by the server.
-     * `nodeCount` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-     * `effectiveNodeCount` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * @return (integer) - The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
+     * 1 primary and 0 secondaries
      * 
      */
     private Integer effectiveNodeCount;
     /**
-     * @return (integer) - xref AIP-129. `retentionWindowInDays` is owned by the client, while `effectiveRetentionWindowInDays` is owned by the server.
-     * `retentionWindowInDays` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-     * `effectiveRetentionWindowInDays` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * @return (integer) - The retention window for the instance. This is the time window in days
+     * for which the historical data is retained
      * 
      */
     private Integer effectiveRetentionWindowInDays;
     /**
-     * @return (boolean) - xref AIP-129. `stopped` is owned by the client, while `effectiveStopped` is owned by the server.
-     * `stopped` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-     * `effectiveStopped` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * @return (boolean) - Whether the instance is stopped
      * 
      */
     private Boolean effectiveStopped;
     /**
-     * @return (boolean) - Whether the instance has PG native password login enabled. Defaults to true
+     * @return (string) - The policy that is applied to the instance
+     * 
+     */
+    private String effectiveUsagePolicyId;
+    /**
+     * @return (boolean) - Whether to enable PG native password login on the instance. Defaults to false
      * 
      */
     private Boolean enablePgNativeLogin;
@@ -82,7 +94,7 @@ public final class GetDatabaseInstancesDatabaseInstance {
      * @return (boolean) - Whether to enable secondaries to serve read-only traffic. Defaults to false
      * 
      */
-    private @Nullable Boolean enableReadableSecondaries;
+    private Boolean enableReadableSecondaries;
     /**
      * @return (string) - Name of the ref database instance
      * 
@@ -90,10 +102,10 @@ public final class GetDatabaseInstancesDatabaseInstance {
     private String name;
     /**
      * @return (integer) - The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
-     * 1 primary and 0 secondaries
+     * 1 primary and 0 secondaries. This field is input only, see effectiveNodeCount for the output
      * 
      */
-    private @Nullable Integer nodeCount;
+    private Integer nodeCount;
     /**
      * @return (DatabaseInstanceRef) - The ref of the parent instance. This is only available if the instance is
      * child instance.
@@ -101,7 +113,7 @@ public final class GetDatabaseInstancesDatabaseInstance {
      * Output: Only populated if provided as input to create a child instance
      * 
      */
-    private @Nullable GetDatabaseInstancesDatabaseInstanceParentInstanceRef parentInstanceRef;
+    private GetDatabaseInstancesDatabaseInstanceParentInstanceRef parentInstanceRef;
     /**
      * @return (string) - The version of Postgres running on the instance
      * 
@@ -124,30 +136,35 @@ public final class GetDatabaseInstancesDatabaseInstance {
      * Valid values are 2 to 35 days
      * 
      */
-    private @Nullable Integer retentionWindowInDays;
+    private Integer retentionWindowInDays;
     /**
      * @return (string) - The current state of the instance. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
      * 
      */
     private String state;
     /**
-     * @return (boolean) - Whether the instance is stopped
+     * @return (boolean) - Whether to stop the instance. An input only param, see effectiveStopped for the output
      * 
      */
-    private @Nullable Boolean stopped;
+    private Boolean stopped;
     /**
      * @return (string) - Id of the ref database instance
      * 
      */
     private String uid;
+    /**
+     * @return (string) - The desired usage policy to associate with the instance
+     * 
+     */
+    private String usagePolicyId;
 
     private GetDatabaseInstancesDatabaseInstance() {}
     /**
      * @return (string) - The sku of the instance. Valid values are &#34;CU_1&#34;, &#34;CU_2&#34;, &#34;CU_4&#34;, &#34;CU_8&#34;
      * 
      */
-    public Optional<String> capacity() {
-        return Optional.ofNullable(this.capacity);
+    public String capacity() {
+        return this.capacity;
     }
     /**
      * @return (list of DatabaseInstanceRef) - The refs of the child instances. This is only available if the instance is
@@ -172,52 +189,72 @@ public final class GetDatabaseInstancesDatabaseInstance {
         return this.creator;
     }
     /**
-     * @return (boolean) - xref AIP-129. `enablePgNativeLogin` is owned by the client, while `effectiveEnablePgNativeLogin` is owned by the server.
-     * `enablePgNativeLogin` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-     * `effectiveEnablePgNativeLogin` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * @return (list of CustomTag) - Custom tags associated with the instance. This field is only included on create and update responses
+     * 
+     */
+    public List<GetDatabaseInstancesDatabaseInstanceCustomTag> customTags() {
+        return this.customTags;
+    }
+    /**
+     * @return (string, deprecated) - Deprecated. The sku of the instance; this field will always match the value of capacity
+     * 
+     */
+    public String effectiveCapacity() {
+        return this.effectiveCapacity;
+    }
+    /**
+     * @return (list of CustomTag) - The recorded custom tags associated with the instance
+     * 
+     */
+    public List<GetDatabaseInstancesDatabaseInstanceEffectiveCustomTag> effectiveCustomTags() {
+        return this.effectiveCustomTags;
+    }
+    /**
+     * @return (boolean) - Whether the instance has PG native password login enabled
      * 
      */
     public Boolean effectiveEnablePgNativeLogin() {
         return this.effectiveEnablePgNativeLogin;
     }
     /**
-     * @return (boolean) - xref AIP-129. `enableReadableSecondaries` is owned by the client, while `effectiveEnableReadableSecondaries` is owned by the server.
-     * `enableReadableSecondaries` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-     * `effectiveEnableReadableSecondaries` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * @return (boolean) - Whether secondaries serving read-only traffic are enabled. Defaults to false
      * 
      */
     public Boolean effectiveEnableReadableSecondaries() {
         return this.effectiveEnableReadableSecondaries;
     }
     /**
-     * @return (integer) - xref AIP-129. `nodeCount` is owned by the client, while `effectiveNodeCount` is owned by the server.
-     * `nodeCount` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-     * `effectiveNodeCount` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * @return (integer) - The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
+     * 1 primary and 0 secondaries
      * 
      */
     public Integer effectiveNodeCount() {
         return this.effectiveNodeCount;
     }
     /**
-     * @return (integer) - xref AIP-129. `retentionWindowInDays` is owned by the client, while `effectiveRetentionWindowInDays` is owned by the server.
-     * `retentionWindowInDays` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-     * `effectiveRetentionWindowInDays` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * @return (integer) - The retention window for the instance. This is the time window in days
+     * for which the historical data is retained
      * 
      */
     public Integer effectiveRetentionWindowInDays() {
         return this.effectiveRetentionWindowInDays;
     }
     /**
-     * @return (boolean) - xref AIP-129. `stopped` is owned by the client, while `effectiveStopped` is owned by the server.
-     * `stopped` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-     * `effectiveStopped` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * @return (boolean) - Whether the instance is stopped
      * 
      */
     public Boolean effectiveStopped() {
         return this.effectiveStopped;
     }
     /**
-     * @return (boolean) - Whether the instance has PG native password login enabled. Defaults to true
+     * @return (string) - The policy that is applied to the instance
+     * 
+     */
+    public String effectiveUsagePolicyId() {
+        return this.effectiveUsagePolicyId;
+    }
+    /**
+     * @return (boolean) - Whether to enable PG native password login on the instance. Defaults to false
      * 
      */
     public Boolean enablePgNativeLogin() {
@@ -227,8 +264,8 @@ public final class GetDatabaseInstancesDatabaseInstance {
      * @return (boolean) - Whether to enable secondaries to serve read-only traffic. Defaults to false
      * 
      */
-    public Optional<Boolean> enableReadableSecondaries() {
-        return Optional.ofNullable(this.enableReadableSecondaries);
+    public Boolean enableReadableSecondaries() {
+        return this.enableReadableSecondaries;
     }
     /**
      * @return (string) - Name of the ref database instance
@@ -239,11 +276,11 @@ public final class GetDatabaseInstancesDatabaseInstance {
     }
     /**
      * @return (integer) - The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
-     * 1 primary and 0 secondaries
+     * 1 primary and 0 secondaries. This field is input only, see effectiveNodeCount for the output
      * 
      */
-    public Optional<Integer> nodeCount() {
-        return Optional.ofNullable(this.nodeCount);
+    public Integer nodeCount() {
+        return this.nodeCount;
     }
     /**
      * @return (DatabaseInstanceRef) - The ref of the parent instance. This is only available if the instance is
@@ -252,8 +289,8 @@ public final class GetDatabaseInstancesDatabaseInstance {
      * Output: Only populated if provided as input to create a child instance
      * 
      */
-    public Optional<GetDatabaseInstancesDatabaseInstanceParentInstanceRef> parentInstanceRef() {
-        return Optional.ofNullable(this.parentInstanceRef);
+    public GetDatabaseInstancesDatabaseInstanceParentInstanceRef parentInstanceRef() {
+        return this.parentInstanceRef;
     }
     /**
      * @return (string) - The version of Postgres running on the instance
@@ -283,8 +320,8 @@ public final class GetDatabaseInstancesDatabaseInstance {
      * Valid values are 2 to 35 days
      * 
      */
-    public Optional<Integer> retentionWindowInDays() {
-        return Optional.ofNullable(this.retentionWindowInDays);
+    public Integer retentionWindowInDays() {
+        return this.retentionWindowInDays;
     }
     /**
      * @return (string) - The current state of the instance. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
@@ -294,11 +331,11 @@ public final class GetDatabaseInstancesDatabaseInstance {
         return this.state;
     }
     /**
-     * @return (boolean) - Whether the instance is stopped
+     * @return (boolean) - Whether to stop the instance. An input only param, see effectiveStopped for the output
      * 
      */
-    public Optional<Boolean> stopped() {
-        return Optional.ofNullable(this.stopped);
+    public Boolean stopped() {
+        return this.stopped;
     }
     /**
      * @return (string) - Id of the ref database instance
@@ -306,6 +343,13 @@ public final class GetDatabaseInstancesDatabaseInstance {
      */
     public String uid() {
         return this.uid;
+    }
+    /**
+     * @return (string) - The desired usage policy to associate with the instance
+     * 
+     */
+    public String usagePolicyId() {
+        return this.usagePolicyId;
     }
 
     public static Builder builder() {
@@ -317,27 +361,32 @@ public final class GetDatabaseInstancesDatabaseInstance {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String capacity;
+        private String capacity;
         private List<GetDatabaseInstancesDatabaseInstanceChildInstanceRef> childInstanceRefs;
         private String creationTime;
         private String creator;
+        private List<GetDatabaseInstancesDatabaseInstanceCustomTag> customTags;
+        private String effectiveCapacity;
+        private List<GetDatabaseInstancesDatabaseInstanceEffectiveCustomTag> effectiveCustomTags;
         private Boolean effectiveEnablePgNativeLogin;
         private Boolean effectiveEnableReadableSecondaries;
         private Integer effectiveNodeCount;
         private Integer effectiveRetentionWindowInDays;
         private Boolean effectiveStopped;
+        private String effectiveUsagePolicyId;
         private Boolean enablePgNativeLogin;
-        private @Nullable Boolean enableReadableSecondaries;
+        private Boolean enableReadableSecondaries;
         private String name;
-        private @Nullable Integer nodeCount;
-        private @Nullable GetDatabaseInstancesDatabaseInstanceParentInstanceRef parentInstanceRef;
+        private Integer nodeCount;
+        private GetDatabaseInstancesDatabaseInstanceParentInstanceRef parentInstanceRef;
         private String pgVersion;
         private String readOnlyDns;
         private String readWriteDns;
-        private @Nullable Integer retentionWindowInDays;
+        private Integer retentionWindowInDays;
         private String state;
-        private @Nullable Boolean stopped;
+        private Boolean stopped;
         private String uid;
+        private String usagePolicyId;
         public Builder() {}
         public Builder(GetDatabaseInstancesDatabaseInstance defaults) {
     	      Objects.requireNonNull(defaults);
@@ -345,11 +394,15 @@ public final class GetDatabaseInstancesDatabaseInstance {
     	      this.childInstanceRefs = defaults.childInstanceRefs;
     	      this.creationTime = defaults.creationTime;
     	      this.creator = defaults.creator;
+    	      this.customTags = defaults.customTags;
+    	      this.effectiveCapacity = defaults.effectiveCapacity;
+    	      this.effectiveCustomTags = defaults.effectiveCustomTags;
     	      this.effectiveEnablePgNativeLogin = defaults.effectiveEnablePgNativeLogin;
     	      this.effectiveEnableReadableSecondaries = defaults.effectiveEnableReadableSecondaries;
     	      this.effectiveNodeCount = defaults.effectiveNodeCount;
     	      this.effectiveRetentionWindowInDays = defaults.effectiveRetentionWindowInDays;
     	      this.effectiveStopped = defaults.effectiveStopped;
+    	      this.effectiveUsagePolicyId = defaults.effectiveUsagePolicyId;
     	      this.enablePgNativeLogin = defaults.enablePgNativeLogin;
     	      this.enableReadableSecondaries = defaults.enableReadableSecondaries;
     	      this.name = defaults.name;
@@ -362,11 +415,14 @@ public final class GetDatabaseInstancesDatabaseInstance {
     	      this.state = defaults.state;
     	      this.stopped = defaults.stopped;
     	      this.uid = defaults.uid;
+    	      this.usagePolicyId = defaults.usagePolicyId;
         }
 
         @CustomType.Setter
-        public Builder capacity(@Nullable String capacity) {
-
+        public Builder capacity(String capacity) {
+            if (capacity == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesDatabaseInstance", "capacity");
+            }
             this.capacity = capacity;
             return this;
         }
@@ -396,6 +452,36 @@ public final class GetDatabaseInstancesDatabaseInstance {
             }
             this.creator = creator;
             return this;
+        }
+        @CustomType.Setter
+        public Builder customTags(List<GetDatabaseInstancesDatabaseInstanceCustomTag> customTags) {
+            if (customTags == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesDatabaseInstance", "customTags");
+            }
+            this.customTags = customTags;
+            return this;
+        }
+        public Builder customTags(GetDatabaseInstancesDatabaseInstanceCustomTag... customTags) {
+            return customTags(List.of(customTags));
+        }
+        @CustomType.Setter
+        public Builder effectiveCapacity(String effectiveCapacity) {
+            if (effectiveCapacity == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesDatabaseInstance", "effectiveCapacity");
+            }
+            this.effectiveCapacity = effectiveCapacity;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder effectiveCustomTags(List<GetDatabaseInstancesDatabaseInstanceEffectiveCustomTag> effectiveCustomTags) {
+            if (effectiveCustomTags == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesDatabaseInstance", "effectiveCustomTags");
+            }
+            this.effectiveCustomTags = effectiveCustomTags;
+            return this;
+        }
+        public Builder effectiveCustomTags(GetDatabaseInstancesDatabaseInstanceEffectiveCustomTag... effectiveCustomTags) {
+            return effectiveCustomTags(List.of(effectiveCustomTags));
         }
         @CustomType.Setter
         public Builder effectiveEnablePgNativeLogin(Boolean effectiveEnablePgNativeLogin) {
@@ -438,6 +524,14 @@ public final class GetDatabaseInstancesDatabaseInstance {
             return this;
         }
         @CustomType.Setter
+        public Builder effectiveUsagePolicyId(String effectiveUsagePolicyId) {
+            if (effectiveUsagePolicyId == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesDatabaseInstance", "effectiveUsagePolicyId");
+            }
+            this.effectiveUsagePolicyId = effectiveUsagePolicyId;
+            return this;
+        }
+        @CustomType.Setter
         public Builder enablePgNativeLogin(Boolean enablePgNativeLogin) {
             if (enablePgNativeLogin == null) {
               throw new MissingRequiredPropertyException("GetDatabaseInstancesDatabaseInstance", "enablePgNativeLogin");
@@ -446,8 +540,10 @@ public final class GetDatabaseInstancesDatabaseInstance {
             return this;
         }
         @CustomType.Setter
-        public Builder enableReadableSecondaries(@Nullable Boolean enableReadableSecondaries) {
-
+        public Builder enableReadableSecondaries(Boolean enableReadableSecondaries) {
+            if (enableReadableSecondaries == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesDatabaseInstance", "enableReadableSecondaries");
+            }
             this.enableReadableSecondaries = enableReadableSecondaries;
             return this;
         }
@@ -460,14 +556,18 @@ public final class GetDatabaseInstancesDatabaseInstance {
             return this;
         }
         @CustomType.Setter
-        public Builder nodeCount(@Nullable Integer nodeCount) {
-
+        public Builder nodeCount(Integer nodeCount) {
+            if (nodeCount == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesDatabaseInstance", "nodeCount");
+            }
             this.nodeCount = nodeCount;
             return this;
         }
         @CustomType.Setter
-        public Builder parentInstanceRef(@Nullable GetDatabaseInstancesDatabaseInstanceParentInstanceRef parentInstanceRef) {
-
+        public Builder parentInstanceRef(GetDatabaseInstancesDatabaseInstanceParentInstanceRef parentInstanceRef) {
+            if (parentInstanceRef == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesDatabaseInstance", "parentInstanceRef");
+            }
             this.parentInstanceRef = parentInstanceRef;
             return this;
         }
@@ -496,8 +596,10 @@ public final class GetDatabaseInstancesDatabaseInstance {
             return this;
         }
         @CustomType.Setter
-        public Builder retentionWindowInDays(@Nullable Integer retentionWindowInDays) {
-
+        public Builder retentionWindowInDays(Integer retentionWindowInDays) {
+            if (retentionWindowInDays == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesDatabaseInstance", "retentionWindowInDays");
+            }
             this.retentionWindowInDays = retentionWindowInDays;
             return this;
         }
@@ -510,8 +612,10 @@ public final class GetDatabaseInstancesDatabaseInstance {
             return this;
         }
         @CustomType.Setter
-        public Builder stopped(@Nullable Boolean stopped) {
-
+        public Builder stopped(Boolean stopped) {
+            if (stopped == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesDatabaseInstance", "stopped");
+            }
             this.stopped = stopped;
             return this;
         }
@@ -523,17 +627,29 @@ public final class GetDatabaseInstancesDatabaseInstance {
             this.uid = uid;
             return this;
         }
+        @CustomType.Setter
+        public Builder usagePolicyId(String usagePolicyId) {
+            if (usagePolicyId == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesDatabaseInstance", "usagePolicyId");
+            }
+            this.usagePolicyId = usagePolicyId;
+            return this;
+        }
         public GetDatabaseInstancesDatabaseInstance build() {
             final var _resultValue = new GetDatabaseInstancesDatabaseInstance();
             _resultValue.capacity = capacity;
             _resultValue.childInstanceRefs = childInstanceRefs;
             _resultValue.creationTime = creationTime;
             _resultValue.creator = creator;
+            _resultValue.customTags = customTags;
+            _resultValue.effectiveCapacity = effectiveCapacity;
+            _resultValue.effectiveCustomTags = effectiveCustomTags;
             _resultValue.effectiveEnablePgNativeLogin = effectiveEnablePgNativeLogin;
             _resultValue.effectiveEnableReadableSecondaries = effectiveEnableReadableSecondaries;
             _resultValue.effectiveNodeCount = effectiveNodeCount;
             _resultValue.effectiveRetentionWindowInDays = effectiveRetentionWindowInDays;
             _resultValue.effectiveStopped = effectiveStopped;
+            _resultValue.effectiveUsagePolicyId = effectiveUsagePolicyId;
             _resultValue.enablePgNativeLogin = enablePgNativeLogin;
             _resultValue.enableReadableSecondaries = enableReadableSecondaries;
             _resultValue.name = name;
@@ -546,6 +662,7 @@ public final class GetDatabaseInstancesDatabaseInstance {
             _resultValue.state = state;
             _resultValue.stopped = stopped;
             _resultValue.uid = uid;
+            _resultValue.usagePolicyId = usagePolicyId;
             return _resultValue;
         }
     }

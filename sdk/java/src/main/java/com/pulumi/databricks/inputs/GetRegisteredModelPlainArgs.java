@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.GetRegisteredModelModelInfo;
+import com.pulumi.databricks.inputs.GetRegisteredModelProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
@@ -78,6 +79,13 @@ public final class GetRegisteredModelPlainArgs extends com.pulumi.resources.Invo
         return Optional.ofNullable(this.modelInfos);
     }
 
+    @Import(name="providerConfig")
+    private @Nullable GetRegisteredModelProviderConfig providerConfig;
+
+    public Optional<GetRegisteredModelProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     private GetRegisteredModelPlainArgs() {}
 
     private GetRegisteredModelPlainArgs(GetRegisteredModelPlainArgs $) {
@@ -85,6 +93,7 @@ public final class GetRegisteredModelPlainArgs extends com.pulumi.resources.Invo
         this.includeAliases = $.includeAliases;
         this.includeBrowse = $.includeBrowse;
         this.modelInfos = $.modelInfos;
+        this.providerConfig = $.providerConfig;
     }
 
     public static Builder builder() {
@@ -157,6 +166,11 @@ public final class GetRegisteredModelPlainArgs extends com.pulumi.resources.Invo
          */
         public Builder modelInfos(GetRegisteredModelModelInfo... modelInfos) {
             return modelInfos(List.of(modelInfos));
+        }
+
+        public Builder providerConfig(@Nullable GetRegisteredModelProviderConfig providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
         }
 
         public GetRegisteredModelPlainArgs build() {

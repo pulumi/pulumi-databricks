@@ -12,22 +12,34 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class StorageCredentialAwsIamRole {
+    /**
+     * @return The external ID used in role assumption to prevent the confused deputy problem.
+     * 
+     */
     private @Nullable String externalId;
     /**
-     * @return The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
+     * @return The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`.
      * 
      * `azureManagedIdentity` optional configuration block for using managed identity as credential details for Azure (recommended over service principal):
      * 
      */
     private String roleArn;
+    /**
+     * @return The Amazon Resource Name (ARN) of the AWS IAM user managed by Databricks. This is the identity that is going to assume the AWS IAM role.
+     * 
+     */
     private @Nullable String unityCatalogIamArn;
 
     private StorageCredentialAwsIamRole() {}
+    /**
+     * @return The external ID used in role assumption to prevent the confused deputy problem.
+     * 
+     */
     public Optional<String> externalId() {
         return Optional.ofNullable(this.externalId);
     }
     /**
-     * @return The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
+     * @return The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`.
      * 
      * `azureManagedIdentity` optional configuration block for using managed identity as credential details for Azure (recommended over service principal):
      * 
@@ -35,6 +47,10 @@ public final class StorageCredentialAwsIamRole {
     public String roleArn() {
         return this.roleArn;
     }
+    /**
+     * @return The Amazon Resource Name (ARN) of the AWS IAM user managed by Databricks. This is the identity that is going to assume the AWS IAM role.
+     * 
+     */
     public Optional<String> unityCatalogIamArn() {
         return Optional.ofNullable(this.unityCatalogIamArn);
     }

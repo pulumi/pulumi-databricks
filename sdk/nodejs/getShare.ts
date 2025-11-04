@@ -37,10 +37,12 @@ export function getShare(args?: GetShareArgs, opts?: pulumi.InvokeOptions): Prom
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getShare:getShare", {
-        "createdAt": args.createdAt,
-        "createdBy": args.createdBy,
+        "comment": args.comment,
         "name": args.name,
         "objects": args.objects,
+        "owner": args.owner,
+        "providerConfig": args.providerConfig,
+        "storageRoot": args.storageRoot,
     }, opts);
 }
 
@@ -49,13 +51,9 @@ export function getShare(args?: GetShareArgs, opts?: pulumi.InvokeOptions): Prom
  */
 export interface GetShareArgs {
     /**
-     * Time when the share was created.
+     * Description about the object.
      */
-    createdAt?: number;
-    /**
-     * The principal that created the share.
-     */
-    createdBy?: string;
+    comment?: string;
     /**
      * The name of the share
      */
@@ -64,12 +62,22 @@ export interface GetShareArgs {
      * arrays containing details of each object in the share.
      */
     objects?: inputs.GetShareObject[];
+    owner?: string;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: inputs.GetShareProviderConfig;
+    storageRoot?: string;
 }
 
 /**
  * A collection of values returned by getShare.
  */
 export interface GetShareResult {
+    /**
+     * Description about the object.
+     */
+    readonly comment?: string;
     /**
      * Time when the share was created.
      */
@@ -78,6 +86,7 @@ export interface GetShareResult {
      * The principal that created the share.
      */
     readonly createdBy: string;
+    readonly effectiveOwner: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -85,11 +94,17 @@ export interface GetShareResult {
     /**
      * Full name of the object being shared.
      */
-    readonly name: string;
+    readonly name?: string;
     /**
      * arrays containing details of each object in the share.
      */
-    readonly objects: outputs.GetShareObject[];
+    readonly objects?: outputs.GetShareObject[];
+    readonly owner?: string;
+    readonly providerConfig?: outputs.GetShareProviderConfig;
+    readonly storageLocation: string;
+    readonly storageRoot?: string;
+    readonly updatedAt: number;
+    readonly updatedBy: string;
 }
 /**
  * Retrieves details about a databricks.Share that were created by Pulumi or manually.
@@ -122,10 +137,12 @@ export function getShareOutput(args?: GetShareOutputArgs, opts?: pulumi.InvokeOu
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getShare:getShare", {
-        "createdAt": args.createdAt,
-        "createdBy": args.createdBy,
+        "comment": args.comment,
         "name": args.name,
         "objects": args.objects,
+        "owner": args.owner,
+        "providerConfig": args.providerConfig,
+        "storageRoot": args.storageRoot,
     }, opts);
 }
 
@@ -134,13 +151,9 @@ export function getShareOutput(args?: GetShareOutputArgs, opts?: pulumi.InvokeOu
  */
 export interface GetShareOutputArgs {
     /**
-     * Time when the share was created.
+     * Description about the object.
      */
-    createdAt?: pulumi.Input<number>;
-    /**
-     * The principal that created the share.
-     */
-    createdBy?: pulumi.Input<string>;
+    comment?: pulumi.Input<string>;
     /**
      * The name of the share
      */
@@ -149,4 +162,10 @@ export interface GetShareOutputArgs {
      * arrays containing details of each object in the share.
      */
     objects?: pulumi.Input<pulumi.Input<inputs.GetShareObjectArgs>[]>;
+    owner?: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.GetShareProviderConfigArgs>;
+    storageRoot?: pulumi.Input<string>;
 }

@@ -151,16 +151,19 @@ type Share struct {
 	// Time when the share was created.
 	CreatedAt pulumi.IntOutput `pulumi:"createdAt"`
 	// The principal that created the share.
-	CreatedBy pulumi.StringOutput `pulumi:"createdBy"`
+	CreatedBy      pulumi.StringOutput `pulumi:"createdBy"`
+	EffectiveOwner pulumi.StringOutput `pulumi:"effectiveOwner"`
 	// Name of share. Change forces creation of a new resource.
 	Name    pulumi.StringOutput    `pulumi:"name"`
 	Objects ShareObjectArrayOutput `pulumi:"objects"`
 	// User name/group name/sp applicationId of the share owner.
-	Owner           pulumi.StringPtrOutput `pulumi:"owner"`
-	StorageLocation pulumi.StringPtrOutput `pulumi:"storageLocation"`
-	StorageRoot     pulumi.StringPtrOutput `pulumi:"storageRoot"`
-	UpdatedAt       pulumi.IntOutput       `pulumi:"updatedAt"`
-	UpdatedBy       pulumi.StringOutput    `pulumi:"updatedBy"`
+	Owner pulumi.StringPtrOutput `pulumi:"owner"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig  ShareProviderConfigPtrOutput `pulumi:"providerConfig"`
+	StorageLocation pulumi.StringOutput          `pulumi:"storageLocation"`
+	StorageRoot     pulumi.StringPtrOutput       `pulumi:"storageRoot"`
+	UpdatedAt       pulumi.IntOutput             `pulumi:"updatedAt"`
+	UpdatedBy       pulumi.StringOutput          `pulumi:"updatedBy"`
 }
 
 // NewShare registers a new resource with the given unique name, arguments, and options.
@@ -198,16 +201,19 @@ type shareState struct {
 	// Time when the share was created.
 	CreatedAt *int `pulumi:"createdAt"`
 	// The principal that created the share.
-	CreatedBy *string `pulumi:"createdBy"`
+	CreatedBy      *string `pulumi:"createdBy"`
+	EffectiveOwner *string `pulumi:"effectiveOwner"`
 	// Name of share. Change forces creation of a new resource.
 	Name    *string       `pulumi:"name"`
 	Objects []ShareObject `pulumi:"objects"`
 	// User name/group name/sp applicationId of the share owner.
-	Owner           *string `pulumi:"owner"`
-	StorageLocation *string `pulumi:"storageLocation"`
-	StorageRoot     *string `pulumi:"storageRoot"`
-	UpdatedAt       *int    `pulumi:"updatedAt"`
-	UpdatedBy       *string `pulumi:"updatedBy"`
+	Owner *string `pulumi:"owner"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig  *ShareProviderConfig `pulumi:"providerConfig"`
+	StorageLocation *string              `pulumi:"storageLocation"`
+	StorageRoot     *string              `pulumi:"storageRoot"`
+	UpdatedAt       *int                 `pulumi:"updatedAt"`
+	UpdatedBy       *string              `pulumi:"updatedBy"`
 }
 
 type ShareState struct {
@@ -216,12 +222,15 @@ type ShareState struct {
 	// Time when the share was created.
 	CreatedAt pulumi.IntPtrInput
 	// The principal that created the share.
-	CreatedBy pulumi.StringPtrInput
+	CreatedBy      pulumi.StringPtrInput
+	EffectiveOwner pulumi.StringPtrInput
 	// Name of share. Change forces creation of a new resource.
 	Name    pulumi.StringPtrInput
 	Objects ShareObjectArrayInput
 	// User name/group name/sp applicationId of the share owner.
-	Owner           pulumi.StringPtrInput
+	Owner pulumi.StringPtrInput
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig  ShareProviderConfigPtrInput
 	StorageLocation pulumi.StringPtrInput
 	StorageRoot     pulumi.StringPtrInput
 	UpdatedAt       pulumi.IntPtrInput
@@ -235,38 +244,28 @@ func (ShareState) ElementType() reflect.Type {
 type shareArgs struct {
 	// User-supplied free-form text.
 	Comment *string `pulumi:"comment"`
-	// Time when the share was created.
-	CreatedAt *int `pulumi:"createdAt"`
-	// The principal that created the share.
-	CreatedBy *string `pulumi:"createdBy"`
 	// Name of share. Change forces creation of a new resource.
 	Name    *string       `pulumi:"name"`
 	Objects []ShareObject `pulumi:"objects"`
 	// User name/group name/sp applicationId of the share owner.
-	Owner           *string `pulumi:"owner"`
-	StorageLocation *string `pulumi:"storageLocation"`
-	StorageRoot     *string `pulumi:"storageRoot"`
-	UpdatedAt       *int    `pulumi:"updatedAt"`
-	UpdatedBy       *string `pulumi:"updatedBy"`
+	Owner *string `pulumi:"owner"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *ShareProviderConfig `pulumi:"providerConfig"`
+	StorageRoot    *string              `pulumi:"storageRoot"`
 }
 
 // The set of arguments for constructing a Share resource.
 type ShareArgs struct {
 	// User-supplied free-form text.
 	Comment pulumi.StringPtrInput
-	// Time when the share was created.
-	CreatedAt pulumi.IntPtrInput
-	// The principal that created the share.
-	CreatedBy pulumi.StringPtrInput
 	// Name of share. Change forces creation of a new resource.
 	Name    pulumi.StringPtrInput
 	Objects ShareObjectArrayInput
 	// User name/group name/sp applicationId of the share owner.
-	Owner           pulumi.StringPtrInput
-	StorageLocation pulumi.StringPtrInput
-	StorageRoot     pulumi.StringPtrInput
-	UpdatedAt       pulumi.IntPtrInput
-	UpdatedBy       pulumi.StringPtrInput
+	Owner pulumi.StringPtrInput
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig ShareProviderConfigPtrInput
+	StorageRoot    pulumi.StringPtrInput
 }
 
 func (ShareArgs) ElementType() reflect.Type {
@@ -371,6 +370,10 @@ func (o ShareOutput) CreatedBy() pulumi.StringOutput {
 	return o.ApplyT(func(v *Share) pulumi.StringOutput { return v.CreatedBy }).(pulumi.StringOutput)
 }
 
+func (o ShareOutput) EffectiveOwner() pulumi.StringOutput {
+	return o.ApplyT(func(v *Share) pulumi.StringOutput { return v.EffectiveOwner }).(pulumi.StringOutput)
+}
+
 // Name of share. Change forces creation of a new resource.
 func (o ShareOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Share) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -385,8 +388,13 @@ func (o ShareOutput) Owner() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Share) pulumi.StringPtrOutput { return v.Owner }).(pulumi.StringPtrOutput)
 }
 
-func (o ShareOutput) StorageLocation() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Share) pulumi.StringPtrOutput { return v.StorageLocation }).(pulumi.StringPtrOutput)
+// Configure the provider for management through account provider. This block consists of the following fields:
+func (o ShareOutput) ProviderConfig() ShareProviderConfigPtrOutput {
+	return o.ApplyT(func(v *Share) ShareProviderConfigPtrOutput { return v.ProviderConfig }).(ShareProviderConfigPtrOutput)
+}
+
+func (o ShareOutput) StorageLocation() pulumi.StringOutput {
+	return o.ApplyT(func(v *Share) pulumi.StringOutput { return v.StorageLocation }).(pulumi.StringOutput)
 }
 
 func (o ShareOutput) StorageRoot() pulumi.StringPtrOutput {

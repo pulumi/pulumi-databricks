@@ -18,6 +18,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("ingestionGatewayId")]
         public Input<string>? IngestionGatewayId { get; set; }
 
+        [Input("netsuiteJarPath")]
+        public Input<string>? NetsuiteJarPath { get; set; }
+
         [Input("objects")]
         private InputList<Inputs.PipelineIngestionDefinitionObjectGetArgs>? _objects;
         public InputList<Inputs.PipelineIngestionDefinitionObjectGetArgs> Objects

@@ -6,6 +6,7 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.GetRegisteredModelVersionsModelVersionArgs;
+import com.pulumi.databricks.inputs.GetRegisteredModelVersionsProviderConfigArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
@@ -48,11 +49,19 @@ public final class GetRegisteredModelVersionsArgs extends com.pulumi.resources.I
         return Optional.ofNullable(this.modelVersions);
     }
 
+    @Import(name="providerConfig")
+    private @Nullable Output<GetRegisteredModelVersionsProviderConfigArgs> providerConfig;
+
+    public Optional<Output<GetRegisteredModelVersionsProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     private GetRegisteredModelVersionsArgs() {}
 
     private GetRegisteredModelVersionsArgs(GetRegisteredModelVersionsArgs $) {
         this.fullName = $.fullName;
         this.modelVersions = $.modelVersions;
+        this.providerConfig = $.providerConfig;
     }
 
     public static Builder builder() {
@@ -123,6 +132,15 @@ public final class GetRegisteredModelVersionsArgs extends com.pulumi.resources.I
          */
         public Builder modelVersions(GetRegisteredModelVersionsModelVersionArgs... modelVersions) {
             return modelVersions(List.of(modelVersions));
+        }
+
+        public Builder providerConfig(@Nullable Output<GetRegisteredModelVersionsProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        public Builder providerConfig(GetRegisteredModelVersionsProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         public GetRegisteredModelVersionsArgs build() {

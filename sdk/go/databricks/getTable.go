@@ -79,6 +79,8 @@ type LookupTableArgs struct {
 	Id *string `pulumi:"id"`
 	// Full name of the databricks_table: _`catalog`.`schema`.`table`_
 	Name string `pulumi:"name"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *GetTableProviderConfig `pulumi:"providerConfig"`
 	// TableInfo object for a Unity Catalog table. This contains the following attributes:
 	TableInfo *GetTableTableInfo `pulumi:"tableInfo"`
 }
@@ -87,7 +89,8 @@ type LookupTableArgs struct {
 type LookupTableResult struct {
 	Id string `pulumi:"id"`
 	// Name of table, relative to parent schema.
-	Name string `pulumi:"name"`
+	Name           string                  `pulumi:"name"`
+	ProviderConfig *GetTableProviderConfig `pulumi:"providerConfig"`
 	// TableInfo object for a Unity Catalog table. This contains the following attributes:
 	TableInfo GetTableTableInfo `pulumi:"tableInfo"`
 }
@@ -106,6 +109,8 @@ type LookupTableOutputArgs struct {
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// Full name of the databricks_table: _`catalog`.`schema`.`table`_
 	Name pulumi.StringInput `pulumi:"name"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig GetTableProviderConfigPtrInput `pulumi:"providerConfig"`
 	// TableInfo object for a Unity Catalog table. This contains the following attributes:
 	TableInfo GetTableTableInfoPtrInput `pulumi:"tableInfo"`
 }
@@ -136,6 +141,10 @@ func (o LookupTableResultOutput) Id() pulumi.StringOutput {
 // Name of table, relative to parent schema.
 func (o LookupTableResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTableResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupTableResultOutput) ProviderConfig() GetTableProviderConfigPtrOutput {
+	return o.ApplyT(func(v LookupTableResult) *GetTableProviderConfig { return v.ProviderConfig }).(GetTableProviderConfigPtrOutput)
 }
 
 // TableInfo object for a Unity Catalog table. This contains the following attributes:

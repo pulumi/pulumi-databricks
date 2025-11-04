@@ -6,6 +6,7 @@ package com.pulumi.databricks.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetOnlineStoresOnlineStore;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -20,7 +21,7 @@ public final class GetOnlineStoresResult {
      */
     private String id;
     private List<GetOnlineStoresOnlineStore> onlineStores;
-    private @Nullable String workspaceId;
+    private @Nullable Integer pageSize;
 
     private GetOnlineStoresResult() {}
     /**
@@ -33,8 +34,8 @@ public final class GetOnlineStoresResult {
     public List<GetOnlineStoresOnlineStore> onlineStores() {
         return this.onlineStores;
     }
-    public Optional<String> workspaceId() {
-        return Optional.ofNullable(this.workspaceId);
+    public Optional<Integer> pageSize() {
+        return Optional.ofNullable(this.pageSize);
     }
 
     public static Builder builder() {
@@ -48,13 +49,13 @@ public final class GetOnlineStoresResult {
     public static final class Builder {
         private String id;
         private List<GetOnlineStoresOnlineStore> onlineStores;
-        private @Nullable String workspaceId;
+        private @Nullable Integer pageSize;
         public Builder() {}
         public Builder(GetOnlineStoresResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
     	      this.onlineStores = defaults.onlineStores;
-    	      this.workspaceId = defaults.workspaceId;
+    	      this.pageSize = defaults.pageSize;
         }
 
         @CustomType.Setter
@@ -77,16 +78,16 @@ public final class GetOnlineStoresResult {
             return onlineStores(List.of(onlineStores));
         }
         @CustomType.Setter
-        public Builder workspaceId(@Nullable String workspaceId) {
+        public Builder pageSize(@Nullable Integer pageSize) {
 
-            this.workspaceId = workspaceId;
+            this.pageSize = pageSize;
             return this;
         }
         public GetOnlineStoresResult build() {
             final var _resultValue = new GetOnlineStoresResult();
             _resultValue.id = id;
             _resultValue.onlineStores = onlineStores;
-            _resultValue.workspaceId = workspaceId;
+            _resultValue.pageSize = pageSize;
             return _resultValue;
         }
     }

@@ -28,7 +28,7 @@ class GetClusterResult:
     """
     A collection of values returned by getCluster.
     """
-    def __init__(__self__, cluster_id=None, cluster_info=None, cluster_name=None, id=None):
+    def __init__(__self__, cluster_id=None, cluster_info=None, cluster_name=None, id=None, provider_config=None):
         if cluster_id and not isinstance(cluster_id, str):
             raise TypeError("Expected argument 'cluster_id' to be a str")
         pulumi.set(__self__, "cluster_id", cluster_id)
@@ -41,6 +41,9 @@ class GetClusterResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if provider_config and not isinstance(provider_config, dict):
+            raise TypeError("Expected argument 'provider_config' to be a dict")
+        pulumi.set(__self__, "provider_config", provider_config)
 
     @_builtins.property
     @pulumi.getter(name="clusterId")
@@ -71,6 +74,11 @@ class GetClusterResult:
         """
         return pulumi.get(self, "id")
 
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional['outputs.GetClusterProviderConfigResult']:
+        return pulumi.get(self, "provider_config")
+
 
 class AwaitableGetClusterResult(GetClusterResult):
     # pylint: disable=using-constant-test
@@ -81,13 +89,15 @@ class AwaitableGetClusterResult(GetClusterResult):
             cluster_id=self.cluster_id,
             cluster_info=self.cluster_info,
             cluster_name=self.cluster_name,
-            id=self.id)
+            id=self.id,
+            provider_config=self.provider_config)
 
 
 def get_cluster(cluster_id: Optional[_builtins.str] = None,
                 cluster_info: Optional[Union['GetClusterClusterInfoArgs', 'GetClusterClusterInfoArgsDict']] = None,
                 cluster_name: Optional[_builtins.str] = None,
                 id: Optional[_builtins.str] = None,
+                provider_config: Optional[Union['GetClusterProviderConfigArgs', 'GetClusterProviderConfigArgsDict']] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetClusterResult:
     """
     Retrieves information about a Cluster using its id. This could be retrieved programmatically using get_clusters data source.
@@ -111,12 +121,14 @@ def get_cluster(cluster_id: Optional[_builtins.str] = None,
     :param Union['GetClusterClusterInfoArgs', 'GetClusterClusterInfoArgsDict'] cluster_info: block, consisting of following fields:
     :param _builtins.str cluster_name: The exact name of the cluster to search. Can only be specified if there is exactly one cluster with the provided name.
     :param _builtins.str id: cluster ID
+    :param Union['GetClusterProviderConfigArgs', 'GetClusterProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     """
     __args__ = dict()
     __args__['clusterId'] = cluster_id
     __args__['clusterInfo'] = cluster_info
     __args__['clusterName'] = cluster_name
     __args__['id'] = id
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getCluster:getCluster', __args__, opts=opts, typ=GetClusterResult).value
 
@@ -124,11 +136,13 @@ def get_cluster(cluster_id: Optional[_builtins.str] = None,
         cluster_id=pulumi.get(__ret__, 'cluster_id'),
         cluster_info=pulumi.get(__ret__, 'cluster_info'),
         cluster_name=pulumi.get(__ret__, 'cluster_name'),
-        id=pulumi.get(__ret__, 'id'))
+        id=pulumi.get(__ret__, 'id'),
+        provider_config=pulumi.get(__ret__, 'provider_config'))
 def get_cluster_output(cluster_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                        cluster_info: Optional[pulumi.Input[Optional[Union['GetClusterClusterInfoArgs', 'GetClusterClusterInfoArgsDict']]]] = None,
                        cluster_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                        id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                       provider_config: Optional[pulumi.Input[Optional[Union['GetClusterProviderConfigArgs', 'GetClusterProviderConfigArgsDict']]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetClusterResult]:
     """
     Retrieves information about a Cluster using its id. This could be retrieved programmatically using get_clusters data source.
@@ -152,16 +166,19 @@ def get_cluster_output(cluster_id: Optional[pulumi.Input[Optional[_builtins.str]
     :param Union['GetClusterClusterInfoArgs', 'GetClusterClusterInfoArgsDict'] cluster_info: block, consisting of following fields:
     :param _builtins.str cluster_name: The exact name of the cluster to search. Can only be specified if there is exactly one cluster with the provided name.
     :param _builtins.str id: cluster ID
+    :param Union['GetClusterProviderConfigArgs', 'GetClusterProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     """
     __args__ = dict()
     __args__['clusterId'] = cluster_id
     __args__['clusterInfo'] = cluster_info
     __args__['clusterName'] = cluster_name
     __args__['id'] = id
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getCluster:getCluster', __args__, opts=opts, typ=GetClusterResult)
     return __ret__.apply(lambda __response__: GetClusterResult(
         cluster_id=pulumi.get(__response__, 'cluster_id'),
         cluster_info=pulumi.get(__response__, 'cluster_info'),
         cluster_name=pulumi.get(__response__, 'cluster_name'),
-        id=pulumi.get(__response__, 'id')))
+        id=pulumi.get(__response__, 'id'),
+        provider_config=pulumi.get(__response__, 'provider_config')))

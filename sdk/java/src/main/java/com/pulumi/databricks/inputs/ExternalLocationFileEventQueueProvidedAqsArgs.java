@@ -39,14 +39,14 @@ public final class ExternalLocationFileEventQueueProvidedAqsArgs extends com.pul
     }
 
     /**
-     * The Azure resource group.
+     * The name of the Azure resource group.
      * 
      */
     @Import(name="resourceGroup")
     private @Nullable Output<String> resourceGroup;
 
     /**
-     * @return The Azure resource group.
+     * @return The name of the Azure resource group.
      * 
      */
     public Optional<Output<String>> resourceGroup() {
@@ -126,7 +126,7 @@ public final class ExternalLocationFileEventQueueProvidedAqsArgs extends com.pul
         }
 
         /**
-         * @param resourceGroup The Azure resource group.
+         * @param resourceGroup The name of the Azure resource group.
          * 
          * @return builder
          * 
@@ -137,7 +137,7 @@ public final class ExternalLocationFileEventQueueProvidedAqsArgs extends com.pul
         }
 
         /**
-         * @param resourceGroup The Azure resource group.
+         * @param resourceGroup The name of the Azure resource group.
          * 
          * @return builder
          * 

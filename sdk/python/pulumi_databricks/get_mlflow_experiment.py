@@ -28,7 +28,7 @@ class GetMlflowExperimentResult:
     """
     A collection of values returned by getMlflowExperiment.
     """
-    def __init__(__self__, artifact_location=None, creation_time=None, experiment_id=None, id=None, last_update_time=None, lifecycle_stage=None, name=None, tags=None):
+    def __init__(__self__, artifact_location=None, creation_time=None, experiment_id=None, id=None, last_update_time=None, lifecycle_stage=None, name=None, provider_config=None, tags=None):
         if artifact_location and not isinstance(artifact_location, str):
             raise TypeError("Expected argument 'artifact_location' to be a str")
         pulumi.set(__self__, "artifact_location", artifact_location)
@@ -50,6 +50,9 @@ class GetMlflowExperimentResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if provider_config and not isinstance(provider_config, dict):
+            raise TypeError("Expected argument 'provider_config' to be a dict")
+        pulumi.set(__self__, "provider_config", provider_config)
         if tags and not isinstance(tags, list):
             raise TypeError("Expected argument 'tags' to be a list")
         pulumi.set(__self__, "tags", tags)
@@ -111,6 +114,11 @@ class GetMlflowExperimentResult:
         return pulumi.get(self, "name")
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional['outputs.GetMlflowExperimentProviderConfigResult']:
+        return pulumi.get(self, "provider_config")
+
+    @_builtins.property
     @pulumi.getter
     def tags(self) -> Sequence['outputs.GetMlflowExperimentTagResult']:
         """
@@ -132,6 +140,7 @@ class AwaitableGetMlflowExperimentResult(GetMlflowExperimentResult):
             last_update_time=self.last_update_time,
             lifecycle_stage=self.lifecycle_stage,
             name=self.name,
+            provider_config=self.provider_config,
             tags=self.tags)
 
 
@@ -142,6 +151,7 @@ def get_mlflow_experiment(artifact_location: Optional[_builtins.str] = None,
                           last_update_time: Optional[_builtins.int] = None,
                           lifecycle_stage: Optional[_builtins.str] = None,
                           name: Optional[_builtins.str] = None,
+                          provider_config: Optional[Union['GetMlflowExperimentProviderConfigArgs', 'GetMlflowExperimentProviderConfigArgsDict']] = None,
                           tags: Optional[Sequence[Union['GetMlflowExperimentTagArgs', 'GetMlflowExperimentTagArgsDict']]] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMlflowExperimentResult:
     """
@@ -157,6 +167,7 @@ def get_mlflow_experiment(artifact_location: Optional[_builtins.str] = None,
     :param _builtins.int last_update_time: Last update time in unix time stamp.
     :param _builtins.str lifecycle_stage: Current life cycle stage of the experiment: `active` or `deleted`.
     :param _builtins.str name: Path to experiment.
+    :param Union['GetMlflowExperimentProviderConfigArgs', 'GetMlflowExperimentProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     :param Sequence[Union['GetMlflowExperimentTagArgs', 'GetMlflowExperimentTagArgsDict']] tags: Additional metadata key-value pairs.
     """
     __args__ = dict()
@@ -167,6 +178,7 @@ def get_mlflow_experiment(artifact_location: Optional[_builtins.str] = None,
     __args__['lastUpdateTime'] = last_update_time
     __args__['lifecycleStage'] = lifecycle_stage
     __args__['name'] = name
+    __args__['providerConfig'] = provider_config
     __args__['tags'] = tags
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getMlflowExperiment:getMlflowExperiment', __args__, opts=opts, typ=GetMlflowExperimentResult).value
@@ -179,6 +191,7 @@ def get_mlflow_experiment(artifact_location: Optional[_builtins.str] = None,
         last_update_time=pulumi.get(__ret__, 'last_update_time'),
         lifecycle_stage=pulumi.get(__ret__, 'lifecycle_stage'),
         name=pulumi.get(__ret__, 'name'),
+        provider_config=pulumi.get(__ret__, 'provider_config'),
         tags=pulumi.get(__ret__, 'tags'))
 def get_mlflow_experiment_output(artifact_location: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                  creation_time: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
@@ -187,6 +200,7 @@ def get_mlflow_experiment_output(artifact_location: Optional[pulumi.Input[Option
                                  last_update_time: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
                                  lifecycle_stage: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                  name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                                 provider_config: Optional[pulumi.Input[Optional[Union['GetMlflowExperimentProviderConfigArgs', 'GetMlflowExperimentProviderConfigArgsDict']]]] = None,
                                  tags: Optional[pulumi.Input[Optional[Sequence[Union['GetMlflowExperimentTagArgs', 'GetMlflowExperimentTagArgsDict']]]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMlflowExperimentResult]:
     """
@@ -202,6 +216,7 @@ def get_mlflow_experiment_output(artifact_location: Optional[pulumi.Input[Option
     :param _builtins.int last_update_time: Last update time in unix time stamp.
     :param _builtins.str lifecycle_stage: Current life cycle stage of the experiment: `active` or `deleted`.
     :param _builtins.str name: Path to experiment.
+    :param Union['GetMlflowExperimentProviderConfigArgs', 'GetMlflowExperimentProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     :param Sequence[Union['GetMlflowExperimentTagArgs', 'GetMlflowExperimentTagArgsDict']] tags: Additional metadata key-value pairs.
     """
     __args__ = dict()
@@ -212,6 +227,7 @@ def get_mlflow_experiment_output(artifact_location: Optional[pulumi.Input[Option
     __args__['lastUpdateTime'] = last_update_time
     __args__['lifecycleStage'] = lifecycle_stage
     __args__['name'] = name
+    __args__['providerConfig'] = provider_config
     __args__['tags'] = tags
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getMlflowExperiment:getMlflowExperiment', __args__, opts=opts, typ=GetMlflowExperimentResult)
@@ -223,4 +239,5 @@ def get_mlflow_experiment_output(artifact_location: Optional[pulumi.Input[Option
         last_update_time=pulumi.get(__response__, 'last_update_time'),
         lifecycle_stage=pulumi.get(__response__, 'lifecycle_stage'),
         name=pulumi.get(__response__, 'name'),
+        provider_config=pulumi.get(__response__, 'provider_config'),
         tags=pulumi.get(__response__, 'tags')))

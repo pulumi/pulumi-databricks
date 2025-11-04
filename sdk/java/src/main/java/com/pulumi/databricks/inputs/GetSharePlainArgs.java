@@ -5,7 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.GetShareObject;
-import java.lang.Integer;
+import com.pulumi.databricks.inputs.GetShareProviderConfig;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -18,33 +18,18 @@ public final class GetSharePlainArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetSharePlainArgs Empty = new GetSharePlainArgs();
 
     /**
-     * Time when the share was created.
+     * Description about the object.
      * 
      */
-    @Import(name="createdAt")
-    private @Nullable Integer createdAt;
+    @Import(name="comment")
+    private @Nullable String comment;
 
     /**
-     * @return Time when the share was created.
+     * @return Description about the object.
      * 
      */
-    public Optional<Integer> createdAt() {
-        return Optional.ofNullable(this.createdAt);
-    }
-
-    /**
-     * The principal that created the share.
-     * 
-     */
-    @Import(name="createdBy")
-    private @Nullable String createdBy;
-
-    /**
-     * @return The principal that created the share.
-     * 
-     */
-    public Optional<String> createdBy() {
-        return Optional.ofNullable(this.createdBy);
+    public Optional<String> comment() {
+        return Optional.ofNullable(this.comment);
     }
 
     /**
@@ -77,13 +62,44 @@ public final class GetSharePlainArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.objects);
     }
 
+    @Import(name="owner")
+    private @Nullable String owner;
+
+    public Optional<String> owner() {
+        return Optional.ofNullable(this.owner);
+    }
+
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable GetShareProviderConfig providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Optional<GetShareProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
+    @Import(name="storageRoot")
+    private @Nullable String storageRoot;
+
+    public Optional<String> storageRoot() {
+        return Optional.ofNullable(this.storageRoot);
+    }
+
     private GetSharePlainArgs() {}
 
     private GetSharePlainArgs(GetSharePlainArgs $) {
-        this.createdAt = $.createdAt;
-        this.createdBy = $.createdBy;
+        this.comment = $.comment;
         this.name = $.name;
         this.objects = $.objects;
+        this.owner = $.owner;
+        this.providerConfig = $.providerConfig;
+        this.storageRoot = $.storageRoot;
     }
 
     public static Builder builder() {
@@ -105,24 +121,13 @@ public final class GetSharePlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param createdAt Time when the share was created.
+         * @param comment Description about the object.
          * 
          * @return builder
          * 
          */
-        public Builder createdAt(@Nullable Integer createdAt) {
-            $.createdAt = createdAt;
-            return this;
-        }
-
-        /**
-         * @param createdBy The principal that created the share.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder createdBy(@Nullable String createdBy) {
-            $.createdBy = createdBy;
+        public Builder comment(@Nullable String comment) {
+            $.comment = comment;
             return this;
         }
 
@@ -156,6 +161,27 @@ public final class GetSharePlainArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder objects(GetShareObject... objects) {
             return objects(List.of(objects));
+        }
+
+        public Builder owner(@Nullable String owner) {
+            $.owner = owner;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable GetShareProviderConfig providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        public Builder storageRoot(@Nullable String storageRoot) {
+            $.storageRoot = storageRoot;
+            return this;
         }
 
         public GetSharePlainArgs build() {

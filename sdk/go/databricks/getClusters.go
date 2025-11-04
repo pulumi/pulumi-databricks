@@ -155,6 +155,8 @@ type GetClustersArgs struct {
 	Id       *string              `pulumi:"id"`
 	// list of Cluster ids
 	Ids []string `pulumi:"ids"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *GetClustersProviderConfig `pulumi:"providerConfig"`
 }
 
 // A collection of values returned by getClusters.
@@ -163,7 +165,8 @@ type GetClustersResult struct {
 	FilterBy            *GetClustersFilterBy `pulumi:"filterBy"`
 	Id                  string               `pulumi:"id"`
 	// list of Cluster ids
-	Ids []string `pulumi:"ids"`
+	Ids            []string                   `pulumi:"ids"`
+	ProviderConfig *GetClustersProviderConfig `pulumi:"providerConfig"`
 }
 
 func GetClustersOutput(ctx *pulumi.Context, args GetClustersOutputArgs, opts ...pulumi.InvokeOption) GetClustersResultOutput {
@@ -184,6 +187,8 @@ type GetClustersOutputArgs struct {
 	Id       pulumi.StringPtrInput       `pulumi:"id"`
 	// list of Cluster ids
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig GetClustersProviderConfigPtrInput `pulumi:"providerConfig"`
 }
 
 func (GetClustersOutputArgs) ElementType() reflect.Type {
@@ -220,6 +225,10 @@ func (o GetClustersResultOutput) Id() pulumi.StringOutput {
 // list of Cluster ids
 func (o GetClustersResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetClustersResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetClustersResultOutput) ProviderConfig() GetClustersProviderConfigPtrOutput {
+	return o.ApplyT(func(v GetClustersResult) *GetClustersProviderConfig { return v.ProviderConfig }).(GetClustersProviderConfigPtrOutput)
 }
 
 func init() {

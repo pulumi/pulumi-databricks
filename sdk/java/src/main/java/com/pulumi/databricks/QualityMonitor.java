@@ -14,6 +14,7 @@ import com.pulumi.databricks.outputs.QualityMonitorCustomMetric;
 import com.pulumi.databricks.outputs.QualityMonitorDataClassificationConfig;
 import com.pulumi.databricks.outputs.QualityMonitorInferenceLog;
 import com.pulumi.databricks.outputs.QualityMonitorNotifications;
+import com.pulumi.databricks.outputs.QualityMonitorProviderConfig;
 import com.pulumi.databricks.outputs.QualityMonitorSchedule;
 import com.pulumi.databricks.outputs.QualityMonitorSnapshot;
 import com.pulumi.databricks.outputs.QualityMonitorTimeSeries;
@@ -381,6 +382,20 @@ public class QualityMonitor extends com.pulumi.resources.CustomResource {
      */
     public Output<String> profileMetricsTableName() {
         return this.profileMetricsTableName;
+    }
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Export(name="providerConfig", refs={QualityMonitorProviderConfig.class}, tree="[0]")
+    private Output</* @Nullable */ QualityMonitorProviderConfig> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Output<Optional<QualityMonitorProviderConfig>> providerConfig() {
+        return Codegen.optional(this.providerConfig);
     }
     /**
      * The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:

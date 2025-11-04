@@ -187,6 +187,12 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Inputs.GetSqlWarehousesProviderConfigArgs? ProviderConfig { get; set; }
+
+        /// <summary>
         /// Only return databricks.SqlEndpoint ids that match the given name string.
         /// </summary>
         [Input("warehouseNameContains")]
@@ -213,6 +219,12 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.GetSqlWarehousesProviderConfigInputArgs>? ProviderConfig { get; set; }
+
+        /// <summary>
         /// Only return databricks.SqlEndpoint ids that match the given name string.
         /// </summary>
         [Input("warehouseNameContains")]
@@ -236,6 +248,7 @@ namespace Pulumi.Databricks
         /// list of databricks.SqlEndpoint ids
         /// </summary>
         public readonly ImmutableArray<string> Ids;
+        public readonly Outputs.GetSqlWarehousesProviderConfigResult? ProviderConfig;
         public readonly string? WarehouseNameContains;
 
         [OutputConstructor]
@@ -244,10 +257,13 @@ namespace Pulumi.Databricks
 
             ImmutableArray<string> ids,
 
+            Outputs.GetSqlWarehousesProviderConfigResult? providerConfig,
+
             string? warehouseNameContains)
         {
             Id = id;
             Ids = ids;
+            ProviderConfig = providerConfig;
             WarehouseNameContains = warehouseNameContains;
         }
     }

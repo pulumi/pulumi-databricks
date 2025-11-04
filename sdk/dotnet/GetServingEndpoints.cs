@@ -195,6 +195,9 @@ namespace Pulumi.Databricks
             set => _endpoints = value;
         }
 
+        [Input("providerConfig")]
+        public Inputs.GetServingEndpointsProviderConfigArgs? ProviderConfig { get; set; }
+
         public GetServingEndpointsArgs()
         {
         }
@@ -215,6 +218,9 @@ namespace Pulumi.Databricks
             set => _endpoints = value;
         }
 
+        [Input("providerConfig")]
+        public Input<Inputs.GetServingEndpointsProviderConfigInputArgs>? ProviderConfig { get; set; }
+
         public GetServingEndpointsInvokeArgs()
         {
         }
@@ -233,15 +239,19 @@ namespace Pulumi.Databricks
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly Outputs.GetServingEndpointsProviderConfigResult? ProviderConfig;
 
         [OutputConstructor]
         private GetServingEndpointsResult(
             ImmutableArray<Outputs.GetServingEndpointsEndpointResult> endpoints,
 
-            string id)
+            string id,
+
+            Outputs.GetServingEndpointsProviderConfigResult? providerConfig)
         {
             Endpoints = endpoints;
             Id = id;
+            ProviderConfig = providerConfig;
         }
     }
 }

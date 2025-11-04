@@ -226,6 +226,10 @@ export class Job extends pulumi.CustomResource {
      */
     declare public readonly pipelineTask: pulumi.Output<outputs.JobPipelineTask | undefined>;
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    declare public readonly providerConfig: pulumi.Output<outputs.JobProviderConfig | undefined>;
+    /**
      * @deprecated should be used inside a task block and not inside a job block
      */
     declare public readonly pythonWheelTask: pulumi.Output<outputs.JobPythonWheelTask | undefined>;
@@ -326,6 +330,7 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["parameters"] = state?.parameters;
             resourceInputs["performanceTarget"] = state?.performanceTarget;
             resourceInputs["pipelineTask"] = state?.pipelineTask;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["pythonWheelTask"] = state?.pythonWheelTask;
             resourceInputs["queue"] = state?.queue;
             resourceInputs["retryOnTimeout"] = state?.retryOnTimeout;
@@ -370,6 +375,7 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["parameters"] = args?.parameters;
             resourceInputs["performanceTarget"] = args?.performanceTarget;
             resourceInputs["pipelineTask"] = args?.pipelineTask;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["pythonWheelTask"] = args?.pythonWheelTask;
             resourceInputs["queue"] = args?.queue;
             resourceInputs["retryOnTimeout"] = args?.retryOnTimeout;
@@ -493,6 +499,10 @@ export interface JobState {
      * @deprecated should be used inside a task block and not inside a job block
      */
     pipelineTask?: pulumi.Input<inputs.JobPipelineTask>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.JobProviderConfig>;
     /**
      * @deprecated should be used inside a task block and not inside a job block
      */
@@ -657,6 +667,10 @@ export interface JobArgs {
      * @deprecated should be used inside a task block and not inside a job block
      */
     pipelineTask?: pulumi.Input<inputs.JobPipelineTask>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.JobProviderConfig>;
     /**
      * @deprecated should be used inside a task block and not inside a job block
      */

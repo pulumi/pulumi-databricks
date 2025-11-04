@@ -11,12 +11,21 @@ namespace Pulumi.Databricks
 {
     public static class GetDatabaseSyncedDatabaseTables
     {
-        public static Task<GetDatabaseSyncedDatabaseTablesResult> InvokeAsync(GetDatabaseSyncedDatabaseTablesArgs? args = null, InvokeOptions? options = null)
+        /// <summary>
+        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// </summary>
+        public static Task<GetDatabaseSyncedDatabaseTablesResult> InvokeAsync(GetDatabaseSyncedDatabaseTablesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDatabaseSyncedDatabaseTablesResult>("databricks:index/getDatabaseSyncedDatabaseTables:getDatabaseSyncedDatabaseTables", args ?? new GetDatabaseSyncedDatabaseTablesArgs(), options.WithDefaults());
 
-        public static Output<GetDatabaseSyncedDatabaseTablesResult> Invoke(GetDatabaseSyncedDatabaseTablesInvokeArgs? args = null, InvokeOptions? options = null)
+        /// <summary>
+        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// </summary>
+        public static Output<GetDatabaseSyncedDatabaseTablesResult> Invoke(GetDatabaseSyncedDatabaseTablesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDatabaseSyncedDatabaseTablesResult>("databricks:index/getDatabaseSyncedDatabaseTables:getDatabaseSyncedDatabaseTables", args ?? new GetDatabaseSyncedDatabaseTablesInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// </summary>
         public static Output<GetDatabaseSyncedDatabaseTablesResult> Invoke(GetDatabaseSyncedDatabaseTablesInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetDatabaseSyncedDatabaseTablesResult>("databricks:index/getDatabaseSyncedDatabaseTables:getDatabaseSyncedDatabaseTables", args ?? new GetDatabaseSyncedDatabaseTablesInvokeArgs(), options.WithDefaults());
     }
@@ -25,10 +34,16 @@ namespace Pulumi.Databricks
     public sealed class GetDatabaseSyncedDatabaseTablesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Workspace ID of the resource
+        /// Name of the instance to get synced tables for
         /// </summary>
-        [Input("workspaceId")]
-        public string? WorkspaceId { get; set; }
+        [Input("instanceName", required: true)]
+        public string InstanceName { get; set; } = null!;
+
+        /// <summary>
+        /// Upper bound for items returned
+        /// </summary>
+        [Input("pageSize")]
+        public int? PageSize { get; set; }
 
         public GetDatabaseSyncedDatabaseTablesArgs()
         {
@@ -39,10 +54,16 @@ namespace Pulumi.Databricks
     public sealed class GetDatabaseSyncedDatabaseTablesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Workspace ID of the resource
+        /// Name of the instance to get synced tables for
         /// </summary>
-        [Input("workspaceId")]
-        public Input<string>? WorkspaceId { get; set; }
+        [Input("instanceName", required: true)]
+        public Input<string> InstanceName { get; set; } = null!;
+
+        /// <summary>
+        /// Upper bound for items returned
+        /// </summary>
+        [Input("pageSize")]
+        public Input<int>? PageSize { get; set; }
 
         public GetDatabaseSyncedDatabaseTablesInvokeArgs()
         {
@@ -58,20 +79,24 @@ namespace Pulumi.Databricks
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly string InstanceName;
+        public readonly int? PageSize;
         public readonly ImmutableArray<Outputs.GetDatabaseSyncedDatabaseTablesSyncedTableResult> SyncedTables;
-        public readonly string? WorkspaceId;
 
         [OutputConstructor]
         private GetDatabaseSyncedDatabaseTablesResult(
             string id,
 
-            ImmutableArray<Outputs.GetDatabaseSyncedDatabaseTablesSyncedTableResult> syncedTables,
+            string instanceName,
 
-            string? workspaceId)
+            int? pageSize,
+
+            ImmutableArray<Outputs.GetDatabaseSyncedDatabaseTablesSyncedTableResult> syncedTables)
         {
             Id = id;
+            InstanceName = instanceName;
+            PageSize = pageSize;
             SyncedTables = syncedTables;
-            WorkspaceId = workspaceId;
         }
     }
 }

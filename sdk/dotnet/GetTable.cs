@@ -181,6 +181,12 @@ namespace Pulumi.Databricks
         public string Name { get; set; } = null!;
 
         /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Inputs.GetTableProviderConfigArgs? ProviderConfig { get; set; }
+
+        /// <summary>
         /// TableInfo object for a Unity Catalog table. This contains the following attributes:
         /// </summary>
         [Input("tableInfo")]
@@ -204,6 +210,12 @@ namespace Pulumi.Databricks
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.GetTableProviderConfigInputArgs>? ProviderConfig { get; set; }
+
+        /// <summary>
         /// TableInfo object for a Unity Catalog table. This contains the following attributes:
         /// </summary>
         [Input("tableInfo")]
@@ -224,6 +236,7 @@ namespace Pulumi.Databricks
         /// Name of table, relative to parent schema.
         /// </summary>
         public readonly string Name;
+        public readonly Outputs.GetTableProviderConfigResult? ProviderConfig;
         /// <summary>
         /// TableInfo object for a Unity Catalog table. This contains the following attributes:
         /// </summary>
@@ -235,10 +248,13 @@ namespace Pulumi.Databricks
 
             string name,
 
+            Outputs.GetTableProviderConfigResult? providerConfig,
+
             Outputs.GetTableTableInfoResult tableInfo)
         {
             Id = id;
             Name = name;
+            ProviderConfig = providerConfig;
             TableInfo = tableInfo;
         }
     }

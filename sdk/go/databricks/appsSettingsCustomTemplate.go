@@ -12,6 +12,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+//
 // Custom App Templates store the metadata of custom app code hosted in an external Git repository, enabling users to reuse boilerplate code when creating apps.
 //
 // ## Example Usage
@@ -77,7 +79,7 @@ import (
 // If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
 //
 // ```sh
-// $ pulumi import databricks:index/appsSettingsCustomTemplate:AppsSettingsCustomTemplate databricks_apps_settings_custom_template "name"
+// $ pulumi import databricks:index/appsSettingsCustomTemplate:AppsSettingsCustomTemplate this "name"
 // ```
 type AppsSettingsCustomTemplate struct {
 	pulumi.CustomResourceState
@@ -97,8 +99,6 @@ type AppsSettingsCustomTemplate struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The path to the template within the Git repository
 	Path pulumi.StringOutput `pulumi:"path"`
-	// Workspace ID of the resource
-	WorkspaceId pulumi.StringPtrOutput `pulumi:"workspaceId"`
 }
 
 // NewAppsSettingsCustomTemplate registers a new resource with the given unique name, arguments, and options.
@@ -158,8 +158,6 @@ type appsSettingsCustomTemplateState struct {
 	Name *string `pulumi:"name"`
 	// The path to the template within the Git repository
 	Path *string `pulumi:"path"`
-	// Workspace ID of the resource
-	WorkspaceId *string `pulumi:"workspaceId"`
 }
 
 type AppsSettingsCustomTemplateState struct {
@@ -178,8 +176,6 @@ type AppsSettingsCustomTemplateState struct {
 	Name pulumi.StringPtrInput
 	// The path to the template within the Git repository
 	Path pulumi.StringPtrInput
-	// Workspace ID of the resource
-	WorkspaceId pulumi.StringPtrInput
 }
 
 func (AppsSettingsCustomTemplateState) ElementType() reflect.Type {
@@ -200,8 +196,6 @@ type appsSettingsCustomTemplateArgs struct {
 	Name *string `pulumi:"name"`
 	// The path to the template within the Git repository
 	Path string `pulumi:"path"`
-	// Workspace ID of the resource
-	WorkspaceId *string `pulumi:"workspaceId"`
 }
 
 // The set of arguments for constructing a AppsSettingsCustomTemplate resource.
@@ -219,8 +213,6 @@ type AppsSettingsCustomTemplateArgs struct {
 	Name pulumi.StringPtrInput
 	// The path to the template within the Git repository
 	Path pulumi.StringInput
-	// Workspace ID of the resource
-	WorkspaceId pulumi.StringPtrInput
 }
 
 func (AppsSettingsCustomTemplateArgs) ElementType() reflect.Type {
@@ -344,11 +336,6 @@ func (o AppsSettingsCustomTemplateOutput) Name() pulumi.StringOutput {
 // The path to the template within the Git repository
 func (o AppsSettingsCustomTemplateOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v *AppsSettingsCustomTemplate) pulumi.StringOutput { return v.Path }).(pulumi.StringOutput)
-}
-
-// Workspace ID of the resource
-func (o AppsSettingsCustomTemplateOutput) WorkspaceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AppsSettingsCustomTemplate) pulumi.StringPtrOutput { return v.WorkspaceId }).(pulumi.StringPtrOutput)
 }
 
 type AppsSettingsCustomTemplateArrayOutput struct{ *pulumi.OutputState }

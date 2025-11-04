@@ -5,10 +5,13 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetRegisteredModelVersionsModelVersion;
+import com.pulumi.databricks.outputs.GetRegisteredModelVersionsProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetRegisteredModelVersionsResult {
@@ -27,6 +30,7 @@ public final class GetRegisteredModelVersionsResult {
      * 
      */
     private List<GetRegisteredModelVersionsModelVersion> modelVersions;
+    private @Nullable GetRegisteredModelVersionsProviderConfig providerConfig;
 
     private GetRegisteredModelVersionsResult() {}
     /**
@@ -50,6 +54,9 @@ public final class GetRegisteredModelVersionsResult {
     public List<GetRegisteredModelVersionsModelVersion> modelVersions() {
         return this.modelVersions;
     }
+    public Optional<GetRegisteredModelVersionsProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -63,12 +70,14 @@ public final class GetRegisteredModelVersionsResult {
         private String fullName;
         private String id;
         private List<GetRegisteredModelVersionsModelVersion> modelVersions;
+        private @Nullable GetRegisteredModelVersionsProviderConfig providerConfig;
         public Builder() {}
         public Builder(GetRegisteredModelVersionsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.fullName = defaults.fullName;
     	      this.id = defaults.id;
     	      this.modelVersions = defaults.modelVersions;
+    	      this.providerConfig = defaults.providerConfig;
         }
 
         @CustomType.Setter
@@ -98,11 +107,18 @@ public final class GetRegisteredModelVersionsResult {
         public Builder modelVersions(GetRegisteredModelVersionsModelVersion... modelVersions) {
             return modelVersions(List.of(modelVersions));
         }
+        @CustomType.Setter
+        public Builder providerConfig(@Nullable GetRegisteredModelVersionsProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
+            return this;
+        }
         public GetRegisteredModelVersionsResult build() {
             final var _resultValue = new GetRegisteredModelVersionsResult();
             _resultValue.fullName = fullName;
             _resultValue.id = id;
             _resultValue.modelVersions = modelVersions;
+            _resultValue.providerConfig = providerConfig;
             return _resultValue;
         }
     }

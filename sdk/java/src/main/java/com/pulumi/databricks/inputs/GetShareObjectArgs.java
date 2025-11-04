@@ -67,15 +67,50 @@ public final class GetShareObjectArgs extends com.pulumi.resources.ResourceArgs 
      * Type of the object.
      * 
      */
-    @Import(name="dataObjectType", required=true)
-    private Output<String> dataObjectType;
+    @Import(name="dataObjectType")
+    private @Nullable Output<String> dataObjectType;
 
     /**
      * @return Type of the object.
      * 
      */
-    public Output<String> dataObjectType() {
-        return this.dataObjectType;
+    public Optional<Output<String>> dataObjectType() {
+        return Optional.ofNullable(this.dataObjectType);
+    }
+
+    @Import(name="effectiveCdfEnabled", required=true)
+    private Output<Boolean> effectiveCdfEnabled;
+
+    public Output<Boolean> effectiveCdfEnabled() {
+        return this.effectiveCdfEnabled;
+    }
+
+    @Import(name="effectiveHistoryDataSharingStatus", required=true)
+    private Output<String> effectiveHistoryDataSharingStatus;
+
+    public Output<String> effectiveHistoryDataSharingStatus() {
+        return this.effectiveHistoryDataSharingStatus;
+    }
+
+    @Import(name="effectiveSharedAs", required=true)
+    private Output<String> effectiveSharedAs;
+
+    public Output<String> effectiveSharedAs() {
+        return this.effectiveSharedAs;
+    }
+
+    @Import(name="effectiveStartVersion", required=true)
+    private Output<Integer> effectiveStartVersion;
+
+    public Output<Integer> effectiveStartVersion() {
+        return this.effectiveStartVersion;
+    }
+
+    @Import(name="effectiveStringSharedAs", required=true)
+    private Output<String> effectiveStringSharedAs;
+
+    public Output<String> effectiveStringSharedAs() {
+        return this.effectiveStringSharedAs;
     }
 
     @Import(name="historyDataSharingStatus")
@@ -144,6 +179,11 @@ public final class GetShareObjectArgs extends com.pulumi.resources.ResourceArgs 
         this.comment = $.comment;
         this.content = $.content;
         this.dataObjectType = $.dataObjectType;
+        this.effectiveCdfEnabled = $.effectiveCdfEnabled;
+        this.effectiveHistoryDataSharingStatus = $.effectiveHistoryDataSharingStatus;
+        this.effectiveSharedAs = $.effectiveSharedAs;
+        this.effectiveStartVersion = $.effectiveStartVersion;
+        this.effectiveStringSharedAs = $.effectiveStringSharedAs;
         this.historyDataSharingStatus = $.historyDataSharingStatus;
         this.name = $.name;
         this.partitions = $.partitions;
@@ -234,7 +274,7 @@ public final class GetShareObjectArgs extends com.pulumi.resources.ResourceArgs 
          * @return builder
          * 
          */
-        public Builder dataObjectType(Output<String> dataObjectType) {
+        public Builder dataObjectType(@Nullable Output<String> dataObjectType) {
             $.dataObjectType = dataObjectType;
             return this;
         }
@@ -247,6 +287,51 @@ public final class GetShareObjectArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder dataObjectType(String dataObjectType) {
             return dataObjectType(Output.of(dataObjectType));
+        }
+
+        public Builder effectiveCdfEnabled(Output<Boolean> effectiveCdfEnabled) {
+            $.effectiveCdfEnabled = effectiveCdfEnabled;
+            return this;
+        }
+
+        public Builder effectiveCdfEnabled(Boolean effectiveCdfEnabled) {
+            return effectiveCdfEnabled(Output.of(effectiveCdfEnabled));
+        }
+
+        public Builder effectiveHistoryDataSharingStatus(Output<String> effectiveHistoryDataSharingStatus) {
+            $.effectiveHistoryDataSharingStatus = effectiveHistoryDataSharingStatus;
+            return this;
+        }
+
+        public Builder effectiveHistoryDataSharingStatus(String effectiveHistoryDataSharingStatus) {
+            return effectiveHistoryDataSharingStatus(Output.of(effectiveHistoryDataSharingStatus));
+        }
+
+        public Builder effectiveSharedAs(Output<String> effectiveSharedAs) {
+            $.effectiveSharedAs = effectiveSharedAs;
+            return this;
+        }
+
+        public Builder effectiveSharedAs(String effectiveSharedAs) {
+            return effectiveSharedAs(Output.of(effectiveSharedAs));
+        }
+
+        public Builder effectiveStartVersion(Output<Integer> effectiveStartVersion) {
+            $.effectiveStartVersion = effectiveStartVersion;
+            return this;
+        }
+
+        public Builder effectiveStartVersion(Integer effectiveStartVersion) {
+            return effectiveStartVersion(Output.of(effectiveStartVersion));
+        }
+
+        public Builder effectiveStringSharedAs(Output<String> effectiveStringSharedAs) {
+            $.effectiveStringSharedAs = effectiveStringSharedAs;
+            return this;
+        }
+
+        public Builder effectiveStringSharedAs(String effectiveStringSharedAs) {
+            return effectiveStringSharedAs(Output.of(effectiveStringSharedAs));
         }
 
         public Builder historyDataSharingStatus(@Nullable Output<String> historyDataSharingStatus) {
@@ -335,8 +420,20 @@ public final class GetShareObjectArgs extends com.pulumi.resources.ResourceArgs 
             if ($.addedBy == null) {
                 throw new MissingRequiredPropertyException("GetShareObjectArgs", "addedBy");
             }
-            if ($.dataObjectType == null) {
-                throw new MissingRequiredPropertyException("GetShareObjectArgs", "dataObjectType");
+            if ($.effectiveCdfEnabled == null) {
+                throw new MissingRequiredPropertyException("GetShareObjectArgs", "effectiveCdfEnabled");
+            }
+            if ($.effectiveHistoryDataSharingStatus == null) {
+                throw new MissingRequiredPropertyException("GetShareObjectArgs", "effectiveHistoryDataSharingStatus");
+            }
+            if ($.effectiveSharedAs == null) {
+                throw new MissingRequiredPropertyException("GetShareObjectArgs", "effectiveSharedAs");
+            }
+            if ($.effectiveStartVersion == null) {
+                throw new MissingRequiredPropertyException("GetShareObjectArgs", "effectiveStartVersion");
+            }
+            if ($.effectiveStringSharedAs == null) {
+                throw new MissingRequiredPropertyException("GetShareObjectArgs", "effectiveStringSharedAs");
             }
             if ($.name == null) {
                 throw new MissingRequiredPropertyException("GetShareObjectArgs", "name");

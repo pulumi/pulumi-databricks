@@ -14,7 +14,7 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetWorkspaceSettingV2RestrictWorkspaceAdminsResult
     {
         /// <summary>
-        /// (string) - . Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
+        /// (string) - Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
         /// </summary>
         public readonly string Status;
 

@@ -162,6 +162,12 @@ namespace Pulumi.Databricks
         [Input("policyFamilyId")]
         public string? PolicyFamilyId { get; set; }
 
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Inputs.GetClusterPolicyProviderConfigArgs? ProviderConfig { get; set; }
+
         public GetClusterPolicyArgs()
         {
         }
@@ -218,6 +224,12 @@ namespace Pulumi.Databricks
         [Input("policyFamilyId")]
         public Input<string>? PolicyFamilyId { get; set; }
 
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.GetClusterPolicyProviderConfigInputArgs>? ProviderConfig { get; set; }
+
         public GetClusterPolicyInvokeArgs()
         {
         }
@@ -257,6 +269,7 @@ namespace Pulumi.Databricks
         /// ID of the policy family.
         /// </summary>
         public readonly string PolicyFamilyId;
+        public readonly Outputs.GetClusterPolicyProviderConfigResult? ProviderConfig;
 
         [OutputConstructor]
         private GetClusterPolicyResult(
@@ -274,7 +287,9 @@ namespace Pulumi.Databricks
 
             string policyFamilyDefinitionOverrides,
 
-            string policyFamilyId)
+            string policyFamilyId,
+
+            Outputs.GetClusterPolicyProviderConfigResult? providerConfig)
         {
             Definition = definition;
             Description = description;
@@ -284,6 +299,7 @@ namespace Pulumi.Databricks
             Name = name;
             PolicyFamilyDefinitionOverrides = policyFamilyDefinitionOverrides;
             PolicyFamilyId = policyFamilyId;
+            ProviderConfig = providerConfig;
         }
     }
 }

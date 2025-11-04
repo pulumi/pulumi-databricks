@@ -6,6 +6,7 @@ package com.pulumi.databricks.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetAppsSettingsCustomTemplatesTemplate;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -19,8 +20,8 @@ public final class GetAppsSettingsCustomTemplatesResult {
      * 
      */
     private String id;
+    private @Nullable Integer pageSize;
     private List<GetAppsSettingsCustomTemplatesTemplate> templates;
-    private @Nullable String workspaceId;
 
     private GetAppsSettingsCustomTemplatesResult() {}
     /**
@@ -30,11 +31,11 @@ public final class GetAppsSettingsCustomTemplatesResult {
     public String id() {
         return this.id;
     }
+    public Optional<Integer> pageSize() {
+        return Optional.ofNullable(this.pageSize);
+    }
     public List<GetAppsSettingsCustomTemplatesTemplate> templates() {
         return this.templates;
-    }
-    public Optional<String> workspaceId() {
-        return Optional.ofNullable(this.workspaceId);
     }
 
     public static Builder builder() {
@@ -47,14 +48,14 @@ public final class GetAppsSettingsCustomTemplatesResult {
     @CustomType.Builder
     public static final class Builder {
         private String id;
+        private @Nullable Integer pageSize;
         private List<GetAppsSettingsCustomTemplatesTemplate> templates;
-        private @Nullable String workspaceId;
         public Builder() {}
         public Builder(GetAppsSettingsCustomTemplatesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
+    	      this.pageSize = defaults.pageSize;
     	      this.templates = defaults.templates;
-    	      this.workspaceId = defaults.workspaceId;
         }
 
         @CustomType.Setter
@@ -63,6 +64,12 @@ public final class GetAppsSettingsCustomTemplatesResult {
               throw new MissingRequiredPropertyException("GetAppsSettingsCustomTemplatesResult", "id");
             }
             this.id = id;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder pageSize(@Nullable Integer pageSize) {
+
+            this.pageSize = pageSize;
             return this;
         }
         @CustomType.Setter
@@ -76,17 +83,11 @@ public final class GetAppsSettingsCustomTemplatesResult {
         public Builder templates(GetAppsSettingsCustomTemplatesTemplate... templates) {
             return templates(List.of(templates));
         }
-        @CustomType.Setter
-        public Builder workspaceId(@Nullable String workspaceId) {
-
-            this.workspaceId = workspaceId;
-            return this;
-        }
         public GetAppsSettingsCustomTemplatesResult build() {
             final var _resultValue = new GetAppsSettingsCustomTemplatesResult();
             _resultValue.id = id;
+            _resultValue.pageSize = pageSize;
             _resultValue.templates = templates;
-            _resultValue.workspaceId = workspaceId;
             return _resultValue;
         }
     }

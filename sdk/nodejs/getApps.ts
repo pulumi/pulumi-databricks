@@ -32,10 +32,19 @@ import * as utilities from "./utilities";
  * * databricks.Secret to manage [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
  * * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code.
  */
-export function getApps(opts?: pulumi.InvokeOptions): Promise<GetAppsResult> {
+export function getApps(args?: GetAppsArgs, opts?: pulumi.InvokeOptions): Promise<GetAppsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getApps:getApps", {
+        "providerConfig": args.providerConfig,
     }, opts);
+}
+
+/**
+ * A collection of arguments for invoking getApps.
+ */
+export interface GetAppsArgs {
+    providerConfig?: inputs.GetAppsProviderConfig;
 }
 
 /**
@@ -47,6 +56,7 @@ export interface GetAppsResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly providerConfig?: outputs.GetAppsProviderConfig;
 }
 /**
  * > This data source can only be used with a workspace-level provider!
@@ -74,8 +84,17 @@ export interface GetAppsResult {
  * * databricks.Secret to manage [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
  * * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code.
  */
-export function getAppsOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAppsResult> {
+export function getAppsOutput(args?: GetAppsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAppsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getApps:getApps", {
+        "providerConfig": args.providerConfig,
     }, opts);
+}
+
+/**
+ * A collection of arguments for invoking getApps.
+ */
+export interface GetAppsOutputArgs {
+    providerConfig?: pulumi.Input<inputs.GetAppsProviderConfigArgs>;
 }

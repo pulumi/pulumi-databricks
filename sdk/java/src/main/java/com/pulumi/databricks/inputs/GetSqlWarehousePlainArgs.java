@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.GetSqlWarehouseChannel;
 import com.pulumi.databricks.inputs.GetSqlWarehouseHealth;
 import com.pulumi.databricks.inputs.GetSqlWarehouseOdbcParams;
+import com.pulumi.databricks.inputs.GetSqlWarehouseProviderConfig;
 import com.pulumi.databricks.inputs.GetSqlWarehouseTags;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -267,6 +268,13 @@ public final class GetSqlWarehousePlainArgs extends com.pulumi.resources.InvokeA
         return Optional.ofNullable(this.odbcParams);
     }
 
+    @Import(name="providerConfig")
+    private @Nullable GetSqlWarehouseProviderConfig providerConfig;
+
+    public Optional<GetSqlWarehouseProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     /**
      * The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`.
      * 
@@ -347,6 +355,7 @@ public final class GetSqlWarehousePlainArgs extends com.pulumi.resources.InvokeA
         this.numActiveSessions = $.numActiveSessions;
         this.numClusters = $.numClusters;
         this.odbcParams = $.odbcParams;
+        this.providerConfig = $.providerConfig;
         this.spotInstancePolicy = $.spotInstancePolicy;
         this.state = $.state;
         this.tags = $.tags;
@@ -549,6 +558,11 @@ public final class GetSqlWarehousePlainArgs extends com.pulumi.resources.InvokeA
          */
         public Builder odbcParams(@Nullable GetSqlWarehouseOdbcParams odbcParams) {
             $.odbcParams = odbcParams;
+            return this;
+        }
+
+        public Builder providerConfig(@Nullable GetSqlWarehouseProviderConfig providerConfig) {
+            $.providerConfig = providerConfig;
             return this;
         }
 

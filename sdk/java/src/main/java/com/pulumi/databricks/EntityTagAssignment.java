@@ -15,6 +15,76 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * 
+ * This resource allows you to create, update, list, and delete tag assignments on Unity Catalog entities.
+ * 
+ * ## Example Usage
+ * 
+ * ### Basic tag assignment to a catalog
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.EntityTagAssignment;
+ * import com.pulumi.databricks.EntityTagAssignmentArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var catalogTag = new EntityTagAssignment("catalogTag", EntityTagAssignmentArgs.builder()
+ *             .entityType("catalogs")
+ *             .entityName("production_catalog")
+ *             .tagKey("environment")
+ *             .tagValue("production")
+ *             .build());
+ * 
+ *         var schemaTag = new EntityTagAssignment("schemaTag", EntityTagAssignmentArgs.builder()
+ *             .entityType("schemas")
+ *             .entityName("production_catalog.sales_data")
+ *             .tagKey("owner")
+ *             .tagValue("sales-team")
+ *             .build());
+ * 
+ *         var tableTag = new EntityTagAssignment("tableTag", EntityTagAssignmentArgs.builder()
+ *             .entityType("tables")
+ *             .entityName("production_catalog.sales_data.customer_orders")
+ *             .tagKey("data_classification")
+ *             .tagValue("confidential")
+ *             .build());
+ * 
+ *         var columnTag = new EntityTagAssignment("columnTag", EntityTagAssignmentArgs.builder()
+ *             .entityType("columns")
+ *             .entityName("production_catalog.sales_data.customers.email_address")
+ *             .tagKey("pii")
+ *             .tagValue("email")
+ *             .build());
+ * 
+ *         var volumeTag = new EntityTagAssignment("volumeTag", EntityTagAssignmentArgs.builder()
+ *             .entityType("volumes")
+ *             .entityName("production_catalog.raw_data.landing_zone")
+ *             .tagKey("purpose")
+ *             .tagValue("data_ingestion")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * As of Pulumi v1.5, resources can be imported through configuration.
@@ -32,7 +102,7 @@ import javax.annotation.Nullable;
  * If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
  * 
  * ```sh
- * $ pulumi import databricks:index/entityTagAssignment:EntityTagAssignment databricks_entity_tag_assignment &#34;entity_type,entity_name,tag_key&#34;
+ * $ pulumi import databricks:index/entityTagAssignment:EntityTagAssignment this &#34;entity_type,entity_name,tag_key&#34;
  * ```
  * 
  */
@@ -93,20 +163,6 @@ public class EntityTagAssignment extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> tagValue() {
         return Codegen.optional(this.tagValue);
-    }
-    /**
-     * Workspace ID of the resource
-     * 
-     */
-    @Export(name="workspaceId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> workspaceId;
-
-    /**
-     * @return Workspace ID of the resource
-     * 
-     */
-    public Output<Optional<String>> workspaceId() {
-        return Codegen.optional(this.workspaceId);
     }
 
     /**

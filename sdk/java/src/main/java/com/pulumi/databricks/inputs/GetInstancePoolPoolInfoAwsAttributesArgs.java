@@ -24,6 +24,13 @@ public final class GetInstancePoolPoolInfoAwsAttributesArgs extends com.pulumi.r
         return Optional.ofNullable(this.availability);
     }
 
+    @Import(name="instanceProfileArn")
+    private @Nullable Output<String> instanceProfileArn;
+
+    public Optional<Output<String>> instanceProfileArn() {
+        return Optional.ofNullable(this.instanceProfileArn);
+    }
+
     @Import(name="spotBidPricePercent")
     private @Nullable Output<Integer> spotBidPricePercent;
 
@@ -42,6 +49,7 @@ public final class GetInstancePoolPoolInfoAwsAttributesArgs extends com.pulumi.r
 
     private GetInstancePoolPoolInfoAwsAttributesArgs(GetInstancePoolPoolInfoAwsAttributesArgs $) {
         this.availability = $.availability;
+        this.instanceProfileArn = $.instanceProfileArn;
         this.spotBidPricePercent = $.spotBidPricePercent;
         this.zoneId = $.zoneId;
     }
@@ -71,6 +79,15 @@ public final class GetInstancePoolPoolInfoAwsAttributesArgs extends com.pulumi.r
 
         public Builder availability(String availability) {
             return availability(Output.of(availability));
+        }
+
+        public Builder instanceProfileArn(@Nullable Output<String> instanceProfileArn) {
+            $.instanceProfileArn = instanceProfileArn;
+            return this;
+        }
+
+        public Builder instanceProfileArn(String instanceProfileArn) {
+            return instanceProfileArn(Output.of(instanceProfileArn));
         }
 
         public Builder spotBidPricePercent(@Nullable Output<Integer> spotBidPricePercent) {

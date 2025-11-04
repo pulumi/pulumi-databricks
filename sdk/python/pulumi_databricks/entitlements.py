@@ -31,14 +31,14 @@ class EntitlementsArgs:
         The set of arguments for constructing a Entitlements resource.
         :param pulumi.Input[_builtins.bool] allow_cluster_create: Allow the principal to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and `cluster_id` argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
         :param pulumi.Input[_builtins.bool] allow_instance_pool_create: Allow the principal to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and instance_pool_id argument.
-        :param pulumi.Input[_builtins.bool] databricks_sql_access: This is a field to allow the principal to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
+        :param pulumi.Input[_builtins.bool] databricks_sql_access: This is a field to allow the principal to have access to [Databricks SQL](https://databricks.com/product/databricks-sql)  UI, [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one) and through databricks_sql_endpoint.
         :param pulumi.Input[_builtins.str] group_id: Canonical unique identifier for the group.
         :param pulumi.Input[_builtins.str] service_principal_id: Canonical unique identifier for the service principal.
                
                The following entitlements are available.
         :param pulumi.Input[_builtins.str] user_id: Canonical unique identifier for the user.
-        :param pulumi.Input[_builtins.bool] workspace_access: This is a field to allow the principal to have access to a Databricks Workspace.
-        :param pulumi.Input[_builtins.bool] workspace_consume: This is a field to allow the principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspace_access` or `databricks_sql_access`.
+        :param pulumi.Input[_builtins.bool] workspace_access: This is a field to allow the principal to have access to a Databricks Workspace UI and [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).
+        :param pulumi.Input[_builtins.bool] workspace_consume: This is a field to allow the principal to have access only to [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).  Couldn't be used with `workspace_access` or `databricks_sql_access`.
         """
         if allow_cluster_create is not None:
             pulumi.set(__self__, "allow_cluster_create", allow_cluster_create)
@@ -85,7 +85,7 @@ class EntitlementsArgs:
     @pulumi.getter(name="databricksSqlAccess")
     def databricks_sql_access(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        This is a field to allow the principal to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
+        This is a field to allow the principal to have access to [Databricks SQL](https://databricks.com/product/databricks-sql)  UI, [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one) and through databricks_sql_endpoint.
         """
         return pulumi.get(self, "databricks_sql_access")
 
@@ -135,7 +135,7 @@ class EntitlementsArgs:
     @pulumi.getter(name="workspaceAccess")
     def workspace_access(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        This is a field to allow the principal to have access to a Databricks Workspace.
+        This is a field to allow the principal to have access to a Databricks Workspace UI and [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).
         """
         return pulumi.get(self, "workspace_access")
 
@@ -147,7 +147,7 @@ class EntitlementsArgs:
     @pulumi.getter(name="workspaceConsume")
     def workspace_consume(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        This is a field to allow the principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspace_access` or `databricks_sql_access`.
+        This is a field to allow the principal to have access only to [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).  Couldn't be used with `workspace_access` or `databricks_sql_access`.
         """
         return pulumi.get(self, "workspace_consume")
 
@@ -171,14 +171,14 @@ class _EntitlementsState:
         Input properties used for looking up and filtering Entitlements resources.
         :param pulumi.Input[_builtins.bool] allow_cluster_create: Allow the principal to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and `cluster_id` argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
         :param pulumi.Input[_builtins.bool] allow_instance_pool_create: Allow the principal to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and instance_pool_id argument.
-        :param pulumi.Input[_builtins.bool] databricks_sql_access: This is a field to allow the principal to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
+        :param pulumi.Input[_builtins.bool] databricks_sql_access: This is a field to allow the principal to have access to [Databricks SQL](https://databricks.com/product/databricks-sql)  UI, [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one) and through databricks_sql_endpoint.
         :param pulumi.Input[_builtins.str] group_id: Canonical unique identifier for the group.
         :param pulumi.Input[_builtins.str] service_principal_id: Canonical unique identifier for the service principal.
                
                The following entitlements are available.
         :param pulumi.Input[_builtins.str] user_id: Canonical unique identifier for the user.
-        :param pulumi.Input[_builtins.bool] workspace_access: This is a field to allow the principal to have access to a Databricks Workspace.
-        :param pulumi.Input[_builtins.bool] workspace_consume: This is a field to allow the principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspace_access` or `databricks_sql_access`.
+        :param pulumi.Input[_builtins.bool] workspace_access: This is a field to allow the principal to have access to a Databricks Workspace UI and [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).
+        :param pulumi.Input[_builtins.bool] workspace_consume: This is a field to allow the principal to have access only to [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).  Couldn't be used with `workspace_access` or `databricks_sql_access`.
         """
         if allow_cluster_create is not None:
             pulumi.set(__self__, "allow_cluster_create", allow_cluster_create)
@@ -225,7 +225,7 @@ class _EntitlementsState:
     @pulumi.getter(name="databricksSqlAccess")
     def databricks_sql_access(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        This is a field to allow the principal to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
+        This is a field to allow the principal to have access to [Databricks SQL](https://databricks.com/product/databricks-sql)  UI, [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one) and through databricks_sql_endpoint.
         """
         return pulumi.get(self, "databricks_sql_access")
 
@@ -275,7 +275,7 @@ class _EntitlementsState:
     @pulumi.getter(name="workspaceAccess")
     def workspace_access(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        This is a field to allow the principal to have access to a Databricks Workspace.
+        This is a field to allow the principal to have access to a Databricks Workspace UI and [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).
         """
         return pulumi.get(self, "workspace_access")
 
@@ -287,7 +287,7 @@ class _EntitlementsState:
     @pulumi.getter(name="workspaceConsume")
     def workspace_consume(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        This is a field to allow the principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspace_access` or `databricks_sql_access`.
+        This is a field to allow the principal to have access only to [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).  Couldn't be used with `workspace_access` or `databricks_sql_access`.
         """
         return pulumi.get(self, "workspace_consume")
 
@@ -403,14 +403,14 @@ class Entitlements(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] allow_cluster_create: Allow the principal to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and `cluster_id` argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
         :param pulumi.Input[_builtins.bool] allow_instance_pool_create: Allow the principal to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and instance_pool_id argument.
-        :param pulumi.Input[_builtins.bool] databricks_sql_access: This is a field to allow the principal to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
+        :param pulumi.Input[_builtins.bool] databricks_sql_access: This is a field to allow the principal to have access to [Databricks SQL](https://databricks.com/product/databricks-sql)  UI, [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one) and through databricks_sql_endpoint.
         :param pulumi.Input[_builtins.str] group_id: Canonical unique identifier for the group.
         :param pulumi.Input[_builtins.str] service_principal_id: Canonical unique identifier for the service principal.
                
                The following entitlements are available.
         :param pulumi.Input[_builtins.str] user_id: Canonical unique identifier for the user.
-        :param pulumi.Input[_builtins.bool] workspace_access: This is a field to allow the principal to have access to a Databricks Workspace.
-        :param pulumi.Input[_builtins.bool] workspace_consume: This is a field to allow the principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspace_access` or `databricks_sql_access`.
+        :param pulumi.Input[_builtins.bool] workspace_access: This is a field to allow the principal to have access to a Databricks Workspace UI and [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).
+        :param pulumi.Input[_builtins.bool] workspace_consume: This is a field to allow the principal to have access only to [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).  Couldn't be used with `workspace_access` or `databricks_sql_access`.
         """
         ...
     @overload
@@ -573,14 +573,14 @@ class Entitlements(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] allow_cluster_create: Allow the principal to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and `cluster_id` argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
         :param pulumi.Input[_builtins.bool] allow_instance_pool_create: Allow the principal to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and instance_pool_id argument.
-        :param pulumi.Input[_builtins.bool] databricks_sql_access: This is a field to allow the principal to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
+        :param pulumi.Input[_builtins.bool] databricks_sql_access: This is a field to allow the principal to have access to [Databricks SQL](https://databricks.com/product/databricks-sql)  UI, [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one) and through databricks_sql_endpoint.
         :param pulumi.Input[_builtins.str] group_id: Canonical unique identifier for the group.
         :param pulumi.Input[_builtins.str] service_principal_id: Canonical unique identifier for the service principal.
                
                The following entitlements are available.
         :param pulumi.Input[_builtins.str] user_id: Canonical unique identifier for the user.
-        :param pulumi.Input[_builtins.bool] workspace_access: This is a field to allow the principal to have access to a Databricks Workspace.
-        :param pulumi.Input[_builtins.bool] workspace_consume: This is a field to allow the principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspace_access` or `databricks_sql_access`.
+        :param pulumi.Input[_builtins.bool] workspace_access: This is a field to allow the principal to have access to a Databricks Workspace UI and [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).
+        :param pulumi.Input[_builtins.bool] workspace_consume: This is a field to allow the principal to have access only to [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).  Couldn't be used with `workspace_access` or `databricks_sql_access`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -616,7 +616,7 @@ class Entitlements(pulumi.CustomResource):
     @pulumi.getter(name="databricksSqlAccess")
     def databricks_sql_access(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        This is a field to allow the principal to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
+        This is a field to allow the principal to have access to [Databricks SQL](https://databricks.com/product/databricks-sql)  UI, [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one) and through databricks_sql_endpoint.
         """
         return pulumi.get(self, "databricks_sql_access")
 
@@ -650,7 +650,7 @@ class Entitlements(pulumi.CustomResource):
     @pulumi.getter(name="workspaceAccess")
     def workspace_access(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        This is a field to allow the principal to have access to a Databricks Workspace.
+        This is a field to allow the principal to have access to a Databricks Workspace UI and [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).
         """
         return pulumi.get(self, "workspace_access")
 
@@ -658,7 +658,7 @@ class Entitlements(pulumi.CustomResource):
     @pulumi.getter(name="workspaceConsume")
     def workspace_consume(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        This is a field to allow the principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspace_access` or `databricks_sql_access`.
+        This is a field to allow the principal to have access only to [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).  Couldn't be used with `workspace_access` or `databricks_sql_access`.
         """
         return pulumi.get(self, "workspace_consume")
 

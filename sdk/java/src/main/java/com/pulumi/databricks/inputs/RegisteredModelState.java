@@ -5,7 +5,11 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.RegisteredModelAliasArgs;
+import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -14,6 +18,20 @@ import javax.annotation.Nullable;
 public final class RegisteredModelState extends com.pulumi.resources.ResourceArgs {
 
     public static final RegisteredModelState Empty = new RegisteredModelState();
+
+    @Import(name="aliases")
+    private @Nullable Output<List<RegisteredModelAliasArgs>> aliases;
+
+    public Optional<Output<List<RegisteredModelAliasArgs>>> aliases() {
+        return Optional.ofNullable(this.aliases);
+    }
+
+    @Import(name="browseOnly")
+    private @Nullable Output<Boolean> browseOnly;
+
+    public Optional<Output<Boolean>> browseOnly() {
+        return Optional.ofNullable(this.browseOnly);
+    }
 
     /**
      * The name of the catalog where the schema and the registered model reside. *Change of this parameter forces recreation of the resource.*
@@ -43,6 +61,34 @@ public final class RegisteredModelState extends com.pulumi.resources.ResourceArg
      */
     public Optional<Output<String>> comment() {
         return Optional.ofNullable(this.comment);
+    }
+
+    @Import(name="createdAt")
+    private @Nullable Output<Integer> createdAt;
+
+    public Optional<Output<Integer>> createdAt() {
+        return Optional.ofNullable(this.createdAt);
+    }
+
+    @Import(name="createdBy")
+    private @Nullable Output<String> createdBy;
+
+    public Optional<Output<String>> createdBy() {
+        return Optional.ofNullable(this.createdBy);
+    }
+
+    @Import(name="fullName")
+    private @Nullable Output<String> fullName;
+
+    public Optional<Output<String>> fullName() {
+        return Optional.ofNullable(this.fullName);
+    }
+
+    @Import(name="metastoreId")
+    private @Nullable Output<String> metastoreId;
+
+    public Optional<Output<String>> metastoreId() {
+        return Optional.ofNullable(this.metastoreId);
     }
 
     /**
@@ -105,15 +151,37 @@ public final class RegisteredModelState extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.storageLocation);
     }
 
+    @Import(name="updatedAt")
+    private @Nullable Output<Integer> updatedAt;
+
+    public Optional<Output<Integer>> updatedAt() {
+        return Optional.ofNullable(this.updatedAt);
+    }
+
+    @Import(name="updatedBy")
+    private @Nullable Output<String> updatedBy;
+
+    public Optional<Output<String>> updatedBy() {
+        return Optional.ofNullable(this.updatedBy);
+    }
+
     private RegisteredModelState() {}
 
     private RegisteredModelState(RegisteredModelState $) {
+        this.aliases = $.aliases;
+        this.browseOnly = $.browseOnly;
         this.catalogName = $.catalogName;
         this.comment = $.comment;
+        this.createdAt = $.createdAt;
+        this.createdBy = $.createdBy;
+        this.fullName = $.fullName;
+        this.metastoreId = $.metastoreId;
         this.name = $.name;
         this.owner = $.owner;
         this.schemaName = $.schemaName;
         this.storageLocation = $.storageLocation;
+        this.updatedAt = $.updatedAt;
+        this.updatedBy = $.updatedBy;
     }
 
     public static Builder builder() {
@@ -132,6 +200,28 @@ public final class RegisteredModelState extends com.pulumi.resources.ResourceArg
 
         public Builder(RegisteredModelState defaults) {
             $ = new RegisteredModelState(Objects.requireNonNull(defaults));
+        }
+
+        public Builder aliases(@Nullable Output<List<RegisteredModelAliasArgs>> aliases) {
+            $.aliases = aliases;
+            return this;
+        }
+
+        public Builder aliases(List<RegisteredModelAliasArgs> aliases) {
+            return aliases(Output.of(aliases));
+        }
+
+        public Builder aliases(RegisteredModelAliasArgs... aliases) {
+            return aliases(List.of(aliases));
+        }
+
+        public Builder browseOnly(@Nullable Output<Boolean> browseOnly) {
+            $.browseOnly = browseOnly;
+            return this;
+        }
+
+        public Builder browseOnly(Boolean browseOnly) {
+            return browseOnly(Output.of(browseOnly));
         }
 
         /**
@@ -174,6 +264,42 @@ public final class RegisteredModelState extends com.pulumi.resources.ResourceArg
          */
         public Builder comment(String comment) {
             return comment(Output.of(comment));
+        }
+
+        public Builder createdAt(@Nullable Output<Integer> createdAt) {
+            $.createdAt = createdAt;
+            return this;
+        }
+
+        public Builder createdAt(Integer createdAt) {
+            return createdAt(Output.of(createdAt));
+        }
+
+        public Builder createdBy(@Nullable Output<String> createdBy) {
+            $.createdBy = createdBy;
+            return this;
+        }
+
+        public Builder createdBy(String createdBy) {
+            return createdBy(Output.of(createdBy));
+        }
+
+        public Builder fullName(@Nullable Output<String> fullName) {
+            $.fullName = fullName;
+            return this;
+        }
+
+        public Builder fullName(String fullName) {
+            return fullName(Output.of(fullName));
+        }
+
+        public Builder metastoreId(@Nullable Output<String> metastoreId) {
+            $.metastoreId = metastoreId;
+            return this;
+        }
+
+        public Builder metastoreId(String metastoreId) {
+            return metastoreId(Output.of(metastoreId));
         }
 
         /**
@@ -258,6 +384,24 @@ public final class RegisteredModelState extends com.pulumi.resources.ResourceArg
          */
         public Builder storageLocation(String storageLocation) {
             return storageLocation(Output.of(storageLocation));
+        }
+
+        public Builder updatedAt(@Nullable Output<Integer> updatedAt) {
+            $.updatedAt = updatedAt;
+            return this;
+        }
+
+        public Builder updatedAt(Integer updatedAt) {
+            return updatedAt(Output.of(updatedAt));
+        }
+
+        public Builder updatedBy(@Nullable Output<String> updatedBy) {
+            $.updatedBy = updatedBy;
+            return this;
+        }
+
+        public Builder updatedBy(String updatedBy) {
+            return updatedBy(Output.of(updatedBy));
         }
 
         public RegisteredModelState build() {

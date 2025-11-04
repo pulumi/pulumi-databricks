@@ -57,6 +57,8 @@ type LookupDirectoryArgs struct {
 	ObjectId *int `pulumi:"objectId"`
 	// Path to a directory in the workspace
 	Path string `pulumi:"path"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *GetDirectoryProviderConfig `pulumi:"providerConfig"`
 	// path on Workspace File System (WSFS) in form of `/Workspace` + `path`
 	WorkspacePath *string `pulumi:"workspacePath"`
 }
@@ -65,8 +67,9 @@ type LookupDirectoryArgs struct {
 type LookupDirectoryResult struct {
 	Id string `pulumi:"id"`
 	// directory object ID
-	ObjectId int    `pulumi:"objectId"`
-	Path     string `pulumi:"path"`
+	ObjectId       int                         `pulumi:"objectId"`
+	Path           string                      `pulumi:"path"`
+	ProviderConfig *GetDirectoryProviderConfig `pulumi:"providerConfig"`
 	// path on Workspace File System (WSFS) in form of `/Workspace` + `path`
 	WorkspacePath string `pulumi:"workspacePath"`
 }
@@ -87,6 +90,8 @@ type LookupDirectoryOutputArgs struct {
 	ObjectId pulumi.IntPtrInput `pulumi:"objectId"`
 	// Path to a directory in the workspace
 	Path pulumi.StringInput `pulumi:"path"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig GetDirectoryProviderConfigPtrInput `pulumi:"providerConfig"`
 	// path on Workspace File System (WSFS) in form of `/Workspace` + `path`
 	WorkspacePath pulumi.StringPtrInput `pulumi:"workspacePath"`
 }
@@ -121,6 +126,10 @@ func (o LookupDirectoryResultOutput) ObjectId() pulumi.IntOutput {
 
 func (o LookupDirectoryResultOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDirectoryResult) string { return v.Path }).(pulumi.StringOutput)
+}
+
+func (o LookupDirectoryResultOutput) ProviderConfig() GetDirectoryProviderConfigPtrOutput {
+	return o.ApplyT(func(v LookupDirectoryResult) *GetDirectoryProviderConfig { return v.ProviderConfig }).(GetDirectoryProviderConfigPtrOutput)
 }
 
 // path on Workspace File System (WSFS) in form of `/Workspace` + `path`

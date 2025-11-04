@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetAppAppResourceDatabase;
+import com.pulumi.databricks.outputs.GetAppAppResourceGenieSpace;
 import com.pulumi.databricks.outputs.GetAppAppResourceJob;
 import com.pulumi.databricks.outputs.GetAppAppResourceSecret;
 import com.pulumi.databricks.outputs.GetAppAppResourceServingEndpoint;
@@ -28,6 +29,11 @@ public final class GetAppAppResource {
      * 
      */
     private @Nullable String description;
+    /**
+     * @return attribute
+     * 
+     */
+    private @Nullable GetAppAppResourceGenieSpace genieSpace;
     /**
      * @return attribute
      * 
@@ -73,6 +79,13 @@ public final class GetAppAppResource {
      */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
+    }
+    /**
+     * @return attribute
+     * 
+     */
+    public Optional<GetAppAppResourceGenieSpace> genieSpace() {
+        return Optional.ofNullable(this.genieSpace);
     }
     /**
      * @return attribute
@@ -128,6 +141,7 @@ public final class GetAppAppResource {
     public static final class Builder {
         private @Nullable GetAppAppResourceDatabase database;
         private @Nullable String description;
+        private @Nullable GetAppAppResourceGenieSpace genieSpace;
         private @Nullable GetAppAppResourceJob job;
         private String name;
         private @Nullable GetAppAppResourceSecret secret;
@@ -139,6 +153,7 @@ public final class GetAppAppResource {
     	      Objects.requireNonNull(defaults);
     	      this.database = defaults.database;
     	      this.description = defaults.description;
+    	      this.genieSpace = defaults.genieSpace;
     	      this.job = defaults.job;
     	      this.name = defaults.name;
     	      this.secret = defaults.secret;
@@ -157,6 +172,12 @@ public final class GetAppAppResource {
         public Builder description(@Nullable String description) {
 
             this.description = description;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder genieSpace(@Nullable GetAppAppResourceGenieSpace genieSpace) {
+
+            this.genieSpace = genieSpace;
             return this;
         }
         @CustomType.Setter
@@ -201,6 +222,7 @@ public final class GetAppAppResource {
             final var _resultValue = new GetAppAppResource();
             _resultValue.database = database;
             _resultValue.description = description;
+            _resultValue.genieSpace = genieSpace;
             _resultValue.job = job;
             _resultValue.name = name;
             _resultValue.secret = secret;

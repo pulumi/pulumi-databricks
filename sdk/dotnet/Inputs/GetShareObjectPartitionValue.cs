@@ -15,11 +15,11 @@ namespace Pulumi.Databricks.Inputs
         /// <summary>
         /// The name of the share
         /// </summary>
-        [Input("name", required: true)]
-        public string Name { get; set; } = null!;
+        [Input("name")]
+        public string? Name { get; set; }
 
-        [Input("op", required: true)]
-        public string Op { get; set; } = null!;
+        [Input("op")]
+        public string? Op { get; set; }
 
         [Input("recipientPropertyKey")]
         public string? RecipientPropertyKey { get; set; }

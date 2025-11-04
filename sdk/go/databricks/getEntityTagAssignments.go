@@ -11,6 +11,66 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+//
+// This data source allows you to retrieve tag assignments that have been applied to a particular entity in Unity Catalog.
+//
+// ## Example Usage
+//
+// ### Get all tag assignments for a catalog
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.GetEntityTagAssignments(ctx, &databricks.GetEntityTagAssignmentsArgs{
+//				EntityType: "catalogs",
+//				EntityName: "production_catalog",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.GetEntityTagAssignments(ctx, &databricks.GetEntityTagAssignmentsArgs{
+//				EntityType: "schemas",
+//				EntityName: "production_catalog.sales_data",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.GetEntityTagAssignments(ctx, &databricks.GetEntityTagAssignmentsArgs{
+//				EntityType: "tables",
+//				EntityName: "production_catalog.sales_data.customer_orders",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.GetEntityTagAssignments(ctx, &databricks.GetEntityTagAssignmentsArgs{
+//				EntityType: "columns",
+//				EntityName: "production_catalog.customer_data.users.email_address",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.GetEntityTagAssignments(ctx, &databricks.GetEntityTagAssignmentsArgs{
+//				EntityType: "volumes",
+//				EntityName: "production_catalog.raw_data.landing_zone",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetEntityTagAssignments(ctx *pulumi.Context, args *GetEntityTagAssignmentsArgs, opts ...pulumi.InvokeOption) (*GetEntityTagAssignmentsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetEntityTagAssignmentsResult
@@ -27,8 +87,8 @@ type GetEntityTagAssignmentsArgs struct {
 	EntityName string `pulumi:"entityName"`
 	// The type of the entity to which the tag is assigned. Allowed values are: catalogs, schemas, tables, columns, volumes
 	EntityType string `pulumi:"entityType"`
-	// Workspace ID of the resource
-	WorkspaceId *string `pulumi:"workspaceId"`
+	// Optional. Maximum number of tag assignments to return in a single page
+	MaxResults *int `pulumi:"maxResults"`
 }
 
 // A collection of values returned by getEntityTagAssignments.
@@ -39,8 +99,8 @@ type GetEntityTagAssignmentsResult struct {
 	EntityType string `pulumi:"entityType"`
 	// The provider-assigned unique ID for this managed resource.
 	Id             string                                 `pulumi:"id"`
+	MaxResults     *int                                   `pulumi:"maxResults"`
 	TagAssignments []GetEntityTagAssignmentsTagAssignment `pulumi:"tagAssignments"`
-	WorkspaceId    *string                                `pulumi:"workspaceId"`
 }
 
 func GetEntityTagAssignmentsOutput(ctx *pulumi.Context, args GetEntityTagAssignmentsOutputArgs, opts ...pulumi.InvokeOption) GetEntityTagAssignmentsResultOutput {
@@ -58,8 +118,8 @@ type GetEntityTagAssignmentsOutputArgs struct {
 	EntityName pulumi.StringInput `pulumi:"entityName"`
 	// The type of the entity to which the tag is assigned. Allowed values are: catalogs, schemas, tables, columns, volumes
 	EntityType pulumi.StringInput `pulumi:"entityType"`
-	// Workspace ID of the resource
-	WorkspaceId pulumi.StringPtrInput `pulumi:"workspaceId"`
+	// Optional. Maximum number of tag assignments to return in a single page
+	MaxResults pulumi.IntPtrInput `pulumi:"maxResults"`
 }
 
 func (GetEntityTagAssignmentsOutputArgs) ElementType() reflect.Type {
@@ -96,12 +156,12 @@ func (o GetEntityTagAssignmentsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEntityTagAssignmentsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-func (o GetEntityTagAssignmentsResultOutput) TagAssignments() GetEntityTagAssignmentsTagAssignmentArrayOutput {
-	return o.ApplyT(func(v GetEntityTagAssignmentsResult) []GetEntityTagAssignmentsTagAssignment { return v.TagAssignments }).(GetEntityTagAssignmentsTagAssignmentArrayOutput)
+func (o GetEntityTagAssignmentsResultOutput) MaxResults() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetEntityTagAssignmentsResult) *int { return v.MaxResults }).(pulumi.IntPtrOutput)
 }
 
-func (o GetEntityTagAssignmentsResultOutput) WorkspaceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetEntityTagAssignmentsResult) *string { return v.WorkspaceId }).(pulumi.StringPtrOutput)
+func (o GetEntityTagAssignmentsResultOutput) TagAssignments() GetEntityTagAssignmentsTagAssignmentArrayOutput {
+	return o.ApplyT(func(v GetEntityTagAssignmentsResult) []GetEntityTagAssignmentsTagAssignment { return v.TagAssignments }).(GetEntityTagAssignmentsTagAssignmentArrayOutput)
 }
 
 func init() {

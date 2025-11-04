@@ -4,10 +4,13 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetTablesProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetTablesResult {
@@ -22,6 +25,7 @@ public final class GetTablesResult {
      * 
      */
     private List<String> ids;
+    private @Nullable GetTablesProviderConfig providerConfig;
     private String schemaName;
 
     private GetTablesResult() {}
@@ -42,6 +46,9 @@ public final class GetTablesResult {
     public List<String> ids() {
         return this.ids;
     }
+    public Optional<GetTablesProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
     public String schemaName() {
         return this.schemaName;
     }
@@ -58,6 +65,7 @@ public final class GetTablesResult {
         private String catalogName;
         private String id;
         private List<String> ids;
+        private @Nullable GetTablesProviderConfig providerConfig;
         private String schemaName;
         public Builder() {}
         public Builder(GetTablesResult defaults) {
@@ -65,6 +73,7 @@ public final class GetTablesResult {
     	      this.catalogName = defaults.catalogName;
     	      this.id = defaults.id;
     	      this.ids = defaults.ids;
+    	      this.providerConfig = defaults.providerConfig;
     	      this.schemaName = defaults.schemaName;
         }
 
@@ -96,6 +105,12 @@ public final class GetTablesResult {
             return ids(List.of(ids));
         }
         @CustomType.Setter
+        public Builder providerConfig(@Nullable GetTablesProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder schemaName(String schemaName) {
             if (schemaName == null) {
               throw new MissingRequiredPropertyException("GetTablesResult", "schemaName");
@@ -108,6 +123,7 @@ public final class GetTablesResult {
             _resultValue.catalogName = catalogName;
             _resultValue.id = id;
             _resultValue.ids = ids;
+            _resultValue.providerConfig = providerConfig;
             _resultValue.schemaName = schemaName;
             return _resultValue;
         }

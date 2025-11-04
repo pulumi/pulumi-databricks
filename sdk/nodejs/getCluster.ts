@@ -33,6 +33,7 @@ export function getCluster(args?: GetClusterArgs, opts?: pulumi.InvokeOptions): 
         "clusterInfo": args.clusterInfo,
         "clusterName": args.clusterName,
         "id": args.id,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -56,6 +57,10 @@ export interface GetClusterArgs {
      * cluster ID
      */
     id?: string;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: inputs.GetClusterProviderConfig;
 }
 
 /**
@@ -75,6 +80,7 @@ export interface GetClusterResult {
      * cluster ID
      */
     readonly id: string;
+    readonly providerConfig?: outputs.GetClusterProviderConfig;
 }
 /**
  * Retrieves information about a databricks.Cluster using its id. This could be retrieved programmatically using databricks.getClusters data source.
@@ -103,6 +109,7 @@ export function getClusterOutput(args?: GetClusterOutputArgs, opts?: pulumi.Invo
         "clusterInfo": args.clusterInfo,
         "clusterName": args.clusterName,
         "id": args.id,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -126,4 +133,8 @@ export interface GetClusterOutputArgs {
      * cluster ID
      */
     id?: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.GetClusterProviderConfigArgs>;
 }

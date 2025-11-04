@@ -4,10 +4,13 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetVolumesProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetVolumesResult {
@@ -22,6 +25,7 @@ public final class GetVolumesResult {
      * 
      */
     private List<String> ids;
+    private @Nullable GetVolumesProviderConfig providerConfig;
     private String schemaName;
 
     private GetVolumesResult() {}
@@ -42,6 +46,9 @@ public final class GetVolumesResult {
     public List<String> ids() {
         return this.ids;
     }
+    public Optional<GetVolumesProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
     public String schemaName() {
         return this.schemaName;
     }
@@ -58,6 +65,7 @@ public final class GetVolumesResult {
         private String catalogName;
         private String id;
         private List<String> ids;
+        private @Nullable GetVolumesProviderConfig providerConfig;
         private String schemaName;
         public Builder() {}
         public Builder(GetVolumesResult defaults) {
@@ -65,6 +73,7 @@ public final class GetVolumesResult {
     	      this.catalogName = defaults.catalogName;
     	      this.id = defaults.id;
     	      this.ids = defaults.ids;
+    	      this.providerConfig = defaults.providerConfig;
     	      this.schemaName = defaults.schemaName;
         }
 
@@ -96,6 +105,12 @@ public final class GetVolumesResult {
             return ids(List.of(ids));
         }
         @CustomType.Setter
+        public Builder providerConfig(@Nullable GetVolumesProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder schemaName(String schemaName) {
             if (schemaName == null) {
               throw new MissingRequiredPropertyException("GetVolumesResult", "schemaName");
@@ -108,6 +123,7 @@ public final class GetVolumesResult {
             _resultValue.catalogName = catalogName;
             _resultValue.id = id;
             _resultValue.ids = ids;
+            _resultValue.providerConfig = providerConfig;
             _resultValue.schemaName = schemaName;
             return _resultValue;
         }

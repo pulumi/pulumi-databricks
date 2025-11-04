@@ -306,14 +306,14 @@ public class User extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.allowInstancePoolCreate);
     }
     /**
-     * This is a field to allow the user to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
+     * This is a field to allow the user to have access to [Databricks SQL](https://databricks.com/product/databricks-sql)  UI, [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one) and through databricks_sql_endpoint.
      * 
      */
     @Export(name="databricksSqlAccess", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> databricksSqlAccess;
 
     /**
-     * @return This is a field to allow the user to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
+     * @return This is a field to allow the user to have access to [Databricks SQL](https://databricks.com/product/databricks-sql)  UI, [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one) and through databricks_sql_endpoint.
      * 
      */
     public Output<Optional<Boolean>> databricksSqlAccess() {
@@ -446,28 +446,28 @@ public class User extends com.pulumi.resources.CustomResource {
         return this.userName;
     }
     /**
-     * This is a field to allow the user to have access to a Databricks Workspace.
+     * This is a field to allow the user to have access to a Databricks Workspace UI and [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).
      * 
      */
     @Export(name="workspaceAccess", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> workspaceAccess;
 
     /**
-     * @return This is a field to allow the user to have access to a Databricks Workspace.
+     * @return This is a field to allow the user to have access to a Databricks Workspace UI and [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).
      * 
      */
     public Output<Optional<Boolean>> workspaceAccess() {
         return Codegen.optional(this.workspaceAccess);
     }
     /**
-     * This is a field to allow the user to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn&#39;t be used with `workspaceAccess` or `databricksSqlAccess`.
+     * This is a field to allow the user to have access only to [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).  Couldn&#39;t be used with `workspaceAccess` or `databricksSqlAccess`.
      * 
      */
     @Export(name="workspaceConsume", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> workspaceConsume;
 
     /**
-     * @return This is a field to allow the user to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn&#39;t be used with `workspaceAccess` or `databricksSqlAccess`.
+     * @return This is a field to allow the user to have access only to [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).  Couldn&#39;t be used with `workspaceAccess` or `databricksSqlAccess`.
      * 
      */
     public Output<Optional<Boolean>> workspaceConsume() {

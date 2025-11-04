@@ -141,6 +141,12 @@ namespace Pulumi.Databricks
         [Input("metastoreInfo")]
         public Inputs.GetCurrentMetastoreMetastoreInfoArgs? MetastoreInfo { get; set; }
 
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Inputs.GetCurrentMetastoreProviderConfigArgs? ProviderConfig { get; set; }
+
         public GetCurrentMetastoreArgs()
         {
         }
@@ -161,6 +167,12 @@ namespace Pulumi.Databricks
         [Input("metastoreInfo")]
         public Input<Inputs.GetCurrentMetastoreMetastoreInfoInputArgs>? MetastoreInfo { get; set; }
 
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.GetCurrentMetastoreProviderConfigInputArgs>? ProviderConfig { get; set; }
+
         public GetCurrentMetastoreInvokeArgs()
         {
         }
@@ -179,15 +191,19 @@ namespace Pulumi.Databricks
         /// summary about a metastore attached to the current workspace returned by [Get a metastore summary API](https://docs.databricks.com/api/workspace/metastores/summary). This contains the following attributes (check the API page for up-to-date details):
         /// </summary>
         public readonly Outputs.GetCurrentMetastoreMetastoreInfoResult MetastoreInfo;
+        public readonly Outputs.GetCurrentMetastoreProviderConfigResult? ProviderConfig;
 
         [OutputConstructor]
         private GetCurrentMetastoreResult(
             string id,
 
-            Outputs.GetCurrentMetastoreMetastoreInfoResult metastoreInfo)
+            Outputs.GetCurrentMetastoreMetastoreInfoResult metastoreInfo,
+
+            Outputs.GetCurrentMetastoreProviderConfigResult? providerConfig)
         {
             Id = id;
             MetastoreInfo = metastoreInfo;
+            ProviderConfig = providerConfig;
         }
     }
 }

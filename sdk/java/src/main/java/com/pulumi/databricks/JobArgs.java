@@ -19,6 +19,7 @@ import com.pulumi.databricks.inputs.JobNotebookTaskArgs;
 import com.pulumi.databricks.inputs.JobNotificationSettingsArgs;
 import com.pulumi.databricks.inputs.JobParameterArgs;
 import com.pulumi.databricks.inputs.JobPipelineTaskArgs;
+import com.pulumi.databricks.inputs.JobProviderConfigArgs;
 import com.pulumi.databricks.inputs.JobPythonWheelTaskArgs;
 import com.pulumi.databricks.inputs.JobQueueArgs;
 import com.pulumi.databricks.inputs.JobRunAsArgs;
@@ -435,6 +436,21 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<JobProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Optional<Output<JobProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
+    /**
      * @deprecated
      * should be used inside a task block and not inside a job block
      * 
@@ -704,6 +720,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         this.parameters = $.parameters;
         this.performanceTarget = $.performanceTarget;
         this.pipelineTask = $.pipelineTask;
+        this.providerConfig = $.providerConfig;
         this.pythonWheelTask = $.pythonWheelTask;
         this.queue = $.queue;
         this.retryOnTimeout = $.retryOnTimeout;
@@ -1297,6 +1314,27 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         @Deprecated /* should be used inside a task block and not inside a job block */
         public Builder pipelineTask(JobPipelineTaskArgs pipelineTask) {
             return pipelineTask(Output.of(pipelineTask));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<JobProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(JobProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         /**

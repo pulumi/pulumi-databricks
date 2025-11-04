@@ -4,10 +4,9 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GetWorkspaceNetworkOptionPlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -15,45 +14,23 @@ public final class GetWorkspaceNetworkOptionPlainArgs extends com.pulumi.resourc
     public static final GetWorkspaceNetworkOptionPlainArgs Empty = new GetWorkspaceNetworkOptionPlainArgs();
 
     /**
-     * (string) - The network policy ID to apply to the workspace. This controls the network access rules
-     * for all serverless compute resources in the workspace. Each workspace can only be
-     * linked to one policy at a time. If no policy is explicitly assigned,
-     * the workspace will use &#39;default-policy&#39;
-     * 
-     */
-    @Import(name="networkPolicyId")
-    private @Nullable String networkPolicyId;
-
-    /**
-     * @return (string) - The network policy ID to apply to the workspace. This controls the network access rules
-     * for all serverless compute resources in the workspace. Each workspace can only be
-     * linked to one policy at a time. If no policy is explicitly assigned,
-     * the workspace will use &#39;default-policy&#39;
-     * 
-     */
-    public Optional<String> networkPolicyId() {
-        return Optional.ofNullable(this.networkPolicyId);
-    }
-
-    /**
      * The workspace ID
      * 
      */
-    @Import(name="workspaceId")
-    private @Nullable String workspaceId;
+    @Import(name="workspaceId", required=true)
+    private String workspaceId;
 
     /**
      * @return The workspace ID
      * 
      */
-    public Optional<String> workspaceId() {
-        return Optional.ofNullable(this.workspaceId);
+    public String workspaceId() {
+        return this.workspaceId;
     }
 
     private GetWorkspaceNetworkOptionPlainArgs() {}
 
     private GetWorkspaceNetworkOptionPlainArgs(GetWorkspaceNetworkOptionPlainArgs $) {
-        this.networkPolicyId = $.networkPolicyId;
         this.workspaceId = $.workspaceId;
     }
 
@@ -76,31 +53,20 @@ public final class GetWorkspaceNetworkOptionPlainArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param networkPolicyId (string) - The network policy ID to apply to the workspace. This controls the network access rules
-         * for all serverless compute resources in the workspace. Each workspace can only be
-         * linked to one policy at a time. If no policy is explicitly assigned,
-         * the workspace will use &#39;default-policy&#39;
-         * 
-         * @return builder
-         * 
-         */
-        public Builder networkPolicyId(@Nullable String networkPolicyId) {
-            $.networkPolicyId = networkPolicyId;
-            return this;
-        }
-
-        /**
          * @param workspaceId The workspace ID
          * 
          * @return builder
          * 
          */
-        public Builder workspaceId(@Nullable String workspaceId) {
+        public Builder workspaceId(String workspaceId) {
             $.workspaceId = workspaceId;
             return this;
         }
 
         public GetWorkspaceNetworkOptionPlainArgs build() {
+            if ($.workspaceId == null) {
+                throw new MissingRequiredPropertyException("GetWorkspaceNetworkOptionPlainArgs", "workspaceId");
+            }
             return $;
         }
     }

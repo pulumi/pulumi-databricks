@@ -33,6 +33,21 @@ public final class GitCredentialArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The email associated with your Git provider user account. Used for authentication with the remote repository and also sets the author &amp; committer identity for commits.
+     * 
+     */
+    @Import(name="gitEmail")
+    private @Nullable Output<String> gitEmail;
+
+    /**
+     * @return The email associated with your Git provider user account. Used for authentication with the remote repository and also sets the author &amp; committer identity for commits.
+     * 
+     */
+    public Optional<Output<String>> gitEmail() {
+        return Optional.ofNullable(this.gitEmail);
+    }
+
+    /**
      * case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Git Credentials API documentation](https://docs.databricks.com/dev-tools/api/latest/gitcredentials.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`, `azureDevOpsServicesAad`.
      * 
      */
@@ -48,14 +63,14 @@ public final class GitCredentialArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * user name at Git provider.
+     * user name at Git provider.  For most Git providers it is only used to set the Git committer &amp; author names for commits, however it may be required for authentication depending on your Git provider / token requirements.
      * 
      */
     @Import(name="gitUsername")
     private @Nullable Output<String> gitUsername;
 
     /**
-     * @return user name at Git provider.
+     * @return user name at Git provider.  For most Git providers it is only used to set the Git committer &amp; author names for commits, however it may be required for authentication depending on your Git provider / token requirements.
      * 
      */
     public Optional<Output<String>> gitUsername() {
@@ -111,6 +126,7 @@ public final class GitCredentialArgs extends com.pulumi.resources.ResourceArgs {
 
     private GitCredentialArgs(GitCredentialArgs $) {
         this.force = $.force;
+        this.gitEmail = $.gitEmail;
         this.gitProvider = $.gitProvider;
         this.gitUsername = $.gitUsername;
         this.isDefaultForProvider = $.isDefaultForProvider;
@@ -158,6 +174,27 @@ public final class GitCredentialArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param gitEmail The email associated with your Git provider user account. Used for authentication with the remote repository and also sets the author &amp; committer identity for commits.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gitEmail(@Nullable Output<String> gitEmail) {
+            $.gitEmail = gitEmail;
+            return this;
+        }
+
+        /**
+         * @param gitEmail The email associated with your Git provider user account. Used for authentication with the remote repository and also sets the author &amp; committer identity for commits.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gitEmail(String gitEmail) {
+            return gitEmail(Output.of(gitEmail));
+        }
+
+        /**
          * @param gitProvider case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Git Credentials API documentation](https://docs.databricks.com/dev-tools/api/latest/gitcredentials.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`, `azureDevOpsServicesAad`.
          * 
          * @return builder
@@ -179,7 +216,7 @@ public final class GitCredentialArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param gitUsername user name at Git provider.
+         * @param gitUsername user name at Git provider.  For most Git providers it is only used to set the Git committer &amp; author names for commits, however it may be required for authentication depending on your Git provider / token requirements.
          * 
          * @return builder
          * 
@@ -190,7 +227,7 @@ public final class GitCredentialArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param gitUsername user name at Git provider.
+         * @param gitUsername user name at Git provider.  For most Git providers it is only used to set the Git committer &amp; author names for commits, however it may be required for authentication depending on your Git provider / token requirements.
          * 
          * @return builder
          * 

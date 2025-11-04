@@ -7,6 +7,8 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
  * This data source can be used to get a single account federation policy.
  *
  * > **Note** This data source can only be used with an account-level provider!
@@ -15,14 +17,10 @@ import * as utilities from "./utilities";
  *
  * Referring to an account federation policy by id:
  */
-export function getAccountFederationPolicy(args?: GetAccountFederationPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountFederationPolicyResult> {
-    args = args || {};
+export function getAccountFederationPolicy(args: GetAccountFederationPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountFederationPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getAccountFederationPolicy:getAccountFederationPolicy", {
-        "description": args.description,
-        "oidcPolicy": args.oidcPolicy,
         "policyId": args.policyId,
-        "servicePrincipalId": args.servicePrincipalId,
     }, opts);
 }
 
@@ -31,21 +29,9 @@ export function getAccountFederationPolicy(args?: GetAccountFederationPolicyArgs
  */
 export interface GetAccountFederationPolicyArgs {
     /**
-     * (string) - Description of the federation policy
+     * The ID of the federation policy. Output only
      */
-    description?: string;
-    /**
-     * (OidcFederationPolicy)
-     */
-    oidcPolicy?: inputs.GetAccountFederationPolicyOidcPolicy;
-    /**
-     * The ID of the federation policy
-     */
-    policyId?: string;
-    /**
-     * (integer) - The service principal ID that this federation policy applies to. Only set for service principal federation policies
-     */
-    servicePrincipalId?: number;
+    policyId: string;
 }
 
 /**
@@ -59,7 +45,7 @@ export interface GetAccountFederationPolicyResult {
     /**
      * (string) - Description of the federation policy
      */
-    readonly description?: string;
+    readonly description: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -76,13 +62,13 @@ export interface GetAccountFederationPolicyResult {
     /**
      * (OidcFederationPolicy)
      */
-    readonly oidcPolicy?: outputs.GetAccountFederationPolicyOidcPolicy;
+    readonly oidcPolicy: outputs.GetAccountFederationPolicyOidcPolicy;
     /**
-     * (string) - The ID of the federation policy
+     * (string) - The ID of the federation policy. Output only
      */
     readonly policyId: string;
     /**
-     * (integer) - The service principal ID that this federation policy applies to. Only set for service principal federation policies
+     * (integer) - The service principal ID that this federation policy applies to. Output only. Only set for service principal federation policies
      */
     readonly servicePrincipalId: number;
     /**
@@ -95,6 +81,8 @@ export interface GetAccountFederationPolicyResult {
     readonly updateTime: string;
 }
 /**
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
  * This data source can be used to get a single account federation policy.
  *
  * > **Note** This data source can only be used with an account-level provider!
@@ -103,14 +91,10 @@ export interface GetAccountFederationPolicyResult {
  *
  * Referring to an account federation policy by id:
  */
-export function getAccountFederationPolicyOutput(args?: GetAccountFederationPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountFederationPolicyResult> {
-    args = args || {};
+export function getAccountFederationPolicyOutput(args: GetAccountFederationPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountFederationPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getAccountFederationPolicy:getAccountFederationPolicy", {
-        "description": args.description,
-        "oidcPolicy": args.oidcPolicy,
         "policyId": args.policyId,
-        "servicePrincipalId": args.servicePrincipalId,
     }, opts);
 }
 
@@ -119,19 +103,7 @@ export function getAccountFederationPolicyOutput(args?: GetAccountFederationPoli
  */
 export interface GetAccountFederationPolicyOutputArgs {
     /**
-     * (string) - Description of the federation policy
+     * The ID of the federation policy. Output only
      */
-    description?: pulumi.Input<string>;
-    /**
-     * (OidcFederationPolicy)
-     */
-    oidcPolicy?: pulumi.Input<inputs.GetAccountFederationPolicyOidcPolicyArgs>;
-    /**
-     * The ID of the federation policy
-     */
-    policyId?: pulumi.Input<string>;
-    /**
-     * (integer) - The service principal ID that this federation policy applies to. Only set for service principal federation policies
-     */
-    servicePrincipalId?: pulumi.Input<number>;
+    policyId: pulumi.Input<string>;
 }

@@ -11,6 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+//
 // This data source can be used to get a single Synced Database Table.
 //
 // ## Example Usage
@@ -52,19 +54,8 @@ func LookupDatabaseSyncedDatabaseTable(ctx *pulumi.Context, args *LookupDatabase
 
 // A collection of arguments for invoking getDatabaseSyncedDatabaseTable.
 type LookupDatabaseSyncedDatabaseTableArgs struct {
-	// (string) - Name of the target database instance. This is required when creating synced database tables in standard catalogs.
-	// This is optional when creating synced database tables in registered catalogs. If this field is specified
-	// when creating synced database tables in registered catalogs, the database instance name MUST
-	// match that of the registered catalog (or the request will be rejected)
-	DatabaseInstanceName *string `pulumi:"databaseInstanceName"`
-	// (string) - Target Postgres database object (logical database) name for this table.
-	LogicalDatabaseName *string `pulumi:"logicalDatabaseName"`
 	// Full three-part (catalog, schema, table) name of the table
 	Name string `pulumi:"name"`
-	// (SyncedTableSpec)
-	Spec *GetDatabaseSyncedDatabaseTableSpec `pulumi:"spec"`
-	// Workspace ID of the resource
-	WorkspaceId *string `pulumi:"workspaceId"`
 }
 
 // A collection of values returned by getDatabaseSyncedDatabaseTable.
@@ -88,12 +79,11 @@ type LookupDatabaseSyncedDatabaseTableResult struct {
 	// (string) - Full three-part (catalog, schema, table) name of the table
 	Name string `pulumi:"name"`
 	// (SyncedTableSpec)
-	Spec *GetDatabaseSyncedDatabaseTableSpec `pulumi:"spec"`
+	Spec GetDatabaseSyncedDatabaseTableSpec `pulumi:"spec"`
 	// (string) - The provisioning state of the synced table entity in Unity Catalog. This is distinct from the
 	// state of the data synchronization pipeline (i.e. the table may be in "ACTIVE" but the pipeline
 	// may be in "PROVISIONING" as it runs asynchronously). Possible values are: `ACTIVE`, `DEGRADED`, `DELETING`, `FAILED`, `PROVISIONING`, `UPDATING`
-	UnityCatalogProvisioningState string  `pulumi:"unityCatalogProvisioningState"`
-	WorkspaceId                   *string `pulumi:"workspaceId"`
+	UnityCatalogProvisioningState string `pulumi:"unityCatalogProvisioningState"`
 }
 
 func LookupDatabaseSyncedDatabaseTableOutput(ctx *pulumi.Context, args LookupDatabaseSyncedDatabaseTableOutputArgs, opts ...pulumi.InvokeOption) LookupDatabaseSyncedDatabaseTableResultOutput {
@@ -107,19 +97,8 @@ func LookupDatabaseSyncedDatabaseTableOutput(ctx *pulumi.Context, args LookupDat
 
 // A collection of arguments for invoking getDatabaseSyncedDatabaseTable.
 type LookupDatabaseSyncedDatabaseTableOutputArgs struct {
-	// (string) - Name of the target database instance. This is required when creating synced database tables in standard catalogs.
-	// This is optional when creating synced database tables in registered catalogs. If this field is specified
-	// when creating synced database tables in registered catalogs, the database instance name MUST
-	// match that of the registered catalog (or the request will be rejected)
-	DatabaseInstanceName pulumi.StringPtrInput `pulumi:"databaseInstanceName"`
-	// (string) - Target Postgres database object (logical database) name for this table.
-	LogicalDatabaseName pulumi.StringPtrInput `pulumi:"logicalDatabaseName"`
 	// Full three-part (catalog, schema, table) name of the table
 	Name pulumi.StringInput `pulumi:"name"`
-	// (SyncedTableSpec)
-	Spec GetDatabaseSyncedDatabaseTableSpecPtrInput `pulumi:"spec"`
-	// Workspace ID of the resource
-	WorkspaceId pulumi.StringPtrInput `pulumi:"workspaceId"`
 }
 
 func (LookupDatabaseSyncedDatabaseTableOutputArgs) ElementType() reflect.Type {
@@ -183,8 +162,8 @@ func (o LookupDatabaseSyncedDatabaseTableResultOutput) Name() pulumi.StringOutpu
 }
 
 // (SyncedTableSpec)
-func (o LookupDatabaseSyncedDatabaseTableResultOutput) Spec() GetDatabaseSyncedDatabaseTableSpecPtrOutput {
-	return o.ApplyT(func(v LookupDatabaseSyncedDatabaseTableResult) *GetDatabaseSyncedDatabaseTableSpec { return v.Spec }).(GetDatabaseSyncedDatabaseTableSpecPtrOutput)
+func (o LookupDatabaseSyncedDatabaseTableResultOutput) Spec() GetDatabaseSyncedDatabaseTableSpecOutput {
+	return o.ApplyT(func(v LookupDatabaseSyncedDatabaseTableResult) GetDatabaseSyncedDatabaseTableSpec { return v.Spec }).(GetDatabaseSyncedDatabaseTableSpecOutput)
 }
 
 // (string) - The provisioning state of the synced table entity in Unity Catalog. This is distinct from the
@@ -192,10 +171,6 @@ func (o LookupDatabaseSyncedDatabaseTableResultOutput) Spec() GetDatabaseSyncedD
 // may be in "PROVISIONING" as it runs asynchronously). Possible values are: `ACTIVE`, `DEGRADED`, `DELETING`, `FAILED`, `PROVISIONING`, `UPDATING`
 func (o LookupDatabaseSyncedDatabaseTableResultOutput) UnityCatalogProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseSyncedDatabaseTableResult) string { return v.UnityCatalogProvisioningState }).(pulumi.StringOutput)
-}
-
-func (o LookupDatabaseSyncedDatabaseTableResultOutput) WorkspaceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupDatabaseSyncedDatabaseTableResult) *string { return v.WorkspaceId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

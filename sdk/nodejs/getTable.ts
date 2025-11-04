@@ -46,6 +46,7 @@ export function getTable(args: GetTableArgs, opts?: pulumi.InvokeOptions): Promi
     return pulumi.runtime.invoke("databricks:index/getTable:getTable", {
         "id": args.id,
         "name": args.name,
+        "providerConfig": args.providerConfig,
         "tableInfo": args.tableInfo,
     }, opts);
 }
@@ -59,6 +60,10 @@ export interface GetTableArgs {
      * Full name of the databricks_table: _`catalog`.`schema`.`table`_
      */
     name: string;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: inputs.GetTableProviderConfig;
     /**
      * TableInfo object for a Unity Catalog table. This contains the following attributes:
      */
@@ -74,6 +79,7 @@ export interface GetTableResult {
      * Name of table, relative to parent schema.
      */
     readonly name: string;
+    readonly providerConfig?: outputs.GetTableProviderConfig;
     /**
      * TableInfo object for a Unity Catalog table. This contains the following attributes:
      */
@@ -119,6 +125,7 @@ export function getTableOutput(args: GetTableOutputArgs, opts?: pulumi.InvokeOut
     return pulumi.runtime.invokeOutput("databricks:index/getTable:getTable", {
         "id": args.id,
         "name": args.name,
+        "providerConfig": args.providerConfig,
         "tableInfo": args.tableInfo,
     }, opts);
 }
@@ -132,6 +139,10 @@ export interface GetTableOutputArgs {
      * Full name of the databricks_table: _`catalog`.`schema`.`table`_
      */
     name: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.GetTableProviderConfigArgs>;
     /**
      * TableInfo object for a Unity Catalog table. This contains the following attributes:
      */

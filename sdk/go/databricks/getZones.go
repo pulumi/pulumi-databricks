@@ -54,6 +54,8 @@ type GetZonesArgs struct {
 	DefaultZone *string `pulumi:"defaultZone"`
 	// The id for the zone object.
 	Id *string `pulumi:"id"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *GetZonesProviderConfig `pulumi:"providerConfig"`
 	// This is a list of all the zones available for your subnets in your Databricks workspace.
 	Zones []string `pulumi:"zones"`
 }
@@ -63,7 +65,8 @@ type GetZonesResult struct {
 	// This is the default zone that gets assigned to your workspace. This is the zone used by default for clusters and instance pools.
 	DefaultZone string `pulumi:"defaultZone"`
 	// The id for the zone object.
-	Id string `pulumi:"id"`
+	Id             string                  `pulumi:"id"`
+	ProviderConfig *GetZonesProviderConfig `pulumi:"providerConfig"`
 	// This is a list of all the zones available for your subnets in your Databricks workspace.
 	Zones []string `pulumi:"zones"`
 }
@@ -83,6 +86,8 @@ type GetZonesOutputArgs struct {
 	DefaultZone pulumi.StringPtrInput `pulumi:"defaultZone"`
 	// The id for the zone object.
 	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig GetZonesProviderConfigPtrInput `pulumi:"providerConfig"`
 	// This is a list of all the zones available for your subnets in your Databricks workspace.
 	Zones pulumi.StringArrayInput `pulumi:"zones"`
 }
@@ -114,6 +119,10 @@ func (o GetZonesResultOutput) DefaultZone() pulumi.StringOutput {
 // The id for the zone object.
 func (o GetZonesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetZonesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetZonesResultOutput) ProviderConfig() GetZonesProviderConfigPtrOutput {
+	return o.ApplyT(func(v GetZonesResult) *GetZonesProviderConfig { return v.ProviderConfig }).(GetZonesProviderConfigPtrOutput)
 }
 
 // This is a list of all the zones available for your subnets in your Databricks workspace.

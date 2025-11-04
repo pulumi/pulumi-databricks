@@ -11,9 +11,38 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+//
 // This data source can be used to list all tag policies in the account.
 //
-// > **Note** This resource can only be used with an account-level provider!
+// > **Note** This resource can only be used with a workspace-level provider!
+//
+// ## Example Usage
+//
+// Getting a list of all tag policies:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			all, err := databricks.GetTagPolicies(ctx, &databricks.GetTagPoliciesArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("allTagPolicies", all.TagPolicies)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetTagPolicies(ctx *pulumi.Context, args *GetTagPoliciesArgs, opts ...pulumi.InvokeOption) (*GetTagPoliciesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetTagPoliciesResult
@@ -26,16 +55,18 @@ func GetTagPolicies(ctx *pulumi.Context, args *GetTagPoliciesArgs, opts ...pulum
 
 // A collection of arguments for invoking getTagPolicies.
 type GetTagPoliciesArgs struct {
-	// Workspace ID of the resource
-	WorkspaceId *string `pulumi:"workspaceId"`
+	// The maximum number of results to return in this request. Fewer results may be returned than requested. If
+	// unspecified or set to 0, this defaults to 1000. The maximum value is 1000; values above 1000 will be coerced down
+	// to 1000
+	PageSize *int `pulumi:"pageSize"`
 }
 
 // A collection of values returned by getTagPolicies.
 type GetTagPoliciesResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id          string                    `pulumi:"id"`
+	PageSize    *int                      `pulumi:"pageSize"`
 	TagPolicies []GetTagPoliciesTagPolicy `pulumi:"tagPolicies"`
-	WorkspaceId *string                   `pulumi:"workspaceId"`
 }
 
 func GetTagPoliciesOutput(ctx *pulumi.Context, args GetTagPoliciesOutputArgs, opts ...pulumi.InvokeOption) GetTagPoliciesResultOutput {
@@ -49,8 +80,10 @@ func GetTagPoliciesOutput(ctx *pulumi.Context, args GetTagPoliciesOutputArgs, op
 
 // A collection of arguments for invoking getTagPolicies.
 type GetTagPoliciesOutputArgs struct {
-	// Workspace ID of the resource
-	WorkspaceId pulumi.StringPtrInput `pulumi:"workspaceId"`
+	// The maximum number of results to return in this request. Fewer results may be returned than requested. If
+	// unspecified or set to 0, this defaults to 1000. The maximum value is 1000; values above 1000 will be coerced down
+	// to 1000
+	PageSize pulumi.IntPtrInput `pulumi:"pageSize"`
 }
 
 func (GetTagPoliciesOutputArgs) ElementType() reflect.Type {
@@ -77,12 +110,12 @@ func (o GetTagPoliciesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTagPoliciesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-func (o GetTagPoliciesResultOutput) TagPolicies() GetTagPoliciesTagPolicyArrayOutput {
-	return o.ApplyT(func(v GetTagPoliciesResult) []GetTagPoliciesTagPolicy { return v.TagPolicies }).(GetTagPoliciesTagPolicyArrayOutput)
+func (o GetTagPoliciesResultOutput) PageSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetTagPoliciesResult) *int { return v.PageSize }).(pulumi.IntPtrOutput)
 }
 
-func (o GetTagPoliciesResultOutput) WorkspaceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetTagPoliciesResult) *string { return v.WorkspaceId }).(pulumi.StringPtrOutput)
+func (o GetTagPoliciesResultOutput) TagPolicies() GetTagPoliciesTagPolicyArrayOutput {
+	return o.ApplyT(func(v GetTagPoliciesResult) []GetTagPoliciesTagPolicy { return v.TagPolicies }).(GetTagPoliciesTagPolicyArrayOutput)
 }
 
 func init() {

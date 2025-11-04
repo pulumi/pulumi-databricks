@@ -5,6 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
  * This data source can be used to get a single Database Catalog.
  *
  * ## Example Usage
@@ -23,11 +25,7 @@ import * as utilities from "./utilities";
 export function getDatabaseDatabaseCatalog(args: GetDatabaseDatabaseCatalogArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabaseDatabaseCatalogResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getDatabaseDatabaseCatalog:getDatabaseDatabaseCatalog", {
-        "createDatabaseIfNotExists": args.createDatabaseIfNotExists,
-        "databaseInstanceName": args.databaseInstanceName,
-        "databaseName": args.databaseName,
         "name": args.name,
-        "workspaceId": args.workspaceId,
     }, opts);
 }
 
@@ -36,25 +34,9 @@ export function getDatabaseDatabaseCatalog(args: GetDatabaseDatabaseCatalogArgs,
  */
 export interface GetDatabaseDatabaseCatalogArgs {
     /**
-     * (boolean)
-     */
-    createDatabaseIfNotExists?: boolean;
-    /**
-     * (string) - The name of the DatabaseInstance housing the database
-     */
-    databaseInstanceName: string;
-    /**
-     * (string) - The name of the database (in a instance) associated with the catalog
-     */
-    databaseName: string;
-    /**
      * The name of the catalog in UC
      */
     name: string;
-    /**
-     * Workspace ID of the resource
-     */
-    workspaceId?: string;
 }
 
 /**
@@ -85,9 +67,10 @@ export interface GetDatabaseDatabaseCatalogResult {
      * (string)
      */
     readonly uid: string;
-    readonly workspaceId?: string;
 }
 /**
+ * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
  * This data source can be used to get a single Database Catalog.
  *
  * ## Example Usage
@@ -106,11 +89,7 @@ export interface GetDatabaseDatabaseCatalogResult {
 export function getDatabaseDatabaseCatalogOutput(args: GetDatabaseDatabaseCatalogOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDatabaseDatabaseCatalogResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getDatabaseDatabaseCatalog:getDatabaseDatabaseCatalog", {
-        "createDatabaseIfNotExists": args.createDatabaseIfNotExists,
-        "databaseInstanceName": args.databaseInstanceName,
-        "databaseName": args.databaseName,
         "name": args.name,
-        "workspaceId": args.workspaceId,
     }, opts);
 }
 
@@ -119,23 +98,7 @@ export function getDatabaseDatabaseCatalogOutput(args: GetDatabaseDatabaseCatalo
  */
 export interface GetDatabaseDatabaseCatalogOutputArgs {
     /**
-     * (boolean)
-     */
-    createDatabaseIfNotExists?: pulumi.Input<boolean>;
-    /**
-     * (string) - The name of the DatabaseInstance housing the database
-     */
-    databaseInstanceName: pulumi.Input<string>;
-    /**
-     * (string) - The name of the database (in a instance) associated with the catalog
-     */
-    databaseName: pulumi.Input<string>;
-    /**
      * The name of the catalog in UC
      */
     name: pulumi.Input<string>;
-    /**
-     * Workspace ID of the resource
-     */
-    workspaceId?: pulumi.Input<string>;
 }

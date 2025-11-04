@@ -109,21 +109,6 @@ public final class AppsSettingsCustomTemplateArgs extends com.pulumi.resources.R
         return this.path;
     }
 
-    /**
-     * Workspace ID of the resource
-     * 
-     */
-    @Import(name="workspaceId")
-    private @Nullable Output<String> workspaceId;
-
-    /**
-     * @return Workspace ID of the resource
-     * 
-     */
-    public Optional<Output<String>> workspaceId() {
-        return Optional.ofNullable(this.workspaceId);
-    }
-
     private AppsSettingsCustomTemplateArgs() {}
 
     private AppsSettingsCustomTemplateArgs(AppsSettingsCustomTemplateArgs $) {
@@ -133,7 +118,6 @@ public final class AppsSettingsCustomTemplateArgs extends com.pulumi.resources.R
         this.manifest = $.manifest;
         this.name = $.name;
         this.path = $.path;
-        this.workspaceId = $.workspaceId;
     }
 
     public static Builder builder() {
@@ -280,27 +264,6 @@ public final class AppsSettingsCustomTemplateArgs extends com.pulumi.resources.R
          */
         public Builder path(String path) {
             return path(Output.of(path));
-        }
-
-        /**
-         * @param workspaceId Workspace ID of the resource
-         * 
-         * @return builder
-         * 
-         */
-        public Builder workspaceId(@Nullable Output<String> workspaceId) {
-            $.workspaceId = workspaceId;
-            return this;
-        }
-
-        /**
-         * @param workspaceId Workspace ID of the resource
-         * 
-         * @return builder
-         * 
-         */
-        public Builder workspaceId(String workspaceId) {
-            return workspaceId(Output.of(workspaceId));
         }
 
         public AppsSettingsCustomTemplateArgs build() {

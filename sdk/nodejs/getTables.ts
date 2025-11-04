@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -50,6 +52,7 @@ export function getTables(args: GetTablesArgs, opts?: pulumi.InvokeOptions): Pro
     return pulumi.runtime.invoke("databricks:index/getTables:getTables", {
         "catalogName": args.catalogName,
         "ids": args.ids,
+        "providerConfig": args.providerConfig,
         "schemaName": args.schemaName,
     }, opts);
 }
@@ -66,6 +69,10 @@ export interface GetTablesArgs {
      * set of databricks.Table full names: *`catalog`.`schema`.`table`*
      */
     ids?: string[];
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: inputs.GetTablesProviderConfig;
     /**
      * Name of databricks_schema
      */
@@ -85,6 +92,7 @@ export interface GetTablesResult {
      * set of databricks.Table full names: *`catalog`.`schema`.`table`*
      */
     readonly ids: string[];
+    readonly providerConfig?: outputs.GetTablesProviderConfig;
     readonly schemaName: string;
 }
 /**
@@ -133,6 +141,7 @@ export function getTablesOutput(args: GetTablesOutputArgs, opts?: pulumi.InvokeO
     return pulumi.runtime.invokeOutput("databricks:index/getTables:getTables", {
         "catalogName": args.catalogName,
         "ids": args.ids,
+        "providerConfig": args.providerConfig,
         "schemaName": args.schemaName,
     }, opts);
 }
@@ -149,6 +158,10 @@ export interface GetTablesOutputArgs {
      * set of databricks.Table full names: *`catalog`.`schema`.`table`*
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.GetTablesProviderConfigArgs>;
     /**
      * Name of databricks_schema
      */

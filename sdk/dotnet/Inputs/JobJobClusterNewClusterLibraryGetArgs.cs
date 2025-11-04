@@ -24,6 +24,12 @@ namespace Pulumi.Databricks.Inputs
         [Input("maven")]
         public Input<Inputs.JobJobClusterNewClusterLibraryMavenGetArgs>? Maven { get; set; }
 
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.JobJobClusterNewClusterLibraryProviderConfigGetArgs>? ProviderConfig { get; set; }
+
         [Input("pypi")]
         public Input<Inputs.JobJobClusterNewClusterLibraryPypiGetArgs>? Pypi { get; set; }
 

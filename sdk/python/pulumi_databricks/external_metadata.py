@@ -26,19 +26,17 @@ class ExternalMetadataArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  owner: Optional[pulumi.Input[_builtins.str]] = None,
                  properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 url: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ExternalMetadata resource.
         :param pulumi.Input[_builtins.str] entity_type: Type of entity within the external system
-        :param pulumi.Input[_builtins.str] system_type: Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `TABLEAU`, `TERADATA`, `WORKDAY`
+        :param pulumi.Input[_builtins.str] system_type: Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `STREAM_NATIVE`, `TABLEAU`, `TERADATA`, `WORKDAY`
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] columns: List of columns associated with the external metadata object
         :param pulumi.Input[_builtins.str] description: User-provided free-form text description
         :param pulumi.Input[_builtins.str] name: Name of the external metadata object
         :param pulumi.Input[_builtins.str] owner: Owner of the external metadata object
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] properties: A map of key-value properties attached to the external metadata object
         :param pulumi.Input[_builtins.str] url: URL associated with the external metadata object
-        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID of the resource
         """
         pulumi.set(__self__, "entity_type", entity_type)
         pulumi.set(__self__, "system_type", system_type)
@@ -54,8 +52,6 @@ class ExternalMetadataArgs:
             pulumi.set(__self__, "properties", properties)
         if url is not None:
             pulumi.set(__self__, "url", url)
-        if workspace_id is not None:
-            pulumi.set(__self__, "workspace_id", workspace_id)
 
     @_builtins.property
     @pulumi.getter(name="entityType")
@@ -73,7 +69,7 @@ class ExternalMetadataArgs:
     @pulumi.getter(name="systemType")
     def system_type(self) -> pulumi.Input[_builtins.str]:
         """
-        Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `TABLEAU`, `TERADATA`, `WORKDAY`
+        Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `STREAM_NATIVE`, `TABLEAU`, `TERADATA`, `WORKDAY`
         """
         return pulumi.get(self, "system_type")
 
@@ -153,18 +149,6 @@ class ExternalMetadataArgs:
     def url(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "url", value)
 
-    @_builtins.property
-    @pulumi.getter(name="workspaceId")
-    def workspace_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Workspace ID of the resource
-        """
-        return pulumi.get(self, "workspace_id")
-
-    @workspace_id.setter
-    def workspace_id(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "workspace_id", value)
-
 
 @pulumi.input_type
 class _ExternalMetadataState:
@@ -181,8 +165,7 @@ class _ExternalMetadataState:
                  system_type: Optional[pulumi.Input[_builtins.str]] = None,
                  update_time: Optional[pulumi.Input[_builtins.str]] = None,
                  updated_by: Optional[pulumi.Input[_builtins.str]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 url: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ExternalMetadata resources.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] columns: List of columns associated with the external metadata object
@@ -194,11 +177,10 @@ class _ExternalMetadataState:
         :param pulumi.Input[_builtins.str] name: Name of the external metadata object
         :param pulumi.Input[_builtins.str] owner: Owner of the external metadata object
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] properties: A map of key-value properties attached to the external metadata object
-        :param pulumi.Input[_builtins.str] system_type: Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `TABLEAU`, `TERADATA`, `WORKDAY`
+        :param pulumi.Input[_builtins.str] system_type: Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `STREAM_NATIVE`, `TABLEAU`, `TERADATA`, `WORKDAY`
         :param pulumi.Input[_builtins.str] update_time: (string) - Time at which this external metadata object was last modified
         :param pulumi.Input[_builtins.str] updated_by: (string) - Username of user who last modified external metadata object
         :param pulumi.Input[_builtins.str] url: URL associated with the external metadata object
-        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID of the resource
         """
         if columns is not None:
             pulumi.set(__self__, "columns", columns)
@@ -226,8 +208,6 @@ class _ExternalMetadataState:
             pulumi.set(__self__, "updated_by", updated_by)
         if url is not None:
             pulumi.set(__self__, "url", url)
-        if workspace_id is not None:
-            pulumi.set(__self__, "workspace_id", workspace_id)
 
     @_builtins.property
     @pulumi.getter
@@ -341,7 +321,7 @@ class _ExternalMetadataState:
     @pulumi.getter(name="systemType")
     def system_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `TABLEAU`, `TERADATA`, `WORKDAY`
+        Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `STREAM_NATIVE`, `TABLEAU`, `TERADATA`, `WORKDAY`
         """
         return pulumi.get(self, "system_type")
 
@@ -385,18 +365,6 @@ class _ExternalMetadataState:
     def url(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "url", value)
 
-    @_builtins.property
-    @pulumi.getter(name="workspaceId")
-    def workspace_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Workspace ID of the resource
-        """
-        return pulumi.get(self, "workspace_id")
-
-    @workspace_id.setter
-    def workspace_id(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "workspace_id", value)
-
 
 @pulumi.type_token("databricks:index/externalMetadata:ExternalMetadata")
 class ExternalMetadata(pulumi.CustomResource):
@@ -412,9 +380,10 @@ class ExternalMetadata(pulumi.CustomResource):
                  properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  system_type: Optional[pulumi.Input[_builtins.str]] = None,
                  url: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
         To enrich lineage with workloads that are run outside of Databricks (for example, first mile ETL or last mile BI),
         Unity Catalog is introducing the external metadata object. UC lets you add external metadata objects to augment the data lineage it captures automatically, giving you an end-to-end lineage view in UC.
         This is useful when you want to capture where data came from (for example, Salesforce or MySQL) before it was ingested into UC or where data is being consumed outside UC (for example, Tableau or PowerBI).
@@ -464,7 +433,7 @@ class ExternalMetadata(pulumi.CustomResource):
         If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
 
         ```sh
-        $ pulumi import databricks:index/externalMetadata:ExternalMetadata databricks_external_metadata "name"
+        $ pulumi import databricks:index/externalMetadata:ExternalMetadata this "name"
         ```
 
         :param str resource_name: The name of the resource.
@@ -475,9 +444,8 @@ class ExternalMetadata(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Name of the external metadata object
         :param pulumi.Input[_builtins.str] owner: Owner of the external metadata object
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] properties: A map of key-value properties attached to the external metadata object
-        :param pulumi.Input[_builtins.str] system_type: Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `TABLEAU`, `TERADATA`, `WORKDAY`
+        :param pulumi.Input[_builtins.str] system_type: Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `STREAM_NATIVE`, `TABLEAU`, `TERADATA`, `WORKDAY`
         :param pulumi.Input[_builtins.str] url: URL associated with the external metadata object
-        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID of the resource
         """
         ...
     @overload
@@ -486,6 +454,8 @@ class ExternalMetadata(pulumi.CustomResource):
                  args: ExternalMetadataArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
         To enrich lineage with workloads that are run outside of Databricks (for example, first mile ETL or last mile BI),
         Unity Catalog is introducing the external metadata object. UC lets you add external metadata objects to augment the data lineage it captures automatically, giving you an end-to-end lineage view in UC.
         This is useful when you want to capture where data came from (for example, Salesforce or MySQL) before it was ingested into UC or where data is being consumed outside UC (for example, Tableau or PowerBI).
@@ -535,7 +505,7 @@ class ExternalMetadata(pulumi.CustomResource):
         If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
 
         ```sh
-        $ pulumi import databricks:index/externalMetadata:ExternalMetadata databricks_external_metadata "name"
+        $ pulumi import databricks:index/externalMetadata:ExternalMetadata this "name"
         ```
 
         :param str resource_name: The name of the resource.
@@ -561,7 +531,6 @@ class ExternalMetadata(pulumi.CustomResource):
                  properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  system_type: Optional[pulumi.Input[_builtins.str]] = None,
                  url: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -583,7 +552,6 @@ class ExternalMetadata(pulumi.CustomResource):
                 raise TypeError("Missing required property 'system_type'")
             __props__.__dict__["system_type"] = system_type
             __props__.__dict__["url"] = url
-            __props__.__dict__["workspace_id"] = workspace_id
             __props__.__dict__["create_time"] = None
             __props__.__dict__["created_by"] = None
             __props__.__dict__["metastore_id"] = None
@@ -611,8 +579,7 @@ class ExternalMetadata(pulumi.CustomResource):
             system_type: Optional[pulumi.Input[_builtins.str]] = None,
             update_time: Optional[pulumi.Input[_builtins.str]] = None,
             updated_by: Optional[pulumi.Input[_builtins.str]] = None,
-            url: Optional[pulumi.Input[_builtins.str]] = None,
-            workspace_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'ExternalMetadata':
+            url: Optional[pulumi.Input[_builtins.str]] = None) -> 'ExternalMetadata':
         """
         Get an existing ExternalMetadata resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -629,11 +596,10 @@ class ExternalMetadata(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Name of the external metadata object
         :param pulumi.Input[_builtins.str] owner: Owner of the external metadata object
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] properties: A map of key-value properties attached to the external metadata object
-        :param pulumi.Input[_builtins.str] system_type: Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `TABLEAU`, `TERADATA`, `WORKDAY`
+        :param pulumi.Input[_builtins.str] system_type: Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `STREAM_NATIVE`, `TABLEAU`, `TERADATA`, `WORKDAY`
         :param pulumi.Input[_builtins.str] update_time: (string) - Time at which this external metadata object was last modified
         :param pulumi.Input[_builtins.str] updated_by: (string) - Username of user who last modified external metadata object
         :param pulumi.Input[_builtins.str] url: URL associated with the external metadata object
-        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID of the resource
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -652,7 +618,6 @@ class ExternalMetadata(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         __props__.__dict__["updated_by"] = updated_by
         __props__.__dict__["url"] = url
-        __props__.__dict__["workspace_id"] = workspace_id
         return ExternalMetadata(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -731,7 +696,7 @@ class ExternalMetadata(pulumi.CustomResource):
     @pulumi.getter(name="systemType")
     def system_type(self) -> pulumi.Output[_builtins.str]:
         """
-        Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `TABLEAU`, `TERADATA`, `WORKDAY`
+        Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `STREAM_NATIVE`, `TABLEAU`, `TERADATA`, `WORKDAY`
         """
         return pulumi.get(self, "system_type")
 
@@ -758,12 +723,4 @@ class ExternalMetadata(pulumi.CustomResource):
         URL associated with the external metadata object
         """
         return pulumi.get(self, "url")
-
-    @_builtins.property
-    @pulumi.getter(name="workspaceId")
-    def workspace_id(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Workspace ID of the resource
-        """
-        return pulumi.get(self, "workspace_id")
 

@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetPipelinesProviderConfigArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -46,11 +47,27 @@ public final class GetPipelinesArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.pipelineName);
     }
 
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<GetPipelinesProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Optional<Output<GetPipelinesProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     private GetPipelinesArgs() {}
 
     private GetPipelinesArgs(GetPipelinesArgs $) {
         this.ids = $.ids;
         this.pipelineName = $.pipelineName;
+        this.providerConfig = $.providerConfig;
     }
 
     public static Builder builder() {
@@ -121,6 +138,27 @@ public final class GetPipelinesArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder pipelineName(String pipelineName) {
             return pipelineName(Output.of(pipelineName));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<GetPipelinesProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(GetPipelinesProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         public GetPipelinesArgs build() {

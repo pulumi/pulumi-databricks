@@ -10,6 +10,8 @@ import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetServicePrincipalFederationPoliciesResult {
@@ -18,9 +20,10 @@ public final class GetServicePrincipalFederationPoliciesResult {
      * 
      */
     private String id;
+    private @Nullable Integer pageSize;
     private List<GetServicePrincipalFederationPoliciesPolicy> policies;
     /**
-     * @return (integer) - The service principal ID that this federation policy applies to. Only set for service principal federation policies
+     * @return (integer) - The service principal ID that this federation policy applies to. Output only. Only set for service principal federation policies
      * 
      */
     private Integer servicePrincipalId;
@@ -33,11 +36,14 @@ public final class GetServicePrincipalFederationPoliciesResult {
     public String id() {
         return this.id;
     }
+    public Optional<Integer> pageSize() {
+        return Optional.ofNullable(this.pageSize);
+    }
     public List<GetServicePrincipalFederationPoliciesPolicy> policies() {
         return this.policies;
     }
     /**
-     * @return (integer) - The service principal ID that this federation policy applies to. Only set for service principal federation policies
+     * @return (integer) - The service principal ID that this federation policy applies to. Output only. Only set for service principal federation policies
      * 
      */
     public Integer servicePrincipalId() {
@@ -54,12 +60,14 @@ public final class GetServicePrincipalFederationPoliciesResult {
     @CustomType.Builder
     public static final class Builder {
         private String id;
+        private @Nullable Integer pageSize;
         private List<GetServicePrincipalFederationPoliciesPolicy> policies;
         private Integer servicePrincipalId;
         public Builder() {}
         public Builder(GetServicePrincipalFederationPoliciesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
+    	      this.pageSize = defaults.pageSize;
     	      this.policies = defaults.policies;
     	      this.servicePrincipalId = defaults.servicePrincipalId;
         }
@@ -70,6 +78,12 @@ public final class GetServicePrincipalFederationPoliciesResult {
               throw new MissingRequiredPropertyException("GetServicePrincipalFederationPoliciesResult", "id");
             }
             this.id = id;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder pageSize(@Nullable Integer pageSize) {
+
+            this.pageSize = pageSize;
             return this;
         }
         @CustomType.Setter
@@ -94,6 +108,7 @@ public final class GetServicePrincipalFederationPoliciesResult {
         public GetServicePrincipalFederationPoliciesResult build() {
             final var _resultValue = new GetServicePrincipalFederationPoliciesResult();
             _resultValue.id = id;
+            _resultValue.pageSize = pageSize;
             _resultValue.policies = policies;
             _resultValue.servicePrincipalId = servicePrincipalId;
             return _resultValue;

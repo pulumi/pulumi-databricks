@@ -207,16 +207,29 @@ import (
 type Library struct {
 	pulumi.CustomResourceState
 
-	ClusterId pulumi.StringOutput  `pulumi:"clusterId"`
-	Cran      LibraryCranPtrOutput `pulumi:"cran"`
+	// ID of the Cluster to install the library on.
+	//
+	// You must specify exactly **one** of the following library types:
+	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
+	// Configuration block for a CRAN library. The block consists of the following fields:
+	Cran LibraryCranPtrOutput `pulumi:"cran"`
+	// Path to the EGG library. Installing Python egg files is deprecated and is not supported in Databricks Runtime 14.0 and above. Use `whl` or `pypi` instead.
+	//
 	// Deprecated: The `egg` library type is deprecated. Please use `whl` or `pypi` instead.
-	Egg          pulumi.StringPtrOutput `pulumi:"egg"`
-	Jar          pulumi.StringPtrOutput `pulumi:"jar"`
-	LibraryId    pulumi.StringOutput    `pulumi:"libraryId"`
-	Maven        LibraryMavenPtrOutput  `pulumi:"maven"`
-	Pypi         LibraryPypiPtrOutput   `pulumi:"pypi"`
+	Egg pulumi.StringPtrOutput `pulumi:"egg"`
+	// Path to the JAR library. Supported URIs include Workspace paths, Unity Catalog Volumes paths, and S3 URIs. For example: `/Workspace/path/to/library.jar`, `/Volumes/path/to/library.jar` or `s3://my-bucket/library.jar`. If S3 is used, make sure the cluster has read access to the library. You may need to launch the cluster with an IAM role to access the S3 URI.
+	Jar       pulumi.StringPtrOutput `pulumi:"jar"`
+	LibraryId pulumi.StringOutput    `pulumi:"libraryId"`
+	// Configuration block for a Maven library. The block consists of the following fields:
+	Maven LibraryMavenPtrOutput `pulumi:"maven"`
+	// Configuration block for management through the account provider. This block consists of the following fields:
+	ProviderConfig LibraryProviderConfigPtrOutput `pulumi:"providerConfig"`
+	// Configuration block for a PyPI library. The block consists of the following fields:
+	Pypi LibraryPypiPtrOutput `pulumi:"pypi"`
+	// Path to the requirements.txt file. Only Workspace paths and Unity Catalog Volumes paths are supported. For example: `/Workspace/path/to/requirements.txt` or `/Volumes/path/to/requirements.txt`. Requires a cluster with DBR 15.0+.
 	Requirements pulumi.StringPtrOutput `pulumi:"requirements"`
-	Whl          pulumi.StringPtrOutput `pulumi:"whl"`
+	// Path to the wheel library. Supported URIs include Workspace paths, Unity Catalog Volumes paths, and S3 URIs. For example: `/Workspace/path/to/library.whl`, `/Volumes/path/to/library.whl` or `s3://my-bucket/library.whl`. If S3 is used, make sure the cluster has read access to the library. You may need to launch the cluster with an IAM role to access the S3 URI.
+	Whl pulumi.StringPtrOutput `pulumi:"whl"`
 }
 
 // NewLibrary registers a new resource with the given unique name, arguments, and options.
@@ -252,29 +265,55 @@ func GetLibrary(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Library resources.
 type libraryState struct {
-	ClusterId *string      `pulumi:"clusterId"`
-	Cran      *LibraryCran `pulumi:"cran"`
+	// ID of the Cluster to install the library on.
+	//
+	// You must specify exactly **one** of the following library types:
+	ClusterId *string `pulumi:"clusterId"`
+	// Configuration block for a CRAN library. The block consists of the following fields:
+	Cran *LibraryCran `pulumi:"cran"`
+	// Path to the EGG library. Installing Python egg files is deprecated and is not supported in Databricks Runtime 14.0 and above. Use `whl` or `pypi` instead.
+	//
 	// Deprecated: The `egg` library type is deprecated. Please use `whl` or `pypi` instead.
-	Egg          *string       `pulumi:"egg"`
-	Jar          *string       `pulumi:"jar"`
-	LibraryId    *string       `pulumi:"libraryId"`
-	Maven        *LibraryMaven `pulumi:"maven"`
-	Pypi         *LibraryPypi  `pulumi:"pypi"`
-	Requirements *string       `pulumi:"requirements"`
-	Whl          *string       `pulumi:"whl"`
+	Egg *string `pulumi:"egg"`
+	// Path to the JAR library. Supported URIs include Workspace paths, Unity Catalog Volumes paths, and S3 URIs. For example: `/Workspace/path/to/library.jar`, `/Volumes/path/to/library.jar` or `s3://my-bucket/library.jar`. If S3 is used, make sure the cluster has read access to the library. You may need to launch the cluster with an IAM role to access the S3 URI.
+	Jar       *string `pulumi:"jar"`
+	LibraryId *string `pulumi:"libraryId"`
+	// Configuration block for a Maven library. The block consists of the following fields:
+	Maven *LibraryMaven `pulumi:"maven"`
+	// Configuration block for management through the account provider. This block consists of the following fields:
+	ProviderConfig *LibraryProviderConfig `pulumi:"providerConfig"`
+	// Configuration block for a PyPI library. The block consists of the following fields:
+	Pypi *LibraryPypi `pulumi:"pypi"`
+	// Path to the requirements.txt file. Only Workspace paths and Unity Catalog Volumes paths are supported. For example: `/Workspace/path/to/requirements.txt` or `/Volumes/path/to/requirements.txt`. Requires a cluster with DBR 15.0+.
+	Requirements *string `pulumi:"requirements"`
+	// Path to the wheel library. Supported URIs include Workspace paths, Unity Catalog Volumes paths, and S3 URIs. For example: `/Workspace/path/to/library.whl`, `/Volumes/path/to/library.whl` or `s3://my-bucket/library.whl`. If S3 is used, make sure the cluster has read access to the library. You may need to launch the cluster with an IAM role to access the S3 URI.
+	Whl *string `pulumi:"whl"`
 }
 
 type LibraryState struct {
+	// ID of the Cluster to install the library on.
+	//
+	// You must specify exactly **one** of the following library types:
 	ClusterId pulumi.StringPtrInput
-	Cran      LibraryCranPtrInput
+	// Configuration block for a CRAN library. The block consists of the following fields:
+	Cran LibraryCranPtrInput
+	// Path to the EGG library. Installing Python egg files is deprecated and is not supported in Databricks Runtime 14.0 and above. Use `whl` or `pypi` instead.
+	//
 	// Deprecated: The `egg` library type is deprecated. Please use `whl` or `pypi` instead.
-	Egg          pulumi.StringPtrInput
-	Jar          pulumi.StringPtrInput
-	LibraryId    pulumi.StringPtrInput
-	Maven        LibraryMavenPtrInput
-	Pypi         LibraryPypiPtrInput
+	Egg pulumi.StringPtrInput
+	// Path to the JAR library. Supported URIs include Workspace paths, Unity Catalog Volumes paths, and S3 URIs. For example: `/Workspace/path/to/library.jar`, `/Volumes/path/to/library.jar` or `s3://my-bucket/library.jar`. If S3 is used, make sure the cluster has read access to the library. You may need to launch the cluster with an IAM role to access the S3 URI.
+	Jar       pulumi.StringPtrInput
+	LibraryId pulumi.StringPtrInput
+	// Configuration block for a Maven library. The block consists of the following fields:
+	Maven LibraryMavenPtrInput
+	// Configuration block for management through the account provider. This block consists of the following fields:
+	ProviderConfig LibraryProviderConfigPtrInput
+	// Configuration block for a PyPI library. The block consists of the following fields:
+	Pypi LibraryPypiPtrInput
+	// Path to the requirements.txt file. Only Workspace paths and Unity Catalog Volumes paths are supported. For example: `/Workspace/path/to/requirements.txt` or `/Volumes/path/to/requirements.txt`. Requires a cluster with DBR 15.0+.
 	Requirements pulumi.StringPtrInput
-	Whl          pulumi.StringPtrInput
+	// Path to the wheel library. Supported URIs include Workspace paths, Unity Catalog Volumes paths, and S3 URIs. For example: `/Workspace/path/to/library.whl`, `/Volumes/path/to/library.whl` or `s3://my-bucket/library.whl`. If S3 is used, make sure the cluster has read access to the library. You may need to launch the cluster with an IAM role to access the S3 URI.
+	Whl pulumi.StringPtrInput
 }
 
 func (LibraryState) ElementType() reflect.Type {
@@ -282,30 +321,56 @@ func (LibraryState) ElementType() reflect.Type {
 }
 
 type libraryArgs struct {
-	ClusterId string       `pulumi:"clusterId"`
-	Cran      *LibraryCran `pulumi:"cran"`
+	// ID of the Cluster to install the library on.
+	//
+	// You must specify exactly **one** of the following library types:
+	ClusterId string `pulumi:"clusterId"`
+	// Configuration block for a CRAN library. The block consists of the following fields:
+	Cran *LibraryCran `pulumi:"cran"`
+	// Path to the EGG library. Installing Python egg files is deprecated and is not supported in Databricks Runtime 14.0 and above. Use `whl` or `pypi` instead.
+	//
 	// Deprecated: The `egg` library type is deprecated. Please use `whl` or `pypi` instead.
-	Egg          *string       `pulumi:"egg"`
-	Jar          *string       `pulumi:"jar"`
-	LibraryId    *string       `pulumi:"libraryId"`
-	Maven        *LibraryMaven `pulumi:"maven"`
-	Pypi         *LibraryPypi  `pulumi:"pypi"`
-	Requirements *string       `pulumi:"requirements"`
-	Whl          *string       `pulumi:"whl"`
+	Egg *string `pulumi:"egg"`
+	// Path to the JAR library. Supported URIs include Workspace paths, Unity Catalog Volumes paths, and S3 URIs. For example: `/Workspace/path/to/library.jar`, `/Volumes/path/to/library.jar` or `s3://my-bucket/library.jar`. If S3 is used, make sure the cluster has read access to the library. You may need to launch the cluster with an IAM role to access the S3 URI.
+	Jar       *string `pulumi:"jar"`
+	LibraryId *string `pulumi:"libraryId"`
+	// Configuration block for a Maven library. The block consists of the following fields:
+	Maven *LibraryMaven `pulumi:"maven"`
+	// Configuration block for management through the account provider. This block consists of the following fields:
+	ProviderConfig *LibraryProviderConfig `pulumi:"providerConfig"`
+	// Configuration block for a PyPI library. The block consists of the following fields:
+	Pypi *LibraryPypi `pulumi:"pypi"`
+	// Path to the requirements.txt file. Only Workspace paths and Unity Catalog Volumes paths are supported. For example: `/Workspace/path/to/requirements.txt` or `/Volumes/path/to/requirements.txt`. Requires a cluster with DBR 15.0+.
+	Requirements *string `pulumi:"requirements"`
+	// Path to the wheel library. Supported URIs include Workspace paths, Unity Catalog Volumes paths, and S3 URIs. For example: `/Workspace/path/to/library.whl`, `/Volumes/path/to/library.whl` or `s3://my-bucket/library.whl`. If S3 is used, make sure the cluster has read access to the library. You may need to launch the cluster with an IAM role to access the S3 URI.
+	Whl *string `pulumi:"whl"`
 }
 
 // The set of arguments for constructing a Library resource.
 type LibraryArgs struct {
+	// ID of the Cluster to install the library on.
+	//
+	// You must specify exactly **one** of the following library types:
 	ClusterId pulumi.StringInput
-	Cran      LibraryCranPtrInput
+	// Configuration block for a CRAN library. The block consists of the following fields:
+	Cran LibraryCranPtrInput
+	// Path to the EGG library. Installing Python egg files is deprecated and is not supported in Databricks Runtime 14.0 and above. Use `whl` or `pypi` instead.
+	//
 	// Deprecated: The `egg` library type is deprecated. Please use `whl` or `pypi` instead.
-	Egg          pulumi.StringPtrInput
-	Jar          pulumi.StringPtrInput
-	LibraryId    pulumi.StringPtrInput
-	Maven        LibraryMavenPtrInput
-	Pypi         LibraryPypiPtrInput
+	Egg pulumi.StringPtrInput
+	// Path to the JAR library. Supported URIs include Workspace paths, Unity Catalog Volumes paths, and S3 URIs. For example: `/Workspace/path/to/library.jar`, `/Volumes/path/to/library.jar` or `s3://my-bucket/library.jar`. If S3 is used, make sure the cluster has read access to the library. You may need to launch the cluster with an IAM role to access the S3 URI.
+	Jar       pulumi.StringPtrInput
+	LibraryId pulumi.StringPtrInput
+	// Configuration block for a Maven library. The block consists of the following fields:
+	Maven LibraryMavenPtrInput
+	// Configuration block for management through the account provider. This block consists of the following fields:
+	ProviderConfig LibraryProviderConfigPtrInput
+	// Configuration block for a PyPI library. The block consists of the following fields:
+	Pypi LibraryPypiPtrInput
+	// Path to the requirements.txt file. Only Workspace paths and Unity Catalog Volumes paths are supported. For example: `/Workspace/path/to/requirements.txt` or `/Volumes/path/to/requirements.txt`. Requires a cluster with DBR 15.0+.
 	Requirements pulumi.StringPtrInput
-	Whl          pulumi.StringPtrInput
+	// Path to the wheel library. Supported URIs include Workspace paths, Unity Catalog Volumes paths, and S3 URIs. For example: `/Workspace/path/to/library.whl`, `/Volumes/path/to/library.whl` or `s3://my-bucket/library.whl`. If S3 is used, make sure the cluster has read access to the library. You may need to launch the cluster with an IAM role to access the S3 URI.
+	Whl pulumi.StringPtrInput
 }
 
 func (LibraryArgs) ElementType() reflect.Type {
@@ -395,19 +460,26 @@ func (o LibraryOutput) ToLibraryOutputWithContext(ctx context.Context) LibraryOu
 	return o
 }
 
+// ID of the Cluster to install the library on.
+//
+// You must specify exactly **one** of the following library types:
 func (o LibraryOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Library) pulumi.StringOutput { return v.ClusterId }).(pulumi.StringOutput)
 }
 
+// Configuration block for a CRAN library. The block consists of the following fields:
 func (o LibraryOutput) Cran() LibraryCranPtrOutput {
 	return o.ApplyT(func(v *Library) LibraryCranPtrOutput { return v.Cran }).(LibraryCranPtrOutput)
 }
 
+// Path to the EGG library. Installing Python egg files is deprecated and is not supported in Databricks Runtime 14.0 and above. Use `whl` or `pypi` instead.
+//
 // Deprecated: The `egg` library type is deprecated. Please use `whl` or `pypi` instead.
 func (o LibraryOutput) Egg() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Library) pulumi.StringPtrOutput { return v.Egg }).(pulumi.StringPtrOutput)
 }
 
+// Path to the JAR library. Supported URIs include Workspace paths, Unity Catalog Volumes paths, and S3 URIs. For example: `/Workspace/path/to/library.jar`, `/Volumes/path/to/library.jar` or `s3://my-bucket/library.jar`. If S3 is used, make sure the cluster has read access to the library. You may need to launch the cluster with an IAM role to access the S3 URI.
 func (o LibraryOutput) Jar() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Library) pulumi.StringPtrOutput { return v.Jar }).(pulumi.StringPtrOutput)
 }
@@ -416,18 +488,27 @@ func (o LibraryOutput) LibraryId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Library) pulumi.StringOutput { return v.LibraryId }).(pulumi.StringOutput)
 }
 
+// Configuration block for a Maven library. The block consists of the following fields:
 func (o LibraryOutput) Maven() LibraryMavenPtrOutput {
 	return o.ApplyT(func(v *Library) LibraryMavenPtrOutput { return v.Maven }).(LibraryMavenPtrOutput)
 }
 
+// Configuration block for management through the account provider. This block consists of the following fields:
+func (o LibraryOutput) ProviderConfig() LibraryProviderConfigPtrOutput {
+	return o.ApplyT(func(v *Library) LibraryProviderConfigPtrOutput { return v.ProviderConfig }).(LibraryProviderConfigPtrOutput)
+}
+
+// Configuration block for a PyPI library. The block consists of the following fields:
 func (o LibraryOutput) Pypi() LibraryPypiPtrOutput {
 	return o.ApplyT(func(v *Library) LibraryPypiPtrOutput { return v.Pypi }).(LibraryPypiPtrOutput)
 }
 
+// Path to the requirements.txt file. Only Workspace paths and Unity Catalog Volumes paths are supported. For example: `/Workspace/path/to/requirements.txt` or `/Volumes/path/to/requirements.txt`. Requires a cluster with DBR 15.0+.
 func (o LibraryOutput) Requirements() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Library) pulumi.StringPtrOutput { return v.Requirements }).(pulumi.StringPtrOutput)
 }
 
+// Path to the wheel library. Supported URIs include Workspace paths, Unity Catalog Volumes paths, and S3 URIs. For example: `/Workspace/path/to/library.whl`, `/Volumes/path/to/library.whl` or `s3://my-bucket/library.whl`. If S3 is used, make sure the cluster has read access to the library. You may need to launch the cluster with an IAM role to access the S3 URI.
 func (o LibraryOutput) Whl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Library) pulumi.StringPtrOutput { return v.Whl }).(pulumi.StringPtrOutput)
 }

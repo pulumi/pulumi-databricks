@@ -6,11 +6,14 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-export function getDatabaseDatabaseCatalogs(args?: GetDatabaseDatabaseCatalogsArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabaseDatabaseCatalogsResult> {
-    args = args || {};
+/**
+ * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ */
+export function getDatabaseDatabaseCatalogs(args: GetDatabaseDatabaseCatalogsArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabaseDatabaseCatalogsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getDatabaseDatabaseCatalogs:getDatabaseDatabaseCatalogs", {
-        "workspaceId": args.workspaceId,
+        "instanceName": args.instanceName,
+        "pageSize": args.pageSize,
     }, opts);
 }
 
@@ -19,9 +22,13 @@ export function getDatabaseDatabaseCatalogs(args?: GetDatabaseDatabaseCatalogsAr
  */
 export interface GetDatabaseDatabaseCatalogsArgs {
     /**
-     * Workspace ID of the resource
+     * Name of the instance to get database catalogs for
      */
-    workspaceId?: string;
+    instanceName: string;
+    /**
+     * Upper bound for items returned
+     */
+    pageSize?: number;
 }
 
 /**
@@ -33,13 +40,17 @@ export interface GetDatabaseDatabaseCatalogsResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    readonly workspaceId?: string;
+    readonly instanceName: string;
+    readonly pageSize?: number;
 }
-export function getDatabaseDatabaseCatalogsOutput(args?: GetDatabaseDatabaseCatalogsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDatabaseDatabaseCatalogsResult> {
-    args = args || {};
+/**
+ * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ */
+export function getDatabaseDatabaseCatalogsOutput(args: GetDatabaseDatabaseCatalogsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDatabaseDatabaseCatalogsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getDatabaseDatabaseCatalogs:getDatabaseDatabaseCatalogs", {
-        "workspaceId": args.workspaceId,
+        "instanceName": args.instanceName,
+        "pageSize": args.pageSize,
     }, opts);
 }
 
@@ -48,7 +59,11 @@ export function getDatabaseDatabaseCatalogsOutput(args?: GetDatabaseDatabaseCata
  */
 export interface GetDatabaseDatabaseCatalogsOutputArgs {
     /**
-     * Workspace ID of the resource
+     * Name of the instance to get database catalogs for
      */
-    workspaceId?: pulumi.Input<string>;
+    instanceName: pulumi.Input<string>;
+    /**
+     * Upper bound for items returned
+     */
+    pageSize?: pulumi.Input<number>;
 }

@@ -7,6 +7,8 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
  * The Alert v2 resource allows you to manage SQL alerts in Databricks SQL. Alerts monitor query results and notify you when specific conditions are met.
  *
  * Alerts run on a schedule and evaluate query results against defined thresholds. When an alert is triggered, notifications can be sent to specified users or destinations.
@@ -33,7 +35,7 @@ import * as utilities from "./utilities";
  * If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
  *
  * ```sh
- * $ pulumi import databricks:index/alertV2:AlertV2 databricks_alert_v2 "id"
+ * $ pulumi import databricks:index/alertV2:AlertV2 this "id"
  * ```
  */
 export class AlertV2 extends pulumi.CustomResource {
@@ -79,16 +81,16 @@ export class AlertV2 extends pulumi.CustomResource {
     /**
      * The display name of the alert
      */
-    declare public readonly displayName: pulumi.Output<string | undefined>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * (AlertV2RunAs) - The actual identity that will be used to execute the alert.
      * This is an output-only field that shows the resolved run-as identity after applying
      * permissions and defaults
      */
     declare public /*out*/ readonly effectiveRunAs: pulumi.Output<outputs.AlertV2EffectiveRunAs>;
-    declare public readonly evaluation: pulumi.Output<outputs.AlertV2Evaluation | undefined>;
+    declare public readonly evaluation: pulumi.Output<outputs.AlertV2Evaluation>;
     /**
-     * (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `TRASHED`
+     * (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `DELETED`
      */
     declare public /*out*/ readonly lifecycleState: pulumi.Output<string>;
     /**
@@ -102,7 +104,7 @@ export class AlertV2 extends pulumi.CustomResource {
     /**
      * Text of the query to be run
      */
-    declare public readonly queryText: pulumi.Output<string | undefined>;
+    declare public readonly queryText: pulumi.Output<string>;
     /**
      * Specifies the identity that will be used to run the alert.
      * This field allows you to configure alerts to run as a specific user or service principal.
@@ -117,7 +119,7 @@ export class AlertV2 extends pulumi.CustomResource {
      * Deprecated: Use `runAs` field instead. This field will be removed in a future release
      */
     declare public readonly runAsUserName: pulumi.Output<string | undefined>;
-    declare public readonly schedule: pulumi.Output<outputs.AlertV2Schedule | undefined>;
+    declare public readonly schedule: pulumi.Output<outputs.AlertV2Schedule>;
     /**
      * (string) - The timestamp indicating when the alert was updated
      */
@@ -125,11 +127,7 @@ export class AlertV2 extends pulumi.CustomResource {
     /**
      * ID of the SQL warehouse attached to the alert
      */
-    declare public readonly warehouseId: pulumi.Output<string | undefined>;
-    /**
-     * Workspace ID of the resource
-     */
-    declare public readonly workspaceId: pulumi.Output<string | undefined>;
+    declare public readonly warehouseId: pulumi.Output<string>;
 
     /**
      * Create a AlertV2 resource with the given unique name, arguments, and options.
@@ -138,7 +136,7 @@ export class AlertV2 extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: AlertV2Args, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args: AlertV2Args, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AlertV2Args | AlertV2State, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -159,9 +157,23 @@ export class AlertV2 extends pulumi.CustomResource {
             resourceInputs["schedule"] = state?.schedule;
             resourceInputs["updateTime"] = state?.updateTime;
             resourceInputs["warehouseId"] = state?.warehouseId;
-            resourceInputs["workspaceId"] = state?.workspaceId;
         } else {
             const args = argsOrState as AlertV2Args | undefined;
+            if (args?.displayName === undefined && !opts.urn) {
+                throw new Error("Missing required property 'displayName'");
+            }
+            if (args?.evaluation === undefined && !opts.urn) {
+                throw new Error("Missing required property 'evaluation'");
+            }
+            if (args?.queryText === undefined && !opts.urn) {
+                throw new Error("Missing required property 'queryText'");
+            }
+            if (args?.schedule === undefined && !opts.urn) {
+                throw new Error("Missing required property 'schedule'");
+            }
+            if (args?.warehouseId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'warehouseId'");
+            }
             resourceInputs["customDescription"] = args?.customDescription;
             resourceInputs["customSummary"] = args?.customSummary;
             resourceInputs["displayName"] = args?.displayName;
@@ -172,7 +184,6 @@ export class AlertV2 extends pulumi.CustomResource {
             resourceInputs["runAsUserName"] = args?.runAsUserName;
             resourceInputs["schedule"] = args?.schedule;
             resourceInputs["warehouseId"] = args?.warehouseId;
-            resourceInputs["workspaceId"] = args?.workspaceId;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveRunAs"] = undefined /*out*/;
             resourceInputs["lifecycleState"] = undefined /*out*/;
@@ -212,7 +223,7 @@ export interface AlertV2State {
     effectiveRunAs?: pulumi.Input<inputs.AlertV2EffectiveRunAs>;
     evaluation?: pulumi.Input<inputs.AlertV2Evaluation>;
     /**
-     * (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `TRASHED`
+     * (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `DELETED`
      */
     lifecycleState?: pulumi.Input<string>;
     /**
@@ -250,10 +261,6 @@ export interface AlertV2State {
      * ID of the SQL warehouse attached to the alert
      */
     warehouseId?: pulumi.Input<string>;
-    /**
-     * Workspace ID of the resource
-     */
-    workspaceId?: pulumi.Input<string>;
 }
 
 /**
@@ -271,8 +278,8 @@ export interface AlertV2Args {
     /**
      * The display name of the alert
      */
-    displayName?: pulumi.Input<string>;
-    evaluation?: pulumi.Input<inputs.AlertV2Evaluation>;
+    displayName: pulumi.Input<string>;
+    evaluation: pulumi.Input<inputs.AlertV2Evaluation>;
     /**
      * The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
      */
@@ -280,7 +287,7 @@ export interface AlertV2Args {
     /**
      * Text of the query to be run
      */
-    queryText?: pulumi.Input<string>;
+    queryText: pulumi.Input<string>;
     /**
      * Specifies the identity that will be used to run the alert.
      * This field allows you to configure alerts to run as a specific user or service principal.
@@ -295,13 +302,9 @@ export interface AlertV2Args {
      * Deprecated: Use `runAs` field instead. This field will be removed in a future release
      */
     runAsUserName?: pulumi.Input<string>;
-    schedule?: pulumi.Input<inputs.AlertV2Schedule>;
+    schedule: pulumi.Input<inputs.AlertV2Schedule>;
     /**
      * ID of the SQL warehouse attached to the alert
      */
-    warehouseId?: pulumi.Input<string>;
-    /**
-     * Workspace ID of the resource
-     */
-    workspaceId?: pulumi.Input<string>;
+    warehouseId: pulumi.Input<string>;
 }

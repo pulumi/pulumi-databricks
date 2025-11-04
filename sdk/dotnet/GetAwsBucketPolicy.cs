@@ -27,20 +27,20 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var thisBucketV2 = new Aws.S3.BucketV2("this", new()
+        ///     var thisBucket = new Aws.S3.Bucket("this", new()
         ///     {
-        ///         Bucket = "&lt;unique_bucket_name&gt;",
+        ///         BucketName = "&lt;unique_bucket_name&gt;",
         ///         ForceDestroy = true,
         ///     });
         /// 
         ///     var @this = Databricks.GetAwsBucketPolicy.Invoke(new()
         ///     {
-        ///         Bucket = thisBucketV2.Bucket,
+        ///         Bucket = thisBucket.BucketName,
         ///     });
         /// 
         ///     var thisBucketPolicy = new Aws.S3.BucketPolicy("this", new()
         ///     {
-        ///         Bucket = thisBucketV2.Id,
+        ///         Bucket = thisBucket.Id,
         ///         Policy = @this.Apply(@this =&gt; @this.Apply(getAwsBucketPolicyResult =&gt; getAwsBucketPolicyResult.Json)),
         ///     });
         /// 
@@ -68,20 +68,20 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var thisBucketV2 = new Aws.S3.BucketV2("this", new()
+        ///     var thisBucket = new Aws.S3.Bucket("this", new()
         ///     {
-        ///         Bucket = "&lt;unique_bucket_name&gt;",
+        ///         BucketName = "&lt;unique_bucket_name&gt;",
         ///         ForceDestroy = true,
         ///     });
         /// 
         ///     var @this = Databricks.GetAwsBucketPolicy.Invoke(new()
         ///     {
-        ///         Bucket = thisBucketV2.Bucket,
+        ///         Bucket = thisBucket.BucketName,
         ///     });
         /// 
         ///     var thisBucketPolicy = new Aws.S3.BucketPolicy("this", new()
         ///     {
-        ///         Bucket = thisBucketV2.Id,
+        ///         Bucket = thisBucket.Id,
         ///         Policy = @this.Apply(@this =&gt; @this.Apply(getAwsBucketPolicyResult =&gt; getAwsBucketPolicyResult.Json)),
         ///     });
         /// 
@@ -109,20 +109,20 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var thisBucketV2 = new Aws.S3.BucketV2("this", new()
+        ///     var thisBucket = new Aws.S3.Bucket("this", new()
         ///     {
-        ///         Bucket = "&lt;unique_bucket_name&gt;",
+        ///         BucketName = "&lt;unique_bucket_name&gt;",
         ///         ForceDestroy = true,
         ///     });
         /// 
         ///     var @this = Databricks.GetAwsBucketPolicy.Invoke(new()
         ///     {
-        ///         Bucket = thisBucketV2.Bucket,
+        ///         Bucket = thisBucket.BucketName,
         ///     });
         /// 
         ///     var thisBucketPolicy = new Aws.S3.BucketPolicy("this", new()
         ///     {
-        ///         Bucket = thisBucketV2.Id,
+        ///         Bucket = thisBucket.Id,
         ///         Policy = @this.Apply(@this =&gt; @this.Apply(getAwsBucketPolicyResult =&gt; getAwsBucketPolicyResult.Json)),
         ///     });
         /// 

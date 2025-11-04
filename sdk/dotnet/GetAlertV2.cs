@@ -12,6 +12,8 @@ namespace Pulumi.Databricks
     public static class GetAlertV2
     {
         /// <summary>
+        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
         /// The SQL Alert v2 data source allows you to retrieve detailed information about a specific alert in Databricks SQL. This data source provides access to all alert properties, including its configuration, evaluation criteria, notification settings, and schedule.
         /// 
         /// You can use this data source to:
@@ -24,11 +26,29 @@ namespace Pulumi.Databricks
         /// 
         /// ### Retrieve Alert by ID
         /// This example retrieves a specific alert by its ID:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Databricks.GetAlertV2.Invoke(new()
+        ///     {
+        ///         Id = "123",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
-        public static Task<GetAlertV2Result> InvokeAsync(GetAlertV2Args? args = null, InvokeOptions? options = null)
+        public static Task<GetAlertV2Result> InvokeAsync(GetAlertV2Args args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAlertV2Result>("databricks:index/getAlertV2:getAlertV2", args ?? new GetAlertV2Args(), options.WithDefaults());
 
         /// <summary>
+        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
         /// The SQL Alert v2 data source allows you to retrieve detailed information about a specific alert in Databricks SQL. This data source provides access to all alert properties, including its configuration, evaluation criteria, notification settings, and schedule.
         /// 
         /// You can use this data source to:
@@ -41,11 +61,29 @@ namespace Pulumi.Databricks
         /// 
         /// ### Retrieve Alert by ID
         /// This example retrieves a specific alert by its ID:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Databricks.GetAlertV2.Invoke(new()
+        ///     {
+        ///         Id = "123",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
-        public static Output<GetAlertV2Result> Invoke(GetAlertV2InvokeArgs? args = null, InvokeOptions? options = null)
+        public static Output<GetAlertV2Result> Invoke(GetAlertV2InvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAlertV2Result>("databricks:index/getAlertV2:getAlertV2", args ?? new GetAlertV2InvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
         /// The SQL Alert v2 data source allows you to retrieve detailed information about a specific alert in Databricks SQL. This data source provides access to all alert properties, including its configuration, evaluation criteria, notification settings, and schedule.
         /// 
         /// You can use this data source to:
@@ -58,6 +96,22 @@ namespace Pulumi.Databricks
         /// 
         /// ### Retrieve Alert by ID
         /// This example retrieves a specific alert by its ID:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Databricks.GetAlertV2.Invoke(new()
+        ///     {
+        ///         Id = "123",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetAlertV2Result> Invoke(GetAlertV2InvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetAlertV2Result>("databricks:index/getAlertV2:getAlertV2", args ?? new GetAlertV2InvokeArgs(), options.WithDefaults());
@@ -67,76 +121,10 @@ namespace Pulumi.Databricks
     public sealed class GetAlertV2Args : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// (string) - Custom description for the alert. support mustache template
+        /// UUID identifying the alert
         /// </summary>
-        [Input("customDescription")]
-        public string? CustomDescription { get; set; }
-
-        /// <summary>
-        /// (string) - Custom summary for the alert. support mustache template
-        /// </summary>
-        [Input("customSummary")]
-        public string? CustomSummary { get; set; }
-
-        /// <summary>
-        /// (string) - The display name of the alert
-        /// </summary>
-        [Input("displayName")]
-        public string? DisplayName { get; set; }
-
-        /// <summary>
-        /// (AlertV2Evaluation)
-        /// </summary>
-        [Input("evaluation")]
-        public Inputs.GetAlertV2EvaluationArgs? Evaluation { get; set; }
-
-        /// <summary>
-        /// (string) - The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
-        /// </summary>
-        [Input("parentPath")]
-        public string? ParentPath { get; set; }
-
-        /// <summary>
-        /// (string) - Text of the query to be run
-        /// </summary>
-        [Input("queryText")]
-        public string? QueryText { get; set; }
-
-        /// <summary>
-        /// (AlertV2RunAs) - Specifies the identity that will be used to run the alert.
-        /// This field allows you to configure alerts to run as a specific user or service principal.
-        /// - For user identity: Set `UserName` to the email of an active workspace user. Users can only set this to their own email.
-        /// - For service principal: Set `ServicePrincipalName` to the application ID. Requires the `servicePrincipal/user` role.
-        /// If not specified, the alert will run as the request user
-        /// </summary>
-        [Input("runAs")]
-        public Inputs.GetAlertV2RunAsArgs? RunAs { get; set; }
-
-        /// <summary>
-        /// (string, deprecated) - The run as username or application ID of service principal.
-        /// On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
-        /// Deprecated: Use `RunAs` field instead. This field will be removed in a future release
-        /// </summary>
-        [Input("runAsUserName")]
-        public string? RunAsUserName { get; set; }
-
-        /// <summary>
-        /// (CronSchedule)
-        /// </summary>
-        [Input("schedule")]
-        public Inputs.GetAlertV2ScheduleArgs? Schedule { get; set; }
-
-        /// <summary>
-        /// (string) - ID of the SQL warehouse attached to the alert
-        /// </summary>
-        [Input("warehouseId")]
-        public string? WarehouseId { get; set; }
-
-        /// <summary>
-        /// Workspace ID of the resource
-        /// </summary>
-        [Input("workspaceId")]
-        public string? WorkspaceId { get; set; }
+        [Input("id", required: true)]
+        public string Id { get; set; } = null!;
 
         public GetAlertV2Args()
         {
@@ -147,76 +135,10 @@ namespace Pulumi.Databricks
     public sealed class GetAlertV2InvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// (string) - Custom description for the alert. support mustache template
+        /// UUID identifying the alert
         /// </summary>
-        [Input("customDescription")]
-        public Input<string>? CustomDescription { get; set; }
-
-        /// <summary>
-        /// (string) - Custom summary for the alert. support mustache template
-        /// </summary>
-        [Input("customSummary")]
-        public Input<string>? CustomSummary { get; set; }
-
-        /// <summary>
-        /// (string) - The display name of the alert
-        /// </summary>
-        [Input("displayName")]
-        public Input<string>? DisplayName { get; set; }
-
-        /// <summary>
-        /// (AlertV2Evaluation)
-        /// </summary>
-        [Input("evaluation")]
-        public Input<Inputs.GetAlertV2EvaluationInputArgs>? Evaluation { get; set; }
-
-        /// <summary>
-        /// (string) - The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
-        /// </summary>
-        [Input("parentPath")]
-        public Input<string>? ParentPath { get; set; }
-
-        /// <summary>
-        /// (string) - Text of the query to be run
-        /// </summary>
-        [Input("queryText")]
-        public Input<string>? QueryText { get; set; }
-
-        /// <summary>
-        /// (AlertV2RunAs) - Specifies the identity that will be used to run the alert.
-        /// This field allows you to configure alerts to run as a specific user or service principal.
-        /// - For user identity: Set `UserName` to the email of an active workspace user. Users can only set this to their own email.
-        /// - For service principal: Set `ServicePrincipalName` to the application ID. Requires the `servicePrincipal/user` role.
-        /// If not specified, the alert will run as the request user
-        /// </summary>
-        [Input("runAs")]
-        public Input<Inputs.GetAlertV2RunAsInputArgs>? RunAs { get; set; }
-
-        /// <summary>
-        /// (string, deprecated) - The run as username or application ID of service principal.
-        /// On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
-        /// Deprecated: Use `RunAs` field instead. This field will be removed in a future release
-        /// </summary>
-        [Input("runAsUserName")]
-        public Input<string>? RunAsUserName { get; set; }
-
-        /// <summary>
-        /// (CronSchedule)
-        /// </summary>
-        [Input("schedule")]
-        public Input<Inputs.GetAlertV2ScheduleInputArgs>? Schedule { get; set; }
-
-        /// <summary>
-        /// (string) - ID of the SQL warehouse attached to the alert
-        /// </summary>
-        [Input("warehouseId")]
-        public Input<string>? WarehouseId { get; set; }
-
-        /// <summary>
-        /// Workspace ID of the resource
-        /// </summary>
-        [Input("workspaceId")]
-        public Input<string>? WorkspaceId { get; set; }
+        [Input("id", required: true)]
+        public Input<string> Id { get; set; } = null!;
 
         public GetAlertV2InvokeArgs()
         {
@@ -235,15 +157,15 @@ namespace Pulumi.Databricks
         /// <summary>
         /// (string) - Custom description for the alert. support mustache template
         /// </summary>
-        public readonly string? CustomDescription;
+        public readonly string CustomDescription;
         /// <summary>
         /// (string) - Custom summary for the alert. support mustache template
         /// </summary>
-        public readonly string? CustomSummary;
+        public readonly string CustomSummary;
         /// <summary>
         /// (string) - The display name of the alert
         /// </summary>
-        public readonly string? DisplayName;
+        public readonly string DisplayName;
         /// <summary>
         /// (AlertV2RunAs) - The actual identity that will be used to execute the alert.
         /// This is an output-only field that shows the resolved run-as identity after applying
@@ -253,13 +175,13 @@ namespace Pulumi.Databricks
         /// <summary>
         /// (AlertV2Evaluation)
         /// </summary>
-        public readonly Outputs.GetAlertV2EvaluationResult? Evaluation;
+        public readonly Outputs.GetAlertV2EvaluationResult Evaluation;
         /// <summary>
         /// (string) - UUID identifying the alert
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `TRASHED`
+        /// (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `DELETED`
         /// </summary>
         public readonly string LifecycleState;
         /// <summary>
@@ -269,11 +191,11 @@ namespace Pulumi.Databricks
         /// <summary>
         /// (string) - The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
         /// </summary>
-        public readonly string? ParentPath;
+        public readonly string ParentPath;
         /// <summary>
         /// (string) - Text of the query to be run
         /// </summary>
-        public readonly string? QueryText;
+        public readonly string QueryText;
         /// <summary>
         /// (AlertV2RunAs) - Specifies the identity that will be used to run the alert.
         /// This field allows you to configure alerts to run as a specific user or service principal.
@@ -281,17 +203,17 @@ namespace Pulumi.Databricks
         /// - For service principal: Set `ServicePrincipalName` to the application ID. Requires the `servicePrincipal/user` role.
         /// If not specified, the alert will run as the request user
         /// </summary>
-        public readonly Outputs.GetAlertV2RunAsResult? RunAs;
+        public readonly Outputs.GetAlertV2RunAsResult RunAs;
         /// <summary>
         /// (string, deprecated) - The run as username or application ID of service principal.
         /// On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
         /// Deprecated: Use `RunAs` field instead. This field will be removed in a future release
         /// </summary>
-        public readonly string? RunAsUserName;
+        public readonly string RunAsUserName;
         /// <summary>
         /// (CronSchedule)
         /// </summary>
-        public readonly Outputs.GetAlertV2ScheduleResult? Schedule;
+        public readonly Outputs.GetAlertV2ScheduleResult Schedule;
         /// <summary>
         /// (string) - The timestamp indicating when the alert was updated
         /// </summary>
@@ -299,22 +221,21 @@ namespace Pulumi.Databricks
         /// <summary>
         /// (string) - ID of the SQL warehouse attached to the alert
         /// </summary>
-        public readonly string? WarehouseId;
-        public readonly string? WorkspaceId;
+        public readonly string WarehouseId;
 
         [OutputConstructor]
         private GetAlertV2Result(
             string createTime,
 
-            string? customDescription,
+            string customDescription,
 
-            string? customSummary,
+            string customSummary,
 
-            string? displayName,
+            string displayName,
 
             Outputs.GetAlertV2EffectiveRunAsResult effectiveRunAs,
 
-            Outputs.GetAlertV2EvaluationResult? evaluation,
+            Outputs.GetAlertV2EvaluationResult evaluation,
 
             string id,
 
@@ -322,21 +243,19 @@ namespace Pulumi.Databricks
 
             string ownerUserName,
 
-            string? parentPath,
+            string parentPath,
 
-            string? queryText,
+            string queryText,
 
-            Outputs.GetAlertV2RunAsResult? runAs,
+            Outputs.GetAlertV2RunAsResult runAs,
 
-            string? runAsUserName,
+            string runAsUserName,
 
-            Outputs.GetAlertV2ScheduleResult? schedule,
+            Outputs.GetAlertV2ScheduleResult schedule,
 
             string updateTime,
 
-            string? warehouseId,
-
-            string? workspaceId)
+            string warehouseId)
         {
             CreateTime = createTime;
             CustomDescription = customDescription;
@@ -354,7 +273,6 @@ namespace Pulumi.Databricks
             Schedule = schedule;
             UpdateTime = updateTime;
             WarehouseId = warehouseId;
-            WorkspaceId = workspaceId;
         }
     }
 }

@@ -6,6 +6,7 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsLibraryCran;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsLibraryMaven;
+import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsLibraryProviderConfig;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsLibraryPypi;
 import java.lang.String;
 import java.util.Objects;
@@ -57,6 +58,13 @@ public final class GetJobJobSettingsSettingsLibrary extends com.pulumi.resources
         return Optional.ofNullable(this.maven);
     }
 
+    @Import(name="providerConfig")
+    private @Nullable GetJobJobSettingsSettingsLibraryProviderConfig providerConfig;
+
+    public Optional<GetJobJobSettingsSettingsLibraryProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     @Import(name="pypi")
     private @Nullable GetJobJobSettingsSettingsLibraryPypi pypi;
 
@@ -85,6 +93,7 @@ public final class GetJobJobSettingsSettingsLibrary extends com.pulumi.resources
         this.egg = $.egg;
         this.jar = $.jar;
         this.maven = $.maven;
+        this.providerConfig = $.providerConfig;
         this.pypi = $.pypi;
         this.requirements = $.requirements;
         this.whl = $.whl;
@@ -133,6 +142,11 @@ public final class GetJobJobSettingsSettingsLibrary extends com.pulumi.resources
 
         public Builder maven(@Nullable GetJobJobSettingsSettingsLibraryMaven maven) {
             $.maven = maven;
+            return this;
+        }
+
+        public Builder providerConfig(@Nullable GetJobJobSettingsSettingsLibraryProviderConfig providerConfig) {
+            $.providerConfig = providerConfig;
             return this;
         }
 

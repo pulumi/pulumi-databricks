@@ -15,6 +15,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("availability")]
         public Input<string>? Availability { get; set; }
 
+        [Input("instanceProfileArn")]
+        public Input<string>? InstanceProfileArn { get; set; }
+
         [Input("spotBidPricePercent")]
         public Input<int>? SpotBidPricePercent { get; set; }
 

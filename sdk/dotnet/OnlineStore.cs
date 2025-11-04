@@ -10,6 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
+    /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    /// 
     /// ## Import
     /// 
     /// As of Pulumi v1.5, resources can be imported through configuration.
@@ -27,7 +29,7 @@ namespace Pulumi.Databricks
     /// If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
     /// 
     /// ```sh
-    /// $ pulumi import databricks:index/onlineStore:OnlineStore databricks_online_store "name"
+    /// $ pulumi import databricks:index/onlineStore:OnlineStore this "name"
     /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/onlineStore:OnlineStore")]
@@ -68,12 +70,6 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
-
-        /// <summary>
-        /// Workspace ID of the resource
-        /// </summary>
-        [Output("workspaceId")]
-        public Output<string?> WorkspaceId { get; private set; } = null!;
 
 
         /// <summary>
@@ -139,12 +135,6 @@ namespace Pulumi.Databricks
         [Input("readReplicaCount")]
         public Input<int>? ReadReplicaCount { get; set; }
 
-        /// <summary>
-        /// Workspace ID of the resource
-        /// </summary>
-        [Input("workspaceId")]
-        public Input<string>? WorkspaceId { get; set; }
-
         public OnlineStoreArgs()
         {
         }
@@ -188,12 +178,6 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
-
-        /// <summary>
-        /// Workspace ID of the resource
-        /// </summary>
-        [Input("workspaceId")]
-        public Input<string>? WorkspaceId { get; set; }
 
         public OnlineStoreState()
         {

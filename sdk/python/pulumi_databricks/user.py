@@ -42,7 +42,7 @@ class UserArgs:
         :param pulumi.Input[_builtins.bool] active: Either user is active or not. True by default, but can be set to false in case of user deactivation with preserving user assets.
         :param pulumi.Input[_builtins.bool] allow_cluster_create: Allow the user to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and `cluster_id` argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
         :param pulumi.Input[_builtins.bool] allow_instance_pool_create: Allow the user to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and instance_pool_id argument.
-        :param pulumi.Input[_builtins.bool] databricks_sql_access: This is a field to allow the user to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
+        :param pulumi.Input[_builtins.bool] databricks_sql_access: This is a field to allow the user to have access to [Databricks SQL](https://databricks.com/product/databricks-sql)  UI, [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one) and through databricks_sql_endpoint.
         :param pulumi.Input[_builtins.bool] disable_as_user_deletion: Deactivate the user when deleting the resource, rather than deleting the user entirely. Defaults to `true` when the provider is configured at the account-level and `false` when configured at the workspace-level. This flag is exclusive to force_delete_repos and force_delete_home_dir flags.
         :param pulumi.Input[_builtins.str] display_name: This is an alias for the username that can be the full name of the user.
         :param pulumi.Input[_builtins.str] external_id: ID of the user in an external identity provider.
@@ -51,8 +51,8 @@ class UserArgs:
         :param pulumi.Input[_builtins.bool] force_delete_repos: This flag determines whether the user's repo directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
         :param pulumi.Input[_builtins.str] home: Home folder of the user, e.g. `/Users/mr.foo@example.com`.
         :param pulumi.Input[_builtins.str] repos: Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
-        :param pulumi.Input[_builtins.bool] workspace_access: This is a field to allow the user to have access to a Databricks Workspace.
-        :param pulumi.Input[_builtins.bool] workspace_consume: This is a field to allow the user to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspace_access` or `databricks_sql_access`.
+        :param pulumi.Input[_builtins.bool] workspace_access: This is a field to allow the user to have access to a Databricks Workspace UI and [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).
+        :param pulumi.Input[_builtins.bool] workspace_consume: This is a field to allow the user to have access only to [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).  Couldn't be used with `workspace_access` or `databricks_sql_access`.
         """
         pulumi.set(__self__, "user_name", user_name)
         if acl_principal_id is not None:
@@ -150,7 +150,7 @@ class UserArgs:
     @pulumi.getter(name="databricksSqlAccess")
     def databricks_sql_access(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        This is a field to allow the user to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
+        This is a field to allow the user to have access to [Databricks SQL](https://databricks.com/product/databricks-sql)  UI, [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one) and through databricks_sql_endpoint.
         """
         return pulumi.get(self, "databricks_sql_access")
 
@@ -258,7 +258,7 @@ class UserArgs:
     @pulumi.getter(name="workspaceAccess")
     def workspace_access(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        This is a field to allow the user to have access to a Databricks Workspace.
+        This is a field to allow the user to have access to a Databricks Workspace UI and [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).
         """
         return pulumi.get(self, "workspace_access")
 
@@ -270,7 +270,7 @@ class UserArgs:
     @pulumi.getter(name="workspaceConsume")
     def workspace_consume(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        This is a field to allow the user to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspace_access` or `databricks_sql_access`.
+        This is a field to allow the user to have access only to [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).  Couldn't be used with `workspace_access` or `databricks_sql_access`.
         """
         return pulumi.get(self, "workspace_consume")
 
@@ -304,7 +304,7 @@ class _UserState:
         :param pulumi.Input[_builtins.bool] active: Either user is active or not. True by default, but can be set to false in case of user deactivation with preserving user assets.
         :param pulumi.Input[_builtins.bool] allow_cluster_create: Allow the user to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and `cluster_id` argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
         :param pulumi.Input[_builtins.bool] allow_instance_pool_create: Allow the user to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and instance_pool_id argument.
-        :param pulumi.Input[_builtins.bool] databricks_sql_access: This is a field to allow the user to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
+        :param pulumi.Input[_builtins.bool] databricks_sql_access: This is a field to allow the user to have access to [Databricks SQL](https://databricks.com/product/databricks-sql)  UI, [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one) and through databricks_sql_endpoint.
         :param pulumi.Input[_builtins.bool] disable_as_user_deletion: Deactivate the user when deleting the resource, rather than deleting the user entirely. Defaults to `true` when the provider is configured at the account-level and `false` when configured at the workspace-level. This flag is exclusive to force_delete_repos and force_delete_home_dir flags.
         :param pulumi.Input[_builtins.str] display_name: This is an alias for the username that can be the full name of the user.
         :param pulumi.Input[_builtins.str] external_id: ID of the user in an external identity provider.
@@ -314,8 +314,8 @@ class _UserState:
         :param pulumi.Input[_builtins.str] home: Home folder of the user, e.g. `/Users/mr.foo@example.com`.
         :param pulumi.Input[_builtins.str] repos: Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
         :param pulumi.Input[_builtins.str] user_name: This is the username of the given user and will be their form of access and identity.  Provided username will be converted to lower case if it contains upper case characters.
-        :param pulumi.Input[_builtins.bool] workspace_access: This is a field to allow the user to have access to a Databricks Workspace.
-        :param pulumi.Input[_builtins.bool] workspace_consume: This is a field to allow the user to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspace_access` or `databricks_sql_access`.
+        :param pulumi.Input[_builtins.bool] workspace_access: This is a field to allow the user to have access to a Databricks Workspace UI and [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).
+        :param pulumi.Input[_builtins.bool] workspace_consume: This is a field to allow the user to have access only to [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).  Couldn't be used with `workspace_access` or `databricks_sql_access`.
         """
         if acl_principal_id is not None:
             pulumi.set(__self__, "acl_principal_id", acl_principal_id)
@@ -402,7 +402,7 @@ class _UserState:
     @pulumi.getter(name="databricksSqlAccess")
     def databricks_sql_access(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        This is a field to allow the user to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
+        This is a field to allow the user to have access to [Databricks SQL](https://databricks.com/product/databricks-sql)  UI, [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one) and through databricks_sql_endpoint.
         """
         return pulumi.get(self, "databricks_sql_access")
 
@@ -522,7 +522,7 @@ class _UserState:
     @pulumi.getter(name="workspaceAccess")
     def workspace_access(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        This is a field to allow the user to have access to a Databricks Workspace.
+        This is a field to allow the user to have access to a Databricks Workspace UI and [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).
         """
         return pulumi.get(self, "workspace_access")
 
@@ -534,7 +534,7 @@ class _UserState:
     @pulumi.getter(name="workspaceConsume")
     def workspace_consume(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        This is a field to allow the user to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspace_access` or `databricks_sql_access`.
+        This is a field to allow the user to have access only to [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).  Couldn't be used with `workspace_access` or `databricks_sql_access`.
         """
         return pulumi.get(self, "workspace_consume")
 
@@ -677,7 +677,7 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] active: Either user is active or not. True by default, but can be set to false in case of user deactivation with preserving user assets.
         :param pulumi.Input[_builtins.bool] allow_cluster_create: Allow the user to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and `cluster_id` argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
         :param pulumi.Input[_builtins.bool] allow_instance_pool_create: Allow the user to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and instance_pool_id argument.
-        :param pulumi.Input[_builtins.bool] databricks_sql_access: This is a field to allow the user to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
+        :param pulumi.Input[_builtins.bool] databricks_sql_access: This is a field to allow the user to have access to [Databricks SQL](https://databricks.com/product/databricks-sql)  UI, [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one) and through databricks_sql_endpoint.
         :param pulumi.Input[_builtins.bool] disable_as_user_deletion: Deactivate the user when deleting the resource, rather than deleting the user entirely. Defaults to `true` when the provider is configured at the account-level and `false` when configured at the workspace-level. This flag is exclusive to force_delete_repos and force_delete_home_dir flags.
         :param pulumi.Input[_builtins.str] display_name: This is an alias for the username that can be the full name of the user.
         :param pulumi.Input[_builtins.str] external_id: ID of the user in an external identity provider.
@@ -687,8 +687,8 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] home: Home folder of the user, e.g. `/Users/mr.foo@example.com`.
         :param pulumi.Input[_builtins.str] repos: Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
         :param pulumi.Input[_builtins.str] user_name: This is the username of the given user and will be their form of access and identity.  Provided username will be converted to lower case if it contains upper case characters.
-        :param pulumi.Input[_builtins.bool] workspace_access: This is a field to allow the user to have access to a Databricks Workspace.
-        :param pulumi.Input[_builtins.bool] workspace_consume: This is a field to allow the user to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspace_access` or `databricks_sql_access`.
+        :param pulumi.Input[_builtins.bool] workspace_access: This is a field to allow the user to have access to a Databricks Workspace UI and [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).
+        :param pulumi.Input[_builtins.bool] workspace_consume: This is a field to allow the user to have access only to [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).  Couldn't be used with `workspace_access` or `databricks_sql_access`.
         """
         ...
     @overload
@@ -896,7 +896,7 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] active: Either user is active or not. True by default, but can be set to false in case of user deactivation with preserving user assets.
         :param pulumi.Input[_builtins.bool] allow_cluster_create: Allow the user to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and `cluster_id` argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
         :param pulumi.Input[_builtins.bool] allow_instance_pool_create: Allow the user to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and instance_pool_id argument.
-        :param pulumi.Input[_builtins.bool] databricks_sql_access: This is a field to allow the user to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
+        :param pulumi.Input[_builtins.bool] databricks_sql_access: This is a field to allow the user to have access to [Databricks SQL](https://databricks.com/product/databricks-sql)  UI, [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one) and through databricks_sql_endpoint.
         :param pulumi.Input[_builtins.bool] disable_as_user_deletion: Deactivate the user when deleting the resource, rather than deleting the user entirely. Defaults to `true` when the provider is configured at the account-level and `false` when configured at the workspace-level. This flag is exclusive to force_delete_repos and force_delete_home_dir flags.
         :param pulumi.Input[_builtins.str] display_name: This is an alias for the username that can be the full name of the user.
         :param pulumi.Input[_builtins.str] external_id: ID of the user in an external identity provider.
@@ -906,8 +906,8 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] home: Home folder of the user, e.g. `/Users/mr.foo@example.com`.
         :param pulumi.Input[_builtins.str] repos: Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
         :param pulumi.Input[_builtins.str] user_name: This is the username of the given user and will be their form of access and identity.  Provided username will be converted to lower case if it contains upper case characters.
-        :param pulumi.Input[_builtins.bool] workspace_access: This is a field to allow the user to have access to a Databricks Workspace.
-        :param pulumi.Input[_builtins.bool] workspace_consume: This is a field to allow the user to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspace_access` or `databricks_sql_access`.
+        :param pulumi.Input[_builtins.bool] workspace_access: This is a field to allow the user to have access to a Databricks Workspace UI and [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).
+        :param pulumi.Input[_builtins.bool] workspace_consume: This is a field to allow the user to have access only to [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).  Couldn't be used with `workspace_access` or `databricks_sql_access`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -967,7 +967,7 @@ class User(pulumi.CustomResource):
     @pulumi.getter(name="databricksSqlAccess")
     def databricks_sql_access(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        This is a field to allow the user to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
+        This is a field to allow the user to have access to [Databricks SQL](https://databricks.com/product/databricks-sql)  UI, [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one) and through databricks_sql_endpoint.
         """
         return pulumi.get(self, "databricks_sql_access")
 
@@ -1047,7 +1047,7 @@ class User(pulumi.CustomResource):
     @pulumi.getter(name="workspaceAccess")
     def workspace_access(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        This is a field to allow the user to have access to a Databricks Workspace.
+        This is a field to allow the user to have access to a Databricks Workspace UI and [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).
         """
         return pulumi.get(self, "workspace_access")
 
@@ -1055,7 +1055,7 @@ class User(pulumi.CustomResource):
     @pulumi.getter(name="workspaceConsume")
     def workspace_consume(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        This is a field to allow the user to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspace_access` or `databricks_sql_access`.
+        This is a field to allow the user to have access only to [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).  Couldn't be used with `workspace_access` or `databricks_sql_access`.
         """
         return pulumi.get(self, "workspace_consume")
 

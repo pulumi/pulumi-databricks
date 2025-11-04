@@ -17,6 +17,7 @@ import javax.annotation.Nullable;
 public final class PipelineIngestionDefinition {
     private @Nullable String connectionName;
     private @Nullable String ingestionGatewayId;
+    private @Nullable String netsuiteJarPath;
     private @Nullable List<PipelineIngestionDefinitionObject> objects;
     private @Nullable List<PipelineIngestionDefinitionSourceConfiguration> sourceConfigurations;
     private @Nullable String sourceType;
@@ -28,6 +29,9 @@ public final class PipelineIngestionDefinition {
     }
     public Optional<String> ingestionGatewayId() {
         return Optional.ofNullable(this.ingestionGatewayId);
+    }
+    public Optional<String> netsuiteJarPath() {
+        return Optional.ofNullable(this.netsuiteJarPath);
     }
     public List<PipelineIngestionDefinitionObject> objects() {
         return this.objects == null ? List.of() : this.objects;
@@ -53,6 +57,7 @@ public final class PipelineIngestionDefinition {
     public static final class Builder {
         private @Nullable String connectionName;
         private @Nullable String ingestionGatewayId;
+        private @Nullable String netsuiteJarPath;
         private @Nullable List<PipelineIngestionDefinitionObject> objects;
         private @Nullable List<PipelineIngestionDefinitionSourceConfiguration> sourceConfigurations;
         private @Nullable String sourceType;
@@ -62,6 +67,7 @@ public final class PipelineIngestionDefinition {
     	      Objects.requireNonNull(defaults);
     	      this.connectionName = defaults.connectionName;
     	      this.ingestionGatewayId = defaults.ingestionGatewayId;
+    	      this.netsuiteJarPath = defaults.netsuiteJarPath;
     	      this.objects = defaults.objects;
     	      this.sourceConfigurations = defaults.sourceConfigurations;
     	      this.sourceType = defaults.sourceType;
@@ -78,6 +84,12 @@ public final class PipelineIngestionDefinition {
         public Builder ingestionGatewayId(@Nullable String ingestionGatewayId) {
 
             this.ingestionGatewayId = ingestionGatewayId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder netsuiteJarPath(@Nullable String netsuiteJarPath) {
+
+            this.netsuiteJarPath = netsuiteJarPath;
             return this;
         }
         @CustomType.Setter
@@ -114,6 +126,7 @@ public final class PipelineIngestionDefinition {
             final var _resultValue = new PipelineIngestionDefinition();
             _resultValue.connectionName = connectionName;
             _resultValue.ingestionGatewayId = ingestionGatewayId;
+            _resultValue.netsuiteJarPath = netsuiteJarPath;
             _resultValue.objects = objects;
             _resultValue.sourceConfigurations = sourceConfigurations;
             _resultValue.sourceType = sourceType;

@@ -16,6 +16,8 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * 
  * Custom App Templates store the metadata of custom app code hosted in an external Git repository, enabling users to reuse boilerplate code when creating apps.
  * 
  * ## Example Usage
@@ -89,7 +91,7 @@ import javax.annotation.Nullable;
  * If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
  * 
  * ```sh
- * $ pulumi import databricks:index/appsSettingsCustomTemplate:AppsSettingsCustomTemplate databricks_apps_settings_custom_template &#34;name&#34;
+ * $ pulumi import databricks:index/appsSettingsCustomTemplate:AppsSettingsCustomTemplate this &#34;name&#34;
  * ```
  * 
  */
@@ -194,20 +196,6 @@ public class AppsSettingsCustomTemplate extends com.pulumi.resources.CustomResou
      */
     public Output<String> path() {
         return this.path;
-    }
-    /**
-     * Workspace ID of the resource
-     * 
-     */
-    @Export(name="workspaceId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> workspaceId;
-
-    /**
-     * @return Workspace ID of the resource
-     * 
-     */
-    public Output<Optional<String>> workspaceId() {
-        return Codegen.optional(this.workspaceId);
     }
 
     /**

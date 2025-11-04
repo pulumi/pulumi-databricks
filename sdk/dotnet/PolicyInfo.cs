@@ -10,6 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
+    /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    /// 
     /// ## Import
     /// 
     /// As of Pulumi v1.5, resources can be imported through configuration.
@@ -27,7 +29,7 @@ namespace Pulumi.Databricks
     /// If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
     /// 
     /// ```sh
-    /// $ pulumi import databricks:index/policyInfo:PolicyInfo databricks_policy_info "on_securable_type,on_securable_fullname,name"
+    /// $ pulumi import databricks:index/policyInfo:PolicyInfo this "on_securable_type,on_securable_fullname,name"
     /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/policyInfo:PolicyInfo")]
@@ -141,12 +143,6 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("whenCondition")]
         public Output<string?> WhenCondition { get; private set; } = null!;
-
-        /// <summary>
-        /// Workspace ID of the resource
-        /// </summary>
-        [Output("workspaceId")]
-        public Output<string?> WorkspaceId { get; private set; } = null!;
 
 
         /// <summary>
@@ -297,12 +293,6 @@ namespace Pulumi.Databricks
         [Input("whenCondition")]
         public Input<string>? WhenCondition { get; set; }
 
-        /// <summary>
-        /// Workspace ID of the resource
-        /// </summary>
-        [Input("workspaceId")]
-        public Input<string>? WorkspaceId { get; set; }
-
         public PolicyInfoArgs()
         {
         }
@@ -437,12 +427,6 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("whenCondition")]
         public Input<string>? WhenCondition { get; set; }
-
-        /// <summary>
-        /// Workspace ID of the resource
-        /// </summary>
-        [Input("workspaceId")]
-        public Input<string>? WorkspaceId { get; set; }
 
         public PolicyInfoState()
         {

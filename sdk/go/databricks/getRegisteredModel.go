@@ -67,7 +67,8 @@ type LookupRegisteredModelArgs struct {
 	// flag to specify if include registered models in the response for which the principal can only access selective metadata for.
 	IncludeBrowse *bool `pulumi:"includeBrowse"`
 	// block with information about the model in Unity Catalog:
-	ModelInfos []GetRegisteredModelModelInfo `pulumi:"modelInfos"`
+	ModelInfos     []GetRegisteredModelModelInfo     `pulumi:"modelInfos"`
+	ProviderConfig *GetRegisteredModelProviderConfig `pulumi:"providerConfig"`
 }
 
 // A collection of values returned by getRegisteredModel.
@@ -79,7 +80,8 @@ type LookupRegisteredModelResult struct {
 	IncludeAliases *bool  `pulumi:"includeAliases"`
 	IncludeBrowse  *bool  `pulumi:"includeBrowse"`
 	// block with information about the model in Unity Catalog:
-	ModelInfos []GetRegisteredModelModelInfo `pulumi:"modelInfos"`
+	ModelInfos     []GetRegisteredModelModelInfo     `pulumi:"modelInfos"`
+	ProviderConfig *GetRegisteredModelProviderConfig `pulumi:"providerConfig"`
 }
 
 func LookupRegisteredModelOutput(ctx *pulumi.Context, args LookupRegisteredModelOutputArgs, opts ...pulumi.InvokeOption) LookupRegisteredModelResultOutput {
@@ -100,7 +102,8 @@ type LookupRegisteredModelOutputArgs struct {
 	// flag to specify if include registered models in the response for which the principal can only access selective metadata for.
 	IncludeBrowse pulumi.BoolPtrInput `pulumi:"includeBrowse"`
 	// block with information about the model in Unity Catalog:
-	ModelInfos GetRegisteredModelModelInfoArrayInput `pulumi:"modelInfos"`
+	ModelInfos     GetRegisteredModelModelInfoArrayInput    `pulumi:"modelInfos"`
+	ProviderConfig GetRegisteredModelProviderConfigPtrInput `pulumi:"providerConfig"`
 }
 
 func (LookupRegisteredModelOutputArgs) ElementType() reflect.Type {
@@ -143,6 +146,10 @@ func (o LookupRegisteredModelResultOutput) IncludeBrowse() pulumi.BoolPtrOutput 
 // block with information about the model in Unity Catalog:
 func (o LookupRegisteredModelResultOutput) ModelInfos() GetRegisteredModelModelInfoArrayOutput {
 	return o.ApplyT(func(v LookupRegisteredModelResult) []GetRegisteredModelModelInfo { return v.ModelInfos }).(GetRegisteredModelModelInfoArrayOutput)
+}
+
+func (o LookupRegisteredModelResultOutput) ProviderConfig() GetRegisteredModelProviderConfigPtrOutput {
+	return o.ApplyT(func(v LookupRegisteredModelResult) *GetRegisteredModelProviderConfig { return v.ProviderConfig }).(GetRegisteredModelProviderConfigPtrOutput)
 }
 
 func init() {

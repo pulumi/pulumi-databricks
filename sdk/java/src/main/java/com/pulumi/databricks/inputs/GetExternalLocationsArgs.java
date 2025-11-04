@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetExternalLocationsProviderConfigArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -31,10 +32,26 @@ public final class GetExternalLocationsArgs extends com.pulumi.resources.InvokeA
         return Optional.ofNullable(this.names);
     }
 
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<GetExternalLocationsProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Optional<Output<GetExternalLocationsProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     private GetExternalLocationsArgs() {}
 
     private GetExternalLocationsArgs(GetExternalLocationsArgs $) {
         this.names = $.names;
+        this.providerConfig = $.providerConfig;
     }
 
     public static Builder builder() {
@@ -84,6 +101,27 @@ public final class GetExternalLocationsArgs extends com.pulumi.resources.InvokeA
          */
         public Builder names(String... names) {
             return names(List.of(names));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<GetExternalLocationsProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(GetExternalLocationsProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         public GetExternalLocationsArgs build() {

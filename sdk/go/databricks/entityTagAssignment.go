@@ -12,6 +12,77 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+//
+// This resource allows you to create, update, list, and delete tag assignments on Unity Catalog entities.
+//
+// ## Example Usage
+//
+// ### Basic tag assignment to a catalog
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewEntityTagAssignment(ctx, "catalog_tag", &databricks.EntityTagAssignmentArgs{
+//				EntityType: pulumi.String("catalogs"),
+//				EntityName: pulumi.String("production_catalog"),
+//				TagKey:     pulumi.String("environment"),
+//				TagValue:   pulumi.String("production"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewEntityTagAssignment(ctx, "schema_tag", &databricks.EntityTagAssignmentArgs{
+//				EntityType: pulumi.String("schemas"),
+//				EntityName: pulumi.String("production_catalog.sales_data"),
+//				TagKey:     pulumi.String("owner"),
+//				TagValue:   pulumi.String("sales-team"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewEntityTagAssignment(ctx, "table_tag", &databricks.EntityTagAssignmentArgs{
+//				EntityType: pulumi.String("tables"),
+//				EntityName: pulumi.String("production_catalog.sales_data.customer_orders"),
+//				TagKey:     pulumi.String("data_classification"),
+//				TagValue:   pulumi.String("confidential"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewEntityTagAssignment(ctx, "column_tag", &databricks.EntityTagAssignmentArgs{
+//				EntityType: pulumi.String("columns"),
+//				EntityName: pulumi.String("production_catalog.sales_data.customers.email_address"),
+//				TagKey:     pulumi.String("pii"),
+//				TagValue:   pulumi.String("email"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewEntityTagAssignment(ctx, "volume_tag", &databricks.EntityTagAssignmentArgs{
+//				EntityType: pulumi.String("volumes"),
+//				EntityName: pulumi.String("production_catalog.raw_data.landing_zone"),
+//				TagKey:     pulumi.String("purpose"),
+//				TagValue:   pulumi.String("data_ingestion"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // As of Pulumi v1.5, resources can be imported through configuration.
@@ -29,7 +100,7 @@ import (
 // If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
 //
 // ```sh
-// $ pulumi import databricks:index/entityTagAssignment:EntityTagAssignment databricks_entity_tag_assignment "entity_type,entity_name,tag_key"
+// $ pulumi import databricks:index/entityTagAssignment:EntityTagAssignment this "entity_type,entity_name,tag_key"
 // ```
 type EntityTagAssignment struct {
 	pulumi.CustomResourceState
@@ -42,8 +113,6 @@ type EntityTagAssignment struct {
 	TagKey pulumi.StringOutput `pulumi:"tagKey"`
 	// The value of the tag
 	TagValue pulumi.StringPtrOutput `pulumi:"tagValue"`
-	// Workspace ID of the resource
-	WorkspaceId pulumi.StringPtrOutput `pulumi:"workspaceId"`
 }
 
 // NewEntityTagAssignment registers a new resource with the given unique name, arguments, and options.
@@ -93,8 +162,6 @@ type entityTagAssignmentState struct {
 	TagKey *string `pulumi:"tagKey"`
 	// The value of the tag
 	TagValue *string `pulumi:"tagValue"`
-	// Workspace ID of the resource
-	WorkspaceId *string `pulumi:"workspaceId"`
 }
 
 type EntityTagAssignmentState struct {
@@ -106,8 +173,6 @@ type EntityTagAssignmentState struct {
 	TagKey pulumi.StringPtrInput
 	// The value of the tag
 	TagValue pulumi.StringPtrInput
-	// Workspace ID of the resource
-	WorkspaceId pulumi.StringPtrInput
 }
 
 func (EntityTagAssignmentState) ElementType() reflect.Type {
@@ -123,8 +188,6 @@ type entityTagAssignmentArgs struct {
 	TagKey string `pulumi:"tagKey"`
 	// The value of the tag
 	TagValue *string `pulumi:"tagValue"`
-	// Workspace ID of the resource
-	WorkspaceId *string `pulumi:"workspaceId"`
 }
 
 // The set of arguments for constructing a EntityTagAssignment resource.
@@ -137,8 +200,6 @@ type EntityTagAssignmentArgs struct {
 	TagKey pulumi.StringInput
 	// The value of the tag
 	TagValue pulumi.StringPtrInput
-	// Workspace ID of the resource
-	WorkspaceId pulumi.StringPtrInput
 }
 
 func (EntityTagAssignmentArgs) ElementType() reflect.Type {
@@ -246,11 +307,6 @@ func (o EntityTagAssignmentOutput) TagKey() pulumi.StringOutput {
 // The value of the tag
 func (o EntityTagAssignmentOutput) TagValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EntityTagAssignment) pulumi.StringPtrOutput { return v.TagValue }).(pulumi.StringPtrOutput)
-}
-
-// Workspace ID of the resource
-func (o EntityTagAssignmentOutput) WorkspaceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EntityTagAssignment) pulumi.StringPtrOutput { return v.WorkspaceId }).(pulumi.StringPtrOutput)
 }
 
 type EntityTagAssignmentArrayOutput struct{ *pulumi.OutputState }

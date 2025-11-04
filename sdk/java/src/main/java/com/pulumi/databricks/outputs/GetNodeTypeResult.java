@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetNodeTypeProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -14,9 +15,16 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetNodeTypeResult {
+    private @Nullable Boolean arm;
     private @Nullable String category;
     private @Nullable Boolean fleet;
     private @Nullable Integer gbPerCore;
+    /**
+     * @deprecated
+     * Use `arm` instead
+     * 
+     */
+    @Deprecated /* Use `arm` instead */
     private @Nullable Boolean graviton;
     /**
      * @return node type, that can be used for databricks_job, databricks_cluster, or databricks_instance_pool.
@@ -31,9 +39,13 @@ public final class GetNodeTypeResult {
     private @Nullable Integer minMemoryGb;
     private @Nullable Boolean photonDriverCapable;
     private @Nullable Boolean photonWorkerCapable;
+    private @Nullable GetNodeTypeProviderConfig providerConfig;
     private @Nullable Boolean supportPortForwarding;
 
     private GetNodeTypeResult() {}
+    public Optional<Boolean> arm() {
+        return Optional.ofNullable(this.arm);
+    }
     public Optional<String> category() {
         return Optional.ofNullable(this.category);
     }
@@ -43,6 +55,12 @@ public final class GetNodeTypeResult {
     public Optional<Integer> gbPerCore() {
         return Optional.ofNullable(this.gbPerCore);
     }
+    /**
+     * @deprecated
+     * Use `arm` instead
+     * 
+     */
+    @Deprecated /* Use `arm` instead */
     public Optional<Boolean> graviton() {
         return Optional.ofNullable(this.graviton);
     }
@@ -77,6 +95,9 @@ public final class GetNodeTypeResult {
     public Optional<Boolean> photonWorkerCapable() {
         return Optional.ofNullable(this.photonWorkerCapable);
     }
+    public Optional<GetNodeTypeProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
     public Optional<Boolean> supportPortForwarding() {
         return Optional.ofNullable(this.supportPortForwarding);
     }
@@ -90,6 +111,7 @@ public final class GetNodeTypeResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Boolean arm;
         private @Nullable String category;
         private @Nullable Boolean fleet;
         private @Nullable Integer gbPerCore;
@@ -103,10 +125,12 @@ public final class GetNodeTypeResult {
         private @Nullable Integer minMemoryGb;
         private @Nullable Boolean photonDriverCapable;
         private @Nullable Boolean photonWorkerCapable;
+        private @Nullable GetNodeTypeProviderConfig providerConfig;
         private @Nullable Boolean supportPortForwarding;
         public Builder() {}
         public Builder(GetNodeTypeResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.arm = defaults.arm;
     	      this.category = defaults.category;
     	      this.fleet = defaults.fleet;
     	      this.gbPerCore = defaults.gbPerCore;
@@ -120,9 +144,16 @@ public final class GetNodeTypeResult {
     	      this.minMemoryGb = defaults.minMemoryGb;
     	      this.photonDriverCapable = defaults.photonDriverCapable;
     	      this.photonWorkerCapable = defaults.photonWorkerCapable;
+    	      this.providerConfig = defaults.providerConfig;
     	      this.supportPortForwarding = defaults.supportPortForwarding;
         }
 
+        @CustomType.Setter
+        public Builder arm(@Nullable Boolean arm) {
+
+            this.arm = arm;
+            return this;
+        }
         @CustomType.Setter
         public Builder category(@Nullable String category) {
 
@@ -204,6 +235,12 @@ public final class GetNodeTypeResult {
             return this;
         }
         @CustomType.Setter
+        public Builder providerConfig(@Nullable GetNodeTypeProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder supportPortForwarding(@Nullable Boolean supportPortForwarding) {
 
             this.supportPortForwarding = supportPortForwarding;
@@ -211,6 +248,7 @@ public final class GetNodeTypeResult {
         }
         public GetNodeTypeResult build() {
             final var _resultValue = new GetNodeTypeResult();
+            _resultValue.arm = arm;
             _resultValue.category = category;
             _resultValue.fleet = fleet;
             _resultValue.gbPerCore = gbPerCore;
@@ -224,6 +262,7 @@ public final class GetNodeTypeResult {
             _resultValue.minMemoryGb = minMemoryGb;
             _resultValue.photonDriverCapable = photonDriverCapable;
             _resultValue.photonWorkerCapable = photonWorkerCapable;
+            _resultValue.providerConfig = providerConfig;
             _resultValue.supportPortForwarding = supportPortForwarding;
             return _resultValue;
         }

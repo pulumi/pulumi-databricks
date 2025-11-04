@@ -8,12 +8,10 @@ import com.pulumi.databricks.outputs.GetWorkspaceSettingV2AibiDashboardEmbedding
 import com.pulumi.databricks.outputs.GetWorkspaceSettingV2AibiDashboardEmbeddingApprovedDomains;
 import com.pulumi.databricks.outputs.GetWorkspaceSettingV2AutomaticClusterUpdateWorkspace;
 import com.pulumi.databricks.outputs.GetWorkspaceSettingV2BooleanVal;
-import com.pulumi.databricks.outputs.GetWorkspaceSettingV2DefaultDataSecurityMode;
 import com.pulumi.databricks.outputs.GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy;
 import com.pulumi.databricks.outputs.GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomains;
 import com.pulumi.databricks.outputs.GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspace;
 import com.pulumi.databricks.outputs.GetWorkspaceSettingV2EffectiveBooleanVal;
-import com.pulumi.databricks.outputs.GetWorkspaceSettingV2EffectiveDefaultDataSecurityMode;
 import com.pulumi.databricks.outputs.GetWorkspaceSettingV2EffectiveIntegerVal;
 import com.pulumi.databricks.outputs.GetWorkspaceSettingV2EffectivePersonalCompute;
 import com.pulumi.databricks.outputs.GetWorkspaceSettingV2EffectiveRestrictWorkspaceAdmins;
@@ -25,8 +23,6 @@ import com.pulumi.databricks.outputs.GetWorkspaceSettingV2StringVal;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetWorkspaceSettingV2Result {
@@ -34,52 +30,42 @@ public final class GetWorkspaceSettingV2Result {
      * @return (AibiDashboardEmbeddingAccessPolicy)
      * 
      */
-    private @Nullable GetWorkspaceSettingV2AibiDashboardEmbeddingAccessPolicy aibiDashboardEmbeddingAccessPolicy;
+    private GetWorkspaceSettingV2AibiDashboardEmbeddingAccessPolicy aibiDashboardEmbeddingAccessPolicy;
     /**
      * @return (AibiDashboardEmbeddingApprovedDomains)
      * 
      */
-    private @Nullable GetWorkspaceSettingV2AibiDashboardEmbeddingApprovedDomains aibiDashboardEmbeddingApprovedDomains;
-    /**
-     * @return (ClusterAutoRestartMessage) - todo: Mark these Public after onboarded to DSL
-     * 
-     */
-    private @Nullable GetWorkspaceSettingV2AutomaticClusterUpdateWorkspace automaticClusterUpdateWorkspace;
-    /**
-     * @return (BooleanMessage)
-     * 
-     */
-    private @Nullable GetWorkspaceSettingV2BooleanVal booleanVal;
-    /**
-     * @return (DefaultDataSecurityModeMessage)
-     * 
-     */
-    private @Nullable GetWorkspaceSettingV2DefaultDataSecurityMode defaultDataSecurityMode;
-    /**
-     * @return (AibiDashboardEmbeddingAccessPolicy)
-     * 
-     */
-    private @Nullable GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy effectiveAibiDashboardEmbeddingAccessPolicy;
-    /**
-     * @return (AibiDashboardEmbeddingApprovedDomains)
-     * 
-     */
-    private @Nullable GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomains effectiveAibiDashboardEmbeddingApprovedDomains;
+    private GetWorkspaceSettingV2AibiDashboardEmbeddingApprovedDomains aibiDashboardEmbeddingApprovedDomains;
     /**
      * @return (ClusterAutoRestartMessage)
      * 
      */
-    private @Nullable GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspace effectiveAutomaticClusterUpdateWorkspace;
+    private GetWorkspaceSettingV2AutomaticClusterUpdateWorkspace automaticClusterUpdateWorkspace;
+    /**
+     * @return (BooleanMessage)
+     * 
+     */
+    private GetWorkspaceSettingV2BooleanVal booleanVal;
+    /**
+     * @return (AibiDashboardEmbeddingAccessPolicy)
+     * 
+     */
+    private GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy effectiveAibiDashboardEmbeddingAccessPolicy;
+    /**
+     * @return (AibiDashboardEmbeddingApprovedDomains)
+     * 
+     */
+    private GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomains effectiveAibiDashboardEmbeddingApprovedDomains;
+    /**
+     * @return (ClusterAutoRestartMessage)
+     * 
+     */
+    private GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspace effectiveAutomaticClusterUpdateWorkspace;
     /**
      * @return (BooleanMessage)
      * 
      */
     private GetWorkspaceSettingV2EffectiveBooleanVal effectiveBooleanVal;
-    /**
-     * @return (DefaultDataSecurityModeMessage)
-     * 
-     */
-    private @Nullable GetWorkspaceSettingV2EffectiveDefaultDataSecurityMode effectiveDefaultDataSecurityMode;
     /**
      * @return (IntegerMessage)
      * 
@@ -89,12 +75,12 @@ public final class GetWorkspaceSettingV2Result {
      * @return (PersonalComputeMessage)
      * 
      */
-    private @Nullable GetWorkspaceSettingV2EffectivePersonalCompute effectivePersonalCompute;
+    private GetWorkspaceSettingV2EffectivePersonalCompute effectivePersonalCompute;
     /**
      * @return (RestrictWorkspaceAdminsMessage)
      * 
      */
-    private @Nullable GetWorkspaceSettingV2EffectiveRestrictWorkspaceAdmins effectiveRestrictWorkspaceAdmins;
+    private GetWorkspaceSettingV2EffectiveRestrictWorkspaceAdmins effectiveRestrictWorkspaceAdmins;
     /**
      * @return (StringMessage)
      * 
@@ -109,85 +95,77 @@ public final class GetWorkspaceSettingV2Result {
      * @return (IntegerMessage)
      * 
      */
-    private @Nullable GetWorkspaceSettingV2IntegerVal integerVal;
+    private GetWorkspaceSettingV2IntegerVal integerVal;
     /**
      * @return (string) - Name of the setting
      * 
      */
-    private @Nullable String name;
+    private String name;
     /**
      * @return (PersonalComputeMessage)
      * 
      */
-    private @Nullable GetWorkspaceSettingV2PersonalCompute personalCompute;
+    private GetWorkspaceSettingV2PersonalCompute personalCompute;
     /**
      * @return (RestrictWorkspaceAdminsMessage)
      * 
      */
-    private @Nullable GetWorkspaceSettingV2RestrictWorkspaceAdmins restrictWorkspaceAdmins;
+    private GetWorkspaceSettingV2RestrictWorkspaceAdmins restrictWorkspaceAdmins;
     /**
      * @return (StringMessage)
      * 
      */
-    private @Nullable GetWorkspaceSettingV2StringVal stringVal;
-    private @Nullable String workspaceId;
+    private GetWorkspaceSettingV2StringVal stringVal;
 
     private GetWorkspaceSettingV2Result() {}
     /**
      * @return (AibiDashboardEmbeddingAccessPolicy)
      * 
      */
-    public Optional<GetWorkspaceSettingV2AibiDashboardEmbeddingAccessPolicy> aibiDashboardEmbeddingAccessPolicy() {
-        return Optional.ofNullable(this.aibiDashboardEmbeddingAccessPolicy);
+    public GetWorkspaceSettingV2AibiDashboardEmbeddingAccessPolicy aibiDashboardEmbeddingAccessPolicy() {
+        return this.aibiDashboardEmbeddingAccessPolicy;
     }
     /**
      * @return (AibiDashboardEmbeddingApprovedDomains)
      * 
      */
-    public Optional<GetWorkspaceSettingV2AibiDashboardEmbeddingApprovedDomains> aibiDashboardEmbeddingApprovedDomains() {
-        return Optional.ofNullable(this.aibiDashboardEmbeddingApprovedDomains);
-    }
-    /**
-     * @return (ClusterAutoRestartMessage) - todo: Mark these Public after onboarded to DSL
-     * 
-     */
-    public Optional<GetWorkspaceSettingV2AutomaticClusterUpdateWorkspace> automaticClusterUpdateWorkspace() {
-        return Optional.ofNullable(this.automaticClusterUpdateWorkspace);
-    }
-    /**
-     * @return (BooleanMessage)
-     * 
-     */
-    public Optional<GetWorkspaceSettingV2BooleanVal> booleanVal() {
-        return Optional.ofNullable(this.booleanVal);
-    }
-    /**
-     * @return (DefaultDataSecurityModeMessage)
-     * 
-     */
-    public Optional<GetWorkspaceSettingV2DefaultDataSecurityMode> defaultDataSecurityMode() {
-        return Optional.ofNullable(this.defaultDataSecurityMode);
-    }
-    /**
-     * @return (AibiDashboardEmbeddingAccessPolicy)
-     * 
-     */
-    public Optional<GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy> effectiveAibiDashboardEmbeddingAccessPolicy() {
-        return Optional.ofNullable(this.effectiveAibiDashboardEmbeddingAccessPolicy);
-    }
-    /**
-     * @return (AibiDashboardEmbeddingApprovedDomains)
-     * 
-     */
-    public Optional<GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomains> effectiveAibiDashboardEmbeddingApprovedDomains() {
-        return Optional.ofNullable(this.effectiveAibiDashboardEmbeddingApprovedDomains);
+    public GetWorkspaceSettingV2AibiDashboardEmbeddingApprovedDomains aibiDashboardEmbeddingApprovedDomains() {
+        return this.aibiDashboardEmbeddingApprovedDomains;
     }
     /**
      * @return (ClusterAutoRestartMessage)
      * 
      */
-    public Optional<GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspace> effectiveAutomaticClusterUpdateWorkspace() {
-        return Optional.ofNullable(this.effectiveAutomaticClusterUpdateWorkspace);
+    public GetWorkspaceSettingV2AutomaticClusterUpdateWorkspace automaticClusterUpdateWorkspace() {
+        return this.automaticClusterUpdateWorkspace;
+    }
+    /**
+     * @return (BooleanMessage)
+     * 
+     */
+    public GetWorkspaceSettingV2BooleanVal booleanVal() {
+        return this.booleanVal;
+    }
+    /**
+     * @return (AibiDashboardEmbeddingAccessPolicy)
+     * 
+     */
+    public GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy effectiveAibiDashboardEmbeddingAccessPolicy() {
+        return this.effectiveAibiDashboardEmbeddingAccessPolicy;
+    }
+    /**
+     * @return (AibiDashboardEmbeddingApprovedDomains)
+     * 
+     */
+    public GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomains effectiveAibiDashboardEmbeddingApprovedDomains() {
+        return this.effectiveAibiDashboardEmbeddingApprovedDomains;
+    }
+    /**
+     * @return (ClusterAutoRestartMessage)
+     * 
+     */
+    public GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspace effectiveAutomaticClusterUpdateWorkspace() {
+        return this.effectiveAutomaticClusterUpdateWorkspace;
     }
     /**
      * @return (BooleanMessage)
@@ -195,13 +173,6 @@ public final class GetWorkspaceSettingV2Result {
      */
     public GetWorkspaceSettingV2EffectiveBooleanVal effectiveBooleanVal() {
         return this.effectiveBooleanVal;
-    }
-    /**
-     * @return (DefaultDataSecurityModeMessage)
-     * 
-     */
-    public Optional<GetWorkspaceSettingV2EffectiveDefaultDataSecurityMode> effectiveDefaultDataSecurityMode() {
-        return Optional.ofNullable(this.effectiveDefaultDataSecurityMode);
     }
     /**
      * @return (IntegerMessage)
@@ -214,15 +185,15 @@ public final class GetWorkspaceSettingV2Result {
      * @return (PersonalComputeMessage)
      * 
      */
-    public Optional<GetWorkspaceSettingV2EffectivePersonalCompute> effectivePersonalCompute() {
-        return Optional.ofNullable(this.effectivePersonalCompute);
+    public GetWorkspaceSettingV2EffectivePersonalCompute effectivePersonalCompute() {
+        return this.effectivePersonalCompute;
     }
     /**
      * @return (RestrictWorkspaceAdminsMessage)
      * 
      */
-    public Optional<GetWorkspaceSettingV2EffectiveRestrictWorkspaceAdmins> effectiveRestrictWorkspaceAdmins() {
-        return Optional.ofNullable(this.effectiveRestrictWorkspaceAdmins);
+    public GetWorkspaceSettingV2EffectiveRestrictWorkspaceAdmins effectiveRestrictWorkspaceAdmins() {
+        return this.effectiveRestrictWorkspaceAdmins;
     }
     /**
      * @return (StringMessage)
@@ -242,39 +213,36 @@ public final class GetWorkspaceSettingV2Result {
      * @return (IntegerMessage)
      * 
      */
-    public Optional<GetWorkspaceSettingV2IntegerVal> integerVal() {
-        return Optional.ofNullable(this.integerVal);
+    public GetWorkspaceSettingV2IntegerVal integerVal() {
+        return this.integerVal;
     }
     /**
      * @return (string) - Name of the setting
      * 
      */
-    public Optional<String> name() {
-        return Optional.ofNullable(this.name);
+    public String name() {
+        return this.name;
     }
     /**
      * @return (PersonalComputeMessage)
      * 
      */
-    public Optional<GetWorkspaceSettingV2PersonalCompute> personalCompute() {
-        return Optional.ofNullable(this.personalCompute);
+    public GetWorkspaceSettingV2PersonalCompute personalCompute() {
+        return this.personalCompute;
     }
     /**
      * @return (RestrictWorkspaceAdminsMessage)
      * 
      */
-    public Optional<GetWorkspaceSettingV2RestrictWorkspaceAdmins> restrictWorkspaceAdmins() {
-        return Optional.ofNullable(this.restrictWorkspaceAdmins);
+    public GetWorkspaceSettingV2RestrictWorkspaceAdmins restrictWorkspaceAdmins() {
+        return this.restrictWorkspaceAdmins;
     }
     /**
      * @return (StringMessage)
      * 
      */
-    public Optional<GetWorkspaceSettingV2StringVal> stringVal() {
-        return Optional.ofNullable(this.stringVal);
-    }
-    public Optional<String> workspaceId() {
-        return Optional.ofNullable(this.workspaceId);
+    public GetWorkspaceSettingV2StringVal stringVal() {
+        return this.stringVal;
     }
 
     public static Builder builder() {
@@ -286,27 +254,24 @@ public final class GetWorkspaceSettingV2Result {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable GetWorkspaceSettingV2AibiDashboardEmbeddingAccessPolicy aibiDashboardEmbeddingAccessPolicy;
-        private @Nullable GetWorkspaceSettingV2AibiDashboardEmbeddingApprovedDomains aibiDashboardEmbeddingApprovedDomains;
-        private @Nullable GetWorkspaceSettingV2AutomaticClusterUpdateWorkspace automaticClusterUpdateWorkspace;
-        private @Nullable GetWorkspaceSettingV2BooleanVal booleanVal;
-        private @Nullable GetWorkspaceSettingV2DefaultDataSecurityMode defaultDataSecurityMode;
-        private @Nullable GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy effectiveAibiDashboardEmbeddingAccessPolicy;
-        private @Nullable GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomains effectiveAibiDashboardEmbeddingApprovedDomains;
-        private @Nullable GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspace effectiveAutomaticClusterUpdateWorkspace;
+        private GetWorkspaceSettingV2AibiDashboardEmbeddingAccessPolicy aibiDashboardEmbeddingAccessPolicy;
+        private GetWorkspaceSettingV2AibiDashboardEmbeddingApprovedDomains aibiDashboardEmbeddingApprovedDomains;
+        private GetWorkspaceSettingV2AutomaticClusterUpdateWorkspace automaticClusterUpdateWorkspace;
+        private GetWorkspaceSettingV2BooleanVal booleanVal;
+        private GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy effectiveAibiDashboardEmbeddingAccessPolicy;
+        private GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomains effectiveAibiDashboardEmbeddingApprovedDomains;
+        private GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspace effectiveAutomaticClusterUpdateWorkspace;
         private GetWorkspaceSettingV2EffectiveBooleanVal effectiveBooleanVal;
-        private @Nullable GetWorkspaceSettingV2EffectiveDefaultDataSecurityMode effectiveDefaultDataSecurityMode;
         private GetWorkspaceSettingV2EffectiveIntegerVal effectiveIntegerVal;
-        private @Nullable GetWorkspaceSettingV2EffectivePersonalCompute effectivePersonalCompute;
-        private @Nullable GetWorkspaceSettingV2EffectiveRestrictWorkspaceAdmins effectiveRestrictWorkspaceAdmins;
+        private GetWorkspaceSettingV2EffectivePersonalCompute effectivePersonalCompute;
+        private GetWorkspaceSettingV2EffectiveRestrictWorkspaceAdmins effectiveRestrictWorkspaceAdmins;
         private GetWorkspaceSettingV2EffectiveStringVal effectiveStringVal;
         private String id;
-        private @Nullable GetWorkspaceSettingV2IntegerVal integerVal;
-        private @Nullable String name;
-        private @Nullable GetWorkspaceSettingV2PersonalCompute personalCompute;
-        private @Nullable GetWorkspaceSettingV2RestrictWorkspaceAdmins restrictWorkspaceAdmins;
-        private @Nullable GetWorkspaceSettingV2StringVal stringVal;
-        private @Nullable String workspaceId;
+        private GetWorkspaceSettingV2IntegerVal integerVal;
+        private String name;
+        private GetWorkspaceSettingV2PersonalCompute personalCompute;
+        private GetWorkspaceSettingV2RestrictWorkspaceAdmins restrictWorkspaceAdmins;
+        private GetWorkspaceSettingV2StringVal stringVal;
         public Builder() {}
         public Builder(GetWorkspaceSettingV2Result defaults) {
     	      Objects.requireNonNull(defaults);
@@ -314,12 +279,10 @@ public final class GetWorkspaceSettingV2Result {
     	      this.aibiDashboardEmbeddingApprovedDomains = defaults.aibiDashboardEmbeddingApprovedDomains;
     	      this.automaticClusterUpdateWorkspace = defaults.automaticClusterUpdateWorkspace;
     	      this.booleanVal = defaults.booleanVal;
-    	      this.defaultDataSecurityMode = defaults.defaultDataSecurityMode;
     	      this.effectiveAibiDashboardEmbeddingAccessPolicy = defaults.effectiveAibiDashboardEmbeddingAccessPolicy;
     	      this.effectiveAibiDashboardEmbeddingApprovedDomains = defaults.effectiveAibiDashboardEmbeddingApprovedDomains;
     	      this.effectiveAutomaticClusterUpdateWorkspace = defaults.effectiveAutomaticClusterUpdateWorkspace;
     	      this.effectiveBooleanVal = defaults.effectiveBooleanVal;
-    	      this.effectiveDefaultDataSecurityMode = defaults.effectiveDefaultDataSecurityMode;
     	      this.effectiveIntegerVal = defaults.effectiveIntegerVal;
     	      this.effectivePersonalCompute = defaults.effectivePersonalCompute;
     	      this.effectiveRestrictWorkspaceAdmins = defaults.effectiveRestrictWorkspaceAdmins;
@@ -330,54 +293,61 @@ public final class GetWorkspaceSettingV2Result {
     	      this.personalCompute = defaults.personalCompute;
     	      this.restrictWorkspaceAdmins = defaults.restrictWorkspaceAdmins;
     	      this.stringVal = defaults.stringVal;
-    	      this.workspaceId = defaults.workspaceId;
         }
 
         @CustomType.Setter
-        public Builder aibiDashboardEmbeddingAccessPolicy(@Nullable GetWorkspaceSettingV2AibiDashboardEmbeddingAccessPolicy aibiDashboardEmbeddingAccessPolicy) {
-
+        public Builder aibiDashboardEmbeddingAccessPolicy(GetWorkspaceSettingV2AibiDashboardEmbeddingAccessPolicy aibiDashboardEmbeddingAccessPolicy) {
+            if (aibiDashboardEmbeddingAccessPolicy == null) {
+              throw new MissingRequiredPropertyException("GetWorkspaceSettingV2Result", "aibiDashboardEmbeddingAccessPolicy");
+            }
             this.aibiDashboardEmbeddingAccessPolicy = aibiDashboardEmbeddingAccessPolicy;
             return this;
         }
         @CustomType.Setter
-        public Builder aibiDashboardEmbeddingApprovedDomains(@Nullable GetWorkspaceSettingV2AibiDashboardEmbeddingApprovedDomains aibiDashboardEmbeddingApprovedDomains) {
-
+        public Builder aibiDashboardEmbeddingApprovedDomains(GetWorkspaceSettingV2AibiDashboardEmbeddingApprovedDomains aibiDashboardEmbeddingApprovedDomains) {
+            if (aibiDashboardEmbeddingApprovedDomains == null) {
+              throw new MissingRequiredPropertyException("GetWorkspaceSettingV2Result", "aibiDashboardEmbeddingApprovedDomains");
+            }
             this.aibiDashboardEmbeddingApprovedDomains = aibiDashboardEmbeddingApprovedDomains;
             return this;
         }
         @CustomType.Setter
-        public Builder automaticClusterUpdateWorkspace(@Nullable GetWorkspaceSettingV2AutomaticClusterUpdateWorkspace automaticClusterUpdateWorkspace) {
-
+        public Builder automaticClusterUpdateWorkspace(GetWorkspaceSettingV2AutomaticClusterUpdateWorkspace automaticClusterUpdateWorkspace) {
+            if (automaticClusterUpdateWorkspace == null) {
+              throw new MissingRequiredPropertyException("GetWorkspaceSettingV2Result", "automaticClusterUpdateWorkspace");
+            }
             this.automaticClusterUpdateWorkspace = automaticClusterUpdateWorkspace;
             return this;
         }
         @CustomType.Setter
-        public Builder booleanVal(@Nullable GetWorkspaceSettingV2BooleanVal booleanVal) {
-
+        public Builder booleanVal(GetWorkspaceSettingV2BooleanVal booleanVal) {
+            if (booleanVal == null) {
+              throw new MissingRequiredPropertyException("GetWorkspaceSettingV2Result", "booleanVal");
+            }
             this.booleanVal = booleanVal;
             return this;
         }
         @CustomType.Setter
-        public Builder defaultDataSecurityMode(@Nullable GetWorkspaceSettingV2DefaultDataSecurityMode defaultDataSecurityMode) {
-
-            this.defaultDataSecurityMode = defaultDataSecurityMode;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder effectiveAibiDashboardEmbeddingAccessPolicy(@Nullable GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy effectiveAibiDashboardEmbeddingAccessPolicy) {
-
+        public Builder effectiveAibiDashboardEmbeddingAccessPolicy(GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy effectiveAibiDashboardEmbeddingAccessPolicy) {
+            if (effectiveAibiDashboardEmbeddingAccessPolicy == null) {
+              throw new MissingRequiredPropertyException("GetWorkspaceSettingV2Result", "effectiveAibiDashboardEmbeddingAccessPolicy");
+            }
             this.effectiveAibiDashboardEmbeddingAccessPolicy = effectiveAibiDashboardEmbeddingAccessPolicy;
             return this;
         }
         @CustomType.Setter
-        public Builder effectiveAibiDashboardEmbeddingApprovedDomains(@Nullable GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomains effectiveAibiDashboardEmbeddingApprovedDomains) {
-
+        public Builder effectiveAibiDashboardEmbeddingApprovedDomains(GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomains effectiveAibiDashboardEmbeddingApprovedDomains) {
+            if (effectiveAibiDashboardEmbeddingApprovedDomains == null) {
+              throw new MissingRequiredPropertyException("GetWorkspaceSettingV2Result", "effectiveAibiDashboardEmbeddingApprovedDomains");
+            }
             this.effectiveAibiDashboardEmbeddingApprovedDomains = effectiveAibiDashboardEmbeddingApprovedDomains;
             return this;
         }
         @CustomType.Setter
-        public Builder effectiveAutomaticClusterUpdateWorkspace(@Nullable GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspace effectiveAutomaticClusterUpdateWorkspace) {
-
+        public Builder effectiveAutomaticClusterUpdateWorkspace(GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspace effectiveAutomaticClusterUpdateWorkspace) {
+            if (effectiveAutomaticClusterUpdateWorkspace == null) {
+              throw new MissingRequiredPropertyException("GetWorkspaceSettingV2Result", "effectiveAutomaticClusterUpdateWorkspace");
+            }
             this.effectiveAutomaticClusterUpdateWorkspace = effectiveAutomaticClusterUpdateWorkspace;
             return this;
         }
@@ -390,12 +360,6 @@ public final class GetWorkspaceSettingV2Result {
             return this;
         }
         @CustomType.Setter
-        public Builder effectiveDefaultDataSecurityMode(@Nullable GetWorkspaceSettingV2EffectiveDefaultDataSecurityMode effectiveDefaultDataSecurityMode) {
-
-            this.effectiveDefaultDataSecurityMode = effectiveDefaultDataSecurityMode;
-            return this;
-        }
-        @CustomType.Setter
         public Builder effectiveIntegerVal(GetWorkspaceSettingV2EffectiveIntegerVal effectiveIntegerVal) {
             if (effectiveIntegerVal == null) {
               throw new MissingRequiredPropertyException("GetWorkspaceSettingV2Result", "effectiveIntegerVal");
@@ -404,14 +368,18 @@ public final class GetWorkspaceSettingV2Result {
             return this;
         }
         @CustomType.Setter
-        public Builder effectivePersonalCompute(@Nullable GetWorkspaceSettingV2EffectivePersonalCompute effectivePersonalCompute) {
-
+        public Builder effectivePersonalCompute(GetWorkspaceSettingV2EffectivePersonalCompute effectivePersonalCompute) {
+            if (effectivePersonalCompute == null) {
+              throw new MissingRequiredPropertyException("GetWorkspaceSettingV2Result", "effectivePersonalCompute");
+            }
             this.effectivePersonalCompute = effectivePersonalCompute;
             return this;
         }
         @CustomType.Setter
-        public Builder effectiveRestrictWorkspaceAdmins(@Nullable GetWorkspaceSettingV2EffectiveRestrictWorkspaceAdmins effectiveRestrictWorkspaceAdmins) {
-
+        public Builder effectiveRestrictWorkspaceAdmins(GetWorkspaceSettingV2EffectiveRestrictWorkspaceAdmins effectiveRestrictWorkspaceAdmins) {
+            if (effectiveRestrictWorkspaceAdmins == null) {
+              throw new MissingRequiredPropertyException("GetWorkspaceSettingV2Result", "effectiveRestrictWorkspaceAdmins");
+            }
             this.effectiveRestrictWorkspaceAdmins = effectiveRestrictWorkspaceAdmins;
             return this;
         }
@@ -432,39 +400,43 @@ public final class GetWorkspaceSettingV2Result {
             return this;
         }
         @CustomType.Setter
-        public Builder integerVal(@Nullable GetWorkspaceSettingV2IntegerVal integerVal) {
-
+        public Builder integerVal(GetWorkspaceSettingV2IntegerVal integerVal) {
+            if (integerVal == null) {
+              throw new MissingRequiredPropertyException("GetWorkspaceSettingV2Result", "integerVal");
+            }
             this.integerVal = integerVal;
             return this;
         }
         @CustomType.Setter
-        public Builder name(@Nullable String name) {
-
+        public Builder name(String name) {
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetWorkspaceSettingV2Result", "name");
+            }
             this.name = name;
             return this;
         }
         @CustomType.Setter
-        public Builder personalCompute(@Nullable GetWorkspaceSettingV2PersonalCompute personalCompute) {
-
+        public Builder personalCompute(GetWorkspaceSettingV2PersonalCompute personalCompute) {
+            if (personalCompute == null) {
+              throw new MissingRequiredPropertyException("GetWorkspaceSettingV2Result", "personalCompute");
+            }
             this.personalCompute = personalCompute;
             return this;
         }
         @CustomType.Setter
-        public Builder restrictWorkspaceAdmins(@Nullable GetWorkspaceSettingV2RestrictWorkspaceAdmins restrictWorkspaceAdmins) {
-
+        public Builder restrictWorkspaceAdmins(GetWorkspaceSettingV2RestrictWorkspaceAdmins restrictWorkspaceAdmins) {
+            if (restrictWorkspaceAdmins == null) {
+              throw new MissingRequiredPropertyException("GetWorkspaceSettingV2Result", "restrictWorkspaceAdmins");
+            }
             this.restrictWorkspaceAdmins = restrictWorkspaceAdmins;
             return this;
         }
         @CustomType.Setter
-        public Builder stringVal(@Nullable GetWorkspaceSettingV2StringVal stringVal) {
-
+        public Builder stringVal(GetWorkspaceSettingV2StringVal stringVal) {
+            if (stringVal == null) {
+              throw new MissingRequiredPropertyException("GetWorkspaceSettingV2Result", "stringVal");
+            }
             this.stringVal = stringVal;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder workspaceId(@Nullable String workspaceId) {
-
-            this.workspaceId = workspaceId;
             return this;
         }
         public GetWorkspaceSettingV2Result build() {
@@ -473,12 +445,10 @@ public final class GetWorkspaceSettingV2Result {
             _resultValue.aibiDashboardEmbeddingApprovedDomains = aibiDashboardEmbeddingApprovedDomains;
             _resultValue.automaticClusterUpdateWorkspace = automaticClusterUpdateWorkspace;
             _resultValue.booleanVal = booleanVal;
-            _resultValue.defaultDataSecurityMode = defaultDataSecurityMode;
             _resultValue.effectiveAibiDashboardEmbeddingAccessPolicy = effectiveAibiDashboardEmbeddingAccessPolicy;
             _resultValue.effectiveAibiDashboardEmbeddingApprovedDomains = effectiveAibiDashboardEmbeddingApprovedDomains;
             _resultValue.effectiveAutomaticClusterUpdateWorkspace = effectiveAutomaticClusterUpdateWorkspace;
             _resultValue.effectiveBooleanVal = effectiveBooleanVal;
-            _resultValue.effectiveDefaultDataSecurityMode = effectiveDefaultDataSecurityMode;
             _resultValue.effectiveIntegerVal = effectiveIntegerVal;
             _resultValue.effectivePersonalCompute = effectivePersonalCompute;
             _resultValue.effectiveRestrictWorkspaceAdmins = effectiveRestrictWorkspaceAdmins;
@@ -489,7 +459,6 @@ public final class GetWorkspaceSettingV2Result {
             _resultValue.personalCompute = personalCompute;
             _resultValue.restrictWorkspaceAdmins = restrictWorkspaceAdmins;
             _resultValue.stringVal = stringVal;
-            _resultValue.workspaceId = workspaceId;
             return _resultValue;
         }
     }

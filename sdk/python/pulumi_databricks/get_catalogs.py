@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetCatalogsResult',
@@ -26,13 +28,16 @@ class GetCatalogsResult:
     """
     A collection of values returned by getCatalogs.
     """
-    def __init__(__self__, id=None, ids=None):
+    def __init__(__self__, id=None, ids=None, provider_config=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
         pulumi.set(__self__, "ids", ids)
+        if provider_config and not isinstance(provider_config, dict):
+            raise TypeError("Expected argument 'provider_config' to be a dict")
+        pulumi.set(__self__, "provider_config", provider_config)
 
     @_builtins.property
     @pulumi.getter
@@ -50,6 +55,11 @@ class GetCatalogsResult:
         """
         return pulumi.get(self, "ids")
 
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional['outputs.GetCatalogsProviderConfigResult']:
+        return pulumi.get(self, "provider_config")
+
 
 class AwaitableGetCatalogsResult(GetCatalogsResult):
     # pylint: disable=using-constant-test
@@ -58,10 +68,12 @@ class AwaitableGetCatalogsResult(GetCatalogsResult):
             yield self
         return GetCatalogsResult(
             id=self.id,
-            ids=self.ids)
+            ids=self.ids,
+            provider_config=self.provider_config)
 
 
 def get_catalogs(ids: Optional[Sequence[_builtins.str]] = None,
+                 provider_config: Optional[Union['GetCatalogsProviderConfigArgs', 'GetCatalogsProviderConfigArgsDict']] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCatalogsResult:
     """
     Retrieves a list of Catalog ids, that were created by Pulumi or manually, so that special handling could be applied.
@@ -89,16 +101,20 @@ def get_catalogs(ids: Optional[Sequence[_builtins.str]] = None,
 
 
     :param Sequence[_builtins.str] ids: set of Catalog names
+    :param Union['GetCatalogsProviderConfigArgs', 'GetCatalogsProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     """
     __args__ = dict()
     __args__['ids'] = ids
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getCatalogs:getCatalogs', __args__, opts=opts, typ=GetCatalogsResult).value
 
     return AwaitableGetCatalogsResult(
         id=pulumi.get(__ret__, 'id'),
-        ids=pulumi.get(__ret__, 'ids'))
+        ids=pulumi.get(__ret__, 'ids'),
+        provider_config=pulumi.get(__ret__, 'provider_config'))
 def get_catalogs_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
+                        provider_config: Optional[pulumi.Input[Optional[Union['GetCatalogsProviderConfigArgs', 'GetCatalogsProviderConfigArgsDict']]]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCatalogsResult]:
     """
     Retrieves a list of Catalog ids, that were created by Pulumi or manually, so that special handling could be applied.
@@ -126,11 +142,14 @@ def get_catalogs_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.s
 
 
     :param Sequence[_builtins.str] ids: set of Catalog names
+    :param Union['GetCatalogsProviderConfigArgs', 'GetCatalogsProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     """
     __args__ = dict()
     __args__['ids'] = ids
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getCatalogs:getCatalogs', __args__, opts=opts, typ=GetCatalogsResult)
     return __ret__.apply(lambda __response__: GetCatalogsResult(
         id=pulumi.get(__response__, 'id'),
-        ids=pulumi.get(__response__, 'ids')))
+        ids=pulumi.get(__response__, 'ids'),
+        provider_config=pulumi.get(__response__, 'provider_config')))

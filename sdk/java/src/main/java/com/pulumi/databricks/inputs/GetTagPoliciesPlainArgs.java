@@ -4,7 +4,7 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
-import java.lang.String;
+import java.lang.Integer;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -15,24 +15,28 @@ public final class GetTagPoliciesPlainArgs extends com.pulumi.resources.InvokeAr
     public static final GetTagPoliciesPlainArgs Empty = new GetTagPoliciesPlainArgs();
 
     /**
-     * Workspace ID of the resource
+     * The maximum number of results to return in this request. Fewer results may be returned than requested. If
+     * unspecified or set to 0, this defaults to 1000. The maximum value is 1000; values above 1000 will be coerced down
+     * to 1000
      * 
      */
-    @Import(name="workspaceId")
-    private @Nullable String workspaceId;
+    @Import(name="pageSize")
+    private @Nullable Integer pageSize;
 
     /**
-     * @return Workspace ID of the resource
+     * @return The maximum number of results to return in this request. Fewer results may be returned than requested. If
+     * unspecified or set to 0, this defaults to 1000. The maximum value is 1000; values above 1000 will be coerced down
+     * to 1000
      * 
      */
-    public Optional<String> workspaceId() {
-        return Optional.ofNullable(this.workspaceId);
+    public Optional<Integer> pageSize() {
+        return Optional.ofNullable(this.pageSize);
     }
 
     private GetTagPoliciesPlainArgs() {}
 
     private GetTagPoliciesPlainArgs(GetTagPoliciesPlainArgs $) {
-        this.workspaceId = $.workspaceId;
+        this.pageSize = $.pageSize;
     }
 
     public static Builder builder() {
@@ -54,13 +58,15 @@ public final class GetTagPoliciesPlainArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param workspaceId Workspace ID of the resource
+         * @param pageSize The maximum number of results to return in this request. Fewer results may be returned than requested. If
+         * unspecified or set to 0, this defaults to 1000. The maximum value is 1000; values above 1000 will be coerced down
+         * to 1000
          * 
          * @return builder
          * 
          */
-        public Builder workspaceId(@Nullable String workspaceId) {
-            $.workspaceId = workspaceId;
+        public Builder pageSize(@Nullable Integer pageSize) {
+            $.pageSize = pageSize;
             return this;
         }
 

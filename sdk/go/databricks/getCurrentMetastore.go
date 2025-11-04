@@ -66,6 +66,8 @@ type GetCurrentMetastoreArgs struct {
 	Id *string `pulumi:"id"`
 	// summary about a metastore attached to the current workspace returned by [Get a metastore summary API](https://docs.databricks.com/api/workspace/metastores/summary). This contains the following attributes (check the API page for up-to-date details):
 	MetastoreInfo *GetCurrentMetastoreMetastoreInfo `pulumi:"metastoreInfo"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *GetCurrentMetastoreProviderConfig `pulumi:"providerConfig"`
 }
 
 // A collection of values returned by getCurrentMetastore.
@@ -73,7 +75,8 @@ type GetCurrentMetastoreResult struct {
 	// metastore ID. Will be `noMetastore` if there is no metastore assigned for the current workspace
 	Id string `pulumi:"id"`
 	// summary about a metastore attached to the current workspace returned by [Get a metastore summary API](https://docs.databricks.com/api/workspace/metastores/summary). This contains the following attributes (check the API page for up-to-date details):
-	MetastoreInfo GetCurrentMetastoreMetastoreInfo `pulumi:"metastoreInfo"`
+	MetastoreInfo  GetCurrentMetastoreMetastoreInfo   `pulumi:"metastoreInfo"`
+	ProviderConfig *GetCurrentMetastoreProviderConfig `pulumi:"providerConfig"`
 }
 
 func GetCurrentMetastoreOutput(ctx *pulumi.Context, args GetCurrentMetastoreOutputArgs, opts ...pulumi.InvokeOption) GetCurrentMetastoreResultOutput {
@@ -91,6 +94,8 @@ type GetCurrentMetastoreOutputArgs struct {
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// summary about a metastore attached to the current workspace returned by [Get a metastore summary API](https://docs.databricks.com/api/workspace/metastores/summary). This contains the following attributes (check the API page for up-to-date details):
 	MetastoreInfo GetCurrentMetastoreMetastoreInfoPtrInput `pulumi:"metastoreInfo"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig GetCurrentMetastoreProviderConfigPtrInput `pulumi:"providerConfig"`
 }
 
 func (GetCurrentMetastoreOutputArgs) ElementType() reflect.Type {
@@ -120,6 +125,10 @@ func (o GetCurrentMetastoreResultOutput) Id() pulumi.StringOutput {
 // summary about a metastore attached to the current workspace returned by [Get a metastore summary API](https://docs.databricks.com/api/workspace/metastores/summary). This contains the following attributes (check the API page for up-to-date details):
 func (o GetCurrentMetastoreResultOutput) MetastoreInfo() GetCurrentMetastoreMetastoreInfoOutput {
 	return o.ApplyT(func(v GetCurrentMetastoreResult) GetCurrentMetastoreMetastoreInfo { return v.MetastoreInfo }).(GetCurrentMetastoreMetastoreInfoOutput)
+}
+
+func (o GetCurrentMetastoreResultOutput) ProviderConfig() GetCurrentMetastoreProviderConfigPtrOutput {
+	return o.ApplyT(func(v GetCurrentMetastoreResult) *GetCurrentMetastoreProviderConfig { return v.ProviderConfig }).(GetCurrentMetastoreProviderConfigPtrOutput)
 }
 
 func init() {

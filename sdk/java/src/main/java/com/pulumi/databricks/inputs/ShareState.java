@@ -6,6 +6,7 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.ShareObjectArgs;
+import com.pulumi.databricks.inputs.ShareProviderConfigArgs;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -63,6 +64,13 @@ public final class ShareState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.createdBy);
     }
 
+    @Import(name="effectiveOwner")
+    private @Nullable Output<String> effectiveOwner;
+
+    public Optional<Output<String>> effectiveOwner() {
+        return Optional.ofNullable(this.effectiveOwner);
+    }
+
     /**
      * Name of share. Change forces creation of a new resource.
      * 
@@ -100,6 +108,21 @@ public final class ShareState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.owner);
     }
 
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<ShareProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Optional<Output<ShareProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     @Import(name="storageLocation")
     private @Nullable Output<String> storageLocation;
 
@@ -134,9 +157,11 @@ public final class ShareState extends com.pulumi.resources.ResourceArgs {
         this.comment = $.comment;
         this.createdAt = $.createdAt;
         this.createdBy = $.createdBy;
+        this.effectiveOwner = $.effectiveOwner;
         this.name = $.name;
         this.objects = $.objects;
         this.owner = $.owner;
+        this.providerConfig = $.providerConfig;
         this.storageLocation = $.storageLocation;
         this.storageRoot = $.storageRoot;
         this.updatedAt = $.updatedAt;
@@ -224,6 +249,15 @@ public final class ShareState extends com.pulumi.resources.ResourceArgs {
             return createdBy(Output.of(createdBy));
         }
 
+        public Builder effectiveOwner(@Nullable Output<String> effectiveOwner) {
+            $.effectiveOwner = effectiveOwner;
+            return this;
+        }
+
+        public Builder effectiveOwner(String effectiveOwner) {
+            return effectiveOwner(Output.of(effectiveOwner));
+        }
+
         /**
          * @param name Name of share. Change forces creation of a new resource.
          * 
@@ -277,6 +311,27 @@ public final class ShareState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder owner(String owner) {
             return owner(Output.of(owner));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<ShareProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(ShareProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         public Builder storageLocation(@Nullable Output<String> storageLocation) {

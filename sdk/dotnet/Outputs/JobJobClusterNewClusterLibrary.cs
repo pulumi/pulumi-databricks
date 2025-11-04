@@ -17,6 +17,10 @@ namespace Pulumi.Databricks.Outputs
         public readonly string? Egg;
         public readonly string? Jar;
         public readonly Outputs.JobJobClusterNewClusterLibraryMaven? Maven;
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        public readonly Outputs.JobJobClusterNewClusterLibraryProviderConfig? ProviderConfig;
         public readonly Outputs.JobJobClusterNewClusterLibraryPypi? Pypi;
         public readonly string? Requirements;
         public readonly string? Whl;
@@ -31,6 +35,8 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.JobJobClusterNewClusterLibraryMaven? maven,
 
+            Outputs.JobJobClusterNewClusterLibraryProviderConfig? providerConfig,
+
             Outputs.JobJobClusterNewClusterLibraryPypi? pypi,
 
             string? requirements,
@@ -41,6 +47,7 @@ namespace Pulumi.Databricks.Outputs
             Egg = egg;
             Jar = jar;
             Maven = maven;
+            ProviderConfig = providerConfig;
             Pypi = pypi;
             Requirements = requirements;
             Whl = whl;

@@ -572,6 +572,12 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
     public Output<String> url() {
         return this.url;
     }
+    @Export(name="usagePolicyId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> usagePolicyId;
+
+    public Output<Optional<String>> usagePolicyId() {
+        return Codegen.optional(this.usagePolicyId);
+    }
 
     /**
      *

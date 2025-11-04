@@ -12,7 +12,7 @@ import java.util.Objects;
 public final class AppsSettingsCustomTemplateManifestResourceSpecUcSecurableSpec {
     private String permission;
     /**
-     * @return . Possible values are: `VOLUME`
+     * @return Possible values are: `TABLE`, `VOLUME`
      * 
      */
     private String securableType;
@@ -22,7 +22,7 @@ public final class AppsSettingsCustomTemplateManifestResourceSpecUcSecurableSpec
         return this.permission;
     }
     /**
-     * @return . Possible values are: `VOLUME`
+     * @return Possible values are: `TABLE`, `VOLUME`
      * 
      */
     public String securableType() {

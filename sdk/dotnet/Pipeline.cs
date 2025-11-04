@@ -325,6 +325,9 @@ namespace Pulumi.Databricks
         [Output("url")]
         public Output<string> Url { get; private set; } = null!;
 
+        [Output("usagePolicyId")]
+        public Output<string?> UsagePolicyId { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Pipeline resource with the given unique name, arguments, and options.
@@ -588,6 +591,9 @@ namespace Pulumi.Databricks
         [Input("url")]
         public Input<string>? Url { get; set; }
 
+        [Input("usagePolicyId")]
+        public Input<string>? UsagePolicyId { get; set; }
+
         public PipelineArgs()
         {
         }
@@ -812,6 +818,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }
+
+        [Input("usagePolicyId")]
+        public Input<string>? UsagePolicyId { get; set; }
 
         public PipelineState()
         {

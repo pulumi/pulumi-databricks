@@ -11,12 +11,21 @@ namespace Pulumi.Databricks
 {
     public static class GetOnlineStore
     {
+        /// <summary>
+        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// </summary>
         public static Task<GetOnlineStoreResult> InvokeAsync(GetOnlineStoreArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetOnlineStoreResult>("databricks:index/getOnlineStore:getOnlineStore", args ?? new GetOnlineStoreArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// </summary>
         public static Output<GetOnlineStoreResult> Invoke(GetOnlineStoreInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetOnlineStoreResult>("databricks:index/getOnlineStore:getOnlineStore", args ?? new GetOnlineStoreInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// </summary>
         public static Output<GetOnlineStoreResult> Invoke(GetOnlineStoreInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetOnlineStoreResult>("databricks:index/getOnlineStore:getOnlineStore", args ?? new GetOnlineStoreInvokeArgs(), options.WithDefaults());
     }
@@ -25,28 +34,10 @@ namespace Pulumi.Databricks
     public sealed class GetOnlineStoreArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// (string) - The capacity of the online store. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
-        /// </summary>
-        [Input("capacity", required: true)]
-        public string Capacity { get; set; } = null!;
-
-        /// <summary>
         /// The name of the online store. This is the unique identifier for the online store
         /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
-
-        /// <summary>
-        /// (integer) - The number of read replicas for the online store. Defaults to 0
-        /// </summary>
-        [Input("readReplicaCount")]
-        public int? ReadReplicaCount { get; set; }
-
-        /// <summary>
-        /// Workspace ID of the resource
-        /// </summary>
-        [Input("workspaceId")]
-        public string? WorkspaceId { get; set; }
 
         public GetOnlineStoreArgs()
         {
@@ -57,28 +48,10 @@ namespace Pulumi.Databricks
     public sealed class GetOnlineStoreInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// (string) - The capacity of the online store. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
-        /// </summary>
-        [Input("capacity", required: true)]
-        public Input<string> Capacity { get; set; } = null!;
-
-        /// <summary>
         /// The name of the online store. This is the unique identifier for the online store
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
-
-        /// <summary>
-        /// (integer) - The number of read replicas for the online store. Defaults to 0
-        /// </summary>
-        [Input("readReplicaCount")]
-        public Input<int>? ReadReplicaCount { get; set; }
-
-        /// <summary>
-        /// Workspace ID of the resource
-        /// </summary>
-        [Input("workspaceId")]
-        public Input<string>? WorkspaceId { get; set; }
 
         public GetOnlineStoreInvokeArgs()
         {
@@ -113,12 +86,11 @@ namespace Pulumi.Databricks
         /// <summary>
         /// (integer) - The number of read replicas for the online store. Defaults to 0
         /// </summary>
-        public readonly int? ReadReplicaCount;
+        public readonly int ReadReplicaCount;
         /// <summary>
         /// (string) - The current state of the online store. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
         /// </summary>
         public readonly string State;
-        public readonly string? WorkspaceId;
 
         [OutputConstructor]
         private GetOnlineStoreResult(
@@ -132,11 +104,9 @@ namespace Pulumi.Databricks
 
             string name,
 
-            int? readReplicaCount,
+            int readReplicaCount,
 
-            string state,
-
-            string? workspaceId)
+            string state)
         {
             Capacity = capacity;
             CreationTime = creationTime;
@@ -145,7 +115,6 @@ namespace Pulumi.Databricks
             Name = name;
             ReadReplicaCount = readReplicaCount;
             State = state;
-            WorkspaceId = workspaceId;
         }
     }
 }

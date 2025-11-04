@@ -41,6 +41,10 @@ namespace Pulumi.Databricks.Outputs
         public readonly string? NodeTypeId;
         public readonly int? NumWorkers;
         public readonly string? PolicyId;
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        public readonly Outputs.JobNewClusterProviderConfig? ProviderConfig;
         public readonly int? RemoteDiskThroughput;
         public readonly string? RuntimeEngine;
         public readonly string? SingleUserName;
@@ -107,6 +111,8 @@ namespace Pulumi.Databricks.Outputs
 
             string? policyId,
 
+            Outputs.JobNewClusterProviderConfig? providerConfig,
+
             int? remoteDiskThroughput,
 
             string? runtimeEngine,
@@ -152,6 +158,7 @@ namespace Pulumi.Databricks.Outputs
             NodeTypeId = nodeTypeId;
             NumWorkers = numWorkers;
             PolicyId = policyId;
+            ProviderConfig = providerConfig;
             RemoteDiskThroughput = remoteDiskThroughput;
             RuntimeEngine = runtimeEngine;
             SingleUserName = singleUserName;

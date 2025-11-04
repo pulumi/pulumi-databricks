@@ -482,6 +482,13 @@ public final class PipelineArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.url);
     }
 
+    @Import(name="usagePolicyId")
+    private @Nullable Output<String> usagePolicyId;
+
+    public Optional<Output<String>> usagePolicyId() {
+        return Optional.ofNullable(this.usagePolicyId);
+    }
+
     private PipelineArgs() {}
 
     private PipelineArgs(PipelineArgs $) {
@@ -523,6 +530,7 @@ public final class PipelineArgs extends com.pulumi.resources.ResourceArgs {
         this.target = $.target;
         this.trigger = $.trigger;
         this.url = $.url;
+        this.usagePolicyId = $.usagePolicyId;
     }
 
     public static Builder builder() {
@@ -1187,6 +1195,15 @@ public final class PipelineArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder url(String url) {
             return url(Output.of(url));
+        }
+
+        public Builder usagePolicyId(@Nullable Output<String> usagePolicyId) {
+            $.usagePolicyId = usagePolicyId;
+            return this;
+        }
+
+        public Builder usagePolicyId(String usagePolicyId) {
+            return usagePolicyId(Output.of(usagePolicyId));
         }
 
         public PipelineArgs build() {

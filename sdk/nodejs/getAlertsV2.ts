@@ -7,6 +7,8 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
  * The SQL Alerts v2 data source allows you to retrieve a list of alerts in Databricks SQL that are accessible to the current user. This data source returns alerts ordered by their creation time.
  *
  * You can use this data source to:
@@ -29,7 +31,7 @@ export function getAlertsV2(args?: GetAlertsV2Args, opts?: pulumi.InvokeOptions)
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getAlertsV2:getAlertsV2", {
-        "workspaceId": args.workspaceId,
+        "pageSize": args.pageSize,
     }, opts);
 }
 
@@ -37,24 +39,23 @@ export function getAlertsV2(args?: GetAlertsV2Args, opts?: pulumi.InvokeOptions)
  * A collection of arguments for invoking getAlertsV2.
  */
 export interface GetAlertsV2Args {
-    /**
-     * Workspace ID of the resource
-     */
-    workspaceId?: string;
+    pageSize?: number;
 }
 
 /**
  * A collection of values returned by getAlertsV2.
  */
 export interface GetAlertsV2Result {
+    readonly alerts: outputs.GetAlertsV2Alert[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    readonly results: outputs.GetAlertsV2Result[];
-    readonly workspaceId?: string;
+    readonly pageSize?: number;
 }
 /**
+ * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
  * The SQL Alerts v2 data source allows you to retrieve a list of alerts in Databricks SQL that are accessible to the current user. This data source returns alerts ordered by their creation time.
  *
  * You can use this data source to:
@@ -77,7 +78,7 @@ export function getAlertsV2Output(args?: GetAlertsV2OutputArgs, opts?: pulumi.In
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getAlertsV2:getAlertsV2", {
-        "workspaceId": args.workspaceId,
+        "pageSize": args.pageSize,
     }, opts);
 }
 
@@ -85,8 +86,5 @@ export function getAlertsV2Output(args?: GetAlertsV2OutputArgs, opts?: pulumi.In
  * A collection of arguments for invoking getAlertsV2.
  */
 export interface GetAlertsV2OutputArgs {
-    /**
-     * Workspace ID of the resource
-     */
-    workspaceId?: pulumi.Input<string>;
+    pageSize?: pulumi.Input<number>;
 }

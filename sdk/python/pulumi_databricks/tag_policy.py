@@ -23,19 +23,15 @@ class TagPolicyArgs:
     def __init__(__self__, *,
                  tag_key: pulumi.Input[_builtins.str],
                  description: Optional[pulumi.Input[_builtins.str]] = None,
-                 values: Optional[pulumi.Input[Sequence[pulumi.Input['TagPolicyValueArgs']]]] = None,
-                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 values: Optional[pulumi.Input[Sequence[pulumi.Input['TagPolicyValueArgs']]]] = None):
         """
         The set of arguments for constructing a TagPolicy resource.
-        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID of the resource
         """
         pulumi.set(__self__, "tag_key", tag_key)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if values is not None:
             pulumi.set(__self__, "values", values)
-        if workspace_id is not None:
-            pulumi.set(__self__, "workspace_id", workspace_id)
 
     @_builtins.property
     @pulumi.getter(name="tagKey")
@@ -64,38 +60,42 @@ class TagPolicyArgs:
     def values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TagPolicyValueArgs']]]]):
         pulumi.set(self, "values", value)
 
-    @_builtins.property
-    @pulumi.getter(name="workspaceId")
-    def workspace_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Workspace ID of the resource
-        """
-        return pulumi.get(self, "workspace_id")
-
-    @workspace_id.setter
-    def workspace_id(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "workspace_id", value)
-
 
 @pulumi.input_type
 class _TagPolicyState:
     def __init__(__self__, *,
+                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  tag_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 values: Optional[pulumi.Input[Sequence[pulumi.Input['TagPolicyValueArgs']]]] = None,
-                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 update_time: Optional[pulumi.Input[_builtins.str]] = None,
+                 values: Optional[pulumi.Input[Sequence[pulumi.Input['TagPolicyValueArgs']]]] = None):
         """
         Input properties used for looking up and filtering TagPolicy resources.
-        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID of the resource
+        :param pulumi.Input[_builtins.str] create_time: (string) - Timestamp when the tag policy was created
+        :param pulumi.Input[_builtins.str] update_time: (string) - Timestamp when the tag policy was last updated
         """
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if tag_key is not None:
             pulumi.set(__self__, "tag_key", tag_key)
+        if update_time is not None:
+            pulumi.set(__self__, "update_time", update_time)
         if values is not None:
             pulumi.set(__self__, "values", values)
-        if workspace_id is not None:
-            pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (string) - Timestamp when the tag policy was created
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
@@ -116,6 +116,18 @@ class _TagPolicyState:
         pulumi.set(self, "tag_key", value)
 
     @_builtins.property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (string) - Timestamp when the tag policy was last updated
+        """
+        return pulumi.get(self, "update_time")
+
+    @update_time.setter
+    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "update_time", value)
+
+    @_builtins.property
     @pulumi.getter
     def values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TagPolicyValueArgs']]]]:
         return pulumi.get(self, "values")
@@ -123,18 +135,6 @@ class _TagPolicyState:
     @values.setter
     def values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TagPolicyValueArgs']]]]):
         pulumi.set(self, "values", value)
-
-    @_builtins.property
-    @pulumi.getter(name="workspaceId")
-    def workspace_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Workspace ID of the resource
-        """
-        return pulumi.get(self, "workspace_id")
-
-    @workspace_id.setter
-    def workspace_id(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "workspace_id", value)
 
 
 @pulumi.type_token("databricks:index/tagPolicy:TagPolicy")
@@ -146,12 +146,35 @@ class TagPolicy(pulumi.CustomResource):
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  tag_key: Optional[pulumi.Input[_builtins.str]] = None,
                  values: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TagPolicyValueArgs', 'TagPolicyValueArgsDict']]]]] = None,
-                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
         Define tag policies to manage governed tags in your account.
 
-        > **Note** This resource can only be used with an account-level provider!
+        > **Note** This resource can only be used with a workspace-level provider!
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        example_tag_policy = databricks.TagPolicy("example_tag_policy",
+            tag_key="example_tag_key",
+            description="Example description.",
+            values=[
+                {
+                    "name": "example_value_1",
+                },
+                {
+                    "name": "example_value_2",
+                },
+                {
+                    "name": "example_value_3",
+                },
+            ])
+        ```
 
         ## Import
 
@@ -170,12 +193,11 @@ class TagPolicy(pulumi.CustomResource):
         If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
 
         ```sh
-        $ pulumi import databricks:index/tagPolicy:TagPolicy databricks_tag_policy "tag_key"
+        $ pulumi import databricks:index/tagPolicy:TagPolicy this "tag_key"
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID of the resource
         """
         ...
     @overload
@@ -184,9 +206,33 @@ class TagPolicy(pulumi.CustomResource):
                  args: TagPolicyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
         Define tag policies to manage governed tags in your account.
 
-        > **Note** This resource can only be used with an account-level provider!
+        > **Note** This resource can only be used with a workspace-level provider!
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        example_tag_policy = databricks.TagPolicy("example_tag_policy",
+            tag_key="example_tag_key",
+            description="Example description.",
+            values=[
+                {
+                    "name": "example_value_1",
+                },
+                {
+                    "name": "example_value_2",
+                },
+                {
+                    "name": "example_value_3",
+                },
+            ])
+        ```
 
         ## Import
 
@@ -205,7 +251,7 @@ class TagPolicy(pulumi.CustomResource):
         If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
 
         ```sh
-        $ pulumi import databricks:index/tagPolicy:TagPolicy databricks_tag_policy "tag_key"
+        $ pulumi import databricks:index/tagPolicy:TagPolicy this "tag_key"
         ```
 
         :param str resource_name: The name of the resource.
@@ -226,7 +272,6 @@ class TagPolicy(pulumi.CustomResource):
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  tag_key: Optional[pulumi.Input[_builtins.str]] = None,
                  values: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TagPolicyValueArgs', 'TagPolicyValueArgsDict']]]]] = None,
-                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -241,7 +286,8 @@ class TagPolicy(pulumi.CustomResource):
                 raise TypeError("Missing required property 'tag_key'")
             __props__.__dict__["tag_key"] = tag_key
             __props__.__dict__["values"] = values
-            __props__.__dict__["workspace_id"] = workspace_id
+            __props__.__dict__["create_time"] = None
+            __props__.__dict__["update_time"] = None
         super(TagPolicy, __self__).__init__(
             'databricks:index/tagPolicy:TagPolicy',
             resource_name,
@@ -252,10 +298,11 @@ class TagPolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: Optional[pulumi.Input[_builtins.str]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
             tag_key: Optional[pulumi.Input[_builtins.str]] = None,
-            values: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TagPolicyValueArgs', 'TagPolicyValueArgsDict']]]]] = None,
-            workspace_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'TagPolicy':
+            update_time: Optional[pulumi.Input[_builtins.str]] = None,
+            values: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TagPolicyValueArgs', 'TagPolicyValueArgsDict']]]]] = None) -> 'TagPolicy':
         """
         Get an existing TagPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -263,17 +310,27 @@ class TagPolicy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID of the resource
+        :param pulumi.Input[_builtins.str] create_time: (string) - Timestamp when the tag policy was created
+        :param pulumi.Input[_builtins.str] update_time: (string) - Timestamp when the tag policy was last updated
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _TagPolicyState.__new__(_TagPolicyState)
 
+        __props__.__dict__["create_time"] = create_time
         __props__.__dict__["description"] = description
         __props__.__dict__["tag_key"] = tag_key
+        __props__.__dict__["update_time"] = update_time
         __props__.__dict__["values"] = values
-        __props__.__dict__["workspace_id"] = workspace_id
         return TagPolicy(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[_builtins.str]:
+        """
+        (string) - Timestamp when the tag policy was created
+        """
+        return pulumi.get(self, "create_time")
 
     @_builtins.property
     @pulumi.getter
@@ -286,15 +343,15 @@ class TagPolicy(pulumi.CustomResource):
         return pulumi.get(self, "tag_key")
 
     @_builtins.property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> pulumi.Output[_builtins.str]:
+        """
+        (string) - Timestamp when the tag policy was last updated
+        """
+        return pulumi.get(self, "update_time")
+
+    @_builtins.property
     @pulumi.getter
     def values(self) -> pulumi.Output[Optional[Sequence['outputs.TagPolicyValue']]]:
         return pulumi.get(self, "values")
-
-    @_builtins.property
-    @pulumi.getter(name="workspaceId")
-    def workspace_id(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Workspace ID of the resource
-        """
-        return pulumi.get(self, "workspace_id")
 

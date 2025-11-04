@@ -8,8 +8,6 @@ import com.pulumi.databricks.outputs.GetAppsSettingsCustomTemplatesTemplateManif
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAppsSettingsCustomTemplatesTemplate {
@@ -22,7 +20,7 @@ public final class GetAppsSettingsCustomTemplatesTemplate {
      * @return (string) - Description of the App Resource
      * 
      */
-    private @Nullable String description;
+    private String description;
     /**
      * @return (string) - The Git provider of the template
      * 
@@ -61,8 +59,8 @@ public final class GetAppsSettingsCustomTemplatesTemplate {
      * @return (string) - Description of the App Resource
      * 
      */
-    public Optional<String> description() {
-        return Optional.ofNullable(this.description);
+    public String description() {
+        return this.description;
     }
     /**
      * @return (string) - The Git provider of the template
@@ -110,7 +108,7 @@ public final class GetAppsSettingsCustomTemplatesTemplate {
     @CustomType.Builder
     public static final class Builder {
         private String creator;
-        private @Nullable String description;
+        private String description;
         private String gitProvider;
         private String gitRepo;
         private GetAppsSettingsCustomTemplatesTemplateManifest manifest;
@@ -137,8 +135,10 @@ public final class GetAppsSettingsCustomTemplatesTemplate {
             return this;
         }
         @CustomType.Setter
-        public Builder description(@Nullable String description) {
-
+        public Builder description(String description) {
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetAppsSettingsCustomTemplatesTemplate", "description");
+            }
             this.description = description;
             return this;
         }

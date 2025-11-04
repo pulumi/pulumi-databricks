@@ -6,7 +6,6 @@ package com.pulumi.databricks.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.JobTriggerFileArrival;
 import com.pulumi.databricks.outputs.JobTriggerPeriodic;
-import com.pulumi.databricks.outputs.JobTriggerTable;
 import com.pulumi.databricks.outputs.JobTriggerTableUpdate;
 import java.lang.String;
 import java.util.Objects;
@@ -30,7 +29,10 @@ public final class JobTrigger {
      * 
      */
     private @Nullable JobTriggerPeriodic periodic;
-    private @Nullable JobTriggerTable table;
+    /**
+     * @return configuration block to define a trigger for [Table Updates](https://docs.databricks.com/aws/en/jobs/trigger-table-update) consisting of following attributes:
+     * 
+     */
     private @Nullable JobTriggerTableUpdate tableUpdate;
 
     private JobTrigger() {}
@@ -55,9 +57,10 @@ public final class JobTrigger {
     public Optional<JobTriggerPeriodic> periodic() {
         return Optional.ofNullable(this.periodic);
     }
-    public Optional<JobTriggerTable> table() {
-        return Optional.ofNullable(this.table);
-    }
+    /**
+     * @return configuration block to define a trigger for [Table Updates](https://docs.databricks.com/aws/en/jobs/trigger-table-update) consisting of following attributes:
+     * 
+     */
     public Optional<JobTriggerTableUpdate> tableUpdate() {
         return Optional.ofNullable(this.tableUpdate);
     }
@@ -74,7 +77,6 @@ public final class JobTrigger {
         private @Nullable JobTriggerFileArrival fileArrival;
         private @Nullable String pauseStatus;
         private @Nullable JobTriggerPeriodic periodic;
-        private @Nullable JobTriggerTable table;
         private @Nullable JobTriggerTableUpdate tableUpdate;
         public Builder() {}
         public Builder(JobTrigger defaults) {
@@ -82,7 +84,6 @@ public final class JobTrigger {
     	      this.fileArrival = defaults.fileArrival;
     	      this.pauseStatus = defaults.pauseStatus;
     	      this.periodic = defaults.periodic;
-    	      this.table = defaults.table;
     	      this.tableUpdate = defaults.tableUpdate;
         }
 
@@ -105,12 +106,6 @@ public final class JobTrigger {
             return this;
         }
         @CustomType.Setter
-        public Builder table(@Nullable JobTriggerTable table) {
-
-            this.table = table;
-            return this;
-        }
-        @CustomType.Setter
         public Builder tableUpdate(@Nullable JobTriggerTableUpdate tableUpdate) {
 
             this.tableUpdate = tableUpdate;
@@ -121,7 +116,6 @@ public final class JobTrigger {
             _resultValue.fileArrival = fileArrival;
             _resultValue.pauseStatus = pauseStatus;
             _resultValue.periodic = periodic;
-            _resultValue.table = table;
             _resultValue.tableUpdate = tableUpdate;
             return _resultValue;
         }

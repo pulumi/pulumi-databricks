@@ -26,12 +26,12 @@ namespace Pulumi.Databricks.Inputs
         [Input("environmentVersion")]
         public string? EnvironmentVersion { get; set; }
 
-        [Input("jarDependencies")]
-        private List<string>? _jarDependencies;
-        public List<string> JarDependencies
+        [Input("javaDependencies")]
+        private List<string>? _javaDependencies;
+        public List<string> JavaDependencies
         {
-            get => _jarDependencies ?? (_jarDependencies = new List<string>());
-            set => _jarDependencies = value;
+            get => _javaDependencies ?? (_javaDependencies = new List<string>());
+            set => _javaDependencies = value;
         }
 
         public GetJobJobSettingsSettingsEnvironmentSpecArgs()

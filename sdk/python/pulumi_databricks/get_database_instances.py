@@ -27,16 +27,16 @@ class GetDatabaseInstancesResult:
     """
     A collection of values returned by getDatabaseInstances.
     """
-    def __init__(__self__, database_instances=None, id=None, workspace_id=None):
+    def __init__(__self__, database_instances=None, id=None, page_size=None):
         if database_instances and not isinstance(database_instances, list):
             raise TypeError("Expected argument 'database_instances' to be a list")
         pulumi.set(__self__, "database_instances", database_instances)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
-        if workspace_id and not isinstance(workspace_id, str):
-            raise TypeError("Expected argument 'workspace_id' to be a str")
-        pulumi.set(__self__, "workspace_id", workspace_id)
+        if page_size and not isinstance(page_size, int):
+            raise TypeError("Expected argument 'page_size' to be a int")
+        pulumi.set(__self__, "page_size", page_size)
 
     @_builtins.property
     @pulumi.getter(name="databaseInstances")
@@ -52,9 +52,9 @@ class GetDatabaseInstancesResult:
         return pulumi.get(self, "id")
 
     @_builtins.property
-    @pulumi.getter(name="workspaceId")
-    def workspace_id(self) -> Optional[_builtins.str]:
-        return pulumi.get(self, "workspace_id")
+    @pulumi.getter(name="pageSize")
+    def page_size(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "page_size")
 
 
 class AwaitableGetDatabaseInstancesResult(GetDatabaseInstancesResult):
@@ -65,12 +65,14 @@ class AwaitableGetDatabaseInstancesResult(GetDatabaseInstancesResult):
         return GetDatabaseInstancesResult(
             database_instances=self.database_instances,
             id=self.id,
-            workspace_id=self.workspace_id)
+            page_size=self.page_size)
 
 
-def get_database_instances(workspace_id: Optional[_builtins.str] = None,
+def get_database_instances(page_size: Optional[_builtins.int] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDatabaseInstancesResult:
     """
+    [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
     This data source can be used to fetch the list of Database Instances within the workspace.
     The list can then be accessed via the data object's `database_instances` field.
 
@@ -87,20 +89,22 @@ def get_database_instances(workspace_id: Optional[_builtins.str] = None,
     ```
 
 
-    :param _builtins.str workspace_id: Workspace ID of the resource
+    :param _builtins.int page_size: Upper bound for items returned
     """
     __args__ = dict()
-    __args__['workspaceId'] = workspace_id
+    __args__['pageSize'] = page_size
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getDatabaseInstances:getDatabaseInstances', __args__, opts=opts, typ=GetDatabaseInstancesResult).value
 
     return AwaitableGetDatabaseInstancesResult(
         database_instances=pulumi.get(__ret__, 'database_instances'),
         id=pulumi.get(__ret__, 'id'),
-        workspace_id=pulumi.get(__ret__, 'workspace_id'))
-def get_database_instances_output(workspace_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+        page_size=pulumi.get(__ret__, 'page_size'))
+def get_database_instances_output(page_size: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDatabaseInstancesResult]:
     """
+    [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
     This data source can be used to fetch the list of Database Instances within the workspace.
     The list can then be accessed via the data object's `database_instances` field.
 
@@ -117,13 +121,13 @@ def get_database_instances_output(workspace_id: Optional[pulumi.Input[Optional[_
     ```
 
 
-    :param _builtins.str workspace_id: Workspace ID of the resource
+    :param _builtins.int page_size: Upper bound for items returned
     """
     __args__ = dict()
-    __args__['workspaceId'] = workspace_id
+    __args__['pageSize'] = page_size
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getDatabaseInstances:getDatabaseInstances', __args__, opts=opts, typ=GetDatabaseInstancesResult)
     return __ret__.apply(lambda __response__: GetDatabaseInstancesResult(
         database_instances=pulumi.get(__response__, 'database_instances'),
         id=pulumi.get(__response__, 'id'),
-        workspace_id=pulumi.get(__response__, 'workspace_id')))
+        page_size=pulumi.get(__response__, 'page_size')))

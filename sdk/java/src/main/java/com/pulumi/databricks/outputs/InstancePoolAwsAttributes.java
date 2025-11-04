@@ -18,6 +18,11 @@ public final class InstancePoolAwsAttributes {
      */
     private @Nullable String availability;
     /**
+     * @return Nodes belonging to the pool will only be placed on AWS instances with this instance profile. Please see databricks.InstanceProfile resource documentation for extended examples on adding a valid instance profile using Pulumi.
+     * 
+     */
+    private @Nullable String instanceProfileArn;
+    /**
      * @return (Integer) The max price for AWS spot instances, as a percentage of the corresponding instance type&#39;s on-demand price. For example, if this field is set to 50, and the instance pool needs a new i3.xlarge spot instance, then the max price is half of the price of on-demand i3.xlarge instances. Similarly, if this field is set to 200, the max price is twice the price of on-demand i3.xlarge instances. If not specified, the *default value is 100*. When spot instances are requested for this instance pool, only spot instances whose max price percentage matches this field are considered. *For safety, this field cannot be greater than 10000.*
      * 
      */
@@ -35,6 +40,13 @@ public final class InstancePoolAwsAttributes {
      */
     public Optional<String> availability() {
         return Optional.ofNullable(this.availability);
+    }
+    /**
+     * @return Nodes belonging to the pool will only be placed on AWS instances with this instance profile. Please see databricks.InstanceProfile resource documentation for extended examples on adding a valid instance profile using Pulumi.
+     * 
+     */
+    public Optional<String> instanceProfileArn() {
+        return Optional.ofNullable(this.instanceProfileArn);
     }
     /**
      * @return (Integer) The max price for AWS spot instances, as a percentage of the corresponding instance type&#39;s on-demand price. For example, if this field is set to 50, and the instance pool needs a new i3.xlarge spot instance, then the max price is half of the price of on-demand i3.xlarge instances. Similarly, if this field is set to 200, the max price is twice the price of on-demand i3.xlarge instances. If not specified, the *default value is 100*. When spot instances are requested for this instance pool, only spot instances whose max price percentage matches this field are considered. *For safety, this field cannot be greater than 10000.*
@@ -61,12 +73,14 @@ public final class InstancePoolAwsAttributes {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String availability;
+        private @Nullable String instanceProfileArn;
         private @Nullable Integer spotBidPricePercent;
         private @Nullable String zoneId;
         public Builder() {}
         public Builder(InstancePoolAwsAttributes defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.availability = defaults.availability;
+    	      this.instanceProfileArn = defaults.instanceProfileArn;
     	      this.spotBidPricePercent = defaults.spotBidPricePercent;
     	      this.zoneId = defaults.zoneId;
         }
@@ -75,6 +89,12 @@ public final class InstancePoolAwsAttributes {
         public Builder availability(@Nullable String availability) {
 
             this.availability = availability;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder instanceProfileArn(@Nullable String instanceProfileArn) {
+
+            this.instanceProfileArn = instanceProfileArn;
             return this;
         }
         @CustomType.Setter
@@ -92,6 +112,7 @@ public final class InstancePoolAwsAttributes {
         public InstancePoolAwsAttributes build() {
             final var _resultValue = new InstancePoolAwsAttributes();
             _resultValue.availability = availability;
+            _resultValue.instanceProfileArn = instanceProfileArn;
             _resultValue.spotBidPricePercent = spotBidPricePercent;
             _resultValue.zoneId = zoneId;
             return _resultValue;

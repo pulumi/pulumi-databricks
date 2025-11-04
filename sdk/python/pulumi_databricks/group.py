@@ -34,12 +34,12 @@ class GroupArgs:
         :param pulumi.Input[_builtins.str] acl_principal_id: identifier for use in databricks_access_control_rule_set, e.g. `groups/Some Group`.
         :param pulumi.Input[_builtins.bool] allow_cluster_create: This is a field to allow the group to have cluster create privileges. More fine grained permissions could be assigned with Permissions and cluster_id argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
         :param pulumi.Input[_builtins.bool] allow_instance_pool_create: This is a field to allow the group to have instance pool create privileges. More fine grained permissions could be assigned with Permissions and instance_pool_id argument.
-        :param pulumi.Input[_builtins.bool] databricks_sql_access: This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
+        :param pulumi.Input[_builtins.bool] databricks_sql_access: This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql)  UI, [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one) and through databricks_sql_endpoint.
         :param pulumi.Input[_builtins.str] display_name: This is the display name for the given group.
         :param pulumi.Input[_builtins.str] external_id: ID of the group in an external identity provider.
         :param pulumi.Input[_builtins.bool] force: Ignore `cannot create group: Group with name X already exists.` errors and implicitly import the specific group into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
-        :param pulumi.Input[_builtins.bool] workspace_access: This is a field to allow the group to have access to a Databricks Workspace.
-        :param pulumi.Input[_builtins.bool] workspace_consume: This is a field to allow the group to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspace_access` or `databricks_sql_access`.
+        :param pulumi.Input[_builtins.bool] workspace_access: This is a field to allow the group to have access to a Databricks Workspace UI and [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).
+        :param pulumi.Input[_builtins.bool] workspace_consume: This is a field to allow the group to have access only to [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).  Couldn't be used with `workspace_access` or `databricks_sql_access`.
         """
         if acl_principal_id is not None:
             pulumi.set(__self__, "acl_principal_id", acl_principal_id)
@@ -102,7 +102,7 @@ class GroupArgs:
     @pulumi.getter(name="databricksSqlAccess")
     def databricks_sql_access(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
+        This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql)  UI, [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one) and through databricks_sql_endpoint.
         """
         return pulumi.get(self, "databricks_sql_access")
 
@@ -159,7 +159,7 @@ class GroupArgs:
     @pulumi.getter(name="workspaceAccess")
     def workspace_access(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        This is a field to allow the group to have access to a Databricks Workspace.
+        This is a field to allow the group to have access to a Databricks Workspace UI and [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).
         """
         return pulumi.get(self, "workspace_access")
 
@@ -171,7 +171,7 @@ class GroupArgs:
     @pulumi.getter(name="workspaceConsume")
     def workspace_consume(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        This is a field to allow the group to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspace_access` or `databricks_sql_access`.
+        This is a field to allow the group to have access only to [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).  Couldn't be used with `workspace_access` or `databricks_sql_access`.
         """
         return pulumi.get(self, "workspace_consume")
 
@@ -198,12 +198,12 @@ class _GroupState:
         :param pulumi.Input[_builtins.str] acl_principal_id: identifier for use in databricks_access_control_rule_set, e.g. `groups/Some Group`.
         :param pulumi.Input[_builtins.bool] allow_cluster_create: This is a field to allow the group to have cluster create privileges. More fine grained permissions could be assigned with Permissions and cluster_id argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
         :param pulumi.Input[_builtins.bool] allow_instance_pool_create: This is a field to allow the group to have instance pool create privileges. More fine grained permissions could be assigned with Permissions and instance_pool_id argument.
-        :param pulumi.Input[_builtins.bool] databricks_sql_access: This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
+        :param pulumi.Input[_builtins.bool] databricks_sql_access: This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql)  UI, [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one) and through databricks_sql_endpoint.
         :param pulumi.Input[_builtins.str] display_name: This is the display name for the given group.
         :param pulumi.Input[_builtins.str] external_id: ID of the group in an external identity provider.
         :param pulumi.Input[_builtins.bool] force: Ignore `cannot create group: Group with name X already exists.` errors and implicitly import the specific group into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
-        :param pulumi.Input[_builtins.bool] workspace_access: This is a field to allow the group to have access to a Databricks Workspace.
-        :param pulumi.Input[_builtins.bool] workspace_consume: This is a field to allow the group to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspace_access` or `databricks_sql_access`.
+        :param pulumi.Input[_builtins.bool] workspace_access: This is a field to allow the group to have access to a Databricks Workspace UI and [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).
+        :param pulumi.Input[_builtins.bool] workspace_consume: This is a field to allow the group to have access only to [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).  Couldn't be used with `workspace_access` or `databricks_sql_access`.
         """
         if acl_principal_id is not None:
             pulumi.set(__self__, "acl_principal_id", acl_principal_id)
@@ -266,7 +266,7 @@ class _GroupState:
     @pulumi.getter(name="databricksSqlAccess")
     def databricks_sql_access(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
+        This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql)  UI, [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one) and through databricks_sql_endpoint.
         """
         return pulumi.get(self, "databricks_sql_access")
 
@@ -323,7 +323,7 @@ class _GroupState:
     @pulumi.getter(name="workspaceAccess")
     def workspace_access(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        This is a field to allow the group to have access to a Databricks Workspace.
+        This is a field to allow the group to have access to a Databricks Workspace UI and [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).
         """
         return pulumi.get(self, "workspace_access")
 
@@ -335,7 +335,7 @@ class _GroupState:
     @pulumi.getter(name="workspaceConsume")
     def workspace_consume(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        This is a field to allow the group to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspace_access` or `databricks_sql_access`.
+        This is a field to allow the group to have access only to [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).  Couldn't be used with `workspace_access` or `databricks_sql_access`.
         """
         return pulumi.get(self, "workspace_consume")
 
@@ -453,12 +453,12 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] acl_principal_id: identifier for use in databricks_access_control_rule_set, e.g. `groups/Some Group`.
         :param pulumi.Input[_builtins.bool] allow_cluster_create: This is a field to allow the group to have cluster create privileges. More fine grained permissions could be assigned with Permissions and cluster_id argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
         :param pulumi.Input[_builtins.bool] allow_instance_pool_create: This is a field to allow the group to have instance pool create privileges. More fine grained permissions could be assigned with Permissions and instance_pool_id argument.
-        :param pulumi.Input[_builtins.bool] databricks_sql_access: This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
+        :param pulumi.Input[_builtins.bool] databricks_sql_access: This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql)  UI, [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one) and through databricks_sql_endpoint.
         :param pulumi.Input[_builtins.str] display_name: This is the display name for the given group.
         :param pulumi.Input[_builtins.str] external_id: ID of the group in an external identity provider.
         :param pulumi.Input[_builtins.bool] force: Ignore `cannot create group: Group with name X already exists.` errors and implicitly import the specific group into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
-        :param pulumi.Input[_builtins.bool] workspace_access: This is a field to allow the group to have access to a Databricks Workspace.
-        :param pulumi.Input[_builtins.bool] workspace_consume: This is a field to allow the group to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspace_access` or `databricks_sql_access`.
+        :param pulumi.Input[_builtins.bool] workspace_access: This is a field to allow the group to have access to a Databricks Workspace UI and [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).
+        :param pulumi.Input[_builtins.bool] workspace_consume: This is a field to allow the group to have access only to [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).  Couldn't be used with `workspace_access` or `databricks_sql_access`.
         """
         ...
     @overload
@@ -627,12 +627,12 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] acl_principal_id: identifier for use in databricks_access_control_rule_set, e.g. `groups/Some Group`.
         :param pulumi.Input[_builtins.bool] allow_cluster_create: This is a field to allow the group to have cluster create privileges. More fine grained permissions could be assigned with Permissions and cluster_id argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
         :param pulumi.Input[_builtins.bool] allow_instance_pool_create: This is a field to allow the group to have instance pool create privileges. More fine grained permissions could be assigned with Permissions and instance_pool_id argument.
-        :param pulumi.Input[_builtins.bool] databricks_sql_access: This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
+        :param pulumi.Input[_builtins.bool] databricks_sql_access: This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql)  UI, [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one) and through databricks_sql_endpoint.
         :param pulumi.Input[_builtins.str] display_name: This is the display name for the given group.
         :param pulumi.Input[_builtins.str] external_id: ID of the group in an external identity provider.
         :param pulumi.Input[_builtins.bool] force: Ignore `cannot create group: Group with name X already exists.` errors and implicitly import the specific group into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
-        :param pulumi.Input[_builtins.bool] workspace_access: This is a field to allow the group to have access to a Databricks Workspace.
-        :param pulumi.Input[_builtins.bool] workspace_consume: This is a field to allow the group to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspace_access` or `databricks_sql_access`.
+        :param pulumi.Input[_builtins.bool] workspace_access: This is a field to allow the group to have access to a Databricks Workspace UI and [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).
+        :param pulumi.Input[_builtins.bool] workspace_consume: This is a field to allow the group to have access only to [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).  Couldn't be used with `workspace_access` or `databricks_sql_access`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -678,7 +678,7 @@ class Group(pulumi.CustomResource):
     @pulumi.getter(name="databricksSqlAccess")
     def databricks_sql_access(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
+        This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql)  UI, [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one) and through databricks_sql_endpoint.
         """
         return pulumi.get(self, "databricks_sql_access")
 
@@ -715,7 +715,7 @@ class Group(pulumi.CustomResource):
     @pulumi.getter(name="workspaceAccess")
     def workspace_access(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        This is a field to allow the group to have access to a Databricks Workspace.
+        This is a field to allow the group to have access to a Databricks Workspace UI and [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).
         """
         return pulumi.get(self, "workspace_access")
 
@@ -723,7 +723,7 @@ class Group(pulumi.CustomResource):
     @pulumi.getter(name="workspaceConsume")
     def workspace_consume(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        This is a field to allow the group to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspace_access` or `databricks_sql_access`.
+        This is a field to allow the group to have access only to [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).  Couldn't be used with `workspace_access` or `databricks_sql_access`.
         """
         return pulumi.get(self, "workspace_consume")
 

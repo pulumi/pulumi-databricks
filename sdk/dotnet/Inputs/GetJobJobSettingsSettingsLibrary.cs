@@ -24,6 +24,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("maven")]
         public Inputs.GetJobJobSettingsSettingsLibraryMavenArgs? Maven { get; set; }
 
+        [Input("providerConfig")]
+        public Inputs.GetJobJobSettingsSettingsLibraryProviderConfigArgs? ProviderConfig { get; set; }
+
         [Input("pypi")]
         public Inputs.GetJobJobSettingsSettingsLibraryPypiArgs? Pypi { get; set; }
 

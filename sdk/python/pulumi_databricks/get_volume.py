@@ -28,13 +28,16 @@ class GetVolumeResult:
     """
     A collection of values returned by getVolume.
     """
-    def __init__(__self__, id=None, name=None, volume_info=None):
+    def __init__(__self__, id=None, name=None, provider_config=None, volume_info=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if provider_config and not isinstance(provider_config, dict):
+            raise TypeError("Expected argument 'provider_config' to be a dict")
+        pulumi.set(__self__, "provider_config", provider_config)
         if volume_info and not isinstance(volume_info, dict):
             raise TypeError("Expected argument 'volume_info' to be a dict")
         pulumi.set(__self__, "volume_info", volume_info)
@@ -56,6 +59,11 @@ class GetVolumeResult:
         return pulumi.get(self, "name")
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional['outputs.GetVolumeProviderConfigResult']:
+        return pulumi.get(self, "provider_config")
+
+    @_builtins.property
     @pulumi.getter(name="volumeInfo")
     def volume_info(self) -> 'outputs.GetVolumeVolumeInfoResult':
         """
@@ -72,11 +80,13 @@ class AwaitableGetVolumeResult(GetVolumeResult):
         return GetVolumeResult(
             id=self.id,
             name=self.name,
+            provider_config=self.provider_config,
             volume_info=self.volume_info)
 
 
 def get_volume(id: Optional[_builtins.str] = None,
                name: Optional[_builtins.str] = None,
+               provider_config: Optional[Union['GetVolumeProviderConfigArgs', 'GetVolumeProviderConfigArgsDict']] = None,
                volume_info: Optional[Union['GetVolumeVolumeInfoArgs', 'GetVolumeVolumeInfoArgsDict']] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVolumeResult:
     """
@@ -118,11 +128,13 @@ def get_volume(id: Optional[_builtins.str] = None,
 
     :param _builtins.str id: ID of this Unity Catalog Volume in form of `<catalog>.<schema>.<name>`.
     :param _builtins.str name: a fully qualified name of databricks_volume: *`catalog`.`schema`.`volume`*
+    :param Union['GetVolumeProviderConfigArgs', 'GetVolumeProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     :param Union['GetVolumeVolumeInfoArgs', 'GetVolumeVolumeInfoArgsDict'] volume_info: `VolumeInfo` object for a Unity Catalog volume. This contains the following attributes:
     """
     __args__ = dict()
     __args__['id'] = id
     __args__['name'] = name
+    __args__['providerConfig'] = provider_config
     __args__['volumeInfo'] = volume_info
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getVolume:getVolume', __args__, opts=opts, typ=GetVolumeResult).value
@@ -130,9 +142,11 @@ def get_volume(id: Optional[_builtins.str] = None,
     return AwaitableGetVolumeResult(
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
+        provider_config=pulumi.get(__ret__, 'provider_config'),
         volume_info=pulumi.get(__ret__, 'volume_info'))
 def get_volume_output(id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                       name: Optional[pulumi.Input[_builtins.str]] = None,
+                      provider_config: Optional[pulumi.Input[Optional[Union['GetVolumeProviderConfigArgs', 'GetVolumeProviderConfigArgsDict']]]] = None,
                       volume_info: Optional[pulumi.Input[Optional[Union['GetVolumeVolumeInfoArgs', 'GetVolumeVolumeInfoArgsDict']]]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVolumeResult]:
     """
@@ -174,15 +188,18 @@ def get_volume_output(id: Optional[pulumi.Input[Optional[_builtins.str]]] = None
 
     :param _builtins.str id: ID of this Unity Catalog Volume in form of `<catalog>.<schema>.<name>`.
     :param _builtins.str name: a fully qualified name of databricks_volume: *`catalog`.`schema`.`volume`*
+    :param Union['GetVolumeProviderConfigArgs', 'GetVolumeProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     :param Union['GetVolumeVolumeInfoArgs', 'GetVolumeVolumeInfoArgsDict'] volume_info: `VolumeInfo` object for a Unity Catalog volume. This contains the following attributes:
     """
     __args__ = dict()
     __args__['id'] = id
     __args__['name'] = name
+    __args__['providerConfig'] = provider_config
     __args__['volumeInfo'] = volume_info
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getVolume:getVolume', __args__, opts=opts, typ=GetVolumeResult)
     return __ret__.apply(lambda __response__: GetVolumeResult(
         id=pulumi.get(__response__, 'id'),
         name=pulumi.get(__response__, 'name'),
+        provider_config=pulumi.get(__response__, 'provider_config'),
         volume_info=pulumi.get(__response__, 'volume_info')))

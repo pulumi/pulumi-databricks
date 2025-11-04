@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetJobsResult',
@@ -26,7 +28,7 @@ class GetJobsResult:
     """
     A collection of values returned by getJobs.
     """
-    def __init__(__self__, id=None, ids=None, job_name_contains=None, key=None):
+    def __init__(__self__, id=None, ids=None, job_name_contains=None, key=None, provider_config=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -39,6 +41,9 @@ class GetJobsResult:
         if key and not isinstance(key, str):
             raise TypeError("Expected argument 'key' to be a str")
         pulumi.set(__self__, "key", key)
+        if provider_config and not isinstance(provider_config, dict):
+            raise TypeError("Expected argument 'provider_config' to be a dict")
+        pulumi.set(__self__, "provider_config", provider_config)
 
     @_builtins.property
     @pulumi.getter
@@ -66,6 +71,11 @@ class GetJobsResult:
     def key(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "key")
 
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional['outputs.GetJobsProviderConfigResult']:
+        return pulumi.get(self, "provider_config")
+
 
 class AwaitableGetJobsResult(GetJobsResult):
     # pylint: disable=using-constant-test
@@ -76,12 +86,14 @@ class AwaitableGetJobsResult(GetJobsResult):
             id=self.id,
             ids=self.ids,
             job_name_contains=self.job_name_contains,
-            key=self.key)
+            key=self.key,
+            provider_config=self.provider_config)
 
 
 def get_jobs(ids: Optional[Mapping[str, _builtins.str]] = None,
              job_name_contains: Optional[_builtins.str] = None,
              key: Optional[_builtins.str] = None,
+             provider_config: Optional[Union['GetJobsProviderConfigArgs', 'GetJobsProviderConfigArgsDict']] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetJobsResult:
     """
     Retrieves a list of Job ids, that were created by Pulumi or manually, so that special handling could be applied.
@@ -146,11 +158,13 @@ def get_jobs(ids: Optional[Mapping[str, _builtins.str]] = None,
     :param Mapping[str, _builtins.str] ids: map of Job names to ids
     :param _builtins.str job_name_contains: Only return Job ids that match the given name string (case-insensitive).
     :param _builtins.str key: Attribute to use for keys in the returned map of Job ids by. Possible values are `name` (default) or `id`. Setting to `id` uses the job ID as the map key, allowing duplicate job names.
+    :param Union['GetJobsProviderConfigArgs', 'GetJobsProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     """
     __args__ = dict()
     __args__['ids'] = ids
     __args__['jobNameContains'] = job_name_contains
     __args__['key'] = key
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getJobs:getJobs', __args__, opts=opts, typ=GetJobsResult).value
 
@@ -158,10 +172,12 @@ def get_jobs(ids: Optional[Mapping[str, _builtins.str]] = None,
         id=pulumi.get(__ret__, 'id'),
         ids=pulumi.get(__ret__, 'ids'),
         job_name_contains=pulumi.get(__ret__, 'job_name_contains'),
-        key=pulumi.get(__ret__, 'key'))
+        key=pulumi.get(__ret__, 'key'),
+        provider_config=pulumi.get(__ret__, 'provider_config'))
 def get_jobs_output(ids: Optional[pulumi.Input[Optional[Mapping[str, _builtins.str]]]] = None,
                     job_name_contains: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                     key: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                    provider_config: Optional[pulumi.Input[Optional[Union['GetJobsProviderConfigArgs', 'GetJobsProviderConfigArgsDict']]]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetJobsResult]:
     """
     Retrieves a list of Job ids, that were created by Pulumi or manually, so that special handling could be applied.
@@ -226,15 +242,18 @@ def get_jobs_output(ids: Optional[pulumi.Input[Optional[Mapping[str, _builtins.s
     :param Mapping[str, _builtins.str] ids: map of Job names to ids
     :param _builtins.str job_name_contains: Only return Job ids that match the given name string (case-insensitive).
     :param _builtins.str key: Attribute to use for keys in the returned map of Job ids by. Possible values are `name` (default) or `id`. Setting to `id` uses the job ID as the map key, allowing duplicate job names.
+    :param Union['GetJobsProviderConfigArgs', 'GetJobsProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     """
     __args__ = dict()
     __args__['ids'] = ids
     __args__['jobNameContains'] = job_name_contains
     __args__['key'] = key
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getJobs:getJobs', __args__, opts=opts, typ=GetJobsResult)
     return __ret__.apply(lambda __response__: GetJobsResult(
         id=pulumi.get(__response__, 'id'),
         ids=pulumi.get(__response__, 'ids'),
         job_name_contains=pulumi.get(__response__, 'job_name_contains'),
-        key=pulumi.get(__response__, 'key')))
+        key=pulumi.get(__response__, 'key'),
+        provider_config=pulumi.get(__response__, 'provider_config')))

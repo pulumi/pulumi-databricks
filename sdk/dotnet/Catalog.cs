@@ -75,6 +75,9 @@ namespace Pulumi.Databricks
         [Output("browseOnly")]
         public Output<bool?> BrowseOnly { get; private set; } = null!;
 
+        /// <summary>
+        /// the type of the catalog.
+        /// </summary>
         [Output("catalogType")]
         public Output<string> CatalogType { get; private set; } = null!;
 
@@ -90,9 +93,15 @@ namespace Pulumi.Databricks
         [Output("connectionName")]
         public Output<string?> ConnectionName { get; private set; } = null!;
 
+        /// <summary>
+        /// time at which this catalog was created, in epoch milliseconds.
+        /// </summary>
         [Output("createdAt")]
         public Output<int> CreatedAt { get; private set; } = null!;
 
+        /// <summary>
+        /// username of catalog creator.
+        /// </summary>
         [Output("createdBy")]
         public Output<string> CreatedBy { get; private set; } = null!;
 
@@ -159,6 +168,9 @@ namespace Pulumi.Databricks
         [Output("provisioningInfo")]
         public Output<Outputs.CatalogProvisioningInfo?> ProvisioningInfo { get; private set; } = null!;
 
+        /// <summary>
+        /// the type of Unity Catalog securable.
+        /// </summary>
         [Output("securableType")]
         public Output<string> SecurableType { get; private set; } = null!;
 
@@ -168,8 +180,11 @@ namespace Pulumi.Databricks
         [Output("shareName")]
         public Output<string?> ShareName { get; private set; } = null!;
 
+        /// <summary>
+        /// effective storage Location URL (full path) for managed tables within catalog.
+        /// </summary>
         [Output("storageLocation")]
-        public Output<string?> StorageLocation { get; private set; } = null!;
+        public Output<string> StorageLocation { get; private set; } = null!;
 
         /// <summary>
         /// Managed location of the catalog. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
@@ -177,9 +192,15 @@ namespace Pulumi.Databricks
         [Output("storageRoot")]
         public Output<string?> StorageRoot { get; private set; } = null!;
 
+        /// <summary>
+        /// time at which this catalog was last modified, in epoch milliseconds..
+        /// </summary>
         [Output("updatedAt")]
         public Output<int> UpdatedAt { get; private set; } = null!;
 
+        /// <summary>
+        /// username of user who last modified catalog.
+        /// </summary>
         [Output("updatedBy")]
         public Output<string> UpdatedBy { get; private set; } = null!;
 
@@ -322,9 +343,6 @@ namespace Pulumi.Databricks
         [Input("shareName")]
         public Input<string>? ShareName { get; set; }
 
-        [Input("storageLocation")]
-        public Input<string>? StorageLocation { get; set; }
-
         /// <summary>
         /// Managed location of the catalog. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
         /// </summary>
@@ -342,6 +360,9 @@ namespace Pulumi.Databricks
         [Input("browseOnly")]
         public Input<bool>? BrowseOnly { get; set; }
 
+        /// <summary>
+        /// the type of the catalog.
+        /// </summary>
         [Input("catalogType")]
         public Input<string>? CatalogType { get; set; }
 
@@ -357,9 +378,15 @@ namespace Pulumi.Databricks
         [Input("connectionName")]
         public Input<string>? ConnectionName { get; set; }
 
+        /// <summary>
+        /// time at which this catalog was created, in epoch milliseconds.
+        /// </summary>
         [Input("createdAt")]
         public Input<int>? CreatedAt { get; set; }
 
+        /// <summary>
+        /// username of catalog creator.
+        /// </summary>
         [Input("createdBy")]
         public Input<string>? CreatedBy { get; set; }
 
@@ -438,6 +465,9 @@ namespace Pulumi.Databricks
         [Input("provisioningInfo")]
         public Input<Inputs.CatalogProvisioningInfoGetArgs>? ProvisioningInfo { get; set; }
 
+        /// <summary>
+        /// the type of Unity Catalog securable.
+        /// </summary>
         [Input("securableType")]
         public Input<string>? SecurableType { get; set; }
 
@@ -447,6 +477,9 @@ namespace Pulumi.Databricks
         [Input("shareName")]
         public Input<string>? ShareName { get; set; }
 
+        /// <summary>
+        /// effective storage Location URL (full path) for managed tables within catalog.
+        /// </summary>
         [Input("storageLocation")]
         public Input<string>? StorageLocation { get; set; }
 
@@ -456,9 +489,15 @@ namespace Pulumi.Databricks
         [Input("storageRoot")]
         public Input<string>? StorageRoot { get; set; }
 
+        /// <summary>
+        /// time at which this catalog was last modified, in epoch milliseconds..
+        /// </summary>
         [Input("updatedAt")]
         public Input<int>? UpdatedAt { get; set; }
 
+        /// <summary>
+        /// username of user who last modified catalog.
+        /// </summary>
         [Input("updatedBy")]
         public Input<string>? UpdatedBy { get; set; }
 

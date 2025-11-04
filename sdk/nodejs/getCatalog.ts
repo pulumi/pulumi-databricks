@@ -44,6 +44,7 @@ export function getCatalog(args: GetCatalogArgs, opts?: pulumi.InvokeOptions): P
         "catalogInfo": args.catalogInfo,
         "id": args.id,
         "name": args.name,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -63,6 +64,10 @@ export interface GetCatalogArgs {
      * name of the catalog
      */
     name: string;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: inputs.GetCatalogProviderConfig;
 }
 
 /**
@@ -81,6 +86,7 @@ export interface GetCatalogResult {
      * Name of the catalog
      */
     readonly name: string;
+    readonly providerConfig?: outputs.GetCatalogProviderConfig;
 }
 /**
  * Retrieves details of a specific catalog in Unity Catalog, that were created by Pulumi or manually. Use databricks.getCatalogs to retrieve IDs of multiple catalogs from Unity Catalog
@@ -120,6 +126,7 @@ export function getCatalogOutput(args: GetCatalogOutputArgs, opts?: pulumi.Invok
         "catalogInfo": args.catalogInfo,
         "id": args.id,
         "name": args.name,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -139,4 +146,8 @@ export interface GetCatalogOutputArgs {
      * name of the catalog
      */
     name: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.GetCatalogProviderConfigArgs>;
 }

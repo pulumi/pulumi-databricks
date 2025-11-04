@@ -10,6 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
+    /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    /// 
     /// The Alert v2 resource allows you to manage SQL alerts in Databricks SQL. Alerts monitor query results and notify you when specific conditions are met.
     /// 
     /// Alerts run on a schedule and evaluate query results against defined thresholds. When an alert is triggered, notifications can be sent to specified users or destinations.
@@ -36,7 +38,7 @@ namespace Pulumi.Databricks
     /// If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
     /// 
     /// ```sh
-    /// $ pulumi import databricks:index/alertV2:AlertV2 databricks_alert_v2 "id"
+    /// $ pulumi import databricks:index/alertV2:AlertV2 this "id"
     /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/alertV2:AlertV2")]
@@ -64,7 +66,7 @@ namespace Pulumi.Databricks
         /// The display name of the alert
         /// </summary>
         [Output("displayName")]
-        public Output<string?> DisplayName { get; private set; } = null!;
+        public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
         /// (AlertV2RunAs) - The actual identity that will be used to execute the alert.
@@ -75,10 +77,10 @@ namespace Pulumi.Databricks
         public Output<Outputs.AlertV2EffectiveRunAs> EffectiveRunAs { get; private set; } = null!;
 
         [Output("evaluation")]
-        public Output<Outputs.AlertV2Evaluation?> Evaluation { get; private set; } = null!;
+        public Output<Outputs.AlertV2Evaluation> Evaluation { get; private set; } = null!;
 
         /// <summary>
-        /// (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `TRASHED`
+        /// (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `DELETED`
         /// </summary>
         [Output("lifecycleState")]
         public Output<string> LifecycleState { get; private set; } = null!;
@@ -99,7 +101,7 @@ namespace Pulumi.Databricks
         /// Text of the query to be run
         /// </summary>
         [Output("queryText")]
-        public Output<string?> QueryText { get; private set; } = null!;
+        public Output<string> QueryText { get; private set; } = null!;
 
         /// <summary>
         /// Specifies the identity that will be used to run the alert.
@@ -120,7 +122,7 @@ namespace Pulumi.Databricks
         public Output<string?> RunAsUserName { get; private set; } = null!;
 
         [Output("schedule")]
-        public Output<Outputs.AlertV2Schedule?> Schedule { get; private set; } = null!;
+        public Output<Outputs.AlertV2Schedule> Schedule { get; private set; } = null!;
 
         /// <summary>
         /// (string) - The timestamp indicating when the alert was updated
@@ -132,13 +134,7 @@ namespace Pulumi.Databricks
         /// ID of the SQL warehouse attached to the alert
         /// </summary>
         [Output("warehouseId")]
-        public Output<string?> WarehouseId { get; private set; } = null!;
-
-        /// <summary>
-        /// Workspace ID of the resource
-        /// </summary>
-        [Output("workspaceId")]
-        public Output<string?> WorkspaceId { get; private set; } = null!;
+        public Output<string> WarehouseId { get; private set; } = null!;
 
 
         /// <summary>
@@ -148,7 +144,7 @@ namespace Pulumi.Databricks
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public AlertV2(string name, AlertV2Args? args = null, CustomResourceOptions? options = null)
+        public AlertV2(string name, AlertV2Args args, CustomResourceOptions? options = null)
             : base("databricks:index/alertV2:AlertV2", name, args ?? new AlertV2Args(), MakeResourceOptions(options, ""))
         {
         }
@@ -201,11 +197,11 @@ namespace Pulumi.Databricks
         /// <summary>
         /// The display name of the alert
         /// </summary>
-        [Input("displayName")]
-        public Input<string>? DisplayName { get; set; }
+        [Input("displayName", required: true)]
+        public Input<string> DisplayName { get; set; } = null!;
 
-        [Input("evaluation")]
-        public Input<Inputs.AlertV2EvaluationArgs>? Evaluation { get; set; }
+        [Input("evaluation", required: true)]
+        public Input<Inputs.AlertV2EvaluationArgs> Evaluation { get; set; } = null!;
 
         /// <summary>
         /// The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
@@ -216,8 +212,8 @@ namespace Pulumi.Databricks
         /// <summary>
         /// Text of the query to be run
         /// </summary>
-        [Input("queryText")]
-        public Input<string>? QueryText { get; set; }
+        [Input("queryText", required: true)]
+        public Input<string> QueryText { get; set; } = null!;
 
         /// <summary>
         /// Specifies the identity that will be used to run the alert.
@@ -237,20 +233,14 @@ namespace Pulumi.Databricks
         [Input("runAsUserName")]
         public Input<string>? RunAsUserName { get; set; }
 
-        [Input("schedule")]
-        public Input<Inputs.AlertV2ScheduleArgs>? Schedule { get; set; }
+        [Input("schedule", required: true)]
+        public Input<Inputs.AlertV2ScheduleArgs> Schedule { get; set; } = null!;
 
         /// <summary>
         /// ID of the SQL warehouse attached to the alert
         /// </summary>
-        [Input("warehouseId")]
-        public Input<string>? WarehouseId { get; set; }
-
-        /// <summary>
-        /// Workspace ID of the resource
-        /// </summary>
-        [Input("workspaceId")]
-        public Input<string>? WorkspaceId { get; set; }
+        [Input("warehouseId", required: true)]
+        public Input<string> WarehouseId { get; set; } = null!;
 
         public AlertV2Args()
         {
@@ -296,7 +286,7 @@ namespace Pulumi.Databricks
         public Input<Inputs.AlertV2EvaluationGetArgs>? Evaluation { get; set; }
 
         /// <summary>
-        /// (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `TRASHED`
+        /// (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `DELETED`
         /// </summary>
         [Input("lifecycleState")]
         public Input<string>? LifecycleState { get; set; }
@@ -351,12 +341,6 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("warehouseId")]
         public Input<string>? WarehouseId { get; set; }
-
-        /// <summary>
-        /// Workspace ID of the resource
-        /// </summary>
-        [Input("workspaceId")]
-        public Input<string>? WorkspaceId { get; set; }
 
         public AlertV2State()
         {

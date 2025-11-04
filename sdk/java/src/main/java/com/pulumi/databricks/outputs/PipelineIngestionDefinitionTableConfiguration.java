@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.PipelineIngestionDefinitionTableConfigurationQueryBasedConnectorConfig;
+import com.pulumi.databricks.outputs.PipelineIngestionDefinitionTableConfigurationWorkdayReportParameters;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -21,6 +22,7 @@ public final class PipelineIngestionDefinitionTableConfiguration {
     private @Nullable Boolean salesforceIncludeFormulaFields;
     private @Nullable String scdType;
     private @Nullable List<String> sequenceBies;
+    private @Nullable PipelineIngestionDefinitionTableConfigurationWorkdayReportParameters workdayReportParameters;
 
     private PipelineIngestionDefinitionTableConfiguration() {}
     public List<String> excludeColumns() {
@@ -44,6 +46,9 @@ public final class PipelineIngestionDefinitionTableConfiguration {
     public List<String> sequenceBies() {
         return this.sequenceBies == null ? List.of() : this.sequenceBies;
     }
+    public Optional<PipelineIngestionDefinitionTableConfigurationWorkdayReportParameters> workdayReportParameters() {
+        return Optional.ofNullable(this.workdayReportParameters);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -61,6 +66,7 @@ public final class PipelineIngestionDefinitionTableConfiguration {
         private @Nullable Boolean salesforceIncludeFormulaFields;
         private @Nullable String scdType;
         private @Nullable List<String> sequenceBies;
+        private @Nullable PipelineIngestionDefinitionTableConfigurationWorkdayReportParameters workdayReportParameters;
         public Builder() {}
         public Builder(PipelineIngestionDefinitionTableConfiguration defaults) {
     	      Objects.requireNonNull(defaults);
@@ -71,6 +77,7 @@ public final class PipelineIngestionDefinitionTableConfiguration {
     	      this.salesforceIncludeFormulaFields = defaults.salesforceIncludeFormulaFields;
     	      this.scdType = defaults.scdType;
     	      this.sequenceBies = defaults.sequenceBies;
+    	      this.workdayReportParameters = defaults.workdayReportParameters;
         }
 
         @CustomType.Setter
@@ -127,6 +134,12 @@ public final class PipelineIngestionDefinitionTableConfiguration {
         public Builder sequenceBies(String... sequenceBies) {
             return sequenceBies(List.of(sequenceBies));
         }
+        @CustomType.Setter
+        public Builder workdayReportParameters(@Nullable PipelineIngestionDefinitionTableConfigurationWorkdayReportParameters workdayReportParameters) {
+
+            this.workdayReportParameters = workdayReportParameters;
+            return this;
+        }
         public PipelineIngestionDefinitionTableConfiguration build() {
             final var _resultValue = new PipelineIngestionDefinitionTableConfiguration();
             _resultValue.excludeColumns = excludeColumns;
@@ -136,6 +149,7 @@ public final class PipelineIngestionDefinitionTableConfiguration {
             _resultValue.salesforceIncludeFormulaFields = salesforceIncludeFormulaFields;
             _resultValue.scdType = scdType;
             _resultValue.sequenceBies = sequenceBies;
+            _resultValue.workdayReportParameters = workdayReportParameters;
             return _resultValue;
         }
     }

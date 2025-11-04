@@ -9,8 +9,6 @@ import java.lang.String;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetExternalMetadataResult {
@@ -18,7 +16,7 @@ public final class GetExternalMetadataResult {
      * @return (list of string) - List of columns associated with the external metadata object
      * 
      */
-    private @Nullable List<String> columns;
+    private List<String> columns;
     /**
      * @return (string) - Time at which this external metadata object was created
      * 
@@ -33,7 +31,7 @@ public final class GetExternalMetadataResult {
      * @return (string) - User-provided free-form text description
      * 
      */
-    private @Nullable String description;
+    private String description;
     /**
      * @return (string) - Type of entity within the external system
      * 
@@ -58,14 +56,14 @@ public final class GetExternalMetadataResult {
      * @return (string) - Owner of the external metadata object
      * 
      */
-    private @Nullable String owner;
+    private String owner;
     /**
      * @return (object) - A map of key-value properties attached to the external metadata object
      * 
      */
-    private @Nullable Map<String,String> properties;
+    private Map<String,String> properties;
     /**
-     * @return (string) - Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `TABLEAU`, `TERADATA`, `WORKDAY`
+     * @return (string) - Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `STREAM_NATIVE`, `TABLEAU`, `TERADATA`, `WORKDAY`
      * 
      */
     private String systemType;
@@ -83,8 +81,7 @@ public final class GetExternalMetadataResult {
      * @return (string) - URL associated with the external metadata object
      * 
      */
-    private @Nullable String url;
-    private @Nullable String workspaceId;
+    private String url;
 
     private GetExternalMetadataResult() {}
     /**
@@ -92,7 +89,7 @@ public final class GetExternalMetadataResult {
      * 
      */
     public List<String> columns() {
-        return this.columns == null ? List.of() : this.columns;
+        return this.columns;
     }
     /**
      * @return (string) - Time at which this external metadata object was created
@@ -112,8 +109,8 @@ public final class GetExternalMetadataResult {
      * @return (string) - User-provided free-form text description
      * 
      */
-    public Optional<String> description() {
-        return Optional.ofNullable(this.description);
+    public String description() {
+        return this.description;
     }
     /**
      * @return (string) - Type of entity within the external system
@@ -147,18 +144,18 @@ public final class GetExternalMetadataResult {
      * @return (string) - Owner of the external metadata object
      * 
      */
-    public Optional<String> owner() {
-        return Optional.ofNullable(this.owner);
+    public String owner() {
+        return this.owner;
     }
     /**
      * @return (object) - A map of key-value properties attached to the external metadata object
      * 
      */
     public Map<String,String> properties() {
-        return this.properties == null ? Map.of() : this.properties;
+        return this.properties;
     }
     /**
-     * @return (string) - Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `TABLEAU`, `TERADATA`, `WORKDAY`
+     * @return (string) - Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `STREAM_NATIVE`, `TABLEAU`, `TERADATA`, `WORKDAY`
      * 
      */
     public String systemType() {
@@ -182,11 +179,8 @@ public final class GetExternalMetadataResult {
      * @return (string) - URL associated with the external metadata object
      * 
      */
-    public Optional<String> url() {
-        return Optional.ofNullable(this.url);
-    }
-    public Optional<String> workspaceId() {
-        return Optional.ofNullable(this.workspaceId);
+    public String url() {
+        return this.url;
     }
 
     public static Builder builder() {
@@ -198,21 +192,20 @@ public final class GetExternalMetadataResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable List<String> columns;
+        private List<String> columns;
         private String createTime;
         private String createdBy;
-        private @Nullable String description;
+        private String description;
         private String entityType;
         private String id;
         private String metastoreId;
         private String name;
-        private @Nullable String owner;
-        private @Nullable Map<String,String> properties;
+        private String owner;
+        private Map<String,String> properties;
         private String systemType;
         private String updateTime;
         private String updatedBy;
-        private @Nullable String url;
-        private @Nullable String workspaceId;
+        private String url;
         public Builder() {}
         public Builder(GetExternalMetadataResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -230,12 +223,13 @@ public final class GetExternalMetadataResult {
     	      this.updateTime = defaults.updateTime;
     	      this.updatedBy = defaults.updatedBy;
     	      this.url = defaults.url;
-    	      this.workspaceId = defaults.workspaceId;
         }
 
         @CustomType.Setter
-        public Builder columns(@Nullable List<String> columns) {
-
+        public Builder columns(List<String> columns) {
+            if (columns == null) {
+              throw new MissingRequiredPropertyException("GetExternalMetadataResult", "columns");
+            }
             this.columns = columns;
             return this;
         }
@@ -259,8 +253,10 @@ public final class GetExternalMetadataResult {
             return this;
         }
         @CustomType.Setter
-        public Builder description(@Nullable String description) {
-
+        public Builder description(String description) {
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetExternalMetadataResult", "description");
+            }
             this.description = description;
             return this;
         }
@@ -297,14 +293,18 @@ public final class GetExternalMetadataResult {
             return this;
         }
         @CustomType.Setter
-        public Builder owner(@Nullable String owner) {
-
+        public Builder owner(String owner) {
+            if (owner == null) {
+              throw new MissingRequiredPropertyException("GetExternalMetadataResult", "owner");
+            }
             this.owner = owner;
             return this;
         }
         @CustomType.Setter
-        public Builder properties(@Nullable Map<String,String> properties) {
-
+        public Builder properties(Map<String,String> properties) {
+            if (properties == null) {
+              throw new MissingRequiredPropertyException("GetExternalMetadataResult", "properties");
+            }
             this.properties = properties;
             return this;
         }
@@ -333,15 +333,11 @@ public final class GetExternalMetadataResult {
             return this;
         }
         @CustomType.Setter
-        public Builder url(@Nullable String url) {
-
+        public Builder url(String url) {
+            if (url == null) {
+              throw new MissingRequiredPropertyException("GetExternalMetadataResult", "url");
+            }
             this.url = url;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder workspaceId(@Nullable String workspaceId) {
-
-            this.workspaceId = workspaceId;
             return this;
         }
         public GetExternalMetadataResult build() {
@@ -360,7 +356,6 @@ public final class GetExternalMetadataResult {
             _resultValue.updateTime = updateTime;
             _resultValue.updatedBy = updatedBy;
             _resultValue.url = url;
-            _resultValue.workspaceId = workspaceId;
             return _resultValue;
         }
     }

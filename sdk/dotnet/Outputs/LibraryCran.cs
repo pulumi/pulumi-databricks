@@ -13,7 +13,13 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class LibraryCran
     {
+        /// <summary>
+        /// The name of the CRAN package to install.
+        /// </summary>
         public readonly string Package;
+        /// <summary>
+        /// The repository where the package can be found. If not specified, the default CRAN repo is used.
+        /// </summary>
         public readonly string? Repo;
 
         [OutputConstructor]

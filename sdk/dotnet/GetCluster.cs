@@ -120,6 +120,12 @@ namespace Pulumi.Databricks
         [Input("id")]
         public string? Id { get; set; }
 
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Inputs.GetClusterProviderConfigArgs? ProviderConfig { get; set; }
+
         public GetClusterArgs()
         {
         }
@@ -152,6 +158,12 @@ namespace Pulumi.Databricks
         [Input("id")]
         public Input<string>? Id { get; set; }
 
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.GetClusterProviderConfigInputArgs>? ProviderConfig { get; set; }
+
         public GetClusterInvokeArgs()
         {
         }
@@ -175,6 +187,7 @@ namespace Pulumi.Databricks
         /// cluster ID
         /// </summary>
         public readonly string Id;
+        public readonly Outputs.GetClusterProviderConfigResult? ProviderConfig;
 
         [OutputConstructor]
         private GetClusterResult(
@@ -184,12 +197,15 @@ namespace Pulumi.Databricks
 
             string clusterName,
 
-            string id)
+            string id,
+
+            Outputs.GetClusterProviderConfigResult? providerConfig)
         {
             ClusterId = clusterId;
             ClusterInfo = clusterInfo;
             ClusterName = clusterName;
             Id = id;
+            ProviderConfig = providerConfig;
         }
     }
 }

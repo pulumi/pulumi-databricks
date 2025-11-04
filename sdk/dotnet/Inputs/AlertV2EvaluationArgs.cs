@@ -15,11 +15,11 @@ namespace Pulumi.Databricks.Inputs
         /// <summary>
         /// Operator used for comparison in alert evaluation. Possible values are: `EQUAL`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `IS_NOT_NULL`, `IS_NULL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`
         /// </summary>
-        [Input("comparisonOperator")]
-        public Input<string>? ComparisonOperator { get; set; }
+        [Input("comparisonOperator", required: true)]
+        public Input<string> ComparisonOperator { get; set; } = null!;
 
         /// <summary>
-        /// Alert state if result is empty. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
+        /// Alert state if result is empty. Please avoid setting this field to be `UNKNOWN` because `UNKNOWN` state is planned to be deprecated. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
         /// </summary>
         [Input("emptyResultState")]
         public Input<string>? EmptyResultState { get; set; }
@@ -39,8 +39,8 @@ namespace Pulumi.Databricks.Inputs
         /// <summary>
         /// Source column from result to use to evaluate alert
         /// </summary>
-        [Input("source")]
-        public Input<Inputs.AlertV2EvaluationSourceArgs>? Source { get; set; }
+        [Input("source", required: true)]
+        public Input<Inputs.AlertV2EvaluationSourceArgs> Source { get; set; } = null!;
 
         /// <summary>
         /// (string) - Latest state of alert evaluation. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`

@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.GetSqlWarehouseChannelArgs;
 import com.pulumi.databricks.inputs.GetSqlWarehouseHealthArgs;
 import com.pulumi.databricks.inputs.GetSqlWarehouseOdbcParamsArgs;
+import com.pulumi.databricks.inputs.GetSqlWarehouseProviderConfigArgs;
 import com.pulumi.databricks.inputs.GetSqlWarehouseTagsArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -268,6 +269,13 @@ public final class GetSqlWarehouseArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.odbcParams);
     }
 
+    @Import(name="providerConfig")
+    private @Nullable Output<GetSqlWarehouseProviderConfigArgs> providerConfig;
+
+    public Optional<Output<GetSqlWarehouseProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     /**
      * The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`.
      * 
@@ -348,6 +356,7 @@ public final class GetSqlWarehouseArgs extends com.pulumi.resources.InvokeArgs {
         this.numActiveSessions = $.numActiveSessions;
         this.numClusters = $.numClusters;
         this.odbcParams = $.odbcParams;
+        this.providerConfig = $.providerConfig;
         this.spotInstancePolicy = $.spotInstancePolicy;
         this.state = $.state;
         this.tags = $.tags;
@@ -715,6 +724,15 @@ public final class GetSqlWarehouseArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder odbcParams(GetSqlWarehouseOdbcParamsArgs odbcParams) {
             return odbcParams(Output.of(odbcParams));
+        }
+
+        public Builder providerConfig(@Nullable Output<GetSqlWarehouseProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        public Builder providerConfig(GetSqlWarehouseProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         /**

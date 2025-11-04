@@ -14,9 +14,17 @@ public final class AccountSettingV2EffectiveRestrictWorkspaceAdminsArgs extends 
 
     public static final AccountSettingV2EffectiveRestrictWorkspaceAdminsArgs Empty = new AccountSettingV2EffectiveRestrictWorkspaceAdminsArgs();
 
+    /**
+     * Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
+     * 
+     */
     @Import(name="status", required=true)
     private Output<String> status;
 
+    /**
+     * @return Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
+     * 
+     */
     public Output<String> status() {
         return this.status;
     }
@@ -45,11 +53,23 @@ public final class AccountSettingV2EffectiveRestrictWorkspaceAdminsArgs extends 
             $ = new AccountSettingV2EffectiveRestrictWorkspaceAdminsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param status Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
+         * 
+         * @return builder
+         * 
+         */
         public Builder status(Output<String> status) {
             $.status = status;
             return this;
         }
 
+        /**
+         * @param status Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
+         * 
+         * @return builder
+         * 
+         */
         public Builder status(String status) {
             return status(Output.of(status));
         }

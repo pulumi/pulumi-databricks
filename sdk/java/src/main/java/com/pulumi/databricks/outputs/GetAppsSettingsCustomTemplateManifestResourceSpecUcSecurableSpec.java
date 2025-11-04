@@ -11,26 +11,26 @@ import java.util.Objects;
 @CustomType
 public final class GetAppsSettingsCustomTemplateManifestResourceSpecUcSecurableSpec {
     /**
-     * @return (string) - . Possible values are: `MANAGE`, `READ_VOLUME`, `WRITE_VOLUME`
+     * @return (string) - Possible values are: `MANAGE`, `READ_VOLUME`, `SELECT`, `WRITE_VOLUME`
      * 
      */
     private String permission;
     /**
-     * @return (string) - . Possible values are: `VOLUME`
+     * @return (string) - Possible values are: `TABLE`, `VOLUME`
      * 
      */
     private String securableType;
 
     private GetAppsSettingsCustomTemplateManifestResourceSpecUcSecurableSpec() {}
     /**
-     * @return (string) - . Possible values are: `MANAGE`, `READ_VOLUME`, `WRITE_VOLUME`
+     * @return (string) - Possible values are: `MANAGE`, `READ_VOLUME`, `SELECT`, `WRITE_VOLUME`
      * 
      */
     public String permission() {
         return this.permission;
     }
     /**
-     * @return (string) - . Possible values are: `VOLUME`
+     * @return (string) - Possible values are: `TABLE`, `VOLUME`
      * 
      */
     public String securableType() {

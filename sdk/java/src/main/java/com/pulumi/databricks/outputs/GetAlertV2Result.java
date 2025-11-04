@@ -11,8 +11,6 @@ import com.pulumi.databricks.outputs.GetAlertV2Schedule;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAlertV2Result {
@@ -25,17 +23,17 @@ public final class GetAlertV2Result {
      * @return (string) - Custom description for the alert. support mustache template
      * 
      */
-    private @Nullable String customDescription;
+    private String customDescription;
     /**
      * @return (string) - Custom summary for the alert. support mustache template
      * 
      */
-    private @Nullable String customSummary;
+    private String customSummary;
     /**
      * @return (string) - The display name of the alert
      * 
      */
-    private @Nullable String displayName;
+    private String displayName;
     /**
      * @return (AlertV2RunAs) - The actual identity that will be used to execute the alert.
      * This is an output-only field that shows the resolved run-as identity after applying
@@ -47,14 +45,14 @@ public final class GetAlertV2Result {
      * @return (AlertV2Evaluation)
      * 
      */
-    private @Nullable GetAlertV2Evaluation evaluation;
+    private GetAlertV2Evaluation evaluation;
     /**
      * @return (string) - UUID identifying the alert
      * 
      */
     private String id;
     /**
-     * @return (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `TRASHED`
+     * @return (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `DELETED`
      * 
      */
     private String lifecycleState;
@@ -67,12 +65,12 @@ public final class GetAlertV2Result {
      * @return (string) - The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
      * 
      */
-    private @Nullable String parentPath;
+    private String parentPath;
     /**
      * @return (string) - Text of the query to be run
      * 
      */
-    private @Nullable String queryText;
+    private String queryText;
     /**
      * @return (AlertV2RunAs) - Specifies the identity that will be used to run the alert.
      * This field allows you to configure alerts to run as a specific user or service principal.
@@ -81,19 +79,19 @@ public final class GetAlertV2Result {
      *   If not specified, the alert will run as the request user
      * 
      */
-    private @Nullable GetAlertV2RunAs runAs;
+    private GetAlertV2RunAs runAs;
     /**
      * @return (string, deprecated) - The run as username or application ID of service principal.
      * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
      * Deprecated: Use `runAs` field instead. This field will be removed in a future release
      * 
      */
-    private @Nullable String runAsUserName;
+    private String runAsUserName;
     /**
      * @return (CronSchedule)
      * 
      */
-    private @Nullable GetAlertV2Schedule schedule;
+    private GetAlertV2Schedule schedule;
     /**
      * @return (string) - The timestamp indicating when the alert was updated
      * 
@@ -103,8 +101,7 @@ public final class GetAlertV2Result {
      * @return (string) - ID of the SQL warehouse attached to the alert
      * 
      */
-    private @Nullable String warehouseId;
-    private @Nullable String workspaceId;
+    private String warehouseId;
 
     private GetAlertV2Result() {}
     /**
@@ -118,22 +115,22 @@ public final class GetAlertV2Result {
      * @return (string) - Custom description for the alert. support mustache template
      * 
      */
-    public Optional<String> customDescription() {
-        return Optional.ofNullable(this.customDescription);
+    public String customDescription() {
+        return this.customDescription;
     }
     /**
      * @return (string) - Custom summary for the alert. support mustache template
      * 
      */
-    public Optional<String> customSummary() {
-        return Optional.ofNullable(this.customSummary);
+    public String customSummary() {
+        return this.customSummary;
     }
     /**
      * @return (string) - The display name of the alert
      * 
      */
-    public Optional<String> displayName() {
-        return Optional.ofNullable(this.displayName);
+    public String displayName() {
+        return this.displayName;
     }
     /**
      * @return (AlertV2RunAs) - The actual identity that will be used to execute the alert.
@@ -148,8 +145,8 @@ public final class GetAlertV2Result {
      * @return (AlertV2Evaluation)
      * 
      */
-    public Optional<GetAlertV2Evaluation> evaluation() {
-        return Optional.ofNullable(this.evaluation);
+    public GetAlertV2Evaluation evaluation() {
+        return this.evaluation;
     }
     /**
      * @return (string) - UUID identifying the alert
@@ -159,7 +156,7 @@ public final class GetAlertV2Result {
         return this.id;
     }
     /**
-     * @return (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `TRASHED`
+     * @return (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `DELETED`
      * 
      */
     public String lifecycleState() {
@@ -176,15 +173,15 @@ public final class GetAlertV2Result {
      * @return (string) - The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
      * 
      */
-    public Optional<String> parentPath() {
-        return Optional.ofNullable(this.parentPath);
+    public String parentPath() {
+        return this.parentPath;
     }
     /**
      * @return (string) - Text of the query to be run
      * 
      */
-    public Optional<String> queryText() {
-        return Optional.ofNullable(this.queryText);
+    public String queryText() {
+        return this.queryText;
     }
     /**
      * @return (AlertV2RunAs) - Specifies the identity that will be used to run the alert.
@@ -194,8 +191,8 @@ public final class GetAlertV2Result {
      *   If not specified, the alert will run as the request user
      * 
      */
-    public Optional<GetAlertV2RunAs> runAs() {
-        return Optional.ofNullable(this.runAs);
+    public GetAlertV2RunAs runAs() {
+        return this.runAs;
     }
     /**
      * @return (string, deprecated) - The run as username or application ID of service principal.
@@ -203,15 +200,15 @@ public final class GetAlertV2Result {
      * Deprecated: Use `runAs` field instead. This field will be removed in a future release
      * 
      */
-    public Optional<String> runAsUserName() {
-        return Optional.ofNullable(this.runAsUserName);
+    public String runAsUserName() {
+        return this.runAsUserName;
     }
     /**
      * @return (CronSchedule)
      * 
      */
-    public Optional<GetAlertV2Schedule> schedule() {
-        return Optional.ofNullable(this.schedule);
+    public GetAlertV2Schedule schedule() {
+        return this.schedule;
     }
     /**
      * @return (string) - The timestamp indicating when the alert was updated
@@ -224,11 +221,8 @@ public final class GetAlertV2Result {
      * @return (string) - ID of the SQL warehouse attached to the alert
      * 
      */
-    public Optional<String> warehouseId() {
-        return Optional.ofNullable(this.warehouseId);
-    }
-    public Optional<String> workspaceId() {
-        return Optional.ofNullable(this.workspaceId);
+    public String warehouseId() {
+        return this.warehouseId;
     }
 
     public static Builder builder() {
@@ -241,22 +235,21 @@ public final class GetAlertV2Result {
     @CustomType.Builder
     public static final class Builder {
         private String createTime;
-        private @Nullable String customDescription;
-        private @Nullable String customSummary;
-        private @Nullable String displayName;
+        private String customDescription;
+        private String customSummary;
+        private String displayName;
         private GetAlertV2EffectiveRunAs effectiveRunAs;
-        private @Nullable GetAlertV2Evaluation evaluation;
+        private GetAlertV2Evaluation evaluation;
         private String id;
         private String lifecycleState;
         private String ownerUserName;
-        private @Nullable String parentPath;
-        private @Nullable String queryText;
-        private @Nullable GetAlertV2RunAs runAs;
-        private @Nullable String runAsUserName;
-        private @Nullable GetAlertV2Schedule schedule;
+        private String parentPath;
+        private String queryText;
+        private GetAlertV2RunAs runAs;
+        private String runAsUserName;
+        private GetAlertV2Schedule schedule;
         private String updateTime;
-        private @Nullable String warehouseId;
-        private @Nullable String workspaceId;
+        private String warehouseId;
         public Builder() {}
         public Builder(GetAlertV2Result defaults) {
     	      Objects.requireNonNull(defaults);
@@ -276,7 +269,6 @@ public final class GetAlertV2Result {
     	      this.schedule = defaults.schedule;
     	      this.updateTime = defaults.updateTime;
     	      this.warehouseId = defaults.warehouseId;
-    	      this.workspaceId = defaults.workspaceId;
         }
 
         @CustomType.Setter
@@ -288,20 +280,26 @@ public final class GetAlertV2Result {
             return this;
         }
         @CustomType.Setter
-        public Builder customDescription(@Nullable String customDescription) {
-
+        public Builder customDescription(String customDescription) {
+            if (customDescription == null) {
+              throw new MissingRequiredPropertyException("GetAlertV2Result", "customDescription");
+            }
             this.customDescription = customDescription;
             return this;
         }
         @CustomType.Setter
-        public Builder customSummary(@Nullable String customSummary) {
-
+        public Builder customSummary(String customSummary) {
+            if (customSummary == null) {
+              throw new MissingRequiredPropertyException("GetAlertV2Result", "customSummary");
+            }
             this.customSummary = customSummary;
             return this;
         }
         @CustomType.Setter
-        public Builder displayName(@Nullable String displayName) {
-
+        public Builder displayName(String displayName) {
+            if (displayName == null) {
+              throw new MissingRequiredPropertyException("GetAlertV2Result", "displayName");
+            }
             this.displayName = displayName;
             return this;
         }
@@ -314,8 +312,10 @@ public final class GetAlertV2Result {
             return this;
         }
         @CustomType.Setter
-        public Builder evaluation(@Nullable GetAlertV2Evaluation evaluation) {
-
+        public Builder evaluation(GetAlertV2Evaluation evaluation) {
+            if (evaluation == null) {
+              throw new MissingRequiredPropertyException("GetAlertV2Result", "evaluation");
+            }
             this.evaluation = evaluation;
             return this;
         }
@@ -344,32 +344,42 @@ public final class GetAlertV2Result {
             return this;
         }
         @CustomType.Setter
-        public Builder parentPath(@Nullable String parentPath) {
-
+        public Builder parentPath(String parentPath) {
+            if (parentPath == null) {
+              throw new MissingRequiredPropertyException("GetAlertV2Result", "parentPath");
+            }
             this.parentPath = parentPath;
             return this;
         }
         @CustomType.Setter
-        public Builder queryText(@Nullable String queryText) {
-
+        public Builder queryText(String queryText) {
+            if (queryText == null) {
+              throw new MissingRequiredPropertyException("GetAlertV2Result", "queryText");
+            }
             this.queryText = queryText;
             return this;
         }
         @CustomType.Setter
-        public Builder runAs(@Nullable GetAlertV2RunAs runAs) {
-
+        public Builder runAs(GetAlertV2RunAs runAs) {
+            if (runAs == null) {
+              throw new MissingRequiredPropertyException("GetAlertV2Result", "runAs");
+            }
             this.runAs = runAs;
             return this;
         }
         @CustomType.Setter
-        public Builder runAsUserName(@Nullable String runAsUserName) {
-
+        public Builder runAsUserName(String runAsUserName) {
+            if (runAsUserName == null) {
+              throw new MissingRequiredPropertyException("GetAlertV2Result", "runAsUserName");
+            }
             this.runAsUserName = runAsUserName;
             return this;
         }
         @CustomType.Setter
-        public Builder schedule(@Nullable GetAlertV2Schedule schedule) {
-
+        public Builder schedule(GetAlertV2Schedule schedule) {
+            if (schedule == null) {
+              throw new MissingRequiredPropertyException("GetAlertV2Result", "schedule");
+            }
             this.schedule = schedule;
             return this;
         }
@@ -382,15 +392,11 @@ public final class GetAlertV2Result {
             return this;
         }
         @CustomType.Setter
-        public Builder warehouseId(@Nullable String warehouseId) {
-
+        public Builder warehouseId(String warehouseId) {
+            if (warehouseId == null) {
+              throw new MissingRequiredPropertyException("GetAlertV2Result", "warehouseId");
+            }
             this.warehouseId = warehouseId;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder workspaceId(@Nullable String workspaceId) {
-
-            this.workspaceId = workspaceId;
             return this;
         }
         public GetAlertV2Result build() {
@@ -411,7 +417,6 @@ public final class GetAlertV2Result {
             _resultValue.schedule = schedule;
             _resultValue.updateTime = updateTime;
             _resultValue.warehouseId = warehouseId;
-            _resultValue.workspaceId = workspaceId;
             return _resultValue;
         }
     }

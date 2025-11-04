@@ -28,6 +28,7 @@ export function getInstanceProfiles(args?: GetInstanceProfilesArgs, opts?: pulum
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getInstanceProfiles:getInstanceProfiles", {
         "instanceProfiles": args.instanceProfiles,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -39,6 +40,10 @@ export interface GetInstanceProfilesArgs {
      * Set of objects for a databricks_instance_profile. This contains the following attributes:
      */
     instanceProfiles?: inputs.GetInstanceProfilesInstanceProfile[];
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: inputs.GetInstanceProfilesProviderConfig;
 }
 
 /**
@@ -53,6 +58,7 @@ export interface GetInstanceProfilesResult {
      * Set of objects for a databricks_instance_profile. This contains the following attributes:
      */
     readonly instanceProfiles: outputs.GetInstanceProfilesInstanceProfile[];
+    readonly providerConfig?: outputs.GetInstanceProfilesProviderConfig;
 }
 /**
  * Lists all available databricks_instance_profiles.
@@ -76,6 +82,7 @@ export function getInstanceProfilesOutput(args?: GetInstanceProfilesOutputArgs, 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getInstanceProfiles:getInstanceProfiles", {
         "instanceProfiles": args.instanceProfiles,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -87,4 +94,8 @@ export interface GetInstanceProfilesOutputArgs {
      * Set of objects for a databricks_instance_profile. This contains the following attributes:
      */
     instanceProfiles?: pulumi.Input<pulumi.Input<inputs.GetInstanceProfilesInstanceProfileArgs>[]>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.GetInstanceProfilesProviderConfigArgs>;
 }

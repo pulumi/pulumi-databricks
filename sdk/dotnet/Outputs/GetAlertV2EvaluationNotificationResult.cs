@@ -13,6 +13,8 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class GetAlertV2EvaluationNotificationResult
     {
+        public readonly bool EffectiveNotifyOnOk;
+        public readonly int EffectiveRetriggerSeconds;
         /// <summary>
         /// (boolean) - Whether to notify alert subscribers when alert returns back to normal
         /// </summary>
@@ -28,12 +30,18 @@ namespace Pulumi.Databricks.Outputs
 
         [OutputConstructor]
         private GetAlertV2EvaluationNotificationResult(
+            bool effectiveNotifyOnOk,
+
+            int effectiveRetriggerSeconds,
+
             bool? notifyOnOk,
 
             int? retriggerSeconds,
 
             ImmutableArray<Outputs.GetAlertV2EvaluationNotificationSubscriptionResult> subscriptions)
         {
+            EffectiveNotifyOnOk = effectiveNotifyOnOk;
+            EffectiveRetriggerSeconds = effectiveRetriggerSeconds;
             NotifyOnOk = notifyOnOk;
             RetriggerSeconds = retriggerSeconds;
             Subscriptions = subscriptions;

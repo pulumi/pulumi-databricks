@@ -12,6 +12,8 @@ namespace Pulumi.Databricks
     public static class GetAccountFederationPolicies
     {
         /// <summary>
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
         /// This data source can be used to fetch the list of account federation policies.
         /// 
         /// &gt; **Note** This data source can only be used with an account-level provider!
@@ -33,10 +35,12 @@ namespace Pulumi.Databricks
         /// });
         /// ```
         /// </summary>
-        public static Task<GetAccountFederationPoliciesResult> InvokeAsync(InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccountFederationPoliciesResult>("databricks:index/getAccountFederationPolicies:getAccountFederationPolicies", InvokeArgs.Empty, options.WithDefaults());
+        public static Task<GetAccountFederationPoliciesResult> InvokeAsync(GetAccountFederationPoliciesArgs? args = null, InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccountFederationPoliciesResult>("databricks:index/getAccountFederationPolicies:getAccountFederationPolicies", args ?? new GetAccountFederationPoliciesArgs(), options.WithDefaults());
 
         /// <summary>
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
         /// This data source can be used to fetch the list of account federation policies.
         /// 
         /// &gt; **Note** This data source can only be used with an account-level provider!
@@ -58,10 +62,12 @@ namespace Pulumi.Databricks
         /// });
         /// ```
         /// </summary>
-        public static Output<GetAccountFederationPoliciesResult> Invoke(InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.Invoke<GetAccountFederationPoliciesResult>("databricks:index/getAccountFederationPolicies:getAccountFederationPolicies", InvokeArgs.Empty, options.WithDefaults());
+        public static Output<GetAccountFederationPoliciesResult> Invoke(GetAccountFederationPoliciesInvokeArgs? args = null, InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAccountFederationPoliciesResult>("databricks:index/getAccountFederationPolicies:getAccountFederationPolicies", args ?? new GetAccountFederationPoliciesInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
         /// This data source can be used to fetch the list of account federation policies.
         /// 
         /// &gt; **Note** This data source can only be used with an account-level provider!
@@ -83,8 +89,31 @@ namespace Pulumi.Databricks
         /// });
         /// ```
         /// </summary>
-        public static Output<GetAccountFederationPoliciesResult> Invoke(InvokeOutputOptions options)
-            => global::Pulumi.Deployment.Instance.Invoke<GetAccountFederationPoliciesResult>("databricks:index/getAccountFederationPolicies:getAccountFederationPolicies", InvokeArgs.Empty, options.WithDefaults());
+        public static Output<GetAccountFederationPoliciesResult> Invoke(GetAccountFederationPoliciesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAccountFederationPoliciesResult>("databricks:index/getAccountFederationPolicies:getAccountFederationPolicies", args ?? new GetAccountFederationPoliciesInvokeArgs(), options.WithDefaults());
+    }
+
+
+    public sealed class GetAccountFederationPoliciesArgs : global::Pulumi.InvokeArgs
+    {
+        [Input("pageSize")]
+        public int? PageSize { get; set; }
+
+        public GetAccountFederationPoliciesArgs()
+        {
+        }
+        public static new GetAccountFederationPoliciesArgs Empty => new GetAccountFederationPoliciesArgs();
+    }
+
+    public sealed class GetAccountFederationPoliciesInvokeArgs : global::Pulumi.InvokeArgs
+    {
+        [Input("pageSize")]
+        public Input<int>? PageSize { get; set; }
+
+        public GetAccountFederationPoliciesInvokeArgs()
+        {
+        }
+        public static new GetAccountFederationPoliciesInvokeArgs Empty => new GetAccountFederationPoliciesInvokeArgs();
     }
 
 
@@ -95,15 +124,19 @@ namespace Pulumi.Databricks
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly int? PageSize;
         public readonly ImmutableArray<Outputs.GetAccountFederationPoliciesPolicyResult> Policies;
 
         [OutputConstructor]
         private GetAccountFederationPoliciesResult(
             string id,
 
+            int? pageSize,
+
             ImmutableArray<Outputs.GetAccountFederationPoliciesPolicyResult> policies)
         {
             Id = id;
+            PageSize = pageSize;
             Policies = policies;
         }
     }

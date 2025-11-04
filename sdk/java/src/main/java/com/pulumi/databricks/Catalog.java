@@ -100,9 +100,17 @@ public class Catalog extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> browseOnly() {
         return Codegen.optional(this.browseOnly);
     }
+    /**
+     * the type of the catalog.
+     * 
+     */
     @Export(name="catalogType", refs={String.class}, tree="[0]")
     private Output<String> catalogType;
 
+    /**
+     * @return the type of the catalog.
+     * 
+     */
     public Output<String> catalogType() {
         return this.catalogType;
     }
@@ -134,15 +142,31 @@ public class Catalog extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> connectionName() {
         return Codegen.optional(this.connectionName);
     }
+    /**
+     * time at which this catalog was created, in epoch milliseconds.
+     * 
+     */
     @Export(name="createdAt", refs={Integer.class}, tree="[0]")
     private Output<Integer> createdAt;
 
+    /**
+     * @return time at which this catalog was created, in epoch milliseconds.
+     * 
+     */
     public Output<Integer> createdAt() {
         return this.createdAt;
     }
+    /**
+     * username of catalog creator.
+     * 
+     */
     @Export(name="createdBy", refs={String.class}, tree="[0]")
     private Output<String> createdBy;
 
+    /**
+     * @return username of catalog creator.
+     * 
+     */
     public Output<String> createdBy() {
         return this.createdBy;
     }
@@ -290,9 +314,17 @@ public class Catalog extends com.pulumi.resources.CustomResource {
     public Output<Optional<CatalogProvisioningInfo>> provisioningInfo() {
         return Codegen.optional(this.provisioningInfo);
     }
+    /**
+     * the type of Unity Catalog securable.
+     * 
+     */
     @Export(name="securableType", refs={String.class}, tree="[0]")
     private Output<String> securableType;
 
+    /**
+     * @return the type of Unity Catalog securable.
+     * 
+     */
     public Output<String> securableType() {
         return this.securableType;
     }
@@ -310,11 +342,19 @@ public class Catalog extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> shareName() {
         return Codegen.optional(this.shareName);
     }
+    /**
+     * effective storage Location URL (full path) for managed tables within catalog.
+     * 
+     */
     @Export(name="storageLocation", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> storageLocation;
+    private Output<String> storageLocation;
 
-    public Output<Optional<String>> storageLocation() {
-        return Codegen.optional(this.storageLocation);
+    /**
+     * @return effective storage Location URL (full path) for managed tables within catalog.
+     * 
+     */
+    public Output<String> storageLocation() {
+        return this.storageLocation;
     }
     /**
      * Managed location of the catalog. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
@@ -330,15 +370,31 @@ public class Catalog extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> storageRoot() {
         return Codegen.optional(this.storageRoot);
     }
+    /**
+     * time at which this catalog was last modified, in epoch milliseconds..
+     * 
+     */
     @Export(name="updatedAt", refs={Integer.class}, tree="[0]")
     private Output<Integer> updatedAt;
 
+    /**
+     * @return time at which this catalog was last modified, in epoch milliseconds..
+     * 
+     */
     public Output<Integer> updatedAt() {
         return this.updatedAt;
     }
+    /**
+     * username of user who last modified catalog.
+     * 
+     */
     @Export(name="updatedBy", refs={String.class}, tree="[0]")
     private Output<String> updatedBy;
 
+    /**
+     * @return username of user who last modified catalog.
+     * 
+     */
     public Output<String> updatedBy() {
         return this.updatedBy;
     }

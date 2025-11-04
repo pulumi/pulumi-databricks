@@ -13,7 +13,7 @@ namespace Pulumi.Databricks.Inputs
     public sealed class AccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// . Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
+        /// Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
         /// </summary>
         [Input("accessPolicyType", required: true)]
         public Input<string> AccessPolicyType { get; set; } = null!;

@@ -203,7 +203,8 @@ type Pipeline struct {
 	Target  pulumi.StringPtrOutput   `pulumi:"target"`
 	Trigger PipelineTriggerPtrOutput `pulumi:"trigger"`
 	// URL of the Lakeflow Declarative Pipeline on the given workspace.
-	Url pulumi.StringOutput `pulumi:"url"`
+	Url           pulumi.StringOutput    `pulumi:"url"`
+	UsagePolicyId pulumi.StringPtrOutput `pulumi:"usagePolicyId"`
 }
 
 // NewPipeline registers a new resource with the given unique name, arguments, and options.
@@ -296,7 +297,8 @@ type pipelineState struct {
 	Target  *string          `pulumi:"target"`
 	Trigger *PipelineTrigger `pulumi:"trigger"`
 	// URL of the Lakeflow Declarative Pipeline on the given workspace.
-	Url *string `pulumi:"url"`
+	Url           *string `pulumi:"url"`
+	UsagePolicyId *string `pulumi:"usagePolicyId"`
 }
 
 type PipelineState struct {
@@ -360,7 +362,8 @@ type PipelineState struct {
 	Target  pulumi.StringPtrInput
 	Trigger PipelineTriggerPtrInput
 	// URL of the Lakeflow Declarative Pipeline on the given workspace.
-	Url pulumi.StringPtrInput
+	Url           pulumi.StringPtrInput
+	UsagePolicyId pulumi.StringPtrInput
 }
 
 func (PipelineState) ElementType() reflect.Type {
@@ -428,7 +431,8 @@ type pipelineArgs struct {
 	Target  *string          `pulumi:"target"`
 	Trigger *PipelineTrigger `pulumi:"trigger"`
 	// URL of the Lakeflow Declarative Pipeline on the given workspace.
-	Url *string `pulumi:"url"`
+	Url           *string `pulumi:"url"`
+	UsagePolicyId *string `pulumi:"usagePolicyId"`
 }
 
 // The set of arguments for constructing a Pipeline resource.
@@ -493,7 +497,8 @@ type PipelineArgs struct {
 	Target  pulumi.StringPtrInput
 	Trigger PipelineTriggerPtrInput
 	// URL of the Lakeflow Declarative Pipeline on the given workspace.
-	Url pulumi.StringPtrInput
+	Url           pulumi.StringPtrInput
+	UsagePolicyId pulumi.StringPtrInput
 }
 
 func (PipelineArgs) ElementType() reflect.Type {
@@ -756,6 +761,10 @@ func (o PipelineOutput) Trigger() PipelineTriggerPtrOutput {
 // URL of the Lakeflow Declarative Pipeline on the given workspace.
 func (o PipelineOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
+}
+
+func (o PipelineOutput) UsagePolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Pipeline) pulumi.StringPtrOutput { return v.UsagePolicyId }).(pulumi.StringPtrOutput)
 }
 
 type PipelineArrayOutput struct{ *pulumi.OutputState }

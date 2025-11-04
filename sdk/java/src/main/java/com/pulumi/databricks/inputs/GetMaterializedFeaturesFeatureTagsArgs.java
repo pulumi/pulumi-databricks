@@ -5,6 +5,8 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -15,25 +17,41 @@ public final class GetMaterializedFeaturesFeatureTagsArgs extends com.pulumi.res
 
     public static final GetMaterializedFeaturesFeatureTagsArgs Empty = new GetMaterializedFeaturesFeatureTagsArgs();
 
-    /**
-     * Workspace ID of the resource
-     * 
-     */
-    @Import(name="workspaceId")
-    private @Nullable Output<String> workspaceId;
+    @Import(name="featureName", required=true)
+    private Output<String> featureName;
+
+    public Output<String> featureName() {
+        return this.featureName;
+    }
 
     /**
-     * @return Workspace ID of the resource
+     * The maximum number of results to return
      * 
      */
-    public Optional<Output<String>> workspaceId() {
-        return Optional.ofNullable(this.workspaceId);
+    @Import(name="pageSize")
+    private @Nullable Output<Integer> pageSize;
+
+    /**
+     * @return The maximum number of results to return
+     * 
+     */
+    public Optional<Output<Integer>> pageSize() {
+        return Optional.ofNullable(this.pageSize);
+    }
+
+    @Import(name="tableName", required=true)
+    private Output<String> tableName;
+
+    public Output<String> tableName() {
+        return this.tableName;
     }
 
     private GetMaterializedFeaturesFeatureTagsArgs() {}
 
     private GetMaterializedFeaturesFeatureTagsArgs(GetMaterializedFeaturesFeatureTagsArgs $) {
-        this.workspaceId = $.workspaceId;
+        this.featureName = $.featureName;
+        this.pageSize = $.pageSize;
+        this.tableName = $.tableName;
     }
 
     public static Builder builder() {
@@ -54,28 +72,52 @@ public final class GetMaterializedFeaturesFeatureTagsArgs extends com.pulumi.res
             $ = new GetMaterializedFeaturesFeatureTagsArgs(Objects.requireNonNull(defaults));
         }
 
+        public Builder featureName(Output<String> featureName) {
+            $.featureName = featureName;
+            return this;
+        }
+
+        public Builder featureName(String featureName) {
+            return featureName(Output.of(featureName));
+        }
+
         /**
-         * @param workspaceId Workspace ID of the resource
+         * @param pageSize The maximum number of results to return
          * 
          * @return builder
          * 
          */
-        public Builder workspaceId(@Nullable Output<String> workspaceId) {
-            $.workspaceId = workspaceId;
+        public Builder pageSize(@Nullable Output<Integer> pageSize) {
+            $.pageSize = pageSize;
             return this;
         }
 
         /**
-         * @param workspaceId Workspace ID of the resource
+         * @param pageSize The maximum number of results to return
          * 
          * @return builder
          * 
          */
-        public Builder workspaceId(String workspaceId) {
-            return workspaceId(Output.of(workspaceId));
+        public Builder pageSize(Integer pageSize) {
+            return pageSize(Output.of(pageSize));
+        }
+
+        public Builder tableName(Output<String> tableName) {
+            $.tableName = tableName;
+            return this;
+        }
+
+        public Builder tableName(String tableName) {
+            return tableName(Output.of(tableName));
         }
 
         public GetMaterializedFeaturesFeatureTagsArgs build() {
+            if ($.featureName == null) {
+                throw new MissingRequiredPropertyException("GetMaterializedFeaturesFeatureTagsArgs", "featureName");
+            }
+            if ($.tableName == null) {
+                throw new MissingRequiredPropertyException("GetMaterializedFeaturesFeatureTagsArgs", "tableName");
+            }
             return $;
         }
     }

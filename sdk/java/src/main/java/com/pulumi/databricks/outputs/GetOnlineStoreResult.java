@@ -8,8 +8,6 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetOnlineStoreResult {
@@ -42,13 +40,12 @@ public final class GetOnlineStoreResult {
      * @return (integer) - The number of read replicas for the online store. Defaults to 0
      * 
      */
-    private @Nullable Integer readReplicaCount;
+    private Integer readReplicaCount;
     /**
      * @return (string) - The current state of the online store. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
      * 
      */
     private String state;
-    private @Nullable String workspaceId;
 
     private GetOnlineStoreResult() {}
     /**
@@ -90,8 +87,8 @@ public final class GetOnlineStoreResult {
      * @return (integer) - The number of read replicas for the online store. Defaults to 0
      * 
      */
-    public Optional<Integer> readReplicaCount() {
-        return Optional.ofNullable(this.readReplicaCount);
+    public Integer readReplicaCount() {
+        return this.readReplicaCount;
     }
     /**
      * @return (string) - The current state of the online store. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
@@ -99,9 +96,6 @@ public final class GetOnlineStoreResult {
      */
     public String state() {
         return this.state;
-    }
-    public Optional<String> workspaceId() {
-        return Optional.ofNullable(this.workspaceId);
     }
 
     public static Builder builder() {
@@ -118,9 +112,8 @@ public final class GetOnlineStoreResult {
         private String creator;
         private String id;
         private String name;
-        private @Nullable Integer readReplicaCount;
+        private Integer readReplicaCount;
         private String state;
-        private @Nullable String workspaceId;
         public Builder() {}
         public Builder(GetOnlineStoreResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -131,7 +124,6 @@ public final class GetOnlineStoreResult {
     	      this.name = defaults.name;
     	      this.readReplicaCount = defaults.readReplicaCount;
     	      this.state = defaults.state;
-    	      this.workspaceId = defaults.workspaceId;
         }
 
         @CustomType.Setter
@@ -175,8 +167,10 @@ public final class GetOnlineStoreResult {
             return this;
         }
         @CustomType.Setter
-        public Builder readReplicaCount(@Nullable Integer readReplicaCount) {
-
+        public Builder readReplicaCount(Integer readReplicaCount) {
+            if (readReplicaCount == null) {
+              throw new MissingRequiredPropertyException("GetOnlineStoreResult", "readReplicaCount");
+            }
             this.readReplicaCount = readReplicaCount;
             return this;
         }
@@ -188,12 +182,6 @@ public final class GetOnlineStoreResult {
             this.state = state;
             return this;
         }
-        @CustomType.Setter
-        public Builder workspaceId(@Nullable String workspaceId) {
-
-            this.workspaceId = workspaceId;
-            return this;
-        }
         public GetOnlineStoreResult build() {
             final var _resultValue = new GetOnlineStoreResult();
             _resultValue.capacity = capacity;
@@ -203,7 +191,6 @@ public final class GetOnlineStoreResult {
             _resultValue.name = name;
             _resultValue.readReplicaCount = readReplicaCount;
             _resultValue.state = state;
-            _resultValue.workspaceId = workspaceId;
             return _resultValue;
         }
     }

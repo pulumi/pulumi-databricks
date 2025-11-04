@@ -7,8 +7,6 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetWorkspaceNetworkOptionResult {
@@ -24,12 +22,12 @@ public final class GetWorkspaceNetworkOptionResult {
      * the workspace will use &#39;default-policy&#39;
      * 
      */
-    private @Nullable String networkPolicyId;
+    private String networkPolicyId;
     /**
      * @return (integer) - The workspace ID
      * 
      */
-    private @Nullable String workspaceId;
+    private String workspaceId;
 
     private GetWorkspaceNetworkOptionResult() {}
     /**
@@ -46,15 +44,15 @@ public final class GetWorkspaceNetworkOptionResult {
      * the workspace will use &#39;default-policy&#39;
      * 
      */
-    public Optional<String> networkPolicyId() {
-        return Optional.ofNullable(this.networkPolicyId);
+    public String networkPolicyId() {
+        return this.networkPolicyId;
     }
     /**
      * @return (integer) - The workspace ID
      * 
      */
-    public Optional<String> workspaceId() {
-        return Optional.ofNullable(this.workspaceId);
+    public String workspaceId() {
+        return this.workspaceId;
     }
 
     public static Builder builder() {
@@ -67,8 +65,8 @@ public final class GetWorkspaceNetworkOptionResult {
     @CustomType.Builder
     public static final class Builder {
         private String id;
-        private @Nullable String networkPolicyId;
-        private @Nullable String workspaceId;
+        private String networkPolicyId;
+        private String workspaceId;
         public Builder() {}
         public Builder(GetWorkspaceNetworkOptionResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -86,14 +84,18 @@ public final class GetWorkspaceNetworkOptionResult {
             return this;
         }
         @CustomType.Setter
-        public Builder networkPolicyId(@Nullable String networkPolicyId) {
-
+        public Builder networkPolicyId(String networkPolicyId) {
+            if (networkPolicyId == null) {
+              throw new MissingRequiredPropertyException("GetWorkspaceNetworkOptionResult", "networkPolicyId");
+            }
             this.networkPolicyId = networkPolicyId;
             return this;
         }
         @CustomType.Setter
-        public Builder workspaceId(@Nullable String workspaceId) {
-
+        public Builder workspaceId(String workspaceId) {
+            if (workspaceId == null) {
+              throw new MissingRequiredPropertyException("GetWorkspaceNetworkOptionResult", "workspaceId");
+            }
             this.workspaceId = workspaceId;
             return this;
         }

@@ -65,7 +65,8 @@ func LookupApp(ctx *pulumi.Context, args *LookupAppArgs, opts ...pulumi.InvokeOp
 // A collection of arguments for invoking getApp.
 type LookupAppArgs struct {
 	// The name of the app.
-	Name string `pulumi:"name"`
+	Name           string                `pulumi:"name"`
+	ProviderConfig *GetAppProviderConfig `pulumi:"providerConfig"`
 }
 
 // A collection of values returned by getApp.
@@ -74,8 +75,9 @@ type LookupAppResult struct {
 	App GetAppApp `pulumi:"app"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// Name of the serving endpoint to grant permission on.
-	Name string `pulumi:"name"`
+	// The name of Genie Space.
+	Name           string                `pulumi:"name"`
+	ProviderConfig *GetAppProviderConfig `pulumi:"providerConfig"`
 }
 
 func LookupAppOutput(ctx *pulumi.Context, args LookupAppOutputArgs, opts ...pulumi.InvokeOption) LookupAppResultOutput {
@@ -90,7 +92,8 @@ func LookupAppOutput(ctx *pulumi.Context, args LookupAppOutputArgs, opts ...pulu
 // A collection of arguments for invoking getApp.
 type LookupAppOutputArgs struct {
 	// The name of the app.
-	Name pulumi.StringInput `pulumi:"name"`
+	Name           pulumi.StringInput           `pulumi:"name"`
+	ProviderConfig GetAppProviderConfigPtrInput `pulumi:"providerConfig"`
 }
 
 func (LookupAppOutputArgs) ElementType() reflect.Type {
@@ -122,9 +125,13 @@ func (o LookupAppResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAppResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Name of the serving endpoint to grant permission on.
+// The name of Genie Space.
 func (o LookupAppResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAppResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupAppResultOutput) ProviderConfig() GetAppProviderConfigPtrOutput {
+	return o.ApplyT(func(v LookupAppResult) *GetAppProviderConfig { return v.ProviderConfig }).(GetAppProviderConfigPtrOutput)
 }
 
 func init() {

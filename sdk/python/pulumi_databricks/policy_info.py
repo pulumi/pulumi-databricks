@@ -32,8 +32,7 @@ class PolicyInfoArgs:
                  on_securable_fullname: Optional[pulumi.Input[_builtins.str]] = None,
                  on_securable_type: Optional[pulumi.Input[_builtins.str]] = None,
                  row_filter: Optional[pulumi.Input['PolicyInfoRowFilterArgs']] = None,
-                 when_condition: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 when_condition: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a PolicyInfo resource.
         :param pulumi.Input[_builtins.str] for_securable_type: Type of securables that the policy should take effect on.
@@ -61,7 +60,6 @@ class PolicyInfoArgs:
                Required on create and optional on update. When specified on update,
                the new options will replace the existing options as a whole
         :param pulumi.Input[_builtins.str] when_condition: Optional condition when the policy should take effect
-        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID of the resource
         """
         pulumi.set(__self__, "for_securable_type", for_securable_type)
         pulumi.set(__self__, "policy_type", policy_type)
@@ -84,8 +82,6 @@ class PolicyInfoArgs:
             pulumi.set(__self__, "row_filter", row_filter)
         if when_condition is not None:
             pulumi.set(__self__, "when_condition", when_condition)
-        if workspace_id is not None:
-            pulumi.set(__self__, "workspace_id", workspace_id)
 
     @_builtins.property
     @pulumi.getter(name="forSecurableType")
@@ -244,18 +240,6 @@ class PolicyInfoArgs:
     def when_condition(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "when_condition", value)
 
-    @_builtins.property
-    @pulumi.getter(name="workspaceId")
-    def workspace_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Workspace ID of the resource
-        """
-        return pulumi.get(self, "workspace_id")
-
-    @workspace_id.setter
-    def workspace_id(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "workspace_id", value)
-
 
 @pulumi.input_type
 class _PolicyInfoState:
@@ -275,8 +259,7 @@ class _PolicyInfoState:
                  to_principals: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  updated_at: Optional[pulumi.Input[_builtins.int]] = None,
                  updated_by: Optional[pulumi.Input[_builtins.str]] = None,
-                 when_condition: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 when_condition: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PolicyInfo resources.
         :param pulumi.Input['PolicyInfoColumnMaskArgs'] column_mask: Options for column mask policies. Valid only if `policy_type` is `POLICY_TYPE_COLUMN_MASK`.
@@ -308,7 +291,6 @@ class _PolicyInfoState:
         :param pulumi.Input[_builtins.int] updated_at: (integer) - Time at which the policy was last modified, in epoch milliseconds. Output only
         :param pulumi.Input[_builtins.str] updated_by: (string) - Username of the user who last modified the policy. Output only
         :param pulumi.Input[_builtins.str] when_condition: Optional condition when the policy should take effect
-        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID of the resource
         """
         if column_mask is not None:
             pulumi.set(__self__, "column_mask", column_mask)
@@ -342,8 +324,6 @@ class _PolicyInfoState:
             pulumi.set(__self__, "updated_by", updated_by)
         if when_condition is not None:
             pulumi.set(__self__, "when_condition", when_condition)
-        if workspace_id is not None:
-            pulumi.set(__self__, "workspace_id", workspace_id)
 
     @_builtins.property
     @pulumi.getter(name="columnMask")
@@ -550,18 +530,6 @@ class _PolicyInfoState:
     def when_condition(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "when_condition", value)
 
-    @_builtins.property
-    @pulumi.getter(name="workspaceId")
-    def workspace_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Workspace ID of the resource
-        """
-        return pulumi.get(self, "workspace_id")
-
-    @workspace_id.setter
-    def workspace_id(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "workspace_id", value)
-
 
 @pulumi.type_token("databricks:index/policyInfo:PolicyInfo")
 class PolicyInfo(pulumi.CustomResource):
@@ -581,9 +549,10 @@ class PolicyInfo(pulumi.CustomResource):
                  row_filter: Optional[pulumi.Input[Union['PolicyInfoRowFilterArgs', 'PolicyInfoRowFilterArgsDict']]] = None,
                  to_principals: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  when_condition: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
         ## Import
 
         As of Pulumi v1.5, resources can be imported through configuration.
@@ -601,7 +570,7 @@ class PolicyInfo(pulumi.CustomResource):
         If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
 
         ```sh
-        $ pulumi import databricks:index/policyInfo:PolicyInfo databricks_policy_info "on_securable_type,on_securable_fullname,name"
+        $ pulumi import databricks:index/policyInfo:PolicyInfo this "on_securable_type,on_securable_fullname,name"
         ```
 
         :param str resource_name: The name of the resource.
@@ -631,7 +600,6 @@ class PolicyInfo(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] to_principals: List of user or group names that the policy applies to.
                Required on create and optional on update
         :param pulumi.Input[_builtins.str] when_condition: Optional condition when the policy should take effect
-        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID of the resource
         """
         ...
     @overload
@@ -640,6 +608,8 @@ class PolicyInfo(pulumi.CustomResource):
                  args: PolicyInfoArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
         ## Import
 
         As of Pulumi v1.5, resources can be imported through configuration.
@@ -657,7 +627,7 @@ class PolicyInfo(pulumi.CustomResource):
         If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
 
         ```sh
-        $ pulumi import databricks:index/policyInfo:PolicyInfo databricks_policy_info "on_securable_type,on_securable_fullname,name"
+        $ pulumi import databricks:index/policyInfo:PolicyInfo this "on_securable_type,on_securable_fullname,name"
         ```
 
         :param str resource_name: The name of the resource.
@@ -687,7 +657,6 @@ class PolicyInfo(pulumi.CustomResource):
                  row_filter: Optional[pulumi.Input[Union['PolicyInfoRowFilterArgs', 'PolicyInfoRowFilterArgsDict']]] = None,
                  to_principals: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  when_condition: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -715,7 +684,6 @@ class PolicyInfo(pulumi.CustomResource):
                 raise TypeError("Missing required property 'to_principals'")
             __props__.__dict__["to_principals"] = to_principals
             __props__.__dict__["when_condition"] = when_condition
-            __props__.__dict__["workspace_id"] = workspace_id
             __props__.__dict__["created_at"] = None
             __props__.__dict__["created_by"] = None
             __props__.__dict__["updated_at"] = None
@@ -745,8 +713,7 @@ class PolicyInfo(pulumi.CustomResource):
             to_principals: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             updated_at: Optional[pulumi.Input[_builtins.int]] = None,
             updated_by: Optional[pulumi.Input[_builtins.str]] = None,
-            when_condition: Optional[pulumi.Input[_builtins.str]] = None,
-            workspace_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'PolicyInfo':
+            when_condition: Optional[pulumi.Input[_builtins.str]] = None) -> 'PolicyInfo':
         """
         Get an existing PolicyInfo resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -783,7 +750,6 @@ class PolicyInfo(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] updated_at: (integer) - Time at which the policy was last modified, in epoch milliseconds. Output only
         :param pulumi.Input[_builtins.str] updated_by: (string) - Username of the user who last modified the policy. Output only
         :param pulumi.Input[_builtins.str] when_condition: Optional condition when the policy should take effect
-        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID of the resource
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -805,7 +771,6 @@ class PolicyInfo(pulumi.CustomResource):
         __props__.__dict__["updated_at"] = updated_at
         __props__.__dict__["updated_by"] = updated_by
         __props__.__dict__["when_condition"] = when_condition
-        __props__.__dict__["workspace_id"] = workspace_id
         return PolicyInfo(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -948,12 +913,4 @@ class PolicyInfo(pulumi.CustomResource):
         Optional condition when the policy should take effect
         """
         return pulumi.get(self, "when_condition")
-
-    @_builtins.property
-    @pulumi.getter(name="workspaceId")
-    def workspace_id(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Workspace ID of the resource
-        """
-        return pulumi.get(self, "workspace_id")
 

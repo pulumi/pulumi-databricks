@@ -144,6 +144,12 @@ namespace Pulumi.Databricks.Inputs
         [Input("policyId")]
         public string? PolicyId { get; set; }
 
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Inputs.GetClusterClusterInfoSpecProviderConfigArgs? ProviderConfig { get; set; }
+
         [Input("remoteDiskThroughput")]
         public int? RemoteDiskThroughput { get; set; }
 

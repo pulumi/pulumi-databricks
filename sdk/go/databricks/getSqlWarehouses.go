@@ -90,6 +90,8 @@ func GetSqlWarehouses(ctx *pulumi.Context, args *GetSqlWarehousesArgs, opts ...p
 type GetSqlWarehousesArgs struct {
 	// list of SqlEndpoint ids
 	Ids []string `pulumi:"ids"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *GetSqlWarehousesProviderConfig `pulumi:"providerConfig"`
 	// Only return SqlEndpoint ids that match the given name string.
 	WarehouseNameContains *string `pulumi:"warehouseNameContains"`
 }
@@ -99,8 +101,9 @@ type GetSqlWarehousesResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// list of SqlEndpoint ids
-	Ids                   []string `pulumi:"ids"`
-	WarehouseNameContains *string  `pulumi:"warehouseNameContains"`
+	Ids                   []string                        `pulumi:"ids"`
+	ProviderConfig        *GetSqlWarehousesProviderConfig `pulumi:"providerConfig"`
+	WarehouseNameContains *string                         `pulumi:"warehouseNameContains"`
 }
 
 func GetSqlWarehousesOutput(ctx *pulumi.Context, args GetSqlWarehousesOutputArgs, opts ...pulumi.InvokeOption) GetSqlWarehousesResultOutput {
@@ -116,6 +119,8 @@ func GetSqlWarehousesOutput(ctx *pulumi.Context, args GetSqlWarehousesOutputArgs
 type GetSqlWarehousesOutputArgs struct {
 	// list of SqlEndpoint ids
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig GetSqlWarehousesProviderConfigPtrInput `pulumi:"providerConfig"`
 	// Only return SqlEndpoint ids that match the given name string.
 	WarehouseNameContains pulumi.StringPtrInput `pulumi:"warehouseNameContains"`
 }
@@ -147,6 +152,10 @@ func (o GetSqlWarehousesResultOutput) Id() pulumi.StringOutput {
 // list of SqlEndpoint ids
 func (o GetSqlWarehousesResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetSqlWarehousesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetSqlWarehousesResultOutput) ProviderConfig() GetSqlWarehousesProviderConfigPtrOutput {
+	return o.ApplyT(func(v GetSqlWarehousesResult) *GetSqlWarehousesProviderConfig { return v.ProviderConfig }).(GetSqlWarehousesProviderConfigPtrOutput)
 }
 
 func (o GetSqlWarehousesResultOutput) WarehouseNameContains() pulumi.StringPtrOutput {

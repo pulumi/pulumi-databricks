@@ -7,6 +7,8 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
  * This data source can be used to fetch the list of Database Instances within the workspace.
  * The list can then be accessed via the data object's `databaseInstances` field.
  *
@@ -26,7 +28,7 @@ export function getDatabaseInstances(args?: GetDatabaseInstancesArgs, opts?: pul
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getDatabaseInstances:getDatabaseInstances", {
-        "workspaceId": args.workspaceId,
+        "pageSize": args.pageSize,
     }, opts);
 }
 
@@ -35,9 +37,9 @@ export function getDatabaseInstances(args?: GetDatabaseInstancesArgs, opts?: pul
  */
 export interface GetDatabaseInstancesArgs {
     /**
-     * Workspace ID of the resource
+     * Upper bound for items returned
      */
-    workspaceId?: string;
+    pageSize?: number;
 }
 
 /**
@@ -49,9 +51,11 @@ export interface GetDatabaseInstancesResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    readonly workspaceId?: string;
+    readonly pageSize?: number;
 }
 /**
+ * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
  * This data source can be used to fetch the list of Database Instances within the workspace.
  * The list can then be accessed via the data object's `databaseInstances` field.
  *
@@ -71,7 +75,7 @@ export function getDatabaseInstancesOutput(args?: GetDatabaseInstancesOutputArgs
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getDatabaseInstances:getDatabaseInstances", {
-        "workspaceId": args.workspaceId,
+        "pageSize": args.pageSize,
     }, opts);
 }
 
@@ -80,7 +84,7 @@ export function getDatabaseInstancesOutput(args?: GetDatabaseInstancesOutputArgs
  */
 export interface GetDatabaseInstancesOutputArgs {
     /**
-     * Workspace ID of the resource
+     * Upper bound for items returned
      */
-    workspaceId?: pulumi.Input<string>;
+    pageSize?: pulumi.Input<number>;
 }

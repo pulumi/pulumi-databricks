@@ -8,11 +8,20 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetServicePrincipalFederationPoliciesArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetServicePrincipalFederationPoliciesArgs Empty = new GetServicePrincipalFederationPoliciesArgs();
+
+    @Import(name="pageSize")
+    private @Nullable Output<Integer> pageSize;
+
+    public Optional<Output<Integer>> pageSize() {
+        return Optional.ofNullable(this.pageSize);
+    }
 
     /**
      * The service principal id for the federation policy
@@ -32,6 +41,7 @@ public final class GetServicePrincipalFederationPoliciesArgs extends com.pulumi.
     private GetServicePrincipalFederationPoliciesArgs() {}
 
     private GetServicePrincipalFederationPoliciesArgs(GetServicePrincipalFederationPoliciesArgs $) {
+        this.pageSize = $.pageSize;
         this.servicePrincipalId = $.servicePrincipalId;
     }
 
@@ -51,6 +61,15 @@ public final class GetServicePrincipalFederationPoliciesArgs extends com.pulumi.
 
         public Builder(GetServicePrincipalFederationPoliciesArgs defaults) {
             $ = new GetServicePrincipalFederationPoliciesArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder pageSize(@Nullable Output<Integer> pageSize) {
+            $.pageSize = pageSize;
+            return this;
+        }
+
+        public Builder pageSize(Integer pageSize) {
+            return pageSize(Output.of(pageSize));
         }
 
         /**

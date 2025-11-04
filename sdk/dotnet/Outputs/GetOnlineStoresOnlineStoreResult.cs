@@ -32,7 +32,7 @@ namespace Pulumi.Databricks.Outputs
         /// <summary>
         /// (integer) - The number of read replicas for the online store. Defaults to 0
         /// </summary>
-        public readonly int? ReadReplicaCount;
+        public readonly int ReadReplicaCount;
         /// <summary>
         /// (string) - The current state of the online store. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
         /// </summary>
@@ -48,7 +48,7 @@ namespace Pulumi.Databricks.Outputs
 
             string name,
 
-            int? readReplicaCount,
+            int readReplicaCount,
 
             string state)
         {

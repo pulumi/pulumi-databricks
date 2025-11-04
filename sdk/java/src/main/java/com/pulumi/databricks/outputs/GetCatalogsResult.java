@@ -4,10 +4,13 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetCatalogsProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetCatalogsResult {
@@ -21,6 +24,7 @@ public final class GetCatalogsResult {
      * 
      */
     private List<String> ids;
+    private @Nullable GetCatalogsProviderConfig providerConfig;
 
     private GetCatalogsResult() {}
     /**
@@ -37,6 +41,9 @@ public final class GetCatalogsResult {
     public List<String> ids() {
         return this.ids;
     }
+    public Optional<GetCatalogsProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -49,11 +56,13 @@ public final class GetCatalogsResult {
     public static final class Builder {
         private String id;
         private List<String> ids;
+        private @Nullable GetCatalogsProviderConfig providerConfig;
         public Builder() {}
         public Builder(GetCatalogsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
     	      this.ids = defaults.ids;
+    	      this.providerConfig = defaults.providerConfig;
         }
 
         @CustomType.Setter
@@ -75,10 +84,17 @@ public final class GetCatalogsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
+        public Builder providerConfig(@Nullable GetCatalogsProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
+            return this;
+        }
         public GetCatalogsResult build() {
             final var _resultValue = new GetCatalogsResult();
             _resultValue.id = id;
             _resultValue.ids = ids;
+            _resultValue.providerConfig = providerConfig;
             return _resultValue;
         }
     }

@@ -53,12 +53,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Catalog{}
 	case "databricks:index/catalogWorkspaceBinding:CatalogWorkspaceBinding":
 		r = &CatalogWorkspaceBinding{}
-	case "databricks:index/cleanRoomAsset:CleanRoomAsset":
-		r = &CleanRoomAsset{}
-	case "databricks:index/cleanRoomAutoApprovalRule:CleanRoomAutoApprovalRule":
-		r = &CleanRoomAutoApprovalRule{}
-	case "databricks:index/cleanRoomsCleanRoom:CleanRoomsCleanRoom":
-		r = &CleanRoomsCleanRoom{}
 	case "databricks:index/cluster:Cluster":
 		r = &Cluster{}
 	case "databricks:index/clusterPolicy:ClusterPolicy":
@@ -73,6 +67,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &CustomAppIntegration{}
 	case "databricks:index/dashboard:Dashboard":
 		r = &Dashboard{}
+	case "databricks:index/dataQualityMonitor:DataQualityMonitor":
+		r = &DataQualityMonitor{}
+	case "databricks:index/dataQualityRefresh:DataQualityRefresh":
+		r = &DataQualityRefresh{}
 	case "databricks:index/databaseDatabaseCatalog:DatabaseDatabaseCatalog":
 		r = &DatabaseDatabaseCatalog{}
 	case "databricks:index/databaseInstance:DatabaseInstance":
@@ -101,6 +99,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ExternalLocation{}
 	case "databricks:index/externalMetadata:ExternalMetadata":
 		r = &ExternalMetadata{}
+	case "databricks:index/featureEngineeringFeature:FeatureEngineeringFeature":
+		r = &FeatureEngineeringFeature{}
+	case "databricks:index/featureEngineeringMaterializedFeature:FeatureEngineeringMaterializedFeature":
+		r = &FeatureEngineeringMaterializedFeature{}
 	case "databricks:index/file:File":
 		r = &File{}
 	case "databricks:index/gitCredential:GitCredential":
@@ -203,14 +205,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Query{}
 	case "databricks:index/recipient:Recipient":
 		r = &Recipient{}
-	case "databricks:index/recipientFederationPolicy:RecipientFederationPolicy":
-		r = &RecipientFederationPolicy{}
 	case "databricks:index/registeredModel:RegisteredModel":
 		r = &RegisteredModel{}
 	case "databricks:index/repo:Repo":
 		r = &Repo{}
 	case "databricks:index/restrictWorkspaceAdminsSetting:RestrictWorkspaceAdminsSetting":
 		r = &RestrictWorkspaceAdminsSetting{}
+	case "databricks:index/rfaAccessRequestDestinations:RfaAccessRequestDestinations":
+		r = &RfaAccessRequestDestinations{}
 	case "databricks:index/schema:Schema":
 		r = &Schema{}
 	case "databricks:index/secret:Secret":
@@ -392,21 +394,6 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"databricks",
-		"index/cleanRoomAsset",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"databricks",
-		"index/cleanRoomAutoApprovalRule",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"databricks",
-		"index/cleanRoomsCleanRoom",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"databricks",
 		"index/cluster",
 		&module{version},
 	)
@@ -438,6 +425,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"databricks",
 		"index/dashboard",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/dataQualityMonitor",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/dataQualityRefresh",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -508,6 +505,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"databricks",
 		"index/externalMetadata",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/featureEngineeringFeature",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/featureEngineeringMaterializedFeature",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -767,11 +774,6 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"databricks",
-		"index/recipientFederationPolicy",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"databricks",
 		"index/registeredModel",
 		&module{version},
 	)
@@ -783,6 +785,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"databricks",
 		"index/restrictWorkspaceAdminsSetting",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/rfaAccessRequestDestinations",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

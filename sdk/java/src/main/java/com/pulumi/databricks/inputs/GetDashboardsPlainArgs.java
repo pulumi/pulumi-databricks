@@ -4,6 +4,7 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetDashboardsProviderConfig;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -29,10 +30,18 @@ public final class GetDashboardsPlainArgs extends com.pulumi.resources.InvokeArg
         return Optional.ofNullable(this.dashboardNameContains);
     }
 
+    @Import(name="providerConfig")
+    private @Nullable GetDashboardsProviderConfig providerConfig;
+
+    public Optional<GetDashboardsProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     private GetDashboardsPlainArgs() {}
 
     private GetDashboardsPlainArgs(GetDashboardsPlainArgs $) {
         this.dashboardNameContains = $.dashboardNameContains;
+        this.providerConfig = $.providerConfig;
     }
 
     public static Builder builder() {
@@ -61,6 +70,11 @@ public final class GetDashboardsPlainArgs extends com.pulumi.resources.InvokeArg
          */
         public Builder dashboardNameContains(@Nullable String dashboardNameContains) {
             $.dashboardNameContains = dashboardNameContains;
+            return this;
+        }
+
+        public Builder providerConfig(@Nullable GetDashboardsProviderConfig providerConfig) {
+            $.providerConfig = providerConfig;
             return this;
         }
 

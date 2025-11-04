@@ -16,6 +16,8 @@ namespace Pulumi.Databricks
     /// 
     /// ## Example Usage
     /// 
+    /// ### Assign using `PrincipalId`
+    /// 
     /// In workspace context, adding account-level user to a workspace:
     /// 
     /// ```csharp
@@ -110,6 +112,74 @@ namespace Pulumi.Databricks
     /// });
     /// ```
     /// 
+    /// ### Assign using `UserName`, `GroupName`, or `ServicePrincipalName`
+    /// 
+    /// In workspace context, adding account-level user to a workspace:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var addUser = new Databricks.PermissionAssignment("add_user", new()
+    ///     {
+    ///         UserName = "me@example.com",
+    ///         Permissions = new[]
+    ///         {
+    ///             "USER",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// In workspace context, adding account-level service principal to a workspace:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var addAdminSpn = new Databricks.PermissionAssignment("add_admin_spn", new()
+    ///     {
+    ///         ServicePrincipalName = "00000000-0000-0000-0000-000000000000",
+    ///         Permissions = new[]
+    ///         {
+    ///             "ADMIN",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// In workspace context, adding account-level group to a workspace:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @this = new Databricks.PermissionAssignment("this", new()
+    ///     {
+    ///         GroupName = "example-group",
+    ///         Permissions = new[]
+    ///         {
+    ///             "USER",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Related Resources
     /// 
     /// The following resources are used in the same context:
@@ -145,6 +215,18 @@ namespace Pulumi.Databricks
     public partial class PermissionAssignment : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// the display name of the assigned principal.
+        /// </summary>
+        [Output("displayName")]
+        public Output<string> DisplayName { get; private set; } = null!;
+
+        /// <summary>
+        /// the group name to assign to a workspace.
+        /// </summary>
+        [Output("groupName")]
+        public Output<string> GroupName { get; private set; } = null!;
+
+        /// <summary>
         /// The list of workspace permissions to assign to the principal:
         /// * `"USER"` - Adds principal to the workspace `Users` group. This gives basic workspace access.
         /// * `"ADMIN"` - Adds principal to the workspace `Admins` group. This gives workspace admin privileges to manage users and groups, workspace configurations, and more.
@@ -157,6 +239,18 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("principalId")]
         public Output<string> PrincipalId { get; private set; } = null!;
+
+        /// <summary>
+        /// the application ID of service principal to assign to a workspace.
+        /// </summary>
+        [Output("servicePrincipalName")]
+        public Output<string> ServicePrincipalName { get; private set; } = null!;
+
+        /// <summary>
+        /// the user name (email) to assign to a workspace.
+        /// </summary>
+        [Output("userName")]
+        public Output<string> UserName { get; private set; } = null!;
 
 
         /// <summary>
@@ -204,6 +298,12 @@ namespace Pulumi.Databricks
 
     public sealed class PermissionAssignmentArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// the group name to assign to a workspace.
+        /// </summary>
+        [Input("groupName")]
+        public Input<string>? GroupName { get; set; }
+
         [Input("permissions", required: true)]
         private InputList<string>? _permissions;
 
@@ -221,8 +321,20 @@ namespace Pulumi.Databricks
         /// <summary>
         /// Databricks ID of the user, service principal, or group. The principal ID can be retrieved using the account-level SCIM API, or using databricks_user, databricks.ServicePrincipal or databricks.Group data sources with account API (and has to be an account admin). A more sensible approach is to retrieve the list of `PrincipalId` as outputs from another Pulumi stack.
         /// </summary>
-        [Input("principalId", required: true)]
-        public Input<string> PrincipalId { get; set; } = null!;
+        [Input("principalId")]
+        public Input<string>? PrincipalId { get; set; }
+
+        /// <summary>
+        /// the application ID of service principal to assign to a workspace.
+        /// </summary>
+        [Input("servicePrincipalName")]
+        public Input<string>? ServicePrincipalName { get; set; }
+
+        /// <summary>
+        /// the user name (email) to assign to a workspace.
+        /// </summary>
+        [Input("userName")]
+        public Input<string>? UserName { get; set; }
 
         public PermissionAssignmentArgs()
         {
@@ -232,6 +344,18 @@ namespace Pulumi.Databricks
 
     public sealed class PermissionAssignmentState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// the display name of the assigned principal.
+        /// </summary>
+        [Input("displayName")]
+        public Input<string>? DisplayName { get; set; }
+
+        /// <summary>
+        /// the group name to assign to a workspace.
+        /// </summary>
+        [Input("groupName")]
+        public Input<string>? GroupName { get; set; }
+
         [Input("permissions")]
         private InputList<string>? _permissions;
 
@@ -251,6 +375,18 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("principalId")]
         public Input<string>? PrincipalId { get; set; }
+
+        /// <summary>
+        /// the application ID of service principal to assign to a workspace.
+        /// </summary>
+        [Input("servicePrincipalName")]
+        public Input<string>? ServicePrincipalName { get; set; }
+
+        /// <summary>
+        /// the user name (email) to assign to a workspace.
+        /// </summary>
+        [Input("userName")]
+        public Input<string>? UserName { get; set; }
 
         public PermissionAssignmentState()
         {

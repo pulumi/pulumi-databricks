@@ -10,7 +10,11 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.databricks.RegisteredModelArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.RegisteredModelState;
+import com.pulumi.databricks.outputs.RegisteredModelAlias;
+import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -92,19 +96,31 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="databricks:index/registeredModel:RegisteredModel")
 public class RegisteredModel extends com.pulumi.resources.CustomResource {
+    @Export(name="aliases", refs={List.class,RegisteredModelAlias.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<RegisteredModelAlias>> aliases;
+
+    public Output<Optional<List<RegisteredModelAlias>>> aliases() {
+        return Codegen.optional(this.aliases);
+    }
+    @Export(name="browseOnly", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> browseOnly;
+
+    public Output<Optional<Boolean>> browseOnly() {
+        return Codegen.optional(this.browseOnly);
+    }
     /**
      * The name of the catalog where the schema and the registered model reside. *Change of this parameter forces recreation of the resource.*
      * 
      */
     @Export(name="catalogName", refs={String.class}, tree="[0]")
-    private Output<String> catalogName;
+    private Output</* @Nullable */ String> catalogName;
 
     /**
      * @return The name of the catalog where the schema and the registered model reside. *Change of this parameter forces recreation of the resource.*
      * 
      */
-    public Output<String> catalogName() {
-        return this.catalogName;
+    public Output<Optional<String>> catalogName() {
+        return Codegen.optional(this.catalogName);
     }
     /**
      * The comment attached to the registered model.
@@ -119,6 +135,30 @@ public class RegisteredModel extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> comment() {
         return Codegen.optional(this.comment);
+    }
+    @Export(name="createdAt", refs={Integer.class}, tree="[0]")
+    private Output<Integer> createdAt;
+
+    public Output<Integer> createdAt() {
+        return this.createdAt;
+    }
+    @Export(name="createdBy", refs={String.class}, tree="[0]")
+    private Output<String> createdBy;
+
+    public Output<String> createdBy() {
+        return this.createdBy;
+    }
+    @Export(name="fullName", refs={String.class}, tree="[0]")
+    private Output<String> fullName;
+
+    public Output<String> fullName() {
+        return this.fullName;
+    }
+    @Export(name="metastoreId", refs={String.class}, tree="[0]")
+    private Output<String> metastoreId;
+
+    public Output<String> metastoreId() {
+        return this.metastoreId;
     }
     /**
      * The name of the registered model.  *Change of this parameter forces recreation of the resource.*
@@ -153,14 +193,14 @@ public class RegisteredModel extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="schemaName", refs={String.class}, tree="[0]")
-    private Output<String> schemaName;
+    private Output</* @Nullable */ String> schemaName;
 
     /**
      * @return The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*
      * 
      */
-    public Output<String> schemaName() {
-        return this.schemaName;
+    public Output<Optional<String>> schemaName() {
+        return Codegen.optional(this.schemaName);
     }
     /**
      * The storage location under which model version data files are stored. *Change of this parameter forces recreation of the resource.*
@@ -176,6 +216,18 @@ public class RegisteredModel extends com.pulumi.resources.CustomResource {
     public Output<String> storageLocation() {
         return this.storageLocation;
     }
+    @Export(name="updatedAt", refs={Integer.class}, tree="[0]")
+    private Output<Integer> updatedAt;
+
+    public Output<Integer> updatedAt() {
+        return this.updatedAt;
+    }
+    @Export(name="updatedBy", refs={String.class}, tree="[0]")
+    private Output<String> updatedBy;
+
+    public Output<String> updatedBy() {
+        return this.updatedBy;
+    }
 
     /**
      *
@@ -189,7 +241,7 @@ public class RegisteredModel extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public RegisteredModel(java.lang.String name, RegisteredModelArgs args) {
+    public RegisteredModel(java.lang.String name, @Nullable RegisteredModelArgs args) {
         this(name, args, null);
     }
     /**
@@ -198,7 +250,7 @@ public class RegisteredModel extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public RegisteredModel(java.lang.String name, RegisteredModelArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public RegisteredModel(java.lang.String name, @Nullable RegisteredModelArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("databricks:index/registeredModel:RegisteredModel", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
@@ -206,7 +258,7 @@ public class RegisteredModel extends com.pulumi.resources.CustomResource {
         super("databricks:index/registeredModel:RegisteredModel", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static RegisteredModelArgs makeArgs(RegisteredModelArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    private static RegisteredModelArgs makeArgs(@Nullable RegisteredModelArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         if (options != null && options.getUrn().isPresent()) {
             return null;
         }

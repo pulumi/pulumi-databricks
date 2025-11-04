@@ -9,6 +9,7 @@ import com.pulumi.databricks.inputs.QualityMonitorCustomMetricArgs;
 import com.pulumi.databricks.inputs.QualityMonitorDataClassificationConfigArgs;
 import com.pulumi.databricks.inputs.QualityMonitorInferenceLogArgs;
 import com.pulumi.databricks.inputs.QualityMonitorNotificationsArgs;
+import com.pulumi.databricks.inputs.QualityMonitorProviderConfigArgs;
 import com.pulumi.databricks.inputs.QualityMonitorScheduleArgs;
 import com.pulumi.databricks.inputs.QualityMonitorSnapshotArgs;
 import com.pulumi.databricks.inputs.QualityMonitorTimeSeriesArgs;
@@ -155,6 +156,21 @@ public final class QualityMonitorArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<QualityMonitorProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Optional<Output<QualityMonitorProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
+    /**
      * The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:
      * 
      */
@@ -271,6 +287,7 @@ public final class QualityMonitorArgs extends com.pulumi.resources.ResourceArgs 
         this.monitorId = $.monitorId;
         this.notifications = $.notifications;
         this.outputSchemaName = $.outputSchemaName;
+        this.providerConfig = $.providerConfig;
         this.schedule = $.schedule;
         this.skipBuiltinDashboard = $.skipBuiltinDashboard;
         this.slicingExprs = $.slicingExprs;
@@ -485,6 +502,27 @@ public final class QualityMonitorArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder outputSchemaName(String outputSchemaName) {
             return outputSchemaName(Output.of(outputSchemaName));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<QualityMonitorProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(QualityMonitorProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         /**

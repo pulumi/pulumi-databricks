@@ -76,6 +76,8 @@ type LookupClusterPolicyArgs struct {
 	PolicyFamilyDefinitionOverrides *string `pulumi:"policyFamilyDefinitionOverrides"`
 	// ID of the policy family.
 	PolicyFamilyId *string `pulumi:"policyFamilyId"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *GetClusterPolicyProviderConfig `pulumi:"providerConfig"`
 }
 
 // A collection of values returned by getClusterPolicy.
@@ -94,7 +96,8 @@ type LookupClusterPolicyResult struct {
 	// Policy definition JSON document expressed in Databricks [Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definitions).
 	PolicyFamilyDefinitionOverrides string `pulumi:"policyFamilyDefinitionOverrides"`
 	// ID of the policy family.
-	PolicyFamilyId string `pulumi:"policyFamilyId"`
+	PolicyFamilyId string                          `pulumi:"policyFamilyId"`
+	ProviderConfig *GetClusterPolicyProviderConfig `pulumi:"providerConfig"`
 }
 
 func LookupClusterPolicyOutput(ctx *pulumi.Context, args LookupClusterPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupClusterPolicyResultOutput {
@@ -124,6 +127,8 @@ type LookupClusterPolicyOutputArgs struct {
 	PolicyFamilyDefinitionOverrides pulumi.StringPtrInput `pulumi:"policyFamilyDefinitionOverrides"`
 	// ID of the policy family.
 	PolicyFamilyId pulumi.StringPtrInput `pulumi:"policyFamilyId"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig GetClusterPolicyProviderConfigPtrInput `pulumi:"providerConfig"`
 }
 
 func (LookupClusterPolicyOutputArgs) ElementType() reflect.Type {
@@ -182,6 +187,10 @@ func (o LookupClusterPolicyResultOutput) PolicyFamilyDefinitionOverrides() pulum
 // ID of the policy family.
 func (o LookupClusterPolicyResultOutput) PolicyFamilyId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterPolicyResult) string { return v.PolicyFamilyId }).(pulumi.StringOutput)
+}
+
+func (o LookupClusterPolicyResultOutput) ProviderConfig() GetClusterPolicyProviderConfigPtrOutput {
+	return o.ApplyT(func(v LookupClusterPolicyResult) *GetClusterPolicyProviderConfig { return v.ProviderConfig }).(GetClusterPolicyProviderConfigPtrOutput)
 }
 
 func init() {

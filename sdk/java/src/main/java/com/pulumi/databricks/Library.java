@@ -12,6 +12,7 @@ import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.LibraryState;
 import com.pulumi.databricks.outputs.LibraryCran;
 import com.pulumi.databricks.outputs.LibraryMaven;
+import com.pulumi.databricks.outputs.LibraryProviderConfig;
 import com.pulumi.databricks.outputs.LibraryPypi;
 import java.lang.String;
 import java.util.Optional;
@@ -258,19 +259,41 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="databricks:index/library:Library")
 public class Library extends com.pulumi.resources.CustomResource {
+    /**
+     * ID of the databricks.Cluster to install the library on.
+     * 
+     * You must specify exactly **one** of the following library types:
+     * 
+     */
     @Export(name="clusterId", refs={String.class}, tree="[0]")
     private Output<String> clusterId;
 
+    /**
+     * @return ID of the databricks.Cluster to install the library on.
+     * 
+     * You must specify exactly **one** of the following library types:
+     * 
+     */
     public Output<String> clusterId() {
         return this.clusterId;
     }
+    /**
+     * Configuration block for a CRAN library. The block consists of the following fields:
+     * 
+     */
     @Export(name="cran", refs={LibraryCran.class}, tree="[0]")
     private Output</* @Nullable */ LibraryCran> cran;
 
+    /**
+     * @return Configuration block for a CRAN library. The block consists of the following fields:
+     * 
+     */
     public Output<Optional<LibraryCran>> cran() {
         return Codegen.optional(this.cran);
     }
     /**
+     * Path to the EGG library. Installing Python egg files is deprecated and is not supported in Databricks Runtime 14.0 and above. Use `whl` or `pypi` instead.
+     * 
      * @deprecated
      * The `egg` library type is deprecated. Please use `whl` or `pypi` instead.
      * 
@@ -279,12 +302,24 @@ public class Library extends com.pulumi.resources.CustomResource {
     @Export(name="egg", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> egg;
 
+    /**
+     * @return Path to the EGG library. Installing Python egg files is deprecated and is not supported in Databricks Runtime 14.0 and above. Use `whl` or `pypi` instead.
+     * 
+     */
     public Output<Optional<String>> egg() {
         return Codegen.optional(this.egg);
     }
+    /**
+     * Path to the JAR library. Supported URIs include Workspace paths, Unity Catalog Volumes paths, and S3 URIs. For example: `/Workspace/path/to/library.jar`, `/Volumes/path/to/library.jar` or `s3://my-bucket/library.jar`. If S3 is used, make sure the cluster has read access to the library. You may need to launch the cluster with an IAM role to access the S3 URI.
+     * 
+     */
     @Export(name="jar", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> jar;
 
+    /**
+     * @return Path to the JAR library. Supported URIs include Workspace paths, Unity Catalog Volumes paths, and S3 URIs. For example: `/Workspace/path/to/library.jar`, `/Volumes/path/to/library.jar` or `s3://my-bucket/library.jar`. If S3 is used, make sure the cluster has read access to the library. You may need to launch the cluster with an IAM role to access the S3 URI.
+     * 
+     */
     public Output<Optional<String>> jar() {
         return Codegen.optional(this.jar);
     }
@@ -294,27 +329,73 @@ public class Library extends com.pulumi.resources.CustomResource {
     public Output<String> libraryId() {
         return this.libraryId;
     }
+    /**
+     * Configuration block for a Maven library. The block consists of the following fields:
+     * 
+     */
     @Export(name="maven", refs={LibraryMaven.class}, tree="[0]")
     private Output</* @Nullable */ LibraryMaven> maven;
 
+    /**
+     * @return Configuration block for a Maven library. The block consists of the following fields:
+     * 
+     */
     public Output<Optional<LibraryMaven>> maven() {
         return Codegen.optional(this.maven);
     }
+    /**
+     * Configuration block for management through the account provider. This block consists of the following fields:
+     * 
+     */
+    @Export(name="providerConfig", refs={LibraryProviderConfig.class}, tree="[0]")
+    private Output</* @Nullable */ LibraryProviderConfig> providerConfig;
+
+    /**
+     * @return Configuration block for management through the account provider. This block consists of the following fields:
+     * 
+     */
+    public Output<Optional<LibraryProviderConfig>> providerConfig() {
+        return Codegen.optional(this.providerConfig);
+    }
+    /**
+     * Configuration block for a PyPI library. The block consists of the following fields:
+     * 
+     */
     @Export(name="pypi", refs={LibraryPypi.class}, tree="[0]")
     private Output</* @Nullable */ LibraryPypi> pypi;
 
+    /**
+     * @return Configuration block for a PyPI library. The block consists of the following fields:
+     * 
+     */
     public Output<Optional<LibraryPypi>> pypi() {
         return Codegen.optional(this.pypi);
     }
+    /**
+     * Path to the requirements.txt file. Only Workspace paths and Unity Catalog Volumes paths are supported. For example: `/Workspace/path/to/requirements.txt` or `/Volumes/path/to/requirements.txt`. Requires a cluster with DBR 15.0+.
+     * 
+     */
     @Export(name="requirements", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> requirements;
 
+    /**
+     * @return Path to the requirements.txt file. Only Workspace paths and Unity Catalog Volumes paths are supported. For example: `/Workspace/path/to/requirements.txt` or `/Volumes/path/to/requirements.txt`. Requires a cluster with DBR 15.0+.
+     * 
+     */
     public Output<Optional<String>> requirements() {
         return Codegen.optional(this.requirements);
     }
+    /**
+     * Path to the wheel library. Supported URIs include Workspace paths, Unity Catalog Volumes paths, and S3 URIs. For example: `/Workspace/path/to/library.whl`, `/Volumes/path/to/library.whl` or `s3://my-bucket/library.whl`. If S3 is used, make sure the cluster has read access to the library. You may need to launch the cluster with an IAM role to access the S3 URI.
+     * 
+     */
     @Export(name="whl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> whl;
 
+    /**
+     * @return Path to the wheel library. Supported URIs include Workspace paths, Unity Catalog Volumes paths, and S3 URIs. For example: `/Workspace/path/to/library.whl`, `/Volumes/path/to/library.whl` or `s3://my-bucket/library.whl`. If S3 is used, make sure the cluster has read access to the library. You may need to launch the cluster with an IAM role to access the S3 URI.
+     * 
+     */
     public Output<Optional<String>> whl() {
         return Codegen.optional(this.whl);
     }

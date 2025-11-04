@@ -173,12 +173,15 @@ namespace Pulumi.Databricks
     /// When using an account-level provider
     /// 
     /// ```sh
-    /// $ pulumi import databricks:index/storageCredential:StorageCredential this &lt;metastore_id&gt;|&lt;storage_credential_name&gt;
+    /// $ pulumi import databricks:index/storageCredential:StorageCredential this '&lt;metastore_id&gt;|&lt;storage_credential_name&gt;'
     /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/storageCredential:StorageCredential")]
     public partial class StorageCredential : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// exposes two additional attributes:
+        /// </summary>
         [Output("awsIamRole")]
         public Output<Outputs.StorageCredentialAwsIamRole?> AwsIamRole { get; private set; } = null!;
 
@@ -302,6 +305,9 @@ namespace Pulumi.Databricks
 
     public sealed class StorageCredentialArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// exposes two additional attributes:
+        /// </summary>
         [Input("awsIamRole")]
         public Input<Inputs.StorageCredentialAwsIamRoleArgs>? AwsIamRole { get; set; }
 
@@ -381,6 +387,9 @@ namespace Pulumi.Databricks
 
     public sealed class StorageCredentialState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// exposes two additional attributes:
+        /// </summary>
         [Input("awsIamRole")]
         public Input<Inputs.StorageCredentialAwsIamRoleGetArgs>? AwsIamRole { get; set; }
 

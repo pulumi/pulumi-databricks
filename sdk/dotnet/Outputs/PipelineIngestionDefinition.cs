@@ -15,6 +15,7 @@ namespace Pulumi.Databricks.Outputs
     {
         public readonly string? ConnectionName;
         public readonly string? IngestionGatewayId;
+        public readonly string? NetsuiteJarPath;
         public readonly ImmutableArray<Outputs.PipelineIngestionDefinitionObject> Objects;
         public readonly ImmutableArray<Outputs.PipelineIngestionDefinitionSourceConfiguration> SourceConfigurations;
         public readonly string? SourceType;
@@ -26,6 +27,8 @@ namespace Pulumi.Databricks.Outputs
 
             string? ingestionGatewayId,
 
+            string? netsuiteJarPath,
+
             ImmutableArray<Outputs.PipelineIngestionDefinitionObject> objects,
 
             ImmutableArray<Outputs.PipelineIngestionDefinitionSourceConfiguration> sourceConfigurations,
@@ -36,6 +39,7 @@ namespace Pulumi.Databricks.Outputs
         {
             ConnectionName = connectionName;
             IngestionGatewayId = ingestionGatewayId;
+            NetsuiteJarPath = netsuiteJarPath;
             Objects = objects;
             SourceConfigurations = sourceConfigurations;
             SourceType = sourceType;

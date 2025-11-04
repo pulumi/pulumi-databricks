@@ -38,6 +38,7 @@ export function getFunctions(args: GetFunctionsArgs, opts?: pulumi.InvokeOptions
         "catalogName": args.catalogName,
         "functions": args.functions,
         "includeBrowse": args.includeBrowse,
+        "providerConfig": args.providerConfig,
         "schemaName": args.schemaName,
     }, opts);
 }
@@ -58,6 +59,7 @@ export interface GetFunctionsArgs {
      * flag to specify if include UDFs in the response for which the principal can only access selective metadata for.
      */
     includeBrowse?: boolean;
+    providerConfig?: inputs.GetFunctionsProviderConfig;
     /**
      * Name of databricks_schema.
      */
@@ -81,6 +83,7 @@ export interface GetFunctionsResult {
      */
     readonly id: string;
     readonly includeBrowse?: boolean;
+    readonly providerConfig?: outputs.GetFunctionsProviderConfig;
     /**
      * Name of parent schema relative to its parent catalog.
      */
@@ -118,6 +121,7 @@ export function getFunctionsOutput(args: GetFunctionsOutputArgs, opts?: pulumi.I
         "catalogName": args.catalogName,
         "functions": args.functions,
         "includeBrowse": args.includeBrowse,
+        "providerConfig": args.providerConfig,
         "schemaName": args.schemaName,
     }, opts);
 }
@@ -138,6 +142,7 @@ export interface GetFunctionsOutputArgs {
      * flag to specify if include UDFs in the response for which the principal can only access selective metadata for.
      */
     includeBrowse?: pulumi.Input<boolean>;
+    providerConfig?: pulumi.Input<inputs.GetFunctionsProviderConfigArgs>;
     /**
      * Name of databricks_schema.
      */

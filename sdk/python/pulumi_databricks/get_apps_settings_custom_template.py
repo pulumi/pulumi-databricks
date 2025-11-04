@@ -14,7 +14,6 @@ else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
-from ._inputs import *
 
 __all__ = [
     'GetAppsSettingsCustomTemplateResult',
@@ -28,7 +27,7 @@ class GetAppsSettingsCustomTemplateResult:
     """
     A collection of values returned by getAppsSettingsCustomTemplate.
     """
-    def __init__(__self__, creator=None, description=None, git_provider=None, git_repo=None, id=None, manifest=None, name=None, path=None, workspace_id=None):
+    def __init__(__self__, creator=None, description=None, git_provider=None, git_repo=None, id=None, manifest=None, name=None, path=None):
         if creator and not isinstance(creator, str):
             raise TypeError("Expected argument 'creator' to be a str")
         pulumi.set(__self__, "creator", creator)
@@ -53,9 +52,6 @@ class GetAppsSettingsCustomTemplateResult:
         if path and not isinstance(path, str):
             raise TypeError("Expected argument 'path' to be a str")
         pulumi.set(__self__, "path", path)
-        if workspace_id and not isinstance(workspace_id, str):
-            raise TypeError("Expected argument 'workspace_id' to be a str")
-        pulumi.set(__self__, "workspace_id", workspace_id)
 
     @_builtins.property
     @pulumi.getter
@@ -67,7 +63,7 @@ class GetAppsSettingsCustomTemplateResult:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[_builtins.str]:
+    def description(self) -> _builtins.str:
         """
         (string) - Description of the App Resource
         """
@@ -121,11 +117,6 @@ class GetAppsSettingsCustomTemplateResult:
         """
         return pulumi.get(self, "path")
 
-    @_builtins.property
-    @pulumi.getter(name="workspaceId")
-    def workspace_id(self) -> Optional[_builtins.str]:
-        return pulumi.get(self, "workspace_id")
-
 
 class AwaitableGetAppsSettingsCustomTemplateResult(GetAppsSettingsCustomTemplateResult):
     # pylint: disable=using-constant-test
@@ -140,19 +131,14 @@ class AwaitableGetAppsSettingsCustomTemplateResult(GetAppsSettingsCustomTemplate
             id=self.id,
             manifest=self.manifest,
             name=self.name,
-            path=self.path,
-            workspace_id=self.workspace_id)
+            path=self.path)
 
 
-def get_apps_settings_custom_template(description: Optional[_builtins.str] = None,
-                                      git_provider: Optional[_builtins.str] = None,
-                                      git_repo: Optional[_builtins.str] = None,
-                                      manifest: Optional[Union['GetAppsSettingsCustomTemplateManifestArgs', 'GetAppsSettingsCustomTemplateManifestArgsDict']] = None,
-                                      name: Optional[_builtins.str] = None,
-                                      path: Optional[_builtins.str] = None,
-                                      workspace_id: Optional[_builtins.str] = None,
+def get_apps_settings_custom_template(name: Optional[_builtins.str] = None,
                                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAppsSettingsCustomTemplateResult:
     """
+    [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
     This data source can be used to get a single Custom Template.
 
     ## Example Usage
@@ -167,23 +153,11 @@ def get_apps_settings_custom_template(description: Optional[_builtins.str] = Non
     ```
 
 
-    :param _builtins.str description: (string) - Description of the App Resource
-    :param _builtins.str git_provider: (string) - The Git provider of the template
-    :param _builtins.str git_repo: (string) - The Git repository URL that the template resides in
-    :param Union['GetAppsSettingsCustomTemplateManifestArgs', 'GetAppsSettingsCustomTemplateManifestArgsDict'] manifest: (AppManifest) - The manifest of the template. It defines fields and default values when installing the template
     :param _builtins.str name: The name of the template. It must contain only alphanumeric characters, hyphens, underscores, and whitespaces.
            It must be unique within the workspace
-    :param _builtins.str path: (string) - The path to the template within the Git repository
-    :param _builtins.str workspace_id: Workspace ID of the resource
     """
     __args__ = dict()
-    __args__['description'] = description
-    __args__['gitProvider'] = git_provider
-    __args__['gitRepo'] = git_repo
-    __args__['manifest'] = manifest
     __args__['name'] = name
-    __args__['path'] = path
-    __args__['workspaceId'] = workspace_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getAppsSettingsCustomTemplate:getAppsSettingsCustomTemplate', __args__, opts=opts, typ=GetAppsSettingsCustomTemplateResult).value
 
@@ -195,17 +169,12 @@ def get_apps_settings_custom_template(description: Optional[_builtins.str] = Non
         id=pulumi.get(__ret__, 'id'),
         manifest=pulumi.get(__ret__, 'manifest'),
         name=pulumi.get(__ret__, 'name'),
-        path=pulumi.get(__ret__, 'path'),
-        workspace_id=pulumi.get(__ret__, 'workspace_id'))
-def get_apps_settings_custom_template_output(description: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                             git_provider: Optional[pulumi.Input[_builtins.str]] = None,
-                                             git_repo: Optional[pulumi.Input[_builtins.str]] = None,
-                                             manifest: Optional[pulumi.Input[Union['GetAppsSettingsCustomTemplateManifestArgs', 'GetAppsSettingsCustomTemplateManifestArgsDict']]] = None,
-                                             name: Optional[pulumi.Input[_builtins.str]] = None,
-                                             path: Optional[pulumi.Input[_builtins.str]] = None,
-                                             workspace_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+        path=pulumi.get(__ret__, 'path'))
+def get_apps_settings_custom_template_output(name: Optional[pulumi.Input[_builtins.str]] = None,
                                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAppsSettingsCustomTemplateResult]:
     """
+    [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
     This data source can be used to get a single Custom Template.
 
     ## Example Usage
@@ -220,23 +189,11 @@ def get_apps_settings_custom_template_output(description: Optional[pulumi.Input[
     ```
 
 
-    :param _builtins.str description: (string) - Description of the App Resource
-    :param _builtins.str git_provider: (string) - The Git provider of the template
-    :param _builtins.str git_repo: (string) - The Git repository URL that the template resides in
-    :param Union['GetAppsSettingsCustomTemplateManifestArgs', 'GetAppsSettingsCustomTemplateManifestArgsDict'] manifest: (AppManifest) - The manifest of the template. It defines fields and default values when installing the template
     :param _builtins.str name: The name of the template. It must contain only alphanumeric characters, hyphens, underscores, and whitespaces.
            It must be unique within the workspace
-    :param _builtins.str path: (string) - The path to the template within the Git repository
-    :param _builtins.str workspace_id: Workspace ID of the resource
     """
     __args__ = dict()
-    __args__['description'] = description
-    __args__['gitProvider'] = git_provider
-    __args__['gitRepo'] = git_repo
-    __args__['manifest'] = manifest
     __args__['name'] = name
-    __args__['path'] = path
-    __args__['workspaceId'] = workspace_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getAppsSettingsCustomTemplate:getAppsSettingsCustomTemplate', __args__, opts=opts, typ=GetAppsSettingsCustomTemplateResult)
     return __ret__.apply(lambda __response__: GetAppsSettingsCustomTemplateResult(
@@ -247,5 +204,4 @@ def get_apps_settings_custom_template_output(description: Optional[pulumi.Input[
         id=pulumi.get(__response__, 'id'),
         manifest=pulumi.get(__response__, 'manifest'),
         name=pulumi.get(__response__, 'name'),
-        path=pulumi.get(__response__, 'path'),
-        workspace_id=pulumi.get(__response__, 'workspace_id')))
+        path=pulumi.get(__response__, 'path')))

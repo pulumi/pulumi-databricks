@@ -5,7 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.String;
+import java.lang.Integer;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,24 +16,24 @@ public final class GetAppsSettingsCustomTemplatesArgs extends com.pulumi.resourc
     public static final GetAppsSettingsCustomTemplatesArgs Empty = new GetAppsSettingsCustomTemplatesArgs();
 
     /**
-     * Workspace ID of the resource
+     * Upper bound for items returned
      * 
      */
-    @Import(name="workspaceId")
-    private @Nullable Output<String> workspaceId;
+    @Import(name="pageSize")
+    private @Nullable Output<Integer> pageSize;
 
     /**
-     * @return Workspace ID of the resource
+     * @return Upper bound for items returned
      * 
      */
-    public Optional<Output<String>> workspaceId() {
-        return Optional.ofNullable(this.workspaceId);
+    public Optional<Output<Integer>> pageSize() {
+        return Optional.ofNullable(this.pageSize);
     }
 
     private GetAppsSettingsCustomTemplatesArgs() {}
 
     private GetAppsSettingsCustomTemplatesArgs(GetAppsSettingsCustomTemplatesArgs $) {
-        this.workspaceId = $.workspaceId;
+        this.pageSize = $.pageSize;
     }
 
     public static Builder builder() {
@@ -55,24 +55,24 @@ public final class GetAppsSettingsCustomTemplatesArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param workspaceId Workspace ID of the resource
+         * @param pageSize Upper bound for items returned
          * 
          * @return builder
          * 
          */
-        public Builder workspaceId(@Nullable Output<String> workspaceId) {
-            $.workspaceId = workspaceId;
+        public Builder pageSize(@Nullable Output<Integer> pageSize) {
+            $.pageSize = pageSize;
             return this;
         }
 
         /**
-         * @param workspaceId Workspace ID of the resource
+         * @param pageSize Upper bound for items returned
          * 
          * @return builder
          * 
          */
-        public Builder workspaceId(String workspaceId) {
-            return workspaceId(Output.of(workspaceId));
+        public Builder pageSize(Integer pageSize) {
+            return pageSize(Output.of(pageSize));
         }
 
         public GetAppsSettingsCustomTemplatesArgs build() {

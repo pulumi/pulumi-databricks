@@ -129,6 +129,13 @@ public final class JobTaskForEachTaskTaskArgs extends com.pulumi.resources.Resou
         return Optional.ofNullable(this.disableAutoOptimization);
     }
 
+    @Import(name="disabled")
+    private @Nullable Output<Boolean> disabled;
+
+    public Optional<Output<Boolean>> disabled() {
+        return Optional.ofNullable(this.disabled);
+    }
+
     /**
      * An optional block to specify a set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This block is documented below.
      * 
@@ -442,6 +449,7 @@ public final class JobTaskForEachTaskTaskArgs extends com.pulumi.resources.Resou
         this.dependsOns = $.dependsOns;
         this.description = $.description;
         this.disableAutoOptimization = $.disableAutoOptimization;
+        this.disabled = $.disabled;
         this.emailNotifications = $.emailNotifications;
         this.environmentKey = $.environmentKey;
         this.existingClusterId = $.existingClusterId;
@@ -612,6 +620,15 @@ public final class JobTaskForEachTaskTaskArgs extends com.pulumi.resources.Resou
          */
         public Builder disableAutoOptimization(Boolean disableAutoOptimization) {
             return disableAutoOptimization(Output.of(disableAutoOptimization));
+        }
+
+        public Builder disabled(@Nullable Output<Boolean> disabled) {
+            $.disabled = disabled;
+            return this;
+        }
+
+        public Builder disabled(Boolean disabled) {
+            return disabled(Output.of(disabled));
         }
 
         /**

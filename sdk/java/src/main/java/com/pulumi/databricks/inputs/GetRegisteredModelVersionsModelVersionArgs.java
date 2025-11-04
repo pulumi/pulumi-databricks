@@ -7,7 +7,6 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.GetRegisteredModelVersionsModelVersionAliasArgs;
 import com.pulumi.databricks.inputs.GetRegisteredModelVersionsModelVersionModelVersionDependencyArgs;
-import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -33,13 +32,6 @@ public final class GetRegisteredModelVersionsModelVersionArgs extends com.pulumi
      */
     public Optional<Output<List<GetRegisteredModelVersionsModelVersionAliasArgs>>> aliases() {
         return Optional.ofNullable(this.aliases);
-    }
-
-    @Import(name="browseOnly")
-    private @Nullable Output<Boolean> browseOnly;
-
-    public Optional<Output<Boolean>> browseOnly() {
-        return Optional.ofNullable(this.browseOnly);
     }
 
     /**
@@ -293,7 +285,6 @@ public final class GetRegisteredModelVersionsModelVersionArgs extends com.pulumi
 
     private GetRegisteredModelVersionsModelVersionArgs(GetRegisteredModelVersionsModelVersionArgs $) {
         this.aliases = $.aliases;
-        this.browseOnly = $.browseOnly;
         this.catalogName = $.catalogName;
         this.comment = $.comment;
         this.createdAt = $.createdAt;
@@ -360,15 +351,6 @@ public final class GetRegisteredModelVersionsModelVersionArgs extends com.pulumi
          */
         public Builder aliases(GetRegisteredModelVersionsModelVersionAliasArgs... aliases) {
             return aliases(List.of(aliases));
-        }
-
-        public Builder browseOnly(@Nullable Output<Boolean> browseOnly) {
-            $.browseOnly = browseOnly;
-            return this;
-        }
-
-        public Builder browseOnly(Boolean browseOnly) {
-            return browseOnly(Output.of(browseOnly));
         }
 
         /**

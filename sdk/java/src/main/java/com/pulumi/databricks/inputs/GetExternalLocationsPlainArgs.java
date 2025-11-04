@@ -4,6 +4,7 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetExternalLocationsProviderConfig;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -30,10 +31,26 @@ public final class GetExternalLocationsPlainArgs extends com.pulumi.resources.In
         return Optional.ofNullable(this.names);
     }
 
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable GetExternalLocationsProviderConfig providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Optional<GetExternalLocationsProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     private GetExternalLocationsPlainArgs() {}
 
     private GetExternalLocationsPlainArgs(GetExternalLocationsPlainArgs $) {
         this.names = $.names;
+        this.providerConfig = $.providerConfig;
     }
 
     public static Builder builder() {
@@ -73,6 +90,17 @@ public final class GetExternalLocationsPlainArgs extends com.pulumi.resources.In
          */
         public Builder names(String... names) {
             return names(List.of(names));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable GetExternalLocationsProviderConfig providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
         }
 
         public GetExternalLocationsPlainArgs build() {

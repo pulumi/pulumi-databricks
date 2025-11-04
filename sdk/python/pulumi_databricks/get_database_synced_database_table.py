@@ -14,7 +14,6 @@ else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
-from ._inputs import *
 
 __all__ = [
     'GetDatabaseSyncedDatabaseTableResult',
@@ -28,7 +27,7 @@ class GetDatabaseSyncedDatabaseTableResult:
     """
     A collection of values returned by getDatabaseSyncedDatabaseTable.
     """
-    def __init__(__self__, data_synchronization_status=None, database_instance_name=None, effective_database_instance_name=None, effective_logical_database_name=None, id=None, logical_database_name=None, name=None, spec=None, unity_catalog_provisioning_state=None, workspace_id=None):
+    def __init__(__self__, data_synchronization_status=None, database_instance_name=None, effective_database_instance_name=None, effective_logical_database_name=None, id=None, logical_database_name=None, name=None, spec=None, unity_catalog_provisioning_state=None):
         if data_synchronization_status and not isinstance(data_synchronization_status, dict):
             raise TypeError("Expected argument 'data_synchronization_status' to be a dict")
         pulumi.set(__self__, "data_synchronization_status", data_synchronization_status)
@@ -56,9 +55,6 @@ class GetDatabaseSyncedDatabaseTableResult:
         if unity_catalog_provisioning_state and not isinstance(unity_catalog_provisioning_state, str):
             raise TypeError("Expected argument 'unity_catalog_provisioning_state' to be a str")
         pulumi.set(__self__, "unity_catalog_provisioning_state", unity_catalog_provisioning_state)
-        if workspace_id and not isinstance(workspace_id, str):
-            raise TypeError("Expected argument 'workspace_id' to be a str")
-        pulumi.set(__self__, "workspace_id", workspace_id)
 
     @_builtins.property
     @pulumi.getter(name="dataSynchronizationStatus")
@@ -122,7 +118,7 @@ class GetDatabaseSyncedDatabaseTableResult:
 
     @_builtins.property
     @pulumi.getter
-    def spec(self) -> Optional['outputs.GetDatabaseSyncedDatabaseTableSpecResult']:
+    def spec(self) -> 'outputs.GetDatabaseSyncedDatabaseTableSpecResult':
         """
         (SyncedTableSpec)
         """
@@ -137,11 +133,6 @@ class GetDatabaseSyncedDatabaseTableResult:
         may be in "PROVISIONING" as it runs asynchronously). Possible values are: `ACTIVE`, `DEGRADED`, `DELETING`, `FAILED`, `PROVISIONING`, `UPDATING`
         """
         return pulumi.get(self, "unity_catalog_provisioning_state")
-
-    @_builtins.property
-    @pulumi.getter(name="workspaceId")
-    def workspace_id(self) -> Optional[_builtins.str]:
-        return pulumi.get(self, "workspace_id")
 
 
 class AwaitableGetDatabaseSyncedDatabaseTableResult(GetDatabaseSyncedDatabaseTableResult):
@@ -158,17 +149,14 @@ class AwaitableGetDatabaseSyncedDatabaseTableResult(GetDatabaseSyncedDatabaseTab
             logical_database_name=self.logical_database_name,
             name=self.name,
             spec=self.spec,
-            unity_catalog_provisioning_state=self.unity_catalog_provisioning_state,
-            workspace_id=self.workspace_id)
+            unity_catalog_provisioning_state=self.unity_catalog_provisioning_state)
 
 
-def get_database_synced_database_table(database_instance_name: Optional[_builtins.str] = None,
-                                       logical_database_name: Optional[_builtins.str] = None,
-                                       name: Optional[_builtins.str] = None,
-                                       spec: Optional[Union['GetDatabaseSyncedDatabaseTableSpecArgs', 'GetDatabaseSyncedDatabaseTableSpecArgsDict']] = None,
-                                       workspace_id: Optional[_builtins.str] = None,
+def get_database_synced_database_table(name: Optional[_builtins.str] = None,
                                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDatabaseSyncedDatabaseTableResult:
     """
+    [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
     This data source can be used to get a single Synced Database Table.
 
     ## Example Usage
@@ -183,21 +171,10 @@ def get_database_synced_database_table(database_instance_name: Optional[_builtin
     ```
 
 
-    :param _builtins.str database_instance_name: (string) - Name of the target database instance. This is required when creating synced database tables in standard catalogs.
-           This is optional when creating synced database tables in registered catalogs. If this field is specified
-           when creating synced database tables in registered catalogs, the database instance name MUST
-           match that of the registered catalog (or the request will be rejected)
-    :param _builtins.str logical_database_name: (string) - Target Postgres database object (logical database) name for this table.
     :param _builtins.str name: Full three-part (catalog, schema, table) name of the table
-    :param Union['GetDatabaseSyncedDatabaseTableSpecArgs', 'GetDatabaseSyncedDatabaseTableSpecArgsDict'] spec: (SyncedTableSpec)
-    :param _builtins.str workspace_id: Workspace ID of the resource
     """
     __args__ = dict()
-    __args__['databaseInstanceName'] = database_instance_name
-    __args__['logicalDatabaseName'] = logical_database_name
     __args__['name'] = name
-    __args__['spec'] = spec
-    __args__['workspaceId'] = workspace_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getDatabaseSyncedDatabaseTable:getDatabaseSyncedDatabaseTable', __args__, opts=opts, typ=GetDatabaseSyncedDatabaseTableResult).value
 
@@ -210,15 +187,12 @@ def get_database_synced_database_table(database_instance_name: Optional[_builtin
         logical_database_name=pulumi.get(__ret__, 'logical_database_name'),
         name=pulumi.get(__ret__, 'name'),
         spec=pulumi.get(__ret__, 'spec'),
-        unity_catalog_provisioning_state=pulumi.get(__ret__, 'unity_catalog_provisioning_state'),
-        workspace_id=pulumi.get(__ret__, 'workspace_id'))
-def get_database_synced_database_table_output(database_instance_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                              logical_database_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                              name: Optional[pulumi.Input[_builtins.str]] = None,
-                                              spec: Optional[pulumi.Input[Optional[Union['GetDatabaseSyncedDatabaseTableSpecArgs', 'GetDatabaseSyncedDatabaseTableSpecArgsDict']]]] = None,
-                                              workspace_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+        unity_catalog_provisioning_state=pulumi.get(__ret__, 'unity_catalog_provisioning_state'))
+def get_database_synced_database_table_output(name: Optional[pulumi.Input[_builtins.str]] = None,
                                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDatabaseSyncedDatabaseTableResult]:
     """
+    [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
     This data source can be used to get a single Synced Database Table.
 
     ## Example Usage
@@ -233,21 +207,10 @@ def get_database_synced_database_table_output(database_instance_name: Optional[p
     ```
 
 
-    :param _builtins.str database_instance_name: (string) - Name of the target database instance. This is required when creating synced database tables in standard catalogs.
-           This is optional when creating synced database tables in registered catalogs. If this field is specified
-           when creating synced database tables in registered catalogs, the database instance name MUST
-           match that of the registered catalog (or the request will be rejected)
-    :param _builtins.str logical_database_name: (string) - Target Postgres database object (logical database) name for this table.
     :param _builtins.str name: Full three-part (catalog, schema, table) name of the table
-    :param Union['GetDatabaseSyncedDatabaseTableSpecArgs', 'GetDatabaseSyncedDatabaseTableSpecArgsDict'] spec: (SyncedTableSpec)
-    :param _builtins.str workspace_id: Workspace ID of the resource
     """
     __args__ = dict()
-    __args__['databaseInstanceName'] = database_instance_name
-    __args__['logicalDatabaseName'] = logical_database_name
     __args__['name'] = name
-    __args__['spec'] = spec
-    __args__['workspaceId'] = workspace_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getDatabaseSyncedDatabaseTable:getDatabaseSyncedDatabaseTable', __args__, opts=opts, typ=GetDatabaseSyncedDatabaseTableResult)
     return __ret__.apply(lambda __response__: GetDatabaseSyncedDatabaseTableResult(
@@ -259,5 +222,4 @@ def get_database_synced_database_table_output(database_instance_name: Optional[p
         logical_database_name=pulumi.get(__response__, 'logical_database_name'),
         name=pulumi.get(__response__, 'name'),
         spec=pulumi.get(__response__, 'spec'),
-        unity_catalog_provisioning_state=pulumi.get(__response__, 'unity_catalog_provisioning_state'),
-        workspace_id=pulumi.get(__response__, 'workspace_id')))
+        unity_catalog_provisioning_state=pulumi.get(__response__, 'unity_catalog_provisioning_state')))

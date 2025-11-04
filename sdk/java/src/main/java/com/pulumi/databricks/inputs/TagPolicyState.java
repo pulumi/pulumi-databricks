@@ -17,6 +17,21 @@ public final class TagPolicyState extends com.pulumi.resources.ResourceArgs {
 
     public static final TagPolicyState Empty = new TagPolicyState();
 
+    /**
+     * (string) - Timestamp when the tag policy was created
+     * 
+     */
+    @Import(name="createTime")
+    private @Nullable Output<String> createTime;
+
+    /**
+     * @return (string) - Timestamp when the tag policy was created
+     * 
+     */
+    public Optional<Output<String>> createTime() {
+        return Optional.ofNullable(this.createTime);
+    }
+
     @Import(name="description")
     private @Nullable Output<String> description;
 
@@ -31,6 +46,21 @@ public final class TagPolicyState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.tagKey);
     }
 
+    /**
+     * (string) - Timestamp when the tag policy was last updated
+     * 
+     */
+    @Import(name="updateTime")
+    private @Nullable Output<String> updateTime;
+
+    /**
+     * @return (string) - Timestamp when the tag policy was last updated
+     * 
+     */
+    public Optional<Output<String>> updateTime() {
+        return Optional.ofNullable(this.updateTime);
+    }
+
     @Import(name="values")
     private @Nullable Output<List<TagPolicyValueArgs>> values;
 
@@ -38,28 +68,14 @@ public final class TagPolicyState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.values);
     }
 
-    /**
-     * Workspace ID of the resource
-     * 
-     */
-    @Import(name="workspaceId")
-    private @Nullable Output<String> workspaceId;
-
-    /**
-     * @return Workspace ID of the resource
-     * 
-     */
-    public Optional<Output<String>> workspaceId() {
-        return Optional.ofNullable(this.workspaceId);
-    }
-
     private TagPolicyState() {}
 
     private TagPolicyState(TagPolicyState $) {
+        this.createTime = $.createTime;
         this.description = $.description;
         this.tagKey = $.tagKey;
+        this.updateTime = $.updateTime;
         this.values = $.values;
-        this.workspaceId = $.workspaceId;
     }
 
     public static Builder builder() {
@@ -80,6 +96,27 @@ public final class TagPolicyState extends com.pulumi.resources.ResourceArgs {
             $ = new TagPolicyState(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param createTime (string) - Timestamp when the tag policy was created
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(@Nullable Output<String> createTime) {
+            $.createTime = createTime;
+            return this;
+        }
+
+        /**
+         * @param createTime (string) - Timestamp when the tag policy was created
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(String createTime) {
+            return createTime(Output.of(createTime));
+        }
+
         public Builder description(@Nullable Output<String> description) {
             $.description = description;
             return this;
@@ -98,6 +135,27 @@ public final class TagPolicyState extends com.pulumi.resources.ResourceArgs {
             return tagKey(Output.of(tagKey));
         }
 
+        /**
+         * @param updateTime (string) - Timestamp when the tag policy was last updated
+         * 
+         * @return builder
+         * 
+         */
+        public Builder updateTime(@Nullable Output<String> updateTime) {
+            $.updateTime = updateTime;
+            return this;
+        }
+
+        /**
+         * @param updateTime (string) - Timestamp when the tag policy was last updated
+         * 
+         * @return builder
+         * 
+         */
+        public Builder updateTime(String updateTime) {
+            return updateTime(Output.of(updateTime));
+        }
+
         public Builder values(@Nullable Output<List<TagPolicyValueArgs>> values) {
             $.values = values;
             return this;
@@ -109,27 +167,6 @@ public final class TagPolicyState extends com.pulumi.resources.ResourceArgs {
 
         public Builder values(TagPolicyValueArgs... values) {
             return values(List.of(values));
-        }
-
-        /**
-         * @param workspaceId Workspace ID of the resource
-         * 
-         * @return builder
-         * 
-         */
-        public Builder workspaceId(@Nullable Output<String> workspaceId) {
-            $.workspaceId = workspaceId;
-            return this;
-        }
-
-        /**
-         * @param workspaceId Workspace ID of the resource
-         * 
-         * @return builder
-         * 
-         */
-        public Builder workspaceId(String workspaceId) {
-            return workspaceId(Output.of(workspaceId));
         }
 
         public TagPolicyState build() {

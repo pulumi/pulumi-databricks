@@ -282,6 +282,12 @@ namespace Pulumi.Databricks
         [Input("pipelineName")]
         public string? PipelineName { get; set; }
 
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Inputs.GetPipelinesProviderConfigArgs? ProviderConfig { get; set; }
+
         public GetPipelinesArgs()
         {
         }
@@ -308,6 +314,12 @@ namespace Pulumi.Databricks
         [Input("pipelineName")]
         public Input<string>? PipelineName { get; set; }
 
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.GetPipelinesProviderConfigInputArgs>? ProviderConfig { get; set; }
+
         public GetPipelinesInvokeArgs()
         {
         }
@@ -327,6 +339,7 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly ImmutableArray<string> Ids;
         public readonly string? PipelineName;
+        public readonly Outputs.GetPipelinesProviderConfigResult? ProviderConfig;
 
         [OutputConstructor]
         private GetPipelinesResult(
@@ -334,11 +347,14 @@ namespace Pulumi.Databricks
 
             ImmutableArray<string> ids,
 
-            string? pipelineName)
+            string? pipelineName,
+
+            Outputs.GetPipelinesProviderConfigResult? providerConfig)
         {
             Id = id;
             Ids = ids;
             PipelineName = pipelineName;
+            ProviderConfig = providerConfig;
         }
     }
 }

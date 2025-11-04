@@ -7,6 +7,8 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
  * This data source can be used to fetch the list of account federation policies.
  *
  * > **Note** This data source can only be used with an account-level provider!
@@ -22,10 +24,19 @@ import * as utilities from "./utilities";
  * const all = databricks.getAccountFederationPolicies({});
  * ```
  */
-export function getAccountFederationPolicies(opts?: pulumi.InvokeOptions): Promise<GetAccountFederationPoliciesResult> {
+export function getAccountFederationPolicies(args?: GetAccountFederationPoliciesArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountFederationPoliciesResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getAccountFederationPolicies:getAccountFederationPolicies", {
+        "pageSize": args.pageSize,
     }, opts);
+}
+
+/**
+ * A collection of arguments for invoking getAccountFederationPolicies.
+ */
+export interface GetAccountFederationPoliciesArgs {
+    pageSize?: number;
 }
 
 /**
@@ -36,9 +47,12 @@ export interface GetAccountFederationPoliciesResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly pageSize?: number;
     readonly policies: outputs.GetAccountFederationPoliciesPolicy[];
 }
 /**
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
  * This data source can be used to fetch the list of account federation policies.
  *
  * > **Note** This data source can only be used with an account-level provider!
@@ -54,8 +68,17 @@ export interface GetAccountFederationPoliciesResult {
  * const all = databricks.getAccountFederationPolicies({});
  * ```
  */
-export function getAccountFederationPoliciesOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountFederationPoliciesResult> {
+export function getAccountFederationPoliciesOutput(args?: GetAccountFederationPoliciesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountFederationPoliciesResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getAccountFederationPolicies:getAccountFederationPolicies", {
+        "pageSize": args.pageSize,
     }, opts);
+}
+
+/**
+ * A collection of arguments for invoking getAccountFederationPolicies.
+ */
+export interface GetAccountFederationPoliciesOutputArgs {
+    pageSize?: pulumi.Input<number>;
 }

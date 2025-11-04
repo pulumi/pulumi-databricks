@@ -11,6 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+//
 // This data source can be used to fetch the list of external metadata objects.
 //
 // > **Note** This resource can only be used with an workspace-level provider!
@@ -52,16 +54,17 @@ func GetExternalMetadatas(ctx *pulumi.Context, args *GetExternalMetadatasArgs, o
 
 // A collection of arguments for invoking getExternalMetadatas.
 type GetExternalMetadatasArgs struct {
-	// Workspace ID of the resource
-	WorkspaceId *string `pulumi:"workspaceId"`
+	// Specifies the maximum number of external metadata objects to return in a single response.
+	// The value must be less than or equal to 1000
+	PageSize *int `pulumi:"pageSize"`
 }
 
 // A collection of values returned by getExternalMetadatas.
 type GetExternalMetadatasResult struct {
 	ExternalMetadatas []GetExternalMetadatasExternalMetadata `pulumi:"externalMetadatas"`
 	// The provider-assigned unique ID for this managed resource.
-	Id          string  `pulumi:"id"`
-	WorkspaceId *string `pulumi:"workspaceId"`
+	Id       string `pulumi:"id"`
+	PageSize *int   `pulumi:"pageSize"`
 }
 
 func GetExternalMetadatasOutput(ctx *pulumi.Context, args GetExternalMetadatasOutputArgs, opts ...pulumi.InvokeOption) GetExternalMetadatasResultOutput {
@@ -75,8 +78,9 @@ func GetExternalMetadatasOutput(ctx *pulumi.Context, args GetExternalMetadatasOu
 
 // A collection of arguments for invoking getExternalMetadatas.
 type GetExternalMetadatasOutputArgs struct {
-	// Workspace ID of the resource
-	WorkspaceId pulumi.StringPtrInput `pulumi:"workspaceId"`
+	// Specifies the maximum number of external metadata objects to return in a single response.
+	// The value must be less than or equal to 1000
+	PageSize pulumi.IntPtrInput `pulumi:"pageSize"`
 }
 
 func (GetExternalMetadatasOutputArgs) ElementType() reflect.Type {
@@ -107,8 +111,8 @@ func (o GetExternalMetadatasResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetExternalMetadatasResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-func (o GetExternalMetadatasResultOutput) WorkspaceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetExternalMetadatasResult) *string { return v.WorkspaceId }).(pulumi.StringPtrOutput)
+func (o GetExternalMetadatasResultOutput) PageSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetExternalMetadatasResult) *int { return v.PageSize }).(pulumi.IntPtrOutput)
 }
 
 func init() {

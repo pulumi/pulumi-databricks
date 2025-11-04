@@ -6,12 +6,16 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ */
 export function getPolicyInfos(args: GetPolicyInfosArgs, opts?: pulumi.InvokeOptions): Promise<GetPolicyInfosResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getPolicyInfos:getPolicyInfos", {
+        "includeInherited": args.includeInherited,
+        "maxResults": args.maxResults,
         "onSecurableFullname": args.onSecurableFullname,
         "onSecurableType": args.onSecurableType,
-        "workspaceId": args.workspaceId,
     }, opts);
 }
 
@@ -20,6 +24,17 @@ export function getPolicyInfos(args: GetPolicyInfosArgs, opts?: pulumi.InvokeOpt
  */
 export interface GetPolicyInfosArgs {
     /**
+     * Optional. Whether to include policies defined on parent securables.
+     * By default, the inherited policies are not included
+     */
+    includeInherited?: boolean;
+    /**
+     * Optional.  Maximum number of policies to return on a single page (page length).
+     * - When not set or set to 0, the page length is set to a server configured value (recommended);
+     * - When set to a value greater than 0, the page length is the minimum of this value and a server configured value;
+     */
+    maxResults?: number;
+    /**
      * Required. The fully qualified name of securable to list policies for
      */
     onSecurableFullname: string;
@@ -27,10 +42,6 @@ export interface GetPolicyInfosArgs {
      * Required. The type of the securable to list policies for
      */
     onSecurableType: string;
-    /**
-     * Workspace ID of the resource
-     */
-    workspaceId?: string;
 }
 
 /**
@@ -41,6 +52,8 @@ export interface GetPolicyInfosResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly includeInherited?: boolean;
+    readonly maxResults?: number;
     /**
      * (string) - Full name of the securable on which the policy is defined.
      * Required on create and ignored on update
@@ -53,14 +66,17 @@ export interface GetPolicyInfosResult {
      */
     readonly onSecurableType: string;
     readonly policies: outputs.GetPolicyInfosPolicy[];
-    readonly workspaceId?: string;
 }
+/**
+ * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ */
 export function getPolicyInfosOutput(args: GetPolicyInfosOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPolicyInfosResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getPolicyInfos:getPolicyInfos", {
+        "includeInherited": args.includeInherited,
+        "maxResults": args.maxResults,
         "onSecurableFullname": args.onSecurableFullname,
         "onSecurableType": args.onSecurableType,
-        "workspaceId": args.workspaceId,
     }, opts);
 }
 
@@ -69,6 +85,17 @@ export function getPolicyInfosOutput(args: GetPolicyInfosOutputArgs, opts?: pulu
  */
 export interface GetPolicyInfosOutputArgs {
     /**
+     * Optional. Whether to include policies defined on parent securables.
+     * By default, the inherited policies are not included
+     */
+    includeInherited?: pulumi.Input<boolean>;
+    /**
+     * Optional.  Maximum number of policies to return on a single page (page length).
+     * - When not set or set to 0, the page length is set to a server configured value (recommended);
+     * - When set to a value greater than 0, the page length is the minimum of this value and a server configured value;
+     */
+    maxResults?: pulumi.Input<number>;
+    /**
      * Required. The fully qualified name of securable to list policies for
      */
     onSecurableFullname: pulumi.Input<string>;
@@ -76,8 +103,4 @@ export interface GetPolicyInfosOutputArgs {
      * Required. The type of the securable to list policies for
      */
     onSecurableType: pulumi.Input<string>;
-    /**
-     * Workspace ID of the resource
-     */
-    workspaceId?: pulumi.Input<string>;
 }

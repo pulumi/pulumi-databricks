@@ -28,13 +28,16 @@ class GetInstanceProfilesResult:
     """
     A collection of values returned by getInstanceProfiles.
     """
-    def __init__(__self__, id=None, instance_profiles=None):
+    def __init__(__self__, id=None, instance_profiles=None, provider_config=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
         if instance_profiles and not isinstance(instance_profiles, list):
             raise TypeError("Expected argument 'instance_profiles' to be a list")
         pulumi.set(__self__, "instance_profiles", instance_profiles)
+        if provider_config and not isinstance(provider_config, dict):
+            raise TypeError("Expected argument 'provider_config' to be a dict")
+        pulumi.set(__self__, "provider_config", provider_config)
 
     @_builtins.property
     @pulumi.getter
@@ -52,6 +55,11 @@ class GetInstanceProfilesResult:
         """
         return pulumi.get(self, "instance_profiles")
 
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional['outputs.GetInstanceProfilesProviderConfigResult']:
+        return pulumi.get(self, "provider_config")
+
 
 class AwaitableGetInstanceProfilesResult(GetInstanceProfilesResult):
     # pylint: disable=using-constant-test
@@ -60,10 +68,12 @@ class AwaitableGetInstanceProfilesResult(GetInstanceProfilesResult):
             yield self
         return GetInstanceProfilesResult(
             id=self.id,
-            instance_profiles=self.instance_profiles)
+            instance_profiles=self.instance_profiles,
+            provider_config=self.provider_config)
 
 
 def get_instance_profiles(instance_profiles: Optional[Sequence[Union['GetInstanceProfilesInstanceProfileArgs', 'GetInstanceProfilesInstanceProfileArgsDict']]] = None,
+                          provider_config: Optional[Union['GetInstanceProfilesProviderConfigArgs', 'GetInstanceProfilesProviderConfigArgsDict']] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstanceProfilesResult:
     """
     Lists all available databricks_instance_profiles.
@@ -84,16 +94,20 @@ def get_instance_profiles(instance_profiles: Optional[Sequence[Union['GetInstanc
 
 
     :param Sequence[Union['GetInstanceProfilesInstanceProfileArgs', 'GetInstanceProfilesInstanceProfileArgsDict']] instance_profiles: Set of objects for a databricks_instance_profile. This contains the following attributes:
+    :param Union['GetInstanceProfilesProviderConfigArgs', 'GetInstanceProfilesProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     """
     __args__ = dict()
     __args__['instanceProfiles'] = instance_profiles
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getInstanceProfiles:getInstanceProfiles', __args__, opts=opts, typ=GetInstanceProfilesResult).value
 
     return AwaitableGetInstanceProfilesResult(
         id=pulumi.get(__ret__, 'id'),
-        instance_profiles=pulumi.get(__ret__, 'instance_profiles'))
+        instance_profiles=pulumi.get(__ret__, 'instance_profiles'),
+        provider_config=pulumi.get(__ret__, 'provider_config'))
 def get_instance_profiles_output(instance_profiles: Optional[pulumi.Input[Optional[Sequence[Union['GetInstanceProfilesInstanceProfileArgs', 'GetInstanceProfilesInstanceProfileArgsDict']]]]] = None,
+                                 provider_config: Optional[pulumi.Input[Optional[Union['GetInstanceProfilesProviderConfigArgs', 'GetInstanceProfilesProviderConfigArgsDict']]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstanceProfilesResult]:
     """
     Lists all available databricks_instance_profiles.
@@ -114,11 +128,14 @@ def get_instance_profiles_output(instance_profiles: Optional[pulumi.Input[Option
 
 
     :param Sequence[Union['GetInstanceProfilesInstanceProfileArgs', 'GetInstanceProfilesInstanceProfileArgsDict']] instance_profiles: Set of objects for a databricks_instance_profile. This contains the following attributes:
+    :param Union['GetInstanceProfilesProviderConfigArgs', 'GetInstanceProfilesProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     """
     __args__ = dict()
     __args__['instanceProfiles'] = instance_profiles
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getInstanceProfiles:getInstanceProfiles', __args__, opts=opts, typ=GetInstanceProfilesResult)
     return __ret__.apply(lambda __response__: GetInstanceProfilesResult(
         id=pulumi.get(__response__, 'id'),
-        instance_profiles=pulumi.get(__response__, 'instance_profiles')))
+        instance_profiles=pulumi.get(__response__, 'instance_profiles'),
+        provider_config=pulumi.get(__response__, 'provider_config')))

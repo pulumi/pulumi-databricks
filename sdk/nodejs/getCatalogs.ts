@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -33,6 +35,7 @@ export function getCatalogs(args?: GetCatalogsArgs, opts?: pulumi.InvokeOptions)
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getCatalogs:getCatalogs", {
         "ids": args.ids,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -44,6 +47,10 @@ export interface GetCatalogsArgs {
      * set of databricks.Catalog names
      */
     ids?: string[];
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: inputs.GetCatalogsProviderConfig;
 }
 
 /**
@@ -58,6 +65,7 @@ export interface GetCatalogsResult {
      * set of databricks.Catalog names
      */
     readonly ids: string[];
+    readonly providerConfig?: outputs.GetCatalogsProviderConfig;
 }
 /**
  * Retrieves a list of databricks.Catalog ids, that were created by Pulumi or manually, so that special handling could be applied.
@@ -88,6 +96,7 @@ export function getCatalogsOutput(args?: GetCatalogsOutputArgs, opts?: pulumi.In
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getCatalogs:getCatalogs", {
         "ids": args.ids,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -99,4 +108,8 @@ export interface GetCatalogsOutputArgs {
      * set of databricks.Catalog names
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.GetCatalogsProviderConfigArgs>;
 }

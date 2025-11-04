@@ -11,12 +11,21 @@ namespace Pulumi.Databricks
 {
     public static class GetPolicyInfos
     {
+        /// <summary>
+        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// </summary>
         public static Task<GetPolicyInfosResult> InvokeAsync(GetPolicyInfosArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPolicyInfosResult>("databricks:index/getPolicyInfos:getPolicyInfos", args ?? new GetPolicyInfosArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// </summary>
         public static Output<GetPolicyInfosResult> Invoke(GetPolicyInfosInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPolicyInfosResult>("databricks:index/getPolicyInfos:getPolicyInfos", args ?? new GetPolicyInfosInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// </summary>
         public static Output<GetPolicyInfosResult> Invoke(GetPolicyInfosInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetPolicyInfosResult>("databricks:index/getPolicyInfos:getPolicyInfos", args ?? new GetPolicyInfosInvokeArgs(), options.WithDefaults());
     }
@@ -24,6 +33,21 @@ namespace Pulumi.Databricks
 
     public sealed class GetPolicyInfosArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Optional. Whether to include policies defined on parent securables.
+        /// By default, the inherited policies are not included
+        /// </summary>
+        [Input("includeInherited")]
+        public bool? IncludeInherited { get; set; }
+
+        /// <summary>
+        /// Optional.  Maximum number of policies to return on a single page (page length).
+        /// - When not set or set to 0, the page length is set to a server configured value (recommended);
+        /// - When set to a value greater than 0, the page length is the minimum of this value and a server configured value;
+        /// </summary>
+        [Input("maxResults")]
+        public int? MaxResults { get; set; }
+
         /// <summary>
         /// Required. The fully qualified name of securable to list policies for
         /// </summary>
@@ -36,12 +60,6 @@ namespace Pulumi.Databricks
         [Input("onSecurableType", required: true)]
         public string OnSecurableType { get; set; } = null!;
 
-        /// <summary>
-        /// Workspace ID of the resource
-        /// </summary>
-        [Input("workspaceId")]
-        public string? WorkspaceId { get; set; }
-
         public GetPolicyInfosArgs()
         {
         }
@@ -50,6 +68,21 @@ namespace Pulumi.Databricks
 
     public sealed class GetPolicyInfosInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Optional. Whether to include policies defined on parent securables.
+        /// By default, the inherited policies are not included
+        /// </summary>
+        [Input("includeInherited")]
+        public Input<bool>? IncludeInherited { get; set; }
+
+        /// <summary>
+        /// Optional.  Maximum number of policies to return on a single page (page length).
+        /// - When not set or set to 0, the page length is set to a server configured value (recommended);
+        /// - When set to a value greater than 0, the page length is the minimum of this value and a server configured value;
+        /// </summary>
+        [Input("maxResults")]
+        public Input<int>? MaxResults { get; set; }
+
         /// <summary>
         /// Required. The fully qualified name of securable to list policies for
         /// </summary>
@@ -61,12 +94,6 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("onSecurableType", required: true)]
         public Input<string> OnSecurableType { get; set; } = null!;
-
-        /// <summary>
-        /// Workspace ID of the resource
-        /// </summary>
-        [Input("workspaceId")]
-        public Input<string>? WorkspaceId { get; set; }
 
         public GetPolicyInfosInvokeArgs()
         {
@@ -82,6 +109,8 @@ namespace Pulumi.Databricks
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly bool? IncludeInherited;
+        public readonly int? MaxResults;
         /// <summary>
         /// (string) - Full name of the securable on which the policy is defined.
         /// Required on create and ignored on update
@@ -94,25 +123,27 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string OnSecurableType;
         public readonly ImmutableArray<Outputs.GetPolicyInfosPolicyResult> Policies;
-        public readonly string? WorkspaceId;
 
         [OutputConstructor]
         private GetPolicyInfosResult(
             string id,
 
+            bool? includeInherited,
+
+            int? maxResults,
+
             string onSecurableFullname,
 
             string onSecurableType,
 
-            ImmutableArray<Outputs.GetPolicyInfosPolicyResult> policies,
-
-            string? workspaceId)
+            ImmutableArray<Outputs.GetPolicyInfosPolicyResult> policies)
         {
             Id = id;
+            IncludeInherited = includeInherited;
+            MaxResults = maxResults;
             OnSecurableFullname = onSecurableFullname;
             OnSecurableType = onSecurableType;
             Policies = policies;
-            WorkspaceId = workspaceId;
         }
     }
 }

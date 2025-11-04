@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -35,16 +36,16 @@ public final class AlertV2ScheduleArgs extends com.pulumi.resources.ResourceArgs
      * Should use the quartz format described here: http://www.quartz-scheduler.org/documentation/quartz-2.1.7/tutorials/tutorial-lesson-06.html
      * 
      */
-    @Import(name="quartzCronSchedule")
-    private @Nullable Output<String> quartzCronSchedule;
+    @Import(name="quartzCronSchedule", required=true)
+    private Output<String> quartzCronSchedule;
 
     /**
      * @return A cron expression using quartz syntax that specifies the schedule for this pipeline.
      * Should use the quartz format described here: http://www.quartz-scheduler.org/documentation/quartz-2.1.7/tutorials/tutorial-lesson-06.html
      * 
      */
-    public Optional<Output<String>> quartzCronSchedule() {
-        return Optional.ofNullable(this.quartzCronSchedule);
+    public Output<String> quartzCronSchedule() {
+        return this.quartzCronSchedule;
     }
 
     /**
@@ -53,8 +54,8 @@ public final class AlertV2ScheduleArgs extends com.pulumi.resources.ResourceArgs
      * See https://docs.databricks.com/sql/language-manual/sql-ref-syntax-aux-conf-mgmt-set-timezone.html for details
      * 
      */
-    @Import(name="timezoneId")
-    private @Nullable Output<String> timezoneId;
+    @Import(name="timezoneId", required=true)
+    private Output<String> timezoneId;
 
     /**
      * @return A Java timezone id. The schedule will be resolved using this timezone.
@@ -62,8 +63,8 @@ public final class AlertV2ScheduleArgs extends com.pulumi.resources.ResourceArgs
      * See https://docs.databricks.com/sql/language-manual/sql-ref-syntax-aux-conf-mgmt-set-timezone.html for details
      * 
      */
-    public Optional<Output<String>> timezoneId() {
-        return Optional.ofNullable(this.timezoneId);
+    public Output<String> timezoneId() {
+        return this.timezoneId;
     }
 
     private AlertV2ScheduleArgs() {}
@@ -120,7 +121,7 @@ public final class AlertV2ScheduleArgs extends com.pulumi.resources.ResourceArgs
          * @return builder
          * 
          */
-        public Builder quartzCronSchedule(@Nullable Output<String> quartzCronSchedule) {
+        public Builder quartzCronSchedule(Output<String> quartzCronSchedule) {
             $.quartzCronSchedule = quartzCronSchedule;
             return this;
         }
@@ -144,7 +145,7 @@ public final class AlertV2ScheduleArgs extends com.pulumi.resources.ResourceArgs
          * @return builder
          * 
          */
-        public Builder timezoneId(@Nullable Output<String> timezoneId) {
+        public Builder timezoneId(Output<String> timezoneId) {
             $.timezoneId = timezoneId;
             return this;
         }
@@ -162,6 +163,12 @@ public final class AlertV2ScheduleArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public AlertV2ScheduleArgs build() {
+            if ($.quartzCronSchedule == null) {
+                throw new MissingRequiredPropertyException("AlertV2ScheduleArgs", "quartzCronSchedule");
+            }
+            if ($.timezoneId == null) {
+                throw new MissingRequiredPropertyException("AlertV2ScheduleArgs", "timezoneId");
+            }
             return $;
         }
     }

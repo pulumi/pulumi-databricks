@@ -7,6 +7,8 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
  * Lakebase Database Instances are managed Postgres instances, composed of a primary Postgres compute instance and 0 or more read replica instances.
  *
  * ## Example Usage
@@ -58,6 +60,31 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
+ * ### Example with a usage policy and custom tags
+ *
+ * This example creates a Database Instance with an associated usage policy and custom tags.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const _this = new databricks.DatabaseInstance("this", {
+ *     name: "my-database-instance",
+ *     capacity: "CU_8",
+ *     usagePolicyId: "948192fa-a98b-498f-a09b-ecee79d8b983",
+ *     customTags: [
+ *         {
+ *             key: "custom_tag_key1",
+ *             value: "custom_tag_value1",
+ *         },
+ *         {
+ *             key: "custom_tag_key2",
+ *             value: "custom_tag_value2",
+ *         },
+ *     ],
+ * });
+ * ```
+ *
  * ## Import
  *
  * As of Pulumi v1.5, resources can be imported through configuration.
@@ -75,7 +102,7 @@ import * as utilities from "./utilities";
  * If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
  *
  * ```sh
- * $ pulumi import databricks:index/databaseInstance:DatabaseInstance databricks_database_instance "name"
+ * $ pulumi import databricks:index/databaseInstance:DatabaseInstance this "name"
  * ```
  */
 export class DatabaseInstance extends pulumi.CustomResource {
@@ -124,52 +151,60 @@ export class DatabaseInstance extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly creator: pulumi.Output<string>;
     /**
-     * (boolean) - xref AIP-129. `enablePgNativeLogin` is owned by the client, while `effectiveEnablePgNativeLogin` is owned by the server.
-     * `enablePgNativeLogin` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-     * `effectiveEnablePgNativeLogin` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * Custom tags associated with the instance. This field is only included on create and update responses
+     */
+    declare public readonly customTags: pulumi.Output<outputs.DatabaseInstanceCustomTag[]>;
+    /**
+     * (string, deprecated) - Deprecated. The sku of the instance; this field will always match the value of capacity
+     */
+    declare public /*out*/ readonly effectiveCapacity: pulumi.Output<string>;
+    /**
+     * (list of CustomTag) - The recorded custom tags associated with the instance
+     */
+    declare public /*out*/ readonly effectiveCustomTags: pulumi.Output<outputs.DatabaseInstanceEffectiveCustomTag[]>;
+    /**
+     * (boolean) - Whether the instance has PG native password login enabled
      */
     declare public /*out*/ readonly effectiveEnablePgNativeLogin: pulumi.Output<boolean>;
     /**
-     * (boolean) - xref AIP-129. `enableReadableSecondaries` is owned by the client, while `effectiveEnableReadableSecondaries` is owned by the server.
-     * `enableReadableSecondaries` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-     * `effectiveEnableReadableSecondaries` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * (boolean) - Whether secondaries serving read-only traffic are enabled. Defaults to false
      */
     declare public /*out*/ readonly effectiveEnableReadableSecondaries: pulumi.Output<boolean>;
     /**
-     * (integer) - xref AIP-129. `nodeCount` is owned by the client, while `effectiveNodeCount` is owned by the server.
-     * `nodeCount` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-     * `effectiveNodeCount` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * (integer) - The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
+     * 1 primary and 0 secondaries
      */
     declare public /*out*/ readonly effectiveNodeCount: pulumi.Output<number>;
     /**
-     * (integer) - xref AIP-129. `retentionWindowInDays` is owned by the client, while `effectiveRetentionWindowInDays` is owned by the server.
-     * `retentionWindowInDays` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-     * `effectiveRetentionWindowInDays` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * (integer) - The retention window for the instance. This is the time window in days
+     * for which the historical data is retained
      */
     declare public /*out*/ readonly effectiveRetentionWindowInDays: pulumi.Output<number>;
     /**
-     * (boolean) - xref AIP-129. `stopped` is owned by the client, while `effectiveStopped` is owned by the server.
-     * `stopped` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-     * `effectiveStopped` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * (boolean) - Whether the instance is stopped
      */
     declare public /*out*/ readonly effectiveStopped: pulumi.Output<boolean>;
     /**
-     * Whether the instance has PG native password login enabled. Defaults to true
+     * (string) - The policy that is applied to the instance
+     */
+    declare public /*out*/ readonly effectiveUsagePolicyId: pulumi.Output<string>;
+    /**
+     * Whether to enable PG native password login on the instance. Defaults to false
      */
     declare public readonly enablePgNativeLogin: pulumi.Output<boolean>;
     /**
      * Whether to enable secondaries to serve read-only traffic. Defaults to false
      */
-    declare public readonly enableReadableSecondaries: pulumi.Output<boolean | undefined>;
+    declare public readonly enableReadableSecondaries: pulumi.Output<boolean>;
     /**
      * The name of the instance. This is the unique identifier for the instance
      */
     declare public readonly name: pulumi.Output<string>;
     /**
      * The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
-     * 1 primary and 0 secondaries
+     * 1 primary and 0 secondaries. This field is input only, see effectiveNodeCount for the output
      */
-    declare public readonly nodeCount: pulumi.Output<number | undefined>;
+    declare public readonly nodeCount: pulumi.Output<number>;
     /**
      * The ref of the parent instance. This is only available if the instance is
      * child instance.
@@ -199,23 +234,23 @@ export class DatabaseInstance extends pulumi.CustomResource {
      * for which the historical data is retained. The default value is 7 days.
      * Valid values are 2 to 35 days
      */
-    declare public readonly retentionWindowInDays: pulumi.Output<number | undefined>;
+    declare public readonly retentionWindowInDays: pulumi.Output<number>;
     /**
      * (string) - The current state of the instance. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
      */
     declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
-     * Whether the instance is stopped
+     * Whether to stop the instance. An input only param, see effectiveStopped for the output
      */
-    declare public readonly stopped: pulumi.Output<boolean | undefined>;
+    declare public readonly stopped: pulumi.Output<boolean>;
     /**
      * (string) - Id of the ref database instance
      */
     declare public /*out*/ readonly uid: pulumi.Output<string>;
     /**
-     * Workspace ID of the resource
+     * The desired usage policy to associate with the instance
      */
-    declare public readonly workspaceId: pulumi.Output<string | undefined>;
+    declare public readonly usagePolicyId: pulumi.Output<string>;
 
     /**
      * Create a DatabaseInstance resource with the given unique name, arguments, and options.
@@ -234,11 +269,15 @@ export class DatabaseInstance extends pulumi.CustomResource {
             resourceInputs["childInstanceRefs"] = state?.childInstanceRefs;
             resourceInputs["creationTime"] = state?.creationTime;
             resourceInputs["creator"] = state?.creator;
+            resourceInputs["customTags"] = state?.customTags;
+            resourceInputs["effectiveCapacity"] = state?.effectiveCapacity;
+            resourceInputs["effectiveCustomTags"] = state?.effectiveCustomTags;
             resourceInputs["effectiveEnablePgNativeLogin"] = state?.effectiveEnablePgNativeLogin;
             resourceInputs["effectiveEnableReadableSecondaries"] = state?.effectiveEnableReadableSecondaries;
             resourceInputs["effectiveNodeCount"] = state?.effectiveNodeCount;
             resourceInputs["effectiveRetentionWindowInDays"] = state?.effectiveRetentionWindowInDays;
             resourceInputs["effectiveStopped"] = state?.effectiveStopped;
+            resourceInputs["effectiveUsagePolicyId"] = state?.effectiveUsagePolicyId;
             resourceInputs["enablePgNativeLogin"] = state?.enablePgNativeLogin;
             resourceInputs["enableReadableSecondaries"] = state?.enableReadableSecondaries;
             resourceInputs["name"] = state?.name;
@@ -252,10 +291,11 @@ export class DatabaseInstance extends pulumi.CustomResource {
             resourceInputs["state"] = state?.state;
             resourceInputs["stopped"] = state?.stopped;
             resourceInputs["uid"] = state?.uid;
-            resourceInputs["workspaceId"] = state?.workspaceId;
+            resourceInputs["usagePolicyId"] = state?.usagePolicyId;
         } else {
             const args = argsOrState as DatabaseInstanceArgs | undefined;
             resourceInputs["capacity"] = args?.capacity;
+            resourceInputs["customTags"] = args?.customTags;
             resourceInputs["enablePgNativeLogin"] = args?.enablePgNativeLogin;
             resourceInputs["enableReadableSecondaries"] = args?.enableReadableSecondaries;
             resourceInputs["name"] = args?.name;
@@ -264,15 +304,18 @@ export class DatabaseInstance extends pulumi.CustomResource {
             resourceInputs["purgeOnDelete"] = args?.purgeOnDelete;
             resourceInputs["retentionWindowInDays"] = args?.retentionWindowInDays;
             resourceInputs["stopped"] = args?.stopped;
-            resourceInputs["workspaceId"] = args?.workspaceId;
+            resourceInputs["usagePolicyId"] = args?.usagePolicyId;
             resourceInputs["childInstanceRefs"] = undefined /*out*/;
             resourceInputs["creationTime"] = undefined /*out*/;
             resourceInputs["creator"] = undefined /*out*/;
+            resourceInputs["effectiveCapacity"] = undefined /*out*/;
+            resourceInputs["effectiveCustomTags"] = undefined /*out*/;
             resourceInputs["effectiveEnablePgNativeLogin"] = undefined /*out*/;
             resourceInputs["effectiveEnableReadableSecondaries"] = undefined /*out*/;
             resourceInputs["effectiveNodeCount"] = undefined /*out*/;
             resourceInputs["effectiveRetentionWindowInDays"] = undefined /*out*/;
             resourceInputs["effectiveStopped"] = undefined /*out*/;
+            resourceInputs["effectiveUsagePolicyId"] = undefined /*out*/;
             resourceInputs["pgVersion"] = undefined /*out*/;
             resourceInputs["readOnlyDns"] = undefined /*out*/;
             resourceInputs["readWriteDns"] = undefined /*out*/;
@@ -306,37 +349,45 @@ export interface DatabaseInstanceState {
      */
     creator?: pulumi.Input<string>;
     /**
-     * (boolean) - xref AIP-129. `enablePgNativeLogin` is owned by the client, while `effectiveEnablePgNativeLogin` is owned by the server.
-     * `enablePgNativeLogin` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-     * `effectiveEnablePgNativeLogin` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * Custom tags associated with the instance. This field is only included on create and update responses
+     */
+    customTags?: pulumi.Input<pulumi.Input<inputs.DatabaseInstanceCustomTag>[]>;
+    /**
+     * (string, deprecated) - Deprecated. The sku of the instance; this field will always match the value of capacity
+     */
+    effectiveCapacity?: pulumi.Input<string>;
+    /**
+     * (list of CustomTag) - The recorded custom tags associated with the instance
+     */
+    effectiveCustomTags?: pulumi.Input<pulumi.Input<inputs.DatabaseInstanceEffectiveCustomTag>[]>;
+    /**
+     * (boolean) - Whether the instance has PG native password login enabled
      */
     effectiveEnablePgNativeLogin?: pulumi.Input<boolean>;
     /**
-     * (boolean) - xref AIP-129. `enableReadableSecondaries` is owned by the client, while `effectiveEnableReadableSecondaries` is owned by the server.
-     * `enableReadableSecondaries` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-     * `effectiveEnableReadableSecondaries` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * (boolean) - Whether secondaries serving read-only traffic are enabled. Defaults to false
      */
     effectiveEnableReadableSecondaries?: pulumi.Input<boolean>;
     /**
-     * (integer) - xref AIP-129. `nodeCount` is owned by the client, while `effectiveNodeCount` is owned by the server.
-     * `nodeCount` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-     * `effectiveNodeCount` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * (integer) - The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
+     * 1 primary and 0 secondaries
      */
     effectiveNodeCount?: pulumi.Input<number>;
     /**
-     * (integer) - xref AIP-129. `retentionWindowInDays` is owned by the client, while `effectiveRetentionWindowInDays` is owned by the server.
-     * `retentionWindowInDays` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-     * `effectiveRetentionWindowInDays` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * (integer) - The retention window for the instance. This is the time window in days
+     * for which the historical data is retained
      */
     effectiveRetentionWindowInDays?: pulumi.Input<number>;
     /**
-     * (boolean) - xref AIP-129. `stopped` is owned by the client, while `effectiveStopped` is owned by the server.
-     * `stopped` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-     * `effectiveStopped` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * (boolean) - Whether the instance is stopped
      */
     effectiveStopped?: pulumi.Input<boolean>;
     /**
-     * Whether the instance has PG native password login enabled. Defaults to true
+     * (string) - The policy that is applied to the instance
+     */
+    effectiveUsagePolicyId?: pulumi.Input<string>;
+    /**
+     * Whether to enable PG native password login on the instance. Defaults to false
      */
     enablePgNativeLogin?: pulumi.Input<boolean>;
     /**
@@ -349,7 +400,7 @@ export interface DatabaseInstanceState {
     name?: pulumi.Input<string>;
     /**
      * The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
-     * 1 primary and 0 secondaries
+     * 1 primary and 0 secondaries. This field is input only, see effectiveNodeCount for the output
      */
     nodeCount?: pulumi.Input<number>;
     /**
@@ -387,7 +438,7 @@ export interface DatabaseInstanceState {
      */
     state?: pulumi.Input<string>;
     /**
-     * Whether the instance is stopped
+     * Whether to stop the instance. An input only param, see effectiveStopped for the output
      */
     stopped?: pulumi.Input<boolean>;
     /**
@@ -395,9 +446,9 @@ export interface DatabaseInstanceState {
      */
     uid?: pulumi.Input<string>;
     /**
-     * Workspace ID of the resource
+     * The desired usage policy to associate with the instance
      */
-    workspaceId?: pulumi.Input<string>;
+    usagePolicyId?: pulumi.Input<string>;
 }
 
 /**
@@ -409,7 +460,11 @@ export interface DatabaseInstanceArgs {
      */
     capacity?: pulumi.Input<string>;
     /**
-     * Whether the instance has PG native password login enabled. Defaults to true
+     * Custom tags associated with the instance. This field is only included on create and update responses
+     */
+    customTags?: pulumi.Input<pulumi.Input<inputs.DatabaseInstanceCustomTag>[]>;
+    /**
+     * Whether to enable PG native password login on the instance. Defaults to false
      */
     enablePgNativeLogin?: pulumi.Input<boolean>;
     /**
@@ -422,7 +477,7 @@ export interface DatabaseInstanceArgs {
     name?: pulumi.Input<string>;
     /**
      * The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
-     * 1 primary and 0 secondaries
+     * 1 primary and 0 secondaries. This field is input only, see effectiveNodeCount for the output
      */
     nodeCount?: pulumi.Input<number>;
     /**
@@ -443,11 +498,11 @@ export interface DatabaseInstanceArgs {
      */
     retentionWindowInDays?: pulumi.Input<number>;
     /**
-     * Whether the instance is stopped
+     * Whether to stop the instance. An input only param, see effectiveStopped for the output
      */
     stopped?: pulumi.Input<boolean>;
     /**
-     * Workspace ID of the resource
+     * The desired usage policy to associate with the instance
      */
-    workspaceId?: pulumi.Input<string>;
+    usagePolicyId?: pulumi.Input<string>;
 }

@@ -12,9 +12,15 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class LibraryCranArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The name of the CRAN package to install.
+        /// </summary>
         [Input("package", required: true)]
         public Input<string> Package { get; set; } = null!;
 
+        /// <summary>
+        /// The repository where the package can be found. If not specified, the default CRAN repo is used.
+        /// </summary>
         [Input("repo")]
         public Input<string>? Repo { get; set; }
 

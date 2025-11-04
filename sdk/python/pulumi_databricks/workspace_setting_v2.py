@@ -25,24 +25,19 @@ class WorkspaceSettingV2Args:
                  aibi_dashboard_embedding_approved_domains: Optional[pulumi.Input['WorkspaceSettingV2AibiDashboardEmbeddingApprovedDomainsArgs']] = None,
                  automatic_cluster_update_workspace: Optional[pulumi.Input['WorkspaceSettingV2AutomaticClusterUpdateWorkspaceArgs']] = None,
                  boolean_val: Optional[pulumi.Input['WorkspaceSettingV2BooleanValArgs']] = None,
-                 default_data_security_mode: Optional[pulumi.Input['WorkspaceSettingV2DefaultDataSecurityModeArgs']] = None,
                  effective_aibi_dashboard_embedding_access_policy: Optional[pulumi.Input['WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgs']] = None,
                  effective_aibi_dashboard_embedding_approved_domains: Optional[pulumi.Input['WorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgs']] = None,
                  effective_automatic_cluster_update_workspace: Optional[pulumi.Input['WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgs']] = None,
-                 effective_default_data_security_mode: Optional[pulumi.Input['WorkspaceSettingV2EffectiveDefaultDataSecurityModeArgs']] = None,
                  effective_personal_compute: Optional[pulumi.Input['WorkspaceSettingV2EffectivePersonalComputeArgs']] = None,
                  effective_restrict_workspace_admins: Optional[pulumi.Input['WorkspaceSettingV2EffectiveRestrictWorkspaceAdminsArgs']] = None,
                  integer_val: Optional[pulumi.Input['WorkspaceSettingV2IntegerValArgs']] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  personal_compute: Optional[pulumi.Input['WorkspaceSettingV2PersonalComputeArgs']] = None,
                  restrict_workspace_admins: Optional[pulumi.Input['WorkspaceSettingV2RestrictWorkspaceAdminsArgs']] = None,
-                 string_val: Optional[pulumi.Input['WorkspaceSettingV2StringValArgs']] = None,
-                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 string_val: Optional[pulumi.Input['WorkspaceSettingV2StringValArgs']] = None):
         """
         The set of arguments for constructing a WorkspaceSettingV2 resource.
-        :param pulumi.Input['WorkspaceSettingV2AutomaticClusterUpdateWorkspaceArgs'] automatic_cluster_update_workspace: todo: Mark these Public after onboarded to DSL
         :param pulumi.Input[_builtins.str] name: Name of the setting
-        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID of the resource
         """
         if aibi_dashboard_embedding_access_policy is not None:
             pulumi.set(__self__, "aibi_dashboard_embedding_access_policy", aibi_dashboard_embedding_access_policy)
@@ -52,16 +47,12 @@ class WorkspaceSettingV2Args:
             pulumi.set(__self__, "automatic_cluster_update_workspace", automatic_cluster_update_workspace)
         if boolean_val is not None:
             pulumi.set(__self__, "boolean_val", boolean_val)
-        if default_data_security_mode is not None:
-            pulumi.set(__self__, "default_data_security_mode", default_data_security_mode)
         if effective_aibi_dashboard_embedding_access_policy is not None:
             pulumi.set(__self__, "effective_aibi_dashboard_embedding_access_policy", effective_aibi_dashboard_embedding_access_policy)
         if effective_aibi_dashboard_embedding_approved_domains is not None:
             pulumi.set(__self__, "effective_aibi_dashboard_embedding_approved_domains", effective_aibi_dashboard_embedding_approved_domains)
         if effective_automatic_cluster_update_workspace is not None:
             pulumi.set(__self__, "effective_automatic_cluster_update_workspace", effective_automatic_cluster_update_workspace)
-        if effective_default_data_security_mode is not None:
-            pulumi.set(__self__, "effective_default_data_security_mode", effective_default_data_security_mode)
         if effective_personal_compute is not None:
             pulumi.set(__self__, "effective_personal_compute", effective_personal_compute)
         if effective_restrict_workspace_admins is not None:
@@ -76,8 +67,6 @@ class WorkspaceSettingV2Args:
             pulumi.set(__self__, "restrict_workspace_admins", restrict_workspace_admins)
         if string_val is not None:
             pulumi.set(__self__, "string_val", string_val)
-        if workspace_id is not None:
-            pulumi.set(__self__, "workspace_id", workspace_id)
 
     @_builtins.property
     @pulumi.getter(name="aibiDashboardEmbeddingAccessPolicy")
@@ -100,9 +89,6 @@ class WorkspaceSettingV2Args:
     @_builtins.property
     @pulumi.getter(name="automaticClusterUpdateWorkspace")
     def automatic_cluster_update_workspace(self) -> Optional[pulumi.Input['WorkspaceSettingV2AutomaticClusterUpdateWorkspaceArgs']]:
-        """
-        todo: Mark these Public after onboarded to DSL
-        """
         return pulumi.get(self, "automatic_cluster_update_workspace")
 
     @automatic_cluster_update_workspace.setter
@@ -117,15 +103,6 @@ class WorkspaceSettingV2Args:
     @boolean_val.setter
     def boolean_val(self, value: Optional[pulumi.Input['WorkspaceSettingV2BooleanValArgs']]):
         pulumi.set(self, "boolean_val", value)
-
-    @_builtins.property
-    @pulumi.getter(name="defaultDataSecurityMode")
-    def default_data_security_mode(self) -> Optional[pulumi.Input['WorkspaceSettingV2DefaultDataSecurityModeArgs']]:
-        return pulumi.get(self, "default_data_security_mode")
-
-    @default_data_security_mode.setter
-    def default_data_security_mode(self, value: Optional[pulumi.Input['WorkspaceSettingV2DefaultDataSecurityModeArgs']]):
-        pulumi.set(self, "default_data_security_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveAibiDashboardEmbeddingAccessPolicy")
@@ -153,15 +130,6 @@ class WorkspaceSettingV2Args:
     @effective_automatic_cluster_update_workspace.setter
     def effective_automatic_cluster_update_workspace(self, value: Optional[pulumi.Input['WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgs']]):
         pulumi.set(self, "effective_automatic_cluster_update_workspace", value)
-
-    @_builtins.property
-    @pulumi.getter(name="effectiveDefaultDataSecurityMode")
-    def effective_default_data_security_mode(self) -> Optional[pulumi.Input['WorkspaceSettingV2EffectiveDefaultDataSecurityModeArgs']]:
-        return pulumi.get(self, "effective_default_data_security_mode")
-
-    @effective_default_data_security_mode.setter
-    def effective_default_data_security_mode(self, value: Optional[pulumi.Input['WorkspaceSettingV2EffectiveDefaultDataSecurityModeArgs']]):
-        pulumi.set(self, "effective_default_data_security_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="effectivePersonalCompute")
@@ -229,18 +197,6 @@ class WorkspaceSettingV2Args:
     def string_val(self, value: Optional[pulumi.Input['WorkspaceSettingV2StringValArgs']]):
         pulumi.set(self, "string_val", value)
 
-    @_builtins.property
-    @pulumi.getter(name="workspaceId")
-    def workspace_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Workspace ID of the resource
-        """
-        return pulumi.get(self, "workspace_id")
-
-    @workspace_id.setter
-    def workspace_id(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "workspace_id", value)
-
 
 @pulumi.input_type
 class _WorkspaceSettingV2State:
@@ -249,12 +205,10 @@ class _WorkspaceSettingV2State:
                  aibi_dashboard_embedding_approved_domains: Optional[pulumi.Input['WorkspaceSettingV2AibiDashboardEmbeddingApprovedDomainsArgs']] = None,
                  automatic_cluster_update_workspace: Optional[pulumi.Input['WorkspaceSettingV2AutomaticClusterUpdateWorkspaceArgs']] = None,
                  boolean_val: Optional[pulumi.Input['WorkspaceSettingV2BooleanValArgs']] = None,
-                 default_data_security_mode: Optional[pulumi.Input['WorkspaceSettingV2DefaultDataSecurityModeArgs']] = None,
                  effective_aibi_dashboard_embedding_access_policy: Optional[pulumi.Input['WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgs']] = None,
                  effective_aibi_dashboard_embedding_approved_domains: Optional[pulumi.Input['WorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgs']] = None,
                  effective_automatic_cluster_update_workspace: Optional[pulumi.Input['WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgs']] = None,
                  effective_boolean_val: Optional[pulumi.Input['WorkspaceSettingV2EffectiveBooleanValArgs']] = None,
-                 effective_default_data_security_mode: Optional[pulumi.Input['WorkspaceSettingV2EffectiveDefaultDataSecurityModeArgs']] = None,
                  effective_integer_val: Optional[pulumi.Input['WorkspaceSettingV2EffectiveIntegerValArgs']] = None,
                  effective_personal_compute: Optional[pulumi.Input['WorkspaceSettingV2EffectivePersonalComputeArgs']] = None,
                  effective_restrict_workspace_admins: Optional[pulumi.Input['WorkspaceSettingV2EffectiveRestrictWorkspaceAdminsArgs']] = None,
@@ -263,16 +217,13 @@ class _WorkspaceSettingV2State:
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  personal_compute: Optional[pulumi.Input['WorkspaceSettingV2PersonalComputeArgs']] = None,
                  restrict_workspace_admins: Optional[pulumi.Input['WorkspaceSettingV2RestrictWorkspaceAdminsArgs']] = None,
-                 string_val: Optional[pulumi.Input['WorkspaceSettingV2StringValArgs']] = None,
-                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 string_val: Optional[pulumi.Input['WorkspaceSettingV2StringValArgs']] = None):
         """
         Input properties used for looking up and filtering WorkspaceSettingV2 resources.
-        :param pulumi.Input['WorkspaceSettingV2AutomaticClusterUpdateWorkspaceArgs'] automatic_cluster_update_workspace: todo: Mark these Public after onboarded to DSL
         :param pulumi.Input['WorkspaceSettingV2EffectiveBooleanValArgs'] effective_boolean_val: (BooleanMessage)
         :param pulumi.Input['WorkspaceSettingV2EffectiveIntegerValArgs'] effective_integer_val: (IntegerMessage)
         :param pulumi.Input['WorkspaceSettingV2EffectiveStringValArgs'] effective_string_val: (StringMessage)
         :param pulumi.Input[_builtins.str] name: Name of the setting
-        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID of the resource
         """
         if aibi_dashboard_embedding_access_policy is not None:
             pulumi.set(__self__, "aibi_dashboard_embedding_access_policy", aibi_dashboard_embedding_access_policy)
@@ -282,8 +233,6 @@ class _WorkspaceSettingV2State:
             pulumi.set(__self__, "automatic_cluster_update_workspace", automatic_cluster_update_workspace)
         if boolean_val is not None:
             pulumi.set(__self__, "boolean_val", boolean_val)
-        if default_data_security_mode is not None:
-            pulumi.set(__self__, "default_data_security_mode", default_data_security_mode)
         if effective_aibi_dashboard_embedding_access_policy is not None:
             pulumi.set(__self__, "effective_aibi_dashboard_embedding_access_policy", effective_aibi_dashboard_embedding_access_policy)
         if effective_aibi_dashboard_embedding_approved_domains is not None:
@@ -292,8 +241,6 @@ class _WorkspaceSettingV2State:
             pulumi.set(__self__, "effective_automatic_cluster_update_workspace", effective_automatic_cluster_update_workspace)
         if effective_boolean_val is not None:
             pulumi.set(__self__, "effective_boolean_val", effective_boolean_val)
-        if effective_default_data_security_mode is not None:
-            pulumi.set(__self__, "effective_default_data_security_mode", effective_default_data_security_mode)
         if effective_integer_val is not None:
             pulumi.set(__self__, "effective_integer_val", effective_integer_val)
         if effective_personal_compute is not None:
@@ -312,8 +259,6 @@ class _WorkspaceSettingV2State:
             pulumi.set(__self__, "restrict_workspace_admins", restrict_workspace_admins)
         if string_val is not None:
             pulumi.set(__self__, "string_val", string_val)
-        if workspace_id is not None:
-            pulumi.set(__self__, "workspace_id", workspace_id)
 
     @_builtins.property
     @pulumi.getter(name="aibiDashboardEmbeddingAccessPolicy")
@@ -336,9 +281,6 @@ class _WorkspaceSettingV2State:
     @_builtins.property
     @pulumi.getter(name="automaticClusterUpdateWorkspace")
     def automatic_cluster_update_workspace(self) -> Optional[pulumi.Input['WorkspaceSettingV2AutomaticClusterUpdateWorkspaceArgs']]:
-        """
-        todo: Mark these Public after onboarded to DSL
-        """
         return pulumi.get(self, "automatic_cluster_update_workspace")
 
     @automatic_cluster_update_workspace.setter
@@ -353,15 +295,6 @@ class _WorkspaceSettingV2State:
     @boolean_val.setter
     def boolean_val(self, value: Optional[pulumi.Input['WorkspaceSettingV2BooleanValArgs']]):
         pulumi.set(self, "boolean_val", value)
-
-    @_builtins.property
-    @pulumi.getter(name="defaultDataSecurityMode")
-    def default_data_security_mode(self) -> Optional[pulumi.Input['WorkspaceSettingV2DefaultDataSecurityModeArgs']]:
-        return pulumi.get(self, "default_data_security_mode")
-
-    @default_data_security_mode.setter
-    def default_data_security_mode(self, value: Optional[pulumi.Input['WorkspaceSettingV2DefaultDataSecurityModeArgs']]):
-        pulumi.set(self, "default_data_security_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveAibiDashboardEmbeddingAccessPolicy")
@@ -401,15 +334,6 @@ class _WorkspaceSettingV2State:
     @effective_boolean_val.setter
     def effective_boolean_val(self, value: Optional[pulumi.Input['WorkspaceSettingV2EffectiveBooleanValArgs']]):
         pulumi.set(self, "effective_boolean_val", value)
-
-    @_builtins.property
-    @pulumi.getter(name="effectiveDefaultDataSecurityMode")
-    def effective_default_data_security_mode(self) -> Optional[pulumi.Input['WorkspaceSettingV2EffectiveDefaultDataSecurityModeArgs']]:
-        return pulumi.get(self, "effective_default_data_security_mode")
-
-    @effective_default_data_security_mode.setter
-    def effective_default_data_security_mode(self, value: Optional[pulumi.Input['WorkspaceSettingV2EffectiveDefaultDataSecurityModeArgs']]):
-        pulumi.set(self, "effective_default_data_security_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveIntegerVal")
@@ -501,18 +425,6 @@ class _WorkspaceSettingV2State:
     def string_val(self, value: Optional[pulumi.Input['WorkspaceSettingV2StringValArgs']]):
         pulumi.set(self, "string_val", value)
 
-    @_builtins.property
-    @pulumi.getter(name="workspaceId")
-    def workspace_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Workspace ID of the resource
-        """
-        return pulumi.get(self, "workspace_id")
-
-    @workspace_id.setter
-    def workspace_id(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "workspace_id", value)
-
 
 @pulumi.type_token("databricks:index/workspaceSettingV2:WorkspaceSettingV2")
 class WorkspaceSettingV2(pulumi.CustomResource):
@@ -524,11 +436,9 @@ class WorkspaceSettingV2(pulumi.CustomResource):
                  aibi_dashboard_embedding_approved_domains: Optional[pulumi.Input[Union['WorkspaceSettingV2AibiDashboardEmbeddingApprovedDomainsArgs', 'WorkspaceSettingV2AibiDashboardEmbeddingApprovedDomainsArgsDict']]] = None,
                  automatic_cluster_update_workspace: Optional[pulumi.Input[Union['WorkspaceSettingV2AutomaticClusterUpdateWorkspaceArgs', 'WorkspaceSettingV2AutomaticClusterUpdateWorkspaceArgsDict']]] = None,
                  boolean_val: Optional[pulumi.Input[Union['WorkspaceSettingV2BooleanValArgs', 'WorkspaceSettingV2BooleanValArgsDict']]] = None,
-                 default_data_security_mode: Optional[pulumi.Input[Union['WorkspaceSettingV2DefaultDataSecurityModeArgs', 'WorkspaceSettingV2DefaultDataSecurityModeArgsDict']]] = None,
                  effective_aibi_dashboard_embedding_access_policy: Optional[pulumi.Input[Union['WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgs', 'WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgsDict']]] = None,
                  effective_aibi_dashboard_embedding_approved_domains: Optional[pulumi.Input[Union['WorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgs', 'WorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgsDict']]] = None,
                  effective_automatic_cluster_update_workspace: Optional[pulumi.Input[Union['WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgs', 'WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgsDict']]] = None,
-                 effective_default_data_security_mode: Optional[pulumi.Input[Union['WorkspaceSettingV2EffectiveDefaultDataSecurityModeArgs', 'WorkspaceSettingV2EffectiveDefaultDataSecurityModeArgsDict']]] = None,
                  effective_personal_compute: Optional[pulumi.Input[Union['WorkspaceSettingV2EffectivePersonalComputeArgs', 'WorkspaceSettingV2EffectivePersonalComputeArgsDict']]] = None,
                  effective_restrict_workspace_admins: Optional[pulumi.Input[Union['WorkspaceSettingV2EffectiveRestrictWorkspaceAdminsArgs', 'WorkspaceSettingV2EffectiveRestrictWorkspaceAdminsArgsDict']]] = None,
                  integer_val: Optional[pulumi.Input[Union['WorkspaceSettingV2IntegerValArgs', 'WorkspaceSettingV2IntegerValArgsDict']]] = None,
@@ -536,9 +446,30 @@ class WorkspaceSettingV2(pulumi.CustomResource):
                  personal_compute: Optional[pulumi.Input[Union['WorkspaceSettingV2PersonalComputeArgs', 'WorkspaceSettingV2PersonalComputeArgsDict']]] = None,
                  restrict_workspace_admins: Optional[pulumi.Input[Union['WorkspaceSettingV2RestrictWorkspaceAdminsArgs', 'WorkspaceSettingV2RestrictWorkspaceAdminsArgsDict']]] = None,
                  string_val: Optional[pulumi.Input[Union['WorkspaceSettingV2StringValArgs', 'WorkspaceSettingV2StringValArgsDict']]] = None,
-                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+        Setting is a configurable value or control that determines how a feature or behavior works within the databricks platform.
+
+        [//]: # (todo: add public link to metadata api after production doc link available)
+        See settings-metadata api for list of settings that can be modified using this resource.
+
+        ## Example Usage
+
+        Getting a workspace level setting:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        this = databricks.WorkspaceSettingV2("this",
+            name="llm_proxy_partner_powered",
+            boolean_val={
+                "value": False,
+            })
+        ```
+
         ## Import
 
         As of Pulumi v1.5, resources can be imported through configuration.
@@ -556,14 +487,12 @@ class WorkspaceSettingV2(pulumi.CustomResource):
         If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
 
         ```sh
-        $ pulumi import databricks:index/workspaceSettingV2:WorkspaceSettingV2 databricks_workspace_setting_v2 "name"
+        $ pulumi import databricks:index/workspaceSettingV2:WorkspaceSettingV2 this "name"
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['WorkspaceSettingV2AutomaticClusterUpdateWorkspaceArgs', 'WorkspaceSettingV2AutomaticClusterUpdateWorkspaceArgsDict']] automatic_cluster_update_workspace: todo: Mark these Public after onboarded to DSL
         :param pulumi.Input[_builtins.str] name: Name of the setting
-        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID of the resource
         """
         ...
     @overload
@@ -572,6 +501,28 @@ class WorkspaceSettingV2(pulumi.CustomResource):
                  args: Optional[WorkspaceSettingV2Args] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+        Setting is a configurable value or control that determines how a feature or behavior works within the databricks platform.
+
+        [//]: # (todo: add public link to metadata api after production doc link available)
+        See settings-metadata api for list of settings that can be modified using this resource.
+
+        ## Example Usage
+
+        Getting a workspace level setting:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        this = databricks.WorkspaceSettingV2("this",
+            name="llm_proxy_partner_powered",
+            boolean_val={
+                "value": False,
+            })
+        ```
+
         ## Import
 
         As of Pulumi v1.5, resources can be imported through configuration.
@@ -589,7 +540,7 @@ class WorkspaceSettingV2(pulumi.CustomResource):
         If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
 
         ```sh
-        $ pulumi import databricks:index/workspaceSettingV2:WorkspaceSettingV2 databricks_workspace_setting_v2 "name"
+        $ pulumi import databricks:index/workspaceSettingV2:WorkspaceSettingV2 this "name"
         ```
 
         :param str resource_name: The name of the resource.
@@ -611,11 +562,9 @@ class WorkspaceSettingV2(pulumi.CustomResource):
                  aibi_dashboard_embedding_approved_domains: Optional[pulumi.Input[Union['WorkspaceSettingV2AibiDashboardEmbeddingApprovedDomainsArgs', 'WorkspaceSettingV2AibiDashboardEmbeddingApprovedDomainsArgsDict']]] = None,
                  automatic_cluster_update_workspace: Optional[pulumi.Input[Union['WorkspaceSettingV2AutomaticClusterUpdateWorkspaceArgs', 'WorkspaceSettingV2AutomaticClusterUpdateWorkspaceArgsDict']]] = None,
                  boolean_val: Optional[pulumi.Input[Union['WorkspaceSettingV2BooleanValArgs', 'WorkspaceSettingV2BooleanValArgsDict']]] = None,
-                 default_data_security_mode: Optional[pulumi.Input[Union['WorkspaceSettingV2DefaultDataSecurityModeArgs', 'WorkspaceSettingV2DefaultDataSecurityModeArgsDict']]] = None,
                  effective_aibi_dashboard_embedding_access_policy: Optional[pulumi.Input[Union['WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgs', 'WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgsDict']]] = None,
                  effective_aibi_dashboard_embedding_approved_domains: Optional[pulumi.Input[Union['WorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgs', 'WorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgsDict']]] = None,
                  effective_automatic_cluster_update_workspace: Optional[pulumi.Input[Union['WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgs', 'WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgsDict']]] = None,
-                 effective_default_data_security_mode: Optional[pulumi.Input[Union['WorkspaceSettingV2EffectiveDefaultDataSecurityModeArgs', 'WorkspaceSettingV2EffectiveDefaultDataSecurityModeArgsDict']]] = None,
                  effective_personal_compute: Optional[pulumi.Input[Union['WorkspaceSettingV2EffectivePersonalComputeArgs', 'WorkspaceSettingV2EffectivePersonalComputeArgsDict']]] = None,
                  effective_restrict_workspace_admins: Optional[pulumi.Input[Union['WorkspaceSettingV2EffectiveRestrictWorkspaceAdminsArgs', 'WorkspaceSettingV2EffectiveRestrictWorkspaceAdminsArgsDict']]] = None,
                  integer_val: Optional[pulumi.Input[Union['WorkspaceSettingV2IntegerValArgs', 'WorkspaceSettingV2IntegerValArgsDict']]] = None,
@@ -623,7 +572,6 @@ class WorkspaceSettingV2(pulumi.CustomResource):
                  personal_compute: Optional[pulumi.Input[Union['WorkspaceSettingV2PersonalComputeArgs', 'WorkspaceSettingV2PersonalComputeArgsDict']]] = None,
                  restrict_workspace_admins: Optional[pulumi.Input[Union['WorkspaceSettingV2RestrictWorkspaceAdminsArgs', 'WorkspaceSettingV2RestrictWorkspaceAdminsArgsDict']]] = None,
                  string_val: Optional[pulumi.Input[Union['WorkspaceSettingV2StringValArgs', 'WorkspaceSettingV2StringValArgsDict']]] = None,
-                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -637,11 +585,9 @@ class WorkspaceSettingV2(pulumi.CustomResource):
             __props__.__dict__["aibi_dashboard_embedding_approved_domains"] = aibi_dashboard_embedding_approved_domains
             __props__.__dict__["automatic_cluster_update_workspace"] = automatic_cluster_update_workspace
             __props__.__dict__["boolean_val"] = boolean_val
-            __props__.__dict__["default_data_security_mode"] = default_data_security_mode
             __props__.__dict__["effective_aibi_dashboard_embedding_access_policy"] = effective_aibi_dashboard_embedding_access_policy
             __props__.__dict__["effective_aibi_dashboard_embedding_approved_domains"] = effective_aibi_dashboard_embedding_approved_domains
             __props__.__dict__["effective_automatic_cluster_update_workspace"] = effective_automatic_cluster_update_workspace
-            __props__.__dict__["effective_default_data_security_mode"] = effective_default_data_security_mode
             __props__.__dict__["effective_personal_compute"] = effective_personal_compute
             __props__.__dict__["effective_restrict_workspace_admins"] = effective_restrict_workspace_admins
             __props__.__dict__["integer_val"] = integer_val
@@ -649,7 +595,6 @@ class WorkspaceSettingV2(pulumi.CustomResource):
             __props__.__dict__["personal_compute"] = personal_compute
             __props__.__dict__["restrict_workspace_admins"] = restrict_workspace_admins
             __props__.__dict__["string_val"] = string_val
-            __props__.__dict__["workspace_id"] = workspace_id
             __props__.__dict__["effective_boolean_val"] = None
             __props__.__dict__["effective_integer_val"] = None
             __props__.__dict__["effective_string_val"] = None
@@ -667,12 +612,10 @@ class WorkspaceSettingV2(pulumi.CustomResource):
             aibi_dashboard_embedding_approved_domains: Optional[pulumi.Input[Union['WorkspaceSettingV2AibiDashboardEmbeddingApprovedDomainsArgs', 'WorkspaceSettingV2AibiDashboardEmbeddingApprovedDomainsArgsDict']]] = None,
             automatic_cluster_update_workspace: Optional[pulumi.Input[Union['WorkspaceSettingV2AutomaticClusterUpdateWorkspaceArgs', 'WorkspaceSettingV2AutomaticClusterUpdateWorkspaceArgsDict']]] = None,
             boolean_val: Optional[pulumi.Input[Union['WorkspaceSettingV2BooleanValArgs', 'WorkspaceSettingV2BooleanValArgsDict']]] = None,
-            default_data_security_mode: Optional[pulumi.Input[Union['WorkspaceSettingV2DefaultDataSecurityModeArgs', 'WorkspaceSettingV2DefaultDataSecurityModeArgsDict']]] = None,
             effective_aibi_dashboard_embedding_access_policy: Optional[pulumi.Input[Union['WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgs', 'WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgsDict']]] = None,
             effective_aibi_dashboard_embedding_approved_domains: Optional[pulumi.Input[Union['WorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgs', 'WorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgsDict']]] = None,
             effective_automatic_cluster_update_workspace: Optional[pulumi.Input[Union['WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgs', 'WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgsDict']]] = None,
             effective_boolean_val: Optional[pulumi.Input[Union['WorkspaceSettingV2EffectiveBooleanValArgs', 'WorkspaceSettingV2EffectiveBooleanValArgsDict']]] = None,
-            effective_default_data_security_mode: Optional[pulumi.Input[Union['WorkspaceSettingV2EffectiveDefaultDataSecurityModeArgs', 'WorkspaceSettingV2EffectiveDefaultDataSecurityModeArgsDict']]] = None,
             effective_integer_val: Optional[pulumi.Input[Union['WorkspaceSettingV2EffectiveIntegerValArgs', 'WorkspaceSettingV2EffectiveIntegerValArgsDict']]] = None,
             effective_personal_compute: Optional[pulumi.Input[Union['WorkspaceSettingV2EffectivePersonalComputeArgs', 'WorkspaceSettingV2EffectivePersonalComputeArgsDict']]] = None,
             effective_restrict_workspace_admins: Optional[pulumi.Input[Union['WorkspaceSettingV2EffectiveRestrictWorkspaceAdminsArgs', 'WorkspaceSettingV2EffectiveRestrictWorkspaceAdminsArgsDict']]] = None,
@@ -681,8 +624,7 @@ class WorkspaceSettingV2(pulumi.CustomResource):
             name: Optional[pulumi.Input[_builtins.str]] = None,
             personal_compute: Optional[pulumi.Input[Union['WorkspaceSettingV2PersonalComputeArgs', 'WorkspaceSettingV2PersonalComputeArgsDict']]] = None,
             restrict_workspace_admins: Optional[pulumi.Input[Union['WorkspaceSettingV2RestrictWorkspaceAdminsArgs', 'WorkspaceSettingV2RestrictWorkspaceAdminsArgsDict']]] = None,
-            string_val: Optional[pulumi.Input[Union['WorkspaceSettingV2StringValArgs', 'WorkspaceSettingV2StringValArgsDict']]] = None,
-            workspace_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'WorkspaceSettingV2':
+            string_val: Optional[pulumi.Input[Union['WorkspaceSettingV2StringValArgs', 'WorkspaceSettingV2StringValArgsDict']]] = None) -> 'WorkspaceSettingV2':
         """
         Get an existing WorkspaceSettingV2 resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -690,12 +632,10 @@ class WorkspaceSettingV2(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['WorkspaceSettingV2AutomaticClusterUpdateWorkspaceArgs', 'WorkspaceSettingV2AutomaticClusterUpdateWorkspaceArgsDict']] automatic_cluster_update_workspace: todo: Mark these Public after onboarded to DSL
         :param pulumi.Input[Union['WorkspaceSettingV2EffectiveBooleanValArgs', 'WorkspaceSettingV2EffectiveBooleanValArgsDict']] effective_boolean_val: (BooleanMessage)
         :param pulumi.Input[Union['WorkspaceSettingV2EffectiveIntegerValArgs', 'WorkspaceSettingV2EffectiveIntegerValArgsDict']] effective_integer_val: (IntegerMessage)
         :param pulumi.Input[Union['WorkspaceSettingV2EffectiveStringValArgs', 'WorkspaceSettingV2EffectiveStringValArgsDict']] effective_string_val: (StringMessage)
         :param pulumi.Input[_builtins.str] name: Name of the setting
-        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID of the resource
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -705,12 +645,10 @@ class WorkspaceSettingV2(pulumi.CustomResource):
         __props__.__dict__["aibi_dashboard_embedding_approved_domains"] = aibi_dashboard_embedding_approved_domains
         __props__.__dict__["automatic_cluster_update_workspace"] = automatic_cluster_update_workspace
         __props__.__dict__["boolean_val"] = boolean_val
-        __props__.__dict__["default_data_security_mode"] = default_data_security_mode
         __props__.__dict__["effective_aibi_dashboard_embedding_access_policy"] = effective_aibi_dashboard_embedding_access_policy
         __props__.__dict__["effective_aibi_dashboard_embedding_approved_domains"] = effective_aibi_dashboard_embedding_approved_domains
         __props__.__dict__["effective_automatic_cluster_update_workspace"] = effective_automatic_cluster_update_workspace
         __props__.__dict__["effective_boolean_val"] = effective_boolean_val
-        __props__.__dict__["effective_default_data_security_mode"] = effective_default_data_security_mode
         __props__.__dict__["effective_integer_val"] = effective_integer_val
         __props__.__dict__["effective_personal_compute"] = effective_personal_compute
         __props__.__dict__["effective_restrict_workspace_admins"] = effective_restrict_workspace_admins
@@ -720,7 +658,6 @@ class WorkspaceSettingV2(pulumi.CustomResource):
         __props__.__dict__["personal_compute"] = personal_compute
         __props__.__dict__["restrict_workspace_admins"] = restrict_workspace_admins
         __props__.__dict__["string_val"] = string_val
-        __props__.__dict__["workspace_id"] = workspace_id
         return WorkspaceSettingV2(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -736,20 +673,12 @@ class WorkspaceSettingV2(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="automaticClusterUpdateWorkspace")
     def automatic_cluster_update_workspace(self) -> pulumi.Output[Optional['outputs.WorkspaceSettingV2AutomaticClusterUpdateWorkspace']]:
-        """
-        todo: Mark these Public after onboarded to DSL
-        """
         return pulumi.get(self, "automatic_cluster_update_workspace")
 
     @_builtins.property
     @pulumi.getter(name="booleanVal")
     def boolean_val(self) -> pulumi.Output[Optional['outputs.WorkspaceSettingV2BooleanVal']]:
         return pulumi.get(self, "boolean_val")
-
-    @_builtins.property
-    @pulumi.getter(name="defaultDataSecurityMode")
-    def default_data_security_mode(self) -> pulumi.Output[Optional['outputs.WorkspaceSettingV2DefaultDataSecurityMode']]:
-        return pulumi.get(self, "default_data_security_mode")
 
     @_builtins.property
     @pulumi.getter(name="effectiveAibiDashboardEmbeddingAccessPolicy")
@@ -773,11 +702,6 @@ class WorkspaceSettingV2(pulumi.CustomResource):
         (BooleanMessage)
         """
         return pulumi.get(self, "effective_boolean_val")
-
-    @_builtins.property
-    @pulumi.getter(name="effectiveDefaultDataSecurityMode")
-    def effective_default_data_security_mode(self) -> pulumi.Output[Optional['outputs.WorkspaceSettingV2EffectiveDefaultDataSecurityMode']]:
-        return pulumi.get(self, "effective_default_data_security_mode")
 
     @_builtins.property
     @pulumi.getter(name="effectiveIntegerVal")
@@ -832,12 +756,4 @@ class WorkspaceSettingV2(pulumi.CustomResource):
     @pulumi.getter(name="stringVal")
     def string_val(self) -> pulumi.Output[Optional['outputs.WorkspaceSettingV2StringVal']]:
         return pulumi.get(self, "string_val")
-
-    @_builtins.property
-    @pulumi.getter(name="workspaceId")
-    def workspace_id(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Workspace ID of the resource
-        """
-        return pulumi.get(self, "workspace_id")
 

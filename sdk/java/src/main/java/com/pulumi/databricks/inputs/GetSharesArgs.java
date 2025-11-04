@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetSharesProviderConfigArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -15,6 +16,21 @@ import javax.annotation.Nullable;
 public final class GetSharesArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetSharesArgs Empty = new GetSharesArgs();
+
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<GetSharesProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Optional<Output<GetSharesProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
 
     /**
      * list of databricks.Share names.
@@ -34,6 +50,7 @@ public final class GetSharesArgs extends com.pulumi.resources.InvokeArgs {
     private GetSharesArgs() {}
 
     private GetSharesArgs(GetSharesArgs $) {
+        this.providerConfig = $.providerConfig;
         this.shares = $.shares;
     }
 
@@ -53,6 +70,27 @@ public final class GetSharesArgs extends com.pulumi.resources.InvokeArgs {
 
         public Builder(GetSharesArgs defaults) {
             $ = new GetSharesArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<GetSharesProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(GetSharesProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         /**

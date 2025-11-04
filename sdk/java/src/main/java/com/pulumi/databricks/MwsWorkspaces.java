@@ -177,15 +177,15 @@ import javax.annotation.Nullable;
  * import com.pulumi.aws.iam.RolePolicyArgs;
  * import com.pulumi.databricks.MwsCredentials;
  * import com.pulumi.databricks.MwsCredentialsArgs;
- * import com.pulumi.aws.s3.BucketV2;
- * import com.pulumi.aws.s3.BucketV2Args;
- * import com.pulumi.aws.s3.BucketVersioningV2;
- * import com.pulumi.aws.s3.BucketVersioningV2Args;
- * import com.pulumi.aws.s3.inputs.BucketVersioningV2VersioningConfigurationArgs;
- * import com.pulumi.aws.s3.BucketServerSideEncryptionConfigurationV2;
- * import com.pulumi.aws.s3.BucketServerSideEncryptionConfigurationV2Args;
- * import com.pulumi.aws.s3.inputs.BucketServerSideEncryptionConfigurationV2RuleArgs;
- * import com.pulumi.aws.s3.inputs.BucketServerSideEncryptionConfigurationV2RuleApplyServerSideEncryptionByDefaultArgs;
+ * import com.pulumi.aws.s3.Bucket;
+ * import com.pulumi.aws.s3.BucketArgs;
+ * import com.pulumi.aws.s3.BucketVersioning;
+ * import com.pulumi.aws.s3.BucketVersioningArgs;
+ * import com.pulumi.aws.s3.inputs.BucketVersioningVersioningConfigurationArgs;
+ * import com.pulumi.aws.s3.BucketServerSideEncryptionConfiguration;
+ * import com.pulumi.aws.s3.BucketServerSideEncryptionConfigurationArgs;
+ * import com.pulumi.aws.s3.inputs.BucketServerSideEncryptionConfigurationRuleArgs;
+ * import com.pulumi.aws.s3.inputs.BucketServerSideEncryptionConfigurationRuleApplyServerSideEncryptionByDefaultArgs;
  * import com.pulumi.aws.s3.BucketPublicAccessBlock;
  * import com.pulumi.aws.s3.BucketPublicAccessBlockArgs;
  * import com.pulumi.databricks.inputs.GetAwsBucketPolicyArgs;
@@ -244,24 +244,24 @@ import javax.annotation.Nullable;
  *             .roleArn(crossAccountRole.arn())
  *             .build());
  * 
- *         var rootStorageBucket = new BucketV2("rootStorageBucket", BucketV2Args.builder()
+ *         var rootStorageBucket = new Bucket("rootStorageBucket", BucketArgs.builder()
  *             .bucket(String.format("%s-rootbucket", prefix))
  *             .acl("private")
  *             .forceDestroy(true)
  *             .tags(tags)
  *             .build());
  * 
- *         var rootVersioning = new BucketVersioningV2("rootVersioning", BucketVersioningV2Args.builder()
+ *         var rootVersioning = new BucketVersioning("rootVersioning", BucketVersioningArgs.builder()
  *             .bucket(rootStorageBucket.id())
- *             .versioningConfiguration(BucketVersioningV2VersioningConfigurationArgs.builder()
+ *             .versioningConfiguration(BucketVersioningVersioningConfigurationArgs.builder()
  *                 .status("Disabled")
  *                 .build())
  *             .build());
  * 
- *         var rootStorageBucketBucketServerSideEncryptionConfigurationV2 = new BucketServerSideEncryptionConfigurationV2("rootStorageBucketBucketServerSideEncryptionConfigurationV2", BucketServerSideEncryptionConfigurationV2Args.builder()
+ *         var rootStorageBucketBucketServerSideEncryptionConfiguration = new BucketServerSideEncryptionConfiguration("rootStorageBucketBucketServerSideEncryptionConfiguration", BucketServerSideEncryptionConfigurationArgs.builder()
  *             .bucket(rootStorageBucket.bucket())
- *             .rules(BucketServerSideEncryptionConfigurationV2RuleArgs.builder()
- *                 .applyServerSideEncryptionByDefault(BucketServerSideEncryptionConfigurationV2RuleApplyServerSideEncryptionByDefaultArgs.builder()
+ *             .rules(BucketServerSideEncryptionConfigurationRuleArgs.builder()
+ *                 .applyServerSideEncryptionByDefault(BucketServerSideEncryptionConfigurationRuleApplyServerSideEncryptionByDefaultArgs.builder()
  *                     .sseAlgorithm("AES256")
  *                     .build())
  *                 .build())
@@ -469,16 +469,12 @@ public class MwsWorkspaces extends com.pulumi.resources.CustomResource {
     /**
      * The compute mode for the workspace. When unset, a classic workspace is created, and both `credentialsId` and `storageConfigurationId` must be specified. When set to `SERVERLESS`, the resulting workspace is a serverless workspace, and `credentialsId` and `storageConfigurationId` must not be set. The only allowed value for this is `SERVERLESS`. Changing this field requires recreation of the workspace.
      * 
-     * &gt; Databricks strongly recommends using OAuth instead of PATs for user account client authentication and authorization due to the improved security
-     * 
      */
     @Export(name="computeMode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> computeMode;
 
     /**
      * @return The compute mode for the workspace. When unset, a classic workspace is created, and both `credentialsId` and `storageConfigurationId` must be specified. When set to `SERVERLESS`, the resulting workspace is a serverless workspace, and `credentialsId` and `storageConfigurationId` must not be set. The only allowed value for this is `SERVERLESS`. Changing this field requires recreation of the workspace.
-     * 
-     * &gt; Databricks strongly recommends using OAuth instead of PATs for user account client authentication and authorization due to the improved security
      * 
      */
     public Output<Optional<String>> computeMode() {
@@ -566,6 +562,24 @@ public class MwsWorkspaces extends com.pulumi.resources.CustomResource {
     public Output<String> effectiveComputeMode() {
         return this.effectiveComputeMode;
     }
+    /**
+     * The expected status of the workspace. When unset, it defaults to `RUNNING`. When set to `PROVISIONING`, workspace provisioning will pause and not enter `RUNNING` status. The only allowed values for this is `RUNNING` and `PROVISIONING`.
+     * 
+     * &gt; Databricks strongly recommends using OAuth instead of PATs for user account client authentication and authorization due to the improved security
+     * 
+     */
+    @Export(name="expectedWorkspaceStatus", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> expectedWorkspaceStatus;
+
+    /**
+     * @return The expected status of the workspace. When unset, it defaults to `RUNNING`. When set to `PROVISIONING`, workspace provisioning will pause and not enter `RUNNING` status. The only allowed values for this is `RUNNING` and `PROVISIONING`.
+     * 
+     * &gt; Databricks strongly recommends using OAuth instead of PATs for user account client authentication and authorization due to the improved security
+     * 
+     */
+    public Output<Optional<String>> expectedWorkspaceStatus() {
+        return Codegen.optional(this.expectedWorkspaceStatus);
+    }
     @Export(name="externalCustomerInfo", refs={MwsWorkspacesExternalCustomerInfo.class}, tree="[0]")
     private Output</* @Nullable */ MwsWorkspacesExternalCustomerInfo> externalCustomerInfo;
 
@@ -594,10 +608,10 @@ public class MwsWorkspaces extends com.pulumi.resources.CustomResource {
     }
     /**
      * @deprecated
-     * gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.90.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.96.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      * 
      */
-    @Deprecated /* gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.90.0/docs/guides/gcp-workspace#creating-a-databricks-workspace */
+    @Deprecated /* gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.96.0/docs/guides/gcp-workspace#creating-a-databricks-workspace */
     @Export(name="gkeConfig", refs={MwsWorkspacesGkeConfig.class}, tree="[0]")
     private Output</* @Nullable */ MwsWorkspacesGkeConfig> gkeConfig;
 

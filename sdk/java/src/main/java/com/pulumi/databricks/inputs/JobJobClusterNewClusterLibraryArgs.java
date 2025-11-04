@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.JobJobClusterNewClusterLibraryCranArgs;
 import com.pulumi.databricks.inputs.JobJobClusterNewClusterLibraryMavenArgs;
+import com.pulumi.databricks.inputs.JobJobClusterNewClusterLibraryProviderConfigArgs;
 import com.pulumi.databricks.inputs.JobJobClusterNewClusterLibraryPypiArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -58,6 +59,21 @@ public final class JobJobClusterNewClusterLibraryArgs extends com.pulumi.resourc
         return Optional.ofNullable(this.maven);
     }
 
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<JobJobClusterNewClusterLibraryProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Optional<Output<JobJobClusterNewClusterLibraryProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     @Import(name="pypi")
     private @Nullable Output<JobJobClusterNewClusterLibraryPypiArgs> pypi;
 
@@ -86,6 +102,7 @@ public final class JobJobClusterNewClusterLibraryArgs extends com.pulumi.resourc
         this.egg = $.egg;
         this.jar = $.jar;
         this.maven = $.maven;
+        this.providerConfig = $.providerConfig;
         this.pypi = $.pypi;
         this.requirements = $.requirements;
         this.whl = $.whl;
@@ -159,6 +176,27 @@ public final class JobJobClusterNewClusterLibraryArgs extends com.pulumi.resourc
 
         public Builder maven(JobJobClusterNewClusterLibraryMavenArgs maven) {
             return maven(Output.of(maven));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<JobJobClusterNewClusterLibraryProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(JobJobClusterNewClusterLibraryProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         public Builder pypi(@Nullable Output<JobJobClusterNewClusterLibraryPypiArgs> pypi) {

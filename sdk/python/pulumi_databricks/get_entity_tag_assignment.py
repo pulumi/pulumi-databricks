@@ -26,7 +26,7 @@ class GetEntityTagAssignmentResult:
     """
     A collection of values returned by getEntityTagAssignment.
     """
-    def __init__(__self__, entity_name=None, entity_type=None, id=None, tag_key=None, tag_value=None, workspace_id=None):
+    def __init__(__self__, entity_name=None, entity_type=None, id=None, tag_key=None, tag_value=None):
         if entity_name and not isinstance(entity_name, str):
             raise TypeError("Expected argument 'entity_name' to be a str")
         pulumi.set(__self__, "entity_name", entity_name)
@@ -42,9 +42,6 @@ class GetEntityTagAssignmentResult:
         if tag_value and not isinstance(tag_value, str):
             raise TypeError("Expected argument 'tag_value' to be a str")
         pulumi.set(__self__, "tag_value", tag_value)
-        if workspace_id and not isinstance(workspace_id, str):
-            raise TypeError("Expected argument 'workspace_id' to be a str")
-        pulumi.set(__self__, "workspace_id", workspace_id)
 
     @_builtins.property
     @pulumi.getter(name="entityName")
@@ -80,16 +77,11 @@ class GetEntityTagAssignmentResult:
 
     @_builtins.property
     @pulumi.getter(name="tagValue")
-    def tag_value(self) -> Optional[_builtins.str]:
+    def tag_value(self) -> _builtins.str:
         """
         (string) - The value of the tag
         """
         return pulumi.get(self, "tag_value")
-
-    @_builtins.property
-    @pulumi.getter(name="workspaceId")
-    def workspace_id(self) -> Optional[_builtins.str]:
-        return pulumi.get(self, "workspace_id")
 
 
 class AwaitableGetEntityTagAssignmentResult(GetEntityTagAssignmentResult):
@@ -102,31 +94,52 @@ class AwaitableGetEntityTagAssignmentResult(GetEntityTagAssignmentResult):
             entity_type=self.entity_type,
             id=self.id,
             tag_key=self.tag_key,
-            tag_value=self.tag_value,
-            workspace_id=self.workspace_id)
+            tag_value=self.tag_value)
 
 
 def get_entity_tag_assignment(entity_name: Optional[_builtins.str] = None,
                               entity_type: Optional[_builtins.str] = None,
                               tag_key: Optional[_builtins.str] = None,
-                              tag_value: Optional[_builtins.str] = None,
-                              workspace_id: Optional[_builtins.str] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetEntityTagAssignmentResult:
     """
-    Use this data source to access information about an existing resource.
+    [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+    This data source allows you to get information about a tag assignment for a specific entity using the entity type, entity name, and tag key.
+
+    ## Example Usage
+
+    ### Get environment tag from a catalog
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    catalog_tag = databricks.get_entity_tag_assignment(entity_type="catalogs",
+        entity_name="production_catalog",
+        tag_key="environment")
+    schema_tag = databricks.get_entity_tag_assignment(entity_type="schemas",
+        entity_name="production_catalog.analytics_data",
+        tag_key="cost_center")
+    table_tag = databricks.get_entity_tag_assignment(entity_type="tables",
+        entity_name="production_catalog.sales_data.customer_orders",
+        tag_key="owner")
+    column_tag = databricks.get_entity_tag_assignment(entity_type="columns",
+        entity_name="production_catalog.customer_data.users.email_address",
+        tag_key="pii_classification")
+    volume_tag = databricks.get_entity_tag_assignment(entity_type="volumes",
+        entity_name="production_catalog.raw_data.landing_zone",
+        tag_key="purpose")
+    ```
+
 
     :param _builtins.str entity_name: The fully qualified name of the entity to which the tag is assigned
     :param _builtins.str entity_type: The type of the entity to which the tag is assigned. Allowed values are: catalogs, schemas, tables, columns, volumes
     :param _builtins.str tag_key: The key of the tag
-    :param _builtins.str tag_value: (string) - The value of the tag
-    :param _builtins.str workspace_id: Workspace ID of the resource
     """
     __args__ = dict()
     __args__['entityName'] = entity_name
     __args__['entityType'] = entity_type
     __args__['tagKey'] = tag_key
-    __args__['tagValue'] = tag_value
-    __args__['workspaceId'] = workspace_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getEntityTagAssignment:getEntityTagAssignment', __args__, opts=opts, typ=GetEntityTagAssignmentResult).value
 
@@ -135,29 +148,50 @@ def get_entity_tag_assignment(entity_name: Optional[_builtins.str] = None,
         entity_type=pulumi.get(__ret__, 'entity_type'),
         id=pulumi.get(__ret__, 'id'),
         tag_key=pulumi.get(__ret__, 'tag_key'),
-        tag_value=pulumi.get(__ret__, 'tag_value'),
-        workspace_id=pulumi.get(__ret__, 'workspace_id'))
+        tag_value=pulumi.get(__ret__, 'tag_value'))
 def get_entity_tag_assignment_output(entity_name: Optional[pulumi.Input[_builtins.str]] = None,
                                      entity_type: Optional[pulumi.Input[_builtins.str]] = None,
                                      tag_key: Optional[pulumi.Input[_builtins.str]] = None,
-                                     tag_value: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                     workspace_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEntityTagAssignmentResult]:
     """
-    Use this data source to access information about an existing resource.
+    [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+    This data source allows you to get information about a tag assignment for a specific entity using the entity type, entity name, and tag key.
+
+    ## Example Usage
+
+    ### Get environment tag from a catalog
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    catalog_tag = databricks.get_entity_tag_assignment(entity_type="catalogs",
+        entity_name="production_catalog",
+        tag_key="environment")
+    schema_tag = databricks.get_entity_tag_assignment(entity_type="schemas",
+        entity_name="production_catalog.analytics_data",
+        tag_key="cost_center")
+    table_tag = databricks.get_entity_tag_assignment(entity_type="tables",
+        entity_name="production_catalog.sales_data.customer_orders",
+        tag_key="owner")
+    column_tag = databricks.get_entity_tag_assignment(entity_type="columns",
+        entity_name="production_catalog.customer_data.users.email_address",
+        tag_key="pii_classification")
+    volume_tag = databricks.get_entity_tag_assignment(entity_type="volumes",
+        entity_name="production_catalog.raw_data.landing_zone",
+        tag_key="purpose")
+    ```
+
 
     :param _builtins.str entity_name: The fully qualified name of the entity to which the tag is assigned
     :param _builtins.str entity_type: The type of the entity to which the tag is assigned. Allowed values are: catalogs, schemas, tables, columns, volumes
     :param _builtins.str tag_key: The key of the tag
-    :param _builtins.str tag_value: (string) - The value of the tag
-    :param _builtins.str workspace_id: Workspace ID of the resource
     """
     __args__ = dict()
     __args__['entityName'] = entity_name
     __args__['entityType'] = entity_type
     __args__['tagKey'] = tag_key
-    __args__['tagValue'] = tag_value
-    __args__['workspaceId'] = workspace_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getEntityTagAssignment:getEntityTagAssignment', __args__, opts=opts, typ=GetEntityTagAssignmentResult)
     return __ret__.apply(lambda __response__: GetEntityTagAssignmentResult(
@@ -165,5 +199,4 @@ def get_entity_tag_assignment_output(entity_name: Optional[pulumi.Input[_builtin
         entity_type=pulumi.get(__response__, 'entity_type'),
         id=pulumi.get(__response__, 'id'),
         tag_key=pulumi.get(__response__, 'tag_key'),
-        tag_value=pulumi.get(__response__, 'tag_value'),
-        workspace_id=pulumi.get(__response__, 'workspace_id')))
+        tag_value=pulumi.get(__response__, 'tag_value')))

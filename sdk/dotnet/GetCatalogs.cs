@@ -135,6 +135,12 @@ namespace Pulumi.Databricks
             set => _ids = value;
         }
 
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Inputs.GetCatalogsProviderConfigArgs? ProviderConfig { get; set; }
+
         public GetCatalogsArgs()
         {
         }
@@ -155,6 +161,12 @@ namespace Pulumi.Databricks
             set => _ids = value;
         }
 
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.GetCatalogsProviderConfigInputArgs>? ProviderConfig { get; set; }
+
         public GetCatalogsInvokeArgs()
         {
         }
@@ -173,15 +185,19 @@ namespace Pulumi.Databricks
         /// set of databricks.Catalog names
         /// </summary>
         public readonly ImmutableArray<string> Ids;
+        public readonly Outputs.GetCatalogsProviderConfigResult? ProviderConfig;
 
         [OutputConstructor]
         private GetCatalogsResult(
             string id,
 
-            ImmutableArray<string> ids)
+            ImmutableArray<string> ids,
+
+            Outputs.GetCatalogsProviderConfigResult? providerConfig)
         {
             Id = id;
             Ids = ids;
+            ProviderConfig = providerConfig;
         }
     }
 }

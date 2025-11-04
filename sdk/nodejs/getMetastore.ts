@@ -20,7 +20,7 @@ import * as utilities from "./utilities";
  * import * as aws from "@pulumi/aws";
  * import * as databricks from "@pulumi/databricks";
  *
- * const metastore = new aws.s3.BucketV2("metastore", {
+ * const metastore = new aws.s3.Bucket("metastore", {
  *     bucket: `${prefix}-metastore`,
  *     forceDestroy: true,
  * });
@@ -115,7 +115,7 @@ export interface GetMetastoreResult {
  * import * as aws from "@pulumi/aws";
  * import * as databricks from "@pulumi/databricks";
  *
- * const metastore = new aws.s3.BucketV2("metastore", {
+ * const metastore = new aws.s3.Bucket("metastore", {
  *     bucket: `${prefix}-metastore`,
  *     forceDestroy: true,
  * });

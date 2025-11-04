@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetJobsProviderConfigArgs;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -61,12 +62,28 @@ public final class GetJobsArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.key);
     }
 
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<GetJobsProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Optional<Output<GetJobsProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     private GetJobsArgs() {}
 
     private GetJobsArgs(GetJobsArgs $) {
         this.ids = $.ids;
         this.jobNameContains = $.jobNameContains;
         this.key = $.key;
+        this.providerConfig = $.providerConfig;
     }
 
     public static Builder builder() {
@@ -148,6 +165,27 @@ public final class GetJobsArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder key(String key) {
             return key(Output.of(key));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<GetJobsProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(GetJobsProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         public GetJobsArgs build() {

@@ -15,6 +15,8 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * 
  * ## Import
  * 
  * As of Pulumi v1.5, resources can be imported through configuration.
@@ -32,7 +34,7 @@ import javax.annotation.Nullable;
  * If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
  * 
  * ```sh
- * $ pulumi import databricks:index/materializedFeaturesFeatureTag:MaterializedFeaturesFeatureTag databricks_materialized_features_feature_tag &#34;key&#34;
+ * $ pulumi import databricks:index/materializedFeaturesFeatureTag:MaterializedFeaturesFeatureTag this &#34;key&#34;
  * ```
  * 
  */
@@ -49,20 +51,6 @@ public class MaterializedFeaturesFeatureTag extends com.pulumi.resources.CustomR
 
     public Output<Optional<String>> value() {
         return Codegen.optional(this.value);
-    }
-    /**
-     * Workspace ID of the resource
-     * 
-     */
-    @Export(name="workspaceId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> workspaceId;
-
-    /**
-     * @return Workspace ID of the resource
-     * 
-     */
-    public Output<Optional<String>> workspaceId() {
-        return Codegen.optional(this.workspaceId);
     }
 
     /**

@@ -11,6 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+//
 // This data source can be used to fetch the list of quality monitors v2.
 //
 // > **Note** This data source can only be used with an workspace-level provider!
@@ -52,16 +54,15 @@ func GetQualityMonitorsV2(ctx *pulumi.Context, args *GetQualityMonitorsV2Args, o
 
 // A collection of arguments for invoking getQualityMonitorsV2.
 type GetQualityMonitorsV2Args struct {
-	// Workspace ID of the resource
-	WorkspaceId *string `pulumi:"workspaceId"`
+	PageSize *int `pulumi:"pageSize"`
 }
 
 // A collection of values returned by getQualityMonitorsV2.
 type GetQualityMonitorsV2Result struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id              string                               `pulumi:"id"`
+	PageSize        *int                                 `pulumi:"pageSize"`
 	QualityMonitors []GetQualityMonitorsV2QualityMonitor `pulumi:"qualityMonitors"`
-	WorkspaceId     *string                              `pulumi:"workspaceId"`
 }
 
 func GetQualityMonitorsV2Output(ctx *pulumi.Context, args GetQualityMonitorsV2OutputArgs, opts ...pulumi.InvokeOption) GetQualityMonitorsV2ResultOutput {
@@ -75,8 +76,7 @@ func GetQualityMonitorsV2Output(ctx *pulumi.Context, args GetQualityMonitorsV2Ou
 
 // A collection of arguments for invoking getQualityMonitorsV2.
 type GetQualityMonitorsV2OutputArgs struct {
-	// Workspace ID of the resource
-	WorkspaceId pulumi.StringPtrInput `pulumi:"workspaceId"`
+	PageSize pulumi.IntPtrInput `pulumi:"pageSize"`
 }
 
 func (GetQualityMonitorsV2OutputArgs) ElementType() reflect.Type {
@@ -103,12 +103,12 @@ func (o GetQualityMonitorsV2ResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetQualityMonitorsV2Result) string { return v.Id }).(pulumi.StringOutput)
 }
 
-func (o GetQualityMonitorsV2ResultOutput) QualityMonitors() GetQualityMonitorsV2QualityMonitorArrayOutput {
-	return o.ApplyT(func(v GetQualityMonitorsV2Result) []GetQualityMonitorsV2QualityMonitor { return v.QualityMonitors }).(GetQualityMonitorsV2QualityMonitorArrayOutput)
+func (o GetQualityMonitorsV2ResultOutput) PageSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetQualityMonitorsV2Result) *int { return v.PageSize }).(pulumi.IntPtrOutput)
 }
 
-func (o GetQualityMonitorsV2ResultOutput) WorkspaceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetQualityMonitorsV2Result) *string { return v.WorkspaceId }).(pulumi.StringPtrOutput)
+func (o GetQualityMonitorsV2ResultOutput) QualityMonitors() GetQualityMonitorsV2QualityMonitorArrayOutput {
+	return o.ApplyT(func(v GetQualityMonitorsV2Result) []GetQualityMonitorsV2QualityMonitor { return v.QualityMonitors }).(GetQualityMonitorsV2QualityMonitorArrayOutput)
 }
 
 func init() {

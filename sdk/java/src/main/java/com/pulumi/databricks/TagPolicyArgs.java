@@ -39,28 +39,12 @@ public final class TagPolicyArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.values);
     }
 
-    /**
-     * Workspace ID of the resource
-     * 
-     */
-    @Import(name="workspaceId")
-    private @Nullable Output<String> workspaceId;
-
-    /**
-     * @return Workspace ID of the resource
-     * 
-     */
-    public Optional<Output<String>> workspaceId() {
-        return Optional.ofNullable(this.workspaceId);
-    }
-
     private TagPolicyArgs() {}
 
     private TagPolicyArgs(TagPolicyArgs $) {
         this.description = $.description;
         this.tagKey = $.tagKey;
         this.values = $.values;
-        this.workspaceId = $.workspaceId;
     }
 
     public static Builder builder() {
@@ -110,27 +94,6 @@ public final class TagPolicyArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder values(TagPolicyValueArgs... values) {
             return values(List.of(values));
-        }
-
-        /**
-         * @param workspaceId Workspace ID of the resource
-         * 
-         * @return builder
-         * 
-         */
-        public Builder workspaceId(@Nullable Output<String> workspaceId) {
-            $.workspaceId = workspaceId;
-            return this;
-        }
-
-        /**
-         * @param workspaceId Workspace ID of the resource
-         * 
-         * @return builder
-         * 
-         */
-        public Builder workspaceId(String workspaceId) {
-            return workspaceId(Output.of(workspaceId));
         }
 
         public TagPolicyArgs build() {

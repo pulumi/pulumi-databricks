@@ -28,7 +28,7 @@ class GetExternalLocationResult:
     """
     A collection of values returned by getExternalLocation.
     """
-    def __init__(__self__, external_location_info=None, id=None, name=None):
+    def __init__(__self__, external_location_info=None, id=None, name=None, provider_config=None):
         if external_location_info and not isinstance(external_location_info, dict):
             raise TypeError("Expected argument 'external_location_info' to be a dict")
         pulumi.set(__self__, "external_location_info", external_location_info)
@@ -38,6 +38,9 @@ class GetExternalLocationResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if provider_config and not isinstance(provider_config, dict):
+            raise TypeError("Expected argument 'provider_config' to be a dict")
+        pulumi.set(__self__, "provider_config", provider_config)
 
     @_builtins.property
     @pulumi.getter(name="externalLocationInfo")
@@ -60,6 +63,11 @@ class GetExternalLocationResult:
     def name(self) -> _builtins.str:
         return pulumi.get(self, "name")
 
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional['outputs.GetExternalLocationProviderConfigResult']:
+        return pulumi.get(self, "provider_config")
+
 
 class AwaitableGetExternalLocationResult(GetExternalLocationResult):
     # pylint: disable=using-constant-test
@@ -69,12 +77,14 @@ class AwaitableGetExternalLocationResult(GetExternalLocationResult):
         return GetExternalLocationResult(
             external_location_info=self.external_location_info,
             id=self.id,
-            name=self.name)
+            name=self.name,
+            provider_config=self.provider_config)
 
 
 def get_external_location(external_location_info: Optional[Union['GetExternalLocationExternalLocationInfoArgs', 'GetExternalLocationExternalLocationInfoArgsDict']] = None,
                           id: Optional[_builtins.str] = None,
                           name: Optional[_builtins.str] = None,
+                          provider_config: Optional[Union['GetExternalLocationProviderConfigArgs', 'GetExternalLocationProviderConfigArgsDict']] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetExternalLocationResult:
     """
     Retrieves details about a ExternalLocation that were created by Pulumi or manually.
@@ -104,21 +114,25 @@ def get_external_location(external_location_info: Optional[Union['GetExternalLoc
     :param Union['GetExternalLocationExternalLocationInfoArgs', 'GetExternalLocationExternalLocationInfoArgsDict'] external_location_info: array of objects with information about external location:
     :param _builtins.str id: external location ID - same as name.
     :param _builtins.str name: The name of the external location
+    :param Union['GetExternalLocationProviderConfigArgs', 'GetExternalLocationProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     """
     __args__ = dict()
     __args__['externalLocationInfo'] = external_location_info
     __args__['id'] = id
     __args__['name'] = name
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getExternalLocation:getExternalLocation', __args__, opts=opts, typ=GetExternalLocationResult).value
 
     return AwaitableGetExternalLocationResult(
         external_location_info=pulumi.get(__ret__, 'external_location_info'),
         id=pulumi.get(__ret__, 'id'),
-        name=pulumi.get(__ret__, 'name'))
+        name=pulumi.get(__ret__, 'name'),
+        provider_config=pulumi.get(__ret__, 'provider_config'))
 def get_external_location_output(external_location_info: Optional[pulumi.Input[Optional[Union['GetExternalLocationExternalLocationInfoArgs', 'GetExternalLocationExternalLocationInfoArgsDict']]]] = None,
                                  id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                                 provider_config: Optional[pulumi.Input[Optional[Union['GetExternalLocationProviderConfigArgs', 'GetExternalLocationProviderConfigArgsDict']]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetExternalLocationResult]:
     """
     Retrieves details about a ExternalLocation that were created by Pulumi or manually.
@@ -148,14 +162,17 @@ def get_external_location_output(external_location_info: Optional[pulumi.Input[O
     :param Union['GetExternalLocationExternalLocationInfoArgs', 'GetExternalLocationExternalLocationInfoArgsDict'] external_location_info: array of objects with information about external location:
     :param _builtins.str id: external location ID - same as name.
     :param _builtins.str name: The name of the external location
+    :param Union['GetExternalLocationProviderConfigArgs', 'GetExternalLocationProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     """
     __args__ = dict()
     __args__['externalLocationInfo'] = external_location_info
     __args__['id'] = id
     __args__['name'] = name
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getExternalLocation:getExternalLocation', __args__, opts=opts, typ=GetExternalLocationResult)
     return __ret__.apply(lambda __response__: GetExternalLocationResult(
         external_location_info=pulumi.get(__response__, 'external_location_info'),
         id=pulumi.get(__response__, 'id'),
-        name=pulumi.get(__response__, 'name')))
+        name=pulumi.get(__response__, 'name'),
+        provider_config=pulumi.get(__response__, 'provider_config')))

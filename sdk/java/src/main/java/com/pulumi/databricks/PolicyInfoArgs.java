@@ -226,21 +226,6 @@ public final class PolicyInfoArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.whenCondition);
     }
 
-    /**
-     * Workspace ID of the resource
-     * 
-     */
-    @Import(name="workspaceId")
-    private @Nullable Output<String> workspaceId;
-
-    /**
-     * @return Workspace ID of the resource
-     * 
-     */
-    public Optional<Output<String>> workspaceId() {
-        return Optional.ofNullable(this.workspaceId);
-    }
-
     private PolicyInfoArgs() {}
 
     private PolicyInfoArgs(PolicyInfoArgs $) {
@@ -256,7 +241,6 @@ public final class PolicyInfoArgs extends com.pulumi.resources.ResourceArgs {
         this.rowFilter = $.rowFilter;
         this.toPrincipals = $.toPrincipals;
         this.whenCondition = $.whenCondition;
-        this.workspaceId = $.workspaceId;
     }
 
     public static Builder builder() {
@@ -586,27 +570,6 @@ public final class PolicyInfoArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder whenCondition(String whenCondition) {
             return whenCondition(Output.of(whenCondition));
-        }
-
-        /**
-         * @param workspaceId Workspace ID of the resource
-         * 
-         * @return builder
-         * 
-         */
-        public Builder workspaceId(@Nullable Output<String> workspaceId) {
-            $.workspaceId = workspaceId;
-            return this;
-        }
-
-        /**
-         * @param workspaceId Workspace ID of the resource
-         * 
-         * @return builder
-         * 
-         */
-        public Builder workspaceId(String workspaceId) {
-            return workspaceId(Output.of(workspaceId));
         }
 
         public PolicyInfoArgs build() {

@@ -11,6 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+//
 // This data source can be used to fetch the list of Database Instances within the workspace.
 // The list can then be accessed via the data object's `databaseInstances` field.
 //
@@ -52,16 +54,16 @@ func GetDatabaseInstances(ctx *pulumi.Context, args *GetDatabaseInstancesArgs, o
 
 // A collection of arguments for invoking getDatabaseInstances.
 type GetDatabaseInstancesArgs struct {
-	// Workspace ID of the resource
-	WorkspaceId *string `pulumi:"workspaceId"`
+	// Upper bound for items returned
+	PageSize *int `pulumi:"pageSize"`
 }
 
 // A collection of values returned by getDatabaseInstances.
 type GetDatabaseInstancesResult struct {
 	DatabaseInstances []GetDatabaseInstancesDatabaseInstance `pulumi:"databaseInstances"`
 	// The provider-assigned unique ID for this managed resource.
-	Id          string  `pulumi:"id"`
-	WorkspaceId *string `pulumi:"workspaceId"`
+	Id       string `pulumi:"id"`
+	PageSize *int   `pulumi:"pageSize"`
 }
 
 func GetDatabaseInstancesOutput(ctx *pulumi.Context, args GetDatabaseInstancesOutputArgs, opts ...pulumi.InvokeOption) GetDatabaseInstancesResultOutput {
@@ -75,8 +77,8 @@ func GetDatabaseInstancesOutput(ctx *pulumi.Context, args GetDatabaseInstancesOu
 
 // A collection of arguments for invoking getDatabaseInstances.
 type GetDatabaseInstancesOutputArgs struct {
-	// Workspace ID of the resource
-	WorkspaceId pulumi.StringPtrInput `pulumi:"workspaceId"`
+	// Upper bound for items returned
+	PageSize pulumi.IntPtrInput `pulumi:"pageSize"`
 }
 
 func (GetDatabaseInstancesOutputArgs) ElementType() reflect.Type {
@@ -107,8 +109,8 @@ func (o GetDatabaseInstancesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstancesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-func (o GetDatabaseInstancesResultOutput) WorkspaceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetDatabaseInstancesResult) *string { return v.WorkspaceId }).(pulumi.StringPtrOutput)
+func (o GetDatabaseInstancesResultOutput) PageSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesResult) *int { return v.PageSize }).(pulumi.IntPtrOutput)
 }
 
 func init() {

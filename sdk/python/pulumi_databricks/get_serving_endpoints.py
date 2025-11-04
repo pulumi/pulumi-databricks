@@ -28,13 +28,16 @@ class GetServingEndpointsResult:
     """
     A collection of values returned by getServingEndpoints.
     """
-    def __init__(__self__, endpoints=None, id=None):
+    def __init__(__self__, endpoints=None, id=None, provider_config=None):
         if endpoints and not isinstance(endpoints, list):
             raise TypeError("Expected argument 'endpoints' to be a list")
         pulumi.set(__self__, "endpoints", endpoints)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if provider_config and not isinstance(provider_config, dict):
+            raise TypeError("Expected argument 'provider_config' to be a dict")
+        pulumi.set(__self__, "provider_config", provider_config)
 
     @_builtins.property
     @pulumi.getter
@@ -52,6 +55,11 @@ class GetServingEndpointsResult:
         """
         return pulumi.get(self, "id")
 
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional['outputs.GetServingEndpointsProviderConfigResult']:
+        return pulumi.get(self, "provider_config")
+
 
 class AwaitableGetServingEndpointsResult(GetServingEndpointsResult):
     # pylint: disable=using-constant-test
@@ -60,10 +68,12 @@ class AwaitableGetServingEndpointsResult(GetServingEndpointsResult):
             yield self
         return GetServingEndpointsResult(
             endpoints=self.endpoints,
-            id=self.id)
+            id=self.id,
+            provider_config=self.provider_config)
 
 
 def get_serving_endpoints(endpoints: Optional[Sequence[Union['GetServingEndpointsEndpointArgs', 'GetServingEndpointsEndpointArgsDict']]] = None,
+                          provider_config: Optional[Union['GetServingEndpointsProviderConfigArgs', 'GetServingEndpointsProviderConfigArgsDict']] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServingEndpointsResult:
     """
     This resource allows you to get information about [Model Serving](https://docs.databricks.com/machine-learning/model-serving/index.html) endpoints in Databricks.
@@ -108,13 +118,16 @@ def get_serving_endpoints(endpoints: Optional[Sequence[Union['GetServingEndpoint
     """
     __args__ = dict()
     __args__['endpoints'] = endpoints
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getServingEndpoints:getServingEndpoints', __args__, opts=opts, typ=GetServingEndpointsResult).value
 
     return AwaitableGetServingEndpointsResult(
         endpoints=pulumi.get(__ret__, 'endpoints'),
-        id=pulumi.get(__ret__, 'id'))
+        id=pulumi.get(__ret__, 'id'),
+        provider_config=pulumi.get(__ret__, 'provider_config'))
 def get_serving_endpoints_output(endpoints: Optional[pulumi.Input[Optional[Sequence[Union['GetServingEndpointsEndpointArgs', 'GetServingEndpointsEndpointArgsDict']]]]] = None,
+                                 provider_config: Optional[pulumi.Input[Optional[Union['GetServingEndpointsProviderConfigArgs', 'GetServingEndpointsProviderConfigArgsDict']]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServingEndpointsResult]:
     """
     This resource allows you to get information about [Model Serving](https://docs.databricks.com/machine-learning/model-serving/index.html) endpoints in Databricks.
@@ -159,8 +172,10 @@ def get_serving_endpoints_output(endpoints: Optional[pulumi.Input[Optional[Seque
     """
     __args__ = dict()
     __args__['endpoints'] = endpoints
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getServingEndpoints:getServingEndpoints', __args__, opts=opts, typ=GetServingEndpointsResult)
     return __ret__.apply(lambda __response__: GetServingEndpointsResult(
         endpoints=pulumi.get(__response__, 'endpoints'),
-        id=pulumi.get(__response__, 'id')))
+        id=pulumi.get(__response__, 'id'),
+        provider_config=pulumi.get(__response__, 'provider_config')))

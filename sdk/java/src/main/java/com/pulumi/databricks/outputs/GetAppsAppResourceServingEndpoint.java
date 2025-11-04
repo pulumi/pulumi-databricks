@@ -11,7 +11,7 @@ import java.util.Objects;
 @CustomType
 public final class GetAppsAppResourceServingEndpoint {
     /**
-     * @return Name of the serving endpoint to grant permission on.
+     * @return The name of Genie Space.
      * 
      */
     private String name;
@@ -23,7 +23,7 @@ public final class GetAppsAppResourceServingEndpoint {
 
     private GetAppsAppResourceServingEndpoint() {}
     /**
-     * @return Name of the serving endpoint to grant permission on.
+     * @return The name of Genie Space.
      * 
      */
     public String name() {

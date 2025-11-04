@@ -19,9 +19,9 @@ public final class GetAlertV2Evaluation {
      * @return (string) - Operator used for comparison in alert evaluation. Possible values are: `EQUAL`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `IS_NOT_NULL`, `IS_NULL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`
      * 
      */
-    private @Nullable String comparisonOperator;
+    private String comparisonOperator;
     /**
-     * @return (string) - Alert state if result is empty. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
+     * @return (string) - Alert state if result is empty. Please avoid setting this field to be `UNKNOWN` because `UNKNOWN` state is planned to be deprecated. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
      * 
      */
     private @Nullable String emptyResultState;
@@ -39,7 +39,7 @@ public final class GetAlertV2Evaluation {
      * @return (AlertV2OperandColumn) - Source column from result to use to evaluate alert
      * 
      */
-    private @Nullable GetAlertV2EvaluationSource source;
+    private GetAlertV2EvaluationSource source;
     /**
      * @return (string) - Latest state of alert evaluation. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
      * 
@@ -56,11 +56,11 @@ public final class GetAlertV2Evaluation {
      * @return (string) - Operator used for comparison in alert evaluation. Possible values are: `EQUAL`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `IS_NOT_NULL`, `IS_NULL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`
      * 
      */
-    public Optional<String> comparisonOperator() {
-        return Optional.ofNullable(this.comparisonOperator);
+    public String comparisonOperator() {
+        return this.comparisonOperator;
     }
     /**
-     * @return (string) - Alert state if result is empty. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
+     * @return (string) - Alert state if result is empty. Please avoid setting this field to be `UNKNOWN` because `UNKNOWN` state is planned to be deprecated. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
      * 
      */
     public Optional<String> emptyResultState() {
@@ -84,8 +84,8 @@ public final class GetAlertV2Evaluation {
      * @return (AlertV2OperandColumn) - Source column from result to use to evaluate alert
      * 
      */
-    public Optional<GetAlertV2EvaluationSource> source() {
-        return Optional.ofNullable(this.source);
+    public GetAlertV2EvaluationSource source() {
+        return this.source;
     }
     /**
      * @return (string) - Latest state of alert evaluation. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
@@ -111,11 +111,11 @@ public final class GetAlertV2Evaluation {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String comparisonOperator;
+        private String comparisonOperator;
         private @Nullable String emptyResultState;
         private String lastEvaluatedAt;
         private @Nullable GetAlertV2EvaluationNotification notification;
-        private @Nullable GetAlertV2EvaluationSource source;
+        private GetAlertV2EvaluationSource source;
         private String state;
         private @Nullable GetAlertV2EvaluationThreshold threshold;
         public Builder() {}
@@ -131,8 +131,10 @@ public final class GetAlertV2Evaluation {
         }
 
         @CustomType.Setter
-        public Builder comparisonOperator(@Nullable String comparisonOperator) {
-
+        public Builder comparisonOperator(String comparisonOperator) {
+            if (comparisonOperator == null) {
+              throw new MissingRequiredPropertyException("GetAlertV2Evaluation", "comparisonOperator");
+            }
             this.comparisonOperator = comparisonOperator;
             return this;
         }
@@ -157,8 +159,10 @@ public final class GetAlertV2Evaluation {
             return this;
         }
         @CustomType.Setter
-        public Builder source(@Nullable GetAlertV2EvaluationSource source) {
-
+        public Builder source(GetAlertV2EvaluationSource source) {
+            if (source == null) {
+              throw new MissingRequiredPropertyException("GetAlertV2Evaluation", "source");
+            }
             this.source = source;
             return this;
         }

@@ -27,11 +27,23 @@ class LibraryArgs:
                  jar: Optional[pulumi.Input[_builtins.str]] = None,
                  library_id: Optional[pulumi.Input[_builtins.str]] = None,
                  maven: Optional[pulumi.Input['LibraryMavenArgs']] = None,
+                 provider_config: Optional[pulumi.Input['LibraryProviderConfigArgs']] = None,
                  pypi: Optional[pulumi.Input['LibraryPypiArgs']] = None,
                  requirements: Optional[pulumi.Input[_builtins.str]] = None,
                  whl: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Library resource.
+        :param pulumi.Input[_builtins.str] cluster_id: ID of the Cluster to install the library on.
+               
+               You must specify exactly **one** of the following library types:
+        :param pulumi.Input['LibraryCranArgs'] cran: Configuration block for a CRAN library. The block consists of the following fields:
+        :param pulumi.Input[_builtins.str] egg: Path to the EGG library. Installing Python egg files is deprecated and is not supported in Databricks Runtime 14.0 and above. Use `whl` or `pypi` instead.
+        :param pulumi.Input[_builtins.str] jar: Path to the JAR library. Supported URIs include Workspace paths, Unity Catalog Volumes paths, and S3 URIs. For example: `/Workspace/path/to/library.jar`, `/Volumes/path/to/library.jar` or `s3://my-bucket/library.jar`. If S3 is used, make sure the cluster has read access to the library. You may need to launch the cluster with an IAM role to access the S3 URI.
+        :param pulumi.Input['LibraryMavenArgs'] maven: Configuration block for a Maven library. The block consists of the following fields:
+        :param pulumi.Input['LibraryProviderConfigArgs'] provider_config: Configuration block for management through the account provider. This block consists of the following fields:
+        :param pulumi.Input['LibraryPypiArgs'] pypi: Configuration block for a PyPI library. The block consists of the following fields:
+        :param pulumi.Input[_builtins.str] requirements: Path to the requirements.txt file. Only Workspace paths and Unity Catalog Volumes paths are supported. For example: `/Workspace/path/to/requirements.txt` or `/Volumes/path/to/requirements.txt`. Requires a cluster with DBR 15.0+.
+        :param pulumi.Input[_builtins.str] whl: Path to the wheel library. Supported URIs include Workspace paths, Unity Catalog Volumes paths, and S3 URIs. For example: `/Workspace/path/to/library.whl`, `/Volumes/path/to/library.whl` or `s3://my-bucket/library.whl`. If S3 is used, make sure the cluster has read access to the library. You may need to launch the cluster with an IAM role to access the S3 URI.
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
         if cran is not None:
@@ -47,6 +59,8 @@ class LibraryArgs:
             pulumi.set(__self__, "library_id", library_id)
         if maven is not None:
             pulumi.set(__self__, "maven", maven)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if pypi is not None:
             pulumi.set(__self__, "pypi", pypi)
         if requirements is not None:
@@ -57,6 +71,11 @@ class LibraryArgs:
     @_builtins.property
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        ID of the Cluster to install the library on.
+
+        You must specify exactly **one** of the following library types:
+        """
         return pulumi.get(self, "cluster_id")
 
     @cluster_id.setter
@@ -66,6 +85,9 @@ class LibraryArgs:
     @_builtins.property
     @pulumi.getter
     def cran(self) -> Optional[pulumi.Input['LibraryCranArgs']]:
+        """
+        Configuration block for a CRAN library. The block consists of the following fields:
+        """
         return pulumi.get(self, "cran")
 
     @cran.setter
@@ -76,6 +98,9 @@ class LibraryArgs:
     @pulumi.getter
     @_utilities.deprecated("""The `egg` library type is deprecated. Please use `whl` or `pypi` instead.""")
     def egg(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Path to the EGG library. Installing Python egg files is deprecated and is not supported in Databricks Runtime 14.0 and above. Use `whl` or `pypi` instead.
+        """
         return pulumi.get(self, "egg")
 
     @egg.setter
@@ -85,6 +110,9 @@ class LibraryArgs:
     @_builtins.property
     @pulumi.getter
     def jar(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Path to the JAR library. Supported URIs include Workspace paths, Unity Catalog Volumes paths, and S3 URIs. For example: `/Workspace/path/to/library.jar`, `/Volumes/path/to/library.jar` or `s3://my-bucket/library.jar`. If S3 is used, make sure the cluster has read access to the library. You may need to launch the cluster with an IAM role to access the S3 URI.
+        """
         return pulumi.get(self, "jar")
 
     @jar.setter
@@ -103,6 +131,9 @@ class LibraryArgs:
     @_builtins.property
     @pulumi.getter
     def maven(self) -> Optional[pulumi.Input['LibraryMavenArgs']]:
+        """
+        Configuration block for a Maven library. The block consists of the following fields:
+        """
         return pulumi.get(self, "maven")
 
     @maven.setter
@@ -110,8 +141,23 @@ class LibraryArgs:
         pulumi.set(self, "maven", value)
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['LibraryProviderConfigArgs']]:
+        """
+        Configuration block for management through the account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['LibraryProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
+    @_builtins.property
     @pulumi.getter
     def pypi(self) -> Optional[pulumi.Input['LibraryPypiArgs']]:
+        """
+        Configuration block for a PyPI library. The block consists of the following fields:
+        """
         return pulumi.get(self, "pypi")
 
     @pypi.setter
@@ -121,6 +167,9 @@ class LibraryArgs:
     @_builtins.property
     @pulumi.getter
     def requirements(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Path to the requirements.txt file. Only Workspace paths and Unity Catalog Volumes paths are supported. For example: `/Workspace/path/to/requirements.txt` or `/Volumes/path/to/requirements.txt`. Requires a cluster with DBR 15.0+.
+        """
         return pulumi.get(self, "requirements")
 
     @requirements.setter
@@ -130,6 +179,9 @@ class LibraryArgs:
     @_builtins.property
     @pulumi.getter
     def whl(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Path to the wheel library. Supported URIs include Workspace paths, Unity Catalog Volumes paths, and S3 URIs. For example: `/Workspace/path/to/library.whl`, `/Volumes/path/to/library.whl` or `s3://my-bucket/library.whl`. If S3 is used, make sure the cluster has read access to the library. You may need to launch the cluster with an IAM role to access the S3 URI.
+        """
         return pulumi.get(self, "whl")
 
     @whl.setter
@@ -146,11 +198,23 @@ class _LibraryState:
                  jar: Optional[pulumi.Input[_builtins.str]] = None,
                  library_id: Optional[pulumi.Input[_builtins.str]] = None,
                  maven: Optional[pulumi.Input['LibraryMavenArgs']] = None,
+                 provider_config: Optional[pulumi.Input['LibraryProviderConfigArgs']] = None,
                  pypi: Optional[pulumi.Input['LibraryPypiArgs']] = None,
                  requirements: Optional[pulumi.Input[_builtins.str]] = None,
                  whl: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Library resources.
+        :param pulumi.Input[_builtins.str] cluster_id: ID of the Cluster to install the library on.
+               
+               You must specify exactly **one** of the following library types:
+        :param pulumi.Input['LibraryCranArgs'] cran: Configuration block for a CRAN library. The block consists of the following fields:
+        :param pulumi.Input[_builtins.str] egg: Path to the EGG library. Installing Python egg files is deprecated and is not supported in Databricks Runtime 14.0 and above. Use `whl` or `pypi` instead.
+        :param pulumi.Input[_builtins.str] jar: Path to the JAR library. Supported URIs include Workspace paths, Unity Catalog Volumes paths, and S3 URIs. For example: `/Workspace/path/to/library.jar`, `/Volumes/path/to/library.jar` or `s3://my-bucket/library.jar`. If S3 is used, make sure the cluster has read access to the library. You may need to launch the cluster with an IAM role to access the S3 URI.
+        :param pulumi.Input['LibraryMavenArgs'] maven: Configuration block for a Maven library. The block consists of the following fields:
+        :param pulumi.Input['LibraryProviderConfigArgs'] provider_config: Configuration block for management through the account provider. This block consists of the following fields:
+        :param pulumi.Input['LibraryPypiArgs'] pypi: Configuration block for a PyPI library. The block consists of the following fields:
+        :param pulumi.Input[_builtins.str] requirements: Path to the requirements.txt file. Only Workspace paths and Unity Catalog Volumes paths are supported. For example: `/Workspace/path/to/requirements.txt` or `/Volumes/path/to/requirements.txt`. Requires a cluster with DBR 15.0+.
+        :param pulumi.Input[_builtins.str] whl: Path to the wheel library. Supported URIs include Workspace paths, Unity Catalog Volumes paths, and S3 URIs. For example: `/Workspace/path/to/library.whl`, `/Volumes/path/to/library.whl` or `s3://my-bucket/library.whl`. If S3 is used, make sure the cluster has read access to the library. You may need to launch the cluster with an IAM role to access the S3 URI.
         """
         if cluster_id is not None:
             pulumi.set(__self__, "cluster_id", cluster_id)
@@ -167,6 +231,8 @@ class _LibraryState:
             pulumi.set(__self__, "library_id", library_id)
         if maven is not None:
             pulumi.set(__self__, "maven", maven)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if pypi is not None:
             pulumi.set(__self__, "pypi", pypi)
         if requirements is not None:
@@ -177,6 +243,11 @@ class _LibraryState:
     @_builtins.property
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        ID of the Cluster to install the library on.
+
+        You must specify exactly **one** of the following library types:
+        """
         return pulumi.get(self, "cluster_id")
 
     @cluster_id.setter
@@ -186,6 +257,9 @@ class _LibraryState:
     @_builtins.property
     @pulumi.getter
     def cran(self) -> Optional[pulumi.Input['LibraryCranArgs']]:
+        """
+        Configuration block for a CRAN library. The block consists of the following fields:
+        """
         return pulumi.get(self, "cran")
 
     @cran.setter
@@ -196,6 +270,9 @@ class _LibraryState:
     @pulumi.getter
     @_utilities.deprecated("""The `egg` library type is deprecated. Please use `whl` or `pypi` instead.""")
     def egg(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Path to the EGG library. Installing Python egg files is deprecated and is not supported in Databricks Runtime 14.0 and above. Use `whl` or `pypi` instead.
+        """
         return pulumi.get(self, "egg")
 
     @egg.setter
@@ -205,6 +282,9 @@ class _LibraryState:
     @_builtins.property
     @pulumi.getter
     def jar(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Path to the JAR library. Supported URIs include Workspace paths, Unity Catalog Volumes paths, and S3 URIs. For example: `/Workspace/path/to/library.jar`, `/Volumes/path/to/library.jar` or `s3://my-bucket/library.jar`. If S3 is used, make sure the cluster has read access to the library. You may need to launch the cluster with an IAM role to access the S3 URI.
+        """
         return pulumi.get(self, "jar")
 
     @jar.setter
@@ -223,6 +303,9 @@ class _LibraryState:
     @_builtins.property
     @pulumi.getter
     def maven(self) -> Optional[pulumi.Input['LibraryMavenArgs']]:
+        """
+        Configuration block for a Maven library. The block consists of the following fields:
+        """
         return pulumi.get(self, "maven")
 
     @maven.setter
@@ -230,8 +313,23 @@ class _LibraryState:
         pulumi.set(self, "maven", value)
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['LibraryProviderConfigArgs']]:
+        """
+        Configuration block for management through the account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['LibraryProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
+    @_builtins.property
     @pulumi.getter
     def pypi(self) -> Optional[pulumi.Input['LibraryPypiArgs']]:
+        """
+        Configuration block for a PyPI library. The block consists of the following fields:
+        """
         return pulumi.get(self, "pypi")
 
     @pypi.setter
@@ -241,6 +339,9 @@ class _LibraryState:
     @_builtins.property
     @pulumi.getter
     def requirements(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Path to the requirements.txt file. Only Workspace paths and Unity Catalog Volumes paths are supported. For example: `/Workspace/path/to/requirements.txt` or `/Volumes/path/to/requirements.txt`. Requires a cluster with DBR 15.0+.
+        """
         return pulumi.get(self, "requirements")
 
     @requirements.setter
@@ -250,6 +351,9 @@ class _LibraryState:
     @_builtins.property
     @pulumi.getter
     def whl(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Path to the wheel library. Supported URIs include Workspace paths, Unity Catalog Volumes paths, and S3 URIs. For example: `/Workspace/path/to/library.whl`, `/Volumes/path/to/library.whl` or `s3://my-bucket/library.whl`. If S3 is used, make sure the cluster has read access to the library. You may need to launch the cluster with an IAM role to access the S3 URI.
+        """
         return pulumi.get(self, "whl")
 
     @whl.setter
@@ -269,6 +373,7 @@ class Library(pulumi.CustomResource):
                  jar: Optional[pulumi.Input[_builtins.str]] = None,
                  library_id: Optional[pulumi.Input[_builtins.str]] = None,
                  maven: Optional[pulumi.Input[Union['LibraryMavenArgs', 'LibraryMavenArgsDict']]] = None,
+                 provider_config: Optional[pulumi.Input[Union['LibraryProviderConfigArgs', 'LibraryProviderConfigArgsDict']]] = None,
                  pypi: Optional[pulumi.Input[Union['LibraryPypiArgs', 'LibraryPypiArgsDict']]] = None,
                  requirements: Optional[pulumi.Input[_builtins.str]] = None,
                  whl: Optional[pulumi.Input[_builtins.str]] = None,
@@ -382,6 +487,17 @@ class Library(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] cluster_id: ID of the Cluster to install the library on.
+               
+               You must specify exactly **one** of the following library types:
+        :param pulumi.Input[Union['LibraryCranArgs', 'LibraryCranArgsDict']] cran: Configuration block for a CRAN library. The block consists of the following fields:
+        :param pulumi.Input[_builtins.str] egg: Path to the EGG library. Installing Python egg files is deprecated and is not supported in Databricks Runtime 14.0 and above. Use `whl` or `pypi` instead.
+        :param pulumi.Input[_builtins.str] jar: Path to the JAR library. Supported URIs include Workspace paths, Unity Catalog Volumes paths, and S3 URIs. For example: `/Workspace/path/to/library.jar`, `/Volumes/path/to/library.jar` or `s3://my-bucket/library.jar`. If S3 is used, make sure the cluster has read access to the library. You may need to launch the cluster with an IAM role to access the S3 URI.
+        :param pulumi.Input[Union['LibraryMavenArgs', 'LibraryMavenArgsDict']] maven: Configuration block for a Maven library. The block consists of the following fields:
+        :param pulumi.Input[Union['LibraryProviderConfigArgs', 'LibraryProviderConfigArgsDict']] provider_config: Configuration block for management through the account provider. This block consists of the following fields:
+        :param pulumi.Input[Union['LibraryPypiArgs', 'LibraryPypiArgsDict']] pypi: Configuration block for a PyPI library. The block consists of the following fields:
+        :param pulumi.Input[_builtins.str] requirements: Path to the requirements.txt file. Only Workspace paths and Unity Catalog Volumes paths are supported. For example: `/Workspace/path/to/requirements.txt` or `/Volumes/path/to/requirements.txt`. Requires a cluster with DBR 15.0+.
+        :param pulumi.Input[_builtins.str] whl: Path to the wheel library. Supported URIs include Workspace paths, Unity Catalog Volumes paths, and S3 URIs. For example: `/Workspace/path/to/library.whl`, `/Volumes/path/to/library.whl` or `s3://my-bucket/library.whl`. If S3 is used, make sure the cluster has read access to the library. You may need to launch the cluster with an IAM role to access the S3 URI.
         """
         ...
     @overload
@@ -517,6 +633,7 @@ class Library(pulumi.CustomResource):
                  jar: Optional[pulumi.Input[_builtins.str]] = None,
                  library_id: Optional[pulumi.Input[_builtins.str]] = None,
                  maven: Optional[pulumi.Input[Union['LibraryMavenArgs', 'LibraryMavenArgsDict']]] = None,
+                 provider_config: Optional[pulumi.Input[Union['LibraryProviderConfigArgs', 'LibraryProviderConfigArgsDict']]] = None,
                  pypi: Optional[pulumi.Input[Union['LibraryPypiArgs', 'LibraryPypiArgsDict']]] = None,
                  requirements: Optional[pulumi.Input[_builtins.str]] = None,
                  whl: Optional[pulumi.Input[_builtins.str]] = None,
@@ -537,6 +654,7 @@ class Library(pulumi.CustomResource):
             __props__.__dict__["jar"] = jar
             __props__.__dict__["library_id"] = library_id
             __props__.__dict__["maven"] = maven
+            __props__.__dict__["provider_config"] = provider_config
             __props__.__dict__["pypi"] = pypi
             __props__.__dict__["requirements"] = requirements
             __props__.__dict__["whl"] = whl
@@ -556,6 +674,7 @@ class Library(pulumi.CustomResource):
             jar: Optional[pulumi.Input[_builtins.str]] = None,
             library_id: Optional[pulumi.Input[_builtins.str]] = None,
             maven: Optional[pulumi.Input[Union['LibraryMavenArgs', 'LibraryMavenArgsDict']]] = None,
+            provider_config: Optional[pulumi.Input[Union['LibraryProviderConfigArgs', 'LibraryProviderConfigArgsDict']]] = None,
             pypi: Optional[pulumi.Input[Union['LibraryPypiArgs', 'LibraryPypiArgsDict']]] = None,
             requirements: Optional[pulumi.Input[_builtins.str]] = None,
             whl: Optional[pulumi.Input[_builtins.str]] = None) -> 'Library':
@@ -566,6 +685,17 @@ class Library(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] cluster_id: ID of the Cluster to install the library on.
+               
+               You must specify exactly **one** of the following library types:
+        :param pulumi.Input[Union['LibraryCranArgs', 'LibraryCranArgsDict']] cran: Configuration block for a CRAN library. The block consists of the following fields:
+        :param pulumi.Input[_builtins.str] egg: Path to the EGG library. Installing Python egg files is deprecated and is not supported in Databricks Runtime 14.0 and above. Use `whl` or `pypi` instead.
+        :param pulumi.Input[_builtins.str] jar: Path to the JAR library. Supported URIs include Workspace paths, Unity Catalog Volumes paths, and S3 URIs. For example: `/Workspace/path/to/library.jar`, `/Volumes/path/to/library.jar` or `s3://my-bucket/library.jar`. If S3 is used, make sure the cluster has read access to the library. You may need to launch the cluster with an IAM role to access the S3 URI.
+        :param pulumi.Input[Union['LibraryMavenArgs', 'LibraryMavenArgsDict']] maven: Configuration block for a Maven library. The block consists of the following fields:
+        :param pulumi.Input[Union['LibraryProviderConfigArgs', 'LibraryProviderConfigArgsDict']] provider_config: Configuration block for management through the account provider. This block consists of the following fields:
+        :param pulumi.Input[Union['LibraryPypiArgs', 'LibraryPypiArgsDict']] pypi: Configuration block for a PyPI library. The block consists of the following fields:
+        :param pulumi.Input[_builtins.str] requirements: Path to the requirements.txt file. Only Workspace paths and Unity Catalog Volumes paths are supported. For example: `/Workspace/path/to/requirements.txt` or `/Volumes/path/to/requirements.txt`. Requires a cluster with DBR 15.0+.
+        :param pulumi.Input[_builtins.str] whl: Path to the wheel library. Supported URIs include Workspace paths, Unity Catalog Volumes paths, and S3 URIs. For example: `/Workspace/path/to/library.whl`, `/Volumes/path/to/library.whl` or `s3://my-bucket/library.whl`. If S3 is used, make sure the cluster has read access to the library. You may need to launch the cluster with an IAM role to access the S3 URI.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -577,6 +707,7 @@ class Library(pulumi.CustomResource):
         __props__.__dict__["jar"] = jar
         __props__.__dict__["library_id"] = library_id
         __props__.__dict__["maven"] = maven
+        __props__.__dict__["provider_config"] = provider_config
         __props__.__dict__["pypi"] = pypi
         __props__.__dict__["requirements"] = requirements
         __props__.__dict__["whl"] = whl
@@ -585,22 +716,36 @@ class Library(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        ID of the Cluster to install the library on.
+
+        You must specify exactly **one** of the following library types:
+        """
         return pulumi.get(self, "cluster_id")
 
     @_builtins.property
     @pulumi.getter
     def cran(self) -> pulumi.Output[Optional['outputs.LibraryCran']]:
+        """
+        Configuration block for a CRAN library. The block consists of the following fields:
+        """
         return pulumi.get(self, "cran")
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""The `egg` library type is deprecated. Please use `whl` or `pypi` instead.""")
     def egg(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Path to the EGG library. Installing Python egg files is deprecated and is not supported in Databricks Runtime 14.0 and above. Use `whl` or `pypi` instead.
+        """
         return pulumi.get(self, "egg")
 
     @_builtins.property
     @pulumi.getter
     def jar(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Path to the JAR library. Supported URIs include Workspace paths, Unity Catalog Volumes paths, and S3 URIs. For example: `/Workspace/path/to/library.jar`, `/Volumes/path/to/library.jar` or `s3://my-bucket/library.jar`. If S3 is used, make sure the cluster has read access to the library. You may need to launch the cluster with an IAM role to access the S3 URI.
+        """
         return pulumi.get(self, "jar")
 
     @_builtins.property
@@ -611,20 +756,40 @@ class Library(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def maven(self) -> pulumi.Output[Optional['outputs.LibraryMaven']]:
+        """
+        Configuration block for a Maven library. The block consists of the following fields:
+        """
         return pulumi.get(self, "maven")
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> pulumi.Output[Optional['outputs.LibraryProviderConfig']]:
+        """
+        Configuration block for management through the account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
 
     @_builtins.property
     @pulumi.getter
     def pypi(self) -> pulumi.Output[Optional['outputs.LibraryPypi']]:
+        """
+        Configuration block for a PyPI library. The block consists of the following fields:
+        """
         return pulumi.get(self, "pypi")
 
     @_builtins.property
     @pulumi.getter
     def requirements(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Path to the requirements.txt file. Only Workspace paths and Unity Catalog Volumes paths are supported. For example: `/Workspace/path/to/requirements.txt` or `/Volumes/path/to/requirements.txt`. Requires a cluster with DBR 15.0+.
+        """
         return pulumi.get(self, "requirements")
 
     @_builtins.property
     @pulumi.getter
     def whl(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Path to the wheel library. Supported URIs include Workspace paths, Unity Catalog Volumes paths, and S3 URIs. For example: `/Workspace/path/to/library.whl`, `/Volumes/path/to/library.whl` or `s3://my-bucket/library.whl`. If S3 is used, make sure the cluster has read access to the library. You may need to launch the cluster with an IAM role to access the S3 URI.
+        """
         return pulumi.get(self, "whl")
 

@@ -12,6 +12,8 @@ namespace Pulumi.Databricks
     public static class GetExternalMetadatas
     {
         /// <summary>
+        /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
         /// This data source can be used to fetch the list of external metadata objects.
         /// 
         /// &gt; **Note** This resource can only be used with an workspace-level provider!
@@ -37,6 +39,8 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetExternalMetadatasResult>("databricks:index/getExternalMetadatas:getExternalMetadatas", args ?? new GetExternalMetadatasArgs(), options.WithDefaults());
 
         /// <summary>
+        /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
         /// This data source can be used to fetch the list of external metadata objects.
         /// 
         /// &gt; **Note** This resource can only be used with an workspace-level provider!
@@ -62,6 +66,8 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.Invoke<GetExternalMetadatasResult>("databricks:index/getExternalMetadatas:getExternalMetadatas", args ?? new GetExternalMetadatasInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
         /// This data source can be used to fetch the list of external metadata objects.
         /// 
         /// &gt; **Note** This resource can only be used with an workspace-level provider!
@@ -91,10 +97,11 @@ namespace Pulumi.Databricks
     public sealed class GetExternalMetadatasArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Workspace ID of the resource
+        /// Specifies the maximum number of external metadata objects to return in a single response.
+        /// The value must be less than or equal to 1000
         /// </summary>
-        [Input("workspaceId")]
-        public string? WorkspaceId { get; set; }
+        [Input("pageSize")]
+        public int? PageSize { get; set; }
 
         public GetExternalMetadatasArgs()
         {
@@ -105,10 +112,11 @@ namespace Pulumi.Databricks
     public sealed class GetExternalMetadatasInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Workspace ID of the resource
+        /// Specifies the maximum number of external metadata objects to return in a single response.
+        /// The value must be less than or equal to 1000
         /// </summary>
-        [Input("workspaceId")]
-        public Input<string>? WorkspaceId { get; set; }
+        [Input("pageSize")]
+        public Input<int>? PageSize { get; set; }
 
         public GetExternalMetadatasInvokeArgs()
         {
@@ -125,7 +133,7 @@ namespace Pulumi.Databricks
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        public readonly string? WorkspaceId;
+        public readonly int? PageSize;
 
         [OutputConstructor]
         private GetExternalMetadatasResult(
@@ -133,11 +141,11 @@ namespace Pulumi.Databricks
 
             string id,
 
-            string? workspaceId)
+            int? pageSize)
         {
             ExternalMetadatas = externalMetadatas;
             Id = id;
-            WorkspaceId = workspaceId;
+            PageSize = pageSize;
         }
     }
 }

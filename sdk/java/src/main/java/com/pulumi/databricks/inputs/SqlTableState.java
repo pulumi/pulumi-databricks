@@ -220,14 +220,29 @@ public final class SqlTableState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL`, `METRIC_VIEW` or `VIEW`. Change forces the creation of a new resource.
+     * The unique identifier of the table.
+     * 
+     */
+    @Import(name="tableId")
+    private @Nullable Output<String> tableId;
+
+    /**
+     * @return The unique identifier of the table.
+     * 
+     */
+    public Optional<Output<String>> tableId() {
+        return Optional.ofNullable(this.tableId);
+    }
+
+    /**
+     * Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL` or `VIEW`. Change forces the creation of a new resource.
      * 
      */
     @Import(name="tableType")
     private @Nullable Output<String> tableType;
 
     /**
-     * @return Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL`, `METRIC_VIEW` or `VIEW`. Change forces the creation of a new resource.
+     * @return Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL` or `VIEW`. Change forces the creation of a new resource.
      * 
      */
     public Optional<Output<String>> tableType() {
@@ -282,6 +297,7 @@ public final class SqlTableState extends com.pulumi.resources.ResourceArgs {
         this.schemaName = $.schemaName;
         this.storageCredentialName = $.storageCredentialName;
         this.storageLocation = $.storageLocation;
+        this.tableId = $.tableId;
         this.tableType = $.tableType;
         this.viewDefinition = $.viewDefinition;
         this.warehouseId = $.warehouseId;
@@ -609,7 +625,28 @@ public final class SqlTableState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tableType Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL`, `METRIC_VIEW` or `VIEW`. Change forces the creation of a new resource.
+         * @param tableId The unique identifier of the table.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tableId(@Nullable Output<String> tableId) {
+            $.tableId = tableId;
+            return this;
+        }
+
+        /**
+         * @param tableId The unique identifier of the table.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tableId(String tableId) {
+            return tableId(Output.of(tableId));
+        }
+
+        /**
+         * @param tableType Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL` or `VIEW`. Change forces the creation of a new resource.
          * 
          * @return builder
          * 
@@ -620,7 +657,7 @@ public final class SqlTableState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tableType Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL`, `METRIC_VIEW` or `VIEW`. Change forces the creation of a new resource.
+         * @param tableType Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL` or `VIEW`. Change forces the creation of a new resource.
          * 
          * @return builder
          * 

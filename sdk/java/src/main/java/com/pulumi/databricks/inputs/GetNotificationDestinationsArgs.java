@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetNotificationDestinationsProviderConfigArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -28,6 +29,13 @@ public final class GetNotificationDestinationsArgs extends com.pulumi.resources.
      */
     public Optional<Output<String>> displayNameContains() {
         return Optional.ofNullable(this.displayNameContains);
+    }
+
+    @Import(name="providerConfig")
+    private @Nullable Output<GetNotificationDestinationsProviderConfigArgs> providerConfig;
+
+    public Optional<Output<GetNotificationDestinationsProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
     }
 
     /**
@@ -59,6 +67,7 @@ public final class GetNotificationDestinationsArgs extends com.pulumi.resources.
 
     private GetNotificationDestinationsArgs(GetNotificationDestinationsArgs $) {
         this.displayNameContains = $.displayNameContains;
+        this.providerConfig = $.providerConfig;
         this.type = $.type;
     }
 
@@ -99,6 +108,15 @@ public final class GetNotificationDestinationsArgs extends com.pulumi.resources.
          */
         public Builder displayNameContains(String displayNameContains) {
             return displayNameContains(Output.of(displayNameContains));
+        }
+
+        public Builder providerConfig(@Nullable Output<GetNotificationDestinationsProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        public Builder providerConfig(GetNotificationDestinationsProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         /**

@@ -4,6 +4,7 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetVolumeProviderConfig;
 import com.pulumi.databricks.inputs.GetVolumeVolumeInfo;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
@@ -47,6 +48,21 @@ public final class GetVolumePlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable GetVolumeProviderConfig providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Optional<GetVolumeProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
+    /**
      * `VolumeInfo` object for a Unity Catalog volume. This contains the following attributes:
      * 
      */
@@ -66,6 +82,7 @@ public final class GetVolumePlainArgs extends com.pulumi.resources.InvokeArgs {
     private GetVolumePlainArgs(GetVolumePlainArgs $) {
         this.id = $.id;
         this.name = $.name;
+        this.providerConfig = $.providerConfig;
         this.volumeInfo = $.volumeInfo;
     }
 
@@ -106,6 +123,17 @@ public final class GetVolumePlainArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder name(String name) {
             $.name = name;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable GetVolumeProviderConfig providerConfig) {
+            $.providerConfig = providerConfig;
             return this;
         }
 

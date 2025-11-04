@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetSharesResult',
@@ -26,10 +28,13 @@ class GetSharesResult:
     """
     A collection of values returned by getShares.
     """
-    def __init__(__self__, id=None, shares=None):
+    def __init__(__self__, id=None, provider_config=None, shares=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if provider_config and not isinstance(provider_config, dict):
+            raise TypeError("Expected argument 'provider_config' to be a dict")
+        pulumi.set(__self__, "provider_config", provider_config)
         if shares and not isinstance(shares, list):
             raise TypeError("Expected argument 'shares' to be a list")
         pulumi.set(__self__, "shares", shares)
@@ -41,6 +46,11 @@ class GetSharesResult:
         The provider-assigned unique ID for this managed resource.
         """
         return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional['outputs.GetSharesProviderConfigResult']:
+        return pulumi.get(self, "provider_config")
 
     @_builtins.property
     @pulumi.getter
@@ -58,10 +68,12 @@ class AwaitableGetSharesResult(GetSharesResult):
             yield self
         return GetSharesResult(
             id=self.id,
+            provider_config=self.provider_config,
             shares=self.shares)
 
 
-def get_shares(shares: Optional[Sequence[_builtins.str]] = None,
+def get_shares(provider_config: Optional[Union['GetSharesProviderConfigArgs', 'GetSharesProviderConfigArgsDict']] = None,
+               shares: Optional[Sequence[_builtins.str]] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSharesResult:
     """
     Retrieves a list of Share name, that were created by Pulumi or manually.
@@ -89,17 +101,21 @@ def get_shares(shares: Optional[Sequence[_builtins.str]] = None,
     * Grants to manage Delta Sharing permissions.
 
 
+    :param Union['GetSharesProviderConfigArgs', 'GetSharesProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     :param Sequence[_builtins.str] shares: list of Share names.
     """
     __args__ = dict()
+    __args__['providerConfig'] = provider_config
     __args__['shares'] = shares
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getShares:getShares', __args__, opts=opts, typ=GetSharesResult).value
 
     return AwaitableGetSharesResult(
         id=pulumi.get(__ret__, 'id'),
+        provider_config=pulumi.get(__ret__, 'provider_config'),
         shares=pulumi.get(__ret__, 'shares'))
-def get_shares_output(shares: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
+def get_shares_output(provider_config: Optional[pulumi.Input[Optional[Union['GetSharesProviderConfigArgs', 'GetSharesProviderConfigArgsDict']]]] = None,
+                      shares: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSharesResult]:
     """
     Retrieves a list of Share name, that were created by Pulumi or manually.
@@ -127,12 +143,15 @@ def get_shares_output(shares: Optional[pulumi.Input[Optional[Sequence[_builtins.
     * Grants to manage Delta Sharing permissions.
 
 
+    :param Union['GetSharesProviderConfigArgs', 'GetSharesProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     :param Sequence[_builtins.str] shares: list of Share names.
     """
     __args__ = dict()
+    __args__['providerConfig'] = provider_config
     __args__['shares'] = shares
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getShares:getShares', __args__, opts=opts, typ=GetSharesResult)
     return __ret__.apply(lambda __response__: GetSharesResult(
         id=pulumi.get(__response__, 'id'),
+        provider_config=pulumi.get(__response__, 'provider_config'),
         shares=pulumi.get(__response__, 'shares')))

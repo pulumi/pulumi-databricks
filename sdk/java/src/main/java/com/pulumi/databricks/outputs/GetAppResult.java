@@ -5,9 +5,12 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetAppApp;
+import com.pulumi.databricks.outputs.GetAppProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAppResult {
@@ -22,10 +25,11 @@ public final class GetAppResult {
      */
     private String id;
     /**
-     * @return Name of the serving endpoint to grant permission on.
+     * @return The name of Genie Space.
      * 
      */
     private String name;
+    private @Nullable GetAppProviderConfig providerConfig;
 
     private GetAppResult() {}
     /**
@@ -43,11 +47,14 @@ public final class GetAppResult {
         return this.id;
     }
     /**
-     * @return Name of the serving endpoint to grant permission on.
+     * @return The name of Genie Space.
      * 
      */
     public String name() {
         return this.name;
+    }
+    public Optional<GetAppProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
     }
 
     public static Builder builder() {
@@ -62,12 +69,14 @@ public final class GetAppResult {
         private GetAppApp app;
         private String id;
         private String name;
+        private @Nullable GetAppProviderConfig providerConfig;
         public Builder() {}
         public Builder(GetAppResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.app = defaults.app;
     	      this.id = defaults.id;
     	      this.name = defaults.name;
+    	      this.providerConfig = defaults.providerConfig;
         }
 
         @CustomType.Setter
@@ -94,11 +103,18 @@ public final class GetAppResult {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
+        public Builder providerConfig(@Nullable GetAppProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
+            return this;
+        }
         public GetAppResult build() {
             final var _resultValue = new GetAppResult();
             _resultValue.app = app;
             _resultValue.id = id;
             _resultValue.name = name;
+            _resultValue.providerConfig = providerConfig;
             return _resultValue;
         }
     }

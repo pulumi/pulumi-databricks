@@ -47,6 +47,7 @@ class JobArgs:
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input['JobParameterArgs']]]] = None,
                  performance_target: Optional[pulumi.Input[_builtins.str]] = None,
                  pipeline_task: Optional[pulumi.Input['JobPipelineTaskArgs']] = None,
+                 provider_config: Optional[pulumi.Input['JobProviderConfigArgs']] = None,
                  python_wheel_task: Optional[pulumi.Input['JobPythonWheelTaskArgs']] = None,
                  queue: Optional[pulumi.Input['JobQueueArgs']] = None,
                  retry_on_timeout: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -85,6 +86,7 @@ class JobArgs:
         :param pulumi.Input[_builtins.str] performance_target: The performance mode on a serverless job. The performance target determines the level of compute performance or cost-efficiency for the run.  Supported values are:
                * `PERFORMANCE_OPTIMIZED`: (default value) Prioritizes fast startup and execution times through rapid scaling and optimized cluster performance.
                * `STANDARD`: Enables cost-efficient execution of serverless workloads.
+        :param pulumi.Input['JobProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input['JobQueueArgs'] queue: The queue status for the job. See queue Configuration Block below.
         :param pulumi.Input['JobRunAsArgs'] run_as: The user or the service principal the job runs as. See run_as Configuration Block below.
         :param pulumi.Input['JobScheduleArgs'] schedule: An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. See schedule Configuration Block below.
@@ -164,6 +166,8 @@ class JobArgs:
             pulumi.log.warn("""pipeline_task is deprecated: should be used inside a task block and not inside a job block""")
         if pipeline_task is not None:
             pulumi.set(__self__, "pipeline_task", pipeline_task)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if python_wheel_task is not None:
             warnings.warn("""should be used inside a task block and not inside a job block""", DeprecationWarning)
             pulumi.log.warn("""python_wheel_task is deprecated: should be used inside a task block and not inside a job block""")
@@ -509,6 +513,18 @@ class JobArgs:
         pulumi.set(self, "pipeline_task", value)
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['JobProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['JobProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="pythonWheelTask")
     @_utilities.deprecated("""should be used inside a task block and not inside a job block""")
     def python_wheel_task(self) -> Optional[pulumi.Input['JobPythonWheelTaskArgs']]:
@@ -703,6 +719,7 @@ class _JobState:
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input['JobParameterArgs']]]] = None,
                  performance_target: Optional[pulumi.Input[_builtins.str]] = None,
                  pipeline_task: Optional[pulumi.Input['JobPipelineTaskArgs']] = None,
+                 provider_config: Optional[pulumi.Input['JobProviderConfigArgs']] = None,
                  python_wheel_task: Optional[pulumi.Input['JobPythonWheelTaskArgs']] = None,
                  queue: Optional[pulumi.Input['JobQueueArgs']] = None,
                  retry_on_timeout: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -742,6 +759,7 @@ class _JobState:
         :param pulumi.Input[_builtins.str] performance_target: The performance mode on a serverless job. The performance target determines the level of compute performance or cost-efficiency for the run.  Supported values are:
                * `PERFORMANCE_OPTIMIZED`: (default value) Prioritizes fast startup and execution times through rapid scaling and optimized cluster performance.
                * `STANDARD`: Enables cost-efficient execution of serverless workloads.
+        :param pulumi.Input['JobProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input['JobQueueArgs'] queue: The queue status for the job. See queue Configuration Block below.
         :param pulumi.Input['JobRunAsArgs'] run_as: The user or the service principal the job runs as. See run_as Configuration Block below.
         :param pulumi.Input['JobScheduleArgs'] schedule: An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. See schedule Configuration Block below.
@@ -822,6 +840,8 @@ class _JobState:
             pulumi.log.warn("""pipeline_task is deprecated: should be used inside a task block and not inside a job block""")
         if pipeline_task is not None:
             pulumi.set(__self__, "pipeline_task", pipeline_task)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if python_wheel_task is not None:
             warnings.warn("""should be used inside a task block and not inside a job block""", DeprecationWarning)
             pulumi.log.warn("""python_wheel_task is deprecated: should be used inside a task block and not inside a job block""")
@@ -1169,6 +1189,18 @@ class _JobState:
         pulumi.set(self, "pipeline_task", value)
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['JobProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['JobProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="pythonWheelTask")
     @_utilities.deprecated("""should be used inside a task block and not inside a job block""")
     def python_wheel_task(self) -> Optional[pulumi.Input['JobPythonWheelTaskArgs']]:
@@ -1378,6 +1410,7 @@ class Job(pulumi.CustomResource):
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['JobParameterArgs', 'JobParameterArgsDict']]]]] = None,
                  performance_target: Optional[pulumi.Input[_builtins.str]] = None,
                  pipeline_task: Optional[pulumi.Input[Union['JobPipelineTaskArgs', 'JobPipelineTaskArgsDict']]] = None,
+                 provider_config: Optional[pulumi.Input[Union['JobProviderConfigArgs', 'JobProviderConfigArgsDict']]] = None,
                  python_wheel_task: Optional[pulumi.Input[Union['JobPythonWheelTaskArgs', 'JobPythonWheelTaskArgsDict']]] = None,
                  queue: Optional[pulumi.Input[Union['JobQueueArgs', 'JobQueueArgsDict']]] = None,
                  retry_on_timeout: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -1510,6 +1543,7 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] performance_target: The performance mode on a serverless job. The performance target determines the level of compute performance or cost-efficiency for the run.  Supported values are:
                * `PERFORMANCE_OPTIMIZED`: (default value) Prioritizes fast startup and execution times through rapid scaling and optimized cluster performance.
                * `STANDARD`: Enables cost-efficient execution of serverless workloads.
+        :param pulumi.Input[Union['JobProviderConfigArgs', 'JobProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[Union['JobQueueArgs', 'JobQueueArgsDict']] queue: The queue status for the job. See queue Configuration Block below.
         :param pulumi.Input[Union['JobRunAsArgs', 'JobRunAsArgsDict']] run_as: The user or the service principal the job runs as. See run_as Configuration Block below.
         :param pulumi.Input[Union['JobScheduleArgs', 'JobScheduleArgsDict']] schedule: An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. See schedule Configuration Block below.
@@ -1659,6 +1693,7 @@ class Job(pulumi.CustomResource):
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['JobParameterArgs', 'JobParameterArgsDict']]]]] = None,
                  performance_target: Optional[pulumi.Input[_builtins.str]] = None,
                  pipeline_task: Optional[pulumi.Input[Union['JobPipelineTaskArgs', 'JobPipelineTaskArgsDict']]] = None,
+                 provider_config: Optional[pulumi.Input[Union['JobProviderConfigArgs', 'JobProviderConfigArgsDict']]] = None,
                  python_wheel_task: Optional[pulumi.Input[Union['JobPythonWheelTaskArgs', 'JobPythonWheelTaskArgsDict']]] = None,
                  queue: Optional[pulumi.Input[Union['JobQueueArgs', 'JobQueueArgsDict']]] = None,
                  retry_on_timeout: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -1709,6 +1744,7 @@ class Job(pulumi.CustomResource):
             __props__.__dict__["parameters"] = parameters
             __props__.__dict__["performance_target"] = performance_target
             __props__.__dict__["pipeline_task"] = pipeline_task
+            __props__.__dict__["provider_config"] = provider_config
             __props__.__dict__["python_wheel_task"] = python_wheel_task
             __props__.__dict__["queue"] = queue
             __props__.__dict__["retry_on_timeout"] = retry_on_timeout
@@ -1761,6 +1797,7 @@ class Job(pulumi.CustomResource):
             parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['JobParameterArgs', 'JobParameterArgsDict']]]]] = None,
             performance_target: Optional[pulumi.Input[_builtins.str]] = None,
             pipeline_task: Optional[pulumi.Input[Union['JobPipelineTaskArgs', 'JobPipelineTaskArgsDict']]] = None,
+            provider_config: Optional[pulumi.Input[Union['JobProviderConfigArgs', 'JobProviderConfigArgsDict']]] = None,
             python_wheel_task: Optional[pulumi.Input[Union['JobPythonWheelTaskArgs', 'JobPythonWheelTaskArgsDict']]] = None,
             queue: Optional[pulumi.Input[Union['JobQueueArgs', 'JobQueueArgsDict']]] = None,
             retry_on_timeout: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -1805,6 +1842,7 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] performance_target: The performance mode on a serverless job. The performance target determines the level of compute performance or cost-efficiency for the run.  Supported values are:
                * `PERFORMANCE_OPTIMIZED`: (default value) Prioritizes fast startup and execution times through rapid scaling and optimized cluster performance.
                * `STANDARD`: Enables cost-efficient execution of serverless workloads.
+        :param pulumi.Input[Union['JobProviderConfigArgs', 'JobProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[Union['JobQueueArgs', 'JobQueueArgsDict']] queue: The queue status for the job. See queue Configuration Block below.
         :param pulumi.Input[Union['JobRunAsArgs', 'JobRunAsArgsDict']] run_as: The user or the service principal the job runs as. See run_as Configuration Block below.
         :param pulumi.Input[Union['JobScheduleArgs', 'JobScheduleArgsDict']] schedule: An optional periodic schedule for this job. The default behavior is that the job runs when triggered by clicking Run Now in the Jobs UI or sending an API request to runNow. See schedule Configuration Block below.
@@ -1845,6 +1883,7 @@ class Job(pulumi.CustomResource):
         __props__.__dict__["parameters"] = parameters
         __props__.__dict__["performance_target"] = performance_target
         __props__.__dict__["pipeline_task"] = pipeline_task
+        __props__.__dict__["provider_config"] = provider_config
         __props__.__dict__["python_wheel_task"] = python_wheel_task
         __props__.__dict__["queue"] = queue
         __props__.__dict__["retry_on_timeout"] = retry_on_timeout
@@ -2053,6 +2092,14 @@ class Job(pulumi.CustomResource):
     @_utilities.deprecated("""should be used inside a task block and not inside a job block""")
     def pipeline_task(self) -> pulumi.Output[Optional['outputs.JobPipelineTask']]:
         return pulumi.get(self, "pipeline_task")
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> pulumi.Output[Optional['outputs.JobProviderConfig']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
 
     @_builtins.property
     @pulumi.getter(name="pythonWheelTask")

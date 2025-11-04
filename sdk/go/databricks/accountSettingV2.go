@@ -11,6 +11,44 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+//
+// Setting is a configurable value or control that determines how a feature or behavior works within the databricks platform.
+//
+// [//]: # (todo: add public link to metadata api after production doc link available)
+// See settings-metadata api for list of settings that can be modified using this resource.
+//
+// ## Example Usage
+//
+// Getting an account level setting:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewAccountSettingV2(ctx, "this", &databricks.AccountSettingV2Args{
+//				Name: pulumi.String("llm_proxy_partner_powered"),
+//				BooleanVal: &databricks.AccountSettingV2BooleanValArgs{
+//					Value: pulumi.Bool(false),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // As of Pulumi v1.5, resources can be imported through configuration.
@@ -28,23 +66,20 @@ import (
 // If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
 //
 // ```sh
-// $ pulumi import databricks:index/accountSettingV2:AccountSettingV2 databricks_account_setting_v2 "name"
+// $ pulumi import databricks:index/accountSettingV2:AccountSettingV2 this "name"
 // ```
 type AccountSettingV2 struct {
 	pulumi.CustomResourceState
 
-	AibiDashboardEmbeddingAccessPolicy    AccountSettingV2AibiDashboardEmbeddingAccessPolicyPtrOutput    `pulumi:"aibiDashboardEmbeddingAccessPolicy"`
-	AibiDashboardEmbeddingApprovedDomains AccountSettingV2AibiDashboardEmbeddingApprovedDomainsPtrOutput `pulumi:"aibiDashboardEmbeddingApprovedDomains"`
-	// todo: Mark these Public after onboarded to DSL
+	AibiDashboardEmbeddingAccessPolicy             AccountSettingV2AibiDashboardEmbeddingAccessPolicyPtrOutput             `pulumi:"aibiDashboardEmbeddingAccessPolicy"`
+	AibiDashboardEmbeddingApprovedDomains          AccountSettingV2AibiDashboardEmbeddingApprovedDomainsPtrOutput          `pulumi:"aibiDashboardEmbeddingApprovedDomains"`
 	AutomaticClusterUpdateWorkspace                AccountSettingV2AutomaticClusterUpdateWorkspacePtrOutput                `pulumi:"automaticClusterUpdateWorkspace"`
 	BooleanVal                                     AccountSettingV2BooleanValPtrOutput                                     `pulumi:"booleanVal"`
-	DefaultDataSecurityMode                        AccountSettingV2DefaultDataSecurityModePtrOutput                        `pulumi:"defaultDataSecurityMode"`
 	EffectiveAibiDashboardEmbeddingAccessPolicy    AccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyPtrOutput    `pulumi:"effectiveAibiDashboardEmbeddingAccessPolicy"`
 	EffectiveAibiDashboardEmbeddingApprovedDomains AccountSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsPtrOutput `pulumi:"effectiveAibiDashboardEmbeddingApprovedDomains"`
 	EffectiveAutomaticClusterUpdateWorkspace       AccountSettingV2EffectiveAutomaticClusterUpdateWorkspacePtrOutput       `pulumi:"effectiveAutomaticClusterUpdateWorkspace"`
 	// (BooleanMessage)
-	EffectiveBooleanVal              AccountSettingV2EffectiveBooleanValOutput                 `pulumi:"effectiveBooleanVal"`
-	EffectiveDefaultDataSecurityMode AccountSettingV2EffectiveDefaultDataSecurityModePtrOutput `pulumi:"effectiveDefaultDataSecurityMode"`
+	EffectiveBooleanVal AccountSettingV2EffectiveBooleanValOutput `pulumi:"effectiveBooleanVal"`
 	// (IntegerMessage)
 	EffectiveIntegerVal              AccountSettingV2EffectiveIntegerValOutput                 `pulumi:"effectiveIntegerVal"`
 	EffectivePersonalCompute         AccountSettingV2EffectivePersonalComputePtrOutput         `pulumi:"effectivePersonalCompute"`
@@ -89,18 +124,15 @@ func GetAccountSettingV2(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AccountSettingV2 resources.
 type accountSettingV2State struct {
-	AibiDashboardEmbeddingAccessPolicy    *AccountSettingV2AibiDashboardEmbeddingAccessPolicy    `pulumi:"aibiDashboardEmbeddingAccessPolicy"`
-	AibiDashboardEmbeddingApprovedDomains *AccountSettingV2AibiDashboardEmbeddingApprovedDomains `pulumi:"aibiDashboardEmbeddingApprovedDomains"`
-	// todo: Mark these Public after onboarded to DSL
+	AibiDashboardEmbeddingAccessPolicy             *AccountSettingV2AibiDashboardEmbeddingAccessPolicy             `pulumi:"aibiDashboardEmbeddingAccessPolicy"`
+	AibiDashboardEmbeddingApprovedDomains          *AccountSettingV2AibiDashboardEmbeddingApprovedDomains          `pulumi:"aibiDashboardEmbeddingApprovedDomains"`
 	AutomaticClusterUpdateWorkspace                *AccountSettingV2AutomaticClusterUpdateWorkspace                `pulumi:"automaticClusterUpdateWorkspace"`
 	BooleanVal                                     *AccountSettingV2BooleanVal                                     `pulumi:"booleanVal"`
-	DefaultDataSecurityMode                        *AccountSettingV2DefaultDataSecurityMode                        `pulumi:"defaultDataSecurityMode"`
 	EffectiveAibiDashboardEmbeddingAccessPolicy    *AccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy    `pulumi:"effectiveAibiDashboardEmbeddingAccessPolicy"`
 	EffectiveAibiDashboardEmbeddingApprovedDomains *AccountSettingV2EffectiveAibiDashboardEmbeddingApprovedDomains `pulumi:"effectiveAibiDashboardEmbeddingApprovedDomains"`
 	EffectiveAutomaticClusterUpdateWorkspace       *AccountSettingV2EffectiveAutomaticClusterUpdateWorkspace       `pulumi:"effectiveAutomaticClusterUpdateWorkspace"`
 	// (BooleanMessage)
-	EffectiveBooleanVal              *AccountSettingV2EffectiveBooleanVal              `pulumi:"effectiveBooleanVal"`
-	EffectiveDefaultDataSecurityMode *AccountSettingV2EffectiveDefaultDataSecurityMode `pulumi:"effectiveDefaultDataSecurityMode"`
+	EffectiveBooleanVal *AccountSettingV2EffectiveBooleanVal `pulumi:"effectiveBooleanVal"`
 	// (IntegerMessage)
 	EffectiveIntegerVal              *AccountSettingV2EffectiveIntegerVal              `pulumi:"effectiveIntegerVal"`
 	EffectivePersonalCompute         *AccountSettingV2EffectivePersonalCompute         `pulumi:"effectivePersonalCompute"`
@@ -116,18 +148,15 @@ type accountSettingV2State struct {
 }
 
 type AccountSettingV2State struct {
-	AibiDashboardEmbeddingAccessPolicy    AccountSettingV2AibiDashboardEmbeddingAccessPolicyPtrInput
-	AibiDashboardEmbeddingApprovedDomains AccountSettingV2AibiDashboardEmbeddingApprovedDomainsPtrInput
-	// todo: Mark these Public after onboarded to DSL
+	AibiDashboardEmbeddingAccessPolicy             AccountSettingV2AibiDashboardEmbeddingAccessPolicyPtrInput
+	AibiDashboardEmbeddingApprovedDomains          AccountSettingV2AibiDashboardEmbeddingApprovedDomainsPtrInput
 	AutomaticClusterUpdateWorkspace                AccountSettingV2AutomaticClusterUpdateWorkspacePtrInput
 	BooleanVal                                     AccountSettingV2BooleanValPtrInput
-	DefaultDataSecurityMode                        AccountSettingV2DefaultDataSecurityModePtrInput
 	EffectiveAibiDashboardEmbeddingAccessPolicy    AccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyPtrInput
 	EffectiveAibiDashboardEmbeddingApprovedDomains AccountSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsPtrInput
 	EffectiveAutomaticClusterUpdateWorkspace       AccountSettingV2EffectiveAutomaticClusterUpdateWorkspacePtrInput
 	// (BooleanMessage)
-	EffectiveBooleanVal              AccountSettingV2EffectiveBooleanValPtrInput
-	EffectiveDefaultDataSecurityMode AccountSettingV2EffectiveDefaultDataSecurityModePtrInput
+	EffectiveBooleanVal AccountSettingV2EffectiveBooleanValPtrInput
 	// (IntegerMessage)
 	EffectiveIntegerVal              AccountSettingV2EffectiveIntegerValPtrInput
 	EffectivePersonalCompute         AccountSettingV2EffectivePersonalComputePtrInput
@@ -147,16 +176,13 @@ func (AccountSettingV2State) ElementType() reflect.Type {
 }
 
 type accountSettingV2Args struct {
-	AibiDashboardEmbeddingAccessPolicy    *AccountSettingV2AibiDashboardEmbeddingAccessPolicy    `pulumi:"aibiDashboardEmbeddingAccessPolicy"`
-	AibiDashboardEmbeddingApprovedDomains *AccountSettingV2AibiDashboardEmbeddingApprovedDomains `pulumi:"aibiDashboardEmbeddingApprovedDomains"`
-	// todo: Mark these Public after onboarded to DSL
+	AibiDashboardEmbeddingAccessPolicy             *AccountSettingV2AibiDashboardEmbeddingAccessPolicy             `pulumi:"aibiDashboardEmbeddingAccessPolicy"`
+	AibiDashboardEmbeddingApprovedDomains          *AccountSettingV2AibiDashboardEmbeddingApprovedDomains          `pulumi:"aibiDashboardEmbeddingApprovedDomains"`
 	AutomaticClusterUpdateWorkspace                *AccountSettingV2AutomaticClusterUpdateWorkspace                `pulumi:"automaticClusterUpdateWorkspace"`
 	BooleanVal                                     *AccountSettingV2BooleanVal                                     `pulumi:"booleanVal"`
-	DefaultDataSecurityMode                        *AccountSettingV2DefaultDataSecurityMode                        `pulumi:"defaultDataSecurityMode"`
 	EffectiveAibiDashboardEmbeddingAccessPolicy    *AccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy    `pulumi:"effectiveAibiDashboardEmbeddingAccessPolicy"`
 	EffectiveAibiDashboardEmbeddingApprovedDomains *AccountSettingV2EffectiveAibiDashboardEmbeddingApprovedDomains `pulumi:"effectiveAibiDashboardEmbeddingApprovedDomains"`
 	EffectiveAutomaticClusterUpdateWorkspace       *AccountSettingV2EffectiveAutomaticClusterUpdateWorkspace       `pulumi:"effectiveAutomaticClusterUpdateWorkspace"`
-	EffectiveDefaultDataSecurityMode               *AccountSettingV2EffectiveDefaultDataSecurityMode               `pulumi:"effectiveDefaultDataSecurityMode"`
 	EffectivePersonalCompute                       *AccountSettingV2EffectivePersonalCompute                       `pulumi:"effectivePersonalCompute"`
 	EffectiveRestrictWorkspaceAdmins               *AccountSettingV2EffectiveRestrictWorkspaceAdmins               `pulumi:"effectiveRestrictWorkspaceAdmins"`
 	IntegerVal                                     *AccountSettingV2IntegerVal                                     `pulumi:"integerVal"`
@@ -169,16 +195,13 @@ type accountSettingV2Args struct {
 
 // The set of arguments for constructing a AccountSettingV2 resource.
 type AccountSettingV2Args struct {
-	AibiDashboardEmbeddingAccessPolicy    AccountSettingV2AibiDashboardEmbeddingAccessPolicyPtrInput
-	AibiDashboardEmbeddingApprovedDomains AccountSettingV2AibiDashboardEmbeddingApprovedDomainsPtrInput
-	// todo: Mark these Public after onboarded to DSL
+	AibiDashboardEmbeddingAccessPolicy             AccountSettingV2AibiDashboardEmbeddingAccessPolicyPtrInput
+	AibiDashboardEmbeddingApprovedDomains          AccountSettingV2AibiDashboardEmbeddingApprovedDomainsPtrInput
 	AutomaticClusterUpdateWorkspace                AccountSettingV2AutomaticClusterUpdateWorkspacePtrInput
 	BooleanVal                                     AccountSettingV2BooleanValPtrInput
-	DefaultDataSecurityMode                        AccountSettingV2DefaultDataSecurityModePtrInput
 	EffectiveAibiDashboardEmbeddingAccessPolicy    AccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyPtrInput
 	EffectiveAibiDashboardEmbeddingApprovedDomains AccountSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsPtrInput
 	EffectiveAutomaticClusterUpdateWorkspace       AccountSettingV2EffectiveAutomaticClusterUpdateWorkspacePtrInput
-	EffectiveDefaultDataSecurityMode               AccountSettingV2EffectiveDefaultDataSecurityModePtrInput
 	EffectivePersonalCompute                       AccountSettingV2EffectivePersonalComputePtrInput
 	EffectiveRestrictWorkspaceAdmins               AccountSettingV2EffectiveRestrictWorkspaceAdminsPtrInput
 	IntegerVal                                     AccountSettingV2IntegerValPtrInput
@@ -288,7 +311,6 @@ func (o AccountSettingV2Output) AibiDashboardEmbeddingApprovedDomains() AccountS
 	}).(AccountSettingV2AibiDashboardEmbeddingApprovedDomainsPtrOutput)
 }
 
-// todo: Mark these Public after onboarded to DSL
 func (o AccountSettingV2Output) AutomaticClusterUpdateWorkspace() AccountSettingV2AutomaticClusterUpdateWorkspacePtrOutput {
 	return o.ApplyT(func(v *AccountSettingV2) AccountSettingV2AutomaticClusterUpdateWorkspacePtrOutput {
 		return v.AutomaticClusterUpdateWorkspace
@@ -297,12 +319,6 @@ func (o AccountSettingV2Output) AutomaticClusterUpdateWorkspace() AccountSetting
 
 func (o AccountSettingV2Output) BooleanVal() AccountSettingV2BooleanValPtrOutput {
 	return o.ApplyT(func(v *AccountSettingV2) AccountSettingV2BooleanValPtrOutput { return v.BooleanVal }).(AccountSettingV2BooleanValPtrOutput)
-}
-
-func (o AccountSettingV2Output) DefaultDataSecurityMode() AccountSettingV2DefaultDataSecurityModePtrOutput {
-	return o.ApplyT(func(v *AccountSettingV2) AccountSettingV2DefaultDataSecurityModePtrOutput {
-		return v.DefaultDataSecurityMode
-	}).(AccountSettingV2DefaultDataSecurityModePtrOutput)
 }
 
 func (o AccountSettingV2Output) EffectiveAibiDashboardEmbeddingAccessPolicy() AccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyPtrOutput {
@@ -326,12 +342,6 @@ func (o AccountSettingV2Output) EffectiveAutomaticClusterUpdateWorkspace() Accou
 // (BooleanMessage)
 func (o AccountSettingV2Output) EffectiveBooleanVal() AccountSettingV2EffectiveBooleanValOutput {
 	return o.ApplyT(func(v *AccountSettingV2) AccountSettingV2EffectiveBooleanValOutput { return v.EffectiveBooleanVal }).(AccountSettingV2EffectiveBooleanValOutput)
-}
-
-func (o AccountSettingV2Output) EffectiveDefaultDataSecurityMode() AccountSettingV2EffectiveDefaultDataSecurityModePtrOutput {
-	return o.ApplyT(func(v *AccountSettingV2) AccountSettingV2EffectiveDefaultDataSecurityModePtrOutput {
-		return v.EffectiveDefaultDataSecurityMode
-	}).(AccountSettingV2EffectiveDefaultDataSecurityModePtrOutput)
 }
 
 // (IntegerMessage)

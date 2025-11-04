@@ -36,6 +36,7 @@ export function getRegisteredModelVersions(args: GetRegisteredModelVersionsArgs,
     return pulumi.runtime.invoke("databricks:index/getRegisteredModelVersions:getRegisteredModelVersions", {
         "fullName": args.fullName,
         "modelVersions": args.modelVersions,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -51,6 +52,7 @@ export interface GetRegisteredModelVersionsArgs {
      * list of objects describing the model versions. Each object consists of following attributes:
      */
     modelVersions?: inputs.GetRegisteredModelVersionsModelVersion[];
+    providerConfig?: inputs.GetRegisteredModelVersionsProviderConfig;
 }
 
 /**
@@ -69,6 +71,7 @@ export interface GetRegisteredModelVersionsResult {
      * list of objects describing the model versions. Each object consists of following attributes:
      */
     readonly modelVersions: outputs.GetRegisteredModelVersionsModelVersion[];
+    readonly providerConfig?: outputs.GetRegisteredModelVersionsProviderConfig;
 }
 /**
  * This resource allows you to get information about versions of [Model in Unity Catalog](https://docs.databricks.com/en/mlflow/models-in-uc.html).
@@ -100,6 +103,7 @@ export function getRegisteredModelVersionsOutput(args: GetRegisteredModelVersion
     return pulumi.runtime.invokeOutput("databricks:index/getRegisteredModelVersions:getRegisteredModelVersions", {
         "fullName": args.fullName,
         "modelVersions": args.modelVersions,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -115,4 +119,5 @@ export interface GetRegisteredModelVersionsOutputArgs {
      * list of objects describing the model versions. Each object consists of following attributes:
      */
     modelVersions?: pulumi.Input<pulumi.Input<inputs.GetRegisteredModelVersionsModelVersionArgs>[]>;
+    providerConfig?: pulumi.Input<inputs.GetRegisteredModelVersionsProviderConfigArgs>;
 }

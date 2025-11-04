@@ -27,16 +27,16 @@ class GetQualityMonitorsV2Result:
     """
     A collection of values returned by getQualityMonitorsV2.
     """
-    def __init__(__self__, id=None, quality_monitors=None, workspace_id=None):
+    def __init__(__self__, id=None, page_size=None, quality_monitors=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if page_size and not isinstance(page_size, int):
+            raise TypeError("Expected argument 'page_size' to be a int")
+        pulumi.set(__self__, "page_size", page_size)
         if quality_monitors and not isinstance(quality_monitors, list):
             raise TypeError("Expected argument 'quality_monitors' to be a list")
         pulumi.set(__self__, "quality_monitors", quality_monitors)
-        if workspace_id and not isinstance(workspace_id, str):
-            raise TypeError("Expected argument 'workspace_id' to be a str")
-        pulumi.set(__self__, "workspace_id", workspace_id)
 
     @_builtins.property
     @pulumi.getter
@@ -47,14 +47,14 @@ class GetQualityMonitorsV2Result:
         return pulumi.get(self, "id")
 
     @_builtins.property
+    @pulumi.getter(name="pageSize")
+    def page_size(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "page_size")
+
+    @_builtins.property
     @pulumi.getter(name="qualityMonitors")
     def quality_monitors(self) -> Sequence['outputs.GetQualityMonitorsV2QualityMonitorResult']:
         return pulumi.get(self, "quality_monitors")
-
-    @_builtins.property
-    @pulumi.getter(name="workspaceId")
-    def workspace_id(self) -> Optional[_builtins.str]:
-        return pulumi.get(self, "workspace_id")
 
 
 class AwaitableGetQualityMonitorsV2Result(GetQualityMonitorsV2Result):
@@ -64,13 +64,15 @@ class AwaitableGetQualityMonitorsV2Result(GetQualityMonitorsV2Result):
             yield self
         return GetQualityMonitorsV2Result(
             id=self.id,
-            quality_monitors=self.quality_monitors,
-            workspace_id=self.workspace_id)
+            page_size=self.page_size,
+            quality_monitors=self.quality_monitors)
 
 
-def get_quality_monitors_v2(workspace_id: Optional[_builtins.str] = None,
+def get_quality_monitors_v2(page_size: Optional[_builtins.int] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetQualityMonitorsV2Result:
     """
+    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
     This data source can be used to fetch the list of quality monitors v2.
 
     > **Note** This data source can only be used with an workspace-level provider!
@@ -85,22 +87,21 @@ def get_quality_monitors_v2(workspace_id: Optional[_builtins.str] = None,
 
     all = databricks.get_quality_monitors_v2()
     ```
-
-
-    :param _builtins.str workspace_id: Workspace ID of the resource
     """
     __args__ = dict()
-    __args__['workspaceId'] = workspace_id
+    __args__['pageSize'] = page_size
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getQualityMonitorsV2:getQualityMonitorsV2', __args__, opts=opts, typ=GetQualityMonitorsV2Result).value
 
     return AwaitableGetQualityMonitorsV2Result(
         id=pulumi.get(__ret__, 'id'),
-        quality_monitors=pulumi.get(__ret__, 'quality_monitors'),
-        workspace_id=pulumi.get(__ret__, 'workspace_id'))
-def get_quality_monitors_v2_output(workspace_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+        page_size=pulumi.get(__ret__, 'page_size'),
+        quality_monitors=pulumi.get(__ret__, 'quality_monitors'))
+def get_quality_monitors_v2_output(page_size: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetQualityMonitorsV2Result]:
     """
+    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
     This data source can be used to fetch the list of quality monitors v2.
 
     > **Note** This data source can only be used with an workspace-level provider!
@@ -115,15 +116,12 @@ def get_quality_monitors_v2_output(workspace_id: Optional[pulumi.Input[Optional[
 
     all = databricks.get_quality_monitors_v2()
     ```
-
-
-    :param _builtins.str workspace_id: Workspace ID of the resource
     """
     __args__ = dict()
-    __args__['workspaceId'] = workspace_id
+    __args__['pageSize'] = page_size
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getQualityMonitorsV2:getQualityMonitorsV2', __args__, opts=opts, typ=GetQualityMonitorsV2Result)
     return __ret__.apply(lambda __response__: GetQualityMonitorsV2Result(
         id=pulumi.get(__response__, 'id'),
-        quality_monitors=pulumi.get(__response__, 'quality_monitors'),
-        workspace_id=pulumi.get(__response__, 'workspace_id')))
+        page_size=pulumi.get(__response__, 'page_size'),
+        quality_monitors=pulumi.get(__response__, 'quality_monitors')))

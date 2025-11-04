@@ -217,15 +217,23 @@ import javax.annotation.Nullable;
  * When using an account-level provider
  * 
  * ```sh
- * $ pulumi import databricks:index/storageCredential:StorageCredential this &lt;metastore_id&gt;|&lt;storage_credential_name&gt;
+ * $ pulumi import databricks:index/storageCredential:StorageCredential this &#39;&lt;metastore_id&gt;|&lt;storage_credential_name&gt;&#39;
  * ```
  * 
  */
 @ResourceType(type="databricks:index/storageCredential:StorageCredential")
 public class StorageCredential extends com.pulumi.resources.CustomResource {
+    /**
+     * exposes two additional attributes:
+     * 
+     */
     @Export(name="awsIamRole", refs={StorageCredentialAwsIamRole.class}, tree="[0]")
     private Output</* @Nullable */ StorageCredentialAwsIamRole> awsIamRole;
 
+    /**
+     * @return exposes two additional attributes:
+     * 
+     */
     public Output<Optional<StorageCredentialAwsIamRole>> awsIamRole() {
         return Codegen.optional(this.awsIamRole);
     }

@@ -6,6 +6,8 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -15,6 +17,42 @@ import javax.annotation.Nullable;
 public final class GetPolicyInfosArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetPolicyInfosArgs Empty = new GetPolicyInfosArgs();
+
+    /**
+     * Optional. Whether to include policies defined on parent securables.
+     * By default, the inherited policies are not included
+     * 
+     */
+    @Import(name="includeInherited")
+    private @Nullable Output<Boolean> includeInherited;
+
+    /**
+     * @return Optional. Whether to include policies defined on parent securables.
+     * By default, the inherited policies are not included
+     * 
+     */
+    public Optional<Output<Boolean>> includeInherited() {
+        return Optional.ofNullable(this.includeInherited);
+    }
+
+    /**
+     * Optional.  Maximum number of policies to return on a single page (page length).
+     * - When not set or set to 0, the page length is set to a server configured value (recommended);
+     * - When set to a value greater than 0, the page length is the minimum of this value and a server configured value;
+     * 
+     */
+    @Import(name="maxResults")
+    private @Nullable Output<Integer> maxResults;
+
+    /**
+     * @return Optional.  Maximum number of policies to return on a single page (page length).
+     * - When not set or set to 0, the page length is set to a server configured value (recommended);
+     * - When set to a value greater than 0, the page length is the minimum of this value and a server configured value;
+     * 
+     */
+    public Optional<Output<Integer>> maxResults() {
+        return Optional.ofNullable(this.maxResults);
+    }
 
     /**
      * Required. The fully qualified name of securable to list policies for
@@ -46,27 +84,13 @@ public final class GetPolicyInfosArgs extends com.pulumi.resources.InvokeArgs {
         return this.onSecurableType;
     }
 
-    /**
-     * Workspace ID of the resource
-     * 
-     */
-    @Import(name="workspaceId")
-    private @Nullable Output<String> workspaceId;
-
-    /**
-     * @return Workspace ID of the resource
-     * 
-     */
-    public Optional<Output<String>> workspaceId() {
-        return Optional.ofNullable(this.workspaceId);
-    }
-
     private GetPolicyInfosArgs() {}
 
     private GetPolicyInfosArgs(GetPolicyInfosArgs $) {
+        this.includeInherited = $.includeInherited;
+        this.maxResults = $.maxResults;
         this.onSecurableFullname = $.onSecurableFullname;
         this.onSecurableType = $.onSecurableType;
-        this.workspaceId = $.workspaceId;
     }
 
     public static Builder builder() {
@@ -85,6 +109,54 @@ public final class GetPolicyInfosArgs extends com.pulumi.resources.InvokeArgs {
 
         public Builder(GetPolicyInfosArgs defaults) {
             $ = new GetPolicyInfosArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param includeInherited Optional. Whether to include policies defined on parent securables.
+         * By default, the inherited policies are not included
+         * 
+         * @return builder
+         * 
+         */
+        public Builder includeInherited(@Nullable Output<Boolean> includeInherited) {
+            $.includeInherited = includeInherited;
+            return this;
+        }
+
+        /**
+         * @param includeInherited Optional. Whether to include policies defined on parent securables.
+         * By default, the inherited policies are not included
+         * 
+         * @return builder
+         * 
+         */
+        public Builder includeInherited(Boolean includeInherited) {
+            return includeInherited(Output.of(includeInherited));
+        }
+
+        /**
+         * @param maxResults Optional.  Maximum number of policies to return on a single page (page length).
+         * - When not set or set to 0, the page length is set to a server configured value (recommended);
+         * - When set to a value greater than 0, the page length is the minimum of this value and a server configured value;
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxResults(@Nullable Output<Integer> maxResults) {
+            $.maxResults = maxResults;
+            return this;
+        }
+
+        /**
+         * @param maxResults Optional.  Maximum number of policies to return on a single page (page length).
+         * - When not set or set to 0, the page length is set to a server configured value (recommended);
+         * - When set to a value greater than 0, the page length is the minimum of this value and a server configured value;
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxResults(Integer maxResults) {
+            return maxResults(Output.of(maxResults));
         }
 
         /**
@@ -127,27 +199,6 @@ public final class GetPolicyInfosArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder onSecurableType(String onSecurableType) {
             return onSecurableType(Output.of(onSecurableType));
-        }
-
-        /**
-         * @param workspaceId Workspace ID of the resource
-         * 
-         * @return builder
-         * 
-         */
-        public Builder workspaceId(@Nullable Output<String> workspaceId) {
-            $.workspaceId = workspaceId;
-            return this;
-        }
-
-        /**
-         * @param workspaceId Workspace ID of the resource
-         * 
-         * @return builder
-         * 
-         */
-        public Builder workspaceId(String workspaceId) {
-            return workspaceId(Output.of(workspaceId));
         }
 
         public GetPolicyInfosArgs build() {

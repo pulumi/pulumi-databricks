@@ -14,7 +14,6 @@ else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
-from ._inputs import *
 
 __all__ = [
     'GetAlertV2Result',
@@ -28,7 +27,7 @@ class GetAlertV2Result:
     """
     A collection of values returned by getAlertV2.
     """
-    def __init__(__self__, create_time=None, custom_description=None, custom_summary=None, display_name=None, effective_run_as=None, evaluation=None, id=None, lifecycle_state=None, owner_user_name=None, parent_path=None, query_text=None, run_as=None, run_as_user_name=None, schedule=None, update_time=None, warehouse_id=None, workspace_id=None):
+    def __init__(__self__, create_time=None, custom_description=None, custom_summary=None, display_name=None, effective_run_as=None, evaluation=None, id=None, lifecycle_state=None, owner_user_name=None, parent_path=None, query_text=None, run_as=None, run_as_user_name=None, schedule=None, update_time=None, warehouse_id=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -77,9 +76,6 @@ class GetAlertV2Result:
         if warehouse_id and not isinstance(warehouse_id, str):
             raise TypeError("Expected argument 'warehouse_id' to be a str")
         pulumi.set(__self__, "warehouse_id", warehouse_id)
-        if workspace_id and not isinstance(workspace_id, str):
-            raise TypeError("Expected argument 'workspace_id' to be a str")
-        pulumi.set(__self__, "workspace_id", workspace_id)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
@@ -91,7 +87,7 @@ class GetAlertV2Result:
 
     @_builtins.property
     @pulumi.getter(name="customDescription")
-    def custom_description(self) -> Optional[_builtins.str]:
+    def custom_description(self) -> _builtins.str:
         """
         (string) - Custom description for the alert. support mustache template
         """
@@ -99,7 +95,7 @@ class GetAlertV2Result:
 
     @_builtins.property
     @pulumi.getter(name="customSummary")
-    def custom_summary(self) -> Optional[_builtins.str]:
+    def custom_summary(self) -> _builtins.str:
         """
         (string) - Custom summary for the alert. support mustache template
         """
@@ -107,7 +103,7 @@ class GetAlertV2Result:
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[_builtins.str]:
+    def display_name(self) -> _builtins.str:
         """
         (string) - The display name of the alert
         """
@@ -125,7 +121,7 @@ class GetAlertV2Result:
 
     @_builtins.property
     @pulumi.getter
-    def evaluation(self) -> Optional['outputs.GetAlertV2EvaluationResult']:
+    def evaluation(self) -> 'outputs.GetAlertV2EvaluationResult':
         """
         (AlertV2Evaluation)
         """
@@ -143,7 +139,7 @@ class GetAlertV2Result:
     @pulumi.getter(name="lifecycleState")
     def lifecycle_state(self) -> _builtins.str:
         """
-        (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `TRASHED`
+        (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `DELETED`
         """
         return pulumi.get(self, "lifecycle_state")
 
@@ -157,7 +153,7 @@ class GetAlertV2Result:
 
     @_builtins.property
     @pulumi.getter(name="parentPath")
-    def parent_path(self) -> Optional[_builtins.str]:
+    def parent_path(self) -> _builtins.str:
         """
         (string) - The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
         """
@@ -165,7 +161,7 @@ class GetAlertV2Result:
 
     @_builtins.property
     @pulumi.getter(name="queryText")
-    def query_text(self) -> Optional[_builtins.str]:
+    def query_text(self) -> _builtins.str:
         """
         (string) - Text of the query to be run
         """
@@ -173,7 +169,7 @@ class GetAlertV2Result:
 
     @_builtins.property
     @pulumi.getter(name="runAs")
-    def run_as(self) -> Optional['outputs.GetAlertV2RunAsResult']:
+    def run_as(self) -> 'outputs.GetAlertV2RunAsResult':
         """
         (AlertV2RunAs) - Specifies the identity that will be used to run the alert.
         This field allows you to configure alerts to run as a specific user or service principal.
@@ -185,7 +181,7 @@ class GetAlertV2Result:
 
     @_builtins.property
     @pulumi.getter(name="runAsUserName")
-    def run_as_user_name(self) -> Optional[_builtins.str]:
+    def run_as_user_name(self) -> _builtins.str:
         """
         (string, deprecated) - The run as username or application ID of service principal.
         On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
@@ -195,7 +191,7 @@ class GetAlertV2Result:
 
     @_builtins.property
     @pulumi.getter
-    def schedule(self) -> Optional['outputs.GetAlertV2ScheduleResult']:
+    def schedule(self) -> 'outputs.GetAlertV2ScheduleResult':
         """
         (CronSchedule)
         """
@@ -211,16 +207,11 @@ class GetAlertV2Result:
 
     @_builtins.property
     @pulumi.getter(name="warehouseId")
-    def warehouse_id(self) -> Optional[_builtins.str]:
+    def warehouse_id(self) -> _builtins.str:
         """
         (string) - ID of the SQL warehouse attached to the alert
         """
         return pulumi.get(self, "warehouse_id")
-
-    @_builtins.property
-    @pulumi.getter(name="workspaceId")
-    def workspace_id(self) -> Optional[_builtins.str]:
-        return pulumi.get(self, "workspace_id")
 
 
 class AwaitableGetAlertV2Result(GetAlertV2Result):
@@ -244,23 +235,14 @@ class AwaitableGetAlertV2Result(GetAlertV2Result):
             run_as_user_name=self.run_as_user_name,
             schedule=self.schedule,
             update_time=self.update_time,
-            warehouse_id=self.warehouse_id,
-            workspace_id=self.workspace_id)
+            warehouse_id=self.warehouse_id)
 
 
-def get_alert_v2(custom_description: Optional[_builtins.str] = None,
-                 custom_summary: Optional[_builtins.str] = None,
-                 display_name: Optional[_builtins.str] = None,
-                 evaluation: Optional[Union['GetAlertV2EvaluationArgs', 'GetAlertV2EvaluationArgsDict']] = None,
-                 parent_path: Optional[_builtins.str] = None,
-                 query_text: Optional[_builtins.str] = None,
-                 run_as: Optional[Union['GetAlertV2RunAsArgs', 'GetAlertV2RunAsArgsDict']] = None,
-                 run_as_user_name: Optional[_builtins.str] = None,
-                 schedule: Optional[Union['GetAlertV2ScheduleArgs', 'GetAlertV2ScheduleArgsDict']] = None,
-                 warehouse_id: Optional[_builtins.str] = None,
-                 workspace_id: Optional[_builtins.str] = None,
+def get_alert_v2(id: Optional[_builtins.str] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAlertV2Result:
     """
+    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
     The SQL Alert v2 data source allows you to retrieve detailed information about a specific alert in Databricks SQL. This data source provides access to all alert properties, including its configuration, evaluation criteria, notification settings, and schedule.
 
     You can use this data source to:
@@ -274,37 +256,18 @@ def get_alert_v2(custom_description: Optional[_builtins.str] = None,
     ### Retrieve Alert by ID
     This example retrieves a specific alert by its ID:
 
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
 
-    :param _builtins.str custom_description: (string) - Custom description for the alert. support mustache template
-    :param _builtins.str custom_summary: (string) - Custom summary for the alert. support mustache template
-    :param _builtins.str display_name: (string) - The display name of the alert
-    :param Union['GetAlertV2EvaluationArgs', 'GetAlertV2EvaluationArgsDict'] evaluation: (AlertV2Evaluation)
-    :param _builtins.str parent_path: (string) - The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
-    :param _builtins.str query_text: (string) - Text of the query to be run
-    :param Union['GetAlertV2RunAsArgs', 'GetAlertV2RunAsArgsDict'] run_as: (AlertV2RunAs) - Specifies the identity that will be used to run the alert.
-           This field allows you to configure alerts to run as a specific user or service principal.
-           - For user identity: Set `user_name` to the email of an active workspace user. Users can only set this to their own email.
-           - For service principal: Set `service_principal_name` to the application ID. Requires the `servicePrincipal/user` role.
-           If not specified, the alert will run as the request user
-    :param _builtins.str run_as_user_name: (string, deprecated) - The run as username or application ID of service principal.
-           On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
-           Deprecated: Use `run_as` field instead. This field will be removed in a future release
-    :param Union['GetAlertV2ScheduleArgs', 'GetAlertV2ScheduleArgsDict'] schedule: (CronSchedule)
-    :param _builtins.str warehouse_id: (string) - ID of the SQL warehouse attached to the alert
-    :param _builtins.str workspace_id: Workspace ID of the resource
+    this = databricks.get_alert_v2(id="123")
+    ```
+
+
+    :param _builtins.str id: UUID identifying the alert
     """
     __args__ = dict()
-    __args__['customDescription'] = custom_description
-    __args__['customSummary'] = custom_summary
-    __args__['displayName'] = display_name
-    __args__['evaluation'] = evaluation
-    __args__['parentPath'] = parent_path
-    __args__['queryText'] = query_text
-    __args__['runAs'] = run_as
-    __args__['runAsUserName'] = run_as_user_name
-    __args__['schedule'] = schedule
-    __args__['warehouseId'] = warehouse_id
-    __args__['workspaceId'] = workspace_id
+    __args__['id'] = id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getAlertV2:getAlertV2', __args__, opts=opts, typ=GetAlertV2Result).value
 
@@ -324,21 +287,12 @@ def get_alert_v2(custom_description: Optional[_builtins.str] = None,
         run_as_user_name=pulumi.get(__ret__, 'run_as_user_name'),
         schedule=pulumi.get(__ret__, 'schedule'),
         update_time=pulumi.get(__ret__, 'update_time'),
-        warehouse_id=pulumi.get(__ret__, 'warehouse_id'),
-        workspace_id=pulumi.get(__ret__, 'workspace_id'))
-def get_alert_v2_output(custom_description: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                        custom_summary: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                        display_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                        evaluation: Optional[pulumi.Input[Optional[Union['GetAlertV2EvaluationArgs', 'GetAlertV2EvaluationArgsDict']]]] = None,
-                        parent_path: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                        query_text: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                        run_as: Optional[pulumi.Input[Optional[Union['GetAlertV2RunAsArgs', 'GetAlertV2RunAsArgsDict']]]] = None,
-                        run_as_user_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                        schedule: Optional[pulumi.Input[Optional[Union['GetAlertV2ScheduleArgs', 'GetAlertV2ScheduleArgsDict']]]] = None,
-                        warehouse_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                        workspace_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+        warehouse_id=pulumi.get(__ret__, 'warehouse_id'))
+def get_alert_v2_output(id: Optional[pulumi.Input[_builtins.str]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAlertV2Result]:
     """
+    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
     The SQL Alert v2 data source allows you to retrieve detailed information about a specific alert in Databricks SQL. This data source provides access to all alert properties, including its configuration, evaluation criteria, notification settings, and schedule.
 
     You can use this data source to:
@@ -352,37 +306,18 @@ def get_alert_v2_output(custom_description: Optional[pulumi.Input[Optional[_buil
     ### Retrieve Alert by ID
     This example retrieves a specific alert by its ID:
 
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
 
-    :param _builtins.str custom_description: (string) - Custom description for the alert. support mustache template
-    :param _builtins.str custom_summary: (string) - Custom summary for the alert. support mustache template
-    :param _builtins.str display_name: (string) - The display name of the alert
-    :param Union['GetAlertV2EvaluationArgs', 'GetAlertV2EvaluationArgsDict'] evaluation: (AlertV2Evaluation)
-    :param _builtins.str parent_path: (string) - The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
-    :param _builtins.str query_text: (string) - Text of the query to be run
-    :param Union['GetAlertV2RunAsArgs', 'GetAlertV2RunAsArgsDict'] run_as: (AlertV2RunAs) - Specifies the identity that will be used to run the alert.
-           This field allows you to configure alerts to run as a specific user or service principal.
-           - For user identity: Set `user_name` to the email of an active workspace user. Users can only set this to their own email.
-           - For service principal: Set `service_principal_name` to the application ID. Requires the `servicePrincipal/user` role.
-           If not specified, the alert will run as the request user
-    :param _builtins.str run_as_user_name: (string, deprecated) - The run as username or application ID of service principal.
-           On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
-           Deprecated: Use `run_as` field instead. This field will be removed in a future release
-    :param Union['GetAlertV2ScheduleArgs', 'GetAlertV2ScheduleArgsDict'] schedule: (CronSchedule)
-    :param _builtins.str warehouse_id: (string) - ID of the SQL warehouse attached to the alert
-    :param _builtins.str workspace_id: Workspace ID of the resource
+    this = databricks.get_alert_v2(id="123")
+    ```
+
+
+    :param _builtins.str id: UUID identifying the alert
     """
     __args__ = dict()
-    __args__['customDescription'] = custom_description
-    __args__['customSummary'] = custom_summary
-    __args__['displayName'] = display_name
-    __args__['evaluation'] = evaluation
-    __args__['parentPath'] = parent_path
-    __args__['queryText'] = query_text
-    __args__['runAs'] = run_as
-    __args__['runAsUserName'] = run_as_user_name
-    __args__['schedule'] = schedule
-    __args__['warehouseId'] = warehouse_id
-    __args__['workspaceId'] = workspace_id
+    __args__['id'] = id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getAlertV2:getAlertV2', __args__, opts=opts, typ=GetAlertV2Result)
     return __ret__.apply(lambda __response__: GetAlertV2Result(
@@ -401,5 +336,4 @@ def get_alert_v2_output(custom_description: Optional[pulumi.Input[Optional[_buil
         run_as_user_name=pulumi.get(__response__, 'run_as_user_name'),
         schedule=pulumi.get(__response__, 'schedule'),
         update_time=pulumi.get(__response__, 'update_time'),
-        warehouse_id=pulumi.get(__response__, 'warehouse_id'),
-        workspace_id=pulumi.get(__response__, 'workspace_id')))
+        warehouse_id=pulumi.get(__response__, 'warehouse_id')))

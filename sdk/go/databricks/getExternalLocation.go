@@ -68,6 +68,8 @@ type LookupExternalLocationArgs struct {
 	Id *string `pulumi:"id"`
 	// The name of the external location
 	Name string `pulumi:"name"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *GetExternalLocationProviderConfig `pulumi:"providerConfig"`
 }
 
 // A collection of values returned by getExternalLocation.
@@ -75,8 +77,9 @@ type LookupExternalLocationResult struct {
 	// array of objects with information about external location:
 	ExternalLocationInfo GetExternalLocationExternalLocationInfo `pulumi:"externalLocationInfo"`
 	// external location ID - same as name.
-	Id   string `pulumi:"id"`
-	Name string `pulumi:"name"`
+	Id             string                             `pulumi:"id"`
+	Name           string                             `pulumi:"name"`
+	ProviderConfig *GetExternalLocationProviderConfig `pulumi:"providerConfig"`
 }
 
 func LookupExternalLocationOutput(ctx *pulumi.Context, args LookupExternalLocationOutputArgs, opts ...pulumi.InvokeOption) LookupExternalLocationResultOutput {
@@ -96,6 +99,8 @@ type LookupExternalLocationOutputArgs struct {
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// The name of the external location
 	Name pulumi.StringInput `pulumi:"name"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig GetExternalLocationProviderConfigPtrInput `pulumi:"providerConfig"`
 }
 
 func (LookupExternalLocationOutputArgs) ElementType() reflect.Type {
@@ -131,6 +136,10 @@ func (o LookupExternalLocationResultOutput) Id() pulumi.StringOutput {
 
 func (o LookupExternalLocationResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupExternalLocationResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupExternalLocationResultOutput) ProviderConfig() GetExternalLocationProviderConfigPtrOutput {
+	return o.ApplyT(func(v LookupExternalLocationResult) *GetExternalLocationProviderConfig { return v.ProviderConfig }).(GetExternalLocationProviderConfigPtrOutput)
 }
 
 func init() {

@@ -13,6 +13,7 @@ import com.pulumi.databricks.inputs.GetClusterClusterInfoSpecDockerImage;
 import com.pulumi.databricks.inputs.GetClusterClusterInfoSpecGcpAttributes;
 import com.pulumi.databricks.inputs.GetClusterClusterInfoSpecInitScript;
 import com.pulumi.databricks.inputs.GetClusterClusterInfoSpecLibrary;
+import com.pulumi.databricks.inputs.GetClusterClusterInfoSpecProviderConfig;
 import com.pulumi.databricks.inputs.GetClusterClusterInfoSpecWorkloadType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
@@ -300,6 +301,21 @@ public final class GetClusterClusterInfoSpec extends com.pulumi.resources.Invoke
         return Optional.ofNullable(this.policyId);
     }
 
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable GetClusterClusterInfoSpecProviderConfig providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Optional<GetClusterClusterInfoSpecProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     @Import(name="remoteDiskThroughput")
     private @Nullable Integer remoteDiskThroughput;
 
@@ -446,6 +462,7 @@ public final class GetClusterClusterInfoSpec extends com.pulumi.resources.Invoke
         this.nodeTypeId = $.nodeTypeId;
         this.numWorkers = $.numWorkers;
         this.policyId = $.policyId;
+        this.providerConfig = $.providerConfig;
         this.remoteDiskThroughput = $.remoteDiskThroughput;
         this.runtimeEngine = $.runtimeEngine;
         this.singleUserName = $.singleUserName;
@@ -682,6 +699,17 @@ public final class GetClusterClusterInfoSpec extends com.pulumi.resources.Invoke
          */
         public Builder policyId(@Nullable String policyId) {
             $.policyId = policyId;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable GetClusterClusterInfoSpecProviderConfig providerConfig) {
+            $.providerConfig = providerConfig;
             return this;
         }
 

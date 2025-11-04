@@ -153,6 +153,8 @@ type GetJobsArgs struct {
 	JobNameContains *string `pulumi:"jobNameContains"`
 	// Attribute to use for keys in the returned map of Job ids by. Possible values are `name` (default) or `id`. Setting to `id` uses the job ID as the map key, allowing duplicate job names.
 	Key *string `pulumi:"key"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *GetJobsProviderConfig `pulumi:"providerConfig"`
 }
 
 // A collection of values returned by getJobs.
@@ -160,9 +162,10 @@ type GetJobsResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// map of Job names to ids
-	Ids             map[string]string `pulumi:"ids"`
-	JobNameContains *string           `pulumi:"jobNameContains"`
-	Key             *string           `pulumi:"key"`
+	Ids             map[string]string      `pulumi:"ids"`
+	JobNameContains *string                `pulumi:"jobNameContains"`
+	Key             *string                `pulumi:"key"`
+	ProviderConfig  *GetJobsProviderConfig `pulumi:"providerConfig"`
 }
 
 func GetJobsOutput(ctx *pulumi.Context, args GetJobsOutputArgs, opts ...pulumi.InvokeOption) GetJobsResultOutput {
@@ -182,6 +185,8 @@ type GetJobsOutputArgs struct {
 	JobNameContains pulumi.StringPtrInput `pulumi:"jobNameContains"`
 	// Attribute to use for keys in the returned map of Job ids by. Possible values are `name` (default) or `id`. Setting to `id` uses the job ID as the map key, allowing duplicate job names.
 	Key pulumi.StringPtrInput `pulumi:"key"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig GetJobsProviderConfigPtrInput `pulumi:"providerConfig"`
 }
 
 func (GetJobsOutputArgs) ElementType() reflect.Type {
@@ -219,6 +224,10 @@ func (o GetJobsResultOutput) JobNameContains() pulumi.StringPtrOutput {
 
 func (o GetJobsResultOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetJobsResult) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+func (o GetJobsResultOutput) ProviderConfig() GetJobsProviderConfigPtrOutput {
+	return o.ApplyT(func(v GetJobsResult) *GetJobsProviderConfig { return v.ProviderConfig }).(GetJobsProviderConfigPtrOutput)
 }
 
 func init() {

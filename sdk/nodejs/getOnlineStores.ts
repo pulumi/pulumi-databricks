@@ -6,11 +6,14 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ */
 export function getOnlineStores(args?: GetOnlineStoresArgs, opts?: pulumi.InvokeOptions): Promise<GetOnlineStoresResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getOnlineStores:getOnlineStores", {
-        "workspaceId": args.workspaceId,
+        "pageSize": args.pageSize,
     }, opts);
 }
 
@@ -19,9 +22,9 @@ export function getOnlineStores(args?: GetOnlineStoresArgs, opts?: pulumi.Invoke
  */
 export interface GetOnlineStoresArgs {
     /**
-     * Workspace ID of the resource
+     * The maximum number of results to return. Defaults to 100 if not specified
      */
-    workspaceId?: string;
+    pageSize?: number;
 }
 
 /**
@@ -33,13 +36,16 @@ export interface GetOnlineStoresResult {
      */
     readonly id: string;
     readonly onlineStores: outputs.GetOnlineStoresOnlineStore[];
-    readonly workspaceId?: string;
+    readonly pageSize?: number;
 }
+/**
+ * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ */
 export function getOnlineStoresOutput(args?: GetOnlineStoresOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetOnlineStoresResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getOnlineStores:getOnlineStores", {
-        "workspaceId": args.workspaceId,
+        "pageSize": args.pageSize,
     }, opts);
 }
 
@@ -48,7 +54,7 @@ export function getOnlineStoresOutput(args?: GetOnlineStoresOutputArgs, opts?: p
  */
 export interface GetOnlineStoresOutputArgs {
     /**
-     * Workspace ID of the resource
+     * The maximum number of results to return. Defaults to 100 if not specified
      */
-    workspaceId?: pulumi.Input<string>;
+    pageSize?: pulumi.Input<number>;
 }

@@ -5,9 +5,12 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetCatalogCatalogInfo;
+import com.pulumi.databricks.outputs.GetCatalogProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetCatalogResult {
@@ -26,6 +29,7 @@ public final class GetCatalogResult {
      * 
      */
     private String name;
+    private @Nullable GetCatalogProviderConfig providerConfig;
 
     private GetCatalogResult() {}
     /**
@@ -49,6 +53,9 @@ public final class GetCatalogResult {
     public String name() {
         return this.name;
     }
+    public Optional<GetCatalogProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -62,12 +69,14 @@ public final class GetCatalogResult {
         private GetCatalogCatalogInfo catalogInfo;
         private String id;
         private String name;
+        private @Nullable GetCatalogProviderConfig providerConfig;
         public Builder() {}
         public Builder(GetCatalogResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.catalogInfo = defaults.catalogInfo;
     	      this.id = defaults.id;
     	      this.name = defaults.name;
+    	      this.providerConfig = defaults.providerConfig;
         }
 
         @CustomType.Setter
@@ -94,11 +103,18 @@ public final class GetCatalogResult {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
+        public Builder providerConfig(@Nullable GetCatalogProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
+            return this;
+        }
         public GetCatalogResult build() {
             final var _resultValue = new GetCatalogResult();
             _resultValue.catalogInfo = catalogInfo;
             _resultValue.id = id;
             _resultValue.name = name;
+            _resultValue.providerConfig = providerConfig;
             return _resultValue;
         }
     }

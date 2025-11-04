@@ -7,8 +7,6 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetMaterializedFeaturesFeatureTagResult {
@@ -26,8 +24,7 @@ public final class GetMaterializedFeaturesFeatureTagResult {
      * @return (string)
      * 
      */
-    private @Nullable String value;
-    private @Nullable String workspaceId;
+    private String value;
 
     private GetMaterializedFeaturesFeatureTagResult() {}
     /**
@@ -48,11 +45,8 @@ public final class GetMaterializedFeaturesFeatureTagResult {
      * @return (string)
      * 
      */
-    public Optional<String> value() {
-        return Optional.ofNullable(this.value);
-    }
-    public Optional<String> workspaceId() {
-        return Optional.ofNullable(this.workspaceId);
+    public String value() {
+        return this.value;
     }
 
     public static Builder builder() {
@@ -66,15 +60,13 @@ public final class GetMaterializedFeaturesFeatureTagResult {
     public static final class Builder {
         private String id;
         private String key;
-        private @Nullable String value;
-        private @Nullable String workspaceId;
+        private String value;
         public Builder() {}
         public Builder(GetMaterializedFeaturesFeatureTagResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
     	      this.key = defaults.key;
     	      this.value = defaults.value;
-    	      this.workspaceId = defaults.workspaceId;
         }
 
         @CustomType.Setter
@@ -94,15 +86,11 @@ public final class GetMaterializedFeaturesFeatureTagResult {
             return this;
         }
         @CustomType.Setter
-        public Builder value(@Nullable String value) {
-
+        public Builder value(String value) {
+            if (value == null) {
+              throw new MissingRequiredPropertyException("GetMaterializedFeaturesFeatureTagResult", "value");
+            }
             this.value = value;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder workspaceId(@Nullable String workspaceId) {
-
-            this.workspaceId = workspaceId;
             return this;
         }
         public GetMaterializedFeaturesFeatureTagResult build() {
@@ -110,7 +98,6 @@ public final class GetMaterializedFeaturesFeatureTagResult {
             _resultValue.id = id;
             _resultValue.key = key;
             _resultValue.value = value;
-            _resultValue.workspaceId = workspaceId;
             return _resultValue;
         }
     }

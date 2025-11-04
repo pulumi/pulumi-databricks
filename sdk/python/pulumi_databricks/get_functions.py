@@ -28,7 +28,7 @@ class GetFunctionsResult:
     """
     A collection of values returned by getFunctions.
     """
-    def __init__(__self__, catalog_name=None, functions=None, id=None, include_browse=None, schema_name=None):
+    def __init__(__self__, catalog_name=None, functions=None, id=None, include_browse=None, provider_config=None, schema_name=None):
         if catalog_name and not isinstance(catalog_name, str):
             raise TypeError("Expected argument 'catalog_name' to be a str")
         pulumi.set(__self__, "catalog_name", catalog_name)
@@ -41,6 +41,9 @@ class GetFunctionsResult:
         if include_browse and not isinstance(include_browse, bool):
             raise TypeError("Expected argument 'include_browse' to be a bool")
         pulumi.set(__self__, "include_browse", include_browse)
+        if provider_config and not isinstance(provider_config, dict):
+            raise TypeError("Expected argument 'provider_config' to be a dict")
+        pulumi.set(__self__, "provider_config", provider_config)
         if schema_name and not isinstance(schema_name, str):
             raise TypeError("Expected argument 'schema_name' to be a str")
         pulumi.set(__self__, "schema_name", schema_name)
@@ -75,6 +78,11 @@ class GetFunctionsResult:
         return pulumi.get(self, "include_browse")
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional['outputs.GetFunctionsProviderConfigResult']:
+        return pulumi.get(self, "provider_config")
+
+    @_builtins.property
     @pulumi.getter(name="schemaName")
     def schema_name(self) -> _builtins.str:
         """
@@ -93,12 +101,14 @@ class AwaitableGetFunctionsResult(GetFunctionsResult):
             functions=self.functions,
             id=self.id,
             include_browse=self.include_browse,
+            provider_config=self.provider_config,
             schema_name=self.schema_name)
 
 
 def get_functions(catalog_name: Optional[_builtins.str] = None,
                   functions: Optional[Sequence[Union['GetFunctionsFunctionArgs', 'GetFunctionsFunctionArgsDict']]] = None,
                   include_browse: Optional[_builtins.bool] = None,
+                  provider_config: Optional[Union['GetFunctionsProviderConfigArgs', 'GetFunctionsProviderConfigArgsDict']] = None,
                   schema_name: Optional[_builtins.str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFunctionsResult:
     """
@@ -135,6 +145,7 @@ def get_functions(catalog_name: Optional[_builtins.str] = None,
     __args__['catalogName'] = catalog_name
     __args__['functions'] = functions
     __args__['includeBrowse'] = include_browse
+    __args__['providerConfig'] = provider_config
     __args__['schemaName'] = schema_name
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getFunctions:getFunctions', __args__, opts=opts, typ=GetFunctionsResult).value
@@ -144,10 +155,12 @@ def get_functions(catalog_name: Optional[_builtins.str] = None,
         functions=pulumi.get(__ret__, 'functions'),
         id=pulumi.get(__ret__, 'id'),
         include_browse=pulumi.get(__ret__, 'include_browse'),
+        provider_config=pulumi.get(__ret__, 'provider_config'),
         schema_name=pulumi.get(__ret__, 'schema_name'))
 def get_functions_output(catalog_name: Optional[pulumi.Input[_builtins.str]] = None,
                          functions: Optional[pulumi.Input[Optional[Sequence[Union['GetFunctionsFunctionArgs', 'GetFunctionsFunctionArgsDict']]]]] = None,
                          include_browse: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
+                         provider_config: Optional[pulumi.Input[Optional[Union['GetFunctionsProviderConfigArgs', 'GetFunctionsProviderConfigArgsDict']]]] = None,
                          schema_name: Optional[pulumi.Input[_builtins.str]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFunctionsResult]:
     """
@@ -184,6 +197,7 @@ def get_functions_output(catalog_name: Optional[pulumi.Input[_builtins.str]] = N
     __args__['catalogName'] = catalog_name
     __args__['functions'] = functions
     __args__['includeBrowse'] = include_browse
+    __args__['providerConfig'] = provider_config
     __args__['schemaName'] = schema_name
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getFunctions:getFunctions', __args__, opts=opts, typ=GetFunctionsResult)
@@ -192,4 +206,5 @@ def get_functions_output(catalog_name: Optional[pulumi.Input[_builtins.str]] = N
         functions=pulumi.get(__response__, 'functions'),
         id=pulumi.get(__response__, 'id'),
         include_browse=pulumi.get(__response__, 'include_browse'),
+        provider_config=pulumi.get(__response__, 'provider_config'),
         schema_name=pulumi.get(__response__, 'schema_name')))

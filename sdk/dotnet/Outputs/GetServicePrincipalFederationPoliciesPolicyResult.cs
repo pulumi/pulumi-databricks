@@ -20,7 +20,7 @@ namespace Pulumi.Databricks.Outputs
         /// <summary>
         /// (string) - Description of the federation policy
         /// </summary>
-        public readonly string? Description;
+        public readonly string Description;
         /// <summary>
         /// (string) - Resource name for the federation policy. Example values include
         /// `accounts/&lt;account-id&gt;/federationPolicies/my-federation-policy` for Account Federation Policies, and
@@ -33,9 +33,9 @@ namespace Pulumi.Databricks.Outputs
         /// <summary>
         /// (OidcFederationPolicy)
         /// </summary>
-        public readonly Outputs.GetServicePrincipalFederationPoliciesPolicyOidcPolicyResult? OidcPolicy;
+        public readonly Outputs.GetServicePrincipalFederationPoliciesPolicyOidcPolicyResult OidcPolicy;
         /// <summary>
-        /// (string) - The ID of the federation policy
+        /// (string) - The ID of the federation policy. Output only
         /// </summary>
         public readonly string PolicyId;
         /// <summary>
@@ -55,11 +55,11 @@ namespace Pulumi.Databricks.Outputs
         private GetServicePrincipalFederationPoliciesPolicyResult(
             string createTime,
 
-            string? description,
+            string description,
 
             string name,
 
-            Outputs.GetServicePrincipalFederationPoliciesPolicyOidcPolicyResult? oidcPolicy,
+            Outputs.GetServicePrincipalFederationPoliciesPolicyOidcPolicyResult oidcPolicy,
 
             string policyId,
 

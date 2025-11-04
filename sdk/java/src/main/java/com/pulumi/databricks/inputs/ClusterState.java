@@ -14,6 +14,7 @@ import com.pulumi.databricks.inputs.ClusterDockerImageArgs;
 import com.pulumi.databricks.inputs.ClusterGcpAttributesArgs;
 import com.pulumi.databricks.inputs.ClusterInitScriptArgs;
 import com.pulumi.databricks.inputs.ClusterLibraryArgs;
+import com.pulumi.databricks.inputs.ClusterProviderConfigArgs;
 import com.pulumi.databricks.inputs.ClusterWorkloadTypeArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -415,126 +416,12 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     /**
      * If true, the provider will not wait for the cluster to reach `RUNNING` state when creating the cluster, allowing cluster creation and library installation to continue asynchronously. Defaults to false (the provider will wait for cluster creation and library installation to succeed).
      * 
-     * The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.databricks.DatabricksFunctions;
-     * import com.pulumi.databricks.inputs.GetNodeTypeArgs;
-     * import com.pulumi.databricks.inputs.GetSparkVersionArgs;
-     * import com.pulumi.databricks.Cluster;
-     * import com.pulumi.databricks.ClusterArgs;
-     * import com.pulumi.databricks.inputs.ClusterAutoscaleArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var smallest = DatabricksFunctions.getNodeType(GetNodeTypeArgs.builder()
-     *             .localDisk(true)
-     *             .build());
-     * 
-     *         final var latestLts = DatabricksFunctions.getSparkVersion(GetSparkVersionArgs.builder()
-     *             .longTermSupport(true)
-     *             .build());
-     * 
-     *         var sharedAutoscaling = new Cluster("sharedAutoscaling", ClusterArgs.builder()
-     *             .clusterName("Shared Autoscaling")
-     *             .sparkVersion(latestLts.id())
-     *             .nodeTypeId(smallest.id())
-     *             .autoterminationMinutes(20)
-     *             .autoscale(ClusterAutoscaleArgs.builder()
-     *                 .minWorkers(1)
-     *                 .maxWorkers(50)
-     *                 .build())
-     *             .sparkConf(Map.ofEntries(
-     *                 Map.entry("spark.databricks.io.cache.enabled", "true"),
-     *                 Map.entry("spark.databricks.io.cache.maxDiskUsage", "50g"),
-     *                 Map.entry("spark.databricks.io.cache.maxMetaDataCache", "1g")
-     *             ))
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
      */
     @Import(name="noWait")
     private @Nullable Output<Boolean> noWait;
 
     /**
      * @return If true, the provider will not wait for the cluster to reach `RUNNING` state when creating the cluster, allowing cluster creation and library installation to continue asynchronously. Defaults to false (the provider will wait for cluster creation and library installation to succeed).
-     * 
-     * The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.databricks.DatabricksFunctions;
-     * import com.pulumi.databricks.inputs.GetNodeTypeArgs;
-     * import com.pulumi.databricks.inputs.GetSparkVersionArgs;
-     * import com.pulumi.databricks.Cluster;
-     * import com.pulumi.databricks.ClusterArgs;
-     * import com.pulumi.databricks.inputs.ClusterAutoscaleArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var smallest = DatabricksFunctions.getNodeType(GetNodeTypeArgs.builder()
-     *             .localDisk(true)
-     *             .build());
-     * 
-     *         final var latestLts = DatabricksFunctions.getSparkVersion(GetSparkVersionArgs.builder()
-     *             .longTermSupport(true)
-     *             .build());
-     * 
-     *         var sharedAutoscaling = new Cluster("sharedAutoscaling", ClusterArgs.builder()
-     *             .clusterName("Shared Autoscaling")
-     *             .sparkVersion(latestLts.id())
-     *             .nodeTypeId(smallest.id())
-     *             .autoterminationMinutes(20)
-     *             .autoscale(ClusterAutoscaleArgs.builder()
-     *                 .minWorkers(1)
-     *                 .maxWorkers(50)
-     *                 .build())
-     *             .sparkConf(Map.ofEntries(
-     *                 Map.entry("spark.databricks.io.cache.enabled", "true"),
-     *                 Map.entry("spark.databricks.io.cache.maxDiskUsage", "50g"),
-     *                 Map.entry("spark.databricks.io.cache.maxMetaDataCache", "1g")
-     *             ))
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * 
      */
     public Optional<Output<Boolean>> noWait() {
@@ -584,6 +471,21 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> policyId() {
         return Optional.ofNullable(this.policyId);
+    }
+
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<ClusterProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Optional<Output<ClusterProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
     }
 
     @Import(name="remoteDiskThroughput")
@@ -770,6 +672,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         this.nodeTypeId = $.nodeTypeId;
         this.numWorkers = $.numWorkers;
         this.policyId = $.policyId;
+        this.providerConfig = $.providerConfig;
         this.remoteDiskThroughput = $.remoteDiskThroughput;
         this.runtimeEngine = $.runtimeEngine;
         this.singleUserName = $.singleUserName;
@@ -1310,63 +1213,6 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param noWait If true, the provider will not wait for the cluster to reach `RUNNING` state when creating the cluster, allowing cluster creation and library installation to continue asynchronously. Defaults to false (the provider will wait for cluster creation and library installation to succeed).
          * 
-         * The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
-         * 
-         * <pre>
-         * {@code
-         * package generated_program;
-         * 
-         * import com.pulumi.Context;
-         * import com.pulumi.Pulumi;
-         * import com.pulumi.core.Output;
-         * import com.pulumi.databricks.DatabricksFunctions;
-         * import com.pulumi.databricks.inputs.GetNodeTypeArgs;
-         * import com.pulumi.databricks.inputs.GetSparkVersionArgs;
-         * import com.pulumi.databricks.Cluster;
-         * import com.pulumi.databricks.ClusterArgs;
-         * import com.pulumi.databricks.inputs.ClusterAutoscaleArgs;
-         * import java.util.List;
-         * import java.util.ArrayList;
-         * import java.util.Map;
-         * import java.io.File;
-         * import java.nio.file.Files;
-         * import java.nio.file.Paths;
-         * 
-         * public class App {
-         *     public static void main(String[] args) {
-         *         Pulumi.run(App::stack);
-         *     }
-         * 
-         *     public static void stack(Context ctx) {
-         *         final var smallest = DatabricksFunctions.getNodeType(GetNodeTypeArgs.builder()
-         *             .localDisk(true)
-         *             .build());
-         * 
-         *         final var latestLts = DatabricksFunctions.getSparkVersion(GetSparkVersionArgs.builder()
-         *             .longTermSupport(true)
-         *             .build());
-         * 
-         *         var sharedAutoscaling = new Cluster("sharedAutoscaling", ClusterArgs.builder()
-         *             .clusterName("Shared Autoscaling")
-         *             .sparkVersion(latestLts.id())
-         *             .nodeTypeId(smallest.id())
-         *             .autoterminationMinutes(20)
-         *             .autoscale(ClusterAutoscaleArgs.builder()
-         *                 .minWorkers(1)
-         *                 .maxWorkers(50)
-         *                 .build())
-         *             .sparkConf(Map.ofEntries(
-         *                 Map.entry("spark.databricks.io.cache.enabled", "true"),
-         *                 Map.entry("spark.databricks.io.cache.maxDiskUsage", "50g"),
-         *                 Map.entry("spark.databricks.io.cache.maxMetaDataCache", "1g")
-         *             ))
-         *             .build());
-         * 
-         *     }
-         * }
-         * }
-         * </pre>
-         * 
          * @return builder
          * 
          */
@@ -1377,63 +1223,6 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param noWait If true, the provider will not wait for the cluster to reach `RUNNING` state when creating the cluster, allowing cluster creation and library installation to continue asynchronously. Defaults to false (the provider will wait for cluster creation and library installation to succeed).
-         * 
-         * The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
-         * 
-         * <pre>
-         * {@code
-         * package generated_program;
-         * 
-         * import com.pulumi.Context;
-         * import com.pulumi.Pulumi;
-         * import com.pulumi.core.Output;
-         * import com.pulumi.databricks.DatabricksFunctions;
-         * import com.pulumi.databricks.inputs.GetNodeTypeArgs;
-         * import com.pulumi.databricks.inputs.GetSparkVersionArgs;
-         * import com.pulumi.databricks.Cluster;
-         * import com.pulumi.databricks.ClusterArgs;
-         * import com.pulumi.databricks.inputs.ClusterAutoscaleArgs;
-         * import java.util.List;
-         * import java.util.ArrayList;
-         * import java.util.Map;
-         * import java.io.File;
-         * import java.nio.file.Files;
-         * import java.nio.file.Paths;
-         * 
-         * public class App {
-         *     public static void main(String[] args) {
-         *         Pulumi.run(App::stack);
-         *     }
-         * 
-         *     public static void stack(Context ctx) {
-         *         final var smallest = DatabricksFunctions.getNodeType(GetNodeTypeArgs.builder()
-         *             .localDisk(true)
-         *             .build());
-         * 
-         *         final var latestLts = DatabricksFunctions.getSparkVersion(GetSparkVersionArgs.builder()
-         *             .longTermSupport(true)
-         *             .build());
-         * 
-         *         var sharedAutoscaling = new Cluster("sharedAutoscaling", ClusterArgs.builder()
-         *             .clusterName("Shared Autoscaling")
-         *             .sparkVersion(latestLts.id())
-         *             .nodeTypeId(smallest.id())
-         *             .autoterminationMinutes(20)
-         *             .autoscale(ClusterAutoscaleArgs.builder()
-         *                 .minWorkers(1)
-         *                 .maxWorkers(50)
-         *                 .build())
-         *             .sparkConf(Map.ofEntries(
-         *                 Map.entry("spark.databricks.io.cache.enabled", "true"),
-         *                 Map.entry("spark.databricks.io.cache.maxDiskUsage", "50g"),
-         *                 Map.entry("spark.databricks.io.cache.maxMetaDataCache", "1g")
-         *             ))
-         *             .build());
-         * 
-         *     }
-         * }
-         * }
-         * </pre>
          * 
          * @return builder
          * 
@@ -1503,6 +1292,27 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder policyId(String policyId) {
             return policyId(Output.of(policyId));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<ClusterProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(ClusterProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         public Builder remoteDiskThroughput(@Nullable Output<Integer> remoteDiskThroughput) {

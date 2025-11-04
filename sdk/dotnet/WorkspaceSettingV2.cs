@@ -10,6 +10,37 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
+    /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    /// 
+    /// Setting is a configurable value or control that determines how a feature or behavior works within the databricks platform.
+    /// 
+    /// [//]: # (todo: add public link to metadata api after production doc link available)
+    /// See settings-metadata api for list of settings that can be modified using this resource.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Getting a workspace level setting:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @this = new Databricks.WorkspaceSettingV2("this", new()
+    ///     {
+    ///         Name = "llm_proxy_partner_powered",
+    ///         BooleanVal = new Databricks.Inputs.WorkspaceSettingV2BooleanValArgs
+    ///         {
+    ///             Value = false,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// As of Pulumi v1.5, resources can be imported through configuration.
@@ -27,7 +58,7 @@ namespace Pulumi.Databricks
     /// If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
     /// 
     /// ```sh
-    /// $ pulumi import databricks:index/workspaceSettingV2:WorkspaceSettingV2 databricks_workspace_setting_v2 "name"
+    /// $ pulumi import databricks:index/workspaceSettingV2:WorkspaceSettingV2 this "name"
     /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/workspaceSettingV2:WorkspaceSettingV2")]
@@ -39,17 +70,11 @@ namespace Pulumi.Databricks
         [Output("aibiDashboardEmbeddingApprovedDomains")]
         public Output<Outputs.WorkspaceSettingV2AibiDashboardEmbeddingApprovedDomains?> AibiDashboardEmbeddingApprovedDomains { get; private set; } = null!;
 
-        /// <summary>
-        /// todo: Mark these Public after onboarded to DSL
-        /// </summary>
         [Output("automaticClusterUpdateWorkspace")]
         public Output<Outputs.WorkspaceSettingV2AutomaticClusterUpdateWorkspace?> AutomaticClusterUpdateWorkspace { get; private set; } = null!;
 
         [Output("booleanVal")]
         public Output<Outputs.WorkspaceSettingV2BooleanVal?> BooleanVal { get; private set; } = null!;
-
-        [Output("defaultDataSecurityMode")]
-        public Output<Outputs.WorkspaceSettingV2DefaultDataSecurityMode?> DefaultDataSecurityMode { get; private set; } = null!;
 
         [Output("effectiveAibiDashboardEmbeddingAccessPolicy")]
         public Output<Outputs.WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy?> EffectiveAibiDashboardEmbeddingAccessPolicy { get; private set; } = null!;
@@ -65,9 +90,6 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("effectiveBooleanVal")]
         public Output<Outputs.WorkspaceSettingV2EffectiveBooleanVal> EffectiveBooleanVal { get; private set; } = null!;
-
-        [Output("effectiveDefaultDataSecurityMode")]
-        public Output<Outputs.WorkspaceSettingV2EffectiveDefaultDataSecurityMode?> EffectiveDefaultDataSecurityMode { get; private set; } = null!;
 
         /// <summary>
         /// (IntegerMessage)
@@ -104,12 +126,6 @@ namespace Pulumi.Databricks
 
         [Output("stringVal")]
         public Output<Outputs.WorkspaceSettingV2StringVal?> StringVal { get; private set; } = null!;
-
-        /// <summary>
-        /// Workspace ID of the resource
-        /// </summary>
-        [Output("workspaceId")]
-        public Output<string?> WorkspaceId { get; private set; } = null!;
 
 
         /// <summary>
@@ -163,17 +179,11 @@ namespace Pulumi.Databricks
         [Input("aibiDashboardEmbeddingApprovedDomains")]
         public Input<Inputs.WorkspaceSettingV2AibiDashboardEmbeddingApprovedDomainsArgs>? AibiDashboardEmbeddingApprovedDomains { get; set; }
 
-        /// <summary>
-        /// todo: Mark these Public after onboarded to DSL
-        /// </summary>
         [Input("automaticClusterUpdateWorkspace")]
         public Input<Inputs.WorkspaceSettingV2AutomaticClusterUpdateWorkspaceArgs>? AutomaticClusterUpdateWorkspace { get; set; }
 
         [Input("booleanVal")]
         public Input<Inputs.WorkspaceSettingV2BooleanValArgs>? BooleanVal { get; set; }
-
-        [Input("defaultDataSecurityMode")]
-        public Input<Inputs.WorkspaceSettingV2DefaultDataSecurityModeArgs>? DefaultDataSecurityMode { get; set; }
 
         [Input("effectiveAibiDashboardEmbeddingAccessPolicy")]
         public Input<Inputs.WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgs>? EffectiveAibiDashboardEmbeddingAccessPolicy { get; set; }
@@ -183,9 +193,6 @@ namespace Pulumi.Databricks
 
         [Input("effectiveAutomaticClusterUpdateWorkspace")]
         public Input<Inputs.WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgs>? EffectiveAutomaticClusterUpdateWorkspace { get; set; }
-
-        [Input("effectiveDefaultDataSecurityMode")]
-        public Input<Inputs.WorkspaceSettingV2EffectiveDefaultDataSecurityModeArgs>? EffectiveDefaultDataSecurityMode { get; set; }
 
         [Input("effectivePersonalCompute")]
         public Input<Inputs.WorkspaceSettingV2EffectivePersonalComputeArgs>? EffectivePersonalCompute { get; set; }
@@ -211,12 +218,6 @@ namespace Pulumi.Databricks
         [Input("stringVal")]
         public Input<Inputs.WorkspaceSettingV2StringValArgs>? StringVal { get; set; }
 
-        /// <summary>
-        /// Workspace ID of the resource
-        /// </summary>
-        [Input("workspaceId")]
-        public Input<string>? WorkspaceId { get; set; }
-
         public WorkspaceSettingV2Args()
         {
         }
@@ -231,17 +232,11 @@ namespace Pulumi.Databricks
         [Input("aibiDashboardEmbeddingApprovedDomains")]
         public Input<Inputs.WorkspaceSettingV2AibiDashboardEmbeddingApprovedDomainsGetArgs>? AibiDashboardEmbeddingApprovedDomains { get; set; }
 
-        /// <summary>
-        /// todo: Mark these Public after onboarded to DSL
-        /// </summary>
         [Input("automaticClusterUpdateWorkspace")]
         public Input<Inputs.WorkspaceSettingV2AutomaticClusterUpdateWorkspaceGetArgs>? AutomaticClusterUpdateWorkspace { get; set; }
 
         [Input("booleanVal")]
         public Input<Inputs.WorkspaceSettingV2BooleanValGetArgs>? BooleanVal { get; set; }
-
-        [Input("defaultDataSecurityMode")]
-        public Input<Inputs.WorkspaceSettingV2DefaultDataSecurityModeGetArgs>? DefaultDataSecurityMode { get; set; }
 
         [Input("effectiveAibiDashboardEmbeddingAccessPolicy")]
         public Input<Inputs.WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyGetArgs>? EffectiveAibiDashboardEmbeddingAccessPolicy { get; set; }
@@ -257,9 +252,6 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("effectiveBooleanVal")]
         public Input<Inputs.WorkspaceSettingV2EffectiveBooleanValGetArgs>? EffectiveBooleanVal { get; set; }
-
-        [Input("effectiveDefaultDataSecurityMode")]
-        public Input<Inputs.WorkspaceSettingV2EffectiveDefaultDataSecurityModeGetArgs>? EffectiveDefaultDataSecurityMode { get; set; }
 
         /// <summary>
         /// (IntegerMessage)
@@ -296,12 +288,6 @@ namespace Pulumi.Databricks
 
         [Input("stringVal")]
         public Input<Inputs.WorkspaceSettingV2StringValGetArgs>? StringVal { get; set; }
-
-        /// <summary>
-        /// Workspace ID of the resource
-        /// </summary>
-        [Input("workspaceId")]
-        public Input<string>? WorkspaceId { get; set; }
 
         public WorkspaceSettingV2State()
         {

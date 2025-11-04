@@ -55,6 +55,8 @@ type App struct {
 	AppStatus AppAppStatusOutput `pulumi:"appStatus"`
 	// The Budget Policy ID set for this resource.
 	BudgetPolicyId pulumi.StringPtrOutput `pulumi:"budgetPolicyId"`
+	// A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`, `LIQUID`.
+	ComputeSize pulumi.StringOutput `pulumi:"computeSize"`
 	// attribute
 	ComputeStatus AppComputeStatusOutput `pulumi:"computeStatus"`
 	// The creation time of the app.
@@ -75,9 +77,11 @@ type App struct {
 	Oauth2AppClientId      pulumi.StringOutput        `pulumi:"oauth2AppClientId"`
 	Oauth2AppIntegrationId pulumi.StringOutput        `pulumi:"oauth2AppIntegrationId"`
 	PendingDeployment      AppPendingDeploymentOutput `pulumi:"pendingDeployment"`
+	ProviderConfig         AppProviderConfigPtrOutput `pulumi:"providerConfig"`
 	// A list of resources that the app have access to.
-	Resources                AppResourceArrayOutput `pulumi:"resources"`
-	ServicePrincipalClientId pulumi.StringOutput    `pulumi:"servicePrincipalClientId"`
+	Resources AppResourceArrayOutput `pulumi:"resources"`
+	// client_id (application_id) of the app service principal
+	ServicePrincipalClientId pulumi.StringOutput `pulumi:"servicePrincipalClientId"`
 	// id of the app service principal
 	ServicePrincipalId pulumi.IntOutput `pulumi:"servicePrincipalId"`
 	// name of the app service principal
@@ -127,6 +131,8 @@ type appState struct {
 	AppStatus *AppAppStatus `pulumi:"appStatus"`
 	// The Budget Policy ID set for this resource.
 	BudgetPolicyId *string `pulumi:"budgetPolicyId"`
+	// A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`, `LIQUID`.
+	ComputeSize *string `pulumi:"computeSize"`
 	// attribute
 	ComputeStatus *AppComputeStatus `pulumi:"computeStatus"`
 	// The creation time of the app.
@@ -147,9 +153,11 @@ type appState struct {
 	Oauth2AppClientId      *string               `pulumi:"oauth2AppClientId"`
 	Oauth2AppIntegrationId *string               `pulumi:"oauth2AppIntegrationId"`
 	PendingDeployment      *AppPendingDeployment `pulumi:"pendingDeployment"`
+	ProviderConfig         *AppProviderConfig    `pulumi:"providerConfig"`
 	// A list of resources that the app have access to.
-	Resources                []AppResource `pulumi:"resources"`
-	ServicePrincipalClientId *string       `pulumi:"servicePrincipalClientId"`
+	Resources []AppResource `pulumi:"resources"`
+	// client_id (application_id) of the app service principal
+	ServicePrincipalClientId *string `pulumi:"servicePrincipalClientId"`
 	// id of the app service principal
 	ServicePrincipalId *int `pulumi:"servicePrincipalId"`
 	// name of the app service principal
@@ -170,6 +178,8 @@ type AppState struct {
 	AppStatus AppAppStatusPtrInput
 	// The Budget Policy ID set for this resource.
 	BudgetPolicyId pulumi.StringPtrInput
+	// A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`, `LIQUID`.
+	ComputeSize pulumi.StringPtrInput
 	// attribute
 	ComputeStatus AppComputeStatusPtrInput
 	// The creation time of the app.
@@ -190,8 +200,10 @@ type AppState struct {
 	Oauth2AppClientId      pulumi.StringPtrInput
 	Oauth2AppIntegrationId pulumi.StringPtrInput
 	PendingDeployment      AppPendingDeploymentPtrInput
+	ProviderConfig         AppProviderConfigPtrInput
 	// A list of resources that the app have access to.
-	Resources                AppResourceArrayInput
+	Resources AppResourceArrayInput
+	// client_id (application_id) of the app service principal
 	ServicePrincipalClientId pulumi.StringPtrInput
 	// id of the app service principal
 	ServicePrincipalId pulumi.IntPtrInput
@@ -214,11 +226,14 @@ func (AppState) ElementType() reflect.Type {
 type appArgs struct {
 	// The Budget Policy ID set for this resource.
 	BudgetPolicyId *string `pulumi:"budgetPolicyId"`
+	// A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`, `LIQUID`.
+	ComputeSize *string `pulumi:"computeSize"`
 	// The description of the app.
 	Description *string `pulumi:"description"`
 	// The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
-	Name      *string `pulumi:"name"`
-	NoCompute *bool   `pulumi:"noCompute"`
+	Name           *string            `pulumi:"name"`
+	NoCompute      *bool              `pulumi:"noCompute"`
+	ProviderConfig *AppProviderConfig `pulumi:"providerConfig"`
 	// A list of resources that the app have access to.
 	Resources []AppResource `pulumi:"resources"`
 	// A list of api scopes granted to the user access token.
@@ -229,11 +244,14 @@ type appArgs struct {
 type AppArgs struct {
 	// The Budget Policy ID set for this resource.
 	BudgetPolicyId pulumi.StringPtrInput
+	// A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`, `LIQUID`.
+	ComputeSize pulumi.StringPtrInput
 	// The description of the app.
 	Description pulumi.StringPtrInput
 	// The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
-	Name      pulumi.StringPtrInput
-	NoCompute pulumi.BoolPtrInput
+	Name           pulumi.StringPtrInput
+	NoCompute      pulumi.BoolPtrInput
+	ProviderConfig AppProviderConfigPtrInput
 	// A list of resources that the app have access to.
 	Resources AppResourceArrayInput
 	// A list of api scopes granted to the user access token.
@@ -341,6 +359,11 @@ func (o AppOutput) BudgetPolicyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *App) pulumi.StringPtrOutput { return v.BudgetPolicyId }).(pulumi.StringPtrOutput)
 }
 
+// A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`, `LIQUID`.
+func (o AppOutput) ComputeSize() pulumi.StringOutput {
+	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.ComputeSize }).(pulumi.StringOutput)
+}
+
 // attribute
 func (o AppOutput) ComputeStatus() AppComputeStatusOutput {
 	return o.ApplyT(func(v *App) AppComputeStatusOutput { return v.ComputeStatus }).(AppComputeStatusOutput)
@@ -397,11 +420,16 @@ func (o AppOutput) PendingDeployment() AppPendingDeploymentOutput {
 	return o.ApplyT(func(v *App) AppPendingDeploymentOutput { return v.PendingDeployment }).(AppPendingDeploymentOutput)
 }
 
+func (o AppOutput) ProviderConfig() AppProviderConfigPtrOutput {
+	return o.ApplyT(func(v *App) AppProviderConfigPtrOutput { return v.ProviderConfig }).(AppProviderConfigPtrOutput)
+}
+
 // A list of resources that the app have access to.
 func (o AppOutput) Resources() AppResourceArrayOutput {
 	return o.ApplyT(func(v *App) AppResourceArrayOutput { return v.Resources }).(AppResourceArrayOutput)
 }
 
+// client_id (application_id) of the app service principal
 func (o AppOutput) ServicePrincipalClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.ServicePrincipalClientId }).(pulumi.StringOutput)
 }

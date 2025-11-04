@@ -7,6 +7,8 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
  * This data source can be used to fetch the list of federation policies for a service principal.
  *
  * > **Note** This data source can only be used with an account-level provider!
@@ -27,6 +29,7 @@ import * as utilities from "./utilities";
 export function getServicePrincipalFederationPolicies(args: GetServicePrincipalFederationPoliciesArgs, opts?: pulumi.InvokeOptions): Promise<GetServicePrincipalFederationPoliciesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getServicePrincipalFederationPolicies:getServicePrincipalFederationPolicies", {
+        "pageSize": args.pageSize,
         "servicePrincipalId": args.servicePrincipalId,
     }, opts);
 }
@@ -35,6 +38,7 @@ export function getServicePrincipalFederationPolicies(args: GetServicePrincipalF
  * A collection of arguments for invoking getServicePrincipalFederationPolicies.
  */
 export interface GetServicePrincipalFederationPoliciesArgs {
+    pageSize?: number;
     /**
      * The service principal id for the federation policy
      */
@@ -49,13 +53,16 @@ export interface GetServicePrincipalFederationPoliciesResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly pageSize?: number;
     readonly policies: outputs.GetServicePrincipalFederationPoliciesPolicy[];
     /**
-     * (integer) - The service principal ID that this federation policy applies to. Only set for service principal federation policies
+     * (integer) - The service principal ID that this federation policy applies to. Output only. Only set for service principal federation policies
      */
     readonly servicePrincipalId: number;
 }
 /**
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
  * This data source can be used to fetch the list of federation policies for a service principal.
  *
  * > **Note** This data source can only be used with an account-level provider!
@@ -76,6 +83,7 @@ export interface GetServicePrincipalFederationPoliciesResult {
 export function getServicePrincipalFederationPoliciesOutput(args: GetServicePrincipalFederationPoliciesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetServicePrincipalFederationPoliciesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getServicePrincipalFederationPolicies:getServicePrincipalFederationPolicies", {
+        "pageSize": args.pageSize,
         "servicePrincipalId": args.servicePrincipalId,
     }, opts);
 }
@@ -84,6 +92,7 @@ export function getServicePrincipalFederationPoliciesOutput(args: GetServicePrin
  * A collection of arguments for invoking getServicePrincipalFederationPolicies.
  */
 export interface GetServicePrincipalFederationPoliciesOutputArgs {
+    pageSize?: pulumi.Input<number>;
     /**
      * The service principal id for the federation policy
      */

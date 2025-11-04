@@ -17,6 +17,8 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * 
  * Service principal federation policies allow automated workloads running outside of Databricks to access Databricks APIs without the need for Databricks secrets. Your application (workload) authenticates to Databricks as a Databricks service principal using tokens issued by the workload runtime, for example Github Actions.
  * 
  * A service principal federation policy is associated with a service principal in your Databricks account, and specifies:
@@ -42,7 +44,7 @@ import javax.annotation.Nullable;
  * If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
  * 
  * ```sh
- * $ pulumi import databricks:index/servicePrincipalFederationPolicy:ServicePrincipalFederationPolicy databricks_service_principal_federation_policy &#34;service_principal_id,policy_id&#34;
+ * $ pulumi import databricks:index/servicePrincipalFederationPolicy:ServicePrincipalFederationPolicy this &#34;service_principal_id,policy_id&#34;
  * ```
  * 
  */
@@ -107,28 +109,28 @@ public class ServicePrincipalFederationPolicy extends com.pulumi.resources.Custo
         return Codegen.optional(this.oidcPolicy);
     }
     /**
-     * (string) - The ID of the federation policy
+     * (string) - The ID of the federation policy. Output only
      * 
      */
     @Export(name="policyId", refs={String.class}, tree="[0]")
     private Output<String> policyId;
 
     /**
-     * @return (string) - The ID of the federation policy
+     * @return (string) - The ID of the federation policy. Output only
      * 
      */
     public Output<String> policyId() {
         return this.policyId;
     }
     /**
-     * (integer) - The service principal ID that this federation policy applies to. Only set for service principal federation policies
+     * (integer) - The service principal ID that this federation policy applies to. Output only. Only set for service principal federation policies
      * 
      */
     @Export(name="servicePrincipalId", refs={Integer.class}, tree="[0]")
     private Output<Integer> servicePrincipalId;
 
     /**
-     * @return (integer) - The service principal ID that this federation policy applies to. Only set for service principal federation policies
+     * @return (integer) - The service principal ID that this federation policy applies to. Output only. Only set for service principal federation policies
      * 
      */
     public Output<Integer> servicePrincipalId() {

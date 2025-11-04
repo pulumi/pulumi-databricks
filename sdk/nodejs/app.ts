@@ -82,6 +82,10 @@ export class App extends pulumi.CustomResource {
      */
     declare public readonly budgetPolicyId: pulumi.Output<string | undefined>;
     /**
+     * A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`, `LIQUID`.
+     */
+    declare public readonly computeSize: pulumi.Output<string>;
+    /**
      * attribute
      */
     declare public /*out*/ readonly computeStatus: pulumi.Output<outputs.AppComputeStatus>;
@@ -117,10 +121,14 @@ export class App extends pulumi.CustomResource {
     declare public /*out*/ readonly oauth2AppClientId: pulumi.Output<string>;
     declare public /*out*/ readonly oauth2AppIntegrationId: pulumi.Output<string>;
     declare public /*out*/ readonly pendingDeployment: pulumi.Output<outputs.AppPendingDeployment>;
+    declare public readonly providerConfig: pulumi.Output<outputs.AppProviderConfig | undefined>;
     /**
      * A list of resources that the app have access to.
      */
     declare public readonly resources: pulumi.Output<outputs.AppResource[] | undefined>;
+    /**
+     * client_id (application_id) of the app service principal
+     */
     declare public /*out*/ readonly servicePrincipalClientId: pulumi.Output<string>;
     /**
      * id of the app service principal
@@ -163,6 +171,7 @@ export class App extends pulumi.CustomResource {
             resourceInputs["activeDeployment"] = state?.activeDeployment;
             resourceInputs["appStatus"] = state?.appStatus;
             resourceInputs["budgetPolicyId"] = state?.budgetPolicyId;
+            resourceInputs["computeSize"] = state?.computeSize;
             resourceInputs["computeStatus"] = state?.computeStatus;
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["creator"] = state?.creator;
@@ -175,6 +184,7 @@ export class App extends pulumi.CustomResource {
             resourceInputs["oauth2AppClientId"] = state?.oauth2AppClientId;
             resourceInputs["oauth2AppIntegrationId"] = state?.oauth2AppIntegrationId;
             resourceInputs["pendingDeployment"] = state?.pendingDeployment;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["resources"] = state?.resources;
             resourceInputs["servicePrincipalClientId"] = state?.servicePrincipalClientId;
             resourceInputs["servicePrincipalId"] = state?.servicePrincipalId;
@@ -186,9 +196,11 @@ export class App extends pulumi.CustomResource {
         } else {
             const args = argsOrState as AppArgs | undefined;
             resourceInputs["budgetPolicyId"] = args?.budgetPolicyId;
+            resourceInputs["computeSize"] = args?.computeSize;
             resourceInputs["description"] = args?.description;
             resourceInputs["name"] = args?.name;
             resourceInputs["noCompute"] = args?.noCompute;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["resources"] = args?.resources;
             resourceInputs["userApiScopes"] = args?.userApiScopes;
             resourceInputs["activeDeployment"] = undefined /*out*/;
@@ -228,6 +240,10 @@ export interface AppState {
      */
     budgetPolicyId?: pulumi.Input<string>;
     /**
+     * A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`, `LIQUID`.
+     */
+    computeSize?: pulumi.Input<string>;
+    /**
      * attribute
      */
     computeStatus?: pulumi.Input<inputs.AppComputeStatus>;
@@ -263,10 +279,14 @@ export interface AppState {
     oauth2AppClientId?: pulumi.Input<string>;
     oauth2AppIntegrationId?: pulumi.Input<string>;
     pendingDeployment?: pulumi.Input<inputs.AppPendingDeployment>;
+    providerConfig?: pulumi.Input<inputs.AppProviderConfig>;
     /**
      * A list of resources that the app have access to.
      */
     resources?: pulumi.Input<pulumi.Input<inputs.AppResource>[]>;
+    /**
+     * client_id (application_id) of the app service principal
+     */
     servicePrincipalClientId?: pulumi.Input<string>;
     /**
      * id of the app service principal
@@ -303,6 +323,10 @@ export interface AppArgs {
      */
     budgetPolicyId?: pulumi.Input<string>;
     /**
+     * A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`, `LIQUID`.
+     */
+    computeSize?: pulumi.Input<string>;
+    /**
      * The description of the app.
      */
     description?: pulumi.Input<string>;
@@ -311,6 +335,7 @@ export interface AppArgs {
      */
     name?: pulumi.Input<string>;
     noCompute?: pulumi.Input<boolean>;
+    providerConfig?: pulumi.Input<inputs.AppProviderConfig>;
     /**
      * A list of resources that the app have access to.
      */

@@ -6,6 +6,7 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.GetClusterClusterInfoSpecLibraryCran;
 import com.pulumi.databricks.inputs.GetClusterClusterInfoSpecLibraryMaven;
+import com.pulumi.databricks.inputs.GetClusterClusterInfoSpecLibraryProviderConfig;
 import com.pulumi.databricks.inputs.GetClusterClusterInfoSpecLibraryPypi;
 import java.lang.String;
 import java.util.Objects;
@@ -57,6 +58,21 @@ public final class GetClusterClusterInfoSpecLibrary extends com.pulumi.resources
         return Optional.ofNullable(this.maven);
     }
 
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable GetClusterClusterInfoSpecLibraryProviderConfig providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Optional<GetClusterClusterInfoSpecLibraryProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     @Import(name="pypi")
     private @Nullable GetClusterClusterInfoSpecLibraryPypi pypi;
 
@@ -85,6 +101,7 @@ public final class GetClusterClusterInfoSpecLibrary extends com.pulumi.resources
         this.egg = $.egg;
         this.jar = $.jar;
         this.maven = $.maven;
+        this.providerConfig = $.providerConfig;
         this.pypi = $.pypi;
         this.requirements = $.requirements;
         this.whl = $.whl;
@@ -133,6 +150,17 @@ public final class GetClusterClusterInfoSpecLibrary extends com.pulumi.resources
 
         public Builder maven(@Nullable GetClusterClusterInfoSpecLibraryMaven maven) {
             $.maven = maven;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable GetClusterClusterInfoSpecLibraryProviderConfig providerConfig) {
+            $.providerConfig = providerConfig;
             return this;
         }
 

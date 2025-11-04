@@ -13,8 +13,17 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class LibraryMaven
     {
+        /// <summary>
+        /// Gradle-style Maven coordinates. For example: `org.jsoup:jsoup:1.7.2`.
+        /// </summary>
         public readonly string Coordinates;
+        /// <summary>
+        /// List of dependencies to exclude. For example: `["slf4j:slf4j", "*:hadoop-client"]`. See [Maven dependency exclusions](https://maven.apache.org/guides/introduction/introduction-to-optional-and-excludes-dependencies.html) for more information.
+        /// </summary>
         public readonly ImmutableArray<string> Exclusions;
+        /// <summary>
+        /// Maven repository to install the Maven package from. If omitted, both Maven Central Repository and Spark Packages are searched.
+        /// </summary>
         public readonly string? Repo;
 
         [OutputConstructor]

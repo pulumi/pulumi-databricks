@@ -66,6 +66,8 @@ type GetSchemasArgs struct {
 	CatalogName string `pulumi:"catalogName"`
 	// set of Schema full names: *`catalog`.`schema`*
 	Ids []string `pulumi:"ids"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *GetSchemasProviderConfig `pulumi:"providerConfig"`
 }
 
 // A collection of values returned by getSchemas.
@@ -74,7 +76,8 @@ type GetSchemasResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// set of Schema full names: *`catalog`.`schema`*
-	Ids []string `pulumi:"ids"`
+	Ids            []string                  `pulumi:"ids"`
+	ProviderConfig *GetSchemasProviderConfig `pulumi:"providerConfig"`
 }
 
 func GetSchemasOutput(ctx *pulumi.Context, args GetSchemasOutputArgs, opts ...pulumi.InvokeOption) GetSchemasResultOutput {
@@ -92,6 +95,8 @@ type GetSchemasOutputArgs struct {
 	CatalogName pulumi.StringInput `pulumi:"catalogName"`
 	// set of Schema full names: *`catalog`.`schema`*
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig GetSchemasProviderConfigPtrInput `pulumi:"providerConfig"`
 }
 
 func (GetSchemasOutputArgs) ElementType() reflect.Type {
@@ -125,6 +130,10 @@ func (o GetSchemasResultOutput) Id() pulumi.StringOutput {
 // set of Schema full names: *`catalog`.`schema`*
 func (o GetSchemasResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetSchemasResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetSchemasResultOutput) ProviderConfig() GetSchemasProviderConfigPtrOutput {
+	return o.ApplyT(func(v GetSchemasResult) *GetSchemasProviderConfig { return v.ProviderConfig }).(GetSchemasProviderConfigPtrOutput)
 }
 
 func init() {

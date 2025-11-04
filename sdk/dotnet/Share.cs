@@ -183,6 +183,9 @@ namespace Pulumi.Databricks
         [Output("createdBy")]
         public Output<string> CreatedBy { get; private set; } = null!;
 
+        [Output("effectiveOwner")]
+        public Output<string> EffectiveOwner { get; private set; } = null!;
+
         /// <summary>
         /// Name of share. Change forces creation of a new resource.
         /// </summary>
@@ -198,8 +201,14 @@ namespace Pulumi.Databricks
         [Output("owner")]
         public Output<string?> Owner { get; private set; } = null!;
 
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Output("providerConfig")]
+        public Output<Outputs.ShareProviderConfig?> ProviderConfig { get; private set; } = null!;
+
         [Output("storageLocation")]
-        public Output<string?> StorageLocation { get; private set; } = null!;
+        public Output<string> StorageLocation { get; private set; } = null!;
 
         [Output("storageRoot")]
         public Output<string?> StorageRoot { get; private set; } = null!;
@@ -263,18 +272,6 @@ namespace Pulumi.Databricks
         public Input<string>? Comment { get; set; }
 
         /// <summary>
-        /// Time when the share was created.
-        /// </summary>
-        [Input("createdAt")]
-        public Input<int>? CreatedAt { get; set; }
-
-        /// <summary>
-        /// The principal that created the share.
-        /// </summary>
-        [Input("createdBy")]
-        public Input<string>? CreatedBy { get; set; }
-
-        /// <summary>
         /// Name of share. Change forces creation of a new resource.
         /// </summary>
         [Input("name")]
@@ -294,17 +291,14 @@ namespace Pulumi.Databricks
         [Input("owner")]
         public Input<string>? Owner { get; set; }
 
-        [Input("storageLocation")]
-        public Input<string>? StorageLocation { get; set; }
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.ShareProviderConfigArgs>? ProviderConfig { get; set; }
 
         [Input("storageRoot")]
         public Input<string>? StorageRoot { get; set; }
-
-        [Input("updatedAt")]
-        public Input<int>? UpdatedAt { get; set; }
-
-        [Input("updatedBy")]
-        public Input<string>? UpdatedBy { get; set; }
 
         public ShareArgs()
         {
@@ -332,6 +326,9 @@ namespace Pulumi.Databricks
         [Input("createdBy")]
         public Input<string>? CreatedBy { get; set; }
 
+        [Input("effectiveOwner")]
+        public Input<string>? EffectiveOwner { get; set; }
+
         /// <summary>
         /// Name of share. Change forces creation of a new resource.
         /// </summary>
@@ -351,6 +348,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("owner")]
         public Input<string>? Owner { get; set; }
+
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.ShareProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         [Input("storageLocation")]
         public Input<string>? StorageLocation { get; set; }

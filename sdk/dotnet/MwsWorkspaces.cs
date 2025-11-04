@@ -166,31 +166,31 @@ namespace Pulumi.Databricks
     ///         RoleArn = crossAccountRole.Arn,
     ///     });
     /// 
-    ///     var rootStorageBucket = new Aws.S3.BucketV2("root_storage_bucket", new()
+    ///     var rootStorageBucket = new Aws.S3.Bucket("root_storage_bucket", new()
     ///     {
-    ///         Bucket = $"{prefix}-rootbucket",
-    ///         Acl = "private",
+    ///         BucketName = $"{prefix}-rootbucket",
+    ///         Acl = Aws.S3.CannedAcl.Private,
     ///         ForceDestroy = true,
     ///         Tags = tags,
     ///     });
     /// 
-    ///     var rootVersioning = new Aws.S3.BucketVersioningV2("root_versioning", new()
+    ///     var rootVersioning = new Aws.S3.BucketVersioning("root_versioning", new()
     ///     {
     ///         Bucket = rootStorageBucket.Id,
-    ///         VersioningConfiguration = new Aws.S3.Inputs.BucketVersioningV2VersioningConfigurationArgs
+    ///         VersioningConfiguration = new Aws.S3.Inputs.BucketVersioningVersioningConfigurationArgs
     ///         {
     ///             Status = "Disabled",
     ///         },
     ///     });
     /// 
-    ///     var rootStorageBucketBucketServerSideEncryptionConfigurationV2 = new Aws.S3.BucketServerSideEncryptionConfigurationV2("root_storage_bucket", new()
+    ///     var rootStorageBucketBucketServerSideEncryptionConfiguration = new Aws.S3.BucketServerSideEncryptionConfiguration("root_storage_bucket", new()
     ///     {
-    ///         Bucket = rootStorageBucket.Bucket,
+    ///         Bucket = rootStorageBucket.BucketName,
     ///         Rules = new[]
     ///         {
-    ///             new Aws.S3.Inputs.BucketServerSideEncryptionConfigurationV2RuleArgs
+    ///             new Aws.S3.Inputs.BucketServerSideEncryptionConfigurationRuleArgs
     ///             {
-    ///                 ApplyServerSideEncryptionByDefault = new Aws.S3.Inputs.BucketServerSideEncryptionConfigurationV2RuleApplyServerSideEncryptionByDefaultArgs
+    ///                 ApplyServerSideEncryptionByDefault = new Aws.S3.Inputs.BucketServerSideEncryptionConfigurationRuleApplyServerSideEncryptionByDefaultArgs
     ///                 {
     ///                     SseAlgorithm = "AES256",
     ///                 },
@@ -215,7 +215,7 @@ namespace Pulumi.Databricks
     /// 
     ///     var thisGetAwsBucketPolicy = Databricks.GetAwsBucketPolicy.Invoke(new()
     ///     {
-    ///         Bucket = rootStorageBucket.Bucket,
+    ///         Bucket = rootStorageBucket.BucketName,
     ///     });
     /// 
     ///     var rootBucketPolicy = new Aws.S3.BucketPolicy("root_bucket_policy", new()
@@ -234,7 +234,7 @@ namespace Pulumi.Databricks
     ///     {
     ///         AccountId = databricksAccountId,
     ///         StorageConfigurationName = $"{prefix}-storage",
-    ///         BucketName = rootStorageBucket.Bucket,
+    ///         BucketName = rootStorageBucket.BucketName,
     ///     });
     /// 
     ///     var thisMwsWorkspaces = new Databricks.MwsWorkspaces("this", new()
@@ -371,8 +371,6 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// The compute mode for the workspace. When unset, a classic workspace is created, and both `CredentialsId` and `StorageConfigurationId` must be specified. When set to `SERVERLESS`, the resulting workspace is a serverless workspace, and `CredentialsId` and `StorageConfigurationId` must not be set. The only allowed value for this is `SERVERLESS`. Changing this field requires recreation of the workspace.
-        /// 
-        /// &gt; Databricks strongly recommends using OAuth instead of PATs for user account client authentication and authorization due to the improved security
         /// </summary>
         [Output("computeMode")]
         public Output<string?> ComputeMode { get; private set; } = null!;
@@ -409,6 +407,14 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("effectiveComputeMode")]
         public Output<string> EffectiveComputeMode { get; private set; } = null!;
+
+        /// <summary>
+        /// The expected status of the workspace. When unset, it defaults to `RUNNING`. When set to `PROVISIONING`, workspace provisioning will pause and not enter `RUNNING` status. The only allowed values for this is `RUNNING` and `PROVISIONING`.
+        /// 
+        /// &gt; Databricks strongly recommends using OAuth instead of PATs for user account client authentication and authorization due to the improved security
+        /// </summary>
+        [Output("expectedWorkspaceStatus")]
+        public Output<string?> ExpectedWorkspaceStatus { get; private set; } = null!;
 
         [Output("externalCustomerInfo")]
         public Output<Outputs.MwsWorkspacesExternalCustomerInfo?> ExternalCustomerInfo { get; private set; } = null!;
@@ -586,8 +592,6 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// The compute mode for the workspace. When unset, a classic workspace is created, and both `CredentialsId` and `StorageConfigurationId` must be specified. When set to `SERVERLESS`, the resulting workspace is a serverless workspace, and `CredentialsId` and `StorageConfigurationId` must not be set. The only allowed value for this is `SERVERLESS`. Changing this field requires recreation of the workspace.
-        /// 
-        /// &gt; Databricks strongly recommends using OAuth instead of PATs for user account client authentication and authorization due to the improved security
         /// </summary>
         [Input("computeMode")]
         public Input<string>? ComputeMode { get; set; }
@@ -624,6 +628,14 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("deploymentName")]
         public Input<string>? DeploymentName { get; set; }
+
+        /// <summary>
+        /// The expected status of the workspace. When unset, it defaults to `RUNNING`. When set to `PROVISIONING`, workspace provisioning will pause and not enter `RUNNING` status. The only allowed values for this is `RUNNING` and `PROVISIONING`.
+        /// 
+        /// &gt; Databricks strongly recommends using OAuth instead of PATs for user account client authentication and authorization due to the improved security
+        /// </summary>
+        [Input("expectedWorkspaceStatus")]
+        public Input<string>? ExpectedWorkspaceStatus { get; set; }
 
         [Input("externalCustomerInfo")]
         public Input<Inputs.MwsWorkspacesExternalCustomerInfoArgs>? ExternalCustomerInfo { get; set; }
@@ -753,8 +765,6 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// The compute mode for the workspace. When unset, a classic workspace is created, and both `CredentialsId` and `StorageConfigurationId` must be specified. When set to `SERVERLESS`, the resulting workspace is a serverless workspace, and `CredentialsId` and `StorageConfigurationId` must not be set. The only allowed value for this is `SERVERLESS`. Changing this field requires recreation of the workspace.
-        /// 
-        /// &gt; Databricks strongly recommends using OAuth instead of PATs for user account client authentication and authorization due to the improved security
         /// </summary>
         [Input("computeMode")]
         public Input<string>? ComputeMode { get; set; }
@@ -797,6 +807,14 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("effectiveComputeMode")]
         public Input<string>? EffectiveComputeMode { get; set; }
+
+        /// <summary>
+        /// The expected status of the workspace. When unset, it defaults to `RUNNING`. When set to `PROVISIONING`, workspace provisioning will pause and not enter `RUNNING` status. The only allowed values for this is `RUNNING` and `PROVISIONING`.
+        /// 
+        /// &gt; Databricks strongly recommends using OAuth instead of PATs for user account client authentication and authorization due to the improved security
+        /// </summary>
+        [Input("expectedWorkspaceStatus")]
+        public Input<string>? ExpectedWorkspaceStatus { get; set; }
 
         [Input("externalCustomerInfo")]
         public Input<Inputs.MwsWorkspacesExternalCustomerInfoGetArgs>? ExternalCustomerInfo { get; set; }

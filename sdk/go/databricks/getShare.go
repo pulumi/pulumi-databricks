@@ -63,28 +63,39 @@ func LookupShare(ctx *pulumi.Context, args *LookupShareArgs, opts ...pulumi.Invo
 
 // A collection of arguments for invoking getShare.
 type LookupShareArgs struct {
-	// Time when the share was created.
-	CreatedAt *int `pulumi:"createdAt"`
-	// The principal that created the share.
-	CreatedBy *string `pulumi:"createdBy"`
+	// Description about the object.
+	Comment *string `pulumi:"comment"`
 	// The name of the share
 	Name *string `pulumi:"name"`
 	// arrays containing details of each object in the share.
 	Objects []GetShareObject `pulumi:"objects"`
+	Owner   *string          `pulumi:"owner"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *GetShareProviderConfig `pulumi:"providerConfig"`
+	StorageRoot    *string                 `pulumi:"storageRoot"`
 }
 
 // A collection of values returned by getShare.
 type LookupShareResult struct {
+	// Description about the object.
+	Comment *string `pulumi:"comment"`
 	// Time when the share was created.
 	CreatedAt int `pulumi:"createdAt"`
 	// The principal that created the share.
-	CreatedBy string `pulumi:"createdBy"`
+	CreatedBy      string `pulumi:"createdBy"`
+	EffectiveOwner string `pulumi:"effectiveOwner"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Full name of the object being shared.
-	Name string `pulumi:"name"`
+	Name *string `pulumi:"name"`
 	// arrays containing details of each object in the share.
-	Objects []GetShareObject `pulumi:"objects"`
+	Objects         []GetShareObject        `pulumi:"objects"`
+	Owner           *string                 `pulumi:"owner"`
+	ProviderConfig  *GetShareProviderConfig `pulumi:"providerConfig"`
+	StorageLocation string                  `pulumi:"storageLocation"`
+	StorageRoot     *string                 `pulumi:"storageRoot"`
+	UpdatedAt       int                     `pulumi:"updatedAt"`
+	UpdatedBy       string                  `pulumi:"updatedBy"`
 }
 
 func LookupShareOutput(ctx *pulumi.Context, args LookupShareOutputArgs, opts ...pulumi.InvokeOption) LookupShareResultOutput {
@@ -98,14 +109,16 @@ func LookupShareOutput(ctx *pulumi.Context, args LookupShareOutputArgs, opts ...
 
 // A collection of arguments for invoking getShare.
 type LookupShareOutputArgs struct {
-	// Time when the share was created.
-	CreatedAt pulumi.IntPtrInput `pulumi:"createdAt"`
-	// The principal that created the share.
-	CreatedBy pulumi.StringPtrInput `pulumi:"createdBy"`
+	// Description about the object.
+	Comment pulumi.StringPtrInput `pulumi:"comment"`
 	// The name of the share
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// arrays containing details of each object in the share.
 	Objects GetShareObjectArrayInput `pulumi:"objects"`
+	Owner   pulumi.StringPtrInput    `pulumi:"owner"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig GetShareProviderConfigPtrInput `pulumi:"providerConfig"`
+	StorageRoot    pulumi.StringPtrInput          `pulumi:"storageRoot"`
 }
 
 func (LookupShareOutputArgs) ElementType() reflect.Type {
@@ -127,6 +140,11 @@ func (o LookupShareResultOutput) ToLookupShareResultOutputWithContext(ctx contex
 	return o
 }
 
+// Description about the object.
+func (o LookupShareResultOutput) Comment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupShareResult) *string { return v.Comment }).(pulumi.StringPtrOutput)
+}
+
 // Time when the share was created.
 func (o LookupShareResultOutput) CreatedAt() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupShareResult) int { return v.CreatedAt }).(pulumi.IntOutput)
@@ -137,19 +155,47 @@ func (o LookupShareResultOutput) CreatedBy() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupShareResult) string { return v.CreatedBy }).(pulumi.StringOutput)
 }
 
+func (o LookupShareResultOutput) EffectiveOwner() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupShareResult) string { return v.EffectiveOwner }).(pulumi.StringOutput)
+}
+
 // The provider-assigned unique ID for this managed resource.
 func (o LookupShareResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupShareResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Full name of the object being shared.
-func (o LookupShareResultOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupShareResult) string { return v.Name }).(pulumi.StringOutput)
+func (o LookupShareResultOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupShareResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 // arrays containing details of each object in the share.
 func (o LookupShareResultOutput) Objects() GetShareObjectArrayOutput {
 	return o.ApplyT(func(v LookupShareResult) []GetShareObject { return v.Objects }).(GetShareObjectArrayOutput)
+}
+
+func (o LookupShareResultOutput) Owner() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupShareResult) *string { return v.Owner }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupShareResultOutput) ProviderConfig() GetShareProviderConfigPtrOutput {
+	return o.ApplyT(func(v LookupShareResult) *GetShareProviderConfig { return v.ProviderConfig }).(GetShareProviderConfigPtrOutput)
+}
+
+func (o LookupShareResultOutput) StorageLocation() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupShareResult) string { return v.StorageLocation }).(pulumi.StringOutput)
+}
+
+func (o LookupShareResultOutput) StorageRoot() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupShareResult) *string { return v.StorageRoot }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupShareResultOutput) UpdatedAt() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupShareResult) int { return v.UpdatedAt }).(pulumi.IntOutput)
+}
+
+func (o LookupShareResultOutput) UpdatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupShareResult) string { return v.UpdatedBy }).(pulumi.StringOutput)
 }
 
 func init() {

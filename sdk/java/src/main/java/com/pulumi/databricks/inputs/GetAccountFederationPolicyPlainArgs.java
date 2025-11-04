@@ -4,12 +4,9 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
-import com.pulumi.databricks.inputs.GetAccountFederationPolicyOidcPolicy;
-import java.lang.Integer;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GetAccountFederationPolicyPlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -17,72 +14,24 @@ public final class GetAccountFederationPolicyPlainArgs extends com.pulumi.resour
     public static final GetAccountFederationPolicyPlainArgs Empty = new GetAccountFederationPolicyPlainArgs();
 
     /**
-     * (string) - Description of the federation policy
+     * The ID of the federation policy. Output only
      * 
      */
-    @Import(name="description")
-    private @Nullable String description;
+    @Import(name="policyId", required=true)
+    private String policyId;
 
     /**
-     * @return (string) - Description of the federation policy
+     * @return The ID of the federation policy. Output only
      * 
      */
-    public Optional<String> description() {
-        return Optional.ofNullable(this.description);
-    }
-
-    /**
-     * (OidcFederationPolicy)
-     * 
-     */
-    @Import(name="oidcPolicy")
-    private @Nullable GetAccountFederationPolicyOidcPolicy oidcPolicy;
-
-    /**
-     * @return (OidcFederationPolicy)
-     * 
-     */
-    public Optional<GetAccountFederationPolicyOidcPolicy> oidcPolicy() {
-        return Optional.ofNullable(this.oidcPolicy);
-    }
-
-    /**
-     * The ID of the federation policy
-     * 
-     */
-    @Import(name="policyId")
-    private @Nullable String policyId;
-
-    /**
-     * @return The ID of the federation policy
-     * 
-     */
-    public Optional<String> policyId() {
-        return Optional.ofNullable(this.policyId);
-    }
-
-    /**
-     * (integer) - The service principal ID that this federation policy applies to. Only set for service principal federation policies
-     * 
-     */
-    @Import(name="servicePrincipalId")
-    private @Nullable Integer servicePrincipalId;
-
-    /**
-     * @return (integer) - The service principal ID that this federation policy applies to. Only set for service principal federation policies
-     * 
-     */
-    public Optional<Integer> servicePrincipalId() {
-        return Optional.ofNullable(this.servicePrincipalId);
+    public String policyId() {
+        return this.policyId;
     }
 
     private GetAccountFederationPolicyPlainArgs() {}
 
     private GetAccountFederationPolicyPlainArgs(GetAccountFederationPolicyPlainArgs $) {
-        this.description = $.description;
-        this.oidcPolicy = $.oidcPolicy;
         this.policyId = $.policyId;
-        this.servicePrincipalId = $.servicePrincipalId;
     }
 
     public static Builder builder() {
@@ -104,50 +53,20 @@ public final class GetAccountFederationPolicyPlainArgs extends com.pulumi.resour
         }
 
         /**
-         * @param description (string) - Description of the federation policy
+         * @param policyId The ID of the federation policy. Output only
          * 
          * @return builder
          * 
          */
-        public Builder description(@Nullable String description) {
-            $.description = description;
-            return this;
-        }
-
-        /**
-         * @param oidcPolicy (OidcFederationPolicy)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder oidcPolicy(@Nullable GetAccountFederationPolicyOidcPolicy oidcPolicy) {
-            $.oidcPolicy = oidcPolicy;
-            return this;
-        }
-
-        /**
-         * @param policyId The ID of the federation policy
-         * 
-         * @return builder
-         * 
-         */
-        public Builder policyId(@Nullable String policyId) {
+        public Builder policyId(String policyId) {
             $.policyId = policyId;
             return this;
         }
 
-        /**
-         * @param servicePrincipalId (integer) - The service principal ID that this federation policy applies to. Only set for service principal federation policies
-         * 
-         * @return builder
-         * 
-         */
-        public Builder servicePrincipalId(@Nullable Integer servicePrincipalId) {
-            $.servicePrincipalId = servicePrincipalId;
-            return this;
-        }
-
         public GetAccountFederationPolicyPlainArgs build() {
+            if ($.policyId == null) {
+                throw new MissingRequiredPropertyException("GetAccountFederationPolicyPlainArgs", "policyId");
+            }
             return $;
         }
     }

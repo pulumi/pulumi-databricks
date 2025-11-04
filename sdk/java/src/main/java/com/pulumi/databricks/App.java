@@ -14,6 +14,7 @@ import com.pulumi.databricks.outputs.AppActiveDeployment;
 import com.pulumi.databricks.outputs.AppAppStatus;
 import com.pulumi.databricks.outputs.AppComputeStatus;
 import com.pulumi.databricks.outputs.AppPendingDeployment;
+import com.pulumi.databricks.outputs.AppProviderConfig;
 import com.pulumi.databricks.outputs.AppResource;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -96,6 +97,20 @@ public class App extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> budgetPolicyId() {
         return Codegen.optional(this.budgetPolicyId);
+    }
+    /**
+     * A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`, `LIQUID`.
+     * 
+     */
+    @Export(name="computeSize", refs={String.class}, tree="[0]")
+    private Output<String> computeSize;
+
+    /**
+     * @return A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`, `LIQUID`.
+     * 
+     */
+    public Output<String> computeSize() {
+        return this.computeSize;
     }
     /**
      * attribute
@@ -233,6 +248,12 @@ public class App extends com.pulumi.resources.CustomResource {
     public Output<AppPendingDeployment> pendingDeployment() {
         return this.pendingDeployment;
     }
+    @Export(name="providerConfig", refs={AppProviderConfig.class}, tree="[0]")
+    private Output</* @Nullable */ AppProviderConfig> providerConfig;
+
+    public Output<Optional<AppProviderConfig>> providerConfig() {
+        return Codegen.optional(this.providerConfig);
+    }
     /**
      * A list of resources that the app have access to.
      * 
@@ -247,9 +268,17 @@ public class App extends com.pulumi.resources.CustomResource {
     public Output<Optional<List<AppResource>>> resources() {
         return Codegen.optional(this.resources);
     }
+    /**
+     * client_id (application_id) of the app service principal
+     * 
+     */
     @Export(name="servicePrincipalClientId", refs={String.class}, tree="[0]")
     private Output<String> servicePrincipalClientId;
 
+    /**
+     * @return client_id (application_id) of the app service principal
+     * 
+     */
     public Output<String> servicePrincipalClientId() {
         return this.servicePrincipalClientId;
     }

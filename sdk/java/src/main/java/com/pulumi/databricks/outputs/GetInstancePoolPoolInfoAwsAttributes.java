@@ -14,12 +14,16 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetInstancePoolPoolInfoAwsAttributes {
     private @Nullable String availability;
+    private @Nullable String instanceProfileArn;
     private @Nullable Integer spotBidPricePercent;
     private String zoneId;
 
     private GetInstancePoolPoolInfoAwsAttributes() {}
     public Optional<String> availability() {
         return Optional.ofNullable(this.availability);
+    }
+    public Optional<String> instanceProfileArn() {
+        return Optional.ofNullable(this.instanceProfileArn);
     }
     public Optional<Integer> spotBidPricePercent() {
         return Optional.ofNullable(this.spotBidPricePercent);
@@ -38,12 +42,14 @@ public final class GetInstancePoolPoolInfoAwsAttributes {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String availability;
+        private @Nullable String instanceProfileArn;
         private @Nullable Integer spotBidPricePercent;
         private String zoneId;
         public Builder() {}
         public Builder(GetInstancePoolPoolInfoAwsAttributes defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.availability = defaults.availability;
+    	      this.instanceProfileArn = defaults.instanceProfileArn;
     	      this.spotBidPricePercent = defaults.spotBidPricePercent;
     	      this.zoneId = defaults.zoneId;
         }
@@ -52,6 +58,12 @@ public final class GetInstancePoolPoolInfoAwsAttributes {
         public Builder availability(@Nullable String availability) {
 
             this.availability = availability;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder instanceProfileArn(@Nullable String instanceProfileArn) {
+
+            this.instanceProfileArn = instanceProfileArn;
             return this;
         }
         @CustomType.Setter
@@ -71,6 +83,7 @@ public final class GetInstancePoolPoolInfoAwsAttributes {
         public GetInstancePoolPoolInfoAwsAttributes build() {
             final var _resultValue = new GetInstancePoolPoolInfoAwsAttributes();
             _resultValue.availability = availability;
+            _resultValue.instanceProfileArn = instanceProfileArn;
             _resultValue.spotBidPricePercent = spotBidPricePercent;
             _resultValue.zoneId = zoneId;
             return _resultValue;

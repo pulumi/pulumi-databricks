@@ -12,6 +12,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+//
 // ## Import
 //
 // As of Pulumi v1.5, resources can be imported through configuration.
@@ -29,7 +31,7 @@ import (
 // If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
 //
 // ```sh
-// $ pulumi import databricks:index/onlineStore:OnlineStore databricks_online_store "name"
+// $ pulumi import databricks:index/onlineStore:OnlineStore this "name"
 // ```
 type OnlineStore struct {
 	pulumi.CustomResourceState
@@ -46,8 +48,6 @@ type OnlineStore struct {
 	ReadReplicaCount pulumi.IntPtrOutput `pulumi:"readReplicaCount"`
 	// (string) - The current state of the online store. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
 	State pulumi.StringOutput `pulumi:"state"`
-	// Workspace ID of the resource
-	WorkspaceId pulumi.StringPtrOutput `pulumi:"workspaceId"`
 }
 
 // NewOnlineStore registers a new resource with the given unique name, arguments, and options.
@@ -95,8 +95,6 @@ type onlineStoreState struct {
 	ReadReplicaCount *int `pulumi:"readReplicaCount"`
 	// (string) - The current state of the online store. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
 	State *string `pulumi:"state"`
-	// Workspace ID of the resource
-	WorkspaceId *string `pulumi:"workspaceId"`
 }
 
 type OnlineStoreState struct {
@@ -112,8 +110,6 @@ type OnlineStoreState struct {
 	ReadReplicaCount pulumi.IntPtrInput
 	// (string) - The current state of the online store. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
 	State pulumi.StringPtrInput
-	// Workspace ID of the resource
-	WorkspaceId pulumi.StringPtrInput
 }
 
 func (OnlineStoreState) ElementType() reflect.Type {
@@ -127,8 +123,6 @@ type onlineStoreArgs struct {
 	Name *string `pulumi:"name"`
 	// The number of read replicas for the online store. Defaults to 0
 	ReadReplicaCount *int `pulumi:"readReplicaCount"`
-	// Workspace ID of the resource
-	WorkspaceId *string `pulumi:"workspaceId"`
 }
 
 // The set of arguments for constructing a OnlineStore resource.
@@ -139,8 +133,6 @@ type OnlineStoreArgs struct {
 	Name pulumi.StringPtrInput
 	// The number of read replicas for the online store. Defaults to 0
 	ReadReplicaCount pulumi.IntPtrInput
-	// Workspace ID of the resource
-	WorkspaceId pulumi.StringPtrInput
 }
 
 func (OnlineStoreArgs) ElementType() reflect.Type {
@@ -258,11 +250,6 @@ func (o OnlineStoreOutput) ReadReplicaCount() pulumi.IntPtrOutput {
 // (string) - The current state of the online store. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
 func (o OnlineStoreOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *OnlineStore) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
-}
-
-// Workspace ID of the resource
-func (o OnlineStoreOutput) WorkspaceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *OnlineStore) pulumi.StringPtrOutput { return v.WorkspaceId }).(pulumi.StringPtrOutput)
 }
 
 type OnlineStoreArrayOutput struct{ *pulumi.OutputState }

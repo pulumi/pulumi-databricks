@@ -29,6 +29,12 @@ namespace Pulumi.Databricks.Inputs
         /// <summary>
         /// attribute
         /// </summary>
+        [Input("genieSpace")]
+        public Input<Inputs.AppResourceGenieSpaceGetArgs>? GenieSpace { get; set; }
+
+        /// <summary>
+        /// attribute
+        /// </summary>
         [Input("job")]
         public Input<Inputs.AppResourceJobGetArgs>? Job { get; set; }
 

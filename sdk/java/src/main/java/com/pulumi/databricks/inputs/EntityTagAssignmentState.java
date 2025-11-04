@@ -75,21 +75,6 @@ public final class EntityTagAssignmentState extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.tagValue);
     }
 
-    /**
-     * Workspace ID of the resource
-     * 
-     */
-    @Import(name="workspaceId")
-    private @Nullable Output<String> workspaceId;
-
-    /**
-     * @return Workspace ID of the resource
-     * 
-     */
-    public Optional<Output<String>> workspaceId() {
-        return Optional.ofNullable(this.workspaceId);
-    }
-
     private EntityTagAssignmentState() {}
 
     private EntityTagAssignmentState(EntityTagAssignmentState $) {
@@ -97,7 +82,6 @@ public final class EntityTagAssignmentState extends com.pulumi.resources.Resourc
         this.entityType = $.entityType;
         this.tagKey = $.tagKey;
         this.tagValue = $.tagValue;
-        this.workspaceId = $.workspaceId;
     }
 
     public static Builder builder() {
@@ -200,27 +184,6 @@ public final class EntityTagAssignmentState extends com.pulumi.resources.Resourc
          */
         public Builder tagValue(String tagValue) {
             return tagValue(Output.of(tagValue));
-        }
-
-        /**
-         * @param workspaceId Workspace ID of the resource
-         * 
-         * @return builder
-         * 
-         */
-        public Builder workspaceId(@Nullable Output<String> workspaceId) {
-            $.workspaceId = workspaceId;
-            return this;
-        }
-
-        /**
-         * @param workspaceId Workspace ID of the resource
-         * 
-         * @return builder
-         * 
-         */
-        public Builder workspaceId(String workspaceId) {
-            return workspaceId(Output.of(workspaceId));
         }
 
         public EntityTagAssignmentState build() {

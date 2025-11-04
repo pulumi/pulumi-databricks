@@ -12,6 +12,8 @@ namespace Pulumi.Databricks
     public static class GetServicePrincipalFederationPolicies
     {
         /// <summary>
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
         /// This data source can be used to fetch the list of federation policies for a service principal.
         /// 
         /// &gt; **Note** This data source can only be used with an account-level provider!
@@ -40,6 +42,8 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetServicePrincipalFederationPoliciesResult>("databricks:index/getServicePrincipalFederationPolicies:getServicePrincipalFederationPolicies", args ?? new GetServicePrincipalFederationPoliciesArgs(), options.WithDefaults());
 
         /// <summary>
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
         /// This data source can be used to fetch the list of federation policies for a service principal.
         /// 
         /// &gt; **Note** This data source can only be used with an account-level provider!
@@ -68,6 +72,8 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.Invoke<GetServicePrincipalFederationPoliciesResult>("databricks:index/getServicePrincipalFederationPolicies:getServicePrincipalFederationPolicies", args ?? new GetServicePrincipalFederationPoliciesInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
         /// This data source can be used to fetch the list of federation policies for a service principal.
         /// 
         /// &gt; **Note** This data source can only be used with an account-level provider!
@@ -99,6 +105,9 @@ namespace Pulumi.Databricks
 
     public sealed class GetServicePrincipalFederationPoliciesArgs : global::Pulumi.InvokeArgs
     {
+        [Input("pageSize")]
+        public int? PageSize { get; set; }
+
         /// <summary>
         /// The service principal id for the federation policy
         /// </summary>
@@ -113,6 +122,9 @@ namespace Pulumi.Databricks
 
     public sealed class GetServicePrincipalFederationPoliciesInvokeArgs : global::Pulumi.InvokeArgs
     {
+        [Input("pageSize")]
+        public Input<int>? PageSize { get; set; }
+
         /// <summary>
         /// The service principal id for the federation policy
         /// </summary>
@@ -133,9 +145,10 @@ namespace Pulumi.Databricks
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly int? PageSize;
         public readonly ImmutableArray<Outputs.GetServicePrincipalFederationPoliciesPolicyResult> Policies;
         /// <summary>
-        /// (integer) - The service principal ID that this federation policy applies to. Only set for service principal federation policies
+        /// (integer) - The service principal ID that this federation policy applies to. Output only. Only set for service principal federation policies
         /// </summary>
         public readonly int ServicePrincipalId;
 
@@ -143,11 +156,14 @@ namespace Pulumi.Databricks
         private GetServicePrincipalFederationPoliciesResult(
             string id,
 
+            int? pageSize,
+
             ImmutableArray<Outputs.GetServicePrincipalFederationPoliciesPolicyResult> policies,
 
             int servicePrincipalId)
         {
             Id = id;
+            PageSize = pageSize;
             Policies = policies;
             ServicePrincipalId = servicePrincipalId;
         }

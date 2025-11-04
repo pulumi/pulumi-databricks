@@ -43,8 +43,8 @@ namespace Pulumi.Databricks
         /// * databricks.Secret to manage [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
         /// * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code.
         /// </summary>
-        public static Task<GetAppsResult> InvokeAsync(InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAppsResult>("databricks:index/getApps:getApps", InvokeArgs.Empty, options.WithDefaults());
+        public static Task<GetAppsResult> InvokeAsync(GetAppsArgs? args = null, InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAppsResult>("databricks:index/getApps:getApps", args ?? new GetAppsArgs(), options.WithDefaults());
 
         /// <summary>
         /// &gt; This data source can only be used with a workspace-level provider!
@@ -78,8 +78,8 @@ namespace Pulumi.Databricks
         /// * databricks.Secret to manage [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
         /// * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code.
         /// </summary>
-        public static Output<GetAppsResult> Invoke(InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.Invoke<GetAppsResult>("databricks:index/getApps:getApps", InvokeArgs.Empty, options.WithDefaults());
+        public static Output<GetAppsResult> Invoke(GetAppsInvokeArgs? args = null, InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAppsResult>("databricks:index/getApps:getApps", args ?? new GetAppsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// &gt; This data source can only be used with a workspace-level provider!
@@ -113,8 +113,31 @@ namespace Pulumi.Databricks
         /// * databricks.Secret to manage [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
         /// * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code.
         /// </summary>
-        public static Output<GetAppsResult> Invoke(InvokeOutputOptions options)
-            => global::Pulumi.Deployment.Instance.Invoke<GetAppsResult>("databricks:index/getApps:getApps", InvokeArgs.Empty, options.WithDefaults());
+        public static Output<GetAppsResult> Invoke(GetAppsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAppsResult>("databricks:index/getApps:getApps", args ?? new GetAppsInvokeArgs(), options.WithDefaults());
+    }
+
+
+    public sealed class GetAppsArgs : global::Pulumi.InvokeArgs
+    {
+        [Input("providerConfig")]
+        public Inputs.GetAppsProviderConfigArgs? ProviderConfig { get; set; }
+
+        public GetAppsArgs()
+        {
+        }
+        public static new GetAppsArgs Empty => new GetAppsArgs();
+    }
+
+    public sealed class GetAppsInvokeArgs : global::Pulumi.InvokeArgs
+    {
+        [Input("providerConfig")]
+        public Input<Inputs.GetAppsProviderConfigInputArgs>? ProviderConfig { get; set; }
+
+        public GetAppsInvokeArgs()
+        {
+        }
+        public static new GetAppsInvokeArgs Empty => new GetAppsInvokeArgs();
     }
 
 
@@ -126,15 +149,19 @@ namespace Pulumi.Databricks
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly Outputs.GetAppsProviderConfigResult? ProviderConfig;
 
         [OutputConstructor]
         private GetAppsResult(
             ImmutableArray<Outputs.GetAppsAppResult> apps,
 
-            string id)
+            string id,
+
+            Outputs.GetAppsProviderConfigResult? providerConfig)
         {
             Apps = apps;
             Id = id;
+            ProviderConfig = providerConfig;
         }
     }
 }

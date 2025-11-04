@@ -12,6 +12,8 @@ namespace Pulumi.Databricks
     public static class GetAppsSettingsCustomTemplate
     {
         /// <summary>
+        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
         /// This data source can be used to get a single Custom Template.
         /// 
         /// 
@@ -39,6 +41,8 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAppsSettingsCustomTemplateResult>("databricks:index/getAppsSettingsCustomTemplate:getAppsSettingsCustomTemplate", args ?? new GetAppsSettingsCustomTemplateArgs(), options.WithDefaults());
 
         /// <summary>
+        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
         /// This data source can be used to get a single Custom Template.
         /// 
         /// 
@@ -66,6 +70,8 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.Invoke<GetAppsSettingsCustomTemplateResult>("databricks:index/getAppsSettingsCustomTemplate:getAppsSettingsCustomTemplate", args ?? new GetAppsSettingsCustomTemplateInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
         /// This data source can be used to get a single Custom Template.
         /// 
         /// 
@@ -97,47 +103,11 @@ namespace Pulumi.Databricks
     public sealed class GetAppsSettingsCustomTemplateArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// (string) - Description of the App Resource
-        /// </summary>
-        [Input("description")]
-        public string? Description { get; set; }
-
-        /// <summary>
-        /// (string) - The Git provider of the template
-        /// </summary>
-        [Input("gitProvider", required: true)]
-        public string GitProvider { get; set; } = null!;
-
-        /// <summary>
-        /// (string) - The Git repository URL that the template resides in
-        /// </summary>
-        [Input("gitRepo", required: true)]
-        public string GitRepo { get; set; } = null!;
-
-        /// <summary>
-        /// (AppManifest) - The manifest of the template. It defines fields and default values when installing the template
-        /// </summary>
-        [Input("manifest", required: true)]
-        public Inputs.GetAppsSettingsCustomTemplateManifestArgs Manifest { get; set; } = null!;
-
-        /// <summary>
         /// The name of the template. It must contain only alphanumeric characters, hyphens, underscores, and whitespaces.
         /// It must be unique within the workspace
         /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
-
-        /// <summary>
-        /// (string) - The path to the template within the Git repository
-        /// </summary>
-        [Input("path", required: true)]
-        public string Path { get; set; } = null!;
-
-        /// <summary>
-        /// Workspace ID of the resource
-        /// </summary>
-        [Input("workspaceId")]
-        public string? WorkspaceId { get; set; }
 
         public GetAppsSettingsCustomTemplateArgs()
         {
@@ -148,47 +118,11 @@ namespace Pulumi.Databricks
     public sealed class GetAppsSettingsCustomTemplateInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// (string) - Description of the App Resource
-        /// </summary>
-        [Input("description")]
-        public Input<string>? Description { get; set; }
-
-        /// <summary>
-        /// (string) - The Git provider of the template
-        /// </summary>
-        [Input("gitProvider", required: true)]
-        public Input<string> GitProvider { get; set; } = null!;
-
-        /// <summary>
-        /// (string) - The Git repository URL that the template resides in
-        /// </summary>
-        [Input("gitRepo", required: true)]
-        public Input<string> GitRepo { get; set; } = null!;
-
-        /// <summary>
-        /// (AppManifest) - The manifest of the template. It defines fields and default values when installing the template
-        /// </summary>
-        [Input("manifest", required: true)]
-        public Input<Inputs.GetAppsSettingsCustomTemplateManifestInputArgs> Manifest { get; set; } = null!;
-
-        /// <summary>
         /// The name of the template. It must contain only alphanumeric characters, hyphens, underscores, and whitespaces.
         /// It must be unique within the workspace
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
-
-        /// <summary>
-        /// (string) - The path to the template within the Git repository
-        /// </summary>
-        [Input("path", required: true)]
-        public Input<string> Path { get; set; } = null!;
-
-        /// <summary>
-        /// Workspace ID of the resource
-        /// </summary>
-        [Input("workspaceId")]
-        public Input<string>? WorkspaceId { get; set; }
 
         public GetAppsSettingsCustomTemplateInvokeArgs()
         {
@@ -207,7 +141,7 @@ namespace Pulumi.Databricks
         /// <summary>
         /// (string) - Description of the App Resource
         /// </summary>
-        public readonly string? Description;
+        public readonly string Description;
         /// <summary>
         /// (string) - The Git provider of the template
         /// </summary>
@@ -232,13 +166,12 @@ namespace Pulumi.Databricks
         /// (string) - The path to the template within the Git repository
         /// </summary>
         public readonly string Path;
-        public readonly string? WorkspaceId;
 
         [OutputConstructor]
         private GetAppsSettingsCustomTemplateResult(
             string creator,
 
-            string? description,
+            string description,
 
             string gitProvider,
 
@@ -250,9 +183,7 @@ namespace Pulumi.Databricks
 
             string name,
 
-            string path,
-
-            string? workspaceId)
+            string path)
         {
             Creator = creator;
             Description = description;
@@ -262,7 +193,6 @@ namespace Pulumi.Databricks
             Manifest = manifest;
             Name = name;
             Path = path;
-            WorkspaceId = workspaceId;
         }
     }
 }

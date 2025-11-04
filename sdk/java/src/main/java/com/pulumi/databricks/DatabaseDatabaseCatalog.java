@@ -12,10 +12,11 @@ import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.DatabaseDatabaseCatalogState;
 import java.lang.Boolean;
 import java.lang.String;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * 
  * Database Catalogs are databases inside a Lakebase Database Instance which are synced into a Postgres Catalog inside Unity Catalog.
  * 
  * ## Example Usage
@@ -150,7 +151,7 @@ import javax.annotation.Nullable;
  * If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
  * 
  * ```sh
- * $ pulumi import databricks:index/databaseDatabaseCatalog:DatabaseDatabaseCatalog databricks_database_database_catalog &#34;name&#34;
+ * $ pulumi import databricks:index/databaseDatabaseCatalog:DatabaseDatabaseCatalog this &#34;name&#34;
  * ```
  * 
  */
@@ -217,20 +218,6 @@ public class DatabaseDatabaseCatalog extends com.pulumi.resources.CustomResource
      */
     public Output<String> uid() {
         return this.uid;
-    }
-    /**
-     * Workspace ID of the resource
-     * 
-     */
-    @Export(name="workspaceId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> workspaceId;
-
-    /**
-     * @return Workspace ID of the resource
-     * 
-     */
-    public Output<Optional<String>> workspaceId() {
-        return Codegen.optional(this.workspaceId);
     }
 
     /**

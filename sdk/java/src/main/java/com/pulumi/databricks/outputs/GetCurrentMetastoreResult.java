@@ -5,9 +5,12 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetCurrentMetastoreMetastoreInfo;
+import com.pulumi.databricks.outputs.GetCurrentMetastoreProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetCurrentMetastoreResult {
@@ -21,6 +24,7 @@ public final class GetCurrentMetastoreResult {
      * 
      */
     private GetCurrentMetastoreMetastoreInfo metastoreInfo;
+    private @Nullable GetCurrentMetastoreProviderConfig providerConfig;
 
     private GetCurrentMetastoreResult() {}
     /**
@@ -37,6 +41,9 @@ public final class GetCurrentMetastoreResult {
     public GetCurrentMetastoreMetastoreInfo metastoreInfo() {
         return this.metastoreInfo;
     }
+    public Optional<GetCurrentMetastoreProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -49,11 +56,13 @@ public final class GetCurrentMetastoreResult {
     public static final class Builder {
         private String id;
         private GetCurrentMetastoreMetastoreInfo metastoreInfo;
+        private @Nullable GetCurrentMetastoreProviderConfig providerConfig;
         public Builder() {}
         public Builder(GetCurrentMetastoreResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
     	      this.metastoreInfo = defaults.metastoreInfo;
+    	      this.providerConfig = defaults.providerConfig;
         }
 
         @CustomType.Setter
@@ -72,10 +81,17 @@ public final class GetCurrentMetastoreResult {
             this.metastoreInfo = metastoreInfo;
             return this;
         }
+        @CustomType.Setter
+        public Builder providerConfig(@Nullable GetCurrentMetastoreProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
+            return this;
+        }
         public GetCurrentMetastoreResult build() {
             final var _resultValue = new GetCurrentMetastoreResult();
             _resultValue.id = id;
             _resultValue.metastoreInfo = metastoreInfo;
+            _resultValue.providerConfig = providerConfig;
             return _resultValue;
         }
     }

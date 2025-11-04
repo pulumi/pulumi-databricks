@@ -28,13 +28,16 @@ class GetStorageCredentialResult:
     """
     A collection of values returned by getStorageCredential.
     """
-    def __init__(__self__, id=None, name=None, storage_credential_info=None):
+    def __init__(__self__, id=None, name=None, provider_config=None, storage_credential_info=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if provider_config and not isinstance(provider_config, dict):
+            raise TypeError("Expected argument 'provider_config' to be a dict")
+        pulumi.set(__self__, "provider_config", provider_config)
         if storage_credential_info and not isinstance(storage_credential_info, dict):
             raise TypeError("Expected argument 'storage_credential_info' to be a dict")
         pulumi.set(__self__, "storage_credential_info", storage_credential_info)
@@ -53,6 +56,11 @@ class GetStorageCredentialResult:
         return pulumi.get(self, "name")
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional['outputs.GetStorageCredentialProviderConfigResult']:
+        return pulumi.get(self, "provider_config")
+
+    @_builtins.property
     @pulumi.getter(name="storageCredentialInfo")
     def storage_credential_info(self) -> 'outputs.GetStorageCredentialStorageCredentialInfoResult':
         """
@@ -69,11 +77,13 @@ class AwaitableGetStorageCredentialResult(GetStorageCredentialResult):
         return GetStorageCredentialResult(
             id=self.id,
             name=self.name,
+            provider_config=self.provider_config,
             storage_credential_info=self.storage_credential_info)
 
 
 def get_storage_credential(id: Optional[_builtins.str] = None,
                            name: Optional[_builtins.str] = None,
+                           provider_config: Optional[Union['GetStorageCredentialProviderConfigArgs', 'GetStorageCredentialProviderConfigArgsDict']] = None,
                            storage_credential_info: Optional[Union['GetStorageCredentialStorageCredentialInfoArgs', 'GetStorageCredentialStorageCredentialInfoArgsDict']] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetStorageCredentialResult:
     """
@@ -103,11 +113,13 @@ def get_storage_credential(id: Optional[_builtins.str] = None,
 
     :param _builtins.str id: Unique ID of storage credential.
     :param _builtins.str name: The name of the storage credential
+    :param Union['GetStorageCredentialProviderConfigArgs', 'GetStorageCredentialProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     :param Union['GetStorageCredentialStorageCredentialInfoArgs', 'GetStorageCredentialStorageCredentialInfoArgsDict'] storage_credential_info: array of objects with information about storage credential.
     """
     __args__ = dict()
     __args__['id'] = id
     __args__['name'] = name
+    __args__['providerConfig'] = provider_config
     __args__['storageCredentialInfo'] = storage_credential_info
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getStorageCredential:getStorageCredential', __args__, opts=opts, typ=GetStorageCredentialResult).value
@@ -115,9 +127,11 @@ def get_storage_credential(id: Optional[_builtins.str] = None,
     return AwaitableGetStorageCredentialResult(
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
+        provider_config=pulumi.get(__ret__, 'provider_config'),
         storage_credential_info=pulumi.get(__ret__, 'storage_credential_info'))
 def get_storage_credential_output(id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                   name: Optional[pulumi.Input[_builtins.str]] = None,
+                                  provider_config: Optional[pulumi.Input[Optional[Union['GetStorageCredentialProviderConfigArgs', 'GetStorageCredentialProviderConfigArgsDict']]]] = None,
                                   storage_credential_info: Optional[pulumi.Input[Optional[Union['GetStorageCredentialStorageCredentialInfoArgs', 'GetStorageCredentialStorageCredentialInfoArgsDict']]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetStorageCredentialResult]:
     """
@@ -147,15 +161,18 @@ def get_storage_credential_output(id: Optional[pulumi.Input[Optional[_builtins.s
 
     :param _builtins.str id: Unique ID of storage credential.
     :param _builtins.str name: The name of the storage credential
+    :param Union['GetStorageCredentialProviderConfigArgs', 'GetStorageCredentialProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     :param Union['GetStorageCredentialStorageCredentialInfoArgs', 'GetStorageCredentialStorageCredentialInfoArgsDict'] storage_credential_info: array of objects with information about storage credential.
     """
     __args__ = dict()
     __args__['id'] = id
     __args__['name'] = name
+    __args__['providerConfig'] = provider_config
     __args__['storageCredentialInfo'] = storage_credential_info
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getStorageCredential:getStorageCredential', __args__, opts=opts, typ=GetStorageCredentialResult)
     return __ret__.apply(lambda __response__: GetStorageCredentialResult(
         id=pulumi.get(__response__, 'id'),
         name=pulumi.get(__response__, 'name'),
+        provider_config=pulumi.get(__response__, 'provider_config'),
         storage_credential_info=pulumi.get(__response__, 'storage_credential_info')))

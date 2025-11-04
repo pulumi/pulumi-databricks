@@ -87,6 +87,9 @@ export class Catalog extends pulumi.CustomResource {
     }
 
     declare public readonly browseOnly: pulumi.Output<boolean | undefined>;
+    /**
+     * the type of the catalog.
+     */
     declare public /*out*/ readonly catalogType: pulumi.Output<string>;
     /**
      * User-supplied free-form text.
@@ -96,7 +99,13 @@ export class Catalog extends pulumi.CustomResource {
      * For Foreign Catalogs: the name of the connection to an external data source. Changes forces creation of a new resource.
      */
     declare public readonly connectionName: pulumi.Output<string | undefined>;
+    /**
+     * time at which this catalog was created, in epoch milliseconds.
+     */
     declare public /*out*/ readonly createdAt: pulumi.Output<number>;
+    /**
+     * username of catalog creator.
+     */
     declare public /*out*/ readonly createdBy: pulumi.Output<string>;
     declare public readonly effectivePredictiveOptimizationFlag: pulumi.Output<outputs.CatalogEffectivePredictiveOptimizationFlag>;
     /**
@@ -137,17 +146,29 @@ export class Catalog extends pulumi.CustomResource {
      */
     declare public readonly providerName: pulumi.Output<string | undefined>;
     declare public readonly provisioningInfo: pulumi.Output<outputs.CatalogProvisioningInfo | undefined>;
+    /**
+     * the type of Unity Catalog securable.
+     */
     declare public /*out*/ readonly securableType: pulumi.Output<string>;
     /**
      * For Delta Sharing Catalogs: the name of the share under the share provider. Change forces creation of a new resource.
      */
     declare public readonly shareName: pulumi.Output<string | undefined>;
-    declare public readonly storageLocation: pulumi.Output<string | undefined>;
+    /**
+     * effective storage Location URL (full path) for managed tables within catalog.
+     */
+    declare public /*out*/ readonly storageLocation: pulumi.Output<string>;
     /**
      * Managed location of the catalog. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
      */
     declare public readonly storageRoot: pulumi.Output<string | undefined>;
+    /**
+     * time at which this catalog was last modified, in epoch milliseconds..
+     */
     declare public /*out*/ readonly updatedAt: pulumi.Output<number>;
+    /**
+     * username of user who last modified catalog.
+     */
     declare public /*out*/ readonly updatedBy: pulumi.Output<string>;
 
     /**
@@ -204,13 +225,13 @@ export class Catalog extends pulumi.CustomResource {
             resourceInputs["providerName"] = args?.providerName;
             resourceInputs["provisioningInfo"] = args?.provisioningInfo;
             resourceInputs["shareName"] = args?.shareName;
-            resourceInputs["storageLocation"] = args?.storageLocation;
             resourceInputs["storageRoot"] = args?.storageRoot;
             resourceInputs["catalogType"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["createdBy"] = undefined /*out*/;
             resourceInputs["fullName"] = undefined /*out*/;
             resourceInputs["securableType"] = undefined /*out*/;
+            resourceInputs["storageLocation"] = undefined /*out*/;
             resourceInputs["updatedAt"] = undefined /*out*/;
             resourceInputs["updatedBy"] = undefined /*out*/;
         }
@@ -224,6 +245,9 @@ export class Catalog extends pulumi.CustomResource {
  */
 export interface CatalogState {
     browseOnly?: pulumi.Input<boolean>;
+    /**
+     * the type of the catalog.
+     */
     catalogType?: pulumi.Input<string>;
     /**
      * User-supplied free-form text.
@@ -233,7 +257,13 @@ export interface CatalogState {
      * For Foreign Catalogs: the name of the connection to an external data source. Changes forces creation of a new resource.
      */
     connectionName?: pulumi.Input<string>;
+    /**
+     * time at which this catalog was created, in epoch milliseconds.
+     */
     createdAt?: pulumi.Input<number>;
+    /**
+     * username of catalog creator.
+     */
     createdBy?: pulumi.Input<string>;
     effectivePredictiveOptimizationFlag?: pulumi.Input<inputs.CatalogEffectivePredictiveOptimizationFlag>;
     /**
@@ -274,17 +304,29 @@ export interface CatalogState {
      */
     providerName?: pulumi.Input<string>;
     provisioningInfo?: pulumi.Input<inputs.CatalogProvisioningInfo>;
+    /**
+     * the type of Unity Catalog securable.
+     */
     securableType?: pulumi.Input<string>;
     /**
      * For Delta Sharing Catalogs: the name of the share under the share provider. Change forces creation of a new resource.
      */
     shareName?: pulumi.Input<string>;
+    /**
+     * effective storage Location URL (full path) for managed tables within catalog.
+     */
     storageLocation?: pulumi.Input<string>;
     /**
      * Managed location of the catalog. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
      */
     storageRoot?: pulumi.Input<string>;
+    /**
+     * time at which this catalog was last modified, in epoch milliseconds..
+     */
     updatedAt?: pulumi.Input<number>;
+    /**
+     * username of user who last modified catalog.
+     */
     updatedBy?: pulumi.Input<string>;
 }
 
@@ -343,7 +385,6 @@ export interface CatalogArgs {
      * For Delta Sharing Catalogs: the name of the share under the share provider. Change forces creation of a new resource.
      */
     shareName?: pulumi.Input<string>;
-    storageLocation?: pulumi.Input<string>;
     /**
      * Managed location of the catalog. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
      */

@@ -12,6 +12,8 @@ namespace Pulumi.Databricks
     public static class GetAccountNetworkPolicy
     {
         /// <summary>
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
         /// This data source can be used to get a single network policy.
         /// 
         /// &gt; **Note** This data source can only be used with an account-level provider!
@@ -20,10 +22,12 @@ namespace Pulumi.Databricks
         /// 
         /// Referring to a network policy by id:
         /// </summary>
-        public static Task<GetAccountNetworkPolicyResult> InvokeAsync(GetAccountNetworkPolicyArgs? args = null, InvokeOptions? options = null)
+        public static Task<GetAccountNetworkPolicyResult> InvokeAsync(GetAccountNetworkPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccountNetworkPolicyResult>("databricks:index/getAccountNetworkPolicy:getAccountNetworkPolicy", args ?? new GetAccountNetworkPolicyArgs(), options.WithDefaults());
 
         /// <summary>
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
         /// This data source can be used to get a single network policy.
         /// 
         /// &gt; **Note** This data source can only be used with an account-level provider!
@@ -32,10 +36,12 @@ namespace Pulumi.Databricks
         /// 
         /// Referring to a network policy by id:
         /// </summary>
-        public static Output<GetAccountNetworkPolicyResult> Invoke(GetAccountNetworkPolicyInvokeArgs? args = null, InvokeOptions? options = null)
+        public static Output<GetAccountNetworkPolicyResult> Invoke(GetAccountNetworkPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccountNetworkPolicyResult>("databricks:index/getAccountNetworkPolicy:getAccountNetworkPolicy", args ?? new GetAccountNetworkPolicyInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
         /// This data source can be used to get a single network policy.
         /// 
         /// &gt; **Note** This data source can only be used with an account-level provider!
@@ -52,22 +58,10 @@ namespace Pulumi.Databricks
     public sealed class GetAccountNetworkPolicyArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// (string) - The associated account ID for this Network Policy object
-        /// </summary>
-        [Input("accountId")]
-        public string? AccountId { get; set; }
-
-        /// <summary>
-        /// (NetworkPolicyEgress) - The network policies applying for egress traffic
-        /// </summary>
-        [Input("egress")]
-        public Inputs.GetAccountNetworkPolicyEgressArgs? Egress { get; set; }
-
-        /// <summary>
         /// The unique identifier for the network policy
         /// </summary>
-        [Input("networkPolicyId")]
-        public string? NetworkPolicyId { get; set; }
+        [Input("networkPolicyId", required: true)]
+        public string NetworkPolicyId { get; set; } = null!;
 
         public GetAccountNetworkPolicyArgs()
         {
@@ -78,22 +72,10 @@ namespace Pulumi.Databricks
     public sealed class GetAccountNetworkPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// (string) - The associated account ID for this Network Policy object
-        /// </summary>
-        [Input("accountId")]
-        public Input<string>? AccountId { get; set; }
-
-        /// <summary>
-        /// (NetworkPolicyEgress) - The network policies applying for egress traffic
-        /// </summary>
-        [Input("egress")]
-        public Input<Inputs.GetAccountNetworkPolicyEgressInputArgs>? Egress { get; set; }
-
-        /// <summary>
         /// The unique identifier for the network policy
         /// </summary>
-        [Input("networkPolicyId")]
-        public Input<string>? NetworkPolicyId { get; set; }
+        [Input("networkPolicyId", required: true)]
+        public Input<string> NetworkPolicyId { get; set; } = null!;
 
         public GetAccountNetworkPolicyInvokeArgs()
         {
@@ -108,11 +90,11 @@ namespace Pulumi.Databricks
         /// <summary>
         /// (string) - The associated account ID for this Network Policy object
         /// </summary>
-        public readonly string? AccountId;
+        public readonly string AccountId;
         /// <summary>
         /// (NetworkPolicyEgress) - The network policies applying for egress traffic
         /// </summary>
-        public readonly Outputs.GetAccountNetworkPolicyEgressResult? Egress;
+        public readonly Outputs.GetAccountNetworkPolicyEgressResult Egress;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -120,17 +102,17 @@ namespace Pulumi.Databricks
         /// <summary>
         /// (string) - The unique identifier for the network policy
         /// </summary>
-        public readonly string? NetworkPolicyId;
+        public readonly string NetworkPolicyId;
 
         [OutputConstructor]
         private GetAccountNetworkPolicyResult(
-            string? accountId,
+            string accountId,
 
-            Outputs.GetAccountNetworkPolicyEgressResult? egress,
+            Outputs.GetAccountNetworkPolicyEgressResult egress,
 
             string id,
 
-            string? networkPolicyId)
+            string networkPolicyId)
         {
             AccountId = accountId;
             Egress = egress;

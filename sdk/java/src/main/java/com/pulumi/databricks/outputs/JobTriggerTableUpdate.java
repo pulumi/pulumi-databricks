@@ -14,12 +14,20 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class JobTriggerTableUpdate {
+    /**
+     * @return The table(s) condition based on which to trigger a job run.  Possible values are `ANY_UPDATED`, `ALL_UPDATED`.
+     * 
+     */
     private @Nullable String condition;
     /**
      * @return If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
      * 
      */
     private @Nullable Integer minTimeBetweenTriggersSeconds;
+    /**
+     * @return A non-empty list of tables to monitor for changes. The table name must be in the format `catalog_name.schema_name.table_name`.
+     * 
+     */
     private List<String> tableNames;
     /**
      * @return If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
@@ -28,6 +36,10 @@ public final class JobTriggerTableUpdate {
     private @Nullable Integer waitAfterLastChangeSeconds;
 
     private JobTriggerTableUpdate() {}
+    /**
+     * @return The table(s) condition based on which to trigger a job run.  Possible values are `ANY_UPDATED`, `ALL_UPDATED`.
+     * 
+     */
     public Optional<String> condition() {
         return Optional.ofNullable(this.condition);
     }
@@ -38,6 +50,10 @@ public final class JobTriggerTableUpdate {
     public Optional<Integer> minTimeBetweenTriggersSeconds() {
         return Optional.ofNullable(this.minTimeBetweenTriggersSeconds);
     }
+    /**
+     * @return A non-empty list of tables to monitor for changes. The table name must be in the format `catalog_name.schema_name.table_name`.
+     * 
+     */
     public List<String> tableNames() {
         return this.tableNames;
     }
