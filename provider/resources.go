@@ -355,12 +355,10 @@ func Provider() tfbridge.ProviderInfo {
 	prov.SetAutonaming(255, "-")
 	tfbridge.MustTraverseProperties(&prov, "workspace-id", setWorkspaceIDToString)
 
-	// moveProviderConfigCallback re-roots overrides that ended up on provider_config.Fields.
-	// PF single-nested blocks are exposed as TypeMap in the shim, so the traversal we run for
-	// workspace_id stops at `.provider_config.workspace_id`. That records overrides directly on
-	// SchemaInfo.Fields, but the bridge validator expects collection-like shapes to keep custom
-	// fields under Elem.Fields. This helper lifts any overrides we recorded back onto the Elem so
-	// tfgen passes validation while still preserving existing Elem overrides (if we had any).
+	// This is caused by [pulumi/pulumi-terraform-bridge#2803]
+	// The MustTraverseProperties for workspace-id above puts the property on the `.Field` instead of on `.Elem.Field`.
+	// This is a workaround where we postprocess the schema to put it on the correct spot.
+	// Upstream recently changed `provider_config` to PF which is why this is needed now
 	moveProviderConfigCallback := func(res shim.Resource, info *tfbridge.SchemaInfo) bool {
 		if info == nil || len(info.Fields) == 0 {
 			return true
