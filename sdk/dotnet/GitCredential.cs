@@ -96,13 +96,19 @@ namespace Pulumi.Databricks
         public Output<bool?> Force { get; private set; } = null!;
 
         /// <summary>
+        /// The email associated with your Git provider user account. Used for authentication with the remote repository and also sets the author &amp; committer identity for commits.
+        /// </summary>
+        [Output("gitEmail")]
+        public Output<string?> GitEmail { get; private set; } = null!;
+
+        /// <summary>
         /// case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Git Credentials API documentation](https://docs.databricks.com/dev-tools/api/latest/gitcredentials.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`, `azureDevOpsServicesAad`.
         /// </summary>
         [Output("gitProvider")]
         public Output<string> GitProvider { get; private set; } = null!;
 
         /// <summary>
-        /// user name at Git provider.
+        /// user name at Git provider.  For most Git providers it is only used to set the Git committer &amp; author names for commits, however it may be required for authentication depending on your Git provider / token requirements.
         /// </summary>
         [Output("gitUsername")]
         public Output<string?> GitUsername { get; private set; } = null!;
@@ -178,13 +184,19 @@ namespace Pulumi.Databricks
         public Input<bool>? Force { get; set; }
 
         /// <summary>
+        /// The email associated with your Git provider user account. Used for authentication with the remote repository and also sets the author &amp; committer identity for commits.
+        /// </summary>
+        [Input("gitEmail")]
+        public Input<string>? GitEmail { get; set; }
+
+        /// <summary>
         /// case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Git Credentials API documentation](https://docs.databricks.com/dev-tools/api/latest/gitcredentials.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`, `azureDevOpsServicesAad`.
         /// </summary>
         [Input("gitProvider", required: true)]
         public Input<string> GitProvider { get; set; } = null!;
 
         /// <summary>
-        /// user name at Git provider.
+        /// user name at Git provider.  For most Git providers it is only used to set the Git committer &amp; author names for commits, however it may be required for authentication depending on your Git provider / token requirements.
         /// </summary>
         [Input("gitUsername")]
         public Input<string>? GitUsername { get; set; }
@@ -222,13 +234,19 @@ namespace Pulumi.Databricks
         public Input<bool>? Force { get; set; }
 
         /// <summary>
+        /// The email associated with your Git provider user account. Used for authentication with the remote repository and also sets the author &amp; committer identity for commits.
+        /// </summary>
+        [Input("gitEmail")]
+        public Input<string>? GitEmail { get; set; }
+
+        /// <summary>
         /// case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Git Credentials API documentation](https://docs.databricks.com/dev-tools/api/latest/gitcredentials.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`, `azureDevOpsServicesAad`.
         /// </summary>
         [Input("gitProvider")]
         public Input<string>? GitProvider { get; set; }
 
         /// <summary>
-        /// user name at Git provider.
+        /// user name at Git provider.  For most Git providers it is only used to set the Git committer &amp; author names for commits, however it may be required for authentication depending on your Git provider / token requirements.
         /// </summary>
         [Input("gitUsername")]
         public Input<string>? GitUsername { get; set; }

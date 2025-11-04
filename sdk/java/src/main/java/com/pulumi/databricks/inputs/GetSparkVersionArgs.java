@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetSparkVersionProviderConfigArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -168,6 +169,21 @@ public final class GetSparkVersionArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<GetSparkVersionProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Optional<Output<GetSparkVersionProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
+    /**
      * if we should limit the search only to runtimes that are based on specific Scala version. Default to `2.12`.
      * 
      */
@@ -209,6 +225,7 @@ public final class GetSparkVersionArgs extends com.pulumi.resources.InvokeArgs {
         this.longTermSupport = $.longTermSupport;
         this.ml = $.ml;
         this.photon = $.photon;
+        this.providerConfig = $.providerConfig;
         this.scala = $.scala;
         this.sparkVersion = $.sparkVersion;
     }
@@ -434,6 +451,27 @@ public final class GetSparkVersionArgs extends com.pulumi.resources.InvokeArgs {
         @Deprecated /* Specify runtime_engine=""PHOTON"" in the cluster configuration */
         public Builder photon(Boolean photon) {
             return photon(Output.of(photon));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<GetSparkVersionProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(GetSparkVersionProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         /**

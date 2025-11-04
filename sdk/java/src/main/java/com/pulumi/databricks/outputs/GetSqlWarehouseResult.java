@@ -7,12 +7,15 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetSqlWarehouseChannel;
 import com.pulumi.databricks.outputs.GetSqlWarehouseHealth;
 import com.pulumi.databricks.outputs.GetSqlWarehouseOdbcParams;
+import com.pulumi.databricks.outputs.GetSqlWarehouseProviderConfig;
 import com.pulumi.databricks.outputs.GetSqlWarehouseTags;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetSqlWarehouseResult {
@@ -97,6 +100,7 @@ public final class GetSqlWarehouseResult {
      * 
      */
     private GetSqlWarehouseOdbcParams odbcParams;
+    private @Nullable GetSqlWarehouseProviderConfig providerConfig;
     /**
      * @return The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`.
      * 
@@ -234,6 +238,9 @@ public final class GetSqlWarehouseResult {
     public GetSqlWarehouseOdbcParams odbcParams() {
         return this.odbcParams;
     }
+    public Optional<GetSqlWarehouseProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
     /**
      * @return The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`.
      * 
@@ -289,6 +296,7 @@ public final class GetSqlWarehouseResult {
         private Integer numActiveSessions;
         private Integer numClusters;
         private GetSqlWarehouseOdbcParams odbcParams;
+        private @Nullable GetSqlWarehouseProviderConfig providerConfig;
         private String spotInstancePolicy;
         private String state;
         private GetSqlWarehouseTags tags;
@@ -313,6 +321,7 @@ public final class GetSqlWarehouseResult {
     	      this.numActiveSessions = defaults.numActiveSessions;
     	      this.numClusters = defaults.numClusters;
     	      this.odbcParams = defaults.odbcParams;
+    	      this.providerConfig = defaults.providerConfig;
     	      this.spotInstancePolicy = defaults.spotInstancePolicy;
     	      this.state = defaults.state;
     	      this.tags = defaults.tags;
@@ -456,6 +465,12 @@ public final class GetSqlWarehouseResult {
             return this;
         }
         @CustomType.Setter
+        public Builder providerConfig(@Nullable GetSqlWarehouseProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder spotInstancePolicy(String spotInstancePolicy) {
             if (spotInstancePolicy == null) {
               throw new MissingRequiredPropertyException("GetSqlWarehouseResult", "spotInstancePolicy");
@@ -506,6 +521,7 @@ public final class GetSqlWarehouseResult {
             _resultValue.numActiveSessions = numActiveSessions;
             _resultValue.numClusters = numClusters;
             _resultValue.odbcParams = odbcParams;
+            _resultValue.providerConfig = providerConfig;
             _resultValue.spotInstancePolicy = spotInstancePolicy;
             _resultValue.state = state;
             _resultValue.tags = tags;

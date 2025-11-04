@@ -13,17 +13,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class LibraryMaven {
+    /**
+     * @return Gradle-style Maven coordinates. For example: `org.jsoup:jsoup:1.7.2`.
+     * 
+     */
     private String coordinates;
+    /**
+     * @return List of dependencies to exclude. For example: `[&#34;slf4j:slf4j&#34;, &#34;*:hadoop-client&#34;]`. See [Maven dependency exclusions](https://maven.apache.org/guides/introduction/introduction-to-optional-and-excludes-dependencies.html) for more information.
+     * 
+     */
     private @Nullable List<String> exclusions;
+    /**
+     * @return Maven repository to install the Maven package from. If omitted, both Maven Central Repository and Spark Packages are searched.
+     * 
+     */
     private @Nullable String repo;
 
     private LibraryMaven() {}
+    /**
+     * @return Gradle-style Maven coordinates. For example: `org.jsoup:jsoup:1.7.2`.
+     * 
+     */
     public String coordinates() {
         return this.coordinates;
     }
+    /**
+     * @return List of dependencies to exclude. For example: `[&#34;slf4j:slf4j&#34;, &#34;*:hadoop-client&#34;]`. See [Maven dependency exclusions](https://maven.apache.org/guides/introduction/introduction-to-optional-and-excludes-dependencies.html) for more information.
+     * 
+     */
     public List<String> exclusions() {
         return this.exclusions == null ? List.of() : this.exclusions;
     }
+    /**
+     * @return Maven repository to install the Maven package from. If omitted, both Maven Central Repository and Spark Packages are searched.
+     * 
+     */
     public Optional<String> repo() {
         return Optional.ofNullable(this.repo);
     }

@@ -143,7 +143,7 @@ export interface AccountNetworkPolicyEgressNetworkAccessPolicyEnforcement {
 
 export interface AccountSettingV2AibiDashboardEmbeddingAccessPolicy {
     /**
-     * . Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
+     * Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
      */
     accessPolicyType: string;
 }
@@ -181,11 +181,11 @@ export interface AccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindo
 
 export interface AccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule {
     /**
-     * . Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
+     * Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
      */
     dayOfWeek?: string;
     /**
-     * . Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
+     * Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
      */
     frequency?: string;
     windowStartTime?: outputs.AccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime;
@@ -200,13 +200,9 @@ export interface AccountSettingV2BooleanVal {
     value?: boolean;
 }
 
-export interface AccountSettingV2DefaultDataSecurityMode {
-    status: string;
-}
-
 export interface AccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy {
     /**
-     * . Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
+     * Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
      */
     accessPolicyType: string;
 }
@@ -244,11 +240,11 @@ export interface AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMainten
 
 export interface AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule {
     /**
-     * . Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
+     * Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
      */
     dayOfWeek?: string;
     /**
-     * . Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
+     * Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
      */
     frequency?: string;
     windowStartTime?: outputs.AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime;
@@ -263,10 +259,6 @@ export interface AccountSettingV2EffectiveBooleanVal {
     value?: boolean;
 }
 
-export interface AccountSettingV2EffectiveDefaultDataSecurityMode {
-    status: string;
-}
-
 export interface AccountSettingV2EffectiveIntegerVal {
     value?: number;
 }
@@ -276,6 +268,9 @@ export interface AccountSettingV2EffectivePersonalCompute {
 }
 
 export interface AccountSettingV2EffectiveRestrictWorkspaceAdmins {
+    /**
+     * Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
+     */
     status: string;
 }
 
@@ -292,6 +287,9 @@ export interface AccountSettingV2PersonalCompute {
 }
 
 export interface AccountSettingV2RestrictWorkspaceAdmins {
+    /**
+     * Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
+     */
     status: string;
 }
 
@@ -383,9 +381,9 @@ export interface AlertV2Evaluation {
     /**
      * Operator used for comparison in alert evaluation. Possible values are: `EQUAL`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `IS_NOT_NULL`, `IS_NULL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`
      */
-    comparisonOperator?: string;
+    comparisonOperator: string;
     /**
-     * Alert state if result is empty. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
+     * Alert state if result is empty. Please avoid setting this field to be `UNKNOWN` because `UNKNOWN` state is planned to be deprecated. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
      */
     emptyResultState?: string;
     /**
@@ -399,7 +397,7 @@ export interface AlertV2Evaluation {
     /**
      * Source column from result to use to evaluate alert
      */
-    source?: outputs.AlertV2EvaluationSource;
+    source: outputs.AlertV2EvaluationSource;
     /**
      * (string) - Latest state of alert evaluation. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
      */
@@ -411,6 +409,8 @@ export interface AlertV2Evaluation {
 }
 
 export interface AlertV2EvaluationNotification {
+    effectiveNotifyOnOk: boolean;
+    effectiveRetriggerSeconds: number;
     /**
      * Whether to notify alert subscribers when alert returns back to normal
      */
@@ -429,11 +429,11 @@ export interface AlertV2EvaluationNotificationSubscription {
 
 export interface AlertV2EvaluationSource {
     /**
-     * . Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
+     * Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
      */
     aggregation?: string;
     display?: string;
-    name?: string;
+    name: string;
 }
 
 export interface AlertV2EvaluationThreshold {
@@ -443,11 +443,11 @@ export interface AlertV2EvaluationThreshold {
 
 export interface AlertV2EvaluationThresholdColumn {
     /**
-     * . Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
+     * Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
      */
     aggregation?: string;
     display?: string;
-    name?: string;
+    name: string;
 }
 
 export interface AlertV2EvaluationThresholdValue {
@@ -476,13 +476,13 @@ export interface AlertV2Schedule {
      * A cron expression using quartz syntax that specifies the schedule for this pipeline.
      * Should use the quartz format described here: http://www.quartz-scheduler.org/documentation/quartz-2.1.7/tutorials/tutorial-lesson-06.html
      */
-    quartzCronSchedule?: string;
+    quartzCronSchedule: string;
     /**
      * A Java timezone id. The schedule will be resolved using this timezone.
      * This will be combined with the quartzCronSchedule to determine the schedule.
      * See https://docs.databricks.com/sql/language-manual/sql-ref-syntax-aux-conf-mgmt-set-timezone.html for details
      */
-    timezoneId?: string;
+    timezoneId: string;
 }
 
 export interface AppActiveDeployment {
@@ -577,6 +577,10 @@ export interface AppPendingDeploymentStatus {
     state: string;
 }
 
+export interface AppProviderConfig {
+    workspaceId: string;
+}
+
 export interface AppResource {
     /**
      * attribute
@@ -588,6 +592,10 @@ export interface AppResource {
      * Exactly one of the following attributes must be provided:
      */
     description?: string;
+    /**
+     * attribute
+     */
+    genieSpace?: outputs.AppResourceGenieSpace;
     /**
      * attribute
      */
@@ -627,6 +635,18 @@ export interface AppResourceDatabase {
      * Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
      */
     permission: string;
+}
+
+export interface AppResourceGenieSpace {
+    /**
+     * The name of Genie Space.
+     */
+    name: string;
+    permission: string;
+    /**
+     * The unique ID of Genie Space.
+     */
+    spaceId: string;
 }
 
 export interface AppResourceJob {
@@ -745,7 +765,7 @@ export interface AppsSettingsCustomTemplateManifestResourceSpecSqlWarehouseSpec 
 export interface AppsSettingsCustomTemplateManifestResourceSpecUcSecurableSpec {
     permission: string;
     /**
-     * . Possible values are: `VOLUME`
+     * Possible values are: `TABLE`, `VOLUME`
      */
     securableType: string;
 }
@@ -892,495 +912,6 @@ export interface CatalogEffectivePredictiveOptimizationFlag {
 
 export interface CatalogProvisioningInfo {
     state?: string;
-}
-
-export interface CleanRoomAssetForeignTable {
-    /**
-     * (list of ColumnInfo) - The metadata information of the columns in the view
-     */
-    columns: outputs.CleanRoomAssetForeignTableColumn[];
-}
-
-export interface CleanRoomAssetForeignTableColumn {
-    comment?: string;
-    mask?: outputs.CleanRoomAssetForeignTableColumnMask;
-    /**
-     * A fully qualified name that uniquely identifies the asset within the clean room.
-     * This is also the name displayed in the clean room UI.
-     *
-     * For UC securable assets (tables, volumes, etc.), the format is *shared_catalog*.*shared_schema*.*asset_name*
-     *
-     * For notebooks, the name is the notebook file name.
-     * For jar analyses, the name is the jar analysis name
-     */
-    name?: string;
-    /**
-     * Whether field may be Null (default: true)
-     */
-    nullable?: boolean;
-    /**
-     * Partition index for column
-     */
-    partitionIndex?: number;
-    /**
-     * Ordinal position of column (starting at position 0)
-     */
-    position?: number;
-    /**
-     * Format of IntervalType
-     */
-    typeIntervalType?: string;
-    /**
-     * Full data type specification, JSON-serialized
-     */
-    typeJson?: string;
-    /**
-     * . Possible values are: `ARRAY`, `BINARY`, `BOOLEAN`, `BYTE`, `CHAR`, `DATE`, `DECIMAL`, `DOUBLE`, `FLOAT`, `GEOGRAPHY`, `GEOMETRY`, `INT`, `INTERVAL`, `LONG`, `MAP`, `NULL`, `SHORT`, `STRING`, `STRUCT`, `TABLE_TYPE`, `TIMESTAMP`, `TIMESTAMP_NTZ`, `USER_DEFINED_TYPE`, `VARIANT`
-     */
-    typeName?: string;
-    /**
-     * Digits of precision; required for DecimalTypes
-     */
-    typePrecision?: number;
-    /**
-     * Digits to right of decimal; Required for DecimalTypes
-     */
-    typeScale?: number;
-    /**
-     * Full data type specification as SQL/catalogString text
-     */
-    typeText?: string;
-}
-
-export interface CleanRoomAssetForeignTableColumnMask {
-    /**
-     * The full name of the column mask SQL UDF
-     */
-    functionName?: string;
-    /**
-     * The list of additional table columns to be passed as input to the column mask function. The
-     * first arg of the mask function should be of the type of the column being masked and the
-     * types of the rest of the args should match the types of columns in 'using_column_names'
-     */
-    usingColumnNames?: string[];
-}
-
-export interface CleanRoomAssetForeignTableLocalDetails {
-    localName: string;
-}
-
-export interface CleanRoomAssetNotebook {
-    /**
-     * (string) - Server generated etag that represents the notebook version
-     */
-    etag: string;
-    /**
-     * Base 64 representation of the notebook contents.
-     * This is the same format as returned by :method:workspace/export with the format of **HTML**
-     */
-    notebookContent: string;
-    /**
-     * (string) - Top-level status derived from all reviews. Possible values are: `APPROVED`, `PENDING`, `REJECTED`
-     */
-    reviewState: string;
-    /**
-     * (list of CleanRoomNotebookReview) - All existing approvals or rejections
-     */
-    reviews: outputs.CleanRoomAssetNotebookReview[];
-    /**
-     * Aliases of collaborators that can run the notebook
-     */
-    runnerCollaboratorAliases?: string[];
-}
-
-export interface CleanRoomAssetNotebookReview {
-    comment?: string;
-    /**
-     * When the review was submitted, in epoch milliseconds
-     */
-    createdAtMillis?: number;
-    /**
-     * (string) - Top-level status derived from all reviews. Possible values are: `APPROVED`, `PENDING`, `REJECTED`
-     */
-    reviewState?: string;
-    /**
-     * Specified when the review was not explicitly made by a user. Possible values are: `AUTO_APPROVED`, `BACKFILLED`
-     */
-    reviewSubReason?: string;
-    /**
-     * Collaborator alias of the reviewer
-     */
-    reviewerCollaboratorAlias?: string;
-}
-
-export interface CleanRoomAssetTable {
-    /**
-     * (list of ColumnInfo) - The metadata information of the columns in the view
-     */
-    columns: outputs.CleanRoomAssetTableColumn[];
-}
-
-export interface CleanRoomAssetTableColumn {
-    comment?: string;
-    mask?: outputs.CleanRoomAssetTableColumnMask;
-    /**
-     * A fully qualified name that uniquely identifies the asset within the clean room.
-     * This is also the name displayed in the clean room UI.
-     *
-     * For UC securable assets (tables, volumes, etc.), the format is *shared_catalog*.*shared_schema*.*asset_name*
-     *
-     * For notebooks, the name is the notebook file name.
-     * For jar analyses, the name is the jar analysis name
-     */
-    name?: string;
-    /**
-     * Whether field may be Null (default: true)
-     */
-    nullable?: boolean;
-    /**
-     * Partition index for column
-     */
-    partitionIndex?: number;
-    /**
-     * Ordinal position of column (starting at position 0)
-     */
-    position?: number;
-    /**
-     * Format of IntervalType
-     */
-    typeIntervalType?: string;
-    /**
-     * Full data type specification, JSON-serialized
-     */
-    typeJson?: string;
-    /**
-     * . Possible values are: `ARRAY`, `BINARY`, `BOOLEAN`, `BYTE`, `CHAR`, `DATE`, `DECIMAL`, `DOUBLE`, `FLOAT`, `GEOGRAPHY`, `GEOMETRY`, `INT`, `INTERVAL`, `LONG`, `MAP`, `NULL`, `SHORT`, `STRING`, `STRUCT`, `TABLE_TYPE`, `TIMESTAMP`, `TIMESTAMP_NTZ`, `USER_DEFINED_TYPE`, `VARIANT`
-     */
-    typeName?: string;
-    /**
-     * Digits of precision; required for DecimalTypes
-     */
-    typePrecision?: number;
-    /**
-     * Digits to right of decimal; Required for DecimalTypes
-     */
-    typeScale?: number;
-    /**
-     * Full data type specification as SQL/catalogString text
-     */
-    typeText?: string;
-}
-
-export interface CleanRoomAssetTableColumnMask {
-    /**
-     * The full name of the column mask SQL UDF
-     */
-    functionName?: string;
-    /**
-     * The list of additional table columns to be passed as input to the column mask function. The
-     * first arg of the mask function should be of the type of the column being masked and the
-     * types of the rest of the args should match the types of columns in 'using_column_names'
-     */
-    usingColumnNames?: string[];
-}
-
-export interface CleanRoomAssetTableLocalDetails {
-    localName: string;
-    /**
-     * Partition filtering specification for a shared table
-     */
-    partitions?: outputs.CleanRoomAssetTableLocalDetailsPartition[];
-}
-
-export interface CleanRoomAssetTableLocalDetailsPartition {
-    /**
-     * The value of the partition column. When this value is not set, it means `null` value.
-     * When this field is set, field `recipientPropertyKey` can not be set
-     */
-    values?: outputs.CleanRoomAssetTableLocalDetailsPartitionValue[];
-}
-
-export interface CleanRoomAssetTableLocalDetailsPartitionValue {
-    /**
-     * A fully qualified name that uniquely identifies the asset within the clean room.
-     * This is also the name displayed in the clean room UI.
-     *
-     * For UC securable assets (tables, volumes, etc.), the format is *shared_catalog*.*shared_schema*.*asset_name*
-     *
-     * For notebooks, the name is the notebook file name.
-     * For jar analyses, the name is the jar analysis name
-     */
-    name?: string;
-    /**
-     * The operator to apply for the value. Possible values are: `EQUAL`, `LIKE`
-     */
-    op?: string;
-    /**
-     * The key of a Delta Sharing recipient's property. For example "databricks-account-id".
-     * When this field is set, field `value` can not be set
-     */
-    recipientPropertyKey?: string;
-    /**
-     * The value of the partition column. When this value is not set, it means `null` value.
-     * When this field is set, field `recipientPropertyKey` can not be set
-     */
-    value?: string;
-}
-
-export interface CleanRoomAssetView {
-    /**
-     * (list of ColumnInfo) - The metadata information of the columns in the view
-     */
-    columns: outputs.CleanRoomAssetViewColumn[];
-}
-
-export interface CleanRoomAssetViewColumn {
-    comment?: string;
-    mask?: outputs.CleanRoomAssetViewColumnMask;
-    /**
-     * A fully qualified name that uniquely identifies the asset within the clean room.
-     * This is also the name displayed in the clean room UI.
-     *
-     * For UC securable assets (tables, volumes, etc.), the format is *shared_catalog*.*shared_schema*.*asset_name*
-     *
-     * For notebooks, the name is the notebook file name.
-     * For jar analyses, the name is the jar analysis name
-     */
-    name?: string;
-    /**
-     * Whether field may be Null (default: true)
-     */
-    nullable?: boolean;
-    /**
-     * Partition index for column
-     */
-    partitionIndex?: number;
-    /**
-     * Ordinal position of column (starting at position 0)
-     */
-    position?: number;
-    /**
-     * Format of IntervalType
-     */
-    typeIntervalType?: string;
-    /**
-     * Full data type specification, JSON-serialized
-     */
-    typeJson?: string;
-    /**
-     * . Possible values are: `ARRAY`, `BINARY`, `BOOLEAN`, `BYTE`, `CHAR`, `DATE`, `DECIMAL`, `DOUBLE`, `FLOAT`, `GEOGRAPHY`, `GEOMETRY`, `INT`, `INTERVAL`, `LONG`, `MAP`, `NULL`, `SHORT`, `STRING`, `STRUCT`, `TABLE_TYPE`, `TIMESTAMP`, `TIMESTAMP_NTZ`, `USER_DEFINED_TYPE`, `VARIANT`
-     */
-    typeName?: string;
-    /**
-     * Digits of precision; required for DecimalTypes
-     */
-    typePrecision?: number;
-    /**
-     * Digits to right of decimal; Required for DecimalTypes
-     */
-    typeScale?: number;
-    /**
-     * Full data type specification as SQL/catalogString text
-     */
-    typeText?: string;
-}
-
-export interface CleanRoomAssetViewColumnMask {
-    /**
-     * The full name of the column mask SQL UDF
-     */
-    functionName?: string;
-    /**
-     * The list of additional table columns to be passed as input to the column mask function. The
-     * first arg of the mask function should be of the type of the column being masked and the
-     * types of the rest of the args should match the types of columns in 'using_column_names'
-     */
-    usingColumnNames?: string[];
-}
-
-export interface CleanRoomAssetViewLocalDetails {
-    localName: string;
-}
-
-export interface CleanRoomAssetVolumeLocalDetails {
-    localName: string;
-}
-
-export interface CleanRoomsCleanRoomOutputCatalog {
-    /**
-     * The name of the output catalog in UC.
-     * It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements).
-     * The field will always exist if status is CREATED
-     */
-    catalogName?: string;
-    /**
-     * (string) - . Possible values are: `CREATED`, `NOT_CREATED`, `NOT_ELIGIBLE`
-     */
-    status: string;
-}
-
-export interface CleanRoomsCleanRoomRemoteDetailedInfo {
-    /**
-     * (string) - Central clean room ID
-     */
-    centralCleanRoomId: string;
-    /**
-     * Cloud vendor (aws,azure,gcp) of the central clean room
-     */
-    cloudVendor?: string;
-    /**
-     * Collaborators in the central clean room. There should one and only one collaborator
-     * in the list that satisfies the owner condition:
-     *
-     * 1. It has the creator's globalMetastoreId (determined by caller of CreateCleanRoom).
-     *
-     * 2. Its inviteRecipientEmail is empty
-     */
-    collaborators?: outputs.CleanRoomsCleanRoomRemoteDetailedInfoCollaborator[];
-    /**
-     * (ComplianceSecurityProfile)
-     */
-    complianceSecurityProfile: outputs.CleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfile;
-    /**
-     * (CleanRoomCollaborator) - Collaborator who creates the clean room
-     */
-    creator: outputs.CleanRoomsCleanRoomRemoteDetailedInfoCreator;
-    /**
-     * Egress network policy to apply to the central clean room workspace
-     */
-    egressNetworkPolicy?: outputs.CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicy;
-    region?: string;
-}
-
-export interface CleanRoomsCleanRoomRemoteDetailedInfoCollaborator {
-    /**
-     * Collaborator alias specified by the clean room creator. It is unique across all collaborators of this clean room, and used to derive
-     * multiple values internally such as catalog alias and clean room name for single metastore clean rooms.
-     * It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements)
-     */
-    collaboratorAlias: string;
-    /**
-     * (string) - Generated display name for the collaborator. In the case of a single metastore clean room, it is the clean
-     * room name. For x-metastore clean rooms, it is the organization name of the metastore. It is not restricted to
-     * these values and could change in the future
-     */
-    displayName: string;
-    /**
-     * The global Unity Catalog metastore ID of the collaborator. The identifier is of format cloud:region:metastore-uuid
-     */
-    globalMetastoreId?: string;
-    /**
-     * Email of the user who is receiving the clean room "invitation". It should be empty
-     * for the creator of the clean room, and non-empty for the invitees of the clean room.
-     * It is only returned in the output when clean room creator calls GET
-     */
-    inviteRecipientEmail?: string;
-    /**
-     * Workspace ID of the user who is receiving the clean room "invitation". Must be specified if
-     * inviteRecipientEmail is specified.
-     * It should be empty when the collaborator is the creator of the clean room
-     */
-    inviteRecipientWorkspaceId: number;
-    /**
-     * (string) - Organization name
-     * configured in the metastore
-     */
-    organizationName: string;
-}
-
-export interface CleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfile {
-    /**
-     * The list of compliance standards that the compliance security profile is configured to enforce
-     */
-    complianceStandards?: string[];
-    /**
-     * Whether the compliance security profile is enabled
-     */
-    isEnabled?: boolean;
-}
-
-export interface CleanRoomsCleanRoomRemoteDetailedInfoCreator {
-    /**
-     * Collaborator alias specified by the clean room creator. It is unique across all collaborators of this clean room, and used to derive
-     * multiple values internally such as catalog alias and clean room name for single metastore clean rooms.
-     * It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements)
-     */
-    collaboratorAlias: string;
-    /**
-     * (string) - Generated display name for the collaborator. In the case of a single metastore clean room, it is the clean
-     * room name. For x-metastore clean rooms, it is the organization name of the metastore. It is not restricted to
-     * these values and could change in the future
-     */
-    displayName: string;
-    /**
-     * The global Unity Catalog metastore ID of the collaborator. The identifier is of format cloud:region:metastore-uuid
-     */
-    globalMetastoreId?: string;
-    /**
-     * Email of the user who is receiving the clean room "invitation". It should be empty
-     * for the creator of the clean room, and non-empty for the invitees of the clean room.
-     * It is only returned in the output when clean room creator calls GET
-     */
-    inviteRecipientEmail?: string;
-    /**
-     * Workspace ID of the user who is receiving the clean room "invitation". Must be specified if
-     * inviteRecipientEmail is specified.
-     * It should be empty when the collaborator is the creator of the clean room
-     */
-    inviteRecipientWorkspaceId: number;
-    /**
-     * (string) - Organization name
-     * configured in the metastore
-     */
-    organizationName: string;
-}
-
-export interface CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicy {
-    /**
-     * The access policy enforced for egress traffic to the internet
-     */
-    internetAccess?: outputs.CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccess;
-}
-
-export interface CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccess {
-    allowedInternetDestinations?: outputs.CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedInternetDestination[];
-    allowedStorageDestinations?: outputs.CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedStorageDestination[];
-    /**
-     * Optional. If not specified, assume the policy is enforced for all workloads
-     */
-    logOnlyMode?: outputs.CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyMode;
-    /**
-     * . Possible values are: `FULL_ACCESS`, `PRIVATE_ACCESS_ONLY`, `RESTRICTED_ACCESS`
-     */
-    restrictionMode?: string;
-}
-
-export interface CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedInternetDestination {
-    destination?: string;
-    /**
-     * . Possible values are: `TCP`
-     */
-    protocol?: string;
-    type?: string;
-}
-
-export interface CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedStorageDestination {
-    allowedPaths?: string[];
-    azureContainer?: string;
-    azureDnsZone?: string;
-    azureStorageAccount?: string;
-    azureStorageService?: string;
-    bucketName?: string;
-    region?: string;
-    type?: string;
-}
-
-export interface CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyMode {
-    /**
-     * . Possible values are: `ALL_SERVICES`, `SELECTED_SERVICES`
-     */
-    logOnlyModeType?: string;
-    workloads?: string[];
 }
 
 export interface ClusterAutoscale {
@@ -1762,6 +1293,7 @@ export interface ClusterPolicyLibrary {
     egg?: string;
     jar?: string;
     maven?: outputs.ClusterPolicyLibraryMaven;
+    providerConfig?: outputs.ClusterPolicyLibraryProviderConfig;
     pypi?: outputs.ClusterPolicyLibraryPypi;
     requirements?: string;
     whl?: string;
@@ -1778,9 +1310,49 @@ export interface ClusterPolicyLibraryMaven {
     repo?: string;
 }
 
+export interface ClusterPolicyLibraryProviderConfig {
+    workspaceId: string;
+}
+
 export interface ClusterPolicyLibraryPypi {
     package: string;
     repo?: string;
+}
+
+export interface ClusterProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     *
+     * The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
+     *
+     * ```typescript
+     * import * as pulumi from "@pulumi/pulumi";
+     * import * as databricks from "@pulumi/databricks";
+     *
+     * const smallest = databricks.getNodeType({
+     *     localDisk: true,
+     * });
+     * const latestLts = databricks.getSparkVersion({
+     *     longTermSupport: true,
+     * });
+     * const sharedAutoscaling = new databricks.Cluster("shared_autoscaling", {
+     *     clusterName: "Shared Autoscaling",
+     *     sparkVersion: latestLts.then(latestLts => latestLts.id),
+     *     nodeTypeId: smallest.then(smallest => smallest.id),
+     *     autoterminationMinutes: 20,
+     *     autoscale: {
+     *         minWorkers: 1,
+     *         maxWorkers: 50,
+     *     },
+     *     sparkConf: {
+     *         "spark.databricks.io.cache.enabled": "true",
+     *         "spark.databricks.io.cache.maxDiskUsage": "50g",
+     *         "spark.databricks.io.cache.maxMetaDataCache": "1g",
+     *     },
+     * });
+     * ```
+     */
+    workspaceId: string;
 }
 
 export interface ClusterWorkloadType {
@@ -1877,14 +1449,168 @@ export interface CredentialDatabricksGcpServiceAccount {
 }
 
 export interface CustomAppIntegrationTokenAccessPolicy {
+    absoluteSessionLifetimeInMinutes: number;
     /**
      * access token time to live (TTL) in minutes.
      */
     accessTokenTtlInMinutes?: number;
+    enableSingleUseRefreshTokens?: boolean;
     /**
      * refresh token TTL in minutes. The TTL of refresh token cannot be lower than TTL of access token.
      */
     refreshTokenTtlInMinutes?: number;
+}
+
+export interface DataQualityMonitorAnomalyDetectionConfig {
+}
+
+export interface DataQualityMonitorDataProfilingConfig {
+    /**
+     * Field for specifying the absolute path to a custom directory to store data-monitoring
+     * assets. Normally prepopulated to a default user location via UI and Python APIs
+     */
+    assetsDir?: string;
+    /**
+     * Baseline table name.
+     * Baseline data is used to compute drift from the data in the monitored `tableName`.
+     * The baseline table and the monitored table shall have the same schema
+     */
+    baselineTableName?: string;
+    /**
+     * Custom metrics
+     */
+    customMetrics?: outputs.DataQualityMonitorDataProfilingConfigCustomMetric[];
+    dashboardId: string;
+    driftMetricsTableName: string;
+    effectiveWarehouseId: string;
+    /**
+     * `Analysis Configuration` for monitoring inference log tables
+     */
+    inferenceLog?: outputs.DataQualityMonitorDataProfilingConfigInferenceLog;
+    latestMonitorFailureMessage: string;
+    monitorVersion: number;
+    monitoredTableName: string;
+    /**
+     * Field for specifying notification settings
+     */
+    notificationSettings?: outputs.DataQualityMonitorDataProfilingConfigNotificationSettings;
+    /**
+     * ID of the schema where output tables are created
+     */
+    outputSchemaId: string;
+    profileMetricsTableName: string;
+    /**
+     * The cron schedule
+     */
+    schedule?: outputs.DataQualityMonitorDataProfilingConfigSchedule;
+    /**
+     * Whether to skip creating a default dashboard summarizing data quality metrics
+     */
+    skipBuiltinDashboard?: boolean;
+    /**
+     * List of column expressions to slice data with for targeted analysis. The data is grouped by
+     * each expression independently, resulting in a separate slice for each predicate and its
+     * complements. For example `slicing_exprs=[“col_1”, “col_2 > 10”]` will generate the following
+     * slices: two slices for `col2 > 10` (True and False), and one slice per unique value in
+     * `col1`. For high-cardinality columns, only the top 100 unique values by frequency will
+     * generate slices
+     */
+    slicingExprs?: string[];
+    /**
+     * `Analysis Configuration` for monitoring snapshot tables
+     */
+    snapshot?: outputs.DataQualityMonitorDataProfilingConfigSnapshot;
+    status: string;
+    /**
+     * `Analysis Configuration` for monitoring time series tables
+     */
+    timeSeries?: outputs.DataQualityMonitorDataProfilingConfigTimeSeries;
+    /**
+     * Optional argument to specify the warehouse for dashboard creation. If not specified, the first running
+     * warehouse will be used
+     */
+    warehouseId?: string;
+}
+
+export interface DataQualityMonitorDataProfilingConfigCustomMetric {
+    /**
+     * Jinja template for a SQL expression that specifies how to compute the metric. See [create metric definition](https://docs.databricks.com/en/lakehouse-monitoring/custom-metrics.html#create-definition)
+     */
+    definition: string;
+    /**
+     * A list of column names in the input table the metric should be computed for.
+     * Can use ``":table"`` to indicate that the metric needs information from multiple columns
+     */
+    inputColumns: string[];
+    /**
+     * Name of the metric in the output tables
+     */
+    name: string;
+    /**
+     * The output type of the custom metric
+     */
+    outputDataType: string;
+    /**
+     * The type of the custom metric. Possible values are: `DATA_PROFILING_CUSTOM_METRIC_TYPE_AGGREGATE`, `DATA_PROFILING_CUSTOM_METRIC_TYPE_DERIVED`, `DATA_PROFILING_CUSTOM_METRIC_TYPE_DRIFT`
+     */
+    type: string;
+}
+
+export interface DataQualityMonitorDataProfilingConfigInferenceLog {
+    granularities: string[];
+    /**
+     * Column for the label
+     */
+    labelColumn?: string;
+    /**
+     * Column for the model identifier
+     */
+    modelIdColumn: string;
+    /**
+     * Column for the prediction
+     */
+    predictionColumn: string;
+    /**
+     * Problem type the model aims to solve. Possible values are: `INFERENCE_PROBLEM_TYPE_CLASSIFICATION`, `INFERENCE_PROBLEM_TYPE_REGRESSION`
+     */
+    problemType: string;
+    timestampColumn: string;
+}
+
+export interface DataQualityMonitorDataProfilingConfigNotificationSettings {
+    /**
+     * Destinations to send notifications on failure/timeout
+     */
+    onFailure?: outputs.DataQualityMonitorDataProfilingConfigNotificationSettingsOnFailure;
+}
+
+export interface DataQualityMonitorDataProfilingConfigNotificationSettingsOnFailure {
+    /**
+     * The list of email addresses to send the notification to. A maximum of 5 email addresses is supported
+     */
+    emailAddresses?: string[];
+}
+
+export interface DataQualityMonitorDataProfilingConfigSchedule {
+    pauseStatus: string;
+    /**
+     * The expression that determines when to run the monitor. See [examples](https://www.quartz-scheduler.org/documentation/quartz-2.3.0/tutorials/crontrigger.html)
+     */
+    quartzCronExpression: string;
+    /**
+     * A Java timezone id. The schedule for a job will be resolved with respect to this timezone.
+     * See `Java TimeZone <http://docs.oracle.com/javase/7/docs/api/java/util/TimeZone.html>`_ for details.
+     * The timezone id (e.g., ``America/Los_Angeles``) in which to evaluate the quartz expression
+     */
+    timezoneId: string;
+}
+
+export interface DataQualityMonitorDataProfilingConfigSnapshot {
+}
+
+export interface DataQualityMonitorDataProfilingConfigTimeSeries {
+    granularities: string[];
+    timestampColumn: string;
 }
 
 export interface DatabaseInstanceChildInstanceRef {
@@ -1899,10 +1625,7 @@ export interface DatabaseInstanceChildInstanceRef {
      */
     branchTime?: string;
     /**
-     * (string) - xref AIP-129. `lsn` is owned by the client, while `effectiveLsn` is owned by the server.
-     * `lsn` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-     * `effectiveLsn` on the other hand will always bet set in all response messages (Create/Update/Get/List).
-     * For a parent ref instance, this is the LSN on the parent instance from which the
+     * (string) - For a parent ref instance, this is the LSN on the parent instance from which the
      * instance was created.
      * For a child ref instance, this is the LSN on the instance from which the child instance
      * was created
@@ -1914,7 +1637,7 @@ export interface DatabaseInstanceChildInstanceRef {
      * Input: For specifying the WAL LSN to create a child instance. Optional.
      * Output: Only populated if provided as input to create a child instance
      */
-    lsn?: string;
+    lsn: string;
     /**
      * The name of the instance. This is the unique identifier for the instance
      */
@@ -1923,6 +1646,28 @@ export interface DatabaseInstanceChildInstanceRef {
      * (string) - Id of the ref database instance
      */
     uid: string;
+}
+
+export interface DatabaseInstanceCustomTag {
+    /**
+     * The key of the custom tag
+     */
+    key?: string;
+    /**
+     * The value of the custom tag
+     */
+    value?: string;
+}
+
+export interface DatabaseInstanceEffectiveCustomTag {
+    /**
+     * The key of the custom tag
+     */
+    key?: string;
+    /**
+     * The value of the custom tag
+     */
+    value?: string;
 }
 
 export interface DatabaseInstanceParentInstanceRef {
@@ -1937,10 +1682,7 @@ export interface DatabaseInstanceParentInstanceRef {
      */
     branchTime?: string;
     /**
-     * (string) - xref AIP-129. `lsn` is owned by the client, while `effectiveLsn` is owned by the server.
-     * `lsn` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-     * `effectiveLsn` on the other hand will always bet set in all response messages (Create/Update/Get/List).
-     * For a parent ref instance, this is the LSN on the parent instance from which the
+     * (string) - For a parent ref instance, this is the LSN on the parent instance from which the
      * instance was created.
      * For a child ref instance, this is the LSN on the instance from which the child instance
      * was created
@@ -1952,7 +1694,7 @@ export interface DatabaseInstanceParentInstanceRef {
      * Input: For specifying the WAL LSN to create a child instance. Optional.
      * Output: Only populated if provided as input to create a child instance
      */
-    lsn?: string;
+    lsn: string;
     /**
      * The name of the instance. This is the unique identifier for the instance
      */
@@ -2297,7 +2039,7 @@ export interface ExternalLocationFileEventQueueManagedAqs {
     managedResourceId: string;
     queueUrl?: string;
     /**
-     * The Azure resource group.
+     * The name of the Azure resource group.
      */
     resourceGroup: string;
     /**
@@ -2332,7 +2074,7 @@ export interface ExternalLocationFileEventQueueProvidedAqs {
      */
     queueUrl: string;
     /**
-     * The Azure resource group.
+     * The name of the Azure resource group.
      */
     resourceGroup?: string;
     /**
@@ -2357,6 +2099,116 @@ export interface ExternalLocationFileEventQueueProvidedSqs {
     queueUrl: string;
 }
 
+export interface FeatureEngineeringFeatureFunction {
+    /**
+     * Extra parameters for parameterized functions
+     */
+    extraParameters?: outputs.FeatureEngineeringFeatureFunctionExtraParameter[];
+    /**
+     * The type of the function. Possible values are: `APPROX_COUNT_DISTINCT`, `APPROX_PERCENTILE`, `AVG`, `COUNT`, `FIRST`, `LAST`, `MAX`, `MIN`, `STDDEV_POP`, `STDDEV_SAMP`, `SUM`, `VAR_POP`, `VAR_SAMP`
+     */
+    functionType: string;
+}
+
+export interface FeatureEngineeringFeatureFunctionExtraParameter {
+    /**
+     * The name of the parameter
+     */
+    key: string;
+    /**
+     * The value of the parameter
+     */
+    value: string;
+}
+
+export interface FeatureEngineeringFeatureSource {
+    deltaTableSource?: outputs.FeatureEngineeringFeatureSourceDeltaTableSource;
+}
+
+export interface FeatureEngineeringFeatureSourceDeltaTableSource {
+    /**
+     * The entity columns of the Delta table
+     */
+    entityColumns: string[];
+    /**
+     * The full three-part name (catalog, schema, name) of the feature
+     */
+    fullName: string;
+    /**
+     * The timeseries column of the Delta table
+     */
+    timeseriesColumn: string;
+}
+
+export interface FeatureEngineeringFeatureTimeWindow {
+    continuous?: outputs.FeatureEngineeringFeatureTimeWindowContinuous;
+    sliding?: outputs.FeatureEngineeringFeatureTimeWindowSliding;
+    tumbling?: outputs.FeatureEngineeringFeatureTimeWindowTumbling;
+}
+
+export interface FeatureEngineeringFeatureTimeWindowContinuous {
+    /**
+     * The offset of the continuous window (must be non-positive)
+     */
+    offset?: string;
+    windowDuration: string;
+}
+
+export interface FeatureEngineeringFeatureTimeWindowSliding {
+    /**
+     * The slide duration (interval by which windows advance, must be positive and less than duration)
+     */
+    slideDuration: string;
+    windowDuration: string;
+}
+
+export interface FeatureEngineeringFeatureTimeWindowTumbling {
+    windowDuration: string;
+}
+
+export interface FeatureEngineeringMaterializedFeatureOfflineStoreConfig {
+    /**
+     * The Unity Catalog catalog name
+     */
+    catalogName: string;
+    /**
+     * The Unity Catalog schema name
+     */
+    schemaName: string;
+    /**
+     * Prefix for Unity Catalog table name.
+     * The materialized feature will be stored in a table with this prefix and a generated postfix
+     */
+    tableNamePrefix: string;
+}
+
+export interface FeatureEngineeringMaterializedFeatureOnlineStoreConfig {
+    /**
+     * The capacity of the online store. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
+     */
+    capacity: string;
+    /**
+     * (string) - The timestamp when the online store was created
+     */
+    creationTime: string;
+    /**
+     * (string) - The email of the creator of the online store
+     */
+    creator: string;
+    /**
+     * The name of the online store. This is the unique identifier for the online store
+     */
+    name: string;
+    /**
+     * The number of read replicas for the online store. Defaults to 0
+     */
+    readReplicaCount?: number;
+    /**
+     * (string) - The current state of the online store. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
+     */
+    state: string;
+}
+
 export interface GetAccountFederationPoliciesPolicy {
     /**
      * (string) - Creation time of the federation policy
@@ -2365,7 +2217,7 @@ export interface GetAccountFederationPoliciesPolicy {
     /**
      * (string) - Description of the federation policy
      */
-    description?: string;
+    description: string;
     /**
      * (string) - Resource name for the federation policy. Example values include
      * `accounts/<account-id>/federationPolicies/my-federation-policy` for Account Federation Policies, and
@@ -2378,13 +2230,13 @@ export interface GetAccountFederationPoliciesPolicy {
     /**
      * (OidcFederationPolicy)
      */
-    oidcPolicy?: outputs.GetAccountFederationPoliciesPolicyOidcPolicy;
+    oidcPolicy: outputs.GetAccountFederationPoliciesPolicyOidcPolicy;
     /**
-     * (string) - The ID of the federation policy
+     * (string) - The ID of the federation policy. Output only
      */
     policyId: string;
     /**
-     * (integer) - The service principal ID that this federation policy applies to. Only set for service principal federation policies
+     * (integer) - The service principal ID that this federation policy applies to. Output only. Only set for service principal federation policies
      */
     servicePrincipalId: number;
     /**
@@ -2487,15 +2339,15 @@ export interface GetAccountNetworkPoliciesItem {
     /**
      * (string) - The associated account ID for this Network Policy object
      */
-    accountId?: string;
+    accountId: string;
     /**
      * (NetworkPolicyEgress) - The network policies applying for egress traffic
      */
-    egress?: outputs.GetAccountNetworkPoliciesItemEgress;
+    egress: outputs.GetAccountNetworkPoliciesItemEgress;
     /**
      * (string) - The unique identifier for the network policy
      */
-    networkPolicyId?: string;
+    networkPolicyId: string;
 }
 
 export interface GetAccountNetworkPoliciesItemEgress {
@@ -2648,7 +2500,7 @@ export interface GetAccountNetworkPolicyEgressNetworkAccessPolicyEnforcement {
 
 export interface GetAccountSettingV2AibiDashboardEmbeddingAccessPolicy {
     /**
-     * (string) - . Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
+     * (string) - Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
      */
     accessPolicyType: string;
 }
@@ -2707,11 +2559,11 @@ export interface GetAccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWi
 
 export interface GetAccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule {
     /**
-     * (string) - . Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
+     * (string) - Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
      */
     dayOfWeek?: string;
     /**
-     * (string) - . Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
+     * (string) - Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
      */
     frequency?: string;
     /**
@@ -2738,16 +2590,9 @@ export interface GetAccountSettingV2BooleanVal {
     value?: boolean;
 }
 
-export interface GetAccountSettingV2DefaultDataSecurityMode {
-    /**
-     * (string) - . Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
-     */
-    status: string;
-}
-
 export interface GetAccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy {
     /**
-     * (string) - . Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
+     * (string) - Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
      */
     accessPolicyType: string;
 }
@@ -2806,11 +2651,11 @@ export interface GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMain
 
 export interface GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule {
     /**
-     * (string) - . Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
+     * (string) - Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
      */
     dayOfWeek?: string;
     /**
-     * (string) - . Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
+     * (string) - Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
      */
     frequency?: string;
     /**
@@ -2837,13 +2682,6 @@ export interface GetAccountSettingV2EffectiveBooleanVal {
     value?: boolean;
 }
 
-export interface GetAccountSettingV2EffectiveDefaultDataSecurityMode {
-    /**
-     * (string) - . Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
-     */
-    status: string;
-}
-
 export interface GetAccountSettingV2EffectiveIntegerVal {
     /**
      * (string) - Represents a generic string value
@@ -2860,7 +2698,7 @@ export interface GetAccountSettingV2EffectivePersonalCompute {
 
 export interface GetAccountSettingV2EffectiveRestrictWorkspaceAdmins {
     /**
-     * (string) - . Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
+     * (string) - Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
      */
     status: string;
 }
@@ -2888,7 +2726,7 @@ export interface GetAccountSettingV2PersonalCompute {
 
 export interface GetAccountSettingV2RestrictWorkspaceAdmins {
     /**
-     * (string) - . Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
+     * (string) - Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
      */
     status: string;
 }
@@ -2915,9 +2753,9 @@ export interface GetAlertV2Evaluation {
     /**
      * (string) - Operator used for comparison in alert evaluation. Possible values are: `EQUAL`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `IS_NOT_NULL`, `IS_NULL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`
      */
-    comparisonOperator?: string;
+    comparisonOperator: string;
     /**
-     * (string) - Alert state if result is empty. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
+     * (string) - Alert state if result is empty. Please avoid setting this field to be `UNKNOWN` because `UNKNOWN` state is planned to be deprecated. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
      */
     emptyResultState?: string;
     /**
@@ -2931,7 +2769,7 @@ export interface GetAlertV2Evaluation {
     /**
      * (AlertV2OperandColumn) - Source column from result to use to evaluate alert
      */
-    source?: outputs.GetAlertV2EvaluationSource;
+    source: outputs.GetAlertV2EvaluationSource;
     /**
      * (string) - Latest state of alert evaluation. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
      */
@@ -2943,6 +2781,8 @@ export interface GetAlertV2Evaluation {
 }
 
 export interface GetAlertV2EvaluationNotification {
+    effectiveNotifyOnOk: boolean;
+    effectiveRetriggerSeconds: number;
     /**
      * (boolean) - Whether to notify alert subscribers when alert returns back to normal
      */
@@ -2970,7 +2810,7 @@ export interface GetAlertV2EvaluationNotificationSubscription {
 
 export interface GetAlertV2EvaluationSource {
     /**
-     * (string) - . Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
+     * (string) - Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
      */
     aggregation?: string;
     /**
@@ -2980,7 +2820,7 @@ export interface GetAlertV2EvaluationSource {
     /**
      * (string)
      */
-    name?: string;
+    name: string;
 }
 
 export interface GetAlertV2EvaluationThreshold {
@@ -2996,7 +2836,7 @@ export interface GetAlertV2EvaluationThreshold {
 
 export interface GetAlertV2EvaluationThresholdColumn {
     /**
-     * (string) - . Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
+     * (string) - Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
      */
     aggregation?: string;
     /**
@@ -3006,7 +2846,7 @@ export interface GetAlertV2EvaluationThresholdColumn {
     /**
      * (string)
      */
-    name?: string;
+    name: string;
 }
 
 export interface GetAlertV2EvaluationThresholdValue {
@@ -3044,16 +2884,16 @@ export interface GetAlertV2Schedule {
      * (string) - A cron expression using quartz syntax that specifies the schedule for this pipeline.
      * Should use the quartz format described here: http://www.quartz-scheduler.org/documentation/quartz-2.1.7/tutorials/tutorial-lesson-06.html
      */
-    quartzCronSchedule?: string;
+    quartzCronSchedule: string;
     /**
      * (string) - A Java timezone id. The schedule will be resolved using this timezone.
      * This will be combined with the quartzCronSchedule to determine the schedule.
      * See https://docs.databricks.com/sql/language-manual/sql-ref-syntax-aux-conf-mgmt-set-timezone.html for details
      */
-    timezoneId?: string;
+    timezoneId: string;
 }
 
-export interface GetAlertsV2Result {
+export interface GetAlertsV2Alert {
     /**
      * (string) - The timestamp indicating when the alert was created
      */
@@ -3061,31 +2901,31 @@ export interface GetAlertsV2Result {
     /**
      * (string) - Custom description for the alert. support mustache template
      */
-    customDescription?: string;
+    customDescription: string;
     /**
      * (string) - Custom summary for the alert. support mustache template
      */
-    customSummary?: string;
+    customSummary: string;
     /**
      * (string) - The display name of the alert
      */
-    displayName?: string;
+    displayName: string;
     /**
      * (AlertV2RunAs) - The actual identity that will be used to execute the alert.
      * This is an output-only field that shows the resolved run-as identity after applying
      * permissions and defaults
      */
-    effectiveRunAs: outputs.GetAlertsV2ResultEffectiveRunAs;
+    effectiveRunAs: outputs.GetAlertsV2AlertEffectiveRunAs;
     /**
      * (AlertV2Evaluation)
      */
-    evaluation?: outputs.GetAlertsV2ResultEvaluation;
+    evaluation: outputs.GetAlertsV2AlertEvaluation;
     /**
      * (string) - UUID identifying the alert
      */
     id: string;
     /**
-     * (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `TRASHED`
+     * (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `DELETED`
      */
     lifecycleState: string;
     /**
@@ -3095,11 +2935,11 @@ export interface GetAlertsV2Result {
     /**
      * (string) - The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
      */
-    parentPath?: string;
+    parentPath: string;
     /**
      * (string) - Text of the query to be run
      */
-    queryText?: string;
+    queryText: string;
     /**
      * (AlertV2RunAs) - Specifies the identity that will be used to run the alert.
      * This field allows you to configure alerts to run as a specific user or service principal.
@@ -3107,17 +2947,17 @@ export interface GetAlertsV2Result {
      * - For service principal: Set `servicePrincipalName` to the application ID. Requires the `servicePrincipal/user` role.
      * If not specified, the alert will run as the request user
      */
-    runAs?: outputs.GetAlertsV2ResultRunAs;
+    runAs: outputs.GetAlertsV2AlertRunAs;
     /**
      * (string, deprecated) - The run as username or application ID of service principal.
      * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
      * Deprecated: Use `runAs` field instead. This field will be removed in a future release
      */
-    runAsUserName?: string;
+    runAsUserName: string;
     /**
      * (CronSchedule)
      */
-    schedule?: outputs.GetAlertsV2ResultSchedule;
+    schedule: outputs.GetAlertsV2AlertSchedule;
     /**
      * (string) - The timestamp indicating when the alert was updated
      */
@@ -3125,10 +2965,10 @@ export interface GetAlertsV2Result {
     /**
      * (string) - ID of the SQL warehouse attached to the alert
      */
-    warehouseId?: string;
+    warehouseId: string;
 }
 
-export interface GetAlertsV2ResultEffectiveRunAs {
+export interface GetAlertsV2AlertEffectiveRunAs {
     /**
      * (string) - Application ID of an active service principal. Setting this field requires the `servicePrincipal/user` role
      */
@@ -3139,13 +2979,13 @@ export interface GetAlertsV2ResultEffectiveRunAs {
     userName?: string;
 }
 
-export interface GetAlertsV2ResultEvaluation {
+export interface GetAlertsV2AlertEvaluation {
     /**
      * (string) - Operator used for comparison in alert evaluation. Possible values are: `EQUAL`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `IS_NOT_NULL`, `IS_NULL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`
      */
-    comparisonOperator?: string;
+    comparisonOperator: string;
     /**
-     * (string) - Alert state if result is empty. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
+     * (string) - Alert state if result is empty. Please avoid setting this field to be `UNKNOWN` because `UNKNOWN` state is planned to be deprecated. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
      */
     emptyResultState?: string;
     /**
@@ -3155,11 +2995,11 @@ export interface GetAlertsV2ResultEvaluation {
     /**
      * (AlertV2Notification) - User or Notification Destination to notify when alert is triggered
      */
-    notification?: outputs.GetAlertsV2ResultEvaluationNotification;
+    notification?: outputs.GetAlertsV2AlertEvaluationNotification;
     /**
      * (AlertV2OperandColumn) - Source column from result to use to evaluate alert
      */
-    source?: outputs.GetAlertsV2ResultEvaluationSource;
+    source: outputs.GetAlertsV2AlertEvaluationSource;
     /**
      * (string) - Latest state of alert evaluation. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
      */
@@ -3167,10 +3007,12 @@ export interface GetAlertsV2ResultEvaluation {
     /**
      * (AlertV2Operand) - Threshold to user for alert evaluation, can be a column or a value
      */
-    threshold?: outputs.GetAlertsV2ResultEvaluationThreshold;
+    threshold?: outputs.GetAlertsV2AlertEvaluationThreshold;
 }
 
-export interface GetAlertsV2ResultEvaluationNotification {
+export interface GetAlertsV2AlertEvaluationNotification {
+    effectiveNotifyOnOk: boolean;
+    effectiveRetriggerSeconds: number;
     /**
      * (boolean) - Whether to notify alert subscribers when alert returns back to normal
      */
@@ -3182,10 +3024,10 @@ export interface GetAlertsV2ResultEvaluationNotification {
     /**
      * (list of AlertV2Subscription)
      */
-    subscriptions?: outputs.GetAlertsV2ResultEvaluationNotificationSubscription[];
+    subscriptions?: outputs.GetAlertsV2AlertEvaluationNotificationSubscription[];
 }
 
-export interface GetAlertsV2ResultEvaluationNotificationSubscription {
+export interface GetAlertsV2AlertEvaluationNotificationSubscription {
     /**
      * (string)
      */
@@ -3196,9 +3038,9 @@ export interface GetAlertsV2ResultEvaluationNotificationSubscription {
     userEmail?: string;
 }
 
-export interface GetAlertsV2ResultEvaluationSource {
+export interface GetAlertsV2AlertEvaluationSource {
     /**
-     * (string) - . Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
+     * (string) - Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
      */
     aggregation?: string;
     /**
@@ -3208,23 +3050,23 @@ export interface GetAlertsV2ResultEvaluationSource {
     /**
      * (string)
      */
-    name?: string;
+    name: string;
 }
 
-export interface GetAlertsV2ResultEvaluationThreshold {
+export interface GetAlertsV2AlertEvaluationThreshold {
     /**
      * (AlertV2OperandColumn)
      */
-    column?: outputs.GetAlertsV2ResultEvaluationThresholdColumn;
+    column?: outputs.GetAlertsV2AlertEvaluationThresholdColumn;
     /**
      * (AlertV2OperandValue)
      */
-    value?: outputs.GetAlertsV2ResultEvaluationThresholdValue;
+    value?: outputs.GetAlertsV2AlertEvaluationThresholdValue;
 }
 
-export interface GetAlertsV2ResultEvaluationThresholdColumn {
+export interface GetAlertsV2AlertEvaluationThresholdColumn {
     /**
-     * (string) - . Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
+     * (string) - Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
      */
     aggregation?: string;
     /**
@@ -3234,10 +3076,10 @@ export interface GetAlertsV2ResultEvaluationThresholdColumn {
     /**
      * (string)
      */
-    name?: string;
+    name: string;
 }
 
-export interface GetAlertsV2ResultEvaluationThresholdValue {
+export interface GetAlertsV2AlertEvaluationThresholdValue {
     /**
      * (boolean)
      */
@@ -3252,7 +3094,7 @@ export interface GetAlertsV2ResultEvaluationThresholdValue {
     stringValue?: string;
 }
 
-export interface GetAlertsV2ResultRunAs {
+export interface GetAlertsV2AlertRunAs {
     /**
      * (string) - Application ID of an active service principal. Setting this field requires the `servicePrincipal/user` role
      */
@@ -3263,7 +3105,7 @@ export interface GetAlertsV2ResultRunAs {
     userName?: string;
 }
 
-export interface GetAlertsV2ResultSchedule {
+export interface GetAlertsV2AlertSchedule {
     /**
      * (string) - Indicate whether this schedule is paused or not. Possible values are: `PAUSED`, `UNPAUSED`
      */
@@ -3272,13 +3114,13 @@ export interface GetAlertsV2ResultSchedule {
      * (string) - A cron expression using quartz syntax that specifies the schedule for this pipeline.
      * Should use the quartz format described here: http://www.quartz-scheduler.org/documentation/quartz-2.1.7/tutorials/tutorial-lesson-06.html
      */
-    quartzCronSchedule?: string;
+    quartzCronSchedule: string;
     /**
      * (string) - A Java timezone id. The schedule will be resolved using this timezone.
      * This will be combined with the quartzCronSchedule to determine the schedule.
      * See https://docs.databricks.com/sql/language-manual/sql-ref-syntax-aux-conf-mgmt-set-timezone.html for details
      */
-    timezoneId?: string;
+    timezoneId: string;
 }
 
 export interface GetAppApp {
@@ -3291,6 +3133,10 @@ export interface GetAppApp {
      * The Budget Policy ID set for this resource.
      */
     budgetPolicyId?: string;
+    /**
+     * (Optional) A string specifying compute size for the App.
+     */
+    computeSize?: string;
     /**
      * attribute
      */
@@ -3334,6 +3180,9 @@ export interface GetAppApp {
      * A list of resources that the app have access to.
      */
     resources?: outputs.GetAppAppResource[];
+    /**
+     * client_id (application_id) of the app service principal
+     */
     servicePrincipalClientId: string;
     /**
      * id of the app service principal
@@ -3462,6 +3311,10 @@ export interface GetAppAppResource {
     /**
      * attribute
      */
+    genieSpace?: outputs.GetAppAppResourceGenieSpace;
+    /**
+     * attribute
+     */
     job?: outputs.GetAppAppResourceJob;
     /**
      * The name of the app.
@@ -3498,6 +3351,21 @@ export interface GetAppAppResourceDatabase {
      * Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
      */
     permission: string;
+}
+
+export interface GetAppAppResourceGenieSpace {
+    /**
+     * The name of the app.
+     */
+    name: string;
+    /**
+     * Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
+     */
+    permission: string;
+    /**
+     * The unique ID of Genie Space.
+     */
+    spaceId: string;
 }
 
 export interface GetAppAppResourceJob {
@@ -3563,6 +3431,10 @@ export interface GetAppAppResourceUcSecurable {
     securableType: string;
 }
 
+export interface GetAppProviderConfig {
+    workspaceId: string;
+}
+
 export interface GetAppsApp {
     activeDeployment: outputs.GetAppsAppActiveDeployment;
     /**
@@ -3573,6 +3445,10 @@ export interface GetAppsApp {
      * The Budget Policy ID set for this resource.
      */
     budgetPolicyId?: string;
+    /**
+     * (Optional) A string specifying compute size for the App.
+     */
+    computeSize?: string;
     /**
      * attribute
      */
@@ -3606,7 +3482,7 @@ export interface GetAppsApp {
      */
     id: string;
     /**
-     * Name of the serving endpoint to grant permission on.
+     * The name of Genie Space.
      */
     name: string;
     oauth2AppClientId: string;
@@ -3616,6 +3492,9 @@ export interface GetAppsApp {
      * A list of resources that the app have access to.
      */
     resources?: outputs.GetAppsAppResource[];
+    /**
+     * client_id (application_id) of the app service principal
+     */
     servicePrincipalClientId: string;
     /**
      * id of the app service principal
@@ -3744,9 +3623,13 @@ export interface GetAppsAppResource {
     /**
      * attribute
      */
+    genieSpace?: outputs.GetAppsAppResourceGenieSpace;
+    /**
+     * attribute
+     */
     job?: outputs.GetAppsAppResourceJob;
     /**
-     * Name of the serving endpoint to grant permission on.
+     * The name of Genie Space.
      */
     name: string;
     /**
@@ -3782,6 +3665,21 @@ export interface GetAppsAppResourceDatabase {
     permission: string;
 }
 
+export interface GetAppsAppResourceGenieSpace {
+    /**
+     * The name of Genie Space.
+     */
+    name: string;
+    /**
+     * Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
+     */
+    permission: string;
+    /**
+     * The unique ID of Genie Space.
+     */
+    spaceId: string;
+}
+
 export interface GetAppsAppResourceJob {
     /**
      * Id of the job to grant permission on.
@@ -3810,7 +3708,7 @@ export interface GetAppsAppResourceSecret {
 
 export interface GetAppsAppResourceServingEndpoint {
     /**
-     * Name of the serving endpoint to grant permission on.
+     * The name of Genie Space.
      */
     name: string;
     /**
@@ -3843,6 +3741,10 @@ export interface GetAppsAppResourceUcSecurable {
      * the type of UC securable, i.e. `VOLUME`.
      */
     securableType: string;
+}
+
+export interface GetAppsProviderConfig {
+    workspaceId: string;
 }
 
 export interface GetAppsSettingsCustomTemplateManifest {
@@ -3899,39 +3801,39 @@ export interface GetAppsSettingsCustomTemplateManifestResourceSpec {
 
 export interface GetAppsSettingsCustomTemplateManifestResourceSpecJobSpec {
     /**
-     * (string) - . Possible values are: `MANAGE`, `READ_VOLUME`, `WRITE_VOLUME`
+     * (string) - Possible values are: `MANAGE`, `READ_VOLUME`, `SELECT`, `WRITE_VOLUME`
      */
     permission: string;
 }
 
 export interface GetAppsSettingsCustomTemplateManifestResourceSpecSecretSpec {
     /**
-     * (string) - . Possible values are: `MANAGE`, `READ_VOLUME`, `WRITE_VOLUME`
+     * (string) - Possible values are: `MANAGE`, `READ_VOLUME`, `SELECT`, `WRITE_VOLUME`
      */
     permission: string;
 }
 
 export interface GetAppsSettingsCustomTemplateManifestResourceSpecServingEndpointSpec {
     /**
-     * (string) - . Possible values are: `MANAGE`, `READ_VOLUME`, `WRITE_VOLUME`
+     * (string) - Possible values are: `MANAGE`, `READ_VOLUME`, `SELECT`, `WRITE_VOLUME`
      */
     permission: string;
 }
 
 export interface GetAppsSettingsCustomTemplateManifestResourceSpecSqlWarehouseSpec {
     /**
-     * (string) - . Possible values are: `MANAGE`, `READ_VOLUME`, `WRITE_VOLUME`
+     * (string) - Possible values are: `MANAGE`, `READ_VOLUME`, `SELECT`, `WRITE_VOLUME`
      */
     permission: string;
 }
 
 export interface GetAppsSettingsCustomTemplateManifestResourceSpecUcSecurableSpec {
     /**
-     * (string) - . Possible values are: `MANAGE`, `READ_VOLUME`, `WRITE_VOLUME`
+     * (string) - Possible values are: `MANAGE`, `READ_VOLUME`, `SELECT`, `WRITE_VOLUME`
      */
     permission: string;
     /**
-     * (string) - . Possible values are: `VOLUME`
+     * (string) - Possible values are: `TABLE`, `VOLUME`
      */
     securableType: string;
 }
@@ -3944,7 +3846,7 @@ export interface GetAppsSettingsCustomTemplatesTemplate {
     /**
      * (string) - Description of the App Resource
      */
-    description?: string;
+    description: string;
     /**
      * (string) - The Git provider of the template
      */
@@ -4019,41 +3921,61 @@ export interface GetAppsSettingsCustomTemplatesTemplateManifestResourceSpec {
 
 export interface GetAppsSettingsCustomTemplatesTemplateManifestResourceSpecJobSpec {
     /**
-     * (string) - . Possible values are: `MANAGE`, `READ_VOLUME`, `WRITE_VOLUME`
+     * (string) - Possible values are: `MANAGE`, `READ_VOLUME`, `SELECT`, `WRITE_VOLUME`
      */
     permission: string;
 }
 
 export interface GetAppsSettingsCustomTemplatesTemplateManifestResourceSpecSecretSpec {
     /**
-     * (string) - . Possible values are: `MANAGE`, `READ_VOLUME`, `WRITE_VOLUME`
+     * (string) - Possible values are: `MANAGE`, `READ_VOLUME`, `SELECT`, `WRITE_VOLUME`
      */
     permission: string;
 }
 
 export interface GetAppsSettingsCustomTemplatesTemplateManifestResourceSpecServingEndpointSpec {
     /**
-     * (string) - . Possible values are: `MANAGE`, `READ_VOLUME`, `WRITE_VOLUME`
+     * (string) - Possible values are: `MANAGE`, `READ_VOLUME`, `SELECT`, `WRITE_VOLUME`
      */
     permission: string;
 }
 
 export interface GetAppsSettingsCustomTemplatesTemplateManifestResourceSpecSqlWarehouseSpec {
     /**
-     * (string) - . Possible values are: `MANAGE`, `READ_VOLUME`, `WRITE_VOLUME`
+     * (string) - Possible values are: `MANAGE`, `READ_VOLUME`, `SELECT`, `WRITE_VOLUME`
      */
     permission: string;
 }
 
 export interface GetAppsSettingsCustomTemplatesTemplateManifestResourceSpecUcSecurableSpec {
     /**
-     * (string) - . Possible values are: `MANAGE`, `READ_VOLUME`, `WRITE_VOLUME`
+     * (string) - Possible values are: `MANAGE`, `READ_VOLUME`, `SELECT`, `WRITE_VOLUME`
      */
     permission: string;
     /**
-     * (string) - . Possible values are: `VOLUME`
+     * (string) - Possible values are: `TABLE`, `VOLUME`
      */
     securableType: string;
+}
+
+export interface GetBudgetPoliciesFilterBy {
+    /**
+     * The policy creator user id to be filtered on.
+     * If unspecified, all policies will be returned
+     */
+    creatorUserId?: number;
+    /**
+     * The policy creator user name to be filtered on.
+     * If unspecified, all policies will be returned
+     */
+    creatorUserName?: string;
+    /**
+     * (string) - The name of the policy.
+     * - Must be unique among active policies.
+     * - Can contain only characters from the ISO 8859-1 (latin1) set.
+     * - Can't start with reserved keywords such as `databricks:default-policy`
+     */
+    policyName?: string;
 }
 
 export interface GetBudgetPoliciesPolicy {
@@ -4061,11 +3983,11 @@ export interface GetBudgetPoliciesPolicy {
      * (list of integer) - List of workspaces that this budget policy will be exclusively bound to.
      * An empty binding implies that this budget policy is open to any workspace in the account
      */
-    bindingWorkspaceIds?: number[];
+    bindingWorkspaceIds: number[];
     /**
      * (list of CustomPolicyTag) - A list of tags defined by the customer. At most 20 entries are allowed per policy
      */
-    customTags?: outputs.GetBudgetPoliciesPolicyCustomTag[];
+    customTags: outputs.GetBudgetPoliciesPolicyCustomTag[];
     /**
      * (string) - The Id of the policy. This field is generated by Databricks and globally unique
      */
@@ -4076,7 +3998,7 @@ export interface GetBudgetPoliciesPolicy {
      * - Can contain only characters from the ISO 8859-1 (latin1) set.
      * - Can't start with reserved keywords such as `databricks:default-policy`
      */
-    policyName?: string;
+    policyName: string;
 }
 
 export interface GetBudgetPoliciesPolicyCustomTag {
@@ -4091,6 +4013,17 @@ export interface GetBudgetPoliciesPolicyCustomTag {
      * (string) - The value of the tag
      */
     value?: string;
+}
+
+export interface GetBudgetPoliciesSortSpec {
+    /**
+     * Whether to sort in descending order
+     */
+    descending?: boolean;
+    /**
+     * The filed to sort by. Possible values are: `POLICY_NAME`
+     */
+    field?: string;
 }
 
 export interface GetBudgetPolicyCustomTag {
@@ -4206,1993 +4139,18 @@ export interface GetCatalogCatalogInfoProvisioningInfo {
     state?: string;
 }
 
-export interface GetCleanRoomAssetForeignTable {
+export interface GetCatalogProviderConfig {
     /**
-     * (list of ColumnInfo) - The metadata information of the columns in the view
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    columns: outputs.GetCleanRoomAssetForeignTableColumn[];
+    workspaceId: string;
 }
 
-export interface GetCleanRoomAssetForeignTableColumn {
+export interface GetCatalogsProviderConfig {
     /**
-     * (string) - User-provided free-form text description
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    comment?: string;
-    /**
-     * (ColumnMask)
-     */
-    mask?: outputs.GetCleanRoomAssetForeignTableColumnMask;
-    /**
-     * A fully qualified name that uniquely identifies the asset within the clean room.
-     * This is also the name displayed in the clean room UI.
-     *
-     * For UC securable assets (tables, volumes, etc.), the format is *shared_catalog*.*shared_schema*.*asset_name*
-     *
-     * For notebooks, the name is the notebook file name.
-     * For jar analyses, the name is the jar analysis name
-     */
-    name?: string;
-    /**
-     * (boolean) - Whether field may be Null (default: true)
-     */
-    nullable?: boolean;
-    /**
-     * (integer) - Partition index for column
-     */
-    partitionIndex?: number;
-    /**
-     * (integer) - Ordinal position of column (starting at position 0)
-     */
-    position?: number;
-    /**
-     * (string) - Format of IntervalType
-     */
-    typeIntervalType?: string;
-    /**
-     * (string) - Full data type specification, JSON-serialized
-     */
-    typeJson?: string;
-    /**
-     * (string) - . Possible values are: `ARRAY`, `BINARY`, `BOOLEAN`, `BYTE`, `CHAR`, `DATE`, `DECIMAL`, `DOUBLE`, `FLOAT`, `GEOGRAPHY`, `GEOMETRY`, `INT`, `INTERVAL`, `LONG`, `MAP`, `NULL`, `SHORT`, `STRING`, `STRUCT`, `TABLE_TYPE`, `TIMESTAMP`, `TIMESTAMP_NTZ`, `USER_DEFINED_TYPE`, `VARIANT`
-     */
-    typeName?: string;
-    /**
-     * (integer) - Digits of precision; required for DecimalTypes
-     */
-    typePrecision?: number;
-    /**
-     * (integer) - Digits to right of decimal; Required for DecimalTypes
-     */
-    typeScale?: number;
-    /**
-     * (string) - Full data type specification as SQL/catalogString text
-     */
-    typeText?: string;
-}
-
-export interface GetCleanRoomAssetForeignTableColumnMask {
-    /**
-     * (string) - The full name of the column mask SQL UDF
-     */
-    functionName?: string;
-    /**
-     * (list of string) - The list of additional table columns to be passed as input to the column mask function. The
-     * first arg of the mask function should be of the type of the column being masked and the
-     * types of the rest of the args should match the types of columns in 'using_column_names'
-     */
-    usingColumnNames?: string[];
-}
-
-export interface GetCleanRoomAssetForeignTableLocalDetails {
-    /**
-     * (string) - The fully qualified name of the volume in its owner's local metastore,
-     * in the format of *catalog*.*schema*.*volume_name*
-     */
-    localName: string;
-}
-
-export interface GetCleanRoomAssetNotebook {
-    /**
-     * (string) - Server generated etag that represents the notebook version
-     */
-    etag: string;
-    /**
-     * (string) - Base 64 representation of the notebook contents.
-     * This is the same format as returned by :method:workspace/export with the format of **HTML**
-     */
-    notebookContent: string;
-    /**
-     * (string) - Review outcome. Possible values are: `APPROVED`, `PENDING`, `REJECTED`
-     */
-    reviewState: string;
-    /**
-     * (list of CleanRoomNotebookReview) - All existing approvals or rejections
-     */
-    reviews: outputs.GetCleanRoomAssetNotebookReview[];
-    /**
-     * (list of string) - Aliases of collaborators that can run the notebook
-     */
-    runnerCollaboratorAliases?: string[];
-}
-
-export interface GetCleanRoomAssetNotebookReview {
-    /**
-     * (string) - User-provided free-form text description
-     */
-    comment?: string;
-    /**
-     * (integer) - When the review was submitted, in epoch milliseconds
-     */
-    createdAtMillis?: number;
-    /**
-     * (string) - Review outcome. Possible values are: `APPROVED`, `PENDING`, `REJECTED`
-     */
-    reviewState?: string;
-    /**
-     * (string) - Specified when the review was not explicitly made by a user. Possible values are: `AUTO_APPROVED`, `BACKFILLED`
-     */
-    reviewSubReason?: string;
-    /**
-     * (string) - Collaborator alias of the reviewer
-     */
-    reviewerCollaboratorAlias?: string;
-}
-
-export interface GetCleanRoomAssetRevisionsCleanRoomAssetForeignTable {
-    /**
-     * (list of ColumnInfo) - The metadata information of the columns in the view
-     */
-    columns: outputs.GetCleanRoomAssetRevisionsCleanRoomAssetForeignTableColumn[];
-}
-
-export interface GetCleanRoomAssetRevisionsCleanRoomAssetForeignTableColumn {
-    /**
-     * (string) - User-provided free-form text description
-     */
-    comment?: string;
-    /**
-     * (ColumnMask)
-     */
-    mask?: outputs.GetCleanRoomAssetRevisionsCleanRoomAssetForeignTableColumnMask;
-    /**
-     * A fully qualified name that uniquely identifies the asset within the clean room.
-     * This is also the name displayed in the clean room UI.
-     *
-     * For UC securable assets (tables, volumes, etc.), the format is *shared_catalog*.*shared_schema*.*asset_name*
-     *
-     * For notebooks, the name is the notebook file name.
-     * For jar analyses, the name is the jar analysis name
-     */
-    name?: string;
-    /**
-     * (boolean) - Whether field may be Null (default: true)
-     */
-    nullable?: boolean;
-    /**
-     * (integer) - Partition index for column
-     */
-    partitionIndex?: number;
-    /**
-     * (integer) - Ordinal position of column (starting at position 0)
-     */
-    position?: number;
-    /**
-     * (string) - Format of IntervalType
-     */
-    typeIntervalType?: string;
-    /**
-     * (string) - Full data type specification, JSON-serialized
-     */
-    typeJson?: string;
-    /**
-     * (string) - . Possible values are: `ARRAY`, `BINARY`, `BOOLEAN`, `BYTE`, `CHAR`, `DATE`, `DECIMAL`, `DOUBLE`, `FLOAT`, `GEOGRAPHY`, `GEOMETRY`, `INT`, `INTERVAL`, `LONG`, `MAP`, `NULL`, `SHORT`, `STRING`, `STRUCT`, `TABLE_TYPE`, `TIMESTAMP`, `TIMESTAMP_NTZ`, `USER_DEFINED_TYPE`, `VARIANT`
-     */
-    typeName?: string;
-    /**
-     * (integer) - Digits of precision; required for DecimalTypes
-     */
-    typePrecision?: number;
-    /**
-     * (integer) - Digits to right of decimal; Required for DecimalTypes
-     */
-    typeScale?: number;
-    /**
-     * (string) - Full data type specification as SQL/catalogString text
-     */
-    typeText?: string;
-}
-
-export interface GetCleanRoomAssetRevisionsCleanRoomAssetForeignTableColumnMask {
-    /**
-     * (string) - The full name of the column mask SQL UDF
-     */
-    functionName?: string;
-    /**
-     * (list of string) - The list of additional table columns to be passed as input to the column mask function. The
-     * first arg of the mask function should be of the type of the column being masked and the
-     * types of the rest of the args should match the types of columns in 'using_column_names'
-     */
-    usingColumnNames?: string[];
-}
-
-export interface GetCleanRoomAssetRevisionsCleanRoomAssetForeignTableLocalDetails {
-    /**
-     * (string) - The fully qualified name of the volume in its owner's local metastore,
-     * in the format of *catalog*.*schema*.*volume_name*
-     */
-    localName: string;
-}
-
-export interface GetCleanRoomAssetRevisionsCleanRoomAssetNotebook {
-    /**
-     * (string) - Server generated etag that represents the notebook version
-     */
-    etag: string;
-    /**
-     * (string) - Base 64 representation of the notebook contents.
-     * This is the same format as returned by :method:workspace/export with the format of **HTML**
-     */
-    notebookContent: string;
-    /**
-     * (string) - Review outcome. Possible values are: `APPROVED`, `PENDING`, `REJECTED`
-     */
-    reviewState: string;
-    /**
-     * (list of CleanRoomNotebookReview) - All existing approvals or rejections
-     */
-    reviews: outputs.GetCleanRoomAssetRevisionsCleanRoomAssetNotebookReview[];
-    /**
-     * (list of string) - Aliases of collaborators that can run the notebook
-     */
-    runnerCollaboratorAliases?: string[];
-}
-
-export interface GetCleanRoomAssetRevisionsCleanRoomAssetNotebookReview {
-    /**
-     * (string) - User-provided free-form text description
-     */
-    comment?: string;
-    /**
-     * (integer) - When the review was submitted, in epoch milliseconds
-     */
-    createdAtMillis?: number;
-    /**
-     * (string) - Review outcome. Possible values are: `APPROVED`, `PENDING`, `REJECTED`
-     */
-    reviewState?: string;
-    /**
-     * (string) - Specified when the review was not explicitly made by a user. Possible values are: `AUTO_APPROVED`, `BACKFILLED`
-     */
-    reviewSubReason?: string;
-    /**
-     * (string) - Collaborator alias of the reviewer
-     */
-    reviewerCollaboratorAlias?: string;
-}
-
-export interface GetCleanRoomAssetRevisionsCleanRoomAssetTable {
-    /**
-     * (list of ColumnInfo) - The metadata information of the columns in the view
-     */
-    columns: outputs.GetCleanRoomAssetRevisionsCleanRoomAssetTableColumn[];
-}
-
-export interface GetCleanRoomAssetRevisionsCleanRoomAssetTableColumn {
-    /**
-     * (string) - User-provided free-form text description
-     */
-    comment?: string;
-    /**
-     * (ColumnMask)
-     */
-    mask?: outputs.GetCleanRoomAssetRevisionsCleanRoomAssetTableColumnMask;
-    /**
-     * A fully qualified name that uniquely identifies the asset within the clean room.
-     * This is also the name displayed in the clean room UI.
-     *
-     * For UC securable assets (tables, volumes, etc.), the format is *shared_catalog*.*shared_schema*.*asset_name*
-     *
-     * For notebooks, the name is the notebook file name.
-     * For jar analyses, the name is the jar analysis name
-     */
-    name?: string;
-    /**
-     * (boolean) - Whether field may be Null (default: true)
-     */
-    nullable?: boolean;
-    /**
-     * (integer) - Partition index for column
-     */
-    partitionIndex?: number;
-    /**
-     * (integer) - Ordinal position of column (starting at position 0)
-     */
-    position?: number;
-    /**
-     * (string) - Format of IntervalType
-     */
-    typeIntervalType?: string;
-    /**
-     * (string) - Full data type specification, JSON-serialized
-     */
-    typeJson?: string;
-    /**
-     * (string) - . Possible values are: `ARRAY`, `BINARY`, `BOOLEAN`, `BYTE`, `CHAR`, `DATE`, `DECIMAL`, `DOUBLE`, `FLOAT`, `GEOGRAPHY`, `GEOMETRY`, `INT`, `INTERVAL`, `LONG`, `MAP`, `NULL`, `SHORT`, `STRING`, `STRUCT`, `TABLE_TYPE`, `TIMESTAMP`, `TIMESTAMP_NTZ`, `USER_DEFINED_TYPE`, `VARIANT`
-     */
-    typeName?: string;
-    /**
-     * (integer) - Digits of precision; required for DecimalTypes
-     */
-    typePrecision?: number;
-    /**
-     * (integer) - Digits to right of decimal; Required for DecimalTypes
-     */
-    typeScale?: number;
-    /**
-     * (string) - Full data type specification as SQL/catalogString text
-     */
-    typeText?: string;
-}
-
-export interface GetCleanRoomAssetRevisionsCleanRoomAssetTableColumnMask {
-    /**
-     * (string) - The full name of the column mask SQL UDF
-     */
-    functionName?: string;
-    /**
-     * (list of string) - The list of additional table columns to be passed as input to the column mask function. The
-     * first arg of the mask function should be of the type of the column being masked and the
-     * types of the rest of the args should match the types of columns in 'using_column_names'
-     */
-    usingColumnNames?: string[];
-}
-
-export interface GetCleanRoomAssetRevisionsCleanRoomAssetTableLocalDetails {
-    /**
-     * (string) - The fully qualified name of the volume in its owner's local metastore,
-     * in the format of *catalog*.*schema*.*volume_name*
-     */
-    localName: string;
-    /**
-     * (list of Partition) - Partition filtering specification for a shared table
-     */
-    partitions?: outputs.GetCleanRoomAssetRevisionsCleanRoomAssetTableLocalDetailsPartition[];
-}
-
-export interface GetCleanRoomAssetRevisionsCleanRoomAssetTableLocalDetailsPartition {
-    /**
-     * (string) - The value of the partition column. When this value is not set, it means `null` value.
-     * When this field is set, field `recipientPropertyKey` can not be set
-     */
-    values?: outputs.GetCleanRoomAssetRevisionsCleanRoomAssetTableLocalDetailsPartitionValue[];
-}
-
-export interface GetCleanRoomAssetRevisionsCleanRoomAssetTableLocalDetailsPartitionValue {
-    /**
-     * A fully qualified name that uniquely identifies the asset within the clean room.
-     * This is also the name displayed in the clean room UI.
-     *
-     * For UC securable assets (tables, volumes, etc.), the format is *shared_catalog*.*shared_schema*.*asset_name*
-     *
-     * For notebooks, the name is the notebook file name.
-     * For jar analyses, the name is the jar analysis name
-     */
-    name?: string;
-    /**
-     * (string) - The operator to apply for the value. Possible values are: `EQUAL`, `LIKE`
-     */
-    op?: string;
-    /**
-     * (string) - The key of a Delta Sharing recipient's property. For example "databricks-account-id".
-     * When this field is set, field `value` can not be set
-     */
-    recipientPropertyKey?: string;
-    /**
-     * (string) - The value of the partition column. When this value is not set, it means `null` value.
-     * When this field is set, field `recipientPropertyKey` can not be set
-     */
-    value?: string;
-}
-
-export interface GetCleanRoomAssetRevisionsCleanRoomAssetView {
-    /**
-     * (list of ColumnInfo) - The metadata information of the columns in the view
-     */
-    columns: outputs.GetCleanRoomAssetRevisionsCleanRoomAssetViewColumn[];
-}
-
-export interface GetCleanRoomAssetRevisionsCleanRoomAssetViewColumn {
-    /**
-     * (string) - User-provided free-form text description
-     */
-    comment?: string;
-    /**
-     * (ColumnMask)
-     */
-    mask?: outputs.GetCleanRoomAssetRevisionsCleanRoomAssetViewColumnMask;
-    /**
-     * A fully qualified name that uniquely identifies the asset within the clean room.
-     * This is also the name displayed in the clean room UI.
-     *
-     * For UC securable assets (tables, volumes, etc.), the format is *shared_catalog*.*shared_schema*.*asset_name*
-     *
-     * For notebooks, the name is the notebook file name.
-     * For jar analyses, the name is the jar analysis name
-     */
-    name?: string;
-    /**
-     * (boolean) - Whether field may be Null (default: true)
-     */
-    nullable?: boolean;
-    /**
-     * (integer) - Partition index for column
-     */
-    partitionIndex?: number;
-    /**
-     * (integer) - Ordinal position of column (starting at position 0)
-     */
-    position?: number;
-    /**
-     * (string) - Format of IntervalType
-     */
-    typeIntervalType?: string;
-    /**
-     * (string) - Full data type specification, JSON-serialized
-     */
-    typeJson?: string;
-    /**
-     * (string) - . Possible values are: `ARRAY`, `BINARY`, `BOOLEAN`, `BYTE`, `CHAR`, `DATE`, `DECIMAL`, `DOUBLE`, `FLOAT`, `GEOGRAPHY`, `GEOMETRY`, `INT`, `INTERVAL`, `LONG`, `MAP`, `NULL`, `SHORT`, `STRING`, `STRUCT`, `TABLE_TYPE`, `TIMESTAMP`, `TIMESTAMP_NTZ`, `USER_DEFINED_TYPE`, `VARIANT`
-     */
-    typeName?: string;
-    /**
-     * (integer) - Digits of precision; required for DecimalTypes
-     */
-    typePrecision?: number;
-    /**
-     * (integer) - Digits to right of decimal; Required for DecimalTypes
-     */
-    typeScale?: number;
-    /**
-     * (string) - Full data type specification as SQL/catalogString text
-     */
-    typeText?: string;
-}
-
-export interface GetCleanRoomAssetRevisionsCleanRoomAssetViewColumnMask {
-    /**
-     * (string) - The full name of the column mask SQL UDF
-     */
-    functionName?: string;
-    /**
-     * (list of string) - The list of additional table columns to be passed as input to the column mask function. The
-     * first arg of the mask function should be of the type of the column being masked and the
-     * types of the rest of the args should match the types of columns in 'using_column_names'
-     */
-    usingColumnNames?: string[];
-}
-
-export interface GetCleanRoomAssetRevisionsCleanRoomAssetViewLocalDetails {
-    /**
-     * (string) - The fully qualified name of the volume in its owner's local metastore,
-     * in the format of *catalog*.*schema*.*volume_name*
-     */
-    localName: string;
-}
-
-export interface GetCleanRoomAssetRevisionsCleanRoomAssetVolumeLocalDetails {
-    /**
-     * (string) - The fully qualified name of the volume in its owner's local metastore,
-     * in the format of *catalog*.*schema*.*volume_name*
-     */
-    localName: string;
-}
-
-export interface GetCleanRoomAssetRevisionsCleanRoomAssetsRevision {
-    /**
-     * (integer) - When the asset is added to the clean room, in epoch milliseconds
-     */
-    addedAt: number;
-    /**
-     * Asset type. Only NOTEBOOK_FILE is supported. Possible values are: `FOREIGN_TABLE`, `NOTEBOOK_FILE`, `TABLE`, `VIEW`, `VOLUME`
-     */
-    assetType: string;
-    /**
-     * Name of the clean room
-     */
-    cleanRoomName?: string;
-    /**
-     * (CleanRoomAssetForeignTable) - Foreign table details available to all collaborators of the clean room.
-     * Present if and only if **asset_type** is **FOREIGN_TABLE**
-     */
-    foreignTable?: outputs.GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionForeignTable;
-    /**
-     * (CleanRoomAssetForeignTableLocalDetails) - Local details for a foreign that are only available to its owner.
-     * Present if and only if **asset_type** is **FOREIGN_TABLE**
-     */
-    foreignTableLocalDetails?: outputs.GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionForeignTableLocalDetails;
-    /**
-     * Name of the asset
-     */
-    name: string;
-    /**
-     * (CleanRoomAssetNotebook) - Notebook details available to all collaborators of the clean room.
-     * Present if and only if **asset_type** is **NOTEBOOK_FILE**
-     */
-    notebook?: outputs.GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionNotebook;
-    /**
-     * (string) - The alias of the collaborator who owns this asset
-     */
-    ownerCollaboratorAlias: string;
-    /**
-     * (string) - Status of the asset. Possible values are: `ACTIVE`, `PENDING`, `PERMISSION_DENIED`
-     */
-    status: string;
-    /**
-     * (CleanRoomAssetTable) - Table details available to all collaborators of the clean room.
-     * Present if and only if **asset_type** is **TABLE**
-     */
-    table?: outputs.GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionTable;
-    /**
-     * (CleanRoomAssetTableLocalDetails) - Local details for a table that are only available to its owner.
-     * Present if and only if **asset_type** is **TABLE**
-     */
-    tableLocalDetails?: outputs.GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionTableLocalDetails;
-    /**
-     * (CleanRoomAssetView) - View details available to all collaborators of the clean room.
-     * Present if and only if **asset_type** is **VIEW**
-     */
-    view?: outputs.GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionView;
-    /**
-     * (CleanRoomAssetViewLocalDetails) - Local details for a view that are only available to its owner.
-     * Present if and only if **asset_type** is **VIEW**
-     */
-    viewLocalDetails?: outputs.GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionViewLocalDetails;
-    /**
-     * (CleanRoomAssetVolumeLocalDetails) - Local details for a volume that are only available to its owner.
-     * Present if and only if **asset_type** is **VOLUME**
-     */
-    volumeLocalDetails?: outputs.GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionVolumeLocalDetails;
-}
-
-export interface GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionForeignTable {
-    /**
-     * (list of ColumnInfo) - The metadata information of the columns in the view
-     */
-    columns: outputs.GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionForeignTableColumn[];
-}
-
-export interface GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionForeignTableColumn {
-    /**
-     * (string) - User-provided free-form text description
-     */
-    comment?: string;
-    /**
-     * (ColumnMask)
-     */
-    mask?: outputs.GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionForeignTableColumnMask;
-    /**
-     * Name of the asset
-     */
-    name?: string;
-    /**
-     * (boolean) - Whether field may be Null (default: true)
-     */
-    nullable?: boolean;
-    /**
-     * (integer) - Partition index for column
-     */
-    partitionIndex?: number;
-    /**
-     * (integer) - Ordinal position of column (starting at position 0)
-     */
-    position?: number;
-    /**
-     * (string) - Format of IntervalType
-     */
-    typeIntervalType?: string;
-    /**
-     * (string) - Full data type specification, JSON-serialized
-     */
-    typeJson?: string;
-    /**
-     * (string) - . Possible values are: `ARRAY`, `BINARY`, `BOOLEAN`, `BYTE`, `CHAR`, `DATE`, `DECIMAL`, `DOUBLE`, `FLOAT`, `GEOGRAPHY`, `GEOMETRY`, `INT`, `INTERVAL`, `LONG`, `MAP`, `NULL`, `SHORT`, `STRING`, `STRUCT`, `TABLE_TYPE`, `TIMESTAMP`, `TIMESTAMP_NTZ`, `USER_DEFINED_TYPE`, `VARIANT`
-     */
-    typeName?: string;
-    /**
-     * (integer) - Digits of precision; required for DecimalTypes
-     */
-    typePrecision?: number;
-    /**
-     * (integer) - Digits to right of decimal; Required for DecimalTypes
-     */
-    typeScale?: number;
-    /**
-     * (string) - Full data type specification as SQL/catalogString text
-     */
-    typeText?: string;
-}
-
-export interface GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionForeignTableColumnMask {
-    /**
-     * (string) - The full name of the column mask SQL UDF
-     */
-    functionName?: string;
-    /**
-     * (list of string) - The list of additional table columns to be passed as input to the column mask function. The
-     * first arg of the mask function should be of the type of the column being masked and the
-     * types of the rest of the args should match the types of columns in 'using_column_names'
-     */
-    usingColumnNames?: string[];
-}
-
-export interface GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionForeignTableLocalDetails {
-    /**
-     * (string) - The fully qualified name of the volume in its owner's local metastore,
-     * in the format of *catalog*.*schema*.*volume_name*
-     */
-    localName: string;
-}
-
-export interface GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionNotebook {
-    /**
-     * (string) - Server generated etag that represents the notebook version
-     */
-    etag: string;
-    /**
-     * (string) - Base 64 representation of the notebook contents.
-     * This is the same format as returned by :method:workspace/export with the format of **HTML**
-     */
-    notebookContent: string;
-    /**
-     * (string) - Review outcome. Possible values are: `APPROVED`, `PENDING`, `REJECTED`
-     */
-    reviewState: string;
-    /**
-     * (list of CleanRoomNotebookReview) - All existing approvals or rejections
-     */
-    reviews: outputs.GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionNotebookReview[];
-    /**
-     * (list of string) - Aliases of collaborators that can run the notebook
-     */
-    runnerCollaboratorAliases?: string[];
-}
-
-export interface GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionNotebookReview {
-    /**
-     * (string) - User-provided free-form text description
-     */
-    comment?: string;
-    /**
-     * (integer) - When the review was submitted, in epoch milliseconds
-     */
-    createdAtMillis?: number;
-    /**
-     * (string) - Review outcome. Possible values are: `APPROVED`, `PENDING`, `REJECTED`
-     */
-    reviewState?: string;
-    /**
-     * (string) - Specified when the review was not explicitly made by a user. Possible values are: `AUTO_APPROVED`, `BACKFILLED`
-     */
-    reviewSubReason?: string;
-    /**
-     * (string) - Collaborator alias of the reviewer
-     */
-    reviewerCollaboratorAlias?: string;
-}
-
-export interface GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionTable {
-    /**
-     * (list of ColumnInfo) - The metadata information of the columns in the view
-     */
-    columns: outputs.GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionTableColumn[];
-}
-
-export interface GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionTableColumn {
-    /**
-     * (string) - User-provided free-form text description
-     */
-    comment?: string;
-    /**
-     * (ColumnMask)
-     */
-    mask?: outputs.GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionTableColumnMask;
-    /**
-     * Name of the asset
-     */
-    name?: string;
-    /**
-     * (boolean) - Whether field may be Null (default: true)
-     */
-    nullable?: boolean;
-    /**
-     * (integer) - Partition index for column
-     */
-    partitionIndex?: number;
-    /**
-     * (integer) - Ordinal position of column (starting at position 0)
-     */
-    position?: number;
-    /**
-     * (string) - Format of IntervalType
-     */
-    typeIntervalType?: string;
-    /**
-     * (string) - Full data type specification, JSON-serialized
-     */
-    typeJson?: string;
-    /**
-     * (string) - . Possible values are: `ARRAY`, `BINARY`, `BOOLEAN`, `BYTE`, `CHAR`, `DATE`, `DECIMAL`, `DOUBLE`, `FLOAT`, `GEOGRAPHY`, `GEOMETRY`, `INT`, `INTERVAL`, `LONG`, `MAP`, `NULL`, `SHORT`, `STRING`, `STRUCT`, `TABLE_TYPE`, `TIMESTAMP`, `TIMESTAMP_NTZ`, `USER_DEFINED_TYPE`, `VARIANT`
-     */
-    typeName?: string;
-    /**
-     * (integer) - Digits of precision; required for DecimalTypes
-     */
-    typePrecision?: number;
-    /**
-     * (integer) - Digits to right of decimal; Required for DecimalTypes
-     */
-    typeScale?: number;
-    /**
-     * (string) - Full data type specification as SQL/catalogString text
-     */
-    typeText?: string;
-}
-
-export interface GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionTableColumnMask {
-    /**
-     * (string) - The full name of the column mask SQL UDF
-     */
-    functionName?: string;
-    /**
-     * (list of string) - The list of additional table columns to be passed as input to the column mask function. The
-     * first arg of the mask function should be of the type of the column being masked and the
-     * types of the rest of the args should match the types of columns in 'using_column_names'
-     */
-    usingColumnNames?: string[];
-}
-
-export interface GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionTableLocalDetails {
-    /**
-     * (string) - The fully qualified name of the volume in its owner's local metastore,
-     * in the format of *catalog*.*schema*.*volume_name*
-     */
-    localName: string;
-    /**
-     * (list of Partition) - Partition filtering specification for a shared table
-     */
-    partitions?: outputs.GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionTableLocalDetailsPartition[];
-}
-
-export interface GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionTableLocalDetailsPartition {
-    /**
-     * (string) - The value of the partition column. When this value is not set, it means `null` value.
-     * When this field is set, field `recipientPropertyKey` can not be set
-     */
-    values?: outputs.GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionTableLocalDetailsPartitionValue[];
-}
-
-export interface GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionTableLocalDetailsPartitionValue {
-    /**
-     * Name of the asset
-     */
-    name?: string;
-    /**
-     * (string) - The operator to apply for the value. Possible values are: `EQUAL`, `LIKE`
-     */
-    op?: string;
-    /**
-     * (string) - The key of a Delta Sharing recipient's property. For example "databricks-account-id".
-     * When this field is set, field `value` can not be set
-     */
-    recipientPropertyKey?: string;
-    /**
-     * (string) - The value of the partition column. When this value is not set, it means `null` value.
-     * When this field is set, field `recipientPropertyKey` can not be set
-     */
-    value?: string;
-}
-
-export interface GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionView {
-    /**
-     * (list of ColumnInfo) - The metadata information of the columns in the view
-     */
-    columns: outputs.GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionViewColumn[];
-}
-
-export interface GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionViewColumn {
-    /**
-     * (string) - User-provided free-form text description
-     */
-    comment?: string;
-    /**
-     * (ColumnMask)
-     */
-    mask?: outputs.GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionViewColumnMask;
-    /**
-     * Name of the asset
-     */
-    name?: string;
-    /**
-     * (boolean) - Whether field may be Null (default: true)
-     */
-    nullable?: boolean;
-    /**
-     * (integer) - Partition index for column
-     */
-    partitionIndex?: number;
-    /**
-     * (integer) - Ordinal position of column (starting at position 0)
-     */
-    position?: number;
-    /**
-     * (string) - Format of IntervalType
-     */
-    typeIntervalType?: string;
-    /**
-     * (string) - Full data type specification, JSON-serialized
-     */
-    typeJson?: string;
-    /**
-     * (string) - . Possible values are: `ARRAY`, `BINARY`, `BOOLEAN`, `BYTE`, `CHAR`, `DATE`, `DECIMAL`, `DOUBLE`, `FLOAT`, `GEOGRAPHY`, `GEOMETRY`, `INT`, `INTERVAL`, `LONG`, `MAP`, `NULL`, `SHORT`, `STRING`, `STRUCT`, `TABLE_TYPE`, `TIMESTAMP`, `TIMESTAMP_NTZ`, `USER_DEFINED_TYPE`, `VARIANT`
-     */
-    typeName?: string;
-    /**
-     * (integer) - Digits of precision; required for DecimalTypes
-     */
-    typePrecision?: number;
-    /**
-     * (integer) - Digits to right of decimal; Required for DecimalTypes
-     */
-    typeScale?: number;
-    /**
-     * (string) - Full data type specification as SQL/catalogString text
-     */
-    typeText?: string;
-}
-
-export interface GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionViewColumnMask {
-    /**
-     * (string) - The full name of the column mask SQL UDF
-     */
-    functionName?: string;
-    /**
-     * (list of string) - The list of additional table columns to be passed as input to the column mask function. The
-     * first arg of the mask function should be of the type of the column being masked and the
-     * types of the rest of the args should match the types of columns in 'using_column_names'
-     */
-    usingColumnNames?: string[];
-}
-
-export interface GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionViewLocalDetails {
-    /**
-     * (string) - The fully qualified name of the volume in its owner's local metastore,
-     * in the format of *catalog*.*schema*.*volume_name*
-     */
-    localName: string;
-}
-
-export interface GetCleanRoomAssetRevisionsCleanRoomAssetsRevisionVolumeLocalDetails {
-    /**
-     * (string) - The fully qualified name of the volume in its owner's local metastore,
-     * in the format of *catalog*.*schema*.*volume_name*
-     */
-    localName: string;
-}
-
-export interface GetCleanRoomAssetTable {
-    /**
-     * (list of ColumnInfo) - The metadata information of the columns in the view
-     */
-    columns: outputs.GetCleanRoomAssetTableColumn[];
-}
-
-export interface GetCleanRoomAssetTableColumn {
-    /**
-     * (string) - User-provided free-form text description
-     */
-    comment?: string;
-    /**
-     * (ColumnMask)
-     */
-    mask?: outputs.GetCleanRoomAssetTableColumnMask;
-    /**
-     * A fully qualified name that uniquely identifies the asset within the clean room.
-     * This is also the name displayed in the clean room UI.
-     *
-     * For UC securable assets (tables, volumes, etc.), the format is *shared_catalog*.*shared_schema*.*asset_name*
-     *
-     * For notebooks, the name is the notebook file name.
-     * For jar analyses, the name is the jar analysis name
-     */
-    name?: string;
-    /**
-     * (boolean) - Whether field may be Null (default: true)
-     */
-    nullable?: boolean;
-    /**
-     * (integer) - Partition index for column
-     */
-    partitionIndex?: number;
-    /**
-     * (integer) - Ordinal position of column (starting at position 0)
-     */
-    position?: number;
-    /**
-     * (string) - Format of IntervalType
-     */
-    typeIntervalType?: string;
-    /**
-     * (string) - Full data type specification, JSON-serialized
-     */
-    typeJson?: string;
-    /**
-     * (string) - . Possible values are: `ARRAY`, `BINARY`, `BOOLEAN`, `BYTE`, `CHAR`, `DATE`, `DECIMAL`, `DOUBLE`, `FLOAT`, `GEOGRAPHY`, `GEOMETRY`, `INT`, `INTERVAL`, `LONG`, `MAP`, `NULL`, `SHORT`, `STRING`, `STRUCT`, `TABLE_TYPE`, `TIMESTAMP`, `TIMESTAMP_NTZ`, `USER_DEFINED_TYPE`, `VARIANT`
-     */
-    typeName?: string;
-    /**
-     * (integer) - Digits of precision; required for DecimalTypes
-     */
-    typePrecision?: number;
-    /**
-     * (integer) - Digits to right of decimal; Required for DecimalTypes
-     */
-    typeScale?: number;
-    /**
-     * (string) - Full data type specification as SQL/catalogString text
-     */
-    typeText?: string;
-}
-
-export interface GetCleanRoomAssetTableColumnMask {
-    /**
-     * (string) - The full name of the column mask SQL UDF
-     */
-    functionName?: string;
-    /**
-     * (list of string) - The list of additional table columns to be passed as input to the column mask function. The
-     * first arg of the mask function should be of the type of the column being masked and the
-     * types of the rest of the args should match the types of columns in 'using_column_names'
-     */
-    usingColumnNames?: string[];
-}
-
-export interface GetCleanRoomAssetTableLocalDetails {
-    /**
-     * (string) - The fully qualified name of the volume in its owner's local metastore,
-     * in the format of *catalog*.*schema*.*volume_name*
-     */
-    localName: string;
-    /**
-     * (list of Partition) - Partition filtering specification for a shared table
-     */
-    partitions?: outputs.GetCleanRoomAssetTableLocalDetailsPartition[];
-}
-
-export interface GetCleanRoomAssetTableLocalDetailsPartition {
-    /**
-     * (string) - The value of the partition column. When this value is not set, it means `null` value.
-     * When this field is set, field `recipientPropertyKey` can not be set
-     */
-    values?: outputs.GetCleanRoomAssetTableLocalDetailsPartitionValue[];
-}
-
-export interface GetCleanRoomAssetTableLocalDetailsPartitionValue {
-    /**
-     * A fully qualified name that uniquely identifies the asset within the clean room.
-     * This is also the name displayed in the clean room UI.
-     *
-     * For UC securable assets (tables, volumes, etc.), the format is *shared_catalog*.*shared_schema*.*asset_name*
-     *
-     * For notebooks, the name is the notebook file name.
-     * For jar analyses, the name is the jar analysis name
-     */
-    name?: string;
-    /**
-     * (string) - The operator to apply for the value. Possible values are: `EQUAL`, `LIKE`
-     */
-    op?: string;
-    /**
-     * (string) - The key of a Delta Sharing recipient's property. For example "databricks-account-id".
-     * When this field is set, field `value` can not be set
-     */
-    recipientPropertyKey?: string;
-    /**
-     * (string) - The value of the partition column. When this value is not set, it means `null` value.
-     * When this field is set, field `recipientPropertyKey` can not be set
-     */
-    value?: string;
-}
-
-export interface GetCleanRoomAssetView {
-    /**
-     * (list of ColumnInfo) - The metadata information of the columns in the view
-     */
-    columns: outputs.GetCleanRoomAssetViewColumn[];
-}
-
-export interface GetCleanRoomAssetViewColumn {
-    /**
-     * (string) - User-provided free-form text description
-     */
-    comment?: string;
-    /**
-     * (ColumnMask)
-     */
-    mask?: outputs.GetCleanRoomAssetViewColumnMask;
-    /**
-     * A fully qualified name that uniquely identifies the asset within the clean room.
-     * This is also the name displayed in the clean room UI.
-     *
-     * For UC securable assets (tables, volumes, etc.), the format is *shared_catalog*.*shared_schema*.*asset_name*
-     *
-     * For notebooks, the name is the notebook file name.
-     * For jar analyses, the name is the jar analysis name
-     */
-    name?: string;
-    /**
-     * (boolean) - Whether field may be Null (default: true)
-     */
-    nullable?: boolean;
-    /**
-     * (integer) - Partition index for column
-     */
-    partitionIndex?: number;
-    /**
-     * (integer) - Ordinal position of column (starting at position 0)
-     */
-    position?: number;
-    /**
-     * (string) - Format of IntervalType
-     */
-    typeIntervalType?: string;
-    /**
-     * (string) - Full data type specification, JSON-serialized
-     */
-    typeJson?: string;
-    /**
-     * (string) - . Possible values are: `ARRAY`, `BINARY`, `BOOLEAN`, `BYTE`, `CHAR`, `DATE`, `DECIMAL`, `DOUBLE`, `FLOAT`, `GEOGRAPHY`, `GEOMETRY`, `INT`, `INTERVAL`, `LONG`, `MAP`, `NULL`, `SHORT`, `STRING`, `STRUCT`, `TABLE_TYPE`, `TIMESTAMP`, `TIMESTAMP_NTZ`, `USER_DEFINED_TYPE`, `VARIANT`
-     */
-    typeName?: string;
-    /**
-     * (integer) - Digits of precision; required for DecimalTypes
-     */
-    typePrecision?: number;
-    /**
-     * (integer) - Digits to right of decimal; Required for DecimalTypes
-     */
-    typeScale?: number;
-    /**
-     * (string) - Full data type specification as SQL/catalogString text
-     */
-    typeText?: string;
-}
-
-export interface GetCleanRoomAssetViewColumnMask {
-    /**
-     * (string) - The full name of the column mask SQL UDF
-     */
-    functionName?: string;
-    /**
-     * (list of string) - The list of additional table columns to be passed as input to the column mask function. The
-     * first arg of the mask function should be of the type of the column being masked and the
-     * types of the rest of the args should match the types of columns in 'using_column_names'
-     */
-    usingColumnNames?: string[];
-}
-
-export interface GetCleanRoomAssetViewLocalDetails {
-    /**
-     * (string) - The fully qualified name of the volume in its owner's local metastore,
-     * in the format of *catalog*.*schema*.*volume_name*
-     */
-    localName: string;
-}
-
-export interface GetCleanRoomAssetVolumeLocalDetails {
-    /**
-     * (string) - The fully qualified name of the volume in its owner's local metastore,
-     * in the format of *catalog*.*schema*.*volume_name*
-     */
-    localName: string;
-}
-
-export interface GetCleanRoomAssetsAsset {
-    /**
-     * (integer) - When the asset is added to the clean room, in epoch milliseconds
-     */
-    addedAt: number;
-    /**
-     * (string) - The type of the asset. Possible values are: `FOREIGN_TABLE`, `NOTEBOOK_FILE`, `TABLE`, `VIEW`, `VOLUME`
-     */
-    assetType: string;
-    /**
-     * Name of the clean room
-     */
-    cleanRoomName?: string;
-    /**
-     * (CleanRoomAssetForeignTable) - Foreign table details available to all collaborators of the clean room.
-     * Present if and only if **asset_type** is **FOREIGN_TABLE**
-     */
-    foreignTable?: outputs.GetCleanRoomAssetsAssetForeignTable;
-    /**
-     * (CleanRoomAssetForeignTableLocalDetails) - Local details for a foreign that are only available to its owner.
-     * Present if and only if **asset_type** is **FOREIGN_TABLE**
-     */
-    foreignTableLocalDetails?: outputs.GetCleanRoomAssetsAssetForeignTableLocalDetails;
-    /**
-     * (string) - The name of the partition column
-     */
-    name: string;
-    /**
-     * (CleanRoomAssetNotebook) - Notebook details available to all collaborators of the clean room.
-     * Present if and only if **asset_type** is **NOTEBOOK_FILE**
-     */
-    notebook?: outputs.GetCleanRoomAssetsAssetNotebook;
-    /**
-     * (string) - The alias of the collaborator who owns this asset
-     */
-    ownerCollaboratorAlias: string;
-    /**
-     * (string) - Status of the asset. Possible values are: `ACTIVE`, `PENDING`, `PERMISSION_DENIED`
-     */
-    status: string;
-    /**
-     * (CleanRoomAssetTable) - Table details available to all collaborators of the clean room.
-     * Present if and only if **asset_type** is **TABLE**
-     */
-    table?: outputs.GetCleanRoomAssetsAssetTable;
-    /**
-     * (CleanRoomAssetTableLocalDetails) - Local details for a table that are only available to its owner.
-     * Present if and only if **asset_type** is **TABLE**
-     */
-    tableLocalDetails?: outputs.GetCleanRoomAssetsAssetTableLocalDetails;
-    /**
-     * (CleanRoomAssetView) - View details available to all collaborators of the clean room.
-     * Present if and only if **asset_type** is **VIEW**
-     */
-    view?: outputs.GetCleanRoomAssetsAssetView;
-    /**
-     * (CleanRoomAssetViewLocalDetails) - Local details for a view that are only available to its owner.
-     * Present if and only if **asset_type** is **VIEW**
-     */
-    viewLocalDetails?: outputs.GetCleanRoomAssetsAssetViewLocalDetails;
-    /**
-     * (CleanRoomAssetVolumeLocalDetails) - Local details for a volume that are only available to its owner.
-     * Present if and only if **asset_type** is **VOLUME**
-     */
-    volumeLocalDetails?: outputs.GetCleanRoomAssetsAssetVolumeLocalDetails;
-}
-
-export interface GetCleanRoomAssetsAssetForeignTable {
-    /**
-     * (list of ColumnInfo) - The metadata information of the columns in the view
-     */
-    columns: outputs.GetCleanRoomAssetsAssetForeignTableColumn[];
-}
-
-export interface GetCleanRoomAssetsAssetForeignTableColumn {
-    /**
-     * (string) - User-provided free-form text description
-     */
-    comment?: string;
-    /**
-     * (ColumnMask)
-     */
-    mask?: outputs.GetCleanRoomAssetsAssetForeignTableColumnMask;
-    /**
-     * (string) - The name of the partition column
-     */
-    name?: string;
-    /**
-     * (boolean) - Whether field may be Null (default: true)
-     */
-    nullable?: boolean;
-    /**
-     * (integer) - Partition index for column
-     */
-    partitionIndex?: number;
-    /**
-     * (integer) - Ordinal position of column (starting at position 0)
-     */
-    position?: number;
-    /**
-     * (string) - Format of IntervalType
-     */
-    typeIntervalType?: string;
-    /**
-     * (string) - Full data type specification, JSON-serialized
-     */
-    typeJson?: string;
-    /**
-     * (string) - . Possible values are: `ARRAY`, `BINARY`, `BOOLEAN`, `BYTE`, `CHAR`, `DATE`, `DECIMAL`, `DOUBLE`, `FLOAT`, `GEOGRAPHY`, `GEOMETRY`, `INT`, `INTERVAL`, `LONG`, `MAP`, `NULL`, `SHORT`, `STRING`, `STRUCT`, `TABLE_TYPE`, `TIMESTAMP`, `TIMESTAMP_NTZ`, `USER_DEFINED_TYPE`, `VARIANT`
-     */
-    typeName?: string;
-    /**
-     * (integer) - Digits of precision; required for DecimalTypes
-     */
-    typePrecision?: number;
-    /**
-     * (integer) - Digits to right of decimal; Required for DecimalTypes
-     */
-    typeScale?: number;
-    /**
-     * (string) - Full data type specification as SQL/catalogString text
-     */
-    typeText?: string;
-}
-
-export interface GetCleanRoomAssetsAssetForeignTableColumnMask {
-    /**
-     * (string) - The full name of the column mask SQL UDF
-     */
-    functionName?: string;
-    /**
-     * (list of string) - The list of additional table columns to be passed as input to the column mask function. The
-     * first arg of the mask function should be of the type of the column being masked and the
-     * types of the rest of the args should match the types of columns in 'using_column_names'
-     */
-    usingColumnNames?: string[];
-}
-
-export interface GetCleanRoomAssetsAssetForeignTableLocalDetails {
-    /**
-     * (string) - The fully qualified name of the volume in its owner's local metastore,
-     * in the format of *catalog*.*schema*.*volume_name*
-     */
-    localName: string;
-}
-
-export interface GetCleanRoomAssetsAssetNotebook {
-    /**
-     * (string) - Server generated etag that represents the notebook version
-     */
-    etag: string;
-    /**
-     * (string) - Base 64 representation of the notebook contents.
-     * This is the same format as returned by :method:workspace/export with the format of **HTML**
-     */
-    notebookContent: string;
-    /**
-     * (string) - Review outcome. Possible values are: `APPROVED`, `PENDING`, `REJECTED`
-     */
-    reviewState: string;
-    /**
-     * (list of CleanRoomNotebookReview) - All existing approvals or rejections
-     */
-    reviews: outputs.GetCleanRoomAssetsAssetNotebookReview[];
-    /**
-     * (list of string) - Aliases of collaborators that can run the notebook
-     */
-    runnerCollaboratorAliases?: string[];
-}
-
-export interface GetCleanRoomAssetsAssetNotebookReview {
-    /**
-     * (string) - User-provided free-form text description
-     */
-    comment?: string;
-    /**
-     * (integer) - When the review was submitted, in epoch milliseconds
-     */
-    createdAtMillis?: number;
-    /**
-     * (string) - Review outcome. Possible values are: `APPROVED`, `PENDING`, `REJECTED`
-     */
-    reviewState?: string;
-    /**
-     * (string) - Specified when the review was not explicitly made by a user. Possible values are: `AUTO_APPROVED`, `BACKFILLED`
-     */
-    reviewSubReason?: string;
-    /**
-     * (string) - Collaborator alias of the reviewer
-     */
-    reviewerCollaboratorAlias?: string;
-}
-
-export interface GetCleanRoomAssetsAssetTable {
-    /**
-     * (list of ColumnInfo) - The metadata information of the columns in the view
-     */
-    columns: outputs.GetCleanRoomAssetsAssetTableColumn[];
-}
-
-export interface GetCleanRoomAssetsAssetTableColumn {
-    /**
-     * (string) - User-provided free-form text description
-     */
-    comment?: string;
-    /**
-     * (ColumnMask)
-     */
-    mask?: outputs.GetCleanRoomAssetsAssetTableColumnMask;
-    /**
-     * (string) - The name of the partition column
-     */
-    name?: string;
-    /**
-     * (boolean) - Whether field may be Null (default: true)
-     */
-    nullable?: boolean;
-    /**
-     * (integer) - Partition index for column
-     */
-    partitionIndex?: number;
-    /**
-     * (integer) - Ordinal position of column (starting at position 0)
-     */
-    position?: number;
-    /**
-     * (string) - Format of IntervalType
-     */
-    typeIntervalType?: string;
-    /**
-     * (string) - Full data type specification, JSON-serialized
-     */
-    typeJson?: string;
-    /**
-     * (string) - . Possible values are: `ARRAY`, `BINARY`, `BOOLEAN`, `BYTE`, `CHAR`, `DATE`, `DECIMAL`, `DOUBLE`, `FLOAT`, `GEOGRAPHY`, `GEOMETRY`, `INT`, `INTERVAL`, `LONG`, `MAP`, `NULL`, `SHORT`, `STRING`, `STRUCT`, `TABLE_TYPE`, `TIMESTAMP`, `TIMESTAMP_NTZ`, `USER_DEFINED_TYPE`, `VARIANT`
-     */
-    typeName?: string;
-    /**
-     * (integer) - Digits of precision; required for DecimalTypes
-     */
-    typePrecision?: number;
-    /**
-     * (integer) - Digits to right of decimal; Required for DecimalTypes
-     */
-    typeScale?: number;
-    /**
-     * (string) - Full data type specification as SQL/catalogString text
-     */
-    typeText?: string;
-}
-
-export interface GetCleanRoomAssetsAssetTableColumnMask {
-    /**
-     * (string) - The full name of the column mask SQL UDF
-     */
-    functionName?: string;
-    /**
-     * (list of string) - The list of additional table columns to be passed as input to the column mask function. The
-     * first arg of the mask function should be of the type of the column being masked and the
-     * types of the rest of the args should match the types of columns in 'using_column_names'
-     */
-    usingColumnNames?: string[];
-}
-
-export interface GetCleanRoomAssetsAssetTableLocalDetails {
-    /**
-     * (string) - The fully qualified name of the volume in its owner's local metastore,
-     * in the format of *catalog*.*schema*.*volume_name*
-     */
-    localName: string;
-    /**
-     * (list of Partition) - Partition filtering specification for a shared table
-     */
-    partitions?: outputs.GetCleanRoomAssetsAssetTableLocalDetailsPartition[];
-}
-
-export interface GetCleanRoomAssetsAssetTableLocalDetailsPartition {
-    /**
-     * (string) - The value of the partition column. When this value is not set, it means `null` value.
-     * When this field is set, field `recipientPropertyKey` can not be set
-     */
-    values?: outputs.GetCleanRoomAssetsAssetTableLocalDetailsPartitionValue[];
-}
-
-export interface GetCleanRoomAssetsAssetTableLocalDetailsPartitionValue {
-    /**
-     * (string) - The name of the partition column
-     */
-    name?: string;
-    /**
-     * (string) - The operator to apply for the value. Possible values are: `EQUAL`, `LIKE`
-     */
-    op?: string;
-    /**
-     * (string) - The key of a Delta Sharing recipient's property. For example "databricks-account-id".
-     * When this field is set, field `value` can not be set
-     */
-    recipientPropertyKey?: string;
-    /**
-     * (string) - The value of the partition column. When this value is not set, it means `null` value.
-     * When this field is set, field `recipientPropertyKey` can not be set
-     */
-    value?: string;
-}
-
-export interface GetCleanRoomAssetsAssetView {
-    /**
-     * (list of ColumnInfo) - The metadata information of the columns in the view
-     */
-    columns: outputs.GetCleanRoomAssetsAssetViewColumn[];
-}
-
-export interface GetCleanRoomAssetsAssetViewColumn {
-    /**
-     * (string) - User-provided free-form text description
-     */
-    comment?: string;
-    /**
-     * (ColumnMask)
-     */
-    mask?: outputs.GetCleanRoomAssetsAssetViewColumnMask;
-    /**
-     * (string) - The name of the partition column
-     */
-    name?: string;
-    /**
-     * (boolean) - Whether field may be Null (default: true)
-     */
-    nullable?: boolean;
-    /**
-     * (integer) - Partition index for column
-     */
-    partitionIndex?: number;
-    /**
-     * (integer) - Ordinal position of column (starting at position 0)
-     */
-    position?: number;
-    /**
-     * (string) - Format of IntervalType
-     */
-    typeIntervalType?: string;
-    /**
-     * (string) - Full data type specification, JSON-serialized
-     */
-    typeJson?: string;
-    /**
-     * (string) - . Possible values are: `ARRAY`, `BINARY`, `BOOLEAN`, `BYTE`, `CHAR`, `DATE`, `DECIMAL`, `DOUBLE`, `FLOAT`, `GEOGRAPHY`, `GEOMETRY`, `INT`, `INTERVAL`, `LONG`, `MAP`, `NULL`, `SHORT`, `STRING`, `STRUCT`, `TABLE_TYPE`, `TIMESTAMP`, `TIMESTAMP_NTZ`, `USER_DEFINED_TYPE`, `VARIANT`
-     */
-    typeName?: string;
-    /**
-     * (integer) - Digits of precision; required for DecimalTypes
-     */
-    typePrecision?: number;
-    /**
-     * (integer) - Digits to right of decimal; Required for DecimalTypes
-     */
-    typeScale?: number;
-    /**
-     * (string) - Full data type specification as SQL/catalogString text
-     */
-    typeText?: string;
-}
-
-export interface GetCleanRoomAssetsAssetViewColumnMask {
-    /**
-     * (string) - The full name of the column mask SQL UDF
-     */
-    functionName?: string;
-    /**
-     * (list of string) - The list of additional table columns to be passed as input to the column mask function. The
-     * first arg of the mask function should be of the type of the column being masked and the
-     * types of the rest of the args should match the types of columns in 'using_column_names'
-     */
-    usingColumnNames?: string[];
-}
-
-export interface GetCleanRoomAssetsAssetViewLocalDetails {
-    /**
-     * (string) - The fully qualified name of the volume in its owner's local metastore,
-     * in the format of *catalog*.*schema*.*volume_name*
-     */
-    localName: string;
-}
-
-export interface GetCleanRoomAssetsAssetVolumeLocalDetails {
-    /**
-     * (string) - The fully qualified name of the volume in its owner's local metastore,
-     * in the format of *catalog*.*schema*.*volume_name*
-     */
-    localName: string;
-}
-
-export interface GetCleanRoomAutoApprovalRulesRule {
-    /**
-     * (string) - Collaborator alias of the author covered by the rule.
-     * Only one of `authorCollaboratorAlias` and `authorScope` can be set
-     */
-    authorCollaboratorAlias?: string;
-    /**
-     * (string) - Scope of authors covered by the rule.
-     * Only one of `authorCollaboratorAlias` and `authorScope` can be set. Possible values are: `ANY_AUTHOR`
-     */
-    authorScope?: string;
-    cleanRoomName?: string;
-    /**
-     * (integer) - Timestamp of when the rule was created, in epoch milliseconds
-     */
-    createdAt: number;
-    /**
-     * (string) - A generated UUID identifying the rule
-     */
-    ruleId: string;
-    /**
-     * (string) - The owner of the rule to whom the rule applies
-     */
-    ruleOwnerCollaboratorAlias: string;
-    /**
-     * (string) - Collaborator alias of the runner covered by the rule
-     */
-    runnerCollaboratorAlias?: string;
-}
-
-export interface GetCleanRoomsCleanRoomOutputCatalog {
-    /**
-     * (string) - The name of the output catalog in UC.
-     * It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements).
-     * The field will always exist if status is CREATED
-     */
-    catalogName?: string;
-    /**
-     * (string) - . Possible values are: `CREATED`, `NOT_CREATED`, `NOT_ELIGIBLE`
-     */
-    status: string;
-}
-
-export interface GetCleanRoomsCleanRoomRemoteDetailedInfo {
-    /**
-     * (string) - Central clean room ID
-     */
-    centralCleanRoomId: string;
-    /**
-     * (string) - Cloud vendor (aws,azure,gcp) of the central clean room
-     */
-    cloudVendor?: string;
-    /**
-     * (list of CleanRoomCollaborator) - Collaborators in the central clean room. There should one and only one collaborator
-     * in the list that satisfies the owner condition:
-     */
-    collaborators?: outputs.GetCleanRoomsCleanRoomRemoteDetailedInfoCollaborator[];
-    /**
-     * (ComplianceSecurityProfile)
-     */
-    complianceSecurityProfile: outputs.GetCleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfile;
-    /**
-     * (CleanRoomCollaborator) - Collaborator who creates the clean room
-     */
-    creator: outputs.GetCleanRoomsCleanRoomRemoteDetailedInfoCreator;
-    /**
-     * (EgressNetworkPolicy) - Egress network policy to apply to the central clean room workspace
-     */
-    egressNetworkPolicy?: outputs.GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicy;
-    /**
-     * (string)
-     */
-    region?: string;
-}
-
-export interface GetCleanRoomsCleanRoomRemoteDetailedInfoCollaborator {
-    /**
-     * (string) - Collaborator alias specified by the clean room creator. It is unique across all collaborators of this clean room, and used to derive
-     * multiple values internally such as catalog alias and clean room name for single metastore clean rooms.
-     * It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements)
-     */
-    collaboratorAlias: string;
-    /**
-     * (string) - Generated display name for the collaborator. In the case of a single metastore clean room, it is the clean
-     * room name. For x-metastore clean rooms, it is the organization name of the metastore. It is not restricted to
-     * these values and could change in the future
-     */
-    displayName: string;
-    /**
-     * (string) - The global Unity Catalog metastore ID of the collaborator. The identifier is of format cloud:region:metastore-uuid
-     */
-    globalMetastoreId?: string;
-    /**
-     * (string) - Email of the user who is receiving the clean room "invitation". It should be empty
-     * for the creator of the clean room, and non-empty for the invitees of the clean room.
-     * It is only returned in the output when clean room creator calls GET
-     */
-    inviteRecipientEmail?: string;
-    /**
-     * (integer) - Workspace ID of the user who is receiving the clean room "invitation". Must be specified if
-     * inviteRecipientEmail is specified.
-     * It should be empty when the collaborator is the creator of the clean room
-     */
-    inviteRecipientWorkspaceId: number;
-    /**
-     * (string) - Organization name
-     * configured in the metastore
-     */
-    organizationName: string;
-}
-
-export interface GetCleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfile {
-    /**
-     * (list of ComplianceStandard) - The list of compliance standards that the compliance security profile is configured to enforce
-     */
-    complianceStandards?: string[];
-    /**
-     * (boolean) - Whether the compliance security profile is enabled
-     */
-    isEnabled?: boolean;
-}
-
-export interface GetCleanRoomsCleanRoomRemoteDetailedInfoCreator {
-    /**
-     * (string) - Collaborator alias specified by the clean room creator. It is unique across all collaborators of this clean room, and used to derive
-     * multiple values internally such as catalog alias and clean room name for single metastore clean rooms.
-     * It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements)
-     */
-    collaboratorAlias: string;
-    /**
-     * (string) - Generated display name for the collaborator. In the case of a single metastore clean room, it is the clean
-     * room name. For x-metastore clean rooms, it is the organization name of the metastore. It is not restricted to
-     * these values and could change in the future
-     */
-    displayName: string;
-    /**
-     * (string) - The global Unity Catalog metastore ID of the collaborator. The identifier is of format cloud:region:metastore-uuid
-     */
-    globalMetastoreId?: string;
-    /**
-     * (string) - Email of the user who is receiving the clean room "invitation". It should be empty
-     * for the creator of the clean room, and non-empty for the invitees of the clean room.
-     * It is only returned in the output when clean room creator calls GET
-     */
-    inviteRecipientEmail?: string;
-    /**
-     * (integer) - Workspace ID of the user who is receiving the clean room "invitation". Must be specified if
-     * inviteRecipientEmail is specified.
-     * It should be empty when the collaborator is the creator of the clean room
-     */
-    inviteRecipientWorkspaceId: number;
-    /**
-     * (string) - Organization name
-     * configured in the metastore
-     */
-    organizationName: string;
-}
-
-export interface GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicy {
-    /**
-     * (EgressNetworkPolicyInternetAccessPolicy) - The access policy enforced for egress traffic to the internet
-     */
-    internetAccess?: outputs.GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccess;
-}
-
-export interface GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccess {
-    /**
-     * (list of EgressNetworkPolicyInternetAccessPolicyInternetDestination)
-     */
-    allowedInternetDestinations?: outputs.GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedInternetDestination[];
-    /**
-     * (list of EgressNetworkPolicyInternetAccessPolicyStorageDestination)
-     */
-    allowedStorageDestinations?: outputs.GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedStorageDestination[];
-    /**
-     * (EgressNetworkPolicyInternetAccessPolicyLogOnlyMode) - Optional. If not specified, assume the policy is enforced for all workloads
-     */
-    logOnlyMode?: outputs.GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyMode;
-    /**
-     * (string) - . Possible values are: `FULL_ACCESS`, `PRIVATE_ACCESS_ONLY`, `RESTRICTED_ACCESS`
-     */
-    restrictionMode?: string;
-}
-
-export interface GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedInternetDestination {
-    /**
-     * (string)
-     */
-    destination?: string;
-    /**
-     * (string) - . Possible values are: `TCP`
-     */
-    protocol?: string;
-    /**
-     * (string) - . Possible values are: `AWS_S3`, `AZURE_STORAGE`, `CLOUDFLARE_R2`, `GOOGLE_CLOUD_STORAGE`
-     */
-    type?: string;
-}
-
-export interface GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedStorageDestination {
-    /**
-     * (list of string)
-     */
-    allowedPaths?: string[];
-    /**
-     * (string)
-     */
-    azureContainer?: string;
-    /**
-     * (string)
-     */
-    azureDnsZone?: string;
-    /**
-     * (string)
-     */
-    azureStorageAccount?: string;
-    /**
-     * (string)
-     */
-    azureStorageService?: string;
-    /**
-     * (string)
-     */
-    bucketName?: string;
-    /**
-     * (string)
-     */
-    region?: string;
-    /**
-     * (string) - . Possible values are: `AWS_S3`, `AZURE_STORAGE`, `CLOUDFLARE_R2`, `GOOGLE_CLOUD_STORAGE`
-     */
-    type?: string;
-}
-
-export interface GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyMode {
-    /**
-     * (string) - . Possible values are: `ALL_SERVICES`, `SELECTED_SERVICES`
-     */
-    logOnlyModeType?: string;
-    /**
-     * (list of string)
-     */
-    workloads?: string[];
-}
-
-export interface GetCleanRoomsCleanRoomsCleanRoom {
-    /**
-     * (string) - Whether clean room access is restricted due to [CSP](https://docs.databricks.com/en/security/privacy/security-profile.html). Possible values are: `CSP_MISMATCH`, `NO_RESTRICTION`
-     */
-    accessRestricted: string;
-    /**
-     * (string)
-     */
-    comment?: string;
-    /**
-     * (integer) - When the clean room was created, in epoch milliseconds
-     */
-    createdAt: number;
-    /**
-     * (string) - The alias of the collaborator tied to the local clean room
-     */
-    localCollaboratorAlias: string;
-    /**
-     * (string) - The name of the clean room.
-     * It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements)
-     */
-    name?: string;
-    /**
-     * (CleanRoomOutputCatalog) - Output catalog of the clean room. It is an output only field. Output catalog is manipulated
-     * using the separate CreateCleanRoomOutputCatalog API
-     */
-    outputCatalog: outputs.GetCleanRoomsCleanRoomsCleanRoomOutputCatalog;
-    /**
-     * (string) - This is the Databricks username of the owner of the local clean room securable for permission management
-     */
-    owner?: string;
-    /**
-     * (CleanRoomRemoteDetail) - Central clean room details. During creation, users need to specify
-     * cloud_vendor, region, and collaborators.global_metastore_id.
-     * This field will not be filled in the ListCleanRooms call
-     */
-    remoteDetailedInfo?: outputs.GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfo;
-    /**
-     * (string) - . Possible values are: `CREATED`, `NOT_CREATED`, `NOT_ELIGIBLE`
-     */
-    status: string;
-    /**
-     * (integer) - When the clean room was last updated, in epoch milliseconds
-     */
-    updatedAt: number;
-}
-
-export interface GetCleanRoomsCleanRoomsCleanRoomOutputCatalog {
-    /**
-     * (string) - The name of the output catalog in UC.
-     * It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements).
-     * The field will always exist if status is CREATED
-     */
-    catalogName?: string;
-    /**
-     * (string) - . Possible values are: `CREATED`, `NOT_CREATED`, `NOT_ELIGIBLE`
-     */
-    status: string;
-}
-
-export interface GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfo {
-    /**
-     * (string) - Central clean room ID
-     */
-    centralCleanRoomId: string;
-    /**
-     * (string) - Cloud vendor (aws,azure,gcp) of the central clean room
-     */
-    cloudVendor?: string;
-    /**
-     * (list of CleanRoomCollaborator) - Collaborators in the central clean room. There should one and only one collaborator
-     * in the list that satisfies the owner condition:
-     */
-    collaborators?: outputs.GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoCollaborator[];
-    /**
-     * (ComplianceSecurityProfile)
-     */
-    complianceSecurityProfile: outputs.GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfile;
-    /**
-     * (CleanRoomCollaborator) - Collaborator who creates the clean room
-     */
-    creator: outputs.GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoCreator;
-    /**
-     * (EgressNetworkPolicy) - Egress network policy to apply to the central clean room workspace
-     */
-    egressNetworkPolicy?: outputs.GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicy;
-    /**
-     * (string)
-     */
-    region?: string;
-}
-
-export interface GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoCollaborator {
-    /**
-     * (string) - Collaborator alias specified by the clean room creator. It is unique across all collaborators of this clean room, and used to derive
-     * multiple values internally such as catalog alias and clean room name for single metastore clean rooms.
-     * It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements)
-     */
-    collaboratorAlias: string;
-    /**
-     * (string) - Generated display name for the collaborator. In the case of a single metastore clean room, it is the clean
-     * room name. For x-metastore clean rooms, it is the organization name of the metastore. It is not restricted to
-     * these values and could change in the future
-     */
-    displayName: string;
-    /**
-     * (string) - The global Unity Catalog metastore ID of the collaborator. The identifier is of format cloud:region:metastore-uuid
-     */
-    globalMetastoreId?: string;
-    /**
-     * (string) - Email of the user who is receiving the clean room "invitation". It should be empty
-     * for the creator of the clean room, and non-empty for the invitees of the clean room.
-     * It is only returned in the output when clean room creator calls GET
-     */
-    inviteRecipientEmail?: string;
-    /**
-     * (integer) - Workspace ID of the user who is receiving the clean room "invitation". Must be specified if
-     * inviteRecipientEmail is specified.
-     * It should be empty when the collaborator is the creator of the clean room
-     */
-    inviteRecipientWorkspaceId: number;
-    /**
-     * (string) - Organization name
-     * configured in the metastore
-     */
-    organizationName: string;
-}
-
-export interface GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfile {
-    /**
-     * (list of ComplianceStandard) - The list of compliance standards that the compliance security profile is configured to enforce
-     */
-    complianceStandards?: string[];
-    /**
-     * (boolean) - Whether the compliance security profile is enabled
-     */
-    isEnabled?: boolean;
-}
-
-export interface GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoCreator {
-    /**
-     * (string) - Collaborator alias specified by the clean room creator. It is unique across all collaborators of this clean room, and used to derive
-     * multiple values internally such as catalog alias and clean room name for single metastore clean rooms.
-     * It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements)
-     */
-    collaboratorAlias: string;
-    /**
-     * (string) - Generated display name for the collaborator. In the case of a single metastore clean room, it is the clean
-     * room name. For x-metastore clean rooms, it is the organization name of the metastore. It is not restricted to
-     * these values and could change in the future
-     */
-    displayName: string;
-    /**
-     * (string) - The global Unity Catalog metastore ID of the collaborator. The identifier is of format cloud:region:metastore-uuid
-     */
-    globalMetastoreId?: string;
-    /**
-     * (string) - Email of the user who is receiving the clean room "invitation". It should be empty
-     * for the creator of the clean room, and non-empty for the invitees of the clean room.
-     * It is only returned in the output when clean room creator calls GET
-     */
-    inviteRecipientEmail?: string;
-    /**
-     * (integer) - Workspace ID of the user who is receiving the clean room "invitation". Must be specified if
-     * inviteRecipientEmail is specified.
-     * It should be empty when the collaborator is the creator of the clean room
-     */
-    inviteRecipientWorkspaceId: number;
-    /**
-     * (string) - Organization name
-     * configured in the metastore
-     */
-    organizationName: string;
-}
-
-export interface GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicy {
-    /**
-     * (EgressNetworkPolicyInternetAccessPolicy) - The access policy enforced for egress traffic to the internet
-     */
-    internetAccess?: outputs.GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccess;
-}
-
-export interface GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccess {
-    /**
-     * (list of EgressNetworkPolicyInternetAccessPolicyInternetDestination)
-     */
-    allowedInternetDestinations?: outputs.GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedInternetDestination[];
-    /**
-     * (list of EgressNetworkPolicyInternetAccessPolicyStorageDestination)
-     */
-    allowedStorageDestinations?: outputs.GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedStorageDestination[];
-    /**
-     * (EgressNetworkPolicyInternetAccessPolicyLogOnlyMode) - Optional. If not specified, assume the policy is enforced for all workloads
-     */
-    logOnlyMode?: outputs.GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyMode;
-    /**
-     * (string) - . Possible values are: `FULL_ACCESS`, `PRIVATE_ACCESS_ONLY`, `RESTRICTED_ACCESS`
-     */
-    restrictionMode?: string;
-}
-
-export interface GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedInternetDestination {
-    /**
-     * (string)
-     */
-    destination?: string;
-    /**
-     * (string) - . Possible values are: `TCP`
-     */
-    protocol?: string;
-    /**
-     * (string) - . Possible values are: `AWS_S3`, `AZURE_STORAGE`, `CLOUDFLARE_R2`, `GOOGLE_CLOUD_STORAGE`
-     */
-    type?: string;
-}
-
-export interface GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedStorageDestination {
-    /**
-     * (list of string)
-     */
-    allowedPaths?: string[];
-    /**
-     * (string)
-     */
-    azureContainer?: string;
-    /**
-     * (string)
-     */
-    azureDnsZone?: string;
-    /**
-     * (string)
-     */
-    azureStorageAccount?: string;
-    /**
-     * (string)
-     */
-    azureStorageService?: string;
-    /**
-     * (string)
-     */
-    bucketName?: string;
-    /**
-     * (string)
-     */
-    region?: string;
-    /**
-     * (string) - . Possible values are: `AWS_S3`, `AZURE_STORAGE`, `CLOUDFLARE_R2`, `GOOGLE_CLOUD_STORAGE`
-     */
-    type?: string;
-}
-
-export interface GetCleanRoomsCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyMode {
-    /**
-     * (string) - . Possible values are: `ALL_SERVICES`, `SELECTED_SERVICES`
-     */
-    logOnlyModeType?: string;
-    /**
-     * (list of string)
-     */
-    workloads?: string[];
+    workspaceId: string;
 }
 
 export interface GetClusterClusterInfo {
@@ -6515,6 +4473,10 @@ export interface GetClusterClusterInfoSpec {
      * Identifier of Cluster Policy to validate cluster and preset certain defaults.
      */
     policyId?: string;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: outputs.GetClusterClusterInfoSpecProviderConfig;
     remoteDiskThroughput?: number;
     /**
      * The type of runtime of the cluster
@@ -6685,6 +4647,10 @@ export interface GetClusterClusterInfoSpecLibrary {
     egg?: string;
     jar?: string;
     maven?: outputs.GetClusterClusterInfoSpecLibraryMaven;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: outputs.GetClusterClusterInfoSpecLibraryProviderConfig;
     pypi?: outputs.GetClusterClusterInfoSpecLibraryPypi;
     requirements?: string;
     whl?: string;
@@ -6701,9 +4667,23 @@ export interface GetClusterClusterInfoSpecLibraryMaven {
     repo?: string;
 }
 
+export interface GetClusterClusterInfoSpecLibraryProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
 export interface GetClusterClusterInfoSpecLibraryPypi {
     package: string;
     repo?: string;
+}
+
+export interface GetClusterClusterInfoSpecProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
 }
 
 export interface GetClusterClusterInfoSpecWorkloadType {
@@ -6730,6 +4710,20 @@ export interface GetClusterClusterInfoWorkloadTypeClients {
     notebooks?: boolean;
 }
 
+export interface GetClusterPolicyProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetClusterProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
 export interface GetClustersFilterBy {
     /**
      * List of cluster sources to filter by. Possible values are `API`, `JOB`, `MODELS`, `PIPELINE`, `PIPELINE_MAINTENANCE`, `SQL`, and `UI`.
@@ -6747,6 +4741,13 @@ export interface GetClustersFilterBy {
      * Filter by databricks.ClusterPolicy id.
      */
     policyId?: string;
+}
+
+export interface GetClustersProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
 }
 
 export interface GetCurrentMetastoreMetastoreInfo {
@@ -6822,6 +4823,13 @@ export interface GetCurrentMetastoreMetastoreInfo {
     updatedBy?: string;
 }
 
+export interface GetCurrentMetastoreProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
 export interface GetDashboardsDashboard {
     /**
      * The timestamp of when the dashboard was created.
@@ -6842,6 +4850,461 @@ export interface GetDashboardsDashboard {
     serializedDashboard?: string;
     updateTime: string;
     warehouseId?: string;
+}
+
+export interface GetDashboardsProviderConfig {
+    workspaceId: string;
+}
+
+export interface GetDataQualityMonitorAnomalyDetectionConfig {
+}
+
+export interface GetDataQualityMonitorDataProfilingConfig {
+    /**
+     * (string) - Field for specifying the absolute path to a custom directory to store data-monitoring
+     * assets. Normally prepopulated to a default user location via UI and Python APIs
+     */
+    assetsDir?: string;
+    /**
+     * (string) - Baseline table name.
+     * Baseline data is used to compute drift from the data in the monitored `tableName`.
+     * The baseline table and the monitored table shall have the same schema
+     */
+    baselineTableName?: string;
+    /**
+     * (list of DataProfilingCustomMetric) - Custom metrics
+     */
+    customMetrics?: outputs.GetDataQualityMonitorDataProfilingConfigCustomMetric[];
+    /**
+     * (string) - Id of dashboard that visualizes the computed metrics.
+     * This can be empty if the monitor is in PENDING state
+     */
+    dashboardId: string;
+    /**
+     * (string) - Table that stores drift metrics data. Format: `catalog.schema.table_name`
+     */
+    driftMetricsTableName: string;
+    /**
+     * (string) - The warehouse for dashboard creation
+     */
+    effectiveWarehouseId: string;
+    /**
+     * (InferenceLogConfig) - `Analysis Configuration` for monitoring inference log tables
+     */
+    inferenceLog?: outputs.GetDataQualityMonitorDataProfilingConfigInferenceLog;
+    /**
+     * (string) - The latest error message for a monitor failure
+     */
+    latestMonitorFailureMessage: string;
+    /**
+     * (integer) - Represents the current monitor configuration version in use. The version will be represented in a
+     * numeric fashion (1,2,3...). The field has flexibility to take on negative values, which can indicate corrupted
+     * monitorVersion numbers
+     */
+    monitorVersion: number;
+    /**
+     * (string) - Unity Catalog table to monitor. Format: `catalog.schema.table_name`
+     */
+    monitoredTableName: string;
+    /**
+     * (NotificationSettings) - Field for specifying notification settings
+     */
+    notificationSettings?: outputs.GetDataQualityMonitorDataProfilingConfigNotificationSettings;
+    /**
+     * (string) - ID of the schema where output tables are created
+     */
+    outputSchemaId: string;
+    /**
+     * (string) - Table that stores profile metrics data. Format: `catalog.schema.table_name`
+     */
+    profileMetricsTableName: string;
+    /**
+     * (CronSchedule) - The cron schedule
+     */
+    schedule?: outputs.GetDataQualityMonitorDataProfilingConfigSchedule;
+    /**
+     * (boolean) - Whether to skip creating a default dashboard summarizing data quality metrics
+     */
+    skipBuiltinDashboard?: boolean;
+    /**
+     * (list of string) - List of column expressions to slice data with for targeted analysis. The data is grouped by
+     * each expression independently, resulting in a separate slice for each predicate and its
+     * complements. For example `slicing_exprs=[“col_1”, “col_2 > 10”]` will generate the following
+     * slices: two slices for `col2 > 10` (True and False), and one slice per unique value in
+     * `col1`. For high-cardinality columns, only the top 100 unique values by frequency will
+     * generate slices
+     */
+    slicingExprs?: string[];
+    /**
+     * (SnapshotConfig) - `Analysis Configuration` for monitoring snapshot tables
+     */
+    snapshot?: outputs.GetDataQualityMonitorDataProfilingConfigSnapshot;
+    /**
+     * (string) - The data profiling monitor status. Possible values are: `DATA_PROFILING_STATUS_ACTIVE`, `DATA_PROFILING_STATUS_DELETE_PENDING`, `DATA_PROFILING_STATUS_ERROR`, `DATA_PROFILING_STATUS_FAILED`, `DATA_PROFILING_STATUS_PENDING`
+     */
+    status: string;
+    /**
+     * (TimeSeriesConfig) - `Analysis Configuration` for monitoring time series tables
+     */
+    timeSeries?: outputs.GetDataQualityMonitorDataProfilingConfigTimeSeries;
+    /**
+     * (string) - Optional argument to specify the warehouse for dashboard creation. If not specified, the first running
+     * warehouse will be used
+     */
+    warehouseId?: string;
+}
+
+export interface GetDataQualityMonitorDataProfilingConfigCustomMetric {
+    /**
+     * (string) - Jinja template for a SQL expression that specifies how to compute the metric. See [create metric definition](https://docs.databricks.com/en/lakehouse-monitoring/custom-metrics.html#create-definition)
+     */
+    definition: string;
+    /**
+     * (list of string) - A list of column names in the input table the metric should be computed for.
+     * Can use ``":table"`` to indicate that the metric needs information from multiple columns
+     */
+    inputColumns: string[];
+    /**
+     * (string) - Name of the metric in the output tables
+     */
+    name: string;
+    /**
+     * (string) - The output type of the custom metric
+     */
+    outputDataType: string;
+    /**
+     * (string) - The type of the custom metric. Possible values are: `DATA_PROFILING_CUSTOM_METRIC_TYPE_AGGREGATE`, `DATA_PROFILING_CUSTOM_METRIC_TYPE_DERIVED`, `DATA_PROFILING_CUSTOM_METRIC_TYPE_DRIFT`
+     */
+    type: string;
+}
+
+export interface GetDataQualityMonitorDataProfilingConfigInferenceLog {
+    /**
+     * (list of string) - List of granularities to use when aggregating data into time windows based on their timestamp
+     */
+    granularities: string[];
+    /**
+     * (string) - Column for the label
+     */
+    labelColumn?: string;
+    /**
+     * (string) - Column for the model identifier
+     */
+    modelIdColumn: string;
+    /**
+     * (string) - Column for the prediction
+     */
+    predictionColumn: string;
+    /**
+     * (string) - Problem type the model aims to solve. Possible values are: `INFERENCE_PROBLEM_TYPE_CLASSIFICATION`, `INFERENCE_PROBLEM_TYPE_REGRESSION`
+     */
+    problemType: string;
+    /**
+     * (string) - Column for the timestamp
+     */
+    timestampColumn: string;
+}
+
+export interface GetDataQualityMonitorDataProfilingConfigNotificationSettings {
+    /**
+     * (NotificationDestination) - Destinations to send notifications on failure/timeout
+     */
+    onFailure?: outputs.GetDataQualityMonitorDataProfilingConfigNotificationSettingsOnFailure;
+}
+
+export interface GetDataQualityMonitorDataProfilingConfigNotificationSettingsOnFailure {
+    /**
+     * (list of string) - The list of email addresses to send the notification to. A maximum of 5 email addresses is supported
+     */
+    emailAddresses?: string[];
+}
+
+export interface GetDataQualityMonitorDataProfilingConfigSchedule {
+    /**
+     * (string) - Read only field that indicates whether the schedule is paused or not. Possible values are: `CRON_SCHEDULE_PAUSE_STATUS_PAUSED`, `CRON_SCHEDULE_PAUSE_STATUS_UNPAUSED`
+     */
+    pauseStatus: string;
+    /**
+     * (string) - The expression that determines when to run the monitor. See [examples](https://www.quartz-scheduler.org/documentation/quartz-2.3.0/tutorials/crontrigger.html)
+     */
+    quartzCronExpression: string;
+    /**
+     * (string) - A Java timezone id. The schedule for a job will be resolved with respect to this timezone.
+     * See `Java TimeZone <http://docs.oracle.com/javase/7/docs/api/java/util/TimeZone.html>`_ for details.
+     * The timezone id (e.g., ``America/Los_Angeles``) in which to evaluate the quartz expression
+     */
+    timezoneId: string;
+}
+
+export interface GetDataQualityMonitorDataProfilingConfigSnapshot {
+}
+
+export interface GetDataQualityMonitorDataProfilingConfigTimeSeries {
+    /**
+     * (list of string) - List of granularities to use when aggregating data into time windows based on their timestamp
+     */
+    granularities: string[];
+    /**
+     * (string) - Column for the timestamp
+     */
+    timestampColumn: string;
+}
+
+export interface GetDataQualityMonitorsMonitor {
+    /**
+     * (AnomalyDetectionConfig) - Anomaly Detection Configuration, applicable to `schema` object types
+     */
+    anomalyDetectionConfig: outputs.GetDataQualityMonitorsMonitorAnomalyDetectionConfig;
+    /**
+     * (DataProfilingConfig) - Data Profiling Configuration, applicable to `table` object types. Exactly one `Analysis Configuration`
+     * must be present
+     */
+    dataProfilingConfig: outputs.GetDataQualityMonitorsMonitorDataProfilingConfig;
+    /**
+     * (string) - The UUID of the request object. It is `schemaId` for `schema`, and `tableId` for `table`.
+     */
+    objectId: string;
+    /**
+     * (string) - The type of the monitored object. Can be one of the following: `schema` or `table`
+     */
+    objectType: string;
+}
+
+export interface GetDataQualityMonitorsMonitorAnomalyDetectionConfig {
+}
+
+export interface GetDataQualityMonitorsMonitorDataProfilingConfig {
+    /**
+     * (string) - Field for specifying the absolute path to a custom directory to store data-monitoring
+     * assets. Normally prepopulated to a default user location via UI and Python APIs
+     */
+    assetsDir?: string;
+    /**
+     * (string) - Baseline table name.
+     * Baseline data is used to compute drift from the data in the monitored `tableName`.
+     * The baseline table and the monitored table shall have the same schema
+     */
+    baselineTableName?: string;
+    /**
+     * (list of DataProfilingCustomMetric) - Custom metrics
+     */
+    customMetrics?: outputs.GetDataQualityMonitorsMonitorDataProfilingConfigCustomMetric[];
+    /**
+     * (string) - Id of dashboard that visualizes the computed metrics.
+     * This can be empty if the monitor is in PENDING state
+     */
+    dashboardId: string;
+    /**
+     * (string) - Table that stores drift metrics data. Format: `catalog.schema.table_name`
+     */
+    driftMetricsTableName: string;
+    /**
+     * (string) - The warehouse for dashboard creation
+     */
+    effectiveWarehouseId: string;
+    /**
+     * (InferenceLogConfig) - `Analysis Configuration` for monitoring inference log tables
+     */
+    inferenceLog?: outputs.GetDataQualityMonitorsMonitorDataProfilingConfigInferenceLog;
+    /**
+     * (string) - The latest error message for a monitor failure
+     */
+    latestMonitorFailureMessage: string;
+    /**
+     * (integer) - Represents the current monitor configuration version in use. The version will be represented in a
+     * numeric fashion (1,2,3...). The field has flexibility to take on negative values, which can indicate corrupted
+     * monitorVersion numbers
+     */
+    monitorVersion: number;
+    /**
+     * (string) - Unity Catalog table to monitor. Format: `catalog.schema.table_name`
+     */
+    monitoredTableName: string;
+    /**
+     * (NotificationSettings) - Field for specifying notification settings
+     */
+    notificationSettings?: outputs.GetDataQualityMonitorsMonitorDataProfilingConfigNotificationSettings;
+    /**
+     * (string) - ID of the schema where output tables are created
+     */
+    outputSchemaId: string;
+    /**
+     * (string) - Table that stores profile metrics data. Format: `catalog.schema.table_name`
+     */
+    profileMetricsTableName: string;
+    /**
+     * (CronSchedule) - The cron schedule
+     */
+    schedule?: outputs.GetDataQualityMonitorsMonitorDataProfilingConfigSchedule;
+    /**
+     * (boolean) - Whether to skip creating a default dashboard summarizing data quality metrics
+     */
+    skipBuiltinDashboard?: boolean;
+    /**
+     * (list of string) - List of column expressions to slice data with for targeted analysis. The data is grouped by
+     * each expression independently, resulting in a separate slice for each predicate and its
+     * complements. For example `slicing_exprs=[“col_1”, “col_2 > 10”]` will generate the following
+     * slices: two slices for `col2 > 10` (True and False), and one slice per unique value in
+     * `col1`. For high-cardinality columns, only the top 100 unique values by frequency will
+     * generate slices
+     */
+    slicingExprs?: string[];
+    /**
+     * (SnapshotConfig) - `Analysis Configuration` for monitoring snapshot tables
+     */
+    snapshot?: outputs.GetDataQualityMonitorsMonitorDataProfilingConfigSnapshot;
+    /**
+     * (string) - The data profiling monitor status. Possible values are: `DATA_PROFILING_STATUS_ACTIVE`, `DATA_PROFILING_STATUS_DELETE_PENDING`, `DATA_PROFILING_STATUS_ERROR`, `DATA_PROFILING_STATUS_FAILED`, `DATA_PROFILING_STATUS_PENDING`
+     */
+    status: string;
+    /**
+     * (TimeSeriesConfig) - `Analysis Configuration` for monitoring time series tables
+     */
+    timeSeries?: outputs.GetDataQualityMonitorsMonitorDataProfilingConfigTimeSeries;
+    /**
+     * (string) - Optional argument to specify the warehouse for dashboard creation. If not specified, the first running
+     * warehouse will be used
+     */
+    warehouseId?: string;
+}
+
+export interface GetDataQualityMonitorsMonitorDataProfilingConfigCustomMetric {
+    /**
+     * (string) - Jinja template for a SQL expression that specifies how to compute the metric. See [create metric definition](https://docs.databricks.com/en/lakehouse-monitoring/custom-metrics.html#create-definition)
+     */
+    definition: string;
+    /**
+     * (list of string) - A list of column names in the input table the metric should be computed for.
+     * Can use ``":table"`` to indicate that the metric needs information from multiple columns
+     */
+    inputColumns: string[];
+    /**
+     * (string) - Name of the metric in the output tables
+     */
+    name: string;
+    /**
+     * (string) - The output type of the custom metric
+     */
+    outputDataType: string;
+    /**
+     * (string) - The type of the custom metric. Possible values are: `DATA_PROFILING_CUSTOM_METRIC_TYPE_AGGREGATE`, `DATA_PROFILING_CUSTOM_METRIC_TYPE_DERIVED`, `DATA_PROFILING_CUSTOM_METRIC_TYPE_DRIFT`
+     */
+    type: string;
+}
+
+export interface GetDataQualityMonitorsMonitorDataProfilingConfigInferenceLog {
+    /**
+     * (list of string) - List of granularities to use when aggregating data into time windows based on their timestamp
+     */
+    granularities: string[];
+    /**
+     * (string) - Column for the label
+     */
+    labelColumn?: string;
+    /**
+     * (string) - Column for the model identifier
+     */
+    modelIdColumn: string;
+    /**
+     * (string) - Column for the prediction
+     */
+    predictionColumn: string;
+    /**
+     * (string) - Problem type the model aims to solve. Possible values are: `INFERENCE_PROBLEM_TYPE_CLASSIFICATION`, `INFERENCE_PROBLEM_TYPE_REGRESSION`
+     */
+    problemType: string;
+    /**
+     * (string) - Column for the timestamp
+     */
+    timestampColumn: string;
+}
+
+export interface GetDataQualityMonitorsMonitorDataProfilingConfigNotificationSettings {
+    /**
+     * (NotificationDestination) - Destinations to send notifications on failure/timeout
+     */
+    onFailure?: outputs.GetDataQualityMonitorsMonitorDataProfilingConfigNotificationSettingsOnFailure;
+}
+
+export interface GetDataQualityMonitorsMonitorDataProfilingConfigNotificationSettingsOnFailure {
+    /**
+     * (list of string) - The list of email addresses to send the notification to. A maximum of 5 email addresses is supported
+     */
+    emailAddresses?: string[];
+}
+
+export interface GetDataQualityMonitorsMonitorDataProfilingConfigSchedule {
+    /**
+     * (string) - Read only field that indicates whether the schedule is paused or not. Possible values are: `CRON_SCHEDULE_PAUSE_STATUS_PAUSED`, `CRON_SCHEDULE_PAUSE_STATUS_UNPAUSED`
+     */
+    pauseStatus: string;
+    /**
+     * (string) - The expression that determines when to run the monitor. See [examples](https://www.quartz-scheduler.org/documentation/quartz-2.3.0/tutorials/crontrigger.html)
+     */
+    quartzCronExpression: string;
+    /**
+     * (string) - A Java timezone id. The schedule for a job will be resolved with respect to this timezone.
+     * See `Java TimeZone <http://docs.oracle.com/javase/7/docs/api/java/util/TimeZone.html>`_ for details.
+     * The timezone id (e.g., ``America/Los_Angeles``) in which to evaluate the quartz expression
+     */
+    timezoneId: string;
+}
+
+export interface GetDataQualityMonitorsMonitorDataProfilingConfigSnapshot {
+}
+
+export interface GetDataQualityMonitorsMonitorDataProfilingConfigTimeSeries {
+    /**
+     * (list of string) - List of granularities to use when aggregating data into time windows based on their timestamp
+     */
+    granularities: string[];
+    /**
+     * (string) - Column for the timestamp
+     */
+    timestampColumn: string;
+}
+
+export interface GetDataQualityRefreshesRefresh {
+    /**
+     * (integer) - Time when the refresh ended (milliseconds since 1/1/1970 UTC)
+     */
+    endTimeMs: number;
+    /**
+     * (string) - An optional message to give insight into the current state of the refresh (e.g. FAILURE messages)
+     */
+    message: string;
+    /**
+     * The UUID of the request object. It is `schemaId` for `schema`, and `tableId` for `table`.
+     *
+     * Find the `schemaId` from either:
+     * 1. The [schemaId](https://docs.databricks.com/api/workspace/schemas/get#schema_id) of the `Schemas` resource.
+     * 2. In [Catalog Explorer](https://docs.databricks.com/aws/en/catalog-explorer/) > select the `schema` > go to the `Details` tab > the `Schema ID` field.
+     *
+     * Find the `tableId` from either:
+     * 1. The [tableId](https://docs.databricks.com/api/workspace/tables/get#table_id) of the `Tables` resource.
+     * 2. In [Catalog Explorer](https://docs.databricks.com/aws/en/catalog-explorer/) > select the `table` > go to the `Details` tab > the `Table ID` field
+     */
+    objectId: string;
+    /**
+     * The type of the monitored object. Can be one of the following: `schema` or `table`
+     */
+    objectType: string;
+    /**
+     * (integer) - Unique id of the refresh operation
+     */
+    refreshId: number;
+    /**
+     * (integer) - Time when the refresh started (milliseconds since 1/1/1970 UTC)
+     */
+    startTimeMs: number;
+    /**
+     * (string) - The current state of the refresh. Possible values are: `MONITOR_REFRESH_STATE_CANCELED`, `MONITOR_REFRESH_STATE_FAILED`, `MONITOR_REFRESH_STATE_PENDING`, `MONITOR_REFRESH_STATE_RUNNING`, `MONITOR_REFRESH_STATE_SUCCESS`, `MONITOR_REFRESH_STATE_UNKNOWN`
+     */
+    state: string;
+    /**
+     * (string) - What triggered the refresh. Possible values are: `MONITOR_REFRESH_TRIGGER_DATA_CHANGE`, `MONITOR_REFRESH_TRIGGER_MANUAL`, `MONITOR_REFRESH_TRIGGER_SCHEDULE`, `MONITOR_REFRESH_TRIGGER_UNKNOWN`
+     */
+    trigger: string;
 }
 
 export interface GetDatabaseDatabaseCatalogsDatabaseCatalog {
@@ -6879,10 +5342,7 @@ export interface GetDatabaseInstanceChildInstanceRef {
      */
     branchTime?: string;
     /**
-     * (string) - xref AIP-129. `lsn` is owned by the client, while `effectiveLsn` is owned by the server.
-     * `lsn` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-     * `effectiveLsn` on the other hand will always bet set in all response messages (Create/Update/Get/List).
-     * For a parent ref instance, this is the LSN on the parent instance from which the
+     * (string) - For a parent ref instance, this is the LSN on the parent instance from which the
      * instance was created.
      * For a child ref instance, this is the LSN on the instance from which the child instance
      * was created
@@ -6891,7 +5351,7 @@ export interface GetDatabaseInstanceChildInstanceRef {
     /**
      * (string) - User-specified WAL LSN of the ref database instance.
      */
-    lsn?: string;
+    lsn: string;
     /**
      * The name of the instance. This is the unique identifier for the instance
      */
@@ -6900,6 +5360,28 @@ export interface GetDatabaseInstanceChildInstanceRef {
      * (string) - Id of the ref database instance
      */
     uid: string;
+}
+
+export interface GetDatabaseInstanceCustomTag {
+    /**
+     * (string) - The key of the custom tag
+     */
+    key?: string;
+    /**
+     * (string) - The value of the custom tag
+     */
+    value?: string;
+}
+
+export interface GetDatabaseInstanceEffectiveCustomTag {
+    /**
+     * (string) - The key of the custom tag
+     */
+    key?: string;
+    /**
+     * (string) - The value of the custom tag
+     */
+    value?: string;
 }
 
 export interface GetDatabaseInstanceParentInstanceRef {
@@ -6914,10 +5396,7 @@ export interface GetDatabaseInstanceParentInstanceRef {
      */
     branchTime?: string;
     /**
-     * (string) - xref AIP-129. `lsn` is owned by the client, while `effectiveLsn` is owned by the server.
-     * `lsn` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-     * `effectiveLsn` on the other hand will always bet set in all response messages (Create/Update/Get/List).
-     * For a parent ref instance, this is the LSN on the parent instance from which the
+     * (string) - For a parent ref instance, this is the LSN on the parent instance from which the
      * instance was created.
      * For a child ref instance, this is the LSN on the instance from which the child instance
      * was created
@@ -6926,7 +5405,7 @@ export interface GetDatabaseInstanceParentInstanceRef {
     /**
      * (string) - User-specified WAL LSN of the ref database instance.
      */
-    lsn?: string;
+    lsn: string;
     /**
      * The name of the instance. This is the unique identifier for the instance
      */
@@ -6941,7 +5420,7 @@ export interface GetDatabaseInstancesDatabaseInstance {
     /**
      * (string) - The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
      */
-    capacity?: string;
+    capacity: string;
     /**
      * (list of DatabaseInstanceRef) - The refs of the child instances. This is only available if the instance is
      * parent instance
@@ -6956,59 +5435,67 @@ export interface GetDatabaseInstancesDatabaseInstance {
      */
     creator: string;
     /**
-     * (boolean) - xref AIP-129. `enablePgNativeLogin` is owned by the client, while `effectiveEnablePgNativeLogin` is owned by the server.
-     * `enablePgNativeLogin` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-     * `effectiveEnablePgNativeLogin` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * (list of CustomTag) - Custom tags associated with the instance. This field is only included on create and update responses
+     */
+    customTags: outputs.GetDatabaseInstancesDatabaseInstanceCustomTag[];
+    /**
+     * (string, deprecated) - Deprecated. The sku of the instance; this field will always match the value of capacity
+     */
+    effectiveCapacity: string;
+    /**
+     * (list of CustomTag) - The recorded custom tags associated with the instance
+     */
+    effectiveCustomTags: outputs.GetDatabaseInstancesDatabaseInstanceEffectiveCustomTag[];
+    /**
+     * (boolean) - Whether the instance has PG native password login enabled
      */
     effectiveEnablePgNativeLogin: boolean;
     /**
-     * (boolean) - xref AIP-129. `enableReadableSecondaries` is owned by the client, while `effectiveEnableReadableSecondaries` is owned by the server.
-     * `enableReadableSecondaries` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-     * `effectiveEnableReadableSecondaries` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * (boolean) - Whether secondaries serving read-only traffic are enabled. Defaults to false
      */
     effectiveEnableReadableSecondaries: boolean;
     /**
-     * (integer) - xref AIP-129. `nodeCount` is owned by the client, while `effectiveNodeCount` is owned by the server.
-     * `nodeCount` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-     * `effectiveNodeCount` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * (integer) - The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
+     * 1 primary and 0 secondaries
      */
     effectiveNodeCount: number;
     /**
-     * (integer) - xref AIP-129. `retentionWindowInDays` is owned by the client, while `effectiveRetentionWindowInDays` is owned by the server.
-     * `retentionWindowInDays` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-     * `effectiveRetentionWindowInDays` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * (integer) - The retention window for the instance. This is the time window in days
+     * for which the historical data is retained
      */
     effectiveRetentionWindowInDays: number;
     /**
-     * (boolean) - xref AIP-129. `stopped` is owned by the client, while `effectiveStopped` is owned by the server.
-     * `stopped` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-     * `effectiveStopped` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * (boolean) - Whether the instance is stopped
      */
     effectiveStopped: boolean;
     /**
-     * (boolean) - Whether the instance has PG native password login enabled. Defaults to true
+     * (string) - The policy that is applied to the instance
+     */
+    effectiveUsagePolicyId: string;
+    /**
+     * (boolean) - Whether to enable PG native password login on the instance. Defaults to false
      */
     enablePgNativeLogin: boolean;
     /**
      * (boolean) - Whether to enable secondaries to serve read-only traffic. Defaults to false
      */
-    enableReadableSecondaries?: boolean;
+    enableReadableSecondaries: boolean;
     /**
      * (string) - Name of the ref database instance
      */
     name: string;
     /**
      * (integer) - The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
-     * 1 primary and 0 secondaries
+     * 1 primary and 0 secondaries. This field is input only, see effectiveNodeCount for the output
      */
-    nodeCount?: number;
+    nodeCount: number;
     /**
      * (DatabaseInstanceRef) - The ref of the parent instance. This is only available if the instance is
      * child instance.
      * Input: For specifying the parent instance to create a child instance. Optional.
      * Output: Only populated if provided as input to create a child instance
      */
-    parentInstanceRef?: outputs.GetDatabaseInstancesDatabaseInstanceParentInstanceRef;
+    parentInstanceRef: outputs.GetDatabaseInstancesDatabaseInstanceParentInstanceRef;
     /**
      * (string) - The version of Postgres running on the instance
      */
@@ -7027,19 +5514,23 @@ export interface GetDatabaseInstancesDatabaseInstance {
      * for which the historical data is retained. The default value is 7 days.
      * Valid values are 2 to 35 days
      */
-    retentionWindowInDays?: number;
+    retentionWindowInDays: number;
     /**
      * (string) - The current state of the instance. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
      */
     state: string;
     /**
-     * (boolean) - Whether the instance is stopped
+     * (boolean) - Whether to stop the instance. An input only param, see effectiveStopped for the output
      */
-    stopped?: boolean;
+    stopped: boolean;
     /**
      * (string) - Id of the ref database instance
      */
     uid: string;
+    /**
+     * (string) - The desired usage policy to associate with the instance
+     */
+    usagePolicyId: string;
 }
 
 export interface GetDatabaseInstancesDatabaseInstanceChildInstanceRef {
@@ -7054,10 +5545,7 @@ export interface GetDatabaseInstancesDatabaseInstanceChildInstanceRef {
      */
     branchTime?: string;
     /**
-     * (string) - xref AIP-129. `lsn` is owned by the client, while `effectiveLsn` is owned by the server.
-     * `lsn` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-     * `effectiveLsn` on the other hand will always bet set in all response messages (Create/Update/Get/List).
-     * For a parent ref instance, this is the LSN on the parent instance from which the
+     * (string) - For a parent ref instance, this is the LSN on the parent instance from which the
      * instance was created.
      * For a child ref instance, this is the LSN on the instance from which the child instance
      * was created
@@ -7066,7 +5554,7 @@ export interface GetDatabaseInstancesDatabaseInstanceChildInstanceRef {
     /**
      * (string) - User-specified WAL LSN of the ref database instance.
      */
-    lsn?: string;
+    lsn: string;
     /**
      * (string) - Name of the ref database instance
      */
@@ -7075,6 +5563,28 @@ export interface GetDatabaseInstancesDatabaseInstanceChildInstanceRef {
      * (string) - Id of the ref database instance
      */
     uid: string;
+}
+
+export interface GetDatabaseInstancesDatabaseInstanceCustomTag {
+    /**
+     * (string) - The key of the custom tag
+     */
+    key?: string;
+    /**
+     * (string) - The value of the custom tag
+     */
+    value?: string;
+}
+
+export interface GetDatabaseInstancesDatabaseInstanceEffectiveCustomTag {
+    /**
+     * (string) - The key of the custom tag
+     */
+    key?: string;
+    /**
+     * (string) - The value of the custom tag
+     */
+    value?: string;
 }
 
 export interface GetDatabaseInstancesDatabaseInstanceParentInstanceRef {
@@ -7089,10 +5599,7 @@ export interface GetDatabaseInstancesDatabaseInstanceParentInstanceRef {
      */
     branchTime?: string;
     /**
-     * (string) - xref AIP-129. `lsn` is owned by the client, while `effectiveLsn` is owned by the server.
-     * `lsn` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-     * `effectiveLsn` on the other hand will always bet set in all response messages (Create/Update/Get/List).
-     * For a parent ref instance, this is the LSN on the parent instance from which the
+     * (string) - For a parent ref instance, this is the LSN on the parent instance from which the
      * instance was created.
      * For a child ref instance, this is the LSN on the instance from which the child instance
      * was created
@@ -7101,7 +5608,7 @@ export interface GetDatabaseInstancesDatabaseInstanceParentInstanceRef {
     /**
      * (string) - User-specified WAL LSN of the ref database instance.
      */
-    lsn?: string;
+    lsn: string;
     /**
      * (string) - Name of the ref database instance
      */
@@ -7391,7 +5898,7 @@ export interface GetDatabaseSyncedDatabaseTablesSyncedTable {
     /**
      * (SyncedTableSpec)
      */
-    spec?: outputs.GetDatabaseSyncedDatabaseTablesSyncedTableSpec;
+    spec: outputs.GetDatabaseSyncedDatabaseTablesSyncedTableSpec;
     /**
      * (string) - The provisioning state of the synced table entity in Unity Catalog. This is distinct from the
      * state of the data synchronization pipeline (i.e. the table may be in "ACTIVE" but the pipeline
@@ -7655,6 +6162,13 @@ export interface GetDbfsFilePathsPathList {
     path?: string;
 }
 
+export interface GetDirectoryProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
 export interface GetEntityTagAssignmentsTagAssignment {
     /**
      * The fully qualified name of the entity to which the tag is assigned
@@ -7671,7 +6185,7 @@ export interface GetEntityTagAssignmentsTagAssignment {
     /**
      * (string) - The value of the tag
      */
-    tagValue?: string;
+    tagValue: string;
 }
 
 export interface GetExternalLocationExternalLocationInfo {
@@ -7795,11 +6309,25 @@ export interface GetExternalLocationExternalLocationInfoFileEventQueueProvidedSq
     queueUrl?: string;
 }
 
+export interface GetExternalLocationProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetExternalLocationsProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
 export interface GetExternalMetadatasExternalMetadata {
     /**
      * (list of string) - List of columns associated with the external metadata object
      */
-    columns?: string[];
+    columns: string[];
     /**
      * (string) - Time at which this external metadata object was created
      */
@@ -7811,7 +6339,7 @@ export interface GetExternalMetadatasExternalMetadata {
     /**
      * (string) - User-provided free-form text description
      */
-    description?: string;
+    description: string;
     /**
      * (string) - Type of entity within the external system
      */
@@ -7831,13 +6359,13 @@ export interface GetExternalMetadatasExternalMetadata {
     /**
      * (string) - Owner of the external metadata object
      */
-    owner?: string;
+    owner: string;
     /**
      * (object) - A map of key-value properties attached to the external metadata object
      */
-    properties?: {[key: string]: string};
+    properties: {[key: string]: string};
     /**
-     * (string) - Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `TABLEAU`, `TERADATA`, `WORKDAY`
+     * (string) - Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `STREAM_NATIVE`, `TABLEAU`, `TERADATA`, `WORKDAY`
      */
     systemType: string;
     /**
@@ -7851,7 +6379,332 @@ export interface GetExternalMetadatasExternalMetadata {
     /**
      * (string) - URL associated with the external metadata object
      */
-    url?: string;
+    url: string;
+}
+
+export interface GetFeatureEngineeringFeatureFunction {
+    /**
+     * (list of FunctionExtraParameter) - Extra parameters for parameterized functions
+     */
+    extraParameters?: outputs.GetFeatureEngineeringFeatureFunctionExtraParameter[];
+    /**
+     * (string) - The type of the function. Possible values are: `APPROX_COUNT_DISTINCT`, `APPROX_PERCENTILE`, `AVG`, `COUNT`, `FIRST`, `LAST`, `MAX`, `MIN`, `STDDEV_POP`, `STDDEV_SAMP`, `SUM`, `VAR_POP`, `VAR_SAMP`
+     */
+    functionType: string;
+}
+
+export interface GetFeatureEngineeringFeatureFunctionExtraParameter {
+    /**
+     * (string) - The name of the parameter
+     */
+    key: string;
+    /**
+     * (string) - The value of the parameter
+     */
+    value: string;
+}
+
+export interface GetFeatureEngineeringFeatureSource {
+    /**
+     * (DeltaTableSource)
+     */
+    deltaTableSource?: outputs.GetFeatureEngineeringFeatureSourceDeltaTableSource;
+}
+
+export interface GetFeatureEngineeringFeatureSourceDeltaTableSource {
+    /**
+     * (list of string) - The entity columns of the Delta table
+     */
+    entityColumns: string[];
+    /**
+     * The full three-part name (catalog, schema, name) of the feature
+     */
+    fullName: string;
+    /**
+     * (string) - The timeseries column of the Delta table
+     */
+    timeseriesColumn: string;
+}
+
+export interface GetFeatureEngineeringFeatureTimeWindow {
+    /**
+     * (ContinuousWindow)
+     */
+    continuous?: outputs.GetFeatureEngineeringFeatureTimeWindowContinuous;
+    /**
+     * (SlidingWindow)
+     */
+    sliding?: outputs.GetFeatureEngineeringFeatureTimeWindowSliding;
+    /**
+     * (TumblingWindow)
+     */
+    tumbling?: outputs.GetFeatureEngineeringFeatureTimeWindowTumbling;
+}
+
+export interface GetFeatureEngineeringFeatureTimeWindowContinuous {
+    /**
+     * (string) - The offset of the continuous window (must be non-positive)
+     */
+    offset?: string;
+    /**
+     * (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
+     */
+    windowDuration: string;
+}
+
+export interface GetFeatureEngineeringFeatureTimeWindowSliding {
+    /**
+     * (string) - The slide duration (interval by which windows advance, must be positive and less than duration)
+     */
+    slideDuration: string;
+    /**
+     * (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
+     */
+    windowDuration: string;
+}
+
+export interface GetFeatureEngineeringFeatureTimeWindowTumbling {
+    /**
+     * (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
+     */
+    windowDuration: string;
+}
+
+export interface GetFeatureEngineeringFeaturesFeature {
+    /**
+     * (string) - The description of the feature
+     */
+    description: string;
+    /**
+     * (string) - The filter condition applied to the source data before aggregation
+     */
+    filterCondition: string;
+    /**
+     * (string) - The full three-part (catalog, schema, table) name of the Delta table
+     */
+    fullName: string;
+    /**
+     * (Function) - The function by which the feature is computed
+     */
+    function: outputs.GetFeatureEngineeringFeaturesFeatureFunction;
+    /**
+     * (list of string) - The input columns from which the feature is computed
+     */
+    inputs: string[];
+    /**
+     * (DataSource) - The data source of the feature
+     */
+    source: outputs.GetFeatureEngineeringFeaturesFeatureSource;
+    /**
+     * (TimeWindow) - The time window in which the feature is computed
+     */
+    timeWindow: outputs.GetFeatureEngineeringFeaturesFeatureTimeWindow;
+}
+
+export interface GetFeatureEngineeringFeaturesFeatureFunction {
+    /**
+     * (list of FunctionExtraParameter) - Extra parameters for parameterized functions
+     */
+    extraParameters?: outputs.GetFeatureEngineeringFeaturesFeatureFunctionExtraParameter[];
+    /**
+     * (string) - The type of the function. Possible values are: `APPROX_COUNT_DISTINCT`, `APPROX_PERCENTILE`, `AVG`, `COUNT`, `FIRST`, `LAST`, `MAX`, `MIN`, `STDDEV_POP`, `STDDEV_SAMP`, `SUM`, `VAR_POP`, `VAR_SAMP`
+     */
+    functionType: string;
+}
+
+export interface GetFeatureEngineeringFeaturesFeatureFunctionExtraParameter {
+    /**
+     * (string) - The name of the parameter
+     */
+    key: string;
+    /**
+     * (string) - The value of the parameter
+     */
+    value: string;
+}
+
+export interface GetFeatureEngineeringFeaturesFeatureSource {
+    /**
+     * (DeltaTableSource)
+     */
+    deltaTableSource?: outputs.GetFeatureEngineeringFeaturesFeatureSourceDeltaTableSource;
+}
+
+export interface GetFeatureEngineeringFeaturesFeatureSourceDeltaTableSource {
+    /**
+     * (list of string) - The entity columns of the Delta table
+     */
+    entityColumns: string[];
+    /**
+     * (string) - The full three-part (catalog, schema, table) name of the Delta table
+     */
+    fullName: string;
+    /**
+     * (string) - The timeseries column of the Delta table
+     */
+    timeseriesColumn: string;
+}
+
+export interface GetFeatureEngineeringFeaturesFeatureTimeWindow {
+    /**
+     * (ContinuousWindow)
+     */
+    continuous?: outputs.GetFeatureEngineeringFeaturesFeatureTimeWindowContinuous;
+    /**
+     * (SlidingWindow)
+     */
+    sliding?: outputs.GetFeatureEngineeringFeaturesFeatureTimeWindowSliding;
+    /**
+     * (TumblingWindow)
+     */
+    tumbling?: outputs.GetFeatureEngineeringFeaturesFeatureTimeWindowTumbling;
+}
+
+export interface GetFeatureEngineeringFeaturesFeatureTimeWindowContinuous {
+    /**
+     * (string) - The offset of the continuous window (must be non-positive)
+     */
+    offset?: string;
+    /**
+     * (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
+     */
+    windowDuration: string;
+}
+
+export interface GetFeatureEngineeringFeaturesFeatureTimeWindowSliding {
+    /**
+     * (string) - The slide duration (interval by which windows advance, must be positive and less than duration)
+     */
+    slideDuration: string;
+    /**
+     * (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
+     */
+    windowDuration: string;
+}
+
+export interface GetFeatureEngineeringFeaturesFeatureTimeWindowTumbling {
+    /**
+     * (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
+     */
+    windowDuration: string;
+}
+
+export interface GetFeatureEngineeringMaterializedFeatureOfflineStoreConfig {
+    /**
+     * (string) - The Unity Catalog catalog name
+     */
+    catalogName: string;
+    /**
+     * (string) - The Unity Catalog schema name
+     */
+    schemaName: string;
+    /**
+     * (string) - Prefix for Unity Catalog table name.
+     * The materialized feature will be stored in a table with this prefix and a generated postfix
+     */
+    tableNamePrefix: string;
+}
+
+export interface GetFeatureEngineeringMaterializedFeatureOnlineStoreConfig {
+    /**
+     * (string) - The capacity of the online store. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
+     */
+    capacity: string;
+    /**
+     * (string) - The timestamp when the online store was created
+     */
+    creationTime: string;
+    /**
+     * (string) - The email of the creator of the online store
+     */
+    creator: string;
+    /**
+     * (string) - The name of the online store. This is the unique identifier for the online store
+     */
+    name: string;
+    /**
+     * (integer) - The number of read replicas for the online store. Defaults to 0
+     */
+    readReplicaCount?: number;
+    /**
+     * (string) - The current state of the online store. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
+     */
+    state: string;
+}
+
+export interface GetFeatureEngineeringMaterializedFeaturesMaterializedFeature {
+    /**
+     * Filter by feature name. If specified, only materialized features materialized from this feature will be returned
+     */
+    featureName: string;
+    /**
+     * (string) - The timestamp when the pipeline last ran and updated the materialized feature values.
+     * If the pipeline has not run yet, this field will be null
+     */
+    lastMaterializationTime: string;
+    /**
+     * (string) - Unique identifier for the materialized feature
+     */
+    materializedFeatureId: string;
+    /**
+     * (OfflineStoreConfig)
+     */
+    offlineStoreConfig: outputs.GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOfflineStoreConfig;
+    /**
+     * (OnlineStore)
+     */
+    onlineStoreConfig: outputs.GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOnlineStoreConfig;
+    /**
+     * (string) - The schedule state of the materialization pipeline. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
+     */
+    pipelineScheduleState: string;
+    /**
+     * (string) - The fully qualified Unity Catalog path to the table containing the materialized feature (Delta table or Lakebase table). Output only
+     */
+    tableName: string;
+}
+
+export interface GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOfflineStoreConfig {
+    /**
+     * (string) - The Unity Catalog catalog name
+     */
+    catalogName: string;
+    /**
+     * (string) - The Unity Catalog schema name
+     */
+    schemaName: string;
+    /**
+     * (string) - Prefix for Unity Catalog table name.
+     * The materialized feature will be stored in a table with this prefix and a generated postfix
+     */
+    tableNamePrefix: string;
+}
+
+export interface GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOnlineStoreConfig {
+    /**
+     * (string) - The capacity of the online store. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
+     */
+    capacity: string;
+    /**
+     * (string) - The timestamp when the online store was created
+     */
+    creationTime: string;
+    /**
+     * (string) - The email of the creator of the online store
+     */
+    creator: string;
+    /**
+     * (string) - The name of the online store. This is the unique identifier for the online store
+     */
+    name: string;
+    /**
+     * (integer) - The number of read replicas for the online store. Defaults to 0
+     */
+    readReplicaCount?: number;
+    /**
+     * (string) - The current state of the online store. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
+     */
+    state: string;
 }
 
 export interface GetFunctionsFunction {
@@ -8120,6 +6973,10 @@ export interface GetFunctionsFunctionRoutineDependenciesDependencyTable {
     tableFullName: string;
 }
 
+export interface GetFunctionsProviderConfig {
+    workspaceId: string;
+}
+
 export interface GetInstancePoolPoolInfo {
     awsAttributes?: outputs.GetInstancePoolPoolInfoAwsAttributes;
     azureAttributes?: outputs.GetInstancePoolPoolInfoAzureAttributes;
@@ -8143,6 +7000,7 @@ export interface GetInstancePoolPoolInfo {
 
 export interface GetInstancePoolPoolInfoAwsAttributes {
     availability?: string;
+    instanceProfileArn?: string;
     spotBidPricePercent?: number;
     zoneId: string;
 }
@@ -8224,6 +7082,13 @@ export interface GetInstanceProfilesInstanceProfile {
      * ARN of the role attached to the instance profile.
      */
     roleArn: string;
+}
+
+export interface GetInstanceProfilesProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
 }
 
 export interface GetJobJobSettings {
@@ -8313,7 +7178,7 @@ export interface GetJobJobSettingsSettingsEnvironmentSpec {
     client?: string;
     dependencies?: string[];
     environmentVersion?: string;
-    jarDependencies?: string[];
+    javaDependencies?: string[];
 }
 
 export interface GetJobJobSettingsSettingsGitSource {
@@ -8511,6 +7376,7 @@ export interface GetJobJobSettingsSettingsLibrary {
     egg?: string;
     jar?: string;
     maven?: outputs.GetJobJobSettingsSettingsLibraryMaven;
+    providerConfig?: outputs.GetJobJobSettingsSettingsLibraryProviderConfig;
     pypi?: outputs.GetJobJobSettingsSettingsLibraryPypi;
     requirements?: string;
     whl?: string;
@@ -8525,6 +7391,10 @@ export interface GetJobJobSettingsSettingsLibraryMaven {
     coordinates: string;
     exclusions?: string[];
     repo?: string;
+}
+
+export interface GetJobJobSettingsSettingsLibraryProviderConfig {
+    workspaceId: string;
 }
 
 export interface GetJobJobSettingsSettingsLibraryPypi {
@@ -8940,6 +7810,7 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskLibrary {
     egg?: string;
     jar?: string;
     maven?: outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryMaven;
+    providerConfig?: outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryProviderConfig;
     pypi?: outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryPypi;
     requirements?: string;
     whl?: string;
@@ -8954,6 +7825,10 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryMaven {
     coordinates: string;
     exclusions?: string[];
     repo?: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryProviderConfig {
+    workspaceId: string;
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryPypi {
@@ -9292,6 +8167,7 @@ export interface GetJobJobSettingsSettingsTaskLibrary {
     egg?: string;
     jar?: string;
     maven?: outputs.GetJobJobSettingsSettingsTaskLibraryMaven;
+    providerConfig?: outputs.GetJobJobSettingsSettingsTaskLibraryProviderConfig;
     pypi?: outputs.GetJobJobSettingsSettingsTaskLibraryPypi;
     requirements?: string;
     whl?: string;
@@ -9306,6 +8182,10 @@ export interface GetJobJobSettingsSettingsTaskLibraryMaven {
     coordinates: string;
     exclusions?: string[];
     repo?: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskLibraryProviderConfig {
+    workspaceId: string;
 }
 
 export interface GetJobJobSettingsSettingsTaskLibraryPypi {
@@ -9694,6 +8574,13 @@ export interface GetJobJobSettingsSettingsWebhookNotificationsOnSuccess {
     id: string;
 }
 
+export interface GetJobsProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
 export interface GetMaterializedFeaturesFeatureTagsFeatureTag {
     /**
      * (string)
@@ -9702,7 +8589,7 @@ export interface GetMaterializedFeaturesFeatureTagsFeatureTag {
     /**
      * (string)
      */
-    value?: string;
+    value: string;
 }
 
 export interface GetMetastoreMetastoreInfo {
@@ -9751,6 +8638,13 @@ export interface GetMetastoreMetastoreInfo {
     updatedBy?: string;
 }
 
+export interface GetMlflowExperimentProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
 export interface GetMlflowExperimentTag {
     key?: string;
     value?: string;
@@ -9789,9 +8683,23 @@ export interface GetMlflowModelLatestVersionTag {
     value?: string;
 }
 
+export interface GetMlflowModelProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
 export interface GetMlflowModelTag {
     key?: string;
     value?: string;
+}
+
+export interface GetMlflowModelsProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
 }
 
 export interface GetMwsNetworkConnectivityConfigEgressConfig {
@@ -9930,6 +8838,13 @@ export interface GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePriv
     updatedTime?: number;
 }
 
+export interface GetNodeTypeProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
 export interface GetNotebookPathsNotebookPathList {
     language?: string;
     /**
@@ -9953,6 +8868,10 @@ export interface GetNotificationDestinationsNotificationDestination {
     id?: string;
 }
 
+export interface GetNotificationDestinationsProviderConfig {
+    workspaceId: string;
+}
+
 export interface GetOnlineStoresOnlineStore {
     /**
      * (string) - The capacity of the online store. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
@@ -9973,11 +8892,18 @@ export interface GetOnlineStoresOnlineStore {
     /**
      * (integer) - The number of read replicas for the online store. Defaults to 0
      */
-    readReplicaCount?: number;
+    readReplicaCount: number;
     /**
      * (string) - The current state of the online store. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
      */
     state: string;
+}
+
+export interface GetPipelinesProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
 }
 
 export interface GetPolicyInfoColumnMask {
@@ -10055,11 +8981,11 @@ export interface GetPolicyInfosPolicy {
      * Required on create and optional on update. When specified on update,
      * the new options will replace the existing options as a whole
      */
-    columnMask?: outputs.GetPolicyInfosPolicyColumnMask;
+    columnMask: outputs.GetPolicyInfosPolicyColumnMask;
     /**
      * (string) - Optional description of the policy
      */
-    comment?: string;
+    comment: string;
     /**
      * (integer) - Time at which the policy was created, in epoch milliseconds. Output only
      */
@@ -10071,7 +8997,7 @@ export interface GetPolicyInfosPolicy {
     /**
      * (list of string) - Optional list of user or group names that should be excluded from the policy
      */
-    exceptPrincipals?: string[];
+    exceptPrincipals: string[];
     /**
      * (string) - Type of securables that the policy should take effect on.
      * Only `TABLE` is supported at this moment.
@@ -10087,20 +9013,20 @@ export interface GetPolicyInfosPolicy {
      * Only valid when `forSecurableType` is `TABLE`.
      * When specified, the policy only applies to tables whose columns satisfy all match conditions
      */
-    matchColumns?: outputs.GetPolicyInfosPolicyMatchColumn[];
+    matchColumns: outputs.GetPolicyInfosPolicyMatchColumn[];
     /**
      * (string) - Name of the policy. Required on create and optional on update.
      * To rename the policy, set `name` to a different value on update
      */
-    name?: string;
+    name: string;
     /**
      * Required. The fully qualified name of securable to list policies for
      */
-    onSecurableFullname?: string;
+    onSecurableFullname: string;
     /**
      * Required. The type of the securable to list policies for
      */
-    onSecurableType?: string;
+    onSecurableType: string;
     /**
      * (string) - Type of the policy. Required on create and ignored on update. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
      */
@@ -10110,7 +9036,7 @@ export interface GetPolicyInfosPolicy {
      * Required on create and optional on update. When specified on update,
      * the new options will replace the existing options as a whole
      */
-    rowFilter?: outputs.GetPolicyInfosPolicyRowFilter;
+    rowFilter: outputs.GetPolicyInfosPolicyRowFilter;
     /**
      * (list of string) - List of user or group names that the policy applies to.
      * Required on create and optional on update
@@ -10127,7 +9053,7 @@ export interface GetPolicyInfosPolicy {
     /**
      * (string) - Optional condition when the policy should take effect
      */
-    whenCondition?: string;
+    whenCondition: string;
 }
 
 export interface GetPolicyInfosPolicyColumnMask {
@@ -10236,98 +9162,6 @@ export interface GetQualityMonitorsV2QualityMonitorAnomalyDetectionConfig {
     latestRunStatus: string;
 }
 
-export interface GetRecipientFederationPoliciesPolicy {
-    /**
-     * (string) - Description of the policy. This is a user-provided description
-     */
-    comment?: string;
-    /**
-     * (string) - System-generated timestamp indicating when the policy was created
-     */
-    createTime: string;
-    /**
-     * (string) - Unique, immutable system-generated identifier for the federation policy
-     */
-    id: string;
-    /**
-     * (string) - Name of the federation policy. A recipient can have multiple policies with different names.
-     * The name must contain only lowercase alphanumeric characters, numbers, and hyphens
-     */
-    name?: string;
-    /**
-     * (OidcFederationPolicy) - Specifies the policy to use for validating OIDC claims in the federated tokens
-     */
-    oidcPolicy?: outputs.GetRecipientFederationPoliciesPolicyOidcPolicy;
-    /**
-     * (string) - System-generated timestamp indicating when the policy was last updated
-     */
-    updateTime: string;
-}
-
-export interface GetRecipientFederationPoliciesPolicyOidcPolicy {
-    /**
-     * (list of string) - The allowed token audiences, as specified in the 'aud' claim of federated tokens.
-     * The audience identifier is intended to represent the recipient of the token.
-     * Can be any non-empty string value. As long as the audience in the token matches at least one audience in the policy,
-     */
-    audiences?: string[];
-    /**
-     * (string) - The required token issuer, as specified in the 'iss' claim of federated tokens
-     */
-    issuer: string;
-    /**
-     * (string) - The required token subject, as specified in the subject claim of federated tokens.
-     * The subject claim identifies the identity of the user or machine accessing the resource.
-     * Examples for Entra ID (AAD):
-     * - U2M flow (group access): If the subject claim is `groups`, this must be the Object ID of the group in Entra ID.
-     * - U2M flow (user access): If the subject claim is `oid`, this must be the Object ID of the user in Entra ID.
-     * - M2M flow (OAuth App access): If the subject claim is `azp`, this must be the client ID of the OAuth app registered in Entra ID
-     */
-    subject: string;
-    /**
-     * (string) - The claim that contains the subject of the token.
-     * Depending on the identity provider and the use case (U2M or M2M), this can vary:
-     * - For Entra ID (AAD):
-     * * U2M flow (group access): Use `groups`.
-     * * U2M flow (user access): Use `oid`.
-     * * M2M flow (OAuth App access): Use `azp`.
-     * - For other IdPs, refer to the specific IdP documentation.
-     */
-    subjectClaim: string;
-}
-
-export interface GetRecipientFederationPolicyOidcPolicy {
-    /**
-     * (list of string) - The allowed token audiences, as specified in the 'aud' claim of federated tokens.
-     * The audience identifier is intended to represent the recipient of the token.
-     * Can be any non-empty string value. As long as the audience in the token matches at least one audience in the policy,
-     */
-    audiences?: string[];
-    /**
-     * (string) - The required token issuer, as specified in the 'iss' claim of federated tokens
-     */
-    issuer: string;
-    /**
-     * (string) - The required token subject, as specified in the subject claim of federated tokens.
-     * The subject claim identifies the identity of the user or machine accessing the resource.
-     * Examples for Entra ID (AAD):
-     * - U2M flow (group access): If the subject claim is `groups`, this must be the Object ID of the group in Entra ID.
-     * - U2M flow (user access): If the subject claim is `oid`, this must be the Object ID of the user in Entra ID.
-     * - M2M flow (OAuth App access): If the subject claim is `azp`, this must be the client ID of the OAuth app registered in Entra ID
-     */
-    subject: string;
-    /**
-     * (string) - The claim that contains the subject of the token.
-     * Depending on the identity provider and the use case (U2M or M2M), this can vary:
-     * - For Entra ID (AAD):
-     * * U2M flow (group access): Use `groups`.
-     * * U2M flow (user access): Use `oid`.
-     * * M2M flow (OAuth App access): Use `azp`.
-     * - For other IdPs, refer to the specific IdP documentation.
-     */
-    subjectClaim: string;
-}
-
 export interface GetRegisteredModelModelInfo {
     /**
      * the list of aliases associated with this model. Each item is object consisting of following attributes:
@@ -10390,9 +9224,23 @@ export interface GetRegisteredModelModelInfoAlias {
      */
     aliasName?: string;
     /**
+     * The name of the catalog where the schema and the registered model reside.
+     */
+    catalogName?: string;
+    id?: string;
+    modelName?: string;
+    /**
+     * The name of the schema where the registered model resides.
+     */
+    schemaName?: string;
+    /**
      * associated model version
      */
     versionNum?: number;
+}
+
+export interface GetRegisteredModelProviderConfig {
+    workspaceId: string;
 }
 
 export interface GetRegisteredModelVersionsModelVersion {
@@ -10400,7 +9248,6 @@ export interface GetRegisteredModelVersionsModelVersion {
      * the list of aliases associated with this model. Each item is object consisting of following attributes:
      */
     aliases?: outputs.GetRegisteredModelVersionsModelVersionAlias[];
-    browseOnly?: boolean;
     /**
      * The name of the catalog where the schema and the registered model reside.
      */
@@ -10474,6 +9321,19 @@ export interface GetRegisteredModelVersionsModelVersionAlias {
      */
     aliasName?: string;
     /**
+     * The name of the catalog where the schema and the registered model reside.
+     */
+    catalogName?: string;
+    /**
+     * The unique identifier of the model version
+     */
+    id?: string;
+    modelName?: string;
+    /**
+     * The name of the schema where the registered model resides.
+     */
+    schemaName?: string;
+    /**
      * associated model version
      */
     versionNum?: number;
@@ -10519,6 +9379,54 @@ export interface GetRegisteredModelVersionsModelVersionModelVersionDependencyDep
      * Full name of the dependent table
      */
     tableFullName: string;
+}
+
+export interface GetRegisteredModelVersionsProviderConfig {
+    workspaceId: string;
+}
+
+export interface GetRfaAccessRequestDestinationsDestination {
+    /**
+     * (string) - The identifier for the destination. This is the email address for EMAIL destinations, the URL for URL destinations,
+     * or the unique Databricks notification destination ID for all other external destinations
+     */
+    destinationId?: string;
+    /**
+     * (string) - The type of the destination. Possible values are: `EMAIL`, `GENERIC_WEBHOOK`, `MICROSOFT_TEAMS`, `SLACK`, `URL`
+     */
+    destinationType?: string;
+    /**
+     * (string) - This field is used to denote whether the destination is the email of the owner of the securable object.
+     * The special destination cannot be assigned to a securable and only represents the default destination of the securable.
+     * The securable types that support default special destinations are: "catalog", "externalLocation", "connection", "credential", and "metastore".
+     * The **destination_type** of a **special_destination** is always EMAIL. Possible values are: `SPECIAL_DESTINATION_CATALOG_OWNER`, `SPECIAL_DESTINATION_CONNECTION_OWNER`, `SPECIAL_DESTINATION_CREDENTIAL_OWNER`, `SPECIAL_DESTINATION_EXTERNAL_LOCATION_OWNER`, `SPECIAL_DESTINATION_METASTORE_OWNER`
+     */
+    specialDestination?: string;
+}
+
+export interface GetRfaAccessRequestDestinationsSecurable {
+    /**
+     * (string) - Required. The full name of the catalog/schema/table.
+     * Optional if resourceName is present
+     */
+    fullName?: string;
+    /**
+     * (string) - Optional. The name of the Share object that contains the securable when the securable is
+     * getting shared in D2D Delta Sharing
+     */
+    providerShare?: string;
+    /**
+     * (string) - Required. The type of securable (catalog/schema/table).
+     * Optional if resourceName is present. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+     */
+    type?: string;
+}
+
+export interface GetSchemaProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
 }
 
 export interface GetSchemaSchemaInfo {
@@ -10602,6 +9510,13 @@ export interface GetSchemaSchemaInfoEffectivePredictiveOptimizationFlag {
     value: string;
 }
 
+export interface GetSchemasProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
 export interface GetServicePrincipalFederationPoliciesPolicy {
     /**
      * (string) - Creation time of the federation policy
@@ -10610,7 +9525,7 @@ export interface GetServicePrincipalFederationPoliciesPolicy {
     /**
      * (string) - Description of the federation policy
      */
-    description?: string;
+    description: string;
     /**
      * (string) - Resource name for the federation policy. Example values include
      * `accounts/<account-id>/federationPolicies/my-federation-policy` for Account Federation Policies, and
@@ -10623,9 +9538,9 @@ export interface GetServicePrincipalFederationPoliciesPolicy {
     /**
      * (OidcFederationPolicy)
      */
-    oidcPolicy?: outputs.GetServicePrincipalFederationPoliciesPolicyOidcPolicy;
+    oidcPolicy: outputs.GetServicePrincipalFederationPoliciesPolicyOidcPolicy;
     /**
-     * (string) - The ID of the federation policy
+     * (string) - The ID of the federation policy. Output only
      */
     policyId: string;
     /**
@@ -10955,6 +9870,10 @@ export interface GetServingEndpointsEndpointTag {
     value?: string;
 }
 
+export interface GetServingEndpointsProviderConfig {
+    workspaceId: string;
+}
+
 export interface GetShareObject {
     addedAt: number;
     addedBy: string;
@@ -10967,7 +9886,12 @@ export interface GetShareObject {
     /**
      * Type of the object.
      */
-    dataObjectType: string;
+    dataObjectType?: string;
+    effectiveCdfEnabled: boolean;
+    effectiveHistoryDataSharingStatus: string;
+    effectiveSharedAs: string;
+    effectiveStartVersion: number;
+    effectiveStringSharedAs: string;
     historyDataSharingStatus?: string;
     /**
      * The name of the share
@@ -10988,10 +9912,31 @@ export interface GetShareObjectPartitionValue {
     /**
      * The name of the share
      */
-    name: string;
-    op: string;
+    name?: string;
+    op?: string;
     recipientPropertyKey?: string;
     value?: string;
+}
+
+export interface GetShareProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetSharesProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetSparkVersionProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
 }
 
 export interface GetSqlWarehouseChannel {
@@ -11023,6 +9968,10 @@ export interface GetSqlWarehouseOdbcParams {
     protocol?: string;
 }
 
+export interface GetSqlWarehouseProviderConfig {
+    workspaceId: string;
+}
+
 export interface GetSqlWarehouseTags {
     customTags?: outputs.GetSqlWarehouseTagsCustomTag[];
 }
@@ -11030,6 +9979,20 @@ export interface GetSqlWarehouseTags {
 export interface GetSqlWarehouseTagsCustomTag {
     key?: string;
     value?: string;
+}
+
+export interface GetSqlWarehousesProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetStorageCredentialProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
 }
 
 export interface GetStorageCredentialStorageCredentialInfo {
@@ -11145,6 +10108,20 @@ export interface GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAc
     email?: string;
 }
 
+export interface GetStorageCredentialsProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetTableProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
 export interface GetTableTableInfo {
     accessPoint?: string;
     browseOnly?: boolean;
@@ -11194,6 +10171,9 @@ export interface GetTableTableInfo {
     storageCredentialName?: string;
     storageLocation?: string;
     tableConstraints?: outputs.GetTableTableInfoTableConstraint[];
+    /**
+     * The unique identifier of the table.
+     */
     tableId?: string;
     /**
      * Table type, e.g. MANAGED, EXTERNAL, VIEW
@@ -11350,11 +10330,22 @@ export interface GetTableTableInfoViewDependenciesDependencyTable {
     tableFullName: string;
 }
 
+export interface GetTablesProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
 export interface GetTagPoliciesTagPolicy {
+    /**
+     * (string) - Timestamp when the tag policy was created
+     */
+    createTime: string;
     /**
      * (string)
      */
-    description?: string;
+    description: string;
     /**
      * (string)
      */
@@ -11364,9 +10355,13 @@ export interface GetTagPoliciesTagPolicy {
      */
     tagKey: string;
     /**
+     * (string) - Timestamp when the tag policy was last updated
+     */
+    updateTime: string;
+    /**
      * (list of Value)
      */
-    values?: outputs.GetTagPoliciesTagPolicyValue[];
+    values: outputs.GetTagPoliciesTagPolicyValue[];
 }
 
 export interface GetTagPoliciesTagPolicyValue {
@@ -11381,6 +10376,20 @@ export interface GetTagPolicyValue {
      * (string)
      */
     name: string;
+}
+
+export interface GetViewsProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetVolumeProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
 }
 
 export interface GetVolumeVolumeInfo {
@@ -11463,9 +10472,16 @@ export interface GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetails {
     awsKmsKeyArn?: string;
 }
 
+export interface GetVolumesProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
 export interface GetWorkspaceSettingV2AibiDashboardEmbeddingAccessPolicy {
     /**
-     * (string) - . Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
+     * (string) - Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
      */
     accessPolicyType: string;
 }
@@ -11524,11 +10540,11 @@ export interface GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenance
 
 export interface GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule {
     /**
-     * (string) - . Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
+     * (string) - Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
      */
     dayOfWeek?: string;
     /**
-     * (string) - . Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
+     * (string) - Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
      */
     frequency?: string;
     /**
@@ -11555,16 +10571,9 @@ export interface GetWorkspaceSettingV2BooleanVal {
     value?: boolean;
 }
 
-export interface GetWorkspaceSettingV2DefaultDataSecurityMode {
-    /**
-     * (string) - . Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
-     */
-    status: string;
-}
-
 export interface GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy {
     /**
-     * (string) - . Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
+     * (string) - Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
      */
     accessPolicyType: string;
 }
@@ -11623,11 +10632,11 @@ export interface GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMa
 
 export interface GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule {
     /**
-     * (string) - . Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
+     * (string) - Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
      */
     dayOfWeek?: string;
     /**
-     * (string) - . Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
+     * (string) - Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
      */
     frequency?: string;
     /**
@@ -11654,13 +10663,6 @@ export interface GetWorkspaceSettingV2EffectiveBooleanVal {
     value?: boolean;
 }
 
-export interface GetWorkspaceSettingV2EffectiveDefaultDataSecurityMode {
-    /**
-     * (string) - . Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
-     */
-    status: string;
-}
-
 export interface GetWorkspaceSettingV2EffectiveIntegerVal {
     /**
      * (string) - Represents a generic string value
@@ -11677,7 +10679,7 @@ export interface GetWorkspaceSettingV2EffectivePersonalCompute {
 
 export interface GetWorkspaceSettingV2EffectiveRestrictWorkspaceAdmins {
     /**
-     * (string) - . Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
+     * (string) - Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
      */
     status: string;
 }
@@ -11705,7 +10707,7 @@ export interface GetWorkspaceSettingV2PersonalCompute {
 
 export interface GetWorkspaceSettingV2RestrictWorkspaceAdmins {
     /**
-     * (string) - . Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
+     * (string) - Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
      */
     status: string;
 }
@@ -11715,6 +10717,13 @@ export interface GetWorkspaceSettingV2StringVal {
      * (string) - Represents a generic string value
      */
     value?: string;
+}
+
+export interface GetZonesProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
 }
 
 export interface GrantsGrant {
@@ -11727,6 +10736,10 @@ export interface InstancePoolAwsAttributes {
      * (String) Availability type used for all instances in the pool. Only `ON_DEMAND` and `SPOT` are supported.
      */
     availability?: string;
+    /**
+     * Nodes belonging to the pool will only be placed on AWS instances with this instance profile. Please see databricks.InstanceProfile resource documentation for extended examples on adding a valid instance profile using Pulumi.
+     */
+    instanceProfileArn?: string;
     /**
      * (Integer) The max price for AWS spot instances, as a percentage of the corresponding instance type's on-demand price. For example, if this field is set to 50, and the instance pool needs a new i3.xlarge spot instance, then the max price is half of the price of on-demand i3.xlarge instances. Similarly, if this field is set to 200, the max price is twice the price of on-demand i3.xlarge instances. If not specified, the *default value is 100*. When spot instances are requested for this instance pool, only spot instances whose max price percentage matches this field are considered. *For safety, this field cannot be greater than 10000.*
      */
@@ -11940,7 +10953,7 @@ export interface JobEnvironmentSpec {
      * client version used by the environment. Each version comes with a specific Python version and a set of Python packages.
      */
     environmentVersion?: string;
-    jarDependencies?: string[];
+    javaDependencies?: string[];
 }
 
 export interface JobGitSource {
@@ -12041,6 +11054,10 @@ export interface JobJobClusterNewCluster {
     nodeTypeId: string;
     numWorkers?: number;
     policyId?: string;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: outputs.JobJobClusterNewClusterProviderConfig;
     remoteDiskThroughput?: number;
     runtimeEngine?: string;
     singleUserName?: string;
@@ -12202,6 +11219,10 @@ export interface JobJobClusterNewClusterLibrary {
     egg?: string;
     jar?: string;
     maven?: outputs.JobJobClusterNewClusterLibraryMaven;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: outputs.JobJobClusterNewClusterLibraryProviderConfig;
     pypi?: outputs.JobJobClusterNewClusterLibraryPypi;
     requirements?: string;
     whl?: string;
@@ -12218,9 +11239,23 @@ export interface JobJobClusterNewClusterLibraryMaven {
     repo?: string;
 }
 
+export interface JobJobClusterNewClusterLibraryProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
 export interface JobJobClusterNewClusterLibraryPypi {
     package: string;
     repo?: string;
+}
+
+export interface JobJobClusterNewClusterProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
 }
 
 export interface JobJobClusterNewClusterWorkloadType {
@@ -12240,6 +11275,10 @@ export interface JobLibrary {
     egg?: string;
     jar?: string;
     maven?: outputs.JobLibraryMaven;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: outputs.JobLibraryProviderConfig;
     pypi?: outputs.JobLibraryPypi;
     requirements?: string;
     whl?: string;
@@ -12254,6 +11293,13 @@ export interface JobLibraryMaven {
     coordinates: string;
     exclusions?: string[];
     repo?: string;
+}
+
+export interface JobLibraryProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
 }
 
 export interface JobLibraryPypi {
@@ -12290,6 +11336,10 @@ export interface JobNewCluster {
     nodeTypeId: string;
     numWorkers?: number;
     policyId?: string;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: outputs.JobNewClusterProviderConfig;
     remoteDiskThroughput?: number;
     runtimeEngine?: string;
     singleUserName?: string;
@@ -12451,6 +11501,10 @@ export interface JobNewClusterLibrary {
     egg?: string;
     jar?: string;
     maven?: outputs.JobNewClusterLibraryMaven;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: outputs.JobNewClusterLibraryProviderConfig;
     pypi?: outputs.JobNewClusterLibraryPypi;
     requirements?: string;
     whl?: string;
@@ -12467,9 +11521,23 @@ export interface JobNewClusterLibraryMaven {
     repo?: string;
 }
 
+export interface JobNewClusterLibraryProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
 export interface JobNewClusterLibraryPypi {
     package: string;
     repo?: string;
+}
+
+export interface JobNewClusterProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
 }
 
 export interface JobNewClusterWorkloadType {
@@ -12537,6 +11605,13 @@ export interface JobPipelineTask {
      * The pipeline's unique ID.
      */
     pipelineId: string;
+}
+
+export interface JobProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
 }
 
 export interface JobPythonWheelTask {
@@ -12668,6 +11743,7 @@ export interface JobTask {
      * A flag to disable auto optimization in serverless tasks.
      */
     disableAutoOptimization?: boolean;
+    disabled?: boolean;
     /**
      * An optional block to specify a set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This block is documented below.
      */
@@ -12948,6 +12024,7 @@ export interface JobTaskForEachTaskTask {
      * A flag to disable auto optimization in serverless tasks.
      */
     disableAutoOptimization?: boolean;
+    disabled?: boolean;
     /**
      * An optional block to specify a set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This block is documented below.
      */
@@ -13240,6 +12317,10 @@ export interface JobTaskForEachTaskTaskLibrary {
     egg?: string;
     jar?: string;
     maven?: outputs.JobTaskForEachTaskTaskLibraryMaven;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: outputs.JobTaskForEachTaskTaskLibraryProviderConfig;
     pypi?: outputs.JobTaskForEachTaskTaskLibraryPypi;
     requirements?: string;
     whl?: string;
@@ -13254,6 +12335,13 @@ export interface JobTaskForEachTaskTaskLibraryMaven {
     coordinates: string;
     exclusions?: string[];
     repo?: string;
+}
+
+export interface JobTaskForEachTaskTaskLibraryProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
 }
 
 export interface JobTaskForEachTaskTaskLibraryPypi {
@@ -13290,6 +12378,10 @@ export interface JobTaskForEachTaskTaskNewCluster {
     nodeTypeId: string;
     numWorkers?: number;
     policyId?: string;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: outputs.JobTaskForEachTaskTaskNewClusterProviderConfig;
     remoteDiskThroughput?: number;
     runtimeEngine?: string;
     singleUserName?: string;
@@ -13451,6 +12543,10 @@ export interface JobTaskForEachTaskTaskNewClusterLibrary {
     egg?: string;
     jar?: string;
     maven?: outputs.JobTaskForEachTaskTaskNewClusterLibraryMaven;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: outputs.JobTaskForEachTaskTaskNewClusterLibraryProviderConfig;
     pypi?: outputs.JobTaskForEachTaskTaskNewClusterLibraryPypi;
     requirements?: string;
     whl?: string;
@@ -13467,9 +12563,23 @@ export interface JobTaskForEachTaskTaskNewClusterLibraryMaven {
     repo?: string;
 }
 
+export interface JobTaskForEachTaskTaskNewClusterLibraryProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
 export interface JobTaskForEachTaskTaskNewClusterLibraryPypi {
     package: string;
     repo?: string;
+}
+
+export interface JobTaskForEachTaskTaskNewClusterProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
 }
 
 export interface JobTaskForEachTaskTaskNewClusterWorkloadType {
@@ -13926,6 +13036,10 @@ export interface JobTaskLibrary {
     egg?: string;
     jar?: string;
     maven?: outputs.JobTaskLibraryMaven;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: outputs.JobTaskLibraryProviderConfig;
     pypi?: outputs.JobTaskLibraryPypi;
     requirements?: string;
     whl?: string;
@@ -13940,6 +13054,13 @@ export interface JobTaskLibraryMaven {
     coordinates: string;
     exclusions?: string[];
     repo?: string;
+}
+
+export interface JobTaskLibraryProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
 }
 
 export interface JobTaskLibraryPypi {
@@ -13977,6 +13098,10 @@ export interface JobTaskNewCluster {
     nodeTypeId: string;
     numWorkers?: number;
     policyId?: string;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: outputs.JobTaskNewClusterProviderConfig;
     remoteDiskThroughput?: number;
     runtimeEngine?: string;
     singleUserName?: string;
@@ -14138,6 +13263,10 @@ export interface JobTaskNewClusterLibrary {
     egg?: string;
     jar?: string;
     maven?: outputs.JobTaskNewClusterLibraryMaven;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: outputs.JobTaskNewClusterLibraryProviderConfig;
     pypi?: outputs.JobTaskNewClusterLibraryPypi;
     requirements?: string;
     whl?: string;
@@ -14154,9 +13283,23 @@ export interface JobTaskNewClusterLibraryMaven {
     repo?: string;
 }
 
+export interface JobTaskNewClusterLibraryProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
 export interface JobTaskNewClusterLibraryPypi {
     package: string;
     repo?: string;
+}
+
+export interface JobTaskNewClusterProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
 }
 
 export interface JobTaskNewClusterWorkloadType {
@@ -14579,7 +13722,9 @@ export interface JobTrigger {
      * configuration block to define a trigger for Periodic Triggers consisting of the following attributes:
      */
     periodic?: outputs.JobTriggerPeriodic;
-    table?: outputs.JobTriggerTable;
+    /**
+     * configuration block to define a trigger for [Table Updates](https://docs.databricks.com/aws/en/jobs/trigger-table-update) consisting of following attributes:
+     */
     tableUpdate?: outputs.JobTriggerTableUpdate;
 }
 
@@ -14600,34 +13745,27 @@ export interface JobTriggerFileArrival {
 
 export interface JobTriggerPeriodic {
     /**
-     * Specifies the interval at which the job should run. This value is required.
+     * Specifies the interval at which the job should run.
      */
     interval: number;
     /**
-     * Options are {"DAYS", "HOURS", "WEEKS"}.
+     * The unit of time for the interval.  Possible values are: `DAYS`, `HOURS`, `WEEKS`.
      */
     unit: string;
 }
 
-export interface JobTriggerTable {
-    condition?: string;
-    /**
-     * If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
-     */
-    minTimeBetweenTriggersSeconds?: number;
-    tableNames?: string[];
-    /**
-     * If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
-     */
-    waitAfterLastChangeSeconds?: number;
-}
-
 export interface JobTriggerTableUpdate {
+    /**
+     * The table(s) condition based on which to trigger a job run.  Possible values are `ANY_UPDATED`, `ALL_UPDATED`.
+     */
     condition?: string;
     /**
      * If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
      */
     minTimeBetweenTriggersSeconds?: number;
+    /**
+     * A non-empty list of tables to monitor for changes. The table name must be in the format `catalog_name.schema_name.table_name`.
+     */
     tableNames: string[];
     /**
      * If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
@@ -14804,18 +13942,46 @@ export interface LakehouseMonitorTimeSeries {
 }
 
 export interface LibraryCran {
+    /**
+     * The name of the CRAN package to install.
+     */
     package: string;
+    /**
+     * The repository where the package can be found. If not specified, the default CRAN repo is used.
+     */
     repo?: string;
 }
 
 export interface LibraryMaven {
+    /**
+     * Gradle-style Maven coordinates. For example: `org.jsoup:jsoup:1.7.2`.
+     */
     coordinates: string;
+    /**
+     * List of dependencies to exclude. For example: `["slf4j:slf4j", "*:hadoop-client"]`. See [Maven dependency exclusions](https://maven.apache.org/guides/introduction/introduction-to-optional-and-excludes-dependencies.html) for more information.
+     */
     exclusions?: string[];
+    /**
+     * Maven repository to install the Maven package from. If omitted, both Maven Central Repository and Spark Packages are searched.
+     */
     repo?: string;
 }
 
+export interface LibraryProviderConfig {
+    /**
+     * Workspace ID that the resource belongs to. This workspace must be part of the account that the provider is configured with.
+     */
+    workspaceId: string;
+}
+
 export interface LibraryPypi {
+    /**
+     * The name of the PyPI package to install. An optional exact version specification is also supported. For example: `simplejson` or `simplejson==3.8.0`.
+     */
     package: string;
+    /**
+     * The repository where the package can be found. If not specified, the default pip index is used.
+     */
     repo?: string;
 }
 
@@ -15134,7 +14300,7 @@ export interface ModelServingConfigServedEntity {
     /**
      * The workload size of the served entity. The workload size corresponds to a range of provisioned concurrency that the compute autoscales between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are `Small` (4 - 4 provisioned concurrency), `Medium` (8 - 16 provisioned concurrency), and `Large` (16 - 64 provisioned concurrency). If `scale-to-zero` is enabled, the lower bound of the provisioned concurrency for each workload size is 0. Conflicts with `minProvisionedConcurrency` and `maxProvisionedConcurrency`.
      */
-    workloadSize: string;
+    workloadSize?: string;
     /**
      * The workload type of the served entity. The workload type selects which type of compute to use in the endpoint. The default value for this parameter is `CPU`. For deep learning workloads, GPU acceleration is available by selecting workload types like `GPU_SMALL` and others. See the available [GPU types](https://docs.databricks.com/machine-learning/model-serving/create-manage-serving-endpoints.html#gpu-workload-types).
      */
@@ -15854,11 +15020,11 @@ export interface MwsNetworksGcpNetworkInfo {
      */
     networkProjectId: string;
     /**
-     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.90.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.96.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     podIpRangeName?: string;
     /**
-     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.90.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.96.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     serviceIpRangeName?: string;
     /**
@@ -15925,11 +15091,11 @@ export interface MwsWorkspacesExternalCustomerInfo {
 
 export interface MwsWorkspacesGcpManagedNetworkConfig {
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.90.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.96.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterPodIpRange?: string;
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.90.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.96.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterServiceIpRange?: string;
     subnetCidr: string;
@@ -16398,6 +15564,7 @@ export interface PipelineGatewayDefinition {
 export interface PipelineIngestionDefinition {
     connectionName?: string;
     ingestionGatewayId?: string;
+    netsuiteJarPath?: string;
     objects?: outputs.PipelineIngestionDefinitionObject[];
     sourceConfigurations?: outputs.PipelineIngestionDefinitionSourceConfiguration[];
     sourceType?: string;
@@ -16429,12 +15596,24 @@ export interface PipelineIngestionDefinitionObjectReportTableConfiguration {
     salesforceIncludeFormulaFields?: boolean;
     scdType?: string;
     sequenceBies?: string[];
+    workdayReportParameters?: outputs.PipelineIngestionDefinitionObjectReportTableConfigurationWorkdayReportParameters;
 }
 
 export interface PipelineIngestionDefinitionObjectReportTableConfigurationQueryBasedConnectorConfig {
     cursorColumns?: string[];
     deletionCondition?: string;
     hardDeletionSyncMinIntervalInSeconds?: number;
+}
+
+export interface PipelineIngestionDefinitionObjectReportTableConfigurationWorkdayReportParameters {
+    incremental?: boolean;
+    parameters?: {[key: string]: string};
+    reportParameters?: outputs.PipelineIngestionDefinitionObjectReportTableConfigurationWorkdayReportParametersReportParameter[];
+}
+
+export interface PipelineIngestionDefinitionObjectReportTableConfigurationWorkdayReportParametersReportParameter {
+    key?: string;
+    value?: string;
 }
 
 export interface PipelineIngestionDefinitionObjectSchema {
@@ -16453,12 +15632,24 @@ export interface PipelineIngestionDefinitionObjectSchemaTableConfiguration {
     salesforceIncludeFormulaFields?: boolean;
     scdType?: string;
     sequenceBies?: string[];
+    workdayReportParameters?: outputs.PipelineIngestionDefinitionObjectSchemaTableConfigurationWorkdayReportParameters;
 }
 
 export interface PipelineIngestionDefinitionObjectSchemaTableConfigurationQueryBasedConnectorConfig {
     cursorColumns?: string[];
     deletionCondition?: string;
     hardDeletionSyncMinIntervalInSeconds?: number;
+}
+
+export interface PipelineIngestionDefinitionObjectSchemaTableConfigurationWorkdayReportParameters {
+    incremental?: boolean;
+    parameters?: {[key: string]: string};
+    reportParameters?: outputs.PipelineIngestionDefinitionObjectSchemaTableConfigurationWorkdayReportParametersReportParameter[];
+}
+
+export interface PipelineIngestionDefinitionObjectSchemaTableConfigurationWorkdayReportParametersReportParameter {
+    key?: string;
+    value?: string;
 }
 
 export interface PipelineIngestionDefinitionObjectTable {
@@ -16479,12 +15670,24 @@ export interface PipelineIngestionDefinitionObjectTableTableConfiguration {
     salesforceIncludeFormulaFields?: boolean;
     scdType?: string;
     sequenceBies?: string[];
+    workdayReportParameters?: outputs.PipelineIngestionDefinitionObjectTableTableConfigurationWorkdayReportParameters;
 }
 
 export interface PipelineIngestionDefinitionObjectTableTableConfigurationQueryBasedConnectorConfig {
     cursorColumns?: string[];
     deletionCondition?: string;
     hardDeletionSyncMinIntervalInSeconds?: number;
+}
+
+export interface PipelineIngestionDefinitionObjectTableTableConfigurationWorkdayReportParameters {
+    incremental?: boolean;
+    parameters?: {[key: string]: string};
+    reportParameters?: outputs.PipelineIngestionDefinitionObjectTableTableConfigurationWorkdayReportParametersReportParameter[];
+}
+
+export interface PipelineIngestionDefinitionObjectTableTableConfigurationWorkdayReportParametersReportParameter {
+    key?: string;
+    value?: string;
 }
 
 export interface PipelineIngestionDefinitionSourceConfiguration {
@@ -16516,12 +15719,24 @@ export interface PipelineIngestionDefinitionTableConfiguration {
     salesforceIncludeFormulaFields?: boolean;
     scdType?: string;
     sequenceBies?: string[];
+    workdayReportParameters?: outputs.PipelineIngestionDefinitionTableConfigurationWorkdayReportParameters;
 }
 
 export interface PipelineIngestionDefinitionTableConfigurationQueryBasedConnectorConfig {
     cursorColumns?: string[];
     deletionCondition?: string;
     hardDeletionSyncMinIntervalInSeconds?: number;
+}
+
+export interface PipelineIngestionDefinitionTableConfigurationWorkdayReportParameters {
+    incremental?: boolean;
+    parameters?: {[key: string]: string};
+    reportParameters?: outputs.PipelineIngestionDefinitionTableConfigurationWorkdayReportParametersReportParameter[];
+}
+
+export interface PipelineIngestionDefinitionTableConfigurationWorkdayReportParametersReportParameter {
+    key?: string;
+    value?: string;
 }
 
 export interface PipelineLatestUpdate {
@@ -16675,6 +15890,9 @@ export interface QualityMonitorCustomMetric {
 }
 
 export interface QualityMonitorDataClassificationConfig {
+    /**
+     * Whether to enable data classification
+     */
     enabled?: boolean;
 }
 
@@ -16726,6 +15944,13 @@ export interface QualityMonitorNotificationsOnFailure {
 
 export interface QualityMonitorNotificationsOnNewClassificationTagDetected {
     emailAddresses?: string[];
+}
+
+export interface QualityMonitorProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
 }
 
 export interface QualityMonitorSchedule {
@@ -16919,40 +16144,6 @@ export interface QueryParameterTextValue {
     value: string;
 }
 
-export interface RecipientFederationPolicyOidcPolicy {
-    /**
-     * The allowed token audiences, as specified in the 'aud' claim of federated tokens.
-     * The audience identifier is intended to represent the recipient of the token.
-     * Can be any non-empty string value. As long as the audience in the token matches at least one audience in the policy,
-     */
-    audiences?: string[];
-    /**
-     * The required token issuer, as specified in the 'iss' claim of federated tokens
-     */
-    issuer: string;
-    /**
-     * The required token subject, as specified in the subject claim of federated tokens.
-     * The subject claim identifies the identity of the user or machine accessing the resource.
-     * Examples for Entra ID (AAD):
-     * - U2M flow (group access): If the subject claim is `groups`, this must be the Object ID of the group in Entra ID.
-     * - U2M flow (user access): If the subject claim is `oid`, this must be the Object ID of the user in Entra ID.
-     * - M2M flow (OAuth App access): If the subject claim is `azp`, this must be the client ID of the OAuth app registered in Entra ID
-     */
-    subject: string;
-    /**
-     * The claim that contains the subject of the token.
-     * Depending on the identity provider and the use case (U2M or M2M), this can vary:
-     * - For Entra ID (AAD):
-     * * U2M flow (group access): Use `groups`.
-     * * U2M flow (user access): Use `oid`.
-     * * M2M flow (OAuth App access): Use `azp`.
-     * - For other IdPs, refer to the specific IdP documentation.
-     *
-     * Supported `subjectClaim` values are:
-     */
-    subjectClaim: string;
-}
-
 export interface RecipientIpAccessList {
     /**
      * Allowed IP Addresses in CIDR notation. Limit of 100.
@@ -16998,6 +16189,24 @@ export interface RecipientToken {
     updatedBy: string;
 }
 
+export interface RegisteredModelAlias {
+    aliasName?: string;
+    /**
+     * The name of the catalog where the schema and the registered model reside. *Change of this parameter forces recreation of the resource.*
+     */
+    catalogName?: string;
+    /**
+     * Equal to the full name of the model (`catalog_name.schema_name.name`) and used to identify the model uniquely across the metastore.
+     */
+    id?: string;
+    modelName?: string;
+    /**
+     * The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*
+     */
+    schemaName?: string;
+    versionNum?: number;
+}
+
 export interface RepoSparseCheckout {
     /**
      * array of paths (directories) that will be used for sparse checkout.  List of patterns could be updated in-place.
@@ -17012,6 +16221,43 @@ export interface RestrictWorkspaceAdminsSettingRestrictWorkspaceAdmins {
      * The restrict workspace admins status for the workspace.
      */
     status: string;
+}
+
+export interface RfaAccessRequestDestinationsDestination {
+    /**
+     * The identifier for the destination. This is the email address for EMAIL destinations, the URL for URL destinations,
+     * or the unique Databricks notification destination ID for all other external destinations
+     */
+    destinationId?: string;
+    /**
+     * The type of the destination. Possible values are: `EMAIL`, `GENERIC_WEBHOOK`, `MICROSOFT_TEAMS`, `SLACK`, `URL`
+     */
+    destinationType?: string;
+    /**
+     * This field is used to denote whether the destination is the email of the owner of the securable object.
+     * The special destination cannot be assigned to a securable and only represents the default destination of the securable.
+     * The securable types that support default special destinations are: "catalog", "externalLocation", "connection", "credential", and "metastore".
+     * The **destination_type** of a **special_destination** is always EMAIL. Possible values are: `SPECIAL_DESTINATION_CATALOG_OWNER`, `SPECIAL_DESTINATION_CONNECTION_OWNER`, `SPECIAL_DESTINATION_CREDENTIAL_OWNER`, `SPECIAL_DESTINATION_EXTERNAL_LOCATION_OWNER`, `SPECIAL_DESTINATION_METASTORE_OWNER`
+     */
+    specialDestination?: string;
+}
+
+export interface RfaAccessRequestDestinationsSecurable {
+    /**
+     * Required. The full name of the catalog/schema/table.
+     * Optional if resourceName is present
+     */
+    fullName?: string;
+    /**
+     * Optional. The name of the Share object that contains the securable when the securable is
+     * getting shared in D2D Delta Sharing
+     */
+    providerShare?: string;
+    /**
+     * Required. The type of securable (catalog/schema/table).
+     * Optional if resourceName is present. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+     */
+    type?: string;
 }
 
 export interface SecretScopeKeyvaultMetadata {
@@ -17078,6 +16324,11 @@ export interface ShareObject {
      * Type of the data object, currently `TABLE`, `VIEW`, `SCHEMA`, `VOLUME`, and `MODEL` are supported.
      */
     dataObjectType: string;
+    effectiveCdfEnabled: boolean;
+    effectiveHistoryDataSharingStatus: string;
+    effectiveSharedAs: string;
+    effectiveStartVersion: number;
+    effectiveStringSharedAs: string;
     /**
      * Whether to enable history sharing, one of: `ENABLED`, `DISABLED`. When a table has history sharing enabled, recipients can query table data by version, starting from the current table version. If not specified, clients can only query starting from the version of the object at the time it was added to the share. *NOTE*: The startVersion should be less than or equal the current version of the object. When this field is set, field `cdfEnabled` can not be set.
      *
@@ -17128,6 +16379,13 @@ export interface ShareObjectPartitionValue {
      * The value of the partition column. When this value is not set, it means null value. When this field is set, field `recipientPropertyKey` can not be set.
      */
     value?: string;
+}
+
+export interface ShareProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
 }
 
 export interface SqlAlertOptions {
@@ -17433,13 +16691,19 @@ export interface SqlWidgetPosition {
 }
 
 export interface StorageCredentialAwsIamRole {
+    /**
+     * The external ID used in role assumption to prevent the confused deputy problem.
+     */
     externalId: string;
     /**
-     * The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
+     * The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`.
      *
      * `azureManagedIdentity` optional configuration block for using managed identity as credential details for Azure (recommended over service principal):
      */
     roleArn: string;
+    /**
+     * The Amazon Resource Name (ARN) of the AWS IAM user managed by Databricks. This is the identity that is going to assume the AWS IAM role.
+     */
     unityCatalogIamArn: string;
 }
 
@@ -17656,7 +16920,7 @@ export interface VectorSearchIndexStatus {
 
 export interface WorkspaceSettingV2AibiDashboardEmbeddingAccessPolicy {
     /**
-     * . Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
+     * Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
      */
     accessPolicyType: string;
 }
@@ -17694,11 +16958,11 @@ export interface WorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWin
 
 export interface WorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule {
     /**
-     * . Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
+     * Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
      */
     dayOfWeek?: string;
     /**
-     * . Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
+     * Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
      */
     frequency?: string;
     windowStartTime?: outputs.WorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime;
@@ -17713,13 +16977,9 @@ export interface WorkspaceSettingV2BooleanVal {
     value?: boolean;
 }
 
-export interface WorkspaceSettingV2DefaultDataSecurityMode {
-    status: string;
-}
-
 export interface WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy {
     /**
-     * . Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
+     * Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
      */
     accessPolicyType: string;
 }
@@ -17757,11 +17017,11 @@ export interface WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaint
 
 export interface WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule {
     /**
-     * . Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
+     * Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
      */
     dayOfWeek?: string;
     /**
-     * . Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
+     * Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
      */
     frequency?: string;
     windowStartTime?: outputs.WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime;
@@ -17776,10 +17036,6 @@ export interface WorkspaceSettingV2EffectiveBooleanVal {
     value?: boolean;
 }
 
-export interface WorkspaceSettingV2EffectiveDefaultDataSecurityMode {
-    status: string;
-}
-
 export interface WorkspaceSettingV2EffectiveIntegerVal {
     value?: number;
 }
@@ -17789,6 +17045,9 @@ export interface WorkspaceSettingV2EffectivePersonalCompute {
 }
 
 export interface WorkspaceSettingV2EffectiveRestrictWorkspaceAdmins {
+    /**
+     * Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
+     */
     status: string;
 }
 
@@ -17805,6 +17064,9 @@ export interface WorkspaceSettingV2PersonalCompute {
 }
 
 export interface WorkspaceSettingV2RestrictWorkspaceAdmins {
+    /**
+     * Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
+     */
     status: string;
 }
 

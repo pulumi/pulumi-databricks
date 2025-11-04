@@ -179,6 +179,10 @@ export class QualityMonitor extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly profileMetricsTableName: pulumi.Output<string>;
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    declare public readonly providerConfig: pulumi.Output<outputs.QualityMonitorProviderConfig | undefined>;
+    /**
      * The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:
      */
     declare public readonly schedule: pulumi.Output<outputs.QualityMonitorSchedule | undefined>;
@@ -237,6 +241,7 @@ export class QualityMonitor extends pulumi.CustomResource {
             resourceInputs["notifications"] = state?.notifications;
             resourceInputs["outputSchemaName"] = state?.outputSchemaName;
             resourceInputs["profileMetricsTableName"] = state?.profileMetricsTableName;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["schedule"] = state?.schedule;
             resourceInputs["skipBuiltinDashboard"] = state?.skipBuiltinDashboard;
             resourceInputs["slicingExprs"] = state?.slicingExprs;
@@ -265,6 +270,7 @@ export class QualityMonitor extends pulumi.CustomResource {
             resourceInputs["monitorId"] = args?.monitorId;
             resourceInputs["notifications"] = args?.notifications;
             resourceInputs["outputSchemaName"] = args?.outputSchemaName;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["schedule"] = args?.schedule;
             resourceInputs["skipBuiltinDashboard"] = args?.skipBuiltinDashboard;
             resourceInputs["slicingExprs"] = args?.slicingExprs;
@@ -338,6 +344,10 @@ export interface QualityMonitorState {
      */
     profileMetricsTableName?: pulumi.Input<string>;
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.QualityMonitorProviderConfig>;
+    /**
      * The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:
      */
     schedule?: pulumi.Input<inputs.QualityMonitorSchedule>;
@@ -409,6 +419,10 @@ export interface QualityMonitorArgs {
      * Schema where output metric tables are created
      */
     outputSchemaName: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.QualityMonitorProviderConfig>;
     /**
      * The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:
      */

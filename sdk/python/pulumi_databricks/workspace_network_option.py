@@ -118,6 +118,8 @@ class WorkspaceNetworkOption(pulumi.CustomResource):
                  workspace_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
         Workspace network options allow configuration of network settings for Databricks workspaces by selecting which network policy to associate with the workspace.
 
         Each workspace is always associated with exactly one network policy that controls which network destinations can be accessed from the Databricks environment. By default, workspaces are associated with the `default-policy` network policy.
@@ -158,7 +160,7 @@ class WorkspaceNetworkOption(pulumi.CustomResource):
         If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
 
         ```sh
-        $ pulumi import databricks:index/workspaceNetworkOption:WorkspaceNetworkOption databricks_workspace_network_option "workspace_id"
+        $ pulumi import databricks:index/workspaceNetworkOption:WorkspaceNetworkOption this "workspace_id"
         ```
 
         :param str resource_name: The name of the resource.
@@ -176,6 +178,8 @@ class WorkspaceNetworkOption(pulumi.CustomResource):
                  args: Optional[WorkspaceNetworkOptionArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
         Workspace network options allow configuration of network settings for Databricks workspaces by selecting which network policy to associate with the workspace.
 
         Each workspace is always associated with exactly one network policy that controls which network destinations can be accessed from the Databricks environment. By default, workspaces are associated with the `default-policy` network policy.
@@ -216,7 +220,7 @@ class WorkspaceNetworkOption(pulumi.CustomResource):
         If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
 
         ```sh
-        $ pulumi import databricks:index/workspaceNetworkOption:WorkspaceNetworkOption databricks_workspace_network_option "workspace_id"
+        $ pulumi import databricks:index/workspaceNetworkOption:WorkspaceNetworkOption this "workspace_id"
         ```
 
         :param str resource_name: The name of the resource.

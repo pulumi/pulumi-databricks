@@ -167,7 +167,7 @@ type Entitlements struct {
 	AllowClusterCreate pulumi.BoolPtrOutput `pulumi:"allowClusterCreate"`
 	// Allow the principal to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and instancePoolId argument.
 	AllowInstancePoolCreate pulumi.BoolPtrOutput `pulumi:"allowInstancePoolCreate"`
-	// This is a field to allow the principal to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
+	// This is a field to allow the principal to have access to [Databricks SQL](https://databricks.com/product/databricks-sql)  UI, [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one) and through databricks_sql_endpoint.
 	DatabricksSqlAccess pulumi.BoolPtrOutput `pulumi:"databricksSqlAccess"`
 	// Canonical unique identifier for the group.
 	GroupId pulumi.StringPtrOutput `pulumi:"groupId"`
@@ -177,9 +177,9 @@ type Entitlements struct {
 	ServicePrincipalId pulumi.StringPtrOutput `pulumi:"servicePrincipalId"`
 	// Canonical unique identifier for the user.
 	UserId pulumi.StringPtrOutput `pulumi:"userId"`
-	// This is a field to allow the principal to have access to a Databricks Workspace.
+	// This is a field to allow the principal to have access to a Databricks Workspace UI and [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).
 	WorkspaceAccess pulumi.BoolPtrOutput `pulumi:"workspaceAccess"`
-	// This is a field to allow the principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspaceAccess` or `databricksSqlAccess`.
+	// This is a field to allow the principal to have access only to [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).  Couldn't be used with `workspaceAccess` or `databricksSqlAccess`.
 	WorkspaceConsume pulumi.BoolPtrOutput `pulumi:"workspaceConsume"`
 }
 
@@ -217,7 +217,7 @@ type entitlementsState struct {
 	AllowClusterCreate *bool `pulumi:"allowClusterCreate"`
 	// Allow the principal to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and instancePoolId argument.
 	AllowInstancePoolCreate *bool `pulumi:"allowInstancePoolCreate"`
-	// This is a field to allow the principal to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
+	// This is a field to allow the principal to have access to [Databricks SQL](https://databricks.com/product/databricks-sql)  UI, [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one) and through databricks_sql_endpoint.
 	DatabricksSqlAccess *bool `pulumi:"databricksSqlAccess"`
 	// Canonical unique identifier for the group.
 	GroupId *string `pulumi:"groupId"`
@@ -227,9 +227,9 @@ type entitlementsState struct {
 	ServicePrincipalId *string `pulumi:"servicePrincipalId"`
 	// Canonical unique identifier for the user.
 	UserId *string `pulumi:"userId"`
-	// This is a field to allow the principal to have access to a Databricks Workspace.
+	// This is a field to allow the principal to have access to a Databricks Workspace UI and [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).
 	WorkspaceAccess *bool `pulumi:"workspaceAccess"`
-	// This is a field to allow the principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspaceAccess` or `databricksSqlAccess`.
+	// This is a field to allow the principal to have access only to [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).  Couldn't be used with `workspaceAccess` or `databricksSqlAccess`.
 	WorkspaceConsume *bool `pulumi:"workspaceConsume"`
 }
 
@@ -238,7 +238,7 @@ type EntitlementsState struct {
 	AllowClusterCreate pulumi.BoolPtrInput
 	// Allow the principal to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and instancePoolId argument.
 	AllowInstancePoolCreate pulumi.BoolPtrInput
-	// This is a field to allow the principal to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
+	// This is a field to allow the principal to have access to [Databricks SQL](https://databricks.com/product/databricks-sql)  UI, [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one) and through databricks_sql_endpoint.
 	DatabricksSqlAccess pulumi.BoolPtrInput
 	// Canonical unique identifier for the group.
 	GroupId pulumi.StringPtrInput
@@ -248,9 +248,9 @@ type EntitlementsState struct {
 	ServicePrincipalId pulumi.StringPtrInput
 	// Canonical unique identifier for the user.
 	UserId pulumi.StringPtrInput
-	// This is a field to allow the principal to have access to a Databricks Workspace.
+	// This is a field to allow the principal to have access to a Databricks Workspace UI and [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).
 	WorkspaceAccess pulumi.BoolPtrInput
-	// This is a field to allow the principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspaceAccess` or `databricksSqlAccess`.
+	// This is a field to allow the principal to have access only to [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).  Couldn't be used with `workspaceAccess` or `databricksSqlAccess`.
 	WorkspaceConsume pulumi.BoolPtrInput
 }
 
@@ -263,7 +263,7 @@ type entitlementsArgs struct {
 	AllowClusterCreate *bool `pulumi:"allowClusterCreate"`
 	// Allow the principal to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and instancePoolId argument.
 	AllowInstancePoolCreate *bool `pulumi:"allowInstancePoolCreate"`
-	// This is a field to allow the principal to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
+	// This is a field to allow the principal to have access to [Databricks SQL](https://databricks.com/product/databricks-sql)  UI, [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one) and through databricks_sql_endpoint.
 	DatabricksSqlAccess *bool `pulumi:"databricksSqlAccess"`
 	// Canonical unique identifier for the group.
 	GroupId *string `pulumi:"groupId"`
@@ -273,9 +273,9 @@ type entitlementsArgs struct {
 	ServicePrincipalId *string `pulumi:"servicePrincipalId"`
 	// Canonical unique identifier for the user.
 	UserId *string `pulumi:"userId"`
-	// This is a field to allow the principal to have access to a Databricks Workspace.
+	// This is a field to allow the principal to have access to a Databricks Workspace UI and [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).
 	WorkspaceAccess *bool `pulumi:"workspaceAccess"`
-	// This is a field to allow the principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspaceAccess` or `databricksSqlAccess`.
+	// This is a field to allow the principal to have access only to [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).  Couldn't be used with `workspaceAccess` or `databricksSqlAccess`.
 	WorkspaceConsume *bool `pulumi:"workspaceConsume"`
 }
 
@@ -285,7 +285,7 @@ type EntitlementsArgs struct {
 	AllowClusterCreate pulumi.BoolPtrInput
 	// Allow the principal to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and instancePoolId argument.
 	AllowInstancePoolCreate pulumi.BoolPtrInput
-	// This is a field to allow the principal to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
+	// This is a field to allow the principal to have access to [Databricks SQL](https://databricks.com/product/databricks-sql)  UI, [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one) and through databricks_sql_endpoint.
 	DatabricksSqlAccess pulumi.BoolPtrInput
 	// Canonical unique identifier for the group.
 	GroupId pulumi.StringPtrInput
@@ -295,9 +295,9 @@ type EntitlementsArgs struct {
 	ServicePrincipalId pulumi.StringPtrInput
 	// Canonical unique identifier for the user.
 	UserId pulumi.StringPtrInput
-	// This is a field to allow the principal to have access to a Databricks Workspace.
+	// This is a field to allow the principal to have access to a Databricks Workspace UI and [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).
 	WorkspaceAccess pulumi.BoolPtrInput
-	// This is a field to allow the principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspaceAccess` or `databricksSqlAccess`.
+	// This is a field to allow the principal to have access only to [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).  Couldn't be used with `workspaceAccess` or `databricksSqlAccess`.
 	WorkspaceConsume pulumi.BoolPtrInput
 }
 
@@ -398,7 +398,7 @@ func (o EntitlementsOutput) AllowInstancePoolCreate() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Entitlements) pulumi.BoolPtrOutput { return v.AllowInstancePoolCreate }).(pulumi.BoolPtrOutput)
 }
 
-// This is a field to allow the principal to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
+// This is a field to allow the principal to have access to [Databricks SQL](https://databricks.com/product/databricks-sql)  UI, [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one) and through databricks_sql_endpoint.
 func (o EntitlementsOutput) DatabricksSqlAccess() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Entitlements) pulumi.BoolPtrOutput { return v.DatabricksSqlAccess }).(pulumi.BoolPtrOutput)
 }
@@ -420,12 +420,12 @@ func (o EntitlementsOutput) UserId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Entitlements) pulumi.StringPtrOutput { return v.UserId }).(pulumi.StringPtrOutput)
 }
 
-// This is a field to allow the principal to have access to a Databricks Workspace.
+// This is a field to allow the principal to have access to a Databricks Workspace UI and [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).
 func (o EntitlementsOutput) WorkspaceAccess() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Entitlements) pulumi.BoolPtrOutput { return v.WorkspaceAccess }).(pulumi.BoolPtrOutput)
 }
 
-// This is a field to allow the principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspaceAccess` or `databricksSqlAccess`.
+// This is a field to allow the principal to have access only to [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).  Couldn't be used with `workspaceAccess` or `databricksSqlAccess`.
 func (o EntitlementsOutput) WorkspaceConsume() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Entitlements) pulumi.BoolPtrOutput { return v.WorkspaceConsume }).(pulumi.BoolPtrOutput)
 }

@@ -32,6 +32,21 @@ public final class InstancePoolAwsAttributesArgs extends com.pulumi.resources.Re
     }
 
     /**
+     * Nodes belonging to the pool will only be placed on AWS instances with this instance profile. Please see databricks.InstanceProfile resource documentation for extended examples on adding a valid instance profile using Pulumi.
+     * 
+     */
+    @Import(name="instanceProfileArn")
+    private @Nullable Output<String> instanceProfileArn;
+
+    /**
+     * @return Nodes belonging to the pool will only be placed on AWS instances with this instance profile. Please see databricks.InstanceProfile resource documentation for extended examples on adding a valid instance profile using Pulumi.
+     * 
+     */
+    public Optional<Output<String>> instanceProfileArn() {
+        return Optional.ofNullable(this.instanceProfileArn);
+    }
+
+    /**
      * (Integer) The max price for AWS spot instances, as a percentage of the corresponding instance type&#39;s on-demand price. For example, if this field is set to 50, and the instance pool needs a new i3.xlarge spot instance, then the max price is half of the price of on-demand i3.xlarge instances. Similarly, if this field is set to 200, the max price is twice the price of on-demand i3.xlarge instances. If not specified, the *default value is 100*. When spot instances are requested for this instance pool, only spot instances whose max price percentage matches this field are considered. *For safety, this field cannot be greater than 10000.*
      * 
      */
@@ -65,6 +80,7 @@ public final class InstancePoolAwsAttributesArgs extends com.pulumi.resources.Re
 
     private InstancePoolAwsAttributesArgs(InstancePoolAwsAttributesArgs $) {
         this.availability = $.availability;
+        this.instanceProfileArn = $.instanceProfileArn;
         this.spotBidPricePercent = $.spotBidPricePercent;
         this.zoneId = $.zoneId;
     }
@@ -106,6 +122,27 @@ public final class InstancePoolAwsAttributesArgs extends com.pulumi.resources.Re
          */
         public Builder availability(String availability) {
             return availability(Output.of(availability));
+        }
+
+        /**
+         * @param instanceProfileArn Nodes belonging to the pool will only be placed on AWS instances with this instance profile. Please see databricks.InstanceProfile resource documentation for extended examples on adding a valid instance profile using Pulumi.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceProfileArn(@Nullable Output<String> instanceProfileArn) {
+            $.instanceProfileArn = instanceProfileArn;
+            return this;
+        }
+
+        /**
+         * @param instanceProfileArn Nodes belonging to the pool will only be placed on AWS instances with this instance profile. Please see databricks.InstanceProfile resource documentation for extended examples on adding a valid instance profile using Pulumi.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceProfileArn(String instanceProfileArn) {
+            return instanceProfileArn(Output.of(instanceProfileArn));
         }
 
         /**

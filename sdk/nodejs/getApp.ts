@@ -38,6 +38,7 @@ export function getApp(args: GetAppArgs, opts?: pulumi.InvokeOptions): Promise<G
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getApp:getApp", {
         "name": args.name,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -49,6 +50,7 @@ export interface GetAppArgs {
      * The name of the app.
      */
     name: string;
+    providerConfig?: inputs.GetAppProviderConfig;
 }
 
 /**
@@ -64,9 +66,10 @@ export interface GetAppResult {
      */
     readonly id: string;
     /**
-     * Name of the serving endpoint to grant permission on.
+     * The name of Genie Space.
      */
     readonly name: string;
+    readonly providerConfig?: outputs.GetAppProviderConfig;
 }
 /**
  * > This data source can only be used with a workspace-level provider!
@@ -100,6 +103,7 @@ export function getAppOutput(args: GetAppOutputArgs, opts?: pulumi.InvokeOutputO
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getApp:getApp", {
         "name": args.name,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -111,4 +115,5 @@ export interface GetAppOutputArgs {
      * The name of the app.
      */
     name: pulumi.Input<string>;
+    providerConfig?: pulumi.Input<inputs.GetAppProviderConfigArgs>;
 }

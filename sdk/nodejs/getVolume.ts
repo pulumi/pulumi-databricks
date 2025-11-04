@@ -53,6 +53,7 @@ export function getVolume(args: GetVolumeArgs, opts?: pulumi.InvokeOptions): Pro
     return pulumi.runtime.invoke("databricks:index/getVolume:getVolume", {
         "id": args.id,
         "name": args.name,
+        "providerConfig": args.providerConfig,
         "volumeInfo": args.volumeInfo,
     }, opts);
 }
@@ -69,6 +70,10 @@ export interface GetVolumeArgs {
      * a fully qualified name of databricks_volume: *`catalog`.`schema`.`volume`*
      */
     name: string;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: inputs.GetVolumeProviderConfig;
     /**
      * `VolumeInfo` object for a Unity Catalog volume. This contains the following attributes:
      */
@@ -87,6 +92,7 @@ export interface GetVolumeResult {
      * the name of the volume
      */
     readonly name: string;
+    readonly providerConfig?: outputs.GetVolumeProviderConfig;
     /**
      * `VolumeInfo` object for a Unity Catalog volume. This contains the following attributes:
      */
@@ -139,6 +145,7 @@ export function getVolumeOutput(args: GetVolumeOutputArgs, opts?: pulumi.InvokeO
     return pulumi.runtime.invokeOutput("databricks:index/getVolume:getVolume", {
         "id": args.id,
         "name": args.name,
+        "providerConfig": args.providerConfig,
         "volumeInfo": args.volumeInfo,
     }, opts);
 }
@@ -155,6 +162,10 @@ export interface GetVolumeOutputArgs {
      * a fully qualified name of databricks_volume: *`catalog`.`schema`.`volume`*
      */
     name: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.GetVolumeProviderConfigArgs>;
     /**
      * `VolumeInfo` object for a Unity Catalog volume. This contains the following attributes:
      */

@@ -22,9 +22,6 @@ from .budget import *
 from .budget_policy import *
 from .catalog import *
 from .catalog_workspace_binding import *
-from .clean_room_asset import *
-from .clean_room_auto_approval_rule import *
-from .clean_rooms_clean_room import *
 from .cluster import *
 from .cluster_policy import *
 from .compliance_security_profile_workspace_setting import *
@@ -32,6 +29,8 @@ from .connection import *
 from .credential import *
 from .custom_app_integration import *
 from .dashboard import *
+from .data_quality_monitor import *
+from .data_quality_refresh import *
 from .database_database_catalog import *
 from .database_instance import *
 from .database_synced_database_table import *
@@ -46,6 +45,8 @@ from .entitlements import *
 from .entity_tag_assignment import *
 from .external_location import *
 from .external_metadata import *
+from .feature_engineering_feature import *
+from .feature_engineering_materialized_feature import *
 from .file import *
 from .get_account_federation_policies import *
 from .get_account_federation_policy import *
@@ -67,14 +68,6 @@ from .get_budget_policies import *
 from .get_budget_policy import *
 from .get_catalog import *
 from .get_catalogs import *
-from .get_clean_room_asset import *
-from .get_clean_room_asset_revisions_clean_room_asset import *
-from .get_clean_room_asset_revisions_clean_room_assets import *
-from .get_clean_room_assets import *
-from .get_clean_room_auto_approval_rule import *
-from .get_clean_room_auto_approval_rules import *
-from .get_clean_rooms_clean_room import *
-from .get_clean_rooms_clean_rooms import *
 from .get_cluster import *
 from .get_cluster_policy import *
 from .get_clusters import *
@@ -82,6 +75,10 @@ from .get_current_config import *
 from .get_current_metastore import *
 from .get_current_user import *
 from .get_dashboards import *
+from .get_data_quality_monitor import *
+from .get_data_quality_monitors import *
+from .get_data_quality_refresh import *
+from .get_data_quality_refreshes import *
 from .get_database_database_catalog import *
 from .get_database_database_catalogs import *
 from .get_database_instance import *
@@ -97,6 +94,10 @@ from .get_external_location import *
 from .get_external_locations import *
 from .get_external_metadata import *
 from .get_external_metadatas import *
+from .get_feature_engineering_feature import *
+from .get_feature_engineering_features import *
+from .get_feature_engineering_materialized_feature import *
+from .get_feature_engineering_materialized_features import *
 from .get_functions import *
 from .get_group import *
 from .get_instance_pool import *
@@ -125,10 +126,9 @@ from .get_policy_info import *
 from .get_policy_infos import *
 from .get_quality_monitor_v2 import *
 from .get_quality_monitors_v2 import *
-from .get_recipient_federation_policies import *
-from .get_recipient_federation_policy import *
 from .get_registered_model import *
 from .get_registered_model_versions import *
+from .get_rfa_access_request_destinations import *
 from .get_schema import *
 from .get_schemas import *
 from .get_service_principal import *
@@ -205,10 +205,10 @@ from .quality_monitor import *
 from .quality_monitor_v2 import *
 from .query import *
 from .recipient import *
-from .recipient_federation_policy import *
 from .registered_model import *
 from .repo import *
 from .restrict_workspace_admins_setting import *
+from .rfa_access_request_destinations import *
 from .schema import *
 from .secret import *
 from .secret_acl import *
@@ -386,30 +386,6 @@ _utilities.register(
  },
  {
   "pkg": "databricks",
-  "mod": "index/cleanRoomAsset",
-  "fqn": "pulumi_databricks",
-  "classes": {
-   "databricks:index/cleanRoomAsset:CleanRoomAsset": "CleanRoomAsset"
-  }
- },
- {
-  "pkg": "databricks",
-  "mod": "index/cleanRoomAutoApprovalRule",
-  "fqn": "pulumi_databricks",
-  "classes": {
-   "databricks:index/cleanRoomAutoApprovalRule:CleanRoomAutoApprovalRule": "CleanRoomAutoApprovalRule"
-  }
- },
- {
-  "pkg": "databricks",
-  "mod": "index/cleanRoomsCleanRoom",
-  "fqn": "pulumi_databricks",
-  "classes": {
-   "databricks:index/cleanRoomsCleanRoom:CleanRoomsCleanRoom": "CleanRoomsCleanRoom"
-  }
- },
- {
-  "pkg": "databricks",
   "mod": "index/cluster",
   "fqn": "pulumi_databricks",
   "classes": {
@@ -462,6 +438,22 @@ _utilities.register(
   "fqn": "pulumi_databricks",
   "classes": {
    "databricks:index/dashboard:Dashboard": "Dashboard"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/dataQualityMonitor",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/dataQualityMonitor:DataQualityMonitor": "DataQualityMonitor"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/dataQualityRefresh",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/dataQualityRefresh:DataQualityRefresh": "DataQualityRefresh"
   }
  },
  {
@@ -574,6 +566,22 @@ _utilities.register(
   "fqn": "pulumi_databricks",
   "classes": {
    "databricks:index/externalMetadata:ExternalMetadata": "ExternalMetadata"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/featureEngineeringFeature",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/featureEngineeringFeature:FeatureEngineeringFeature": "FeatureEngineeringFeature"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/featureEngineeringMaterializedFeature",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/featureEngineeringMaterializedFeature:FeatureEngineeringMaterializedFeature": "FeatureEngineeringMaterializedFeature"
   }
  },
  {
@@ -986,14 +994,6 @@ _utilities.register(
  },
  {
   "pkg": "databricks",
-  "mod": "index/recipientFederationPolicy",
-  "fqn": "pulumi_databricks",
-  "classes": {
-   "databricks:index/recipientFederationPolicy:RecipientFederationPolicy": "RecipientFederationPolicy"
-  }
- },
- {
-  "pkg": "databricks",
   "mod": "index/registeredModel",
   "fqn": "pulumi_databricks",
   "classes": {
@@ -1014,6 +1014,14 @@ _utilities.register(
   "fqn": "pulumi_databricks",
   "classes": {
    "databricks:index/restrictWorkspaceAdminsSetting:RestrictWorkspaceAdminsSetting": "RestrictWorkspaceAdminsSetting"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/rfaAccessRequestDestinations",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/rfaAccessRequestDestinations:RfaAccessRequestDestinations": "RfaAccessRequestDestinations"
   }
  },
  {

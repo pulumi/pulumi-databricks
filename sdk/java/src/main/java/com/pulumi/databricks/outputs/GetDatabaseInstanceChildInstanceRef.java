@@ -24,10 +24,7 @@ public final class GetDatabaseInstanceChildInstanceRef {
      */
     private @Nullable String branchTime;
     /**
-     * @return (string) - xref AIP-129. `lsn` is owned by the client, while `effectiveLsn` is owned by the server.
-     * `lsn` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-     * `effectiveLsn` on the other hand will always bet set in all response messages (Create/Update/Get/List).
-     * For a parent ref instance, this is the LSN on the parent instance from which the
+     * @return (string) - For a parent ref instance, this is the LSN on the parent instance from which the
      * instance was created.
      * For a child ref instance, this is the LSN on the instance from which the child instance
      * was created
@@ -38,7 +35,7 @@ public final class GetDatabaseInstanceChildInstanceRef {
      * @return (string) - User-specified WAL LSN of the ref database instance.
      * 
      */
-    private @Nullable String lsn;
+    private String lsn;
     /**
      * @return The name of the instance. This is the unique identifier for the instance
      * 
@@ -65,10 +62,7 @@ public final class GetDatabaseInstanceChildInstanceRef {
         return Optional.ofNullable(this.branchTime);
     }
     /**
-     * @return (string) - xref AIP-129. `lsn` is owned by the client, while `effectiveLsn` is owned by the server.
-     * `lsn` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-     * `effectiveLsn` on the other hand will always bet set in all response messages (Create/Update/Get/List).
-     * For a parent ref instance, this is the LSN on the parent instance from which the
+     * @return (string) - For a parent ref instance, this is the LSN on the parent instance from which the
      * instance was created.
      * For a child ref instance, this is the LSN on the instance from which the child instance
      * was created
@@ -81,8 +75,8 @@ public final class GetDatabaseInstanceChildInstanceRef {
      * @return (string) - User-specified WAL LSN of the ref database instance.
      * 
      */
-    public Optional<String> lsn() {
-        return Optional.ofNullable(this.lsn);
+    public String lsn() {
+        return this.lsn;
     }
     /**
      * @return The name of the instance. This is the unique identifier for the instance
@@ -110,7 +104,7 @@ public final class GetDatabaseInstanceChildInstanceRef {
     public static final class Builder {
         private @Nullable String branchTime;
         private String effectiveLsn;
-        private @Nullable String lsn;
+        private String lsn;
         private @Nullable String name;
         private String uid;
         public Builder() {}
@@ -138,8 +132,10 @@ public final class GetDatabaseInstanceChildInstanceRef {
             return this;
         }
         @CustomType.Setter
-        public Builder lsn(@Nullable String lsn) {
-
+        public Builder lsn(String lsn) {
+            if (lsn == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceChildInstanceRef", "lsn");
+            }
             this.lsn = lsn;
             return this;
         }

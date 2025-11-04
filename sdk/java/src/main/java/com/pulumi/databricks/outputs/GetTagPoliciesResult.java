@@ -6,6 +6,7 @@ package com.pulumi.databricks.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetTagPoliciesTagPolicy;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -19,8 +20,8 @@ public final class GetTagPoliciesResult {
      * 
      */
     private String id;
+    private @Nullable Integer pageSize;
     private List<GetTagPoliciesTagPolicy> tagPolicies;
-    private @Nullable String workspaceId;
 
     private GetTagPoliciesResult() {}
     /**
@@ -30,11 +31,11 @@ public final class GetTagPoliciesResult {
     public String id() {
         return this.id;
     }
+    public Optional<Integer> pageSize() {
+        return Optional.ofNullable(this.pageSize);
+    }
     public List<GetTagPoliciesTagPolicy> tagPolicies() {
         return this.tagPolicies;
-    }
-    public Optional<String> workspaceId() {
-        return Optional.ofNullable(this.workspaceId);
     }
 
     public static Builder builder() {
@@ -47,14 +48,14 @@ public final class GetTagPoliciesResult {
     @CustomType.Builder
     public static final class Builder {
         private String id;
+        private @Nullable Integer pageSize;
         private List<GetTagPoliciesTagPolicy> tagPolicies;
-        private @Nullable String workspaceId;
         public Builder() {}
         public Builder(GetTagPoliciesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
+    	      this.pageSize = defaults.pageSize;
     	      this.tagPolicies = defaults.tagPolicies;
-    	      this.workspaceId = defaults.workspaceId;
         }
 
         @CustomType.Setter
@@ -63,6 +64,12 @@ public final class GetTagPoliciesResult {
               throw new MissingRequiredPropertyException("GetTagPoliciesResult", "id");
             }
             this.id = id;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder pageSize(@Nullable Integer pageSize) {
+
+            this.pageSize = pageSize;
             return this;
         }
         @CustomType.Setter
@@ -76,17 +83,11 @@ public final class GetTagPoliciesResult {
         public Builder tagPolicies(GetTagPoliciesTagPolicy... tagPolicies) {
             return tagPolicies(List.of(tagPolicies));
         }
-        @CustomType.Setter
-        public Builder workspaceId(@Nullable String workspaceId) {
-
-            this.workspaceId = workspaceId;
-            return this;
-        }
         public GetTagPoliciesResult build() {
             final var _resultValue = new GetTagPoliciesResult();
             _resultValue.id = id;
+            _resultValue.pageSize = pageSize;
             _resultValue.tagPolicies = tagPolicies;
-            _resultValue.workspaceId = workspaceId;
             return _resultValue;
         }
     }

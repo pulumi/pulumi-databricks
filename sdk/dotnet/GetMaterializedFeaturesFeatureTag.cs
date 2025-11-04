@@ -11,12 +11,21 @@ namespace Pulumi.Databricks
 {
     public static class GetMaterializedFeaturesFeatureTag
     {
+        /// <summary>
+        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// </summary>
         public static Task<GetMaterializedFeaturesFeatureTagResult> InvokeAsync(GetMaterializedFeaturesFeatureTagArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetMaterializedFeaturesFeatureTagResult>("databricks:index/getMaterializedFeaturesFeatureTag:getMaterializedFeaturesFeatureTag", args ?? new GetMaterializedFeaturesFeatureTagArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// </summary>
         public static Output<GetMaterializedFeaturesFeatureTagResult> Invoke(GetMaterializedFeaturesFeatureTagInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetMaterializedFeaturesFeatureTagResult>("databricks:index/getMaterializedFeaturesFeatureTag:getMaterializedFeaturesFeatureTag", args ?? new GetMaterializedFeaturesFeatureTagInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// </summary>
         public static Output<GetMaterializedFeaturesFeatureTagResult> Invoke(GetMaterializedFeaturesFeatureTagInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetMaterializedFeaturesFeatureTagResult>("databricks:index/getMaterializedFeaturesFeatureTag:getMaterializedFeaturesFeatureTag", args ?? new GetMaterializedFeaturesFeatureTagInvokeArgs(), options.WithDefaults());
     }
@@ -26,18 +35,6 @@ namespace Pulumi.Databricks
     {
         [Input("key", required: true)]
         public string Key { get; set; } = null!;
-
-        /// <summary>
-        /// (string)
-        /// </summary>
-        [Input("value")]
-        public string? Value { get; set; }
-
-        /// <summary>
-        /// Workspace ID of the resource
-        /// </summary>
-        [Input("workspaceId")]
-        public string? WorkspaceId { get; set; }
 
         public GetMaterializedFeaturesFeatureTagArgs()
         {
@@ -49,18 +46,6 @@ namespace Pulumi.Databricks
     {
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
-
-        /// <summary>
-        /// (string)
-        /// </summary>
-        [Input("value")]
-        public Input<string>? Value { get; set; }
-
-        /// <summary>
-        /// Workspace ID of the resource
-        /// </summary>
-        [Input("workspaceId")]
-        public Input<string>? WorkspaceId { get; set; }
 
         public GetMaterializedFeaturesFeatureTagInvokeArgs()
         {
@@ -83,8 +68,7 @@ namespace Pulumi.Databricks
         /// <summary>
         /// (string)
         /// </summary>
-        public readonly string? Value;
-        public readonly string? WorkspaceId;
+        public readonly string Value;
 
         [OutputConstructor]
         private GetMaterializedFeaturesFeatureTagResult(
@@ -92,14 +76,11 @@ namespace Pulumi.Databricks
 
             string key,
 
-            string? value,
-
-            string? workspaceId)
+            string value)
         {
             Id = id;
             Key = key;
             Value = value;
-            WorkspaceId = workspaceId;
         }
     }
 }

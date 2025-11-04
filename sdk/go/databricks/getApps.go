@@ -31,7 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := databricks.GetApps(ctx, map[string]interface{}{}, nil)
+//			_, err := databricks.GetApps(ctx, &databricks.GetAppsArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}
@@ -50,28 +50,45 @@ import (
 // * ModelServing to serve this model on a Databricks serving endpoint.
 // * Secret to manage [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
 // * Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code.
-func GetApps(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetAppsResult, error) {
+func GetApps(ctx *pulumi.Context, args *GetAppsArgs, opts ...pulumi.InvokeOption) (*GetAppsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAppsResult
-	err := ctx.Invoke("databricks:index/getApps:getApps", nil, &rv, opts...)
+	err := ctx.Invoke("databricks:index/getApps:getApps", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &rv, nil
 }
 
+// A collection of arguments for invoking getApps.
+type GetAppsArgs struct {
+	ProviderConfig *GetAppsProviderConfig `pulumi:"providerConfig"`
+}
+
 // A collection of values returned by getApps.
 type GetAppsResult struct {
 	Apps []GetAppsApp `pulumi:"apps"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	Id             string                 `pulumi:"id"`
+	ProviderConfig *GetAppsProviderConfig `pulumi:"providerConfig"`
 }
 
-func GetAppsOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetAppsResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetAppsResultOutput, error) {
-		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-		return ctx.InvokeOutput("databricks:index/getApps:getApps", nil, GetAppsResultOutput{}, options).(GetAppsResultOutput), nil
-	}).(GetAppsResultOutput)
+func GetAppsOutput(ctx *pulumi.Context, args GetAppsOutputArgs, opts ...pulumi.InvokeOption) GetAppsResultOutput {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (GetAppsResultOutput, error) {
+			args := v.(GetAppsArgs)
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("databricks:index/getApps:getApps", args, GetAppsResultOutput{}, options).(GetAppsResultOutput), nil
+		}).(GetAppsResultOutput)
+}
+
+// A collection of arguments for invoking getApps.
+type GetAppsOutputArgs struct {
+	ProviderConfig GetAppsProviderConfigPtrInput `pulumi:"providerConfig"`
+}
+
+func (GetAppsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppsArgs)(nil)).Elem()
 }
 
 // A collection of values returned by getApps.
@@ -96,6 +113,10 @@ func (o GetAppsResultOutput) Apps() GetAppsAppArrayOutput {
 // The provider-assigned unique ID for this managed resource.
 func (o GetAppsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetAppsResultOutput) ProviderConfig() GetAppsProviderConfigPtrOutput {
+	return o.ApplyT(func(v GetAppsResult) *GetAppsProviderConfig { return v.ProviderConfig }).(GetAppsProviderConfigPtrOutput)
 }
 
 func init() {

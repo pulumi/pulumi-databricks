@@ -6,6 +6,7 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -47,18 +48,18 @@ public final class GetEntityTagAssignmentsArgs extends com.pulumi.resources.Invo
     }
 
     /**
-     * Workspace ID of the resource
+     * Optional. Maximum number of tag assignments to return in a single page
      * 
      */
-    @Import(name="workspaceId")
-    private @Nullable Output<String> workspaceId;
+    @Import(name="maxResults")
+    private @Nullable Output<Integer> maxResults;
 
     /**
-     * @return Workspace ID of the resource
+     * @return Optional. Maximum number of tag assignments to return in a single page
      * 
      */
-    public Optional<Output<String>> workspaceId() {
-        return Optional.ofNullable(this.workspaceId);
+    public Optional<Output<Integer>> maxResults() {
+        return Optional.ofNullable(this.maxResults);
     }
 
     private GetEntityTagAssignmentsArgs() {}
@@ -66,7 +67,7 @@ public final class GetEntityTagAssignmentsArgs extends com.pulumi.resources.Invo
     private GetEntityTagAssignmentsArgs(GetEntityTagAssignmentsArgs $) {
         this.entityName = $.entityName;
         this.entityType = $.entityType;
-        this.workspaceId = $.workspaceId;
+        this.maxResults = $.maxResults;
     }
 
     public static Builder builder() {
@@ -130,24 +131,24 @@ public final class GetEntityTagAssignmentsArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param workspaceId Workspace ID of the resource
+         * @param maxResults Optional. Maximum number of tag assignments to return in a single page
          * 
          * @return builder
          * 
          */
-        public Builder workspaceId(@Nullable Output<String> workspaceId) {
-            $.workspaceId = workspaceId;
+        public Builder maxResults(@Nullable Output<Integer> maxResults) {
+            $.maxResults = maxResults;
             return this;
         }
 
         /**
-         * @param workspaceId Workspace ID of the resource
+         * @param maxResults Optional. Maximum number of tag assignments to return in a single page
          * 
          * @return builder
          * 
          */
-        public Builder workspaceId(String workspaceId) {
-            return workspaceId(Output.of(workspaceId));
+        public Builder maxResults(Integer maxResults) {
+            return maxResults(Output.of(maxResults));
         }
 
         public GetEntityTagAssignmentsArgs build() {

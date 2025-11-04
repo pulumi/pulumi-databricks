@@ -24,6 +24,7 @@ import com.pulumi.databricks.outputs.JobNotebookTask;
 import com.pulumi.databricks.outputs.JobNotificationSettings;
 import com.pulumi.databricks.outputs.JobParameter;
 import com.pulumi.databricks.outputs.JobPipelineTask;
+import com.pulumi.databricks.outputs.JobProviderConfig;
 import com.pulumi.databricks.outputs.JobPythonWheelTask;
 import com.pulumi.databricks.outputs.JobQueue;
 import com.pulumi.databricks.outputs.JobRunAs;
@@ -499,6 +500,20 @@ public class Job extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<JobPipelineTask>> pipelineTask() {
         return Codegen.optional(this.pipelineTask);
+    }
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Export(name="providerConfig", refs={JobProviderConfig.class}, tree="[0]")
+    private Output</* @Nullable */ JobProviderConfig> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Output<Optional<JobProviderConfig>> providerConfig() {
+        return Codegen.optional(this.providerConfig);
     }
     /**
      * @deprecated

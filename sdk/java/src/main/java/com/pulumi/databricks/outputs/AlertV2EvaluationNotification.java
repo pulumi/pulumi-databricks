@@ -14,6 +14,8 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AlertV2EvaluationNotification {
+    private @Nullable Boolean effectiveNotifyOnOk;
+    private @Nullable Integer effectiveRetriggerSeconds;
     /**
      * @return Whether to notify alert subscribers when alert returns back to normal
      * 
@@ -27,6 +29,12 @@ public final class AlertV2EvaluationNotification {
     private @Nullable List<AlertV2EvaluationNotificationSubscription> subscriptions;
 
     private AlertV2EvaluationNotification() {}
+    public Optional<Boolean> effectiveNotifyOnOk() {
+        return Optional.ofNullable(this.effectiveNotifyOnOk);
+    }
+    public Optional<Integer> effectiveRetriggerSeconds() {
+        return Optional.ofNullable(this.effectiveRetriggerSeconds);
+    }
     /**
      * @return Whether to notify alert subscribers when alert returns back to normal
      * 
@@ -54,17 +62,33 @@ public final class AlertV2EvaluationNotification {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Boolean effectiveNotifyOnOk;
+        private @Nullable Integer effectiveRetriggerSeconds;
         private @Nullable Boolean notifyOnOk;
         private @Nullable Integer retriggerSeconds;
         private @Nullable List<AlertV2EvaluationNotificationSubscription> subscriptions;
         public Builder() {}
         public Builder(AlertV2EvaluationNotification defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.effectiveNotifyOnOk = defaults.effectiveNotifyOnOk;
+    	      this.effectiveRetriggerSeconds = defaults.effectiveRetriggerSeconds;
     	      this.notifyOnOk = defaults.notifyOnOk;
     	      this.retriggerSeconds = defaults.retriggerSeconds;
     	      this.subscriptions = defaults.subscriptions;
         }
 
+        @CustomType.Setter
+        public Builder effectiveNotifyOnOk(@Nullable Boolean effectiveNotifyOnOk) {
+
+            this.effectiveNotifyOnOk = effectiveNotifyOnOk;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder effectiveRetriggerSeconds(@Nullable Integer effectiveRetriggerSeconds) {
+
+            this.effectiveRetriggerSeconds = effectiveRetriggerSeconds;
+            return this;
+        }
         @CustomType.Setter
         public Builder notifyOnOk(@Nullable Boolean notifyOnOk) {
 
@@ -88,6 +112,8 @@ public final class AlertV2EvaluationNotification {
         }
         public AlertV2EvaluationNotification build() {
             final var _resultValue = new AlertV2EvaluationNotification();
+            _resultValue.effectiveNotifyOnOk = effectiveNotifyOnOk;
+            _resultValue.effectiveRetriggerSeconds = effectiveRetriggerSeconds;
             _resultValue.notifyOnOk = notifyOnOk;
             _resultValue.retriggerSeconds = retriggerSeconds;
             _resultValue.subscriptions = subscriptions;

@@ -5,10 +5,12 @@ package com.pulumi.databricks;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.DatabaseInstanceCustomTagArgs;
 import com.pulumi.databricks.inputs.DatabaseInstanceParentInstanceRefArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -34,14 +36,29 @@ public final class DatabaseInstanceArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Whether the instance has PG native password login enabled. Defaults to true
+     * Custom tags associated with the instance. This field is only included on create and update responses
+     * 
+     */
+    @Import(name="customTags")
+    private @Nullable Output<List<DatabaseInstanceCustomTagArgs>> customTags;
+
+    /**
+     * @return Custom tags associated with the instance. This field is only included on create and update responses
+     * 
+     */
+    public Optional<Output<List<DatabaseInstanceCustomTagArgs>>> customTags() {
+        return Optional.ofNullable(this.customTags);
+    }
+
+    /**
+     * Whether to enable PG native password login on the instance. Defaults to false
      * 
      */
     @Import(name="enablePgNativeLogin")
     private @Nullable Output<Boolean> enablePgNativeLogin;
 
     /**
-     * @return Whether the instance has PG native password login enabled. Defaults to true
+     * @return Whether to enable PG native password login on the instance. Defaults to false
      * 
      */
     public Optional<Output<Boolean>> enablePgNativeLogin() {
@@ -80,7 +97,7 @@ public final class DatabaseInstanceArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
-     * 1 primary and 0 secondaries
+     * 1 primary and 0 secondaries. This field is input only, see effectiveNodeCount for the output
      * 
      */
     @Import(name="nodeCount")
@@ -88,7 +105,7 @@ public final class DatabaseInstanceArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * @return The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
-     * 1 primary and 0 secondaries
+     * 1 primary and 0 secondaries. This field is input only, see effectiveNodeCount for the output
      * 
      */
     public Optional<Output<Integer>> nodeCount() {
@@ -151,14 +168,14 @@ public final class DatabaseInstanceArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Whether the instance is stopped
+     * Whether to stop the instance. An input only param, see effectiveStopped for the output
      * 
      */
     @Import(name="stopped")
     private @Nullable Output<Boolean> stopped;
 
     /**
-     * @return Whether the instance is stopped
+     * @return Whether to stop the instance. An input only param, see effectiveStopped for the output
      * 
      */
     public Optional<Output<Boolean>> stopped() {
@@ -166,24 +183,25 @@ public final class DatabaseInstanceArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Workspace ID of the resource
+     * The desired usage policy to associate with the instance
      * 
      */
-    @Import(name="workspaceId")
-    private @Nullable Output<String> workspaceId;
+    @Import(name="usagePolicyId")
+    private @Nullable Output<String> usagePolicyId;
 
     /**
-     * @return Workspace ID of the resource
+     * @return The desired usage policy to associate with the instance
      * 
      */
-    public Optional<Output<String>> workspaceId() {
-        return Optional.ofNullable(this.workspaceId);
+    public Optional<Output<String>> usagePolicyId() {
+        return Optional.ofNullable(this.usagePolicyId);
     }
 
     private DatabaseInstanceArgs() {}
 
     private DatabaseInstanceArgs(DatabaseInstanceArgs $) {
         this.capacity = $.capacity;
+        this.customTags = $.customTags;
         this.enablePgNativeLogin = $.enablePgNativeLogin;
         this.enableReadableSecondaries = $.enableReadableSecondaries;
         this.name = $.name;
@@ -192,7 +210,7 @@ public final class DatabaseInstanceArgs extends com.pulumi.resources.ResourceArg
         this.purgeOnDelete = $.purgeOnDelete;
         this.retentionWindowInDays = $.retentionWindowInDays;
         this.stopped = $.stopped;
-        this.workspaceId = $.workspaceId;
+        this.usagePolicyId = $.usagePolicyId;
     }
 
     public static Builder builder() {
@@ -235,7 +253,38 @@ public final class DatabaseInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param enablePgNativeLogin Whether the instance has PG native password login enabled. Defaults to true
+         * @param customTags Custom tags associated with the instance. This field is only included on create and update responses
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customTags(@Nullable Output<List<DatabaseInstanceCustomTagArgs>> customTags) {
+            $.customTags = customTags;
+            return this;
+        }
+
+        /**
+         * @param customTags Custom tags associated with the instance. This field is only included on create and update responses
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customTags(List<DatabaseInstanceCustomTagArgs> customTags) {
+            return customTags(Output.of(customTags));
+        }
+
+        /**
+         * @param customTags Custom tags associated with the instance. This field is only included on create and update responses
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customTags(DatabaseInstanceCustomTagArgs... customTags) {
+            return customTags(List.of(customTags));
+        }
+
+        /**
+         * @param enablePgNativeLogin Whether to enable PG native password login on the instance. Defaults to false
          * 
          * @return builder
          * 
@@ -246,7 +295,7 @@ public final class DatabaseInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param enablePgNativeLogin Whether the instance has PG native password login enabled. Defaults to true
+         * @param enablePgNativeLogin Whether to enable PG native password login on the instance. Defaults to false
          * 
          * @return builder
          * 
@@ -299,7 +348,7 @@ public final class DatabaseInstanceArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param nodeCount The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
-         * 1 primary and 0 secondaries
+         * 1 primary and 0 secondaries. This field is input only, see effectiveNodeCount for the output
          * 
          * @return builder
          * 
@@ -311,7 +360,7 @@ public final class DatabaseInstanceArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param nodeCount The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
-         * 1 primary and 0 secondaries
+         * 1 primary and 0 secondaries. This field is input only, see effectiveNodeCount for the output
          * 
          * @return builder
          * 
@@ -394,7 +443,7 @@ public final class DatabaseInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param stopped Whether the instance is stopped
+         * @param stopped Whether to stop the instance. An input only param, see effectiveStopped for the output
          * 
          * @return builder
          * 
@@ -405,7 +454,7 @@ public final class DatabaseInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param stopped Whether the instance is stopped
+         * @param stopped Whether to stop the instance. An input only param, see effectiveStopped for the output
          * 
          * @return builder
          * 
@@ -415,24 +464,24 @@ public final class DatabaseInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param workspaceId Workspace ID of the resource
+         * @param usagePolicyId The desired usage policy to associate with the instance
          * 
          * @return builder
          * 
          */
-        public Builder workspaceId(@Nullable Output<String> workspaceId) {
-            $.workspaceId = workspaceId;
+        public Builder usagePolicyId(@Nullable Output<String> usagePolicyId) {
+            $.usagePolicyId = usagePolicyId;
             return this;
         }
 
         /**
-         * @param workspaceId Workspace ID of the resource
+         * @param usagePolicyId The desired usage policy to associate with the instance
          * 
          * @return builder
          * 
          */
-        public Builder workspaceId(String workspaceId) {
-            return workspaceId(Output.of(workspaceId));
+        public Builder usagePolicyId(String usagePolicyId) {
+            return usagePolicyId(Output.of(usagePolicyId));
         }
 
         public DatabaseInstanceArgs build() {

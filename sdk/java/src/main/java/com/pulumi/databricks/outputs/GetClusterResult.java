@@ -5,9 +5,12 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetClusterClusterInfo;
+import com.pulumi.databricks.outputs.GetClusterProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterResult {
@@ -27,6 +30,7 @@ public final class GetClusterResult {
      * 
      */
     private String id;
+    private @Nullable GetClusterProviderConfig providerConfig;
 
     private GetClusterResult() {}
     public String clusterId() {
@@ -53,6 +57,9 @@ public final class GetClusterResult {
     public String id() {
         return this.id;
     }
+    public Optional<GetClusterProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -67,6 +74,7 @@ public final class GetClusterResult {
         private GetClusterClusterInfo clusterInfo;
         private String clusterName;
         private String id;
+        private @Nullable GetClusterProviderConfig providerConfig;
         public Builder() {}
         public Builder(GetClusterResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -74,6 +82,7 @@ public final class GetClusterResult {
     	      this.clusterInfo = defaults.clusterInfo;
     	      this.clusterName = defaults.clusterName;
     	      this.id = defaults.id;
+    	      this.providerConfig = defaults.providerConfig;
         }
 
         @CustomType.Setter
@@ -108,12 +117,19 @@ public final class GetClusterResult {
             this.id = id;
             return this;
         }
+        @CustomType.Setter
+        public Builder providerConfig(@Nullable GetClusterProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
+            return this;
+        }
         public GetClusterResult build() {
             final var _resultValue = new GetClusterResult();
             _resultValue.clusterId = clusterId;
             _resultValue.clusterInfo = clusterInfo;
             _resultValue.clusterName = clusterName;
             _resultValue.id = id;
+            _resultValue.providerConfig = providerConfig;
             return _resultValue;
         }
     }

@@ -12,8 +12,6 @@ import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetPolicyInfoResult {
@@ -23,12 +21,12 @@ public final class GetPolicyInfoResult {
      * the new options will replace the existing options as a whole
      * 
      */
-    private @Nullable GetPolicyInfoColumnMask columnMask;
+    private GetPolicyInfoColumnMask columnMask;
     /**
      * @return (string) - Optional description of the policy
      * 
      */
-    private @Nullable String comment;
+    private String comment;
     /**
      * @return (integer) - Time at which the policy was created, in epoch milliseconds. Output only
      * 
@@ -43,7 +41,7 @@ public final class GetPolicyInfoResult {
      * @return (list of string) - Optional list of user or group names that should be excluded from the policy
      * 
      */
-    private @Nullable List<String> exceptPrincipals;
+    private List<String> exceptPrincipals;
     /**
      * @return (string) - Type of securables that the policy should take effect on.
      * Only `TABLE` is supported at this moment.
@@ -62,26 +60,26 @@ public final class GetPolicyInfoResult {
      * When specified, the policy only applies to tables whose columns satisfy all match conditions
      * 
      */
-    private @Nullable List<GetPolicyInfoMatchColumn> matchColumns;
+    private List<GetPolicyInfoMatchColumn> matchColumns;
     /**
      * @return (string) - Name of the policy. Required on create and optional on update.
      * To rename the policy, set `name` to a different value on update
      * 
      */
-    private @Nullable String name;
+    private String name;
     /**
      * @return (string) - Full name of the securable on which the policy is defined.
      * Required on create and ignored on update
      * 
      */
-    private @Nullable String onSecurableFullname;
+    private String onSecurableFullname;
     /**
      * @return (string) - Type of the securable on which the policy is defined.
      * Only `CATALOG`, `SCHEMA` and `TABLE` are supported at this moment.
      * Required on create and ignored on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
      * 
      */
-    private @Nullable String onSecurableType;
+    private String onSecurableType;
     /**
      * @return (string) - Type of the policy. Required on create and ignored on update. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
      * 
@@ -93,7 +91,7 @@ public final class GetPolicyInfoResult {
      * the new options will replace the existing options as a whole
      * 
      */
-    private @Nullable GetPolicyInfoRowFilter rowFilter;
+    private GetPolicyInfoRowFilter rowFilter;
     /**
      * @return (list of string) - List of user or group names that the policy applies to.
      * Required on create and optional on update
@@ -114,8 +112,7 @@ public final class GetPolicyInfoResult {
      * @return (string) - Optional condition when the policy should take effect
      * 
      */
-    private @Nullable String whenCondition;
-    private @Nullable String workspaceId;
+    private String whenCondition;
 
     private GetPolicyInfoResult() {}
     /**
@@ -124,15 +121,15 @@ public final class GetPolicyInfoResult {
      * the new options will replace the existing options as a whole
      * 
      */
-    public Optional<GetPolicyInfoColumnMask> columnMask() {
-        return Optional.ofNullable(this.columnMask);
+    public GetPolicyInfoColumnMask columnMask() {
+        return this.columnMask;
     }
     /**
      * @return (string) - Optional description of the policy
      * 
      */
-    public Optional<String> comment() {
-        return Optional.ofNullable(this.comment);
+    public String comment() {
+        return this.comment;
     }
     /**
      * @return (integer) - Time at which the policy was created, in epoch milliseconds. Output only
@@ -153,7 +150,7 @@ public final class GetPolicyInfoResult {
      * 
      */
     public List<String> exceptPrincipals() {
-        return this.exceptPrincipals == null ? List.of() : this.exceptPrincipals;
+        return this.exceptPrincipals;
     }
     /**
      * @return (string) - Type of securables that the policy should take effect on.
@@ -178,23 +175,23 @@ public final class GetPolicyInfoResult {
      * 
      */
     public List<GetPolicyInfoMatchColumn> matchColumns() {
-        return this.matchColumns == null ? List.of() : this.matchColumns;
+        return this.matchColumns;
     }
     /**
      * @return (string) - Name of the policy. Required on create and optional on update.
      * To rename the policy, set `name` to a different value on update
      * 
      */
-    public Optional<String> name() {
-        return Optional.ofNullable(this.name);
+    public String name() {
+        return this.name;
     }
     /**
      * @return (string) - Full name of the securable on which the policy is defined.
      * Required on create and ignored on update
      * 
      */
-    public Optional<String> onSecurableFullname() {
-        return Optional.ofNullable(this.onSecurableFullname);
+    public String onSecurableFullname() {
+        return this.onSecurableFullname;
     }
     /**
      * @return (string) - Type of the securable on which the policy is defined.
@@ -202,8 +199,8 @@ public final class GetPolicyInfoResult {
      * Required on create and ignored on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
      * 
      */
-    public Optional<String> onSecurableType() {
-        return Optional.ofNullable(this.onSecurableType);
+    public String onSecurableType() {
+        return this.onSecurableType;
     }
     /**
      * @return (string) - Type of the policy. Required on create and ignored on update. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
@@ -218,8 +215,8 @@ public final class GetPolicyInfoResult {
      * the new options will replace the existing options as a whole
      * 
      */
-    public Optional<GetPolicyInfoRowFilter> rowFilter() {
-        return Optional.ofNullable(this.rowFilter);
+    public GetPolicyInfoRowFilter rowFilter() {
+        return this.rowFilter;
     }
     /**
      * @return (list of string) - List of user or group names that the policy applies to.
@@ -247,11 +244,8 @@ public final class GetPolicyInfoResult {
      * @return (string) - Optional condition when the policy should take effect
      * 
      */
-    public Optional<String> whenCondition() {
-        return Optional.ofNullable(this.whenCondition);
-    }
-    public Optional<String> workspaceId() {
-        return Optional.ofNullable(this.workspaceId);
+    public String whenCondition() {
+        return this.whenCondition;
     }
 
     public static Builder builder() {
@@ -263,24 +257,23 @@ public final class GetPolicyInfoResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable GetPolicyInfoColumnMask columnMask;
-        private @Nullable String comment;
+        private GetPolicyInfoColumnMask columnMask;
+        private String comment;
         private Integer createdAt;
         private String createdBy;
-        private @Nullable List<String> exceptPrincipals;
+        private List<String> exceptPrincipals;
         private String forSecurableType;
         private String id;
-        private @Nullable List<GetPolicyInfoMatchColumn> matchColumns;
-        private @Nullable String name;
-        private @Nullable String onSecurableFullname;
-        private @Nullable String onSecurableType;
+        private List<GetPolicyInfoMatchColumn> matchColumns;
+        private String name;
+        private String onSecurableFullname;
+        private String onSecurableType;
         private String policyType;
-        private @Nullable GetPolicyInfoRowFilter rowFilter;
+        private GetPolicyInfoRowFilter rowFilter;
         private List<String> toPrincipals;
         private Integer updatedAt;
         private String updatedBy;
-        private @Nullable String whenCondition;
-        private @Nullable String workspaceId;
+        private String whenCondition;
         public Builder() {}
         public Builder(GetPolicyInfoResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -301,18 +294,21 @@ public final class GetPolicyInfoResult {
     	      this.updatedAt = defaults.updatedAt;
     	      this.updatedBy = defaults.updatedBy;
     	      this.whenCondition = defaults.whenCondition;
-    	      this.workspaceId = defaults.workspaceId;
         }
 
         @CustomType.Setter
-        public Builder columnMask(@Nullable GetPolicyInfoColumnMask columnMask) {
-
+        public Builder columnMask(GetPolicyInfoColumnMask columnMask) {
+            if (columnMask == null) {
+              throw new MissingRequiredPropertyException("GetPolicyInfoResult", "columnMask");
+            }
             this.columnMask = columnMask;
             return this;
         }
         @CustomType.Setter
-        public Builder comment(@Nullable String comment) {
-
+        public Builder comment(String comment) {
+            if (comment == null) {
+              throw new MissingRequiredPropertyException("GetPolicyInfoResult", "comment");
+            }
             this.comment = comment;
             return this;
         }
@@ -333,8 +329,10 @@ public final class GetPolicyInfoResult {
             return this;
         }
         @CustomType.Setter
-        public Builder exceptPrincipals(@Nullable List<String> exceptPrincipals) {
-
+        public Builder exceptPrincipals(List<String> exceptPrincipals) {
+            if (exceptPrincipals == null) {
+              throw new MissingRequiredPropertyException("GetPolicyInfoResult", "exceptPrincipals");
+            }
             this.exceptPrincipals = exceptPrincipals;
             return this;
         }
@@ -358,8 +356,10 @@ public final class GetPolicyInfoResult {
             return this;
         }
         @CustomType.Setter
-        public Builder matchColumns(@Nullable List<GetPolicyInfoMatchColumn> matchColumns) {
-
+        public Builder matchColumns(List<GetPolicyInfoMatchColumn> matchColumns) {
+            if (matchColumns == null) {
+              throw new MissingRequiredPropertyException("GetPolicyInfoResult", "matchColumns");
+            }
             this.matchColumns = matchColumns;
             return this;
         }
@@ -367,20 +367,26 @@ public final class GetPolicyInfoResult {
             return matchColumns(List.of(matchColumns));
         }
         @CustomType.Setter
-        public Builder name(@Nullable String name) {
-
+        public Builder name(String name) {
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetPolicyInfoResult", "name");
+            }
             this.name = name;
             return this;
         }
         @CustomType.Setter
-        public Builder onSecurableFullname(@Nullable String onSecurableFullname) {
-
+        public Builder onSecurableFullname(String onSecurableFullname) {
+            if (onSecurableFullname == null) {
+              throw new MissingRequiredPropertyException("GetPolicyInfoResult", "onSecurableFullname");
+            }
             this.onSecurableFullname = onSecurableFullname;
             return this;
         }
         @CustomType.Setter
-        public Builder onSecurableType(@Nullable String onSecurableType) {
-
+        public Builder onSecurableType(String onSecurableType) {
+            if (onSecurableType == null) {
+              throw new MissingRequiredPropertyException("GetPolicyInfoResult", "onSecurableType");
+            }
             this.onSecurableType = onSecurableType;
             return this;
         }
@@ -393,8 +399,10 @@ public final class GetPolicyInfoResult {
             return this;
         }
         @CustomType.Setter
-        public Builder rowFilter(@Nullable GetPolicyInfoRowFilter rowFilter) {
-
+        public Builder rowFilter(GetPolicyInfoRowFilter rowFilter) {
+            if (rowFilter == null) {
+              throw new MissingRequiredPropertyException("GetPolicyInfoResult", "rowFilter");
+            }
             this.rowFilter = rowFilter;
             return this;
         }
@@ -426,15 +434,11 @@ public final class GetPolicyInfoResult {
             return this;
         }
         @CustomType.Setter
-        public Builder whenCondition(@Nullable String whenCondition) {
-
+        public Builder whenCondition(String whenCondition) {
+            if (whenCondition == null) {
+              throw new MissingRequiredPropertyException("GetPolicyInfoResult", "whenCondition");
+            }
             this.whenCondition = whenCondition;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder workspaceId(@Nullable String workspaceId) {
-
-            this.workspaceId = workspaceId;
             return this;
         }
         public GetPolicyInfoResult build() {
@@ -456,7 +460,6 @@ public final class GetPolicyInfoResult {
             _resultValue.updatedAt = updatedAt;
             _resultValue.updatedBy = updatedBy;
             _resultValue.whenCondition = whenCondition;
-            _resultValue.workspaceId = workspaceId;
             return _resultValue;
         }
     }

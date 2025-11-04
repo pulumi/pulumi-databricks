@@ -4,33 +4,14 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
-import com.pulumi.databricks.inputs.GetTagPolicyValue;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GetTagPolicyPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetTagPolicyPlainArgs Empty = new GetTagPolicyPlainArgs();
-
-    /**
-     * (string)
-     * 
-     */
-    @Import(name="description")
-    private @Nullable String description;
-
-    /**
-     * @return (string)
-     * 
-     */
-    public Optional<String> description() {
-        return Optional.ofNullable(this.description);
-    }
 
     @Import(name="tagKey", required=true)
     private String tagKey;
@@ -39,43 +20,10 @@ public final class GetTagPolicyPlainArgs extends com.pulumi.resources.InvokeArgs
         return this.tagKey;
     }
 
-    /**
-     * (list of Value)
-     * 
-     */
-    @Import(name="values")
-    private @Nullable List<GetTagPolicyValue> values;
-
-    /**
-     * @return (list of Value)
-     * 
-     */
-    public Optional<List<GetTagPolicyValue>> values() {
-        return Optional.ofNullable(this.values);
-    }
-
-    /**
-     * Workspace ID of the resource
-     * 
-     */
-    @Import(name="workspaceId")
-    private @Nullable String workspaceId;
-
-    /**
-     * @return Workspace ID of the resource
-     * 
-     */
-    public Optional<String> workspaceId() {
-        return Optional.ofNullable(this.workspaceId);
-    }
-
     private GetTagPolicyPlainArgs() {}
 
     private GetTagPolicyPlainArgs(GetTagPolicyPlainArgs $) {
-        this.description = $.description;
         this.tagKey = $.tagKey;
-        this.values = $.values;
-        this.workspaceId = $.workspaceId;
     }
 
     public static Builder builder() {
@@ -96,51 +44,8 @@ public final class GetTagPolicyPlainArgs extends com.pulumi.resources.InvokeArgs
             $ = new GetTagPolicyPlainArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param description (string)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder description(@Nullable String description) {
-            $.description = description;
-            return this;
-        }
-
         public Builder tagKey(String tagKey) {
             $.tagKey = tagKey;
-            return this;
-        }
-
-        /**
-         * @param values (list of Value)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder values(@Nullable List<GetTagPolicyValue> values) {
-            $.values = values;
-            return this;
-        }
-
-        /**
-         * @param values (list of Value)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder values(GetTagPolicyValue... values) {
-            return values(List.of(values));
-        }
-
-        /**
-         * @param workspaceId Workspace ID of the resource
-         * 
-         * @return builder
-         * 
-         */
-        public Builder workspaceId(@Nullable String workspaceId) {
-            $.workspaceId = workspaceId;
             return this;
         }
 

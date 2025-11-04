@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -53,6 +55,7 @@ export function getNodeType(args?: GetNodeTypeArgs, opts?: pulumi.InvokeOptions)
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getNodeType:getNodeType", {
+        "arm": args.arm,
         "category": args.category,
         "fleet": args.fleet,
         "gbPerCore": args.gbPerCore,
@@ -66,6 +69,7 @@ export function getNodeType(args?: GetNodeTypeArgs, opts?: pulumi.InvokeOptions)
         "minMemoryGb": args.minMemoryGb,
         "photonDriverCapable": args.photonDriverCapable,
         "photonWorkerCapable": args.photonWorkerCapable,
+        "providerConfig": args.providerConfig,
         "supportPortForwarding": args.supportPortForwarding,
     }, opts);
 }
@@ -74,6 +78,10 @@ export function getNodeType(args?: GetNodeTypeArgs, opts?: pulumi.InvokeOptions)
  * A collection of arguments for invoking getNodeType.
  */
 export interface GetNodeTypeArgs {
+    /**
+     * if we should limit the search only to nodes with AWS Graviton or Azure Cobalt CPUs. Default to _false_.
+     */
+    arm?: boolean;
     /**
      * Node category, which can be one of (depending on the cloud environment, could be checked with `databricks clusters list-node-types -o json|jq '.node_types[]|.category'|sort |uniq`):
      * * `General Purpose` (all clouds)
@@ -94,7 +102,9 @@ export interface GetNodeTypeArgs {
      */
     gbPerCore?: number;
     /**
-     * if we should limit the search only to nodes with AWS Graviton or Azure Cobalt CPUs. Default to _false_.
+     * if we should limit the search only to nodes with AWS Graviton or Azure Cobalt CPUs. Default to _false_. *Use `arm` instead!*
+     *
+     * @deprecated Use `arm` instead
      */
     graviton?: boolean;
     /**
@@ -134,6 +144,10 @@ export interface GetNodeTypeArgs {
      */
     photonWorkerCapable?: boolean;
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: inputs.GetNodeTypeProviderConfig;
+    /**
      * Pick only nodes that support port forwarding. Defaults to _false_.
      */
     supportPortForwarding?: boolean;
@@ -143,9 +157,13 @@ export interface GetNodeTypeArgs {
  * A collection of values returned by getNodeType.
  */
 export interface GetNodeTypeResult {
+    readonly arm?: boolean;
     readonly category?: string;
     readonly fleet?: boolean;
     readonly gbPerCore?: number;
+    /**
+     * @deprecated Use `arm` instead
+     */
     readonly graviton?: boolean;
     /**
      * node type, that can be used for databricks_job, databricks_cluster, or databricks_instance_pool.
@@ -159,6 +177,7 @@ export interface GetNodeTypeResult {
     readonly minMemoryGb?: number;
     readonly photonDriverCapable?: boolean;
     readonly photonWorkerCapable?: boolean;
+    readonly providerConfig?: outputs.GetNodeTypeProviderConfig;
     readonly supportPortForwarding?: boolean;
 }
 /**
@@ -210,6 +229,7 @@ export function getNodeTypeOutput(args?: GetNodeTypeOutputArgs, opts?: pulumi.In
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getNodeType:getNodeType", {
+        "arm": args.arm,
         "category": args.category,
         "fleet": args.fleet,
         "gbPerCore": args.gbPerCore,
@@ -223,6 +243,7 @@ export function getNodeTypeOutput(args?: GetNodeTypeOutputArgs, opts?: pulumi.In
         "minMemoryGb": args.minMemoryGb,
         "photonDriverCapable": args.photonDriverCapable,
         "photonWorkerCapable": args.photonWorkerCapable,
+        "providerConfig": args.providerConfig,
         "supportPortForwarding": args.supportPortForwarding,
     }, opts);
 }
@@ -231,6 +252,10 @@ export function getNodeTypeOutput(args?: GetNodeTypeOutputArgs, opts?: pulumi.In
  * A collection of arguments for invoking getNodeType.
  */
 export interface GetNodeTypeOutputArgs {
+    /**
+     * if we should limit the search only to nodes with AWS Graviton or Azure Cobalt CPUs. Default to _false_.
+     */
+    arm?: pulumi.Input<boolean>;
     /**
      * Node category, which can be one of (depending on the cloud environment, could be checked with `databricks clusters list-node-types -o json|jq '.node_types[]|.category'|sort |uniq`):
      * * `General Purpose` (all clouds)
@@ -251,7 +276,9 @@ export interface GetNodeTypeOutputArgs {
      */
     gbPerCore?: pulumi.Input<number>;
     /**
-     * if we should limit the search only to nodes with AWS Graviton or Azure Cobalt CPUs. Default to _false_.
+     * if we should limit the search only to nodes with AWS Graviton or Azure Cobalt CPUs. Default to _false_. *Use `arm` instead!*
+     *
+     * @deprecated Use `arm` instead
      */
     graviton?: pulumi.Input<boolean>;
     /**
@@ -290,6 +317,10 @@ export interface GetNodeTypeOutputArgs {
      * Pick only nodes that can run Photon workers. Defaults to _false_.
      */
     photonWorkerCapable?: pulumi.Input<boolean>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.GetNodeTypeProviderConfigArgs>;
     /**
      * Pick only nodes that support port forwarding. Defaults to _false_.
      */

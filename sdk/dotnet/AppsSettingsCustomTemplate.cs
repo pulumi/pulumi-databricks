@@ -10,6 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
+    /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    /// 
     /// Custom App Templates store the metadata of custom app code hosted in an external Git repository, enabling users to reuse boilerplate code when creating apps.
     /// 
     /// ## Example Usage
@@ -68,7 +70,7 @@ namespace Pulumi.Databricks
     /// If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
     /// 
     /// ```sh
-    /// $ pulumi import databricks:index/appsSettingsCustomTemplate:AppsSettingsCustomTemplate databricks_apps_settings_custom_template "name"
+    /// $ pulumi import databricks:index/appsSettingsCustomTemplate:AppsSettingsCustomTemplate this "name"
     /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/appsSettingsCustomTemplate:AppsSettingsCustomTemplate")]
@@ -116,12 +118,6 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("path")]
         public Output<string> Path { get; private set; } = null!;
-
-        /// <summary>
-        /// Workspace ID of the resource
-        /// </summary>
-        [Output("workspaceId")]
-        public Output<string?> WorkspaceId { get; private set; } = null!;
 
 
         /// <summary>
@@ -206,12 +202,6 @@ namespace Pulumi.Databricks
         [Input("path", required: true)]
         public Input<string> Path { get; set; } = null!;
 
-        /// <summary>
-        /// Workspace ID of the resource
-        /// </summary>
-        [Input("workspaceId")]
-        public Input<string>? WorkspaceId { get; set; }
-
         public AppsSettingsCustomTemplateArgs()
         {
         }
@@ -262,12 +252,6 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("path")]
         public Input<string>? Path { get; set; }
-
-        /// <summary>
-        /// Workspace ID of the resource
-        /// </summary>
-        [Input("workspaceId")]
-        public Input<string>? WorkspaceId { get; set; }
 
         public AppsSettingsCustomTemplateState()
         {

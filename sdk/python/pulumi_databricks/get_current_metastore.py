@@ -28,13 +28,16 @@ class GetCurrentMetastoreResult:
     """
     A collection of values returned by getCurrentMetastore.
     """
-    def __init__(__self__, id=None, metastore_info=None):
+    def __init__(__self__, id=None, metastore_info=None, provider_config=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
         if metastore_info and not isinstance(metastore_info, dict):
             raise TypeError("Expected argument 'metastore_info' to be a dict")
         pulumi.set(__self__, "metastore_info", metastore_info)
+        if provider_config and not isinstance(provider_config, dict):
+            raise TypeError("Expected argument 'provider_config' to be a dict")
+        pulumi.set(__self__, "provider_config", provider_config)
 
     @_builtins.property
     @pulumi.getter
@@ -52,6 +55,11 @@ class GetCurrentMetastoreResult:
         """
         return pulumi.get(self, "metastore_info")
 
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional['outputs.GetCurrentMetastoreProviderConfigResult']:
+        return pulumi.get(self, "provider_config")
+
 
 class AwaitableGetCurrentMetastoreResult(GetCurrentMetastoreResult):
     # pylint: disable=using-constant-test
@@ -60,11 +68,13 @@ class AwaitableGetCurrentMetastoreResult(GetCurrentMetastoreResult):
             yield self
         return GetCurrentMetastoreResult(
             id=self.id,
-            metastore_info=self.metastore_info)
+            metastore_info=self.metastore_info,
+            provider_config=self.provider_config)
 
 
 def get_current_metastore(id: Optional[_builtins.str] = None,
                           metastore_info: Optional[Union['GetCurrentMetastoreMetastoreInfoArgs', 'GetCurrentMetastoreMetastoreInfoArgsDict']] = None,
+                          provider_config: Optional[Union['GetCurrentMetastoreProviderConfigArgs', 'GetCurrentMetastoreProviderConfigArgsDict']] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCurrentMetastoreResult:
     """
     Retrieves information about metastore attached to a given workspace.
@@ -95,18 +105,22 @@ def get_current_metastore(id: Optional[_builtins.str] = None,
 
     :param _builtins.str id: metastore ID. Will be `no_metastore` if there is no metastore assigned for the current workspace
     :param Union['GetCurrentMetastoreMetastoreInfoArgs', 'GetCurrentMetastoreMetastoreInfoArgsDict'] metastore_info: summary about a metastore attached to the current workspace returned by [Get a metastore summary API](https://docs.databricks.com/api/workspace/metastores/summary). This contains the following attributes (check the API page for up-to-date details):
+    :param Union['GetCurrentMetastoreProviderConfigArgs', 'GetCurrentMetastoreProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     """
     __args__ = dict()
     __args__['id'] = id
     __args__['metastoreInfo'] = metastore_info
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getCurrentMetastore:getCurrentMetastore', __args__, opts=opts, typ=GetCurrentMetastoreResult).value
 
     return AwaitableGetCurrentMetastoreResult(
         id=pulumi.get(__ret__, 'id'),
-        metastore_info=pulumi.get(__ret__, 'metastore_info'))
+        metastore_info=pulumi.get(__ret__, 'metastore_info'),
+        provider_config=pulumi.get(__ret__, 'provider_config'))
 def get_current_metastore_output(id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                  metastore_info: Optional[pulumi.Input[Optional[Union['GetCurrentMetastoreMetastoreInfoArgs', 'GetCurrentMetastoreMetastoreInfoArgsDict']]]] = None,
+                                 provider_config: Optional[pulumi.Input[Optional[Union['GetCurrentMetastoreProviderConfigArgs', 'GetCurrentMetastoreProviderConfigArgsDict']]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCurrentMetastoreResult]:
     """
     Retrieves information about metastore attached to a given workspace.
@@ -137,12 +151,15 @@ def get_current_metastore_output(id: Optional[pulumi.Input[Optional[_builtins.st
 
     :param _builtins.str id: metastore ID. Will be `no_metastore` if there is no metastore assigned for the current workspace
     :param Union['GetCurrentMetastoreMetastoreInfoArgs', 'GetCurrentMetastoreMetastoreInfoArgsDict'] metastore_info: summary about a metastore attached to the current workspace returned by [Get a metastore summary API](https://docs.databricks.com/api/workspace/metastores/summary). This contains the following attributes (check the API page for up-to-date details):
+    :param Union['GetCurrentMetastoreProviderConfigArgs', 'GetCurrentMetastoreProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     """
     __args__ = dict()
     __args__['id'] = id
     __args__['metastoreInfo'] = metastore_info
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getCurrentMetastore:getCurrentMetastore', __args__, opts=opts, typ=GetCurrentMetastoreResult)
     return __ret__.apply(lambda __response__: GetCurrentMetastoreResult(
         id=pulumi.get(__response__, 'id'),
-        metastore_info=pulumi.get(__response__, 'metastore_info')))
+        metastore_info=pulumi.get(__response__, 'metastore_info'),
+        provider_config=pulumi.get(__response__, 'provider_config')))

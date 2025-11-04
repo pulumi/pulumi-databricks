@@ -29,7 +29,8 @@ func GetDashboards(ctx *pulumi.Context, args *GetDashboardsArgs, opts ...pulumi.
 // A collection of arguments for invoking getDashboards.
 type GetDashboardsArgs struct {
 	// A **case-insensitive** substring to filter Dashboards by their name.
-	DashboardNameContains *string `pulumi:"dashboardNameContains"`
+	DashboardNameContains *string                      `pulumi:"dashboardNameContains"`
+	ProviderConfig        *GetDashboardsProviderConfig `pulumi:"providerConfig"`
 }
 
 // A collection of values returned by getDashboards.
@@ -38,7 +39,8 @@ type GetDashboardsResult struct {
 	// A list of dashboards matching the specified criteria. Each element contains the following attributes:
 	Dashboards []GetDashboardsDashboard `pulumi:"dashboards"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	Id             string                       `pulumi:"id"`
+	ProviderConfig *GetDashboardsProviderConfig `pulumi:"providerConfig"`
 }
 
 func GetDashboardsOutput(ctx *pulumi.Context, args GetDashboardsOutputArgs, opts ...pulumi.InvokeOption) GetDashboardsResultOutput {
@@ -53,7 +55,8 @@ func GetDashboardsOutput(ctx *pulumi.Context, args GetDashboardsOutputArgs, opts
 // A collection of arguments for invoking getDashboards.
 type GetDashboardsOutputArgs struct {
 	// A **case-insensitive** substring to filter Dashboards by their name.
-	DashboardNameContains pulumi.StringPtrInput `pulumi:"dashboardNameContains"`
+	DashboardNameContains pulumi.StringPtrInput               `pulumi:"dashboardNameContains"`
+	ProviderConfig        GetDashboardsProviderConfigPtrInput `pulumi:"providerConfig"`
 }
 
 func (GetDashboardsOutputArgs) ElementType() reflect.Type {
@@ -87,6 +90,10 @@ func (o GetDashboardsResultOutput) Dashboards() GetDashboardsDashboardArrayOutpu
 // The provider-assigned unique ID for this managed resource.
 func (o GetDashboardsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDashboardsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetDashboardsResultOutput) ProviderConfig() GetDashboardsProviderConfigPtrOutput {
+	return o.ApplyT(func(v GetDashboardsResult) *GetDashboardsProviderConfig { return v.ProviderConfig }).(GetDashboardsProviderConfigPtrOutput)
 }
 
 func init() {

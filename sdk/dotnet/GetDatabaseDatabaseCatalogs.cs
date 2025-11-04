@@ -11,12 +11,21 @@ namespace Pulumi.Databricks
 {
     public static class GetDatabaseDatabaseCatalogs
     {
-        public static Task<GetDatabaseDatabaseCatalogsResult> InvokeAsync(GetDatabaseDatabaseCatalogsArgs? args = null, InvokeOptions? options = null)
+        /// <summary>
+        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// </summary>
+        public static Task<GetDatabaseDatabaseCatalogsResult> InvokeAsync(GetDatabaseDatabaseCatalogsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDatabaseDatabaseCatalogsResult>("databricks:index/getDatabaseDatabaseCatalogs:getDatabaseDatabaseCatalogs", args ?? new GetDatabaseDatabaseCatalogsArgs(), options.WithDefaults());
 
-        public static Output<GetDatabaseDatabaseCatalogsResult> Invoke(GetDatabaseDatabaseCatalogsInvokeArgs? args = null, InvokeOptions? options = null)
+        /// <summary>
+        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// </summary>
+        public static Output<GetDatabaseDatabaseCatalogsResult> Invoke(GetDatabaseDatabaseCatalogsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDatabaseDatabaseCatalogsResult>("databricks:index/getDatabaseDatabaseCatalogs:getDatabaseDatabaseCatalogs", args ?? new GetDatabaseDatabaseCatalogsInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// </summary>
         public static Output<GetDatabaseDatabaseCatalogsResult> Invoke(GetDatabaseDatabaseCatalogsInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetDatabaseDatabaseCatalogsResult>("databricks:index/getDatabaseDatabaseCatalogs:getDatabaseDatabaseCatalogs", args ?? new GetDatabaseDatabaseCatalogsInvokeArgs(), options.WithDefaults());
     }
@@ -25,10 +34,16 @@ namespace Pulumi.Databricks
     public sealed class GetDatabaseDatabaseCatalogsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Workspace ID of the resource
+        /// Name of the instance to get database catalogs for
         /// </summary>
-        [Input("workspaceId")]
-        public string? WorkspaceId { get; set; }
+        [Input("instanceName", required: true)]
+        public string InstanceName { get; set; } = null!;
+
+        /// <summary>
+        /// Upper bound for items returned
+        /// </summary>
+        [Input("pageSize")]
+        public int? PageSize { get; set; }
 
         public GetDatabaseDatabaseCatalogsArgs()
         {
@@ -39,10 +54,16 @@ namespace Pulumi.Databricks
     public sealed class GetDatabaseDatabaseCatalogsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Workspace ID of the resource
+        /// Name of the instance to get database catalogs for
         /// </summary>
-        [Input("workspaceId")]
-        public Input<string>? WorkspaceId { get; set; }
+        [Input("instanceName", required: true)]
+        public Input<string> InstanceName { get; set; } = null!;
+
+        /// <summary>
+        /// Upper bound for items returned
+        /// </summary>
+        [Input("pageSize")]
+        public Input<int>? PageSize { get; set; }
 
         public GetDatabaseDatabaseCatalogsInvokeArgs()
         {
@@ -59,7 +80,8 @@ namespace Pulumi.Databricks
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        public readonly string? WorkspaceId;
+        public readonly string InstanceName;
+        public readonly int? PageSize;
 
         [OutputConstructor]
         private GetDatabaseDatabaseCatalogsResult(
@@ -67,11 +89,14 @@ namespace Pulumi.Databricks
 
             string id,
 
-            string? workspaceId)
+            string instanceName,
+
+            int? pageSize)
         {
             DatabaseCatalogs = databaseCatalogs;
             Id = id;
-            WorkspaceId = workspaceId;
+            InstanceName = instanceName;
+            PageSize = pageSize;
         }
     }
 }

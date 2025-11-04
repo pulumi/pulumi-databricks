@@ -12,6 +12,12 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class AlertV2EvaluationNotificationGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("effectiveNotifyOnOk")]
+        public Input<bool>? EffectiveNotifyOnOk { get; set; }
+
+        [Input("effectiveRetriggerSeconds")]
+        public Input<int>? EffectiveRetriggerSeconds { get; set; }
+
         /// <summary>
         /// Whether to notify alert subscribers when alert returns back to normal
         /// </summary>

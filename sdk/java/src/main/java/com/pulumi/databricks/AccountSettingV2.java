@@ -14,12 +14,10 @@ import com.pulumi.databricks.outputs.AccountSettingV2AibiDashboardEmbeddingAcces
 import com.pulumi.databricks.outputs.AccountSettingV2AibiDashboardEmbeddingApprovedDomains;
 import com.pulumi.databricks.outputs.AccountSettingV2AutomaticClusterUpdateWorkspace;
 import com.pulumi.databricks.outputs.AccountSettingV2BooleanVal;
-import com.pulumi.databricks.outputs.AccountSettingV2DefaultDataSecurityMode;
 import com.pulumi.databricks.outputs.AccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy;
 import com.pulumi.databricks.outputs.AccountSettingV2EffectiveAibiDashboardEmbeddingApprovedDomains;
 import com.pulumi.databricks.outputs.AccountSettingV2EffectiveAutomaticClusterUpdateWorkspace;
 import com.pulumi.databricks.outputs.AccountSettingV2EffectiveBooleanVal;
-import com.pulumi.databricks.outputs.AccountSettingV2EffectiveDefaultDataSecurityMode;
 import com.pulumi.databricks.outputs.AccountSettingV2EffectiveIntegerVal;
 import com.pulumi.databricks.outputs.AccountSettingV2EffectivePersonalCompute;
 import com.pulumi.databricks.outputs.AccountSettingV2EffectiveRestrictWorkspaceAdmins;
@@ -33,6 +31,52 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * 
+ * Setting is a configurable value or control that determines how a feature or behavior works within the databricks platform.
+ * 
+ * [//]: # (todo: add public link to metadata api after production doc link available)
+ * See settings-metadata api for list of settings that can be modified using this resource.
+ * 
+ * ## Example Usage
+ * 
+ * Getting an account level setting:
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.AccountSettingV2;
+ * import com.pulumi.databricks.AccountSettingV2Args;
+ * import com.pulumi.databricks.inputs.AccountSettingV2BooleanValArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var this_ = new AccountSettingV2("this", AccountSettingV2Args.builder()
+ *             .name("llm_proxy_partner_powered")
+ *             .booleanVal(AccountSettingV2BooleanValArgs.builder()
+ *                 .value(false)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * As of Pulumi v1.5, resources can be imported through configuration.
@@ -50,7 +94,7 @@ import javax.annotation.Nullable;
  * If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
  * 
  * ```sh
- * $ pulumi import databricks:index/accountSettingV2:AccountSettingV2 databricks_account_setting_v2 &#34;name&#34;
+ * $ pulumi import databricks:index/accountSettingV2:AccountSettingV2 this &#34;name&#34;
  * ```
  * 
  */
@@ -68,17 +112,9 @@ public class AccountSettingV2 extends com.pulumi.resources.CustomResource {
     public Output<Optional<AccountSettingV2AibiDashboardEmbeddingApprovedDomains>> aibiDashboardEmbeddingApprovedDomains() {
         return Codegen.optional(this.aibiDashboardEmbeddingApprovedDomains);
     }
-    /**
-     * todo: Mark these Public after onboarded to DSL
-     * 
-     */
     @Export(name="automaticClusterUpdateWorkspace", refs={AccountSettingV2AutomaticClusterUpdateWorkspace.class}, tree="[0]")
     private Output</* @Nullable */ AccountSettingV2AutomaticClusterUpdateWorkspace> automaticClusterUpdateWorkspace;
 
-    /**
-     * @return todo: Mark these Public after onboarded to DSL
-     * 
-     */
     public Output<Optional<AccountSettingV2AutomaticClusterUpdateWorkspace>> automaticClusterUpdateWorkspace() {
         return Codegen.optional(this.automaticClusterUpdateWorkspace);
     }
@@ -87,12 +123,6 @@ public class AccountSettingV2 extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<AccountSettingV2BooleanVal>> booleanVal() {
         return Codegen.optional(this.booleanVal);
-    }
-    @Export(name="defaultDataSecurityMode", refs={AccountSettingV2DefaultDataSecurityMode.class}, tree="[0]")
-    private Output</* @Nullable */ AccountSettingV2DefaultDataSecurityMode> defaultDataSecurityMode;
-
-    public Output<Optional<AccountSettingV2DefaultDataSecurityMode>> defaultDataSecurityMode() {
-        return Codegen.optional(this.defaultDataSecurityMode);
     }
     @Export(name="effectiveAibiDashboardEmbeddingAccessPolicy", refs={AccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy.class}, tree="[0]")
     private Output</* @Nullable */ AccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy> effectiveAibiDashboardEmbeddingAccessPolicy;
@@ -125,12 +155,6 @@ public class AccountSettingV2 extends com.pulumi.resources.CustomResource {
      */
     public Output<AccountSettingV2EffectiveBooleanVal> effectiveBooleanVal() {
         return this.effectiveBooleanVal;
-    }
-    @Export(name="effectiveDefaultDataSecurityMode", refs={AccountSettingV2EffectiveDefaultDataSecurityMode.class}, tree="[0]")
-    private Output</* @Nullable */ AccountSettingV2EffectiveDefaultDataSecurityMode> effectiveDefaultDataSecurityMode;
-
-    public Output<Optional<AccountSettingV2EffectiveDefaultDataSecurityMode>> effectiveDefaultDataSecurityMode() {
-        return Codegen.optional(this.effectiveDefaultDataSecurityMode);
     }
     /**
      * (IntegerMessage)

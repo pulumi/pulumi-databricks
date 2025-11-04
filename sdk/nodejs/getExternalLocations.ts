@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -33,6 +35,7 @@ export function getExternalLocations(args?: GetExternalLocationsArgs, opts?: pul
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getExternalLocations:getExternalLocations", {
         "names": args.names,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -44,6 +47,10 @@ export interface GetExternalLocationsArgs {
      * List of names of databricks.ExternalLocation in the metastore
      */
     names?: string[];
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: inputs.GetExternalLocationsProviderConfig;
 }
 
 /**
@@ -58,6 +65,7 @@ export interface GetExternalLocationsResult {
      * List of names of databricks.ExternalLocation in the metastore
      */
     readonly names: string[];
+    readonly providerConfig?: outputs.GetExternalLocationsProviderConfig;
 }
 /**
  * Retrieves a list of databricks.ExternalLocation objects, that were created by Pulumi or manually, so that special handling could be applied.
@@ -88,6 +96,7 @@ export function getExternalLocationsOutput(args?: GetExternalLocationsOutputArgs
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getExternalLocations:getExternalLocations", {
         "names": args.names,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -99,4 +108,8 @@ export interface GetExternalLocationsOutputArgs {
      * List of names of databricks.ExternalLocation in the metastore
      */
     names?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.GetExternalLocationsProviderConfigArgs>;
 }

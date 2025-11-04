@@ -169,6 +169,12 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Inputs.GetVolumesProviderConfigArgs? ProviderConfig { get; set; }
+
+        /// <summary>
         /// Name of databricks_schema
         /// </summary>
         [Input("schemaName", required: true)]
@@ -201,6 +207,12 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.GetVolumesProviderConfigInputArgs>? ProviderConfig { get; set; }
+
+        /// <summary>
         /// Name of databricks_schema
         /// </summary>
         [Input("schemaName", required: true)]
@@ -225,6 +237,7 @@ namespace Pulumi.Databricks
         /// a list of databricks.Volume full names: *`Catalog`.`Schema`.`Volume`*
         /// </summary>
         public readonly ImmutableArray<string> Ids;
+        public readonly Outputs.GetVolumesProviderConfigResult? ProviderConfig;
         public readonly string SchemaName;
 
         [OutputConstructor]
@@ -235,11 +248,14 @@ namespace Pulumi.Databricks
 
             ImmutableArray<string> ids,
 
+            Outputs.GetVolumesProviderConfigResult? providerConfig,
+
             string schemaName)
         {
             CatalogName = catalogName;
             Id = id;
             Ids = ids;
+            ProviderConfig = providerConfig;
             SchemaName = schemaName;
         }
     }

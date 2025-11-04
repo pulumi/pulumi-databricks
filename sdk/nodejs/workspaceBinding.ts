@@ -5,32 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * If you use workspaces to isolate user data access, you may want to limit access to catalog, external locations or storage credentials from specific workspaces in your account, also known as workspace binding
- *
- * > This resource can only be used with a workspace-level provider!
- *
- * By default, Databricks assigns the securable to all workspaces attached to the current metastore. By using `databricks.WorkspaceBinding`, the securable will be unassigned from all workspaces and only assigned explicitly using this resource.
- *
- * > To use this resource the securable must have its isolation mode set to `ISOLATED` (for databricks_catalog) or `ISOLATION_MODE_ISOLATED` (for  (for databricks_external_location, databricks.StorageCredential or databricks_credential) for the `isolationMode` attribute. Alternatively, the isolation mode can be set using the UI or API by following [this guide](https://docs.databricks.com/data-governance/unity-catalog/create-catalogs.html#configuration), [this guide](https://docs.databricks.com/en/connect/unity-catalog/external-locations.html#workspace-binding) or [this guide](https://docs.databricks.com/en/connect/unity-catalog/storage-credentials.html#optional-assign-a-storage-credential-to-specific-workspaces).
- *
- * > If the securable's isolation mode was set to `ISOLATED` using Pulumi then the securable will have been automatically bound to the workspace it was created from.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as databricks from "@pulumi/databricks";
- *
- * const sandbox = new databricks.Catalog("sandbox", {
- *     name: "sandbox",
- *     isolationMode: "ISOLATED",
- * });
- * const sandboxWorkspaceBinding = new databricks.WorkspaceBinding("sandbox", {
- *     securableName: sandbox.name,
- *     workspaceId: other.workspaceId,
- * });
- * ```
- *
  * ## Import
  *
  * This resource can be imported by using combination of workspace ID, securable type and name:

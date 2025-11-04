@@ -5,10 +5,13 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetInstanceProfilesInstanceProfile;
+import com.pulumi.databricks.outputs.GetInstanceProfilesProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetInstanceProfilesResult {
@@ -22,6 +25,7 @@ public final class GetInstanceProfilesResult {
      * 
      */
     private List<GetInstanceProfilesInstanceProfile> instanceProfiles;
+    private @Nullable GetInstanceProfilesProviderConfig providerConfig;
 
     private GetInstanceProfilesResult() {}
     /**
@@ -38,6 +42,9 @@ public final class GetInstanceProfilesResult {
     public List<GetInstanceProfilesInstanceProfile> instanceProfiles() {
         return this.instanceProfiles;
     }
+    public Optional<GetInstanceProfilesProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -50,11 +57,13 @@ public final class GetInstanceProfilesResult {
     public static final class Builder {
         private String id;
         private List<GetInstanceProfilesInstanceProfile> instanceProfiles;
+        private @Nullable GetInstanceProfilesProviderConfig providerConfig;
         public Builder() {}
         public Builder(GetInstanceProfilesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
     	      this.instanceProfiles = defaults.instanceProfiles;
+    	      this.providerConfig = defaults.providerConfig;
         }
 
         @CustomType.Setter
@@ -76,10 +85,17 @@ public final class GetInstanceProfilesResult {
         public Builder instanceProfiles(GetInstanceProfilesInstanceProfile... instanceProfiles) {
             return instanceProfiles(List.of(instanceProfiles));
         }
+        @CustomType.Setter
+        public Builder providerConfig(@Nullable GetInstanceProfilesProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
+            return this;
+        }
         public GetInstanceProfilesResult build() {
             final var _resultValue = new GetInstanceProfilesResult();
             _resultValue.id = id;
             _resultValue.instanceProfiles = instanceProfiles;
+            _resultValue.providerConfig = providerConfig;
             return _resultValue;
         }
     }

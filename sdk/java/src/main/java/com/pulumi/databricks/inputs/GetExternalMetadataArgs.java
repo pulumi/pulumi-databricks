@@ -7,61 +7,12 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
-import java.util.List;
-import java.util.Map;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GetExternalMetadataArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetExternalMetadataArgs Empty = new GetExternalMetadataArgs();
-
-    /**
-     * (list of string) - List of columns associated with the external metadata object
-     * 
-     */
-    @Import(name="columns")
-    private @Nullable Output<List<String>> columns;
-
-    /**
-     * @return (list of string) - List of columns associated with the external metadata object
-     * 
-     */
-    public Optional<Output<List<String>>> columns() {
-        return Optional.ofNullable(this.columns);
-    }
-
-    /**
-     * (string) - User-provided free-form text description
-     * 
-     */
-    @Import(name="description")
-    private @Nullable Output<String> description;
-
-    /**
-     * @return (string) - User-provided free-form text description
-     * 
-     */
-    public Optional<Output<String>> description() {
-        return Optional.ofNullable(this.description);
-    }
-
-    /**
-     * (string) - Type of entity within the external system
-     * 
-     */
-    @Import(name="entityType", required=true)
-    private Output<String> entityType;
-
-    /**
-     * @return (string) - Type of entity within the external system
-     * 
-     */
-    public Output<String> entityType() {
-        return this.entityType;
-    }
 
     /**
      * Name of the external metadata object
@@ -78,93 +29,10 @@ public final class GetExternalMetadataArgs extends com.pulumi.resources.InvokeAr
         return this.name;
     }
 
-    /**
-     * (string) - Owner of the external metadata object
-     * 
-     */
-    @Import(name="owner")
-    private @Nullable Output<String> owner;
-
-    /**
-     * @return (string) - Owner of the external metadata object
-     * 
-     */
-    public Optional<Output<String>> owner() {
-        return Optional.ofNullable(this.owner);
-    }
-
-    /**
-     * (object) - A map of key-value properties attached to the external metadata object
-     * 
-     */
-    @Import(name="properties")
-    private @Nullable Output<Map<String,String>> properties;
-
-    /**
-     * @return (object) - A map of key-value properties attached to the external metadata object
-     * 
-     */
-    public Optional<Output<Map<String,String>>> properties() {
-        return Optional.ofNullable(this.properties);
-    }
-
-    /**
-     * (string) - Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `TABLEAU`, `TERADATA`, `WORKDAY`
-     * 
-     */
-    @Import(name="systemType", required=true)
-    private Output<String> systemType;
-
-    /**
-     * @return (string) - Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `TABLEAU`, `TERADATA`, `WORKDAY`
-     * 
-     */
-    public Output<String> systemType() {
-        return this.systemType;
-    }
-
-    /**
-     * (string) - URL associated with the external metadata object
-     * 
-     */
-    @Import(name="url")
-    private @Nullable Output<String> url;
-
-    /**
-     * @return (string) - URL associated with the external metadata object
-     * 
-     */
-    public Optional<Output<String>> url() {
-        return Optional.ofNullable(this.url);
-    }
-
-    /**
-     * Workspace ID of the resource
-     * 
-     */
-    @Import(name="workspaceId")
-    private @Nullable Output<String> workspaceId;
-
-    /**
-     * @return Workspace ID of the resource
-     * 
-     */
-    public Optional<Output<String>> workspaceId() {
-        return Optional.ofNullable(this.workspaceId);
-    }
-
     private GetExternalMetadataArgs() {}
 
     private GetExternalMetadataArgs(GetExternalMetadataArgs $) {
-        this.columns = $.columns;
-        this.description = $.description;
-        this.entityType = $.entityType;
         this.name = $.name;
-        this.owner = $.owner;
-        this.properties = $.properties;
-        this.systemType = $.systemType;
-        this.url = $.url;
-        this.workspaceId = $.workspaceId;
     }
 
     public static Builder builder() {
@@ -183,79 +51,6 @@ public final class GetExternalMetadataArgs extends com.pulumi.resources.InvokeAr
 
         public Builder(GetExternalMetadataArgs defaults) {
             $ = new GetExternalMetadataArgs(Objects.requireNonNull(defaults));
-        }
-
-        /**
-         * @param columns (list of string) - List of columns associated with the external metadata object
-         * 
-         * @return builder
-         * 
-         */
-        public Builder columns(@Nullable Output<List<String>> columns) {
-            $.columns = columns;
-            return this;
-        }
-
-        /**
-         * @param columns (list of string) - List of columns associated with the external metadata object
-         * 
-         * @return builder
-         * 
-         */
-        public Builder columns(List<String> columns) {
-            return columns(Output.of(columns));
-        }
-
-        /**
-         * @param columns (list of string) - List of columns associated with the external metadata object
-         * 
-         * @return builder
-         * 
-         */
-        public Builder columns(String... columns) {
-            return columns(List.of(columns));
-        }
-
-        /**
-         * @param description (string) - User-provided free-form text description
-         * 
-         * @return builder
-         * 
-         */
-        public Builder description(@Nullable Output<String> description) {
-            $.description = description;
-            return this;
-        }
-
-        /**
-         * @param description (string) - User-provided free-form text description
-         * 
-         * @return builder
-         * 
-         */
-        public Builder description(String description) {
-            return description(Output.of(description));
-        }
-
-        /**
-         * @param entityType (string) - Type of entity within the external system
-         * 
-         * @return builder
-         * 
-         */
-        public Builder entityType(Output<String> entityType) {
-            $.entityType = entityType;
-            return this;
-        }
-
-        /**
-         * @param entityType (string) - Type of entity within the external system
-         * 
-         * @return builder
-         * 
-         */
-        public Builder entityType(String entityType) {
-            return entityType(Output.of(entityType));
         }
 
         /**
@@ -279,120 +74,9 @@ public final class GetExternalMetadataArgs extends com.pulumi.resources.InvokeAr
             return name(Output.of(name));
         }
 
-        /**
-         * @param owner (string) - Owner of the external metadata object
-         * 
-         * @return builder
-         * 
-         */
-        public Builder owner(@Nullable Output<String> owner) {
-            $.owner = owner;
-            return this;
-        }
-
-        /**
-         * @param owner (string) - Owner of the external metadata object
-         * 
-         * @return builder
-         * 
-         */
-        public Builder owner(String owner) {
-            return owner(Output.of(owner));
-        }
-
-        /**
-         * @param properties (object) - A map of key-value properties attached to the external metadata object
-         * 
-         * @return builder
-         * 
-         */
-        public Builder properties(@Nullable Output<Map<String,String>> properties) {
-            $.properties = properties;
-            return this;
-        }
-
-        /**
-         * @param properties (object) - A map of key-value properties attached to the external metadata object
-         * 
-         * @return builder
-         * 
-         */
-        public Builder properties(Map<String,String> properties) {
-            return properties(Output.of(properties));
-        }
-
-        /**
-         * @param systemType (string) - Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `TABLEAU`, `TERADATA`, `WORKDAY`
-         * 
-         * @return builder
-         * 
-         */
-        public Builder systemType(Output<String> systemType) {
-            $.systemType = systemType;
-            return this;
-        }
-
-        /**
-         * @param systemType (string) - Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `TABLEAU`, `TERADATA`, `WORKDAY`
-         * 
-         * @return builder
-         * 
-         */
-        public Builder systemType(String systemType) {
-            return systemType(Output.of(systemType));
-        }
-
-        /**
-         * @param url (string) - URL associated with the external metadata object
-         * 
-         * @return builder
-         * 
-         */
-        public Builder url(@Nullable Output<String> url) {
-            $.url = url;
-            return this;
-        }
-
-        /**
-         * @param url (string) - URL associated with the external metadata object
-         * 
-         * @return builder
-         * 
-         */
-        public Builder url(String url) {
-            return url(Output.of(url));
-        }
-
-        /**
-         * @param workspaceId Workspace ID of the resource
-         * 
-         * @return builder
-         * 
-         */
-        public Builder workspaceId(@Nullable Output<String> workspaceId) {
-            $.workspaceId = workspaceId;
-            return this;
-        }
-
-        /**
-         * @param workspaceId Workspace ID of the resource
-         * 
-         * @return builder
-         * 
-         */
-        public Builder workspaceId(String workspaceId) {
-            return workspaceId(Output.of(workspaceId));
-        }
-
         public GetExternalMetadataArgs build() {
-            if ($.entityType == null) {
-                throw new MissingRequiredPropertyException("GetExternalMetadataArgs", "entityType");
-            }
             if ($.name == null) {
                 throw new MissingRequiredPropertyException("GetExternalMetadataArgs", "name");
-            }
-            if ($.systemType == null) {
-                throw new MissingRequiredPropertyException("GetExternalMetadataArgs", "systemType");
             }
             return $;
         }

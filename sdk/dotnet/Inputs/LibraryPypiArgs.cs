@@ -12,9 +12,15 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class LibraryPypiArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The name of the PyPI package to install. An optional exact version specification is also supported. For example: `Simplejson` or `simplejson==3.8.0`.
+        /// </summary>
         [Input("package", required: true)]
         public Input<string> Package { get; set; } = null!;
 
+        /// <summary>
+        /// The repository where the package can be found. If not specified, the default pip index is used.
+        /// </summary>
         [Input("repo")]
         public Input<string>? Repo { get; set; }
 

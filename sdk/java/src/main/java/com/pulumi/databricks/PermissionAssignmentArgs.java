@@ -9,11 +9,28 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class PermissionAssignmentArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final PermissionAssignmentArgs Empty = new PermissionAssignmentArgs();
+
+    /**
+     * the group name to assign to a workspace.
+     * 
+     */
+    @Import(name="groupName")
+    private @Nullable Output<String> groupName;
+
+    /**
+     * @return the group name to assign to a workspace.
+     * 
+     */
+    public Optional<Output<String>> groupName() {
+        return Optional.ofNullable(this.groupName);
+    }
 
     /**
      * The list of workspace permissions to assign to the principal:
@@ -38,22 +55,55 @@ public final class PermissionAssignmentArgs extends com.pulumi.resources.Resourc
      * Databricks ID of the user, service principal, or group. The principal ID can be retrieved using the account-level SCIM API, or using databricks_user, databricks.ServicePrincipal or databricks.Group data sources with account API (and has to be an account admin). A more sensible approach is to retrieve the list of `principalId` as outputs from another Pulumi stack.
      * 
      */
-    @Import(name="principalId", required=true)
-    private Output<String> principalId;
+    @Import(name="principalId")
+    private @Nullable Output<String> principalId;
 
     /**
      * @return Databricks ID of the user, service principal, or group. The principal ID can be retrieved using the account-level SCIM API, or using databricks_user, databricks.ServicePrincipal or databricks.Group data sources with account API (and has to be an account admin). A more sensible approach is to retrieve the list of `principalId` as outputs from another Pulumi stack.
      * 
      */
-    public Output<String> principalId() {
-        return this.principalId;
+    public Optional<Output<String>> principalId() {
+        return Optional.ofNullable(this.principalId);
+    }
+
+    /**
+     * the application ID of service principal to assign to a workspace.
+     * 
+     */
+    @Import(name="servicePrincipalName")
+    private @Nullable Output<String> servicePrincipalName;
+
+    /**
+     * @return the application ID of service principal to assign to a workspace.
+     * 
+     */
+    public Optional<Output<String>> servicePrincipalName() {
+        return Optional.ofNullable(this.servicePrincipalName);
+    }
+
+    /**
+     * the user name (email) to assign to a workspace.
+     * 
+     */
+    @Import(name="userName")
+    private @Nullable Output<String> userName;
+
+    /**
+     * @return the user name (email) to assign to a workspace.
+     * 
+     */
+    public Optional<Output<String>> userName() {
+        return Optional.ofNullable(this.userName);
     }
 
     private PermissionAssignmentArgs() {}
 
     private PermissionAssignmentArgs(PermissionAssignmentArgs $) {
+        this.groupName = $.groupName;
         this.permissions = $.permissions;
         this.principalId = $.principalId;
+        this.servicePrincipalName = $.servicePrincipalName;
+        this.userName = $.userName;
     }
 
     public static Builder builder() {
@@ -72,6 +122,27 @@ public final class PermissionAssignmentArgs extends com.pulumi.resources.Resourc
 
         public Builder(PermissionAssignmentArgs defaults) {
             $ = new PermissionAssignmentArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param groupName the group name to assign to a workspace.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder groupName(@Nullable Output<String> groupName) {
+            $.groupName = groupName;
+            return this;
+        }
+
+        /**
+         * @param groupName the group name to assign to a workspace.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder groupName(String groupName) {
+            return groupName(Output.of(groupName));
         }
 
         /**
@@ -117,7 +188,7 @@ public final class PermissionAssignmentArgs extends com.pulumi.resources.Resourc
          * @return builder
          * 
          */
-        public Builder principalId(Output<String> principalId) {
+        public Builder principalId(@Nullable Output<String> principalId) {
             $.principalId = principalId;
             return this;
         }
@@ -132,12 +203,51 @@ public final class PermissionAssignmentArgs extends com.pulumi.resources.Resourc
             return principalId(Output.of(principalId));
         }
 
+        /**
+         * @param servicePrincipalName the application ID of service principal to assign to a workspace.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder servicePrincipalName(@Nullable Output<String> servicePrincipalName) {
+            $.servicePrincipalName = servicePrincipalName;
+            return this;
+        }
+
+        /**
+         * @param servicePrincipalName the application ID of service principal to assign to a workspace.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder servicePrincipalName(String servicePrincipalName) {
+            return servicePrincipalName(Output.of(servicePrincipalName));
+        }
+
+        /**
+         * @param userName the user name (email) to assign to a workspace.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder userName(@Nullable Output<String> userName) {
+            $.userName = userName;
+            return this;
+        }
+
+        /**
+         * @param userName the user name (email) to assign to a workspace.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder userName(String userName) {
+            return userName(Output.of(userName));
+        }
+
         public PermissionAssignmentArgs build() {
             if ($.permissions == null) {
                 throw new MissingRequiredPropertyException("PermissionAssignmentArgs", "permissions");
-            }
-            if ($.principalId == null) {
-                throw new MissingRequiredPropertyException("PermissionAssignmentArgs", "principalId");
             }
             return $;
         }

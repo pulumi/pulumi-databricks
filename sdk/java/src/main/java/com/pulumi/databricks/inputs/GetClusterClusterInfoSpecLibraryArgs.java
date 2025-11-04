@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.GetClusterClusterInfoSpecLibraryCranArgs;
 import com.pulumi.databricks.inputs.GetClusterClusterInfoSpecLibraryMavenArgs;
+import com.pulumi.databricks.inputs.GetClusterClusterInfoSpecLibraryProviderConfigArgs;
 import com.pulumi.databricks.inputs.GetClusterClusterInfoSpecLibraryPypiArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -58,6 +59,21 @@ public final class GetClusterClusterInfoSpecLibraryArgs extends com.pulumi.resou
         return Optional.ofNullable(this.maven);
     }
 
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<GetClusterClusterInfoSpecLibraryProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Optional<Output<GetClusterClusterInfoSpecLibraryProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     @Import(name="pypi")
     private @Nullable Output<GetClusterClusterInfoSpecLibraryPypiArgs> pypi;
 
@@ -86,6 +102,7 @@ public final class GetClusterClusterInfoSpecLibraryArgs extends com.pulumi.resou
         this.egg = $.egg;
         this.jar = $.jar;
         this.maven = $.maven;
+        this.providerConfig = $.providerConfig;
         this.pypi = $.pypi;
         this.requirements = $.requirements;
         this.whl = $.whl;
@@ -159,6 +176,27 @@ public final class GetClusterClusterInfoSpecLibraryArgs extends com.pulumi.resou
 
         public Builder maven(GetClusterClusterInfoSpecLibraryMavenArgs maven) {
             return maven(Output.of(maven));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<GetClusterClusterInfoSpecLibraryProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(GetClusterClusterInfoSpecLibraryProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         public Builder pypi(@Nullable Output<GetClusterClusterInfoSpecLibraryPypiArgs> pypi) {

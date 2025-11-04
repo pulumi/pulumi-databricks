@@ -11,6 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
 func GetMaterializedFeaturesFeatureTags(ctx *pulumi.Context, args *GetMaterializedFeaturesFeatureTagsArgs, opts ...pulumi.InvokeOption) (*GetMaterializedFeaturesFeatureTagsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetMaterializedFeaturesFeatureTagsResult
@@ -23,16 +24,20 @@ func GetMaterializedFeaturesFeatureTags(ctx *pulumi.Context, args *GetMaterializ
 
 // A collection of arguments for invoking getMaterializedFeaturesFeatureTags.
 type GetMaterializedFeaturesFeatureTagsArgs struct {
-	// Workspace ID of the resource
-	WorkspaceId *string `pulumi:"workspaceId"`
+	FeatureName string `pulumi:"featureName"`
+	// The maximum number of results to return
+	PageSize  *int   `pulumi:"pageSize"`
+	TableName string `pulumi:"tableName"`
 }
 
 // A collection of values returned by getMaterializedFeaturesFeatureTags.
 type GetMaterializedFeaturesFeatureTagsResult struct {
+	FeatureName string                                         `pulumi:"featureName"`
 	FeatureTags []GetMaterializedFeaturesFeatureTagsFeatureTag `pulumi:"featureTags"`
 	// The provider-assigned unique ID for this managed resource.
-	Id          string  `pulumi:"id"`
-	WorkspaceId *string `pulumi:"workspaceId"`
+	Id        string `pulumi:"id"`
+	PageSize  *int   `pulumi:"pageSize"`
+	TableName string `pulumi:"tableName"`
 }
 
 func GetMaterializedFeaturesFeatureTagsOutput(ctx *pulumi.Context, args GetMaterializedFeaturesFeatureTagsOutputArgs, opts ...pulumi.InvokeOption) GetMaterializedFeaturesFeatureTagsResultOutput {
@@ -46,8 +51,10 @@ func GetMaterializedFeaturesFeatureTagsOutput(ctx *pulumi.Context, args GetMater
 
 // A collection of arguments for invoking getMaterializedFeaturesFeatureTags.
 type GetMaterializedFeaturesFeatureTagsOutputArgs struct {
-	// Workspace ID of the resource
-	WorkspaceId pulumi.StringPtrInput `pulumi:"workspaceId"`
+	FeatureName pulumi.StringInput `pulumi:"featureName"`
+	// The maximum number of results to return
+	PageSize  pulumi.IntPtrInput `pulumi:"pageSize"`
+	TableName pulumi.StringInput `pulumi:"tableName"`
 }
 
 func (GetMaterializedFeaturesFeatureTagsOutputArgs) ElementType() reflect.Type {
@@ -69,6 +76,10 @@ func (o GetMaterializedFeaturesFeatureTagsResultOutput) ToGetMaterializedFeature
 	return o
 }
 
+func (o GetMaterializedFeaturesFeatureTagsResultOutput) FeatureName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMaterializedFeaturesFeatureTagsResult) string { return v.FeatureName }).(pulumi.StringOutput)
+}
+
 func (o GetMaterializedFeaturesFeatureTagsResultOutput) FeatureTags() GetMaterializedFeaturesFeatureTagsFeatureTagArrayOutput {
 	return o.ApplyT(func(v GetMaterializedFeaturesFeatureTagsResult) []GetMaterializedFeaturesFeatureTagsFeatureTag {
 		return v.FeatureTags
@@ -80,8 +91,12 @@ func (o GetMaterializedFeaturesFeatureTagsResultOutput) Id() pulumi.StringOutput
 	return o.ApplyT(func(v GetMaterializedFeaturesFeatureTagsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-func (o GetMaterializedFeaturesFeatureTagsResultOutput) WorkspaceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetMaterializedFeaturesFeatureTagsResult) *string { return v.WorkspaceId }).(pulumi.StringPtrOutput)
+func (o GetMaterializedFeaturesFeatureTagsResultOutput) PageSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetMaterializedFeaturesFeatureTagsResult) *int { return v.PageSize }).(pulumi.IntPtrOutput)
+}
+
+func (o GetMaterializedFeaturesFeatureTagsResultOutput) TableName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMaterializedFeaturesFeatureTagsResult) string { return v.TableName }).(pulumi.StringOutput)
 }
 
 func init() {

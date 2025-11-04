@@ -7,6 +7,8 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
  * This data source can be used to fetch the list of quality monitors v2.
  *
  * > **Note** This data source can only be used with an workspace-level provider!
@@ -26,7 +28,7 @@ export function getQualityMonitorsV2(args?: GetQualityMonitorsV2Args, opts?: pul
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getQualityMonitorsV2:getQualityMonitorsV2", {
-        "workspaceId": args.workspaceId,
+        "pageSize": args.pageSize,
     }, opts);
 }
 
@@ -34,10 +36,7 @@ export function getQualityMonitorsV2(args?: GetQualityMonitorsV2Args, opts?: pul
  * A collection of arguments for invoking getQualityMonitorsV2.
  */
 export interface GetQualityMonitorsV2Args {
-    /**
-     * Workspace ID of the resource
-     */
-    workspaceId?: string;
+    pageSize?: number;
 }
 
 /**
@@ -48,10 +47,12 @@ export interface GetQualityMonitorsV2Result {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly pageSize?: number;
     readonly qualityMonitors: outputs.GetQualityMonitorsV2QualityMonitor[];
-    readonly workspaceId?: string;
 }
 /**
+ * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
  * This data source can be used to fetch the list of quality monitors v2.
  *
  * > **Note** This data source can only be used with an workspace-level provider!
@@ -71,7 +72,7 @@ export function getQualityMonitorsV2Output(args?: GetQualityMonitorsV2OutputArgs
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getQualityMonitorsV2:getQualityMonitorsV2", {
-        "workspaceId": args.workspaceId,
+        "pageSize": args.pageSize,
     }, opts);
 }
 
@@ -79,8 +80,5 @@ export function getQualityMonitorsV2Output(args?: GetQualityMonitorsV2OutputArgs
  * A collection of arguments for invoking getQualityMonitorsV2.
  */
 export interface GetQualityMonitorsV2OutputArgs {
-    /**
-     * Workspace ID of the resource
-     */
-    workspaceId?: pulumi.Input<string>;
+    pageSize?: pulumi.Input<number>;
 }

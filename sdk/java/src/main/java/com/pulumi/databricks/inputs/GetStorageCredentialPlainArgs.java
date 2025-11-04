@@ -4,6 +4,7 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetStorageCredentialProviderConfig;
 import com.pulumi.databricks.inputs.GetStorageCredentialStorageCredentialInfo;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
@@ -47,6 +48,21 @@ public final class GetStorageCredentialPlainArgs extends com.pulumi.resources.In
     }
 
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable GetStorageCredentialProviderConfig providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Optional<GetStorageCredentialProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
+    /**
      * array of objects with information about storage credential.
      * 
      */
@@ -66,6 +82,7 @@ public final class GetStorageCredentialPlainArgs extends com.pulumi.resources.In
     private GetStorageCredentialPlainArgs(GetStorageCredentialPlainArgs $) {
         this.id = $.id;
         this.name = $.name;
+        this.providerConfig = $.providerConfig;
         this.storageCredentialInfo = $.storageCredentialInfo;
     }
 
@@ -106,6 +123,17 @@ public final class GetStorageCredentialPlainArgs extends com.pulumi.resources.In
          */
         public Builder name(String name) {
             $.name = name;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable GetStorageCredentialProviderConfig providerConfig) {
+            $.providerConfig = providerConfig;
             return this;
         }
 

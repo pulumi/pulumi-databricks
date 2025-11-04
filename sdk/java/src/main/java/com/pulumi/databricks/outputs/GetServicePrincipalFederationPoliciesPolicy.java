@@ -9,8 +9,6 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetServicePrincipalFederationPoliciesPolicy {
@@ -23,7 +21,7 @@ public final class GetServicePrincipalFederationPoliciesPolicy {
      * @return (string) - Description of the federation policy
      * 
      */
-    private @Nullable String description;
+    private String description;
     /**
      * @return (string) - Resource name for the federation policy. Example values include
      * `accounts/&lt;account-id&gt;/federationPolicies/my-federation-policy` for Account Federation Policies, and
@@ -38,9 +36,9 @@ public final class GetServicePrincipalFederationPoliciesPolicy {
      * @return (OidcFederationPolicy)
      * 
      */
-    private @Nullable GetServicePrincipalFederationPoliciesPolicyOidcPolicy oidcPolicy;
+    private GetServicePrincipalFederationPoliciesPolicyOidcPolicy oidcPolicy;
     /**
-     * @return (string) - The ID of the federation policy
+     * @return (string) - The ID of the federation policy. Output only
      * 
      */
     private String policyId;
@@ -72,8 +70,8 @@ public final class GetServicePrincipalFederationPoliciesPolicy {
      * @return (string) - Description of the federation policy
      * 
      */
-    public Optional<String> description() {
-        return Optional.ofNullable(this.description);
+    public String description() {
+        return this.description;
     }
     /**
      * @return (string) - Resource name for the federation policy. Example values include
@@ -91,11 +89,11 @@ public final class GetServicePrincipalFederationPoliciesPolicy {
      * @return (OidcFederationPolicy)
      * 
      */
-    public Optional<GetServicePrincipalFederationPoliciesPolicyOidcPolicy> oidcPolicy() {
-        return Optional.ofNullable(this.oidcPolicy);
+    public GetServicePrincipalFederationPoliciesPolicyOidcPolicy oidcPolicy() {
+        return this.oidcPolicy;
     }
     /**
-     * @return (string) - The ID of the federation policy
+     * @return (string) - The ID of the federation policy. Output only
      * 
      */
     public String policyId() {
@@ -133,9 +131,9 @@ public final class GetServicePrincipalFederationPoliciesPolicy {
     @CustomType.Builder
     public static final class Builder {
         private String createTime;
-        private @Nullable String description;
+        private String description;
         private String name;
-        private @Nullable GetServicePrincipalFederationPoliciesPolicyOidcPolicy oidcPolicy;
+        private GetServicePrincipalFederationPoliciesPolicyOidcPolicy oidcPolicy;
         private String policyId;
         private Integer servicePrincipalId;
         private String uid;
@@ -162,8 +160,10 @@ public final class GetServicePrincipalFederationPoliciesPolicy {
             return this;
         }
         @CustomType.Setter
-        public Builder description(@Nullable String description) {
-
+        public Builder description(String description) {
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetServicePrincipalFederationPoliciesPolicy", "description");
+            }
             this.description = description;
             return this;
         }
@@ -176,8 +176,10 @@ public final class GetServicePrincipalFederationPoliciesPolicy {
             return this;
         }
         @CustomType.Setter
-        public Builder oidcPolicy(@Nullable GetServicePrincipalFederationPoliciesPolicyOidcPolicy oidcPolicy) {
-
+        public Builder oidcPolicy(GetServicePrincipalFederationPoliciesPolicyOidcPolicy oidcPolicy) {
+            if (oidcPolicy == null) {
+              throw new MissingRequiredPropertyException("GetServicePrincipalFederationPoliciesPolicy", "oidcPolicy");
+            }
             this.oidcPolicy = oidcPolicy;
             return this;
         }

@@ -11,6 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+//
 // This data source can be used to get a single Custom Template.
 //
 // ## Example Usage
@@ -52,21 +54,9 @@ func LookupAppsSettingsCustomTemplate(ctx *pulumi.Context, args *LookupAppsSetti
 
 // A collection of arguments for invoking getAppsSettingsCustomTemplate.
 type LookupAppsSettingsCustomTemplateArgs struct {
-	// (string) - Description of the App Resource
-	Description *string `pulumi:"description"`
-	// (string) - The Git provider of the template
-	GitProvider string `pulumi:"gitProvider"`
-	// (string) - The Git repository URL that the template resides in
-	GitRepo string `pulumi:"gitRepo"`
-	// (AppManifest) - The manifest of the template. It defines fields and default values when installing the template
-	Manifest GetAppsSettingsCustomTemplateManifest `pulumi:"manifest"`
 	// The name of the template. It must contain only alphanumeric characters, hyphens, underscores, and whitespaces.
 	// It must be unique within the workspace
 	Name string `pulumi:"name"`
-	// (string) - The path to the template within the Git repository
-	Path string `pulumi:"path"`
-	// Workspace ID of the resource
-	WorkspaceId *string `pulumi:"workspaceId"`
 }
 
 // A collection of values returned by getAppsSettingsCustomTemplate.
@@ -74,7 +64,7 @@ type LookupAppsSettingsCustomTemplateResult struct {
 	// (string)
 	Creator string `pulumi:"creator"`
 	// (string) - Description of the App Resource
-	Description *string `pulumi:"description"`
+	Description string `pulumi:"description"`
 	// (string) - The Git provider of the template
 	GitProvider string `pulumi:"gitProvider"`
 	// (string) - The Git repository URL that the template resides in
@@ -86,8 +76,7 @@ type LookupAppsSettingsCustomTemplateResult struct {
 	// (string) - Name of the App Resource
 	Name string `pulumi:"name"`
 	// (string) - The path to the template within the Git repository
-	Path        string  `pulumi:"path"`
-	WorkspaceId *string `pulumi:"workspaceId"`
+	Path string `pulumi:"path"`
 }
 
 func LookupAppsSettingsCustomTemplateOutput(ctx *pulumi.Context, args LookupAppsSettingsCustomTemplateOutputArgs, opts ...pulumi.InvokeOption) LookupAppsSettingsCustomTemplateResultOutput {
@@ -101,21 +90,9 @@ func LookupAppsSettingsCustomTemplateOutput(ctx *pulumi.Context, args LookupApps
 
 // A collection of arguments for invoking getAppsSettingsCustomTemplate.
 type LookupAppsSettingsCustomTemplateOutputArgs struct {
-	// (string) - Description of the App Resource
-	Description pulumi.StringPtrInput `pulumi:"description"`
-	// (string) - The Git provider of the template
-	GitProvider pulumi.StringInput `pulumi:"gitProvider"`
-	// (string) - The Git repository URL that the template resides in
-	GitRepo pulumi.StringInput `pulumi:"gitRepo"`
-	// (AppManifest) - The manifest of the template. It defines fields and default values when installing the template
-	Manifest GetAppsSettingsCustomTemplateManifestInput `pulumi:"manifest"`
 	// The name of the template. It must contain only alphanumeric characters, hyphens, underscores, and whitespaces.
 	// It must be unique within the workspace
 	Name pulumi.StringInput `pulumi:"name"`
-	// (string) - The path to the template within the Git repository
-	Path pulumi.StringInput `pulumi:"path"`
-	// Workspace ID of the resource
-	WorkspaceId pulumi.StringPtrInput `pulumi:"workspaceId"`
 }
 
 func (LookupAppsSettingsCustomTemplateOutputArgs) ElementType() reflect.Type {
@@ -143,8 +120,8 @@ func (o LookupAppsSettingsCustomTemplateResultOutput) Creator() pulumi.StringOut
 }
 
 // (string) - Description of the App Resource
-func (o LookupAppsSettingsCustomTemplateResultOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupAppsSettingsCustomTemplateResult) *string { return v.Description }).(pulumi.StringPtrOutput)
+func (o LookupAppsSettingsCustomTemplateResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAppsSettingsCustomTemplateResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
 // (string) - The Git provider of the template
@@ -177,10 +154,6 @@ func (o LookupAppsSettingsCustomTemplateResultOutput) Name() pulumi.StringOutput
 // (string) - The path to the template within the Git repository
 func (o LookupAppsSettingsCustomTemplateResultOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAppsSettingsCustomTemplateResult) string { return v.Path }).(pulumi.StringOutput)
-}
-
-func (o LookupAppsSettingsCustomTemplateResultOutput) WorkspaceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupAppsSettingsCustomTemplateResult) *string { return v.WorkspaceId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

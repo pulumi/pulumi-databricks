@@ -7,8 +7,6 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetEntityTagAssignmentsTagAssignment {
@@ -31,7 +29,7 @@ public final class GetEntityTagAssignmentsTagAssignment {
      * @return (string) - The value of the tag
      * 
      */
-    private @Nullable String tagValue;
+    private String tagValue;
 
     private GetEntityTagAssignmentsTagAssignment() {}
     /**
@@ -59,8 +57,8 @@ public final class GetEntityTagAssignmentsTagAssignment {
      * @return (string) - The value of the tag
      * 
      */
-    public Optional<String> tagValue() {
-        return Optional.ofNullable(this.tagValue);
+    public String tagValue() {
+        return this.tagValue;
     }
 
     public static Builder builder() {
@@ -75,7 +73,7 @@ public final class GetEntityTagAssignmentsTagAssignment {
         private String entityName;
         private String entityType;
         private String tagKey;
-        private @Nullable String tagValue;
+        private String tagValue;
         public Builder() {}
         public Builder(GetEntityTagAssignmentsTagAssignment defaults) {
     	      Objects.requireNonNull(defaults);
@@ -110,8 +108,10 @@ public final class GetEntityTagAssignmentsTagAssignment {
             return this;
         }
         @CustomType.Setter
-        public Builder tagValue(@Nullable String tagValue) {
-
+        public Builder tagValue(String tagValue) {
+            if (tagValue == null) {
+              throw new MissingRequiredPropertyException("GetEntityTagAssignmentsTagAssignment", "tagValue");
+            }
             this.tagValue = tagValue;
             return this;
         }

@@ -7,8 +7,6 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GetMaterializedFeaturesFeatureTagPlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -22,42 +20,10 @@ public final class GetMaterializedFeaturesFeatureTagPlainArgs extends com.pulumi
         return this.key;
     }
 
-    /**
-     * (string)
-     * 
-     */
-    @Import(name="value")
-    private @Nullable String value;
-
-    /**
-     * @return (string)
-     * 
-     */
-    public Optional<String> value() {
-        return Optional.ofNullable(this.value);
-    }
-
-    /**
-     * Workspace ID of the resource
-     * 
-     */
-    @Import(name="workspaceId")
-    private @Nullable String workspaceId;
-
-    /**
-     * @return Workspace ID of the resource
-     * 
-     */
-    public Optional<String> workspaceId() {
-        return Optional.ofNullable(this.workspaceId);
-    }
-
     private GetMaterializedFeaturesFeatureTagPlainArgs() {}
 
     private GetMaterializedFeaturesFeatureTagPlainArgs(GetMaterializedFeaturesFeatureTagPlainArgs $) {
         this.key = $.key;
-        this.value = $.value;
-        this.workspaceId = $.workspaceId;
     }
 
     public static Builder builder() {
@@ -80,28 +46,6 @@ public final class GetMaterializedFeaturesFeatureTagPlainArgs extends com.pulumi
 
         public Builder key(String key) {
             $.key = key;
-            return this;
-        }
-
-        /**
-         * @param value (string)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder value(@Nullable String value) {
-            $.value = value;
-            return this;
-        }
-
-        /**
-         * @param workspaceId Workspace ID of the resource
-         * 
-         * @return builder
-         * 
-         */
-        public Builder workspaceId(@Nullable String workspaceId) {
-            $.workspaceId = workspaceId;
             return this;
         }
 

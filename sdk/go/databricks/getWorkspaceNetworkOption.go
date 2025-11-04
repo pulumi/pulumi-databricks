@@ -11,6 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+//
 // This data source can be used to get a single workspace network option.
 //
 // > **Note** This data source can only be used with an account-level provider!
@@ -32,7 +34,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := databricks.LookupWorkspaceNetworkOption(ctx, &databricks.LookupWorkspaceNetworkOptionArgs{
-//				WorkspaceId: pulumi.StringRef("9999999999999999"),
+//				WorkspaceId: "9999999999999999",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -54,13 +56,8 @@ func LookupWorkspaceNetworkOption(ctx *pulumi.Context, args *LookupWorkspaceNetw
 
 // A collection of arguments for invoking getWorkspaceNetworkOption.
 type LookupWorkspaceNetworkOptionArgs struct {
-	// (string) - The network policy ID to apply to the workspace. This controls the network access rules
-	// for all serverless compute resources in the workspace. Each workspace can only be
-	// linked to one policy at a time. If no policy is explicitly assigned,
-	// the workspace will use 'default-policy'
-	NetworkPolicyId *string `pulumi:"networkPolicyId"`
 	// The workspace ID
-	WorkspaceId *string `pulumi:"workspaceId"`
+	WorkspaceId string `pulumi:"workspaceId"`
 }
 
 // A collection of values returned by getWorkspaceNetworkOption.
@@ -71,9 +68,9 @@ type LookupWorkspaceNetworkOptionResult struct {
 	// for all serverless compute resources in the workspace. Each workspace can only be
 	// linked to one policy at a time. If no policy is explicitly assigned,
 	// the workspace will use 'default-policy'
-	NetworkPolicyId *string `pulumi:"networkPolicyId"`
+	NetworkPolicyId string `pulumi:"networkPolicyId"`
 	// (integer) - The workspace ID
-	WorkspaceId *string `pulumi:"workspaceId"`
+	WorkspaceId string `pulumi:"workspaceId"`
 }
 
 func LookupWorkspaceNetworkOptionOutput(ctx *pulumi.Context, args LookupWorkspaceNetworkOptionOutputArgs, opts ...pulumi.InvokeOption) LookupWorkspaceNetworkOptionResultOutput {
@@ -87,13 +84,8 @@ func LookupWorkspaceNetworkOptionOutput(ctx *pulumi.Context, args LookupWorkspac
 
 // A collection of arguments for invoking getWorkspaceNetworkOption.
 type LookupWorkspaceNetworkOptionOutputArgs struct {
-	// (string) - The network policy ID to apply to the workspace. This controls the network access rules
-	// for all serverless compute resources in the workspace. Each workspace can only be
-	// linked to one policy at a time. If no policy is explicitly assigned,
-	// the workspace will use 'default-policy'
-	NetworkPolicyId pulumi.StringPtrInput `pulumi:"networkPolicyId"`
 	// The workspace ID
-	WorkspaceId pulumi.StringPtrInput `pulumi:"workspaceId"`
+	WorkspaceId pulumi.StringInput `pulumi:"workspaceId"`
 }
 
 func (LookupWorkspaceNetworkOptionOutputArgs) ElementType() reflect.Type {
@@ -124,13 +116,13 @@ func (o LookupWorkspaceNetworkOptionResultOutput) Id() pulumi.StringOutput {
 // for all serverless compute resources in the workspace. Each workspace can only be
 // linked to one policy at a time. If no policy is explicitly assigned,
 // the workspace will use 'default-policy'
-func (o LookupWorkspaceNetworkOptionResultOutput) NetworkPolicyId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupWorkspaceNetworkOptionResult) *string { return v.NetworkPolicyId }).(pulumi.StringPtrOutput)
+func (o LookupWorkspaceNetworkOptionResultOutput) NetworkPolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkspaceNetworkOptionResult) string { return v.NetworkPolicyId }).(pulumi.StringOutput)
 }
 
 // (integer) - The workspace ID
-func (o LookupWorkspaceNetworkOptionResultOutput) WorkspaceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupWorkspaceNetworkOptionResult) *string { return v.WorkspaceId }).(pulumi.StringPtrOutput)
+func (o LookupWorkspaceNetworkOptionResultOutput) WorkspaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkspaceNetworkOptionResult) string { return v.WorkspaceId }).(pulumi.StringOutput)
 }
 
 func init() {

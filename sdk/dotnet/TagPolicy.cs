@@ -10,9 +10,45 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
+    /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    /// 
     /// Define tag policies to manage governed tags in your account.
     /// 
-    /// &gt; **Note** This resource can only be used with an account-level provider!
+    /// &gt; **Note** This resource can only be used with a workspace-level provider!
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleTagPolicy = new Databricks.TagPolicy("example_tag_policy", new()
+    ///     {
+    ///         TagKey = "example_tag_key",
+    ///         Description = "Example description.",
+    ///         Values = new[]
+    ///         {
+    ///             new Databricks.Inputs.TagPolicyValueArgs
+    ///             {
+    ///                 Name = "example_value_1",
+    ///             },
+    ///             new Databricks.Inputs.TagPolicyValueArgs
+    ///             {
+    ///                 Name = "example_value_2",
+    ///             },
+    ///             new Databricks.Inputs.TagPolicyValueArgs
+    ///             {
+    ///                 Name = "example_value_3",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -31,26 +67,32 @@ namespace Pulumi.Databricks
     /// If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
     /// 
     /// ```sh
-    /// $ pulumi import databricks:index/tagPolicy:TagPolicy databricks_tag_policy "tag_key"
+    /// $ pulumi import databricks:index/tagPolicy:TagPolicy this "tag_key"
     /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/tagPolicy:TagPolicy")]
     public partial class TagPolicy : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// (string) - Timestamp when the tag policy was created
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         [Output("tagKey")]
         public Output<string> TagKey { get; private set; } = null!;
 
+        /// <summary>
+        /// (string) - Timestamp when the tag policy was last updated
+        /// </summary>
+        [Output("updateTime")]
+        public Output<string> UpdateTime { get; private set; } = null!;
+
         [Output("values")]
         public Output<ImmutableArray<Outputs.TagPolicyValue>> Values { get; private set; } = null!;
-
-        /// <summary>
-        /// Workspace ID of the resource
-        /// </summary>
-        [Output("workspaceId")]
-        public Output<string?> WorkspaceId { get; private set; } = null!;
 
 
         /// <summary>
@@ -112,12 +154,6 @@ namespace Pulumi.Databricks
             set => _values = value;
         }
 
-        /// <summary>
-        /// Workspace ID of the resource
-        /// </summary>
-        [Input("workspaceId")]
-        public Input<string>? WorkspaceId { get; set; }
-
         public TagPolicyArgs()
         {
         }
@@ -126,11 +162,23 @@ namespace Pulumi.Databricks
 
     public sealed class TagPolicyState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// (string) - Timestamp when the tag policy was created
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
+
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         [Input("tagKey")]
         public Input<string>? TagKey { get; set; }
+
+        /// <summary>
+        /// (string) - Timestamp when the tag policy was last updated
+        /// </summary>
+        [Input("updateTime")]
+        public Input<string>? UpdateTime { get; set; }
 
         [Input("values")]
         private InputList<Inputs.TagPolicyValueGetArgs>? _values;
@@ -139,12 +187,6 @@ namespace Pulumi.Databricks
             get => _values ?? (_values = new InputList<Inputs.TagPolicyValueGetArgs>());
             set => _values = value;
         }
-
-        /// <summary>
-        /// Workspace ID of the resource
-        /// </summary>
-        [Input("workspaceId")]
-        public Input<string>? WorkspaceId { get; set; }
 
         public TagPolicyState()
         {

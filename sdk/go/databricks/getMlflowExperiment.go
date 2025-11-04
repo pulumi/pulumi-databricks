@@ -40,6 +40,8 @@ type LookupMlflowExperimentArgs struct {
 	LifecycleStage *string `pulumi:"lifecycleStage"`
 	// Path to experiment.
 	Name *string `pulumi:"name"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *GetMlflowExperimentProviderConfig `pulumi:"providerConfig"`
 	// Additional metadata key-value pairs.
 	Tags []GetMlflowExperimentTag `pulumi:"tags"`
 }
@@ -59,7 +61,8 @@ type LookupMlflowExperimentResult struct {
 	// Current life cycle stage of the experiment: `active` or `deleted`.
 	LifecycleStage string `pulumi:"lifecycleStage"`
 	// Path to experiment.
-	Name string `pulumi:"name"`
+	Name           string                             `pulumi:"name"`
+	ProviderConfig *GetMlflowExperimentProviderConfig `pulumi:"providerConfig"`
 	// Additional metadata key-value pairs.
 	Tags []GetMlflowExperimentTag `pulumi:"tags"`
 }
@@ -89,6 +92,8 @@ type LookupMlflowExperimentOutputArgs struct {
 	LifecycleStage pulumi.StringPtrInput `pulumi:"lifecycleStage"`
 	// Path to experiment.
 	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig GetMlflowExperimentProviderConfigPtrInput `pulumi:"providerConfig"`
 	// Additional metadata key-value pairs.
 	Tags GetMlflowExperimentTagArrayInput `pulumi:"tags"`
 }
@@ -145,6 +150,10 @@ func (o LookupMlflowExperimentResultOutput) LifecycleStage() pulumi.StringOutput
 // Path to experiment.
 func (o LookupMlflowExperimentResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMlflowExperimentResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupMlflowExperimentResultOutput) ProviderConfig() GetMlflowExperimentProviderConfigPtrOutput {
+	return o.ApplyT(func(v LookupMlflowExperimentResult) *GetMlflowExperimentProviderConfig { return v.ProviderConfig }).(GetMlflowExperimentProviderConfigPtrOutput)
 }
 
 // Additional metadata key-value pairs.

@@ -140,6 +140,20 @@ public class GitCredential extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.force);
     }
     /**
+     * The email associated with your Git provider user account. Used for authentication with the remote repository and also sets the author &amp; committer identity for commits.
+     * 
+     */
+    @Export(name="gitEmail", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> gitEmail;
+
+    /**
+     * @return The email associated with your Git provider user account. Used for authentication with the remote repository and also sets the author &amp; committer identity for commits.
+     * 
+     */
+    public Output<Optional<String>> gitEmail() {
+        return Codegen.optional(this.gitEmail);
+    }
+    /**
      * case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Git Credentials API documentation](https://docs.databricks.com/dev-tools/api/latest/gitcredentials.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`, `azureDevOpsServicesAad`.
      * 
      */
@@ -154,14 +168,14 @@ public class GitCredential extends com.pulumi.resources.CustomResource {
         return this.gitProvider;
     }
     /**
-     * user name at Git provider.
+     * user name at Git provider.  For most Git providers it is only used to set the Git committer &amp; author names for commits, however it may be required for authentication depending on your Git provider / token requirements.
      * 
      */
     @Export(name="gitUsername", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> gitUsername;
 
     /**
-     * @return user name at Git provider.
+     * @return user name at Git provider.  For most Git providers it is only used to set the Git committer &amp; author names for commits, however it may be required for authentication depending on your Git provider / token requirements.
      * 
      */
     public Output<Optional<String>> gitUsername() {

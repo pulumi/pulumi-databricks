@@ -5,7 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.String;
+import java.lang.Integer;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,24 +16,26 @@ public final class GetExternalMetadatasArgs extends com.pulumi.resources.InvokeA
     public static final GetExternalMetadatasArgs Empty = new GetExternalMetadatasArgs();
 
     /**
-     * Workspace ID of the resource
+     * Specifies the maximum number of external metadata objects to return in a single response.
+     * The value must be less than or equal to 1000
      * 
      */
-    @Import(name="workspaceId")
-    private @Nullable Output<String> workspaceId;
+    @Import(name="pageSize")
+    private @Nullable Output<Integer> pageSize;
 
     /**
-     * @return Workspace ID of the resource
+     * @return Specifies the maximum number of external metadata objects to return in a single response.
+     * The value must be less than or equal to 1000
      * 
      */
-    public Optional<Output<String>> workspaceId() {
-        return Optional.ofNullable(this.workspaceId);
+    public Optional<Output<Integer>> pageSize() {
+        return Optional.ofNullable(this.pageSize);
     }
 
     private GetExternalMetadatasArgs() {}
 
     private GetExternalMetadatasArgs(GetExternalMetadatasArgs $) {
-        this.workspaceId = $.workspaceId;
+        this.pageSize = $.pageSize;
     }
 
     public static Builder builder() {
@@ -55,24 +57,26 @@ public final class GetExternalMetadatasArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param workspaceId Workspace ID of the resource
+         * @param pageSize Specifies the maximum number of external metadata objects to return in a single response.
+         * The value must be less than or equal to 1000
          * 
          * @return builder
          * 
          */
-        public Builder workspaceId(@Nullable Output<String> workspaceId) {
-            $.workspaceId = workspaceId;
+        public Builder pageSize(@Nullable Output<Integer> pageSize) {
+            $.pageSize = pageSize;
             return this;
         }
 
         /**
-         * @param workspaceId Workspace ID of the resource
+         * @param pageSize Specifies the maximum number of external metadata objects to return in a single response.
+         * The value must be less than or equal to 1000
          * 
          * @return builder
          * 
          */
-        public Builder workspaceId(String workspaceId) {
-            return workspaceId(Output.of(workspaceId));
+        public Builder pageSize(Integer pageSize) {
+            return pageSize(Output.of(pageSize));
         }
 
         public GetExternalMetadatasArgs build() {

@@ -12,25 +12,91 @@ namespace Pulumi.Databricks
     public static class GetTagPolicy
     {
         /// <summary>
+        /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
         /// This data source can be used to get a single tag policy by its tag key.
         /// 
-        /// &gt; **Note** This resource can only be used with an account-level provider!
+        /// &gt; **Note** This resource can only be used with a workspace-level provider!
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Referring to a tag policy by its tag key:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleTagPolicy = Databricks.GetTagPolicy.Invoke(new()
+        ///     {
+        ///         TagKey = "example_tag_key",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetTagPolicyResult> InvokeAsync(GetTagPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTagPolicyResult>("databricks:index/getTagPolicy:getTagPolicy", args ?? new GetTagPolicyArgs(), options.WithDefaults());
 
         /// <summary>
+        /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
         /// This data source can be used to get a single tag policy by its tag key.
         /// 
-        /// &gt; **Note** This resource can only be used with an account-level provider!
+        /// &gt; **Note** This resource can only be used with a workspace-level provider!
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Referring to a tag policy by its tag key:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleTagPolicy = Databricks.GetTagPolicy.Invoke(new()
+        ///     {
+        ///         TagKey = "example_tag_key",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetTagPolicyResult> Invoke(GetTagPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTagPolicyResult>("databricks:index/getTagPolicy:getTagPolicy", args ?? new GetTagPolicyInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
         /// This data source can be used to get a single tag policy by its tag key.
         /// 
-        /// &gt; **Note** This resource can only be used with an account-level provider!
+        /// &gt; **Note** This resource can only be used with a workspace-level provider!
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Referring to a tag policy by its tag key:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleTagPolicy = Databricks.GetTagPolicy.Invoke(new()
+        ///     {
+        ///         TagKey = "example_tag_key",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetTagPolicyResult> Invoke(GetTagPolicyInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetTagPolicyResult>("databricks:index/getTagPolicy:getTagPolicy", args ?? new GetTagPolicyInvokeArgs(), options.WithDefaults());
@@ -39,32 +105,8 @@ namespace Pulumi.Databricks
 
     public sealed class GetTagPolicyArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// (string)
-        /// </summary>
-        [Input("description")]
-        public string? Description { get; set; }
-
         [Input("tagKey", required: true)]
         public string TagKey { get; set; } = null!;
-
-        [Input("values")]
-        private List<Inputs.GetTagPolicyValueArgs>? _values;
-
-        /// <summary>
-        /// (list of Value)
-        /// </summary>
-        public List<Inputs.GetTagPolicyValueArgs> Values
-        {
-            get => _values ?? (_values = new List<Inputs.GetTagPolicyValueArgs>());
-            set => _values = value;
-        }
-
-        /// <summary>
-        /// Workspace ID of the resource
-        /// </summary>
-        [Input("workspaceId")]
-        public string? WorkspaceId { get; set; }
 
         public GetTagPolicyArgs()
         {
@@ -74,32 +116,8 @@ namespace Pulumi.Databricks
 
     public sealed class GetTagPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// (string)
-        /// </summary>
-        [Input("description")]
-        public Input<string>? Description { get; set; }
-
         [Input("tagKey", required: true)]
         public Input<string> TagKey { get; set; } = null!;
-
-        [Input("values")]
-        private InputList<Inputs.GetTagPolicyValueInputArgs>? _values;
-
-        /// <summary>
-        /// (list of Value)
-        /// </summary>
-        public InputList<Inputs.GetTagPolicyValueInputArgs> Values
-        {
-            get => _values ?? (_values = new InputList<Inputs.GetTagPolicyValueInputArgs>());
-            set => _values = value;
-        }
-
-        /// <summary>
-        /// Workspace ID of the resource
-        /// </summary>
-        [Input("workspaceId")]
-        public Input<string>? WorkspaceId { get; set; }
 
         public GetTagPolicyInvokeArgs()
         {
@@ -112,9 +130,13 @@ namespace Pulumi.Databricks
     public sealed class GetTagPolicyResult
     {
         /// <summary>
+        /// (string) - Timestamp when the tag policy was created
+        /// </summary>
+        public readonly string CreateTime;
+        /// <summary>
         /// (string)
         /// </summary>
-        public readonly string? Description;
+        public readonly string Description;
         /// <summary>
         /// (string)
         /// </summary>
@@ -124,28 +146,34 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string TagKey;
         /// <summary>
+        /// (string) - Timestamp when the tag policy was last updated
+        /// </summary>
+        public readonly string UpdateTime;
+        /// <summary>
         /// (list of Value)
         /// </summary>
         public readonly ImmutableArray<Outputs.GetTagPolicyValueResult> Values;
-        public readonly string? WorkspaceId;
 
         [OutputConstructor]
         private GetTagPolicyResult(
-            string? description,
+            string createTime,
+
+            string description,
 
             string id,
 
             string tagKey,
 
-            ImmutableArray<Outputs.GetTagPolicyValueResult> values,
+            string updateTime,
 
-            string? workspaceId)
+            ImmutableArray<Outputs.GetTagPolicyValueResult> values)
         {
+            CreateTime = createTime;
             Description = description;
             Id = id;
             TagKey = tagKey;
+            UpdateTime = updateTime;
             Values = values;
-            WorkspaceId = workspaceId;
         }
     }
 }

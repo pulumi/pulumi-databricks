@@ -16,15 +16,23 @@ public final class StorageCredentialAwsIamRoleArgs extends com.pulumi.resources.
 
     public static final StorageCredentialAwsIamRoleArgs Empty = new StorageCredentialAwsIamRoleArgs();
 
+    /**
+     * The external ID used in role assumption to prevent the confused deputy problem.
+     * 
+     */
     @Import(name="externalId")
     private @Nullable Output<String> externalId;
 
+    /**
+     * @return The external ID used in role assumption to prevent the confused deputy problem.
+     * 
+     */
     public Optional<Output<String>> externalId() {
         return Optional.ofNullable(this.externalId);
     }
 
     /**
-     * The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
+     * The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`.
      * 
      * `azureManagedIdentity` optional configuration block for using managed identity as credential details for Azure (recommended over service principal):
      * 
@@ -33,7 +41,7 @@ public final class StorageCredentialAwsIamRoleArgs extends com.pulumi.resources.
     private Output<String> roleArn;
 
     /**
-     * @return The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
+     * @return The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`.
      * 
      * `azureManagedIdentity` optional configuration block for using managed identity as credential details for Azure (recommended over service principal):
      * 
@@ -42,9 +50,17 @@ public final class StorageCredentialAwsIamRoleArgs extends com.pulumi.resources.
         return this.roleArn;
     }
 
+    /**
+     * The Amazon Resource Name (ARN) of the AWS IAM user managed by Databricks. This is the identity that is going to assume the AWS IAM role.
+     * 
+     */
     @Import(name="unityCatalogIamArn")
     private @Nullable Output<String> unityCatalogIamArn;
 
+    /**
+     * @return The Amazon Resource Name (ARN) of the AWS IAM user managed by Databricks. This is the identity that is going to assume the AWS IAM role.
+     * 
+     */
     public Optional<Output<String>> unityCatalogIamArn() {
         return Optional.ofNullable(this.unityCatalogIamArn);
     }
@@ -75,17 +91,29 @@ public final class StorageCredentialAwsIamRoleArgs extends com.pulumi.resources.
             $ = new StorageCredentialAwsIamRoleArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param externalId The external ID used in role assumption to prevent the confused deputy problem.
+         * 
+         * @return builder
+         * 
+         */
         public Builder externalId(@Nullable Output<String> externalId) {
             $.externalId = externalId;
             return this;
         }
 
+        /**
+         * @param externalId The external ID used in role assumption to prevent the confused deputy problem.
+         * 
+         * @return builder
+         * 
+         */
         public Builder externalId(String externalId) {
             return externalId(Output.of(externalId));
         }
 
         /**
-         * @param roleArn The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
+         * @param roleArn The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`.
          * 
          * `azureManagedIdentity` optional configuration block for using managed identity as credential details for Azure (recommended over service principal):
          * 
@@ -98,7 +126,7 @@ public final class StorageCredentialAwsIamRoleArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param roleArn The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
+         * @param roleArn The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`.
          * 
          * `azureManagedIdentity` optional configuration block for using managed identity as credential details for Azure (recommended over service principal):
          * 
@@ -109,11 +137,23 @@ public final class StorageCredentialAwsIamRoleArgs extends com.pulumi.resources.
             return roleArn(Output.of(roleArn));
         }
 
+        /**
+         * @param unityCatalogIamArn The Amazon Resource Name (ARN) of the AWS IAM user managed by Databricks. This is the identity that is going to assume the AWS IAM role.
+         * 
+         * @return builder
+         * 
+         */
         public Builder unityCatalogIamArn(@Nullable Output<String> unityCatalogIamArn) {
             $.unityCatalogIamArn = unityCatalogIamArn;
             return this;
         }
 
+        /**
+         * @param unityCatalogIamArn The Amazon Resource Name (ARN) of the AWS IAM user managed by Databricks. This is the identity that is going to assume the AWS IAM role.
+         * 
+         * @return builder
+         * 
+         */
         public Builder unityCatalogIamArn(String unityCatalogIamArn) {
             return unityCatalogIamArn(Output.of(unityCatalogIamArn));
         }

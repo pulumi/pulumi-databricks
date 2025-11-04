@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -62,6 +64,7 @@ export function getSparkVersion(args?: GetSparkVersionArgs, opts?: pulumi.Invoke
         "longTermSupport": args.longTermSupport,
         "ml": args.ml,
         "photon": args.photon,
+        "providerConfig": args.providerConfig,
         "scala": args.scala,
         "sparkVersion": args.sparkVersion,
     }, opts);
@@ -112,6 +115,10 @@ export interface GetSparkVersionArgs {
      */
     photon?: boolean;
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: inputs.GetSparkVersionProviderConfig;
+    /**
      * if we should limit the search only to runtimes that are based on specific Scala version. Default to `2.12`.
      */
     scala?: string;
@@ -143,6 +150,7 @@ export interface GetSparkVersionResult {
      * @deprecated Specify runtime_engine="PHOTON" in the cluster configuration
      */
     readonly photon?: boolean;
+    readonly providerConfig?: outputs.GetSparkVersionProviderConfig;
     readonly scala?: string;
     readonly sparkVersion?: string;
 }
@@ -204,6 +212,7 @@ export function getSparkVersionOutput(args?: GetSparkVersionOutputArgs, opts?: p
         "longTermSupport": args.longTermSupport,
         "ml": args.ml,
         "photon": args.photon,
+        "providerConfig": args.providerConfig,
         "scala": args.scala,
         "sparkVersion": args.sparkVersion,
     }, opts);
@@ -253,6 +262,10 @@ export interface GetSparkVersionOutputArgs {
      * @deprecated Specify runtime_engine="PHOTON" in the cluster configuration
      */
     photon?: pulumi.Input<boolean>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.GetSparkVersionProviderConfigArgs>;
     /**
      * if we should limit the search only to runtimes that are based on specific Scala version. Default to `2.12`.
      */

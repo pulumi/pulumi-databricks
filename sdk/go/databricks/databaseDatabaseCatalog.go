@@ -12,6 +12,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+//
 // Database Catalogs are databases inside a Lakebase Database Instance which are synced into a Postgres Catalog inside Unity Catalog.
 //
 // ## Example Usage
@@ -125,7 +127,7 @@ import (
 // If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
 //
 // ```sh
-// $ pulumi import databricks:index/databaseDatabaseCatalog:DatabaseDatabaseCatalog databricks_database_database_catalog "name"
+// $ pulumi import databricks:index/databaseDatabaseCatalog:DatabaseDatabaseCatalog this "name"
 // ```
 type DatabaseDatabaseCatalog struct {
 	pulumi.CustomResourceState
@@ -139,8 +141,6 @@ type DatabaseDatabaseCatalog struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// (string)
 	Uid pulumi.StringOutput `pulumi:"uid"`
-	// Workspace ID of the resource
-	WorkspaceId pulumi.StringPtrOutput `pulumi:"workspaceId"`
 }
 
 // NewDatabaseDatabaseCatalog registers a new resource with the given unique name, arguments, and options.
@@ -188,8 +188,6 @@ type databaseDatabaseCatalogState struct {
 	Name *string `pulumi:"name"`
 	// (string)
 	Uid *string `pulumi:"uid"`
-	// Workspace ID of the resource
-	WorkspaceId *string `pulumi:"workspaceId"`
 }
 
 type DatabaseDatabaseCatalogState struct {
@@ -202,8 +200,6 @@ type DatabaseDatabaseCatalogState struct {
 	Name pulumi.StringPtrInput
 	// (string)
 	Uid pulumi.StringPtrInput
-	// Workspace ID of the resource
-	WorkspaceId pulumi.StringPtrInput
 }
 
 func (DatabaseDatabaseCatalogState) ElementType() reflect.Type {
@@ -218,8 +214,6 @@ type databaseDatabaseCatalogArgs struct {
 	DatabaseName string `pulumi:"databaseName"`
 	// The name of the catalog in UC
 	Name *string `pulumi:"name"`
-	// Workspace ID of the resource
-	WorkspaceId *string `pulumi:"workspaceId"`
 }
 
 // The set of arguments for constructing a DatabaseDatabaseCatalog resource.
@@ -231,8 +225,6 @@ type DatabaseDatabaseCatalogArgs struct {
 	DatabaseName pulumi.StringInput
 	// The name of the catalog in UC
 	Name pulumi.StringPtrInput
-	// Workspace ID of the resource
-	WorkspaceId pulumi.StringPtrInput
 }
 
 func (DatabaseDatabaseCatalogArgs) ElementType() reflect.Type {
@@ -344,11 +336,6 @@ func (o DatabaseDatabaseCatalogOutput) Name() pulumi.StringOutput {
 // (string)
 func (o DatabaseDatabaseCatalogOutput) Uid() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabaseDatabaseCatalog) pulumi.StringOutput { return v.Uid }).(pulumi.StringOutput)
-}
-
-// Workspace ID of the resource
-func (o DatabaseDatabaseCatalogOutput) WorkspaceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DatabaseDatabaseCatalog) pulumi.StringPtrOutput { return v.WorkspaceId }).(pulumi.StringPtrOutput)
 }
 
 type DatabaseDatabaseCatalogArrayOutput struct{ *pulumi.OutputState }

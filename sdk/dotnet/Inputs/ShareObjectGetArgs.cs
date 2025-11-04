@@ -39,6 +39,21 @@ namespace Pulumi.Databricks.Inputs
         [Input("dataObjectType", required: true)]
         public Input<string> DataObjectType { get; set; } = null!;
 
+        [Input("effectiveCdfEnabled")]
+        public Input<bool>? EffectiveCdfEnabled { get; set; }
+
+        [Input("effectiveHistoryDataSharingStatus")]
+        public Input<string>? EffectiveHistoryDataSharingStatus { get; set; }
+
+        [Input("effectiveSharedAs")]
+        public Input<string>? EffectiveSharedAs { get; set; }
+
+        [Input("effectiveStartVersion")]
+        public Input<int>? EffectiveStartVersion { get; set; }
+
+        [Input("effectiveStringSharedAs")]
+        public Input<string>? EffectiveStringSharedAs { get; set; }
+
         /// <summary>
         /// Whether to enable history sharing, one of: `ENABLED`, `DISABLED`. When a table has history sharing enabled, recipients can query table data by version, starting from the current table version. If not specified, clients can only query starting from the version of the object at the time it was added to the share. *NOTE*: The StartVersion should be less than or equal the current version of the object. When this field is set, field `CdfEnabled` can not be set.
         /// 

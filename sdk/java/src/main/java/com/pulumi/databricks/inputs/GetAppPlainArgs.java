@@ -4,9 +4,12 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetAppProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetAppPlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -28,10 +31,18 @@ public final class GetAppPlainArgs extends com.pulumi.resources.InvokeArgs {
         return this.name;
     }
 
+    @Import(name="providerConfig")
+    private @Nullable GetAppProviderConfig providerConfig;
+
+    public Optional<GetAppProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     private GetAppPlainArgs() {}
 
     private GetAppPlainArgs(GetAppPlainArgs $) {
         this.name = $.name;
+        this.providerConfig = $.providerConfig;
     }
 
     public static Builder builder() {
@@ -60,6 +71,11 @@ public final class GetAppPlainArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder name(String name) {
             $.name = name;
+            return this;
+        }
+
+        public Builder providerConfig(@Nullable GetAppProviderConfig providerConfig) {
+            $.providerConfig = providerConfig;
             return this;
         }
 

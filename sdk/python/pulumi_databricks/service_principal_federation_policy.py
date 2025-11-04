@@ -28,8 +28,8 @@ class ServicePrincipalFederationPolicyArgs:
         """
         The set of arguments for constructing a ServicePrincipalFederationPolicy resource.
         :param pulumi.Input[_builtins.str] description: Description of the federation policy
-        :param pulumi.Input[_builtins.str] policy_id: (string) - The ID of the federation policy
-        :param pulumi.Input[_builtins.int] service_principal_id: (integer) - The service principal ID that this federation policy applies to. Only set for service principal federation policies
+        :param pulumi.Input[_builtins.str] policy_id: (string) - The ID of the federation policy. Output only
+        :param pulumi.Input[_builtins.int] service_principal_id: (integer) - The service principal ID that this federation policy applies to. Output only. Only set for service principal federation policies
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -65,7 +65,7 @@ class ServicePrincipalFederationPolicyArgs:
     @pulumi.getter(name="policyId")
     def policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        (string) - The ID of the federation policy
+        (string) - The ID of the federation policy. Output only
         """
         return pulumi.get(self, "policy_id")
 
@@ -77,7 +77,7 @@ class ServicePrincipalFederationPolicyArgs:
     @pulumi.getter(name="servicePrincipalId")
     def service_principal_id(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        (integer) - The service principal ID that this federation policy applies to. Only set for service principal federation policies
+        (integer) - The service principal ID that this federation policy applies to. Output only. Only set for service principal federation policies
         """
         return pulumi.get(self, "service_principal_id")
 
@@ -107,8 +107,8 @@ class _ServicePrincipalFederationPolicyState:
                for Service Principal Federation Policies. Typically an output parameter, which does not need to be
                specified in create or update requests. If specified in a request, must match the value in the
                request URL
-        :param pulumi.Input[_builtins.str] policy_id: (string) - The ID of the federation policy
-        :param pulumi.Input[_builtins.int] service_principal_id: (integer) - The service principal ID that this federation policy applies to. Only set for service principal federation policies
+        :param pulumi.Input[_builtins.str] policy_id: (string) - The ID of the federation policy. Output only
+        :param pulumi.Input[_builtins.int] service_principal_id: (integer) - The service principal ID that this federation policy applies to. Output only. Only set for service principal federation policies
         :param pulumi.Input[_builtins.str] uid: (string) - Unique, immutable id of the federation policy
         :param pulumi.Input[_builtins.str] update_time: (string) - Last update time of the federation policy
         """
@@ -183,7 +183,7 @@ class _ServicePrincipalFederationPolicyState:
     @pulumi.getter(name="policyId")
     def policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        (string) - The ID of the federation policy
+        (string) - The ID of the federation policy. Output only
         """
         return pulumi.get(self, "policy_id")
 
@@ -195,7 +195,7 @@ class _ServicePrincipalFederationPolicyState:
     @pulumi.getter(name="servicePrincipalId")
     def service_principal_id(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        (integer) - The service principal ID that this federation policy applies to. Only set for service principal federation policies
+        (integer) - The service principal ID that this federation policy applies to. Output only. Only set for service principal federation policies
         """
         return pulumi.get(self, "service_principal_id")
 
@@ -240,6 +240,8 @@ class ServicePrincipalFederationPolicy(pulumi.CustomResource):
                  service_principal_id: Optional[pulumi.Input[_builtins.int]] = None,
                  __props__=None):
         """
+        [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
         Service principal federation policies allow automated workloads running outside of Databricks to access Databricks APIs without the need for Databricks secrets. Your application (workload) authenticates to Databricks as a Databricks service principal using tokens issued by the workload runtime, for example Github Actions.
 
         A service principal federation policy is associated with a service principal in your Databricks account, and specifies:
@@ -265,14 +267,14 @@ class ServicePrincipalFederationPolicy(pulumi.CustomResource):
         If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
 
         ```sh
-        $ pulumi import databricks:index/servicePrincipalFederationPolicy:ServicePrincipalFederationPolicy databricks_service_principal_federation_policy "service_principal_id,policy_id"
+        $ pulumi import databricks:index/servicePrincipalFederationPolicy:ServicePrincipalFederationPolicy this "service_principal_id,policy_id"
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Description of the federation policy
-        :param pulumi.Input[_builtins.str] policy_id: (string) - The ID of the federation policy
-        :param pulumi.Input[_builtins.int] service_principal_id: (integer) - The service principal ID that this federation policy applies to. Only set for service principal federation policies
+        :param pulumi.Input[_builtins.str] policy_id: (string) - The ID of the federation policy. Output only
+        :param pulumi.Input[_builtins.int] service_principal_id: (integer) - The service principal ID that this federation policy applies to. Output only. Only set for service principal federation policies
         """
         ...
     @overload
@@ -281,6 +283,8 @@ class ServicePrincipalFederationPolicy(pulumi.CustomResource):
                  args: Optional[ServicePrincipalFederationPolicyArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
         Service principal federation policies allow automated workloads running outside of Databricks to access Databricks APIs without the need for Databricks secrets. Your application (workload) authenticates to Databricks as a Databricks service principal using tokens issued by the workload runtime, for example Github Actions.
 
         A service principal federation policy is associated with a service principal in your Databricks account, and specifies:
@@ -306,7 +310,7 @@ class ServicePrincipalFederationPolicy(pulumi.CustomResource):
         If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
 
         ```sh
-        $ pulumi import databricks:index/servicePrincipalFederationPolicy:ServicePrincipalFederationPolicy databricks_service_principal_federation_policy "service_principal_id,policy_id"
+        $ pulumi import databricks:index/servicePrincipalFederationPolicy:ServicePrincipalFederationPolicy this "service_principal_id,policy_id"
         ```
 
         :param str resource_name: The name of the resource.
@@ -378,8 +382,8 @@ class ServicePrincipalFederationPolicy(pulumi.CustomResource):
                for Service Principal Federation Policies. Typically an output parameter, which does not need to be
                specified in create or update requests. If specified in a request, must match the value in the
                request URL
-        :param pulumi.Input[_builtins.str] policy_id: (string) - The ID of the federation policy
-        :param pulumi.Input[_builtins.int] service_principal_id: (integer) - The service principal ID that this federation policy applies to. Only set for service principal federation policies
+        :param pulumi.Input[_builtins.str] policy_id: (string) - The ID of the federation policy. Output only
+        :param pulumi.Input[_builtins.int] service_principal_id: (integer) - The service principal ID that this federation policy applies to. Output only. Only set for service principal federation policies
         :param pulumi.Input[_builtins.str] uid: (string) - Unique, immutable id of the federation policy
         :param pulumi.Input[_builtins.str] update_time: (string) - Last update time of the federation policy
         """
@@ -435,7 +439,7 @@ class ServicePrincipalFederationPolicy(pulumi.CustomResource):
     @pulumi.getter(name="policyId")
     def policy_id(self) -> pulumi.Output[_builtins.str]:
         """
-        (string) - The ID of the federation policy
+        (string) - The ID of the federation policy. Output only
         """
         return pulumi.get(self, "policy_id")
 
@@ -443,7 +447,7 @@ class ServicePrincipalFederationPolicy(pulumi.CustomResource):
     @pulumi.getter(name="servicePrincipalId")
     def service_principal_id(self) -> pulumi.Output[_builtins.int]:
         """
-        (integer) - The service principal ID that this federation policy applies to. Only set for service principal federation policies
+        (integer) - The service principal ID that this federation policy applies to. Output only. Only set for service principal federation policies
         """
         return pulumi.get(self, "service_principal_id")
 

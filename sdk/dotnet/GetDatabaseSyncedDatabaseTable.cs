@@ -12,6 +12,8 @@ namespace Pulumi.Databricks
     public static class GetDatabaseSyncedDatabaseTable
     {
         /// <summary>
+        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
         /// This data source can be used to get a single Synced Database Table.
         /// 
         /// 
@@ -39,6 +41,8 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDatabaseSyncedDatabaseTableResult>("databricks:index/getDatabaseSyncedDatabaseTable:getDatabaseSyncedDatabaseTable", args ?? new GetDatabaseSyncedDatabaseTableArgs(), options.WithDefaults());
 
         /// <summary>
+        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
         /// This data source can be used to get a single Synced Database Table.
         /// 
         /// 
@@ -66,6 +70,8 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.Invoke<GetDatabaseSyncedDatabaseTableResult>("databricks:index/getDatabaseSyncedDatabaseTable:getDatabaseSyncedDatabaseTable", args ?? new GetDatabaseSyncedDatabaseTableInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
         /// This data source can be used to get a single Synced Database Table.
         /// 
         /// 
@@ -97,37 +103,10 @@ namespace Pulumi.Databricks
     public sealed class GetDatabaseSyncedDatabaseTableArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// (string) - Name of the target database instance. This is required when creating synced database tables in standard catalogs.
-        /// This is optional when creating synced database tables in registered catalogs. If this field is specified
-        /// when creating synced database tables in registered catalogs, the database instance name MUST
-        /// match that of the registered catalog (or the request will be rejected)
-        /// </summary>
-        [Input("databaseInstanceName")]
-        public string? DatabaseInstanceName { get; set; }
-
-        /// <summary>
-        /// (string) - Target Postgres database object (logical database) name for this table.
-        /// </summary>
-        [Input("logicalDatabaseName")]
-        public string? LogicalDatabaseName { get; set; }
-
-        /// <summary>
         /// Full three-part (catalog, schema, table) name of the table
         /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
-
-        /// <summary>
-        /// (SyncedTableSpec)
-        /// </summary>
-        [Input("spec")]
-        public Inputs.GetDatabaseSyncedDatabaseTableSpecArgs? Spec { get; set; }
-
-        /// <summary>
-        /// Workspace ID of the resource
-        /// </summary>
-        [Input("workspaceId")]
-        public string? WorkspaceId { get; set; }
 
         public GetDatabaseSyncedDatabaseTableArgs()
         {
@@ -138,37 +117,10 @@ namespace Pulumi.Databricks
     public sealed class GetDatabaseSyncedDatabaseTableInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// (string) - Name of the target database instance. This is required when creating synced database tables in standard catalogs.
-        /// This is optional when creating synced database tables in registered catalogs. If this field is specified
-        /// when creating synced database tables in registered catalogs, the database instance name MUST
-        /// match that of the registered catalog (or the request will be rejected)
-        /// </summary>
-        [Input("databaseInstanceName")]
-        public Input<string>? DatabaseInstanceName { get; set; }
-
-        /// <summary>
-        /// (string) - Target Postgres database object (logical database) name for this table.
-        /// </summary>
-        [Input("logicalDatabaseName")]
-        public Input<string>? LogicalDatabaseName { get; set; }
-
-        /// <summary>
         /// Full three-part (catalog, schema, table) name of the table
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
-
-        /// <summary>
-        /// (SyncedTableSpec)
-        /// </summary>
-        [Input("spec")]
-        public Input<Inputs.GetDatabaseSyncedDatabaseTableSpecInputArgs>? Spec { get; set; }
-
-        /// <summary>
-        /// Workspace ID of the resource
-        /// </summary>
-        [Input("workspaceId")]
-        public Input<string>? WorkspaceId { get; set; }
 
         public GetDatabaseSyncedDatabaseTableInvokeArgs()
         {
@@ -215,14 +167,13 @@ namespace Pulumi.Databricks
         /// <summary>
         /// (SyncedTableSpec)
         /// </summary>
-        public readonly Outputs.GetDatabaseSyncedDatabaseTableSpecResult? Spec;
+        public readonly Outputs.GetDatabaseSyncedDatabaseTableSpecResult Spec;
         /// <summary>
         /// (string) - The provisioning state of the synced table entity in Unity Catalog. This is distinct from the
         /// state of the data synchronization pipeline (i.e. the table may be in "ACTIVE" but the pipeline
         /// may be in "PROVISIONING" as it runs asynchronously). Possible values are: `ACTIVE`, `DEGRADED`, `DELETING`, `FAILED`, `PROVISIONING`, `UPDATING`
         /// </summary>
         public readonly string UnityCatalogProvisioningState;
-        public readonly string? WorkspaceId;
 
         [OutputConstructor]
         private GetDatabaseSyncedDatabaseTableResult(
@@ -240,11 +191,9 @@ namespace Pulumi.Databricks
 
             string name,
 
-            Outputs.GetDatabaseSyncedDatabaseTableSpecResult? spec,
+            Outputs.GetDatabaseSyncedDatabaseTableSpecResult spec,
 
-            string unityCatalogProvisioningState,
-
-            string? workspaceId)
+            string unityCatalogProvisioningState)
         {
             DataSynchronizationStatus = dataSynchronizationStatus;
             DatabaseInstanceName = databaseInstanceName;
@@ -255,7 +204,6 @@ namespace Pulumi.Databricks
             Name = name;
             Spec = spec;
             UnityCatalogProvisioningState = unityCatalogProvisioningState;
-            WorkspaceId = workspaceId;
         }
     }
 }

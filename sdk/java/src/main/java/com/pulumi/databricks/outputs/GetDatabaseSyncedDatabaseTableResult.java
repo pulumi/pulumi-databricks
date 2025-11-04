@@ -9,8 +9,6 @@ import com.pulumi.databricks.outputs.GetDatabaseSyncedDatabaseTableSpec;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDatabaseSyncedDatabaseTableResult {
@@ -57,7 +55,7 @@ public final class GetDatabaseSyncedDatabaseTableResult {
      * @return (SyncedTableSpec)
      * 
      */
-    private @Nullable GetDatabaseSyncedDatabaseTableSpec spec;
+    private GetDatabaseSyncedDatabaseTableSpec spec;
     /**
      * @return (string) - The provisioning state of the synced table entity in Unity Catalog. This is distinct from the
      * state of the data synchronization pipeline (i.e. the table may be in &#34;ACTIVE&#34; but the pipeline
@@ -65,7 +63,6 @@ public final class GetDatabaseSyncedDatabaseTableResult {
      * 
      */
     private String unityCatalogProvisioningState;
-    private @Nullable String workspaceId;
 
     private GetDatabaseSyncedDatabaseTableResult() {}
     /**
@@ -125,8 +122,8 @@ public final class GetDatabaseSyncedDatabaseTableResult {
      * @return (SyncedTableSpec)
      * 
      */
-    public Optional<GetDatabaseSyncedDatabaseTableSpec> spec() {
-        return Optional.ofNullable(this.spec);
+    public GetDatabaseSyncedDatabaseTableSpec spec() {
+        return this.spec;
     }
     /**
      * @return (string) - The provisioning state of the synced table entity in Unity Catalog. This is distinct from the
@@ -136,9 +133,6 @@ public final class GetDatabaseSyncedDatabaseTableResult {
      */
     public String unityCatalogProvisioningState() {
         return this.unityCatalogProvisioningState;
-    }
-    public Optional<String> workspaceId() {
-        return Optional.ofNullable(this.workspaceId);
     }
 
     public static Builder builder() {
@@ -157,9 +151,8 @@ public final class GetDatabaseSyncedDatabaseTableResult {
         private String id;
         private String logicalDatabaseName;
         private String name;
-        private @Nullable GetDatabaseSyncedDatabaseTableSpec spec;
+        private GetDatabaseSyncedDatabaseTableSpec spec;
         private String unityCatalogProvisioningState;
-        private @Nullable String workspaceId;
         public Builder() {}
         public Builder(GetDatabaseSyncedDatabaseTableResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -172,7 +165,6 @@ public final class GetDatabaseSyncedDatabaseTableResult {
     	      this.name = defaults.name;
     	      this.spec = defaults.spec;
     	      this.unityCatalogProvisioningState = defaults.unityCatalogProvisioningState;
-    	      this.workspaceId = defaults.workspaceId;
         }
 
         @CustomType.Setter
@@ -232,8 +224,10 @@ public final class GetDatabaseSyncedDatabaseTableResult {
             return this;
         }
         @CustomType.Setter
-        public Builder spec(@Nullable GetDatabaseSyncedDatabaseTableSpec spec) {
-
+        public Builder spec(GetDatabaseSyncedDatabaseTableSpec spec) {
+            if (spec == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseSyncedDatabaseTableResult", "spec");
+            }
             this.spec = spec;
             return this;
         }
@@ -243,12 +237,6 @@ public final class GetDatabaseSyncedDatabaseTableResult {
               throw new MissingRequiredPropertyException("GetDatabaseSyncedDatabaseTableResult", "unityCatalogProvisioningState");
             }
             this.unityCatalogProvisioningState = unityCatalogProvisioningState;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder workspaceId(@Nullable String workspaceId) {
-
-            this.workspaceId = workspaceId;
             return this;
         }
         public GetDatabaseSyncedDatabaseTableResult build() {
@@ -262,7 +250,6 @@ public final class GetDatabaseSyncedDatabaseTableResult {
             _resultValue.name = name;
             _resultValue.spec = spec;
             _resultValue.unityCatalogProvisioningState = unityCatalogProvisioningState;
-            _resultValue.workspaceId = workspaceId;
             return _resultValue;
         }
     }

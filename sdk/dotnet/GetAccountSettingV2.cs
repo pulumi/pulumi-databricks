@@ -11,12 +11,39 @@ namespace Pulumi.Databricks
 {
     public static class GetAccountSettingV2
     {
-        public static Task<GetAccountSettingV2Result> InvokeAsync(GetAccountSettingV2Args? args = null, InvokeOptions? options = null)
+        /// <summary>
+        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// This data source can be used to get a single account setting. 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Referring to a setting by id
+        /// </summary>
+        public static Task<GetAccountSettingV2Result> InvokeAsync(GetAccountSettingV2Args args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccountSettingV2Result>("databricks:index/getAccountSettingV2:getAccountSettingV2", args ?? new GetAccountSettingV2Args(), options.WithDefaults());
 
-        public static Output<GetAccountSettingV2Result> Invoke(GetAccountSettingV2InvokeArgs? args = null, InvokeOptions? options = null)
+        /// <summary>
+        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// This data source can be used to get a single account setting. 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Referring to a setting by id
+        /// </summary>
+        public static Output<GetAccountSettingV2Result> Invoke(GetAccountSettingV2InvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccountSettingV2Result>("databricks:index/getAccountSettingV2:getAccountSettingV2", args ?? new GetAccountSettingV2InvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// This data source can be used to get a single account setting. 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Referring to a setting by id
+        /// </summary>
         public static Output<GetAccountSettingV2Result> Invoke(GetAccountSettingV2InvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccountSettingV2Result>("databricks:index/getAccountSettingV2:getAccountSettingV2", args ?? new GetAccountSettingV2InvokeArgs(), options.WithDefaults());
     }
@@ -25,100 +52,10 @@ namespace Pulumi.Databricks
     public sealed class GetAccountSettingV2Args : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// (AibiDashboardEmbeddingAccessPolicy)
-        /// </summary>
-        [Input("aibiDashboardEmbeddingAccessPolicy")]
-        public Inputs.GetAccountSettingV2AibiDashboardEmbeddingAccessPolicyArgs? AibiDashboardEmbeddingAccessPolicy { get; set; }
-
-        /// <summary>
-        /// (AibiDashboardEmbeddingApprovedDomains)
-        /// </summary>
-        [Input("aibiDashboardEmbeddingApprovedDomains")]
-        public Inputs.GetAccountSettingV2AibiDashboardEmbeddingApprovedDomainsArgs? AibiDashboardEmbeddingApprovedDomains { get; set; }
-
-        /// <summary>
-        /// (ClusterAutoRestartMessage) - todo: Mark these Public after onboarded to DSL
-        /// </summary>
-        [Input("automaticClusterUpdateWorkspace")]
-        public Inputs.GetAccountSettingV2AutomaticClusterUpdateWorkspaceArgs? AutomaticClusterUpdateWorkspace { get; set; }
-
-        /// <summary>
-        /// (BooleanMessage)
-        /// </summary>
-        [Input("booleanVal")]
-        public Inputs.GetAccountSettingV2BooleanValArgs? BooleanVal { get; set; }
-
-        /// <summary>
-        /// (DefaultDataSecurityModeMessage)
-        /// </summary>
-        [Input("defaultDataSecurityMode")]
-        public Inputs.GetAccountSettingV2DefaultDataSecurityModeArgs? DefaultDataSecurityMode { get; set; }
-
-        /// <summary>
-        /// (AibiDashboardEmbeddingAccessPolicy)
-        /// </summary>
-        [Input("effectiveAibiDashboardEmbeddingAccessPolicy")]
-        public Inputs.GetAccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgs? EffectiveAibiDashboardEmbeddingAccessPolicy { get; set; }
-
-        /// <summary>
-        /// (AibiDashboardEmbeddingApprovedDomains)
-        /// </summary>
-        [Input("effectiveAibiDashboardEmbeddingApprovedDomains")]
-        public Inputs.GetAccountSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgs? EffectiveAibiDashboardEmbeddingApprovedDomains { get; set; }
-
-        /// <summary>
-        /// (ClusterAutoRestartMessage)
-        /// </summary>
-        [Input("effectiveAutomaticClusterUpdateWorkspace")]
-        public Inputs.GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgs? EffectiveAutomaticClusterUpdateWorkspace { get; set; }
-
-        /// <summary>
-        /// (DefaultDataSecurityModeMessage)
-        /// </summary>
-        [Input("effectiveDefaultDataSecurityMode")]
-        public Inputs.GetAccountSettingV2EffectiveDefaultDataSecurityModeArgs? EffectiveDefaultDataSecurityMode { get; set; }
-
-        /// <summary>
-        /// (PersonalComputeMessage)
-        /// </summary>
-        [Input("effectivePersonalCompute")]
-        public Inputs.GetAccountSettingV2EffectivePersonalComputeArgs? EffectivePersonalCompute { get; set; }
-
-        /// <summary>
-        /// (RestrictWorkspaceAdminsMessage)
-        /// </summary>
-        [Input("effectiveRestrictWorkspaceAdmins")]
-        public Inputs.GetAccountSettingV2EffectiveRestrictWorkspaceAdminsArgs? EffectiveRestrictWorkspaceAdmins { get; set; }
-
-        /// <summary>
-        /// (IntegerMessage)
-        /// </summary>
-        [Input("integerVal")]
-        public Inputs.GetAccountSettingV2IntegerValArgs? IntegerVal { get; set; }
-
-        /// <summary>
         /// Name of the setting
         /// </summary>
-        [Input("name")]
-        public string? Name { get; set; }
-
-        /// <summary>
-        /// (PersonalComputeMessage)
-        /// </summary>
-        [Input("personalCompute")]
-        public Inputs.GetAccountSettingV2PersonalComputeArgs? PersonalCompute { get; set; }
-
-        /// <summary>
-        /// (RestrictWorkspaceAdminsMessage)
-        /// </summary>
-        [Input("restrictWorkspaceAdmins")]
-        public Inputs.GetAccountSettingV2RestrictWorkspaceAdminsArgs? RestrictWorkspaceAdmins { get; set; }
-
-        /// <summary>
-        /// (StringMessage)
-        /// </summary>
-        [Input("stringVal")]
-        public Inputs.GetAccountSettingV2StringValArgs? StringVal { get; set; }
+        [Input("name", required: true)]
+        public string Name { get; set; } = null!;
 
         public GetAccountSettingV2Args()
         {
@@ -129,100 +66,10 @@ namespace Pulumi.Databricks
     public sealed class GetAccountSettingV2InvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// (AibiDashboardEmbeddingAccessPolicy)
-        /// </summary>
-        [Input("aibiDashboardEmbeddingAccessPolicy")]
-        public Input<Inputs.GetAccountSettingV2AibiDashboardEmbeddingAccessPolicyInputArgs>? AibiDashboardEmbeddingAccessPolicy { get; set; }
-
-        /// <summary>
-        /// (AibiDashboardEmbeddingApprovedDomains)
-        /// </summary>
-        [Input("aibiDashboardEmbeddingApprovedDomains")]
-        public Input<Inputs.GetAccountSettingV2AibiDashboardEmbeddingApprovedDomainsInputArgs>? AibiDashboardEmbeddingApprovedDomains { get; set; }
-
-        /// <summary>
-        /// (ClusterAutoRestartMessage) - todo: Mark these Public after onboarded to DSL
-        /// </summary>
-        [Input("automaticClusterUpdateWorkspace")]
-        public Input<Inputs.GetAccountSettingV2AutomaticClusterUpdateWorkspaceInputArgs>? AutomaticClusterUpdateWorkspace { get; set; }
-
-        /// <summary>
-        /// (BooleanMessage)
-        /// </summary>
-        [Input("booleanVal")]
-        public Input<Inputs.GetAccountSettingV2BooleanValInputArgs>? BooleanVal { get; set; }
-
-        /// <summary>
-        /// (DefaultDataSecurityModeMessage)
-        /// </summary>
-        [Input("defaultDataSecurityMode")]
-        public Input<Inputs.GetAccountSettingV2DefaultDataSecurityModeInputArgs>? DefaultDataSecurityMode { get; set; }
-
-        /// <summary>
-        /// (AibiDashboardEmbeddingAccessPolicy)
-        /// </summary>
-        [Input("effectiveAibiDashboardEmbeddingAccessPolicy")]
-        public Input<Inputs.GetAccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyInputArgs>? EffectiveAibiDashboardEmbeddingAccessPolicy { get; set; }
-
-        /// <summary>
-        /// (AibiDashboardEmbeddingApprovedDomains)
-        /// </summary>
-        [Input("effectiveAibiDashboardEmbeddingApprovedDomains")]
-        public Input<Inputs.GetAccountSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsInputArgs>? EffectiveAibiDashboardEmbeddingApprovedDomains { get; set; }
-
-        /// <summary>
-        /// (ClusterAutoRestartMessage)
-        /// </summary>
-        [Input("effectiveAutomaticClusterUpdateWorkspace")]
-        public Input<Inputs.GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceInputArgs>? EffectiveAutomaticClusterUpdateWorkspace { get; set; }
-
-        /// <summary>
-        /// (DefaultDataSecurityModeMessage)
-        /// </summary>
-        [Input("effectiveDefaultDataSecurityMode")]
-        public Input<Inputs.GetAccountSettingV2EffectiveDefaultDataSecurityModeInputArgs>? EffectiveDefaultDataSecurityMode { get; set; }
-
-        /// <summary>
-        /// (PersonalComputeMessage)
-        /// </summary>
-        [Input("effectivePersonalCompute")]
-        public Input<Inputs.GetAccountSettingV2EffectivePersonalComputeInputArgs>? EffectivePersonalCompute { get; set; }
-
-        /// <summary>
-        /// (RestrictWorkspaceAdminsMessage)
-        /// </summary>
-        [Input("effectiveRestrictWorkspaceAdmins")]
-        public Input<Inputs.GetAccountSettingV2EffectiveRestrictWorkspaceAdminsInputArgs>? EffectiveRestrictWorkspaceAdmins { get; set; }
-
-        /// <summary>
-        /// (IntegerMessage)
-        /// </summary>
-        [Input("integerVal")]
-        public Input<Inputs.GetAccountSettingV2IntegerValInputArgs>? IntegerVal { get; set; }
-
-        /// <summary>
         /// Name of the setting
         /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
-        /// <summary>
-        /// (PersonalComputeMessage)
-        /// </summary>
-        [Input("personalCompute")]
-        public Input<Inputs.GetAccountSettingV2PersonalComputeInputArgs>? PersonalCompute { get; set; }
-
-        /// <summary>
-        /// (RestrictWorkspaceAdminsMessage)
-        /// </summary>
-        [Input("restrictWorkspaceAdmins")]
-        public Input<Inputs.GetAccountSettingV2RestrictWorkspaceAdminsInputArgs>? RestrictWorkspaceAdmins { get; set; }
-
-        /// <summary>
-        /// (StringMessage)
-        /// </summary>
-        [Input("stringVal")]
-        public Input<Inputs.GetAccountSettingV2StringValInputArgs>? StringVal { get; set; }
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
         public GetAccountSettingV2InvokeArgs()
         {
@@ -237,43 +84,35 @@ namespace Pulumi.Databricks
         /// <summary>
         /// (AibiDashboardEmbeddingAccessPolicy)
         /// </summary>
-        public readonly Outputs.GetAccountSettingV2AibiDashboardEmbeddingAccessPolicyResult? AibiDashboardEmbeddingAccessPolicy;
+        public readonly Outputs.GetAccountSettingV2AibiDashboardEmbeddingAccessPolicyResult AibiDashboardEmbeddingAccessPolicy;
         /// <summary>
         /// (AibiDashboardEmbeddingApprovedDomains)
         /// </summary>
-        public readonly Outputs.GetAccountSettingV2AibiDashboardEmbeddingApprovedDomainsResult? AibiDashboardEmbeddingApprovedDomains;
-        /// <summary>
-        /// (ClusterAutoRestartMessage) - todo: Mark these Public after onboarded to DSL
-        /// </summary>
-        public readonly Outputs.GetAccountSettingV2AutomaticClusterUpdateWorkspaceResult? AutomaticClusterUpdateWorkspace;
-        /// <summary>
-        /// (BooleanMessage)
-        /// </summary>
-        public readonly Outputs.GetAccountSettingV2BooleanValResult? BooleanVal;
-        /// <summary>
-        /// (DefaultDataSecurityModeMessage)
-        /// </summary>
-        public readonly Outputs.GetAccountSettingV2DefaultDataSecurityModeResult? DefaultDataSecurityMode;
-        /// <summary>
-        /// (AibiDashboardEmbeddingAccessPolicy)
-        /// </summary>
-        public readonly Outputs.GetAccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyResult? EffectiveAibiDashboardEmbeddingAccessPolicy;
-        /// <summary>
-        /// (AibiDashboardEmbeddingApprovedDomains)
-        /// </summary>
-        public readonly Outputs.GetAccountSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsResult? EffectiveAibiDashboardEmbeddingApprovedDomains;
+        public readonly Outputs.GetAccountSettingV2AibiDashboardEmbeddingApprovedDomainsResult AibiDashboardEmbeddingApprovedDomains;
         /// <summary>
         /// (ClusterAutoRestartMessage)
         /// </summary>
-        public readonly Outputs.GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceResult? EffectiveAutomaticClusterUpdateWorkspace;
+        public readonly Outputs.GetAccountSettingV2AutomaticClusterUpdateWorkspaceResult AutomaticClusterUpdateWorkspace;
+        /// <summary>
+        /// (BooleanMessage)
+        /// </summary>
+        public readonly Outputs.GetAccountSettingV2BooleanValResult BooleanVal;
+        /// <summary>
+        /// (AibiDashboardEmbeddingAccessPolicy)
+        /// </summary>
+        public readonly Outputs.GetAccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyResult EffectiveAibiDashboardEmbeddingAccessPolicy;
+        /// <summary>
+        /// (AibiDashboardEmbeddingApprovedDomains)
+        /// </summary>
+        public readonly Outputs.GetAccountSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsResult EffectiveAibiDashboardEmbeddingApprovedDomains;
+        /// <summary>
+        /// (ClusterAutoRestartMessage)
+        /// </summary>
+        public readonly Outputs.GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceResult EffectiveAutomaticClusterUpdateWorkspace;
         /// <summary>
         /// (BooleanMessage)
         /// </summary>
         public readonly Outputs.GetAccountSettingV2EffectiveBooleanValResult EffectiveBooleanVal;
-        /// <summary>
-        /// (DefaultDataSecurityModeMessage)
-        /// </summary>
-        public readonly Outputs.GetAccountSettingV2EffectiveDefaultDataSecurityModeResult? EffectiveDefaultDataSecurityMode;
         /// <summary>
         /// (IntegerMessage)
         /// </summary>
@@ -281,11 +120,11 @@ namespace Pulumi.Databricks
         /// <summary>
         /// (PersonalComputeMessage)
         /// </summary>
-        public readonly Outputs.GetAccountSettingV2EffectivePersonalComputeResult? EffectivePersonalCompute;
+        public readonly Outputs.GetAccountSettingV2EffectivePersonalComputeResult EffectivePersonalCompute;
         /// <summary>
         /// (RestrictWorkspaceAdminsMessage)
         /// </summary>
-        public readonly Outputs.GetAccountSettingV2EffectiveRestrictWorkspaceAdminsResult? EffectiveRestrictWorkspaceAdmins;
+        public readonly Outputs.GetAccountSettingV2EffectiveRestrictWorkspaceAdminsResult EffectiveRestrictWorkspaceAdmins;
         /// <summary>
         /// (StringMessage)
         /// </summary>
@@ -297,76 +136,70 @@ namespace Pulumi.Databricks
         /// <summary>
         /// (IntegerMessage)
         /// </summary>
-        public readonly Outputs.GetAccountSettingV2IntegerValResult? IntegerVal;
+        public readonly Outputs.GetAccountSettingV2IntegerValResult IntegerVal;
         /// <summary>
         /// (string) - Name of the setting
         /// </summary>
-        public readonly string? Name;
+        public readonly string Name;
         /// <summary>
         /// (PersonalComputeMessage)
         /// </summary>
-        public readonly Outputs.GetAccountSettingV2PersonalComputeResult? PersonalCompute;
+        public readonly Outputs.GetAccountSettingV2PersonalComputeResult PersonalCompute;
         /// <summary>
         /// (RestrictWorkspaceAdminsMessage)
         /// </summary>
-        public readonly Outputs.GetAccountSettingV2RestrictWorkspaceAdminsResult? RestrictWorkspaceAdmins;
+        public readonly Outputs.GetAccountSettingV2RestrictWorkspaceAdminsResult RestrictWorkspaceAdmins;
         /// <summary>
         /// (StringMessage)
         /// </summary>
-        public readonly Outputs.GetAccountSettingV2StringValResult? StringVal;
+        public readonly Outputs.GetAccountSettingV2StringValResult StringVal;
 
         [OutputConstructor]
         private GetAccountSettingV2Result(
-            Outputs.GetAccountSettingV2AibiDashboardEmbeddingAccessPolicyResult? aibiDashboardEmbeddingAccessPolicy,
+            Outputs.GetAccountSettingV2AibiDashboardEmbeddingAccessPolicyResult aibiDashboardEmbeddingAccessPolicy,
 
-            Outputs.GetAccountSettingV2AibiDashboardEmbeddingApprovedDomainsResult? aibiDashboardEmbeddingApprovedDomains,
+            Outputs.GetAccountSettingV2AibiDashboardEmbeddingApprovedDomainsResult aibiDashboardEmbeddingApprovedDomains,
 
-            Outputs.GetAccountSettingV2AutomaticClusterUpdateWorkspaceResult? automaticClusterUpdateWorkspace,
+            Outputs.GetAccountSettingV2AutomaticClusterUpdateWorkspaceResult automaticClusterUpdateWorkspace,
 
-            Outputs.GetAccountSettingV2BooleanValResult? booleanVal,
+            Outputs.GetAccountSettingV2BooleanValResult booleanVal,
 
-            Outputs.GetAccountSettingV2DefaultDataSecurityModeResult? defaultDataSecurityMode,
+            Outputs.GetAccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyResult effectiveAibiDashboardEmbeddingAccessPolicy,
 
-            Outputs.GetAccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyResult? effectiveAibiDashboardEmbeddingAccessPolicy,
+            Outputs.GetAccountSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsResult effectiveAibiDashboardEmbeddingApprovedDomains,
 
-            Outputs.GetAccountSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsResult? effectiveAibiDashboardEmbeddingApprovedDomains,
-
-            Outputs.GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceResult? effectiveAutomaticClusterUpdateWorkspace,
+            Outputs.GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceResult effectiveAutomaticClusterUpdateWorkspace,
 
             Outputs.GetAccountSettingV2EffectiveBooleanValResult effectiveBooleanVal,
 
-            Outputs.GetAccountSettingV2EffectiveDefaultDataSecurityModeResult? effectiveDefaultDataSecurityMode,
-
             Outputs.GetAccountSettingV2EffectiveIntegerValResult effectiveIntegerVal,
 
-            Outputs.GetAccountSettingV2EffectivePersonalComputeResult? effectivePersonalCompute,
+            Outputs.GetAccountSettingV2EffectivePersonalComputeResult effectivePersonalCompute,
 
-            Outputs.GetAccountSettingV2EffectiveRestrictWorkspaceAdminsResult? effectiveRestrictWorkspaceAdmins,
+            Outputs.GetAccountSettingV2EffectiveRestrictWorkspaceAdminsResult effectiveRestrictWorkspaceAdmins,
 
             Outputs.GetAccountSettingV2EffectiveStringValResult effectiveStringVal,
 
             string id,
 
-            Outputs.GetAccountSettingV2IntegerValResult? integerVal,
+            Outputs.GetAccountSettingV2IntegerValResult integerVal,
 
-            string? name,
+            string name,
 
-            Outputs.GetAccountSettingV2PersonalComputeResult? personalCompute,
+            Outputs.GetAccountSettingV2PersonalComputeResult personalCompute,
 
-            Outputs.GetAccountSettingV2RestrictWorkspaceAdminsResult? restrictWorkspaceAdmins,
+            Outputs.GetAccountSettingV2RestrictWorkspaceAdminsResult restrictWorkspaceAdmins,
 
-            Outputs.GetAccountSettingV2StringValResult? stringVal)
+            Outputs.GetAccountSettingV2StringValResult stringVal)
         {
             AibiDashboardEmbeddingAccessPolicy = aibiDashboardEmbeddingAccessPolicy;
             AibiDashboardEmbeddingApprovedDomains = aibiDashboardEmbeddingApprovedDomains;
             AutomaticClusterUpdateWorkspace = automaticClusterUpdateWorkspace;
             BooleanVal = booleanVal;
-            DefaultDataSecurityMode = defaultDataSecurityMode;
             EffectiveAibiDashboardEmbeddingAccessPolicy = effectiveAibiDashboardEmbeddingAccessPolicy;
             EffectiveAibiDashboardEmbeddingApprovedDomains = effectiveAibiDashboardEmbeddingApprovedDomains;
             EffectiveAutomaticClusterUpdateWorkspace = effectiveAutomaticClusterUpdateWorkspace;
             EffectiveBooleanVal = effectiveBooleanVal;
-            EffectiveDefaultDataSecurityMode = effectiveDefaultDataSecurityMode;
             EffectiveIntegerVal = effectiveIntegerVal;
             EffectivePersonalCompute = effectivePersonalCompute;
             EffectiveRestrictWorkspaceAdmins = effectiveRestrictWorkspaceAdmins;

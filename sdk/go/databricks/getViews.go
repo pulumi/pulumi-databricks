@@ -85,6 +85,8 @@ type GetViewsArgs struct {
 	CatalogName string `pulumi:"catalogName"`
 	// set of databricksView full names: *`catalog`.`schema`.`view`*
 	Ids []string `pulumi:"ids"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *GetViewsProviderConfig `pulumi:"providerConfig"`
 	// Name of databricks_schema
 	SchemaName string `pulumi:"schemaName"`
 }
@@ -95,8 +97,9 @@ type GetViewsResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// set of databricksView full names: *`catalog`.`schema`.`view`*
-	Ids        []string `pulumi:"ids"`
-	SchemaName string   `pulumi:"schemaName"`
+	Ids            []string                `pulumi:"ids"`
+	ProviderConfig *GetViewsProviderConfig `pulumi:"providerConfig"`
+	SchemaName     string                  `pulumi:"schemaName"`
 }
 
 func GetViewsOutput(ctx *pulumi.Context, args GetViewsOutputArgs, opts ...pulumi.InvokeOption) GetViewsResultOutput {
@@ -114,6 +117,8 @@ type GetViewsOutputArgs struct {
 	CatalogName pulumi.StringInput `pulumi:"catalogName"`
 	// set of databricksView full names: *`catalog`.`schema`.`view`*
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig GetViewsProviderConfigPtrInput `pulumi:"providerConfig"`
 	// Name of databricks_schema
 	SchemaName pulumi.StringInput `pulumi:"schemaName"`
 }
@@ -149,6 +154,10 @@ func (o GetViewsResultOutput) Id() pulumi.StringOutput {
 // set of databricksView full names: *`catalog`.`schema`.`view`*
 func (o GetViewsResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetViewsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetViewsResultOutput) ProviderConfig() GetViewsProviderConfigPtrOutput {
+	return o.ApplyT(func(v GetViewsResult) *GetViewsProviderConfig { return v.ProviderConfig }).(GetViewsProviderConfigPtrOutput)
 }
 
 func (o GetViewsResultOutput) SchemaName() pulumi.StringOutput {

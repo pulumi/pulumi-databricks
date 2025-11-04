@@ -12,7 +12,7 @@ namespace Pulumi.Databricks
     public static class GetVolume
     {
         /// <summary>
-        /// Retrieves details about databricks.Volume that was created by Pulumi or manually. 
+        /// Retrieves details about databricks.Volume that was created by Pulumi or manually.
         /// A volume can be identified by its three-level (fully qualified) name (in the form of: `CatalogName`.`SchemaName`.`VolumeName`) as input. This can be retrieved programmatically using databricks.getVolumes data source.
         /// 
         /// &gt; This data source can only be used with a workspace-level provider!
@@ -70,7 +70,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetVolumeResult>("databricks:index/getVolume:getVolume", args ?? new GetVolumeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Retrieves details about databricks.Volume that was created by Pulumi or manually. 
+        /// Retrieves details about databricks.Volume that was created by Pulumi or manually.
         /// A volume can be identified by its three-level (fully qualified) name (in the form of: `CatalogName`.`SchemaName`.`VolumeName`) as input. This can be retrieved programmatically using databricks.getVolumes data source.
         /// 
         /// &gt; This data source can only be used with a workspace-level provider!
@@ -128,7 +128,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.Invoke<GetVolumeResult>("databricks:index/getVolume:getVolume", args ?? new GetVolumeInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Retrieves details about databricks.Volume that was created by Pulumi or manually. 
+        /// Retrieves details about databricks.Volume that was created by Pulumi or manually.
         /// A volume can be identified by its three-level (fully qualified) name (in the form of: `CatalogName`.`SchemaName`.`VolumeName`) as input. This can be retrieved programmatically using databricks.getVolumes data source.
         /// 
         /// &gt; This data source can only be used with a workspace-level provider!
@@ -202,6 +202,12 @@ namespace Pulumi.Databricks
         public string Name { get; set; } = null!;
 
         /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Inputs.GetVolumeProviderConfigArgs? ProviderConfig { get; set; }
+
+        /// <summary>
         /// `VolumeInfo` object for a Unity Catalog volume. This contains the following attributes:
         /// </summary>
         [Input("volumeInfo")]
@@ -228,6 +234,12 @@ namespace Pulumi.Databricks
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.GetVolumeProviderConfigInputArgs>? ProviderConfig { get; set; }
+
+        /// <summary>
         /// `VolumeInfo` object for a Unity Catalog volume. This contains the following attributes:
         /// </summary>
         [Input("volumeInfo")]
@@ -251,6 +263,7 @@ namespace Pulumi.Databricks
         /// the name of the volume
         /// </summary>
         public readonly string Name;
+        public readonly Outputs.GetVolumeProviderConfigResult? ProviderConfig;
         /// <summary>
         /// `VolumeInfo` object for a Unity Catalog volume. This contains the following attributes:
         /// </summary>
@@ -262,10 +275,13 @@ namespace Pulumi.Databricks
 
             string name,
 
+            Outputs.GetVolumeProviderConfigResult? providerConfig,
+
             Outputs.GetVolumeVolumeInfoResult volumeInfo)
         {
             Id = id;
             Name = name;
+            ProviderConfig = providerConfig;
             VolumeInfo = volumeInfo;
         }
     }

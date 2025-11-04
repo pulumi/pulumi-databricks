@@ -186,6 +186,12 @@ namespace Pulumi.Databricks
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Inputs.GetCatalogProviderConfigArgs? ProviderConfig { get; set; }
+
         public GetCatalogArgs()
         {
         }
@@ -212,6 +218,12 @@ namespace Pulumi.Databricks
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.GetCatalogProviderConfigInputArgs>? ProviderConfig { get; set; }
+
         public GetCatalogInvokeArgs()
         {
         }
@@ -234,6 +246,7 @@ namespace Pulumi.Databricks
         /// Name of the catalog
         /// </summary>
         public readonly string Name;
+        public readonly Outputs.GetCatalogProviderConfigResult? ProviderConfig;
 
         [OutputConstructor]
         private GetCatalogResult(
@@ -241,11 +254,14 @@ namespace Pulumi.Databricks
 
             string id,
 
-            string name)
+            string name,
+
+            Outputs.GetCatalogProviderConfigResult? providerConfig)
         {
             CatalogInfo = catalogInfo;
             Id = id;
             Name = name;
+            ProviderConfig = providerConfig;
         }
     }
 }

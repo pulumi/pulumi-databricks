@@ -15,14 +15,14 @@ public final class AccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyAr
     public static final AccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgs Empty = new AccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgs();
 
     /**
-     * . Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
+     * Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
      * 
      */
     @Import(name="accessPolicyType", required=true)
     private Output<String> accessPolicyType;
 
     /**
-     * @return . Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
+     * @return Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
      * 
      */
     public Output<String> accessPolicyType() {
@@ -54,7 +54,7 @@ public final class AccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyAr
         }
 
         /**
-         * @param accessPolicyType . Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
+         * @param accessPolicyType Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
          * 
          * @return builder
          * 
@@ -65,7 +65,7 @@ public final class AccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyAr
         }
 
         /**
-         * @param accessPolicyType . Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
+         * @param accessPolicyType Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
          * 
          * @return builder
          * 

@@ -4,7 +4,6 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,8 +15,8 @@ public final class GetShareObjectPartitionValue {
      * @return The name of the share
      * 
      */
-    private String name;
-    private String op;
+    private @Nullable String name;
+    private @Nullable String op;
     private @Nullable String recipientPropertyKey;
     private @Nullable String value;
 
@@ -26,11 +25,11 @@ public final class GetShareObjectPartitionValue {
      * @return The name of the share
      * 
      */
-    public String name() {
-        return this.name;
+    public Optional<String> name() {
+        return Optional.ofNullable(this.name);
     }
-    public String op() {
-        return this.op;
+    public Optional<String> op() {
+        return Optional.ofNullable(this.op);
     }
     public Optional<String> recipientPropertyKey() {
         return Optional.ofNullable(this.recipientPropertyKey);
@@ -48,8 +47,8 @@ public final class GetShareObjectPartitionValue {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String name;
-        private String op;
+        private @Nullable String name;
+        private @Nullable String op;
         private @Nullable String recipientPropertyKey;
         private @Nullable String value;
         public Builder() {}
@@ -62,18 +61,14 @@ public final class GetShareObjectPartitionValue {
         }
 
         @CustomType.Setter
-        public Builder name(String name) {
-            if (name == null) {
-              throw new MissingRequiredPropertyException("GetShareObjectPartitionValue", "name");
-            }
+        public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
-        public Builder op(String op) {
-            if (op == null) {
-              throw new MissingRequiredPropertyException("GetShareObjectPartitionValue", "op");
-            }
+        public Builder op(@Nullable String op) {
+
             this.op = op;
             return this;
         }

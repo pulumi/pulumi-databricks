@@ -66,6 +66,8 @@ type LookupStorageCredentialArgs struct {
 	Id *string `pulumi:"id"`
 	// The name of the storage credential
 	Name string `pulumi:"name"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *GetStorageCredentialProviderConfig `pulumi:"providerConfig"`
 	// array of objects with information about storage credential.
 	StorageCredentialInfo *GetStorageCredentialStorageCredentialInfo `pulumi:"storageCredentialInfo"`
 }
@@ -73,8 +75,9 @@ type LookupStorageCredentialArgs struct {
 // A collection of values returned by getStorageCredential.
 type LookupStorageCredentialResult struct {
 	// Unique ID of storage credential.
-	Id   string `pulumi:"id"`
-	Name string `pulumi:"name"`
+	Id             string                              `pulumi:"id"`
+	Name           string                              `pulumi:"name"`
+	ProviderConfig *GetStorageCredentialProviderConfig `pulumi:"providerConfig"`
 	// array of objects with information about storage credential.
 	StorageCredentialInfo GetStorageCredentialStorageCredentialInfo `pulumi:"storageCredentialInfo"`
 }
@@ -94,6 +97,8 @@ type LookupStorageCredentialOutputArgs struct {
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// The name of the storage credential
 	Name pulumi.StringInput `pulumi:"name"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig GetStorageCredentialProviderConfigPtrInput `pulumi:"providerConfig"`
 	// array of objects with information about storage credential.
 	StorageCredentialInfo GetStorageCredentialStorageCredentialInfoPtrInput `pulumi:"storageCredentialInfo"`
 }
@@ -124,6 +129,10 @@ func (o LookupStorageCredentialResultOutput) Id() pulumi.StringOutput {
 
 func (o LookupStorageCredentialResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStorageCredentialResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupStorageCredentialResultOutput) ProviderConfig() GetStorageCredentialProviderConfigPtrOutput {
+	return o.ApplyT(func(v LookupStorageCredentialResult) *GetStorageCredentialProviderConfig { return v.ProviderConfig }).(GetStorageCredentialProviderConfigPtrOutput)
 }
 
 // array of objects with information about storage credential.

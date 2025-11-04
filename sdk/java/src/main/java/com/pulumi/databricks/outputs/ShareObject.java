@@ -34,6 +34,11 @@ public final class ShareObject {
      * 
      */
     private String dataObjectType;
+    private @Nullable Boolean effectiveCdfEnabled;
+    private @Nullable String effectiveHistoryDataSharingStatus;
+    private @Nullable String effectiveSharedAs;
+    private @Nullable Integer effectiveStartVersion;
+    private @Nullable String effectiveStringSharedAs;
     /**
      * @return Whether to enable history sharing, one of: `ENABLED`, `DISABLED`. When a table has history sharing enabled, recipients can query table data by version, starting from the current table version. If not specified, clients can only query starting from the version of the object at the time it was added to the share. *NOTE*: The startVersion should be less than or equal the current version of the object. When this field is set, field `cdfEnabled` can not be set.
      * 
@@ -95,6 +100,21 @@ public final class ShareObject {
     public String dataObjectType() {
         return this.dataObjectType;
     }
+    public Optional<Boolean> effectiveCdfEnabled() {
+        return Optional.ofNullable(this.effectiveCdfEnabled);
+    }
+    public Optional<String> effectiveHistoryDataSharingStatus() {
+        return Optional.ofNullable(this.effectiveHistoryDataSharingStatus);
+    }
+    public Optional<String> effectiveSharedAs() {
+        return Optional.ofNullable(this.effectiveSharedAs);
+    }
+    public Optional<Integer> effectiveStartVersion() {
+        return Optional.ofNullable(this.effectiveStartVersion);
+    }
+    public Optional<String> effectiveStringSharedAs() {
+        return Optional.ofNullable(this.effectiveStringSharedAs);
+    }
     /**
      * @return Whether to enable history sharing, one of: `ENABLED`, `DISABLED`. When a table has history sharing enabled, recipients can query table data by version, starting from the current table version. If not specified, clients can only query starting from the version of the object at the time it was added to the share. *NOTE*: The startVersion should be less than or equal the current version of the object. When this field is set, field `cdfEnabled` can not be set.
      * 
@@ -154,6 +174,11 @@ public final class ShareObject {
         private @Nullable String comment;
         private @Nullable String content;
         private String dataObjectType;
+        private @Nullable Boolean effectiveCdfEnabled;
+        private @Nullable String effectiveHistoryDataSharingStatus;
+        private @Nullable String effectiveSharedAs;
+        private @Nullable Integer effectiveStartVersion;
+        private @Nullable String effectiveStringSharedAs;
         private @Nullable String historyDataSharingStatus;
         private String name;
         private @Nullable List<ShareObjectPartition> partitions;
@@ -170,6 +195,11 @@ public final class ShareObject {
     	      this.comment = defaults.comment;
     	      this.content = defaults.content;
     	      this.dataObjectType = defaults.dataObjectType;
+    	      this.effectiveCdfEnabled = defaults.effectiveCdfEnabled;
+    	      this.effectiveHistoryDataSharingStatus = defaults.effectiveHistoryDataSharingStatus;
+    	      this.effectiveSharedAs = defaults.effectiveSharedAs;
+    	      this.effectiveStartVersion = defaults.effectiveStartVersion;
+    	      this.effectiveStringSharedAs = defaults.effectiveStringSharedAs;
     	      this.historyDataSharingStatus = defaults.historyDataSharingStatus;
     	      this.name = defaults.name;
     	      this.partitions = defaults.partitions;
@@ -215,6 +245,36 @@ public final class ShareObject {
               throw new MissingRequiredPropertyException("ShareObject", "dataObjectType");
             }
             this.dataObjectType = dataObjectType;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder effectiveCdfEnabled(@Nullable Boolean effectiveCdfEnabled) {
+
+            this.effectiveCdfEnabled = effectiveCdfEnabled;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder effectiveHistoryDataSharingStatus(@Nullable String effectiveHistoryDataSharingStatus) {
+
+            this.effectiveHistoryDataSharingStatus = effectiveHistoryDataSharingStatus;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder effectiveSharedAs(@Nullable String effectiveSharedAs) {
+
+            this.effectiveSharedAs = effectiveSharedAs;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder effectiveStartVersion(@Nullable Integer effectiveStartVersion) {
+
+            this.effectiveStartVersion = effectiveStartVersion;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder effectiveStringSharedAs(@Nullable String effectiveStringSharedAs) {
+
+            this.effectiveStringSharedAs = effectiveStringSharedAs;
             return this;
         }
         @CustomType.Setter
@@ -272,6 +332,11 @@ public final class ShareObject {
             _resultValue.comment = comment;
             _resultValue.content = content;
             _resultValue.dataObjectType = dataObjectType;
+            _resultValue.effectiveCdfEnabled = effectiveCdfEnabled;
+            _resultValue.effectiveHistoryDataSharingStatus = effectiveHistoryDataSharingStatus;
+            _resultValue.effectiveSharedAs = effectiveSharedAs;
+            _resultValue.effectiveStartVersion = effectiveStartVersion;
+            _resultValue.effectiveStringSharedAs = effectiveStringSharedAs;
             _resultValue.historyDataSharingStatus = historyDataSharingStatus;
             _resultValue.name = name;
             _resultValue.partitions = partitions;

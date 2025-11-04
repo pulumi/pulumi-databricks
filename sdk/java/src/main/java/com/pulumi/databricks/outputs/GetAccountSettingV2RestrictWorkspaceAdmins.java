@@ -11,14 +11,14 @@ import java.util.Objects;
 @CustomType
 public final class GetAccountSettingV2RestrictWorkspaceAdmins {
     /**
-     * @return (string) - . Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
+     * @return (string) - Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
      * 
      */
     private String status;
 
     private GetAccountSettingV2RestrictWorkspaceAdmins() {}
     /**
-     * @return (string) - . Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
+     * @return (string) - Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
      * 
      */
     public String status() {

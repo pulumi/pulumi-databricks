@@ -150,6 +150,12 @@ namespace Pulumi.Databricks
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Inputs.GetExternalLocationProviderConfigArgs? ProviderConfig { get; set; }
+
         public GetExternalLocationArgs()
         {
         }
@@ -176,6 +182,12 @@ namespace Pulumi.Databricks
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.GetExternalLocationProviderConfigInputArgs>? ProviderConfig { get; set; }
+
         public GetExternalLocationInvokeArgs()
         {
         }
@@ -195,6 +207,7 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string Id;
         public readonly string Name;
+        public readonly Outputs.GetExternalLocationProviderConfigResult? ProviderConfig;
 
         [OutputConstructor]
         private GetExternalLocationResult(
@@ -202,11 +215,14 @@ namespace Pulumi.Databricks
 
             string id,
 
-            string name)
+            string name,
+
+            Outputs.GetExternalLocationProviderConfigResult? providerConfig)
         {
             ExternalLocationInfo = externalLocationInfo;
             Id = id;
             Name = name;
+            ProviderConfig = providerConfig;
         }
     }
 }

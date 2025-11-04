@@ -220,13 +220,6 @@ public final class CatalogArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.shareName);
     }
 
-    @Import(name="storageLocation")
-    private @Nullable Output<String> storageLocation;
-
-    public Optional<Output<String>> storageLocation() {
-        return Optional.ofNullable(this.storageLocation);
-    }
-
     /**
      * Managed location of the catalog. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
      * 
@@ -260,7 +253,6 @@ public final class CatalogArgs extends com.pulumi.resources.ResourceArgs {
         this.providerName = $.providerName;
         this.provisioningInfo = $.provisioningInfo;
         this.shareName = $.shareName;
-        this.storageLocation = $.storageLocation;
         this.storageRoot = $.storageRoot;
     }
 
@@ -559,15 +551,6 @@ public final class CatalogArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder shareName(String shareName) {
             return shareName(Output.of(shareName));
-        }
-
-        public Builder storageLocation(@Nullable Output<String> storageLocation) {
-            $.storageLocation = storageLocation;
-            return this;
-        }
-
-        public Builder storageLocation(String storageLocation) {
-            return storageLocation(Output.of(storageLocation));
         }
 
         /**

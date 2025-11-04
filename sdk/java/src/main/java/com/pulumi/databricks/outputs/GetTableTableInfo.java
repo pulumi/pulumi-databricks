@@ -78,6 +78,10 @@ public final class GetTableTableInfo {
     private @Nullable String storageCredentialName;
     private @Nullable String storageLocation;
     private @Nullable List<GetTableTableInfoTableConstraint> tableConstraints;
+    /**
+     * @return The unique identifier of the table.
+     * 
+     */
     private @Nullable String tableId;
     /**
      * @return Table type, e.g. MANAGED, EXTERNAL, VIEW
@@ -207,6 +211,10 @@ public final class GetTableTableInfo {
     public List<GetTableTableInfoTableConstraint> tableConstraints() {
         return this.tableConstraints == null ? List.of() : this.tableConstraints;
     }
+    /**
+     * @return The unique identifier of the table.
+     * 
+     */
     public Optional<String> tableId() {
         return Optional.ofNullable(this.tableId);
     }

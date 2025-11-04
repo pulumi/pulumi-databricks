@@ -11,12 +11,21 @@ namespace Pulumi.Databricks
 {
     public static class GetOnlineStores
     {
+        /// <summary>
+        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// </summary>
         public static Task<GetOnlineStoresResult> InvokeAsync(GetOnlineStoresArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetOnlineStoresResult>("databricks:index/getOnlineStores:getOnlineStores", args ?? new GetOnlineStoresArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// </summary>
         public static Output<GetOnlineStoresResult> Invoke(GetOnlineStoresInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetOnlineStoresResult>("databricks:index/getOnlineStores:getOnlineStores", args ?? new GetOnlineStoresInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// </summary>
         public static Output<GetOnlineStoresResult> Invoke(GetOnlineStoresInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetOnlineStoresResult>("databricks:index/getOnlineStores:getOnlineStores", args ?? new GetOnlineStoresInvokeArgs(), options.WithDefaults());
     }
@@ -25,10 +34,10 @@ namespace Pulumi.Databricks
     public sealed class GetOnlineStoresArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Workspace ID of the resource
+        /// The maximum number of results to return. Defaults to 100 if not specified
         /// </summary>
-        [Input("workspaceId")]
-        public string? WorkspaceId { get; set; }
+        [Input("pageSize")]
+        public int? PageSize { get; set; }
 
         public GetOnlineStoresArgs()
         {
@@ -39,10 +48,10 @@ namespace Pulumi.Databricks
     public sealed class GetOnlineStoresInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Workspace ID of the resource
+        /// The maximum number of results to return. Defaults to 100 if not specified
         /// </summary>
-        [Input("workspaceId")]
-        public Input<string>? WorkspaceId { get; set; }
+        [Input("pageSize")]
+        public Input<int>? PageSize { get; set; }
 
         public GetOnlineStoresInvokeArgs()
         {
@@ -59,7 +68,7 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<Outputs.GetOnlineStoresOnlineStoreResult> OnlineStores;
-        public readonly string? WorkspaceId;
+        public readonly int? PageSize;
 
         [OutputConstructor]
         private GetOnlineStoresResult(
@@ -67,11 +76,11 @@ namespace Pulumi.Databricks
 
             ImmutableArray<Outputs.GetOnlineStoresOnlineStoreResult> onlineStores,
 
-            string? workspaceId)
+            int? pageSize)
         {
             Id = id;
             OnlineStores = onlineStores;
-            WorkspaceId = workspaceId;
+            PageSize = pageSize;
         }
     }
 }

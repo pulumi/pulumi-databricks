@@ -72,6 +72,8 @@ type GetVolumesArgs struct {
 	CatalogName string `pulumi:"catalogName"`
 	// a list of Volume full names: *`catalog`.`schema`.`volume`*
 	Ids []string `pulumi:"ids"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *GetVolumesProviderConfig `pulumi:"providerConfig"`
 	// Name of databricks_schema
 	SchemaName string `pulumi:"schemaName"`
 }
@@ -82,8 +84,9 @@ type GetVolumesResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// a list of Volume full names: *`catalog`.`schema`.`volume`*
-	Ids        []string `pulumi:"ids"`
-	SchemaName string   `pulumi:"schemaName"`
+	Ids            []string                  `pulumi:"ids"`
+	ProviderConfig *GetVolumesProviderConfig `pulumi:"providerConfig"`
+	SchemaName     string                    `pulumi:"schemaName"`
 }
 
 func GetVolumesOutput(ctx *pulumi.Context, args GetVolumesOutputArgs, opts ...pulumi.InvokeOption) GetVolumesResultOutput {
@@ -101,6 +104,8 @@ type GetVolumesOutputArgs struct {
 	CatalogName pulumi.StringInput `pulumi:"catalogName"`
 	// a list of Volume full names: *`catalog`.`schema`.`volume`*
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig GetVolumesProviderConfigPtrInput `pulumi:"providerConfig"`
 	// Name of databricks_schema
 	SchemaName pulumi.StringInput `pulumi:"schemaName"`
 }
@@ -136,6 +141,10 @@ func (o GetVolumesResultOutput) Id() pulumi.StringOutput {
 // a list of Volume full names: *`catalog`.`schema`.`volume`*
 func (o GetVolumesResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetVolumesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetVolumesResultOutput) ProviderConfig() GetVolumesProviderConfigPtrOutput {
+	return o.ApplyT(func(v GetVolumesResult) *GetVolumesProviderConfig { return v.ProviderConfig }).(GetVolumesProviderConfigPtrOutput)
 }
 
 func (o GetVolumesResultOutput) SchemaName() pulumi.StringOutput {

@@ -18,11 +18,11 @@ namespace Pulumi.Databricks.Outputs
         /// Required on create and optional on update. When specified on update,
         /// the new options will replace the existing options as a whole
         /// </summary>
-        public readonly Outputs.GetPolicyInfosPolicyColumnMaskResult? ColumnMask;
+        public readonly Outputs.GetPolicyInfosPolicyColumnMaskResult ColumnMask;
         /// <summary>
         /// (string) - Optional description of the policy
         /// </summary>
-        public readonly string? Comment;
+        public readonly string Comment;
         /// <summary>
         /// (integer) - Time at which the policy was created, in epoch milliseconds. Output only
         /// </summary>
@@ -55,15 +55,15 @@ namespace Pulumi.Databricks.Outputs
         /// (string) - Name of the policy. Required on create and optional on update.
         /// To rename the policy, set `Name` to a different value on update
         /// </summary>
-        public readonly string? Name;
+        public readonly string Name;
         /// <summary>
         /// Required. The fully qualified name of securable to list policies for
         /// </summary>
-        public readonly string? OnSecurableFullname;
+        public readonly string OnSecurableFullname;
         /// <summary>
         /// Required. The type of the securable to list policies for
         /// </summary>
-        public readonly string? OnSecurableType;
+        public readonly string OnSecurableType;
         /// <summary>
         /// (string) - Type of the policy. Required on create and ignored on update. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
         /// </summary>
@@ -73,7 +73,7 @@ namespace Pulumi.Databricks.Outputs
         /// Required on create and optional on update. When specified on update,
         /// the new options will replace the existing options as a whole
         /// </summary>
-        public readonly Outputs.GetPolicyInfosPolicyRowFilterResult? RowFilter;
+        public readonly Outputs.GetPolicyInfosPolicyRowFilterResult RowFilter;
         /// <summary>
         /// (list of string) - List of user or group names that the policy applies to.
         /// Required on create and optional on update
@@ -90,13 +90,13 @@ namespace Pulumi.Databricks.Outputs
         /// <summary>
         /// (string) - Optional condition when the policy should take effect
         /// </summary>
-        public readonly string? WhenCondition;
+        public readonly string WhenCondition;
 
         [OutputConstructor]
         private GetPolicyInfosPolicyResult(
-            Outputs.GetPolicyInfosPolicyColumnMaskResult? columnMask,
+            Outputs.GetPolicyInfosPolicyColumnMaskResult columnMask,
 
-            string? comment,
+            string comment,
 
             int createdAt,
 
@@ -110,15 +110,15 @@ namespace Pulumi.Databricks.Outputs
 
             ImmutableArray<Outputs.GetPolicyInfosPolicyMatchColumnResult> matchColumns,
 
-            string? name,
+            string name,
 
-            string? onSecurableFullname,
+            string onSecurableFullname,
 
-            string? onSecurableType,
+            string onSecurableType,
 
             string policyType,
 
-            Outputs.GetPolicyInfosPolicyRowFilterResult? rowFilter,
+            Outputs.GetPolicyInfosPolicyRowFilterResult rowFilter,
 
             ImmutableArray<string> toPrincipals,
 
@@ -126,7 +126,7 @@ namespace Pulumi.Databricks.Outputs
 
             string updatedBy,
 
-            string? whenCondition)
+            string whenCondition)
         {
             ColumnMask = columnMask;
             Comment = comment;

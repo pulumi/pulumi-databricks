@@ -108,9 +108,11 @@ type GitCredential struct {
 
 	// specify if settings need to be enforced (i.e., to overwrite previously set credential for service principals).
 	Force pulumi.BoolPtrOutput `pulumi:"force"`
+	// The email associated with your Git provider user account. Used for authentication with the remote repository and also sets the author & committer identity for commits.
+	GitEmail pulumi.StringPtrOutput `pulumi:"gitEmail"`
 	// case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Git Credentials API documentation](https://docs.databricks.com/dev-tools/api/latest/gitcredentials.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`, `azureDevOpsServicesAad`.
 	GitProvider pulumi.StringOutput `pulumi:"gitProvider"`
-	// user name at Git provider.
+	// user name at Git provider.  For most Git providers it is only used to set the Git committer & author names for commits, however it may be required for authentication depending on your Git provider / token requirements.
 	GitUsername pulumi.StringPtrOutput `pulumi:"gitUsername"`
 	// boolean flag specifying if the credential is the default for the given provider type.
 	IsDefaultForProvider pulumi.BoolPtrOutput `pulumi:"isDefaultForProvider"`
@@ -155,9 +157,11 @@ func GetGitCredential(ctx *pulumi.Context,
 type gitCredentialState struct {
 	// specify if settings need to be enforced (i.e., to overwrite previously set credential for service principals).
 	Force *bool `pulumi:"force"`
+	// The email associated with your Git provider user account. Used for authentication with the remote repository and also sets the author & committer identity for commits.
+	GitEmail *string `pulumi:"gitEmail"`
 	// case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Git Credentials API documentation](https://docs.databricks.com/dev-tools/api/latest/gitcredentials.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`, `azureDevOpsServicesAad`.
 	GitProvider *string `pulumi:"gitProvider"`
-	// user name at Git provider.
+	// user name at Git provider.  For most Git providers it is only used to set the Git committer & author names for commits, however it may be required for authentication depending on your Git provider / token requirements.
 	GitUsername *string `pulumi:"gitUsername"`
 	// boolean flag specifying if the credential is the default for the given provider type.
 	IsDefaultForProvider *bool `pulumi:"isDefaultForProvider"`
@@ -170,9 +174,11 @@ type gitCredentialState struct {
 type GitCredentialState struct {
 	// specify if settings need to be enforced (i.e., to overwrite previously set credential for service principals).
 	Force pulumi.BoolPtrInput
+	// The email associated with your Git provider user account. Used for authentication with the remote repository and also sets the author & committer identity for commits.
+	GitEmail pulumi.StringPtrInput
 	// case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Git Credentials API documentation](https://docs.databricks.com/dev-tools/api/latest/gitcredentials.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`, `azureDevOpsServicesAad`.
 	GitProvider pulumi.StringPtrInput
-	// user name at Git provider.
+	// user name at Git provider.  For most Git providers it is only used to set the Git committer & author names for commits, however it may be required for authentication depending on your Git provider / token requirements.
 	GitUsername pulumi.StringPtrInput
 	// boolean flag specifying if the credential is the default for the given provider type.
 	IsDefaultForProvider pulumi.BoolPtrInput
@@ -189,9 +195,11 @@ func (GitCredentialState) ElementType() reflect.Type {
 type gitCredentialArgs struct {
 	// specify if settings need to be enforced (i.e., to overwrite previously set credential for service principals).
 	Force *bool `pulumi:"force"`
+	// The email associated with your Git provider user account. Used for authentication with the remote repository and also sets the author & committer identity for commits.
+	GitEmail *string `pulumi:"gitEmail"`
 	// case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Git Credentials API documentation](https://docs.databricks.com/dev-tools/api/latest/gitcredentials.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`, `azureDevOpsServicesAad`.
 	GitProvider string `pulumi:"gitProvider"`
-	// user name at Git provider.
+	// user name at Git provider.  For most Git providers it is only used to set the Git committer & author names for commits, however it may be required for authentication depending on your Git provider / token requirements.
 	GitUsername *string `pulumi:"gitUsername"`
 	// boolean flag specifying if the credential is the default for the given provider type.
 	IsDefaultForProvider *bool `pulumi:"isDefaultForProvider"`
@@ -205,9 +213,11 @@ type gitCredentialArgs struct {
 type GitCredentialArgs struct {
 	// specify if settings need to be enforced (i.e., to overwrite previously set credential for service principals).
 	Force pulumi.BoolPtrInput
+	// The email associated with your Git provider user account. Used for authentication with the remote repository and also sets the author & committer identity for commits.
+	GitEmail pulumi.StringPtrInput
 	// case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Git Credentials API documentation](https://docs.databricks.com/dev-tools/api/latest/gitcredentials.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`, `azureDevOpsServicesAad`.
 	GitProvider pulumi.StringInput
-	// user name at Git provider.
+	// user name at Git provider.  For most Git providers it is only used to set the Git committer & author names for commits, however it may be required for authentication depending on your Git provider / token requirements.
 	GitUsername pulumi.StringPtrInput
 	// boolean flag specifying if the credential is the default for the given provider type.
 	IsDefaultForProvider pulumi.BoolPtrInput
@@ -309,12 +319,17 @@ func (o GitCredentialOutput) Force() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GitCredential) pulumi.BoolPtrOutput { return v.Force }).(pulumi.BoolPtrOutput)
 }
 
+// The email associated with your Git provider user account. Used for authentication with the remote repository and also sets the author & committer identity for commits.
+func (o GitCredentialOutput) GitEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitCredential) pulumi.StringPtrOutput { return v.GitEmail }).(pulumi.StringPtrOutput)
+}
+
 // case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Git Credentials API documentation](https://docs.databricks.com/dev-tools/api/latest/gitcredentials.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`, `azureDevOpsServicesAad`.
 func (o GitCredentialOutput) GitProvider() pulumi.StringOutput {
 	return o.ApplyT(func(v *GitCredential) pulumi.StringOutput { return v.GitProvider }).(pulumi.StringOutput)
 }
 
-// user name at Git provider.
+// user name at Git provider.  For most Git providers it is only used to set the Git committer & author names for commits, however it may be required for authentication depending on your Git provider / token requirements.
 func (o GitCredentialOutput) GitUsername() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GitCredential) pulumi.StringPtrOutput { return v.GitUsername }).(pulumi.StringPtrOutput)
 }

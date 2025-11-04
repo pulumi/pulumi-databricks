@@ -6,6 +6,7 @@ package com.pulumi.databricks.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetMaterializedFeaturesFeatureTagsFeatureTag;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -14,15 +15,20 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetMaterializedFeaturesFeatureTagsResult {
+    private String featureName;
     private List<GetMaterializedFeaturesFeatureTagsFeatureTag> featureTags;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
-    private @Nullable String workspaceId;
+    private @Nullable Integer pageSize;
+    private String tableName;
 
     private GetMaterializedFeaturesFeatureTagsResult() {}
+    public String featureName() {
+        return this.featureName;
+    }
     public List<GetMaterializedFeaturesFeatureTagsFeatureTag> featureTags() {
         return this.featureTags;
     }
@@ -33,8 +39,11 @@ public final class GetMaterializedFeaturesFeatureTagsResult {
     public String id() {
         return this.id;
     }
-    public Optional<String> workspaceId() {
-        return Optional.ofNullable(this.workspaceId);
+    public Optional<Integer> pageSize() {
+        return Optional.ofNullable(this.pageSize);
+    }
+    public String tableName() {
+        return this.tableName;
     }
 
     public static Builder builder() {
@@ -46,17 +55,29 @@ public final class GetMaterializedFeaturesFeatureTagsResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String featureName;
         private List<GetMaterializedFeaturesFeatureTagsFeatureTag> featureTags;
         private String id;
-        private @Nullable String workspaceId;
+        private @Nullable Integer pageSize;
+        private String tableName;
         public Builder() {}
         public Builder(GetMaterializedFeaturesFeatureTagsResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.featureName = defaults.featureName;
     	      this.featureTags = defaults.featureTags;
     	      this.id = defaults.id;
-    	      this.workspaceId = defaults.workspaceId;
+    	      this.pageSize = defaults.pageSize;
+    	      this.tableName = defaults.tableName;
         }
 
+        @CustomType.Setter
+        public Builder featureName(String featureName) {
+            if (featureName == null) {
+              throw new MissingRequiredPropertyException("GetMaterializedFeaturesFeatureTagsResult", "featureName");
+            }
+            this.featureName = featureName;
+            return this;
+        }
         @CustomType.Setter
         public Builder featureTags(List<GetMaterializedFeaturesFeatureTagsFeatureTag> featureTags) {
             if (featureTags == null) {
@@ -77,16 +98,26 @@ public final class GetMaterializedFeaturesFeatureTagsResult {
             return this;
         }
         @CustomType.Setter
-        public Builder workspaceId(@Nullable String workspaceId) {
+        public Builder pageSize(@Nullable Integer pageSize) {
 
-            this.workspaceId = workspaceId;
+            this.pageSize = pageSize;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder tableName(String tableName) {
+            if (tableName == null) {
+              throw new MissingRequiredPropertyException("GetMaterializedFeaturesFeatureTagsResult", "tableName");
+            }
+            this.tableName = tableName;
             return this;
         }
         public GetMaterializedFeaturesFeatureTagsResult build() {
             final var _resultValue = new GetMaterializedFeaturesFeatureTagsResult();
+            _resultValue.featureName = featureName;
             _resultValue.featureTags = featureTags;
             _resultValue.id = id;
-            _resultValue.workspaceId = workspaceId;
+            _resultValue.pageSize = pageSize;
+            _resultValue.tableName = tableName;
             return _resultValue;
         }
     }

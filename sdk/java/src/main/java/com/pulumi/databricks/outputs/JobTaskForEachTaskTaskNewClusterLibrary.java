@@ -6,6 +6,7 @@ package com.pulumi.databricks.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.JobTaskForEachTaskTaskNewClusterLibraryCran;
 import com.pulumi.databricks.outputs.JobTaskForEachTaskTaskNewClusterLibraryMaven;
+import com.pulumi.databricks.outputs.JobTaskForEachTaskTaskNewClusterLibraryProviderConfig;
 import com.pulumi.databricks.outputs.JobTaskForEachTaskTaskNewClusterLibraryPypi;
 import java.lang.String;
 import java.util.Objects;
@@ -24,6 +25,11 @@ public final class JobTaskForEachTaskTaskNewClusterLibrary {
     private @Nullable String egg;
     private @Nullable String jar;
     private @Nullable JobTaskForEachTaskTaskNewClusterLibraryMaven maven;
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    private @Nullable JobTaskForEachTaskTaskNewClusterLibraryProviderConfig providerConfig;
     private @Nullable JobTaskForEachTaskTaskNewClusterLibraryPypi pypi;
     private @Nullable String requirements;
     private @Nullable String whl;
@@ -46,6 +52,13 @@ public final class JobTaskForEachTaskTaskNewClusterLibrary {
     }
     public Optional<JobTaskForEachTaskTaskNewClusterLibraryMaven> maven() {
         return Optional.ofNullable(this.maven);
+    }
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Optional<JobTaskForEachTaskTaskNewClusterLibraryProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
     }
     public Optional<JobTaskForEachTaskTaskNewClusterLibraryPypi> pypi() {
         return Optional.ofNullable(this.pypi);
@@ -70,6 +83,7 @@ public final class JobTaskForEachTaskTaskNewClusterLibrary {
         private @Nullable String egg;
         private @Nullable String jar;
         private @Nullable JobTaskForEachTaskTaskNewClusterLibraryMaven maven;
+        private @Nullable JobTaskForEachTaskTaskNewClusterLibraryProviderConfig providerConfig;
         private @Nullable JobTaskForEachTaskTaskNewClusterLibraryPypi pypi;
         private @Nullable String requirements;
         private @Nullable String whl;
@@ -80,6 +94,7 @@ public final class JobTaskForEachTaskTaskNewClusterLibrary {
     	      this.egg = defaults.egg;
     	      this.jar = defaults.jar;
     	      this.maven = defaults.maven;
+    	      this.providerConfig = defaults.providerConfig;
     	      this.pypi = defaults.pypi;
     	      this.requirements = defaults.requirements;
     	      this.whl = defaults.whl;
@@ -110,6 +125,12 @@ public final class JobTaskForEachTaskTaskNewClusterLibrary {
             return this;
         }
         @CustomType.Setter
+        public Builder providerConfig(@Nullable JobTaskForEachTaskTaskNewClusterLibraryProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder pypi(@Nullable JobTaskForEachTaskTaskNewClusterLibraryPypi pypi) {
 
             this.pypi = pypi;
@@ -133,6 +154,7 @@ public final class JobTaskForEachTaskTaskNewClusterLibrary {
             _resultValue.egg = egg;
             _resultValue.jar = jar;
             _resultValue.maven = maven;
+            _resultValue.providerConfig = providerConfig;
             _resultValue.pypi = pypi;
             _resultValue.requirements = requirements;
             _resultValue.whl = whl;

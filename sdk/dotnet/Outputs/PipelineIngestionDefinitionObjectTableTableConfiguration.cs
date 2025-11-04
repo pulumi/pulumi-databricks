@@ -20,6 +20,7 @@ namespace Pulumi.Databricks.Outputs
         public readonly bool? SalesforceIncludeFormulaFields;
         public readonly string? ScdType;
         public readonly ImmutableArray<string> SequenceBies;
+        public readonly Outputs.PipelineIngestionDefinitionObjectTableTableConfigurationWorkdayReportParameters? WorkdayReportParameters;
 
         [OutputConstructor]
         private PipelineIngestionDefinitionObjectTableTableConfiguration(
@@ -35,7 +36,9 @@ namespace Pulumi.Databricks.Outputs
 
             string? scdType,
 
-            ImmutableArray<string> sequenceBies)
+            ImmutableArray<string> sequenceBies,
+
+            Outputs.PipelineIngestionDefinitionObjectTableTableConfigurationWorkdayReportParameters? workdayReportParameters)
         {
             ExcludeColumns = excludeColumns;
             IncludeColumns = includeColumns;
@@ -44,6 +47,7 @@ namespace Pulumi.Databricks.Outputs
             SalesforceIncludeFormulaFields = salesforceIncludeFormulaFields;
             ScdType = scdType;
             SequenceBies = sequenceBies;
+            WorkdayReportParameters = workdayReportParameters;
         }
     }
 }

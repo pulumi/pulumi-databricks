@@ -27,16 +27,21 @@ class GetAlertsV2Result:
     """
     A collection of values returned by getAlertsV2.
     """
-    def __init__(__self__, id=None, results=None, workspace_id=None):
+    def __init__(__self__, alerts=None, id=None, page_size=None):
+        if alerts and not isinstance(alerts, list):
+            raise TypeError("Expected argument 'alerts' to be a list")
+        pulumi.set(__self__, "alerts", alerts)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
-        if results and not isinstance(results, list):
-            raise TypeError("Expected argument 'results' to be a list")
-        pulumi.set(__self__, "results", results)
-        if workspace_id and not isinstance(workspace_id, str):
-            raise TypeError("Expected argument 'workspace_id' to be a str")
-        pulumi.set(__self__, "workspace_id", workspace_id)
+        if page_size and not isinstance(page_size, int):
+            raise TypeError("Expected argument 'page_size' to be a int")
+        pulumi.set(__self__, "page_size", page_size)
+
+    @_builtins.property
+    @pulumi.getter
+    def alerts(self) -> Sequence['outputs.GetAlertsV2AlertResult']:
+        return pulumi.get(self, "alerts")
 
     @_builtins.property
     @pulumi.getter
@@ -47,14 +52,9 @@ class GetAlertsV2Result:
         return pulumi.get(self, "id")
 
     @_builtins.property
-    @pulumi.getter
-    def results(self) -> Sequence['outputs.GetAlertsV2ResultResult']:
-        return pulumi.get(self, "results")
-
-    @_builtins.property
-    @pulumi.getter(name="workspaceId")
-    def workspace_id(self) -> Optional[_builtins.str]:
-        return pulumi.get(self, "workspace_id")
+    @pulumi.getter(name="pageSize")
+    def page_size(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "page_size")
 
 
 class AwaitableGetAlertsV2Result(GetAlertsV2Result):
@@ -63,14 +63,16 @@ class AwaitableGetAlertsV2Result(GetAlertsV2Result):
         if False:
             yield self
         return GetAlertsV2Result(
+            alerts=self.alerts,
             id=self.id,
-            results=self.results,
-            workspace_id=self.workspace_id)
+            page_size=self.page_size)
 
 
-def get_alerts_v2(workspace_id: Optional[_builtins.str] = None,
+def get_alerts_v2(page_size: Optional[_builtins.int] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAlertsV2Result:
     """
+    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
     The SQL Alerts v2 data source allows you to retrieve a list of alerts in Databricks SQL that are accessible to the current user. This data source returns alerts ordered by their creation time.
 
     You can use this data source to:
@@ -88,22 +90,21 @@ def get_alerts_v2(workspace_id: Optional[_builtins.str] = None,
 
     all = databricks.get_alert_v2()
     ```
-
-
-    :param _builtins.str workspace_id: Workspace ID of the resource
     """
     __args__ = dict()
-    __args__['workspaceId'] = workspace_id
+    __args__['pageSize'] = page_size
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getAlertsV2:getAlertsV2', __args__, opts=opts, typ=GetAlertsV2Result).value
 
     return AwaitableGetAlertsV2Result(
+        alerts=pulumi.get(__ret__, 'alerts'),
         id=pulumi.get(__ret__, 'id'),
-        results=pulumi.get(__ret__, 'results'),
-        workspace_id=pulumi.get(__ret__, 'workspace_id'))
-def get_alerts_v2_output(workspace_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+        page_size=pulumi.get(__ret__, 'page_size'))
+def get_alerts_v2_output(page_size: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAlertsV2Result]:
     """
+    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
     The SQL Alerts v2 data source allows you to retrieve a list of alerts in Databricks SQL that are accessible to the current user. This data source returns alerts ordered by their creation time.
 
     You can use this data source to:
@@ -121,15 +122,12 @@ def get_alerts_v2_output(workspace_id: Optional[pulumi.Input[Optional[_builtins.
 
     all = databricks.get_alert_v2()
     ```
-
-
-    :param _builtins.str workspace_id: Workspace ID of the resource
     """
     __args__ = dict()
-    __args__['workspaceId'] = workspace_id
+    __args__['pageSize'] = page_size
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getAlertsV2:getAlertsV2', __args__, opts=opts, typ=GetAlertsV2Result)
     return __ret__.apply(lambda __response__: GetAlertsV2Result(
+        alerts=pulumi.get(__response__, 'alerts'),
         id=pulumi.get(__response__, 'id'),
-        results=pulumi.get(__response__, 'results'),
-        workspace_id=pulumi.get(__response__, 'workspace_id')))
+        page_size=pulumi.get(__response__, 'page_size')))

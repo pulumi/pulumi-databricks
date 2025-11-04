@@ -17,9 +17,56 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * 
  * Define tag policies to manage governed tags in your account.
  * 
- * &gt; **Note** This resource can only be used with an account-level provider!
+ * &gt; **Note** This resource can only be used with a workspace-level provider!
+ * 
+ * ## Example Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.TagPolicy;
+ * import com.pulumi.databricks.TagPolicyArgs;
+ * import com.pulumi.databricks.inputs.TagPolicyValueArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleTagPolicy = new TagPolicy("exampleTagPolicy", TagPolicyArgs.builder()
+ *             .tagKey("example_tag_key")
+ *             .description("Example description.")
+ *             .values(            
+ *                 TagPolicyValueArgs.builder()
+ *                     .name("example_value_1")
+ *                     .build(),
+ *                 TagPolicyValueArgs.builder()
+ *                     .name("example_value_2")
+ *                     .build(),
+ *                 TagPolicyValueArgs.builder()
+ *                     .name("example_value_3")
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 
@@ -38,12 +85,26 @@ import javax.annotation.Nullable;
  * If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
  * 
  * ```sh
- * $ pulumi import databricks:index/tagPolicy:TagPolicy databricks_tag_policy &#34;tag_key&#34;
+ * $ pulumi import databricks:index/tagPolicy:TagPolicy this &#34;tag_key&#34;
  * ```
  * 
  */
 @ResourceType(type="databricks:index/tagPolicy:TagPolicy")
 public class TagPolicy extends com.pulumi.resources.CustomResource {
+    /**
+     * (string) - Timestamp when the tag policy was created
+     * 
+     */
+    @Export(name="createTime", refs={String.class}, tree="[0]")
+    private Output<String> createTime;
+
+    /**
+     * @return (string) - Timestamp when the tag policy was created
+     * 
+     */
+    public Output<String> createTime() {
+        return this.createTime;
+    }
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
@@ -56,25 +117,25 @@ public class TagPolicy extends com.pulumi.resources.CustomResource {
     public Output<String> tagKey() {
         return this.tagKey;
     }
+    /**
+     * (string) - Timestamp when the tag policy was last updated
+     * 
+     */
+    @Export(name="updateTime", refs={String.class}, tree="[0]")
+    private Output<String> updateTime;
+
+    /**
+     * @return (string) - Timestamp when the tag policy was last updated
+     * 
+     */
+    public Output<String> updateTime() {
+        return this.updateTime;
+    }
     @Export(name="values", refs={List.class,TagPolicyValue.class}, tree="[0,1]")
     private Output</* @Nullable */ List<TagPolicyValue>> values;
 
     public Output<Optional<List<TagPolicyValue>>> values() {
         return Codegen.optional(this.values);
-    }
-    /**
-     * Workspace ID of the resource
-     * 
-     */
-    @Export(name="workspaceId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> workspaceId;
-
-    /**
-     * @return Workspace ID of the resource
-     * 
-     */
-    public Output<Optional<String>> workspaceId() {
-        return Codegen.optional(this.workspaceId);
     }
 
     /**

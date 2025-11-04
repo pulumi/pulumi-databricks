@@ -62,28 +62,12 @@ public final class OnlineStoreArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.readReplicaCount);
     }
 
-    /**
-     * Workspace ID of the resource
-     * 
-     */
-    @Import(name="workspaceId")
-    private @Nullable Output<String> workspaceId;
-
-    /**
-     * @return Workspace ID of the resource
-     * 
-     */
-    public Optional<Output<String>> workspaceId() {
-        return Optional.ofNullable(this.workspaceId);
-    }
-
     private OnlineStoreArgs() {}
 
     private OnlineStoreArgs(OnlineStoreArgs $) {
         this.capacity = $.capacity;
         this.name = $.name;
         this.readReplicaCount = $.readReplicaCount;
-        this.workspaceId = $.workspaceId;
     }
 
     public static Builder builder() {
@@ -165,27 +149,6 @@ public final class OnlineStoreArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder readReplicaCount(Integer readReplicaCount) {
             return readReplicaCount(Output.of(readReplicaCount));
-        }
-
-        /**
-         * @param workspaceId Workspace ID of the resource
-         * 
-         * @return builder
-         * 
-         */
-        public Builder workspaceId(@Nullable Output<String> workspaceId) {
-            $.workspaceId = workspaceId;
-            return this;
-        }
-
-        /**
-         * @param workspaceId Workspace ID of the resource
-         * 
-         * @return builder
-         * 
-         */
-        public Builder workspaceId(String workspaceId) {
-            return workspaceId(Output.of(workspaceId));
         }
 
         public OnlineStoreArgs build() {

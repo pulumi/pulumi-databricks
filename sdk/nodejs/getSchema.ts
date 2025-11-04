@@ -51,6 +51,7 @@ export function getSchema(args: GetSchemaArgs, opts?: pulumi.InvokeOptions): Pro
     return pulumi.runtime.invoke("databricks:index/getSchema:getSchema", {
         "id": args.id,
         "name": args.name,
+        "providerConfig": args.providerConfig,
         "schemaInfo": args.schemaInfo,
     }, opts);
 }
@@ -67,6 +68,10 @@ export interface GetSchemaArgs {
      * a fully qualified name of databricks_schema: *`catalog`.`schema`*
      */
     name: string;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: inputs.GetSchemaProviderConfig;
     /**
      * `SchemaInfo` object for a Unity Catalog schema. This contains the following attributes:
      */
@@ -85,6 +90,7 @@ export interface GetSchemaResult {
      * Name of schema, relative to parent catalog.
      */
     readonly name: string;
+    readonly providerConfig?: outputs.GetSchemaProviderConfig;
     /**
      * `SchemaInfo` object for a Unity Catalog schema. This contains the following attributes:
      */
@@ -135,6 +141,7 @@ export function getSchemaOutput(args: GetSchemaOutputArgs, opts?: pulumi.InvokeO
     return pulumi.runtime.invokeOutput("databricks:index/getSchema:getSchema", {
         "id": args.id,
         "name": args.name,
+        "providerConfig": args.providerConfig,
         "schemaInfo": args.schemaInfo,
     }, opts);
 }
@@ -151,6 +158,10 @@ export interface GetSchemaOutputArgs {
      * a fully qualified name of databricks_schema: *`catalog`.`schema`*
      */
     name: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.GetSchemaProviderConfigArgs>;
     /**
      * `SchemaInfo` object for a Unity Catalog schema. This contains the following attributes:
      */

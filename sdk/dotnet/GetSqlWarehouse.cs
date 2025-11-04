@@ -279,6 +279,9 @@ namespace Pulumi.Databricks
         [Input("odbcParams")]
         public Inputs.GetSqlWarehouseOdbcParamsArgs? OdbcParams { get; set; }
 
+        [Input("providerConfig")]
+        public Inputs.GetSqlWarehouseProviderConfigArgs? ProviderConfig { get; set; }
+
         /// <summary>
         /// The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`.
         /// </summary>
@@ -410,6 +413,9 @@ namespace Pulumi.Databricks
         [Input("odbcParams")]
         public Input<Inputs.GetSqlWarehouseOdbcParamsInputArgs>? OdbcParams { get; set; }
 
+        [Input("providerConfig")]
+        public Input<Inputs.GetSqlWarehouseProviderConfigInputArgs>? ProviderConfig { get; set; }
+
         /// <summary>
         /// The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`.
         /// </summary>
@@ -509,6 +515,7 @@ namespace Pulumi.Databricks
         /// ODBC connection params: `odbc_params.hostname`, `odbc_params.path`, `odbc_params.protocol`, and `odbc_params.port`.
         /// </summary>
         public readonly Outputs.GetSqlWarehouseOdbcParamsResult OdbcParams;
+        public readonly Outputs.GetSqlWarehouseProviderConfigResult? ProviderConfig;
         /// <summary>
         /// The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`.
         /// </summary>
@@ -562,6 +569,8 @@ namespace Pulumi.Databricks
 
             Outputs.GetSqlWarehouseOdbcParamsResult odbcParams,
 
+            Outputs.GetSqlWarehouseProviderConfigResult? providerConfig,
+
             string spotInstancePolicy,
 
             string state,
@@ -587,6 +596,7 @@ namespace Pulumi.Databricks
             NumActiveSessions = numActiveSessions;
             NumClusters = numClusters;
             OdbcParams = odbcParams;
+            ProviderConfig = providerConfig;
             SpotInstancePolicy = spotInstancePolicy;
             State = state;
             Tags = tags;

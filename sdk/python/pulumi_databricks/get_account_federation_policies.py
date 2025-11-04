@@ -27,10 +27,13 @@ class GetAccountFederationPoliciesResult:
     """
     A collection of values returned by getAccountFederationPolicies.
     """
-    def __init__(__self__, id=None, policies=None):
+    def __init__(__self__, id=None, page_size=None, policies=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if page_size and not isinstance(page_size, int):
+            raise TypeError("Expected argument 'page_size' to be a int")
+        pulumi.set(__self__, "page_size", page_size)
         if policies and not isinstance(policies, list):
             raise TypeError("Expected argument 'policies' to be a list")
         pulumi.set(__self__, "policies", policies)
@@ -42,6 +45,11 @@ class GetAccountFederationPoliciesResult:
         The provider-assigned unique ID for this managed resource.
         """
         return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="pageSize")
+    def page_size(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "page_size")
 
     @_builtins.property
     @pulumi.getter
@@ -56,11 +64,15 @@ class AwaitableGetAccountFederationPoliciesResult(GetAccountFederationPoliciesRe
             yield self
         return GetAccountFederationPoliciesResult(
             id=self.id,
+            page_size=self.page_size,
             policies=self.policies)
 
 
-def get_account_federation_policies(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountFederationPoliciesResult:
+def get_account_federation_policies(page_size: Optional[_builtins.int] = None,
+                                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountFederationPoliciesResult:
     """
+    [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
     This data source can be used to fetch the list of account federation policies.
 
     > **Note** This data source can only be used with an account-level provider!
@@ -77,14 +89,19 @@ def get_account_federation_policies(opts: Optional[pulumi.InvokeOptions] = None)
     ```
     """
     __args__ = dict()
+    __args__['pageSize'] = page_size
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getAccountFederationPolicies:getAccountFederationPolicies', __args__, opts=opts, typ=GetAccountFederationPoliciesResult).value
 
     return AwaitableGetAccountFederationPoliciesResult(
         id=pulumi.get(__ret__, 'id'),
+        page_size=pulumi.get(__ret__, 'page_size'),
         policies=pulumi.get(__ret__, 'policies'))
-def get_account_federation_policies_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountFederationPoliciesResult]:
+def get_account_federation_policies_output(page_size: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
+                                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountFederationPoliciesResult]:
     """
+    [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
     This data source can be used to fetch the list of account federation policies.
 
     > **Note** This data source can only be used with an account-level provider!
@@ -101,8 +118,10 @@ def get_account_federation_policies_output(opts: Optional[Union[pulumi.InvokeOpt
     ```
     """
     __args__ = dict()
+    __args__['pageSize'] = page_size
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getAccountFederationPolicies:getAccountFederationPolicies', __args__, opts=opts, typ=GetAccountFederationPoliciesResult)
     return __ret__.apply(lambda __response__: GetAccountFederationPoliciesResult(
         id=pulumi.get(__response__, 'id'),
+        page_size=pulumi.get(__response__, 'page_size'),
         policies=pulumi.get(__response__, 'policies')))

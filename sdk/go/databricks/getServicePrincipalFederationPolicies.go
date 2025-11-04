@@ -11,6 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+//
 // This data source can be used to fetch the list of federation policies for a service principal.
 //
 // > **Note** This data source can only be used with an account-level provider!
@@ -54,6 +56,7 @@ func GetServicePrincipalFederationPolicies(ctx *pulumi.Context, args *GetService
 
 // A collection of arguments for invoking getServicePrincipalFederationPolicies.
 type GetServicePrincipalFederationPoliciesArgs struct {
+	PageSize *int `pulumi:"pageSize"`
 	// The service principal id for the federation policy
 	ServicePrincipalId int `pulumi:"servicePrincipalId"`
 }
@@ -62,8 +65,9 @@ type GetServicePrincipalFederationPoliciesArgs struct {
 type GetServicePrincipalFederationPoliciesResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id       string                                        `pulumi:"id"`
+	PageSize *int                                          `pulumi:"pageSize"`
 	Policies []GetServicePrincipalFederationPoliciesPolicy `pulumi:"policies"`
-	// (integer) - The service principal ID that this federation policy applies to. Only set for service principal federation policies
+	// (integer) - The service principal ID that this federation policy applies to. Output only. Only set for service principal federation policies
 	ServicePrincipalId int `pulumi:"servicePrincipalId"`
 }
 
@@ -78,6 +82,7 @@ func GetServicePrincipalFederationPoliciesOutput(ctx *pulumi.Context, args GetSe
 
 // A collection of arguments for invoking getServicePrincipalFederationPolicies.
 type GetServicePrincipalFederationPoliciesOutputArgs struct {
+	PageSize pulumi.IntPtrInput `pulumi:"pageSize"`
 	// The service principal id for the federation policy
 	ServicePrincipalId pulumi.IntInput `pulumi:"servicePrincipalId"`
 }
@@ -106,13 +111,17 @@ func (o GetServicePrincipalFederationPoliciesResultOutput) Id() pulumi.StringOut
 	return o.ApplyT(func(v GetServicePrincipalFederationPoliciesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+func (o GetServicePrincipalFederationPoliciesResultOutput) PageSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetServicePrincipalFederationPoliciesResult) *int { return v.PageSize }).(pulumi.IntPtrOutput)
+}
+
 func (o GetServicePrincipalFederationPoliciesResultOutput) Policies() GetServicePrincipalFederationPoliciesPolicyArrayOutput {
 	return o.ApplyT(func(v GetServicePrincipalFederationPoliciesResult) []GetServicePrincipalFederationPoliciesPolicy {
 		return v.Policies
 	}).(GetServicePrincipalFederationPoliciesPolicyArrayOutput)
 }
 
-// (integer) - The service principal ID that this federation policy applies to. Only set for service principal federation policies
+// (integer) - The service principal ID that this federation policy applies to. Output only. Only set for service principal federation policies
 func (o GetServicePrincipalFederationPoliciesResultOutput) ServicePrincipalId() pulumi.IntOutput {
 	return o.ApplyT(func(v GetServicePrincipalFederationPoliciesResult) int { return v.ServicePrincipalId }).(pulumi.IntOutput)
 }

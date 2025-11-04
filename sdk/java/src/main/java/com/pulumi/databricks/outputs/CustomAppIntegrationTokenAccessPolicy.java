@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.util.Objects;
 import java.util.Optional;
@@ -11,11 +12,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class CustomAppIntegrationTokenAccessPolicy {
+    private @Nullable Integer absoluteSessionLifetimeInMinutes;
     /**
      * @return access token time to live (TTL) in minutes.
      * 
      */
     private @Nullable Integer accessTokenTtlInMinutes;
+    private @Nullable Boolean enableSingleUseRefreshTokens;
     /**
      * @return refresh token TTL in minutes. The TTL of refresh token cannot be lower than TTL of access token.
      * 
@@ -23,12 +26,18 @@ public final class CustomAppIntegrationTokenAccessPolicy {
     private @Nullable Integer refreshTokenTtlInMinutes;
 
     private CustomAppIntegrationTokenAccessPolicy() {}
+    public Optional<Integer> absoluteSessionLifetimeInMinutes() {
+        return Optional.ofNullable(this.absoluteSessionLifetimeInMinutes);
+    }
     /**
      * @return access token time to live (TTL) in minutes.
      * 
      */
     public Optional<Integer> accessTokenTtlInMinutes() {
         return Optional.ofNullable(this.accessTokenTtlInMinutes);
+    }
+    public Optional<Boolean> enableSingleUseRefreshTokens() {
+        return Optional.ofNullable(this.enableSingleUseRefreshTokens);
     }
     /**
      * @return refresh token TTL in minutes. The TTL of refresh token cannot be lower than TTL of access token.
@@ -47,19 +56,35 @@ public final class CustomAppIntegrationTokenAccessPolicy {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Integer absoluteSessionLifetimeInMinutes;
         private @Nullable Integer accessTokenTtlInMinutes;
+        private @Nullable Boolean enableSingleUseRefreshTokens;
         private @Nullable Integer refreshTokenTtlInMinutes;
         public Builder() {}
         public Builder(CustomAppIntegrationTokenAccessPolicy defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.absoluteSessionLifetimeInMinutes = defaults.absoluteSessionLifetimeInMinutes;
     	      this.accessTokenTtlInMinutes = defaults.accessTokenTtlInMinutes;
+    	      this.enableSingleUseRefreshTokens = defaults.enableSingleUseRefreshTokens;
     	      this.refreshTokenTtlInMinutes = defaults.refreshTokenTtlInMinutes;
         }
 
         @CustomType.Setter
+        public Builder absoluteSessionLifetimeInMinutes(@Nullable Integer absoluteSessionLifetimeInMinutes) {
+
+            this.absoluteSessionLifetimeInMinutes = absoluteSessionLifetimeInMinutes;
+            return this;
+        }
+        @CustomType.Setter
         public Builder accessTokenTtlInMinutes(@Nullable Integer accessTokenTtlInMinutes) {
 
             this.accessTokenTtlInMinutes = accessTokenTtlInMinutes;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder enableSingleUseRefreshTokens(@Nullable Boolean enableSingleUseRefreshTokens) {
+
+            this.enableSingleUseRefreshTokens = enableSingleUseRefreshTokens;
             return this;
         }
         @CustomType.Setter
@@ -70,7 +95,9 @@ public final class CustomAppIntegrationTokenAccessPolicy {
         }
         public CustomAppIntegrationTokenAccessPolicy build() {
             final var _resultValue = new CustomAppIntegrationTokenAccessPolicy();
+            _resultValue.absoluteSessionLifetimeInMinutes = absoluteSessionLifetimeInMinutes;
             _resultValue.accessTokenTtlInMinutes = accessTokenTtlInMinutes;
+            _resultValue.enableSingleUseRefreshTokens = enableSingleUseRefreshTokens;
             _resultValue.refreshTokenTtlInMinutes = refreshTokenTtlInMinutes;
             return _resultValue;
         }

@@ -11,12 +11,21 @@ namespace Pulumi.Databricks
 {
     public static class GetPolicyInfo
     {
+        /// <summary>
+        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// </summary>
         public static Task<GetPolicyInfoResult> InvokeAsync(GetPolicyInfoArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPolicyInfoResult>("databricks:index/getPolicyInfo:getPolicyInfo", args ?? new GetPolicyInfoArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// </summary>
         public static Output<GetPolicyInfoResult> Invoke(GetPolicyInfoInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPolicyInfoResult>("databricks:index/getPolicyInfo:getPolicyInfo", args ?? new GetPolicyInfoInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// </summary>
         public static Output<GetPolicyInfoResult> Invoke(GetPolicyInfoInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetPolicyInfoResult>("databricks:index/getPolicyInfo:getPolicyInfo", args ?? new GetPolicyInfoInvokeArgs(), options.WithDefaults());
     }
@@ -25,113 +34,26 @@ namespace Pulumi.Databricks
     public sealed class GetPolicyInfoArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// (ColumnMaskOptions) - Options for column mask policies. Valid only if `PolicyType` is `POLICY_TYPE_COLUMN_MASK`.
-        /// Required on create and optional on update. When specified on update,
-        /// the new options will replace the existing options as a whole
-        /// </summary>
-        [Input("columnMask")]
-        public Inputs.GetPolicyInfoColumnMaskArgs? ColumnMask { get; set; }
-
-        /// <summary>
-        /// (string) - Optional description of the policy
-        /// </summary>
-        [Input("comment")]
-        public string? Comment { get; set; }
-
-        [Input("exceptPrincipals")]
-        private List<string>? _exceptPrincipals;
-
-        /// <summary>
-        /// (list of string) - Optional list of user or group names that should be excluded from the policy
-        /// </summary>
-        public List<string> ExceptPrincipals
-        {
-            get => _exceptPrincipals ?? (_exceptPrincipals = new List<string>());
-            set => _exceptPrincipals = value;
-        }
-
-        /// <summary>
-        /// (string) - Type of securables that the policy should take effect on.
-        /// Only `TABLE` is supported at this moment.
-        /// Required on create and optional on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
-        /// </summary>
-        [Input("forSecurableType", required: true)]
-        public string ForSecurableType { get; set; } = null!;
-
-        [Input("matchColumns")]
-        private List<Inputs.GetPolicyInfoMatchColumnArgs>? _matchColumns;
-
-        /// <summary>
-        /// (list of MatchColumn) - Optional list of condition expressions used to match table columns.
-        /// Only valid when `ForSecurableType` is `TABLE`.
-        /// When specified, the policy only applies to tables whose columns satisfy all match conditions
-        /// </summary>
-        public List<Inputs.GetPolicyInfoMatchColumnArgs> MatchColumns
-        {
-            get => _matchColumns ?? (_matchColumns = new List<Inputs.GetPolicyInfoMatchColumnArgs>());
-            set => _matchColumns = value;
-        }
-
-        /// <summary>
         /// Name of the policy. Required on create and optional on update.
         /// To rename the policy, set `Name` to a different value on update
         /// </summary>
-        [Input("name")]
-        public string? Name { get; set; }
+        [Input("name", required: true)]
+        public string Name { get; set; } = null!;
 
         /// <summary>
         /// Full name of the securable on which the policy is defined.
         /// Required on create and ignored on update
         /// </summary>
-        [Input("onSecurableFullname")]
-        public string? OnSecurableFullname { get; set; }
+        [Input("onSecurableFullname", required: true)]
+        public string OnSecurableFullname { get; set; } = null!;
 
         /// <summary>
         /// Type of the securable on which the policy is defined.
         /// Only `CATALOG`, `SCHEMA` and `TABLE` are supported at this moment.
         /// Required on create and ignored on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
         /// </summary>
-        [Input("onSecurableType")]
-        public string? OnSecurableType { get; set; }
-
-        /// <summary>
-        /// (string) - Type of the policy. Required on create and ignored on update. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
-        /// </summary>
-        [Input("policyType", required: true)]
-        public string PolicyType { get; set; } = null!;
-
-        /// <summary>
-        /// (RowFilterOptions) - Options for row filter policies. Valid only if `PolicyType` is `POLICY_TYPE_ROW_FILTER`.
-        /// Required on create and optional on update. When specified on update,
-        /// the new options will replace the existing options as a whole
-        /// </summary>
-        [Input("rowFilter")]
-        public Inputs.GetPolicyInfoRowFilterArgs? RowFilter { get; set; }
-
-        [Input("toPrincipals", required: true)]
-        private List<string>? _toPrincipals;
-
-        /// <summary>
-        /// (list of string) - List of user or group names that the policy applies to.
-        /// Required on create and optional on update
-        /// </summary>
-        public List<string> ToPrincipals
-        {
-            get => _toPrincipals ?? (_toPrincipals = new List<string>());
-            set => _toPrincipals = value;
-        }
-
-        /// <summary>
-        /// (string) - Optional condition when the policy should take effect
-        /// </summary>
-        [Input("whenCondition")]
-        public string? WhenCondition { get; set; }
-
-        /// <summary>
-        /// Workspace ID of the resource
-        /// </summary>
-        [Input("workspaceId")]
-        public string? WorkspaceId { get; set; }
+        [Input("onSecurableType", required: true)]
+        public string OnSecurableType { get; set; } = null!;
 
         public GetPolicyInfoArgs()
         {
@@ -142,113 +64,26 @@ namespace Pulumi.Databricks
     public sealed class GetPolicyInfoInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// (ColumnMaskOptions) - Options for column mask policies. Valid only if `PolicyType` is `POLICY_TYPE_COLUMN_MASK`.
-        /// Required on create and optional on update. When specified on update,
-        /// the new options will replace the existing options as a whole
-        /// </summary>
-        [Input("columnMask")]
-        public Input<Inputs.GetPolicyInfoColumnMaskInputArgs>? ColumnMask { get; set; }
-
-        /// <summary>
-        /// (string) - Optional description of the policy
-        /// </summary>
-        [Input("comment")]
-        public Input<string>? Comment { get; set; }
-
-        [Input("exceptPrincipals")]
-        private InputList<string>? _exceptPrincipals;
-
-        /// <summary>
-        /// (list of string) - Optional list of user or group names that should be excluded from the policy
-        /// </summary>
-        public InputList<string> ExceptPrincipals
-        {
-            get => _exceptPrincipals ?? (_exceptPrincipals = new InputList<string>());
-            set => _exceptPrincipals = value;
-        }
-
-        /// <summary>
-        /// (string) - Type of securables that the policy should take effect on.
-        /// Only `TABLE` is supported at this moment.
-        /// Required on create and optional on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
-        /// </summary>
-        [Input("forSecurableType", required: true)]
-        public Input<string> ForSecurableType { get; set; } = null!;
-
-        [Input("matchColumns")]
-        private InputList<Inputs.GetPolicyInfoMatchColumnInputArgs>? _matchColumns;
-
-        /// <summary>
-        /// (list of MatchColumn) - Optional list of condition expressions used to match table columns.
-        /// Only valid when `ForSecurableType` is `TABLE`.
-        /// When specified, the policy only applies to tables whose columns satisfy all match conditions
-        /// </summary>
-        public InputList<Inputs.GetPolicyInfoMatchColumnInputArgs> MatchColumns
-        {
-            get => _matchColumns ?? (_matchColumns = new InputList<Inputs.GetPolicyInfoMatchColumnInputArgs>());
-            set => _matchColumns = value;
-        }
-
-        /// <summary>
         /// Name of the policy. Required on create and optional on update.
         /// To rename the policy, set `Name` to a different value on update
         /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
         /// <summary>
         /// Full name of the securable on which the policy is defined.
         /// Required on create and ignored on update
         /// </summary>
-        [Input("onSecurableFullname")]
-        public Input<string>? OnSecurableFullname { get; set; }
+        [Input("onSecurableFullname", required: true)]
+        public Input<string> OnSecurableFullname { get; set; } = null!;
 
         /// <summary>
         /// Type of the securable on which the policy is defined.
         /// Only `CATALOG`, `SCHEMA` and `TABLE` are supported at this moment.
         /// Required on create and ignored on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
         /// </summary>
-        [Input("onSecurableType")]
-        public Input<string>? OnSecurableType { get; set; }
-
-        /// <summary>
-        /// (string) - Type of the policy. Required on create and ignored on update. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
-        /// </summary>
-        [Input("policyType", required: true)]
-        public Input<string> PolicyType { get; set; } = null!;
-
-        /// <summary>
-        /// (RowFilterOptions) - Options for row filter policies. Valid only if `PolicyType` is `POLICY_TYPE_ROW_FILTER`.
-        /// Required on create and optional on update. When specified on update,
-        /// the new options will replace the existing options as a whole
-        /// </summary>
-        [Input("rowFilter")]
-        public Input<Inputs.GetPolicyInfoRowFilterInputArgs>? RowFilter { get; set; }
-
-        [Input("toPrincipals", required: true)]
-        private InputList<string>? _toPrincipals;
-
-        /// <summary>
-        /// (list of string) - List of user or group names that the policy applies to.
-        /// Required on create and optional on update
-        /// </summary>
-        public InputList<string> ToPrincipals
-        {
-            get => _toPrincipals ?? (_toPrincipals = new InputList<string>());
-            set => _toPrincipals = value;
-        }
-
-        /// <summary>
-        /// (string) - Optional condition when the policy should take effect
-        /// </summary>
-        [Input("whenCondition")]
-        public Input<string>? WhenCondition { get; set; }
-
-        /// <summary>
-        /// Workspace ID of the resource
-        /// </summary>
-        [Input("workspaceId")]
-        public Input<string>? WorkspaceId { get; set; }
+        [Input("onSecurableType", required: true)]
+        public Input<string> OnSecurableType { get; set; } = null!;
 
         public GetPolicyInfoInvokeArgs()
         {
@@ -265,11 +100,11 @@ namespace Pulumi.Databricks
         /// Required on create and optional on update. When specified on update,
         /// the new options will replace the existing options as a whole
         /// </summary>
-        public readonly Outputs.GetPolicyInfoColumnMaskResult? ColumnMask;
+        public readonly Outputs.GetPolicyInfoColumnMaskResult ColumnMask;
         /// <summary>
         /// (string) - Optional description of the policy
         /// </summary>
-        public readonly string? Comment;
+        public readonly string Comment;
         /// <summary>
         /// (integer) - Time at which the policy was created, in epoch milliseconds. Output only
         /// </summary>
@@ -302,18 +137,18 @@ namespace Pulumi.Databricks
         /// (string) - Name of the policy. Required on create and optional on update.
         /// To rename the policy, set `Name` to a different value on update
         /// </summary>
-        public readonly string? Name;
+        public readonly string Name;
         /// <summary>
         /// (string) - Full name of the securable on which the policy is defined.
         /// Required on create and ignored on update
         /// </summary>
-        public readonly string? OnSecurableFullname;
+        public readonly string OnSecurableFullname;
         /// <summary>
         /// (string) - Type of the securable on which the policy is defined.
         /// Only `CATALOG`, `SCHEMA` and `TABLE` are supported at this moment.
         /// Required on create and ignored on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
         /// </summary>
-        public readonly string? OnSecurableType;
+        public readonly string OnSecurableType;
         /// <summary>
         /// (string) - Type of the policy. Required on create and ignored on update. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
         /// </summary>
@@ -323,7 +158,7 @@ namespace Pulumi.Databricks
         /// Required on create and optional on update. When specified on update,
         /// the new options will replace the existing options as a whole
         /// </summary>
-        public readonly Outputs.GetPolicyInfoRowFilterResult? RowFilter;
+        public readonly Outputs.GetPolicyInfoRowFilterResult RowFilter;
         /// <summary>
         /// (list of string) - List of user or group names that the policy applies to.
         /// Required on create and optional on update
@@ -340,14 +175,13 @@ namespace Pulumi.Databricks
         /// <summary>
         /// (string) - Optional condition when the policy should take effect
         /// </summary>
-        public readonly string? WhenCondition;
-        public readonly string? WorkspaceId;
+        public readonly string WhenCondition;
 
         [OutputConstructor]
         private GetPolicyInfoResult(
-            Outputs.GetPolicyInfoColumnMaskResult? columnMask,
+            Outputs.GetPolicyInfoColumnMaskResult columnMask,
 
-            string? comment,
+            string comment,
 
             int createdAt,
 
@@ -361,15 +195,15 @@ namespace Pulumi.Databricks
 
             ImmutableArray<Outputs.GetPolicyInfoMatchColumnResult> matchColumns,
 
-            string? name,
+            string name,
 
-            string? onSecurableFullname,
+            string onSecurableFullname,
 
-            string? onSecurableType,
+            string onSecurableType,
 
             string policyType,
 
-            Outputs.GetPolicyInfoRowFilterResult? rowFilter,
+            Outputs.GetPolicyInfoRowFilterResult rowFilter,
 
             ImmutableArray<string> toPrincipals,
 
@@ -377,9 +211,7 @@ namespace Pulumi.Databricks
 
             string updatedBy,
 
-            string? whenCondition,
-
-            string? workspaceId)
+            string whenCondition)
         {
             ColumnMask = columnMask;
             Comment = comment;
@@ -398,7 +230,6 @@ namespace Pulumi.Databricks
             UpdatedAt = updatedAt;
             UpdatedBy = updatedBy;
             WhenCondition = whenCondition;
-            WorkspaceId = workspaceId;
         }
     }
 }

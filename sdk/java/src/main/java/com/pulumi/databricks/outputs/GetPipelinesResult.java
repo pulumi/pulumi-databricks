@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetPipelinesProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
@@ -24,6 +25,7 @@ public final class GetPipelinesResult {
      */
     private List<String> ids;
     private @Nullable String pipelineName;
+    private @Nullable GetPipelinesProviderConfig providerConfig;
 
     private GetPipelinesResult() {}
     /**
@@ -43,6 +45,9 @@ public final class GetPipelinesResult {
     public Optional<String> pipelineName() {
         return Optional.ofNullable(this.pipelineName);
     }
+    public Optional<GetPipelinesProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -56,12 +61,14 @@ public final class GetPipelinesResult {
         private String id;
         private List<String> ids;
         private @Nullable String pipelineName;
+        private @Nullable GetPipelinesProviderConfig providerConfig;
         public Builder() {}
         public Builder(GetPipelinesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
     	      this.ids = defaults.ids;
     	      this.pipelineName = defaults.pipelineName;
+    	      this.providerConfig = defaults.providerConfig;
         }
 
         @CustomType.Setter
@@ -89,11 +96,18 @@ public final class GetPipelinesResult {
             this.pipelineName = pipelineName;
             return this;
         }
+        @CustomType.Setter
+        public Builder providerConfig(@Nullable GetPipelinesProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
+            return this;
+        }
         public GetPipelinesResult build() {
             final var _resultValue = new GetPipelinesResult();
             _resultValue.id = id;
             _resultValue.ids = ids;
             _resultValue.pipelineName = pipelineName;
+            _resultValue.providerConfig = providerConfig;
             return _resultValue;
         }
     }

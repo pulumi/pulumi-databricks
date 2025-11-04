@@ -12,6 +12,8 @@ namespace Pulumi.Databricks
     public static class GetBudgetPolicies
     {
         /// <summary>
+        /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
         /// This data source can be used to fetch the list of budget policies.
         /// 
         /// &gt; **Note** This data source can only be used with an account-level provider!
@@ -33,10 +35,12 @@ namespace Pulumi.Databricks
         /// });
         /// ```
         /// </summary>
-        public static Task<GetBudgetPoliciesResult> InvokeAsync(InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.InvokeAsync<GetBudgetPoliciesResult>("databricks:index/getBudgetPolicies:getBudgetPolicies", InvokeArgs.Empty, options.WithDefaults());
+        public static Task<GetBudgetPoliciesResult> InvokeAsync(GetBudgetPoliciesArgs? args = null, InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetBudgetPoliciesResult>("databricks:index/getBudgetPolicies:getBudgetPolicies", args ?? new GetBudgetPoliciesArgs(), options.WithDefaults());
 
         /// <summary>
+        /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
         /// This data source can be used to fetch the list of budget policies.
         /// 
         /// &gt; **Note** This data source can only be used with an account-level provider!
@@ -58,10 +62,12 @@ namespace Pulumi.Databricks
         /// });
         /// ```
         /// </summary>
-        public static Output<GetBudgetPoliciesResult> Invoke(InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.Invoke<GetBudgetPoliciesResult>("databricks:index/getBudgetPolicies:getBudgetPolicies", InvokeArgs.Empty, options.WithDefaults());
+        public static Output<GetBudgetPoliciesResult> Invoke(GetBudgetPoliciesInvokeArgs? args = null, InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.Invoke<GetBudgetPoliciesResult>("databricks:index/getBudgetPolicies:getBudgetPolicies", args ?? new GetBudgetPoliciesInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
         /// This data source can be used to fetch the list of budget policies.
         /// 
         /// &gt; **Note** This data source can only be used with an account-level provider!
@@ -83,28 +89,97 @@ namespace Pulumi.Databricks
         /// });
         /// ```
         /// </summary>
-        public static Output<GetBudgetPoliciesResult> Invoke(InvokeOutputOptions options)
-            => global::Pulumi.Deployment.Instance.Invoke<GetBudgetPoliciesResult>("databricks:index/getBudgetPolicies:getBudgetPolicies", InvokeArgs.Empty, options.WithDefaults());
+        public static Output<GetBudgetPoliciesResult> Invoke(GetBudgetPoliciesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetBudgetPoliciesResult>("databricks:index/getBudgetPolicies:getBudgetPolicies", args ?? new GetBudgetPoliciesInvokeArgs(), options.WithDefaults());
+    }
+
+
+    public sealed class GetBudgetPoliciesArgs : global::Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// A filter to apply to the list of policies
+        /// </summary>
+        [Input("filterBy")]
+        public Inputs.GetBudgetPoliciesFilterByArgs? FilterBy { get; set; }
+
+        /// <summary>
+        /// The maximum number of budget policies to return.
+        /// If unspecified, at most 100 budget policies will be returned.
+        /// The maximum value is 1000; values above 1000 will be coerced to 1000
+        /// </summary>
+        [Input("pageSize")]
+        public int? PageSize { get; set; }
+
+        /// <summary>
+        /// The sort specification
+        /// </summary>
+        [Input("sortSpec")]
+        public Inputs.GetBudgetPoliciesSortSpecArgs? SortSpec { get; set; }
+
+        public GetBudgetPoliciesArgs()
+        {
+        }
+        public static new GetBudgetPoliciesArgs Empty => new GetBudgetPoliciesArgs();
+    }
+
+    public sealed class GetBudgetPoliciesInvokeArgs : global::Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// A filter to apply to the list of policies
+        /// </summary>
+        [Input("filterBy")]
+        public Input<Inputs.GetBudgetPoliciesFilterByInputArgs>? FilterBy { get; set; }
+
+        /// <summary>
+        /// The maximum number of budget policies to return.
+        /// If unspecified, at most 100 budget policies will be returned.
+        /// The maximum value is 1000; values above 1000 will be coerced to 1000
+        /// </summary>
+        [Input("pageSize")]
+        public Input<int>? PageSize { get; set; }
+
+        /// <summary>
+        /// The sort specification
+        /// </summary>
+        [Input("sortSpec")]
+        public Input<Inputs.GetBudgetPoliciesSortSpecInputArgs>? SortSpec { get; set; }
+
+        public GetBudgetPoliciesInvokeArgs()
+        {
+        }
+        public static new GetBudgetPoliciesInvokeArgs Empty => new GetBudgetPoliciesInvokeArgs();
     }
 
 
     [OutputType]
     public sealed class GetBudgetPoliciesResult
     {
+        public readonly Outputs.GetBudgetPoliciesFilterByResult? FilterBy;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly int? PageSize;
         public readonly ImmutableArray<Outputs.GetBudgetPoliciesPolicyResult> Policies;
+        public readonly Outputs.GetBudgetPoliciesSortSpecResult? SortSpec;
 
         [OutputConstructor]
         private GetBudgetPoliciesResult(
+            Outputs.GetBudgetPoliciesFilterByResult? filterBy,
+
             string id,
 
-            ImmutableArray<Outputs.GetBudgetPoliciesPolicyResult> policies)
+            int? pageSize,
+
+            ImmutableArray<Outputs.GetBudgetPoliciesPolicyResult> policies,
+
+            Outputs.GetBudgetPoliciesSortSpecResult? sortSpec)
         {
+            FilterBy = filterBy;
             Id = id;
+            PageSize = pageSize;
             Policies = policies;
+            SortSpec = sortSpec;
         }
     }
 }

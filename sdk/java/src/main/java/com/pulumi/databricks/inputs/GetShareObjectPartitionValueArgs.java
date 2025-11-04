@@ -5,7 +5,6 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -20,22 +19,22 @@ public final class GetShareObjectPartitionValueArgs extends com.pulumi.resources
      * The name of the share
      * 
      */
-    @Import(name="name", required=true)
-    private Output<String> name;
+    @Import(name="name")
+    private @Nullable Output<String> name;
 
     /**
      * @return The name of the share
      * 
      */
-    public Output<String> name() {
-        return this.name;
+    public Optional<Output<String>> name() {
+        return Optional.ofNullable(this.name);
     }
 
-    @Import(name="op", required=true)
-    private Output<String> op;
+    @Import(name="op")
+    private @Nullable Output<String> op;
 
-    public Output<String> op() {
-        return this.op;
+    public Optional<Output<String>> op() {
+        return Optional.ofNullable(this.op);
     }
 
     @Import(name="recipientPropertyKey")
@@ -85,7 +84,7 @@ public final class GetShareObjectPartitionValueArgs extends com.pulumi.resources
          * @return builder
          * 
          */
-        public Builder name(Output<String> name) {
+        public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
@@ -100,7 +99,7 @@ public final class GetShareObjectPartitionValueArgs extends com.pulumi.resources
             return name(Output.of(name));
         }
 
-        public Builder op(Output<String> op) {
+        public Builder op(@Nullable Output<String> op) {
             $.op = op;
             return this;
         }
@@ -128,12 +127,6 @@ public final class GetShareObjectPartitionValueArgs extends com.pulumi.resources
         }
 
         public GetShareObjectPartitionValueArgs build() {
-            if ($.name == null) {
-                throw new MissingRequiredPropertyException("GetShareObjectPartitionValueArgs", "name");
-            }
-            if ($.op == null) {
-                throw new MissingRequiredPropertyException("GetShareObjectPartitionValueArgs", "op");
-            }
             return $;
         }
     }

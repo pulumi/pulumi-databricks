@@ -12,6 +12,9 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class JobTriggerTableUpdateGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The table(s) condition based on which to trigger a job run.  Possible values are `ANY_UPDATED`, `ALL_UPDATED`.
+        /// </summary>
         [Input("condition")]
         public Input<string>? Condition { get; set; }
 
@@ -23,6 +26,10 @@ namespace Pulumi.Databricks.Inputs
 
         [Input("tableNames", required: true)]
         private InputList<string>? _tableNames;
+
+        /// <summary>
+        /// A non-empty list of tables to monitor for changes. The table name must be in the format `catalog_name.schema_name.table_name`.
+        /// </summary>
         public InputList<string> TableNames
         {
             get => _tableNames ?? (_tableNames = new InputList<string>());

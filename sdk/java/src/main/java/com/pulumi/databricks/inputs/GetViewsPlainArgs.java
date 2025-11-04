@@ -4,6 +4,7 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetViewsProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
@@ -47,6 +48,21 @@ public final class GetViewsPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable GetViewsProviderConfig providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Optional<GetViewsProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
+    /**
      * Name of databricks_schema
      * 
      */
@@ -66,6 +82,7 @@ public final class GetViewsPlainArgs extends com.pulumi.resources.InvokeArgs {
     private GetViewsPlainArgs(GetViewsPlainArgs $) {
         this.catalogName = $.catalogName;
         this.ids = $.ids;
+        this.providerConfig = $.providerConfig;
         this.schemaName = $.schemaName;
     }
 
@@ -117,6 +134,17 @@ public final class GetViewsPlainArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder ids(String... ids) {
             return ids(List.of(ids));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable GetViewsProviderConfig providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
         }
 
         /**

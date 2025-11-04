@@ -5,9 +5,12 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetExternalLocationExternalLocationInfo;
+import com.pulumi.databricks.outputs.GetExternalLocationProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetExternalLocationResult {
@@ -22,6 +25,7 @@ public final class GetExternalLocationResult {
      */
     private String id;
     private String name;
+    private @Nullable GetExternalLocationProviderConfig providerConfig;
 
     private GetExternalLocationResult() {}
     /**
@@ -41,6 +45,9 @@ public final class GetExternalLocationResult {
     public String name() {
         return this.name;
     }
+    public Optional<GetExternalLocationProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -54,12 +61,14 @@ public final class GetExternalLocationResult {
         private GetExternalLocationExternalLocationInfo externalLocationInfo;
         private String id;
         private String name;
+        private @Nullable GetExternalLocationProviderConfig providerConfig;
         public Builder() {}
         public Builder(GetExternalLocationResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.externalLocationInfo = defaults.externalLocationInfo;
     	      this.id = defaults.id;
     	      this.name = defaults.name;
+    	      this.providerConfig = defaults.providerConfig;
         }
 
         @CustomType.Setter
@@ -86,11 +95,18 @@ public final class GetExternalLocationResult {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
+        public Builder providerConfig(@Nullable GetExternalLocationProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
+            return this;
+        }
         public GetExternalLocationResult build() {
             final var _resultValue = new GetExternalLocationResult();
             _resultValue.externalLocationInfo = externalLocationInfo;
             _resultValue.id = id;
             _resultValue.name = name;
+            _resultValue.providerConfig = providerConfig;
             return _resultValue;
         }
     }

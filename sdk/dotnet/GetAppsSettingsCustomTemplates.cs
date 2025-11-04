@@ -12,6 +12,8 @@ namespace Pulumi.Databricks
     public static class GetAppsSettingsCustomTemplates
     {
         /// <summary>
+        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
         /// This data source can be used to fetch the list of Custom Templates within the workspace.
         /// The list can then be accessed via the data object's `Templates` field.
         /// 
@@ -41,6 +43,8 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAppsSettingsCustomTemplatesResult>("databricks:index/getAppsSettingsCustomTemplates:getAppsSettingsCustomTemplates", args ?? new GetAppsSettingsCustomTemplatesArgs(), options.WithDefaults());
 
         /// <summary>
+        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
         /// This data source can be used to fetch the list of Custom Templates within the workspace.
         /// The list can then be accessed via the data object's `Templates` field.
         /// 
@@ -70,6 +74,8 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.Invoke<GetAppsSettingsCustomTemplatesResult>("databricks:index/getAppsSettingsCustomTemplates:getAppsSettingsCustomTemplates", args ?? new GetAppsSettingsCustomTemplatesInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
         /// This data source can be used to fetch the list of Custom Templates within the workspace.
         /// The list can then be accessed via the data object's `Templates` field.
         /// 
@@ -103,10 +109,10 @@ namespace Pulumi.Databricks
     public sealed class GetAppsSettingsCustomTemplatesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Workspace ID of the resource
+        /// Upper bound for items returned
         /// </summary>
-        [Input("workspaceId")]
-        public string? WorkspaceId { get; set; }
+        [Input("pageSize")]
+        public int? PageSize { get; set; }
 
         public GetAppsSettingsCustomTemplatesArgs()
         {
@@ -117,10 +123,10 @@ namespace Pulumi.Databricks
     public sealed class GetAppsSettingsCustomTemplatesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Workspace ID of the resource
+        /// Upper bound for items returned
         /// </summary>
-        [Input("workspaceId")]
-        public Input<string>? WorkspaceId { get; set; }
+        [Input("pageSize")]
+        public Input<int>? PageSize { get; set; }
 
         public GetAppsSettingsCustomTemplatesInvokeArgs()
         {
@@ -136,20 +142,20 @@ namespace Pulumi.Databricks
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly int? PageSize;
         public readonly ImmutableArray<Outputs.GetAppsSettingsCustomTemplatesTemplateResult> Templates;
-        public readonly string? WorkspaceId;
 
         [OutputConstructor]
         private GetAppsSettingsCustomTemplatesResult(
             string id,
 
-            ImmutableArray<Outputs.GetAppsSettingsCustomTemplatesTemplateResult> templates,
+            int? pageSize,
 
-            string? workspaceId)
+            ImmutableArray<Outputs.GetAppsSettingsCustomTemplatesTemplateResult> templates)
         {
             Id = id;
+            PageSize = pageSize;
             Templates = templates;
-            WorkspaceId = workspaceId;
         }
     }
 }

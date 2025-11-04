@@ -149,7 +149,7 @@ namespace Pulumi.Databricks
         public Output<bool?> AllowInstancePoolCreate { get; private set; } = null!;
 
         /// <summary>
-        /// This is a field to allow the principal to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
+        /// This is a field to allow the principal to have access to [Databricks SQL](https://databricks.com/product/databricks-sql)  UI, [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one) and through databricks_sql_endpoint.
         /// </summary>
         [Output("databricksSqlAccess")]
         public Output<bool?> DatabricksSqlAccess { get; private set; } = null!;
@@ -175,13 +175,13 @@ namespace Pulumi.Databricks
         public Output<string?> UserId { get; private set; } = null!;
 
         /// <summary>
-        /// This is a field to allow the principal to have access to a Databricks Workspace.
+        /// This is a field to allow the principal to have access to a Databricks Workspace UI and [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).
         /// </summary>
         [Output("workspaceAccess")]
         public Output<bool?> WorkspaceAccess { get; private set; } = null!;
 
         /// <summary>
-        /// This is a field to allow the principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `WorkspaceAccess` or `DatabricksSqlAccess`.
+        /// This is a field to allow the principal to have access only to [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).  Couldn't be used with `WorkspaceAccess` or `DatabricksSqlAccess`.
         /// </summary>
         [Output("workspaceConsume")]
         public Output<bool?> WorkspaceConsume { get; private set; } = null!;
@@ -245,7 +245,7 @@ namespace Pulumi.Databricks
         public Input<bool>? AllowInstancePoolCreate { get; set; }
 
         /// <summary>
-        /// This is a field to allow the principal to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
+        /// This is a field to allow the principal to have access to [Databricks SQL](https://databricks.com/product/databricks-sql)  UI, [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one) and through databricks_sql_endpoint.
         /// </summary>
         [Input("databricksSqlAccess")]
         public Input<bool>? DatabricksSqlAccess { get; set; }
@@ -271,13 +271,13 @@ namespace Pulumi.Databricks
         public Input<string>? UserId { get; set; }
 
         /// <summary>
-        /// This is a field to allow the principal to have access to a Databricks Workspace.
+        /// This is a field to allow the principal to have access to a Databricks Workspace UI and [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).
         /// </summary>
         [Input("workspaceAccess")]
         public Input<bool>? WorkspaceAccess { get; set; }
 
         /// <summary>
-        /// This is a field to allow the principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `WorkspaceAccess` or `DatabricksSqlAccess`.
+        /// This is a field to allow the principal to have access only to [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).  Couldn't be used with `WorkspaceAccess` or `DatabricksSqlAccess`.
         /// </summary>
         [Input("workspaceConsume")]
         public Input<bool>? WorkspaceConsume { get; set; }
@@ -303,7 +303,7 @@ namespace Pulumi.Databricks
         public Input<bool>? AllowInstancePoolCreate { get; set; }
 
         /// <summary>
-        /// This is a field to allow the principal to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
+        /// This is a field to allow the principal to have access to [Databricks SQL](https://databricks.com/product/databricks-sql)  UI, [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one) and through databricks_sql_endpoint.
         /// </summary>
         [Input("databricksSqlAccess")]
         public Input<bool>? DatabricksSqlAccess { get; set; }
@@ -329,13 +329,13 @@ namespace Pulumi.Databricks
         public Input<string>? UserId { get; set; }
 
         /// <summary>
-        /// This is a field to allow the principal to have access to a Databricks Workspace.
+        /// This is a field to allow the principal to have access to a Databricks Workspace UI and [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).
         /// </summary>
         [Input("workspaceAccess")]
         public Input<bool>? WorkspaceAccess { get; set; }
 
         /// <summary>
-        /// This is a field to allow the principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `WorkspaceAccess` or `DatabricksSqlAccess`.
+        /// This is a field to allow the principal to have access only to [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).  Couldn't be used with `WorkspaceAccess` or `DatabricksSqlAccess`.
         /// </summary>
         [Input("workspaceConsume")]
         public Input<bool>? WorkspaceConsume { get; set; }

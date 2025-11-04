@@ -20,7 +20,7 @@ namespace Pulumi.Databricks.Outputs
         /// <summary>
         /// (string) - Description of the App Resource
         /// </summary>
-        public readonly string? Description;
+        public readonly string Description;
         /// <summary>
         /// (string) - The Git provider of the template
         /// </summary>
@@ -46,7 +46,7 @@ namespace Pulumi.Databricks.Outputs
         private GetAppsSettingsCustomTemplatesTemplateResult(
             string creator,
 
-            string? description,
+            string description,
 
             string gitProvider,
 

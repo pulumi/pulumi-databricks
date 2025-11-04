@@ -5,7 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.String;
+import java.lang.Integer;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,24 +16,28 @@ public final class GetTagPoliciesArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetTagPoliciesArgs Empty = new GetTagPoliciesArgs();
 
     /**
-     * Workspace ID of the resource
+     * The maximum number of results to return in this request. Fewer results may be returned than requested. If
+     * unspecified or set to 0, this defaults to 1000. The maximum value is 1000; values above 1000 will be coerced down
+     * to 1000
      * 
      */
-    @Import(name="workspaceId")
-    private @Nullable Output<String> workspaceId;
+    @Import(name="pageSize")
+    private @Nullable Output<Integer> pageSize;
 
     /**
-     * @return Workspace ID of the resource
+     * @return The maximum number of results to return in this request. Fewer results may be returned than requested. If
+     * unspecified or set to 0, this defaults to 1000. The maximum value is 1000; values above 1000 will be coerced down
+     * to 1000
      * 
      */
-    public Optional<Output<String>> workspaceId() {
-        return Optional.ofNullable(this.workspaceId);
+    public Optional<Output<Integer>> pageSize() {
+        return Optional.ofNullable(this.pageSize);
     }
 
     private GetTagPoliciesArgs() {}
 
     private GetTagPoliciesArgs(GetTagPoliciesArgs $) {
-        this.workspaceId = $.workspaceId;
+        this.pageSize = $.pageSize;
     }
 
     public static Builder builder() {
@@ -55,24 +59,28 @@ public final class GetTagPoliciesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param workspaceId Workspace ID of the resource
+         * @param pageSize The maximum number of results to return in this request. Fewer results may be returned than requested. If
+         * unspecified or set to 0, this defaults to 1000. The maximum value is 1000; values above 1000 will be coerced down
+         * to 1000
          * 
          * @return builder
          * 
          */
-        public Builder workspaceId(@Nullable Output<String> workspaceId) {
-            $.workspaceId = workspaceId;
+        public Builder pageSize(@Nullable Output<Integer> pageSize) {
+            $.pageSize = pageSize;
             return this;
         }
 
         /**
-         * @param workspaceId Workspace ID of the resource
+         * @param pageSize The maximum number of results to return in this request. Fewer results may be returned than requested. If
+         * unspecified or set to 0, this defaults to 1000. The maximum value is 1000; values above 1000 will be coerced down
+         * to 1000
          * 
          * @return builder
          * 
          */
-        public Builder workspaceId(String workspaceId) {
-            return workspaceId(Output.of(workspaceId));
+        public Builder pageSize(Integer pageSize) {
+            return pageSize(Output.of(pageSize));
         }
 
         public GetTagPoliciesArgs build() {

@@ -6,12 +6,47 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
+ * This data source allows you to retrieve tag assignments that have been applied to a particular entity in Unity Catalog.
+ *
+ * ## Example Usage
+ *
+ * ### Get all tag assignments for a catalog
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const catalogTags = databricks.getEntityTagAssignments({
+ *     entityType: "catalogs",
+ *     entityName: "production_catalog",
+ * });
+ * const schemaTags = databricks.getEntityTagAssignments({
+ *     entityType: "schemas",
+ *     entityName: "production_catalog.sales_data",
+ * });
+ * const tableTags = databricks.getEntityTagAssignments({
+ *     entityType: "tables",
+ *     entityName: "production_catalog.sales_data.customer_orders",
+ * });
+ * const columnTags = databricks.getEntityTagAssignments({
+ *     entityType: "columns",
+ *     entityName: "production_catalog.customer_data.users.email_address",
+ * });
+ * const volumeTags = databricks.getEntityTagAssignments({
+ *     entityType: "volumes",
+ *     entityName: "production_catalog.raw_data.landing_zone",
+ * });
+ * ```
+ */
 export function getEntityTagAssignments(args: GetEntityTagAssignmentsArgs, opts?: pulumi.InvokeOptions): Promise<GetEntityTagAssignmentsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getEntityTagAssignments:getEntityTagAssignments", {
         "entityName": args.entityName,
         "entityType": args.entityType,
-        "workspaceId": args.workspaceId,
+        "maxResults": args.maxResults,
     }, opts);
 }
 
@@ -28,9 +63,9 @@ export interface GetEntityTagAssignmentsArgs {
      */
     entityType: string;
     /**
-     * Workspace ID of the resource
+     * Optional. Maximum number of tag assignments to return in a single page
      */
-    workspaceId?: string;
+    maxResults?: number;
 }
 
 /**
@@ -49,15 +84,50 @@ export interface GetEntityTagAssignmentsResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly maxResults?: number;
     readonly tagAssignments: outputs.GetEntityTagAssignmentsTagAssignment[];
-    readonly workspaceId?: string;
 }
+/**
+ * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
+ * This data source allows you to retrieve tag assignments that have been applied to a particular entity in Unity Catalog.
+ *
+ * ## Example Usage
+ *
+ * ### Get all tag assignments for a catalog
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const catalogTags = databricks.getEntityTagAssignments({
+ *     entityType: "catalogs",
+ *     entityName: "production_catalog",
+ * });
+ * const schemaTags = databricks.getEntityTagAssignments({
+ *     entityType: "schemas",
+ *     entityName: "production_catalog.sales_data",
+ * });
+ * const tableTags = databricks.getEntityTagAssignments({
+ *     entityType: "tables",
+ *     entityName: "production_catalog.sales_data.customer_orders",
+ * });
+ * const columnTags = databricks.getEntityTagAssignments({
+ *     entityType: "columns",
+ *     entityName: "production_catalog.customer_data.users.email_address",
+ * });
+ * const volumeTags = databricks.getEntityTagAssignments({
+ *     entityType: "volumes",
+ *     entityName: "production_catalog.raw_data.landing_zone",
+ * });
+ * ```
+ */
 export function getEntityTagAssignmentsOutput(args: GetEntityTagAssignmentsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEntityTagAssignmentsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getEntityTagAssignments:getEntityTagAssignments", {
         "entityName": args.entityName,
         "entityType": args.entityType,
-        "workspaceId": args.workspaceId,
+        "maxResults": args.maxResults,
     }, opts);
 }
 
@@ -74,7 +144,7 @@ export interface GetEntityTagAssignmentsOutputArgs {
      */
     entityType: pulumi.Input<string>;
     /**
-     * Workspace ID of the resource
+     * Optional. Maximum number of tag assignments to return in a single page
      */
-    workspaceId?: pulumi.Input<string>;
+    maxResults?: pulumi.Input<number>;
 }

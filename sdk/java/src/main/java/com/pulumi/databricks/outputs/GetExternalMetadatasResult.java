@@ -6,6 +6,7 @@ package com.pulumi.databricks.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetExternalMetadatasExternalMetadata;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -20,7 +21,7 @@ public final class GetExternalMetadatasResult {
      * 
      */
     private String id;
-    private @Nullable String workspaceId;
+    private @Nullable Integer pageSize;
 
     private GetExternalMetadatasResult() {}
     public List<GetExternalMetadatasExternalMetadata> externalMetadatas() {
@@ -33,8 +34,8 @@ public final class GetExternalMetadatasResult {
     public String id() {
         return this.id;
     }
-    public Optional<String> workspaceId() {
-        return Optional.ofNullable(this.workspaceId);
+    public Optional<Integer> pageSize() {
+        return Optional.ofNullable(this.pageSize);
     }
 
     public static Builder builder() {
@@ -48,13 +49,13 @@ public final class GetExternalMetadatasResult {
     public static final class Builder {
         private List<GetExternalMetadatasExternalMetadata> externalMetadatas;
         private String id;
-        private @Nullable String workspaceId;
+        private @Nullable Integer pageSize;
         public Builder() {}
         public Builder(GetExternalMetadatasResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.externalMetadatas = defaults.externalMetadatas;
     	      this.id = defaults.id;
-    	      this.workspaceId = defaults.workspaceId;
+    	      this.pageSize = defaults.pageSize;
         }
 
         @CustomType.Setter
@@ -77,16 +78,16 @@ public final class GetExternalMetadatasResult {
             return this;
         }
         @CustomType.Setter
-        public Builder workspaceId(@Nullable String workspaceId) {
+        public Builder pageSize(@Nullable Integer pageSize) {
 
-            this.workspaceId = workspaceId;
+            this.pageSize = pageSize;
             return this;
         }
         public GetExternalMetadatasResult build() {
             final var _resultValue = new GetExternalMetadatasResult();
             _resultValue.externalMetadatas = externalMetadatas;
             _resultValue.id = id;
-            _resultValue.workspaceId = workspaceId;
+            _resultValue.pageSize = pageSize;
             return _resultValue;
         }
     }

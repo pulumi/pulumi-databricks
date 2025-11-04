@@ -22,9 +22,17 @@ public final class StorageCredentialState extends com.pulumi.resources.ResourceA
 
     public static final StorageCredentialState Empty = new StorageCredentialState();
 
+    /**
+     * exposes two additional attributes:
+     * 
+     */
     @Import(name="awsIamRole")
     private @Nullable Output<StorageCredentialAwsIamRoleArgs> awsIamRole;
 
+    /**
+     * @return exposes two additional attributes:
+     * 
+     */
     public Optional<Output<StorageCredentialAwsIamRoleArgs>> awsIamRole() {
         return Optional.ofNullable(this.awsIamRole);
     }
@@ -249,11 +257,23 @@ public final class StorageCredentialState extends com.pulumi.resources.ResourceA
             $ = new StorageCredentialState(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param awsIamRole exposes two additional attributes:
+         * 
+         * @return builder
+         * 
+         */
         public Builder awsIamRole(@Nullable Output<StorageCredentialAwsIamRoleArgs> awsIamRole) {
             $.awsIamRole = awsIamRole;
             return this;
         }
 
+        /**
+         * @param awsIamRole exposes two additional attributes:
+         * 
+         * @return builder
+         * 
+         */
         public Builder awsIamRole(StorageCredentialAwsIamRoleArgs awsIamRole) {
             return awsIamRole(Output.of(awsIamRole));
         }

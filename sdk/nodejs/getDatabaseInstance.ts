@@ -7,6 +7,8 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
  * This data source can be used to get a single Database Instance.
  *
  * ## Example Usage
@@ -25,15 +27,7 @@ import * as utilities from "./utilities";
 export function getDatabaseInstance(args: GetDatabaseInstanceArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabaseInstanceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getDatabaseInstance:getDatabaseInstance", {
-        "capacity": args.capacity,
-        "enablePgNativeLogin": args.enablePgNativeLogin,
-        "enableReadableSecondaries": args.enableReadableSecondaries,
         "name": args.name,
-        "nodeCount": args.nodeCount,
-        "parentInstanceRef": args.parentInstanceRef,
-        "retentionWindowInDays": args.retentionWindowInDays,
-        "stopped": args.stopped,
-        "workspaceId": args.workspaceId,
     }, opts);
 }
 
@@ -42,47 +36,9 @@ export function getDatabaseInstance(args: GetDatabaseInstanceArgs, opts?: pulumi
  */
 export interface GetDatabaseInstanceArgs {
     /**
-     * (string) - The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
-     */
-    capacity?: string;
-    /**
-     * (boolean) - Whether the instance has PG native password login enabled. Defaults to true
-     */
-    enablePgNativeLogin?: boolean;
-    /**
-     * (boolean) - Whether to enable secondaries to serve read-only traffic. Defaults to false
-     */
-    enableReadableSecondaries?: boolean;
-    /**
      * The name of the instance. This is the unique identifier for the instance
      */
     name: string;
-    /**
-     * (integer) - The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
-     * 1 primary and 0 secondaries
-     */
-    nodeCount?: number;
-    /**
-     * (DatabaseInstanceRef) - The ref of the parent instance. This is only available if the instance is
-     * child instance.
-     * Input: For specifying the parent instance to create a child instance. Optional.
-     * Output: Only populated if provided as input to create a child instance
-     */
-    parentInstanceRef?: inputs.GetDatabaseInstanceParentInstanceRef;
-    /**
-     * (integer) - The retention window for the instance. This is the time window in days
-     * for which the historical data is retained. The default value is 7 days.
-     * Valid values are 2 to 35 days
-     */
-    retentionWindowInDays?: number;
-    /**
-     * (boolean) - Whether the instance is stopped
-     */
-    stopped?: boolean;
-    /**
-     * Workspace ID of the resource
-     */
-    workspaceId?: string;
 }
 
 /**
@@ -92,7 +48,7 @@ export interface GetDatabaseInstanceResult {
     /**
      * (string) - The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
      */
-    readonly capacity?: string;
+    readonly capacity: string;
     /**
      * (list of DatabaseInstanceRef) - The refs of the child instances. This is only available if the instance is
      * parent instance
@@ -107,43 +63,51 @@ export interface GetDatabaseInstanceResult {
      */
     readonly creator: string;
     /**
-     * (boolean) - xref AIP-129. `enablePgNativeLogin` is owned by the client, while `effectiveEnablePgNativeLogin` is owned by the server.
-     * `enablePgNativeLogin` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-     * `effectiveEnablePgNativeLogin` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * (list of CustomTag) - Custom tags associated with the instance. This field is only included on create and update responses
+     */
+    readonly customTags: outputs.GetDatabaseInstanceCustomTag[];
+    /**
+     * (string, deprecated) - Deprecated. The sku of the instance; this field will always match the value of capacity
+     */
+    readonly effectiveCapacity: string;
+    /**
+     * (list of CustomTag) - The recorded custom tags associated with the instance
+     */
+    readonly effectiveCustomTags: outputs.GetDatabaseInstanceEffectiveCustomTag[];
+    /**
+     * (boolean) - Whether the instance has PG native password login enabled
      */
     readonly effectiveEnablePgNativeLogin: boolean;
     /**
-     * (boolean) - xref AIP-129. `enableReadableSecondaries` is owned by the client, while `effectiveEnableReadableSecondaries` is owned by the server.
-     * `enableReadableSecondaries` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-     * `effectiveEnableReadableSecondaries` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * (boolean) - Whether secondaries serving read-only traffic are enabled. Defaults to false
      */
     readonly effectiveEnableReadableSecondaries: boolean;
     /**
-     * (integer) - xref AIP-129. `nodeCount` is owned by the client, while `effectiveNodeCount` is owned by the server.
-     * `nodeCount` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-     * `effectiveNodeCount` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * (integer) - The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
+     * 1 primary and 0 secondaries
      */
     readonly effectiveNodeCount: number;
     /**
-     * (integer) - xref AIP-129. `retentionWindowInDays` is owned by the client, while `effectiveRetentionWindowInDays` is owned by the server.
-     * `retentionWindowInDays` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-     * `effectiveRetentionWindowInDays` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * (integer) - The retention window for the instance. This is the time window in days
+     * for which the historical data is retained
      */
     readonly effectiveRetentionWindowInDays: number;
     /**
-     * (boolean) - xref AIP-129. `stopped` is owned by the client, while `effectiveStopped` is owned by the server.
-     * `stopped` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-     * `effectiveStopped` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * (boolean) - Whether the instance is stopped
      */
     readonly effectiveStopped: boolean;
     /**
-     * (boolean) - Whether the instance has PG native password login enabled. Defaults to true
+     * (string) - The policy that is applied to the instance
+     */
+    readonly effectiveUsagePolicyId: string;
+    /**
+     * (boolean) - Whether to enable PG native password login on the instance. Defaults to false
      */
     readonly enablePgNativeLogin: boolean;
     /**
      * (boolean) - Whether to enable secondaries to serve read-only traffic. Defaults to false
      */
-    readonly enableReadableSecondaries?: boolean;
+    readonly enableReadableSecondaries: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -154,16 +118,16 @@ export interface GetDatabaseInstanceResult {
     readonly name: string;
     /**
      * (integer) - The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
-     * 1 primary and 0 secondaries
+     * 1 primary and 0 secondaries. This field is input only, see effectiveNodeCount for the output
      */
-    readonly nodeCount?: number;
+    readonly nodeCount: number;
     /**
      * (DatabaseInstanceRef) - The ref of the parent instance. This is only available if the instance is
      * child instance.
      * Input: For specifying the parent instance to create a child instance. Optional.
      * Output: Only populated if provided as input to create a child instance
      */
-    readonly parentInstanceRef?: outputs.GetDatabaseInstanceParentInstanceRef;
+    readonly parentInstanceRef: outputs.GetDatabaseInstanceParentInstanceRef;
     /**
      * (string) - The version of Postgres running on the instance
      */
@@ -182,22 +146,27 @@ export interface GetDatabaseInstanceResult {
      * for which the historical data is retained. The default value is 7 days.
      * Valid values are 2 to 35 days
      */
-    readonly retentionWindowInDays?: number;
+    readonly retentionWindowInDays: number;
     /**
      * (string) - The current state of the instance. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
      */
     readonly state: string;
     /**
-     * (boolean) - Whether the instance is stopped
+     * (boolean) - Whether to stop the instance. An input only param, see effectiveStopped for the output
      */
-    readonly stopped?: boolean;
+    readonly stopped: boolean;
     /**
      * (string) - Id of the ref database instance
      */
     readonly uid: string;
-    readonly workspaceId?: string;
+    /**
+     * (string) - The desired usage policy to associate with the instance
+     */
+    readonly usagePolicyId: string;
 }
 /**
+ * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
  * This data source can be used to get a single Database Instance.
  *
  * ## Example Usage
@@ -216,15 +185,7 @@ export interface GetDatabaseInstanceResult {
 export function getDatabaseInstanceOutput(args: GetDatabaseInstanceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDatabaseInstanceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getDatabaseInstance:getDatabaseInstance", {
-        "capacity": args.capacity,
-        "enablePgNativeLogin": args.enablePgNativeLogin,
-        "enableReadableSecondaries": args.enableReadableSecondaries,
         "name": args.name,
-        "nodeCount": args.nodeCount,
-        "parentInstanceRef": args.parentInstanceRef,
-        "retentionWindowInDays": args.retentionWindowInDays,
-        "stopped": args.stopped,
-        "workspaceId": args.workspaceId,
     }, opts);
 }
 
@@ -233,45 +194,7 @@ export function getDatabaseInstanceOutput(args: GetDatabaseInstanceOutputArgs, o
  */
 export interface GetDatabaseInstanceOutputArgs {
     /**
-     * (string) - The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
-     */
-    capacity?: pulumi.Input<string>;
-    /**
-     * (boolean) - Whether the instance has PG native password login enabled. Defaults to true
-     */
-    enablePgNativeLogin?: pulumi.Input<boolean>;
-    /**
-     * (boolean) - Whether to enable secondaries to serve read-only traffic. Defaults to false
-     */
-    enableReadableSecondaries?: pulumi.Input<boolean>;
-    /**
      * The name of the instance. This is the unique identifier for the instance
      */
     name: pulumi.Input<string>;
-    /**
-     * (integer) - The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
-     * 1 primary and 0 secondaries
-     */
-    nodeCount?: pulumi.Input<number>;
-    /**
-     * (DatabaseInstanceRef) - The ref of the parent instance. This is only available if the instance is
-     * child instance.
-     * Input: For specifying the parent instance to create a child instance. Optional.
-     * Output: Only populated if provided as input to create a child instance
-     */
-    parentInstanceRef?: pulumi.Input<inputs.GetDatabaseInstanceParentInstanceRefArgs>;
-    /**
-     * (integer) - The retention window for the instance. This is the time window in days
-     * for which the historical data is retained. The default value is 7 days.
-     * Valid values are 2 to 35 days
-     */
-    retentionWindowInDays?: pulumi.Input<number>;
-    /**
-     * (boolean) - Whether the instance is stopped
-     */
-    stopped?: pulumi.Input<boolean>;
-    /**
-     * Workspace ID of the resource
-     */
-    workspaceId?: pulumi.Input<string>;
 }

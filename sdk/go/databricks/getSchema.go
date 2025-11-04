@@ -68,6 +68,8 @@ type LookupSchemaArgs struct {
 	Id *string `pulumi:"id"`
 	// a fully qualified name of databricks_schema: *`catalog`.`schema`*
 	Name string `pulumi:"name"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *GetSchemaProviderConfig `pulumi:"providerConfig"`
 	// `SchemaInfo` object for a Unity Catalog schema. This contains the following attributes:
 	SchemaInfo *GetSchemaSchemaInfo `pulumi:"schemaInfo"`
 }
@@ -77,7 +79,8 @@ type LookupSchemaResult struct {
 	// ID of this Unity Catalog Schema in form of `<catalog>.<schema>`.
 	Id string `pulumi:"id"`
 	// Name of schema, relative to parent catalog.
-	Name string `pulumi:"name"`
+	Name           string                   `pulumi:"name"`
+	ProviderConfig *GetSchemaProviderConfig `pulumi:"providerConfig"`
 	// `SchemaInfo` object for a Unity Catalog schema. This contains the following attributes:
 	SchemaInfo GetSchemaSchemaInfo `pulumi:"schemaInfo"`
 }
@@ -97,6 +100,8 @@ type LookupSchemaOutputArgs struct {
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// a fully qualified name of databricks_schema: *`catalog`.`schema`*
 	Name pulumi.StringInput `pulumi:"name"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig GetSchemaProviderConfigPtrInput `pulumi:"providerConfig"`
 	// `SchemaInfo` object for a Unity Catalog schema. This contains the following attributes:
 	SchemaInfo GetSchemaSchemaInfoPtrInput `pulumi:"schemaInfo"`
 }
@@ -128,6 +133,10 @@ func (o LookupSchemaResultOutput) Id() pulumi.StringOutput {
 // Name of schema, relative to parent catalog.
 func (o LookupSchemaResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSchemaResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupSchemaResultOutput) ProviderConfig() GetSchemaProviderConfigPtrOutput {
+	return o.ApplyT(func(v LookupSchemaResult) *GetSchemaProviderConfig { return v.ProviderConfig }).(GetSchemaProviderConfigPtrOutput)
 }
 
 // `SchemaInfo` object for a Unity Catalog schema. This contains the following attributes:

@@ -14,6 +14,7 @@ else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetAppResult',
@@ -27,7 +28,7 @@ class GetAppResult:
     """
     A collection of values returned by getApp.
     """
-    def __init__(__self__, app=None, id=None, name=None):
+    def __init__(__self__, app=None, id=None, name=None, provider_config=None):
         if app and not isinstance(app, dict):
             raise TypeError("Expected argument 'app' to be a dict")
         pulumi.set(__self__, "app", app)
@@ -37,6 +38,9 @@ class GetAppResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if provider_config and not isinstance(provider_config, dict):
+            raise TypeError("Expected argument 'provider_config' to be a dict")
+        pulumi.set(__self__, "provider_config", provider_config)
 
     @_builtins.property
     @pulumi.getter
@@ -58,9 +62,14 @@ class GetAppResult:
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        Name of the serving endpoint to grant permission on.
+        The name of Genie Space.
         """
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional['outputs.GetAppProviderConfigResult']:
+        return pulumi.get(self, "provider_config")
 
 
 class AwaitableGetAppResult(GetAppResult):
@@ -71,10 +80,12 @@ class AwaitableGetAppResult(GetAppResult):
         return GetAppResult(
             app=self.app,
             id=self.id,
-            name=self.name)
+            name=self.name,
+            provider_config=self.provider_config)
 
 
 def get_app(name: Optional[_builtins.str] = None,
+            provider_config: Optional[Union['GetAppProviderConfigArgs', 'GetAppProviderConfigArgsDict']] = None,
             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAppResult:
     """
     > This data source can only be used with a workspace-level provider!
@@ -107,14 +118,17 @@ def get_app(name: Optional[_builtins.str] = None,
     """
     __args__ = dict()
     __args__['name'] = name
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getApp:getApp', __args__, opts=opts, typ=GetAppResult).value
 
     return AwaitableGetAppResult(
         app=pulumi.get(__ret__, 'app'),
         id=pulumi.get(__ret__, 'id'),
-        name=pulumi.get(__ret__, 'name'))
+        name=pulumi.get(__ret__, 'name'),
+        provider_config=pulumi.get(__ret__, 'provider_config'))
 def get_app_output(name: Optional[pulumi.Input[_builtins.str]] = None,
+                   provider_config: Optional[pulumi.Input[Optional[Union['GetAppProviderConfigArgs', 'GetAppProviderConfigArgsDict']]]] = None,
                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAppResult]:
     """
     > This data source can only be used with a workspace-level provider!
@@ -147,9 +161,11 @@ def get_app_output(name: Optional[pulumi.Input[_builtins.str]] = None,
     """
     __args__ = dict()
     __args__['name'] = name
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getApp:getApp', __args__, opts=opts, typ=GetAppResult)
     return __ret__.apply(lambda __response__: GetAppResult(
         app=pulumi.get(__response__, 'app'),
         id=pulumi.get(__response__, 'id'),
-        name=pulumi.get(__response__, 'name')))
+        name=pulumi.get(__response__, 'name'),
+        provider_config=pulumi.get(__response__, 'provider_config')))

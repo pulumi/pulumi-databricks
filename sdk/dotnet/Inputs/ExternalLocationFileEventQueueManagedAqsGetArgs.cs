@@ -22,7 +22,7 @@ namespace Pulumi.Databricks.Inputs
         public Input<string>? QueueUrl { get; set; }
 
         /// <summary>
-        /// The Azure resource group.
+        /// The name of the Azure resource group.
         /// </summary>
         [Input("resourceGroup", required: true)]
         public Input<string> ResourceGroup { get; set; } = null!;

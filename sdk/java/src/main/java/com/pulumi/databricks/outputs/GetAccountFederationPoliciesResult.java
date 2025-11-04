@@ -6,9 +6,12 @@ package com.pulumi.databricks.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetAccountFederationPoliciesPolicy;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAccountFederationPoliciesResult {
@@ -17,6 +20,7 @@ public final class GetAccountFederationPoliciesResult {
      * 
      */
     private String id;
+    private @Nullable Integer pageSize;
     private List<GetAccountFederationPoliciesPolicy> policies;
 
     private GetAccountFederationPoliciesResult() {}
@@ -26,6 +30,9 @@ public final class GetAccountFederationPoliciesResult {
      */
     public String id() {
         return this.id;
+    }
+    public Optional<Integer> pageSize() {
+        return Optional.ofNullable(this.pageSize);
     }
     public List<GetAccountFederationPoliciesPolicy> policies() {
         return this.policies;
@@ -41,11 +48,13 @@ public final class GetAccountFederationPoliciesResult {
     @CustomType.Builder
     public static final class Builder {
         private String id;
+        private @Nullable Integer pageSize;
         private List<GetAccountFederationPoliciesPolicy> policies;
         public Builder() {}
         public Builder(GetAccountFederationPoliciesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
+    	      this.pageSize = defaults.pageSize;
     	      this.policies = defaults.policies;
         }
 
@@ -55,6 +64,12 @@ public final class GetAccountFederationPoliciesResult {
               throw new MissingRequiredPropertyException("GetAccountFederationPoliciesResult", "id");
             }
             this.id = id;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder pageSize(@Nullable Integer pageSize) {
+
+            this.pageSize = pageSize;
             return this;
         }
         @CustomType.Setter
@@ -71,6 +86,7 @@ public final class GetAccountFederationPoliciesResult {
         public GetAccountFederationPoliciesResult build() {
             final var _resultValue = new GetAccountFederationPoliciesResult();
             _resultValue.id = id;
+            _resultValue.pageSize = pageSize;
             _resultValue.policies = policies;
             return _resultValue;
         }

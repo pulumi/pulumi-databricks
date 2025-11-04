@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.ClusterPolicyLibraryCranArgs;
 import com.pulumi.databricks.inputs.ClusterPolicyLibraryMavenArgs;
+import com.pulumi.databricks.inputs.ClusterPolicyLibraryProviderConfigArgs;
 import com.pulumi.databricks.inputs.ClusterPolicyLibraryPypiArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -58,6 +59,13 @@ public final class ClusterPolicyLibraryArgs extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.maven);
     }
 
+    @Import(name="providerConfig")
+    private @Nullable Output<ClusterPolicyLibraryProviderConfigArgs> providerConfig;
+
+    public Optional<Output<ClusterPolicyLibraryProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     @Import(name="pypi")
     private @Nullable Output<ClusterPolicyLibraryPypiArgs> pypi;
 
@@ -86,6 +94,7 @@ public final class ClusterPolicyLibraryArgs extends com.pulumi.resources.Resourc
         this.egg = $.egg;
         this.jar = $.jar;
         this.maven = $.maven;
+        this.providerConfig = $.providerConfig;
         this.pypi = $.pypi;
         this.requirements = $.requirements;
         this.whl = $.whl;
@@ -159,6 +168,15 @@ public final class ClusterPolicyLibraryArgs extends com.pulumi.resources.Resourc
 
         public Builder maven(ClusterPolicyLibraryMavenArgs maven) {
             return maven(Output.of(maven));
+        }
+
+        public Builder providerConfig(@Nullable Output<ClusterPolicyLibraryProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        public Builder providerConfig(ClusterPolicyLibraryProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         public Builder pypi(@Nullable Output<ClusterPolicyLibraryPypiArgs> pypi) {

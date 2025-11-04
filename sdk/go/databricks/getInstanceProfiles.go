@@ -55,6 +55,8 @@ func GetInstanceProfiles(ctx *pulumi.Context, args *GetInstanceProfilesArgs, opt
 type GetInstanceProfilesArgs struct {
 	// Set of objects for a databricks_instance_profile. This contains the following attributes:
 	InstanceProfiles []GetInstanceProfilesInstanceProfile `pulumi:"instanceProfiles"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *GetInstanceProfilesProviderConfig `pulumi:"providerConfig"`
 }
 
 // A collection of values returned by getInstanceProfiles.
@@ -63,6 +65,7 @@ type GetInstanceProfilesResult struct {
 	Id string `pulumi:"id"`
 	// Set of objects for a databricks_instance_profile. This contains the following attributes:
 	InstanceProfiles []GetInstanceProfilesInstanceProfile `pulumi:"instanceProfiles"`
+	ProviderConfig   *GetInstanceProfilesProviderConfig   `pulumi:"providerConfig"`
 }
 
 func GetInstanceProfilesOutput(ctx *pulumi.Context, args GetInstanceProfilesOutputArgs, opts ...pulumi.InvokeOption) GetInstanceProfilesResultOutput {
@@ -78,6 +81,8 @@ func GetInstanceProfilesOutput(ctx *pulumi.Context, args GetInstanceProfilesOutp
 type GetInstanceProfilesOutputArgs struct {
 	// Set of objects for a databricks_instance_profile. This contains the following attributes:
 	InstanceProfiles GetInstanceProfilesInstanceProfileArrayInput `pulumi:"instanceProfiles"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig GetInstanceProfilesProviderConfigPtrInput `pulumi:"providerConfig"`
 }
 
 func (GetInstanceProfilesOutputArgs) ElementType() reflect.Type {
@@ -107,6 +112,10 @@ func (o GetInstanceProfilesResultOutput) Id() pulumi.StringOutput {
 // Set of objects for a databricks_instance_profile. This contains the following attributes:
 func (o GetInstanceProfilesResultOutput) InstanceProfiles() GetInstanceProfilesInstanceProfileArrayOutput {
 	return o.ApplyT(func(v GetInstanceProfilesResult) []GetInstanceProfilesInstanceProfile { return v.InstanceProfiles }).(GetInstanceProfilesInstanceProfileArrayOutput)
+}
+
+func (o GetInstanceProfilesResultOutput) ProviderConfig() GetInstanceProfilesProviderConfigPtrOutput {
+	return o.ApplyT(func(v GetInstanceProfilesResult) *GetInstanceProfilesProviderConfig { return v.ProviderConfig }).(GetInstanceProfilesProviderConfigPtrOutput)
 }
 
 func init() {

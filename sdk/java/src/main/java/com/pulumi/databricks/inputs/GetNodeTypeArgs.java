@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetNodeTypeProviderConfigArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -16,6 +17,21 @@ import javax.annotation.Nullable;
 public final class GetNodeTypeArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetNodeTypeArgs Empty = new GetNodeTypeArgs();
+
+    /**
+     * if we should limit the search only to nodes with AWS Graviton or Azure Cobalt CPUs. Default to _false_.
+     * 
+     */
+    @Import(name="arm")
+    private @Nullable Output<Boolean> arm;
+
+    /**
+     * @return if we should limit the search only to nodes with AWS Graviton or Azure Cobalt CPUs. Default to _false_.
+     * 
+     */
+    public Optional<Output<Boolean>> arm() {
+        return Optional.ofNullable(this.arm);
+    }
 
     /**
      * Node category, which can be one of (depending on the cloud environment, could be checked with `databricks clusters list-node-types -o json|jq &#39;.node_types[]|.category&#39;|sort |uniq`):
@@ -77,16 +93,24 @@ public final class GetNodeTypeArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * if we should limit the search only to nodes with AWS Graviton or Azure Cobalt CPUs. Default to _false_.
+     * if we should limit the search only to nodes with AWS Graviton or Azure Cobalt CPUs. Default to _false_. *Use `arm` instead!*
+     * 
+     * @deprecated
+     * Use `arm` instead
      * 
      */
+    @Deprecated /* Use `arm` instead */
     @Import(name="graviton")
     private @Nullable Output<Boolean> graviton;
 
     /**
-     * @return if we should limit the search only to nodes with AWS Graviton or Azure Cobalt CPUs. Default to _false_.
+     * @return if we should limit the search only to nodes with AWS Graviton or Azure Cobalt CPUs. Default to _false_. *Use `arm` instead!*
+     * 
+     * @deprecated
+     * Use `arm` instead
      * 
      */
+    @Deprecated /* Use `arm` instead */
     public Optional<Output<Boolean>> graviton() {
         return Optional.ofNullable(this.graviton);
     }
@@ -227,6 +251,21 @@ public final class GetNodeTypeArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<GetNodeTypeProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Optional<Output<GetNodeTypeProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
+    /**
      * Pick only nodes that support port forwarding. Defaults to _false_.
      * 
      */
@@ -244,6 +283,7 @@ public final class GetNodeTypeArgs extends com.pulumi.resources.InvokeArgs {
     private GetNodeTypeArgs() {}
 
     private GetNodeTypeArgs(GetNodeTypeArgs $) {
+        this.arm = $.arm;
         this.category = $.category;
         this.fleet = $.fleet;
         this.gbPerCore = $.gbPerCore;
@@ -257,6 +297,7 @@ public final class GetNodeTypeArgs extends com.pulumi.resources.InvokeArgs {
         this.minMemoryGb = $.minMemoryGb;
         this.photonDriverCapable = $.photonDriverCapable;
         this.photonWorkerCapable = $.photonWorkerCapable;
+        this.providerConfig = $.providerConfig;
         this.supportPortForwarding = $.supportPortForwarding;
     }
 
@@ -276,6 +317,27 @@ public final class GetNodeTypeArgs extends com.pulumi.resources.InvokeArgs {
 
         public Builder(GetNodeTypeArgs defaults) {
             $ = new GetNodeTypeArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param arm if we should limit the search only to nodes with AWS Graviton or Azure Cobalt CPUs. Default to _false_.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder arm(@Nullable Output<Boolean> arm) {
+            $.arm = arm;
+            return this;
+        }
+
+        /**
+         * @param arm if we should limit the search only to nodes with AWS Graviton or Azure Cobalt CPUs. Default to _false_.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder arm(Boolean arm) {
+            return arm(Output.of(arm));
         }
 
         /**
@@ -356,22 +418,30 @@ public final class GetNodeTypeArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param graviton if we should limit the search only to nodes with AWS Graviton or Azure Cobalt CPUs. Default to _false_.
+         * @param graviton if we should limit the search only to nodes with AWS Graviton or Azure Cobalt CPUs. Default to _false_. *Use `arm` instead!*
          * 
          * @return builder
          * 
+         * @deprecated
+         * Use `arm` instead
+         * 
          */
+        @Deprecated /* Use `arm` instead */
         public Builder graviton(@Nullable Output<Boolean> graviton) {
             $.graviton = graviton;
             return this;
         }
 
         /**
-         * @param graviton if we should limit the search only to nodes with AWS Graviton or Azure Cobalt CPUs. Default to _false_.
+         * @param graviton if we should limit the search only to nodes with AWS Graviton or Azure Cobalt CPUs. Default to _false_. *Use `arm` instead!*
          * 
          * @return builder
          * 
+         * @deprecated
+         * Use `arm` instead
+         * 
          */
+        @Deprecated /* Use `arm` instead */
         public Builder graviton(Boolean graviton) {
             return graviton(Output.of(graviton));
         }
@@ -563,6 +633,27 @@ public final class GetNodeTypeArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder photonWorkerCapable(Boolean photonWorkerCapable) {
             return photonWorkerCapable(Output.of(photonWorkerCapable));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<GetNodeTypeProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(GetNodeTypeProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         /**

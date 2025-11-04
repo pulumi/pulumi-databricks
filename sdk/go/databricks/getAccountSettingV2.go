@@ -11,6 +11,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+//
+// This data source can be used to get a single account setting.
+//
+// ## Example Usage
+//
+// Referring to a setting by id
 func LookupAccountSettingV2(ctx *pulumi.Context, args *LookupAccountSettingV2Args, opts ...pulumi.InvokeOption) (*LookupAccountSettingV2Result, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAccountSettingV2Result
@@ -23,82 +30,48 @@ func LookupAccountSettingV2(ctx *pulumi.Context, args *LookupAccountSettingV2Arg
 
 // A collection of arguments for invoking getAccountSettingV2.
 type LookupAccountSettingV2Args struct {
-	// (AibiDashboardEmbeddingAccessPolicy)
-	AibiDashboardEmbeddingAccessPolicy *GetAccountSettingV2AibiDashboardEmbeddingAccessPolicy `pulumi:"aibiDashboardEmbeddingAccessPolicy"`
-	// (AibiDashboardEmbeddingApprovedDomains)
-	AibiDashboardEmbeddingApprovedDomains *GetAccountSettingV2AibiDashboardEmbeddingApprovedDomains `pulumi:"aibiDashboardEmbeddingApprovedDomains"`
-	// (ClusterAutoRestartMessage) - todo: Mark these Public after onboarded to DSL
-	AutomaticClusterUpdateWorkspace *GetAccountSettingV2AutomaticClusterUpdateWorkspace `pulumi:"automaticClusterUpdateWorkspace"`
-	// (BooleanMessage)
-	BooleanVal *GetAccountSettingV2BooleanVal `pulumi:"booleanVal"`
-	// (DefaultDataSecurityModeMessage)
-	DefaultDataSecurityMode *GetAccountSettingV2DefaultDataSecurityMode `pulumi:"defaultDataSecurityMode"`
-	// (AibiDashboardEmbeddingAccessPolicy)
-	EffectiveAibiDashboardEmbeddingAccessPolicy *GetAccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy `pulumi:"effectiveAibiDashboardEmbeddingAccessPolicy"`
-	// (AibiDashboardEmbeddingApprovedDomains)
-	EffectiveAibiDashboardEmbeddingApprovedDomains *GetAccountSettingV2EffectiveAibiDashboardEmbeddingApprovedDomains `pulumi:"effectiveAibiDashboardEmbeddingApprovedDomains"`
-	// (ClusterAutoRestartMessage)
-	EffectiveAutomaticClusterUpdateWorkspace *GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspace `pulumi:"effectiveAutomaticClusterUpdateWorkspace"`
-	// (DefaultDataSecurityModeMessage)
-	EffectiveDefaultDataSecurityMode *GetAccountSettingV2EffectiveDefaultDataSecurityMode `pulumi:"effectiveDefaultDataSecurityMode"`
-	// (PersonalComputeMessage)
-	EffectivePersonalCompute *GetAccountSettingV2EffectivePersonalCompute `pulumi:"effectivePersonalCompute"`
-	// (RestrictWorkspaceAdminsMessage)
-	EffectiveRestrictWorkspaceAdmins *GetAccountSettingV2EffectiveRestrictWorkspaceAdmins `pulumi:"effectiveRestrictWorkspaceAdmins"`
-	// (IntegerMessage)
-	IntegerVal *GetAccountSettingV2IntegerVal `pulumi:"integerVal"`
 	// Name of the setting
-	Name *string `pulumi:"name"`
-	// (PersonalComputeMessage)
-	PersonalCompute *GetAccountSettingV2PersonalCompute `pulumi:"personalCompute"`
-	// (RestrictWorkspaceAdminsMessage)
-	RestrictWorkspaceAdmins *GetAccountSettingV2RestrictWorkspaceAdmins `pulumi:"restrictWorkspaceAdmins"`
-	// (StringMessage)
-	StringVal *GetAccountSettingV2StringVal `pulumi:"stringVal"`
+	Name string `pulumi:"name"`
 }
 
 // A collection of values returned by getAccountSettingV2.
 type LookupAccountSettingV2Result struct {
 	// (AibiDashboardEmbeddingAccessPolicy)
-	AibiDashboardEmbeddingAccessPolicy *GetAccountSettingV2AibiDashboardEmbeddingAccessPolicy `pulumi:"aibiDashboardEmbeddingAccessPolicy"`
+	AibiDashboardEmbeddingAccessPolicy GetAccountSettingV2AibiDashboardEmbeddingAccessPolicy `pulumi:"aibiDashboardEmbeddingAccessPolicy"`
 	// (AibiDashboardEmbeddingApprovedDomains)
-	AibiDashboardEmbeddingApprovedDomains *GetAccountSettingV2AibiDashboardEmbeddingApprovedDomains `pulumi:"aibiDashboardEmbeddingApprovedDomains"`
-	// (ClusterAutoRestartMessage) - todo: Mark these Public after onboarded to DSL
-	AutomaticClusterUpdateWorkspace *GetAccountSettingV2AutomaticClusterUpdateWorkspace `pulumi:"automaticClusterUpdateWorkspace"`
-	// (BooleanMessage)
-	BooleanVal *GetAccountSettingV2BooleanVal `pulumi:"booleanVal"`
-	// (DefaultDataSecurityModeMessage)
-	DefaultDataSecurityMode *GetAccountSettingV2DefaultDataSecurityMode `pulumi:"defaultDataSecurityMode"`
-	// (AibiDashboardEmbeddingAccessPolicy)
-	EffectiveAibiDashboardEmbeddingAccessPolicy *GetAccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy `pulumi:"effectiveAibiDashboardEmbeddingAccessPolicy"`
-	// (AibiDashboardEmbeddingApprovedDomains)
-	EffectiveAibiDashboardEmbeddingApprovedDomains *GetAccountSettingV2EffectiveAibiDashboardEmbeddingApprovedDomains `pulumi:"effectiveAibiDashboardEmbeddingApprovedDomains"`
+	AibiDashboardEmbeddingApprovedDomains GetAccountSettingV2AibiDashboardEmbeddingApprovedDomains `pulumi:"aibiDashboardEmbeddingApprovedDomains"`
 	// (ClusterAutoRestartMessage)
-	EffectiveAutomaticClusterUpdateWorkspace *GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspace `pulumi:"effectiveAutomaticClusterUpdateWorkspace"`
+	AutomaticClusterUpdateWorkspace GetAccountSettingV2AutomaticClusterUpdateWorkspace `pulumi:"automaticClusterUpdateWorkspace"`
+	// (BooleanMessage)
+	BooleanVal GetAccountSettingV2BooleanVal `pulumi:"booleanVal"`
+	// (AibiDashboardEmbeddingAccessPolicy)
+	EffectiveAibiDashboardEmbeddingAccessPolicy GetAccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy `pulumi:"effectiveAibiDashboardEmbeddingAccessPolicy"`
+	// (AibiDashboardEmbeddingApprovedDomains)
+	EffectiveAibiDashboardEmbeddingApprovedDomains GetAccountSettingV2EffectiveAibiDashboardEmbeddingApprovedDomains `pulumi:"effectiveAibiDashboardEmbeddingApprovedDomains"`
+	// (ClusterAutoRestartMessage)
+	EffectiveAutomaticClusterUpdateWorkspace GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspace `pulumi:"effectiveAutomaticClusterUpdateWorkspace"`
 	// (BooleanMessage)
 	EffectiveBooleanVal GetAccountSettingV2EffectiveBooleanVal `pulumi:"effectiveBooleanVal"`
-	// (DefaultDataSecurityModeMessage)
-	EffectiveDefaultDataSecurityMode *GetAccountSettingV2EffectiveDefaultDataSecurityMode `pulumi:"effectiveDefaultDataSecurityMode"`
 	// (IntegerMessage)
 	EffectiveIntegerVal GetAccountSettingV2EffectiveIntegerVal `pulumi:"effectiveIntegerVal"`
 	// (PersonalComputeMessage)
-	EffectivePersonalCompute *GetAccountSettingV2EffectivePersonalCompute `pulumi:"effectivePersonalCompute"`
+	EffectivePersonalCompute GetAccountSettingV2EffectivePersonalCompute `pulumi:"effectivePersonalCompute"`
 	// (RestrictWorkspaceAdminsMessage)
-	EffectiveRestrictWorkspaceAdmins *GetAccountSettingV2EffectiveRestrictWorkspaceAdmins `pulumi:"effectiveRestrictWorkspaceAdmins"`
+	EffectiveRestrictWorkspaceAdmins GetAccountSettingV2EffectiveRestrictWorkspaceAdmins `pulumi:"effectiveRestrictWorkspaceAdmins"`
 	// (StringMessage)
 	EffectiveStringVal GetAccountSettingV2EffectiveStringVal `pulumi:"effectiveStringVal"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// (IntegerMessage)
-	IntegerVal *GetAccountSettingV2IntegerVal `pulumi:"integerVal"`
+	IntegerVal GetAccountSettingV2IntegerVal `pulumi:"integerVal"`
 	// (string) - Name of the setting
-	Name *string `pulumi:"name"`
+	Name string `pulumi:"name"`
 	// (PersonalComputeMessage)
-	PersonalCompute *GetAccountSettingV2PersonalCompute `pulumi:"personalCompute"`
+	PersonalCompute GetAccountSettingV2PersonalCompute `pulumi:"personalCompute"`
 	// (RestrictWorkspaceAdminsMessage)
-	RestrictWorkspaceAdmins *GetAccountSettingV2RestrictWorkspaceAdmins `pulumi:"restrictWorkspaceAdmins"`
+	RestrictWorkspaceAdmins GetAccountSettingV2RestrictWorkspaceAdmins `pulumi:"restrictWorkspaceAdmins"`
 	// (StringMessage)
-	StringVal *GetAccountSettingV2StringVal `pulumi:"stringVal"`
+	StringVal GetAccountSettingV2StringVal `pulumi:"stringVal"`
 }
 
 func LookupAccountSettingV2Output(ctx *pulumi.Context, args LookupAccountSettingV2OutputArgs, opts ...pulumi.InvokeOption) LookupAccountSettingV2ResultOutput {
@@ -112,38 +85,8 @@ func LookupAccountSettingV2Output(ctx *pulumi.Context, args LookupAccountSetting
 
 // A collection of arguments for invoking getAccountSettingV2.
 type LookupAccountSettingV2OutputArgs struct {
-	// (AibiDashboardEmbeddingAccessPolicy)
-	AibiDashboardEmbeddingAccessPolicy GetAccountSettingV2AibiDashboardEmbeddingAccessPolicyPtrInput `pulumi:"aibiDashboardEmbeddingAccessPolicy"`
-	// (AibiDashboardEmbeddingApprovedDomains)
-	AibiDashboardEmbeddingApprovedDomains GetAccountSettingV2AibiDashboardEmbeddingApprovedDomainsPtrInput `pulumi:"aibiDashboardEmbeddingApprovedDomains"`
-	// (ClusterAutoRestartMessage) - todo: Mark these Public after onboarded to DSL
-	AutomaticClusterUpdateWorkspace GetAccountSettingV2AutomaticClusterUpdateWorkspacePtrInput `pulumi:"automaticClusterUpdateWorkspace"`
-	// (BooleanMessage)
-	BooleanVal GetAccountSettingV2BooleanValPtrInput `pulumi:"booleanVal"`
-	// (DefaultDataSecurityModeMessage)
-	DefaultDataSecurityMode GetAccountSettingV2DefaultDataSecurityModePtrInput `pulumi:"defaultDataSecurityMode"`
-	// (AibiDashboardEmbeddingAccessPolicy)
-	EffectiveAibiDashboardEmbeddingAccessPolicy GetAccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyPtrInput `pulumi:"effectiveAibiDashboardEmbeddingAccessPolicy"`
-	// (AibiDashboardEmbeddingApprovedDomains)
-	EffectiveAibiDashboardEmbeddingApprovedDomains GetAccountSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsPtrInput `pulumi:"effectiveAibiDashboardEmbeddingApprovedDomains"`
-	// (ClusterAutoRestartMessage)
-	EffectiveAutomaticClusterUpdateWorkspace GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspacePtrInput `pulumi:"effectiveAutomaticClusterUpdateWorkspace"`
-	// (DefaultDataSecurityModeMessage)
-	EffectiveDefaultDataSecurityMode GetAccountSettingV2EffectiveDefaultDataSecurityModePtrInput `pulumi:"effectiveDefaultDataSecurityMode"`
-	// (PersonalComputeMessage)
-	EffectivePersonalCompute GetAccountSettingV2EffectivePersonalComputePtrInput `pulumi:"effectivePersonalCompute"`
-	// (RestrictWorkspaceAdminsMessage)
-	EffectiveRestrictWorkspaceAdmins GetAccountSettingV2EffectiveRestrictWorkspaceAdminsPtrInput `pulumi:"effectiveRestrictWorkspaceAdmins"`
-	// (IntegerMessage)
-	IntegerVal GetAccountSettingV2IntegerValPtrInput `pulumi:"integerVal"`
 	// Name of the setting
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// (PersonalComputeMessage)
-	PersonalCompute GetAccountSettingV2PersonalComputePtrInput `pulumi:"personalCompute"`
-	// (RestrictWorkspaceAdminsMessage)
-	RestrictWorkspaceAdmins GetAccountSettingV2RestrictWorkspaceAdminsPtrInput `pulumi:"restrictWorkspaceAdmins"`
-	// (StringMessage)
-	StringVal GetAccountSettingV2StringValPtrInput `pulumi:"stringVal"`
+	Name pulumi.StringInput `pulumi:"name"`
 }
 
 func (LookupAccountSettingV2OutputArgs) ElementType() reflect.Type {
@@ -166,57 +109,50 @@ func (o LookupAccountSettingV2ResultOutput) ToLookupAccountSettingV2ResultOutput
 }
 
 // (AibiDashboardEmbeddingAccessPolicy)
-func (o LookupAccountSettingV2ResultOutput) AibiDashboardEmbeddingAccessPolicy() GetAccountSettingV2AibiDashboardEmbeddingAccessPolicyPtrOutput {
-	return o.ApplyT(func(v LookupAccountSettingV2Result) *GetAccountSettingV2AibiDashboardEmbeddingAccessPolicy {
+func (o LookupAccountSettingV2ResultOutput) AibiDashboardEmbeddingAccessPolicy() GetAccountSettingV2AibiDashboardEmbeddingAccessPolicyOutput {
+	return o.ApplyT(func(v LookupAccountSettingV2Result) GetAccountSettingV2AibiDashboardEmbeddingAccessPolicy {
 		return v.AibiDashboardEmbeddingAccessPolicy
-	}).(GetAccountSettingV2AibiDashboardEmbeddingAccessPolicyPtrOutput)
+	}).(GetAccountSettingV2AibiDashboardEmbeddingAccessPolicyOutput)
 }
 
 // (AibiDashboardEmbeddingApprovedDomains)
-func (o LookupAccountSettingV2ResultOutput) AibiDashboardEmbeddingApprovedDomains() GetAccountSettingV2AibiDashboardEmbeddingApprovedDomainsPtrOutput {
-	return o.ApplyT(func(v LookupAccountSettingV2Result) *GetAccountSettingV2AibiDashboardEmbeddingApprovedDomains {
+func (o LookupAccountSettingV2ResultOutput) AibiDashboardEmbeddingApprovedDomains() GetAccountSettingV2AibiDashboardEmbeddingApprovedDomainsOutput {
+	return o.ApplyT(func(v LookupAccountSettingV2Result) GetAccountSettingV2AibiDashboardEmbeddingApprovedDomains {
 		return v.AibiDashboardEmbeddingApprovedDomains
-	}).(GetAccountSettingV2AibiDashboardEmbeddingApprovedDomainsPtrOutput)
-}
-
-// (ClusterAutoRestartMessage) - todo: Mark these Public after onboarded to DSL
-func (o LookupAccountSettingV2ResultOutput) AutomaticClusterUpdateWorkspace() GetAccountSettingV2AutomaticClusterUpdateWorkspacePtrOutput {
-	return o.ApplyT(func(v LookupAccountSettingV2Result) *GetAccountSettingV2AutomaticClusterUpdateWorkspace {
-		return v.AutomaticClusterUpdateWorkspace
-	}).(GetAccountSettingV2AutomaticClusterUpdateWorkspacePtrOutput)
-}
-
-// (BooleanMessage)
-func (o LookupAccountSettingV2ResultOutput) BooleanVal() GetAccountSettingV2BooleanValPtrOutput {
-	return o.ApplyT(func(v LookupAccountSettingV2Result) *GetAccountSettingV2BooleanVal { return v.BooleanVal }).(GetAccountSettingV2BooleanValPtrOutput)
-}
-
-// (DefaultDataSecurityModeMessage)
-func (o LookupAccountSettingV2ResultOutput) DefaultDataSecurityMode() GetAccountSettingV2DefaultDataSecurityModePtrOutput {
-	return o.ApplyT(func(v LookupAccountSettingV2Result) *GetAccountSettingV2DefaultDataSecurityMode {
-		return v.DefaultDataSecurityMode
-	}).(GetAccountSettingV2DefaultDataSecurityModePtrOutput)
-}
-
-// (AibiDashboardEmbeddingAccessPolicy)
-func (o LookupAccountSettingV2ResultOutput) EffectiveAibiDashboardEmbeddingAccessPolicy() GetAccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyPtrOutput {
-	return o.ApplyT(func(v LookupAccountSettingV2Result) *GetAccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy {
-		return v.EffectiveAibiDashboardEmbeddingAccessPolicy
-	}).(GetAccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyPtrOutput)
-}
-
-// (AibiDashboardEmbeddingApprovedDomains)
-func (o LookupAccountSettingV2ResultOutput) EffectiveAibiDashboardEmbeddingApprovedDomains() GetAccountSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsPtrOutput {
-	return o.ApplyT(func(v LookupAccountSettingV2Result) *GetAccountSettingV2EffectiveAibiDashboardEmbeddingApprovedDomains {
-		return v.EffectiveAibiDashboardEmbeddingApprovedDomains
-	}).(GetAccountSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsPtrOutput)
+	}).(GetAccountSettingV2AibiDashboardEmbeddingApprovedDomainsOutput)
 }
 
 // (ClusterAutoRestartMessage)
-func (o LookupAccountSettingV2ResultOutput) EffectiveAutomaticClusterUpdateWorkspace() GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspacePtrOutput {
-	return o.ApplyT(func(v LookupAccountSettingV2Result) *GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspace {
+func (o LookupAccountSettingV2ResultOutput) AutomaticClusterUpdateWorkspace() GetAccountSettingV2AutomaticClusterUpdateWorkspaceOutput {
+	return o.ApplyT(func(v LookupAccountSettingV2Result) GetAccountSettingV2AutomaticClusterUpdateWorkspace {
+		return v.AutomaticClusterUpdateWorkspace
+	}).(GetAccountSettingV2AutomaticClusterUpdateWorkspaceOutput)
+}
+
+// (BooleanMessage)
+func (o LookupAccountSettingV2ResultOutput) BooleanVal() GetAccountSettingV2BooleanValOutput {
+	return o.ApplyT(func(v LookupAccountSettingV2Result) GetAccountSettingV2BooleanVal { return v.BooleanVal }).(GetAccountSettingV2BooleanValOutput)
+}
+
+// (AibiDashboardEmbeddingAccessPolicy)
+func (o LookupAccountSettingV2ResultOutput) EffectiveAibiDashboardEmbeddingAccessPolicy() GetAccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyOutput {
+	return o.ApplyT(func(v LookupAccountSettingV2Result) GetAccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy {
+		return v.EffectiveAibiDashboardEmbeddingAccessPolicy
+	}).(GetAccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyOutput)
+}
+
+// (AibiDashboardEmbeddingApprovedDomains)
+func (o LookupAccountSettingV2ResultOutput) EffectiveAibiDashboardEmbeddingApprovedDomains() GetAccountSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsOutput {
+	return o.ApplyT(func(v LookupAccountSettingV2Result) GetAccountSettingV2EffectiveAibiDashboardEmbeddingApprovedDomains {
+		return v.EffectiveAibiDashboardEmbeddingApprovedDomains
+	}).(GetAccountSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsOutput)
+}
+
+// (ClusterAutoRestartMessage)
+func (o LookupAccountSettingV2ResultOutput) EffectiveAutomaticClusterUpdateWorkspace() GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceOutput {
+	return o.ApplyT(func(v LookupAccountSettingV2Result) GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspace {
 		return v.EffectiveAutomaticClusterUpdateWorkspace
-	}).(GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspacePtrOutput)
+	}).(GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceOutput)
 }
 
 // (BooleanMessage)
@@ -224,13 +160,6 @@ func (o LookupAccountSettingV2ResultOutput) EffectiveBooleanVal() GetAccountSett
 	return o.ApplyT(func(v LookupAccountSettingV2Result) GetAccountSettingV2EffectiveBooleanVal {
 		return v.EffectiveBooleanVal
 	}).(GetAccountSettingV2EffectiveBooleanValOutput)
-}
-
-// (DefaultDataSecurityModeMessage)
-func (o LookupAccountSettingV2ResultOutput) EffectiveDefaultDataSecurityMode() GetAccountSettingV2EffectiveDefaultDataSecurityModePtrOutput {
-	return o.ApplyT(func(v LookupAccountSettingV2Result) *GetAccountSettingV2EffectiveDefaultDataSecurityMode {
-		return v.EffectiveDefaultDataSecurityMode
-	}).(GetAccountSettingV2EffectiveDefaultDataSecurityModePtrOutput)
 }
 
 // (IntegerMessage)
@@ -241,17 +170,17 @@ func (o LookupAccountSettingV2ResultOutput) EffectiveIntegerVal() GetAccountSett
 }
 
 // (PersonalComputeMessage)
-func (o LookupAccountSettingV2ResultOutput) EffectivePersonalCompute() GetAccountSettingV2EffectivePersonalComputePtrOutput {
-	return o.ApplyT(func(v LookupAccountSettingV2Result) *GetAccountSettingV2EffectivePersonalCompute {
+func (o LookupAccountSettingV2ResultOutput) EffectivePersonalCompute() GetAccountSettingV2EffectivePersonalComputeOutput {
+	return o.ApplyT(func(v LookupAccountSettingV2Result) GetAccountSettingV2EffectivePersonalCompute {
 		return v.EffectivePersonalCompute
-	}).(GetAccountSettingV2EffectivePersonalComputePtrOutput)
+	}).(GetAccountSettingV2EffectivePersonalComputeOutput)
 }
 
 // (RestrictWorkspaceAdminsMessage)
-func (o LookupAccountSettingV2ResultOutput) EffectiveRestrictWorkspaceAdmins() GetAccountSettingV2EffectiveRestrictWorkspaceAdminsPtrOutput {
-	return o.ApplyT(func(v LookupAccountSettingV2Result) *GetAccountSettingV2EffectiveRestrictWorkspaceAdmins {
+func (o LookupAccountSettingV2ResultOutput) EffectiveRestrictWorkspaceAdmins() GetAccountSettingV2EffectiveRestrictWorkspaceAdminsOutput {
+	return o.ApplyT(func(v LookupAccountSettingV2Result) GetAccountSettingV2EffectiveRestrictWorkspaceAdmins {
 		return v.EffectiveRestrictWorkspaceAdmins
-	}).(GetAccountSettingV2EffectiveRestrictWorkspaceAdminsPtrOutput)
+	}).(GetAccountSettingV2EffectiveRestrictWorkspaceAdminsOutput)
 }
 
 // (StringMessage)
@@ -267,30 +196,30 @@ func (o LookupAccountSettingV2ResultOutput) Id() pulumi.StringOutput {
 }
 
 // (IntegerMessage)
-func (o LookupAccountSettingV2ResultOutput) IntegerVal() GetAccountSettingV2IntegerValPtrOutput {
-	return o.ApplyT(func(v LookupAccountSettingV2Result) *GetAccountSettingV2IntegerVal { return v.IntegerVal }).(GetAccountSettingV2IntegerValPtrOutput)
+func (o LookupAccountSettingV2ResultOutput) IntegerVal() GetAccountSettingV2IntegerValOutput {
+	return o.ApplyT(func(v LookupAccountSettingV2Result) GetAccountSettingV2IntegerVal { return v.IntegerVal }).(GetAccountSettingV2IntegerValOutput)
 }
 
 // (string) - Name of the setting
-func (o LookupAccountSettingV2ResultOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupAccountSettingV2Result) *string { return v.Name }).(pulumi.StringPtrOutput)
+func (o LookupAccountSettingV2ResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAccountSettingV2Result) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // (PersonalComputeMessage)
-func (o LookupAccountSettingV2ResultOutput) PersonalCompute() GetAccountSettingV2PersonalComputePtrOutput {
-	return o.ApplyT(func(v LookupAccountSettingV2Result) *GetAccountSettingV2PersonalCompute { return v.PersonalCompute }).(GetAccountSettingV2PersonalComputePtrOutput)
+func (o LookupAccountSettingV2ResultOutput) PersonalCompute() GetAccountSettingV2PersonalComputeOutput {
+	return o.ApplyT(func(v LookupAccountSettingV2Result) GetAccountSettingV2PersonalCompute { return v.PersonalCompute }).(GetAccountSettingV2PersonalComputeOutput)
 }
 
 // (RestrictWorkspaceAdminsMessage)
-func (o LookupAccountSettingV2ResultOutput) RestrictWorkspaceAdmins() GetAccountSettingV2RestrictWorkspaceAdminsPtrOutput {
-	return o.ApplyT(func(v LookupAccountSettingV2Result) *GetAccountSettingV2RestrictWorkspaceAdmins {
+func (o LookupAccountSettingV2ResultOutput) RestrictWorkspaceAdmins() GetAccountSettingV2RestrictWorkspaceAdminsOutput {
+	return o.ApplyT(func(v LookupAccountSettingV2Result) GetAccountSettingV2RestrictWorkspaceAdmins {
 		return v.RestrictWorkspaceAdmins
-	}).(GetAccountSettingV2RestrictWorkspaceAdminsPtrOutput)
+	}).(GetAccountSettingV2RestrictWorkspaceAdminsOutput)
 }
 
 // (StringMessage)
-func (o LookupAccountSettingV2ResultOutput) StringVal() GetAccountSettingV2StringValPtrOutput {
-	return o.ApplyT(func(v LookupAccountSettingV2Result) *GetAccountSettingV2StringVal { return v.StringVal }).(GetAccountSettingV2StringValPtrOutput)
+func (o LookupAccountSettingV2ResultOutput) StringVal() GetAccountSettingV2StringValOutput {
+	return o.ApplyT(func(v LookupAccountSettingV2Result) GetAccountSettingV2StringVal { return v.StringVal }).(GetAccountSettingV2StringValOutput)
 }
 
 func init() {

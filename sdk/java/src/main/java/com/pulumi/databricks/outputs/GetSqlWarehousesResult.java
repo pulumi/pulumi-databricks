@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetSqlWarehousesProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
@@ -23,6 +24,7 @@ public final class GetSqlWarehousesResult {
      * 
      */
     private List<String> ids;
+    private @Nullable GetSqlWarehousesProviderConfig providerConfig;
     private @Nullable String warehouseNameContains;
 
     private GetSqlWarehousesResult() {}
@@ -40,6 +42,9 @@ public final class GetSqlWarehousesResult {
     public List<String> ids() {
         return this.ids;
     }
+    public Optional<GetSqlWarehousesProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
     public Optional<String> warehouseNameContains() {
         return Optional.ofNullable(this.warehouseNameContains);
     }
@@ -55,12 +60,14 @@ public final class GetSqlWarehousesResult {
     public static final class Builder {
         private String id;
         private List<String> ids;
+        private @Nullable GetSqlWarehousesProviderConfig providerConfig;
         private @Nullable String warehouseNameContains;
         public Builder() {}
         public Builder(GetSqlWarehousesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
     	      this.ids = defaults.ids;
+    	      this.providerConfig = defaults.providerConfig;
     	      this.warehouseNameContains = defaults.warehouseNameContains;
         }
 
@@ -84,6 +91,12 @@ public final class GetSqlWarehousesResult {
             return ids(List.of(ids));
         }
         @CustomType.Setter
+        public Builder providerConfig(@Nullable GetSqlWarehousesProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder warehouseNameContains(@Nullable String warehouseNameContains) {
 
             this.warehouseNameContains = warehouseNameContains;
@@ -93,6 +106,7 @@ public final class GetSqlWarehousesResult {
             final var _resultValue = new GetSqlWarehousesResult();
             _resultValue.id = id;
             _resultValue.ids = ids;
+            _resultValue.providerConfig = providerConfig;
             _resultValue.warehouseNameContains = warehouseNameContains;
             return _resultValue;
         }

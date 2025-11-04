@@ -15,7 +15,7 @@ public final class GetJobJobSettingsSettingsEnvironmentSpec {
     private @Nullable String client;
     private @Nullable List<String> dependencies;
     private @Nullable String environmentVersion;
-    private @Nullable List<String> jarDependencies;
+    private @Nullable List<String> javaDependencies;
 
     private GetJobJobSettingsSettingsEnvironmentSpec() {}
     public Optional<String> client() {
@@ -27,8 +27,8 @@ public final class GetJobJobSettingsSettingsEnvironmentSpec {
     public Optional<String> environmentVersion() {
         return Optional.ofNullable(this.environmentVersion);
     }
-    public List<String> jarDependencies() {
-        return this.jarDependencies == null ? List.of() : this.jarDependencies;
+    public List<String> javaDependencies() {
+        return this.javaDependencies == null ? List.of() : this.javaDependencies;
     }
 
     public static Builder builder() {
@@ -43,14 +43,14 @@ public final class GetJobJobSettingsSettingsEnvironmentSpec {
         private @Nullable String client;
         private @Nullable List<String> dependencies;
         private @Nullable String environmentVersion;
-        private @Nullable List<String> jarDependencies;
+        private @Nullable List<String> javaDependencies;
         public Builder() {}
         public Builder(GetJobJobSettingsSettingsEnvironmentSpec defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.client = defaults.client;
     	      this.dependencies = defaults.dependencies;
     	      this.environmentVersion = defaults.environmentVersion;
-    	      this.jarDependencies = defaults.jarDependencies;
+    	      this.javaDependencies = defaults.javaDependencies;
         }
 
         @CustomType.Setter
@@ -75,20 +75,20 @@ public final class GetJobJobSettingsSettingsEnvironmentSpec {
             return this;
         }
         @CustomType.Setter
-        public Builder jarDependencies(@Nullable List<String> jarDependencies) {
+        public Builder javaDependencies(@Nullable List<String> javaDependencies) {
 
-            this.jarDependencies = jarDependencies;
+            this.javaDependencies = javaDependencies;
             return this;
         }
-        public Builder jarDependencies(String... jarDependencies) {
-            return jarDependencies(List.of(jarDependencies));
+        public Builder javaDependencies(String... javaDependencies) {
+            return javaDependencies(List.of(javaDependencies));
         }
         public GetJobJobSettingsSettingsEnvironmentSpec build() {
             final var _resultValue = new GetJobJobSettingsSettingsEnvironmentSpec();
             _resultValue.client = client;
             _resultValue.dependencies = dependencies;
             _resultValue.environmentVersion = environmentVersion;
-            _resultValue.jarDependencies = jarDependencies;
+            _resultValue.javaDependencies = javaDependencies;
             return _resultValue;
         }
     }

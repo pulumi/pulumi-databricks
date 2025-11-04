@@ -272,9 +272,17 @@ public final class GetTableTableInfoArgs extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.tableConstraints);
     }
 
+    /**
+     * The unique identifier of the table.
+     * 
+     */
     @Import(name="tableId")
     private @Nullable Output<String> tableId;
 
+    /**
+     * @return The unique identifier of the table.
+     * 
+     */
     public Optional<Output<String>> tableId() {
         return Optional.ofNullable(this.tableId);
     }
@@ -735,11 +743,23 @@ public final class GetTableTableInfoArgs extends com.pulumi.resources.ResourceAr
             return tableConstraints(List.of(tableConstraints));
         }
 
+        /**
+         * @param tableId The unique identifier of the table.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tableId(@Nullable Output<String> tableId) {
             $.tableId = tableId;
             return this;
         }
 
+        /**
+         * @param tableId The unique identifier of the table.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tableId(String tableId) {
             return tableId(Output.of(tableId));
         }

@@ -243,6 +243,7 @@ export class Pipeline extends pulumi.CustomResource {
      * URL of the Lakeflow Declarative Pipeline on the given workspace.
      */
     declare public readonly url: pulumi.Output<string>;
+    declare public readonly usagePolicyId: pulumi.Output<string | undefined>;
 
     /**
      * Create a Pipeline resource with the given unique name, arguments, and options.
@@ -295,6 +296,7 @@ export class Pipeline extends pulumi.CustomResource {
             resourceInputs["target"] = state?.target;
             resourceInputs["trigger"] = state?.trigger;
             resourceInputs["url"] = state?.url;
+            resourceInputs["usagePolicyId"] = state?.usagePolicyId;
         } else {
             const args = argsOrState as PipelineArgs | undefined;
             resourceInputs["allowDuplicateNames"] = args?.allowDuplicateNames;
@@ -335,6 +337,7 @@ export class Pipeline extends pulumi.CustomResource {
             resourceInputs["target"] = args?.target;
             resourceInputs["trigger"] = args?.trigger;
             resourceInputs["url"] = args?.url;
+            resourceInputs["usagePolicyId"] = args?.usagePolicyId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Pipeline.__pulumiType, name, resourceInputs, opts);
@@ -452,6 +455,7 @@ export interface PipelineState {
      * URL of the Lakeflow Declarative Pipeline on the given workspace.
      */
     url?: pulumi.Input<string>;
+    usagePolicyId?: pulumi.Input<string>;
 }
 
 /**
@@ -565,4 +569,5 @@ export interface PipelineArgs {
      * URL of the Lakeflow Declarative Pipeline on the given workspace.
      */
     url?: pulumi.Input<string>;
+    usagePolicyId?: pulumi.Input<string>;
 }

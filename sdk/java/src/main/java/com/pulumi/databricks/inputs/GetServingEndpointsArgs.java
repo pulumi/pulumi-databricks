@@ -6,6 +6,7 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.GetServingEndpointsEndpointArgs;
+import com.pulumi.databricks.inputs.GetServingEndpointsProviderConfigArgs;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -31,10 +32,18 @@ public final class GetServingEndpointsArgs extends com.pulumi.resources.InvokeAr
         return Optional.ofNullable(this.endpoints);
     }
 
+    @Import(name="providerConfig")
+    private @Nullable Output<GetServingEndpointsProviderConfigArgs> providerConfig;
+
+    public Optional<Output<GetServingEndpointsProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     private GetServingEndpointsArgs() {}
 
     private GetServingEndpointsArgs(GetServingEndpointsArgs $) {
         this.endpoints = $.endpoints;
+        this.providerConfig = $.providerConfig;
     }
 
     public static Builder builder() {
@@ -84,6 +93,15 @@ public final class GetServingEndpointsArgs extends com.pulumi.resources.InvokeAr
          */
         public Builder endpoints(GetServingEndpointsEndpointArgs... endpoints) {
             return endpoints(List.of(endpoints));
+        }
+
+        public Builder providerConfig(@Nullable Output<GetServingEndpointsProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        public Builder providerConfig(GetServingEndpointsProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         public GetServingEndpointsArgs build() {

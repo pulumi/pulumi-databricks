@@ -49,6 +49,7 @@ class ClusterArgs:
                  node_type_id: Optional[pulumi.Input[_builtins.str]] = None,
                  num_workers: Optional[pulumi.Input[_builtins.int]] = None,
                  policy_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['ClusterProviderConfigArgs']] = None,
                  remote_disk_throughput: Optional[pulumi.Input[_builtins.int]] = None,
                  runtime_engine: Optional[pulumi.Input[_builtins.str]] = None,
                  single_user_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -99,33 +100,10 @@ class ClusterArgs:
         :param pulumi.Input[_builtins.bool] is_single_node: When set to true, Databricks will automatically set single node related `custom_tags`, `spark_conf`, and `num_workers`.
         :param pulumi.Input[_builtins.str] kind: The kind of compute described by this compute specification.  Possible values (see [API docs](https://docs.databricks.com/api/workspace/clusters/create#kind) for full list): `CLASSIC_PREVIEW` (if corresponding public preview is enabled).
         :param pulumi.Input[_builtins.bool] no_wait: If true, the provider will not wait for the cluster to reach `RUNNING` state when creating the cluster, allowing cluster creation and library installation to continue asynchronously. Defaults to false (the provider will wait for cluster creation and library installation to succeed).
-               
-               The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
-               
-               ```python
-               import pulumi
-               import pulumi_databricks as databricks
-               
-               smallest = databricks.get_node_type(local_disk=True)
-               latest_lts = databricks.get_spark_version(long_term_support=True)
-               shared_autoscaling = databricks.Cluster("shared_autoscaling",
-                   cluster_name="Shared Autoscaling",
-                   spark_version=latest_lts.id,
-                   node_type_id=smallest.id,
-                   autotermination_minutes=20,
-                   autoscale={
-                       "min_workers": 1,
-                       "max_workers": 50,
-                   },
-                   spark_conf={
-                       "spark.databricks.io.cache.enabled": "true",
-                       "spark.databricks.io.cache.maxDiskUsage": "50g",
-                       "spark.databricks.io.cache.maxMetaDataCache": "1g",
-                   })
-               ```
         :param pulumi.Input[_builtins.str] node_type_id: Any supported get_node_type id. If `instance_pool_id` is specified, this field is not needed.
         :param pulumi.Input[_builtins.int] num_workers: Number of worker nodes that this cluster should have. A cluster has one Spark driver and `num_workers` executors for a total of `num_workers` + 1 Spark nodes.
         :param pulumi.Input[_builtins.str] policy_id: Identifier of Cluster Policy to validate cluster and preset certain defaults. *The primary use for cluster policies is to allow users to create policy-scoped clusters via UI rather than sharing configuration for API-created clusters.* For example, when you specify `policy_id` of [external metastore](https://docs.databricks.com/administration-guide/clusters/policies.html#external-metastore-policy) policy, you still have to fill in relevant keys for `spark_conf`.  If relevant fields aren't filled in, then it will cause the configuration drift detected on each plan/apply, and Pulumi will try to apply the detected changes.
+        :param pulumi.Input['ClusterProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] runtime_engine: The type of runtime engine to use. If not specified, the runtime engine type is inferred based on the spark_version value. Allowed values include: `PHOTON`, `STANDARD`.
         :param pulumi.Input[_builtins.str] single_user_name: The optional user name of the user (or group name if `kind` if specified) to assign to an interactive cluster. This field is required when using `data_security_mode` set to `SINGLE_USER` or AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] spark_conf: should have following items:
@@ -190,6 +168,8 @@ class ClusterArgs:
             pulumi.set(__self__, "num_workers", num_workers)
         if policy_id is not None:
             pulumi.set(__self__, "policy_id", policy_id)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if remote_disk_throughput is not None:
             pulumi.set(__self__, "remote_disk_throughput", remote_disk_throughput)
         if runtime_engine is not None:
@@ -498,30 +478,6 @@ class ClusterArgs:
     def no_wait(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
         If true, the provider will not wait for the cluster to reach `RUNNING` state when creating the cluster, allowing cluster creation and library installation to continue asynchronously. Defaults to false (the provider will wait for cluster creation and library installation to succeed).
-
-        The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        smallest = databricks.get_node_type(local_disk=True)
-        latest_lts = databricks.get_spark_version(long_term_support=True)
-        shared_autoscaling = databricks.Cluster("shared_autoscaling",
-            cluster_name="Shared Autoscaling",
-            spark_version=latest_lts.id,
-            node_type_id=smallest.id,
-            autotermination_minutes=20,
-            autoscale={
-                "min_workers": 1,
-                "max_workers": 50,
-            },
-            spark_conf={
-                "spark.databricks.io.cache.enabled": "true",
-                "spark.databricks.io.cache.maxDiskUsage": "50g",
-                "spark.databricks.io.cache.maxMetaDataCache": "1g",
-            })
-        ```
         """
         return pulumi.get(self, "no_wait")
 
@@ -564,6 +520,18 @@ class ClusterArgs:
     @policy_id.setter
     def policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "policy_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['ClusterProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['ClusterProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="remoteDiskThroughput")
@@ -699,6 +667,7 @@ class _ClusterState:
                  node_type_id: Optional[pulumi.Input[_builtins.str]] = None,
                  num_workers: Optional[pulumi.Input[_builtins.int]] = None,
                  policy_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['ClusterProviderConfigArgs']] = None,
                  remote_disk_throughput: Optional[pulumi.Input[_builtins.int]] = None,
                  runtime_engine: Optional[pulumi.Input[_builtins.str]] = None,
                  single_user_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -752,33 +721,10 @@ class _ClusterState:
         :param pulumi.Input[_builtins.bool] is_single_node: When set to true, Databricks will automatically set single node related `custom_tags`, `spark_conf`, and `num_workers`.
         :param pulumi.Input[_builtins.str] kind: The kind of compute described by this compute specification.  Possible values (see [API docs](https://docs.databricks.com/api/workspace/clusters/create#kind) for full list): `CLASSIC_PREVIEW` (if corresponding public preview is enabled).
         :param pulumi.Input[_builtins.bool] no_wait: If true, the provider will not wait for the cluster to reach `RUNNING` state when creating the cluster, allowing cluster creation and library installation to continue asynchronously. Defaults to false (the provider will wait for cluster creation and library installation to succeed).
-               
-               The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
-               
-               ```python
-               import pulumi
-               import pulumi_databricks as databricks
-               
-               smallest = databricks.get_node_type(local_disk=True)
-               latest_lts = databricks.get_spark_version(long_term_support=True)
-               shared_autoscaling = databricks.Cluster("shared_autoscaling",
-                   cluster_name="Shared Autoscaling",
-                   spark_version=latest_lts.id,
-                   node_type_id=smallest.id,
-                   autotermination_minutes=20,
-                   autoscale={
-                       "min_workers": 1,
-                       "max_workers": 50,
-                   },
-                   spark_conf={
-                       "spark.databricks.io.cache.enabled": "true",
-                       "spark.databricks.io.cache.maxDiskUsage": "50g",
-                       "spark.databricks.io.cache.maxMetaDataCache": "1g",
-                   })
-               ```
         :param pulumi.Input[_builtins.str] node_type_id: Any supported get_node_type id. If `instance_pool_id` is specified, this field is not needed.
         :param pulumi.Input[_builtins.int] num_workers: Number of worker nodes that this cluster should have. A cluster has one Spark driver and `num_workers` executors for a total of `num_workers` + 1 Spark nodes.
         :param pulumi.Input[_builtins.str] policy_id: Identifier of Cluster Policy to validate cluster and preset certain defaults. *The primary use for cluster policies is to allow users to create policy-scoped clusters via UI rather than sharing configuration for API-created clusters.* For example, when you specify `policy_id` of [external metastore](https://docs.databricks.com/administration-guide/clusters/policies.html#external-metastore-policy) policy, you still have to fill in relevant keys for `spark_conf`.  If relevant fields aren't filled in, then it will cause the configuration drift detected on each plan/apply, and Pulumi will try to apply the detected changes.
+        :param pulumi.Input['ClusterProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] runtime_engine: The type of runtime engine to use. If not specified, the runtime engine type is inferred based on the spark_version value. Allowed values include: `PHOTON`, `STANDARD`.
         :param pulumi.Input[_builtins.str] single_user_name: The optional user name of the user (or group name if `kind` if specified) to assign to an interactive cluster. This field is required when using `data_security_mode` set to `SINGLE_USER` or AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] spark_conf: should have following items:
@@ -848,6 +794,8 @@ class _ClusterState:
             pulumi.set(__self__, "num_workers", num_workers)
         if policy_id is not None:
             pulumi.set(__self__, "policy_id", policy_id)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if remote_disk_throughput is not None:
             pulumi.set(__self__, "remote_disk_throughput", remote_disk_throughput)
         if runtime_engine is not None:
@@ -1171,30 +1119,6 @@ class _ClusterState:
     def no_wait(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
         If true, the provider will not wait for the cluster to reach `RUNNING` state when creating the cluster, allowing cluster creation and library installation to continue asynchronously. Defaults to false (the provider will wait for cluster creation and library installation to succeed).
-
-        The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        smallest = databricks.get_node_type(local_disk=True)
-        latest_lts = databricks.get_spark_version(long_term_support=True)
-        shared_autoscaling = databricks.Cluster("shared_autoscaling",
-            cluster_name="Shared Autoscaling",
-            spark_version=latest_lts.id,
-            node_type_id=smallest.id,
-            autotermination_minutes=20,
-            autoscale={
-                "min_workers": 1,
-                "max_workers": 50,
-            },
-            spark_conf={
-                "spark.databricks.io.cache.enabled": "true",
-                "spark.databricks.io.cache.maxDiskUsage": "50g",
-                "spark.databricks.io.cache.maxMetaDataCache": "1g",
-            })
-        ```
         """
         return pulumi.get(self, "no_wait")
 
@@ -1237,6 +1161,18 @@ class _ClusterState:
     @policy_id.setter
     def policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "policy_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['ClusterProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['ClusterProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="remoteDiskThroughput")
@@ -1406,6 +1342,7 @@ class Cluster(pulumi.CustomResource):
                  node_type_id: Optional[pulumi.Input[_builtins.str]] = None,
                  num_workers: Optional[pulumi.Input[_builtins.int]] = None,
                  policy_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['ClusterProviderConfigArgs', 'ClusterProviderConfigArgsDict']]] = None,
                  remote_disk_throughput: Optional[pulumi.Input[_builtins.int]] = None,
                  runtime_engine: Optional[pulumi.Input[_builtins.str]] = None,
                  single_user_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1468,33 +1405,10 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] is_single_node: When set to true, Databricks will automatically set single node related `custom_tags`, `spark_conf`, and `num_workers`.
         :param pulumi.Input[_builtins.str] kind: The kind of compute described by this compute specification.  Possible values (see [API docs](https://docs.databricks.com/api/workspace/clusters/create#kind) for full list): `CLASSIC_PREVIEW` (if corresponding public preview is enabled).
         :param pulumi.Input[_builtins.bool] no_wait: If true, the provider will not wait for the cluster to reach `RUNNING` state when creating the cluster, allowing cluster creation and library installation to continue asynchronously. Defaults to false (the provider will wait for cluster creation and library installation to succeed).
-               
-               The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
-               
-               ```python
-               import pulumi
-               import pulumi_databricks as databricks
-               
-               smallest = databricks.get_node_type(local_disk=True)
-               latest_lts = databricks.get_spark_version(long_term_support=True)
-               shared_autoscaling = databricks.Cluster("shared_autoscaling",
-                   cluster_name="Shared Autoscaling",
-                   spark_version=latest_lts.id,
-                   node_type_id=smallest.id,
-                   autotermination_minutes=20,
-                   autoscale={
-                       "min_workers": 1,
-                       "max_workers": 50,
-                   },
-                   spark_conf={
-                       "spark.databricks.io.cache.enabled": "true",
-                       "spark.databricks.io.cache.maxDiskUsage": "50g",
-                       "spark.databricks.io.cache.maxMetaDataCache": "1g",
-                   })
-               ```
         :param pulumi.Input[_builtins.str] node_type_id: Any supported get_node_type id. If `instance_pool_id` is specified, this field is not needed.
         :param pulumi.Input[_builtins.int] num_workers: Number of worker nodes that this cluster should have. A cluster has one Spark driver and `num_workers` executors for a total of `num_workers` + 1 Spark nodes.
         :param pulumi.Input[_builtins.str] policy_id: Identifier of Cluster Policy to validate cluster and preset certain defaults. *The primary use for cluster policies is to allow users to create policy-scoped clusters via UI rather than sharing configuration for API-created clusters.* For example, when you specify `policy_id` of [external metastore](https://docs.databricks.com/administration-guide/clusters/policies.html#external-metastore-policy) policy, you still have to fill in relevant keys for `spark_conf`.  If relevant fields aren't filled in, then it will cause the configuration drift detected on each plan/apply, and Pulumi will try to apply the detected changes.
+        :param pulumi.Input[Union['ClusterProviderConfigArgs', 'ClusterProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] runtime_engine: The type of runtime engine to use. If not specified, the runtime engine type is inferred based on the spark_version value. Allowed values include: `PHOTON`, `STANDARD`.
         :param pulumi.Input[_builtins.str] single_user_name: The optional user name of the user (or group name if `kind` if specified) to assign to an interactive cluster. This field is required when using `data_security_mode` set to `SINGLE_USER` or AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] spark_conf: should have following items:
@@ -1564,6 +1478,7 @@ class Cluster(pulumi.CustomResource):
                  node_type_id: Optional[pulumi.Input[_builtins.str]] = None,
                  num_workers: Optional[pulumi.Input[_builtins.int]] = None,
                  policy_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['ClusterProviderConfigArgs', 'ClusterProviderConfigArgsDict']]] = None,
                  remote_disk_throughput: Optional[pulumi.Input[_builtins.int]] = None,
                  runtime_engine: Optional[pulumi.Input[_builtins.str]] = None,
                  single_user_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1610,6 +1525,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["node_type_id"] = node_type_id
             __props__.__dict__["num_workers"] = num_workers
             __props__.__dict__["policy_id"] = policy_id
+            __props__.__dict__["provider_config"] = provider_config
             __props__.__dict__["remote_disk_throughput"] = remote_disk_throughput
             __props__.__dict__["runtime_engine"] = runtime_engine
             __props__.__dict__["single_user_name"] = single_user_name
@@ -1665,6 +1581,7 @@ class Cluster(pulumi.CustomResource):
             node_type_id: Optional[pulumi.Input[_builtins.str]] = None,
             num_workers: Optional[pulumi.Input[_builtins.int]] = None,
             policy_id: Optional[pulumi.Input[_builtins.str]] = None,
+            provider_config: Optional[pulumi.Input[Union['ClusterProviderConfigArgs', 'ClusterProviderConfigArgsDict']]] = None,
             remote_disk_throughput: Optional[pulumi.Input[_builtins.int]] = None,
             runtime_engine: Optional[pulumi.Input[_builtins.str]] = None,
             single_user_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1723,33 +1640,10 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] is_single_node: When set to true, Databricks will automatically set single node related `custom_tags`, `spark_conf`, and `num_workers`.
         :param pulumi.Input[_builtins.str] kind: The kind of compute described by this compute specification.  Possible values (see [API docs](https://docs.databricks.com/api/workspace/clusters/create#kind) for full list): `CLASSIC_PREVIEW` (if corresponding public preview is enabled).
         :param pulumi.Input[_builtins.bool] no_wait: If true, the provider will not wait for the cluster to reach `RUNNING` state when creating the cluster, allowing cluster creation and library installation to continue asynchronously. Defaults to false (the provider will wait for cluster creation and library installation to succeed).
-               
-               The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
-               
-               ```python
-               import pulumi
-               import pulumi_databricks as databricks
-               
-               smallest = databricks.get_node_type(local_disk=True)
-               latest_lts = databricks.get_spark_version(long_term_support=True)
-               shared_autoscaling = databricks.Cluster("shared_autoscaling",
-                   cluster_name="Shared Autoscaling",
-                   spark_version=latest_lts.id,
-                   node_type_id=smallest.id,
-                   autotermination_minutes=20,
-                   autoscale={
-                       "min_workers": 1,
-                       "max_workers": 50,
-                   },
-                   spark_conf={
-                       "spark.databricks.io.cache.enabled": "true",
-                       "spark.databricks.io.cache.maxDiskUsage": "50g",
-                       "spark.databricks.io.cache.maxMetaDataCache": "1g",
-                   })
-               ```
         :param pulumi.Input[_builtins.str] node_type_id: Any supported get_node_type id. If `instance_pool_id` is specified, this field is not needed.
         :param pulumi.Input[_builtins.int] num_workers: Number of worker nodes that this cluster should have. A cluster has one Spark driver and `num_workers` executors for a total of `num_workers` + 1 Spark nodes.
         :param pulumi.Input[_builtins.str] policy_id: Identifier of Cluster Policy to validate cluster and preset certain defaults. *The primary use for cluster policies is to allow users to create policy-scoped clusters via UI rather than sharing configuration for API-created clusters.* For example, when you specify `policy_id` of [external metastore](https://docs.databricks.com/administration-guide/clusters/policies.html#external-metastore-policy) policy, you still have to fill in relevant keys for `spark_conf`.  If relevant fields aren't filled in, then it will cause the configuration drift detected on each plan/apply, and Pulumi will try to apply the detected changes.
+        :param pulumi.Input[Union['ClusterProviderConfigArgs', 'ClusterProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] runtime_engine: The type of runtime engine to use. If not specified, the runtime engine type is inferred based on the spark_version value. Allowed values include: `PHOTON`, `STANDARD`.
         :param pulumi.Input[_builtins.str] single_user_name: The optional user name of the user (or group name if `kind` if specified) to assign to an interactive cluster. This field is required when using `data_security_mode` set to `SINGLE_USER` or AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] spark_conf: should have following items:
@@ -1794,6 +1688,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["node_type_id"] = node_type_id
         __props__.__dict__["num_workers"] = num_workers
         __props__.__dict__["policy_id"] = policy_id
+        __props__.__dict__["provider_config"] = provider_config
         __props__.__dict__["remote_disk_throughput"] = remote_disk_throughput
         __props__.__dict__["runtime_engine"] = runtime_engine
         __props__.__dict__["single_user_name"] = single_user_name
@@ -2006,30 +1901,6 @@ class Cluster(pulumi.CustomResource):
     def no_wait(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
         If true, the provider will not wait for the cluster to reach `RUNNING` state when creating the cluster, allowing cluster creation and library installation to continue asynchronously. Defaults to false (the provider will wait for cluster creation and library installation to succeed).
-
-        The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-
-        smallest = databricks.get_node_type(local_disk=True)
-        latest_lts = databricks.get_spark_version(long_term_support=True)
-        shared_autoscaling = databricks.Cluster("shared_autoscaling",
-            cluster_name="Shared Autoscaling",
-            spark_version=latest_lts.id,
-            node_type_id=smallest.id,
-            autotermination_minutes=20,
-            autoscale={
-                "min_workers": 1,
-                "max_workers": 50,
-            },
-            spark_conf={
-                "spark.databricks.io.cache.enabled": "true",
-                "spark.databricks.io.cache.maxDiskUsage": "50g",
-                "spark.databricks.io.cache.maxMetaDataCache": "1g",
-            })
-        ```
         """
         return pulumi.get(self, "no_wait")
 
@@ -2056,6 +1927,14 @@ class Cluster(pulumi.CustomResource):
         Identifier of Cluster Policy to validate cluster and preset certain defaults. *The primary use for cluster policies is to allow users to create policy-scoped clusters via UI rather than sharing configuration for API-created clusters.* For example, when you specify `policy_id` of [external metastore](https://docs.databricks.com/administration-guide/clusters/policies.html#external-metastore-policy) policy, you still have to fill in relevant keys for `spark_conf`.  If relevant fields aren't filled in, then it will cause the configuration drift detected on each plan/apply, and Pulumi will try to apply the detected changes.
         """
         return pulumi.get(self, "policy_id")
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> pulumi.Output[Optional['outputs.ClusterProviderConfig']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
 
     @_builtins.property
     @pulumi.getter(name="remoteDiskThroughput")

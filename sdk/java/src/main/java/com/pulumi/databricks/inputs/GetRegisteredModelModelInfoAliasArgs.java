@@ -32,6 +32,50 @@ public final class GetRegisteredModelModelInfoAliasArgs extends com.pulumi.resou
     }
 
     /**
+     * The name of the catalog where the schema and the registered model reside.
+     * 
+     */
+    @Import(name="catalogName")
+    private @Nullable Output<String> catalogName;
+
+    /**
+     * @return The name of the catalog where the schema and the registered model reside.
+     * 
+     */
+    public Optional<Output<String>> catalogName() {
+        return Optional.ofNullable(this.catalogName);
+    }
+
+    @Import(name="id")
+    private @Nullable Output<String> id;
+
+    public Optional<Output<String>> id() {
+        return Optional.ofNullable(this.id);
+    }
+
+    @Import(name="modelName")
+    private @Nullable Output<String> modelName;
+
+    public Optional<Output<String>> modelName() {
+        return Optional.ofNullable(this.modelName);
+    }
+
+    /**
+     * The name of the schema where the registered model resides.
+     * 
+     */
+    @Import(name="schemaName")
+    private @Nullable Output<String> schemaName;
+
+    /**
+     * @return The name of the schema where the registered model resides.
+     * 
+     */
+    public Optional<Output<String>> schemaName() {
+        return Optional.ofNullable(this.schemaName);
+    }
+
+    /**
      * associated model version
      * 
      */
@@ -50,6 +94,10 @@ public final class GetRegisteredModelModelInfoAliasArgs extends com.pulumi.resou
 
     private GetRegisteredModelModelInfoAliasArgs(GetRegisteredModelModelInfoAliasArgs $) {
         this.aliasName = $.aliasName;
+        this.catalogName = $.catalogName;
+        this.id = $.id;
+        this.modelName = $.modelName;
+        this.schemaName = $.schemaName;
         this.versionNum = $.versionNum;
     }
 
@@ -90,6 +138,66 @@ public final class GetRegisteredModelModelInfoAliasArgs extends com.pulumi.resou
          */
         public Builder aliasName(String aliasName) {
             return aliasName(Output.of(aliasName));
+        }
+
+        /**
+         * @param catalogName The name of the catalog where the schema and the registered model reside.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder catalogName(@Nullable Output<String> catalogName) {
+            $.catalogName = catalogName;
+            return this;
+        }
+
+        /**
+         * @param catalogName The name of the catalog where the schema and the registered model reside.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder catalogName(String catalogName) {
+            return catalogName(Output.of(catalogName));
+        }
+
+        public Builder id(@Nullable Output<String> id) {
+            $.id = id;
+            return this;
+        }
+
+        public Builder id(String id) {
+            return id(Output.of(id));
+        }
+
+        public Builder modelName(@Nullable Output<String> modelName) {
+            $.modelName = modelName;
+            return this;
+        }
+
+        public Builder modelName(String modelName) {
+            return modelName(Output.of(modelName));
+        }
+
+        /**
+         * @param schemaName The name of the schema where the registered model resides.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder schemaName(@Nullable Output<String> schemaName) {
+            $.schemaName = schemaName;
+            return this;
+        }
+
+        /**
+         * @param schemaName The name of the schema where the registered model resides.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder schemaName(String schemaName) {
+            return schemaName(Output.of(schemaName));
         }
 
         /**

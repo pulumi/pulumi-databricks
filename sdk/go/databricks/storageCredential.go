@@ -190,11 +190,12 @@ import (
 // # When using an account-level provider
 //
 // ```sh
-// $ pulumi import databricks:index/storageCredential:StorageCredential this <metastore_id>|<storage_credential_name>
+// $ pulumi import databricks:index/storageCredential:StorageCredential this '<metastore_id>|<storage_credential_name>'
 // ```
 type StorageCredential struct {
 	pulumi.CustomResourceState
 
+	// exposes two additional attributes:
 	AwsIamRole                  StorageCredentialAwsIamRolePtrOutput               `pulumi:"awsIamRole"`
 	AzureManagedIdentity        StorageCredentialAzureManagedIdentityPtrOutput     `pulumi:"azureManagedIdentity"`
 	AzureServicePrincipal       StorageCredentialAzureServicePrincipalPtrOutput    `pulumi:"azureServicePrincipal"`
@@ -254,6 +255,7 @@ func GetStorageCredential(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering StorageCredential resources.
 type storageCredentialState struct {
+	// exposes two additional attributes:
 	AwsIamRole                  *StorageCredentialAwsIamRole                  `pulumi:"awsIamRole"`
 	AzureManagedIdentity        *StorageCredentialAzureManagedIdentity        `pulumi:"azureManagedIdentity"`
 	AzureServicePrincipal       *StorageCredentialAzureServicePrincipal       `pulumi:"azureServicePrincipal"`
@@ -284,6 +286,7 @@ type storageCredentialState struct {
 }
 
 type StorageCredentialState struct {
+	// exposes two additional attributes:
 	AwsIamRole                  StorageCredentialAwsIamRolePtrInput
 	AzureManagedIdentity        StorageCredentialAzureManagedIdentityPtrInput
 	AzureServicePrincipal       StorageCredentialAzureServicePrincipalPtrInput
@@ -318,6 +321,7 @@ func (StorageCredentialState) ElementType() reflect.Type {
 }
 
 type storageCredentialArgs struct {
+	// exposes two additional attributes:
 	AwsIamRole                  *StorageCredentialAwsIamRole                  `pulumi:"awsIamRole"`
 	AzureManagedIdentity        *StorageCredentialAzureManagedIdentity        `pulumi:"azureManagedIdentity"`
 	AzureServicePrincipal       *StorageCredentialAzureServicePrincipal       `pulumi:"azureServicePrincipal"`
@@ -347,6 +351,7 @@ type storageCredentialArgs struct {
 
 // The set of arguments for constructing a StorageCredential resource.
 type StorageCredentialArgs struct {
+	// exposes two additional attributes:
 	AwsIamRole                  StorageCredentialAwsIamRolePtrInput
 	AzureManagedIdentity        StorageCredentialAzureManagedIdentityPtrInput
 	AzureServicePrincipal       StorageCredentialAzureServicePrincipalPtrInput
@@ -461,6 +466,7 @@ func (o StorageCredentialOutput) ToStorageCredentialOutputWithContext(ctx contex
 	return o
 }
 
+// exposes two additional attributes:
 func (o StorageCredentialOutput) AwsIamRole() StorageCredentialAwsIamRolePtrOutput {
 	return o.ApplyT(func(v *StorageCredential) StorageCredentialAwsIamRolePtrOutput { return v.AwsIamRole }).(StorageCredentialAwsIamRolePtrOutput)
 }

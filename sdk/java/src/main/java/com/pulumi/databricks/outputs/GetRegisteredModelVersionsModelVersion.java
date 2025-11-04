@@ -6,7 +6,6 @@ package com.pulumi.databricks.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetRegisteredModelVersionsModelVersionAlias;
 import com.pulumi.databricks.outputs.GetRegisteredModelVersionsModelVersionModelVersionDependency;
-import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -21,7 +20,6 @@ public final class GetRegisteredModelVersionsModelVersion {
      * 
      */
     private @Nullable List<GetRegisteredModelVersionsModelVersionAlias> aliases;
-    private @Nullable Boolean browseOnly;
     /**
      * @return The name of the catalog where the schema and the registered model reside.
      * 
@@ -111,9 +109,6 @@ public final class GetRegisteredModelVersionsModelVersion {
      */
     public List<GetRegisteredModelVersionsModelVersionAlias> aliases() {
         return this.aliases == null ? List.of() : this.aliases;
-    }
-    public Optional<Boolean> browseOnly() {
-        return Optional.ofNullable(this.browseOnly);
     }
     /**
      * @return The name of the catalog where the schema and the registered model reside.
@@ -241,7 +236,6 @@ public final class GetRegisteredModelVersionsModelVersion {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable List<GetRegisteredModelVersionsModelVersionAlias> aliases;
-        private @Nullable Boolean browseOnly;
         private @Nullable String catalogName;
         private @Nullable String comment;
         private @Nullable Integer createdAt;
@@ -263,7 +257,6 @@ public final class GetRegisteredModelVersionsModelVersion {
         public Builder(GetRegisteredModelVersionsModelVersion defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.aliases = defaults.aliases;
-    	      this.browseOnly = defaults.browseOnly;
     	      this.catalogName = defaults.catalogName;
     	      this.comment = defaults.comment;
     	      this.createdAt = defaults.createdAt;
@@ -291,12 +284,6 @@ public final class GetRegisteredModelVersionsModelVersion {
         }
         public Builder aliases(GetRegisteredModelVersionsModelVersionAlias... aliases) {
             return aliases(List.of(aliases));
-        }
-        @CustomType.Setter
-        public Builder browseOnly(@Nullable Boolean browseOnly) {
-
-            this.browseOnly = browseOnly;
-            return this;
         }
         @CustomType.Setter
         public Builder catalogName(@Nullable String catalogName) {
@@ -406,7 +393,6 @@ public final class GetRegisteredModelVersionsModelVersion {
         public GetRegisteredModelVersionsModelVersion build() {
             final var _resultValue = new GetRegisteredModelVersionsModelVersion();
             _resultValue.aliases = aliases;
-            _resultValue.browseOnly = browseOnly;
             _resultValue.catalogName = catalogName;
             _resultValue.comment = comment;
             _resultValue.createdAt = createdAt;

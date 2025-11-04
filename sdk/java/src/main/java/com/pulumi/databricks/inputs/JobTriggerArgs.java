@@ -7,7 +7,6 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.JobTriggerFileArrivalArgs;
 import com.pulumi.databricks.inputs.JobTriggerPeriodicArgs;
-import com.pulumi.databricks.inputs.JobTriggerTableArgs;
 import com.pulumi.databricks.inputs.JobTriggerTableUpdateArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -64,16 +63,17 @@ public final class JobTriggerArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.periodic);
     }
 
-    @Import(name="table")
-    private @Nullable Output<JobTriggerTableArgs> table;
-
-    public Optional<Output<JobTriggerTableArgs>> table() {
-        return Optional.ofNullable(this.table);
-    }
-
+    /**
+     * configuration block to define a trigger for [Table Updates](https://docs.databricks.com/aws/en/jobs/trigger-table-update) consisting of following attributes:
+     * 
+     */
     @Import(name="tableUpdate")
     private @Nullable Output<JobTriggerTableUpdateArgs> tableUpdate;
 
+    /**
+     * @return configuration block to define a trigger for [Table Updates](https://docs.databricks.com/aws/en/jobs/trigger-table-update) consisting of following attributes:
+     * 
+     */
     public Optional<Output<JobTriggerTableUpdateArgs>> tableUpdate() {
         return Optional.ofNullable(this.tableUpdate);
     }
@@ -84,7 +84,6 @@ public final class JobTriggerArgs extends com.pulumi.resources.ResourceArgs {
         this.fileArrival = $.fileArrival;
         this.pauseStatus = $.pauseStatus;
         this.periodic = $.periodic;
-        this.table = $.table;
         this.tableUpdate = $.tableUpdate;
     }
 
@@ -169,20 +168,23 @@ public final class JobTriggerArgs extends com.pulumi.resources.ResourceArgs {
             return periodic(Output.of(periodic));
         }
 
-        public Builder table(@Nullable Output<JobTriggerTableArgs> table) {
-            $.table = table;
-            return this;
-        }
-
-        public Builder table(JobTriggerTableArgs table) {
-            return table(Output.of(table));
-        }
-
+        /**
+         * @param tableUpdate configuration block to define a trigger for [Table Updates](https://docs.databricks.com/aws/en/jobs/trigger-table-update) consisting of following attributes:
+         * 
+         * @return builder
+         * 
+         */
         public Builder tableUpdate(@Nullable Output<JobTriggerTableUpdateArgs> tableUpdate) {
             $.tableUpdate = tableUpdate;
             return this;
         }
 
+        /**
+         * @param tableUpdate configuration block to define a trigger for [Table Updates](https://docs.databricks.com/aws/en/jobs/trigger-table-update) consisting of following attributes:
+         * 
+         * @return builder
+         * 
+         */
         public Builder tableUpdate(JobTriggerTableUpdateArgs tableUpdate) {
             return tableUpdate(Output.of(tableUpdate));
         }

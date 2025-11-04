@@ -145,6 +145,12 @@ namespace Pulumi.Databricks
         public string Name { get; set; } = null!;
 
         /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Inputs.GetStorageCredentialProviderConfigArgs? ProviderConfig { get; set; }
+
+        /// <summary>
         /// array of objects with information about storage credential.
         /// </summary>
         [Input("storageCredentialInfo")]
@@ -171,6 +177,12 @@ namespace Pulumi.Databricks
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.GetStorageCredentialProviderConfigInputArgs>? ProviderConfig { get; set; }
+
+        /// <summary>
         /// array of objects with information about storage credential.
         /// </summary>
         [Input("storageCredentialInfo")]
@@ -191,6 +203,7 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string Id;
         public readonly string Name;
+        public readonly Outputs.GetStorageCredentialProviderConfigResult? ProviderConfig;
         /// <summary>
         /// array of objects with information about storage credential.
         /// </summary>
@@ -202,10 +215,13 @@ namespace Pulumi.Databricks
 
             string name,
 
+            Outputs.GetStorageCredentialProviderConfigResult? providerConfig,
+
             Outputs.GetStorageCredentialStorageCredentialInfoResult storageCredentialInfo)
         {
             Id = id;
             Name = name;
+            ProviderConfig = providerConfig;
             StorageCredentialInfo = storageCredentialInfo;
         }
     }

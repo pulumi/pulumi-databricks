@@ -13,11 +13,17 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class JobTriggerTableUpdate
     {
+        /// <summary>
+        /// The table(s) condition based on which to trigger a job run.  Possible values are `ANY_UPDATED`, `ALL_UPDATED`.
+        /// </summary>
         public readonly string? Condition;
         /// <summary>
         /// If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
         /// </summary>
         public readonly int? MinTimeBetweenTriggersSeconds;
+        /// <summary>
+        /// A non-empty list of tables to monitor for changes. The table name must be in the format `catalog_name.schema_name.table_name`.
+        /// </summary>
         public readonly ImmutableArray<string> TableNames;
         /// <summary>
         /// If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.

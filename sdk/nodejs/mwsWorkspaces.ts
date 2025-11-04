@@ -124,19 +124,19 @@ import * as utilities from "./utilities";
  *     credentialsName: `${prefix}-creds`,
  *     roleArn: crossAccountRole.arn,
  * });
- * const rootStorageBucket = new aws.s3.BucketV2("root_storage_bucket", {
+ * const rootStorageBucket = new aws.s3.Bucket("root_storage_bucket", {
  *     bucket: `${prefix}-rootbucket`,
- *     acl: "private",
+ *     acl: aws.s3.CannedAcl.Private,
  *     forceDestroy: true,
  *     tags: tags,
  * });
- * const rootVersioning = new aws.s3.BucketVersioningV2("root_versioning", {
+ * const rootVersioning = new aws.s3.BucketVersioning("root_versioning", {
  *     bucket: rootStorageBucket.id,
  *     versioningConfiguration: {
  *         status: "Disabled",
  *     },
  * });
- * const rootStorageBucketBucketServerSideEncryptionConfigurationV2 = new aws.s3.BucketServerSideEncryptionConfigurationV2("root_storage_bucket", {
+ * const rootStorageBucketBucketServerSideEncryptionConfiguration = new aws.s3.BucketServerSideEncryptionConfiguration("root_storage_bucket", {
  *     bucket: rootStorageBucket.bucket,
  *     rules: [{
  *         applyServerSideEncryptionByDefault: {
@@ -302,8 +302,6 @@ export class MwsWorkspaces extends pulumi.CustomResource {
     declare public readonly cloudResourceContainer: pulumi.Output<outputs.MwsWorkspacesCloudResourceContainer | undefined>;
     /**
      * The compute mode for the workspace. When unset, a classic workspace is created, and both `credentialsId` and `storageConfigurationId` must be specified. When set to `SERVERLESS`, the resulting workspace is a serverless workspace, and `credentialsId` and `storageConfigurationId` must not be set. The only allowed value for this is `SERVERLESS`. Changing this field requires recreation of the workspace.
-     *
-     * > Databricks strongly recommends using OAuth instead of PATs for user account client authentication and authorization due to the improved security
      */
     declare public readonly computeMode: pulumi.Output<string | undefined>;
     /**
@@ -330,6 +328,12 @@ export class MwsWorkspaces extends pulumi.CustomResource {
      * (String) The effective compute mode for the workspace. This is either `SERVERLESS` for serverless workspaces or `HYBRID` for classic workspaces.
      */
     declare public /*out*/ readonly effectiveComputeMode: pulumi.Output<string>;
+    /**
+     * The expected status of the workspace. When unset, it defaults to `RUNNING`. When set to `PROVISIONING`, workspace provisioning will pause and not enter `RUNNING` status. The only allowed values for this is `RUNNING` and `PROVISIONING`.
+     *
+     * > Databricks strongly recommends using OAuth instead of PATs for user account client authentication and authorization due to the improved security
+     */
+    declare public readonly expectedWorkspaceStatus: pulumi.Output<string | undefined>;
     declare public readonly externalCustomerInfo: pulumi.Output<outputs.MwsWorkspacesExternalCustomerInfo | undefined>;
     declare public readonly gcpManagedNetworkConfig: pulumi.Output<outputs.MwsWorkspacesGcpManagedNetworkConfig | undefined>;
     /**
@@ -337,7 +341,7 @@ export class MwsWorkspaces extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly gcpWorkspaceSa: pulumi.Output<string>;
     /**
-     * @deprecated gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.90.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.96.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     declare public readonly gkeConfig: pulumi.Output<outputs.MwsWorkspacesGkeConfig | undefined>;
     declare public readonly isNoPublicIpEnabled: pulumi.Output<boolean | undefined>;
@@ -415,6 +419,7 @@ export class MwsWorkspaces extends pulumi.CustomResource {
             resourceInputs["customerManagedKeyId"] = state?.customerManagedKeyId;
             resourceInputs["deploymentName"] = state?.deploymentName;
             resourceInputs["effectiveComputeMode"] = state?.effectiveComputeMode;
+            resourceInputs["expectedWorkspaceStatus"] = state?.expectedWorkspaceStatus;
             resourceInputs["externalCustomerInfo"] = state?.externalCustomerInfo;
             resourceInputs["gcpManagedNetworkConfig"] = state?.gcpManagedNetworkConfig;
             resourceInputs["gcpWorkspaceSa"] = state?.gcpWorkspaceSa;
@@ -451,6 +456,7 @@ export class MwsWorkspaces extends pulumi.CustomResource {
             resourceInputs["customTags"] = args?.customTags;
             resourceInputs["customerManagedKeyId"] = args?.customerManagedKeyId;
             resourceInputs["deploymentName"] = args?.deploymentName;
+            resourceInputs["expectedWorkspaceStatus"] = args?.expectedWorkspaceStatus;
             resourceInputs["externalCustomerInfo"] = args?.externalCustomerInfo;
             resourceInputs["gcpManagedNetworkConfig"] = args?.gcpManagedNetworkConfig;
             resourceInputs["gkeConfig"] = args?.gkeConfig;
@@ -497,8 +503,6 @@ export interface MwsWorkspacesState {
     cloudResourceContainer?: pulumi.Input<inputs.MwsWorkspacesCloudResourceContainer>;
     /**
      * The compute mode for the workspace. When unset, a classic workspace is created, and both `credentialsId` and `storageConfigurationId` must be specified. When set to `SERVERLESS`, the resulting workspace is a serverless workspace, and `credentialsId` and `storageConfigurationId` must not be set. The only allowed value for this is `SERVERLESS`. Changing this field requires recreation of the workspace.
-     *
-     * > Databricks strongly recommends using OAuth instead of PATs for user account client authentication and authorization due to the improved security
      */
     computeMode?: pulumi.Input<string>;
     /**
@@ -525,6 +529,12 @@ export interface MwsWorkspacesState {
      * (String) The effective compute mode for the workspace. This is either `SERVERLESS` for serverless workspaces or `HYBRID` for classic workspaces.
      */
     effectiveComputeMode?: pulumi.Input<string>;
+    /**
+     * The expected status of the workspace. When unset, it defaults to `RUNNING`. When set to `PROVISIONING`, workspace provisioning will pause and not enter `RUNNING` status. The only allowed values for this is `RUNNING` and `PROVISIONING`.
+     *
+     * > Databricks strongly recommends using OAuth instead of PATs for user account client authentication and authorization due to the improved security
+     */
+    expectedWorkspaceStatus?: pulumi.Input<string>;
     externalCustomerInfo?: pulumi.Input<inputs.MwsWorkspacesExternalCustomerInfo>;
     gcpManagedNetworkConfig?: pulumi.Input<inputs.MwsWorkspacesGcpManagedNetworkConfig>;
     /**
@@ -532,7 +542,7 @@ export interface MwsWorkspacesState {
      */
     gcpWorkspaceSa?: pulumi.Input<string>;
     /**
-     * @deprecated gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.90.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.96.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeConfig?: pulumi.Input<inputs.MwsWorkspacesGkeConfig>;
     isNoPublicIpEnabled?: pulumi.Input<boolean>;
@@ -606,8 +616,6 @@ export interface MwsWorkspacesArgs {
     cloudResourceContainer?: pulumi.Input<inputs.MwsWorkspacesCloudResourceContainer>;
     /**
      * The compute mode for the workspace. When unset, a classic workspace is created, and both `credentialsId` and `storageConfigurationId` must be specified. When set to `SERVERLESS`, the resulting workspace is a serverless workspace, and `credentialsId` and `storageConfigurationId` must not be set. The only allowed value for this is `SERVERLESS`. Changing this field requires recreation of the workspace.
-     *
-     * > Databricks strongly recommends using OAuth instead of PATs for user account client authentication and authorization due to the improved security
      */
     computeMode?: pulumi.Input<string>;
     /**
@@ -630,10 +638,16 @@ export interface MwsWorkspacesArgs {
      * part of URL as in `https://<prefix>-<deployment-name>.cloud.databricks.com`. Deployment name cannot be used until a deployment name prefix is defined. Please contact your Databricks representative. Once a new deployment prefix is added/updated, it only will affect the new workspaces created.
      */
     deploymentName?: pulumi.Input<string>;
+    /**
+     * The expected status of the workspace. When unset, it defaults to `RUNNING`. When set to `PROVISIONING`, workspace provisioning will pause and not enter `RUNNING` status. The only allowed values for this is `RUNNING` and `PROVISIONING`.
+     *
+     * > Databricks strongly recommends using OAuth instead of PATs for user account client authentication and authorization due to the improved security
+     */
+    expectedWorkspaceStatus?: pulumi.Input<string>;
     externalCustomerInfo?: pulumi.Input<inputs.MwsWorkspacesExternalCustomerInfo>;
     gcpManagedNetworkConfig?: pulumi.Input<inputs.MwsWorkspacesGcpManagedNetworkConfig>;
     /**
-     * @deprecated gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.90.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.96.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeConfig?: pulumi.Input<inputs.MwsWorkspacesGkeConfig>;
     isNoPublicIpEnabled?: pulumi.Input<boolean>;

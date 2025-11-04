@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetSparkVersionResult',
@@ -26,7 +28,7 @@ class GetSparkVersionResult:
     """
     A collection of values returned by getSparkVersion.
     """
-    def __init__(__self__, beta=None, genomics=None, gpu=None, graviton=None, id=None, latest=None, long_term_support=None, ml=None, photon=None, scala=None, spark_version=None):
+    def __init__(__self__, beta=None, genomics=None, gpu=None, graviton=None, id=None, latest=None, long_term_support=None, ml=None, photon=None, provider_config=None, scala=None, spark_version=None):
         if beta and not isinstance(beta, bool):
             raise TypeError("Expected argument 'beta' to be a bool")
         pulumi.set(__self__, "beta", beta)
@@ -54,6 +56,9 @@ class GetSparkVersionResult:
         if photon and not isinstance(photon, bool):
             raise TypeError("Expected argument 'photon' to be a bool")
         pulumi.set(__self__, "photon", photon)
+        if provider_config and not isinstance(provider_config, dict):
+            raise TypeError("Expected argument 'provider_config' to be a dict")
+        pulumi.set(__self__, "provider_config", provider_config)
         if scala and not isinstance(scala, str):
             raise TypeError("Expected argument 'scala' to be a str")
         pulumi.set(__self__, "scala", scala)
@@ -112,6 +117,11 @@ class GetSparkVersionResult:
         return pulumi.get(self, "photon")
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional['outputs.GetSparkVersionProviderConfigResult']:
+        return pulumi.get(self, "provider_config")
+
+    @_builtins.property
     @pulumi.getter
     def scala(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "scala")
@@ -137,6 +147,7 @@ class AwaitableGetSparkVersionResult(GetSparkVersionResult):
             long_term_support=self.long_term_support,
             ml=self.ml,
             photon=self.photon,
+            provider_config=self.provider_config,
             scala=self.scala,
             spark_version=self.spark_version)
 
@@ -150,6 +161,7 @@ def get_spark_version(beta: Optional[_builtins.bool] = None,
                       long_term_support: Optional[_builtins.bool] = None,
                       ml: Optional[_builtins.bool] = None,
                       photon: Optional[_builtins.bool] = None,
+                      provider_config: Optional[Union['GetSparkVersionProviderConfigArgs', 'GetSparkVersionProviderConfigArgsDict']] = None,
                       scala: Optional[_builtins.str] = None,
                       spark_version: Optional[_builtins.str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSparkVersionResult:
@@ -203,6 +215,7 @@ def get_spark_version(beta: Optional[_builtins.bool] = None,
     :param _builtins.bool long_term_support: if we should limit the search only to LTS (long term support) & ESR (extended support) versions. Default to `false`.
     :param _builtins.bool ml: if we should limit the search only to ML runtimes. Default to `false`.
     :param _builtins.bool photon: if we should limit the search only to Photon runtimes. Default to `false`. *Deprecated with DBR 14.0 release. Specify `runtime_engine=\\"PHOTON\\"` in the cluster configuration instead!*
+    :param Union['GetSparkVersionProviderConfigArgs', 'GetSparkVersionProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     :param _builtins.str scala: if we should limit the search only to runtimes that are based on specific Scala version. Default to `2.12`.
     :param _builtins.str spark_version: if we should limit the search only to runtimes that are based on specific Spark version. Default to empty string.  It could be specified as `3`, or `3.0`, or full version, like, `3.0.1`.
     """
@@ -216,6 +229,7 @@ def get_spark_version(beta: Optional[_builtins.bool] = None,
     __args__['longTermSupport'] = long_term_support
     __args__['ml'] = ml
     __args__['photon'] = photon
+    __args__['providerConfig'] = provider_config
     __args__['scala'] = scala
     __args__['sparkVersion'] = spark_version
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -231,6 +245,7 @@ def get_spark_version(beta: Optional[_builtins.bool] = None,
         long_term_support=pulumi.get(__ret__, 'long_term_support'),
         ml=pulumi.get(__ret__, 'ml'),
         photon=pulumi.get(__ret__, 'photon'),
+        provider_config=pulumi.get(__ret__, 'provider_config'),
         scala=pulumi.get(__ret__, 'scala'),
         spark_version=pulumi.get(__ret__, 'spark_version'))
 def get_spark_version_output(beta: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
@@ -242,6 +257,7 @@ def get_spark_version_output(beta: Optional[pulumi.Input[Optional[_builtins.bool
                              long_term_support: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
                              ml: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
                              photon: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
+                             provider_config: Optional[pulumi.Input[Optional[Union['GetSparkVersionProviderConfigArgs', 'GetSparkVersionProviderConfigArgsDict']]]] = None,
                              scala: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                              spark_version: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSparkVersionResult]:
@@ -295,6 +311,7 @@ def get_spark_version_output(beta: Optional[pulumi.Input[Optional[_builtins.bool
     :param _builtins.bool long_term_support: if we should limit the search only to LTS (long term support) & ESR (extended support) versions. Default to `false`.
     :param _builtins.bool ml: if we should limit the search only to ML runtimes. Default to `false`.
     :param _builtins.bool photon: if we should limit the search only to Photon runtimes. Default to `false`. *Deprecated with DBR 14.0 release. Specify `runtime_engine=\\"PHOTON\\"` in the cluster configuration instead!*
+    :param Union['GetSparkVersionProviderConfigArgs', 'GetSparkVersionProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     :param _builtins.str scala: if we should limit the search only to runtimes that are based on specific Scala version. Default to `2.12`.
     :param _builtins.str spark_version: if we should limit the search only to runtimes that are based on specific Spark version. Default to empty string.  It could be specified as `3`, or `3.0`, or full version, like, `3.0.1`.
     """
@@ -308,6 +325,7 @@ def get_spark_version_output(beta: Optional[pulumi.Input[Optional[_builtins.bool
     __args__['longTermSupport'] = long_term_support
     __args__['ml'] = ml
     __args__['photon'] = photon
+    __args__['providerConfig'] = provider_config
     __args__['scala'] = scala
     __args__['sparkVersion'] = spark_version
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -322,5 +340,6 @@ def get_spark_version_output(beta: Optional[pulumi.Input[Optional[_builtins.bool
         long_term_support=pulumi.get(__response__, 'long_term_support'),
         ml=pulumi.get(__response__, 'ml'),
         photon=pulumi.get(__response__, 'photon'),
+        provider_config=pulumi.get(__response__, 'provider_config'),
         scala=pulumi.get(__response__, 'scala'),
         spark_version=pulumi.get(__response__, 'spark_version')))

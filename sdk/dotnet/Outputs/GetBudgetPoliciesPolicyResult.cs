@@ -32,7 +32,7 @@ namespace Pulumi.Databricks.Outputs
         /// - Can contain only characters from the ISO 8859-1 (latin1) set.
         /// - Can't start with reserved keywords such as `databricks:default-policy`
         /// </summary>
-        public readonly string? PolicyName;
+        public readonly string PolicyName;
 
         [OutputConstructor]
         private GetBudgetPoliciesPolicyResult(
@@ -42,7 +42,7 @@ namespace Pulumi.Databricks.Outputs
 
             string policyId,
 
-            string? policyName)
+            string policyName)
         {
             BindingWorkspaceIds = bindingWorkspaceIds;
             CustomTags = customTags;

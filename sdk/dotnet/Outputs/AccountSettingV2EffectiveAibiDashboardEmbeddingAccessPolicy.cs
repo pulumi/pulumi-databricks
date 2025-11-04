@@ -14,7 +14,7 @@ namespace Pulumi.Databricks.Outputs
     public sealed class AccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy
     {
         /// <summary>
-        /// . Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
+        /// Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
         /// </summary>
         public readonly string AccessPolicyType;
 

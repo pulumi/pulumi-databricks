@@ -13,122 +13,30 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['RegisteredModelArgs', 'RegisteredModel']
 
 @pulumi.input_type
 class RegisteredModelArgs:
     def __init__(__self__, *,
-                 catalog_name: pulumi.Input[_builtins.str],
-                 schema_name: pulumi.Input[_builtins.str],
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 owner: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_location: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        The set of arguments for constructing a RegisteredModel resource.
-        :param pulumi.Input[_builtins.str] catalog_name: The name of the catalog where the schema and the registered model reside. *Change of this parameter forces recreation of the resource.*
-        :param pulumi.Input[_builtins.str] schema_name: The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*
-        :param pulumi.Input[_builtins.str] comment: The comment attached to the registered model.
-        :param pulumi.Input[_builtins.str] name: The name of the registered model.  *Change of this parameter forces recreation of the resource.*
-        :param pulumi.Input[_builtins.str] owner: Name of the registered model owner.
-        :param pulumi.Input[_builtins.str] storage_location: The storage location under which model version data files are stored. *Change of this parameter forces recreation of the resource.*
-        """
-        pulumi.set(__self__, "catalog_name", catalog_name)
-        pulumi.set(__self__, "schema_name", schema_name)
-        if comment is not None:
-            pulumi.set(__self__, "comment", comment)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if owner is not None:
-            pulumi.set(__self__, "owner", owner)
-        if storage_location is not None:
-            pulumi.set(__self__, "storage_location", storage_location)
-
-    @_builtins.property
-    @pulumi.getter(name="catalogName")
-    def catalog_name(self) -> pulumi.Input[_builtins.str]:
-        """
-        The name of the catalog where the schema and the registered model reside. *Change of this parameter forces recreation of the resource.*
-        """
-        return pulumi.get(self, "catalog_name")
-
-    @catalog_name.setter
-    def catalog_name(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "catalog_name", value)
-
-    @_builtins.property
-    @pulumi.getter(name="schemaName")
-    def schema_name(self) -> pulumi.Input[_builtins.str]:
-        """
-        The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*
-        """
-        return pulumi.get(self, "schema_name")
-
-    @schema_name.setter
-    def schema_name(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "schema_name", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def comment(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The comment attached to the registered model.
-        """
-        return pulumi.get(self, "comment")
-
-    @comment.setter
-    def comment(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "comment", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The name of the registered model.  *Change of this parameter forces recreation of the resource.*
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "name", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def owner(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Name of the registered model owner.
-        """
-        return pulumi.get(self, "owner")
-
-    @owner.setter
-    def owner(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "owner", value)
-
-    @_builtins.property
-    @pulumi.getter(name="storageLocation")
-    def storage_location(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The storage location under which model version data files are stored. *Change of this parameter forces recreation of the resource.*
-        """
-        return pulumi.get(self, "storage_location")
-
-    @storage_location.setter
-    def storage_location(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "storage_location", value)
-
-
-@pulumi.input_type
-class _RegisteredModelState:
-    def __init__(__self__, *,
+                 aliases: Optional[pulumi.Input[Sequence[pulumi.Input['RegisteredModelAliasArgs']]]] = None,
+                 browse_only: Optional[pulumi.Input[_builtins.bool]] = None,
                  catalog_name: Optional[pulumi.Input[_builtins.str]] = None,
                  comment: Optional[pulumi.Input[_builtins.str]] = None,
+                 created_at: Optional[pulumi.Input[_builtins.int]] = None,
+                 created_by: Optional[pulumi.Input[_builtins.str]] = None,
+                 full_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 metastore_id: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  owner: Optional[pulumi.Input[_builtins.str]] = None,
                  schema_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_location: Optional[pulumi.Input[_builtins.str]] = None):
+                 storage_location: Optional[pulumi.Input[_builtins.str]] = None,
+                 updated_at: Optional[pulumi.Input[_builtins.int]] = None,
+                 updated_by: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        Input properties used for looking up and filtering RegisteredModel resources.
+        The set of arguments for constructing a RegisteredModel resource.
         :param pulumi.Input[_builtins.str] catalog_name: The name of the catalog where the schema and the registered model reside. *Change of this parameter forces recreation of the resource.*
         :param pulumi.Input[_builtins.str] comment: The comment attached to the registered model.
         :param pulumi.Input[_builtins.str] name: The name of the registered model.  *Change of this parameter forces recreation of the resource.*
@@ -136,10 +44,22 @@ class _RegisteredModelState:
         :param pulumi.Input[_builtins.str] schema_name: The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*
         :param pulumi.Input[_builtins.str] storage_location: The storage location under which model version data files are stored. *Change of this parameter forces recreation of the resource.*
         """
+        if aliases is not None:
+            pulumi.set(__self__, "aliases", aliases)
+        if browse_only is not None:
+            pulumi.set(__self__, "browse_only", browse_only)
         if catalog_name is not None:
             pulumi.set(__self__, "catalog_name", catalog_name)
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
+        if created_by is not None:
+            pulumi.set(__self__, "created_by", created_by)
+        if full_name is not None:
+            pulumi.set(__self__, "full_name", full_name)
+        if metastore_id is not None:
+            pulumi.set(__self__, "metastore_id", metastore_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if owner is not None:
@@ -148,6 +68,28 @@ class _RegisteredModelState:
             pulumi.set(__self__, "schema_name", schema_name)
         if storage_location is not None:
             pulumi.set(__self__, "storage_location", storage_location)
+        if updated_at is not None:
+            pulumi.set(__self__, "updated_at", updated_at)
+        if updated_by is not None:
+            pulumi.set(__self__, "updated_by", updated_by)
+
+    @_builtins.property
+    @pulumi.getter
+    def aliases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegisteredModelAliasArgs']]]]:
+        return pulumi.get(self, "aliases")
+
+    @aliases.setter
+    def aliases(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegisteredModelAliasArgs']]]]):
+        pulumi.set(self, "aliases", value)
+
+    @_builtins.property
+    @pulumi.getter(name="browseOnly")
+    def browse_only(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        return pulumi.get(self, "browse_only")
+
+    @browse_only.setter
+    def browse_only(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "browse_only", value)
 
     @_builtins.property
     @pulumi.getter(name="catalogName")
@@ -172,6 +114,42 @@ class _RegisteredModelState:
     @comment.setter
     def comment(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "comment", value)
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "created_at", value)
+
+    @_builtins.property
+    @pulumi.getter(name="createdBy")
+    def created_by(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "created_by")
+
+    @created_by.setter
+    def created_by(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "created_by", value)
+
+    @_builtins.property
+    @pulumi.getter(name="fullName")
+    def full_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "full_name")
+
+    @full_name.setter
+    def full_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "full_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="metastoreId")
+    def metastore_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "metastore_id")
+
+    @metastore_id.setter
+    def metastore_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "metastore_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -221,6 +199,224 @@ class _RegisteredModelState:
     def storage_location(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "storage_location", value)
 
+    @_builtins.property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "updated_at")
+
+    @updated_at.setter
+    def updated_at(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "updated_at", value)
+
+    @_builtins.property
+    @pulumi.getter(name="updatedBy")
+    def updated_by(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "updated_by")
+
+    @updated_by.setter
+    def updated_by(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "updated_by", value)
+
+
+@pulumi.input_type
+class _RegisteredModelState:
+    def __init__(__self__, *,
+                 aliases: Optional[pulumi.Input[Sequence[pulumi.Input['RegisteredModelAliasArgs']]]] = None,
+                 browse_only: Optional[pulumi.Input[_builtins.bool]] = None,
+                 catalog_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 comment: Optional[pulumi.Input[_builtins.str]] = None,
+                 created_at: Optional[pulumi.Input[_builtins.int]] = None,
+                 created_by: Optional[pulumi.Input[_builtins.str]] = None,
+                 full_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 metastore_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 owner: Optional[pulumi.Input[_builtins.str]] = None,
+                 schema_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 storage_location: Optional[pulumi.Input[_builtins.str]] = None,
+                 updated_at: Optional[pulumi.Input[_builtins.int]] = None,
+                 updated_by: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        Input properties used for looking up and filtering RegisteredModel resources.
+        :param pulumi.Input[_builtins.str] catalog_name: The name of the catalog where the schema and the registered model reside. *Change of this parameter forces recreation of the resource.*
+        :param pulumi.Input[_builtins.str] comment: The comment attached to the registered model.
+        :param pulumi.Input[_builtins.str] name: The name of the registered model.  *Change of this parameter forces recreation of the resource.*
+        :param pulumi.Input[_builtins.str] owner: Name of the registered model owner.
+        :param pulumi.Input[_builtins.str] schema_name: The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*
+        :param pulumi.Input[_builtins.str] storage_location: The storage location under which model version data files are stored. *Change of this parameter forces recreation of the resource.*
+        """
+        if aliases is not None:
+            pulumi.set(__self__, "aliases", aliases)
+        if browse_only is not None:
+            pulumi.set(__self__, "browse_only", browse_only)
+        if catalog_name is not None:
+            pulumi.set(__self__, "catalog_name", catalog_name)
+        if comment is not None:
+            pulumi.set(__self__, "comment", comment)
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
+        if created_by is not None:
+            pulumi.set(__self__, "created_by", created_by)
+        if full_name is not None:
+            pulumi.set(__self__, "full_name", full_name)
+        if metastore_id is not None:
+            pulumi.set(__self__, "metastore_id", metastore_id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if owner is not None:
+            pulumi.set(__self__, "owner", owner)
+        if schema_name is not None:
+            pulumi.set(__self__, "schema_name", schema_name)
+        if storage_location is not None:
+            pulumi.set(__self__, "storage_location", storage_location)
+        if updated_at is not None:
+            pulumi.set(__self__, "updated_at", updated_at)
+        if updated_by is not None:
+            pulumi.set(__self__, "updated_by", updated_by)
+
+    @_builtins.property
+    @pulumi.getter
+    def aliases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegisteredModelAliasArgs']]]]:
+        return pulumi.get(self, "aliases")
+
+    @aliases.setter
+    def aliases(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegisteredModelAliasArgs']]]]):
+        pulumi.set(self, "aliases", value)
+
+    @_builtins.property
+    @pulumi.getter(name="browseOnly")
+    def browse_only(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        return pulumi.get(self, "browse_only")
+
+    @browse_only.setter
+    def browse_only(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "browse_only", value)
+
+    @_builtins.property
+    @pulumi.getter(name="catalogName")
+    def catalog_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The name of the catalog where the schema and the registered model reside. *Change of this parameter forces recreation of the resource.*
+        """
+        return pulumi.get(self, "catalog_name")
+
+    @catalog_name.setter
+    def catalog_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "catalog_name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def comment(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The comment attached to the registered model.
+        """
+        return pulumi.get(self, "comment")
+
+    @comment.setter
+    def comment(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "comment", value)
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "created_at", value)
+
+    @_builtins.property
+    @pulumi.getter(name="createdBy")
+    def created_by(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "created_by")
+
+    @created_by.setter
+    def created_by(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "created_by", value)
+
+    @_builtins.property
+    @pulumi.getter(name="fullName")
+    def full_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "full_name")
+
+    @full_name.setter
+    def full_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "full_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="metastoreId")
+    def metastore_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "metastore_id")
+
+    @metastore_id.setter
+    def metastore_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "metastore_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The name of the registered model.  *Change of this parameter forces recreation of the resource.*
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def owner(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Name of the registered model owner.
+        """
+        return pulumi.get(self, "owner")
+
+    @owner.setter
+    def owner(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "owner", value)
+
+    @_builtins.property
+    @pulumi.getter(name="schemaName")
+    def schema_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*
+        """
+        return pulumi.get(self, "schema_name")
+
+    @schema_name.setter
+    def schema_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "schema_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="storageLocation")
+    def storage_location(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The storage location under which model version data files are stored. *Change of this parameter forces recreation of the resource.*
+        """
+        return pulumi.get(self, "storage_location")
+
+    @storage_location.setter
+    def storage_location(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "storage_location", value)
+
+    @_builtins.property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "updated_at")
+
+    @updated_at.setter
+    def updated_at(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "updated_at", value)
+
+    @_builtins.property
+    @pulumi.getter(name="updatedBy")
+    def updated_by(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "updated_by")
+
+    @updated_by.setter
+    def updated_by(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "updated_by", value)
+
 
 @pulumi.type_token("databricks:index/registeredModel:RegisteredModel")
 class RegisteredModel(pulumi.CustomResource):
@@ -228,12 +424,20 @@ class RegisteredModel(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 aliases: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RegisteredModelAliasArgs', 'RegisteredModelAliasArgsDict']]]]] = None,
+                 browse_only: Optional[pulumi.Input[_builtins.bool]] = None,
                  catalog_name: Optional[pulumi.Input[_builtins.str]] = None,
                  comment: Optional[pulumi.Input[_builtins.str]] = None,
+                 created_at: Optional[pulumi.Input[_builtins.int]] = None,
+                 created_by: Optional[pulumi.Input[_builtins.str]] = None,
+                 full_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 metastore_id: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  owner: Optional[pulumi.Input[_builtins.str]] = None,
                  schema_name: Optional[pulumi.Input[_builtins.str]] = None,
                  storage_location: Optional[pulumi.Input[_builtins.str]] = None,
+                 updated_at: Optional[pulumi.Input[_builtins.int]] = None,
+                 updated_by: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
         This resource allows you to create [Models in Unity Catalog](https://docs.databricks.com/en/mlflow/models-in-uc.html) in Databricks.
@@ -300,7 +504,7 @@ class RegisteredModel(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: RegisteredModelArgs,
+                 args: Optional[RegisteredModelArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         This resource allows you to create [Models in Unity Catalog](https://docs.databricks.com/en/mlflow/models-in-uc.html) in Databricks.
@@ -369,12 +573,20 @@ class RegisteredModel(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 aliases: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RegisteredModelAliasArgs', 'RegisteredModelAliasArgsDict']]]]] = None,
+                 browse_only: Optional[pulumi.Input[_builtins.bool]] = None,
                  catalog_name: Optional[pulumi.Input[_builtins.str]] = None,
                  comment: Optional[pulumi.Input[_builtins.str]] = None,
+                 created_at: Optional[pulumi.Input[_builtins.int]] = None,
+                 created_by: Optional[pulumi.Input[_builtins.str]] = None,
+                 full_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 metastore_id: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  owner: Optional[pulumi.Input[_builtins.str]] = None,
                  schema_name: Optional[pulumi.Input[_builtins.str]] = None,
                  storage_location: Optional[pulumi.Input[_builtins.str]] = None,
+                 updated_at: Optional[pulumi.Input[_builtins.int]] = None,
+                 updated_by: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -384,16 +596,20 @@ class RegisteredModel(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = RegisteredModelArgs.__new__(RegisteredModelArgs)
 
-            if catalog_name is None and not opts.urn:
-                raise TypeError("Missing required property 'catalog_name'")
+            __props__.__dict__["aliases"] = aliases
+            __props__.__dict__["browse_only"] = browse_only
             __props__.__dict__["catalog_name"] = catalog_name
             __props__.__dict__["comment"] = comment
+            __props__.__dict__["created_at"] = created_at
+            __props__.__dict__["created_by"] = created_by
+            __props__.__dict__["full_name"] = full_name
+            __props__.__dict__["metastore_id"] = metastore_id
             __props__.__dict__["name"] = name
             __props__.__dict__["owner"] = owner
-            if schema_name is None and not opts.urn:
-                raise TypeError("Missing required property 'schema_name'")
             __props__.__dict__["schema_name"] = schema_name
             __props__.__dict__["storage_location"] = storage_location
+            __props__.__dict__["updated_at"] = updated_at
+            __props__.__dict__["updated_by"] = updated_by
         super(RegisteredModel, __self__).__init__(
             'databricks:index/registeredModel:RegisteredModel',
             resource_name,
@@ -404,12 +620,20 @@ class RegisteredModel(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            aliases: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RegisteredModelAliasArgs', 'RegisteredModelAliasArgsDict']]]]] = None,
+            browse_only: Optional[pulumi.Input[_builtins.bool]] = None,
             catalog_name: Optional[pulumi.Input[_builtins.str]] = None,
             comment: Optional[pulumi.Input[_builtins.str]] = None,
+            created_at: Optional[pulumi.Input[_builtins.int]] = None,
+            created_by: Optional[pulumi.Input[_builtins.str]] = None,
+            full_name: Optional[pulumi.Input[_builtins.str]] = None,
+            metastore_id: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             owner: Optional[pulumi.Input[_builtins.str]] = None,
             schema_name: Optional[pulumi.Input[_builtins.str]] = None,
-            storage_location: Optional[pulumi.Input[_builtins.str]] = None) -> 'RegisteredModel':
+            storage_location: Optional[pulumi.Input[_builtins.str]] = None,
+            updated_at: Optional[pulumi.Input[_builtins.int]] = None,
+            updated_by: Optional[pulumi.Input[_builtins.str]] = None) -> 'RegisteredModel':
         """
         Get an existing RegisteredModel resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -428,17 +652,35 @@ class RegisteredModel(pulumi.CustomResource):
 
         __props__ = _RegisteredModelState.__new__(_RegisteredModelState)
 
+        __props__.__dict__["aliases"] = aliases
+        __props__.__dict__["browse_only"] = browse_only
         __props__.__dict__["catalog_name"] = catalog_name
         __props__.__dict__["comment"] = comment
+        __props__.__dict__["created_at"] = created_at
+        __props__.__dict__["created_by"] = created_by
+        __props__.__dict__["full_name"] = full_name
+        __props__.__dict__["metastore_id"] = metastore_id
         __props__.__dict__["name"] = name
         __props__.__dict__["owner"] = owner
         __props__.__dict__["schema_name"] = schema_name
         __props__.__dict__["storage_location"] = storage_location
+        __props__.__dict__["updated_at"] = updated_at
+        __props__.__dict__["updated_by"] = updated_by
         return RegisteredModel(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
+    @pulumi.getter
+    def aliases(self) -> pulumi.Output[Optional[Sequence['outputs.RegisteredModelAlias']]]:
+        return pulumi.get(self, "aliases")
+
+    @_builtins.property
+    @pulumi.getter(name="browseOnly")
+    def browse_only(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        return pulumi.get(self, "browse_only")
+
+    @_builtins.property
     @pulumi.getter(name="catalogName")
-    def catalog_name(self) -> pulumi.Output[_builtins.str]:
+    def catalog_name(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         The name of the catalog where the schema and the registered model reside. *Change of this parameter forces recreation of the resource.*
         """
@@ -451,6 +693,26 @@ class RegisteredModel(pulumi.CustomResource):
         The comment attached to the registered model.
         """
         return pulumi.get(self, "comment")
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> pulumi.Output[_builtins.int]:
+        return pulumi.get(self, "created_at")
+
+    @_builtins.property
+    @pulumi.getter(name="createdBy")
+    def created_by(self) -> pulumi.Output[_builtins.str]:
+        return pulumi.get(self, "created_by")
+
+    @_builtins.property
+    @pulumi.getter(name="fullName")
+    def full_name(self) -> pulumi.Output[_builtins.str]:
+        return pulumi.get(self, "full_name")
+
+    @_builtins.property
+    @pulumi.getter(name="metastoreId")
+    def metastore_id(self) -> pulumi.Output[_builtins.str]:
+        return pulumi.get(self, "metastore_id")
 
     @_builtins.property
     @pulumi.getter
@@ -470,7 +732,7 @@ class RegisteredModel(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="schemaName")
-    def schema_name(self) -> pulumi.Output[_builtins.str]:
+    def schema_name(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*
         """
@@ -483,4 +745,14 @@ class RegisteredModel(pulumi.CustomResource):
         The storage location under which model version data files are stored. *Change of this parameter forces recreation of the resource.*
         """
         return pulumi.get(self, "storage_location")
+
+    @_builtins.property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> pulumi.Output[_builtins.int]:
+        return pulumi.get(self, "updated_at")
+
+    @_builtins.property
+    @pulumi.getter(name="updatedBy")
+    def updated_by(self) -> pulumi.Output[_builtins.str]:
+        return pulumi.get(self, "updated_by")
 

@@ -11,6 +11,44 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+//
+// Setting is a configurable value or control that determines how a feature or behavior works within the databricks platform.
+//
+// [//]: # (todo: add public link to metadata api after production doc link available)
+// See settings-metadata api for list of settings that can be modified using this resource.
+//
+// ## Example Usage
+//
+// Getting a workspace level setting:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewWorkspaceSettingV2(ctx, "this", &databricks.WorkspaceSettingV2Args{
+//				Name: pulumi.String("llm_proxy_partner_powered"),
+//				BooleanVal: &databricks.WorkspaceSettingV2BooleanValArgs{
+//					Value: pulumi.Bool(false),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // As of Pulumi v1.5, resources can be imported through configuration.
@@ -28,23 +66,20 @@ import (
 // If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
 //
 // ```sh
-// $ pulumi import databricks:index/workspaceSettingV2:WorkspaceSettingV2 databricks_workspace_setting_v2 "name"
+// $ pulumi import databricks:index/workspaceSettingV2:WorkspaceSettingV2 this "name"
 // ```
 type WorkspaceSettingV2 struct {
 	pulumi.CustomResourceState
 
-	AibiDashboardEmbeddingAccessPolicy    WorkspaceSettingV2AibiDashboardEmbeddingAccessPolicyPtrOutput    `pulumi:"aibiDashboardEmbeddingAccessPolicy"`
-	AibiDashboardEmbeddingApprovedDomains WorkspaceSettingV2AibiDashboardEmbeddingApprovedDomainsPtrOutput `pulumi:"aibiDashboardEmbeddingApprovedDomains"`
-	// todo: Mark these Public after onboarded to DSL
+	AibiDashboardEmbeddingAccessPolicy             WorkspaceSettingV2AibiDashboardEmbeddingAccessPolicyPtrOutput             `pulumi:"aibiDashboardEmbeddingAccessPolicy"`
+	AibiDashboardEmbeddingApprovedDomains          WorkspaceSettingV2AibiDashboardEmbeddingApprovedDomainsPtrOutput          `pulumi:"aibiDashboardEmbeddingApprovedDomains"`
 	AutomaticClusterUpdateWorkspace                WorkspaceSettingV2AutomaticClusterUpdateWorkspacePtrOutput                `pulumi:"automaticClusterUpdateWorkspace"`
 	BooleanVal                                     WorkspaceSettingV2BooleanValPtrOutput                                     `pulumi:"booleanVal"`
-	DefaultDataSecurityMode                        WorkspaceSettingV2DefaultDataSecurityModePtrOutput                        `pulumi:"defaultDataSecurityMode"`
 	EffectiveAibiDashboardEmbeddingAccessPolicy    WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyPtrOutput    `pulumi:"effectiveAibiDashboardEmbeddingAccessPolicy"`
 	EffectiveAibiDashboardEmbeddingApprovedDomains WorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsPtrOutput `pulumi:"effectiveAibiDashboardEmbeddingApprovedDomains"`
 	EffectiveAutomaticClusterUpdateWorkspace       WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspacePtrOutput       `pulumi:"effectiveAutomaticClusterUpdateWorkspace"`
 	// (BooleanMessage)
-	EffectiveBooleanVal              WorkspaceSettingV2EffectiveBooleanValOutput                 `pulumi:"effectiveBooleanVal"`
-	EffectiveDefaultDataSecurityMode WorkspaceSettingV2EffectiveDefaultDataSecurityModePtrOutput `pulumi:"effectiveDefaultDataSecurityMode"`
+	EffectiveBooleanVal WorkspaceSettingV2EffectiveBooleanValOutput `pulumi:"effectiveBooleanVal"`
 	// (IntegerMessage)
 	EffectiveIntegerVal              WorkspaceSettingV2EffectiveIntegerValOutput                 `pulumi:"effectiveIntegerVal"`
 	EffectivePersonalCompute         WorkspaceSettingV2EffectivePersonalComputePtrOutput         `pulumi:"effectivePersonalCompute"`
@@ -57,8 +92,6 @@ type WorkspaceSettingV2 struct {
 	PersonalCompute         WorkspaceSettingV2PersonalComputePtrOutput         `pulumi:"personalCompute"`
 	RestrictWorkspaceAdmins WorkspaceSettingV2RestrictWorkspaceAdminsPtrOutput `pulumi:"restrictWorkspaceAdmins"`
 	StringVal               WorkspaceSettingV2StringValPtrOutput               `pulumi:"stringVal"`
-	// Workspace ID of the resource
-	WorkspaceId pulumi.StringPtrOutput `pulumi:"workspaceId"`
 }
 
 // NewWorkspaceSettingV2 registers a new resource with the given unique name, arguments, and options.
@@ -91,18 +124,15 @@ func GetWorkspaceSettingV2(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering WorkspaceSettingV2 resources.
 type workspaceSettingV2State struct {
-	AibiDashboardEmbeddingAccessPolicy    *WorkspaceSettingV2AibiDashboardEmbeddingAccessPolicy    `pulumi:"aibiDashboardEmbeddingAccessPolicy"`
-	AibiDashboardEmbeddingApprovedDomains *WorkspaceSettingV2AibiDashboardEmbeddingApprovedDomains `pulumi:"aibiDashboardEmbeddingApprovedDomains"`
-	// todo: Mark these Public after onboarded to DSL
+	AibiDashboardEmbeddingAccessPolicy             *WorkspaceSettingV2AibiDashboardEmbeddingAccessPolicy             `pulumi:"aibiDashboardEmbeddingAccessPolicy"`
+	AibiDashboardEmbeddingApprovedDomains          *WorkspaceSettingV2AibiDashboardEmbeddingApprovedDomains          `pulumi:"aibiDashboardEmbeddingApprovedDomains"`
 	AutomaticClusterUpdateWorkspace                *WorkspaceSettingV2AutomaticClusterUpdateWorkspace                `pulumi:"automaticClusterUpdateWorkspace"`
 	BooleanVal                                     *WorkspaceSettingV2BooleanVal                                     `pulumi:"booleanVal"`
-	DefaultDataSecurityMode                        *WorkspaceSettingV2DefaultDataSecurityMode                        `pulumi:"defaultDataSecurityMode"`
 	EffectiveAibiDashboardEmbeddingAccessPolicy    *WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy    `pulumi:"effectiveAibiDashboardEmbeddingAccessPolicy"`
 	EffectiveAibiDashboardEmbeddingApprovedDomains *WorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomains `pulumi:"effectiveAibiDashboardEmbeddingApprovedDomains"`
 	EffectiveAutomaticClusterUpdateWorkspace       *WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspace       `pulumi:"effectiveAutomaticClusterUpdateWorkspace"`
 	// (BooleanMessage)
-	EffectiveBooleanVal              *WorkspaceSettingV2EffectiveBooleanVal              `pulumi:"effectiveBooleanVal"`
-	EffectiveDefaultDataSecurityMode *WorkspaceSettingV2EffectiveDefaultDataSecurityMode `pulumi:"effectiveDefaultDataSecurityMode"`
+	EffectiveBooleanVal *WorkspaceSettingV2EffectiveBooleanVal `pulumi:"effectiveBooleanVal"`
 	// (IntegerMessage)
 	EffectiveIntegerVal              *WorkspaceSettingV2EffectiveIntegerVal              `pulumi:"effectiveIntegerVal"`
 	EffectivePersonalCompute         *WorkspaceSettingV2EffectivePersonalCompute         `pulumi:"effectivePersonalCompute"`
@@ -115,23 +145,18 @@ type workspaceSettingV2State struct {
 	PersonalCompute         *WorkspaceSettingV2PersonalCompute         `pulumi:"personalCompute"`
 	RestrictWorkspaceAdmins *WorkspaceSettingV2RestrictWorkspaceAdmins `pulumi:"restrictWorkspaceAdmins"`
 	StringVal               *WorkspaceSettingV2StringVal               `pulumi:"stringVal"`
-	// Workspace ID of the resource
-	WorkspaceId *string `pulumi:"workspaceId"`
 }
 
 type WorkspaceSettingV2State struct {
-	AibiDashboardEmbeddingAccessPolicy    WorkspaceSettingV2AibiDashboardEmbeddingAccessPolicyPtrInput
-	AibiDashboardEmbeddingApprovedDomains WorkspaceSettingV2AibiDashboardEmbeddingApprovedDomainsPtrInput
-	// todo: Mark these Public after onboarded to DSL
+	AibiDashboardEmbeddingAccessPolicy             WorkspaceSettingV2AibiDashboardEmbeddingAccessPolicyPtrInput
+	AibiDashboardEmbeddingApprovedDomains          WorkspaceSettingV2AibiDashboardEmbeddingApprovedDomainsPtrInput
 	AutomaticClusterUpdateWorkspace                WorkspaceSettingV2AutomaticClusterUpdateWorkspacePtrInput
 	BooleanVal                                     WorkspaceSettingV2BooleanValPtrInput
-	DefaultDataSecurityMode                        WorkspaceSettingV2DefaultDataSecurityModePtrInput
 	EffectiveAibiDashboardEmbeddingAccessPolicy    WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyPtrInput
 	EffectiveAibiDashboardEmbeddingApprovedDomains WorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsPtrInput
 	EffectiveAutomaticClusterUpdateWorkspace       WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspacePtrInput
 	// (BooleanMessage)
-	EffectiveBooleanVal              WorkspaceSettingV2EffectiveBooleanValPtrInput
-	EffectiveDefaultDataSecurityMode WorkspaceSettingV2EffectiveDefaultDataSecurityModePtrInput
+	EffectiveBooleanVal WorkspaceSettingV2EffectiveBooleanValPtrInput
 	// (IntegerMessage)
 	EffectiveIntegerVal              WorkspaceSettingV2EffectiveIntegerValPtrInput
 	EffectivePersonalCompute         WorkspaceSettingV2EffectivePersonalComputePtrInput
@@ -144,8 +169,6 @@ type WorkspaceSettingV2State struct {
 	PersonalCompute         WorkspaceSettingV2PersonalComputePtrInput
 	RestrictWorkspaceAdmins WorkspaceSettingV2RestrictWorkspaceAdminsPtrInput
 	StringVal               WorkspaceSettingV2StringValPtrInput
-	// Workspace ID of the resource
-	WorkspaceId pulumi.StringPtrInput
 }
 
 func (WorkspaceSettingV2State) ElementType() reflect.Type {
@@ -153,16 +176,13 @@ func (WorkspaceSettingV2State) ElementType() reflect.Type {
 }
 
 type workspaceSettingV2Args struct {
-	AibiDashboardEmbeddingAccessPolicy    *WorkspaceSettingV2AibiDashboardEmbeddingAccessPolicy    `pulumi:"aibiDashboardEmbeddingAccessPolicy"`
-	AibiDashboardEmbeddingApprovedDomains *WorkspaceSettingV2AibiDashboardEmbeddingApprovedDomains `pulumi:"aibiDashboardEmbeddingApprovedDomains"`
-	// todo: Mark these Public after onboarded to DSL
+	AibiDashboardEmbeddingAccessPolicy             *WorkspaceSettingV2AibiDashboardEmbeddingAccessPolicy             `pulumi:"aibiDashboardEmbeddingAccessPolicy"`
+	AibiDashboardEmbeddingApprovedDomains          *WorkspaceSettingV2AibiDashboardEmbeddingApprovedDomains          `pulumi:"aibiDashboardEmbeddingApprovedDomains"`
 	AutomaticClusterUpdateWorkspace                *WorkspaceSettingV2AutomaticClusterUpdateWorkspace                `pulumi:"automaticClusterUpdateWorkspace"`
 	BooleanVal                                     *WorkspaceSettingV2BooleanVal                                     `pulumi:"booleanVal"`
-	DefaultDataSecurityMode                        *WorkspaceSettingV2DefaultDataSecurityMode                        `pulumi:"defaultDataSecurityMode"`
 	EffectiveAibiDashboardEmbeddingAccessPolicy    *WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy    `pulumi:"effectiveAibiDashboardEmbeddingAccessPolicy"`
 	EffectiveAibiDashboardEmbeddingApprovedDomains *WorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomains `pulumi:"effectiveAibiDashboardEmbeddingApprovedDomains"`
 	EffectiveAutomaticClusterUpdateWorkspace       *WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspace       `pulumi:"effectiveAutomaticClusterUpdateWorkspace"`
-	EffectiveDefaultDataSecurityMode               *WorkspaceSettingV2EffectiveDefaultDataSecurityMode               `pulumi:"effectiveDefaultDataSecurityMode"`
 	EffectivePersonalCompute                       *WorkspaceSettingV2EffectivePersonalCompute                       `pulumi:"effectivePersonalCompute"`
 	EffectiveRestrictWorkspaceAdmins               *WorkspaceSettingV2EffectiveRestrictWorkspaceAdmins               `pulumi:"effectiveRestrictWorkspaceAdmins"`
 	IntegerVal                                     *WorkspaceSettingV2IntegerVal                                     `pulumi:"integerVal"`
@@ -171,22 +191,17 @@ type workspaceSettingV2Args struct {
 	PersonalCompute         *WorkspaceSettingV2PersonalCompute         `pulumi:"personalCompute"`
 	RestrictWorkspaceAdmins *WorkspaceSettingV2RestrictWorkspaceAdmins `pulumi:"restrictWorkspaceAdmins"`
 	StringVal               *WorkspaceSettingV2StringVal               `pulumi:"stringVal"`
-	// Workspace ID of the resource
-	WorkspaceId *string `pulumi:"workspaceId"`
 }
 
 // The set of arguments for constructing a WorkspaceSettingV2 resource.
 type WorkspaceSettingV2Args struct {
-	AibiDashboardEmbeddingAccessPolicy    WorkspaceSettingV2AibiDashboardEmbeddingAccessPolicyPtrInput
-	AibiDashboardEmbeddingApprovedDomains WorkspaceSettingV2AibiDashboardEmbeddingApprovedDomainsPtrInput
-	// todo: Mark these Public after onboarded to DSL
+	AibiDashboardEmbeddingAccessPolicy             WorkspaceSettingV2AibiDashboardEmbeddingAccessPolicyPtrInput
+	AibiDashboardEmbeddingApprovedDomains          WorkspaceSettingV2AibiDashboardEmbeddingApprovedDomainsPtrInput
 	AutomaticClusterUpdateWorkspace                WorkspaceSettingV2AutomaticClusterUpdateWorkspacePtrInput
 	BooleanVal                                     WorkspaceSettingV2BooleanValPtrInput
-	DefaultDataSecurityMode                        WorkspaceSettingV2DefaultDataSecurityModePtrInput
 	EffectiveAibiDashboardEmbeddingAccessPolicy    WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyPtrInput
 	EffectiveAibiDashboardEmbeddingApprovedDomains WorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsPtrInput
 	EffectiveAutomaticClusterUpdateWorkspace       WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspacePtrInput
-	EffectiveDefaultDataSecurityMode               WorkspaceSettingV2EffectiveDefaultDataSecurityModePtrInput
 	EffectivePersonalCompute                       WorkspaceSettingV2EffectivePersonalComputePtrInput
 	EffectiveRestrictWorkspaceAdmins               WorkspaceSettingV2EffectiveRestrictWorkspaceAdminsPtrInput
 	IntegerVal                                     WorkspaceSettingV2IntegerValPtrInput
@@ -195,8 +210,6 @@ type WorkspaceSettingV2Args struct {
 	PersonalCompute         WorkspaceSettingV2PersonalComputePtrInput
 	RestrictWorkspaceAdmins WorkspaceSettingV2RestrictWorkspaceAdminsPtrInput
 	StringVal               WorkspaceSettingV2StringValPtrInput
-	// Workspace ID of the resource
-	WorkspaceId pulumi.StringPtrInput
 }
 
 func (WorkspaceSettingV2Args) ElementType() reflect.Type {
@@ -298,7 +311,6 @@ func (o WorkspaceSettingV2Output) AibiDashboardEmbeddingApprovedDomains() Worksp
 	}).(WorkspaceSettingV2AibiDashboardEmbeddingApprovedDomainsPtrOutput)
 }
 
-// todo: Mark these Public after onboarded to DSL
 func (o WorkspaceSettingV2Output) AutomaticClusterUpdateWorkspace() WorkspaceSettingV2AutomaticClusterUpdateWorkspacePtrOutput {
 	return o.ApplyT(func(v *WorkspaceSettingV2) WorkspaceSettingV2AutomaticClusterUpdateWorkspacePtrOutput {
 		return v.AutomaticClusterUpdateWorkspace
@@ -307,12 +319,6 @@ func (o WorkspaceSettingV2Output) AutomaticClusterUpdateWorkspace() WorkspaceSet
 
 func (o WorkspaceSettingV2Output) BooleanVal() WorkspaceSettingV2BooleanValPtrOutput {
 	return o.ApplyT(func(v *WorkspaceSettingV2) WorkspaceSettingV2BooleanValPtrOutput { return v.BooleanVal }).(WorkspaceSettingV2BooleanValPtrOutput)
-}
-
-func (o WorkspaceSettingV2Output) DefaultDataSecurityMode() WorkspaceSettingV2DefaultDataSecurityModePtrOutput {
-	return o.ApplyT(func(v *WorkspaceSettingV2) WorkspaceSettingV2DefaultDataSecurityModePtrOutput {
-		return v.DefaultDataSecurityMode
-	}).(WorkspaceSettingV2DefaultDataSecurityModePtrOutput)
 }
 
 func (o WorkspaceSettingV2Output) EffectiveAibiDashboardEmbeddingAccessPolicy() WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyPtrOutput {
@@ -336,12 +342,6 @@ func (o WorkspaceSettingV2Output) EffectiveAutomaticClusterUpdateWorkspace() Wor
 // (BooleanMessage)
 func (o WorkspaceSettingV2Output) EffectiveBooleanVal() WorkspaceSettingV2EffectiveBooleanValOutput {
 	return o.ApplyT(func(v *WorkspaceSettingV2) WorkspaceSettingV2EffectiveBooleanValOutput { return v.EffectiveBooleanVal }).(WorkspaceSettingV2EffectiveBooleanValOutput)
-}
-
-func (o WorkspaceSettingV2Output) EffectiveDefaultDataSecurityMode() WorkspaceSettingV2EffectiveDefaultDataSecurityModePtrOutput {
-	return o.ApplyT(func(v *WorkspaceSettingV2) WorkspaceSettingV2EffectiveDefaultDataSecurityModePtrOutput {
-		return v.EffectiveDefaultDataSecurityMode
-	}).(WorkspaceSettingV2EffectiveDefaultDataSecurityModePtrOutput)
 }
 
 // (IntegerMessage)
@@ -387,11 +387,6 @@ func (o WorkspaceSettingV2Output) RestrictWorkspaceAdmins() WorkspaceSettingV2Re
 
 func (o WorkspaceSettingV2Output) StringVal() WorkspaceSettingV2StringValPtrOutput {
 	return o.ApplyT(func(v *WorkspaceSettingV2) WorkspaceSettingV2StringValPtrOutput { return v.StringVal }).(WorkspaceSettingV2StringValPtrOutput)
-}
-
-// Workspace ID of the resource
-func (o WorkspaceSettingV2Output) WorkspaceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WorkspaceSettingV2) pulumi.StringPtrOutput { return v.WorkspaceId }).(pulumi.StringPtrOutput)
 }
 
 type WorkspaceSettingV2ArrayOutput struct{ *pulumi.OutputState }

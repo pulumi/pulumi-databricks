@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -82,6 +84,7 @@ export function getJobs(args?: GetJobsArgs, opts?: pulumi.InvokeOptions): Promis
         "ids": args.ids,
         "jobNameContains": args.jobNameContains,
         "key": args.key,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -101,6 +104,10 @@ export interface GetJobsArgs {
      * Attribute to use for keys in the returned map of databricks.Job ids by. Possible values are `name` (default) or `id`. Setting to `id` uses the job ID as the map key, allowing duplicate job names.
      */
     key?: string;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: inputs.GetJobsProviderConfig;
 }
 
 /**
@@ -117,6 +124,7 @@ export interface GetJobsResult {
     readonly ids: {[key: string]: string};
     readonly jobNameContains?: string;
     readonly key?: string;
+    readonly providerConfig?: outputs.GetJobsProviderConfig;
 }
 /**
  * Retrieves a list of databricks.Job ids, that were created by Pulumi or manually, so that special handling could be applied.
@@ -196,6 +204,7 @@ export function getJobsOutput(args?: GetJobsOutputArgs, opts?: pulumi.InvokeOutp
         "ids": args.ids,
         "jobNameContains": args.jobNameContains,
         "key": args.key,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -215,4 +224,8 @@ export interface GetJobsOutputArgs {
      * Attribute to use for keys in the returned map of databricks.Job ids by. Possible values are `name` (default) or `id`. Setting to `id` uses the job ID as the map key, allowing duplicate job names.
      */
     key?: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.GetJobsProviderConfigArgs>;
 }

@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetClusterPolicyResult',
@@ -26,7 +28,7 @@ class GetClusterPolicyResult:
     """
     A collection of values returned by getClusterPolicy.
     """
-    def __init__(__self__, definition=None, description=None, id=None, is_default=None, max_clusters_per_user=None, name=None, policy_family_definition_overrides=None, policy_family_id=None):
+    def __init__(__self__, definition=None, description=None, id=None, is_default=None, max_clusters_per_user=None, name=None, policy_family_definition_overrides=None, policy_family_id=None, provider_config=None):
         if definition and not isinstance(definition, str):
             raise TypeError("Expected argument 'definition' to be a str")
         pulumi.set(__self__, "definition", definition)
@@ -51,6 +53,9 @@ class GetClusterPolicyResult:
         if policy_family_id and not isinstance(policy_family_id, str):
             raise TypeError("Expected argument 'policy_family_id' to be a str")
         pulumi.set(__self__, "policy_family_id", policy_family_id)
+        if provider_config and not isinstance(provider_config, dict):
+            raise TypeError("Expected argument 'provider_config' to be a dict")
+        pulumi.set(__self__, "provider_config", provider_config)
 
     @_builtins.property
     @pulumi.getter
@@ -113,6 +118,11 @@ class GetClusterPolicyResult:
         """
         return pulumi.get(self, "policy_family_id")
 
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional['outputs.GetClusterPolicyProviderConfigResult']:
+        return pulumi.get(self, "provider_config")
+
 
 class AwaitableGetClusterPolicyResult(GetClusterPolicyResult):
     # pylint: disable=using-constant-test
@@ -127,7 +137,8 @@ class AwaitableGetClusterPolicyResult(GetClusterPolicyResult):
             max_clusters_per_user=self.max_clusters_per_user,
             name=self.name,
             policy_family_definition_overrides=self.policy_family_definition_overrides,
-            policy_family_id=self.policy_family_id)
+            policy_family_id=self.policy_family_id,
+            provider_config=self.provider_config)
 
 
 def get_cluster_policy(definition: Optional[_builtins.str] = None,
@@ -138,6 +149,7 @@ def get_cluster_policy(definition: Optional[_builtins.str] = None,
                        name: Optional[_builtins.str] = None,
                        policy_family_definition_overrides: Optional[_builtins.str] = None,
                        policy_family_id: Optional[_builtins.str] = None,
+                       provider_config: Optional[Union['GetClusterPolicyProviderConfigArgs', 'GetClusterPolicyProviderConfigArgsDict']] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetClusterPolicyResult:
     """
     Retrieves information about databricks_cluster_policy.
@@ -165,6 +177,7 @@ def get_cluster_policy(definition: Optional[_builtins.str] = None,
     :param _builtins.str name: Name of the cluster policy. The cluster policy must exist before this resource can be planned.
     :param _builtins.str policy_family_definition_overrides: Policy definition JSON document expressed in Databricks [Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definitions).
     :param _builtins.str policy_family_id: ID of the policy family.
+    :param Union['GetClusterPolicyProviderConfigArgs', 'GetClusterPolicyProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     """
     __args__ = dict()
     __args__['definition'] = definition
@@ -175,6 +188,7 @@ def get_cluster_policy(definition: Optional[_builtins.str] = None,
     __args__['name'] = name
     __args__['policyFamilyDefinitionOverrides'] = policy_family_definition_overrides
     __args__['policyFamilyId'] = policy_family_id
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getClusterPolicy:getClusterPolicy', __args__, opts=opts, typ=GetClusterPolicyResult).value
 
@@ -186,7 +200,8 @@ def get_cluster_policy(definition: Optional[_builtins.str] = None,
         max_clusters_per_user=pulumi.get(__ret__, 'max_clusters_per_user'),
         name=pulumi.get(__ret__, 'name'),
         policy_family_definition_overrides=pulumi.get(__ret__, 'policy_family_definition_overrides'),
-        policy_family_id=pulumi.get(__ret__, 'policy_family_id'))
+        policy_family_id=pulumi.get(__ret__, 'policy_family_id'),
+        provider_config=pulumi.get(__ret__, 'provider_config'))
 def get_cluster_policy_output(definition: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                               description: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                               id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
@@ -195,6 +210,7 @@ def get_cluster_policy_output(definition: Optional[pulumi.Input[Optional[_builti
                               name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                               policy_family_definition_overrides: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                               policy_family_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                              provider_config: Optional[pulumi.Input[Optional[Union['GetClusterPolicyProviderConfigArgs', 'GetClusterPolicyProviderConfigArgsDict']]]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetClusterPolicyResult]:
     """
     Retrieves information about databricks_cluster_policy.
@@ -222,6 +238,7 @@ def get_cluster_policy_output(definition: Optional[pulumi.Input[Optional[_builti
     :param _builtins.str name: Name of the cluster policy. The cluster policy must exist before this resource can be planned.
     :param _builtins.str policy_family_definition_overrides: Policy definition JSON document expressed in Databricks [Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definitions).
     :param _builtins.str policy_family_id: ID of the policy family.
+    :param Union['GetClusterPolicyProviderConfigArgs', 'GetClusterPolicyProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     """
     __args__ = dict()
     __args__['definition'] = definition
@@ -232,6 +249,7 @@ def get_cluster_policy_output(definition: Optional[pulumi.Input[Optional[_builti
     __args__['name'] = name
     __args__['policyFamilyDefinitionOverrides'] = policy_family_definition_overrides
     __args__['policyFamilyId'] = policy_family_id
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getClusterPolicy:getClusterPolicy', __args__, opts=opts, typ=GetClusterPolicyResult)
     return __ret__.apply(lambda __response__: GetClusterPolicyResult(
@@ -242,4 +260,5 @@ def get_cluster_policy_output(definition: Optional[pulumi.Input[Optional[_builti
         max_clusters_per_user=pulumi.get(__response__, 'max_clusters_per_user'),
         name=pulumi.get(__response__, 'name'),
         policy_family_definition_overrides=pulumi.get(__response__, 'policy_family_definition_overrides'),
-        policy_family_id=pulumi.get(__response__, 'policy_family_id')))
+        policy_family_id=pulumi.get(__response__, 'policy_family_id'),
+        provider_config=pulumi.get(__response__, 'provider_config')))

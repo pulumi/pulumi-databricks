@@ -11,12 +11,21 @@ namespace Pulumi.Databricks
 {
     public static class GetMaterializedFeaturesFeatureTags
     {
-        public static Task<GetMaterializedFeaturesFeatureTagsResult> InvokeAsync(GetMaterializedFeaturesFeatureTagsArgs? args = null, InvokeOptions? options = null)
+        /// <summary>
+        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// </summary>
+        public static Task<GetMaterializedFeaturesFeatureTagsResult> InvokeAsync(GetMaterializedFeaturesFeatureTagsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetMaterializedFeaturesFeatureTagsResult>("databricks:index/getMaterializedFeaturesFeatureTags:getMaterializedFeaturesFeatureTags", args ?? new GetMaterializedFeaturesFeatureTagsArgs(), options.WithDefaults());
 
-        public static Output<GetMaterializedFeaturesFeatureTagsResult> Invoke(GetMaterializedFeaturesFeatureTagsInvokeArgs? args = null, InvokeOptions? options = null)
+        /// <summary>
+        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// </summary>
+        public static Output<GetMaterializedFeaturesFeatureTagsResult> Invoke(GetMaterializedFeaturesFeatureTagsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetMaterializedFeaturesFeatureTagsResult>("databricks:index/getMaterializedFeaturesFeatureTags:getMaterializedFeaturesFeatureTags", args ?? new GetMaterializedFeaturesFeatureTagsInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// </summary>
         public static Output<GetMaterializedFeaturesFeatureTagsResult> Invoke(GetMaterializedFeaturesFeatureTagsInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetMaterializedFeaturesFeatureTagsResult>("databricks:index/getMaterializedFeaturesFeatureTags:getMaterializedFeaturesFeatureTags", args ?? new GetMaterializedFeaturesFeatureTagsInvokeArgs(), options.WithDefaults());
     }
@@ -24,11 +33,17 @@ namespace Pulumi.Databricks
 
     public sealed class GetMaterializedFeaturesFeatureTagsArgs : global::Pulumi.InvokeArgs
     {
+        [Input("featureName", required: true)]
+        public string FeatureName { get; set; } = null!;
+
         /// <summary>
-        /// Workspace ID of the resource
+        /// The maximum number of results to return
         /// </summary>
-        [Input("workspaceId")]
-        public string? WorkspaceId { get; set; }
+        [Input("pageSize")]
+        public int? PageSize { get; set; }
+
+        [Input("tableName", required: true)]
+        public string TableName { get; set; } = null!;
 
         public GetMaterializedFeaturesFeatureTagsArgs()
         {
@@ -38,11 +53,17 @@ namespace Pulumi.Databricks
 
     public sealed class GetMaterializedFeaturesFeatureTagsInvokeArgs : global::Pulumi.InvokeArgs
     {
+        [Input("featureName", required: true)]
+        public Input<string> FeatureName { get; set; } = null!;
+
         /// <summary>
-        /// Workspace ID of the resource
+        /// The maximum number of results to return
         /// </summary>
-        [Input("workspaceId")]
-        public Input<string>? WorkspaceId { get; set; }
+        [Input("pageSize")]
+        public Input<int>? PageSize { get; set; }
+
+        [Input("tableName", required: true)]
+        public Input<string> TableName { get; set; } = null!;
 
         public GetMaterializedFeaturesFeatureTagsInvokeArgs()
         {
@@ -54,24 +75,32 @@ namespace Pulumi.Databricks
     [OutputType]
     public sealed class GetMaterializedFeaturesFeatureTagsResult
     {
+        public readonly string FeatureName;
         public readonly ImmutableArray<Outputs.GetMaterializedFeaturesFeatureTagsFeatureTagResult> FeatureTags;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        public readonly string? WorkspaceId;
+        public readonly int? PageSize;
+        public readonly string TableName;
 
         [OutputConstructor]
         private GetMaterializedFeaturesFeatureTagsResult(
+            string featureName,
+
             ImmutableArray<Outputs.GetMaterializedFeaturesFeatureTagsFeatureTagResult> featureTags,
 
             string id,
 
-            string? workspaceId)
+            int? pageSize,
+
+            string tableName)
         {
+            FeatureName = featureName;
             FeatureTags = featureTags;
             Id = id;
-            WorkspaceId = workspaceId;
+            PageSize = pageSize;
+            TableName = tableName;
         }
     }
 }

@@ -130,6 +130,9 @@ namespace Pulumi.Databricks.Inputs
             set => _tableConstraints = value;
         }
 
+        /// <summary>
+        /// The unique identifier of the table.
+        /// </summary>
         [Input("tableId")]
         public Input<string>? TableId { get; set; }
 

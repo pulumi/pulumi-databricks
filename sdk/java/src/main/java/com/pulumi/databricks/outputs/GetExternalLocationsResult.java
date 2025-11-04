@@ -4,10 +4,13 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetExternalLocationsProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetExternalLocationsResult {
@@ -21,6 +24,7 @@ public final class GetExternalLocationsResult {
      * 
      */
     private List<String> names;
+    private @Nullable GetExternalLocationsProviderConfig providerConfig;
 
     private GetExternalLocationsResult() {}
     /**
@@ -37,6 +41,9 @@ public final class GetExternalLocationsResult {
     public List<String> names() {
         return this.names;
     }
+    public Optional<GetExternalLocationsProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -49,11 +56,13 @@ public final class GetExternalLocationsResult {
     public static final class Builder {
         private String id;
         private List<String> names;
+        private @Nullable GetExternalLocationsProviderConfig providerConfig;
         public Builder() {}
         public Builder(GetExternalLocationsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
     	      this.names = defaults.names;
+    	      this.providerConfig = defaults.providerConfig;
         }
 
         @CustomType.Setter
@@ -75,10 +84,17 @@ public final class GetExternalLocationsResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
+        public Builder providerConfig(@Nullable GetExternalLocationsProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
+            return this;
+        }
         public GetExternalLocationsResult build() {
             final var _resultValue = new GetExternalLocationsResult();
             _resultValue.id = id;
             _resultValue.names = names;
+            _resultValue.providerConfig = providerConfig;
             return _resultValue;
         }
     }

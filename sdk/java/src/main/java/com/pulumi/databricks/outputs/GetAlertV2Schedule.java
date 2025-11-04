@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -21,14 +22,14 @@ public final class GetAlertV2Schedule {
      * Should use the quartz format described here: http://www.quartz-scheduler.org/documentation/quartz-2.1.7/tutorials/tutorial-lesson-06.html
      * 
      */
-    private @Nullable String quartzCronSchedule;
+    private String quartzCronSchedule;
     /**
      * @return (string) - A Java timezone id. The schedule will be resolved using this timezone.
      * This will be combined with the quartzCronSchedule to determine the schedule.
      * See https://docs.databricks.com/sql/language-manual/sql-ref-syntax-aux-conf-mgmt-set-timezone.html for details
      * 
      */
-    private @Nullable String timezoneId;
+    private String timezoneId;
 
     private GetAlertV2Schedule() {}
     /**
@@ -43,8 +44,8 @@ public final class GetAlertV2Schedule {
      * Should use the quartz format described here: http://www.quartz-scheduler.org/documentation/quartz-2.1.7/tutorials/tutorial-lesson-06.html
      * 
      */
-    public Optional<String> quartzCronSchedule() {
-        return Optional.ofNullable(this.quartzCronSchedule);
+    public String quartzCronSchedule() {
+        return this.quartzCronSchedule;
     }
     /**
      * @return (string) - A Java timezone id. The schedule will be resolved using this timezone.
@@ -52,8 +53,8 @@ public final class GetAlertV2Schedule {
      * See https://docs.databricks.com/sql/language-manual/sql-ref-syntax-aux-conf-mgmt-set-timezone.html for details
      * 
      */
-    public Optional<String> timezoneId() {
-        return Optional.ofNullable(this.timezoneId);
+    public String timezoneId() {
+        return this.timezoneId;
     }
 
     public static Builder builder() {
@@ -66,8 +67,8 @@ public final class GetAlertV2Schedule {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String pauseStatus;
-        private @Nullable String quartzCronSchedule;
-        private @Nullable String timezoneId;
+        private String quartzCronSchedule;
+        private String timezoneId;
         public Builder() {}
         public Builder(GetAlertV2Schedule defaults) {
     	      Objects.requireNonNull(defaults);
@@ -83,14 +84,18 @@ public final class GetAlertV2Schedule {
             return this;
         }
         @CustomType.Setter
-        public Builder quartzCronSchedule(@Nullable String quartzCronSchedule) {
-
+        public Builder quartzCronSchedule(String quartzCronSchedule) {
+            if (quartzCronSchedule == null) {
+              throw new MissingRequiredPropertyException("GetAlertV2Schedule", "quartzCronSchedule");
+            }
             this.quartzCronSchedule = quartzCronSchedule;
             return this;
         }
         @CustomType.Setter
-        public Builder timezoneId(@Nullable String timezoneId) {
-
+        public Builder timezoneId(String timezoneId) {
+            if (timezoneId == null) {
+              throw new MissingRequiredPropertyException("GetAlertV2Schedule", "timezoneId");
+            }
             this.timezoneId = timezoneId;
             return this;
         }

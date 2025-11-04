@@ -7,6 +7,8 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
  * Lakebase Synced Database Tables are Postgres tables automatically synced from a source table inside Unity Catalog.
  * They can be used to serve realtime queries without the operational overhead of managing ETL pipelines.
  *
@@ -28,6 +30,15 @@ import * as utilities from "./utilities";
  * This example creates two Synced Database Tables. The first one specifies a new pipeline spec,
  * which generates a new pipeline. The second one utilizes the pipeline ID of the first table.
  *
+ * ### Creating a Synced Database Table with a custom Jobs schedule
+ *
+ * This example creates a Synced Database Table and customizes the pipeline schedule. It assumes you already have
+ *
+ * - A database instance named `"my-database-instance"`
+ * - A standard catalog named `"myStandardCatalog"`
+ * - A schema in the standard catalog named `"default"`
+ * - A source delta table named `"source_delta.schema.customer"` with the primary key `"cCustkey"`
+ *
  * ## Import
  *
  * As of Pulumi v1.5, resources can be imported through configuration.
@@ -45,7 +56,7 @@ import * as utilities from "./utilities";
  * If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
  *
  * ```sh
- * $ pulumi import databricks:index/databaseSyncedDatabaseTable:DatabaseSyncedDatabaseTable databricks_database_synced_database_table "name"
+ * $ pulumi import databricks:index/databaseSyncedDatabaseTable:DatabaseSyncedDatabaseTable this "name"
  * ```
  */
 export class DatabaseSyncedDatabaseTable extends pulumi.CustomResource {
@@ -120,10 +131,6 @@ export class DatabaseSyncedDatabaseTable extends pulumi.CustomResource {
      * may be in "PROVISIONING" as it runs asynchronously). Possible values are: `ACTIVE`, `DEGRADED`, `DELETING`, `FAILED`, `PROVISIONING`, `UPDATING`
      */
     declare public /*out*/ readonly unityCatalogProvisioningState: pulumi.Output<string>;
-    /**
-     * Workspace ID of the resource
-     */
-    declare public readonly workspaceId: pulumi.Output<string | undefined>;
 
     /**
      * Create a DatabaseSyncedDatabaseTable resource with the given unique name, arguments, and options.
@@ -146,14 +153,12 @@ export class DatabaseSyncedDatabaseTable extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["spec"] = state?.spec;
             resourceInputs["unityCatalogProvisioningState"] = state?.unityCatalogProvisioningState;
-            resourceInputs["workspaceId"] = state?.workspaceId;
         } else {
             const args = argsOrState as DatabaseSyncedDatabaseTableArgs | undefined;
             resourceInputs["databaseInstanceName"] = args?.databaseInstanceName;
             resourceInputs["logicalDatabaseName"] = args?.logicalDatabaseName;
             resourceInputs["name"] = args?.name;
             resourceInputs["spec"] = args?.spec;
-            resourceInputs["workspaceId"] = args?.workspaceId;
             resourceInputs["dataSynchronizationStatus"] = undefined /*out*/;
             resourceInputs["effectiveDatabaseInstanceName"] = undefined /*out*/;
             resourceInputs["effectiveLogicalDatabaseName"] = undefined /*out*/;
@@ -212,10 +217,6 @@ export interface DatabaseSyncedDatabaseTableState {
      * may be in "PROVISIONING" as it runs asynchronously). Possible values are: `ACTIVE`, `DEGRADED`, `DELETING`, `FAILED`, `PROVISIONING`, `UPDATING`
      */
     unityCatalogProvisioningState?: pulumi.Input<string>;
-    /**
-     * Workspace ID of the resource
-     */
-    workspaceId?: pulumi.Input<string>;
 }
 
 /**
@@ -247,8 +248,4 @@ export interface DatabaseSyncedDatabaseTableArgs {
      */
     name?: pulumi.Input<string>;
     spec?: pulumi.Input<inputs.DatabaseSyncedDatabaseTableSpec>;
-    /**
-     * Workspace ID of the resource
-     */
-    workspaceId?: pulumi.Input<string>;
 }

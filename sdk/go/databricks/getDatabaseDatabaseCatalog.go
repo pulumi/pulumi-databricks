@@ -11,6 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+//
 // This data source can be used to get a single Database Catalog.
 //
 // ## Example Usage
@@ -52,16 +54,8 @@ func LookupDatabaseDatabaseCatalog(ctx *pulumi.Context, args *LookupDatabaseData
 
 // A collection of arguments for invoking getDatabaseDatabaseCatalog.
 type LookupDatabaseDatabaseCatalogArgs struct {
-	// (boolean)
-	CreateDatabaseIfNotExists *bool `pulumi:"createDatabaseIfNotExists"`
-	// (string) - The name of the DatabaseInstance housing the database
-	DatabaseInstanceName string `pulumi:"databaseInstanceName"`
-	// (string) - The name of the database (in a instance) associated with the catalog
-	DatabaseName string `pulumi:"databaseName"`
 	// The name of the catalog in UC
 	Name string `pulumi:"name"`
-	// Workspace ID of the resource
-	WorkspaceId *string `pulumi:"workspaceId"`
 }
 
 // A collection of values returned by getDatabaseDatabaseCatalog.
@@ -77,8 +71,7 @@ type LookupDatabaseDatabaseCatalogResult struct {
 	// (string) - The name of the catalog in UC
 	Name string `pulumi:"name"`
 	// (string)
-	Uid         string  `pulumi:"uid"`
-	WorkspaceId *string `pulumi:"workspaceId"`
+	Uid string `pulumi:"uid"`
 }
 
 func LookupDatabaseDatabaseCatalogOutput(ctx *pulumi.Context, args LookupDatabaseDatabaseCatalogOutputArgs, opts ...pulumi.InvokeOption) LookupDatabaseDatabaseCatalogResultOutput {
@@ -92,16 +85,8 @@ func LookupDatabaseDatabaseCatalogOutput(ctx *pulumi.Context, args LookupDatabas
 
 // A collection of arguments for invoking getDatabaseDatabaseCatalog.
 type LookupDatabaseDatabaseCatalogOutputArgs struct {
-	// (boolean)
-	CreateDatabaseIfNotExists pulumi.BoolPtrInput `pulumi:"createDatabaseIfNotExists"`
-	// (string) - The name of the DatabaseInstance housing the database
-	DatabaseInstanceName pulumi.StringInput `pulumi:"databaseInstanceName"`
-	// (string) - The name of the database (in a instance) associated with the catalog
-	DatabaseName pulumi.StringInput `pulumi:"databaseName"`
 	// The name of the catalog in UC
 	Name pulumi.StringInput `pulumi:"name"`
-	// Workspace ID of the resource
-	WorkspaceId pulumi.StringPtrInput `pulumi:"workspaceId"`
 }
 
 func (LookupDatabaseDatabaseCatalogOutputArgs) ElementType() reflect.Type {
@@ -151,10 +136,6 @@ func (o LookupDatabaseDatabaseCatalogResultOutput) Name() pulumi.StringOutput {
 // (string)
 func (o LookupDatabaseDatabaseCatalogResultOutput) Uid() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseDatabaseCatalogResult) string { return v.Uid }).(pulumi.StringOutput)
-}
-
-func (o LookupDatabaseDatabaseCatalogResultOutput) WorkspaceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupDatabaseDatabaseCatalogResult) *string { return v.WorkspaceId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

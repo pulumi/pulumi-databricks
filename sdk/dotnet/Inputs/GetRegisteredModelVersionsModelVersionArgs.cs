@@ -24,9 +24,6 @@ namespace Pulumi.Databricks.Inputs
             set => _aliases = value;
         }
 
-        [Input("browseOnly")]
-        public Input<bool>? BrowseOnly { get; set; }
-
         /// <summary>
         /// The name of the catalog where the schema and the registered model reside.
         /// </summary>

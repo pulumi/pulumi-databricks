@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.AppResourceDatabase;
+import com.pulumi.databricks.outputs.AppResourceGenieSpace;
 import com.pulumi.databricks.outputs.AppResourceJob;
 import com.pulumi.databricks.outputs.AppResourceSecret;
 import com.pulumi.databricks.outputs.AppResourceServingEndpoint;
@@ -30,6 +31,11 @@ public final class AppResource {
      * 
      */
     private @Nullable String description;
+    /**
+     * @return attribute
+     * 
+     */
+    private @Nullable AppResourceGenieSpace genieSpace;
     /**
      * @return attribute
      * 
@@ -77,6 +83,13 @@ public final class AppResource {
      */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
+    }
+    /**
+     * @return attribute
+     * 
+     */
+    public Optional<AppResourceGenieSpace> genieSpace() {
+        return Optional.ofNullable(this.genieSpace);
     }
     /**
      * @return attribute
@@ -132,6 +145,7 @@ public final class AppResource {
     public static final class Builder {
         private @Nullable AppResourceDatabase database;
         private @Nullable String description;
+        private @Nullable AppResourceGenieSpace genieSpace;
         private @Nullable AppResourceJob job;
         private String name;
         private @Nullable AppResourceSecret secret;
@@ -143,6 +157,7 @@ public final class AppResource {
     	      Objects.requireNonNull(defaults);
     	      this.database = defaults.database;
     	      this.description = defaults.description;
+    	      this.genieSpace = defaults.genieSpace;
     	      this.job = defaults.job;
     	      this.name = defaults.name;
     	      this.secret = defaults.secret;
@@ -161,6 +176,12 @@ public final class AppResource {
         public Builder description(@Nullable String description) {
 
             this.description = description;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder genieSpace(@Nullable AppResourceGenieSpace genieSpace) {
+
+            this.genieSpace = genieSpace;
             return this;
         }
         @CustomType.Setter
@@ -205,6 +226,7 @@ public final class AppResource {
             final var _resultValue = new AppResource();
             _resultValue.database = database;
             _resultValue.description = description;
+            _resultValue.genieSpace = genieSpace;
             _resultValue.job = job;
             _resultValue.name = name;
             _resultValue.secret = secret;

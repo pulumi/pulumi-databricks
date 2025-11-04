@@ -6,6 +6,7 @@ package com.pulumi.databricks.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetClusterClusterInfoSpecLibraryCran;
 import com.pulumi.databricks.outputs.GetClusterClusterInfoSpecLibraryMaven;
+import com.pulumi.databricks.outputs.GetClusterClusterInfoSpecLibraryProviderConfig;
 import com.pulumi.databricks.outputs.GetClusterClusterInfoSpecLibraryPypi;
 import java.lang.String;
 import java.util.Objects;
@@ -24,6 +25,11 @@ public final class GetClusterClusterInfoSpecLibrary {
     private @Nullable String egg;
     private @Nullable String jar;
     private @Nullable GetClusterClusterInfoSpecLibraryMaven maven;
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    private @Nullable GetClusterClusterInfoSpecLibraryProviderConfig providerConfig;
     private @Nullable GetClusterClusterInfoSpecLibraryPypi pypi;
     private @Nullable String requirements;
     private @Nullable String whl;
@@ -46,6 +52,13 @@ public final class GetClusterClusterInfoSpecLibrary {
     }
     public Optional<GetClusterClusterInfoSpecLibraryMaven> maven() {
         return Optional.ofNullable(this.maven);
+    }
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Optional<GetClusterClusterInfoSpecLibraryProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
     }
     public Optional<GetClusterClusterInfoSpecLibraryPypi> pypi() {
         return Optional.ofNullable(this.pypi);
@@ -70,6 +83,7 @@ public final class GetClusterClusterInfoSpecLibrary {
         private @Nullable String egg;
         private @Nullable String jar;
         private @Nullable GetClusterClusterInfoSpecLibraryMaven maven;
+        private @Nullable GetClusterClusterInfoSpecLibraryProviderConfig providerConfig;
         private @Nullable GetClusterClusterInfoSpecLibraryPypi pypi;
         private @Nullable String requirements;
         private @Nullable String whl;
@@ -80,6 +94,7 @@ public final class GetClusterClusterInfoSpecLibrary {
     	      this.egg = defaults.egg;
     	      this.jar = defaults.jar;
     	      this.maven = defaults.maven;
+    	      this.providerConfig = defaults.providerConfig;
     	      this.pypi = defaults.pypi;
     	      this.requirements = defaults.requirements;
     	      this.whl = defaults.whl;
@@ -110,6 +125,12 @@ public final class GetClusterClusterInfoSpecLibrary {
             return this;
         }
         @CustomType.Setter
+        public Builder providerConfig(@Nullable GetClusterClusterInfoSpecLibraryProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder pypi(@Nullable GetClusterClusterInfoSpecLibraryPypi pypi) {
 
             this.pypi = pypi;
@@ -133,6 +154,7 @@ public final class GetClusterClusterInfoSpecLibrary {
             _resultValue.egg = egg;
             _resultValue.jar = jar;
             _resultValue.maven = maven;
+            _resultValue.providerConfig = providerConfig;
             _resultValue.pypi = pypi;
             _resultValue.requirements = requirements;
             _resultValue.whl = whl;

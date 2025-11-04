@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.GetFunctionsFunction;
+import com.pulumi.databricks.inputs.GetFunctionsProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
@@ -63,6 +64,13 @@ public final class GetFunctionsPlainArgs extends com.pulumi.resources.InvokeArgs
         return Optional.ofNullable(this.includeBrowse);
     }
 
+    @Import(name="providerConfig")
+    private @Nullable GetFunctionsProviderConfig providerConfig;
+
+    public Optional<GetFunctionsProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     /**
      * Name of databricks_schema.
      * 
@@ -84,6 +92,7 @@ public final class GetFunctionsPlainArgs extends com.pulumi.resources.InvokeArgs
         this.catalogName = $.catalogName;
         this.functions = $.functions;
         this.includeBrowse = $.includeBrowse;
+        this.providerConfig = $.providerConfig;
         this.schemaName = $.schemaName;
     }
 
@@ -145,6 +154,11 @@ public final class GetFunctionsPlainArgs extends com.pulumi.resources.InvokeArgs
          */
         public Builder includeBrowse(@Nullable Boolean includeBrowse) {
             $.includeBrowse = includeBrowse;
+            return this;
+        }
+
+        public Builder providerConfig(@Nullable GetFunctionsProviderConfig providerConfig) {
+            $.providerConfig = providerConfig;
             return this;
         }
 

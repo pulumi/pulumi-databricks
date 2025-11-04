@@ -27,9 +27,17 @@ public final class CatalogState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.browseOnly);
     }
 
+    /**
+     * the type of the catalog.
+     * 
+     */
     @Import(name="catalogType")
     private @Nullable Output<String> catalogType;
 
+    /**
+     * @return the type of the catalog.
+     * 
+     */
     public Optional<Output<String>> catalogType() {
         return Optional.ofNullable(this.catalogType);
     }
@@ -64,16 +72,32 @@ public final class CatalogState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.connectionName);
     }
 
+    /**
+     * time at which this catalog was created, in epoch milliseconds.
+     * 
+     */
     @Import(name="createdAt")
     private @Nullable Output<Integer> createdAt;
 
+    /**
+     * @return time at which this catalog was created, in epoch milliseconds.
+     * 
+     */
     public Optional<Output<Integer>> createdAt() {
         return Optional.ofNullable(this.createdAt);
     }
 
+    /**
+     * username of catalog creator.
+     * 
+     */
     @Import(name="createdBy")
     private @Nullable Output<String> createdBy;
 
+    /**
+     * @return username of catalog creator.
+     * 
+     */
     public Optional<Output<String>> createdBy() {
         return Optional.ofNullable(this.createdBy);
     }
@@ -234,9 +258,17 @@ public final class CatalogState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.provisioningInfo);
     }
 
+    /**
+     * the type of Unity Catalog securable.
+     * 
+     */
     @Import(name="securableType")
     private @Nullable Output<String> securableType;
 
+    /**
+     * @return the type of Unity Catalog securable.
+     * 
+     */
     public Optional<Output<String>> securableType() {
         return Optional.ofNullable(this.securableType);
     }
@@ -256,9 +288,17 @@ public final class CatalogState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.shareName);
     }
 
+    /**
+     * effective storage Location URL (full path) for managed tables within catalog.
+     * 
+     */
     @Import(name="storageLocation")
     private @Nullable Output<String> storageLocation;
 
+    /**
+     * @return effective storage Location URL (full path) for managed tables within catalog.
+     * 
+     */
     public Optional<Output<String>> storageLocation() {
         return Optional.ofNullable(this.storageLocation);
     }
@@ -278,16 +318,32 @@ public final class CatalogState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.storageRoot);
     }
 
+    /**
+     * time at which this catalog was last modified, in epoch milliseconds..
+     * 
+     */
     @Import(name="updatedAt")
     private @Nullable Output<Integer> updatedAt;
 
+    /**
+     * @return time at which this catalog was last modified, in epoch milliseconds..
+     * 
+     */
     public Optional<Output<Integer>> updatedAt() {
         return Optional.ofNullable(this.updatedAt);
     }
 
+    /**
+     * username of user who last modified catalog.
+     * 
+     */
     @Import(name="updatedBy")
     private @Nullable Output<String> updatedBy;
 
+    /**
+     * @return username of user who last modified catalog.
+     * 
+     */
     public Optional<Output<String>> updatedBy() {
         return Optional.ofNullable(this.updatedBy);
     }
@@ -348,11 +404,23 @@ public final class CatalogState extends com.pulumi.resources.ResourceArgs {
             return browseOnly(Output.of(browseOnly));
         }
 
+        /**
+         * @param catalogType the type of the catalog.
+         * 
+         * @return builder
+         * 
+         */
         public Builder catalogType(@Nullable Output<String> catalogType) {
             $.catalogType = catalogType;
             return this;
         }
 
+        /**
+         * @param catalogType the type of the catalog.
+         * 
+         * @return builder
+         * 
+         */
         public Builder catalogType(String catalogType) {
             return catalogType(Output.of(catalogType));
         }
@@ -399,20 +467,44 @@ public final class CatalogState extends com.pulumi.resources.ResourceArgs {
             return connectionName(Output.of(connectionName));
         }
 
+        /**
+         * @param createdAt time at which this catalog was created, in epoch milliseconds.
+         * 
+         * @return builder
+         * 
+         */
         public Builder createdAt(@Nullable Output<Integer> createdAt) {
             $.createdAt = createdAt;
             return this;
         }
 
+        /**
+         * @param createdAt time at which this catalog was created, in epoch milliseconds.
+         * 
+         * @return builder
+         * 
+         */
         public Builder createdAt(Integer createdAt) {
             return createdAt(Output.of(createdAt));
         }
 
+        /**
+         * @param createdBy username of catalog creator.
+         * 
+         * @return builder
+         * 
+         */
         public Builder createdBy(@Nullable Output<String> createdBy) {
             $.createdBy = createdBy;
             return this;
         }
 
+        /**
+         * @param createdBy username of catalog creator.
+         * 
+         * @return builder
+         * 
+         */
         public Builder createdBy(String createdBy) {
             return createdBy(Output.of(createdBy));
         }
@@ -633,11 +725,23 @@ public final class CatalogState extends com.pulumi.resources.ResourceArgs {
             return provisioningInfo(Output.of(provisioningInfo));
         }
 
+        /**
+         * @param securableType the type of Unity Catalog securable.
+         * 
+         * @return builder
+         * 
+         */
         public Builder securableType(@Nullable Output<String> securableType) {
             $.securableType = securableType;
             return this;
         }
 
+        /**
+         * @param securableType the type of Unity Catalog securable.
+         * 
+         * @return builder
+         * 
+         */
         public Builder securableType(String securableType) {
             return securableType(Output.of(securableType));
         }
@@ -663,11 +767,23 @@ public final class CatalogState extends com.pulumi.resources.ResourceArgs {
             return shareName(Output.of(shareName));
         }
 
+        /**
+         * @param storageLocation effective storage Location URL (full path) for managed tables within catalog.
+         * 
+         * @return builder
+         * 
+         */
         public Builder storageLocation(@Nullable Output<String> storageLocation) {
             $.storageLocation = storageLocation;
             return this;
         }
 
+        /**
+         * @param storageLocation effective storage Location URL (full path) for managed tables within catalog.
+         * 
+         * @return builder
+         * 
+         */
         public Builder storageLocation(String storageLocation) {
             return storageLocation(Output.of(storageLocation));
         }
@@ -693,20 +809,44 @@ public final class CatalogState extends com.pulumi.resources.ResourceArgs {
             return storageRoot(Output.of(storageRoot));
         }
 
+        /**
+         * @param updatedAt time at which this catalog was last modified, in epoch milliseconds..
+         * 
+         * @return builder
+         * 
+         */
         public Builder updatedAt(@Nullable Output<Integer> updatedAt) {
             $.updatedAt = updatedAt;
             return this;
         }
 
+        /**
+         * @param updatedAt time at which this catalog was last modified, in epoch milliseconds..
+         * 
+         * @return builder
+         * 
+         */
         public Builder updatedAt(Integer updatedAt) {
             return updatedAt(Output.of(updatedAt));
         }
 
+        /**
+         * @param updatedBy username of user who last modified catalog.
+         * 
+         * @return builder
+         * 
+         */
         public Builder updatedBy(@Nullable Output<String> updatedBy) {
             $.updatedBy = updatedBy;
             return this;
         }
 
+        /**
+         * @param updatedBy username of user who last modified catalog.
+         * 
+         * @return builder
+         * 
+         */
         public Builder updatedBy(String updatedBy) {
             return updatedBy(Output.of(updatedBy));
         }

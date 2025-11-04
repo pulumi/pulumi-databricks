@@ -17,23 +17,47 @@ public final class LibraryMavenArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final LibraryMavenArgs Empty = new LibraryMavenArgs();
 
+    /**
+     * Gradle-style Maven coordinates. For example: `org.jsoup:jsoup:1.7.2`.
+     * 
+     */
     @Import(name="coordinates", required=true)
     private Output<String> coordinates;
 
+    /**
+     * @return Gradle-style Maven coordinates. For example: `org.jsoup:jsoup:1.7.2`.
+     * 
+     */
     public Output<String> coordinates() {
         return this.coordinates;
     }
 
+    /**
+     * List of dependencies to exclude. For example: `[&#34;slf4j:slf4j&#34;, &#34;*:hadoop-client&#34;]`. See [Maven dependency exclusions](https://maven.apache.org/guides/introduction/introduction-to-optional-and-excludes-dependencies.html) for more information.
+     * 
+     */
     @Import(name="exclusions")
     private @Nullable Output<List<String>> exclusions;
 
+    /**
+     * @return List of dependencies to exclude. For example: `[&#34;slf4j:slf4j&#34;, &#34;*:hadoop-client&#34;]`. See [Maven dependency exclusions](https://maven.apache.org/guides/introduction/introduction-to-optional-and-excludes-dependencies.html) for more information.
+     * 
+     */
     public Optional<Output<List<String>>> exclusions() {
         return Optional.ofNullable(this.exclusions);
     }
 
+    /**
+     * Maven repository to install the Maven package from. If omitted, both Maven Central Repository and Spark Packages are searched.
+     * 
+     */
     @Import(name="repo")
     private @Nullable Output<String> repo;
 
+    /**
+     * @return Maven repository to install the Maven package from. If omitted, both Maven Central Repository and Spark Packages are searched.
+     * 
+     */
     public Optional<Output<String>> repo() {
         return Optional.ofNullable(this.repo);
     }
@@ -64,33 +88,75 @@ public final class LibraryMavenArgs extends com.pulumi.resources.ResourceArgs {
             $ = new LibraryMavenArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param coordinates Gradle-style Maven coordinates. For example: `org.jsoup:jsoup:1.7.2`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder coordinates(Output<String> coordinates) {
             $.coordinates = coordinates;
             return this;
         }
 
+        /**
+         * @param coordinates Gradle-style Maven coordinates. For example: `org.jsoup:jsoup:1.7.2`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder coordinates(String coordinates) {
             return coordinates(Output.of(coordinates));
         }
 
+        /**
+         * @param exclusions List of dependencies to exclude. For example: `[&#34;slf4j:slf4j&#34;, &#34;*:hadoop-client&#34;]`. See [Maven dependency exclusions](https://maven.apache.org/guides/introduction/introduction-to-optional-and-excludes-dependencies.html) for more information.
+         * 
+         * @return builder
+         * 
+         */
         public Builder exclusions(@Nullable Output<List<String>> exclusions) {
             $.exclusions = exclusions;
             return this;
         }
 
+        /**
+         * @param exclusions List of dependencies to exclude. For example: `[&#34;slf4j:slf4j&#34;, &#34;*:hadoop-client&#34;]`. See [Maven dependency exclusions](https://maven.apache.org/guides/introduction/introduction-to-optional-and-excludes-dependencies.html) for more information.
+         * 
+         * @return builder
+         * 
+         */
         public Builder exclusions(List<String> exclusions) {
             return exclusions(Output.of(exclusions));
         }
 
+        /**
+         * @param exclusions List of dependencies to exclude. For example: `[&#34;slf4j:slf4j&#34;, &#34;*:hadoop-client&#34;]`. See [Maven dependency exclusions](https://maven.apache.org/guides/introduction/introduction-to-optional-and-excludes-dependencies.html) for more information.
+         * 
+         * @return builder
+         * 
+         */
         public Builder exclusions(String... exclusions) {
             return exclusions(List.of(exclusions));
         }
 
+        /**
+         * @param repo Maven repository to install the Maven package from. If omitted, both Maven Central Repository and Spark Packages are searched.
+         * 
+         * @return builder
+         * 
+         */
         public Builder repo(@Nullable Output<String> repo) {
             $.repo = repo;
             return this;
         }
 
+        /**
+         * @param repo Maven repository to install the Maven package from. If omitted, both Maven Central Repository and Spark Packages are searched.
+         * 
+         * @return builder
+         * 
+         */
         public Builder repo(String repo) {
             return repo(Output.of(repo));
         }

@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.AlertV2EvaluationArgs;
 import com.pulumi.databricks.inputs.AlertV2RunAsArgs;
 import com.pulumi.databricks.inputs.AlertV2ScheduleArgs;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -52,22 +53,22 @@ public final class AlertV2Args extends com.pulumi.resources.ResourceArgs {
      * The display name of the alert
      * 
      */
-    @Import(name="displayName")
-    private @Nullable Output<String> displayName;
+    @Import(name="displayName", required=true)
+    private Output<String> displayName;
 
     /**
      * @return The display name of the alert
      * 
      */
-    public Optional<Output<String>> displayName() {
-        return Optional.ofNullable(this.displayName);
+    public Output<String> displayName() {
+        return this.displayName;
     }
 
-    @Import(name="evaluation")
-    private @Nullable Output<AlertV2EvaluationArgs> evaluation;
+    @Import(name="evaluation", required=true)
+    private Output<AlertV2EvaluationArgs> evaluation;
 
-    public Optional<Output<AlertV2EvaluationArgs>> evaluation() {
-        return Optional.ofNullable(this.evaluation);
+    public Output<AlertV2EvaluationArgs> evaluation() {
+        return this.evaluation;
     }
 
     /**
@@ -89,15 +90,15 @@ public final class AlertV2Args extends com.pulumi.resources.ResourceArgs {
      * Text of the query to be run
      * 
      */
-    @Import(name="queryText")
-    private @Nullable Output<String> queryText;
+    @Import(name="queryText", required=true)
+    private Output<String> queryText;
 
     /**
      * @return Text of the query to be run
      * 
      */
-    public Optional<Output<String>> queryText() {
-        return Optional.ofNullable(this.queryText);
+    public Output<String> queryText() {
+        return this.queryText;
     }
 
     /**
@@ -142,41 +143,26 @@ public final class AlertV2Args extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.runAsUserName);
     }
 
-    @Import(name="schedule")
-    private @Nullable Output<AlertV2ScheduleArgs> schedule;
+    @Import(name="schedule", required=true)
+    private Output<AlertV2ScheduleArgs> schedule;
 
-    public Optional<Output<AlertV2ScheduleArgs>> schedule() {
-        return Optional.ofNullable(this.schedule);
+    public Output<AlertV2ScheduleArgs> schedule() {
+        return this.schedule;
     }
 
     /**
      * ID of the SQL warehouse attached to the alert
      * 
      */
-    @Import(name="warehouseId")
-    private @Nullable Output<String> warehouseId;
+    @Import(name="warehouseId", required=true)
+    private Output<String> warehouseId;
 
     /**
      * @return ID of the SQL warehouse attached to the alert
      * 
      */
-    public Optional<Output<String>> warehouseId() {
-        return Optional.ofNullable(this.warehouseId);
-    }
-
-    /**
-     * Workspace ID of the resource
-     * 
-     */
-    @Import(name="workspaceId")
-    private @Nullable Output<String> workspaceId;
-
-    /**
-     * @return Workspace ID of the resource
-     * 
-     */
-    public Optional<Output<String>> workspaceId() {
-        return Optional.ofNullable(this.workspaceId);
+    public Output<String> warehouseId() {
+        return this.warehouseId;
     }
 
     private AlertV2Args() {}
@@ -192,7 +178,6 @@ public final class AlertV2Args extends com.pulumi.resources.ResourceArgs {
         this.runAsUserName = $.runAsUserName;
         this.schedule = $.schedule;
         this.warehouseId = $.warehouseId;
-        this.workspaceId = $.workspaceId;
     }
 
     public static Builder builder() {
@@ -261,7 +246,7 @@ public final class AlertV2Args extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder displayName(@Nullable Output<String> displayName) {
+        public Builder displayName(Output<String> displayName) {
             $.displayName = displayName;
             return this;
         }
@@ -276,7 +261,7 @@ public final class AlertV2Args extends com.pulumi.resources.ResourceArgs {
             return displayName(Output.of(displayName));
         }
 
-        public Builder evaluation(@Nullable Output<AlertV2EvaluationArgs> evaluation) {
+        public Builder evaluation(Output<AlertV2EvaluationArgs> evaluation) {
             $.evaluation = evaluation;
             return this;
         }
@@ -312,7 +297,7 @@ public final class AlertV2Args extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder queryText(@Nullable Output<String> queryText) {
+        public Builder queryText(Output<String> queryText) {
             $.queryText = queryText;
             return this;
         }
@@ -381,7 +366,7 @@ public final class AlertV2Args extends com.pulumi.resources.ResourceArgs {
             return runAsUserName(Output.of(runAsUserName));
         }
 
-        public Builder schedule(@Nullable Output<AlertV2ScheduleArgs> schedule) {
+        public Builder schedule(Output<AlertV2ScheduleArgs> schedule) {
             $.schedule = schedule;
             return this;
         }
@@ -396,7 +381,7 @@ public final class AlertV2Args extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder warehouseId(@Nullable Output<String> warehouseId) {
+        public Builder warehouseId(Output<String> warehouseId) {
             $.warehouseId = warehouseId;
             return this;
         }
@@ -411,28 +396,22 @@ public final class AlertV2Args extends com.pulumi.resources.ResourceArgs {
             return warehouseId(Output.of(warehouseId));
         }
 
-        /**
-         * @param workspaceId Workspace ID of the resource
-         * 
-         * @return builder
-         * 
-         */
-        public Builder workspaceId(@Nullable Output<String> workspaceId) {
-            $.workspaceId = workspaceId;
-            return this;
-        }
-
-        /**
-         * @param workspaceId Workspace ID of the resource
-         * 
-         * @return builder
-         * 
-         */
-        public Builder workspaceId(String workspaceId) {
-            return workspaceId(Output.of(workspaceId));
-        }
-
         public AlertV2Args build() {
+            if ($.displayName == null) {
+                throw new MissingRequiredPropertyException("AlertV2Args", "displayName");
+            }
+            if ($.evaluation == null) {
+                throw new MissingRequiredPropertyException("AlertV2Args", "evaluation");
+            }
+            if ($.queryText == null) {
+                throw new MissingRequiredPropertyException("AlertV2Args", "queryText");
+            }
+            if ($.schedule == null) {
+                throw new MissingRequiredPropertyException("AlertV2Args", "schedule");
+            }
+            if ($.warehouseId == null) {
+                throw new MissingRequiredPropertyException("AlertV2Args", "warehouseId");
+            }
             return $;
         }
     }

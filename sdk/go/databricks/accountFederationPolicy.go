@@ -11,6 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+//
 // Account federation policies allow users and service principals in your Databricks account to securely access Databricks APIs using tokens from your trusted identity providers (IdPs).
 //
 // Token federation policies eliminate the need to manage Databricks secrets, and allow you to centralize management of token issuance policies in your IdP. Databricks token federation policies are typically used in combination with [SCIM](https://www.terraform.io/admin/users-groups/scim/index.html), so users in your IdP are synchronized into your Databricks account.
@@ -38,7 +40,7 @@ import (
 // If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
 //
 // ```sh
-// $ pulumi import databricks:index/accountFederationPolicy:AccountFederationPolicy databricks_account_federation_policy "policy_id"
+// $ pulumi import databricks:index/accountFederationPolicy:AccountFederationPolicy this "policy_id"
 // ```
 type AccountFederationPolicy struct {
 	pulumi.CustomResourceState
@@ -55,9 +57,9 @@ type AccountFederationPolicy struct {
 	// request URL
 	Name       pulumi.StringOutput                        `pulumi:"name"`
 	OidcPolicy AccountFederationPolicyOidcPolicyPtrOutput `pulumi:"oidcPolicy"`
-	// (string) - The ID of the federation policy
+	// (string) - The ID of the federation policy. Output only
 	PolicyId pulumi.StringOutput `pulumi:"policyId"`
-	// (integer) - The service principal ID that this federation policy applies to. Only set for service principal federation policies
+	// (integer) - The service principal ID that this federation policy applies to. Output only. Only set for service principal federation policies
 	ServicePrincipalId pulumi.IntOutput `pulumi:"servicePrincipalId"`
 	// (string) - Unique, immutable id of the federation policy
 	Uid pulumi.StringOutput `pulumi:"uid"`
@@ -107,9 +109,9 @@ type accountFederationPolicyState struct {
 	// request URL
 	Name       *string                            `pulumi:"name"`
 	OidcPolicy *AccountFederationPolicyOidcPolicy `pulumi:"oidcPolicy"`
-	// (string) - The ID of the federation policy
+	// (string) - The ID of the federation policy. Output only
 	PolicyId *string `pulumi:"policyId"`
-	// (integer) - The service principal ID that this federation policy applies to. Only set for service principal federation policies
+	// (integer) - The service principal ID that this federation policy applies to. Output only. Only set for service principal federation policies
 	ServicePrincipalId *int `pulumi:"servicePrincipalId"`
 	// (string) - Unique, immutable id of the federation policy
 	Uid *string `pulumi:"uid"`
@@ -130,9 +132,9 @@ type AccountFederationPolicyState struct {
 	// request URL
 	Name       pulumi.StringPtrInput
 	OidcPolicy AccountFederationPolicyOidcPolicyPtrInput
-	// (string) - The ID of the federation policy
+	// (string) - The ID of the federation policy. Output only
 	PolicyId pulumi.StringPtrInput
-	// (integer) - The service principal ID that this federation policy applies to. Only set for service principal federation policies
+	// (integer) - The service principal ID that this federation policy applies to. Output only. Only set for service principal federation policies
 	ServicePrincipalId pulumi.IntPtrInput
 	// (string) - Unique, immutable id of the federation policy
 	Uid pulumi.StringPtrInput
@@ -148,9 +150,9 @@ type accountFederationPolicyArgs struct {
 	// Description of the federation policy
 	Description *string                            `pulumi:"description"`
 	OidcPolicy  *AccountFederationPolicyOidcPolicy `pulumi:"oidcPolicy"`
-	// (string) - The ID of the federation policy
+	// (string) - The ID of the federation policy. Output only
 	PolicyId *string `pulumi:"policyId"`
-	// (integer) - The service principal ID that this federation policy applies to. Only set for service principal federation policies
+	// (integer) - The service principal ID that this federation policy applies to. Output only. Only set for service principal federation policies
 	ServicePrincipalId *int `pulumi:"servicePrincipalId"`
 }
 
@@ -159,9 +161,9 @@ type AccountFederationPolicyArgs struct {
 	// Description of the federation policy
 	Description pulumi.StringPtrInput
 	OidcPolicy  AccountFederationPolicyOidcPolicyPtrInput
-	// (string) - The ID of the federation policy
+	// (string) - The ID of the federation policy. Output only
 	PolicyId pulumi.StringPtrInput
-	// (integer) - The service principal ID that this federation policy applies to. Only set for service principal federation policies
+	// (integer) - The service principal ID that this federation policy applies to. Output only. Only set for service principal federation policies
 	ServicePrincipalId pulumi.IntPtrInput
 }
 
@@ -276,12 +278,12 @@ func (o AccountFederationPolicyOutput) OidcPolicy() AccountFederationPolicyOidcP
 	return o.ApplyT(func(v *AccountFederationPolicy) AccountFederationPolicyOidcPolicyPtrOutput { return v.OidcPolicy }).(AccountFederationPolicyOidcPolicyPtrOutput)
 }
 
-// (string) - The ID of the federation policy
+// (string) - The ID of the federation policy. Output only
 func (o AccountFederationPolicyOutput) PolicyId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccountFederationPolicy) pulumi.StringOutput { return v.PolicyId }).(pulumi.StringOutput)
 }
 
-// (integer) - The service principal ID that this federation policy applies to. Only set for service principal federation policies
+// (integer) - The service principal ID that this federation policy applies to. Output only. Only set for service principal federation policies
 func (o AccountFederationPolicyOutput) ServicePrincipalId() pulumi.IntOutput {
 	return o.ApplyT(func(v *AccountFederationPolicy) pulumi.IntOutput { return v.ServicePrincipalId }).(pulumi.IntOutput)
 }

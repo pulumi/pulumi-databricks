@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.util.Objects;
 import java.util.Optional;
@@ -14,6 +15,13 @@ import javax.annotation.Nullable;
 public final class CustomAppIntegrationTokenAccessPolicyArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final CustomAppIntegrationTokenAccessPolicyArgs Empty = new CustomAppIntegrationTokenAccessPolicyArgs();
+
+    @Import(name="absoluteSessionLifetimeInMinutes")
+    private @Nullable Output<Integer> absoluteSessionLifetimeInMinutes;
+
+    public Optional<Output<Integer>> absoluteSessionLifetimeInMinutes() {
+        return Optional.ofNullable(this.absoluteSessionLifetimeInMinutes);
+    }
 
     /**
      * access token time to live (TTL) in minutes.
@@ -28,6 +36,13 @@ public final class CustomAppIntegrationTokenAccessPolicyArgs extends com.pulumi.
      */
     public Optional<Output<Integer>> accessTokenTtlInMinutes() {
         return Optional.ofNullable(this.accessTokenTtlInMinutes);
+    }
+
+    @Import(name="enableSingleUseRefreshTokens")
+    private @Nullable Output<Boolean> enableSingleUseRefreshTokens;
+
+    public Optional<Output<Boolean>> enableSingleUseRefreshTokens() {
+        return Optional.ofNullable(this.enableSingleUseRefreshTokens);
     }
 
     /**
@@ -48,7 +63,9 @@ public final class CustomAppIntegrationTokenAccessPolicyArgs extends com.pulumi.
     private CustomAppIntegrationTokenAccessPolicyArgs() {}
 
     private CustomAppIntegrationTokenAccessPolicyArgs(CustomAppIntegrationTokenAccessPolicyArgs $) {
+        this.absoluteSessionLifetimeInMinutes = $.absoluteSessionLifetimeInMinutes;
         this.accessTokenTtlInMinutes = $.accessTokenTtlInMinutes;
+        this.enableSingleUseRefreshTokens = $.enableSingleUseRefreshTokens;
         this.refreshTokenTtlInMinutes = $.refreshTokenTtlInMinutes;
     }
 
@@ -70,6 +87,15 @@ public final class CustomAppIntegrationTokenAccessPolicyArgs extends com.pulumi.
             $ = new CustomAppIntegrationTokenAccessPolicyArgs(Objects.requireNonNull(defaults));
         }
 
+        public Builder absoluteSessionLifetimeInMinutes(@Nullable Output<Integer> absoluteSessionLifetimeInMinutes) {
+            $.absoluteSessionLifetimeInMinutes = absoluteSessionLifetimeInMinutes;
+            return this;
+        }
+
+        public Builder absoluteSessionLifetimeInMinutes(Integer absoluteSessionLifetimeInMinutes) {
+            return absoluteSessionLifetimeInMinutes(Output.of(absoluteSessionLifetimeInMinutes));
+        }
+
         /**
          * @param accessTokenTtlInMinutes access token time to live (TTL) in minutes.
          * 
@@ -89,6 +115,15 @@ public final class CustomAppIntegrationTokenAccessPolicyArgs extends com.pulumi.
          */
         public Builder accessTokenTtlInMinutes(Integer accessTokenTtlInMinutes) {
             return accessTokenTtlInMinutes(Output.of(accessTokenTtlInMinutes));
+        }
+
+        public Builder enableSingleUseRefreshTokens(@Nullable Output<Boolean> enableSingleUseRefreshTokens) {
+            $.enableSingleUseRefreshTokens = enableSingleUseRefreshTokens;
+            return this;
+        }
+
+        public Builder enableSingleUseRefreshTokens(Boolean enableSingleUseRefreshTokens) {
+            return enableSingleUseRefreshTokens(Output.of(enableSingleUseRefreshTokens));
         }
 
         /**

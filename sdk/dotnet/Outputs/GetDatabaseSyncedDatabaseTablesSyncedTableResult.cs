@@ -44,7 +44,7 @@ namespace Pulumi.Databricks.Outputs
         /// <summary>
         /// (SyncedTableSpec)
         /// </summary>
-        public readonly Outputs.GetDatabaseSyncedDatabaseTablesSyncedTableSpecResult? Spec;
+        public readonly Outputs.GetDatabaseSyncedDatabaseTablesSyncedTableSpecResult Spec;
         /// <summary>
         /// (string) - The provisioning state of the synced table entity in Unity Catalog. This is distinct from the
         /// state of the data synchronization pipeline (i.e. the table may be in "ACTIVE" but the pipeline
@@ -66,7 +66,7 @@ namespace Pulumi.Databricks.Outputs
 
             string name,
 
-            Outputs.GetDatabaseSyncedDatabaseTablesSyncedTableSpecResult? spec,
+            Outputs.GetDatabaseSyncedDatabaseTablesSyncedTableSpecResult spec,
 
             string unityCatalogProvisioningState)
         {

@@ -17,6 +17,10 @@ namespace Pulumi.Databricks.Outputs
         public readonly string? Egg;
         public readonly string? Jar;
         public readonly Outputs.JobTaskForEachTaskTaskLibraryMaven? Maven;
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        public readonly Outputs.JobTaskForEachTaskTaskLibraryProviderConfig? ProviderConfig;
         public readonly Outputs.JobTaskForEachTaskTaskLibraryPypi? Pypi;
         public readonly string? Requirements;
         public readonly string? Whl;
@@ -31,6 +35,8 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.JobTaskForEachTaskTaskLibraryMaven? maven,
 
+            Outputs.JobTaskForEachTaskTaskLibraryProviderConfig? providerConfig,
+
             Outputs.JobTaskForEachTaskTaskLibraryPypi? pypi,
 
             string? requirements,
@@ -41,6 +47,7 @@ namespace Pulumi.Databricks.Outputs
             Egg = egg;
             Jar = jar;
             Maven = maven;
+            ProviderConfig = providerConfig;
             Pypi = pypi;
             Requirements = requirements;
             Whl = whl;

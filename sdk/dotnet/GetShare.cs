@@ -136,16 +136,10 @@ namespace Pulumi.Databricks
     public sealed class GetShareArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Time when the share was created.
+        /// Description about the object.
         /// </summary>
-        [Input("createdAt")]
-        public int? CreatedAt { get; set; }
-
-        /// <summary>
-        /// The principal that created the share.
-        /// </summary>
-        [Input("createdBy")]
-        public string? CreatedBy { get; set; }
+        [Input("comment")]
+        public string? Comment { get; set; }
 
         /// <summary>
         /// The name of the share
@@ -165,6 +159,18 @@ namespace Pulumi.Databricks
             set => _objects = value;
         }
 
+        [Input("owner")]
+        public string? Owner { get; set; }
+
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Inputs.GetShareProviderConfigArgs? ProviderConfig { get; set; }
+
+        [Input("storageRoot")]
+        public string? StorageRoot { get; set; }
+
         public GetShareArgs()
         {
         }
@@ -174,16 +180,10 @@ namespace Pulumi.Databricks
     public sealed class GetShareInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Time when the share was created.
+        /// Description about the object.
         /// </summary>
-        [Input("createdAt")]
-        public Input<int>? CreatedAt { get; set; }
-
-        /// <summary>
-        /// The principal that created the share.
-        /// </summary>
-        [Input("createdBy")]
-        public Input<string>? CreatedBy { get; set; }
+        [Input("comment")]
+        public Input<string>? Comment { get; set; }
 
         /// <summary>
         /// The name of the share
@@ -203,6 +203,18 @@ namespace Pulumi.Databricks
             set => _objects = value;
         }
 
+        [Input("owner")]
+        public Input<string>? Owner { get; set; }
+
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.GetShareProviderConfigInputArgs>? ProviderConfig { get; set; }
+
+        [Input("storageRoot")]
+        public Input<string>? StorageRoot { get; set; }
+
         public GetShareInvokeArgs()
         {
         }
@@ -214,6 +226,10 @@ namespace Pulumi.Databricks
     public sealed class GetShareResult
     {
         /// <summary>
+        /// Description about the object.
+        /// </summary>
+        public readonly string? Comment;
+        /// <summary>
         /// Time when the share was created.
         /// </summary>
         public readonly int CreatedAt;
@@ -221,6 +237,7 @@ namespace Pulumi.Databricks
         /// The principal that created the share.
         /// </summary>
         public readonly string CreatedBy;
+        public readonly string EffectiveOwner;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -228,29 +245,59 @@ namespace Pulumi.Databricks
         /// <summary>
         /// Full name of the object being shared.
         /// </summary>
-        public readonly string Name;
+        public readonly string? Name;
         /// <summary>
         /// arrays containing details of each object in the share.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetShareObjectResult> Objects;
+        public readonly string? Owner;
+        public readonly Outputs.GetShareProviderConfigResult? ProviderConfig;
+        public readonly string StorageLocation;
+        public readonly string? StorageRoot;
+        public readonly int UpdatedAt;
+        public readonly string UpdatedBy;
 
         [OutputConstructor]
         private GetShareResult(
+            string? comment,
+
             int createdAt,
 
             string createdBy,
 
+            string effectiveOwner,
+
             string id,
 
-            string name,
+            string? name,
 
-            ImmutableArray<Outputs.GetShareObjectResult> objects)
+            ImmutableArray<Outputs.GetShareObjectResult> objects,
+
+            string? owner,
+
+            Outputs.GetShareProviderConfigResult? providerConfig,
+
+            string storageLocation,
+
+            string? storageRoot,
+
+            int updatedAt,
+
+            string updatedBy)
         {
+            Comment = comment;
             CreatedAt = createdAt;
             CreatedBy = createdBy;
+            EffectiveOwner = effectiveOwner;
             Id = id;
             Name = name;
             Objects = objects;
+            Owner = owner;
+            ProviderConfig = providerConfig;
+            StorageLocation = storageLocation;
+            StorageRoot = storageRoot;
+            UpdatedAt = updatedAt;
+            UpdatedBy = updatedBy;
         }
     }
 }

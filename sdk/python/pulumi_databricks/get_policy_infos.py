@@ -27,10 +27,16 @@ class GetPolicyInfosResult:
     """
     A collection of values returned by getPolicyInfos.
     """
-    def __init__(__self__, id=None, on_securable_fullname=None, on_securable_type=None, policies=None, workspace_id=None):
+    def __init__(__self__, id=None, include_inherited=None, max_results=None, on_securable_fullname=None, on_securable_type=None, policies=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if include_inherited and not isinstance(include_inherited, bool):
+            raise TypeError("Expected argument 'include_inherited' to be a bool")
+        pulumi.set(__self__, "include_inherited", include_inherited)
+        if max_results and not isinstance(max_results, int):
+            raise TypeError("Expected argument 'max_results' to be a int")
+        pulumi.set(__self__, "max_results", max_results)
         if on_securable_fullname and not isinstance(on_securable_fullname, str):
             raise TypeError("Expected argument 'on_securable_fullname' to be a str")
         pulumi.set(__self__, "on_securable_fullname", on_securable_fullname)
@@ -40,9 +46,6 @@ class GetPolicyInfosResult:
         if policies and not isinstance(policies, list):
             raise TypeError("Expected argument 'policies' to be a list")
         pulumi.set(__self__, "policies", policies)
-        if workspace_id and not isinstance(workspace_id, str):
-            raise TypeError("Expected argument 'workspace_id' to be a str")
-        pulumi.set(__self__, "workspace_id", workspace_id)
 
     @_builtins.property
     @pulumi.getter
@@ -51,6 +54,16 @@ class GetPolicyInfosResult:
         The provider-assigned unique ID for this managed resource.
         """
         return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="includeInherited")
+    def include_inherited(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "include_inherited")
+
+    @_builtins.property
+    @pulumi.getter(name="maxResults")
+    def max_results(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "max_results")
 
     @_builtins.property
     @pulumi.getter(name="onSecurableFullname")
@@ -76,11 +89,6 @@ class GetPolicyInfosResult:
     def policies(self) -> Sequence['outputs.GetPolicyInfosPolicyResult']:
         return pulumi.get(self, "policies")
 
-    @_builtins.property
-    @pulumi.getter(name="workspaceId")
-    def workspace_id(self) -> Optional[_builtins.str]:
-        return pulumi.get(self, "workspace_id")
-
 
 class AwaitableGetPolicyInfosResult(GetPolicyInfosResult):
     # pylint: disable=using-constant-test
@@ -89,56 +97,73 @@ class AwaitableGetPolicyInfosResult(GetPolicyInfosResult):
             yield self
         return GetPolicyInfosResult(
             id=self.id,
+            include_inherited=self.include_inherited,
+            max_results=self.max_results,
             on_securable_fullname=self.on_securable_fullname,
             on_securable_type=self.on_securable_type,
-            policies=self.policies,
-            workspace_id=self.workspace_id)
+            policies=self.policies)
 
 
-def get_policy_infos(on_securable_fullname: Optional[_builtins.str] = None,
+def get_policy_infos(include_inherited: Optional[_builtins.bool] = None,
+                     max_results: Optional[_builtins.int] = None,
+                     on_securable_fullname: Optional[_builtins.str] = None,
                      on_securable_type: Optional[_builtins.str] = None,
-                     workspace_id: Optional[_builtins.str] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPolicyInfosResult:
     """
-    Use this data source to access information about an existing resource.
+    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
+
+    :param _builtins.bool include_inherited: Optional. Whether to include policies defined on parent securables.
+           By default, the inherited policies are not included
+    :param _builtins.int max_results: Optional.  Maximum number of policies to return on a single page (page length).
+           - When not set or set to 0, the page length is set to a server configured value (recommended);
+           - When set to a value greater than 0, the page length is the minimum of this value and a server configured value;
     :param _builtins.str on_securable_fullname: Required. The fully qualified name of securable to list policies for
     :param _builtins.str on_securable_type: Required. The type of the securable to list policies for
-    :param _builtins.str workspace_id: Workspace ID of the resource
     """
     __args__ = dict()
+    __args__['includeInherited'] = include_inherited
+    __args__['maxResults'] = max_results
     __args__['onSecurableFullname'] = on_securable_fullname
     __args__['onSecurableType'] = on_securable_type
-    __args__['workspaceId'] = workspace_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getPolicyInfos:getPolicyInfos', __args__, opts=opts, typ=GetPolicyInfosResult).value
 
     return AwaitableGetPolicyInfosResult(
         id=pulumi.get(__ret__, 'id'),
+        include_inherited=pulumi.get(__ret__, 'include_inherited'),
+        max_results=pulumi.get(__ret__, 'max_results'),
         on_securable_fullname=pulumi.get(__ret__, 'on_securable_fullname'),
         on_securable_type=pulumi.get(__ret__, 'on_securable_type'),
-        policies=pulumi.get(__ret__, 'policies'),
-        workspace_id=pulumi.get(__ret__, 'workspace_id'))
-def get_policy_infos_output(on_securable_fullname: Optional[pulumi.Input[_builtins.str]] = None,
+        policies=pulumi.get(__ret__, 'policies'))
+def get_policy_infos_output(include_inherited: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
+                            max_results: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
+                            on_securable_fullname: Optional[pulumi.Input[_builtins.str]] = None,
                             on_securable_type: Optional[pulumi.Input[_builtins.str]] = None,
-                            workspace_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPolicyInfosResult]:
     """
-    Use this data source to access information about an existing resource.
+    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
+
+    :param _builtins.bool include_inherited: Optional. Whether to include policies defined on parent securables.
+           By default, the inherited policies are not included
+    :param _builtins.int max_results: Optional.  Maximum number of policies to return on a single page (page length).
+           - When not set or set to 0, the page length is set to a server configured value (recommended);
+           - When set to a value greater than 0, the page length is the minimum of this value and a server configured value;
     :param _builtins.str on_securable_fullname: Required. The fully qualified name of securable to list policies for
     :param _builtins.str on_securable_type: Required. The type of the securable to list policies for
-    :param _builtins.str workspace_id: Workspace ID of the resource
     """
     __args__ = dict()
+    __args__['includeInherited'] = include_inherited
+    __args__['maxResults'] = max_results
     __args__['onSecurableFullname'] = on_securable_fullname
     __args__['onSecurableType'] = on_securable_type
-    __args__['workspaceId'] = workspace_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getPolicyInfos:getPolicyInfos', __args__, opts=opts, typ=GetPolicyInfosResult)
     return __ret__.apply(lambda __response__: GetPolicyInfosResult(
         id=pulumi.get(__response__, 'id'),
+        include_inherited=pulumi.get(__response__, 'include_inherited'),
+        max_results=pulumi.get(__response__, 'max_results'),
         on_securable_fullname=pulumi.get(__response__, 'on_securable_fullname'),
         on_securable_type=pulumi.get(__response__, 'on_securable_type'),
-        policies=pulumi.get(__response__, 'policies'),
-        workspace_id=pulumi.get(__response__, 'workspace_id')))
+        policies=pulumi.get(__response__, 'policies')))

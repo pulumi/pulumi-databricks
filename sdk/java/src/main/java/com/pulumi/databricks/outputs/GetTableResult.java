@@ -4,10 +4,13 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetTableProviderConfig;
 import com.pulumi.databricks.outputs.GetTableTableInfo;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetTableResult {
@@ -17,6 +20,7 @@ public final class GetTableResult {
      * 
      */
     private String name;
+    private @Nullable GetTableProviderConfig providerConfig;
     /**
      * @return TableInfo object for a Unity Catalog table. This contains the following attributes:
      * 
@@ -33,6 +37,9 @@ public final class GetTableResult {
      */
     public String name() {
         return this.name;
+    }
+    public Optional<GetTableProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
     }
     /**
      * @return TableInfo object for a Unity Catalog table. This contains the following attributes:
@@ -53,12 +60,14 @@ public final class GetTableResult {
     public static final class Builder {
         private String id;
         private String name;
+        private @Nullable GetTableProviderConfig providerConfig;
         private GetTableTableInfo tableInfo;
         public Builder() {}
         public Builder(GetTableResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
     	      this.name = defaults.name;
+    	      this.providerConfig = defaults.providerConfig;
     	      this.tableInfo = defaults.tableInfo;
         }
 
@@ -79,6 +88,12 @@ public final class GetTableResult {
             return this;
         }
         @CustomType.Setter
+        public Builder providerConfig(@Nullable GetTableProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder tableInfo(GetTableTableInfo tableInfo) {
             if (tableInfo == null) {
               throw new MissingRequiredPropertyException("GetTableResult", "tableInfo");
@@ -90,6 +105,7 @@ public final class GetTableResult {
             final var _resultValue = new GetTableResult();
             _resultValue.id = id;
             _resultValue.name = name;
+            _resultValue.providerConfig = providerConfig;
             _resultValue.tableInfo = tableInfo;
             return _resultValue;
         }

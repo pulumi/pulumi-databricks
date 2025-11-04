@@ -22,23 +22,19 @@ class EntityTagAssignmentArgs:
                  entity_name: pulumi.Input[_builtins.str],
                  entity_type: pulumi.Input[_builtins.str],
                  tag_key: pulumi.Input[_builtins.str],
-                 tag_value: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 tag_value: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a EntityTagAssignment resource.
         :param pulumi.Input[_builtins.str] entity_name: The fully qualified name of the entity to which the tag is assigned
         :param pulumi.Input[_builtins.str] entity_type: The type of the entity to which the tag is assigned. Allowed values are: catalogs, schemas, tables, columns, volumes
         :param pulumi.Input[_builtins.str] tag_key: The key of the tag
         :param pulumi.Input[_builtins.str] tag_value: The value of the tag
-        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID of the resource
         """
         pulumi.set(__self__, "entity_name", entity_name)
         pulumi.set(__self__, "entity_type", entity_type)
         pulumi.set(__self__, "tag_key", tag_key)
         if tag_value is not None:
             pulumi.set(__self__, "tag_value", tag_value)
-        if workspace_id is not None:
-            pulumi.set(__self__, "workspace_id", workspace_id)
 
     @_builtins.property
     @pulumi.getter(name="entityName")
@@ -88,18 +84,6 @@ class EntityTagAssignmentArgs:
     def tag_value(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "tag_value", value)
 
-    @_builtins.property
-    @pulumi.getter(name="workspaceId")
-    def workspace_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Workspace ID of the resource
-        """
-        return pulumi.get(self, "workspace_id")
-
-    @workspace_id.setter
-    def workspace_id(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "workspace_id", value)
-
 
 @pulumi.input_type
 class _EntityTagAssignmentState:
@@ -107,15 +91,13 @@ class _EntityTagAssignmentState:
                  entity_name: Optional[pulumi.Input[_builtins.str]] = None,
                  entity_type: Optional[pulumi.Input[_builtins.str]] = None,
                  tag_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 tag_value: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 tag_value: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EntityTagAssignment resources.
         :param pulumi.Input[_builtins.str] entity_name: The fully qualified name of the entity to which the tag is assigned
         :param pulumi.Input[_builtins.str] entity_type: The type of the entity to which the tag is assigned. Allowed values are: catalogs, schemas, tables, columns, volumes
         :param pulumi.Input[_builtins.str] tag_key: The key of the tag
         :param pulumi.Input[_builtins.str] tag_value: The value of the tag
-        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID of the resource
         """
         if entity_name is not None:
             pulumi.set(__self__, "entity_name", entity_name)
@@ -125,8 +107,6 @@ class _EntityTagAssignmentState:
             pulumi.set(__self__, "tag_key", tag_key)
         if tag_value is not None:
             pulumi.set(__self__, "tag_value", tag_value)
-        if workspace_id is not None:
-            pulumi.set(__self__, "workspace_id", workspace_id)
 
     @_builtins.property
     @pulumi.getter(name="entityName")
@@ -176,18 +156,6 @@ class _EntityTagAssignmentState:
     def tag_value(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "tag_value", value)
 
-    @_builtins.property
-    @pulumi.getter(name="workspaceId")
-    def workspace_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Workspace ID of the resource
-        """
-        return pulumi.get(self, "workspace_id")
-
-    @workspace_id.setter
-    def workspace_id(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "workspace_id", value)
-
 
 @pulumi.type_token("databricks:index/entityTagAssignment:EntityTagAssignment")
 class EntityTagAssignment(pulumi.CustomResource):
@@ -199,9 +167,47 @@ class EntityTagAssignment(pulumi.CustomResource):
                  entity_type: Optional[pulumi.Input[_builtins.str]] = None,
                  tag_key: Optional[pulumi.Input[_builtins.str]] = None,
                  tag_value: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+        This resource allows you to create, update, list, and delete tag assignments on Unity Catalog entities.
+
+        ## Example Usage
+
+        ### Basic tag assignment to a catalog
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        catalog_tag = databricks.EntityTagAssignment("catalog_tag",
+            entity_type="catalogs",
+            entity_name="production_catalog",
+            tag_key="environment",
+            tag_value="production")
+        schema_tag = databricks.EntityTagAssignment("schema_tag",
+            entity_type="schemas",
+            entity_name="production_catalog.sales_data",
+            tag_key="owner",
+            tag_value="sales-team")
+        table_tag = databricks.EntityTagAssignment("table_tag",
+            entity_type="tables",
+            entity_name="production_catalog.sales_data.customer_orders",
+            tag_key="data_classification",
+            tag_value="confidential")
+        column_tag = databricks.EntityTagAssignment("column_tag",
+            entity_type="columns",
+            entity_name="production_catalog.sales_data.customers.email_address",
+            tag_key="pii",
+            tag_value="email")
+        volume_tag = databricks.EntityTagAssignment("volume_tag",
+            entity_type="volumes",
+            entity_name="production_catalog.raw_data.landing_zone",
+            tag_key="purpose",
+            tag_value="data_ingestion")
+        ```
+
         ## Import
 
         As of Pulumi v1.5, resources can be imported through configuration.
@@ -219,7 +225,7 @@ class EntityTagAssignment(pulumi.CustomResource):
         If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
 
         ```sh
-        $ pulumi import databricks:index/entityTagAssignment:EntityTagAssignment databricks_entity_tag_assignment "entity_type,entity_name,tag_key"
+        $ pulumi import databricks:index/entityTagAssignment:EntityTagAssignment this "entity_type,entity_name,tag_key"
         ```
 
         :param str resource_name: The name of the resource.
@@ -228,7 +234,6 @@ class EntityTagAssignment(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] entity_type: The type of the entity to which the tag is assigned. Allowed values are: catalogs, schemas, tables, columns, volumes
         :param pulumi.Input[_builtins.str] tag_key: The key of the tag
         :param pulumi.Input[_builtins.str] tag_value: The value of the tag
-        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID of the resource
         """
         ...
     @overload
@@ -237,6 +242,45 @@ class EntityTagAssignment(pulumi.CustomResource):
                  args: EntityTagAssignmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+        This resource allows you to create, update, list, and delete tag assignments on Unity Catalog entities.
+
+        ## Example Usage
+
+        ### Basic tag assignment to a catalog
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        catalog_tag = databricks.EntityTagAssignment("catalog_tag",
+            entity_type="catalogs",
+            entity_name="production_catalog",
+            tag_key="environment",
+            tag_value="production")
+        schema_tag = databricks.EntityTagAssignment("schema_tag",
+            entity_type="schemas",
+            entity_name="production_catalog.sales_data",
+            tag_key="owner",
+            tag_value="sales-team")
+        table_tag = databricks.EntityTagAssignment("table_tag",
+            entity_type="tables",
+            entity_name="production_catalog.sales_data.customer_orders",
+            tag_key="data_classification",
+            tag_value="confidential")
+        column_tag = databricks.EntityTagAssignment("column_tag",
+            entity_type="columns",
+            entity_name="production_catalog.sales_data.customers.email_address",
+            tag_key="pii",
+            tag_value="email")
+        volume_tag = databricks.EntityTagAssignment("volume_tag",
+            entity_type="volumes",
+            entity_name="production_catalog.raw_data.landing_zone",
+            tag_key="purpose",
+            tag_value="data_ingestion")
+        ```
+
         ## Import
 
         As of Pulumi v1.5, resources can be imported through configuration.
@@ -254,7 +298,7 @@ class EntityTagAssignment(pulumi.CustomResource):
         If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
 
         ```sh
-        $ pulumi import databricks:index/entityTagAssignment:EntityTagAssignment databricks_entity_tag_assignment "entity_type,entity_name,tag_key"
+        $ pulumi import databricks:index/entityTagAssignment:EntityTagAssignment this "entity_type,entity_name,tag_key"
         ```
 
         :param str resource_name: The name of the resource.
@@ -276,7 +320,6 @@ class EntityTagAssignment(pulumi.CustomResource):
                  entity_type: Optional[pulumi.Input[_builtins.str]] = None,
                  tag_key: Optional[pulumi.Input[_builtins.str]] = None,
                  tag_value: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -296,7 +339,6 @@ class EntityTagAssignment(pulumi.CustomResource):
                 raise TypeError("Missing required property 'tag_key'")
             __props__.__dict__["tag_key"] = tag_key
             __props__.__dict__["tag_value"] = tag_value
-            __props__.__dict__["workspace_id"] = workspace_id
         super(EntityTagAssignment, __self__).__init__(
             'databricks:index/entityTagAssignment:EntityTagAssignment',
             resource_name,
@@ -310,8 +352,7 @@ class EntityTagAssignment(pulumi.CustomResource):
             entity_name: Optional[pulumi.Input[_builtins.str]] = None,
             entity_type: Optional[pulumi.Input[_builtins.str]] = None,
             tag_key: Optional[pulumi.Input[_builtins.str]] = None,
-            tag_value: Optional[pulumi.Input[_builtins.str]] = None,
-            workspace_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'EntityTagAssignment':
+            tag_value: Optional[pulumi.Input[_builtins.str]] = None) -> 'EntityTagAssignment':
         """
         Get an existing EntityTagAssignment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -323,7 +364,6 @@ class EntityTagAssignment(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] entity_type: The type of the entity to which the tag is assigned. Allowed values are: catalogs, schemas, tables, columns, volumes
         :param pulumi.Input[_builtins.str] tag_key: The key of the tag
         :param pulumi.Input[_builtins.str] tag_value: The value of the tag
-        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID of the resource
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -333,7 +373,6 @@ class EntityTagAssignment(pulumi.CustomResource):
         __props__.__dict__["entity_type"] = entity_type
         __props__.__dict__["tag_key"] = tag_key
         __props__.__dict__["tag_value"] = tag_value
-        __props__.__dict__["workspace_id"] = workspace_id
         return EntityTagAssignment(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -367,12 +406,4 @@ class EntityTagAssignment(pulumi.CustomResource):
         The value of the tag
         """
         return pulumi.get(self, "tag_value")
-
-    @_builtins.property
-    @pulumi.getter(name="workspaceId")
-    def workspace_id(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Workspace ID of the resource
-        """
-        return pulumi.get(self, "workspace_id")
 

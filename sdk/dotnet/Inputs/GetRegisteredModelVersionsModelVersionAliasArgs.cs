@@ -19,6 +19,27 @@ namespace Pulumi.Databricks.Inputs
         public Input<string>? AliasName { get; set; }
 
         /// <summary>
+        /// The name of the catalog where the schema and the registered model reside.
+        /// </summary>
+        [Input("catalogName")]
+        public Input<string>? CatalogName { get; set; }
+
+        /// <summary>
+        /// The unique identifier of the model version
+        /// </summary>
+        [Input("id")]
+        public Input<string>? Id { get; set; }
+
+        [Input("modelName")]
+        public Input<string>? ModelName { get; set; }
+
+        /// <summary>
+        /// The name of the schema where the registered model resides.
+        /// </summary>
+        [Input("schemaName")]
+        public Input<string>? SchemaName { get; set; }
+
+        /// <summary>
         /// associated model version
         /// </summary>
         [Input("versionNum")]

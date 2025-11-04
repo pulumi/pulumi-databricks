@@ -10,6 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
+    /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    /// 
     /// Service principal federation policies allow automated workloads running outside of Databricks to access Databricks APIs without the need for Databricks secrets. Your application (workload) authenticates to Databricks as a Databricks service principal using tokens issued by the workload runtime, for example Github Actions.
     /// 
     /// A service principal federation policy is associated with a service principal in your Databricks account, and specifies:
@@ -35,7 +37,7 @@ namespace Pulumi.Databricks
     /// If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
     /// 
     /// ```sh
-    /// $ pulumi import databricks:index/servicePrincipalFederationPolicy:ServicePrincipalFederationPolicy databricks_service_principal_federation_policy "service_principal_id,policy_id"
+    /// $ pulumi import databricks:index/servicePrincipalFederationPolicy:ServicePrincipalFederationPolicy this "service_principal_id,policy_id"
     /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/servicePrincipalFederationPolicy:ServicePrincipalFederationPolicy")]
@@ -68,13 +70,13 @@ namespace Pulumi.Databricks
         public Output<Outputs.ServicePrincipalFederationPolicyOidcPolicy?> OidcPolicy { get; private set; } = null!;
 
         /// <summary>
-        /// (string) - The ID of the federation policy
+        /// (string) - The ID of the federation policy. Output only
         /// </summary>
         [Output("policyId")]
         public Output<string> PolicyId { get; private set; } = null!;
 
         /// <summary>
-        /// (integer) - The service principal ID that this federation policy applies to. Only set for service principal federation policies
+        /// (integer) - The service principal ID that this federation policy applies to. Output only. Only set for service principal federation policies
         /// </summary>
         [Output("servicePrincipalId")]
         public Output<int> ServicePrincipalId { get; private set; } = null!;
@@ -147,13 +149,13 @@ namespace Pulumi.Databricks
         public Input<Inputs.ServicePrincipalFederationPolicyOidcPolicyArgs>? OidcPolicy { get; set; }
 
         /// <summary>
-        /// (string) - The ID of the federation policy
+        /// (string) - The ID of the federation policy. Output only
         /// </summary>
         [Input("policyId")]
         public Input<string>? PolicyId { get; set; }
 
         /// <summary>
-        /// (integer) - The service principal ID that this federation policy applies to. Only set for service principal federation policies
+        /// (integer) - The service principal ID that this federation policy applies to. Output only. Only set for service principal federation policies
         /// </summary>
         [Input("servicePrincipalId")]
         public Input<int>? ServicePrincipalId { get; set; }
@@ -193,13 +195,13 @@ namespace Pulumi.Databricks
         public Input<Inputs.ServicePrincipalFederationPolicyOidcPolicyGetArgs>? OidcPolicy { get; set; }
 
         /// <summary>
-        /// (string) - The ID of the federation policy
+        /// (string) - The ID of the federation policy. Output only
         /// </summary>
         [Input("policyId")]
         public Input<string>? PolicyId { get; set; }
 
         /// <summary>
-        /// (integer) - The service principal ID that this federation policy applies to. Only set for service principal federation policies
+        /// (integer) - The service principal ID that this federation policy applies to. Output only. Only set for service principal federation policies
         /// </summary>
         [Input("servicePrincipalId")]
         public Input<int>? ServicePrincipalId { get; set; }

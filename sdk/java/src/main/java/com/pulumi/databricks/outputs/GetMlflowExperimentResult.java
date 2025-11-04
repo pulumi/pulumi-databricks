@@ -4,12 +4,15 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetMlflowExperimentProviderConfig;
 import com.pulumi.databricks.outputs.GetMlflowExperimentTag;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetMlflowExperimentResult {
@@ -48,6 +51,7 @@ public final class GetMlflowExperimentResult {
      * 
      */
     private String name;
+    private @Nullable GetMlflowExperimentProviderConfig providerConfig;
     /**
      * @return Additional metadata key-value pairs.
      * 
@@ -104,6 +108,9 @@ public final class GetMlflowExperimentResult {
     public String name() {
         return this.name;
     }
+    public Optional<GetMlflowExperimentProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
     /**
      * @return Additional metadata key-value pairs.
      * 
@@ -128,6 +135,7 @@ public final class GetMlflowExperimentResult {
         private Integer lastUpdateTime;
         private String lifecycleStage;
         private String name;
+        private @Nullable GetMlflowExperimentProviderConfig providerConfig;
         private List<GetMlflowExperimentTag> tags;
         public Builder() {}
         public Builder(GetMlflowExperimentResult defaults) {
@@ -139,6 +147,7 @@ public final class GetMlflowExperimentResult {
     	      this.lastUpdateTime = defaults.lastUpdateTime;
     	      this.lifecycleStage = defaults.lifecycleStage;
     	      this.name = defaults.name;
+    	      this.providerConfig = defaults.providerConfig;
     	      this.tags = defaults.tags;
         }
 
@@ -199,6 +208,12 @@ public final class GetMlflowExperimentResult {
             return this;
         }
         @CustomType.Setter
+        public Builder providerConfig(@Nullable GetMlflowExperimentProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder tags(List<GetMlflowExperimentTag> tags) {
             if (tags == null) {
               throw new MissingRequiredPropertyException("GetMlflowExperimentResult", "tags");
@@ -218,6 +233,7 @@ public final class GetMlflowExperimentResult {
             _resultValue.lastUpdateTime = lastUpdateTime;
             _resultValue.lifecycleStage = lifecycleStage;
             _resultValue.name = name;
+            _resultValue.providerConfig = providerConfig;
             _resultValue.tags = tags;
             return _resultValue;
         }

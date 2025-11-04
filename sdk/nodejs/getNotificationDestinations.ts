@@ -47,6 +47,7 @@ export function getNotificationDestinations(args?: GetNotificationDestinationsAr
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getNotificationDestinations:getNotificationDestinations", {
         "displayNameContains": args.displayNameContains,
+        "providerConfig": args.providerConfig,
         "type": args.type,
     }, opts);
 }
@@ -59,6 +60,7 @@ export interface GetNotificationDestinationsArgs {
      * A **case-insensitive** substring to filter Notification Destinations by their display name.
      */
     displayNameContains?: string;
+    providerConfig?: inputs.GetNotificationDestinationsProviderConfig;
     /**
      * The type of the Notification Destination to filter by. Valid values are: 
      * * `EMAIL` - Filters Notification Destinations of type Email.
@@ -83,6 +85,7 @@ export interface GetNotificationDestinationsResult {
      * A list of Notification Destinations matching the specified criteria. Each element contains the following attributes:
      */
     readonly notificationDestinations: outputs.GetNotificationDestinationsNotificationDestination[];
+    readonly providerConfig?: outputs.GetNotificationDestinationsProviderConfig;
     readonly type?: string;
 }
 /**
@@ -126,6 +129,7 @@ export function getNotificationDestinationsOutput(args?: GetNotificationDestinat
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getNotificationDestinations:getNotificationDestinations", {
         "displayNameContains": args.displayNameContains,
+        "providerConfig": args.providerConfig,
         "type": args.type,
     }, opts);
 }
@@ -138,6 +142,7 @@ export interface GetNotificationDestinationsOutputArgs {
      * A **case-insensitive** substring to filter Notification Destinations by their display name.
      */
     displayNameContains?: pulumi.Input<string>;
+    providerConfig?: pulumi.Input<inputs.GetNotificationDestinationsProviderConfigArgs>;
     /**
      * The type of the Notification Destination to filter by. Valid values are: 
      * * `EMAIL` - Filters Notification Destinations of type Email.

@@ -61,6 +61,9 @@ namespace Pulumi.Databricks.Outputs
         public readonly string? StorageCredentialName;
         public readonly string? StorageLocation;
         public readonly ImmutableArray<Outputs.GetTableTableInfoTableConstraintResult> TableConstraints;
+        /// <summary>
+        /// The unique identifier of the table.
+        /// </summary>
         public readonly string? TableId;
         /// <summary>
         /// Table type, e.g. MANAGED, EXTERNAL, VIEW

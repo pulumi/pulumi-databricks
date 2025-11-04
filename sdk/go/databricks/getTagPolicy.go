@@ -11,9 +11,39 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+//
 // This data source can be used to get a single tag policy by its tag key.
 //
-// > **Note** This resource can only be used with an account-level provider!
+// > **Note** This resource can only be used with a workspace-level provider!
+//
+// ## Example Usage
+//
+// Referring to a tag policy by its tag key:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.LookupTagPolicy(ctx, &databricks.LookupTagPolicyArgs{
+//				TagKey: "example_tag_key",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupTagPolicy(ctx *pulumi.Context, args *LookupTagPolicyArgs, opts ...pulumi.InvokeOption) (*LookupTagPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupTagPolicyResult
@@ -26,26 +56,23 @@ func LookupTagPolicy(ctx *pulumi.Context, args *LookupTagPolicyArgs, opts ...pul
 
 // A collection of arguments for invoking getTagPolicy.
 type LookupTagPolicyArgs struct {
-	// (string)
-	Description *string `pulumi:"description"`
-	TagKey      string  `pulumi:"tagKey"`
-	// (list of Value)
-	Values []GetTagPolicyValue `pulumi:"values"`
-	// Workspace ID of the resource
-	WorkspaceId *string `pulumi:"workspaceId"`
+	TagKey string `pulumi:"tagKey"`
 }
 
 // A collection of values returned by getTagPolicy.
 type LookupTagPolicyResult struct {
+	// (string) - Timestamp when the tag policy was created
+	CreateTime string `pulumi:"createTime"`
 	// (string)
-	Description *string `pulumi:"description"`
+	Description string `pulumi:"description"`
 	// (string)
 	Id string `pulumi:"id"`
 	// (string)
 	TagKey string `pulumi:"tagKey"`
+	// (string) - Timestamp when the tag policy was last updated
+	UpdateTime string `pulumi:"updateTime"`
 	// (list of Value)
-	Values      []GetTagPolicyValue `pulumi:"values"`
-	WorkspaceId *string             `pulumi:"workspaceId"`
+	Values []GetTagPolicyValue `pulumi:"values"`
 }
 
 func LookupTagPolicyOutput(ctx *pulumi.Context, args LookupTagPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupTagPolicyResultOutput {
@@ -59,13 +86,7 @@ func LookupTagPolicyOutput(ctx *pulumi.Context, args LookupTagPolicyOutputArgs, 
 
 // A collection of arguments for invoking getTagPolicy.
 type LookupTagPolicyOutputArgs struct {
-	// (string)
-	Description pulumi.StringPtrInput `pulumi:"description"`
-	TagKey      pulumi.StringInput    `pulumi:"tagKey"`
-	// (list of Value)
-	Values GetTagPolicyValueArrayInput `pulumi:"values"`
-	// Workspace ID of the resource
-	WorkspaceId pulumi.StringPtrInput `pulumi:"workspaceId"`
+	TagKey pulumi.StringInput `pulumi:"tagKey"`
 }
 
 func (LookupTagPolicyOutputArgs) ElementType() reflect.Type {
@@ -87,9 +108,14 @@ func (o LookupTagPolicyResultOutput) ToLookupTagPolicyResultOutputWithContext(ct
 	return o
 }
 
+// (string) - Timestamp when the tag policy was created
+func (o LookupTagPolicyResultOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTagPolicyResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
 // (string)
-func (o LookupTagPolicyResultOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupTagPolicyResult) *string { return v.Description }).(pulumi.StringPtrOutput)
+func (o LookupTagPolicyResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTagPolicyResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
 // (string)
@@ -102,13 +128,14 @@ func (o LookupTagPolicyResultOutput) TagKey() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTagPolicyResult) string { return v.TagKey }).(pulumi.StringOutput)
 }
 
+// (string) - Timestamp when the tag policy was last updated
+func (o LookupTagPolicyResultOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTagPolicyResult) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
 // (list of Value)
 func (o LookupTagPolicyResultOutput) Values() GetTagPolicyValueArrayOutput {
 	return o.ApplyT(func(v LookupTagPolicyResult) []GetTagPolicyValue { return v.Values }).(GetTagPolicyValueArrayOutput)
-}
-
-func (o LookupTagPolicyResultOutput) WorkspaceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupTagPolicyResult) *string { return v.WorkspaceId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

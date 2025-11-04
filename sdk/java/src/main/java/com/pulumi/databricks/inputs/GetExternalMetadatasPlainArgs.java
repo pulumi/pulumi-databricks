@@ -4,7 +4,7 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
-import java.lang.String;
+import java.lang.Integer;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -15,24 +15,26 @@ public final class GetExternalMetadatasPlainArgs extends com.pulumi.resources.In
     public static final GetExternalMetadatasPlainArgs Empty = new GetExternalMetadatasPlainArgs();
 
     /**
-     * Workspace ID of the resource
+     * Specifies the maximum number of external metadata objects to return in a single response.
+     * The value must be less than or equal to 1000
      * 
      */
-    @Import(name="workspaceId")
-    private @Nullable String workspaceId;
+    @Import(name="pageSize")
+    private @Nullable Integer pageSize;
 
     /**
-     * @return Workspace ID of the resource
+     * @return Specifies the maximum number of external metadata objects to return in a single response.
+     * The value must be less than or equal to 1000
      * 
      */
-    public Optional<String> workspaceId() {
-        return Optional.ofNullable(this.workspaceId);
+    public Optional<Integer> pageSize() {
+        return Optional.ofNullable(this.pageSize);
     }
 
     private GetExternalMetadatasPlainArgs() {}
 
     private GetExternalMetadatasPlainArgs(GetExternalMetadatasPlainArgs $) {
-        this.workspaceId = $.workspaceId;
+        this.pageSize = $.pageSize;
     }
 
     public static Builder builder() {
@@ -54,13 +56,14 @@ public final class GetExternalMetadatasPlainArgs extends com.pulumi.resources.In
         }
 
         /**
-         * @param workspaceId Workspace ID of the resource
+         * @param pageSize Specifies the maximum number of external metadata objects to return in a single response.
+         * The value must be less than or equal to 1000
          * 
          * @return builder
          * 
          */
-        public Builder workspaceId(@Nullable String workspaceId) {
-            $.workspaceId = workspaceId;
+        public Builder pageSize(@Nullable Integer pageSize) {
+            $.pageSize = pageSize;
             return this;
         }
 

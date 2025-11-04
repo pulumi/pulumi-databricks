@@ -18,6 +18,7 @@ export function getDashboards(args?: GetDashboardsArgs, opts?: pulumi.InvokeOpti
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getDashboards:getDashboards", {
         "dashboardNameContains": args.dashboardNameContains,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -29,6 +30,7 @@ export interface GetDashboardsArgs {
      * A **case-insensitive** substring to filter Dashboards by their name.
      */
     dashboardNameContains?: string;
+    providerConfig?: inputs.GetDashboardsProviderConfig;
 }
 
 /**
@@ -44,6 +46,7 @@ export interface GetDashboardsResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly providerConfig?: outputs.GetDashboardsProviderConfig;
 }
 /**
  * This data source allows you to retrieve information about Databricks [Dashboards](https://docs.databricks.com/en/dashboards/index.html).
@@ -57,6 +60,7 @@ export function getDashboardsOutput(args?: GetDashboardsOutputArgs, opts?: pulum
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getDashboards:getDashboards", {
         "dashboardNameContains": args.dashboardNameContains,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -68,4 +72,5 @@ export interface GetDashboardsOutputArgs {
      * A **case-insensitive** substring to filter Dashboards by their name.
      */
     dashboardNameContains?: pulumi.Input<string>;
+    providerConfig?: pulumi.Input<inputs.GetDashboardsProviderConfigArgs>;
 }

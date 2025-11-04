@@ -28,7 +28,7 @@ namespace Pulumi.Databricks.Outputs
         /// <summary>
         /// (string) - User-provided free-form text description
         /// </summary>
-        public readonly string? Description;
+        public readonly string Description;
         /// <summary>
         /// (string) - Type of entity within the external system
         /// </summary>
@@ -48,13 +48,13 @@ namespace Pulumi.Databricks.Outputs
         /// <summary>
         /// (string) - Owner of the external metadata object
         /// </summary>
-        public readonly string? Owner;
+        public readonly string Owner;
         /// <summary>
         /// (object) - A map of key-value properties attached to the external metadata object
         /// </summary>
-        public readonly ImmutableDictionary<string, string>? Properties;
+        public readonly ImmutableDictionary<string, string> Properties;
         /// <summary>
-        /// (string) - Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `TABLEAU`, `TERADATA`, `WORKDAY`
+        /// (string) - Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `STREAM_NATIVE`, `TABLEAU`, `TERADATA`, `WORKDAY`
         /// </summary>
         public readonly string SystemType;
         /// <summary>
@@ -68,7 +68,7 @@ namespace Pulumi.Databricks.Outputs
         /// <summary>
         /// (string) - URL associated with the external metadata object
         /// </summary>
-        public readonly string? Url;
+        public readonly string Url;
 
         [OutputConstructor]
         private GetExternalMetadatasExternalMetadataResult(
@@ -78,7 +78,7 @@ namespace Pulumi.Databricks.Outputs
 
             string createdBy,
 
-            string? description,
+            string description,
 
             string entityType,
 
@@ -88,9 +88,9 @@ namespace Pulumi.Databricks.Outputs
 
             string name,
 
-            string? owner,
+            string owner,
 
-            ImmutableDictionary<string, string>? properties,
+            ImmutableDictionary<string, string> properties,
 
             string systemType,
 
@@ -98,7 +98,7 @@ namespace Pulumi.Databricks.Outputs
 
             string updatedBy,
 
-            string? url)
+            string url)
         {
             Columns = columns;
             CreateTime = createTime;

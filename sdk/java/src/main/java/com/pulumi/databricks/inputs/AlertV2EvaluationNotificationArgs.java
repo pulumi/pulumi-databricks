@@ -18,6 +18,20 @@ public final class AlertV2EvaluationNotificationArgs extends com.pulumi.resource
 
     public static final AlertV2EvaluationNotificationArgs Empty = new AlertV2EvaluationNotificationArgs();
 
+    @Import(name="effectiveNotifyOnOk")
+    private @Nullable Output<Boolean> effectiveNotifyOnOk;
+
+    public Optional<Output<Boolean>> effectiveNotifyOnOk() {
+        return Optional.ofNullable(this.effectiveNotifyOnOk);
+    }
+
+    @Import(name="effectiveRetriggerSeconds")
+    private @Nullable Output<Integer> effectiveRetriggerSeconds;
+
+    public Optional<Output<Integer>> effectiveRetriggerSeconds() {
+        return Optional.ofNullable(this.effectiveRetriggerSeconds);
+    }
+
     /**
      * Whether to notify alert subscribers when alert returns back to normal
      * 
@@ -58,6 +72,8 @@ public final class AlertV2EvaluationNotificationArgs extends com.pulumi.resource
     private AlertV2EvaluationNotificationArgs() {}
 
     private AlertV2EvaluationNotificationArgs(AlertV2EvaluationNotificationArgs $) {
+        this.effectiveNotifyOnOk = $.effectiveNotifyOnOk;
+        this.effectiveRetriggerSeconds = $.effectiveRetriggerSeconds;
         this.notifyOnOk = $.notifyOnOk;
         this.retriggerSeconds = $.retriggerSeconds;
         this.subscriptions = $.subscriptions;
@@ -79,6 +95,24 @@ public final class AlertV2EvaluationNotificationArgs extends com.pulumi.resource
 
         public Builder(AlertV2EvaluationNotificationArgs defaults) {
             $ = new AlertV2EvaluationNotificationArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder effectiveNotifyOnOk(@Nullable Output<Boolean> effectiveNotifyOnOk) {
+            $.effectiveNotifyOnOk = effectiveNotifyOnOk;
+            return this;
+        }
+
+        public Builder effectiveNotifyOnOk(Boolean effectiveNotifyOnOk) {
+            return effectiveNotifyOnOk(Output.of(effectiveNotifyOnOk));
+        }
+
+        public Builder effectiveRetriggerSeconds(@Nullable Output<Integer> effectiveRetriggerSeconds) {
+            $.effectiveRetriggerSeconds = effectiveRetriggerSeconds;
+            return this;
+        }
+
+        public Builder effectiveRetriggerSeconds(Integer effectiveRetriggerSeconds) {
+            return effectiveRetriggerSeconds(Output.of(effectiveRetriggerSeconds));
         }
 
         /**

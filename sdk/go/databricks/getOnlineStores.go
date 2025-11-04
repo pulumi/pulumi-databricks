@@ -11,6 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
 func GetOnlineStores(ctx *pulumi.Context, args *GetOnlineStoresArgs, opts ...pulumi.InvokeOption) (*GetOnlineStoresResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetOnlineStoresResult
@@ -23,8 +24,8 @@ func GetOnlineStores(ctx *pulumi.Context, args *GetOnlineStoresArgs, opts ...pul
 
 // A collection of arguments for invoking getOnlineStores.
 type GetOnlineStoresArgs struct {
-	// Workspace ID of the resource
-	WorkspaceId *string `pulumi:"workspaceId"`
+	// The maximum number of results to return. Defaults to 100 if not specified
+	PageSize *int `pulumi:"pageSize"`
 }
 
 // A collection of values returned by getOnlineStores.
@@ -32,7 +33,7 @@ type GetOnlineStoresResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id           string                       `pulumi:"id"`
 	OnlineStores []GetOnlineStoresOnlineStore `pulumi:"onlineStores"`
-	WorkspaceId  *string                      `pulumi:"workspaceId"`
+	PageSize     *int                         `pulumi:"pageSize"`
 }
 
 func GetOnlineStoresOutput(ctx *pulumi.Context, args GetOnlineStoresOutputArgs, opts ...pulumi.InvokeOption) GetOnlineStoresResultOutput {
@@ -46,8 +47,8 @@ func GetOnlineStoresOutput(ctx *pulumi.Context, args GetOnlineStoresOutputArgs, 
 
 // A collection of arguments for invoking getOnlineStores.
 type GetOnlineStoresOutputArgs struct {
-	// Workspace ID of the resource
-	WorkspaceId pulumi.StringPtrInput `pulumi:"workspaceId"`
+	// The maximum number of results to return. Defaults to 100 if not specified
+	PageSize pulumi.IntPtrInput `pulumi:"pageSize"`
 }
 
 func (GetOnlineStoresOutputArgs) ElementType() reflect.Type {
@@ -78,8 +79,8 @@ func (o GetOnlineStoresResultOutput) OnlineStores() GetOnlineStoresOnlineStoreAr
 	return o.ApplyT(func(v GetOnlineStoresResult) []GetOnlineStoresOnlineStore { return v.OnlineStores }).(GetOnlineStoresOnlineStoreArrayOutput)
 }
 
-func (o GetOnlineStoresResultOutput) WorkspaceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetOnlineStoresResult) *string { return v.WorkspaceId }).(pulumi.StringPtrOutput)
+func (o GetOnlineStoresResultOutput) PageSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetOnlineStoresResult) *int { return v.PageSize }).(pulumi.IntPtrOutput)
 }
 
 func init() {

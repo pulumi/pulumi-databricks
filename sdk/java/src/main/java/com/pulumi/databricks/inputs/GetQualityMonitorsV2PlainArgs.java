@@ -4,7 +4,7 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
-import java.lang.String;
+import java.lang.Integer;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -14,25 +14,17 @@ public final class GetQualityMonitorsV2PlainArgs extends com.pulumi.resources.In
 
     public static final GetQualityMonitorsV2PlainArgs Empty = new GetQualityMonitorsV2PlainArgs();
 
-    /**
-     * Workspace ID of the resource
-     * 
-     */
-    @Import(name="workspaceId")
-    private @Nullable String workspaceId;
+    @Import(name="pageSize")
+    private @Nullable Integer pageSize;
 
-    /**
-     * @return Workspace ID of the resource
-     * 
-     */
-    public Optional<String> workspaceId() {
-        return Optional.ofNullable(this.workspaceId);
+    public Optional<Integer> pageSize() {
+        return Optional.ofNullable(this.pageSize);
     }
 
     private GetQualityMonitorsV2PlainArgs() {}
 
     private GetQualityMonitorsV2PlainArgs(GetQualityMonitorsV2PlainArgs $) {
-        this.workspaceId = $.workspaceId;
+        this.pageSize = $.pageSize;
     }
 
     public static Builder builder() {
@@ -53,14 +45,8 @@ public final class GetQualityMonitorsV2PlainArgs extends com.pulumi.resources.In
             $ = new GetQualityMonitorsV2PlainArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param workspaceId Workspace ID of the resource
-         * 
-         * @return builder
-         * 
-         */
-        public Builder workspaceId(@Nullable String workspaceId) {
-            $.workspaceId = workspaceId;
+        public Builder pageSize(@Nullable Integer pageSize) {
+            $.pageSize = pageSize;
             return this;
         }
 

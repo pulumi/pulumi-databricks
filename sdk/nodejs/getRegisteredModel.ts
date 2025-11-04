@@ -37,6 +37,7 @@ export function getRegisteredModel(args: GetRegisteredModelArgs, opts?: pulumi.I
         "includeAliases": args.includeAliases,
         "includeBrowse": args.includeBrowse,
         "modelInfos": args.modelInfos,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -60,6 +61,7 @@ export interface GetRegisteredModelArgs {
      * block with information about the model in Unity Catalog:
      */
     modelInfos?: inputs.GetRegisteredModelModelInfo[];
+    providerConfig?: inputs.GetRegisteredModelProviderConfig;
 }
 
 /**
@@ -80,6 +82,7 @@ export interface GetRegisteredModelResult {
      * block with information about the model in Unity Catalog:
      */
     readonly modelInfos: outputs.GetRegisteredModelModelInfo[];
+    readonly providerConfig?: outputs.GetRegisteredModelProviderConfig;
 }
 /**
  * This resource allows you to get information about [Model in Unity Catalog](https://docs.databricks.com/en/mlflow/models-in-uc.html) in Databricks.
@@ -112,6 +115,7 @@ export function getRegisteredModelOutput(args: GetRegisteredModelOutputArgs, opt
         "includeAliases": args.includeAliases,
         "includeBrowse": args.includeBrowse,
         "modelInfos": args.modelInfos,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -135,4 +139,5 @@ export interface GetRegisteredModelOutputArgs {
      * block with information about the model in Unity Catalog:
      */
     modelInfos?: pulumi.Input<pulumi.Input<inputs.GetRegisteredModelModelInfoArgs>[]>;
+    providerConfig?: pulumi.Input<inputs.GetRegisteredModelProviderConfigArgs>;
 }

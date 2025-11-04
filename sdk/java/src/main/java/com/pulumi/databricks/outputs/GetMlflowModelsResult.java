@@ -4,10 +4,13 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetMlflowModelsProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetMlflowModelsResult {
@@ -21,6 +24,7 @@ public final class GetMlflowModelsResult {
      * 
      */
     private List<String> names;
+    private @Nullable GetMlflowModelsProviderConfig providerConfig;
 
     private GetMlflowModelsResult() {}
     /**
@@ -37,6 +41,9 @@ public final class GetMlflowModelsResult {
     public List<String> names() {
         return this.names;
     }
+    public Optional<GetMlflowModelsProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -49,11 +56,13 @@ public final class GetMlflowModelsResult {
     public static final class Builder {
         private String id;
         private List<String> names;
+        private @Nullable GetMlflowModelsProviderConfig providerConfig;
         public Builder() {}
         public Builder(GetMlflowModelsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
     	      this.names = defaults.names;
+    	      this.providerConfig = defaults.providerConfig;
         }
 
         @CustomType.Setter
@@ -75,10 +84,17 @@ public final class GetMlflowModelsResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
+        public Builder providerConfig(@Nullable GetMlflowModelsProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
+            return this;
+        }
         public GetMlflowModelsResult build() {
             final var _resultValue = new GetMlflowModelsResult();
             _resultValue.id = id;
             _resultValue.names = names;
+            _resultValue.providerConfig = providerConfig;
             return _resultValue;
         }
     }

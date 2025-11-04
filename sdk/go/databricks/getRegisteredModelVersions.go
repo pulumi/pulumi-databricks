@@ -64,7 +64,8 @@ type GetRegisteredModelVersionsArgs struct {
 	// The fully-qualified name of the registered model (`catalog_name.schema_name.name`).
 	FullName string `pulumi:"fullName"`
 	// list of objects describing the model versions. Each object consists of following attributes:
-	ModelVersions []GetRegisteredModelVersionsModelVersion `pulumi:"modelVersions"`
+	ModelVersions  []GetRegisteredModelVersionsModelVersion  `pulumi:"modelVersions"`
+	ProviderConfig *GetRegisteredModelVersionsProviderConfig `pulumi:"providerConfig"`
 }
 
 // A collection of values returned by getRegisteredModelVersions.
@@ -74,7 +75,8 @@ type GetRegisteredModelVersionsResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// list of objects describing the model versions. Each object consists of following attributes:
-	ModelVersions []GetRegisteredModelVersionsModelVersion `pulumi:"modelVersions"`
+	ModelVersions  []GetRegisteredModelVersionsModelVersion  `pulumi:"modelVersions"`
+	ProviderConfig *GetRegisteredModelVersionsProviderConfig `pulumi:"providerConfig"`
 }
 
 func GetRegisteredModelVersionsOutput(ctx *pulumi.Context, args GetRegisteredModelVersionsOutputArgs, opts ...pulumi.InvokeOption) GetRegisteredModelVersionsResultOutput {
@@ -91,7 +93,8 @@ type GetRegisteredModelVersionsOutputArgs struct {
 	// The fully-qualified name of the registered model (`catalog_name.schema_name.name`).
 	FullName pulumi.StringInput `pulumi:"fullName"`
 	// list of objects describing the model versions. Each object consists of following attributes:
-	ModelVersions GetRegisteredModelVersionsModelVersionArrayInput `pulumi:"modelVersions"`
+	ModelVersions  GetRegisteredModelVersionsModelVersionArrayInput `pulumi:"modelVersions"`
+	ProviderConfig GetRegisteredModelVersionsProviderConfigPtrInput `pulumi:"providerConfig"`
 }
 
 func (GetRegisteredModelVersionsOutputArgs) ElementType() reflect.Type {
@@ -128,6 +131,12 @@ func (o GetRegisteredModelVersionsResultOutput) ModelVersions() GetRegisteredMod
 	return o.ApplyT(func(v GetRegisteredModelVersionsResult) []GetRegisteredModelVersionsModelVersion {
 		return v.ModelVersions
 	}).(GetRegisteredModelVersionsModelVersionArrayOutput)
+}
+
+func (o GetRegisteredModelVersionsResultOutput) ProviderConfig() GetRegisteredModelVersionsProviderConfigPtrOutput {
+	return o.ApplyT(func(v GetRegisteredModelVersionsResult) *GetRegisteredModelVersionsProviderConfig {
+		return v.ProviderConfig
+	}).(GetRegisteredModelVersionsProviderConfigPtrOutput)
 }
 
 func init() {

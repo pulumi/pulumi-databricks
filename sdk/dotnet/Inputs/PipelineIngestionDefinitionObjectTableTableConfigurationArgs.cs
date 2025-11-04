@@ -53,6 +53,9 @@ namespace Pulumi.Databricks.Inputs
             set => _sequenceBies = value;
         }
 
+        [Input("workdayReportParameters")]
+        public Input<Inputs.PipelineIngestionDefinitionObjectTableTableConfigurationWorkdayReportParametersArgs>? WorkdayReportParameters { get; set; }
+
         public PipelineIngestionDefinitionObjectTableTableConfigurationArgs()
         {
         }

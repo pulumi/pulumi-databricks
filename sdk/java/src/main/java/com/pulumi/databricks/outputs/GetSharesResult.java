@@ -4,10 +4,13 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetSharesProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetSharesResult {
@@ -16,6 +19,7 @@ public final class GetSharesResult {
      * 
      */
     private String id;
+    private @Nullable GetSharesProviderConfig providerConfig;
     /**
      * @return list of databricks.Share names.
      * 
@@ -29,6 +33,9 @@ public final class GetSharesResult {
      */
     public String id() {
         return this.id;
+    }
+    public Optional<GetSharesProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
     }
     /**
      * @return list of databricks.Share names.
@@ -48,11 +55,13 @@ public final class GetSharesResult {
     @CustomType.Builder
     public static final class Builder {
         private String id;
+        private @Nullable GetSharesProviderConfig providerConfig;
         private List<String> shares;
         public Builder() {}
         public Builder(GetSharesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
+    	      this.providerConfig = defaults.providerConfig;
     	      this.shares = defaults.shares;
         }
 
@@ -62,6 +71,12 @@ public final class GetSharesResult {
               throw new MissingRequiredPropertyException("GetSharesResult", "id");
             }
             this.id = id;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder providerConfig(@Nullable GetSharesProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
             return this;
         }
         @CustomType.Setter
@@ -78,6 +93,7 @@ public final class GetSharesResult {
         public GetSharesResult build() {
             final var _resultValue = new GetSharesResult();
             _resultValue.id = id;
+            _resultValue.providerConfig = providerConfig;
             _resultValue.shares = shares;
             return _resultValue;
         }

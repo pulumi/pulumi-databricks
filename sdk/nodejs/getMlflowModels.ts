@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -24,6 +26,7 @@ export function getMlflowModels(args?: GetMlflowModelsArgs, opts?: pulumi.Invoke
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getMlflowModels:getMlflowModels", {
         "names": args.names,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -35,6 +38,10 @@ export interface GetMlflowModelsArgs {
      * List of names of databricks_mlflow_model
      */
     names?: string[];
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: inputs.GetMlflowModelsProviderConfig;
 }
 
 /**
@@ -49,6 +56,7 @@ export interface GetMlflowModelsResult {
      * List of names of databricks_mlflow_model
      */
     readonly names: string[];
+    readonly providerConfig?: outputs.GetMlflowModelsProviderConfig;
 }
 /**
  * Retrieves a list of databricks.MlflowModel objects, that were created by Pulumi or manually, so that special handling could be applied.
@@ -70,6 +78,7 @@ export function getMlflowModelsOutput(args?: GetMlflowModelsOutputArgs, opts?: p
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getMlflowModels:getMlflowModels", {
         "names": args.names,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -81,4 +90,8 @@ export interface GetMlflowModelsOutputArgs {
      * List of names of databricks_mlflow_model
      */
     names?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.GetMlflowModelsProviderConfigArgs>;
 }

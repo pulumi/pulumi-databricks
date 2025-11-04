@@ -25,11 +25,11 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.aws.s3.BucketV2;
- * import com.pulumi.aws.s3.BucketV2Args;
- * import com.pulumi.aws.s3.BucketVersioningV2;
- * import com.pulumi.aws.s3.BucketVersioningV2Args;
- * import com.pulumi.aws.s3.inputs.BucketVersioningV2VersioningConfigurationArgs;
+ * import com.pulumi.aws.s3.Bucket;
+ * import com.pulumi.aws.s3.BucketArgs;
+ * import com.pulumi.aws.s3.BucketVersioning;
+ * import com.pulumi.aws.s3.BucketVersioningArgs;
+ * import com.pulumi.aws.s3.inputs.BucketVersioningVersioningConfigurationArgs;
  * import com.pulumi.databricks.MwsStorageConfigurations;
  * import com.pulumi.databricks.MwsStorageConfigurationsArgs;
  * import java.util.List;
@@ -47,14 +47,14 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var databricksAccountId = config.get("databricksAccountId");
- *         var rootStorageBucket = new BucketV2("rootStorageBucket", BucketV2Args.builder()
+ *         var rootStorageBucket = new Bucket("rootStorageBucket", BucketArgs.builder()
  *             .bucket(String.format("%s-rootbucket", prefix))
  *             .acl("private")
  *             .build());
  * 
- *         var rootVersioning = new BucketVersioningV2("rootVersioning", BucketVersioningV2Args.builder()
+ *         var rootVersioning = new BucketVersioning("rootVersioning", BucketVersioningArgs.builder()
  *             .bucket(rootStorageBucket.id())
- *             .versioningConfiguration(BucketVersioningV2VersioningConfigurationArgs.builder()
+ *             .versioningConfiguration(BucketVersioningVersioningConfigurationArgs.builder()
  *                 .status("Disabled")
  *                 .build())
  *             .build());

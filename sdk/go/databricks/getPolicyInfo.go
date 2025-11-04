@@ -11,6 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
 func LookupPolicyInfo(ctx *pulumi.Context, args *LookupPolicyInfoArgs, opts ...pulumi.InvokeOption) (*LookupPolicyInfoResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupPolicyInfoResult
@@ -23,45 +24,16 @@ func LookupPolicyInfo(ctx *pulumi.Context, args *LookupPolicyInfoArgs, opts ...p
 
 // A collection of arguments for invoking getPolicyInfo.
 type LookupPolicyInfoArgs struct {
-	// (ColumnMaskOptions) - Options for column mask policies. Valid only if `policyType` is `POLICY_TYPE_COLUMN_MASK`.
-	// Required on create and optional on update. When specified on update,
-	// the new options will replace the existing options as a whole
-	ColumnMask *GetPolicyInfoColumnMask `pulumi:"columnMask"`
-	// (string) - Optional description of the policy
-	Comment *string `pulumi:"comment"`
-	// (list of string) - Optional list of user or group names that should be excluded from the policy
-	ExceptPrincipals []string `pulumi:"exceptPrincipals"`
-	// (string) - Type of securables that the policy should take effect on.
-	// Only `TABLE` is supported at this moment.
-	// Required on create and optional on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
-	ForSecurableType string `pulumi:"forSecurableType"`
-	// (list of MatchColumn) - Optional list of condition expressions used to match table columns.
-	// Only valid when `forSecurableType` is `TABLE`.
-	// When specified, the policy only applies to tables whose columns satisfy all match conditions
-	MatchColumns []GetPolicyInfoMatchColumn `pulumi:"matchColumns"`
 	// Name of the policy. Required on create and optional on update.
 	// To rename the policy, set `name` to a different value on update
-	Name *string `pulumi:"name"`
+	Name string `pulumi:"name"`
 	// Full name of the securable on which the policy is defined.
 	// Required on create and ignored on update
-	OnSecurableFullname *string `pulumi:"onSecurableFullname"`
+	OnSecurableFullname string `pulumi:"onSecurableFullname"`
 	// Type of the securable on which the policy is defined.
 	// Only `CATALOG`, `SCHEMA` and `TABLE` are supported at this moment.
 	// Required on create and ignored on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
-	OnSecurableType *string `pulumi:"onSecurableType"`
-	// (string) - Type of the policy. Required on create and ignored on update. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
-	PolicyType string `pulumi:"policyType"`
-	// (RowFilterOptions) - Options for row filter policies. Valid only if `policyType` is `POLICY_TYPE_ROW_FILTER`.
-	// Required on create and optional on update. When specified on update,
-	// the new options will replace the existing options as a whole
-	RowFilter *GetPolicyInfoRowFilter `pulumi:"rowFilter"`
-	// (list of string) - List of user or group names that the policy applies to.
-	// Required on create and optional on update
-	ToPrincipals []string `pulumi:"toPrincipals"`
-	// (string) - Optional condition when the policy should take effect
-	WhenCondition *string `pulumi:"whenCondition"`
-	// Workspace ID of the resource
-	WorkspaceId *string `pulumi:"workspaceId"`
+	OnSecurableType string `pulumi:"onSecurableType"`
 }
 
 // A collection of values returned by getPolicyInfo.
@@ -69,9 +41,9 @@ type LookupPolicyInfoResult struct {
 	// (ColumnMaskOptions) - Options for column mask policies. Valid only if `policyType` is `POLICY_TYPE_COLUMN_MASK`.
 	// Required on create and optional on update. When specified on update,
 	// the new options will replace the existing options as a whole
-	ColumnMask *GetPolicyInfoColumnMask `pulumi:"columnMask"`
+	ColumnMask GetPolicyInfoColumnMask `pulumi:"columnMask"`
 	// (string) - Optional description of the policy
-	Comment *string `pulumi:"comment"`
+	Comment string `pulumi:"comment"`
 	// (integer) - Time at which the policy was created, in epoch milliseconds. Output only
 	CreatedAt int `pulumi:"createdAt"`
 	// (string) - Username of the user who created the policy. Output only
@@ -90,20 +62,20 @@ type LookupPolicyInfoResult struct {
 	MatchColumns []GetPolicyInfoMatchColumn `pulumi:"matchColumns"`
 	// (string) - Name of the policy. Required on create and optional on update.
 	// To rename the policy, set `name` to a different value on update
-	Name *string `pulumi:"name"`
+	Name string `pulumi:"name"`
 	// (string) - Full name of the securable on which the policy is defined.
 	// Required on create and ignored on update
-	OnSecurableFullname *string `pulumi:"onSecurableFullname"`
+	OnSecurableFullname string `pulumi:"onSecurableFullname"`
 	// (string) - Type of the securable on which the policy is defined.
 	// Only `CATALOG`, `SCHEMA` and `TABLE` are supported at this moment.
 	// Required on create and ignored on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
-	OnSecurableType *string `pulumi:"onSecurableType"`
+	OnSecurableType string `pulumi:"onSecurableType"`
 	// (string) - Type of the policy. Required on create and ignored on update. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
 	PolicyType string `pulumi:"policyType"`
 	// (RowFilterOptions) - Options for row filter policies. Valid only if `policyType` is `POLICY_TYPE_ROW_FILTER`.
 	// Required on create and optional on update. When specified on update,
 	// the new options will replace the existing options as a whole
-	RowFilter *GetPolicyInfoRowFilter `pulumi:"rowFilter"`
+	RowFilter GetPolicyInfoRowFilter `pulumi:"rowFilter"`
 	// (list of string) - List of user or group names that the policy applies to.
 	// Required on create and optional on update
 	ToPrincipals []string `pulumi:"toPrincipals"`
@@ -112,8 +84,7 @@ type LookupPolicyInfoResult struct {
 	// (string) - Username of the user who last modified the policy. Output only
 	UpdatedBy string `pulumi:"updatedBy"`
 	// (string) - Optional condition when the policy should take effect
-	WhenCondition *string `pulumi:"whenCondition"`
-	WorkspaceId   *string `pulumi:"workspaceId"`
+	WhenCondition string `pulumi:"whenCondition"`
 }
 
 func LookupPolicyInfoOutput(ctx *pulumi.Context, args LookupPolicyInfoOutputArgs, opts ...pulumi.InvokeOption) LookupPolicyInfoResultOutput {
@@ -127,45 +98,16 @@ func LookupPolicyInfoOutput(ctx *pulumi.Context, args LookupPolicyInfoOutputArgs
 
 // A collection of arguments for invoking getPolicyInfo.
 type LookupPolicyInfoOutputArgs struct {
-	// (ColumnMaskOptions) - Options for column mask policies. Valid only if `policyType` is `POLICY_TYPE_COLUMN_MASK`.
-	// Required on create and optional on update. When specified on update,
-	// the new options will replace the existing options as a whole
-	ColumnMask GetPolicyInfoColumnMaskPtrInput `pulumi:"columnMask"`
-	// (string) - Optional description of the policy
-	Comment pulumi.StringPtrInput `pulumi:"comment"`
-	// (list of string) - Optional list of user or group names that should be excluded from the policy
-	ExceptPrincipals pulumi.StringArrayInput `pulumi:"exceptPrincipals"`
-	// (string) - Type of securables that the policy should take effect on.
-	// Only `TABLE` is supported at this moment.
-	// Required on create and optional on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
-	ForSecurableType pulumi.StringInput `pulumi:"forSecurableType"`
-	// (list of MatchColumn) - Optional list of condition expressions used to match table columns.
-	// Only valid when `forSecurableType` is `TABLE`.
-	// When specified, the policy only applies to tables whose columns satisfy all match conditions
-	MatchColumns GetPolicyInfoMatchColumnArrayInput `pulumi:"matchColumns"`
 	// Name of the policy. Required on create and optional on update.
 	// To rename the policy, set `name` to a different value on update
-	Name pulumi.StringPtrInput `pulumi:"name"`
+	Name pulumi.StringInput `pulumi:"name"`
 	// Full name of the securable on which the policy is defined.
 	// Required on create and ignored on update
-	OnSecurableFullname pulumi.StringPtrInput `pulumi:"onSecurableFullname"`
+	OnSecurableFullname pulumi.StringInput `pulumi:"onSecurableFullname"`
 	// Type of the securable on which the policy is defined.
 	// Only `CATALOG`, `SCHEMA` and `TABLE` are supported at this moment.
 	// Required on create and ignored on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
-	OnSecurableType pulumi.StringPtrInput `pulumi:"onSecurableType"`
-	// (string) - Type of the policy. Required on create and ignored on update. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
-	PolicyType pulumi.StringInput `pulumi:"policyType"`
-	// (RowFilterOptions) - Options for row filter policies. Valid only if `policyType` is `POLICY_TYPE_ROW_FILTER`.
-	// Required on create and optional on update. When specified on update,
-	// the new options will replace the existing options as a whole
-	RowFilter GetPolicyInfoRowFilterPtrInput `pulumi:"rowFilter"`
-	// (list of string) - List of user or group names that the policy applies to.
-	// Required on create and optional on update
-	ToPrincipals pulumi.StringArrayInput `pulumi:"toPrincipals"`
-	// (string) - Optional condition when the policy should take effect
-	WhenCondition pulumi.StringPtrInput `pulumi:"whenCondition"`
-	// Workspace ID of the resource
-	WorkspaceId pulumi.StringPtrInput `pulumi:"workspaceId"`
+	OnSecurableType pulumi.StringInput `pulumi:"onSecurableType"`
 }
 
 func (LookupPolicyInfoOutputArgs) ElementType() reflect.Type {
@@ -190,13 +132,13 @@ func (o LookupPolicyInfoResultOutput) ToLookupPolicyInfoResultOutputWithContext(
 // (ColumnMaskOptions) - Options for column mask policies. Valid only if `policyType` is `POLICY_TYPE_COLUMN_MASK`.
 // Required on create and optional on update. When specified on update,
 // the new options will replace the existing options as a whole
-func (o LookupPolicyInfoResultOutput) ColumnMask() GetPolicyInfoColumnMaskPtrOutput {
-	return o.ApplyT(func(v LookupPolicyInfoResult) *GetPolicyInfoColumnMask { return v.ColumnMask }).(GetPolicyInfoColumnMaskPtrOutput)
+func (o LookupPolicyInfoResultOutput) ColumnMask() GetPolicyInfoColumnMaskOutput {
+	return o.ApplyT(func(v LookupPolicyInfoResult) GetPolicyInfoColumnMask { return v.ColumnMask }).(GetPolicyInfoColumnMaskOutput)
 }
 
 // (string) - Optional description of the policy
-func (o LookupPolicyInfoResultOutput) Comment() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupPolicyInfoResult) *string { return v.Comment }).(pulumi.StringPtrOutput)
+func (o LookupPolicyInfoResultOutput) Comment() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPolicyInfoResult) string { return v.Comment }).(pulumi.StringOutput)
 }
 
 // (integer) - Time at which the policy was created, in epoch milliseconds. Output only
@@ -235,21 +177,21 @@ func (o LookupPolicyInfoResultOutput) MatchColumns() GetPolicyInfoMatchColumnArr
 
 // (string) - Name of the policy. Required on create and optional on update.
 // To rename the policy, set `name` to a different value on update
-func (o LookupPolicyInfoResultOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupPolicyInfoResult) *string { return v.Name }).(pulumi.StringPtrOutput)
+func (o LookupPolicyInfoResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPolicyInfoResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // (string) - Full name of the securable on which the policy is defined.
 // Required on create and ignored on update
-func (o LookupPolicyInfoResultOutput) OnSecurableFullname() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupPolicyInfoResult) *string { return v.OnSecurableFullname }).(pulumi.StringPtrOutput)
+func (o LookupPolicyInfoResultOutput) OnSecurableFullname() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPolicyInfoResult) string { return v.OnSecurableFullname }).(pulumi.StringOutput)
 }
 
 // (string) - Type of the securable on which the policy is defined.
 // Only `CATALOG`, `SCHEMA` and `TABLE` are supported at this moment.
 // Required on create and ignored on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
-func (o LookupPolicyInfoResultOutput) OnSecurableType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupPolicyInfoResult) *string { return v.OnSecurableType }).(pulumi.StringPtrOutput)
+func (o LookupPolicyInfoResultOutput) OnSecurableType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPolicyInfoResult) string { return v.OnSecurableType }).(pulumi.StringOutput)
 }
 
 // (string) - Type of the policy. Required on create and ignored on update. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
@@ -260,8 +202,8 @@ func (o LookupPolicyInfoResultOutput) PolicyType() pulumi.StringOutput {
 // (RowFilterOptions) - Options for row filter policies. Valid only if `policyType` is `POLICY_TYPE_ROW_FILTER`.
 // Required on create and optional on update. When specified on update,
 // the new options will replace the existing options as a whole
-func (o LookupPolicyInfoResultOutput) RowFilter() GetPolicyInfoRowFilterPtrOutput {
-	return o.ApplyT(func(v LookupPolicyInfoResult) *GetPolicyInfoRowFilter { return v.RowFilter }).(GetPolicyInfoRowFilterPtrOutput)
+func (o LookupPolicyInfoResultOutput) RowFilter() GetPolicyInfoRowFilterOutput {
+	return o.ApplyT(func(v LookupPolicyInfoResult) GetPolicyInfoRowFilter { return v.RowFilter }).(GetPolicyInfoRowFilterOutput)
 }
 
 // (list of string) - List of user or group names that the policy applies to.
@@ -281,12 +223,8 @@ func (o LookupPolicyInfoResultOutput) UpdatedBy() pulumi.StringOutput {
 }
 
 // (string) - Optional condition when the policy should take effect
-func (o LookupPolicyInfoResultOutput) WhenCondition() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupPolicyInfoResult) *string { return v.WhenCondition }).(pulumi.StringPtrOutput)
-}
-
-func (o LookupPolicyInfoResultOutput) WorkspaceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupPolicyInfoResult) *string { return v.WorkspaceId }).(pulumi.StringPtrOutput)
+func (o LookupPolicyInfoResultOutput) WhenCondition() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPolicyInfoResult) string { return v.WhenCondition }).(pulumi.StringOutput)
 }
 
 func init() {

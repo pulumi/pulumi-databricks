@@ -16,7 +16,7 @@ namespace Pulumi.Databricks.Outputs
         /// <summary>
         /// (string) - The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
         /// </summary>
-        public readonly string? Capacity;
+        public readonly string Capacity;
         /// <summary>
         /// (list of DatabaseInstanceRef) - The refs of the child instances. This is only available if the instance is
         /// parent instance
@@ -31,59 +31,67 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string Creator;
         /// <summary>
-        /// (boolean) - xref AIP-129. `EnablePgNativeLogin` is owned by the client, while `EffectiveEnablePgNativeLogin` is owned by the server.
-        /// `EnablePgNativeLogin` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-        /// `EffectiveEnablePgNativeLogin` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+        /// (list of CustomTag) - Custom tags associated with the instance. This field is only included on create and update responses
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetDatabaseInstancesDatabaseInstanceCustomTagResult> CustomTags;
+        /// <summary>
+        /// (string, deprecated) - Deprecated. The sku of the instance; this field will always match the value of capacity
+        /// </summary>
+        public readonly string EffectiveCapacity;
+        /// <summary>
+        /// (list of CustomTag) - The recorded custom tags associated with the instance
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetDatabaseInstancesDatabaseInstanceEffectiveCustomTagResult> EffectiveCustomTags;
+        /// <summary>
+        /// (boolean) - Whether the instance has PG native password login enabled
         /// </summary>
         public readonly bool EffectiveEnablePgNativeLogin;
         /// <summary>
-        /// (boolean) - xref AIP-129. `EnableReadableSecondaries` is owned by the client, while `EffectiveEnableReadableSecondaries` is owned by the server.
-        /// `EnableReadableSecondaries` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-        /// `EffectiveEnableReadableSecondaries` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+        /// (boolean) - Whether secondaries serving read-only traffic are enabled. Defaults to false
         /// </summary>
         public readonly bool EffectiveEnableReadableSecondaries;
         /// <summary>
-        /// (integer) - xref AIP-129. `NodeCount` is owned by the client, while `EffectiveNodeCount` is owned by the server.
-        /// `NodeCount` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-        /// `EffectiveNodeCount` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+        /// (integer) - The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
+        /// 1 primary and 0 secondaries
         /// </summary>
         public readonly int EffectiveNodeCount;
         /// <summary>
-        /// (integer) - xref AIP-129. `RetentionWindowInDays` is owned by the client, while `EffectiveRetentionWindowInDays` is owned by the server.
-        /// `RetentionWindowInDays` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-        /// `EffectiveRetentionWindowInDays` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+        /// (integer) - The retention window for the instance. This is the time window in days
+        /// for which the historical data is retained
         /// </summary>
         public readonly int EffectiveRetentionWindowInDays;
         /// <summary>
-        /// (boolean) - xref AIP-129. `Stopped` is owned by the client, while `EffectiveStopped` is owned by the server.
-        /// `Stopped` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-        /// `EffectiveStopped` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+        /// (boolean) - Whether the instance is stopped
         /// </summary>
         public readonly bool EffectiveStopped;
         /// <summary>
-        /// (boolean) - Whether the instance has PG native password login enabled. Defaults to true
+        /// (string) - The policy that is applied to the instance
+        /// </summary>
+        public readonly string EffectiveUsagePolicyId;
+        /// <summary>
+        /// (boolean) - Whether to enable PG native password login on the instance. Defaults to false
         /// </summary>
         public readonly bool EnablePgNativeLogin;
         /// <summary>
         /// (boolean) - Whether to enable secondaries to serve read-only traffic. Defaults to false
         /// </summary>
-        public readonly bool? EnableReadableSecondaries;
+        public readonly bool EnableReadableSecondaries;
         /// <summary>
         /// (string) - Name of the ref database instance
         /// </summary>
         public readonly string Name;
         /// <summary>
         /// (integer) - The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
-        /// 1 primary and 0 secondaries
+        /// 1 primary and 0 secondaries. This field is input only, see EffectiveNodeCount for the output
         /// </summary>
-        public readonly int? NodeCount;
+        public readonly int NodeCount;
         /// <summary>
         /// (DatabaseInstanceRef) - The ref of the parent instance. This is only available if the instance is
         /// child instance.
         /// Input: For specifying the parent instance to create a child instance. Optional.
         /// Output: Only populated if provided as input to create a child instance
         /// </summary>
-        public readonly Outputs.GetDatabaseInstancesDatabaseInstanceParentInstanceRefResult? ParentInstanceRef;
+        public readonly Outputs.GetDatabaseInstancesDatabaseInstanceParentInstanceRefResult ParentInstanceRef;
         /// <summary>
         /// (string) - The version of Postgres running on the instance
         /// </summary>
@@ -102,29 +110,39 @@ namespace Pulumi.Databricks.Outputs
         /// for which the historical data is retained. The default value is 7 days.
         /// Valid values are 2 to 35 days
         /// </summary>
-        public readonly int? RetentionWindowInDays;
+        public readonly int RetentionWindowInDays;
         /// <summary>
         /// (string) - The current state of the instance. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
         /// </summary>
         public readonly string State;
         /// <summary>
-        /// (boolean) - Whether the instance is stopped
+        /// (boolean) - Whether to stop the instance. An input only param, see EffectiveStopped for the output
         /// </summary>
-        public readonly bool? Stopped;
+        public readonly bool Stopped;
         /// <summary>
         /// (string) - Id of the ref database instance
         /// </summary>
         public readonly string Uid;
+        /// <summary>
+        /// (string) - The desired usage policy to associate with the instance
+        /// </summary>
+        public readonly string UsagePolicyId;
 
         [OutputConstructor]
         private GetDatabaseInstancesDatabaseInstanceResult(
-            string? capacity,
+            string capacity,
 
             ImmutableArray<Outputs.GetDatabaseInstancesDatabaseInstanceChildInstanceRefResult> childInstanceRefs,
 
             string creationTime,
 
             string creator,
+
+            ImmutableArray<Outputs.GetDatabaseInstancesDatabaseInstanceCustomTagResult> customTags,
+
+            string effectiveCapacity,
+
+            ImmutableArray<Outputs.GetDatabaseInstancesDatabaseInstanceEffectiveCustomTagResult> effectiveCustomTags,
 
             bool effectiveEnablePgNativeLogin,
 
@@ -136,15 +154,17 @@ namespace Pulumi.Databricks.Outputs
 
             bool effectiveStopped,
 
+            string effectiveUsagePolicyId,
+
             bool enablePgNativeLogin,
 
-            bool? enableReadableSecondaries,
+            bool enableReadableSecondaries,
 
             string name,
 
-            int? nodeCount,
+            int nodeCount,
 
-            Outputs.GetDatabaseInstancesDatabaseInstanceParentInstanceRefResult? parentInstanceRef,
+            Outputs.GetDatabaseInstancesDatabaseInstanceParentInstanceRefResult parentInstanceRef,
 
             string pgVersion,
 
@@ -152,23 +172,29 @@ namespace Pulumi.Databricks.Outputs
 
             string readWriteDns,
 
-            int? retentionWindowInDays,
+            int retentionWindowInDays,
 
             string state,
 
-            bool? stopped,
+            bool stopped,
 
-            string uid)
+            string uid,
+
+            string usagePolicyId)
         {
             Capacity = capacity;
             ChildInstanceRefs = childInstanceRefs;
             CreationTime = creationTime;
             Creator = creator;
+            CustomTags = customTags;
+            EffectiveCapacity = effectiveCapacity;
+            EffectiveCustomTags = effectiveCustomTags;
             EffectiveEnablePgNativeLogin = effectiveEnablePgNativeLogin;
             EffectiveEnableReadableSecondaries = effectiveEnableReadableSecondaries;
             EffectiveNodeCount = effectiveNodeCount;
             EffectiveRetentionWindowInDays = effectiveRetentionWindowInDays;
             EffectiveStopped = effectiveStopped;
+            EffectiveUsagePolicyId = effectiveUsagePolicyId;
             EnablePgNativeLogin = enablePgNativeLogin;
             EnableReadableSecondaries = enableReadableSecondaries;
             Name = name;
@@ -181,6 +207,7 @@ namespace Pulumi.Databricks.Outputs
             State = state;
             Stopped = stopped;
             Uid = uid;
+            UsagePolicyId = usagePolicyId;
         }
     }
 }

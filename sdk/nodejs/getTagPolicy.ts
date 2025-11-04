@@ -7,17 +7,29 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
  * This data source can be used to get a single tag policy by its tag key.
  *
- * > **Note** This resource can only be used with an account-level provider!
+ * > **Note** This resource can only be used with a workspace-level provider!
+ *
+ * ## Example Usage
+ *
+ * Referring to a tag policy by its tag key:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const exampleTagPolicy = databricks.getTagPolicy({
+ *     tagKey: "example_tag_key",
+ * });
+ * ```
  */
 export function getTagPolicy(args: GetTagPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetTagPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getTagPolicy:getTagPolicy", {
-        "description": args.description,
         "tagKey": args.tagKey,
-        "values": args.values,
-        "workspaceId": args.workspaceId,
     }, opts);
 }
 
@@ -25,19 +37,7 @@ export function getTagPolicy(args: GetTagPolicyArgs, opts?: pulumi.InvokeOptions
  * A collection of arguments for invoking getTagPolicy.
  */
 export interface GetTagPolicyArgs {
-    /**
-     * (string)
-     */
-    description?: string;
     tagKey: string;
-    /**
-     * (list of Value)
-     */
-    values?: inputs.GetTagPolicyValue[];
-    /**
-     * Workspace ID of the resource
-     */
-    workspaceId?: string;
 }
 
 /**
@@ -45,9 +45,13 @@ export interface GetTagPolicyArgs {
  */
 export interface GetTagPolicyResult {
     /**
+     * (string) - Timestamp when the tag policy was created
+     */
+    readonly createTime: string;
+    /**
      * (string)
      */
-    readonly description?: string;
+    readonly description: string;
     /**
      * (string)
      */
@@ -57,23 +61,38 @@ export interface GetTagPolicyResult {
      */
     readonly tagKey: string;
     /**
+     * (string) - Timestamp when the tag policy was last updated
+     */
+    readonly updateTime: string;
+    /**
      * (list of Value)
      */
-    readonly values?: outputs.GetTagPolicyValue[];
-    readonly workspaceId?: string;
+    readonly values: outputs.GetTagPolicyValue[];
 }
 /**
+ * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
  * This data source can be used to get a single tag policy by its tag key.
  *
- * > **Note** This resource can only be used with an account-level provider!
+ * > **Note** This resource can only be used with a workspace-level provider!
+ *
+ * ## Example Usage
+ *
+ * Referring to a tag policy by its tag key:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const exampleTagPolicy = databricks.getTagPolicy({
+ *     tagKey: "example_tag_key",
+ * });
+ * ```
  */
 export function getTagPolicyOutput(args: GetTagPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTagPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getTagPolicy:getTagPolicy", {
-        "description": args.description,
         "tagKey": args.tagKey,
-        "values": args.values,
-        "workspaceId": args.workspaceId,
     }, opts);
 }
 
@@ -81,17 +100,5 @@ export function getTagPolicyOutput(args: GetTagPolicyOutputArgs, opts?: pulumi.I
  * A collection of arguments for invoking getTagPolicy.
  */
 export interface GetTagPolicyOutputArgs {
-    /**
-     * (string)
-     */
-    description?: pulumi.Input<string>;
     tagKey: pulumi.Input<string>;
-    /**
-     * (list of Value)
-     */
-    values?: pulumi.Input<pulumi.Input<inputs.GetTagPolicyValueArgs>[]>;
-    /**
-     * Workspace ID of the resource
-     */
-    workspaceId?: pulumi.Input<string>;
 }

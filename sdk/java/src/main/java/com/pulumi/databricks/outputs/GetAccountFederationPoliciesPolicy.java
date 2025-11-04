@@ -9,8 +9,6 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAccountFederationPoliciesPolicy {
@@ -23,7 +21,7 @@ public final class GetAccountFederationPoliciesPolicy {
      * @return (string) - Description of the federation policy
      * 
      */
-    private @Nullable String description;
+    private String description;
     /**
      * @return (string) - Resource name for the federation policy. Example values include
      * `accounts/&lt;account-id&gt;/federationPolicies/my-federation-policy` for Account Federation Policies, and
@@ -38,14 +36,14 @@ public final class GetAccountFederationPoliciesPolicy {
      * @return (OidcFederationPolicy)
      * 
      */
-    private @Nullable GetAccountFederationPoliciesPolicyOidcPolicy oidcPolicy;
+    private GetAccountFederationPoliciesPolicyOidcPolicy oidcPolicy;
     /**
-     * @return (string) - The ID of the federation policy
+     * @return (string) - The ID of the federation policy. Output only
      * 
      */
     private String policyId;
     /**
-     * @return (integer) - The service principal ID that this federation policy applies to. Only set for service principal federation policies
+     * @return (integer) - The service principal ID that this federation policy applies to. Output only. Only set for service principal federation policies
      * 
      */
     private Integer servicePrincipalId;
@@ -72,8 +70,8 @@ public final class GetAccountFederationPoliciesPolicy {
      * @return (string) - Description of the federation policy
      * 
      */
-    public Optional<String> description() {
-        return Optional.ofNullable(this.description);
+    public String description() {
+        return this.description;
     }
     /**
      * @return (string) - Resource name for the federation policy. Example values include
@@ -91,18 +89,18 @@ public final class GetAccountFederationPoliciesPolicy {
      * @return (OidcFederationPolicy)
      * 
      */
-    public Optional<GetAccountFederationPoliciesPolicyOidcPolicy> oidcPolicy() {
-        return Optional.ofNullable(this.oidcPolicy);
+    public GetAccountFederationPoliciesPolicyOidcPolicy oidcPolicy() {
+        return this.oidcPolicy;
     }
     /**
-     * @return (string) - The ID of the federation policy
+     * @return (string) - The ID of the federation policy. Output only
      * 
      */
     public String policyId() {
         return this.policyId;
     }
     /**
-     * @return (integer) - The service principal ID that this federation policy applies to. Only set for service principal federation policies
+     * @return (integer) - The service principal ID that this federation policy applies to. Output only. Only set for service principal federation policies
      * 
      */
     public Integer servicePrincipalId() {
@@ -133,9 +131,9 @@ public final class GetAccountFederationPoliciesPolicy {
     @CustomType.Builder
     public static final class Builder {
         private String createTime;
-        private @Nullable String description;
+        private String description;
         private String name;
-        private @Nullable GetAccountFederationPoliciesPolicyOidcPolicy oidcPolicy;
+        private GetAccountFederationPoliciesPolicyOidcPolicy oidcPolicy;
         private String policyId;
         private Integer servicePrincipalId;
         private String uid;
@@ -162,8 +160,10 @@ public final class GetAccountFederationPoliciesPolicy {
             return this;
         }
         @CustomType.Setter
-        public Builder description(@Nullable String description) {
-
+        public Builder description(String description) {
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetAccountFederationPoliciesPolicy", "description");
+            }
             this.description = description;
             return this;
         }
@@ -176,8 +176,10 @@ public final class GetAccountFederationPoliciesPolicy {
             return this;
         }
         @CustomType.Setter
-        public Builder oidcPolicy(@Nullable GetAccountFederationPoliciesPolicyOidcPolicy oidcPolicy) {
-
+        public Builder oidcPolicy(GetAccountFederationPoliciesPolicyOidcPolicy oidcPolicy) {
+            if (oidcPolicy == null) {
+              throw new MissingRequiredPropertyException("GetAccountFederationPoliciesPolicy", "oidcPolicy");
+            }
             this.oidcPolicy = oidcPolicy;
             return this;
         }

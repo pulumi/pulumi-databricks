@@ -37,6 +37,7 @@ export function getStorageCredential(args: GetStorageCredentialArgs, opts?: pulu
     return pulumi.runtime.invoke("databricks:index/getStorageCredential:getStorageCredential", {
         "id": args.id,
         "name": args.name,
+        "providerConfig": args.providerConfig,
         "storageCredentialInfo": args.storageCredentialInfo,
     }, opts);
 }
@@ -54,6 +55,10 @@ export interface GetStorageCredentialArgs {
      */
     name: string;
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: inputs.GetStorageCredentialProviderConfig;
+    /**
      * array of objects with information about storage credential.
      */
     storageCredentialInfo?: inputs.GetStorageCredentialStorageCredentialInfo;
@@ -68,6 +73,7 @@ export interface GetStorageCredentialResult {
      */
     readonly id: string;
     readonly name: string;
+    readonly providerConfig?: outputs.GetStorageCredentialProviderConfig;
     /**
      * array of objects with information about storage credential.
      */
@@ -104,6 +110,7 @@ export function getStorageCredentialOutput(args: GetStorageCredentialOutputArgs,
     return pulumi.runtime.invokeOutput("databricks:index/getStorageCredential:getStorageCredential", {
         "id": args.id,
         "name": args.name,
+        "providerConfig": args.providerConfig,
         "storageCredentialInfo": args.storageCredentialInfo,
     }, opts);
 }
@@ -120,6 +127,10 @@ export interface GetStorageCredentialOutputArgs {
      * The name of the storage credential
      */
     name: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.GetStorageCredentialProviderConfigArgs>;
     /**
      * array of objects with information about storage credential.
      */

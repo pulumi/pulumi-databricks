@@ -109,6 +109,12 @@ namespace Pulumi.Databricks
         public string Path { get; set; } = null!;
 
         /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Inputs.GetDirectoryProviderConfigArgs? ProviderConfig { get; set; }
+
+        /// <summary>
         /// path on Workspace File System (WSFS) in form of `/Workspace` + `Path`
         /// </summary>
         [Input("workspacePath")]
@@ -138,6 +144,12 @@ namespace Pulumi.Databricks
         public Input<string> Path { get; set; } = null!;
 
         /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.GetDirectoryProviderConfigInputArgs>? ProviderConfig { get; set; }
+
+        /// <summary>
         /// path on Workspace File System (WSFS) in form of `/Workspace` + `Path`
         /// </summary>
         [Input("workspacePath")]
@@ -159,6 +171,7 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly int ObjectId;
         public readonly string Path;
+        public readonly Outputs.GetDirectoryProviderConfigResult? ProviderConfig;
         /// <summary>
         /// path on Workspace File System (WSFS) in form of `/Workspace` + `Path`
         /// </summary>
@@ -172,11 +185,14 @@ namespace Pulumi.Databricks
 
             string path,
 
+            Outputs.GetDirectoryProviderConfigResult? providerConfig,
+
             string workspacePath)
         {
             Id = id;
             ObjectId = objectId;
             Path = path;
+            ProviderConfig = providerConfig;
             WorkspacePath = workspacePath;
         }
     }

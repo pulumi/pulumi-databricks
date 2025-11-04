@@ -40,14 +40,14 @@ public final class AccountFederationPolicyArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * (string) - The ID of the federation policy
+     * (string) - The ID of the federation policy. Output only
      * 
      */
     @Import(name="policyId")
     private @Nullable Output<String> policyId;
 
     /**
-     * @return (string) - The ID of the federation policy
+     * @return (string) - The ID of the federation policy. Output only
      * 
      */
     public Optional<Output<String>> policyId() {
@@ -55,14 +55,14 @@ public final class AccountFederationPolicyArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * (integer) - The service principal ID that this federation policy applies to. Only set for service principal federation policies
+     * (integer) - The service principal ID that this federation policy applies to. Output only. Only set for service principal federation policies
      * 
      */
     @Import(name="servicePrincipalId")
     private @Nullable Output<Integer> servicePrincipalId;
 
     /**
-     * @return (integer) - The service principal ID that this federation policy applies to. Only set for service principal federation policies
+     * @return (integer) - The service principal ID that this federation policy applies to. Output only. Only set for service principal federation policies
      * 
      */
     public Optional<Output<Integer>> servicePrincipalId() {
@@ -127,7 +127,7 @@ public final class AccountFederationPolicyArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param policyId (string) - The ID of the federation policy
+         * @param policyId (string) - The ID of the federation policy. Output only
          * 
          * @return builder
          * 
@@ -138,7 +138,7 @@ public final class AccountFederationPolicyArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param policyId (string) - The ID of the federation policy
+         * @param policyId (string) - The ID of the federation policy. Output only
          * 
          * @return builder
          * 
@@ -148,7 +148,7 @@ public final class AccountFederationPolicyArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param servicePrincipalId (integer) - The service principal ID that this federation policy applies to. Only set for service principal federation policies
+         * @param servicePrincipalId (integer) - The service principal ID that this federation policy applies to. Output only. Only set for service principal federation policies
          * 
          * @return builder
          * 
@@ -159,7 +159,7 @@ public final class AccountFederationPolicyArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param servicePrincipalId (integer) - The service principal ID that this federation policy applies to. Only set for service principal federation policies
+         * @param servicePrincipalId (integer) - The service principal ID that this federation policy applies to. Output only. Only set for service principal federation policies
          * 
          * @return builder
          * 

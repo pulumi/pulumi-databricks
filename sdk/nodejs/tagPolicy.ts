@@ -7,9 +7,34 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
  * Define tag policies to manage governed tags in your account.
  *
- * > **Note** This resource can only be used with an account-level provider!
+ * > **Note** This resource can only be used with a workspace-level provider!
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const exampleTagPolicy = new databricks.TagPolicy("example_tag_policy", {
+ *     tagKey: "example_tag_key",
+ *     description: "Example description.",
+ *     values: [
+ *         {
+ *             name: "example_value_1",
+ *         },
+ *         {
+ *             name: "example_value_2",
+ *         },
+ *         {
+ *             name: "example_value_3",
+ *         },
+ *     ],
+ * });
+ * ```
  *
  * ## Import
  *
@@ -28,7 +53,7 @@ import * as utilities from "./utilities";
  * If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
  *
  * ```sh
- * $ pulumi import databricks:index/tagPolicy:TagPolicy databricks_tag_policy "tag_key"
+ * $ pulumi import databricks:index/tagPolicy:TagPolicy this "tag_key"
  * ```
  */
 export class TagPolicy extends pulumi.CustomResource {
@@ -59,13 +84,17 @@ export class TagPolicy extends pulumi.CustomResource {
         return obj['__pulumiType'] === TagPolicy.__pulumiType;
     }
 
+    /**
+     * (string) - Timestamp when the tag policy was created
+     */
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     declare public readonly description: pulumi.Output<string | undefined>;
     declare public readonly tagKey: pulumi.Output<string>;
-    declare public readonly values: pulumi.Output<outputs.TagPolicyValue[] | undefined>;
     /**
-     * Workspace ID of the resource
+     * (string) - Timestamp when the tag policy was last updated
      */
-    declare public readonly workspaceId: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
+    declare public readonly values: pulumi.Output<outputs.TagPolicyValue[] | undefined>;
 
     /**
      * Create a TagPolicy resource with the given unique name, arguments, and options.
@@ -80,10 +109,11 @@ export class TagPolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TagPolicyState | undefined;
+            resourceInputs["createTime"] = state?.createTime;
             resourceInputs["description"] = state?.description;
             resourceInputs["tagKey"] = state?.tagKey;
+            resourceInputs["updateTime"] = state?.updateTime;
             resourceInputs["values"] = state?.values;
-            resourceInputs["workspaceId"] = state?.workspaceId;
         } else {
             const args = argsOrState as TagPolicyArgs | undefined;
             if (args?.tagKey === undefined && !opts.urn) {
@@ -92,7 +122,8 @@ export class TagPolicy extends pulumi.CustomResource {
             resourceInputs["description"] = args?.description;
             resourceInputs["tagKey"] = args?.tagKey;
             resourceInputs["values"] = args?.values;
-            resourceInputs["workspaceId"] = args?.workspaceId;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(TagPolicy.__pulumiType, name, resourceInputs, opts);
@@ -103,13 +134,17 @@ export class TagPolicy extends pulumi.CustomResource {
  * Input properties used for looking up and filtering TagPolicy resources.
  */
 export interface TagPolicyState {
+    /**
+     * (string) - Timestamp when the tag policy was created
+     */
+    createTime?: pulumi.Input<string>;
     description?: pulumi.Input<string>;
     tagKey?: pulumi.Input<string>;
-    values?: pulumi.Input<pulumi.Input<inputs.TagPolicyValue>[]>;
     /**
-     * Workspace ID of the resource
+     * (string) - Timestamp when the tag policy was last updated
      */
-    workspaceId?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string>;
+    values?: pulumi.Input<pulumi.Input<inputs.TagPolicyValue>[]>;
 }
 
 /**
@@ -119,8 +154,4 @@ export interface TagPolicyArgs {
     description?: pulumi.Input<string>;
     tagKey: pulumi.Input<string>;
     values?: pulumi.Input<pulumi.Input<inputs.TagPolicyValue>[]>;
-    /**
-     * Workspace ID of the resource
-     */
-    workspaceId?: pulumi.Input<string>;
 }

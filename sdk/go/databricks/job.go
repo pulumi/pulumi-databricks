@@ -180,6 +180,8 @@ type Job struct {
 	PerformanceTarget pulumi.StringPtrOutput `pulumi:"performanceTarget"`
 	// Deprecated: should be used inside a task block and not inside a job block
 	PipelineTask JobPipelineTaskPtrOutput `pulumi:"pipelineTask"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig JobProviderConfigPtrOutput `pulumi:"providerConfig"`
 	// Deprecated: should be used inside a task block and not inside a job block
 	PythonWheelTask JobPythonWheelTaskPtrOutput `pulumi:"pythonWheelTask"`
 	// The queue status for the job. See queue Configuration Block below.
@@ -298,6 +300,8 @@ type jobState struct {
 	PerformanceTarget *string `pulumi:"performanceTarget"`
 	// Deprecated: should be used inside a task block and not inside a job block
 	PipelineTask *JobPipelineTask `pulumi:"pipelineTask"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *JobProviderConfig `pulumi:"providerConfig"`
 	// Deprecated: should be used inside a task block and not inside a job block
 	PythonWheelTask *JobPythonWheelTask `pulumi:"pythonWheelTask"`
 	// The queue status for the job. See queue Configuration Block below.
@@ -387,6 +391,8 @@ type JobState struct {
 	PerformanceTarget pulumi.StringPtrInput
 	// Deprecated: should be used inside a task block and not inside a job block
 	PipelineTask JobPipelineTaskPtrInput
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig JobProviderConfigPtrInput
 	// Deprecated: should be used inside a task block and not inside a job block
 	PythonWheelTask JobPythonWheelTaskPtrInput
 	// The queue status for the job. See queue Configuration Block below.
@@ -480,6 +486,8 @@ type jobArgs struct {
 	PerformanceTarget *string `pulumi:"performanceTarget"`
 	// Deprecated: should be used inside a task block and not inside a job block
 	PipelineTask *JobPipelineTask `pulumi:"pipelineTask"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *JobProviderConfig `pulumi:"providerConfig"`
 	// Deprecated: should be used inside a task block and not inside a job block
 	PythonWheelTask *JobPythonWheelTask `pulumi:"pythonWheelTask"`
 	// The queue status for the job. See queue Configuration Block below.
@@ -568,6 +576,8 @@ type JobArgs struct {
 	PerformanceTarget pulumi.StringPtrInput
 	// Deprecated: should be used inside a task block and not inside a job block
 	PipelineTask JobPipelineTaskPtrInput
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig JobProviderConfigPtrInput
 	// Deprecated: should be used inside a task block and not inside a job block
 	PythonWheelTask JobPythonWheelTaskPtrInput
 	// The queue status for the job. See queue Configuration Block below.
@@ -817,6 +827,11 @@ func (o JobOutput) PerformanceTarget() pulumi.StringPtrOutput {
 // Deprecated: should be used inside a task block and not inside a job block
 func (o JobOutput) PipelineTask() JobPipelineTaskPtrOutput {
 	return o.ApplyT(func(v *Job) JobPipelineTaskPtrOutput { return v.PipelineTask }).(JobPipelineTaskPtrOutput)
+}
+
+// Configure the provider for management through account provider. This block consists of the following fields:
+func (o JobOutput) ProviderConfig() JobProviderConfigPtrOutput {
+	return o.ApplyT(func(v *Job) JobProviderConfigPtrOutput { return v.ProviderConfig }).(JobProviderConfigPtrOutput)
 }
 
 // Deprecated: should be used inside a task block and not inside a job block

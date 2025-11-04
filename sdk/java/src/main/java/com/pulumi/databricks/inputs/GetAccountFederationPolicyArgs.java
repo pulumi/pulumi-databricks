@@ -5,12 +5,9 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.databricks.inputs.GetAccountFederationPolicyOidcPolicyArgs;
-import java.lang.Integer;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GetAccountFederationPolicyArgs extends com.pulumi.resources.InvokeArgs {
@@ -18,72 +15,24 @@ public final class GetAccountFederationPolicyArgs extends com.pulumi.resources.I
     public static final GetAccountFederationPolicyArgs Empty = new GetAccountFederationPolicyArgs();
 
     /**
-     * (string) - Description of the federation policy
+     * The ID of the federation policy. Output only
      * 
      */
-    @Import(name="description")
-    private @Nullable Output<String> description;
+    @Import(name="policyId", required=true)
+    private Output<String> policyId;
 
     /**
-     * @return (string) - Description of the federation policy
+     * @return The ID of the federation policy. Output only
      * 
      */
-    public Optional<Output<String>> description() {
-        return Optional.ofNullable(this.description);
-    }
-
-    /**
-     * (OidcFederationPolicy)
-     * 
-     */
-    @Import(name="oidcPolicy")
-    private @Nullable Output<GetAccountFederationPolicyOidcPolicyArgs> oidcPolicy;
-
-    /**
-     * @return (OidcFederationPolicy)
-     * 
-     */
-    public Optional<Output<GetAccountFederationPolicyOidcPolicyArgs>> oidcPolicy() {
-        return Optional.ofNullable(this.oidcPolicy);
-    }
-
-    /**
-     * The ID of the federation policy
-     * 
-     */
-    @Import(name="policyId")
-    private @Nullable Output<String> policyId;
-
-    /**
-     * @return The ID of the federation policy
-     * 
-     */
-    public Optional<Output<String>> policyId() {
-        return Optional.ofNullable(this.policyId);
-    }
-
-    /**
-     * (integer) - The service principal ID that this federation policy applies to. Only set for service principal federation policies
-     * 
-     */
-    @Import(name="servicePrincipalId")
-    private @Nullable Output<Integer> servicePrincipalId;
-
-    /**
-     * @return (integer) - The service principal ID that this federation policy applies to. Only set for service principal federation policies
-     * 
-     */
-    public Optional<Output<Integer>> servicePrincipalId() {
-        return Optional.ofNullable(this.servicePrincipalId);
+    public Output<String> policyId() {
+        return this.policyId;
     }
 
     private GetAccountFederationPolicyArgs() {}
 
     private GetAccountFederationPolicyArgs(GetAccountFederationPolicyArgs $) {
-        this.description = $.description;
-        this.oidcPolicy = $.oidcPolicy;
         this.policyId = $.policyId;
-        this.servicePrincipalId = $.servicePrincipalId;
     }
 
     public static Builder builder() {
@@ -105,60 +54,18 @@ public final class GetAccountFederationPolicyArgs extends com.pulumi.resources.I
         }
 
         /**
-         * @param description (string) - Description of the federation policy
+         * @param policyId The ID of the federation policy. Output only
          * 
          * @return builder
          * 
          */
-        public Builder description(@Nullable Output<String> description) {
-            $.description = description;
-            return this;
-        }
-
-        /**
-         * @param description (string) - Description of the federation policy
-         * 
-         * @return builder
-         * 
-         */
-        public Builder description(String description) {
-            return description(Output.of(description));
-        }
-
-        /**
-         * @param oidcPolicy (OidcFederationPolicy)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder oidcPolicy(@Nullable Output<GetAccountFederationPolicyOidcPolicyArgs> oidcPolicy) {
-            $.oidcPolicy = oidcPolicy;
-            return this;
-        }
-
-        /**
-         * @param oidcPolicy (OidcFederationPolicy)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder oidcPolicy(GetAccountFederationPolicyOidcPolicyArgs oidcPolicy) {
-            return oidcPolicy(Output.of(oidcPolicy));
-        }
-
-        /**
-         * @param policyId The ID of the federation policy
-         * 
-         * @return builder
-         * 
-         */
-        public Builder policyId(@Nullable Output<String> policyId) {
+        public Builder policyId(Output<String> policyId) {
             $.policyId = policyId;
             return this;
         }
 
         /**
-         * @param policyId The ID of the federation policy
+         * @param policyId The ID of the federation policy. Output only
          * 
          * @return builder
          * 
@@ -167,28 +74,10 @@ public final class GetAccountFederationPolicyArgs extends com.pulumi.resources.I
             return policyId(Output.of(policyId));
         }
 
-        /**
-         * @param servicePrincipalId (integer) - The service principal ID that this federation policy applies to. Only set for service principal federation policies
-         * 
-         * @return builder
-         * 
-         */
-        public Builder servicePrincipalId(@Nullable Output<Integer> servicePrincipalId) {
-            $.servicePrincipalId = servicePrincipalId;
-            return this;
-        }
-
-        /**
-         * @param servicePrincipalId (integer) - The service principal ID that this federation policy applies to. Only set for service principal federation policies
-         * 
-         * @return builder
-         * 
-         */
-        public Builder servicePrincipalId(Integer servicePrincipalId) {
-            return servicePrincipalId(Output.of(servicePrincipalId));
-        }
-
         public GetAccountFederationPolicyArgs build() {
+            if ($.policyId == null) {
+                throw new MissingRequiredPropertyException("GetAccountFederationPolicyArgs", "policyId");
+            }
             return $;
         }
     }

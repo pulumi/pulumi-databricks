@@ -11,6 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+//
 // This data source can be used to fetch the list of budget policies.
 //
 // > **Note** This data source can only be used with an account-level provider!
@@ -31,7 +33,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := databricks.GetBudgetPolicies(ctx, map[string]interface{}{}, nil)
+//			_, err := databricks.GetBudgetPolicies(ctx, &databricks.GetBudgetPoliciesArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}
@@ -40,28 +42,61 @@ import (
 //	}
 //
 // ```
-func GetBudgetPolicies(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetBudgetPoliciesResult, error) {
+func GetBudgetPolicies(ctx *pulumi.Context, args *GetBudgetPoliciesArgs, opts ...pulumi.InvokeOption) (*GetBudgetPoliciesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetBudgetPoliciesResult
-	err := ctx.Invoke("databricks:index/getBudgetPolicies:getBudgetPolicies", nil, &rv, opts...)
+	err := ctx.Invoke("databricks:index/getBudgetPolicies:getBudgetPolicies", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &rv, nil
 }
 
-// A collection of values returned by getBudgetPolicies.
-type GetBudgetPoliciesResult struct {
-	// The provider-assigned unique ID for this managed resource.
-	Id       string                    `pulumi:"id"`
-	Policies []GetBudgetPoliciesPolicy `pulumi:"policies"`
+// A collection of arguments for invoking getBudgetPolicies.
+type GetBudgetPoliciesArgs struct {
+	// A filter to apply to the list of policies
+	FilterBy *GetBudgetPoliciesFilterBy `pulumi:"filterBy"`
+	// The maximum number of budget policies to return.
+	// If unspecified, at most 100 budget policies will be returned.
+	// The maximum value is 1000; values above 1000 will be coerced to 1000
+	PageSize *int `pulumi:"pageSize"`
+	// The sort specification
+	SortSpec *GetBudgetPoliciesSortSpec `pulumi:"sortSpec"`
 }
 
-func GetBudgetPoliciesOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetBudgetPoliciesResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetBudgetPoliciesResultOutput, error) {
-		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-		return ctx.InvokeOutput("databricks:index/getBudgetPolicies:getBudgetPolicies", nil, GetBudgetPoliciesResultOutput{}, options).(GetBudgetPoliciesResultOutput), nil
-	}).(GetBudgetPoliciesResultOutput)
+// A collection of values returned by getBudgetPolicies.
+type GetBudgetPoliciesResult struct {
+	FilterBy *GetBudgetPoliciesFilterBy `pulumi:"filterBy"`
+	// The provider-assigned unique ID for this managed resource.
+	Id       string                     `pulumi:"id"`
+	PageSize *int                       `pulumi:"pageSize"`
+	Policies []GetBudgetPoliciesPolicy  `pulumi:"policies"`
+	SortSpec *GetBudgetPoliciesSortSpec `pulumi:"sortSpec"`
+}
+
+func GetBudgetPoliciesOutput(ctx *pulumi.Context, args GetBudgetPoliciesOutputArgs, opts ...pulumi.InvokeOption) GetBudgetPoliciesResultOutput {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (GetBudgetPoliciesResultOutput, error) {
+			args := v.(GetBudgetPoliciesArgs)
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("databricks:index/getBudgetPolicies:getBudgetPolicies", args, GetBudgetPoliciesResultOutput{}, options).(GetBudgetPoliciesResultOutput), nil
+		}).(GetBudgetPoliciesResultOutput)
+}
+
+// A collection of arguments for invoking getBudgetPolicies.
+type GetBudgetPoliciesOutputArgs struct {
+	// A filter to apply to the list of policies
+	FilterBy GetBudgetPoliciesFilterByPtrInput `pulumi:"filterBy"`
+	// The maximum number of budget policies to return.
+	// If unspecified, at most 100 budget policies will be returned.
+	// The maximum value is 1000; values above 1000 will be coerced to 1000
+	PageSize pulumi.IntPtrInput `pulumi:"pageSize"`
+	// The sort specification
+	SortSpec GetBudgetPoliciesSortSpecPtrInput `pulumi:"sortSpec"`
+}
+
+func (GetBudgetPoliciesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBudgetPoliciesArgs)(nil)).Elem()
 }
 
 // A collection of values returned by getBudgetPolicies.
@@ -79,13 +114,25 @@ func (o GetBudgetPoliciesResultOutput) ToGetBudgetPoliciesResultOutputWithContex
 	return o
 }
 
+func (o GetBudgetPoliciesResultOutput) FilterBy() GetBudgetPoliciesFilterByPtrOutput {
+	return o.ApplyT(func(v GetBudgetPoliciesResult) *GetBudgetPoliciesFilterBy { return v.FilterBy }).(GetBudgetPoliciesFilterByPtrOutput)
+}
+
 // The provider-assigned unique ID for this managed resource.
 func (o GetBudgetPoliciesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBudgetPoliciesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+func (o GetBudgetPoliciesResultOutput) PageSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetBudgetPoliciesResult) *int { return v.PageSize }).(pulumi.IntPtrOutput)
+}
+
 func (o GetBudgetPoliciesResultOutput) Policies() GetBudgetPoliciesPolicyArrayOutput {
 	return o.ApplyT(func(v GetBudgetPoliciesResult) []GetBudgetPoliciesPolicy { return v.Policies }).(GetBudgetPoliciesPolicyArrayOutput)
+}
+
+func (o GetBudgetPoliciesResultOutput) SortSpec() GetBudgetPoliciesSortSpecPtrOutput {
+	return o.ApplyT(func(v GetBudgetPoliciesResult) *GetBudgetPoliciesSortSpec { return v.SortSpec }).(GetBudgetPoliciesSortSpecPtrOutput)
 }
 
 func init() {

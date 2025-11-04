@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetNodeTypeResult',
@@ -26,7 +28,10 @@ class GetNodeTypeResult:
     """
     A collection of values returned by getNodeType.
     """
-    def __init__(__self__, category=None, fleet=None, gb_per_core=None, graviton=None, id=None, is_io_cache_enabled=None, local_disk=None, local_disk_min_size=None, min_cores=None, min_gpus=None, min_memory_gb=None, photon_driver_capable=None, photon_worker_capable=None, support_port_forwarding=None):
+    def __init__(__self__, arm=None, category=None, fleet=None, gb_per_core=None, graviton=None, id=None, is_io_cache_enabled=None, local_disk=None, local_disk_min_size=None, min_cores=None, min_gpus=None, min_memory_gb=None, photon_driver_capable=None, photon_worker_capable=None, provider_config=None, support_port_forwarding=None):
+        if arm and not isinstance(arm, bool):
+            raise TypeError("Expected argument 'arm' to be a bool")
+        pulumi.set(__self__, "arm", arm)
         if category and not isinstance(category, str):
             raise TypeError("Expected argument 'category' to be a str")
         pulumi.set(__self__, "category", category)
@@ -66,9 +71,17 @@ class GetNodeTypeResult:
         if photon_worker_capable and not isinstance(photon_worker_capable, bool):
             raise TypeError("Expected argument 'photon_worker_capable' to be a bool")
         pulumi.set(__self__, "photon_worker_capable", photon_worker_capable)
+        if provider_config and not isinstance(provider_config, dict):
+            raise TypeError("Expected argument 'provider_config' to be a dict")
+        pulumi.set(__self__, "provider_config", provider_config)
         if support_port_forwarding and not isinstance(support_port_forwarding, bool):
             raise TypeError("Expected argument 'support_port_forwarding' to be a bool")
         pulumi.set(__self__, "support_port_forwarding", support_port_forwarding)
+
+    @_builtins.property
+    @pulumi.getter
+    def arm(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "arm")
 
     @_builtins.property
     @pulumi.getter
@@ -87,6 +100,7 @@ class GetNodeTypeResult:
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""Use `arm` instead""")
     def graviton(self) -> Optional[_builtins.bool]:
         return pulumi.get(self, "graviton")
 
@@ -139,6 +153,11 @@ class GetNodeTypeResult:
         return pulumi.get(self, "photon_worker_capable")
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional['outputs.GetNodeTypeProviderConfigResult']:
+        return pulumi.get(self, "provider_config")
+
+    @_builtins.property
     @pulumi.getter(name="supportPortForwarding")
     def support_port_forwarding(self) -> Optional[_builtins.bool]:
         return pulumi.get(self, "support_port_forwarding")
@@ -150,6 +169,7 @@ class AwaitableGetNodeTypeResult(GetNodeTypeResult):
         if False:
             yield self
         return GetNodeTypeResult(
+            arm=self.arm,
             category=self.category,
             fleet=self.fleet,
             gb_per_core=self.gb_per_core,
@@ -163,10 +183,12 @@ class AwaitableGetNodeTypeResult(GetNodeTypeResult):
             min_memory_gb=self.min_memory_gb,
             photon_driver_capable=self.photon_driver_capable,
             photon_worker_capable=self.photon_worker_capable,
+            provider_config=self.provider_config,
             support_port_forwarding=self.support_port_forwarding)
 
 
-def get_node_type(category: Optional[_builtins.str] = None,
+def get_node_type(arm: Optional[_builtins.bool] = None,
+                  category: Optional[_builtins.str] = None,
                   fleet: Optional[_builtins.bool] = None,
                   gb_per_core: Optional[_builtins.int] = None,
                   graviton: Optional[_builtins.bool] = None,
@@ -179,6 +201,7 @@ def get_node_type(category: Optional[_builtins.str] = None,
                   min_memory_gb: Optional[_builtins.int] = None,
                   photon_driver_capable: Optional[_builtins.bool] = None,
                   photon_worker_capable: Optional[_builtins.bool] = None,
+                  provider_config: Optional[Union['GetNodeTypeProviderConfigArgs', 'GetNodeTypeProviderConfigArgsDict']] = None,
                   support_port_forwarding: Optional[_builtins.bool] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNodeTypeResult:
     """
@@ -222,6 +245,7 @@ def get_node_type(category: Optional[_builtins.str] = None,
     * Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
 
 
+    :param _builtins.bool arm: if we should limit the search only to nodes with AWS Graviton or Azure Cobalt CPUs. Default to _false_.
     :param _builtins.str category: Node category, which can be one of (depending on the cloud environment, could be checked with `databricks clusters list-node-types -o json|jq '.node_types[]|.category'|sort |uniq`):
            * `General Purpose` (all clouds)
            * `General Purpose (HDD)` (Azure)
@@ -232,7 +256,7 @@ def get_node_type(category: Optional[_builtins.str] = None,
            * `GPU Accelerated` (AWS, Azure)
     :param _builtins.bool fleet: if we should limit the search only to [AWS fleet instance types](https://docs.databricks.com/compute/aws-fleet-instances.html). Default to _false_.
     :param _builtins.int gb_per_core: Number of gigabytes per core available on instance. Conflicts with `min_memory_gb`. Defaults to _0_.
-    :param _builtins.bool graviton: if we should limit the search only to nodes with AWS Graviton or Azure Cobalt CPUs. Default to _false_.
+    :param _builtins.bool graviton: if we should limit the search only to nodes with AWS Graviton or Azure Cobalt CPUs. Default to _false_. *Use `arm` instead!*
     :param _builtins.str id: node type, that can be used for databricks_job, databricks_cluster, or databricks_instance_pool.
     :param _builtins.bool is_io_cache_enabled: . Pick only nodes that have IO Cache. Defaults to _false_.
     :param _builtins.bool local_disk: Pick only nodes with local storage. Defaults to _false_.
@@ -242,9 +266,11 @@ def get_node_type(category: Optional[_builtins.str] = None,
     :param _builtins.int min_memory_gb: Minimum amount of memory per node in gigabytes. Defaults to _0_.
     :param _builtins.bool photon_driver_capable: Pick only nodes that can run Photon driver. Defaults to _false_.
     :param _builtins.bool photon_worker_capable: Pick only nodes that can run Photon workers. Defaults to _false_.
+    :param Union['GetNodeTypeProviderConfigArgs', 'GetNodeTypeProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     :param _builtins.bool support_port_forwarding: Pick only nodes that support port forwarding. Defaults to _false_.
     """
     __args__ = dict()
+    __args__['arm'] = arm
     __args__['category'] = category
     __args__['fleet'] = fleet
     __args__['gbPerCore'] = gb_per_core
@@ -258,11 +284,13 @@ def get_node_type(category: Optional[_builtins.str] = None,
     __args__['minMemoryGb'] = min_memory_gb
     __args__['photonDriverCapable'] = photon_driver_capable
     __args__['photonWorkerCapable'] = photon_worker_capable
+    __args__['providerConfig'] = provider_config
     __args__['supportPortForwarding'] = support_port_forwarding
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getNodeType:getNodeType', __args__, opts=opts, typ=GetNodeTypeResult).value
 
     return AwaitableGetNodeTypeResult(
+        arm=pulumi.get(__ret__, 'arm'),
         category=pulumi.get(__ret__, 'category'),
         fleet=pulumi.get(__ret__, 'fleet'),
         gb_per_core=pulumi.get(__ret__, 'gb_per_core'),
@@ -276,8 +304,10 @@ def get_node_type(category: Optional[_builtins.str] = None,
         min_memory_gb=pulumi.get(__ret__, 'min_memory_gb'),
         photon_driver_capable=pulumi.get(__ret__, 'photon_driver_capable'),
         photon_worker_capable=pulumi.get(__ret__, 'photon_worker_capable'),
+        provider_config=pulumi.get(__ret__, 'provider_config'),
         support_port_forwarding=pulumi.get(__ret__, 'support_port_forwarding'))
-def get_node_type_output(category: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_node_type_output(arm: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
+                         category: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                          fleet: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
                          gb_per_core: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
                          graviton: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
@@ -290,6 +320,7 @@ def get_node_type_output(category: Optional[pulumi.Input[Optional[_builtins.str]
                          min_memory_gb: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
                          photon_driver_capable: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
                          photon_worker_capable: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
+                         provider_config: Optional[pulumi.Input[Optional[Union['GetNodeTypeProviderConfigArgs', 'GetNodeTypeProviderConfigArgsDict']]]] = None,
                          support_port_forwarding: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNodeTypeResult]:
     """
@@ -333,6 +364,7 @@ def get_node_type_output(category: Optional[pulumi.Input[Optional[_builtins.str]
     * Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
 
 
+    :param _builtins.bool arm: if we should limit the search only to nodes with AWS Graviton or Azure Cobalt CPUs. Default to _false_.
     :param _builtins.str category: Node category, which can be one of (depending on the cloud environment, could be checked with `databricks clusters list-node-types -o json|jq '.node_types[]|.category'|sort |uniq`):
            * `General Purpose` (all clouds)
            * `General Purpose (HDD)` (Azure)
@@ -343,7 +375,7 @@ def get_node_type_output(category: Optional[pulumi.Input[Optional[_builtins.str]
            * `GPU Accelerated` (AWS, Azure)
     :param _builtins.bool fleet: if we should limit the search only to [AWS fleet instance types](https://docs.databricks.com/compute/aws-fleet-instances.html). Default to _false_.
     :param _builtins.int gb_per_core: Number of gigabytes per core available on instance. Conflicts with `min_memory_gb`. Defaults to _0_.
-    :param _builtins.bool graviton: if we should limit the search only to nodes with AWS Graviton or Azure Cobalt CPUs. Default to _false_.
+    :param _builtins.bool graviton: if we should limit the search only to nodes with AWS Graviton or Azure Cobalt CPUs. Default to _false_. *Use `arm` instead!*
     :param _builtins.str id: node type, that can be used for databricks_job, databricks_cluster, or databricks_instance_pool.
     :param _builtins.bool is_io_cache_enabled: . Pick only nodes that have IO Cache. Defaults to _false_.
     :param _builtins.bool local_disk: Pick only nodes with local storage. Defaults to _false_.
@@ -353,9 +385,11 @@ def get_node_type_output(category: Optional[pulumi.Input[Optional[_builtins.str]
     :param _builtins.int min_memory_gb: Minimum amount of memory per node in gigabytes. Defaults to _0_.
     :param _builtins.bool photon_driver_capable: Pick only nodes that can run Photon driver. Defaults to _false_.
     :param _builtins.bool photon_worker_capable: Pick only nodes that can run Photon workers. Defaults to _false_.
+    :param Union['GetNodeTypeProviderConfigArgs', 'GetNodeTypeProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     :param _builtins.bool support_port_forwarding: Pick only nodes that support port forwarding. Defaults to _false_.
     """
     __args__ = dict()
+    __args__['arm'] = arm
     __args__['category'] = category
     __args__['fleet'] = fleet
     __args__['gbPerCore'] = gb_per_core
@@ -369,10 +403,12 @@ def get_node_type_output(category: Optional[pulumi.Input[Optional[_builtins.str]
     __args__['minMemoryGb'] = min_memory_gb
     __args__['photonDriverCapable'] = photon_driver_capable
     __args__['photonWorkerCapable'] = photon_worker_capable
+    __args__['providerConfig'] = provider_config
     __args__['supportPortForwarding'] = support_port_forwarding
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getNodeType:getNodeType', __args__, opts=opts, typ=GetNodeTypeResult)
     return __ret__.apply(lambda __response__: GetNodeTypeResult(
+        arm=pulumi.get(__response__, 'arm'),
         category=pulumi.get(__response__, 'category'),
         fleet=pulumi.get(__response__, 'fleet'),
         gb_per_core=pulumi.get(__response__, 'gb_per_core'),
@@ -386,4 +422,5 @@ def get_node_type_output(category: Optional[pulumi.Input[Optional[_builtins.str]
         min_memory_gb=pulumi.get(__response__, 'min_memory_gb'),
         photon_driver_capable=pulumi.get(__response__, 'photon_driver_capable'),
         photon_worker_capable=pulumi.get(__response__, 'photon_worker_capable'),
+        provider_config=pulumi.get(__response__, 'provider_config'),
         support_port_forwarding=pulumi.get(__response__, 'support_port_forwarding')))

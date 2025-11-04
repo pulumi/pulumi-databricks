@@ -11,14 +11,14 @@ import java.util.Objects;
 @CustomType
 public final class GetAppsSettingsCustomTemplatesTemplateManifestResourceSpecSqlWarehouseSpec {
     /**
-     * @return (string) - . Possible values are: `MANAGE`, `READ_VOLUME`, `WRITE_VOLUME`
+     * @return (string) - Possible values are: `MANAGE`, `READ_VOLUME`, `SELECT`, `WRITE_VOLUME`
      * 
      */
     private String permission;
 
     private GetAppsSettingsCustomTemplatesTemplateManifestResourceSpecSqlWarehouseSpec() {}
     /**
-     * @return (string) - . Possible values are: `MANAGE`, `READ_VOLUME`, `WRITE_VOLUME`
+     * @return (string) - Possible values are: `MANAGE`, `READ_VOLUME`, `SELECT`, `WRITE_VOLUME`
      * 
      */
     public String permission() {

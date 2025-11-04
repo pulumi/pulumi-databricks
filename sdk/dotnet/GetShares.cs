@@ -126,6 +126,12 @@ namespace Pulumi.Databricks
 
     public sealed class GetSharesArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Inputs.GetSharesProviderConfigArgs? ProviderConfig { get; set; }
+
         [Input("shares")]
         private List<string>? _shares;
 
@@ -146,6 +152,12 @@ namespace Pulumi.Databricks
 
     public sealed class GetSharesInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.GetSharesProviderConfigInputArgs>? ProviderConfig { get; set; }
+
         [Input("shares")]
         private InputList<string>? _shares;
 
@@ -172,6 +184,7 @@ namespace Pulumi.Databricks
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly Outputs.GetSharesProviderConfigResult? ProviderConfig;
         /// <summary>
         /// list of databricks.Share names.
         /// </summary>
@@ -181,9 +194,12 @@ namespace Pulumi.Databricks
         private GetSharesResult(
             string id,
 
+            Outputs.GetSharesProviderConfigResult? providerConfig,
+
             ImmutableArray<string> shares)
         {
             Id = id;
+            ProviderConfig = providerConfig;
             Shares = shares;
         }
     }

@@ -28,7 +28,7 @@ class GetCatalogResult:
     """
     A collection of values returned by getCatalog.
     """
-    def __init__(__self__, catalog_info=None, id=None, name=None):
+    def __init__(__self__, catalog_info=None, id=None, name=None, provider_config=None):
         if catalog_info and not isinstance(catalog_info, dict):
             raise TypeError("Expected argument 'catalog_info' to be a dict")
         pulumi.set(__self__, "catalog_info", catalog_info)
@@ -38,6 +38,9 @@ class GetCatalogResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if provider_config and not isinstance(provider_config, dict):
+            raise TypeError("Expected argument 'provider_config' to be a dict")
+        pulumi.set(__self__, "provider_config", provider_config)
 
     @_builtins.property
     @pulumi.getter(name="catalogInfo")
@@ -63,6 +66,11 @@ class GetCatalogResult:
         """
         return pulumi.get(self, "name")
 
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional['outputs.GetCatalogProviderConfigResult']:
+        return pulumi.get(self, "provider_config")
+
 
 class AwaitableGetCatalogResult(GetCatalogResult):
     # pylint: disable=using-constant-test
@@ -72,12 +80,14 @@ class AwaitableGetCatalogResult(GetCatalogResult):
         return GetCatalogResult(
             catalog_info=self.catalog_info,
             id=self.id,
-            name=self.name)
+            name=self.name,
+            provider_config=self.provider_config)
 
 
 def get_catalog(catalog_info: Optional[Union['GetCatalogCatalogInfoArgs', 'GetCatalogCatalogInfoArgsDict']] = None,
                 id: Optional[_builtins.str] = None,
                 name: Optional[_builtins.str] = None,
+                provider_config: Optional[Union['GetCatalogProviderConfigArgs', 'GetCatalogProviderConfigArgsDict']] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCatalogResult:
     """
     Retrieves details of a specific catalog in Unity Catalog, that were created by Pulumi or manually. Use get_catalogs to retrieve IDs of multiple catalogs from Unity Catalog
@@ -112,21 +122,25 @@ def get_catalog(catalog_info: Optional[Union['GetCatalogCatalogInfoArgs', 'GetCa
     :param Union['GetCatalogCatalogInfoArgs', 'GetCatalogCatalogInfoArgsDict'] catalog_info: the [CatalogInfo](https://pkg.go.dev/github.com/databricks/databricks-sdk-go/service/catalog#CatalogInfo) object for a Unity Catalog catalog. This contains the following attributes (see ):
     :param _builtins.str id: same as the `name`
     :param _builtins.str name: name of the catalog
+    :param Union['GetCatalogProviderConfigArgs', 'GetCatalogProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     """
     __args__ = dict()
     __args__['catalogInfo'] = catalog_info
     __args__['id'] = id
     __args__['name'] = name
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getCatalog:getCatalog', __args__, opts=opts, typ=GetCatalogResult).value
 
     return AwaitableGetCatalogResult(
         catalog_info=pulumi.get(__ret__, 'catalog_info'),
         id=pulumi.get(__ret__, 'id'),
-        name=pulumi.get(__ret__, 'name'))
+        name=pulumi.get(__ret__, 'name'),
+        provider_config=pulumi.get(__ret__, 'provider_config'))
 def get_catalog_output(catalog_info: Optional[pulumi.Input[Optional[Union['GetCatalogCatalogInfoArgs', 'GetCatalogCatalogInfoArgsDict']]]] = None,
                        id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                        name: Optional[pulumi.Input[_builtins.str]] = None,
+                       provider_config: Optional[pulumi.Input[Optional[Union['GetCatalogProviderConfigArgs', 'GetCatalogProviderConfigArgsDict']]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCatalogResult]:
     """
     Retrieves details of a specific catalog in Unity Catalog, that were created by Pulumi or manually. Use get_catalogs to retrieve IDs of multiple catalogs from Unity Catalog
@@ -161,14 +175,17 @@ def get_catalog_output(catalog_info: Optional[pulumi.Input[Optional[Union['GetCa
     :param Union['GetCatalogCatalogInfoArgs', 'GetCatalogCatalogInfoArgsDict'] catalog_info: the [CatalogInfo](https://pkg.go.dev/github.com/databricks/databricks-sdk-go/service/catalog#CatalogInfo) object for a Unity Catalog catalog. This contains the following attributes (see ):
     :param _builtins.str id: same as the `name`
     :param _builtins.str name: name of the catalog
+    :param Union['GetCatalogProviderConfigArgs', 'GetCatalogProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     """
     __args__ = dict()
     __args__['catalogInfo'] = catalog_info
     __args__['id'] = id
     __args__['name'] = name
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getCatalog:getCatalog', __args__, opts=opts, typ=GetCatalogResult)
     return __ret__.apply(lambda __response__: GetCatalogResult(
         catalog_info=pulumi.get(__response__, 'catalog_info'),
         id=pulumi.get(__response__, 'id'),
-        name=pulumi.get(__response__, 'name')))
+        name=pulumi.get(__response__, 'name'),
+        provider_config=pulumi.get(__response__, 'provider_config')))

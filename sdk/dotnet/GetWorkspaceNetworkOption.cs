@@ -12,6 +12,8 @@ namespace Pulumi.Databricks
     public static class GetWorkspaceNetworkOption
     {
         /// <summary>
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
         /// This data source can be used to get a single workspace network option.
         /// 
         /// &gt; **Note** This data source can only be used with an account-level provider!
@@ -36,10 +38,12 @@ namespace Pulumi.Databricks
         /// });
         /// ```
         /// </summary>
-        public static Task<GetWorkspaceNetworkOptionResult> InvokeAsync(GetWorkspaceNetworkOptionArgs? args = null, InvokeOptions? options = null)
+        public static Task<GetWorkspaceNetworkOptionResult> InvokeAsync(GetWorkspaceNetworkOptionArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetWorkspaceNetworkOptionResult>("databricks:index/getWorkspaceNetworkOption:getWorkspaceNetworkOption", args ?? new GetWorkspaceNetworkOptionArgs(), options.WithDefaults());
 
         /// <summary>
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
         /// This data source can be used to get a single workspace network option.
         /// 
         /// &gt; **Note** This data source can only be used with an account-level provider!
@@ -64,10 +68,12 @@ namespace Pulumi.Databricks
         /// });
         /// ```
         /// </summary>
-        public static Output<GetWorkspaceNetworkOptionResult> Invoke(GetWorkspaceNetworkOptionInvokeArgs? args = null, InvokeOptions? options = null)
+        public static Output<GetWorkspaceNetworkOptionResult> Invoke(GetWorkspaceNetworkOptionInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetWorkspaceNetworkOptionResult>("databricks:index/getWorkspaceNetworkOption:getWorkspaceNetworkOption", args ?? new GetWorkspaceNetworkOptionInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
         /// This data source can be used to get a single workspace network option.
         /// 
         /// &gt; **Note** This data source can only be used with an account-level provider!
@@ -100,19 +106,10 @@ namespace Pulumi.Databricks
     public sealed class GetWorkspaceNetworkOptionArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// (string) - The network policy ID to apply to the workspace. This controls the network access rules
-        /// for all serverless compute resources in the workspace. Each workspace can only be
-        /// linked to one policy at a time. If no policy is explicitly assigned,
-        /// the workspace will use 'default-policy'
-        /// </summary>
-        [Input("networkPolicyId")]
-        public string? NetworkPolicyId { get; set; }
-
-        /// <summary>
         /// The workspace ID
         /// </summary>
-        [Input("workspaceId")]
-        public string? WorkspaceId { get; set; }
+        [Input("workspaceId", required: true)]
+        public string WorkspaceId { get; set; } = null!;
 
         public GetWorkspaceNetworkOptionArgs()
         {
@@ -123,19 +120,10 @@ namespace Pulumi.Databricks
     public sealed class GetWorkspaceNetworkOptionInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// (string) - The network policy ID to apply to the workspace. This controls the network access rules
-        /// for all serverless compute resources in the workspace. Each workspace can only be
-        /// linked to one policy at a time. If no policy is explicitly assigned,
-        /// the workspace will use 'default-policy'
-        /// </summary>
-        [Input("networkPolicyId")]
-        public Input<string>? NetworkPolicyId { get; set; }
-
-        /// <summary>
         /// The workspace ID
         /// </summary>
-        [Input("workspaceId")]
-        public Input<string>? WorkspaceId { get; set; }
+        [Input("workspaceId", required: true)]
+        public Input<string> WorkspaceId { get; set; } = null!;
 
         public GetWorkspaceNetworkOptionInvokeArgs()
         {
@@ -157,19 +145,19 @@ namespace Pulumi.Databricks
         /// linked to one policy at a time. If no policy is explicitly assigned,
         /// the workspace will use 'default-policy'
         /// </summary>
-        public readonly string? NetworkPolicyId;
+        public readonly string NetworkPolicyId;
         /// <summary>
         /// (integer) - The workspace ID
         /// </summary>
-        public readonly string? WorkspaceId;
+        public readonly string WorkspaceId;
 
         [OutputConstructor]
         private GetWorkspaceNetworkOptionResult(
             string id,
 
-            string? networkPolicyId,
+            string networkPolicyId,
 
-            string? workspaceId)
+            string workspaceId)
         {
             Id = id;
             NetworkPolicyId = networkPolicyId;

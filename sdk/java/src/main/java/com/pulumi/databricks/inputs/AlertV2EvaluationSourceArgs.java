@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,14 +17,14 @@ public final class AlertV2EvaluationSourceArgs extends com.pulumi.resources.Reso
     public static final AlertV2EvaluationSourceArgs Empty = new AlertV2EvaluationSourceArgs();
 
     /**
-     * . Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
+     * Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
      * 
      */
     @Import(name="aggregation")
     private @Nullable Output<String> aggregation;
 
     /**
-     * @return . Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
+     * @return Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
      * 
      */
     public Optional<Output<String>> aggregation() {
@@ -37,11 +38,11 @@ public final class AlertV2EvaluationSourceArgs extends com.pulumi.resources.Reso
         return Optional.ofNullable(this.display);
     }
 
-    @Import(name="name")
-    private @Nullable Output<String> name;
+    @Import(name="name", required=true)
+    private Output<String> name;
 
-    public Optional<Output<String>> name() {
-        return Optional.ofNullable(this.name);
+    public Output<String> name() {
+        return this.name;
     }
 
     private AlertV2EvaluationSourceArgs() {}
@@ -71,7 +72,7 @@ public final class AlertV2EvaluationSourceArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param aggregation . Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
+         * @param aggregation Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
          * 
          * @return builder
          * 
@@ -82,7 +83,7 @@ public final class AlertV2EvaluationSourceArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param aggregation . Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
+         * @param aggregation Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
          * 
          * @return builder
          * 
@@ -100,7 +101,7 @@ public final class AlertV2EvaluationSourceArgs extends com.pulumi.resources.Reso
             return display(Output.of(display));
         }
 
-        public Builder name(@Nullable Output<String> name) {
+        public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
@@ -110,6 +111,9 @@ public final class AlertV2EvaluationSourceArgs extends com.pulumi.resources.Reso
         }
 
         public AlertV2EvaluationSourceArgs build() {
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("AlertV2EvaluationSourceArgs", "name");
+            }
             return $;
         }
     }

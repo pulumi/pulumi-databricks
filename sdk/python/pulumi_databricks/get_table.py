@@ -28,13 +28,16 @@ class GetTableResult:
     """
     A collection of values returned by getTable.
     """
-    def __init__(__self__, id=None, name=None, table_info=None):
+    def __init__(__self__, id=None, name=None, provider_config=None, table_info=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if provider_config and not isinstance(provider_config, dict):
+            raise TypeError("Expected argument 'provider_config' to be a dict")
+        pulumi.set(__self__, "provider_config", provider_config)
         if table_info and not isinstance(table_info, dict):
             raise TypeError("Expected argument 'table_info' to be a dict")
         pulumi.set(__self__, "table_info", table_info)
@@ -53,6 +56,11 @@ class GetTableResult:
         return pulumi.get(self, "name")
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional['outputs.GetTableProviderConfigResult']:
+        return pulumi.get(self, "provider_config")
+
+    @_builtins.property
     @pulumi.getter(name="tableInfo")
     def table_info(self) -> 'outputs.GetTableTableInfoResult':
         """
@@ -69,11 +77,13 @@ class AwaitableGetTableResult(GetTableResult):
         return GetTableResult(
             id=self.id,
             name=self.name,
+            provider_config=self.provider_config,
             table_info=self.table_info)
 
 
 def get_table(id: Optional[_builtins.str] = None,
               name: Optional[_builtins.str] = None,
+              provider_config: Optional[Union['GetTableProviderConfigArgs', 'GetTableProviderConfigArgsDict']] = None,
               table_info: Optional[Union['GetTableTableInfoArgs', 'GetTableTableInfoArgsDict']] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTableResult:
     """
@@ -110,11 +120,13 @@ def get_table(id: Optional[_builtins.str] = None,
 
 
     :param _builtins.str name: Full name of the databricks_table: _`catalog`.`schema`.`table`_
+    :param Union['GetTableProviderConfigArgs', 'GetTableProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     :param Union['GetTableTableInfoArgs', 'GetTableTableInfoArgsDict'] table_info: TableInfo object for a Unity Catalog table. This contains the following attributes:
     """
     __args__ = dict()
     __args__['id'] = id
     __args__['name'] = name
+    __args__['providerConfig'] = provider_config
     __args__['tableInfo'] = table_info
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getTable:getTable', __args__, opts=opts, typ=GetTableResult).value
@@ -122,9 +134,11 @@ def get_table(id: Optional[_builtins.str] = None,
     return AwaitableGetTableResult(
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
+        provider_config=pulumi.get(__ret__, 'provider_config'),
         table_info=pulumi.get(__ret__, 'table_info'))
 def get_table_output(id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                      name: Optional[pulumi.Input[_builtins.str]] = None,
+                     provider_config: Optional[pulumi.Input[Optional[Union['GetTableProviderConfigArgs', 'GetTableProviderConfigArgsDict']]]] = None,
                      table_info: Optional[pulumi.Input[Optional[Union['GetTableTableInfoArgs', 'GetTableTableInfoArgsDict']]]] = None,
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTableResult]:
     """
@@ -161,15 +175,18 @@ def get_table_output(id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
 
 
     :param _builtins.str name: Full name of the databricks_table: _`catalog`.`schema`.`table`_
+    :param Union['GetTableProviderConfigArgs', 'GetTableProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     :param Union['GetTableTableInfoArgs', 'GetTableTableInfoArgsDict'] table_info: TableInfo object for a Unity Catalog table. This contains the following attributes:
     """
     __args__ = dict()
     __args__['id'] = id
     __args__['name'] = name
+    __args__['providerConfig'] = provider_config
     __args__['tableInfo'] = table_info
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getTable:getTable', __args__, opts=opts, typ=GetTableResult)
     return __ret__.apply(lambda __response__: GetTableResult(
         id=pulumi.get(__response__, 'id'),
         name=pulumi.get(__response__, 'name'),
+        provider_config=pulumi.get(__response__, 'provider_config'),
         table_info=pulumi.get(__response__, 'table_info')))

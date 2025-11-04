@@ -4,14 +4,52 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
+ * This data source allows you to get information about a tag assignment for a specific entity using the entity type, entity name, and tag key.
+ *
+ * ## Example Usage
+ *
+ * ### Get environment tag from a catalog
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const catalogTag = databricks.getEntityTagAssignment({
+ *     entityType: "catalogs",
+ *     entityName: "production_catalog",
+ *     tagKey: "environment",
+ * });
+ * const schemaTag = databricks.getEntityTagAssignment({
+ *     entityType: "schemas",
+ *     entityName: "production_catalog.analytics_data",
+ *     tagKey: "cost_center",
+ * });
+ * const tableTag = databricks.getEntityTagAssignment({
+ *     entityType: "tables",
+ *     entityName: "production_catalog.sales_data.customer_orders",
+ *     tagKey: "owner",
+ * });
+ * const columnTag = databricks.getEntityTagAssignment({
+ *     entityType: "columns",
+ *     entityName: "production_catalog.customer_data.users.email_address",
+ *     tagKey: "pii_classification",
+ * });
+ * const volumeTag = databricks.getEntityTagAssignment({
+ *     entityType: "volumes",
+ *     entityName: "production_catalog.raw_data.landing_zone",
+ *     tagKey: "purpose",
+ * });
+ * ```
+ */
 export function getEntityTagAssignment(args: GetEntityTagAssignmentArgs, opts?: pulumi.InvokeOptions): Promise<GetEntityTagAssignmentResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getEntityTagAssignment:getEntityTagAssignment", {
         "entityName": args.entityName,
         "entityType": args.entityType,
         "tagKey": args.tagKey,
-        "tagValue": args.tagValue,
-        "workspaceId": args.workspaceId,
     }, opts);
 }
 
@@ -31,14 +69,6 @@ export interface GetEntityTagAssignmentArgs {
      * The key of the tag
      */
     tagKey: string;
-    /**
-     * (string) - The value of the tag
-     */
-    tagValue?: string;
-    /**
-     * Workspace ID of the resource
-     */
-    workspaceId?: string;
 }
 
 /**
@@ -64,17 +94,54 @@ export interface GetEntityTagAssignmentResult {
     /**
      * (string) - The value of the tag
      */
-    readonly tagValue?: string;
-    readonly workspaceId?: string;
+    readonly tagValue: string;
 }
+/**
+ * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
+ * This data source allows you to get information about a tag assignment for a specific entity using the entity type, entity name, and tag key.
+ *
+ * ## Example Usage
+ *
+ * ### Get environment tag from a catalog
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const catalogTag = databricks.getEntityTagAssignment({
+ *     entityType: "catalogs",
+ *     entityName: "production_catalog",
+ *     tagKey: "environment",
+ * });
+ * const schemaTag = databricks.getEntityTagAssignment({
+ *     entityType: "schemas",
+ *     entityName: "production_catalog.analytics_data",
+ *     tagKey: "cost_center",
+ * });
+ * const tableTag = databricks.getEntityTagAssignment({
+ *     entityType: "tables",
+ *     entityName: "production_catalog.sales_data.customer_orders",
+ *     tagKey: "owner",
+ * });
+ * const columnTag = databricks.getEntityTagAssignment({
+ *     entityType: "columns",
+ *     entityName: "production_catalog.customer_data.users.email_address",
+ *     tagKey: "pii_classification",
+ * });
+ * const volumeTag = databricks.getEntityTagAssignment({
+ *     entityType: "volumes",
+ *     entityName: "production_catalog.raw_data.landing_zone",
+ *     tagKey: "purpose",
+ * });
+ * ```
+ */
 export function getEntityTagAssignmentOutput(args: GetEntityTagAssignmentOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEntityTagAssignmentResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getEntityTagAssignment:getEntityTagAssignment", {
         "entityName": args.entityName,
         "entityType": args.entityType,
         "tagKey": args.tagKey,
-        "tagValue": args.tagValue,
-        "workspaceId": args.workspaceId,
     }, opts);
 }
 
@@ -94,12 +161,4 @@ export interface GetEntityTagAssignmentOutputArgs {
      * The key of the tag
      */
     tagKey: pulumi.Input<string>;
-    /**
-     * (string) - The value of the tag
-     */
-    tagValue?: pulumi.Input<string>;
-    /**
-     * Workspace ID of the resource
-     */
-    workspaceId?: pulumi.Input<string>;
 }

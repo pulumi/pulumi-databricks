@@ -13,6 +13,9 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class AccountSettingV2RestrictWorkspaceAdmins
     {
+        /// <summary>
+        /// Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
+        /// </summary>
         public readonly string Status;
 
         [OutputConstructor]

@@ -6,11 +6,14 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-export function getDatabaseSyncedDatabaseTables(args?: GetDatabaseSyncedDatabaseTablesArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabaseSyncedDatabaseTablesResult> {
-    args = args || {};
+/**
+ * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ */
+export function getDatabaseSyncedDatabaseTables(args: GetDatabaseSyncedDatabaseTablesArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabaseSyncedDatabaseTablesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getDatabaseSyncedDatabaseTables:getDatabaseSyncedDatabaseTables", {
-        "workspaceId": args.workspaceId,
+        "instanceName": args.instanceName,
+        "pageSize": args.pageSize,
     }, opts);
 }
 
@@ -19,9 +22,13 @@ export function getDatabaseSyncedDatabaseTables(args?: GetDatabaseSyncedDatabase
  */
 export interface GetDatabaseSyncedDatabaseTablesArgs {
     /**
-     * Workspace ID of the resource
+     * Name of the instance to get synced tables for
      */
-    workspaceId?: string;
+    instanceName: string;
+    /**
+     * Upper bound for items returned
+     */
+    pageSize?: number;
 }
 
 /**
@@ -32,14 +39,18 @@ export interface GetDatabaseSyncedDatabaseTablesResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly instanceName: string;
+    readonly pageSize?: number;
     readonly syncedTables: outputs.GetDatabaseSyncedDatabaseTablesSyncedTable[];
-    readonly workspaceId?: string;
 }
-export function getDatabaseSyncedDatabaseTablesOutput(args?: GetDatabaseSyncedDatabaseTablesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDatabaseSyncedDatabaseTablesResult> {
-    args = args || {};
+/**
+ * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ */
+export function getDatabaseSyncedDatabaseTablesOutput(args: GetDatabaseSyncedDatabaseTablesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDatabaseSyncedDatabaseTablesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getDatabaseSyncedDatabaseTables:getDatabaseSyncedDatabaseTables", {
-        "workspaceId": args.workspaceId,
+        "instanceName": args.instanceName,
+        "pageSize": args.pageSize,
     }, opts);
 }
 
@@ -48,7 +59,11 @@ export function getDatabaseSyncedDatabaseTablesOutput(args?: GetDatabaseSyncedDa
  */
 export interface GetDatabaseSyncedDatabaseTablesOutputArgs {
     /**
-     * Workspace ID of the resource
+     * Name of the instance to get synced tables for
      */
-    workspaceId?: pulumi.Input<string>;
+    instanceName: pulumi.Input<string>;
+    /**
+     * Upper bound for items returned
+     */
+    pageSize?: pulumi.Input<number>;
 }

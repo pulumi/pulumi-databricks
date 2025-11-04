@@ -7,8 +7,6 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GetEntityTagAssignmentPlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -60,44 +58,12 @@ public final class GetEntityTagAssignmentPlainArgs extends com.pulumi.resources.
         return this.tagKey;
     }
 
-    /**
-     * (string) - The value of the tag
-     * 
-     */
-    @Import(name="tagValue")
-    private @Nullable String tagValue;
-
-    /**
-     * @return (string) - The value of the tag
-     * 
-     */
-    public Optional<String> tagValue() {
-        return Optional.ofNullable(this.tagValue);
-    }
-
-    /**
-     * Workspace ID of the resource
-     * 
-     */
-    @Import(name="workspaceId")
-    private @Nullable String workspaceId;
-
-    /**
-     * @return Workspace ID of the resource
-     * 
-     */
-    public Optional<String> workspaceId() {
-        return Optional.ofNullable(this.workspaceId);
-    }
-
     private GetEntityTagAssignmentPlainArgs() {}
 
     private GetEntityTagAssignmentPlainArgs(GetEntityTagAssignmentPlainArgs $) {
         this.entityName = $.entityName;
         this.entityType = $.entityType;
         this.tagKey = $.tagKey;
-        this.tagValue = $.tagValue;
-        this.workspaceId = $.workspaceId;
     }
 
     public static Builder builder() {
@@ -148,28 +114,6 @@ public final class GetEntityTagAssignmentPlainArgs extends com.pulumi.resources.
          */
         public Builder tagKey(String tagKey) {
             $.tagKey = tagKey;
-            return this;
-        }
-
-        /**
-         * @param tagValue (string) - The value of the tag
-         * 
-         * @return builder
-         * 
-         */
-        public Builder tagValue(@Nullable String tagValue) {
-            $.tagValue = tagValue;
-            return this;
-        }
-
-        /**
-         * @param workspaceId Workspace ID of the resource
-         * 
-         * @return builder
-         * 
-         */
-        public Builder workspaceId(@Nullable String workspaceId) {
-            $.workspaceId = workspaceId;
             return this;
         }
 

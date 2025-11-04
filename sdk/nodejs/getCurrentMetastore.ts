@@ -38,6 +38,7 @@ export function getCurrentMetastore(args?: GetCurrentMetastoreArgs, opts?: pulum
     return pulumi.runtime.invoke("databricks:index/getCurrentMetastore:getCurrentMetastore", {
         "id": args.id,
         "metastoreInfo": args.metastoreInfo,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -53,6 +54,10 @@ export interface GetCurrentMetastoreArgs {
      * summary about a metastore attached to the current workspace returned by [Get a metastore summary API](https://docs.databricks.com/api/workspace/metastores/summary). This contains the following attributes (check the API page for up-to-date details):
      */
     metastoreInfo?: inputs.GetCurrentMetastoreMetastoreInfo;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: inputs.GetCurrentMetastoreProviderConfig;
 }
 
 /**
@@ -67,6 +72,7 @@ export interface GetCurrentMetastoreResult {
      * summary about a metastore attached to the current workspace returned by [Get a metastore summary API](https://docs.databricks.com/api/workspace/metastores/summary). This contains the following attributes (check the API page for up-to-date details):
      */
     readonly metastoreInfo: outputs.GetCurrentMetastoreMetastoreInfo;
+    readonly providerConfig?: outputs.GetCurrentMetastoreProviderConfig;
 }
 /**
  * Retrieves information about metastore attached to a given workspace.
@@ -100,6 +106,7 @@ export function getCurrentMetastoreOutput(args?: GetCurrentMetastoreOutputArgs, 
     return pulumi.runtime.invokeOutput("databricks:index/getCurrentMetastore:getCurrentMetastore", {
         "id": args.id,
         "metastoreInfo": args.metastoreInfo,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -115,4 +122,8 @@ export interface GetCurrentMetastoreOutputArgs {
      * summary about a metastore attached to the current workspace returned by [Get a metastore summary API](https://docs.databricks.com/api/workspace/metastores/summary). This contains the following attributes (check the API page for up-to-date details):
      */
     metastoreInfo?: pulumi.Input<inputs.GetCurrentMetastoreMetastoreInfoArgs>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.GetCurrentMetastoreProviderConfigArgs>;
 }

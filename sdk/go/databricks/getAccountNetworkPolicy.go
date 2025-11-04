@@ -11,6 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+//
 // This data source can be used to get a single network policy.
 //
 // > **Note** This data source can only be used with an account-level provider!
@@ -30,24 +32,20 @@ func LookupAccountNetworkPolicy(ctx *pulumi.Context, args *LookupAccountNetworkP
 
 // A collection of arguments for invoking getAccountNetworkPolicy.
 type LookupAccountNetworkPolicyArgs struct {
-	// (string) - The associated account ID for this Network Policy object
-	AccountId *string `pulumi:"accountId"`
-	// (NetworkPolicyEgress) - The network policies applying for egress traffic
-	Egress *GetAccountNetworkPolicyEgress `pulumi:"egress"`
 	// The unique identifier for the network policy
-	NetworkPolicyId *string `pulumi:"networkPolicyId"`
+	NetworkPolicyId string `pulumi:"networkPolicyId"`
 }
 
 // A collection of values returned by getAccountNetworkPolicy.
 type LookupAccountNetworkPolicyResult struct {
 	// (string) - The associated account ID for this Network Policy object
-	AccountId *string `pulumi:"accountId"`
+	AccountId string `pulumi:"accountId"`
 	// (NetworkPolicyEgress) - The network policies applying for egress traffic
-	Egress *GetAccountNetworkPolicyEgress `pulumi:"egress"`
+	Egress GetAccountNetworkPolicyEgress `pulumi:"egress"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// (string) - The unique identifier for the network policy
-	NetworkPolicyId *string `pulumi:"networkPolicyId"`
+	NetworkPolicyId string `pulumi:"networkPolicyId"`
 }
 
 func LookupAccountNetworkPolicyOutput(ctx *pulumi.Context, args LookupAccountNetworkPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupAccountNetworkPolicyResultOutput {
@@ -61,12 +59,8 @@ func LookupAccountNetworkPolicyOutput(ctx *pulumi.Context, args LookupAccountNet
 
 // A collection of arguments for invoking getAccountNetworkPolicy.
 type LookupAccountNetworkPolicyOutputArgs struct {
-	// (string) - The associated account ID for this Network Policy object
-	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
-	// (NetworkPolicyEgress) - The network policies applying for egress traffic
-	Egress GetAccountNetworkPolicyEgressPtrInput `pulumi:"egress"`
 	// The unique identifier for the network policy
-	NetworkPolicyId pulumi.StringPtrInput `pulumi:"networkPolicyId"`
+	NetworkPolicyId pulumi.StringInput `pulumi:"networkPolicyId"`
 }
 
 func (LookupAccountNetworkPolicyOutputArgs) ElementType() reflect.Type {
@@ -89,13 +83,13 @@ func (o LookupAccountNetworkPolicyResultOutput) ToLookupAccountNetworkPolicyResu
 }
 
 // (string) - The associated account ID for this Network Policy object
-func (o LookupAccountNetworkPolicyResultOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupAccountNetworkPolicyResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o LookupAccountNetworkPolicyResultOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAccountNetworkPolicyResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // (NetworkPolicyEgress) - The network policies applying for egress traffic
-func (o LookupAccountNetworkPolicyResultOutput) Egress() GetAccountNetworkPolicyEgressPtrOutput {
-	return o.ApplyT(func(v LookupAccountNetworkPolicyResult) *GetAccountNetworkPolicyEgress { return v.Egress }).(GetAccountNetworkPolicyEgressPtrOutput)
+func (o LookupAccountNetworkPolicyResultOutput) Egress() GetAccountNetworkPolicyEgressOutput {
+	return o.ApplyT(func(v LookupAccountNetworkPolicyResult) GetAccountNetworkPolicyEgress { return v.Egress }).(GetAccountNetworkPolicyEgressOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.
@@ -104,8 +98,8 @@ func (o LookupAccountNetworkPolicyResultOutput) Id() pulumi.StringOutput {
 }
 
 // (string) - The unique identifier for the network policy
-func (o LookupAccountNetworkPolicyResultOutput) NetworkPolicyId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupAccountNetworkPolicyResult) *string { return v.NetworkPolicyId }).(pulumi.StringPtrOutput)
+func (o LookupAccountNetworkPolicyResultOutput) NetworkPolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAccountNetworkPolicyResult) string { return v.NetworkPolicyId }).(pulumi.StringOutput)
 }
 
 func init() {

@@ -12,6 +12,8 @@ namespace Pulumi.Databricks
     public static class GetDatabaseDatabaseCatalog
     {
         /// <summary>
+        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
         /// This data source can be used to get a single Database Catalog.
         /// 
         /// 
@@ -39,6 +41,8 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDatabaseDatabaseCatalogResult>("databricks:index/getDatabaseDatabaseCatalog:getDatabaseDatabaseCatalog", args ?? new GetDatabaseDatabaseCatalogArgs(), options.WithDefaults());
 
         /// <summary>
+        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
         /// This data source can be used to get a single Database Catalog.
         /// 
         /// 
@@ -66,6 +70,8 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.Invoke<GetDatabaseDatabaseCatalogResult>("databricks:index/getDatabaseDatabaseCatalog:getDatabaseDatabaseCatalog", args ?? new GetDatabaseDatabaseCatalogInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
         /// This data source can be used to get a single Database Catalog.
         /// 
         /// 
@@ -97,34 +103,10 @@ namespace Pulumi.Databricks
     public sealed class GetDatabaseDatabaseCatalogArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// (boolean)
-        /// </summary>
-        [Input("createDatabaseIfNotExists")]
-        public bool? CreateDatabaseIfNotExists { get; set; }
-
-        /// <summary>
-        /// (string) - The name of the DatabaseInstance housing the database
-        /// </summary>
-        [Input("databaseInstanceName", required: true)]
-        public string DatabaseInstanceName { get; set; } = null!;
-
-        /// <summary>
-        /// (string) - The name of the database (in a instance) associated with the catalog
-        /// </summary>
-        [Input("databaseName", required: true)]
-        public string DatabaseName { get; set; } = null!;
-
-        /// <summary>
         /// The name of the catalog in UC
         /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
-
-        /// <summary>
-        /// Workspace ID of the resource
-        /// </summary>
-        [Input("workspaceId")]
-        public string? WorkspaceId { get; set; }
 
         public GetDatabaseDatabaseCatalogArgs()
         {
@@ -135,34 +117,10 @@ namespace Pulumi.Databricks
     public sealed class GetDatabaseDatabaseCatalogInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// (boolean)
-        /// </summary>
-        [Input("createDatabaseIfNotExists")]
-        public Input<bool>? CreateDatabaseIfNotExists { get; set; }
-
-        /// <summary>
-        /// (string) - The name of the DatabaseInstance housing the database
-        /// </summary>
-        [Input("databaseInstanceName", required: true)]
-        public Input<string> DatabaseInstanceName { get; set; } = null!;
-
-        /// <summary>
-        /// (string) - The name of the database (in a instance) associated with the catalog
-        /// </summary>
-        [Input("databaseName", required: true)]
-        public Input<string> DatabaseName { get; set; } = null!;
-
-        /// <summary>
         /// The name of the catalog in UC
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
-
-        /// <summary>
-        /// Workspace ID of the resource
-        /// </summary>
-        [Input("workspaceId")]
-        public Input<string>? WorkspaceId { get; set; }
 
         public GetDatabaseDatabaseCatalogInvokeArgs()
         {
@@ -198,7 +156,6 @@ namespace Pulumi.Databricks
         /// (string)
         /// </summary>
         public readonly string Uid;
-        public readonly string? WorkspaceId;
 
         [OutputConstructor]
         private GetDatabaseDatabaseCatalogResult(
@@ -212,9 +169,7 @@ namespace Pulumi.Databricks
 
             string name,
 
-            string uid,
-
-            string? workspaceId)
+            string uid)
         {
             CreateDatabaseIfNotExists = createDatabaseIfNotExists;
             DatabaseInstanceName = databaseInstanceName;
@@ -222,7 +177,6 @@ namespace Pulumi.Databricks
             Id = id;
             Name = name;
             Uid = uid;
-            WorkspaceId = workspaceId;
         }
     }
 }

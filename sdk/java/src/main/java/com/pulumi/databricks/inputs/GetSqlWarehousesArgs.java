@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetSqlWarehousesProviderConfigArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -32,6 +33,21 @@ public final class GetSqlWarehousesArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<GetSqlWarehousesProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Optional<Output<GetSqlWarehousesProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
+    /**
      * Only return databricks.SqlEndpoint ids that match the given name string.
      * 
      */
@@ -50,6 +66,7 @@ public final class GetSqlWarehousesArgs extends com.pulumi.resources.InvokeArgs 
 
     private GetSqlWarehousesArgs(GetSqlWarehousesArgs $) {
         this.ids = $.ids;
+        this.providerConfig = $.providerConfig;
         this.warehouseNameContains = $.warehouseNameContains;
     }
 
@@ -100,6 +117,27 @@ public final class GetSqlWarehousesArgs extends com.pulumi.resources.InvokeArgs 
          */
         public Builder ids(String... ids) {
             return ids(List.of(ids));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<GetSqlWarehousesProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(GetSqlWarehousesProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         /**

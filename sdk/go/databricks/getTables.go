@@ -85,6 +85,8 @@ type GetTablesArgs struct {
 	CatalogName string `pulumi:"catalogName"`
 	// set of Table full names: *`catalog`.`schema`.`table`*
 	Ids []string `pulumi:"ids"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *GetTablesProviderConfig `pulumi:"providerConfig"`
 	// Name of databricks_schema
 	SchemaName string `pulumi:"schemaName"`
 }
@@ -95,8 +97,9 @@ type GetTablesResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// set of Table full names: *`catalog`.`schema`.`table`*
-	Ids        []string `pulumi:"ids"`
-	SchemaName string   `pulumi:"schemaName"`
+	Ids            []string                 `pulumi:"ids"`
+	ProviderConfig *GetTablesProviderConfig `pulumi:"providerConfig"`
+	SchemaName     string                   `pulumi:"schemaName"`
 }
 
 func GetTablesOutput(ctx *pulumi.Context, args GetTablesOutputArgs, opts ...pulumi.InvokeOption) GetTablesResultOutput {
@@ -114,6 +117,8 @@ type GetTablesOutputArgs struct {
 	CatalogName pulumi.StringInput `pulumi:"catalogName"`
 	// set of Table full names: *`catalog`.`schema`.`table`*
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig GetTablesProviderConfigPtrInput `pulumi:"providerConfig"`
 	// Name of databricks_schema
 	SchemaName pulumi.StringInput `pulumi:"schemaName"`
 }
@@ -149,6 +154,10 @@ func (o GetTablesResultOutput) Id() pulumi.StringOutput {
 // set of Table full names: *`catalog`.`schema`.`table`*
 func (o GetTablesResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetTablesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+func (o GetTablesResultOutput) ProviderConfig() GetTablesProviderConfigPtrOutput {
+	return o.ApplyT(func(v GetTablesResult) *GetTablesProviderConfig { return v.ProviderConfig }).(GetTablesProviderConfigPtrOutput)
 }
 
 func (o GetTablesResultOutput) SchemaName() pulumi.StringOutput {

@@ -11,12 +11,177 @@ namespace Pulumi.Databricks
 {
     public static class GetEntityTagAssignment
     {
+        /// <summary>
+        /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// This data source allows you to get information about a tag assignment for a specific entity using the entity type, entity name, and tag key.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ### Get environment tag from a catalog
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var catalogTag = Databricks.GetEntityTagAssignment.Invoke(new()
+        ///     {
+        ///         EntityType = "catalogs",
+        ///         EntityName = "production_catalog",
+        ///         TagKey = "environment",
+        ///     });
+        /// 
+        ///     var schemaTag = Databricks.GetEntityTagAssignment.Invoke(new()
+        ///     {
+        ///         EntityType = "schemas",
+        ///         EntityName = "production_catalog.analytics_data",
+        ///         TagKey = "cost_center",
+        ///     });
+        /// 
+        ///     var tableTag = Databricks.GetEntityTagAssignment.Invoke(new()
+        ///     {
+        ///         EntityType = "tables",
+        ///         EntityName = "production_catalog.sales_data.customer_orders",
+        ///         TagKey = "owner",
+        ///     });
+        /// 
+        ///     var columnTag = Databricks.GetEntityTagAssignment.Invoke(new()
+        ///     {
+        ///         EntityType = "columns",
+        ///         EntityName = "production_catalog.customer_data.users.email_address",
+        ///         TagKey = "pii_classification",
+        ///     });
+        /// 
+        ///     var volumeTag = Databricks.GetEntityTagAssignment.Invoke(new()
+        ///     {
+        ///         EntityType = "volumes",
+        ///         EntityName = "production_catalog.raw_data.landing_zone",
+        ///         TagKey = "purpose",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Task<GetEntityTagAssignmentResult> InvokeAsync(GetEntityTagAssignmentArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetEntityTagAssignmentResult>("databricks:index/getEntityTagAssignment:getEntityTagAssignment", args ?? new GetEntityTagAssignmentArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// This data source allows you to get information about a tag assignment for a specific entity using the entity type, entity name, and tag key.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ### Get environment tag from a catalog
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var catalogTag = Databricks.GetEntityTagAssignment.Invoke(new()
+        ///     {
+        ///         EntityType = "catalogs",
+        ///         EntityName = "production_catalog",
+        ///         TagKey = "environment",
+        ///     });
+        /// 
+        ///     var schemaTag = Databricks.GetEntityTagAssignment.Invoke(new()
+        ///     {
+        ///         EntityType = "schemas",
+        ///         EntityName = "production_catalog.analytics_data",
+        ///         TagKey = "cost_center",
+        ///     });
+        /// 
+        ///     var tableTag = Databricks.GetEntityTagAssignment.Invoke(new()
+        ///     {
+        ///         EntityType = "tables",
+        ///         EntityName = "production_catalog.sales_data.customer_orders",
+        ///         TagKey = "owner",
+        ///     });
+        /// 
+        ///     var columnTag = Databricks.GetEntityTagAssignment.Invoke(new()
+        ///     {
+        ///         EntityType = "columns",
+        ///         EntityName = "production_catalog.customer_data.users.email_address",
+        ///         TagKey = "pii_classification",
+        ///     });
+        /// 
+        ///     var volumeTag = Databricks.GetEntityTagAssignment.Invoke(new()
+        ///     {
+        ///         EntityType = "volumes",
+        ///         EntityName = "production_catalog.raw_data.landing_zone",
+        ///         TagKey = "purpose",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetEntityTagAssignmentResult> Invoke(GetEntityTagAssignmentInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetEntityTagAssignmentResult>("databricks:index/getEntityTagAssignment:getEntityTagAssignment", args ?? new GetEntityTagAssignmentInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// This data source allows you to get information about a tag assignment for a specific entity using the entity type, entity name, and tag key.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ### Get environment tag from a catalog
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var catalogTag = Databricks.GetEntityTagAssignment.Invoke(new()
+        ///     {
+        ///         EntityType = "catalogs",
+        ///         EntityName = "production_catalog",
+        ///         TagKey = "environment",
+        ///     });
+        /// 
+        ///     var schemaTag = Databricks.GetEntityTagAssignment.Invoke(new()
+        ///     {
+        ///         EntityType = "schemas",
+        ///         EntityName = "production_catalog.analytics_data",
+        ///         TagKey = "cost_center",
+        ///     });
+        /// 
+        ///     var tableTag = Databricks.GetEntityTagAssignment.Invoke(new()
+        ///     {
+        ///         EntityType = "tables",
+        ///         EntityName = "production_catalog.sales_data.customer_orders",
+        ///         TagKey = "owner",
+        ///     });
+        /// 
+        ///     var columnTag = Databricks.GetEntityTagAssignment.Invoke(new()
+        ///     {
+        ///         EntityType = "columns",
+        ///         EntityName = "production_catalog.customer_data.users.email_address",
+        ///         TagKey = "pii_classification",
+        ///     });
+        /// 
+        ///     var volumeTag = Databricks.GetEntityTagAssignment.Invoke(new()
+        ///     {
+        ///         EntityType = "volumes",
+        ///         EntityName = "production_catalog.raw_data.landing_zone",
+        ///         TagKey = "purpose",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetEntityTagAssignmentResult> Invoke(GetEntityTagAssignmentInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetEntityTagAssignmentResult>("databricks:index/getEntityTagAssignment:getEntityTagAssignment", args ?? new GetEntityTagAssignmentInvokeArgs(), options.WithDefaults());
     }
@@ -41,18 +206,6 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("tagKey", required: true)]
         public string TagKey { get; set; } = null!;
-
-        /// <summary>
-        /// (string) - The value of the tag
-        /// </summary>
-        [Input("tagValue")]
-        public string? TagValue { get; set; }
-
-        /// <summary>
-        /// Workspace ID of the resource
-        /// </summary>
-        [Input("workspaceId")]
-        public string? WorkspaceId { get; set; }
 
         public GetEntityTagAssignmentArgs()
         {
@@ -79,18 +232,6 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("tagKey", required: true)]
         public Input<string> TagKey { get; set; } = null!;
-
-        /// <summary>
-        /// (string) - The value of the tag
-        /// </summary>
-        [Input("tagValue")]
-        public Input<string>? TagValue { get; set; }
-
-        /// <summary>
-        /// Workspace ID of the resource
-        /// </summary>
-        [Input("workspaceId")]
-        public Input<string>? WorkspaceId { get; set; }
 
         public GetEntityTagAssignmentInvokeArgs()
         {
@@ -121,8 +262,7 @@ namespace Pulumi.Databricks
         /// <summary>
         /// (string) - The value of the tag
         /// </summary>
-        public readonly string? TagValue;
-        public readonly string? WorkspaceId;
+        public readonly string TagValue;
 
         [OutputConstructor]
         private GetEntityTagAssignmentResult(
@@ -134,16 +274,13 @@ namespace Pulumi.Databricks
 
             string tagKey,
 
-            string? tagValue,
-
-            string? workspaceId)
+            string tagValue)
         {
             EntityName = entityName;
             EntityType = entityType;
             Id = id;
             TagKey = tagKey;
             TagValue = tagValue;
-            WorkspaceId = workspaceId;
         }
     }
 }

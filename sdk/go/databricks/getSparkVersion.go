@@ -109,6 +109,8 @@ type GetSparkVersionArgs struct {
 	//
 	// Deprecated: Specify runtime_engine="PHOTON" in the cluster configuration
 	Photon *bool `pulumi:"photon"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *GetSparkVersionProviderConfig `pulumi:"providerConfig"`
 	// if we should limit the search only to runtimes that are based on specific Scala version. Default to `2.12`.
 	Scala *string `pulumi:"scala"`
 	// if we should limit the search only to runtimes that are based on specific Spark version. Default to empty string.  It could be specified as `3`, or `3.0`, or full version, like, `3.0.1`.
@@ -128,9 +130,10 @@ type GetSparkVersionResult struct {
 	LongTermSupport *bool  `pulumi:"longTermSupport"`
 	Ml              *bool  `pulumi:"ml"`
 	// Deprecated: Specify runtime_engine="PHOTON" in the cluster configuration
-	Photon       *bool   `pulumi:"photon"`
-	Scala        *string `pulumi:"scala"`
-	SparkVersion *string `pulumi:"sparkVersion"`
+	Photon         *bool                          `pulumi:"photon"`
+	ProviderConfig *GetSparkVersionProviderConfig `pulumi:"providerConfig"`
+	Scala          *string                        `pulumi:"scala"`
+	SparkVersion   *string                        `pulumi:"sparkVersion"`
 }
 
 func GetSparkVersionOutput(ctx *pulumi.Context, args GetSparkVersionOutputArgs, opts ...pulumi.InvokeOption) GetSparkVersionResultOutput {
@@ -166,6 +169,8 @@ type GetSparkVersionOutputArgs struct {
 	//
 	// Deprecated: Specify runtime_engine="PHOTON" in the cluster configuration
 	Photon pulumi.BoolPtrInput `pulumi:"photon"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig GetSparkVersionProviderConfigPtrInput `pulumi:"providerConfig"`
 	// if we should limit the search only to runtimes that are based on specific Scala version. Default to `2.12`.
 	Scala pulumi.StringPtrInput `pulumi:"scala"`
 	// if we should limit the search only to runtimes that are based on specific Spark version. Default to empty string.  It could be specified as `3`, or `3.0`, or full version, like, `3.0.1`.
@@ -228,6 +233,10 @@ func (o GetSparkVersionResultOutput) Ml() pulumi.BoolPtrOutput {
 // Deprecated: Specify runtime_engine="PHOTON" in the cluster configuration
 func (o GetSparkVersionResultOutput) Photon() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetSparkVersionResult) *bool { return v.Photon }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetSparkVersionResultOutput) ProviderConfig() GetSparkVersionProviderConfigPtrOutput {
+	return o.ApplyT(func(v GetSparkVersionResult) *GetSparkVersionProviderConfig { return v.ProviderConfig }).(GetSparkVersionProviderConfigPtrOutput)
 }
 
 func (o GetSparkVersionResultOutput) Scala() pulumi.StringPtrOutput {

@@ -61,6 +61,8 @@ func GetShares(ctx *pulumi.Context, args *GetSharesArgs, opts ...pulumi.InvokeOp
 
 // A collection of arguments for invoking getShares.
 type GetSharesArgs struct {
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *GetSharesProviderConfig `pulumi:"providerConfig"`
 	// list of Share names.
 	Shares []string `pulumi:"shares"`
 }
@@ -68,7 +70,8 @@ type GetSharesArgs struct {
 // A collection of values returned by getShares.
 type GetSharesResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	Id             string                   `pulumi:"id"`
+	ProviderConfig *GetSharesProviderConfig `pulumi:"providerConfig"`
 	// list of Share names.
 	Shares []string `pulumi:"shares"`
 }
@@ -84,6 +87,8 @@ func GetSharesOutput(ctx *pulumi.Context, args GetSharesOutputArgs, opts ...pulu
 
 // A collection of arguments for invoking getShares.
 type GetSharesOutputArgs struct {
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig GetSharesProviderConfigPtrInput `pulumi:"providerConfig"`
 	// list of Share names.
 	Shares pulumi.StringArrayInput `pulumi:"shares"`
 }
@@ -110,6 +115,10 @@ func (o GetSharesResultOutput) ToGetSharesResultOutputWithContext(ctx context.Co
 // The provider-assigned unique ID for this managed resource.
 func (o GetSharesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSharesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetSharesResultOutput) ProviderConfig() GetSharesProviderConfigPtrOutput {
+	return o.ApplyT(func(v GetSharesResult) *GetSharesProviderConfig { return v.ProviderConfig }).(GetSharesProviderConfigPtrOutput)
 }
 
 // list of Share names.

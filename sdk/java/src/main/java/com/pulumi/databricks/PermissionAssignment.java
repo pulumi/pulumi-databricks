@@ -21,6 +21,8 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * ### Assign using `principalId`
+ * 
  * In workspace context, adding account-level user to a workspace:
  * 
  * <pre>
@@ -150,6 +152,110 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * ### Assign using `userName`, `groupName`, or `servicePrincipalName`
+ * 
+ * In workspace context, adding account-level user to a workspace:
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.PermissionAssignment;
+ * import com.pulumi.databricks.PermissionAssignmentArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var addUser = new PermissionAssignment("addUser", PermissionAssignmentArgs.builder()
+ *             .userName("me}{@literal @}{@code example.com")
+ *             .permissions("USER")
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
+ * In workspace context, adding account-level service principal to a workspace:
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.PermissionAssignment;
+ * import com.pulumi.databricks.PermissionAssignmentArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var addAdminSpn = new PermissionAssignment("addAdminSpn", PermissionAssignmentArgs.builder()
+ *             .servicePrincipalName("00000000-0000-0000-0000-000000000000")
+ *             .permissions("ADMIN")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * In workspace context, adding account-level group to a workspace:
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.PermissionAssignment;
+ * import com.pulumi.databricks.PermissionAssignmentArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var this_ = new PermissionAssignment("this", PermissionAssignmentArgs.builder()
+ *             .groupName("example-group")
+ *             .permissions("USER")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Related Resources
  * 
  * The following resources are used in the same context:
@@ -185,6 +291,34 @@ import javax.annotation.Nullable;
 @ResourceType(type="databricks:index/permissionAssignment:PermissionAssignment")
 public class PermissionAssignment extends com.pulumi.resources.CustomResource {
     /**
+     * the display name of the assigned principal.
+     * 
+     */
+    @Export(name="displayName", refs={String.class}, tree="[0]")
+    private Output<String> displayName;
+
+    /**
+     * @return the display name of the assigned principal.
+     * 
+     */
+    public Output<String> displayName() {
+        return this.displayName;
+    }
+    /**
+     * the group name to assign to a workspace.
+     * 
+     */
+    @Export(name="groupName", refs={String.class}, tree="[0]")
+    private Output<String> groupName;
+
+    /**
+     * @return the group name to assign to a workspace.
+     * 
+     */
+    public Output<String> groupName() {
+        return this.groupName;
+    }
+    /**
      * The list of workspace permissions to assign to the principal:
      * * `&#34;USER&#34;` - Adds principal to the workspace `users` group. This gives basic workspace access.
      * * `&#34;ADMIN&#34;` - Adds principal to the workspace `admins` group. This gives workspace admin privileges to manage users and groups, workspace configurations, and more.
@@ -215,6 +349,34 @@ public class PermissionAssignment extends com.pulumi.resources.CustomResource {
      */
     public Output<String> principalId() {
         return this.principalId;
+    }
+    /**
+     * the application ID of service principal to assign to a workspace.
+     * 
+     */
+    @Export(name="servicePrincipalName", refs={String.class}, tree="[0]")
+    private Output<String> servicePrincipalName;
+
+    /**
+     * @return the application ID of service principal to assign to a workspace.
+     * 
+     */
+    public Output<String> servicePrincipalName() {
+        return this.servicePrincipalName;
+    }
+    /**
+     * the user name (email) to assign to a workspace.
+     * 
+     */
+    @Export(name="userName", refs={String.class}, tree="[0]")
+    private Output<String> userName;
+
+    /**
+     * @return the user name (email) to assign to a workspace.
+     * 
+     */
+    public Output<String> userName() {
+        return this.userName;
     }
 
     /**

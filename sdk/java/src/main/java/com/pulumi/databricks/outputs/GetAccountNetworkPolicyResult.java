@@ -8,8 +8,6 @@ import com.pulumi.databricks.outputs.GetAccountNetworkPolicyEgress;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAccountNetworkPolicyResult {
@@ -17,12 +15,12 @@ public final class GetAccountNetworkPolicyResult {
      * @return (string) - The associated account ID for this Network Policy object
      * 
      */
-    private @Nullable String accountId;
+    private String accountId;
     /**
      * @return (NetworkPolicyEgress) - The network policies applying for egress traffic
      * 
      */
-    private @Nullable GetAccountNetworkPolicyEgress egress;
+    private GetAccountNetworkPolicyEgress egress;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -32,22 +30,22 @@ public final class GetAccountNetworkPolicyResult {
      * @return (string) - The unique identifier for the network policy
      * 
      */
-    private @Nullable String networkPolicyId;
+    private String networkPolicyId;
 
     private GetAccountNetworkPolicyResult() {}
     /**
      * @return (string) - The associated account ID for this Network Policy object
      * 
      */
-    public Optional<String> accountId() {
-        return Optional.ofNullable(this.accountId);
+    public String accountId() {
+        return this.accountId;
     }
     /**
      * @return (NetworkPolicyEgress) - The network policies applying for egress traffic
      * 
      */
-    public Optional<GetAccountNetworkPolicyEgress> egress() {
-        return Optional.ofNullable(this.egress);
+    public GetAccountNetworkPolicyEgress egress() {
+        return this.egress;
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -60,8 +58,8 @@ public final class GetAccountNetworkPolicyResult {
      * @return (string) - The unique identifier for the network policy
      * 
      */
-    public Optional<String> networkPolicyId() {
-        return Optional.ofNullable(this.networkPolicyId);
+    public String networkPolicyId() {
+        return this.networkPolicyId;
     }
 
     public static Builder builder() {
@@ -73,10 +71,10 @@ public final class GetAccountNetworkPolicyResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String accountId;
-        private @Nullable GetAccountNetworkPolicyEgress egress;
+        private String accountId;
+        private GetAccountNetworkPolicyEgress egress;
         private String id;
-        private @Nullable String networkPolicyId;
+        private String networkPolicyId;
         public Builder() {}
         public Builder(GetAccountNetworkPolicyResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -87,14 +85,18 @@ public final class GetAccountNetworkPolicyResult {
         }
 
         @CustomType.Setter
-        public Builder accountId(@Nullable String accountId) {
-
+        public Builder accountId(String accountId) {
+            if (accountId == null) {
+              throw new MissingRequiredPropertyException("GetAccountNetworkPolicyResult", "accountId");
+            }
             this.accountId = accountId;
             return this;
         }
         @CustomType.Setter
-        public Builder egress(@Nullable GetAccountNetworkPolicyEgress egress) {
-
+        public Builder egress(GetAccountNetworkPolicyEgress egress) {
+            if (egress == null) {
+              throw new MissingRequiredPropertyException("GetAccountNetworkPolicyResult", "egress");
+            }
             this.egress = egress;
             return this;
         }
@@ -107,8 +109,10 @@ public final class GetAccountNetworkPolicyResult {
             return this;
         }
         @CustomType.Setter
-        public Builder networkPolicyId(@Nullable String networkPolicyId) {
-
+        public Builder networkPolicyId(String networkPolicyId) {
+            if (networkPolicyId == null) {
+              throw new MissingRequiredPropertyException("GetAccountNetworkPolicyResult", "networkPolicyId");
+            }
             this.networkPolicyId = networkPolicyId;
             return this;
         }

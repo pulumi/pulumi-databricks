@@ -5,6 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
  * ## Import
  *
  * As of Pulumi v1.5, resources can be imported through configuration.
@@ -22,7 +24,7 @@ import * as utilities from "./utilities";
  * If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
  *
  * ```sh
- * $ pulumi import databricks:index/materializedFeaturesFeatureTag:MaterializedFeaturesFeatureTag databricks_materialized_features_feature_tag "key"
+ * $ pulumi import databricks:index/materializedFeaturesFeatureTag:MaterializedFeaturesFeatureTag this "key"
  * ```
  */
 export class MaterializedFeaturesFeatureTag extends pulumi.CustomResource {
@@ -55,10 +57,6 @@ export class MaterializedFeaturesFeatureTag extends pulumi.CustomResource {
 
     declare public readonly key: pulumi.Output<string>;
     declare public readonly value: pulumi.Output<string | undefined>;
-    /**
-     * Workspace ID of the resource
-     */
-    declare public readonly workspaceId: pulumi.Output<string | undefined>;
 
     /**
      * Create a MaterializedFeaturesFeatureTag resource with the given unique name, arguments, and options.
@@ -75,7 +73,6 @@ export class MaterializedFeaturesFeatureTag extends pulumi.CustomResource {
             const state = argsOrState as MaterializedFeaturesFeatureTagState | undefined;
             resourceInputs["key"] = state?.key;
             resourceInputs["value"] = state?.value;
-            resourceInputs["workspaceId"] = state?.workspaceId;
         } else {
             const args = argsOrState as MaterializedFeaturesFeatureTagArgs | undefined;
             if (args?.key === undefined && !opts.urn) {
@@ -83,7 +80,6 @@ export class MaterializedFeaturesFeatureTag extends pulumi.CustomResource {
             }
             resourceInputs["key"] = args?.key;
             resourceInputs["value"] = args?.value;
-            resourceInputs["workspaceId"] = args?.workspaceId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(MaterializedFeaturesFeatureTag.__pulumiType, name, resourceInputs, opts);
@@ -96,10 +92,6 @@ export class MaterializedFeaturesFeatureTag extends pulumi.CustomResource {
 export interface MaterializedFeaturesFeatureTagState {
     key?: pulumi.Input<string>;
     value?: pulumi.Input<string>;
-    /**
-     * Workspace ID of the resource
-     */
-    workspaceId?: pulumi.Input<string>;
 }
 
 /**
@@ -108,8 +100,4 @@ export interface MaterializedFeaturesFeatureTagState {
 export interface MaterializedFeaturesFeatureTagArgs {
     key: pulumi.Input<string>;
     value?: pulumi.Input<string>;
-    /**
-     * Workspace ID of the resource
-     */
-    workspaceId?: pulumi.Input<string>;
 }

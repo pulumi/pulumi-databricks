@@ -106,14 +106,14 @@ public final class AlertV2State extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `TRASHED`
+     * (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `DELETED`
      * 
      */
     @Import(name="lifecycleState")
     private @Nullable Output<String> lifecycleState;
 
     /**
-     * @return (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `TRASHED`
+     * @return (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `DELETED`
      * 
      */
     public Optional<Output<String>> lifecycleState() {
@@ -244,21 +244,6 @@ public final class AlertV2State extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.warehouseId);
     }
 
-    /**
-     * Workspace ID of the resource
-     * 
-     */
-    @Import(name="workspaceId")
-    private @Nullable Output<String> workspaceId;
-
-    /**
-     * @return Workspace ID of the resource
-     * 
-     */
-    public Optional<Output<String>> workspaceId() {
-        return Optional.ofNullable(this.workspaceId);
-    }
-
     private AlertV2State() {}
 
     private AlertV2State(AlertV2State $) {
@@ -277,7 +262,6 @@ public final class AlertV2State extends com.pulumi.resources.ResourceArgs {
         this.schedule = $.schedule;
         this.updateTime = $.updateTime;
         this.warehouseId = $.warehouseId;
-        this.workspaceId = $.workspaceId;
     }
 
     public static Builder builder() {
@@ -417,7 +401,7 @@ public final class AlertV2State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param lifecycleState (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `TRASHED`
+         * @param lifecycleState (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `DELETED`
          * 
          * @return builder
          * 
@@ -428,7 +412,7 @@ public final class AlertV2State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param lifecycleState (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `TRASHED`
+         * @param lifecycleState (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `DELETED`
          * 
          * @return builder
          * 
@@ -603,27 +587,6 @@ public final class AlertV2State extends com.pulumi.resources.ResourceArgs {
          */
         public Builder warehouseId(String warehouseId) {
             return warehouseId(Output.of(warehouseId));
-        }
-
-        /**
-         * @param workspaceId Workspace ID of the resource
-         * 
-         * @return builder
-         * 
-         */
-        public Builder workspaceId(@Nullable Output<String> workspaceId) {
-            $.workspaceId = workspaceId;
-            return this;
-        }
-
-        /**
-         * @param workspaceId Workspace ID of the resource
-         * 
-         * @return builder
-         * 
-         */
-        public Builder workspaceId(String workspaceId) {
-            return workspaceId(Output.of(workspaceId));
         }
 
         public AlertV2State build() {

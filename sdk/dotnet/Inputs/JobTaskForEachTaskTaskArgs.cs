@@ -54,6 +54,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("disableAutoOptimization")]
         public Input<bool>? DisableAutoOptimization { get; set; }
 
+        [Input("disabled")]
+        public Input<bool>? Disabled { get; set; }
+
         /// <summary>
         /// An optional block to specify a set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This block is documented below.
         /// </summary>

@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -35,6 +37,7 @@ export function getClusterPolicy(args?: GetClusterPolicyArgs, opts?: pulumi.Invo
         "name": args.name,
         "policyFamilyDefinitionOverrides": args.policyFamilyDefinitionOverrides,
         "policyFamilyId": args.policyFamilyId,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -74,6 +77,10 @@ export interface GetClusterPolicyArgs {
      * ID of the policy family.
      */
     policyFamilyId?: string;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: inputs.GetClusterPolicyProviderConfig;
 }
 
 /**
@@ -109,6 +116,7 @@ export interface GetClusterPolicyResult {
      * ID of the policy family.
      */
     readonly policyFamilyId: string;
+    readonly providerConfig?: outputs.GetClusterPolicyProviderConfig;
 }
 /**
  * Retrieves information about databricks_cluster_policy.
@@ -141,6 +149,7 @@ export function getClusterPolicyOutput(args?: GetClusterPolicyOutputArgs, opts?:
         "name": args.name,
         "policyFamilyDefinitionOverrides": args.policyFamilyDefinitionOverrides,
         "policyFamilyId": args.policyFamilyId,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -180,4 +189,8 @@ export interface GetClusterPolicyOutputArgs {
      * ID of the policy family.
      */
     policyFamilyId?: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.GetClusterPolicyProviderConfigArgs>;
 }

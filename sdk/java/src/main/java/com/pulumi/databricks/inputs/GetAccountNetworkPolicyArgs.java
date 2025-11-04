@@ -5,11 +5,9 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.databricks.inputs.GetAccountNetworkPolicyEgressArgs;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GetAccountNetworkPolicyArgs extends com.pulumi.resources.InvokeArgs {
@@ -17,55 +15,23 @@ public final class GetAccountNetworkPolicyArgs extends com.pulumi.resources.Invo
     public static final GetAccountNetworkPolicyArgs Empty = new GetAccountNetworkPolicyArgs();
 
     /**
-     * (string) - The associated account ID for this Network Policy object
-     * 
-     */
-    @Import(name="accountId")
-    private @Nullable Output<String> accountId;
-
-    /**
-     * @return (string) - The associated account ID for this Network Policy object
-     * 
-     */
-    public Optional<Output<String>> accountId() {
-        return Optional.ofNullable(this.accountId);
-    }
-
-    /**
-     * (NetworkPolicyEgress) - The network policies applying for egress traffic
-     * 
-     */
-    @Import(name="egress")
-    private @Nullable Output<GetAccountNetworkPolicyEgressArgs> egress;
-
-    /**
-     * @return (NetworkPolicyEgress) - The network policies applying for egress traffic
-     * 
-     */
-    public Optional<Output<GetAccountNetworkPolicyEgressArgs>> egress() {
-        return Optional.ofNullable(this.egress);
-    }
-
-    /**
      * The unique identifier for the network policy
      * 
      */
-    @Import(name="networkPolicyId")
-    private @Nullable Output<String> networkPolicyId;
+    @Import(name="networkPolicyId", required=true)
+    private Output<String> networkPolicyId;
 
     /**
      * @return The unique identifier for the network policy
      * 
      */
-    public Optional<Output<String>> networkPolicyId() {
-        return Optional.ofNullable(this.networkPolicyId);
+    public Output<String> networkPolicyId() {
+        return this.networkPolicyId;
     }
 
     private GetAccountNetworkPolicyArgs() {}
 
     private GetAccountNetworkPolicyArgs(GetAccountNetworkPolicyArgs $) {
-        this.accountId = $.accountId;
-        this.egress = $.egress;
         this.networkPolicyId = $.networkPolicyId;
     }
 
@@ -88,54 +54,12 @@ public final class GetAccountNetworkPolicyArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param accountId (string) - The associated account ID for this Network Policy object
-         * 
-         * @return builder
-         * 
-         */
-        public Builder accountId(@Nullable Output<String> accountId) {
-            $.accountId = accountId;
-            return this;
-        }
-
-        /**
-         * @param accountId (string) - The associated account ID for this Network Policy object
-         * 
-         * @return builder
-         * 
-         */
-        public Builder accountId(String accountId) {
-            return accountId(Output.of(accountId));
-        }
-
-        /**
-         * @param egress (NetworkPolicyEgress) - The network policies applying for egress traffic
-         * 
-         * @return builder
-         * 
-         */
-        public Builder egress(@Nullable Output<GetAccountNetworkPolicyEgressArgs> egress) {
-            $.egress = egress;
-            return this;
-        }
-
-        /**
-         * @param egress (NetworkPolicyEgress) - The network policies applying for egress traffic
-         * 
-         * @return builder
-         * 
-         */
-        public Builder egress(GetAccountNetworkPolicyEgressArgs egress) {
-            return egress(Output.of(egress));
-        }
-
-        /**
          * @param networkPolicyId The unique identifier for the network policy
          * 
          * @return builder
          * 
          */
-        public Builder networkPolicyId(@Nullable Output<String> networkPolicyId) {
+        public Builder networkPolicyId(Output<String> networkPolicyId) {
             $.networkPolicyId = networkPolicyId;
             return this;
         }
@@ -151,6 +75,9 @@ public final class GetAccountNetworkPolicyArgs extends com.pulumi.resources.Invo
         }
 
         public GetAccountNetworkPolicyArgs build() {
+            if ($.networkPolicyId == null) {
+                throw new MissingRequiredPropertyException("GetAccountNetworkPolicyArgs", "networkPolicyId");
+            }
             return $;
         }
     }

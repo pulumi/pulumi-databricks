@@ -10,6 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
+    /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    /// 
     /// Lakebase Database Instances are managed Postgres instances, composed of a primary Postgres compute instance and 0 or more read replica instances.
     /// 
     /// ## Example Usage
@@ -83,6 +85,41 @@ namespace Pulumi.Databricks
     /// });
     /// ```
     /// 
+    /// ### Example with a usage policy and custom tags
+    /// 
+    /// This example creates a Database Instance with an associated usage policy and custom tags.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @this = new Databricks.DatabaseInstance("this", new()
+    ///     {
+    ///         Name = "my-database-instance",
+    ///         Capacity = "CU_8",
+    ///         UsagePolicyId = "948192fa-a98b-498f-a09b-ecee79d8b983",
+    ///         CustomTags = new[]
+    ///         {
+    ///             new Databricks.Inputs.DatabaseInstanceCustomTagArgs
+    ///             {
+    ///                 Key = "custom_tag_key1",
+    ///                 Value = "custom_tag_value1",
+    ///             },
+    ///             new Databricks.Inputs.DatabaseInstanceCustomTagArgs
+    ///             {
+    ///                 Key = "custom_tag_key2",
+    ///                 Value = "custom_tag_value2",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// As of Pulumi v1.5, resources can be imported through configuration.
@@ -100,7 +137,7 @@ namespace Pulumi.Databricks
     /// If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
     /// 
     /// ```sh
-    /// $ pulumi import databricks:index/databaseInstance:DatabaseInstance databricks_database_instance "name"
+    /// $ pulumi import databricks:index/databaseInstance:DatabaseInstance this "name"
     /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/databaseInstance:DatabaseInstance")]
@@ -132,47 +169,63 @@ namespace Pulumi.Databricks
         public Output<string> Creator { get; private set; } = null!;
 
         /// <summary>
-        /// (boolean) - xref AIP-129. `EnablePgNativeLogin` is owned by the client, while `EffectiveEnablePgNativeLogin` is owned by the server.
-        /// `EnablePgNativeLogin` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-        /// `EffectiveEnablePgNativeLogin` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+        /// Custom tags associated with the instance. This field is only included on create and update responses
+        /// </summary>
+        [Output("customTags")]
+        public Output<ImmutableArray<Outputs.DatabaseInstanceCustomTag>> CustomTags { get; private set; } = null!;
+
+        /// <summary>
+        /// (string, deprecated) - Deprecated. The sku of the instance; this field will always match the value of capacity
+        /// </summary>
+        [Output("effectiveCapacity")]
+        public Output<string> EffectiveCapacity { get; private set; } = null!;
+
+        /// <summary>
+        /// (list of CustomTag) - The recorded custom tags associated with the instance
+        /// </summary>
+        [Output("effectiveCustomTags")]
+        public Output<ImmutableArray<Outputs.DatabaseInstanceEffectiveCustomTag>> EffectiveCustomTags { get; private set; } = null!;
+
+        /// <summary>
+        /// (boolean) - Whether the instance has PG native password login enabled
         /// </summary>
         [Output("effectiveEnablePgNativeLogin")]
         public Output<bool> EffectiveEnablePgNativeLogin { get; private set; } = null!;
 
         /// <summary>
-        /// (boolean) - xref AIP-129. `EnableReadableSecondaries` is owned by the client, while `EffectiveEnableReadableSecondaries` is owned by the server.
-        /// `EnableReadableSecondaries` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-        /// `EffectiveEnableReadableSecondaries` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+        /// (boolean) - Whether secondaries serving read-only traffic are enabled. Defaults to false
         /// </summary>
         [Output("effectiveEnableReadableSecondaries")]
         public Output<bool> EffectiveEnableReadableSecondaries { get; private set; } = null!;
 
         /// <summary>
-        /// (integer) - xref AIP-129. `NodeCount` is owned by the client, while `EffectiveNodeCount` is owned by the server.
-        /// `NodeCount` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-        /// `EffectiveNodeCount` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+        /// (integer) - The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
+        /// 1 primary and 0 secondaries
         /// </summary>
         [Output("effectiveNodeCount")]
         public Output<int> EffectiveNodeCount { get; private set; } = null!;
 
         /// <summary>
-        /// (integer) - xref AIP-129. `RetentionWindowInDays` is owned by the client, while `EffectiveRetentionWindowInDays` is owned by the server.
-        /// `RetentionWindowInDays` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-        /// `EffectiveRetentionWindowInDays` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+        /// (integer) - The retention window for the instance. This is the time window in days
+        /// for which the historical data is retained
         /// </summary>
         [Output("effectiveRetentionWindowInDays")]
         public Output<int> EffectiveRetentionWindowInDays { get; private set; } = null!;
 
         /// <summary>
-        /// (boolean) - xref AIP-129. `Stopped` is owned by the client, while `EffectiveStopped` is owned by the server.
-        /// `Stopped` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-        /// `EffectiveStopped` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+        /// (boolean) - Whether the instance is stopped
         /// </summary>
         [Output("effectiveStopped")]
         public Output<bool> EffectiveStopped { get; private set; } = null!;
 
         /// <summary>
-        /// Whether the instance has PG native password login enabled. Defaults to true
+        /// (string) - The policy that is applied to the instance
+        /// </summary>
+        [Output("effectiveUsagePolicyId")]
+        public Output<string> EffectiveUsagePolicyId { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether to enable PG native password login on the instance. Defaults to false
         /// </summary>
         [Output("enablePgNativeLogin")]
         public Output<bool> EnablePgNativeLogin { get; private set; } = null!;
@@ -181,7 +234,7 @@ namespace Pulumi.Databricks
         /// Whether to enable secondaries to serve read-only traffic. Defaults to false
         /// </summary>
         [Output("enableReadableSecondaries")]
-        public Output<bool?> EnableReadableSecondaries { get; private set; } = null!;
+        public Output<bool> EnableReadableSecondaries { get; private set; } = null!;
 
         /// <summary>
         /// The name of the instance. This is the unique identifier for the instance
@@ -191,10 +244,10 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
-        /// 1 primary and 0 secondaries
+        /// 1 primary and 0 secondaries. This field is input only, see EffectiveNodeCount for the output
         /// </summary>
         [Output("nodeCount")]
-        public Output<int?> NodeCount { get; private set; } = null!;
+        public Output<int> NodeCount { get; private set; } = null!;
 
         /// <summary>
         /// The ref of the parent instance. This is only available if the instance is
@@ -236,7 +289,7 @@ namespace Pulumi.Databricks
         /// Valid values are 2 to 35 days
         /// </summary>
         [Output("retentionWindowInDays")]
-        public Output<int?> RetentionWindowInDays { get; private set; } = null!;
+        public Output<int> RetentionWindowInDays { get; private set; } = null!;
 
         /// <summary>
         /// (string) - The current state of the instance. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
@@ -245,10 +298,10 @@ namespace Pulumi.Databricks
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
-        /// Whether the instance is stopped
+        /// Whether to stop the instance. An input only param, see EffectiveStopped for the output
         /// </summary>
         [Output("stopped")]
-        public Output<bool?> Stopped { get; private set; } = null!;
+        public Output<bool> Stopped { get; private set; } = null!;
 
         /// <summary>
         /// (string) - Id of the ref database instance
@@ -257,10 +310,10 @@ namespace Pulumi.Databricks
         public Output<string> Uid { get; private set; } = null!;
 
         /// <summary>
-        /// Workspace ID of the resource
+        /// The desired usage policy to associate with the instance
         /// </summary>
-        [Output("workspaceId")]
-        public Output<string?> WorkspaceId { get; private set; } = null!;
+        [Output("usagePolicyId")]
+        public Output<string> UsagePolicyId { get; private set; } = null!;
 
 
         /// <summary>
@@ -314,8 +367,20 @@ namespace Pulumi.Databricks
         [Input("capacity")]
         public Input<string>? Capacity { get; set; }
 
+        [Input("customTags")]
+        private InputList<Inputs.DatabaseInstanceCustomTagArgs>? _customTags;
+
         /// <summary>
-        /// Whether the instance has PG native password login enabled. Defaults to true
+        /// Custom tags associated with the instance. This field is only included on create and update responses
+        /// </summary>
+        public InputList<Inputs.DatabaseInstanceCustomTagArgs> CustomTags
+        {
+            get => _customTags ?? (_customTags = new InputList<Inputs.DatabaseInstanceCustomTagArgs>());
+            set => _customTags = value;
+        }
+
+        /// <summary>
+        /// Whether to enable PG native password login on the instance. Defaults to false
         /// </summary>
         [Input("enablePgNativeLogin")]
         public Input<bool>? EnablePgNativeLogin { get; set; }
@@ -334,7 +399,7 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
-        /// 1 primary and 0 secondaries
+        /// 1 primary and 0 secondaries. This field is input only, see EffectiveNodeCount for the output
         /// </summary>
         [Input("nodeCount")]
         public Input<int>? NodeCount { get; set; }
@@ -363,16 +428,16 @@ namespace Pulumi.Databricks
         public Input<int>? RetentionWindowInDays { get; set; }
 
         /// <summary>
-        /// Whether the instance is stopped
+        /// Whether to stop the instance. An input only param, see EffectiveStopped for the output
         /// </summary>
         [Input("stopped")]
         public Input<bool>? Stopped { get; set; }
 
         /// <summary>
-        /// Workspace ID of the resource
+        /// The desired usage policy to associate with the instance
         /// </summary>
-        [Input("workspaceId")]
-        public Input<string>? WorkspaceId { get; set; }
+        [Input("usagePolicyId")]
+        public Input<string>? UsagePolicyId { get; set; }
 
         public DatabaseInstanceArgs()
         {
@@ -413,48 +478,76 @@ namespace Pulumi.Databricks
         [Input("creator")]
         public Input<string>? Creator { get; set; }
 
+        [Input("customTags")]
+        private InputList<Inputs.DatabaseInstanceCustomTagGetArgs>? _customTags;
+
         /// <summary>
-        /// (boolean) - xref AIP-129. `EnablePgNativeLogin` is owned by the client, while `EffectiveEnablePgNativeLogin` is owned by the server.
-        /// `EnablePgNativeLogin` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-        /// `EffectiveEnablePgNativeLogin` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+        /// Custom tags associated with the instance. This field is only included on create and update responses
+        /// </summary>
+        public InputList<Inputs.DatabaseInstanceCustomTagGetArgs> CustomTags
+        {
+            get => _customTags ?? (_customTags = new InputList<Inputs.DatabaseInstanceCustomTagGetArgs>());
+            set => _customTags = value;
+        }
+
+        /// <summary>
+        /// (string, deprecated) - Deprecated. The sku of the instance; this field will always match the value of capacity
+        /// </summary>
+        [Input("effectiveCapacity")]
+        public Input<string>? EffectiveCapacity { get; set; }
+
+        [Input("effectiveCustomTags")]
+        private InputList<Inputs.DatabaseInstanceEffectiveCustomTagGetArgs>? _effectiveCustomTags;
+
+        /// <summary>
+        /// (list of CustomTag) - The recorded custom tags associated with the instance
+        /// </summary>
+        public InputList<Inputs.DatabaseInstanceEffectiveCustomTagGetArgs> EffectiveCustomTags
+        {
+            get => _effectiveCustomTags ?? (_effectiveCustomTags = new InputList<Inputs.DatabaseInstanceEffectiveCustomTagGetArgs>());
+            set => _effectiveCustomTags = value;
+        }
+
+        /// <summary>
+        /// (boolean) - Whether the instance has PG native password login enabled
         /// </summary>
         [Input("effectiveEnablePgNativeLogin")]
         public Input<bool>? EffectiveEnablePgNativeLogin { get; set; }
 
         /// <summary>
-        /// (boolean) - xref AIP-129. `EnableReadableSecondaries` is owned by the client, while `EffectiveEnableReadableSecondaries` is owned by the server.
-        /// `EnableReadableSecondaries` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-        /// `EffectiveEnableReadableSecondaries` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+        /// (boolean) - Whether secondaries serving read-only traffic are enabled. Defaults to false
         /// </summary>
         [Input("effectiveEnableReadableSecondaries")]
         public Input<bool>? EffectiveEnableReadableSecondaries { get; set; }
 
         /// <summary>
-        /// (integer) - xref AIP-129. `NodeCount` is owned by the client, while `EffectiveNodeCount` is owned by the server.
-        /// `NodeCount` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-        /// `EffectiveNodeCount` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+        /// (integer) - The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
+        /// 1 primary and 0 secondaries
         /// </summary>
         [Input("effectiveNodeCount")]
         public Input<int>? EffectiveNodeCount { get; set; }
 
         /// <summary>
-        /// (integer) - xref AIP-129. `RetentionWindowInDays` is owned by the client, while `EffectiveRetentionWindowInDays` is owned by the server.
-        /// `RetentionWindowInDays` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-        /// `EffectiveRetentionWindowInDays` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+        /// (integer) - The retention window for the instance. This is the time window in days
+        /// for which the historical data is retained
         /// </summary>
         [Input("effectiveRetentionWindowInDays")]
         public Input<int>? EffectiveRetentionWindowInDays { get; set; }
 
         /// <summary>
-        /// (boolean) - xref AIP-129. `Stopped` is owned by the client, while `EffectiveStopped` is owned by the server.
-        /// `Stopped` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-        /// `EffectiveStopped` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+        /// (boolean) - Whether the instance is stopped
         /// </summary>
         [Input("effectiveStopped")]
         public Input<bool>? EffectiveStopped { get; set; }
 
         /// <summary>
-        /// Whether the instance has PG native password login enabled. Defaults to true
+        /// (string) - The policy that is applied to the instance
+        /// </summary>
+        [Input("effectiveUsagePolicyId")]
+        public Input<string>? EffectiveUsagePolicyId { get; set; }
+
+        /// <summary>
+        /// Whether to enable PG native password login on the instance. Defaults to false
         /// </summary>
         [Input("enablePgNativeLogin")]
         public Input<bool>? EnablePgNativeLogin { get; set; }
@@ -473,7 +566,7 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
-        /// 1 primary and 0 secondaries
+        /// 1 primary and 0 secondaries. This field is input only, see EffectiveNodeCount for the output
         /// </summary>
         [Input("nodeCount")]
         public Input<int>? NodeCount { get; set; }
@@ -527,7 +620,7 @@ namespace Pulumi.Databricks
         public Input<string>? State { get; set; }
 
         /// <summary>
-        /// Whether the instance is stopped
+        /// Whether to stop the instance. An input only param, see EffectiveStopped for the output
         /// </summary>
         [Input("stopped")]
         public Input<bool>? Stopped { get; set; }
@@ -539,10 +632,10 @@ namespace Pulumi.Databricks
         public Input<string>? Uid { get; set; }
 
         /// <summary>
-        /// Workspace ID of the resource
+        /// The desired usage policy to associate with the instance
         /// </summary>
-        [Input("workspaceId")]
-        public Input<string>? WorkspaceId { get; set; }
+        [Input("usagePolicyId")]
+        public Input<string>? UsagePolicyId { get; set; }
 
         public DatabaseInstanceState()
         {

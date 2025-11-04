@@ -178,48 +178,6 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// If true, the provider will not wait for the cluster to reach `RUNNING` state when creating the cluster, allowing cluster creation and library installation to continue asynchronously. Defaults to false (the provider will wait for cluster creation and library installation to succeed).
-        /// 
-        /// The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Databricks = Pulumi.Databricks;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var smallest = Databricks.GetNodeType.Invoke(new()
-        ///     {
-        ///         LocalDisk = true,
-        ///     });
-        /// 
-        ///     var latestLts = Databricks.GetSparkVersion.Invoke(new()
-        ///     {
-        ///         LongTermSupport = true,
-        ///     });
-        /// 
-        ///     var sharedAutoscaling = new Databricks.Cluster("shared_autoscaling", new()
-        ///     {
-        ///         ClusterName = "Shared Autoscaling",
-        ///         SparkVersion = latestLts.Apply(getSparkVersionResult =&gt; getSparkVersionResult.Id),
-        ///         NodeTypeId = smallest.Apply(getNodeTypeResult =&gt; getNodeTypeResult.Id),
-        ///         AutoterminationMinutes = 20,
-        ///         Autoscale = new Databricks.Inputs.ClusterAutoscaleArgs
-        ///         {
-        ///             MinWorkers = 1,
-        ///             MaxWorkers = 50,
-        ///         },
-        ///         SparkConf = 
-        ///         {
-        ///             { "spark.databricks.io.cache.enabled", "true" },
-        ///             { "spark.databricks.io.cache.maxDiskUsage", "50g" },
-        ///             { "spark.databricks.io.cache.maxMetaDataCache", "1g" },
-        ///         },
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         [Output("noWait")]
         public Output<bool?> NoWait { get; private set; } = null!;
@@ -241,6 +199,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("policyId")]
         public Output<string?> PolicyId { get; private set; } = null!;
+
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Output("providerConfig")]
+        public Output<Outputs.ClusterProviderConfig?> ProviderConfig { get; private set; } = null!;
 
         [Output("remoteDiskThroughput")]
         public Output<int?> RemoteDiskThroughput { get; private set; } = null!;
@@ -517,48 +481,6 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// If true, the provider will not wait for the cluster to reach `RUNNING` state when creating the cluster, allowing cluster creation and library installation to continue asynchronously. Defaults to false (the provider will wait for cluster creation and library installation to succeed).
-        /// 
-        /// The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Databricks = Pulumi.Databricks;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var smallest = Databricks.GetNodeType.Invoke(new()
-        ///     {
-        ///         LocalDisk = true,
-        ///     });
-        /// 
-        ///     var latestLts = Databricks.GetSparkVersion.Invoke(new()
-        ///     {
-        ///         LongTermSupport = true,
-        ///     });
-        /// 
-        ///     var sharedAutoscaling = new Databricks.Cluster("shared_autoscaling", new()
-        ///     {
-        ///         ClusterName = "Shared Autoscaling",
-        ///         SparkVersion = latestLts.Apply(getSparkVersionResult =&gt; getSparkVersionResult.Id),
-        ///         NodeTypeId = smallest.Apply(getNodeTypeResult =&gt; getNodeTypeResult.Id),
-        ///         AutoterminationMinutes = 20,
-        ///         Autoscale = new Databricks.Inputs.ClusterAutoscaleArgs
-        ///         {
-        ///             MinWorkers = 1,
-        ///             MaxWorkers = 50,
-        ///         },
-        ///         SparkConf = 
-        ///         {
-        ///             { "spark.databricks.io.cache.enabled", "true" },
-        ///             { "spark.databricks.io.cache.maxDiskUsage", "50g" },
-        ///             { "spark.databricks.io.cache.maxMetaDataCache", "1g" },
-        ///         },
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         [Input("noWait")]
         public Input<bool>? NoWait { get; set; }
@@ -580,6 +502,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("policyId")]
         public Input<string>? PolicyId { get; set; }
+
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.ClusterProviderConfigArgs>? ProviderConfig { get; set; }
 
         [Input("remoteDiskThroughput")]
         public Input<int>? RemoteDiskThroughput { get; set; }
@@ -842,48 +770,6 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// If true, the provider will not wait for the cluster to reach `RUNNING` state when creating the cluster, allowing cluster creation and library installation to continue asynchronously. Defaults to false (the provider will wait for cluster creation and library installation to succeed).
-        /// 
-        /// The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Databricks = Pulumi.Databricks;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var smallest = Databricks.GetNodeType.Invoke(new()
-        ///     {
-        ///         LocalDisk = true,
-        ///     });
-        /// 
-        ///     var latestLts = Databricks.GetSparkVersion.Invoke(new()
-        ///     {
-        ///         LongTermSupport = true,
-        ///     });
-        /// 
-        ///     var sharedAutoscaling = new Databricks.Cluster("shared_autoscaling", new()
-        ///     {
-        ///         ClusterName = "Shared Autoscaling",
-        ///         SparkVersion = latestLts.Apply(getSparkVersionResult =&gt; getSparkVersionResult.Id),
-        ///         NodeTypeId = smallest.Apply(getNodeTypeResult =&gt; getNodeTypeResult.Id),
-        ///         AutoterminationMinutes = 20,
-        ///         Autoscale = new Databricks.Inputs.ClusterAutoscaleArgs
-        ///         {
-        ///             MinWorkers = 1,
-        ///             MaxWorkers = 50,
-        ///         },
-        ///         SparkConf = 
-        ///         {
-        ///             { "spark.databricks.io.cache.enabled", "true" },
-        ///             { "spark.databricks.io.cache.maxDiskUsage", "50g" },
-        ///             { "spark.databricks.io.cache.maxMetaDataCache", "1g" },
-        ///         },
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         [Input("noWait")]
         public Input<bool>? NoWait { get; set; }
@@ -905,6 +791,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("policyId")]
         public Input<string>? PolicyId { get; set; }
+
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.ClusterProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         [Input("remoteDiskThroughput")]
         public Input<int>? RemoteDiskThroughput { get; set; }

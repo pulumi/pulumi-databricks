@@ -7,15 +7,29 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
  * This data source can be used to list all tag policies in the account.
  *
- * > **Note** This resource can only be used with an account-level provider!
+ * > **Note** This resource can only be used with a workspace-level provider!
+ *
+ * ## Example Usage
+ *
+ * Getting a list of all tag policies:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const all = databricks.getTagPolicies({});
+ * export const allTagPolicies = all.then(all => all.tagPolicies);
+ * ```
  */
 export function getTagPolicies(args?: GetTagPoliciesArgs, opts?: pulumi.InvokeOptions): Promise<GetTagPoliciesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getTagPolicies:getTagPolicies", {
-        "workspaceId": args.workspaceId,
+        "pageSize": args.pageSize,
     }, opts);
 }
 
@@ -24,9 +38,11 @@ export function getTagPolicies(args?: GetTagPoliciesArgs, opts?: pulumi.InvokeOp
  */
 export interface GetTagPoliciesArgs {
     /**
-     * Workspace ID of the resource
+     * The maximum number of results to return in this request. Fewer results may be returned than requested. If
+     * unspecified or set to 0, this defaults to 1000. The maximum value is 1000; values above 1000 will be coerced down
+     * to 1000
      */
-    workspaceId?: string;
+    pageSize?: number;
 }
 
 /**
@@ -37,19 +53,33 @@ export interface GetTagPoliciesResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly pageSize?: number;
     readonly tagPolicies: outputs.GetTagPoliciesTagPolicy[];
-    readonly workspaceId?: string;
 }
 /**
+ * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
  * This data source can be used to list all tag policies in the account.
  *
- * > **Note** This resource can only be used with an account-level provider!
+ * > **Note** This resource can only be used with a workspace-level provider!
+ *
+ * ## Example Usage
+ *
+ * Getting a list of all tag policies:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const all = databricks.getTagPolicies({});
+ * export const allTagPolicies = all.then(all => all.tagPolicies);
+ * ```
  */
 export function getTagPoliciesOutput(args?: GetTagPoliciesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTagPoliciesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getTagPolicies:getTagPolicies", {
-        "workspaceId": args.workspaceId,
+        "pageSize": args.pageSize,
     }, opts);
 }
 
@@ -58,7 +88,9 @@ export function getTagPoliciesOutput(args?: GetTagPoliciesOutputArgs, opts?: pul
  */
 export interface GetTagPoliciesOutputArgs {
     /**
-     * Workspace ID of the resource
+     * The maximum number of results to return in this request. Fewer results may be returned than requested. If
+     * unspecified or set to 0, this defaults to 1000. The maximum value is 1000; values above 1000 will be coerced down
+     * to 1000
      */
-    workspaceId?: pulumi.Input<string>;
+    pageSize?: pulumi.Input<number>;
 }

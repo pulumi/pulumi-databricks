@@ -14,6 +14,7 @@ else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetNotificationDestinationsResult',
@@ -27,7 +28,7 @@ class GetNotificationDestinationsResult:
     """
     A collection of values returned by getNotificationDestinations.
     """
-    def __init__(__self__, display_name_contains=None, id=None, notification_destinations=None, type=None):
+    def __init__(__self__, display_name_contains=None, id=None, notification_destinations=None, provider_config=None, type=None):
         if display_name_contains and not isinstance(display_name_contains, str):
             raise TypeError("Expected argument 'display_name_contains' to be a str")
         pulumi.set(__self__, "display_name_contains", display_name_contains)
@@ -37,6 +38,9 @@ class GetNotificationDestinationsResult:
         if notification_destinations and not isinstance(notification_destinations, list):
             raise TypeError("Expected argument 'notification_destinations' to be a list")
         pulumi.set(__self__, "notification_destinations", notification_destinations)
+        if provider_config and not isinstance(provider_config, dict):
+            raise TypeError("Expected argument 'provider_config' to be a dict")
+        pulumi.set(__self__, "provider_config", provider_config)
         if type and not isinstance(type, str):
             raise TypeError("Expected argument 'type' to be a str")
         pulumi.set(__self__, "type", type)
@@ -63,6 +67,11 @@ class GetNotificationDestinationsResult:
         return pulumi.get(self, "notification_destinations")
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional['outputs.GetNotificationDestinationsProviderConfigResult']:
+        return pulumi.get(self, "provider_config")
+
+    @_builtins.property
     @pulumi.getter
     def type(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "type")
@@ -77,10 +86,12 @@ class AwaitableGetNotificationDestinationsResult(GetNotificationDestinationsResu
             display_name_contains=self.display_name_contains,
             id=self.id,
             notification_destinations=self.notification_destinations,
+            provider_config=self.provider_config,
             type=self.type)
 
 
 def get_notification_destinations(display_name_contains: Optional[_builtins.str] = None,
+                                  provider_config: Optional[Union['GetNotificationDestinationsProviderConfigArgs', 'GetNotificationDestinationsProviderConfigArgsDict']] = None,
                                   type: Optional[_builtins.str] = None,
                                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNotificationDestinationsResult:
     """
@@ -126,6 +137,7 @@ def get_notification_destinations(display_name_contains: Optional[_builtins.str]
     """
     __args__ = dict()
     __args__['displayNameContains'] = display_name_contains
+    __args__['providerConfig'] = provider_config
     __args__['type'] = type
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getNotificationDestinations:getNotificationDestinations', __args__, opts=opts, typ=GetNotificationDestinationsResult).value
@@ -134,8 +146,10 @@ def get_notification_destinations(display_name_contains: Optional[_builtins.str]
         display_name_contains=pulumi.get(__ret__, 'display_name_contains'),
         id=pulumi.get(__ret__, 'id'),
         notification_destinations=pulumi.get(__ret__, 'notification_destinations'),
+        provider_config=pulumi.get(__ret__, 'provider_config'),
         type=pulumi.get(__ret__, 'type'))
 def get_notification_destinations_output(display_name_contains: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                                         provider_config: Optional[pulumi.Input[Optional[Union['GetNotificationDestinationsProviderConfigArgs', 'GetNotificationDestinationsProviderConfigArgsDict']]]] = None,
                                          type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNotificationDestinationsResult]:
     """
@@ -181,6 +195,7 @@ def get_notification_destinations_output(display_name_contains: Optional[pulumi.
     """
     __args__ = dict()
     __args__['displayNameContains'] = display_name_contains
+    __args__['providerConfig'] = provider_config
     __args__['type'] = type
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getNotificationDestinations:getNotificationDestinations', __args__, opts=opts, typ=GetNotificationDestinationsResult)
@@ -188,4 +203,5 @@ def get_notification_destinations_output(display_name_contains: Optional[pulumi.
         display_name_contains=pulumi.get(__response__, 'display_name_contains'),
         id=pulumi.get(__response__, 'id'),
         notification_destinations=pulumi.get(__response__, 'notification_destinations'),
+        provider_config=pulumi.get(__response__, 'provider_config'),
         type=pulumi.get(__response__, 'type')))

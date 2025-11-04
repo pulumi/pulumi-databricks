@@ -8,8 +8,6 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetOnlineStoresOnlineStore {
@@ -37,7 +35,7 @@ public final class GetOnlineStoresOnlineStore {
      * @return (integer) - The number of read replicas for the online store. Defaults to 0
      * 
      */
-    private @Nullable Integer readReplicaCount;
+    private Integer readReplicaCount;
     /**
      * @return (string) - The current state of the online store. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
      * 
@@ -77,8 +75,8 @@ public final class GetOnlineStoresOnlineStore {
      * @return (integer) - The number of read replicas for the online store. Defaults to 0
      * 
      */
-    public Optional<Integer> readReplicaCount() {
-        return Optional.ofNullable(this.readReplicaCount);
+    public Integer readReplicaCount() {
+        return this.readReplicaCount;
     }
     /**
      * @return (string) - The current state of the online store. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
@@ -101,7 +99,7 @@ public final class GetOnlineStoresOnlineStore {
         private String creationTime;
         private String creator;
         private String name;
-        private @Nullable Integer readReplicaCount;
+        private Integer readReplicaCount;
         private String state;
         public Builder() {}
         public Builder(GetOnlineStoresOnlineStore defaults) {
@@ -147,8 +145,10 @@ public final class GetOnlineStoresOnlineStore {
             return this;
         }
         @CustomType.Setter
-        public Builder readReplicaCount(@Nullable Integer readReplicaCount) {
-
+        public Builder readReplicaCount(Integer readReplicaCount) {
+            if (readReplicaCount == null) {
+              throw new MissingRequiredPropertyException("GetOnlineStoresOnlineStore", "readReplicaCount");
+            }
             this.readReplicaCount = readReplicaCount;
             return this;
         }

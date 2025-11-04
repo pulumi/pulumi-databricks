@@ -6,6 +6,7 @@ package com.pulumi.databricks.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.JobTaskLibraryCran;
 import com.pulumi.databricks.outputs.JobTaskLibraryMaven;
+import com.pulumi.databricks.outputs.JobTaskLibraryProviderConfig;
 import com.pulumi.databricks.outputs.JobTaskLibraryPypi;
 import java.lang.String;
 import java.util.Objects;
@@ -24,6 +25,11 @@ public final class JobTaskLibrary {
     private @Nullable String egg;
     private @Nullable String jar;
     private @Nullable JobTaskLibraryMaven maven;
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    private @Nullable JobTaskLibraryProviderConfig providerConfig;
     private @Nullable JobTaskLibraryPypi pypi;
     private @Nullable String requirements;
     private @Nullable String whl;
@@ -46,6 +52,13 @@ public final class JobTaskLibrary {
     }
     public Optional<JobTaskLibraryMaven> maven() {
         return Optional.ofNullable(this.maven);
+    }
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Optional<JobTaskLibraryProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
     }
     public Optional<JobTaskLibraryPypi> pypi() {
         return Optional.ofNullable(this.pypi);
@@ -70,6 +83,7 @@ public final class JobTaskLibrary {
         private @Nullable String egg;
         private @Nullable String jar;
         private @Nullable JobTaskLibraryMaven maven;
+        private @Nullable JobTaskLibraryProviderConfig providerConfig;
         private @Nullable JobTaskLibraryPypi pypi;
         private @Nullable String requirements;
         private @Nullable String whl;
@@ -80,6 +94,7 @@ public final class JobTaskLibrary {
     	      this.egg = defaults.egg;
     	      this.jar = defaults.jar;
     	      this.maven = defaults.maven;
+    	      this.providerConfig = defaults.providerConfig;
     	      this.pypi = defaults.pypi;
     	      this.requirements = defaults.requirements;
     	      this.whl = defaults.whl;
@@ -110,6 +125,12 @@ public final class JobTaskLibrary {
             return this;
         }
         @CustomType.Setter
+        public Builder providerConfig(@Nullable JobTaskLibraryProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder pypi(@Nullable JobTaskLibraryPypi pypi) {
 
             this.pypi = pypi;
@@ -133,6 +154,7 @@ public final class JobTaskLibrary {
             _resultValue.egg = egg;
             _resultValue.jar = jar;
             _resultValue.maven = maven;
+            _resultValue.providerConfig = providerConfig;
             _resultValue.pypi = pypi;
             _resultValue.requirements = requirements;
             _resultValue.whl = whl;

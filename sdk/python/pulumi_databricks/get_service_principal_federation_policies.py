@@ -27,10 +27,13 @@ class GetServicePrincipalFederationPoliciesResult:
     """
     A collection of values returned by getServicePrincipalFederationPolicies.
     """
-    def __init__(__self__, id=None, policies=None, service_principal_id=None):
+    def __init__(__self__, id=None, page_size=None, policies=None, service_principal_id=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if page_size and not isinstance(page_size, int):
+            raise TypeError("Expected argument 'page_size' to be a int")
+        pulumi.set(__self__, "page_size", page_size)
         if policies and not isinstance(policies, list):
             raise TypeError("Expected argument 'policies' to be a list")
         pulumi.set(__self__, "policies", policies)
@@ -47,6 +50,11 @@ class GetServicePrincipalFederationPoliciesResult:
         return pulumi.get(self, "id")
 
     @_builtins.property
+    @pulumi.getter(name="pageSize")
+    def page_size(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "page_size")
+
+    @_builtins.property
     @pulumi.getter
     def policies(self) -> Sequence['outputs.GetServicePrincipalFederationPoliciesPolicyResult']:
         return pulumi.get(self, "policies")
@@ -55,7 +63,7 @@ class GetServicePrincipalFederationPoliciesResult:
     @pulumi.getter(name="servicePrincipalId")
     def service_principal_id(self) -> _builtins.int:
         """
-        (integer) - The service principal ID that this federation policy applies to. Only set for service principal federation policies
+        (integer) - The service principal ID that this federation policy applies to. Output only. Only set for service principal federation policies
         """
         return pulumi.get(self, "service_principal_id")
 
@@ -67,13 +75,17 @@ class AwaitableGetServicePrincipalFederationPoliciesResult(GetServicePrincipalFe
             yield self
         return GetServicePrincipalFederationPoliciesResult(
             id=self.id,
+            page_size=self.page_size,
             policies=self.policies,
             service_principal_id=self.service_principal_id)
 
 
-def get_service_principal_federation_policies(service_principal_id: Optional[_builtins.int] = None,
+def get_service_principal_federation_policies(page_size: Optional[_builtins.int] = None,
+                                              service_principal_id: Optional[_builtins.int] = None,
                                               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServicePrincipalFederationPoliciesResult:
     """
+    [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
     This data source can be used to fetch the list of federation policies for a service principal.
 
     > **Note** This data source can only be used with an account-level provider!
@@ -93,17 +105,22 @@ def get_service_principal_federation_policies(service_principal_id: Optional[_bu
     :param _builtins.int service_principal_id: The service principal id for the federation policy
     """
     __args__ = dict()
+    __args__['pageSize'] = page_size
     __args__['servicePrincipalId'] = service_principal_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getServicePrincipalFederationPolicies:getServicePrincipalFederationPolicies', __args__, opts=opts, typ=GetServicePrincipalFederationPoliciesResult).value
 
     return AwaitableGetServicePrincipalFederationPoliciesResult(
         id=pulumi.get(__ret__, 'id'),
+        page_size=pulumi.get(__ret__, 'page_size'),
         policies=pulumi.get(__ret__, 'policies'),
         service_principal_id=pulumi.get(__ret__, 'service_principal_id'))
-def get_service_principal_federation_policies_output(service_principal_id: Optional[pulumi.Input[_builtins.int]] = None,
+def get_service_principal_federation_policies_output(page_size: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
+                                                     service_principal_id: Optional[pulumi.Input[_builtins.int]] = None,
                                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServicePrincipalFederationPoliciesResult]:
     """
+    [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
     This data source can be used to fetch the list of federation policies for a service principal.
 
     > **Note** This data source can only be used with an account-level provider!
@@ -123,10 +140,12 @@ def get_service_principal_federation_policies_output(service_principal_id: Optio
     :param _builtins.int service_principal_id: The service principal id for the federation policy
     """
     __args__ = dict()
+    __args__['pageSize'] = page_size
     __args__['servicePrincipalId'] = service_principal_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getServicePrincipalFederationPolicies:getServicePrincipalFederationPolicies', __args__, opts=opts, typ=GetServicePrincipalFederationPoliciesResult)
     return __ret__.apply(lambda __response__: GetServicePrincipalFederationPoliciesResult(
         id=pulumi.get(__response__, 'id'),
+        page_size=pulumi.get(__response__, 'page_size'),
         policies=pulumi.get(__response__, 'policies'),
         service_principal_id=pulumi.get(__response__, 'service_principal_id')))

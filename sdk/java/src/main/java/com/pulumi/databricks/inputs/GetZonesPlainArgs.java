@@ -4,6 +4,7 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetZonesProviderConfig;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -46,6 +47,21 @@ public final class GetZonesPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable GetZonesProviderConfig providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Optional<GetZonesProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
+    /**
      * This is a list of all the zones available for your subnets in your Databricks workspace.
      * 
      */
@@ -65,6 +81,7 @@ public final class GetZonesPlainArgs extends com.pulumi.resources.InvokeArgs {
     private GetZonesPlainArgs(GetZonesPlainArgs $) {
         this.defaultZone = $.defaultZone;
         this.id = $.id;
+        this.providerConfig = $.providerConfig;
         this.zones = $.zones;
     }
 
@@ -105,6 +122,17 @@ public final class GetZonesPlainArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder id(@Nullable String id) {
             $.id = id;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable GetZonesProviderConfig providerConfig) {
+            $.providerConfig = providerConfig;
             return this;
         }
 

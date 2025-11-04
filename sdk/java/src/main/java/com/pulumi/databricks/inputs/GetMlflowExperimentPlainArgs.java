@@ -4,6 +4,7 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetMlflowExperimentProviderConfig;
 import com.pulumi.databricks.inputs.GetMlflowExperimentTag;
 import java.lang.Integer;
 import java.lang.String;
@@ -123,6 +124,21 @@ public final class GetMlflowExperimentPlainArgs extends com.pulumi.resources.Inv
     }
 
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable GetMlflowExperimentProviderConfig providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Optional<GetMlflowExperimentProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
+    /**
      * Additional metadata key-value pairs.
      * 
      */
@@ -147,6 +163,7 @@ public final class GetMlflowExperimentPlainArgs extends com.pulumi.resources.Inv
         this.lastUpdateTime = $.lastUpdateTime;
         this.lifecycleStage = $.lifecycleStage;
         this.name = $.name;
+        this.providerConfig = $.providerConfig;
         this.tags = $.tags;
     }
 
@@ -242,6 +259,17 @@ public final class GetMlflowExperimentPlainArgs extends com.pulumi.resources.Inv
          */
         public Builder name(@Nullable String name) {
             $.name = name;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable GetMlflowExperimentProviderConfig providerConfig) {
+            $.providerConfig = providerConfig;
             return this;
         }
 

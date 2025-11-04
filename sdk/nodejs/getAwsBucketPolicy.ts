@@ -16,15 +16,15 @@ import * as utilities from "./utilities";
  * import * as aws from "@pulumi/aws";
  * import * as databricks from "@pulumi/databricks";
  *
- * const thisBucketV2 = new aws.s3.BucketV2("this", {
+ * const thisBucket = new aws.s3.Bucket("this", {
  *     bucket: "<unique_bucket_name>",
  *     forceDestroy: true,
  * });
  * const _this = databricks.getAwsBucketPolicyOutput({
- *     bucket: thisBucketV2.bucket,
+ *     bucket: thisBucket.bucket,
  * });
  * const thisBucketPolicy = new aws.s3.BucketPolicy("this", {
- *     bucket: thisBucketV2.id,
+ *     bucket: thisBucket.id,
  *     policy: _this.apply(_this => _this.json),
  * });
  * ```
@@ -101,15 +101,15 @@ export interface GetAwsBucketPolicyResult {
  * import * as aws from "@pulumi/aws";
  * import * as databricks from "@pulumi/databricks";
  *
- * const thisBucketV2 = new aws.s3.BucketV2("this", {
+ * const thisBucket = new aws.s3.Bucket("this", {
  *     bucket: "<unique_bucket_name>",
  *     forceDestroy: true,
  * });
  * const _this = databricks.getAwsBucketPolicyOutput({
- *     bucket: thisBucketV2.bucket,
+ *     bucket: thisBucket.bucket,
  * });
  * const thisBucketPolicy = new aws.s3.BucketPolicy("this", {
- *     bucket: thisBucketV2.id,
+ *     bucket: thisBucket.id,
  *     policy: _this.apply(_this => _this.json),
  * });
  * ```

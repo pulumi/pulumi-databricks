@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -12,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetAlertV2EvaluationThresholdColumn {
     /**
-     * @return (string) - . Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
+     * @return (string) - Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
      * 
      */
     private @Nullable String aggregation;
@@ -25,11 +26,11 @@ public final class GetAlertV2EvaluationThresholdColumn {
      * @return (string)
      * 
      */
-    private @Nullable String name;
+    private String name;
 
     private GetAlertV2EvaluationThresholdColumn() {}
     /**
-     * @return (string) - . Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
+     * @return (string) - Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
      * 
      */
     public Optional<String> aggregation() {
@@ -46,8 +47,8 @@ public final class GetAlertV2EvaluationThresholdColumn {
      * @return (string)
      * 
      */
-    public Optional<String> name() {
-        return Optional.ofNullable(this.name);
+    public String name() {
+        return this.name;
     }
 
     public static Builder builder() {
@@ -61,7 +62,7 @@ public final class GetAlertV2EvaluationThresholdColumn {
     public static final class Builder {
         private @Nullable String aggregation;
         private @Nullable String display;
-        private @Nullable String name;
+        private String name;
         public Builder() {}
         public Builder(GetAlertV2EvaluationThresholdColumn defaults) {
     	      Objects.requireNonNull(defaults);
@@ -83,8 +84,10 @@ public final class GetAlertV2EvaluationThresholdColumn {
             return this;
         }
         @CustomType.Setter
-        public Builder name(@Nullable String name) {
-
+        public Builder name(String name) {
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetAlertV2EvaluationThresholdColumn", "name");
+            }
             this.name = name;
             return this;
         }

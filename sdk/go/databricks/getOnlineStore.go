@@ -11,6 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
 func LookupOnlineStore(ctx *pulumi.Context, args *LookupOnlineStoreArgs, opts ...pulumi.InvokeOption) (*LookupOnlineStoreResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupOnlineStoreResult
@@ -23,14 +24,8 @@ func LookupOnlineStore(ctx *pulumi.Context, args *LookupOnlineStoreArgs, opts ..
 
 // A collection of arguments for invoking getOnlineStore.
 type LookupOnlineStoreArgs struct {
-	// (string) - The capacity of the online store. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
-	Capacity string `pulumi:"capacity"`
 	// The name of the online store. This is the unique identifier for the online store
 	Name string `pulumi:"name"`
-	// (integer) - The number of read replicas for the online store. Defaults to 0
-	ReadReplicaCount *int `pulumi:"readReplicaCount"`
-	// Workspace ID of the resource
-	WorkspaceId *string `pulumi:"workspaceId"`
 }
 
 // A collection of values returned by getOnlineStore.
@@ -46,10 +41,9 @@ type LookupOnlineStoreResult struct {
 	// (string) - The name of the online store. This is the unique identifier for the online store
 	Name string `pulumi:"name"`
 	// (integer) - The number of read replicas for the online store. Defaults to 0
-	ReadReplicaCount *int `pulumi:"readReplicaCount"`
+	ReadReplicaCount int `pulumi:"readReplicaCount"`
 	// (string) - The current state of the online store. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
-	State       string  `pulumi:"state"`
-	WorkspaceId *string `pulumi:"workspaceId"`
+	State string `pulumi:"state"`
 }
 
 func LookupOnlineStoreOutput(ctx *pulumi.Context, args LookupOnlineStoreOutputArgs, opts ...pulumi.InvokeOption) LookupOnlineStoreResultOutput {
@@ -63,14 +57,8 @@ func LookupOnlineStoreOutput(ctx *pulumi.Context, args LookupOnlineStoreOutputAr
 
 // A collection of arguments for invoking getOnlineStore.
 type LookupOnlineStoreOutputArgs struct {
-	// (string) - The capacity of the online store. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
-	Capacity pulumi.StringInput `pulumi:"capacity"`
 	// The name of the online store. This is the unique identifier for the online store
 	Name pulumi.StringInput `pulumi:"name"`
-	// (integer) - The number of read replicas for the online store. Defaults to 0
-	ReadReplicaCount pulumi.IntPtrInput `pulumi:"readReplicaCount"`
-	// Workspace ID of the resource
-	WorkspaceId pulumi.StringPtrInput `pulumi:"workspaceId"`
 }
 
 func (LookupOnlineStoreOutputArgs) ElementType() reflect.Type {
@@ -118,17 +106,13 @@ func (o LookupOnlineStoreResultOutput) Name() pulumi.StringOutput {
 }
 
 // (integer) - The number of read replicas for the online store. Defaults to 0
-func (o LookupOnlineStoreResultOutput) ReadReplicaCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v LookupOnlineStoreResult) *int { return v.ReadReplicaCount }).(pulumi.IntPtrOutput)
+func (o LookupOnlineStoreResultOutput) ReadReplicaCount() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupOnlineStoreResult) int { return v.ReadReplicaCount }).(pulumi.IntOutput)
 }
 
 // (string) - The current state of the online store. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
 func (o LookupOnlineStoreResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOnlineStoreResult) string { return v.State }).(pulumi.StringOutput)
-}
-
-func (o LookupOnlineStoreResultOutput) WorkspaceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupOnlineStoreResult) *string { return v.WorkspaceId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

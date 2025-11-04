@@ -69,6 +69,8 @@ type LookupVolumeArgs struct {
 	Id *string `pulumi:"id"`
 	// a fully qualified name of databricks_volume: *`catalog`.`schema`.`volume`*
 	Name string `pulumi:"name"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *GetVolumeProviderConfig `pulumi:"providerConfig"`
 	// `VolumeInfo` object for a Unity Catalog volume. This contains the following attributes:
 	VolumeInfo *GetVolumeVolumeInfo `pulumi:"volumeInfo"`
 }
@@ -78,7 +80,8 @@ type LookupVolumeResult struct {
 	// ID of this Unity Catalog Volume in form of `<catalog>.<schema>.<name>`.
 	Id string `pulumi:"id"`
 	// the name of the volume
-	Name string `pulumi:"name"`
+	Name           string                   `pulumi:"name"`
+	ProviderConfig *GetVolumeProviderConfig `pulumi:"providerConfig"`
 	// `VolumeInfo` object for a Unity Catalog volume. This contains the following attributes:
 	VolumeInfo GetVolumeVolumeInfo `pulumi:"volumeInfo"`
 }
@@ -98,6 +101,8 @@ type LookupVolumeOutputArgs struct {
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// a fully qualified name of databricks_volume: *`catalog`.`schema`.`volume`*
 	Name pulumi.StringInput `pulumi:"name"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig GetVolumeProviderConfigPtrInput `pulumi:"providerConfig"`
 	// `VolumeInfo` object for a Unity Catalog volume. This contains the following attributes:
 	VolumeInfo GetVolumeVolumeInfoPtrInput `pulumi:"volumeInfo"`
 }
@@ -129,6 +134,10 @@ func (o LookupVolumeResultOutput) Id() pulumi.StringOutput {
 // the name of the volume
 func (o LookupVolumeResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVolumeResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupVolumeResultOutput) ProviderConfig() GetVolumeProviderConfigPtrOutput {
+	return o.ApplyT(func(v LookupVolumeResult) *GetVolumeProviderConfig { return v.ProviderConfig }).(GetVolumeProviderConfigPtrOutput)
 }
 
 // `VolumeInfo` object for a Unity Catalog volume. This contains the following attributes:

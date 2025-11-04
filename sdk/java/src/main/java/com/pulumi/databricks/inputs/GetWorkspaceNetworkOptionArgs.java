@@ -5,10 +5,9 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GetWorkspaceNetworkOptionArgs extends com.pulumi.resources.InvokeArgs {
@@ -16,45 +15,23 @@ public final class GetWorkspaceNetworkOptionArgs extends com.pulumi.resources.In
     public static final GetWorkspaceNetworkOptionArgs Empty = new GetWorkspaceNetworkOptionArgs();
 
     /**
-     * (string) - The network policy ID to apply to the workspace. This controls the network access rules
-     * for all serverless compute resources in the workspace. Each workspace can only be
-     * linked to one policy at a time. If no policy is explicitly assigned,
-     * the workspace will use &#39;default-policy&#39;
-     * 
-     */
-    @Import(name="networkPolicyId")
-    private @Nullable Output<String> networkPolicyId;
-
-    /**
-     * @return (string) - The network policy ID to apply to the workspace. This controls the network access rules
-     * for all serverless compute resources in the workspace. Each workspace can only be
-     * linked to one policy at a time. If no policy is explicitly assigned,
-     * the workspace will use &#39;default-policy&#39;
-     * 
-     */
-    public Optional<Output<String>> networkPolicyId() {
-        return Optional.ofNullable(this.networkPolicyId);
-    }
-
-    /**
      * The workspace ID
      * 
      */
-    @Import(name="workspaceId")
-    private @Nullable Output<String> workspaceId;
+    @Import(name="workspaceId", required=true)
+    private Output<String> workspaceId;
 
     /**
      * @return The workspace ID
      * 
      */
-    public Optional<Output<String>> workspaceId() {
-        return Optional.ofNullable(this.workspaceId);
+    public Output<String> workspaceId() {
+        return this.workspaceId;
     }
 
     private GetWorkspaceNetworkOptionArgs() {}
 
     private GetWorkspaceNetworkOptionArgs(GetWorkspaceNetworkOptionArgs $) {
-        this.networkPolicyId = $.networkPolicyId;
         this.workspaceId = $.workspaceId;
     }
 
@@ -77,39 +54,12 @@ public final class GetWorkspaceNetworkOptionArgs extends com.pulumi.resources.In
         }
 
         /**
-         * @param networkPolicyId (string) - The network policy ID to apply to the workspace. This controls the network access rules
-         * for all serverless compute resources in the workspace. Each workspace can only be
-         * linked to one policy at a time. If no policy is explicitly assigned,
-         * the workspace will use &#39;default-policy&#39;
-         * 
-         * @return builder
-         * 
-         */
-        public Builder networkPolicyId(@Nullable Output<String> networkPolicyId) {
-            $.networkPolicyId = networkPolicyId;
-            return this;
-        }
-
-        /**
-         * @param networkPolicyId (string) - The network policy ID to apply to the workspace. This controls the network access rules
-         * for all serverless compute resources in the workspace. Each workspace can only be
-         * linked to one policy at a time. If no policy is explicitly assigned,
-         * the workspace will use &#39;default-policy&#39;
-         * 
-         * @return builder
-         * 
-         */
-        public Builder networkPolicyId(String networkPolicyId) {
-            return networkPolicyId(Output.of(networkPolicyId));
-        }
-
-        /**
          * @param workspaceId The workspace ID
          * 
          * @return builder
          * 
          */
-        public Builder workspaceId(@Nullable Output<String> workspaceId) {
+        public Builder workspaceId(Output<String> workspaceId) {
             $.workspaceId = workspaceId;
             return this;
         }
@@ -125,6 +75,9 @@ public final class GetWorkspaceNetworkOptionArgs extends com.pulumi.resources.In
         }
 
         public GetWorkspaceNetworkOptionArgs build() {
+            if ($.workspaceId == null) {
+                throw new MissingRequiredPropertyException("GetWorkspaceNetworkOptionArgs", "workspaceId");
+            }
             return $;
         }
     }

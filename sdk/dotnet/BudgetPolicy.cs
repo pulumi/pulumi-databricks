@@ -10,6 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
+    /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    /// 
     /// Administrators can use budget policies to ensure that the correct tags appear automatically on serverless resources without depending on users to attach tags manually, allowing for customized cost reporting and chargebacks.
     /// 
     /// Budget policies consist of tags that are applied to any serverless compute activity incurred by a user assigned to the policy.
@@ -61,7 +63,7 @@ namespace Pulumi.Databricks
     /// If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
     /// 
     /// ```sh
-    /// $ pulumi import databricks:index/budgetPolicy:BudgetPolicy databricks_budget_policy "policy_id"
+    /// $ pulumi import databricks:index/budgetPolicy:BudgetPolicy this "policy_id"
     /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/budgetPolicy:BudgetPolicy")]

@@ -7,6 +7,29 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
+ * Setting is a configurable value or control that determines how a feature or behavior works within the databricks platform.
+ *
+ * [//]: # (todo: add public link to metadata api after production doc link available)
+ * See settings-metadata api for list of settings that can be modified using this resource.
+ *
+ * ## Example Usage
+ *
+ * Getting an account level setting:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const _this = new databricks.AccountSettingV2("this", {
+ *     name: "llm_proxy_partner_powered",
+ *     booleanVal: {
+ *         value: false,
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * As of Pulumi v1.5, resources can be imported through configuration.
@@ -24,7 +47,7 @@ import * as utilities from "./utilities";
  * If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
  *
  * ```sh
- * $ pulumi import databricks:index/accountSettingV2:AccountSettingV2 databricks_account_setting_v2 "name"
+ * $ pulumi import databricks:index/accountSettingV2:AccountSettingV2 this "name"
  * ```
  */
 export class AccountSettingV2 extends pulumi.CustomResource {
@@ -57,12 +80,8 @@ export class AccountSettingV2 extends pulumi.CustomResource {
 
     declare public readonly aibiDashboardEmbeddingAccessPolicy: pulumi.Output<outputs.AccountSettingV2AibiDashboardEmbeddingAccessPolicy | undefined>;
     declare public readonly aibiDashboardEmbeddingApprovedDomains: pulumi.Output<outputs.AccountSettingV2AibiDashboardEmbeddingApprovedDomains | undefined>;
-    /**
-     * todo: Mark these Public after onboarded to DSL
-     */
     declare public readonly automaticClusterUpdateWorkspace: pulumi.Output<outputs.AccountSettingV2AutomaticClusterUpdateWorkspace | undefined>;
     declare public readonly booleanVal: pulumi.Output<outputs.AccountSettingV2BooleanVal | undefined>;
-    declare public readonly defaultDataSecurityMode: pulumi.Output<outputs.AccountSettingV2DefaultDataSecurityMode | undefined>;
     declare public readonly effectiveAibiDashboardEmbeddingAccessPolicy: pulumi.Output<outputs.AccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy | undefined>;
     declare public readonly effectiveAibiDashboardEmbeddingApprovedDomains: pulumi.Output<outputs.AccountSettingV2EffectiveAibiDashboardEmbeddingApprovedDomains | undefined>;
     declare public readonly effectiveAutomaticClusterUpdateWorkspace: pulumi.Output<outputs.AccountSettingV2EffectiveAutomaticClusterUpdateWorkspace | undefined>;
@@ -70,7 +89,6 @@ export class AccountSettingV2 extends pulumi.CustomResource {
      * (BooleanMessage)
      */
     declare public /*out*/ readonly effectiveBooleanVal: pulumi.Output<outputs.AccountSettingV2EffectiveBooleanVal>;
-    declare public readonly effectiveDefaultDataSecurityMode: pulumi.Output<outputs.AccountSettingV2EffectiveDefaultDataSecurityMode | undefined>;
     /**
      * (IntegerMessage)
      */
@@ -107,12 +125,10 @@ export class AccountSettingV2 extends pulumi.CustomResource {
             resourceInputs["aibiDashboardEmbeddingApprovedDomains"] = state?.aibiDashboardEmbeddingApprovedDomains;
             resourceInputs["automaticClusterUpdateWorkspace"] = state?.automaticClusterUpdateWorkspace;
             resourceInputs["booleanVal"] = state?.booleanVal;
-            resourceInputs["defaultDataSecurityMode"] = state?.defaultDataSecurityMode;
             resourceInputs["effectiveAibiDashboardEmbeddingAccessPolicy"] = state?.effectiveAibiDashboardEmbeddingAccessPolicy;
             resourceInputs["effectiveAibiDashboardEmbeddingApprovedDomains"] = state?.effectiveAibiDashboardEmbeddingApprovedDomains;
             resourceInputs["effectiveAutomaticClusterUpdateWorkspace"] = state?.effectiveAutomaticClusterUpdateWorkspace;
             resourceInputs["effectiveBooleanVal"] = state?.effectiveBooleanVal;
-            resourceInputs["effectiveDefaultDataSecurityMode"] = state?.effectiveDefaultDataSecurityMode;
             resourceInputs["effectiveIntegerVal"] = state?.effectiveIntegerVal;
             resourceInputs["effectivePersonalCompute"] = state?.effectivePersonalCompute;
             resourceInputs["effectiveRestrictWorkspaceAdmins"] = state?.effectiveRestrictWorkspaceAdmins;
@@ -128,11 +144,9 @@ export class AccountSettingV2 extends pulumi.CustomResource {
             resourceInputs["aibiDashboardEmbeddingApprovedDomains"] = args?.aibiDashboardEmbeddingApprovedDomains;
             resourceInputs["automaticClusterUpdateWorkspace"] = args?.automaticClusterUpdateWorkspace;
             resourceInputs["booleanVal"] = args?.booleanVal;
-            resourceInputs["defaultDataSecurityMode"] = args?.defaultDataSecurityMode;
             resourceInputs["effectiveAibiDashboardEmbeddingAccessPolicy"] = args?.effectiveAibiDashboardEmbeddingAccessPolicy;
             resourceInputs["effectiveAibiDashboardEmbeddingApprovedDomains"] = args?.effectiveAibiDashboardEmbeddingApprovedDomains;
             resourceInputs["effectiveAutomaticClusterUpdateWorkspace"] = args?.effectiveAutomaticClusterUpdateWorkspace;
-            resourceInputs["effectiveDefaultDataSecurityMode"] = args?.effectiveDefaultDataSecurityMode;
             resourceInputs["effectivePersonalCompute"] = args?.effectivePersonalCompute;
             resourceInputs["effectiveRestrictWorkspaceAdmins"] = args?.effectiveRestrictWorkspaceAdmins;
             resourceInputs["integerVal"] = args?.integerVal;
@@ -155,12 +169,8 @@ export class AccountSettingV2 extends pulumi.CustomResource {
 export interface AccountSettingV2State {
     aibiDashboardEmbeddingAccessPolicy?: pulumi.Input<inputs.AccountSettingV2AibiDashboardEmbeddingAccessPolicy>;
     aibiDashboardEmbeddingApprovedDomains?: pulumi.Input<inputs.AccountSettingV2AibiDashboardEmbeddingApprovedDomains>;
-    /**
-     * todo: Mark these Public after onboarded to DSL
-     */
     automaticClusterUpdateWorkspace?: pulumi.Input<inputs.AccountSettingV2AutomaticClusterUpdateWorkspace>;
     booleanVal?: pulumi.Input<inputs.AccountSettingV2BooleanVal>;
-    defaultDataSecurityMode?: pulumi.Input<inputs.AccountSettingV2DefaultDataSecurityMode>;
     effectiveAibiDashboardEmbeddingAccessPolicy?: pulumi.Input<inputs.AccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy>;
     effectiveAibiDashboardEmbeddingApprovedDomains?: pulumi.Input<inputs.AccountSettingV2EffectiveAibiDashboardEmbeddingApprovedDomains>;
     effectiveAutomaticClusterUpdateWorkspace?: pulumi.Input<inputs.AccountSettingV2EffectiveAutomaticClusterUpdateWorkspace>;
@@ -168,7 +178,6 @@ export interface AccountSettingV2State {
      * (BooleanMessage)
      */
     effectiveBooleanVal?: pulumi.Input<inputs.AccountSettingV2EffectiveBooleanVal>;
-    effectiveDefaultDataSecurityMode?: pulumi.Input<inputs.AccountSettingV2EffectiveDefaultDataSecurityMode>;
     /**
      * (IntegerMessage)
      */
@@ -195,16 +204,11 @@ export interface AccountSettingV2State {
 export interface AccountSettingV2Args {
     aibiDashboardEmbeddingAccessPolicy?: pulumi.Input<inputs.AccountSettingV2AibiDashboardEmbeddingAccessPolicy>;
     aibiDashboardEmbeddingApprovedDomains?: pulumi.Input<inputs.AccountSettingV2AibiDashboardEmbeddingApprovedDomains>;
-    /**
-     * todo: Mark these Public after onboarded to DSL
-     */
     automaticClusterUpdateWorkspace?: pulumi.Input<inputs.AccountSettingV2AutomaticClusterUpdateWorkspace>;
     booleanVal?: pulumi.Input<inputs.AccountSettingV2BooleanVal>;
-    defaultDataSecurityMode?: pulumi.Input<inputs.AccountSettingV2DefaultDataSecurityMode>;
     effectiveAibiDashboardEmbeddingAccessPolicy?: pulumi.Input<inputs.AccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy>;
     effectiveAibiDashboardEmbeddingApprovedDomains?: pulumi.Input<inputs.AccountSettingV2EffectiveAibiDashboardEmbeddingApprovedDomains>;
     effectiveAutomaticClusterUpdateWorkspace?: pulumi.Input<inputs.AccountSettingV2EffectiveAutomaticClusterUpdateWorkspace>;
-    effectiveDefaultDataSecurityMode?: pulumi.Input<inputs.AccountSettingV2EffectiveDefaultDataSecurityMode>;
     effectivePersonalCompute?: pulumi.Input<inputs.AccountSettingV2EffectivePersonalCompute>;
     effectiveRestrictWorkspaceAdmins?: pulumi.Input<inputs.AccountSettingV2EffectiveRestrictWorkspaceAdmins>;
     integerVal?: pulumi.Input<inputs.AccountSettingV2IntegerVal>;

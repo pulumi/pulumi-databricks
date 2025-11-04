@@ -4,13 +4,9 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
-import com.pulumi.databricks.inputs.GetAlertV2Evaluation;
-import com.pulumi.databricks.inputs.GetAlertV2RunAs;
-import com.pulumi.databricks.inputs.GetAlertV2Schedule;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GetAlertV2PlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -18,196 +14,24 @@ public final class GetAlertV2PlainArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetAlertV2PlainArgs Empty = new GetAlertV2PlainArgs();
 
     /**
-     * (string) - Custom description for the alert. support mustache template
+     * UUID identifying the alert
      * 
      */
-    @Import(name="customDescription")
-    private @Nullable String customDescription;
+    @Import(name="id", required=true)
+    private String id;
 
     /**
-     * @return (string) - Custom description for the alert. support mustache template
+     * @return UUID identifying the alert
      * 
      */
-    public Optional<String> customDescription() {
-        return Optional.ofNullable(this.customDescription);
-    }
-
-    /**
-     * (string) - Custom summary for the alert. support mustache template
-     * 
-     */
-    @Import(name="customSummary")
-    private @Nullable String customSummary;
-
-    /**
-     * @return (string) - Custom summary for the alert. support mustache template
-     * 
-     */
-    public Optional<String> customSummary() {
-        return Optional.ofNullable(this.customSummary);
-    }
-
-    /**
-     * (string) - The display name of the alert
-     * 
-     */
-    @Import(name="displayName")
-    private @Nullable String displayName;
-
-    /**
-     * @return (string) - The display name of the alert
-     * 
-     */
-    public Optional<String> displayName() {
-        return Optional.ofNullable(this.displayName);
-    }
-
-    /**
-     * (AlertV2Evaluation)
-     * 
-     */
-    @Import(name="evaluation")
-    private @Nullable GetAlertV2Evaluation evaluation;
-
-    /**
-     * @return (AlertV2Evaluation)
-     * 
-     */
-    public Optional<GetAlertV2Evaluation> evaluation() {
-        return Optional.ofNullable(this.evaluation);
-    }
-
-    /**
-     * (string) - The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
-     * 
-     */
-    @Import(name="parentPath")
-    private @Nullable String parentPath;
-
-    /**
-     * @return (string) - The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
-     * 
-     */
-    public Optional<String> parentPath() {
-        return Optional.ofNullable(this.parentPath);
-    }
-
-    /**
-     * (string) - Text of the query to be run
-     * 
-     */
-    @Import(name="queryText")
-    private @Nullable String queryText;
-
-    /**
-     * @return (string) - Text of the query to be run
-     * 
-     */
-    public Optional<String> queryText() {
-        return Optional.ofNullable(this.queryText);
-    }
-
-    /**
-     * (AlertV2RunAs) - Specifies the identity that will be used to run the alert.
-     * This field allows you to configure alerts to run as a specific user or service principal.
-     * - For user identity: Set `userName` to the email of an active workspace user. Users can only set this to their own email.
-     * - For service principal: Set `servicePrincipalName` to the application ID. Requires the `servicePrincipal/user` role.
-     *   If not specified, the alert will run as the request user
-     * 
-     */
-    @Import(name="runAs")
-    private @Nullable GetAlertV2RunAs runAs;
-
-    /**
-     * @return (AlertV2RunAs) - Specifies the identity that will be used to run the alert.
-     * This field allows you to configure alerts to run as a specific user or service principal.
-     * - For user identity: Set `userName` to the email of an active workspace user. Users can only set this to their own email.
-     * - For service principal: Set `servicePrincipalName` to the application ID. Requires the `servicePrincipal/user` role.
-     *   If not specified, the alert will run as the request user
-     * 
-     */
-    public Optional<GetAlertV2RunAs> runAs() {
-        return Optional.ofNullable(this.runAs);
-    }
-
-    /**
-     * (string, deprecated) - The run as username or application ID of service principal.
-     * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
-     * Deprecated: Use `runAs` field instead. This field will be removed in a future release
-     * 
-     */
-    @Import(name="runAsUserName")
-    private @Nullable String runAsUserName;
-
-    /**
-     * @return (string, deprecated) - The run as username or application ID of service principal.
-     * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
-     * Deprecated: Use `runAs` field instead. This field will be removed in a future release
-     * 
-     */
-    public Optional<String> runAsUserName() {
-        return Optional.ofNullable(this.runAsUserName);
-    }
-
-    /**
-     * (CronSchedule)
-     * 
-     */
-    @Import(name="schedule")
-    private @Nullable GetAlertV2Schedule schedule;
-
-    /**
-     * @return (CronSchedule)
-     * 
-     */
-    public Optional<GetAlertV2Schedule> schedule() {
-        return Optional.ofNullable(this.schedule);
-    }
-
-    /**
-     * (string) - ID of the SQL warehouse attached to the alert
-     * 
-     */
-    @Import(name="warehouseId")
-    private @Nullable String warehouseId;
-
-    /**
-     * @return (string) - ID of the SQL warehouse attached to the alert
-     * 
-     */
-    public Optional<String> warehouseId() {
-        return Optional.ofNullable(this.warehouseId);
-    }
-
-    /**
-     * Workspace ID of the resource
-     * 
-     */
-    @Import(name="workspaceId")
-    private @Nullable String workspaceId;
-
-    /**
-     * @return Workspace ID of the resource
-     * 
-     */
-    public Optional<String> workspaceId() {
-        return Optional.ofNullable(this.workspaceId);
+    public String id() {
+        return this.id;
     }
 
     private GetAlertV2PlainArgs() {}
 
     private GetAlertV2PlainArgs(GetAlertV2PlainArgs $) {
-        this.customDescription = $.customDescription;
-        this.customSummary = $.customSummary;
-        this.displayName = $.displayName;
-        this.evaluation = $.evaluation;
-        this.parentPath = $.parentPath;
-        this.queryText = $.queryText;
-        this.runAs = $.runAs;
-        this.runAsUserName = $.runAsUserName;
-        this.schedule = $.schedule;
-        this.warehouseId = $.warehouseId;
-        this.workspaceId = $.workspaceId;
+        this.id = $.id;
     }
 
     public static Builder builder() {
@@ -229,133 +53,20 @@ public final class GetAlertV2PlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param customDescription (string) - Custom description for the alert. support mustache template
+         * @param id UUID identifying the alert
          * 
          * @return builder
          * 
          */
-        public Builder customDescription(@Nullable String customDescription) {
-            $.customDescription = customDescription;
-            return this;
-        }
-
-        /**
-         * @param customSummary (string) - Custom summary for the alert. support mustache template
-         * 
-         * @return builder
-         * 
-         */
-        public Builder customSummary(@Nullable String customSummary) {
-            $.customSummary = customSummary;
-            return this;
-        }
-
-        /**
-         * @param displayName (string) - The display name of the alert
-         * 
-         * @return builder
-         * 
-         */
-        public Builder displayName(@Nullable String displayName) {
-            $.displayName = displayName;
-            return this;
-        }
-
-        /**
-         * @param evaluation (AlertV2Evaluation)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder evaluation(@Nullable GetAlertV2Evaluation evaluation) {
-            $.evaluation = evaluation;
-            return this;
-        }
-
-        /**
-         * @param parentPath (string) - The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
-         * 
-         * @return builder
-         * 
-         */
-        public Builder parentPath(@Nullable String parentPath) {
-            $.parentPath = parentPath;
-            return this;
-        }
-
-        /**
-         * @param queryText (string) - Text of the query to be run
-         * 
-         * @return builder
-         * 
-         */
-        public Builder queryText(@Nullable String queryText) {
-            $.queryText = queryText;
-            return this;
-        }
-
-        /**
-         * @param runAs (AlertV2RunAs) - Specifies the identity that will be used to run the alert.
-         * This field allows you to configure alerts to run as a specific user or service principal.
-         * - For user identity: Set `userName` to the email of an active workspace user. Users can only set this to their own email.
-         * - For service principal: Set `servicePrincipalName` to the application ID. Requires the `servicePrincipal/user` role.
-         *   If not specified, the alert will run as the request user
-         * 
-         * @return builder
-         * 
-         */
-        public Builder runAs(@Nullable GetAlertV2RunAs runAs) {
-            $.runAs = runAs;
-            return this;
-        }
-
-        /**
-         * @param runAsUserName (string, deprecated) - The run as username or application ID of service principal.
-         * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
-         * Deprecated: Use `runAs` field instead. This field will be removed in a future release
-         * 
-         * @return builder
-         * 
-         */
-        public Builder runAsUserName(@Nullable String runAsUserName) {
-            $.runAsUserName = runAsUserName;
-            return this;
-        }
-
-        /**
-         * @param schedule (CronSchedule)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder schedule(@Nullable GetAlertV2Schedule schedule) {
-            $.schedule = schedule;
-            return this;
-        }
-
-        /**
-         * @param warehouseId (string) - ID of the SQL warehouse attached to the alert
-         * 
-         * @return builder
-         * 
-         */
-        public Builder warehouseId(@Nullable String warehouseId) {
-            $.warehouseId = warehouseId;
-            return this;
-        }
-
-        /**
-         * @param workspaceId Workspace ID of the resource
-         * 
-         * @return builder
-         * 
-         */
-        public Builder workspaceId(@Nullable String workspaceId) {
-            $.workspaceId = workspaceId;
+        public Builder id(String id) {
+            $.id = id;
             return this;
         }
 
         public GetAlertV2PlainArgs build() {
+            if ($.id == null) {
+                throw new MissingRequiredPropertyException("GetAlertV2PlainArgs", "id");
+            }
             return $;
         }
     }

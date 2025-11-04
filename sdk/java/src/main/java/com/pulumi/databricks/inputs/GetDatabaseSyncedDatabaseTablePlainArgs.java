@@ -4,53 +4,14 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
-import com.pulumi.databricks.inputs.GetDatabaseSyncedDatabaseTableSpec;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GetDatabaseSyncedDatabaseTablePlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetDatabaseSyncedDatabaseTablePlainArgs Empty = new GetDatabaseSyncedDatabaseTablePlainArgs();
-
-    /**
-     * (string) - Name of the target database instance. This is required when creating synced database tables in standard catalogs.
-     * This is optional when creating synced database tables in registered catalogs. If this field is specified
-     * when creating synced database tables in registered catalogs, the database instance name MUST
-     * match that of the registered catalog (or the request will be rejected)
-     * 
-     */
-    @Import(name="databaseInstanceName")
-    private @Nullable String databaseInstanceName;
-
-    /**
-     * @return (string) - Name of the target database instance. This is required when creating synced database tables in standard catalogs.
-     * This is optional when creating synced database tables in registered catalogs. If this field is specified
-     * when creating synced database tables in registered catalogs, the database instance name MUST
-     * match that of the registered catalog (or the request will be rejected)
-     * 
-     */
-    public Optional<String> databaseInstanceName() {
-        return Optional.ofNullable(this.databaseInstanceName);
-    }
-
-    /**
-     * (string) - Target Postgres database object (logical database) name for this table.
-     * 
-     */
-    @Import(name="logicalDatabaseName")
-    private @Nullable String logicalDatabaseName;
-
-    /**
-     * @return (string) - Target Postgres database object (logical database) name for this table.
-     * 
-     */
-    public Optional<String> logicalDatabaseName() {
-        return Optional.ofNullable(this.logicalDatabaseName);
-    }
 
     /**
      * Full three-part (catalog, schema, table) name of the table
@@ -67,44 +28,10 @@ public final class GetDatabaseSyncedDatabaseTablePlainArgs extends com.pulumi.re
         return this.name;
     }
 
-    /**
-     * (SyncedTableSpec)
-     * 
-     */
-    @Import(name="spec")
-    private @Nullable GetDatabaseSyncedDatabaseTableSpec spec;
-
-    /**
-     * @return (SyncedTableSpec)
-     * 
-     */
-    public Optional<GetDatabaseSyncedDatabaseTableSpec> spec() {
-        return Optional.ofNullable(this.spec);
-    }
-
-    /**
-     * Workspace ID of the resource
-     * 
-     */
-    @Import(name="workspaceId")
-    private @Nullable String workspaceId;
-
-    /**
-     * @return Workspace ID of the resource
-     * 
-     */
-    public Optional<String> workspaceId() {
-        return Optional.ofNullable(this.workspaceId);
-    }
-
     private GetDatabaseSyncedDatabaseTablePlainArgs() {}
 
     private GetDatabaseSyncedDatabaseTablePlainArgs(GetDatabaseSyncedDatabaseTablePlainArgs $) {
-        this.databaseInstanceName = $.databaseInstanceName;
-        this.logicalDatabaseName = $.logicalDatabaseName;
         this.name = $.name;
-        this.spec = $.spec;
-        this.workspaceId = $.workspaceId;
     }
 
     public static Builder builder() {
@@ -126,31 +53,6 @@ public final class GetDatabaseSyncedDatabaseTablePlainArgs extends com.pulumi.re
         }
 
         /**
-         * @param databaseInstanceName (string) - Name of the target database instance. This is required when creating synced database tables in standard catalogs.
-         * This is optional when creating synced database tables in registered catalogs. If this field is specified
-         * when creating synced database tables in registered catalogs, the database instance name MUST
-         * match that of the registered catalog (or the request will be rejected)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder databaseInstanceName(@Nullable String databaseInstanceName) {
-            $.databaseInstanceName = databaseInstanceName;
-            return this;
-        }
-
-        /**
-         * @param logicalDatabaseName (string) - Target Postgres database object (logical database) name for this table.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder logicalDatabaseName(@Nullable String logicalDatabaseName) {
-            $.logicalDatabaseName = logicalDatabaseName;
-            return this;
-        }
-
-        /**
          * @param name Full three-part (catalog, schema, table) name of the table
          * 
          * @return builder
@@ -158,28 +60,6 @@ public final class GetDatabaseSyncedDatabaseTablePlainArgs extends com.pulumi.re
          */
         public Builder name(String name) {
             $.name = name;
-            return this;
-        }
-
-        /**
-         * @param spec (SyncedTableSpec)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder spec(@Nullable GetDatabaseSyncedDatabaseTableSpec spec) {
-            $.spec = spec;
-            return this;
-        }
-
-        /**
-         * @param workspaceId Workspace ID of the resource
-         * 
-         * @return builder
-         * 
-         */
-        public Builder workspaceId(@Nullable String workspaceId) {
-            $.workspaceId = workspaceId;
             return this;
         }
 

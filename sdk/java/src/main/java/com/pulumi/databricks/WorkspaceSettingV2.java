@@ -14,12 +14,10 @@ import com.pulumi.databricks.outputs.WorkspaceSettingV2AibiDashboardEmbeddingAcc
 import com.pulumi.databricks.outputs.WorkspaceSettingV2AibiDashboardEmbeddingApprovedDomains;
 import com.pulumi.databricks.outputs.WorkspaceSettingV2AutomaticClusterUpdateWorkspace;
 import com.pulumi.databricks.outputs.WorkspaceSettingV2BooleanVal;
-import com.pulumi.databricks.outputs.WorkspaceSettingV2DefaultDataSecurityMode;
 import com.pulumi.databricks.outputs.WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy;
 import com.pulumi.databricks.outputs.WorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomains;
 import com.pulumi.databricks.outputs.WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspace;
 import com.pulumi.databricks.outputs.WorkspaceSettingV2EffectiveBooleanVal;
-import com.pulumi.databricks.outputs.WorkspaceSettingV2EffectiveDefaultDataSecurityMode;
 import com.pulumi.databricks.outputs.WorkspaceSettingV2EffectiveIntegerVal;
 import com.pulumi.databricks.outputs.WorkspaceSettingV2EffectivePersonalCompute;
 import com.pulumi.databricks.outputs.WorkspaceSettingV2EffectiveRestrictWorkspaceAdmins;
@@ -33,6 +31,52 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * 
+ * Setting is a configurable value or control that determines how a feature or behavior works within the databricks platform.
+ * 
+ * [//]: # (todo: add public link to metadata api after production doc link available)
+ * See settings-metadata api for list of settings that can be modified using this resource.
+ * 
+ * ## Example Usage
+ * 
+ * Getting a workspace level setting:
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.WorkspaceSettingV2;
+ * import com.pulumi.databricks.WorkspaceSettingV2Args;
+ * import com.pulumi.databricks.inputs.WorkspaceSettingV2BooleanValArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var this_ = new WorkspaceSettingV2("this", WorkspaceSettingV2Args.builder()
+ *             .name("llm_proxy_partner_powered")
+ *             .booleanVal(WorkspaceSettingV2BooleanValArgs.builder()
+ *                 .value(false)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * As of Pulumi v1.5, resources can be imported through configuration.
@@ -50,7 +94,7 @@ import javax.annotation.Nullable;
  * If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
  * 
  * ```sh
- * $ pulumi import databricks:index/workspaceSettingV2:WorkspaceSettingV2 databricks_workspace_setting_v2 &#34;name&#34;
+ * $ pulumi import databricks:index/workspaceSettingV2:WorkspaceSettingV2 this &#34;name&#34;
  * ```
  * 
  */
@@ -68,17 +112,9 @@ public class WorkspaceSettingV2 extends com.pulumi.resources.CustomResource {
     public Output<Optional<WorkspaceSettingV2AibiDashboardEmbeddingApprovedDomains>> aibiDashboardEmbeddingApprovedDomains() {
         return Codegen.optional(this.aibiDashboardEmbeddingApprovedDomains);
     }
-    /**
-     * todo: Mark these Public after onboarded to DSL
-     * 
-     */
     @Export(name="automaticClusterUpdateWorkspace", refs={WorkspaceSettingV2AutomaticClusterUpdateWorkspace.class}, tree="[0]")
     private Output</* @Nullable */ WorkspaceSettingV2AutomaticClusterUpdateWorkspace> automaticClusterUpdateWorkspace;
 
-    /**
-     * @return todo: Mark these Public after onboarded to DSL
-     * 
-     */
     public Output<Optional<WorkspaceSettingV2AutomaticClusterUpdateWorkspace>> automaticClusterUpdateWorkspace() {
         return Codegen.optional(this.automaticClusterUpdateWorkspace);
     }
@@ -87,12 +123,6 @@ public class WorkspaceSettingV2 extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<WorkspaceSettingV2BooleanVal>> booleanVal() {
         return Codegen.optional(this.booleanVal);
-    }
-    @Export(name="defaultDataSecurityMode", refs={WorkspaceSettingV2DefaultDataSecurityMode.class}, tree="[0]")
-    private Output</* @Nullable */ WorkspaceSettingV2DefaultDataSecurityMode> defaultDataSecurityMode;
-
-    public Output<Optional<WorkspaceSettingV2DefaultDataSecurityMode>> defaultDataSecurityMode() {
-        return Codegen.optional(this.defaultDataSecurityMode);
     }
     @Export(name="effectiveAibiDashboardEmbeddingAccessPolicy", refs={WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy.class}, tree="[0]")
     private Output</* @Nullable */ WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy> effectiveAibiDashboardEmbeddingAccessPolicy;
@@ -125,12 +155,6 @@ public class WorkspaceSettingV2 extends com.pulumi.resources.CustomResource {
      */
     public Output<WorkspaceSettingV2EffectiveBooleanVal> effectiveBooleanVal() {
         return this.effectiveBooleanVal;
-    }
-    @Export(name="effectiveDefaultDataSecurityMode", refs={WorkspaceSettingV2EffectiveDefaultDataSecurityMode.class}, tree="[0]")
-    private Output</* @Nullable */ WorkspaceSettingV2EffectiveDefaultDataSecurityMode> effectiveDefaultDataSecurityMode;
-
-    public Output<Optional<WorkspaceSettingV2EffectiveDefaultDataSecurityMode>> effectiveDefaultDataSecurityMode() {
-        return Codegen.optional(this.effectiveDefaultDataSecurityMode);
     }
     /**
      * (IntegerMessage)
@@ -209,20 +233,6 @@ public class WorkspaceSettingV2 extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<WorkspaceSettingV2StringVal>> stringVal() {
         return Codegen.optional(this.stringVal);
-    }
-    /**
-     * Workspace ID of the resource
-     * 
-     */
-    @Export(name="workspaceId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> workspaceId;
-
-    /**
-     * @return Workspace ID of the resource
-     * 
-     */
-    public Output<Optional<String>> workspaceId() {
-        return Codegen.optional(this.workspaceId);
     }
 
     /**

@@ -14,6 +14,7 @@ import com.pulumi.databricks.inputs.JobTaskForEachTaskTaskNewClusterDockerImageA
 import com.pulumi.databricks.inputs.JobTaskForEachTaskTaskNewClusterGcpAttributesArgs;
 import com.pulumi.databricks.inputs.JobTaskForEachTaskTaskNewClusterInitScriptArgs;
 import com.pulumi.databricks.inputs.JobTaskForEachTaskTaskNewClusterLibraryArgs;
+import com.pulumi.databricks.inputs.JobTaskForEachTaskTaskNewClusterProviderConfigArgs;
 import com.pulumi.databricks.inputs.JobTaskForEachTaskTaskNewClusterWorkloadTypeArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -212,6 +213,21 @@ public final class JobTaskForEachTaskTaskNewClusterArgs extends com.pulumi.resou
         return Optional.ofNullable(this.policyId);
     }
 
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<JobTaskForEachTaskTaskNewClusterProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Optional<Output<JobTaskForEachTaskTaskNewClusterProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     @Import(name="remoteDiskThroughput")
     private @Nullable Output<Integer> remoteDiskThroughput;
 
@@ -318,6 +334,7 @@ public final class JobTaskForEachTaskTaskNewClusterArgs extends com.pulumi.resou
         this.nodeTypeId = $.nodeTypeId;
         this.numWorkers = $.numWorkers;
         this.policyId = $.policyId;
+        this.providerConfig = $.providerConfig;
         this.remoteDiskThroughput = $.remoteDiskThroughput;
         this.runtimeEngine = $.runtimeEngine;
         this.singleUserName = $.singleUserName;
@@ -601,6 +618,27 @@ public final class JobTaskForEachTaskTaskNewClusterArgs extends com.pulumi.resou
 
         public Builder policyId(String policyId) {
             return policyId(Output.of(policyId));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<JobTaskForEachTaskTaskNewClusterProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(JobTaskForEachTaskTaskNewClusterProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         public Builder remoteDiskThroughput(@Nullable Output<Integer> remoteDiskThroughput) {

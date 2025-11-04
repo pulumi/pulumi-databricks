@@ -11,6 +11,8 @@ import com.pulumi.databricks.DatabaseInstanceArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.DatabaseInstanceState;
 import com.pulumi.databricks.outputs.DatabaseInstanceChildInstanceRef;
+import com.pulumi.databricks.outputs.DatabaseInstanceCustomTag;
+import com.pulumi.databricks.outputs.DatabaseInstanceEffectiveCustomTag;
 import com.pulumi.databricks.outputs.DatabaseInstanceParentInstanceRef;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -20,6 +22,8 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * 
  * Lakebase Database Instances are managed Postgres instances, composed of a primary Postgres compute instance and 0 or more read replica instances.
  * 
  * ## Example Usage
@@ -138,6 +142,53 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * ### Example with a usage policy and custom tags
+ * 
+ * This example creates a Database Instance with an associated usage policy and custom tags.
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.DatabaseInstance;
+ * import com.pulumi.databricks.DatabaseInstanceArgs;
+ * import com.pulumi.databricks.inputs.DatabaseInstanceCustomTagArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var this_ = new DatabaseInstance("this", DatabaseInstanceArgs.builder()
+ *             .name("my-database-instance")
+ *             .capacity("CU_8")
+ *             .usagePolicyId("948192fa-a98b-498f-a09b-ecee79d8b983")
+ *             .customTags(            
+ *                 DatabaseInstanceCustomTagArgs.builder()
+ *                     .key("custom_tag_key1")
+ *                     .value("custom_tag_value1")
+ *                     .build(),
+ *                 DatabaseInstanceCustomTagArgs.builder()
+ *                     .key("custom_tag_key2")
+ *                     .value("custom_tag_value2")
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * As of Pulumi v1.5, resources can be imported through configuration.
@@ -155,7 +206,7 @@ import javax.annotation.Nullable;
  * If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
  * 
  * ```sh
- * $ pulumi import databricks:index/databaseInstance:DatabaseInstance databricks_database_instance &#34;name&#34;
+ * $ pulumi import databricks:index/databaseInstance:DatabaseInstance this &#34;name&#34;
  * ```
  * 
  */
@@ -220,104 +271,144 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
         return this.creator;
     }
     /**
-     * (boolean) - xref AIP-129. `enablePgNativeLogin` is owned by the client, while `effectiveEnablePgNativeLogin` is owned by the server.
-     * `enablePgNativeLogin` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-     * `effectiveEnablePgNativeLogin` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * Custom tags associated with the instance. This field is only included on create and update responses
+     * 
+     */
+    @Export(name="customTags", refs={List.class,DatabaseInstanceCustomTag.class}, tree="[0,1]")
+    private Output<List<DatabaseInstanceCustomTag>> customTags;
+
+    /**
+     * @return Custom tags associated with the instance. This field is only included on create and update responses
+     * 
+     */
+    public Output<List<DatabaseInstanceCustomTag>> customTags() {
+        return this.customTags;
+    }
+    /**
+     * (string, deprecated) - Deprecated. The sku of the instance; this field will always match the value of capacity
+     * 
+     */
+    @Export(name="effectiveCapacity", refs={String.class}, tree="[0]")
+    private Output<String> effectiveCapacity;
+
+    /**
+     * @return (string, deprecated) - Deprecated. The sku of the instance; this field will always match the value of capacity
+     * 
+     */
+    public Output<String> effectiveCapacity() {
+        return this.effectiveCapacity;
+    }
+    /**
+     * (list of CustomTag) - The recorded custom tags associated with the instance
+     * 
+     */
+    @Export(name="effectiveCustomTags", refs={List.class,DatabaseInstanceEffectiveCustomTag.class}, tree="[0,1]")
+    private Output<List<DatabaseInstanceEffectiveCustomTag>> effectiveCustomTags;
+
+    /**
+     * @return (list of CustomTag) - The recorded custom tags associated with the instance
+     * 
+     */
+    public Output<List<DatabaseInstanceEffectiveCustomTag>> effectiveCustomTags() {
+        return this.effectiveCustomTags;
+    }
+    /**
+     * (boolean) - Whether the instance has PG native password login enabled
      * 
      */
     @Export(name="effectiveEnablePgNativeLogin", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> effectiveEnablePgNativeLogin;
 
     /**
-     * @return (boolean) - xref AIP-129. `enablePgNativeLogin` is owned by the client, while `effectiveEnablePgNativeLogin` is owned by the server.
-     * `enablePgNativeLogin` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-     * `effectiveEnablePgNativeLogin` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * @return (boolean) - Whether the instance has PG native password login enabled
      * 
      */
     public Output<Boolean> effectiveEnablePgNativeLogin() {
         return this.effectiveEnablePgNativeLogin;
     }
     /**
-     * (boolean) - xref AIP-129. `enableReadableSecondaries` is owned by the client, while `effectiveEnableReadableSecondaries` is owned by the server.
-     * `enableReadableSecondaries` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-     * `effectiveEnableReadableSecondaries` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * (boolean) - Whether secondaries serving read-only traffic are enabled. Defaults to false
      * 
      */
     @Export(name="effectiveEnableReadableSecondaries", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> effectiveEnableReadableSecondaries;
 
     /**
-     * @return (boolean) - xref AIP-129. `enableReadableSecondaries` is owned by the client, while `effectiveEnableReadableSecondaries` is owned by the server.
-     * `enableReadableSecondaries` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-     * `effectiveEnableReadableSecondaries` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * @return (boolean) - Whether secondaries serving read-only traffic are enabled. Defaults to false
      * 
      */
     public Output<Boolean> effectiveEnableReadableSecondaries() {
         return this.effectiveEnableReadableSecondaries;
     }
     /**
-     * (integer) - xref AIP-129. `nodeCount` is owned by the client, while `effectiveNodeCount` is owned by the server.
-     * `nodeCount` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-     * `effectiveNodeCount` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * (integer) - The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
+     * 1 primary and 0 secondaries
      * 
      */
     @Export(name="effectiveNodeCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> effectiveNodeCount;
 
     /**
-     * @return (integer) - xref AIP-129. `nodeCount` is owned by the client, while `effectiveNodeCount` is owned by the server.
-     * `nodeCount` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-     * `effectiveNodeCount` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * @return (integer) - The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
+     * 1 primary and 0 secondaries
      * 
      */
     public Output<Integer> effectiveNodeCount() {
         return this.effectiveNodeCount;
     }
     /**
-     * (integer) - xref AIP-129. `retentionWindowInDays` is owned by the client, while `effectiveRetentionWindowInDays` is owned by the server.
-     * `retentionWindowInDays` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-     * `effectiveRetentionWindowInDays` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * (integer) - The retention window for the instance. This is the time window in days
+     * for which the historical data is retained
      * 
      */
     @Export(name="effectiveRetentionWindowInDays", refs={Integer.class}, tree="[0]")
     private Output<Integer> effectiveRetentionWindowInDays;
 
     /**
-     * @return (integer) - xref AIP-129. `retentionWindowInDays` is owned by the client, while `effectiveRetentionWindowInDays` is owned by the server.
-     * `retentionWindowInDays` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-     * `effectiveRetentionWindowInDays` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * @return (integer) - The retention window for the instance. This is the time window in days
+     * for which the historical data is retained
      * 
      */
     public Output<Integer> effectiveRetentionWindowInDays() {
         return this.effectiveRetentionWindowInDays;
     }
     /**
-     * (boolean) - xref AIP-129. `stopped` is owned by the client, while `effectiveStopped` is owned by the server.
-     * `stopped` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-     * `effectiveStopped` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * (boolean) - Whether the instance is stopped
      * 
      */
     @Export(name="effectiveStopped", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> effectiveStopped;
 
     /**
-     * @return (boolean) - xref AIP-129. `stopped` is owned by the client, while `effectiveStopped` is owned by the server.
-     * `stopped` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-     * `effectiveStopped` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+     * @return (boolean) - Whether the instance is stopped
      * 
      */
     public Output<Boolean> effectiveStopped() {
         return this.effectiveStopped;
     }
     /**
-     * Whether the instance has PG native password login enabled. Defaults to true
+     * (string) - The policy that is applied to the instance
+     * 
+     */
+    @Export(name="effectiveUsagePolicyId", refs={String.class}, tree="[0]")
+    private Output<String> effectiveUsagePolicyId;
+
+    /**
+     * @return (string) - The policy that is applied to the instance
+     * 
+     */
+    public Output<String> effectiveUsagePolicyId() {
+        return this.effectiveUsagePolicyId;
+    }
+    /**
+     * Whether to enable PG native password login on the instance. Defaults to false
      * 
      */
     @Export(name="enablePgNativeLogin", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enablePgNativeLogin;
 
     /**
-     * @return Whether the instance has PG native password login enabled. Defaults to true
+     * @return Whether to enable PG native password login on the instance. Defaults to false
      * 
      */
     public Output<Boolean> enablePgNativeLogin() {
@@ -328,14 +419,14 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="enableReadableSecondaries", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> enableReadableSecondaries;
+    private Output<Boolean> enableReadableSecondaries;
 
     /**
      * @return Whether to enable secondaries to serve read-only traffic. Defaults to false
      * 
      */
-    public Output<Optional<Boolean>> enableReadableSecondaries() {
-        return Codegen.optional(this.enableReadableSecondaries);
+    public Output<Boolean> enableReadableSecondaries() {
+        return this.enableReadableSecondaries;
     }
     /**
      * The name of the instance. This is the unique identifier for the instance
@@ -353,19 +444,19 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
     }
     /**
      * The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
-     * 1 primary and 0 secondaries
+     * 1 primary and 0 secondaries. This field is input only, see effectiveNodeCount for the output
      * 
      */
     @Export(name="nodeCount", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> nodeCount;
+    private Output<Integer> nodeCount;
 
     /**
      * @return The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
-     * 1 primary and 0 secondaries
+     * 1 primary and 0 secondaries. This field is input only, see effectiveNodeCount for the output
      * 
      */
-    public Output<Optional<Integer>> nodeCount() {
-        return Codegen.optional(this.nodeCount);
+    public Output<Integer> nodeCount() {
+        return this.nodeCount;
     }
     /**
      * The ref of the parent instance. This is only available if the instance is
@@ -452,7 +543,7 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="retentionWindowInDays", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> retentionWindowInDays;
+    private Output<Integer> retentionWindowInDays;
 
     /**
      * @return The retention window for the instance. This is the time window in days
@@ -460,8 +551,8 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
      * Valid values are 2 to 35 days
      * 
      */
-    public Output<Optional<Integer>> retentionWindowInDays() {
-        return Codegen.optional(this.retentionWindowInDays);
+    public Output<Integer> retentionWindowInDays() {
+        return this.retentionWindowInDays;
     }
     /**
      * (string) - The current state of the instance. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
@@ -478,18 +569,18 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
         return this.state;
     }
     /**
-     * Whether the instance is stopped
+     * Whether to stop the instance. An input only param, see effectiveStopped for the output
      * 
      */
     @Export(name="stopped", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> stopped;
+    private Output<Boolean> stopped;
 
     /**
-     * @return Whether the instance is stopped
+     * @return Whether to stop the instance. An input only param, see effectiveStopped for the output
      * 
      */
-    public Output<Optional<Boolean>> stopped() {
-        return Codegen.optional(this.stopped);
+    public Output<Boolean> stopped() {
+        return this.stopped;
     }
     /**
      * (string) - Id of the ref database instance
@@ -506,18 +597,18 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
         return this.uid;
     }
     /**
-     * Workspace ID of the resource
+     * The desired usage policy to associate with the instance
      * 
      */
-    @Export(name="workspaceId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> workspaceId;
+    @Export(name="usagePolicyId", refs={String.class}, tree="[0]")
+    private Output<String> usagePolicyId;
 
     /**
-     * @return Workspace ID of the resource
+     * @return The desired usage policy to associate with the instance
      * 
      */
-    public Output<Optional<String>> workspaceId() {
-        return Codegen.optional(this.workspaceId);
+    public Output<String> usagePolicyId() {
+        return this.usagePolicyId;
     }
 
     /**

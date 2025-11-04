@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetDashboardsDashboard;
+import com.pulumi.databricks.outputs.GetDashboardsProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
@@ -25,6 +26,7 @@ public final class GetDashboardsResult {
      * 
      */
     private String id;
+    private @Nullable GetDashboardsProviderConfig providerConfig;
 
     private GetDashboardsResult() {}
     public Optional<String> dashboardNameContains() {
@@ -44,6 +46,9 @@ public final class GetDashboardsResult {
     public String id() {
         return this.id;
     }
+    public Optional<GetDashboardsProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -57,12 +62,14 @@ public final class GetDashboardsResult {
         private @Nullable String dashboardNameContains;
         private List<GetDashboardsDashboard> dashboards;
         private String id;
+        private @Nullable GetDashboardsProviderConfig providerConfig;
         public Builder() {}
         public Builder(GetDashboardsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dashboardNameContains = defaults.dashboardNameContains;
     	      this.dashboards = defaults.dashboards;
     	      this.id = defaults.id;
+    	      this.providerConfig = defaults.providerConfig;
         }
 
         @CustomType.Setter
@@ -90,11 +97,18 @@ public final class GetDashboardsResult {
             this.id = id;
             return this;
         }
+        @CustomType.Setter
+        public Builder providerConfig(@Nullable GetDashboardsProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
+            return this;
+        }
         public GetDashboardsResult build() {
             final var _resultValue = new GetDashboardsResult();
             _resultValue.dashboardNameContains = dashboardNameContains;
             _resultValue.dashboards = dashboards;
             _resultValue.id = id;
+            _resultValue.providerConfig = providerConfig;
             return _resultValue;
         }
     }

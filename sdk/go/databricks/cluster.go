@@ -101,61 +101,16 @@ type Cluster struct {
 	Kind      pulumi.StringPtrOutput    `pulumi:"kind"`
 	Libraries ClusterLibraryArrayOutput `pulumi:"libraries"`
 	// If true, the provider will not wait for the cluster to reach `RUNNING` state when creating the cluster, allowing cluster creation and library installation to continue asynchronously. Defaults to false (the provider will wait for cluster creation and library installation to succeed).
-	//
-	// The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
-	//
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		smallest, err := databricks.GetNodeType(ctx, &databricks.GetNodeTypeArgs{
-	// 			LocalDisk: pulumi.BoolRef(true),
-	// 		}, nil)
-	// 		if err != nil {
-	// 			return err
-	// 		}
-	// 		latestLts, err := databricks.GetSparkVersion(ctx, &databricks.GetSparkVersionArgs{
-	// 			LongTermSupport: pulumi.BoolRef(true),
-	// 		}, nil)
-	// 		if err != nil {
-	// 			return err
-	// 		}
-	// 		_, err = databricks.NewCluster(ctx, "shared_autoscaling", &databricks.ClusterArgs{
-	// 			ClusterName:            pulumi.String("Shared Autoscaling"),
-	// 			SparkVersion:           pulumi.String(latestLts.Id),
-	// 			NodeTypeId:             pulumi.String(smallest.Id),
-	// 			AutoterminationMinutes: pulumi.Int(20),
-	// 			Autoscale: &databricks.ClusterAutoscaleArgs{
-	// 				MinWorkers: pulumi.Int(1),
-	// 				MaxWorkers: pulumi.Int(50),
-	// 			},
-	// 			SparkConf: pulumi.StringMap{
-	// 				"spark.databricks.io.cache.enabled":          pulumi.String("true"),
-	// 				"spark.databricks.io.cache.maxDiskUsage":     pulumi.String("50g"),
-	// 				"spark.databricks.io.cache.maxMetaDataCache": pulumi.String("1g"),
-	// 			},
-	// 		})
-	// 		if err != nil {
-	// 			return err
-	// 		}
-	// 		return nil
-	// 	})
-	// }
-	// ```
 	NoWait pulumi.BoolPtrOutput `pulumi:"noWait"`
 	// Any supported getNodeType id. If `instancePoolId` is specified, this field is not needed.
 	NodeTypeId pulumi.StringOutput `pulumi:"nodeTypeId"`
 	// Number of worker nodes that this cluster should have. A cluster has one Spark driver and `numWorkers` executors for a total of `numWorkers` + 1 Spark nodes.
 	NumWorkers pulumi.IntPtrOutput `pulumi:"numWorkers"`
 	// Identifier of Cluster Policy to validate cluster and preset certain defaults. *The primary use for cluster policies is to allow users to create policy-scoped clusters via UI rather than sharing configuration for API-created clusters.* For example, when you specify `policyId` of [external metastore](https://docs.databricks.com/administration-guide/clusters/policies.html#external-metastore-policy) policy, you still have to fill in relevant keys for `sparkConf`.  If relevant fields aren't filled in, then it will cause the configuration drift detected on each plan/apply, and Pulumi will try to apply the detected changes.
-	PolicyId             pulumi.StringPtrOutput `pulumi:"policyId"`
-	RemoteDiskThroughput pulumi.IntPtrOutput    `pulumi:"remoteDiskThroughput"`
+	PolicyId pulumi.StringPtrOutput `pulumi:"policyId"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig       ClusterProviderConfigPtrOutput `pulumi:"providerConfig"`
+	RemoteDiskThroughput pulumi.IntPtrOutput            `pulumi:"remoteDiskThroughput"`
 	// The type of runtime engine to use. If not specified, the runtime engine type is inferred based on the sparkVersion value. Allowed values include: `PHOTON`, `STANDARD`.
 	RuntimeEngine pulumi.StringPtrOutput `pulumi:"runtimeEngine"`
 	// The optional user name of the user (or group name if `kind` if specified) to assign to an interactive cluster. This field is required when using `dataSecurityMode` set to `SINGLE_USER` or AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
@@ -289,61 +244,16 @@ type clusterState struct {
 	Kind      *string          `pulumi:"kind"`
 	Libraries []ClusterLibrary `pulumi:"libraries"`
 	// If true, the provider will not wait for the cluster to reach `RUNNING` state when creating the cluster, allowing cluster creation and library installation to continue asynchronously. Defaults to false (the provider will wait for cluster creation and library installation to succeed).
-	//
-	// The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
-	//
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		smallest, err := databricks.GetNodeType(ctx, &databricks.GetNodeTypeArgs{
-	// 			LocalDisk: pulumi.BoolRef(true),
-	// 		}, nil)
-	// 		if err != nil {
-	// 			return err
-	// 		}
-	// 		latestLts, err := databricks.GetSparkVersion(ctx, &databricks.GetSparkVersionArgs{
-	// 			LongTermSupport: pulumi.BoolRef(true),
-	// 		}, nil)
-	// 		if err != nil {
-	// 			return err
-	// 		}
-	// 		_, err = databricks.NewCluster(ctx, "shared_autoscaling", &databricks.ClusterArgs{
-	// 			ClusterName:            pulumi.String("Shared Autoscaling"),
-	// 			SparkVersion:           pulumi.String(latestLts.Id),
-	// 			NodeTypeId:             pulumi.String(smallest.Id),
-	// 			AutoterminationMinutes: pulumi.Int(20),
-	// 			Autoscale: &databricks.ClusterAutoscaleArgs{
-	// 				MinWorkers: pulumi.Int(1),
-	// 				MaxWorkers: pulumi.Int(50),
-	// 			},
-	// 			SparkConf: pulumi.StringMap{
-	// 				"spark.databricks.io.cache.enabled":          pulumi.String("true"),
-	// 				"spark.databricks.io.cache.maxDiskUsage":     pulumi.String("50g"),
-	// 				"spark.databricks.io.cache.maxMetaDataCache": pulumi.String("1g"),
-	// 			},
-	// 		})
-	// 		if err != nil {
-	// 			return err
-	// 		}
-	// 		return nil
-	// 	})
-	// }
-	// ```
 	NoWait *bool `pulumi:"noWait"`
 	// Any supported getNodeType id. If `instancePoolId` is specified, this field is not needed.
 	NodeTypeId *string `pulumi:"nodeTypeId"`
 	// Number of worker nodes that this cluster should have. A cluster has one Spark driver and `numWorkers` executors for a total of `numWorkers` + 1 Spark nodes.
 	NumWorkers *int `pulumi:"numWorkers"`
 	// Identifier of Cluster Policy to validate cluster and preset certain defaults. *The primary use for cluster policies is to allow users to create policy-scoped clusters via UI rather than sharing configuration for API-created clusters.* For example, when you specify `policyId` of [external metastore](https://docs.databricks.com/administration-guide/clusters/policies.html#external-metastore-policy) policy, you still have to fill in relevant keys for `sparkConf`.  If relevant fields aren't filled in, then it will cause the configuration drift detected on each plan/apply, and Pulumi will try to apply the detected changes.
-	PolicyId             *string `pulumi:"policyId"`
-	RemoteDiskThroughput *int    `pulumi:"remoteDiskThroughput"`
+	PolicyId *string `pulumi:"policyId"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig       *ClusterProviderConfig `pulumi:"providerConfig"`
+	RemoteDiskThroughput *int                   `pulumi:"remoteDiskThroughput"`
 	// The type of runtime engine to use. If not specified, the runtime engine type is inferred based on the sparkVersion value. Allowed values include: `PHOTON`, `STANDARD`.
 	RuntimeEngine *string `pulumi:"runtimeEngine"`
 	// The optional user name of the user (or group name if `kind` if specified) to assign to an interactive cluster. This field is required when using `dataSecurityMode` set to `SINGLE_USER` or AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
@@ -445,60 +355,15 @@ type ClusterState struct {
 	Kind      pulumi.StringPtrInput
 	Libraries ClusterLibraryArrayInput
 	// If true, the provider will not wait for the cluster to reach `RUNNING` state when creating the cluster, allowing cluster creation and library installation to continue asynchronously. Defaults to false (the provider will wait for cluster creation and library installation to succeed).
-	//
-	// The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
-	//
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		smallest, err := databricks.GetNodeType(ctx, &databricks.GetNodeTypeArgs{
-	// 			LocalDisk: pulumi.BoolRef(true),
-	// 		}, nil)
-	// 		if err != nil {
-	// 			return err
-	// 		}
-	// 		latestLts, err := databricks.GetSparkVersion(ctx, &databricks.GetSparkVersionArgs{
-	// 			LongTermSupport: pulumi.BoolRef(true),
-	// 		}, nil)
-	// 		if err != nil {
-	// 			return err
-	// 		}
-	// 		_, err = databricks.NewCluster(ctx, "shared_autoscaling", &databricks.ClusterArgs{
-	// 			ClusterName:            pulumi.String("Shared Autoscaling"),
-	// 			SparkVersion:           pulumi.String(latestLts.Id),
-	// 			NodeTypeId:             pulumi.String(smallest.Id),
-	// 			AutoterminationMinutes: pulumi.Int(20),
-	// 			Autoscale: &databricks.ClusterAutoscaleArgs{
-	// 				MinWorkers: pulumi.Int(1),
-	// 				MaxWorkers: pulumi.Int(50),
-	// 			},
-	// 			SparkConf: pulumi.StringMap{
-	// 				"spark.databricks.io.cache.enabled":          pulumi.String("true"),
-	// 				"spark.databricks.io.cache.maxDiskUsage":     pulumi.String("50g"),
-	// 				"spark.databricks.io.cache.maxMetaDataCache": pulumi.String("1g"),
-	// 			},
-	// 		})
-	// 		if err != nil {
-	// 			return err
-	// 		}
-	// 		return nil
-	// 	})
-	// }
-	// ```
 	NoWait pulumi.BoolPtrInput
 	// Any supported getNodeType id. If `instancePoolId` is specified, this field is not needed.
 	NodeTypeId pulumi.StringPtrInput
 	// Number of worker nodes that this cluster should have. A cluster has one Spark driver and `numWorkers` executors for a total of `numWorkers` + 1 Spark nodes.
 	NumWorkers pulumi.IntPtrInput
 	// Identifier of Cluster Policy to validate cluster and preset certain defaults. *The primary use for cluster policies is to allow users to create policy-scoped clusters via UI rather than sharing configuration for API-created clusters.* For example, when you specify `policyId` of [external metastore](https://docs.databricks.com/administration-guide/clusters/policies.html#external-metastore-policy) policy, you still have to fill in relevant keys for `sparkConf`.  If relevant fields aren't filled in, then it will cause the configuration drift detected on each plan/apply, and Pulumi will try to apply the detected changes.
-	PolicyId             pulumi.StringPtrInput
+	PolicyId pulumi.StringPtrInput
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig       ClusterProviderConfigPtrInput
 	RemoteDiskThroughput pulumi.IntPtrInput
 	// The type of runtime engine to use. If not specified, the runtime engine type is inferred based on the sparkVersion value. Allowed values include: `PHOTON`, `STANDARD`.
 	RuntimeEngine pulumi.StringPtrInput
@@ -602,61 +467,16 @@ type clusterArgs struct {
 	Kind      *string          `pulumi:"kind"`
 	Libraries []ClusterLibrary `pulumi:"libraries"`
 	// If true, the provider will not wait for the cluster to reach `RUNNING` state when creating the cluster, allowing cluster creation and library installation to continue asynchronously. Defaults to false (the provider will wait for cluster creation and library installation to succeed).
-	//
-	// The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
-	//
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		smallest, err := databricks.GetNodeType(ctx, &databricks.GetNodeTypeArgs{
-	// 			LocalDisk: pulumi.BoolRef(true),
-	// 		}, nil)
-	// 		if err != nil {
-	// 			return err
-	// 		}
-	// 		latestLts, err := databricks.GetSparkVersion(ctx, &databricks.GetSparkVersionArgs{
-	// 			LongTermSupport: pulumi.BoolRef(true),
-	// 		}, nil)
-	// 		if err != nil {
-	// 			return err
-	// 		}
-	// 		_, err = databricks.NewCluster(ctx, "shared_autoscaling", &databricks.ClusterArgs{
-	// 			ClusterName:            pulumi.String("Shared Autoscaling"),
-	// 			SparkVersion:           pulumi.String(latestLts.Id),
-	// 			NodeTypeId:             pulumi.String(smallest.Id),
-	// 			AutoterminationMinutes: pulumi.Int(20),
-	// 			Autoscale: &databricks.ClusterAutoscaleArgs{
-	// 				MinWorkers: pulumi.Int(1),
-	// 				MaxWorkers: pulumi.Int(50),
-	// 			},
-	// 			SparkConf: pulumi.StringMap{
-	// 				"spark.databricks.io.cache.enabled":          pulumi.String("true"),
-	// 				"spark.databricks.io.cache.maxDiskUsage":     pulumi.String("50g"),
-	// 				"spark.databricks.io.cache.maxMetaDataCache": pulumi.String("1g"),
-	// 			},
-	// 		})
-	// 		if err != nil {
-	// 			return err
-	// 		}
-	// 		return nil
-	// 	})
-	// }
-	// ```
 	NoWait *bool `pulumi:"noWait"`
 	// Any supported getNodeType id. If `instancePoolId` is specified, this field is not needed.
 	NodeTypeId *string `pulumi:"nodeTypeId"`
 	// Number of worker nodes that this cluster should have. A cluster has one Spark driver and `numWorkers` executors for a total of `numWorkers` + 1 Spark nodes.
 	NumWorkers *int `pulumi:"numWorkers"`
 	// Identifier of Cluster Policy to validate cluster and preset certain defaults. *The primary use for cluster policies is to allow users to create policy-scoped clusters via UI rather than sharing configuration for API-created clusters.* For example, when you specify `policyId` of [external metastore](https://docs.databricks.com/administration-guide/clusters/policies.html#external-metastore-policy) policy, you still have to fill in relevant keys for `sparkConf`.  If relevant fields aren't filled in, then it will cause the configuration drift detected on each plan/apply, and Pulumi will try to apply the detected changes.
-	PolicyId             *string `pulumi:"policyId"`
-	RemoteDiskThroughput *int    `pulumi:"remoteDiskThroughput"`
+	PolicyId *string `pulumi:"policyId"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig       *ClusterProviderConfig `pulumi:"providerConfig"`
+	RemoteDiskThroughput *int                   `pulumi:"remoteDiskThroughput"`
 	// The type of runtime engine to use. If not specified, the runtime engine type is inferred based on the sparkVersion value. Allowed values include: `PHOTON`, `STANDARD`.
 	RuntimeEngine *string `pulumi:"runtimeEngine"`
 	// The optional user name of the user (or group name if `kind` if specified) to assign to an interactive cluster. This field is required when using `dataSecurityMode` set to `SINGLE_USER` or AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
@@ -753,60 +573,15 @@ type ClusterArgs struct {
 	Kind      pulumi.StringPtrInput
 	Libraries ClusterLibraryArrayInput
 	// If true, the provider will not wait for the cluster to reach `RUNNING` state when creating the cluster, allowing cluster creation and library installation to continue asynchronously. Defaults to false (the provider will wait for cluster creation and library installation to succeed).
-	//
-	// The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
-	//
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		smallest, err := databricks.GetNodeType(ctx, &databricks.GetNodeTypeArgs{
-	// 			LocalDisk: pulumi.BoolRef(true),
-	// 		}, nil)
-	// 		if err != nil {
-	// 			return err
-	// 		}
-	// 		latestLts, err := databricks.GetSparkVersion(ctx, &databricks.GetSparkVersionArgs{
-	// 			LongTermSupport: pulumi.BoolRef(true),
-	// 		}, nil)
-	// 		if err != nil {
-	// 			return err
-	// 		}
-	// 		_, err = databricks.NewCluster(ctx, "shared_autoscaling", &databricks.ClusterArgs{
-	// 			ClusterName:            pulumi.String("Shared Autoscaling"),
-	// 			SparkVersion:           pulumi.String(latestLts.Id),
-	// 			NodeTypeId:             pulumi.String(smallest.Id),
-	// 			AutoterminationMinutes: pulumi.Int(20),
-	// 			Autoscale: &databricks.ClusterAutoscaleArgs{
-	// 				MinWorkers: pulumi.Int(1),
-	// 				MaxWorkers: pulumi.Int(50),
-	// 			},
-	// 			SparkConf: pulumi.StringMap{
-	// 				"spark.databricks.io.cache.enabled":          pulumi.String("true"),
-	// 				"spark.databricks.io.cache.maxDiskUsage":     pulumi.String("50g"),
-	// 				"spark.databricks.io.cache.maxMetaDataCache": pulumi.String("1g"),
-	// 			},
-	// 		})
-	// 		if err != nil {
-	// 			return err
-	// 		}
-	// 		return nil
-	// 	})
-	// }
-	// ```
 	NoWait pulumi.BoolPtrInput
 	// Any supported getNodeType id. If `instancePoolId` is specified, this field is not needed.
 	NodeTypeId pulumi.StringPtrInput
 	// Number of worker nodes that this cluster should have. A cluster has one Spark driver and `numWorkers` executors for a total of `numWorkers` + 1 Spark nodes.
 	NumWorkers pulumi.IntPtrInput
 	// Identifier of Cluster Policy to validate cluster and preset certain defaults. *The primary use for cluster policies is to allow users to create policy-scoped clusters via UI rather than sharing configuration for API-created clusters.* For example, when you specify `policyId` of [external metastore](https://docs.databricks.com/administration-guide/clusters/policies.html#external-metastore-policy) policy, you still have to fill in relevant keys for `sparkConf`.  If relevant fields aren't filled in, then it will cause the configuration drift detected on each plan/apply, and Pulumi will try to apply the detected changes.
-	PolicyId             pulumi.StringPtrInput
+	PolicyId pulumi.StringPtrInput
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig       ClusterProviderConfigPtrInput
 	RemoteDiskThroughput pulumi.IntPtrInput
 	// The type of runtime engine to use. If not specified, the runtime engine type is inferred based on the sparkVersion value. Allowed values include: `PHOTON`, `STANDARD`.
 	RuntimeEngine pulumi.StringPtrInput
@@ -1070,56 +845,6 @@ func (o ClusterOutput) Libraries() ClusterLibraryArrayOutput {
 }
 
 // If true, the provider will not wait for the cluster to reach `RUNNING` state when creating the cluster, allowing cluster creation and library installation to continue asynchronously. Defaults to false (the provider will wait for cluster creation and library installation to succeed).
-//
-// The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			smallest, err := databricks.GetNodeType(ctx, &databricks.GetNodeTypeArgs{
-//				LocalDisk: pulumi.BoolRef(true),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			latestLts, err := databricks.GetSparkVersion(ctx, &databricks.GetSparkVersionArgs{
-//				LongTermSupport: pulumi.BoolRef(true),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = databricks.NewCluster(ctx, "shared_autoscaling", &databricks.ClusterArgs{
-//				ClusterName:            pulumi.String("Shared Autoscaling"),
-//				SparkVersion:           pulumi.String(latestLts.Id),
-//				NodeTypeId:             pulumi.String(smallest.Id),
-//				AutoterminationMinutes: pulumi.Int(20),
-//				Autoscale: &databricks.ClusterAutoscaleArgs{
-//					MinWorkers: pulumi.Int(1),
-//					MaxWorkers: pulumi.Int(50),
-//				},
-//				SparkConf: pulumi.StringMap{
-//					"spark.databricks.io.cache.enabled":          pulumi.String("true"),
-//					"spark.databricks.io.cache.maxDiskUsage":     pulumi.String("50g"),
-//					"spark.databricks.io.cache.maxMetaDataCache": pulumi.String("1g"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func (o ClusterOutput) NoWait() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.BoolPtrOutput { return v.NoWait }).(pulumi.BoolPtrOutput)
 }
@@ -1137,6 +862,11 @@ func (o ClusterOutput) NumWorkers() pulumi.IntPtrOutput {
 // Identifier of Cluster Policy to validate cluster and preset certain defaults. *The primary use for cluster policies is to allow users to create policy-scoped clusters via UI rather than sharing configuration for API-created clusters.* For example, when you specify `policyId` of [external metastore](https://docs.databricks.com/administration-guide/clusters/policies.html#external-metastore-policy) policy, you still have to fill in relevant keys for `sparkConf`.  If relevant fields aren't filled in, then it will cause the configuration drift detected on each plan/apply, and Pulumi will try to apply the detected changes.
 func (o ClusterOutput) PolicyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.PolicyId }).(pulumi.StringPtrOutput)
+}
+
+// Configure the provider for management through account provider. This block consists of the following fields:
+func (o ClusterOutput) ProviderConfig() ClusterProviderConfigPtrOutput {
+	return o.ApplyT(func(v *Cluster) ClusterProviderConfigPtrOutput { return v.ProviderConfig }).(ClusterProviderConfigPtrOutput)
 }
 
 func (o ClusterOutput) RemoteDiskThroughput() pulumi.IntPtrOutput {

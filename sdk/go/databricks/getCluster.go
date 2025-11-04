@@ -38,6 +38,8 @@ type LookupClusterArgs struct {
 	ClusterName *string `pulumi:"clusterName"`
 	// cluster ID
 	Id *string `pulumi:"id"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *GetClusterProviderConfig `pulumi:"providerConfig"`
 }
 
 // A collection of values returned by getCluster.
@@ -48,7 +50,8 @@ type LookupClusterResult struct {
 	// Cluster name, which doesn’t have to be unique.
 	ClusterName string `pulumi:"clusterName"`
 	// cluster ID
-	Id string `pulumi:"id"`
+	Id             string                    `pulumi:"id"`
+	ProviderConfig *GetClusterProviderConfig `pulumi:"providerConfig"`
 }
 
 func LookupClusterOutput(ctx *pulumi.Context, args LookupClusterOutputArgs, opts ...pulumi.InvokeOption) LookupClusterResultOutput {
@@ -70,6 +73,8 @@ type LookupClusterOutputArgs struct {
 	ClusterName pulumi.StringPtrInput `pulumi:"clusterName"`
 	// cluster ID
 	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig GetClusterProviderConfigPtrInput `pulumi:"providerConfig"`
 }
 
 func (LookupClusterOutputArgs) ElementType() reflect.Type {
@@ -108,6 +113,10 @@ func (o LookupClusterResultOutput) ClusterName() pulumi.StringOutput {
 // cluster ID
 func (o LookupClusterResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupClusterResultOutput) ProviderConfig() GetClusterProviderConfigPtrOutput {
+	return o.ApplyT(func(v LookupClusterResult) *GetClusterProviderConfig { return v.ProviderConfig }).(GetClusterProviderConfigPtrOutput)
 }
 
 func init() {

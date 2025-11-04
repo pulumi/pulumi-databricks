@@ -4,7 +4,7 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
-import java.lang.String;
+import java.lang.Integer;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -15,24 +15,24 @@ public final class GetOnlineStoresPlainArgs extends com.pulumi.resources.InvokeA
     public static final GetOnlineStoresPlainArgs Empty = new GetOnlineStoresPlainArgs();
 
     /**
-     * Workspace ID of the resource
+     * The maximum number of results to return. Defaults to 100 if not specified
      * 
      */
-    @Import(name="workspaceId")
-    private @Nullable String workspaceId;
+    @Import(name="pageSize")
+    private @Nullable Integer pageSize;
 
     /**
-     * @return Workspace ID of the resource
+     * @return The maximum number of results to return. Defaults to 100 if not specified
      * 
      */
-    public Optional<String> workspaceId() {
-        return Optional.ofNullable(this.workspaceId);
+    public Optional<Integer> pageSize() {
+        return Optional.ofNullable(this.pageSize);
     }
 
     private GetOnlineStoresPlainArgs() {}
 
     private GetOnlineStoresPlainArgs(GetOnlineStoresPlainArgs $) {
-        this.workspaceId = $.workspaceId;
+        this.pageSize = $.pageSize;
     }
 
     public static Builder builder() {
@@ -54,13 +54,13 @@ public final class GetOnlineStoresPlainArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param workspaceId Workspace ID of the resource
+         * @param pageSize The maximum number of results to return. Defaults to 100 if not specified
          * 
          * @return builder
          * 
          */
-        public Builder workspaceId(@Nullable String workspaceId) {
-            $.workspaceId = workspaceId;
+        public Builder pageSize(@Nullable Integer pageSize) {
+            $.pageSize = pageSize;
             return this;
         }
 

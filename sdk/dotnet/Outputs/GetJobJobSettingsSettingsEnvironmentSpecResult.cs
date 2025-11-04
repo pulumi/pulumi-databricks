@@ -16,7 +16,7 @@ namespace Pulumi.Databricks.Outputs
         public readonly string? Client;
         public readonly ImmutableArray<string> Dependencies;
         public readonly string? EnvironmentVersion;
-        public readonly ImmutableArray<string> JarDependencies;
+        public readonly ImmutableArray<string> JavaDependencies;
 
         [OutputConstructor]
         private GetJobJobSettingsSettingsEnvironmentSpecResult(
@@ -26,12 +26,12 @@ namespace Pulumi.Databricks.Outputs
 
             string? environmentVersion,
 
-            ImmutableArray<string> jarDependencies)
+            ImmutableArray<string> javaDependencies)
         {
             Client = client;
             Dependencies = dependencies;
             EnvironmentVersion = environmentVersion;
-            JarDependencies = jarDependencies;
+            JavaDependencies = javaDependencies;
         }
     }
 }

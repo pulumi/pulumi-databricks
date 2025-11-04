@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class QualityMonitorDataClassificationConfig {
+    /**
+     * @return Whether to enable data classification
+     * 
+     */
     private @Nullable Boolean enabled;
 
     private QualityMonitorDataClassificationConfig() {}
+    /**
+     * @return Whether to enable data classification
+     * 
+     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }

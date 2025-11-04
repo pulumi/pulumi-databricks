@@ -5,6 +5,7 @@ package com.pulumi.databricks;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.AppProviderConfigArgs;
 import com.pulumi.databricks.inputs.AppResourceArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -31,6 +32,21 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> budgetPolicyId() {
         return Optional.ofNullable(this.budgetPolicyId);
+    }
+
+    /**
+     * A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`, `LIQUID`.
+     * 
+     */
+    @Import(name="computeSize")
+    private @Nullable Output<String> computeSize;
+
+    /**
+     * @return A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`, `LIQUID`.
+     * 
+     */
+    public Optional<Output<String>> computeSize() {
+        return Optional.ofNullable(this.computeSize);
     }
 
     /**
@@ -70,6 +86,13 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.noCompute);
     }
 
+    @Import(name="providerConfig")
+    private @Nullable Output<AppProviderConfigArgs> providerConfig;
+
+    public Optional<Output<AppProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     /**
      * A list of resources that the app have access to.
      * 
@@ -104,9 +127,11 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
 
     private AppArgs(AppArgs $) {
         this.budgetPolicyId = $.budgetPolicyId;
+        this.computeSize = $.computeSize;
         this.description = $.description;
         this.name = $.name;
         this.noCompute = $.noCompute;
+        this.providerConfig = $.providerConfig;
         this.resources = $.resources;
         this.userApiScopes = $.userApiScopes;
     }
@@ -148,6 +173,27 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder budgetPolicyId(String budgetPolicyId) {
             return budgetPolicyId(Output.of(budgetPolicyId));
+        }
+
+        /**
+         * @param computeSize A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`, `LIQUID`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder computeSize(@Nullable Output<String> computeSize) {
+            $.computeSize = computeSize;
+            return this;
+        }
+
+        /**
+         * @param computeSize A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`, `LIQUID`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder computeSize(String computeSize) {
+            return computeSize(Output.of(computeSize));
         }
 
         /**
@@ -199,6 +245,15 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder noCompute(Boolean noCompute) {
             return noCompute(Output.of(noCompute));
+        }
+
+        public Builder providerConfig(@Nullable Output<AppProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        public Builder providerConfig(AppProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         /**

@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskLibraryCranArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskLibraryMavenArgs;
+import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskLibraryProviderConfigArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskLibraryPypiArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -58,6 +59,13 @@ public final class GetJobJobSettingsSettingsTaskLibraryArgs extends com.pulumi.r
         return Optional.ofNullable(this.maven);
     }
 
+    @Import(name="providerConfig")
+    private @Nullable Output<GetJobJobSettingsSettingsTaskLibraryProviderConfigArgs> providerConfig;
+
+    public Optional<Output<GetJobJobSettingsSettingsTaskLibraryProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     @Import(name="pypi")
     private @Nullable Output<GetJobJobSettingsSettingsTaskLibraryPypiArgs> pypi;
 
@@ -86,6 +94,7 @@ public final class GetJobJobSettingsSettingsTaskLibraryArgs extends com.pulumi.r
         this.egg = $.egg;
         this.jar = $.jar;
         this.maven = $.maven;
+        this.providerConfig = $.providerConfig;
         this.pypi = $.pypi;
         this.requirements = $.requirements;
         this.whl = $.whl;
@@ -159,6 +168,15 @@ public final class GetJobJobSettingsSettingsTaskLibraryArgs extends com.pulumi.r
 
         public Builder maven(GetJobJobSettingsSettingsTaskLibraryMavenArgs maven) {
             return maven(Output.of(maven));
+        }
+
+        public Builder providerConfig(@Nullable Output<GetJobJobSettingsSettingsTaskLibraryProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        public Builder providerConfig(GetJobJobSettingsSettingsTaskLibraryProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         public Builder pypi(@Nullable Output<GetJobJobSettingsSettingsTaskLibraryPypiArgs> pypi) {

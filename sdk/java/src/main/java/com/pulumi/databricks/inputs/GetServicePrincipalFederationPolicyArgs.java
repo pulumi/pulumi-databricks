@@ -5,12 +5,10 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.databricks.inputs.GetServicePrincipalFederationPolicyOidcPolicyArgs;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GetServicePrincipalFederationPolicyArgs extends com.pulumi.resources.InvokeArgs {
@@ -18,70 +16,38 @@ public final class GetServicePrincipalFederationPolicyArgs extends com.pulumi.re
     public static final GetServicePrincipalFederationPolicyArgs Empty = new GetServicePrincipalFederationPolicyArgs();
 
     /**
-     * (string) - Description of the federation policy
+     * The ID of the federation policy. Output only
      * 
      */
-    @Import(name="description")
-    private @Nullable Output<String> description;
+    @Import(name="policyId", required=true)
+    private Output<String> policyId;
 
     /**
-     * @return (string) - Description of the federation policy
+     * @return The ID of the federation policy. Output only
      * 
      */
-    public Optional<Output<String>> description() {
-        return Optional.ofNullable(this.description);
+    public Output<String> policyId() {
+        return this.policyId;
     }
 
     /**
-     * (OidcFederationPolicy)
+     * The service principal ID that this federation policy applies to. Output only. Only set for service principal federation policies
      * 
      */
-    @Import(name="oidcPolicy")
-    private @Nullable Output<GetServicePrincipalFederationPolicyOidcPolicyArgs> oidcPolicy;
+    @Import(name="servicePrincipalId", required=true)
+    private Output<Integer> servicePrincipalId;
 
     /**
-     * @return (OidcFederationPolicy)
+     * @return The service principal ID that this federation policy applies to. Output only. Only set for service principal federation policies
      * 
      */
-    public Optional<Output<GetServicePrincipalFederationPolicyOidcPolicyArgs>> oidcPolicy() {
-        return Optional.ofNullable(this.oidcPolicy);
-    }
-
-    /**
-     * The ID of the federation policy
-     * 
-     */
-    @Import(name="policyId")
-    private @Nullable Output<String> policyId;
-
-    /**
-     * @return The ID of the federation policy
-     * 
-     */
-    public Optional<Output<String>> policyId() {
-        return Optional.ofNullable(this.policyId);
-    }
-
-    /**
-     * The service principal ID that this federation policy applies to. Only set for service principal federation policies
-     * 
-     */
-    @Import(name="servicePrincipalId")
-    private @Nullable Output<Integer> servicePrincipalId;
-
-    /**
-     * @return The service principal ID that this federation policy applies to. Only set for service principal federation policies
-     * 
-     */
-    public Optional<Output<Integer>> servicePrincipalId() {
-        return Optional.ofNullable(this.servicePrincipalId);
+    public Output<Integer> servicePrincipalId() {
+        return this.servicePrincipalId;
     }
 
     private GetServicePrincipalFederationPolicyArgs() {}
 
     private GetServicePrincipalFederationPolicyArgs(GetServicePrincipalFederationPolicyArgs $) {
-        this.description = $.description;
-        this.oidcPolicy = $.oidcPolicy;
         this.policyId = $.policyId;
         this.servicePrincipalId = $.servicePrincipalId;
     }
@@ -105,60 +71,18 @@ public final class GetServicePrincipalFederationPolicyArgs extends com.pulumi.re
         }
 
         /**
-         * @param description (string) - Description of the federation policy
+         * @param policyId The ID of the federation policy. Output only
          * 
          * @return builder
          * 
          */
-        public Builder description(@Nullable Output<String> description) {
-            $.description = description;
-            return this;
-        }
-
-        /**
-         * @param description (string) - Description of the federation policy
-         * 
-         * @return builder
-         * 
-         */
-        public Builder description(String description) {
-            return description(Output.of(description));
-        }
-
-        /**
-         * @param oidcPolicy (OidcFederationPolicy)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder oidcPolicy(@Nullable Output<GetServicePrincipalFederationPolicyOidcPolicyArgs> oidcPolicy) {
-            $.oidcPolicy = oidcPolicy;
-            return this;
-        }
-
-        /**
-         * @param oidcPolicy (OidcFederationPolicy)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder oidcPolicy(GetServicePrincipalFederationPolicyOidcPolicyArgs oidcPolicy) {
-            return oidcPolicy(Output.of(oidcPolicy));
-        }
-
-        /**
-         * @param policyId The ID of the federation policy
-         * 
-         * @return builder
-         * 
-         */
-        public Builder policyId(@Nullable Output<String> policyId) {
+        public Builder policyId(Output<String> policyId) {
             $.policyId = policyId;
             return this;
         }
 
         /**
-         * @param policyId The ID of the federation policy
+         * @param policyId The ID of the federation policy. Output only
          * 
          * @return builder
          * 
@@ -168,18 +92,18 @@ public final class GetServicePrincipalFederationPolicyArgs extends com.pulumi.re
         }
 
         /**
-         * @param servicePrincipalId The service principal ID that this federation policy applies to. Only set for service principal federation policies
+         * @param servicePrincipalId The service principal ID that this federation policy applies to. Output only. Only set for service principal federation policies
          * 
          * @return builder
          * 
          */
-        public Builder servicePrincipalId(@Nullable Output<Integer> servicePrincipalId) {
+        public Builder servicePrincipalId(Output<Integer> servicePrincipalId) {
             $.servicePrincipalId = servicePrincipalId;
             return this;
         }
 
         /**
-         * @param servicePrincipalId The service principal ID that this federation policy applies to. Only set for service principal federation policies
+         * @param servicePrincipalId The service principal ID that this federation policy applies to. Output only. Only set for service principal federation policies
          * 
          * @return builder
          * 
@@ -189,6 +113,12 @@ public final class GetServicePrincipalFederationPolicyArgs extends com.pulumi.re
         }
 
         public GetServicePrincipalFederationPolicyArgs build() {
+            if ($.policyId == null) {
+                throw new MissingRequiredPropertyException("GetServicePrincipalFederationPolicyArgs", "policyId");
+            }
+            if ($.servicePrincipalId == null) {
+                throw new MissingRequiredPropertyException("GetServicePrincipalFederationPolicyArgs", "servicePrincipalId");
+            }
             return $;
         }
     }

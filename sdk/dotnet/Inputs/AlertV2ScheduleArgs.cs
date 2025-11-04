@@ -22,16 +22,16 @@ namespace Pulumi.Databricks.Inputs
         /// A cron expression using quartz syntax that specifies the schedule for this pipeline.
         /// Should use the quartz format described here: http://www.quartz-scheduler.org/documentation/quartz-2.1.7/tutorials/tutorial-lesson-06.html
         /// </summary>
-        [Input("quartzCronSchedule")]
-        public Input<string>? QuartzCronSchedule { get; set; }
+        [Input("quartzCronSchedule", required: true)]
+        public Input<string> QuartzCronSchedule { get; set; } = null!;
 
         /// <summary>
         /// A Java timezone id. The schedule will be resolved using this timezone.
         /// This will be combined with the QuartzCronSchedule to determine the schedule.
         /// See https://docs.databricks.com/sql/language-manual/sql-ref-syntax-aux-conf-mgmt-set-timezone.html for details
         /// </summary>
-        [Input("timezoneId")]
-        public Input<string>? TimezoneId { get; set; }
+        [Input("timezoneId", required: true)]
+        public Input<string> TimezoneId { get; set; } = null!;
 
         public AlertV2ScheduleArgs()
         {

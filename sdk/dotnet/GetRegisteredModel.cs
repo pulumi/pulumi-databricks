@@ -147,6 +147,9 @@ namespace Pulumi.Databricks
             set => _modelInfos = value;
         }
 
+        [Input("providerConfig")]
+        public Inputs.GetRegisteredModelProviderConfigArgs? ProviderConfig { get; set; }
+
         public GetRegisteredModelArgs()
         {
         }
@@ -185,6 +188,9 @@ namespace Pulumi.Databricks
             set => _modelInfos = value;
         }
 
+        [Input("providerConfig")]
+        public Input<Inputs.GetRegisteredModelProviderConfigInputArgs>? ProviderConfig { get; set; }
+
         public GetRegisteredModelInvokeArgs()
         {
         }
@@ -209,6 +215,7 @@ namespace Pulumi.Databricks
         /// block with information about the model in Unity Catalog:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetRegisteredModelModelInfoResult> ModelInfos;
+        public readonly Outputs.GetRegisteredModelProviderConfigResult? ProviderConfig;
 
         [OutputConstructor]
         private GetRegisteredModelResult(
@@ -220,13 +227,16 @@ namespace Pulumi.Databricks
 
             bool? includeBrowse,
 
-            ImmutableArray<Outputs.GetRegisteredModelModelInfoResult> modelInfos)
+            ImmutableArray<Outputs.GetRegisteredModelModelInfoResult> modelInfos,
+
+            Outputs.GetRegisteredModelProviderConfigResult? providerConfig)
         {
             FullName = fullName;
             Id = id;
             IncludeAliases = includeAliases;
             IncludeBrowse = includeBrowse;
             ModelInfos = modelInfos;
+            ProviderConfig = providerConfig;
         }
     }
 }

@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -35,6 +37,7 @@ export function getSchemas(args: GetSchemasArgs, opts?: pulumi.InvokeOptions): P
     return pulumi.runtime.invoke("databricks:index/getSchemas:getSchemas", {
         "catalogName": args.catalogName,
         "ids": args.ids,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -50,6 +53,10 @@ export interface GetSchemasArgs {
      * set of databricks.Schema full names: *`catalog`.`schema`*
      */
     ids?: string[];
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: inputs.GetSchemasProviderConfig;
 }
 
 /**
@@ -65,6 +72,7 @@ export interface GetSchemasResult {
      * set of databricks.Schema full names: *`catalog`.`schema`*
      */
     readonly ids: string[];
+    readonly providerConfig?: outputs.GetSchemasProviderConfig;
 }
 /**
  * Retrieves a list of databricks.Schema ids, that were created by Pulumi or manually, so that special handling could be applied.
@@ -97,6 +105,7 @@ export function getSchemasOutput(args: GetSchemasOutputArgs, opts?: pulumi.Invok
     return pulumi.runtime.invokeOutput("databricks:index/getSchemas:getSchemas", {
         "catalogName": args.catalogName,
         "ids": args.ids,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -112,4 +121,8 @@ export interface GetSchemasOutputArgs {
      * set of databricks.Schema full names: *`catalog`.`schema`*
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.GetSchemasProviderConfigArgs>;
 }

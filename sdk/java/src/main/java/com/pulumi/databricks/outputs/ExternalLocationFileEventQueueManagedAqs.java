@@ -19,7 +19,7 @@ public final class ExternalLocationFileEventQueueManagedAqs {
     private @Nullable String managedResourceId;
     private @Nullable String queueUrl;
     /**
-     * @return The Azure resource group.
+     * @return The name of the Azure resource group.
      * 
      */
     private String resourceGroup;
@@ -41,7 +41,7 @@ public final class ExternalLocationFileEventQueueManagedAqs {
         return Optional.ofNullable(this.queueUrl);
     }
     /**
-     * @return The Azure resource group.
+     * @return The name of the Azure resource group.
      * 
      */
     public String resourceGroup() {

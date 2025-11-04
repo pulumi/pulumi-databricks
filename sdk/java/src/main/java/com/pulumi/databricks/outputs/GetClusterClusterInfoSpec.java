@@ -13,6 +13,7 @@ import com.pulumi.databricks.outputs.GetClusterClusterInfoSpecDockerImage;
 import com.pulumi.databricks.outputs.GetClusterClusterInfoSpecGcpAttributes;
 import com.pulumi.databricks.outputs.GetClusterClusterInfoSpecInitScript;
 import com.pulumi.databricks.outputs.GetClusterClusterInfoSpecLibrary;
+import com.pulumi.databricks.outputs.GetClusterClusterInfoSpecProviderConfig;
 import com.pulumi.databricks.outputs.GetClusterClusterInfoSpecWorkloadType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
@@ -99,6 +100,11 @@ public final class GetClusterClusterInfoSpec {
      * 
      */
     private @Nullable String policyId;
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    private @Nullable GetClusterClusterInfoSpecProviderConfig providerConfig;
     private @Nullable Integer remoteDiskThroughput;
     /**
      * @return The type of runtime of the cluster
@@ -258,6 +264,13 @@ public final class GetClusterClusterInfoSpec {
     public Optional<String> policyId() {
         return Optional.ofNullable(this.policyId);
     }
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Optional<GetClusterClusterInfoSpecProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
     public Optional<Integer> remoteDiskThroughput() {
         return Optional.ofNullable(this.remoteDiskThroughput);
     }
@@ -347,6 +360,7 @@ public final class GetClusterClusterInfoSpec {
         private String nodeTypeId;
         private @Nullable Integer numWorkers;
         private @Nullable String policyId;
+        private @Nullable GetClusterClusterInfoSpecProviderConfig providerConfig;
         private @Nullable Integer remoteDiskThroughput;
         private @Nullable String runtimeEngine;
         private @Nullable String singleUserName;
@@ -385,6 +399,7 @@ public final class GetClusterClusterInfoSpec {
     	      this.nodeTypeId = defaults.nodeTypeId;
     	      this.numWorkers = defaults.numWorkers;
     	      this.policyId = defaults.policyId;
+    	      this.providerConfig = defaults.providerConfig;
     	      this.remoteDiskThroughput = defaults.remoteDiskThroughput;
     	      this.runtimeEngine = defaults.runtimeEngine;
     	      this.singleUserName = defaults.singleUserName;
@@ -569,6 +584,12 @@ public final class GetClusterClusterInfoSpec {
             return this;
         }
         @CustomType.Setter
+        public Builder providerConfig(@Nullable GetClusterClusterInfoSpecProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder remoteDiskThroughput(@Nullable Integer remoteDiskThroughput) {
 
             this.remoteDiskThroughput = remoteDiskThroughput;
@@ -658,6 +679,7 @@ public final class GetClusterClusterInfoSpec {
             _resultValue.nodeTypeId = nodeTypeId;
             _resultValue.numWorkers = numWorkers;
             _resultValue.policyId = policyId;
+            _resultValue.providerConfig = providerConfig;
             _resultValue.remoteDiskThroughput = remoteDiskThroughput;
             _resultValue.runtimeEngine = runtimeEngine;
             _resultValue.singleUserName = singleUserName;

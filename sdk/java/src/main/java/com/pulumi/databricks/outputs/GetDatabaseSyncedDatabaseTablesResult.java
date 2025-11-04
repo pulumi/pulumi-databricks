@@ -6,6 +6,7 @@ package com.pulumi.databricks.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetDatabaseSyncedDatabaseTablesSyncedTable;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -19,8 +20,9 @@ public final class GetDatabaseSyncedDatabaseTablesResult {
      * 
      */
     private String id;
+    private String instanceName;
+    private @Nullable Integer pageSize;
     private List<GetDatabaseSyncedDatabaseTablesSyncedTable> syncedTables;
-    private @Nullable String workspaceId;
 
     private GetDatabaseSyncedDatabaseTablesResult() {}
     /**
@@ -30,11 +32,14 @@ public final class GetDatabaseSyncedDatabaseTablesResult {
     public String id() {
         return this.id;
     }
+    public String instanceName() {
+        return this.instanceName;
+    }
+    public Optional<Integer> pageSize() {
+        return Optional.ofNullable(this.pageSize);
+    }
     public List<GetDatabaseSyncedDatabaseTablesSyncedTable> syncedTables() {
         return this.syncedTables;
-    }
-    public Optional<String> workspaceId() {
-        return Optional.ofNullable(this.workspaceId);
     }
 
     public static Builder builder() {
@@ -47,14 +52,16 @@ public final class GetDatabaseSyncedDatabaseTablesResult {
     @CustomType.Builder
     public static final class Builder {
         private String id;
+        private String instanceName;
+        private @Nullable Integer pageSize;
         private List<GetDatabaseSyncedDatabaseTablesSyncedTable> syncedTables;
-        private @Nullable String workspaceId;
         public Builder() {}
         public Builder(GetDatabaseSyncedDatabaseTablesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
+    	      this.instanceName = defaults.instanceName;
+    	      this.pageSize = defaults.pageSize;
     	      this.syncedTables = defaults.syncedTables;
-    	      this.workspaceId = defaults.workspaceId;
         }
 
         @CustomType.Setter
@@ -63,6 +70,20 @@ public final class GetDatabaseSyncedDatabaseTablesResult {
               throw new MissingRequiredPropertyException("GetDatabaseSyncedDatabaseTablesResult", "id");
             }
             this.id = id;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder instanceName(String instanceName) {
+            if (instanceName == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseSyncedDatabaseTablesResult", "instanceName");
+            }
+            this.instanceName = instanceName;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder pageSize(@Nullable Integer pageSize) {
+
+            this.pageSize = pageSize;
             return this;
         }
         @CustomType.Setter
@@ -76,17 +97,12 @@ public final class GetDatabaseSyncedDatabaseTablesResult {
         public Builder syncedTables(GetDatabaseSyncedDatabaseTablesSyncedTable... syncedTables) {
             return syncedTables(List.of(syncedTables));
         }
-        @CustomType.Setter
-        public Builder workspaceId(@Nullable String workspaceId) {
-
-            this.workspaceId = workspaceId;
-            return this;
-        }
         public GetDatabaseSyncedDatabaseTablesResult build() {
             final var _resultValue = new GetDatabaseSyncedDatabaseTablesResult();
             _resultValue.id = id;
+            _resultValue.instanceName = instanceName;
+            _resultValue.pageSize = pageSize;
             _resultValue.syncedTables = syncedTables;
-            _resultValue.workspaceId = workspaceId;
             return _resultValue;
         }
     }

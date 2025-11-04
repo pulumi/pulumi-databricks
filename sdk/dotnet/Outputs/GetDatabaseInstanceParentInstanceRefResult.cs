@@ -24,10 +24,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string? BranchTime;
         /// <summary>
-        /// (string) - xref AIP-129. `Lsn` is owned by the client, while `EffectiveLsn` is owned by the server.
-        /// `Lsn` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-        /// `EffectiveLsn` on the other hand will always bet set in all response messages (Create/Update/Get/List).
-        /// For a parent ref instance, this is the LSN on the parent instance from which the
+        /// (string) - For a parent ref instance, this is the LSN on the parent instance from which the
         /// instance was created.
         /// For a child ref instance, this is the LSN on the instance from which the child instance
         /// was created
@@ -36,7 +33,7 @@ namespace Pulumi.Databricks.Outputs
         /// <summary>
         /// (string) - User-specified WAL LSN of the ref database instance.
         /// </summary>
-        public readonly string? Lsn;
+        public readonly string Lsn;
         /// <summary>
         /// The name of the instance. This is the unique identifier for the instance
         /// </summary>
@@ -52,7 +49,7 @@ namespace Pulumi.Databricks.Outputs
 
             string effectiveLsn,
 
-            string? lsn,
+            string lsn,
 
             string? name,
 

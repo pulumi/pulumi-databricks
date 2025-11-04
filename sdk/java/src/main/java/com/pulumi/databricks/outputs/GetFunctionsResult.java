@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetFunctionsFunction;
+import com.pulumi.databricks.outputs.GetFunctionsProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
@@ -31,6 +32,7 @@ public final class GetFunctionsResult {
      */
     private String id;
     private @Nullable Boolean includeBrowse;
+    private @Nullable GetFunctionsProviderConfig providerConfig;
     /**
      * @return Name of parent schema relative to its parent catalog.
      * 
@@ -62,6 +64,9 @@ public final class GetFunctionsResult {
     public Optional<Boolean> includeBrowse() {
         return Optional.ofNullable(this.includeBrowse);
     }
+    public Optional<GetFunctionsProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
     /**
      * @return Name of parent schema relative to its parent catalog.
      * 
@@ -83,6 +88,7 @@ public final class GetFunctionsResult {
         private List<GetFunctionsFunction> functions;
         private String id;
         private @Nullable Boolean includeBrowse;
+        private @Nullable GetFunctionsProviderConfig providerConfig;
         private String schemaName;
         public Builder() {}
         public Builder(GetFunctionsResult defaults) {
@@ -91,6 +97,7 @@ public final class GetFunctionsResult {
     	      this.functions = defaults.functions;
     	      this.id = defaults.id;
     	      this.includeBrowse = defaults.includeBrowse;
+    	      this.providerConfig = defaults.providerConfig;
     	      this.schemaName = defaults.schemaName;
         }
 
@@ -128,6 +135,12 @@ public final class GetFunctionsResult {
             return this;
         }
         @CustomType.Setter
+        public Builder providerConfig(@Nullable GetFunctionsProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder schemaName(String schemaName) {
             if (schemaName == null) {
               throw new MissingRequiredPropertyException("GetFunctionsResult", "schemaName");
@@ -141,6 +154,7 @@ public final class GetFunctionsResult {
             _resultValue.functions = functions;
             _resultValue.id = id;
             _resultValue.includeBrowse = includeBrowse;
+            _resultValue.providerConfig = providerConfig;
             _resultValue.schemaName = schemaName;
             return _resultValue;
         }

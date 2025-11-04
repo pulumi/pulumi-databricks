@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetDirectoryResult',
@@ -26,7 +28,7 @@ class GetDirectoryResult:
     """
     A collection of values returned by getDirectory.
     """
-    def __init__(__self__, id=None, object_id=None, path=None, workspace_path=None):
+    def __init__(__self__, id=None, object_id=None, path=None, provider_config=None, workspace_path=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -36,6 +38,9 @@ class GetDirectoryResult:
         if path and not isinstance(path, str):
             raise TypeError("Expected argument 'path' to be a str")
         pulumi.set(__self__, "path", path)
+        if provider_config and not isinstance(provider_config, dict):
+            raise TypeError("Expected argument 'provider_config' to be a dict")
+        pulumi.set(__self__, "provider_config", provider_config)
         if workspace_path and not isinstance(workspace_path, str):
             raise TypeError("Expected argument 'workspace_path' to be a str")
         pulumi.set(__self__, "workspace_path", workspace_path)
@@ -59,6 +64,11 @@ class GetDirectoryResult:
         return pulumi.get(self, "path")
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional['outputs.GetDirectoryProviderConfigResult']:
+        return pulumi.get(self, "provider_config")
+
+    @_builtins.property
     @pulumi.getter(name="workspacePath")
     def workspace_path(self) -> _builtins.str:
         """
@@ -76,12 +86,14 @@ class AwaitableGetDirectoryResult(GetDirectoryResult):
             id=self.id,
             object_id=self.object_id,
             path=self.path,
+            provider_config=self.provider_config,
             workspace_path=self.workspace_path)
 
 
 def get_directory(id: Optional[_builtins.str] = None,
                   object_id: Optional[_builtins.int] = None,
                   path: Optional[_builtins.str] = None,
+                  provider_config: Optional[Union['GetDirectoryProviderConfigArgs', 'GetDirectoryProviderConfigArgsDict']] = None,
                   workspace_path: Optional[_builtins.str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDirectoryResult:
     """
@@ -101,12 +113,14 @@ def get_directory(id: Optional[_builtins.str] = None,
 
     :param _builtins.int object_id: directory object ID
     :param _builtins.str path: Path to a directory in the workspace
+    :param Union['GetDirectoryProviderConfigArgs', 'GetDirectoryProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     :param _builtins.str workspace_path: path on Workspace File System (WSFS) in form of `/Workspace` + `path`
     """
     __args__ = dict()
     __args__['id'] = id
     __args__['objectId'] = object_id
     __args__['path'] = path
+    __args__['providerConfig'] = provider_config
     __args__['workspacePath'] = workspace_path
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getDirectory:getDirectory', __args__, opts=opts, typ=GetDirectoryResult).value
@@ -115,10 +129,12 @@ def get_directory(id: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         object_id=pulumi.get(__ret__, 'object_id'),
         path=pulumi.get(__ret__, 'path'),
+        provider_config=pulumi.get(__ret__, 'provider_config'),
         workspace_path=pulumi.get(__ret__, 'workspace_path'))
 def get_directory_output(id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                          object_id: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
                          path: Optional[pulumi.Input[_builtins.str]] = None,
+                         provider_config: Optional[pulumi.Input[Optional[Union['GetDirectoryProviderConfigArgs', 'GetDirectoryProviderConfigArgsDict']]]] = None,
                          workspace_path: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDirectoryResult]:
     """
@@ -138,12 +154,14 @@ def get_directory_output(id: Optional[pulumi.Input[Optional[_builtins.str]]] = N
 
     :param _builtins.int object_id: directory object ID
     :param _builtins.str path: Path to a directory in the workspace
+    :param Union['GetDirectoryProviderConfigArgs', 'GetDirectoryProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     :param _builtins.str workspace_path: path on Workspace File System (WSFS) in form of `/Workspace` + `path`
     """
     __args__ = dict()
     __args__['id'] = id
     __args__['objectId'] = object_id
     __args__['path'] = path
+    __args__['providerConfig'] = provider_config
     __args__['workspacePath'] = workspace_path
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getDirectory:getDirectory', __args__, opts=opts, typ=GetDirectoryResult)
@@ -151,4 +169,5 @@ def get_directory_output(id: Optional[pulumi.Input[Optional[_builtins.str]]] = N
         id=pulumi.get(__response__, 'id'),
         object_id=pulumi.get(__response__, 'object_id'),
         path=pulumi.get(__response__, 'path'),
+        provider_config=pulumi.get(__response__, 'provider_config'),
         workspace_path=pulumi.get(__response__, 'workspace_path')))

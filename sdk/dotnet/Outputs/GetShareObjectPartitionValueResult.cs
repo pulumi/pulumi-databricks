@@ -16,16 +16,16 @@ namespace Pulumi.Databricks.Outputs
         /// <summary>
         /// The name of the share
         /// </summary>
-        public readonly string Name;
-        public readonly string Op;
+        public readonly string? Name;
+        public readonly string? Op;
         public readonly string? RecipientPropertyKey;
         public readonly string? Value;
 
         [OutputConstructor]
         private GetShareObjectPartitionValueResult(
-            string name,
+            string? name,
 
-            string op,
+            string? op,
 
             string? recipientPropertyKey,
 

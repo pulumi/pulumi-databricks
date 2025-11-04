@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetZonesProviderConfigArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -47,6 +48,21 @@ public final class GetZonesArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<GetZonesProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Optional<Output<GetZonesProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
+    /**
      * This is a list of all the zones available for your subnets in your Databricks workspace.
      * 
      */
@@ -66,6 +82,7 @@ public final class GetZonesArgs extends com.pulumi.resources.InvokeArgs {
     private GetZonesArgs(GetZonesArgs $) {
         this.defaultZone = $.defaultZone;
         this.id = $.id;
+        this.providerConfig = $.providerConfig;
         this.zones = $.zones;
     }
 
@@ -127,6 +144,27 @@ public final class GetZonesArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder id(String id) {
             return id(Output.of(id));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<GetZonesProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(GetZonesProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         /**

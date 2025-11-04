@@ -17,6 +17,8 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * 
  * Lakebase Synced Database Tables are Postgres tables automatically synced from a source table inside Unity Catalog.
  * They can be used to serve realtime queries without the operational overhead of managing ETL pipelines.
  * 
@@ -38,6 +40,15 @@ import javax.annotation.Nullable;
  * This example creates two Synced Database Tables. The first one specifies a new pipeline spec,
  * which generates a new pipeline. The second one utilizes the pipeline ID of the first table.
  * 
+ * ### Creating a Synced Database Table with a custom Jobs schedule
+ * 
+ * This example creates a Synced Database Table and customizes the pipeline schedule. It assumes you already have
+ * 
+ * - A database instance named `&#34;my-database-instance&#34;`
+ * - A standard catalog named `&#34;myStandardCatalog&#34;`
+ * - A schema in the standard catalog named `&#34;default&#34;`
+ * - A source delta table named `&#34;source_delta.schema.customer&#34;` with the primary key `&#34;cCustkey&#34;`
+ * 
  * ## Import
  * 
  * As of Pulumi v1.5, resources can be imported through configuration.
@@ -55,7 +66,7 @@ import javax.annotation.Nullable;
  * If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
  * 
  * ```sh
- * $ pulumi import databricks:index/databaseSyncedDatabaseTable:DatabaseSyncedDatabaseTable databricks_database_synced_database_table &#34;name&#34;
+ * $ pulumi import databricks:index/databaseSyncedDatabaseTable:DatabaseSyncedDatabaseTable this &#34;name&#34;
  * ```
  * 
  */
@@ -194,20 +205,6 @@ public class DatabaseSyncedDatabaseTable extends com.pulumi.resources.CustomReso
      */
     public Output<String> unityCatalogProvisioningState() {
         return this.unityCatalogProvisioningState;
-    }
-    /**
-     * Workspace ID of the resource
-     * 
-     */
-    @Export(name="workspaceId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> workspaceId;
-
-    /**
-     * @return Workspace ID of the resource
-     * 
-     */
-    public Output<Optional<String>> workspaceId() {
-        return Codegen.optional(this.workspaceId);
     }
 
     /**

@@ -11,6 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+//
 // This data source can be used to get a single Database Instance.
 //
 // ## Example Usage
@@ -52,36 +54,14 @@ func LookupDatabaseInstance(ctx *pulumi.Context, args *LookupDatabaseInstanceArg
 
 // A collection of arguments for invoking getDatabaseInstance.
 type LookupDatabaseInstanceArgs struct {
-	// (string) - The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
-	Capacity *string `pulumi:"capacity"`
-	// (boolean) - Whether the instance has PG native password login enabled. Defaults to true
-	EnablePgNativeLogin *bool `pulumi:"enablePgNativeLogin"`
-	// (boolean) - Whether to enable secondaries to serve read-only traffic. Defaults to false
-	EnableReadableSecondaries *bool `pulumi:"enableReadableSecondaries"`
 	// The name of the instance. This is the unique identifier for the instance
 	Name string `pulumi:"name"`
-	// (integer) - The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
-	// 1 primary and 0 secondaries
-	NodeCount *int `pulumi:"nodeCount"`
-	// (DatabaseInstanceRef) - The ref of the parent instance. This is only available if the instance is
-	// child instance.
-	// Input: For specifying the parent instance to create a child instance. Optional.
-	// Output: Only populated if provided as input to create a child instance
-	ParentInstanceRef *GetDatabaseInstanceParentInstanceRef `pulumi:"parentInstanceRef"`
-	// (integer) - The retention window for the instance. This is the time window in days
-	// for which the historical data is retained. The default value is 7 days.
-	// Valid values are 2 to 35 days
-	RetentionWindowInDays *int `pulumi:"retentionWindowInDays"`
-	// (boolean) - Whether the instance is stopped
-	Stopped *bool `pulumi:"stopped"`
-	// Workspace ID of the resource
-	WorkspaceId *string `pulumi:"workspaceId"`
 }
 
 // A collection of values returned by getDatabaseInstance.
 type LookupDatabaseInstanceResult struct {
 	// (string) - The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
-	Capacity *string `pulumi:"capacity"`
+	Capacity string `pulumi:"capacity"`
 	// (list of DatabaseInstanceRef) - The refs of the child instances. This is only available if the instance is
 	// parent instance
 	ChildInstanceRefs []GetDatabaseInstanceChildInstanceRef `pulumi:"childInstanceRefs"`
@@ -89,42 +69,42 @@ type LookupDatabaseInstanceResult struct {
 	CreationTime string `pulumi:"creationTime"`
 	// (string) - The email of the creator of the instance
 	Creator string `pulumi:"creator"`
-	// (boolean) - xref AIP-129. `enablePgNativeLogin` is owned by the client, while `effectiveEnablePgNativeLogin` is owned by the server.
-	// `enablePgNativeLogin` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-	// `effectiveEnablePgNativeLogin` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+	// (list of CustomTag) - Custom tags associated with the instance. This field is only included on create and update responses
+	CustomTags []GetDatabaseInstanceCustomTag `pulumi:"customTags"`
+	// (string, deprecated) - Deprecated. The sku of the instance; this field will always match the value of capacity
+	EffectiveCapacity string `pulumi:"effectiveCapacity"`
+	// (list of CustomTag) - The recorded custom tags associated with the instance
+	EffectiveCustomTags []GetDatabaseInstanceEffectiveCustomTag `pulumi:"effectiveCustomTags"`
+	// (boolean) - Whether the instance has PG native password login enabled
 	EffectiveEnablePgNativeLogin bool `pulumi:"effectiveEnablePgNativeLogin"`
-	// (boolean) - xref AIP-129. `enableReadableSecondaries` is owned by the client, while `effectiveEnableReadableSecondaries` is owned by the server.
-	// `enableReadableSecondaries` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-	// `effectiveEnableReadableSecondaries` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+	// (boolean) - Whether secondaries serving read-only traffic are enabled. Defaults to false
 	EffectiveEnableReadableSecondaries bool `pulumi:"effectiveEnableReadableSecondaries"`
-	// (integer) - xref AIP-129. `nodeCount` is owned by the client, while `effectiveNodeCount` is owned by the server.
-	// `nodeCount` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-	// `effectiveNodeCount` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+	// (integer) - The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
+	// 1 primary and 0 secondaries
 	EffectiveNodeCount int `pulumi:"effectiveNodeCount"`
-	// (integer) - xref AIP-129. `retentionWindowInDays` is owned by the client, while `effectiveRetentionWindowInDays` is owned by the server.
-	// `retentionWindowInDays` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-	// `effectiveRetentionWindowInDays` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+	// (integer) - The retention window for the instance. This is the time window in days
+	// for which the historical data is retained
 	EffectiveRetentionWindowInDays int `pulumi:"effectiveRetentionWindowInDays"`
-	// (boolean) - xref AIP-129. `stopped` is owned by the client, while `effectiveStopped` is owned by the server.
-	// `stopped` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-	// `effectiveStopped` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+	// (boolean) - Whether the instance is stopped
 	EffectiveStopped bool `pulumi:"effectiveStopped"`
-	// (boolean) - Whether the instance has PG native password login enabled. Defaults to true
+	// (string) - The policy that is applied to the instance
+	EffectiveUsagePolicyId string `pulumi:"effectiveUsagePolicyId"`
+	// (boolean) - Whether to enable PG native password login on the instance. Defaults to false
 	EnablePgNativeLogin bool `pulumi:"enablePgNativeLogin"`
 	// (boolean) - Whether to enable secondaries to serve read-only traffic. Defaults to false
-	EnableReadableSecondaries *bool `pulumi:"enableReadableSecondaries"`
+	EnableReadableSecondaries bool `pulumi:"enableReadableSecondaries"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// (string) - Name of the ref database instance
 	Name string `pulumi:"name"`
 	// (integer) - The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
-	// 1 primary and 0 secondaries
-	NodeCount *int `pulumi:"nodeCount"`
+	// 1 primary and 0 secondaries. This field is input only, see effectiveNodeCount for the output
+	NodeCount int `pulumi:"nodeCount"`
 	// (DatabaseInstanceRef) - The ref of the parent instance. This is only available if the instance is
 	// child instance.
 	// Input: For specifying the parent instance to create a child instance. Optional.
 	// Output: Only populated if provided as input to create a child instance
-	ParentInstanceRef *GetDatabaseInstanceParentInstanceRef `pulumi:"parentInstanceRef"`
+	ParentInstanceRef GetDatabaseInstanceParentInstanceRef `pulumi:"parentInstanceRef"`
 	// (string) - The version of Postgres running on the instance
 	PgVersion string `pulumi:"pgVersion"`
 	// (string) - The DNS endpoint to connect to the instance for read only access. This is only available if
@@ -135,14 +115,15 @@ type LookupDatabaseInstanceResult struct {
 	// (integer) - The retention window for the instance. This is the time window in days
 	// for which the historical data is retained. The default value is 7 days.
 	// Valid values are 2 to 35 days
-	RetentionWindowInDays *int `pulumi:"retentionWindowInDays"`
+	RetentionWindowInDays int `pulumi:"retentionWindowInDays"`
 	// (string) - The current state of the instance. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
 	State string `pulumi:"state"`
-	// (boolean) - Whether the instance is stopped
-	Stopped *bool `pulumi:"stopped"`
+	// (boolean) - Whether to stop the instance. An input only param, see effectiveStopped for the output
+	Stopped bool `pulumi:"stopped"`
 	// (string) - Id of the ref database instance
-	Uid         string  `pulumi:"uid"`
-	WorkspaceId *string `pulumi:"workspaceId"`
+	Uid string `pulumi:"uid"`
+	// (string) - The desired usage policy to associate with the instance
+	UsagePolicyId string `pulumi:"usagePolicyId"`
 }
 
 func LookupDatabaseInstanceOutput(ctx *pulumi.Context, args LookupDatabaseInstanceOutputArgs, opts ...pulumi.InvokeOption) LookupDatabaseInstanceResultOutput {
@@ -156,30 +137,8 @@ func LookupDatabaseInstanceOutput(ctx *pulumi.Context, args LookupDatabaseInstan
 
 // A collection of arguments for invoking getDatabaseInstance.
 type LookupDatabaseInstanceOutputArgs struct {
-	// (string) - The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
-	Capacity pulumi.StringPtrInput `pulumi:"capacity"`
-	// (boolean) - Whether the instance has PG native password login enabled. Defaults to true
-	EnablePgNativeLogin pulumi.BoolPtrInput `pulumi:"enablePgNativeLogin"`
-	// (boolean) - Whether to enable secondaries to serve read-only traffic. Defaults to false
-	EnableReadableSecondaries pulumi.BoolPtrInput `pulumi:"enableReadableSecondaries"`
 	// The name of the instance. This is the unique identifier for the instance
 	Name pulumi.StringInput `pulumi:"name"`
-	// (integer) - The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
-	// 1 primary and 0 secondaries
-	NodeCount pulumi.IntPtrInput `pulumi:"nodeCount"`
-	// (DatabaseInstanceRef) - The ref of the parent instance. This is only available if the instance is
-	// child instance.
-	// Input: For specifying the parent instance to create a child instance. Optional.
-	// Output: Only populated if provided as input to create a child instance
-	ParentInstanceRef GetDatabaseInstanceParentInstanceRefPtrInput `pulumi:"parentInstanceRef"`
-	// (integer) - The retention window for the instance. This is the time window in days
-	// for which the historical data is retained. The default value is 7 days.
-	// Valid values are 2 to 35 days
-	RetentionWindowInDays pulumi.IntPtrInput `pulumi:"retentionWindowInDays"`
-	// (boolean) - Whether the instance is stopped
-	Stopped pulumi.BoolPtrInput `pulumi:"stopped"`
-	// Workspace ID of the resource
-	WorkspaceId pulumi.StringPtrInput `pulumi:"workspaceId"`
 }
 
 func (LookupDatabaseInstanceOutputArgs) ElementType() reflect.Type {
@@ -202,8 +161,8 @@ func (o LookupDatabaseInstanceResultOutput) ToLookupDatabaseInstanceResultOutput
 }
 
 // (string) - The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
-func (o LookupDatabaseInstanceResultOutput) Capacity() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupDatabaseInstanceResult) *string { return v.Capacity }).(pulumi.StringPtrOutput)
+func (o LookupDatabaseInstanceResultOutput) Capacity() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseInstanceResult) string { return v.Capacity }).(pulumi.StringOutput)
 }
 
 // (list of DatabaseInstanceRef) - The refs of the child instances. This is only available if the instance is
@@ -222,49 +181,63 @@ func (o LookupDatabaseInstanceResultOutput) Creator() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseInstanceResult) string { return v.Creator }).(pulumi.StringOutput)
 }
 
-// (boolean) - xref AIP-129. `enablePgNativeLogin` is owned by the client, while `effectiveEnablePgNativeLogin` is owned by the server.
-// `enablePgNativeLogin` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-// `effectiveEnablePgNativeLogin` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+// (list of CustomTag) - Custom tags associated with the instance. This field is only included on create and update responses
+func (o LookupDatabaseInstanceResultOutput) CustomTags() GetDatabaseInstanceCustomTagArrayOutput {
+	return o.ApplyT(func(v LookupDatabaseInstanceResult) []GetDatabaseInstanceCustomTag { return v.CustomTags }).(GetDatabaseInstanceCustomTagArrayOutput)
+}
+
+// (string, deprecated) - Deprecated. The sku of the instance; this field will always match the value of capacity
+func (o LookupDatabaseInstanceResultOutput) EffectiveCapacity() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseInstanceResult) string { return v.EffectiveCapacity }).(pulumi.StringOutput)
+}
+
+// (list of CustomTag) - The recorded custom tags associated with the instance
+func (o LookupDatabaseInstanceResultOutput) EffectiveCustomTags() GetDatabaseInstanceEffectiveCustomTagArrayOutput {
+	return o.ApplyT(func(v LookupDatabaseInstanceResult) []GetDatabaseInstanceEffectiveCustomTag {
+		return v.EffectiveCustomTags
+	}).(GetDatabaseInstanceEffectiveCustomTagArrayOutput)
+}
+
+// (boolean) - Whether the instance has PG native password login enabled
 func (o LookupDatabaseInstanceResultOutput) EffectiveEnablePgNativeLogin() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupDatabaseInstanceResult) bool { return v.EffectiveEnablePgNativeLogin }).(pulumi.BoolOutput)
 }
 
-// (boolean) - xref AIP-129. `enableReadableSecondaries` is owned by the client, while `effectiveEnableReadableSecondaries` is owned by the server.
-// `enableReadableSecondaries` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-// `effectiveEnableReadableSecondaries` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+// (boolean) - Whether secondaries serving read-only traffic are enabled. Defaults to false
 func (o LookupDatabaseInstanceResultOutput) EffectiveEnableReadableSecondaries() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupDatabaseInstanceResult) bool { return v.EffectiveEnableReadableSecondaries }).(pulumi.BoolOutput)
 }
 
-// (integer) - xref AIP-129. `nodeCount` is owned by the client, while `effectiveNodeCount` is owned by the server.
-// `nodeCount` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-// `effectiveNodeCount` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+// (integer) - The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
+// 1 primary and 0 secondaries
 func (o LookupDatabaseInstanceResultOutput) EffectiveNodeCount() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupDatabaseInstanceResult) int { return v.EffectiveNodeCount }).(pulumi.IntOutput)
 }
 
-// (integer) - xref AIP-129. `retentionWindowInDays` is owned by the client, while `effectiveRetentionWindowInDays` is owned by the server.
-// `retentionWindowInDays` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-// `effectiveRetentionWindowInDays` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+// (integer) - The retention window for the instance. This is the time window in days
+// for which the historical data is retained
 func (o LookupDatabaseInstanceResultOutput) EffectiveRetentionWindowInDays() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupDatabaseInstanceResult) int { return v.EffectiveRetentionWindowInDays }).(pulumi.IntOutput)
 }
 
-// (boolean) - xref AIP-129. `stopped` is owned by the client, while `effectiveStopped` is owned by the server.
-// `stopped` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-// `effectiveStopped` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+// (boolean) - Whether the instance is stopped
 func (o LookupDatabaseInstanceResultOutput) EffectiveStopped() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupDatabaseInstanceResult) bool { return v.EffectiveStopped }).(pulumi.BoolOutput)
 }
 
-// (boolean) - Whether the instance has PG native password login enabled. Defaults to true
+// (string) - The policy that is applied to the instance
+func (o LookupDatabaseInstanceResultOutput) EffectiveUsagePolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseInstanceResult) string { return v.EffectiveUsagePolicyId }).(pulumi.StringOutput)
+}
+
+// (boolean) - Whether to enable PG native password login on the instance. Defaults to false
 func (o LookupDatabaseInstanceResultOutput) EnablePgNativeLogin() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupDatabaseInstanceResult) bool { return v.EnablePgNativeLogin }).(pulumi.BoolOutput)
 }
 
 // (boolean) - Whether to enable secondaries to serve read-only traffic. Defaults to false
-func (o LookupDatabaseInstanceResultOutput) EnableReadableSecondaries() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v LookupDatabaseInstanceResult) *bool { return v.EnableReadableSecondaries }).(pulumi.BoolPtrOutput)
+func (o LookupDatabaseInstanceResultOutput) EnableReadableSecondaries() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupDatabaseInstanceResult) bool { return v.EnableReadableSecondaries }).(pulumi.BoolOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.
@@ -278,17 +251,17 @@ func (o LookupDatabaseInstanceResultOutput) Name() pulumi.StringOutput {
 }
 
 // (integer) - The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
-// 1 primary and 0 secondaries
-func (o LookupDatabaseInstanceResultOutput) NodeCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v LookupDatabaseInstanceResult) *int { return v.NodeCount }).(pulumi.IntPtrOutput)
+// 1 primary and 0 secondaries. This field is input only, see effectiveNodeCount for the output
+func (o LookupDatabaseInstanceResultOutput) NodeCount() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupDatabaseInstanceResult) int { return v.NodeCount }).(pulumi.IntOutput)
 }
 
 // (DatabaseInstanceRef) - The ref of the parent instance. This is only available if the instance is
 // child instance.
 // Input: For specifying the parent instance to create a child instance. Optional.
 // Output: Only populated if provided as input to create a child instance
-func (o LookupDatabaseInstanceResultOutput) ParentInstanceRef() GetDatabaseInstanceParentInstanceRefPtrOutput {
-	return o.ApplyT(func(v LookupDatabaseInstanceResult) *GetDatabaseInstanceParentInstanceRef { return v.ParentInstanceRef }).(GetDatabaseInstanceParentInstanceRefPtrOutput)
+func (o LookupDatabaseInstanceResultOutput) ParentInstanceRef() GetDatabaseInstanceParentInstanceRefOutput {
+	return o.ApplyT(func(v LookupDatabaseInstanceResult) GetDatabaseInstanceParentInstanceRef { return v.ParentInstanceRef }).(GetDatabaseInstanceParentInstanceRefOutput)
 }
 
 // (string) - The version of Postgres running on the instance
@@ -310,8 +283,8 @@ func (o LookupDatabaseInstanceResultOutput) ReadWriteDns() pulumi.StringOutput {
 // (integer) - The retention window for the instance. This is the time window in days
 // for which the historical data is retained. The default value is 7 days.
 // Valid values are 2 to 35 days
-func (o LookupDatabaseInstanceResultOutput) RetentionWindowInDays() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v LookupDatabaseInstanceResult) *int { return v.RetentionWindowInDays }).(pulumi.IntPtrOutput)
+func (o LookupDatabaseInstanceResultOutput) RetentionWindowInDays() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupDatabaseInstanceResult) int { return v.RetentionWindowInDays }).(pulumi.IntOutput)
 }
 
 // (string) - The current state of the instance. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
@@ -319,9 +292,9 @@ func (o LookupDatabaseInstanceResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseInstanceResult) string { return v.State }).(pulumi.StringOutput)
 }
 
-// (boolean) - Whether the instance is stopped
-func (o LookupDatabaseInstanceResultOutput) Stopped() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v LookupDatabaseInstanceResult) *bool { return v.Stopped }).(pulumi.BoolPtrOutput)
+// (boolean) - Whether to stop the instance. An input only param, see effectiveStopped for the output
+func (o LookupDatabaseInstanceResultOutput) Stopped() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupDatabaseInstanceResult) bool { return v.Stopped }).(pulumi.BoolOutput)
 }
 
 // (string) - Id of the ref database instance
@@ -329,8 +302,9 @@ func (o LookupDatabaseInstanceResultOutput) Uid() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseInstanceResult) string { return v.Uid }).(pulumi.StringOutput)
 }
 
-func (o LookupDatabaseInstanceResultOutput) WorkspaceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupDatabaseInstanceResult) *string { return v.WorkspaceId }).(pulumi.StringPtrOutput)
+// (string) - The desired usage policy to associate with the instance
+func (o LookupDatabaseInstanceResultOutput) UsagePolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseInstanceResult) string { return v.UsagePolicyId }).(pulumi.StringOutput)
 }
 
 func init() {

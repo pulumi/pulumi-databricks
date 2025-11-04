@@ -143,7 +143,7 @@ export interface AccountNetworkPolicyEgressNetworkAccessPolicyEnforcement {
 
 export interface AccountSettingV2AibiDashboardEmbeddingAccessPolicy {
     /**
-     * . Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
+     * Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
      */
     accessPolicyType: pulumi.Input<string>;
 }
@@ -181,11 +181,11 @@ export interface AccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindo
 
 export interface AccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule {
     /**
-     * . Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
+     * Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
      */
     dayOfWeek?: pulumi.Input<string>;
     /**
-     * . Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
+     * Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
      */
     frequency?: pulumi.Input<string>;
     windowStartTime?: pulumi.Input<inputs.AccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime>;
@@ -200,13 +200,9 @@ export interface AccountSettingV2BooleanVal {
     value?: pulumi.Input<boolean>;
 }
 
-export interface AccountSettingV2DefaultDataSecurityMode {
-    status: pulumi.Input<string>;
-}
-
 export interface AccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy {
     /**
-     * . Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
+     * Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
      */
     accessPolicyType: pulumi.Input<string>;
 }
@@ -244,11 +240,11 @@ export interface AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMainten
 
 export interface AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule {
     /**
-     * . Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
+     * Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
      */
     dayOfWeek?: pulumi.Input<string>;
     /**
-     * . Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
+     * Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
      */
     frequency?: pulumi.Input<string>;
     windowStartTime?: pulumi.Input<inputs.AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime>;
@@ -263,10 +259,6 @@ export interface AccountSettingV2EffectiveBooleanVal {
     value?: pulumi.Input<boolean>;
 }
 
-export interface AccountSettingV2EffectiveDefaultDataSecurityMode {
-    status: pulumi.Input<string>;
-}
-
 export interface AccountSettingV2EffectiveIntegerVal {
     value?: pulumi.Input<number>;
 }
@@ -276,6 +268,9 @@ export interface AccountSettingV2EffectivePersonalCompute {
 }
 
 export interface AccountSettingV2EffectiveRestrictWorkspaceAdmins {
+    /**
+     * Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
+     */
     status: pulumi.Input<string>;
 }
 
@@ -292,6 +287,9 @@ export interface AccountSettingV2PersonalCompute {
 }
 
 export interface AccountSettingV2RestrictWorkspaceAdmins {
+    /**
+     * Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
+     */
     status: pulumi.Input<string>;
 }
 
@@ -383,9 +381,9 @@ export interface AlertV2Evaluation {
     /**
      * Operator used for comparison in alert evaluation. Possible values are: `EQUAL`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `IS_NOT_NULL`, `IS_NULL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`
      */
-    comparisonOperator?: pulumi.Input<string>;
+    comparisonOperator: pulumi.Input<string>;
     /**
-     * Alert state if result is empty. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
+     * Alert state if result is empty. Please avoid setting this field to be `UNKNOWN` because `UNKNOWN` state is planned to be deprecated. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
      */
     emptyResultState?: pulumi.Input<string>;
     /**
@@ -399,7 +397,7 @@ export interface AlertV2Evaluation {
     /**
      * Source column from result to use to evaluate alert
      */
-    source?: pulumi.Input<inputs.AlertV2EvaluationSource>;
+    source: pulumi.Input<inputs.AlertV2EvaluationSource>;
     /**
      * (string) - Latest state of alert evaluation. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
      */
@@ -411,6 +409,8 @@ export interface AlertV2Evaluation {
 }
 
 export interface AlertV2EvaluationNotification {
+    effectiveNotifyOnOk?: pulumi.Input<boolean>;
+    effectiveRetriggerSeconds?: pulumi.Input<number>;
     /**
      * Whether to notify alert subscribers when alert returns back to normal
      */
@@ -429,11 +429,11 @@ export interface AlertV2EvaluationNotificationSubscription {
 
 export interface AlertV2EvaluationSource {
     /**
-     * . Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
+     * Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
      */
     aggregation?: pulumi.Input<string>;
     display?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
+    name: pulumi.Input<string>;
 }
 
 export interface AlertV2EvaluationThreshold {
@@ -443,11 +443,11 @@ export interface AlertV2EvaluationThreshold {
 
 export interface AlertV2EvaluationThresholdColumn {
     /**
-     * . Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
+     * Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
      */
     aggregation?: pulumi.Input<string>;
     display?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
+    name: pulumi.Input<string>;
 }
 
 export interface AlertV2EvaluationThresholdValue {
@@ -476,13 +476,13 @@ export interface AlertV2Schedule {
      * A cron expression using quartz syntax that specifies the schedule for this pipeline.
      * Should use the quartz format described here: http://www.quartz-scheduler.org/documentation/quartz-2.1.7/tutorials/tutorial-lesson-06.html
      */
-    quartzCronSchedule?: pulumi.Input<string>;
+    quartzCronSchedule: pulumi.Input<string>;
     /**
      * A Java timezone id. The schedule will be resolved using this timezone.
      * This will be combined with the quartzCronSchedule to determine the schedule.
      * See https://docs.databricks.com/sql/language-manual/sql-ref-syntax-aux-conf-mgmt-set-timezone.html for details
      */
-    timezoneId?: pulumi.Input<string>;
+    timezoneId: pulumi.Input<string>;
 }
 
 export interface AppActiveDeployment {
@@ -577,6 +577,10 @@ export interface AppPendingDeploymentStatus {
     state?: pulumi.Input<string>;
 }
 
+export interface AppProviderConfig {
+    workspaceId: pulumi.Input<string>;
+}
+
 export interface AppResource {
     /**
      * attribute
@@ -588,6 +592,10 @@ export interface AppResource {
      * Exactly one of the following attributes must be provided:
      */
     description?: pulumi.Input<string>;
+    /**
+     * attribute
+     */
+    genieSpace?: pulumi.Input<inputs.AppResourceGenieSpace>;
     /**
      * attribute
      */
@@ -627,6 +635,18 @@ export interface AppResourceDatabase {
      * Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
      */
     permission: pulumi.Input<string>;
+}
+
+export interface AppResourceGenieSpace {
+    /**
+     * The name of Genie Space.
+     */
+    name: pulumi.Input<string>;
+    permission: pulumi.Input<string>;
+    /**
+     * The unique ID of Genie Space.
+     */
+    spaceId: pulumi.Input<string>;
 }
 
 export interface AppResourceJob {
@@ -745,7 +765,7 @@ export interface AppsSettingsCustomTemplateManifestResourceSpecSqlWarehouseSpec 
 export interface AppsSettingsCustomTemplateManifestResourceSpecUcSecurableSpec {
     permission: pulumi.Input<string>;
     /**
-     * . Possible values are: `VOLUME`
+     * Possible values are: `TABLE`, `VOLUME`
      */
     securableType: pulumi.Input<string>;
 }
@@ -892,495 +912,6 @@ export interface CatalogEffectivePredictiveOptimizationFlag {
 
 export interface CatalogProvisioningInfo {
     state?: pulumi.Input<string>;
-}
-
-export interface CleanRoomAssetForeignTable {
-    /**
-     * (list of ColumnInfo) - The metadata information of the columns in the view
-     */
-    columns?: pulumi.Input<pulumi.Input<inputs.CleanRoomAssetForeignTableColumn>[]>;
-}
-
-export interface CleanRoomAssetForeignTableColumn {
-    comment?: pulumi.Input<string>;
-    mask?: pulumi.Input<inputs.CleanRoomAssetForeignTableColumnMask>;
-    /**
-     * A fully qualified name that uniquely identifies the asset within the clean room.
-     * This is also the name displayed in the clean room UI.
-     *
-     * For UC securable assets (tables, volumes, etc.), the format is *shared_catalog*.*shared_schema*.*asset_name*
-     *
-     * For notebooks, the name is the notebook file name.
-     * For jar analyses, the name is the jar analysis name
-     */
-    name?: pulumi.Input<string>;
-    /**
-     * Whether field may be Null (default: true)
-     */
-    nullable?: pulumi.Input<boolean>;
-    /**
-     * Partition index for column
-     */
-    partitionIndex?: pulumi.Input<number>;
-    /**
-     * Ordinal position of column (starting at position 0)
-     */
-    position?: pulumi.Input<number>;
-    /**
-     * Format of IntervalType
-     */
-    typeIntervalType?: pulumi.Input<string>;
-    /**
-     * Full data type specification, JSON-serialized
-     */
-    typeJson?: pulumi.Input<string>;
-    /**
-     * . Possible values are: `ARRAY`, `BINARY`, `BOOLEAN`, `BYTE`, `CHAR`, `DATE`, `DECIMAL`, `DOUBLE`, `FLOAT`, `GEOGRAPHY`, `GEOMETRY`, `INT`, `INTERVAL`, `LONG`, `MAP`, `NULL`, `SHORT`, `STRING`, `STRUCT`, `TABLE_TYPE`, `TIMESTAMP`, `TIMESTAMP_NTZ`, `USER_DEFINED_TYPE`, `VARIANT`
-     */
-    typeName?: pulumi.Input<string>;
-    /**
-     * Digits of precision; required for DecimalTypes
-     */
-    typePrecision?: pulumi.Input<number>;
-    /**
-     * Digits to right of decimal; Required for DecimalTypes
-     */
-    typeScale?: pulumi.Input<number>;
-    /**
-     * Full data type specification as SQL/catalogString text
-     */
-    typeText?: pulumi.Input<string>;
-}
-
-export interface CleanRoomAssetForeignTableColumnMask {
-    /**
-     * The full name of the column mask SQL UDF
-     */
-    functionName?: pulumi.Input<string>;
-    /**
-     * The list of additional table columns to be passed as input to the column mask function. The
-     * first arg of the mask function should be of the type of the column being masked and the
-     * types of the rest of the args should match the types of columns in 'using_column_names'
-     */
-    usingColumnNames?: pulumi.Input<pulumi.Input<string>[]>;
-}
-
-export interface CleanRoomAssetForeignTableLocalDetails {
-    localName: pulumi.Input<string>;
-}
-
-export interface CleanRoomAssetNotebook {
-    /**
-     * (string) - Server generated etag that represents the notebook version
-     */
-    etag?: pulumi.Input<string>;
-    /**
-     * Base 64 representation of the notebook contents.
-     * This is the same format as returned by :method:workspace/export with the format of **HTML**
-     */
-    notebookContent: pulumi.Input<string>;
-    /**
-     * (string) - Top-level status derived from all reviews. Possible values are: `APPROVED`, `PENDING`, `REJECTED`
-     */
-    reviewState?: pulumi.Input<string>;
-    /**
-     * (list of CleanRoomNotebookReview) - All existing approvals or rejections
-     */
-    reviews?: pulumi.Input<pulumi.Input<inputs.CleanRoomAssetNotebookReview>[]>;
-    /**
-     * Aliases of collaborators that can run the notebook
-     */
-    runnerCollaboratorAliases?: pulumi.Input<pulumi.Input<string>[]>;
-}
-
-export interface CleanRoomAssetNotebookReview {
-    comment?: pulumi.Input<string>;
-    /**
-     * When the review was submitted, in epoch milliseconds
-     */
-    createdAtMillis?: pulumi.Input<number>;
-    /**
-     * (string) - Top-level status derived from all reviews. Possible values are: `APPROVED`, `PENDING`, `REJECTED`
-     */
-    reviewState?: pulumi.Input<string>;
-    /**
-     * Specified when the review was not explicitly made by a user. Possible values are: `AUTO_APPROVED`, `BACKFILLED`
-     */
-    reviewSubReason?: pulumi.Input<string>;
-    /**
-     * Collaborator alias of the reviewer
-     */
-    reviewerCollaboratorAlias?: pulumi.Input<string>;
-}
-
-export interface CleanRoomAssetTable {
-    /**
-     * (list of ColumnInfo) - The metadata information of the columns in the view
-     */
-    columns?: pulumi.Input<pulumi.Input<inputs.CleanRoomAssetTableColumn>[]>;
-}
-
-export interface CleanRoomAssetTableColumn {
-    comment?: pulumi.Input<string>;
-    mask?: pulumi.Input<inputs.CleanRoomAssetTableColumnMask>;
-    /**
-     * A fully qualified name that uniquely identifies the asset within the clean room.
-     * This is also the name displayed in the clean room UI.
-     *
-     * For UC securable assets (tables, volumes, etc.), the format is *shared_catalog*.*shared_schema*.*asset_name*
-     *
-     * For notebooks, the name is the notebook file name.
-     * For jar analyses, the name is the jar analysis name
-     */
-    name?: pulumi.Input<string>;
-    /**
-     * Whether field may be Null (default: true)
-     */
-    nullable?: pulumi.Input<boolean>;
-    /**
-     * Partition index for column
-     */
-    partitionIndex?: pulumi.Input<number>;
-    /**
-     * Ordinal position of column (starting at position 0)
-     */
-    position?: pulumi.Input<number>;
-    /**
-     * Format of IntervalType
-     */
-    typeIntervalType?: pulumi.Input<string>;
-    /**
-     * Full data type specification, JSON-serialized
-     */
-    typeJson?: pulumi.Input<string>;
-    /**
-     * . Possible values are: `ARRAY`, `BINARY`, `BOOLEAN`, `BYTE`, `CHAR`, `DATE`, `DECIMAL`, `DOUBLE`, `FLOAT`, `GEOGRAPHY`, `GEOMETRY`, `INT`, `INTERVAL`, `LONG`, `MAP`, `NULL`, `SHORT`, `STRING`, `STRUCT`, `TABLE_TYPE`, `TIMESTAMP`, `TIMESTAMP_NTZ`, `USER_DEFINED_TYPE`, `VARIANT`
-     */
-    typeName?: pulumi.Input<string>;
-    /**
-     * Digits of precision; required for DecimalTypes
-     */
-    typePrecision?: pulumi.Input<number>;
-    /**
-     * Digits to right of decimal; Required for DecimalTypes
-     */
-    typeScale?: pulumi.Input<number>;
-    /**
-     * Full data type specification as SQL/catalogString text
-     */
-    typeText?: pulumi.Input<string>;
-}
-
-export interface CleanRoomAssetTableColumnMask {
-    /**
-     * The full name of the column mask SQL UDF
-     */
-    functionName?: pulumi.Input<string>;
-    /**
-     * The list of additional table columns to be passed as input to the column mask function. The
-     * first arg of the mask function should be of the type of the column being masked and the
-     * types of the rest of the args should match the types of columns in 'using_column_names'
-     */
-    usingColumnNames?: pulumi.Input<pulumi.Input<string>[]>;
-}
-
-export interface CleanRoomAssetTableLocalDetails {
-    localName: pulumi.Input<string>;
-    /**
-     * Partition filtering specification for a shared table
-     */
-    partitions?: pulumi.Input<pulumi.Input<inputs.CleanRoomAssetTableLocalDetailsPartition>[]>;
-}
-
-export interface CleanRoomAssetTableLocalDetailsPartition {
-    /**
-     * The value of the partition column. When this value is not set, it means `null` value.
-     * When this field is set, field `recipientPropertyKey` can not be set
-     */
-    values?: pulumi.Input<pulumi.Input<inputs.CleanRoomAssetTableLocalDetailsPartitionValue>[]>;
-}
-
-export interface CleanRoomAssetTableLocalDetailsPartitionValue {
-    /**
-     * A fully qualified name that uniquely identifies the asset within the clean room.
-     * This is also the name displayed in the clean room UI.
-     *
-     * For UC securable assets (tables, volumes, etc.), the format is *shared_catalog*.*shared_schema*.*asset_name*
-     *
-     * For notebooks, the name is the notebook file name.
-     * For jar analyses, the name is the jar analysis name
-     */
-    name?: pulumi.Input<string>;
-    /**
-     * The operator to apply for the value. Possible values are: `EQUAL`, `LIKE`
-     */
-    op?: pulumi.Input<string>;
-    /**
-     * The key of a Delta Sharing recipient's property. For example "databricks-account-id".
-     * When this field is set, field `value` can not be set
-     */
-    recipientPropertyKey?: pulumi.Input<string>;
-    /**
-     * The value of the partition column. When this value is not set, it means `null` value.
-     * When this field is set, field `recipientPropertyKey` can not be set
-     */
-    value?: pulumi.Input<string>;
-}
-
-export interface CleanRoomAssetView {
-    /**
-     * (list of ColumnInfo) - The metadata information of the columns in the view
-     */
-    columns?: pulumi.Input<pulumi.Input<inputs.CleanRoomAssetViewColumn>[]>;
-}
-
-export interface CleanRoomAssetViewColumn {
-    comment?: pulumi.Input<string>;
-    mask?: pulumi.Input<inputs.CleanRoomAssetViewColumnMask>;
-    /**
-     * A fully qualified name that uniquely identifies the asset within the clean room.
-     * This is also the name displayed in the clean room UI.
-     *
-     * For UC securable assets (tables, volumes, etc.), the format is *shared_catalog*.*shared_schema*.*asset_name*
-     *
-     * For notebooks, the name is the notebook file name.
-     * For jar analyses, the name is the jar analysis name
-     */
-    name?: pulumi.Input<string>;
-    /**
-     * Whether field may be Null (default: true)
-     */
-    nullable?: pulumi.Input<boolean>;
-    /**
-     * Partition index for column
-     */
-    partitionIndex?: pulumi.Input<number>;
-    /**
-     * Ordinal position of column (starting at position 0)
-     */
-    position?: pulumi.Input<number>;
-    /**
-     * Format of IntervalType
-     */
-    typeIntervalType?: pulumi.Input<string>;
-    /**
-     * Full data type specification, JSON-serialized
-     */
-    typeJson?: pulumi.Input<string>;
-    /**
-     * . Possible values are: `ARRAY`, `BINARY`, `BOOLEAN`, `BYTE`, `CHAR`, `DATE`, `DECIMAL`, `DOUBLE`, `FLOAT`, `GEOGRAPHY`, `GEOMETRY`, `INT`, `INTERVAL`, `LONG`, `MAP`, `NULL`, `SHORT`, `STRING`, `STRUCT`, `TABLE_TYPE`, `TIMESTAMP`, `TIMESTAMP_NTZ`, `USER_DEFINED_TYPE`, `VARIANT`
-     */
-    typeName?: pulumi.Input<string>;
-    /**
-     * Digits of precision; required for DecimalTypes
-     */
-    typePrecision?: pulumi.Input<number>;
-    /**
-     * Digits to right of decimal; Required for DecimalTypes
-     */
-    typeScale?: pulumi.Input<number>;
-    /**
-     * Full data type specification as SQL/catalogString text
-     */
-    typeText?: pulumi.Input<string>;
-}
-
-export interface CleanRoomAssetViewColumnMask {
-    /**
-     * The full name of the column mask SQL UDF
-     */
-    functionName?: pulumi.Input<string>;
-    /**
-     * The list of additional table columns to be passed as input to the column mask function. The
-     * first arg of the mask function should be of the type of the column being masked and the
-     * types of the rest of the args should match the types of columns in 'using_column_names'
-     */
-    usingColumnNames?: pulumi.Input<pulumi.Input<string>[]>;
-}
-
-export interface CleanRoomAssetViewLocalDetails {
-    localName: pulumi.Input<string>;
-}
-
-export interface CleanRoomAssetVolumeLocalDetails {
-    localName: pulumi.Input<string>;
-}
-
-export interface CleanRoomsCleanRoomOutputCatalog {
-    /**
-     * The name of the output catalog in UC.
-     * It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements).
-     * The field will always exist if status is CREATED
-     */
-    catalogName?: pulumi.Input<string>;
-    /**
-     * (string) - . Possible values are: `CREATED`, `NOT_CREATED`, `NOT_ELIGIBLE`
-     */
-    status?: pulumi.Input<string>;
-}
-
-export interface CleanRoomsCleanRoomRemoteDetailedInfo {
-    /**
-     * (string) - Central clean room ID
-     */
-    centralCleanRoomId?: pulumi.Input<string>;
-    /**
-     * Cloud vendor (aws,azure,gcp) of the central clean room
-     */
-    cloudVendor?: pulumi.Input<string>;
-    /**
-     * Collaborators in the central clean room. There should one and only one collaborator
-     * in the list that satisfies the owner condition:
-     *
-     * 1. It has the creator's globalMetastoreId (determined by caller of CreateCleanRoom).
-     *
-     * 2. Its inviteRecipientEmail is empty
-     */
-    collaborators?: pulumi.Input<pulumi.Input<inputs.CleanRoomsCleanRoomRemoteDetailedInfoCollaborator>[]>;
-    /**
-     * (ComplianceSecurityProfile)
-     */
-    complianceSecurityProfile?: pulumi.Input<inputs.CleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfile>;
-    /**
-     * (CleanRoomCollaborator) - Collaborator who creates the clean room
-     */
-    creator?: pulumi.Input<inputs.CleanRoomsCleanRoomRemoteDetailedInfoCreator>;
-    /**
-     * Egress network policy to apply to the central clean room workspace
-     */
-    egressNetworkPolicy?: pulumi.Input<inputs.CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicy>;
-    region?: pulumi.Input<string>;
-}
-
-export interface CleanRoomsCleanRoomRemoteDetailedInfoCollaborator {
-    /**
-     * Collaborator alias specified by the clean room creator. It is unique across all collaborators of this clean room, and used to derive
-     * multiple values internally such as catalog alias and clean room name for single metastore clean rooms.
-     * It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements)
-     */
-    collaboratorAlias: pulumi.Input<string>;
-    /**
-     * (string) - Generated display name for the collaborator. In the case of a single metastore clean room, it is the clean
-     * room name. For x-metastore clean rooms, it is the organization name of the metastore. It is not restricted to
-     * these values and could change in the future
-     */
-    displayName?: pulumi.Input<string>;
-    /**
-     * The global Unity Catalog metastore ID of the collaborator. The identifier is of format cloud:region:metastore-uuid
-     */
-    globalMetastoreId?: pulumi.Input<string>;
-    /**
-     * Email of the user who is receiving the clean room "invitation". It should be empty
-     * for the creator of the clean room, and non-empty for the invitees of the clean room.
-     * It is only returned in the output when clean room creator calls GET
-     */
-    inviteRecipientEmail?: pulumi.Input<string>;
-    /**
-     * Workspace ID of the user who is receiving the clean room "invitation". Must be specified if
-     * inviteRecipientEmail is specified.
-     * It should be empty when the collaborator is the creator of the clean room
-     */
-    inviteRecipientWorkspaceId?: pulumi.Input<number>;
-    /**
-     * (string) - Organization name
-     * configured in the metastore
-     */
-    organizationName?: pulumi.Input<string>;
-}
-
-export interface CleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfile {
-    /**
-     * The list of compliance standards that the compliance security profile is configured to enforce
-     */
-    complianceStandards?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Whether the compliance security profile is enabled
-     */
-    isEnabled?: pulumi.Input<boolean>;
-}
-
-export interface CleanRoomsCleanRoomRemoteDetailedInfoCreator {
-    /**
-     * Collaborator alias specified by the clean room creator. It is unique across all collaborators of this clean room, and used to derive
-     * multiple values internally such as catalog alias and clean room name for single metastore clean rooms.
-     * It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements)
-     */
-    collaboratorAlias: pulumi.Input<string>;
-    /**
-     * (string) - Generated display name for the collaborator. In the case of a single metastore clean room, it is the clean
-     * room name. For x-metastore clean rooms, it is the organization name of the metastore. It is not restricted to
-     * these values and could change in the future
-     */
-    displayName?: pulumi.Input<string>;
-    /**
-     * The global Unity Catalog metastore ID of the collaborator. The identifier is of format cloud:region:metastore-uuid
-     */
-    globalMetastoreId?: pulumi.Input<string>;
-    /**
-     * Email of the user who is receiving the clean room "invitation". It should be empty
-     * for the creator of the clean room, and non-empty for the invitees of the clean room.
-     * It is only returned in the output when clean room creator calls GET
-     */
-    inviteRecipientEmail?: pulumi.Input<string>;
-    /**
-     * Workspace ID of the user who is receiving the clean room "invitation". Must be specified if
-     * inviteRecipientEmail is specified.
-     * It should be empty when the collaborator is the creator of the clean room
-     */
-    inviteRecipientWorkspaceId?: pulumi.Input<number>;
-    /**
-     * (string) - Organization name
-     * configured in the metastore
-     */
-    organizationName?: pulumi.Input<string>;
-}
-
-export interface CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicy {
-    /**
-     * The access policy enforced for egress traffic to the internet
-     */
-    internetAccess?: pulumi.Input<inputs.CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccess>;
-}
-
-export interface CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccess {
-    allowedInternetDestinations?: pulumi.Input<pulumi.Input<inputs.CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedInternetDestination>[]>;
-    allowedStorageDestinations?: pulumi.Input<pulumi.Input<inputs.CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedStorageDestination>[]>;
-    /**
-     * Optional. If not specified, assume the policy is enforced for all workloads
-     */
-    logOnlyMode?: pulumi.Input<inputs.CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyMode>;
-    /**
-     * . Possible values are: `FULL_ACCESS`, `PRIVATE_ACCESS_ONLY`, `RESTRICTED_ACCESS`
-     */
-    restrictionMode?: pulumi.Input<string>;
-}
-
-export interface CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedInternetDestination {
-    destination?: pulumi.Input<string>;
-    /**
-     * . Possible values are: `TCP`
-     */
-    protocol?: pulumi.Input<string>;
-    type?: pulumi.Input<string>;
-}
-
-export interface CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedStorageDestination {
-    allowedPaths?: pulumi.Input<pulumi.Input<string>[]>;
-    azureContainer?: pulumi.Input<string>;
-    azureDnsZone?: pulumi.Input<string>;
-    azureStorageAccount?: pulumi.Input<string>;
-    azureStorageService?: pulumi.Input<string>;
-    bucketName?: pulumi.Input<string>;
-    region?: pulumi.Input<string>;
-    type?: pulumi.Input<string>;
-}
-
-export interface CleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyMode {
-    /**
-     * . Possible values are: `ALL_SERVICES`, `SELECTED_SERVICES`
-     */
-    logOnlyModeType?: pulumi.Input<string>;
-    workloads?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface ClusterAutoscale {
@@ -1762,6 +1293,7 @@ export interface ClusterPolicyLibrary {
     egg?: pulumi.Input<string>;
     jar?: pulumi.Input<string>;
     maven?: pulumi.Input<inputs.ClusterPolicyLibraryMaven>;
+    providerConfig?: pulumi.Input<inputs.ClusterPolicyLibraryProviderConfig>;
     pypi?: pulumi.Input<inputs.ClusterPolicyLibraryPypi>;
     requirements?: pulumi.Input<string>;
     whl?: pulumi.Input<string>;
@@ -1778,9 +1310,49 @@ export interface ClusterPolicyLibraryMaven {
     repo?: pulumi.Input<string>;
 }
 
+export interface ClusterPolicyLibraryProviderConfig {
+    workspaceId: pulumi.Input<string>;
+}
+
 export interface ClusterPolicyLibraryPypi {
     package: pulumi.Input<string>;
     repo?: pulumi.Input<string>;
+}
+
+export interface ClusterProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     *
+     * The following example demonstrates how to create an autoscaling cluster with [Delta Cache](https://docs.databricks.com/delta/optimizations/delta-cache.html) enabled:
+     *
+     * ```typescript
+     * import * as pulumi from "@pulumi/pulumi";
+     * import * as databricks from "@pulumi/databricks";
+     *
+     * const smallest = databricks.getNodeType({
+     *     localDisk: true,
+     * });
+     * const latestLts = databricks.getSparkVersion({
+     *     longTermSupport: true,
+     * });
+     * const sharedAutoscaling = new databricks.Cluster("shared_autoscaling", {
+     *     clusterName: "Shared Autoscaling",
+     *     sparkVersion: latestLts.then(latestLts => latestLts.id),
+     *     nodeTypeId: smallest.then(smallest => smallest.id),
+     *     autoterminationMinutes: 20,
+     *     autoscale: {
+     *         minWorkers: 1,
+     *         maxWorkers: 50,
+     *     },
+     *     sparkConf: {
+     *         "spark.databricks.io.cache.enabled": "true",
+     *         "spark.databricks.io.cache.maxDiskUsage": "50g",
+     *         "spark.databricks.io.cache.maxMetaDataCache": "1g",
+     *     },
+     * });
+     * ```
+     */
+    workspaceId: pulumi.Input<string>;
 }
 
 export interface ClusterWorkloadType {
@@ -1877,14 +1449,168 @@ export interface CredentialDatabricksGcpServiceAccount {
 }
 
 export interface CustomAppIntegrationTokenAccessPolicy {
+    absoluteSessionLifetimeInMinutes?: pulumi.Input<number>;
     /**
      * access token time to live (TTL) in minutes.
      */
     accessTokenTtlInMinutes?: pulumi.Input<number>;
+    enableSingleUseRefreshTokens?: pulumi.Input<boolean>;
     /**
      * refresh token TTL in minutes. The TTL of refresh token cannot be lower than TTL of access token.
      */
     refreshTokenTtlInMinutes?: pulumi.Input<number>;
+}
+
+export interface DataQualityMonitorAnomalyDetectionConfig {
+}
+
+export interface DataQualityMonitorDataProfilingConfig {
+    /**
+     * Field for specifying the absolute path to a custom directory to store data-monitoring
+     * assets. Normally prepopulated to a default user location via UI and Python APIs
+     */
+    assetsDir?: pulumi.Input<string>;
+    /**
+     * Baseline table name.
+     * Baseline data is used to compute drift from the data in the monitored `tableName`.
+     * The baseline table and the monitored table shall have the same schema
+     */
+    baselineTableName?: pulumi.Input<string>;
+    /**
+     * Custom metrics
+     */
+    customMetrics?: pulumi.Input<pulumi.Input<inputs.DataQualityMonitorDataProfilingConfigCustomMetric>[]>;
+    dashboardId?: pulumi.Input<string>;
+    driftMetricsTableName?: pulumi.Input<string>;
+    effectiveWarehouseId?: pulumi.Input<string>;
+    /**
+     * `Analysis Configuration` for monitoring inference log tables
+     */
+    inferenceLog?: pulumi.Input<inputs.DataQualityMonitorDataProfilingConfigInferenceLog>;
+    latestMonitorFailureMessage?: pulumi.Input<string>;
+    monitorVersion?: pulumi.Input<number>;
+    monitoredTableName?: pulumi.Input<string>;
+    /**
+     * Field for specifying notification settings
+     */
+    notificationSettings?: pulumi.Input<inputs.DataQualityMonitorDataProfilingConfigNotificationSettings>;
+    /**
+     * ID of the schema where output tables are created
+     */
+    outputSchemaId: pulumi.Input<string>;
+    profileMetricsTableName?: pulumi.Input<string>;
+    /**
+     * The cron schedule
+     */
+    schedule?: pulumi.Input<inputs.DataQualityMonitorDataProfilingConfigSchedule>;
+    /**
+     * Whether to skip creating a default dashboard summarizing data quality metrics
+     */
+    skipBuiltinDashboard?: pulumi.Input<boolean>;
+    /**
+     * List of column expressions to slice data with for targeted analysis. The data is grouped by
+     * each expression independently, resulting in a separate slice for each predicate and its
+     * complements. For example `slicing_exprs=[“col_1”, “col_2 > 10”]` will generate the following
+     * slices: two slices for `col2 > 10` (True and False), and one slice per unique value in
+     * `col1`. For high-cardinality columns, only the top 100 unique values by frequency will
+     * generate slices
+     */
+    slicingExprs?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * `Analysis Configuration` for monitoring snapshot tables
+     */
+    snapshot?: pulumi.Input<inputs.DataQualityMonitorDataProfilingConfigSnapshot>;
+    status?: pulumi.Input<string>;
+    /**
+     * `Analysis Configuration` for monitoring time series tables
+     */
+    timeSeries?: pulumi.Input<inputs.DataQualityMonitorDataProfilingConfigTimeSeries>;
+    /**
+     * Optional argument to specify the warehouse for dashboard creation. If not specified, the first running
+     * warehouse will be used
+     */
+    warehouseId?: pulumi.Input<string>;
+}
+
+export interface DataQualityMonitorDataProfilingConfigCustomMetric {
+    /**
+     * Jinja template for a SQL expression that specifies how to compute the metric. See [create metric definition](https://docs.databricks.com/en/lakehouse-monitoring/custom-metrics.html#create-definition)
+     */
+    definition: pulumi.Input<string>;
+    /**
+     * A list of column names in the input table the metric should be computed for.
+     * Can use ``":table"`` to indicate that the metric needs information from multiple columns
+     */
+    inputColumns: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Name of the metric in the output tables
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The output type of the custom metric
+     */
+    outputDataType: pulumi.Input<string>;
+    /**
+     * The type of the custom metric. Possible values are: `DATA_PROFILING_CUSTOM_METRIC_TYPE_AGGREGATE`, `DATA_PROFILING_CUSTOM_METRIC_TYPE_DERIVED`, `DATA_PROFILING_CUSTOM_METRIC_TYPE_DRIFT`
+     */
+    type: pulumi.Input<string>;
+}
+
+export interface DataQualityMonitorDataProfilingConfigInferenceLog {
+    granularities: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Column for the label
+     */
+    labelColumn?: pulumi.Input<string>;
+    /**
+     * Column for the model identifier
+     */
+    modelIdColumn: pulumi.Input<string>;
+    /**
+     * Column for the prediction
+     */
+    predictionColumn: pulumi.Input<string>;
+    /**
+     * Problem type the model aims to solve. Possible values are: `INFERENCE_PROBLEM_TYPE_CLASSIFICATION`, `INFERENCE_PROBLEM_TYPE_REGRESSION`
+     */
+    problemType: pulumi.Input<string>;
+    timestampColumn: pulumi.Input<string>;
+}
+
+export interface DataQualityMonitorDataProfilingConfigNotificationSettings {
+    /**
+     * Destinations to send notifications on failure/timeout
+     */
+    onFailure?: pulumi.Input<inputs.DataQualityMonitorDataProfilingConfigNotificationSettingsOnFailure>;
+}
+
+export interface DataQualityMonitorDataProfilingConfigNotificationSettingsOnFailure {
+    /**
+     * The list of email addresses to send the notification to. A maximum of 5 email addresses is supported
+     */
+    emailAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface DataQualityMonitorDataProfilingConfigSchedule {
+    pauseStatus?: pulumi.Input<string>;
+    /**
+     * The expression that determines when to run the monitor. See [examples](https://www.quartz-scheduler.org/documentation/quartz-2.3.0/tutorials/crontrigger.html)
+     */
+    quartzCronExpression: pulumi.Input<string>;
+    /**
+     * A Java timezone id. The schedule for a job will be resolved with respect to this timezone.
+     * See `Java TimeZone <http://docs.oracle.com/javase/7/docs/api/java/util/TimeZone.html>`_ for details.
+     * The timezone id (e.g., ``America/Los_Angeles``) in which to evaluate the quartz expression
+     */
+    timezoneId: pulumi.Input<string>;
+}
+
+export interface DataQualityMonitorDataProfilingConfigSnapshot {
+}
+
+export interface DataQualityMonitorDataProfilingConfigTimeSeries {
+    granularities: pulumi.Input<pulumi.Input<string>[]>;
+    timestampColumn: pulumi.Input<string>;
 }
 
 export interface DatabaseInstanceChildInstanceRef {
@@ -1899,10 +1625,7 @@ export interface DatabaseInstanceChildInstanceRef {
      */
     branchTime?: pulumi.Input<string>;
     /**
-     * (string) - xref AIP-129. `lsn` is owned by the client, while `effectiveLsn` is owned by the server.
-     * `lsn` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-     * `effectiveLsn` on the other hand will always bet set in all response messages (Create/Update/Get/List).
-     * For a parent ref instance, this is the LSN on the parent instance from which the
+     * (string) - For a parent ref instance, this is the LSN on the parent instance from which the
      * instance was created.
      * For a child ref instance, this is the LSN on the instance from which the child instance
      * was created
@@ -1925,6 +1648,28 @@ export interface DatabaseInstanceChildInstanceRef {
     uid?: pulumi.Input<string>;
 }
 
+export interface DatabaseInstanceCustomTag {
+    /**
+     * The key of the custom tag
+     */
+    key?: pulumi.Input<string>;
+    /**
+     * The value of the custom tag
+     */
+    value?: pulumi.Input<string>;
+}
+
+export interface DatabaseInstanceEffectiveCustomTag {
+    /**
+     * The key of the custom tag
+     */
+    key?: pulumi.Input<string>;
+    /**
+     * The value of the custom tag
+     */
+    value?: pulumi.Input<string>;
+}
+
 export interface DatabaseInstanceParentInstanceRef {
     /**
      * Branch time of the ref database instance.
@@ -1937,10 +1682,7 @@ export interface DatabaseInstanceParentInstanceRef {
      */
     branchTime?: pulumi.Input<string>;
     /**
-     * (string) - xref AIP-129. `lsn` is owned by the client, while `effectiveLsn` is owned by the server.
-     * `lsn` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-     * `effectiveLsn` on the other hand will always bet set in all response messages (Create/Update/Get/List).
-     * For a parent ref instance, this is the LSN on the parent instance from which the
+     * (string) - For a parent ref instance, this is the LSN on the parent instance from which the
      * instance was created.
      * For a child ref instance, this is the LSN on the instance from which the child instance
      * was created
@@ -2297,7 +2039,7 @@ export interface ExternalLocationFileEventQueueManagedAqs {
     managedResourceId?: pulumi.Input<string>;
     queueUrl?: pulumi.Input<string>;
     /**
-     * The Azure resource group.
+     * The name of the Azure resource group.
      */
     resourceGroup: pulumi.Input<string>;
     /**
@@ -2332,7 +2074,7 @@ export interface ExternalLocationFileEventQueueProvidedAqs {
      */
     queueUrl: pulumi.Input<string>;
     /**
-     * The Azure resource group.
+     * The name of the Azure resource group.
      */
     resourceGroup?: pulumi.Input<string>;
     /**
@@ -2357,1198 +2099,192 @@ export interface ExternalLocationFileEventQueueProvidedSqs {
     queueUrl: pulumi.Input<string>;
 }
 
-export interface GetAccountFederationPolicyOidcPolicy {
+export interface FeatureEngineeringFeatureFunction {
     /**
-     * (list of string) - The allowed token audiences, as specified in the 'aud' claim of federated tokens.
-     * The audience identifier is intended to represent the recipient of the token.
-     * Can be any non-empty string value. As long as the audience in the token matches
-     * at least one audience in the policy, the token is considered a match. If audiences
-     * is unspecified, defaults to your Databricks account id
+     * Extra parameters for parameterized functions
      */
-    audiences?: string[];
+    extraParameters?: pulumi.Input<pulumi.Input<inputs.FeatureEngineeringFeatureFunctionExtraParameter>[]>;
     /**
-     * (string) - The required token issuer, as specified in the 'iss' claim of federated tokens
+     * The type of the function. Possible values are: `APPROX_COUNT_DISTINCT`, `APPROX_PERCENTILE`, `AVG`, `COUNT`, `FIRST`, `LAST`, `MAX`, `MIN`, `STDDEV_POP`, `STDDEV_SAMP`, `SUM`, `VAR_POP`, `VAR_SAMP`
      */
-    issuer?: string;
-    /**
-     * (string) - The public keys used to validate the signature of federated tokens, in JWKS format.
-     * Most use cases should not need to specify this field. If jwksUri and jwksJson
-     * are both unspecified (recommended), Databricks automatically fetches the public
-     * keys from your issuer’s well known endpoint. Databricks strongly recommends
-     * relying on your issuer’s well known endpoint for discovering public keys
-     */
-    jwksJson?: string;
-    /**
-     * (string) - URL of the public keys used to validate the signature of federated tokens, in
-     * JWKS format. Most use cases should not need to specify this field. If jwksUri
-     * and jwksJson are both unspecified (recommended), Databricks automatically
-     * fetches the public keys from your issuer’s well known endpoint. Databricks
-     * strongly recommends relying on your issuer’s well known endpoint for discovering
-     * public keys
-     */
-    jwksUri?: string;
-    /**
-     * (string) - The required token subject, as specified in the subject claim of federated tokens.
-     * Must be specified for service principal federation policies. Must not be specified
-     * for account federation policies
-     */
-    subject?: string;
-    /**
-     * (string) - The claim that contains the subject of the token. If unspecified, the default value
-     * is 'sub'
-     */
-    subjectClaim?: string;
-}
-
-export interface GetAccountFederationPolicyOidcPolicyArgs {
-    /**
-     * (list of string) - The allowed token audiences, as specified in the 'aud' claim of federated tokens.
-     * The audience identifier is intended to represent the recipient of the token.
-     * Can be any non-empty string value. As long as the audience in the token matches
-     * at least one audience in the policy, the token is considered a match. If audiences
-     * is unspecified, defaults to your Databricks account id
-     */
-    audiences?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * (string) - The required token issuer, as specified in the 'iss' claim of federated tokens
-     */
-    issuer?: pulumi.Input<string>;
-    /**
-     * (string) - The public keys used to validate the signature of federated tokens, in JWKS format.
-     * Most use cases should not need to specify this field. If jwksUri and jwksJson
-     * are both unspecified (recommended), Databricks automatically fetches the public
-     * keys from your issuer’s well known endpoint. Databricks strongly recommends
-     * relying on your issuer’s well known endpoint for discovering public keys
-     */
-    jwksJson?: pulumi.Input<string>;
-    /**
-     * (string) - URL of the public keys used to validate the signature of federated tokens, in
-     * JWKS format. Most use cases should not need to specify this field. If jwksUri
-     * and jwksJson are both unspecified (recommended), Databricks automatically
-     * fetches the public keys from your issuer’s well known endpoint. Databricks
-     * strongly recommends relying on your issuer’s well known endpoint for discovering
-     * public keys
-     */
-    jwksUri?: pulumi.Input<string>;
-    /**
-     * (string) - The required token subject, as specified in the subject claim of federated tokens.
-     * Must be specified for service principal federation policies. Must not be specified
-     * for account federation policies
-     */
-    subject?: pulumi.Input<string>;
-    /**
-     * (string) - The claim that contains the subject of the token. If unspecified, the default value
-     * is 'sub'
-     */
-    subjectClaim?: pulumi.Input<string>;
-}
-
-export interface GetAccountNetworkPolicyEgress {
-    /**
-     * (EgressNetworkPolicyNetworkAccessPolicy) - The access policy enforced for egress traffic to the internet
-     */
-    networkAccess?: inputs.GetAccountNetworkPolicyEgressNetworkAccess;
-}
-
-export interface GetAccountNetworkPolicyEgressArgs {
-    /**
-     * (EgressNetworkPolicyNetworkAccessPolicy) - The access policy enforced for egress traffic to the internet
-     */
-    networkAccess?: pulumi.Input<inputs.GetAccountNetworkPolicyEgressNetworkAccessArgs>;
-}
-
-export interface GetAccountNetworkPolicyEgressNetworkAccess {
-    /**
-     * (list of EgressNetworkPolicyNetworkAccessPolicyInternetDestination) - List of internet destinations that serverless workloads are allowed to access when in RESTRICTED_ACCESS mode
-     */
-    allowedInternetDestinations?: inputs.GetAccountNetworkPolicyEgressNetworkAccessAllowedInternetDestination[];
-    /**
-     * (list of EgressNetworkPolicyNetworkAccessPolicyStorageDestination) - List of storage destinations that serverless workloads are allowed to access when in RESTRICTED_ACCESS mode
-     */
-    allowedStorageDestinations?: inputs.GetAccountNetworkPolicyEgressNetworkAccessAllowedStorageDestination[];
-    /**
-     * (EgressNetworkPolicyNetworkAccessPolicyPolicyEnforcement) - Optional. When policyEnforcement is not provided, we default to ENFORCE_MODE_ALL_SERVICES
-     */
-    policyEnforcement?: inputs.GetAccountNetworkPolicyEgressNetworkAccessPolicyEnforcement;
-    /**
-     * (string) - The restriction mode that controls how serverless workloads can access the internet. Possible values are: `FULL_ACCESS`, `RESTRICTED_ACCESS`
-     */
-    restrictionMode: string;
-}
-
-export interface GetAccountNetworkPolicyEgressNetworkAccessArgs {
-    /**
-     * (list of EgressNetworkPolicyNetworkAccessPolicyInternetDestination) - List of internet destinations that serverless workloads are allowed to access when in RESTRICTED_ACCESS mode
-     */
-    allowedInternetDestinations?: pulumi.Input<pulumi.Input<inputs.GetAccountNetworkPolicyEgressNetworkAccessAllowedInternetDestinationArgs>[]>;
-    /**
-     * (list of EgressNetworkPolicyNetworkAccessPolicyStorageDestination) - List of storage destinations that serverless workloads are allowed to access when in RESTRICTED_ACCESS mode
-     */
-    allowedStorageDestinations?: pulumi.Input<pulumi.Input<inputs.GetAccountNetworkPolicyEgressNetworkAccessAllowedStorageDestinationArgs>[]>;
-    /**
-     * (EgressNetworkPolicyNetworkAccessPolicyPolicyEnforcement) - Optional. When policyEnforcement is not provided, we default to ENFORCE_MODE_ALL_SERVICES
-     */
-    policyEnforcement?: pulumi.Input<inputs.GetAccountNetworkPolicyEgressNetworkAccessPolicyEnforcementArgs>;
-    /**
-     * (string) - The restriction mode that controls how serverless workloads can access the internet. Possible values are: `FULL_ACCESS`, `RESTRICTED_ACCESS`
-     */
-    restrictionMode: pulumi.Input<string>;
-}
-
-export interface GetAccountNetworkPolicyEgressNetworkAccessAllowedInternetDestination {
-    /**
-     * (string) - The internet destination to which access will be allowed. Format dependent on the destination type
-     */
-    destination?: string;
-    /**
-     * (string) - The type of internet destination. Currently only DNS_NAME is supported. Possible values are: `DNS_NAME`
-     */
-    internetDestinationType?: string;
-}
-
-export interface GetAccountNetworkPolicyEgressNetworkAccessAllowedInternetDestinationArgs {
-    /**
-     * (string) - The internet destination to which access will be allowed. Format dependent on the destination type
-     */
-    destination?: pulumi.Input<string>;
-    /**
-     * (string) - The type of internet destination. Currently only DNS_NAME is supported. Possible values are: `DNS_NAME`
-     */
-    internetDestinationType?: pulumi.Input<string>;
-}
-
-export interface GetAccountNetworkPolicyEgressNetworkAccessAllowedStorageDestination {
-    /**
-     * (string) - The Azure storage account name
-     */
-    azureStorageAccount?: string;
-    /**
-     * (string) - The Azure storage service type (blob, dfs, etc.)
-     */
-    azureStorageService?: string;
-    /**
-     * (string)
-     */
-    bucketName?: string;
-    /**
-     * (string)
-     */
-    region?: string;
-    /**
-     * (string) - The type of storage destination. Possible values are: `AWS_S3`, `AZURE_STORAGE`, `GOOGLE_CLOUD_STORAGE`
-     */
-    storageDestinationType?: string;
-}
-
-export interface GetAccountNetworkPolicyEgressNetworkAccessAllowedStorageDestinationArgs {
-    /**
-     * (string) - The Azure storage account name
-     */
-    azureStorageAccount?: pulumi.Input<string>;
-    /**
-     * (string) - The Azure storage service type (blob, dfs, etc.)
-     */
-    azureStorageService?: pulumi.Input<string>;
-    /**
-     * (string)
-     */
-    bucketName?: pulumi.Input<string>;
-    /**
-     * (string)
-     */
-    region?: pulumi.Input<string>;
-    /**
-     * (string) - The type of storage destination. Possible values are: `AWS_S3`, `AZURE_STORAGE`, `GOOGLE_CLOUD_STORAGE`
-     */
-    storageDestinationType?: pulumi.Input<string>;
-}
-
-export interface GetAccountNetworkPolicyEgressNetworkAccessPolicyEnforcement {
-    /**
-     * (list of string) - When empty, it means dry run for all products.
-     * When non-empty, it means dry run for specific products and for the other products, they will run in enforced mode
-     */
-    dryRunModeProductFilters?: string[];
-    /**
-     * (string) - The mode of policy enforcement. ENFORCED blocks traffic that violates policy,
-     * while DRY_RUN only logs violations without blocking. When not specified,
-     * defaults to ENFORCED. Possible values are: `DRY_RUN`, `ENFORCED`
-     */
-    enforcementMode?: string;
-}
-
-export interface GetAccountNetworkPolicyEgressNetworkAccessPolicyEnforcementArgs {
-    /**
-     * (list of string) - When empty, it means dry run for all products.
-     * When non-empty, it means dry run for specific products and for the other products, they will run in enforced mode
-     */
-    dryRunModeProductFilters?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * (string) - The mode of policy enforcement. ENFORCED blocks traffic that violates policy,
-     * while DRY_RUN only logs violations without blocking. When not specified,
-     * defaults to ENFORCED. Possible values are: `DRY_RUN`, `ENFORCED`
-     */
-    enforcementMode?: pulumi.Input<string>;
-}
-
-export interface GetAccountSettingV2AibiDashboardEmbeddingAccessPolicy {
-    /**
-     * (string) - . Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
-     */
-    accessPolicyType: string;
-}
-
-export interface GetAccountSettingV2AibiDashboardEmbeddingAccessPolicyArgs {
-    /**
-     * (string) - . Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
-     */
-    accessPolicyType: pulumi.Input<string>;
-}
-
-export interface GetAccountSettingV2AibiDashboardEmbeddingApprovedDomains {
-    /**
-     * (list of string)
-     */
-    approvedDomains?: string[];
-}
-
-export interface GetAccountSettingV2AibiDashboardEmbeddingApprovedDomainsArgs {
-    /**
-     * (list of string)
-     */
-    approvedDomains?: pulumi.Input<pulumi.Input<string>[]>;
-}
-
-export interface GetAccountSettingV2AutomaticClusterUpdateWorkspace {
-    /**
-     * (boolean)
-     */
-    canToggle?: boolean;
-    /**
-     * (boolean)
-     */
-    enabled?: boolean;
-    /**
-     * (ClusterAutoRestartMessageEnablementDetails)
-     */
-    enablementDetails?: inputs.GetAccountSettingV2AutomaticClusterUpdateWorkspaceEnablementDetails;
-    /**
-     * (ClusterAutoRestartMessageMaintenanceWindow)
-     */
-    maintenanceWindow?: inputs.GetAccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindow;
-    /**
-     * (boolean)
-     */
-    restartEvenIfNoUpdatesAvailable?: boolean;
-}
-
-export interface GetAccountSettingV2AutomaticClusterUpdateWorkspaceArgs {
-    /**
-     * (boolean)
-     */
-    canToggle?: pulumi.Input<boolean>;
-    /**
-     * (boolean)
-     */
-    enabled?: pulumi.Input<boolean>;
-    /**
-     * (ClusterAutoRestartMessageEnablementDetails)
-     */
-    enablementDetails?: pulumi.Input<inputs.GetAccountSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsArgs>;
-    /**
-     * (ClusterAutoRestartMessageMaintenanceWindow)
-     */
-    maintenanceWindow?: pulumi.Input<inputs.GetAccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowArgs>;
-    /**
-     * (boolean)
-     */
-    restartEvenIfNoUpdatesAvailable?: pulumi.Input<boolean>;
-}
-
-export interface GetAccountSettingV2AutomaticClusterUpdateWorkspaceEnablementDetails {
-    /**
-     * (boolean) - The feature is force enabled if compliance mode is active
-     */
-    forcedForComplianceMode?: boolean;
-    /**
-     * (boolean) - The feature is unavailable if the corresponding entitlement disabled (see getShieldEntitlementEnable)
-     */
-    unavailableForDisabledEntitlement?: boolean;
-    /**
-     * (boolean) - The feature is unavailable if the customer doesn't have enterprise tier
-     */
-    unavailableForNonEnterpriseTier?: boolean;
-}
-
-export interface GetAccountSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsArgs {
-    /**
-     * (boolean) - The feature is force enabled if compliance mode is active
-     */
-    forcedForComplianceMode?: pulumi.Input<boolean>;
-    /**
-     * (boolean) - The feature is unavailable if the corresponding entitlement disabled (see getShieldEntitlementEnable)
-     */
-    unavailableForDisabledEntitlement?: pulumi.Input<boolean>;
-    /**
-     * (boolean) - The feature is unavailable if the customer doesn't have enterprise tier
-     */
-    unavailableForNonEnterpriseTier?: pulumi.Input<boolean>;
-}
-
-export interface GetAccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindow {
-    /**
-     * (ClusterAutoRestartMessageMaintenanceWindowWeekDayBasedSchedule)
-     */
-    weekDayBasedSchedule?: inputs.GetAccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule;
-}
-
-export interface GetAccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowArgs {
-    /**
-     * (ClusterAutoRestartMessageMaintenanceWindowWeekDayBasedSchedule)
-     */
-    weekDayBasedSchedule?: pulumi.Input<inputs.GetAccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgs>;
-}
-
-export interface GetAccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule {
-    /**
-     * (string) - . Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
-     */
-    dayOfWeek?: string;
-    /**
-     * (string) - . Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
-     */
-    frequency?: string;
-    /**
-     * (ClusterAutoRestartMessageMaintenanceWindowWindowStartTime)
-     */
-    windowStartTime?: inputs.GetAccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime;
-}
-
-export interface GetAccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgs {
-    /**
-     * (string) - . Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
-     */
-    dayOfWeek?: pulumi.Input<string>;
-    /**
-     * (string) - . Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
-     */
-    frequency?: pulumi.Input<string>;
-    /**
-     * (ClusterAutoRestartMessageMaintenanceWindowWindowStartTime)
-     */
-    windowStartTime?: pulumi.Input<inputs.GetAccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs>;
-}
-
-export interface GetAccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime {
-    /**
-     * (integer)
-     */
-    hours?: number;
-    /**
-     * (integer)
-     */
-    minutes?: number;
-}
-
-export interface GetAccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs {
-    /**
-     * (integer)
-     */
-    hours?: pulumi.Input<number>;
-    /**
-     * (integer)
-     */
-    minutes?: pulumi.Input<number>;
-}
-
-export interface GetAccountSettingV2BooleanVal {
-    /**
-     * (string) - Represents a generic string value
-     */
-    value?: boolean;
-}
-
-export interface GetAccountSettingV2BooleanValArgs {
-    /**
-     * (string) - Represents a generic string value
-     */
-    value?: pulumi.Input<boolean>;
-}
-
-export interface GetAccountSettingV2DefaultDataSecurityMode {
-    /**
-     * (string) - . Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
-     */
-    status: string;
-}
-
-export interface GetAccountSettingV2DefaultDataSecurityModeArgs {
-    /**
-     * (string) - . Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
-     */
-    status: pulumi.Input<string>;
-}
-
-export interface GetAccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy {
-    /**
-     * (string) - . Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
-     */
-    accessPolicyType: string;
-}
-
-export interface GetAccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgs {
-    /**
-     * (string) - . Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
-     */
-    accessPolicyType: pulumi.Input<string>;
-}
-
-export interface GetAccountSettingV2EffectiveAibiDashboardEmbeddingApprovedDomains {
-    /**
-     * (list of string)
-     */
-    approvedDomains?: string[];
-}
-
-export interface GetAccountSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgs {
-    /**
-     * (list of string)
-     */
-    approvedDomains?: pulumi.Input<pulumi.Input<string>[]>;
-}
-
-export interface GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspace {
-    /**
-     * (boolean)
-     */
-    canToggle?: boolean;
-    /**
-     * (boolean)
-     */
-    enabled?: boolean;
-    /**
-     * (ClusterAutoRestartMessageEnablementDetails)
-     */
-    enablementDetails?: inputs.GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetails;
-    /**
-     * (ClusterAutoRestartMessageMaintenanceWindow)
-     */
-    maintenanceWindow?: inputs.GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindow;
-    /**
-     * (boolean)
-     */
-    restartEvenIfNoUpdatesAvailable?: boolean;
-}
-
-export interface GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgs {
-    /**
-     * (boolean)
-     */
-    canToggle?: pulumi.Input<boolean>;
-    /**
-     * (boolean)
-     */
-    enabled?: pulumi.Input<boolean>;
-    /**
-     * (ClusterAutoRestartMessageEnablementDetails)
-     */
-    enablementDetails?: pulumi.Input<inputs.GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsArgs>;
-    /**
-     * (ClusterAutoRestartMessageMaintenanceWindow)
-     */
-    maintenanceWindow?: pulumi.Input<inputs.GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowArgs>;
-    /**
-     * (boolean)
-     */
-    restartEvenIfNoUpdatesAvailable?: pulumi.Input<boolean>;
-}
-
-export interface GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetails {
-    /**
-     * (boolean) - The feature is force enabled if compliance mode is active
-     */
-    forcedForComplianceMode?: boolean;
-    /**
-     * (boolean) - The feature is unavailable if the corresponding entitlement disabled (see getShieldEntitlementEnable)
-     */
-    unavailableForDisabledEntitlement?: boolean;
-    /**
-     * (boolean) - The feature is unavailable if the customer doesn't have enterprise tier
-     */
-    unavailableForNonEnterpriseTier?: boolean;
-}
-
-export interface GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsArgs {
-    /**
-     * (boolean) - The feature is force enabled if compliance mode is active
-     */
-    forcedForComplianceMode?: pulumi.Input<boolean>;
-    /**
-     * (boolean) - The feature is unavailable if the corresponding entitlement disabled (see getShieldEntitlementEnable)
-     */
-    unavailableForDisabledEntitlement?: pulumi.Input<boolean>;
-    /**
-     * (boolean) - The feature is unavailable if the customer doesn't have enterprise tier
-     */
-    unavailableForNonEnterpriseTier?: pulumi.Input<boolean>;
-}
-
-export interface GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindow {
-    /**
-     * (ClusterAutoRestartMessageMaintenanceWindowWeekDayBasedSchedule)
-     */
-    weekDayBasedSchedule?: inputs.GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule;
-}
-
-export interface GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowArgs {
-    /**
-     * (ClusterAutoRestartMessageMaintenanceWindowWeekDayBasedSchedule)
-     */
-    weekDayBasedSchedule?: pulumi.Input<inputs.GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgs>;
-}
-
-export interface GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule {
-    /**
-     * (string) - . Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
-     */
-    dayOfWeek?: string;
-    /**
-     * (string) - . Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
-     */
-    frequency?: string;
-    /**
-     * (ClusterAutoRestartMessageMaintenanceWindowWindowStartTime)
-     */
-    windowStartTime?: inputs.GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime;
-}
-
-export interface GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgs {
-    /**
-     * (string) - . Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
-     */
-    dayOfWeek?: pulumi.Input<string>;
-    /**
-     * (string) - . Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
-     */
-    frequency?: pulumi.Input<string>;
-    /**
-     * (ClusterAutoRestartMessageMaintenanceWindowWindowStartTime)
-     */
-    windowStartTime?: pulumi.Input<inputs.GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs>;
-}
-
-export interface GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime {
-    /**
-     * (integer)
-     */
-    hours?: number;
-    /**
-     * (integer)
-     */
-    minutes?: number;
-}
-
-export interface GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs {
-    /**
-     * (integer)
-     */
-    hours?: pulumi.Input<number>;
-    /**
-     * (integer)
-     */
-    minutes?: pulumi.Input<number>;
-}
-
-export interface GetAccountSettingV2EffectiveDefaultDataSecurityMode {
-    /**
-     * (string) - . Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
-     */
-    status: string;
-}
-
-export interface GetAccountSettingV2EffectiveDefaultDataSecurityModeArgs {
-    /**
-     * (string) - . Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
-     */
-    status: pulumi.Input<string>;
-}
-
-export interface GetAccountSettingV2EffectivePersonalCompute {
-    /**
-     * (string) - Represents a generic string value
-     */
-    value?: string;
-}
-
-export interface GetAccountSettingV2EffectivePersonalComputeArgs {
-    /**
-     * (string) - Represents a generic string value
-     */
-    value?: pulumi.Input<string>;
-}
-
-export interface GetAccountSettingV2EffectiveRestrictWorkspaceAdmins {
-    /**
-     * (string) - . Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
-     */
-    status: string;
-}
-
-export interface GetAccountSettingV2EffectiveRestrictWorkspaceAdminsArgs {
-    /**
-     * (string) - . Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
-     */
-    status: pulumi.Input<string>;
-}
-
-export interface GetAccountSettingV2IntegerVal {
-    /**
-     * (string) - Represents a generic string value
-     */
-    value?: number;
-}
-
-export interface GetAccountSettingV2IntegerValArgs {
-    /**
-     * (string) - Represents a generic string value
-     */
-    value?: pulumi.Input<number>;
-}
-
-export interface GetAccountSettingV2PersonalCompute {
-    /**
-     * (string) - Represents a generic string value
-     */
-    value?: string;
-}
-
-export interface GetAccountSettingV2PersonalComputeArgs {
-    /**
-     * (string) - Represents a generic string value
-     */
-    value?: pulumi.Input<string>;
-}
-
-export interface GetAccountSettingV2RestrictWorkspaceAdmins {
-    /**
-     * (string) - . Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
-     */
-    status: string;
-}
-
-export interface GetAccountSettingV2RestrictWorkspaceAdminsArgs {
-    /**
-     * (string) - . Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
-     */
-    status: pulumi.Input<string>;
-}
-
-export interface GetAccountSettingV2StringVal {
-    /**
-     * (string) - Represents a generic string value
-     */
-    value?: string;
-}
-
-export interface GetAccountSettingV2StringValArgs {
-    /**
-     * (string) - Represents a generic string value
-     */
-    value?: pulumi.Input<string>;
-}
-
-export interface GetAlertV2Evaluation {
-    /**
-     * (string) - Operator used for comparison in alert evaluation. Possible values are: `EQUAL`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `IS_NOT_NULL`, `IS_NULL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`
-     */
-    comparisonOperator?: string;
-    /**
-     * (string) - Alert state if result is empty. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
-     */
-    emptyResultState?: string;
-    /**
-     * (string) - Timestamp of the last evaluation
-     */
-    lastEvaluatedAt?: string;
-    /**
-     * (AlertV2Notification) - User or Notification Destination to notify when alert is triggered
-     */
-    notification?: inputs.GetAlertV2EvaluationNotification;
-    /**
-     * (AlertV2OperandColumn) - Source column from result to use to evaluate alert
-     */
-    source?: inputs.GetAlertV2EvaluationSource;
-    /**
-     * (string) - Latest state of alert evaluation. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
-     */
-    state?: string;
-    /**
-     * (AlertV2Operand) - Threshold to user for alert evaluation, can be a column or a value
-     */
-    threshold?: inputs.GetAlertV2EvaluationThreshold;
-}
-
-export interface GetAlertV2EvaluationArgs {
-    /**
-     * (string) - Operator used for comparison in alert evaluation. Possible values are: `EQUAL`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `IS_NOT_NULL`, `IS_NULL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`
-     */
-    comparisonOperator?: pulumi.Input<string>;
-    /**
-     * (string) - Alert state if result is empty. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
-     */
-    emptyResultState?: pulumi.Input<string>;
-    /**
-     * (string) - Timestamp of the last evaluation
-     */
-    lastEvaluatedAt?: pulumi.Input<string>;
-    /**
-     * (AlertV2Notification) - User or Notification Destination to notify when alert is triggered
-     */
-    notification?: pulumi.Input<inputs.GetAlertV2EvaluationNotificationArgs>;
-    /**
-     * (AlertV2OperandColumn) - Source column from result to use to evaluate alert
-     */
-    source?: pulumi.Input<inputs.GetAlertV2EvaluationSourceArgs>;
-    /**
-     * (string) - Latest state of alert evaluation. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
-     */
-    state?: pulumi.Input<string>;
-    /**
-     * (AlertV2Operand) - Threshold to user for alert evaluation, can be a column or a value
-     */
-    threshold?: pulumi.Input<inputs.GetAlertV2EvaluationThresholdArgs>;
-}
-
-export interface GetAlertV2EvaluationNotification {
-    /**
-     * (boolean) - Whether to notify alert subscribers when alert returns back to normal
-     */
-    notifyOnOk?: boolean;
-    /**
-     * (integer) - Number of seconds an alert must wait after being triggered to rearm itself. After rearming, it can be triggered again. If 0 or not specified, the alert will not be triggered again
-     */
-    retriggerSeconds?: number;
-    /**
-     * (list of AlertV2Subscription)
-     */
-    subscriptions?: inputs.GetAlertV2EvaluationNotificationSubscription[];
-}
-
-export interface GetAlertV2EvaluationNotificationArgs {
-    /**
-     * (boolean) - Whether to notify alert subscribers when alert returns back to normal
-     */
-    notifyOnOk?: pulumi.Input<boolean>;
-    /**
-     * (integer) - Number of seconds an alert must wait after being triggered to rearm itself. After rearming, it can be triggered again. If 0 or not specified, the alert will not be triggered again
-     */
-    retriggerSeconds?: pulumi.Input<number>;
-    /**
-     * (list of AlertV2Subscription)
-     */
-    subscriptions?: pulumi.Input<pulumi.Input<inputs.GetAlertV2EvaluationNotificationSubscriptionArgs>[]>;
-}
-
-export interface GetAlertV2EvaluationNotificationSubscription {
-    /**
-     * (string)
-     */
-    destinationId?: string;
-    /**
-     * (string)
-     */
-    userEmail?: string;
-}
-
-export interface GetAlertV2EvaluationNotificationSubscriptionArgs {
-    /**
-     * (string)
-     */
-    destinationId?: pulumi.Input<string>;
-    /**
-     * (string)
-     */
-    userEmail?: pulumi.Input<string>;
-}
-
-export interface GetAlertV2EvaluationSource {
-    /**
-     * (string) - . Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
-     */
-    aggregation?: string;
-    /**
-     * (string)
-     */
-    display?: string;
-    /**
-     * (string)
-     */
-    name?: string;
-}
-
-export interface GetAlertV2EvaluationSourceArgs {
-    /**
-     * (string) - . Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
-     */
-    aggregation?: pulumi.Input<string>;
-    /**
-     * (string)
-     */
-    display?: pulumi.Input<string>;
-    /**
-     * (string)
-     */
-    name?: pulumi.Input<string>;
-}
-
-export interface GetAlertV2EvaluationThreshold {
-    /**
-     * (AlertV2OperandColumn)
-     */
-    column?: inputs.GetAlertV2EvaluationThresholdColumn;
-    /**
-     * (AlertV2OperandValue)
-     */
-    value?: inputs.GetAlertV2EvaluationThresholdValue;
-}
-
-export interface GetAlertV2EvaluationThresholdArgs {
-    /**
-     * (AlertV2OperandColumn)
-     */
-    column?: pulumi.Input<inputs.GetAlertV2EvaluationThresholdColumnArgs>;
-    /**
-     * (AlertV2OperandValue)
-     */
-    value?: pulumi.Input<inputs.GetAlertV2EvaluationThresholdValueArgs>;
-}
-
-export interface GetAlertV2EvaluationThresholdColumn {
-    /**
-     * (string) - . Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
-     */
-    aggregation?: string;
-    /**
-     * (string)
-     */
-    display?: string;
-    /**
-     * (string)
-     */
-    name?: string;
-}
-
-export interface GetAlertV2EvaluationThresholdColumnArgs {
-    /**
-     * (string) - . Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
-     */
-    aggregation?: pulumi.Input<string>;
-    /**
-     * (string)
-     */
-    display?: pulumi.Input<string>;
-    /**
-     * (string)
-     */
-    name?: pulumi.Input<string>;
-}
-
-export interface GetAlertV2EvaluationThresholdValue {
-    /**
-     * (boolean)
-     */
-    boolValue?: boolean;
-    /**
-     * (number)
-     */
-    doubleValue?: number;
-    /**
-     * (string)
-     */
-    stringValue?: string;
-}
-
-export interface GetAlertV2EvaluationThresholdValueArgs {
-    /**
-     * (boolean)
-     */
-    boolValue?: pulumi.Input<boolean>;
-    /**
-     * (number)
-     */
-    doubleValue?: pulumi.Input<number>;
-    /**
-     * (string)
-     */
-    stringValue?: pulumi.Input<string>;
-}
-
-export interface GetAlertV2RunAs {
-    /**
-     * (string) - Application ID of an active service principal. Setting this field requires the `servicePrincipal/user` role
-     */
-    servicePrincipalName?: string;
-    /**
-     * (string) - The email of an active workspace user. Can only set this field to their own email
-     */
-    userName?: string;
-}
-
-export interface GetAlertV2RunAsArgs {
-    /**
-     * (string) - Application ID of an active service principal. Setting this field requires the `servicePrincipal/user` role
-     */
-    servicePrincipalName?: pulumi.Input<string>;
-    /**
-     * (string) - The email of an active workspace user. Can only set this field to their own email
-     */
-    userName?: pulumi.Input<string>;
-}
-
-export interface GetAlertV2Schedule {
-    /**
-     * (string) - Indicate whether this schedule is paused or not. Possible values are: `PAUSED`, `UNPAUSED`
-     */
-    pauseStatus?: string;
-    /**
-     * (string) - A cron expression using quartz syntax that specifies the schedule for this pipeline.
-     * Should use the quartz format described here: http://www.quartz-scheduler.org/documentation/quartz-2.1.7/tutorials/tutorial-lesson-06.html
-     */
-    quartzCronSchedule?: string;
-    /**
-     * (string) - A Java timezone id. The schedule will be resolved using this timezone.
-     * This will be combined with the quartzCronSchedule to determine the schedule.
-     * See https://docs.databricks.com/sql/language-manual/sql-ref-syntax-aux-conf-mgmt-set-timezone.html for details
-     */
-    timezoneId?: string;
-}
-
-export interface GetAlertV2ScheduleArgs {
-    /**
-     * (string) - Indicate whether this schedule is paused or not. Possible values are: `PAUSED`, `UNPAUSED`
-     */
-    pauseStatus?: pulumi.Input<string>;
-    /**
-     * (string) - A cron expression using quartz syntax that specifies the schedule for this pipeline.
-     * Should use the quartz format described here: http://www.quartz-scheduler.org/documentation/quartz-2.1.7/tutorials/tutorial-lesson-06.html
-     */
-    quartzCronSchedule?: pulumi.Input<string>;
-    /**
-     * (string) - A Java timezone id. The schedule will be resolved using this timezone.
-     * This will be combined with the quartzCronSchedule to determine the schedule.
-     * See https://docs.databricks.com/sql/language-manual/sql-ref-syntax-aux-conf-mgmt-set-timezone.html for details
-     */
-    timezoneId?: pulumi.Input<string>;
-}
-
-export interface GetAppsSettingsCustomTemplateManifest {
-    /**
-     * (string) - Description of the App Resource
-     */
-    description?: string;
-    /**
-     * The name of the template. It must contain only alphanumeric characters, hyphens, underscores, and whitespaces.
-     * It must be unique within the workspace
-     */
-    name: string;
-    /**
-     * (list of AppManifestAppResourceSpec)
-     */
-    resourceSpecs?: inputs.GetAppsSettingsCustomTemplateManifestResourceSpec[];
-    /**
-     * (integer) - The manifest schema version, for now only 1 is allowed
-     */
-    version: number;
-}
-
-export interface GetAppsSettingsCustomTemplateManifestArgs {
-    /**
-     * (string) - Description of the App Resource
-     */
-    description?: pulumi.Input<string>;
-    /**
-     * The name of the template. It must contain only alphanumeric characters, hyphens, underscores, and whitespaces.
-     * It must be unique within the workspace
-     */
-    name: pulumi.Input<string>;
-    /**
-     * (list of AppManifestAppResourceSpec)
-     */
-    resourceSpecs?: pulumi.Input<pulumi.Input<inputs.GetAppsSettingsCustomTemplateManifestResourceSpecArgs>[]>;
-    /**
-     * (integer) - The manifest schema version, for now only 1 is allowed
-     */
-    version: pulumi.Input<number>;
-}
-
-export interface GetAppsSettingsCustomTemplateManifestResourceSpec {
-    /**
-     * (string) - Description of the App Resource
-     */
-    description?: string;
-    /**
-     * (AppManifestAppResourceJobSpec)
-     */
-    jobSpec?: inputs.GetAppsSettingsCustomTemplateManifestResourceSpecJobSpec;
-    /**
-     * The name of the template. It must contain only alphanumeric characters, hyphens, underscores, and whitespaces.
-     * It must be unique within the workspace
-     */
-    name: string;
-    /**
-     * (AppManifestAppResourceSecretSpec)
-     */
-    secretSpec?: inputs.GetAppsSettingsCustomTemplateManifestResourceSpecSecretSpec;
-    /**
-     * (AppManifestAppResourceServingEndpointSpec)
-     */
-    servingEndpointSpec?: inputs.GetAppsSettingsCustomTemplateManifestResourceSpecServingEndpointSpec;
-    /**
-     * (AppManifestAppResourceSqlWarehouseSpec)
-     */
-    sqlWarehouseSpec?: inputs.GetAppsSettingsCustomTemplateManifestResourceSpecSqlWarehouseSpec;
-    /**
-     * (AppManifestAppResourceUcSecurableSpec)
-     */
-    ucSecurableSpec?: inputs.GetAppsSettingsCustomTemplateManifestResourceSpecUcSecurableSpec;
-}
-
-export interface GetAppsSettingsCustomTemplateManifestResourceSpecArgs {
-    /**
-     * (string) - Description of the App Resource
-     */
-    description?: pulumi.Input<string>;
-    /**
-     * (AppManifestAppResourceJobSpec)
-     */
-    jobSpec?: pulumi.Input<inputs.GetAppsSettingsCustomTemplateManifestResourceSpecJobSpecArgs>;
-    /**
-     * The name of the template. It must contain only alphanumeric characters, hyphens, underscores, and whitespaces.
-     * It must be unique within the workspace
-     */
-    name: pulumi.Input<string>;
-    /**
-     * (AppManifestAppResourceSecretSpec)
-     */
-    secretSpec?: pulumi.Input<inputs.GetAppsSettingsCustomTemplateManifestResourceSpecSecretSpecArgs>;
-    /**
-     * (AppManifestAppResourceServingEndpointSpec)
-     */
-    servingEndpointSpec?: pulumi.Input<inputs.GetAppsSettingsCustomTemplateManifestResourceSpecServingEndpointSpecArgs>;
-    /**
-     * (AppManifestAppResourceSqlWarehouseSpec)
-     */
-    sqlWarehouseSpec?: pulumi.Input<inputs.GetAppsSettingsCustomTemplateManifestResourceSpecSqlWarehouseSpecArgs>;
-    /**
-     * (AppManifestAppResourceUcSecurableSpec)
-     */
-    ucSecurableSpec?: pulumi.Input<inputs.GetAppsSettingsCustomTemplateManifestResourceSpecUcSecurableSpecArgs>;
-}
-
-export interface GetAppsSettingsCustomTemplateManifestResourceSpecJobSpec {
-    /**
-     * (string) - . Possible values are: `MANAGE`, `READ_VOLUME`, `WRITE_VOLUME`
-     */
-    permission: string;
-}
-
-export interface GetAppsSettingsCustomTemplateManifestResourceSpecJobSpecArgs {
-    /**
-     * (string) - . Possible values are: `MANAGE`, `READ_VOLUME`, `WRITE_VOLUME`
-     */
-    permission: pulumi.Input<string>;
-}
-
-export interface GetAppsSettingsCustomTemplateManifestResourceSpecSecretSpec {
-    /**
-     * (string) - . Possible values are: `MANAGE`, `READ_VOLUME`, `WRITE_VOLUME`
-     */
-    permission: string;
-}
-
-export interface GetAppsSettingsCustomTemplateManifestResourceSpecSecretSpecArgs {
-    /**
-     * (string) - . Possible values are: `MANAGE`, `READ_VOLUME`, `WRITE_VOLUME`
-     */
-    permission: pulumi.Input<string>;
-}
-
-export interface GetAppsSettingsCustomTemplateManifestResourceSpecServingEndpointSpec {
-    /**
-     * (string) - . Possible values are: `MANAGE`, `READ_VOLUME`, `WRITE_VOLUME`
-     */
-    permission: string;
-}
-
-export interface GetAppsSettingsCustomTemplateManifestResourceSpecServingEndpointSpecArgs {
-    /**
-     * (string) - . Possible values are: `MANAGE`, `READ_VOLUME`, `WRITE_VOLUME`
-     */
-    permission: pulumi.Input<string>;
-}
-
-export interface GetAppsSettingsCustomTemplateManifestResourceSpecSqlWarehouseSpec {
-    /**
-     * (string) - . Possible values are: `MANAGE`, `READ_VOLUME`, `WRITE_VOLUME`
-     */
-    permission: string;
-}
-
-export interface GetAppsSettingsCustomTemplateManifestResourceSpecSqlWarehouseSpecArgs {
-    /**
-     * (string) - . Possible values are: `MANAGE`, `READ_VOLUME`, `WRITE_VOLUME`
-     */
-    permission: pulumi.Input<string>;
-}
-
-export interface GetAppsSettingsCustomTemplateManifestResourceSpecUcSecurableSpec {
-    /**
-     * (string) - . Possible values are: `MANAGE`, `READ_VOLUME`, `WRITE_VOLUME`
-     */
-    permission: string;
-    /**
-     * (string) - . Possible values are: `VOLUME`
-     */
-    securableType: string;
-}
-
-export interface GetAppsSettingsCustomTemplateManifestResourceSpecUcSecurableSpecArgs {
-    /**
-     * (string) - . Possible values are: `MANAGE`, `READ_VOLUME`, `WRITE_VOLUME`
-     */
-    permission: pulumi.Input<string>;
-    /**
-     * (string) - . Possible values are: `VOLUME`
-     */
-    securableType: pulumi.Input<string>;
-}
-
-export interface GetBudgetPolicyCustomTag {
-    /**
-     * (string) - The key of the tag.
-     * - Must be unique among all custom tags of the same policy
-     * - Cannot be “budget-policy-name”, “budget-policy-id” or "budget-policy-resolution-result" -
-     * these tags are preserved
-     */
-    key: string;
-    /**
-     * (string) - The value of the tag
-     */
-    value?: string;
+    functionType: pulumi.Input<string>;
 }
 
-export interface GetBudgetPolicyCustomTagArgs {
+export interface FeatureEngineeringFeatureFunctionExtraParameter {
     /**
-     * (string) - The key of the tag.
-     * - Must be unique among all custom tags of the same policy
-     * - Cannot be “budget-policy-name”, “budget-policy-id” or "budget-policy-resolution-result" -
-     * these tags are preserved
+     * The name of the parameter
      */
     key: pulumi.Input<string>;
     /**
-     * (string) - The value of the tag
+     * The value of the parameter
      */
-    value?: pulumi.Input<string>;
+    value: pulumi.Input<string>;
+}
+
+export interface FeatureEngineeringFeatureSource {
+    deltaTableSource?: pulumi.Input<inputs.FeatureEngineeringFeatureSourceDeltaTableSource>;
+}
+
+export interface FeatureEngineeringFeatureSourceDeltaTableSource {
+    /**
+     * The entity columns of the Delta table
+     */
+    entityColumns: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The full three-part name (catalog, schema, name) of the feature
+     */
+    fullName: pulumi.Input<string>;
+    /**
+     * The timeseries column of the Delta table
+     */
+    timeseriesColumn: pulumi.Input<string>;
+}
+
+export interface FeatureEngineeringFeatureTimeWindow {
+    continuous?: pulumi.Input<inputs.FeatureEngineeringFeatureTimeWindowContinuous>;
+    sliding?: pulumi.Input<inputs.FeatureEngineeringFeatureTimeWindowSliding>;
+    tumbling?: pulumi.Input<inputs.FeatureEngineeringFeatureTimeWindowTumbling>;
+}
+
+export interface FeatureEngineeringFeatureTimeWindowContinuous {
+    /**
+     * The offset of the continuous window (must be non-positive)
+     */
+    offset?: pulumi.Input<string>;
+    windowDuration: pulumi.Input<string>;
+}
+
+export interface FeatureEngineeringFeatureTimeWindowSliding {
+    /**
+     * The slide duration (interval by which windows advance, must be positive and less than duration)
+     */
+    slideDuration: pulumi.Input<string>;
+    windowDuration: pulumi.Input<string>;
+}
+
+export interface FeatureEngineeringFeatureTimeWindowTumbling {
+    windowDuration: pulumi.Input<string>;
+}
+
+export interface FeatureEngineeringMaterializedFeatureOfflineStoreConfig {
+    /**
+     * The Unity Catalog catalog name
+     */
+    catalogName: pulumi.Input<string>;
+    /**
+     * The Unity Catalog schema name
+     */
+    schemaName: pulumi.Input<string>;
+    /**
+     * Prefix for Unity Catalog table name.
+     * The materialized feature will be stored in a table with this prefix and a generated postfix
+     */
+    tableNamePrefix: pulumi.Input<string>;
+}
+
+export interface FeatureEngineeringMaterializedFeatureOnlineStoreConfig {
+    /**
+     * The capacity of the online store. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
+     */
+    capacity: pulumi.Input<string>;
+    /**
+     * (string) - The timestamp when the online store was created
+     */
+    creationTime?: pulumi.Input<string>;
+    /**
+     * (string) - The email of the creator of the online store
+     */
+    creator?: pulumi.Input<string>;
+    /**
+     * The name of the online store. This is the unique identifier for the online store
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The number of read replicas for the online store. Defaults to 0
+     */
+    readReplicaCount?: pulumi.Input<number>;
+    /**
+     * (string) - The current state of the online store. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
+     */
+    state?: pulumi.Input<string>;
+}
+
+export interface GetAppProviderConfig {
+    workspaceId: string;
+}
+
+export interface GetAppProviderConfigArgs {
+    workspaceId: pulumi.Input<string>;
+}
+
+export interface GetAppsProviderConfig {
+    workspaceId: string;
+}
+
+export interface GetAppsProviderConfigArgs {
+    workspaceId: pulumi.Input<string>;
+}
+
+export interface GetBudgetPoliciesFilterBy {
+    /**
+     * The policy creator user id to be filtered on.
+     * If unspecified, all policies will be returned
+     */
+    creatorUserId?: number;
+    /**
+     * The policy creator user name to be filtered on.
+     * If unspecified, all policies will be returned
+     */
+    creatorUserName?: string;
+    /**
+     * (string) - The name of the policy.
+     * - Must be unique among active policies.
+     * - Can contain only characters from the ISO 8859-1 (latin1) set.
+     * - Can't start with reserved keywords such as `databricks:default-policy`
+     */
+    policyName?: string;
+}
+
+export interface GetBudgetPoliciesFilterByArgs {
+    /**
+     * The policy creator user id to be filtered on.
+     * If unspecified, all policies will be returned
+     */
+    creatorUserId?: pulumi.Input<number>;
+    /**
+     * The policy creator user name to be filtered on.
+     * If unspecified, all policies will be returned
+     */
+    creatorUserName?: pulumi.Input<string>;
+    /**
+     * (string) - The name of the policy.
+     * - Must be unique among active policies.
+     * - Can contain only characters from the ISO 8859-1 (latin1) set.
+     * - Can't start with reserved keywords such as `databricks:default-policy`
+     */
+    policyName?: pulumi.Input<string>;
+}
+
+export interface GetBudgetPoliciesSortSpec {
+    /**
+     * Whether to sort in descending order
+     */
+    descending?: boolean;
+    /**
+     * The filed to sort by. Possible values are: `POLICY_NAME`
+     */
+    field?: string;
+}
+
+export interface GetBudgetPoliciesSortSpecArgs {
+    /**
+     * Whether to sort in descending order
+     */
+    descending?: pulumi.Input<boolean>;
+    /**
+     * The filed to sort by. Possible values are: `POLICY_NAME`
+     */
+    field?: pulumi.Input<string>;
 }
 
 export interface GetCatalogCatalogInfo {
@@ -3749,1804 +2485,32 @@ export interface GetCatalogCatalogInfoProvisioningInfoArgs {
     state?: pulumi.Input<string>;
 }
 
-export interface GetCleanRoomAssetForeignTable {
+export interface GetCatalogProviderConfig {
     /**
-     * (list of ColumnInfo) - The metadata information of the columns in the view
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    columns?: inputs.GetCleanRoomAssetForeignTableColumn[];
+    workspaceId: string;
 }
 
-export interface GetCleanRoomAssetForeignTableArgs {
+export interface GetCatalogProviderConfigArgs {
     /**
-     * (list of ColumnInfo) - The metadata information of the columns in the view
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    columns?: pulumi.Input<pulumi.Input<inputs.GetCleanRoomAssetForeignTableColumnArgs>[]>;
+    workspaceId: pulumi.Input<string>;
 }
 
-export interface GetCleanRoomAssetForeignTableColumn {
+export interface GetCatalogsProviderConfig {
     /**
-     * (string) - User-provided free-form text description
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    comment?: string;
-    /**
-     * (ColumnMask)
-     */
-    mask?: inputs.GetCleanRoomAssetForeignTableColumnMask;
-    /**
-     * A fully qualified name that uniquely identifies the asset within the clean room.
-     * This is also the name displayed in the clean room UI.
-     *
-     * For UC securable assets (tables, volumes, etc.), the format is *shared_catalog*.*shared_schema*.*asset_name*
-     *
-     * For notebooks, the name is the notebook file name.
-     * For jar analyses, the name is the jar analysis name
-     */
-    name?: string;
-    /**
-     * (boolean) - Whether field may be Null (default: true)
-     */
-    nullable?: boolean;
-    /**
-     * (integer) - Partition index for column
-     */
-    partitionIndex?: number;
-    /**
-     * (integer) - Ordinal position of column (starting at position 0)
-     */
-    position?: number;
-    /**
-     * (string) - Format of IntervalType
-     */
-    typeIntervalType?: string;
-    /**
-     * (string) - Full data type specification, JSON-serialized
-     */
-    typeJson?: string;
-    /**
-     * (string) - . Possible values are: `ARRAY`, `BINARY`, `BOOLEAN`, `BYTE`, `CHAR`, `DATE`, `DECIMAL`, `DOUBLE`, `FLOAT`, `GEOGRAPHY`, `GEOMETRY`, `INT`, `INTERVAL`, `LONG`, `MAP`, `NULL`, `SHORT`, `STRING`, `STRUCT`, `TABLE_TYPE`, `TIMESTAMP`, `TIMESTAMP_NTZ`, `USER_DEFINED_TYPE`, `VARIANT`
-     */
-    typeName?: string;
-    /**
-     * (integer) - Digits of precision; required for DecimalTypes
-     */
-    typePrecision?: number;
-    /**
-     * (integer) - Digits to right of decimal; Required for DecimalTypes
-     */
-    typeScale?: number;
-    /**
-     * (string) - Full data type specification as SQL/catalogString text
-     */
-    typeText?: string;
-}
-
-export interface GetCleanRoomAssetForeignTableColumnArgs {
-    /**
-     * (string) - User-provided free-form text description
-     */
-    comment?: pulumi.Input<string>;
-    /**
-     * (ColumnMask)
-     */
-    mask?: pulumi.Input<inputs.GetCleanRoomAssetForeignTableColumnMaskArgs>;
-    /**
-     * A fully qualified name that uniquely identifies the asset within the clean room.
-     * This is also the name displayed in the clean room UI.
-     *
-     * For UC securable assets (tables, volumes, etc.), the format is *shared_catalog*.*shared_schema*.*asset_name*
-     *
-     * For notebooks, the name is the notebook file name.
-     * For jar analyses, the name is the jar analysis name
-     */
-    name?: pulumi.Input<string>;
-    /**
-     * (boolean) - Whether field may be Null (default: true)
-     */
-    nullable?: pulumi.Input<boolean>;
-    /**
-     * (integer) - Partition index for column
-     */
-    partitionIndex?: pulumi.Input<number>;
-    /**
-     * (integer) - Ordinal position of column (starting at position 0)
-     */
-    position?: pulumi.Input<number>;
-    /**
-     * (string) - Format of IntervalType
-     */
-    typeIntervalType?: pulumi.Input<string>;
-    /**
-     * (string) - Full data type specification, JSON-serialized
-     */
-    typeJson?: pulumi.Input<string>;
-    /**
-     * (string) - . Possible values are: `ARRAY`, `BINARY`, `BOOLEAN`, `BYTE`, `CHAR`, `DATE`, `DECIMAL`, `DOUBLE`, `FLOAT`, `GEOGRAPHY`, `GEOMETRY`, `INT`, `INTERVAL`, `LONG`, `MAP`, `NULL`, `SHORT`, `STRING`, `STRUCT`, `TABLE_TYPE`, `TIMESTAMP`, `TIMESTAMP_NTZ`, `USER_DEFINED_TYPE`, `VARIANT`
-     */
-    typeName?: pulumi.Input<string>;
-    /**
-     * (integer) - Digits of precision; required for DecimalTypes
-     */
-    typePrecision?: pulumi.Input<number>;
-    /**
-     * (integer) - Digits to right of decimal; Required for DecimalTypes
-     */
-    typeScale?: pulumi.Input<number>;
-    /**
-     * (string) - Full data type specification as SQL/catalogString text
-     */
-    typeText?: pulumi.Input<string>;
-}
-
-export interface GetCleanRoomAssetForeignTableColumnMask {
-    /**
-     * (string) - The full name of the column mask SQL UDF
-     */
-    functionName?: string;
-    /**
-     * (list of string) - The list of additional table columns to be passed as input to the column mask function. The
-     * first arg of the mask function should be of the type of the column being masked and the
-     * types of the rest of the args should match the types of columns in 'using_column_names'
-     */
-    usingColumnNames?: string[];
-}
-
-export interface GetCleanRoomAssetForeignTableColumnMaskArgs {
-    /**
-     * (string) - The full name of the column mask SQL UDF
-     */
-    functionName?: pulumi.Input<string>;
-    /**
-     * (list of string) - The list of additional table columns to be passed as input to the column mask function. The
-     * first arg of the mask function should be of the type of the column being masked and the
-     * types of the rest of the args should match the types of columns in 'using_column_names'
-     */
-    usingColumnNames?: pulumi.Input<pulumi.Input<string>[]>;
-}
-
-export interface GetCleanRoomAssetForeignTableLocalDetails {
-    /**
-     * (string) - The fully qualified name of the volume in its owner's local metastore,
-     * in the format of *catalog*.*schema*.*volume_name*
-     */
-    localName: string;
-}
-
-export interface GetCleanRoomAssetForeignTableLocalDetailsArgs {
-    /**
-     * (string) - The fully qualified name of the volume in its owner's local metastore,
-     * in the format of *catalog*.*schema*.*volume_name*
-     */
-    localName: pulumi.Input<string>;
-}
-
-export interface GetCleanRoomAssetNotebook {
-    /**
-     * (string) - Server generated etag that represents the notebook version
-     */
-    etag?: string;
-    /**
-     * (string) - Base 64 representation of the notebook contents.
-     * This is the same format as returned by :method:workspace/export with the format of **HTML**
-     */
-    notebookContent: string;
-    /**
-     * (string) - Review outcome. Possible values are: `APPROVED`, `PENDING`, `REJECTED`
-     */
-    reviewState?: string;
-    /**
-     * (list of CleanRoomNotebookReview) - All existing approvals or rejections
-     */
-    reviews?: inputs.GetCleanRoomAssetNotebookReview[];
-    /**
-     * (list of string) - Aliases of collaborators that can run the notebook
-     */
-    runnerCollaboratorAliases?: string[];
-}
-
-export interface GetCleanRoomAssetNotebookArgs {
-    /**
-     * (string) - Server generated etag that represents the notebook version
-     */
-    etag?: pulumi.Input<string>;
-    /**
-     * (string) - Base 64 representation of the notebook contents.
-     * This is the same format as returned by :method:workspace/export with the format of **HTML**
-     */
-    notebookContent: pulumi.Input<string>;
-    /**
-     * (string) - Review outcome. Possible values are: `APPROVED`, `PENDING`, `REJECTED`
-     */
-    reviewState?: pulumi.Input<string>;
-    /**
-     * (list of CleanRoomNotebookReview) - All existing approvals or rejections
-     */
-    reviews?: pulumi.Input<pulumi.Input<inputs.GetCleanRoomAssetNotebookReviewArgs>[]>;
-    /**
-     * (list of string) - Aliases of collaborators that can run the notebook
-     */
-    runnerCollaboratorAliases?: pulumi.Input<pulumi.Input<string>[]>;
-}
-
-export interface GetCleanRoomAssetNotebookReview {
-    /**
-     * (string) - User-provided free-form text description
-     */
-    comment?: string;
-    /**
-     * (integer) - When the review was submitted, in epoch milliseconds
-     */
-    createdAtMillis?: number;
-    /**
-     * (string) - Review outcome. Possible values are: `APPROVED`, `PENDING`, `REJECTED`
-     */
-    reviewState?: string;
-    /**
-     * (string) - Specified when the review was not explicitly made by a user. Possible values are: `AUTO_APPROVED`, `BACKFILLED`
-     */
-    reviewSubReason?: string;
-    /**
-     * (string) - Collaborator alias of the reviewer
-     */
-    reviewerCollaboratorAlias?: string;
-}
-
-export interface GetCleanRoomAssetNotebookReviewArgs {
-    /**
-     * (string) - User-provided free-form text description
-     */
-    comment?: pulumi.Input<string>;
-    /**
-     * (integer) - When the review was submitted, in epoch milliseconds
-     */
-    createdAtMillis?: pulumi.Input<number>;
-    /**
-     * (string) - Review outcome. Possible values are: `APPROVED`, `PENDING`, `REJECTED`
-     */
-    reviewState?: pulumi.Input<string>;
-    /**
-     * (string) - Specified when the review was not explicitly made by a user. Possible values are: `AUTO_APPROVED`, `BACKFILLED`
-     */
-    reviewSubReason?: pulumi.Input<string>;
-    /**
-     * (string) - Collaborator alias of the reviewer
-     */
-    reviewerCollaboratorAlias?: pulumi.Input<string>;
-}
-
-export interface GetCleanRoomAssetRevisionsCleanRoomAssetForeignTable {
-    /**
-     * (list of ColumnInfo) - The metadata information of the columns in the view
-     */
-    columns?: inputs.GetCleanRoomAssetRevisionsCleanRoomAssetForeignTableColumn[];
-}
-
-export interface GetCleanRoomAssetRevisionsCleanRoomAssetForeignTableArgs {
-    /**
-     * (list of ColumnInfo) - The metadata information of the columns in the view
-     */
-    columns?: pulumi.Input<pulumi.Input<inputs.GetCleanRoomAssetRevisionsCleanRoomAssetForeignTableColumnArgs>[]>;
-}
-
-export interface GetCleanRoomAssetRevisionsCleanRoomAssetForeignTableColumn {
-    /**
-     * (string) - User-provided free-form text description
-     */
-    comment?: string;
-    /**
-     * (ColumnMask)
-     */
-    mask?: inputs.GetCleanRoomAssetRevisionsCleanRoomAssetForeignTableColumnMask;
-    /**
-     * A fully qualified name that uniquely identifies the asset within the clean room.
-     * This is also the name displayed in the clean room UI.
-     *
-     * For UC securable assets (tables, volumes, etc.), the format is *shared_catalog*.*shared_schema*.*asset_name*
-     *
-     * For notebooks, the name is the notebook file name.
-     * For jar analyses, the name is the jar analysis name
-     */
-    name?: string;
-    /**
-     * (boolean) - Whether field may be Null (default: true)
-     */
-    nullable?: boolean;
-    /**
-     * (integer) - Partition index for column
-     */
-    partitionIndex?: number;
-    /**
-     * (integer) - Ordinal position of column (starting at position 0)
-     */
-    position?: number;
-    /**
-     * (string) - Format of IntervalType
-     */
-    typeIntervalType?: string;
-    /**
-     * (string) - Full data type specification, JSON-serialized
-     */
-    typeJson?: string;
-    /**
-     * (string) - . Possible values are: `ARRAY`, `BINARY`, `BOOLEAN`, `BYTE`, `CHAR`, `DATE`, `DECIMAL`, `DOUBLE`, `FLOAT`, `GEOGRAPHY`, `GEOMETRY`, `INT`, `INTERVAL`, `LONG`, `MAP`, `NULL`, `SHORT`, `STRING`, `STRUCT`, `TABLE_TYPE`, `TIMESTAMP`, `TIMESTAMP_NTZ`, `USER_DEFINED_TYPE`, `VARIANT`
-     */
-    typeName?: string;
-    /**
-     * (integer) - Digits of precision; required for DecimalTypes
-     */
-    typePrecision?: number;
-    /**
-     * (integer) - Digits to right of decimal; Required for DecimalTypes
-     */
-    typeScale?: number;
-    /**
-     * (string) - Full data type specification as SQL/catalogString text
-     */
-    typeText?: string;
-}
-
-export interface GetCleanRoomAssetRevisionsCleanRoomAssetForeignTableColumnArgs {
-    /**
-     * (string) - User-provided free-form text description
-     */
-    comment?: pulumi.Input<string>;
-    /**
-     * (ColumnMask)
-     */
-    mask?: pulumi.Input<inputs.GetCleanRoomAssetRevisionsCleanRoomAssetForeignTableColumnMaskArgs>;
-    /**
-     * A fully qualified name that uniquely identifies the asset within the clean room.
-     * This is also the name displayed in the clean room UI.
-     *
-     * For UC securable assets (tables, volumes, etc.), the format is *shared_catalog*.*shared_schema*.*asset_name*
-     *
-     * For notebooks, the name is the notebook file name.
-     * For jar analyses, the name is the jar analysis name
-     */
-    name?: pulumi.Input<string>;
-    /**
-     * (boolean) - Whether field may be Null (default: true)
-     */
-    nullable?: pulumi.Input<boolean>;
-    /**
-     * (integer) - Partition index for column
-     */
-    partitionIndex?: pulumi.Input<number>;
-    /**
-     * (integer) - Ordinal position of column (starting at position 0)
-     */
-    position?: pulumi.Input<number>;
-    /**
-     * (string) - Format of IntervalType
-     */
-    typeIntervalType?: pulumi.Input<string>;
-    /**
-     * (string) - Full data type specification, JSON-serialized
-     */
-    typeJson?: pulumi.Input<string>;
-    /**
-     * (string) - . Possible values are: `ARRAY`, `BINARY`, `BOOLEAN`, `BYTE`, `CHAR`, `DATE`, `DECIMAL`, `DOUBLE`, `FLOAT`, `GEOGRAPHY`, `GEOMETRY`, `INT`, `INTERVAL`, `LONG`, `MAP`, `NULL`, `SHORT`, `STRING`, `STRUCT`, `TABLE_TYPE`, `TIMESTAMP`, `TIMESTAMP_NTZ`, `USER_DEFINED_TYPE`, `VARIANT`
-     */
-    typeName?: pulumi.Input<string>;
-    /**
-     * (integer) - Digits of precision; required for DecimalTypes
-     */
-    typePrecision?: pulumi.Input<number>;
-    /**
-     * (integer) - Digits to right of decimal; Required for DecimalTypes
-     */
-    typeScale?: pulumi.Input<number>;
-    /**
-     * (string) - Full data type specification as SQL/catalogString text
-     */
-    typeText?: pulumi.Input<string>;
-}
-
-export interface GetCleanRoomAssetRevisionsCleanRoomAssetForeignTableColumnMask {
-    /**
-     * (string) - The full name of the column mask SQL UDF
-     */
-    functionName?: string;
-    /**
-     * (list of string) - The list of additional table columns to be passed as input to the column mask function. The
-     * first arg of the mask function should be of the type of the column being masked and the
-     * types of the rest of the args should match the types of columns in 'using_column_names'
-     */
-    usingColumnNames?: string[];
-}
-
-export interface GetCleanRoomAssetRevisionsCleanRoomAssetForeignTableColumnMaskArgs {
-    /**
-     * (string) - The full name of the column mask SQL UDF
-     */
-    functionName?: pulumi.Input<string>;
-    /**
-     * (list of string) - The list of additional table columns to be passed as input to the column mask function. The
-     * first arg of the mask function should be of the type of the column being masked and the
-     * types of the rest of the args should match the types of columns in 'using_column_names'
-     */
-    usingColumnNames?: pulumi.Input<pulumi.Input<string>[]>;
-}
-
-export interface GetCleanRoomAssetRevisionsCleanRoomAssetForeignTableLocalDetails {
-    /**
-     * (string) - The fully qualified name of the volume in its owner's local metastore,
-     * in the format of *catalog*.*schema*.*volume_name*
-     */
-    localName: string;
-}
-
-export interface GetCleanRoomAssetRevisionsCleanRoomAssetForeignTableLocalDetailsArgs {
-    /**
-     * (string) - The fully qualified name of the volume in its owner's local metastore,
-     * in the format of *catalog*.*schema*.*volume_name*
-     */
-    localName: pulumi.Input<string>;
-}
-
-export interface GetCleanRoomAssetRevisionsCleanRoomAssetNotebook {
-    /**
-     * (string) - Server generated etag that represents the notebook version
-     */
-    etag?: string;
-    /**
-     * (string) - Base 64 representation of the notebook contents.
-     * This is the same format as returned by :method:workspace/export with the format of **HTML**
-     */
-    notebookContent: string;
-    /**
-     * (string) - Review outcome. Possible values are: `APPROVED`, `PENDING`, `REJECTED`
-     */
-    reviewState?: string;
-    /**
-     * (list of CleanRoomNotebookReview) - All existing approvals or rejections
-     */
-    reviews?: inputs.GetCleanRoomAssetRevisionsCleanRoomAssetNotebookReview[];
-    /**
-     * (list of string) - Aliases of collaborators that can run the notebook
-     */
-    runnerCollaboratorAliases?: string[];
-}
-
-export interface GetCleanRoomAssetRevisionsCleanRoomAssetNotebookArgs {
-    /**
-     * (string) - Server generated etag that represents the notebook version
-     */
-    etag?: pulumi.Input<string>;
-    /**
-     * (string) - Base 64 representation of the notebook contents.
-     * This is the same format as returned by :method:workspace/export with the format of **HTML**
-     */
-    notebookContent: pulumi.Input<string>;
-    /**
-     * (string) - Review outcome. Possible values are: `APPROVED`, `PENDING`, `REJECTED`
-     */
-    reviewState?: pulumi.Input<string>;
-    /**
-     * (list of CleanRoomNotebookReview) - All existing approvals or rejections
-     */
-    reviews?: pulumi.Input<pulumi.Input<inputs.GetCleanRoomAssetRevisionsCleanRoomAssetNotebookReviewArgs>[]>;
-    /**
-     * (list of string) - Aliases of collaborators that can run the notebook
-     */
-    runnerCollaboratorAliases?: pulumi.Input<pulumi.Input<string>[]>;
-}
-
-export interface GetCleanRoomAssetRevisionsCleanRoomAssetNotebookReview {
-    /**
-     * (string) - User-provided free-form text description
-     */
-    comment?: string;
-    /**
-     * (integer) - When the review was submitted, in epoch milliseconds
-     */
-    createdAtMillis?: number;
-    /**
-     * (string) - Review outcome. Possible values are: `APPROVED`, `PENDING`, `REJECTED`
-     */
-    reviewState?: string;
-    /**
-     * (string) - Specified when the review was not explicitly made by a user. Possible values are: `AUTO_APPROVED`, `BACKFILLED`
-     */
-    reviewSubReason?: string;
-    /**
-     * (string) - Collaborator alias of the reviewer
-     */
-    reviewerCollaboratorAlias?: string;
-}
-
-export interface GetCleanRoomAssetRevisionsCleanRoomAssetNotebookReviewArgs {
-    /**
-     * (string) - User-provided free-form text description
-     */
-    comment?: pulumi.Input<string>;
-    /**
-     * (integer) - When the review was submitted, in epoch milliseconds
-     */
-    createdAtMillis?: pulumi.Input<number>;
-    /**
-     * (string) - Review outcome. Possible values are: `APPROVED`, `PENDING`, `REJECTED`
-     */
-    reviewState?: pulumi.Input<string>;
-    /**
-     * (string) - Specified when the review was not explicitly made by a user. Possible values are: `AUTO_APPROVED`, `BACKFILLED`
-     */
-    reviewSubReason?: pulumi.Input<string>;
-    /**
-     * (string) - Collaborator alias of the reviewer
-     */
-    reviewerCollaboratorAlias?: pulumi.Input<string>;
-}
-
-export interface GetCleanRoomAssetRevisionsCleanRoomAssetTable {
-    /**
-     * (list of ColumnInfo) - The metadata information of the columns in the view
-     */
-    columns?: inputs.GetCleanRoomAssetRevisionsCleanRoomAssetTableColumn[];
-}
-
-export interface GetCleanRoomAssetRevisionsCleanRoomAssetTableArgs {
-    /**
-     * (list of ColumnInfo) - The metadata information of the columns in the view
-     */
-    columns?: pulumi.Input<pulumi.Input<inputs.GetCleanRoomAssetRevisionsCleanRoomAssetTableColumnArgs>[]>;
-}
-
-export interface GetCleanRoomAssetRevisionsCleanRoomAssetTableColumn {
-    /**
-     * (string) - User-provided free-form text description
-     */
-    comment?: string;
-    /**
-     * (ColumnMask)
-     */
-    mask?: inputs.GetCleanRoomAssetRevisionsCleanRoomAssetTableColumnMask;
-    /**
-     * A fully qualified name that uniquely identifies the asset within the clean room.
-     * This is also the name displayed in the clean room UI.
-     *
-     * For UC securable assets (tables, volumes, etc.), the format is *shared_catalog*.*shared_schema*.*asset_name*
-     *
-     * For notebooks, the name is the notebook file name.
-     * For jar analyses, the name is the jar analysis name
-     */
-    name?: string;
-    /**
-     * (boolean) - Whether field may be Null (default: true)
-     */
-    nullable?: boolean;
-    /**
-     * (integer) - Partition index for column
-     */
-    partitionIndex?: number;
-    /**
-     * (integer) - Ordinal position of column (starting at position 0)
-     */
-    position?: number;
-    /**
-     * (string) - Format of IntervalType
-     */
-    typeIntervalType?: string;
-    /**
-     * (string) - Full data type specification, JSON-serialized
-     */
-    typeJson?: string;
-    /**
-     * (string) - . Possible values are: `ARRAY`, `BINARY`, `BOOLEAN`, `BYTE`, `CHAR`, `DATE`, `DECIMAL`, `DOUBLE`, `FLOAT`, `GEOGRAPHY`, `GEOMETRY`, `INT`, `INTERVAL`, `LONG`, `MAP`, `NULL`, `SHORT`, `STRING`, `STRUCT`, `TABLE_TYPE`, `TIMESTAMP`, `TIMESTAMP_NTZ`, `USER_DEFINED_TYPE`, `VARIANT`
-     */
-    typeName?: string;
-    /**
-     * (integer) - Digits of precision; required for DecimalTypes
-     */
-    typePrecision?: number;
-    /**
-     * (integer) - Digits to right of decimal; Required for DecimalTypes
-     */
-    typeScale?: number;
-    /**
-     * (string) - Full data type specification as SQL/catalogString text
-     */
-    typeText?: string;
-}
-
-export interface GetCleanRoomAssetRevisionsCleanRoomAssetTableColumnArgs {
-    /**
-     * (string) - User-provided free-form text description
-     */
-    comment?: pulumi.Input<string>;
-    /**
-     * (ColumnMask)
-     */
-    mask?: pulumi.Input<inputs.GetCleanRoomAssetRevisionsCleanRoomAssetTableColumnMaskArgs>;
-    /**
-     * A fully qualified name that uniquely identifies the asset within the clean room.
-     * This is also the name displayed in the clean room UI.
-     *
-     * For UC securable assets (tables, volumes, etc.), the format is *shared_catalog*.*shared_schema*.*asset_name*
-     *
-     * For notebooks, the name is the notebook file name.
-     * For jar analyses, the name is the jar analysis name
-     */
-    name?: pulumi.Input<string>;
-    /**
-     * (boolean) - Whether field may be Null (default: true)
-     */
-    nullable?: pulumi.Input<boolean>;
-    /**
-     * (integer) - Partition index for column
-     */
-    partitionIndex?: pulumi.Input<number>;
-    /**
-     * (integer) - Ordinal position of column (starting at position 0)
-     */
-    position?: pulumi.Input<number>;
-    /**
-     * (string) - Format of IntervalType
-     */
-    typeIntervalType?: pulumi.Input<string>;
-    /**
-     * (string) - Full data type specification, JSON-serialized
-     */
-    typeJson?: pulumi.Input<string>;
-    /**
-     * (string) - . Possible values are: `ARRAY`, `BINARY`, `BOOLEAN`, `BYTE`, `CHAR`, `DATE`, `DECIMAL`, `DOUBLE`, `FLOAT`, `GEOGRAPHY`, `GEOMETRY`, `INT`, `INTERVAL`, `LONG`, `MAP`, `NULL`, `SHORT`, `STRING`, `STRUCT`, `TABLE_TYPE`, `TIMESTAMP`, `TIMESTAMP_NTZ`, `USER_DEFINED_TYPE`, `VARIANT`
-     */
-    typeName?: pulumi.Input<string>;
-    /**
-     * (integer) - Digits of precision; required for DecimalTypes
-     */
-    typePrecision?: pulumi.Input<number>;
-    /**
-     * (integer) - Digits to right of decimal; Required for DecimalTypes
-     */
-    typeScale?: pulumi.Input<number>;
-    /**
-     * (string) - Full data type specification as SQL/catalogString text
-     */
-    typeText?: pulumi.Input<string>;
-}
-
-export interface GetCleanRoomAssetRevisionsCleanRoomAssetTableColumnMask {
-    /**
-     * (string) - The full name of the column mask SQL UDF
-     */
-    functionName?: string;
-    /**
-     * (list of string) - The list of additional table columns to be passed as input to the column mask function. The
-     * first arg of the mask function should be of the type of the column being masked and the
-     * types of the rest of the args should match the types of columns in 'using_column_names'
-     */
-    usingColumnNames?: string[];
-}
-
-export interface GetCleanRoomAssetRevisionsCleanRoomAssetTableColumnMaskArgs {
-    /**
-     * (string) - The full name of the column mask SQL UDF
-     */
-    functionName?: pulumi.Input<string>;
-    /**
-     * (list of string) - The list of additional table columns to be passed as input to the column mask function. The
-     * first arg of the mask function should be of the type of the column being masked and the
-     * types of the rest of the args should match the types of columns in 'using_column_names'
-     */
-    usingColumnNames?: pulumi.Input<pulumi.Input<string>[]>;
-}
-
-export interface GetCleanRoomAssetRevisionsCleanRoomAssetTableLocalDetails {
-    /**
-     * (string) - The fully qualified name of the volume in its owner's local metastore,
-     * in the format of *catalog*.*schema*.*volume_name*
-     */
-    localName: string;
-    /**
-     * (list of Partition) - Partition filtering specification for a shared table
-     */
-    partitions?: inputs.GetCleanRoomAssetRevisionsCleanRoomAssetTableLocalDetailsPartition[];
-}
-
-export interface GetCleanRoomAssetRevisionsCleanRoomAssetTableLocalDetailsArgs {
-    /**
-     * (string) - The fully qualified name of the volume in its owner's local metastore,
-     * in the format of *catalog*.*schema*.*volume_name*
-     */
-    localName: pulumi.Input<string>;
-    /**
-     * (list of Partition) - Partition filtering specification for a shared table
-     */
-    partitions?: pulumi.Input<pulumi.Input<inputs.GetCleanRoomAssetRevisionsCleanRoomAssetTableLocalDetailsPartitionArgs>[]>;
-}
-
-export interface GetCleanRoomAssetRevisionsCleanRoomAssetTableLocalDetailsPartition {
-    /**
-     * (string) - The value of the partition column. When this value is not set, it means `null` value.
-     * When this field is set, field `recipientPropertyKey` can not be set
-     */
-    values?: inputs.GetCleanRoomAssetRevisionsCleanRoomAssetTableLocalDetailsPartitionValue[];
-}
-
-export interface GetCleanRoomAssetRevisionsCleanRoomAssetTableLocalDetailsPartitionArgs {
-    /**
-     * (string) - The value of the partition column. When this value is not set, it means `null` value.
-     * When this field is set, field `recipientPropertyKey` can not be set
-     */
-    values?: pulumi.Input<pulumi.Input<inputs.GetCleanRoomAssetRevisionsCleanRoomAssetTableLocalDetailsPartitionValueArgs>[]>;
-}
-
-export interface GetCleanRoomAssetRevisionsCleanRoomAssetTableLocalDetailsPartitionValue {
-    /**
-     * A fully qualified name that uniquely identifies the asset within the clean room.
-     * This is also the name displayed in the clean room UI.
-     *
-     * For UC securable assets (tables, volumes, etc.), the format is *shared_catalog*.*shared_schema*.*asset_name*
-     *
-     * For notebooks, the name is the notebook file name.
-     * For jar analyses, the name is the jar analysis name
-     */
-    name?: string;
-    /**
-     * (string) - The operator to apply for the value. Possible values are: `EQUAL`, `LIKE`
-     */
-    op?: string;
-    /**
-     * (string) - The key of a Delta Sharing recipient's property. For example "databricks-account-id".
-     * When this field is set, field `value` can not be set
-     */
-    recipientPropertyKey?: string;
-    /**
-     * (string) - The value of the partition column. When this value is not set, it means `null` value.
-     * When this field is set, field `recipientPropertyKey` can not be set
-     */
-    value?: string;
-}
-
-export interface GetCleanRoomAssetRevisionsCleanRoomAssetTableLocalDetailsPartitionValueArgs {
-    /**
-     * A fully qualified name that uniquely identifies the asset within the clean room.
-     * This is also the name displayed in the clean room UI.
-     *
-     * For UC securable assets (tables, volumes, etc.), the format is *shared_catalog*.*shared_schema*.*asset_name*
-     *
-     * For notebooks, the name is the notebook file name.
-     * For jar analyses, the name is the jar analysis name
-     */
-    name?: pulumi.Input<string>;
-    /**
-     * (string) - The operator to apply for the value. Possible values are: `EQUAL`, `LIKE`
-     */
-    op?: pulumi.Input<string>;
-    /**
-     * (string) - The key of a Delta Sharing recipient's property. For example "databricks-account-id".
-     * When this field is set, field `value` can not be set
-     */
-    recipientPropertyKey?: pulumi.Input<string>;
-    /**
-     * (string) - The value of the partition column. When this value is not set, it means `null` value.
-     * When this field is set, field `recipientPropertyKey` can not be set
-     */
-    value?: pulumi.Input<string>;
-}
-
-export interface GetCleanRoomAssetRevisionsCleanRoomAssetView {
-    /**
-     * (list of ColumnInfo) - The metadata information of the columns in the view
-     */
-    columns?: inputs.GetCleanRoomAssetRevisionsCleanRoomAssetViewColumn[];
-}
-
-export interface GetCleanRoomAssetRevisionsCleanRoomAssetViewArgs {
-    /**
-     * (list of ColumnInfo) - The metadata information of the columns in the view
-     */
-    columns?: pulumi.Input<pulumi.Input<inputs.GetCleanRoomAssetRevisionsCleanRoomAssetViewColumnArgs>[]>;
-}
-
-export interface GetCleanRoomAssetRevisionsCleanRoomAssetViewColumn {
-    /**
-     * (string) - User-provided free-form text description
-     */
-    comment?: string;
-    /**
-     * (ColumnMask)
-     */
-    mask?: inputs.GetCleanRoomAssetRevisionsCleanRoomAssetViewColumnMask;
-    /**
-     * A fully qualified name that uniquely identifies the asset within the clean room.
-     * This is also the name displayed in the clean room UI.
-     *
-     * For UC securable assets (tables, volumes, etc.), the format is *shared_catalog*.*shared_schema*.*asset_name*
-     *
-     * For notebooks, the name is the notebook file name.
-     * For jar analyses, the name is the jar analysis name
-     */
-    name?: string;
-    /**
-     * (boolean) - Whether field may be Null (default: true)
-     */
-    nullable?: boolean;
-    /**
-     * (integer) - Partition index for column
-     */
-    partitionIndex?: number;
-    /**
-     * (integer) - Ordinal position of column (starting at position 0)
-     */
-    position?: number;
-    /**
-     * (string) - Format of IntervalType
-     */
-    typeIntervalType?: string;
-    /**
-     * (string) - Full data type specification, JSON-serialized
-     */
-    typeJson?: string;
-    /**
-     * (string) - . Possible values are: `ARRAY`, `BINARY`, `BOOLEAN`, `BYTE`, `CHAR`, `DATE`, `DECIMAL`, `DOUBLE`, `FLOAT`, `GEOGRAPHY`, `GEOMETRY`, `INT`, `INTERVAL`, `LONG`, `MAP`, `NULL`, `SHORT`, `STRING`, `STRUCT`, `TABLE_TYPE`, `TIMESTAMP`, `TIMESTAMP_NTZ`, `USER_DEFINED_TYPE`, `VARIANT`
-     */
-    typeName?: string;
-    /**
-     * (integer) - Digits of precision; required for DecimalTypes
-     */
-    typePrecision?: number;
-    /**
-     * (integer) - Digits to right of decimal; Required for DecimalTypes
-     */
-    typeScale?: number;
-    /**
-     * (string) - Full data type specification as SQL/catalogString text
-     */
-    typeText?: string;
-}
-
-export interface GetCleanRoomAssetRevisionsCleanRoomAssetViewColumnArgs {
-    /**
-     * (string) - User-provided free-form text description
-     */
-    comment?: pulumi.Input<string>;
-    /**
-     * (ColumnMask)
-     */
-    mask?: pulumi.Input<inputs.GetCleanRoomAssetRevisionsCleanRoomAssetViewColumnMaskArgs>;
-    /**
-     * A fully qualified name that uniquely identifies the asset within the clean room.
-     * This is also the name displayed in the clean room UI.
-     *
-     * For UC securable assets (tables, volumes, etc.), the format is *shared_catalog*.*shared_schema*.*asset_name*
-     *
-     * For notebooks, the name is the notebook file name.
-     * For jar analyses, the name is the jar analysis name
-     */
-    name?: pulumi.Input<string>;
-    /**
-     * (boolean) - Whether field may be Null (default: true)
-     */
-    nullable?: pulumi.Input<boolean>;
-    /**
-     * (integer) - Partition index for column
-     */
-    partitionIndex?: pulumi.Input<number>;
-    /**
-     * (integer) - Ordinal position of column (starting at position 0)
-     */
-    position?: pulumi.Input<number>;
-    /**
-     * (string) - Format of IntervalType
-     */
-    typeIntervalType?: pulumi.Input<string>;
-    /**
-     * (string) - Full data type specification, JSON-serialized
-     */
-    typeJson?: pulumi.Input<string>;
-    /**
-     * (string) - . Possible values are: `ARRAY`, `BINARY`, `BOOLEAN`, `BYTE`, `CHAR`, `DATE`, `DECIMAL`, `DOUBLE`, `FLOAT`, `GEOGRAPHY`, `GEOMETRY`, `INT`, `INTERVAL`, `LONG`, `MAP`, `NULL`, `SHORT`, `STRING`, `STRUCT`, `TABLE_TYPE`, `TIMESTAMP`, `TIMESTAMP_NTZ`, `USER_DEFINED_TYPE`, `VARIANT`
-     */
-    typeName?: pulumi.Input<string>;
-    /**
-     * (integer) - Digits of precision; required for DecimalTypes
-     */
-    typePrecision?: pulumi.Input<number>;
-    /**
-     * (integer) - Digits to right of decimal; Required for DecimalTypes
-     */
-    typeScale?: pulumi.Input<number>;
-    /**
-     * (string) - Full data type specification as SQL/catalogString text
-     */
-    typeText?: pulumi.Input<string>;
-}
-
-export interface GetCleanRoomAssetRevisionsCleanRoomAssetViewColumnMask {
-    /**
-     * (string) - The full name of the column mask SQL UDF
-     */
-    functionName?: string;
-    /**
-     * (list of string) - The list of additional table columns to be passed as input to the column mask function. The
-     * first arg of the mask function should be of the type of the column being masked and the
-     * types of the rest of the args should match the types of columns in 'using_column_names'
-     */
-    usingColumnNames?: string[];
-}
-
-export interface GetCleanRoomAssetRevisionsCleanRoomAssetViewColumnMaskArgs {
-    /**
-     * (string) - The full name of the column mask SQL UDF
-     */
-    functionName?: pulumi.Input<string>;
-    /**
-     * (list of string) - The list of additional table columns to be passed as input to the column mask function. The
-     * first arg of the mask function should be of the type of the column being masked and the
-     * types of the rest of the args should match the types of columns in 'using_column_names'
-     */
-    usingColumnNames?: pulumi.Input<pulumi.Input<string>[]>;
-}
-
-export interface GetCleanRoomAssetRevisionsCleanRoomAssetViewLocalDetails {
-    /**
-     * (string) - The fully qualified name of the volume in its owner's local metastore,
-     * in the format of *catalog*.*schema*.*volume_name*
-     */
-    localName: string;
-}
-
-export interface GetCleanRoomAssetRevisionsCleanRoomAssetViewLocalDetailsArgs {
-    /**
-     * (string) - The fully qualified name of the volume in its owner's local metastore,
-     * in the format of *catalog*.*schema*.*volume_name*
-     */
-    localName: pulumi.Input<string>;
-}
-
-export interface GetCleanRoomAssetRevisionsCleanRoomAssetVolumeLocalDetails {
-    /**
-     * (string) - The fully qualified name of the volume in its owner's local metastore,
-     * in the format of *catalog*.*schema*.*volume_name*
-     */
-    localName: string;
-}
-
-export interface GetCleanRoomAssetRevisionsCleanRoomAssetVolumeLocalDetailsArgs {
-    /**
-     * (string) - The fully qualified name of the volume in its owner's local metastore,
-     * in the format of *catalog*.*schema*.*volume_name*
-     */
-    localName: pulumi.Input<string>;
-}
-
-export interface GetCleanRoomAssetTable {
-    /**
-     * (list of ColumnInfo) - The metadata information of the columns in the view
-     */
-    columns?: inputs.GetCleanRoomAssetTableColumn[];
-}
-
-export interface GetCleanRoomAssetTableArgs {
-    /**
-     * (list of ColumnInfo) - The metadata information of the columns in the view
-     */
-    columns?: pulumi.Input<pulumi.Input<inputs.GetCleanRoomAssetTableColumnArgs>[]>;
-}
-
-export interface GetCleanRoomAssetTableColumn {
-    /**
-     * (string) - User-provided free-form text description
-     */
-    comment?: string;
-    /**
-     * (ColumnMask)
-     */
-    mask?: inputs.GetCleanRoomAssetTableColumnMask;
-    /**
-     * A fully qualified name that uniquely identifies the asset within the clean room.
-     * This is also the name displayed in the clean room UI.
-     *
-     * For UC securable assets (tables, volumes, etc.), the format is *shared_catalog*.*shared_schema*.*asset_name*
-     *
-     * For notebooks, the name is the notebook file name.
-     * For jar analyses, the name is the jar analysis name
-     */
-    name?: string;
-    /**
-     * (boolean) - Whether field may be Null (default: true)
-     */
-    nullable?: boolean;
-    /**
-     * (integer) - Partition index for column
-     */
-    partitionIndex?: number;
-    /**
-     * (integer) - Ordinal position of column (starting at position 0)
-     */
-    position?: number;
-    /**
-     * (string) - Format of IntervalType
-     */
-    typeIntervalType?: string;
-    /**
-     * (string) - Full data type specification, JSON-serialized
-     */
-    typeJson?: string;
-    /**
-     * (string) - . Possible values are: `ARRAY`, `BINARY`, `BOOLEAN`, `BYTE`, `CHAR`, `DATE`, `DECIMAL`, `DOUBLE`, `FLOAT`, `GEOGRAPHY`, `GEOMETRY`, `INT`, `INTERVAL`, `LONG`, `MAP`, `NULL`, `SHORT`, `STRING`, `STRUCT`, `TABLE_TYPE`, `TIMESTAMP`, `TIMESTAMP_NTZ`, `USER_DEFINED_TYPE`, `VARIANT`
-     */
-    typeName?: string;
-    /**
-     * (integer) - Digits of precision; required for DecimalTypes
-     */
-    typePrecision?: number;
-    /**
-     * (integer) - Digits to right of decimal; Required for DecimalTypes
-     */
-    typeScale?: number;
-    /**
-     * (string) - Full data type specification as SQL/catalogString text
-     */
-    typeText?: string;
-}
-
-export interface GetCleanRoomAssetTableColumnArgs {
-    /**
-     * (string) - User-provided free-form text description
-     */
-    comment?: pulumi.Input<string>;
-    /**
-     * (ColumnMask)
-     */
-    mask?: pulumi.Input<inputs.GetCleanRoomAssetTableColumnMaskArgs>;
-    /**
-     * A fully qualified name that uniquely identifies the asset within the clean room.
-     * This is also the name displayed in the clean room UI.
-     *
-     * For UC securable assets (tables, volumes, etc.), the format is *shared_catalog*.*shared_schema*.*asset_name*
-     *
-     * For notebooks, the name is the notebook file name.
-     * For jar analyses, the name is the jar analysis name
-     */
-    name?: pulumi.Input<string>;
-    /**
-     * (boolean) - Whether field may be Null (default: true)
-     */
-    nullable?: pulumi.Input<boolean>;
-    /**
-     * (integer) - Partition index for column
-     */
-    partitionIndex?: pulumi.Input<number>;
-    /**
-     * (integer) - Ordinal position of column (starting at position 0)
-     */
-    position?: pulumi.Input<number>;
-    /**
-     * (string) - Format of IntervalType
-     */
-    typeIntervalType?: pulumi.Input<string>;
-    /**
-     * (string) - Full data type specification, JSON-serialized
-     */
-    typeJson?: pulumi.Input<string>;
-    /**
-     * (string) - . Possible values are: `ARRAY`, `BINARY`, `BOOLEAN`, `BYTE`, `CHAR`, `DATE`, `DECIMAL`, `DOUBLE`, `FLOAT`, `GEOGRAPHY`, `GEOMETRY`, `INT`, `INTERVAL`, `LONG`, `MAP`, `NULL`, `SHORT`, `STRING`, `STRUCT`, `TABLE_TYPE`, `TIMESTAMP`, `TIMESTAMP_NTZ`, `USER_DEFINED_TYPE`, `VARIANT`
-     */
-    typeName?: pulumi.Input<string>;
-    /**
-     * (integer) - Digits of precision; required for DecimalTypes
-     */
-    typePrecision?: pulumi.Input<number>;
-    /**
-     * (integer) - Digits to right of decimal; Required for DecimalTypes
-     */
-    typeScale?: pulumi.Input<number>;
-    /**
-     * (string) - Full data type specification as SQL/catalogString text
-     */
-    typeText?: pulumi.Input<string>;
-}
-
-export interface GetCleanRoomAssetTableColumnMask {
-    /**
-     * (string) - The full name of the column mask SQL UDF
-     */
-    functionName?: string;
-    /**
-     * (list of string) - The list of additional table columns to be passed as input to the column mask function. The
-     * first arg of the mask function should be of the type of the column being masked and the
-     * types of the rest of the args should match the types of columns in 'using_column_names'
-     */
-    usingColumnNames?: string[];
-}
-
-export interface GetCleanRoomAssetTableColumnMaskArgs {
-    /**
-     * (string) - The full name of the column mask SQL UDF
-     */
-    functionName?: pulumi.Input<string>;
-    /**
-     * (list of string) - The list of additional table columns to be passed as input to the column mask function. The
-     * first arg of the mask function should be of the type of the column being masked and the
-     * types of the rest of the args should match the types of columns in 'using_column_names'
-     */
-    usingColumnNames?: pulumi.Input<pulumi.Input<string>[]>;
-}
-
-export interface GetCleanRoomAssetTableLocalDetails {
-    /**
-     * (string) - The fully qualified name of the volume in its owner's local metastore,
-     * in the format of *catalog*.*schema*.*volume_name*
-     */
-    localName: string;
-    /**
-     * (list of Partition) - Partition filtering specification for a shared table
-     */
-    partitions?: inputs.GetCleanRoomAssetTableLocalDetailsPartition[];
-}
-
-export interface GetCleanRoomAssetTableLocalDetailsArgs {
-    /**
-     * (string) - The fully qualified name of the volume in its owner's local metastore,
-     * in the format of *catalog*.*schema*.*volume_name*
-     */
-    localName: pulumi.Input<string>;
-    /**
-     * (list of Partition) - Partition filtering specification for a shared table
-     */
-    partitions?: pulumi.Input<pulumi.Input<inputs.GetCleanRoomAssetTableLocalDetailsPartitionArgs>[]>;
-}
-
-export interface GetCleanRoomAssetTableLocalDetailsPartition {
-    /**
-     * (string) - The value of the partition column. When this value is not set, it means `null` value.
-     * When this field is set, field `recipientPropertyKey` can not be set
-     */
-    values?: inputs.GetCleanRoomAssetTableLocalDetailsPartitionValue[];
-}
-
-export interface GetCleanRoomAssetTableLocalDetailsPartitionArgs {
-    /**
-     * (string) - The value of the partition column. When this value is not set, it means `null` value.
-     * When this field is set, field `recipientPropertyKey` can not be set
-     */
-    values?: pulumi.Input<pulumi.Input<inputs.GetCleanRoomAssetTableLocalDetailsPartitionValueArgs>[]>;
-}
-
-export interface GetCleanRoomAssetTableLocalDetailsPartitionValue {
-    /**
-     * A fully qualified name that uniquely identifies the asset within the clean room.
-     * This is also the name displayed in the clean room UI.
-     *
-     * For UC securable assets (tables, volumes, etc.), the format is *shared_catalog*.*shared_schema*.*asset_name*
-     *
-     * For notebooks, the name is the notebook file name.
-     * For jar analyses, the name is the jar analysis name
-     */
-    name?: string;
-    /**
-     * (string) - The operator to apply for the value. Possible values are: `EQUAL`, `LIKE`
-     */
-    op?: string;
-    /**
-     * (string) - The key of a Delta Sharing recipient's property. For example "databricks-account-id".
-     * When this field is set, field `value` can not be set
-     */
-    recipientPropertyKey?: string;
-    /**
-     * (string) - The value of the partition column. When this value is not set, it means `null` value.
-     * When this field is set, field `recipientPropertyKey` can not be set
-     */
-    value?: string;
-}
-
-export interface GetCleanRoomAssetTableLocalDetailsPartitionValueArgs {
-    /**
-     * A fully qualified name that uniquely identifies the asset within the clean room.
-     * This is also the name displayed in the clean room UI.
-     *
-     * For UC securable assets (tables, volumes, etc.), the format is *shared_catalog*.*shared_schema*.*asset_name*
-     *
-     * For notebooks, the name is the notebook file name.
-     * For jar analyses, the name is the jar analysis name
-     */
-    name?: pulumi.Input<string>;
-    /**
-     * (string) - The operator to apply for the value. Possible values are: `EQUAL`, `LIKE`
-     */
-    op?: pulumi.Input<string>;
-    /**
-     * (string) - The key of a Delta Sharing recipient's property. For example "databricks-account-id".
-     * When this field is set, field `value` can not be set
-     */
-    recipientPropertyKey?: pulumi.Input<string>;
-    /**
-     * (string) - The value of the partition column. When this value is not set, it means `null` value.
-     * When this field is set, field `recipientPropertyKey` can not be set
-     */
-    value?: pulumi.Input<string>;
-}
-
-export interface GetCleanRoomAssetView {
-    /**
-     * (list of ColumnInfo) - The metadata information of the columns in the view
-     */
-    columns?: inputs.GetCleanRoomAssetViewColumn[];
-}
-
-export interface GetCleanRoomAssetViewArgs {
-    /**
-     * (list of ColumnInfo) - The metadata information of the columns in the view
-     */
-    columns?: pulumi.Input<pulumi.Input<inputs.GetCleanRoomAssetViewColumnArgs>[]>;
-}
-
-export interface GetCleanRoomAssetViewColumn {
-    /**
-     * (string) - User-provided free-form text description
-     */
-    comment?: string;
-    /**
-     * (ColumnMask)
-     */
-    mask?: inputs.GetCleanRoomAssetViewColumnMask;
-    /**
-     * A fully qualified name that uniquely identifies the asset within the clean room.
-     * This is also the name displayed in the clean room UI.
-     *
-     * For UC securable assets (tables, volumes, etc.), the format is *shared_catalog*.*shared_schema*.*asset_name*
-     *
-     * For notebooks, the name is the notebook file name.
-     * For jar analyses, the name is the jar analysis name
-     */
-    name?: string;
-    /**
-     * (boolean) - Whether field may be Null (default: true)
-     */
-    nullable?: boolean;
-    /**
-     * (integer) - Partition index for column
-     */
-    partitionIndex?: number;
-    /**
-     * (integer) - Ordinal position of column (starting at position 0)
-     */
-    position?: number;
-    /**
-     * (string) - Format of IntervalType
-     */
-    typeIntervalType?: string;
-    /**
-     * (string) - Full data type specification, JSON-serialized
-     */
-    typeJson?: string;
-    /**
-     * (string) - . Possible values are: `ARRAY`, `BINARY`, `BOOLEAN`, `BYTE`, `CHAR`, `DATE`, `DECIMAL`, `DOUBLE`, `FLOAT`, `GEOGRAPHY`, `GEOMETRY`, `INT`, `INTERVAL`, `LONG`, `MAP`, `NULL`, `SHORT`, `STRING`, `STRUCT`, `TABLE_TYPE`, `TIMESTAMP`, `TIMESTAMP_NTZ`, `USER_DEFINED_TYPE`, `VARIANT`
-     */
-    typeName?: string;
-    /**
-     * (integer) - Digits of precision; required for DecimalTypes
-     */
-    typePrecision?: number;
-    /**
-     * (integer) - Digits to right of decimal; Required for DecimalTypes
-     */
-    typeScale?: number;
-    /**
-     * (string) - Full data type specification as SQL/catalogString text
-     */
-    typeText?: string;
-}
-
-export interface GetCleanRoomAssetViewColumnArgs {
-    /**
-     * (string) - User-provided free-form text description
-     */
-    comment?: pulumi.Input<string>;
-    /**
-     * (ColumnMask)
-     */
-    mask?: pulumi.Input<inputs.GetCleanRoomAssetViewColumnMaskArgs>;
-    /**
-     * A fully qualified name that uniquely identifies the asset within the clean room.
-     * This is also the name displayed in the clean room UI.
-     *
-     * For UC securable assets (tables, volumes, etc.), the format is *shared_catalog*.*shared_schema*.*asset_name*
-     *
-     * For notebooks, the name is the notebook file name.
-     * For jar analyses, the name is the jar analysis name
-     */
-    name?: pulumi.Input<string>;
-    /**
-     * (boolean) - Whether field may be Null (default: true)
-     */
-    nullable?: pulumi.Input<boolean>;
-    /**
-     * (integer) - Partition index for column
-     */
-    partitionIndex?: pulumi.Input<number>;
-    /**
-     * (integer) - Ordinal position of column (starting at position 0)
-     */
-    position?: pulumi.Input<number>;
-    /**
-     * (string) - Format of IntervalType
-     */
-    typeIntervalType?: pulumi.Input<string>;
-    /**
-     * (string) - Full data type specification, JSON-serialized
-     */
-    typeJson?: pulumi.Input<string>;
-    /**
-     * (string) - . Possible values are: `ARRAY`, `BINARY`, `BOOLEAN`, `BYTE`, `CHAR`, `DATE`, `DECIMAL`, `DOUBLE`, `FLOAT`, `GEOGRAPHY`, `GEOMETRY`, `INT`, `INTERVAL`, `LONG`, `MAP`, `NULL`, `SHORT`, `STRING`, `STRUCT`, `TABLE_TYPE`, `TIMESTAMP`, `TIMESTAMP_NTZ`, `USER_DEFINED_TYPE`, `VARIANT`
-     */
-    typeName?: pulumi.Input<string>;
-    /**
-     * (integer) - Digits of precision; required for DecimalTypes
-     */
-    typePrecision?: pulumi.Input<number>;
-    /**
-     * (integer) - Digits to right of decimal; Required for DecimalTypes
-     */
-    typeScale?: pulumi.Input<number>;
-    /**
-     * (string) - Full data type specification as SQL/catalogString text
-     */
-    typeText?: pulumi.Input<string>;
-}
-
-export interface GetCleanRoomAssetViewColumnMask {
-    /**
-     * (string) - The full name of the column mask SQL UDF
-     */
-    functionName?: string;
-    /**
-     * (list of string) - The list of additional table columns to be passed as input to the column mask function. The
-     * first arg of the mask function should be of the type of the column being masked and the
-     * types of the rest of the args should match the types of columns in 'using_column_names'
-     */
-    usingColumnNames?: string[];
-}
-
-export interface GetCleanRoomAssetViewColumnMaskArgs {
-    /**
-     * (string) - The full name of the column mask SQL UDF
-     */
-    functionName?: pulumi.Input<string>;
-    /**
-     * (list of string) - The list of additional table columns to be passed as input to the column mask function. The
-     * first arg of the mask function should be of the type of the column being masked and the
-     * types of the rest of the args should match the types of columns in 'using_column_names'
-     */
-    usingColumnNames?: pulumi.Input<pulumi.Input<string>[]>;
-}
-
-export interface GetCleanRoomAssetViewLocalDetails {
-    /**
-     * (string) - The fully qualified name of the volume in its owner's local metastore,
-     * in the format of *catalog*.*schema*.*volume_name*
-     */
-    localName: string;
-}
-
-export interface GetCleanRoomAssetViewLocalDetailsArgs {
-    /**
-     * (string) - The fully qualified name of the volume in its owner's local metastore,
-     * in the format of *catalog*.*schema*.*volume_name*
-     */
-    localName: pulumi.Input<string>;
-}
-
-export interface GetCleanRoomAssetVolumeLocalDetails {
-    /**
-     * (string) - The fully qualified name of the volume in its owner's local metastore,
-     * in the format of *catalog*.*schema*.*volume_name*
-     */
-    localName: string;
-}
-
-export interface GetCleanRoomAssetVolumeLocalDetailsArgs {
-    /**
-     * (string) - The fully qualified name of the volume in its owner's local metastore,
-     * in the format of *catalog*.*schema*.*volume_name*
-     */
-    localName: pulumi.Input<string>;
-}
-
-export interface GetCleanRoomsCleanRoomRemoteDetailedInfo {
-    /**
-     * (string) - Central clean room ID
-     */
-    centralCleanRoomId?: string;
-    /**
-     * (string) - Cloud vendor (aws,azure,gcp) of the central clean room
-     */
-    cloudVendor?: string;
-    /**
-     * (list of CleanRoomCollaborator) - Collaborators in the central clean room. There should one and only one collaborator
-     * in the list that satisfies the owner condition:
-     */
-    collaborators?: inputs.GetCleanRoomsCleanRoomRemoteDetailedInfoCollaborator[];
-    /**
-     * (ComplianceSecurityProfile)
-     */
-    complianceSecurityProfile?: inputs.GetCleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfile;
-    /**
-     * (CleanRoomCollaborator) - Collaborator who creates the clean room
-     */
-    creator?: inputs.GetCleanRoomsCleanRoomRemoteDetailedInfoCreator;
-    /**
-     * (EgressNetworkPolicy) - Egress network policy to apply to the central clean room workspace
-     */
-    egressNetworkPolicy?: inputs.GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicy;
-    /**
-     * (string)
-     */
-    region?: string;
-}
-
-export interface GetCleanRoomsCleanRoomRemoteDetailedInfoArgs {
-    /**
-     * (string) - Central clean room ID
-     */
-    centralCleanRoomId?: pulumi.Input<string>;
-    /**
-     * (string) - Cloud vendor (aws,azure,gcp) of the central clean room
-     */
-    cloudVendor?: pulumi.Input<string>;
-    /**
-     * (list of CleanRoomCollaborator) - Collaborators in the central clean room. There should one and only one collaborator
-     * in the list that satisfies the owner condition:
-     */
-    collaborators?: pulumi.Input<pulumi.Input<inputs.GetCleanRoomsCleanRoomRemoteDetailedInfoCollaboratorArgs>[]>;
-    /**
-     * (ComplianceSecurityProfile)
-     */
-    complianceSecurityProfile?: pulumi.Input<inputs.GetCleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfileArgs>;
-    /**
-     * (CleanRoomCollaborator) - Collaborator who creates the clean room
-     */
-    creator?: pulumi.Input<inputs.GetCleanRoomsCleanRoomRemoteDetailedInfoCreatorArgs>;
-    /**
-     * (EgressNetworkPolicy) - Egress network policy to apply to the central clean room workspace
-     */
-    egressNetworkPolicy?: pulumi.Input<inputs.GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyArgs>;
-    /**
-     * (string)
-     */
-    region?: pulumi.Input<string>;
-}
-
-export interface GetCleanRoomsCleanRoomRemoteDetailedInfoCollaborator {
-    /**
-     * (string) - Collaborator alias specified by the clean room creator. It is unique across all collaborators of this clean room, and used to derive
-     * multiple values internally such as catalog alias and clean room name for single metastore clean rooms.
-     * It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements)
-     */
-    collaboratorAlias: string;
-    /**
-     * (string) - Generated display name for the collaborator. In the case of a single metastore clean room, it is the clean
-     * room name. For x-metastore clean rooms, it is the organization name of the metastore. It is not restricted to
-     * these values and could change in the future
-     */
-    displayName?: string;
-    /**
-     * (string) - The global Unity Catalog metastore ID of the collaborator. The identifier is of format cloud:region:metastore-uuid
-     */
-    globalMetastoreId?: string;
-    /**
-     * (string) - Email of the user who is receiving the clean room "invitation". It should be empty
-     * for the creator of the clean room, and non-empty for the invitees of the clean room.
-     * It is only returned in the output when clean room creator calls GET
-     */
-    inviteRecipientEmail?: string;
-    /**
-     * (integer) - Workspace ID of the user who is receiving the clean room "invitation". Must be specified if
-     * inviteRecipientEmail is specified.
-     * It should be empty when the collaborator is the creator of the clean room
-     */
-    inviteRecipientWorkspaceId?: number;
-    /**
-     * (string) - Organization name
-     * configured in the metastore
-     */
-    organizationName?: string;
-}
-
-export interface GetCleanRoomsCleanRoomRemoteDetailedInfoCollaboratorArgs {
-    /**
-     * (string) - Collaborator alias specified by the clean room creator. It is unique across all collaborators of this clean room, and used to derive
-     * multiple values internally such as catalog alias and clean room name for single metastore clean rooms.
-     * It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements)
-     */
-    collaboratorAlias: pulumi.Input<string>;
-    /**
-     * (string) - Generated display name for the collaborator. In the case of a single metastore clean room, it is the clean
-     * room name. For x-metastore clean rooms, it is the organization name of the metastore. It is not restricted to
-     * these values and could change in the future
-     */
-    displayName?: pulumi.Input<string>;
-    /**
-     * (string) - The global Unity Catalog metastore ID of the collaborator. The identifier is of format cloud:region:metastore-uuid
-     */
-    globalMetastoreId?: pulumi.Input<string>;
-    /**
-     * (string) - Email of the user who is receiving the clean room "invitation". It should be empty
-     * for the creator of the clean room, and non-empty for the invitees of the clean room.
-     * It is only returned in the output when clean room creator calls GET
-     */
-    inviteRecipientEmail?: pulumi.Input<string>;
-    /**
-     * (integer) - Workspace ID of the user who is receiving the clean room "invitation". Must be specified if
-     * inviteRecipientEmail is specified.
-     * It should be empty when the collaborator is the creator of the clean room
-     */
-    inviteRecipientWorkspaceId?: pulumi.Input<number>;
-    /**
-     * (string) - Organization name
-     * configured in the metastore
-     */
-    organizationName?: pulumi.Input<string>;
-}
-
-export interface GetCleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfile {
-    /**
-     * (list of ComplianceStandard) - The list of compliance standards that the compliance security profile is configured to enforce
-     */
-    complianceStandards?: string[];
-    /**
-     * (boolean) - Whether the compliance security profile is enabled
-     */
-    isEnabled?: boolean;
-}
-
-export interface GetCleanRoomsCleanRoomRemoteDetailedInfoComplianceSecurityProfileArgs {
-    /**
-     * (list of ComplianceStandard) - The list of compliance standards that the compliance security profile is configured to enforce
-     */
-    complianceStandards?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * (boolean) - Whether the compliance security profile is enabled
-     */
-    isEnabled?: pulumi.Input<boolean>;
-}
-
-export interface GetCleanRoomsCleanRoomRemoteDetailedInfoCreator {
-    /**
-     * (string) - Collaborator alias specified by the clean room creator. It is unique across all collaborators of this clean room, and used to derive
-     * multiple values internally such as catalog alias and clean room name for single metastore clean rooms.
-     * It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements)
-     */
-    collaboratorAlias: string;
-    /**
-     * (string) - Generated display name for the collaborator. In the case of a single metastore clean room, it is the clean
-     * room name. For x-metastore clean rooms, it is the organization name of the metastore. It is not restricted to
-     * these values and could change in the future
-     */
-    displayName?: string;
-    /**
-     * (string) - The global Unity Catalog metastore ID of the collaborator. The identifier is of format cloud:region:metastore-uuid
-     */
-    globalMetastoreId?: string;
-    /**
-     * (string) - Email of the user who is receiving the clean room "invitation". It should be empty
-     * for the creator of the clean room, and non-empty for the invitees of the clean room.
-     * It is only returned in the output when clean room creator calls GET
-     */
-    inviteRecipientEmail?: string;
-    /**
-     * (integer) - Workspace ID of the user who is receiving the clean room "invitation". Must be specified if
-     * inviteRecipientEmail is specified.
-     * It should be empty when the collaborator is the creator of the clean room
-     */
-    inviteRecipientWorkspaceId?: number;
-    /**
-     * (string) - Organization name
-     * configured in the metastore
-     */
-    organizationName?: string;
-}
-
-export interface GetCleanRoomsCleanRoomRemoteDetailedInfoCreatorArgs {
-    /**
-     * (string) - Collaborator alias specified by the clean room creator. It is unique across all collaborators of this clean room, and used to derive
-     * multiple values internally such as catalog alias and clean room name for single metastore clean rooms.
-     * It should follow [UC securable naming requirements](https://docs.databricks.com/en/data-governance/unity-catalog/index.html#securable-object-naming-requirements)
-     */
-    collaboratorAlias: pulumi.Input<string>;
-    /**
-     * (string) - Generated display name for the collaborator. In the case of a single metastore clean room, it is the clean
-     * room name. For x-metastore clean rooms, it is the organization name of the metastore. It is not restricted to
-     * these values and could change in the future
-     */
-    displayName?: pulumi.Input<string>;
-    /**
-     * (string) - The global Unity Catalog metastore ID of the collaborator. The identifier is of format cloud:region:metastore-uuid
-     */
-    globalMetastoreId?: pulumi.Input<string>;
-    /**
-     * (string) - Email of the user who is receiving the clean room "invitation". It should be empty
-     * for the creator of the clean room, and non-empty for the invitees of the clean room.
-     * It is only returned in the output when clean room creator calls GET
-     */
-    inviteRecipientEmail?: pulumi.Input<string>;
-    /**
-     * (integer) - Workspace ID of the user who is receiving the clean room "invitation". Must be specified if
-     * inviteRecipientEmail is specified.
-     * It should be empty when the collaborator is the creator of the clean room
-     */
-    inviteRecipientWorkspaceId?: pulumi.Input<number>;
-    /**
-     * (string) - Organization name
-     * configured in the metastore
-     */
-    organizationName?: pulumi.Input<string>;
-}
-
-export interface GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicy {
-    /**
-     * (EgressNetworkPolicyInternetAccessPolicy) - The access policy enforced for egress traffic to the internet
-     */
-    internetAccess?: inputs.GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccess;
-}
-
-export interface GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyArgs {
-    /**
-     * (EgressNetworkPolicyInternetAccessPolicy) - The access policy enforced for egress traffic to the internet
-     */
-    internetAccess?: pulumi.Input<inputs.GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessArgs>;
-}
-
-export interface GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccess {
-    /**
-     * (list of EgressNetworkPolicyInternetAccessPolicyInternetDestination)
-     */
-    allowedInternetDestinations?: inputs.GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedInternetDestination[];
-    /**
-     * (list of EgressNetworkPolicyInternetAccessPolicyStorageDestination)
-     */
-    allowedStorageDestinations?: inputs.GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedStorageDestination[];
-    /**
-     * (EgressNetworkPolicyInternetAccessPolicyLogOnlyMode) - Optional. If not specified, assume the policy is enforced for all workloads
-     */
-    logOnlyMode?: inputs.GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyMode;
-    /**
-     * (string) - . Possible values are: `FULL_ACCESS`, `PRIVATE_ACCESS_ONLY`, `RESTRICTED_ACCESS`
-     */
-    restrictionMode?: string;
-}
-
-export interface GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessArgs {
-    /**
-     * (list of EgressNetworkPolicyInternetAccessPolicyInternetDestination)
-     */
-    allowedInternetDestinations?: pulumi.Input<pulumi.Input<inputs.GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedInternetDestinationArgs>[]>;
-    /**
-     * (list of EgressNetworkPolicyInternetAccessPolicyStorageDestination)
-     */
-    allowedStorageDestinations?: pulumi.Input<pulumi.Input<inputs.GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedStorageDestinationArgs>[]>;
-    /**
-     * (EgressNetworkPolicyInternetAccessPolicyLogOnlyMode) - Optional. If not specified, assume the policy is enforced for all workloads
-     */
-    logOnlyMode?: pulumi.Input<inputs.GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyModeArgs>;
-    /**
-     * (string) - . Possible values are: `FULL_ACCESS`, `PRIVATE_ACCESS_ONLY`, `RESTRICTED_ACCESS`
-     */
-    restrictionMode?: pulumi.Input<string>;
-}
-
-export interface GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedInternetDestination {
-    /**
-     * (string)
-     */
-    destination?: string;
-    /**
-     * (string) - . Possible values are: `TCP`
-     */
-    protocol?: string;
-    /**
-     * (string) - . Possible values are: `AWS_S3`, `AZURE_STORAGE`, `CLOUDFLARE_R2`, `GOOGLE_CLOUD_STORAGE`
-     */
-    type?: string;
-}
-
-export interface GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedInternetDestinationArgs {
-    /**
-     * (string)
-     */
-    destination?: pulumi.Input<string>;
-    /**
-     * (string) - . Possible values are: `TCP`
-     */
-    protocol?: pulumi.Input<string>;
-    /**
-     * (string) - . Possible values are: `AWS_S3`, `AZURE_STORAGE`, `CLOUDFLARE_R2`, `GOOGLE_CLOUD_STORAGE`
-     */
-    type?: pulumi.Input<string>;
-}
-
-export interface GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedStorageDestination {
-    /**
-     * (list of string)
-     */
-    allowedPaths?: string[];
-    /**
-     * (string)
-     */
-    azureContainer?: string;
-    /**
-     * (string)
-     */
-    azureDnsZone?: string;
-    /**
-     * (string)
-     */
-    azureStorageAccount?: string;
-    /**
-     * (string)
-     */
-    azureStorageService?: string;
-    /**
-     * (string)
-     */
-    bucketName?: string;
-    /**
-     * (string)
-     */
-    region?: string;
-    /**
-     * (string) - . Possible values are: `AWS_S3`, `AZURE_STORAGE`, `CLOUDFLARE_R2`, `GOOGLE_CLOUD_STORAGE`
-     */
-    type?: string;
-}
-
-export interface GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessAllowedStorageDestinationArgs {
-    /**
-     * (list of string)
-     */
-    allowedPaths?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * (string)
-     */
-    azureContainer?: pulumi.Input<string>;
-    /**
-     * (string)
-     */
-    azureDnsZone?: pulumi.Input<string>;
-    /**
-     * (string)
-     */
-    azureStorageAccount?: pulumi.Input<string>;
-    /**
-     * (string)
-     */
-    azureStorageService?: pulumi.Input<string>;
-    /**
-     * (string)
-     */
-    bucketName?: pulumi.Input<string>;
-    /**
-     * (string)
-     */
-    region?: pulumi.Input<string>;
-    /**
-     * (string) - . Possible values are: `AWS_S3`, `AZURE_STORAGE`, `CLOUDFLARE_R2`, `GOOGLE_CLOUD_STORAGE`
-     */
-    type?: pulumi.Input<string>;
-}
-
-export interface GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyMode {
-    /**
-     * (string) - . Possible values are: `ALL_SERVICES`, `SELECTED_SERVICES`
-     */
-    logOnlyModeType?: string;
-    /**
-     * (list of string)
-     */
-    workloads?: string[];
+    workspaceId: string;
 }
 
-export interface GetCleanRoomsCleanRoomRemoteDetailedInfoEgressNetworkPolicyInternetAccessLogOnlyModeArgs {
-    /**
-     * (string) - . Possible values are: `ALL_SERVICES`, `SELECTED_SERVICES`
-     */
-    logOnlyModeType?: pulumi.Input<string>;
+export interface GetCatalogsProviderConfigArgs {
     /**
-     * (list of string)
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workloads?: pulumi.Input<pulumi.Input<string>[]>;
+    workspaceId: pulumi.Input<string>;
 }
 
 export interface GetClusterClusterInfo {
@@ -6127,6 +3091,10 @@ export interface GetClusterClusterInfoSpec {
      * Identifier of Cluster Policy to validate cluster and preset certain defaults.
      */
     policyId?: string;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: inputs.GetClusterClusterInfoSpecProviderConfig;
     remoteDiskThroughput?: number;
     /**
      * The type of runtime of the cluster
@@ -6219,6 +3187,10 @@ export interface GetClusterClusterInfoSpecArgs {
      * Identifier of Cluster Policy to validate cluster and preset certain defaults.
      */
     policyId?: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.GetClusterClusterInfoSpecProviderConfigArgs>;
     remoteDiskThroughput?: pulumi.Input<number>;
     /**
      * The type of runtime of the cluster
@@ -6521,6 +3493,10 @@ export interface GetClusterClusterInfoSpecLibrary {
     egg?: string;
     jar?: string;
     maven?: inputs.GetClusterClusterInfoSpecLibraryMaven;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: inputs.GetClusterClusterInfoSpecLibraryProviderConfig;
     pypi?: inputs.GetClusterClusterInfoSpecLibraryPypi;
     requirements?: string;
     whl?: string;
@@ -6534,6 +3510,10 @@ export interface GetClusterClusterInfoSpecLibraryArgs {
     egg?: pulumi.Input<string>;
     jar?: pulumi.Input<string>;
     maven?: pulumi.Input<inputs.GetClusterClusterInfoSpecLibraryMavenArgs>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.GetClusterClusterInfoSpecLibraryProviderConfigArgs>;
     pypi?: pulumi.Input<inputs.GetClusterClusterInfoSpecLibraryPypiArgs>;
     requirements?: pulumi.Input<string>;
     whl?: pulumi.Input<string>;
@@ -6561,6 +3541,20 @@ export interface GetClusterClusterInfoSpecLibraryMavenArgs {
     repo?: pulumi.Input<string>;
 }
 
+export interface GetClusterClusterInfoSpecLibraryProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetClusterClusterInfoSpecLibraryProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
+}
+
 export interface GetClusterClusterInfoSpecLibraryPypi {
     package: string;
     repo?: string;
@@ -6569,6 +3563,20 @@ export interface GetClusterClusterInfoSpecLibraryPypi {
 export interface GetClusterClusterInfoSpecLibraryPypiArgs {
     package: pulumi.Input<string>;
     repo?: pulumi.Input<string>;
+}
+
+export interface GetClusterClusterInfoSpecProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetClusterClusterInfoSpecProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
 }
 
 export interface GetClusterClusterInfoSpecWorkloadType {
@@ -6619,6 +3627,34 @@ export interface GetClusterClusterInfoWorkloadTypeClientsArgs {
     notebooks?: pulumi.Input<boolean>;
 }
 
+export interface GetClusterPolicyProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetClusterPolicyProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
+}
+
+export interface GetClusterProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetClusterProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
+}
+
 export interface GetClustersFilterBy {
     /**
      * List of cluster sources to filter by. Possible values are `API`, `JOB`, `MODELS`, `PIPELINE`, `PIPELINE_MAINTENANCE`, `SQL`, and `UI`.
@@ -6655,6 +3691,20 @@ export interface GetClustersFilterByArgs {
      * Filter by databricks.ClusterPolicy id.
      */
     policyId?: pulumi.Input<string>;
+}
+
+export interface GetClustersProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetClustersProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
 }
 
 export interface GetCurrentMetastoreMetastoreInfo {
@@ -6803,160 +3853,40 @@ export interface GetCurrentMetastoreMetastoreInfoArgs {
     updatedBy?: pulumi.Input<string>;
 }
 
-export interface GetDatabaseInstanceParentInstanceRef {
+export interface GetCurrentMetastoreProviderConfig {
     /**
-     * (string) - Branch time of the ref database instance.
-     * For a parent ref instance, this is the point in time on the parent instance from which the
-     * instance was created.
-     * For a child ref instance, this is the point in time on the instance from which the child
-     * instance was created.
-     * Input: For specifying the point in time to create a child instance. Optional.
-     * Output: Only populated if provided as input to create a child instance
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    branchTime?: string;
-    /**
-     * (string) - xref AIP-129. `lsn` is owned by the client, while `effectiveLsn` is owned by the server.
-     * `lsn` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-     * `effectiveLsn` on the other hand will always bet set in all response messages (Create/Update/Get/List).
-     * For a parent ref instance, this is the LSN on the parent instance from which the
-     * instance was created.
-     * For a child ref instance, this is the LSN on the instance from which the child instance
-     * was created
-     */
-    effectiveLsn?: string;
-    /**
-     * (string) - User-specified WAL LSN of the ref database instance.
-     */
-    lsn?: string;
-    /**
-     * The name of the instance. This is the unique identifier for the instance
-     */
-    name?: string;
-    /**
-     * (string) - Id of the ref database instance
-     */
-    uid?: string;
+    workspaceId: string;
 }
 
-export interface GetDatabaseInstanceParentInstanceRefArgs {
+export interface GetCurrentMetastoreProviderConfigArgs {
     /**
-     * (string) - Branch time of the ref database instance.
-     * For a parent ref instance, this is the point in time on the parent instance from which the
-     * instance was created.
-     * For a child ref instance, this is the point in time on the instance from which the child
-     * instance was created.
-     * Input: For specifying the point in time to create a child instance. Optional.
-     * Output: Only populated if provided as input to create a child instance
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    branchTime?: pulumi.Input<string>;
-    /**
-     * (string) - xref AIP-129. `lsn` is owned by the client, while `effectiveLsn` is owned by the server.
-     * `lsn` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-     * `effectiveLsn` on the other hand will always bet set in all response messages (Create/Update/Get/List).
-     * For a parent ref instance, this is the LSN on the parent instance from which the
-     * instance was created.
-     * For a child ref instance, this is the LSN on the instance from which the child instance
-     * was created
-     */
-    effectiveLsn?: pulumi.Input<string>;
-    /**
-     * (string) - User-specified WAL LSN of the ref database instance.
-     */
-    lsn?: pulumi.Input<string>;
-    /**
-     * The name of the instance. This is the unique identifier for the instance
-     */
-    name?: pulumi.Input<string>;
-    /**
-     * (string) - Id of the ref database instance
-     */
-    uid?: pulumi.Input<string>;
+    workspaceId: pulumi.Input<string>;
 }
 
-export interface GetDatabaseSyncedDatabaseTableSpec {
-    /**
-     * (boolean) - If true, the synced table's logical database and schema resources in PG
-     * will be created if they do not already exist
-     */
-    createDatabaseObjectsIfMissing?: boolean;
-    /**
-     * (string) - At most one of existingPipelineId and newPipelineSpec should be defined.
-     */
-    existingPipelineId?: string;
-    /**
-     * (NewPipelineSpec) - At most one of existingPipelineId and newPipelineSpec should be defined.
-     */
-    newPipelineSpec?: inputs.GetDatabaseSyncedDatabaseTableSpecNewPipelineSpec;
-    /**
-     * (list of string) - Primary Key columns to be used for data insert/update in the destination
-     */
-    primaryKeyColumns?: string[];
-    /**
-     * (string) - Scheduling policy of the underlying pipeline. Possible values are: `CONTINUOUS`, `SNAPSHOT`, `TRIGGERED`
-     */
-    schedulingPolicy?: string;
-    /**
-     * (string) - Three-part (catalog, schema, table) name of the source Delta table
-     */
-    sourceTableFullName?: string;
-    /**
-     * (string) - Time series key to deduplicate (tie-break) rows with the same primary key
-     */
-    timeseriesKey?: string;
+export interface GetDashboardsProviderConfig {
+    workspaceId: string;
 }
 
-export interface GetDatabaseSyncedDatabaseTableSpecArgs {
-    /**
-     * (boolean) - If true, the synced table's logical database and schema resources in PG
-     * will be created if they do not already exist
-     */
-    createDatabaseObjectsIfMissing?: pulumi.Input<boolean>;
-    /**
-     * (string) - At most one of existingPipelineId and newPipelineSpec should be defined.
-     */
-    existingPipelineId?: pulumi.Input<string>;
-    /**
-     * (NewPipelineSpec) - At most one of existingPipelineId and newPipelineSpec should be defined.
-     */
-    newPipelineSpec?: pulumi.Input<inputs.GetDatabaseSyncedDatabaseTableSpecNewPipelineSpecArgs>;
-    /**
-     * (list of string) - Primary Key columns to be used for data insert/update in the destination
-     */
-    primaryKeyColumns?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * (string) - Scheduling policy of the underlying pipeline. Possible values are: `CONTINUOUS`, `SNAPSHOT`, `TRIGGERED`
-     */
-    schedulingPolicy?: pulumi.Input<string>;
-    /**
-     * (string) - Three-part (catalog, schema, table) name of the source Delta table
-     */
-    sourceTableFullName?: pulumi.Input<string>;
-    /**
-     * (string) - Time series key to deduplicate (tie-break) rows with the same primary key
-     */
-    timeseriesKey?: pulumi.Input<string>;
+export interface GetDashboardsProviderConfigArgs {
+    workspaceId: pulumi.Input<string>;
 }
 
-export interface GetDatabaseSyncedDatabaseTableSpecNewPipelineSpec {
+export interface GetDirectoryProviderConfig {
     /**
-     * (string) - This field needs to be specified if the destination catalog is a managed postgres catalog.
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    storageCatalog?: string;
-    /**
-     * (string) - This field needs to be specified if the destination catalog is a managed postgres catalog.
-     */
-    storageSchema?: string;
+    workspaceId: string;
 }
 
-export interface GetDatabaseSyncedDatabaseTableSpecNewPipelineSpecArgs {
+export interface GetDirectoryProviderConfigArgs {
     /**
-     * (string) - This field needs to be specified if the destination catalog is a managed postgres catalog.
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    storageCatalog?: pulumi.Input<string>;
-    /**
-     * (string) - This field needs to be specified if the destination catalog is a managed postgres catalog.
-     */
-    storageSchema?: pulumi.Input<string>;
+    workspaceId: pulumi.Input<string>;
 }
 
 export interface GetExternalLocationExternalLocationInfo {
@@ -7199,6 +4129,34 @@ export interface GetExternalLocationExternalLocationInfoFileEventQueueProvidedSq
 export interface GetExternalLocationExternalLocationInfoFileEventQueueProvidedSqsArgs {
     managedResourceId?: pulumi.Input<string>;
     queueUrl?: pulumi.Input<string>;
+}
+
+export interface GetExternalLocationProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetExternalLocationProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
+}
+
+export interface GetExternalLocationsProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetExternalLocationsProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
 }
 
 export interface GetFunctionsFunction {
@@ -7733,6 +4691,14 @@ export interface GetFunctionsFunctionRoutineDependenciesDependencyTableArgs {
     tableFullName: pulumi.Input<string>;
 }
 
+export interface GetFunctionsProviderConfig {
+    workspaceId: string;
+}
+
+export interface GetFunctionsProviderConfigArgs {
+    workspaceId: pulumi.Input<string>;
+}
+
 export interface GetInstancePoolPoolInfo {
     awsAttributes?: inputs.GetInstancePoolPoolInfoAwsAttributes;
     azureAttributes?: inputs.GetInstancePoolPoolInfoAzureAttributes;
@@ -7777,12 +4743,14 @@ export interface GetInstancePoolPoolInfoArgs {
 
 export interface GetInstancePoolPoolInfoAwsAttributes {
     availability?: string;
+    instanceProfileArn?: string;
     spotBidPricePercent?: number;
     zoneId?: string;
 }
 
 export interface GetInstancePoolPoolInfoAwsAttributesArgs {
     availability?: pulumi.Input<string>;
+    instanceProfileArn?: pulumi.Input<string>;
     spotBidPricePercent?: pulumi.Input<number>;
     zoneId?: pulumi.Input<string>;
 }
@@ -7943,6 +4911,20 @@ export interface GetInstanceProfilesInstanceProfileArgs {
      * ARN of the role attached to the instance profile.
      */
     roleArn?: pulumi.Input<string>;
+}
+
+export interface GetInstanceProfilesProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetInstanceProfilesProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
 }
 
 export interface GetJobJobSettings {
@@ -8115,14 +5097,14 @@ export interface GetJobJobSettingsSettingsEnvironmentSpec {
     client?: string;
     dependencies?: string[];
     environmentVersion?: string;
-    jarDependencies?: string[];
+    javaDependencies?: string[];
 }
 
 export interface GetJobJobSettingsSettingsEnvironmentSpecArgs {
     client?: pulumi.Input<string>;
     dependencies?: pulumi.Input<pulumi.Input<string>[]>;
     environmentVersion?: pulumi.Input<string>;
-    jarDependencies?: pulumi.Input<pulumi.Input<string>[]>;
+    javaDependencies?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface GetJobJobSettingsSettingsGitSource {
@@ -8507,6 +5489,7 @@ export interface GetJobJobSettingsSettingsLibrary {
     egg?: string;
     jar?: string;
     maven?: inputs.GetJobJobSettingsSettingsLibraryMaven;
+    providerConfig?: inputs.GetJobJobSettingsSettingsLibraryProviderConfig;
     pypi?: inputs.GetJobJobSettingsSettingsLibraryPypi;
     requirements?: string;
     whl?: string;
@@ -8520,6 +5503,7 @@ export interface GetJobJobSettingsSettingsLibraryArgs {
     egg?: pulumi.Input<string>;
     jar?: pulumi.Input<string>;
     maven?: pulumi.Input<inputs.GetJobJobSettingsSettingsLibraryMavenArgs>;
+    providerConfig?: pulumi.Input<inputs.GetJobJobSettingsSettingsLibraryProviderConfigArgs>;
     pypi?: pulumi.Input<inputs.GetJobJobSettingsSettingsLibraryPypiArgs>;
     requirements?: pulumi.Input<string>;
     whl?: pulumi.Input<string>;
@@ -8545,6 +5529,14 @@ export interface GetJobJobSettingsSettingsLibraryMavenArgs {
     coordinates: pulumi.Input<string>;
     exclusions?: pulumi.Input<pulumi.Input<string>[]>;
     repo?: pulumi.Input<string>;
+}
+
+export interface GetJobJobSettingsSettingsLibraryProviderConfig {
+    workspaceId: string;
+}
+
+export interface GetJobJobSettingsSettingsLibraryProviderConfigArgs {
+    workspaceId: pulumi.Input<string>;
 }
 
 export interface GetJobJobSettingsSettingsLibraryPypi {
@@ -9365,6 +6357,7 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskLibrary {
     egg?: string;
     jar?: string;
     maven?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryMaven;
+    providerConfig?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryProviderConfig;
     pypi?: inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryPypi;
     requirements?: string;
     whl?: string;
@@ -9378,6 +6371,7 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryArgs {
     egg?: pulumi.Input<string>;
     jar?: pulumi.Input<string>;
     maven?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryMavenArgs>;
+    providerConfig?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryProviderConfigArgs>;
     pypi?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryPypiArgs>;
     requirements?: pulumi.Input<string>;
     whl?: pulumi.Input<string>;
@@ -9403,6 +6397,14 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryMavenArgs {
     coordinates: pulumi.Input<string>;
     exclusions?: pulumi.Input<pulumi.Input<string>[]>;
     repo?: pulumi.Input<string>;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryProviderConfig {
+    workspaceId: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryProviderConfigArgs {
+    workspaceId: pulumi.Input<string>;
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryPypi {
@@ -10069,6 +7071,7 @@ export interface GetJobJobSettingsSettingsTaskLibrary {
     egg?: string;
     jar?: string;
     maven?: inputs.GetJobJobSettingsSettingsTaskLibraryMaven;
+    providerConfig?: inputs.GetJobJobSettingsSettingsTaskLibraryProviderConfig;
     pypi?: inputs.GetJobJobSettingsSettingsTaskLibraryPypi;
     requirements?: string;
     whl?: string;
@@ -10082,6 +7085,7 @@ export interface GetJobJobSettingsSettingsTaskLibraryArgs {
     egg?: pulumi.Input<string>;
     jar?: pulumi.Input<string>;
     maven?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskLibraryMavenArgs>;
+    providerConfig?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskLibraryProviderConfigArgs>;
     pypi?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskLibraryPypiArgs>;
     requirements?: pulumi.Input<string>;
     whl?: pulumi.Input<string>;
@@ -10107,6 +7111,14 @@ export interface GetJobJobSettingsSettingsTaskLibraryMavenArgs {
     coordinates: pulumi.Input<string>;
     exclusions?: pulumi.Input<pulumi.Input<string>[]>;
     repo?: pulumi.Input<string>;
+}
+
+export interface GetJobJobSettingsSettingsTaskLibraryProviderConfig {
+    workspaceId: string;
+}
+
+export interface GetJobJobSettingsSettingsTaskLibraryProviderConfigArgs {
+    workspaceId: pulumi.Input<string>;
 }
 
 export interface GetJobJobSettingsSettingsTaskLibraryPypi {
@@ -10881,6 +7893,20 @@ export interface GetJobJobSettingsSettingsWebhookNotificationsOnSuccessArgs {
     id: pulumi.Input<string>;
 }
 
+export interface GetJobsProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetJobsProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
+}
+
 export interface GetMetastoreMetastoreInfo {
     cloud?: string;
     createdAt?: number;
@@ -10973,6 +7999,20 @@ export interface GetMetastoreMetastoreInfoArgs {
     updatedBy?: pulumi.Input<string>;
 }
 
+export interface GetMlflowExperimentProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetMlflowExperimentProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
+}
+
 export interface GetMlflowExperimentTag {
     key?: string;
     value?: string;
@@ -11049,6 +8089,20 @@ export interface GetMlflowModelLatestVersionTagArgs {
     value?: pulumi.Input<string>;
 }
 
+export interface GetMlflowModelProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetMlflowModelProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
+}
+
 export interface GetMlflowModelTag {
     key?: string;
     value?: string;
@@ -11057,6 +8111,20 @@ export interface GetMlflowModelTag {
 export interface GetMlflowModelTagArgs {
     key?: pulumi.Input<string>;
     value?: pulumi.Input<string>;
+}
+
+export interface GetMlflowModelsProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetMlflowModelsProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
 }
 
 export interface GetMwsNetworkConnectivityConfigEgressConfig {
@@ -11331,206 +8399,40 @@ export interface GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePriv
     updatedTime?: pulumi.Input<number>;
 }
 
-export interface GetPolicyInfoColumnMask {
+export interface GetNodeTypeProviderConfig {
     /**
-     * (string) - The fully qualified name of the row filter function.
-     * The function is called on each row of the target table. It should return a boolean value
-     * indicating whether the row should be visible to the user.
-     * Required on create and update
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    functionName: string;
-    /**
-     * (string) - The alias of the column to be masked. The alias must refer to one of matched columns.
-     * The values of the column is passed to the column mask function as the first argument.
-     * Required on create and update
-     */
-    onColumn: string;
-    /**
-     * (list of FunctionArgument) - Optional list of column aliases or constant literals to be passed as arguments to the row filter function.
-     * The type of each column should match the positional argument of the row filter function
-     */
-    usings?: inputs.GetPolicyInfoColumnMaskUsing[];
+    workspaceId: string;
 }
 
-export interface GetPolicyInfoColumnMaskArgs {
+export interface GetNodeTypeProviderConfigArgs {
     /**
-     * (string) - The fully qualified name of the row filter function.
-     * The function is called on each row of the target table. It should return a boolean value
-     * indicating whether the row should be visible to the user.
-     * Required on create and update
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    functionName: pulumi.Input<string>;
-    /**
-     * (string) - The alias of the column to be masked. The alias must refer to one of matched columns.
-     * The values of the column is passed to the column mask function as the first argument.
-     * Required on create and update
-     */
-    onColumn: pulumi.Input<string>;
-    /**
-     * (list of FunctionArgument) - Optional list of column aliases or constant literals to be passed as arguments to the row filter function.
-     * The type of each column should match the positional argument of the row filter function
-     */
-    usings?: pulumi.Input<pulumi.Input<inputs.GetPolicyInfoColumnMaskUsingArgs>[]>;
+    workspaceId: pulumi.Input<string>;
 }
 
-export interface GetPolicyInfoColumnMaskUsing {
-    /**
-     * (string) - Optional alias of the matched column
-     */
-    alias?: string;
-    /**
-     * (string) - A constant literal
-     */
-    constant?: string;
+export interface GetNotificationDestinationsProviderConfig {
+    workspaceId: string;
 }
 
-export interface GetPolicyInfoColumnMaskUsingArgs {
-    /**
-     * (string) - Optional alias of the matched column
-     */
-    alias?: pulumi.Input<string>;
-    /**
-     * (string) - A constant literal
-     */
-    constant?: pulumi.Input<string>;
+export interface GetNotificationDestinationsProviderConfigArgs {
+    workspaceId: pulumi.Input<string>;
 }
 
-export interface GetPolicyInfoMatchColumn {
+export interface GetPipelinesProviderConfig {
     /**
-     * (string) - Optional alias of the matched column
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    alias?: string;
-    /**
-     * (string) - The condition expression used to match a table column
-     */
-    condition?: string;
+    workspaceId: string;
 }
 
-export interface GetPolicyInfoMatchColumnArgs {
+export interface GetPipelinesProviderConfigArgs {
     /**
-     * (string) - Optional alias of the matched column
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    alias?: pulumi.Input<string>;
-    /**
-     * (string) - The condition expression used to match a table column
-     */
-    condition?: pulumi.Input<string>;
-}
-
-export interface GetPolicyInfoRowFilter {
-    /**
-     * (string) - The fully qualified name of the row filter function.
-     * The function is called on each row of the target table. It should return a boolean value
-     * indicating whether the row should be visible to the user.
-     * Required on create and update
-     */
-    functionName: string;
-    /**
-     * (list of FunctionArgument) - Optional list of column aliases or constant literals to be passed as arguments to the row filter function.
-     * The type of each column should match the positional argument of the row filter function
-     */
-    usings?: inputs.GetPolicyInfoRowFilterUsing[];
-}
-
-export interface GetPolicyInfoRowFilterArgs {
-    /**
-     * (string) - The fully qualified name of the row filter function.
-     * The function is called on each row of the target table. It should return a boolean value
-     * indicating whether the row should be visible to the user.
-     * Required on create and update
-     */
-    functionName: pulumi.Input<string>;
-    /**
-     * (list of FunctionArgument) - Optional list of column aliases or constant literals to be passed as arguments to the row filter function.
-     * The type of each column should match the positional argument of the row filter function
-     */
-    usings?: pulumi.Input<pulumi.Input<inputs.GetPolicyInfoRowFilterUsingArgs>[]>;
-}
-
-export interface GetPolicyInfoRowFilterUsing {
-    /**
-     * (string) - Optional alias of the matched column
-     */
-    alias?: string;
-    /**
-     * (string) - A constant literal
-     */
-    constant?: string;
-}
-
-export interface GetPolicyInfoRowFilterUsingArgs {
-    /**
-     * (string) - Optional alias of the matched column
-     */
-    alias?: pulumi.Input<string>;
-    /**
-     * (string) - A constant literal
-     */
-    constant?: pulumi.Input<string>;
-}
-
-export interface GetRecipientFederationPolicyOidcPolicy {
-    /**
-     * (list of string) - The allowed token audiences, as specified in the 'aud' claim of federated tokens.
-     * The audience identifier is intended to represent the recipient of the token.
-     * Can be any non-empty string value. As long as the audience in the token matches at least one audience in the policy,
-     */
-    audiences?: string[];
-    /**
-     * (string) - The required token issuer, as specified in the 'iss' claim of federated tokens
-     */
-    issuer: string;
-    /**
-     * (string) - The required token subject, as specified in the subject claim of federated tokens.
-     * The subject claim identifies the identity of the user or machine accessing the resource.
-     * Examples for Entra ID (AAD):
-     * - U2M flow (group access): If the subject claim is `groups`, this must be the Object ID of the group in Entra ID.
-     * - U2M flow (user access): If the subject claim is `oid`, this must be the Object ID of the user in Entra ID.
-     * - M2M flow (OAuth App access): If the subject claim is `azp`, this must be the client ID of the OAuth app registered in Entra ID
-     */
-    subject: string;
-    /**
-     * (string) - The claim that contains the subject of the token.
-     * Depending on the identity provider and the use case (U2M or M2M), this can vary:
-     * - For Entra ID (AAD):
-     * * U2M flow (group access): Use `groups`.
-     * * U2M flow (user access): Use `oid`.
-     * * M2M flow (OAuth App access): Use `azp`.
-     * - For other IdPs, refer to the specific IdP documentation.
-     */
-    subjectClaim: string;
-}
-
-export interface GetRecipientFederationPolicyOidcPolicyArgs {
-    /**
-     * (list of string) - The allowed token audiences, as specified in the 'aud' claim of federated tokens.
-     * The audience identifier is intended to represent the recipient of the token.
-     * Can be any non-empty string value. As long as the audience in the token matches at least one audience in the policy,
-     */
-    audiences?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * (string) - The required token issuer, as specified in the 'iss' claim of federated tokens
-     */
-    issuer: pulumi.Input<string>;
-    /**
-     * (string) - The required token subject, as specified in the subject claim of federated tokens.
-     * The subject claim identifies the identity of the user or machine accessing the resource.
-     * Examples for Entra ID (AAD):
-     * - U2M flow (group access): If the subject claim is `groups`, this must be the Object ID of the group in Entra ID.
-     * - U2M flow (user access): If the subject claim is `oid`, this must be the Object ID of the user in Entra ID.
-     * - M2M flow (OAuth App access): If the subject claim is `azp`, this must be the client ID of the OAuth app registered in Entra ID
-     */
-    subject: pulumi.Input<string>;
-    /**
-     * (string) - The claim that contains the subject of the token.
-     * Depending on the identity provider and the use case (U2M or M2M), this can vary:
-     * - For Entra ID (AAD):
-     * * U2M flow (group access): Use `groups`.
-     * * U2M flow (user access): Use `oid`.
-     * * M2M flow (OAuth App access): Use `azp`.
-     * - For other IdPs, refer to the specific IdP documentation.
-     */
-    subjectClaim: pulumi.Input<string>;
+    workspaceId: pulumi.Input<string>;
 }
 
 export interface GetRegisteredModelModelInfo {
@@ -11651,6 +8553,16 @@ export interface GetRegisteredModelModelInfoAlias {
      */
     aliasName?: string;
     /**
+     * The name of the catalog where the schema and the registered model reside.
+     */
+    catalogName?: string;
+    id?: string;
+    modelName?: string;
+    /**
+     * The name of the schema where the registered model resides.
+     */
+    schemaName?: string;
+    /**
      * associated model version
      */
     versionNum?: number;
@@ -11662,9 +8574,27 @@ export interface GetRegisteredModelModelInfoAliasArgs {
      */
     aliasName?: pulumi.Input<string>;
     /**
+     * The name of the catalog where the schema and the registered model reside.
+     */
+    catalogName?: pulumi.Input<string>;
+    id?: pulumi.Input<string>;
+    modelName?: pulumi.Input<string>;
+    /**
+     * The name of the schema where the registered model resides.
+     */
+    schemaName?: pulumi.Input<string>;
+    /**
      * associated model version
      */
     versionNum?: pulumi.Input<number>;
+}
+
+export interface GetRegisteredModelProviderConfig {
+    workspaceId: string;
+}
+
+export interface GetRegisteredModelProviderConfigArgs {
+    workspaceId: pulumi.Input<string>;
 }
 
 export interface GetRegisteredModelVersionsModelVersion {
@@ -11672,7 +8602,6 @@ export interface GetRegisteredModelVersionsModelVersion {
      * the list of aliases associated with this model. Each item is object consisting of following attributes:
      */
     aliases?: inputs.GetRegisteredModelVersionsModelVersionAlias[];
-    browseOnly?: boolean;
     /**
      * The name of the catalog where the schema and the registered model reside.
      */
@@ -11745,7 +8674,6 @@ export interface GetRegisteredModelVersionsModelVersionArgs {
      * the list of aliases associated with this model. Each item is object consisting of following attributes:
      */
     aliases?: pulumi.Input<pulumi.Input<inputs.GetRegisteredModelVersionsModelVersionAliasArgs>[]>;
-    browseOnly?: pulumi.Input<boolean>;
     /**
      * The name of the catalog where the schema and the registered model reside.
      */
@@ -11819,6 +8747,19 @@ export interface GetRegisteredModelVersionsModelVersionAlias {
      */
     aliasName?: string;
     /**
+     * The name of the catalog where the schema and the registered model reside.
+     */
+    catalogName?: string;
+    /**
+     * The unique identifier of the model version
+     */
+    id?: string;
+    modelName?: string;
+    /**
+     * The name of the schema where the registered model resides.
+     */
+    schemaName?: string;
+    /**
      * associated model version
      */
     versionNum?: number;
@@ -11829,6 +8770,19 @@ export interface GetRegisteredModelVersionsModelVersionAliasArgs {
      * string with the name of alias
      */
     aliasName?: pulumi.Input<string>;
+    /**
+     * The name of the catalog where the schema and the registered model reside.
+     */
+    catalogName?: pulumi.Input<string>;
+    /**
+     * The unique identifier of the model version
+     */
+    id?: pulumi.Input<string>;
+    modelName?: pulumi.Input<string>;
+    /**
+     * The name of the schema where the registered model resides.
+     */
+    schemaName?: pulumi.Input<string>;
     /**
      * associated model version
      */
@@ -11917,6 +8871,28 @@ export interface GetRegisteredModelVersionsModelVersionModelVersionDependencyDep
      * Full name of the dependent table
      */
     tableFullName: pulumi.Input<string>;
+}
+
+export interface GetRegisteredModelVersionsProviderConfig {
+    workspaceId: string;
+}
+
+export interface GetRegisteredModelVersionsProviderConfigArgs {
+    workspaceId: pulumi.Input<string>;
+}
+
+export interface GetSchemaProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetSchemaProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
 }
 
 export interface GetSchemaSchemaInfo {
@@ -12081,90 +9057,18 @@ export interface GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagArgs {
     value: pulumi.Input<string>;
 }
 
-export interface GetServicePrincipalFederationPolicyOidcPolicy {
+export interface GetSchemasProviderConfig {
     /**
-     * (list of string) - The allowed token audiences, as specified in the 'aud' claim of federated tokens.
-     * The audience identifier is intended to represent the recipient of the token.
-     * Can be any non-empty string value. As long as the audience in the token matches
-     * at least one audience in the policy, the token is considered a match. If audiences
-     * is unspecified, defaults to your Databricks account id
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    audiences?: string[];
-    /**
-     * (string) - The required token issuer, as specified in the 'iss' claim of federated tokens
-     */
-    issuer?: string;
-    /**
-     * (string) - The public keys used to validate the signature of federated tokens, in JWKS format.
-     * Most use cases should not need to specify this field. If jwksUri and jwksJson
-     * are both unspecified (recommended), Databricks automatically fetches the public
-     * keys from your issuer’s well known endpoint. Databricks strongly recommends
-     * relying on your issuer’s well known endpoint for discovering public keys
-     */
-    jwksJson?: string;
-    /**
-     * (string) - URL of the public keys used to validate the signature of federated tokens, in
-     * JWKS format. Most use cases should not need to specify this field. If jwksUri
-     * and jwksJson are both unspecified (recommended), Databricks automatically
-     * fetches the public keys from your issuer’s well known endpoint. Databricks
-     * strongly recommends relying on your issuer’s well known endpoint for discovering
-     * public keys
-     */
-    jwksUri?: string;
-    /**
-     * (string) - The required token subject, as specified in the subject claim of federated tokens.
-     * Must be specified for service principal federation policies. Must not be specified
-     * for account federation policies
-     */
-    subject?: string;
-    /**
-     * (string) - The claim that contains the subject of the token. If unspecified, the default value
-     * is 'sub'
-     */
-    subjectClaim?: string;
+    workspaceId: string;
 }
 
-export interface GetServicePrincipalFederationPolicyOidcPolicyArgs {
+export interface GetSchemasProviderConfigArgs {
     /**
-     * (list of string) - The allowed token audiences, as specified in the 'aud' claim of federated tokens.
-     * The audience identifier is intended to represent the recipient of the token.
-     * Can be any non-empty string value. As long as the audience in the token matches
-     * at least one audience in the policy, the token is considered a match. If audiences
-     * is unspecified, defaults to your Databricks account id
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    audiences?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * (string) - The required token issuer, as specified in the 'iss' claim of federated tokens
-     */
-    issuer?: pulumi.Input<string>;
-    /**
-     * (string) - The public keys used to validate the signature of federated tokens, in JWKS format.
-     * Most use cases should not need to specify this field. If jwksUri and jwksJson
-     * are both unspecified (recommended), Databricks automatically fetches the public
-     * keys from your issuer’s well known endpoint. Databricks strongly recommends
-     * relying on your issuer’s well known endpoint for discovering public keys
-     */
-    jwksJson?: pulumi.Input<string>;
-    /**
-     * (string) - URL of the public keys used to validate the signature of federated tokens, in
-     * JWKS format. Most use cases should not need to specify this field. If jwksUri
-     * and jwksJson are both unspecified (recommended), Databricks automatically
-     * fetches the public keys from your issuer’s well known endpoint. Databricks
-     * strongly recommends relying on your issuer’s well known endpoint for discovering
-     * public keys
-     */
-    jwksUri?: pulumi.Input<string>;
-    /**
-     * (string) - The required token subject, as specified in the subject claim of federated tokens.
-     * Must be specified for service principal federation policies. Must not be specified
-     * for account federation policies
-     */
-    subject?: pulumi.Input<string>;
-    /**
-     * (string) - The claim that contains the subject of the token. If unspecified, the default value
-     * is 'sub'
-     */
-    subjectClaim?: pulumi.Input<string>;
+    workspaceId: pulumi.Input<string>;
 }
 
 export interface GetServingEndpointsEndpoint {
@@ -12621,6 +9525,14 @@ export interface GetServingEndpointsEndpointTagArgs {
     value?: pulumi.Input<string>;
 }
 
+export interface GetServingEndpointsProviderConfig {
+    workspaceId: string;
+}
+
+export interface GetServingEndpointsProviderConfigArgs {
+    workspaceId: pulumi.Input<string>;
+}
+
 export interface GetShareObject {
     addedAt?: number;
     addedBy?: string;
@@ -12633,7 +9545,12 @@ export interface GetShareObject {
     /**
      * Type of the object.
      */
-    dataObjectType: string;
+    dataObjectType?: string;
+    effectiveCdfEnabled?: boolean;
+    effectiveHistoryDataSharingStatus?: string;
+    effectiveSharedAs?: string;
+    effectiveStartVersion?: number;
+    effectiveStringSharedAs?: string;
     historyDataSharingStatus?: string;
     /**
      * The name of the share
@@ -12658,7 +9575,12 @@ export interface GetShareObjectArgs {
     /**
      * Type of the object.
      */
-    dataObjectType: pulumi.Input<string>;
+    dataObjectType?: pulumi.Input<string>;
+    effectiveCdfEnabled?: pulumi.Input<boolean>;
+    effectiveHistoryDataSharingStatus?: pulumi.Input<string>;
+    effectiveSharedAs?: pulumi.Input<string>;
+    effectiveStartVersion?: pulumi.Input<number>;
+    effectiveStringSharedAs?: pulumi.Input<string>;
     historyDataSharingStatus?: pulumi.Input<string>;
     /**
      * The name of the share
@@ -12683,8 +9605,8 @@ export interface GetShareObjectPartitionValue {
     /**
      * The name of the share
      */
-    name: string;
-    op: string;
+    name?: string;
+    op?: string;
     recipientPropertyKey?: string;
     value?: string;
 }
@@ -12693,10 +9615,52 @@ export interface GetShareObjectPartitionValueArgs {
     /**
      * The name of the share
      */
-    name: pulumi.Input<string>;
-    op: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    op?: pulumi.Input<string>;
     recipientPropertyKey?: pulumi.Input<string>;
     value?: pulumi.Input<string>;
+}
+
+export interface GetShareProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetShareProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
+}
+
+export interface GetSharesProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetSharesProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
+}
+
+export interface GetSparkVersionProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetSparkVersionProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
 }
 
 export interface GetSqlWarehouseChannel {
@@ -12757,6 +9721,14 @@ export interface GetSqlWarehouseOdbcParamsArgs {
     protocol?: pulumi.Input<string>;
 }
 
+export interface GetSqlWarehouseProviderConfig {
+    workspaceId: string;
+}
+
+export interface GetSqlWarehouseProviderConfigArgs {
+    workspaceId: pulumi.Input<string>;
+}
+
 export interface GetSqlWarehouseTags {
     customTags?: inputs.GetSqlWarehouseTagsCustomTag[];
 }
@@ -12773,6 +9745,34 @@ export interface GetSqlWarehouseTagsCustomTag {
 export interface GetSqlWarehouseTagsCustomTagArgs {
     key?: pulumi.Input<string>;
     value?: pulumi.Input<string>;
+}
+
+export interface GetSqlWarehousesProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetSqlWarehousesProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
+}
+
+export interface GetStorageCredentialProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetStorageCredentialProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
 }
 
 export interface GetStorageCredentialStorageCredentialInfo {
@@ -13001,6 +10001,34 @@ export interface GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAc
     email?: pulumi.Input<string>;
 }
 
+export interface GetStorageCredentialsProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetStorageCredentialsProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
+}
+
+export interface GetTableProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetTableProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
+}
+
 export interface GetTableTableInfo {
     accessPoint?: string;
     browseOnly?: boolean;
@@ -13050,6 +10078,9 @@ export interface GetTableTableInfo {
     storageCredentialName?: string;
     storageLocation?: string;
     tableConstraints?: inputs.GetTableTableInfoTableConstraint[];
+    /**
+     * The unique identifier of the table.
+     */
     tableId?: string;
     /**
      * Table type, e.g. MANAGED, EXTERNAL, VIEW
@@ -13116,6 +10147,9 @@ export interface GetTableTableInfoArgs {
     storageCredentialName?: pulumi.Input<string>;
     storageLocation?: pulumi.Input<string>;
     tableConstraints?: pulumi.Input<pulumi.Input<inputs.GetTableTableInfoTableConstraintArgs>[]>;
+    /**
+     * The unique identifier of the table.
+     */
     tableId?: pulumi.Input<string>;
     /**
      * Table type, e.g. MANAGED, EXTERNAL, VIEW
@@ -13411,18 +10445,46 @@ export interface GetTableTableInfoViewDependenciesDependencyTableArgs {
     tableFullName: pulumi.Input<string>;
 }
 
-export interface GetTagPolicyValue {
+export interface GetTablesProviderConfig {
     /**
-     * (string)
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    name: string;
+    workspaceId: string;
 }
 
-export interface GetTagPolicyValueArgs {
+export interface GetTablesProviderConfigArgs {
     /**
-     * (string)
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    name: pulumi.Input<string>;
+    workspaceId: pulumi.Input<string>;
+}
+
+export interface GetViewsProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetViewsProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
+}
+
+export interface GetVolumeProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetVolumeProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
 }
 
 export interface GetVolumeVolumeInfo {
@@ -13585,470 +10647,32 @@ export interface GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsArgs {
     awsKmsKeyArn?: pulumi.Input<string>;
 }
 
-export interface GetWorkspaceSettingV2AibiDashboardEmbeddingAccessPolicy {
+export interface GetVolumesProviderConfig {
     /**
-     * (string) - . Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    accessPolicyType: string;
+    workspaceId: string;
 }
 
-export interface GetWorkspaceSettingV2AibiDashboardEmbeddingAccessPolicyArgs {
+export interface GetVolumesProviderConfigArgs {
     /**
-     * (string) - . Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    accessPolicyType: pulumi.Input<string>;
+    workspaceId: pulumi.Input<string>;
 }
 
-export interface GetWorkspaceSettingV2AibiDashboardEmbeddingApprovedDomains {
+export interface GetZonesProviderConfig {
     /**
-     * (list of string)
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    approvedDomains?: string[];
+    workspaceId: string;
 }
 
-export interface GetWorkspaceSettingV2AibiDashboardEmbeddingApprovedDomainsArgs {
+export interface GetZonesProviderConfigArgs {
     /**
-     * (list of string)
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    approvedDomains?: pulumi.Input<pulumi.Input<string>[]>;
-}
-
-export interface GetWorkspaceSettingV2AutomaticClusterUpdateWorkspace {
-    /**
-     * (boolean)
-     */
-    canToggle?: boolean;
-    /**
-     * (boolean)
-     */
-    enabled?: boolean;
-    /**
-     * (ClusterAutoRestartMessageEnablementDetails)
-     */
-    enablementDetails?: inputs.GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetails;
-    /**
-     * (ClusterAutoRestartMessageMaintenanceWindow)
-     */
-    maintenanceWindow?: inputs.GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindow;
-    /**
-     * (boolean)
-     */
-    restartEvenIfNoUpdatesAvailable?: boolean;
-}
-
-export interface GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceArgs {
-    /**
-     * (boolean)
-     */
-    canToggle?: pulumi.Input<boolean>;
-    /**
-     * (boolean)
-     */
-    enabled?: pulumi.Input<boolean>;
-    /**
-     * (ClusterAutoRestartMessageEnablementDetails)
-     */
-    enablementDetails?: pulumi.Input<inputs.GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsArgs>;
-    /**
-     * (ClusterAutoRestartMessageMaintenanceWindow)
-     */
-    maintenanceWindow?: pulumi.Input<inputs.GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowArgs>;
-    /**
-     * (boolean)
-     */
-    restartEvenIfNoUpdatesAvailable?: pulumi.Input<boolean>;
-}
-
-export interface GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetails {
-    /**
-     * (boolean) - The feature is force enabled if compliance mode is active
-     */
-    forcedForComplianceMode?: boolean;
-    /**
-     * (boolean) - The feature is unavailable if the corresponding entitlement disabled (see getShieldEntitlementEnable)
-     */
-    unavailableForDisabledEntitlement?: boolean;
-    /**
-     * (boolean) - The feature is unavailable if the customer doesn't have enterprise tier
-     */
-    unavailableForNonEnterpriseTier?: boolean;
-}
-
-export interface GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetailsArgs {
-    /**
-     * (boolean) - The feature is force enabled if compliance mode is active
-     */
-    forcedForComplianceMode?: pulumi.Input<boolean>;
-    /**
-     * (boolean) - The feature is unavailable if the corresponding entitlement disabled (see getShieldEntitlementEnable)
-     */
-    unavailableForDisabledEntitlement?: pulumi.Input<boolean>;
-    /**
-     * (boolean) - The feature is unavailable if the customer doesn't have enterprise tier
-     */
-    unavailableForNonEnterpriseTier?: pulumi.Input<boolean>;
-}
-
-export interface GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindow {
-    /**
-     * (ClusterAutoRestartMessageMaintenanceWindowWeekDayBasedSchedule)
-     */
-    weekDayBasedSchedule?: inputs.GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule;
-}
-
-export interface GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowArgs {
-    /**
-     * (ClusterAutoRestartMessageMaintenanceWindowWeekDayBasedSchedule)
-     */
-    weekDayBasedSchedule?: pulumi.Input<inputs.GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgs>;
-}
-
-export interface GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule {
-    /**
-     * (string) - . Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
-     */
-    dayOfWeek?: string;
-    /**
-     * (string) - . Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
-     */
-    frequency?: string;
-    /**
-     * (ClusterAutoRestartMessageMaintenanceWindowWindowStartTime)
-     */
-    windowStartTime?: inputs.GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime;
-}
-
-export interface GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgs {
-    /**
-     * (string) - . Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
-     */
-    dayOfWeek?: pulumi.Input<string>;
-    /**
-     * (string) - . Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
-     */
-    frequency?: pulumi.Input<string>;
-    /**
-     * (ClusterAutoRestartMessageMaintenanceWindowWindowStartTime)
-     */
-    windowStartTime?: pulumi.Input<inputs.GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs>;
-}
-
-export interface GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime {
-    /**
-     * (integer)
-     */
-    hours?: number;
-    /**
-     * (integer)
-     */
-    minutes?: number;
-}
-
-export interface GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs {
-    /**
-     * (integer)
-     */
-    hours?: pulumi.Input<number>;
-    /**
-     * (integer)
-     */
-    minutes?: pulumi.Input<number>;
-}
-
-export interface GetWorkspaceSettingV2BooleanVal {
-    /**
-     * (string) - Represents a generic string value
-     */
-    value?: boolean;
-}
-
-export interface GetWorkspaceSettingV2BooleanValArgs {
-    /**
-     * (string) - Represents a generic string value
-     */
-    value?: pulumi.Input<boolean>;
-}
-
-export interface GetWorkspaceSettingV2DefaultDataSecurityMode {
-    /**
-     * (string) - . Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
-     */
-    status: string;
-}
-
-export interface GetWorkspaceSettingV2DefaultDataSecurityModeArgs {
-    /**
-     * (string) - . Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
-     */
-    status: pulumi.Input<string>;
-}
-
-export interface GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy {
-    /**
-     * (string) - . Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
-     */
-    accessPolicyType: string;
-}
-
-export interface GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgs {
-    /**
-     * (string) - . Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
-     */
-    accessPolicyType: pulumi.Input<string>;
-}
-
-export interface GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomains {
-    /**
-     * (list of string)
-     */
-    approvedDomains?: string[];
-}
-
-export interface GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgs {
-    /**
-     * (list of string)
-     */
-    approvedDomains?: pulumi.Input<pulumi.Input<string>[]>;
-}
-
-export interface GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspace {
-    /**
-     * (boolean)
-     */
-    canToggle?: boolean;
-    /**
-     * (boolean)
-     */
-    enabled?: boolean;
-    /**
-     * (ClusterAutoRestartMessageEnablementDetails)
-     */
-    enablementDetails?: inputs.GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetails;
-    /**
-     * (ClusterAutoRestartMessageMaintenanceWindow)
-     */
-    maintenanceWindow?: inputs.GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindow;
-    /**
-     * (boolean)
-     */
-    restartEvenIfNoUpdatesAvailable?: boolean;
-}
-
-export interface GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgs {
-    /**
-     * (boolean)
-     */
-    canToggle?: pulumi.Input<boolean>;
-    /**
-     * (boolean)
-     */
-    enabled?: pulumi.Input<boolean>;
-    /**
-     * (ClusterAutoRestartMessageEnablementDetails)
-     */
-    enablementDetails?: pulumi.Input<inputs.GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsArgs>;
-    /**
-     * (ClusterAutoRestartMessageMaintenanceWindow)
-     */
-    maintenanceWindow?: pulumi.Input<inputs.GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowArgs>;
-    /**
-     * (boolean)
-     */
-    restartEvenIfNoUpdatesAvailable?: pulumi.Input<boolean>;
-}
-
-export interface GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetails {
-    /**
-     * (boolean) - The feature is force enabled if compliance mode is active
-     */
-    forcedForComplianceMode?: boolean;
-    /**
-     * (boolean) - The feature is unavailable if the corresponding entitlement disabled (see getShieldEntitlementEnable)
-     */
-    unavailableForDisabledEntitlement?: boolean;
-    /**
-     * (boolean) - The feature is unavailable if the customer doesn't have enterprise tier
-     */
-    unavailableForNonEnterpriseTier?: boolean;
-}
-
-export interface GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsArgs {
-    /**
-     * (boolean) - The feature is force enabled if compliance mode is active
-     */
-    forcedForComplianceMode?: pulumi.Input<boolean>;
-    /**
-     * (boolean) - The feature is unavailable if the corresponding entitlement disabled (see getShieldEntitlementEnable)
-     */
-    unavailableForDisabledEntitlement?: pulumi.Input<boolean>;
-    /**
-     * (boolean) - The feature is unavailable if the customer doesn't have enterprise tier
-     */
-    unavailableForNonEnterpriseTier?: pulumi.Input<boolean>;
-}
-
-export interface GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindow {
-    /**
-     * (ClusterAutoRestartMessageMaintenanceWindowWeekDayBasedSchedule)
-     */
-    weekDayBasedSchedule?: inputs.GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule;
-}
-
-export interface GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowArgs {
-    /**
-     * (ClusterAutoRestartMessageMaintenanceWindowWeekDayBasedSchedule)
-     */
-    weekDayBasedSchedule?: pulumi.Input<inputs.GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgs>;
-}
-
-export interface GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule {
-    /**
-     * (string) - . Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
-     */
-    dayOfWeek?: string;
-    /**
-     * (string) - . Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
-     */
-    frequency?: string;
-    /**
-     * (ClusterAutoRestartMessageMaintenanceWindowWindowStartTime)
-     */
-    windowStartTime?: inputs.GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime;
-}
-
-export interface GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgs {
-    /**
-     * (string) - . Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
-     */
-    dayOfWeek?: pulumi.Input<string>;
-    /**
-     * (string) - . Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
-     */
-    frequency?: pulumi.Input<string>;
-    /**
-     * (ClusterAutoRestartMessageMaintenanceWindowWindowStartTime)
-     */
-    windowStartTime?: pulumi.Input<inputs.GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs>;
-}
-
-export interface GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime {
-    /**
-     * (integer)
-     */
-    hours?: number;
-    /**
-     * (integer)
-     */
-    minutes?: number;
-}
-
-export interface GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs {
-    /**
-     * (integer)
-     */
-    hours?: pulumi.Input<number>;
-    /**
-     * (integer)
-     */
-    minutes?: pulumi.Input<number>;
-}
-
-export interface GetWorkspaceSettingV2EffectiveDefaultDataSecurityMode {
-    /**
-     * (string) - . Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
-     */
-    status: string;
-}
-
-export interface GetWorkspaceSettingV2EffectiveDefaultDataSecurityModeArgs {
-    /**
-     * (string) - . Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
-     */
-    status: pulumi.Input<string>;
-}
-
-export interface GetWorkspaceSettingV2EffectivePersonalCompute {
-    /**
-     * (string) - Represents a generic string value
-     */
-    value?: string;
-}
-
-export interface GetWorkspaceSettingV2EffectivePersonalComputeArgs {
-    /**
-     * (string) - Represents a generic string value
-     */
-    value?: pulumi.Input<string>;
-}
-
-export interface GetWorkspaceSettingV2EffectiveRestrictWorkspaceAdmins {
-    /**
-     * (string) - . Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
-     */
-    status: string;
-}
-
-export interface GetWorkspaceSettingV2EffectiveRestrictWorkspaceAdminsArgs {
-    /**
-     * (string) - . Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
-     */
-    status: pulumi.Input<string>;
-}
-
-export interface GetWorkspaceSettingV2IntegerVal {
-    /**
-     * (string) - Represents a generic string value
-     */
-    value?: number;
-}
-
-export interface GetWorkspaceSettingV2IntegerValArgs {
-    /**
-     * (string) - Represents a generic string value
-     */
-    value?: pulumi.Input<number>;
-}
-
-export interface GetWorkspaceSettingV2PersonalCompute {
-    /**
-     * (string) - Represents a generic string value
-     */
-    value?: string;
-}
-
-export interface GetWorkspaceSettingV2PersonalComputeArgs {
-    /**
-     * (string) - Represents a generic string value
-     */
-    value?: pulumi.Input<string>;
-}
-
-export interface GetWorkspaceSettingV2RestrictWorkspaceAdmins {
-    /**
-     * (string) - . Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
-     */
-    status: string;
-}
-
-export interface GetWorkspaceSettingV2RestrictWorkspaceAdminsArgs {
-    /**
-     * (string) - . Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
-     */
-    status: pulumi.Input<string>;
-}
-
-export interface GetWorkspaceSettingV2StringVal {
-    /**
-     * (string) - Represents a generic string value
-     */
-    value?: string;
-}
-
-export interface GetWorkspaceSettingV2StringValArgs {
-    /**
-     * (string) - Represents a generic string value
-     */
-    value?: pulumi.Input<string>;
+    workspaceId: pulumi.Input<string>;
 }
 
 export interface GrantsGrant {
@@ -14061,6 +10685,10 @@ export interface InstancePoolAwsAttributes {
      * (String) Availability type used for all instances in the pool. Only `ON_DEMAND` and `SPOT` are supported.
      */
     availability?: pulumi.Input<string>;
+    /**
+     * Nodes belonging to the pool will only be placed on AWS instances with this instance profile. Please see databricks.InstanceProfile resource documentation for extended examples on adding a valid instance profile using Pulumi.
+     */
+    instanceProfileArn?: pulumi.Input<string>;
     /**
      * (Integer) The max price for AWS spot instances, as a percentage of the corresponding instance type's on-demand price. For example, if this field is set to 50, and the instance pool needs a new i3.xlarge spot instance, then the max price is half of the price of on-demand i3.xlarge instances. Similarly, if this field is set to 200, the max price is twice the price of on-demand i3.xlarge instances. If not specified, the *default value is 100*. When spot instances are requested for this instance pool, only spot instances whose max price percentage matches this field are considered. *For safety, this field cannot be greater than 10000.*
      */
@@ -14274,7 +10902,7 @@ export interface JobEnvironmentSpec {
      * client version used by the environment. Each version comes with a specific Python version and a set of Python packages.
      */
     environmentVersion?: pulumi.Input<string>;
-    jarDependencies?: pulumi.Input<pulumi.Input<string>[]>;
+    javaDependencies?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface JobGitSource {
@@ -14375,6 +11003,10 @@ export interface JobJobClusterNewCluster {
     nodeTypeId?: pulumi.Input<string>;
     numWorkers?: pulumi.Input<number>;
     policyId?: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.JobJobClusterNewClusterProviderConfig>;
     remoteDiskThroughput?: pulumi.Input<number>;
     runtimeEngine?: pulumi.Input<string>;
     singleUserName?: pulumi.Input<string>;
@@ -14536,6 +11168,10 @@ export interface JobJobClusterNewClusterLibrary {
     egg?: pulumi.Input<string>;
     jar?: pulumi.Input<string>;
     maven?: pulumi.Input<inputs.JobJobClusterNewClusterLibraryMaven>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.JobJobClusterNewClusterLibraryProviderConfig>;
     pypi?: pulumi.Input<inputs.JobJobClusterNewClusterLibraryPypi>;
     requirements?: pulumi.Input<string>;
     whl?: pulumi.Input<string>;
@@ -14552,9 +11188,23 @@ export interface JobJobClusterNewClusterLibraryMaven {
     repo?: pulumi.Input<string>;
 }
 
+export interface JobJobClusterNewClusterLibraryProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
+}
+
 export interface JobJobClusterNewClusterLibraryPypi {
     package: pulumi.Input<string>;
     repo?: pulumi.Input<string>;
+}
+
+export interface JobJobClusterNewClusterProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
 }
 
 export interface JobJobClusterNewClusterWorkloadType {
@@ -14574,6 +11224,10 @@ export interface JobLibrary {
     egg?: pulumi.Input<string>;
     jar?: pulumi.Input<string>;
     maven?: pulumi.Input<inputs.JobLibraryMaven>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.JobLibraryProviderConfig>;
     pypi?: pulumi.Input<inputs.JobLibraryPypi>;
     requirements?: pulumi.Input<string>;
     whl?: pulumi.Input<string>;
@@ -14588,6 +11242,13 @@ export interface JobLibraryMaven {
     coordinates: pulumi.Input<string>;
     exclusions?: pulumi.Input<pulumi.Input<string>[]>;
     repo?: pulumi.Input<string>;
+}
+
+export interface JobLibraryProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
 }
 
 export interface JobLibraryPypi {
@@ -14624,6 +11285,10 @@ export interface JobNewCluster {
     nodeTypeId?: pulumi.Input<string>;
     numWorkers?: pulumi.Input<number>;
     policyId?: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.JobNewClusterProviderConfig>;
     remoteDiskThroughput?: pulumi.Input<number>;
     runtimeEngine?: pulumi.Input<string>;
     singleUserName?: pulumi.Input<string>;
@@ -14785,6 +11450,10 @@ export interface JobNewClusterLibrary {
     egg?: pulumi.Input<string>;
     jar?: pulumi.Input<string>;
     maven?: pulumi.Input<inputs.JobNewClusterLibraryMaven>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.JobNewClusterLibraryProviderConfig>;
     pypi?: pulumi.Input<inputs.JobNewClusterLibraryPypi>;
     requirements?: pulumi.Input<string>;
     whl?: pulumi.Input<string>;
@@ -14801,9 +11470,23 @@ export interface JobNewClusterLibraryMaven {
     repo?: pulumi.Input<string>;
 }
 
+export interface JobNewClusterLibraryProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
+}
+
 export interface JobNewClusterLibraryPypi {
     package: pulumi.Input<string>;
     repo?: pulumi.Input<string>;
+}
+
+export interface JobNewClusterProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
 }
 
 export interface JobNewClusterWorkloadType {
@@ -14871,6 +11554,13 @@ export interface JobPipelineTask {
      * The pipeline's unique ID.
      */
     pipelineId: pulumi.Input<string>;
+}
+
+export interface JobProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
 }
 
 export interface JobPythonWheelTask {
@@ -15002,6 +11692,7 @@ export interface JobTask {
      * A flag to disable auto optimization in serverless tasks.
      */
     disableAutoOptimization?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean>;
     /**
      * An optional block to specify a set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This block is documented below.
      */
@@ -15282,6 +11973,7 @@ export interface JobTaskForEachTaskTask {
      * A flag to disable auto optimization in serverless tasks.
      */
     disableAutoOptimization?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean>;
     /**
      * An optional block to specify a set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This block is documented below.
      */
@@ -15574,6 +12266,10 @@ export interface JobTaskForEachTaskTaskLibrary {
     egg?: pulumi.Input<string>;
     jar?: pulumi.Input<string>;
     maven?: pulumi.Input<inputs.JobTaskForEachTaskTaskLibraryMaven>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.JobTaskForEachTaskTaskLibraryProviderConfig>;
     pypi?: pulumi.Input<inputs.JobTaskForEachTaskTaskLibraryPypi>;
     requirements?: pulumi.Input<string>;
     whl?: pulumi.Input<string>;
@@ -15588,6 +12284,13 @@ export interface JobTaskForEachTaskTaskLibraryMaven {
     coordinates: pulumi.Input<string>;
     exclusions?: pulumi.Input<pulumi.Input<string>[]>;
     repo?: pulumi.Input<string>;
+}
+
+export interface JobTaskForEachTaskTaskLibraryProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
 }
 
 export interface JobTaskForEachTaskTaskLibraryPypi {
@@ -15624,6 +12327,10 @@ export interface JobTaskForEachTaskTaskNewCluster {
     nodeTypeId?: pulumi.Input<string>;
     numWorkers?: pulumi.Input<number>;
     policyId?: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterProviderConfig>;
     remoteDiskThroughput?: pulumi.Input<number>;
     runtimeEngine?: pulumi.Input<string>;
     singleUserName?: pulumi.Input<string>;
@@ -15785,6 +12492,10 @@ export interface JobTaskForEachTaskTaskNewClusterLibrary {
     egg?: pulumi.Input<string>;
     jar?: pulumi.Input<string>;
     maven?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterLibraryMaven>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterLibraryProviderConfig>;
     pypi?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterLibraryPypi>;
     requirements?: pulumi.Input<string>;
     whl?: pulumi.Input<string>;
@@ -15801,9 +12512,23 @@ export interface JobTaskForEachTaskTaskNewClusterLibraryMaven {
     repo?: pulumi.Input<string>;
 }
 
+export interface JobTaskForEachTaskTaskNewClusterLibraryProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
+}
+
 export interface JobTaskForEachTaskTaskNewClusterLibraryPypi {
     package: pulumi.Input<string>;
     repo?: pulumi.Input<string>;
+}
+
+export interface JobTaskForEachTaskTaskNewClusterProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
 }
 
 export interface JobTaskForEachTaskTaskNewClusterWorkloadType {
@@ -16260,6 +12985,10 @@ export interface JobTaskLibrary {
     egg?: pulumi.Input<string>;
     jar?: pulumi.Input<string>;
     maven?: pulumi.Input<inputs.JobTaskLibraryMaven>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.JobTaskLibraryProviderConfig>;
     pypi?: pulumi.Input<inputs.JobTaskLibraryPypi>;
     requirements?: pulumi.Input<string>;
     whl?: pulumi.Input<string>;
@@ -16274,6 +13003,13 @@ export interface JobTaskLibraryMaven {
     coordinates: pulumi.Input<string>;
     exclusions?: pulumi.Input<pulumi.Input<string>[]>;
     repo?: pulumi.Input<string>;
+}
+
+export interface JobTaskLibraryProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
 }
 
 export interface JobTaskLibraryPypi {
@@ -16311,6 +13047,10 @@ export interface JobTaskNewCluster {
     nodeTypeId?: pulumi.Input<string>;
     numWorkers?: pulumi.Input<number>;
     policyId?: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.JobTaskNewClusterProviderConfig>;
     remoteDiskThroughput?: pulumi.Input<number>;
     runtimeEngine?: pulumi.Input<string>;
     singleUserName?: pulumi.Input<string>;
@@ -16472,6 +13212,10 @@ export interface JobTaskNewClusterLibrary {
     egg?: pulumi.Input<string>;
     jar?: pulumi.Input<string>;
     maven?: pulumi.Input<inputs.JobTaskNewClusterLibraryMaven>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.JobTaskNewClusterLibraryProviderConfig>;
     pypi?: pulumi.Input<inputs.JobTaskNewClusterLibraryPypi>;
     requirements?: pulumi.Input<string>;
     whl?: pulumi.Input<string>;
@@ -16488,9 +13232,23 @@ export interface JobTaskNewClusterLibraryMaven {
     repo?: pulumi.Input<string>;
 }
 
+export interface JobTaskNewClusterLibraryProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
+}
+
 export interface JobTaskNewClusterLibraryPypi {
     package: pulumi.Input<string>;
     repo?: pulumi.Input<string>;
+}
+
+export interface JobTaskNewClusterProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
 }
 
 export interface JobTaskNewClusterWorkloadType {
@@ -16913,7 +13671,9 @@ export interface JobTrigger {
      * configuration block to define a trigger for Periodic Triggers consisting of the following attributes:
      */
     periodic?: pulumi.Input<inputs.JobTriggerPeriodic>;
-    table?: pulumi.Input<inputs.JobTriggerTable>;
+    /**
+     * configuration block to define a trigger for [Table Updates](https://docs.databricks.com/aws/en/jobs/trigger-table-update) consisting of following attributes:
+     */
     tableUpdate?: pulumi.Input<inputs.JobTriggerTableUpdate>;
 }
 
@@ -16934,34 +13694,27 @@ export interface JobTriggerFileArrival {
 
 export interface JobTriggerPeriodic {
     /**
-     * Specifies the interval at which the job should run. This value is required.
+     * Specifies the interval at which the job should run.
      */
     interval: pulumi.Input<number>;
     /**
-     * Options are {"DAYS", "HOURS", "WEEKS"}.
+     * The unit of time for the interval.  Possible values are: `DAYS`, `HOURS`, `WEEKS`.
      */
     unit: pulumi.Input<string>;
 }
 
-export interface JobTriggerTable {
-    condition?: pulumi.Input<string>;
-    /**
-     * If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
-     */
-    minTimeBetweenTriggersSeconds?: pulumi.Input<number>;
-    tableNames?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
-     */
-    waitAfterLastChangeSeconds?: pulumi.Input<number>;
-}
-
 export interface JobTriggerTableUpdate {
+    /**
+     * The table(s) condition based on which to trigger a job run.  Possible values are `ANY_UPDATED`, `ALL_UPDATED`.
+     */
     condition?: pulumi.Input<string>;
     /**
      * If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
      */
     minTimeBetweenTriggersSeconds?: pulumi.Input<number>;
+    /**
+     * A non-empty list of tables to monitor for changes. The table name must be in the format `catalog_name.schema_name.table_name`.
+     */
     tableNames: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
@@ -17138,18 +13891,46 @@ export interface LakehouseMonitorTimeSeries {
 }
 
 export interface LibraryCran {
+    /**
+     * The name of the CRAN package to install.
+     */
     package: pulumi.Input<string>;
+    /**
+     * The repository where the package can be found. If not specified, the default CRAN repo is used.
+     */
     repo?: pulumi.Input<string>;
 }
 
 export interface LibraryMaven {
+    /**
+     * Gradle-style Maven coordinates. For example: `org.jsoup:jsoup:1.7.2`.
+     */
     coordinates: pulumi.Input<string>;
+    /**
+     * List of dependencies to exclude. For example: `["slf4j:slf4j", "*:hadoop-client"]`. See [Maven dependency exclusions](https://maven.apache.org/guides/introduction/introduction-to-optional-and-excludes-dependencies.html) for more information.
+     */
     exclusions?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Maven repository to install the Maven package from. If omitted, both Maven Central Repository and Spark Packages are searched.
+     */
     repo?: pulumi.Input<string>;
 }
 
+export interface LibraryProviderConfig {
+    /**
+     * Workspace ID that the resource belongs to. This workspace must be part of the account that the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
+}
+
 export interface LibraryPypi {
+    /**
+     * The name of the PyPI package to install. An optional exact version specification is also supported. For example: `simplejson` or `simplejson==3.8.0`.
+     */
     package: pulumi.Input<string>;
+    /**
+     * The repository where the package can be found. If not specified, the default pip index is used.
+     */
     repo?: pulumi.Input<string>;
 }
 
@@ -18188,11 +14969,11 @@ export interface MwsNetworksGcpNetworkInfo {
      */
     networkProjectId: pulumi.Input<string>;
     /**
-     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.90.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.96.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     podIpRangeName?: pulumi.Input<string>;
     /**
-     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.90.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.96.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     serviceIpRangeName?: pulumi.Input<string>;
     /**
@@ -18259,11 +15040,11 @@ export interface MwsWorkspacesExternalCustomerInfo {
 
 export interface MwsWorkspacesGcpManagedNetworkConfig {
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.90.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.96.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterPodIpRange?: pulumi.Input<string>;
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.90.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.96.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterServiceIpRange?: pulumi.Input<string>;
     subnetCidr: pulumi.Input<string>;
@@ -18732,6 +15513,7 @@ export interface PipelineGatewayDefinition {
 export interface PipelineIngestionDefinition {
     connectionName?: pulumi.Input<string>;
     ingestionGatewayId?: pulumi.Input<string>;
+    netsuiteJarPath?: pulumi.Input<string>;
     objects?: pulumi.Input<pulumi.Input<inputs.PipelineIngestionDefinitionObject>[]>;
     sourceConfigurations?: pulumi.Input<pulumi.Input<inputs.PipelineIngestionDefinitionSourceConfiguration>[]>;
     sourceType?: pulumi.Input<string>;
@@ -18763,12 +15545,24 @@ export interface PipelineIngestionDefinitionObjectReportTableConfiguration {
     salesforceIncludeFormulaFields?: pulumi.Input<boolean>;
     scdType?: pulumi.Input<string>;
     sequenceBies?: pulumi.Input<pulumi.Input<string>[]>;
+    workdayReportParameters?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectReportTableConfigurationWorkdayReportParameters>;
 }
 
 export interface PipelineIngestionDefinitionObjectReportTableConfigurationQueryBasedConnectorConfig {
     cursorColumns?: pulumi.Input<pulumi.Input<string>[]>;
     deletionCondition?: pulumi.Input<string>;
     hardDeletionSyncMinIntervalInSeconds?: pulumi.Input<number>;
+}
+
+export interface PipelineIngestionDefinitionObjectReportTableConfigurationWorkdayReportParameters {
+    incremental?: pulumi.Input<boolean>;
+    parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    reportParameters?: pulumi.Input<pulumi.Input<inputs.PipelineIngestionDefinitionObjectReportTableConfigurationWorkdayReportParametersReportParameter>[]>;
+}
+
+export interface PipelineIngestionDefinitionObjectReportTableConfigurationWorkdayReportParametersReportParameter {
+    key?: pulumi.Input<string>;
+    value?: pulumi.Input<string>;
 }
 
 export interface PipelineIngestionDefinitionObjectSchema {
@@ -18787,12 +15581,24 @@ export interface PipelineIngestionDefinitionObjectSchemaTableConfiguration {
     salesforceIncludeFormulaFields?: pulumi.Input<boolean>;
     scdType?: pulumi.Input<string>;
     sequenceBies?: pulumi.Input<pulumi.Input<string>[]>;
+    workdayReportParameters?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaTableConfigurationWorkdayReportParameters>;
 }
 
 export interface PipelineIngestionDefinitionObjectSchemaTableConfigurationQueryBasedConnectorConfig {
     cursorColumns?: pulumi.Input<pulumi.Input<string>[]>;
     deletionCondition?: pulumi.Input<string>;
     hardDeletionSyncMinIntervalInSeconds?: pulumi.Input<number>;
+}
+
+export interface PipelineIngestionDefinitionObjectSchemaTableConfigurationWorkdayReportParameters {
+    incremental?: pulumi.Input<boolean>;
+    parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    reportParameters?: pulumi.Input<pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaTableConfigurationWorkdayReportParametersReportParameter>[]>;
+}
+
+export interface PipelineIngestionDefinitionObjectSchemaTableConfigurationWorkdayReportParametersReportParameter {
+    key?: pulumi.Input<string>;
+    value?: pulumi.Input<string>;
 }
 
 export interface PipelineIngestionDefinitionObjectTable {
@@ -18813,12 +15619,24 @@ export interface PipelineIngestionDefinitionObjectTableTableConfiguration {
     salesforceIncludeFormulaFields?: pulumi.Input<boolean>;
     scdType?: pulumi.Input<string>;
     sequenceBies?: pulumi.Input<pulumi.Input<string>[]>;
+    workdayReportParameters?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableTableConfigurationWorkdayReportParameters>;
 }
 
 export interface PipelineIngestionDefinitionObjectTableTableConfigurationQueryBasedConnectorConfig {
     cursorColumns?: pulumi.Input<pulumi.Input<string>[]>;
     deletionCondition?: pulumi.Input<string>;
     hardDeletionSyncMinIntervalInSeconds?: pulumi.Input<number>;
+}
+
+export interface PipelineIngestionDefinitionObjectTableTableConfigurationWorkdayReportParameters {
+    incremental?: pulumi.Input<boolean>;
+    parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    reportParameters?: pulumi.Input<pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableTableConfigurationWorkdayReportParametersReportParameter>[]>;
+}
+
+export interface PipelineIngestionDefinitionObjectTableTableConfigurationWorkdayReportParametersReportParameter {
+    key?: pulumi.Input<string>;
+    value?: pulumi.Input<string>;
 }
 
 export interface PipelineIngestionDefinitionSourceConfiguration {
@@ -18850,12 +15668,24 @@ export interface PipelineIngestionDefinitionTableConfiguration {
     salesforceIncludeFormulaFields?: pulumi.Input<boolean>;
     scdType?: pulumi.Input<string>;
     sequenceBies?: pulumi.Input<pulumi.Input<string>[]>;
+    workdayReportParameters?: pulumi.Input<inputs.PipelineIngestionDefinitionTableConfigurationWorkdayReportParameters>;
 }
 
 export interface PipelineIngestionDefinitionTableConfigurationQueryBasedConnectorConfig {
     cursorColumns?: pulumi.Input<pulumi.Input<string>[]>;
     deletionCondition?: pulumi.Input<string>;
     hardDeletionSyncMinIntervalInSeconds?: pulumi.Input<number>;
+}
+
+export interface PipelineIngestionDefinitionTableConfigurationWorkdayReportParameters {
+    incremental?: pulumi.Input<boolean>;
+    parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    reportParameters?: pulumi.Input<pulumi.Input<inputs.PipelineIngestionDefinitionTableConfigurationWorkdayReportParametersReportParameter>[]>;
+}
+
+export interface PipelineIngestionDefinitionTableConfigurationWorkdayReportParametersReportParameter {
+    key?: pulumi.Input<string>;
+    value?: pulumi.Input<string>;
 }
 
 export interface PipelineLatestUpdate {
@@ -19009,6 +15839,9 @@ export interface QualityMonitorCustomMetric {
 }
 
 export interface QualityMonitorDataClassificationConfig {
+    /**
+     * Whether to enable data classification
+     */
     enabled?: pulumi.Input<boolean>;
 }
 
@@ -19060,6 +15893,13 @@ export interface QualityMonitorNotificationsOnFailure {
 
 export interface QualityMonitorNotificationsOnNewClassificationTagDetected {
     emailAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface QualityMonitorProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
 }
 
 export interface QualityMonitorSchedule {
@@ -19253,40 +16093,6 @@ export interface QueryParameterTextValue {
     value: pulumi.Input<string>;
 }
 
-export interface RecipientFederationPolicyOidcPolicy {
-    /**
-     * The allowed token audiences, as specified in the 'aud' claim of federated tokens.
-     * The audience identifier is intended to represent the recipient of the token.
-     * Can be any non-empty string value. As long as the audience in the token matches at least one audience in the policy,
-     */
-    audiences?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The required token issuer, as specified in the 'iss' claim of federated tokens
-     */
-    issuer: pulumi.Input<string>;
-    /**
-     * The required token subject, as specified in the subject claim of federated tokens.
-     * The subject claim identifies the identity of the user or machine accessing the resource.
-     * Examples for Entra ID (AAD):
-     * - U2M flow (group access): If the subject claim is `groups`, this must be the Object ID of the group in Entra ID.
-     * - U2M flow (user access): If the subject claim is `oid`, this must be the Object ID of the user in Entra ID.
-     * - M2M flow (OAuth App access): If the subject claim is `azp`, this must be the client ID of the OAuth app registered in Entra ID
-     */
-    subject: pulumi.Input<string>;
-    /**
-     * The claim that contains the subject of the token.
-     * Depending on the identity provider and the use case (U2M or M2M), this can vary:
-     * - For Entra ID (AAD):
-     * * U2M flow (group access): Use `groups`.
-     * * U2M flow (user access): Use `oid`.
-     * * M2M flow (OAuth App access): Use `azp`.
-     * - For other IdPs, refer to the specific IdP documentation.
-     *
-     * Supported `subjectClaim` values are:
-     */
-    subjectClaim: pulumi.Input<string>;
-}
-
 export interface RecipientIpAccessList {
     /**
      * Allowed IP Addresses in CIDR notation. Limit of 100.
@@ -19332,6 +16138,24 @@ export interface RecipientToken {
     updatedBy?: pulumi.Input<string>;
 }
 
+export interface RegisteredModelAlias {
+    aliasName?: pulumi.Input<string>;
+    /**
+     * The name of the catalog where the schema and the registered model reside. *Change of this parameter forces recreation of the resource.*
+     */
+    catalogName?: pulumi.Input<string>;
+    /**
+     * Equal to the full name of the model (`catalog_name.schema_name.name`) and used to identify the model uniquely across the metastore.
+     */
+    id?: pulumi.Input<string>;
+    modelName?: pulumi.Input<string>;
+    /**
+     * The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*
+     */
+    schemaName?: pulumi.Input<string>;
+    versionNum?: pulumi.Input<number>;
+}
+
 export interface RepoSparseCheckout {
     /**
      * array of paths (directories) that will be used for sparse checkout.  List of patterns could be updated in-place.
@@ -19346,6 +16170,43 @@ export interface RestrictWorkspaceAdminsSettingRestrictWorkspaceAdmins {
      * The restrict workspace admins status for the workspace.
      */
     status: pulumi.Input<string>;
+}
+
+export interface RfaAccessRequestDestinationsDestination {
+    /**
+     * The identifier for the destination. This is the email address for EMAIL destinations, the URL for URL destinations,
+     * or the unique Databricks notification destination ID for all other external destinations
+     */
+    destinationId?: pulumi.Input<string>;
+    /**
+     * The type of the destination. Possible values are: `EMAIL`, `GENERIC_WEBHOOK`, `MICROSOFT_TEAMS`, `SLACK`, `URL`
+     */
+    destinationType?: pulumi.Input<string>;
+    /**
+     * This field is used to denote whether the destination is the email of the owner of the securable object.
+     * The special destination cannot be assigned to a securable and only represents the default destination of the securable.
+     * The securable types that support default special destinations are: "catalog", "externalLocation", "connection", "credential", and "metastore".
+     * The **destination_type** of a **special_destination** is always EMAIL. Possible values are: `SPECIAL_DESTINATION_CATALOG_OWNER`, `SPECIAL_DESTINATION_CONNECTION_OWNER`, `SPECIAL_DESTINATION_CREDENTIAL_OWNER`, `SPECIAL_DESTINATION_EXTERNAL_LOCATION_OWNER`, `SPECIAL_DESTINATION_METASTORE_OWNER`
+     */
+    specialDestination?: pulumi.Input<string>;
+}
+
+export interface RfaAccessRequestDestinationsSecurable {
+    /**
+     * Required. The full name of the catalog/schema/table.
+     * Optional if resourceName is present
+     */
+    fullName?: pulumi.Input<string>;
+    /**
+     * Optional. The name of the Share object that contains the securable when the securable is
+     * getting shared in D2D Delta Sharing
+     */
+    providerShare?: pulumi.Input<string>;
+    /**
+     * Required. The type of securable (catalog/schema/table).
+     * Optional if resourceName is present. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+     */
+    type?: pulumi.Input<string>;
 }
 
 export interface SecretScopeKeyvaultMetadata {
@@ -19412,6 +16273,11 @@ export interface ShareObject {
      * Type of the data object, currently `TABLE`, `VIEW`, `SCHEMA`, `VOLUME`, and `MODEL` are supported.
      */
     dataObjectType: pulumi.Input<string>;
+    effectiveCdfEnabled?: pulumi.Input<boolean>;
+    effectiveHistoryDataSharingStatus?: pulumi.Input<string>;
+    effectiveSharedAs?: pulumi.Input<string>;
+    effectiveStartVersion?: pulumi.Input<number>;
+    effectiveStringSharedAs?: pulumi.Input<string>;
     /**
      * Whether to enable history sharing, one of: `ENABLED`, `DISABLED`. When a table has history sharing enabled, recipients can query table data by version, starting from the current table version. If not specified, clients can only query starting from the version of the object at the time it was added to the share. *NOTE*: The startVersion should be less than or equal the current version of the object. When this field is set, field `cdfEnabled` can not be set.
      *
@@ -19462,6 +16328,13 @@ export interface ShareObjectPartitionValue {
      * The value of the partition column. When this value is not set, it means null value. When this field is set, field `recipientPropertyKey` can not be set.
      */
     value?: pulumi.Input<string>;
+}
+
+export interface ShareProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: pulumi.Input<string>;
 }
 
 export interface SqlAlertOptions {
@@ -19767,13 +16640,19 @@ export interface SqlWidgetPosition {
 }
 
 export interface StorageCredentialAwsIamRole {
+    /**
+     * The external ID used in role assumption to prevent the confused deputy problem.
+     */
     externalId?: pulumi.Input<string>;
     /**
-     * The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
+     * The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`.
      *
      * `azureManagedIdentity` optional configuration block for using managed identity as credential details for Azure (recommended over service principal):
      */
     roleArn: pulumi.Input<string>;
+    /**
+     * The Amazon Resource Name (ARN) of the AWS IAM user managed by Databricks. This is the identity that is going to assume the AWS IAM role.
+     */
     unityCatalogIamArn?: pulumi.Input<string>;
 }
 
@@ -19990,7 +16869,7 @@ export interface VectorSearchIndexStatus {
 
 export interface WorkspaceSettingV2AibiDashboardEmbeddingAccessPolicy {
     /**
-     * . Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
+     * Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
      */
     accessPolicyType: pulumi.Input<string>;
 }
@@ -20028,11 +16907,11 @@ export interface WorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWin
 
 export interface WorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule {
     /**
-     * . Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
+     * Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
      */
     dayOfWeek?: pulumi.Input<string>;
     /**
-     * . Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
+     * Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
      */
     frequency?: pulumi.Input<string>;
     windowStartTime?: pulumi.Input<inputs.WorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime>;
@@ -20047,13 +16926,9 @@ export interface WorkspaceSettingV2BooleanVal {
     value?: pulumi.Input<boolean>;
 }
 
-export interface WorkspaceSettingV2DefaultDataSecurityMode {
-    status: pulumi.Input<string>;
-}
-
 export interface WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy {
     /**
-     * . Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
+     * Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
      */
     accessPolicyType: pulumi.Input<string>;
 }
@@ -20091,11 +16966,11 @@ export interface WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaint
 
 export interface WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule {
     /**
-     * . Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
+     * Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
      */
     dayOfWeek?: pulumi.Input<string>;
     /**
-     * . Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
+     * Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
      */
     frequency?: pulumi.Input<string>;
     windowStartTime?: pulumi.Input<inputs.WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime>;
@@ -20110,10 +16985,6 @@ export interface WorkspaceSettingV2EffectiveBooleanVal {
     value?: pulumi.Input<boolean>;
 }
 
-export interface WorkspaceSettingV2EffectiveDefaultDataSecurityMode {
-    status: pulumi.Input<string>;
-}
-
 export interface WorkspaceSettingV2EffectiveIntegerVal {
     value?: pulumi.Input<number>;
 }
@@ -20123,6 +16994,9 @@ export interface WorkspaceSettingV2EffectivePersonalCompute {
 }
 
 export interface WorkspaceSettingV2EffectiveRestrictWorkspaceAdmins {
+    /**
+     * Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
+     */
     status: pulumi.Input<string>;
 }
 
@@ -20139,6 +17013,9 @@ export interface WorkspaceSettingV2PersonalCompute {
 }
 
 export interface WorkspaceSettingV2RestrictWorkspaceAdmins {
+    /**
+     * Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
+     */
     status: pulumi.Input<string>;
 }
 

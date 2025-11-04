@@ -230,14 +230,28 @@ public class SqlTable extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.storageLocation);
     }
     /**
-     * Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL`, `METRIC_VIEW` or `VIEW`. Change forces the creation of a new resource.
+     * The unique identifier of the table.
+     * 
+     */
+    @Export(name="tableId", refs={String.class}, tree="[0]")
+    private Output<String> tableId;
+
+    /**
+     * @return The unique identifier of the table.
+     * 
+     */
+    public Output<String> tableId() {
+        return this.tableId;
+    }
+    /**
+     * Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL` or `VIEW`. Change forces the creation of a new resource.
      * 
      */
     @Export(name="tableType", refs={String.class}, tree="[0]")
     private Output<String> tableType;
 
     /**
-     * @return Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL`, `METRIC_VIEW` or `VIEW`. Change forces the creation of a new resource.
+     * @return Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL` or `VIEW`. Change forces the creation of a new resource.
      * 
      */
     public Output<String> tableType() {

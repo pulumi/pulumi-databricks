@@ -7,8 +7,6 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetEntityTagAssignmentResult {
@@ -36,8 +34,7 @@ public final class GetEntityTagAssignmentResult {
      * @return (string) - The value of the tag
      * 
      */
-    private @Nullable String tagValue;
-    private @Nullable String workspaceId;
+    private String tagValue;
 
     private GetEntityTagAssignmentResult() {}
     /**
@@ -72,11 +69,8 @@ public final class GetEntityTagAssignmentResult {
      * @return (string) - The value of the tag
      * 
      */
-    public Optional<String> tagValue() {
-        return Optional.ofNullable(this.tagValue);
-    }
-    public Optional<String> workspaceId() {
-        return Optional.ofNullable(this.workspaceId);
+    public String tagValue() {
+        return this.tagValue;
     }
 
     public static Builder builder() {
@@ -92,8 +86,7 @@ public final class GetEntityTagAssignmentResult {
         private String entityType;
         private String id;
         private String tagKey;
-        private @Nullable String tagValue;
-        private @Nullable String workspaceId;
+        private String tagValue;
         public Builder() {}
         public Builder(GetEntityTagAssignmentResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -102,7 +95,6 @@ public final class GetEntityTagAssignmentResult {
     	      this.id = defaults.id;
     	      this.tagKey = defaults.tagKey;
     	      this.tagValue = defaults.tagValue;
-    	      this.workspaceId = defaults.workspaceId;
         }
 
         @CustomType.Setter
@@ -138,15 +130,11 @@ public final class GetEntityTagAssignmentResult {
             return this;
         }
         @CustomType.Setter
-        public Builder tagValue(@Nullable String tagValue) {
-
+        public Builder tagValue(String tagValue) {
+            if (tagValue == null) {
+              throw new MissingRequiredPropertyException("GetEntityTagAssignmentResult", "tagValue");
+            }
             this.tagValue = tagValue;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder workspaceId(@Nullable String workspaceId) {
-
-            this.workspaceId = workspaceId;
             return this;
         }
         public GetEntityTagAssignmentResult build() {
@@ -156,7 +144,6 @@ public final class GetEntityTagAssignmentResult {
             _resultValue.id = id;
             _resultValue.tagKey = tagKey;
             _resultValue.tagValue = tagValue;
-            _resultValue.workspaceId = workspaceId;
             return _resultValue;
         }
     }

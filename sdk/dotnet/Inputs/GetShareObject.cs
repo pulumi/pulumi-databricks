@@ -33,8 +33,23 @@ namespace Pulumi.Databricks.Inputs
         /// <summary>
         /// Type of the object.
         /// </summary>
-        [Input("dataObjectType", required: true)]
-        public string DataObjectType { get; set; } = null!;
+        [Input("dataObjectType")]
+        public string? DataObjectType { get; set; }
+
+        [Input("effectiveCdfEnabled", required: true)]
+        public bool EffectiveCdfEnabled { get; set; }
+
+        [Input("effectiveHistoryDataSharingStatus", required: true)]
+        public string EffectiveHistoryDataSharingStatus { get; set; } = null!;
+
+        [Input("effectiveSharedAs", required: true)]
+        public string EffectiveSharedAs { get; set; } = null!;
+
+        [Input("effectiveStartVersion", required: true)]
+        public int EffectiveStartVersion { get; set; }
+
+        [Input("effectiveStringSharedAs", required: true)]
+        public string EffectiveStringSharedAs { get; set; } = null!;
 
         [Input("historyDataSharingStatus")]
         public string? HistoryDataSharingStatus { get; set; }

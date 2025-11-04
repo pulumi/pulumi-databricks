@@ -121,6 +121,8 @@ type GetPipelinesArgs struct {
 	Ids []string `pulumi:"ids"`
 	// Filter Lakeflow Declarative Pipelines by name for a given search term. `%` is the supported wildcard operator.
 	PipelineName *string `pulumi:"pipelineName"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *GetPipelinesProviderConfig `pulumi:"providerConfig"`
 }
 
 // A collection of values returned by getPipelines.
@@ -128,8 +130,9 @@ type GetPipelinesResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// List of ids for [Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt) pipelines matching the provided search criteria.
-	Ids          []string `pulumi:"ids"`
-	PipelineName *string  `pulumi:"pipelineName"`
+	Ids            []string                    `pulumi:"ids"`
+	PipelineName   *string                     `pulumi:"pipelineName"`
+	ProviderConfig *GetPipelinesProviderConfig `pulumi:"providerConfig"`
 }
 
 func GetPipelinesOutput(ctx *pulumi.Context, args GetPipelinesOutputArgs, opts ...pulumi.InvokeOption) GetPipelinesResultOutput {
@@ -147,6 +150,8 @@ type GetPipelinesOutputArgs struct {
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// Filter Lakeflow Declarative Pipelines by name for a given search term. `%` is the supported wildcard operator.
 	PipelineName pulumi.StringPtrInput `pulumi:"pipelineName"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig GetPipelinesProviderConfigPtrInput `pulumi:"providerConfig"`
 }
 
 func (GetPipelinesOutputArgs) ElementType() reflect.Type {
@@ -180,6 +185,10 @@ func (o GetPipelinesResultOutput) Ids() pulumi.StringArrayOutput {
 
 func (o GetPipelinesResultOutput) PipelineName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPipelinesResult) *string { return v.PipelineName }).(pulumi.StringPtrOutput)
+}
+
+func (o GetPipelinesResultOutput) ProviderConfig() GetPipelinesProviderConfigPtrOutput {
+	return o.ApplyT(func(v GetPipelinesResult) *GetPipelinesProviderConfig { return v.ProviderConfig }).(GetPipelinesProviderConfigPtrOutput)
 }
 
 func init() {

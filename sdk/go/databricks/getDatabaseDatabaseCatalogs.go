@@ -11,6 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
 func GetDatabaseDatabaseCatalogs(ctx *pulumi.Context, args *GetDatabaseDatabaseCatalogsArgs, opts ...pulumi.InvokeOption) (*GetDatabaseDatabaseCatalogsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDatabaseDatabaseCatalogsResult
@@ -23,16 +24,19 @@ func GetDatabaseDatabaseCatalogs(ctx *pulumi.Context, args *GetDatabaseDatabaseC
 
 // A collection of arguments for invoking getDatabaseDatabaseCatalogs.
 type GetDatabaseDatabaseCatalogsArgs struct {
-	// Workspace ID of the resource
-	WorkspaceId *string `pulumi:"workspaceId"`
+	// Name of the instance to get database catalogs for
+	InstanceName string `pulumi:"instanceName"`
+	// Upper bound for items returned
+	PageSize *int `pulumi:"pageSize"`
 }
 
 // A collection of values returned by getDatabaseDatabaseCatalogs.
 type GetDatabaseDatabaseCatalogsResult struct {
 	DatabaseCatalogs []GetDatabaseDatabaseCatalogsDatabaseCatalog `pulumi:"databaseCatalogs"`
 	// The provider-assigned unique ID for this managed resource.
-	Id          string  `pulumi:"id"`
-	WorkspaceId *string `pulumi:"workspaceId"`
+	Id           string `pulumi:"id"`
+	InstanceName string `pulumi:"instanceName"`
+	PageSize     *int   `pulumi:"pageSize"`
 }
 
 func GetDatabaseDatabaseCatalogsOutput(ctx *pulumi.Context, args GetDatabaseDatabaseCatalogsOutputArgs, opts ...pulumi.InvokeOption) GetDatabaseDatabaseCatalogsResultOutput {
@@ -46,8 +50,10 @@ func GetDatabaseDatabaseCatalogsOutput(ctx *pulumi.Context, args GetDatabaseData
 
 // A collection of arguments for invoking getDatabaseDatabaseCatalogs.
 type GetDatabaseDatabaseCatalogsOutputArgs struct {
-	// Workspace ID of the resource
-	WorkspaceId pulumi.StringPtrInput `pulumi:"workspaceId"`
+	// Name of the instance to get database catalogs for
+	InstanceName pulumi.StringInput `pulumi:"instanceName"`
+	// Upper bound for items returned
+	PageSize pulumi.IntPtrInput `pulumi:"pageSize"`
 }
 
 func (GetDatabaseDatabaseCatalogsOutputArgs) ElementType() reflect.Type {
@@ -80,8 +86,12 @@ func (o GetDatabaseDatabaseCatalogsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseDatabaseCatalogsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-func (o GetDatabaseDatabaseCatalogsResultOutput) WorkspaceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetDatabaseDatabaseCatalogsResult) *string { return v.WorkspaceId }).(pulumi.StringPtrOutput)
+func (o GetDatabaseDatabaseCatalogsResultOutput) InstanceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseDatabaseCatalogsResult) string { return v.InstanceName }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseDatabaseCatalogsResultOutput) PageSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetDatabaseDatabaseCatalogsResult) *int { return v.PageSize }).(pulumi.IntPtrOutput)
 }
 
 func init() {

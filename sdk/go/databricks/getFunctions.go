@@ -67,7 +67,8 @@ type GetFunctionsArgs struct {
 	// list of objects describing individual UDF. Each object consists of the following attributes (refer to [REST API documentation](https://docs.databricks.com/api/workspace/functions/list#functions) for up-to-date list of attributes. Default type is String):
 	Functions []GetFunctionsFunction `pulumi:"functions"`
 	// flag to specify if include UDFs in the response for which the principal can only access selective metadata for.
-	IncludeBrowse *bool `pulumi:"includeBrowse"`
+	IncludeBrowse  *bool                       `pulumi:"includeBrowse"`
+	ProviderConfig *GetFunctionsProviderConfig `pulumi:"providerConfig"`
 	// Name of databricks_schema.
 	SchemaName string `pulumi:"schemaName"`
 }
@@ -79,8 +80,9 @@ type GetFunctionsResult struct {
 	// list of objects describing individual UDF. Each object consists of the following attributes (refer to [REST API documentation](https://docs.databricks.com/api/workspace/functions/list#functions) for up-to-date list of attributes. Default type is String):
 	Functions []GetFunctionsFunction `pulumi:"functions"`
 	// The provider-assigned unique ID for this managed resource.
-	Id            string `pulumi:"id"`
-	IncludeBrowse *bool  `pulumi:"includeBrowse"`
+	Id             string                      `pulumi:"id"`
+	IncludeBrowse  *bool                       `pulumi:"includeBrowse"`
+	ProviderConfig *GetFunctionsProviderConfig `pulumi:"providerConfig"`
 	// Name of parent schema relative to its parent catalog.
 	SchemaName string `pulumi:"schemaName"`
 }
@@ -101,7 +103,8 @@ type GetFunctionsOutputArgs struct {
 	// list of objects describing individual UDF. Each object consists of the following attributes (refer to [REST API documentation](https://docs.databricks.com/api/workspace/functions/list#functions) for up-to-date list of attributes. Default type is String):
 	Functions GetFunctionsFunctionArrayInput `pulumi:"functions"`
 	// flag to specify if include UDFs in the response for which the principal can only access selective metadata for.
-	IncludeBrowse pulumi.BoolPtrInput `pulumi:"includeBrowse"`
+	IncludeBrowse  pulumi.BoolPtrInput                `pulumi:"includeBrowse"`
+	ProviderConfig GetFunctionsProviderConfigPtrInput `pulumi:"providerConfig"`
 	// Name of databricks_schema.
 	SchemaName pulumi.StringInput `pulumi:"schemaName"`
 }
@@ -142,6 +145,10 @@ func (o GetFunctionsResultOutput) Id() pulumi.StringOutput {
 
 func (o GetFunctionsResultOutput) IncludeBrowse() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetFunctionsResult) *bool { return v.IncludeBrowse }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetFunctionsResultOutput) ProviderConfig() GetFunctionsProviderConfigPtrOutput {
+	return o.ApplyT(func(v GetFunctionsResult) *GetFunctionsProviderConfig { return v.ProviderConfig }).(GetFunctionsProviderConfigPtrOutput)
 }
 
 // Name of parent schema relative to its parent catalog.

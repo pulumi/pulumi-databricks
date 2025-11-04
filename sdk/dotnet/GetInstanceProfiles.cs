@@ -114,6 +114,12 @@ namespace Pulumi.Databricks
             set => _instanceProfiles = value;
         }
 
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Inputs.GetInstanceProfilesProviderConfigArgs? ProviderConfig { get; set; }
+
         public GetInstanceProfilesArgs()
         {
         }
@@ -134,6 +140,12 @@ namespace Pulumi.Databricks
             set => _instanceProfiles = value;
         }
 
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.GetInstanceProfilesProviderConfigInputArgs>? ProviderConfig { get; set; }
+
         public GetInstanceProfilesInvokeArgs()
         {
         }
@@ -152,15 +164,19 @@ namespace Pulumi.Databricks
         /// Set of objects for a databricks_instance_profile. This contains the following attributes:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetInstanceProfilesInstanceProfileResult> InstanceProfiles;
+        public readonly Outputs.GetInstanceProfilesProviderConfigResult? ProviderConfig;
 
         [OutputConstructor]
         private GetInstanceProfilesResult(
             string id,
 
-            ImmutableArray<Outputs.GetInstanceProfilesInstanceProfileResult> instanceProfiles)
+            ImmutableArray<Outputs.GetInstanceProfilesInstanceProfileResult> instanceProfiles,
+
+            Outputs.GetInstanceProfilesProviderConfigResult? providerConfig)
         {
             Id = id;
             InstanceProfiles = instanceProfiles;
+            ProviderConfig = providerConfig;
         }
     }
 }

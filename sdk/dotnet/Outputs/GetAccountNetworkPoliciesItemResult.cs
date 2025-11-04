@@ -16,23 +16,23 @@ namespace Pulumi.Databricks.Outputs
         /// <summary>
         /// (string) - The associated account ID for this Network Policy object
         /// </summary>
-        public readonly string? AccountId;
+        public readonly string AccountId;
         /// <summary>
         /// (NetworkPolicyEgress) - The network policies applying for egress traffic
         /// </summary>
-        public readonly Outputs.GetAccountNetworkPoliciesItemEgressResult? Egress;
+        public readonly Outputs.GetAccountNetworkPoliciesItemEgressResult Egress;
         /// <summary>
         /// (string) - The unique identifier for the network policy
         /// </summary>
-        public readonly string? NetworkPolicyId;
+        public readonly string NetworkPolicyId;
 
         [OutputConstructor]
         private GetAccountNetworkPoliciesItemResult(
-            string? accountId,
+            string accountId,
 
-            Outputs.GetAccountNetworkPoliciesItemEgressResult? egress,
+            Outputs.GetAccountNetworkPoliciesItemEgressResult egress,
 
-            string? networkPolicyId)
+            string networkPolicyId)
         {
             AccountId = accountId;
             Egress = egress;

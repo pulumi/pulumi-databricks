@@ -22,6 +22,7 @@ __all__ = ['DatabaseInstanceArgs', 'DatabaseInstance']
 class DatabaseInstanceArgs:
     def __init__(__self__, *,
                  capacity: Optional[pulumi.Input[_builtins.str]] = None,
+                 custom_tags: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceCustomTagArgs']]]] = None,
                  enable_pg_native_login: Optional[pulumi.Input[_builtins.bool]] = None,
                  enable_readable_secondaries: Optional[pulumi.Input[_builtins.bool]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -30,15 +31,16 @@ class DatabaseInstanceArgs:
                  purge_on_delete: Optional[pulumi.Input[_builtins.bool]] = None,
                  retention_window_in_days: Optional[pulumi.Input[_builtins.int]] = None,
                  stopped: Optional[pulumi.Input[_builtins.bool]] = None,
-                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 usage_policy_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DatabaseInstance resource.
         :param pulumi.Input[_builtins.str] capacity: The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
-        :param pulumi.Input[_builtins.bool] enable_pg_native_login: Whether the instance has PG native password login enabled. Defaults to true
+        :param pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceCustomTagArgs']]] custom_tags: Custom tags associated with the instance. This field is only included on create and update responses
+        :param pulumi.Input[_builtins.bool] enable_pg_native_login: Whether to enable PG native password login on the instance. Defaults to false
         :param pulumi.Input[_builtins.bool] enable_readable_secondaries: Whether to enable secondaries to serve read-only traffic. Defaults to false
         :param pulumi.Input[_builtins.str] name: The name of the instance. This is the unique identifier for the instance
         :param pulumi.Input[_builtins.int] node_count: The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
-               1 primary and 0 secondaries
+               1 primary and 0 secondaries. This field is input only, see effective_node_count for the output
         :param pulumi.Input['DatabaseInstanceParentInstanceRefArgs'] parent_instance_ref: The ref of the parent instance. This is only available if the instance is
                child instance.
                Input: For specifying the parent instance to create a child instance. Optional.
@@ -47,11 +49,13 @@ class DatabaseInstanceArgs:
         :param pulumi.Input[_builtins.int] retention_window_in_days: The retention window for the instance. This is the time window in days
                for which the historical data is retained. The default value is 7 days.
                Valid values are 2 to 35 days
-        :param pulumi.Input[_builtins.bool] stopped: Whether the instance is stopped
-        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID of the resource
+        :param pulumi.Input[_builtins.bool] stopped: Whether to stop the instance. An input only param, see effective_stopped for the output
+        :param pulumi.Input[_builtins.str] usage_policy_id: The desired usage policy to associate with the instance
         """
         if capacity is not None:
             pulumi.set(__self__, "capacity", capacity)
+        if custom_tags is not None:
+            pulumi.set(__self__, "custom_tags", custom_tags)
         if enable_pg_native_login is not None:
             pulumi.set(__self__, "enable_pg_native_login", enable_pg_native_login)
         if enable_readable_secondaries is not None:
@@ -68,8 +72,8 @@ class DatabaseInstanceArgs:
             pulumi.set(__self__, "retention_window_in_days", retention_window_in_days)
         if stopped is not None:
             pulumi.set(__self__, "stopped", stopped)
-        if workspace_id is not None:
-            pulumi.set(__self__, "workspace_id", workspace_id)
+        if usage_policy_id is not None:
+            pulumi.set(__self__, "usage_policy_id", usage_policy_id)
 
     @_builtins.property
     @pulumi.getter
@@ -84,10 +88,22 @@ class DatabaseInstanceArgs:
         pulumi.set(self, "capacity", value)
 
     @_builtins.property
+    @pulumi.getter(name="customTags")
+    def custom_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceCustomTagArgs']]]]:
+        """
+        Custom tags associated with the instance. This field is only included on create and update responses
+        """
+        return pulumi.get(self, "custom_tags")
+
+    @custom_tags.setter
+    def custom_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceCustomTagArgs']]]]):
+        pulumi.set(self, "custom_tags", value)
+
+    @_builtins.property
     @pulumi.getter(name="enablePgNativeLogin")
     def enable_pg_native_login(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Whether the instance has PG native password login enabled. Defaults to true
+        Whether to enable PG native password login on the instance. Defaults to false
         """
         return pulumi.get(self, "enable_pg_native_login")
 
@@ -124,7 +140,7 @@ class DatabaseInstanceArgs:
     def node_count(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
         The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
-        1 primary and 0 secondaries
+        1 primary and 0 secondaries. This field is input only, see effective_node_count for the output
         """
         return pulumi.get(self, "node_count")
 
@@ -177,7 +193,7 @@ class DatabaseInstanceArgs:
     @pulumi.getter
     def stopped(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Whether the instance is stopped
+        Whether to stop the instance. An input only param, see effective_stopped for the output
         """
         return pulumi.get(self, "stopped")
 
@@ -186,16 +202,16 @@ class DatabaseInstanceArgs:
         pulumi.set(self, "stopped", value)
 
     @_builtins.property
-    @pulumi.getter(name="workspaceId")
-    def workspace_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    @pulumi.getter(name="usagePolicyId")
+    def usage_policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Workspace ID of the resource
+        The desired usage policy to associate with the instance
         """
-        return pulumi.get(self, "workspace_id")
+        return pulumi.get(self, "usage_policy_id")
 
-    @workspace_id.setter
-    def workspace_id(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "workspace_id", value)
+    @usage_policy_id.setter
+    def usage_policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "usage_policy_id", value)
 
 
 @pulumi.input_type
@@ -205,11 +221,15 @@ class _DatabaseInstanceState:
                  child_instance_refs: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceChildInstanceRefArgs']]]] = None,
                  creation_time: Optional[pulumi.Input[_builtins.str]] = None,
                  creator: Optional[pulumi.Input[_builtins.str]] = None,
+                 custom_tags: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceCustomTagArgs']]]] = None,
+                 effective_capacity: Optional[pulumi.Input[_builtins.str]] = None,
+                 effective_custom_tags: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceEffectiveCustomTagArgs']]]] = None,
                  effective_enable_pg_native_login: Optional[pulumi.Input[_builtins.bool]] = None,
                  effective_enable_readable_secondaries: Optional[pulumi.Input[_builtins.bool]] = None,
                  effective_node_count: Optional[pulumi.Input[_builtins.int]] = None,
                  effective_retention_window_in_days: Optional[pulumi.Input[_builtins.int]] = None,
                  effective_stopped: Optional[pulumi.Input[_builtins.bool]] = None,
+                 effective_usage_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
                  enable_pg_native_login: Optional[pulumi.Input[_builtins.bool]] = None,
                  enable_readable_secondaries: Optional[pulumi.Input[_builtins.bool]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -223,7 +243,7 @@ class _DatabaseInstanceState:
                  state: Optional[pulumi.Input[_builtins.str]] = None,
                  stopped: Optional[pulumi.Input[_builtins.bool]] = None,
                  uid: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 usage_policy_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DatabaseInstance resources.
         :param pulumi.Input[_builtins.str] capacity: The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
@@ -231,26 +251,22 @@ class _DatabaseInstanceState:
                parent instance
         :param pulumi.Input[_builtins.str] creation_time: (string) - The timestamp when the instance was created
         :param pulumi.Input[_builtins.str] creator: (string) - The email of the creator of the instance
-        :param pulumi.Input[_builtins.bool] effective_enable_pg_native_login: (boolean) - xref AIP-129. `enable_pg_native_login` is owned by the client, while `effective_enable_pg_native_login` is owned by the server.
-               `enable_pg_native_login` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-               `effective_enable_pg_native_login` on the other hand will always bet set in all response messages (Create/Update/Get/List)
-        :param pulumi.Input[_builtins.bool] effective_enable_readable_secondaries: (boolean) - xref AIP-129. `enable_readable_secondaries` is owned by the client, while `effective_enable_readable_secondaries` is owned by the server.
-               `enable_readable_secondaries` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-               `effective_enable_readable_secondaries` on the other hand will always bet set in all response messages (Create/Update/Get/List)
-        :param pulumi.Input[_builtins.int] effective_node_count: (integer) - xref AIP-129. `node_count` is owned by the client, while `effective_node_count` is owned by the server.
-               `node_count` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-               `effective_node_count` on the other hand will always bet set in all response messages (Create/Update/Get/List)
-        :param pulumi.Input[_builtins.int] effective_retention_window_in_days: (integer) - xref AIP-129. `retention_window_in_days` is owned by the client, while `effective_retention_window_in_days` is owned by the server.
-               `retention_window_in_days` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-               `effective_retention_window_in_days` on the other hand will always bet set in all response messages (Create/Update/Get/List)
-        :param pulumi.Input[_builtins.bool] effective_stopped: (boolean) - xref AIP-129. `stopped` is owned by the client, while `effective_stopped` is owned by the server.
-               `stopped` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-               `effective_stopped` on the other hand will always bet set in all response messages (Create/Update/Get/List)
-        :param pulumi.Input[_builtins.bool] enable_pg_native_login: Whether the instance has PG native password login enabled. Defaults to true
+        :param pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceCustomTagArgs']]] custom_tags: Custom tags associated with the instance. This field is only included on create and update responses
+        :param pulumi.Input[_builtins.str] effective_capacity: (string, deprecated) - Deprecated. The sku of the instance; this field will always match the value of capacity
+        :param pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceEffectiveCustomTagArgs']]] effective_custom_tags: (list of CustomTag) - The recorded custom tags associated with the instance
+        :param pulumi.Input[_builtins.bool] effective_enable_pg_native_login: (boolean) - Whether the instance has PG native password login enabled
+        :param pulumi.Input[_builtins.bool] effective_enable_readable_secondaries: (boolean) - Whether secondaries serving read-only traffic are enabled. Defaults to false
+        :param pulumi.Input[_builtins.int] effective_node_count: (integer) - The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
+               1 primary and 0 secondaries
+        :param pulumi.Input[_builtins.int] effective_retention_window_in_days: (integer) - The retention window for the instance. This is the time window in days
+               for which the historical data is retained
+        :param pulumi.Input[_builtins.bool] effective_stopped: (boolean) - Whether the instance is stopped
+        :param pulumi.Input[_builtins.str] effective_usage_policy_id: (string) - The policy that is applied to the instance
+        :param pulumi.Input[_builtins.bool] enable_pg_native_login: Whether to enable PG native password login on the instance. Defaults to false
         :param pulumi.Input[_builtins.bool] enable_readable_secondaries: Whether to enable secondaries to serve read-only traffic. Defaults to false
         :param pulumi.Input[_builtins.str] name: The name of the instance. This is the unique identifier for the instance
         :param pulumi.Input[_builtins.int] node_count: The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
-               1 primary and 0 secondaries
+               1 primary and 0 secondaries. This field is input only, see effective_node_count for the output
         :param pulumi.Input['DatabaseInstanceParentInstanceRefArgs'] parent_instance_ref: The ref of the parent instance. This is only available if the instance is
                child instance.
                Input: For specifying the parent instance to create a child instance. Optional.
@@ -264,9 +280,9 @@ class _DatabaseInstanceState:
                for which the historical data is retained. The default value is 7 days.
                Valid values are 2 to 35 days
         :param pulumi.Input[_builtins.str] state: (string) - The current state of the instance. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
-        :param pulumi.Input[_builtins.bool] stopped: Whether the instance is stopped
+        :param pulumi.Input[_builtins.bool] stopped: Whether to stop the instance. An input only param, see effective_stopped for the output
         :param pulumi.Input[_builtins.str] uid: (string) - Id of the ref database instance
-        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID of the resource
+        :param pulumi.Input[_builtins.str] usage_policy_id: The desired usage policy to associate with the instance
         """
         if capacity is not None:
             pulumi.set(__self__, "capacity", capacity)
@@ -276,6 +292,12 @@ class _DatabaseInstanceState:
             pulumi.set(__self__, "creation_time", creation_time)
         if creator is not None:
             pulumi.set(__self__, "creator", creator)
+        if custom_tags is not None:
+            pulumi.set(__self__, "custom_tags", custom_tags)
+        if effective_capacity is not None:
+            pulumi.set(__self__, "effective_capacity", effective_capacity)
+        if effective_custom_tags is not None:
+            pulumi.set(__self__, "effective_custom_tags", effective_custom_tags)
         if effective_enable_pg_native_login is not None:
             pulumi.set(__self__, "effective_enable_pg_native_login", effective_enable_pg_native_login)
         if effective_enable_readable_secondaries is not None:
@@ -286,6 +308,8 @@ class _DatabaseInstanceState:
             pulumi.set(__self__, "effective_retention_window_in_days", effective_retention_window_in_days)
         if effective_stopped is not None:
             pulumi.set(__self__, "effective_stopped", effective_stopped)
+        if effective_usage_policy_id is not None:
+            pulumi.set(__self__, "effective_usage_policy_id", effective_usage_policy_id)
         if enable_pg_native_login is not None:
             pulumi.set(__self__, "enable_pg_native_login", enable_pg_native_login)
         if enable_readable_secondaries is not None:
@@ -312,8 +336,8 @@ class _DatabaseInstanceState:
             pulumi.set(__self__, "stopped", stopped)
         if uid is not None:
             pulumi.set(__self__, "uid", uid)
-        if workspace_id is not None:
-            pulumi.set(__self__, "workspace_id", workspace_id)
+        if usage_policy_id is not None:
+            pulumi.set(__self__, "usage_policy_id", usage_policy_id)
 
     @_builtins.property
     @pulumi.getter
@@ -365,12 +389,46 @@ class _DatabaseInstanceState:
         pulumi.set(self, "creator", value)
 
     @_builtins.property
+    @pulumi.getter(name="customTags")
+    def custom_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceCustomTagArgs']]]]:
+        """
+        Custom tags associated with the instance. This field is only included on create and update responses
+        """
+        return pulumi.get(self, "custom_tags")
+
+    @custom_tags.setter
+    def custom_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceCustomTagArgs']]]]):
+        pulumi.set(self, "custom_tags", value)
+
+    @_builtins.property
+    @pulumi.getter(name="effectiveCapacity")
+    def effective_capacity(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (string, deprecated) - Deprecated. The sku of the instance; this field will always match the value of capacity
+        """
+        return pulumi.get(self, "effective_capacity")
+
+    @effective_capacity.setter
+    def effective_capacity(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "effective_capacity", value)
+
+    @_builtins.property
+    @pulumi.getter(name="effectiveCustomTags")
+    def effective_custom_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceEffectiveCustomTagArgs']]]]:
+        """
+        (list of CustomTag) - The recorded custom tags associated with the instance
+        """
+        return pulumi.get(self, "effective_custom_tags")
+
+    @effective_custom_tags.setter
+    def effective_custom_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceEffectiveCustomTagArgs']]]]):
+        pulumi.set(self, "effective_custom_tags", value)
+
+    @_builtins.property
     @pulumi.getter(name="effectiveEnablePgNativeLogin")
     def effective_enable_pg_native_login(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        (boolean) - xref AIP-129. `enable_pg_native_login` is owned by the client, while `effective_enable_pg_native_login` is owned by the server.
-        `enable_pg_native_login` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-        `effective_enable_pg_native_login` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+        (boolean) - Whether the instance has PG native password login enabled
         """
         return pulumi.get(self, "effective_enable_pg_native_login")
 
@@ -382,9 +440,7 @@ class _DatabaseInstanceState:
     @pulumi.getter(name="effectiveEnableReadableSecondaries")
     def effective_enable_readable_secondaries(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        (boolean) - xref AIP-129. `enable_readable_secondaries` is owned by the client, while `effective_enable_readable_secondaries` is owned by the server.
-        `enable_readable_secondaries` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-        `effective_enable_readable_secondaries` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+        (boolean) - Whether secondaries serving read-only traffic are enabled. Defaults to false
         """
         return pulumi.get(self, "effective_enable_readable_secondaries")
 
@@ -396,9 +452,8 @@ class _DatabaseInstanceState:
     @pulumi.getter(name="effectiveNodeCount")
     def effective_node_count(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        (integer) - xref AIP-129. `node_count` is owned by the client, while `effective_node_count` is owned by the server.
-        `node_count` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-        `effective_node_count` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+        (integer) - The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
+        1 primary and 0 secondaries
         """
         return pulumi.get(self, "effective_node_count")
 
@@ -410,9 +465,8 @@ class _DatabaseInstanceState:
     @pulumi.getter(name="effectiveRetentionWindowInDays")
     def effective_retention_window_in_days(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        (integer) - xref AIP-129. `retention_window_in_days` is owned by the client, while `effective_retention_window_in_days` is owned by the server.
-        `retention_window_in_days` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-        `effective_retention_window_in_days` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+        (integer) - The retention window for the instance. This is the time window in days
+        for which the historical data is retained
         """
         return pulumi.get(self, "effective_retention_window_in_days")
 
@@ -424,9 +478,7 @@ class _DatabaseInstanceState:
     @pulumi.getter(name="effectiveStopped")
     def effective_stopped(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        (boolean) - xref AIP-129. `stopped` is owned by the client, while `effective_stopped` is owned by the server.
-        `stopped` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-        `effective_stopped` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+        (boolean) - Whether the instance is stopped
         """
         return pulumi.get(self, "effective_stopped")
 
@@ -435,10 +487,22 @@ class _DatabaseInstanceState:
         pulumi.set(self, "effective_stopped", value)
 
     @_builtins.property
+    @pulumi.getter(name="effectiveUsagePolicyId")
+    def effective_usage_policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (string) - The policy that is applied to the instance
+        """
+        return pulumi.get(self, "effective_usage_policy_id")
+
+    @effective_usage_policy_id.setter
+    def effective_usage_policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "effective_usage_policy_id", value)
+
+    @_builtins.property
     @pulumi.getter(name="enablePgNativeLogin")
     def enable_pg_native_login(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Whether the instance has PG native password login enabled. Defaults to true
+        Whether to enable PG native password login on the instance. Defaults to false
         """
         return pulumi.get(self, "enable_pg_native_login")
 
@@ -475,7 +539,7 @@ class _DatabaseInstanceState:
     def node_count(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
         The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
-        1 primary and 0 secondaries
+        1 primary and 0 secondaries. This field is input only, see effective_node_count for the output
         """
         return pulumi.get(self, "node_count")
 
@@ -577,7 +641,7 @@ class _DatabaseInstanceState:
     @pulumi.getter
     def stopped(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Whether the instance is stopped
+        Whether to stop the instance. An input only param, see effective_stopped for the output
         """
         return pulumi.get(self, "stopped")
 
@@ -598,16 +662,16 @@ class _DatabaseInstanceState:
         pulumi.set(self, "uid", value)
 
     @_builtins.property
-    @pulumi.getter(name="workspaceId")
-    def workspace_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    @pulumi.getter(name="usagePolicyId")
+    def usage_policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Workspace ID of the resource
+        The desired usage policy to associate with the instance
         """
-        return pulumi.get(self, "workspace_id")
+        return pulumi.get(self, "usage_policy_id")
 
-    @workspace_id.setter
-    def workspace_id(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "workspace_id", value)
+    @usage_policy_id.setter
+    def usage_policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "usage_policy_id", value)
 
 
 @pulumi.type_token("databricks:index/databaseInstance:DatabaseInstance")
@@ -617,6 +681,7 @@ class DatabaseInstance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  capacity: Optional[pulumi.Input[_builtins.str]] = None,
+                 custom_tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DatabaseInstanceCustomTagArgs', 'DatabaseInstanceCustomTagArgsDict']]]]] = None,
                  enable_pg_native_login: Optional[pulumi.Input[_builtins.bool]] = None,
                  enable_readable_secondaries: Optional[pulumi.Input[_builtins.bool]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -625,9 +690,11 @@ class DatabaseInstance(pulumi.CustomResource):
                  purge_on_delete: Optional[pulumi.Input[_builtins.bool]] = None,
                  retention_window_in_days: Optional[pulumi.Input[_builtins.int]] = None,
                  stopped: Optional[pulumi.Input[_builtins.bool]] = None,
-                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 usage_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
         Lakebase Database Instances are managed Postgres instances, composed of a primary Postgres compute instance and 0 or more read replica instances.
 
         ## Example Usage
@@ -676,6 +743,30 @@ class DatabaseInstance(pulumi.CustomResource):
             })
         ```
 
+        ### Example with a usage policy and custom tags
+
+        This example creates a Database Instance with an associated usage policy and custom tags.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        this = databricks.DatabaseInstance("this",
+            name="my-database-instance",
+            capacity="CU_8",
+            usage_policy_id="948192fa-a98b-498f-a09b-ecee79d8b983",
+            custom_tags=[
+                {
+                    "key": "custom_tag_key1",
+                    "value": "custom_tag_value1",
+                },
+                {
+                    "key": "custom_tag_key2",
+                    "value": "custom_tag_value2",
+                },
+            ])
+        ```
+
         ## Import
 
         As of Pulumi v1.5, resources can be imported through configuration.
@@ -693,17 +784,18 @@ class DatabaseInstance(pulumi.CustomResource):
         If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
 
         ```sh
-        $ pulumi import databricks:index/databaseInstance:DatabaseInstance databricks_database_instance "name"
+        $ pulumi import databricks:index/databaseInstance:DatabaseInstance this "name"
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] capacity: The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
-        :param pulumi.Input[_builtins.bool] enable_pg_native_login: Whether the instance has PG native password login enabled. Defaults to true
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DatabaseInstanceCustomTagArgs', 'DatabaseInstanceCustomTagArgsDict']]]] custom_tags: Custom tags associated with the instance. This field is only included on create and update responses
+        :param pulumi.Input[_builtins.bool] enable_pg_native_login: Whether to enable PG native password login on the instance. Defaults to false
         :param pulumi.Input[_builtins.bool] enable_readable_secondaries: Whether to enable secondaries to serve read-only traffic. Defaults to false
         :param pulumi.Input[_builtins.str] name: The name of the instance. This is the unique identifier for the instance
         :param pulumi.Input[_builtins.int] node_count: The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
-               1 primary and 0 secondaries
+               1 primary and 0 secondaries. This field is input only, see effective_node_count for the output
         :param pulumi.Input[Union['DatabaseInstanceParentInstanceRefArgs', 'DatabaseInstanceParentInstanceRefArgsDict']] parent_instance_ref: The ref of the parent instance. This is only available if the instance is
                child instance.
                Input: For specifying the parent instance to create a child instance. Optional.
@@ -712,8 +804,8 @@ class DatabaseInstance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] retention_window_in_days: The retention window for the instance. This is the time window in days
                for which the historical data is retained. The default value is 7 days.
                Valid values are 2 to 35 days
-        :param pulumi.Input[_builtins.bool] stopped: Whether the instance is stopped
-        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID of the resource
+        :param pulumi.Input[_builtins.bool] stopped: Whether to stop the instance. An input only param, see effective_stopped for the output
+        :param pulumi.Input[_builtins.str] usage_policy_id: The desired usage policy to associate with the instance
         """
         ...
     @overload
@@ -722,6 +814,8 @@ class DatabaseInstance(pulumi.CustomResource):
                  args: Optional[DatabaseInstanceArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
         Lakebase Database Instances are managed Postgres instances, composed of a primary Postgres compute instance and 0 or more read replica instances.
 
         ## Example Usage
@@ -770,6 +864,30 @@ class DatabaseInstance(pulumi.CustomResource):
             })
         ```
 
+        ### Example with a usage policy and custom tags
+
+        This example creates a Database Instance with an associated usage policy and custom tags.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        this = databricks.DatabaseInstance("this",
+            name="my-database-instance",
+            capacity="CU_8",
+            usage_policy_id="948192fa-a98b-498f-a09b-ecee79d8b983",
+            custom_tags=[
+                {
+                    "key": "custom_tag_key1",
+                    "value": "custom_tag_value1",
+                },
+                {
+                    "key": "custom_tag_key2",
+                    "value": "custom_tag_value2",
+                },
+            ])
+        ```
+
         ## Import
 
         As of Pulumi v1.5, resources can be imported through configuration.
@@ -787,7 +905,7 @@ class DatabaseInstance(pulumi.CustomResource):
         If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
 
         ```sh
-        $ pulumi import databricks:index/databaseInstance:DatabaseInstance databricks_database_instance "name"
+        $ pulumi import databricks:index/databaseInstance:DatabaseInstance this "name"
         ```
 
         :param str resource_name: The name of the resource.
@@ -806,6 +924,7 @@ class DatabaseInstance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  capacity: Optional[pulumi.Input[_builtins.str]] = None,
+                 custom_tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DatabaseInstanceCustomTagArgs', 'DatabaseInstanceCustomTagArgsDict']]]]] = None,
                  enable_pg_native_login: Optional[pulumi.Input[_builtins.bool]] = None,
                  enable_readable_secondaries: Optional[pulumi.Input[_builtins.bool]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -814,7 +933,7 @@ class DatabaseInstance(pulumi.CustomResource):
                  purge_on_delete: Optional[pulumi.Input[_builtins.bool]] = None,
                  retention_window_in_days: Optional[pulumi.Input[_builtins.int]] = None,
                  stopped: Optional[pulumi.Input[_builtins.bool]] = None,
-                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 usage_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -825,6 +944,7 @@ class DatabaseInstance(pulumi.CustomResource):
             __props__ = DatabaseInstanceArgs.__new__(DatabaseInstanceArgs)
 
             __props__.__dict__["capacity"] = capacity
+            __props__.__dict__["custom_tags"] = custom_tags
             __props__.__dict__["enable_pg_native_login"] = enable_pg_native_login
             __props__.__dict__["enable_readable_secondaries"] = enable_readable_secondaries
             __props__.__dict__["name"] = name
@@ -833,15 +953,18 @@ class DatabaseInstance(pulumi.CustomResource):
             __props__.__dict__["purge_on_delete"] = purge_on_delete
             __props__.__dict__["retention_window_in_days"] = retention_window_in_days
             __props__.__dict__["stopped"] = stopped
-            __props__.__dict__["workspace_id"] = workspace_id
+            __props__.__dict__["usage_policy_id"] = usage_policy_id
             __props__.__dict__["child_instance_refs"] = None
             __props__.__dict__["creation_time"] = None
             __props__.__dict__["creator"] = None
+            __props__.__dict__["effective_capacity"] = None
+            __props__.__dict__["effective_custom_tags"] = None
             __props__.__dict__["effective_enable_pg_native_login"] = None
             __props__.__dict__["effective_enable_readable_secondaries"] = None
             __props__.__dict__["effective_node_count"] = None
             __props__.__dict__["effective_retention_window_in_days"] = None
             __props__.__dict__["effective_stopped"] = None
+            __props__.__dict__["effective_usage_policy_id"] = None
             __props__.__dict__["pg_version"] = None
             __props__.__dict__["read_only_dns"] = None
             __props__.__dict__["read_write_dns"] = None
@@ -861,11 +984,15 @@ class DatabaseInstance(pulumi.CustomResource):
             child_instance_refs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DatabaseInstanceChildInstanceRefArgs', 'DatabaseInstanceChildInstanceRefArgsDict']]]]] = None,
             creation_time: Optional[pulumi.Input[_builtins.str]] = None,
             creator: Optional[pulumi.Input[_builtins.str]] = None,
+            custom_tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DatabaseInstanceCustomTagArgs', 'DatabaseInstanceCustomTagArgsDict']]]]] = None,
+            effective_capacity: Optional[pulumi.Input[_builtins.str]] = None,
+            effective_custom_tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DatabaseInstanceEffectiveCustomTagArgs', 'DatabaseInstanceEffectiveCustomTagArgsDict']]]]] = None,
             effective_enable_pg_native_login: Optional[pulumi.Input[_builtins.bool]] = None,
             effective_enable_readable_secondaries: Optional[pulumi.Input[_builtins.bool]] = None,
             effective_node_count: Optional[pulumi.Input[_builtins.int]] = None,
             effective_retention_window_in_days: Optional[pulumi.Input[_builtins.int]] = None,
             effective_stopped: Optional[pulumi.Input[_builtins.bool]] = None,
+            effective_usage_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
             enable_pg_native_login: Optional[pulumi.Input[_builtins.bool]] = None,
             enable_readable_secondaries: Optional[pulumi.Input[_builtins.bool]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -879,7 +1006,7 @@ class DatabaseInstance(pulumi.CustomResource):
             state: Optional[pulumi.Input[_builtins.str]] = None,
             stopped: Optional[pulumi.Input[_builtins.bool]] = None,
             uid: Optional[pulumi.Input[_builtins.str]] = None,
-            workspace_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'DatabaseInstance':
+            usage_policy_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'DatabaseInstance':
         """
         Get an existing DatabaseInstance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -892,26 +1019,22 @@ class DatabaseInstance(pulumi.CustomResource):
                parent instance
         :param pulumi.Input[_builtins.str] creation_time: (string) - The timestamp when the instance was created
         :param pulumi.Input[_builtins.str] creator: (string) - The email of the creator of the instance
-        :param pulumi.Input[_builtins.bool] effective_enable_pg_native_login: (boolean) - xref AIP-129. `enable_pg_native_login` is owned by the client, while `effective_enable_pg_native_login` is owned by the server.
-               `enable_pg_native_login` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-               `effective_enable_pg_native_login` on the other hand will always bet set in all response messages (Create/Update/Get/List)
-        :param pulumi.Input[_builtins.bool] effective_enable_readable_secondaries: (boolean) - xref AIP-129. `enable_readable_secondaries` is owned by the client, while `effective_enable_readable_secondaries` is owned by the server.
-               `enable_readable_secondaries` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-               `effective_enable_readable_secondaries` on the other hand will always bet set in all response messages (Create/Update/Get/List)
-        :param pulumi.Input[_builtins.int] effective_node_count: (integer) - xref AIP-129. `node_count` is owned by the client, while `effective_node_count` is owned by the server.
-               `node_count` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-               `effective_node_count` on the other hand will always bet set in all response messages (Create/Update/Get/List)
-        :param pulumi.Input[_builtins.int] effective_retention_window_in_days: (integer) - xref AIP-129. `retention_window_in_days` is owned by the client, while `effective_retention_window_in_days` is owned by the server.
-               `retention_window_in_days` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-               `effective_retention_window_in_days` on the other hand will always bet set in all response messages (Create/Update/Get/List)
-        :param pulumi.Input[_builtins.bool] effective_stopped: (boolean) - xref AIP-129. `stopped` is owned by the client, while `effective_stopped` is owned by the server.
-               `stopped` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-               `effective_stopped` on the other hand will always bet set in all response messages (Create/Update/Get/List)
-        :param pulumi.Input[_builtins.bool] enable_pg_native_login: Whether the instance has PG native password login enabled. Defaults to true
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DatabaseInstanceCustomTagArgs', 'DatabaseInstanceCustomTagArgsDict']]]] custom_tags: Custom tags associated with the instance. This field is only included on create and update responses
+        :param pulumi.Input[_builtins.str] effective_capacity: (string, deprecated) - Deprecated. The sku of the instance; this field will always match the value of capacity
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DatabaseInstanceEffectiveCustomTagArgs', 'DatabaseInstanceEffectiveCustomTagArgsDict']]]] effective_custom_tags: (list of CustomTag) - The recorded custom tags associated with the instance
+        :param pulumi.Input[_builtins.bool] effective_enable_pg_native_login: (boolean) - Whether the instance has PG native password login enabled
+        :param pulumi.Input[_builtins.bool] effective_enable_readable_secondaries: (boolean) - Whether secondaries serving read-only traffic are enabled. Defaults to false
+        :param pulumi.Input[_builtins.int] effective_node_count: (integer) - The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
+               1 primary and 0 secondaries
+        :param pulumi.Input[_builtins.int] effective_retention_window_in_days: (integer) - The retention window for the instance. This is the time window in days
+               for which the historical data is retained
+        :param pulumi.Input[_builtins.bool] effective_stopped: (boolean) - Whether the instance is stopped
+        :param pulumi.Input[_builtins.str] effective_usage_policy_id: (string) - The policy that is applied to the instance
+        :param pulumi.Input[_builtins.bool] enable_pg_native_login: Whether to enable PG native password login on the instance. Defaults to false
         :param pulumi.Input[_builtins.bool] enable_readable_secondaries: Whether to enable secondaries to serve read-only traffic. Defaults to false
         :param pulumi.Input[_builtins.str] name: The name of the instance. This is the unique identifier for the instance
         :param pulumi.Input[_builtins.int] node_count: The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
-               1 primary and 0 secondaries
+               1 primary and 0 secondaries. This field is input only, see effective_node_count for the output
         :param pulumi.Input[Union['DatabaseInstanceParentInstanceRefArgs', 'DatabaseInstanceParentInstanceRefArgsDict']] parent_instance_ref: The ref of the parent instance. This is only available if the instance is
                child instance.
                Input: For specifying the parent instance to create a child instance. Optional.
@@ -925,9 +1048,9 @@ class DatabaseInstance(pulumi.CustomResource):
                for which the historical data is retained. The default value is 7 days.
                Valid values are 2 to 35 days
         :param pulumi.Input[_builtins.str] state: (string) - The current state of the instance. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
-        :param pulumi.Input[_builtins.bool] stopped: Whether the instance is stopped
+        :param pulumi.Input[_builtins.bool] stopped: Whether to stop the instance. An input only param, see effective_stopped for the output
         :param pulumi.Input[_builtins.str] uid: (string) - Id of the ref database instance
-        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID of the resource
+        :param pulumi.Input[_builtins.str] usage_policy_id: The desired usage policy to associate with the instance
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -937,11 +1060,15 @@ class DatabaseInstance(pulumi.CustomResource):
         __props__.__dict__["child_instance_refs"] = child_instance_refs
         __props__.__dict__["creation_time"] = creation_time
         __props__.__dict__["creator"] = creator
+        __props__.__dict__["custom_tags"] = custom_tags
+        __props__.__dict__["effective_capacity"] = effective_capacity
+        __props__.__dict__["effective_custom_tags"] = effective_custom_tags
         __props__.__dict__["effective_enable_pg_native_login"] = effective_enable_pg_native_login
         __props__.__dict__["effective_enable_readable_secondaries"] = effective_enable_readable_secondaries
         __props__.__dict__["effective_node_count"] = effective_node_count
         __props__.__dict__["effective_retention_window_in_days"] = effective_retention_window_in_days
         __props__.__dict__["effective_stopped"] = effective_stopped
+        __props__.__dict__["effective_usage_policy_id"] = effective_usage_policy_id
         __props__.__dict__["enable_pg_native_login"] = enable_pg_native_login
         __props__.__dict__["enable_readable_secondaries"] = enable_readable_secondaries
         __props__.__dict__["name"] = name
@@ -955,7 +1082,7 @@ class DatabaseInstance(pulumi.CustomResource):
         __props__.__dict__["state"] = state
         __props__.__dict__["stopped"] = stopped
         __props__.__dict__["uid"] = uid
-        __props__.__dict__["workspace_id"] = workspace_id
+        __props__.__dict__["usage_policy_id"] = usage_policy_id
         return DatabaseInstance(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -992,12 +1119,34 @@ class DatabaseInstance(pulumi.CustomResource):
         return pulumi.get(self, "creator")
 
     @_builtins.property
+    @pulumi.getter(name="customTags")
+    def custom_tags(self) -> pulumi.Output[Sequence['outputs.DatabaseInstanceCustomTag']]:
+        """
+        Custom tags associated with the instance. This field is only included on create and update responses
+        """
+        return pulumi.get(self, "custom_tags")
+
+    @_builtins.property
+    @pulumi.getter(name="effectiveCapacity")
+    def effective_capacity(self) -> pulumi.Output[_builtins.str]:
+        """
+        (string, deprecated) - Deprecated. The sku of the instance; this field will always match the value of capacity
+        """
+        return pulumi.get(self, "effective_capacity")
+
+    @_builtins.property
+    @pulumi.getter(name="effectiveCustomTags")
+    def effective_custom_tags(self) -> pulumi.Output[Sequence['outputs.DatabaseInstanceEffectiveCustomTag']]:
+        """
+        (list of CustomTag) - The recorded custom tags associated with the instance
+        """
+        return pulumi.get(self, "effective_custom_tags")
+
+    @_builtins.property
     @pulumi.getter(name="effectiveEnablePgNativeLogin")
     def effective_enable_pg_native_login(self) -> pulumi.Output[_builtins.bool]:
         """
-        (boolean) - xref AIP-129. `enable_pg_native_login` is owned by the client, while `effective_enable_pg_native_login` is owned by the server.
-        `enable_pg_native_login` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-        `effective_enable_pg_native_login` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+        (boolean) - Whether the instance has PG native password login enabled
         """
         return pulumi.get(self, "effective_enable_pg_native_login")
 
@@ -1005,9 +1154,7 @@ class DatabaseInstance(pulumi.CustomResource):
     @pulumi.getter(name="effectiveEnableReadableSecondaries")
     def effective_enable_readable_secondaries(self) -> pulumi.Output[_builtins.bool]:
         """
-        (boolean) - xref AIP-129. `enable_readable_secondaries` is owned by the client, while `effective_enable_readable_secondaries` is owned by the server.
-        `enable_readable_secondaries` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-        `effective_enable_readable_secondaries` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+        (boolean) - Whether secondaries serving read-only traffic are enabled. Defaults to false
         """
         return pulumi.get(self, "effective_enable_readable_secondaries")
 
@@ -1015,9 +1162,8 @@ class DatabaseInstance(pulumi.CustomResource):
     @pulumi.getter(name="effectiveNodeCount")
     def effective_node_count(self) -> pulumi.Output[_builtins.int]:
         """
-        (integer) - xref AIP-129. `node_count` is owned by the client, while `effective_node_count` is owned by the server.
-        `node_count` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-        `effective_node_count` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+        (integer) - The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
+        1 primary and 0 secondaries
         """
         return pulumi.get(self, "effective_node_count")
 
@@ -1025,9 +1171,8 @@ class DatabaseInstance(pulumi.CustomResource):
     @pulumi.getter(name="effectiveRetentionWindowInDays")
     def effective_retention_window_in_days(self) -> pulumi.Output[_builtins.int]:
         """
-        (integer) - xref AIP-129. `retention_window_in_days` is owned by the client, while `effective_retention_window_in_days` is owned by the server.
-        `retention_window_in_days` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-        `effective_retention_window_in_days` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+        (integer) - The retention window for the instance. This is the time window in days
+        for which the historical data is retained
         """
         return pulumi.get(self, "effective_retention_window_in_days")
 
@@ -1035,23 +1180,29 @@ class DatabaseInstance(pulumi.CustomResource):
     @pulumi.getter(name="effectiveStopped")
     def effective_stopped(self) -> pulumi.Output[_builtins.bool]:
         """
-        (boolean) - xref AIP-129. `stopped` is owned by the client, while `effective_stopped` is owned by the server.
-        `stopped` will only be set in Create/Update response messages if and only if the user provides the field via the request.
-        `effective_stopped` on the other hand will always bet set in all response messages (Create/Update/Get/List)
+        (boolean) - Whether the instance is stopped
         """
         return pulumi.get(self, "effective_stopped")
+
+    @_builtins.property
+    @pulumi.getter(name="effectiveUsagePolicyId")
+    def effective_usage_policy_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        (string) - The policy that is applied to the instance
+        """
+        return pulumi.get(self, "effective_usage_policy_id")
 
     @_builtins.property
     @pulumi.getter(name="enablePgNativeLogin")
     def enable_pg_native_login(self) -> pulumi.Output[_builtins.bool]:
         """
-        Whether the instance has PG native password login enabled. Defaults to true
+        Whether to enable PG native password login on the instance. Defaults to false
         """
         return pulumi.get(self, "enable_pg_native_login")
 
     @_builtins.property
     @pulumi.getter(name="enableReadableSecondaries")
-    def enable_readable_secondaries(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def enable_readable_secondaries(self) -> pulumi.Output[_builtins.bool]:
         """
         Whether to enable secondaries to serve read-only traffic. Defaults to false
         """
@@ -1067,10 +1218,10 @@ class DatabaseInstance(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="nodeCount")
-    def node_count(self) -> pulumi.Output[Optional[_builtins.int]]:
+    def node_count(self) -> pulumi.Output[_builtins.int]:
         """
         The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
-        1 primary and 0 secondaries
+        1 primary and 0 secondaries. This field is input only, see effective_node_count for the output
         """
         return pulumi.get(self, "node_count")
 
@@ -1120,7 +1271,7 @@ class DatabaseInstance(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="retentionWindowInDays")
-    def retention_window_in_days(self) -> pulumi.Output[Optional[_builtins.int]]:
+    def retention_window_in_days(self) -> pulumi.Output[_builtins.int]:
         """
         The retention window for the instance. This is the time window in days
         for which the historical data is retained. The default value is 7 days.
@@ -1138,9 +1289,9 @@ class DatabaseInstance(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def stopped(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def stopped(self) -> pulumi.Output[_builtins.bool]:
         """
-        Whether the instance is stopped
+        Whether to stop the instance. An input only param, see effective_stopped for the output
         """
         return pulumi.get(self, "stopped")
 
@@ -1153,10 +1304,10 @@ class DatabaseInstance(pulumi.CustomResource):
         return pulumi.get(self, "uid")
 
     @_builtins.property
-    @pulumi.getter(name="workspaceId")
-    def workspace_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+    @pulumi.getter(name="usagePolicyId")
+    def usage_policy_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Workspace ID of the resource
+        The desired usage policy to associate with the instance
         """
-        return pulumi.get(self, "workspace_id")
+        return pulumi.get(self, "usage_policy_id")
 

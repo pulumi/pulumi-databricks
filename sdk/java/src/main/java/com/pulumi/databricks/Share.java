@@ -11,6 +11,7 @@ import com.pulumi.databricks.ShareArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.ShareState;
 import com.pulumi.databricks.outputs.ShareObject;
+import com.pulumi.databricks.outputs.ShareProviderConfig;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -204,6 +205,12 @@ public class Share extends com.pulumi.resources.CustomResource {
     public Output<String> createdBy() {
         return this.createdBy;
     }
+    @Export(name="effectiveOwner", refs={String.class}, tree="[0]")
+    private Output<String> effectiveOwner;
+
+    public Output<String> effectiveOwner() {
+        return this.effectiveOwner;
+    }
     /**
      * Name of share. Change forces creation of a new resource.
      * 
@@ -238,11 +245,25 @@ public class Share extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> owner() {
         return Codegen.optional(this.owner);
     }
-    @Export(name="storageLocation", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> storageLocation;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Export(name="providerConfig", refs={ShareProviderConfig.class}, tree="[0]")
+    private Output</* @Nullable */ ShareProviderConfig> providerConfig;
 
-    public Output<Optional<String>> storageLocation() {
-        return Codegen.optional(this.storageLocation);
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Output<Optional<ShareProviderConfig>> providerConfig() {
+        return Codegen.optional(this.providerConfig);
+    }
+    @Export(name="storageLocation", refs={String.class}, tree="[0]")
+    private Output<String> storageLocation;
+
+    public Output<String> storageLocation() {
+        return this.storageLocation;
     }
     @Export(name="storageRoot", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> storageRoot;

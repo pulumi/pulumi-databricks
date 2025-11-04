@@ -31,6 +31,50 @@ public final class GetRegisteredModelModelInfoAlias extends com.pulumi.resources
     }
 
     /**
+     * The name of the catalog where the schema and the registered model reside.
+     * 
+     */
+    @Import(name="catalogName")
+    private @Nullable String catalogName;
+
+    /**
+     * @return The name of the catalog where the schema and the registered model reside.
+     * 
+     */
+    public Optional<String> catalogName() {
+        return Optional.ofNullable(this.catalogName);
+    }
+
+    @Import(name="id")
+    private @Nullable String id;
+
+    public Optional<String> id() {
+        return Optional.ofNullable(this.id);
+    }
+
+    @Import(name="modelName")
+    private @Nullable String modelName;
+
+    public Optional<String> modelName() {
+        return Optional.ofNullable(this.modelName);
+    }
+
+    /**
+     * The name of the schema where the registered model resides.
+     * 
+     */
+    @Import(name="schemaName")
+    private @Nullable String schemaName;
+
+    /**
+     * @return The name of the schema where the registered model resides.
+     * 
+     */
+    public Optional<String> schemaName() {
+        return Optional.ofNullable(this.schemaName);
+    }
+
+    /**
      * associated model version
      * 
      */
@@ -49,6 +93,10 @@ public final class GetRegisteredModelModelInfoAlias extends com.pulumi.resources
 
     private GetRegisteredModelModelInfoAlias(GetRegisteredModelModelInfoAlias $) {
         this.aliasName = $.aliasName;
+        this.catalogName = $.catalogName;
+        this.id = $.id;
+        this.modelName = $.modelName;
+        this.schemaName = $.schemaName;
         this.versionNum = $.versionNum;
     }
 
@@ -78,6 +126,38 @@ public final class GetRegisteredModelModelInfoAlias extends com.pulumi.resources
          */
         public Builder aliasName(@Nullable String aliasName) {
             $.aliasName = aliasName;
+            return this;
+        }
+
+        /**
+         * @param catalogName The name of the catalog where the schema and the registered model reside.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder catalogName(@Nullable String catalogName) {
+            $.catalogName = catalogName;
+            return this;
+        }
+
+        public Builder id(@Nullable String id) {
+            $.id = id;
+            return this;
+        }
+
+        public Builder modelName(@Nullable String modelName) {
+            $.modelName = modelName;
+            return this;
+        }
+
+        /**
+         * @param schemaName The name of the schema where the registered model resides.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder schemaName(@Nullable String schemaName) {
+            $.schemaName = schemaName;
             return this;
         }
 

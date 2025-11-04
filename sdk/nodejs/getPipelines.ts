@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -61,6 +63,7 @@ export function getPipelines(args?: GetPipelinesArgs, opts?: pulumi.InvokeOption
     return pulumi.runtime.invoke("databricks:index/getPipelines:getPipelines", {
         "ids": args.ids,
         "pipelineName": args.pipelineName,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -76,6 +79,10 @@ export interface GetPipelinesArgs {
      * Filter Lakeflow Declarative Pipelines by name for a given search term. `%` is the supported wildcard operator.
      */
     pipelineName?: string;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: inputs.GetPipelinesProviderConfig;
 }
 
 /**
@@ -91,6 +98,7 @@ export interface GetPipelinesResult {
      */
     readonly ids: string[];
     readonly pipelineName?: string;
+    readonly providerConfig?: outputs.GetPipelinesProviderConfig;
 }
 /**
  * Retrieves a list of all databricks.Pipeline ([Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt)) ids deployed in a workspace, or those matching the provided search term. Maximum 100 results.
@@ -149,6 +157,7 @@ export function getPipelinesOutput(args?: GetPipelinesOutputArgs, opts?: pulumi.
     return pulumi.runtime.invokeOutput("databricks:index/getPipelines:getPipelines", {
         "ids": args.ids,
         "pipelineName": args.pipelineName,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -164,4 +173,8 @@ export interface GetPipelinesOutputArgs {
      * Filter Lakeflow Declarative Pipelines by name for a given search term. `%` is the supported wildcard operator.
      */
     pipelineName?: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.GetPipelinesProviderConfigArgs>;
 }

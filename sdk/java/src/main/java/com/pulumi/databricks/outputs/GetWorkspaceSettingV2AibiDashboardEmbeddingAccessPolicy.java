@@ -11,14 +11,14 @@ import java.util.Objects;
 @CustomType
 public final class GetWorkspaceSettingV2AibiDashboardEmbeddingAccessPolicy {
     /**
-     * @return (string) - . Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
+     * @return (string) - Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
      * 
      */
     private String accessPolicyType;
 
     private GetWorkspaceSettingV2AibiDashboardEmbeddingAccessPolicy() {}
     /**
-     * @return (string) - . Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
+     * @return (string) - Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
      * 
      */
     public String accessPolicyType() {

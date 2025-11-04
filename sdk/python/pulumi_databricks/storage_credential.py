@@ -38,6 +38,7 @@ class StorageCredentialArgs:
                  skip_validation: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a StorageCredential resource.
+        :param pulumi.Input['StorageCredentialAwsIamRoleArgs'] aws_iam_role: exposes two additional attributes:
         :param pulumi.Input[_builtins.bool] force_destroy: Delete storage credential regardless of its dependencies.
         :param pulumi.Input[_builtins.bool] force_update: Update storage credential regardless of its dependents.
         :param pulumi.Input[_builtins.str] isolation_mode: Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
@@ -83,6 +84,9 @@ class StorageCredentialArgs:
     @_builtins.property
     @pulumi.getter(name="awsIamRole")
     def aws_iam_role(self) -> Optional[pulumi.Input['StorageCredentialAwsIamRoleArgs']]:
+        """
+        exposes two additional attributes:
+        """
         return pulumi.get(self, "aws_iam_role")
 
     @aws_iam_role.setter
@@ -263,6 +267,7 @@ class _StorageCredentialState:
                  storage_credential_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering StorageCredential resources.
+        :param pulumi.Input['StorageCredentialAwsIamRoleArgs'] aws_iam_role: exposes two additional attributes:
         :param pulumi.Input[_builtins.bool] force_destroy: Delete storage credential regardless of its dependencies.
         :param pulumi.Input[_builtins.bool] force_update: Update storage credential regardless of its dependents.
         :param pulumi.Input[_builtins.str] isolation_mode: Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
@@ -311,6 +316,9 @@ class _StorageCredentialState:
     @_builtins.property
     @pulumi.getter(name="awsIamRole")
     def aws_iam_role(self) -> Optional[pulumi.Input['StorageCredentialAwsIamRoleArgs']]:
+        """
+        exposes two additional attributes:
+        """
         return pulumi.get(self, "aws_iam_role")
 
     @aws_iam_role.setter
@@ -612,11 +620,12 @@ class StorageCredential(pulumi.CustomResource):
         When using an account-level provider
 
         ```sh
-        $ pulumi import databricks:index/storageCredential:StorageCredential this <metastore_id>|<storage_credential_name>
+        $ pulumi import databricks:index/storageCredential:StorageCredential this '<metastore_id>|<storage_credential_name>'
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['StorageCredentialAwsIamRoleArgs', 'StorageCredentialAwsIamRoleArgsDict']] aws_iam_role: exposes two additional attributes:
         :param pulumi.Input[_builtins.bool] force_destroy: Delete storage credential regardless of its dependencies.
         :param pulumi.Input[_builtins.bool] force_update: Update storage credential regardless of its dependents.
         :param pulumi.Input[_builtins.str] isolation_mode: Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
@@ -742,7 +751,7 @@ class StorageCredential(pulumi.CustomResource):
         When using an account-level provider
 
         ```sh
-        $ pulumi import databricks:index/storageCredential:StorageCredential this <metastore_id>|<storage_credential_name>
+        $ pulumi import databricks:index/storageCredential:StorageCredential this '<metastore_id>|<storage_credential_name>'
         ```
 
         :param str resource_name: The name of the resource.
@@ -833,6 +842,7 @@ class StorageCredential(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['StorageCredentialAwsIamRoleArgs', 'StorageCredentialAwsIamRoleArgsDict']] aws_iam_role: exposes two additional attributes:
         :param pulumi.Input[_builtins.bool] force_destroy: Delete storage credential regardless of its dependencies.
         :param pulumi.Input[_builtins.bool] force_update: Update storage credential regardless of its dependents.
         :param pulumi.Input[_builtins.str] isolation_mode: Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
@@ -870,6 +880,9 @@ class StorageCredential(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="awsIamRole")
     def aws_iam_role(self) -> pulumi.Output[Optional['outputs.StorageCredentialAwsIamRole']]:
+        """
+        exposes two additional attributes:
+        """
         return pulumi.get(self, "aws_iam_role")
 
     @_builtins.property

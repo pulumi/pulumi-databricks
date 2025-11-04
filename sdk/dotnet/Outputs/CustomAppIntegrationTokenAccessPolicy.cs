@@ -13,10 +13,12 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class CustomAppIntegrationTokenAccessPolicy
     {
+        public readonly int? AbsoluteSessionLifetimeInMinutes;
         /// <summary>
         /// access token time to live (TTL) in minutes.
         /// </summary>
         public readonly int? AccessTokenTtlInMinutes;
+        public readonly bool? EnableSingleUseRefreshTokens;
         /// <summary>
         /// refresh token TTL in minutes. The TTL of refresh token cannot be lower than TTL of access token.
         /// </summary>
@@ -24,11 +26,17 @@ namespace Pulumi.Databricks.Outputs
 
         [OutputConstructor]
         private CustomAppIntegrationTokenAccessPolicy(
+            int? absoluteSessionLifetimeInMinutes,
+
             int? accessTokenTtlInMinutes,
+
+            bool? enableSingleUseRefreshTokens,
 
             int? refreshTokenTtlInMinutes)
         {
+            AbsoluteSessionLifetimeInMinutes = absoluteSessionLifetimeInMinutes;
             AccessTokenTtlInMinutes = accessTokenTtlInMinutes;
+            EnableSingleUseRefreshTokens = enableSingleUseRefreshTokens;
             RefreshTokenTtlInMinutes = refreshTokenTtlInMinutes;
         }
     }

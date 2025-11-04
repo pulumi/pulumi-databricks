@@ -135,6 +135,12 @@ namespace Pulumi.Databricks
             set => _names = value;
         }
 
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Inputs.GetStorageCredentialsProviderConfigArgs? ProviderConfig { get; set; }
+
         public GetStorageCredentialsArgs()
         {
         }
@@ -155,6 +161,12 @@ namespace Pulumi.Databricks
             set => _names = value;
         }
 
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.GetStorageCredentialsProviderConfigInputArgs>? ProviderConfig { get; set; }
+
         public GetStorageCredentialsInvokeArgs()
         {
         }
@@ -173,15 +185,19 @@ namespace Pulumi.Databricks
         /// List of names of databricks.StorageCredential in the metastore
         /// </summary>
         public readonly ImmutableArray<string> Names;
+        public readonly Outputs.GetStorageCredentialsProviderConfigResult? ProviderConfig;
 
         [OutputConstructor]
         private GetStorageCredentialsResult(
             string id,
 
-            ImmutableArray<string> names)
+            ImmutableArray<string> names,
+
+            Outputs.GetStorageCredentialsProviderConfigResult? providerConfig)
         {
             Id = id;
             Names = names;
+            ProviderConfig = providerConfig;
         }
     }
 }

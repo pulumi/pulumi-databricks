@@ -4,6 +4,7 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetCatalogsProviderConfig;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -30,10 +31,26 @@ public final class GetCatalogsPlainArgs extends com.pulumi.resources.InvokeArgs 
         return Optional.ofNullable(this.ids);
     }
 
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable GetCatalogsProviderConfig providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Optional<GetCatalogsProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     private GetCatalogsPlainArgs() {}
 
     private GetCatalogsPlainArgs(GetCatalogsPlainArgs $) {
         this.ids = $.ids;
+        this.providerConfig = $.providerConfig;
     }
 
     public static Builder builder() {
@@ -73,6 +90,17 @@ public final class GetCatalogsPlainArgs extends com.pulumi.resources.InvokeArgs 
          */
         public Builder ids(String... ids) {
             return ids(List.of(ids));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable GetCatalogsProviderConfig providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
         }
 
         public GetCatalogsPlainArgs build() {

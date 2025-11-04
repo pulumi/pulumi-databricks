@@ -53,6 +53,8 @@ func GetMlflowModels(ctx *pulumi.Context, args *GetMlflowModelsArgs, opts ...pul
 type GetMlflowModelsArgs struct {
 	// List of names of databricks_mlflow_model
 	Names []string `pulumi:"names"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *GetMlflowModelsProviderConfig `pulumi:"providerConfig"`
 }
 
 // A collection of values returned by getMlflowModels.
@@ -60,7 +62,8 @@ type GetMlflowModelsResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// List of names of databricks_mlflow_model
-	Names []string `pulumi:"names"`
+	Names          []string                       `pulumi:"names"`
+	ProviderConfig *GetMlflowModelsProviderConfig `pulumi:"providerConfig"`
 }
 
 func GetMlflowModelsOutput(ctx *pulumi.Context, args GetMlflowModelsOutputArgs, opts ...pulumi.InvokeOption) GetMlflowModelsResultOutput {
@@ -76,6 +79,8 @@ func GetMlflowModelsOutput(ctx *pulumi.Context, args GetMlflowModelsOutputArgs, 
 type GetMlflowModelsOutputArgs struct {
 	// List of names of databricks_mlflow_model
 	Names pulumi.StringArrayInput `pulumi:"names"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig GetMlflowModelsProviderConfigPtrInput `pulumi:"providerConfig"`
 }
 
 func (GetMlflowModelsOutputArgs) ElementType() reflect.Type {
@@ -105,6 +110,10 @@ func (o GetMlflowModelsResultOutput) Id() pulumi.StringOutput {
 // List of names of databricks_mlflow_model
 func (o GetMlflowModelsResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetMlflowModelsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetMlflowModelsResultOutput) ProviderConfig() GetMlflowModelsProviderConfigPtrOutput {
+	return o.ApplyT(func(v GetMlflowModelsResult) *GetMlflowModelsProviderConfig { return v.ProviderConfig }).(GetMlflowModelsProviderConfigPtrOutput)
 }
 
 func init() {

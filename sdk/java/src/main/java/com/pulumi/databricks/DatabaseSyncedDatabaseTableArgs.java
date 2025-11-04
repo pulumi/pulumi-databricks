@@ -92,21 +92,6 @@ public final class DatabaseSyncedDatabaseTableArgs extends com.pulumi.resources.
         return Optional.ofNullable(this.spec);
     }
 
-    /**
-     * Workspace ID of the resource
-     * 
-     */
-    @Import(name="workspaceId")
-    private @Nullable Output<String> workspaceId;
-
-    /**
-     * @return Workspace ID of the resource
-     * 
-     */
-    public Optional<Output<String>> workspaceId() {
-        return Optional.ofNullable(this.workspaceId);
-    }
-
     private DatabaseSyncedDatabaseTableArgs() {}
 
     private DatabaseSyncedDatabaseTableArgs(DatabaseSyncedDatabaseTableArgs $) {
@@ -114,7 +99,6 @@ public final class DatabaseSyncedDatabaseTableArgs extends com.pulumi.resources.
         this.logicalDatabaseName = $.logicalDatabaseName;
         this.name = $.name;
         this.spec = $.spec;
-        this.workspaceId = $.workspaceId;
     }
 
     public static Builder builder() {
@@ -229,27 +213,6 @@ public final class DatabaseSyncedDatabaseTableArgs extends com.pulumi.resources.
 
         public Builder spec(DatabaseSyncedDatabaseTableSpecArgs spec) {
             return spec(Output.of(spec));
-        }
-
-        /**
-         * @param workspaceId Workspace ID of the resource
-         * 
-         * @return builder
-         * 
-         */
-        public Builder workspaceId(@Nullable Output<String> workspaceId) {
-            $.workspaceId = workspaceId;
-            return this;
-        }
-
-        /**
-         * @param workspaceId Workspace ID of the resource
-         * 
-         * @return builder
-         * 
-         */
-        public Builder workspaceId(String workspaceId) {
-            return workspaceId(Output.of(workspaceId));
         }
 
         public DatabaseSyncedDatabaseTableArgs build() {

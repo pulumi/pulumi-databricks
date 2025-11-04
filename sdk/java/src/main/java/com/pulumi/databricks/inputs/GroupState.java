@@ -62,14 +62,14 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
+     * This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql)  UI, [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one) and through databricks_sql_endpoint.
      * 
      */
     @Import(name="databricksSqlAccess")
     private @Nullable Output<Boolean> databricksSqlAccess;
 
     /**
-     * @return This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
+     * @return This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql)  UI, [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one) and through databricks_sql_endpoint.
      * 
      */
     public Optional<Output<Boolean>> databricksSqlAccess() {
@@ -129,14 +129,14 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * This is a field to allow the group to have access to a Databricks Workspace.
+     * This is a field to allow the group to have access to a Databricks Workspace UI and [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).
      * 
      */
     @Import(name="workspaceAccess")
     private @Nullable Output<Boolean> workspaceAccess;
 
     /**
-     * @return This is a field to allow the group to have access to a Databricks Workspace.
+     * @return This is a field to allow the group to have access to a Databricks Workspace UI and [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).
      * 
      */
     public Optional<Output<Boolean>> workspaceAccess() {
@@ -144,14 +144,14 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * This is a field to allow the group to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn&#39;t be used with `workspaceAccess` or `databricksSqlAccess`.
+     * This is a field to allow the group to have access only to [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).  Couldn&#39;t be used with `workspaceAccess` or `databricksSqlAccess`.
      * 
      */
     @Import(name="workspaceConsume")
     private @Nullable Output<Boolean> workspaceConsume;
 
     /**
-     * @return This is a field to allow the group to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn&#39;t be used with `workspaceAccess` or `databricksSqlAccess`.
+     * @return This is a field to allow the group to have access only to [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).  Couldn&#39;t be used with `workspaceAccess` or `databricksSqlAccess`.
      * 
      */
     public Optional<Output<Boolean>> workspaceConsume() {
@@ -255,7 +255,7 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param databricksSqlAccess This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
+         * @param databricksSqlAccess This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql)  UI, [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one) and through databricks_sql_endpoint.
          * 
          * @return builder
          * 
@@ -266,7 +266,7 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param databricksSqlAccess This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature in User Interface and through databricks_sql_endpoint.
+         * @param databricksSqlAccess This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql)  UI, [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one) and through databricks_sql_endpoint.
          * 
          * @return builder
          * 
@@ -348,7 +348,7 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param workspaceAccess This is a field to allow the group to have access to a Databricks Workspace.
+         * @param workspaceAccess This is a field to allow the group to have access to a Databricks Workspace UI and [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).
          * 
          * @return builder
          * 
@@ -359,7 +359,7 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param workspaceAccess This is a field to allow the group to have access to a Databricks Workspace.
+         * @param workspaceAccess This is a field to allow the group to have access to a Databricks Workspace UI and [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).
          * 
          * @return builder
          * 
@@ -369,7 +369,7 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param workspaceConsume This is a field to allow the group to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn&#39;t be used with `workspaceAccess` or `databricksSqlAccess`.
+         * @param workspaceConsume This is a field to allow the group to have access only to [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).  Couldn&#39;t be used with `workspaceAccess` or `databricksSqlAccess`.
          * 
          * @return builder
          * 
@@ -380,7 +380,7 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param workspaceConsume This is a field to allow the group to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn&#39;t be used with `workspaceAccess` or `databricksSqlAccess`.
+         * @param workspaceConsume This is a field to allow the group to have access only to [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).  Couldn&#39;t be used with `workspaceAccess` or `databricksSqlAccess`.
          * 
          * @return builder
          * 

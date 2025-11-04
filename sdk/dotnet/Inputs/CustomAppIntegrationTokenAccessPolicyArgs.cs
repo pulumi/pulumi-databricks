@@ -12,11 +12,17 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class CustomAppIntegrationTokenAccessPolicyArgs : global::Pulumi.ResourceArgs
     {
+        [Input("absoluteSessionLifetimeInMinutes")]
+        public Input<int>? AbsoluteSessionLifetimeInMinutes { get; set; }
+
         /// <summary>
         /// access token time to live (TTL) in minutes.
         /// </summary>
         [Input("accessTokenTtlInMinutes")]
         public Input<int>? AccessTokenTtlInMinutes { get; set; }
+
+        [Input("enableSingleUseRefreshTokens")]
+        public Input<bool>? EnableSingleUseRefreshTokens { get; set; }
 
         /// <summary>
         /// refresh token TTL in minutes. The TTL of refresh token cannot be lower than TTL of access token.

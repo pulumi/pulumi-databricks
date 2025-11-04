@@ -14,7 +14,6 @@ else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
-from ._inputs import *
 
 __all__ = [
     'GetServicePrincipalFederationPolicyResult',
@@ -67,7 +66,7 @@ class GetServicePrincipalFederationPolicyResult:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[_builtins.str]:
+    def description(self) -> _builtins.str:
         """
         (string) - Description of the federation policy
         """
@@ -96,7 +95,7 @@ class GetServicePrincipalFederationPolicyResult:
 
     @_builtins.property
     @pulumi.getter(name="oidcPolicy")
-    def oidc_policy(self) -> Optional['outputs.GetServicePrincipalFederationPolicyOidcPolicyResult']:
+    def oidc_policy(self) -> 'outputs.GetServicePrincipalFederationPolicyOidcPolicyResult':
         """
         (OidcFederationPolicy)
         """
@@ -106,7 +105,7 @@ class GetServicePrincipalFederationPolicyResult:
     @pulumi.getter(name="policyId")
     def policy_id(self) -> _builtins.str:
         """
-        (string) - The ID of the federation policy
+        (string) - The ID of the federation policy. Output only
         """
         return pulumi.get(self, "policy_id")
 
@@ -114,7 +113,7 @@ class GetServicePrincipalFederationPolicyResult:
     @pulumi.getter(name="servicePrincipalId")
     def service_principal_id(self) -> _builtins.int:
         """
-        (integer) - The service principal ID that this federation policy applies to. Only set for service principal federation policies
+        (integer) - The service principal ID that this federation policy applies to. Output only. Only set for service principal federation policies
         """
         return pulumi.get(self, "service_principal_id")
 
@@ -152,12 +151,12 @@ class AwaitableGetServicePrincipalFederationPolicyResult(GetServicePrincipalFede
             update_time=self.update_time)
 
 
-def get_service_principal_federation_policy(description: Optional[_builtins.str] = None,
-                                            oidc_policy: Optional[Union['GetServicePrincipalFederationPolicyOidcPolicyArgs', 'GetServicePrincipalFederationPolicyOidcPolicyArgsDict']] = None,
-                                            policy_id: Optional[_builtins.str] = None,
+def get_service_principal_federation_policy(policy_id: Optional[_builtins.str] = None,
                                             service_principal_id: Optional[_builtins.int] = None,
                                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServicePrincipalFederationPolicyResult:
     """
+    [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
     This data source can be used to get a single service principal federation policy.
 
     > **Note** This data source can only be used with an account-level provider!
@@ -167,14 +166,10 @@ def get_service_principal_federation_policy(description: Optional[_builtins.str]
     Referring to a service principal federation policy by id:
 
 
-    :param _builtins.str description: (string) - Description of the federation policy
-    :param Union['GetServicePrincipalFederationPolicyOidcPolicyArgs', 'GetServicePrincipalFederationPolicyOidcPolicyArgsDict'] oidc_policy: (OidcFederationPolicy)
-    :param _builtins.str policy_id: The ID of the federation policy
-    :param _builtins.int service_principal_id: The service principal ID that this federation policy applies to. Only set for service principal federation policies
+    :param _builtins.str policy_id: The ID of the federation policy. Output only
+    :param _builtins.int service_principal_id: The service principal ID that this federation policy applies to. Output only. Only set for service principal federation policies
     """
     __args__ = dict()
-    __args__['description'] = description
-    __args__['oidcPolicy'] = oidc_policy
     __args__['policyId'] = policy_id
     __args__['servicePrincipalId'] = service_principal_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -190,12 +185,12 @@ def get_service_principal_federation_policy(description: Optional[_builtins.str]
         service_principal_id=pulumi.get(__ret__, 'service_principal_id'),
         uid=pulumi.get(__ret__, 'uid'),
         update_time=pulumi.get(__ret__, 'update_time'))
-def get_service_principal_federation_policy_output(description: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                   oidc_policy: Optional[pulumi.Input[Optional[Union['GetServicePrincipalFederationPolicyOidcPolicyArgs', 'GetServicePrincipalFederationPolicyOidcPolicyArgsDict']]]] = None,
-                                                   policy_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                   service_principal_id: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
+def get_service_principal_federation_policy_output(policy_id: Optional[pulumi.Input[_builtins.str]] = None,
+                                                   service_principal_id: Optional[pulumi.Input[_builtins.int]] = None,
                                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServicePrincipalFederationPolicyResult]:
     """
+    [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
     This data source can be used to get a single service principal federation policy.
 
     > **Note** This data source can only be used with an account-level provider!
@@ -205,14 +200,10 @@ def get_service_principal_federation_policy_output(description: Optional[pulumi.
     Referring to a service principal federation policy by id:
 
 
-    :param _builtins.str description: (string) - Description of the federation policy
-    :param Union['GetServicePrincipalFederationPolicyOidcPolicyArgs', 'GetServicePrincipalFederationPolicyOidcPolicyArgsDict'] oidc_policy: (OidcFederationPolicy)
-    :param _builtins.str policy_id: The ID of the federation policy
-    :param _builtins.int service_principal_id: The service principal ID that this federation policy applies to. Only set for service principal federation policies
+    :param _builtins.str policy_id: The ID of the federation policy. Output only
+    :param _builtins.int service_principal_id: The service principal ID that this federation policy applies to. Output only. Only set for service principal federation policies
     """
     __args__ = dict()
-    __args__['description'] = description
-    __args__['oidcPolicy'] = oidc_policy
     __args__['policyId'] = policy_id
     __args__['servicePrincipalId'] = service_principal_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)

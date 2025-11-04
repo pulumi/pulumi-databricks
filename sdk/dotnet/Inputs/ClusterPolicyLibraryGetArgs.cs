@@ -24,6 +24,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("maven")]
         public Input<Inputs.ClusterPolicyLibraryMavenGetArgs>? Maven { get; set; }
 
+        [Input("providerConfig")]
+        public Input<Inputs.ClusterPolicyLibraryProviderConfigGetArgs>? ProviderConfig { get; set; }
+
         [Input("pypi")]
         public Input<Inputs.ClusterPolicyLibraryPypiGetArgs>? Pypi { get; set; }
 

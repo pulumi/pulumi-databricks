@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsLibraryCranArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsLibraryMavenArgs;
+import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsLibraryProviderConfigArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsLibraryPypiArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -58,6 +59,13 @@ public final class GetJobJobSettingsSettingsLibraryArgs extends com.pulumi.resou
         return Optional.ofNullable(this.maven);
     }
 
+    @Import(name="providerConfig")
+    private @Nullable Output<GetJobJobSettingsSettingsLibraryProviderConfigArgs> providerConfig;
+
+    public Optional<Output<GetJobJobSettingsSettingsLibraryProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     @Import(name="pypi")
     private @Nullable Output<GetJobJobSettingsSettingsLibraryPypiArgs> pypi;
 
@@ -86,6 +94,7 @@ public final class GetJobJobSettingsSettingsLibraryArgs extends com.pulumi.resou
         this.egg = $.egg;
         this.jar = $.jar;
         this.maven = $.maven;
+        this.providerConfig = $.providerConfig;
         this.pypi = $.pypi;
         this.requirements = $.requirements;
         this.whl = $.whl;
@@ -159,6 +168,15 @@ public final class GetJobJobSettingsSettingsLibraryArgs extends com.pulumi.resou
 
         public Builder maven(GetJobJobSettingsSettingsLibraryMavenArgs maven) {
             return maven(Output.of(maven));
+        }
+
+        public Builder providerConfig(@Nullable Output<GetJobJobSettingsSettingsLibraryProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        public Builder providerConfig(GetJobJobSettingsSettingsLibraryProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         public Builder pypi(@Nullable Output<GetJobJobSettingsSettingsLibraryPypiArgs> pypi) {

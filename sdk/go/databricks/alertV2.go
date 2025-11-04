@@ -7,10 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"errors"
 	"github.com/pulumi/pulumi-databricks/sdk/go/databricks/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+//
 // The Alert v2 resource allows you to manage SQL alerts in Databricks SQL. Alerts monitor query results and notify you when specific conditions are met.
 //
 // Alerts run on a schedule and evaluate query results against defined thresholds. When an alert is triggered, notifications can be sent to specified users or destinations.
@@ -37,7 +40,7 @@ import (
 // If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
 //
 // ```sh
-// $ pulumi import databricks:index/alertV2:AlertV2 databricks_alert_v2 "id"
+// $ pulumi import databricks:index/alertV2:AlertV2 this "id"
 // ```
 type AlertV2 struct {
 	pulumi.CustomResourceState
@@ -49,20 +52,20 @@ type AlertV2 struct {
 	// Custom summary for the alert. support mustache template
 	CustomSummary pulumi.StringPtrOutput `pulumi:"customSummary"`
 	// The display name of the alert
-	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
+	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// (AlertV2RunAs) - The actual identity that will be used to execute the alert.
 	// This is an output-only field that shows the resolved run-as identity after applying
 	// permissions and defaults
 	EffectiveRunAs AlertV2EffectiveRunAsOutput `pulumi:"effectiveRunAs"`
-	Evaluation     AlertV2EvaluationPtrOutput  `pulumi:"evaluation"`
-	// (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `TRASHED`
+	Evaluation     AlertV2EvaluationOutput     `pulumi:"evaluation"`
+	// (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `DELETED`
 	LifecycleState pulumi.StringOutput `pulumi:"lifecycleState"`
 	// (string) - The owner's username. This field is set to "Unavailable" if the user has been deleted
 	OwnerUserName pulumi.StringOutput `pulumi:"ownerUserName"`
 	// The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
 	ParentPath pulumi.StringPtrOutput `pulumi:"parentPath"`
 	// Text of the query to be run
-	QueryText pulumi.StringPtrOutput `pulumi:"queryText"`
+	QueryText pulumi.StringOutput `pulumi:"queryText"`
 	// Specifies the identity that will be used to run the alert.
 	// This field allows you to configure alerts to run as a specific user or service principal.
 	// - For user identity: Set `userName` to the email of an active workspace user. Users can only set this to their own email.
@@ -72,23 +75,36 @@ type AlertV2 struct {
 	// The run as username or application ID of service principal.
 	// On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
 	// Deprecated: Use `runAs` field instead. This field will be removed in a future release
-	RunAsUserName pulumi.StringPtrOutput   `pulumi:"runAsUserName"`
-	Schedule      AlertV2SchedulePtrOutput `pulumi:"schedule"`
+	RunAsUserName pulumi.StringPtrOutput `pulumi:"runAsUserName"`
+	Schedule      AlertV2ScheduleOutput  `pulumi:"schedule"`
 	// (string) - The timestamp indicating when the alert was updated
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 	// ID of the SQL warehouse attached to the alert
-	WarehouseId pulumi.StringPtrOutput `pulumi:"warehouseId"`
-	// Workspace ID of the resource
-	WorkspaceId pulumi.StringPtrOutput `pulumi:"workspaceId"`
+	WarehouseId pulumi.StringOutput `pulumi:"warehouseId"`
 }
 
 // NewAlertV2 registers a new resource with the given unique name, arguments, and options.
 func NewAlertV2(ctx *pulumi.Context,
 	name string, args *AlertV2Args, opts ...pulumi.ResourceOption) (*AlertV2, error) {
 	if args == nil {
-		args = &AlertV2Args{}
+		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.DisplayName == nil {
+		return nil, errors.New("invalid value for required argument 'DisplayName'")
+	}
+	if args.Evaluation == nil {
+		return nil, errors.New("invalid value for required argument 'Evaluation'")
+	}
+	if args.QueryText == nil {
+		return nil, errors.New("invalid value for required argument 'QueryText'")
+	}
+	if args.Schedule == nil {
+		return nil, errors.New("invalid value for required argument 'Schedule'")
+	}
+	if args.WarehouseId == nil {
+		return nil, errors.New("invalid value for required argument 'WarehouseId'")
+	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AlertV2
 	err := ctx.RegisterResource("databricks:index/alertV2:AlertV2", name, args, &resource, opts...)
@@ -125,7 +141,7 @@ type alertV2State struct {
 	// permissions and defaults
 	EffectiveRunAs *AlertV2EffectiveRunAs `pulumi:"effectiveRunAs"`
 	Evaluation     *AlertV2Evaluation     `pulumi:"evaluation"`
-	// (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `TRASHED`
+	// (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `DELETED`
 	LifecycleState *string `pulumi:"lifecycleState"`
 	// (string) - The owner's username. This field is set to "Unavailable" if the user has been deleted
 	OwnerUserName *string `pulumi:"ownerUserName"`
@@ -148,8 +164,6 @@ type alertV2State struct {
 	UpdateTime *string `pulumi:"updateTime"`
 	// ID of the SQL warehouse attached to the alert
 	WarehouseId *string `pulumi:"warehouseId"`
-	// Workspace ID of the resource
-	WorkspaceId *string `pulumi:"workspaceId"`
 }
 
 type AlertV2State struct {
@@ -166,7 +180,7 @@ type AlertV2State struct {
 	// permissions and defaults
 	EffectiveRunAs AlertV2EffectiveRunAsPtrInput
 	Evaluation     AlertV2EvaluationPtrInput
-	// (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `TRASHED`
+	// (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `DELETED`
 	LifecycleState pulumi.StringPtrInput
 	// (string) - The owner's username. This field is set to "Unavailable" if the user has been deleted
 	OwnerUserName pulumi.StringPtrInput
@@ -189,8 +203,6 @@ type AlertV2State struct {
 	UpdateTime pulumi.StringPtrInput
 	// ID of the SQL warehouse attached to the alert
 	WarehouseId pulumi.StringPtrInput
-	// Workspace ID of the resource
-	WorkspaceId pulumi.StringPtrInput
 }
 
 func (AlertV2State) ElementType() reflect.Type {
@@ -203,12 +215,12 @@ type alertV2Args struct {
 	// Custom summary for the alert. support mustache template
 	CustomSummary *string `pulumi:"customSummary"`
 	// The display name of the alert
-	DisplayName *string            `pulumi:"displayName"`
-	Evaluation  *AlertV2Evaluation `pulumi:"evaluation"`
+	DisplayName string            `pulumi:"displayName"`
+	Evaluation  AlertV2Evaluation `pulumi:"evaluation"`
 	// The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
 	ParentPath *string `pulumi:"parentPath"`
 	// Text of the query to be run
-	QueryText *string `pulumi:"queryText"`
+	QueryText string `pulumi:"queryText"`
 	// Specifies the identity that will be used to run the alert.
 	// This field allows you to configure alerts to run as a specific user or service principal.
 	// - For user identity: Set `userName` to the email of an active workspace user. Users can only set this to their own email.
@@ -218,12 +230,10 @@ type alertV2Args struct {
 	// The run as username or application ID of service principal.
 	// On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
 	// Deprecated: Use `runAs` field instead. This field will be removed in a future release
-	RunAsUserName *string          `pulumi:"runAsUserName"`
-	Schedule      *AlertV2Schedule `pulumi:"schedule"`
+	RunAsUserName *string         `pulumi:"runAsUserName"`
+	Schedule      AlertV2Schedule `pulumi:"schedule"`
 	// ID of the SQL warehouse attached to the alert
-	WarehouseId *string `pulumi:"warehouseId"`
-	// Workspace ID of the resource
-	WorkspaceId *string `pulumi:"workspaceId"`
+	WarehouseId string `pulumi:"warehouseId"`
 }
 
 // The set of arguments for constructing a AlertV2 resource.
@@ -233,12 +243,12 @@ type AlertV2Args struct {
 	// Custom summary for the alert. support mustache template
 	CustomSummary pulumi.StringPtrInput
 	// The display name of the alert
-	DisplayName pulumi.StringPtrInput
-	Evaluation  AlertV2EvaluationPtrInput
+	DisplayName pulumi.StringInput
+	Evaluation  AlertV2EvaluationInput
 	// The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
 	ParentPath pulumi.StringPtrInput
 	// Text of the query to be run
-	QueryText pulumi.StringPtrInput
+	QueryText pulumi.StringInput
 	// Specifies the identity that will be used to run the alert.
 	// This field allows you to configure alerts to run as a specific user or service principal.
 	// - For user identity: Set `userName` to the email of an active workspace user. Users can only set this to their own email.
@@ -249,11 +259,9 @@ type AlertV2Args struct {
 	// On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
 	// Deprecated: Use `runAs` field instead. This field will be removed in a future release
 	RunAsUserName pulumi.StringPtrInput
-	Schedule      AlertV2SchedulePtrInput
+	Schedule      AlertV2ScheduleInput
 	// ID of the SQL warehouse attached to the alert
-	WarehouseId pulumi.StringPtrInput
-	// Workspace ID of the resource
-	WorkspaceId pulumi.StringPtrInput
+	WarehouseId pulumi.StringInput
 }
 
 func (AlertV2Args) ElementType() reflect.Type {
@@ -359,8 +367,8 @@ func (o AlertV2Output) CustomSummary() pulumi.StringPtrOutput {
 }
 
 // The display name of the alert
-func (o AlertV2Output) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AlertV2) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
+func (o AlertV2Output) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *AlertV2) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
 // (AlertV2RunAs) - The actual identity that will be used to execute the alert.
@@ -370,11 +378,11 @@ func (o AlertV2Output) EffectiveRunAs() AlertV2EffectiveRunAsOutput {
 	return o.ApplyT(func(v *AlertV2) AlertV2EffectiveRunAsOutput { return v.EffectiveRunAs }).(AlertV2EffectiveRunAsOutput)
 }
 
-func (o AlertV2Output) Evaluation() AlertV2EvaluationPtrOutput {
-	return o.ApplyT(func(v *AlertV2) AlertV2EvaluationPtrOutput { return v.Evaluation }).(AlertV2EvaluationPtrOutput)
+func (o AlertV2Output) Evaluation() AlertV2EvaluationOutput {
+	return o.ApplyT(func(v *AlertV2) AlertV2EvaluationOutput { return v.Evaluation }).(AlertV2EvaluationOutput)
 }
 
-// (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `TRASHED`
+// (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `DELETED`
 func (o AlertV2Output) LifecycleState() pulumi.StringOutput {
 	return o.ApplyT(func(v *AlertV2) pulumi.StringOutput { return v.LifecycleState }).(pulumi.StringOutput)
 }
@@ -390,8 +398,8 @@ func (o AlertV2Output) ParentPath() pulumi.StringPtrOutput {
 }
 
 // Text of the query to be run
-func (o AlertV2Output) QueryText() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AlertV2) pulumi.StringPtrOutput { return v.QueryText }).(pulumi.StringPtrOutput)
+func (o AlertV2Output) QueryText() pulumi.StringOutput {
+	return o.ApplyT(func(v *AlertV2) pulumi.StringOutput { return v.QueryText }).(pulumi.StringOutput)
 }
 
 // Specifies the identity that will be used to run the alert.
@@ -410,8 +418,8 @@ func (o AlertV2Output) RunAsUserName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AlertV2) pulumi.StringPtrOutput { return v.RunAsUserName }).(pulumi.StringPtrOutput)
 }
 
-func (o AlertV2Output) Schedule() AlertV2SchedulePtrOutput {
-	return o.ApplyT(func(v *AlertV2) AlertV2SchedulePtrOutput { return v.Schedule }).(AlertV2SchedulePtrOutput)
+func (o AlertV2Output) Schedule() AlertV2ScheduleOutput {
+	return o.ApplyT(func(v *AlertV2) AlertV2ScheduleOutput { return v.Schedule }).(AlertV2ScheduleOutput)
 }
 
 // (string) - The timestamp indicating when the alert was updated
@@ -420,13 +428,8 @@ func (o AlertV2Output) UpdateTime() pulumi.StringOutput {
 }
 
 // ID of the SQL warehouse attached to the alert
-func (o AlertV2Output) WarehouseId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AlertV2) pulumi.StringPtrOutput { return v.WarehouseId }).(pulumi.StringPtrOutput)
-}
-
-// Workspace ID of the resource
-func (o AlertV2Output) WorkspaceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AlertV2) pulumi.StringPtrOutput { return v.WorkspaceId }).(pulumi.StringPtrOutput)
+func (o AlertV2Output) WarehouseId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AlertV2) pulumi.StringOutput { return v.WarehouseId }).(pulumi.StringOutput)
 }
 
 type AlertV2ArrayOutput struct{ *pulumi.OutputState }

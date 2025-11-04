@@ -12,13 +12,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class LibraryPypi {
+    /**
+     * @return The name of the PyPI package to install. An optional exact version specification is also supported. For example: `simplejson` or `simplejson==3.8.0`.
+     * 
+     */
     private String package_;
+    /**
+     * @return The repository where the package can be found. If not specified, the default pip index is used.
+     * 
+     */
     private @Nullable String repo;
 
     private LibraryPypi() {}
+    /**
+     * @return The name of the PyPI package to install. An optional exact version specification is also supported. For example: `simplejson` or `simplejson==3.8.0`.
+     * 
+     */
     public String package_() {
         return this.package_;
     }
+    /**
+     * @return The repository where the package can be found. If not specified, the default pip index is used.
+     * 
+     */
     public Optional<String> repo() {
         return Optional.ofNullable(this.repo);
     }

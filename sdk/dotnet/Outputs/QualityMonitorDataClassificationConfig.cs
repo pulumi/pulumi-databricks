@@ -13,6 +13,9 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class QualityMonitorDataClassificationConfig
     {
+        /// <summary>
+        /// Whether to enable data classification
+        /// </summary>
         public readonly bool? Enabled;
 
         [OutputConstructor]

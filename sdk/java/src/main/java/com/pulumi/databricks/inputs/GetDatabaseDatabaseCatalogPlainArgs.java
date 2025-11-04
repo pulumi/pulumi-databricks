@@ -5,61 +5,13 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GetDatabaseDatabaseCatalogPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetDatabaseDatabaseCatalogPlainArgs Empty = new GetDatabaseDatabaseCatalogPlainArgs();
-
-    /**
-     * (boolean)
-     * 
-     */
-    @Import(name="createDatabaseIfNotExists")
-    private @Nullable Boolean createDatabaseIfNotExists;
-
-    /**
-     * @return (boolean)
-     * 
-     */
-    public Optional<Boolean> createDatabaseIfNotExists() {
-        return Optional.ofNullable(this.createDatabaseIfNotExists);
-    }
-
-    /**
-     * (string) - The name of the DatabaseInstance housing the database
-     * 
-     */
-    @Import(name="databaseInstanceName", required=true)
-    private String databaseInstanceName;
-
-    /**
-     * @return (string) - The name of the DatabaseInstance housing the database
-     * 
-     */
-    public String databaseInstanceName() {
-        return this.databaseInstanceName;
-    }
-
-    /**
-     * (string) - The name of the database (in a instance) associated with the catalog
-     * 
-     */
-    @Import(name="databaseName", required=true)
-    private String databaseName;
-
-    /**
-     * @return (string) - The name of the database (in a instance) associated with the catalog
-     * 
-     */
-    public String databaseName() {
-        return this.databaseName;
-    }
 
     /**
      * The name of the catalog in UC
@@ -76,29 +28,10 @@ public final class GetDatabaseDatabaseCatalogPlainArgs extends com.pulumi.resour
         return this.name;
     }
 
-    /**
-     * Workspace ID of the resource
-     * 
-     */
-    @Import(name="workspaceId")
-    private @Nullable String workspaceId;
-
-    /**
-     * @return Workspace ID of the resource
-     * 
-     */
-    public Optional<String> workspaceId() {
-        return Optional.ofNullable(this.workspaceId);
-    }
-
     private GetDatabaseDatabaseCatalogPlainArgs() {}
 
     private GetDatabaseDatabaseCatalogPlainArgs(GetDatabaseDatabaseCatalogPlainArgs $) {
-        this.createDatabaseIfNotExists = $.createDatabaseIfNotExists;
-        this.databaseInstanceName = $.databaseInstanceName;
-        this.databaseName = $.databaseName;
         this.name = $.name;
-        this.workspaceId = $.workspaceId;
     }
 
     public static Builder builder() {
@@ -120,39 +53,6 @@ public final class GetDatabaseDatabaseCatalogPlainArgs extends com.pulumi.resour
         }
 
         /**
-         * @param createDatabaseIfNotExists (boolean)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder createDatabaseIfNotExists(@Nullable Boolean createDatabaseIfNotExists) {
-            $.createDatabaseIfNotExists = createDatabaseIfNotExists;
-            return this;
-        }
-
-        /**
-         * @param databaseInstanceName (string) - The name of the DatabaseInstance housing the database
-         * 
-         * @return builder
-         * 
-         */
-        public Builder databaseInstanceName(String databaseInstanceName) {
-            $.databaseInstanceName = databaseInstanceName;
-            return this;
-        }
-
-        /**
-         * @param databaseName (string) - The name of the database (in a instance) associated with the catalog
-         * 
-         * @return builder
-         * 
-         */
-        public Builder databaseName(String databaseName) {
-            $.databaseName = databaseName;
-            return this;
-        }
-
-        /**
          * @param name The name of the catalog in UC
          * 
          * @return builder
@@ -163,24 +63,7 @@ public final class GetDatabaseDatabaseCatalogPlainArgs extends com.pulumi.resour
             return this;
         }
 
-        /**
-         * @param workspaceId Workspace ID of the resource
-         * 
-         * @return builder
-         * 
-         */
-        public Builder workspaceId(@Nullable String workspaceId) {
-            $.workspaceId = workspaceId;
-            return this;
-        }
-
         public GetDatabaseDatabaseCatalogPlainArgs build() {
-            if ($.databaseInstanceName == null) {
-                throw new MissingRequiredPropertyException("GetDatabaseDatabaseCatalogPlainArgs", "databaseInstanceName");
-            }
-            if ($.databaseName == null) {
-                throw new MissingRequiredPropertyException("GetDatabaseDatabaseCatalogPlainArgs", "databaseName");
-            }
             if ($.name == null) {
                 throw new MissingRequiredPropertyException("GetDatabaseDatabaseCatalogPlainArgs", "name");
             }

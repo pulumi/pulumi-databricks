@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetJobsProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Map;
@@ -25,6 +26,7 @@ public final class GetJobsResult {
     private Map<String,String> ids;
     private @Nullable String jobNameContains;
     private @Nullable String key;
+    private @Nullable GetJobsProviderConfig providerConfig;
 
     private GetJobsResult() {}
     /**
@@ -47,6 +49,9 @@ public final class GetJobsResult {
     public Optional<String> key() {
         return Optional.ofNullable(this.key);
     }
+    public Optional<GetJobsProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -61,6 +66,7 @@ public final class GetJobsResult {
         private Map<String,String> ids;
         private @Nullable String jobNameContains;
         private @Nullable String key;
+        private @Nullable GetJobsProviderConfig providerConfig;
         public Builder() {}
         public Builder(GetJobsResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -68,6 +74,7 @@ public final class GetJobsResult {
     	      this.ids = defaults.ids;
     	      this.jobNameContains = defaults.jobNameContains;
     	      this.key = defaults.key;
+    	      this.providerConfig = defaults.providerConfig;
         }
 
         @CustomType.Setter
@@ -98,12 +105,19 @@ public final class GetJobsResult {
             this.key = key;
             return this;
         }
+        @CustomType.Setter
+        public Builder providerConfig(@Nullable GetJobsProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
+            return this;
+        }
         public GetJobsResult build() {
             final var _resultValue = new GetJobsResult();
             _resultValue.id = id;
             _resultValue.ids = ids;
             _resultValue.jobNameContains = jobNameContains;
             _resultValue.key = key;
+            _resultValue.providerConfig = providerConfig;
             return _resultValue;
         }
     }

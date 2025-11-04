@@ -33,6 +33,13 @@ public final class PipelineIngestionDefinitionArgs extends com.pulumi.resources.
         return Optional.ofNullable(this.ingestionGatewayId);
     }
 
+    @Import(name="netsuiteJarPath")
+    private @Nullable Output<String> netsuiteJarPath;
+
+    public Optional<Output<String>> netsuiteJarPath() {
+        return Optional.ofNullable(this.netsuiteJarPath);
+    }
+
     @Import(name="objects")
     private @Nullable Output<List<PipelineIngestionDefinitionObjectArgs>> objects;
 
@@ -66,6 +73,7 @@ public final class PipelineIngestionDefinitionArgs extends com.pulumi.resources.
     private PipelineIngestionDefinitionArgs(PipelineIngestionDefinitionArgs $) {
         this.connectionName = $.connectionName;
         this.ingestionGatewayId = $.ingestionGatewayId;
+        this.netsuiteJarPath = $.netsuiteJarPath;
         this.objects = $.objects;
         this.sourceConfigurations = $.sourceConfigurations;
         this.sourceType = $.sourceType;
@@ -106,6 +114,15 @@ public final class PipelineIngestionDefinitionArgs extends com.pulumi.resources.
 
         public Builder ingestionGatewayId(String ingestionGatewayId) {
             return ingestionGatewayId(Output.of(ingestionGatewayId));
+        }
+
+        public Builder netsuiteJarPath(@Nullable Output<String> netsuiteJarPath) {
+            $.netsuiteJarPath = netsuiteJarPath;
+            return this;
+        }
+
+        public Builder netsuiteJarPath(String netsuiteJarPath) {
+            return netsuiteJarPath(Output.of(netsuiteJarPath));
         }
 
         public Builder objects(@Nullable Output<List<PipelineIngestionDefinitionObjectArgs>> objects) {

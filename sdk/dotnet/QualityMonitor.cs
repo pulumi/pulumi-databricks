@@ -235,6 +235,12 @@ namespace Pulumi.Databricks
         public Output<string> ProfileMetricsTableName { get; private set; } = null!;
 
         /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Output("providerConfig")]
+        public Output<Outputs.QualityMonitorProviderConfig?> ProviderConfig { get; private set; } = null!;
+
+        /// <summary>
         /// The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:
         /// </summary>
         [Output("schedule")]
@@ -387,6 +393,12 @@ namespace Pulumi.Databricks
         public Input<string> OutputSchemaName { get; set; } = null!;
 
         /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.QualityMonitorProviderConfigArgs>? ProviderConfig { get; set; }
+
+        /// <summary>
         /// The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:
         /// </summary>
         [Input("schedule")]
@@ -523,6 +535,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("profileMetricsTableName")]
         public Input<string>? ProfileMetricsTableName { get; set; }
+
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.QualityMonitorProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         /// <summary>
         /// The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:

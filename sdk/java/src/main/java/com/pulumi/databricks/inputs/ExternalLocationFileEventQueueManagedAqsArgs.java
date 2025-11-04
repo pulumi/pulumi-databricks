@@ -39,14 +39,14 @@ public final class ExternalLocationFileEventQueueManagedAqsArgs extends com.pulu
     }
 
     /**
-     * The Azure resource group.
+     * The name of the Azure resource group.
      * 
      */
     @Import(name="resourceGroup", required=true)
     private Output<String> resourceGroup;
 
     /**
-     * @return The Azure resource group.
+     * @return The name of the Azure resource group.
      * 
      */
     public Output<String> resourceGroup() {
@@ -126,7 +126,7 @@ public final class ExternalLocationFileEventQueueManagedAqsArgs extends com.pulu
         }
 
         /**
-         * @param resourceGroup The Azure resource group.
+         * @param resourceGroup The name of the Azure resource group.
          * 
          * @return builder
          * 
@@ -137,7 +137,7 @@ public final class ExternalLocationFileEventQueueManagedAqsArgs extends com.pulu
         }
 
         /**
-         * @param resourceGroup The Azure resource group.
+         * @param resourceGroup The name of the Azure resource group.
          * 
          * @return builder
          * 

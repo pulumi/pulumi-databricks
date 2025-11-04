@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetClustersFilterBy;
+import com.pulumi.databricks.outputs.GetClustersProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
@@ -22,6 +23,7 @@ public final class GetClustersResult {
      * 
      */
     private List<String> ids;
+    private @Nullable GetClustersProviderConfig providerConfig;
 
     private GetClustersResult() {}
     public Optional<String> clusterNameContains() {
@@ -40,6 +42,9 @@ public final class GetClustersResult {
     public List<String> ids() {
         return this.ids;
     }
+    public Optional<GetClustersProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -54,6 +59,7 @@ public final class GetClustersResult {
         private @Nullable GetClustersFilterBy filterBy;
         private String id;
         private List<String> ids;
+        private @Nullable GetClustersProviderConfig providerConfig;
         public Builder() {}
         public Builder(GetClustersResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -61,6 +67,7 @@ public final class GetClustersResult {
     	      this.filterBy = defaults.filterBy;
     	      this.id = defaults.id;
     	      this.ids = defaults.ids;
+    	      this.providerConfig = defaults.providerConfig;
         }
 
         @CustomType.Setter
@@ -94,12 +101,19 @@ public final class GetClustersResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
+        public Builder providerConfig(@Nullable GetClustersProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
+            return this;
+        }
         public GetClustersResult build() {
             final var _resultValue = new GetClustersResult();
             _resultValue.clusterNameContains = clusterNameContains;
             _resultValue.filterBy = filterBy;
             _resultValue.id = id;
             _resultValue.ids = ids;
+            _resultValue.providerConfig = providerConfig;
             return _resultValue;
         }
     }

@@ -7,6 +7,8 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
  * This data source can be used to fetch the list of budget policies.
  *
  * > **Note** This data source can only be used with an account-level provider!
@@ -22,23 +24,52 @@ import * as utilities from "./utilities";
  * const all = databricks.getBudgetPolicies({});
  * ```
  */
-export function getBudgetPolicies(opts?: pulumi.InvokeOptions): Promise<GetBudgetPoliciesResult> {
+export function getBudgetPolicies(args?: GetBudgetPoliciesArgs, opts?: pulumi.InvokeOptions): Promise<GetBudgetPoliciesResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getBudgetPolicies:getBudgetPolicies", {
+        "filterBy": args.filterBy,
+        "pageSize": args.pageSize,
+        "sortSpec": args.sortSpec,
     }, opts);
+}
+
+/**
+ * A collection of arguments for invoking getBudgetPolicies.
+ */
+export interface GetBudgetPoliciesArgs {
+    /**
+     * A filter to apply to the list of policies
+     */
+    filterBy?: inputs.GetBudgetPoliciesFilterBy;
+    /**
+     * The maximum number of budget policies to return.
+     * If unspecified, at most 100 budget policies will be returned.
+     * The maximum value is 1000; values above 1000 will be coerced to 1000
+     */
+    pageSize?: number;
+    /**
+     * The sort specification
+     */
+    sortSpec?: inputs.GetBudgetPoliciesSortSpec;
 }
 
 /**
  * A collection of values returned by getBudgetPolicies.
  */
 export interface GetBudgetPoliciesResult {
+    readonly filterBy?: outputs.GetBudgetPoliciesFilterBy;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly pageSize?: number;
     readonly policies: outputs.GetBudgetPoliciesPolicy[];
+    readonly sortSpec?: outputs.GetBudgetPoliciesSortSpec;
 }
 /**
+ * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
  * This data source can be used to fetch the list of budget policies.
  *
  * > **Note** This data source can only be used with an account-level provider!
@@ -54,8 +85,32 @@ export interface GetBudgetPoliciesResult {
  * const all = databricks.getBudgetPolicies({});
  * ```
  */
-export function getBudgetPoliciesOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetBudgetPoliciesResult> {
+export function getBudgetPoliciesOutput(args?: GetBudgetPoliciesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetBudgetPoliciesResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getBudgetPolicies:getBudgetPolicies", {
+        "filterBy": args.filterBy,
+        "pageSize": args.pageSize,
+        "sortSpec": args.sortSpec,
     }, opts);
+}
+
+/**
+ * A collection of arguments for invoking getBudgetPolicies.
+ */
+export interface GetBudgetPoliciesOutputArgs {
+    /**
+     * A filter to apply to the list of policies
+     */
+    filterBy?: pulumi.Input<inputs.GetBudgetPoliciesFilterByArgs>;
+    /**
+     * The maximum number of budget policies to return.
+     * If unspecified, at most 100 budget policies will be returned.
+     * The maximum value is 1000; values above 1000 will be coerced to 1000
+     */
+    pageSize?: pulumi.Input<number>;
+    /**
+     * The sort specification
+     */
+    sortSpec?: pulumi.Input<inputs.GetBudgetPoliciesSortSpecArgs>;
 }

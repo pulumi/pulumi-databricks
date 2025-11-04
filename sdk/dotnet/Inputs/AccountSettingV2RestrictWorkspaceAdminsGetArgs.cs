@@ -12,6 +12,9 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class AccountSettingV2RestrictWorkspaceAdminsGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
+        /// </summary>
         [Input("status", required: true)]
         public Input<string> Status { get; set; } = null!;
 

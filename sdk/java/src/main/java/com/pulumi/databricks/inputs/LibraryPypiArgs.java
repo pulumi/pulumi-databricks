@@ -16,16 +16,32 @@ public final class LibraryPypiArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final LibraryPypiArgs Empty = new LibraryPypiArgs();
 
+    /**
+     * The name of the PyPI package to install. An optional exact version specification is also supported. For example: `simplejson` or `simplejson==3.8.0`.
+     * 
+     */
     @Import(name="package", required=true)
     private Output<String> package_;
 
+    /**
+     * @return The name of the PyPI package to install. An optional exact version specification is also supported. For example: `simplejson` or `simplejson==3.8.0`.
+     * 
+     */
     public Output<String> package_() {
         return this.package_;
     }
 
+    /**
+     * The repository where the package can be found. If not specified, the default pip index is used.
+     * 
+     */
     @Import(name="repo")
     private @Nullable Output<String> repo;
 
+    /**
+     * @return The repository where the package can be found. If not specified, the default pip index is used.
+     * 
+     */
     public Optional<Output<String>> repo() {
         return Optional.ofNullable(this.repo);
     }
@@ -55,20 +71,44 @@ public final class LibraryPypiArgs extends com.pulumi.resources.ResourceArgs {
             $ = new LibraryPypiArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param package_ The name of the PyPI package to install. An optional exact version specification is also supported. For example: `simplejson` or `simplejson==3.8.0`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder package_(Output<String> package_) {
             $.package_ = package_;
             return this;
         }
 
+        /**
+         * @param package_ The name of the PyPI package to install. An optional exact version specification is also supported. For example: `simplejson` or `simplejson==3.8.0`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder package_(String package_) {
             return package_(Output.of(package_));
         }
 
+        /**
+         * @param repo The repository where the package can be found. If not specified, the default pip index is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder repo(@Nullable Output<String> repo) {
             $.repo = repo;
             return this;
         }
 
+        /**
+         * @param repo The repository where the package can be found. If not specified, the default pip index is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder repo(String repo) {
             return repo(Output.of(repo));
         }

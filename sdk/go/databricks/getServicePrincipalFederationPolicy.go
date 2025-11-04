@@ -11,6 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+//
 // This data source can be used to get a single service principal federation policy.
 //
 // > **Note** This data source can only be used with an account-level provider!
@@ -30,14 +32,10 @@ func LookupServicePrincipalFederationPolicy(ctx *pulumi.Context, args *LookupSer
 
 // A collection of arguments for invoking getServicePrincipalFederationPolicy.
 type LookupServicePrincipalFederationPolicyArgs struct {
-	// (string) - Description of the federation policy
-	Description *string `pulumi:"description"`
-	// (OidcFederationPolicy)
-	OidcPolicy *GetServicePrincipalFederationPolicyOidcPolicy `pulumi:"oidcPolicy"`
-	// The ID of the federation policy
-	PolicyId *string `pulumi:"policyId"`
-	// The service principal ID that this federation policy applies to. Only set for service principal federation policies
-	ServicePrincipalId *int `pulumi:"servicePrincipalId"`
+	// The ID of the federation policy. Output only
+	PolicyId string `pulumi:"policyId"`
+	// The service principal ID that this federation policy applies to. Output only. Only set for service principal federation policies
+	ServicePrincipalId int `pulumi:"servicePrincipalId"`
 }
 
 // A collection of values returned by getServicePrincipalFederationPolicy.
@@ -45,7 +43,7 @@ type LookupServicePrincipalFederationPolicyResult struct {
 	// (string) - Creation time of the federation policy
 	CreateTime string `pulumi:"createTime"`
 	// (string) - Description of the federation policy
-	Description *string `pulumi:"description"`
+	Description string `pulumi:"description"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// (string) - Resource name for the federation policy. Example values include
@@ -56,10 +54,10 @@ type LookupServicePrincipalFederationPolicyResult struct {
 	// request URL
 	Name string `pulumi:"name"`
 	// (OidcFederationPolicy)
-	OidcPolicy *GetServicePrincipalFederationPolicyOidcPolicy `pulumi:"oidcPolicy"`
-	// (string) - The ID of the federation policy
+	OidcPolicy GetServicePrincipalFederationPolicyOidcPolicy `pulumi:"oidcPolicy"`
+	// (string) - The ID of the federation policy. Output only
 	PolicyId string `pulumi:"policyId"`
-	// (integer) - The service principal ID that this federation policy applies to. Only set for service principal federation policies
+	// (integer) - The service principal ID that this federation policy applies to. Output only. Only set for service principal federation policies
 	ServicePrincipalId int `pulumi:"servicePrincipalId"`
 	// (string) - Unique, immutable id of the federation policy
 	Uid string `pulumi:"uid"`
@@ -78,14 +76,10 @@ func LookupServicePrincipalFederationPolicyOutput(ctx *pulumi.Context, args Look
 
 // A collection of arguments for invoking getServicePrincipalFederationPolicy.
 type LookupServicePrincipalFederationPolicyOutputArgs struct {
-	// (string) - Description of the federation policy
-	Description pulumi.StringPtrInput `pulumi:"description"`
-	// (OidcFederationPolicy)
-	OidcPolicy GetServicePrincipalFederationPolicyOidcPolicyPtrInput `pulumi:"oidcPolicy"`
-	// The ID of the federation policy
-	PolicyId pulumi.StringPtrInput `pulumi:"policyId"`
-	// The service principal ID that this federation policy applies to. Only set for service principal federation policies
-	ServicePrincipalId pulumi.IntPtrInput `pulumi:"servicePrincipalId"`
+	// The ID of the federation policy. Output only
+	PolicyId pulumi.StringInput `pulumi:"policyId"`
+	// The service principal ID that this federation policy applies to. Output only. Only set for service principal federation policies
+	ServicePrincipalId pulumi.IntInput `pulumi:"servicePrincipalId"`
 }
 
 func (LookupServicePrincipalFederationPolicyOutputArgs) ElementType() reflect.Type {
@@ -113,8 +107,8 @@ func (o LookupServicePrincipalFederationPolicyResultOutput) CreateTime() pulumi.
 }
 
 // (string) - Description of the federation policy
-func (o LookupServicePrincipalFederationPolicyResultOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupServicePrincipalFederationPolicyResult) *string { return v.Description }).(pulumi.StringPtrOutput)
+func (o LookupServicePrincipalFederationPolicyResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServicePrincipalFederationPolicyResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.
@@ -133,18 +127,18 @@ func (o LookupServicePrincipalFederationPolicyResultOutput) Name() pulumi.String
 }
 
 // (OidcFederationPolicy)
-func (o LookupServicePrincipalFederationPolicyResultOutput) OidcPolicy() GetServicePrincipalFederationPolicyOidcPolicyPtrOutput {
-	return o.ApplyT(func(v LookupServicePrincipalFederationPolicyResult) *GetServicePrincipalFederationPolicyOidcPolicy {
+func (o LookupServicePrincipalFederationPolicyResultOutput) OidcPolicy() GetServicePrincipalFederationPolicyOidcPolicyOutput {
+	return o.ApplyT(func(v LookupServicePrincipalFederationPolicyResult) GetServicePrincipalFederationPolicyOidcPolicy {
 		return v.OidcPolicy
-	}).(GetServicePrincipalFederationPolicyOidcPolicyPtrOutput)
+	}).(GetServicePrincipalFederationPolicyOidcPolicyOutput)
 }
 
-// (string) - The ID of the federation policy
+// (string) - The ID of the federation policy. Output only
 func (o LookupServicePrincipalFederationPolicyResultOutput) PolicyId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServicePrincipalFederationPolicyResult) string { return v.PolicyId }).(pulumi.StringOutput)
 }
 
-// (integer) - The service principal ID that this federation policy applies to. Only set for service principal federation policies
+// (integer) - The service principal ID that this federation policy applies to. Output only. Only set for service principal federation policies
 func (o LookupServicePrincipalFederationPolicyResultOutput) ServicePrincipalId() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupServicePrincipalFederationPolicyResult) int { return v.ServicePrincipalId }).(pulumi.IntOutput)
 }

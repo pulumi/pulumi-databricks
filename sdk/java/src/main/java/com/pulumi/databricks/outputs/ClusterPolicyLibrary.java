@@ -6,6 +6,7 @@ package com.pulumi.databricks.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.ClusterPolicyLibraryCran;
 import com.pulumi.databricks.outputs.ClusterPolicyLibraryMaven;
+import com.pulumi.databricks.outputs.ClusterPolicyLibraryProviderConfig;
 import com.pulumi.databricks.outputs.ClusterPolicyLibraryPypi;
 import java.lang.String;
 import java.util.Objects;
@@ -24,6 +25,7 @@ public final class ClusterPolicyLibrary {
     private @Nullable String egg;
     private @Nullable String jar;
     private @Nullable ClusterPolicyLibraryMaven maven;
+    private @Nullable ClusterPolicyLibraryProviderConfig providerConfig;
     private @Nullable ClusterPolicyLibraryPypi pypi;
     private @Nullable String requirements;
     private @Nullable String whl;
@@ -46,6 +48,9 @@ public final class ClusterPolicyLibrary {
     }
     public Optional<ClusterPolicyLibraryMaven> maven() {
         return Optional.ofNullable(this.maven);
+    }
+    public Optional<ClusterPolicyLibraryProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
     }
     public Optional<ClusterPolicyLibraryPypi> pypi() {
         return Optional.ofNullable(this.pypi);
@@ -70,6 +75,7 @@ public final class ClusterPolicyLibrary {
         private @Nullable String egg;
         private @Nullable String jar;
         private @Nullable ClusterPolicyLibraryMaven maven;
+        private @Nullable ClusterPolicyLibraryProviderConfig providerConfig;
         private @Nullable ClusterPolicyLibraryPypi pypi;
         private @Nullable String requirements;
         private @Nullable String whl;
@@ -80,6 +86,7 @@ public final class ClusterPolicyLibrary {
     	      this.egg = defaults.egg;
     	      this.jar = defaults.jar;
     	      this.maven = defaults.maven;
+    	      this.providerConfig = defaults.providerConfig;
     	      this.pypi = defaults.pypi;
     	      this.requirements = defaults.requirements;
     	      this.whl = defaults.whl;
@@ -110,6 +117,12 @@ public final class ClusterPolicyLibrary {
             return this;
         }
         @CustomType.Setter
+        public Builder providerConfig(@Nullable ClusterPolicyLibraryProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder pypi(@Nullable ClusterPolicyLibraryPypi pypi) {
 
             this.pypi = pypi;
@@ -133,6 +146,7 @@ public final class ClusterPolicyLibrary {
             _resultValue.egg = egg;
             _resultValue.jar = jar;
             _resultValue.maven = maven;
+            _resultValue.providerConfig = providerConfig;
             _resultValue.pypi = pypi;
             _resultValue.requirements = requirements;
             _resultValue.whl = whl;

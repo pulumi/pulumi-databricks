@@ -14,7 +14,7 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetAppsAppResourceServingEndpointResult
     {
         /// <summary>
-        /// Name of the serving endpoint to grant permission on.
+        /// The name of Genie Space.
         /// </summary>
         public readonly string Name;
         /// <summary>

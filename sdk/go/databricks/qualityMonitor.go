@@ -210,6 +210,8 @@ type QualityMonitor struct {
 	OutputSchemaName pulumi.StringOutput `pulumi:"outputSchemaName"`
 	// The full name of the profile metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
 	ProfileMetricsTableName pulumi.StringOutput `pulumi:"profileMetricsTableName"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig QualityMonitorProviderConfigPtrOutput `pulumi:"providerConfig"`
 	// The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:
 	Schedule QualityMonitorSchedulePtrOutput `pulumi:"schedule"`
 	// Whether to skip creating a default dashboard summarizing data quality metrics.  (Can't be updated after creation).
@@ -293,6 +295,8 @@ type qualityMonitorState struct {
 	OutputSchemaName *string `pulumi:"outputSchemaName"`
 	// The full name of the profile metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
 	ProfileMetricsTableName *string `pulumi:"profileMetricsTableName"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *QualityMonitorProviderConfig `pulumi:"providerConfig"`
 	// The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:
 	Schedule *QualityMonitorSchedule `pulumi:"schedule"`
 	// Whether to skip creating a default dashboard summarizing data quality metrics.  (Can't be updated after creation).
@@ -338,6 +342,8 @@ type QualityMonitorState struct {
 	OutputSchemaName pulumi.StringPtrInput
 	// The full name of the profile metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
 	ProfileMetricsTableName pulumi.StringPtrInput
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig QualityMonitorProviderConfigPtrInput
 	// The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:
 	Schedule QualityMonitorSchedulePtrInput
 	// Whether to skip creating a default dashboard summarizing data quality metrics.  (Can't be updated after creation).
@@ -379,6 +385,8 @@ type qualityMonitorArgs struct {
 	Notifications *QualityMonitorNotifications `pulumi:"notifications"`
 	// Schema where output metric tables are created
 	OutputSchemaName string `pulumi:"outputSchemaName"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *QualityMonitorProviderConfig `pulumi:"providerConfig"`
 	// The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:
 	Schedule *QualityMonitorSchedule `pulumi:"schedule"`
 	// Whether to skip creating a default dashboard summarizing data quality metrics.  (Can't be updated after creation).
@@ -415,6 +423,8 @@ type QualityMonitorArgs struct {
 	Notifications QualityMonitorNotificationsPtrInput
 	// Schema where output metric tables are created
 	OutputSchemaName pulumi.StringInput
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig QualityMonitorProviderConfigPtrInput
 	// The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:
 	Schedule QualityMonitorSchedulePtrInput
 	// Whether to skip creating a default dashboard summarizing data quality metrics.  (Can't be updated after creation).
@@ -583,6 +593,11 @@ func (o QualityMonitorOutput) OutputSchemaName() pulumi.StringOutput {
 // The full name of the profile metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
 func (o QualityMonitorOutput) ProfileMetricsTableName() pulumi.StringOutput {
 	return o.ApplyT(func(v *QualityMonitor) pulumi.StringOutput { return v.ProfileMetricsTableName }).(pulumi.StringOutput)
+}
+
+// Configure the provider for management through account provider. This block consists of the following fields:
+func (o QualityMonitorOutput) ProviderConfig() QualityMonitorProviderConfigPtrOutput {
+	return o.ApplyT(func(v *QualityMonitor) QualityMonitorProviderConfigPtrOutput { return v.ProviderConfig }).(QualityMonitorProviderConfigPtrOutput)
 }
 
 // The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:

@@ -26,7 +26,7 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-aws/sdk/v6/go/aws/s3"
+//	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/s3"
 //	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -34,7 +34,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			metastore, err := s3.NewBucketV2(ctx, "metastore", &s3.BucketV2Args{
+//			metastore, err := s3.NewBucket(ctx, "metastore", &s3.BucketArgs{
 //				Bucket:       pulumi.Sprintf("%v-metastore", prefix),
 //				ForceDestroy: pulumi.Bool(true),
 //			})

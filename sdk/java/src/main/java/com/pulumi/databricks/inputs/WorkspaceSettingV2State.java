@@ -9,12 +9,10 @@ import com.pulumi.databricks.inputs.WorkspaceSettingV2AibiDashboardEmbeddingAcce
 import com.pulumi.databricks.inputs.WorkspaceSettingV2AibiDashboardEmbeddingApprovedDomainsArgs;
 import com.pulumi.databricks.inputs.WorkspaceSettingV2AutomaticClusterUpdateWorkspaceArgs;
 import com.pulumi.databricks.inputs.WorkspaceSettingV2BooleanValArgs;
-import com.pulumi.databricks.inputs.WorkspaceSettingV2DefaultDataSecurityModeArgs;
 import com.pulumi.databricks.inputs.WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgs;
 import com.pulumi.databricks.inputs.WorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgs;
 import com.pulumi.databricks.inputs.WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgs;
 import com.pulumi.databricks.inputs.WorkspaceSettingV2EffectiveBooleanValArgs;
-import com.pulumi.databricks.inputs.WorkspaceSettingV2EffectiveDefaultDataSecurityModeArgs;
 import com.pulumi.databricks.inputs.WorkspaceSettingV2EffectiveIntegerValArgs;
 import com.pulumi.databricks.inputs.WorkspaceSettingV2EffectivePersonalComputeArgs;
 import com.pulumi.databricks.inputs.WorkspaceSettingV2EffectiveRestrictWorkspaceAdminsArgs;
@@ -47,17 +45,9 @@ public final class WorkspaceSettingV2State extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.aibiDashboardEmbeddingApprovedDomains);
     }
 
-    /**
-     * todo: Mark these Public after onboarded to DSL
-     * 
-     */
     @Import(name="automaticClusterUpdateWorkspace")
     private @Nullable Output<WorkspaceSettingV2AutomaticClusterUpdateWorkspaceArgs> automaticClusterUpdateWorkspace;
 
-    /**
-     * @return todo: Mark these Public after onboarded to DSL
-     * 
-     */
     public Optional<Output<WorkspaceSettingV2AutomaticClusterUpdateWorkspaceArgs>> automaticClusterUpdateWorkspace() {
         return Optional.ofNullable(this.automaticClusterUpdateWorkspace);
     }
@@ -67,13 +57,6 @@ public final class WorkspaceSettingV2State extends com.pulumi.resources.Resource
 
     public Optional<Output<WorkspaceSettingV2BooleanValArgs>> booleanVal() {
         return Optional.ofNullable(this.booleanVal);
-    }
-
-    @Import(name="defaultDataSecurityMode")
-    private @Nullable Output<WorkspaceSettingV2DefaultDataSecurityModeArgs> defaultDataSecurityMode;
-
-    public Optional<Output<WorkspaceSettingV2DefaultDataSecurityModeArgs>> defaultDataSecurityMode() {
-        return Optional.ofNullable(this.defaultDataSecurityMode);
     }
 
     @Import(name="effectiveAibiDashboardEmbeddingAccessPolicy")
@@ -110,13 +93,6 @@ public final class WorkspaceSettingV2State extends com.pulumi.resources.Resource
      */
     public Optional<Output<WorkspaceSettingV2EffectiveBooleanValArgs>> effectiveBooleanVal() {
         return Optional.ofNullable(this.effectiveBooleanVal);
-    }
-
-    @Import(name="effectiveDefaultDataSecurityMode")
-    private @Nullable Output<WorkspaceSettingV2EffectiveDefaultDataSecurityModeArgs> effectiveDefaultDataSecurityMode;
-
-    public Optional<Output<WorkspaceSettingV2EffectiveDefaultDataSecurityModeArgs>> effectiveDefaultDataSecurityMode() {
-        return Optional.ofNullable(this.effectiveDefaultDataSecurityMode);
     }
 
     /**
@@ -206,21 +182,6 @@ public final class WorkspaceSettingV2State extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.stringVal);
     }
 
-    /**
-     * Workspace ID of the resource
-     * 
-     */
-    @Import(name="workspaceId")
-    private @Nullable Output<String> workspaceId;
-
-    /**
-     * @return Workspace ID of the resource
-     * 
-     */
-    public Optional<Output<String>> workspaceId() {
-        return Optional.ofNullable(this.workspaceId);
-    }
-
     private WorkspaceSettingV2State() {}
 
     private WorkspaceSettingV2State(WorkspaceSettingV2State $) {
@@ -228,12 +189,10 @@ public final class WorkspaceSettingV2State extends com.pulumi.resources.Resource
         this.aibiDashboardEmbeddingApprovedDomains = $.aibiDashboardEmbeddingApprovedDomains;
         this.automaticClusterUpdateWorkspace = $.automaticClusterUpdateWorkspace;
         this.booleanVal = $.booleanVal;
-        this.defaultDataSecurityMode = $.defaultDataSecurityMode;
         this.effectiveAibiDashboardEmbeddingAccessPolicy = $.effectiveAibiDashboardEmbeddingAccessPolicy;
         this.effectiveAibiDashboardEmbeddingApprovedDomains = $.effectiveAibiDashboardEmbeddingApprovedDomains;
         this.effectiveAutomaticClusterUpdateWorkspace = $.effectiveAutomaticClusterUpdateWorkspace;
         this.effectiveBooleanVal = $.effectiveBooleanVal;
-        this.effectiveDefaultDataSecurityMode = $.effectiveDefaultDataSecurityMode;
         this.effectiveIntegerVal = $.effectiveIntegerVal;
         this.effectivePersonalCompute = $.effectivePersonalCompute;
         this.effectiveRestrictWorkspaceAdmins = $.effectiveRestrictWorkspaceAdmins;
@@ -243,7 +202,6 @@ public final class WorkspaceSettingV2State extends com.pulumi.resources.Resource
         this.personalCompute = $.personalCompute;
         this.restrictWorkspaceAdmins = $.restrictWorkspaceAdmins;
         this.stringVal = $.stringVal;
-        this.workspaceId = $.workspaceId;
     }
 
     public static Builder builder() {
@@ -282,23 +240,11 @@ public final class WorkspaceSettingV2State extends com.pulumi.resources.Resource
             return aibiDashboardEmbeddingApprovedDomains(Output.of(aibiDashboardEmbeddingApprovedDomains));
         }
 
-        /**
-         * @param automaticClusterUpdateWorkspace todo: Mark these Public after onboarded to DSL
-         * 
-         * @return builder
-         * 
-         */
         public Builder automaticClusterUpdateWorkspace(@Nullable Output<WorkspaceSettingV2AutomaticClusterUpdateWorkspaceArgs> automaticClusterUpdateWorkspace) {
             $.automaticClusterUpdateWorkspace = automaticClusterUpdateWorkspace;
             return this;
         }
 
-        /**
-         * @param automaticClusterUpdateWorkspace todo: Mark these Public after onboarded to DSL
-         * 
-         * @return builder
-         * 
-         */
         public Builder automaticClusterUpdateWorkspace(WorkspaceSettingV2AutomaticClusterUpdateWorkspaceArgs automaticClusterUpdateWorkspace) {
             return automaticClusterUpdateWorkspace(Output.of(automaticClusterUpdateWorkspace));
         }
@@ -310,15 +256,6 @@ public final class WorkspaceSettingV2State extends com.pulumi.resources.Resource
 
         public Builder booleanVal(WorkspaceSettingV2BooleanValArgs booleanVal) {
             return booleanVal(Output.of(booleanVal));
-        }
-
-        public Builder defaultDataSecurityMode(@Nullable Output<WorkspaceSettingV2DefaultDataSecurityModeArgs> defaultDataSecurityMode) {
-            $.defaultDataSecurityMode = defaultDataSecurityMode;
-            return this;
-        }
-
-        public Builder defaultDataSecurityMode(WorkspaceSettingV2DefaultDataSecurityModeArgs defaultDataSecurityMode) {
-            return defaultDataSecurityMode(Output.of(defaultDataSecurityMode));
         }
 
         public Builder effectiveAibiDashboardEmbeddingAccessPolicy(@Nullable Output<WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgs> effectiveAibiDashboardEmbeddingAccessPolicy) {
@@ -367,15 +304,6 @@ public final class WorkspaceSettingV2State extends com.pulumi.resources.Resource
          */
         public Builder effectiveBooleanVal(WorkspaceSettingV2EffectiveBooleanValArgs effectiveBooleanVal) {
             return effectiveBooleanVal(Output.of(effectiveBooleanVal));
-        }
-
-        public Builder effectiveDefaultDataSecurityMode(@Nullable Output<WorkspaceSettingV2EffectiveDefaultDataSecurityModeArgs> effectiveDefaultDataSecurityMode) {
-            $.effectiveDefaultDataSecurityMode = effectiveDefaultDataSecurityMode;
-            return this;
-        }
-
-        public Builder effectiveDefaultDataSecurityMode(WorkspaceSettingV2EffectiveDefaultDataSecurityModeArgs effectiveDefaultDataSecurityMode) {
-            return effectiveDefaultDataSecurityMode(Output.of(effectiveDefaultDataSecurityMode));
         }
 
         /**
@@ -493,27 +421,6 @@ public final class WorkspaceSettingV2State extends com.pulumi.resources.Resource
 
         public Builder stringVal(WorkspaceSettingV2StringValArgs stringVal) {
             return stringVal(Output.of(stringVal));
-        }
-
-        /**
-         * @param workspaceId Workspace ID of the resource
-         * 
-         * @return builder
-         * 
-         */
-        public Builder workspaceId(@Nullable Output<String> workspaceId) {
-            $.workspaceId = workspaceId;
-            return this;
-        }
-
-        /**
-         * @param workspaceId Workspace ID of the resource
-         * 
-         * @return builder
-         * 
-         */
-        public Builder workspaceId(String workspaceId) {
-            return workspaceId(Output.of(workspaceId));
         }
 
         public WorkspaceSettingV2State build() {

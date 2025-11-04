@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetSqlWarehousesResult',
@@ -26,13 +28,16 @@ class GetSqlWarehousesResult:
     """
     A collection of values returned by getSqlWarehouses.
     """
-    def __init__(__self__, id=None, ids=None, warehouse_name_contains=None):
+    def __init__(__self__, id=None, ids=None, provider_config=None, warehouse_name_contains=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
         pulumi.set(__self__, "ids", ids)
+        if provider_config and not isinstance(provider_config, dict):
+            raise TypeError("Expected argument 'provider_config' to be a dict")
+        pulumi.set(__self__, "provider_config", provider_config)
         if warehouse_name_contains and not isinstance(warehouse_name_contains, str):
             raise TypeError("Expected argument 'warehouse_name_contains' to be a str")
         pulumi.set(__self__, "warehouse_name_contains", warehouse_name_contains)
@@ -54,6 +59,11 @@ class GetSqlWarehousesResult:
         return pulumi.get(self, "ids")
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional['outputs.GetSqlWarehousesProviderConfigResult']:
+        return pulumi.get(self, "provider_config")
+
+    @_builtins.property
     @pulumi.getter(name="warehouseNameContains")
     def warehouse_name_contains(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "warehouse_name_contains")
@@ -67,10 +77,12 @@ class AwaitableGetSqlWarehousesResult(GetSqlWarehousesResult):
         return GetSqlWarehousesResult(
             id=self.id,
             ids=self.ids,
+            provider_config=self.provider_config,
             warehouse_name_contains=self.warehouse_name_contains)
 
 
 def get_sql_warehouses(ids: Optional[Sequence[_builtins.str]] = None,
+                       provider_config: Optional[Union['GetSqlWarehousesProviderConfigArgs', 'GetSqlWarehousesProviderConfigArgsDict']] = None,
                        warehouse_name_contains: Optional[_builtins.str] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSqlWarehousesResult:
     """
@@ -110,10 +122,12 @@ def get_sql_warehouses(ids: Optional[Sequence[_builtins.str]] = None,
 
 
     :param Sequence[_builtins.str] ids: list of SqlEndpoint ids
+    :param Union['GetSqlWarehousesProviderConfigArgs', 'GetSqlWarehousesProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     :param _builtins.str warehouse_name_contains: Only return SqlEndpoint ids that match the given name string.
     """
     __args__ = dict()
     __args__['ids'] = ids
+    __args__['providerConfig'] = provider_config
     __args__['warehouseNameContains'] = warehouse_name_contains
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getSqlWarehouses:getSqlWarehouses', __args__, opts=opts, typ=GetSqlWarehousesResult).value
@@ -121,8 +135,10 @@ def get_sql_warehouses(ids: Optional[Sequence[_builtins.str]] = None,
     return AwaitableGetSqlWarehousesResult(
         id=pulumi.get(__ret__, 'id'),
         ids=pulumi.get(__ret__, 'ids'),
+        provider_config=pulumi.get(__ret__, 'provider_config'),
         warehouse_name_contains=pulumi.get(__ret__, 'warehouse_name_contains'))
 def get_sql_warehouses_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
+                              provider_config: Optional[pulumi.Input[Optional[Union['GetSqlWarehousesProviderConfigArgs', 'GetSqlWarehousesProviderConfigArgsDict']]]] = None,
                               warehouse_name_contains: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSqlWarehousesResult]:
     """
@@ -162,14 +178,17 @@ def get_sql_warehouses_output(ids: Optional[pulumi.Input[Optional[Sequence[_buil
 
 
     :param Sequence[_builtins.str] ids: list of SqlEndpoint ids
+    :param Union['GetSqlWarehousesProviderConfigArgs', 'GetSqlWarehousesProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     :param _builtins.str warehouse_name_contains: Only return SqlEndpoint ids that match the given name string.
     """
     __args__ = dict()
     __args__['ids'] = ids
+    __args__['providerConfig'] = provider_config
     __args__['warehouseNameContains'] = warehouse_name_contains
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getSqlWarehouses:getSqlWarehouses', __args__, opts=opts, typ=GetSqlWarehousesResult)
     return __ret__.apply(lambda __response__: GetSqlWarehousesResult(
         id=pulumi.get(__response__, 'id'),
         ids=pulumi.get(__response__, 'ids'),
+        provider_config=pulumi.get(__response__, 'provider_config'),
         warehouse_name_contains=pulumi.get(__response__, 'warehouse_name_contains')))

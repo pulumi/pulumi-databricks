@@ -28,7 +28,7 @@ class GetMlflowModelResult:
     """
     A collection of values returned by getMlflowModel.
     """
-    def __init__(__self__, description=None, id=None, latest_versions=None, name=None, permission_level=None, tags=None, user_id=None):
+    def __init__(__self__, description=None, id=None, latest_versions=None, name=None, permission_level=None, provider_config=None, tags=None, user_id=None):
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -44,6 +44,9 @@ class GetMlflowModelResult:
         if permission_level and not isinstance(permission_level, str):
             raise TypeError("Expected argument 'permission_level' to be a str")
         pulumi.set(__self__, "permission_level", permission_level)
+        if provider_config and not isinstance(provider_config, dict):
+            raise TypeError("Expected argument 'provider_config' to be a dict")
+        pulumi.set(__self__, "provider_config", provider_config)
         if tags and not isinstance(tags, list):
             raise TypeError("Expected argument 'tags' to be a list")
         pulumi.set(__self__, "tags", tags)
@@ -92,6 +95,11 @@ class GetMlflowModelResult:
         return pulumi.get(self, "permission_level")
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional['outputs.GetMlflowModelProviderConfigResult']:
+        return pulumi.get(self, "provider_config")
+
+    @_builtins.property
     @pulumi.getter
     def tags(self) -> Sequence['outputs.GetMlflowModelTagResult']:
         """
@@ -119,6 +127,7 @@ class AwaitableGetMlflowModelResult(GetMlflowModelResult):
             latest_versions=self.latest_versions,
             name=self.name,
             permission_level=self.permission_level,
+            provider_config=self.provider_config,
             tags=self.tags,
             user_id=self.user_id)
 
@@ -127,6 +136,7 @@ def get_mlflow_model(description: Optional[_builtins.str] = None,
                      latest_versions: Optional[Sequence[Union['GetMlflowModelLatestVersionArgs', 'GetMlflowModelLatestVersionArgsDict']]] = None,
                      name: Optional[_builtins.str] = None,
                      permission_level: Optional[_builtins.str] = None,
+                     provider_config: Optional[Union['GetMlflowModelProviderConfigArgs', 'GetMlflowModelProviderConfigArgsDict']] = None,
                      tags: Optional[Sequence[Union['GetMlflowModelTagArgs', 'GetMlflowModelTagArgsDict']]] = None,
                      user_id: Optional[_builtins.str] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMlflowModelResult:
@@ -181,6 +191,7 @@ def get_mlflow_model(description: Optional[_builtins.str] = None,
     :param Sequence[Union['GetMlflowModelLatestVersionArgs', 'GetMlflowModelLatestVersionArgsDict']] latest_versions: Array of model versions, each the latest version for its stage.
     :param _builtins.str name: Name of the registered model.
     :param _builtins.str permission_level: Permission level of the requesting user on the object. For what is allowed at each level, see MLflow Model permissions.
+    :param Union['GetMlflowModelProviderConfigArgs', 'GetMlflowModelProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     :param Sequence[Union['GetMlflowModelTagArgs', 'GetMlflowModelTagArgsDict']] tags: Array of tags associated with the model.
     :param _builtins.str user_id: The username of the user that created the object.
     """
@@ -189,6 +200,7 @@ def get_mlflow_model(description: Optional[_builtins.str] = None,
     __args__['latestVersions'] = latest_versions
     __args__['name'] = name
     __args__['permissionLevel'] = permission_level
+    __args__['providerConfig'] = provider_config
     __args__['tags'] = tags
     __args__['userId'] = user_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -200,12 +212,14 @@ def get_mlflow_model(description: Optional[_builtins.str] = None,
         latest_versions=pulumi.get(__ret__, 'latest_versions'),
         name=pulumi.get(__ret__, 'name'),
         permission_level=pulumi.get(__ret__, 'permission_level'),
+        provider_config=pulumi.get(__ret__, 'provider_config'),
         tags=pulumi.get(__ret__, 'tags'),
         user_id=pulumi.get(__ret__, 'user_id'))
 def get_mlflow_model_output(description: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                             latest_versions: Optional[pulumi.Input[Optional[Sequence[Union['GetMlflowModelLatestVersionArgs', 'GetMlflowModelLatestVersionArgsDict']]]]] = None,
                             name: Optional[pulumi.Input[_builtins.str]] = None,
                             permission_level: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                            provider_config: Optional[pulumi.Input[Optional[Union['GetMlflowModelProviderConfigArgs', 'GetMlflowModelProviderConfigArgsDict']]]] = None,
                             tags: Optional[pulumi.Input[Optional[Sequence[Union['GetMlflowModelTagArgs', 'GetMlflowModelTagArgsDict']]]]] = None,
                             user_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMlflowModelResult]:
@@ -260,6 +274,7 @@ def get_mlflow_model_output(description: Optional[pulumi.Input[Optional[_builtin
     :param Sequence[Union['GetMlflowModelLatestVersionArgs', 'GetMlflowModelLatestVersionArgsDict']] latest_versions: Array of model versions, each the latest version for its stage.
     :param _builtins.str name: Name of the registered model.
     :param _builtins.str permission_level: Permission level of the requesting user on the object. For what is allowed at each level, see MLflow Model permissions.
+    :param Union['GetMlflowModelProviderConfigArgs', 'GetMlflowModelProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     :param Sequence[Union['GetMlflowModelTagArgs', 'GetMlflowModelTagArgsDict']] tags: Array of tags associated with the model.
     :param _builtins.str user_id: The username of the user that created the object.
     """
@@ -268,6 +283,7 @@ def get_mlflow_model_output(description: Optional[pulumi.Input[Optional[_builtin
     __args__['latestVersions'] = latest_versions
     __args__['name'] = name
     __args__['permissionLevel'] = permission_level
+    __args__['providerConfig'] = provider_config
     __args__['tags'] = tags
     __args__['userId'] = user_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -278,5 +294,6 @@ def get_mlflow_model_output(description: Optional[pulumi.Input[Optional[_builtin
         latest_versions=pulumi.get(__response__, 'latest_versions'),
         name=pulumi.get(__response__, 'name'),
         permission_level=pulumi.get(__response__, 'permission_level'),
+        provider_config=pulumi.get(__response__, 'provider_config'),
         tags=pulumi.get(__response__, 'tags'),
         user_id=pulumi.get(__response__, 'user_id')))

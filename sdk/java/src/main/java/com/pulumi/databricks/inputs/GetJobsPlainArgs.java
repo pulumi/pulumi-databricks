@@ -4,6 +4,7 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetJobsProviderConfig;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -60,12 +61,28 @@ public final class GetJobsPlainArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.key);
     }
 
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable GetJobsProviderConfig providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Optional<GetJobsProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     private GetJobsPlainArgs() {}
 
     private GetJobsPlainArgs(GetJobsPlainArgs $) {
         this.ids = $.ids;
         this.jobNameContains = $.jobNameContains;
         this.key = $.key;
+        this.providerConfig = $.providerConfig;
     }
 
     public static Builder builder() {
@@ -116,6 +133,17 @@ public final class GetJobsPlainArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder key(@Nullable String key) {
             $.key = key;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable GetJobsProviderConfig providerConfig) {
+            $.providerConfig = providerConfig;
             return this;
         }
 

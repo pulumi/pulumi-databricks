@@ -14,7 +14,6 @@ else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
-from ._inputs import *
 
 __all__ = [
     'GetTagPolicyResult',
@@ -28,7 +27,10 @@ class GetTagPolicyResult:
     """
     A collection of values returned by getTagPolicy.
     """
-    def __init__(__self__, description=None, id=None, tag_key=None, values=None, workspace_id=None):
+    def __init__(__self__, create_time=None, description=None, id=None, tag_key=None, update_time=None, values=None):
+        if create_time and not isinstance(create_time, str):
+            raise TypeError("Expected argument 'create_time' to be a str")
+        pulumi.set(__self__, "create_time", create_time)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -38,16 +40,24 @@ class GetTagPolicyResult:
         if tag_key and not isinstance(tag_key, str):
             raise TypeError("Expected argument 'tag_key' to be a str")
         pulumi.set(__self__, "tag_key", tag_key)
+        if update_time and not isinstance(update_time, str):
+            raise TypeError("Expected argument 'update_time' to be a str")
+        pulumi.set(__self__, "update_time", update_time)
         if values and not isinstance(values, list):
             raise TypeError("Expected argument 'values' to be a list")
         pulumi.set(__self__, "values", values)
-        if workspace_id and not isinstance(workspace_id, str):
-            raise TypeError("Expected argument 'workspace_id' to be a str")
-        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> _builtins.str:
+        """
+        (string) - Timestamp when the tag policy was created
+        """
+        return pulumi.get(self, "create_time")
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[_builtins.str]:
+    def description(self) -> _builtins.str:
         """
         (string)
         """
@@ -70,17 +80,20 @@ class GetTagPolicyResult:
         return pulumi.get(self, "tag_key")
 
     @_builtins.property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> _builtins.str:
+        """
+        (string) - Timestamp when the tag policy was last updated
+        """
+        return pulumi.get(self, "update_time")
+
+    @_builtins.property
     @pulumi.getter
-    def values(self) -> Optional[Sequence['outputs.GetTagPolicyValueResult']]:
+    def values(self) -> Sequence['outputs.GetTagPolicyValueResult']:
         """
         (list of Value)
         """
         return pulumi.get(self, "values")
-
-    @_builtins.property
-    @pulumi.getter(name="workspaceId")
-    def workspace_id(self) -> Optional[_builtins.str]:
-        return pulumi.get(self, "workspace_id")
 
 
 class AwaitableGetTagPolicyResult(GetTagPolicyResult):
@@ -89,67 +102,74 @@ class AwaitableGetTagPolicyResult(GetTagPolicyResult):
         if False:
             yield self
         return GetTagPolicyResult(
+            create_time=self.create_time,
             description=self.description,
             id=self.id,
             tag_key=self.tag_key,
-            values=self.values,
-            workspace_id=self.workspace_id)
+            update_time=self.update_time,
+            values=self.values)
 
 
-def get_tag_policy(description: Optional[_builtins.str] = None,
-                   tag_key: Optional[_builtins.str] = None,
-                   values: Optional[Sequence[Union['GetTagPolicyValueArgs', 'GetTagPolicyValueArgsDict']]] = None,
-                   workspace_id: Optional[_builtins.str] = None,
+def get_tag_policy(tag_key: Optional[_builtins.str] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTagPolicyResult:
     """
+    [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
     This data source can be used to get a single tag policy by its tag key.
 
-    > **Note** This resource can only be used with an account-level provider!
+    > **Note** This resource can only be used with a workspace-level provider!
 
+    ## Example Usage
 
-    :param _builtins.str description: (string)
-    :param Sequence[Union['GetTagPolicyValueArgs', 'GetTagPolicyValueArgsDict']] values: (list of Value)
-    :param _builtins.str workspace_id: Workspace ID of the resource
+    Referring to a tag policy by its tag key:
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    example_tag_policy = databricks.get_tag_policy(tag_key="example_tag_key")
+    ```
     """
     __args__ = dict()
-    __args__['description'] = description
     __args__['tagKey'] = tag_key
-    __args__['values'] = values
-    __args__['workspaceId'] = workspace_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getTagPolicy:getTagPolicy', __args__, opts=opts, typ=GetTagPolicyResult).value
 
     return AwaitableGetTagPolicyResult(
+        create_time=pulumi.get(__ret__, 'create_time'),
         description=pulumi.get(__ret__, 'description'),
         id=pulumi.get(__ret__, 'id'),
         tag_key=pulumi.get(__ret__, 'tag_key'),
-        values=pulumi.get(__ret__, 'values'),
-        workspace_id=pulumi.get(__ret__, 'workspace_id'))
-def get_tag_policy_output(description: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                          tag_key: Optional[pulumi.Input[_builtins.str]] = None,
-                          values: Optional[pulumi.Input[Optional[Sequence[Union['GetTagPolicyValueArgs', 'GetTagPolicyValueArgsDict']]]]] = None,
-                          workspace_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+        update_time=pulumi.get(__ret__, 'update_time'),
+        values=pulumi.get(__ret__, 'values'))
+def get_tag_policy_output(tag_key: Optional[pulumi.Input[_builtins.str]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTagPolicyResult]:
     """
+    [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
     This data source can be used to get a single tag policy by its tag key.
 
-    > **Note** This resource can only be used with an account-level provider!
+    > **Note** This resource can only be used with a workspace-level provider!
 
+    ## Example Usage
 
-    :param _builtins.str description: (string)
-    :param Sequence[Union['GetTagPolicyValueArgs', 'GetTagPolicyValueArgsDict']] values: (list of Value)
-    :param _builtins.str workspace_id: Workspace ID of the resource
+    Referring to a tag policy by its tag key:
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    example_tag_policy = databricks.get_tag_policy(tag_key="example_tag_key")
+    ```
     """
     __args__ = dict()
-    __args__['description'] = description
     __args__['tagKey'] = tag_key
-    __args__['values'] = values
-    __args__['workspaceId'] = workspace_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getTagPolicy:getTagPolicy', __args__, opts=opts, typ=GetTagPolicyResult)
     return __ret__.apply(lambda __response__: GetTagPolicyResult(
+        create_time=pulumi.get(__response__, 'create_time'),
         description=pulumi.get(__response__, 'description'),
         id=pulumi.get(__response__, 'id'),
         tag_key=pulumi.get(__response__, 'tag_key'),
-        values=pulumi.get(__response__, 'values'),
-        workspace_id=pulumi.get(__response__, 'workspace_id')))
+        update_time=pulumi.get(__response__, 'update_time'),
+        values=pulumi.get(__response__, 'values')))

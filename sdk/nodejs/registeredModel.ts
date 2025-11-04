@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -85,14 +87,20 @@ export class RegisteredModel extends pulumi.CustomResource {
         return obj['__pulumiType'] === RegisteredModel.__pulumiType;
     }
 
+    declare public readonly aliases: pulumi.Output<outputs.RegisteredModelAlias[] | undefined>;
+    declare public readonly browseOnly: pulumi.Output<boolean | undefined>;
     /**
      * The name of the catalog where the schema and the registered model reside. *Change of this parameter forces recreation of the resource.*
      */
-    declare public readonly catalogName: pulumi.Output<string>;
+    declare public readonly catalogName: pulumi.Output<string | undefined>;
     /**
      * The comment attached to the registered model.
      */
     declare public readonly comment: pulumi.Output<string | undefined>;
+    declare public readonly createdAt: pulumi.Output<number>;
+    declare public readonly createdBy: pulumi.Output<string>;
+    declare public readonly fullName: pulumi.Output<string>;
+    declare public readonly metastoreId: pulumi.Output<string>;
     /**
      * The name of the registered model.  *Change of this parameter forces recreation of the resource.*
      */
@@ -104,11 +112,13 @@ export class RegisteredModel extends pulumi.CustomResource {
     /**
      * The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*
      */
-    declare public readonly schemaName: pulumi.Output<string>;
+    declare public readonly schemaName: pulumi.Output<string | undefined>;
     /**
      * The storage location under which model version data files are stored. *Change of this parameter forces recreation of the resource.*
      */
     declare public readonly storageLocation: pulumi.Output<string>;
+    declare public readonly updatedAt: pulumi.Output<number>;
+    declare public readonly updatedBy: pulumi.Output<string>;
 
     /**
      * Create a RegisteredModel resource with the given unique name, arguments, and options.
@@ -117,32 +127,42 @@ export class RegisteredModel extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: RegisteredModelArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: RegisteredModelArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RegisteredModelArgs | RegisteredModelState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RegisteredModelState | undefined;
+            resourceInputs["aliases"] = state?.aliases;
+            resourceInputs["browseOnly"] = state?.browseOnly;
             resourceInputs["catalogName"] = state?.catalogName;
             resourceInputs["comment"] = state?.comment;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["createdBy"] = state?.createdBy;
+            resourceInputs["fullName"] = state?.fullName;
+            resourceInputs["metastoreId"] = state?.metastoreId;
             resourceInputs["name"] = state?.name;
             resourceInputs["owner"] = state?.owner;
             resourceInputs["schemaName"] = state?.schemaName;
             resourceInputs["storageLocation"] = state?.storageLocation;
+            resourceInputs["updatedAt"] = state?.updatedAt;
+            resourceInputs["updatedBy"] = state?.updatedBy;
         } else {
             const args = argsOrState as RegisteredModelArgs | undefined;
-            if (args?.catalogName === undefined && !opts.urn) {
-                throw new Error("Missing required property 'catalogName'");
-            }
-            if (args?.schemaName === undefined && !opts.urn) {
-                throw new Error("Missing required property 'schemaName'");
-            }
+            resourceInputs["aliases"] = args?.aliases;
+            resourceInputs["browseOnly"] = args?.browseOnly;
             resourceInputs["catalogName"] = args?.catalogName;
             resourceInputs["comment"] = args?.comment;
+            resourceInputs["createdAt"] = args?.createdAt;
+            resourceInputs["createdBy"] = args?.createdBy;
+            resourceInputs["fullName"] = args?.fullName;
+            resourceInputs["metastoreId"] = args?.metastoreId;
             resourceInputs["name"] = args?.name;
             resourceInputs["owner"] = args?.owner;
             resourceInputs["schemaName"] = args?.schemaName;
             resourceInputs["storageLocation"] = args?.storageLocation;
+            resourceInputs["updatedAt"] = args?.updatedAt;
+            resourceInputs["updatedBy"] = args?.updatedBy;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(RegisteredModel.__pulumiType, name, resourceInputs, opts);
@@ -153,6 +173,8 @@ export class RegisteredModel extends pulumi.CustomResource {
  * Input properties used for looking up and filtering RegisteredModel resources.
  */
 export interface RegisteredModelState {
+    aliases?: pulumi.Input<pulumi.Input<inputs.RegisteredModelAlias>[]>;
+    browseOnly?: pulumi.Input<boolean>;
     /**
      * The name of the catalog where the schema and the registered model reside. *Change of this parameter forces recreation of the resource.*
      */
@@ -161,6 +183,10 @@ export interface RegisteredModelState {
      * The comment attached to the registered model.
      */
     comment?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<number>;
+    createdBy?: pulumi.Input<string>;
+    fullName?: pulumi.Input<string>;
+    metastoreId?: pulumi.Input<string>;
     /**
      * The name of the registered model.  *Change of this parameter forces recreation of the resource.*
      */
@@ -177,20 +203,28 @@ export interface RegisteredModelState {
      * The storage location under which model version data files are stored. *Change of this parameter forces recreation of the resource.*
      */
     storageLocation?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<number>;
+    updatedBy?: pulumi.Input<string>;
 }
 
 /**
  * The set of arguments for constructing a RegisteredModel resource.
  */
 export interface RegisteredModelArgs {
+    aliases?: pulumi.Input<pulumi.Input<inputs.RegisteredModelAlias>[]>;
+    browseOnly?: pulumi.Input<boolean>;
     /**
      * The name of the catalog where the schema and the registered model reside. *Change of this parameter forces recreation of the resource.*
      */
-    catalogName: pulumi.Input<string>;
+    catalogName?: pulumi.Input<string>;
     /**
      * The comment attached to the registered model.
      */
     comment?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<number>;
+    createdBy?: pulumi.Input<string>;
+    fullName?: pulumi.Input<string>;
+    metastoreId?: pulumi.Input<string>;
     /**
      * The name of the registered model.  *Change of this parameter forces recreation of the resource.*
      */
@@ -202,9 +236,11 @@ export interface RegisteredModelArgs {
     /**
      * The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*
      */
-    schemaName: pulumi.Input<string>;
+    schemaName?: pulumi.Input<string>;
     /**
      * The storage location under which model version data files are stored. *Change of this parameter forces recreation of the resource.*
      */
     storageLocation?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<number>;
+    updatedBy?: pulumi.Input<string>;
 }

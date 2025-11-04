@@ -4,13 +4,13 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ */
 export function getOnlineStore(args: GetOnlineStoreArgs, opts?: pulumi.InvokeOptions): Promise<GetOnlineStoreResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getOnlineStore:getOnlineStore", {
-        "capacity": args.capacity,
         "name": args.name,
-        "readReplicaCount": args.readReplicaCount,
-        "workspaceId": args.workspaceId,
     }, opts);
 }
 
@@ -19,21 +19,9 @@ export function getOnlineStore(args: GetOnlineStoreArgs, opts?: pulumi.InvokeOpt
  */
 export interface GetOnlineStoreArgs {
     /**
-     * (string) - The capacity of the online store. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
-     */
-    capacity: string;
-    /**
      * The name of the online store. This is the unique identifier for the online store
      */
     name: string;
-    /**
-     * (integer) - The number of read replicas for the online store. Defaults to 0
-     */
-    readReplicaCount?: number;
-    /**
-     * Workspace ID of the resource
-     */
-    workspaceId?: string;
 }
 
 /**
@@ -63,20 +51,19 @@ export interface GetOnlineStoreResult {
     /**
      * (integer) - The number of read replicas for the online store. Defaults to 0
      */
-    readonly readReplicaCount?: number;
+    readonly readReplicaCount: number;
     /**
      * (string) - The current state of the online store. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
      */
     readonly state: string;
-    readonly workspaceId?: string;
 }
+/**
+ * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ */
 export function getOnlineStoreOutput(args: GetOnlineStoreOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetOnlineStoreResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getOnlineStore:getOnlineStore", {
-        "capacity": args.capacity,
         "name": args.name,
-        "readReplicaCount": args.readReplicaCount,
-        "workspaceId": args.workspaceId,
     }, opts);
 }
 
@@ -85,19 +72,7 @@ export function getOnlineStoreOutput(args: GetOnlineStoreOutputArgs, opts?: pulu
  */
 export interface GetOnlineStoreOutputArgs {
     /**
-     * (string) - The capacity of the online store. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
-     */
-    capacity: pulumi.Input<string>;
-    /**
      * The name of the online store. This is the unique identifier for the online store
      */
     name: pulumi.Input<string>;
-    /**
-     * (integer) - The number of read replicas for the online store. Defaults to 0
-     */
-    readReplicaCount?: pulumi.Input<number>;
-    /**
-     * Workspace ID of the resource
-     */
-    workspaceId?: pulumi.Input<string>;
 }

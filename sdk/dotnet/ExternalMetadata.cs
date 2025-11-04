@@ -10,6 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
+    /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    /// 
     /// To enrich lineage with workloads that are run outside of Databricks (for example, first mile ETL or last mile BI),
     /// Unity Catalog is introducing the external metadata object. UC lets you add external metadata objects to augment the data lineage it captures automatically, giving you an end-to-end lineage view in UC.
     /// This is useful when you want to capture where data came from (for example, Salesforce or MySQL) before it was ingested into UC or where data is being consumed outside UC (for example, Tableau or PowerBI).
@@ -69,7 +71,7 @@ namespace Pulumi.Databricks
     /// If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
     /// 
     /// ```sh
-    /// $ pulumi import databricks:index/externalMetadata:ExternalMetadata databricks_external_metadata "name"
+    /// $ pulumi import databricks:index/externalMetadata:ExternalMetadata this "name"
     /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/externalMetadata:ExternalMetadata")]
@@ -130,7 +132,7 @@ namespace Pulumi.Databricks
         public Output<ImmutableDictionary<string, string>?> Properties { get; private set; } = null!;
 
         /// <summary>
-        /// Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `TABLEAU`, `TERADATA`, `WORKDAY`
+        /// Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `STREAM_NATIVE`, `TABLEAU`, `TERADATA`, `WORKDAY`
         /// </summary>
         [Output("systemType")]
         public Output<string> SystemType { get; private set; } = null!;
@@ -152,12 +154,6 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("url")]
         public Output<string?> Url { get; private set; } = null!;
-
-        /// <summary>
-        /// Workspace ID of the resource
-        /// </summary>
-        [Output("workspaceId")]
-        public Output<string?> WorkspaceId { get; private set; } = null!;
 
 
         /// <summary>
@@ -254,7 +250,7 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
-        /// Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `TABLEAU`, `TERADATA`, `WORKDAY`
+        /// Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `STREAM_NATIVE`, `TABLEAU`, `TERADATA`, `WORKDAY`
         /// </summary>
         [Input("systemType", required: true)]
         public Input<string> SystemType { get; set; } = null!;
@@ -264,12 +260,6 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }
-
-        /// <summary>
-        /// Workspace ID of the resource
-        /// </summary>
-        [Input("workspaceId")]
-        public Input<string>? WorkspaceId { get; set; }
 
         public ExternalMetadataArgs()
         {
@@ -346,7 +336,7 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
-        /// Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `TABLEAU`, `TERADATA`, `WORKDAY`
+        /// Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `STREAM_NATIVE`, `TABLEAU`, `TERADATA`, `WORKDAY`
         /// </summary>
         [Input("systemType")]
         public Input<string>? SystemType { get; set; }
@@ -368,12 +358,6 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }
-
-        /// <summary>
-        /// Workspace ID of the resource
-        /// </summary>
-        [Input("workspaceId")]
-        public Input<string>? WorkspaceId { get; set; }
 
         public ExternalMetadataState()
         {

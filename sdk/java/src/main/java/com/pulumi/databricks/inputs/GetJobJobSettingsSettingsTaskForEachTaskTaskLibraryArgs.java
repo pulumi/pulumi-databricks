@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryMavenArgs;
+import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryProviderConfigArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryPypiArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -58,6 +59,13 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryArgs exten
         return Optional.ofNullable(this.maven);
     }
 
+    @Import(name="providerConfig")
+    private @Nullable Output<GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryProviderConfigArgs> providerConfig;
+
+    public Optional<Output<GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
     @Import(name="pypi")
     private @Nullable Output<GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryPypiArgs> pypi;
 
@@ -86,6 +94,7 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryArgs exten
         this.egg = $.egg;
         this.jar = $.jar;
         this.maven = $.maven;
+        this.providerConfig = $.providerConfig;
         this.pypi = $.pypi;
         this.requirements = $.requirements;
         this.whl = $.whl;
@@ -159,6 +168,15 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryArgs exten
 
         public Builder maven(GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryMavenArgs maven) {
             return maven(Output.of(maven));
+        }
+
+        public Builder providerConfig(@Nullable Output<GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        public Builder providerConfig(GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         public Builder pypi(@Nullable Output<GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryPypiArgs> pypi) {

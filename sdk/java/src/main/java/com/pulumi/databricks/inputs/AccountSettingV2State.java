@@ -9,12 +9,10 @@ import com.pulumi.databricks.inputs.AccountSettingV2AibiDashboardEmbeddingAccess
 import com.pulumi.databricks.inputs.AccountSettingV2AibiDashboardEmbeddingApprovedDomainsArgs;
 import com.pulumi.databricks.inputs.AccountSettingV2AutomaticClusterUpdateWorkspaceArgs;
 import com.pulumi.databricks.inputs.AccountSettingV2BooleanValArgs;
-import com.pulumi.databricks.inputs.AccountSettingV2DefaultDataSecurityModeArgs;
 import com.pulumi.databricks.inputs.AccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgs;
 import com.pulumi.databricks.inputs.AccountSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgs;
 import com.pulumi.databricks.inputs.AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgs;
 import com.pulumi.databricks.inputs.AccountSettingV2EffectiveBooleanValArgs;
-import com.pulumi.databricks.inputs.AccountSettingV2EffectiveDefaultDataSecurityModeArgs;
 import com.pulumi.databricks.inputs.AccountSettingV2EffectiveIntegerValArgs;
 import com.pulumi.databricks.inputs.AccountSettingV2EffectivePersonalComputeArgs;
 import com.pulumi.databricks.inputs.AccountSettingV2EffectiveRestrictWorkspaceAdminsArgs;
@@ -47,17 +45,9 @@ public final class AccountSettingV2State extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.aibiDashboardEmbeddingApprovedDomains);
     }
 
-    /**
-     * todo: Mark these Public after onboarded to DSL
-     * 
-     */
     @Import(name="automaticClusterUpdateWorkspace")
     private @Nullable Output<AccountSettingV2AutomaticClusterUpdateWorkspaceArgs> automaticClusterUpdateWorkspace;
 
-    /**
-     * @return todo: Mark these Public after onboarded to DSL
-     * 
-     */
     public Optional<Output<AccountSettingV2AutomaticClusterUpdateWorkspaceArgs>> automaticClusterUpdateWorkspace() {
         return Optional.ofNullable(this.automaticClusterUpdateWorkspace);
     }
@@ -67,13 +57,6 @@ public final class AccountSettingV2State extends com.pulumi.resources.ResourceAr
 
     public Optional<Output<AccountSettingV2BooleanValArgs>> booleanVal() {
         return Optional.ofNullable(this.booleanVal);
-    }
-
-    @Import(name="defaultDataSecurityMode")
-    private @Nullable Output<AccountSettingV2DefaultDataSecurityModeArgs> defaultDataSecurityMode;
-
-    public Optional<Output<AccountSettingV2DefaultDataSecurityModeArgs>> defaultDataSecurityMode() {
-        return Optional.ofNullable(this.defaultDataSecurityMode);
     }
 
     @Import(name="effectiveAibiDashboardEmbeddingAccessPolicy")
@@ -110,13 +93,6 @@ public final class AccountSettingV2State extends com.pulumi.resources.ResourceAr
      */
     public Optional<Output<AccountSettingV2EffectiveBooleanValArgs>> effectiveBooleanVal() {
         return Optional.ofNullable(this.effectiveBooleanVal);
-    }
-
-    @Import(name="effectiveDefaultDataSecurityMode")
-    private @Nullable Output<AccountSettingV2EffectiveDefaultDataSecurityModeArgs> effectiveDefaultDataSecurityMode;
-
-    public Optional<Output<AccountSettingV2EffectiveDefaultDataSecurityModeArgs>> effectiveDefaultDataSecurityMode() {
-        return Optional.ofNullable(this.effectiveDefaultDataSecurityMode);
     }
 
     /**
@@ -213,12 +189,10 @@ public final class AccountSettingV2State extends com.pulumi.resources.ResourceAr
         this.aibiDashboardEmbeddingApprovedDomains = $.aibiDashboardEmbeddingApprovedDomains;
         this.automaticClusterUpdateWorkspace = $.automaticClusterUpdateWorkspace;
         this.booleanVal = $.booleanVal;
-        this.defaultDataSecurityMode = $.defaultDataSecurityMode;
         this.effectiveAibiDashboardEmbeddingAccessPolicy = $.effectiveAibiDashboardEmbeddingAccessPolicy;
         this.effectiveAibiDashboardEmbeddingApprovedDomains = $.effectiveAibiDashboardEmbeddingApprovedDomains;
         this.effectiveAutomaticClusterUpdateWorkspace = $.effectiveAutomaticClusterUpdateWorkspace;
         this.effectiveBooleanVal = $.effectiveBooleanVal;
-        this.effectiveDefaultDataSecurityMode = $.effectiveDefaultDataSecurityMode;
         this.effectiveIntegerVal = $.effectiveIntegerVal;
         this.effectivePersonalCompute = $.effectivePersonalCompute;
         this.effectiveRestrictWorkspaceAdmins = $.effectiveRestrictWorkspaceAdmins;
@@ -266,23 +240,11 @@ public final class AccountSettingV2State extends com.pulumi.resources.ResourceAr
             return aibiDashboardEmbeddingApprovedDomains(Output.of(aibiDashboardEmbeddingApprovedDomains));
         }
 
-        /**
-         * @param automaticClusterUpdateWorkspace todo: Mark these Public after onboarded to DSL
-         * 
-         * @return builder
-         * 
-         */
         public Builder automaticClusterUpdateWorkspace(@Nullable Output<AccountSettingV2AutomaticClusterUpdateWorkspaceArgs> automaticClusterUpdateWorkspace) {
             $.automaticClusterUpdateWorkspace = automaticClusterUpdateWorkspace;
             return this;
         }
 
-        /**
-         * @param automaticClusterUpdateWorkspace todo: Mark these Public after onboarded to DSL
-         * 
-         * @return builder
-         * 
-         */
         public Builder automaticClusterUpdateWorkspace(AccountSettingV2AutomaticClusterUpdateWorkspaceArgs automaticClusterUpdateWorkspace) {
             return automaticClusterUpdateWorkspace(Output.of(automaticClusterUpdateWorkspace));
         }
@@ -294,15 +256,6 @@ public final class AccountSettingV2State extends com.pulumi.resources.ResourceAr
 
         public Builder booleanVal(AccountSettingV2BooleanValArgs booleanVal) {
             return booleanVal(Output.of(booleanVal));
-        }
-
-        public Builder defaultDataSecurityMode(@Nullable Output<AccountSettingV2DefaultDataSecurityModeArgs> defaultDataSecurityMode) {
-            $.defaultDataSecurityMode = defaultDataSecurityMode;
-            return this;
-        }
-
-        public Builder defaultDataSecurityMode(AccountSettingV2DefaultDataSecurityModeArgs defaultDataSecurityMode) {
-            return defaultDataSecurityMode(Output.of(defaultDataSecurityMode));
         }
 
         public Builder effectiveAibiDashboardEmbeddingAccessPolicy(@Nullable Output<AccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgs> effectiveAibiDashboardEmbeddingAccessPolicy) {
@@ -351,15 +304,6 @@ public final class AccountSettingV2State extends com.pulumi.resources.ResourceAr
          */
         public Builder effectiveBooleanVal(AccountSettingV2EffectiveBooleanValArgs effectiveBooleanVal) {
             return effectiveBooleanVal(Output.of(effectiveBooleanVal));
-        }
-
-        public Builder effectiveDefaultDataSecurityMode(@Nullable Output<AccountSettingV2EffectiveDefaultDataSecurityModeArgs> effectiveDefaultDataSecurityMode) {
-            $.effectiveDefaultDataSecurityMode = effectiveDefaultDataSecurityMode;
-            return this;
-        }
-
-        public Builder effectiveDefaultDataSecurityMode(AccountSettingV2EffectiveDefaultDataSecurityModeArgs effectiveDefaultDataSecurityMode) {
-            return effectiveDefaultDataSecurityMode(Output.of(effectiveDefaultDataSecurityMode));
         }
 
         /**

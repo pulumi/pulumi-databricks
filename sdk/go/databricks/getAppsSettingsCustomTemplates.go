@@ -11,6 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+//
 // This data source can be used to fetch the list of Custom Templates within the workspace.
 // The list can then be accessed via the data object's `templates` field.
 //
@@ -52,16 +54,16 @@ func GetAppsSettingsCustomTemplates(ctx *pulumi.Context, args *GetAppsSettingsCu
 
 // A collection of arguments for invoking getAppsSettingsCustomTemplates.
 type GetAppsSettingsCustomTemplatesArgs struct {
-	// Workspace ID of the resource
-	WorkspaceId *string `pulumi:"workspaceId"`
+	// Upper bound for items returned
+	PageSize *int `pulumi:"pageSize"`
 }
 
 // A collection of values returned by getAppsSettingsCustomTemplates.
 type GetAppsSettingsCustomTemplatesResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id          string                                   `pulumi:"id"`
-	Templates   []GetAppsSettingsCustomTemplatesTemplate `pulumi:"templates"`
-	WorkspaceId *string                                  `pulumi:"workspaceId"`
+	Id        string                                   `pulumi:"id"`
+	PageSize  *int                                     `pulumi:"pageSize"`
+	Templates []GetAppsSettingsCustomTemplatesTemplate `pulumi:"templates"`
 }
 
 func GetAppsSettingsCustomTemplatesOutput(ctx *pulumi.Context, args GetAppsSettingsCustomTemplatesOutputArgs, opts ...pulumi.InvokeOption) GetAppsSettingsCustomTemplatesResultOutput {
@@ -75,8 +77,8 @@ func GetAppsSettingsCustomTemplatesOutput(ctx *pulumi.Context, args GetAppsSetti
 
 // A collection of arguments for invoking getAppsSettingsCustomTemplates.
 type GetAppsSettingsCustomTemplatesOutputArgs struct {
-	// Workspace ID of the resource
-	WorkspaceId pulumi.StringPtrInput `pulumi:"workspaceId"`
+	// Upper bound for items returned
+	PageSize pulumi.IntPtrInput `pulumi:"pageSize"`
 }
 
 func (GetAppsSettingsCustomTemplatesOutputArgs) ElementType() reflect.Type {
@@ -103,14 +105,14 @@ func (o GetAppsSettingsCustomTemplatesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppsSettingsCustomTemplatesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+func (o GetAppsSettingsCustomTemplatesResultOutput) PageSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetAppsSettingsCustomTemplatesResult) *int { return v.PageSize }).(pulumi.IntPtrOutput)
+}
+
 func (o GetAppsSettingsCustomTemplatesResultOutput) Templates() GetAppsSettingsCustomTemplatesTemplateArrayOutput {
 	return o.ApplyT(func(v GetAppsSettingsCustomTemplatesResult) []GetAppsSettingsCustomTemplatesTemplate {
 		return v.Templates
 	}).(GetAppsSettingsCustomTemplatesTemplateArrayOutput)
-}
-
-func (o GetAppsSettingsCustomTemplatesResultOutput) WorkspaceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetAppsSettingsCustomTemplatesResult) *string { return v.WorkspaceId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

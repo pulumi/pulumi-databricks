@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class AccountSettingV2RestrictWorkspaceAdmins {
+    /**
+     * @return Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
+     * 
+     */
     private String status;
 
     private AccountSettingV2RestrictWorkspaceAdmins() {}
+    /**
+     * @return Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
+     * 
+     */
     public String status() {
         return this.status;
     }

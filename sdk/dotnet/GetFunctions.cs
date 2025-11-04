@@ -156,6 +156,9 @@ namespace Pulumi.Databricks
         [Input("includeBrowse")]
         public bool? IncludeBrowse { get; set; }
 
+        [Input("providerConfig")]
+        public Inputs.GetFunctionsProviderConfigArgs? ProviderConfig { get; set; }
+
         /// <summary>
         /// Name of databricks_schema.
         /// </summary>
@@ -194,6 +197,9 @@ namespace Pulumi.Databricks
         [Input("includeBrowse")]
         public Input<bool>? IncludeBrowse { get; set; }
 
+        [Input("providerConfig")]
+        public Input<Inputs.GetFunctionsProviderConfigInputArgs>? ProviderConfig { get; set; }
+
         /// <summary>
         /// Name of databricks_schema.
         /// </summary>
@@ -223,6 +229,7 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string Id;
         public readonly bool? IncludeBrowse;
+        public readonly Outputs.GetFunctionsProviderConfigResult? ProviderConfig;
         /// <summary>
         /// Name of parent schema relative to its parent catalog.
         /// </summary>
@@ -238,12 +245,15 @@ namespace Pulumi.Databricks
 
             bool? includeBrowse,
 
+            Outputs.GetFunctionsProviderConfigResult? providerConfig,
+
             string schemaName)
         {
             CatalogName = catalogName;
             Functions = functions;
             Id = id;
             IncludeBrowse = includeBrowse;
+            ProviderConfig = providerConfig;
             SchemaName = schemaName;
         }
     }

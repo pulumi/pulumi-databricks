@@ -27,7 +27,7 @@ class GetEntityTagAssignmentsResult:
     """
     A collection of values returned by getEntityTagAssignments.
     """
-    def __init__(__self__, entity_name=None, entity_type=None, id=None, tag_assignments=None, workspace_id=None):
+    def __init__(__self__, entity_name=None, entity_type=None, id=None, max_results=None, tag_assignments=None):
         if entity_name and not isinstance(entity_name, str):
             raise TypeError("Expected argument 'entity_name' to be a str")
         pulumi.set(__self__, "entity_name", entity_name)
@@ -37,12 +37,12 @@ class GetEntityTagAssignmentsResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if max_results and not isinstance(max_results, int):
+            raise TypeError("Expected argument 'max_results' to be a int")
+        pulumi.set(__self__, "max_results", max_results)
         if tag_assignments and not isinstance(tag_assignments, list):
             raise TypeError("Expected argument 'tag_assignments' to be a list")
         pulumi.set(__self__, "tag_assignments", tag_assignments)
-        if workspace_id and not isinstance(workspace_id, str):
-            raise TypeError("Expected argument 'workspace_id' to be a str")
-        pulumi.set(__self__, "workspace_id", workspace_id)
 
     @_builtins.property
     @pulumi.getter(name="entityName")
@@ -69,14 +69,14 @@ class GetEntityTagAssignmentsResult:
         return pulumi.get(self, "id")
 
     @_builtins.property
+    @pulumi.getter(name="maxResults")
+    def max_results(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "max_results")
+
+    @_builtins.property
     @pulumi.getter(name="tagAssignments")
     def tag_assignments(self) -> Sequence['outputs.GetEntityTagAssignmentsTagAssignmentResult']:
         return pulumi.get(self, "tag_assignments")
-
-    @_builtins.property
-    @pulumi.getter(name="workspaceId")
-    def workspace_id(self) -> Optional[_builtins.str]:
-        return pulumi.get(self, "workspace_id")
 
 
 class AwaitableGetEntityTagAssignmentsResult(GetEntityTagAssignmentsResult):
@@ -88,25 +88,48 @@ class AwaitableGetEntityTagAssignmentsResult(GetEntityTagAssignmentsResult):
             entity_name=self.entity_name,
             entity_type=self.entity_type,
             id=self.id,
-            tag_assignments=self.tag_assignments,
-            workspace_id=self.workspace_id)
+            max_results=self.max_results,
+            tag_assignments=self.tag_assignments)
 
 
 def get_entity_tag_assignments(entity_name: Optional[_builtins.str] = None,
                                entity_type: Optional[_builtins.str] = None,
-                               workspace_id: Optional[_builtins.str] = None,
+                               max_results: Optional[_builtins.int] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetEntityTagAssignmentsResult:
     """
-    Use this data source to access information about an existing resource.
+    [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+    This data source allows you to retrieve tag assignments that have been applied to a particular entity in Unity Catalog.
+
+    ## Example Usage
+
+    ### Get all tag assignments for a catalog
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    catalog_tags = databricks.get_entity_tag_assignments(entity_type="catalogs",
+        entity_name="production_catalog")
+    schema_tags = databricks.get_entity_tag_assignments(entity_type="schemas",
+        entity_name="production_catalog.sales_data")
+    table_tags = databricks.get_entity_tag_assignments(entity_type="tables",
+        entity_name="production_catalog.sales_data.customer_orders")
+    column_tags = databricks.get_entity_tag_assignments(entity_type="columns",
+        entity_name="production_catalog.customer_data.users.email_address")
+    volume_tags = databricks.get_entity_tag_assignments(entity_type="volumes",
+        entity_name="production_catalog.raw_data.landing_zone")
+    ```
+
 
     :param _builtins.str entity_name: The fully qualified name of the entity to which the tag is assigned
     :param _builtins.str entity_type: The type of the entity to which the tag is assigned. Allowed values are: catalogs, schemas, tables, columns, volumes
-    :param _builtins.str workspace_id: Workspace ID of the resource
+    :param _builtins.int max_results: Optional. Maximum number of tag assignments to return in a single page
     """
     __args__ = dict()
     __args__['entityName'] = entity_name
     __args__['entityType'] = entity_type
-    __args__['workspaceId'] = workspace_id
+    __args__['maxResults'] = max_results
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getEntityTagAssignments:getEntityTagAssignments', __args__, opts=opts, typ=GetEntityTagAssignmentsResult).value
 
@@ -114,28 +137,51 @@ def get_entity_tag_assignments(entity_name: Optional[_builtins.str] = None,
         entity_name=pulumi.get(__ret__, 'entity_name'),
         entity_type=pulumi.get(__ret__, 'entity_type'),
         id=pulumi.get(__ret__, 'id'),
-        tag_assignments=pulumi.get(__ret__, 'tag_assignments'),
-        workspace_id=pulumi.get(__ret__, 'workspace_id'))
+        max_results=pulumi.get(__ret__, 'max_results'),
+        tag_assignments=pulumi.get(__ret__, 'tag_assignments'))
 def get_entity_tag_assignments_output(entity_name: Optional[pulumi.Input[_builtins.str]] = None,
                                       entity_type: Optional[pulumi.Input[_builtins.str]] = None,
-                                      workspace_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                                      max_results: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEntityTagAssignmentsResult]:
     """
-    Use this data source to access information about an existing resource.
+    [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+    This data source allows you to retrieve tag assignments that have been applied to a particular entity in Unity Catalog.
+
+    ## Example Usage
+
+    ### Get all tag assignments for a catalog
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    catalog_tags = databricks.get_entity_tag_assignments(entity_type="catalogs",
+        entity_name="production_catalog")
+    schema_tags = databricks.get_entity_tag_assignments(entity_type="schemas",
+        entity_name="production_catalog.sales_data")
+    table_tags = databricks.get_entity_tag_assignments(entity_type="tables",
+        entity_name="production_catalog.sales_data.customer_orders")
+    column_tags = databricks.get_entity_tag_assignments(entity_type="columns",
+        entity_name="production_catalog.customer_data.users.email_address")
+    volume_tags = databricks.get_entity_tag_assignments(entity_type="volumes",
+        entity_name="production_catalog.raw_data.landing_zone")
+    ```
+
 
     :param _builtins.str entity_name: The fully qualified name of the entity to which the tag is assigned
     :param _builtins.str entity_type: The type of the entity to which the tag is assigned. Allowed values are: catalogs, schemas, tables, columns, volumes
-    :param _builtins.str workspace_id: Workspace ID of the resource
+    :param _builtins.int max_results: Optional. Maximum number of tag assignments to return in a single page
     """
     __args__ = dict()
     __args__['entityName'] = entity_name
     __args__['entityType'] = entity_type
-    __args__['workspaceId'] = workspace_id
+    __args__['maxResults'] = max_results
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getEntityTagAssignments:getEntityTagAssignments', __args__, opts=opts, typ=GetEntityTagAssignmentsResult)
     return __ret__.apply(lambda __response__: GetEntityTagAssignmentsResult(
         entity_name=pulumi.get(__response__, 'entity_name'),
         entity_type=pulumi.get(__response__, 'entity_type'),
         id=pulumi.get(__response__, 'id'),
-        tag_assignments=pulumi.get(__response__, 'tag_assignments'),
-        workspace_id=pulumi.get(__response__, 'workspace_id')))
+        max_results=pulumi.get(__response__, 'max_results'),
+        tag_assignments=pulumi.get(__response__, 'tag_assignments')))

@@ -9,8 +9,6 @@ import com.pulumi.databricks.outputs.GetDatabaseSyncedDatabaseTablesSyncedTableS
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDatabaseSyncedDatabaseTablesSyncedTable {
@@ -52,7 +50,7 @@ public final class GetDatabaseSyncedDatabaseTablesSyncedTable {
      * @return (SyncedTableSpec)
      * 
      */
-    private @Nullable GetDatabaseSyncedDatabaseTablesSyncedTableSpec spec;
+    private GetDatabaseSyncedDatabaseTablesSyncedTableSpec spec;
     /**
      * @return (string) - The provisioning state of the synced table entity in Unity Catalog. This is distinct from the
      * state of the data synchronization pipeline (i.e. the table may be in &#34;ACTIVE&#34; but the pipeline
@@ -112,8 +110,8 @@ public final class GetDatabaseSyncedDatabaseTablesSyncedTable {
      * @return (SyncedTableSpec)
      * 
      */
-    public Optional<GetDatabaseSyncedDatabaseTablesSyncedTableSpec> spec() {
-        return Optional.ofNullable(this.spec);
+    public GetDatabaseSyncedDatabaseTablesSyncedTableSpec spec() {
+        return this.spec;
     }
     /**
      * @return (string) - The provisioning state of the synced table entity in Unity Catalog. This is distinct from the
@@ -140,7 +138,7 @@ public final class GetDatabaseSyncedDatabaseTablesSyncedTable {
         private String effectiveLogicalDatabaseName;
         private String logicalDatabaseName;
         private String name;
-        private @Nullable GetDatabaseSyncedDatabaseTablesSyncedTableSpec spec;
+        private GetDatabaseSyncedDatabaseTablesSyncedTableSpec spec;
         private String unityCatalogProvisioningState;
         public Builder() {}
         public Builder(GetDatabaseSyncedDatabaseTablesSyncedTable defaults) {
@@ -204,8 +202,10 @@ public final class GetDatabaseSyncedDatabaseTablesSyncedTable {
             return this;
         }
         @CustomType.Setter
-        public Builder spec(@Nullable GetDatabaseSyncedDatabaseTablesSyncedTableSpec spec) {
-
+        public Builder spec(GetDatabaseSyncedDatabaseTablesSyncedTableSpec spec) {
+            if (spec == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseSyncedDatabaseTablesSyncedTable", "spec");
+            }
             this.spec = spec;
             return this;
         }

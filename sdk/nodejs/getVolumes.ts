@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -41,6 +43,7 @@ export function getVolumes(args: GetVolumesArgs, opts?: pulumi.InvokeOptions): P
     return pulumi.runtime.invoke("databricks:index/getVolumes:getVolumes", {
         "catalogName": args.catalogName,
         "ids": args.ids,
+        "providerConfig": args.providerConfig,
         "schemaName": args.schemaName,
     }, opts);
 }
@@ -57,6 +60,10 @@ export interface GetVolumesArgs {
      * a list of databricks.Volume full names: *`catalog`.`schema`.`volume`*
      */
     ids?: string[];
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: inputs.GetVolumesProviderConfig;
     /**
      * Name of databricks_schema
      */
@@ -76,6 +83,7 @@ export interface GetVolumesResult {
      * a list of databricks.Volume full names: *`catalog`.`schema`.`volume`*
      */
     readonly ids: string[];
+    readonly providerConfig?: outputs.GetVolumesProviderConfig;
     readonly schemaName: string;
 }
 /**
@@ -115,6 +123,7 @@ export function getVolumesOutput(args: GetVolumesOutputArgs, opts?: pulumi.Invok
     return pulumi.runtime.invokeOutput("databricks:index/getVolumes:getVolumes", {
         "catalogName": args.catalogName,
         "ids": args.ids,
+        "providerConfig": args.providerConfig,
         "schemaName": args.schemaName,
     }, opts);
 }
@@ -131,6 +140,10 @@ export interface GetVolumesOutputArgs {
      * a list of databricks.Volume full names: *`catalog`.`schema`.`volume`*
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.GetVolumesProviderConfigArgs>;
     /**
      * Name of databricks_schema
      */

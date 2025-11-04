@@ -78,16 +78,12 @@ public final class MwsWorkspacesState extends com.pulumi.resources.ResourceArgs 
     /**
      * The compute mode for the workspace. When unset, a classic workspace is created, and both `credentialsId` and `storageConfigurationId` must be specified. When set to `SERVERLESS`, the resulting workspace is a serverless workspace, and `credentialsId` and `storageConfigurationId` must not be set. The only allowed value for this is `SERVERLESS`. Changing this field requires recreation of the workspace.
      * 
-     * &gt; Databricks strongly recommends using OAuth instead of PATs for user account client authentication and authorization due to the improved security
-     * 
      */
     @Import(name="computeMode")
     private @Nullable Output<String> computeMode;
 
     /**
      * @return The compute mode for the workspace. When unset, a classic workspace is created, and both `credentialsId` and `storageConfigurationId` must be specified. When set to `SERVERLESS`, the resulting workspace is a serverless workspace, and `credentialsId` and `storageConfigurationId` must not be set. The only allowed value for this is `SERVERLESS`. Changing this field requires recreation of the workspace.
-     * 
-     * &gt; Databricks strongly recommends using OAuth instead of PATs for user account client authentication and authorization due to the improved security
      * 
      */
     public Optional<Output<String>> computeMode() {
@@ -188,6 +184,25 @@ public final class MwsWorkspacesState extends com.pulumi.resources.ResourceArgs 
         return Optional.ofNullable(this.effectiveComputeMode);
     }
 
+    /**
+     * The expected status of the workspace. When unset, it defaults to `RUNNING`. When set to `PROVISIONING`, workspace provisioning will pause and not enter `RUNNING` status. The only allowed values for this is `RUNNING` and `PROVISIONING`.
+     * 
+     * &gt; Databricks strongly recommends using OAuth instead of PATs for user account client authentication and authorization due to the improved security
+     * 
+     */
+    @Import(name="expectedWorkspaceStatus")
+    private @Nullable Output<String> expectedWorkspaceStatus;
+
+    /**
+     * @return The expected status of the workspace. When unset, it defaults to `RUNNING`. When set to `PROVISIONING`, workspace provisioning will pause and not enter `RUNNING` status. The only allowed values for this is `RUNNING` and `PROVISIONING`.
+     * 
+     * &gt; Databricks strongly recommends using OAuth instead of PATs for user account client authentication and authorization due to the improved security
+     * 
+     */
+    public Optional<Output<String>> expectedWorkspaceStatus() {
+        return Optional.ofNullable(this.expectedWorkspaceStatus);
+    }
+
     @Import(name="externalCustomerInfo")
     private @Nullable Output<MwsWorkspacesExternalCustomerInfoArgs> externalCustomerInfo;
 
@@ -219,19 +234,19 @@ public final class MwsWorkspacesState extends com.pulumi.resources.ResourceArgs 
 
     /**
      * @deprecated
-     * gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.90.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.96.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      * 
      */
-    @Deprecated /* gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.90.0/docs/guides/gcp-workspace#creating-a-databricks-workspace */
+    @Deprecated /* gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.96.0/docs/guides/gcp-workspace#creating-a-databricks-workspace */
     @Import(name="gkeConfig")
     private @Nullable Output<MwsWorkspacesGkeConfigArgs> gkeConfig;
 
     /**
      * @deprecated
-     * gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.90.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.96.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      * 
      */
-    @Deprecated /* gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.90.0/docs/guides/gcp-workspace#creating-a-databricks-workspace */
+    @Deprecated /* gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.96.0/docs/guides/gcp-workspace#creating-a-databricks-workspace */
     public Optional<Output<MwsWorkspacesGkeConfigArgs>> gkeConfig() {
         return Optional.ofNullable(this.gkeConfig);
     }
@@ -444,6 +459,7 @@ public final class MwsWorkspacesState extends com.pulumi.resources.ResourceArgs 
         this.customerManagedKeyId = $.customerManagedKeyId;
         this.deploymentName = $.deploymentName;
         this.effectiveComputeMode = $.effectiveComputeMode;
+        this.expectedWorkspaceStatus = $.expectedWorkspaceStatus;
         this.externalCustomerInfo = $.externalCustomerInfo;
         this.gcpManagedNetworkConfig = $.gcpManagedNetworkConfig;
         this.gcpWorkspaceSa = $.gcpWorkspaceSa;
@@ -557,8 +573,6 @@ public final class MwsWorkspacesState extends com.pulumi.resources.ResourceArgs 
         /**
          * @param computeMode The compute mode for the workspace. When unset, a classic workspace is created, and both `credentialsId` and `storageConfigurationId` must be specified. When set to `SERVERLESS`, the resulting workspace is a serverless workspace, and `credentialsId` and `storageConfigurationId` must not be set. The only allowed value for this is `SERVERLESS`. Changing this field requires recreation of the workspace.
          * 
-         * &gt; Databricks strongly recommends using OAuth instead of PATs for user account client authentication and authorization due to the improved security
-         * 
          * @return builder
          * 
          */
@@ -569,8 +583,6 @@ public final class MwsWorkspacesState extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param computeMode The compute mode for the workspace. When unset, a classic workspace is created, and both `credentialsId` and `storageConfigurationId` must be specified. When set to `SERVERLESS`, the resulting workspace is a serverless workspace, and `credentialsId` and `storageConfigurationId` must not be set. The only allowed value for this is `SERVERLESS`. Changing this field requires recreation of the workspace.
-         * 
-         * &gt; Databricks strongly recommends using OAuth instead of PATs for user account client authentication and authorization due to the improved security
          * 
          * @return builder
          * 
@@ -709,6 +721,31 @@ public final class MwsWorkspacesState extends com.pulumi.resources.ResourceArgs 
             return effectiveComputeMode(Output.of(effectiveComputeMode));
         }
 
+        /**
+         * @param expectedWorkspaceStatus The expected status of the workspace. When unset, it defaults to `RUNNING`. When set to `PROVISIONING`, workspace provisioning will pause and not enter `RUNNING` status. The only allowed values for this is `RUNNING` and `PROVISIONING`.
+         * 
+         * &gt; Databricks strongly recommends using OAuth instead of PATs for user account client authentication and authorization due to the improved security
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expectedWorkspaceStatus(@Nullable Output<String> expectedWorkspaceStatus) {
+            $.expectedWorkspaceStatus = expectedWorkspaceStatus;
+            return this;
+        }
+
+        /**
+         * @param expectedWorkspaceStatus The expected status of the workspace. When unset, it defaults to `RUNNING`. When set to `PROVISIONING`, workspace provisioning will pause and not enter `RUNNING` status. The only allowed values for this is `RUNNING` and `PROVISIONING`.
+         * 
+         * &gt; Databricks strongly recommends using OAuth instead of PATs for user account client authentication and authorization due to the improved security
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expectedWorkspaceStatus(String expectedWorkspaceStatus) {
+            return expectedWorkspaceStatus(Output.of(expectedWorkspaceStatus));
+        }
+
         public Builder externalCustomerInfo(@Nullable Output<MwsWorkspacesExternalCustomerInfoArgs> externalCustomerInfo) {
             $.externalCustomerInfo = externalCustomerInfo;
             return this;
@@ -752,10 +789,10 @@ public final class MwsWorkspacesState extends com.pulumi.resources.ResourceArgs 
          * @return builder
          * 
          * @deprecated
-         * gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.90.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+         * gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.96.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
          * 
          */
-        @Deprecated /* gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.90.0/docs/guides/gcp-workspace#creating-a-databricks-workspace */
+        @Deprecated /* gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.96.0/docs/guides/gcp-workspace#creating-a-databricks-workspace */
         public Builder gkeConfig(@Nullable Output<MwsWorkspacesGkeConfigArgs> gkeConfig) {
             $.gkeConfig = gkeConfig;
             return this;
@@ -765,10 +802,10 @@ public final class MwsWorkspacesState extends com.pulumi.resources.ResourceArgs 
          * @return builder
          * 
          * @deprecated
-         * gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.90.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+         * gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.96.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
          * 
          */
-        @Deprecated /* gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.90.0/docs/guides/gcp-workspace#creating-a-databricks-workspace */
+        @Deprecated /* gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.96.0/docs/guides/gcp-workspace#creating-a-databricks-workspace */
         public Builder gkeConfig(MwsWorkspacesGkeConfigArgs gkeConfig) {
             return gkeConfig(Output.of(gkeConfig));
         }

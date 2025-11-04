@@ -4,6 +4,7 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetNotificationDestinationsProviderConfig;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -27,6 +28,13 @@ public final class GetNotificationDestinationsPlainArgs extends com.pulumi.resou
      */
     public Optional<String> displayNameContains() {
         return Optional.ofNullable(this.displayNameContains);
+    }
+
+    @Import(name="providerConfig")
+    private @Nullable GetNotificationDestinationsProviderConfig providerConfig;
+
+    public Optional<GetNotificationDestinationsProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
     }
 
     /**
@@ -58,6 +66,7 @@ public final class GetNotificationDestinationsPlainArgs extends com.pulumi.resou
 
     private GetNotificationDestinationsPlainArgs(GetNotificationDestinationsPlainArgs $) {
         this.displayNameContains = $.displayNameContains;
+        this.providerConfig = $.providerConfig;
         this.type = $.type;
     }
 
@@ -87,6 +96,11 @@ public final class GetNotificationDestinationsPlainArgs extends com.pulumi.resou
          */
         public Builder displayNameContains(@Nullable String displayNameContains) {
             $.displayNameContains = displayNameContains;
+            return this;
+        }
+
+        public Builder providerConfig(@Nullable GetNotificationDestinationsProviderConfig providerConfig) {
+            $.providerConfig = providerConfig;
             return this;
         }
 

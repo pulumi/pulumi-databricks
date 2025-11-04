@@ -11,6 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
 func GetDatabaseSyncedDatabaseTables(ctx *pulumi.Context, args *GetDatabaseSyncedDatabaseTablesArgs, opts ...pulumi.InvokeOption) (*GetDatabaseSyncedDatabaseTablesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDatabaseSyncedDatabaseTablesResult
@@ -23,16 +24,19 @@ func GetDatabaseSyncedDatabaseTables(ctx *pulumi.Context, args *GetDatabaseSynce
 
 // A collection of arguments for invoking getDatabaseSyncedDatabaseTables.
 type GetDatabaseSyncedDatabaseTablesArgs struct {
-	// Workspace ID of the resource
-	WorkspaceId *string `pulumi:"workspaceId"`
+	// Name of the instance to get synced tables for
+	InstanceName string `pulumi:"instanceName"`
+	// Upper bound for items returned
+	PageSize *int `pulumi:"pageSize"`
 }
 
 // A collection of values returned by getDatabaseSyncedDatabaseTables.
 type GetDatabaseSyncedDatabaseTablesResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id           string                                       `pulumi:"id"`
+	InstanceName string                                       `pulumi:"instanceName"`
+	PageSize     *int                                         `pulumi:"pageSize"`
 	SyncedTables []GetDatabaseSyncedDatabaseTablesSyncedTable `pulumi:"syncedTables"`
-	WorkspaceId  *string                                      `pulumi:"workspaceId"`
 }
 
 func GetDatabaseSyncedDatabaseTablesOutput(ctx *pulumi.Context, args GetDatabaseSyncedDatabaseTablesOutputArgs, opts ...pulumi.InvokeOption) GetDatabaseSyncedDatabaseTablesResultOutput {
@@ -46,8 +50,10 @@ func GetDatabaseSyncedDatabaseTablesOutput(ctx *pulumi.Context, args GetDatabase
 
 // A collection of arguments for invoking getDatabaseSyncedDatabaseTables.
 type GetDatabaseSyncedDatabaseTablesOutputArgs struct {
-	// Workspace ID of the resource
-	WorkspaceId pulumi.StringPtrInput `pulumi:"workspaceId"`
+	// Name of the instance to get synced tables for
+	InstanceName pulumi.StringInput `pulumi:"instanceName"`
+	// Upper bound for items returned
+	PageSize pulumi.IntPtrInput `pulumi:"pageSize"`
 }
 
 func (GetDatabaseSyncedDatabaseTablesOutputArgs) ElementType() reflect.Type {
@@ -74,14 +80,18 @@ func (o GetDatabaseSyncedDatabaseTablesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseSyncedDatabaseTablesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+func (o GetDatabaseSyncedDatabaseTablesResultOutput) InstanceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseSyncedDatabaseTablesResult) string { return v.InstanceName }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseSyncedDatabaseTablesResultOutput) PageSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetDatabaseSyncedDatabaseTablesResult) *int { return v.PageSize }).(pulumi.IntPtrOutput)
+}
+
 func (o GetDatabaseSyncedDatabaseTablesResultOutput) SyncedTables() GetDatabaseSyncedDatabaseTablesSyncedTableArrayOutput {
 	return o.ApplyT(func(v GetDatabaseSyncedDatabaseTablesResult) []GetDatabaseSyncedDatabaseTablesSyncedTable {
 		return v.SyncedTables
 	}).(GetDatabaseSyncedDatabaseTablesSyncedTableArrayOutput)
-}
-
-func (o GetDatabaseSyncedDatabaseTablesResultOutput) WorkspaceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetDatabaseSyncedDatabaseTablesResult) *string { return v.WorkspaceId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

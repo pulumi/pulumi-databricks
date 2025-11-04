@@ -6,6 +6,7 @@ package com.pulumi.databricks.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetEntityTagAssignmentsTagAssignment;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -29,8 +30,8 @@ public final class GetEntityTagAssignmentsResult {
      * 
      */
     private String id;
+    private @Nullable Integer maxResults;
     private List<GetEntityTagAssignmentsTagAssignment> tagAssignments;
-    private @Nullable String workspaceId;
 
     private GetEntityTagAssignmentsResult() {}
     /**
@@ -54,11 +55,11 @@ public final class GetEntityTagAssignmentsResult {
     public String id() {
         return this.id;
     }
+    public Optional<Integer> maxResults() {
+        return Optional.ofNullable(this.maxResults);
+    }
     public List<GetEntityTagAssignmentsTagAssignment> tagAssignments() {
         return this.tagAssignments;
-    }
-    public Optional<String> workspaceId() {
-        return Optional.ofNullable(this.workspaceId);
     }
 
     public static Builder builder() {
@@ -73,16 +74,16 @@ public final class GetEntityTagAssignmentsResult {
         private String entityName;
         private String entityType;
         private String id;
+        private @Nullable Integer maxResults;
         private List<GetEntityTagAssignmentsTagAssignment> tagAssignments;
-        private @Nullable String workspaceId;
         public Builder() {}
         public Builder(GetEntityTagAssignmentsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.entityName = defaults.entityName;
     	      this.entityType = defaults.entityType;
     	      this.id = defaults.id;
+    	      this.maxResults = defaults.maxResults;
     	      this.tagAssignments = defaults.tagAssignments;
-    	      this.workspaceId = defaults.workspaceId;
         }
 
         @CustomType.Setter
@@ -110,6 +111,12 @@ public final class GetEntityTagAssignmentsResult {
             return this;
         }
         @CustomType.Setter
+        public Builder maxResults(@Nullable Integer maxResults) {
+
+            this.maxResults = maxResults;
+            return this;
+        }
+        @CustomType.Setter
         public Builder tagAssignments(List<GetEntityTagAssignmentsTagAssignment> tagAssignments) {
             if (tagAssignments == null) {
               throw new MissingRequiredPropertyException("GetEntityTagAssignmentsResult", "tagAssignments");
@@ -120,19 +127,13 @@ public final class GetEntityTagAssignmentsResult {
         public Builder tagAssignments(GetEntityTagAssignmentsTagAssignment... tagAssignments) {
             return tagAssignments(List.of(tagAssignments));
         }
-        @CustomType.Setter
-        public Builder workspaceId(@Nullable String workspaceId) {
-
-            this.workspaceId = workspaceId;
-            return this;
-        }
         public GetEntityTagAssignmentsResult build() {
             final var _resultValue = new GetEntityTagAssignmentsResult();
             _resultValue.entityName = entityName;
             _resultValue.entityType = entityType;
             _resultValue.id = id;
+            _resultValue.maxResults = maxResults;
             _resultValue.tagAssignments = tagAssignments;
-            _resultValue.workspaceId = workspaceId;
             return _resultValue;
         }
     }

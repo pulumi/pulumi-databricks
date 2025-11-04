@@ -28,7 +28,7 @@ class GetClustersResult:
     """
     A collection of values returned by getClusters.
     """
-    def __init__(__self__, cluster_name_contains=None, filter_by=None, id=None, ids=None):
+    def __init__(__self__, cluster_name_contains=None, filter_by=None, id=None, ids=None, provider_config=None):
         if cluster_name_contains and not isinstance(cluster_name_contains, str):
             raise TypeError("Expected argument 'cluster_name_contains' to be a str")
         pulumi.set(__self__, "cluster_name_contains", cluster_name_contains)
@@ -41,6 +41,9 @@ class GetClustersResult:
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
         pulumi.set(__self__, "ids", ids)
+        if provider_config and not isinstance(provider_config, dict):
+            raise TypeError("Expected argument 'provider_config' to be a dict")
+        pulumi.set(__self__, "provider_config", provider_config)
 
     @_builtins.property
     @pulumi.getter(name="clusterNameContains")
@@ -65,6 +68,11 @@ class GetClustersResult:
         """
         return pulumi.get(self, "ids")
 
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional['outputs.GetClustersProviderConfigResult']:
+        return pulumi.get(self, "provider_config")
+
 
 class AwaitableGetClustersResult(GetClustersResult):
     # pylint: disable=using-constant-test
@@ -75,13 +83,15 @@ class AwaitableGetClustersResult(GetClustersResult):
             cluster_name_contains=self.cluster_name_contains,
             filter_by=self.filter_by,
             id=self.id,
-            ids=self.ids)
+            ids=self.ids,
+            provider_config=self.provider_config)
 
 
 def get_clusters(cluster_name_contains: Optional[_builtins.str] = None,
                  filter_by: Optional[Union['GetClustersFilterByArgs', 'GetClustersFilterByArgsDict']] = None,
                  id: Optional[_builtins.str] = None,
                  ids: Optional[Sequence[_builtins.str]] = None,
+                 provider_config: Optional[Union['GetClustersProviderConfigArgs', 'GetClustersProviderConfigArgsDict']] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetClustersResult:
     """
     Retrieves a list of Cluster ids, that were created by Pulumi or manually, with or without databricks_cluster_policy.
@@ -146,12 +156,14 @@ def get_clusters(cluster_name_contains: Optional[_builtins.str] = None,
     :param _builtins.str cluster_name_contains: Only return Cluster ids that match the given name string.
     :param Union['GetClustersFilterByArgs', 'GetClustersFilterByArgsDict'] filter_by: Filters to apply to the listed clusters. See filter_by Configuration Block below for details.
     :param Sequence[_builtins.str] ids: list of Cluster ids
+    :param Union['GetClustersProviderConfigArgs', 'GetClustersProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     """
     __args__ = dict()
     __args__['clusterNameContains'] = cluster_name_contains
     __args__['filterBy'] = filter_by
     __args__['id'] = id
     __args__['ids'] = ids
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getClusters:getClusters', __args__, opts=opts, typ=GetClustersResult).value
 
@@ -159,11 +171,13 @@ def get_clusters(cluster_name_contains: Optional[_builtins.str] = None,
         cluster_name_contains=pulumi.get(__ret__, 'cluster_name_contains'),
         filter_by=pulumi.get(__ret__, 'filter_by'),
         id=pulumi.get(__ret__, 'id'),
-        ids=pulumi.get(__ret__, 'ids'))
+        ids=pulumi.get(__ret__, 'ids'),
+        provider_config=pulumi.get(__ret__, 'provider_config'))
 def get_clusters_output(cluster_name_contains: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                         filter_by: Optional[pulumi.Input[Optional[Union['GetClustersFilterByArgs', 'GetClustersFilterByArgsDict']]]] = None,
                         id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                         ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
+                        provider_config: Optional[pulumi.Input[Optional[Union['GetClustersProviderConfigArgs', 'GetClustersProviderConfigArgsDict']]]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetClustersResult]:
     """
     Retrieves a list of Cluster ids, that were created by Pulumi or manually, with or without databricks_cluster_policy.
@@ -228,16 +242,19 @@ def get_clusters_output(cluster_name_contains: Optional[pulumi.Input[Optional[_b
     :param _builtins.str cluster_name_contains: Only return Cluster ids that match the given name string.
     :param Union['GetClustersFilterByArgs', 'GetClustersFilterByArgsDict'] filter_by: Filters to apply to the listed clusters. See filter_by Configuration Block below for details.
     :param Sequence[_builtins.str] ids: list of Cluster ids
+    :param Union['GetClustersProviderConfigArgs', 'GetClustersProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     """
     __args__ = dict()
     __args__['clusterNameContains'] = cluster_name_contains
     __args__['filterBy'] = filter_by
     __args__['id'] = id
     __args__['ids'] = ids
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getClusters:getClusters', __args__, opts=opts, typ=GetClustersResult)
     return __ret__.apply(lambda __response__: GetClustersResult(
         cluster_name_contains=pulumi.get(__response__, 'cluster_name_contains'),
         filter_by=pulumi.get(__response__, 'filter_by'),
         id=pulumi.get(__response__, 'id'),
-        ids=pulumi.get(__response__, 'ids')))
+        ids=pulumi.get(__response__, 'ids'),
+        provider_config=pulumi.get(__response__, 'provider_config')))

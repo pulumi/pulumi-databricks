@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -26,6 +28,7 @@ export function getDirectory(args: GetDirectoryArgs, opts?: pulumi.InvokeOptions
         "id": args.id,
         "objectId": args.objectId,
         "path": args.path,
+        "providerConfig": args.providerConfig,
         "workspacePath": args.workspacePath,
     }, opts);
 }
@@ -44,6 +47,10 @@ export interface GetDirectoryArgs {
      */
     path: string;
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: inputs.GetDirectoryProviderConfig;
+    /**
      * path on Workspace File System (WSFS) in form of `/Workspace` + `path`
      */
     workspacePath?: string;
@@ -59,6 +66,7 @@ export interface GetDirectoryResult {
      */
     readonly objectId: number;
     readonly path: string;
+    readonly providerConfig?: outputs.GetDirectoryProviderConfig;
     /**
      * path on Workspace File System (WSFS) in form of `/Workspace` + `path`
      */
@@ -86,6 +94,7 @@ export function getDirectoryOutput(args: GetDirectoryOutputArgs, opts?: pulumi.I
         "id": args.id,
         "objectId": args.objectId,
         "path": args.path,
+        "providerConfig": args.providerConfig,
         "workspacePath": args.workspacePath,
     }, opts);
 }
@@ -103,6 +112,10 @@ export interface GetDirectoryOutputArgs {
      * Path to a directory in the workspace
      */
     path: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.GetDirectoryProviderConfigArgs>;
     /**
      * path on Workspace File System (WSFS) in form of `/Workspace` + `path`
      */

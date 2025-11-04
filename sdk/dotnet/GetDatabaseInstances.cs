@@ -12,6 +12,8 @@ namespace Pulumi.Databricks
     public static class GetDatabaseInstances
     {
         /// <summary>
+        /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
         /// This data source can be used to fetch the list of Database Instances within the workspace.
         /// The list can then be accessed via the data object's `DatabaseInstances` field.
         /// 
@@ -41,6 +43,8 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDatabaseInstancesResult>("databricks:index/getDatabaseInstances:getDatabaseInstances", args ?? new GetDatabaseInstancesArgs(), options.WithDefaults());
 
         /// <summary>
+        /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
         /// This data source can be used to fetch the list of Database Instances within the workspace.
         /// The list can then be accessed via the data object's `DatabaseInstances` field.
         /// 
@@ -70,6 +74,8 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.Invoke<GetDatabaseInstancesResult>("databricks:index/getDatabaseInstances:getDatabaseInstances", args ?? new GetDatabaseInstancesInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
         /// This data source can be used to fetch the list of Database Instances within the workspace.
         /// The list can then be accessed via the data object's `DatabaseInstances` field.
         /// 
@@ -103,10 +109,10 @@ namespace Pulumi.Databricks
     public sealed class GetDatabaseInstancesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Workspace ID of the resource
+        /// Upper bound for items returned
         /// </summary>
-        [Input("workspaceId")]
-        public string? WorkspaceId { get; set; }
+        [Input("pageSize")]
+        public int? PageSize { get; set; }
 
         public GetDatabaseInstancesArgs()
         {
@@ -117,10 +123,10 @@ namespace Pulumi.Databricks
     public sealed class GetDatabaseInstancesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Workspace ID of the resource
+        /// Upper bound for items returned
         /// </summary>
-        [Input("workspaceId")]
-        public Input<string>? WorkspaceId { get; set; }
+        [Input("pageSize")]
+        public Input<int>? PageSize { get; set; }
 
         public GetDatabaseInstancesInvokeArgs()
         {
@@ -137,7 +143,7 @@ namespace Pulumi.Databricks
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        public readonly string? WorkspaceId;
+        public readonly int? PageSize;
 
         [OutputConstructor]
         private GetDatabaseInstancesResult(
@@ -145,11 +151,11 @@ namespace Pulumi.Databricks
 
             string id,
 
-            string? workspaceId)
+            int? pageSize)
         {
             DatabaseInstances = databaseInstances;
             Id = id;
-            WorkspaceId = workspaceId;
+            PageSize = pageSize;
         }
     }
 }

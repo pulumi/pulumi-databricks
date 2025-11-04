@@ -4,6 +4,7 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetDirectoryProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
@@ -54,6 +55,21 @@ public final class GetDirectoryPlainArgs extends com.pulumi.resources.InvokeArgs
     }
 
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable GetDirectoryProviderConfig providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Optional<GetDirectoryProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
+    /**
      * path on Workspace File System (WSFS) in form of `/Workspace` + `path`
      * 
      */
@@ -74,6 +90,7 @@ public final class GetDirectoryPlainArgs extends com.pulumi.resources.InvokeArgs
         this.id = $.id;
         this.objectId = $.objectId;
         this.path = $.path;
+        this.providerConfig = $.providerConfig;
         this.workspacePath = $.workspacePath;
     }
 
@@ -119,6 +136,17 @@ public final class GetDirectoryPlainArgs extends com.pulumi.resources.InvokeArgs
          */
         public Builder path(String path) {
             $.path = path;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable GetDirectoryProviderConfig providerConfig) {
+            $.providerConfig = providerConfig;
             return this;
         }
 

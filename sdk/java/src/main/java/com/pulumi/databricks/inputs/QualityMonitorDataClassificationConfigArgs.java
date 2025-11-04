@@ -15,9 +15,17 @@ public final class QualityMonitorDataClassificationConfigArgs extends com.pulumi
 
     public static final QualityMonitorDataClassificationConfigArgs Empty = new QualityMonitorDataClassificationConfigArgs();
 
+    /**
+     * Whether to enable data classification
+     * 
+     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
+    /**
+     * @return Whether to enable data classification
+     * 
+     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
@@ -46,11 +54,23 @@ public final class QualityMonitorDataClassificationConfigArgs extends com.pulumi
             $ = new QualityMonitorDataClassificationConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param enabled Whether to enable data classification
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled Whether to enable data classification
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }

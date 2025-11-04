@@ -250,6 +250,12 @@ namespace Pulumi.Databricks
         public bool? Photon { get; set; }
 
         /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Inputs.GetSparkVersionProviderConfigArgs? ProviderConfig { get; set; }
+
+        /// <summary>
         /// if we should limit the search only to runtimes that are based on specific Scala version. Default to `2.12`.
         /// </summary>
         [Input("scala")]
@@ -324,6 +330,12 @@ namespace Pulumi.Databricks
         public Input<bool>? Photon { get; set; }
 
         /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.GetSparkVersionProviderConfigInputArgs>? ProviderConfig { get; set; }
+
+        /// <summary>
         /// if we should limit the search only to runtimes that are based on specific Scala version. Default to `2.12`.
         /// </summary>
         [Input("scala")]
@@ -357,6 +369,7 @@ namespace Pulumi.Databricks
         public readonly bool? LongTermSupport;
         public readonly bool? Ml;
         public readonly bool? Photon;
+        public readonly Outputs.GetSparkVersionProviderConfigResult? ProviderConfig;
         public readonly string? Scala;
         public readonly string? SparkVersion;
 
@@ -380,6 +393,8 @@ namespace Pulumi.Databricks
 
             bool? photon,
 
+            Outputs.GetSparkVersionProviderConfigResult? providerConfig,
+
             string? scala,
 
             string? sparkVersion)
@@ -393,6 +408,7 @@ namespace Pulumi.Databricks
             LongTermSupport = longTermSupport;
             Ml = ml;
             Photon = photon;
+            ProviderConfig = providerConfig;
             Scala = scala;
             SparkVersion = sparkVersion;
         }

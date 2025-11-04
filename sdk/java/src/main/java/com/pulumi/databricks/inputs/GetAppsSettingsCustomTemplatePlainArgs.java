@@ -4,77 +4,14 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
-import com.pulumi.databricks.inputs.GetAppsSettingsCustomTemplateManifest;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GetAppsSettingsCustomTemplatePlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetAppsSettingsCustomTemplatePlainArgs Empty = new GetAppsSettingsCustomTemplatePlainArgs();
-
-    /**
-     * (string) - Description of the App Resource
-     * 
-     */
-    @Import(name="description")
-    private @Nullable String description;
-
-    /**
-     * @return (string) - Description of the App Resource
-     * 
-     */
-    public Optional<String> description() {
-        return Optional.ofNullable(this.description);
-    }
-
-    /**
-     * (string) - The Git provider of the template
-     * 
-     */
-    @Import(name="gitProvider", required=true)
-    private String gitProvider;
-
-    /**
-     * @return (string) - The Git provider of the template
-     * 
-     */
-    public String gitProvider() {
-        return this.gitProvider;
-    }
-
-    /**
-     * (string) - The Git repository URL that the template resides in
-     * 
-     */
-    @Import(name="gitRepo", required=true)
-    private String gitRepo;
-
-    /**
-     * @return (string) - The Git repository URL that the template resides in
-     * 
-     */
-    public String gitRepo() {
-        return this.gitRepo;
-    }
-
-    /**
-     * (AppManifest) - The manifest of the template. It defines fields and default values when installing the template
-     * 
-     */
-    @Import(name="manifest", required=true)
-    private GetAppsSettingsCustomTemplateManifest manifest;
-
-    /**
-     * @return (AppManifest) - The manifest of the template. It defines fields and default values when installing the template
-     * 
-     */
-    public GetAppsSettingsCustomTemplateManifest manifest() {
-        return this.manifest;
-    }
 
     /**
      * The name of the template. It must contain only alphanumeric characters, hyphens, underscores, and whitespaces.
@@ -93,46 +30,10 @@ public final class GetAppsSettingsCustomTemplatePlainArgs extends com.pulumi.res
         return this.name;
     }
 
-    /**
-     * (string) - The path to the template within the Git repository
-     * 
-     */
-    @Import(name="path", required=true)
-    private String path;
-
-    /**
-     * @return (string) - The path to the template within the Git repository
-     * 
-     */
-    public String path() {
-        return this.path;
-    }
-
-    /**
-     * Workspace ID of the resource
-     * 
-     */
-    @Import(name="workspaceId")
-    private @Nullable String workspaceId;
-
-    /**
-     * @return Workspace ID of the resource
-     * 
-     */
-    public Optional<String> workspaceId() {
-        return Optional.ofNullable(this.workspaceId);
-    }
-
     private GetAppsSettingsCustomTemplatePlainArgs() {}
 
     private GetAppsSettingsCustomTemplatePlainArgs(GetAppsSettingsCustomTemplatePlainArgs $) {
-        this.description = $.description;
-        this.gitProvider = $.gitProvider;
-        this.gitRepo = $.gitRepo;
-        this.manifest = $.manifest;
         this.name = $.name;
-        this.path = $.path;
-        this.workspaceId = $.workspaceId;
     }
 
     public static Builder builder() {
@@ -154,50 +55,6 @@ public final class GetAppsSettingsCustomTemplatePlainArgs extends com.pulumi.res
         }
 
         /**
-         * @param description (string) - Description of the App Resource
-         * 
-         * @return builder
-         * 
-         */
-        public Builder description(@Nullable String description) {
-            $.description = description;
-            return this;
-        }
-
-        /**
-         * @param gitProvider (string) - The Git provider of the template
-         * 
-         * @return builder
-         * 
-         */
-        public Builder gitProvider(String gitProvider) {
-            $.gitProvider = gitProvider;
-            return this;
-        }
-
-        /**
-         * @param gitRepo (string) - The Git repository URL that the template resides in
-         * 
-         * @return builder
-         * 
-         */
-        public Builder gitRepo(String gitRepo) {
-            $.gitRepo = gitRepo;
-            return this;
-        }
-
-        /**
-         * @param manifest (AppManifest) - The manifest of the template. It defines fields and default values when installing the template
-         * 
-         * @return builder
-         * 
-         */
-        public Builder manifest(GetAppsSettingsCustomTemplateManifest manifest) {
-            $.manifest = manifest;
-            return this;
-        }
-
-        /**
          * @param name The name of the template. It must contain only alphanumeric characters, hyphens, underscores, and whitespaces.
          * It must be unique within the workspace
          * 
@@ -209,43 +66,9 @@ public final class GetAppsSettingsCustomTemplatePlainArgs extends com.pulumi.res
             return this;
         }
 
-        /**
-         * @param path (string) - The path to the template within the Git repository
-         * 
-         * @return builder
-         * 
-         */
-        public Builder path(String path) {
-            $.path = path;
-            return this;
-        }
-
-        /**
-         * @param workspaceId Workspace ID of the resource
-         * 
-         * @return builder
-         * 
-         */
-        public Builder workspaceId(@Nullable String workspaceId) {
-            $.workspaceId = workspaceId;
-            return this;
-        }
-
         public GetAppsSettingsCustomTemplatePlainArgs build() {
-            if ($.gitProvider == null) {
-                throw new MissingRequiredPropertyException("GetAppsSettingsCustomTemplatePlainArgs", "gitProvider");
-            }
-            if ($.gitRepo == null) {
-                throw new MissingRequiredPropertyException("GetAppsSettingsCustomTemplatePlainArgs", "gitRepo");
-            }
-            if ($.manifest == null) {
-                throw new MissingRequiredPropertyException("GetAppsSettingsCustomTemplatePlainArgs", "manifest");
-            }
             if ($.name == null) {
                 throw new MissingRequiredPropertyException("GetAppsSettingsCustomTemplatePlainArgs", "name");
-            }
-            if ($.path == null) {
-                throw new MissingRequiredPropertyException("GetAppsSettingsCustomTemplatePlainArgs", "path");
             }
             return $;
         }

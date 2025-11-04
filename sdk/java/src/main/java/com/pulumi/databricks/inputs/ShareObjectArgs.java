@@ -86,6 +86,41 @@ public final class ShareObjectArgs extends com.pulumi.resources.ResourceArgs {
         return this.dataObjectType;
     }
 
+    @Import(name="effectiveCdfEnabled")
+    private @Nullable Output<Boolean> effectiveCdfEnabled;
+
+    public Optional<Output<Boolean>> effectiveCdfEnabled() {
+        return Optional.ofNullable(this.effectiveCdfEnabled);
+    }
+
+    @Import(name="effectiveHistoryDataSharingStatus")
+    private @Nullable Output<String> effectiveHistoryDataSharingStatus;
+
+    public Optional<Output<String>> effectiveHistoryDataSharingStatus() {
+        return Optional.ofNullable(this.effectiveHistoryDataSharingStatus);
+    }
+
+    @Import(name="effectiveSharedAs")
+    private @Nullable Output<String> effectiveSharedAs;
+
+    public Optional<Output<String>> effectiveSharedAs() {
+        return Optional.ofNullable(this.effectiveSharedAs);
+    }
+
+    @Import(name="effectiveStartVersion")
+    private @Nullable Output<Integer> effectiveStartVersion;
+
+    public Optional<Output<Integer>> effectiveStartVersion() {
+        return Optional.ofNullable(this.effectiveStartVersion);
+    }
+
+    @Import(name="effectiveStringSharedAs")
+    private @Nullable Output<String> effectiveStringSharedAs;
+
+    public Optional<Output<String>> effectiveStringSharedAs() {
+        return Optional.ofNullable(this.effectiveStringSharedAs);
+    }
+
     /**
      * Whether to enable history sharing, one of: `ENABLED`, `DISABLED`. When a table has history sharing enabled, recipients can query table data by version, starting from the current table version. If not specified, clients can only query starting from the version of the object at the time it was added to the share. *NOTE*: The startVersion should be less than or equal the current version of the object. When this field is set, field `cdfEnabled` can not be set.
      * 
@@ -188,6 +223,11 @@ public final class ShareObjectArgs extends com.pulumi.resources.ResourceArgs {
         this.comment = $.comment;
         this.content = $.content;
         this.dataObjectType = $.dataObjectType;
+        this.effectiveCdfEnabled = $.effectiveCdfEnabled;
+        this.effectiveHistoryDataSharingStatus = $.effectiveHistoryDataSharingStatus;
+        this.effectiveSharedAs = $.effectiveSharedAs;
+        this.effectiveStartVersion = $.effectiveStartVersion;
+        this.effectiveStringSharedAs = $.effectiveStringSharedAs;
         this.historyDataSharingStatus = $.historyDataSharingStatus;
         this.name = $.name;
         this.partitions = $.partitions;
@@ -303,6 +343,51 @@ public final class ShareObjectArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder dataObjectType(String dataObjectType) {
             return dataObjectType(Output.of(dataObjectType));
+        }
+
+        public Builder effectiveCdfEnabled(@Nullable Output<Boolean> effectiveCdfEnabled) {
+            $.effectiveCdfEnabled = effectiveCdfEnabled;
+            return this;
+        }
+
+        public Builder effectiveCdfEnabled(Boolean effectiveCdfEnabled) {
+            return effectiveCdfEnabled(Output.of(effectiveCdfEnabled));
+        }
+
+        public Builder effectiveHistoryDataSharingStatus(@Nullable Output<String> effectiveHistoryDataSharingStatus) {
+            $.effectiveHistoryDataSharingStatus = effectiveHistoryDataSharingStatus;
+            return this;
+        }
+
+        public Builder effectiveHistoryDataSharingStatus(String effectiveHistoryDataSharingStatus) {
+            return effectiveHistoryDataSharingStatus(Output.of(effectiveHistoryDataSharingStatus));
+        }
+
+        public Builder effectiveSharedAs(@Nullable Output<String> effectiveSharedAs) {
+            $.effectiveSharedAs = effectiveSharedAs;
+            return this;
+        }
+
+        public Builder effectiveSharedAs(String effectiveSharedAs) {
+            return effectiveSharedAs(Output.of(effectiveSharedAs));
+        }
+
+        public Builder effectiveStartVersion(@Nullable Output<Integer> effectiveStartVersion) {
+            $.effectiveStartVersion = effectiveStartVersion;
+            return this;
+        }
+
+        public Builder effectiveStartVersion(Integer effectiveStartVersion) {
+            return effectiveStartVersion(Output.of(effectiveStartVersion));
+        }
+
+        public Builder effectiveStringSharedAs(@Nullable Output<String> effectiveStringSharedAs) {
+            $.effectiveStringSharedAs = effectiveStringSharedAs;
+            return this;
+        }
+
+        public Builder effectiveStringSharedAs(String effectiveStringSharedAs) {
+            return effectiveStringSharedAs(Output.of(effectiveStringSharedAs));
         }
 
         /**

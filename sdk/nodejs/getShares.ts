@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -33,6 +35,7 @@ export function getShares(args?: GetSharesArgs, opts?: pulumi.InvokeOptions): Pr
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getShares:getShares", {
+        "providerConfig": args.providerConfig,
         "shares": args.shares,
     }, opts);
 }
@@ -41,6 +44,10 @@ export function getShares(args?: GetSharesArgs, opts?: pulumi.InvokeOptions): Pr
  * A collection of arguments for invoking getShares.
  */
 export interface GetSharesArgs {
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: inputs.GetSharesProviderConfig;
     /**
      * list of databricks.Share names.
      */
@@ -55,6 +62,7 @@ export interface GetSharesResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly providerConfig?: outputs.GetSharesProviderConfig;
     /**
      * list of databricks.Share names.
      */
@@ -89,6 +97,7 @@ export function getSharesOutput(args?: GetSharesOutputArgs, opts?: pulumi.Invoke
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getShares:getShares", {
+        "providerConfig": args.providerConfig,
         "shares": args.shares,
     }, opts);
 }
@@ -97,6 +106,10 @@ export function getSharesOutput(args?: GetSharesOutputArgs, opts?: pulumi.Invoke
  * A collection of arguments for invoking getShares.
  */
 export interface GetSharesOutputArgs {
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.GetSharesProviderConfigArgs>;
     /**
      * list of databricks.Share names.
      */

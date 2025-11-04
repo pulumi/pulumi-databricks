@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetPipelinesResult',
@@ -26,7 +28,7 @@ class GetPipelinesResult:
     """
     A collection of values returned by getPipelines.
     """
-    def __init__(__self__, id=None, ids=None, pipeline_name=None):
+    def __init__(__self__, id=None, ids=None, pipeline_name=None, provider_config=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -36,6 +38,9 @@ class GetPipelinesResult:
         if pipeline_name and not isinstance(pipeline_name, str):
             raise TypeError("Expected argument 'pipeline_name' to be a str")
         pulumi.set(__self__, "pipeline_name", pipeline_name)
+        if provider_config and not isinstance(provider_config, dict):
+            raise TypeError("Expected argument 'provider_config' to be a dict")
+        pulumi.set(__self__, "provider_config", provider_config)
 
     @_builtins.property
     @pulumi.getter
@@ -58,6 +63,11 @@ class GetPipelinesResult:
     def pipeline_name(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "pipeline_name")
 
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional['outputs.GetPipelinesProviderConfigResult']:
+        return pulumi.get(self, "provider_config")
+
 
 class AwaitableGetPipelinesResult(GetPipelinesResult):
     # pylint: disable=using-constant-test
@@ -67,11 +77,13 @@ class AwaitableGetPipelinesResult(GetPipelinesResult):
         return GetPipelinesResult(
             id=self.id,
             ids=self.ids,
-            pipeline_name=self.pipeline_name)
+            pipeline_name=self.pipeline_name,
+            provider_config=self.provider_config)
 
 
 def get_pipelines(ids: Optional[Sequence[_builtins.str]] = None,
                   pipeline_name: Optional[_builtins.str] = None,
+                  provider_config: Optional[Union['GetPipelinesProviderConfigArgs', 'GetPipelinesProviderConfigArgsDict']] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPipelinesResult:
     """
     Retrieves a list of all Pipeline ([Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt)) ids deployed in a workspace, or those matching the provided search term. Maximum 100 results.
@@ -123,19 +135,23 @@ def get_pipelines(ids: Optional[Sequence[_builtins.str]] = None,
 
     :param Sequence[_builtins.str] ids: List of ids for [Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt) pipelines matching the provided search criteria.
     :param _builtins.str pipeline_name: Filter Lakeflow Declarative Pipelines by name for a given search term. `%` is the supported wildcard operator.
+    :param Union['GetPipelinesProviderConfigArgs', 'GetPipelinesProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     """
     __args__ = dict()
     __args__['ids'] = ids
     __args__['pipelineName'] = pipeline_name
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getPipelines:getPipelines', __args__, opts=opts, typ=GetPipelinesResult).value
 
     return AwaitableGetPipelinesResult(
         id=pulumi.get(__ret__, 'id'),
         ids=pulumi.get(__ret__, 'ids'),
-        pipeline_name=pulumi.get(__ret__, 'pipeline_name'))
+        pipeline_name=pulumi.get(__ret__, 'pipeline_name'),
+        provider_config=pulumi.get(__ret__, 'provider_config'))
 def get_pipelines_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
                          pipeline_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                         provider_config: Optional[pulumi.Input[Optional[Union['GetPipelinesProviderConfigArgs', 'GetPipelinesProviderConfigArgsDict']]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPipelinesResult]:
     """
     Retrieves a list of all Pipeline ([Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt)) ids deployed in a workspace, or those matching the provided search term. Maximum 100 results.
@@ -187,13 +203,16 @@ def get_pipelines_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.
 
     :param Sequence[_builtins.str] ids: List of ids for [Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt) pipelines matching the provided search criteria.
     :param _builtins.str pipeline_name: Filter Lakeflow Declarative Pipelines by name for a given search term. `%` is the supported wildcard operator.
+    :param Union['GetPipelinesProviderConfigArgs', 'GetPipelinesProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     """
     __args__ = dict()
     __args__['ids'] = ids
     __args__['pipelineName'] = pipeline_name
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getPipelines:getPipelines', __args__, opts=opts, typ=GetPipelinesResult)
     return __ret__.apply(lambda __response__: GetPipelinesResult(
         id=pulumi.get(__response__, 'id'),
         ids=pulumi.get(__response__, 'ids'),
-        pipeline_name=pulumi.get(__response__, 'pipeline_name')))
+        pipeline_name=pulumi.get(__response__, 'pipeline_name'),
+        provider_config=pulumi.get(__response__, 'provider_config')))

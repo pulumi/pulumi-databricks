@@ -11,6 +11,71 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+//
+// This data source allows you to get information about a tag assignment for a specific entity using the entity type, entity name, and tag key.
+//
+// ## Example Usage
+//
+// ### Get environment tag from a catalog
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.LookupEntityTagAssignment(ctx, &databricks.LookupEntityTagAssignmentArgs{
+//				EntityType: "catalogs",
+//				EntityName: "production_catalog",
+//				TagKey:     "environment",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.LookupEntityTagAssignment(ctx, &databricks.LookupEntityTagAssignmentArgs{
+//				EntityType: "schemas",
+//				EntityName: "production_catalog.analytics_data",
+//				TagKey:     "cost_center",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.LookupEntityTagAssignment(ctx, &databricks.LookupEntityTagAssignmentArgs{
+//				EntityType: "tables",
+//				EntityName: "production_catalog.sales_data.customer_orders",
+//				TagKey:     "owner",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.LookupEntityTagAssignment(ctx, &databricks.LookupEntityTagAssignmentArgs{
+//				EntityType: "columns",
+//				EntityName: "production_catalog.customer_data.users.email_address",
+//				TagKey:     "pii_classification",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.LookupEntityTagAssignment(ctx, &databricks.LookupEntityTagAssignmentArgs{
+//				EntityType: "volumes",
+//				EntityName: "production_catalog.raw_data.landing_zone",
+//				TagKey:     "purpose",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupEntityTagAssignment(ctx *pulumi.Context, args *LookupEntityTagAssignmentArgs, opts ...pulumi.InvokeOption) (*LookupEntityTagAssignmentResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupEntityTagAssignmentResult
@@ -29,10 +94,6 @@ type LookupEntityTagAssignmentArgs struct {
 	EntityType string `pulumi:"entityType"`
 	// The key of the tag
 	TagKey string `pulumi:"tagKey"`
-	// (string) - The value of the tag
-	TagValue *string `pulumi:"tagValue"`
-	// Workspace ID of the resource
-	WorkspaceId *string `pulumi:"workspaceId"`
 }
 
 // A collection of values returned by getEntityTagAssignment.
@@ -46,8 +107,7 @@ type LookupEntityTagAssignmentResult struct {
 	// (string) - The key of the tag
 	TagKey string `pulumi:"tagKey"`
 	// (string) - The value of the tag
-	TagValue    *string `pulumi:"tagValue"`
-	WorkspaceId *string `pulumi:"workspaceId"`
+	TagValue string `pulumi:"tagValue"`
 }
 
 func LookupEntityTagAssignmentOutput(ctx *pulumi.Context, args LookupEntityTagAssignmentOutputArgs, opts ...pulumi.InvokeOption) LookupEntityTagAssignmentResultOutput {
@@ -67,10 +127,6 @@ type LookupEntityTagAssignmentOutputArgs struct {
 	EntityType pulumi.StringInput `pulumi:"entityType"`
 	// The key of the tag
 	TagKey pulumi.StringInput `pulumi:"tagKey"`
-	// (string) - The value of the tag
-	TagValue pulumi.StringPtrInput `pulumi:"tagValue"`
-	// Workspace ID of the resource
-	WorkspaceId pulumi.StringPtrInput `pulumi:"workspaceId"`
 }
 
 func (LookupEntityTagAssignmentOutputArgs) ElementType() reflect.Type {
@@ -113,12 +169,8 @@ func (o LookupEntityTagAssignmentResultOutput) TagKey() pulumi.StringOutput {
 }
 
 // (string) - The value of the tag
-func (o LookupEntityTagAssignmentResultOutput) TagValue() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupEntityTagAssignmentResult) *string { return v.TagValue }).(pulumi.StringPtrOutput)
-}
-
-func (o LookupEntityTagAssignmentResultOutput) WorkspaceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupEntityTagAssignmentResult) *string { return v.WorkspaceId }).(pulumi.StringPtrOutput)
+func (o LookupEntityTagAssignmentResultOutput) TagValue() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEntityTagAssignmentResult) string { return v.TagValue }).(pulumi.StringOutput)
 }
 
 func init() {

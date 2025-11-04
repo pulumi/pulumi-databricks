@@ -5,6 +5,8 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,24 +18,40 @@ public final class GetDatabaseSyncedDatabaseTablesArgs extends com.pulumi.resour
     public static final GetDatabaseSyncedDatabaseTablesArgs Empty = new GetDatabaseSyncedDatabaseTablesArgs();
 
     /**
-     * Workspace ID of the resource
+     * Name of the instance to get synced tables for
      * 
      */
-    @Import(name="workspaceId")
-    private @Nullable Output<String> workspaceId;
+    @Import(name="instanceName", required=true)
+    private Output<String> instanceName;
 
     /**
-     * @return Workspace ID of the resource
+     * @return Name of the instance to get synced tables for
      * 
      */
-    public Optional<Output<String>> workspaceId() {
-        return Optional.ofNullable(this.workspaceId);
+    public Output<String> instanceName() {
+        return this.instanceName;
+    }
+
+    /**
+     * Upper bound for items returned
+     * 
+     */
+    @Import(name="pageSize")
+    private @Nullable Output<Integer> pageSize;
+
+    /**
+     * @return Upper bound for items returned
+     * 
+     */
+    public Optional<Output<Integer>> pageSize() {
+        return Optional.ofNullable(this.pageSize);
     }
 
     private GetDatabaseSyncedDatabaseTablesArgs() {}
 
     private GetDatabaseSyncedDatabaseTablesArgs(GetDatabaseSyncedDatabaseTablesArgs $) {
-        this.workspaceId = $.workspaceId;
+        this.instanceName = $.instanceName;
+        this.pageSize = $.pageSize;
     }
 
     public static Builder builder() {
@@ -55,27 +73,51 @@ public final class GetDatabaseSyncedDatabaseTablesArgs extends com.pulumi.resour
         }
 
         /**
-         * @param workspaceId Workspace ID of the resource
+         * @param instanceName Name of the instance to get synced tables for
          * 
          * @return builder
          * 
          */
-        public Builder workspaceId(@Nullable Output<String> workspaceId) {
-            $.workspaceId = workspaceId;
+        public Builder instanceName(Output<String> instanceName) {
+            $.instanceName = instanceName;
             return this;
         }
 
         /**
-         * @param workspaceId Workspace ID of the resource
+         * @param instanceName Name of the instance to get synced tables for
          * 
          * @return builder
          * 
          */
-        public Builder workspaceId(String workspaceId) {
-            return workspaceId(Output.of(workspaceId));
+        public Builder instanceName(String instanceName) {
+            return instanceName(Output.of(instanceName));
+        }
+
+        /**
+         * @param pageSize Upper bound for items returned
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pageSize(@Nullable Output<Integer> pageSize) {
+            $.pageSize = pageSize;
+            return this;
+        }
+
+        /**
+         * @param pageSize Upper bound for items returned
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pageSize(Integer pageSize) {
+            return pageSize(Output.of(pageSize));
         }
 
         public GetDatabaseSyncedDatabaseTablesArgs build() {
+            if ($.instanceName == null) {
+                throw new MissingRequiredPropertyException("GetDatabaseSyncedDatabaseTablesArgs", "instanceName");
+            }
             return $;
         }
     }

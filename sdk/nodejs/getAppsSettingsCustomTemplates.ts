@@ -7,6 +7,8 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
  * This data source can be used to fetch the list of Custom Templates within the workspace.
  * The list can then be accessed via the data object's `templates` field.
  *
@@ -26,7 +28,7 @@ export function getAppsSettingsCustomTemplates(args?: GetAppsSettingsCustomTempl
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getAppsSettingsCustomTemplates:getAppsSettingsCustomTemplates", {
-        "workspaceId": args.workspaceId,
+        "pageSize": args.pageSize,
     }, opts);
 }
 
@@ -35,9 +37,9 @@ export function getAppsSettingsCustomTemplates(args?: GetAppsSettingsCustomTempl
  */
 export interface GetAppsSettingsCustomTemplatesArgs {
     /**
-     * Workspace ID of the resource
+     * Upper bound for items returned
      */
-    workspaceId?: string;
+    pageSize?: number;
 }
 
 /**
@@ -48,10 +50,12 @@ export interface GetAppsSettingsCustomTemplatesResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly pageSize?: number;
     readonly templates: outputs.GetAppsSettingsCustomTemplatesTemplate[];
-    readonly workspaceId?: string;
 }
 /**
+ * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
  * This data source can be used to fetch the list of Custom Templates within the workspace.
  * The list can then be accessed via the data object's `templates` field.
  *
@@ -71,7 +75,7 @@ export function getAppsSettingsCustomTemplatesOutput(args?: GetAppsSettingsCusto
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getAppsSettingsCustomTemplates:getAppsSettingsCustomTemplates", {
-        "workspaceId": args.workspaceId,
+        "pageSize": args.pageSize,
     }, opts);
 }
 
@@ -80,7 +84,7 @@ export function getAppsSettingsCustomTemplatesOutput(args?: GetAppsSettingsCusto
  */
 export interface GetAppsSettingsCustomTemplatesOutputArgs {
     /**
-     * Workspace ID of the resource
+     * Upper bound for items returned
      */
-    workspaceId?: pulumi.Input<string>;
+    pageSize?: pulumi.Input<number>;
 }

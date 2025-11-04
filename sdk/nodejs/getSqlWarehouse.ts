@@ -67,6 +67,7 @@ export function getSqlWarehouse(args?: GetSqlWarehouseArgs, opts?: pulumi.Invoke
         "numActiveSessions": args.numActiveSessions,
         "numClusters": args.numClusters,
         "odbcParams": args.odbcParams,
+        "providerConfig": args.providerConfig,
         "spotInstancePolicy": args.spotInstancePolicy,
         "state": args.state,
         "tags": args.tags,
@@ -143,6 +144,7 @@ export interface GetSqlWarehouseArgs {
      * ODBC connection params: `odbc_params.hostname`, `odbc_params.path`, `odbc_params.protocol`, and `odbc_params.port`.
      */
     odbcParams?: inputs.GetSqlWarehouseOdbcParams;
+    providerConfig?: inputs.GetSqlWarehouseProviderConfig;
     /**
      * The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`.
      */
@@ -230,6 +232,7 @@ export interface GetSqlWarehouseResult {
      * ODBC connection params: `odbc_params.hostname`, `odbc_params.path`, `odbc_params.protocol`, and `odbc_params.port`.
      */
     readonly odbcParams: outputs.GetSqlWarehouseOdbcParams;
+    readonly providerConfig?: outputs.GetSqlWarehouseProviderConfig;
     /**
      * The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`.
      */
@@ -308,6 +311,7 @@ export function getSqlWarehouseOutput(args?: GetSqlWarehouseOutputArgs, opts?: p
         "numActiveSessions": args.numActiveSessions,
         "numClusters": args.numClusters,
         "odbcParams": args.odbcParams,
+        "providerConfig": args.providerConfig,
         "spotInstancePolicy": args.spotInstancePolicy,
         "state": args.state,
         "tags": args.tags,
@@ -384,6 +388,7 @@ export interface GetSqlWarehouseOutputArgs {
      * ODBC connection params: `odbc_params.hostname`, `odbc_params.path`, `odbc_params.protocol`, and `odbc_params.port`.
      */
     odbcParams?: pulumi.Input<inputs.GetSqlWarehouseOdbcParamsArgs>;
+    providerConfig?: pulumi.Input<inputs.GetSqlWarehouseProviderConfigArgs>;
     /**
      * The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`.
      */

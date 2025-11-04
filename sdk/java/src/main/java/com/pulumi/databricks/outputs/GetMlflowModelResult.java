@@ -5,11 +5,14 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetMlflowModelLatestVersion;
+import com.pulumi.databricks.outputs.GetMlflowModelProviderConfig;
 import com.pulumi.databricks.outputs.GetMlflowModelTag;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetMlflowModelResult {
@@ -38,6 +41,7 @@ public final class GetMlflowModelResult {
      * 
      */
     private String permissionLevel;
+    private @Nullable GetMlflowModelProviderConfig providerConfig;
     /**
      * @return Array of tags associated with the model.
      * 
@@ -85,6 +89,9 @@ public final class GetMlflowModelResult {
     public String permissionLevel() {
         return this.permissionLevel;
     }
+    public Optional<GetMlflowModelProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
     /**
      * @return Array of tags associated with the model.
      * 
@@ -114,6 +121,7 @@ public final class GetMlflowModelResult {
         private List<GetMlflowModelLatestVersion> latestVersions;
         private String name;
         private String permissionLevel;
+        private @Nullable GetMlflowModelProviderConfig providerConfig;
         private List<GetMlflowModelTag> tags;
         private String userId;
         public Builder() {}
@@ -124,6 +132,7 @@ public final class GetMlflowModelResult {
     	      this.latestVersions = defaults.latestVersions;
     	      this.name = defaults.name;
     	      this.permissionLevel = defaults.permissionLevel;
+    	      this.providerConfig = defaults.providerConfig;
     	      this.tags = defaults.tags;
     	      this.userId = defaults.userId;
         }
@@ -172,6 +181,12 @@ public final class GetMlflowModelResult {
             return this;
         }
         @CustomType.Setter
+        public Builder providerConfig(@Nullable GetMlflowModelProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder tags(List<GetMlflowModelTag> tags) {
             if (tags == null) {
               throw new MissingRequiredPropertyException("GetMlflowModelResult", "tags");
@@ -197,6 +212,7 @@ public final class GetMlflowModelResult {
             _resultValue.latestVersions = latestVersions;
             _resultValue.name = name;
             _resultValue.permissionLevel = permissionLevel;
+            _resultValue.providerConfig = providerConfig;
             _resultValue.tags = tags;
             _resultValue.userId = userId;
             return _resultValue;

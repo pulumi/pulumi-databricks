@@ -28,13 +28,16 @@ class GetSchemaResult:
     """
     A collection of values returned by getSchema.
     """
-    def __init__(__self__, id=None, name=None, schema_info=None):
+    def __init__(__self__, id=None, name=None, provider_config=None, schema_info=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if provider_config and not isinstance(provider_config, dict):
+            raise TypeError("Expected argument 'provider_config' to be a dict")
+        pulumi.set(__self__, "provider_config", provider_config)
         if schema_info and not isinstance(schema_info, dict):
             raise TypeError("Expected argument 'schema_info' to be a dict")
         pulumi.set(__self__, "schema_info", schema_info)
@@ -56,6 +59,11 @@ class GetSchemaResult:
         return pulumi.get(self, "name")
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional['outputs.GetSchemaProviderConfigResult']:
+        return pulumi.get(self, "provider_config")
+
+    @_builtins.property
     @pulumi.getter(name="schemaInfo")
     def schema_info(self) -> 'outputs.GetSchemaSchemaInfoResult':
         """
@@ -72,11 +80,13 @@ class AwaitableGetSchemaResult(GetSchemaResult):
         return GetSchemaResult(
             id=self.id,
             name=self.name,
+            provider_config=self.provider_config,
             schema_info=self.schema_info)
 
 
 def get_schema(id: Optional[_builtins.str] = None,
                name: Optional[_builtins.str] = None,
+               provider_config: Optional[Union['GetSchemaProviderConfigArgs', 'GetSchemaProviderConfigArgsDict']] = None,
                schema_info: Optional[Union['GetSchemaSchemaInfoArgs', 'GetSchemaSchemaInfoArgsDict']] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSchemaResult:
     """
@@ -116,11 +126,13 @@ def get_schema(id: Optional[_builtins.str] = None,
 
     :param _builtins.str id: ID of this Unity Catalog Schema in form of `<catalog>.<schema>`.
     :param _builtins.str name: a fully qualified name of databricks_schema: *`catalog`.`schema`*
+    :param Union['GetSchemaProviderConfigArgs', 'GetSchemaProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     :param Union['GetSchemaSchemaInfoArgs', 'GetSchemaSchemaInfoArgsDict'] schema_info: `SchemaInfo` object for a Unity Catalog schema. This contains the following attributes:
     """
     __args__ = dict()
     __args__['id'] = id
     __args__['name'] = name
+    __args__['providerConfig'] = provider_config
     __args__['schemaInfo'] = schema_info
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getSchema:getSchema', __args__, opts=opts, typ=GetSchemaResult).value
@@ -128,9 +140,11 @@ def get_schema(id: Optional[_builtins.str] = None,
     return AwaitableGetSchemaResult(
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
+        provider_config=pulumi.get(__ret__, 'provider_config'),
         schema_info=pulumi.get(__ret__, 'schema_info'))
 def get_schema_output(id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                       name: Optional[pulumi.Input[_builtins.str]] = None,
+                      provider_config: Optional[pulumi.Input[Optional[Union['GetSchemaProviderConfigArgs', 'GetSchemaProviderConfigArgsDict']]]] = None,
                       schema_info: Optional[pulumi.Input[Optional[Union['GetSchemaSchemaInfoArgs', 'GetSchemaSchemaInfoArgsDict']]]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSchemaResult]:
     """
@@ -170,15 +184,18 @@ def get_schema_output(id: Optional[pulumi.Input[Optional[_builtins.str]]] = None
 
     :param _builtins.str id: ID of this Unity Catalog Schema in form of `<catalog>.<schema>`.
     :param _builtins.str name: a fully qualified name of databricks_schema: *`catalog`.`schema`*
+    :param Union['GetSchemaProviderConfigArgs', 'GetSchemaProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     :param Union['GetSchemaSchemaInfoArgs', 'GetSchemaSchemaInfoArgsDict'] schema_info: `SchemaInfo` object for a Unity Catalog schema. This contains the following attributes:
     """
     __args__ = dict()
     __args__['id'] = id
     __args__['name'] = name
+    __args__['providerConfig'] = provider_config
     __args__['schemaInfo'] = schema_info
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getSchema:getSchema', __args__, opts=opts, typ=GetSchemaResult)
     return __ret__.apply(lambda __response__: GetSchemaResult(
         id=pulumi.get(__response__, 'id'),
         name=pulumi.get(__response__, 'name'),
+        provider_config=pulumi.get(__response__, 'provider_config'),
         schema_info=pulumi.get(__response__, 'schema_info')))

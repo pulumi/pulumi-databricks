@@ -4,7 +4,7 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
-import java.lang.String;
+import java.lang.Integer;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -15,24 +15,24 @@ public final class GetDatabaseInstancesPlainArgs extends com.pulumi.resources.In
     public static final GetDatabaseInstancesPlainArgs Empty = new GetDatabaseInstancesPlainArgs();
 
     /**
-     * Workspace ID of the resource
+     * Upper bound for items returned
      * 
      */
-    @Import(name="workspaceId")
-    private @Nullable String workspaceId;
+    @Import(name="pageSize")
+    private @Nullable Integer pageSize;
 
     /**
-     * @return Workspace ID of the resource
+     * @return Upper bound for items returned
      * 
      */
-    public Optional<String> workspaceId() {
-        return Optional.ofNullable(this.workspaceId);
+    public Optional<Integer> pageSize() {
+        return Optional.ofNullable(this.pageSize);
     }
 
     private GetDatabaseInstancesPlainArgs() {}
 
     private GetDatabaseInstancesPlainArgs(GetDatabaseInstancesPlainArgs $) {
-        this.workspaceId = $.workspaceId;
+        this.pageSize = $.pageSize;
     }
 
     public static Builder builder() {
@@ -54,13 +54,13 @@ public final class GetDatabaseInstancesPlainArgs extends com.pulumi.resources.In
         }
 
         /**
-         * @param workspaceId Workspace ID of the resource
+         * @param pageSize Upper bound for items returned
          * 
          * @return builder
          * 
          */
-        public Builder workspaceId(@Nullable String workspaceId) {
-            $.workspaceId = workspaceId;
+        public Builder pageSize(@Nullable Integer pageSize) {
+            $.pageSize = pageSize;
             return this;
         }
 

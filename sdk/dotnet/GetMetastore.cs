@@ -29,9 +29,9 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var metastore = new Aws.S3.BucketV2("metastore", new()
+        ///     var metastore = new Aws.S3.Bucket("metastore", new()
         ///     {
-        ///         Bucket = $"{prefix}-metastore",
+        ///         BucketName = $"{prefix}-metastore",
         ///         ForceDestroy = true,
         ///     });
         /// 
@@ -84,9 +84,9 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var metastore = new Aws.S3.BucketV2("metastore", new()
+        ///     var metastore = new Aws.S3.Bucket("metastore", new()
         ///     {
-        ///         Bucket = $"{prefix}-metastore",
+        ///         BucketName = $"{prefix}-metastore",
         ///         ForceDestroy = true,
         ///     });
         /// 
@@ -139,9 +139,9 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var metastore = new Aws.S3.BucketV2("metastore", new()
+        ///     var metastore = new Aws.S3.Bucket("metastore", new()
         ///     {
-        ///         Bucket = $"{prefix}-metastore",
+        ///         BucketName = $"{prefix}-metastore",
         ///         ForceDestroy = true,
         ///     });
         /// 

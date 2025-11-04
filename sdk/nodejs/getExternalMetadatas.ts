@@ -7,6 +7,8 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
  * This data source can be used to fetch the list of external metadata objects.
  *
  * > **Note** This resource can only be used with an workspace-level provider!
@@ -26,7 +28,7 @@ export function getExternalMetadatas(args?: GetExternalMetadatasArgs, opts?: pul
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getExternalMetadatas:getExternalMetadatas", {
-        "workspaceId": args.workspaceId,
+        "pageSize": args.pageSize,
     }, opts);
 }
 
@@ -35,9 +37,10 @@ export function getExternalMetadatas(args?: GetExternalMetadatasArgs, opts?: pul
  */
 export interface GetExternalMetadatasArgs {
     /**
-     * Workspace ID of the resource
+     * Specifies the maximum number of external metadata objects to return in a single response.
+     * The value must be less than or equal to 1000
      */
-    workspaceId?: string;
+    pageSize?: number;
 }
 
 /**
@@ -49,9 +52,11 @@ export interface GetExternalMetadatasResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    readonly workspaceId?: string;
+    readonly pageSize?: number;
 }
 /**
+ * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
  * This data source can be used to fetch the list of external metadata objects.
  *
  * > **Note** This resource can only be used with an workspace-level provider!
@@ -71,7 +76,7 @@ export function getExternalMetadatasOutput(args?: GetExternalMetadatasOutputArgs
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getExternalMetadatas:getExternalMetadatas", {
-        "workspaceId": args.workspaceId,
+        "pageSize": args.pageSize,
     }, opts);
 }
 
@@ -80,7 +85,8 @@ export function getExternalMetadatasOutput(args?: GetExternalMetadatasOutputArgs
  */
 export interface GetExternalMetadatasOutputArgs {
     /**
-     * Workspace ID of the resource
+     * Specifies the maximum number of external metadata objects to return in a single response.
+     * The value must be less than or equal to 1000
      */
-    workspaceId?: pulumi.Input<string>;
+    pageSize?: pulumi.Input<number>;
 }

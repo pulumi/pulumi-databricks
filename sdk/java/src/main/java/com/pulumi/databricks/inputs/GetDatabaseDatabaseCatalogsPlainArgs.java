@@ -4,6 +4,8 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -15,24 +17,40 @@ public final class GetDatabaseDatabaseCatalogsPlainArgs extends com.pulumi.resou
     public static final GetDatabaseDatabaseCatalogsPlainArgs Empty = new GetDatabaseDatabaseCatalogsPlainArgs();
 
     /**
-     * Workspace ID of the resource
+     * Name of the instance to get database catalogs for
      * 
      */
-    @Import(name="workspaceId")
-    private @Nullable String workspaceId;
+    @Import(name="instanceName", required=true)
+    private String instanceName;
 
     /**
-     * @return Workspace ID of the resource
+     * @return Name of the instance to get database catalogs for
      * 
      */
-    public Optional<String> workspaceId() {
-        return Optional.ofNullable(this.workspaceId);
+    public String instanceName() {
+        return this.instanceName;
+    }
+
+    /**
+     * Upper bound for items returned
+     * 
+     */
+    @Import(name="pageSize")
+    private @Nullable Integer pageSize;
+
+    /**
+     * @return Upper bound for items returned
+     * 
+     */
+    public Optional<Integer> pageSize() {
+        return Optional.ofNullable(this.pageSize);
     }
 
     private GetDatabaseDatabaseCatalogsPlainArgs() {}
 
     private GetDatabaseDatabaseCatalogsPlainArgs(GetDatabaseDatabaseCatalogsPlainArgs $) {
-        this.workspaceId = $.workspaceId;
+        this.instanceName = $.instanceName;
+        this.pageSize = $.pageSize;
     }
 
     public static Builder builder() {
@@ -54,17 +72,31 @@ public final class GetDatabaseDatabaseCatalogsPlainArgs extends com.pulumi.resou
         }
 
         /**
-         * @param workspaceId Workspace ID of the resource
+         * @param instanceName Name of the instance to get database catalogs for
          * 
          * @return builder
          * 
          */
-        public Builder workspaceId(@Nullable String workspaceId) {
-            $.workspaceId = workspaceId;
+        public Builder instanceName(String instanceName) {
+            $.instanceName = instanceName;
+            return this;
+        }
+
+        /**
+         * @param pageSize Upper bound for items returned
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pageSize(@Nullable Integer pageSize) {
+            $.pageSize = pageSize;
             return this;
         }
 
         public GetDatabaseDatabaseCatalogsPlainArgs build() {
+            if ($.instanceName == null) {
+                throw new MissingRequiredPropertyException("GetDatabaseDatabaseCatalogsPlainArgs", "instanceName");
+            }
             return $;
         }
     }

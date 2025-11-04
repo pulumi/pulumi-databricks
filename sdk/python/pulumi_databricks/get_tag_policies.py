@@ -27,16 +27,16 @@ class GetTagPoliciesResult:
     """
     A collection of values returned by getTagPolicies.
     """
-    def __init__(__self__, id=None, tag_policies=None, workspace_id=None):
+    def __init__(__self__, id=None, page_size=None, tag_policies=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if page_size and not isinstance(page_size, int):
+            raise TypeError("Expected argument 'page_size' to be a int")
+        pulumi.set(__self__, "page_size", page_size)
         if tag_policies and not isinstance(tag_policies, list):
             raise TypeError("Expected argument 'tag_policies' to be a list")
         pulumi.set(__self__, "tag_policies", tag_policies)
-        if workspace_id and not isinstance(workspace_id, str):
-            raise TypeError("Expected argument 'workspace_id' to be a str")
-        pulumi.set(__self__, "workspace_id", workspace_id)
 
     @_builtins.property
     @pulumi.getter
@@ -47,14 +47,14 @@ class GetTagPoliciesResult:
         return pulumi.get(self, "id")
 
     @_builtins.property
+    @pulumi.getter(name="pageSize")
+    def page_size(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "page_size")
+
+    @_builtins.property
     @pulumi.getter(name="tagPolicies")
     def tag_policies(self) -> Sequence['outputs.GetTagPoliciesTagPolicyResult']:
         return pulumi.get(self, "tag_policies")
-
-    @_builtins.property
-    @pulumi.getter(name="workspaceId")
-    def workspace_id(self) -> Optional[_builtins.str]:
-        return pulumi.get(self, "workspace_id")
 
 
 class AwaitableGetTagPoliciesResult(GetTagPoliciesResult):
@@ -64,44 +64,76 @@ class AwaitableGetTagPoliciesResult(GetTagPoliciesResult):
             yield self
         return GetTagPoliciesResult(
             id=self.id,
-            tag_policies=self.tag_policies,
-            workspace_id=self.workspace_id)
+            page_size=self.page_size,
+            tag_policies=self.tag_policies)
 
 
-def get_tag_policies(workspace_id: Optional[_builtins.str] = None,
+def get_tag_policies(page_size: Optional[_builtins.int] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTagPoliciesResult:
     """
+    [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
     This data source can be used to list all tag policies in the account.
 
-    > **Note** This resource can only be used with an account-level provider!
+    > **Note** This resource can only be used with a workspace-level provider!
+
+    ## Example Usage
+
+    Getting a list of all tag policies:
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    all = databricks.get_tag_policies()
+    pulumi.export("allTagPolicies", all.tag_policies)
+    ```
 
 
-    :param _builtins.str workspace_id: Workspace ID of the resource
+    :param _builtins.int page_size: The maximum number of results to return in this request. Fewer results may be returned than requested. If
+           unspecified or set to 0, this defaults to 1000. The maximum value is 1000; values above 1000 will be coerced down
+           to 1000
     """
     __args__ = dict()
-    __args__['workspaceId'] = workspace_id
+    __args__['pageSize'] = page_size
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getTagPolicies:getTagPolicies', __args__, opts=opts, typ=GetTagPoliciesResult).value
 
     return AwaitableGetTagPoliciesResult(
         id=pulumi.get(__ret__, 'id'),
-        tag_policies=pulumi.get(__ret__, 'tag_policies'),
-        workspace_id=pulumi.get(__ret__, 'workspace_id'))
-def get_tag_policies_output(workspace_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+        page_size=pulumi.get(__ret__, 'page_size'),
+        tag_policies=pulumi.get(__ret__, 'tag_policies'))
+def get_tag_policies_output(page_size: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTagPoliciesResult]:
     """
+    [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
     This data source can be used to list all tag policies in the account.
 
-    > **Note** This resource can only be used with an account-level provider!
+    > **Note** This resource can only be used with a workspace-level provider!
+
+    ## Example Usage
+
+    Getting a list of all tag policies:
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    all = databricks.get_tag_policies()
+    pulumi.export("allTagPolicies", all.tag_policies)
+    ```
 
 
-    :param _builtins.str workspace_id: Workspace ID of the resource
+    :param _builtins.int page_size: The maximum number of results to return in this request. Fewer results may be returned than requested. If
+           unspecified or set to 0, this defaults to 1000. The maximum value is 1000; values above 1000 will be coerced down
+           to 1000
     """
     __args__ = dict()
-    __args__['workspaceId'] = workspace_id
+    __args__['pageSize'] = page_size
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getTagPolicies:getTagPolicies', __args__, opts=opts, typ=GetTagPoliciesResult)
     return __ret__.apply(lambda __response__: GetTagPoliciesResult(
         id=pulumi.get(__response__, 'id'),
-        tag_policies=pulumi.get(__response__, 'tag_policies'),
-        workspace_id=pulumi.get(__response__, 'workspace_id')))
+        page_size=pulumi.get(__response__, 'page_size'),
+        tag_policies=pulumi.get(__response__, 'tag_policies')))

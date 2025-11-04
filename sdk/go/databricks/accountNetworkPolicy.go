@@ -11,6 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+//
 // Network policies control which network destinations can be accessed from the Databricks environment.
 //
 // Each Databricks account includes a default policy named `default-policy`. This policy is:
@@ -42,7 +44,7 @@ import (
 // If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
 //
 // ```sh
-// $ pulumi import databricks:index/accountNetworkPolicy:AccountNetworkPolicy databricks_account_network_policy "network_policy_id"
+// $ pulumi import databricks:index/accountNetworkPolicy:AccountNetworkPolicy this "network_policy_id"
 // ```
 type AccountNetworkPolicy struct {
 	pulumi.CustomResourceState

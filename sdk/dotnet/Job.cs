@@ -265,6 +265,12 @@ namespace Pulumi.Databricks
         [Output("pipelineTask")]
         public Output<Outputs.JobPipelineTask?> PipelineTask { get; private set; } = null!;
 
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Output("providerConfig")]
+        public Output<Outputs.JobProviderConfig?> ProviderConfig { get; private set; } = null!;
+
         [Output("pythonWheelTask")]
         public Output<Outputs.JobPythonWheelTask?> PythonWheelTask { get; private set; } = null!;
 
@@ -542,6 +548,12 @@ namespace Pulumi.Databricks
         [Input("pipelineTask")]
         public Input<Inputs.JobPipelineTaskArgs>? PipelineTask { get; set; }
 
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.JobProviderConfigArgs>? ProviderConfig { get; set; }
+
         [Input("pythonWheelTask")]
         public Input<Inputs.JobPythonWheelTaskArgs>? PythonWheelTask { get; set; }
 
@@ -786,6 +798,12 @@ namespace Pulumi.Databricks
 
         [Input("pipelineTask")]
         public Input<Inputs.JobPipelineTaskGetArgs>? PipelineTask { get; set; }
+
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.JobProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         [Input("pythonWheelTask")]
         public Input<Inputs.JobPythonWheelTaskGetArgs>? PythonWheelTask { get; set; }

@@ -6,6 +6,7 @@ package com.pulumi.databricks.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetDatabaseDatabaseCatalogsDatabaseCatalog;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -20,7 +21,8 @@ public final class GetDatabaseDatabaseCatalogsResult {
      * 
      */
     private String id;
-    private @Nullable String workspaceId;
+    private String instanceName;
+    private @Nullable Integer pageSize;
 
     private GetDatabaseDatabaseCatalogsResult() {}
     public List<GetDatabaseDatabaseCatalogsDatabaseCatalog> databaseCatalogs() {
@@ -33,8 +35,11 @@ public final class GetDatabaseDatabaseCatalogsResult {
     public String id() {
         return this.id;
     }
-    public Optional<String> workspaceId() {
-        return Optional.ofNullable(this.workspaceId);
+    public String instanceName() {
+        return this.instanceName;
+    }
+    public Optional<Integer> pageSize() {
+        return Optional.ofNullable(this.pageSize);
     }
 
     public static Builder builder() {
@@ -48,13 +53,15 @@ public final class GetDatabaseDatabaseCatalogsResult {
     public static final class Builder {
         private List<GetDatabaseDatabaseCatalogsDatabaseCatalog> databaseCatalogs;
         private String id;
-        private @Nullable String workspaceId;
+        private String instanceName;
+        private @Nullable Integer pageSize;
         public Builder() {}
         public Builder(GetDatabaseDatabaseCatalogsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.databaseCatalogs = defaults.databaseCatalogs;
     	      this.id = defaults.id;
-    	      this.workspaceId = defaults.workspaceId;
+    	      this.instanceName = defaults.instanceName;
+    	      this.pageSize = defaults.pageSize;
         }
 
         @CustomType.Setter
@@ -77,16 +84,25 @@ public final class GetDatabaseDatabaseCatalogsResult {
             return this;
         }
         @CustomType.Setter
-        public Builder workspaceId(@Nullable String workspaceId) {
+        public Builder instanceName(String instanceName) {
+            if (instanceName == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseDatabaseCatalogsResult", "instanceName");
+            }
+            this.instanceName = instanceName;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder pageSize(@Nullable Integer pageSize) {
 
-            this.workspaceId = workspaceId;
+            this.pageSize = pageSize;
             return this;
         }
         public GetDatabaseDatabaseCatalogsResult build() {
             final var _resultValue = new GetDatabaseDatabaseCatalogsResult();
             _resultValue.databaseCatalogs = databaseCatalogs;
             _resultValue.id = id;
-            _resultValue.workspaceId = workspaceId;
+            _resultValue.instanceName = instanceName;
+            _resultValue.pageSize = pageSize;
             return _resultValue;
         }
     }

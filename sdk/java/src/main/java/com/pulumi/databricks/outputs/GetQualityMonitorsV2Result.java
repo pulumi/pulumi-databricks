@@ -6,6 +6,7 @@ package com.pulumi.databricks.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetQualityMonitorsV2QualityMonitor;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -19,8 +20,8 @@ public final class GetQualityMonitorsV2Result {
      * 
      */
     private String id;
+    private @Nullable Integer pageSize;
     private List<GetQualityMonitorsV2QualityMonitor> qualityMonitors;
-    private @Nullable String workspaceId;
 
     private GetQualityMonitorsV2Result() {}
     /**
@@ -30,11 +31,11 @@ public final class GetQualityMonitorsV2Result {
     public String id() {
         return this.id;
     }
+    public Optional<Integer> pageSize() {
+        return Optional.ofNullable(this.pageSize);
+    }
     public List<GetQualityMonitorsV2QualityMonitor> qualityMonitors() {
         return this.qualityMonitors;
-    }
-    public Optional<String> workspaceId() {
-        return Optional.ofNullable(this.workspaceId);
     }
 
     public static Builder builder() {
@@ -47,14 +48,14 @@ public final class GetQualityMonitorsV2Result {
     @CustomType.Builder
     public static final class Builder {
         private String id;
+        private @Nullable Integer pageSize;
         private List<GetQualityMonitorsV2QualityMonitor> qualityMonitors;
-        private @Nullable String workspaceId;
         public Builder() {}
         public Builder(GetQualityMonitorsV2Result defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
+    	      this.pageSize = defaults.pageSize;
     	      this.qualityMonitors = defaults.qualityMonitors;
-    	      this.workspaceId = defaults.workspaceId;
         }
 
         @CustomType.Setter
@@ -63,6 +64,12 @@ public final class GetQualityMonitorsV2Result {
               throw new MissingRequiredPropertyException("GetQualityMonitorsV2Result", "id");
             }
             this.id = id;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder pageSize(@Nullable Integer pageSize) {
+
+            this.pageSize = pageSize;
             return this;
         }
         @CustomType.Setter
@@ -76,17 +83,11 @@ public final class GetQualityMonitorsV2Result {
         public Builder qualityMonitors(GetQualityMonitorsV2QualityMonitor... qualityMonitors) {
             return qualityMonitors(List.of(qualityMonitors));
         }
-        @CustomType.Setter
-        public Builder workspaceId(@Nullable String workspaceId) {
-
-            this.workspaceId = workspaceId;
-            return this;
-        }
         public GetQualityMonitorsV2Result build() {
             final var _resultValue = new GetQualityMonitorsV2Result();
             _resultValue.id = id;
+            _resultValue.pageSize = pageSize;
             _resultValue.qualityMonitors = qualityMonitors;
-            _resultValue.workspaceId = workspaceId;
             return _resultValue;
         }
     }

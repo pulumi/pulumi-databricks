@@ -16,14 +16,14 @@ public final class JobTriggerPeriodicArgs extends com.pulumi.resources.ResourceA
     public static final JobTriggerPeriodicArgs Empty = new JobTriggerPeriodicArgs();
 
     /**
-     * Specifies the interval at which the job should run. This value is required.
+     * Specifies the interval at which the job should run.
      * 
      */
     @Import(name="interval", required=true)
     private Output<Integer> interval;
 
     /**
-     * @return Specifies the interval at which the job should run. This value is required.
+     * @return Specifies the interval at which the job should run.
      * 
      */
     public Output<Integer> interval() {
@@ -31,14 +31,14 @@ public final class JobTriggerPeriodicArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Options are {&#34;DAYS&#34;, &#34;HOURS&#34;, &#34;WEEKS&#34;}.
+     * The unit of time for the interval.  Possible values are: `DAYS`, `HOURS`, `WEEKS`.
      * 
      */
     @Import(name="unit", required=true)
     private Output<String> unit;
 
     /**
-     * @return Options are {&#34;DAYS&#34;, &#34;HOURS&#34;, &#34;WEEKS&#34;}.
+     * @return The unit of time for the interval.  Possible values are: `DAYS`, `HOURS`, `WEEKS`.
      * 
      */
     public Output<String> unit() {
@@ -71,7 +71,7 @@ public final class JobTriggerPeriodicArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param interval Specifies the interval at which the job should run. This value is required.
+         * @param interval Specifies the interval at which the job should run.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class JobTriggerPeriodicArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param interval Specifies the interval at which the job should run. This value is required.
+         * @param interval Specifies the interval at which the job should run.
          * 
          * @return builder
          * 
@@ -92,7 +92,7 @@ public final class JobTriggerPeriodicArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param unit Options are {&#34;DAYS&#34;, &#34;HOURS&#34;, &#34;WEEKS&#34;}.
+         * @param unit The unit of time for the interval.  Possible values are: `DAYS`, `HOURS`, `WEEKS`.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class JobTriggerPeriodicArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param unit Options are {&#34;DAYS&#34;, &#34;HOURS&#34;, &#34;WEEKS&#34;}.
+         * @param unit The unit of time for the interval.  Possible values are: `DAYS`, `HOURS`, `WEEKS`.
          * 
          * @return builder
          * 

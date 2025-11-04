@@ -297,6 +297,12 @@ namespace Pulumi.Databricks
         [Input("permissionLevel")]
         public string? PermissionLevel { get; set; }
 
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Inputs.GetMlflowModelProviderConfigArgs? ProviderConfig { get; set; }
+
         [Input("tags")]
         private List<Inputs.GetMlflowModelTagArgs>? _tags;
 
@@ -353,6 +359,12 @@ namespace Pulumi.Databricks
         [Input("permissionLevel")]
         public Input<string>? PermissionLevel { get; set; }
 
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.GetMlflowModelProviderConfigInputArgs>? ProviderConfig { get; set; }
+
         [Input("tags")]
         private InputList<Inputs.GetMlflowModelTagInputArgs>? _tags;
 
@@ -401,6 +413,7 @@ namespace Pulumi.Databricks
         /// Permission level of the requesting user on the object. For what is allowed at each level, see MLflow Model permissions.
         /// </summary>
         public readonly string PermissionLevel;
+        public readonly Outputs.GetMlflowModelProviderConfigResult? ProviderConfig;
         /// <summary>
         /// Array of tags associated with the model.
         /// </summary>
@@ -422,6 +435,8 @@ namespace Pulumi.Databricks
 
             string permissionLevel,
 
+            Outputs.GetMlflowModelProviderConfigResult? providerConfig,
+
             ImmutableArray<Outputs.GetMlflowModelTagResult> tags,
 
             string userId)
@@ -431,6 +446,7 @@ namespace Pulumi.Databricks
             LatestVersions = latestVersions;
             Name = name;
             PermissionLevel = permissionLevel;
+            ProviderConfig = providerConfig;
             Tags = tags;
             UserId = userId;
         }
