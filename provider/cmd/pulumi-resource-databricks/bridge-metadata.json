@@ -2812,7 +2812,12 @@
             },
             "databricks_notebook": {
                 "current": "databricks:index/notebook:Notebook",
-                "majorVersion": 1
+                "majorVersion": 1,
+                "fields": {
+                    "provider_config": {
+                        "maxItemsOne": true
+                    }
+                }
             },
             "databricks_notification_destination": {
                 "current": "databricks:index/notificationDestination:NotificationDestination",
@@ -2925,6 +2930,9 @@
                 "fields": {
                     "permissions": {
                         "maxItemsOne": false
+                    },
+                    "provider_config": {
+                        "maxItemsOne": true
                     }
                 }
             },
@@ -6415,7 +6423,12 @@
             },
             "databricks_notebook": {
                 "current": "databricks:index/getNotebook:getNotebook",
-                "majorVersion": 1
+                "majorVersion": 1,
+                "fields": {
+                    "provider_config": {
+                        "maxItemsOne": true
+                    }
+                }
             },
             "databricks_notebook_paths": {
                 "current": "databricks:index/getNotebookPaths:getNotebookPaths",
@@ -10460,6 +10473,12 @@
             "databricks_mws_workspaces": [
                 "workspace_id"
             ],
+            "databricks_notebook": [
+                "provider_config.$.workspace_id"
+            ],
+            "databricks_permission_assignment": [
+                "provider_config.$.workspace_id"
+            ],
             "databricks_quality_monitor": [
                 "provider_config.$.workspace_id"
             ],
@@ -10538,6 +10557,9 @@
             "databricks_node_type": [
                 "provider_config.$.workspace_id"
             ],
+            "databricks_notebook": [
+                "provider_config.$.workspace_id"
+            ],
             "databricks_notification_destinations": [
                 "provider_config.workspace_id"
             ],
@@ -10601,6 +10623,9 @@
             "databricks_zones": [
                 "provider_config.$.workspace_id"
             ]
-        }
+        },
+        "config": [
+            "workspace_id"
+        ]
     }
 }
