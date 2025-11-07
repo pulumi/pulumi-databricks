@@ -23,6 +23,144 @@ import javax.annotation.Nullable;
  * 
  * You cannot delete a log delivery configuration, but you can disable it when you no longer need it. This fact is important because there is a limit to the number of enabled log delivery configurations that you can create for an account. You can create a maximum of two enabled configurations that use the account level (no workspace filter) and two enabled configurations for every specific workspace (a workspaceId can occur in the workspace filter for two configurations). You can re-enable a disabled configuration, but the request fails if it violates the limits previously described.
  * 
+ * ## Example Usage
+ * 
+ * End-to-end example of usage and audit log delivery:
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.aws.S3Bucket;
+ * import com.pulumi.aws.S3BucketArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.MergeArgs;
+ * import com.pulumi.aws.S3BucketPublicAccessBlock;
+ * import com.pulumi.aws.S3BucketPublicAccessBlockArgs;
+ * import com.pulumi.databricks.DatabricksFunctions;
+ * import com.pulumi.databricks.inputs.GetAwsAssumeRolePolicyArgs;
+ * import com.pulumi.aws.S3BucketVersioning;
+ * import com.pulumi.aws.S3BucketVersioningArgs;
+ * import com.pulumi.aws.IamRole;
+ * import com.pulumi.aws.IamRoleArgs;
+ * import com.pulumi.databricks.inputs.GetAwsBucketPolicyArgs;
+ * import com.pulumi.aws.S3BucketPolicy;
+ * import com.pulumi.aws.S3BucketPolicyArgs;
+ * import com.pulumiverse.time.Sleep;
+ * import com.pulumiverse.time.SleepArgs;
+ * import com.pulumi.databricks.MwsCredentials;
+ * import com.pulumi.databricks.MwsCredentialsArgs;
+ * import com.pulumi.databricks.MwsStorageConfigurations;
+ * import com.pulumi.databricks.MwsStorageConfigurationsArgs;
+ * import com.pulumi.databricks.MwsLogDelivery;
+ * import com.pulumi.databricks.MwsLogDeliveryArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var databricksAccountId = config.get("databricksAccountId");
+ *         var logdeliveryS3Bucket = new S3Bucket("logdeliveryS3Bucket", S3BucketArgs.builder()
+ *             .bucket(String.format("%s-logdelivery", prefix))
+ *             .acl("private")
+ *             .forceDestroy(true)
+ *             .tags(StdFunctions.merge(MergeArgs.builder()
+ *                 .input(                
+ *                     tags,
+ *                     Map.of("name", String.format("%s-logdelivery", prefix)))
+ *                 .build()).result())
+ *             .build());
+ * 
+ *         var logdeliveryS3BucketPublicAccessBlock = new S3BucketPublicAccessBlock("logdeliveryS3BucketPublicAccessBlock", S3BucketPublicAccessBlockArgs.builder()
+ *             .bucket(logdeliveryS3Bucket.id())
+ *             .ignorePublicAcls(true)
+ *             .build());
+ * 
+ *         final var logdelivery = DatabricksFunctions.getAwsAssumeRolePolicy(GetAwsAssumeRolePolicyArgs.builder()
+ *             .externalId(databricksAccountId)
+ *             .forLogDelivery(true)
+ *             .build());
+ * 
+ *         var logdeliveryVersioning = new S3BucketVersioning("logdeliveryVersioning", S3BucketVersioningArgs.builder()
+ *             .bucket(logdeliveryS3Bucket.id())
+ *             .versioningConfiguration(List.of(Map.of("status", "Disabled")))
+ *             .build());
+ * 
+ *         var logdeliveryIamRole = new IamRole("logdeliveryIamRole", IamRoleArgs.builder()
+ *             .name(String.format("%s-logdelivery", prefix))
+ *             .description(String.format("(%s) UsageDelivery role", prefix))
+ *             .assumeRolePolicy(logdelivery.json())
+ *             .tags(tags)
+ *             .build());
+ * 
+ *         final var logdeliveryGetAwsBucketPolicy = DatabricksFunctions.getAwsBucketPolicy(GetAwsBucketPolicyArgs.builder()
+ *             .fullAccessRole(logdeliveryIamRole.arn())
+ *             .bucket(logdeliveryS3Bucket.bucket())
+ *             .build());
+ * 
+ *         var logdeliveryS3BucketPolicy = new S3BucketPolicy("logdeliveryS3BucketPolicy", S3BucketPolicyArgs.builder()
+ *             .bucket(logdeliveryS3Bucket.id())
+ *             .policy(logdeliveryGetAwsBucketPolicy.json())
+ *             .build());
+ * 
+ *         var wait = new Sleep("wait", SleepArgs.builder()
+ *             .createDuration("10s")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(logdeliveryIamRole)
+ *                 .build());
+ * 
+ *         var logWriter = new MwsCredentials("logWriter", MwsCredentialsArgs.builder()
+ *             .accountId(databricksAccountId)
+ *             .credentialsName("Usage Delivery")
+ *             .roleArn(logdeliveryIamRole.arn())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(wait)
+ *                 .build());
+ * 
+ *         var logBucket = new MwsStorageConfigurations("logBucket", MwsStorageConfigurationsArgs.builder()
+ *             .accountId(databricksAccountId)
+ *             .storageConfigurationName("Usage Logs")
+ *             .bucketName(logdeliveryS3Bucket.bucket())
+ *             .build());
+ * 
+ *         var usageLogs = new MwsLogDelivery("usageLogs", MwsLogDeliveryArgs.builder()
+ *             .accountId(databricksAccountId)
+ *             .credentialsId(logWriter.credentialsId())
+ *             .storageConfigurationId(logBucket.storageConfigurationId())
+ *             .deliveryPathPrefix("billable-usage")
+ *             .configName("Usage Logs")
+ *             .logType("BILLABLE_USAGE")
+ *             .outputFormat("CSV")
+ *             .build());
+ * 
+ *         var auditLogs = new MwsLogDelivery("auditLogs", MwsLogDeliveryArgs.builder()
+ *             .accountId(databricksAccountId)
+ *             .credentialsId(logWriter.credentialsId())
+ *             .storageConfigurationId(logBucket.storageConfigurationId())
+ *             .deliveryPathPrefix("audit-logs")
+ *             .configName("Audit Logs")
+ *             .logType("AUDIT_LOGS")
+ *             .outputFormat("JSON")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Billable Usage
  * 
  * CSV files are delivered to `&lt;delivery_path_prefix&gt;/billable-usage/csv/` and are named `workspaceId=&lt;workspace-id&gt;-usageMonth=&lt;month&gt;.csv`, which are delivered daily by overwriting the month&#39;s CSV file for each workspace. Format of CSV file, as well as some usage examples, can be found [here](https://docs.databricks.com/administration-guide/account-settings/usage.html#download-usage-as-a-csv-file).

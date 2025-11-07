@@ -219,14 +219,14 @@ public class Schema extends com.pulumi.resources.CustomResource {
         return this.schemaId;
     }
     /**
-     * Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
+     * Managed location of the schema. Location in cloud storage where data for managed tables will be stored.  If the URL contains special characters, such as space, `&amp;`, etc., they should be percent-encoded (space &gt; `%20`, etc.). If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
      * 
      */
     @Export(name="storageRoot", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> storageRoot;
 
     /**
-     * @return Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
+     * @return Managed location of the schema. Location in cloud storage where data for managed tables will be stored.  If the URL contains special characters, such as space, `&amp;`, etc., they should be percent-encoded (space &gt; `%20`, etc.). If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
      * 
      */
     public Output<Optional<String>> storageRoot() {

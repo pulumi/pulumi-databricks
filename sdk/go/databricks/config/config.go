@@ -71,6 +71,9 @@ func GetDebugHeaders(ctx *pulumi.Context) bool {
 func GetDebugTruncateBytes(ctx *pulumi.Context) int {
 	return config.GetInt(ctx, "databricks:debugTruncateBytes")
 }
+func GetExperimentalIsUnifiedHost(ctx *pulumi.Context) bool {
+	return config.GetBool(ctx, "databricks:experimentalIsUnifiedHost")
+}
 func GetGoogleCredentials(ctx *pulumi.Context) string {
 	return config.Get(ctx, "databricks:googleCredentials")
 }
@@ -118,4 +121,7 @@ func GetUsername(ctx *pulumi.Context) string {
 }
 func GetWarehouseId(ctx *pulumi.Context) string {
 	return config.Get(ctx, "databricks:warehouseId")
+}
+func GetWorkspaceId(ctx *pulumi.Context) string {
+	return config.Get(ctx, "databricks:workspaceId")
 }

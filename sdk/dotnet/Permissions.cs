@@ -337,12 +337,12 @@ namespace Pulumi.Databricks
     ///         ContentBase64 = Std.Base64encode.Invoke(new()
     ///         {
     ///             Input = @"import dlt
-    /// json_path = ""/databricks-datasets/wikipedia-datasets/data-001/clickstream/raw-uncompressed-json/2015_2_clickstream.json""
+    /// json_path = \""/databricks-datasets/wikipedia-datasets/data-001/clickstream/raw-uncompressed-json/2015_2_clickstream.json\""
     /// @dlt.table(
-    ///    comment=""The raw wikipedia clickstream dataset, ingested from /databricks-datasets.""
+    ///    comment=\""The raw wikipedia clickstream dataset, ingested from /databricks-datasets.\""
     /// )
     /// def clickstream_raw():
-    ///     return (spark.read.format(""json"").load(json_path))
+    ///     return (spark.read.format(\""json\"").load(json_path))
     /// ",
     ///         }).Apply(invoke =&gt; invoke.Result),
     ///         Language = "PYTHON",

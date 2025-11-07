@@ -11,6 +11,96 @@ import * as utilities from "./utilities";
  *
  * You cannot delete a log delivery configuration, but you can disable it when you no longer need it. This fact is important because there is a limit to the number of enabled log delivery configurations that you can create for an account. You can create a maximum of two enabled configurations that use the account level (no workspace filter) and two enabled configurations for every specific workspace (a workspaceId can occur in the workspace filter for two configurations). You can re-enable a disabled configuration, but the request fails if it violates the limits previously described.
  *
+ * ## Example Usage
+ *
+ * End-to-end example of usage and audit log delivery:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aws from "@pulumi/aws";
+ * import * as databricks from "@pulumi/databricks";
+ * import * as std from "@pulumi/std";
+ * import * as time from "@pulumiverse/time";
+ *
+ * const config = new pulumi.Config();
+ * // Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
+ * const databricksAccountId = config.requireObject<any>("databricksAccountId");
+ * const logdeliveryS3Bucket = new aws.index.S3Bucket("logdelivery", {
+ *     bucket: `${prefix}-logdelivery`,
+ *     acl: "private",
+ *     forceDestroy: true,
+ *     tags: std.merge({
+ *         input: [
+ *             tags,
+ *             {
+ *                 name: `${prefix}-logdelivery`,
+ *             },
+ *         ],
+ *     }).result,
+ * });
+ * const logdeliveryS3BucketPublicAccessBlock = new aws.index.S3BucketPublicAccessBlock("logdelivery", {
+ *     bucket: logdeliveryS3Bucket.id,
+ *     ignorePublicAcls: true,
+ * });
+ * const logdelivery = databricks.getAwsAssumeRolePolicy({
+ *     externalId: databricksAccountId,
+ *     forLogDelivery: true,
+ * });
+ * const logdeliveryVersioning = new aws.index.S3BucketVersioning("logdelivery_versioning", {
+ *     bucket: logdeliveryS3Bucket.id,
+ *     versioningConfiguration: [{
+ *         status: "Disabled",
+ *     }],
+ * });
+ * const logdeliveryIamRole = new aws.index.IamRole("logdelivery", {
+ *     name: `${prefix}-logdelivery`,
+ *     description: `(${prefix}) UsageDelivery role`,
+ *     assumeRolePolicy: logdelivery.json,
+ *     tags: tags,
+ * });
+ * const logdeliveryGetAwsBucketPolicy = databricks.getAwsBucketPolicy({
+ *     fullAccessRole: logdeliveryIamRole.arn,
+ *     bucket: logdeliveryS3Bucket.bucket,
+ * });
+ * const logdeliveryS3BucketPolicy = new aws.index.S3BucketPolicy("logdelivery", {
+ *     bucket: logdeliveryS3Bucket.id,
+ *     policy: logdeliveryGetAwsBucketPolicy.json,
+ * });
+ * const wait = new time.Sleep("wait", {createDuration: "10s"}, {
+ *     dependsOn: [logdeliveryIamRole],
+ * });
+ * const logWriter = new databricks.MwsCredentials("log_writer", {
+ *     accountId: databricksAccountId,
+ *     credentialsName: "Usage Delivery",
+ *     roleArn: logdeliveryIamRole.arn,
+ * }, {
+ *     dependsOn: [wait],
+ * });
+ * const logBucket = new databricks.MwsStorageConfigurations("log_bucket", {
+ *     accountId: databricksAccountId,
+ *     storageConfigurationName: "Usage Logs",
+ *     bucketName: logdeliveryS3Bucket.bucket,
+ * });
+ * const usageLogs = new databricks.MwsLogDelivery("usage_logs", {
+ *     accountId: databricksAccountId,
+ *     credentialsId: logWriter.credentialsId,
+ *     storageConfigurationId: logBucket.storageConfigurationId,
+ *     deliveryPathPrefix: "billable-usage",
+ *     configName: "Usage Logs",
+ *     logType: "BILLABLE_USAGE",
+ *     outputFormat: "CSV",
+ * });
+ * const auditLogs = new databricks.MwsLogDelivery("audit_logs", {
+ *     accountId: databricksAccountId,
+ *     credentialsId: logWriter.credentialsId,
+ *     storageConfigurationId: logBucket.storageConfigurationId,
+ *     deliveryPathPrefix: "audit-logs",
+ *     configName: "Audit Logs",
+ *     logType: "AUDIT_LOGS",
+ *     outputFormat: "JSON",
+ * });
+ * ```
+ *
  * ## Billable Usage
  *
  * CSV files are delivered to `<delivery_path_prefix>/billable-usage/csv/` and are named `workspaceId=<workspace-id>-usageMonth=<month>.csv`, which are delivered daily by overwriting the month's CSV file for each workspace. Format of CSV file, as well as some usage examples, can be found [here](https://docs.databricks.com/administration-guide/account-settings/usage.html#download-usage-as-a-csv-file).

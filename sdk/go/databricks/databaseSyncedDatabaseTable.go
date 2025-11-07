@@ -25,14 +25,153 @@ import (
 //
 // This example creates a Synced Database Table inside a Database Catalog.
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewDatabaseSyncedDatabaseTable(ctx, "this", &databricks.DatabaseSyncedDatabaseTableArgs{
+//				Name:                pulumi.String("my_database_catalog.public.synced_table"),
+//				LogicalDatabaseName: pulumi.String("databricks_postgres"),
+//				Spec: &databricks.DatabaseSyncedDatabaseTableSpecArgs{
+//					SchedulingPolicy:    pulumi.String("SNAPSHOT"),
+//					SourceTableFullName: pulumi.String("source_delta.tpch.customer"),
+//					PrimaryKeyColumns: pulumi.StringArray{
+//						pulumi.String("c_custkey"),
+//					},
+//					CreateDatabaseObjectsIfMissing: pulumi.Bool(true),
+//					NewPipelineSpec: &databricks.DatabaseSyncedDatabaseTableSpecNewPipelineSpecArgs{
+//						StorageCatalog: pulumi.String("source_delta"),
+//						StorageSchema:  pulumi.String("tpch"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ### Creating a Synced Database Table inside a Standard Catalog
 //
 // This example creates a Synced Database Table inside a Standard Catalog.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewDatabaseSyncedDatabaseTable(ctx, "this", &databricks.DatabaseSyncedDatabaseTableArgs{
+//				Name:                 pulumi.String("my_standard_catalog.public.synced_table"),
+//				LogicalDatabaseName:  pulumi.String("databricks_postgres"),
+//				DatabaseInstanceName: pulumi.String("my-database-instance"),
+//				Spec: &databricks.DatabaseSyncedDatabaseTableSpecArgs{
+//					SchedulingPolicy:    pulumi.String("SNAPSHOT"),
+//					SourceTableFullName: pulumi.String("source_delta.tpch.customer"),
+//					PrimaryKeyColumns: pulumi.StringArray{
+//						pulumi.String("c_custkey"),
+//					},
+//					CreateDatabaseObjectsIfMissing: pulumi.Bool(true),
+//					NewPipelineSpec: &databricks.DatabaseSyncedDatabaseTableSpecNewPipelineSpecArgs{
+//						StorageCatalog: pulumi.String("source_delta"),
+//						StorageSchema:  pulumi.String("tpch"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ### Creating multiple Synced Database Tables and bin packing them into a single pipeline
 //
 // This example creates two Synced Database Tables. The first one specifies a new pipeline spec,
 // which generates a new pipeline. The second one utilizes the pipeline ID of the first table.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			instance, err := databricks.NewDatabaseInstance(ctx, "instance", &databricks.DatabaseInstanceArgs{
+//				Name:     pulumi.String("my-database-instance"),
+//				Capacity: pulumi.String("CU_1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			syncedTable1, err := databricks.NewDatabaseSyncedDatabaseTable(ctx, "synced_table_1", &databricks.DatabaseSyncedDatabaseTableArgs{
+//				Name:                 pulumi.String("my_standard_catalog.public.synced_table1"),
+//				LogicalDatabaseName:  pulumi.String("databricks_postgres"),
+//				DatabaseInstanceName: instance.Name,
+//				Spec: &databricks.DatabaseSyncedDatabaseTableSpecArgs{
+//					SchedulingPolicy:    pulumi.String("SNAPSHOT"),
+//					SourceTableFullName: pulumi.String("source_delta.tpch.customer"),
+//					PrimaryKeyColumns: pulumi.StringArray{
+//						pulumi.String("c_custkey"),
+//					},
+//					CreateDatabaseObjectsIfMissing: pulumi.Bool(true),
+//					NewPipelineSpec: &databricks.DatabaseSyncedDatabaseTableSpecNewPipelineSpecArgs{
+//						StorageCatalog: pulumi.String("source_delta"),
+//						StorageSchema:  pulumi.String("tpch"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewDatabaseSyncedDatabaseTable(ctx, "synced_table_2", &databricks.DatabaseSyncedDatabaseTableArgs{
+//				Name:                 pulumi.String("my_standard_catalog.public.synced_table2"),
+//				LogicalDatabaseName:  pulumi.String("databricks_postgres"),
+//				DatabaseInstanceName: instance.Name,
+//				Spec: &databricks.DatabaseSyncedDatabaseTableSpecArgs{
+//					SchedulingPolicy:    pulumi.String("SNAPSHOT"),
+//					SourceTableFullName: pulumi.String("source_delta.tpch.customer"),
+//					PrimaryKeyColumns: pulumi.StringArray{
+//						pulumi.String("c_custkey"),
+//					},
+//					CreateDatabaseObjectsIfMissing: pulumi.Bool(true),
+//					ExistingPipelineId: syncedTable1.DataSynchronizationStatus.ApplyT(func(dataSynchronizationStatus databricks.DatabaseSyncedDatabaseTableDataSynchronizationStatus) (*string, error) {
+//						return &dataSynchronizationStatus.PipelineId, nil
+//					}).(pulumi.StringPtrOutput),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ### Creating a Synced Database Table with a custom Jobs schedule
 //
@@ -42,6 +181,65 @@ import (
 // - A standard catalog named `"myStandardCatalog"`
 // - A schema in the standard catalog named `"default"`
 // - A source delta table named `"source_delta.schema.customer"` with the primary key `"cCustkey"`
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			syncedTable, err := databricks.NewDatabaseSyncedDatabaseTable(ctx, "synced_table", &databricks.DatabaseSyncedDatabaseTableArgs{
+//				Name:                 pulumi.String("my_standard_catalog.default.my_synced_table"),
+//				LogicalDatabaseName:  pulumi.String("terraform_test_db"),
+//				DatabaseInstanceName: pulumi.String("my-database-instance"),
+//				Spec: &databricks.DatabaseSyncedDatabaseTableSpecArgs{
+//					SchedulingPolicy:    pulumi.String("SNAPSHOT"),
+//					SourceTableFullName: pulumi.String("source_delta.schema.customer"),
+//					PrimaryKeyColumns: pulumi.StringArray{
+//						pulumi.String("c_custkey"),
+//					},
+//					CreateDatabaseObjectsIfMissing: pulumi.Bool(true),
+//					NewPipelineSpec: &databricks.DatabaseSyncedDatabaseTableSpecNewPipelineSpecArgs{
+//						StorageCatalog: pulumi.String("source_delta"),
+//						StorageSchema:  pulumi.String("schema"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewJob(ctx, "sync_pipeline_schedule_job", &databricks.JobArgs{
+//				Name:        pulumi.String("Synced Pipeline Refresh"),
+//				Description: pulumi.String("Job to schedule synced database table pipeline. "),
+//				Tasks: databricks.JobTaskArray{
+//					&databricks.JobTaskArgs{
+//						TaskKey: pulumi.String("synced-table-pipeline"),
+//						PipelineTask: &databricks.JobTaskPipelineTaskArgs{
+//							PipelineId: syncedTable.DataSynchronizationStatus.ApplyT(func(dataSynchronizationStatus databricks.DatabaseSyncedDatabaseTableDataSynchronizationStatus) (*string, error) {
+//								return &dataSynchronizationStatus.PipelineId, nil
+//							}).(pulumi.StringPtrOutput),
+//						},
+//					},
+//				},
+//				Schedule: &databricks.JobScheduleArgs{
+//					QuartzCronExpression: pulumi.String("0 0 0 * * ?"),
+//					TimezoneId:           pulumi.String("Europe/Helsinki"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

@@ -15,15 +15,15 @@ import * as utilities from "./utilities";
  * const config = new pulumi.Config();
  * // Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
  * const databricksAccountId = config.requireObject<any>("databricksAccountId");
- * const rootStorageBucket = new aws.s3.Bucket("root_storage_bucket", {
+ * const rootStorageBucket = new aws.index.S3Bucket("root_storage_bucket", {
  *     bucket: `${prefix}-rootbucket`,
- *     acl: aws.s3.CannedAcl.Private,
+ *     acl: "private",
  * });
- * const rootVersioning = new aws.s3.BucketVersioning("root_versioning", {
+ * const rootVersioning = new aws.index.S3BucketVersioning("root_versioning", {
  *     bucket: rootStorageBucket.id,
- *     versioningConfiguration: {
+ *     versioningConfiguration: [{
  *         status: "Disabled",
- *     },
+ *     }],
  * });
  * const _this = new databricks.MwsStorageConfigurations("this", {
  *     accountId: databricksAccountId,

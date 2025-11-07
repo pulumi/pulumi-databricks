@@ -44,9 +44,9 @@ namespace Pulumi.Databricks
     ///         {
     ///             Input = @"import json
     ///  
-    /// event_message = dbutils.widgets.get(""event_message"")
+    /// event_message = dbutils.widgets.get(\""event_message\"")
     /// event_message_dict = json.loads(event_message)
-    /// print(f""event data={event_message_dict}"")
+    /// print(f\""event data={event_message_dict}\"")
     /// ",
     ///         }).Apply(invoke =&gt; invoke.Result),
     ///     });

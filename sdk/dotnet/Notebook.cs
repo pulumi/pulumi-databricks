@@ -73,6 +73,12 @@ namespace Pulumi.Databricks
         public Output<string> Path { get; private set; } = null!;
 
         /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Output("providerConfig")]
+        public Output<Outputs.NotebookProviderConfig?> ProviderConfig { get; private set; } = null!;
+
+        /// <summary>
         /// Path to notebook in source code format on local filesystem. Conflicts with `ContentBase64`.
         /// </summary>
         [Output("source")]
@@ -170,6 +176,12 @@ namespace Pulumi.Databricks
         public Input<string> Path { get; set; } = null!;
 
         /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.NotebookProviderConfigArgs>? ProviderConfig { get; set; }
+
+        /// <summary>
         /// Path to notebook in source code format on local filesystem. Conflicts with `ContentBase64`.
         /// </summary>
         [Input("source")]
@@ -215,6 +227,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("path")]
         public Input<string>? Path { get; set; }
+
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.NotebookProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         /// <summary>
         /// Path to notebook in source code format on local filesystem. Conflicts with `ContentBase64`.

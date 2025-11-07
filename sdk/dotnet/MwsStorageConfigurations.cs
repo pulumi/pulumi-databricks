@@ -24,18 +24,21 @@ namespace Pulumi.Databricks
     ///     var config = new Config();
     ///     // Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
     ///     var databricksAccountId = config.RequireObject&lt;dynamic&gt;("databricksAccountId");
-    ///     var rootStorageBucket = new Aws.S3.Bucket("root_storage_bucket", new()
+    ///     var rootStorageBucket = new Aws.Index.S3Bucket("root_storage_bucket", new()
     ///     {
-    ///         BucketName = $"{prefix}-rootbucket",
-    ///         Acl = Aws.S3.CannedAcl.Private,
+    ///         Bucket = $"{prefix}-rootbucket",
+    ///         Acl = "private",
     ///     });
     /// 
-    ///     var rootVersioning = new Aws.S3.BucketVersioning("root_versioning", new()
+    ///     var rootVersioning = new Aws.Index.S3BucketVersioning("root_versioning", new()
     ///     {
     ///         Bucket = rootStorageBucket.Id,
-    ///         VersioningConfiguration = new Aws.S3.Inputs.BucketVersioningVersioningConfigurationArgs
+    ///         VersioningConfiguration = new[]
     ///         {
-    ///             Status = "Disabled",
+    ///             
+    ///             {
+    ///                 { "status", "Disabled" },
+    ///             },
     ///         },
     ///     });
     /// 
@@ -43,7 +46,7 @@ namespace Pulumi.Databricks
     ///     {
     ///         AccountId = databricksAccountId,
     ///         StorageConfigurationName = $"{prefix}-storage",
-    ///         BucketName = rootStorageBucket.BucketName,
+    ///         BucketName = rootStorageBucket.Bucket,
     ///     });
     /// 
     /// });

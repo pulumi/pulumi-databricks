@@ -121,7 +121,7 @@ namespace Pulumi.Databricks
         public Output<string?> SchemaName { get; private set; } = null!;
 
         /// <summary>
-        /// The storage location under which model version data files are stored. *Change of this parameter forces recreation of the resource.*
+        /// The storage location under which model version data files are stored.  If the URL contains special characters, such as space, `&amp;`, etc., they should be percent-encoded (space &gt; `%20`, etc.). *Change of this parameter forces recreation of the resource.*
         /// </summary>
         [Output("storageLocation")]
         public Output<string> StorageLocation { get; private set; } = null!;
@@ -232,7 +232,7 @@ namespace Pulumi.Databricks
         public Input<string>? SchemaName { get; set; }
 
         /// <summary>
-        /// The storage location under which model version data files are stored. *Change of this parameter forces recreation of the resource.*
+        /// The storage location under which model version data files are stored.  If the URL contains special characters, such as space, `&amp;`, etc., they should be percent-encoded (space &gt; `%20`, etc.). *Change of this parameter forces recreation of the resource.*
         /// </summary>
         [Input("storageLocation")]
         public Input<string>? StorageLocation { get; set; }
@@ -305,7 +305,7 @@ namespace Pulumi.Databricks
         public Input<string>? SchemaName { get; set; }
 
         /// <summary>
-        /// The storage location under which model version data files are stored. *Change of this parameter forces recreation of the resource.*
+        /// The storage location under which model version data files are stored.  If the URL contains special characters, such as space, `&amp;`, etc., they should be percent-encoded (space &gt; `%20`, etc.). *Change of this parameter forces recreation of the resource.*
         /// </summary>
         [Input("storageLocation")]
         public Input<string>? StorageLocation { get; set; }

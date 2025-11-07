@@ -62,6 +62,91 @@ import (
 //
 // # For Azure
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			invokeFormat, err := std.Format(ctx, &std.FormatArgs{
+//				Input: "abfss://%s@%s.dfs.core.windows.net/",
+//				Args: []interface{}{
+//					unityCatalog.Name,
+//					unityCatalogAzurermStorageAccount.Name,
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			this, err := databricks.NewMetastore(ctx, "this", &databricks.MetastoreArgs{
+//				Name:         pulumi.String("primary"),
+//				StorageRoot:  pulumi.String(invokeFormat.Result),
+//				Owner:        pulumi.String("uc admins"),
+//				Region:       pulumi.String("eastus"),
+//				ForceDestroy: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewMetastoreAssignment(ctx, "this", &databricks.MetastoreAssignmentArgs{
+//				MetastoreId: this.ID(),
+//				WorkspaceId: pulumi.Any(workspaceId),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// # For GCP
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			this, err := databricks.NewMetastore(ctx, "this", &databricks.MetastoreArgs{
+//				Name:         pulumi.String("primary"),
+//				StorageRoot:  pulumi.Sprintf("gs://%v", unityMetastore.Name),
+//				Owner:        pulumi.String("uc admins"),
+//				Region:       pulumi.Any(us_east1),
+//				ForceDestroy: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewMetastoreAssignment(ctx, "this", &databricks.MetastoreAssignmentArgs{
+//				MetastoreId: this.ID(),
+//				WorkspaceId: pulumi.Any(workspaceId),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // This resource can be imported by ID:
@@ -106,7 +191,7 @@ type Metastore struct {
 	Owner pulumi.StringOutput `pulumi:"owner"`
 	// The region of the metastore
 	Region pulumi.StringOutput `pulumi:"region"`
-	// Path on cloud storage account, where managed `Table` are stored. Change forces creation of a new resource. If no `storageRoot` is defined for the metastore, each catalog must have a `storageRoot` defined.
+	// Path on cloud storage account, where managed `Table` are stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). Change forces creation of a new resource. If no `storageRoot` is defined for the metastore, each catalog must have a `storageRoot` defined.
 	StorageRoot             pulumi.StringPtrOutput `pulumi:"storageRoot"`
 	StorageRootCredentialId pulumi.StringPtrOutput `pulumi:"storageRootCredentialId"`
 	UpdatedAt               pulumi.IntOutput       `pulumi:"updatedAt"`
@@ -163,7 +248,7 @@ type metastoreState struct {
 	Owner *string `pulumi:"owner"`
 	// The region of the metastore
 	Region *string `pulumi:"region"`
-	// Path on cloud storage account, where managed `Table` are stored. Change forces creation of a new resource. If no `storageRoot` is defined for the metastore, each catalog must have a `storageRoot` defined.
+	// Path on cloud storage account, where managed `Table` are stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). Change forces creation of a new resource. If no `storageRoot` is defined for the metastore, each catalog must have a `storageRoot` defined.
 	StorageRoot             *string `pulumi:"storageRoot"`
 	StorageRootCredentialId *string `pulumi:"storageRootCredentialId"`
 	UpdatedAt               *int    `pulumi:"updatedAt"`
@@ -191,7 +276,7 @@ type MetastoreState struct {
 	Owner pulumi.StringPtrInput
 	// The region of the metastore
 	Region pulumi.StringPtrInput
-	// Path on cloud storage account, where managed `Table` are stored. Change forces creation of a new resource. If no `storageRoot` is defined for the metastore, each catalog must have a `storageRoot` defined.
+	// Path on cloud storage account, where managed `Table` are stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). Change forces creation of a new resource. If no `storageRoot` is defined for the metastore, each catalog must have a `storageRoot` defined.
 	StorageRoot             pulumi.StringPtrInput
 	StorageRootCredentialId pulumi.StringPtrInput
 	UpdatedAt               pulumi.IntPtrInput
@@ -223,7 +308,7 @@ type metastoreArgs struct {
 	Owner *string `pulumi:"owner"`
 	// The region of the metastore
 	Region *string `pulumi:"region"`
-	// Path on cloud storage account, where managed `Table` are stored. Change forces creation of a new resource. If no `storageRoot` is defined for the metastore, each catalog must have a `storageRoot` defined.
+	// Path on cloud storage account, where managed `Table` are stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). Change forces creation of a new resource. If no `storageRoot` is defined for the metastore, each catalog must have a `storageRoot` defined.
 	StorageRoot             *string `pulumi:"storageRoot"`
 	StorageRootCredentialId *string `pulumi:"storageRootCredentialId"`
 	UpdatedAt               *int    `pulumi:"updatedAt"`
@@ -252,7 +337,7 @@ type MetastoreArgs struct {
 	Owner pulumi.StringPtrInput
 	// The region of the metastore
 	Region pulumi.StringPtrInput
-	// Path on cloud storage account, where managed `Table` are stored. Change forces creation of a new resource. If no `storageRoot` is defined for the metastore, each catalog must have a `storageRoot` defined.
+	// Path on cloud storage account, where managed `Table` are stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). Change forces creation of a new resource. If no `storageRoot` is defined for the metastore, each catalog must have a `storageRoot` defined.
 	StorageRoot             pulumi.StringPtrInput
 	StorageRootCredentialId pulumi.StringPtrInput
 	UpdatedAt               pulumi.IntPtrInput
@@ -405,7 +490,7 @@ func (o MetastoreOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Metastore) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// Path on cloud storage account, where managed `Table` are stored. Change forces creation of a new resource. If no `storageRoot` is defined for the metastore, each catalog must have a `storageRoot` defined.
+// Path on cloud storage account, where managed `Table` are stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). Change forces creation of a new resource. If no `storageRoot` is defined for the metastore, each catalog must have a `storageRoot` defined.
 func (o MetastoreOutput) StorageRoot() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Metastore) pulumi.StringPtrOutput { return v.StorageRoot }).(pulumi.StringPtrOutput)
 }

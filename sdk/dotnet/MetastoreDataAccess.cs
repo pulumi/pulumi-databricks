@@ -51,6 +51,46 @@ namespace Pulumi.Databricks
     /// 
     /// For Azure using managed identity as credential (recommended)
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @this = new Databricks.Metastore("this", new()
+    ///     {
+    ///         Name = "primary",
+    ///         StorageRoot = Std.Format.Invoke(new()
+    ///         {
+    ///             Input = "abfss://%s@%s.dfs.core.windows.net/",
+    ///             Args = new[]
+    ///             {
+    ///                 unityCatalog.Name,
+    ///                 unityCatalogAzurermStorageAccount.Name,
+    ///             },
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         Owner = "uc admins",
+    ///         Region = "eastus",
+    ///         ForceDestroy = true,
+    ///     });
+    /// 
+    ///     var thisMetastoreDataAccess = new Databricks.MetastoreDataAccess("this", new()
+    ///     {
+    ///         MetastoreId = @this.Id,
+    ///         Name = "mi_dac",
+    ///         AzureManagedIdentity = new Databricks.Inputs.MetastoreDataAccessAzureManagedIdentityArgs
+    ///         {
+    ///             AccessConnectorId = accessConnectorId,
+    ///         },
+    ///         IsDefault = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// This resource can be imported by combination of metastore id and the data access name.

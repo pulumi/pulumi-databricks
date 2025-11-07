@@ -479,6 +479,30 @@ class MetastoreDataAccess(pulumi.CustomResource):
 
         For Azure using managed identity as credential (recommended)
 
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+        import pulumi_std as std
+
+        this = databricks.Metastore("this",
+            name="primary",
+            storage_root=std.format(input="abfss://%s@%s.dfs.core.windows.net/",
+                args=[
+                    unity_catalog["name"],
+                    unity_catalog_azurerm_storage_account["name"],
+                ]).result,
+            owner="uc admins",
+            region="eastus",
+            force_destroy=True)
+        this_metastore_data_access = databricks.MetastoreDataAccess("this",
+            metastore_id=this.id,
+            name="mi_dac",
+            azure_managed_identity={
+                "access_connector_id": access_connector_id,
+            },
+            is_default=True)
+        ```
+
         ## Import
 
         This resource can be imported by combination of metastore id and the data access name.
@@ -540,6 +564,30 @@ class MetastoreDataAccess(pulumi.CustomResource):
         ```
 
         For Azure using managed identity as credential (recommended)
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+        import pulumi_std as std
+
+        this = databricks.Metastore("this",
+            name="primary",
+            storage_root=std.format(input="abfss://%s@%s.dfs.core.windows.net/",
+                args=[
+                    unity_catalog["name"],
+                    unity_catalog_azurerm_storage_account["name"],
+                ]).result,
+            owner="uc admins",
+            region="eastus",
+            force_destroy=True)
+        this_metastore_data_access = databricks.MetastoreDataAccess("this",
+            metastore_id=this.id,
+            name="mi_dac",
+            azure_managed_identity={
+                "access_connector_id": access_connector_id,
+            },
+            is_default=True)
+        ```
 
         ## Import
 

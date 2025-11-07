@@ -73,6 +73,99 @@ import javax.annotation.Nullable;
  * 
  * For Azure
  * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.Metastore;
+ * import com.pulumi.databricks.MetastoreArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.FormatArgs;
+ * import com.pulumi.databricks.MetastoreAssignment;
+ * import com.pulumi.databricks.MetastoreAssignmentArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var this_ = new Metastore("this", MetastoreArgs.builder()
+ *             .name("primary")
+ *             .storageRoot(StdFunctions.format(FormatArgs.builder()
+ *                 .input("abfss://%s}{@literal @}{@code %s.dfs.core.windows.net/")
+ *                 .args(                
+ *                     unityCatalog.name(),
+ *                     unityCatalogAzurermStorageAccount.name())
+ *                 .build()).result())
+ *             .owner("uc admins")
+ *             .region("eastus")
+ *             .forceDestroy(true)
+ *             .build());
+ * 
+ *         var thisMetastoreAssignment = new MetastoreAssignment("thisMetastoreAssignment", MetastoreAssignmentArgs.builder()
+ *             .metastoreId(this_.id())
+ *             .workspaceId(workspaceId)
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
+ * For GCP
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.Metastore;
+ * import com.pulumi.databricks.MetastoreArgs;
+ * import com.pulumi.databricks.MetastoreAssignment;
+ * import com.pulumi.databricks.MetastoreAssignmentArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var this_ = new Metastore("this", MetastoreArgs.builder()
+ *             .name("primary")
+ *             .storageRoot(String.format("gs://%s", unityMetastore.name()))
+ *             .owner("uc admins")
+ *             .region(us_east1)
+ *             .forceDestroy(true)
+ *             .build());
+ * 
+ *         var thisMetastoreAssignment = new MetastoreAssignment("thisMetastoreAssignment", MetastoreAssignmentArgs.builder()
+ *             .metastoreId(this_.id())
+ *             .workspaceId(workspaceId)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * This resource can be imported by ID:
@@ -233,14 +326,14 @@ public class Metastore extends com.pulumi.resources.CustomResource {
         return this.region;
     }
     /**
-     * Path on cloud storage account, where managed `databricks.Table` are stored. Change forces creation of a new resource. If no `storageRoot` is defined for the metastore, each catalog must have a `storageRoot` defined.
+     * Path on cloud storage account, where managed `databricks.Table` are stored.  If the URL contains special characters, such as space, `&amp;`, etc., they should be percent-encoded (space &gt; `%20`, etc.). Change forces creation of a new resource. If no `storageRoot` is defined for the metastore, each catalog must have a `storageRoot` defined.
      * 
      */
     @Export(name="storageRoot", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> storageRoot;
 
     /**
-     * @return Path on cloud storage account, where managed `databricks.Table` are stored. Change forces creation of a new resource. If no `storageRoot` is defined for the metastore, each catalog must have a `storageRoot` defined.
+     * @return Path on cloud storage account, where managed `databricks.Table` are stored.  If the URL contains special characters, such as space, `&amp;`, etc., they should be percent-encoded (space &gt; `%20`, etc.). Change forces creation of a new resource. If no `storageRoot` is defined for the metastore, each catalog must have a `storageRoot` defined.
      * 
      */
     public Output<Optional<String>> storageRoot() {

@@ -26,6 +26,50 @@ namespace Pulumi.Databricks
     /// 
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleNetworkPolicy = new Databricks.AccountNetworkPolicy("example_network_policy", new()
+    ///     {
+    ///         NetworkPolicyId = "example-network-policy",
+    ///         Egress = new Databricks.Inputs.AccountNetworkPolicyEgressArgs
+    ///         {
+    ///             NetworkAccess = new Databricks.Inputs.AccountNetworkPolicyEgressNetworkAccessArgs
+    ///             {
+    ///                 RestrictionMode = "RESTRICTED_ACCESS",
+    ///                 AllowedInternetDestinations = new[]
+    ///                 {
+    ///                     new Databricks.Inputs.AccountNetworkPolicyEgressNetworkAccessAllowedInternetDestinationArgs
+    ///                     {
+    ///                         Destination = "example.com",
+    ///                         InternetDestinationType = "DNS_NAME",
+    ///                     },
+    ///                 },
+    ///                 AllowedStorageDestinations = new[]
+    ///                 {
+    ///                     new Databricks.Inputs.AccountNetworkPolicyEgressNetworkAccessAllowedStorageDestinationArgs
+    ///                     {
+    ///                         BucketName = "example-aws-cloud-storage",
+    ///                         Region = "us-west-1",
+    ///                         StorageDestinationType = "AWS_S3",
+    ///                     },
+    ///                 },
+    ///                 PolicyEnforcement = new Databricks.Inputs.AccountNetworkPolicyEgressNetworkAccessPolicyEnforcementArgs
+    ///                 {
+    ///                     EnforcementMode = "ENFORCED",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// As of Pulumi v1.5, resources can be imported through configuration.

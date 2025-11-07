@@ -103,7 +103,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			invokeBase64encode, err := std.Base64encode(ctx, &std.Base64encodeArgs{
-//				Input: "#!/bin/bash\necho \"Hello World\"\n",
+//				Input: "#!/bin/bash\necho \\\"Hello World\\\"\n",
 //			}, nil)
 //			if err != nil {
 //				return err

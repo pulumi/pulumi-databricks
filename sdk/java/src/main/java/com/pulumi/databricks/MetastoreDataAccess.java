@@ -79,6 +79,60 @@ import javax.annotation.Nullable;
  * 
  * For Azure using managed identity as credential (recommended)
  * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.Metastore;
+ * import com.pulumi.databricks.MetastoreArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.FormatArgs;
+ * import com.pulumi.databricks.MetastoreDataAccess;
+ * import com.pulumi.databricks.MetastoreDataAccessArgs;
+ * import com.pulumi.databricks.inputs.MetastoreDataAccessAzureManagedIdentityArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var this_ = new Metastore("this", MetastoreArgs.builder()
+ *             .name("primary")
+ *             .storageRoot(StdFunctions.format(FormatArgs.builder()
+ *                 .input("abfss://%s}{@literal @}{@code %s.dfs.core.windows.net/")
+ *                 .args(                
+ *                     unityCatalog.name(),
+ *                     unityCatalogAzurermStorageAccount.name())
+ *                 .build()).result())
+ *             .owner("uc admins")
+ *             .region("eastus")
+ *             .forceDestroy(true)
+ *             .build());
+ * 
+ *         var thisMetastoreDataAccess = new MetastoreDataAccess("thisMetastoreDataAccess", MetastoreDataAccessArgs.builder()
+ *             .metastoreId(this_.id())
+ *             .name("mi_dac")
+ *             .azureManagedIdentity(MetastoreDataAccessAzureManagedIdentityArgs.builder()
+ *                 .accessConnectorId(accessConnectorId)
+ *                 .build())
+ *             .isDefault(true)
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * This resource can be imported by combination of metastore id and the data access name.

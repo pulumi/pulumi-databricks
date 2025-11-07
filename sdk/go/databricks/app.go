@@ -17,6 +17,54 @@ import (
 //
 // ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewApp(ctx, "this", &databricks.AppArgs{
+//				Name:        pulumi.String("my-custom-app"),
+//				Description: pulumi.String("My app"),
+//				Resources: databricks.AppResourceArray{
+//					&databricks.AppResourceArgs{
+//						Name: pulumi.String("sql-warehouse"),
+//						SqlWarehouse: &databricks.AppResourceSqlWarehouseArgs{
+//							Id:         pulumi.String("e9ca293f79a74b5c"),
+//							Permission: pulumi.String("CAN_MANAGE"),
+//						},
+//					},
+//					&databricks.AppResourceArgs{
+//						Name: pulumi.String("serving-endpoint"),
+//						ServingEndpoint: &databricks.AppResourceServingEndpointArgs{
+//							Name:       pulumi.String("databricks-meta-llama-3-1-70b-instruct"),
+//							Permission: pulumi.String("CAN_MANAGE"),
+//						},
+//					},
+//					&databricks.AppResourceArgs{
+//						Name: pulumi.String("job"),
+//						Job: &databricks.AppResourceJobArgs{
+//							Id:         pulumi.String("1234"),
+//							Permission: pulumi.String("CAN_MANAGE"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Related Resources
 //
 // The following resources are used in the same context:

@@ -249,18 +249,18 @@ class MwsCredentials(pulumi.CustomResource):
         # Names of created resources will be prefixed with this value
         prefix = config.require_object("prefix")
         this = databricks.get_aws_assume_role_policy(external_id=databricks_account_id)
-        cross_account_role = aws.iam.Role("cross_account_role",
-            name=f"{prefix}-crossaccount",
+        cross_account_role = aws.index.IamRole("cross_account_role",
+            name=f{prefix}-crossaccount,
             assume_role_policy=this.json,
             tags=tags)
         this_get_aws_cross_account_policy = databricks.get_aws_cross_account_policy()
-        this_role_policy = aws.iam.RolePolicy("this",
-            name=f"{prefix}-policy",
+        this_iam_role_policy = aws.index.IamRolePolicy("this",
+            name=f{prefix}-policy,
             role=cross_account_role.id,
             policy=this_get_aws_cross_account_policy.json)
         this_mws_credentials = databricks.MwsCredentials("this",
             credentials_name=f"{prefix}-creds",
-            role_arn=cross_account_role.arn)
+            role_arn=cross_account_role["arn"])
         ```
 
         ## Related Resources
@@ -324,18 +324,18 @@ class MwsCredentials(pulumi.CustomResource):
         # Names of created resources will be prefixed with this value
         prefix = config.require_object("prefix")
         this = databricks.get_aws_assume_role_policy(external_id=databricks_account_id)
-        cross_account_role = aws.iam.Role("cross_account_role",
-            name=f"{prefix}-crossaccount",
+        cross_account_role = aws.index.IamRole("cross_account_role",
+            name=f{prefix}-crossaccount,
             assume_role_policy=this.json,
             tags=tags)
         this_get_aws_cross_account_policy = databricks.get_aws_cross_account_policy()
-        this_role_policy = aws.iam.RolePolicy("this",
-            name=f"{prefix}-policy",
+        this_iam_role_policy = aws.index.IamRolePolicy("this",
+            name=f{prefix}-policy,
             role=cross_account_role.id,
             policy=this_get_aws_cross_account_policy.json)
         this_mws_credentials = databricks.MwsCredentials("this",
             credentials_name=f"{prefix}-creds",
-            role_arn=cross_account_role.arn)
+            role_arn=cross_account_role["arn"])
         ```
 
         ## Related Resources

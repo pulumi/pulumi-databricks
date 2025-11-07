@@ -216,14 +216,14 @@ public class SqlTable extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.storageCredentialName);
     }
     /**
-     * URL of storage location for Table data (required for EXTERNAL Tables). Not supported for `VIEW` or `MANAGED` table_type.
+     * URL of storage location for Table data (required for EXTERNAL Tables).  If the URL contains special characters, such as space, `&amp;`, etc., they should be percent-encoded (space &gt; `%20`, etc.).  Not supported for `VIEW` or `MANAGED` table_type.
      * 
      */
     @Export(name="storageLocation", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> storageLocation;
 
     /**
-     * @return URL of storage location for Table data (required for EXTERNAL Tables). Not supported for `VIEW` or `MANAGED` table_type.
+     * @return URL of storage location for Table data (required for EXTERNAL Tables).  If the URL contains special characters, such as space, `&amp;`, etc., they should be percent-encoded (space &gt; `%20`, etc.).  Not supported for `VIEW` or `MANAGED` table_type.
      * 
      */
     public Output<Optional<String>> storageLocation() {

@@ -31,16 +31,16 @@ namespace Pulumi.Databricks
     ///         ExternalId = databricksAccountId,
     ///     });
     /// 
-    ///     var crossAccountRole = new Aws.Iam.Role("cross_account_role", new()
+    ///     var crossAccountRole = new Aws.Index.IamRole("cross_account_role", new()
     ///     {
     ///         Name = $"{prefix}-crossaccount",
-    ///         AssumeRolePolicy = @this.Apply(@this =&gt; @this.Apply(getAwsAssumeRolePolicyResult =&gt; getAwsAssumeRolePolicyResult.Json)),
+    ///         AssumeRolePolicy = @this.Apply(getAwsAssumeRolePolicyResult =&gt; getAwsAssumeRolePolicyResult.Json),
     ///         Tags = tags,
     ///     });
     /// 
     ///     var thisGetAwsCrossAccountPolicy = Databricks.GetAwsCrossAccountPolicy.Invoke();
     /// 
-    ///     var thisRolePolicy = new Aws.Iam.RolePolicy("this", new()
+    ///     var thisIamRolePolicy = new Aws.Index.IamRolePolicy("this", new()
     ///     {
     ///         Name = $"{prefix}-policy",
     ///         Role = crossAccountRole.Id,

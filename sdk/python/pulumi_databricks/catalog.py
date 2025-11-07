@@ -51,7 +51,7 @@ class CatalogArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] properties: Extensible Catalog properties.
         :param pulumi.Input[_builtins.str] provider_name: For Delta Sharing Catalogs: the name of the delta sharing provider. Change forces creation of a new resource.
         :param pulumi.Input[_builtins.str] share_name: For Delta Sharing Catalogs: the name of the share under the share provider. Change forces creation of a new resource.
-        :param pulumi.Input[_builtins.str] storage_root: Managed location of the catalog. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
+        :param pulumi.Input[_builtins.str] storage_root: Managed location of the catalog. Location in cloud storage where data for managed tables will be stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
         """
         if browse_only is not None:
             pulumi.set(__self__, "browse_only", browse_only)
@@ -261,7 +261,7 @@ class CatalogArgs:
     @pulumi.getter(name="storageRoot")
     def storage_root(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Managed location of the catalog. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
+        Managed location of the catalog. Location in cloud storage where data for managed tables will be stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
         """
         return pulumi.get(self, "storage_root")
 
@@ -316,7 +316,7 @@ class _CatalogState:
         :param pulumi.Input[_builtins.str] securable_type: the type of Unity Catalog securable.
         :param pulumi.Input[_builtins.str] share_name: For Delta Sharing Catalogs: the name of the share under the share provider. Change forces creation of a new resource.
         :param pulumi.Input[_builtins.str] storage_location: effective storage Location URL (full path) for managed tables within catalog.
-        :param pulumi.Input[_builtins.str] storage_root: Managed location of the catalog. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
+        :param pulumi.Input[_builtins.str] storage_root: Managed location of the catalog. Location in cloud storage where data for managed tables will be stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
         :param pulumi.Input[_builtins.int] updated_at: time at which this catalog was last modified, in epoch milliseconds..
         :param pulumi.Input[_builtins.str] updated_by: username of user who last modified catalog.
         """
@@ -613,7 +613,7 @@ class _CatalogState:
     @pulumi.getter(name="storageRoot")
     def storage_root(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Managed location of the catalog. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
+        Managed location of the catalog. Location in cloud storage where data for managed tables will be stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
         """
         return pulumi.get(self, "storage_root")
 
@@ -734,7 +734,7 @@ class Catalog(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] properties: Extensible Catalog properties.
         :param pulumi.Input[_builtins.str] provider_name: For Delta Sharing Catalogs: the name of the delta sharing provider. Change forces creation of a new resource.
         :param pulumi.Input[_builtins.str] share_name: For Delta Sharing Catalogs: the name of the share under the share provider. Change forces creation of a new resource.
-        :param pulumi.Input[_builtins.str] storage_root: Managed location of the catalog. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
+        :param pulumi.Input[_builtins.str] storage_root: Managed location of the catalog. Location in cloud storage where data for managed tables will be stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
         """
         ...
     @overload
@@ -915,7 +915,7 @@ class Catalog(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] securable_type: the type of Unity Catalog securable.
         :param pulumi.Input[_builtins.str] share_name: For Delta Sharing Catalogs: the name of the share under the share provider. Change forces creation of a new resource.
         :param pulumi.Input[_builtins.str] storage_location: effective storage Location URL (full path) for managed tables within catalog.
-        :param pulumi.Input[_builtins.str] storage_root: Managed location of the catalog. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
+        :param pulumi.Input[_builtins.str] storage_root: Managed location of the catalog. Location in cloud storage where data for managed tables will be stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
         :param pulumi.Input[_builtins.int] updated_at: time at which this catalog was last modified, in epoch milliseconds..
         :param pulumi.Input[_builtins.str] updated_by: username of user who last modified catalog.
         """
@@ -1109,7 +1109,7 @@ class Catalog(pulumi.CustomResource):
     @pulumi.getter(name="storageRoot")
     def storage_root(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Managed location of the catalog. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
+        Managed location of the catalog. Location in cloud storage where data for managed tables will be stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
         """
         return pulumi.get(self, "storage_root")
 

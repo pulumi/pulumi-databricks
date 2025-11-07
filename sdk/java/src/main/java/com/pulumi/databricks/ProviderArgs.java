@@ -157,6 +157,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.debugTruncateBytes);
     }
 
+    @Import(name="experimentalIsUnifiedHost", json=true)
+    private @Nullable Output<Boolean> experimentalIsUnifiedHost;
+
+    public Optional<Output<Boolean>> experimentalIsUnifiedHost() {
+        return Optional.ofNullable(this.experimentalIsUnifiedHost);
+    }
+
     @Import(name="googleCredentials")
     private @Nullable Output<String> googleCredentials;
 
@@ -269,6 +276,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.warehouseId);
     }
 
+    @Import(name="workspaceId")
+    private @Nullable Output<String> workspaceId;
+
+    public Optional<Output<String>> workspaceId() {
+        return Optional.ofNullable(this.workspaceId);
+    }
+
     private ProviderArgs() {}
 
     private ProviderArgs(ProviderArgs $) {
@@ -292,6 +306,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.databricksIdTokenFilepath = $.databricksIdTokenFilepath;
         this.debugHeaders = $.debugHeaders;
         this.debugTruncateBytes = $.debugTruncateBytes;
+        this.experimentalIsUnifiedHost = $.experimentalIsUnifiedHost;
         this.googleCredentials = $.googleCredentials;
         this.googleServiceAccount = $.googleServiceAccount;
         this.host = $.host;
@@ -308,6 +323,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.token = $.token;
         this.username = $.username;
         this.warehouseId = $.warehouseId;
+        this.workspaceId = $.workspaceId;
     }
 
     public static Builder builder() {
@@ -508,6 +524,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
             return debugTruncateBytes(Output.of(debugTruncateBytes));
         }
 
+        public Builder experimentalIsUnifiedHost(@Nullable Output<Boolean> experimentalIsUnifiedHost) {
+            $.experimentalIsUnifiedHost = experimentalIsUnifiedHost;
+            return this;
+        }
+
+        public Builder experimentalIsUnifiedHost(Boolean experimentalIsUnifiedHost) {
+            return experimentalIsUnifiedHost(Output.of(experimentalIsUnifiedHost));
+        }
+
         public Builder googleCredentials(@Nullable Output<String> googleCredentials) {
             $.googleCredentials = googleCredentials;
             return this;
@@ -650,6 +675,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder warehouseId(String warehouseId) {
             return warehouseId(Output.of(warehouseId));
+        }
+
+        public Builder workspaceId(@Nullable Output<String> workspaceId) {
+            $.workspaceId = workspaceId;
+            return this;
+        }
+
+        public Builder workspaceId(String workspaceId) {
+            return workspaceId(Output.of(workspaceId));
         }
 
         public ProviderArgs build() {

@@ -117,7 +117,7 @@ type Catalog struct {
 	ShareName pulumi.StringPtrOutput `pulumi:"shareName"`
 	// effective storage Location URL (full path) for managed tables within catalog.
 	StorageLocation pulumi.StringOutput `pulumi:"storageLocation"`
-	// Managed location of the catalog. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
+	// Managed location of the catalog. Location in cloud storage where data for managed tables will be stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
 	StorageRoot pulumi.StringPtrOutput `pulumi:"storageRoot"`
 	// time at which this catalog was last modified, in epoch milliseconds..
 	UpdatedAt pulumi.IntOutput `pulumi:"updatedAt"`
@@ -193,7 +193,7 @@ type catalogState struct {
 	ShareName *string `pulumi:"shareName"`
 	// effective storage Location URL (full path) for managed tables within catalog.
 	StorageLocation *string `pulumi:"storageLocation"`
-	// Managed location of the catalog. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
+	// Managed location of the catalog. Location in cloud storage where data for managed tables will be stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
 	StorageRoot *string `pulumi:"storageRoot"`
 	// time at which this catalog was last modified, in epoch milliseconds..
 	UpdatedAt *int `pulumi:"updatedAt"`
@@ -240,7 +240,7 @@ type CatalogState struct {
 	ShareName pulumi.StringPtrInput
 	// effective storage Location URL (full path) for managed tables within catalog.
 	StorageLocation pulumi.StringPtrInput
-	// Managed location of the catalog. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
+	// Managed location of the catalog. Location in cloud storage where data for managed tables will be stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
 	StorageRoot pulumi.StringPtrInput
 	// time at which this catalog was last modified, in epoch milliseconds..
 	UpdatedAt pulumi.IntPtrInput
@@ -280,7 +280,7 @@ type catalogArgs struct {
 	ProvisioningInfo *CatalogProvisioningInfo `pulumi:"provisioningInfo"`
 	// For Delta Sharing Catalogs: the name of the share under the share provider. Change forces creation of a new resource.
 	ShareName *string `pulumi:"shareName"`
-	// Managed location of the catalog. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
+	// Managed location of the catalog. Location in cloud storage where data for managed tables will be stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
 	StorageRoot *string `pulumi:"storageRoot"`
 }
 
@@ -313,7 +313,7 @@ type CatalogArgs struct {
 	ProvisioningInfo CatalogProvisioningInfoPtrInput
 	// For Delta Sharing Catalogs: the name of the share under the share provider. Change forces creation of a new resource.
 	ShareName pulumi.StringPtrInput
-	// Managed location of the catalog. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
+	// Managed location of the catalog. Location in cloud storage where data for managed tables will be stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
 	StorageRoot pulumi.StringPtrInput
 }
 
@@ -507,7 +507,7 @@ func (o CatalogOutput) StorageLocation() pulumi.StringOutput {
 	return o.ApplyT(func(v *Catalog) pulumi.StringOutput { return v.StorageLocation }).(pulumi.StringOutput)
 }
 
-// Managed location of the catalog. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
+// Managed location of the catalog. Location in cloud storage where data for managed tables will be stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
 func (o CatalogOutput) StorageRoot() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Catalog) pulumi.StringPtrOutput { return v.StorageRoot }).(pulumi.StringPtrOutput)
 }

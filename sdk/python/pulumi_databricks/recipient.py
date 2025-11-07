@@ -545,6 +545,43 @@ class Recipient(pulumi.CustomResource):
             })
         ```
 
+        ### Databricks to Databricks Sharing
+
+        Setting `authentication_type` type to `DATABRICKS` allows you to automatically create a provider for a recipient who
+        is using Databricks. To do this they would need to provide the global metastore id that you will be sharing with. The
+        global metastore id follows the format: `<cloud>:<region>:<guid>`
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+        import pulumi_std as std
+
+        current = databricks.get_current_user()
+        recipient_metastore = databricks.Metastore("recipient_metastore",
+            name="recipient",
+            storage_root=std.format(input="abfss://%s@%s.dfs.core.windows.net/",
+                args=[
+                    unity_catalog["name"],
+                    unity_catalog_azurerm_storage_account["name"],
+                ]).result,
+            delta_sharing_scope="INTERNAL",
+            delta_sharing_recipient_token_lifetime_in_seconds=60000000,
+            force_destroy=True)
+        db2db = databricks.Recipient("db2db",
+            name=f"{current.alphanumeric}-recipient",
+            comment="Made by Pulumi",
+            authentication_type="DATABRICKS",
+            data_recipient_global_metastore_id=recipient_metastore.global_metastore_id)
+        ```
+
+        ## Related Resources
+
+        The following resources are often used in the same context:
+
+        * Share to create Delta Sharing shares.
+        * Grants to manage Delta Sharing permissions.
+        * get_shares to read existing Delta Sharing shares.
+
         ## Import
 
         The recipient resource can be imported using the name of the recipient:
@@ -620,6 +657,43 @@ class Recipient(pulumi.CustomResource):
                 "allowed_ip_addresses": [],
             })
         ```
+
+        ### Databricks to Databricks Sharing
+
+        Setting `authentication_type` type to `DATABRICKS` allows you to automatically create a provider for a recipient who
+        is using Databricks. To do this they would need to provide the global metastore id that you will be sharing with. The
+        global metastore id follows the format: `<cloud>:<region>:<guid>`
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+        import pulumi_std as std
+
+        current = databricks.get_current_user()
+        recipient_metastore = databricks.Metastore("recipient_metastore",
+            name="recipient",
+            storage_root=std.format(input="abfss://%s@%s.dfs.core.windows.net/",
+                args=[
+                    unity_catalog["name"],
+                    unity_catalog_azurerm_storage_account["name"],
+                ]).result,
+            delta_sharing_scope="INTERNAL",
+            delta_sharing_recipient_token_lifetime_in_seconds=60000000,
+            force_destroy=True)
+        db2db = databricks.Recipient("db2db",
+            name=f"{current.alphanumeric}-recipient",
+            comment="Made by Pulumi",
+            authentication_type="DATABRICKS",
+            data_recipient_global_metastore_id=recipient_metastore.global_metastore_id)
+        ```
+
+        ## Related Resources
+
+        The following resources are often used in the same context:
+
+        * Share to create Delta Sharing shares.
+        * Grants to manage Delta Sharing permissions.
+        * get_shares to read existing Delta Sharing shares.
 
         ## Import
 

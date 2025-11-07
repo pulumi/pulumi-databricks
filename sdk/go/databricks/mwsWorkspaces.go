@@ -146,8 +146,7 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/iam"
-//	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/s3"
+//	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws"
 //	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
 //	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -175,10 +174,10 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			crossAccountRole, err := iam.NewRole(ctx, "cross_account_role", &iam.RoleArgs{
-//				Name:             pulumi.Sprintf("%v-crossaccount", prefix),
-//				AssumeRolePolicy: pulumi.String(this.Json),
-//				Tags:             pulumi.Any(tags),
+//			crossAccountRole, err := aws.NewIamRole(ctx, "cross_account_role", &aws.IamRoleArgs{
+//				Name:             fmt.Sprintf("%v-crossaccount", prefix),
+//				AssumeRolePolicy: this.Json,
+//				Tags:             tags,
 //			})
 //			if err != nil {
 //				return err
@@ -187,10 +186,10 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = iam.NewRolePolicy(ctx, "this", &iam.RolePolicyArgs{
-//				Name:   pulumi.Sprintf("%v-policy", prefix),
-//				Role:   crossAccountRole.ID(),
-//				Policy: pulumi.String(thisGetAwsCrossAccountPolicy.Json),
+//			_, err = aws.NewIamRolePolicy(ctx, "this", &aws.IamRolePolicyArgs{
+//				Name:   fmt.Sprintf("%v-policy", prefix),
+//				Role:   crossAccountRole.Id,
+//				Policy: thisGetAwsCrossAccountPolicy.Json,
 //			})
 //			if err != nil {
 //				return err
@@ -203,30 +202,34 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			rootStorageBucket, err := s3.NewBucket(ctx, "root_storage_bucket", &s3.BucketArgs{
-//				Bucket:       pulumi.Sprintf("%v-rootbucket", prefix),
-//				Acl:          pulumi.String(s3.CannedAclPrivate),
-//				ForceDestroy: pulumi.Bool(true),
-//				Tags:         pulumi.Any(tags),
+//			rootStorageBucket, err := aws.NewS3Bucket(ctx, "root_storage_bucket", &aws.S3BucketArgs{
+//				Bucket:       fmt.Sprintf("%v-rootbucket", prefix),
+//				Acl:          "private",
+//				ForceDestroy: true,
+//				Tags:         tags,
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = s3.NewBucketVersioning(ctx, "root_versioning", &s3.BucketVersioningArgs{
-//				Bucket: rootStorageBucket.ID(),
-//				VersioningConfiguration: &s3.BucketVersioningVersioningConfigurationArgs{
-//					Status: pulumi.String("Disabled"),
+//			_, err = aws.NewS3BucketVersioning(ctx, "root_versioning", &aws.S3BucketVersioningArgs{
+//				Bucket: rootStorageBucket.Id,
+//				VersioningConfiguration: []map[string]interface{}{
+//					map[string]interface{}{
+//						"status": "Disabled",
+//					},
 //				},
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = s3.NewBucketServerSideEncryptionConfiguration(ctx, "root_storage_bucket", &s3.BucketServerSideEncryptionConfigurationArgs{
+//			_, err = aws.NewS3BucketServerSideEncryptionConfiguration(ctx, "root_storage_bucket", &aws.S3BucketServerSideEncryptionConfigurationArgs{
 //				Bucket: rootStorageBucket.Bucket,
-//				Rules: s3.BucketServerSideEncryptionConfigurationRuleArray{
-//					&s3.BucketServerSideEncryptionConfigurationRuleArgs{
-//						ApplyServerSideEncryptionByDefault: &s3.BucketServerSideEncryptionConfigurationRuleApplyServerSideEncryptionByDefaultArgs{
-//							SseAlgorithm: pulumi.String("AES256"),
+//				Rule: []map[string]interface{}{
+//					map[string]interface{}{
+//						"applyServerSideEncryptionByDefault": []map[string]interface{}{
+//							map[string]interface{}{
+//								"sseAlgorithm": "AES256",
+//							},
 //						},
 //					},
 //				},
@@ -234,28 +237,29 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			rootStorageBucketBucketPublicAccessBlock, err := s3.NewBucketPublicAccessBlock(ctx, "root_storage_bucket", &s3.BucketPublicAccessBlockArgs{
-//				Bucket:                rootStorageBucket.ID(),
-//				BlockPublicAcls:       pulumi.Bool(true),
-//				BlockPublicPolicy:     pulumi.Bool(true),
-//				IgnorePublicAcls:      pulumi.Bool(true),
-//				RestrictPublicBuckets: pulumi.Bool(true),
+//			rootStorageBucketS3BucketPublicAccessBlock, err := aws.NewS3BucketPublicAccessBlock(ctx, "root_storage_bucket", &aws.S3BucketPublicAccessBlockArgs{
+//				Bucket:                rootStorageBucket.Id,
+//				BlockPublicAcls:       true,
+//				BlockPublicPolicy:     true,
+//				IgnorePublicAcls:      true,
+//				RestrictPublicBuckets: true,
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				rootStorageBucket,
 //			}))
 //			if err != nil {
 //				return err
 //			}
-//			thisGetAwsBucketPolicy := databricks.GetAwsBucketPolicyOutput(ctx, databricks.GetAwsBucketPolicyOutputArgs{
+//			thisGetAwsBucketPolicy, err := databricks.GetAwsBucketPolicy(ctx, &databricks.GetAwsBucketPolicyArgs{
 //				Bucket: rootStorageBucket.Bucket,
 //			}, nil)
-//			_, err = s3.NewBucketPolicy(ctx, "root_bucket_policy", &s3.BucketPolicyArgs{
-//				Bucket: rootStorageBucket.ID(),
-//				Policy: pulumi.String(thisGetAwsBucketPolicy.ApplyT(func(thisGetAwsBucketPolicy databricks.GetAwsBucketPolicyResult) (*string, error) {
-//					return &thisGetAwsBucketPolicy.Json, nil
-//				}).(pulumi.StringPtrOutput)),
+//			if err != nil {
+//				return err
+//			}
+//			_, err = aws.NewS3BucketPolicy(ctx, "root_bucket_policy", &aws.S3BucketPolicyArgs{
+//				Bucket: rootStorageBucket.Id,
+//				Policy: thisGetAwsBucketPolicy.Json,
 //			}, pulumi.DependsOn([]pulumi.Resource{
-//				rootStorageBucketBucketPublicAccessBlock,
+//				rootStorageBucketS3BucketPublicAccessBlock,
 //			}))
 //			if err != nil {
 //				return err
@@ -419,13 +423,14 @@ type MwsWorkspaces struct {
 	GcpManagedNetworkConfig MwsWorkspacesGcpManagedNetworkConfigPtrOutput `pulumi:"gcpManagedNetworkConfig"`
 	// (String, GCP only) identifier of a service account created for the workspace in form of `db-<workspace-id>@prod-gcp-<region>.iam.gserviceaccount.com`
 	GcpWorkspaceSa pulumi.StringOutput `pulumi:"gcpWorkspaceSa"`
-	// Deprecated: gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.96.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+	// Deprecated: gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.97.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 	GkeConfig           MwsWorkspacesGkeConfigPtrOutput `pulumi:"gkeConfig"`
 	IsNoPublicIpEnabled pulumi.BoolPtrOutput            `pulumi:"isNoPublicIpEnabled"`
 	// region of the subnet.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// `customerManagedKeyId` from customer managed keys with `useCases` set to `MANAGED_SERVICES`. This is used to encrypt the workspace's notebook and secret data in the control plane.
 	ManagedServicesCustomerManagedKeyId pulumi.StringPtrOutput `pulumi:"managedServicesCustomerManagedKeyId"`
+	NetworkConnectivityConfigId         pulumi.StringOutput    `pulumi:"networkConnectivityConfigId"`
 	// `networkId` from networks.
 	NetworkId pulumi.StringPtrOutput `pulumi:"networkId"`
 	// The pricing tier of the workspace.
@@ -521,13 +526,14 @@ type mwsWorkspacesState struct {
 	GcpManagedNetworkConfig *MwsWorkspacesGcpManagedNetworkConfig `pulumi:"gcpManagedNetworkConfig"`
 	// (String, GCP only) identifier of a service account created for the workspace in form of `db-<workspace-id>@prod-gcp-<region>.iam.gserviceaccount.com`
 	GcpWorkspaceSa *string `pulumi:"gcpWorkspaceSa"`
-	// Deprecated: gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.96.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+	// Deprecated: gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.97.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 	GkeConfig           *MwsWorkspacesGkeConfig `pulumi:"gkeConfig"`
 	IsNoPublicIpEnabled *bool                   `pulumi:"isNoPublicIpEnabled"`
 	// region of the subnet.
 	Location *string `pulumi:"location"`
 	// `customerManagedKeyId` from customer managed keys with `useCases` set to `MANAGED_SERVICES`. This is used to encrypt the workspace's notebook and secret data in the control plane.
 	ManagedServicesCustomerManagedKeyId *string `pulumi:"managedServicesCustomerManagedKeyId"`
+	NetworkConnectivityConfigId         *string `pulumi:"networkConnectivityConfigId"`
 	// `networkId` from networks.
 	NetworkId *string `pulumi:"networkId"`
 	// The pricing tier of the workspace.
@@ -581,13 +587,14 @@ type MwsWorkspacesState struct {
 	GcpManagedNetworkConfig MwsWorkspacesGcpManagedNetworkConfigPtrInput
 	// (String, GCP only) identifier of a service account created for the workspace in form of `db-<workspace-id>@prod-gcp-<region>.iam.gserviceaccount.com`
 	GcpWorkspaceSa pulumi.StringPtrInput
-	// Deprecated: gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.96.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+	// Deprecated: gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.97.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 	GkeConfig           MwsWorkspacesGkeConfigPtrInput
 	IsNoPublicIpEnabled pulumi.BoolPtrInput
 	// region of the subnet.
 	Location pulumi.StringPtrInput
 	// `customerManagedKeyId` from customer managed keys with `useCases` set to `MANAGED_SERVICES`. This is used to encrypt the workspace's notebook and secret data in the control plane.
 	ManagedServicesCustomerManagedKeyId pulumi.StringPtrInput
+	NetworkConnectivityConfigId         pulumi.StringPtrInput
 	// `networkId` from networks.
 	NetworkId pulumi.StringPtrInput
 	// The pricing tier of the workspace.
@@ -641,13 +648,14 @@ type mwsWorkspacesArgs struct {
 	ExpectedWorkspaceStatus *string                               `pulumi:"expectedWorkspaceStatus"`
 	ExternalCustomerInfo    *MwsWorkspacesExternalCustomerInfo    `pulumi:"externalCustomerInfo"`
 	GcpManagedNetworkConfig *MwsWorkspacesGcpManagedNetworkConfig `pulumi:"gcpManagedNetworkConfig"`
-	// Deprecated: gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.96.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+	// Deprecated: gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.97.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 	GkeConfig           *MwsWorkspacesGkeConfig `pulumi:"gkeConfig"`
 	IsNoPublicIpEnabled *bool                   `pulumi:"isNoPublicIpEnabled"`
 	// region of the subnet.
 	Location *string `pulumi:"location"`
 	// `customerManagedKeyId` from customer managed keys with `useCases` set to `MANAGED_SERVICES`. This is used to encrypt the workspace's notebook and secret data in the control plane.
 	ManagedServicesCustomerManagedKeyId *string `pulumi:"managedServicesCustomerManagedKeyId"`
+	NetworkConnectivityConfigId         *string `pulumi:"networkConnectivityConfigId"`
 	// `networkId` from networks.
 	NetworkId *string `pulumi:"networkId"`
 	// The pricing tier of the workspace.
@@ -698,13 +706,14 @@ type MwsWorkspacesArgs struct {
 	ExpectedWorkspaceStatus pulumi.StringPtrInput
 	ExternalCustomerInfo    MwsWorkspacesExternalCustomerInfoPtrInput
 	GcpManagedNetworkConfig MwsWorkspacesGcpManagedNetworkConfigPtrInput
-	// Deprecated: gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.96.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+	// Deprecated: gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.97.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 	GkeConfig           MwsWorkspacesGkeConfigPtrInput
 	IsNoPublicIpEnabled pulumi.BoolPtrInput
 	// region of the subnet.
 	Location pulumi.StringPtrInput
 	// `customerManagedKeyId` from customer managed keys with `useCases` set to `MANAGED_SERVICES`. This is used to encrypt the workspace's notebook and secret data in the control plane.
 	ManagedServicesCustomerManagedKeyId pulumi.StringPtrInput
+	NetworkConnectivityConfigId         pulumi.StringPtrInput
 	// `networkId` from networks.
 	NetworkId pulumi.StringPtrInput
 	// The pricing tier of the workspace.
@@ -889,7 +898,7 @@ func (o MwsWorkspacesOutput) GcpWorkspaceSa() pulumi.StringOutput {
 	return o.ApplyT(func(v *MwsWorkspaces) pulumi.StringOutput { return v.GcpWorkspaceSa }).(pulumi.StringOutput)
 }
 
-// Deprecated: gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.96.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+// Deprecated: gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.97.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
 func (o MwsWorkspacesOutput) GkeConfig() MwsWorkspacesGkeConfigPtrOutput {
 	return o.ApplyT(func(v *MwsWorkspaces) MwsWorkspacesGkeConfigPtrOutput { return v.GkeConfig }).(MwsWorkspacesGkeConfigPtrOutput)
 }
@@ -906,6 +915,10 @@ func (o MwsWorkspacesOutput) Location() pulumi.StringPtrOutput {
 // `customerManagedKeyId` from customer managed keys with `useCases` set to `MANAGED_SERVICES`. This is used to encrypt the workspace's notebook and secret data in the control plane.
 func (o MwsWorkspacesOutput) ManagedServicesCustomerManagedKeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MwsWorkspaces) pulumi.StringPtrOutput { return v.ManagedServicesCustomerManagedKeyId }).(pulumi.StringPtrOutput)
+}
+
+func (o MwsWorkspacesOutput) NetworkConnectivityConfigId() pulumi.StringOutput {
+	return o.ApplyT(func(v *MwsWorkspaces) pulumi.StringOutput { return v.NetworkConnectivityConfigId }).(pulumi.StringOutput)
 }
 
 // `networkId` from networks.

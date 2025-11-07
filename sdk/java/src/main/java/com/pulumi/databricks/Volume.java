@@ -212,14 +212,14 @@ public class Volume extends com.pulumi.resources.CustomResource {
         return this.schemaName;
     }
     /**
-     * Path inside an External Location. Only used for `EXTERNAL` Volumes. Change forces creation of a new resource.
+     * URL for the volume (should be inside of an existing External Location). Only used for `EXTERNAL` Volumes.  If the URL contains special characters, such as space, `&amp;`, etc., they should be percent-encoded (space &gt; `%20`, etc.). Change forces creation of a new resource.
      * 
      */
     @Export(name="storageLocation", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> storageLocation;
 
     /**
-     * @return Path inside an External Location. Only used for `EXTERNAL` Volumes. Change forces creation of a new resource.
+     * @return URL for the volume (should be inside of an existing External Location). Only used for `EXTERNAL` Volumes.  If the URL contains special characters, such as space, `&amp;`, etc., they should be percent-encoded (space &gt; `%20`, etc.). Change forces creation of a new resource.
      * 
      */
     public Output<Optional<String>> storageLocation() {

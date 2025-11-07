@@ -4,10 +4,13 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetNotebookProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetNotebookResult {
@@ -38,6 +41,7 @@ public final class GetNotebookResult {
      */
     private String objectType;
     private String path;
+    private @Nullable GetNotebookProviderConfig providerConfig;
     /**
      * @return path on Workspace File System (WSFS) in form of `/Workspace` + `path`
      * 
@@ -86,6 +90,9 @@ public final class GetNotebookResult {
     public String path() {
         return this.path;
     }
+    public Optional<GetNotebookProviderConfig> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
     /**
      * @return path on Workspace File System (WSFS) in form of `/Workspace` + `path`
      * 
@@ -110,6 +117,7 @@ public final class GetNotebookResult {
         private Integer objectId;
         private String objectType;
         private String path;
+        private @Nullable GetNotebookProviderConfig providerConfig;
         private String workspacePath;
         public Builder() {}
         public Builder(GetNotebookResult defaults) {
@@ -121,6 +129,7 @@ public final class GetNotebookResult {
     	      this.objectId = defaults.objectId;
     	      this.objectType = defaults.objectType;
     	      this.path = defaults.path;
+    	      this.providerConfig = defaults.providerConfig;
     	      this.workspacePath = defaults.workspacePath;
         }
 
@@ -181,6 +190,12 @@ public final class GetNotebookResult {
             return this;
         }
         @CustomType.Setter
+        public Builder providerConfig(@Nullable GetNotebookProviderConfig providerConfig) {
+
+            this.providerConfig = providerConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder workspacePath(String workspacePath) {
             if (workspacePath == null) {
               throw new MissingRequiredPropertyException("GetNotebookResult", "workspacePath");
@@ -197,6 +212,7 @@ public final class GetNotebookResult {
             _resultValue.objectId = objectId;
             _resultValue.objectType = objectType;
             _resultValue.path = path;
+            _resultValue.providerConfig = providerConfig;
             _resultValue.workspacePath = workspacePath;
             return _resultValue;
         }

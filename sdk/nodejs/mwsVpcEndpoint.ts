@@ -23,7 +23,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
  *
- * const workspace = new aws.ec2.VpcEndpoint("workspace", {
+ * const workspace = new aws.index.VpcEndpoint("workspace", {
  *     vpcId: vpc.vpcId,
  *     serviceName: privateLink.workspaceService,
  *     vpcEndpointType: "Interface",
@@ -33,7 +33,7 @@ import * as utilities from "./utilities";
  * }, {
  *     dependsOn: [plSubnet],
  * });
- * const relay = new aws.ec2.VpcEndpoint("relay", {
+ * const relay = new aws.index.VpcEndpoint("relay", {
  *     vpcId: vpc.vpcId,
  *     serviceName: privateLink.relayService,
  *     vpcEndpointType: "Interface",
@@ -52,14 +52,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
  *
- * const s3 = new aws.ec2.VpcEndpoint("s3", {
+ * const s3 = new aws.index.VpcEndpoint("s3", {
  *     vpcId: vpc.vpcId,
  *     routeTableIds: vpc.privateRouteTableIds,
  *     serviceName: `com.amazonaws.${region}.s3`,
  * }, {
  *     dependsOn: [vpc],
  * });
- * const sts = new aws.ec2.VpcEndpoint("sts", {
+ * const sts = new aws.index.VpcEndpoint("sts", {
  *     vpcId: vpc.vpcId,
  *     serviceName: `com.amazonaws.${region}.sts`,
  *     vpcEndpointType: "Interface",
@@ -69,7 +69,7 @@ import * as utilities from "./utilities";
  * }, {
  *     dependsOn: [vpc],
  * });
- * const kinesis_streams = new aws.ec2.VpcEndpoint("kinesis-streams", {
+ * const kinesis_streams = new aws.index.VpcEndpoint("kinesis-streams", {
  *     vpcId: vpc.vpcId,
  *     serviceName: `com.amazonaws.${region}.kinesis-streams`,
  *     vpcEndpointType: "Interface",

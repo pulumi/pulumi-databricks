@@ -146,7 +146,7 @@ export class Volume extends pulumi.CustomResource {
      */
     declare public readonly schemaName: pulumi.Output<string>;
     /**
-     * Path inside an External Location. Only used for `EXTERNAL` Volumes. Change forces creation of a new resource.
+     * URL for the volume (should be inside of an existing External Location). Only used for `EXTERNAL` Volumes.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). Change forces creation of a new resource.
      */
     declare public readonly storageLocation: pulumi.Output<string | undefined>;
     /**
@@ -229,7 +229,7 @@ export interface VolumeState {
      */
     schemaName?: pulumi.Input<string>;
     /**
-     * Path inside an External Location. Only used for `EXTERNAL` Volumes. Change forces creation of a new resource.
+     * URL for the volume (should be inside of an existing External Location). Only used for `EXTERNAL` Volumes.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). Change forces creation of a new resource.
      */
     storageLocation?: pulumi.Input<string>;
     /**
@@ -267,7 +267,7 @@ export interface VolumeArgs {
      */
     schemaName: pulumi.Input<string>;
     /**
-     * Path inside an External Location. Only used for `EXTERNAL` Volumes. Change forces creation of a new resource.
+     * URL for the volume (should be inside of an existing External Location). Only used for `EXTERNAL` Volumes.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). Change forces creation of a new resource.
      */
     storageLocation?: pulumi.Input<string>;
     /**

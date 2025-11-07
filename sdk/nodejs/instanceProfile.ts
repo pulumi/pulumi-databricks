@@ -11,73 +11,6 @@ import * as utilities from "./utilities";
  *
  * > Please switch to databricks.StorageCredential with Unity Catalog to manage storage credentials, which provides a better and faster way for managing credential security.
  *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * import * as databricks from "@pulumi/databricks";
- *
- * const config = new pulumi.Config();
- * // Role that you've specified on https://accounts.cloud.databricks.com/#aws
- * const crossaccountRoleName = config.require("crossaccountRoleName");
- * const assumeRoleForEc2 = aws.iam.getPolicyDocument({
- *     statements: [{
- *         effect: "Allow",
- *         actions: ["sts:AssumeRole"],
- *         principals: [{
- *             identifiers: ["ec2.amazonaws.com"],
- *             type: "Service",
- *         }],
- *     }],
- * });
- * const roleForS3Access = new aws.iam.Role("role_for_s3_access", {
- *     name: "shared-ec2-role-for-s3",
- *     description: "Role for shared access",
- *     assumeRolePolicy: assumeRoleForEc2.then(assumeRoleForEc2 => assumeRoleForEc2.json),
- * });
- * const passRoleForS3Access = aws.iam.getPolicyDocumentOutput({
- *     statements: [{
- *         effect: "Allow",
- *         actions: ["iam:PassRole"],
- *         resources: [roleForS3Access.arn],
- *     }],
- * });
- * const passRoleForS3AccessPolicy = new aws.iam.Policy("pass_role_for_s3_access", {
- *     name: "shared-pass-role-for-s3-access",
- *     path: "/",
- *     policy: passRoleForS3Access.apply(passRoleForS3Access => passRoleForS3Access.json),
- * });
- * const crossAccount = new aws.iam.RolePolicyAttachment("cross_account", {
- *     policyArn: passRoleForS3AccessPolicy.arn,
- *     role: crossaccountRoleName,
- * });
- * const shared = new aws.iam.InstanceProfile("shared", {
- *     name: "shared-instance-profile",
- *     role: roleForS3Access.name,
- * });
- * const sharedInstanceProfile = new databricks.InstanceProfile("shared", {instanceProfileArn: shared.arn});
- * const latest = databricks.getSparkVersion({});
- * const smallest = databricks.getNodeType({
- *     localDisk: true,
- * });
- * const _this = new databricks.Cluster("this", {
- *     clusterName: "Shared Autoscaling",
- *     sparkVersion: latest.then(latest => latest.id),
- *     nodeTypeId: smallest.then(smallest => smallest.id),
- *     autoterminationMinutes: 20,
- *     autoscale: {
- *         minWorkers: 1,
- *         maxWorkers: 50,
- *     },
- *     awsAttributes: {
- *         instanceProfileArn: sharedInstanceProfile.id,
- *         availability: "SPOT",
- *         zoneId: "us-east-1",
- *         firstOnDemand: 1,
- *         spotBidPricePercent: 100,
- *     },
- * });
- * ```
- *
  * ## Usage with Cluster Policies
  *
  * It is advised to keep all common configurations in Cluster Policies to maintain control of the environments launched, so `databricks.Cluster` above could be replaced with `databricks.ClusterPolicy`:
@@ -112,46 +45,6 @@ import * as utilities from "./utilities";
  * const all = new databricks.GroupInstanceProfile("all", {
  *     groupId: users.then(users => users.id),
  *     instanceProfileId: _this.id,
- * });
- * ```
- *
- * ## Usage with Databricks SQL serverless
- *
- * When the instance profile ARN and its associated IAM role ARN don't match and the instance profile is intended for use with Databricks SQL serverless, the `iamRoleArn` parameter can be specified.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * import * as databricks from "@pulumi/databricks";
- *
- * const sqlServerlessAssumeRole = aws.iam.getPolicyDocument({
- *     statements: [{
- *         actions: ["sts:AssumeRole"],
- *         principals: [{
- *             type: "AWS",
- *             identifiers: ["arn:aws:iam::790110701330:role/serverless-customer-resource-role"],
- *         }],
- *         conditions: [{
- *             test: "StringEquals",
- *             variable: "sts:ExternalID",
- *             values: [
- *                 "databricks-serverless-<YOUR_WORKSPACE_ID1>",
- *                 "databricks-serverless-<YOUR_WORKSPACE_ID2>",
- *             ],
- *         }],
- *     }],
- * });
- * const _this = new aws.iam.Role("this", {
- *     name: "my-databricks-sql-serverless-role",
- *     assumeRolePolicy: sqlServerlessAssumeRole.then(sqlServerlessAssumeRole => sqlServerlessAssumeRole.json),
- * });
- * const thisInstanceProfile = new aws.iam.InstanceProfile("this", {
- *     name: "my-databricks-sql-serverless-instance-profile",
- *     role: _this.name,
- * });
- * const thisInstanceProfile2 = new databricks.InstanceProfile("this", {
- *     instanceProfileArn: thisInstanceProfile.arn,
- *     iamRoleArn: _this.arn,
  * });
  * ```
  *

@@ -29,10 +29,10 @@ import * as utilities from "./utilities";
  *     awsIamRole: singleOrNone(.map(entry => ({
  *         roleArn: cloudCredentialId,
  *     }))),
- *     azureManagedIdentity: singleOrNone(.map(entry => ({
+ *     azureManagedIdentity: singleOrNone(.map(entry2 => ({
  *         accessConnectorId: cloudCredentialId,
  *     }))),
- *     databricksGcpServiceAccount: singleOrNone(.map(entry => ({}))),
+ *     databricksGcpServiceAccount: singleOrNone(.map(entry3 => ({}))),
  *     name: "storage_cred",
  *     comment: "Managed by TF",
  * });
@@ -119,10 +119,10 @@ export interface GetCurrentConfigResult {
  *     awsIamRole: singleOrNone(.map(entry => ({
  *         roleArn: cloudCredentialId,
  *     }))),
- *     azureManagedIdentity: singleOrNone(.map(entry => ({
+ *     azureManagedIdentity: singleOrNone(.map(entry2 => ({
  *         accessConnectorId: cloudCredentialId,
  *     }))),
- *     databricksGcpServiceAccount: singleOrNone(.map(entry => ({}))),
+ *     databricksGcpServiceAccount: singleOrNone(.map(entry3 => ({}))),
  *     name: "storage_cred",
  *     comment: "Managed by TF",
  * });

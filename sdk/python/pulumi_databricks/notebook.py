@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['NotebookArgs', 'Notebook']
 
@@ -26,6 +28,7 @@ class NotebookArgs:
                  md5: Optional[pulumi.Input[_builtins.str]] = None,
                  object_id: Optional[pulumi.Input[_builtins.int]] = None,
                  object_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['NotebookProviderConfigArgs']] = None,
                  source: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Notebook resource.
@@ -33,6 +36,7 @@ class NotebookArgs:
         :param pulumi.Input[_builtins.str] content_base64: The base64-encoded notebook source code. Conflicts with `source`. Use of `content_base64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a notebook with configuration properties for a data pipeline.
         :param pulumi.Input[_builtins.str] language: One of `SCALA`, `PYTHON`, `SQL`, `R`.
         :param pulumi.Input[_builtins.int] object_id: Unique identifier for a NOTEBOOK
+        :param pulumi.Input['NotebookProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] source: Path to notebook in source code format on local filesystem. Conflicts with `content_base64`.
         """
         pulumi.set(__self__, "path", path)
@@ -51,6 +55,8 @@ class NotebookArgs:
             pulumi.log.warn("""object_type is deprecated: Always is a notebook""")
         if object_type is not None:
             pulumi.set(__self__, "object_type", object_type)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if source is not None:
             pulumi.set(__self__, "source", source)
 
@@ -131,6 +137,18 @@ class NotebookArgs:
         pulumi.set(self, "object_type", value)
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['NotebookProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['NotebookProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
+    @_builtins.property
     @pulumi.getter
     def source(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -153,6 +171,7 @@ class _NotebookState:
                  object_id: Optional[pulumi.Input[_builtins.int]] = None,
                  object_type: Optional[pulumi.Input[_builtins.str]] = None,
                  path: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input['NotebookProviderConfigArgs']] = None,
                  source: Optional[pulumi.Input[_builtins.str]] = None,
                  url: Optional[pulumi.Input[_builtins.str]] = None,
                  workspace_path: Optional[pulumi.Input[_builtins.str]] = None):
@@ -162,6 +181,7 @@ class _NotebookState:
         :param pulumi.Input[_builtins.str] language: One of `SCALA`, `PYTHON`, `SQL`, `R`.
         :param pulumi.Input[_builtins.int] object_id: Unique identifier for a NOTEBOOK
         :param pulumi.Input[_builtins.str] path: The absolute path of the notebook or directory, beginning with "/", e.g. "/Demo".
+        :param pulumi.Input['NotebookProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] source: Path to notebook in source code format on local filesystem. Conflicts with `content_base64`.
         :param pulumi.Input[_builtins.str] url: Routable URL of the notebook
         :param pulumi.Input[_builtins.str] workspace_path: path on Workspace File System (WSFS) in form of `/Workspace` + `path`
@@ -183,6 +203,8 @@ class _NotebookState:
             pulumi.set(__self__, "object_type", object_type)
         if path is not None:
             pulumi.set(__self__, "path", path)
+        if provider_config is not None:
+            pulumi.set(__self__, "provider_config", provider_config)
         if source is not None:
             pulumi.set(__self__, "source", source)
         if url is not None:
@@ -267,6 +289,18 @@ class _NotebookState:
         pulumi.set(self, "path", value)
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional[pulumi.Input['NotebookProviderConfigArgs']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
+
+    @provider_config.setter
+    def provider_config(self, value: Optional[pulumi.Input['NotebookProviderConfigArgs']]):
+        pulumi.set(self, "provider_config", value)
+
+    @_builtins.property
     @pulumi.getter
     def source(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -316,6 +350,7 @@ class Notebook(pulumi.CustomResource):
                  object_id: Optional[pulumi.Input[_builtins.int]] = None,
                  object_type: Optional[pulumi.Input[_builtins.str]] = None,
                  path: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['NotebookProviderConfigArgs', 'NotebookProviderConfigArgsDict']]] = None,
                  source: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
@@ -351,6 +386,7 @@ class Notebook(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] language: One of `SCALA`, `PYTHON`, `SQL`, `R`.
         :param pulumi.Input[_builtins.int] object_id: Unique identifier for a NOTEBOOK
         :param pulumi.Input[_builtins.str] path: The absolute path of the notebook or directory, beginning with "/", e.g. "/Demo".
+        :param pulumi.Input[Union['NotebookProviderConfigArgs', 'NotebookProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] source: Path to notebook in source code format on local filesystem. Conflicts with `content_base64`.
         """
         ...
@@ -408,6 +444,7 @@ class Notebook(pulumi.CustomResource):
                  object_id: Optional[pulumi.Input[_builtins.int]] = None,
                  object_type: Optional[pulumi.Input[_builtins.str]] = None,
                  path: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: Optional[pulumi.Input[Union['NotebookProviderConfigArgs', 'NotebookProviderConfigArgsDict']]] = None,
                  source: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -427,6 +464,7 @@ class Notebook(pulumi.CustomResource):
             if path is None and not opts.urn:
                 raise TypeError("Missing required property 'path'")
             __props__.__dict__["path"] = path
+            __props__.__dict__["provider_config"] = provider_config
             __props__.__dict__["source"] = source
             __props__.__dict__["url"] = None
             __props__.__dict__["workspace_path"] = None
@@ -447,6 +485,7 @@ class Notebook(pulumi.CustomResource):
             object_id: Optional[pulumi.Input[_builtins.int]] = None,
             object_type: Optional[pulumi.Input[_builtins.str]] = None,
             path: Optional[pulumi.Input[_builtins.str]] = None,
+            provider_config: Optional[pulumi.Input[Union['NotebookProviderConfigArgs', 'NotebookProviderConfigArgsDict']]] = None,
             source: Optional[pulumi.Input[_builtins.str]] = None,
             url: Optional[pulumi.Input[_builtins.str]] = None,
             workspace_path: Optional[pulumi.Input[_builtins.str]] = None) -> 'Notebook':
@@ -461,6 +500,7 @@ class Notebook(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] language: One of `SCALA`, `PYTHON`, `SQL`, `R`.
         :param pulumi.Input[_builtins.int] object_id: Unique identifier for a NOTEBOOK
         :param pulumi.Input[_builtins.str] path: The absolute path of the notebook or directory, beginning with "/", e.g. "/Demo".
+        :param pulumi.Input[Union['NotebookProviderConfigArgs', 'NotebookProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] source: Path to notebook in source code format on local filesystem. Conflicts with `content_base64`.
         :param pulumi.Input[_builtins.str] url: Routable URL of the notebook
         :param pulumi.Input[_builtins.str] workspace_path: path on Workspace File System (WSFS) in form of `/Workspace` + `path`
@@ -476,6 +516,7 @@ class Notebook(pulumi.CustomResource):
         __props__.__dict__["object_id"] = object_id
         __props__.__dict__["object_type"] = object_type
         __props__.__dict__["path"] = path
+        __props__.__dict__["provider_config"] = provider_config
         __props__.__dict__["source"] = source
         __props__.__dict__["url"] = url
         __props__.__dict__["workspace_path"] = workspace_path
@@ -528,6 +569,14 @@ class Notebook(pulumi.CustomResource):
         The absolute path of the notebook or directory, beginning with "/", e.g. "/Demo".
         """
         return pulumi.get(self, "path")
+
+    @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> pulumi.Output[Optional['outputs.NotebookProviderConfig']]:
+        """
+        Configure the provider for management through account provider. This block consists of the following fields:
+        """
+        return pulumi.get(self, "provider_config")
 
     @_builtins.property
     @pulumi.getter

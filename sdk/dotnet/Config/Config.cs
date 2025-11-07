@@ -172,6 +172,13 @@ namespace Pulumi.Databricks
             set => _debugTruncateBytes.Set(value);
         }
 
+        private static readonly __Value<bool?> _experimentalIsUnifiedHost = new __Value<bool?>(() => __config.GetBoolean("experimentalIsUnifiedHost"));
+        public static bool? ExperimentalIsUnifiedHost
+        {
+            get => _experimentalIsUnifiedHost.Get();
+            set => _experimentalIsUnifiedHost.Set(value);
+        }
+
         private static readonly __Value<string?> _googleCredentials = new __Value<string?>(() => __config.Get("googleCredentials"));
         public static string? GoogleCredentials
         {
@@ -282,6 +289,13 @@ namespace Pulumi.Databricks
         {
             get => _warehouseId.Get();
             set => _warehouseId.Set(value);
+        }
+
+        private static readonly __Value<string?> _workspaceId = new __Value<string?>(() => __config.Get("workspaceId"));
+        public static string? WorkspaceId
+        {
+            get => _workspaceId.Get();
+            set => _workspaceId.Set(value);
         }
 
     }

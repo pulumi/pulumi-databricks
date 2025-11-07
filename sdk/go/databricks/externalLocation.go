@@ -79,6 +79,130 @@ import (
 //
 // # For Azure
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			external, err := databricks.NewStorageCredential(ctx, "external", &databricks.StorageCredentialArgs{
+//				Name: pulumi.Any(extCred.DisplayName),
+//				AzureServicePrincipal: &databricks.StorageCredentialAzureServicePrincipalArgs{
+//					DirectoryId:   pulumi.Any(tenantId),
+//					ApplicationId: pulumi.Any(extCred.ApplicationId),
+//					ClientSecret:  pulumi.Any(extCredAzureadApplicationPassword.Value),
+//				},
+//				Comment: pulumi.String("Managed by TF"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				this,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			invokeFormat, err := std.Format(ctx, &std.FormatArgs{
+//				Input: "abfss://%s@%s.dfs.core.windows.net",
+//				Args: []interface{}{
+//					extStorage.Name,
+//					extStorageAzurermStorageAccount.Name,
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			some, err := databricks.NewExternalLocation(ctx, "some", &databricks.ExternalLocationArgs{
+//				Name:           pulumi.String("external"),
+//				Url:            pulumi.String(invokeFormat.Result),
+//				CredentialName: external.ID(),
+//				Comment:        pulumi.String("Managed by TF"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				this,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewGrants(ctx, "some", &databricks.GrantsArgs{
+//				ExternalLocation: some.ID(),
+//				Grants: databricks.GrantsGrantArray{
+//					&databricks.GrantsGrantArgs{
+//						Principal: pulumi.String("Data Engineers"),
+//						Privileges: pulumi.StringArray{
+//							pulumi.String("CREATE_EXTERNAL_TABLE"),
+//							pulumi.String("READ_FILES"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// # For GCP
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ext, err := databricks.NewStorageCredential(ctx, "ext", &databricks.StorageCredentialArgs{
+//				Name:                        pulumi.String("the-creds"),
+//				DatabricksGcpServiceAccount: &databricks.StorageCredentialDatabricksGcpServiceAccountArgs{},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			some, err := databricks.NewExternalLocation(ctx, "some", &databricks.ExternalLocationArgs{
+//				Name:           pulumi.String("the-ext-location"),
+//				Url:            pulumi.Sprintf("gs://%v", extBucket.Name),
+//				CredentialName: ext.ID(),
+//				Comment:        pulumi.String("Managed by TF"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewGrants(ctx, "some", &databricks.GrantsArgs{
+//				ExternalLocation: some.ID(),
+//				Grants: databricks.GrantsGrantArray{
+//					&databricks.GrantsGrantArgs{
+//						Principal: pulumi.String("Data Engineers"),
+//						Privileges: pulumi.StringArray{
+//							pulumi.String("CREATE_EXTERNAL_TABLE"),
+//							pulumi.String("READ_FILES"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// Example `encryptionDetails` specifying SSE_S3 encryption:
+//
 // ## Import
 //
 // This resource can be imported by `name`:
@@ -139,7 +263,7 @@ type ExternalLocation struct {
 	UpdatedAt pulumi.IntOutput `pulumi:"updatedAt"`
 	// Username of user who last modified the external location.
 	UpdatedBy pulumi.StringOutput `pulumi:"updatedBy"`
-	// Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
+	// Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).   If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.).
 	Url pulumi.StringOutput `pulumi:"url"`
 }
 
@@ -215,7 +339,7 @@ type externalLocationState struct {
 	UpdatedAt *int `pulumi:"updatedAt"`
 	// Username of user who last modified the external location.
 	UpdatedBy *string `pulumi:"updatedBy"`
-	// Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
+	// Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).   If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.).
 	Url *string `pulumi:"url"`
 }
 
@@ -256,7 +380,7 @@ type ExternalLocationState struct {
 	UpdatedAt pulumi.IntPtrInput
 	// Username of user who last modified the external location.
 	UpdatedBy pulumi.StringPtrInput
-	// Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
+	// Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).   If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.).
 	Url pulumi.StringPtrInput
 }
 
@@ -290,7 +414,7 @@ type externalLocationArgs struct {
 	ReadOnly *bool `pulumi:"readOnly"`
 	// Suppress validation errors if any & force save the external location
 	SkipValidation *bool `pulumi:"skipValidation"`
-	// Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
+	// Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).   If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.).
 	Url string `pulumi:"url"`
 }
 
@@ -321,7 +445,7 @@ type ExternalLocationArgs struct {
 	ReadOnly pulumi.BoolPtrInput
 	// Suppress validation errors if any & force save the external location
 	SkipValidation pulumi.BoolPtrInput
-	// Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
+	// Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).   If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.).
 	Url pulumi.StringInput
 }
 
@@ -508,7 +632,7 @@ func (o ExternalLocationOutput) UpdatedBy() pulumi.StringOutput {
 	return o.ApplyT(func(v *ExternalLocation) pulumi.StringOutput { return v.UpdatedBy }).(pulumi.StringOutput)
 }
 
-// Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
+// Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).   If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.).
 func (o ExternalLocationOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v *ExternalLocation) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
 }

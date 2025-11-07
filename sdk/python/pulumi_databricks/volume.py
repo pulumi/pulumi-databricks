@@ -34,7 +34,7 @@ class VolumeArgs:
         :param pulumi.Input[_builtins.str] comment: Free-form text.
         :param pulumi.Input[_builtins.str] name: Name of the Volume
         :param pulumi.Input[_builtins.str] owner: Name of the volume owner.
-        :param pulumi.Input[_builtins.str] storage_location: Path inside an External Location. Only used for `EXTERNAL` Volumes. Change forces creation of a new resource.
+        :param pulumi.Input[_builtins.str] storage_location: URL for the volume (should be inside of an existing External Location). Only used for `EXTERNAL` Volumes.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). Change forces creation of a new resource.
         """
         pulumi.set(__self__, "catalog_name", catalog_name)
         pulumi.set(__self__, "schema_name", schema_name)
@@ -124,7 +124,7 @@ class VolumeArgs:
     @pulumi.getter(name="storageLocation")
     def storage_location(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Path inside an External Location. Only used for `EXTERNAL` Volumes. Change forces creation of a new resource.
+        URL for the volume (should be inside of an existing External Location). Only used for `EXTERNAL` Volumes.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). Change forces creation of a new resource.
         """
         return pulumi.get(self, "storage_location")
 
@@ -151,7 +151,7 @@ class _VolumeState:
         :param pulumi.Input[_builtins.str] name: Name of the Volume
         :param pulumi.Input[_builtins.str] owner: Name of the volume owner.
         :param pulumi.Input[_builtins.str] schema_name: Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
-        :param pulumi.Input[_builtins.str] storage_location: Path inside an External Location. Only used for `EXTERNAL` Volumes. Change forces creation of a new resource.
+        :param pulumi.Input[_builtins.str] storage_location: URL for the volume (should be inside of an existing External Location). Only used for `EXTERNAL` Volumes.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). Change forces creation of a new resource.
         :param pulumi.Input[_builtins.str] volume_path: base file path for this Unity Catalog Volume in form of `/Volumes/<catalog>/<schema>/<name>`.
         :param pulumi.Input[_builtins.str] volume_type: Volume type. `EXTERNAL` or `MANAGED`. Change forces creation of a new resource.
         """
@@ -236,7 +236,7 @@ class _VolumeState:
     @pulumi.getter(name="storageLocation")
     def storage_location(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Path inside an External Location. Only used for `EXTERNAL` Volumes. Change forces creation of a new resource.
+        URL for the volume (should be inside of an existing External Location). Only used for `EXTERNAL` Volumes.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). Change forces creation of a new resource.
         """
         return pulumi.get(self, "storage_location")
 
@@ -378,7 +378,7 @@ class Volume(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Name of the Volume
         :param pulumi.Input[_builtins.str] owner: Name of the volume owner.
         :param pulumi.Input[_builtins.str] schema_name: Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
-        :param pulumi.Input[_builtins.str] storage_location: Path inside an External Location. Only used for `EXTERNAL` Volumes. Change forces creation of a new resource.
+        :param pulumi.Input[_builtins.str] storage_location: URL for the volume (should be inside of an existing External Location). Only used for `EXTERNAL` Volumes.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). Change forces creation of a new resource.
         :param pulumi.Input[_builtins.str] volume_type: Volume type. `EXTERNAL` or `MANAGED`. Change forces creation of a new resource.
         """
         ...
@@ -550,7 +550,7 @@ class Volume(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Name of the Volume
         :param pulumi.Input[_builtins.str] owner: Name of the volume owner.
         :param pulumi.Input[_builtins.str] schema_name: Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
-        :param pulumi.Input[_builtins.str] storage_location: Path inside an External Location. Only used for `EXTERNAL` Volumes. Change forces creation of a new resource.
+        :param pulumi.Input[_builtins.str] storage_location: URL for the volume (should be inside of an existing External Location). Only used for `EXTERNAL` Volumes.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). Change forces creation of a new resource.
         :param pulumi.Input[_builtins.str] volume_path: base file path for this Unity Catalog Volume in form of `/Volumes/<catalog>/<schema>/<name>`.
         :param pulumi.Input[_builtins.str] volume_type: Volume type. `EXTERNAL` or `MANAGED`. Change forces creation of a new resource.
         """
@@ -612,7 +612,7 @@ class Volume(pulumi.CustomResource):
     @pulumi.getter(name="storageLocation")
     def storage_location(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Path inside an External Location. Only used for `EXTERNAL` Volumes. Change forces creation of a new resource.
+        URL for the volume (should be inside of an existing External Location). Only used for `EXTERNAL` Volumes.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). Change forces creation of a new resource.
         """
         return pulumi.get(self, "storage_location")
 

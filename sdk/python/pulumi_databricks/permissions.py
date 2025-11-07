@@ -941,12 +941,12 @@ class Permissions(pulumi.CustomResource):
         eng = databricks.Group("eng", display_name="Engineering")
         ldp_demo = databricks.Notebook("ldp_demo",
             content_base64=std.base64encode(input=\"\"\"import dlt
-        json_path = "/databricks-datasets/wikipedia-datasets/data-001/clickstream/raw-uncompressed-json/2015_2_clickstream.json"
+        json_path = \\"/databricks-datasets/wikipedia-datasets/data-001/clickstream/raw-uncompressed-json/2015_2_clickstream.json\\"
         @dlt.table(
-           comment="The raw wikipedia clickstream dataset, ingested from /databricks-datasets."
+           comment=\\"The raw wikipedia clickstream dataset, ingested from /databricks-datasets.\\"
         )
         def clickstream_raw():
-            return (spark.read.format("json").load(json_path))
+            return (spark.read.format(\\"json\\").load(json_path))
         \"\"\").result,
             language="PYTHON",
             path=f"{me.home}/ldp_demo")
@@ -1778,12 +1778,12 @@ class Permissions(pulumi.CustomResource):
         eng = databricks.Group("eng", display_name="Engineering")
         ldp_demo = databricks.Notebook("ldp_demo",
             content_base64=std.base64encode(input=\"\"\"import dlt
-        json_path = "/databricks-datasets/wikipedia-datasets/data-001/clickstream/raw-uncompressed-json/2015_2_clickstream.json"
+        json_path = \\"/databricks-datasets/wikipedia-datasets/data-001/clickstream/raw-uncompressed-json/2015_2_clickstream.json\\"
         @dlt.table(
-           comment="The raw wikipedia clickstream dataset, ingested from /databricks-datasets."
+           comment=\\"The raw wikipedia clickstream dataset, ingested from /databricks-datasets.\\"
         )
         def clickstream_raw():
-            return (spark.read.format("json").load(json_path))
+            return (spark.read.format(\\"json\\").load(json_path))
         \"\"\").result,
             language="PYTHON",
             path=f"{me.home}/ldp_demo")

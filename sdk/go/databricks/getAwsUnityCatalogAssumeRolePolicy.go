@@ -26,7 +26,7 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/iam"
+//	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws"
 //	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -51,21 +51,21 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			unityMetastore, err := iam.NewPolicy(ctx, "unity_metastore", &iam.PolicyArgs{
-//				Name:   pulumi.Sprintf("%v-unity-catalog-metastore-access-iam-policy", prefix),
-//				Policy: pulumi.String(this.Json),
+//			unityMetastore, err := aws.NewIamPolicy(ctx, "unity_metastore", &aws.IamPolicyArgs{
+//				Name:   fmt.Sprintf("%v-unity-catalog-metastore-access-iam-policy", prefix),
+//				Policy: this.Json,
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			metastoreDataAccess, err := iam.NewRole(ctx, "metastore_data_access", &iam.RoleArgs{
-//				Name:             pulumi.Sprintf("%v-uc-access", prefix),
-//				AssumeRolePolicy: pulumi.String(thisGetAwsUnityCatalogAssumeRolePolicy.Json),
+//			metastoreDataAccess, err := aws.NewIamRole(ctx, "metastore_data_access", &aws.IamRoleArgs{
+//				Name:             fmt.Sprintf("%v-uc-access", prefix),
+//				AssumeRolePolicy: thisGetAwsUnityCatalogAssumeRolePolicy.Json,
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = iam.NewRolePolicyAttachment(ctx, "metastore_data_access", &iam.RolePolicyAttachmentArgs{
+//			_, err = aws.NewIamRolePolicyAttachment(ctx, "metastore_data_access", &aws.IamRolePolicyAttachmentArgs{
 //				Role:      metastoreDataAccess.Name,
 //				PolicyArn: unityMetastore.Arn,
 //			})

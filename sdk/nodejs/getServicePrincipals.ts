@@ -8,6 +8,50 @@ import * as utilities from "./utilities";
  * Retrieves `applicationIds` of all databricks.ServicePrincipal based on their `displayName`
  *
  * > This data source can be used with an account or workspace-level provider.
+ *
+ * ## Example Usage
+ *
+ * Adding all service principals of which display name contains `my-spn` to admin group
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ * import * as std from "@pulumi/std";
+ *
+ * export = async () => {
+ *     const admins = await databricks.getGroup({
+ *         displayName: "admins",
+ *     });
+ *     const spns = await databricks.getServicePrincipals({
+ *         displayNameContains: "my-spn",
+ *     });
+ *     const spn = .reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: await databricks.getServicePrincipal({
+ *         applicationId: __value,
+ *     }) }));
+ *     const myMemberSpn: databricks.GroupMember[] = [];
+ *     for (const range of std.toset({
+ *         input: spns.applicationIds,
+ *     }).result.map((v, k) => ({key: k, value: v}))) {
+ *         myMemberSpn.push(new databricks.GroupMember(`my_member_spn-${range.key}`, {
+ *             groupId: admins.id,
+ *             memberId: spn[range.value].spId,
+ *         }));
+ *     }
+ * }
+ * ```
+ *
+ * ## Related Resources
+ *
+ * The following resources are used in the same context:
+ *
+ * - End to end workspace management guide.
+ * - databricks.getCurrentUser data to retrieve information about databricks.User or databricks_service_principal, that is calling Databricks REST API.
+ * - databricks.Group to manage [Account-level](https://docs.databricks.com/aws/en/admin/users-groups/groups) or [Workspace-level](https://docs.databricks.com/aws/en/admin/users-groups/workspace-local-groups) groups.
+ * - databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
+ * - databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.
+ * - databricks.GroupMember to attach users and groups as group members.
+ * - databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
+ * - databricksService principal to manage service principals
  */
 export function getServicePrincipals(args?: GetServicePrincipalsArgs, opts?: pulumi.InvokeOptions): Promise<GetServicePrincipalsResult> {
     args = args || {};
@@ -50,6 +94,50 @@ export interface GetServicePrincipalsResult {
  * Retrieves `applicationIds` of all databricks.ServicePrincipal based on their `displayName`
  *
  * > This data source can be used with an account or workspace-level provider.
+ *
+ * ## Example Usage
+ *
+ * Adding all service principals of which display name contains `my-spn` to admin group
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ * import * as std from "@pulumi/std";
+ *
+ * export = async () => {
+ *     const admins = await databricks.getGroup({
+ *         displayName: "admins",
+ *     });
+ *     const spns = await databricks.getServicePrincipals({
+ *         displayNameContains: "my-spn",
+ *     });
+ *     const spn = .reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: await databricks.getServicePrincipal({
+ *         applicationId: __value,
+ *     }) }));
+ *     const myMemberSpn: databricks.GroupMember[] = [];
+ *     for (const range of std.toset({
+ *         input: spns.applicationIds,
+ *     }).result.map((v, k) => ({key: k, value: v}))) {
+ *         myMemberSpn.push(new databricks.GroupMember(`my_member_spn-${range.key}`, {
+ *             groupId: admins.id,
+ *             memberId: spn[range.value].spId,
+ *         }));
+ *     }
+ * }
+ * ```
+ *
+ * ## Related Resources
+ *
+ * The following resources are used in the same context:
+ *
+ * - End to end workspace management guide.
+ * - databricks.getCurrentUser data to retrieve information about databricks.User or databricks_service_principal, that is calling Databricks REST API.
+ * - databricks.Group to manage [Account-level](https://docs.databricks.com/aws/en/admin/users-groups/groups) or [Workspace-level](https://docs.databricks.com/aws/en/admin/users-groups/workspace-local-groups) groups.
+ * - databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
+ * - databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.
+ * - databricks.GroupMember to attach users and groups as group members.
+ * - databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
+ * - databricksService principal to manage service principals
  */
 export function getServicePrincipalsOutput(args?: GetServicePrincipalsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetServicePrincipalsResult> {
     args = args || {};

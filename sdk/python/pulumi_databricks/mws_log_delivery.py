@@ -404,6 +404,79 @@ class MwsLogDelivery(pulumi.CustomResource):
 
         You cannot delete a log delivery configuration, but you can disable it when you no longer need it. This fact is important because there is a limit to the number of enabled log delivery configurations that you can create for an account. You can create a maximum of two enabled configurations that use the account level (no workspace filter) and two enabled configurations for every specific workspace (a workspaceId can occur in the workspace filter for two configurations). You can re-enable a disabled configuration, but the request fails if it violates the limits previously described.
 
+        ## Example Usage
+
+        End-to-end example of usage and audit log delivery:
+
+        ```python
+        import pulumi
+        import pulumi_aws as aws
+        import pulumi_databricks as databricks
+        import pulumi_std as std
+        import pulumiverse_time as time
+
+        config = pulumi.Config()
+        # Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
+        databricks_account_id = config.require_object("databricksAccountId")
+        logdelivery_s3_bucket = aws.index.S3Bucket("logdelivery",
+            bucket=f{prefix}-logdelivery,
+            acl=private,
+            force_destroy=True,
+            tags=std.merge(input=[
+                tags,
+                {
+                    name: f{prefix}-logdelivery,
+                },
+            ]).result)
+        logdelivery_s3_bucket_public_access_block = aws.index.S3BucketPublicAccessBlock("logdelivery",
+            bucket=logdelivery_s3_bucket.id,
+            ignore_public_acls=True)
+        logdelivery = databricks.get_aws_assume_role_policy(external_id=databricks_account_id,
+            for_log_delivery=True)
+        logdelivery_versioning = aws.index.S3BucketVersioning("logdelivery_versioning",
+            bucket=logdelivery_s3_bucket.id,
+            versioning_configuration=[{
+                status: Disabled,
+            }])
+        logdelivery_iam_role = aws.index.IamRole("logdelivery",
+            name=f{prefix}-logdelivery,
+            description=f({prefix}) UsageDelivery role,
+            assume_role_policy=logdelivery.json,
+            tags=tags)
+        logdelivery_get_aws_bucket_policy = databricks.get_aws_bucket_policy(full_access_role=logdelivery_iam_role["arn"],
+            bucket=logdelivery_s3_bucket["bucket"])
+        logdelivery_s3_bucket_policy = aws.index.S3BucketPolicy("logdelivery",
+            bucket=logdelivery_s3_bucket.id,
+            policy=logdelivery_get_aws_bucket_policy.json)
+        wait = time.Sleep("wait", create_duration="10s",
+        opts = pulumi.ResourceOptions(depends_on=[logdelivery_iam_role]))
+        log_writer = databricks.MwsCredentials("log_writer",
+            account_id=databricks_account_id,
+            credentials_name="Usage Delivery",
+            role_arn=logdelivery_iam_role["arn"],
+            opts = pulumi.ResourceOptions(depends_on=[wait]))
+        log_bucket = databricks.MwsStorageConfigurations("log_bucket",
+            account_id=databricks_account_id,
+            storage_configuration_name="Usage Logs",
+            bucket_name=logdelivery_s3_bucket["bucket"])
+        usage_logs = databricks.MwsLogDelivery("usage_logs",
+            account_id=databricks_account_id,
+            credentials_id=log_writer.credentials_id,
+            storage_configuration_id=log_bucket.storage_configuration_id,
+            delivery_path_prefix="billable-usage",
+            config_name="Usage Logs",
+            log_type="BILLABLE_USAGE",
+            output_format="CSV")
+        audit_logs = databricks.MwsLogDelivery("audit_logs",
+            account_id=databricks_account_id,
+            credentials_id=log_writer.credentials_id,
+            storage_configuration_id=log_bucket.storage_configuration_id,
+            delivery_path_prefix="audit-logs",
+            config_name="Audit Logs",
+            log_type="AUDIT_LOGS",
+            output_format="JSON")
+        ```
+
         ## Billable Usage
 
         CSV files are delivered to `<delivery_path_prefix>/billable-usage/csv/` and are named `workspaceId=<workspace-id>-usageMonth=<month>.csv`, which are delivered daily by overwriting the month's CSV file for each workspace. Format of CSV file, as well as some usage examples, can be found [here](https://docs.databricks.com/administration-guide/account-settings/usage.html#download-usage-as-a-csv-file).
@@ -483,6 +556,79 @@ class MwsLogDelivery(pulumi.CustomResource):
         > This resource can only be used with an account-level provider!
 
         You cannot delete a log delivery configuration, but you can disable it when you no longer need it. This fact is important because there is a limit to the number of enabled log delivery configurations that you can create for an account. You can create a maximum of two enabled configurations that use the account level (no workspace filter) and two enabled configurations for every specific workspace (a workspaceId can occur in the workspace filter for two configurations). You can re-enable a disabled configuration, but the request fails if it violates the limits previously described.
+
+        ## Example Usage
+
+        End-to-end example of usage and audit log delivery:
+
+        ```python
+        import pulumi
+        import pulumi_aws as aws
+        import pulumi_databricks as databricks
+        import pulumi_std as std
+        import pulumiverse_time as time
+
+        config = pulumi.Config()
+        # Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
+        databricks_account_id = config.require_object("databricksAccountId")
+        logdelivery_s3_bucket = aws.index.S3Bucket("logdelivery",
+            bucket=f{prefix}-logdelivery,
+            acl=private,
+            force_destroy=True,
+            tags=std.merge(input=[
+                tags,
+                {
+                    name: f{prefix}-logdelivery,
+                },
+            ]).result)
+        logdelivery_s3_bucket_public_access_block = aws.index.S3BucketPublicAccessBlock("logdelivery",
+            bucket=logdelivery_s3_bucket.id,
+            ignore_public_acls=True)
+        logdelivery = databricks.get_aws_assume_role_policy(external_id=databricks_account_id,
+            for_log_delivery=True)
+        logdelivery_versioning = aws.index.S3BucketVersioning("logdelivery_versioning",
+            bucket=logdelivery_s3_bucket.id,
+            versioning_configuration=[{
+                status: Disabled,
+            }])
+        logdelivery_iam_role = aws.index.IamRole("logdelivery",
+            name=f{prefix}-logdelivery,
+            description=f({prefix}) UsageDelivery role,
+            assume_role_policy=logdelivery.json,
+            tags=tags)
+        logdelivery_get_aws_bucket_policy = databricks.get_aws_bucket_policy(full_access_role=logdelivery_iam_role["arn"],
+            bucket=logdelivery_s3_bucket["bucket"])
+        logdelivery_s3_bucket_policy = aws.index.S3BucketPolicy("logdelivery",
+            bucket=logdelivery_s3_bucket.id,
+            policy=logdelivery_get_aws_bucket_policy.json)
+        wait = time.Sleep("wait", create_duration="10s",
+        opts = pulumi.ResourceOptions(depends_on=[logdelivery_iam_role]))
+        log_writer = databricks.MwsCredentials("log_writer",
+            account_id=databricks_account_id,
+            credentials_name="Usage Delivery",
+            role_arn=logdelivery_iam_role["arn"],
+            opts = pulumi.ResourceOptions(depends_on=[wait]))
+        log_bucket = databricks.MwsStorageConfigurations("log_bucket",
+            account_id=databricks_account_id,
+            storage_configuration_name="Usage Logs",
+            bucket_name=logdelivery_s3_bucket["bucket"])
+        usage_logs = databricks.MwsLogDelivery("usage_logs",
+            account_id=databricks_account_id,
+            credentials_id=log_writer.credentials_id,
+            storage_configuration_id=log_bucket.storage_configuration_id,
+            delivery_path_prefix="billable-usage",
+            config_name="Usage Logs",
+            log_type="BILLABLE_USAGE",
+            output_format="CSV")
+        audit_logs = databricks.MwsLogDelivery("audit_logs",
+            account_id=databricks_account_id,
+            credentials_id=log_writer.credentials_id,
+            storage_configuration_id=log_bucket.storage_configuration_id,
+            delivery_path_prefix="audit-logs",
+            config_name="Audit Logs",
+            log_type="AUDIT_LOGS",
+            output_format="JSON")
+        ```
 
         ## Billable Usage
 

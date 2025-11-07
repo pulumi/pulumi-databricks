@@ -46,6 +46,7 @@ type Provider struct {
 	Token                      pulumi.StringPtrOutput `pulumi:"token"`
 	Username                   pulumi.StringPtrOutput `pulumi:"username"`
 	WarehouseId                pulumi.StringPtrOutput `pulumi:"warehouseId"`
+	WorkspaceId                pulumi.StringPtrOutput `pulumi:"workspaceId"`
 }
 
 // NewProvider registers a new resource with the given unique name, arguments, and options.
@@ -112,6 +113,7 @@ type providerArgs struct {
 	DatabricksIdTokenFilepath  *string `pulumi:"databricksIdTokenFilepath"`
 	DebugHeaders               *bool   `pulumi:"debugHeaders"`
 	DebugTruncateBytes         *int    `pulumi:"debugTruncateBytes"`
+	ExperimentalIsUnifiedHost  *bool   `pulumi:"experimentalIsUnifiedHost"`
 	GoogleCredentials          *string `pulumi:"googleCredentials"`
 	GoogleServiceAccount       *string `pulumi:"googleServiceAccount"`
 	Host                       *string `pulumi:"host"`
@@ -128,6 +130,7 @@ type providerArgs struct {
 	Token                      *string `pulumi:"token"`
 	Username                   *string `pulumi:"username"`
 	WarehouseId                *string `pulumi:"warehouseId"`
+	WorkspaceId                *string `pulumi:"workspaceId"`
 }
 
 // The set of arguments for constructing a Provider resource.
@@ -152,6 +155,7 @@ type ProviderArgs struct {
 	DatabricksIdTokenFilepath  pulumi.StringPtrInput
 	DebugHeaders               pulumi.BoolPtrInput
 	DebugTruncateBytes         pulumi.IntPtrInput
+	ExperimentalIsUnifiedHost  pulumi.BoolPtrInput
 	GoogleCredentials          pulumi.StringPtrInput
 	GoogleServiceAccount       pulumi.StringPtrInput
 	Host                       pulumi.StringPtrInput
@@ -168,6 +172,7 @@ type ProviderArgs struct {
 	Token                      pulumi.StringPtrInput
 	Username                   pulumi.StringPtrInput
 	WarehouseId                pulumi.StringPtrInput
+	WorkspaceId                pulumi.StringPtrInput
 }
 
 func (ProviderArgs) ElementType() reflect.Type {
@@ -340,6 +345,10 @@ func (o ProviderOutput) Username() pulumi.StringPtrOutput {
 
 func (o ProviderOutput) WarehouseId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.WarehouseId }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.WorkspaceId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

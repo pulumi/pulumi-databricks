@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.databricks.NotebookArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.NotebookState;
+import com.pulumi.databricks.outputs.NotebookProviderConfig;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Optional;
@@ -124,6 +125,20 @@ public class Notebook extends com.pulumi.resources.CustomResource {
      */
     public Output<String> path() {
         return this.path;
+    }
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Export(name="providerConfig", refs={NotebookProviderConfig.class}, tree="[0]")
+    private Output</* @Nullable */ NotebookProviderConfig> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Output<Optional<NotebookProviderConfig>> providerConfig() {
+        return Codegen.optional(this.providerConfig);
     }
     /**
      * Path to notebook in source code format on local filesystem. Conflicts with `contentBase64`.

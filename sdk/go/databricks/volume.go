@@ -145,7 +145,7 @@ type Volume struct {
 	Owner pulumi.StringOutput `pulumi:"owner"`
 	// Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
 	SchemaName pulumi.StringOutput `pulumi:"schemaName"`
-	// Path inside an External Location. Only used for `EXTERNAL` Volumes. Change forces creation of a new resource.
+	// URL for the volume (should be inside of an existing External Location). Only used for `EXTERNAL` Volumes.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). Change forces creation of a new resource.
 	StorageLocation pulumi.StringPtrOutput `pulumi:"storageLocation"`
 	// base file path for this Unity Catalog Volume in form of `/Volumes/<catalog>/<schema>/<name>`.
 	VolumePath pulumi.StringOutput `pulumi:"volumePath"`
@@ -202,7 +202,7 @@ type volumeState struct {
 	Owner *string `pulumi:"owner"`
 	// Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
 	SchemaName *string `pulumi:"schemaName"`
-	// Path inside an External Location. Only used for `EXTERNAL` Volumes. Change forces creation of a new resource.
+	// URL for the volume (should be inside of an existing External Location). Only used for `EXTERNAL` Volumes.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). Change forces creation of a new resource.
 	StorageLocation *string `pulumi:"storageLocation"`
 	// base file path for this Unity Catalog Volume in form of `/Volumes/<catalog>/<schema>/<name>`.
 	VolumePath *string `pulumi:"volumePath"`
@@ -221,7 +221,7 @@ type VolumeState struct {
 	Owner pulumi.StringPtrInput
 	// Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
 	SchemaName pulumi.StringPtrInput
-	// Path inside an External Location. Only used for `EXTERNAL` Volumes. Change forces creation of a new resource.
+	// URL for the volume (should be inside of an existing External Location). Only used for `EXTERNAL` Volumes.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). Change forces creation of a new resource.
 	StorageLocation pulumi.StringPtrInput
 	// base file path for this Unity Catalog Volume in form of `/Volumes/<catalog>/<schema>/<name>`.
 	VolumePath pulumi.StringPtrInput
@@ -244,7 +244,7 @@ type volumeArgs struct {
 	Owner *string `pulumi:"owner"`
 	// Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
 	SchemaName string `pulumi:"schemaName"`
-	// Path inside an External Location. Only used for `EXTERNAL` Volumes. Change forces creation of a new resource.
+	// URL for the volume (should be inside of an existing External Location). Only used for `EXTERNAL` Volumes.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). Change forces creation of a new resource.
 	StorageLocation *string `pulumi:"storageLocation"`
 	// Volume type. `EXTERNAL` or `MANAGED`. Change forces creation of a new resource.
 	VolumeType string `pulumi:"volumeType"`
@@ -262,7 +262,7 @@ type VolumeArgs struct {
 	Owner pulumi.StringPtrInput
 	// Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
 	SchemaName pulumi.StringInput
-	// Path inside an External Location. Only used for `EXTERNAL` Volumes. Change forces creation of a new resource.
+	// URL for the volume (should be inside of an existing External Location). Only used for `EXTERNAL` Volumes.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). Change forces creation of a new resource.
 	StorageLocation pulumi.StringPtrInput
 	// Volume type. `EXTERNAL` or `MANAGED`. Change forces creation of a new resource.
 	VolumeType pulumi.StringInput
@@ -380,7 +380,7 @@ func (o VolumeOutput) SchemaName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Volume) pulumi.StringOutput { return v.SchemaName }).(pulumi.StringOutput)
 }
 
-// Path inside an External Location. Only used for `EXTERNAL` Volumes. Change forces creation of a new resource.
+// URL for the volume (should be inside of an existing External Location). Only used for `EXTERNAL` Volumes.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). Change forces creation of a new resource.
 func (o VolumeOutput) StorageLocation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Volume) pulumi.StringPtrOutput { return v.StorageLocation }).(pulumi.StringPtrOutput)
 }

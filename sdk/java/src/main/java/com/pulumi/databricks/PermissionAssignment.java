@@ -10,8 +10,10 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.databricks.PermissionAssignmentArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.PermissionAssignmentState;
+import com.pulumi.databricks.outputs.PermissionAssignmentProviderConfig;
 import java.lang.String;
 import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -349,6 +351,20 @@ public class PermissionAssignment extends com.pulumi.resources.CustomResource {
      */
     public Output<String> principalId() {
         return this.principalId;
+    }
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Export(name="providerConfig", refs={PermissionAssignmentProviderConfig.class}, tree="[0]")
+    private Output</* @Nullable */ PermissionAssignmentProviderConfig> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Output<Optional<PermissionAssignmentProviderConfig>> providerConfig() {
+        return Codegen.optional(this.providerConfig);
     }
     /**
      * the application ID of service principal to assign to a workspace.

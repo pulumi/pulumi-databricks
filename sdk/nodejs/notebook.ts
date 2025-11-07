@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -82,6 +84,10 @@ export class Notebook extends pulumi.CustomResource {
      */
     declare public readonly path: pulumi.Output<string>;
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    declare public readonly providerConfig: pulumi.Output<outputs.NotebookProviderConfig | undefined>;
+    /**
      * Path to notebook in source code format on local filesystem. Conflicts with `contentBase64`.
      */
     declare public readonly source: pulumi.Output<string | undefined>;
@@ -114,6 +120,7 @@ export class Notebook extends pulumi.CustomResource {
             resourceInputs["objectId"] = state?.objectId;
             resourceInputs["objectType"] = state?.objectType;
             resourceInputs["path"] = state?.path;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["source"] = state?.source;
             resourceInputs["url"] = state?.url;
             resourceInputs["workspacePath"] = state?.workspacePath;
@@ -129,6 +136,7 @@ export class Notebook extends pulumi.CustomResource {
             resourceInputs["objectId"] = args?.objectId;
             resourceInputs["objectType"] = args?.objectType;
             resourceInputs["path"] = args?.path;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["source"] = args?.source;
             resourceInputs["url"] = undefined /*out*/;
             resourceInputs["workspacePath"] = undefined /*out*/;
@@ -164,6 +172,10 @@ export interface NotebookState {
      * The absolute path of the notebook or directory, beginning with "/", e.g. "/Demo".
      */
     path?: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.NotebookProviderConfig>;
     /**
      * Path to notebook in source code format on local filesystem. Conflicts with `contentBase64`.
      */
@@ -204,6 +216,10 @@ export interface NotebookArgs {
      * The absolute path of the notebook or directory, beginning with "/", e.g. "/Demo".
      */
     path: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.NotebookProviderConfig>;
     /**
      * Path to notebook in source code format on local filesystem. Conflicts with `contentBase64`.
      */

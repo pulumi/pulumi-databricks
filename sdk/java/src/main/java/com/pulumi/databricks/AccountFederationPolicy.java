@@ -29,6 +29,42 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.AccountFederationPolicy;
+ * import com.pulumi.databricks.AccountFederationPolicyArgs;
+ * import com.pulumi.databricks.inputs.AccountFederationPolicyOidcPolicyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var this_ = new AccountFederationPolicy("this", AccountFederationPolicyArgs.builder()
+ *             .policyId("my-policy")
+ *             .oidcPolicy(AccountFederationPolicyOidcPolicyArgs.builder()
+ *                 .issuer("https://myidp.example.com")
+ *                 .subjectClaim("sub")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * As of Pulumi v1.5, resources can be imported through configuration.

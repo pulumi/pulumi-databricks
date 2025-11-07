@@ -27,6 +27,51 @@ import (
 //
 // ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewAccountNetworkPolicy(ctx, "example_network_policy", &databricks.AccountNetworkPolicyArgs{
+//				NetworkPolicyId: pulumi.String("example-network-policy"),
+//				Egress: &databricks.AccountNetworkPolicyEgressArgs{
+//					NetworkAccess: &databricks.AccountNetworkPolicyEgressNetworkAccessArgs{
+//						RestrictionMode: pulumi.String("RESTRICTED_ACCESS"),
+//						AllowedInternetDestinations: databricks.AccountNetworkPolicyEgressNetworkAccessAllowedInternetDestinationArray{
+//							&databricks.AccountNetworkPolicyEgressNetworkAccessAllowedInternetDestinationArgs{
+//								Destination:             pulumi.String("example.com"),
+//								InternetDestinationType: pulumi.String("DNS_NAME"),
+//							},
+//						},
+//						AllowedStorageDestinations: databricks.AccountNetworkPolicyEgressNetworkAccessAllowedStorageDestinationArray{
+//							&databricks.AccountNetworkPolicyEgressNetworkAccessAllowedStorageDestinationArgs{
+//								BucketName:             pulumi.String("example-aws-cloud-storage"),
+//								Region:                 pulumi.String("us-west-1"),
+//								StorageDestinationType: pulumi.String("AWS_S3"),
+//							},
+//						},
+//						PolicyEnforcement: &databricks.AccountNetworkPolicyEgressNetworkAccessPolicyEnforcementArgs{
+//							EnforcementMode: pulumi.String("ENFORCED"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // As of Pulumi v1.5, resources can be imported through configuration.

@@ -36,6 +36,49 @@ import * as utilities from "./utilities";
  *
  * For Azure
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ * import * as std from "@pulumi/std";
+ *
+ * const _this = new databricks.Metastore("this", {
+ *     name: "primary",
+ *     storageRoot: std.format({
+ *         input: "abfss://%s@%s.dfs.core.windows.net/",
+ *         args: [
+ *             unityCatalog.name,
+ *             unityCatalogAzurermStorageAccount.name,
+ *         ],
+ *     }).then(invoke => invoke.result),
+ *     owner: "uc admins",
+ *     region: "eastus",
+ *     forceDestroy: true,
+ * });
+ * const thisMetastoreAssignment = new databricks.MetastoreAssignment("this", {
+ *     metastoreId: _this.id,
+ *     workspaceId: workspaceId,
+ * });
+ * ```
+ *
+ * For GCP
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const _this = new databricks.Metastore("this", {
+ *     name: "primary",
+ *     storageRoot: `gs://${unityMetastore.name}`,
+ *     owner: "uc admins",
+ *     region: us_east1,
+ *     forceDestroy: true,
+ * });
+ * const thisMetastoreAssignment = new databricks.MetastoreAssignment("this", {
+ *     metastoreId: _this.id,
+ *     workspaceId: workspaceId,
+ * });
+ * ```
+ *
  * ## Import
  *
  * This resource can be imported by ID:
@@ -121,7 +164,7 @@ export class Metastore extends pulumi.CustomResource {
      */
     declare public readonly region: pulumi.Output<string>;
     /**
-     * Path on cloud storage account, where managed `databricks.Table` are stored. Change forces creation of a new resource. If no `storageRoot` is defined for the metastore, each catalog must have a `storageRoot` defined.
+     * Path on cloud storage account, where managed `databricks.Table` are stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). Change forces creation of a new resource. If no `storageRoot` is defined for the metastore, each catalog must have a `storageRoot` defined.
      */
     declare public readonly storageRoot: pulumi.Output<string | undefined>;
     declare public readonly storageRootCredentialId: pulumi.Output<string | undefined>;
@@ -222,7 +265,7 @@ export interface MetastoreState {
      */
     region?: pulumi.Input<string>;
     /**
-     * Path on cloud storage account, where managed `databricks.Table` are stored. Change forces creation of a new resource. If no `storageRoot` is defined for the metastore, each catalog must have a `storageRoot` defined.
+     * Path on cloud storage account, where managed `databricks.Table` are stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). Change forces creation of a new resource. If no `storageRoot` is defined for the metastore, each catalog must have a `storageRoot` defined.
      */
     storageRoot?: pulumi.Input<string>;
     storageRootCredentialId?: pulumi.Input<string>;
@@ -269,7 +312,7 @@ export interface MetastoreArgs {
      */
     region?: pulumi.Input<string>;
     /**
-     * Path on cloud storage account, where managed `databricks.Table` are stored. Change forces creation of a new resource. If no `storageRoot` is defined for the metastore, each catalog must have a `storageRoot` defined.
+     * Path on cloud storage account, where managed `databricks.Table` are stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). Change forces creation of a new resource. If no `storageRoot` is defined for the metastore, each catalog must have a `storageRoot` defined.
      */
     storageRoot?: pulumi.Input<string>;
     storageRootCredentialId?: pulumi.Input<string>;

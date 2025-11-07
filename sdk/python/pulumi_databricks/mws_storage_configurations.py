@@ -174,18 +174,18 @@ class MwsStorageConfigurations(pulumi.CustomResource):
         config = pulumi.Config()
         # Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
         databricks_account_id = config.require_object("databricksAccountId")
-        root_storage_bucket = aws.s3.Bucket("root_storage_bucket",
-            bucket=f"{prefix}-rootbucket",
-            acl=aws.s3.CannedAcl.PRIVATE)
-        root_versioning = aws.s3.BucketVersioning("root_versioning",
+        root_storage_bucket = aws.index.S3Bucket("root_storage_bucket",
+            bucket=f{prefix}-rootbucket,
+            acl=private)
+        root_versioning = aws.index.S3BucketVersioning("root_versioning",
             bucket=root_storage_bucket.id,
-            versioning_configuration={
-                "status": "Disabled",
-            })
+            versioning_configuration=[{
+                status: Disabled,
+            }])
         this = databricks.MwsStorageConfigurations("this",
             account_id=databricks_account_id,
             storage_configuration_name=f"{prefix}-storage",
-            bucket_name=root_storage_bucket.bucket)
+            bucket_name=root_storage_bucket["bucket"])
         ```
 
         ## Related Resources
@@ -251,18 +251,18 @@ class MwsStorageConfigurations(pulumi.CustomResource):
         config = pulumi.Config()
         # Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
         databricks_account_id = config.require_object("databricksAccountId")
-        root_storage_bucket = aws.s3.Bucket("root_storage_bucket",
-            bucket=f"{prefix}-rootbucket",
-            acl=aws.s3.CannedAcl.PRIVATE)
-        root_versioning = aws.s3.BucketVersioning("root_versioning",
+        root_storage_bucket = aws.index.S3Bucket("root_storage_bucket",
+            bucket=f{prefix}-rootbucket,
+            acl=private)
+        root_versioning = aws.index.S3BucketVersioning("root_versioning",
             bucket=root_storage_bucket.id,
-            versioning_configuration={
-                "status": "Disabled",
-            })
+            versioning_configuration=[{
+                status: Disabled,
+            }])
         this = databricks.MwsStorageConfigurations("this",
             account_id=databricks_account_id,
             storage_configuration_name=f"{prefix}-storage",
-            bucket_name=root_storage_bucket.bucket)
+            bucket_name=root_storage_bucket["bucket"])
         ```
 
         ## Related Resources

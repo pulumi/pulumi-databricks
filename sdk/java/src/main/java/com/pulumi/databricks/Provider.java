@@ -191,6 +191,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     public Output<Optional<String>> warehouseId() {
         return Codegen.optional(this.warehouseId);
     }
+    @Export(name="workspaceId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> workspaceId;
+
+    public Output<Optional<String>> workspaceId() {
+        return Codegen.optional(this.workspaceId);
+    }
 
     /**
      *

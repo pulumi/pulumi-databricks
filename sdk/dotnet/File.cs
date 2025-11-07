@@ -86,7 +86,7 @@ namespace Pulumi.Databricks
     ///         ContentBase64 = Std.Base64encode.Invoke(new()
     ///         {
     ///             Input = @"#!/bin/bash
-    /// echo ""Hello World""
+    /// echo \""Hello World\""
     /// ",
     ///         }).Apply(invoke =&gt; invoke.Result),
     ///         Path = $"{@this.VolumePath}/fileName",

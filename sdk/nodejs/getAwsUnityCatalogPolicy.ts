@@ -29,15 +29,15 @@ import * as utilities from "./utilities";
  *     roleName: `${prefix}-uc-access`,
  *     externalId: "12345",
  * });
- * const unityMetastore = new aws.iam.Policy("unity_metastore", {
+ * const unityMetastore = new aws.index.IamPolicy("unity_metastore", {
  *     name: `${prefix}-unity-catalog-metastore-access-iam-policy`,
- *     policy: _this.then(_this => _this.json),
+ *     policy: _this.json,
  * });
- * const metastoreDataAccess = new aws.iam.Role("metastore_data_access", {
+ * const metastoreDataAccess = new aws.index.IamRole("metastore_data_access", {
  *     name: `${prefix}-uc-access`,
- *     assumeRolePolicy: thisGetAwsUnityCatalogAssumeRolePolicy.then(thisGetAwsUnityCatalogAssumeRolePolicy => thisGetAwsUnityCatalogAssumeRolePolicy.json),
+ *     assumeRolePolicy: thisGetAwsUnityCatalogAssumeRolePolicy.json,
  * });
- * const metastoreDataAccessRolePolicyAttachment = new aws.iam.RolePolicyAttachment("metastore_data_access", {
+ * const metastoreDataAccessIamRolePolicyAttachment = new aws.index.IamRolePolicyAttachment("metastore_data_access", {
  *     role: metastoreDataAccess.name,
  *     policyArn: unityMetastore.arn,
  * });
@@ -123,15 +123,15 @@ export interface GetAwsUnityCatalogPolicyResult {
  *     roleName: `${prefix}-uc-access`,
  *     externalId: "12345",
  * });
- * const unityMetastore = new aws.iam.Policy("unity_metastore", {
+ * const unityMetastore = new aws.index.IamPolicy("unity_metastore", {
  *     name: `${prefix}-unity-catalog-metastore-access-iam-policy`,
- *     policy: _this.then(_this => _this.json),
+ *     policy: _this.json,
  * });
- * const metastoreDataAccess = new aws.iam.Role("metastore_data_access", {
+ * const metastoreDataAccess = new aws.index.IamRole("metastore_data_access", {
  *     name: `${prefix}-uc-access`,
- *     assumeRolePolicy: thisGetAwsUnityCatalogAssumeRolePolicy.then(thisGetAwsUnityCatalogAssumeRolePolicy => thisGetAwsUnityCatalogAssumeRolePolicy.json),
+ *     assumeRolePolicy: thisGetAwsUnityCatalogAssumeRolePolicy.json,
  * });
- * const metastoreDataAccessRolePolicyAttachment = new aws.iam.RolePolicyAttachment("metastore_data_access", {
+ * const metastoreDataAccessIamRolePolicyAttachment = new aws.index.IamRolePolicyAttachment("metastore_data_access", {
  *     role: metastoreDataAccess.name,
  *     policyArn: unityMetastore.arn,
  * });

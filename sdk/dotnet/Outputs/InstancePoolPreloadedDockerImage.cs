@@ -14,46 +14,9 @@ namespace Pulumi.Databricks.Outputs
     public sealed class InstancePoolPreloadedDockerImage
     {
         /// <summary>
-        /// `basic_auth.username` and `basic_auth.password` for Docker repository. Docker registry credentials are encrypted when they are stored in Databricks internal storage and when they are passed to a registry upon fetching Docker images at cluster launch. However, other authenticated and authorized API users of this workspace can access the username and password.
+        /// `basic_auth.username` and `basic_auth.password` for Docker repository. Docker registry credentials are encrypted when they are stored in Databricks internal storage and when they are passed to a registry upon fetching Docker images at cluster launch.  For better security, these credentials should be stored in the secret scope and referred using secret path syntax: `{{secrets/scope/key}}`, otherwise other users of the workspace may access them via UI/API.
         /// 
         /// Example usage with AzurermContainerRegistry and docker_registry_image, that you can adapt to your specific use-case:
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Databricks = Pulumi.Databricks;
-        /// using Docker = Pulumi.Docker;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var @this = new Docker.Index.RegistryImage("this", new()
-        ///     {
-        ///         Build = new[]
-        ///         {
-        ///             null,
-        ///         },
-        ///         Name = $"{thisAzurermContainerRegistry.LoginServer}/sample:latest",
-        ///     });
-        /// 
-        ///     var thisInstancePool = new Databricks.InstancePool("this", new()
-        ///     {
-        ///         PreloadedDockerImages = new[]
-        ///         {
-        ///             new Databricks.Inputs.InstancePoolPreloadedDockerImageArgs
-        ///             {
-        ///                 Url = @this.Name,
-        ///                 BasicAuth = new Databricks.Inputs.InstancePoolPreloadedDockerImageBasicAuthArgs
-        ///                 {
-        ///                     Username = thisAzurermContainerRegistry.AdminUsername,
-        ///                     Password = thisAzurermContainerRegistry.AdminPassword,
-        ///                 },
-        ///             },
-        ///         },
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public readonly Outputs.InstancePoolPreloadedDockerImageBasicAuth? BasicAuth;
         /// <summary>

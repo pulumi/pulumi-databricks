@@ -133,13 +133,13 @@ def get_aws_unity_catalog_policy(aws_account_id: Optional[_builtins.str] = None,
     this_get_aws_unity_catalog_assume_role_policy = databricks.get_aws_unity_catalog_assume_role_policy(aws_account_id=aws_account_id,
         role_name=f"{prefix}-uc-access",
         external_id="12345")
-    unity_metastore = aws.iam.Policy("unity_metastore",
-        name=f"{prefix}-unity-catalog-metastore-access-iam-policy",
+    unity_metastore = aws.index.IamPolicy("unity_metastore",
+        name=f{prefix}-unity-catalog-metastore-access-iam-policy,
         policy=this.json)
-    metastore_data_access = aws.iam.Role("metastore_data_access",
-        name=f"{prefix}-uc-access",
+    metastore_data_access = aws.index.IamRole("metastore_data_access",
+        name=f{prefix}-uc-access,
         assume_role_policy=this_get_aws_unity_catalog_assume_role_policy.json)
-    metastore_data_access_role_policy_attachment = aws.iam.RolePolicyAttachment("metastore_data_access",
+    metastore_data_access_iam_role_policy_attachment = aws.index.IamRolePolicyAttachment("metastore_data_access",
         role=metastore_data_access.name,
         policy_arn=unity_metastore.arn)
     ```
@@ -195,13 +195,13 @@ def get_aws_unity_catalog_policy_output(aws_account_id: Optional[pulumi.Input[_b
     this_get_aws_unity_catalog_assume_role_policy = databricks.get_aws_unity_catalog_assume_role_policy(aws_account_id=aws_account_id,
         role_name=f"{prefix}-uc-access",
         external_id="12345")
-    unity_metastore = aws.iam.Policy("unity_metastore",
-        name=f"{prefix}-unity-catalog-metastore-access-iam-policy",
+    unity_metastore = aws.index.IamPolicy("unity_metastore",
+        name=f{prefix}-unity-catalog-metastore-access-iam-policy,
         policy=this.json)
-    metastore_data_access = aws.iam.Role("metastore_data_access",
-        name=f"{prefix}-uc-access",
+    metastore_data_access = aws.index.IamRole("metastore_data_access",
+        name=f{prefix}-uc-access,
         assume_role_policy=this_get_aws_unity_catalog_assume_role_policy.json)
-    metastore_data_access_role_policy_attachment = aws.iam.RolePolicyAttachment("metastore_data_access",
+    metastore_data_access_iam_role_policy_attachment = aws.index.IamRolePolicyAttachment("metastore_data_access",
         role=metastore_data_access.name,
         policy_arn=unity_metastore.arn)
     ```

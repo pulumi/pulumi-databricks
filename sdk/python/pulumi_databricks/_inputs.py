@@ -1081,6 +1081,8 @@ __all__ = [
     'MwsWorkspacesGkeConfigArgsDict',
     'MwsWorkspacesTokenArgs',
     'MwsWorkspacesTokenArgsDict',
+    'NotebookProviderConfigArgs',
+    'NotebookProviderConfigArgsDict',
     'NotificationDestinationConfigArgs',
     'NotificationDestinationConfigArgsDict',
     'NotificationDestinationConfigEmailArgs',
@@ -1115,6 +1117,8 @@ __all__ = [
     'OnlineTableStatusTriggeredUpdateStatusArgsDict',
     'OnlineTableStatusTriggeredUpdateStatusTriggeredUpdateProgressArgs',
     'OnlineTableStatusTriggeredUpdateStatusTriggeredUpdateProgressArgsDict',
+    'PermissionAssignmentProviderConfigArgs',
+    'PermissionAssignmentProviderConfigArgsDict',
     'PermissionsAccessControlArgs',
     'PermissionsAccessControlArgsDict',
     'PipelineClusterArgs',
@@ -2135,6 +2139,8 @@ __all__ = [
     'GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArgsDict',
     'GetNodeTypeProviderConfigArgs',
     'GetNodeTypeProviderConfigArgsDict',
+    'GetNotebookProviderConfigArgs',
+    'GetNotebookProviderConfigArgsDict',
     'GetNotificationDestinationsProviderConfigArgs',
     'GetNotificationDestinationsProviderConfigArgsDict',
     'GetPipelinesProviderConfigArgs',
@@ -7991,26 +7997,9 @@ if not MYPY:
         """
         basic_auth: NotRequired[pulumi.Input['ClusterDockerImageBasicAuthArgsDict']]
         """
-        `basic_auth.username` and `basic_auth.password` for Docker repository. Docker registry credentials are encrypted when they are stored in Databricks internal storage and when they are passed to a registry upon fetching Docker images at cluster launch. However, other authenticated and authorized API users of this workspace can access the username and password.
+        `basic_auth.username` and `basic_auth.password` for Docker repository. Docker registry credentials are encrypted when they are stored in Databricks internal storage and when they are passed to a registry upon fetching Docker images at cluster launch.  For better security, these credentials should be stored in the secret scope and referred using secret path syntax: `{{secrets/scope/key}}`, otherwise other users of the workspace may access them via UI/API.
 
         Example usage with azurerm_container_registry and docker_registry_image, that you can adapt to your specific use-case:
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-        import pulumi_docker as docker
-
-        this = docker.index.RegistryImage("this",
-            build=[{}],
-            name=f{this_azurerm_container_registry.login_server}/sample:latest)
-        this_cluster = databricks.Cluster("this", docker_image={
-            "url": this["name"],
-            "basic_auth": {
-                "username": this_azurerm_container_registry["adminUsername"],
-                "password": this_azurerm_container_registry["adminPassword"],
-            },
-        })
-        ```
         """
 elif False:
     ClusterDockerImageArgsDict: TypeAlias = Mapping[str, Any]
@@ -8022,26 +8011,9 @@ class ClusterDockerImageArgs:
                  basic_auth: Optional[pulumi.Input['ClusterDockerImageBasicAuthArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] url: URL for the Docker image
-        :param pulumi.Input['ClusterDockerImageBasicAuthArgs'] basic_auth: `basic_auth.username` and `basic_auth.password` for Docker repository. Docker registry credentials are encrypted when they are stored in Databricks internal storage and when they are passed to a registry upon fetching Docker images at cluster launch. However, other authenticated and authorized API users of this workspace can access the username and password.
+        :param pulumi.Input['ClusterDockerImageBasicAuthArgs'] basic_auth: `basic_auth.username` and `basic_auth.password` for Docker repository. Docker registry credentials are encrypted when they are stored in Databricks internal storage and when they are passed to a registry upon fetching Docker images at cluster launch.  For better security, these credentials should be stored in the secret scope and referred using secret path syntax: `{{secrets/scope/key}}`, otherwise other users of the workspace may access them via UI/API.
                
                Example usage with azurerm_container_registry and docker_registry_image, that you can adapt to your specific use-case:
-               
-               ```python
-               import pulumi
-               import pulumi_databricks as databricks
-               import pulumi_docker as docker
-               
-               this = docker.index.RegistryImage("this",
-                   build=[{}],
-                   name=f{this_azurerm_container_registry.login_server}/sample:latest)
-               this_cluster = databricks.Cluster("this", docker_image={
-                   "url": this["name"],
-                   "basic_auth": {
-                       "username": this_azurerm_container_registry["adminUsername"],
-                       "password": this_azurerm_container_registry["adminPassword"],
-                   },
-               })
-               ```
         """
         pulumi.set(__self__, "url", url)
         if basic_auth is not None:
@@ -8063,26 +8035,9 @@ class ClusterDockerImageArgs:
     @pulumi.getter(name="basicAuth")
     def basic_auth(self) -> Optional[pulumi.Input['ClusterDockerImageBasicAuthArgs']]:
         """
-        `basic_auth.username` and `basic_auth.password` for Docker repository. Docker registry credentials are encrypted when they are stored in Databricks internal storage and when they are passed to a registry upon fetching Docker images at cluster launch. However, other authenticated and authorized API users of this workspace can access the username and password.
+        `basic_auth.username` and `basic_auth.password` for Docker repository. Docker registry credentials are encrypted when they are stored in Databricks internal storage and when they are passed to a registry upon fetching Docker images at cluster launch.  For better security, these credentials should be stored in the secret scope and referred using secret path syntax: `{{secrets/scope/key}}`, otherwise other users of the workspace may access them via UI/API.
 
         Example usage with azurerm_container_registry and docker_registry_image, that you can adapt to your specific use-case:
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-        import pulumi_docker as docker
-
-        this = docker.index.RegistryImage("this",
-            build=[{}],
-            name=f{this_azurerm_container_registry.login_server}/sample:latest)
-        this_cluster = databricks.Cluster("this", docker_image={
-            "url": this["name"],
-            "basic_auth": {
-                "username": this_azurerm_container_registry["adminUsername"],
-                "password": this_azurerm_container_registry["adminPassword"],
-            },
-        })
-        ```
         """
         return pulumi.get(self, "basic_auth")
 
@@ -13999,26 +13954,9 @@ if not MYPY:
         """
         basic_auth: NotRequired[pulumi.Input['InstancePoolPreloadedDockerImageBasicAuthArgsDict']]
         """
-        `basic_auth.username` and `basic_auth.password` for Docker repository. Docker registry credentials are encrypted when they are stored in Databricks internal storage and when they are passed to a registry upon fetching Docker images at cluster launch. However, other authenticated and authorized API users of this workspace can access the username and password.
+        `basic_auth.username` and `basic_auth.password` for Docker repository. Docker registry credentials are encrypted when they are stored in Databricks internal storage and when they are passed to a registry upon fetching Docker images at cluster launch.  For better security, these credentials should be stored in the secret scope and referred using secret path syntax: `{{secrets/scope/key}}`, otherwise other users of the workspace may access them via UI/API.
 
         Example usage with azurerm_container_registry and docker_registry_image, that you can adapt to your specific use-case:
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-        import pulumi_docker as docker
-
-        this = docker.index.RegistryImage("this",
-            build=[{}],
-            name=f{this_azurerm_container_registry.login_server}/sample:latest)
-        this_instance_pool = databricks.InstancePool("this", preloaded_docker_images=[{
-            "url": this["name"],
-            "basic_auth": {
-                "username": this_azurerm_container_registry["adminUsername"],
-                "password": this_azurerm_container_registry["adminPassword"],
-            },
-        }])
-        ```
         """
 elif False:
     InstancePoolPreloadedDockerImageArgsDict: TypeAlias = Mapping[str, Any]
@@ -14030,26 +13968,9 @@ class InstancePoolPreloadedDockerImageArgs:
                  basic_auth: Optional[pulumi.Input['InstancePoolPreloadedDockerImageBasicAuthArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] url: URL for the Docker image
-        :param pulumi.Input['InstancePoolPreloadedDockerImageBasicAuthArgs'] basic_auth: `basic_auth.username` and `basic_auth.password` for Docker repository. Docker registry credentials are encrypted when they are stored in Databricks internal storage and when they are passed to a registry upon fetching Docker images at cluster launch. However, other authenticated and authorized API users of this workspace can access the username and password.
+        :param pulumi.Input['InstancePoolPreloadedDockerImageBasicAuthArgs'] basic_auth: `basic_auth.username` and `basic_auth.password` for Docker repository. Docker registry credentials are encrypted when they are stored in Databricks internal storage and when they are passed to a registry upon fetching Docker images at cluster launch.  For better security, these credentials should be stored in the secret scope and referred using secret path syntax: `{{secrets/scope/key}}`, otherwise other users of the workspace may access them via UI/API.
                
                Example usage with azurerm_container_registry and docker_registry_image, that you can adapt to your specific use-case:
-               
-               ```python
-               import pulumi
-               import pulumi_databricks as databricks
-               import pulumi_docker as docker
-               
-               this = docker.index.RegistryImage("this",
-                   build=[{}],
-                   name=f{this_azurerm_container_registry.login_server}/sample:latest)
-               this_instance_pool = databricks.InstancePool("this", preloaded_docker_images=[{
-                   "url": this["name"],
-                   "basic_auth": {
-                       "username": this_azurerm_container_registry["adminUsername"],
-                       "password": this_azurerm_container_registry["adminPassword"],
-                   },
-               }])
-               ```
         """
         pulumi.set(__self__, "url", url)
         if basic_auth is not None:
@@ -14071,26 +13992,9 @@ class InstancePoolPreloadedDockerImageArgs:
     @pulumi.getter(name="basicAuth")
     def basic_auth(self) -> Optional[pulumi.Input['InstancePoolPreloadedDockerImageBasicAuthArgs']]:
         """
-        `basic_auth.username` and `basic_auth.password` for Docker repository. Docker registry credentials are encrypted when they are stored in Databricks internal storage and when they are passed to a registry upon fetching Docker images at cluster launch. However, other authenticated and authorized API users of this workspace can access the username and password.
+        `basic_auth.username` and `basic_auth.password` for Docker repository. Docker registry credentials are encrypted when they are stored in Databricks internal storage and when they are passed to a registry upon fetching Docker images at cluster launch.  For better security, these credentials should be stored in the secret scope and referred using secret path syntax: `{{secrets/scope/key}}`, otherwise other users of the workspace may access them via UI/API.
 
         Example usage with azurerm_container_registry and docker_registry_image, that you can adapt to your specific use-case:
-
-        ```python
-        import pulumi
-        import pulumi_databricks as databricks
-        import pulumi_docker as docker
-
-        this = docker.index.RegistryImage("this",
-            build=[{}],
-            name=f{this_azurerm_container_registry.login_server}/sample:latest)
-        this_instance_pool = databricks.InstancePool("this", preloaded_docker_images=[{
-            "url": this["name"],
-            "basic_auth": {
-                "username": this_azurerm_container_registry["adminUsername"],
-                "password": this_azurerm_container_registry["adminPassword"],
-            },
-        }])
-        ```
         """
         return pulumi.get(self, "basic_auth")
 
@@ -38433,13 +38337,13 @@ class MwsNetworksGcpNetworkInfoArgs:
         pulumi.set(__self__, "subnet_region", subnet_region)
         pulumi.set(__self__, "vpc_id", vpc_id)
         if pod_ip_range_name is not None:
-            warnings.warn("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.96.0/docs/guides/gcp-workspace#creating-a-vpc""", DeprecationWarning)
-            pulumi.log.warn("""pod_ip_range_name is deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.96.0/docs/guides/gcp-workspace#creating-a-vpc""")
+            warnings.warn("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.97.0/docs/guides/gcp-workspace#creating-a-vpc""", DeprecationWarning)
+            pulumi.log.warn("""pod_ip_range_name is deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.97.0/docs/guides/gcp-workspace#creating-a-vpc""")
         if pod_ip_range_name is not None:
             pulumi.set(__self__, "pod_ip_range_name", pod_ip_range_name)
         if service_ip_range_name is not None:
-            warnings.warn("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.96.0/docs/guides/gcp-workspace#creating-a-vpc""", DeprecationWarning)
-            pulumi.log.warn("""service_ip_range_name is deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.96.0/docs/guides/gcp-workspace#creating-a-vpc""")
+            warnings.warn("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.97.0/docs/guides/gcp-workspace#creating-a-vpc""", DeprecationWarning)
+            pulumi.log.warn("""service_ip_range_name is deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.97.0/docs/guides/gcp-workspace#creating-a-vpc""")
         if service_ip_range_name is not None:
             pulumi.set(__self__, "service_ip_range_name", service_ip_range_name)
 
@@ -38493,7 +38397,7 @@ class MwsNetworksGcpNetworkInfoArgs:
 
     @_builtins.property
     @pulumi.getter(name="podIpRangeName")
-    @_utilities.deprecated("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.96.0/docs/guides/gcp-workspace#creating-a-vpc""")
+    @_utilities.deprecated("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.97.0/docs/guides/gcp-workspace#creating-a-vpc""")
     def pod_ip_range_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "pod_ip_range_name")
 
@@ -38503,7 +38407,7 @@ class MwsNetworksGcpNetworkInfoArgs:
 
     @_builtins.property
     @pulumi.getter(name="serviceIpRangeName")
-    @_utilities.deprecated("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.96.0/docs/guides/gcp-workspace#creating-a-vpc""")
+    @_utilities.deprecated("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.97.0/docs/guides/gcp-workspace#creating-a-vpc""")
     def service_ip_range_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "service_ip_range_name")
 
@@ -38779,13 +38683,13 @@ class MwsWorkspacesGcpManagedNetworkConfigArgs:
                  gke_cluster_service_ip_range: Optional[pulumi.Input[_builtins.str]] = None):
         pulumi.set(__self__, "subnet_cidr", subnet_cidr)
         if gke_cluster_pod_ip_range is not None:
-            warnings.warn("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.96.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""", DeprecationWarning)
-            pulumi.log.warn("""gke_cluster_pod_ip_range is deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.96.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+            warnings.warn("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.97.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""", DeprecationWarning)
+            pulumi.log.warn("""gke_cluster_pod_ip_range is deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.97.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
         if gke_cluster_pod_ip_range is not None:
             pulumi.set(__self__, "gke_cluster_pod_ip_range", gke_cluster_pod_ip_range)
         if gke_cluster_service_ip_range is not None:
-            warnings.warn("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.96.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""", DeprecationWarning)
-            pulumi.log.warn("""gke_cluster_service_ip_range is deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.96.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+            warnings.warn("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.97.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""", DeprecationWarning)
+            pulumi.log.warn("""gke_cluster_service_ip_range is deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.97.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
         if gke_cluster_service_ip_range is not None:
             pulumi.set(__self__, "gke_cluster_service_ip_range", gke_cluster_service_ip_range)
 
@@ -38800,7 +38704,7 @@ class MwsWorkspacesGcpManagedNetworkConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="gkeClusterPodIpRange")
-    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.96.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.97.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
     def gke_cluster_pod_ip_range(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "gke_cluster_pod_ip_range")
 
@@ -38810,7 +38714,7 @@ class MwsWorkspacesGcpManagedNetworkConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="gkeClusterServiceIpRange")
-    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.96.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.97.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
     def gke_cluster_service_ip_range(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "gke_cluster_service_ip_range")
 
@@ -38931,6 +38835,37 @@ class MwsWorkspacesTokenArgs:
     @token_value.setter
     def token_value(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "token_value", value)
+
+
+if not MYPY:
+    class NotebookProviderConfigArgsDict(TypedDict):
+        workspace_id: pulumi.Input[_builtins.str]
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+elif False:
+    NotebookProviderConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class NotebookProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "workspace_id", value)
 
 
 if not MYPY:
@@ -40187,6 +40122,37 @@ class OnlineTableStatusTriggeredUpdateStatusTriggeredUpdateProgressArgs:
     @total_row_count.setter
     def total_row_count(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "total_row_count", value)
+
+
+if not MYPY:
+    class PermissionAssignmentProviderConfigArgsDict(TypedDict):
+        workspace_id: pulumi.Input[_builtins.str]
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+elif False:
+    PermissionAssignmentProviderConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PermissionAssignmentProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "workspace_id", value)
 
 
 if not MYPY:
@@ -73147,6 +73113,37 @@ elif False:
 
 @pulumi.input_type
 class GetNodeTypeProviderConfigArgs:
+    def __init__(__self__, *,
+                 workspace_id: _builtins.str):
+        """
+        :param _builtins.str workspace_id: Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        pulumi.set(__self__, "workspace_id", workspace_id)
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> _builtins.str:
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: _builtins.str):
+        pulumi.set(self, "workspace_id", value)
+
+
+if not MYPY:
+    class GetNotebookProviderConfigArgsDict(TypedDict):
+        workspace_id: _builtins.str
+        """
+        Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        """
+elif False:
+    GetNotebookProviderConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetNotebookProviderConfigArgs:
     def __init__(__self__, *,
                  workspace_id: _builtins.str):
         """

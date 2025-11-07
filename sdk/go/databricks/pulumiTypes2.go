@@ -13,6 +13,249 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetFeatureEngineeringMaterializedFeaturesMaterializedFeature struct {
+	// Filter by feature name. If specified, only materialized features materialized from this feature will be returned
+	FeatureName string `pulumi:"featureName"`
+	// (string) - The timestamp when the pipeline last ran and updated the materialized feature values.
+	// If the pipeline has not run yet, this field will be null
+	LastMaterializationTime string `pulumi:"lastMaterializationTime"`
+	// (string) - Unique identifier for the materialized feature
+	MaterializedFeatureId string `pulumi:"materializedFeatureId"`
+	// (OfflineStoreConfig)
+	OfflineStoreConfig GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOfflineStoreConfig `pulumi:"offlineStoreConfig"`
+	// (OnlineStore)
+	OnlineStoreConfig GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOnlineStoreConfig `pulumi:"onlineStoreConfig"`
+	// (string) - The schedule state of the materialization pipeline. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
+	PipelineScheduleState string `pulumi:"pipelineScheduleState"`
+	// (string) - The fully qualified Unity Catalog path to the table containing the materialized feature (Delta table or Lakebase table). Output only
+	TableName string `pulumi:"tableName"`
+}
+
+// GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureInput is an input type that accepts GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureArgs and GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOutput values.
+// You can construct a concrete instance of `GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureInput` via:
+//
+//	GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureArgs{...}
+type GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureInput interface {
+	pulumi.Input
+
+	ToGetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOutput() GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOutput
+	ToGetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOutputWithContext(context.Context) GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOutput
+}
+
+type GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureArgs struct {
+	// Filter by feature name. If specified, only materialized features materialized from this feature will be returned
+	FeatureName pulumi.StringInput `pulumi:"featureName"`
+	// (string) - The timestamp when the pipeline last ran and updated the materialized feature values.
+	// If the pipeline has not run yet, this field will be null
+	LastMaterializationTime pulumi.StringInput `pulumi:"lastMaterializationTime"`
+	// (string) - Unique identifier for the materialized feature
+	MaterializedFeatureId pulumi.StringInput `pulumi:"materializedFeatureId"`
+	// (OfflineStoreConfig)
+	OfflineStoreConfig GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOfflineStoreConfigInput `pulumi:"offlineStoreConfig"`
+	// (OnlineStore)
+	OnlineStoreConfig GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOnlineStoreConfigInput `pulumi:"onlineStoreConfig"`
+	// (string) - The schedule state of the materialization pipeline. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
+	PipelineScheduleState pulumi.StringInput `pulumi:"pipelineScheduleState"`
+	// (string) - The fully qualified Unity Catalog path to the table containing the materialized feature (Delta table or Lakebase table). Output only
+	TableName pulumi.StringInput `pulumi:"tableName"`
+}
+
+func (GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFeatureEngineeringMaterializedFeaturesMaterializedFeature)(nil)).Elem()
+}
+
+func (i GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureArgs) ToGetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOutput() GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOutput {
+	return i.ToGetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOutputWithContext(context.Background())
+}
+
+func (i GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureArgs) ToGetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOutputWithContext(ctx context.Context) GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOutput)
+}
+
+// GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureArrayInput is an input type that accepts GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureArray and GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureArrayOutput values.
+// You can construct a concrete instance of `GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureArrayInput` via:
+//
+//	GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureArray{ GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureArgs{...} }
+type GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureArrayInput interface {
+	pulumi.Input
+
+	ToGetFeatureEngineeringMaterializedFeaturesMaterializedFeatureArrayOutput() GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureArrayOutput
+	ToGetFeatureEngineeringMaterializedFeaturesMaterializedFeatureArrayOutputWithContext(context.Context) GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureArrayOutput
+}
+
+type GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureArray []GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureInput
+
+func (GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFeatureEngineeringMaterializedFeaturesMaterializedFeature)(nil)).Elem()
+}
+
+func (i GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureArray) ToGetFeatureEngineeringMaterializedFeaturesMaterializedFeatureArrayOutput() GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureArrayOutput {
+	return i.ToGetFeatureEngineeringMaterializedFeaturesMaterializedFeatureArrayOutputWithContext(context.Background())
+}
+
+func (i GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureArray) ToGetFeatureEngineeringMaterializedFeaturesMaterializedFeatureArrayOutputWithContext(ctx context.Context) GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureArrayOutput)
+}
+
+type GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOutput struct{ *pulumi.OutputState }
+
+func (GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFeatureEngineeringMaterializedFeaturesMaterializedFeature)(nil)).Elem()
+}
+
+func (o GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOutput) ToGetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOutput() GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOutput {
+	return o
+}
+
+func (o GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOutput) ToGetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOutputWithContext(ctx context.Context) GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOutput {
+	return o
+}
+
+// Filter by feature name. If specified, only materialized features materialized from this feature will be returned
+func (o GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOutput) FeatureName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFeatureEngineeringMaterializedFeaturesMaterializedFeature) string { return v.FeatureName }).(pulumi.StringOutput)
+}
+
+// (string) - The timestamp when the pipeline last ran and updated the materialized feature values.
+// If the pipeline has not run yet, this field will be null
+func (o GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOutput) LastMaterializationTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFeatureEngineeringMaterializedFeaturesMaterializedFeature) string {
+		return v.LastMaterializationTime
+	}).(pulumi.StringOutput)
+}
+
+// (string) - Unique identifier for the materialized feature
+func (o GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOutput) MaterializedFeatureId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFeatureEngineeringMaterializedFeaturesMaterializedFeature) string {
+		return v.MaterializedFeatureId
+	}).(pulumi.StringOutput)
+}
+
+// (OfflineStoreConfig)
+func (o GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOutput) OfflineStoreConfig() GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOfflineStoreConfigOutput {
+	return o.ApplyT(func(v GetFeatureEngineeringMaterializedFeaturesMaterializedFeature) GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOfflineStoreConfig {
+		return v.OfflineStoreConfig
+	}).(GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOfflineStoreConfigOutput)
+}
+
+// (OnlineStore)
+func (o GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOutput) OnlineStoreConfig() GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOnlineStoreConfigOutput {
+	return o.ApplyT(func(v GetFeatureEngineeringMaterializedFeaturesMaterializedFeature) GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOnlineStoreConfig {
+		return v.OnlineStoreConfig
+	}).(GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOnlineStoreConfigOutput)
+}
+
+// (string) - The schedule state of the materialization pipeline. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
+func (o GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOutput) PipelineScheduleState() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFeatureEngineeringMaterializedFeaturesMaterializedFeature) string {
+		return v.PipelineScheduleState
+	}).(pulumi.StringOutput)
+}
+
+// (string) - The fully qualified Unity Catalog path to the table containing the materialized feature (Delta table or Lakebase table). Output only
+func (o GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOutput) TableName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFeatureEngineeringMaterializedFeaturesMaterializedFeature) string { return v.TableName }).(pulumi.StringOutput)
+}
+
+type GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureArrayOutput struct{ *pulumi.OutputState }
+
+func (GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFeatureEngineeringMaterializedFeaturesMaterializedFeature)(nil)).Elem()
+}
+
+func (o GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureArrayOutput) ToGetFeatureEngineeringMaterializedFeaturesMaterializedFeatureArrayOutput() GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureArrayOutput {
+	return o
+}
+
+func (o GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureArrayOutput) ToGetFeatureEngineeringMaterializedFeaturesMaterializedFeatureArrayOutputWithContext(ctx context.Context) GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureArrayOutput {
+	return o
+}
+
+func (o GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureArrayOutput) Index(i pulumi.IntInput) GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFeatureEngineeringMaterializedFeaturesMaterializedFeature {
+		return vs[0].([]GetFeatureEngineeringMaterializedFeaturesMaterializedFeature)[vs[1].(int)]
+	}).(GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOutput)
+}
+
+type GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOfflineStoreConfig struct {
+	// (string) - The Unity Catalog catalog name
+	CatalogName string `pulumi:"catalogName"`
+	// (string) - The Unity Catalog schema name
+	SchemaName string `pulumi:"schemaName"`
+	// (string) - Prefix for Unity Catalog table name.
+	// The materialized feature will be stored in a table with this prefix and a generated postfix
+	TableNamePrefix string `pulumi:"tableNamePrefix"`
+}
+
+// GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOfflineStoreConfigInput is an input type that accepts GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOfflineStoreConfigArgs and GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOfflineStoreConfigOutput values.
+// You can construct a concrete instance of `GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOfflineStoreConfigInput` via:
+//
+//	GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOfflineStoreConfigArgs{...}
+type GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOfflineStoreConfigInput interface {
+	pulumi.Input
+
+	ToGetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOfflineStoreConfigOutput() GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOfflineStoreConfigOutput
+	ToGetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOfflineStoreConfigOutputWithContext(context.Context) GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOfflineStoreConfigOutput
+}
+
+type GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOfflineStoreConfigArgs struct {
+	// (string) - The Unity Catalog catalog name
+	CatalogName pulumi.StringInput `pulumi:"catalogName"`
+	// (string) - The Unity Catalog schema name
+	SchemaName pulumi.StringInput `pulumi:"schemaName"`
+	// (string) - Prefix for Unity Catalog table name.
+	// The materialized feature will be stored in a table with this prefix and a generated postfix
+	TableNamePrefix pulumi.StringInput `pulumi:"tableNamePrefix"`
+}
+
+func (GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOfflineStoreConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOfflineStoreConfig)(nil)).Elem()
+}
+
+func (i GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOfflineStoreConfigArgs) ToGetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOfflineStoreConfigOutput() GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOfflineStoreConfigOutput {
+	return i.ToGetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOfflineStoreConfigOutputWithContext(context.Background())
+}
+
+func (i GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOfflineStoreConfigArgs) ToGetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOfflineStoreConfigOutputWithContext(ctx context.Context) GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOfflineStoreConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOfflineStoreConfigOutput)
+}
+
+type GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOfflineStoreConfigOutput struct{ *pulumi.OutputState }
+
+func (GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOfflineStoreConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOfflineStoreConfig)(nil)).Elem()
+}
+
+func (o GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOfflineStoreConfigOutput) ToGetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOfflineStoreConfigOutput() GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOfflineStoreConfigOutput {
+	return o
+}
+
+func (o GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOfflineStoreConfigOutput) ToGetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOfflineStoreConfigOutputWithContext(ctx context.Context) GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOfflineStoreConfigOutput {
+	return o
+}
+
+// (string) - The Unity Catalog catalog name
+func (o GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOfflineStoreConfigOutput) CatalogName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOfflineStoreConfig) string {
+		return v.CatalogName
+	}).(pulumi.StringOutput)
+}
+
+// (string) - The Unity Catalog schema name
+func (o GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOfflineStoreConfigOutput) SchemaName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOfflineStoreConfig) string {
+		return v.SchemaName
+	}).(pulumi.StringOutput)
+}
+
+// (string) - Prefix for Unity Catalog table name.
+// The materialized feature will be stored in a table with this prefix and a generated postfix
+func (o GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOfflineStoreConfigOutput) TableNamePrefix() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOfflineStoreConfig) string {
+		return v.TableNamePrefix
+	}).(pulumi.StringOutput)
+}
+
 type GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOnlineStoreConfig struct {
 	// (string) - The capacity of the online store. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
 	Capacity string `pulumi:"capacity"`
@@ -41088,6 +41331,143 @@ func (o GetNotebookPathsNotebookPathListArrayOutput) Index(i pulumi.IntInput) Ge
 	}).(GetNotebookPathsNotebookPathListOutput)
 }
 
+type GetNotebookProviderConfig struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId string `pulumi:"workspaceId"`
+}
+
+// GetNotebookProviderConfigInput is an input type that accepts GetNotebookProviderConfigArgs and GetNotebookProviderConfigOutput values.
+// You can construct a concrete instance of `GetNotebookProviderConfigInput` via:
+//
+//	GetNotebookProviderConfigArgs{...}
+type GetNotebookProviderConfigInput interface {
+	pulumi.Input
+
+	ToGetNotebookProviderConfigOutput() GetNotebookProviderConfigOutput
+	ToGetNotebookProviderConfigOutputWithContext(context.Context) GetNotebookProviderConfigOutput
+}
+
+type GetNotebookProviderConfigArgs struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId pulumi.StringInput `pulumi:"workspaceId"`
+}
+
+func (GetNotebookProviderConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNotebookProviderConfig)(nil)).Elem()
+}
+
+func (i GetNotebookProviderConfigArgs) ToGetNotebookProviderConfigOutput() GetNotebookProviderConfigOutput {
+	return i.ToGetNotebookProviderConfigOutputWithContext(context.Background())
+}
+
+func (i GetNotebookProviderConfigArgs) ToGetNotebookProviderConfigOutputWithContext(ctx context.Context) GetNotebookProviderConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNotebookProviderConfigOutput)
+}
+
+func (i GetNotebookProviderConfigArgs) ToGetNotebookProviderConfigPtrOutput() GetNotebookProviderConfigPtrOutput {
+	return i.ToGetNotebookProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GetNotebookProviderConfigArgs) ToGetNotebookProviderConfigPtrOutputWithContext(ctx context.Context) GetNotebookProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNotebookProviderConfigOutput).ToGetNotebookProviderConfigPtrOutputWithContext(ctx)
+}
+
+// GetNotebookProviderConfigPtrInput is an input type that accepts GetNotebookProviderConfigArgs, GetNotebookProviderConfigPtr and GetNotebookProviderConfigPtrOutput values.
+// You can construct a concrete instance of `GetNotebookProviderConfigPtrInput` via:
+//
+//	        GetNotebookProviderConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetNotebookProviderConfigPtrInput interface {
+	pulumi.Input
+
+	ToGetNotebookProviderConfigPtrOutput() GetNotebookProviderConfigPtrOutput
+	ToGetNotebookProviderConfigPtrOutputWithContext(context.Context) GetNotebookProviderConfigPtrOutput
+}
+
+type getNotebookProviderConfigPtrType GetNotebookProviderConfigArgs
+
+func GetNotebookProviderConfigPtr(v *GetNotebookProviderConfigArgs) GetNotebookProviderConfigPtrInput {
+	return (*getNotebookProviderConfigPtrType)(v)
+}
+
+func (*getNotebookProviderConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetNotebookProviderConfig)(nil)).Elem()
+}
+
+func (i *getNotebookProviderConfigPtrType) ToGetNotebookProviderConfigPtrOutput() GetNotebookProviderConfigPtrOutput {
+	return i.ToGetNotebookProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *getNotebookProviderConfigPtrType) ToGetNotebookProviderConfigPtrOutputWithContext(ctx context.Context) GetNotebookProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNotebookProviderConfigPtrOutput)
+}
+
+type GetNotebookProviderConfigOutput struct{ *pulumi.OutputState }
+
+func (GetNotebookProviderConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNotebookProviderConfig)(nil)).Elem()
+}
+
+func (o GetNotebookProviderConfigOutput) ToGetNotebookProviderConfigOutput() GetNotebookProviderConfigOutput {
+	return o
+}
+
+func (o GetNotebookProviderConfigOutput) ToGetNotebookProviderConfigOutputWithContext(ctx context.Context) GetNotebookProviderConfigOutput {
+	return o
+}
+
+func (o GetNotebookProviderConfigOutput) ToGetNotebookProviderConfigPtrOutput() GetNotebookProviderConfigPtrOutput {
+	return o.ToGetNotebookProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GetNotebookProviderConfigOutput) ToGetNotebookProviderConfigPtrOutputWithContext(ctx context.Context) GetNotebookProviderConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetNotebookProviderConfig) *GetNotebookProviderConfig {
+		return &v
+	}).(GetNotebookProviderConfigPtrOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetNotebookProviderConfigOutput) WorkspaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNotebookProviderConfig) string { return v.WorkspaceId }).(pulumi.StringOutput)
+}
+
+type GetNotebookProviderConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GetNotebookProviderConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetNotebookProviderConfig)(nil)).Elem()
+}
+
+func (o GetNotebookProviderConfigPtrOutput) ToGetNotebookProviderConfigPtrOutput() GetNotebookProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetNotebookProviderConfigPtrOutput) ToGetNotebookProviderConfigPtrOutputWithContext(ctx context.Context) GetNotebookProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetNotebookProviderConfigPtrOutput) Elem() GetNotebookProviderConfigOutput {
+	return o.ApplyT(func(v *GetNotebookProviderConfig) GetNotebookProviderConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GetNotebookProviderConfig
+		return ret
+	}).(GetNotebookProviderConfigOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetNotebookProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetNotebookProviderConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.WorkspaceId
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetNotificationDestinationsNotificationDestination struct {
 	// The type of the notification destination. Possible values are `EMAIL`, `MICROSOFT_TEAMS`, `PAGERDUTY`, `SLACK`, or `WEBHOOK`.
 	DestinationType *string `pulumi:"destinationType"`
@@ -60981,6 +61361,9 @@ func (o GetZonesProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureInput)(nil)).Elem(), GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureArrayInput)(nil)).Elem(), GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOfflineStoreConfigInput)(nil)).Elem(), GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOfflineStoreConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOnlineStoreConfigInput)(nil)).Elem(), GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOnlineStoreConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFunctionsFunctionInput)(nil)).Elem(), GetFunctionsFunctionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFunctionsFunctionArrayInput)(nil)).Elem(), GetFunctionsFunctionArray{})
@@ -61483,6 +61866,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNodeTypeProviderConfigPtrInput)(nil)).Elem(), GetNodeTypeProviderConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNotebookPathsNotebookPathListInput)(nil)).Elem(), GetNotebookPathsNotebookPathListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNotebookPathsNotebookPathListArrayInput)(nil)).Elem(), GetNotebookPathsNotebookPathListArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNotebookProviderConfigInput)(nil)).Elem(), GetNotebookProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNotebookProviderConfigPtrInput)(nil)).Elem(), GetNotebookProviderConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNotificationDestinationsNotificationDestinationInput)(nil)).Elem(), GetNotificationDestinationsNotificationDestinationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNotificationDestinationsNotificationDestinationArrayInput)(nil)).Elem(), GetNotificationDestinationsNotificationDestinationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNotificationDestinationsProviderConfigInput)(nil)).Elem(), GetNotificationDestinationsProviderConfigArgs{})
@@ -61752,6 +62137,9 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceSettingV2StringValInput)(nil)).Elem(), GetWorkspaceSettingV2StringValArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesProviderConfigInput)(nil)).Elem(), GetZonesProviderConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesProviderConfigPtrInput)(nil)).Elem(), GetZonesProviderConfigArgs{})
+	pulumi.RegisterOutputType(GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOutput{})
+	pulumi.RegisterOutputType(GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureArrayOutput{})
+	pulumi.RegisterOutputType(GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOfflineStoreConfigOutput{})
 	pulumi.RegisterOutputType(GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOnlineStoreConfigOutput{})
 	pulumi.RegisterOutputType(GetFunctionsFunctionOutput{})
 	pulumi.RegisterOutputType(GetFunctionsFunctionArrayOutput{})
@@ -62254,6 +62642,8 @@ func init() {
 	pulumi.RegisterOutputType(GetNodeTypeProviderConfigPtrOutput{})
 	pulumi.RegisterOutputType(GetNotebookPathsNotebookPathListOutput{})
 	pulumi.RegisterOutputType(GetNotebookPathsNotebookPathListArrayOutput{})
+	pulumi.RegisterOutputType(GetNotebookProviderConfigOutput{})
+	pulumi.RegisterOutputType(GetNotebookProviderConfigPtrOutput{})
 	pulumi.RegisterOutputType(GetNotificationDestinationsNotificationDestinationOutput{})
 	pulumi.RegisterOutputType(GetNotificationDestinationsNotificationDestinationArrayOutput{})
 	pulumi.RegisterOutputType(GetNotificationDestinationsProviderConfigOutput{})

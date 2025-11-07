@@ -24,14 +24,136 @@ namespace Pulumi.Databricks
     /// 
     /// This example creates a Synced Database Table inside a Database Catalog.
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @this = new Databricks.DatabaseSyncedDatabaseTable("this", new()
+    ///     {
+    ///         Name = "my_database_catalog.public.synced_table",
+    ///         LogicalDatabaseName = "databricks_postgres",
+    ///         Spec = new Databricks.Inputs.DatabaseSyncedDatabaseTableSpecArgs
+    ///         {
+    ///             SchedulingPolicy = "SNAPSHOT",
+    ///             SourceTableFullName = "source_delta.tpch.customer",
+    ///             PrimaryKeyColumns = new[]
+    ///             {
+    ///                 "c_custkey",
+    ///             },
+    ///             CreateDatabaseObjectsIfMissing = true,
+    ///             NewPipelineSpec = new Databricks.Inputs.DatabaseSyncedDatabaseTableSpecNewPipelineSpecArgs
+    ///             {
+    ///                 StorageCatalog = "source_delta",
+    ///                 StorageSchema = "tpch",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ### Creating a Synced Database Table inside a Standard Catalog
     /// 
     /// This example creates a Synced Database Table inside a Standard Catalog.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @this = new Databricks.DatabaseSyncedDatabaseTable("this", new()
+    ///     {
+    ///         Name = "my_standard_catalog.public.synced_table",
+    ///         LogicalDatabaseName = "databricks_postgres",
+    ///         DatabaseInstanceName = "my-database-instance",
+    ///         Spec = new Databricks.Inputs.DatabaseSyncedDatabaseTableSpecArgs
+    ///         {
+    ///             SchedulingPolicy = "SNAPSHOT",
+    ///             SourceTableFullName = "source_delta.tpch.customer",
+    ///             PrimaryKeyColumns = new[]
+    ///             {
+    ///                 "c_custkey",
+    ///             },
+    ///             CreateDatabaseObjectsIfMissing = true,
+    ///             NewPipelineSpec = new Databricks.Inputs.DatabaseSyncedDatabaseTableSpecNewPipelineSpecArgs
+    ///             {
+    ///                 StorageCatalog = "source_delta",
+    ///                 StorageSchema = "tpch",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ### Creating multiple Synced Database Tables and bin packing them into a single pipeline
     /// 
     /// This example creates two Synced Database Tables. The first one specifies a new pipeline spec,
     /// which generates a new pipeline. The second one utilizes the pipeline ID of the first table.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var instance = new Databricks.DatabaseInstance("instance", new()
+    ///     {
+    ///         Name = "my-database-instance",
+    ///         Capacity = "CU_1",
+    ///     });
+    /// 
+    ///     var syncedTable1 = new Databricks.DatabaseSyncedDatabaseTable("synced_table_1", new()
+    ///     {
+    ///         Name = "my_standard_catalog.public.synced_table1",
+    ///         LogicalDatabaseName = "databricks_postgres",
+    ///         DatabaseInstanceName = instance.Name,
+    ///         Spec = new Databricks.Inputs.DatabaseSyncedDatabaseTableSpecArgs
+    ///         {
+    ///             SchedulingPolicy = "SNAPSHOT",
+    ///             SourceTableFullName = "source_delta.tpch.customer",
+    ///             PrimaryKeyColumns = new[]
+    ///             {
+    ///                 "c_custkey",
+    ///             },
+    ///             CreateDatabaseObjectsIfMissing = true,
+    ///             NewPipelineSpec = new Databricks.Inputs.DatabaseSyncedDatabaseTableSpecNewPipelineSpecArgs
+    ///             {
+    ///                 StorageCatalog = "source_delta",
+    ///                 StorageSchema = "tpch",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var syncedTable2 = new Databricks.DatabaseSyncedDatabaseTable("synced_table_2", new()
+    ///     {
+    ///         Name = "my_standard_catalog.public.synced_table2",
+    ///         LogicalDatabaseName = "databricks_postgres",
+    ///         DatabaseInstanceName = instance.Name,
+    ///         Spec = new Databricks.Inputs.DatabaseSyncedDatabaseTableSpecArgs
+    ///         {
+    ///             SchedulingPolicy = "SNAPSHOT",
+    ///             SourceTableFullName = "source_delta.tpch.customer",
+    ///             PrimaryKeyColumns = new[]
+    ///             {
+    ///                 "c_custkey",
+    ///             },
+    ///             CreateDatabaseObjectsIfMissing = true,
+    ///             ExistingPipelineId = syncedTable1.DataSynchronizationStatus.Apply(dataSynchronizationStatus =&gt; dataSynchronizationStatus.PipelineId),
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ### Creating a Synced Database Table with a custom Jobs schedule
     /// 
@@ -41,6 +163,61 @@ namespace Pulumi.Databricks
     /// - A standard catalog named `"MyStandardCatalog"`
     /// - A schema in the standard catalog named `"default"`
     /// - A source delta table named `"source_delta.schema.customer"` with the primary key `"CCustkey"`
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var syncedTable = new Databricks.DatabaseSyncedDatabaseTable("synced_table", new()
+    ///     {
+    ///         Name = "my_standard_catalog.default.my_synced_table",
+    ///         LogicalDatabaseName = "terraform_test_db",
+    ///         DatabaseInstanceName = "my-database-instance",
+    ///         Spec = new Databricks.Inputs.DatabaseSyncedDatabaseTableSpecArgs
+    ///         {
+    ///             SchedulingPolicy = "SNAPSHOT",
+    ///             SourceTableFullName = "source_delta.schema.customer",
+    ///             PrimaryKeyColumns = new[]
+    ///             {
+    ///                 "c_custkey",
+    ///             },
+    ///             CreateDatabaseObjectsIfMissing = true,
+    ///             NewPipelineSpec = new Databricks.Inputs.DatabaseSyncedDatabaseTableSpecNewPipelineSpecArgs
+    ///             {
+    ///                 StorageCatalog = "source_delta",
+    ///                 StorageSchema = "schema",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var syncPipelineScheduleJob = new Databricks.Job("sync_pipeline_schedule_job", new()
+    ///     {
+    ///         Name = "Synced Pipeline Refresh",
+    ///         Description = "Job to schedule synced database table pipeline. ",
+    ///         Tasks = new[]
+    ///         {
+    ///             new Databricks.Inputs.JobTaskArgs
+    ///             {
+    ///                 TaskKey = "synced-table-pipeline",
+    ///                 PipelineTask = new Databricks.Inputs.JobTaskPipelineTaskArgs
+    ///                 {
+    ///                     PipelineId = syncedTable.DataSynchronizationStatus.Apply(dataSynchronizationStatus =&gt; dataSynchronizationStatus.PipelineId),
+    ///                 },
+    ///             },
+    ///         },
+    ///         Schedule = new Databricks.Inputs.JobScheduleArgs
+    ///         {
+    ///             QuartzCronExpression = "0 0 0 * * ?",
+    ///             TimezoneId = "Europe/Helsinki",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

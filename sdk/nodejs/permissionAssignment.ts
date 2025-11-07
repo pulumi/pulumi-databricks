@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -182,6 +184,10 @@ export class PermissionAssignment extends pulumi.CustomResource {
      */
     declare public readonly principalId: pulumi.Output<string>;
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    declare public readonly providerConfig: pulumi.Output<outputs.PermissionAssignmentProviderConfig | undefined>;
+    /**
      * the application ID of service principal to assign to a workspace.
      */
     declare public readonly servicePrincipalName: pulumi.Output<string>;
@@ -207,6 +213,7 @@ export class PermissionAssignment extends pulumi.CustomResource {
             resourceInputs["groupName"] = state?.groupName;
             resourceInputs["permissions"] = state?.permissions;
             resourceInputs["principalId"] = state?.principalId;
+            resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["servicePrincipalName"] = state?.servicePrincipalName;
             resourceInputs["userName"] = state?.userName;
         } else {
@@ -217,6 +224,7 @@ export class PermissionAssignment extends pulumi.CustomResource {
             resourceInputs["groupName"] = args?.groupName;
             resourceInputs["permissions"] = args?.permissions;
             resourceInputs["principalId"] = args?.principalId;
+            resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["servicePrincipalName"] = args?.servicePrincipalName;
             resourceInputs["userName"] = args?.userName;
             resourceInputs["displayName"] = undefined /*out*/;
@@ -249,6 +257,10 @@ export interface PermissionAssignmentState {
      */
     principalId?: pulumi.Input<string>;
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.PermissionAssignmentProviderConfig>;
+    /**
      * the application ID of service principal to assign to a workspace.
      */
     servicePrincipalName?: pulumi.Input<string>;
@@ -276,6 +288,10 @@ export interface PermissionAssignmentArgs {
      * Databricks ID of the user, service principal, or group. The principal ID can be retrieved using the account-level SCIM API, or using databricks_user, databricks.ServicePrincipal or databricks.Group data sources with account API (and has to be an account admin). A more sensible approach is to retrieve the list of `principalId` as outputs from another Pulumi stack.
      */
     principalId?: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.PermissionAssignmentProviderConfig>;
     /**
      * the application ID of service principal to assign to a workspace.
      */

@@ -154,7 +154,7 @@ namespace Pulumi.Databricks
         public Output<string> SchemaName { get; private set; } = null!;
 
         /// <summary>
-        /// Path inside an External Location. Only used for `EXTERNAL` Volumes. Change forces creation of a new resource.
+        /// URL for the volume (should be inside of an existing External Location). Only used for `EXTERNAL` Volumes.  If the URL contains special characters, such as space, `&amp;`, etc., they should be percent-encoded (space &gt; `%20`, etc.). Change forces creation of a new resource.
         /// </summary>
         [Output("storageLocation")]
         public Output<string?> StorageLocation { get; private set; } = null!;
@@ -248,7 +248,7 @@ namespace Pulumi.Databricks
         public Input<string> SchemaName { get; set; } = null!;
 
         /// <summary>
-        /// Path inside an External Location. Only used for `EXTERNAL` Volumes. Change forces creation of a new resource.
+        /// URL for the volume (should be inside of an existing External Location). Only used for `EXTERNAL` Volumes.  If the URL contains special characters, such as space, `&amp;`, etc., they should be percent-encoded (space &gt; `%20`, etc.). Change forces creation of a new resource.
         /// </summary>
         [Input("storageLocation")]
         public Input<string>? StorageLocation { get; set; }
@@ -298,7 +298,7 @@ namespace Pulumi.Databricks
         public Input<string>? SchemaName { get; set; }
 
         /// <summary>
-        /// Path inside an External Location. Only used for `EXTERNAL` Volumes. Change forces creation of a new resource.
+        /// URL for the volume (should be inside of an existing External Location). Only used for `EXTERNAL` Volumes.  If the URL contains special characters, such as space, `&amp;`, etc., they should be percent-encoded (space &gt; `%20`, etc.). Change forces creation of a new resource.
         /// </summary>
         [Input("storageLocation")]
         public Input<string>? StorageLocation { get; set; }

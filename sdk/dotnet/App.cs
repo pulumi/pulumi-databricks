@@ -16,6 +16,53 @@ namespace Pulumi.Databricks
     /// 
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @this = new Databricks.App("this", new()
+    ///     {
+    ///         Name = "my-custom-app",
+    ///         Description = "My app",
+    ///         Resources = new[]
+    ///         {
+    ///             new Databricks.Inputs.AppResourceArgs
+    ///             {
+    ///                 Name = "sql-warehouse",
+    ///                 SqlWarehouse = new Databricks.Inputs.AppResourceSqlWarehouseArgs
+    ///                 {
+    ///                     Id = "e9ca293f79a74b5c",
+    ///                     Permission = "CAN_MANAGE",
+    ///                 },
+    ///             },
+    ///             new Databricks.Inputs.AppResourceArgs
+    ///             {
+    ///                 Name = "serving-endpoint",
+    ///                 ServingEndpoint = new Databricks.Inputs.AppResourceServingEndpointArgs
+    ///                 {
+    ///                     Name = "databricks-meta-llama-3-1-70b-instruct",
+    ///                     Permission = "CAN_MANAGE",
+    ///                 },
+    ///             },
+    ///             new Databricks.Inputs.AppResourceArgs
+    ///             {
+    ///                 Name = "job",
+    ///                 Job = new Databricks.Inputs.AppResourceJobArgs
+    ///                 {
+    ///                     Id = "1234",
+    ///                     Permission = "CAN_MANAGE",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Related Resources
     /// 
     /// The following resources are used in the same context:

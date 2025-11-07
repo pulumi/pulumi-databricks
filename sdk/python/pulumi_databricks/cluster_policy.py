@@ -298,6 +298,66 @@ class ClusterPolicy(pulumi.CustomResource):
         * A user who has both cluster create permission and access to cluster policies can select the Free form policy and policies they have access to.
         * A user that has access to only cluster policies, can select the policies they have access to.
 
+        ## Example Usage
+
+        Let us take a look at an example of how you can manage two teams: Marketing and Data Engineering. In the following scenario we want the marketing team to have a really good query experience, so we enabled delta cache for them. On the other hand we want the data engineering team to be able to utilize bigger clusters so we increased the dbus per hour that they can spend. This strategy allows your marketing users and data engineering users to use Databricks in a self service manner but have a different experience in regards to security and performance. And down the line if you need to add more global settings you can propagate them through the "base cluster policy".
+
+        `modules/base-cluster-policy/main.tf` could look like:
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_databricks as databricks
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        # Team that performs the work
+        team = config.require_object("team")
+        # Cluster policy overrides
+        policy_overrides = config.require_object("policyOverrides")
+        default_policy = {
+            "dbus_per_hour": {
+                "type": "range",
+                "maxValue": 10,
+            },
+            "autotermination_minutes": {
+                "type": "fixed",
+                "value": 20,
+                "hidden": True,
+            },
+            "custom_tags.Team": {
+                "type": "fixed",
+                "value": team,
+            },
+        }
+        fair_use = databricks.ClusterPolicy("fair_use",
+            name=f"{team} cluster policy",
+            definition=json.dumps(std.merge(input=[
+                default_policy,
+                policy_overrides,
+            ]).result),
+            libraries=[
+                {
+                    "pypi": {
+                        "package": "databricks-sdk==0.12.0",
+                    },
+                },
+                {
+                    "maven": {
+                        "coordinates": "com.oracle.database.jdbc:ojdbc8:XXXX",
+                    },
+                },
+            ])
+        can_use_cluster_policyinstance_profile = databricks.Permissions("can_use_cluster_policyinstance_profile",
+            cluster_policy_id=fair_use.id,
+            access_controls=[{
+                "group_name": team,
+                "permission_level": "CAN_USE",
+            }])
+        ```
+
+        And custom instances of that base policy module for our marketing and data engineering teams would look like:
+
         ### Overriding the built-in cluster policies
 
         You can override built-in cluster policies by creating a `ClusterPolicy` resource with following attributes:
@@ -404,6 +464,66 @@ class ClusterPolicy(pulumi.CustomResource):
         * A user who has cluster create permission can select the `Free form` policy and create fully-configurable clusters.
         * A user who has both cluster create permission and access to cluster policies can select the Free form policy and policies they have access to.
         * A user that has access to only cluster policies, can select the policies they have access to.
+
+        ## Example Usage
+
+        Let us take a look at an example of how you can manage two teams: Marketing and Data Engineering. In the following scenario we want the marketing team to have a really good query experience, so we enabled delta cache for them. On the other hand we want the data engineering team to be able to utilize bigger clusters so we increased the dbus per hour that they can spend. This strategy allows your marketing users and data engineering users to use Databricks in a self service manner but have a different experience in regards to security and performance. And down the line if you need to add more global settings you can propagate them through the "base cluster policy".
+
+        `modules/base-cluster-policy/main.tf` could look like:
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_databricks as databricks
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        # Team that performs the work
+        team = config.require_object("team")
+        # Cluster policy overrides
+        policy_overrides = config.require_object("policyOverrides")
+        default_policy = {
+            "dbus_per_hour": {
+                "type": "range",
+                "maxValue": 10,
+            },
+            "autotermination_minutes": {
+                "type": "fixed",
+                "value": 20,
+                "hidden": True,
+            },
+            "custom_tags.Team": {
+                "type": "fixed",
+                "value": team,
+            },
+        }
+        fair_use = databricks.ClusterPolicy("fair_use",
+            name=f"{team} cluster policy",
+            definition=json.dumps(std.merge(input=[
+                default_policy,
+                policy_overrides,
+            ]).result),
+            libraries=[
+                {
+                    "pypi": {
+                        "package": "databricks-sdk==0.12.0",
+                    },
+                },
+                {
+                    "maven": {
+                        "coordinates": "com.oracle.database.jdbc:ojdbc8:XXXX",
+                    },
+                },
+            ])
+        can_use_cluster_policyinstance_profile = databricks.Permissions("can_use_cluster_policyinstance_profile",
+            cluster_policy_id=fair_use.id,
+            access_controls=[{
+                "group_name": team,
+                "permission_level": "CAN_USE",
+            }])
+        ```
+
+        And custom instances of that base policy module for our marketing and data engineering teams would look like:
 
         ### Overriding the built-in cluster policies
 

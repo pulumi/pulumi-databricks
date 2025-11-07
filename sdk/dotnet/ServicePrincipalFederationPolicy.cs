@@ -20,6 +20,29 @@ namespace Pulumi.Databricks
     /// 
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @this = new Databricks.ServicePrincipalFederationPolicy("this", new()
+    ///     {
+    ///         ServicePrincipalId = 1234,
+    ///         PolicyId = "my-policy",
+    ///         OidcPolicy = new Databricks.Inputs.ServicePrincipalFederationPolicyOidcPolicyArgs
+    ///         {
+    ///             Issuer = "https://myidp.example.com",
+    ///             SubjectClaim = "sub",
+    ///             Subject = "subject-in-token-from-myidp",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// As of Pulumi v1.5, resources can be imported through configuration.

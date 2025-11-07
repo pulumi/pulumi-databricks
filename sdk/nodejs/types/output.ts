@@ -1102,27 +1102,9 @@ export interface ClusterClusterMountInfoNetworkFilesystemInfo {
 
 export interface ClusterDockerImage {
     /**
-     * `basic_auth.username` and `basic_auth.password` for Docker repository. Docker registry credentials are encrypted when they are stored in Databricks internal storage and when they are passed to a registry upon fetching Docker images at cluster launch. However, other authenticated and authorized API users of this workspace can access the username and password.
+     * `basic_auth.username` and `basic_auth.password` for Docker repository. Docker registry credentials are encrypted when they are stored in Databricks internal storage and when they are passed to a registry upon fetching Docker images at cluster launch.  For better security, these credentials should be stored in the secret scope and referred using secret path syntax: `{{secrets/scope/key}}`, otherwise other users of the workspace may access them via UI/API.
      *
      * Example usage with azurermContainerRegistry and docker_registry_image, that you can adapt to your specific use-case:
-     *
-     * ```typescript
-     * import * as pulumi from "@pulumi/pulumi";
-     * import * as databricks from "@pulumi/databricks";
-     * import * as docker from "@pulumi/docker";
-     *
-     * const _this = new docker.index.RegistryImage("this", {
-     *     build: [{}],
-     *     name: `${thisAzurermContainerRegistry.loginServer}/sample:latest`,
-     * });
-     * const thisCluster = new databricks.Cluster("this", {dockerImage: {
-     *     url: _this.name,
-     *     basicAuth: {
-     *         username: thisAzurermContainerRegistry.adminUsername,
-     *         password: thisAzurermContainerRegistry.adminPassword,
-     *     },
-     * }});
-     * ```
      */
     basicAuth?: outputs.ClusterDockerImageBasicAuth;
     /**
@@ -8853,6 +8835,13 @@ export interface GetNotebookPathsNotebookPathList {
     path?: string;
 }
 
+export interface GetNotebookProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
 export interface GetNotificationDestinationsNotificationDestination {
     /**
      * The type of the notification destination. Possible values are `EMAIL`, `MICROSOFT_TEAMS`, `PAGERDUTY`, `SLACK`, or `WEBHOOK`.
@@ -10816,27 +10805,9 @@ export interface InstancePoolInstancePoolFleetAttributesLaunchTemplateOverride {
 
 export interface InstancePoolPreloadedDockerImage {
     /**
-     * `basic_auth.username` and `basic_auth.password` for Docker repository. Docker registry credentials are encrypted when they are stored in Databricks internal storage and when they are passed to a registry upon fetching Docker images at cluster launch. However, other authenticated and authorized API users of this workspace can access the username and password.
+     * `basic_auth.username` and `basic_auth.password` for Docker repository. Docker registry credentials are encrypted when they are stored in Databricks internal storage and when they are passed to a registry upon fetching Docker images at cluster launch.  For better security, these credentials should be stored in the secret scope and referred using secret path syntax: `{{secrets/scope/key}}`, otherwise other users of the workspace may access them via UI/API.
      *
      * Example usage with azurermContainerRegistry and docker_registry_image, that you can adapt to your specific use-case:
-     *
-     * ```typescript
-     * import * as pulumi from "@pulumi/pulumi";
-     * import * as databricks from "@pulumi/databricks";
-     * import * as docker from "@pulumi/docker";
-     *
-     * const _this = new docker.index.RegistryImage("this", {
-     *     build: [{}],
-     *     name: `${thisAzurermContainerRegistry.loginServer}/sample:latest`,
-     * });
-     * const thisInstancePool = new databricks.InstancePool("this", {preloadedDockerImages: [{
-     *     url: _this.name,
-     *     basicAuth: {
-     *         username: thisAzurermContainerRegistry.adminUsername,
-     *         password: thisAzurermContainerRegistry.adminPassword,
-     *     },
-     * }]});
-     * ```
      */
     basicAuth?: outputs.InstancePoolPreloadedDockerImageBasicAuth;
     /**
@@ -15020,11 +14991,11 @@ export interface MwsNetworksGcpNetworkInfo {
      */
     networkProjectId: string;
     /**
-     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.96.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.97.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     podIpRangeName?: string;
     /**
-     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.96.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.97.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     serviceIpRangeName?: string;
     /**
@@ -15091,11 +15062,11 @@ export interface MwsWorkspacesExternalCustomerInfo {
 
 export interface MwsWorkspacesGcpManagedNetworkConfig {
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.96.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.97.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterPodIpRange?: string;
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.96.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.97.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterServiceIpRange?: string;
     subnetCidr: string;
@@ -15117,6 +15088,13 @@ export interface MwsWorkspacesToken {
     lifetimeSeconds?: number;
     tokenId: string;
     tokenValue: string;
+}
+
+export interface NotebookProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
 }
 
 export interface NotificationDestinationConfig {
@@ -15318,6 +15296,13 @@ export interface OnlineTableStatusTriggeredUpdateStatusTriggeredUpdateProgress {
     syncProgressCompletion?: number;
     syncedRowCount?: number;
     totalRowCount?: number;
+}
+
+export interface PermissionAssignmentProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
 }
 
 export interface PermissionsAccessControl {

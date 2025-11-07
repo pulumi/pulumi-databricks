@@ -252,9 +252,9 @@ class MlflowWebhook(pulumi.CustomResource):
             language="PYTHON",
             content_base64=std.base64encode(input=\"\"\"import json
          
-        event_message = dbutils.widgets.get("event_message")
+        event_message = dbutils.widgets.get(\\"event_message\\")
         event_message_dict = json.loads(event_message)
-        print(f"event data={event_message_dict}")
+        print(f\\"event data={event_message_dict}\\")
         \"\"\").result)
         this_job = databricks.Job("this",
             name=f"Pulumi MLflowWebhook Demo ({me.alphanumeric})",
@@ -354,9 +354,9 @@ class MlflowWebhook(pulumi.CustomResource):
             language="PYTHON",
             content_base64=std.base64encode(input=\"\"\"import json
          
-        event_message = dbutils.widgets.get("event_message")
+        event_message = dbutils.widgets.get(\\"event_message\\")
         event_message_dict = json.loads(event_message)
-        print(f"event data={event_message_dict}")
+        print(f\\"event data={event_message_dict}\\")
         \"\"\").result)
         this_job = databricks.Job("this",
             name=f"Pulumi MLflowWebhook Demo ({me.alphanumeric})",

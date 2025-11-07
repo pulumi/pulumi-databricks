@@ -199,14 +199,14 @@ public final class SqlTableArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * URL of storage location for Table data (required for EXTERNAL Tables). Not supported for `VIEW` or `MANAGED` table_type.
+     * URL of storage location for Table data (required for EXTERNAL Tables).  If the URL contains special characters, such as space, `&amp;`, etc., they should be percent-encoded (space &gt; `%20`, etc.).  Not supported for `VIEW` or `MANAGED` table_type.
      * 
      */
     @Import(name="storageLocation")
     private @Nullable Output<String> storageLocation;
 
     /**
-     * @return URL of storage location for Table data (required for EXTERNAL Tables). Not supported for `VIEW` or `MANAGED` table_type.
+     * @return URL of storage location for Table data (required for EXTERNAL Tables).  If the URL contains special characters, such as space, `&amp;`, etc., they should be percent-encoded (space &gt; `%20`, etc.).  Not supported for `VIEW` or `MANAGED` table_type.
      * 
      */
     public Optional<Output<String>> storageLocation() {
@@ -572,7 +572,7 @@ public final class SqlTableArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param storageLocation URL of storage location for Table data (required for EXTERNAL Tables). Not supported for `VIEW` or `MANAGED` table_type.
+         * @param storageLocation URL of storage location for Table data (required for EXTERNAL Tables).  If the URL contains special characters, such as space, `&amp;`, etc., they should be percent-encoded (space &gt; `%20`, etc.).  Not supported for `VIEW` or `MANAGED` table_type.
          * 
          * @return builder
          * 
@@ -583,7 +583,7 @@ public final class SqlTableArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param storageLocation URL of storage location for Table data (required for EXTERNAL Tables). Not supported for `VIEW` or `MANAGED` table_type.
+         * @param storageLocation URL of storage location for Table data (required for EXTERNAL Tables).  If the URL contains special characters, such as space, `&amp;`, etc., they should be percent-encoded (space &gt; `%20`, etc.).  Not supported for `VIEW` or `MANAGED` table_type.
          * 
          * @return builder
          * 

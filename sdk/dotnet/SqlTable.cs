@@ -111,7 +111,7 @@ namespace Pulumi.Databricks
         public Output<string?> StorageCredentialName { get; private set; } = null!;
 
         /// <summary>
-        /// URL of storage location for Table data (required for EXTERNAL Tables). Not supported for `VIEW` or `MANAGED` table_type.
+        /// URL of storage location for Table data (required for EXTERNAL Tables).  If the URL contains special characters, such as space, `&amp;`, etc., they should be percent-encoded (space &gt; `%20`, etc.).  Not supported for `VIEW` or `MANAGED` table_type.
         /// </summary>
         [Output("storageLocation")]
         public Output<string?> StorageLocation { get; private set; } = null!;
@@ -288,7 +288,7 @@ namespace Pulumi.Databricks
         public Input<string>? StorageCredentialName { get; set; }
 
         /// <summary>
-        /// URL of storage location for Table data (required for EXTERNAL Tables). Not supported for `VIEW` or `MANAGED` table_type.
+        /// URL of storage location for Table data (required for EXTERNAL Tables).  If the URL contains special characters, such as space, `&amp;`, etc., they should be percent-encoded (space &gt; `%20`, etc.).  Not supported for `VIEW` or `MANAGED` table_type.
         /// </summary>
         [Input("storageLocation")]
         public Input<string>? StorageLocation { get; set; }
@@ -429,7 +429,7 @@ namespace Pulumi.Databricks
         public Input<string>? StorageCredentialName { get; set; }
 
         /// <summary>
-        /// URL of storage location for Table data (required for EXTERNAL Tables). Not supported for `VIEW` or `MANAGED` table_type.
+        /// URL of storage location for Table data (required for EXTERNAL Tables).  If the URL contains special characters, such as space, `&amp;`, etc., they should be percent-encoded (space &gt; `%20`, etc.).  Not supported for `VIEW` or `MANAGED` table_type.
         /// </summary>
         [Input("storageLocation")]
         public Input<string>? StorageLocation { get; set; }

@@ -49,6 +49,78 @@ import * as utilities from "./utilities";
  *
  * For Azure
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ * import * as std from "@pulumi/std";
+ *
+ * const external = new databricks.StorageCredential("external", {
+ *     name: extCred.displayName,
+ *     azureServicePrincipal: {
+ *         directoryId: tenantId,
+ *         applicationId: extCred.applicationId,
+ *         clientSecret: extCredAzureadApplicationPassword.value,
+ *     },
+ *     comment: "Managed by TF",
+ * }, {
+ *     dependsOn: [_this],
+ * });
+ * const some = new databricks.ExternalLocation("some", {
+ *     name: "external",
+ *     url: std.format({
+ *         input: "abfss://%s@%s.dfs.core.windows.net",
+ *         args: [
+ *             extStorage.name,
+ *             extStorageAzurermStorageAccount.name,
+ *         ],
+ *     }).then(invoke => invoke.result),
+ *     credentialName: external.id,
+ *     comment: "Managed by TF",
+ * }, {
+ *     dependsOn: [_this],
+ * });
+ * const someGrants = new databricks.Grants("some", {
+ *     externalLocation: some.id,
+ *     grants: [{
+ *         principal: "Data Engineers",
+ *         privileges: [
+ *             "CREATE_EXTERNAL_TABLE",
+ *             "READ_FILES",
+ *         ],
+ *     }],
+ * });
+ * ```
+ *
+ * For GCP
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const ext = new databricks.StorageCredential("ext", {
+ *     name: "the-creds",
+ *     databricksGcpServiceAccount: {},
+ * });
+ * const some = new databricks.ExternalLocation("some", {
+ *     name: "the-ext-location",
+ *     url: `gs://${extBucket.name}`,
+ *     credentialName: ext.id,
+ *     comment: "Managed by TF",
+ * });
+ * const someGrants = new databricks.Grants("some", {
+ *     externalLocation: some.id,
+ *     grants: [{
+ *         principal: "Data Engineers",
+ *         privileges: [
+ *             "CREATE_EXTERNAL_TABLE",
+ *             "READ_FILES",
+ *         ],
+ *     }],
+ * });
+ * ```
+ *
+ * Example `encryptionDetails` specifying SSE_S3 encryption:
+ *
  * ## Import
  *
  * This resource can be imported by `name`:
@@ -168,7 +240,7 @@ export class ExternalLocation extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly updatedBy: pulumi.Output<string>;
     /**
-     * Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
+     * Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).   If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.).
      */
     declare public readonly url: pulumi.Output<string>;
 
@@ -314,7 +386,7 @@ export interface ExternalLocationState {
      */
     updatedBy?: pulumi.Input<string>;
     /**
-     * Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
+     * Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).   If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.).
      */
     url?: pulumi.Input<string>;
 }
@@ -371,7 +443,7 @@ export interface ExternalLocationArgs {
      */
     skipValidation?: pulumi.Input<boolean>;
     /**
-     * Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
+     * Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).   If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.).
      */
     url: pulumi.Input<string>;
 }

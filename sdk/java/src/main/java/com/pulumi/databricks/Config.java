@@ -72,6 +72,9 @@ public final class Config {
     public Optional<Integer> debugTruncateBytes() {
         return Codegen.integerProp("debugTruncateBytes").config(config).get();
     }
+    public Optional<Boolean> experimentalIsUnifiedHost() {
+        return Codegen.booleanProp("experimentalIsUnifiedHost").config(config).get();
+    }
     public Optional<String> googleCredentials() {
         return Codegen.stringProp("googleCredentials").config(config).get();
     }
@@ -119,5 +122,8 @@ public final class Config {
     }
     public Optional<String> warehouseId() {
         return Codegen.stringProp("warehouseId").config(config).get();
+    }
+    public Optional<String> workspaceId() {
+        return Codegen.stringProp("workspaceId").config(config).get();
     }
 }

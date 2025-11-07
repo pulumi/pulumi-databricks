@@ -28,6 +28,98 @@ import (
 // * A user who has both cluster create permission and access to cluster policies can select the Free form policy and policies they have access to.
 // * A user that has access to only cluster policies, can select the policies they have access to.
 //
+// ## Example Usage
+//
+// Let us take a look at an example of how you can manage two teams: Marketing and Data Engineering. In the following scenario we want the marketing team to have a really good query experience, so we enabled delta cache for them. On the other hand we want the data engineering team to be able to utilize bigger clusters so we increased the dbus per hour that they can spend. This strategy allows your marketing users and data engineering users to use Databricks in a self service manner but have a different experience in regards to security and performance. And down the line if you need to add more global settings you can propagate them through the "base cluster policy".
+//
+// `modules/base-cluster-policy/main.tf` could look like:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"encoding/json"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			// Team that performs the work
+//			team := cfg.RequireObject("team")
+//			// Cluster policy overrides
+//			policyOverrides := cfg.RequireObject("policyOverrides")
+//			defaultPolicy := map[string]interface{}{
+//				"dbus_per_hour": map[string]interface{}{
+//					"type":     "range",
+//					"maxValue": 10,
+//				},
+//				"autotermination_minutes": map[string]interface{}{
+//					"type":   "fixed",
+//					"value":  20,
+//					"hidden": true,
+//				},
+//				"custom_tags.Team": map[string]interface{}{
+//					"type":  "fixed",
+//					"value": team,
+//				},
+//			}
+//			tmpJSON0, err := json.Marshal(std.Merge(ctx, map[string]interface{}{
+//				"input": []interface{}{
+//					defaultPolicy,
+//					policyOverrides,
+//				},
+//			}, nil).Result)
+//			if err != nil {
+//				return err
+//			}
+//			json0 := string(tmpJSON0)
+//			fairUse, err := databricks.NewClusterPolicy(ctx, "fair_use", &databricks.ClusterPolicyArgs{
+//				Name:       pulumi.Sprintf("%v cluster policy", team),
+//				Definition: pulumi.String(json0),
+//				Libraries: databricks.ClusterPolicyLibraryArray{
+//					&databricks.ClusterPolicyLibraryArgs{
+//						Pypi: &databricks.ClusterPolicyLibraryPypiArgs{
+//							Package: pulumi.String("databricks-sdk==0.12.0"),
+//						},
+//					},
+//					&databricks.ClusterPolicyLibraryArgs{
+//						Maven: &databricks.ClusterPolicyLibraryMavenArgs{
+//							Coordinates: pulumi.String("com.oracle.database.jdbc:ojdbc8:XXXX"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewPermissions(ctx, "can_use_cluster_policyinstance_profile", &databricks.PermissionsArgs{
+//				ClusterPolicyId: fairUse.ID(),
+//				AccessControls: databricks.PermissionsAccessControlArray{
+//					&databricks.PermissionsAccessControlArgs{
+//						GroupName:       pulumi.Any(team),
+//						PermissionLevel: pulumi.String("CAN_USE"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// And custom instances of that base policy module for our marketing and data engineering teams would look like:
+//
 // ### Overriding the built-in cluster policies
 //
 // You can override built-in cluster policies by creating a `ClusterPolicy` resource with following attributes:

@@ -62,6 +62,55 @@ import (
 //
 // This example defines a template that requests specific workspace resources with permissions granted.
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewAppsSettingsCustomTemplate(ctx, "resources_example", &databricks.AppsSettingsCustomTemplateArgs{
+//				Name:        pulumi.String("my-resource-template"),
+//				Description: pulumi.String("Template that requires secret and SQL warehouse access"),
+//				GitRepo:     pulumi.String("https://github.com/example/resource-app.git"),
+//				Path:        pulumi.String("resource-template"),
+//				GitProvider: pulumi.String("github"),
+//				Manifest: &databricks.AppsSettingsCustomTemplateManifestArgs{
+//					Version:     pulumi.Int(1),
+//					Name:        pulumi.String("resource-consuming-app"),
+//					Description: pulumi.String("This app requires access to a secret and SQL warehouse."),
+//					ResourceSpecs: databricks.AppsSettingsCustomTemplateManifestResourceSpecArray{
+//						&databricks.AppsSettingsCustomTemplateManifestResourceSpecArgs{
+//							Name:        pulumi.String("my-secret"),
+//							Description: pulumi.String("A secret needed by the app"),
+//							SecretSpec: &databricks.AppsSettingsCustomTemplateManifestResourceSpecSecretSpecArgs{
+//								Permission: pulumi.String("READ"),
+//							},
+//						},
+//						&databricks.AppsSettingsCustomTemplateManifestResourceSpecArgs{
+//							Name:        pulumi.String("warehouse"),
+//							Description: pulumi.String("Warehouse access"),
+//							SqlWarehouseSpec: &databricks.AppsSettingsCustomTemplateManifestResourceSpecSqlWarehouseSpecArgs{
+//								Permission: pulumi.String("CAN_USE"),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // As of Pulumi v1.5, resources can be imported through configuration.

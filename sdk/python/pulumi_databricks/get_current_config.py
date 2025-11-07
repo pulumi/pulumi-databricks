@@ -130,10 +130,10 @@ def get_current_config(account_id: Optional[_builtins.str] = None,
             "azure": True,
         }].apply(lambda entries: [{
             "accessConnectorId": cloud_credential_id,
-        } for entry in entries])),
+        } for entry2 in entries])),
         databricks_gcp_service_account=single_or_none([{"key": k, "value": v} for k, v in {} if this.cloud_type == "gcp" else {
             "gcp": True,
-        }].apply(lambda entries: [{} for entry in entries])),
+        }].apply(lambda entries: [{} for entry3 in entries])),
         name="storage_cred",
         comment="Managed by TF")
     ```
@@ -209,10 +209,10 @@ def get_current_config_output(account_id: Optional[pulumi.Input[Optional[_builti
             "azure": True,
         }].apply(lambda entries: [{
             "accessConnectorId": cloud_credential_id,
-        } for entry in entries])),
+        } for entry2 in entries])),
         databricks_gcp_service_account=single_or_none([{"key": k, "value": v} for k, v in {} if this.cloud_type == "gcp" else {
             "gcp": True,
-        }].apply(lambda entries: [{} for entry in entries])),
+        }].apply(lambda entries: [{} for entry3 in entries])),
         name="storage_cred",
         comment="Managed by TF")
     ```

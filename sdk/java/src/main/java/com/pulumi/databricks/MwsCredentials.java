@@ -27,11 +27,11 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.databricks.DatabricksFunctions;
  * import com.pulumi.databricks.inputs.GetAwsAssumeRolePolicyArgs;
- * import com.pulumi.aws.iam.Role;
- * import com.pulumi.aws.iam.RoleArgs;
+ * import com.pulumi.aws.IamRole;
+ * import com.pulumi.aws.IamRoleArgs;
  * import com.pulumi.databricks.inputs.GetAwsCrossAccountPolicyArgs;
- * import com.pulumi.aws.iam.RolePolicy;
- * import com.pulumi.aws.iam.RolePolicyArgs;
+ * import com.pulumi.aws.IamRolePolicy;
+ * import com.pulumi.aws.IamRolePolicyArgs;
  * import com.pulumi.databricks.MwsCredentials;
  * import com.pulumi.databricks.MwsCredentialsArgs;
  * import java.util.List;
@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  *             .externalId(databricksAccountId)
  *             .build());
  * 
- *         var crossAccountRole = new Role("crossAccountRole", RoleArgs.builder()
+ *         var crossAccountRole = new IamRole("crossAccountRole", IamRoleArgs.builder()
  *             .name(String.format("%s-crossaccount", prefix))
  *             .assumeRolePolicy(this_.json())
  *             .tags(tags)
@@ -63,7 +63,7 @@ import javax.annotation.Nullable;
  *         final var thisGetAwsCrossAccountPolicy = DatabricksFunctions.getAwsCrossAccountPolicy(GetAwsCrossAccountPolicyArgs.builder()
  *             .build());
  * 
- *         var thisRolePolicy = new RolePolicy("thisRolePolicy", RolePolicyArgs.builder()
+ *         var thisIamRolePolicy = new IamRolePolicy("thisIamRolePolicy", IamRolePolicyArgs.builder()
  *             .name(String.format("%s-policy", prefix))
  *             .role(crossAccountRole.id())
  *             .policy(thisGetAwsCrossAccountPolicy.json())

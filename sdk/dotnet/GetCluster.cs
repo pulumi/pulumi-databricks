@@ -34,6 +34,50 @@ namespace Pulumi.Databricks
         /// 
         /// });
         /// ```
+        /// 
+        /// ### Multiple clusters with the same name
+        /// 
+        /// When fetching a cluster whose name is not unique (including terminated but not permanently deleted clusters), you must use the `ClusterId` argument to uniquely identify the cluster. Combine this data source with `databricks.getClusters` to get the `ClusterId` of the cluster you want to fetch.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myCluster = Databricks.GetClusters.Invoke(new()
+        ///     {
+        ///         ClusterNameContains = "my-cluster",
+        ///         FilterBy = new Databricks.Inputs.GetClustersFilterByInputArgs
+        ///         {
+        ///             ClusterStates = new[]
+        ///             {
+        ///                 "RUNNING",
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     var myClusterGetCluster = Databricks.GetCluster.Invoke(new()
+        ///     {
+        ///         ClusterId = myCluster.Apply(getClustersResult =&gt; getClustersResult.Ids[0]),
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// ## Related Resources
+        /// 
+        /// The following resources are often used in the same context:
+        /// 
+        /// * End to end workspace management guide.
+        /// * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
+        /// * databricks.ClusterPolicy to create a databricks.Cluster policy, which limits the ability to create clusters based on a set of rules.
+        /// * databricks.InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.
+        /// * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
+        /// * databricks.Library to install a [library](https://docs.databricks.com/libraries/index.html) on databricks_cluster.
+        /// * databricks.Pipeline to deploy [Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt).
         /// </summary>
         public static Task<GetClusterResult> InvokeAsync(GetClusterArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetClusterResult>("databricks:index/getCluster:getCluster", args ?? new GetClusterArgs(), options.WithDefaults());
@@ -61,6 +105,50 @@ namespace Pulumi.Databricks
         /// 
         /// });
         /// ```
+        /// 
+        /// ### Multiple clusters with the same name
+        /// 
+        /// When fetching a cluster whose name is not unique (including terminated but not permanently deleted clusters), you must use the `ClusterId` argument to uniquely identify the cluster. Combine this data source with `databricks.getClusters` to get the `ClusterId` of the cluster you want to fetch.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myCluster = Databricks.GetClusters.Invoke(new()
+        ///     {
+        ///         ClusterNameContains = "my-cluster",
+        ///         FilterBy = new Databricks.Inputs.GetClustersFilterByInputArgs
+        ///         {
+        ///             ClusterStates = new[]
+        ///             {
+        ///                 "RUNNING",
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     var myClusterGetCluster = Databricks.GetCluster.Invoke(new()
+        ///     {
+        ///         ClusterId = myCluster.Apply(getClustersResult =&gt; getClustersResult.Ids[0]),
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// ## Related Resources
+        /// 
+        /// The following resources are often used in the same context:
+        /// 
+        /// * End to end workspace management guide.
+        /// * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
+        /// * databricks.ClusterPolicy to create a databricks.Cluster policy, which limits the ability to create clusters based on a set of rules.
+        /// * databricks.InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.
+        /// * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
+        /// * databricks.Library to install a [library](https://docs.databricks.com/libraries/index.html) on databricks_cluster.
+        /// * databricks.Pipeline to deploy [Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt).
         /// </summary>
         public static Output<GetClusterResult> Invoke(GetClusterInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetClusterResult>("databricks:index/getCluster:getCluster", args ?? new GetClusterInvokeArgs(), options.WithDefaults());
@@ -88,6 +176,50 @@ namespace Pulumi.Databricks
         /// 
         /// });
         /// ```
+        /// 
+        /// ### Multiple clusters with the same name
+        /// 
+        /// When fetching a cluster whose name is not unique (including terminated but not permanently deleted clusters), you must use the `ClusterId` argument to uniquely identify the cluster. Combine this data source with `databricks.getClusters` to get the `ClusterId` of the cluster you want to fetch.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myCluster = Databricks.GetClusters.Invoke(new()
+        ///     {
+        ///         ClusterNameContains = "my-cluster",
+        ///         FilterBy = new Databricks.Inputs.GetClustersFilterByInputArgs
+        ///         {
+        ///             ClusterStates = new[]
+        ///             {
+        ///                 "RUNNING",
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     var myClusterGetCluster = Databricks.GetCluster.Invoke(new()
+        ///     {
+        ///         ClusterId = myCluster.Apply(getClustersResult =&gt; getClustersResult.Ids[0]),
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// ## Related Resources
+        /// 
+        /// The following resources are often used in the same context:
+        /// 
+        /// * End to end workspace management guide.
+        /// * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
+        /// * databricks.ClusterPolicy to create a databricks.Cluster policy, which limits the ability to create clusters based on a set of rules.
+        /// * databricks.InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.
+        /// * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
+        /// * databricks.Library to install a [library](https://docs.databricks.com/libraries/index.html) on databricks_cluster.
+        /// * databricks.Pipeline to deploy [Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt).
         /// </summary>
         public static Output<GetClusterResult> Invoke(GetClusterInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetClusterResult>("databricks:index/getCluster:getCluster", args ?? new GetClusterInvokeArgs(), options.WithDefaults());

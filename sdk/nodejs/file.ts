@@ -60,7 +60,7 @@ import * as utilities from "./utilities";
  * const initScript = new databricks.File("init_script", {
  *     contentBase64: std.base64encode({
  *         input: `#!/bin/bash
- * echo "Hello World"
+ * echo \\"Hello World\\"
  * `,
  *     }).then(invoke => invoke.result),
  *     path: `${_this.volumePath}/fileName`,

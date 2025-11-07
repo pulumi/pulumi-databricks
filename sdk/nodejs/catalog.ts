@@ -159,7 +159,7 @@ export class Catalog extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly storageLocation: pulumi.Output<string>;
     /**
-     * Managed location of the catalog. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
+     * Managed location of the catalog. Location in cloud storage where data for managed tables will be stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
      */
     declare public readonly storageRoot: pulumi.Output<string | undefined>;
     /**
@@ -317,7 +317,7 @@ export interface CatalogState {
      */
     storageLocation?: pulumi.Input<string>;
     /**
-     * Managed location of the catalog. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
+     * Managed location of the catalog. Location in cloud storage where data for managed tables will be stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
      */
     storageRoot?: pulumi.Input<string>;
     /**
@@ -386,7 +386,7 @@ export interface CatalogArgs {
      */
     shareName?: pulumi.Input<string>;
     /**
-     * Managed location of the catalog. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
+     * Managed location of the catalog. Location in cloud storage where data for managed tables will be stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
      */
     storageRoot?: pulumi.Input<string>;
 }

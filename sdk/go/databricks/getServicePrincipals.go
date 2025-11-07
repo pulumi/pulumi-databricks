@@ -14,6 +14,23 @@ import (
 // Retrieves `applicationIds` of all ServicePrincipal based on their `displayName`
 //
 // > This data source can be used with an account or workspace-level provider.
+//
+// ## Example Usage
+//
+// # Adding all service principals of which display name contains `my-spn` to admin group
+//
+// ## Related Resources
+//
+// The following resources are used in the same context:
+//
+// - End to end workspace management guide.
+// - getCurrentUser data to retrieve information about User or databricks_service_principal, that is calling Databricks REST API.
+// - Group to manage [Account-level](https://docs.databricks.com/aws/en/admin/users-groups/groups) or [Workspace-level](https://docs.databricks.com/aws/en/admin/users-groups/workspace-local-groups) groups.
+// - Group data to retrieve information about Group members, entitlements and instance profiles.
+// - GroupInstanceProfile to attach InstanceProfile (AWS) to databricks_group.
+// - GroupMember to attach users and groups as group members.
+// - Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
+// - databricksService principal to manage service principals
 func GetServicePrincipals(ctx *pulumi.Context, args *GetServicePrincipalsArgs, opts ...pulumi.InvokeOption) (*GetServicePrincipalsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetServicePrincipalsResult

@@ -18,112 +18,18 @@ public final class InstancePoolPreloadedDockerImageArgs extends com.pulumi.resou
     public static final InstancePoolPreloadedDockerImageArgs Empty = new InstancePoolPreloadedDockerImageArgs();
 
     /**
-     * `basic_auth.username` and `basic_auth.password` for Docker repository. Docker registry credentials are encrypted when they are stored in Databricks internal storage and when they are passed to a registry upon fetching Docker images at cluster launch. However, other authenticated and authorized API users of this workspace can access the username and password.
+     * `basic_auth.username` and `basic_auth.password` for Docker repository. Docker registry credentials are encrypted when they are stored in Databricks internal storage and when they are passed to a registry upon fetching Docker images at cluster launch.  For better security, these credentials should be stored in the secret scope and referred using secret path syntax: `{{secrets/scope/key}}`, otherwise other users of the workspace may access them via UI/API.
      * 
      * Example usage with azurermContainerRegistry and docker_registry_image, that you can adapt to your specific use-case:
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.docker.registryImage;
-     * import com.pulumi.docker.registryImageArgs;
-     * import com.pulumi.databricks.InstancePool;
-     * import com.pulumi.databricks.InstancePoolArgs;
-     * import com.pulumi.databricks.inputs.InstancePoolPreloadedDockerImageArgs;
-     * import com.pulumi.databricks.inputs.InstancePoolPreloadedDockerImageBasicAuthArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         var this_ = new RegistryImage("this", RegistryImageArgs.builder()
-     *             .build(List.of(Map.ofEntries(
-     *             )))
-     *             .name(String.format("%s/sample:latest", thisAzurermContainerRegistry.loginServer()))
-     *             .build());
-     * 
-     *         var thisInstancePool = new InstancePool("thisInstancePool", InstancePoolArgs.builder()
-     *             .preloadedDockerImages(InstancePoolPreloadedDockerImageArgs.builder()
-     *                 .url(this_.name())
-     *                 .basicAuth(InstancePoolPreloadedDockerImageBasicAuthArgs.builder()
-     *                     .username(thisAzurermContainerRegistry.adminUsername())
-     *                     .password(thisAzurermContainerRegistry.adminPassword())
-     *                     .build())
-     *                 .build())
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * 
      */
     @Import(name="basicAuth")
     private @Nullable Output<InstancePoolPreloadedDockerImageBasicAuthArgs> basicAuth;
 
     /**
-     * @return `basic_auth.username` and `basic_auth.password` for Docker repository. Docker registry credentials are encrypted when they are stored in Databricks internal storage and when they are passed to a registry upon fetching Docker images at cluster launch. However, other authenticated and authorized API users of this workspace can access the username and password.
+     * @return `basic_auth.username` and `basic_auth.password` for Docker repository. Docker registry credentials are encrypted when they are stored in Databricks internal storage and when they are passed to a registry upon fetching Docker images at cluster launch.  For better security, these credentials should be stored in the secret scope and referred using secret path syntax: `{{secrets/scope/key}}`, otherwise other users of the workspace may access them via UI/API.
      * 
      * Example usage with azurermContainerRegistry and docker_registry_image, that you can adapt to your specific use-case:
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.docker.registryImage;
-     * import com.pulumi.docker.registryImageArgs;
-     * import com.pulumi.databricks.InstancePool;
-     * import com.pulumi.databricks.InstancePoolArgs;
-     * import com.pulumi.databricks.inputs.InstancePoolPreloadedDockerImageArgs;
-     * import com.pulumi.databricks.inputs.InstancePoolPreloadedDockerImageBasicAuthArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         var this_ = new RegistryImage("this", RegistryImageArgs.builder()
-     *             .build(List.of(Map.ofEntries(
-     *             )))
-     *             .name(String.format("%s/sample:latest", thisAzurermContainerRegistry.loginServer()))
-     *             .build());
-     * 
-     *         var thisInstancePool = new InstancePool("thisInstancePool", InstancePoolArgs.builder()
-     *             .preloadedDockerImages(InstancePoolPreloadedDockerImageArgs.builder()
-     *                 .url(this_.name())
-     *                 .basicAuth(InstancePoolPreloadedDockerImageBasicAuthArgs.builder()
-     *                     .username(thisAzurermContainerRegistry.adminUsername())
-     *                     .password(thisAzurermContainerRegistry.adminPassword())
-     *                     .build())
-     *                 .build())
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * 
      */
     public Optional<Output<InstancePoolPreloadedDockerImageBasicAuthArgs>> basicAuth() {
@@ -171,56 +77,9 @@ public final class InstancePoolPreloadedDockerImageArgs extends com.pulumi.resou
         }
 
         /**
-         * @param basicAuth `basic_auth.username` and `basic_auth.password` for Docker repository. Docker registry credentials are encrypted when they are stored in Databricks internal storage and when they are passed to a registry upon fetching Docker images at cluster launch. However, other authenticated and authorized API users of this workspace can access the username and password.
+         * @param basicAuth `basic_auth.username` and `basic_auth.password` for Docker repository. Docker registry credentials are encrypted when they are stored in Databricks internal storage and when they are passed to a registry upon fetching Docker images at cluster launch.  For better security, these credentials should be stored in the secret scope and referred using secret path syntax: `{{secrets/scope/key}}`, otherwise other users of the workspace may access them via UI/API.
          * 
          * Example usage with azurermContainerRegistry and docker_registry_image, that you can adapt to your specific use-case:
-         * 
-         * <pre>
-         * {@code
-         * package generated_program;
-         * 
-         * import com.pulumi.Context;
-         * import com.pulumi.Pulumi;
-         * import com.pulumi.core.Output;
-         * import com.pulumi.docker.registryImage;
-         * import com.pulumi.docker.registryImageArgs;
-         * import com.pulumi.databricks.InstancePool;
-         * import com.pulumi.databricks.InstancePoolArgs;
-         * import com.pulumi.databricks.inputs.InstancePoolPreloadedDockerImageArgs;
-         * import com.pulumi.databricks.inputs.InstancePoolPreloadedDockerImageBasicAuthArgs;
-         * import java.util.List;
-         * import java.util.ArrayList;
-         * import java.util.Map;
-         * import java.io.File;
-         * import java.nio.file.Files;
-         * import java.nio.file.Paths;
-         * 
-         * public class App {
-         *     public static void main(String[] args) {
-         *         Pulumi.run(App::stack);
-         *     }
-         * 
-         *     public static void stack(Context ctx) {
-         *         var this_ = new RegistryImage("this", RegistryImageArgs.builder()
-         *             .build(List.of(Map.ofEntries(
-         *             )))
-         *             .name(String.format("%s/sample:latest", thisAzurermContainerRegistry.loginServer()))
-         *             .build());
-         * 
-         *         var thisInstancePool = new InstancePool("thisInstancePool", InstancePoolArgs.builder()
-         *             .preloadedDockerImages(InstancePoolPreloadedDockerImageArgs.builder()
-         *                 .url(this_.name())
-         *                 .basicAuth(InstancePoolPreloadedDockerImageBasicAuthArgs.builder()
-         *                     .username(thisAzurermContainerRegistry.adminUsername())
-         *                     .password(thisAzurermContainerRegistry.adminPassword())
-         *                     .build())
-         *                 .build())
-         *             .build());
-         * 
-         *     }
-         * }
-         * }
-         * </pre>
          * 
          * @return builder
          * 
@@ -231,56 +90,9 @@ public final class InstancePoolPreloadedDockerImageArgs extends com.pulumi.resou
         }
 
         /**
-         * @param basicAuth `basic_auth.username` and `basic_auth.password` for Docker repository. Docker registry credentials are encrypted when they are stored in Databricks internal storage and when they are passed to a registry upon fetching Docker images at cluster launch. However, other authenticated and authorized API users of this workspace can access the username and password.
+         * @param basicAuth `basic_auth.username` and `basic_auth.password` for Docker repository. Docker registry credentials are encrypted when they are stored in Databricks internal storage and when they are passed to a registry upon fetching Docker images at cluster launch.  For better security, these credentials should be stored in the secret scope and referred using secret path syntax: `{{secrets/scope/key}}`, otherwise other users of the workspace may access them via UI/API.
          * 
          * Example usage with azurermContainerRegistry and docker_registry_image, that you can adapt to your specific use-case:
-         * 
-         * <pre>
-         * {@code
-         * package generated_program;
-         * 
-         * import com.pulumi.Context;
-         * import com.pulumi.Pulumi;
-         * import com.pulumi.core.Output;
-         * import com.pulumi.docker.registryImage;
-         * import com.pulumi.docker.registryImageArgs;
-         * import com.pulumi.databricks.InstancePool;
-         * import com.pulumi.databricks.InstancePoolArgs;
-         * import com.pulumi.databricks.inputs.InstancePoolPreloadedDockerImageArgs;
-         * import com.pulumi.databricks.inputs.InstancePoolPreloadedDockerImageBasicAuthArgs;
-         * import java.util.List;
-         * import java.util.ArrayList;
-         * import java.util.Map;
-         * import java.io.File;
-         * import java.nio.file.Files;
-         * import java.nio.file.Paths;
-         * 
-         * public class App {
-         *     public static void main(String[] args) {
-         *         Pulumi.run(App::stack);
-         *     }
-         * 
-         *     public static void stack(Context ctx) {
-         *         var this_ = new RegistryImage("this", RegistryImageArgs.builder()
-         *             .build(List.of(Map.ofEntries(
-         *             )))
-         *             .name(String.format("%s/sample:latest", thisAzurermContainerRegistry.loginServer()))
-         *             .build());
-         * 
-         *         var thisInstancePool = new InstancePool("thisInstancePool", InstancePoolArgs.builder()
-         *             .preloadedDockerImages(InstancePoolPreloadedDockerImageArgs.builder()
-         *                 .url(this_.name())
-         *                 .basicAuth(InstancePoolPreloadedDockerImageBasicAuthArgs.builder()
-         *                     .username(thisAzurermContainerRegistry.adminUsername())
-         *                     .password(thisAzurermContainerRegistry.adminPassword())
-         *                     .build())
-         *                 .build())
-         *             .build());
-         * 
-         *     }
-         * }
-         * }
-         * </pre>
          * 
          * @return builder
          * 

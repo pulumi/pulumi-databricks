@@ -552,6 +552,38 @@ class App(pulumi.CustomResource):
 
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        this = databricks.App("this",
+            name="my-custom-app",
+            description="My app",
+            resources=[
+                {
+                    "name": "sql-warehouse",
+                    "sql_warehouse": {
+                        "id": "e9ca293f79a74b5c",
+                        "permission": "CAN_MANAGE",
+                    },
+                },
+                {
+                    "name": "serving-endpoint",
+                    "serving_endpoint": {
+                        "name": "databricks-meta-llama-3-1-70b-instruct",
+                        "permission": "CAN_MANAGE",
+                    },
+                },
+                {
+                    "name": "job",
+                    "job": {
+                        "id": "1234",
+                        "permission": "CAN_MANAGE",
+                    },
+                },
+            ])
+        ```
+
         ## Related Resources
 
         The following resources are used in the same context:
@@ -604,6 +636,38 @@ class App(pulumi.CustomResource):
         > This resource can only be used with a workspace-level provider!
 
         ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        this = databricks.App("this",
+            name="my-custom-app",
+            description="My app",
+            resources=[
+                {
+                    "name": "sql-warehouse",
+                    "sql_warehouse": {
+                        "id": "e9ca293f79a74b5c",
+                        "permission": "CAN_MANAGE",
+                    },
+                },
+                {
+                    "name": "serving-endpoint",
+                    "serving_endpoint": {
+                        "name": "databricks-meta-llama-3-1-70b-instruct",
+                        "permission": "CAN_MANAGE",
+                    },
+                },
+                {
+                    "name": "job",
+                    "job": {
+                        "id": "1234",
+                        "permission": "CAN_MANAGE",
+                    },
+                },
+            ])
+        ```
 
         ## Related Resources
 

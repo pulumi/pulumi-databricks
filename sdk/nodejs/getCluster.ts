@@ -24,6 +24,37 @@ import * as utilities from "./utilities";
  *     clusterId: __value,
  * }) })));
  * ```
+ *
+ * ### Multiple clusters with the same name
+ *
+ * When fetching a cluster whose name is not unique (including terminated but not permanently deleted clusters), you must use the `clusterId` argument to uniquely identify the cluster. Combine this data source with `databricks.getClusters` to get the `clusterId` of the cluster you want to fetch.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const myCluster = databricks.getClusters({
+ *     clusterNameContains: "my-cluster",
+ *     filterBy: {
+ *         clusterStates: ["RUNNING"],
+ *     },
+ * });
+ * const myClusterGetCluster = myCluster.then(myCluster => databricks.getCluster({
+ *     clusterId: myCluster.ids?.[0],
+ * }));
+ * ```
+ *
+ * ## Related Resources
+ *
+ * The following resources are often used in the same context:
+ *
+ * * End to end workspace management guide.
+ * * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
+ * * databricks.ClusterPolicy to create a databricks.Cluster policy, which limits the ability to create clusters based on a set of rules.
+ * * databricks.InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.
+ * * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
+ * * databricks.Library to install a [library](https://docs.databricks.com/libraries/index.html) on databricks_cluster.
+ * * databricks.Pipeline to deploy [Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt).
  */
 export function getCluster(args?: GetClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterResult> {
     args = args || {};
@@ -100,6 +131,37 @@ export interface GetClusterResult {
  *     clusterId: __value,
  * }) })));
  * ```
+ *
+ * ### Multiple clusters with the same name
+ *
+ * When fetching a cluster whose name is not unique (including terminated but not permanently deleted clusters), you must use the `clusterId` argument to uniquely identify the cluster. Combine this data source with `databricks.getClusters` to get the `clusterId` of the cluster you want to fetch.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const myCluster = databricks.getClusters({
+ *     clusterNameContains: "my-cluster",
+ *     filterBy: {
+ *         clusterStates: ["RUNNING"],
+ *     },
+ * });
+ * const myClusterGetCluster = myCluster.then(myCluster => databricks.getCluster({
+ *     clusterId: myCluster.ids?.[0],
+ * }));
+ * ```
+ *
+ * ## Related Resources
+ *
+ * The following resources are often used in the same context:
+ *
+ * * End to end workspace management guide.
+ * * databricks.Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
+ * * databricks.ClusterPolicy to create a databricks.Cluster policy, which limits the ability to create clusters based on a set of rules.
+ * * databricks.InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.
+ * * databricks.Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
+ * * databricks.Library to install a [library](https://docs.databricks.com/libraries/index.html) on databricks_cluster.
+ * * databricks.Pipeline to deploy [Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt).
  */
 export function getClusterOutput(args?: GetClusterOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetClusterResult> {
     args = args || {};

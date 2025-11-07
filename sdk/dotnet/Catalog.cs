@@ -187,7 +187,7 @@ namespace Pulumi.Databricks
         public Output<string> StorageLocation { get; private set; } = null!;
 
         /// <summary>
-        /// Managed location of the catalog. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
+        /// Managed location of the catalog. Location in cloud storage where data for managed tables will be stored.  If the URL contains special characters, such as space, `&amp;`, etc., they should be percent-encoded (space &gt; `%20`, etc.). If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
         /// </summary>
         [Output("storageRoot")]
         public Output<string?> StorageRoot { get; private set; } = null!;
@@ -344,7 +344,7 @@ namespace Pulumi.Databricks
         public Input<string>? ShareName { get; set; }
 
         /// <summary>
-        /// Managed location of the catalog. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
+        /// Managed location of the catalog. Location in cloud storage where data for managed tables will be stored.  If the URL contains special characters, such as space, `&amp;`, etc., they should be percent-encoded (space &gt; `%20`, etc.). If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
         /// </summary>
         [Input("storageRoot")]
         public Input<string>? StorageRoot { get; set; }
@@ -484,7 +484,7 @@ namespace Pulumi.Databricks
         public Input<string>? StorageLocation { get; set; }
 
         /// <summary>
-        /// Managed location of the catalog. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
+        /// Managed location of the catalog. Location in cloud storage where data for managed tables will be stored.  If the URL contains special characters, such as space, `&amp;`, etc., they should be percent-encoded (space &gt; `%20`, etc.). If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
         /// </summary>
         [Input("storageRoot")]
         public Input<string>? StorageRoot { get; set; }

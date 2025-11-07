@@ -13,6 +13,39 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const _this = new databricks.App("this", {
+ *     name: "my-custom-app",
+ *     description: "My app",
+ *     resources: [
+ *         {
+ *             name: "sql-warehouse",
+ *             sqlWarehouse: {
+ *                 id: "e9ca293f79a74b5c",
+ *                 permission: "CAN_MANAGE",
+ *             },
+ *         },
+ *         {
+ *             name: "serving-endpoint",
+ *             servingEndpoint: {
+ *                 name: "databricks-meta-llama-3-1-70b-instruct",
+ *                 permission: "CAN_MANAGE",
+ *             },
+ *         },
+ *         {
+ *             name: "job",
+ *             job: {
+ *                 id: "1234",
+ *                 permission: "CAN_MANAGE",
+ *             },
+ *         },
+ *     ],
+ * });
+ * ```
+ *
  * ## Related Resources
  *
  * The following resources are used in the same context:
