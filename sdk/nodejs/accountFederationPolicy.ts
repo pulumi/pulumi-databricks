@@ -19,6 +19,19 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const _this = new databricks.AccountFederationPolicy("this", {
+ *     policyId: "my-policy",
+ *     oidcPolicy: {
+ *         issuer: "https://myidp.example.com",
+ *         subjectClaim: "sub",
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * As of Pulumi v1.5, resources can be imported through configuration.

@@ -167,6 +167,14 @@ Object.defineProperty(exports, "debugTruncateBytes", {
     enumerable: true,
 });
 
+export declare const experimentalIsUnifiedHost: boolean | undefined;
+Object.defineProperty(exports, "experimentalIsUnifiedHost", {
+    get() {
+        return __config.getObject<boolean>("experimentalIsUnifiedHost");
+    },
+    enumerable: true,
+});
+
 export declare const googleCredentials: string | undefined;
 Object.defineProperty(exports, "googleCredentials", {
     get() {
@@ -291,6 +299,14 @@ export declare const warehouseId: string | undefined;
 Object.defineProperty(exports, "warehouseId", {
     get() {
         return __config.get("warehouseId");
+    },
+    enumerable: true,
+});
+
+export declare const workspaceId: string | undefined;
+Object.defineProperty(exports, "workspaceId", {
+    get() {
+        return __config.get("workspaceId");
     },
     enumerable: true,
 });

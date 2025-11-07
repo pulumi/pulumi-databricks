@@ -30,6 +30,64 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.App;
+ * import com.pulumi.databricks.AppArgs;
+ * import com.pulumi.databricks.inputs.AppResourceArgs;
+ * import com.pulumi.databricks.inputs.AppResourceSqlWarehouseArgs;
+ * import com.pulumi.databricks.inputs.AppResourceServingEndpointArgs;
+ * import com.pulumi.databricks.inputs.AppResourceJobArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var this_ = new App("this", AppArgs.builder()
+ *             .name("my-custom-app")
+ *             .description("My app")
+ *             .resources(            
+ *                 AppResourceArgs.builder()
+ *                     .name("sql-warehouse")
+ *                     .sqlWarehouse(AppResourceSqlWarehouseArgs.builder()
+ *                         .id("e9ca293f79a74b5c")
+ *                         .permission("CAN_MANAGE")
+ *                         .build())
+ *                     .build(),
+ *                 AppResourceArgs.builder()
+ *                     .name("serving-endpoint")
+ *                     .servingEndpoint(AppResourceServingEndpointArgs.builder()
+ *                         .name("databricks-meta-llama-3-1-70b-instruct")
+ *                         .permission("CAN_MANAGE")
+ *                         .build())
+ *                     .build(),
+ *                 AppResourceArgs.builder()
+ *                     .name("job")
+ *                     .job(AppResourceJobArgs.builder()
+ *                         .id("1234")
+ *                         .permission("CAN_MANAGE")
+ *                         .build())
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Related Resources
  * 
  * The following resources are used in the same context:

@@ -121,22 +121,22 @@ def get_aws_assume_role_policy(aws_partition: Optional[_builtins.str] = None,
     # Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
     databricks_account_id = config.require_object("databricksAccountId")
     this = databricks.get_aws_cross_account_policy()
-    cross_account_policy = aws.iam.Policy("cross_account_policy",
-        name=f"{prefix}-crossaccount-iam-policy",
+    cross_account_policy = aws.index.IamPolicy("cross_account_policy",
+        name=f{prefix}-crossaccount-iam-policy,
         policy=this.json)
     this_get_aws_assume_role_policy = databricks.get_aws_assume_role_policy(external_id=databricks_account_id)
-    cross_account = aws.iam.Role("cross_account",
-        name=f"{prefix}-crossaccount-iam-role",
+    cross_account = aws.index.IamRole("cross_account",
+        name=f{prefix}-crossaccount-iam-role,
         assume_role_policy=this_get_aws_assume_role_policy.json,
-        description="Grants Databricks full access to VPC resources")
-    cross_account_role_policy_attachment = aws.iam.RolePolicyAttachment("cross_account",
+        description=Grants Databricks full access to VPC resources)
+    cross_account_iam_role_policy_attachment = aws.index.IamRolePolicyAttachment("cross_account",
         policy_arn=cross_account_policy.arn,
         role=cross_account.name)
     # required only in case of multi-workspace setup
     this_mws_credentials = databricks.MwsCredentials("this",
         account_id=databricks_account_id,
         credentials_name=f"{prefix}-creds",
-        role_arn=cross_account.arn)
+        role_arn=cross_account["arn"])
     ```
 
     ## Related Resources
@@ -190,22 +190,22 @@ def get_aws_assume_role_policy_output(aws_partition: Optional[pulumi.Input[Optio
     # Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
     databricks_account_id = config.require_object("databricksAccountId")
     this = databricks.get_aws_cross_account_policy()
-    cross_account_policy = aws.iam.Policy("cross_account_policy",
-        name=f"{prefix}-crossaccount-iam-policy",
+    cross_account_policy = aws.index.IamPolicy("cross_account_policy",
+        name=f{prefix}-crossaccount-iam-policy,
         policy=this.json)
     this_get_aws_assume_role_policy = databricks.get_aws_assume_role_policy(external_id=databricks_account_id)
-    cross_account = aws.iam.Role("cross_account",
-        name=f"{prefix}-crossaccount-iam-role",
+    cross_account = aws.index.IamRole("cross_account",
+        name=f{prefix}-crossaccount-iam-role,
         assume_role_policy=this_get_aws_assume_role_policy.json,
-        description="Grants Databricks full access to VPC resources")
-    cross_account_role_policy_attachment = aws.iam.RolePolicyAttachment("cross_account",
+        description=Grants Databricks full access to VPC resources)
+    cross_account_iam_role_policy_attachment = aws.index.IamRolePolicyAttachment("cross_account",
         policy_arn=cross_account_policy.arn,
         role=cross_account.name)
     # required only in case of multi-workspace setup
     this_mws_credentials = databricks.MwsCredentials("this",
         account_id=databricks_account_id,
         credentials_name=f"{prefix}-creds",
-        role_arn=cross_account.arn)
+        role_arn=cross_account["arn"])
     ```
 
     ## Related Resources

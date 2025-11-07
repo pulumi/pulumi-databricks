@@ -5,6 +5,7 @@ package com.pulumi.databricks;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.PermissionAssignmentProviderConfigArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
@@ -67,6 +68,21 @@ public final class PermissionAssignmentArgs extends com.pulumi.resources.Resourc
     }
 
     /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    @Import(name="providerConfig")
+    private @Nullable Output<PermissionAssignmentProviderConfigArgs> providerConfig;
+
+    /**
+     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * 
+     */
+    public Optional<Output<PermissionAssignmentProviderConfigArgs>> providerConfig() {
+        return Optional.ofNullable(this.providerConfig);
+    }
+
+    /**
      * the application ID of service principal to assign to a workspace.
      * 
      */
@@ -102,6 +118,7 @@ public final class PermissionAssignmentArgs extends com.pulumi.resources.Resourc
         this.groupName = $.groupName;
         this.permissions = $.permissions;
         this.principalId = $.principalId;
+        this.providerConfig = $.providerConfig;
         this.servicePrincipalName = $.servicePrincipalName;
         this.userName = $.userName;
     }
@@ -201,6 +218,27 @@ public final class PermissionAssignmentArgs extends com.pulumi.resources.Resourc
          */
         public Builder principalId(String principalId) {
             return principalId(Output.of(principalId));
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(@Nullable Output<PermissionAssignmentProviderConfigArgs> providerConfig) {
+            $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerConfig(PermissionAssignmentProviderConfigArgs providerConfig) {
+            return providerConfig(Output.of(providerConfig));
         }
 
         /**

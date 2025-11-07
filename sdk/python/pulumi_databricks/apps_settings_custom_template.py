@@ -290,6 +290,39 @@ class AppsSettingsCustomTemplate(pulumi.CustomResource):
 
         This example defines a template that requests specific workspace resources with permissions granted.
 
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        resources_example = databricks.AppsSettingsCustomTemplate("resources_example",
+            name="my-resource-template",
+            description="Template that requires secret and SQL warehouse access",
+            git_repo="https://github.com/example/resource-app.git",
+            path="resource-template",
+            git_provider="github",
+            manifest={
+                "version": 1,
+                "name": "resource-consuming-app",
+                "description": "This app requires access to a secret and SQL warehouse.",
+                "resource_specs": [
+                    {
+                        "name": "my-secret",
+                        "description": "A secret needed by the app",
+                        "secret_spec": {
+                            "permission": "READ",
+                        },
+                    },
+                    {
+                        "name": "warehouse",
+                        "description": "Warehouse access",
+                        "sql_warehouse_spec": {
+                            "permission": "CAN_USE",
+                        },
+                    },
+                ],
+            })
+        ```
+
         ## Import
 
         As of Pulumi v1.5, resources can be imported through configuration.
@@ -360,6 +393,39 @@ class AppsSettingsCustomTemplate(pulumi.CustomResource):
         ### Example with Resource Requirements
 
         This example defines a template that requests specific workspace resources with permissions granted.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        resources_example = databricks.AppsSettingsCustomTemplate("resources_example",
+            name="my-resource-template",
+            description="Template that requires secret and SQL warehouse access",
+            git_repo="https://github.com/example/resource-app.git",
+            path="resource-template",
+            git_provider="github",
+            manifest={
+                "version": 1,
+                "name": "resource-consuming-app",
+                "description": "This app requires access to a secret and SQL warehouse.",
+                "resource_specs": [
+                    {
+                        "name": "my-secret",
+                        "description": "A secret needed by the app",
+                        "secret_spec": {
+                            "permission": "READ",
+                        },
+                    },
+                    {
+                        "name": "warehouse",
+                        "description": "Warehouse access",
+                        "sql_warehouse_spec": {
+                            "permission": "CAN_USE",
+                        },
+                    },
+                ],
+            })
+        ```
 
         ## Import
 

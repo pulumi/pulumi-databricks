@@ -50,6 +50,69 @@ namespace Pulumi.Databricks
     /// 
     /// For Azure
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @this = new Databricks.Metastore("this", new()
+    ///     {
+    ///         Name = "primary",
+    ///         StorageRoot = Std.Format.Invoke(new()
+    ///         {
+    ///             Input = "abfss://%s@%s.dfs.core.windows.net/",
+    ///             Args = new[]
+    ///             {
+    ///                 unityCatalog.Name,
+    ///                 unityCatalogAzurermStorageAccount.Name,
+    ///             },
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         Owner = "uc admins",
+    ///         Region = "eastus",
+    ///         ForceDestroy = true,
+    ///     });
+    /// 
+    ///     var thisMetastoreAssignment = new Databricks.MetastoreAssignment("this", new()
+    ///     {
+    ///         MetastoreId = @this.Id,
+    ///         WorkspaceId = workspaceId,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// For GCP
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @this = new Databricks.Metastore("this", new()
+    ///     {
+    ///         Name = "primary",
+    ///         StorageRoot = $"gs://{unityMetastore.Name}",
+    ///         Owner = "uc admins",
+    ///         Region = us_east1,
+    ///         ForceDestroy = true,
+    ///     });
+    /// 
+    ///     var thisMetastoreAssignment = new Databricks.MetastoreAssignment("this", new()
+    ///     {
+    ///         MetastoreId = @this.Id,
+    ///         WorkspaceId = workspaceId,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// This resource can be imported by ID:
@@ -136,7 +199,7 @@ namespace Pulumi.Databricks
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
-        /// Path on cloud storage account, where managed `databricks.Table` are stored. Change forces creation of a new resource. If no `StorageRoot` is defined for the metastore, each catalog must have a `StorageRoot` defined.
+        /// Path on cloud storage account, where managed `databricks.Table` are stored.  If the URL contains special characters, such as space, `&amp;`, etc., they should be percent-encoded (space &gt; `%20`, etc.). Change forces creation of a new resource. If no `StorageRoot` is defined for the metastore, each catalog must have a `StorageRoot` defined.
         /// </summary>
         [Output("storageRoot")]
         public Output<string?> StorageRoot { get; private set; } = null!;
@@ -257,7 +320,7 @@ namespace Pulumi.Databricks
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// Path on cloud storage account, where managed `databricks.Table` are stored. Change forces creation of a new resource. If no `StorageRoot` is defined for the metastore, each catalog must have a `StorageRoot` defined.
+        /// Path on cloud storage account, where managed `databricks.Table` are stored.  If the URL contains special characters, such as space, `&amp;`, etc., they should be percent-encoded (space &gt; `%20`, etc.). Change forces creation of a new resource. If no `StorageRoot` is defined for the metastore, each catalog must have a `StorageRoot` defined.
         /// </summary>
         [Input("storageRoot")]
         public Input<string>? StorageRoot { get; set; }
@@ -340,7 +403,7 @@ namespace Pulumi.Databricks
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// Path on cloud storage account, where managed `databricks.Table` are stored. Change forces creation of a new resource. If no `StorageRoot` is defined for the metastore, each catalog must have a `StorageRoot` defined.
+        /// Path on cloud storage account, where managed `databricks.Table` are stored.  If the URL contains special characters, such as space, `&amp;`, etc., they should be percent-encoded (space &gt; `%20`, etc.). Change forces creation of a new resource. If no `StorageRoot` is defined for the metastore, each catalog must have a `StorageRoot` defined.
         /// </summary>
         [Input("storageRoot")]
         public Input<string>? StorageRoot { get; set; }

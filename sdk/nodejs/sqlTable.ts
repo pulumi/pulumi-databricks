@@ -105,7 +105,7 @@ export class SqlTable extends pulumi.CustomResource {
      */
     declare public readonly storageCredentialName: pulumi.Output<string | undefined>;
     /**
-     * URL of storage location for Table data (required for EXTERNAL Tables). Not supported for `VIEW` or `MANAGED` table_type.
+     * URL of storage location for Table data (required for EXTERNAL Tables).  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.).  Not supported for `VIEW` or `MANAGED` table_type.
      */
     declare public readonly storageLocation: pulumi.Output<string | undefined>;
     /**
@@ -245,7 +245,7 @@ export interface SqlTableState {
      */
     storageCredentialName?: pulumi.Input<string>;
     /**
-     * URL of storage location for Table data (required for EXTERNAL Tables). Not supported for `VIEW` or `MANAGED` table_type.
+     * URL of storage location for Table data (required for EXTERNAL Tables).  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.).  Not supported for `VIEW` or `MANAGED` table_type.
      */
     storageLocation?: pulumi.Input<string>;
     /**
@@ -317,7 +317,7 @@ export interface SqlTableArgs {
      */
     storageCredentialName?: pulumi.Input<string>;
     /**
-     * URL of storage location for Table data (required for EXTERNAL Tables). Not supported for `VIEW` or `MANAGED` table_type.
+     * URL of storage location for Table data (required for EXTERNAL Tables).  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.).  Not supported for `VIEW` or `MANAGED` table_type.
      */
     storageLocation?: pulumi.Input<string>;
     /**

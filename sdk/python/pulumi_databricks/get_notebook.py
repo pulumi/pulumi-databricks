@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetNotebookResult',
@@ -26,7 +28,7 @@ class GetNotebookResult:
     """
     A collection of values returned by getNotebook.
     """
-    def __init__(__self__, content=None, format=None, id=None, language=None, object_id=None, object_type=None, path=None, workspace_path=None):
+    def __init__(__self__, content=None, format=None, id=None, language=None, object_id=None, object_type=None, path=None, provider_config=None, workspace_path=None):
         if content and not isinstance(content, str):
             raise TypeError("Expected argument 'content' to be a str")
         pulumi.set(__self__, "content", content)
@@ -48,6 +50,9 @@ class GetNotebookResult:
         if path and not isinstance(path, str):
             raise TypeError("Expected argument 'path' to be a str")
         pulumi.set(__self__, "path", path)
+        if provider_config and not isinstance(provider_config, dict):
+            raise TypeError("Expected argument 'provider_config' to be a dict")
+        pulumi.set(__self__, "provider_config", provider_config)
         if workspace_path and not isinstance(workspace_path, str):
             raise TypeError("Expected argument 'workspace_path' to be a str")
         pulumi.set(__self__, "workspace_path", workspace_path)
@@ -103,6 +108,11 @@ class GetNotebookResult:
         return pulumi.get(self, "path")
 
     @_builtins.property
+    @pulumi.getter(name="providerConfig")
+    def provider_config(self) -> Optional['outputs.GetNotebookProviderConfigResult']:
+        return pulumi.get(self, "provider_config")
+
+    @_builtins.property
     @pulumi.getter(name="workspacePath")
     def workspace_path(self) -> _builtins.str:
         """
@@ -124,6 +134,7 @@ class AwaitableGetNotebookResult(GetNotebookResult):
             object_id=self.object_id,
             object_type=self.object_type,
             path=self.path,
+            provider_config=self.provider_config,
             workspace_path=self.workspace_path)
 
 
@@ -132,6 +143,7 @@ def get_notebook(format: Optional[_builtins.str] = None,
                  object_id: Optional[_builtins.int] = None,
                  object_type: Optional[_builtins.str] = None,
                  path: Optional[_builtins.str] = None,
+                 provider_config: Optional[Union['GetNotebookProviderConfigArgs', 'GetNotebookProviderConfigArgsDict']] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNotebookResult:
     """
     This data source allows to export a notebook from Databricks Workspace.
@@ -154,6 +166,7 @@ def get_notebook(format: Optional[_builtins.str] = None,
     :param _builtins.int object_id: notebook object ID
     :param _builtins.str object_type: notebook object type
     :param _builtins.str path: Notebook path on the workspace
+    :param Union['GetNotebookProviderConfigArgs', 'GetNotebookProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     """
     __args__ = dict()
     __args__['format'] = format
@@ -161,6 +174,7 @@ def get_notebook(format: Optional[_builtins.str] = None,
     __args__['objectId'] = object_id
     __args__['objectType'] = object_type
     __args__['path'] = path
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getNotebook:getNotebook', __args__, opts=opts, typ=GetNotebookResult).value
 
@@ -172,12 +186,14 @@ def get_notebook(format: Optional[_builtins.str] = None,
         object_id=pulumi.get(__ret__, 'object_id'),
         object_type=pulumi.get(__ret__, 'object_type'),
         path=pulumi.get(__ret__, 'path'),
+        provider_config=pulumi.get(__ret__, 'provider_config'),
         workspace_path=pulumi.get(__ret__, 'workspace_path'))
 def get_notebook_output(format: Optional[pulumi.Input[_builtins.str]] = None,
                         language: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                         object_id: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
                         object_type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                         path: Optional[pulumi.Input[_builtins.str]] = None,
+                        provider_config: Optional[pulumi.Input[Optional[Union['GetNotebookProviderConfigArgs', 'GetNotebookProviderConfigArgsDict']]]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNotebookResult]:
     """
     This data source allows to export a notebook from Databricks Workspace.
@@ -200,6 +216,7 @@ def get_notebook_output(format: Optional[pulumi.Input[_builtins.str]] = None,
     :param _builtins.int object_id: notebook object ID
     :param _builtins.str object_type: notebook object type
     :param _builtins.str path: Notebook path on the workspace
+    :param Union['GetNotebookProviderConfigArgs', 'GetNotebookProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
     """
     __args__ = dict()
     __args__['format'] = format
@@ -207,6 +224,7 @@ def get_notebook_output(format: Optional[pulumi.Input[_builtins.str]] = None,
     __args__['objectId'] = object_id
     __args__['objectType'] = object_type
     __args__['path'] = path
+    __args__['providerConfig'] = provider_config
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getNotebook:getNotebook', __args__, opts=opts, typ=GetNotebookResult)
     return __ret__.apply(lambda __response__: GetNotebookResult(
@@ -217,4 +235,5 @@ def get_notebook_output(format: Optional[pulumi.Input[_builtins.str]] = None,
         object_id=pulumi.get(__response__, 'object_id'),
         object_type=pulumi.get(__response__, 'object_type'),
         path=pulumi.get(__response__, 'path'),
+        provider_config=pulumi.get(__response__, 'provider_config'),
         workspace_path=pulumi.get(__response__, 'workspace_path')))

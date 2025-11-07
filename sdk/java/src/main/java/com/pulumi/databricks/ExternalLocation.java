@@ -90,6 +90,138 @@ import javax.annotation.Nullable;
  * 
  * For Azure
  * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.StorageCredential;
+ * import com.pulumi.databricks.StorageCredentialArgs;
+ * import com.pulumi.databricks.inputs.StorageCredentialAzureServicePrincipalArgs;
+ * import com.pulumi.databricks.ExternalLocation;
+ * import com.pulumi.databricks.ExternalLocationArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.FormatArgs;
+ * import com.pulumi.databricks.Grants;
+ * import com.pulumi.databricks.GrantsArgs;
+ * import com.pulumi.databricks.inputs.GrantsGrantArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var external = new StorageCredential("external", StorageCredentialArgs.builder()
+ *             .name(extCred.displayName())
+ *             .azureServicePrincipal(StorageCredentialAzureServicePrincipalArgs.builder()
+ *                 .directoryId(tenantId)
+ *                 .applicationId(extCred.applicationId())
+ *                 .clientSecret(extCredAzureadApplicationPassword.value())
+ *                 .build())
+ *             .comment("Managed by TF")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(this_)
+ *                 .build());
+ * 
+ *         var some = new ExternalLocation("some", ExternalLocationArgs.builder()
+ *             .name("external")
+ *             .url(StdFunctions.format(FormatArgs.builder()
+ *                 .input("abfss://%s}{@literal @}{@code %s.dfs.core.windows.net")
+ *                 .args(                
+ *                     extStorage.name(),
+ *                     extStorageAzurermStorageAccount.name())
+ *                 .build()).result())
+ *             .credentialName(external.id())
+ *             .comment("Managed by TF")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(this_)
+ *                 .build());
+ * 
+ *         var someGrants = new Grants("someGrants", GrantsArgs.builder()
+ *             .externalLocation(some.id())
+ *             .grants(GrantsGrantArgs.builder()
+ *                 .principal("Data Engineers")
+ *                 .privileges(                
+ *                     "CREATE_EXTERNAL_TABLE",
+ *                     "READ_FILES")
+ *                 .build())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
+ * For GCP
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.StorageCredential;
+ * import com.pulumi.databricks.StorageCredentialArgs;
+ * import com.pulumi.databricks.inputs.StorageCredentialDatabricksGcpServiceAccountArgs;
+ * import com.pulumi.databricks.ExternalLocation;
+ * import com.pulumi.databricks.ExternalLocationArgs;
+ * import com.pulumi.databricks.Grants;
+ * import com.pulumi.databricks.GrantsArgs;
+ * import com.pulumi.databricks.inputs.GrantsGrantArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var ext = new StorageCredential("ext", StorageCredentialArgs.builder()
+ *             .name("the-creds")
+ *             .databricksGcpServiceAccount(StorageCredentialDatabricksGcpServiceAccountArgs.builder()
+ *                 .build())
+ *             .build());
+ * 
+ *         var some = new ExternalLocation("some", ExternalLocationArgs.builder()
+ *             .name("the-ext-location")
+ *             .url(String.format("gs://%s", extBucket.name()))
+ *             .credentialName(ext.id())
+ *             .comment("Managed by TF")
+ *             .build());
+ * 
+ *         var someGrants = new Grants("someGrants", GrantsArgs.builder()
+ *             .externalLocation(some.id())
+ *             .grants(GrantsGrantArgs.builder()
+ *                 .principal("Data Engineers")
+ *                 .privileges(                
+ *                     "CREATE_EXTERNAL_TABLE",
+ *                     "READ_FILES")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * Example `encryptionDetails` specifying SSE_S3 encryption:
+ * 
  * ## Import
  * 
  * This resource can be imported by `name`:
@@ -364,14 +496,14 @@ public class ExternalLocation extends com.pulumi.resources.CustomResource {
         return this.updatedBy;
     }
     /**
-     * Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]{@literal @}[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
+     * Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]{@literal @}[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).   If the URL contains special characters, such as space, `&amp;`, etc., they should be percent-encoded (space &gt; `%20`, etc.).
      * 
      */
     @Export(name="url", refs={String.class}, tree="[0]")
     private Output<String> url;
 
     /**
-     * @return Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]{@literal @}[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
+     * @return Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]{@literal @}[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).   If the URL contains special characters, such as space, `&amp;`, etc., they should be percent-encoded (space &gt; `%20`, etc.).
      * 
      */
     public Output<String> url() {

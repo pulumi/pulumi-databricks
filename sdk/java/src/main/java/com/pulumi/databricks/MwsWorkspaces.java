@@ -166,31 +166,28 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.random.string;
- * import com.pulumi.random.stringArgs;
+ * import com.pulumi.random.String;
+ * import com.pulumi.random.StringArgs;
  * import com.pulumi.databricks.DatabricksFunctions;
  * import com.pulumi.databricks.inputs.GetAwsAssumeRolePolicyArgs;
- * import com.pulumi.aws.iam.Role;
- * import com.pulumi.aws.iam.RoleArgs;
+ * import com.pulumi.aws.IamRole;
+ * import com.pulumi.aws.IamRoleArgs;
  * import com.pulumi.databricks.inputs.GetAwsCrossAccountPolicyArgs;
- * import com.pulumi.aws.iam.RolePolicy;
- * import com.pulumi.aws.iam.RolePolicyArgs;
+ * import com.pulumi.aws.IamRolePolicy;
+ * import com.pulumi.aws.IamRolePolicyArgs;
  * import com.pulumi.databricks.MwsCredentials;
  * import com.pulumi.databricks.MwsCredentialsArgs;
- * import com.pulumi.aws.s3.Bucket;
- * import com.pulumi.aws.s3.BucketArgs;
- * import com.pulumi.aws.s3.BucketVersioning;
- * import com.pulumi.aws.s3.BucketVersioningArgs;
- * import com.pulumi.aws.s3.inputs.BucketVersioningVersioningConfigurationArgs;
- * import com.pulumi.aws.s3.BucketServerSideEncryptionConfiguration;
- * import com.pulumi.aws.s3.BucketServerSideEncryptionConfigurationArgs;
- * import com.pulumi.aws.s3.inputs.BucketServerSideEncryptionConfigurationRuleArgs;
- * import com.pulumi.aws.s3.inputs.BucketServerSideEncryptionConfigurationRuleApplyServerSideEncryptionByDefaultArgs;
- * import com.pulumi.aws.s3.BucketPublicAccessBlock;
- * import com.pulumi.aws.s3.BucketPublicAccessBlockArgs;
+ * import com.pulumi.aws.S3Bucket;
+ * import com.pulumi.aws.S3BucketArgs;
+ * import com.pulumi.aws.S3BucketVersioning;
+ * import com.pulumi.aws.S3BucketVersioningArgs;
+ * import com.pulumi.aws.S3BucketServerSideEncryptionConfiguration;
+ * import com.pulumi.aws.S3BucketServerSideEncryptionConfigurationArgs;
+ * import com.pulumi.aws.S3BucketPublicAccessBlock;
+ * import com.pulumi.aws.S3BucketPublicAccessBlockArgs;
  * import com.pulumi.databricks.inputs.GetAwsBucketPolicyArgs;
- * import com.pulumi.aws.s3.BucketPolicy;
- * import com.pulumi.aws.s3.BucketPolicyArgs;
+ * import com.pulumi.aws.S3BucketPolicy;
+ * import com.pulumi.aws.S3BucketPolicyArgs;
  * import com.pulumi.databricks.MwsStorageConfigurations;
  * import com.pulumi.databricks.MwsStorageConfigurationsArgs;
  * import com.pulumi.databricks.MwsWorkspaces;
@@ -204,7 +201,7 @@ import javax.annotation.Nullable;
  * import java.nio.file.Paths;
  * 
  * public class App {
- *     public static void main(String[] args) {
+ *     public static void main(java.lang.String[] args) {
  *         Pulumi.run(App::stack);
  *     }
  * 
@@ -223,7 +220,7 @@ import javax.annotation.Nullable;
  *             .externalId(databricksAccountId)
  *             .build());
  * 
- *         var crossAccountRole = new Role("crossAccountRole", RoleArgs.builder()
+ *         var crossAccountRole = new IamRole("crossAccountRole", IamRoleArgs.builder()
  *             .name(String.format("%s-crossaccount", prefix))
  *             .assumeRolePolicy(this_.json())
  *             .tags(tags)
@@ -232,7 +229,7 @@ import javax.annotation.Nullable;
  *         final var thisGetAwsCrossAccountPolicy = DatabricksFunctions.getAwsCrossAccountPolicy(GetAwsCrossAccountPolicyArgs.builder()
  *             .build());
  * 
- *         var thisRolePolicy = new RolePolicy("thisRolePolicy", RolePolicyArgs.builder()
+ *         var thisIamRolePolicy = new IamRolePolicy("thisIamRolePolicy", IamRolePolicyArgs.builder()
  *             .name(String.format("%s-policy", prefix))
  *             .role(crossAccountRole.id())
  *             .policy(thisGetAwsCrossAccountPolicy.json())
@@ -244,48 +241,42 @@ import javax.annotation.Nullable;
  *             .roleArn(crossAccountRole.arn())
  *             .build());
  * 
- *         var rootStorageBucket = new Bucket("rootStorageBucket", BucketArgs.builder()
+ *         var rootStorageBucket = new S3Bucket("rootStorageBucket", S3BucketArgs.builder()
  *             .bucket(String.format("%s-rootbucket", prefix))
  *             .acl("private")
  *             .forceDestroy(true)
  *             .tags(tags)
  *             .build());
  * 
- *         var rootVersioning = new BucketVersioning("rootVersioning", BucketVersioningArgs.builder()
+ *         var rootVersioning = new S3BucketVersioning("rootVersioning", S3BucketVersioningArgs.builder()
  *             .bucket(rootStorageBucket.id())
- *             .versioningConfiguration(BucketVersioningVersioningConfigurationArgs.builder()
- *                 .status("Disabled")
- *                 .build())
+ *             .versioningConfiguration(List.of(Map.of("status", "Disabled")))
  *             .build());
  * 
- *         var rootStorageBucketBucketServerSideEncryptionConfiguration = new BucketServerSideEncryptionConfiguration("rootStorageBucketBucketServerSideEncryptionConfiguration", BucketServerSideEncryptionConfigurationArgs.builder()
+ *         var rootStorageBucketS3BucketServerSideEncryptionConfiguration = new S3BucketServerSideEncryptionConfiguration("rootStorageBucketS3BucketServerSideEncryptionConfiguration", S3BucketServerSideEncryptionConfigurationArgs.builder()
  *             .bucket(rootStorageBucket.bucket())
- *             .rules(BucketServerSideEncryptionConfigurationRuleArgs.builder()
- *                 .applyServerSideEncryptionByDefault(BucketServerSideEncryptionConfigurationRuleApplyServerSideEncryptionByDefaultArgs.builder()
- *                     .sseAlgorithm("AES256")
- *                     .build())
- *                 .build())
+ *             .rule(List.of(Map.of("applyServerSideEncryptionByDefault", List.of(Map.of("sseAlgorithm", "AES256")))))
  *             .build());
  * 
- *         var rootStorageBucketBucketPublicAccessBlock = new BucketPublicAccessBlock("rootStorageBucketBucketPublicAccessBlock", BucketPublicAccessBlockArgs.builder()
+ *         var rootStorageBucketS3BucketPublicAccessBlock = new S3BucketPublicAccessBlock("rootStorageBucketS3BucketPublicAccessBlock", S3BucketPublicAccessBlockArgs.builder()
  *             .bucket(rootStorageBucket.id())
  *             .blockPublicAcls(true)
  *             .blockPublicPolicy(true)
  *             .ignorePublicAcls(true)
  *             .restrictPublicBuckets(true)
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(rootStorageBucket)
+ *                 .dependsOn(List.of(rootStorageBucket))
  *                 .build());
  * 
  *         final var thisGetAwsBucketPolicy = DatabricksFunctions.getAwsBucketPolicy(GetAwsBucketPolicyArgs.builder()
  *             .bucket(rootStorageBucket.bucket())
  *             .build());
  * 
- *         var rootBucketPolicy = new BucketPolicy("rootBucketPolicy", BucketPolicyArgs.builder()
+ *         var rootBucketPolicy = new S3BucketPolicy("rootBucketPolicy", S3BucketPolicyArgs.builder()
  *             .bucket(rootStorageBucket.id())
- *             .policy(thisGetAwsBucketPolicy.applyValue(_thisGetAwsBucketPolicy -> _thisGetAwsBucketPolicy.json()))
+ *             .policy(thisGetAwsBucketPolicy.json())
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(rootStorageBucketBucketPublicAccessBlock)
+ *                 .dependsOn(List.of(rootStorageBucketS3BucketPublicAccessBlock))
  *                 .build());
  * 
  *         var thisMwsStorageConfigurations = new MwsStorageConfigurations("thisMwsStorageConfigurations", MwsStorageConfigurationsArgs.builder()
@@ -608,10 +599,10 @@ public class MwsWorkspaces extends com.pulumi.resources.CustomResource {
     }
     /**
      * @deprecated
-     * gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.96.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.97.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      * 
      */
-    @Deprecated /* gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.96.0/docs/guides/gcp-workspace#creating-a-databricks-workspace */
+    @Deprecated /* gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.97.0/docs/guides/gcp-workspace#creating-a-databricks-workspace */
     @Export(name="gkeConfig", refs={MwsWorkspacesGkeConfig.class}, tree="[0]")
     private Output</* @Nullable */ MwsWorkspacesGkeConfig> gkeConfig;
 
@@ -651,6 +642,12 @@ public class MwsWorkspaces extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> managedServicesCustomerManagedKeyId() {
         return Codegen.optional(this.managedServicesCustomerManagedKeyId);
+    }
+    @Export(name="networkConnectivityConfigId", refs={String.class}, tree="[0]")
+    private Output<String> networkConnectivityConfigId;
+
+    public Output<String> networkConnectivityConfigId() {
+        return this.networkConnectivityConfigId;
     }
     /**
      * `networkId` from networks.

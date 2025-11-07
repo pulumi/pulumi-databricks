@@ -53,6 +53,7 @@ export class Provider extends pulumi.ProviderResource {
     declare public readonly token: pulumi.Output<string | undefined>;
     declare public readonly username: pulumi.Output<string | undefined>;
     declare public readonly warehouseId: pulumi.Output<string | undefined>;
+    declare public readonly workspaceId: pulumi.Output<string | undefined>;
 
     /**
      * Create a Provider resource with the given unique name, arguments, and options.
@@ -85,6 +86,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["databricksIdTokenFilepath"] = args?.databricksIdTokenFilepath;
             resourceInputs["debugHeaders"] = pulumi.output(args?.debugHeaders).apply(JSON.stringify);
             resourceInputs["debugTruncateBytes"] = pulumi.output(args?.debugTruncateBytes).apply(JSON.stringify);
+            resourceInputs["experimentalIsUnifiedHost"] = pulumi.output(args?.experimentalIsUnifiedHost).apply(JSON.stringify);
             resourceInputs["googleCredentials"] = args?.googleCredentials ? pulumi.secret(args.googleCredentials) : undefined;
             resourceInputs["googleServiceAccount"] = args?.googleServiceAccount;
             resourceInputs["host"] = args?.host;
@@ -101,6 +103,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["token"] = args?.token ? pulumi.secret(args.token) : undefined;
             resourceInputs["username"] = args?.username;
             resourceInputs["warehouseId"] = args?.warehouseId;
+            resourceInputs["workspaceId"] = args?.workspaceId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["azureClientSecret", "clientSecret", "googleCredentials", "metadataServiceUrl", "password", "token"] };
@@ -142,6 +145,7 @@ export interface ProviderArgs {
     databricksIdTokenFilepath?: pulumi.Input<string>;
     debugHeaders?: pulumi.Input<boolean>;
     debugTruncateBytes?: pulumi.Input<number>;
+    experimentalIsUnifiedHost?: pulumi.Input<boolean>;
     googleCredentials?: pulumi.Input<string>;
     googleServiceAccount?: pulumi.Input<string>;
     host?: pulumi.Input<string>;
@@ -158,6 +162,7 @@ export interface ProviderArgs {
     token?: pulumi.Input<string>;
     username?: pulumi.Input<string>;
     warehouseId?: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string>;
 }
 
 export namespace Provider {

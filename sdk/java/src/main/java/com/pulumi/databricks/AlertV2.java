@@ -30,6 +30,71 @@ import javax.annotation.Nullable;
  * ### Basic Alert Example
  * This example creates a basic alert that monitors a query and sends notifications to a user when the value exceeds a threshold:
  * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.AlertV2;
+ * import com.pulumi.databricks.AlertV2Args;
+ * import com.pulumi.databricks.inputs.AlertV2EvaluationArgs;
+ * import com.pulumi.databricks.inputs.AlertV2EvaluationSourceArgs;
+ * import com.pulumi.databricks.inputs.AlertV2EvaluationThresholdArgs;
+ * import com.pulumi.databricks.inputs.AlertV2EvaluationThresholdValueArgs;
+ * import com.pulumi.databricks.inputs.AlertV2EvaluationNotificationArgs;
+ * import com.pulumi.databricks.inputs.AlertV2ScheduleArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var basicAlert = new AlertV2("basicAlert", AlertV2Args.builder()
+ *             .displayName("High Error Rate Alert")
+ *             .queryText("SELECT count(*) as error_count FROM logs WHERE level = 'ERROR' AND timestamp > now() - interval 1 hour")
+ *             .warehouseId("a7066a8ef796be84")
+ *             .parentPath("/Users/user}{@literal @}{@code example.com")
+ *             .evaluation(AlertV2EvaluationArgs.builder()
+ *                 .source(AlertV2EvaluationSourceArgs.builder()
+ *                     .name("error_count")
+ *                     .display("Error Count")
+ *                     .aggregation("COUNT")
+ *                     .build())
+ *                 .comparisonOperator("GREATER_THAN")
+ *                 .threshold(AlertV2EvaluationThresholdArgs.builder()
+ *                     .value(AlertV2EvaluationThresholdValueArgs.builder()
+ *                         .doubleValue(100.0)
+ *                         .build())
+ *                     .build())
+ *                 .emptyResultState("OK")
+ *                 .notification(AlertV2EvaluationNotificationArgs.builder()
+ *                     .subscriptions(AlertV2EvaluationNotificationSubscriptionArgs.builder()
+ *                         .userEmail("user}{@literal @}{@code example.com")
+ *                         .build())
+ *                     .notifyOnOk(true)
+ *                     .build())
+ *                 .build())
+ *             .schedule(AlertV2ScheduleArgs.builder()
+ *                 .quartzCronSchedule("0 0/15 * * * ?")
+ *                 .timezoneId("America/Los_Angeles")
+ *                 .pauseStatus("UNPAUSED")
+ *                 .build())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * As of Pulumi v1.5, resources can be imported through configuration.

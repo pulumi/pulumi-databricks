@@ -268,6 +268,8 @@ type PermissionAssignment struct {
 	Permissions pulumi.StringArrayOutput `pulumi:"permissions"`
 	// Databricks ID of the user, service principal, or group. The principal ID can be retrieved using the account-level SCIM API, or using databricks_user, ServicePrincipal or Group data sources with account API (and has to be an account admin). A more sensible approach is to retrieve the list of `principalId` as outputs from another Pulumi stack.
 	PrincipalId pulumi.StringOutput `pulumi:"principalId"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig PermissionAssignmentProviderConfigPtrOutput `pulumi:"providerConfig"`
 	// the application ID of service principal to assign to a workspace.
 	ServicePrincipalName pulumi.StringOutput `pulumi:"servicePrincipalName"`
 	// the user name (email) to assign to a workspace.
@@ -317,6 +319,8 @@ type permissionAssignmentState struct {
 	Permissions []string `pulumi:"permissions"`
 	// Databricks ID of the user, service principal, or group. The principal ID can be retrieved using the account-level SCIM API, or using databricks_user, ServicePrincipal or Group data sources with account API (and has to be an account admin). A more sensible approach is to retrieve the list of `principalId` as outputs from another Pulumi stack.
 	PrincipalId *string `pulumi:"principalId"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *PermissionAssignmentProviderConfig `pulumi:"providerConfig"`
 	// the application ID of service principal to assign to a workspace.
 	ServicePrincipalName *string `pulumi:"servicePrincipalName"`
 	// the user name (email) to assign to a workspace.
@@ -334,6 +338,8 @@ type PermissionAssignmentState struct {
 	Permissions pulumi.StringArrayInput
 	// Databricks ID of the user, service principal, or group. The principal ID can be retrieved using the account-level SCIM API, or using databricks_user, ServicePrincipal or Group data sources with account API (and has to be an account admin). A more sensible approach is to retrieve the list of `principalId` as outputs from another Pulumi stack.
 	PrincipalId pulumi.StringPtrInput
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig PermissionAssignmentProviderConfigPtrInput
 	// the application ID of service principal to assign to a workspace.
 	ServicePrincipalName pulumi.StringPtrInput
 	// the user name (email) to assign to a workspace.
@@ -353,6 +359,8 @@ type permissionAssignmentArgs struct {
 	Permissions []string `pulumi:"permissions"`
 	// Databricks ID of the user, service principal, or group. The principal ID can be retrieved using the account-level SCIM API, or using databricks_user, ServicePrincipal or Group data sources with account API (and has to be an account admin). A more sensible approach is to retrieve the list of `principalId` as outputs from another Pulumi stack.
 	PrincipalId *string `pulumi:"principalId"`
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig *PermissionAssignmentProviderConfig `pulumi:"providerConfig"`
 	// the application ID of service principal to assign to a workspace.
 	ServicePrincipalName *string `pulumi:"servicePrincipalName"`
 	// the user name (email) to assign to a workspace.
@@ -369,6 +377,8 @@ type PermissionAssignmentArgs struct {
 	Permissions pulumi.StringArrayInput
 	// Databricks ID of the user, service principal, or group. The principal ID can be retrieved using the account-level SCIM API, or using databricks_user, ServicePrincipal or Group data sources with account API (and has to be an account admin). A more sensible approach is to retrieve the list of `principalId` as outputs from another Pulumi stack.
 	PrincipalId pulumi.StringPtrInput
+	// Configure the provider for management through account provider. This block consists of the following fields:
+	ProviderConfig PermissionAssignmentProviderConfigPtrInput
 	// the application ID of service principal to assign to a workspace.
 	ServicePrincipalName pulumi.StringPtrInput
 	// the user name (email) to assign to a workspace.
@@ -482,6 +492,11 @@ func (o PermissionAssignmentOutput) Permissions() pulumi.StringArrayOutput {
 // Databricks ID of the user, service principal, or group. The principal ID can be retrieved using the account-level SCIM API, or using databricks_user, ServicePrincipal or Group data sources with account API (and has to be an account admin). A more sensible approach is to retrieve the list of `principalId` as outputs from another Pulumi stack.
 func (o PermissionAssignmentOutput) PrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v *PermissionAssignment) pulumi.StringOutput { return v.PrincipalId }).(pulumi.StringOutput)
+}
+
+// Configure the provider for management through account provider. This block consists of the following fields:
+func (o PermissionAssignmentOutput) ProviderConfig() PermissionAssignmentProviderConfigPtrOutput {
+	return o.ApplyT(func(v *PermissionAssignment) PermissionAssignmentProviderConfigPtrOutput { return v.ProviderConfig }).(PermissionAssignmentProviderConfigPtrOutput)
 }
 
 // the application ID of service principal to assign to a workspace.

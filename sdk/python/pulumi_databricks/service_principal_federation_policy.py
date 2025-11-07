@@ -250,6 +250,20 @@ class ServicePrincipalFederationPolicy(pulumi.CustomResource):
 
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        this = databricks.ServicePrincipalFederationPolicy("this",
+            service_principal_id=1234,
+            policy_id="my-policy",
+            oidc_policy={
+                "issuer": "https://myidp.example.com",
+                "subject_claim": "sub",
+                "subject": "subject-in-token-from-myidp",
+            })
+        ```
+
         ## Import
 
         As of Pulumi v1.5, resources can be imported through configuration.
@@ -292,6 +306,20 @@ class ServicePrincipalFederationPolicy(pulumi.CustomResource):
         * The workload identity (or subject) that is permitted to authenticate as the Databricks service principal.
 
         ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        this = databricks.ServicePrincipalFederationPolicy("this",
+            service_principal_id=1234,
+            policy_id="my-policy",
+            oidc_policy={
+                "issuer": "https://myidp.example.com",
+                "subject_claim": "sub",
+                "subject": "subject-in-token-from-myidp",
+            })
+        ```
 
         ## Import
 

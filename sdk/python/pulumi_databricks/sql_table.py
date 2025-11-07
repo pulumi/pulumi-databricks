@@ -52,7 +52,7 @@ class SqlTableArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] partitions: a subset of columns to partition the table by. Change forces the creation of a new resource. Conflicts with `cluster_keys`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] properties: A map of table properties.
         :param pulumi.Input[_builtins.str] storage_credential_name: For EXTERNAL Tables only: the name of storage credential to use. Change forces the creation of a new resource.
-        :param pulumi.Input[_builtins.str] storage_location: URL of storage location for Table data (required for EXTERNAL Tables). Not supported for `VIEW` or `MANAGED` table_type.
+        :param pulumi.Input[_builtins.str] storage_location: URL of storage location for Table data (required for EXTERNAL Tables).  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.).  Not supported for `VIEW` or `MANAGED` table_type.
         :param pulumi.Input[_builtins.str] view_definition: SQL text defining the view (for `table_type == "VIEW"`). Not supported for `MANAGED` or `EXTERNAL` table_type.
         :param pulumi.Input[_builtins.str] warehouse_id: All table CRUD operations must be executed on a running cluster or SQL warehouse. If a `warehouse_id` is specified, that SQL warehouse will be used to execute SQL commands to manage this table. Conflicts with `cluster_id`.
         """
@@ -254,7 +254,7 @@ class SqlTableArgs:
     @pulumi.getter(name="storageLocation")
     def storage_location(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        URL of storage location for Table data (required for EXTERNAL Tables). Not supported for `VIEW` or `MANAGED` table_type.
+        URL of storage location for Table data (required for EXTERNAL Tables).  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.).  Not supported for `VIEW` or `MANAGED` table_type.
         """
         return pulumi.get(self, "storage_location")
 
@@ -322,7 +322,7 @@ class _SqlTableState:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] properties: A map of table properties.
         :param pulumi.Input[_builtins.str] schema_name: Name of parent Schema relative to parent Catalog. Change forces the creation of a new resource.
         :param pulumi.Input[_builtins.str] storage_credential_name: For EXTERNAL Tables only: the name of storage credential to use. Change forces the creation of a new resource.
-        :param pulumi.Input[_builtins.str] storage_location: URL of storage location for Table data (required for EXTERNAL Tables). Not supported for `VIEW` or `MANAGED` table_type.
+        :param pulumi.Input[_builtins.str] storage_location: URL of storage location for Table data (required for EXTERNAL Tables).  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.).  Not supported for `VIEW` or `MANAGED` table_type.
         :param pulumi.Input[_builtins.str] table_id: The unique identifier of the table.
         :param pulumi.Input[_builtins.str] table_type: Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL` or `VIEW`. Change forces the creation of a new resource.
         :param pulumi.Input[_builtins.str] view_definition: SQL text defining the view (for `table_type == "VIEW"`). Not supported for `MANAGED` or `EXTERNAL` table_type.
@@ -530,7 +530,7 @@ class _SqlTableState:
     @pulumi.getter(name="storageLocation")
     def storage_location(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        URL of storage location for Table data (required for EXTERNAL Tables). Not supported for `VIEW` or `MANAGED` table_type.
+        URL of storage location for Table data (required for EXTERNAL Tables).  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.).  Not supported for `VIEW` or `MANAGED` table_type.
         """
         return pulumi.get(self, "storage_location")
 
@@ -647,7 +647,7 @@ class SqlTable(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] properties: A map of table properties.
         :param pulumi.Input[_builtins.str] schema_name: Name of parent Schema relative to parent Catalog. Change forces the creation of a new resource.
         :param pulumi.Input[_builtins.str] storage_credential_name: For EXTERNAL Tables only: the name of storage credential to use. Change forces the creation of a new resource.
-        :param pulumi.Input[_builtins.str] storage_location: URL of storage location for Table data (required for EXTERNAL Tables). Not supported for `VIEW` or `MANAGED` table_type.
+        :param pulumi.Input[_builtins.str] storage_location: URL of storage location for Table data (required for EXTERNAL Tables).  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.).  Not supported for `VIEW` or `MANAGED` table_type.
         :param pulumi.Input[_builtins.str] table_type: Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL` or `VIEW`. Change forces the creation of a new resource.
         :param pulumi.Input[_builtins.str] view_definition: SQL text defining the view (for `table_type == "VIEW"`). Not supported for `MANAGED` or `EXTERNAL` table_type.
         :param pulumi.Input[_builtins.str] warehouse_id: All table CRUD operations must be executed on a running cluster or SQL warehouse. If a `warehouse_id` is specified, that SQL warehouse will be used to execute SQL commands to manage this table. Conflicts with `cluster_id`.
@@ -794,7 +794,7 @@ class SqlTable(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] properties: A map of table properties.
         :param pulumi.Input[_builtins.str] schema_name: Name of parent Schema relative to parent Catalog. Change forces the creation of a new resource.
         :param pulumi.Input[_builtins.str] storage_credential_name: For EXTERNAL Tables only: the name of storage credential to use. Change forces the creation of a new resource.
-        :param pulumi.Input[_builtins.str] storage_location: URL of storage location for Table data (required for EXTERNAL Tables). Not supported for `VIEW` or `MANAGED` table_type.
+        :param pulumi.Input[_builtins.str] storage_location: URL of storage location for Table data (required for EXTERNAL Tables).  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.).  Not supported for `VIEW` or `MANAGED` table_type.
         :param pulumi.Input[_builtins.str] table_id: The unique identifier of the table.
         :param pulumi.Input[_builtins.str] table_type: Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL` or `VIEW`. Change forces the creation of a new resource.
         :param pulumi.Input[_builtins.str] view_definition: SQL text defining the view (for `table_type == "VIEW"`). Not supported for `MANAGED` or `EXTERNAL` table_type.
@@ -932,7 +932,7 @@ class SqlTable(pulumi.CustomResource):
     @pulumi.getter(name="storageLocation")
     def storage_location(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        URL of storage location for Table data (required for EXTERNAL Tables). Not supported for `VIEW` or `MANAGED` table_type.
+        URL of storage location for Table data (required for EXTERNAL Tables).  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.).  Not supported for `VIEW` or `MANAGED` table_type.
         """
         return pulumi.get(self, "storage_location")
 

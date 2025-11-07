@@ -270,7 +270,7 @@ class File(pulumi.CustomResource):
 
         init_script = databricks.File("init_script",
             content_base64=std.base64encode(input=\"\"\"#!/bin/bash
-        echo "Hello World"
+        echo \\"Hello World\\"
         \"\"\").result,
             path=f"{this['volumePath']}/fileName")
         ```
@@ -368,7 +368,7 @@ class File(pulumi.CustomResource):
 
         init_script = databricks.File("init_script",
             content_base64=std.base64encode(input=\"\"\"#!/bin/bash
-        echo "Hello World"
+        echo \\"Hello World\\"
         \"\"\").result,
             path=f"{this['volumePath']}/fileName")
         ```

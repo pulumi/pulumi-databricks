@@ -21,14 +21,92 @@ import * as utilities from "./utilities";
  *
  * This example creates a Synced Database Table inside a Database Catalog.
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const _this = new databricks.DatabaseSyncedDatabaseTable("this", {
+ *     name: "my_database_catalog.public.synced_table",
+ *     logicalDatabaseName: "databricks_postgres",
+ *     spec: {
+ *         schedulingPolicy: "SNAPSHOT",
+ *         sourceTableFullName: "source_delta.tpch.customer",
+ *         primaryKeyColumns: ["c_custkey"],
+ *         createDatabaseObjectsIfMissing: true,
+ *         newPipelineSpec: {
+ *             storageCatalog: "source_delta",
+ *             storageSchema: "tpch",
+ *         },
+ *     },
+ * });
+ * ```
+ *
  * ### Creating a Synced Database Table inside a Standard Catalog
  *
  * This example creates a Synced Database Table inside a Standard Catalog.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const _this = new databricks.DatabaseSyncedDatabaseTable("this", {
+ *     name: "my_standard_catalog.public.synced_table",
+ *     logicalDatabaseName: "databricks_postgres",
+ *     databaseInstanceName: "my-database-instance",
+ *     spec: {
+ *         schedulingPolicy: "SNAPSHOT",
+ *         sourceTableFullName: "source_delta.tpch.customer",
+ *         primaryKeyColumns: ["c_custkey"],
+ *         createDatabaseObjectsIfMissing: true,
+ *         newPipelineSpec: {
+ *             storageCatalog: "source_delta",
+ *             storageSchema: "tpch",
+ *         },
+ *     },
+ * });
+ * ```
  *
  * ### Creating multiple Synced Database Tables and bin packing them into a single pipeline
  *
  * This example creates two Synced Database Tables. The first one specifies a new pipeline spec,
  * which generates a new pipeline. The second one utilizes the pipeline ID of the first table.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const instance = new databricks.DatabaseInstance("instance", {
+ *     name: "my-database-instance",
+ *     capacity: "CU_1",
+ * });
+ * const syncedTable1 = new databricks.DatabaseSyncedDatabaseTable("synced_table_1", {
+ *     name: "my_standard_catalog.public.synced_table1",
+ *     logicalDatabaseName: "databricks_postgres",
+ *     databaseInstanceName: instance.name,
+ *     spec: {
+ *         schedulingPolicy: "SNAPSHOT",
+ *         sourceTableFullName: "source_delta.tpch.customer",
+ *         primaryKeyColumns: ["c_custkey"],
+ *         createDatabaseObjectsIfMissing: true,
+ *         newPipelineSpec: {
+ *             storageCatalog: "source_delta",
+ *             storageSchema: "tpch",
+ *         },
+ *     },
+ * });
+ * const syncedTable2 = new databricks.DatabaseSyncedDatabaseTable("synced_table_2", {
+ *     name: "my_standard_catalog.public.synced_table2",
+ *     logicalDatabaseName: "databricks_postgres",
+ *     databaseInstanceName: instance.name,
+ *     spec: {
+ *         schedulingPolicy: "SNAPSHOT",
+ *         sourceTableFullName: "source_delta.tpch.customer",
+ *         primaryKeyColumns: ["c_custkey"],
+ *         createDatabaseObjectsIfMissing: true,
+ *         existingPipelineId: syncedTable1.dataSynchronizationStatus.apply(dataSynchronizationStatus => dataSynchronizationStatus.pipelineId),
+ *     },
+ * });
+ * ```
  *
  * ### Creating a Synced Database Table with a custom Jobs schedule
  *
@@ -38,6 +116,41 @@ import * as utilities from "./utilities";
  * - A standard catalog named `"myStandardCatalog"`
  * - A schema in the standard catalog named `"default"`
  * - A source delta table named `"source_delta.schema.customer"` with the primary key `"cCustkey"`
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const syncedTable = new databricks.DatabaseSyncedDatabaseTable("synced_table", {
+ *     name: "my_standard_catalog.default.my_synced_table",
+ *     logicalDatabaseName: "terraform_test_db",
+ *     databaseInstanceName: "my-database-instance",
+ *     spec: {
+ *         schedulingPolicy: "SNAPSHOT",
+ *         sourceTableFullName: "source_delta.schema.customer",
+ *         primaryKeyColumns: ["c_custkey"],
+ *         createDatabaseObjectsIfMissing: true,
+ *         newPipelineSpec: {
+ *             storageCatalog: "source_delta",
+ *             storageSchema: "schema",
+ *         },
+ *     },
+ * });
+ * const syncPipelineScheduleJob = new databricks.Job("sync_pipeline_schedule_job", {
+ *     name: "Synced Pipeline Refresh",
+ *     description: "Job to schedule synced database table pipeline. ",
+ *     tasks: [{
+ *         taskKey: "synced-table-pipeline",
+ *         pipelineTask: {
+ *             pipelineId: syncedTable.dataSynchronizationStatus.apply(dataSynchronizationStatus => dataSynchronizationStatus.pipelineId),
+ *         },
+ *     }],
+ *     schedule: {
+ *         quartzCronExpression: "0 0 0 * * ?",
+ *         timezoneId: "Europe/Helsinki",
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

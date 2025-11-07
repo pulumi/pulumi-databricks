@@ -78,6 +78,38 @@ def get_service_principals(application_ids: Optional[Sequence[_builtins.str]] = 
 
     > This data source can be used with an account or workspace-level provider.
 
+    ## Example Usage
+
+    Adding all service principals of which display name contains `my-spn` to admin group
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+    import pulumi_std as std
+
+    admins = databricks.get_group(display_name="admins")
+    spns = databricks.get_service_principals(display_name_contains="my-spn")
+    spn = {__key: databricks.get_service_principal(application_id=__value) for __key, __value in std.toset(input=spns.application_ids).result}
+    my_member_spn = []
+    for range in [{"key": k, "value": v} for [k, v] in enumerate(std.toset(input=spns.application_ids).result)]:
+        my_member_spn.append(databricks.GroupMember(f"my_member_spn-{range['key']}",
+            group_id=admins.id,
+            member_id=spn[range["value"]].sp_id))
+    ```
+
+    ## Related Resources
+
+    The following resources are used in the same context:
+
+    - End to end workspace management guide.
+    - get_current_user data to retrieve information about User or databricks_service_principal, that is calling Databricks REST API.
+    - Group to manage [Account-level](https://docs.databricks.com/aws/en/admin/users-groups/groups) or [Workspace-level](https://docs.databricks.com/aws/en/admin/users-groups/workspace-local-groups) groups.
+    - Group data to retrieve information about Group members, entitlements and instance profiles.
+    - GroupInstanceProfile to attach InstanceProfile (AWS) to databricks_group.
+    - GroupMember to attach users and groups as group members.
+    - Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
+    - databricks_service principal to manage service principals
+
 
     :param Sequence[_builtins.str] application_ids: List of `application_ids` of service principals.  Individual service principal can be retrieved using ServicePrincipal data source
     :param _builtins.str display_name_contains: Only return ServicePrincipal display name that match the given name string
@@ -99,6 +131,38 @@ def get_service_principals_output(application_ids: Optional[pulumi.Input[Optiona
     Retrieves `application_ids` of all ServicePrincipal based on their `display_name`
 
     > This data source can be used with an account or workspace-level provider.
+
+    ## Example Usage
+
+    Adding all service principals of which display name contains `my-spn` to admin group
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+    import pulumi_std as std
+
+    admins = databricks.get_group(display_name="admins")
+    spns = databricks.get_service_principals(display_name_contains="my-spn")
+    spn = {__key: databricks.get_service_principal(application_id=__value) for __key, __value in std.toset(input=spns.application_ids).result}
+    my_member_spn = []
+    for range in [{"key": k, "value": v} for [k, v] in enumerate(std.toset(input=spns.application_ids).result)]:
+        my_member_spn.append(databricks.GroupMember(f"my_member_spn-{range['key']}",
+            group_id=admins.id,
+            member_id=spn[range["value"]].sp_id))
+    ```
+
+    ## Related Resources
+
+    The following resources are used in the same context:
+
+    - End to end workspace management guide.
+    - get_current_user data to retrieve information about User or databricks_service_principal, that is calling Databricks REST API.
+    - Group to manage [Account-level](https://docs.databricks.com/aws/en/admin/users-groups/groups) or [Workspace-level](https://docs.databricks.com/aws/en/admin/users-groups/workspace-local-groups) groups.
+    - Group data to retrieve information about Group members, entitlements and instance profiles.
+    - GroupInstanceProfile to attach InstanceProfile (AWS) to databricks_group.
+    - GroupMember to attach users and groups as group members.
+    - Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
+    - databricks_service principal to manage service principals
 
 
     :param Sequence[_builtins.str] application_ids: List of `application_ids` of service principals.  Individual service principal can be retrieved using ServicePrincipal data source

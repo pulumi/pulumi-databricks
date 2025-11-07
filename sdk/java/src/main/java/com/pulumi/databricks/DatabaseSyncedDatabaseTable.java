@@ -31,14 +31,168 @@ import javax.annotation.Nullable;
  * 
  * This example creates a Synced Database Table inside a Database Catalog.
  * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.DatabaseSyncedDatabaseTable;
+ * import com.pulumi.databricks.DatabaseSyncedDatabaseTableArgs;
+ * import com.pulumi.databricks.inputs.DatabaseSyncedDatabaseTableSpecArgs;
+ * import com.pulumi.databricks.inputs.DatabaseSyncedDatabaseTableSpecNewPipelineSpecArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var this_ = new DatabaseSyncedDatabaseTable("this", DatabaseSyncedDatabaseTableArgs.builder()
+ *             .name("my_database_catalog.public.synced_table")
+ *             .logicalDatabaseName("databricks_postgres")
+ *             .spec(DatabaseSyncedDatabaseTableSpecArgs.builder()
+ *                 .schedulingPolicy("SNAPSHOT")
+ *                 .sourceTableFullName("source_delta.tpch.customer")
+ *                 .primaryKeyColumns("c_custkey")
+ *                 .createDatabaseObjectsIfMissing(true)
+ *                 .newPipelineSpec(DatabaseSyncedDatabaseTableSpecNewPipelineSpecArgs.builder()
+ *                     .storageCatalog("source_delta")
+ *                     .storageSchema("tpch")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ### Creating a Synced Database Table inside a Standard Catalog
  * 
  * This example creates a Synced Database Table inside a Standard Catalog.
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.DatabaseSyncedDatabaseTable;
+ * import com.pulumi.databricks.DatabaseSyncedDatabaseTableArgs;
+ * import com.pulumi.databricks.inputs.DatabaseSyncedDatabaseTableSpecArgs;
+ * import com.pulumi.databricks.inputs.DatabaseSyncedDatabaseTableSpecNewPipelineSpecArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var this_ = new DatabaseSyncedDatabaseTable("this", DatabaseSyncedDatabaseTableArgs.builder()
+ *             .name("my_standard_catalog.public.synced_table")
+ *             .logicalDatabaseName("databricks_postgres")
+ *             .databaseInstanceName("my-database-instance")
+ *             .spec(DatabaseSyncedDatabaseTableSpecArgs.builder()
+ *                 .schedulingPolicy("SNAPSHOT")
+ *                 .sourceTableFullName("source_delta.tpch.customer")
+ *                 .primaryKeyColumns("c_custkey")
+ *                 .createDatabaseObjectsIfMissing(true)
+ *                 .newPipelineSpec(DatabaseSyncedDatabaseTableSpecNewPipelineSpecArgs.builder()
+ *                     .storageCatalog("source_delta")
+ *                     .storageSchema("tpch")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ### Creating multiple Synced Database Tables and bin packing them into a single pipeline
  * 
  * This example creates two Synced Database Tables. The first one specifies a new pipeline spec,
  * which generates a new pipeline. The second one utilizes the pipeline ID of the first table.
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.DatabaseInstance;
+ * import com.pulumi.databricks.DatabaseInstanceArgs;
+ * import com.pulumi.databricks.DatabaseSyncedDatabaseTable;
+ * import com.pulumi.databricks.DatabaseSyncedDatabaseTableArgs;
+ * import com.pulumi.databricks.inputs.DatabaseSyncedDatabaseTableSpecArgs;
+ * import com.pulumi.databricks.inputs.DatabaseSyncedDatabaseTableSpecNewPipelineSpecArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var instance = new DatabaseInstance("instance", DatabaseInstanceArgs.builder()
+ *             .name("my-database-instance")
+ *             .capacity("CU_1")
+ *             .build());
+ * 
+ *         var syncedTable1 = new DatabaseSyncedDatabaseTable("syncedTable1", DatabaseSyncedDatabaseTableArgs.builder()
+ *             .name("my_standard_catalog.public.synced_table1")
+ *             .logicalDatabaseName("databricks_postgres")
+ *             .databaseInstanceName(instance.name())
+ *             .spec(DatabaseSyncedDatabaseTableSpecArgs.builder()
+ *                 .schedulingPolicy("SNAPSHOT")
+ *                 .sourceTableFullName("source_delta.tpch.customer")
+ *                 .primaryKeyColumns("c_custkey")
+ *                 .createDatabaseObjectsIfMissing(true)
+ *                 .newPipelineSpec(DatabaseSyncedDatabaseTableSpecNewPipelineSpecArgs.builder()
+ *                     .storageCatalog("source_delta")
+ *                     .storageSchema("tpch")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var syncedTable2 = new DatabaseSyncedDatabaseTable("syncedTable2", DatabaseSyncedDatabaseTableArgs.builder()
+ *             .name("my_standard_catalog.public.synced_table2")
+ *             .logicalDatabaseName("databricks_postgres")
+ *             .databaseInstanceName(instance.name())
+ *             .spec(DatabaseSyncedDatabaseTableSpecArgs.builder()
+ *                 .schedulingPolicy("SNAPSHOT")
+ *                 .sourceTableFullName("source_delta.tpch.customer")
+ *                 .primaryKeyColumns("c_custkey")
+ *                 .createDatabaseObjectsIfMissing(true)
+ *                 .existingPipelineId(syncedTable1.dataSynchronizationStatus().applyValue(_dataSynchronizationStatus -> _dataSynchronizationStatus.pipelineId()))
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ### Creating a Synced Database Table with a custom Jobs schedule
  * 
@@ -48,6 +202,71 @@ import javax.annotation.Nullable;
  * - A standard catalog named `&#34;myStandardCatalog&#34;`
  * - A schema in the standard catalog named `&#34;default&#34;`
  * - A source delta table named `&#34;source_delta.schema.customer&#34;` with the primary key `&#34;cCustkey&#34;`
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.DatabaseSyncedDatabaseTable;
+ * import com.pulumi.databricks.DatabaseSyncedDatabaseTableArgs;
+ * import com.pulumi.databricks.inputs.DatabaseSyncedDatabaseTableSpecArgs;
+ * import com.pulumi.databricks.inputs.DatabaseSyncedDatabaseTableSpecNewPipelineSpecArgs;
+ * import com.pulumi.databricks.Job;
+ * import com.pulumi.databricks.JobArgs;
+ * import com.pulumi.databricks.inputs.JobTaskArgs;
+ * import com.pulumi.databricks.inputs.JobTaskPipelineTaskArgs;
+ * import com.pulumi.databricks.inputs.JobScheduleArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var syncedTable = new DatabaseSyncedDatabaseTable("syncedTable", DatabaseSyncedDatabaseTableArgs.builder()
+ *             .name("my_standard_catalog.default.my_synced_table")
+ *             .logicalDatabaseName("terraform_test_db")
+ *             .databaseInstanceName("my-database-instance")
+ *             .spec(DatabaseSyncedDatabaseTableSpecArgs.builder()
+ *                 .schedulingPolicy("SNAPSHOT")
+ *                 .sourceTableFullName("source_delta.schema.customer")
+ *                 .primaryKeyColumns("c_custkey")
+ *                 .createDatabaseObjectsIfMissing(true)
+ *                 .newPipelineSpec(DatabaseSyncedDatabaseTableSpecNewPipelineSpecArgs.builder()
+ *                     .storageCatalog("source_delta")
+ *                     .storageSchema("schema")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var syncPipelineScheduleJob = new Job("syncPipelineScheduleJob", JobArgs.builder()
+ *             .name("Synced Pipeline Refresh")
+ *             .description("Job to schedule synced database table pipeline. ")
+ *             .tasks(JobTaskArgs.builder()
+ *                 .taskKey("synced-table-pipeline")
+ *                 .pipelineTask(JobTaskPipelineTaskArgs.builder()
+ *                     .pipelineId(syncedTable.dataSynchronizationStatus().applyValue(_dataSynchronizationStatus -> _dataSynchronizationStatus.pipelineId()))
+ *                     .build())
+ *                 .build())
+ *             .schedule(JobScheduleArgs.builder()
+ *                 .quartzCronExpression("0 0 0 * * ?")
+ *                 .timezoneId("Europe/Helsinki")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 

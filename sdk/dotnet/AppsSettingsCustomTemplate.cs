@@ -53,6 +53,53 @@ namespace Pulumi.Databricks
     /// 
     /// This example defines a template that requests specific workspace resources with permissions granted.
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var resourcesExample = new Databricks.AppsSettingsCustomTemplate("resources_example", new()
+    ///     {
+    ///         Name = "my-resource-template",
+    ///         Description = "Template that requires secret and SQL warehouse access",
+    ///         GitRepo = "https://github.com/example/resource-app.git",
+    ///         Path = "resource-template",
+    ///         GitProvider = "github",
+    ///         Manifest = new Databricks.Inputs.AppsSettingsCustomTemplateManifestArgs
+    ///         {
+    ///             Version = 1,
+    ///             Name = "resource-consuming-app",
+    ///             Description = "This app requires access to a secret and SQL warehouse.",
+    ///             ResourceSpecs = new[]
+    ///             {
+    ///                 new Databricks.Inputs.AppsSettingsCustomTemplateManifestResourceSpecArgs
+    ///                 {
+    ///                     Name = "my-secret",
+    ///                     Description = "A secret needed by the app",
+    ///                     SecretSpec = new Databricks.Inputs.AppsSettingsCustomTemplateManifestResourceSpecSecretSpecArgs
+    ///                     {
+    ///                         Permission = "READ",
+    ///                     },
+    ///                 },
+    ///                 new Databricks.Inputs.AppsSettingsCustomTemplateManifestResourceSpecArgs
+    ///                 {
+    ///                     Name = "warehouse",
+    ///                     Description = "Warehouse access",
+    ///                     SqlWarehouseSpec = new Databricks.Inputs.AppsSettingsCustomTemplateManifestResourceSpecSqlWarehouseSpecArgs
+    ///                     {
+    ///                         Permission = "CAN_USE",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// As of Pulumi v1.5, resources can be imported through configuration.

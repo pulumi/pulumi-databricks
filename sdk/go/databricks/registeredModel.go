@@ -96,7 +96,7 @@ type RegisteredModel struct {
 	Owner pulumi.StringOutput `pulumi:"owner"`
 	// The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*
 	SchemaName pulumi.StringPtrOutput `pulumi:"schemaName"`
-	// The storage location under which model version data files are stored. *Change of this parameter forces recreation of the resource.*
+	// The storage location under which model version data files are stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). *Change of this parameter forces recreation of the resource.*
 	StorageLocation pulumi.StringOutput `pulumi:"storageLocation"`
 	UpdatedAt       pulumi.IntOutput    `pulumi:"updatedAt"`
 	UpdatedBy       pulumi.StringOutput `pulumi:"updatedBy"`
@@ -148,7 +148,7 @@ type registeredModelState struct {
 	Owner *string `pulumi:"owner"`
 	// The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*
 	SchemaName *string `pulumi:"schemaName"`
-	// The storage location under which model version data files are stored. *Change of this parameter forces recreation of the resource.*
+	// The storage location under which model version data files are stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). *Change of this parameter forces recreation of the resource.*
 	StorageLocation *string `pulumi:"storageLocation"`
 	UpdatedAt       *int    `pulumi:"updatedAt"`
 	UpdatedBy       *string `pulumi:"updatedBy"`
@@ -171,7 +171,7 @@ type RegisteredModelState struct {
 	Owner pulumi.StringPtrInput
 	// The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*
 	SchemaName pulumi.StringPtrInput
-	// The storage location under which model version data files are stored. *Change of this parameter forces recreation of the resource.*
+	// The storage location under which model version data files are stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). *Change of this parameter forces recreation of the resource.*
 	StorageLocation pulumi.StringPtrInput
 	UpdatedAt       pulumi.IntPtrInput
 	UpdatedBy       pulumi.StringPtrInput
@@ -198,7 +198,7 @@ type registeredModelArgs struct {
 	Owner *string `pulumi:"owner"`
 	// The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*
 	SchemaName *string `pulumi:"schemaName"`
-	// The storage location under which model version data files are stored. *Change of this parameter forces recreation of the resource.*
+	// The storage location under which model version data files are stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). *Change of this parameter forces recreation of the resource.*
 	StorageLocation *string `pulumi:"storageLocation"`
 	UpdatedAt       *int    `pulumi:"updatedAt"`
 	UpdatedBy       *string `pulumi:"updatedBy"`
@@ -222,7 +222,7 @@ type RegisteredModelArgs struct {
 	Owner pulumi.StringPtrInput
 	// The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*
 	SchemaName pulumi.StringPtrInput
-	// The storage location under which model version data files are stored. *Change of this parameter forces recreation of the resource.*
+	// The storage location under which model version data files are stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). *Change of this parameter forces recreation of the resource.*
 	StorageLocation pulumi.StringPtrInput
 	UpdatedAt       pulumi.IntPtrInput
 	UpdatedBy       pulumi.StringPtrInput
@@ -364,7 +364,7 @@ func (o RegisteredModelOutput) SchemaName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegisteredModel) pulumi.StringPtrOutput { return v.SchemaName }).(pulumi.StringPtrOutput)
 }
 
-// The storage location under which model version data files are stored. *Change of this parameter forces recreation of the resource.*
+// The storage location under which model version data files are stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). *Change of this parameter forces recreation of the resource.*
 func (o RegisteredModelOutput) StorageLocation() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegisteredModel) pulumi.StringOutput { return v.StorageLocation }).(pulumi.StringOutput)
 }

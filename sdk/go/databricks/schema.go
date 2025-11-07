@@ -108,7 +108,7 @@ type Schema struct {
 	Properties pulumi.StringMapOutput `pulumi:"properties"`
 	// The unique identifier of the schema.
 	SchemaId pulumi.StringOutput `pulumi:"schemaId"`
-	// Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
+	// Managed location of the schema. Location in cloud storage where data for managed tables will be stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
 	StorageRoot pulumi.StringPtrOutput `pulumi:"storageRoot"`
 }
 
@@ -162,7 +162,7 @@ type schemaState struct {
 	Properties map[string]string `pulumi:"properties"`
 	// The unique identifier of the schema.
 	SchemaId *string `pulumi:"schemaId"`
-	// Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
+	// Managed location of the schema. Location in cloud storage where data for managed tables will be stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
 	StorageRoot *string `pulumi:"storageRoot"`
 }
 
@@ -184,7 +184,7 @@ type SchemaState struct {
 	Properties pulumi.StringMapInput
 	// The unique identifier of the schema.
 	SchemaId pulumi.StringPtrInput
-	// Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
+	// Managed location of the schema. Location in cloud storage where data for managed tables will be stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
 	StorageRoot pulumi.StringPtrInput
 }
 
@@ -208,7 +208,7 @@ type schemaArgs struct {
 	Owner *string `pulumi:"owner"`
 	// Extensible Schema properties.
 	Properties map[string]string `pulumi:"properties"`
-	// Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
+	// Managed location of the schema. Location in cloud storage where data for managed tables will be stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
 	StorageRoot *string `pulumi:"storageRoot"`
 }
 
@@ -229,7 +229,7 @@ type SchemaArgs struct {
 	Owner pulumi.StringPtrInput
 	// Extensible Schema properties.
 	Properties pulumi.StringMapInput
-	// Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
+	// Managed location of the schema. Location in cloud storage where data for managed tables will be stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
 	StorageRoot pulumi.StringPtrInput
 }
 
@@ -364,7 +364,7 @@ func (o SchemaOutput) SchemaId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Schema) pulumi.StringOutput { return v.SchemaId }).(pulumi.StringOutput)
 }
 
-// Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
+// Managed location of the schema. Location in cloud storage where data for managed tables will be stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
 func (o SchemaOutput) StorageRoot() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Schema) pulumi.StringPtrOutput { return v.StorageRoot }).(pulumi.StringPtrOutput)
 }

@@ -126,6 +126,12 @@ namespace Pulumi.Databricks
         [Input("path", required: true)]
         public string Path { get; set; } = null!;
 
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Inputs.GetNotebookProviderConfigArgs? ProviderConfig { get; set; }
+
         public GetNotebookArgs()
         {
         }
@@ -164,6 +170,12 @@ namespace Pulumi.Databricks
         [Input("path", required: true)]
         public Input<string> Path { get; set; } = null!;
 
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.GetNotebookProviderConfigInputArgs>? ProviderConfig { get; set; }
+
         public GetNotebookInvokeArgs()
         {
         }
@@ -196,6 +208,7 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string ObjectType;
         public readonly string Path;
+        public readonly Outputs.GetNotebookProviderConfigResult? ProviderConfig;
         /// <summary>
         /// path on Workspace File System (WSFS) in form of `/Workspace` + `Path`
         /// </summary>
@@ -217,6 +230,8 @@ namespace Pulumi.Databricks
 
             string path,
 
+            Outputs.GetNotebookProviderConfigResult? providerConfig,
+
             string workspacePath)
         {
             Content = content;
@@ -226,6 +241,7 @@ namespace Pulumi.Databricks
             ObjectId = objectId;
             ObjectType = objectType;
             Path = path;
+            ProviderConfig = providerConfig;
             WorkspacePath = workspacePath;
         }
     }

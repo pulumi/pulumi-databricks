@@ -17,7 +17,58 @@ import (
 //
 // ## Example Usage
 //
-// Retrieve attributes of each SQL warehouses in a workspace
+// # Retrieve attributes of each SQL warehouses in a workspace
+//
+// ### Multiple clusters with the same name
+//
+// When fetching a cluster whose name is not unique (including terminated but not permanently deleted clusters), you must use the `clusterId` argument to uniquely identify the cluster. Combine this data source with `getClusters` to get the `clusterId` of the cluster you want to fetch.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			myCluster, err := databricks.GetClusters(ctx, &databricks.GetClustersArgs{
+//				ClusterNameContains: pulumi.StringRef("my-cluster"),
+//				FilterBy: databricks.GetClustersFilterBy{
+//					ClusterStates: []string{
+//						"RUNNING",
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.LookupCluster(ctx, &databricks.LookupClusterArgs{
+//				ClusterId: pulumi.StringRef(myCluster.Ids[0]),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Related Resources
+//
+// The following resources are often used in the same context:
+//
+// * End to end workspace management guide.
+// * Cluster to create [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
+// * ClusterPolicy to create a Cluster policy, which limits the ability to create clusters based on a set of rules.
+// * InstancePool to manage [instance pools](https://docs.databricks.com/clusters/instance-pools/index.html) to reduce cluster start and auto-scaling times by maintaining a set of idle, ready-to-use instances.
+// * Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code in a databricks_cluster.
+// * Library to install a [library](https://docs.databricks.com/libraries/index.html) on databricks_cluster.
+// * Pipeline to deploy [Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt).
 func LookupCluster(ctx *pulumi.Context, args *LookupClusterArgs, opts ...pulumi.InvokeOption) (*LookupClusterResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupClusterResult

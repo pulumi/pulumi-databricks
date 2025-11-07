@@ -108,43 +108,43 @@ import * as utilities from "./utilities";
  * const _this = databricks.getAwsAssumeRolePolicy({
  *     externalId: databricksAccountId,
  * });
- * const crossAccountRole = new aws.iam.Role("cross_account_role", {
+ * const crossAccountRole = new aws.index.IamRole("cross_account_role", {
  *     name: `${prefix}-crossaccount`,
- *     assumeRolePolicy: _this.then(_this => _this.json),
+ *     assumeRolePolicy: _this.json,
  *     tags: tags,
  * });
  * const thisGetAwsCrossAccountPolicy = databricks.getAwsCrossAccountPolicy({});
- * const thisRolePolicy = new aws.iam.RolePolicy("this", {
+ * const thisIamRolePolicy = new aws.index.IamRolePolicy("this", {
  *     name: `${prefix}-policy`,
  *     role: crossAccountRole.id,
- *     policy: thisGetAwsCrossAccountPolicy.then(thisGetAwsCrossAccountPolicy => thisGetAwsCrossAccountPolicy.json),
+ *     policy: thisGetAwsCrossAccountPolicy.json,
  * });
  * const thisMwsCredentials = new databricks.MwsCredentials("this", {
  *     accountId: databricksAccountId,
  *     credentialsName: `${prefix}-creds`,
  *     roleArn: crossAccountRole.arn,
  * });
- * const rootStorageBucket = new aws.s3.Bucket("root_storage_bucket", {
+ * const rootStorageBucket = new aws.index.S3Bucket("root_storage_bucket", {
  *     bucket: `${prefix}-rootbucket`,
- *     acl: aws.s3.CannedAcl.Private,
+ *     acl: "private",
  *     forceDestroy: true,
  *     tags: tags,
  * });
- * const rootVersioning = new aws.s3.BucketVersioning("root_versioning", {
+ * const rootVersioning = new aws.index.S3BucketVersioning("root_versioning", {
  *     bucket: rootStorageBucket.id,
- *     versioningConfiguration: {
+ *     versioningConfiguration: [{
  *         status: "Disabled",
- *     },
- * });
- * const rootStorageBucketBucketServerSideEncryptionConfiguration = new aws.s3.BucketServerSideEncryptionConfiguration("root_storage_bucket", {
- *     bucket: rootStorageBucket.bucket,
- *     rules: [{
- *         applyServerSideEncryptionByDefault: {
- *             sseAlgorithm: "AES256",
- *         },
  *     }],
  * });
- * const rootStorageBucketBucketPublicAccessBlock = new aws.s3.BucketPublicAccessBlock("root_storage_bucket", {
+ * const rootStorageBucketS3BucketServerSideEncryptionConfiguration = new aws.index.S3BucketServerSideEncryptionConfiguration("root_storage_bucket", {
+ *     bucket: rootStorageBucket.bucket,
+ *     rule: [{
+ *         applyServerSideEncryptionByDefault: [{
+ *             sseAlgorithm: "AES256",
+ *         }],
+ *     }],
+ * });
+ * const rootStorageBucketS3BucketPublicAccessBlock = new aws.index.S3BucketPublicAccessBlock("root_storage_bucket", {
  *     bucket: rootStorageBucket.id,
  *     blockPublicAcls: true,
  *     blockPublicPolicy: true,
@@ -153,14 +153,14 @@ import * as utilities from "./utilities";
  * }, {
  *     dependsOn: [rootStorageBucket],
  * });
- * const thisGetAwsBucketPolicy = databricks.getAwsBucketPolicyOutput({
+ * const thisGetAwsBucketPolicy = databricks.getAwsBucketPolicy({
  *     bucket: rootStorageBucket.bucket,
  * });
- * const rootBucketPolicy = new aws.s3.BucketPolicy("root_bucket_policy", {
+ * const rootBucketPolicy = new aws.index.S3BucketPolicy("root_bucket_policy", {
  *     bucket: rootStorageBucket.id,
- *     policy: thisGetAwsBucketPolicy.apply(thisGetAwsBucketPolicy => thisGetAwsBucketPolicy.json),
+ *     policy: thisGetAwsBucketPolicy.json,
  * }, {
- *     dependsOn: [rootStorageBucketBucketPublicAccessBlock],
+ *     dependsOn: [rootStorageBucketS3BucketPublicAccessBlock],
  * });
  * const thisMwsStorageConfigurations = new databricks.MwsStorageConfigurations("this", {
  *     accountId: databricksAccountId,
@@ -341,7 +341,7 @@ export class MwsWorkspaces extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly gcpWorkspaceSa: pulumi.Output<string>;
     /**
-     * @deprecated gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.96.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.97.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     declare public readonly gkeConfig: pulumi.Output<outputs.MwsWorkspacesGkeConfig | undefined>;
     declare public readonly isNoPublicIpEnabled: pulumi.Output<boolean | undefined>;
@@ -353,6 +353,7 @@ export class MwsWorkspaces extends pulumi.CustomResource {
      * `customerManagedKeyId` from customer managed keys with `useCases` set to `MANAGED_SERVICES`. This is used to encrypt the workspace's notebook and secret data in the control plane.
      */
     declare public readonly managedServicesCustomerManagedKeyId: pulumi.Output<string | undefined>;
+    declare public readonly networkConnectivityConfigId: pulumi.Output<string>;
     /**
      * `networkId` from networks.
      */
@@ -427,6 +428,7 @@ export class MwsWorkspaces extends pulumi.CustomResource {
             resourceInputs["isNoPublicIpEnabled"] = state?.isNoPublicIpEnabled;
             resourceInputs["location"] = state?.location;
             resourceInputs["managedServicesCustomerManagedKeyId"] = state?.managedServicesCustomerManagedKeyId;
+            resourceInputs["networkConnectivityConfigId"] = state?.networkConnectivityConfigId;
             resourceInputs["networkId"] = state?.networkId;
             resourceInputs["pricingTier"] = state?.pricingTier;
             resourceInputs["privateAccessSettingsId"] = state?.privateAccessSettingsId;
@@ -463,6 +465,7 @@ export class MwsWorkspaces extends pulumi.CustomResource {
             resourceInputs["isNoPublicIpEnabled"] = args?.isNoPublicIpEnabled;
             resourceInputs["location"] = args?.location;
             resourceInputs["managedServicesCustomerManagedKeyId"] = args?.managedServicesCustomerManagedKeyId;
+            resourceInputs["networkConnectivityConfigId"] = args?.networkConnectivityConfigId;
             resourceInputs["networkId"] = args?.networkId;
             resourceInputs["pricingTier"] = args?.pricingTier;
             resourceInputs["privateAccessSettingsId"] = args?.privateAccessSettingsId;
@@ -542,7 +545,7 @@ export interface MwsWorkspacesState {
      */
     gcpWorkspaceSa?: pulumi.Input<string>;
     /**
-     * @deprecated gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.96.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.97.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeConfig?: pulumi.Input<inputs.MwsWorkspacesGkeConfig>;
     isNoPublicIpEnabled?: pulumi.Input<boolean>;
@@ -554,6 +557,7 @@ export interface MwsWorkspacesState {
      * `customerManagedKeyId` from customer managed keys with `useCases` set to `MANAGED_SERVICES`. This is used to encrypt the workspace's notebook and secret data in the control plane.
      */
     managedServicesCustomerManagedKeyId?: pulumi.Input<string>;
+    networkConnectivityConfigId?: pulumi.Input<string>;
     /**
      * `networkId` from networks.
      */
@@ -647,7 +651,7 @@ export interface MwsWorkspacesArgs {
     externalCustomerInfo?: pulumi.Input<inputs.MwsWorkspacesExternalCustomerInfo>;
     gcpManagedNetworkConfig?: pulumi.Input<inputs.MwsWorkspacesGcpManagedNetworkConfig>;
     /**
-     * @deprecated gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.96.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.97.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeConfig?: pulumi.Input<inputs.MwsWorkspacesGkeConfig>;
     isNoPublicIpEnabled?: pulumi.Input<boolean>;
@@ -659,6 +663,7 @@ export interface MwsWorkspacesArgs {
      * `customerManagedKeyId` from customer managed keys with `useCases` set to `MANAGED_SERVICES`. This is used to encrypt the workspace's notebook and secret data in the control plane.
      */
     managedServicesCustomerManagedKeyId?: pulumi.Input<string>;
+    networkConnectivityConfigId?: pulumi.Input<string>;
     /**
      * `networkId` from networks.
      */

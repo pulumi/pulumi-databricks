@@ -69,6 +69,121 @@ namespace Pulumi.Databricks
     /// 
     /// For Azure
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var external = new Databricks.StorageCredential("external", new()
+    ///     {
+    ///         Name = extCred.DisplayName,
+    ///         AzureServicePrincipal = new Databricks.Inputs.StorageCredentialAzureServicePrincipalArgs
+    ///         {
+    ///             DirectoryId = tenantId,
+    ///             ApplicationId = extCred.ApplicationId,
+    ///             ClientSecret = extCredAzureadApplicationPassword.Value,
+    ///         },
+    ///         Comment = "Managed by TF",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             @this,
+    ///         },
+    ///     });
+    /// 
+    ///     var some = new Databricks.ExternalLocation("some", new()
+    ///     {
+    ///         Name = "external",
+    ///         Url = Std.Format.Invoke(new()
+    ///         {
+    ///             Input = "abfss://%s@%s.dfs.core.windows.net",
+    ///             Args = new[]
+    ///             {
+    ///                 extStorage.Name,
+    ///                 extStorageAzurermStorageAccount.Name,
+    ///             },
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         CredentialName = external.Id,
+    ///         Comment = "Managed by TF",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             @this,
+    ///         },
+    ///     });
+    /// 
+    ///     var someGrants = new Databricks.Grants("some", new()
+    ///     {
+    ///         ExternalLocation = some.Id,
+    ///         GrantDetails = new[]
+    ///         {
+    ///             new Databricks.Inputs.GrantsGrantArgs
+    ///             {
+    ///                 Principal = "Data Engineers",
+    ///                 Privileges = new[]
+    ///                 {
+    ///                     "CREATE_EXTERNAL_TABLE",
+    ///                     "READ_FILES",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// For GCP
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var ext = new Databricks.StorageCredential("ext", new()
+    ///     {
+    ///         Name = "the-creds",
+    ///         DatabricksGcpServiceAccount = null,
+    ///     });
+    /// 
+    ///     var some = new Databricks.ExternalLocation("some", new()
+    ///     {
+    ///         Name = "the-ext-location",
+    ///         Url = $"gs://{extBucket.Name}",
+    ///         CredentialName = ext.Id,
+    ///         Comment = "Managed by TF",
+    ///     });
+    /// 
+    ///     var someGrants = new Databricks.Grants("some", new()
+    ///     {
+    ///         ExternalLocation = some.Id,
+    ///         GrantDetails = new[]
+    ///         {
+    ///             new Databricks.Inputs.GrantsGrantArgs
+    ///             {
+    ///                 Principal = "Data Engineers",
+    ///                 Privileges = new[]
+    ///                 {
+    ///                     "CREATE_EXTERNAL_TABLE",
+    ///                     "READ_FILES",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// Example `EncryptionDetails` specifying SSE_S3 encryption:
+    /// 
     /// ## Import
     /// 
     /// This resource can be imported by `name`:
@@ -203,7 +318,7 @@ namespace Pulumi.Databricks
         public Output<string> UpdatedBy { get; private set; } = null!;
 
         /// <summary>
-        /// Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
+        /// Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).   If the URL contains special characters, such as space, `&amp;`, etc., they should be percent-encoded (space &gt; `%20`, etc.).
         /// </summary>
         [Output("url")]
         public Output<string> Url { get; private set; } = null!;
@@ -330,7 +445,7 @@ namespace Pulumi.Databricks
         public Input<bool>? SkipValidation { get; set; }
 
         /// <summary>
-        /// Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
+        /// Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).   If the URL contains special characters, such as space, `&amp;`, etc., they should be percent-encoded (space &gt; `%20`, etc.).
         /// </summary>
         [Input("url", required: true)]
         public Input<string> Url { get; set; } = null!;
@@ -452,7 +567,7 @@ namespace Pulumi.Databricks
         public Input<string>? UpdatedBy { get; set; }
 
         /// <summary>
-        /// Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
+        /// Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).   If the URL contains special characters, such as space, `&amp;`, etc., they should be percent-encoded (space &gt; `%20`, etc.).
         /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }

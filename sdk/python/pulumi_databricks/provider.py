@@ -39,6 +39,7 @@ class ProviderArgs:
                  databricks_id_token_filepath: Optional[pulumi.Input[_builtins.str]] = None,
                  debug_headers: Optional[pulumi.Input[_builtins.bool]] = None,
                  debug_truncate_bytes: Optional[pulumi.Input[_builtins.int]] = None,
+                 experimental_is_unified_host: Optional[pulumi.Input[_builtins.bool]] = None,
                  google_credentials: Optional[pulumi.Input[_builtins.str]] = None,
                  google_service_account: Optional[pulumi.Input[_builtins.str]] = None,
                  host: Optional[pulumi.Input[_builtins.str]] = None,
@@ -54,7 +55,8 @@ class ProviderArgs:
                  skip_verify: Optional[pulumi.Input[_builtins.bool]] = None,
                  token: Optional[pulumi.Input[_builtins.str]] = None,
                  username: Optional[pulumi.Input[_builtins.str]] = None,
-                 warehouse_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 warehouse_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Provider resource.
         """
@@ -98,6 +100,8 @@ class ProviderArgs:
             pulumi.set(__self__, "debug_headers", debug_headers)
         if debug_truncate_bytes is not None:
             pulumi.set(__self__, "debug_truncate_bytes", debug_truncate_bytes)
+        if experimental_is_unified_host is not None:
+            pulumi.set(__self__, "experimental_is_unified_host", experimental_is_unified_host)
         if google_credentials is not None:
             pulumi.set(__self__, "google_credentials", google_credentials)
         if google_service_account is not None:
@@ -130,6 +134,8 @@ class ProviderArgs:
             pulumi.set(__self__, "username", username)
         if warehouse_id is not None:
             pulumi.set(__self__, "warehouse_id", warehouse_id)
+        if workspace_id is not None:
+            pulumi.set(__self__, "workspace_id", workspace_id)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
@@ -312,6 +318,15 @@ class ProviderArgs:
         pulumi.set(self, "debug_truncate_bytes", value)
 
     @_builtins.property
+    @pulumi.getter(name="experimentalIsUnifiedHost")
+    def experimental_is_unified_host(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        return pulumi.get(self, "experimental_is_unified_host")
+
+    @experimental_is_unified_host.setter
+    def experimental_is_unified_host(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "experimental_is_unified_host", value)
+
+    @_builtins.property
     @pulumi.getter(name="googleCredentials")
     def google_credentials(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "google_credentials")
@@ -455,6 +470,15 @@ class ProviderArgs:
     def warehouse_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "warehouse_id", value)
 
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "workspace_id", value)
+
 
 @pulumi.type_token("pulumi:providers:databricks")
 class Provider(pulumi.ProviderResource):
@@ -482,6 +506,7 @@ class Provider(pulumi.ProviderResource):
                  databricks_id_token_filepath: Optional[pulumi.Input[_builtins.str]] = None,
                  debug_headers: Optional[pulumi.Input[_builtins.bool]] = None,
                  debug_truncate_bytes: Optional[pulumi.Input[_builtins.int]] = None,
+                 experimental_is_unified_host: Optional[pulumi.Input[_builtins.bool]] = None,
                  google_credentials: Optional[pulumi.Input[_builtins.str]] = None,
                  google_service_account: Optional[pulumi.Input[_builtins.str]] = None,
                  host: Optional[pulumi.Input[_builtins.str]] = None,
@@ -498,6 +523,7 @@ class Provider(pulumi.ProviderResource):
                  token: Optional[pulumi.Input[_builtins.str]] = None,
                  username: Optional[pulumi.Input[_builtins.str]] = None,
                  warehouse_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
         The provider type for the databricks package. By default, resources use package-wide configuration
@@ -555,6 +581,7 @@ class Provider(pulumi.ProviderResource):
                  databricks_id_token_filepath: Optional[pulumi.Input[_builtins.str]] = None,
                  debug_headers: Optional[pulumi.Input[_builtins.bool]] = None,
                  debug_truncate_bytes: Optional[pulumi.Input[_builtins.int]] = None,
+                 experimental_is_unified_host: Optional[pulumi.Input[_builtins.bool]] = None,
                  google_credentials: Optional[pulumi.Input[_builtins.str]] = None,
                  google_service_account: Optional[pulumi.Input[_builtins.str]] = None,
                  host: Optional[pulumi.Input[_builtins.str]] = None,
@@ -571,6 +598,7 @@ class Provider(pulumi.ProviderResource):
                  token: Optional[pulumi.Input[_builtins.str]] = None,
                  username: Optional[pulumi.Input[_builtins.str]] = None,
                  warehouse_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -600,6 +628,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["databricks_id_token_filepath"] = databricks_id_token_filepath
             __props__.__dict__["debug_headers"] = pulumi.Output.from_input(debug_headers).apply(pulumi.runtime.to_json) if debug_headers is not None else None
             __props__.__dict__["debug_truncate_bytes"] = pulumi.Output.from_input(debug_truncate_bytes).apply(pulumi.runtime.to_json) if debug_truncate_bytes is not None else None
+            __props__.__dict__["experimental_is_unified_host"] = pulumi.Output.from_input(experimental_is_unified_host).apply(pulumi.runtime.to_json) if experimental_is_unified_host is not None else None
             __props__.__dict__["google_credentials"] = None if google_credentials is None else pulumi.Output.secret(google_credentials)
             __props__.__dict__["google_service_account"] = google_service_account
             __props__.__dict__["host"] = host
@@ -616,6 +645,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["token"] = None if token is None else pulumi.Output.secret(token)
             __props__.__dict__["username"] = username
             __props__.__dict__["warehouse_id"] = warehouse_id
+            __props__.__dict__["workspace_id"] = workspace_id
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["azureClientSecret", "clientSecret", "googleCredentials", "metadataServiceUrl", "password", "token"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Provider, __self__).__init__(
@@ -763,6 +793,11 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="warehouseId")
     def warehouse_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         return pulumi.get(self, "warehouse_id")
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+        return pulumi.get(self, "workspace_id")
 
     @pulumi.output_type
     class TerraformConfigResult:

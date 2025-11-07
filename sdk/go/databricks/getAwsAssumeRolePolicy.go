@@ -26,7 +26,7 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/iam"
+//	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws"
 //	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
@@ -42,9 +42,9 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			crossAccountPolicy, err := iam.NewPolicy(ctx, "cross_account_policy", &iam.PolicyArgs{
-//				Name:   pulumi.Sprintf("%v-crossaccount-iam-policy", prefix),
-//				Policy: pulumi.String(this.Json),
+//			crossAccountPolicy, err := aws.NewIamPolicy(ctx, "cross_account_policy", &aws.IamPolicyArgs{
+//				Name:   fmt.Sprintf("%v-crossaccount-iam-policy", prefix),
+//				Policy: this.Json,
 //			})
 //			if err != nil {
 //				return err
@@ -55,15 +55,15 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			crossAccount, err := iam.NewRole(ctx, "cross_account", &iam.RoleArgs{
-//				Name:             pulumi.Sprintf("%v-crossaccount-iam-role", prefix),
-//				AssumeRolePolicy: pulumi.String(thisGetAwsAssumeRolePolicy.Json),
-//				Description:      pulumi.String("Grants Databricks full access to VPC resources"),
+//			crossAccount, err := aws.NewIamRole(ctx, "cross_account", &aws.IamRoleArgs{
+//				Name:             fmt.Sprintf("%v-crossaccount-iam-role", prefix),
+//				AssumeRolePolicy: thisGetAwsAssumeRolePolicy.Json,
+//				Description:      "Grants Databricks full access to VPC resources",
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = iam.NewRolePolicyAttachment(ctx, "cross_account", &iam.RolePolicyAttachmentArgs{
+//			_, err = aws.NewIamRolePolicyAttachment(ctx, "cross_account", &aws.IamRolePolicyAttachmentArgs{
 //				PolicyArn: crossAccountPolicy.Arn,
 //				Role:      crossAccount.Name,
 //			})

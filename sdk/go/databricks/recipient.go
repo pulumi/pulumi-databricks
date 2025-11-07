@@ -71,6 +71,74 @@ import (
 //
 // ```
 //
+// ### Databricks to Databricks Sharing
+//
+// Setting `authenticationType` type to `DATABRICKS` allows you to automatically create a provider for a recipient who
+// is using Databricks. To do this they would need to provide the global metastore id that you will be sharing with. The
+// global metastore id follows the format: `<cloud>:<region>:<guid>`
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			current, err := databricks.GetCurrentUser(ctx, map[string]interface{}{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			invokeFormat, err := std.Format(ctx, &std.FormatArgs{
+//				Input: "abfss://%s@%s.dfs.core.windows.net/",
+//				Args: []interface{}{
+//					unityCatalog.Name,
+//					unityCatalogAzurermStorageAccount.Name,
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			recipientMetastore, err := databricks.NewMetastore(ctx, "recipient_metastore", &databricks.MetastoreArgs{
+//				Name:              pulumi.String("recipient"),
+//				StorageRoot:       pulumi.String(invokeFormat.Result),
+//				DeltaSharingScope: pulumi.String("INTERNAL"),
+//				DeltaSharingRecipientTokenLifetimeInSeconds: pulumi.Int(60000000),
+//				ForceDestroy: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewRecipient(ctx, "db2db", &databricks.RecipientArgs{
+//				Name:                           pulumi.Sprintf("%v-recipient", current.Alphanumeric),
+//				Comment:                        pulumi.String("Made by Pulumi"),
+//				AuthenticationType:             pulumi.String("DATABRICKS"),
+//				DataRecipientGlobalMetastoreId: recipientMetastore.GlobalMetastoreId,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Related Resources
+//
+// The following resources are often used in the same context:
+//
+// * Share to create Delta Sharing shares.
+// * Grants to manage Delta Sharing permissions.
+// * getShares to read existing Delta Sharing shares.
+//
 // ## Import
 //
 // The recipient resource can be imported using the name of the recipient:

@@ -241,6 +241,12 @@ namespace Pulumi.Databricks
         public Output<string> PrincipalId { get; private set; } = null!;
 
         /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Output("providerConfig")]
+        public Output<Outputs.PermissionAssignmentProviderConfig?> ProviderConfig { get; private set; } = null!;
+
+        /// <summary>
         /// the application ID of service principal to assign to a workspace.
         /// </summary>
         [Output("servicePrincipalName")]
@@ -325,6 +331,12 @@ namespace Pulumi.Databricks
         public Input<string>? PrincipalId { get; set; }
 
         /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.PermissionAssignmentProviderConfigArgs>? ProviderConfig { get; set; }
+
+        /// <summary>
         /// the application ID of service principal to assign to a workspace.
         /// </summary>
         [Input("servicePrincipalName")]
@@ -375,6 +387,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("principalId")]
         public Input<string>? PrincipalId { get; set; }
+
+        /// <summary>
+        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// </summary>
+        [Input("providerConfig")]
+        public Input<Inputs.PermissionAssignmentProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         /// <summary>
         /// the application ID of service principal to assign to a workspace.

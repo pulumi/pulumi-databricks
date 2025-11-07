@@ -43,6 +43,47 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
+ * ### Databricks to Databricks Sharing
+ *
+ * Setting `authenticationType` type to `DATABRICKS` allows you to automatically create a provider for a recipient who
+ * is using Databricks. To do this they would need to provide the global metastore id that you will be sharing with. The
+ * global metastore id follows the format: `<cloud>:<region>:<guid>`
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ * import * as std from "@pulumi/std";
+ *
+ * const current = databricks.getCurrentUser({});
+ * const recipientMetastore = new databricks.Metastore("recipient_metastore", {
+ *     name: "recipient",
+ *     storageRoot: std.format({
+ *         input: "abfss://%s@%s.dfs.core.windows.net/",
+ *         args: [
+ *             unityCatalog.name,
+ *             unityCatalogAzurermStorageAccount.name,
+ *         ],
+ *     }).then(invoke => invoke.result),
+ *     deltaSharingScope: "INTERNAL",
+ *     deltaSharingRecipientTokenLifetimeInSeconds: 60000000,
+ *     forceDestroy: true,
+ * });
+ * const db2db = new databricks.Recipient("db2db", {
+ *     name: current.then(current => `${current.alphanumeric}-recipient`),
+ *     comment: "Made by Pulumi",
+ *     authenticationType: "DATABRICKS",
+ *     dataRecipientGlobalMetastoreId: recipientMetastore.globalMetastoreId,
+ * });
+ * ```
+ *
+ * ## Related Resources
+ *
+ * The following resources are often used in the same context:
+ *
+ * * databricks.Share to create Delta Sharing shares.
+ * * databricks.Grants to manage Delta Sharing permissions.
+ * * databricks.getShares to read existing Delta Sharing shares.
+ *
  * ## Import
  *
  * The recipient resource can be imported using the name of the recipient:

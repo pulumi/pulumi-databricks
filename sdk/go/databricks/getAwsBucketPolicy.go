@@ -22,7 +22,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/s3"
+//	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws"
 //	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -30,21 +30,22 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			thisBucket, err := s3.NewBucket(ctx, "this", &s3.BucketArgs{
-//				Bucket:       pulumi.String("<unique_bucket_name>"),
-//				ForceDestroy: pulumi.Bool(true),
+//			thisS3Bucket, err := aws.NewS3Bucket(ctx, "this", &aws.S3BucketArgs{
+//				Bucket:       "<unique_bucket_name>",
+//				ForceDestroy: true,
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			this := databricks.GetAwsBucketPolicyOutput(ctx, databricks.GetAwsBucketPolicyOutputArgs{
-//				Bucket: thisBucket.Bucket,
+//			this, err := databricks.GetAwsBucketPolicy(ctx, &databricks.GetAwsBucketPolicyArgs{
+//				Bucket: thisS3Bucket.Bucket,
 //			}, nil)
-//			_, err = s3.NewBucketPolicy(ctx, "this", &s3.BucketPolicyArgs{
-//				Bucket: thisBucket.ID(),
-//				Policy: pulumi.String(this.ApplyT(func(this databricks.GetAwsBucketPolicyResult) (*string, error) {
-//					return &this.Json, nil
-//				}).(pulumi.StringPtrOutput)),
+//			if err != nil {
+//				return err
+//			}
+//			_, err = aws.NewS3BucketPolicy(ctx, "this", &aws.S3BucketPolicyArgs{
+//				Bucket: thisS3Bucket.Id,
+//				Policy: this.Json,
 //			})
 //			if err != nil {
 //				return err

@@ -18,6 +18,151 @@ import (
 //
 // You cannot delete a log delivery configuration, but you can disable it when you no longer need it. This fact is important because there is a limit to the number of enabled log delivery configurations that you can create for an account. You can create a maximum of two enabled configurations that use the account level (no workspace filter) and two enabled configurations for every specific workspace (a workspaceId can occur in the workspace filter for two configurations). You can re-enable a disabled configuration, but the request fails if it violates the limits previously described.
 //
+// ## Example Usage
+//
+// End-to-end example of usage and audit log delivery:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws"
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//	"github.com/pulumiverse/pulumi-time/sdk/go/time"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			// Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
+//			databricksAccountId := cfg.RequireObject("databricksAccountId")
+//			logdeliveryS3Bucket, err := aws.NewS3Bucket(ctx, "logdelivery", &aws.S3BucketArgs{
+//				Bucket:       fmt.Sprintf("%v-logdelivery", prefix),
+//				Acl:          "private",
+//				ForceDestroy: true,
+//				Tags: std.Merge(ctx, &std.MergeArgs{
+//					Input: []interface{}{
+//						tags,
+//						map[string]interface{}{
+//							"name": fmt.Sprintf("%v-logdelivery", prefix),
+//						},
+//					},
+//				}, nil).Result,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = aws.NewS3BucketPublicAccessBlock(ctx, "logdelivery", &aws.S3BucketPublicAccessBlockArgs{
+//				Bucket:           logdeliveryS3Bucket.Id,
+//				IgnorePublicAcls: true,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			logdelivery, err := databricks.GetAwsAssumeRolePolicy(ctx, &databricks.GetAwsAssumeRolePolicyArgs{
+//				ExternalId:     databricksAccountId,
+//				ForLogDelivery: pulumi.BoolRef(true),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = aws.NewS3BucketVersioning(ctx, "logdelivery_versioning", &aws.S3BucketVersioningArgs{
+//				Bucket: logdeliveryS3Bucket.Id,
+//				VersioningConfiguration: []map[string]interface{}{
+//					map[string]interface{}{
+//						"status": "Disabled",
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			logdeliveryIamRole, err := aws.NewIamRole(ctx, "logdelivery", &aws.IamRoleArgs{
+//				Name:             fmt.Sprintf("%v-logdelivery", prefix),
+//				Description:      fmt.Sprintf("(%v) UsageDelivery role", prefix),
+//				AssumeRolePolicy: logdelivery.Json,
+//				Tags:             tags,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			logdeliveryGetAwsBucketPolicy, err := databricks.GetAwsBucketPolicy(ctx, &databricks.GetAwsBucketPolicyArgs{
+//				FullAccessRole: pulumi.StringRef(logdeliveryIamRole.Arn),
+//				Bucket:         logdeliveryS3Bucket.Bucket,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = aws.NewS3BucketPolicy(ctx, "logdelivery", &aws.S3BucketPolicyArgs{
+//				Bucket: logdeliveryS3Bucket.Id,
+//				Policy: logdeliveryGetAwsBucketPolicy.Json,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			wait, err := time.NewSleep(ctx, "wait", &time.SleepArgs{
+//				CreateDuration: pulumi.String("10s"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				logdeliveryIamRole,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			logWriter, err := databricks.NewMwsCredentials(ctx, "log_writer", &databricks.MwsCredentialsArgs{
+//				AccountId:       pulumi.Any(databricksAccountId),
+//				CredentialsName: pulumi.String("Usage Delivery"),
+//				RoleArn:         logdeliveryIamRole.Arn,
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				wait,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			logBucket, err := databricks.NewMwsStorageConfigurations(ctx, "log_bucket", &databricks.MwsStorageConfigurationsArgs{
+//				AccountId:                pulumi.Any(databricksAccountId),
+//				StorageConfigurationName: pulumi.String("Usage Logs"),
+//				BucketName:               logdeliveryS3Bucket.Bucket,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewMwsLogDelivery(ctx, "usage_logs", &databricks.MwsLogDeliveryArgs{
+//				AccountId:              pulumi.Any(databricksAccountId),
+//				CredentialsId:          logWriter.CredentialsId,
+//				StorageConfigurationId: logBucket.StorageConfigurationId,
+//				DeliveryPathPrefix:     pulumi.String("billable-usage"),
+//				ConfigName:             pulumi.String("Usage Logs"),
+//				LogType:                pulumi.String("BILLABLE_USAGE"),
+//				OutputFormat:           pulumi.String("CSV"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewMwsLogDelivery(ctx, "audit_logs", &databricks.MwsLogDeliveryArgs{
+//				AccountId:              pulumi.Any(databricksAccountId),
+//				CredentialsId:          logWriter.CredentialsId,
+//				StorageConfigurationId: logBucket.StorageConfigurationId,
+//				DeliveryPathPrefix:     pulumi.String("audit-logs"),
+//				ConfigName:             pulumi.String("Audit Logs"),
+//				LogType:                pulumi.String("AUDIT_LOGS"),
+//				OutputFormat:           pulumi.String("JSON"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Billable Usage
 //
 // CSV files are delivered to `<delivery_path_prefix>/billable-usage/csv/` and are named `workspaceId=<workspace-id>-usageMonth=<month>.csv`, which are delivered daily by overwriting the month's CSV file for each workspace. Format of CSV file, as well as some usage examples, can be found [here](https://docs.databricks.com/administration-guide/account-settings/usage.html#download-usage-as-a-csv-file).

@@ -38,6 +38,34 @@ import * as utilities from "./utilities";
  *
  * For Azure using managed identity as credential (recommended)
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ * import * as std from "@pulumi/std";
+ *
+ * const _this = new databricks.Metastore("this", {
+ *     name: "primary",
+ *     storageRoot: std.format({
+ *         input: "abfss://%s@%s.dfs.core.windows.net/",
+ *         args: [
+ *             unityCatalog.name,
+ *             unityCatalogAzurermStorageAccount.name,
+ *         ],
+ *     }).then(invoke => invoke.result),
+ *     owner: "uc admins",
+ *     region: "eastus",
+ *     forceDestroy: true,
+ * });
+ * const thisMetastoreDataAccess = new databricks.MetastoreDataAccess("this", {
+ *     metastoreId: _this.id,
+ *     name: "mi_dac",
+ *     azureManagedIdentity: {
+ *         accessConnectorId: accessConnectorId,
+ *     },
+ *     isDefault: true,
+ * });
+ * ```
+ *
  * ## Import
  *
  * This resource can be imported by combination of metastore id and the data access name.

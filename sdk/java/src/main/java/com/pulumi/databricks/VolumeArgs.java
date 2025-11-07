@@ -92,14 +92,14 @@ public final class VolumeArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Path inside an External Location. Only used for `EXTERNAL` Volumes. Change forces creation of a new resource.
+     * URL for the volume (should be inside of an existing External Location). Only used for `EXTERNAL` Volumes.  If the URL contains special characters, such as space, `&amp;`, etc., they should be percent-encoded (space &gt; `%20`, etc.). Change forces creation of a new resource.
      * 
      */
     @Import(name="storageLocation")
     private @Nullable Output<String> storageLocation;
 
     /**
-     * @return Path inside an External Location. Only used for `EXTERNAL` Volumes. Change forces creation of a new resource.
+     * @return URL for the volume (should be inside of an existing External Location). Only used for `EXTERNAL` Volumes.  If the URL contains special characters, such as space, `&amp;`, etc., they should be percent-encoded (space &gt; `%20`, etc.). Change forces creation of a new resource.
      * 
      */
     public Optional<Output<String>> storageLocation() {
@@ -257,7 +257,7 @@ public final class VolumeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param storageLocation Path inside an External Location. Only used for `EXTERNAL` Volumes. Change forces creation of a new resource.
+         * @param storageLocation URL for the volume (should be inside of an existing External Location). Only used for `EXTERNAL` Volumes.  If the URL contains special characters, such as space, `&amp;`, etc., they should be percent-encoded (space &gt; `%20`, etc.). Change forces creation of a new resource.
          * 
          * @return builder
          * 
@@ -268,7 +268,7 @@ public final class VolumeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param storageLocation Path inside an External Location. Only used for `EXTERNAL` Volumes. Change forces creation of a new resource.
+         * @param storageLocation URL for the volume (should be inside of an existing External Location). Only used for `EXTERNAL` Volumes.  If the URL contains special characters, such as space, `&amp;`, etc., they should be percent-encoded (space &gt; `%20`, etc.). Change forces creation of a new resource.
          * 
          * @return builder
          * 

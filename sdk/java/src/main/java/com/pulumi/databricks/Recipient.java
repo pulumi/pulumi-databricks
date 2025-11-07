@@ -43,8 +43,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.random.password;
- * import com.pulumi.random.passwordArgs;
+ * import com.pulumi.random.Password;
+ * import com.pulumi.random.PasswordArgs;
  * import com.pulumi.databricks.DatabricksFunctions;
  * import com.pulumi.databricks.Recipient;
  * import com.pulumi.databricks.RecipientArgs;
@@ -83,6 +83,74 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
+ * ### Databricks to Databricks Sharing
+ * 
+ * Setting `authenticationType` type to `DATABRICKS` allows you to automatically create a provider for a recipient who
+ * is using Databricks. To do this they would need to provide the global metastore id that you will be sharing with. The
+ * global metastore id follows the format: `&lt;cloud&gt;:&lt;region&gt;:&lt;guid&gt;`
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.DatabricksFunctions;
+ * import com.pulumi.databricks.Metastore;
+ * import com.pulumi.databricks.MetastoreArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.FormatArgs;
+ * import com.pulumi.databricks.Recipient;
+ * import com.pulumi.databricks.RecipientArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         final var current = DatabricksFunctions.getCurrentUser(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+ * 
+ *         var recipientMetastore = new Metastore("recipientMetastore", MetastoreArgs.builder()
+ *             .name("recipient")
+ *             .storageRoot(StdFunctions.format(FormatArgs.builder()
+ *                 .input("abfss://%s}{@literal @}{@code %s.dfs.core.windows.net/")
+ *                 .args(                
+ *                     unityCatalog.name(),
+ *                     unityCatalogAzurermStorageAccount.name())
+ *                 .build()).result())
+ *             .deltaSharingScope("INTERNAL")
+ *             .deltaSharingRecipientTokenLifetimeInSeconds(60000000)
+ *             .forceDestroy(true)
+ *             .build());
+ * 
+ *         var db2db = new Recipient("db2db", RecipientArgs.builder()
+ *             .name(String.format("%s-recipient", current.alphanumeric()))
+ *             .comment("Made by Pulumi")
+ *             .authenticationType("DATABRICKS")
+ *             .dataRecipientGlobalMetastoreId(recipientMetastore.globalMetastoreId())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
+ * ## Related Resources
+ * 
+ * The following resources are often used in the same context:
+ * 
+ * * databricks.Share to create Delta Sharing shares.
+ * * databricks.Grants to manage Delta Sharing permissions.
+ * * databricks.getShares to read existing Delta Sharing shares.
  * 
  * ## Import
  * 

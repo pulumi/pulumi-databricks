@@ -45,7 +45,7 @@ class MetastoreArgs:
         :param pulumi.Input[_builtins.str] name: Name of metastore.
         :param pulumi.Input[_builtins.str] owner: Username/groupname/sp application_id of the metastore owner.
         :param pulumi.Input[_builtins.str] region: The region of the metastore
-        :param pulumi.Input[_builtins.str] storage_root: Path on cloud storage account, where managed `Table` are stored. Change forces creation of a new resource. If no `storage_root` is defined for the metastore, each catalog must have a `storage_root` defined.
+        :param pulumi.Input[_builtins.str] storage_root: Path on cloud storage account, where managed `Table` are stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). Change forces creation of a new resource. If no `storage_root` is defined for the metastore, each catalog must have a `storage_root` defined.
         """
         if cloud is not None:
             pulumi.set(__self__, "cloud", cloud)
@@ -224,7 +224,7 @@ class MetastoreArgs:
     @pulumi.getter(name="storageRoot")
     def storage_root(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Path on cloud storage account, where managed `Table` are stored. Change forces creation of a new resource. If no `storage_root` is defined for the metastore, each catalog must have a `storage_root` defined.
+        Path on cloud storage account, where managed `Table` are stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). Change forces creation of a new resource. If no `storage_root` is defined for the metastore, each catalog must have a `storage_root` defined.
         """
         return pulumi.get(self, "storage_root")
 
@@ -289,7 +289,7 @@ class _MetastoreState:
         :param pulumi.Input[_builtins.str] name: Name of metastore.
         :param pulumi.Input[_builtins.str] owner: Username/groupname/sp application_id of the metastore owner.
         :param pulumi.Input[_builtins.str] region: The region of the metastore
-        :param pulumi.Input[_builtins.str] storage_root: Path on cloud storage account, where managed `Table` are stored. Change forces creation of a new resource. If no `storage_root` is defined for the metastore, each catalog must have a `storage_root` defined.
+        :param pulumi.Input[_builtins.str] storage_root: Path on cloud storage account, where managed `Table` are stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). Change forces creation of a new resource. If no `storage_root` is defined for the metastore, each catalog must have a `storage_root` defined.
         """
         if cloud is not None:
             pulumi.set(__self__, "cloud", cloud)
@@ -468,7 +468,7 @@ class _MetastoreState:
     @pulumi.getter(name="storageRoot")
     def storage_root(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Path on cloud storage account, where managed `Table` are stored. Change forces creation of a new resource. If no `storage_root` is defined for the metastore, each catalog must have a `storage_root` defined.
+        Path on cloud storage account, where managed `Table` are stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). Change forces creation of a new resource. If no `storage_root` is defined for the metastore, each catalog must have a `storage_root` defined.
         """
         return pulumi.get(self, "storage_root")
 
@@ -558,6 +558,43 @@ class Metastore(pulumi.CustomResource):
 
         For Azure
 
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+        import pulumi_std as std
+
+        this = databricks.Metastore("this",
+            name="primary",
+            storage_root=std.format(input="abfss://%s@%s.dfs.core.windows.net/",
+                args=[
+                    unity_catalog["name"],
+                    unity_catalog_azurerm_storage_account["name"],
+                ]).result,
+            owner="uc admins",
+            region="eastus",
+            force_destroy=True)
+        this_metastore_assignment = databricks.MetastoreAssignment("this",
+            metastore_id=this.id,
+            workspace_id=workspace_id)
+        ```
+
+        For GCP
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        this = databricks.Metastore("this",
+            name="primary",
+            storage_root=f"gs://{unity_metastore['name']}",
+            owner="uc admins",
+            region=us_east1,
+            force_destroy=True)
+        this_metastore_assignment = databricks.MetastoreAssignment("this",
+            metastore_id=this.id,
+            workspace_id=workspace_id)
+        ```
+
         ## Import
 
         This resource can be imported by ID:
@@ -589,7 +626,7 @@ class Metastore(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Name of metastore.
         :param pulumi.Input[_builtins.str] owner: Username/groupname/sp application_id of the metastore owner.
         :param pulumi.Input[_builtins.str] region: The region of the metastore
-        :param pulumi.Input[_builtins.str] storage_root: Path on cloud storage account, where managed `Table` are stored. Change forces creation of a new resource. If no `storage_root` is defined for the metastore, each catalog must have a `storage_root` defined.
+        :param pulumi.Input[_builtins.str] storage_root: Path on cloud storage account, where managed `Table` are stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). Change forces creation of a new resource. If no `storage_root` is defined for the metastore, each catalog must have a `storage_root` defined.
         """
         ...
     @overload
@@ -626,6 +663,43 @@ class Metastore(pulumi.CustomResource):
         ```
 
         For Azure
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+        import pulumi_std as std
+
+        this = databricks.Metastore("this",
+            name="primary",
+            storage_root=std.format(input="abfss://%s@%s.dfs.core.windows.net/",
+                args=[
+                    unity_catalog["name"],
+                    unity_catalog_azurerm_storage_account["name"],
+                ]).result,
+            owner="uc admins",
+            region="eastus",
+            force_destroy=True)
+        this_metastore_assignment = databricks.MetastoreAssignment("this",
+            metastore_id=this.id,
+            workspace_id=workspace_id)
+        ```
+
+        For GCP
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        this = databricks.Metastore("this",
+            name="primary",
+            storage_root=f"gs://{unity_metastore['name']}",
+            owner="uc admins",
+            region=us_east1,
+            force_destroy=True)
+        this_metastore_assignment = databricks.MetastoreAssignment("this",
+            metastore_id=this.id,
+            workspace_id=workspace_id)
+        ```
 
         ## Import
 
@@ -748,7 +822,7 @@ class Metastore(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Name of metastore.
         :param pulumi.Input[_builtins.str] owner: Username/groupname/sp application_id of the metastore owner.
         :param pulumi.Input[_builtins.str] region: The region of the metastore
-        :param pulumi.Input[_builtins.str] storage_root: Path on cloud storage account, where managed `Table` are stored. Change forces creation of a new resource. If no `storage_root` is defined for the metastore, each catalog must have a `storage_root` defined.
+        :param pulumi.Input[_builtins.str] storage_root: Path on cloud storage account, where managed `Table` are stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). Change forces creation of a new resource. If no `storage_root` is defined for the metastore, each catalog must have a `storage_root` defined.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -863,7 +937,7 @@ class Metastore(pulumi.CustomResource):
     @pulumi.getter(name="storageRoot")
     def storage_root(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Path on cloud storage account, where managed `Table` are stored. Change forces creation of a new resource. If no `storage_root` is defined for the metastore, each catalog must have a `storage_root` defined.
+        Path on cloud storage account, where managed `Table` are stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). Change forces creation of a new resource. If no `storage_root` is defined for the metastore, each catalog must have a `storage_root` defined.
         """
         return pulumi.get(self, "storage_root")
 

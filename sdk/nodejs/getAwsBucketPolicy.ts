@@ -16,16 +16,16 @@ import * as utilities from "./utilities";
  * import * as aws from "@pulumi/aws";
  * import * as databricks from "@pulumi/databricks";
  *
- * const thisBucket = new aws.s3.Bucket("this", {
+ * const thisS3Bucket = new aws.index.S3Bucket("this", {
  *     bucket: "<unique_bucket_name>",
  *     forceDestroy: true,
  * });
- * const _this = databricks.getAwsBucketPolicyOutput({
- *     bucket: thisBucket.bucket,
+ * const _this = databricks.getAwsBucketPolicy({
+ *     bucket: thisS3Bucket.bucket,
  * });
- * const thisBucketPolicy = new aws.s3.BucketPolicy("this", {
- *     bucket: thisBucket.id,
- *     policy: _this.apply(_this => _this.json),
+ * const thisS3BucketPolicy = new aws.index.S3BucketPolicy("this", {
+ *     bucket: thisS3Bucket.id,
+ *     policy: _this.json,
  * });
  * ```
  *
@@ -101,16 +101,16 @@ export interface GetAwsBucketPolicyResult {
  * import * as aws from "@pulumi/aws";
  * import * as databricks from "@pulumi/databricks";
  *
- * const thisBucket = new aws.s3.Bucket("this", {
+ * const thisS3Bucket = new aws.index.S3Bucket("this", {
  *     bucket: "<unique_bucket_name>",
  *     forceDestroy: true,
  * });
- * const _this = databricks.getAwsBucketPolicyOutput({
- *     bucket: thisBucket.bucket,
+ * const _this = databricks.getAwsBucketPolicy({
+ *     bucket: thisS3Bucket.bucket,
  * });
- * const thisBucketPolicy = new aws.s3.BucketPolicy("this", {
- *     bucket: thisBucket.id,
- *     policy: _this.apply(_this => _this.json),
+ * const thisS3BucketPolicy = new aws.index.S3BucketPolicy("this", {
+ *     bucket: thisS3Bucket.id,
+ *     policy: _this.json,
  * });
  * ```
  *

@@ -114,7 +114,7 @@ export class RegisteredModel extends pulumi.CustomResource {
      */
     declare public readonly schemaName: pulumi.Output<string | undefined>;
     /**
-     * The storage location under which model version data files are stored. *Change of this parameter forces recreation of the resource.*
+     * The storage location under which model version data files are stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). *Change of this parameter forces recreation of the resource.*
      */
     declare public readonly storageLocation: pulumi.Output<string>;
     declare public readonly updatedAt: pulumi.Output<number>;
@@ -200,7 +200,7 @@ export interface RegisteredModelState {
      */
     schemaName?: pulumi.Input<string>;
     /**
-     * The storage location under which model version data files are stored. *Change of this parameter forces recreation of the resource.*
+     * The storage location under which model version data files are stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). *Change of this parameter forces recreation of the resource.*
      */
     storageLocation?: pulumi.Input<string>;
     updatedAt?: pulumi.Input<number>;
@@ -238,7 +238,7 @@ export interface RegisteredModelArgs {
      */
     schemaName?: pulumi.Input<string>;
     /**
-     * The storage location under which model version data files are stored. *Change of this parameter forces recreation of the resource.*
+     * The storage location under which model version data files are stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). *Change of this parameter forces recreation of the resource.*
      */
     storageLocation?: pulumi.Input<string>;
     updatedAt?: pulumi.Input<number>;

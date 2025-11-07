@@ -42,6 +42,40 @@ import * as utilities from "./utilities";
  *
  * This example defines a template that requests specific workspace resources with permissions granted.
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const resourcesExample = new databricks.AppsSettingsCustomTemplate("resources_example", {
+ *     name: "my-resource-template",
+ *     description: "Template that requires secret and SQL warehouse access",
+ *     gitRepo: "https://github.com/example/resource-app.git",
+ *     path: "resource-template",
+ *     gitProvider: "github",
+ *     manifest: {
+ *         version: 1,
+ *         name: "resource-consuming-app",
+ *         description: "This app requires access to a secret and SQL warehouse.",
+ *         resourceSpecs: [
+ *             {
+ *                 name: "my-secret",
+ *                 description: "A secret needed by the app",
+ *                 secretSpec: {
+ *                     permission: "READ",
+ *                 },
+ *             },
+ *             {
+ *                 name: "warehouse",
+ *                 description: "Warehouse access",
+ *                 sqlWarehouseSpec: {
+ *                     permission: "CAN_USE",
+ *                 },
+ *             },
+ *         ],
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * As of Pulumi v1.5, resources can be imported through configuration.

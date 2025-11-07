@@ -137,14 +137,14 @@ public final class RegisteredModelArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The storage location under which model version data files are stored. *Change of this parameter forces recreation of the resource.*
+     * The storage location under which model version data files are stored.  If the URL contains special characters, such as space, `&amp;`, etc., they should be percent-encoded (space &gt; `%20`, etc.). *Change of this parameter forces recreation of the resource.*
      * 
      */
     @Import(name="storageLocation")
     private @Nullable Output<String> storageLocation;
 
     /**
-     * @return The storage location under which model version data files are stored. *Change of this parameter forces recreation of the resource.*
+     * @return The storage location under which model version data files are stored.  If the URL contains special characters, such as space, `&amp;`, etc., they should be percent-encoded (space &gt; `%20`, etc.). *Change of this parameter forces recreation of the resource.*
      * 
      */
     public Optional<Output<String>> storageLocation() {
@@ -366,7 +366,7 @@ public final class RegisteredModelArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param storageLocation The storage location under which model version data files are stored. *Change of this parameter forces recreation of the resource.*
+         * @param storageLocation The storage location under which model version data files are stored.  If the URL contains special characters, such as space, `&amp;`, etc., they should be percent-encoded (space &gt; `%20`, etc.). *Change of this parameter forces recreation of the resource.*
          * 
          * @return builder
          * 
@@ -377,7 +377,7 @@ public final class RegisteredModelArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param storageLocation The storage location under which model version data files are stored. *Change of this parameter forces recreation of the resource.*
+         * @param storageLocation The storage location under which model version data files are stored.  If the URL contains special characters, such as space, `&amp;`, etc., they should be percent-encoded (space &gt; `%20`, etc.). *Change of this parameter forces recreation of the resource.*
          * 
          * @return builder
          * 

@@ -143,16 +143,16 @@ namespace Pulumi.Databricks
     ///         ExternalId = databricksAccountId,
     ///     });
     /// 
-    ///     var crossAccountRole = new Aws.Iam.Role("cross_account_role", new()
+    ///     var crossAccountRole = new Aws.Index.IamRole("cross_account_role", new()
     ///     {
     ///         Name = $"{prefix}-crossaccount",
-    ///         AssumeRolePolicy = @this.Apply(@this =&gt; @this.Apply(getAwsAssumeRolePolicyResult =&gt; getAwsAssumeRolePolicyResult.Json)),
+    ///         AssumeRolePolicy = @this.Apply(getAwsAssumeRolePolicyResult =&gt; getAwsAssumeRolePolicyResult.Json),
     ///         Tags = tags,
     ///     });
     /// 
     ///     var thisGetAwsCrossAccountPolicy = Databricks.GetAwsCrossAccountPolicy.Invoke();
     /// 
-    ///     var thisRolePolicy = new Aws.Iam.RolePolicy("this", new()
+    ///     var thisIamRolePolicy = new Aws.Index.IamRolePolicy("this", new()
     ///     {
     ///         Name = $"{prefix}-policy",
     ///         Role = crossAccountRole.Id,
@@ -166,39 +166,45 @@ namespace Pulumi.Databricks
     ///         RoleArn = crossAccountRole.Arn,
     ///     });
     /// 
-    ///     var rootStorageBucket = new Aws.S3.Bucket("root_storage_bucket", new()
+    ///     var rootStorageBucket = new Aws.Index.S3Bucket("root_storage_bucket", new()
     ///     {
-    ///         BucketName = $"{prefix}-rootbucket",
-    ///         Acl = Aws.S3.CannedAcl.Private,
+    ///         Bucket = $"{prefix}-rootbucket",
+    ///         Acl = "private",
     ///         ForceDestroy = true,
     ///         Tags = tags,
     ///     });
     /// 
-    ///     var rootVersioning = new Aws.S3.BucketVersioning("root_versioning", new()
+    ///     var rootVersioning = new Aws.Index.S3BucketVersioning("root_versioning", new()
     ///     {
     ///         Bucket = rootStorageBucket.Id,
-    ///         VersioningConfiguration = new Aws.S3.Inputs.BucketVersioningVersioningConfigurationArgs
+    ///         VersioningConfiguration = new[]
     ///         {
-    ///             Status = "Disabled",
-    ///         },
-    ///     });
-    /// 
-    ///     var rootStorageBucketBucketServerSideEncryptionConfiguration = new Aws.S3.BucketServerSideEncryptionConfiguration("root_storage_bucket", new()
-    ///     {
-    ///         Bucket = rootStorageBucket.BucketName,
-    ///         Rules = new[]
-    ///         {
-    ///             new Aws.S3.Inputs.BucketServerSideEncryptionConfigurationRuleArgs
+    ///             
     ///             {
-    ///                 ApplyServerSideEncryptionByDefault = new Aws.S3.Inputs.BucketServerSideEncryptionConfigurationRuleApplyServerSideEncryptionByDefaultArgs
-    ///                 {
-    ///                     SseAlgorithm = "AES256",
-    ///                 },
+    ///                 { "status", "Disabled" },
     ///             },
     ///         },
     ///     });
     /// 
-    ///     var rootStorageBucketBucketPublicAccessBlock = new Aws.S3.BucketPublicAccessBlock("root_storage_bucket", new()
+    ///     var rootStorageBucketS3BucketServerSideEncryptionConfiguration = new Aws.Index.S3BucketServerSideEncryptionConfiguration("root_storage_bucket", new()
+    ///     {
+    ///         Bucket = rootStorageBucket.Bucket,
+    ///         Rule = new[]
+    ///         {
+    ///             
+    ///             {
+    ///                 { "applyServerSideEncryptionByDefault", new[]
+    ///                 {
+    ///                     
+    ///                     {
+    ///                         { "sseAlgorithm", "AES256" },
+    ///                     },
+    ///                 } },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var rootStorageBucketS3BucketPublicAccessBlock = new Aws.Index.S3BucketPublicAccessBlock("root_storage_bucket", new()
     ///     {
     ///         Bucket = rootStorageBucket.Id,
     ///         BlockPublicAcls = true,
@@ -215,10 +221,10 @@ namespace Pulumi.Databricks
     /// 
     ///     var thisGetAwsBucketPolicy = Databricks.GetAwsBucketPolicy.Invoke(new()
     ///     {
-    ///         Bucket = rootStorageBucket.BucketName,
+    ///         Bucket = rootStorageBucket.Bucket,
     ///     });
     /// 
-    ///     var rootBucketPolicy = new Aws.S3.BucketPolicy("root_bucket_policy", new()
+    ///     var rootBucketPolicy = new Aws.Index.S3BucketPolicy("root_bucket_policy", new()
     ///     {
     ///         Bucket = rootStorageBucket.Id,
     ///         Policy = thisGetAwsBucketPolicy.Apply(getAwsBucketPolicyResult =&gt; getAwsBucketPolicyResult.Json),
@@ -226,7 +232,7 @@ namespace Pulumi.Databricks
     ///     {
     ///         DependsOn =
     ///         {
-    ///             rootStorageBucketBucketPublicAccessBlock,
+    ///             rootStorageBucketS3BucketPublicAccessBlock,
     ///         },
     ///     });
     /// 
@@ -234,7 +240,7 @@ namespace Pulumi.Databricks
     ///     {
     ///         AccountId = databricksAccountId,
     ///         StorageConfigurationName = $"{prefix}-storage",
-    ///         BucketName = rootStorageBucket.BucketName,
+    ///         BucketName = rootStorageBucket.Bucket,
     ///     });
     /// 
     ///     var thisMwsWorkspaces = new Databricks.MwsWorkspaces("this", new()
@@ -445,6 +451,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("managedServicesCustomerManagedKeyId")]
         public Output<string?> ManagedServicesCustomerManagedKeyId { get; private set; } = null!;
+
+        [Output("networkConnectivityConfigId")]
+        public Output<string> NetworkConnectivityConfigId { get; private set; } = null!;
 
         /// <summary>
         /// `NetworkId` from networks.
@@ -661,6 +670,9 @@ namespace Pulumi.Databricks
         [Input("managedServicesCustomerManagedKeyId")]
         public Input<string>? ManagedServicesCustomerManagedKeyId { get; set; }
 
+        [Input("networkConnectivityConfigId")]
+        public Input<string>? NetworkConnectivityConfigId { get; set; }
+
         /// <summary>
         /// `NetworkId` from networks.
         /// </summary>
@@ -845,6 +857,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("managedServicesCustomerManagedKeyId")]
         public Input<string>? ManagedServicesCustomerManagedKeyId { get; set; }
+
+        [Input("networkConnectivityConfigId")]
+        public Input<string>? NetworkConnectivityConfigId { get; set; }
 
         /// <summary>
         /// `NetworkId` from networks.

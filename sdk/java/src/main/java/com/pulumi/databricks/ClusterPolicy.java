@@ -35,6 +35,98 @@ import javax.annotation.Nullable;
  * * A user who has both cluster create permission and access to cluster policies can select the Free form policy and policies they have access to.
  * * A user that has access to only cluster policies, can select the policies they have access to.
  * 
+ * ## Example Usage
+ * 
+ * Let us take a look at an example of how you can manage two teams: Marketing and Data Engineering. In the following scenario we want the marketing team to have a really good query experience, so we enabled delta cache for them. On the other hand we want the data engineering team to be able to utilize bigger clusters so we increased the dbus per hour that they can spend. This strategy allows your marketing users and data engineering users to use Databricks in a self service manner but have a different experience in regards to security and performance. And down the line if you need to add more global settings you can propagate them through the &#34;base cluster policy&#34;.
+ * 
+ * `modules/base-cluster-policy/main.tf` could look like:
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.ClusterPolicy;
+ * import com.pulumi.databricks.ClusterPolicyArgs;
+ * import com.pulumi.databricks.inputs.ClusterPolicyLibraryArgs;
+ * import com.pulumi.databricks.inputs.ClusterPolicyLibraryPypiArgs;
+ * import com.pulumi.databricks.inputs.ClusterPolicyLibraryMavenArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.MergeArgs;
+ * import com.pulumi.databricks.Permissions;
+ * import com.pulumi.databricks.PermissionsArgs;
+ * import com.pulumi.databricks.inputs.PermissionsAccessControlArgs;
+ * import static com.pulumi.codegen.internal.Serialization.*;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var team = config.get("team");
+ *         final var policyOverrides = config.get("policyOverrides");
+ *         final var defaultPolicy = Map.ofEntries(
+ *             Map.entry("dbus_per_hour", Map.ofEntries(
+ *                 Map.entry("type", "range"),
+ *                 Map.entry("maxValue", 10)
+ *             )),
+ *             Map.entry("autotermination_minutes", Map.ofEntries(
+ *                 Map.entry("type", "fixed"),
+ *                 Map.entry("value", 20),
+ *                 Map.entry("hidden", true)
+ *             )),
+ *             Map.entry("custom_tags.Team", Map.ofEntries(
+ *                 Map.entry("type", "fixed"),
+ *                 Map.entry("value", team)
+ *             ))
+ *         );
+ * 
+ *         var fairUse = new ClusterPolicy("fairUse", ClusterPolicyArgs.builder()
+ *             .name(String.format("%s cluster policy", team))
+ *             .definition(serializeJson(
+ *                 StdFunctions.merge(MergeArgs.builder()
+ *                     .input(                    
+ *                         defaultPolicy,
+ *                         policyOverrides)
+ *                     .build()).result()))
+ *             .libraries(            
+ *                 ClusterPolicyLibraryArgs.builder()
+ *                     .pypi(ClusterPolicyLibraryPypiArgs.builder()
+ *                         .package_("databricks-sdk==0.12.0")
+ *                         .build())
+ *                     .build(),
+ *                 ClusterPolicyLibraryArgs.builder()
+ *                     .maven(ClusterPolicyLibraryMavenArgs.builder()
+ *                         .coordinates("com.oracle.database.jdbc:ojdbc8:XXXX")
+ *                         .build())
+ *                     .build())
+ *             .build());
+ * 
+ *         var canUseClusterPolicyinstanceProfile = new Permissions("canUseClusterPolicyinstanceProfile", PermissionsArgs.builder()
+ *             .clusterPolicyId(fairUse.id())
+ *             .accessControls(PermissionsAccessControlArgs.builder()
+ *                 .groupName(team)
+ *                 .permissionLevel("CAN_USE")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * And custom instances of that base policy module for our marketing and data engineering teams would look like:
+ * 
  * ### Overriding the built-in cluster policies
  * 
  * You can override built-in cluster policies by creating a `databricks.ClusterPolicy` resource with following attributes:

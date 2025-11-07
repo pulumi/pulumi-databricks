@@ -42,7 +42,7 @@ class RegisteredModelArgs:
         :param pulumi.Input[_builtins.str] name: The name of the registered model.  *Change of this parameter forces recreation of the resource.*
         :param pulumi.Input[_builtins.str] owner: Name of the registered model owner.
         :param pulumi.Input[_builtins.str] schema_name: The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*
-        :param pulumi.Input[_builtins.str] storage_location: The storage location under which model version data files are stored. *Change of this parameter forces recreation of the resource.*
+        :param pulumi.Input[_builtins.str] storage_location: The storage location under which model version data files are stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). *Change of this parameter forces recreation of the resource.*
         """
         if aliases is not None:
             pulumi.set(__self__, "aliases", aliases)
@@ -191,7 +191,7 @@ class RegisteredModelArgs:
     @pulumi.getter(name="storageLocation")
     def storage_location(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The storage location under which model version data files are stored. *Change of this parameter forces recreation of the resource.*
+        The storage location under which model version data files are stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). *Change of this parameter forces recreation of the resource.*
         """
         return pulumi.get(self, "storage_location")
 
@@ -242,7 +242,7 @@ class _RegisteredModelState:
         :param pulumi.Input[_builtins.str] name: The name of the registered model.  *Change of this parameter forces recreation of the resource.*
         :param pulumi.Input[_builtins.str] owner: Name of the registered model owner.
         :param pulumi.Input[_builtins.str] schema_name: The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*
-        :param pulumi.Input[_builtins.str] storage_location: The storage location under which model version data files are stored. *Change of this parameter forces recreation of the resource.*
+        :param pulumi.Input[_builtins.str] storage_location: The storage location under which model version data files are stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). *Change of this parameter forces recreation of the resource.*
         """
         if aliases is not None:
             pulumi.set(__self__, "aliases", aliases)
@@ -391,7 +391,7 @@ class _RegisteredModelState:
     @pulumi.getter(name="storageLocation")
     def storage_location(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The storage location under which model version data files are stored. *Change of this parameter forces recreation of the resource.*
+        The storage location under which model version data files are stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). *Change of this parameter forces recreation of the resource.*
         """
         return pulumi.get(self, "storage_location")
 
@@ -498,7 +498,7 @@ class RegisteredModel(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The name of the registered model.  *Change of this parameter forces recreation of the resource.*
         :param pulumi.Input[_builtins.str] owner: Name of the registered model owner.
         :param pulumi.Input[_builtins.str] schema_name: The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*
-        :param pulumi.Input[_builtins.str] storage_location: The storage location under which model version data files are stored. *Change of this parameter forces recreation of the resource.*
+        :param pulumi.Input[_builtins.str] storage_location: The storage location under which model version data files are stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). *Change of this parameter forces recreation of the resource.*
         """
         ...
     @overload
@@ -646,7 +646,7 @@ class RegisteredModel(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The name of the registered model.  *Change of this parameter forces recreation of the resource.*
         :param pulumi.Input[_builtins.str] owner: Name of the registered model owner.
         :param pulumi.Input[_builtins.str] schema_name: The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*
-        :param pulumi.Input[_builtins.str] storage_location: The storage location under which model version data files are stored. *Change of this parameter forces recreation of the resource.*
+        :param pulumi.Input[_builtins.str] storage_location: The storage location under which model version data files are stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). *Change of this parameter forces recreation of the resource.*
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -742,7 +742,7 @@ class RegisteredModel(pulumi.CustomResource):
     @pulumi.getter(name="storageLocation")
     def storage_location(self) -> pulumi.Output[_builtins.str]:
         """
-        The storage location under which model version data files are stored. *Change of this parameter forces recreation of the resource.*
+        The storage location under which model version data files are stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). *Change of this parameter forces recreation of the resource.*
         """
         return pulumi.get(self, "storage_location")
 

@@ -102,6 +102,9 @@ namespace Pulumi.Databricks
         [Output("warehouseId")]
         public Output<string?> WarehouseId { get; private set; } = null!;
 
+        [Output("workspaceId")]
+        public Output<string?> WorkspaceId { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Provider resource with the given unique name, arguments, and options.
@@ -223,6 +226,9 @@ namespace Pulumi.Databricks
         [Input("debugTruncateBytes", json: true)]
         public Input<int>? DebugTruncateBytes { get; set; }
 
+        [Input("experimentalIsUnifiedHost", json: true)]
+        public Input<bool>? ExperimentalIsUnifiedHost { get; set; }
+
         [Input("googleCredentials")]
         private Input<string>? _googleCredentials;
         public Input<string>? GoogleCredentials
@@ -306,6 +312,9 @@ namespace Pulumi.Databricks
 
         [Input("warehouseId")]
         public Input<string>? WarehouseId { get; set; }
+
+        [Input("workspaceId")]
+        public Input<string>? WorkspaceId { get; set; }
 
         public ProviderArgs()
         {

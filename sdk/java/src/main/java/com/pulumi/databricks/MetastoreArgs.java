@@ -165,14 +165,14 @@ public final class MetastoreArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Path on cloud storage account, where managed `databricks.Table` are stored. Change forces creation of a new resource. If no `storageRoot` is defined for the metastore, each catalog must have a `storageRoot` defined.
+     * Path on cloud storage account, where managed `databricks.Table` are stored.  If the URL contains special characters, such as space, `&amp;`, etc., they should be percent-encoded (space &gt; `%20`, etc.). Change forces creation of a new resource. If no `storageRoot` is defined for the metastore, each catalog must have a `storageRoot` defined.
      * 
      */
     @Import(name="storageRoot")
     private @Nullable Output<String> storageRoot;
 
     /**
-     * @return Path on cloud storage account, where managed `databricks.Table` are stored. Change forces creation of a new resource. If no `storageRoot` is defined for the metastore, each catalog must have a `storageRoot` defined.
+     * @return Path on cloud storage account, where managed `databricks.Table` are stored.  If the URL contains special characters, such as space, `&amp;`, etc., they should be percent-encoded (space &gt; `%20`, etc.). Change forces creation of a new resource. If no `storageRoot` is defined for the metastore, each catalog must have a `storageRoot` defined.
      * 
      */
     public Optional<Output<String>> storageRoot() {
@@ -442,7 +442,7 @@ public final class MetastoreArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param storageRoot Path on cloud storage account, where managed `databricks.Table` are stored. Change forces creation of a new resource. If no `storageRoot` is defined for the metastore, each catalog must have a `storageRoot` defined.
+         * @param storageRoot Path on cloud storage account, where managed `databricks.Table` are stored.  If the URL contains special characters, such as space, `&amp;`, etc., they should be percent-encoded (space &gt; `%20`, etc.). Change forces creation of a new resource. If no `storageRoot` is defined for the metastore, each catalog must have a `storageRoot` defined.
          * 
          * @return builder
          * 
@@ -453,7 +453,7 @@ public final class MetastoreArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param storageRoot Path on cloud storage account, where managed `databricks.Table` are stored. Change forces creation of a new resource. If no `storageRoot` is defined for the metastore, each catalog must have a `storageRoot` defined.
+         * @param storageRoot Path on cloud storage account, where managed `databricks.Table` are stored.  If the URL contains special characters, such as space, `&amp;`, etc., they should be percent-encoded (space &gt; `%20`, etc.). Change forces creation of a new resource. If no `storageRoot` is defined for the metastore, each catalog must have a `storageRoot` defined.
          * 
          * @return builder
          * 

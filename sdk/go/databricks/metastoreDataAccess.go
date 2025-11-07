@@ -62,6 +62,56 @@ import (
 //
 // For Azure using managed identity as credential (recommended)
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			invokeFormat, err := std.Format(ctx, &std.FormatArgs{
+//				Input: "abfss://%s@%s.dfs.core.windows.net/",
+//				Args: []interface{}{
+//					unityCatalog.Name,
+//					unityCatalogAzurermStorageAccount.Name,
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			this, err := databricks.NewMetastore(ctx, "this", &databricks.MetastoreArgs{
+//				Name:         pulumi.String("primary"),
+//				StorageRoot:  pulumi.String(invokeFormat.Result),
+//				Owner:        pulumi.String("uc admins"),
+//				Region:       pulumi.String("eastus"),
+//				ForceDestroy: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewMetastoreDataAccess(ctx, "this", &databricks.MetastoreDataAccessArgs{
+//				MetastoreId: this.ID(),
+//				Name:        pulumi.String("mi_dac"),
+//				AzureManagedIdentity: &databricks.MetastoreDataAccessAzureManagedIdentityArgs{
+//					AccessConnectorId: pulumi.Any(accessConnectorId),
+//				},
+//				IsDefault: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // This resource can be imported by combination of metastore id and the data access name.

@@ -213,12 +213,12 @@ import * as utilities from "./utilities";
  * const ldpDemo = new databricks.Notebook("ldp_demo", {
  *     contentBase64: std.base64encode({
  *         input: `import dlt
- * json_path = "/databricks-datasets/wikipedia-datasets/data-001/clickstream/raw-uncompressed-json/2015_2_clickstream.json"
+ * json_path = \\"/databricks-datasets/wikipedia-datasets/data-001/clickstream/raw-uncompressed-json/2015_2_clickstream.json\\"
  * @dlt.table(
- *    comment="The raw wikipedia clickstream dataset, ingested from /databricks-datasets."
+ *    comment=\\"The raw wikipedia clickstream dataset, ingested from /databricks-datasets.\\"
  * )
  * def clickstream_raw():
- *     return (spark.read.format("json").load(json_path))
+ *     return (spark.read.format(\\"json\\").load(json_path))
  * `,
  *     }).then(invoke => invoke.result),
  *     language: "PYTHON",

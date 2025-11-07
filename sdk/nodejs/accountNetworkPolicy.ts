@@ -23,6 +23,32 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const exampleNetworkPolicy = new databricks.AccountNetworkPolicy("example_network_policy", {
+ *     networkPolicyId: "example-network-policy",
+ *     egress: {
+ *         networkAccess: {
+ *             restrictionMode: "RESTRICTED_ACCESS",
+ *             allowedInternetDestinations: [{
+ *                 destination: "example.com",
+ *                 internetDestinationType: "DNS_NAME",
+ *             }],
+ *             allowedStorageDestinations: [{
+ *                 bucketName: "example-aws-cloud-storage",
+ *                 region: "us-west-1",
+ *                 storageDestinationType: "AWS_S3",
+ *             }],
+ *             policyEnforcement: {
+ *                 enforcementMode: "ENFORCED",
+ *             },
+ *         },
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * As of Pulumi v1.5, resources can be imported through configuration.

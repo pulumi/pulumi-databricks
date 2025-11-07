@@ -37,7 +37,7 @@ class SchemaArgs:
         :param pulumi.Input[_builtins.str] name: Name of Schema relative to parent catalog. Change forces creation of a new resource.
         :param pulumi.Input[_builtins.str] owner: Username/groupname/sp application_id of the schema owner.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] properties: Extensible Schema properties.
-        :param pulumi.Input[_builtins.str] storage_root: Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
+        :param pulumi.Input[_builtins.str] storage_root: Managed location of the schema. Location in cloud storage where data for managed tables will be stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
         """
         pulumi.set(__self__, "catalog_name", catalog_name)
         if comment is not None:
@@ -154,7 +154,7 @@ class SchemaArgs:
     @pulumi.getter(name="storageRoot")
     def storage_root(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
+        Managed location of the schema. Location in cloud storage where data for managed tables will be stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
         """
         return pulumi.get(self, "storage_root")
 
@@ -186,7 +186,7 @@ class _SchemaState:
         :param pulumi.Input[_builtins.str] owner: Username/groupname/sp application_id of the schema owner.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] properties: Extensible Schema properties.
         :param pulumi.Input[_builtins.str] schema_id: The unique identifier of the schema.
-        :param pulumi.Input[_builtins.str] storage_root: Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
+        :param pulumi.Input[_builtins.str] storage_root: Managed location of the schema. Location in cloud storage where data for managed tables will be stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
         """
         if catalog_name is not None:
             pulumi.set(__self__, "catalog_name", catalog_name)
@@ -318,7 +318,7 @@ class _SchemaState:
     @pulumi.getter(name="storageRoot")
     def storage_root(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
+        Managed location of the schema. Location in cloud storage where data for managed tables will be stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
         """
         return pulumi.get(self, "storage_root")
 
@@ -410,7 +410,7 @@ class Schema(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Name of Schema relative to parent catalog. Change forces creation of a new resource.
         :param pulumi.Input[_builtins.str] owner: Username/groupname/sp application_id of the schema owner.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] properties: Extensible Schema properties.
-        :param pulumi.Input[_builtins.str] storage_root: Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
+        :param pulumi.Input[_builtins.str] storage_root: Managed location of the schema. Location in cloud storage where data for managed tables will be stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
         """
         ...
     @overload
@@ -556,7 +556,7 @@ class Schema(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] owner: Username/groupname/sp application_id of the schema owner.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] properties: Extensible Schema properties.
         :param pulumi.Input[_builtins.str] schema_id: The unique identifier of the schema.
-        :param pulumi.Input[_builtins.str] storage_root: Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
+        :param pulumi.Input[_builtins.str] storage_root: Managed location of the schema. Location in cloud storage where data for managed tables will be stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -647,7 +647,7 @@ class Schema(pulumi.CustomResource):
     @pulumi.getter(name="storageRoot")
     def storage_root(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
+        Managed location of the schema. Location in cloud storage where data for managed tables will be stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
         """
         return pulumi.get(self, "storage_root")
 

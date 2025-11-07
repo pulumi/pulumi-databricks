@@ -125,12 +125,12 @@ def get_aws_bucket_policy(aws_partition: Optional[_builtins.str] = None,
     import pulumi_aws as aws
     import pulumi_databricks as databricks
 
-    this_bucket = aws.s3.Bucket("this",
-        bucket="<unique_bucket_name>",
+    this_s3_bucket = aws.index.S3Bucket("this",
+        bucket=<unique_bucket_name>,
         force_destroy=True)
-    this = databricks.get_aws_bucket_policy_output(bucket=this_bucket.bucket)
-    this_bucket_policy = aws.s3.BucketPolicy("this",
-        bucket=this_bucket.id,
+    this = databricks.get_aws_bucket_policy(bucket=this_s3_bucket["bucket"])
+    this_s3_bucket_policy = aws.index.S3BucketPolicy("this",
+        bucket=this_s3_bucket.id,
         policy=this.json)
     ```
 
@@ -177,12 +177,12 @@ def get_aws_bucket_policy_output(aws_partition: Optional[pulumi.Input[Optional[_
     import pulumi_aws as aws
     import pulumi_databricks as databricks
 
-    this_bucket = aws.s3.Bucket("this",
-        bucket="<unique_bucket_name>",
+    this_s3_bucket = aws.index.S3Bucket("this",
+        bucket=<unique_bucket_name>,
         force_destroy=True)
-    this = databricks.get_aws_bucket_policy_output(bucket=this_bucket.bucket)
-    this_bucket_policy = aws.s3.BucketPolicy("this",
-        bucket=this_bucket.id,
+    this = databricks.get_aws_bucket_policy(bucket=this_s3_bucket["bucket"])
+    this_s3_bucket_policy = aws.index.S3BucketPolicy("this",
+        bucket=this_s3_bucket.id,
         policy=this.json)
     ```
 

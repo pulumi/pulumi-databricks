@@ -16,6 +16,142 @@ namespace Pulumi.Databricks
     /// 
     /// You cannot delete a log delivery configuration, but you can disable it when you no longer need it. This fact is important because there is a limit to the number of enabled log delivery configurations that you can create for an account. You can create a maximum of two enabled configurations that use the account level (no workspace filter) and two enabled configurations for every specific workspace (a workspaceId can occur in the workspace filter for two configurations). You can re-enable a disabled configuration, but the request fails if it violates the limits previously described.
     /// 
+    /// ## Example Usage
+    /// 
+    /// End-to-end example of usage and audit log delivery:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Aws = Pulumi.Aws;
+    /// using Databricks = Pulumi.Databricks;
+    /// using Std = Pulumi.Std;
+    /// using Time = Pulumiverse.Time;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     // Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
+    ///     var databricksAccountId = config.RequireObject&lt;dynamic&gt;("databricksAccountId");
+    ///     var logdeliveryS3Bucket = new Aws.Index.S3Bucket("logdelivery", new()
+    ///     {
+    ///         Bucket = $"{prefix}-logdelivery",
+    ///         Acl = "private",
+    ///         ForceDestroy = true,
+    ///         Tags = Std.Merge.Invoke(new()
+    ///         {
+    ///             Input = new[]
+    ///             {
+    ///                 tags,
+    ///                 
+    ///                 {
+    ///                     { "name", $"{prefix}-logdelivery" },
+    ///                 },
+    ///             },
+    ///         }).Result,
+    ///     });
+    /// 
+    ///     var logdeliveryS3BucketPublicAccessBlock = new Aws.Index.S3BucketPublicAccessBlock("logdelivery", new()
+    ///     {
+    ///         Bucket = logdeliveryS3Bucket.Id,
+    ///         IgnorePublicAcls = true,
+    ///     });
+    /// 
+    ///     var logdelivery = Databricks.GetAwsAssumeRolePolicy.Invoke(new()
+    ///     {
+    ///         ExternalId = databricksAccountId,
+    ///         ForLogDelivery = true,
+    ///     });
+    /// 
+    ///     var logdeliveryVersioning = new Aws.Index.S3BucketVersioning("logdelivery_versioning", new()
+    ///     {
+    ///         Bucket = logdeliveryS3Bucket.Id,
+    ///         VersioningConfiguration = new[]
+    ///         {
+    ///             
+    ///             {
+    ///                 { "status", "Disabled" },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var logdeliveryIamRole = new Aws.Index.IamRole("logdelivery", new()
+    ///     {
+    ///         Name = $"{prefix}-logdelivery",
+    ///         Description = $"({prefix}) UsageDelivery role",
+    ///         AssumeRolePolicy = logdelivery.Apply(getAwsAssumeRolePolicyResult =&gt; getAwsAssumeRolePolicyResult.Json),
+    ///         Tags = tags,
+    ///     });
+    /// 
+    ///     var logdeliveryGetAwsBucketPolicy = Databricks.GetAwsBucketPolicy.Invoke(new()
+    ///     {
+    ///         FullAccessRole = logdeliveryIamRole.Arn,
+    ///         Bucket = logdeliveryS3Bucket.Bucket,
+    ///     });
+    /// 
+    ///     var logdeliveryS3BucketPolicy = new Aws.Index.S3BucketPolicy("logdelivery", new()
+    ///     {
+    ///         Bucket = logdeliveryS3Bucket.Id,
+    ///         Policy = logdeliveryGetAwsBucketPolicy.Apply(getAwsBucketPolicyResult =&gt; getAwsBucketPolicyResult.Json),
+    ///     });
+    /// 
+    ///     var wait = new Time.Sleep("wait", new()
+    ///     {
+    ///         CreateDuration = "10s",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             logdeliveryIamRole,
+    ///         },
+    ///     });
+    /// 
+    ///     var logWriter = new Databricks.MwsCredentials("log_writer", new()
+    ///     {
+    ///         AccountId = databricksAccountId,
+    ///         CredentialsName = "Usage Delivery",
+    ///         RoleArn = logdeliveryIamRole.Arn,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             wait,
+    ///         },
+    ///     });
+    /// 
+    ///     var logBucket = new Databricks.MwsStorageConfigurations("log_bucket", new()
+    ///     {
+    ///         AccountId = databricksAccountId,
+    ///         StorageConfigurationName = "Usage Logs",
+    ///         BucketName = logdeliveryS3Bucket.Bucket,
+    ///     });
+    /// 
+    ///     var usageLogs = new Databricks.MwsLogDelivery("usage_logs", new()
+    ///     {
+    ///         AccountId = databricksAccountId,
+    ///         CredentialsId = logWriter.CredentialsId,
+    ///         StorageConfigurationId = logBucket.StorageConfigurationId,
+    ///         DeliveryPathPrefix = "billable-usage",
+    ///         ConfigName = "Usage Logs",
+    ///         LogType = "BILLABLE_USAGE",
+    ///         OutputFormat = "CSV",
+    ///     });
+    /// 
+    ///     var auditLogs = new Databricks.MwsLogDelivery("audit_logs", new()
+    ///     {
+    ///         AccountId = databricksAccountId,
+    ///         CredentialsId = logWriter.CredentialsId,
+    ///         StorageConfigurationId = logBucket.StorageConfigurationId,
+    ///         DeliveryPathPrefix = "audit-logs",
+    ///         ConfigName = "Audit Logs",
+    ///         LogType = "AUDIT_LOGS",
+    ///         OutputFormat = "JSON",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Billable Usage
     /// 
     /// CSV files are delivered to `&lt;delivery_path_prefix&gt;/billable-usage/csv/` and are named `workspaceId=&lt;workspace-id&gt;-usageMonth=&lt;month&gt;.csv`, which are delivered daily by overwriting the month's CSV file for each workspace. Format of CSV file, as well as some usage examples, can be found [here](https://docs.databricks.com/administration-guide/account-settings/usage.html#download-usage-as-a-csv-file).

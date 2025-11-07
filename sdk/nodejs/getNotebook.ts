@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -29,6 +31,7 @@ export function getNotebook(args: GetNotebookArgs, opts?: pulumi.InvokeOptions):
         "objectId": args.objectId,
         "objectType": args.objectType,
         "path": args.path,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -56,6 +59,10 @@ export interface GetNotebookArgs {
      * Notebook path on the workspace
      */
     path: string;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: inputs.GetNotebookProviderConfig;
 }
 
 /**
@@ -84,6 +91,7 @@ export interface GetNotebookResult {
      */
     readonly objectType: string;
     readonly path: string;
+    readonly providerConfig?: outputs.GetNotebookProviderConfig;
     /**
      * path on Workspace File System (WSFS) in form of `/Workspace` + `path`
      */
@@ -114,6 +122,7 @@ export function getNotebookOutput(args: GetNotebookOutputArgs, opts?: pulumi.Inv
         "objectId": args.objectId,
         "objectType": args.objectType,
         "path": args.path,
+        "providerConfig": args.providerConfig,
     }, opts);
 }
 
@@ -141,4 +150,8 @@ export interface GetNotebookOutputArgs {
      * Notebook path on the workspace
      */
     path: pulumi.Input<string>;
+    /**
+     * Configure the provider for management through account provider. This block consists of the following fields:
+     */
+    providerConfig?: pulumi.Input<inputs.GetNotebookProviderConfigArgs>;
 }

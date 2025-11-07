@@ -29,41 +29,41 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/ec2"
+//	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := ec2.NewVpcEndpoint(ctx, "workspace", &ec2.VpcEndpointArgs{
-//				VpcId:           pulumi.Any(vpc.VpcId),
-//				ServiceName:     pulumi.Any(privateLink.WorkspaceService),
-//				VpcEndpointType: pulumi.String("Interface"),
-//				SecurityGroupIds: pulumi.StringArray{
+//			_, err := aws.NewVpcEndpoint(ctx, "workspace", &aws.VpcEndpointArgs{
+//				VpcId:           vpc.VpcId,
+//				ServiceName:     privateLink.WorkspaceService,
+//				VpcEndpointType: "Interface",
+//				SecurityGroupIds: []interface{}{
 //					vpc.DefaultSecurityGroupId,
 //				},
-//				SubnetIds: pulumi.StringArray{
+//				SubnetIds: []interface{}{
 //					plSubnet.Id,
 //				},
-//				PrivateDnsEnabled: pulumi.Bool(true),
+//				PrivateDnsEnabled: true,
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				plSubnet,
 //			}))
 //			if err != nil {
 //				return err
 //			}
-//			_, err = ec2.NewVpcEndpoint(ctx, "relay", &ec2.VpcEndpointArgs{
-//				VpcId:           pulumi.Any(vpc.VpcId),
-//				ServiceName:     pulumi.Any(privateLink.RelayService),
-//				VpcEndpointType: pulumi.String("Interface"),
-//				SecurityGroupIds: pulumi.StringArray{
+//			_, err = aws.NewVpcEndpoint(ctx, "relay", &aws.VpcEndpointArgs{
+//				VpcId:           vpc.VpcId,
+//				ServiceName:     privateLink.RelayService,
+//				VpcEndpointType: "Interface",
+//				SecurityGroupIds: []interface{}{
 //					vpc.DefaultSecurityGroupId,
 //				},
-//				SubnetIds: pulumi.StringArray{
+//				SubnetIds: []interface{}{
 //					plSubnet.Id,
 //				},
-//				PrivateDnsEnabled: pulumi.Bool(true),
+//				PrivateDnsEnabled: true,
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				plSubnet,
 //			}))
@@ -86,44 +86,44 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/ec2"
+//	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := ec2.NewVpcEndpoint(ctx, "s3", &ec2.VpcEndpointArgs{
-//				VpcId:         pulumi.Any(vpc.VpcId),
-//				RouteTableIds: pulumi.Any(vpc.PrivateRouteTableIds),
-//				ServiceName:   pulumi.Sprintf("com.amazonaws.%v.s3", region),
+//			_, err := aws.NewVpcEndpoint(ctx, "s3", &aws.VpcEndpointArgs{
+//				VpcId:         vpc.VpcId,
+//				RouteTableIds: vpc.PrivateRouteTableIds,
+//				ServiceName:   fmt.Sprintf("com.amazonaws.%v.s3", region),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				vpc,
 //			}))
 //			if err != nil {
 //				return err
 //			}
-//			_, err = ec2.NewVpcEndpoint(ctx, "sts", &ec2.VpcEndpointArgs{
-//				VpcId:           pulumi.Any(vpc.VpcId),
-//				ServiceName:     pulumi.Sprintf("com.amazonaws.%v.sts", region),
-//				VpcEndpointType: pulumi.String("Interface"),
-//				SubnetIds:       pulumi.Any(vpc.PrivateSubnets),
-//				SecurityGroupIds: pulumi.StringArray{
+//			_, err = aws.NewVpcEndpoint(ctx, "sts", &aws.VpcEndpointArgs{
+//				VpcId:           vpc.VpcId,
+//				ServiceName:     fmt.Sprintf("com.amazonaws.%v.sts", region),
+//				VpcEndpointType: "Interface",
+//				SubnetIds:       vpc.PrivateSubnets,
+//				SecurityGroupIds: []interface{}{
 //					vpc.DefaultSecurityGroupId,
 //				},
-//				PrivateDnsEnabled: pulumi.Bool(true),
+//				PrivateDnsEnabled: true,
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				vpc,
 //			}))
 //			if err != nil {
 //				return err
 //			}
-//			_, err = ec2.NewVpcEndpoint(ctx, "kinesis-streams", &ec2.VpcEndpointArgs{
-//				VpcId:           pulumi.Any(vpc.VpcId),
-//				ServiceName:     pulumi.Sprintf("com.amazonaws.%v.kinesis-streams", region),
-//				VpcEndpointType: pulumi.String("Interface"),
-//				SubnetIds:       pulumi.Any(vpc.PrivateSubnets),
-//				SecurityGroupIds: pulumi.StringArray{
+//			_, err = aws.NewVpcEndpoint(ctx, "kinesis-streams", &aws.VpcEndpointArgs{
+//				VpcId:           vpc.VpcId,
+//				ServiceName:     fmt.Sprintf("com.amazonaws.%v.kinesis-streams", region),
+//				VpcEndpointType: "Interface",
+//				SubnetIds:       vpc.PrivateSubnets,
+//				SecurityGroupIds: []interface{}{
 //					vpc.DefaultSecurityGroupId,
 //				},
 //			}, pulumi.DependsOn([]pulumi.Resource{

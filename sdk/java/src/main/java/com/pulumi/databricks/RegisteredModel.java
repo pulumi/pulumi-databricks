@@ -203,14 +203,14 @@ public class RegisteredModel extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.schemaName);
     }
     /**
-     * The storage location under which model version data files are stored. *Change of this parameter forces recreation of the resource.*
+     * The storage location under which model version data files are stored.  If the URL contains special characters, such as space, `&amp;`, etc., they should be percent-encoded (space &gt; `%20`, etc.). *Change of this parameter forces recreation of the resource.*
      * 
      */
     @Export(name="storageLocation", refs={String.class}, tree="[0]")
     private Output<String> storageLocation;
 
     /**
-     * @return The storage location under which model version data files are stored. *Change of this parameter forces recreation of the resource.*
+     * @return The storage location under which model version data files are stored.  If the URL contains special characters, such as space, `&amp;`, etc., they should be percent-encoded (space &gt; `%20`, etc.). *Change of this parameter forces recreation of the resource.*
      * 
      */
     public Output<String> storageLocation() {

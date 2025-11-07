@@ -24,6 +24,69 @@ import * as utilities from "./utilities";
  * * A user who has both cluster create permission and access to cluster policies can select the Free form policy and policies they have access to.
  * * A user that has access to only cluster policies, can select the policies they have access to.
  *
+ * ## Example Usage
+ *
+ * Let us take a look at an example of how you can manage two teams: Marketing and Data Engineering. In the following scenario we want the marketing team to have a really good query experience, so we enabled delta cache for them. On the other hand we want the data engineering team to be able to utilize bigger clusters so we increased the dbus per hour that they can spend. This strategy allows your marketing users and data engineering users to use Databricks in a self service manner but have a different experience in regards to security and performance. And down the line if you need to add more global settings you can propagate them through the "base cluster policy".
+ *
+ * `modules/base-cluster-policy/main.tf` could look like:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ * import * as std from "@pulumi/std";
+ *
+ * const config = new pulumi.Config();
+ * // Team that performs the work
+ * const team = config.requireObject<any>("team");
+ * // Cluster policy overrides
+ * const policyOverrides = config.requireObject<any>("policyOverrides");
+ * const defaultPolicy = {
+ *     dbus_per_hour: {
+ *         type: "range",
+ *         maxValue: 10,
+ *     },
+ *     autotermination_minutes: {
+ *         type: "fixed",
+ *         value: 20,
+ *         hidden: true,
+ *     },
+ *     "custom_tags.Team": {
+ *         type: "fixed",
+ *         value: team,
+ *     },
+ * };
+ * const fairUse = new databricks.ClusterPolicy("fair_use", {
+ *     name: `${team} cluster policy`,
+ *     definition: JSON.stringify(std.merge({
+ *         input: [
+ *             defaultPolicy,
+ *             policyOverrides,
+ *         ],
+ *     }).then(invoke => invoke.result)),
+ *     libraries: [
+ *         {
+ *             pypi: {
+ *                 "package": "databricks-sdk==0.12.0",
+ *             },
+ *         },
+ *         {
+ *             maven: {
+ *                 coordinates: "com.oracle.database.jdbc:ojdbc8:XXXX",
+ *             },
+ *         },
+ *     ],
+ * });
+ * const canUseClusterPolicyinstanceProfile = new databricks.Permissions("can_use_cluster_policyinstance_profile", {
+ *     clusterPolicyId: fairUse.id,
+ *     accessControls: [{
+ *         groupName: team,
+ *         permissionLevel: "CAN_USE",
+ *     }],
+ * });
+ * ```
+ *
+ * And custom instances of that base policy module for our marketing and data engineering teams would look like:
+ *
  * ### Overriding the built-in cluster policies
  *
  * You can override built-in cluster policies by creating a `databricks.ClusterPolicy` resource with following attributes:

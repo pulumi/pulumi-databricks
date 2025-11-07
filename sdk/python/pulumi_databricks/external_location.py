@@ -39,7 +39,7 @@ class ExternalLocationArgs:
         """
         The set of arguments for constructing a ExternalLocation resource.
         :param pulumi.Input[_builtins.str] credential_name: Name of the StorageCredential to use with this external location.
-        :param pulumi.Input[_builtins.str] url: Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
+        :param pulumi.Input[_builtins.str] url: Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).   If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.).
         :param pulumi.Input[_builtins.str] comment: User-supplied free-form text.
         :param pulumi.Input[_builtins.bool] enable_file_events: indicates if managed file events are enabled for this external location.  Requires `file_event_queue` block.
         :param pulumi.Input[_builtins.bool] fallback: Indicates whether fallback mode is enabled for this external location. When fallback mode is enabled (disabled by default), the access to the location falls back to cluster credentials if UC credentials are not sufficient.
@@ -96,7 +96,7 @@ class ExternalLocationArgs:
     @pulumi.getter
     def url(self) -> pulumi.Input[_builtins.str]:
         """
-        Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
+        Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).   If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.).
         """
         return pulumi.get(self, "url")
 
@@ -294,7 +294,7 @@ class _ExternalLocationState:
         :param pulumi.Input[_builtins.bool] skip_validation: Suppress validation errors if any & force save the external location
         :param pulumi.Input[_builtins.int] updated_at: Time at which external location this was last modified, in epoch milliseconds.
         :param pulumi.Input[_builtins.str] updated_by: Username of user who last modified the external location.
-        :param pulumi.Input[_builtins.str] url: Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
+        :param pulumi.Input[_builtins.str] url: Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).   If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.).
         """
         if browse_only is not None:
             pulumi.set(__self__, "browse_only", browse_only)
@@ -571,7 +571,7 @@ class _ExternalLocationState:
     @pulumi.getter
     def url(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
+        Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).   If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.).
         """
         return pulumi.get(self, "url")
 
@@ -642,6 +642,68 @@ class ExternalLocation(pulumi.CustomResource):
 
         For Azure
 
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+        import pulumi_std as std
+
+        external = databricks.StorageCredential("external",
+            name=ext_cred["displayName"],
+            azure_service_principal={
+                "directory_id": tenant_id,
+                "application_id": ext_cred["applicationId"],
+                "client_secret": ext_cred_azuread_application_password["value"],
+            },
+            comment="Managed by TF",
+            opts = pulumi.ResourceOptions(depends_on=[this]))
+        some = databricks.ExternalLocation("some",
+            name="external",
+            url=std.format(input="abfss://%s@%s.dfs.core.windows.net",
+                args=[
+                    ext_storage["name"],
+                    ext_storage_azurerm_storage_account["name"],
+                ]).result,
+            credential_name=external.id,
+            comment="Managed by TF",
+            opts = pulumi.ResourceOptions(depends_on=[this]))
+        some_grants = databricks.Grants("some",
+            external_location=some.id,
+            grants=[{
+                "principal": "Data Engineers",
+                "privileges": [
+                    "CREATE_EXTERNAL_TABLE",
+                    "READ_FILES",
+                ],
+            }])
+        ```
+
+        For GCP
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        ext = databricks.StorageCredential("ext",
+            name="the-creds",
+            databricks_gcp_service_account={})
+        some = databricks.ExternalLocation("some",
+            name="the-ext-location",
+            url=f"gs://{ext_bucket['name']}",
+            credential_name=ext.id,
+            comment="Managed by TF")
+        some_grants = databricks.Grants("some",
+            external_location=some.id,
+            grants=[{
+                "principal": "Data Engineers",
+                "privileges": [
+                    "CREATE_EXTERNAL_TABLE",
+                    "READ_FILES",
+                ],
+            }])
+        ```
+
+        Example `encryption_details` specifying SSE_S3 encryption:
+
         ## Import
 
         This resource can be imported by `name`:
@@ -677,7 +739,7 @@ class ExternalLocation(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] owner: Username/groupname/sp application_id of the external location owner.
         :param pulumi.Input[_builtins.bool] read_only: Indicates whether the external location is read-only.
         :param pulumi.Input[_builtins.bool] skip_validation: Suppress validation errors if any & force save the external location
-        :param pulumi.Input[_builtins.str] url: Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
+        :param pulumi.Input[_builtins.str] url: Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).   If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.).
         """
         ...
     @overload
@@ -724,6 +786,68 @@ class ExternalLocation(pulumi.CustomResource):
         ```
 
         For Azure
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+        import pulumi_std as std
+
+        external = databricks.StorageCredential("external",
+            name=ext_cred["displayName"],
+            azure_service_principal={
+                "directory_id": tenant_id,
+                "application_id": ext_cred["applicationId"],
+                "client_secret": ext_cred_azuread_application_password["value"],
+            },
+            comment="Managed by TF",
+            opts = pulumi.ResourceOptions(depends_on=[this]))
+        some = databricks.ExternalLocation("some",
+            name="external",
+            url=std.format(input="abfss://%s@%s.dfs.core.windows.net",
+                args=[
+                    ext_storage["name"],
+                    ext_storage_azurerm_storage_account["name"],
+                ]).result,
+            credential_name=external.id,
+            comment="Managed by TF",
+            opts = pulumi.ResourceOptions(depends_on=[this]))
+        some_grants = databricks.Grants("some",
+            external_location=some.id,
+            grants=[{
+                "principal": "Data Engineers",
+                "privileges": [
+                    "CREATE_EXTERNAL_TABLE",
+                    "READ_FILES",
+                ],
+            }])
+        ```
+
+        For GCP
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        ext = databricks.StorageCredential("ext",
+            name="the-creds",
+            databricks_gcp_service_account={})
+        some = databricks.ExternalLocation("some",
+            name="the-ext-location",
+            url=f"gs://{ext_bucket['name']}",
+            credential_name=ext.id,
+            comment="Managed by TF")
+        some_grants = databricks.Grants("some",
+            external_location=some.id,
+            grants=[{
+                "principal": "Data Engineers",
+                "privileges": [
+                    "CREATE_EXTERNAL_TABLE",
+                    "READ_FILES",
+                ],
+            }])
+        ```
+
+        Example `encryption_details` specifying SSE_S3 encryption:
 
         ## Import
 
@@ -865,7 +989,7 @@ class ExternalLocation(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] skip_validation: Suppress validation errors if any & force save the external location
         :param pulumi.Input[_builtins.int] updated_at: Time at which external location this was last modified, in epoch milliseconds.
         :param pulumi.Input[_builtins.str] updated_by: Username of user who last modified the external location.
-        :param pulumi.Input[_builtins.str] url: Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
+        :param pulumi.Input[_builtins.str] url: Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).   If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1046,7 +1170,7 @@ class ExternalLocation(pulumi.CustomResource):
     @pulumi.getter
     def url(self) -> pulumi.Output[_builtins.str]:
         """
-        Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
+        Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).   If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.).
         """
         return pulumi.get(self, "url")
 

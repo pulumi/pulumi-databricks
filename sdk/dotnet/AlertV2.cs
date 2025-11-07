@@ -21,6 +21,60 @@ namespace Pulumi.Databricks
     /// ### Basic Alert Example
     /// This example creates a basic alert that monitors a query and sends notifications to a user when the value exceeds a threshold:
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var basicAlert = new Databricks.AlertV2("basic_alert", new()
+    ///     {
+    ///         DisplayName = "High Error Rate Alert",
+    ///         QueryText = "SELECT count(*) as error_count FROM logs WHERE level = 'ERROR' AND timestamp &gt; now() - interval 1 hour",
+    ///         WarehouseId = "a7066a8ef796be84",
+    ///         ParentPath = "/Users/user@example.com",
+    ///         Evaluation = new Databricks.Inputs.AlertV2EvaluationArgs
+    ///         {
+    ///             Source = new Databricks.Inputs.AlertV2EvaluationSourceArgs
+    ///             {
+    ///                 Name = "error_count",
+    ///                 Display = "Error Count",
+    ///                 Aggregation = "COUNT",
+    ///             },
+    ///             ComparisonOperator = "GREATER_THAN",
+    ///             Threshold = new Databricks.Inputs.AlertV2EvaluationThresholdArgs
+    ///             {
+    ///                 Value = new Databricks.Inputs.AlertV2EvaluationThresholdValueArgs
+    ///                 {
+    ///                     DoubleValue = 100,
+    ///                 },
+    ///             },
+    ///             EmptyResultState = "OK",
+    ///             Notification = new Databricks.Inputs.AlertV2EvaluationNotificationArgs
+    ///             {
+    ///                 Subscriptions = new[]
+    ///                 {
+    ///                     new Databricks.Inputs.AlertV2EvaluationNotificationSubscriptionArgs
+    ///                     {
+    ///                         UserEmail = "user@example.com",
+    ///                     },
+    ///                 },
+    ///                 NotifyOnOk = true,
+    ///             },
+    ///         },
+    ///         Schedule = new Databricks.Inputs.AlertV2ScheduleArgs
+    ///         {
+    ///             QuartzCronSchedule = "0 0/15 * * * ?",
+    ///             TimezoneId = "America/Los_Angeles",
+    ///             PauseStatus = "UNPAUSED",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// As of Pulumi v1.5, resources can be imported through configuration.

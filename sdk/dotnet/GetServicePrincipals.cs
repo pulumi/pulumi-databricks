@@ -15,6 +15,57 @@ namespace Pulumi.Databricks
         /// Retrieves `ApplicationIds` of all databricks.ServicePrincipal based on their `DisplayName`
         /// 
         /// &gt; This data source can be used with an account or workspace-level provider.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Adding all service principals of which display name contains `my-spn` to admin group
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using System.Threading.Tasks;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// using Std = Pulumi.Std;
+        /// 
+        /// return await Deployment.RunAsync(async() =&gt; 
+        /// {
+        ///     var admins = await Databricks.GetGroup.InvokeAsync(new()
+        ///     {
+        ///         DisplayName = "admins",
+        ///     });
+        /// 
+        ///     var spns = await Databricks.GetServicePrincipals.InvokeAsync(new()
+        ///     {
+        ///         DisplayNameContains = "my-spn",
+        ///     });
+        /// 
+        ///     var spn = ;
+        /// 
+        ///     var myMemberSpn = new List&lt;Databricks.GroupMember&gt;();
+        ///     foreach (var range in )
+        ///     {
+        ///         myMemberSpn.Add(new Databricks.GroupMember($"my_member_spn-{range.Key}", new()
+        ///         {
+        ///             GroupId = admins.Id,
+        ///             MemberId = spn[range.Value].SpId,
+        ///         }));
+        ///     }
+        /// });
+        /// ```
+        /// 
+        /// ## Related Resources
+        /// 
+        /// The following resources are used in the same context:
+        /// 
+        /// - End to end workspace management guide.
+        /// - databricks.getCurrentUser data to retrieve information about databricks.User or databricks_service_principal, that is calling Databricks REST API.
+        /// - databricks.Group to manage [Account-level](https://docs.databricks.com/aws/en/admin/users-groups/groups) or [Workspace-level](https://docs.databricks.com/aws/en/admin/users-groups/workspace-local-groups) groups.
+        /// - databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
+        /// - databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.
+        /// - databricks.GroupMember to attach users and groups as group members.
+        /// - databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
+        /// - DatabricksService principal to manage service principals
         /// </summary>
         public static Task<GetServicePrincipalsResult> InvokeAsync(GetServicePrincipalsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetServicePrincipalsResult>("databricks:index/getServicePrincipals:getServicePrincipals", args ?? new GetServicePrincipalsArgs(), options.WithDefaults());
@@ -23,6 +74,57 @@ namespace Pulumi.Databricks
         /// Retrieves `ApplicationIds` of all databricks.ServicePrincipal based on their `DisplayName`
         /// 
         /// &gt; This data source can be used with an account or workspace-level provider.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Adding all service principals of which display name contains `my-spn` to admin group
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using System.Threading.Tasks;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// using Std = Pulumi.Std;
+        /// 
+        /// return await Deployment.RunAsync(async() =&gt; 
+        /// {
+        ///     var admins = await Databricks.GetGroup.InvokeAsync(new()
+        ///     {
+        ///         DisplayName = "admins",
+        ///     });
+        /// 
+        ///     var spns = await Databricks.GetServicePrincipals.InvokeAsync(new()
+        ///     {
+        ///         DisplayNameContains = "my-spn",
+        ///     });
+        /// 
+        ///     var spn = ;
+        /// 
+        ///     var myMemberSpn = new List&lt;Databricks.GroupMember&gt;();
+        ///     foreach (var range in )
+        ///     {
+        ///         myMemberSpn.Add(new Databricks.GroupMember($"my_member_spn-{range.Key}", new()
+        ///         {
+        ///             GroupId = admins.Id,
+        ///             MemberId = spn[range.Value].SpId,
+        ///         }));
+        ///     }
+        /// });
+        /// ```
+        /// 
+        /// ## Related Resources
+        /// 
+        /// The following resources are used in the same context:
+        /// 
+        /// - End to end workspace management guide.
+        /// - databricks.getCurrentUser data to retrieve information about databricks.User or databricks_service_principal, that is calling Databricks REST API.
+        /// - databricks.Group to manage [Account-level](https://docs.databricks.com/aws/en/admin/users-groups/groups) or [Workspace-level](https://docs.databricks.com/aws/en/admin/users-groups/workspace-local-groups) groups.
+        /// - databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
+        /// - databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.
+        /// - databricks.GroupMember to attach users and groups as group members.
+        /// - databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
+        /// - DatabricksService principal to manage service principals
         /// </summary>
         public static Output<GetServicePrincipalsResult> Invoke(GetServicePrincipalsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServicePrincipalsResult>("databricks:index/getServicePrincipals:getServicePrincipals", args ?? new GetServicePrincipalsInvokeArgs(), options.WithDefaults());
@@ -31,6 +133,57 @@ namespace Pulumi.Databricks
         /// Retrieves `ApplicationIds` of all databricks.ServicePrincipal based on their `DisplayName`
         /// 
         /// &gt; This data source can be used with an account or workspace-level provider.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Adding all service principals of which display name contains `my-spn` to admin group
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using System.Threading.Tasks;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// using Std = Pulumi.Std;
+        /// 
+        /// return await Deployment.RunAsync(async() =&gt; 
+        /// {
+        ///     var admins = await Databricks.GetGroup.InvokeAsync(new()
+        ///     {
+        ///         DisplayName = "admins",
+        ///     });
+        /// 
+        ///     var spns = await Databricks.GetServicePrincipals.InvokeAsync(new()
+        ///     {
+        ///         DisplayNameContains = "my-spn",
+        ///     });
+        /// 
+        ///     var spn = ;
+        /// 
+        ///     var myMemberSpn = new List&lt;Databricks.GroupMember&gt;();
+        ///     foreach (var range in )
+        ///     {
+        ///         myMemberSpn.Add(new Databricks.GroupMember($"my_member_spn-{range.Key}", new()
+        ///         {
+        ///             GroupId = admins.Id,
+        ///             MemberId = spn[range.Value].SpId,
+        ///         }));
+        ///     }
+        /// });
+        /// ```
+        /// 
+        /// ## Related Resources
+        /// 
+        /// The following resources are used in the same context:
+        /// 
+        /// - End to end workspace management guide.
+        /// - databricks.getCurrentUser data to retrieve information about databricks.User or databricks_service_principal, that is calling Databricks REST API.
+        /// - databricks.Group to manage [Account-level](https://docs.databricks.com/aws/en/admin/users-groups/groups) or [Workspace-level](https://docs.databricks.com/aws/en/admin/users-groups/workspace-local-groups) groups.
+        /// - databricks.Group data to retrieve information about databricks.Group members, entitlements and instance profiles.
+        /// - databricks.GroupInstanceProfile to attach databricks.InstanceProfile (AWS) to databricks_group.
+        /// - databricks.GroupMember to attach users and groups as group members.
+        /// - databricks.Permissions to manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspace.
+        /// - DatabricksService principal to manage service principals
         /// </summary>
         public static Output<GetServicePrincipalsResult> Invoke(GetServicePrincipalsInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetServicePrincipalsResult>("databricks:index/getServicePrincipals:getServicePrincipals", args ?? new GetServicePrincipalsInvokeArgs(), options.WithDefaults());

@@ -32,6 +32,57 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.AccountNetworkPolicy;
+ * import com.pulumi.databricks.AccountNetworkPolicyArgs;
+ * import com.pulumi.databricks.inputs.AccountNetworkPolicyEgressArgs;
+ * import com.pulumi.databricks.inputs.AccountNetworkPolicyEgressNetworkAccessArgs;
+ * import com.pulumi.databricks.inputs.AccountNetworkPolicyEgressNetworkAccessPolicyEnforcementArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleNetworkPolicy = new AccountNetworkPolicy("exampleNetworkPolicy", AccountNetworkPolicyArgs.builder()
+ *             .networkPolicyId("example-network-policy")
+ *             .egress(AccountNetworkPolicyEgressArgs.builder()
+ *                 .networkAccess(AccountNetworkPolicyEgressNetworkAccessArgs.builder()
+ *                     .restrictionMode("RESTRICTED_ACCESS")
+ *                     .allowedInternetDestinations(AccountNetworkPolicyEgressNetworkAccessAllowedInternetDestinationArgs.builder()
+ *                         .destination("example.com")
+ *                         .internetDestinationType("DNS_NAME")
+ *                         .build())
+ *                     .allowedStorageDestinations(AccountNetworkPolicyEgressNetworkAccessAllowedStorageDestinationArgs.builder()
+ *                         .bucketName("example-aws-cloud-storage")
+ *                         .region("us-west-1")
+ *                         .storageDestinationType("AWS_S3")
+ *                         .build())
+ *                     .policyEnforcement(AccountNetworkPolicyEgressNetworkAccessPolicyEnforcementArgs.builder()
+ *                         .enforcementMode("ENFORCED")
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * As of Pulumi v1.5, resources can be imported through configuration.

@@ -57,6 +57,59 @@ namespace Pulumi.Databricks
     /// });
     /// ```
     /// 
+    /// ### Databricks to Databricks Sharing
+    /// 
+    /// Setting `AuthenticationType` type to `DATABRICKS` allows you to automatically create a provider for a recipient who
+    /// is using Databricks. To do this they would need to provide the global metastore id that you will be sharing with. The
+    /// global metastore id follows the format: `&lt;cloud&gt;:&lt;region&gt;:&lt;guid&gt;`
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var current = Databricks.GetCurrentUser.Invoke();
+    /// 
+    ///     var recipientMetastore = new Databricks.Metastore("recipient_metastore", new()
+    ///     {
+    ///         Name = "recipient",
+    ///         StorageRoot = Std.Format.Invoke(new()
+    ///         {
+    ///             Input = "abfss://%s@%s.dfs.core.windows.net/",
+    ///             Args = new[]
+    ///             {
+    ///                 unityCatalog.Name,
+    ///                 unityCatalogAzurermStorageAccount.Name,
+    ///             },
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         DeltaSharingScope = "INTERNAL",
+    ///         DeltaSharingRecipientTokenLifetimeInSeconds = 60000000,
+    ///         ForceDestroy = true,
+    ///     });
+    /// 
+    ///     var db2db = new Databricks.Recipient("db2db", new()
+    ///     {
+    ///         Name = $"{current.Apply(getCurrentUserResult =&gt; getCurrentUserResult.Alphanumeric)}-recipient",
+    ///         Comment = "Made by Pulumi",
+    ///         AuthenticationType = "DATABRICKS",
+    ///         DataRecipientGlobalMetastoreId = recipientMetastore.GlobalMetastoreId,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Related Resources
+    /// 
+    /// The following resources are often used in the same context:
+    /// 
+    /// * databricks.Share to create Delta Sharing shares.
+    /// * databricks.Grants to manage Delta Sharing permissions.
+    /// * databricks.getShares to read existing Delta Sharing shares.
+    /// 
     /// ## Import
     /// 
     /// The recipient resource can be imported using the name of the recipient:

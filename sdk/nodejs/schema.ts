@@ -126,7 +126,7 @@ export class Schema extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly schemaId: pulumi.Output<string>;
     /**
-     * Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
+     * Managed location of the schema. Location in cloud storage where data for managed tables will be stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
      */
     declare public readonly storageRoot: pulumi.Output<string | undefined>;
 
@@ -212,7 +212,7 @@ export interface SchemaState {
      */
     schemaId?: pulumi.Input<string>;
     /**
-     * Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
+     * Managed location of the schema. Location in cloud storage where data for managed tables will be stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
      */
     storageRoot?: pulumi.Input<string>;
 }
@@ -251,7 +251,7 @@ export interface SchemaArgs {
      */
     properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Managed location of the schema. Location in cloud storage where data for managed tables will be stored. If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
+     * Managed location of the schema. Location in cloud storage where data for managed tables will be stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
      */
     storageRoot?: pulumi.Input<string>;
 }

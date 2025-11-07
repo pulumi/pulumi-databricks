@@ -157,6 +157,31 @@ class AccountNetworkPolicy(pulumi.CustomResource):
 
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        example_network_policy = databricks.AccountNetworkPolicy("example_network_policy",
+            network_policy_id="example-network-policy",
+            egress={
+                "network_access": {
+                    "restriction_mode": "RESTRICTED_ACCESS",
+                    "allowed_internet_destinations": [{
+                        "destination": "example.com",
+                        "internet_destination_type": "DNS_NAME",
+                    }],
+                    "allowed_storage_destinations": [{
+                        "bucket_name": "example-aws-cloud-storage",
+                        "region": "us-west-1",
+                        "storage_destination_type": "AWS_S3",
+                    }],
+                    "policy_enforcement": {
+                        "enforcement_mode": "ENFORCED",
+                    },
+                },
+            })
+        ```
+
         ## Import
 
         As of Pulumi v1.5, resources can be imported through configuration.
@@ -205,6 +230,31 @@ class AccountNetworkPolicy(pulumi.CustomResource):
         > **Note** This resource can only be used with an account-level provider!
 
         ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        example_network_policy = databricks.AccountNetworkPolicy("example_network_policy",
+            network_policy_id="example-network-policy",
+            egress={
+                "network_access": {
+                    "restriction_mode": "RESTRICTED_ACCESS",
+                    "allowed_internet_destinations": [{
+                        "destination": "example.com",
+                        "internet_destination_type": "DNS_NAME",
+                    }],
+                    "allowed_storage_destinations": [{
+                        "bucket_name": "example-aws-cloud-storage",
+                        "region": "us-west-1",
+                        "storage_destination_type": "AWS_S3",
+                    }],
+                    "policy_enforcement": {
+                        "enforcement_mode": "ENFORCED",
+                    },
+                },
+            })
+        ```
 
         ## Import
 

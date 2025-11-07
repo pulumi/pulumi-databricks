@@ -119,7 +119,7 @@ import javax.annotation.Nullable;
  *             .contentBase64(StdFunctions.base64encode(Base64encodeArgs.builder()
  *                 .input("""
  * #!/bin/bash
- * echo "Hello World"
+ * echo \"Hello World\"
  *                 """)
  *                 .build()).result())
  *             .path(String.format("%s/fileName", this_.volumePath()))

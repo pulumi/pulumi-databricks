@@ -30,7 +30,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var workspace = new Aws.Ec2.VpcEndpoint("workspace", new()
+    ///     var workspace = new Aws.Index.VpcEndpoint("workspace", new()
     ///     {
     ///         VpcId = vpc.VpcId,
     ///         ServiceName = privateLink.WorkspaceService,
@@ -52,7 +52,7 @@ namespace Pulumi.Databricks
     ///         },
     ///     });
     /// 
-    ///     var relay = new Aws.Ec2.VpcEndpoint("relay", new()
+    ///     var relay = new Aws.Index.VpcEndpoint("relay", new()
     ///     {
     ///         VpcId = vpc.VpcId,
     ///         ServiceName = privateLink.RelayService,
@@ -88,7 +88,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var s3 = new Aws.Ec2.VpcEndpoint("s3", new()
+    ///     var s3 = new Aws.Index.VpcEndpoint("s3", new()
     ///     {
     ///         VpcId = vpc.VpcId,
     ///         RouteTableIds = vpc.PrivateRouteTableIds,
@@ -101,7 +101,7 @@ namespace Pulumi.Databricks
     ///         },
     ///     });
     /// 
-    ///     var sts = new Aws.Ec2.VpcEndpoint("sts", new()
+    ///     var sts = new Aws.Index.VpcEndpoint("sts", new()
     ///     {
     ///         VpcId = vpc.VpcId,
     ///         ServiceName = $"com.amazonaws.{region}.sts",
@@ -120,7 +120,7 @@ namespace Pulumi.Databricks
     ///         },
     ///     });
     /// 
-    ///     var kinesis_streams = new Aws.Ec2.VpcEndpoint("kinesis-streams", new()
+    ///     var kinesis_streams = new Aws.Index.VpcEndpoint("kinesis-streams", new()
     ///     {
     ///         VpcId = vpc.VpcId,
     ///         ServiceName = $"com.amazonaws.{region}.kinesis-streams",

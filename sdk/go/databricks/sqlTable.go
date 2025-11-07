@@ -61,7 +61,7 @@ type SqlTable struct {
 	SchemaName pulumi.StringOutput `pulumi:"schemaName"`
 	// For EXTERNAL Tables only: the name of storage credential to use. Change forces the creation of a new resource.
 	StorageCredentialName pulumi.StringPtrOutput `pulumi:"storageCredentialName"`
-	// URL of storage location for Table data (required for EXTERNAL Tables). Not supported for `VIEW` or `MANAGED` table_type.
+	// URL of storage location for Table data (required for EXTERNAL Tables).  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.).  Not supported for `VIEW` or `MANAGED` table_type.
 	StorageLocation pulumi.StringPtrOutput `pulumi:"storageLocation"`
 	// The unique identifier of the table.
 	TableId pulumi.StringOutput `pulumi:"tableId"`
@@ -137,7 +137,7 @@ type sqlTableState struct {
 	SchemaName *string `pulumi:"schemaName"`
 	// For EXTERNAL Tables only: the name of storage credential to use. Change forces the creation of a new resource.
 	StorageCredentialName *string `pulumi:"storageCredentialName"`
-	// URL of storage location for Table data (required for EXTERNAL Tables). Not supported for `VIEW` or `MANAGED` table_type.
+	// URL of storage location for Table data (required for EXTERNAL Tables).  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.).  Not supported for `VIEW` or `MANAGED` table_type.
 	StorageLocation *string `pulumi:"storageLocation"`
 	// The unique identifier of the table.
 	TableId *string `pulumi:"tableId"`
@@ -175,7 +175,7 @@ type SqlTableState struct {
 	SchemaName pulumi.StringPtrInput
 	// For EXTERNAL Tables only: the name of storage credential to use. Change forces the creation of a new resource.
 	StorageCredentialName pulumi.StringPtrInput
-	// URL of storage location for Table data (required for EXTERNAL Tables). Not supported for `VIEW` or `MANAGED` table_type.
+	// URL of storage location for Table data (required for EXTERNAL Tables).  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.).  Not supported for `VIEW` or `MANAGED` table_type.
 	StorageLocation pulumi.StringPtrInput
 	// The unique identifier of the table.
 	TableId pulumi.StringPtrInput
@@ -216,7 +216,7 @@ type sqlTableArgs struct {
 	SchemaName string `pulumi:"schemaName"`
 	// For EXTERNAL Tables only: the name of storage credential to use. Change forces the creation of a new resource.
 	StorageCredentialName *string `pulumi:"storageCredentialName"`
-	// URL of storage location for Table data (required for EXTERNAL Tables). Not supported for `VIEW` or `MANAGED` table_type.
+	// URL of storage location for Table data (required for EXTERNAL Tables).  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.).  Not supported for `VIEW` or `MANAGED` table_type.
 	StorageLocation *string `pulumi:"storageLocation"`
 	// Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL` or `VIEW`. Change forces the creation of a new resource.
 	TableType string `pulumi:"tableType"`
@@ -252,7 +252,7 @@ type SqlTableArgs struct {
 	SchemaName pulumi.StringInput
 	// For EXTERNAL Tables only: the name of storage credential to use. Change forces the creation of a new resource.
 	StorageCredentialName pulumi.StringPtrInput
-	// URL of storage location for Table data (required for EXTERNAL Tables). Not supported for `VIEW` or `MANAGED` table_type.
+	// URL of storage location for Table data (required for EXTERNAL Tables).  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.).  Not supported for `VIEW` or `MANAGED` table_type.
 	StorageLocation pulumi.StringPtrInput
 	// Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL` or `VIEW`. Change forces the creation of a new resource.
 	TableType pulumi.StringInput
@@ -416,7 +416,7 @@ func (o SqlTableOutput) StorageCredentialName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SqlTable) pulumi.StringPtrOutput { return v.StorageCredentialName }).(pulumi.StringPtrOutput)
 }
 
-// URL of storage location for Table data (required for EXTERNAL Tables). Not supported for `VIEW` or `MANAGED` table_type.
+// URL of storage location for Table data (required for EXTERNAL Tables).  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.).  Not supported for `VIEW` or `MANAGED` table_type.
 func (o SqlTableOutput) StorageLocation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SqlTable) pulumi.StringPtrOutput { return v.StorageLocation }).(pulumi.StringPtrOutput)
 }
