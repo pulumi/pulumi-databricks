@@ -20,6 +20,56 @@ import (
 //
 // ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewRfaAccessRequestDestinations(ctx, "customer_data_table", &databricks.RfaAccessRequestDestinationsArgs{
+//				Destinations: databricks.RfaAccessRequestDestinationsDestinationArray{
+//					&databricks.RfaAccessRequestDestinationsDestinationArgs{
+//						DestinationId:   pulumi.String("john.doe@databricks.com"),
+//						DestinationType: pulumi.String("EMAIL"),
+//					},
+//					&databricks.RfaAccessRequestDestinationsDestinationArgs{
+//						DestinationId:   pulumi.String("https://www.databricks.com/"),
+//						DestinationType: pulumi.String("URL"),
+//					},
+//					&databricks.RfaAccessRequestDestinationsDestinationArgs{
+//						DestinationId:   pulumi.String("456e7890-e89b-12d3-a456-426614174001"),
+//						DestinationType: pulumi.String("SLACK"),
+//					},
+//					&databricks.RfaAccessRequestDestinationsDestinationArgs{
+//						DestinationId:   pulumi.String("789e0123-e89b-12d3-a456-426614174002"),
+//						DestinationType: pulumi.String("MICROSOFT_TEAMS"),
+//					},
+//					&databricks.RfaAccessRequestDestinationsDestinationArgs{
+//						DestinationId:   pulumi.String("012e3456-e89b-12d3-a456-426614174003"),
+//						DestinationType: pulumi.String("GENERIC_WEBHOOK"),
+//					},
+//				},
+//				Securable: &databricks.RfaAccessRequestDestinationsSecurableArgs{
+//					Type:     pulumi.String("SCHEMA"),
+//					FullName: pulumi.String("main.customer_data"),
+//				},
+//				AreAnyDestinationsHidden: false,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // As of Pulumi v1.5, resources can be imported through configuration.

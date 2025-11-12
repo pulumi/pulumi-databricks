@@ -26,6 +26,71 @@ namespace Pulumi.Databricks
     /// 
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var sandbox = new Databricks.Catalog("sandbox", new()
+    ///     {
+    ///         Name = "sandbox",
+    ///         Comment = "this catalog is managed by terraform",
+    ///         Properties = 
+    ///         {
+    ///             { "purpose", "testing" },
+    ///         },
+    ///     });
+    /// 
+    ///     var myTestSchema = new Databricks.Schema("myTestSchema", new()
+    ///     {
+    ///         CatalogName = sandbox.Id,
+    ///         Name = "myTestSchema",
+    ///         Comment = "this database is managed by terraform",
+    ///         Properties = 
+    ///         {
+    ///             { "kind", "various" },
+    ///         },
+    ///     });
+    /// 
+    ///     var myTestTable = new Databricks.SqlTable("myTestTable", new()
+    ///     {
+    ///         CatalogName = "main",
+    ///         SchemaName = myTestSchema.Name,
+    ///         Name = "bar",
+    ///         TableType = "MANAGED",
+    ///         DataSourceFormat = "DELTA",
+    ///         Columns = new[]
+    ///         {
+    ///             new Databricks.Inputs.SqlTableColumnArgs
+    ///             {
+    ///                 Name = "timestamp",
+    ///                 Type = "int",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var @this = new Databricks.DataQualityMonitor("this", new()
+    ///     {
+    ///         ObjectType = "table",
+    ///         ObjectId = myTestTable.Id,
+    ///         DataProfilingConfig = new Databricks.Inputs.DataQualityMonitorDataProfilingConfigArgs
+    ///         {
+    ///             OutputSchema = myTestSchema.SchemaId,
+    ///         },
+    ///     });
+    /// 
+    ///     var thisDataQualityRefresh = new Databricks.DataQualityRefresh("this", new()
+    ///     {
+    ///         ObjectType = "table",
+    ///         ObjectId = myTestTable.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// As of Pulumi v1.5, resources can be imported through configuration.

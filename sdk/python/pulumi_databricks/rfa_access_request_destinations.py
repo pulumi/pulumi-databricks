@@ -132,6 +132,40 @@ class RfaAccessRequestDestinations(pulumi.CustomResource):
 
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        customer_data_table = databricks.RfaAccessRequestDestinations("customer_data_table",
+            destinations=[
+                {
+                    "destination_id": "john.doe@databricks.com",
+                    "destination_type": "EMAIL",
+                },
+                {
+                    "destination_id": "https://www.databricks.com/",
+                    "destination_type": "URL",
+                },
+                {
+                    "destination_id": "456e7890-e89b-12d3-a456-426614174001",
+                    "destination_type": "SLACK",
+                },
+                {
+                    "destination_id": "789e0123-e89b-12d3-a456-426614174002",
+                    "destination_type": "MICROSOFT_TEAMS",
+                },
+                {
+                    "destination_id": "012e3456-e89b-12d3-a456-426614174003",
+                    "destination_type": "GENERIC_WEBHOOK",
+                },
+            ],
+            securable={
+                "type": "SCHEMA",
+                "full_name": "main.customer_data",
+            },
+            are_any_destinations_hidden=False)
+        ```
+
         ## Import
 
         As of Pulumi v1.5, resources can be imported through configuration.
@@ -171,6 +205,40 @@ class RfaAccessRequestDestinations(pulumi.CustomResource):
         When a user requests access to a securable object, notifications can be sent to various destinations including email addresses, Slack channels, or Microsoft Teams channels. This resource allows you to configure these destinations to ensure that the appropriate stakeholders are notified of access requests.
 
         ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        customer_data_table = databricks.RfaAccessRequestDestinations("customer_data_table",
+            destinations=[
+                {
+                    "destination_id": "john.doe@databricks.com",
+                    "destination_type": "EMAIL",
+                },
+                {
+                    "destination_id": "https://www.databricks.com/",
+                    "destination_type": "URL",
+                },
+                {
+                    "destination_id": "456e7890-e89b-12d3-a456-426614174001",
+                    "destination_type": "SLACK",
+                },
+                {
+                    "destination_id": "789e0123-e89b-12d3-a456-426614174002",
+                    "destination_type": "MICROSOFT_TEAMS",
+                },
+                {
+                    "destination_id": "012e3456-e89b-12d3-a456-426614174003",
+                    "destination_type": "GENERIC_WEBHOOK",
+                },
+            ],
+            securable={
+                "type": "SCHEMA",
+                "full_name": "main.customer_data",
+            },
+            are_any_destinations_hidden=False)
+        ```
 
         ## Import
 

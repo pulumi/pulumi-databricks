@@ -18,6 +18,55 @@ namespace Pulumi.Databricks
     /// 
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var customerDataTable = new Databricks.RfaAccessRequestDestinations("customer_data_table", new()
+    ///     {
+    ///         Destinations = new[]
+    ///         {
+    ///             new Databricks.Inputs.RfaAccessRequestDestinationsDestinationArgs
+    ///             {
+    ///                 DestinationId = "john.doe@databricks.com",
+    ///                 DestinationType = "EMAIL",
+    ///             },
+    ///             new Databricks.Inputs.RfaAccessRequestDestinationsDestinationArgs
+    ///             {
+    ///                 DestinationId = "https://www.databricks.com/",
+    ///                 DestinationType = "URL",
+    ///             },
+    ///             new Databricks.Inputs.RfaAccessRequestDestinationsDestinationArgs
+    ///             {
+    ///                 DestinationId = "456e7890-e89b-12d3-a456-426614174001",
+    ///                 DestinationType = "SLACK",
+    ///             },
+    ///             new Databricks.Inputs.RfaAccessRequestDestinationsDestinationArgs
+    ///             {
+    ///                 DestinationId = "789e0123-e89b-12d3-a456-426614174002",
+    ///                 DestinationType = "MICROSOFT_TEAMS",
+    ///             },
+    ///             new Databricks.Inputs.RfaAccessRequestDestinationsDestinationArgs
+    ///             {
+    ///                 DestinationId = "012e3456-e89b-12d3-a456-426614174003",
+    ///                 DestinationType = "GENERIC_WEBHOOK",
+    ///             },
+    ///         },
+    ///         Securable = new Databricks.Inputs.RfaAccessRequestDestinationsSecurableArgs
+    ///         {
+    ///             Type = "SCHEMA",
+    ///             FullName = "main.customer_data",
+    ///         },
+    ///         AreAnyDestinationsHidden = false,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// As of Pulumi v1.5, resources can be imported through configuration.

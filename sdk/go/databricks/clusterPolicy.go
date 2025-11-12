@@ -71,8 +71,8 @@ import (
 //					"value": team,
 //				},
 //			}
-//			tmpJSON0, err := json.Marshal(std.Merge(ctx, map[string]interface{}{
-//				"input": []interface{}{
+//			tmpJSON0, err := json.Marshal(std.Merge(ctx, &std.MergeArgs{
+//				Input: []interface{}{
 //					defaultPolicy,
 //					policyOverrides,
 //				},

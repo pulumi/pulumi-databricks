@@ -8488,6 +8488,51 @@ public final class DatabricksFunctions {
      * 
      * ## Example Usage
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetDashboardsArgs;
+     * import com.pulumi.databricks.Permissions;
+     * import com.pulumi.databricks.PermissionsArgs;
+     * import com.pulumi.databricks.inputs.PermissionsAccessControlArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getDashboards(GetDashboardsArgs.builder()
+     *             .build());
+     * 
+     *         for (var range : KeyedValue.of(all.dashboards().stream().map(element -> element.dashboardId()).collect(toList()))) {
+     *             new Permissions("dashboardsPermissions-" + range.key(), PermissionsArgs.builder()
+     *                 .depends(List.of(all))
+     *                 .dashboardId(range.value())
+     *                 .accessControls(PermissionsAccessControlArgs.builder()
+     *                     .groupName("Example Group")
+     *                     .permissionLevel("CAN_MANAGE")
+     *                     .build())
+     *                 .build());
+     *         }
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetDashboardsResult> getDashboards() {
         return getDashboards(GetDashboardsArgs.Empty, InvokeOptions.Empty);
@@ -8498,6 +8543,51 @@ public final class DatabricksFunctions {
      * &gt; This data source can only be used with a workspace-level provider!
      * 
      * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetDashboardsArgs;
+     * import com.pulumi.databricks.Permissions;
+     * import com.pulumi.databricks.PermissionsArgs;
+     * import com.pulumi.databricks.inputs.PermissionsAccessControlArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getDashboards(GetDashboardsArgs.builder()
+     *             .build());
+     * 
+     *         for (var range : KeyedValue.of(all.dashboards().stream().map(element -> element.dashboardId()).collect(toList()))) {
+     *             new Permissions("dashboardsPermissions-" + range.key(), PermissionsArgs.builder()
+     *                 .depends(List.of(all))
+     *                 .dashboardId(range.value())
+     *                 .accessControls(PermissionsAccessControlArgs.builder()
+     *                     .groupName("Example Group")
+     *                     .permissionLevel("CAN_MANAGE")
+     *                     .build())
+     *                 .build());
+     *         }
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetDashboardsResult> getDashboardsPlain() {
@@ -8510,6 +8600,51 @@ public final class DatabricksFunctions {
      * 
      * ## Example Usage
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetDashboardsArgs;
+     * import com.pulumi.databricks.Permissions;
+     * import com.pulumi.databricks.PermissionsArgs;
+     * import com.pulumi.databricks.inputs.PermissionsAccessControlArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getDashboards(GetDashboardsArgs.builder()
+     *             .build());
+     * 
+     *         for (var range : KeyedValue.of(all.dashboards().stream().map(element -> element.dashboardId()).collect(toList()))) {
+     *             new Permissions("dashboardsPermissions-" + range.key(), PermissionsArgs.builder()
+     *                 .depends(List.of(all))
+     *                 .dashboardId(range.value())
+     *                 .accessControls(PermissionsAccessControlArgs.builder()
+     *                     .groupName("Example Group")
+     *                     .permissionLevel("CAN_MANAGE")
+     *                     .build())
+     *                 .build());
+     *         }
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetDashboardsResult> getDashboards(GetDashboardsArgs args) {
         return getDashboards(args, InvokeOptions.Empty);
@@ -8520,6 +8655,51 @@ public final class DatabricksFunctions {
      * &gt; This data source can only be used with a workspace-level provider!
      * 
      * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetDashboardsArgs;
+     * import com.pulumi.databricks.Permissions;
+     * import com.pulumi.databricks.PermissionsArgs;
+     * import com.pulumi.databricks.inputs.PermissionsAccessControlArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getDashboards(GetDashboardsArgs.builder()
+     *             .build());
+     * 
+     *         for (var range : KeyedValue.of(all.dashboards().stream().map(element -> element.dashboardId()).collect(toList()))) {
+     *             new Permissions("dashboardsPermissions-" + range.key(), PermissionsArgs.builder()
+     *                 .depends(List.of(all))
+     *                 .dashboardId(range.value())
+     *                 .accessControls(PermissionsAccessControlArgs.builder()
+     *                     .groupName("Example Group")
+     *                     .permissionLevel("CAN_MANAGE")
+     *                     .build())
+     *                 .build());
+     *         }
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetDashboardsResult> getDashboardsPlain(GetDashboardsPlainArgs args) {
@@ -8532,6 +8712,51 @@ public final class DatabricksFunctions {
      * 
      * ## Example Usage
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetDashboardsArgs;
+     * import com.pulumi.databricks.Permissions;
+     * import com.pulumi.databricks.PermissionsArgs;
+     * import com.pulumi.databricks.inputs.PermissionsAccessControlArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getDashboards(GetDashboardsArgs.builder()
+     *             .build());
+     * 
+     *         for (var range : KeyedValue.of(all.dashboards().stream().map(element -> element.dashboardId()).collect(toList()))) {
+     *             new Permissions("dashboardsPermissions-" + range.key(), PermissionsArgs.builder()
+     *                 .depends(List.of(all))
+     *                 .dashboardId(range.value())
+     *                 .accessControls(PermissionsAccessControlArgs.builder()
+     *                     .groupName("Example Group")
+     *                     .permissionLevel("CAN_MANAGE")
+     *                     .build())
+     *                 .build());
+     *         }
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetDashboardsResult> getDashboards(GetDashboardsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getDashboards:getDashboards", TypeShape.of(GetDashboardsResult.class), args, Utilities.withVersion(options));
@@ -8543,6 +8768,51 @@ public final class DatabricksFunctions {
      * 
      * ## Example Usage
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetDashboardsArgs;
+     * import com.pulumi.databricks.Permissions;
+     * import com.pulumi.databricks.PermissionsArgs;
+     * import com.pulumi.databricks.inputs.PermissionsAccessControlArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getDashboards(GetDashboardsArgs.builder()
+     *             .build());
+     * 
+     *         for (var range : KeyedValue.of(all.dashboards().stream().map(element -> element.dashboardId()).collect(toList()))) {
+     *             new Permissions("dashboardsPermissions-" + range.key(), PermissionsArgs.builder()
+     *                 .depends(List.of(all))
+     *                 .dashboardId(range.value())
+     *                 .accessControls(PermissionsAccessControlArgs.builder()
+     *                     .groupName("Example Group")
+     *                     .permissionLevel("CAN_MANAGE")
+     *                     .build())
+     *                 .build());
+     *         }
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetDashboardsResult> getDashboards(GetDashboardsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getDashboards:getDashboards", TypeShape.of(GetDashboardsResult.class), args, Utilities.withVersion(options));
@@ -8553,6 +8823,51 @@ public final class DatabricksFunctions {
      * &gt; This data source can only be used with a workspace-level provider!
      * 
      * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetDashboardsArgs;
+     * import com.pulumi.databricks.Permissions;
+     * import com.pulumi.databricks.PermissionsArgs;
+     * import com.pulumi.databricks.inputs.PermissionsAccessControlArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getDashboards(GetDashboardsArgs.builder()
+     *             .build());
+     * 
+     *         for (var range : KeyedValue.of(all.dashboards().stream().map(element -> element.dashboardId()).collect(toList()))) {
+     *             new Permissions("dashboardsPermissions-" + range.key(), PermissionsArgs.builder()
+     *                 .depends(List.of(all))
+     *                 .dashboardId(range.value())
+     *                 .accessControls(PermissionsAccessControlArgs.builder()
+     *                     .groupName("Example Group")
+     *                     .permissionLevel("CAN_MANAGE")
+     *                     .build())
+     *                 .build());
+     *         }
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetDashboardsResult> getDashboardsPlain(GetDashboardsPlainArgs args, InvokeOptions options) {
