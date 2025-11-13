@@ -25,6 +25,64 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.RfaAccessRequestDestinations;
+ * import com.pulumi.databricks.RfaAccessRequestDestinationsArgs;
+ * import com.pulumi.databricks.inputs.RfaAccessRequestDestinationsDestinationArgs;
+ * import com.pulumi.databricks.inputs.RfaAccessRequestDestinationsSecurableArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var customerDataTable = new RfaAccessRequestDestinations("customerDataTable", RfaAccessRequestDestinationsArgs.builder()
+ *             .destinations(            
+ *                 RfaAccessRequestDestinationsDestinationArgs.builder()
+ *                     .destinationId("john.doe}{@literal @}{@code databricks.com")
+ *                     .destinationType("EMAIL")
+ *                     .build(),
+ *                 RfaAccessRequestDestinationsDestinationArgs.builder()
+ *                     .destinationId("https://www.databricks.com/")
+ *                     .destinationType("URL")
+ *                     .build(),
+ *                 RfaAccessRequestDestinationsDestinationArgs.builder()
+ *                     .destinationId("456e7890-e89b-12d3-a456-426614174001")
+ *                     .destinationType("SLACK")
+ *                     .build(),
+ *                 RfaAccessRequestDestinationsDestinationArgs.builder()
+ *                     .destinationId("789e0123-e89b-12d3-a456-426614174002")
+ *                     .destinationType("MICROSOFT_TEAMS")
+ *                     .build(),
+ *                 RfaAccessRequestDestinationsDestinationArgs.builder()
+ *                     .destinationId("012e3456-e89b-12d3-a456-426614174003")
+ *                     .destinationType("GENERIC_WEBHOOK")
+ *                     .build())
+ *             .securable(RfaAccessRequestDestinationsSecurableArgs.builder()
+ *                 .type("SCHEMA")
+ *                 .fullName("main.customer_data")
+ *                 .build())
+ *             .areAnyDestinationsHidden(false)
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * As of Pulumi v1.5, resources can be imported through configuration.

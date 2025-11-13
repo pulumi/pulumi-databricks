@@ -28,6 +28,78 @@ import (
 //
 // ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			sandbox, err := databricks.NewCatalog(ctx, "sandbox", &databricks.CatalogArgs{
+//				Name:    pulumi.String("sandbox"),
+//				Comment: pulumi.String("this catalog is managed by terraform"),
+//				Properties: pulumi.StringMap{
+//					"purpose": pulumi.String("testing"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			myTestSchema, err := databricks.NewSchema(ctx, "myTestSchema", &databricks.SchemaArgs{
+//				CatalogName: sandbox.ID(),
+//				Name:        pulumi.String("myTestSchema"),
+//				Comment:     pulumi.String("this database is managed by terraform"),
+//				Properties: pulumi.StringMap{
+//					"kind": pulumi.String("various"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			myTestTable, err := databricks.NewSqlTable(ctx, "myTestTable", &databricks.SqlTableArgs{
+//				CatalogName:      pulumi.String("main"),
+//				SchemaName:       myTestSchema.Name,
+//				Name:             pulumi.String("bar"),
+//				TableType:        pulumi.String("MANAGED"),
+//				DataSourceFormat: pulumi.String("DELTA"),
+//				Columns: databricks.SqlTableColumnArray{
+//					&databricks.SqlTableColumnArgs{
+//						Name: pulumi.String("timestamp"),
+//						Type: pulumi.String("int"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewDataQualityMonitor(ctx, "this", &databricks.DataQualityMonitorArgs{
+//				ObjectType: pulumi.String("table"),
+//				ObjectId:   myTestTable.ID(),
+//				DataProfilingConfig: &databricks.DataQualityMonitorDataProfilingConfigArgs{
+//					OutputSchema: myTestSchema.SchemaId,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewDataQualityRefresh(ctx, "this", &databricks.DataQualityRefreshArgs{
+//				ObjectType: pulumi.String("table"),
+//				ObjectId:   myTestTable.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // As of Pulumi v1.5, resources can be imported through configuration.

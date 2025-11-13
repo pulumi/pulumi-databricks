@@ -286,6 +286,24 @@ class AppsSettingsCustomTemplate(pulumi.CustomResource):
 
         This example creates a custom template that declares required user API scopes.
 
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        api_scopes_example = databricks.AppsSettingsCustomTemplate("api_scopes_example",
+            name="my-api-template",
+            description="A template that requests user API scopes",
+            git_repo="https://github.com/example/my-app.git",
+            path="templates/app",
+            git_provider="github",
+            manifest={
+                "version": 1,
+                "name": "my-databricks-app",
+                "description": "This app requires the SQL API scope.",
+                "user_api_scopes": ["sql"],
+            })
+        ```
+
         ### Example with Resource Requirements
 
         This example defines a template that requests specific workspace resources with permissions granted.
@@ -389,6 +407,24 @@ class AppsSettingsCustomTemplate(pulumi.CustomResource):
         ### Example with API Scopes
 
         This example creates a custom template that declares required user API scopes.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        api_scopes_example = databricks.AppsSettingsCustomTemplate("api_scopes_example",
+            name="my-api-template",
+            description="A template that requests user API scopes",
+            git_repo="https://github.com/example/my-app.git",
+            path="templates/app",
+            git_provider="github",
+            manifest={
+                "version": 1,
+                "name": "my-databricks-app",
+                "description": "This app requires the SQL API scope.",
+                "user_api_scopes": ["sql"],
+            })
+        ```
 
         ### Example with Resource Requirements
 
