@@ -38,6 +38,25 @@ import * as utilities from "./utilities";
  *
  * This example creates a custom template that declares required user API scopes.
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const apiScopesExample = new databricks.AppsSettingsCustomTemplate("api_scopes_example", {
+ *     name: "my-api-template",
+ *     description: "A template that requests user API scopes",
+ *     gitRepo: "https://github.com/example/my-app.git",
+ *     path: "templates/app",
+ *     gitProvider: "github",
+ *     manifest: {
+ *         version: 1,
+ *         name: "my-databricks-app",
+ *         description: "This app requires the SQL API scope.",
+ *         userApiScopes: ["sql"],
+ *     },
+ * });
+ * ```
+ *
  * ### Example with Resource Requirements
  *
  * This example defines a template that requests specific workspace resources with permissions granted.

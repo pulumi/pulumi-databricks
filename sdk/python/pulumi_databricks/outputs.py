@@ -5934,6 +5934,23 @@ class ClusterDockerImage(dict):
         :param 'ClusterDockerImageBasicAuthArgs' basic_auth: `basic_auth.username` and `basic_auth.password` for Docker repository. Docker registry credentials are encrypted when they are stored in Databricks internal storage and when they are passed to a registry upon fetching Docker images at cluster launch.  For better security, these credentials should be stored in the secret scope and referred using secret path syntax: `{{secrets/scope/key}}`, otherwise other users of the workspace may access them via UI/API.
                
                Example usage with azurerm_container_registry and docker_registry_image, that you can adapt to your specific use-case:
+               
+               ```python
+               import pulumi
+               import pulumi_databricks as databricks
+               import pulumi_docker as docker
+               
+               this = docker.RegistryImage("this",
+                   build=[{}],
+                   name=f"{this_azurerm_container_registry['loginServer']}/sample:latest")
+               this_cluster = databricks.Cluster("this", docker_image={
+                   "url": this.name,
+                   "basic_auth": {
+                       "username": this_azurerm_container_registry["adminUsername"],
+                       "password": this_azurerm_container_registry["adminPassword"],
+                   },
+               })
+               ```
         """
         pulumi.set(__self__, "url", url)
         if basic_auth is not None:
@@ -5954,6 +5971,23 @@ class ClusterDockerImage(dict):
         `basic_auth.username` and `basic_auth.password` for Docker repository. Docker registry credentials are encrypted when they are stored in Databricks internal storage and when they are passed to a registry upon fetching Docker images at cluster launch.  For better security, these credentials should be stored in the secret scope and referred using secret path syntax: `{{secrets/scope/key}}`, otherwise other users of the workspace may access them via UI/API.
 
         Example usage with azurerm_container_registry and docker_registry_image, that you can adapt to your specific use-case:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+        import pulumi_docker as docker
+
+        this = docker.RegistryImage("this",
+            build=[{}],
+            name=f"{this_azurerm_container_registry['loginServer']}/sample:latest")
+        this_cluster = databricks.Cluster("this", docker_image={
+            "url": this.name,
+            "basic_auth": {
+                "username": this_azurerm_container_registry["adminUsername"],
+                "password": this_azurerm_container_registry["adminPassword"],
+            },
+        })
+        ```
         """
         return pulumi.get(self, "basic_auth")
 
@@ -10719,6 +10753,23 @@ class InstancePoolPreloadedDockerImage(dict):
         :param 'InstancePoolPreloadedDockerImageBasicAuthArgs' basic_auth: `basic_auth.username` and `basic_auth.password` for Docker repository. Docker registry credentials are encrypted when they are stored in Databricks internal storage and when they are passed to a registry upon fetching Docker images at cluster launch.  For better security, these credentials should be stored in the secret scope and referred using secret path syntax: `{{secrets/scope/key}}`, otherwise other users of the workspace may access them via UI/API.
                
                Example usage with azurerm_container_registry and docker_registry_image, that you can adapt to your specific use-case:
+               
+               ```python
+               import pulumi
+               import pulumi_databricks as databricks
+               import pulumi_docker as docker
+               
+               this = docker.RegistryImage("this",
+                   build=[{}],
+                   name=f"{this_azurerm_container_registry['loginServer']}/sample:latest")
+               this_instance_pool = databricks.InstancePool("this", preloaded_docker_images=[{
+                   "url": this.name,
+                   "basic_auth": {
+                       "username": this_azurerm_container_registry["adminUsername"],
+                       "password": this_azurerm_container_registry["adminPassword"],
+                   },
+               }])
+               ```
         """
         pulumi.set(__self__, "url", url)
         if basic_auth is not None:
@@ -10739,6 +10790,23 @@ class InstancePoolPreloadedDockerImage(dict):
         `basic_auth.username` and `basic_auth.password` for Docker repository. Docker registry credentials are encrypted when they are stored in Databricks internal storage and when they are passed to a registry upon fetching Docker images at cluster launch.  For better security, these credentials should be stored in the secret scope and referred using secret path syntax: `{{secrets/scope/key}}`, otherwise other users of the workspace may access them via UI/API.
 
         Example usage with azurerm_container_registry and docker_registry_image, that you can adapt to your specific use-case:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+        import pulumi_docker as docker
+
+        this = docker.RegistryImage("this",
+            build=[{}],
+            name=f"{this_azurerm_container_registry['loginServer']}/sample:latest")
+        this_instance_pool = databricks.InstancePool("this", preloaded_docker_images=[{
+            "url": this.name,
+            "basic_auth": {
+                "username": this_azurerm_container_registry["adminUsername"],
+                "password": this_azurerm_container_registry["adminPassword"],
+            },
+        }])
+        ```
         """
         return pulumi.get(self, "basic_auth")
 

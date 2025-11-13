@@ -21,6 +21,49 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const sandbox = new databricks.Catalog("sandbox", {
+ *     name: "sandbox",
+ *     comment: "this catalog is managed by terraform",
+ *     properties: {
+ *         purpose: "testing",
+ *     },
+ * });
+ * const myTestSchema = new databricks.Schema("myTestSchema", {
+ *     catalogName: sandbox.id,
+ *     name: "myTestSchema",
+ *     comment: "this database is managed by terraform",
+ *     properties: {
+ *         kind: "various",
+ *     },
+ * });
+ * const myTestTable = new databricks.SqlTable("myTestTable", {
+ *     catalogName: "main",
+ *     schemaName: myTestSchema.name,
+ *     name: "bar",
+ *     tableType: "MANAGED",
+ *     dataSourceFormat: "DELTA",
+ *     columns: [{
+ *         name: "timestamp",
+ *         type: "int",
+ *     }],
+ * });
+ * const _this = new databricks.DataQualityMonitor("this", {
+ *     objectType: "table",
+ *     objectId: myTestTable.id,
+ *     dataProfilingConfig: {
+ *         outputSchema: myTestSchema.schemaId,
+ *     },
+ * });
+ * const thisDataQualityRefresh = new databricks.DataQualityRefresh("this", {
+ *     objectType: "table",
+ *     objectId: myTestTable.id,
+ * });
+ * ```
+ *
  * ## Import
  *
  * As of Pulumi v1.5, resources can be imported through configuration.

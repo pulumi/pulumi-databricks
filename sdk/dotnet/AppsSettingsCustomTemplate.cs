@@ -49,6 +49,36 @@ namespace Pulumi.Databricks
     /// 
     /// This example creates a custom template that declares required user API scopes.
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var apiScopesExample = new Databricks.AppsSettingsCustomTemplate("api_scopes_example", new()
+    ///     {
+    ///         Name = "my-api-template",
+    ///         Description = "A template that requests user API scopes",
+    ///         GitRepo = "https://github.com/example/my-app.git",
+    ///         Path = "templates/app",
+    ///         GitProvider = "github",
+    ///         Manifest = new Databricks.Inputs.AppsSettingsCustomTemplateManifestArgs
+    ///         {
+    ///             Version = 1,
+    ///             Name = "my-databricks-app",
+    ///             Description = "This app requires the SQL API scope.",
+    ///             UserApiScopes = new[]
+    ///             {
+    ///                 "sql",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ### Example with Resource Requirements
     /// 
     /// This example defines a template that requests specific workspace resources with permissions granted.

@@ -248,6 +248,44 @@ class DataQualityRefresh(pulumi.CustomResource):
 
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        sandbox = databricks.Catalog("sandbox",
+            name="sandbox",
+            comment="this catalog is managed by terraform",
+            properties={
+                "purpose": "testing",
+            })
+        my_test_schema = databricks.Schema("myTestSchema",
+            catalog_name=sandbox.id,
+            name="myTestSchema",
+            comment="this database is managed by terraform",
+            properties={
+                "kind": "various",
+            })
+        my_test_table = databricks.SqlTable("myTestTable",
+            catalog_name="main",
+            schema_name=my_test_schema.name,
+            name="bar",
+            table_type="MANAGED",
+            data_source_format="DELTA",
+            columns=[{
+                "name": "timestamp",
+                "type": "int",
+            }])
+        this = databricks.DataQualityMonitor("this",
+            object_type="table",
+            object_id=my_test_table.id,
+            data_profiling_config={
+                "output_schema": my_test_schema.schema_id,
+            })
+        this_data_quality_refresh = databricks.DataQualityRefresh("this",
+            object_type="table",
+            object_id=my_test_table.id)
+        ```
+
         ## Import
 
         As of Pulumi v1.5, resources can be imported through configuration.
@@ -303,6 +341,44 @@ class DataQualityRefresh(pulumi.CustomResource):
         > **Note** This resource can only be used with a workspace-level provider!
 
         ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        sandbox = databricks.Catalog("sandbox",
+            name="sandbox",
+            comment="this catalog is managed by terraform",
+            properties={
+                "purpose": "testing",
+            })
+        my_test_schema = databricks.Schema("myTestSchema",
+            catalog_name=sandbox.id,
+            name="myTestSchema",
+            comment="this database is managed by terraform",
+            properties={
+                "kind": "various",
+            })
+        my_test_table = databricks.SqlTable("myTestTable",
+            catalog_name="main",
+            schema_name=my_test_schema.name,
+            name="bar",
+            table_type="MANAGED",
+            data_source_format="DELTA",
+            columns=[{
+                "name": "timestamp",
+                "type": "int",
+            }])
+        this = databricks.DataQualityMonitor("this",
+            object_type="table",
+            object_id=my_test_table.id,
+            data_profiling_config={
+                "output_schema": my_test_schema.schema_id,
+            })
+        this_data_quality_refresh = databricks.DataQualityRefresh("this",
+            object_type="table",
+            object_id=my_test_table.id)
+        ```
 
         ## Import
 

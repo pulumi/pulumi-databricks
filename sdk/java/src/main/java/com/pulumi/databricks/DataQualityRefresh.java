@@ -31,6 +31,81 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.Catalog;
+ * import com.pulumi.databricks.CatalogArgs;
+ * import com.pulumi.databricks.Schema;
+ * import com.pulumi.databricks.SchemaArgs;
+ * import com.pulumi.databricks.SqlTable;
+ * import com.pulumi.databricks.SqlTableArgs;
+ * import com.pulumi.databricks.inputs.SqlTableColumnArgs;
+ * import com.pulumi.databricks.DataQualityMonitor;
+ * import com.pulumi.databricks.DataQualityMonitorArgs;
+ * import com.pulumi.databricks.inputs.DataQualityMonitorDataProfilingConfigArgs;
+ * import com.pulumi.databricks.DataQualityRefresh;
+ * import com.pulumi.databricks.DataQualityRefreshArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var sandbox = new Catalog("sandbox", CatalogArgs.builder()
+ *             .name("sandbox")
+ *             .comment("this catalog is managed by terraform")
+ *             .properties(Map.of("purpose", "testing"))
+ *             .build());
+ * 
+ *         var myTestSchema = new Schema("myTestSchema", SchemaArgs.builder()
+ *             .catalogName(sandbox.id())
+ *             .name("myTestSchema")
+ *             .comment("this database is managed by terraform")
+ *             .properties(Map.of("kind", "various"))
+ *             .build());
+ * 
+ *         var myTestTable = new SqlTable("myTestTable", SqlTableArgs.builder()
+ *             .catalogName("main")
+ *             .schemaName(myTestSchema.name())
+ *             .name("bar")
+ *             .tableType("MANAGED")
+ *             .dataSourceFormat("DELTA")
+ *             .columns(SqlTableColumnArgs.builder()
+ *                 .name("timestamp")
+ *                 .type("int")
+ *                 .build())
+ *             .build());
+ * 
+ *         var this_ = new DataQualityMonitor("this", DataQualityMonitorArgs.builder()
+ *             .objectType("table")
+ *             .objectId(myTestTable.id())
+ *             .dataProfilingConfig(DataQualityMonitorDataProfilingConfigArgs.builder()
+ *                 .outputSchema(myTestSchema.schemaId())
+ *                 .build())
+ *             .build());
+ * 
+ *         var thisDataQualityRefresh = new DataQualityRefresh("thisDataQualityRefresh", DataQualityRefreshArgs.builder()
+ *             .objectType("table")
+ *             .objectId(myTestTable.id())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * As of Pulumi v1.5, resources can be imported through configuration.

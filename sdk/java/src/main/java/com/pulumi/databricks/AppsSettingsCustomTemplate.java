@@ -70,6 +70,48 @@ import javax.annotation.Nullable;
  * 
  * This example creates a custom template that declares required user API scopes.
  * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.AppsSettingsCustomTemplate;
+ * import com.pulumi.databricks.AppsSettingsCustomTemplateArgs;
+ * import com.pulumi.databricks.inputs.AppsSettingsCustomTemplateManifestArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var apiScopesExample = new AppsSettingsCustomTemplate("apiScopesExample", AppsSettingsCustomTemplateArgs.builder()
+ *             .name("my-api-template")
+ *             .description("A template that requests user API scopes")
+ *             .gitRepo("https://github.com/example/my-app.git")
+ *             .path("templates/app")
+ *             .gitProvider("github")
+ *             .manifest(AppsSettingsCustomTemplateManifestArgs.builder()
+ *                 .version(1)
+ *                 .name("my-databricks-app")
+ *                 .description("This app requires the SQL API scope.")
+ *                 .userApiScopes(List.of("sql"))
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ### Example with Resource Requirements
  * 
  * This example defines a template that requests specific workspace resources with permissions granted.

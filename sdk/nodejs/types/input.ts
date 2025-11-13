@@ -1105,6 +1105,24 @@ export interface ClusterDockerImage {
      * `basic_auth.username` and `basic_auth.password` for Docker repository. Docker registry credentials are encrypted when they are stored in Databricks internal storage and when they are passed to a registry upon fetching Docker images at cluster launch.  For better security, these credentials should be stored in the secret scope and referred using secret path syntax: `{{secrets/scope/key}}`, otherwise other users of the workspace may access them via UI/API.
      *
      * Example usage with azurermContainerRegistry and docker_registry_image, that you can adapt to your specific use-case:
+     *
+     * ```typescript
+     * import * as pulumi from "@pulumi/pulumi";
+     * import * as databricks from "@pulumi/databricks";
+     * import * as docker from "@pulumi/docker";
+     *
+     * const _this = new docker.RegistryImage("this", {
+     *     build: [{}],
+     *     name: `${thisAzurermContainerRegistry.loginServer}/sample:latest`,
+     * });
+     * const thisCluster = new databricks.Cluster("this", {dockerImage: {
+     *     url: _this.name,
+     *     basicAuth: {
+     *         username: thisAzurermContainerRegistry.adminUsername,
+     *         password: thisAzurermContainerRegistry.adminPassword,
+     *     },
+     * }});
+     * ```
      */
     basicAuth?: pulumi.Input<inputs.ClusterDockerImageBasicAuth>;
     /**
@@ -10764,6 +10782,24 @@ export interface InstancePoolPreloadedDockerImage {
      * `basic_auth.username` and `basic_auth.password` for Docker repository. Docker registry credentials are encrypted when they are stored in Databricks internal storage and when they are passed to a registry upon fetching Docker images at cluster launch.  For better security, these credentials should be stored in the secret scope and referred using secret path syntax: `{{secrets/scope/key}}`, otherwise other users of the workspace may access them via UI/API.
      *
      * Example usage with azurermContainerRegistry and docker_registry_image, that you can adapt to your specific use-case:
+     *
+     * ```typescript
+     * import * as pulumi from "@pulumi/pulumi";
+     * import * as databricks from "@pulumi/databricks";
+     * import * as docker from "@pulumi/docker";
+     *
+     * const _this = new docker.RegistryImage("this", {
+     *     build: [{}],
+     *     name: `${thisAzurermContainerRegistry.loginServer}/sample:latest`,
+     * });
+     * const thisInstancePool = new databricks.InstancePool("this", {preloadedDockerImages: [{
+     *     url: _this.name,
+     *     basicAuth: {
+     *         username: thisAzurermContainerRegistry.adminUsername,
+     *         password: thisAzurermContainerRegistry.adminPassword,
+     *     },
+     * }]});
+     * ```
      */
     basicAuth?: pulumi.Input<inputs.InstancePoolPreloadedDockerImageBasicAuth>;
     /**

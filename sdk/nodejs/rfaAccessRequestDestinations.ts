@@ -15,6 +15,41 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const customerDataTable = new databricks.RfaAccessRequestDestinations("customer_data_table", {
+ *     destinations: [
+ *         {
+ *             destinationId: "john.doe@databricks.com",
+ *             destinationType: "EMAIL",
+ *         },
+ *         {
+ *             destinationId: "https://www.databricks.com/",
+ *             destinationType: "URL",
+ *         },
+ *         {
+ *             destinationId: "456e7890-e89b-12d3-a456-426614174001",
+ *             destinationType: "SLACK",
+ *         },
+ *         {
+ *             destinationId: "789e0123-e89b-12d3-a456-426614174002",
+ *             destinationType: "MICROSOFT_TEAMS",
+ *         },
+ *         {
+ *             destinationId: "012e3456-e89b-12d3-a456-426614174003",
+ *             destinationType: "GENERIC_WEBHOOK",
+ *         },
+ *     ],
+ *     securable: {
+ *         type: "SCHEMA",
+ *         fullName: "main.customer_data",
+ *     },
+ *     areAnyDestinationsHidden: false,
+ * });
+ * ```
+ *
  * ## Import
  *
  * As of Pulumi v1.5, resources can be imported through configuration.
