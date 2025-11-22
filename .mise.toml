@@ -1,2 +1,4 @@
 [tools]
 golangci-lint = "2.5.0"
+java = "corretto-17"
+gradle = "7.6"
