@@ -8,7 +8,6 @@ on:
 
 env:
   DATABRICKS_HOST: https://accounts.cloud.databricks.com
-  MISE_FETCH_REMOTE_VERSIONS_TIMEOUT: 30s
   PULUMI_API: https://api.pulumi-staging.io
   PULUMI_GO_DEP_ROOT: ${{ github.workspace }}/..
   PULUMI_LOCAL_NUGET: ${{ github.workspace }}/nuget
@@ -25,6 +24,8 @@ jobs:
           persist-credentials: false
       - name: Setup mise
         uses: jdx/mise-action@v3
+        env:
+          MISE_FETCH_REMOTE_VERSIONS_TIMEOUT: 30s
         with:
           version: 2025.11.6
           github_token: ${{ secrets.GITHUB_TOKEN }}
