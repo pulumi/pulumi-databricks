@@ -67,7 +67,7 @@ jobs:
         with:
           version: 2025.11.6
           github_token: ${{ secrets.GITHUB_TOKEN }}
-      - name: Debug: Check if .asdf exists
+      - name: Debug Check if .asdf exists
         if: matrix.language == 'java'
         run: |
           if [ -e ~/.asdf ]; then
