@@ -58,6 +58,13 @@ jobs:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         # also save this cache since we are using a different mise env.
         cache_save: true
+    - name: Setup mise (second install to sync directories)
+      uses: jdx/mise-action@d16887ba50704baed7de72bd1e82e04391e4457a # v3
+      env:
+        MISE_ENV: test
+      with:
+        version: 2025.11.6
+        github_token: ${{ secrets.GITHUB_TOKEN }}
     - name: Prepare local workspace
       run: make prepare_local_workspace
       env:

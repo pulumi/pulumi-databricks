@@ -63,6 +63,11 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           # only saving the cache in the prerequisites job
           cache_save: false
+      - name: Setup mise (second install to sync directories)
+        uses: jdx/mise-action@d16887ba50704baed7de72bd1e82e04391e4457a # v3
+        with:
+          version: 2025.11.6
+          github_token: ${{ secrets.GITHUB_TOKEN }}
       # Based on https://github.com/actions/cache/blob/main/examples.md#go---modules
       - name: Get GOCACHE
         id: gocache

@@ -28,6 +28,11 @@ jobs:
         version: 2025.11.6
         github_token: ${{ secrets.GITHUB_TOKEN }}
         cache_save: false # A different job handles caching our tools.
+    - name: Setup mise (second install to sync directories)
+      uses: jdx/mise-action@d16887ba50704baed7de72bd1e82e04391e4457a # v3
+      with:
+        version: 2025.11.6
+        github_token: ${{ secrets.GITHUB_TOKEN }}
     - name: disarm go:embed directives to enable lint
       continue-on-error: true # this fails if there are no go:embed directives
       run: |
