@@ -84,8 +84,7 @@ jobs:
       - name: Symlink mise to asdf for Gradle toolchain detection
         if: matrix.language == 'java'
         run: |
-          mkdir -p ~/.asdf
-          ln -sf ~/.local/share/mise ~/.asdf
+          mkdir -p ~/.asdf/installs/ && ln -s ~/.local/share/mise/installs/java ~/.asdf/installs/
       - name: Setup Go Cache
         if: matrix.language == 'go' || contains(matrix.language, 'go')
         uses: actions/setup-go@4dc6199c7b1a012772edbd06daecab0f50c9053c # v6
