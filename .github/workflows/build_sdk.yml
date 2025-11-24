@@ -67,6 +67,24 @@ jobs:
         with:
           version: 2025.11.6
           github_token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Debug: Check if .asdf exists
+        if: matrix.language == 'java'
+        run: |
+          if [ -e ~/.asdf ]; then
+            echo "~/.asdf exists"
+            ls -la ~/.asdf
+            if [ -L ~/.asdf ]; then
+              echo "~/.asdf is a symlink pointing to: $(readlink ~/.asdf)"
+            elif [ -d ~/.asdf ]; then
+              echo "~/.asdf is a directory"
+            fi
+          else
+            echo "~/.asdf does not exist"
+          fi
+      - name: Symlink mise to asdf for Gradle toolchain detection
+        if: matrix.language == 'java'
+        run: |
+          ln -sf ~/.local/share/mise ~/.asdf
       - name: Setup Go Cache
         if: matrix.language == 'go' || contains(matrix.language, 'go')
         uses: actions/setup-go@4dc6199c7b1a012772edbd06daecab0f50c9053c # v6
