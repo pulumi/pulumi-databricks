@@ -8,6 +8,7 @@ on:
 
 env:
   DATABRICKS_HOST: https://accounts.cloud.databricks.com
+  MISE_FETCH_REMOTE_VERSIONS_TIMEOUT: 30s
   PULUMI_API: https://api.pulumi-staging.io
   PULUMI_GO_DEP_ROOT: ${{ github.workspace }}/..
   PULUMI_LOCAL_NUGET: ${{ github.workspace }}/nuget
@@ -28,11 +29,6 @@ jobs:
         version: 2025.11.6
         github_token: ${{ secrets.GITHUB_TOKEN }}
         cache_save: false # A different job handles caching our tools.
-    - name: Setup mise (second install to sync directories)
-      uses: jdx/mise-action@d16887ba50704baed7de72bd1e82e04391e4457a # v3
-      with:
-        version: 2025.11.6
-        github_token: ${{ secrets.GITHUB_TOKEN }}
     - name: disarm go:embed directives to enable lint
       continue-on-error: true # this fails if there are no go:embed directives
       run: |

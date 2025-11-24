@@ -8,6 +8,7 @@ on:
 
 env:
   DATABRICKS_HOST: https://accounts.cloud.databricks.com
+  MISE_FETCH_REMOTE_VERSIONS_TIMEOUT: 30s
   PULUMI_API: https://api.pulumi-staging.io
   PULUMI_GO_DEP_ROOT: ${{ github.workspace }}/..
   PULUMI_LOCAL_NUGET: ${{ github.workspace }}/nuget
@@ -29,11 +30,6 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           # only saving the cache in the prerequisites job
           cache_save: false
-      - name: Setup mise (second install to sync directories)
-        uses: jdx/mise-action@d16887ba50704baed7de72bd1e82e04391e4457a # v3
-        with:
-          version: 2025.11.6
-          github_token: ${{ secrets.GITHUB_TOKEN }}
       - run: make prepare_local_workspace
         continue-on-error: true
         env:

@@ -11,6 +11,7 @@ on:
 
 env:
   DATABRICKS_HOST: https://accounts.cloud.databricks.com
+  MISE_FETCH_REMOTE_VERSIONS_TIMEOUT: 30s
   PULUMI_API: https://api.pulumi-staging.io
   PULUMI_GO_DEP_ROOT: ${{ github.workspace }}/..
   PULUMI_LOCAL_NUGET: ${{ github.workspace }}/nuget
@@ -62,29 +63,6 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           # only saving the cache in the prerequisites job
           cache_save: false
-      - name: Setup mise (second install to sync directories)
-        uses: jdx/mise-action@d16887ba50704baed7de72bd1e82e04391e4457a # v3
-        with:
-          version: 2025.11.6
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-      - name: Debug to list mise installs
-        if: matrix.language == 'java'
-        run: |
-          echo "Contents of ~/.local/share/mise:"
-          ls -la ~/.local/share/mise/ || echo "Directory does not exist"
-          echo ""
-          echo "Contents of ~/.local/share/mise/installs:"
-          ls -la ~/.local/share/mise/installs/ || echo "Directory does not exist"
-          echo ""
-          echo "Looking for Gradle:"
-          find ~/.local/share/mise/installs -name "gradle*" -type d 2>/dev/null || echo "No Gradle found"
-          echo ""
-          echo "Looking for Gradle binary:"
-          find ~/.local/share/mise/installs -name "gradle" -type f 2>/dev/null || echo "No Gradle binary found"
-      - name: Symlink mise to asdf for Gradle toolchain detection
-        if: matrix.language == 'java'
-        run: |
-          mkdir -p ~/.asdf/installs/ && ln -s ~/.local/share/mise/installs/java ~/.asdf/installs/
       - name: Setup Go Cache
         if: matrix.language == 'go' || contains(matrix.language, 'go')
         uses: actions/setup-go@4dc6199c7b1a012772edbd06daecab0f50c9053c # v6

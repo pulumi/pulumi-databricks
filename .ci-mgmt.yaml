@@ -1,17 +1,18 @@
 provider: databricks
 major-version: 1
 esc:
-    enabled: true
+  enabled: true
 env:
-    DATABRICKS_USERNAME: ${{ secrets.DATABRICKS_USERNAME }}
-    DATABRICKS_PASSWORD: ${{ secrets.DATABRICKS_PASSWORD}}
-    DATABRICKS_ACCOUNT_ID: ${{ secrets.DATABRICKS_ACCOUNT_ID}}
-    DATABRICKS_HOST: https://accounts.cloud.databricks.com
+  DATABRICKS_USERNAME: ${{ secrets.DATABRICKS_USERNAME }}
+  DATABRICKS_PASSWORD: ${{ secrets.DATABRICKS_PASSWORD}}
+  DATABRICKS_ACCOUNT_ID: ${{ secrets.DATABRICKS_ACCOUNT_ID}}
+  DATABRICKS_HOST: https://accounts.cloud.databricks.com
+  MISE_FETCH_REMOTE_VERSIONS_TIMEOUT: 30s
 providerDefaultBranch: main
 makeTemplate: bridged
 allowMissingDocs: true
 pulumiConvert: 1
 registryDocs: true
 license:
-    ignore:
-        - github.com/databricks/terraform-provider-databricks/shim
+  ignore:
+    - github.com/databricks/terraform-provider-databricks/shim
