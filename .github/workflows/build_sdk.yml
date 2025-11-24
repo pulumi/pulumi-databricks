@@ -67,6 +67,20 @@ jobs:
         with:
           version: 2025.11.6
           github_token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Debug to list mise installs
+        if: matrix.language == 'java'
+        run: |
+          echo "Contents of ~/.local/share/mise:"
+          ls -la ~/.local/share/mise/ || echo "Directory does not exist"
+          echo ""
+          echo "Contents of ~/.local/share/mise/installs:"
+          ls -la ~/.local/share/mise/installs/ || echo "Directory does not exist"
+          echo ""
+          echo "Looking for Gradle:"
+          find ~/.local/share/mise/installs -name "gradle*" -type d 2>/dev/null || echo "No Gradle found"
+          echo ""
+          echo "Looking for Gradle binary:"
+          find ~/.local/share/mise/installs -name "gradle" -type f 2>/dev/null || echo "No Gradle binary found"
       - name: Symlink mise to asdf for Gradle toolchain detection
         if: matrix.language == 'java'
         run: |
