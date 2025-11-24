@@ -7,7 +7,6 @@ env:
   DATABRICKS_PASSWORD: ${{ secrets.DATABRICKS_PASSWORD}}
   DATABRICKS_ACCOUNT_ID: ${{ secrets.DATABRICKS_ACCOUNT_ID}}
   DATABRICKS_HOST: https://accounts.cloud.databricks.com
-  MISE_FETCH_REMOTE_VERSIONS_TIMEOUT: 30s
 providerDefaultBranch: main
 makeTemplate: bridged
 allowMissingDocs: true
