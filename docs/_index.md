@@ -28,6 +28,7 @@ name: configuration-example
 runtime: nodejs
 
 ```
+
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
 import * as databricks from "@pulumi/databricks";
@@ -70,6 +71,7 @@ const thisJob = new databricks.Job("this", {
 export const notebookUrl = _this.url;
 export const jobUrl = thisJob.url;
 ```
+
 {{% /choosable %}}
 {{% choosable language python %}}
 ```yaml
@@ -78,6 +80,7 @@ name: configuration-example
 runtime: python
 
 ```
+
 ```python
 import pulumi
 import pulumi_databricks as databricks
@@ -112,6 +115,7 @@ this_job = databricks.Job("this",
 pulumi.export("notebookUrl", this.url)
 pulumi.export("jobUrl", this_job.url)
 ```
+
 {{% /choosable %}}
 {{% choosable language csharp %}}
 ```yaml
@@ -120,6 +124,7 @@ name: configuration-example
 runtime: dotnet
 
 ```
+
 ```csharp
 using System.Collections.Generic;
 using System.Linq;
@@ -189,6 +194,7 @@ display(spark.range(10))
 });
 
 ```
+
 {{% /choosable %}}
 {{% choosable language go %}}
 ```yaml
@@ -197,6 +203,7 @@ name: configuration-example
 runtime: go
 
 ```
+
 ```go
 package main
 
@@ -269,6 +276,7 @@ func main() {
 	})
 }
 ```
+
 {{% /choosable %}}
 {{% choosable language yaml %}}
 ```yaml
@@ -277,9 +285,11 @@ name: configuration-example
 runtime: yaml
 
 ```
+
 ```yaml
 Example currently unavailable in this language
 ```
+
 {{% /choosable %}}
 {{% choosable language java %}}
 ```yaml
@@ -288,6 +298,7 @@ name: configuration-example
 runtime: java
 
 ```
+
 ```java
 package generated_program;
 
@@ -362,6 +373,7 @@ display(spark.range(10))
     }
 }
 ```
+
 {{% /choosable %}}
 {{< /chooser >}}
 ## Configuration Reference
@@ -491,6 +503,7 @@ const clusterAdmin = new databricks.Group("cluster_admin", {
     allowInstancePoolCreate: false,
 });
 ```
+
 {{% /choosable %}}
 {{% choosable language python %}}
 ```python
@@ -502,6 +515,7 @@ cluster_admin = databricks.Group("cluster_admin",
     allow_cluster_create=True,
     allow_instance_pool_create=False)
 ```
+
 {{% /choosable %}}
 {{% choosable language csharp %}}
 ```csharp
@@ -522,6 +536,7 @@ return await Deployment.RunAsync(() =>
 });
 
 ```
+
 {{% /choosable %}}
 {{% choosable language go %}}
 ```go
@@ -546,6 +561,7 @@ func main() {
 	})
 }
 ```
+
 {{% /choosable %}}
 {{% choosable language yaml %}}
 ```yaml
@@ -558,6 +574,7 @@ resources:
       allowClusterCreate: true
       allowInstancePoolCreate: false
 ```
+
 {{% /choosable %}}
 {{% choosable language java %}}
 ```java
@@ -590,6 +607,7 @@ public class App {
     }
 }
 ```
+
 {{% /choosable %}}
 {{< /chooser >}}
 ### Authenticating with hostname and token
@@ -669,6 +687,7 @@ config:
         value: 'TODO: azurerm_databricks_workspace.this.workspace_url'
 
 ```
+
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
 import * as azure from "@pulumi/azure";
@@ -682,6 +701,7 @@ const _this = new azure.databricks.Workspace("this", {
 });
 const my_user = new databricks.User("my-user", {userName: "test-user@databricks.com"});
 ```
+
 {{% /choosable %}}
 {{% choosable language python %}}
 ```yaml
@@ -709,6 +729,7 @@ config:
         value: 'TODO: azurerm_databricks_workspace.this.workspace_url'
 
 ```
+
 ```python
 import pulumi
 import pulumi_azure as azure
@@ -721,6 +742,7 @@ this = azure.databricks.Workspace("this",
     sku="premium")
 my_user = databricks.User("my-user", user_name="test-user@databricks.com")
 ```
+
 {{% /choosable %}}
 {{% choosable language csharp %}}
 ```yaml
@@ -748,6 +770,7 @@ config:
         value: 'TODO: azurerm_databricks_workspace.this.workspace_url'
 
 ```
+
 ```csharp
 using System.Collections.Generic;
 using System.Linq;
@@ -773,6 +796,7 @@ return await Deployment.RunAsync(() =>
 });
 
 ```
+
 {{% /choosable %}}
 {{% choosable language go %}}
 ```yaml
@@ -800,6 +824,7 @@ config:
         value: 'TODO: azurerm_databricks_workspace.this.workspace_url'
 
 ```
+
 ```go
 package main
 
@@ -830,6 +855,7 @@ func main() {
 	})
 }
 ```
+
 {{% /choosable %}}
 {{% choosable language yaml %}}
 ```yaml
@@ -857,6 +883,7 @@ config:
         value: 'TODO: azurerm_databricks_workspace.this.workspace_url'
 
 ```
+
 ```yaml
 resources:
   this:
@@ -871,6 +898,7 @@ resources:
     properties:
       userName: test-user@databricks.com
 ```
+
 {{% /choosable %}}
 {{% choosable language java %}}
 ```yaml
@@ -898,6 +926,7 @@ config:
         value: 'TODO: azurerm_databricks_workspace.this.workspace_url'
 
 ```
+
 ```java
 package generated_program;
 
@@ -935,6 +964,7 @@ public class App {
     }
 }
 ```
+
 {{% /choosable %}}
 {{< /chooser >}}
 
@@ -958,6 +988,7 @@ config:
         value: 'TODO: azurerm_databricks_workspace.this.workspace_url'
 
 ```
+
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
 import * as azure from "@pulumi/azure";
@@ -974,6 +1005,7 @@ const my_user = new databricks.User("my-user", {
     displayName: "Test User",
 });
 ```
+
 {{% /choosable %}}
 {{% choosable language python %}}
 ```yaml
@@ -985,6 +1017,7 @@ config:
         value: 'TODO: azurerm_databricks_workspace.this.workspace_url'
 
 ```
+
 ```python
 import pulumi
 import pulumi_azure as azure
@@ -999,6 +1032,7 @@ my_user = databricks.User("my-user",
     user_name="test-user@databricks.com",
     display_name="Test User")
 ```
+
 {{% /choosable %}}
 {{% choosable language csharp %}}
 ```yaml
@@ -1010,6 +1044,7 @@ config:
         value: 'TODO: azurerm_databricks_workspace.this.workspace_url'
 
 ```
+
 ```csharp
 using System.Collections.Generic;
 using System.Linq;
@@ -1036,6 +1071,7 @@ return await Deployment.RunAsync(() =>
 });
 
 ```
+
 {{% /choosable %}}
 {{% choosable language go %}}
 ```yaml
@@ -1047,6 +1083,7 @@ config:
         value: 'TODO: azurerm_databricks_workspace.this.workspace_url'
 
 ```
+
 ```go
 package main
 
@@ -1078,6 +1115,7 @@ func main() {
 	})
 }
 ```
+
 {{% /choosable %}}
 {{% choosable language yaml %}}
 ```yaml
@@ -1089,6 +1127,7 @@ config:
         value: 'TODO: azurerm_databricks_workspace.this.workspace_url'
 
 ```
+
 ```yaml
 resources:
   this:
@@ -1104,6 +1143,7 @@ resources:
       userName: test-user@databricks.com
       displayName: Test User
 ```
+
 {{% /choosable %}}
 {{% choosable language java %}}
 ```yaml
@@ -1115,6 +1155,7 @@ config:
         value: 'TODO: azurerm_databricks_workspace.this.workspace_url'
 
 ```
+
 ```java
 package generated_program;
 
@@ -1153,6 +1194,7 @@ public class App {
     }
 }
 ```
+
 {{% /choosable %}}
 {{< /chooser >}}
 ### Authenticating with Azure-managed Service Principal using Client Secret
@@ -1184,6 +1226,7 @@ config:
         value: 'TODO: azurerm_databricks_workspace.this.workspace_url'
 
 ```
+
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
 import * as azure from "@pulumi/azure";
@@ -1197,6 +1240,7 @@ const _this = new azure.databricks.Workspace("this", {
 });
 const my_user = new databricks.User("my-user", {userName: "test-user@databricks.com"});
 ```
+
 {{% /choosable %}}
 {{% choosable language python %}}
 ```yaml
@@ -1224,6 +1268,7 @@ config:
         value: 'TODO: azurerm_databricks_workspace.this.workspace_url'
 
 ```
+
 ```python
 import pulumi
 import pulumi_azure as azure
@@ -1236,6 +1281,7 @@ this = azure.databricks.Workspace("this",
     sku="premium")
 my_user = databricks.User("my-user", user_name="test-user@databricks.com")
 ```
+
 {{% /choosable %}}
 {{% choosable language csharp %}}
 ```yaml
@@ -1263,6 +1309,7 @@ config:
         value: 'TODO: azurerm_databricks_workspace.this.workspace_url'
 
 ```
+
 ```csharp
 using System.Collections.Generic;
 using System.Linq;
@@ -1288,6 +1335,7 @@ return await Deployment.RunAsync(() =>
 });
 
 ```
+
 {{% /choosable %}}
 {{% choosable language go %}}
 ```yaml
@@ -1315,6 +1363,7 @@ config:
         value: 'TODO: azurerm_databricks_workspace.this.workspace_url'
 
 ```
+
 ```go
 package main
 
@@ -1345,6 +1394,7 @@ func main() {
 	})
 }
 ```
+
 {{% /choosable %}}
 {{% choosable language yaml %}}
 ```yaml
@@ -1372,6 +1422,7 @@ config:
         value: 'TODO: azurerm_databricks_workspace.this.workspace_url'
 
 ```
+
 ```yaml
 resources:
   this:
@@ -1386,6 +1437,7 @@ resources:
     properties:
       userName: test-user@databricks.com
 ```
+
 {{% /choosable %}}
 {{% choosable language java %}}
 ```yaml
@@ -1413,6 +1465,7 @@ config:
         value: 'TODO: azurerm_databricks_workspace.this.workspace_url'
 
 ```
+
 ```java
 package generated_program;
 
@@ -1450,6 +1503,7 @@ public class App {
     }
 }
 ```
+
 {{% /choosable %}}
 {{< /chooser >}}
 
