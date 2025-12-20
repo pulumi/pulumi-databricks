@@ -742,10 +742,21 @@
                                         "maxItemsOne": false
                                     }
                                 }
+                            },
+                            "kafka_source": {
+                                "fields": {
+                                    "entity_column_identifiers": {
+                                        "maxItemsOne": false
+                                    }
+                                }
                             }
                         }
                     }
                 }
+            },
+            "databricks_feature_engineering_kafka_config": {
+                "current": "databricks:index/featureEngineeringKafkaConfig:FeatureEngineeringKafkaConfig",
+                "majorVersion": 1
             },
             "databricks_feature_engineering_materialized_feature": {
                 "current": "databricks:index/featureEngineeringMaterializedFeature:FeatureEngineeringMaterializedFeature",
@@ -2116,6 +2127,16 @@
                                 "file_arrival": {
                                     "maxItemsOne": true
                                 },
+                                "model": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "aliases": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
                                 "periodic": {
                                     "maxItemsOne": true
                                 },
@@ -3052,7 +3073,14 @@
                         }
                     },
                     "gateway_definition": {
-                        "maxItemsOne": true
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "connection_parameters": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
                     },
                     "ingestion_definition": {
                         "maxItemsOne": true,
@@ -3982,6 +4010,10 @@
             },
             "databricks_workspace_conf": {
                 "current": "databricks:index/workspaceConf:WorkspaceConf",
+                "majorVersion": 1
+            },
+            "databricks_workspace_entity_tag_assignment": {
+                "current": "databricks:index/workspaceEntityTagAssignment:WorkspaceEntityTagAssignment",
                 "majorVersion": 1
             },
             "databricks_workspace_file": {
@@ -5000,6 +5032,13 @@
                                         "maxItemsOne": false
                                     }
                                 }
+                            },
+                            "kafka_source": {
+                                "fields": {
+                                    "entity_column_identifiers": {
+                                        "maxItemsOne": false
+                                    }
+                                }
                             }
                         }
                     }
@@ -5031,11 +5070,31 @@
                                                     "maxItemsOne": false
                                                 }
                                             }
+                                        },
+                                        "kafka_source": {
+                                            "fields": {
+                                                "entity_column_identifiers": {
+                                                    "maxItemsOne": false
+                                                }
+                                            }
                                         }
                                     }
                                 }
                             }
                         }
+                    }
+                }
+            },
+            "databricks_feature_engineering_kafka_config": {
+                "current": "databricks:index/getFeatureEngineeringKafkaConfig:getFeatureEngineeringKafkaConfig",
+                "majorVersion": 1
+            },
+            "databricks_feature_engineering_kafka_configs": {
+                "current": "databricks:index/getFeatureEngineeringKafkaConfigs:getFeatureEngineeringKafkaConfigs",
+                "majorVersion": 1,
+                "fields": {
+                    "kafka_configs": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -6692,6 +6751,9 @@
                 "fields": {
                     "application_ids": {
                         "maxItemsOne": false
+                    },
+                    "service_principals": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -7152,6 +7214,34 @@
                 "current": "databricks:index/getUser:getUser",
                 "majorVersion": 1
             },
+            "databricks_users": {
+                "current": "databricks:index/getUsers:getUsers",
+                "majorVersion": 1,
+                "fields": {
+                    "users": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "emails": {
+                                    "maxItemsOne": false
+                                },
+                                "entitlements": {
+                                    "maxItemsOne": false
+                                },
+                                "groups": {
+                                    "maxItemsOne": false
+                                },
+                                "roles": {
+                                    "maxItemsOne": false
+                                },
+                                "schemas": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "databricks_views": {
                 "current": "databricks:index/getViews:getViews",
                 "majorVersion": 1,
@@ -7195,6 +7285,19 @@
                 "majorVersion": 1,
                 "fields": {
                     "ids": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "databricks_workspace_entity_tag_assignment": {
+                "current": "databricks:index/getWorkspaceEntityTagAssignment:getWorkspaceEntityTagAssignment",
+                "majorVersion": 1
+            },
+            "databricks_workspace_entity_tag_assignments": {
+                "current": "databricks:index/getWorkspaceEntityTagAssignments:getWorkspaceEntityTagAssignments",
+                "majorVersion": 1,
+                "fields": {
+                    "tag_assignments": {
                         "maxItemsOne": false
                     }
                 }
@@ -7303,6 +7406,7 @@
             "databricks:index/externalLocation:ExternalLocation": 0,
             "databricks:index/externalMetadata:ExternalMetadata": 1,
             "databricks:index/featureEngineeringFeature:FeatureEngineeringFeature": 1,
+            "databricks:index/featureEngineeringKafkaConfig:FeatureEngineeringKafkaConfig": 1,
             "databricks:index/featureEngineeringMaterializedFeature:FeatureEngineeringMaterializedFeature": 1,
             "databricks:index/file:File": 0,
             "databricks:index/gitCredential:GitCredential": 0,
@@ -7390,6 +7494,7 @@
             "databricks:index/volume:Volume": 0,
             "databricks:index/workspaceBinding:WorkspaceBinding": 0,
             "databricks:index/workspaceConf:WorkspaceConf": 0,
+            "databricks:index/workspaceEntityTagAssignment:WorkspaceEntityTagAssignment": 1,
             "databricks:index/workspaceFile:WorkspaceFile": 0,
             "databricks:index/workspaceNetworkOption:WorkspaceNetworkOption": 1,
             "databricks:index/workspaceSettingV2:WorkspaceSettingV2": 1
@@ -7443,6 +7548,8 @@
             "databricks:index/getExternalMetadatas:getExternalMetadatas": 1,
             "databricks:index/getFeatureEngineeringFeature:getFeatureEngineeringFeature": 1,
             "databricks:index/getFeatureEngineeringFeatures:getFeatureEngineeringFeatures": 1,
+            "databricks:index/getFeatureEngineeringKafkaConfig:getFeatureEngineeringKafkaConfig": 1,
+            "databricks:index/getFeatureEngineeringKafkaConfigs:getFeatureEngineeringKafkaConfigs": 1,
             "databricks:index/getFeatureEngineeringMaterializedFeature:getFeatureEngineeringMaterializedFeature": 1,
             "databricks:index/getFeatureEngineeringMaterializedFeatures:getFeatureEngineeringMaterializedFeatures": 1,
             "databricks:index/getFunctions:getFunctions": 1,
@@ -7495,9 +7602,12 @@
             "databricks:index/getTagPolicies:getTagPolicies": 1,
             "databricks:index/getTagPolicy:getTagPolicy": 1,
             "databricks:index/getUser:getUser": 0,
+            "databricks:index/getUsers:getUsers": 1,
             "databricks:index/getViews:getViews": 0,
             "databricks:index/getVolume:getVolume": 0,
             "databricks:index/getVolumes:getVolumes": 1,
+            "databricks:index/getWorkspaceEntityTagAssignment:getWorkspaceEntityTagAssignment": 1,
+            "databricks:index/getWorkspaceEntityTagAssignments:getWorkspaceEntityTagAssignments": 1,
             "databricks:index/getWorkspaceNetworkOption:getWorkspaceNetworkOption": 1,
             "databricks:index/getWorkspaceSettingV2:getWorkspaceSettingV2": 1,
             "databricks:index/getZones:getZones": 0
