@@ -34,11 +34,11 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
- * ### Creating a serverless workspace in AWS
+ * ### Creating a serverless workspace in AWS and GCP
  * 
  * Creating a serverless workspace does not require any prerequisite resources. Simply specify `computeMode = &#34;SERVERLESS&#34;` when creating the workspace. Serverless workspaces must not include `credentialsId` or `storageConfigurationId`.
  * 
- * To use serverless workspaces, you must enroll in the [Default Storage preview](https://docs.databricks.com/aws/en/storage/express-storage).
+ * On [AWS](https://docs.databricks.com/aws/en/admin/workspace/serverless-workspaces):
  * 
  * <pre>
  * {@code
@@ -66,6 +66,42 @@ import javax.annotation.Nullable;
  *             .accountId("")
  *             .workspaceName("serverless-workspace")
  *             .awsRegion("us-east-1")
+ *             .computeMode("SERVERLESS")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * On [GCP](https://docs.databricks.com/gcp/en/admin/workspace/serverless-workspaces):
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.MwsWorkspaces;
+ * import com.pulumi.databricks.MwsWorkspacesArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var serverlessWorkspace = new MwsWorkspaces("serverlessWorkspace", MwsWorkspacesArgs.builder()
+ *             .accountId("")
+ *             .workspaceName("serverless-workspace")
+ *             .location("us-east4")
  *             .computeMode("SERVERLESS")
  *             .build());
  * 
@@ -599,10 +635,10 @@ public class MwsWorkspaces extends com.pulumi.resources.CustomResource {
     }
     /**
      * @deprecated
-     * gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.97.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.100.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      * 
      */
-    @Deprecated /* gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.97.0/docs/guides/gcp-workspace#creating-a-databricks-workspace */
+    @Deprecated /* gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.100.0/docs/guides/gcp-workspace#creating-a-databricks-workspace */
     @Export(name="gkeConfig", refs={MwsWorkspacesGkeConfig.class}, tree="[0]")
     private Output</* @Nullable */ MwsWorkspacesGkeConfig> gkeConfig;
 

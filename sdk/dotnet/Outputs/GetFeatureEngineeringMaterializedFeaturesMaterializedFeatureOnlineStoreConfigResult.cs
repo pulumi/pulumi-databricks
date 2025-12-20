@@ -14,50 +14,37 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOnlineStoreConfigResult
     {
         /// <summary>
-        /// (string) - The capacity of the online store. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
+        /// (string) - The Unity Catalog catalog name. This name is also used as the Lakebase logical database name
         /// </summary>
-        public readonly string Capacity;
+        public readonly string CatalogName;
         /// <summary>
-        /// (string) - The timestamp when the online store was created
+        /// (string) - The name of the target online store
         /// </summary>
-        public readonly string CreationTime;
+        public readonly string OnlineStoreName;
         /// <summary>
-        /// (string) - The email of the creator of the online store
+        /// (string) - The Unity Catalog schema name
         /// </summary>
-        public readonly string Creator;
+        public readonly string SchemaName;
         /// <summary>
-        /// (string) - The name of the online store. This is the unique identifier for the online store
+        /// (string) - Prefix for Unity Catalog table name.
+        /// The materialized feature will be stored in a Lakebase table with this prefix and a generated postfix
         /// </summary>
-        public readonly string Name;
-        /// <summary>
-        /// (integer) - The number of read replicas for the online store. Defaults to 0
-        /// </summary>
-        public readonly int? ReadReplicaCount;
-        /// <summary>
-        /// (string) - The current state of the online store. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
-        /// </summary>
-        public readonly string State;
+        public readonly string TableNamePrefix;
 
         [OutputConstructor]
         private GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOnlineStoreConfigResult(
-            string capacity,
+            string catalogName,
 
-            string creationTime,
+            string onlineStoreName,
 
-            string creator,
+            string schemaName,
 
-            string name,
-
-            int? readReplicaCount,
-
-            string state)
+            string tableNamePrefix)
         {
-            Capacity = capacity;
-            CreationTime = creationTime;
-            Creator = creator;
-            Name = name;
-            ReadReplicaCount = readReplicaCount;
-            State = state;
+            CatalogName = catalogName;
+            OnlineStoreName = onlineStoreName;
+            SchemaName = schemaName;
+            TableNamePrefix = tableNamePrefix;
         }
     }
 }

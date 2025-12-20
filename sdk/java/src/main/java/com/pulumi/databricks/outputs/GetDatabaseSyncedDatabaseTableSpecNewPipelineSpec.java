@@ -12,6 +12,11 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetDatabaseSyncedDatabaseTableSpecNewPipelineSpec {
     /**
+     * @return (string) - Budget policy to set on the newly created pipeline
+     * 
+     */
+    private @Nullable String budgetPolicyId;
+    /**
      * @return (string) - This field needs to be specified if the destination catalog is a managed postgres catalog.
      * 
      */
@@ -23,6 +28,13 @@ public final class GetDatabaseSyncedDatabaseTableSpecNewPipelineSpec {
     private @Nullable String storageSchema;
 
     private GetDatabaseSyncedDatabaseTableSpecNewPipelineSpec() {}
+    /**
+     * @return (string) - Budget policy to set on the newly created pipeline
+     * 
+     */
+    public Optional<String> budgetPolicyId() {
+        return Optional.ofNullable(this.budgetPolicyId);
+    }
     /**
      * @return (string) - This field needs to be specified if the destination catalog is a managed postgres catalog.
      * 
@@ -47,15 +59,23 @@ public final class GetDatabaseSyncedDatabaseTableSpecNewPipelineSpec {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String budgetPolicyId;
         private @Nullable String storageCatalog;
         private @Nullable String storageSchema;
         public Builder() {}
         public Builder(GetDatabaseSyncedDatabaseTableSpecNewPipelineSpec defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.budgetPolicyId = defaults.budgetPolicyId;
     	      this.storageCatalog = defaults.storageCatalog;
     	      this.storageSchema = defaults.storageSchema;
         }
 
+        @CustomType.Setter
+        public Builder budgetPolicyId(@Nullable String budgetPolicyId) {
+
+            this.budgetPolicyId = budgetPolicyId;
+            return this;
+        }
         @CustomType.Setter
         public Builder storageCatalog(@Nullable String storageCatalog) {
 
@@ -70,6 +90,7 @@ public final class GetDatabaseSyncedDatabaseTableSpecNewPipelineSpec {
         }
         public GetDatabaseSyncedDatabaseTableSpecNewPipelineSpec build() {
             final var _resultValue = new GetDatabaseSyncedDatabaseTableSpecNewPipelineSpec();
+            _resultValue.budgetPolicyId = budgetPolicyId;
             _resultValue.storageCatalog = storageCatalog;
             _resultValue.storageSchema = storageSchema;
             return _resultValue;

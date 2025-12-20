@@ -11,6 +11,7 @@ import com.pulumi.databricks.FeatureEngineeringFeatureArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.FeatureEngineeringFeatureState;
 import com.pulumi.databricks.outputs.FeatureEngineeringFeatureFunction;
+import com.pulumi.databricks.outputs.FeatureEngineeringFeatureLineageContext;
 import com.pulumi.databricks.outputs.FeatureEngineeringFeatureSource;
 import com.pulumi.databricks.outputs.FeatureEngineeringFeatureTimeWindow;
 import java.lang.String;
@@ -114,6 +115,12 @@ public class FeatureEngineeringFeature extends com.pulumi.resources.CustomResour
     public Output<List<String>> inputs() {
         return this.inputs;
     }
+    @Export(name="lineageContext", refs={FeatureEngineeringFeatureLineageContext.class}, tree="[0]")
+    private Output</* @Nullable */ FeatureEngineeringFeatureLineageContext> lineageContext;
+
+    public Output<Optional<FeatureEngineeringFeatureLineageContext>> lineageContext() {
+        return Codegen.optional(this.lineageContext);
+    }
     /**
      * The data source of the feature
      * 
@@ -133,14 +140,14 @@ public class FeatureEngineeringFeature extends com.pulumi.resources.CustomResour
      * 
      */
     @Export(name="timeWindow", refs={FeatureEngineeringFeatureTimeWindow.class}, tree="[0]")
-    private Output<FeatureEngineeringFeatureTimeWindow> timeWindow;
+    private Output</* @Nullable */ FeatureEngineeringFeatureTimeWindow> timeWindow;
 
     /**
      * @return The time window in which the feature is computed
      * 
      */
-    public Output<FeatureEngineeringFeatureTimeWindow> timeWindow() {
-        return this.timeWindow;
+    public Output<Optional<FeatureEngineeringFeatureTimeWindow>> timeWindow() {
+        return Codegen.optional(this.timeWindow);
     }
 
     /**

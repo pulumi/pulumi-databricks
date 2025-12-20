@@ -10,7 +10,110 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
-    /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    /// 
+    /// Attribute-Based Access Control (ABAC) policies in Unity Catalog provide high leverage governance for enforcing compliance policies. With ABAC policies, access is controlled in a hierarchical and scalable manner, based on data attributes rather than specific resources, enabling more flexible and comprehensive access control.
+    /// 
+    /// ABAC policies in Unity Catalog support conditions on governance tags and the user identity. Callers must have the `MANAGE` privilege on a securable to view, create, update, or delete ABAC policies.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ### Row Filter Policy
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var piiRowFilter = new Databricks.PolicyInfo("pii_row_filter", new()
+    ///     {
+    ///         OnSecurableType = "catalog",
+    ///         OnSecurableFullname = "main",
+    ///         Name = "pii_data_policy",
+    ///         PolicyType = "POLICY_TYPE_ROW_FILTER",
+    ///         ForSecurableType = "table",
+    ///         ToPrincipals = new[]
+    ///         {
+    ///             "account users",
+    ///         },
+    ///         WhenCondition = "hasTag('pii')",
+    ///         MatchColumns = new[]
+    ///         {
+    ///             new Databricks.Inputs.PolicyInfoMatchColumnArgs
+    ///             {
+    ///                 Condition = "hasTag('pii')",
+    ///                 Alias = "pii_col",
+    ///             },
+    ///         },
+    ///         RowFilter = new Databricks.Inputs.PolicyInfoRowFilterArgs
+    ///         {
+    ///             FunctionName = "main.filters.mask_pii_rows",
+    ///             Usings = new[]
+    ///             {
+    ///                 new Databricks.Inputs.PolicyInfoRowFilterUsingArgs
+    ///                 {
+    ///                     Alias = "pii_col",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Column Mask Policy
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var sensitiveColumnMask = new Databricks.PolicyInfo("sensitive_column_mask", new()
+    ///     {
+    ///         OnSecurableType = "schema",
+    ///         OnSecurableFullname = "main.finance",
+    ///         Name = "sensitive_data_mask",
+    ///         PolicyType = "POLICY_TYPE_COLUMN_MASK",
+    ///         ForSecurableType = "table",
+    ///         ToPrincipals = new[]
+    ///         {
+    ///             "account users",
+    ///         },
+    ///         ExceptPrincipals = new[]
+    ///         {
+    ///             "finance_admins",
+    ///         },
+    ///         WhenCondition = "hasTag('pii')",
+    ///         MatchColumns = new[]
+    ///         {
+    ///             new Databricks.Inputs.PolicyInfoMatchColumnArgs
+    ///             {
+    ///                 Condition = "hasTag('pii')",
+    ///                 Alias = "sensitive_col",
+    ///             },
+    ///         },
+    ///         ColumnMask = new Databricks.Inputs.PolicyInfoColumnMaskArgs
+    ///         {
+    ///             FunctionName = "main.masks.redact_sensitive",
+    ///             OnColumn = "sensitive_col",
+    ///             Usings = new[]
+    ///             {
+    ///                 new Databricks.Inputs.PolicyInfoColumnMaskUsingArgs
+    ///                 {
+    ///                     Constant = "4",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

@@ -208,7 +208,7 @@ class DataQualityMonitor(pulumi.CustomResource):
                  object_type: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
         This resource allows you to set up data quality monitoring checks for Unity Catalog objects, currently schema and table.
 
@@ -280,7 +280,7 @@ class DataQualityMonitor(pulumi.CustomResource):
                  args: DataQualityMonitorArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
         This resource allows you to set up data quality monitoring checks for Unity Catalog objects, currently schema and table.
 

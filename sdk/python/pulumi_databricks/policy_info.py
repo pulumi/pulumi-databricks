@@ -551,7 +551,67 @@ class PolicyInfo(pulumi.CustomResource):
                  when_condition: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+        Attribute-Based Access Control (ABAC) policies in Unity Catalog provide high leverage governance for enforcing compliance policies. With ABAC policies, access is controlled in a hierarchical and scalable manner, based on data attributes rather than specific resources, enabling more flexible and comprehensive access control.
+
+        ABAC policies in Unity Catalog support conditions on governance tags and the user identity. Callers must have the `MANAGE` privilege on a securable to view, create, update, or delete ABAC policies.
+
+        ## Example Usage
+
+        ### Row Filter Policy
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        pii_row_filter = databricks.PolicyInfo("pii_row_filter",
+            on_securable_type="catalog",
+            on_securable_fullname="main",
+            name="pii_data_policy",
+            policy_type="POLICY_TYPE_ROW_FILTER",
+            for_securable_type="table",
+            to_principals=["account users"],
+            when_condition="hasTag('pii')",
+            match_columns=[{
+                "condition": "hasTag('pii')",
+                "alias": "pii_col",
+            }],
+            row_filter={
+                "function_name": "main.filters.mask_pii_rows",
+                "usings": [{
+                    "alias": "pii_col",
+                }],
+            })
+        ```
+
+        ### Column Mask Policy
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        sensitive_column_mask = databricks.PolicyInfo("sensitive_column_mask",
+            on_securable_type="schema",
+            on_securable_fullname="main.finance",
+            name="sensitive_data_mask",
+            policy_type="POLICY_TYPE_COLUMN_MASK",
+            for_securable_type="table",
+            to_principals=["account users"],
+            except_principals=["finance_admins"],
+            when_condition="hasTag('pii')",
+            match_columns=[{
+                "condition": "hasTag('pii')",
+                "alias": "sensitive_col",
+            }],
+            column_mask={
+                "function_name": "main.masks.redact_sensitive",
+                "on_column": "sensitive_col",
+                "usings": [{
+                    "constant": "4",
+                }],
+            })
+        ```
 
         ## Import
 
@@ -608,7 +668,67 @@ class PolicyInfo(pulumi.CustomResource):
                  args: PolicyInfoArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+        Attribute-Based Access Control (ABAC) policies in Unity Catalog provide high leverage governance for enforcing compliance policies. With ABAC policies, access is controlled in a hierarchical and scalable manner, based on data attributes rather than specific resources, enabling more flexible and comprehensive access control.
+
+        ABAC policies in Unity Catalog support conditions on governance tags and the user identity. Callers must have the `MANAGE` privilege on a securable to view, create, update, or delete ABAC policies.
+
+        ## Example Usage
+
+        ### Row Filter Policy
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        pii_row_filter = databricks.PolicyInfo("pii_row_filter",
+            on_securable_type="catalog",
+            on_securable_fullname="main",
+            name="pii_data_policy",
+            policy_type="POLICY_TYPE_ROW_FILTER",
+            for_securable_type="table",
+            to_principals=["account users"],
+            when_condition="hasTag('pii')",
+            match_columns=[{
+                "condition": "hasTag('pii')",
+                "alias": "pii_col",
+            }],
+            row_filter={
+                "function_name": "main.filters.mask_pii_rows",
+                "usings": [{
+                    "alias": "pii_col",
+                }],
+            })
+        ```
+
+        ### Column Mask Policy
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        sensitive_column_mask = databricks.PolicyInfo("sensitive_column_mask",
+            on_securable_type="schema",
+            on_securable_fullname="main.finance",
+            name="sensitive_data_mask",
+            policy_type="POLICY_TYPE_COLUMN_MASK",
+            for_securable_type="table",
+            to_principals=["account users"],
+            except_principals=["finance_admins"],
+            when_condition="hasTag('pii')",
+            match_columns=[{
+                "condition": "hasTag('pii')",
+                "alias": "sensitive_col",
+            }],
+            column_mask={
+                "function_name": "main.masks.redact_sensitive",
+                "on_column": "sensitive_col",
+                "usings": [{
+                    "constant": "4",
+                }],
+            })
+        ```
 
         ## Import
 

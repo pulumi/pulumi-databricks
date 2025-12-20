@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetServicePrincipalsResult',
@@ -26,7 +28,7 @@ class GetServicePrincipalsResult:
     """
     A collection of values returned by getServicePrincipals.
     """
-    def __init__(__self__, application_ids=None, display_name_contains=None, id=None):
+    def __init__(__self__, application_ids=None, display_name_contains=None, id=None, service_principals=None):
         if application_ids and not isinstance(application_ids, list):
             raise TypeError("Expected argument 'application_ids' to be a list")
         pulumi.set(__self__, "application_ids", application_ids)
@@ -36,12 +38,15 @@ class GetServicePrincipalsResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if service_principals and not isinstance(service_principals, list):
+            raise TypeError("Expected argument 'service_principals' to be a list")
+        pulumi.set(__self__, "service_principals", service_principals)
 
     @_builtins.property
     @pulumi.getter(name="applicationIds")
     def application_ids(self) -> Sequence[_builtins.str]:
         """
-        List of `application_ids` of service principals.  Individual service principal can be retrieved using ServicePrincipal data source
+        List of `application_ids` of service principals.  Individual service principal can be retrieved using ServicePrincipal data source or from `service_principals` attribute.
         """
         return pulumi.get(self, "application_ids")
 
@@ -58,6 +63,14 @@ class GetServicePrincipalsResult:
         """
         return pulumi.get(self, "id")
 
+    @_builtins.property
+    @pulumi.getter(name="servicePrincipals")
+    def service_principals(self) -> Sequence['outputs.GetServicePrincipalsServicePrincipalResult']:
+        """
+        List of objects describing individual service principals. Each object has the following attributes:
+        """
+        return pulumi.get(self, "service_principals")
+
 
 class AwaitableGetServicePrincipalsResult(GetServicePrincipalsResult):
     # pylint: disable=using-constant-test
@@ -67,11 +80,13 @@ class AwaitableGetServicePrincipalsResult(GetServicePrincipalsResult):
         return GetServicePrincipalsResult(
             application_ids=self.application_ids,
             display_name_contains=self.display_name_contains,
-            id=self.id)
+            id=self.id,
+            service_principals=self.service_principals)
 
 
 def get_service_principals(application_ids: Optional[Sequence[_builtins.str]] = None,
                            display_name_contains: Optional[_builtins.str] = None,
+                           service_principals: Optional[Sequence[Union['GetServicePrincipalsServicePrincipalArgs', 'GetServicePrincipalsServicePrincipalArgsDict']]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServicePrincipalsResult:
     """
     Retrieves `application_ids` of all ServicePrincipal based on their `display_name`
@@ -111,21 +126,25 @@ def get_service_principals(application_ids: Optional[Sequence[_builtins.str]] = 
     - databricks_service principal to manage service principals
 
 
-    :param Sequence[_builtins.str] application_ids: List of `application_ids` of service principals.  Individual service principal can be retrieved using ServicePrincipal data source
+    :param Sequence[_builtins.str] application_ids: List of `application_ids` of service principals.  Individual service principal can be retrieved using ServicePrincipal data source or from `service_principals` attribute.
     :param _builtins.str display_name_contains: Only return ServicePrincipal display name that match the given name string
+    :param Sequence[Union['GetServicePrincipalsServicePrincipalArgs', 'GetServicePrincipalsServicePrincipalArgsDict']] service_principals: List of objects describing individual service principals. Each object has the following attributes:
     """
     __args__ = dict()
     __args__['applicationIds'] = application_ids
     __args__['displayNameContains'] = display_name_contains
+    __args__['servicePrincipals'] = service_principals
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getServicePrincipals:getServicePrincipals', __args__, opts=opts, typ=GetServicePrincipalsResult).value
 
     return AwaitableGetServicePrincipalsResult(
         application_ids=pulumi.get(__ret__, 'application_ids'),
         display_name_contains=pulumi.get(__ret__, 'display_name_contains'),
-        id=pulumi.get(__ret__, 'id'))
+        id=pulumi.get(__ret__, 'id'),
+        service_principals=pulumi.get(__ret__, 'service_principals'))
 def get_service_principals_output(application_ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
                                   display_name_contains: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                                  service_principals: Optional[pulumi.Input[Optional[Sequence[Union['GetServicePrincipalsServicePrincipalArgs', 'GetServicePrincipalsServicePrincipalArgsDict']]]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServicePrincipalsResult]:
     """
     Retrieves `application_ids` of all ServicePrincipal based on their `display_name`
@@ -165,15 +184,18 @@ def get_service_principals_output(application_ids: Optional[pulumi.Input[Optiona
     - databricks_service principal to manage service principals
 
 
-    :param Sequence[_builtins.str] application_ids: List of `application_ids` of service principals.  Individual service principal can be retrieved using ServicePrincipal data source
+    :param Sequence[_builtins.str] application_ids: List of `application_ids` of service principals.  Individual service principal can be retrieved using ServicePrincipal data source or from `service_principals` attribute.
     :param _builtins.str display_name_contains: Only return ServicePrincipal display name that match the given name string
+    :param Sequence[Union['GetServicePrincipalsServicePrincipalArgs', 'GetServicePrincipalsServicePrincipalArgsDict']] service_principals: List of objects describing individual service principals. Each object has the following attributes:
     """
     __args__ = dict()
     __args__['applicationIds'] = application_ids
     __args__['displayNameContains'] = display_name_contains
+    __args__['servicePrincipals'] = service_principals
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getServicePrincipals:getServicePrincipals', __args__, opts=opts, typ=GetServicePrincipalsResult)
     return __ret__.apply(lambda __response__: GetServicePrincipalsResult(
         application_ids=pulumi.get(__response__, 'application_ids'),
         display_name_contains=pulumi.get(__response__, 'display_name_contains'),
-        id=pulumi.get(__response__, 'id')))
+        id=pulumi.get(__response__, 'id'),
+        service_principals=pulumi.get(__response__, 'service_principals')))

@@ -49,7 +49,7 @@ class CredentialArgs:
         :param pulumi.Input[_builtins.str] isolation_mode: Whether the credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically restrict access to only from the current workspace.
                
                `aws_iam_role` optional configuration block for credential details for AWS:
-        :param pulumi.Input[_builtins.str] name: Name of Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
+        :param pulumi.Input[_builtins.str] name: Name of Credentials, which must be unique within the databricks_metastore. Change of the `name` forces creation of a new resource.
         :param pulumi.Input[_builtins.str] owner: Username/groupname/sp application_id of the credential owner.
         :param pulumi.Input[_builtins.bool] read_only: Indicates whether the credential is only usable for read operations. Only applicable when purpose is `STORAGE`.
         :param pulumi.Input[_builtins.bool] skip_validation: Suppress validation errors if any & force save the credential.
@@ -229,7 +229,7 @@ class CredentialArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Name of Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
+        Name of Credentials, which must be unique within the databricks_metastore. Change of the `name` forces creation of a new resource.
         """
         return pulumi.get(self, "name")
 
@@ -333,7 +333,7 @@ class _CredentialState:
         :param pulumi.Input[_builtins.str] isolation_mode: Whether the credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically restrict access to only from the current workspace.
                
                `aws_iam_role` optional configuration block for credential details for AWS:
-        :param pulumi.Input[_builtins.str] name: Name of Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
+        :param pulumi.Input[_builtins.str] name: Name of Credentials, which must be unique within the databricks_metastore. Change of the `name` forces creation of a new resource.
         :param pulumi.Input[_builtins.str] owner: Username/groupname/sp application_id of the credential owner.
         :param pulumi.Input[_builtins.str] purpose: Indicates the purpose of the credential. Can be `SERVICE` or `STORAGE`.
         :param pulumi.Input[_builtins.bool] read_only: Indicates whether the credential is only usable for read operations. Only applicable when purpose is `STORAGE`.
@@ -517,7 +517,7 @@ class _CredentialState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Name of Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
+        Name of Credentials, which must be unique within the databricks_metastore. Change of the `name` forces creation of a new resource.
         """
         return pulumi.get(self, "name")
 
@@ -730,7 +730,7 @@ class Credential(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] isolation_mode: Whether the credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically restrict access to only from the current workspace.
                
                `aws_iam_role` optional configuration block for credential details for AWS:
-        :param pulumi.Input[_builtins.str] name: Name of Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
+        :param pulumi.Input[_builtins.str] name: Name of Credentials, which must be unique within the databricks_metastore. Change of the `name` forces creation of a new resource.
         :param pulumi.Input[_builtins.str] owner: Username/groupname/sp application_id of the credential owner.
         :param pulumi.Input[_builtins.str] purpose: Indicates the purpose of the credential. Can be `SERVICE` or `STORAGE`.
         :param pulumi.Input[_builtins.bool] read_only: Indicates whether the credential is only usable for read operations. Only applicable when purpose is `STORAGE`.
@@ -948,7 +948,7 @@ class Credential(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] isolation_mode: Whether the credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically restrict access to only from the current workspace.
                
                `aws_iam_role` optional configuration block for credential details for AWS:
-        :param pulumi.Input[_builtins.str] name: Name of Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
+        :param pulumi.Input[_builtins.str] name: Name of Credentials, which must be unique within the databricks_metastore. Change of the `name` forces creation of a new resource.
         :param pulumi.Input[_builtins.str] owner: Username/groupname/sp application_id of the credential owner.
         :param pulumi.Input[_builtins.str] purpose: Indicates the purpose of the credential. Can be `SERVICE` or `STORAGE`.
         :param pulumi.Input[_builtins.bool] read_only: Indicates whether the credential is only usable for read operations. Only applicable when purpose is `STORAGE`.
@@ -1064,7 +1064,7 @@ class Credential(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        Name of Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
+        Name of Credentials, which must be unique within the databricks_metastore. Change of the `name` forces creation of a new resource.
         """
         return pulumi.get(self, "name")
 

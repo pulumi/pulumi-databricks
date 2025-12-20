@@ -12,19 +12,103 @@ namespace Pulumi.Databricks
     public static class GetPolicyInfo
     {
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// Retrieves information about a specific ABAC (Attribute-Based Access Control) policy in Unity Catalog. Use this data source to query details of an existing policy by its securable type, securable name, and policy name.
+        /// 
+        /// ABAC policies provide governance for enforcing compliance through data attributes, allowing flexible and comprehensive access control based on conditions rather than specific resources.
+        /// 
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ### Get Policy Information
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var piiPolicy = Databricks.GetPolicyInfo.Invoke(new()
+        ///     {
+        ///         OnSecurableType = "catalog",
+        ///         OnSecurableFullname = "main",
+        ///         Name = "pii_data_policy",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetPolicyInfoResult> InvokeAsync(GetPolicyInfoArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPolicyInfoResult>("databricks:index/getPolicyInfo:getPolicyInfo", args ?? new GetPolicyInfoArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// Retrieves information about a specific ABAC (Attribute-Based Access Control) policy in Unity Catalog. Use this data source to query details of an existing policy by its securable type, securable name, and policy name.
+        /// 
+        /// ABAC policies provide governance for enforcing compliance through data attributes, allowing flexible and comprehensive access control based on conditions rather than specific resources.
+        /// 
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ### Get Policy Information
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var piiPolicy = Databricks.GetPolicyInfo.Invoke(new()
+        ///     {
+        ///         OnSecurableType = "catalog",
+        ///         OnSecurableFullname = "main",
+        ///         Name = "pii_data_policy",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetPolicyInfoResult> Invoke(GetPolicyInfoInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPolicyInfoResult>("databricks:index/getPolicyInfo:getPolicyInfo", args ?? new GetPolicyInfoInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// Retrieves information about a specific ABAC (Attribute-Based Access Control) policy in Unity Catalog. Use this data source to query details of an existing policy by its securable type, securable name, and policy name.
+        /// 
+        /// ABAC policies provide governance for enforcing compliance through data attributes, allowing flexible and comprehensive access control based on conditions rather than specific resources.
+        /// 
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ### Get Policy Information
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var piiPolicy = Databricks.GetPolicyInfo.Invoke(new()
+        ///     {
+        ///         OnSecurableType = "catalog",
+        ///         OnSecurableFullname = "main",
+        ///         Name = "pii_data_policy",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetPolicyInfoResult> Invoke(GetPolicyInfoInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetPolicyInfoResult>("databricks:index/getPolicyInfo:getPolicyInfo", args ?? new GetPolicyInfoInvokeArgs(), options.WithDefaults());

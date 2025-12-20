@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.FeatureEngineeringFeatureSourceDeltaTableSource;
+import com.pulumi.databricks.outputs.FeatureEngineeringFeatureSourceKafkaSource;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -12,10 +13,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class FeatureEngineeringFeatureSource {
     private @Nullable FeatureEngineeringFeatureSourceDeltaTableSource deltaTableSource;
+    private @Nullable FeatureEngineeringFeatureSourceKafkaSource kafkaSource;
 
     private FeatureEngineeringFeatureSource() {}
     public Optional<FeatureEngineeringFeatureSourceDeltaTableSource> deltaTableSource() {
         return Optional.ofNullable(this.deltaTableSource);
+    }
+    public Optional<FeatureEngineeringFeatureSourceKafkaSource> kafkaSource() {
+        return Optional.ofNullable(this.kafkaSource);
     }
 
     public static Builder builder() {
@@ -28,10 +33,12 @@ public final class FeatureEngineeringFeatureSource {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable FeatureEngineeringFeatureSourceDeltaTableSource deltaTableSource;
+        private @Nullable FeatureEngineeringFeatureSourceKafkaSource kafkaSource;
         public Builder() {}
         public Builder(FeatureEngineeringFeatureSource defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.deltaTableSource = defaults.deltaTableSource;
+    	      this.kafkaSource = defaults.kafkaSource;
         }
 
         @CustomType.Setter
@@ -40,9 +47,16 @@ public final class FeatureEngineeringFeatureSource {
             this.deltaTableSource = deltaTableSource;
             return this;
         }
+        @CustomType.Setter
+        public Builder kafkaSource(@Nullable FeatureEngineeringFeatureSourceKafkaSource kafkaSource) {
+
+            this.kafkaSource = kafkaSource;
+            return this;
+        }
         public FeatureEngineeringFeatureSource build() {
             final var _resultValue = new FeatureEngineeringFeatureSource();
             _resultValue.deltaTableSource = deltaTableSource;
+            _resultValue.kafkaSource = kafkaSource;
             return _resultValue;
         }
     }

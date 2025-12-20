@@ -5,87 +5,62 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetFeatureEngineeringMaterializedFeatureOnlineStoreConfig {
     /**
-     * @return (string) - The capacity of the online store. Valid values are &#34;CU_1&#34;, &#34;CU_2&#34;, &#34;CU_4&#34;, &#34;CU_8&#34;
+     * @return (string) - The Unity Catalog catalog name. This name is also used as the Lakebase logical database name
      * 
      */
-    private String capacity;
+    private String catalogName;
     /**
-     * @return (string) - The timestamp when the online store was created
+     * @return (string) - The name of the target online store
      * 
      */
-    private String creationTime;
+    private String onlineStoreName;
     /**
-     * @return (string) - The email of the creator of the online store
+     * @return (string) - The Unity Catalog schema name
      * 
      */
-    private String creator;
+    private String schemaName;
     /**
-     * @return (string) - The name of the online store. This is the unique identifier for the online store
+     * @return (string) - Prefix for Unity Catalog table name.
+     * The materialized feature will be stored in a Lakebase table with this prefix and a generated postfix
      * 
      */
-    private String name;
-    /**
-     * @return (integer) - The number of read replicas for the online store. Defaults to 0
-     * 
-     */
-    private @Nullable Integer readReplicaCount;
-    /**
-     * @return (string) - The current state of the online store. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
-     * 
-     */
-    private String state;
+    private String tableNamePrefix;
 
     private GetFeatureEngineeringMaterializedFeatureOnlineStoreConfig() {}
     /**
-     * @return (string) - The capacity of the online store. Valid values are &#34;CU_1&#34;, &#34;CU_2&#34;, &#34;CU_4&#34;, &#34;CU_8&#34;
+     * @return (string) - The Unity Catalog catalog name. This name is also used as the Lakebase logical database name
      * 
      */
-    public String capacity() {
-        return this.capacity;
+    public String catalogName() {
+        return this.catalogName;
     }
     /**
-     * @return (string) - The timestamp when the online store was created
+     * @return (string) - The name of the target online store
      * 
      */
-    public String creationTime() {
-        return this.creationTime;
+    public String onlineStoreName() {
+        return this.onlineStoreName;
     }
     /**
-     * @return (string) - The email of the creator of the online store
+     * @return (string) - The Unity Catalog schema name
      * 
      */
-    public String creator() {
-        return this.creator;
+    public String schemaName() {
+        return this.schemaName;
     }
     /**
-     * @return (string) - The name of the online store. This is the unique identifier for the online store
+     * @return (string) - Prefix for Unity Catalog table name.
+     * The materialized feature will be stored in a Lakebase table with this prefix and a generated postfix
      * 
      */
-    public String name() {
-        return this.name;
-    }
-    /**
-     * @return (integer) - The number of read replicas for the online store. Defaults to 0
-     * 
-     */
-    public Optional<Integer> readReplicaCount() {
-        return Optional.ofNullable(this.readReplicaCount);
-    }
-    /**
-     * @return (string) - The current state of the online store. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
-     * 
-     */
-    public String state() {
-        return this.state;
+    public String tableNamePrefix() {
+        return this.tableNamePrefix;
     }
 
     public static Builder builder() {
@@ -97,77 +72,57 @@ public final class GetFeatureEngineeringMaterializedFeatureOnlineStoreConfig {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String capacity;
-        private String creationTime;
-        private String creator;
-        private String name;
-        private @Nullable Integer readReplicaCount;
-        private String state;
+        private String catalogName;
+        private String onlineStoreName;
+        private String schemaName;
+        private String tableNamePrefix;
         public Builder() {}
         public Builder(GetFeatureEngineeringMaterializedFeatureOnlineStoreConfig defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.capacity = defaults.capacity;
-    	      this.creationTime = defaults.creationTime;
-    	      this.creator = defaults.creator;
-    	      this.name = defaults.name;
-    	      this.readReplicaCount = defaults.readReplicaCount;
-    	      this.state = defaults.state;
+    	      this.catalogName = defaults.catalogName;
+    	      this.onlineStoreName = defaults.onlineStoreName;
+    	      this.schemaName = defaults.schemaName;
+    	      this.tableNamePrefix = defaults.tableNamePrefix;
         }
 
         @CustomType.Setter
-        public Builder capacity(String capacity) {
-            if (capacity == null) {
-              throw new MissingRequiredPropertyException("GetFeatureEngineeringMaterializedFeatureOnlineStoreConfig", "capacity");
+        public Builder catalogName(String catalogName) {
+            if (catalogName == null) {
+              throw new MissingRequiredPropertyException("GetFeatureEngineeringMaterializedFeatureOnlineStoreConfig", "catalogName");
             }
-            this.capacity = capacity;
+            this.catalogName = catalogName;
             return this;
         }
         @CustomType.Setter
-        public Builder creationTime(String creationTime) {
-            if (creationTime == null) {
-              throw new MissingRequiredPropertyException("GetFeatureEngineeringMaterializedFeatureOnlineStoreConfig", "creationTime");
+        public Builder onlineStoreName(String onlineStoreName) {
+            if (onlineStoreName == null) {
+              throw new MissingRequiredPropertyException("GetFeatureEngineeringMaterializedFeatureOnlineStoreConfig", "onlineStoreName");
             }
-            this.creationTime = creationTime;
+            this.onlineStoreName = onlineStoreName;
             return this;
         }
         @CustomType.Setter
-        public Builder creator(String creator) {
-            if (creator == null) {
-              throw new MissingRequiredPropertyException("GetFeatureEngineeringMaterializedFeatureOnlineStoreConfig", "creator");
+        public Builder schemaName(String schemaName) {
+            if (schemaName == null) {
+              throw new MissingRequiredPropertyException("GetFeatureEngineeringMaterializedFeatureOnlineStoreConfig", "schemaName");
             }
-            this.creator = creator;
+            this.schemaName = schemaName;
             return this;
         }
         @CustomType.Setter
-        public Builder name(String name) {
-            if (name == null) {
-              throw new MissingRequiredPropertyException("GetFeatureEngineeringMaterializedFeatureOnlineStoreConfig", "name");
+        public Builder tableNamePrefix(String tableNamePrefix) {
+            if (tableNamePrefix == null) {
+              throw new MissingRequiredPropertyException("GetFeatureEngineeringMaterializedFeatureOnlineStoreConfig", "tableNamePrefix");
             }
-            this.name = name;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder readReplicaCount(@Nullable Integer readReplicaCount) {
-
-            this.readReplicaCount = readReplicaCount;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder state(String state) {
-            if (state == null) {
-              throw new MissingRequiredPropertyException("GetFeatureEngineeringMaterializedFeatureOnlineStoreConfig", "state");
-            }
-            this.state = state;
+            this.tableNamePrefix = tableNamePrefix;
             return this;
         }
         public GetFeatureEngineeringMaterializedFeatureOnlineStoreConfig build() {
             final var _resultValue = new GetFeatureEngineeringMaterializedFeatureOnlineStoreConfig();
-            _resultValue.capacity = capacity;
-            _resultValue.creationTime = creationTime;
-            _resultValue.creator = creator;
-            _resultValue.name = name;
-            _resultValue.readReplicaCount = readReplicaCount;
-            _resultValue.state = state;
+            _resultValue.catalogName = catalogName;
+            _resultValue.onlineStoreName = onlineStoreName;
+            _resultValue.schemaName = schemaName;
+            _resultValue.tableNamePrefix = tableNamePrefix;
             return _resultValue;
         }
     }

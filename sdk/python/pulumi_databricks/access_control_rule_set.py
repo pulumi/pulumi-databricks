@@ -33,6 +33,7 @@ class AccessControlRuleSetArgs:
                * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default` - access control for a specific service principal.
                * `accounts/{account_id}/groups/{group_id}/ruleSets/default` - access control for a specific group.
                * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default` - access control for a specific budget policy.
+               * `accounts/{account_id}/tagPolicies/{tag_policy_id}/ruleSets/default` - access control for a specific tag policy.
         """
         if grant_rules is not None:
             pulumi.set(__self__, "grant_rules", grant_rules)
@@ -62,6 +63,7 @@ class AccessControlRuleSetArgs:
         * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default` - access control for a specific service principal.
         * `accounts/{account_id}/groups/{group_id}/ruleSets/default` - access control for a specific group.
         * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default` - access control for a specific budget policy.
+        * `accounts/{account_id}/tagPolicies/{tag_policy_id}/ruleSets/default` - access control for a specific tag policy.
         """
         return pulumi.get(self, "name")
 
@@ -86,6 +88,7 @@ class _AccessControlRuleSetState:
                * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default` - access control for a specific service principal.
                * `accounts/{account_id}/groups/{group_id}/ruleSets/default` - access control for a specific group.
                * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default` - access control for a specific budget policy.
+               * `accounts/{account_id}/tagPolicies/{tag_policy_id}/ruleSets/default` - access control for a specific tag policy.
         """
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
@@ -126,6 +129,7 @@ class _AccessControlRuleSetState:
         * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default` - access control for a specific service principal.
         * `accounts/{account_id}/groups/{group_id}/ruleSets/default` - access control for a specific group.
         * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default` - access control for a specific budget policy.
+        * `accounts/{account_id}/tagPolicies/{tag_policy_id}/ruleSets/default` - access control for a specific tag policy.
         """
         return pulumi.get(self, "name")
 
@@ -314,6 +318,43 @@ class AccessControlRuleSet(pulumi.CustomResource):
             ])
         ```
 
+        ## Tag policy usage
+
+        Access to tag policies could be controlled with this resource:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        account_id = "00000000-0000-0000-0000-000000000000"
+        # account level group
+        ds = databricks.get_group(display_name="Data Science")
+        john = databricks.get_user(user_name="john.doe@example.com")
+        this = databricks.TagPolicy("this",
+            tag_key="example_tag_key",
+            description="Example description.",
+            values=[
+                {
+                    "name": "example_value_2",
+                },
+                {
+                    "name": "example_value_3",
+                },
+            ])
+        tag_policy_usage = databricks.AccessControlRuleSet("tag_policy_usage",
+            name=this.id.apply(lambda id: f"accounts/{account_id}/tagPolicies/{id}/ruleSets/default"),
+            grant_rules=[
+                {
+                    "principals": [john.acl_principal_id],
+                    "role": "roles/tagPolicy.manager",
+                },
+                {
+                    "principals": [ds.acl_principal_id],
+                    "role": "roles/tagPolicy.assigner",
+                },
+            ])
+        ```
+
         ## Related Resources
 
         The following resources are often used in the same context:
@@ -332,6 +373,7 @@ class AccessControlRuleSet(pulumi.CustomResource):
                * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default` - access control for a specific service principal.
                * `accounts/{account_id}/groups/{group_id}/ruleSets/default` - access control for a specific group.
                * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default` - access control for a specific budget policy.
+               * `accounts/{account_id}/tagPolicies/{tag_policy_id}/ruleSets/default` - access control for a specific tag policy.
         """
         ...
     @overload
@@ -510,6 +552,43 @@ class AccessControlRuleSet(pulumi.CustomResource):
             ])
         ```
 
+        ## Tag policy usage
+
+        Access to tag policies could be controlled with this resource:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        account_id = "00000000-0000-0000-0000-000000000000"
+        # account level group
+        ds = databricks.get_group(display_name="Data Science")
+        john = databricks.get_user(user_name="john.doe@example.com")
+        this = databricks.TagPolicy("this",
+            tag_key="example_tag_key",
+            description="Example description.",
+            values=[
+                {
+                    "name": "example_value_2",
+                },
+                {
+                    "name": "example_value_3",
+                },
+            ])
+        tag_policy_usage = databricks.AccessControlRuleSet("tag_policy_usage",
+            name=this.id.apply(lambda id: f"accounts/{account_id}/tagPolicies/{id}/ruleSets/default"),
+            grant_rules=[
+                {
+                    "principals": [john.acl_principal_id],
+                    "role": "roles/tagPolicy.manager",
+                },
+                {
+                    "principals": [ds.acl_principal_id],
+                    "role": "roles/tagPolicy.assigner",
+                },
+            ])
+        ```
+
         ## Related Resources
 
         The following resources are often used in the same context:
@@ -575,6 +654,7 @@ class AccessControlRuleSet(pulumi.CustomResource):
                * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default` - access control for a specific service principal.
                * `accounts/{account_id}/groups/{group_id}/ruleSets/default` - access control for a specific group.
                * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default` - access control for a specific budget policy.
+               * `accounts/{account_id}/tagPolicies/{tag_policy_id}/ruleSets/default` - access control for a specific tag policy.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -609,6 +689,7 @@ class AccessControlRuleSet(pulumi.CustomResource):
         * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default` - access control for a specific service principal.
         * `accounts/{account_id}/groups/{group_id}/ruleSets/default` - access control for a specific group.
         * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default` - access control for a specific budget policy.
+        * `accounts/{account_id}/tagPolicies/{tag_policy_id}/ruleSets/default` - access control for a specific tag policy.
         """
         return pulumi.get(self, "name")
 

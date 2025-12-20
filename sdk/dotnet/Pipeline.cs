@@ -155,7 +155,7 @@ namespace Pulumi.Databricks
         public Output<string?> BudgetPolicyId { get; private set; } = null!;
 
         /// <summary>
-        /// The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `Storage`).
+        /// The name of default catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline if you switch from `Storage` to `Catalog` or vice versa.  If pipeline was already created with `Catalog` set, the value could be changed.* (Conflicts with `Storage`).
         /// </summary>
         [Output("catalog")]
         public Output<string?> Catalog { get; private set; } = null!;
@@ -387,7 +387,7 @@ namespace Pulumi.Databricks
         public Input<string>? BudgetPolicyId { get; set; }
 
         /// <summary>
-        /// The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `Storage`).
+        /// The name of default catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline if you switch from `Storage` to `Catalog` or vice versa.  If pipeline was already created with `Catalog` set, the value could be changed.* (Conflicts with `Storage`).
         /// </summary>
         [Input("catalog")]
         public Input<string>? Catalog { get; set; }
@@ -615,7 +615,7 @@ namespace Pulumi.Databricks
         public Input<string>? BudgetPolicyId { get; set; }
 
         /// <summary>
-        /// The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `Storage`).
+        /// The name of default catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline if you switch from `Storage` to `Catalog` or vice versa.  If pipeline was already created with `Catalog` set, the value could be changed.* (Conflicts with `Storage`).
         /// </summary>
         [Input("catalog")]
         public Input<string>? Catalog { get; set; }

@@ -45,11 +45,12 @@ type FeatureEngineeringFeature struct {
 	// The function by which the feature is computed
 	Function FeatureEngineeringFeatureFunctionOutput `pulumi:"function"`
 	// The input columns from which the feature is computed
-	Inputs pulumi.StringArrayOutput `pulumi:"inputs"`
+	Inputs         pulumi.StringArrayOutput                         `pulumi:"inputs"`
+	LineageContext FeatureEngineeringFeatureLineageContextPtrOutput `pulumi:"lineageContext"`
 	// The data source of the feature
 	Source FeatureEngineeringFeatureSourceOutput `pulumi:"source"`
 	// The time window in which the feature is computed
-	TimeWindow FeatureEngineeringFeatureTimeWindowOutput `pulumi:"timeWindow"`
+	TimeWindow FeatureEngineeringFeatureTimeWindowPtrOutput `pulumi:"timeWindow"`
 }
 
 // NewFeatureEngineeringFeature registers a new resource with the given unique name, arguments, and options.
@@ -70,9 +71,6 @@ func NewFeatureEngineeringFeature(ctx *pulumi.Context,
 	}
 	if args.Source == nil {
 		return nil, errors.New("invalid value for required argument 'Source'")
-	}
-	if args.TimeWindow == nil {
-		return nil, errors.New("invalid value for required argument 'TimeWindow'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource FeatureEngineeringFeature
@@ -106,7 +104,8 @@ type featureEngineeringFeatureState struct {
 	// The function by which the feature is computed
 	Function *FeatureEngineeringFeatureFunction `pulumi:"function"`
 	// The input columns from which the feature is computed
-	Inputs []string `pulumi:"inputs"`
+	Inputs         []string                                 `pulumi:"inputs"`
+	LineageContext *FeatureEngineeringFeatureLineageContext `pulumi:"lineageContext"`
 	// The data source of the feature
 	Source *FeatureEngineeringFeatureSource `pulumi:"source"`
 	// The time window in which the feature is computed
@@ -123,7 +122,8 @@ type FeatureEngineeringFeatureState struct {
 	// The function by which the feature is computed
 	Function FeatureEngineeringFeatureFunctionPtrInput
 	// The input columns from which the feature is computed
-	Inputs pulumi.StringArrayInput
+	Inputs         pulumi.StringArrayInput
+	LineageContext FeatureEngineeringFeatureLineageContextPtrInput
 	// The data source of the feature
 	Source FeatureEngineeringFeatureSourcePtrInput
 	// The time window in which the feature is computed
@@ -144,11 +144,12 @@ type featureEngineeringFeatureArgs struct {
 	// The function by which the feature is computed
 	Function FeatureEngineeringFeatureFunction `pulumi:"function"`
 	// The input columns from which the feature is computed
-	Inputs []string `pulumi:"inputs"`
+	Inputs         []string                                 `pulumi:"inputs"`
+	LineageContext *FeatureEngineeringFeatureLineageContext `pulumi:"lineageContext"`
 	// The data source of the feature
 	Source FeatureEngineeringFeatureSource `pulumi:"source"`
 	// The time window in which the feature is computed
-	TimeWindow FeatureEngineeringFeatureTimeWindow `pulumi:"timeWindow"`
+	TimeWindow *FeatureEngineeringFeatureTimeWindow `pulumi:"timeWindow"`
 }
 
 // The set of arguments for constructing a FeatureEngineeringFeature resource.
@@ -162,11 +163,12 @@ type FeatureEngineeringFeatureArgs struct {
 	// The function by which the feature is computed
 	Function FeatureEngineeringFeatureFunctionInput
 	// The input columns from which the feature is computed
-	Inputs pulumi.StringArrayInput
+	Inputs         pulumi.StringArrayInput
+	LineageContext FeatureEngineeringFeatureLineageContextPtrInput
 	// The data source of the feature
 	Source FeatureEngineeringFeatureSourceInput
 	// The time window in which the feature is computed
-	TimeWindow FeatureEngineeringFeatureTimeWindowInput
+	TimeWindow FeatureEngineeringFeatureTimeWindowPtrInput
 }
 
 func (FeatureEngineeringFeatureArgs) ElementType() reflect.Type {
@@ -281,14 +283,20 @@ func (o FeatureEngineeringFeatureOutput) Inputs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *FeatureEngineeringFeature) pulumi.StringArrayOutput { return v.Inputs }).(pulumi.StringArrayOutput)
 }
 
+func (o FeatureEngineeringFeatureOutput) LineageContext() FeatureEngineeringFeatureLineageContextPtrOutput {
+	return o.ApplyT(func(v *FeatureEngineeringFeature) FeatureEngineeringFeatureLineageContextPtrOutput {
+		return v.LineageContext
+	}).(FeatureEngineeringFeatureLineageContextPtrOutput)
+}
+
 // The data source of the feature
 func (o FeatureEngineeringFeatureOutput) Source() FeatureEngineeringFeatureSourceOutput {
 	return o.ApplyT(func(v *FeatureEngineeringFeature) FeatureEngineeringFeatureSourceOutput { return v.Source }).(FeatureEngineeringFeatureSourceOutput)
 }
 
 // The time window in which the feature is computed
-func (o FeatureEngineeringFeatureOutput) TimeWindow() FeatureEngineeringFeatureTimeWindowOutput {
-	return o.ApplyT(func(v *FeatureEngineeringFeature) FeatureEngineeringFeatureTimeWindowOutput { return v.TimeWindow }).(FeatureEngineeringFeatureTimeWindowOutput)
+func (o FeatureEngineeringFeatureOutput) TimeWindow() FeatureEngineeringFeatureTimeWindowPtrOutput {
+	return o.ApplyT(func(v *FeatureEngineeringFeature) FeatureEngineeringFeatureTimeWindowPtrOutput { return v.TimeWindow }).(FeatureEngineeringFeatureTimeWindowPtrOutput)
 }
 
 type FeatureEngineeringFeatureArrayOutput struct{ *pulumi.OutputState }

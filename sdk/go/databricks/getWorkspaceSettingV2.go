@@ -36,41 +36,41 @@ type LookupWorkspaceSettingV2Args struct {
 
 // A collection of values returned by getWorkspaceSettingV2.
 type LookupWorkspaceSettingV2Result struct {
-	// (AibiDashboardEmbeddingAccessPolicy)
+	// (AibiDashboardEmbeddingAccessPolicy) - Setting value for aibiDashboardEmbeddingAccessPolicy setting. This is the setting value set by consumers, check effectiveAibiDashboardEmbeddingAccessPolicy for final setting value
 	AibiDashboardEmbeddingAccessPolicy GetWorkspaceSettingV2AibiDashboardEmbeddingAccessPolicy `pulumi:"aibiDashboardEmbeddingAccessPolicy"`
-	// (AibiDashboardEmbeddingApprovedDomains)
+	// (AibiDashboardEmbeddingApprovedDomains) - Setting value for aibiDashboardEmbeddingApprovedDomains setting. This is the setting value set by consumers, check effectiveAibiDashboardEmbeddingApprovedDomains for final setting value
 	AibiDashboardEmbeddingApprovedDomains GetWorkspaceSettingV2AibiDashboardEmbeddingApprovedDomains `pulumi:"aibiDashboardEmbeddingApprovedDomains"`
-	// (ClusterAutoRestartMessage)
+	// (ClusterAutoRestartMessage) - Setting value for automaticClusterUpdateWorkspace setting. This is the setting value set by consumers, check effectiveAutomaticClusterUpdateWorkspace for final setting value
 	AutomaticClusterUpdateWorkspace GetWorkspaceSettingV2AutomaticClusterUpdateWorkspace `pulumi:"automaticClusterUpdateWorkspace"`
-	// (BooleanMessage)
+	// (BooleanMessage) - Setting value for boolean type setting. This is the setting value set by consumers, check effectiveBooleanVal for final setting value
 	BooleanVal GetWorkspaceSettingV2BooleanVal `pulumi:"booleanVal"`
-	// (AibiDashboardEmbeddingAccessPolicy)
+	// (AibiDashboardEmbeddingAccessPolicy) - Effective setting value for aibiDashboardEmbeddingAccessPolicy setting. This is the final effective value of setting. To set a value use aibi_dashboard_embedding_access_policy
 	EffectiveAibiDashboardEmbeddingAccessPolicy GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy `pulumi:"effectiveAibiDashboardEmbeddingAccessPolicy"`
-	// (AibiDashboardEmbeddingApprovedDomains)
+	// (AibiDashboardEmbeddingApprovedDomains) - Effective setting value for aibiDashboardEmbeddingApprovedDomains setting. This is the final effective value of setting. To set a value use aibi_dashboard_embedding_approved_domains
 	EffectiveAibiDashboardEmbeddingApprovedDomains GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomains `pulumi:"effectiveAibiDashboardEmbeddingApprovedDomains"`
-	// (ClusterAutoRestartMessage)
+	// (ClusterAutoRestartMessage) - Effective setting value for automaticClusterUpdateWorkspace setting. This is the final effective value of setting. To set a value use automatic_cluster_update_workspace
 	EffectiveAutomaticClusterUpdateWorkspace GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspace `pulumi:"effectiveAutomaticClusterUpdateWorkspace"`
-	// (BooleanMessage)
+	// (BooleanMessage) - Effective setting value for boolean type setting. This is the final effective value of setting. To set a value use boolean_val
 	EffectiveBooleanVal GetWorkspaceSettingV2EffectiveBooleanVal `pulumi:"effectiveBooleanVal"`
-	// (IntegerMessage)
+	// (IntegerMessage) - Effective setting value for integer type setting. This is the final effective value of setting. To set a value use integer_val
 	EffectiveIntegerVal GetWorkspaceSettingV2EffectiveIntegerVal `pulumi:"effectiveIntegerVal"`
-	// (PersonalComputeMessage)
+	// (PersonalComputeMessage) - Effective setting value for personalCompute setting. This is the final effective value of setting. To set a value use personal_compute
 	EffectivePersonalCompute GetWorkspaceSettingV2EffectivePersonalCompute `pulumi:"effectivePersonalCompute"`
-	// (RestrictWorkspaceAdminsMessage)
+	// (RestrictWorkspaceAdminsMessage) - Effective setting value for restrictWorkspaceAdmins setting. This is the final effective value of setting. To set a value use restrict_workspace_admins
 	EffectiveRestrictWorkspaceAdmins GetWorkspaceSettingV2EffectiveRestrictWorkspaceAdmins `pulumi:"effectiveRestrictWorkspaceAdmins"`
-	// (StringMessage)
+	// (StringMessage) - Effective setting value for string type setting. This is the final effective value of setting. To set a value use string_val
 	EffectiveStringVal GetWorkspaceSettingV2EffectiveStringVal `pulumi:"effectiveStringVal"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// (IntegerMessage)
+	// (IntegerMessage) - Setting value for integer type setting. This is the setting value set by consumers, check effectiveIntegerVal for final setting value
 	IntegerVal GetWorkspaceSettingV2IntegerVal `pulumi:"integerVal"`
 	// (string) - Name of the setting
 	Name string `pulumi:"name"`
-	// (PersonalComputeMessage)
+	// (PersonalComputeMessage) - Setting value for personalCompute setting. This is the setting value set by consumers, check effectivePersonalCompute for final setting value
 	PersonalCompute GetWorkspaceSettingV2PersonalCompute `pulumi:"personalCompute"`
-	// (RestrictWorkspaceAdminsMessage)
+	// (RestrictWorkspaceAdminsMessage) - Setting value for restrictWorkspaceAdmins setting. This is the setting value set by consumers, check effectiveRestrictWorkspaceAdmins for final setting value
 	RestrictWorkspaceAdmins GetWorkspaceSettingV2RestrictWorkspaceAdmins `pulumi:"restrictWorkspaceAdmins"`
-	// (StringMessage)
+	// (StringMessage) - Setting value for string type setting. This is the setting value set by consumers, check effectiveStringVal for final setting value
 	StringVal GetWorkspaceSettingV2StringVal `pulumi:"stringVal"`
 }
 
@@ -108,82 +108,82 @@ func (o LookupWorkspaceSettingV2ResultOutput) ToLookupWorkspaceSettingV2ResultOu
 	return o
 }
 
-// (AibiDashboardEmbeddingAccessPolicy)
+// (AibiDashboardEmbeddingAccessPolicy) - Setting value for aibiDashboardEmbeddingAccessPolicy setting. This is the setting value set by consumers, check effectiveAibiDashboardEmbeddingAccessPolicy for final setting value
 func (o LookupWorkspaceSettingV2ResultOutput) AibiDashboardEmbeddingAccessPolicy() GetWorkspaceSettingV2AibiDashboardEmbeddingAccessPolicyOutput {
 	return o.ApplyT(func(v LookupWorkspaceSettingV2Result) GetWorkspaceSettingV2AibiDashboardEmbeddingAccessPolicy {
 		return v.AibiDashboardEmbeddingAccessPolicy
 	}).(GetWorkspaceSettingV2AibiDashboardEmbeddingAccessPolicyOutput)
 }
 
-// (AibiDashboardEmbeddingApprovedDomains)
+// (AibiDashboardEmbeddingApprovedDomains) - Setting value for aibiDashboardEmbeddingApprovedDomains setting. This is the setting value set by consumers, check effectiveAibiDashboardEmbeddingApprovedDomains for final setting value
 func (o LookupWorkspaceSettingV2ResultOutput) AibiDashboardEmbeddingApprovedDomains() GetWorkspaceSettingV2AibiDashboardEmbeddingApprovedDomainsOutput {
 	return o.ApplyT(func(v LookupWorkspaceSettingV2Result) GetWorkspaceSettingV2AibiDashboardEmbeddingApprovedDomains {
 		return v.AibiDashboardEmbeddingApprovedDomains
 	}).(GetWorkspaceSettingV2AibiDashboardEmbeddingApprovedDomainsOutput)
 }
 
-// (ClusterAutoRestartMessage)
+// (ClusterAutoRestartMessage) - Setting value for automaticClusterUpdateWorkspace setting. This is the setting value set by consumers, check effectiveAutomaticClusterUpdateWorkspace for final setting value
 func (o LookupWorkspaceSettingV2ResultOutput) AutomaticClusterUpdateWorkspace() GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceOutput {
 	return o.ApplyT(func(v LookupWorkspaceSettingV2Result) GetWorkspaceSettingV2AutomaticClusterUpdateWorkspace {
 		return v.AutomaticClusterUpdateWorkspace
 	}).(GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceOutput)
 }
 
-// (BooleanMessage)
+// (BooleanMessage) - Setting value for boolean type setting. This is the setting value set by consumers, check effectiveBooleanVal for final setting value
 func (o LookupWorkspaceSettingV2ResultOutput) BooleanVal() GetWorkspaceSettingV2BooleanValOutput {
 	return o.ApplyT(func(v LookupWorkspaceSettingV2Result) GetWorkspaceSettingV2BooleanVal { return v.BooleanVal }).(GetWorkspaceSettingV2BooleanValOutput)
 }
 
-// (AibiDashboardEmbeddingAccessPolicy)
+// (AibiDashboardEmbeddingAccessPolicy) - Effective setting value for aibiDashboardEmbeddingAccessPolicy setting. This is the final effective value of setting. To set a value use aibi_dashboard_embedding_access_policy
 func (o LookupWorkspaceSettingV2ResultOutput) EffectiveAibiDashboardEmbeddingAccessPolicy() GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyOutput {
 	return o.ApplyT(func(v LookupWorkspaceSettingV2Result) GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy {
 		return v.EffectiveAibiDashboardEmbeddingAccessPolicy
 	}).(GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyOutput)
 }
 
-// (AibiDashboardEmbeddingApprovedDomains)
+// (AibiDashboardEmbeddingApprovedDomains) - Effective setting value for aibiDashboardEmbeddingApprovedDomains setting. This is the final effective value of setting. To set a value use aibi_dashboard_embedding_approved_domains
 func (o LookupWorkspaceSettingV2ResultOutput) EffectiveAibiDashboardEmbeddingApprovedDomains() GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsOutput {
 	return o.ApplyT(func(v LookupWorkspaceSettingV2Result) GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomains {
 		return v.EffectiveAibiDashboardEmbeddingApprovedDomains
 	}).(GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsOutput)
 }
 
-// (ClusterAutoRestartMessage)
+// (ClusterAutoRestartMessage) - Effective setting value for automaticClusterUpdateWorkspace setting. This is the final effective value of setting. To set a value use automatic_cluster_update_workspace
 func (o LookupWorkspaceSettingV2ResultOutput) EffectiveAutomaticClusterUpdateWorkspace() GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceOutput {
 	return o.ApplyT(func(v LookupWorkspaceSettingV2Result) GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspace {
 		return v.EffectiveAutomaticClusterUpdateWorkspace
 	}).(GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceOutput)
 }
 
-// (BooleanMessage)
+// (BooleanMessage) - Effective setting value for boolean type setting. This is the final effective value of setting. To set a value use boolean_val
 func (o LookupWorkspaceSettingV2ResultOutput) EffectiveBooleanVal() GetWorkspaceSettingV2EffectiveBooleanValOutput {
 	return o.ApplyT(func(v LookupWorkspaceSettingV2Result) GetWorkspaceSettingV2EffectiveBooleanVal {
 		return v.EffectiveBooleanVal
 	}).(GetWorkspaceSettingV2EffectiveBooleanValOutput)
 }
 
-// (IntegerMessage)
+// (IntegerMessage) - Effective setting value for integer type setting. This is the final effective value of setting. To set a value use integer_val
 func (o LookupWorkspaceSettingV2ResultOutput) EffectiveIntegerVal() GetWorkspaceSettingV2EffectiveIntegerValOutput {
 	return o.ApplyT(func(v LookupWorkspaceSettingV2Result) GetWorkspaceSettingV2EffectiveIntegerVal {
 		return v.EffectiveIntegerVal
 	}).(GetWorkspaceSettingV2EffectiveIntegerValOutput)
 }
 
-// (PersonalComputeMessage)
+// (PersonalComputeMessage) - Effective setting value for personalCompute setting. This is the final effective value of setting. To set a value use personal_compute
 func (o LookupWorkspaceSettingV2ResultOutput) EffectivePersonalCompute() GetWorkspaceSettingV2EffectivePersonalComputeOutput {
 	return o.ApplyT(func(v LookupWorkspaceSettingV2Result) GetWorkspaceSettingV2EffectivePersonalCompute {
 		return v.EffectivePersonalCompute
 	}).(GetWorkspaceSettingV2EffectivePersonalComputeOutput)
 }
 
-// (RestrictWorkspaceAdminsMessage)
+// (RestrictWorkspaceAdminsMessage) - Effective setting value for restrictWorkspaceAdmins setting. This is the final effective value of setting. To set a value use restrict_workspace_admins
 func (o LookupWorkspaceSettingV2ResultOutput) EffectiveRestrictWorkspaceAdmins() GetWorkspaceSettingV2EffectiveRestrictWorkspaceAdminsOutput {
 	return o.ApplyT(func(v LookupWorkspaceSettingV2Result) GetWorkspaceSettingV2EffectiveRestrictWorkspaceAdmins {
 		return v.EffectiveRestrictWorkspaceAdmins
 	}).(GetWorkspaceSettingV2EffectiveRestrictWorkspaceAdminsOutput)
 }
 
-// (StringMessage)
+// (StringMessage) - Effective setting value for string type setting. This is the final effective value of setting. To set a value use string_val
 func (o LookupWorkspaceSettingV2ResultOutput) EffectiveStringVal() GetWorkspaceSettingV2EffectiveStringValOutput {
 	return o.ApplyT(func(v LookupWorkspaceSettingV2Result) GetWorkspaceSettingV2EffectiveStringVal {
 		return v.EffectiveStringVal
@@ -195,7 +195,7 @@ func (o LookupWorkspaceSettingV2ResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceSettingV2Result) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// (IntegerMessage)
+// (IntegerMessage) - Setting value for integer type setting. This is the setting value set by consumers, check effectiveIntegerVal for final setting value
 func (o LookupWorkspaceSettingV2ResultOutput) IntegerVal() GetWorkspaceSettingV2IntegerValOutput {
 	return o.ApplyT(func(v LookupWorkspaceSettingV2Result) GetWorkspaceSettingV2IntegerVal { return v.IntegerVal }).(GetWorkspaceSettingV2IntegerValOutput)
 }
@@ -205,19 +205,19 @@ func (o LookupWorkspaceSettingV2ResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceSettingV2Result) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// (PersonalComputeMessage)
+// (PersonalComputeMessage) - Setting value for personalCompute setting. This is the setting value set by consumers, check effectivePersonalCompute for final setting value
 func (o LookupWorkspaceSettingV2ResultOutput) PersonalCompute() GetWorkspaceSettingV2PersonalComputeOutput {
 	return o.ApplyT(func(v LookupWorkspaceSettingV2Result) GetWorkspaceSettingV2PersonalCompute { return v.PersonalCompute }).(GetWorkspaceSettingV2PersonalComputeOutput)
 }
 
-// (RestrictWorkspaceAdminsMessage)
+// (RestrictWorkspaceAdminsMessage) - Setting value for restrictWorkspaceAdmins setting. This is the setting value set by consumers, check effectiveRestrictWorkspaceAdmins for final setting value
 func (o LookupWorkspaceSettingV2ResultOutput) RestrictWorkspaceAdmins() GetWorkspaceSettingV2RestrictWorkspaceAdminsOutput {
 	return o.ApplyT(func(v LookupWorkspaceSettingV2Result) GetWorkspaceSettingV2RestrictWorkspaceAdmins {
 		return v.RestrictWorkspaceAdmins
 	}).(GetWorkspaceSettingV2RestrictWorkspaceAdminsOutput)
 }
 
-// (StringMessage)
+// (StringMessage) - Setting value for string type setting. This is the setting value set by consumers, check effectiveStringVal for final setting value
 func (o LookupWorkspaceSettingV2ResultOutput) StringVal() GetWorkspaceSettingV2StringValOutput {
 	return o.ApplyT(func(v LookupWorkspaceSettingV2Result) GetWorkspaceSettingV2StringVal { return v.StringVal }).(GetWorkspaceSettingV2StringValOutput)
 }

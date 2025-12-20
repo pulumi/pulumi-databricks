@@ -36,6 +36,12 @@ namespace Pulumi.Databricks
     public partial class FeatureEngineeringMaterializedFeature : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone
+        /// </summary>
+        [Output("cronSchedule")]
+        public Output<string?> CronSchedule { get; private set; } = null!;
+
+        /// <summary>
         /// The full name of the feature in Unity Catalog
         /// </summary>
         [Output("featureName")]
@@ -119,6 +125,12 @@ namespace Pulumi.Databricks
     public sealed class FeatureEngineeringMaterializedFeatureArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone
+        /// </summary>
+        [Input("cronSchedule")]
+        public Input<string>? CronSchedule { get; set; }
+
+        /// <summary>
         /// The full name of the feature in Unity Catalog
         /// </summary>
         [Input("featureName", required: true)]
@@ -144,6 +156,12 @@ namespace Pulumi.Databricks
 
     public sealed class FeatureEngineeringMaterializedFeatureState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone
+        /// </summary>
+        [Input("cronSchedule")]
+        public Input<string>? CronSchedule { get; set; }
+
         /// <summary>
         /// The full name of the feature in Unity Catalog
         /// </summary>

@@ -109,8 +109,8 @@ type Catalog struct {
 	// Extensible Catalog properties.
 	Properties pulumi.StringMapOutput `pulumi:"properties"`
 	// For Delta Sharing Catalogs: the name of the delta sharing provider. Change forces creation of a new resource.
-	ProviderName     pulumi.StringPtrOutput           `pulumi:"providerName"`
-	ProvisioningInfo CatalogProvisioningInfoPtrOutput `pulumi:"provisioningInfo"`
+	ProviderName     pulumi.StringPtrOutput        `pulumi:"providerName"`
+	ProvisioningInfo CatalogProvisioningInfoOutput `pulumi:"provisioningInfo"`
 	// the type of Unity Catalog securable.
 	SecurableType pulumi.StringOutput `pulumi:"securableType"`
 	// For Delta Sharing Catalogs: the name of the share under the share provider. Change forces creation of a new resource.
@@ -488,8 +488,8 @@ func (o CatalogOutput) ProviderName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Catalog) pulumi.StringPtrOutput { return v.ProviderName }).(pulumi.StringPtrOutput)
 }
 
-func (o CatalogOutput) ProvisioningInfo() CatalogProvisioningInfoPtrOutput {
-	return o.ApplyT(func(v *Catalog) CatalogProvisioningInfoPtrOutput { return v.ProvisioningInfo }).(CatalogProvisioningInfoPtrOutput)
+func (o CatalogOutput) ProvisioningInfo() CatalogProvisioningInfoOutput {
+	return o.ApplyT(func(v *Catalog) CatalogProvisioningInfoOutput { return v.ProvisioningInfo }).(CatalogProvisioningInfoOutput)
 }
 
 // the type of Unity Catalog securable.

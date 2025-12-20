@@ -110,7 +110,23 @@ def get_policy_infos(include_inherited: Optional[_builtins.bool] = None,
                      on_securable_type: Optional[_builtins.str] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPolicyInfosResult:
     """
-    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+    Retrieves a list of all ABAC (Attribute-Based Access Control) policies defined on a specific securable in Unity Catalog. Use this data source to query all policies for a given securable type and name.
+
+    ABAC policies provide governance for enforcing compliance through data attributes, allowing flexible and comprehensive access control based on conditions rather than specific resources.
+
+    ## Example Usage
+
+    ### List All Policies on a Securable
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    catalog_policies = databricks.get_policy_infos(on_securable_type="catalog",
+        on_securable_fullname="main")
+    ```
 
 
     :param _builtins.bool include_inherited: Optional. Whether to include policies defined on parent securables.
@@ -142,7 +158,23 @@ def get_policy_infos_output(include_inherited: Optional[pulumi.Input[Optional[_b
                             on_securable_type: Optional[pulumi.Input[_builtins.str]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPolicyInfosResult]:
     """
-    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+    Retrieves a list of all ABAC (Attribute-Based Access Control) policies defined on a specific securable in Unity Catalog. Use this data source to query all policies for a given securable type and name.
+
+    ABAC policies provide governance for enforcing compliance through data attributes, allowing flexible and comprehensive access control based on conditions rather than specific resources.
+
+    ## Example Usage
+
+    ### List All Policies on a Securable
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    catalog_policies = databricks.get_policy_infos(on_securable_type="catalog",
+        on_securable_fullname="main")
+    ```
 
 
     :param _builtins.bool include_inherited: Optional. Whether to include policies defined on parent securables.

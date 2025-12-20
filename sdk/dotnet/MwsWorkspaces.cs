@@ -20,11 +20,11 @@ namespace Pulumi.Databricks
     /// 
     /// ## Example Usage
     /// 
-    /// ### Creating a serverless workspace in AWS
+    /// ### Creating a serverless workspace in AWS and GCP
     /// 
     /// Creating a serverless workspace does not require any prerequisite resources. Simply specify `ComputeMode = "SERVERLESS"` when creating the workspace. Serverless workspaces must not include `CredentialsId` or `StorageConfigurationId`.
     /// 
-    /// To use serverless workspaces, you must enroll in the [Default Storage preview](https://docs.databricks.com/aws/en/storage/express-storage).
+    /// On [AWS](https://docs.databricks.com/aws/en/admin/workspace/serverless-workspaces):
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -39,6 +39,27 @@ namespace Pulumi.Databricks
     ///         AccountId = "",
     ///         WorkspaceName = "serverless-workspace",
     ///         AwsRegion = "us-east-1",
+    ///         ComputeMode = "SERVERLESS",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// On [GCP](https://docs.databricks.com/gcp/en/admin/workspace/serverless-workspaces):
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var serverlessWorkspace = new Databricks.MwsWorkspaces("serverless_workspace", new()
+    ///     {
+    ///         AccountId = "",
+    ///         WorkspaceName = "serverless-workspace",
+    ///         Location = "us-east4",
     ///         ComputeMode = "SERVERLESS",
     ///     });
     /// 

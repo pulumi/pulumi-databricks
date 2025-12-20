@@ -183,14 +183,14 @@ public final class GetSparkVersionPlainArgs extends com.pulumi.resources.InvokeA
     }
 
     /**
-     * if we should limit the search only to runtimes that are based on specific Scala version. Default to `2.12`.
+     * if we should limit the search only to runtimes that are based on specific Scala version. Default to `2.1` to select either `2.12` or `2.13` depending on the DBR version (for DBR that has both `2.12` and `2.13` flavors, `2.12` is returned by default).
      * 
      */
     @Import(name="scala")
     private @Nullable String scala;
 
     /**
-     * @return if we should limit the search only to runtimes that are based on specific Scala version. Default to `2.12`.
+     * @return if we should limit the search only to runtimes that are based on specific Scala version. Default to `2.1` to select either `2.12` or `2.13` depending on the DBR version (for DBR that has both `2.12` and `2.13` flavors, `2.12` is returned by default).
      * 
      */
     public Optional<String> scala() {
@@ -366,7 +366,7 @@ public final class GetSparkVersionPlainArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param scala if we should limit the search only to runtimes that are based on specific Scala version. Default to `2.12`.
+         * @param scala if we should limit the search only to runtimes that are based on specific Scala version. Default to `2.1` to select either `2.12` or `2.13` depending on the DBR version (for DBR that has both `2.12` and `2.13` flavors, `2.12` is returned by default).
          * 
          * @return builder
          * 

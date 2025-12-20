@@ -12,7 +12,113 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+//
+// Attribute-Based Access Control (ABAC) policies in Unity Catalog provide high leverage governance for enforcing compliance policies. With ABAC policies, access is controlled in a hierarchical and scalable manner, based on data attributes rather than specific resources, enabling more flexible and comprehensive access control.
+//
+// ABAC policies in Unity Catalog support conditions on governance tags and the user identity. Callers must have the `MANAGE` privilege on a securable to view, create, update, or delete ABAC policies.
+//
+// ## Example Usage
+//
+// ### Row Filter Policy
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewPolicyInfo(ctx, "pii_row_filter", &databricks.PolicyInfoArgs{
+//				OnSecurableType:     pulumi.String("catalog"),
+//				OnSecurableFullname: pulumi.String("main"),
+//				Name:                pulumi.String("pii_data_policy"),
+//				PolicyType:          pulumi.String("POLICY_TYPE_ROW_FILTER"),
+//				ForSecurableType:    pulumi.String("table"),
+//				ToPrincipals: pulumi.StringArray{
+//					pulumi.String("account users"),
+//				},
+//				WhenCondition: pulumi.String("hasTag('pii')"),
+//				MatchColumns: databricks.PolicyInfoMatchColumnArray{
+//					&databricks.PolicyInfoMatchColumnArgs{
+//						Condition: pulumi.String("hasTag('pii')"),
+//						Alias:     pulumi.String("pii_col"),
+//					},
+//				},
+//				RowFilter: &databricks.PolicyInfoRowFilterArgs{
+//					FunctionName: pulumi.String("main.filters.mask_pii_rows"),
+//					Usings: databricks.PolicyInfoRowFilterUsingArray{
+//						&databricks.PolicyInfoRowFilterUsingArgs{
+//							Alias: pulumi.String("pii_col"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Column Mask Policy
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewPolicyInfo(ctx, "sensitive_column_mask", &databricks.PolicyInfoArgs{
+//				OnSecurableType:     pulumi.String("schema"),
+//				OnSecurableFullname: pulumi.String("main.finance"),
+//				Name:                pulumi.String("sensitive_data_mask"),
+//				PolicyType:          pulumi.String("POLICY_TYPE_COLUMN_MASK"),
+//				ForSecurableType:    pulumi.String("table"),
+//				ToPrincipals: pulumi.StringArray{
+//					pulumi.String("account users"),
+//				},
+//				ExceptPrincipals: pulumi.StringArray{
+//					pulumi.String("finance_admins"),
+//				},
+//				WhenCondition: pulumi.String("hasTag('pii')"),
+//				MatchColumns: databricks.PolicyInfoMatchColumnArray{
+//					&databricks.PolicyInfoMatchColumnArgs{
+//						Condition: pulumi.String("hasTag('pii')"),
+//						Alias:     pulumi.String("sensitive_col"),
+//					},
+//				},
+//				ColumnMask: &databricks.PolicyInfoColumnMaskArgs{
+//					FunctionName: pulumi.String("main.masks.redact_sensitive"),
+//					OnColumn:     pulumi.String("sensitive_col"),
+//					Usings: databricks.PolicyInfoColumnMaskUsingArray{
+//						&databricks.PolicyInfoColumnMaskUsingArgs{
+//							Constant: pulumi.String("4"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

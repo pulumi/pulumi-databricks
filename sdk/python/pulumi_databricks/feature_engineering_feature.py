@@ -25,28 +25,32 @@ class FeatureEngineeringFeatureArgs:
                  function: pulumi.Input['FeatureEngineeringFeatureFunctionArgs'],
                  inputs: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  source: pulumi.Input['FeatureEngineeringFeatureSourceArgs'],
-                 time_window: pulumi.Input['FeatureEngineeringFeatureTimeWindowArgs'],
                  description: Optional[pulumi.Input[_builtins.str]] = None,
-                 filter_condition: Optional[pulumi.Input[_builtins.str]] = None):
+                 filter_condition: Optional[pulumi.Input[_builtins.str]] = None,
+                 lineage_context: Optional[pulumi.Input['FeatureEngineeringFeatureLineageContextArgs']] = None,
+                 time_window: Optional[pulumi.Input['FeatureEngineeringFeatureTimeWindowArgs']] = None):
         """
         The set of arguments for constructing a FeatureEngineeringFeature resource.
         :param pulumi.Input[_builtins.str] full_name: The full three-part name (catalog, schema, name) of the feature
         :param pulumi.Input['FeatureEngineeringFeatureFunctionArgs'] function: The function by which the feature is computed
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] inputs: The input columns from which the feature is computed
         :param pulumi.Input['FeatureEngineeringFeatureSourceArgs'] source: The data source of the feature
-        :param pulumi.Input['FeatureEngineeringFeatureTimeWindowArgs'] time_window: The time window in which the feature is computed
         :param pulumi.Input[_builtins.str] description: The description of the feature
         :param pulumi.Input[_builtins.str] filter_condition: The filter condition applied to the source data before aggregation
+        :param pulumi.Input['FeatureEngineeringFeatureTimeWindowArgs'] time_window: The time window in which the feature is computed
         """
         pulumi.set(__self__, "full_name", full_name)
         pulumi.set(__self__, "function", function)
         pulumi.set(__self__, "inputs", inputs)
         pulumi.set(__self__, "source", source)
-        pulumi.set(__self__, "time_window", time_window)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if filter_condition is not None:
             pulumi.set(__self__, "filter_condition", filter_condition)
+        if lineage_context is not None:
+            pulumi.set(__self__, "lineage_context", lineage_context)
+        if time_window is not None:
+            pulumi.set(__self__, "time_window", time_window)
 
     @_builtins.property
     @pulumi.getter(name="fullName")
@@ -97,18 +101,6 @@ class FeatureEngineeringFeatureArgs:
         pulumi.set(self, "source", value)
 
     @_builtins.property
-    @pulumi.getter(name="timeWindow")
-    def time_window(self) -> pulumi.Input['FeatureEngineeringFeatureTimeWindowArgs']:
-        """
-        The time window in which the feature is computed
-        """
-        return pulumi.get(self, "time_window")
-
-    @time_window.setter
-    def time_window(self, value: pulumi.Input['FeatureEngineeringFeatureTimeWindowArgs']):
-        pulumi.set(self, "time_window", value)
-
-    @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -132,6 +124,27 @@ class FeatureEngineeringFeatureArgs:
     def filter_condition(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "filter_condition", value)
 
+    @_builtins.property
+    @pulumi.getter(name="lineageContext")
+    def lineage_context(self) -> Optional[pulumi.Input['FeatureEngineeringFeatureLineageContextArgs']]:
+        return pulumi.get(self, "lineage_context")
+
+    @lineage_context.setter
+    def lineage_context(self, value: Optional[pulumi.Input['FeatureEngineeringFeatureLineageContextArgs']]):
+        pulumi.set(self, "lineage_context", value)
+
+    @_builtins.property
+    @pulumi.getter(name="timeWindow")
+    def time_window(self) -> Optional[pulumi.Input['FeatureEngineeringFeatureTimeWindowArgs']]:
+        """
+        The time window in which the feature is computed
+        """
+        return pulumi.get(self, "time_window")
+
+    @time_window.setter
+    def time_window(self, value: Optional[pulumi.Input['FeatureEngineeringFeatureTimeWindowArgs']]):
+        pulumi.set(self, "time_window", value)
+
 
 @pulumi.input_type
 class _FeatureEngineeringFeatureState:
@@ -141,6 +154,7 @@ class _FeatureEngineeringFeatureState:
                  full_name: Optional[pulumi.Input[_builtins.str]] = None,
                  function: Optional[pulumi.Input['FeatureEngineeringFeatureFunctionArgs']] = None,
                  inputs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 lineage_context: Optional[pulumi.Input['FeatureEngineeringFeatureLineageContextArgs']] = None,
                  source: Optional[pulumi.Input['FeatureEngineeringFeatureSourceArgs']] = None,
                  time_window: Optional[pulumi.Input['FeatureEngineeringFeatureTimeWindowArgs']] = None):
         """
@@ -163,6 +177,8 @@ class _FeatureEngineeringFeatureState:
             pulumi.set(__self__, "function", function)
         if inputs is not None:
             pulumi.set(__self__, "inputs", inputs)
+        if lineage_context is not None:
+            pulumi.set(__self__, "lineage_context", lineage_context)
         if source is not None:
             pulumi.set(__self__, "source", source)
         if time_window is not None:
@@ -229,6 +245,15 @@ class _FeatureEngineeringFeatureState:
         pulumi.set(self, "inputs", value)
 
     @_builtins.property
+    @pulumi.getter(name="lineageContext")
+    def lineage_context(self) -> Optional[pulumi.Input['FeatureEngineeringFeatureLineageContextArgs']]:
+        return pulumi.get(self, "lineage_context")
+
+    @lineage_context.setter
+    def lineage_context(self, value: Optional[pulumi.Input['FeatureEngineeringFeatureLineageContextArgs']]):
+        pulumi.set(self, "lineage_context", value)
+
+    @_builtins.property
     @pulumi.getter
     def source(self) -> Optional[pulumi.Input['FeatureEngineeringFeatureSourceArgs']]:
         """
@@ -264,6 +289,7 @@ class FeatureEngineeringFeature(pulumi.CustomResource):
                  full_name: Optional[pulumi.Input[_builtins.str]] = None,
                  function: Optional[pulumi.Input[Union['FeatureEngineeringFeatureFunctionArgs', 'FeatureEngineeringFeatureFunctionArgsDict']]] = None,
                  inputs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 lineage_context: Optional[pulumi.Input[Union['FeatureEngineeringFeatureLineageContextArgs', 'FeatureEngineeringFeatureLineageContextArgsDict']]] = None,
                  source: Optional[pulumi.Input[Union['FeatureEngineeringFeatureSourceArgs', 'FeatureEngineeringFeatureSourceArgsDict']]] = None,
                  time_window: Optional[pulumi.Input[Union['FeatureEngineeringFeatureTimeWindowArgs', 'FeatureEngineeringFeatureTimeWindowArgsDict']]] = None,
                  __props__=None):
@@ -349,6 +375,7 @@ class FeatureEngineeringFeature(pulumi.CustomResource):
                  full_name: Optional[pulumi.Input[_builtins.str]] = None,
                  function: Optional[pulumi.Input[Union['FeatureEngineeringFeatureFunctionArgs', 'FeatureEngineeringFeatureFunctionArgsDict']]] = None,
                  inputs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 lineage_context: Optional[pulumi.Input[Union['FeatureEngineeringFeatureLineageContextArgs', 'FeatureEngineeringFeatureLineageContextArgsDict']]] = None,
                  source: Optional[pulumi.Input[Union['FeatureEngineeringFeatureSourceArgs', 'FeatureEngineeringFeatureSourceArgsDict']]] = None,
                  time_window: Optional[pulumi.Input[Union['FeatureEngineeringFeatureTimeWindowArgs', 'FeatureEngineeringFeatureTimeWindowArgsDict']]] = None,
                  __props__=None):
@@ -371,11 +398,10 @@ class FeatureEngineeringFeature(pulumi.CustomResource):
             if inputs is None and not opts.urn:
                 raise TypeError("Missing required property 'inputs'")
             __props__.__dict__["inputs"] = inputs
+            __props__.__dict__["lineage_context"] = lineage_context
             if source is None and not opts.urn:
                 raise TypeError("Missing required property 'source'")
             __props__.__dict__["source"] = source
-            if time_window is None and not opts.urn:
-                raise TypeError("Missing required property 'time_window'")
             __props__.__dict__["time_window"] = time_window
         super(FeatureEngineeringFeature, __self__).__init__(
             'databricks:index/featureEngineeringFeature:FeatureEngineeringFeature',
@@ -392,6 +418,7 @@ class FeatureEngineeringFeature(pulumi.CustomResource):
             full_name: Optional[pulumi.Input[_builtins.str]] = None,
             function: Optional[pulumi.Input[Union['FeatureEngineeringFeatureFunctionArgs', 'FeatureEngineeringFeatureFunctionArgsDict']]] = None,
             inputs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            lineage_context: Optional[pulumi.Input[Union['FeatureEngineeringFeatureLineageContextArgs', 'FeatureEngineeringFeatureLineageContextArgsDict']]] = None,
             source: Optional[pulumi.Input[Union['FeatureEngineeringFeatureSourceArgs', 'FeatureEngineeringFeatureSourceArgsDict']]] = None,
             time_window: Optional[pulumi.Input[Union['FeatureEngineeringFeatureTimeWindowArgs', 'FeatureEngineeringFeatureTimeWindowArgsDict']]] = None) -> 'FeatureEngineeringFeature':
         """
@@ -418,6 +445,7 @@ class FeatureEngineeringFeature(pulumi.CustomResource):
         __props__.__dict__["full_name"] = full_name
         __props__.__dict__["function"] = function
         __props__.__dict__["inputs"] = inputs
+        __props__.__dict__["lineage_context"] = lineage_context
         __props__.__dict__["source"] = source
         __props__.__dict__["time_window"] = time_window
         return FeatureEngineeringFeature(resource_name, opts=opts, __props__=__props__)
@@ -463,6 +491,11 @@ class FeatureEngineeringFeature(pulumi.CustomResource):
         return pulumi.get(self, "inputs")
 
     @_builtins.property
+    @pulumi.getter(name="lineageContext")
+    def lineage_context(self) -> pulumi.Output[Optional['outputs.FeatureEngineeringFeatureLineageContext']]:
+        return pulumi.get(self, "lineage_context")
+
+    @_builtins.property
     @pulumi.getter
     def source(self) -> pulumi.Output['outputs.FeatureEngineeringFeatureSource']:
         """
@@ -472,7 +505,7 @@ class FeatureEngineeringFeature(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="timeWindow")
-    def time_window(self) -> pulumi.Output['outputs.FeatureEngineeringFeatureTimeWindow']:
+    def time_window(self) -> pulumi.Output[Optional['outputs.FeatureEngineeringFeatureTimeWindow']]:
         """
         The time window in which the feature is computed
         """

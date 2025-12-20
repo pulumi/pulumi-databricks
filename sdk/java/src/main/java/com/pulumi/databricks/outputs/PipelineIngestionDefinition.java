@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.PipelineIngestionDefinitionObject;
 import com.pulumi.databricks.outputs.PipelineIngestionDefinitionSourceConfiguration;
 import com.pulumi.databricks.outputs.PipelineIngestionDefinitionTableConfiguration;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -16,6 +17,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class PipelineIngestionDefinition {
     private @Nullable String connectionName;
+    private @Nullable Boolean ingestFromUcForeignCatalog;
     private @Nullable String ingestionGatewayId;
     private @Nullable String netsuiteJarPath;
     private @Nullable List<PipelineIngestionDefinitionObject> objects;
@@ -26,6 +28,9 @@ public final class PipelineIngestionDefinition {
     private PipelineIngestionDefinition() {}
     public Optional<String> connectionName() {
         return Optional.ofNullable(this.connectionName);
+    }
+    public Optional<Boolean> ingestFromUcForeignCatalog() {
+        return Optional.ofNullable(this.ingestFromUcForeignCatalog);
     }
     public Optional<String> ingestionGatewayId() {
         return Optional.ofNullable(this.ingestionGatewayId);
@@ -56,6 +61,7 @@ public final class PipelineIngestionDefinition {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String connectionName;
+        private @Nullable Boolean ingestFromUcForeignCatalog;
         private @Nullable String ingestionGatewayId;
         private @Nullable String netsuiteJarPath;
         private @Nullable List<PipelineIngestionDefinitionObject> objects;
@@ -66,6 +72,7 @@ public final class PipelineIngestionDefinition {
         public Builder(PipelineIngestionDefinition defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.connectionName = defaults.connectionName;
+    	      this.ingestFromUcForeignCatalog = defaults.ingestFromUcForeignCatalog;
     	      this.ingestionGatewayId = defaults.ingestionGatewayId;
     	      this.netsuiteJarPath = defaults.netsuiteJarPath;
     	      this.objects = defaults.objects;
@@ -78,6 +85,12 @@ public final class PipelineIngestionDefinition {
         public Builder connectionName(@Nullable String connectionName) {
 
             this.connectionName = connectionName;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder ingestFromUcForeignCatalog(@Nullable Boolean ingestFromUcForeignCatalog) {
+
+            this.ingestFromUcForeignCatalog = ingestFromUcForeignCatalog;
             return this;
         }
         @CustomType.Setter
@@ -125,6 +138,7 @@ public final class PipelineIngestionDefinition {
         public PipelineIngestionDefinition build() {
             final var _resultValue = new PipelineIngestionDefinition();
             _resultValue.connectionName = connectionName;
+            _resultValue.ingestFromUcForeignCatalog = ingestFromUcForeignCatalog;
             _resultValue.ingestionGatewayId = ingestionGatewayId;
             _resultValue.netsuiteJarPath = netsuiteJarPath;
             _resultValue.objects = objects;

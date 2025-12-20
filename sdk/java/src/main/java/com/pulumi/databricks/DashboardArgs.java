@@ -39,6 +39,36 @@ public final class DashboardArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Sets the default catalog for all datasets in this dashboard. Does not impact table references that use fully qualified catalog names (ex: samples.nyctaxi.trips).
+     * 
+     */
+    @Import(name="datasetCatalog")
+    private @Nullable Output<String> datasetCatalog;
+
+    /**
+     * @return Sets the default catalog for all datasets in this dashboard. Does not impact table references that use fully qualified catalog names (ex: samples.nyctaxi.trips).
+     * 
+     */
+    public Optional<Output<String>> datasetCatalog() {
+        return Optional.ofNullable(this.datasetCatalog);
+    }
+
+    /**
+     * Sets the default schema for all datasets in this dashboard. Does not impact table references that use fully qualified catalog names (ex: samples.nyctaxi.trips).
+     * 
+     */
+    @Import(name="datasetSchema")
+    private @Nullable Output<String> datasetSchema;
+
+    /**
+     * @return Sets the default schema for all datasets in this dashboard. Does not impact table references that use fully qualified catalog names (ex: samples.nyctaxi.trips).
+     * 
+     */
+    public Optional<Output<String>> datasetSchema() {
+        return Optional.ofNullable(this.datasetSchema);
+    }
+
+    /**
      * The display name of the dashboard.
      * 
      */
@@ -169,6 +199,8 @@ public final class DashboardArgs extends com.pulumi.resources.ResourceArgs {
         this.createTime = $.createTime;
         this.dashboardChangeDetected = $.dashboardChangeDetected;
         this.dashboardId = $.dashboardId;
+        this.datasetCatalog = $.datasetCatalog;
+        this.datasetSchema = $.datasetSchema;
         this.displayName = $.displayName;
         this.embedCredentials = $.embedCredentials;
         this.etag = $.etag;
@@ -225,6 +257,48 @@ public final class DashboardArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder dashboardId(String dashboardId) {
             return dashboardId(Output.of(dashboardId));
+        }
+
+        /**
+         * @param datasetCatalog Sets the default catalog for all datasets in this dashboard. Does not impact table references that use fully qualified catalog names (ex: samples.nyctaxi.trips).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder datasetCatalog(@Nullable Output<String> datasetCatalog) {
+            $.datasetCatalog = datasetCatalog;
+            return this;
+        }
+
+        /**
+         * @param datasetCatalog Sets the default catalog for all datasets in this dashboard. Does not impact table references that use fully qualified catalog names (ex: samples.nyctaxi.trips).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder datasetCatalog(String datasetCatalog) {
+            return datasetCatalog(Output.of(datasetCatalog));
+        }
+
+        /**
+         * @param datasetSchema Sets the default schema for all datasets in this dashboard. Does not impact table references that use fully qualified catalog names (ex: samples.nyctaxi.trips).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder datasetSchema(@Nullable Output<String> datasetSchema) {
+            $.datasetSchema = datasetSchema;
+            return this;
+        }
+
+        /**
+         * @param datasetSchema Sets the default schema for all datasets in this dashboard. Does not impact table references that use fully qualified catalog names (ex: samples.nyctaxi.trips).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder datasetSchema(String datasetSchema) {
+            return datasetSchema(Output.of(datasetSchema));
         }
 
         /**

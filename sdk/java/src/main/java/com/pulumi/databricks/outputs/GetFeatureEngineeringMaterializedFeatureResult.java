@@ -13,6 +13,11 @@ import java.util.Objects;
 @CustomType
 public final class GetFeatureEngineeringMaterializedFeatureResult {
     /**
+     * @return (string) - The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone
+     * 
+     */
+    private String cronSchedule;
+    /**
      * @return (string) - The full name of the feature in Unity Catalog
      * 
      */
@@ -39,7 +44,7 @@ public final class GetFeatureEngineeringMaterializedFeatureResult {
      */
     private GetFeatureEngineeringMaterializedFeatureOfflineStoreConfig offlineStoreConfig;
     /**
-     * @return (OnlineStore)
+     * @return (OnlineStoreConfig)
      * 
      */
     private GetFeatureEngineeringMaterializedFeatureOnlineStoreConfig onlineStoreConfig;
@@ -55,6 +60,13 @@ public final class GetFeatureEngineeringMaterializedFeatureResult {
     private String tableName;
 
     private GetFeatureEngineeringMaterializedFeatureResult() {}
+    /**
+     * @return (string) - The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone
+     * 
+     */
+    public String cronSchedule() {
+        return this.cronSchedule;
+    }
     /**
      * @return (string) - The full name of the feature in Unity Catalog
      * 
@@ -92,7 +104,7 @@ public final class GetFeatureEngineeringMaterializedFeatureResult {
         return this.offlineStoreConfig;
     }
     /**
-     * @return (OnlineStore)
+     * @return (OnlineStoreConfig)
      * 
      */
     public GetFeatureEngineeringMaterializedFeatureOnlineStoreConfig onlineStoreConfig() {
@@ -122,6 +134,7 @@ public final class GetFeatureEngineeringMaterializedFeatureResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String cronSchedule;
         private String featureName;
         private String id;
         private String lastMaterializationTime;
@@ -133,6 +146,7 @@ public final class GetFeatureEngineeringMaterializedFeatureResult {
         public Builder() {}
         public Builder(GetFeatureEngineeringMaterializedFeatureResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.cronSchedule = defaults.cronSchedule;
     	      this.featureName = defaults.featureName;
     	      this.id = defaults.id;
     	      this.lastMaterializationTime = defaults.lastMaterializationTime;
@@ -143,6 +157,14 @@ public final class GetFeatureEngineeringMaterializedFeatureResult {
     	      this.tableName = defaults.tableName;
         }
 
+        @CustomType.Setter
+        public Builder cronSchedule(String cronSchedule) {
+            if (cronSchedule == null) {
+              throw new MissingRequiredPropertyException("GetFeatureEngineeringMaterializedFeatureResult", "cronSchedule");
+            }
+            this.cronSchedule = cronSchedule;
+            return this;
+        }
         @CustomType.Setter
         public Builder featureName(String featureName) {
             if (featureName == null) {
@@ -209,6 +231,7 @@ public final class GetFeatureEngineeringMaterializedFeatureResult {
         }
         public GetFeatureEngineeringMaterializedFeatureResult build() {
             final var _resultValue = new GetFeatureEngineeringMaterializedFeatureResult();
+            _resultValue.cronSchedule = cronSchedule;
             _resultValue.featureName = featureName;
             _resultValue.id = id;
             _resultValue.lastMaterializationTime = lastMaterializationTime;

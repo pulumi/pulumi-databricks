@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetFeatureEngineeringFeaturesFeatureSourceDeltaTableSource;
+import com.pulumi.databricks.outputs.GetFeatureEngineeringFeaturesFeatureSourceKafkaSource;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,6 +17,11 @@ public final class GetFeatureEngineeringFeaturesFeatureSource {
      * 
      */
     private @Nullable GetFeatureEngineeringFeaturesFeatureSourceDeltaTableSource deltaTableSource;
+    /**
+     * @return (KafkaSource)
+     * 
+     */
+    private @Nullable GetFeatureEngineeringFeaturesFeatureSourceKafkaSource kafkaSource;
 
     private GetFeatureEngineeringFeaturesFeatureSource() {}
     /**
@@ -24,6 +30,13 @@ public final class GetFeatureEngineeringFeaturesFeatureSource {
      */
     public Optional<GetFeatureEngineeringFeaturesFeatureSourceDeltaTableSource> deltaTableSource() {
         return Optional.ofNullable(this.deltaTableSource);
+    }
+    /**
+     * @return (KafkaSource)
+     * 
+     */
+    public Optional<GetFeatureEngineeringFeaturesFeatureSourceKafkaSource> kafkaSource() {
+        return Optional.ofNullable(this.kafkaSource);
     }
 
     public static Builder builder() {
@@ -36,10 +49,12 @@ public final class GetFeatureEngineeringFeaturesFeatureSource {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable GetFeatureEngineeringFeaturesFeatureSourceDeltaTableSource deltaTableSource;
+        private @Nullable GetFeatureEngineeringFeaturesFeatureSourceKafkaSource kafkaSource;
         public Builder() {}
         public Builder(GetFeatureEngineeringFeaturesFeatureSource defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.deltaTableSource = defaults.deltaTableSource;
+    	      this.kafkaSource = defaults.kafkaSource;
         }
 
         @CustomType.Setter
@@ -48,9 +63,16 @@ public final class GetFeatureEngineeringFeaturesFeatureSource {
             this.deltaTableSource = deltaTableSource;
             return this;
         }
+        @CustomType.Setter
+        public Builder kafkaSource(@Nullable GetFeatureEngineeringFeaturesFeatureSourceKafkaSource kafkaSource) {
+
+            this.kafkaSource = kafkaSource;
+            return this;
+        }
         public GetFeatureEngineeringFeaturesFeatureSource build() {
             final var _resultValue = new GetFeatureEngineeringFeaturesFeatureSource();
             _resultValue.deltaTableSource = deltaTableSource;
+            _resultValue.kafkaSource = kafkaSource;
             return _resultValue;
         }
     }

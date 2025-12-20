@@ -6,6 +6,7 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.FeatureEngineeringFeatureFunctionArgs;
+import com.pulumi.databricks.inputs.FeatureEngineeringFeatureLineageContextArgs;
 import com.pulumi.databricks.inputs.FeatureEngineeringFeatureSourceArgs;
 import com.pulumi.databricks.inputs.FeatureEngineeringFeatureTimeWindowArgs;
 import java.lang.String;
@@ -94,6 +95,13 @@ public final class FeatureEngineeringFeatureState extends com.pulumi.resources.R
         return Optional.ofNullable(this.inputs);
     }
 
+    @Import(name="lineageContext")
+    private @Nullable Output<FeatureEngineeringFeatureLineageContextArgs> lineageContext;
+
+    public Optional<Output<FeatureEngineeringFeatureLineageContextArgs>> lineageContext() {
+        return Optional.ofNullable(this.lineageContext);
+    }
+
     /**
      * The data source of the feature
      * 
@@ -132,6 +140,7 @@ public final class FeatureEngineeringFeatureState extends com.pulumi.resources.R
         this.fullName = $.fullName;
         this.function = $.function;
         this.inputs = $.inputs;
+        this.lineageContext = $.lineageContext;
         this.source = $.source;
         this.timeWindow = $.timeWindow;
     }
@@ -267,6 +276,15 @@ public final class FeatureEngineeringFeatureState extends com.pulumi.resources.R
          */
         public Builder inputs(String... inputs) {
             return inputs(List.of(inputs));
+        }
+
+        public Builder lineageContext(@Nullable Output<FeatureEngineeringFeatureLineageContextArgs> lineageContext) {
+            $.lineageContext = lineageContext;
+            return this;
+        }
+
+        public Builder lineageContext(FeatureEngineeringFeatureLineageContextArgs lineageContext) {
+            return lineageContext(Output.of(lineageContext));
         }
 
         /**

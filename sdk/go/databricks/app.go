@@ -103,7 +103,7 @@ type App struct {
 	AppStatus AppAppStatusOutput `pulumi:"appStatus"`
 	// The Budget Policy ID set for this resource.
 	BudgetPolicyId pulumi.StringPtrOutput `pulumi:"budgetPolicyId"`
-	// A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`, `LIQUID`.
+	// A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`.
 	ComputeSize pulumi.StringOutput `pulumi:"computeSize"`
 	// attribute
 	ComputeStatus AppComputeStatusOutput `pulumi:"computeStatus"`
@@ -179,7 +179,7 @@ type appState struct {
 	AppStatus *AppAppStatus `pulumi:"appStatus"`
 	// The Budget Policy ID set for this resource.
 	BudgetPolicyId *string `pulumi:"budgetPolicyId"`
-	// A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`, `LIQUID`.
+	// A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`.
 	ComputeSize *string `pulumi:"computeSize"`
 	// attribute
 	ComputeStatus *AppComputeStatus `pulumi:"computeStatus"`
@@ -226,7 +226,7 @@ type AppState struct {
 	AppStatus AppAppStatusPtrInput
 	// The Budget Policy ID set for this resource.
 	BudgetPolicyId pulumi.StringPtrInput
-	// A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`, `LIQUID`.
+	// A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`.
 	ComputeSize pulumi.StringPtrInput
 	// attribute
 	ComputeStatus AppComputeStatusPtrInput
@@ -274,7 +274,7 @@ func (AppState) ElementType() reflect.Type {
 type appArgs struct {
 	// The Budget Policy ID set for this resource.
 	BudgetPolicyId *string `pulumi:"budgetPolicyId"`
-	// A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`, `LIQUID`.
+	// A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`.
 	ComputeSize *string `pulumi:"computeSize"`
 	// The description of the app.
 	Description *string `pulumi:"description"`
@@ -292,7 +292,7 @@ type appArgs struct {
 type AppArgs struct {
 	// The Budget Policy ID set for this resource.
 	BudgetPolicyId pulumi.StringPtrInput
-	// A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`, `LIQUID`.
+	// A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`.
 	ComputeSize pulumi.StringPtrInput
 	// The description of the app.
 	Description pulumi.StringPtrInput
@@ -407,7 +407,7 @@ func (o AppOutput) BudgetPolicyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *App) pulumi.StringPtrOutput { return v.BudgetPolicyId }).(pulumi.StringPtrOutput)
 }
 
-// A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`, `LIQUID`.
+// A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`.
 func (o AppOutput) ComputeSize() pulumi.StringOutput {
 	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.ComputeSize }).(pulumi.StringOutput)
 }

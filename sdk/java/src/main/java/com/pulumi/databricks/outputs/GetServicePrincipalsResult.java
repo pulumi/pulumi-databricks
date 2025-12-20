@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetServicePrincipalsServicePrincipal;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
@@ -12,7 +13,7 @@ import java.util.Objects;
 @CustomType
 public final class GetServicePrincipalsResult {
     /**
-     * @return List of `applicationIds` of service principals.  Individual service principal can be retrieved using databricks.ServicePrincipal data source
+     * @return List of `applicationIds` of service principals.  Individual service principal can be retrieved using databricks.ServicePrincipal data source or from `servicePrincipals` attribute.
      * 
      */
     private List<String> applicationIds;
@@ -22,10 +23,15 @@ public final class GetServicePrincipalsResult {
      * 
      */
     private String id;
+    /**
+     * @return List of objects describing individual service principals. Each object has the following attributes:
+     * 
+     */
+    private List<GetServicePrincipalsServicePrincipal> servicePrincipals;
 
     private GetServicePrincipalsResult() {}
     /**
-     * @return List of `applicationIds` of service principals.  Individual service principal can be retrieved using databricks.ServicePrincipal data source
+     * @return List of `applicationIds` of service principals.  Individual service principal can be retrieved using databricks.ServicePrincipal data source or from `servicePrincipals` attribute.
      * 
      */
     public List<String> applicationIds() {
@@ -41,6 +47,13 @@ public final class GetServicePrincipalsResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return List of objects describing individual service principals. Each object has the following attributes:
+     * 
+     */
+    public List<GetServicePrincipalsServicePrincipal> servicePrincipals() {
+        return this.servicePrincipals;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -54,12 +67,14 @@ public final class GetServicePrincipalsResult {
         private List<String> applicationIds;
         private String displayNameContains;
         private String id;
+        private List<GetServicePrincipalsServicePrincipal> servicePrincipals;
         public Builder() {}
         public Builder(GetServicePrincipalsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.applicationIds = defaults.applicationIds;
     	      this.displayNameContains = defaults.displayNameContains;
     	      this.id = defaults.id;
+    	      this.servicePrincipals = defaults.servicePrincipals;
         }
 
         @CustomType.Setter
@@ -89,11 +104,23 @@ public final class GetServicePrincipalsResult {
             this.id = id;
             return this;
         }
+        @CustomType.Setter
+        public Builder servicePrincipals(List<GetServicePrincipalsServicePrincipal> servicePrincipals) {
+            if (servicePrincipals == null) {
+              throw new MissingRequiredPropertyException("GetServicePrincipalsResult", "servicePrincipals");
+            }
+            this.servicePrincipals = servicePrincipals;
+            return this;
+        }
+        public Builder servicePrincipals(GetServicePrincipalsServicePrincipal... servicePrincipals) {
+            return servicePrincipals(List.of(servicePrincipals));
+        }
         public GetServicePrincipalsResult build() {
             final var _resultValue = new GetServicePrincipalsResult();
             _resultValue.applicationIds = applicationIds;
             _resultValue.displayNameContains = displayNameContains;
             _resultValue.id = id;
+            _resultValue.servicePrincipals = servicePrincipals;
             return _resultValue;
         }
     }

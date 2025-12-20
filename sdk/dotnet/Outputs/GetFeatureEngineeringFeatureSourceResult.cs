@@ -17,11 +17,19 @@ namespace Pulumi.Databricks.Outputs
         /// (DeltaTableSource)
         /// </summary>
         public readonly Outputs.GetFeatureEngineeringFeatureSourceDeltaTableSourceResult? DeltaTableSource;
+        /// <summary>
+        /// (KafkaSource)
+        /// </summary>
+        public readonly Outputs.GetFeatureEngineeringFeatureSourceKafkaSourceResult? KafkaSource;
 
         [OutputConstructor]
-        private GetFeatureEngineeringFeatureSourceResult(Outputs.GetFeatureEngineeringFeatureSourceDeltaTableSourceResult? deltaTableSource)
+        private GetFeatureEngineeringFeatureSourceResult(
+            Outputs.GetFeatureEngineeringFeatureSourceDeltaTableSourceResult? deltaTableSource,
+
+            Outputs.GetFeatureEngineeringFeatureSourceKafkaSourceResult? kafkaSource)
         {
             DeltaTableSource = deltaTableSource;
+            KafkaSource = kafkaSource;
         }
     }
 }

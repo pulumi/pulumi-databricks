@@ -33,6 +33,7 @@ namespace Pulumi.Databricks.Outputs
         /// (list of string) - The input columns from which the feature is computed
         /// </summary>
         public readonly ImmutableArray<string> Inputs;
+        public readonly Outputs.GetFeatureEngineeringFeaturesFeatureLineageContextResult LineageContext;
         /// <summary>
         /// (DataSource) - The data source of the feature
         /// </summary>
@@ -54,6 +55,8 @@ namespace Pulumi.Databricks.Outputs
 
             ImmutableArray<string> inputs,
 
+            Outputs.GetFeatureEngineeringFeaturesFeatureLineageContextResult lineageContext,
+
             Outputs.GetFeatureEngineeringFeaturesFeatureSourceResult source,
 
             Outputs.GetFeatureEngineeringFeaturesFeatureTimeWindowResult timeWindow)
@@ -63,6 +66,7 @@ namespace Pulumi.Databricks.Outputs
             FullName = fullName;
             Function = function;
             Inputs = inputs;
+            LineageContext = lineageContext;
             Source = source;
             TimeWindow = timeWindow;
         }

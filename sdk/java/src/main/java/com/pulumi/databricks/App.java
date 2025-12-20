@@ -157,14 +157,14 @@ public class App extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.budgetPolicyId);
     }
     /**
-     * A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`, `LIQUID`.
+     * A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`.
      * 
      */
     @Export(name="computeSize", refs={String.class}, tree="[0]")
     private Output<String> computeSize;
 
     /**
-     * @return A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`, `LIQUID`.
+     * @return A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`.
      * 
      */
     public Output<String> computeSize() {

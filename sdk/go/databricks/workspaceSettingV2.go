@@ -71,27 +71,40 @@ import (
 type WorkspaceSettingV2 struct {
 	pulumi.CustomResourceState
 
-	AibiDashboardEmbeddingAccessPolicy             WorkspaceSettingV2AibiDashboardEmbeddingAccessPolicyPtrOutput             `pulumi:"aibiDashboardEmbeddingAccessPolicy"`
-	AibiDashboardEmbeddingApprovedDomains          WorkspaceSettingV2AibiDashboardEmbeddingApprovedDomainsPtrOutput          `pulumi:"aibiDashboardEmbeddingApprovedDomains"`
-	AutomaticClusterUpdateWorkspace                WorkspaceSettingV2AutomaticClusterUpdateWorkspacePtrOutput                `pulumi:"automaticClusterUpdateWorkspace"`
-	BooleanVal                                     WorkspaceSettingV2BooleanValPtrOutput                                     `pulumi:"booleanVal"`
-	EffectiveAibiDashboardEmbeddingAccessPolicy    WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyPtrOutput    `pulumi:"effectiveAibiDashboardEmbeddingAccessPolicy"`
+	// Setting value for aibiDashboardEmbeddingAccessPolicy setting. This is the setting value set by consumers, check effectiveAibiDashboardEmbeddingAccessPolicy for final setting value
+	AibiDashboardEmbeddingAccessPolicy WorkspaceSettingV2AibiDashboardEmbeddingAccessPolicyPtrOutput `pulumi:"aibiDashboardEmbeddingAccessPolicy"`
+	// Setting value for aibiDashboardEmbeddingApprovedDomains setting. This is the setting value set by consumers, check effectiveAibiDashboardEmbeddingApprovedDomains for final setting value
+	AibiDashboardEmbeddingApprovedDomains WorkspaceSettingV2AibiDashboardEmbeddingApprovedDomainsPtrOutput `pulumi:"aibiDashboardEmbeddingApprovedDomains"`
+	// Setting value for automaticClusterUpdateWorkspace setting. This is the setting value set by consumers, check effectiveAutomaticClusterUpdateWorkspace for final setting value
+	AutomaticClusterUpdateWorkspace WorkspaceSettingV2AutomaticClusterUpdateWorkspacePtrOutput `pulumi:"automaticClusterUpdateWorkspace"`
+	// Setting value for boolean type setting. This is the setting value set by consumers, check effectiveBooleanVal for final setting value
+	BooleanVal WorkspaceSettingV2BooleanValPtrOutput `pulumi:"booleanVal"`
+	// Effective setting value for aibiDashboardEmbeddingAccessPolicy setting. This is the final effective value of setting. To set a value use aibi_dashboard_embedding_access_policy
+	EffectiveAibiDashboardEmbeddingAccessPolicy WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyPtrOutput `pulumi:"effectiveAibiDashboardEmbeddingAccessPolicy"`
+	// Effective setting value for aibiDashboardEmbeddingApprovedDomains setting. This is the final effective value of setting. To set a value use aibi_dashboard_embedding_approved_domains
 	EffectiveAibiDashboardEmbeddingApprovedDomains WorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsPtrOutput `pulumi:"effectiveAibiDashboardEmbeddingApprovedDomains"`
-	EffectiveAutomaticClusterUpdateWorkspace       WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspacePtrOutput       `pulumi:"effectiveAutomaticClusterUpdateWorkspace"`
-	// (BooleanMessage)
+	// Effective setting value for automaticClusterUpdateWorkspace setting. This is the final effective value of setting. To set a value use automatic_cluster_update_workspace
+	EffectiveAutomaticClusterUpdateWorkspace WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspacePtrOutput `pulumi:"effectiveAutomaticClusterUpdateWorkspace"`
+	// (BooleanMessage) - Effective setting value for boolean type setting. This is the final effective value of setting. To set a value use boolean_val
 	EffectiveBooleanVal WorkspaceSettingV2EffectiveBooleanValOutput `pulumi:"effectiveBooleanVal"`
-	// (IntegerMessage)
-	EffectiveIntegerVal              WorkspaceSettingV2EffectiveIntegerValOutput                 `pulumi:"effectiveIntegerVal"`
-	EffectivePersonalCompute         WorkspaceSettingV2EffectivePersonalComputePtrOutput         `pulumi:"effectivePersonalCompute"`
+	// (IntegerMessage) - Effective setting value for integer type setting. This is the final effective value of setting. To set a value use integer_val
+	EffectiveIntegerVal WorkspaceSettingV2EffectiveIntegerValOutput `pulumi:"effectiveIntegerVal"`
+	// Effective setting value for personalCompute setting. This is the final effective value of setting. To set a value use personal_compute
+	EffectivePersonalCompute WorkspaceSettingV2EffectivePersonalComputePtrOutput `pulumi:"effectivePersonalCompute"`
+	// Effective setting value for restrictWorkspaceAdmins setting. This is the final effective value of setting. To set a value use restrict_workspace_admins
 	EffectiveRestrictWorkspaceAdmins WorkspaceSettingV2EffectiveRestrictWorkspaceAdminsPtrOutput `pulumi:"effectiveRestrictWorkspaceAdmins"`
-	// (StringMessage)
+	// (StringMessage) - Effective setting value for string type setting. This is the final effective value of setting. To set a value use string_val
 	EffectiveStringVal WorkspaceSettingV2EffectiveStringValOutput `pulumi:"effectiveStringVal"`
-	IntegerVal         WorkspaceSettingV2IntegerValPtrOutput      `pulumi:"integerVal"`
+	// Setting value for integer type setting. This is the setting value set by consumers, check effectiveIntegerVal for final setting value
+	IntegerVal WorkspaceSettingV2IntegerValPtrOutput `pulumi:"integerVal"`
 	// Name of the setting
-	Name                    pulumi.StringOutput                                `pulumi:"name"`
-	PersonalCompute         WorkspaceSettingV2PersonalComputePtrOutput         `pulumi:"personalCompute"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Setting value for personalCompute setting. This is the setting value set by consumers, check effectivePersonalCompute for final setting value
+	PersonalCompute WorkspaceSettingV2PersonalComputePtrOutput `pulumi:"personalCompute"`
+	// Setting value for restrictWorkspaceAdmins setting. This is the setting value set by consumers, check effectiveRestrictWorkspaceAdmins for final setting value
 	RestrictWorkspaceAdmins WorkspaceSettingV2RestrictWorkspaceAdminsPtrOutput `pulumi:"restrictWorkspaceAdmins"`
-	StringVal               WorkspaceSettingV2StringValPtrOutput               `pulumi:"stringVal"`
+	// Setting value for string type setting. This is the setting value set by consumers, check effectiveStringVal for final setting value
+	StringVal WorkspaceSettingV2StringValPtrOutput `pulumi:"stringVal"`
 }
 
 // NewWorkspaceSettingV2 registers a new resource with the given unique name, arguments, and options.
@@ -124,51 +137,77 @@ func GetWorkspaceSettingV2(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering WorkspaceSettingV2 resources.
 type workspaceSettingV2State struct {
-	AibiDashboardEmbeddingAccessPolicy             *WorkspaceSettingV2AibiDashboardEmbeddingAccessPolicy             `pulumi:"aibiDashboardEmbeddingAccessPolicy"`
-	AibiDashboardEmbeddingApprovedDomains          *WorkspaceSettingV2AibiDashboardEmbeddingApprovedDomains          `pulumi:"aibiDashboardEmbeddingApprovedDomains"`
-	AutomaticClusterUpdateWorkspace                *WorkspaceSettingV2AutomaticClusterUpdateWorkspace                `pulumi:"automaticClusterUpdateWorkspace"`
-	BooleanVal                                     *WorkspaceSettingV2BooleanVal                                     `pulumi:"booleanVal"`
-	EffectiveAibiDashboardEmbeddingAccessPolicy    *WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy    `pulumi:"effectiveAibiDashboardEmbeddingAccessPolicy"`
+	// Setting value for aibiDashboardEmbeddingAccessPolicy setting. This is the setting value set by consumers, check effectiveAibiDashboardEmbeddingAccessPolicy for final setting value
+	AibiDashboardEmbeddingAccessPolicy *WorkspaceSettingV2AibiDashboardEmbeddingAccessPolicy `pulumi:"aibiDashboardEmbeddingAccessPolicy"`
+	// Setting value for aibiDashboardEmbeddingApprovedDomains setting. This is the setting value set by consumers, check effectiveAibiDashboardEmbeddingApprovedDomains for final setting value
+	AibiDashboardEmbeddingApprovedDomains *WorkspaceSettingV2AibiDashboardEmbeddingApprovedDomains `pulumi:"aibiDashboardEmbeddingApprovedDomains"`
+	// Setting value for automaticClusterUpdateWorkspace setting. This is the setting value set by consumers, check effectiveAutomaticClusterUpdateWorkspace for final setting value
+	AutomaticClusterUpdateWorkspace *WorkspaceSettingV2AutomaticClusterUpdateWorkspace `pulumi:"automaticClusterUpdateWorkspace"`
+	// Setting value for boolean type setting. This is the setting value set by consumers, check effectiveBooleanVal for final setting value
+	BooleanVal *WorkspaceSettingV2BooleanVal `pulumi:"booleanVal"`
+	// Effective setting value for aibiDashboardEmbeddingAccessPolicy setting. This is the final effective value of setting. To set a value use aibi_dashboard_embedding_access_policy
+	EffectiveAibiDashboardEmbeddingAccessPolicy *WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy `pulumi:"effectiveAibiDashboardEmbeddingAccessPolicy"`
+	// Effective setting value for aibiDashboardEmbeddingApprovedDomains setting. This is the final effective value of setting. To set a value use aibi_dashboard_embedding_approved_domains
 	EffectiveAibiDashboardEmbeddingApprovedDomains *WorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomains `pulumi:"effectiveAibiDashboardEmbeddingApprovedDomains"`
-	EffectiveAutomaticClusterUpdateWorkspace       *WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspace       `pulumi:"effectiveAutomaticClusterUpdateWorkspace"`
-	// (BooleanMessage)
+	// Effective setting value for automaticClusterUpdateWorkspace setting. This is the final effective value of setting. To set a value use automatic_cluster_update_workspace
+	EffectiveAutomaticClusterUpdateWorkspace *WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspace `pulumi:"effectiveAutomaticClusterUpdateWorkspace"`
+	// (BooleanMessage) - Effective setting value for boolean type setting. This is the final effective value of setting. To set a value use boolean_val
 	EffectiveBooleanVal *WorkspaceSettingV2EffectiveBooleanVal `pulumi:"effectiveBooleanVal"`
-	// (IntegerMessage)
-	EffectiveIntegerVal              *WorkspaceSettingV2EffectiveIntegerVal              `pulumi:"effectiveIntegerVal"`
-	EffectivePersonalCompute         *WorkspaceSettingV2EffectivePersonalCompute         `pulumi:"effectivePersonalCompute"`
+	// (IntegerMessage) - Effective setting value for integer type setting. This is the final effective value of setting. To set a value use integer_val
+	EffectiveIntegerVal *WorkspaceSettingV2EffectiveIntegerVal `pulumi:"effectiveIntegerVal"`
+	// Effective setting value for personalCompute setting. This is the final effective value of setting. To set a value use personal_compute
+	EffectivePersonalCompute *WorkspaceSettingV2EffectivePersonalCompute `pulumi:"effectivePersonalCompute"`
+	// Effective setting value for restrictWorkspaceAdmins setting. This is the final effective value of setting. To set a value use restrict_workspace_admins
 	EffectiveRestrictWorkspaceAdmins *WorkspaceSettingV2EffectiveRestrictWorkspaceAdmins `pulumi:"effectiveRestrictWorkspaceAdmins"`
-	// (StringMessage)
+	// (StringMessage) - Effective setting value for string type setting. This is the final effective value of setting. To set a value use string_val
 	EffectiveStringVal *WorkspaceSettingV2EffectiveStringVal `pulumi:"effectiveStringVal"`
-	IntegerVal         *WorkspaceSettingV2IntegerVal         `pulumi:"integerVal"`
+	// Setting value for integer type setting. This is the setting value set by consumers, check effectiveIntegerVal for final setting value
+	IntegerVal *WorkspaceSettingV2IntegerVal `pulumi:"integerVal"`
 	// Name of the setting
-	Name                    *string                                    `pulumi:"name"`
-	PersonalCompute         *WorkspaceSettingV2PersonalCompute         `pulumi:"personalCompute"`
+	Name *string `pulumi:"name"`
+	// Setting value for personalCompute setting. This is the setting value set by consumers, check effectivePersonalCompute for final setting value
+	PersonalCompute *WorkspaceSettingV2PersonalCompute `pulumi:"personalCompute"`
+	// Setting value for restrictWorkspaceAdmins setting. This is the setting value set by consumers, check effectiveRestrictWorkspaceAdmins for final setting value
 	RestrictWorkspaceAdmins *WorkspaceSettingV2RestrictWorkspaceAdmins `pulumi:"restrictWorkspaceAdmins"`
-	StringVal               *WorkspaceSettingV2StringVal               `pulumi:"stringVal"`
+	// Setting value for string type setting. This is the setting value set by consumers, check effectiveStringVal for final setting value
+	StringVal *WorkspaceSettingV2StringVal `pulumi:"stringVal"`
 }
 
 type WorkspaceSettingV2State struct {
-	AibiDashboardEmbeddingAccessPolicy             WorkspaceSettingV2AibiDashboardEmbeddingAccessPolicyPtrInput
-	AibiDashboardEmbeddingApprovedDomains          WorkspaceSettingV2AibiDashboardEmbeddingApprovedDomainsPtrInput
-	AutomaticClusterUpdateWorkspace                WorkspaceSettingV2AutomaticClusterUpdateWorkspacePtrInput
-	BooleanVal                                     WorkspaceSettingV2BooleanValPtrInput
-	EffectiveAibiDashboardEmbeddingAccessPolicy    WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyPtrInput
+	// Setting value for aibiDashboardEmbeddingAccessPolicy setting. This is the setting value set by consumers, check effectiveAibiDashboardEmbeddingAccessPolicy for final setting value
+	AibiDashboardEmbeddingAccessPolicy WorkspaceSettingV2AibiDashboardEmbeddingAccessPolicyPtrInput
+	// Setting value for aibiDashboardEmbeddingApprovedDomains setting. This is the setting value set by consumers, check effectiveAibiDashboardEmbeddingApprovedDomains for final setting value
+	AibiDashboardEmbeddingApprovedDomains WorkspaceSettingV2AibiDashboardEmbeddingApprovedDomainsPtrInput
+	// Setting value for automaticClusterUpdateWorkspace setting. This is the setting value set by consumers, check effectiveAutomaticClusterUpdateWorkspace for final setting value
+	AutomaticClusterUpdateWorkspace WorkspaceSettingV2AutomaticClusterUpdateWorkspacePtrInput
+	// Setting value for boolean type setting. This is the setting value set by consumers, check effectiveBooleanVal for final setting value
+	BooleanVal WorkspaceSettingV2BooleanValPtrInput
+	// Effective setting value for aibiDashboardEmbeddingAccessPolicy setting. This is the final effective value of setting. To set a value use aibi_dashboard_embedding_access_policy
+	EffectiveAibiDashboardEmbeddingAccessPolicy WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyPtrInput
+	// Effective setting value for aibiDashboardEmbeddingApprovedDomains setting. This is the final effective value of setting. To set a value use aibi_dashboard_embedding_approved_domains
 	EffectiveAibiDashboardEmbeddingApprovedDomains WorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsPtrInput
-	EffectiveAutomaticClusterUpdateWorkspace       WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspacePtrInput
-	// (BooleanMessage)
+	// Effective setting value for automaticClusterUpdateWorkspace setting. This is the final effective value of setting. To set a value use automatic_cluster_update_workspace
+	EffectiveAutomaticClusterUpdateWorkspace WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspacePtrInput
+	// (BooleanMessage) - Effective setting value for boolean type setting. This is the final effective value of setting. To set a value use boolean_val
 	EffectiveBooleanVal WorkspaceSettingV2EffectiveBooleanValPtrInput
-	// (IntegerMessage)
-	EffectiveIntegerVal              WorkspaceSettingV2EffectiveIntegerValPtrInput
-	EffectivePersonalCompute         WorkspaceSettingV2EffectivePersonalComputePtrInput
+	// (IntegerMessage) - Effective setting value for integer type setting. This is the final effective value of setting. To set a value use integer_val
+	EffectiveIntegerVal WorkspaceSettingV2EffectiveIntegerValPtrInput
+	// Effective setting value for personalCompute setting. This is the final effective value of setting. To set a value use personal_compute
+	EffectivePersonalCompute WorkspaceSettingV2EffectivePersonalComputePtrInput
+	// Effective setting value for restrictWorkspaceAdmins setting. This is the final effective value of setting. To set a value use restrict_workspace_admins
 	EffectiveRestrictWorkspaceAdmins WorkspaceSettingV2EffectiveRestrictWorkspaceAdminsPtrInput
-	// (StringMessage)
+	// (StringMessage) - Effective setting value for string type setting. This is the final effective value of setting. To set a value use string_val
 	EffectiveStringVal WorkspaceSettingV2EffectiveStringValPtrInput
-	IntegerVal         WorkspaceSettingV2IntegerValPtrInput
+	// Setting value for integer type setting. This is the setting value set by consumers, check effectiveIntegerVal for final setting value
+	IntegerVal WorkspaceSettingV2IntegerValPtrInput
 	// Name of the setting
-	Name                    pulumi.StringPtrInput
-	PersonalCompute         WorkspaceSettingV2PersonalComputePtrInput
+	Name pulumi.StringPtrInput
+	// Setting value for personalCompute setting. This is the setting value set by consumers, check effectivePersonalCompute for final setting value
+	PersonalCompute WorkspaceSettingV2PersonalComputePtrInput
+	// Setting value for restrictWorkspaceAdmins setting. This is the setting value set by consumers, check effectiveRestrictWorkspaceAdmins for final setting value
 	RestrictWorkspaceAdmins WorkspaceSettingV2RestrictWorkspaceAdminsPtrInput
-	StringVal               WorkspaceSettingV2StringValPtrInput
+	// Setting value for string type setting. This is the setting value set by consumers, check effectiveStringVal for final setting value
+	StringVal WorkspaceSettingV2StringValPtrInput
 }
 
 func (WorkspaceSettingV2State) ElementType() reflect.Type {
@@ -176,40 +215,66 @@ func (WorkspaceSettingV2State) ElementType() reflect.Type {
 }
 
 type workspaceSettingV2Args struct {
-	AibiDashboardEmbeddingAccessPolicy             *WorkspaceSettingV2AibiDashboardEmbeddingAccessPolicy             `pulumi:"aibiDashboardEmbeddingAccessPolicy"`
-	AibiDashboardEmbeddingApprovedDomains          *WorkspaceSettingV2AibiDashboardEmbeddingApprovedDomains          `pulumi:"aibiDashboardEmbeddingApprovedDomains"`
-	AutomaticClusterUpdateWorkspace                *WorkspaceSettingV2AutomaticClusterUpdateWorkspace                `pulumi:"automaticClusterUpdateWorkspace"`
-	BooleanVal                                     *WorkspaceSettingV2BooleanVal                                     `pulumi:"booleanVal"`
-	EffectiveAibiDashboardEmbeddingAccessPolicy    *WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy    `pulumi:"effectiveAibiDashboardEmbeddingAccessPolicy"`
+	// Setting value for aibiDashboardEmbeddingAccessPolicy setting. This is the setting value set by consumers, check effectiveAibiDashboardEmbeddingAccessPolicy for final setting value
+	AibiDashboardEmbeddingAccessPolicy *WorkspaceSettingV2AibiDashboardEmbeddingAccessPolicy `pulumi:"aibiDashboardEmbeddingAccessPolicy"`
+	// Setting value for aibiDashboardEmbeddingApprovedDomains setting. This is the setting value set by consumers, check effectiveAibiDashboardEmbeddingApprovedDomains for final setting value
+	AibiDashboardEmbeddingApprovedDomains *WorkspaceSettingV2AibiDashboardEmbeddingApprovedDomains `pulumi:"aibiDashboardEmbeddingApprovedDomains"`
+	// Setting value for automaticClusterUpdateWorkspace setting. This is the setting value set by consumers, check effectiveAutomaticClusterUpdateWorkspace for final setting value
+	AutomaticClusterUpdateWorkspace *WorkspaceSettingV2AutomaticClusterUpdateWorkspace `pulumi:"automaticClusterUpdateWorkspace"`
+	// Setting value for boolean type setting. This is the setting value set by consumers, check effectiveBooleanVal for final setting value
+	BooleanVal *WorkspaceSettingV2BooleanVal `pulumi:"booleanVal"`
+	// Effective setting value for aibiDashboardEmbeddingAccessPolicy setting. This is the final effective value of setting. To set a value use aibi_dashboard_embedding_access_policy
+	EffectiveAibiDashboardEmbeddingAccessPolicy *WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy `pulumi:"effectiveAibiDashboardEmbeddingAccessPolicy"`
+	// Effective setting value for aibiDashboardEmbeddingApprovedDomains setting. This is the final effective value of setting. To set a value use aibi_dashboard_embedding_approved_domains
 	EffectiveAibiDashboardEmbeddingApprovedDomains *WorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomains `pulumi:"effectiveAibiDashboardEmbeddingApprovedDomains"`
-	EffectiveAutomaticClusterUpdateWorkspace       *WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspace       `pulumi:"effectiveAutomaticClusterUpdateWorkspace"`
-	EffectivePersonalCompute                       *WorkspaceSettingV2EffectivePersonalCompute                       `pulumi:"effectivePersonalCompute"`
-	EffectiveRestrictWorkspaceAdmins               *WorkspaceSettingV2EffectiveRestrictWorkspaceAdmins               `pulumi:"effectiveRestrictWorkspaceAdmins"`
-	IntegerVal                                     *WorkspaceSettingV2IntegerVal                                     `pulumi:"integerVal"`
+	// Effective setting value for automaticClusterUpdateWorkspace setting. This is the final effective value of setting. To set a value use automatic_cluster_update_workspace
+	EffectiveAutomaticClusterUpdateWorkspace *WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspace `pulumi:"effectiveAutomaticClusterUpdateWorkspace"`
+	// Effective setting value for personalCompute setting. This is the final effective value of setting. To set a value use personal_compute
+	EffectivePersonalCompute *WorkspaceSettingV2EffectivePersonalCompute `pulumi:"effectivePersonalCompute"`
+	// Effective setting value for restrictWorkspaceAdmins setting. This is the final effective value of setting. To set a value use restrict_workspace_admins
+	EffectiveRestrictWorkspaceAdmins *WorkspaceSettingV2EffectiveRestrictWorkspaceAdmins `pulumi:"effectiveRestrictWorkspaceAdmins"`
+	// Setting value for integer type setting. This is the setting value set by consumers, check effectiveIntegerVal for final setting value
+	IntegerVal *WorkspaceSettingV2IntegerVal `pulumi:"integerVal"`
 	// Name of the setting
-	Name                    *string                                    `pulumi:"name"`
-	PersonalCompute         *WorkspaceSettingV2PersonalCompute         `pulumi:"personalCompute"`
+	Name *string `pulumi:"name"`
+	// Setting value for personalCompute setting. This is the setting value set by consumers, check effectivePersonalCompute for final setting value
+	PersonalCompute *WorkspaceSettingV2PersonalCompute `pulumi:"personalCompute"`
+	// Setting value for restrictWorkspaceAdmins setting. This is the setting value set by consumers, check effectiveRestrictWorkspaceAdmins for final setting value
 	RestrictWorkspaceAdmins *WorkspaceSettingV2RestrictWorkspaceAdmins `pulumi:"restrictWorkspaceAdmins"`
-	StringVal               *WorkspaceSettingV2StringVal               `pulumi:"stringVal"`
+	// Setting value for string type setting. This is the setting value set by consumers, check effectiveStringVal for final setting value
+	StringVal *WorkspaceSettingV2StringVal `pulumi:"stringVal"`
 }
 
 // The set of arguments for constructing a WorkspaceSettingV2 resource.
 type WorkspaceSettingV2Args struct {
-	AibiDashboardEmbeddingAccessPolicy             WorkspaceSettingV2AibiDashboardEmbeddingAccessPolicyPtrInput
-	AibiDashboardEmbeddingApprovedDomains          WorkspaceSettingV2AibiDashboardEmbeddingApprovedDomainsPtrInput
-	AutomaticClusterUpdateWorkspace                WorkspaceSettingV2AutomaticClusterUpdateWorkspacePtrInput
-	BooleanVal                                     WorkspaceSettingV2BooleanValPtrInput
-	EffectiveAibiDashboardEmbeddingAccessPolicy    WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyPtrInput
+	// Setting value for aibiDashboardEmbeddingAccessPolicy setting. This is the setting value set by consumers, check effectiveAibiDashboardEmbeddingAccessPolicy for final setting value
+	AibiDashboardEmbeddingAccessPolicy WorkspaceSettingV2AibiDashboardEmbeddingAccessPolicyPtrInput
+	// Setting value for aibiDashboardEmbeddingApprovedDomains setting. This is the setting value set by consumers, check effectiveAibiDashboardEmbeddingApprovedDomains for final setting value
+	AibiDashboardEmbeddingApprovedDomains WorkspaceSettingV2AibiDashboardEmbeddingApprovedDomainsPtrInput
+	// Setting value for automaticClusterUpdateWorkspace setting. This is the setting value set by consumers, check effectiveAutomaticClusterUpdateWorkspace for final setting value
+	AutomaticClusterUpdateWorkspace WorkspaceSettingV2AutomaticClusterUpdateWorkspacePtrInput
+	// Setting value for boolean type setting. This is the setting value set by consumers, check effectiveBooleanVal for final setting value
+	BooleanVal WorkspaceSettingV2BooleanValPtrInput
+	// Effective setting value for aibiDashboardEmbeddingAccessPolicy setting. This is the final effective value of setting. To set a value use aibi_dashboard_embedding_access_policy
+	EffectiveAibiDashboardEmbeddingAccessPolicy WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyPtrInput
+	// Effective setting value for aibiDashboardEmbeddingApprovedDomains setting. This is the final effective value of setting. To set a value use aibi_dashboard_embedding_approved_domains
 	EffectiveAibiDashboardEmbeddingApprovedDomains WorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsPtrInput
-	EffectiveAutomaticClusterUpdateWorkspace       WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspacePtrInput
-	EffectivePersonalCompute                       WorkspaceSettingV2EffectivePersonalComputePtrInput
-	EffectiveRestrictWorkspaceAdmins               WorkspaceSettingV2EffectiveRestrictWorkspaceAdminsPtrInput
-	IntegerVal                                     WorkspaceSettingV2IntegerValPtrInput
+	// Effective setting value for automaticClusterUpdateWorkspace setting. This is the final effective value of setting. To set a value use automatic_cluster_update_workspace
+	EffectiveAutomaticClusterUpdateWorkspace WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspacePtrInput
+	// Effective setting value for personalCompute setting. This is the final effective value of setting. To set a value use personal_compute
+	EffectivePersonalCompute WorkspaceSettingV2EffectivePersonalComputePtrInput
+	// Effective setting value for restrictWorkspaceAdmins setting. This is the final effective value of setting. To set a value use restrict_workspace_admins
+	EffectiveRestrictWorkspaceAdmins WorkspaceSettingV2EffectiveRestrictWorkspaceAdminsPtrInput
+	// Setting value for integer type setting. This is the setting value set by consumers, check effectiveIntegerVal for final setting value
+	IntegerVal WorkspaceSettingV2IntegerValPtrInput
 	// Name of the setting
-	Name                    pulumi.StringPtrInput
-	PersonalCompute         WorkspaceSettingV2PersonalComputePtrInput
+	Name pulumi.StringPtrInput
+	// Setting value for personalCompute setting. This is the setting value set by consumers, check effectivePersonalCompute for final setting value
+	PersonalCompute WorkspaceSettingV2PersonalComputePtrInput
+	// Setting value for restrictWorkspaceAdmins setting. This is the setting value set by consumers, check effectiveRestrictWorkspaceAdmins for final setting value
 	RestrictWorkspaceAdmins WorkspaceSettingV2RestrictWorkspaceAdminsPtrInput
-	StringVal               WorkspaceSettingV2StringValPtrInput
+	// Setting value for string type setting. This is the setting value set by consumers, check effectiveStringVal for final setting value
+	StringVal WorkspaceSettingV2StringValPtrInput
 }
 
 func (WorkspaceSettingV2Args) ElementType() reflect.Type {
@@ -299,73 +364,83 @@ func (o WorkspaceSettingV2Output) ToWorkspaceSettingV2OutputWithContext(ctx cont
 	return o
 }
 
+// Setting value for aibiDashboardEmbeddingAccessPolicy setting. This is the setting value set by consumers, check effectiveAibiDashboardEmbeddingAccessPolicy for final setting value
 func (o WorkspaceSettingV2Output) AibiDashboardEmbeddingAccessPolicy() WorkspaceSettingV2AibiDashboardEmbeddingAccessPolicyPtrOutput {
 	return o.ApplyT(func(v *WorkspaceSettingV2) WorkspaceSettingV2AibiDashboardEmbeddingAccessPolicyPtrOutput {
 		return v.AibiDashboardEmbeddingAccessPolicy
 	}).(WorkspaceSettingV2AibiDashboardEmbeddingAccessPolicyPtrOutput)
 }
 
+// Setting value for aibiDashboardEmbeddingApprovedDomains setting. This is the setting value set by consumers, check effectiveAibiDashboardEmbeddingApprovedDomains for final setting value
 func (o WorkspaceSettingV2Output) AibiDashboardEmbeddingApprovedDomains() WorkspaceSettingV2AibiDashboardEmbeddingApprovedDomainsPtrOutput {
 	return o.ApplyT(func(v *WorkspaceSettingV2) WorkspaceSettingV2AibiDashboardEmbeddingApprovedDomainsPtrOutput {
 		return v.AibiDashboardEmbeddingApprovedDomains
 	}).(WorkspaceSettingV2AibiDashboardEmbeddingApprovedDomainsPtrOutput)
 }
 
+// Setting value for automaticClusterUpdateWorkspace setting. This is the setting value set by consumers, check effectiveAutomaticClusterUpdateWorkspace for final setting value
 func (o WorkspaceSettingV2Output) AutomaticClusterUpdateWorkspace() WorkspaceSettingV2AutomaticClusterUpdateWorkspacePtrOutput {
 	return o.ApplyT(func(v *WorkspaceSettingV2) WorkspaceSettingV2AutomaticClusterUpdateWorkspacePtrOutput {
 		return v.AutomaticClusterUpdateWorkspace
 	}).(WorkspaceSettingV2AutomaticClusterUpdateWorkspacePtrOutput)
 }
 
+// Setting value for boolean type setting. This is the setting value set by consumers, check effectiveBooleanVal for final setting value
 func (o WorkspaceSettingV2Output) BooleanVal() WorkspaceSettingV2BooleanValPtrOutput {
 	return o.ApplyT(func(v *WorkspaceSettingV2) WorkspaceSettingV2BooleanValPtrOutput { return v.BooleanVal }).(WorkspaceSettingV2BooleanValPtrOutput)
 }
 
+// Effective setting value for aibiDashboardEmbeddingAccessPolicy setting. This is the final effective value of setting. To set a value use aibi_dashboard_embedding_access_policy
 func (o WorkspaceSettingV2Output) EffectiveAibiDashboardEmbeddingAccessPolicy() WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyPtrOutput {
 	return o.ApplyT(func(v *WorkspaceSettingV2) WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyPtrOutput {
 		return v.EffectiveAibiDashboardEmbeddingAccessPolicy
 	}).(WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyPtrOutput)
 }
 
+// Effective setting value for aibiDashboardEmbeddingApprovedDomains setting. This is the final effective value of setting. To set a value use aibi_dashboard_embedding_approved_domains
 func (o WorkspaceSettingV2Output) EffectiveAibiDashboardEmbeddingApprovedDomains() WorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsPtrOutput {
 	return o.ApplyT(func(v *WorkspaceSettingV2) WorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsPtrOutput {
 		return v.EffectiveAibiDashboardEmbeddingApprovedDomains
 	}).(WorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsPtrOutput)
 }
 
+// Effective setting value for automaticClusterUpdateWorkspace setting. This is the final effective value of setting. To set a value use automatic_cluster_update_workspace
 func (o WorkspaceSettingV2Output) EffectiveAutomaticClusterUpdateWorkspace() WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspacePtrOutput {
 	return o.ApplyT(func(v *WorkspaceSettingV2) WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspacePtrOutput {
 		return v.EffectiveAutomaticClusterUpdateWorkspace
 	}).(WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspacePtrOutput)
 }
 
-// (BooleanMessage)
+// (BooleanMessage) - Effective setting value for boolean type setting. This is the final effective value of setting. To set a value use boolean_val
 func (o WorkspaceSettingV2Output) EffectiveBooleanVal() WorkspaceSettingV2EffectiveBooleanValOutput {
 	return o.ApplyT(func(v *WorkspaceSettingV2) WorkspaceSettingV2EffectiveBooleanValOutput { return v.EffectiveBooleanVal }).(WorkspaceSettingV2EffectiveBooleanValOutput)
 }
 
-// (IntegerMessage)
+// (IntegerMessage) - Effective setting value for integer type setting. This is the final effective value of setting. To set a value use integer_val
 func (o WorkspaceSettingV2Output) EffectiveIntegerVal() WorkspaceSettingV2EffectiveIntegerValOutput {
 	return o.ApplyT(func(v *WorkspaceSettingV2) WorkspaceSettingV2EffectiveIntegerValOutput { return v.EffectiveIntegerVal }).(WorkspaceSettingV2EffectiveIntegerValOutput)
 }
 
+// Effective setting value for personalCompute setting. This is the final effective value of setting. To set a value use personal_compute
 func (o WorkspaceSettingV2Output) EffectivePersonalCompute() WorkspaceSettingV2EffectivePersonalComputePtrOutput {
 	return o.ApplyT(func(v *WorkspaceSettingV2) WorkspaceSettingV2EffectivePersonalComputePtrOutput {
 		return v.EffectivePersonalCompute
 	}).(WorkspaceSettingV2EffectivePersonalComputePtrOutput)
 }
 
+// Effective setting value for restrictWorkspaceAdmins setting. This is the final effective value of setting. To set a value use restrict_workspace_admins
 func (o WorkspaceSettingV2Output) EffectiveRestrictWorkspaceAdmins() WorkspaceSettingV2EffectiveRestrictWorkspaceAdminsPtrOutput {
 	return o.ApplyT(func(v *WorkspaceSettingV2) WorkspaceSettingV2EffectiveRestrictWorkspaceAdminsPtrOutput {
 		return v.EffectiveRestrictWorkspaceAdmins
 	}).(WorkspaceSettingV2EffectiveRestrictWorkspaceAdminsPtrOutput)
 }
 
-// (StringMessage)
+// (StringMessage) - Effective setting value for string type setting. This is the final effective value of setting. To set a value use string_val
 func (o WorkspaceSettingV2Output) EffectiveStringVal() WorkspaceSettingV2EffectiveStringValOutput {
 	return o.ApplyT(func(v *WorkspaceSettingV2) WorkspaceSettingV2EffectiveStringValOutput { return v.EffectiveStringVal }).(WorkspaceSettingV2EffectiveStringValOutput)
 }
 
+// Setting value for integer type setting. This is the setting value set by consumers, check effectiveIntegerVal for final setting value
 func (o WorkspaceSettingV2Output) IntegerVal() WorkspaceSettingV2IntegerValPtrOutput {
 	return o.ApplyT(func(v *WorkspaceSettingV2) WorkspaceSettingV2IntegerValPtrOutput { return v.IntegerVal }).(WorkspaceSettingV2IntegerValPtrOutput)
 }
@@ -375,16 +450,19 @@ func (o WorkspaceSettingV2Output) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkspaceSettingV2) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// Setting value for personalCompute setting. This is the setting value set by consumers, check effectivePersonalCompute for final setting value
 func (o WorkspaceSettingV2Output) PersonalCompute() WorkspaceSettingV2PersonalComputePtrOutput {
 	return o.ApplyT(func(v *WorkspaceSettingV2) WorkspaceSettingV2PersonalComputePtrOutput { return v.PersonalCompute }).(WorkspaceSettingV2PersonalComputePtrOutput)
 }
 
+// Setting value for restrictWorkspaceAdmins setting. This is the setting value set by consumers, check effectiveRestrictWorkspaceAdmins for final setting value
 func (o WorkspaceSettingV2Output) RestrictWorkspaceAdmins() WorkspaceSettingV2RestrictWorkspaceAdminsPtrOutput {
 	return o.ApplyT(func(v *WorkspaceSettingV2) WorkspaceSettingV2RestrictWorkspaceAdminsPtrOutput {
 		return v.RestrictWorkspaceAdmins
 	}).(WorkspaceSettingV2RestrictWorkspaceAdminsPtrOutput)
 }
 
+// Setting value for string type setting. This is the setting value set by consumers, check effectiveStringVal for final setting value
 func (o WorkspaceSettingV2Output) StringVal() WorkspaceSettingV2StringValPtrOutput {
 	return o.ApplyT(func(v *WorkspaceSettingV2) WorkspaceSettingV2StringValPtrOutput { return v.StringVal }).(WorkspaceSettingV2StringValPtrOutput)
 }

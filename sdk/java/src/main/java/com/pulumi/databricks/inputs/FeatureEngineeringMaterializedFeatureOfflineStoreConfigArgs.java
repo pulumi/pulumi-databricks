@@ -14,49 +14,23 @@ public final class FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgs e
 
     public static final FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgs Empty = new FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgs();
 
-    /**
-     * The Unity Catalog catalog name
-     * 
-     */
     @Import(name="catalogName", required=true)
     private Output<String> catalogName;
 
-    /**
-     * @return The Unity Catalog catalog name
-     * 
-     */
     public Output<String> catalogName() {
         return this.catalogName;
     }
 
-    /**
-     * The Unity Catalog schema name
-     * 
-     */
     @Import(name="schemaName", required=true)
     private Output<String> schemaName;
 
-    /**
-     * @return The Unity Catalog schema name
-     * 
-     */
     public Output<String> schemaName() {
         return this.schemaName;
     }
 
-    /**
-     * Prefix for Unity Catalog table name.
-     * The materialized feature will be stored in a table with this prefix and a generated postfix
-     * 
-     */
     @Import(name="tableNamePrefix", required=true)
     private Output<String> tableNamePrefix;
 
-    /**
-     * @return Prefix for Unity Catalog table name.
-     * The materialized feature will be stored in a table with this prefix and a generated postfix
-     * 
-     */
     public Output<String> tableNamePrefix() {
         return this.tableNamePrefix;
     }
@@ -87,67 +61,29 @@ public final class FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgs e
             $ = new FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param catalogName The Unity Catalog catalog name
-         * 
-         * @return builder
-         * 
-         */
         public Builder catalogName(Output<String> catalogName) {
             $.catalogName = catalogName;
             return this;
         }
 
-        /**
-         * @param catalogName The Unity Catalog catalog name
-         * 
-         * @return builder
-         * 
-         */
         public Builder catalogName(String catalogName) {
             return catalogName(Output.of(catalogName));
         }
 
-        /**
-         * @param schemaName The Unity Catalog schema name
-         * 
-         * @return builder
-         * 
-         */
         public Builder schemaName(Output<String> schemaName) {
             $.schemaName = schemaName;
             return this;
         }
 
-        /**
-         * @param schemaName The Unity Catalog schema name
-         * 
-         * @return builder
-         * 
-         */
         public Builder schemaName(String schemaName) {
             return schemaName(Output.of(schemaName));
         }
 
-        /**
-         * @param tableNamePrefix Prefix for Unity Catalog table name.
-         * The materialized feature will be stored in a table with this prefix and a generated postfix
-         * 
-         * @return builder
-         * 
-         */
         public Builder tableNamePrefix(Output<String> tableNamePrefix) {
             $.tableNamePrefix = tableNamePrefix;
             return this;
         }
 
-        /**
-         * @param tableNamePrefix Prefix for Unity Catalog table name.
-         * The materialized feature will be stored in a table with this prefix and a generated postfix
-         * 
-         * @return builder
-         * 
-         */
         public Builder tableNamePrefix(String tableNamePrefix) {
             return tableNamePrefix(Output.of(tableNamePrefix));
         }

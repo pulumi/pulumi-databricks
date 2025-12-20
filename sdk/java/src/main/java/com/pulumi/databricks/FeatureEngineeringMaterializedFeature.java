@@ -43,6 +43,20 @@ import javax.annotation.Nullable;
 @ResourceType(type="databricks:index/featureEngineeringMaterializedFeature:FeatureEngineeringMaterializedFeature")
 public class FeatureEngineeringMaterializedFeature extends com.pulumi.resources.CustomResource {
     /**
+     * The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone
+     * 
+     */
+    @Export(name="cronSchedule", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> cronSchedule;
+
+    /**
+     * @return The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone
+     * 
+     */
+    public Output<Optional<String>> cronSchedule() {
+        return Codegen.optional(this.cronSchedule);
+    }
+    /**
      * The full name of the feature in Unity Catalog
      * 
      */

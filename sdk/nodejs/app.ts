@@ -115,7 +115,7 @@ export class App extends pulumi.CustomResource {
      */
     declare public readonly budgetPolicyId: pulumi.Output<string | undefined>;
     /**
-     * A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`, `LIQUID`.
+     * A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`.
      */
     declare public readonly computeSize: pulumi.Output<string>;
     /**
@@ -273,7 +273,7 @@ export interface AppState {
      */
     budgetPolicyId?: pulumi.Input<string>;
     /**
-     * A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`, `LIQUID`.
+     * A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`.
      */
     computeSize?: pulumi.Input<string>;
     /**
@@ -356,7 +356,7 @@ export interface AppArgs {
      */
     budgetPolicyId?: pulumi.Input<string>;
     /**
-     * A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`, `LIQUID`.
+     * A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`.
      */
     computeSize?: pulumi.Input<string>;
     /**

@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AlertV2EvaluationThresholdColumn {
     /**
-     * @return Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
+     * @return If not set, the behavior is equivalent to using `First row` in the UI. Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
      * 
      */
     private @Nullable String aggregation;
@@ -22,7 +22,7 @@ public final class AlertV2EvaluationThresholdColumn {
 
     private AlertV2EvaluationThresholdColumn() {}
     /**
-     * @return Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
+     * @return If not set, the behavior is equivalent to using `First row` in the UI. Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
      * 
      */
     public Optional<String> aggregation() {

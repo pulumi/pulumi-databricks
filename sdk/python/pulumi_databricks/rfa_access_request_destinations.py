@@ -21,27 +21,16 @@ __all__ = ['RfaAccessRequestDestinationsArgs', 'RfaAccessRequestDestinations']
 @pulumi.input_type
 class RfaAccessRequestDestinationsArgs:
     def __init__(__self__, *,
-                 destinations: pulumi.Input[Sequence[pulumi.Input['RfaAccessRequestDestinationsDestinationArgs']]],
-                 securable: pulumi.Input['RfaAccessRequestDestinationsSecurableArgs']):
+                 securable: pulumi.Input['RfaAccessRequestDestinationsSecurableArgs'],
+                 destinations: Optional[pulumi.Input[Sequence[pulumi.Input['RfaAccessRequestDestinationsDestinationArgs']]]] = None):
         """
         The set of arguments for constructing a RfaAccessRequestDestinations resource.
-        :param pulumi.Input[Sequence[pulumi.Input['RfaAccessRequestDestinationsDestinationArgs']]] destinations: The access request destinations for the securable
         :param pulumi.Input['RfaAccessRequestDestinationsSecurableArgs'] securable: The securable for which the access request destinations are being retrieved
+        :param pulumi.Input[Sequence[pulumi.Input['RfaAccessRequestDestinationsDestinationArgs']]] destinations: The access request destinations for the securable
         """
-        pulumi.set(__self__, "destinations", destinations)
         pulumi.set(__self__, "securable", securable)
-
-    @_builtins.property
-    @pulumi.getter
-    def destinations(self) -> pulumi.Input[Sequence[pulumi.Input['RfaAccessRequestDestinationsDestinationArgs']]]:
-        """
-        The access request destinations for the securable
-        """
-        return pulumi.get(self, "destinations")
-
-    @destinations.setter
-    def destinations(self, value: pulumi.Input[Sequence[pulumi.Input['RfaAccessRequestDestinationsDestinationArgs']]]):
-        pulumi.set(self, "destinations", value)
+        if destinations is not None:
+            pulumi.set(__self__, "destinations", destinations)
 
     @_builtins.property
     @pulumi.getter
@@ -54,6 +43,18 @@ class RfaAccessRequestDestinationsArgs:
     @securable.setter
     def securable(self, value: pulumi.Input['RfaAccessRequestDestinationsSecurableArgs']):
         pulumi.set(self, "securable", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def destinations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RfaAccessRequestDestinationsDestinationArgs']]]]:
+        """
+        The access request destinations for the securable
+        """
+        return pulumi.get(self, "destinations")
+
+    @destinations.setter
+    def destinations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RfaAccessRequestDestinationsDestinationArgs']]]]):
+        pulumi.set(self, "destinations", value)
 
 
 @pulumi.input_type
@@ -286,8 +287,6 @@ class RfaAccessRequestDestinations(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = RfaAccessRequestDestinationsArgs.__new__(RfaAccessRequestDestinationsArgs)
 
-            if destinations is None and not opts.urn:
-                raise TypeError("Missing required property 'destinations'")
             __props__.__dict__["destinations"] = destinations
             if securable is None and not opts.urn:
                 raise TypeError("Missing required property 'securable'")
@@ -338,7 +337,7 @@ class RfaAccessRequestDestinations(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def destinations(self) -> pulumi.Output[Sequence['outputs.RfaAccessRequestDestinationsDestination']]:
+    def destinations(self) -> pulumi.Output[Optional[Sequence['outputs.RfaAccessRequestDestinationsDestination']]]:
         """
         The access request destinations for the securable
         """

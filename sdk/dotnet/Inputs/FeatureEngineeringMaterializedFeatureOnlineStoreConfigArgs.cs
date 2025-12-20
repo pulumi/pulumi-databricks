@@ -12,41 +12,20 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The capacity of the online store. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
-        /// </summary>
-        [Input("capacity", required: true)]
-        public Input<string> Capacity { get; set; } = null!;
+        [Input("catalogName", required: true)]
+        public Input<string> CatalogName { get; set; } = null!;
 
         /// <summary>
-        /// (string) - The timestamp when the online store was created
+        /// The name of the target online store
         /// </summary>
-        [Input("creationTime")]
-        public Input<string>? CreationTime { get; set; }
+        [Input("onlineStoreName", required: true)]
+        public Input<string> OnlineStoreName { get; set; } = null!;
 
-        /// <summary>
-        /// (string) - The email of the creator of the online store
-        /// </summary>
-        [Input("creator")]
-        public Input<string>? Creator { get; set; }
+        [Input("schemaName", required: true)]
+        public Input<string> SchemaName { get; set; } = null!;
 
-        /// <summary>
-        /// The name of the online store. This is the unique identifier for the online store
-        /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
-
-        /// <summary>
-        /// The number of read replicas for the online store. Defaults to 0
-        /// </summary>
-        [Input("readReplicaCount")]
-        public Input<int>? ReadReplicaCount { get; set; }
-
-        /// <summary>
-        /// (string) - The current state of the online store. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
-        /// </summary>
-        [Input("state")]
-        public Input<string>? State { get; set; }
+        [Input("tableNamePrefix", required: true)]
+        public Input<string> TableNamePrefix { get; set; } = null!;
 
         public FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgs()
         {

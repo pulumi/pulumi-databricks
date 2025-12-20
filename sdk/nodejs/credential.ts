@@ -163,7 +163,7 @@ export class Credential extends pulumi.CustomResource {
     declare public readonly isolationMode: pulumi.Output<string>;
     declare public readonly metastoreId: pulumi.Output<string>;
     /**
-     * Name of Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
+     * Name of Credentials, which must be unique within the databricks_metastore. Change of the `name` forces creation of a new resource.
      */
     declare public readonly name: pulumi.Output<string>;
     /**
@@ -284,7 +284,7 @@ export interface CredentialState {
     isolationMode?: pulumi.Input<string>;
     metastoreId?: pulumi.Input<string>;
     /**
-     * Name of Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
+     * Name of Credentials, which must be unique within the databricks_metastore. Change of the `name` forces creation of a new resource.
      */
     name?: pulumi.Input<string>;
     /**
@@ -336,7 +336,7 @@ export interface CredentialArgs {
     isolationMode?: pulumi.Input<string>;
     metastoreId?: pulumi.Input<string>;
     /**
-     * Name of Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
+     * Name of Credentials, which must be unique within the databricks_metastore. Change of the `name` forces creation of a new resource.
      */
     name?: pulumi.Input<string>;
     /**

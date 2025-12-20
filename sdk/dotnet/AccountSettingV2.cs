@@ -64,51 +64,81 @@ namespace Pulumi.Databricks
     [DatabricksResourceType("databricks:index/accountSettingV2:AccountSettingV2")]
     public partial class AccountSettingV2 : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Setting value for AibiDashboardEmbeddingAccessPolicy setting. This is the setting value set by consumers, check EffectiveAibiDashboardEmbeddingAccessPolicy for final setting value
+        /// </summary>
         [Output("aibiDashboardEmbeddingAccessPolicy")]
         public Output<Outputs.AccountSettingV2AibiDashboardEmbeddingAccessPolicy?> AibiDashboardEmbeddingAccessPolicy { get; private set; } = null!;
 
+        /// <summary>
+        /// Setting value for AibiDashboardEmbeddingApprovedDomains setting. This is the setting value set by consumers, check EffectiveAibiDashboardEmbeddingApprovedDomains for final setting value
+        /// </summary>
         [Output("aibiDashboardEmbeddingApprovedDomains")]
         public Output<Outputs.AccountSettingV2AibiDashboardEmbeddingApprovedDomains?> AibiDashboardEmbeddingApprovedDomains { get; private set; } = null!;
 
+        /// <summary>
+        /// Setting value for AutomaticClusterUpdateWorkspace setting. This is the setting value set by consumers, check EffectiveAutomaticClusterUpdateWorkspace for final setting value
+        /// </summary>
         [Output("automaticClusterUpdateWorkspace")]
         public Output<Outputs.AccountSettingV2AutomaticClusterUpdateWorkspace?> AutomaticClusterUpdateWorkspace { get; private set; } = null!;
 
+        /// <summary>
+        /// Setting value for boolean type setting. This is the setting value set by consumers, check EffectiveBooleanVal for final setting value
+        /// </summary>
         [Output("booleanVal")]
         public Output<Outputs.AccountSettingV2BooleanVal?> BooleanVal { get; private set; } = null!;
 
+        /// <summary>
+        /// Effective setting value for AibiDashboardEmbeddingAccessPolicy setting. This is the final effective value of setting. To set a value use aibi_dashboard_embedding_access_policy
+        /// </summary>
         [Output("effectiveAibiDashboardEmbeddingAccessPolicy")]
         public Output<Outputs.AccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy?> EffectiveAibiDashboardEmbeddingAccessPolicy { get; private set; } = null!;
 
+        /// <summary>
+        /// Effective setting value for AibiDashboardEmbeddingApprovedDomains setting. This is the final effective value of setting. To set a value use aibi_dashboard_embedding_approved_domains
+        /// </summary>
         [Output("effectiveAibiDashboardEmbeddingApprovedDomains")]
         public Output<Outputs.AccountSettingV2EffectiveAibiDashboardEmbeddingApprovedDomains?> EffectiveAibiDashboardEmbeddingApprovedDomains { get; private set; } = null!;
 
+        /// <summary>
+        /// Effective setting value for AutomaticClusterUpdateWorkspace setting. This is the final effective value of setting. To set a value use automatic_cluster_update_workspace
+        /// </summary>
         [Output("effectiveAutomaticClusterUpdateWorkspace")]
         public Output<Outputs.AccountSettingV2EffectiveAutomaticClusterUpdateWorkspace?> EffectiveAutomaticClusterUpdateWorkspace { get; private set; } = null!;
 
         /// <summary>
-        /// (BooleanMessage)
+        /// (BooleanMessage) - Effective setting value for boolean type setting. This is the final effective value of setting. To set a value use boolean_val
         /// </summary>
         [Output("effectiveBooleanVal")]
         public Output<Outputs.AccountSettingV2EffectiveBooleanVal> EffectiveBooleanVal { get; private set; } = null!;
 
         /// <summary>
-        /// (IntegerMessage)
+        /// (IntegerMessage) - Effective setting value for integer type setting. This is the final effective value of setting. To set a value use integer_val
         /// </summary>
         [Output("effectiveIntegerVal")]
         public Output<Outputs.AccountSettingV2EffectiveIntegerVal> EffectiveIntegerVal { get; private set; } = null!;
 
+        /// <summary>
+        /// Effective setting value for PersonalCompute setting. This is the final effective value of setting. To set a value use personal_compute
+        /// </summary>
         [Output("effectivePersonalCompute")]
         public Output<Outputs.AccountSettingV2EffectivePersonalCompute?> EffectivePersonalCompute { get; private set; } = null!;
 
+        /// <summary>
+        /// Effective setting value for RestrictWorkspaceAdmins setting. This is the final effective value of setting. To set a value use restrict_workspace_admins
+        /// </summary>
         [Output("effectiveRestrictWorkspaceAdmins")]
         public Output<Outputs.AccountSettingV2EffectiveRestrictWorkspaceAdmins?> EffectiveRestrictWorkspaceAdmins { get; private set; } = null!;
 
         /// <summary>
-        /// (StringMessage)
+        /// (StringMessage) - Effective setting value for string type setting. This is the final effective value of setting. To set a value use string_val
         /// </summary>
         [Output("effectiveStringVal")]
         public Output<Outputs.AccountSettingV2EffectiveStringVal> EffectiveStringVal { get; private set; } = null!;
 
+        /// <summary>
+        /// Setting value for integer type setting. This is the setting value set by consumers, check EffectiveIntegerVal for final setting value
+        /// </summary>
         [Output("integerVal")]
         public Output<Outputs.AccountSettingV2IntegerVal?> IntegerVal { get; private set; } = null!;
 
@@ -118,12 +148,21 @@ namespace Pulumi.Databricks
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// Setting value for PersonalCompute setting. This is the setting value set by consumers, check EffectivePersonalCompute for final setting value
+        /// </summary>
         [Output("personalCompute")]
         public Output<Outputs.AccountSettingV2PersonalCompute?> PersonalCompute { get; private set; } = null!;
 
+        /// <summary>
+        /// Setting value for RestrictWorkspaceAdmins setting. This is the setting value set by consumers, check EffectiveRestrictWorkspaceAdmins for final setting value
+        /// </summary>
         [Output("restrictWorkspaceAdmins")]
         public Output<Outputs.AccountSettingV2RestrictWorkspaceAdmins?> RestrictWorkspaceAdmins { get; private set; } = null!;
 
+        /// <summary>
+        /// Setting value for string type setting. This is the setting value set by consumers, check EffectiveStringVal for final setting value
+        /// </summary>
         [Output("stringVal")]
         public Output<Outputs.AccountSettingV2StringVal?> StringVal { get; private set; } = null!;
 
@@ -173,33 +212,63 @@ namespace Pulumi.Databricks
 
     public sealed class AccountSettingV2Args : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Setting value for AibiDashboardEmbeddingAccessPolicy setting. This is the setting value set by consumers, check EffectiveAibiDashboardEmbeddingAccessPolicy for final setting value
+        /// </summary>
         [Input("aibiDashboardEmbeddingAccessPolicy")]
         public Input<Inputs.AccountSettingV2AibiDashboardEmbeddingAccessPolicyArgs>? AibiDashboardEmbeddingAccessPolicy { get; set; }
 
+        /// <summary>
+        /// Setting value for AibiDashboardEmbeddingApprovedDomains setting. This is the setting value set by consumers, check EffectiveAibiDashboardEmbeddingApprovedDomains for final setting value
+        /// </summary>
         [Input("aibiDashboardEmbeddingApprovedDomains")]
         public Input<Inputs.AccountSettingV2AibiDashboardEmbeddingApprovedDomainsArgs>? AibiDashboardEmbeddingApprovedDomains { get; set; }
 
+        /// <summary>
+        /// Setting value for AutomaticClusterUpdateWorkspace setting. This is the setting value set by consumers, check EffectiveAutomaticClusterUpdateWorkspace for final setting value
+        /// </summary>
         [Input("automaticClusterUpdateWorkspace")]
         public Input<Inputs.AccountSettingV2AutomaticClusterUpdateWorkspaceArgs>? AutomaticClusterUpdateWorkspace { get; set; }
 
+        /// <summary>
+        /// Setting value for boolean type setting. This is the setting value set by consumers, check EffectiveBooleanVal for final setting value
+        /// </summary>
         [Input("booleanVal")]
         public Input<Inputs.AccountSettingV2BooleanValArgs>? BooleanVal { get; set; }
 
+        /// <summary>
+        /// Effective setting value for AibiDashboardEmbeddingAccessPolicy setting. This is the final effective value of setting. To set a value use aibi_dashboard_embedding_access_policy
+        /// </summary>
         [Input("effectiveAibiDashboardEmbeddingAccessPolicy")]
         public Input<Inputs.AccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgs>? EffectiveAibiDashboardEmbeddingAccessPolicy { get; set; }
 
+        /// <summary>
+        /// Effective setting value for AibiDashboardEmbeddingApprovedDomains setting. This is the final effective value of setting. To set a value use aibi_dashboard_embedding_approved_domains
+        /// </summary>
         [Input("effectiveAibiDashboardEmbeddingApprovedDomains")]
         public Input<Inputs.AccountSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgs>? EffectiveAibiDashboardEmbeddingApprovedDomains { get; set; }
 
+        /// <summary>
+        /// Effective setting value for AutomaticClusterUpdateWorkspace setting. This is the final effective value of setting. To set a value use automatic_cluster_update_workspace
+        /// </summary>
         [Input("effectiveAutomaticClusterUpdateWorkspace")]
         public Input<Inputs.AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgs>? EffectiveAutomaticClusterUpdateWorkspace { get; set; }
 
+        /// <summary>
+        /// Effective setting value for PersonalCompute setting. This is the final effective value of setting. To set a value use personal_compute
+        /// </summary>
         [Input("effectivePersonalCompute")]
         public Input<Inputs.AccountSettingV2EffectivePersonalComputeArgs>? EffectivePersonalCompute { get; set; }
 
+        /// <summary>
+        /// Effective setting value for RestrictWorkspaceAdmins setting. This is the final effective value of setting. To set a value use restrict_workspace_admins
+        /// </summary>
         [Input("effectiveRestrictWorkspaceAdmins")]
         public Input<Inputs.AccountSettingV2EffectiveRestrictWorkspaceAdminsArgs>? EffectiveRestrictWorkspaceAdmins { get; set; }
 
+        /// <summary>
+        /// Setting value for integer type setting. This is the setting value set by consumers, check EffectiveIntegerVal for final setting value
+        /// </summary>
         [Input("integerVal")]
         public Input<Inputs.AccountSettingV2IntegerValArgs>? IntegerVal { get; set; }
 
@@ -209,12 +278,21 @@ namespace Pulumi.Databricks
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Setting value for PersonalCompute setting. This is the setting value set by consumers, check EffectivePersonalCompute for final setting value
+        /// </summary>
         [Input("personalCompute")]
         public Input<Inputs.AccountSettingV2PersonalComputeArgs>? PersonalCompute { get; set; }
 
+        /// <summary>
+        /// Setting value for RestrictWorkspaceAdmins setting. This is the setting value set by consumers, check EffectiveRestrictWorkspaceAdmins for final setting value
+        /// </summary>
         [Input("restrictWorkspaceAdmins")]
         public Input<Inputs.AccountSettingV2RestrictWorkspaceAdminsArgs>? RestrictWorkspaceAdmins { get; set; }
 
+        /// <summary>
+        /// Setting value for string type setting. This is the setting value set by consumers, check EffectiveStringVal for final setting value
+        /// </summary>
         [Input("stringVal")]
         public Input<Inputs.AccountSettingV2StringValArgs>? StringVal { get; set; }
 
@@ -226,51 +304,81 @@ namespace Pulumi.Databricks
 
     public sealed class AccountSettingV2State : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Setting value for AibiDashboardEmbeddingAccessPolicy setting. This is the setting value set by consumers, check EffectiveAibiDashboardEmbeddingAccessPolicy for final setting value
+        /// </summary>
         [Input("aibiDashboardEmbeddingAccessPolicy")]
         public Input<Inputs.AccountSettingV2AibiDashboardEmbeddingAccessPolicyGetArgs>? AibiDashboardEmbeddingAccessPolicy { get; set; }
 
+        /// <summary>
+        /// Setting value for AibiDashboardEmbeddingApprovedDomains setting. This is the setting value set by consumers, check EffectiveAibiDashboardEmbeddingApprovedDomains for final setting value
+        /// </summary>
         [Input("aibiDashboardEmbeddingApprovedDomains")]
         public Input<Inputs.AccountSettingV2AibiDashboardEmbeddingApprovedDomainsGetArgs>? AibiDashboardEmbeddingApprovedDomains { get; set; }
 
+        /// <summary>
+        /// Setting value for AutomaticClusterUpdateWorkspace setting. This is the setting value set by consumers, check EffectiveAutomaticClusterUpdateWorkspace for final setting value
+        /// </summary>
         [Input("automaticClusterUpdateWorkspace")]
         public Input<Inputs.AccountSettingV2AutomaticClusterUpdateWorkspaceGetArgs>? AutomaticClusterUpdateWorkspace { get; set; }
 
+        /// <summary>
+        /// Setting value for boolean type setting. This is the setting value set by consumers, check EffectiveBooleanVal for final setting value
+        /// </summary>
         [Input("booleanVal")]
         public Input<Inputs.AccountSettingV2BooleanValGetArgs>? BooleanVal { get; set; }
 
+        /// <summary>
+        /// Effective setting value for AibiDashboardEmbeddingAccessPolicy setting. This is the final effective value of setting. To set a value use aibi_dashboard_embedding_access_policy
+        /// </summary>
         [Input("effectiveAibiDashboardEmbeddingAccessPolicy")]
         public Input<Inputs.AccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyGetArgs>? EffectiveAibiDashboardEmbeddingAccessPolicy { get; set; }
 
+        /// <summary>
+        /// Effective setting value for AibiDashboardEmbeddingApprovedDomains setting. This is the final effective value of setting. To set a value use aibi_dashboard_embedding_approved_domains
+        /// </summary>
         [Input("effectiveAibiDashboardEmbeddingApprovedDomains")]
         public Input<Inputs.AccountSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsGetArgs>? EffectiveAibiDashboardEmbeddingApprovedDomains { get; set; }
 
+        /// <summary>
+        /// Effective setting value for AutomaticClusterUpdateWorkspace setting. This is the final effective value of setting. To set a value use automatic_cluster_update_workspace
+        /// </summary>
         [Input("effectiveAutomaticClusterUpdateWorkspace")]
         public Input<Inputs.AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceGetArgs>? EffectiveAutomaticClusterUpdateWorkspace { get; set; }
 
         /// <summary>
-        /// (BooleanMessage)
+        /// (BooleanMessage) - Effective setting value for boolean type setting. This is the final effective value of setting. To set a value use boolean_val
         /// </summary>
         [Input("effectiveBooleanVal")]
         public Input<Inputs.AccountSettingV2EffectiveBooleanValGetArgs>? EffectiveBooleanVal { get; set; }
 
         /// <summary>
-        /// (IntegerMessage)
+        /// (IntegerMessage) - Effective setting value for integer type setting. This is the final effective value of setting. To set a value use integer_val
         /// </summary>
         [Input("effectiveIntegerVal")]
         public Input<Inputs.AccountSettingV2EffectiveIntegerValGetArgs>? EffectiveIntegerVal { get; set; }
 
+        /// <summary>
+        /// Effective setting value for PersonalCompute setting. This is the final effective value of setting. To set a value use personal_compute
+        /// </summary>
         [Input("effectivePersonalCompute")]
         public Input<Inputs.AccountSettingV2EffectivePersonalComputeGetArgs>? EffectivePersonalCompute { get; set; }
 
+        /// <summary>
+        /// Effective setting value for RestrictWorkspaceAdmins setting. This is the final effective value of setting. To set a value use restrict_workspace_admins
+        /// </summary>
         [Input("effectiveRestrictWorkspaceAdmins")]
         public Input<Inputs.AccountSettingV2EffectiveRestrictWorkspaceAdminsGetArgs>? EffectiveRestrictWorkspaceAdmins { get; set; }
 
         /// <summary>
-        /// (StringMessage)
+        /// (StringMessage) - Effective setting value for string type setting. This is the final effective value of setting. To set a value use string_val
         /// </summary>
         [Input("effectiveStringVal")]
         public Input<Inputs.AccountSettingV2EffectiveStringValGetArgs>? EffectiveStringVal { get; set; }
 
+        /// <summary>
+        /// Setting value for integer type setting. This is the setting value set by consumers, check EffectiveIntegerVal for final setting value
+        /// </summary>
         [Input("integerVal")]
         public Input<Inputs.AccountSettingV2IntegerValGetArgs>? IntegerVal { get; set; }
 
@@ -280,12 +388,21 @@ namespace Pulumi.Databricks
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Setting value for PersonalCompute setting. This is the setting value set by consumers, check EffectivePersonalCompute for final setting value
+        /// </summary>
         [Input("personalCompute")]
         public Input<Inputs.AccountSettingV2PersonalComputeGetArgs>? PersonalCompute { get; set; }
 
+        /// <summary>
+        /// Setting value for RestrictWorkspaceAdmins setting. This is the setting value set by consumers, check EffectiveRestrictWorkspaceAdmins for final setting value
+        /// </summary>
         [Input("restrictWorkspaceAdmins")]
         public Input<Inputs.AccountSettingV2RestrictWorkspaceAdminsGetArgs>? RestrictWorkspaceAdmins { get; set; }
 
+        /// <summary>
+        /// Setting value for string type setting. This is the setting value set by consumers, check EffectiveStringVal for final setting value
+        /// </summary>
         [Input("stringVal")]
         public Input<Inputs.AccountSettingV2StringValGetArgs>? StringVal { get; set; }
 

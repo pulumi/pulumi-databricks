@@ -147,7 +147,7 @@ type Pipeline struct {
 	AllowDuplicateNames pulumi.BoolPtrOutput `pulumi:"allowDuplicateNames"`
 	// optional string specifying ID of the budget policy for this Lakeflow Declarative Pipeline.
 	BudgetPolicyId pulumi.StringPtrOutput `pulumi:"budgetPolicyId"`
-	// The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
+	// The name of default catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline if you switch from `storage` to `catalog` or vice versa.  If pipeline was already created with `catalog` set, the value could be changed.* (Conflicts with `storage`).
 	Catalog pulumi.StringPtrOutput `pulumi:"catalog"`
 	Cause   pulumi.StringOutput    `pulumi:"cause"`
 	// optional name of the release channel for Spark version used by Lakeflow Declarative Pipeline.  Supported values are: `CURRENT` (default) and `PREVIEW`.
@@ -241,7 +241,7 @@ type pipelineState struct {
 	AllowDuplicateNames *bool `pulumi:"allowDuplicateNames"`
 	// optional string specifying ID of the budget policy for this Lakeflow Declarative Pipeline.
 	BudgetPolicyId *string `pulumi:"budgetPolicyId"`
-	// The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
+	// The name of default catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline if you switch from `storage` to `catalog` or vice versa.  If pipeline was already created with `catalog` set, the value could be changed.* (Conflicts with `storage`).
 	Catalog *string `pulumi:"catalog"`
 	Cause   *string `pulumi:"cause"`
 	// optional name of the release channel for Spark version used by Lakeflow Declarative Pipeline.  Supported values are: `CURRENT` (default) and `PREVIEW`.
@@ -306,7 +306,7 @@ type PipelineState struct {
 	AllowDuplicateNames pulumi.BoolPtrInput
 	// optional string specifying ID of the budget policy for this Lakeflow Declarative Pipeline.
 	BudgetPolicyId pulumi.StringPtrInput
-	// The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
+	// The name of default catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline if you switch from `storage` to `catalog` or vice versa.  If pipeline was already created with `catalog` set, the value could be changed.* (Conflicts with `storage`).
 	Catalog pulumi.StringPtrInput
 	Cause   pulumi.StringPtrInput
 	// optional name of the release channel for Spark version used by Lakeflow Declarative Pipeline.  Supported values are: `CURRENT` (default) and `PREVIEW`.
@@ -375,7 +375,7 @@ type pipelineArgs struct {
 	AllowDuplicateNames *bool `pulumi:"allowDuplicateNames"`
 	// optional string specifying ID of the budget policy for this Lakeflow Declarative Pipeline.
 	BudgetPolicyId *string `pulumi:"budgetPolicyId"`
-	// The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
+	// The name of default catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline if you switch from `storage` to `catalog` or vice versa.  If pipeline was already created with `catalog` set, the value could be changed.* (Conflicts with `storage`).
 	Catalog *string `pulumi:"catalog"`
 	Cause   *string `pulumi:"cause"`
 	// optional name of the release channel for Spark version used by Lakeflow Declarative Pipeline.  Supported values are: `CURRENT` (default) and `PREVIEW`.
@@ -441,7 +441,7 @@ type PipelineArgs struct {
 	AllowDuplicateNames pulumi.BoolPtrInput
 	// optional string specifying ID of the budget policy for this Lakeflow Declarative Pipeline.
 	BudgetPolicyId pulumi.StringPtrInput
-	// The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
+	// The name of default catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline if you switch from `storage` to `catalog` or vice versa.  If pipeline was already created with `catalog` set, the value could be changed.* (Conflicts with `storage`).
 	Catalog pulumi.StringPtrInput
 	Cause   pulumi.StringPtrInput
 	// optional name of the release channel for Spark version used by Lakeflow Declarative Pipeline.  Supported values are: `CURRENT` (default) and `PREVIEW`.
@@ -598,7 +598,7 @@ func (o PipelineOutput) BudgetPolicyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.StringPtrOutput { return v.BudgetPolicyId }).(pulumi.StringPtrOutput)
 }
 
-// The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
+// The name of default catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline if you switch from `storage` to `catalog` or vice versa.  If pipeline was already created with `catalog` set, the value could be changed.* (Conflicts with `storage`).
 func (o PipelineOutput) Catalog() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.StringPtrOutput { return v.Catalog }).(pulumi.StringPtrOutput)
 }

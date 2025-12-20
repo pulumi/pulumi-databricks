@@ -64,6 +64,10 @@ namespace Pulumi.Databricks
     public sealed class GetFeatureEngineeringMaterializedFeatureResult
     {
         /// <summary>
+        /// (string) - The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone
+        /// </summary>
+        public readonly string CronSchedule;
+        /// <summary>
         /// (string) - The full name of the feature in Unity Catalog
         /// </summary>
         public readonly string FeatureName;
@@ -85,7 +89,7 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly Outputs.GetFeatureEngineeringMaterializedFeatureOfflineStoreConfigResult OfflineStoreConfig;
         /// <summary>
-        /// (OnlineStore)
+        /// (OnlineStoreConfig)
         /// </summary>
         public readonly Outputs.GetFeatureEngineeringMaterializedFeatureOnlineStoreConfigResult OnlineStoreConfig;
         /// <summary>
@@ -99,6 +103,8 @@ namespace Pulumi.Databricks
 
         [OutputConstructor]
         private GetFeatureEngineeringMaterializedFeatureResult(
+            string cronSchedule,
+
             string featureName,
 
             string id,
@@ -115,6 +121,7 @@ namespace Pulumi.Databricks
 
             string tableName)
         {
+            CronSchedule = cronSchedule;
             FeatureName = featureName;
             Id = id;
             LastMaterializationTime = lastMaterializationTime;

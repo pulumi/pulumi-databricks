@@ -21,11 +21,17 @@ namespace Pulumi.Databricks.Outputs
         /// The number of volumes launched for each instance. You can choose up to 10 volumes. This feature is only enabled for supported node types. Legacy node types cannot specify custom EBS volumes. For node types with no instance store, at least one EBS volume needs to be specified; otherwise, cluster creation will fail. These EBS volumes will be mounted at /ebs0, /ebs1, and etc. Instance store volumes will be mounted at /local_disk0, /local_disk1, and etc. If EBS volumes are attached, Databricks will configure Spark to use only the EBS volumes for scratch storage because heterogeneously sized scratch devices can lead to inefficient disk utilization. If no EBS volumes are attached, Databricks will configure Spark to use instance store volumes. If EBS volumes are specified, then the Spark configuration spark.local.dir will be overridden.
         /// </summary>
         public readonly int? EbsVolumeCount;
+        /// <summary>
+        /// If using gp3 volumes, what IOPS to use for the disk. If this is not set, the maximum performance of a gp2 volume with the same volume size will be used.
+        /// </summary>
         public readonly int? EbsVolumeIops;
         /// <summary>
         /// The size of each EBS volume (in GiB) launched for each instance. For general purpose SSD, this value must be within the range 100 - 4096. For throughput optimized HDD, this value must be within the range 500 - 4096. Custom EBS volumes cannot be specified for the legacy node types (memory-optimized and compute-optimized).
         /// </summary>
         public readonly int? EbsVolumeSize;
+        /// <summary>
+        /// If using gp3 volumes, what throughput to use for the disk. If this is not set, the maximum performance of a gp2 volume with the same volume size will be used.
+        /// </summary>
         public readonly int? EbsVolumeThroughput;
         /// <summary>
         /// The type of EBS volumes that will be launched with this cluster. Valid values are `GENERAL_PURPOSE_SSD` or `THROUGHPUT_OPTIMIZED_HDD`. Use this option only if you're not picking *Delta Optimized `i3.*`* node types.

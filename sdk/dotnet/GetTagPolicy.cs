@@ -14,9 +14,10 @@ namespace Pulumi.Databricks
         /// <summary>
         /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
-        /// This data source can be used to get a single tag policy by its tag key.
+        /// This data source can be used to get a single tag policy by its tag key. Manage tag policy permissions using the `databricks.AccessControlRuleSet` resource.
         /// 
         /// &gt; **Note** This resource can only be used with a workspace-level provider!
+        /// 
         /// 
         /// ## Example Usage
         /// 
@@ -44,9 +45,10 @@ namespace Pulumi.Databricks
         /// <summary>
         /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
-        /// This data source can be used to get a single tag policy by its tag key.
+        /// This data source can be used to get a single tag policy by its tag key. Manage tag policy permissions using the `databricks.AccessControlRuleSet` resource.
         /// 
         /// &gt; **Note** This resource can only be used with a workspace-level provider!
+        /// 
         /// 
         /// ## Example Usage
         /// 
@@ -74,9 +76,10 @@ namespace Pulumi.Databricks
         /// <summary>
         /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
-        /// This data source can be used to get a single tag policy by its tag key.
+        /// This data source can be used to get a single tag policy by its tag key. Manage tag policy permissions using the `databricks.AccessControlRuleSet` resource.
         /// 
         /// &gt; **Note** This resource can only be used with a workspace-level provider!
+        /// 
         /// 
         /// ## Example Usage
         /// 

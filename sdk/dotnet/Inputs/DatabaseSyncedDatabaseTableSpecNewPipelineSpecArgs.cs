@@ -13,6 +13,12 @@ namespace Pulumi.Databricks.Inputs
     public sealed class DatabaseSyncedDatabaseTableSpecNewPipelineSpecArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Budget policy to set on the newly created pipeline
+        /// </summary>
+        [Input("budgetPolicyId")]
+        public Input<string>? BudgetPolicyId { get; set; }
+
+        /// <summary>
         /// This field needs to be specified if the destination catalog is a managed postgres catalog.
         /// 
         /// UC catalog for the pipeline to store intermediate files (checkpoints, event logs etc).

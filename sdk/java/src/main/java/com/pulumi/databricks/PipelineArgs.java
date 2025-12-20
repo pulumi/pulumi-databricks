@@ -63,14 +63,14 @@ public final class PipelineArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
+     * The name of default catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline if you switch from `storage` to `catalog` or vice versa.  If pipeline was already created with `catalog` set, the value could be changed.* (Conflicts with `storage`).
      * 
      */
     @Import(name="catalog")
     private @Nullable Output<String> catalog;
 
     /**
-     * @return The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
+     * @return The name of default catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline if you switch from `storage` to `catalog` or vice versa.  If pipeline was already created with `catalog` set, the value could be changed.* (Conflicts with `storage`).
      * 
      */
     public Optional<Output<String>> catalog() {
@@ -594,7 +594,7 @@ public final class PipelineArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param catalog The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
+         * @param catalog The name of default catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline if you switch from `storage` to `catalog` or vice versa.  If pipeline was already created with `catalog` set, the value could be changed.* (Conflicts with `storage`).
          * 
          * @return builder
          * 
@@ -605,7 +605,7 @@ public final class PipelineArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param catalog The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
+         * @param catalog The name of default catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline if you switch from `storage` to `catalog` or vice versa.  If pipeline was already created with `catalog` set, the value could be changed.* (Conflicts with `storage`).
          * 
          * @return builder
          * 

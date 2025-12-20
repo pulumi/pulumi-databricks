@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.PipelineGatewayDefinitionConnectionParameters;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
@@ -13,11 +14,16 @@ import javax.annotation.Nullable;
 @CustomType
 public final class PipelineGatewayDefinition {
     /**
-     * @return Immutable. The Unity Catalog connection this gateway pipeline uses to communicate with the source.
+     * @return Deprecated, Immutable. The Unity Catalog connection this gateway pipeline uses to communicate with the source. *Use `connectionName` instead!*
      * 
      */
     private @Nullable String connectionId;
+    /**
+     * @return Immutable. The Unity Catalog connection that this gateway pipeline uses to communicate with the source.
+     * 
+     */
     private String connectionName;
+    private @Nullable PipelineGatewayDefinitionConnectionParameters connectionParameters;
     /**
      * @return Required, Immutable. The name of the catalog for the gateway pipeline&#39;s storage location.
      * 
@@ -36,14 +42,21 @@ public final class PipelineGatewayDefinition {
 
     private PipelineGatewayDefinition() {}
     /**
-     * @return Immutable. The Unity Catalog connection this gateway pipeline uses to communicate with the source.
+     * @return Deprecated, Immutable. The Unity Catalog connection this gateway pipeline uses to communicate with the source. *Use `connectionName` instead!*
      * 
      */
     public Optional<String> connectionId() {
         return Optional.ofNullable(this.connectionId);
     }
+    /**
+     * @return Immutable. The Unity Catalog connection that this gateway pipeline uses to communicate with the source.
+     * 
+     */
     public String connectionName() {
         return this.connectionName;
+    }
+    public Optional<PipelineGatewayDefinitionConnectionParameters> connectionParameters() {
+        return Optional.ofNullable(this.connectionParameters);
     }
     /**
      * @return Required, Immutable. The name of the catalog for the gateway pipeline&#39;s storage location.
@@ -78,6 +91,7 @@ public final class PipelineGatewayDefinition {
     public static final class Builder {
         private @Nullable String connectionId;
         private String connectionName;
+        private @Nullable PipelineGatewayDefinitionConnectionParameters connectionParameters;
         private String gatewayStorageCatalog;
         private @Nullable String gatewayStorageName;
         private String gatewayStorageSchema;
@@ -86,6 +100,7 @@ public final class PipelineGatewayDefinition {
     	      Objects.requireNonNull(defaults);
     	      this.connectionId = defaults.connectionId;
     	      this.connectionName = defaults.connectionName;
+    	      this.connectionParameters = defaults.connectionParameters;
     	      this.gatewayStorageCatalog = defaults.gatewayStorageCatalog;
     	      this.gatewayStorageName = defaults.gatewayStorageName;
     	      this.gatewayStorageSchema = defaults.gatewayStorageSchema;
@@ -103,6 +118,12 @@ public final class PipelineGatewayDefinition {
               throw new MissingRequiredPropertyException("PipelineGatewayDefinition", "connectionName");
             }
             this.connectionName = connectionName;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder connectionParameters(@Nullable PipelineGatewayDefinitionConnectionParameters connectionParameters) {
+
+            this.connectionParameters = connectionParameters;
             return this;
         }
         @CustomType.Setter
@@ -131,6 +152,7 @@ public final class PipelineGatewayDefinition {
             final var _resultValue = new PipelineGatewayDefinition();
             _resultValue.connectionId = connectionId;
             _resultValue.connectionName = connectionName;
+            _resultValue.connectionParameters = connectionParameters;
             _resultValue.gatewayStorageCatalog = gatewayStorageCatalog;
             _resultValue.gatewayStorageName = gatewayStorageName;
             _resultValue.gatewayStorageSchema = gatewayStorageSchema;

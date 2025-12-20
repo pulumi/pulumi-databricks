@@ -41,7 +41,8 @@ type LookupFeatureEngineeringFeatureResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// (list of string) - The input columns from which the feature is computed
-	Inputs []string `pulumi:"inputs"`
+	Inputs         []string                                   `pulumi:"inputs"`
+	LineageContext GetFeatureEngineeringFeatureLineageContext `pulumi:"lineageContext"`
 	// (DataSource) - The data source of the feature
 	Source GetFeatureEngineeringFeatureSource `pulumi:"source"`
 	// (TimeWindow) - The time window in which the feature is computed
@@ -110,6 +111,12 @@ func (o LookupFeatureEngineeringFeatureResultOutput) Id() pulumi.StringOutput {
 // (list of string) - The input columns from which the feature is computed
 func (o LookupFeatureEngineeringFeatureResultOutput) Inputs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupFeatureEngineeringFeatureResult) []string { return v.Inputs }).(pulumi.StringArrayOutput)
+}
+
+func (o LookupFeatureEngineeringFeatureResultOutput) LineageContext() GetFeatureEngineeringFeatureLineageContextOutput {
+	return o.ApplyT(func(v LookupFeatureEngineeringFeatureResult) GetFeatureEngineeringFeatureLineageContext {
+		return v.LineageContext
+	}).(GetFeatureEngineeringFeatureLineageContextOutput)
 }
 
 // (DataSource) - The data source of the feature

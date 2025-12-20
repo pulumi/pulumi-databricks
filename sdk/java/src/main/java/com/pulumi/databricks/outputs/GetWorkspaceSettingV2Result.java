@@ -27,62 +27,62 @@ import java.util.Objects;
 @CustomType
 public final class GetWorkspaceSettingV2Result {
     /**
-     * @return (AibiDashboardEmbeddingAccessPolicy)
+     * @return (AibiDashboardEmbeddingAccessPolicy) - Setting value for aibiDashboardEmbeddingAccessPolicy setting. This is the setting value set by consumers, check effectiveAibiDashboardEmbeddingAccessPolicy for final setting value
      * 
      */
     private GetWorkspaceSettingV2AibiDashboardEmbeddingAccessPolicy aibiDashboardEmbeddingAccessPolicy;
     /**
-     * @return (AibiDashboardEmbeddingApprovedDomains)
+     * @return (AibiDashboardEmbeddingApprovedDomains) - Setting value for aibiDashboardEmbeddingApprovedDomains setting. This is the setting value set by consumers, check effectiveAibiDashboardEmbeddingApprovedDomains for final setting value
      * 
      */
     private GetWorkspaceSettingV2AibiDashboardEmbeddingApprovedDomains aibiDashboardEmbeddingApprovedDomains;
     /**
-     * @return (ClusterAutoRestartMessage)
+     * @return (ClusterAutoRestartMessage) - Setting value for automaticClusterUpdateWorkspace setting. This is the setting value set by consumers, check effectiveAutomaticClusterUpdateWorkspace for final setting value
      * 
      */
     private GetWorkspaceSettingV2AutomaticClusterUpdateWorkspace automaticClusterUpdateWorkspace;
     /**
-     * @return (BooleanMessage)
+     * @return (BooleanMessage) - Setting value for boolean type setting. This is the setting value set by consumers, check effectiveBooleanVal for final setting value
      * 
      */
     private GetWorkspaceSettingV2BooleanVal booleanVal;
     /**
-     * @return (AibiDashboardEmbeddingAccessPolicy)
+     * @return (AibiDashboardEmbeddingAccessPolicy) - Effective setting value for aibiDashboardEmbeddingAccessPolicy setting. This is the final effective value of setting. To set a value use aibi_dashboard_embedding_access_policy
      * 
      */
     private GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy effectiveAibiDashboardEmbeddingAccessPolicy;
     /**
-     * @return (AibiDashboardEmbeddingApprovedDomains)
+     * @return (AibiDashboardEmbeddingApprovedDomains) - Effective setting value for aibiDashboardEmbeddingApprovedDomains setting. This is the final effective value of setting. To set a value use aibi_dashboard_embedding_approved_domains
      * 
      */
     private GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomains effectiveAibiDashboardEmbeddingApprovedDomains;
     /**
-     * @return (ClusterAutoRestartMessage)
+     * @return (ClusterAutoRestartMessage) - Effective setting value for automaticClusterUpdateWorkspace setting. This is the final effective value of setting. To set a value use automatic_cluster_update_workspace
      * 
      */
     private GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspace effectiveAutomaticClusterUpdateWorkspace;
     /**
-     * @return (BooleanMessage)
+     * @return (BooleanMessage) - Effective setting value for boolean type setting. This is the final effective value of setting. To set a value use boolean_val
      * 
      */
     private GetWorkspaceSettingV2EffectiveBooleanVal effectiveBooleanVal;
     /**
-     * @return (IntegerMessage)
+     * @return (IntegerMessage) - Effective setting value for integer type setting. This is the final effective value of setting. To set a value use integer_val
      * 
      */
     private GetWorkspaceSettingV2EffectiveIntegerVal effectiveIntegerVal;
     /**
-     * @return (PersonalComputeMessage)
+     * @return (PersonalComputeMessage) - Effective setting value for personalCompute setting. This is the final effective value of setting. To set a value use personal_compute
      * 
      */
     private GetWorkspaceSettingV2EffectivePersonalCompute effectivePersonalCompute;
     /**
-     * @return (RestrictWorkspaceAdminsMessage)
+     * @return (RestrictWorkspaceAdminsMessage) - Effective setting value for restrictWorkspaceAdmins setting. This is the final effective value of setting. To set a value use restrict_workspace_admins
      * 
      */
     private GetWorkspaceSettingV2EffectiveRestrictWorkspaceAdmins effectiveRestrictWorkspaceAdmins;
     /**
-     * @return (StringMessage)
+     * @return (StringMessage) - Effective setting value for string type setting. This is the final effective value of setting. To set a value use string_val
      * 
      */
     private GetWorkspaceSettingV2EffectiveStringVal effectiveStringVal;
@@ -92,7 +92,7 @@ public final class GetWorkspaceSettingV2Result {
      */
     private String id;
     /**
-     * @return (IntegerMessage)
+     * @return (IntegerMessage) - Setting value for integer type setting. This is the setting value set by consumers, check effectiveIntegerVal for final setting value
      * 
      */
     private GetWorkspaceSettingV2IntegerVal integerVal;
@@ -102,101 +102,101 @@ public final class GetWorkspaceSettingV2Result {
      */
     private String name;
     /**
-     * @return (PersonalComputeMessage)
+     * @return (PersonalComputeMessage) - Setting value for personalCompute setting. This is the setting value set by consumers, check effectivePersonalCompute for final setting value
      * 
      */
     private GetWorkspaceSettingV2PersonalCompute personalCompute;
     /**
-     * @return (RestrictWorkspaceAdminsMessage)
+     * @return (RestrictWorkspaceAdminsMessage) - Setting value for restrictWorkspaceAdmins setting. This is the setting value set by consumers, check effectiveRestrictWorkspaceAdmins for final setting value
      * 
      */
     private GetWorkspaceSettingV2RestrictWorkspaceAdmins restrictWorkspaceAdmins;
     /**
-     * @return (StringMessage)
+     * @return (StringMessage) - Setting value for string type setting. This is the setting value set by consumers, check effectiveStringVal for final setting value
      * 
      */
     private GetWorkspaceSettingV2StringVal stringVal;
 
     private GetWorkspaceSettingV2Result() {}
     /**
-     * @return (AibiDashboardEmbeddingAccessPolicy)
+     * @return (AibiDashboardEmbeddingAccessPolicy) - Setting value for aibiDashboardEmbeddingAccessPolicy setting. This is the setting value set by consumers, check effectiveAibiDashboardEmbeddingAccessPolicy for final setting value
      * 
      */
     public GetWorkspaceSettingV2AibiDashboardEmbeddingAccessPolicy aibiDashboardEmbeddingAccessPolicy() {
         return this.aibiDashboardEmbeddingAccessPolicy;
     }
     /**
-     * @return (AibiDashboardEmbeddingApprovedDomains)
+     * @return (AibiDashboardEmbeddingApprovedDomains) - Setting value for aibiDashboardEmbeddingApprovedDomains setting. This is the setting value set by consumers, check effectiveAibiDashboardEmbeddingApprovedDomains for final setting value
      * 
      */
     public GetWorkspaceSettingV2AibiDashboardEmbeddingApprovedDomains aibiDashboardEmbeddingApprovedDomains() {
         return this.aibiDashboardEmbeddingApprovedDomains;
     }
     /**
-     * @return (ClusterAutoRestartMessage)
+     * @return (ClusterAutoRestartMessage) - Setting value for automaticClusterUpdateWorkspace setting. This is the setting value set by consumers, check effectiveAutomaticClusterUpdateWorkspace for final setting value
      * 
      */
     public GetWorkspaceSettingV2AutomaticClusterUpdateWorkspace automaticClusterUpdateWorkspace() {
         return this.automaticClusterUpdateWorkspace;
     }
     /**
-     * @return (BooleanMessage)
+     * @return (BooleanMessage) - Setting value for boolean type setting. This is the setting value set by consumers, check effectiveBooleanVal for final setting value
      * 
      */
     public GetWorkspaceSettingV2BooleanVal booleanVal() {
         return this.booleanVal;
     }
     /**
-     * @return (AibiDashboardEmbeddingAccessPolicy)
+     * @return (AibiDashboardEmbeddingAccessPolicy) - Effective setting value for aibiDashboardEmbeddingAccessPolicy setting. This is the final effective value of setting. To set a value use aibi_dashboard_embedding_access_policy
      * 
      */
     public GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy effectiveAibiDashboardEmbeddingAccessPolicy() {
         return this.effectiveAibiDashboardEmbeddingAccessPolicy;
     }
     /**
-     * @return (AibiDashboardEmbeddingApprovedDomains)
+     * @return (AibiDashboardEmbeddingApprovedDomains) - Effective setting value for aibiDashboardEmbeddingApprovedDomains setting. This is the final effective value of setting. To set a value use aibi_dashboard_embedding_approved_domains
      * 
      */
     public GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomains effectiveAibiDashboardEmbeddingApprovedDomains() {
         return this.effectiveAibiDashboardEmbeddingApprovedDomains;
     }
     /**
-     * @return (ClusterAutoRestartMessage)
+     * @return (ClusterAutoRestartMessage) - Effective setting value for automaticClusterUpdateWorkspace setting. This is the final effective value of setting. To set a value use automatic_cluster_update_workspace
      * 
      */
     public GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspace effectiveAutomaticClusterUpdateWorkspace() {
         return this.effectiveAutomaticClusterUpdateWorkspace;
     }
     /**
-     * @return (BooleanMessage)
+     * @return (BooleanMessage) - Effective setting value for boolean type setting. This is the final effective value of setting. To set a value use boolean_val
      * 
      */
     public GetWorkspaceSettingV2EffectiveBooleanVal effectiveBooleanVal() {
         return this.effectiveBooleanVal;
     }
     /**
-     * @return (IntegerMessage)
+     * @return (IntegerMessage) - Effective setting value for integer type setting. This is the final effective value of setting. To set a value use integer_val
      * 
      */
     public GetWorkspaceSettingV2EffectiveIntegerVal effectiveIntegerVal() {
         return this.effectiveIntegerVal;
     }
     /**
-     * @return (PersonalComputeMessage)
+     * @return (PersonalComputeMessage) - Effective setting value for personalCompute setting. This is the final effective value of setting. To set a value use personal_compute
      * 
      */
     public GetWorkspaceSettingV2EffectivePersonalCompute effectivePersonalCompute() {
         return this.effectivePersonalCompute;
     }
     /**
-     * @return (RestrictWorkspaceAdminsMessage)
+     * @return (RestrictWorkspaceAdminsMessage) - Effective setting value for restrictWorkspaceAdmins setting. This is the final effective value of setting. To set a value use restrict_workspace_admins
      * 
      */
     public GetWorkspaceSettingV2EffectiveRestrictWorkspaceAdmins effectiveRestrictWorkspaceAdmins() {
         return this.effectiveRestrictWorkspaceAdmins;
     }
     /**
-     * @return (StringMessage)
+     * @return (StringMessage) - Effective setting value for string type setting. This is the final effective value of setting. To set a value use string_val
      * 
      */
     public GetWorkspaceSettingV2EffectiveStringVal effectiveStringVal() {
@@ -210,7 +210,7 @@ public final class GetWorkspaceSettingV2Result {
         return this.id;
     }
     /**
-     * @return (IntegerMessage)
+     * @return (IntegerMessage) - Setting value for integer type setting. This is the setting value set by consumers, check effectiveIntegerVal for final setting value
      * 
      */
     public GetWorkspaceSettingV2IntegerVal integerVal() {
@@ -224,21 +224,21 @@ public final class GetWorkspaceSettingV2Result {
         return this.name;
     }
     /**
-     * @return (PersonalComputeMessage)
+     * @return (PersonalComputeMessage) - Setting value for personalCompute setting. This is the setting value set by consumers, check effectivePersonalCompute for final setting value
      * 
      */
     public GetWorkspaceSettingV2PersonalCompute personalCompute() {
         return this.personalCompute;
     }
     /**
-     * @return (RestrictWorkspaceAdminsMessage)
+     * @return (RestrictWorkspaceAdminsMessage) - Setting value for restrictWorkspaceAdmins setting. This is the setting value set by consumers, check effectiveRestrictWorkspaceAdmins for final setting value
      * 
      */
     public GetWorkspaceSettingV2RestrictWorkspaceAdmins restrictWorkspaceAdmins() {
         return this.restrictWorkspaceAdmins;
     }
     /**
-     * @return (StringMessage)
+     * @return (StringMessage) - Setting value for string type setting. This is the setting value set by consumers, check effectiveStringVal for final setting value
      * 
      */
     public GetWorkspaceSettingV2StringVal stringVal() {

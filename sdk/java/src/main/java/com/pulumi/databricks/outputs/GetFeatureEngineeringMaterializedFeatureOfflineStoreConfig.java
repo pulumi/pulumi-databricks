@@ -11,7 +11,7 @@ import java.util.Objects;
 @CustomType
 public final class GetFeatureEngineeringMaterializedFeatureOfflineStoreConfig {
     /**
-     * @return (string) - The Unity Catalog catalog name
+     * @return (string) - The Unity Catalog catalog name. This name is also used as the Lakebase logical database name
      * 
      */
     private String catalogName;
@@ -22,14 +22,14 @@ public final class GetFeatureEngineeringMaterializedFeatureOfflineStoreConfig {
     private String schemaName;
     /**
      * @return (string) - Prefix for Unity Catalog table name.
-     * The materialized feature will be stored in a table with this prefix and a generated postfix
+     * The materialized feature will be stored in a Lakebase table with this prefix and a generated postfix
      * 
      */
     private String tableNamePrefix;
 
     private GetFeatureEngineeringMaterializedFeatureOfflineStoreConfig() {}
     /**
-     * @return (string) - The Unity Catalog catalog name
+     * @return (string) - The Unity Catalog catalog name. This name is also used as the Lakebase logical database name
      * 
      */
     public String catalogName() {
@@ -44,7 +44,7 @@ public final class GetFeatureEngineeringMaterializedFeatureOfflineStoreConfig {
     }
     /**
      * @return (string) - Prefix for Unity Catalog table name.
-     * The materialized feature will be stored in a table with this prefix and a generated postfix
+     * The materialized feature will be stored in a Lakebase table with this prefix and a generated postfix
      * 
      */
     public String tableNamePrefix() {

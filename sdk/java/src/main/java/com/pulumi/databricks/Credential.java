@@ -321,14 +321,14 @@ public class Credential extends com.pulumi.resources.CustomResource {
         return this.metastoreId;
     }
     /**
-     * Name of Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
+     * Name of Credentials, which must be unique within the databricks_metastore. Change of the `name` forces creation of a new resource.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Name of Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
+     * @return Name of Credentials, which must be unique within the databricks_metastore. Change of the `name` forces creation of a new resource.
      * 
      */
     public Output<String> name() {

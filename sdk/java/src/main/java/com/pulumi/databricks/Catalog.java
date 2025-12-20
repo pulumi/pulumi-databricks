@@ -309,10 +309,10 @@ public class Catalog extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.providerName);
     }
     @Export(name="provisioningInfo", refs={CatalogProvisioningInfo.class}, tree="[0]")
-    private Output</* @Nullable */ CatalogProvisioningInfo> provisioningInfo;
+    private Output<CatalogProvisioningInfo> provisioningInfo;
 
-    public Output<Optional<CatalogProvisioningInfo>> provisioningInfo() {
-        return Codegen.optional(this.provisioningInfo);
+    public Output<CatalogProvisioningInfo> provisioningInfo() {
+        return this.provisioningInfo;
     }
     /**
      * the type of Unity Catalog securable.

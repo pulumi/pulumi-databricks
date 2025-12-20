@@ -366,6 +366,75 @@ namespace Pulumi.Databricks
     /// });
     /// ```
     /// 
+    /// ## Tag policy usage
+    /// 
+    /// Access to tag policies could be controlled with this resource:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var accountId = "00000000-0000-0000-0000-000000000000";
+    /// 
+    ///     // account level group
+    ///     var ds = Databricks.GetGroup.Invoke(new()
+    ///     {
+    ///         DisplayName = "Data Science",
+    ///     });
+    /// 
+    ///     var john = Databricks.GetUser.Invoke(new()
+    ///     {
+    ///         UserName = "john.doe@example.com",
+    ///     });
+    /// 
+    ///     var @this = new Databricks.TagPolicy("this", new()
+    ///     {
+    ///         TagKey = "example_tag_key",
+    ///         Description = "Example description.",
+    ///         Values = new[]
+    ///         {
+    ///             new Databricks.Inputs.TagPolicyValueArgs
+    ///             {
+    ///                 Name = "example_value_2",
+    ///             },
+    ///             new Databricks.Inputs.TagPolicyValueArgs
+    ///             {
+    ///                 Name = "example_value_3",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var tagPolicyUsage = new Databricks.AccessControlRuleSet("tag_policy_usage", new()
+    ///     {
+    ///         Name = @this.Id.Apply(id =&gt; $"accounts/{accountId}/tagPolicies/{id}/ruleSets/default"),
+    ///         GrantRules = new[]
+    ///         {
+    ///             new Databricks.Inputs.AccessControlRuleSetGrantRuleArgs
+    ///             {
+    ///                 Principals = new[]
+    ///                 {
+    ///                     john.Apply(getUserResult =&gt; getUserResult.AclPrincipalId),
+    ///                 },
+    ///                 Role = "roles/tagPolicy.manager",
+    ///             },
+    ///             new Databricks.Inputs.AccessControlRuleSetGrantRuleArgs
+    ///             {
+    ///                 Principals = new[]
+    ///                 {
+    ///                     ds.Apply(getGroupResult =&gt; getGroupResult.AclPrincipalId),
+    ///                 },
+    ///                 Role = "roles/tagPolicy.assigner",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Related Resources
     /// 
     /// The following resources are often used in the same context:
@@ -394,6 +463,7 @@ namespace Pulumi.Databricks
         /// * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default` - access control for a specific service principal.
         /// * `accounts/{account_id}/groups/{group_id}/ruleSets/default` - access control for a specific group.
         /// * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default` - access control for a specific budget policy.
+        /// * `accounts/{account_id}/tagPolicies/{tag_policy_id}/ruleSets/default` - access control for a specific tag policy.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -464,6 +534,7 @@ namespace Pulumi.Databricks
         /// * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default` - access control for a specific service principal.
         /// * `accounts/{account_id}/groups/{group_id}/ruleSets/default` - access control for a specific group.
         /// * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default` - access control for a specific budget policy.
+        /// * `accounts/{account_id}/tagPolicies/{tag_policy_id}/ruleSets/default` - access control for a specific tag policy.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -499,6 +570,7 @@ namespace Pulumi.Databricks
         /// * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default` - access control for a specific service principal.
         /// * `accounts/{account_id}/groups/{group_id}/ruleSets/default` - access control for a specific group.
         /// * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default` - access control for a specific budget policy.
+        /// * `accounts/{account_id}/tagPolicies/{tag_policy_id}/ruleSets/default` - access control for a specific tag policy.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

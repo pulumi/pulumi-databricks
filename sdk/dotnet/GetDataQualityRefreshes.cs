@@ -12,7 +12,7 @@ namespace Pulumi.Databricks
     public static class GetDataQualityRefreshes
     {
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// This data source can be used to fetch the list of data quality refreshes on a Unity Catalog table.
         /// 
@@ -56,7 +56,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDataQualityRefreshesResult>("databricks:index/getDataQualityRefreshes:getDataQualityRefreshes", args ?? new GetDataQualityRefreshesArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// This data source can be used to fetch the list of data quality refreshes on a Unity Catalog table.
         /// 
@@ -100,7 +100,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.Invoke<GetDataQualityRefreshesResult>("databricks:index/getDataQualityRefreshes:getDataQualityRefreshes", args ?? new GetDataQualityRefreshesInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// This data source can be used to fetch the list of data quality refreshes on a Unity Catalog table.
         /// 

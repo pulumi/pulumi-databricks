@@ -46,9 +46,17 @@ public final class ClusterAwsAttributesArgs extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.ebsVolumeCount);
     }
 
+    /**
+     * If using gp3 volumes, what IOPS to use for the disk. If this is not set, the maximum performance of a gp2 volume with the same volume size will be used.
+     * 
+     */
     @Import(name="ebsVolumeIops")
     private @Nullable Output<Integer> ebsVolumeIops;
 
+    /**
+     * @return If using gp3 volumes, what IOPS to use for the disk. If this is not set, the maximum performance of a gp2 volume with the same volume size will be used.
+     * 
+     */
     public Optional<Output<Integer>> ebsVolumeIops() {
         return Optional.ofNullable(this.ebsVolumeIops);
     }
@@ -68,9 +76,17 @@ public final class ClusterAwsAttributesArgs extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.ebsVolumeSize);
     }
 
+    /**
+     * If using gp3 volumes, what throughput to use for the disk. If this is not set, the maximum performance of a gp2 volume with the same volume size will be used.
+     * 
+     */
     @Import(name="ebsVolumeThroughput")
     private @Nullable Output<Integer> ebsVolumeThroughput;
 
+    /**
+     * @return If using gp3 volumes, what throughput to use for the disk. If this is not set, the maximum performance of a gp2 volume with the same volume size will be used.
+     * 
+     */
     public Optional<Output<Integer>> ebsVolumeThroughput() {
         return Optional.ofNullable(this.ebsVolumeThroughput);
     }
@@ -225,11 +241,23 @@ public final class ClusterAwsAttributesArgs extends com.pulumi.resources.Resourc
             return ebsVolumeCount(Output.of(ebsVolumeCount));
         }
 
+        /**
+         * @param ebsVolumeIops If using gp3 volumes, what IOPS to use for the disk. If this is not set, the maximum performance of a gp2 volume with the same volume size will be used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ebsVolumeIops(@Nullable Output<Integer> ebsVolumeIops) {
             $.ebsVolumeIops = ebsVolumeIops;
             return this;
         }
 
+        /**
+         * @param ebsVolumeIops If using gp3 volumes, what IOPS to use for the disk. If this is not set, the maximum performance of a gp2 volume with the same volume size will be used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ebsVolumeIops(Integer ebsVolumeIops) {
             return ebsVolumeIops(Output.of(ebsVolumeIops));
         }
@@ -255,11 +283,23 @@ public final class ClusterAwsAttributesArgs extends com.pulumi.resources.Resourc
             return ebsVolumeSize(Output.of(ebsVolumeSize));
         }
 
+        /**
+         * @param ebsVolumeThroughput If using gp3 volumes, what throughput to use for the disk. If this is not set, the maximum performance of a gp2 volume with the same volume size will be used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ebsVolumeThroughput(@Nullable Output<Integer> ebsVolumeThroughput) {
             $.ebsVolumeThroughput = ebsVolumeThroughput;
             return this;
         }
 
+        /**
+         * @param ebsVolumeThroughput If using gp3 volumes, what throughput to use for the disk. If this is not set, the maximum performance of a gp2 volume with the same volume size will be used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ebsVolumeThroughput(Integer ebsVolumeThroughput) {
             return ebsVolumeThroughput(Output.of(ebsVolumeThroughput));
         }

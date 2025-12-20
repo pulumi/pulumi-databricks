@@ -106,7 +106,7 @@ export class RfaAccessRequestDestinations extends pulumi.CustomResource {
     /**
      * The access request destinations for the securable
      */
-    declare public readonly destinations: pulumi.Output<outputs.RfaAccessRequestDestinationsDestination[]>;
+    declare public readonly destinations: pulumi.Output<outputs.RfaAccessRequestDestinationsDestination[] | undefined>;
     /**
      * The securable for which the access request destinations are being retrieved
      */
@@ -130,9 +130,6 @@ export class RfaAccessRequestDestinations extends pulumi.CustomResource {
             resourceInputs["securable"] = state?.securable;
         } else {
             const args = argsOrState as RfaAccessRequestDestinationsArgs | undefined;
-            if (args?.destinations === undefined && !opts.urn) {
-                throw new Error("Missing required property 'destinations'");
-            }
             if (args?.securable === undefined && !opts.urn) {
                 throw new Error("Missing required property 'securable'");
             }
@@ -171,7 +168,7 @@ export interface RfaAccessRequestDestinationsArgs {
     /**
      * The access request destinations for the securable
      */
-    destinations: pulumi.Input<pulumi.Input<inputs.RfaAccessRequestDestinationsDestination>[]>;
+    destinations?: pulumi.Input<pulumi.Input<inputs.RfaAccessRequestDestinationsDestination>[]>;
     /**
      * The securable for which the access request destinations are being retrieved
      */

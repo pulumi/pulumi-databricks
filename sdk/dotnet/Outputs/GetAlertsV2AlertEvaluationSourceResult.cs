@@ -14,7 +14,7 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetAlertsV2AlertEvaluationSourceResult
     {
         /// <summary>
-        /// (string) - Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
+        /// (string) - If not set, the behavior is equivalent to using `First row` in the UI. Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
         /// </summary>
         public readonly string? Aggregation;
         /// <summary>

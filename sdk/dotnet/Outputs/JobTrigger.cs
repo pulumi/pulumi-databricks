@@ -17,6 +17,7 @@ namespace Pulumi.Databricks.Outputs
         /// configuration block to define a trigger for [File Arrival events](https://learn.microsoft.com/en-us/azure/databricks/workflows/jobs/file-arrival-triggers) consisting of following attributes:
         /// </summary>
         public readonly Outputs.JobTriggerFileArrival? FileArrival;
+        public readonly Outputs.JobTriggerModel? Model;
         /// <summary>
         /// Indicate whether this trigger is paused or not. Either `PAUSED` or `UNPAUSED`. When the `PauseStatus` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `PauseStatus`.
         /// </summary>
@@ -34,6 +35,8 @@ namespace Pulumi.Databricks.Outputs
         private JobTrigger(
             Outputs.JobTriggerFileArrival? fileArrival,
 
+            Outputs.JobTriggerModel? model,
+
             string? pauseStatus,
 
             Outputs.JobTriggerPeriodic? periodic,
@@ -41,6 +44,7 @@ namespace Pulumi.Databricks.Outputs
             Outputs.JobTriggerTableUpdate? tableUpdate)
         {
             FileArrival = fileArrival;
+            Model = model;
             PauseStatus = pauseStatus;
             Periodic = periodic;
             TableUpdate = tableUpdate;

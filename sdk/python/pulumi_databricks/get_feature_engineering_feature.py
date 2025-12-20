@@ -27,7 +27,7 @@ class GetFeatureEngineeringFeatureResult:
     """
     A collection of values returned by getFeatureEngineeringFeature.
     """
-    def __init__(__self__, description=None, filter_condition=None, full_name=None, function=None, id=None, inputs=None, source=None, time_window=None):
+    def __init__(__self__, description=None, filter_condition=None, full_name=None, function=None, id=None, inputs=None, lineage_context=None, source=None, time_window=None):
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -46,6 +46,9 @@ class GetFeatureEngineeringFeatureResult:
         if inputs and not isinstance(inputs, list):
             raise TypeError("Expected argument 'inputs' to be a list")
         pulumi.set(__self__, "inputs", inputs)
+        if lineage_context and not isinstance(lineage_context, dict):
+            raise TypeError("Expected argument 'lineage_context' to be a dict")
+        pulumi.set(__self__, "lineage_context", lineage_context)
         if source and not isinstance(source, dict):
             raise TypeError("Expected argument 'source' to be a dict")
         pulumi.set(__self__, "source", source)
@@ -102,6 +105,11 @@ class GetFeatureEngineeringFeatureResult:
         return pulumi.get(self, "inputs")
 
     @_builtins.property
+    @pulumi.getter(name="lineageContext")
+    def lineage_context(self) -> 'outputs.GetFeatureEngineeringFeatureLineageContextResult':
+        return pulumi.get(self, "lineage_context")
+
+    @_builtins.property
     @pulumi.getter
     def source(self) -> 'outputs.GetFeatureEngineeringFeatureSourceResult':
         """
@@ -130,6 +138,7 @@ class AwaitableGetFeatureEngineeringFeatureResult(GetFeatureEngineeringFeatureRe
             function=self.function,
             id=self.id,
             inputs=self.inputs,
+            lineage_context=self.lineage_context,
             source=self.source,
             time_window=self.time_window)
 
@@ -154,6 +163,7 @@ def get_feature_engineering_feature(full_name: Optional[_builtins.str] = None,
         function=pulumi.get(__ret__, 'function'),
         id=pulumi.get(__ret__, 'id'),
         inputs=pulumi.get(__ret__, 'inputs'),
+        lineage_context=pulumi.get(__ret__, 'lineage_context'),
         source=pulumi.get(__ret__, 'source'),
         time_window=pulumi.get(__ret__, 'time_window'))
 def get_feature_engineering_feature_output(full_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -175,5 +185,6 @@ def get_feature_engineering_feature_output(full_name: Optional[pulumi.Input[_bui
         function=pulumi.get(__response__, 'function'),
         id=pulumi.get(__response__, 'id'),
         inputs=pulumi.get(__response__, 'inputs'),
+        lineage_context=pulumi.get(__response__, 'lineage_context'),
         source=pulumi.get(__response__, 'source'),
         time_window=pulumi.get(__response__, 'time_window')))

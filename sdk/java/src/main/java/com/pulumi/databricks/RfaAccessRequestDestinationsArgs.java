@@ -10,6 +10,8 @@ import com.pulumi.databricks.inputs.RfaAccessRequestDestinationsSecurableArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class RfaAccessRequestDestinationsArgs extends com.pulumi.resources.ResourceArgs {
@@ -20,15 +22,15 @@ public final class RfaAccessRequestDestinationsArgs extends com.pulumi.resources
      * The access request destinations for the securable
      * 
      */
-    @Import(name="destinations", required=true)
-    private Output<List<RfaAccessRequestDestinationsDestinationArgs>> destinations;
+    @Import(name="destinations")
+    private @Nullable Output<List<RfaAccessRequestDestinationsDestinationArgs>> destinations;
 
     /**
      * @return The access request destinations for the securable
      * 
      */
-    public Output<List<RfaAccessRequestDestinationsDestinationArgs>> destinations() {
-        return this.destinations;
+    public Optional<Output<List<RfaAccessRequestDestinationsDestinationArgs>>> destinations() {
+        return Optional.ofNullable(this.destinations);
     }
 
     /**
@@ -77,7 +79,7 @@ public final class RfaAccessRequestDestinationsArgs extends com.pulumi.resources
          * @return builder
          * 
          */
-        public Builder destinations(Output<List<RfaAccessRequestDestinationsDestinationArgs>> destinations) {
+        public Builder destinations(@Nullable Output<List<RfaAccessRequestDestinationsDestinationArgs>> destinations) {
             $.destinations = destinations;
             return this;
         }
@@ -124,9 +126,6 @@ public final class RfaAccessRequestDestinationsArgs extends com.pulumi.resources
         }
 
         public RfaAccessRequestDestinationsArgs build() {
-            if ($.destinations == null) {
-                throw new MissingRequiredPropertyException("RfaAccessRequestDestinationsArgs", "destinations");
-            }
             if ($.securable == null) {
                 throw new MissingRequiredPropertyException("RfaAccessRequestDestinationsArgs", "securable");
             }

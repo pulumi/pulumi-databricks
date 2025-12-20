@@ -14,7 +14,7 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOfflineStoreConfigResult
     {
         /// <summary>
-        /// (string) - The Unity Catalog catalog name
+        /// (string) - The Unity Catalog catalog name. This name is also used as the Lakebase logical database name
         /// </summary>
         public readonly string CatalogName;
         /// <summary>
@@ -23,7 +23,7 @@ namespace Pulumi.Databricks.Outputs
         public readonly string SchemaName;
         /// <summary>
         /// (string) - Prefix for Unity Catalog table name.
-        /// The materialized feature will be stored in a table with this prefix and a generated postfix
+        /// The materialized feature will be stored in a Lakebase table with this prefix and a generated postfix
         /// </summary>
         public readonly string TableNamePrefix;
 

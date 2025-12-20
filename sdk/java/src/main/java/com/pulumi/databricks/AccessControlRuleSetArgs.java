@@ -42,6 +42,7 @@ public final class AccessControlRuleSetArgs extends com.pulumi.resources.Resourc
      * * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default` - access control for a specific service principal.
      * * `accounts/{account_id}/groups/{group_id}/ruleSets/default` - access control for a specific group.
      * * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default` - access control for a specific budget policy.
+     * * `accounts/{account_id}/tagPolicies/{tag_policy_id}/ruleSets/default` - access control for a specific tag policy.
      * 
      */
     @Import(name="name")
@@ -53,6 +54,7 @@ public final class AccessControlRuleSetArgs extends com.pulumi.resources.Resourc
      * * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default` - access control for a specific service principal.
      * * `accounts/{account_id}/groups/{group_id}/ruleSets/default` - access control for a specific group.
      * * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default` - access control for a specific budget policy.
+     * * `accounts/{account_id}/tagPolicies/{tag_policy_id}/ruleSets/default` - access control for a specific tag policy.
      * 
      */
     public Optional<Output<String>> name() {
@@ -127,6 +129,7 @@ public final class AccessControlRuleSetArgs extends com.pulumi.resources.Resourc
          * * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default` - access control for a specific service principal.
          * * `accounts/{account_id}/groups/{group_id}/ruleSets/default` - access control for a specific group.
          * * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default` - access control for a specific budget policy.
+         * * `accounts/{account_id}/tagPolicies/{tag_policy_id}/ruleSets/default` - access control for a specific tag policy.
          * 
          * @return builder
          * 
@@ -142,6 +145,7 @@ public final class AccessControlRuleSetArgs extends com.pulumi.resources.Resourc
          * * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default` - access control for a specific service principal.
          * * `accounts/{account_id}/groups/{group_id}/ruleSets/default` - access control for a specific group.
          * * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default` - access control for a specific budget policy.
+         * * `accounts/{account_id}/tagPolicies/{tag_policy_id}/ruleSets/default` - access control for a specific tag policy.
          * 
          * @return builder
          * 

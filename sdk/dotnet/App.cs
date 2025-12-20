@@ -113,7 +113,7 @@ namespace Pulumi.Databricks
         public Output<string?> BudgetPolicyId { get; private set; } = null!;
 
         /// <summary>
-        /// A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`, `LIQUID`.
+        /// A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`.
         /// </summary>
         [Output("computeSize")]
         public Output<string> ComputeSize { get; private set; } = null!;
@@ -282,7 +282,7 @@ namespace Pulumi.Databricks
         public Input<string>? BudgetPolicyId { get; set; }
 
         /// <summary>
-        /// A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`, `LIQUID`.
+        /// A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`.
         /// </summary>
         [Input("computeSize")]
         public Input<string>? ComputeSize { get; set; }
@@ -353,7 +353,7 @@ namespace Pulumi.Databricks
         public Input<string>? BudgetPolicyId { get; set; }
 
         /// <summary>
-        /// A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`, `LIQUID`.
+        /// A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`.
         /// </summary>
         [Input("computeSize")]
         public Input<string>? ComputeSize { get; set; }

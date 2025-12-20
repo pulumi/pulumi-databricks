@@ -15,6 +15,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("connectionName")]
         public Input<string>? ConnectionName { get; set; }
 
+        [Input("ingestFromUcForeignCatalog")]
+        public Input<bool>? IngestFromUcForeignCatalog { get; set; }
+
         [Input("ingestionGatewayId")]
         public Input<string>? IngestionGatewayId { get; set; }
 

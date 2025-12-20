@@ -135,14 +135,14 @@ public final class CredentialArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
+     * Name of Credentials, which must be unique within the databricks_metastore. Change of the `name` forces creation of a new resource.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
+     * @return Name of Credentials, which must be unique within the databricks_metastore. Change of the `name` forces creation of a new resource.
      * 
      */
     public Optional<Output<String>> name() {
@@ -422,7 +422,7 @@ public final class CredentialArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
+         * @param name Name of Credentials, which must be unique within the databricks_metastore. Change of the `name` forces creation of a new resource.
          * 
          * @return builder
          * 
@@ -433,7 +433,7 @@ public final class CredentialArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
+         * @param name Name of Credentials, which must be unique within the databricks_metastore. Change of the `name` forces creation of a new resource.
          * 
          * @return builder
          * 

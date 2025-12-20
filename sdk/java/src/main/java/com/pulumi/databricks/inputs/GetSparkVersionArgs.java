@@ -184,14 +184,14 @@ public final class GetSparkVersionArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * if we should limit the search only to runtimes that are based on specific Scala version. Default to `2.12`.
+     * if we should limit the search only to runtimes that are based on specific Scala version. Default to `2.1` to select either `2.12` or `2.13` depending on the DBR version (for DBR that has both `2.12` and `2.13` flavors, `2.12` is returned by default).
      * 
      */
     @Import(name="scala")
     private @Nullable Output<String> scala;
 
     /**
-     * @return if we should limit the search only to runtimes that are based on specific Scala version. Default to `2.12`.
+     * @return if we should limit the search only to runtimes that are based on specific Scala version. Default to `2.1` to select either `2.12` or `2.13` depending on the DBR version (for DBR that has both `2.12` and `2.13` flavors, `2.12` is returned by default).
      * 
      */
     public Optional<Output<String>> scala() {
@@ -475,7 +475,7 @@ public final class GetSparkVersionArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param scala if we should limit the search only to runtimes that are based on specific Scala version. Default to `2.12`.
+         * @param scala if we should limit the search only to runtimes that are based on specific Scala version. Default to `2.1` to select either `2.12` or `2.13` depending on the DBR version (for DBR that has both `2.12` and `2.13` flavors, `2.12` is returned by default).
          * 
          * @return builder
          * 
@@ -486,7 +486,7 @@ public final class GetSparkVersionArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param scala if we should limit the search only to runtimes that are based on specific Scala version. Default to `2.12`.
+         * @param scala if we should limit the search only to runtimes that are based on specific Scala version. Default to `2.1` to select either `2.12` or `2.13` depending on the DBR version (for DBR that has both `2.12` and `2.13` flavors, `2.12` is returned by default).
          * 
          * @return builder
          * 

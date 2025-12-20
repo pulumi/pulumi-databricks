@@ -434,6 +434,80 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * ## Tag policy usage
+ * 
+ * Access to tag policies could be controlled with this resource:
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.DatabricksFunctions;
+ * import com.pulumi.databricks.inputs.GetGroupArgs;
+ * import com.pulumi.databricks.inputs.GetUserArgs;
+ * import com.pulumi.databricks.TagPolicy;
+ * import com.pulumi.databricks.TagPolicyArgs;
+ * import com.pulumi.databricks.inputs.TagPolicyValueArgs;
+ * import com.pulumi.databricks.AccessControlRuleSet;
+ * import com.pulumi.databricks.AccessControlRuleSetArgs;
+ * import com.pulumi.databricks.inputs.AccessControlRuleSetGrantRuleArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         final var accountId = "00000000-0000-0000-0000-000000000000";
+ * 
+ *         // account level group
+ *         final var ds = DatabricksFunctions.getGroup(GetGroupArgs.builder()
+ *             .displayName("Data Science")
+ *             .build());
+ * 
+ *         final var john = DatabricksFunctions.getUser(GetUserArgs.builder()
+ *             .userName("john.doe}{@literal @}{@code example.com")
+ *             .build());
+ * 
+ *         var this_ = new TagPolicy("this", TagPolicyArgs.builder()
+ *             .tagKey("example_tag_key")
+ *             .description("Example description.")
+ *             .values(            
+ *                 TagPolicyValueArgs.builder()
+ *                     .name("example_value_2")
+ *                     .build(),
+ *                 TagPolicyValueArgs.builder()
+ *                     .name("example_value_3")
+ *                     .build())
+ *             .build());
+ * 
+ *         var tagPolicyUsage = new AccessControlRuleSet("tagPolicyUsage", AccessControlRuleSetArgs.builder()
+ *             .name(this_.id().applyValue(_id -> String.format("accounts/%s/tagPolicies/%s/ruleSets/default", accountId,_id)))
+ *             .grantRules(            
+ *                 AccessControlRuleSetGrantRuleArgs.builder()
+ *                     .principals(john.aclPrincipalId())
+ *                     .role("roles/tagPolicy.manager")
+ *                     .build(),
+ *                 AccessControlRuleSetGrantRuleArgs.builder()
+ *                     .principals(ds.aclPrincipalId())
+ *                     .role("roles/tagPolicy.assigner")
+ *                     .build())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
  * ## Related Resources
  * 
  * The following resources are often used in the same context:
@@ -475,6 +549,7 @@ public class AccessControlRuleSet extends com.pulumi.resources.CustomResource {
      * * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default` - access control for a specific service principal.
      * * `accounts/{account_id}/groups/{group_id}/ruleSets/default` - access control for a specific group.
      * * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default` - access control for a specific budget policy.
+     * * `accounts/{account_id}/tagPolicies/{tag_policy_id}/ruleSets/default` - access control for a specific tag policy.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
@@ -486,6 +561,7 @@ public class AccessControlRuleSet extends com.pulumi.resources.CustomResource {
      * * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default` - access control for a specific service principal.
      * * `accounts/{account_id}/groups/{group_id}/ruleSets/default` - access control for a specific group.
      * * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default` - access control for a specific budget policy.
+     * * `accounts/{account_id}/tagPolicies/{tag_policy_id}/ruleSets/default` - access control for a specific tag policy.
      * 
      */
     public Output<String> name() {

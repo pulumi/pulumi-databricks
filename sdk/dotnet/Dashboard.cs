@@ -80,6 +80,18 @@ namespace Pulumi.Databricks
         public Output<string> DashboardId { get; private set; } = null!;
 
         /// <summary>
+        /// Sets the default catalog for all datasets in this dashboard. Does not impact table references that use fully qualified catalog names (ex: samples.nyctaxi.trips).
+        /// </summary>
+        [Output("datasetCatalog")]
+        public Output<string?> DatasetCatalog { get; private set; } = null!;
+
+        /// <summary>
+        /// Sets the default schema for all datasets in this dashboard. Does not impact table references that use fully qualified catalog names (ex: samples.nyctaxi.trips).
+        /// </summary>
+        [Output("datasetSchema")]
+        public Output<string?> DatasetSchema { get; private set; } = null!;
+
+        /// <summary>
         /// The display name of the dashboard.
         /// </summary>
         [Output("displayName")]
@@ -186,6 +198,18 @@ namespace Pulumi.Databricks
         public Input<string>? DashboardId { get; set; }
 
         /// <summary>
+        /// Sets the default catalog for all datasets in this dashboard. Does not impact table references that use fully qualified catalog names (ex: samples.nyctaxi.trips).
+        /// </summary>
+        [Input("datasetCatalog")]
+        public Input<string>? DatasetCatalog { get; set; }
+
+        /// <summary>
+        /// Sets the default schema for all datasets in this dashboard. Does not impact table references that use fully qualified catalog names (ex: samples.nyctaxi.trips).
+        /// </summary>
+        [Input("datasetSchema")]
+        public Input<string>? DatasetSchema { get; set; }
+
+        /// <summary>
         /// The display name of the dashboard.
         /// </summary>
         [Input("displayName", required: true)]
@@ -252,6 +276,18 @@ namespace Pulumi.Databricks
 
         [Input("dashboardId")]
         public Input<string>? DashboardId { get; set; }
+
+        /// <summary>
+        /// Sets the default catalog for all datasets in this dashboard. Does not impact table references that use fully qualified catalog names (ex: samples.nyctaxi.trips).
+        /// </summary>
+        [Input("datasetCatalog")]
+        public Input<string>? DatasetCatalog { get; set; }
+
+        /// <summary>
+        /// Sets the default schema for all datasets in this dashboard. Does not impact table references that use fully qualified catalog names (ex: samples.nyctaxi.trips).
+        /// </summary>
+        [Input("datasetSchema")]
+        public Input<string>? DatasetSchema { get; set; }
 
         /// <summary>
         /// The display name of the dashboard.

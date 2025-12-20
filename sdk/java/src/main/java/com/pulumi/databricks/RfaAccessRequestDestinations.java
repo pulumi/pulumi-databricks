@@ -14,6 +14,7 @@ import com.pulumi.databricks.outputs.RfaAccessRequestDestinationsDestination;
 import com.pulumi.databricks.outputs.RfaAccessRequestDestinationsSecurable;
 import java.lang.Boolean;
 import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -127,14 +128,14 @@ public class RfaAccessRequestDestinations extends com.pulumi.resources.CustomRes
      * 
      */
     @Export(name="destinations", refs={List.class,RfaAccessRequestDestinationsDestination.class}, tree="[0,1]")
-    private Output<List<RfaAccessRequestDestinationsDestination>> destinations;
+    private Output</* @Nullable */ List<RfaAccessRequestDestinationsDestination>> destinations;
 
     /**
      * @return The access request destinations for the securable
      * 
      */
-    public Output<List<RfaAccessRequestDestinationsDestination>> destinations() {
-        return this.destinations;
+    public Output<Optional<List<RfaAccessRequestDestinationsDestination>>> destinations() {
+        return Codegen.optional(this.destinations);
     }
     /**
      * The securable for which the access request destinations are being retrieved

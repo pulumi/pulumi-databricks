@@ -196,7 +196,7 @@ namespace Pulumi.Databricks
         private List<string>? _applicationIds;
 
         /// <summary>
-        /// List of `ApplicationIds` of service principals.  Individual service principal can be retrieved using databricks.ServicePrincipal data source
+        /// List of `ApplicationIds` of service principals.  Individual service principal can be retrieved using databricks.ServicePrincipal data source or from `ServicePrincipals` attribute.
         /// </summary>
         public List<string> ApplicationIds
         {
@@ -210,6 +210,18 @@ namespace Pulumi.Databricks
         [Input("displayNameContains")]
         public string? DisplayNameContains { get; set; }
 
+        [Input("servicePrincipals")]
+        private List<Inputs.GetServicePrincipalsServicePrincipalArgs>? _servicePrincipals;
+
+        /// <summary>
+        /// List of objects describing individual service principals. Each object has the following attributes:
+        /// </summary>
+        public List<Inputs.GetServicePrincipalsServicePrincipalArgs> ServicePrincipals
+        {
+            get => _servicePrincipals ?? (_servicePrincipals = new List<Inputs.GetServicePrincipalsServicePrincipalArgs>());
+            set => _servicePrincipals = value;
+        }
+
         public GetServicePrincipalsArgs()
         {
         }
@@ -222,7 +234,7 @@ namespace Pulumi.Databricks
         private InputList<string>? _applicationIds;
 
         /// <summary>
-        /// List of `ApplicationIds` of service principals.  Individual service principal can be retrieved using databricks.ServicePrincipal data source
+        /// List of `ApplicationIds` of service principals.  Individual service principal can be retrieved using databricks.ServicePrincipal data source or from `ServicePrincipals` attribute.
         /// </summary>
         public InputList<string> ApplicationIds
         {
@@ -236,6 +248,18 @@ namespace Pulumi.Databricks
         [Input("displayNameContains")]
         public Input<string>? DisplayNameContains { get; set; }
 
+        [Input("servicePrincipals")]
+        private InputList<Inputs.GetServicePrincipalsServicePrincipalInputArgs>? _servicePrincipals;
+
+        /// <summary>
+        /// List of objects describing individual service principals. Each object has the following attributes:
+        /// </summary>
+        public InputList<Inputs.GetServicePrincipalsServicePrincipalInputArgs> ServicePrincipals
+        {
+            get => _servicePrincipals ?? (_servicePrincipals = new InputList<Inputs.GetServicePrincipalsServicePrincipalInputArgs>());
+            set => _servicePrincipals = value;
+        }
+
         public GetServicePrincipalsInvokeArgs()
         {
         }
@@ -247,7 +271,7 @@ namespace Pulumi.Databricks
     public sealed class GetServicePrincipalsResult
     {
         /// <summary>
-        /// List of `ApplicationIds` of service principals.  Individual service principal can be retrieved using databricks.ServicePrincipal data source
+        /// List of `ApplicationIds` of service principals.  Individual service principal can be retrieved using databricks.ServicePrincipal data source or from `ServicePrincipals` attribute.
         /// </summary>
         public readonly ImmutableArray<string> ApplicationIds;
         public readonly string DisplayNameContains;
@@ -255,6 +279,10 @@ namespace Pulumi.Databricks
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// List of objects describing individual service principals. Each object has the following attributes:
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetServicePrincipalsServicePrincipalResult> ServicePrincipals;
 
         [OutputConstructor]
         private GetServicePrincipalsResult(
@@ -262,11 +290,14 @@ namespace Pulumi.Databricks
 
             string displayNameContains,
 
-            string id)
+            string id,
+
+            ImmutableArray<Outputs.GetServicePrincipalsServicePrincipalResult> servicePrincipals)
         {
             ApplicationIds = applicationIds;
             DisplayNameContains = displayNameContains;
             Id = id;
+            ServicePrincipals = servicePrincipals;
         }
     }
 }

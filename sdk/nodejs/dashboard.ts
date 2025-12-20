@@ -85,6 +85,14 @@ export class Dashboard extends pulumi.CustomResource {
     declare public readonly dashboardChangeDetected: pulumi.Output<boolean | undefined>;
     declare public readonly dashboardId: pulumi.Output<string>;
     /**
+     * Sets the default catalog for all datasets in this dashboard. Does not impact table references that use fully qualified catalog names (ex: samples.nyctaxi.trips).
+     */
+    declare public readonly datasetCatalog: pulumi.Output<string | undefined>;
+    /**
+     * Sets the default schema for all datasets in this dashboard. Does not impact table references that use fully qualified catalog names (ex: samples.nyctaxi.trips).
+     */
+    declare public readonly datasetSchema: pulumi.Output<string | undefined>;
+    /**
      * The display name of the dashboard.
      */
     declare public readonly displayName: pulumi.Output<string>;
@@ -130,6 +138,8 @@ export class Dashboard extends pulumi.CustomResource {
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["dashboardChangeDetected"] = state?.dashboardChangeDetected;
             resourceInputs["dashboardId"] = state?.dashboardId;
+            resourceInputs["datasetCatalog"] = state?.datasetCatalog;
+            resourceInputs["datasetSchema"] = state?.datasetSchema;
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["embedCredentials"] = state?.embedCredentials;
             resourceInputs["etag"] = state?.etag;
@@ -155,6 +165,8 @@ export class Dashboard extends pulumi.CustomResource {
             resourceInputs["createTime"] = args?.createTime;
             resourceInputs["dashboardChangeDetected"] = args?.dashboardChangeDetected;
             resourceInputs["dashboardId"] = args?.dashboardId;
+            resourceInputs["datasetCatalog"] = args?.datasetCatalog;
+            resourceInputs["datasetSchema"] = args?.datasetSchema;
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["embedCredentials"] = args?.embedCredentials;
             resourceInputs["etag"] = args?.etag;
@@ -179,6 +191,14 @@ export interface DashboardState {
     createTime?: pulumi.Input<string>;
     dashboardChangeDetected?: pulumi.Input<boolean>;
     dashboardId?: pulumi.Input<string>;
+    /**
+     * Sets the default catalog for all datasets in this dashboard. Does not impact table references that use fully qualified catalog names (ex: samples.nyctaxi.trips).
+     */
+    datasetCatalog?: pulumi.Input<string>;
+    /**
+     * Sets the default schema for all datasets in this dashboard. Does not impact table references that use fully qualified catalog names (ex: samples.nyctaxi.trips).
+     */
+    datasetSchema?: pulumi.Input<string>;
     /**
      * The display name of the dashboard.
      */
@@ -217,6 +237,14 @@ export interface DashboardArgs {
     createTime?: pulumi.Input<string>;
     dashboardChangeDetected?: pulumi.Input<boolean>;
     dashboardId?: pulumi.Input<string>;
+    /**
+     * Sets the default catalog for all datasets in this dashboard. Does not impact table references that use fully qualified catalog names (ex: samples.nyctaxi.trips).
+     */
+    datasetCatalog?: pulumi.Input<string>;
+    /**
+     * Sets the default schema for all datasets in this dashboard. Does not impact table references that use fully qualified catalog names (ex: samples.nyctaxi.trips).
+     */
+    datasetSchema?: pulumi.Input<string>;
     /**
      * The display name of the dashboard.
      */

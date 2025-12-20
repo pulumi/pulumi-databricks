@@ -14,10 +14,14 @@ namespace Pulumi.Databricks.Outputs
     public sealed class PipelineGatewayDefinition
     {
         /// <summary>
-        /// Immutable. The Unity Catalog connection this gateway pipeline uses to communicate with the source.
+        /// Deprecated, Immutable. The Unity Catalog connection this gateway pipeline uses to communicate with the source. *Use `ConnectionName` instead!*
         /// </summary>
         public readonly string? ConnectionId;
+        /// <summary>
+        /// Immutable. The Unity Catalog connection that this gateway pipeline uses to communicate with the source.
+        /// </summary>
         public readonly string ConnectionName;
+        public readonly Outputs.PipelineGatewayDefinitionConnectionParameters? ConnectionParameters;
         /// <summary>
         /// Required, Immutable. The name of the catalog for the gateway pipeline's storage location.
         /// </summary>
@@ -37,6 +41,8 @@ namespace Pulumi.Databricks.Outputs
 
             string connectionName,
 
+            Outputs.PipelineGatewayDefinitionConnectionParameters? connectionParameters,
+
             string gatewayStorageCatalog,
 
             string? gatewayStorageName,
@@ -45,6 +51,7 @@ namespace Pulumi.Databricks.Outputs
         {
             ConnectionId = connectionId;
             ConnectionName = connectionName;
+            ConnectionParameters = connectionParameters;
             GatewayStorageCatalog = gatewayStorageCatalog;
             GatewayStorageName = gatewayStorageName;
             GatewayStorageSchema = gatewayStorageSchema;

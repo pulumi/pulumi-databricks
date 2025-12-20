@@ -217,7 +217,7 @@ namespace Pulumi.Databricks
         public Output<string> MetastoreId { get; private set; } = null!;
 
         /// <summary>
-        /// Name of Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
+        /// Name of Credentials, which must be unique within the databricks_metastore. Change of the `Name` forces creation of a new resource.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -349,7 +349,7 @@ namespace Pulumi.Databricks
         public Input<string>? MetastoreId { get; set; }
 
         /// <summary>
-        /// Name of Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
+        /// Name of Credentials, which must be unique within the databricks_metastore. Change of the `Name` forces creation of a new resource.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -449,7 +449,7 @@ namespace Pulumi.Databricks
         public Input<string>? MetastoreId { get; set; }
 
         /// <summary>
-        /// Name of Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
+        /// Name of Credentials, which must be unique within the databricks_metastore. Change of the `Name` forces creation of a new resource.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

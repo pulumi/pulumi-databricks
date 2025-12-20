@@ -77,6 +77,7 @@ export class FeatureEngineeringFeature extends pulumi.CustomResource {
      * The input columns from which the feature is computed
      */
     declare public readonly inputs: pulumi.Output<string[]>;
+    declare public readonly lineageContext: pulumi.Output<outputs.FeatureEngineeringFeatureLineageContext | undefined>;
     /**
      * The data source of the feature
      */
@@ -84,7 +85,7 @@ export class FeatureEngineeringFeature extends pulumi.CustomResource {
     /**
      * The time window in which the feature is computed
      */
-    declare public readonly timeWindow: pulumi.Output<outputs.FeatureEngineeringFeatureTimeWindow>;
+    declare public readonly timeWindow: pulumi.Output<outputs.FeatureEngineeringFeatureTimeWindow | undefined>;
 
     /**
      * Create a FeatureEngineeringFeature resource with the given unique name, arguments, and options.
@@ -104,6 +105,7 @@ export class FeatureEngineeringFeature extends pulumi.CustomResource {
             resourceInputs["fullName"] = state?.fullName;
             resourceInputs["function"] = state?.function;
             resourceInputs["inputs"] = state?.inputs;
+            resourceInputs["lineageContext"] = state?.lineageContext;
             resourceInputs["source"] = state?.source;
             resourceInputs["timeWindow"] = state?.timeWindow;
         } else {
@@ -120,14 +122,12 @@ export class FeatureEngineeringFeature extends pulumi.CustomResource {
             if (args?.source === undefined && !opts.urn) {
                 throw new Error("Missing required property 'source'");
             }
-            if (args?.timeWindow === undefined && !opts.urn) {
-                throw new Error("Missing required property 'timeWindow'");
-            }
             resourceInputs["description"] = args?.description;
             resourceInputs["filterCondition"] = args?.filterCondition;
             resourceInputs["fullName"] = args?.fullName;
             resourceInputs["function"] = args?.function;
             resourceInputs["inputs"] = args?.inputs;
+            resourceInputs["lineageContext"] = args?.lineageContext;
             resourceInputs["source"] = args?.source;
             resourceInputs["timeWindow"] = args?.timeWindow;
         }
@@ -160,6 +160,7 @@ export interface FeatureEngineeringFeatureState {
      * The input columns from which the feature is computed
      */
     inputs?: pulumi.Input<pulumi.Input<string>[]>;
+    lineageContext?: pulumi.Input<inputs.FeatureEngineeringFeatureLineageContext>;
     /**
      * The data source of the feature
      */
@@ -194,6 +195,7 @@ export interface FeatureEngineeringFeatureArgs {
      * The input columns from which the feature is computed
      */
     inputs: pulumi.Input<pulumi.Input<string>[]>;
+    lineageContext?: pulumi.Input<inputs.FeatureEngineeringFeatureLineageContext>;
     /**
      * The data source of the feature
      */
@@ -201,5 +203,5 @@ export interface FeatureEngineeringFeatureArgs {
     /**
      * The time window in which the feature is computed
      */
-    timeWindow: pulumi.Input<inputs.FeatureEngineeringFeatureTimeWindow>;
+    timeWindow?: pulumi.Input<inputs.FeatureEngineeringFeatureTimeWindow>;
 }

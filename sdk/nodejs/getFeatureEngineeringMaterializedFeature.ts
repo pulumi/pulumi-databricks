@@ -31,6 +31,10 @@ export interface GetFeatureEngineeringMaterializedFeatureArgs {
  */
 export interface GetFeatureEngineeringMaterializedFeatureResult {
     /**
+     * (string) - The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone
+     */
+    readonly cronSchedule: string;
+    /**
      * (string) - The full name of the feature in Unity Catalog
      */
     readonly featureName: string;
@@ -52,7 +56,7 @@ export interface GetFeatureEngineeringMaterializedFeatureResult {
      */
     readonly offlineStoreConfig: outputs.GetFeatureEngineeringMaterializedFeatureOfflineStoreConfig;
     /**
-     * (OnlineStore)
+     * (OnlineStoreConfig)
      */
     readonly onlineStoreConfig: outputs.GetFeatureEngineeringMaterializedFeatureOnlineStoreConfig;
     /**

@@ -111,7 +111,7 @@ type GetSparkVersionArgs struct {
 	Photon *bool `pulumi:"photon"`
 	// Configure the provider for management through account provider. This block consists of the following fields:
 	ProviderConfig *GetSparkVersionProviderConfig `pulumi:"providerConfig"`
-	// if we should limit the search only to runtimes that are based on specific Scala version. Default to `2.12`.
+	// if we should limit the search only to runtimes that are based on specific Scala version. Default to `2.1` to select either `2.12` or `2.13` depending on the DBR version (for DBR that has both `2.12` and `2.13` flavors, `2.12` is returned by default).
 	Scala *string `pulumi:"scala"`
 	// if we should limit the search only to runtimes that are based on specific Spark version. Default to empty string.  It could be specified as `3`, or `3.0`, or full version, like, `3.0.1`.
 	SparkVersion *string `pulumi:"sparkVersion"`
@@ -171,7 +171,7 @@ type GetSparkVersionOutputArgs struct {
 	Photon pulumi.BoolPtrInput `pulumi:"photon"`
 	// Configure the provider for management through account provider. This block consists of the following fields:
 	ProviderConfig GetSparkVersionProviderConfigPtrInput `pulumi:"providerConfig"`
-	// if we should limit the search only to runtimes that are based on specific Scala version. Default to `2.12`.
+	// if we should limit the search only to runtimes that are based on specific Scala version. Default to `2.1` to select either `2.12` or `2.13` depending on the DBR version (for DBR that has both `2.12` and `2.13` flavors, `2.12` is returned by default).
 	Scala pulumi.StringPtrInput `pulumi:"scala"`
 	// if we should limit the search only to runtimes that are based on specific Spark version. Default to empty string.  It could be specified as `3`, or `3.0`, or full version, like, `3.0.1`.
 	SparkVersion pulumi.StringPtrInput `pulumi:"sparkVersion"`

@@ -25,6 +25,8 @@ class DashboardArgs:
                  create_time: Optional[pulumi.Input[_builtins.str]] = None,
                  dashboard_change_detected: Optional[pulumi.Input[_builtins.bool]] = None,
                  dashboard_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 dataset_catalog: Optional[pulumi.Input[_builtins.str]] = None,
+                 dataset_schema: Optional[pulumi.Input[_builtins.str]] = None,
                  embed_credentials: Optional[pulumi.Input[_builtins.bool]] = None,
                  etag: Optional[pulumi.Input[_builtins.str]] = None,
                  file_path: Optional[pulumi.Input[_builtins.str]] = None,
@@ -38,6 +40,8 @@ class DashboardArgs:
         :param pulumi.Input[_builtins.str] display_name: The display name of the dashboard.
         :param pulumi.Input[_builtins.str] parent_path: The workspace path of the folder containing the dashboard. Includes leading slash and no trailing slash.  If folder doesn't exist, it will be created.
         :param pulumi.Input[_builtins.str] warehouse_id: The warehouse ID used to run the dashboard.
+        :param pulumi.Input[_builtins.str] dataset_catalog: Sets the default catalog for all datasets in this dashboard. Does not impact table references that use fully qualified catalog names (ex: samples.nyctaxi.trips).
+        :param pulumi.Input[_builtins.str] dataset_schema: Sets the default schema for all datasets in this dashboard. Does not impact table references that use fully qualified catalog names (ex: samples.nyctaxi.trips).
         :param pulumi.Input[_builtins.bool] embed_credentials: Whether to embed credentials in the dashboard. Default is `true`.
         :param pulumi.Input[_builtins.str] file_path: The path to the dashboard JSON file. Conflicts with `serialized_dashboard`.
         :param pulumi.Input[_builtins.str] serialized_dashboard: The contents of the dashboard in serialized string form. Conflicts with `file_path`.
@@ -51,6 +55,10 @@ class DashboardArgs:
             pulumi.set(__self__, "dashboard_change_detected", dashboard_change_detected)
         if dashboard_id is not None:
             pulumi.set(__self__, "dashboard_id", dashboard_id)
+        if dataset_catalog is not None:
+            pulumi.set(__self__, "dataset_catalog", dataset_catalog)
+        if dataset_schema is not None:
+            pulumi.set(__self__, "dataset_schema", dataset_schema)
         if embed_credentials is not None:
             pulumi.set(__self__, "embed_credentials", embed_credentials)
         if etag is not None:
@@ -130,6 +138,30 @@ class DashboardArgs:
     @dashboard_id.setter
     def dashboard_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "dashboard_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="datasetCatalog")
+    def dataset_catalog(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Sets the default catalog for all datasets in this dashboard. Does not impact table references that use fully qualified catalog names (ex: samples.nyctaxi.trips).
+        """
+        return pulumi.get(self, "dataset_catalog")
+
+    @dataset_catalog.setter
+    def dataset_catalog(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "dataset_catalog", value)
+
+    @_builtins.property
+    @pulumi.getter(name="datasetSchema")
+    def dataset_schema(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Sets the default schema for all datasets in this dashboard. Does not impact table references that use fully qualified catalog names (ex: samples.nyctaxi.trips).
+        """
+        return pulumi.get(self, "dataset_schema")
+
+    @dataset_schema.setter
+    def dataset_schema(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "dataset_schema", value)
 
     @_builtins.property
     @pulumi.getter(name="embedCredentials")
@@ -219,6 +251,8 @@ class _DashboardState:
                  create_time: Optional[pulumi.Input[_builtins.str]] = None,
                  dashboard_change_detected: Optional[pulumi.Input[_builtins.bool]] = None,
                  dashboard_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 dataset_catalog: Optional[pulumi.Input[_builtins.str]] = None,
+                 dataset_schema: Optional[pulumi.Input[_builtins.str]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  embed_credentials: Optional[pulumi.Input[_builtins.bool]] = None,
                  etag: Optional[pulumi.Input[_builtins.str]] = None,
@@ -232,6 +266,8 @@ class _DashboardState:
                  warehouse_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Dashboard resources.
+        :param pulumi.Input[_builtins.str] dataset_catalog: Sets the default catalog for all datasets in this dashboard. Does not impact table references that use fully qualified catalog names (ex: samples.nyctaxi.trips).
+        :param pulumi.Input[_builtins.str] dataset_schema: Sets the default schema for all datasets in this dashboard. Does not impact table references that use fully qualified catalog names (ex: samples.nyctaxi.trips).
         :param pulumi.Input[_builtins.str] display_name: The display name of the dashboard.
         :param pulumi.Input[_builtins.bool] embed_credentials: Whether to embed credentials in the dashboard. Default is `true`.
         :param pulumi.Input[_builtins.str] file_path: The path to the dashboard JSON file. Conflicts with `serialized_dashboard`.
@@ -245,6 +281,10 @@ class _DashboardState:
             pulumi.set(__self__, "dashboard_change_detected", dashboard_change_detected)
         if dashboard_id is not None:
             pulumi.set(__self__, "dashboard_id", dashboard_id)
+        if dataset_catalog is not None:
+            pulumi.set(__self__, "dataset_catalog", dataset_catalog)
+        if dataset_schema is not None:
+            pulumi.set(__self__, "dataset_schema", dataset_schema)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if embed_credentials is not None:
@@ -294,6 +334,30 @@ class _DashboardState:
     @dashboard_id.setter
     def dashboard_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "dashboard_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="datasetCatalog")
+    def dataset_catalog(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Sets the default catalog for all datasets in this dashboard. Does not impact table references that use fully qualified catalog names (ex: samples.nyctaxi.trips).
+        """
+        return pulumi.get(self, "dataset_catalog")
+
+    @dataset_catalog.setter
+    def dataset_catalog(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "dataset_catalog", value)
+
+    @_builtins.property
+    @pulumi.getter(name="datasetSchema")
+    def dataset_schema(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Sets the default schema for all datasets in this dashboard. Does not impact table references that use fully qualified catalog names (ex: samples.nyctaxi.trips).
+        """
+        return pulumi.get(self, "dataset_schema")
+
+    @dataset_schema.setter
+    def dataset_schema(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "dataset_schema", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
@@ -422,6 +486,8 @@ class Dashboard(pulumi.CustomResource):
                  create_time: Optional[pulumi.Input[_builtins.str]] = None,
                  dashboard_change_detected: Optional[pulumi.Input[_builtins.bool]] = None,
                  dashboard_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 dataset_catalog: Optional[pulumi.Input[_builtins.str]] = None,
+                 dataset_schema: Optional[pulumi.Input[_builtins.str]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  embed_credentials: Optional[pulumi.Input[_builtins.bool]] = None,
                  etag: Optional[pulumi.Input[_builtins.str]] = None,
@@ -482,6 +548,8 @@ class Dashboard(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] dataset_catalog: Sets the default catalog for all datasets in this dashboard. Does not impact table references that use fully qualified catalog names (ex: samples.nyctaxi.trips).
+        :param pulumi.Input[_builtins.str] dataset_schema: Sets the default schema for all datasets in this dashboard. Does not impact table references that use fully qualified catalog names (ex: samples.nyctaxi.trips).
         :param pulumi.Input[_builtins.str] display_name: The display name of the dashboard.
         :param pulumi.Input[_builtins.bool] embed_credentials: Whether to embed credentials in the dashboard. Default is `true`.
         :param pulumi.Input[_builtins.str] file_path: The path to the dashboard JSON file. Conflicts with `serialized_dashboard`.
@@ -559,6 +627,8 @@ class Dashboard(pulumi.CustomResource):
                  create_time: Optional[pulumi.Input[_builtins.str]] = None,
                  dashboard_change_detected: Optional[pulumi.Input[_builtins.bool]] = None,
                  dashboard_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 dataset_catalog: Optional[pulumi.Input[_builtins.str]] = None,
+                 dataset_schema: Optional[pulumi.Input[_builtins.str]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  embed_credentials: Optional[pulumi.Input[_builtins.bool]] = None,
                  etag: Optional[pulumi.Input[_builtins.str]] = None,
@@ -582,6 +652,8 @@ class Dashboard(pulumi.CustomResource):
             __props__.__dict__["create_time"] = create_time
             __props__.__dict__["dashboard_change_detected"] = dashboard_change_detected
             __props__.__dict__["dashboard_id"] = dashboard_id
+            __props__.__dict__["dataset_catalog"] = dataset_catalog
+            __props__.__dict__["dataset_schema"] = dataset_schema
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
@@ -612,6 +684,8 @@ class Dashboard(pulumi.CustomResource):
             create_time: Optional[pulumi.Input[_builtins.str]] = None,
             dashboard_change_detected: Optional[pulumi.Input[_builtins.bool]] = None,
             dashboard_id: Optional[pulumi.Input[_builtins.str]] = None,
+            dataset_catalog: Optional[pulumi.Input[_builtins.str]] = None,
+            dataset_schema: Optional[pulumi.Input[_builtins.str]] = None,
             display_name: Optional[pulumi.Input[_builtins.str]] = None,
             embed_credentials: Optional[pulumi.Input[_builtins.bool]] = None,
             etag: Optional[pulumi.Input[_builtins.str]] = None,
@@ -630,6 +704,8 @@ class Dashboard(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] dataset_catalog: Sets the default catalog for all datasets in this dashboard. Does not impact table references that use fully qualified catalog names (ex: samples.nyctaxi.trips).
+        :param pulumi.Input[_builtins.str] dataset_schema: Sets the default schema for all datasets in this dashboard. Does not impact table references that use fully qualified catalog names (ex: samples.nyctaxi.trips).
         :param pulumi.Input[_builtins.str] display_name: The display name of the dashboard.
         :param pulumi.Input[_builtins.bool] embed_credentials: Whether to embed credentials in the dashboard. Default is `true`.
         :param pulumi.Input[_builtins.str] file_path: The path to the dashboard JSON file. Conflicts with `serialized_dashboard`.
@@ -644,6 +720,8 @@ class Dashboard(pulumi.CustomResource):
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["dashboard_change_detected"] = dashboard_change_detected
         __props__.__dict__["dashboard_id"] = dashboard_id
+        __props__.__dict__["dataset_catalog"] = dataset_catalog
+        __props__.__dict__["dataset_schema"] = dataset_schema
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["embed_credentials"] = embed_credentials
         __props__.__dict__["etag"] = etag
@@ -671,6 +749,22 @@ class Dashboard(pulumi.CustomResource):
     @pulumi.getter(name="dashboardId")
     def dashboard_id(self) -> pulumi.Output[_builtins.str]:
         return pulumi.get(self, "dashboard_id")
+
+    @_builtins.property
+    @pulumi.getter(name="datasetCatalog")
+    def dataset_catalog(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Sets the default catalog for all datasets in this dashboard. Does not impact table references that use fully qualified catalog names (ex: samples.nyctaxi.trips).
+        """
+        return pulumi.get(self, "dataset_catalog")
+
+    @_builtins.property
+    @pulumi.getter(name="datasetSchema")
+    def dataset_schema(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Sets the default schema for all datasets in this dashboard. Does not impact table references that use fully qualified catalog names (ex: samples.nyctaxi.trips).
+        """
+        return pulumi.get(self, "dataset_schema")
 
     @_builtins.property
     @pulumi.getter(name="displayName")

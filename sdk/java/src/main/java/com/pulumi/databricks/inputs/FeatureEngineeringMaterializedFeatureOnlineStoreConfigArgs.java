@@ -6,116 +6,57 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgs Empty = new FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgs();
 
-    /**
-     * The capacity of the online store. Valid values are &#34;CU_1&#34;, &#34;CU_2&#34;, &#34;CU_4&#34;, &#34;CU_8&#34;
-     * 
-     */
-    @Import(name="capacity", required=true)
-    private Output<String> capacity;
+    @Import(name="catalogName", required=true)
+    private Output<String> catalogName;
 
-    /**
-     * @return The capacity of the online store. Valid values are &#34;CU_1&#34;, &#34;CU_2&#34;, &#34;CU_4&#34;, &#34;CU_8&#34;
-     * 
-     */
-    public Output<String> capacity() {
-        return this.capacity;
+    public Output<String> catalogName() {
+        return this.catalogName;
     }
 
     /**
-     * (string) - The timestamp when the online store was created
+     * The name of the target online store
      * 
      */
-    @Import(name="creationTime")
-    private @Nullable Output<String> creationTime;
+    @Import(name="onlineStoreName", required=true)
+    private Output<String> onlineStoreName;
 
     /**
-     * @return (string) - The timestamp when the online store was created
+     * @return The name of the target online store
      * 
      */
-    public Optional<Output<String>> creationTime() {
-        return Optional.ofNullable(this.creationTime);
+    public Output<String> onlineStoreName() {
+        return this.onlineStoreName;
     }
 
-    /**
-     * (string) - The email of the creator of the online store
-     * 
-     */
-    @Import(name="creator")
-    private @Nullable Output<String> creator;
+    @Import(name="schemaName", required=true)
+    private Output<String> schemaName;
 
-    /**
-     * @return (string) - The email of the creator of the online store
-     * 
-     */
-    public Optional<Output<String>> creator() {
-        return Optional.ofNullable(this.creator);
+    public Output<String> schemaName() {
+        return this.schemaName;
     }
 
-    /**
-     * The name of the online store. This is the unique identifier for the online store
-     * 
-     */
-    @Import(name="name", required=true)
-    private Output<String> name;
+    @Import(name="tableNamePrefix", required=true)
+    private Output<String> tableNamePrefix;
 
-    /**
-     * @return The name of the online store. This is the unique identifier for the online store
-     * 
-     */
-    public Output<String> name() {
-        return this.name;
-    }
-
-    /**
-     * The number of read replicas for the online store. Defaults to 0
-     * 
-     */
-    @Import(name="readReplicaCount")
-    private @Nullable Output<Integer> readReplicaCount;
-
-    /**
-     * @return The number of read replicas for the online store. Defaults to 0
-     * 
-     */
-    public Optional<Output<Integer>> readReplicaCount() {
-        return Optional.ofNullable(this.readReplicaCount);
-    }
-
-    /**
-     * (string) - The current state of the online store. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
-     * 
-     */
-    @Import(name="state")
-    private @Nullable Output<String> state;
-
-    /**
-     * @return (string) - The current state of the online store. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
-     * 
-     */
-    public Optional<Output<String>> state() {
-        return Optional.ofNullable(this.state);
+    public Output<String> tableNamePrefix() {
+        return this.tableNamePrefix;
     }
 
     private FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgs() {}
 
     private FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgs(FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgs $) {
-        this.capacity = $.capacity;
-        this.creationTime = $.creationTime;
-        this.creator = $.creator;
-        this.name = $.name;
-        this.readReplicaCount = $.readReplicaCount;
-        this.state = $.state;
+        this.catalogName = $.catalogName;
+        this.onlineStoreName = $.onlineStoreName;
+        this.schemaName = $.schemaName;
+        this.tableNamePrefix = $.tableNamePrefix;
     }
 
     public static Builder builder() {
@@ -136,138 +77,66 @@ public final class FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgs ex
             $ = new FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        public Builder catalogName(Output<String> catalogName) {
+            $.catalogName = catalogName;
+            return this;
+        }
+
+        public Builder catalogName(String catalogName) {
+            return catalogName(Output.of(catalogName));
+        }
+
         /**
-         * @param capacity The capacity of the online store. Valid values are &#34;CU_1&#34;, &#34;CU_2&#34;, &#34;CU_4&#34;, &#34;CU_8&#34;
+         * @param onlineStoreName The name of the target online store
          * 
          * @return builder
          * 
          */
-        public Builder capacity(Output<String> capacity) {
-            $.capacity = capacity;
+        public Builder onlineStoreName(Output<String> onlineStoreName) {
+            $.onlineStoreName = onlineStoreName;
             return this;
         }
 
         /**
-         * @param capacity The capacity of the online store. Valid values are &#34;CU_1&#34;, &#34;CU_2&#34;, &#34;CU_4&#34;, &#34;CU_8&#34;
+         * @param onlineStoreName The name of the target online store
          * 
          * @return builder
          * 
          */
-        public Builder capacity(String capacity) {
-            return capacity(Output.of(capacity));
+        public Builder onlineStoreName(String onlineStoreName) {
+            return onlineStoreName(Output.of(onlineStoreName));
         }
 
-        /**
-         * @param creationTime (string) - The timestamp when the online store was created
-         * 
-         * @return builder
-         * 
-         */
-        public Builder creationTime(@Nullable Output<String> creationTime) {
-            $.creationTime = creationTime;
+        public Builder schemaName(Output<String> schemaName) {
+            $.schemaName = schemaName;
             return this;
         }
 
-        /**
-         * @param creationTime (string) - The timestamp when the online store was created
-         * 
-         * @return builder
-         * 
-         */
-        public Builder creationTime(String creationTime) {
-            return creationTime(Output.of(creationTime));
+        public Builder schemaName(String schemaName) {
+            return schemaName(Output.of(schemaName));
         }
 
-        /**
-         * @param creator (string) - The email of the creator of the online store
-         * 
-         * @return builder
-         * 
-         */
-        public Builder creator(@Nullable Output<String> creator) {
-            $.creator = creator;
+        public Builder tableNamePrefix(Output<String> tableNamePrefix) {
+            $.tableNamePrefix = tableNamePrefix;
             return this;
         }
 
-        /**
-         * @param creator (string) - The email of the creator of the online store
-         * 
-         * @return builder
-         * 
-         */
-        public Builder creator(String creator) {
-            return creator(Output.of(creator));
-        }
-
-        /**
-         * @param name The name of the online store. This is the unique identifier for the online store
-         * 
-         * @return builder
-         * 
-         */
-        public Builder name(Output<String> name) {
-            $.name = name;
-            return this;
-        }
-
-        /**
-         * @param name The name of the online store. This is the unique identifier for the online store
-         * 
-         * @return builder
-         * 
-         */
-        public Builder name(String name) {
-            return name(Output.of(name));
-        }
-
-        /**
-         * @param readReplicaCount The number of read replicas for the online store. Defaults to 0
-         * 
-         * @return builder
-         * 
-         */
-        public Builder readReplicaCount(@Nullable Output<Integer> readReplicaCount) {
-            $.readReplicaCount = readReplicaCount;
-            return this;
-        }
-
-        /**
-         * @param readReplicaCount The number of read replicas for the online store. Defaults to 0
-         * 
-         * @return builder
-         * 
-         */
-        public Builder readReplicaCount(Integer readReplicaCount) {
-            return readReplicaCount(Output.of(readReplicaCount));
-        }
-
-        /**
-         * @param state (string) - The current state of the online store. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
-         * 
-         * @return builder
-         * 
-         */
-        public Builder state(@Nullable Output<String> state) {
-            $.state = state;
-            return this;
-        }
-
-        /**
-         * @param state (string) - The current state of the online store. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
-         * 
-         * @return builder
-         * 
-         */
-        public Builder state(String state) {
-            return state(Output.of(state));
+        public Builder tableNamePrefix(String tableNamePrefix) {
+            return tableNamePrefix(Output.of(tableNamePrefix));
         }
 
         public FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgs build() {
-            if ($.capacity == null) {
-                throw new MissingRequiredPropertyException("FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgs", "capacity");
+            if ($.catalogName == null) {
+                throw new MissingRequiredPropertyException("FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgs", "catalogName");
             }
-            if ($.name == null) {
-                throw new MissingRequiredPropertyException("FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgs", "name");
+            if ($.onlineStoreName == null) {
+                throw new MissingRequiredPropertyException("FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgs", "onlineStoreName");
+            }
+            if ($.schemaName == null) {
+                throw new MissingRequiredPropertyException("FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgs", "schemaName");
+            }
+            if ($.tableNamePrefix == null) {
+                throw new MissingRequiredPropertyException("FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgs", "tableNamePrefix");
             }
             return $;
         }

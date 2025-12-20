@@ -30,11 +30,14 @@ namespace Pulumi.Databricks.Inputs
         [Input("comment")]
         public Input<string>? Comment { get; set; }
 
+        /// <summary>
+        /// The content of the notebook file when the data object type is NOTEBOOK_FILE. This should be base64 encoded. Required for adding a NOTEBOOK_FILE, optional for updating, ignored for other types.
+        /// </summary>
         [Input("content")]
         public Input<string>? Content { get; set; }
 
         /// <summary>
-        /// Type of the data object, currently `TABLE`, `VIEW`, `SCHEMA`, `VOLUME`, and `MODEL` are supported.
+        /// Type of the data object. Supported types: `TABLE`, `FOREIGN_TABLE`, `SCHEMA`, `VIEW`, `MATERIALIZED_VIEW`, `STREAMING_TABLE`, `MODEL`, `NOTEBOOK_FILE`, `FUNCTION`, `FEATURE_SPEC`, and `VOLUME`.
         /// </summary>
         [Input("dataObjectType", required: true)]
         public Input<string> DataObjectType { get; set; } = null!;
@@ -70,6 +73,10 @@ namespace Pulumi.Databricks.Inputs
 
         [Input("partitions")]
         private InputList<Inputs.ShareObjectPartitionGetArgs>? _partitions;
+
+        /// <summary>
+        /// Array of partitions for the shared data.
+        /// </summary>
         public InputList<Inputs.ShareObjectPartitionGetArgs> Partitions
         {
             get => _partitions ?? (_partitions = new InputList<Inputs.ShareObjectPartitionGetArgs>());

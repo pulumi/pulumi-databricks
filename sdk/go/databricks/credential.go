@@ -199,7 +199,7 @@ type Credential struct {
 	// `awsIamRole` optional configuration block for credential details for AWS:
 	IsolationMode pulumi.StringOutput `pulumi:"isolationMode"`
 	MetastoreId   pulumi.StringOutput `pulumi:"metastoreId"`
-	// Name of Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
+	// Name of Credentials, which must be unique within the databricks_metastore. Change of the `name` forces creation of a new resource.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Username/groupname/sp applicationId of the credential owner.
 	Owner pulumi.StringOutput `pulumi:"owner"`
@@ -266,7 +266,7 @@ type credentialState struct {
 	// `awsIamRole` optional configuration block for credential details for AWS:
 	IsolationMode *string `pulumi:"isolationMode"`
 	MetastoreId   *string `pulumi:"metastoreId"`
-	// Name of Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
+	// Name of Credentials, which must be unique within the databricks_metastore. Change of the `name` forces creation of a new resource.
 	Name *string `pulumi:"name"`
 	// Username/groupname/sp applicationId of the credential owner.
 	Owner *string `pulumi:"owner"`
@@ -301,7 +301,7 @@ type CredentialState struct {
 	// `awsIamRole` optional configuration block for credential details for AWS:
 	IsolationMode pulumi.StringPtrInput
 	MetastoreId   pulumi.StringPtrInput
-	// Name of Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
+	// Name of Credentials, which must be unique within the databricks_metastore. Change of the `name` forces creation of a new resource.
 	Name pulumi.StringPtrInput
 	// Username/groupname/sp applicationId of the credential owner.
 	Owner pulumi.StringPtrInput
@@ -338,7 +338,7 @@ type credentialArgs struct {
 	// `awsIamRole` optional configuration block for credential details for AWS:
 	IsolationMode *string `pulumi:"isolationMode"`
 	MetastoreId   *string `pulumi:"metastoreId"`
-	// Name of Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
+	// Name of Credentials, which must be unique within the databricks_metastore. Change of the `name` forces creation of a new resource.
 	Name *string `pulumi:"name"`
 	// Username/groupname/sp applicationId of the credential owner.
 	Owner *string `pulumi:"owner"`
@@ -372,7 +372,7 @@ type CredentialArgs struct {
 	// `awsIamRole` optional configuration block for credential details for AWS:
 	IsolationMode pulumi.StringPtrInput
 	MetastoreId   pulumi.StringPtrInput
-	// Name of Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
+	// Name of Credentials, which must be unique within the databricks_metastore. Change of the `name` forces creation of a new resource.
 	Name pulumi.StringPtrInput
 	// Username/groupname/sp applicationId of the credential owner.
 	Owner pulumi.StringPtrInput
@@ -532,7 +532,7 @@ func (o CredentialOutput) MetastoreId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Credential) pulumi.StringOutput { return v.MetastoreId }).(pulumi.StringOutput)
 }
 
-// Name of Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
+// Name of Credentials, which must be unique within the databricks_metastore. Change of the `name` forces creation of a new resource.
 func (o CredentialOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Credential) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

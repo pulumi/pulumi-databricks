@@ -83,6 +83,10 @@ type Dashboard struct {
 	CreateTime              pulumi.StringOutput  `pulumi:"createTime"`
 	DashboardChangeDetected pulumi.BoolPtrOutput `pulumi:"dashboardChangeDetected"`
 	DashboardId             pulumi.StringOutput  `pulumi:"dashboardId"`
+	// Sets the default catalog for all datasets in this dashboard. Does not impact table references that use fully qualified catalog names (ex: samples.nyctaxi.trips).
+	DatasetCatalog pulumi.StringPtrOutput `pulumi:"datasetCatalog"`
+	// Sets the default schema for all datasets in this dashboard. Does not impact table references that use fully qualified catalog names (ex: samples.nyctaxi.trips).
+	DatasetSchema pulumi.StringPtrOutput `pulumi:"datasetSchema"`
 	// The display name of the dashboard.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Whether to embed credentials in the dashboard. Default is `true`.
@@ -144,6 +148,10 @@ type dashboardState struct {
 	CreateTime              *string `pulumi:"createTime"`
 	DashboardChangeDetected *bool   `pulumi:"dashboardChangeDetected"`
 	DashboardId             *string `pulumi:"dashboardId"`
+	// Sets the default catalog for all datasets in this dashboard. Does not impact table references that use fully qualified catalog names (ex: samples.nyctaxi.trips).
+	DatasetCatalog *string `pulumi:"datasetCatalog"`
+	// Sets the default schema for all datasets in this dashboard. Does not impact table references that use fully qualified catalog names (ex: samples.nyctaxi.trips).
+	DatasetSchema *string `pulumi:"datasetSchema"`
 	// The display name of the dashboard.
 	DisplayName *string `pulumi:"displayName"`
 	// Whether to embed credentials in the dashboard. Default is `true`.
@@ -167,6 +175,10 @@ type DashboardState struct {
 	CreateTime              pulumi.StringPtrInput
 	DashboardChangeDetected pulumi.BoolPtrInput
 	DashboardId             pulumi.StringPtrInput
+	// Sets the default catalog for all datasets in this dashboard. Does not impact table references that use fully qualified catalog names (ex: samples.nyctaxi.trips).
+	DatasetCatalog pulumi.StringPtrInput
+	// Sets the default schema for all datasets in this dashboard. Does not impact table references that use fully qualified catalog names (ex: samples.nyctaxi.trips).
+	DatasetSchema pulumi.StringPtrInput
 	// The display name of the dashboard.
 	DisplayName pulumi.StringPtrInput
 	// Whether to embed credentials in the dashboard. Default is `true`.
@@ -194,6 +206,10 @@ type dashboardArgs struct {
 	CreateTime              *string `pulumi:"createTime"`
 	DashboardChangeDetected *bool   `pulumi:"dashboardChangeDetected"`
 	DashboardId             *string `pulumi:"dashboardId"`
+	// Sets the default catalog for all datasets in this dashboard. Does not impact table references that use fully qualified catalog names (ex: samples.nyctaxi.trips).
+	DatasetCatalog *string `pulumi:"datasetCatalog"`
+	// Sets the default schema for all datasets in this dashboard. Does not impact table references that use fully qualified catalog names (ex: samples.nyctaxi.trips).
+	DatasetSchema *string `pulumi:"datasetSchema"`
 	// The display name of the dashboard.
 	DisplayName string `pulumi:"displayName"`
 	// Whether to embed credentials in the dashboard. Default is `true`.
@@ -218,6 +234,10 @@ type DashboardArgs struct {
 	CreateTime              pulumi.StringPtrInput
 	DashboardChangeDetected pulumi.BoolPtrInput
 	DashboardId             pulumi.StringPtrInput
+	// Sets the default catalog for all datasets in this dashboard. Does not impact table references that use fully qualified catalog names (ex: samples.nyctaxi.trips).
+	DatasetCatalog pulumi.StringPtrInput
+	// Sets the default schema for all datasets in this dashboard. Does not impact table references that use fully qualified catalog names (ex: samples.nyctaxi.trips).
+	DatasetSchema pulumi.StringPtrInput
 	// The display name of the dashboard.
 	DisplayName pulumi.StringInput
 	// Whether to embed credentials in the dashboard. Default is `true`.
@@ -334,6 +354,16 @@ func (o DashboardOutput) DashboardChangeDetected() pulumi.BoolPtrOutput {
 
 func (o DashboardOutput) DashboardId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Dashboard) pulumi.StringOutput { return v.DashboardId }).(pulumi.StringOutput)
+}
+
+// Sets the default catalog for all datasets in this dashboard. Does not impact table references that use fully qualified catalog names (ex: samples.nyctaxi.trips).
+func (o DashboardOutput) DatasetCatalog() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Dashboard) pulumi.StringPtrOutput { return v.DatasetCatalog }).(pulumi.StringPtrOutput)
+}
+
+// Sets the default schema for all datasets in this dashboard. Does not impact table references that use fully qualified catalog names (ex: samples.nyctaxi.trips).
+func (o DashboardOutput) DatasetSchema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Dashboard) pulumi.StringPtrOutput { return v.DatasetSchema }).(pulumi.StringPtrOutput)
 }
 
 // The display name of the dashboard.

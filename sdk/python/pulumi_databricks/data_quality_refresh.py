@@ -232,7 +232,7 @@ class DataQualityRefresh(pulumi.CustomResource):
                  object_type: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
         This resource allows you to refresh the data quality monitoring checks on Unity Catalog tables.
 
@@ -326,7 +326,7 @@ class DataQualityRefresh(pulumi.CustomResource):
                  args: DataQualityRefreshArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
         This resource allows you to refresh the data quality monitoring checks on Unity Catalog tables.
 

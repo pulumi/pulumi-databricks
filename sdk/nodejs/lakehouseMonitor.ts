@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * NOTE: This resource has been deprecated and will be removed soon. Please use the databricks.QualityMonitor resource instead.
+ * !> This resource has been deprecated and will be removed soon. Please use the databricks.QualityMonitor resource instead.
  *
  * This resource allows you to manage [Lakehouse Monitors](https://docs.databricks.com/en/lakehouse-monitoring/index.html) in Databricks.
  *

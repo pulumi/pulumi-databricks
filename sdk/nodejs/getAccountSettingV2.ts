@@ -37,51 +37,51 @@ export interface GetAccountSettingV2Args {
  */
 export interface GetAccountSettingV2Result {
     /**
-     * (AibiDashboardEmbeddingAccessPolicy)
+     * (AibiDashboardEmbeddingAccessPolicy) - Setting value for aibiDashboardEmbeddingAccessPolicy setting. This is the setting value set by consumers, check effectiveAibiDashboardEmbeddingAccessPolicy for final setting value
      */
     readonly aibiDashboardEmbeddingAccessPolicy: outputs.GetAccountSettingV2AibiDashboardEmbeddingAccessPolicy;
     /**
-     * (AibiDashboardEmbeddingApprovedDomains)
+     * (AibiDashboardEmbeddingApprovedDomains) - Setting value for aibiDashboardEmbeddingApprovedDomains setting. This is the setting value set by consumers, check effectiveAibiDashboardEmbeddingApprovedDomains for final setting value
      */
     readonly aibiDashboardEmbeddingApprovedDomains: outputs.GetAccountSettingV2AibiDashboardEmbeddingApprovedDomains;
     /**
-     * (ClusterAutoRestartMessage)
+     * (ClusterAutoRestartMessage) - Setting value for automaticClusterUpdateWorkspace setting. This is the setting value set by consumers, check effectiveAutomaticClusterUpdateWorkspace for final setting value
      */
     readonly automaticClusterUpdateWorkspace: outputs.GetAccountSettingV2AutomaticClusterUpdateWorkspace;
     /**
-     * (BooleanMessage)
+     * (BooleanMessage) - Setting value for boolean type setting. This is the setting value set by consumers, check effectiveBooleanVal for final setting value
      */
     readonly booleanVal: outputs.GetAccountSettingV2BooleanVal;
     /**
-     * (AibiDashboardEmbeddingAccessPolicy)
+     * (AibiDashboardEmbeddingAccessPolicy) - Effective setting value for aibiDashboardEmbeddingAccessPolicy setting. This is the final effective value of setting. To set a value use aibi_dashboard_embedding_access_policy
      */
     readonly effectiveAibiDashboardEmbeddingAccessPolicy: outputs.GetAccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy;
     /**
-     * (AibiDashboardEmbeddingApprovedDomains)
+     * (AibiDashboardEmbeddingApprovedDomains) - Effective setting value for aibiDashboardEmbeddingApprovedDomains setting. This is the final effective value of setting. To set a value use aibi_dashboard_embedding_approved_domains
      */
     readonly effectiveAibiDashboardEmbeddingApprovedDomains: outputs.GetAccountSettingV2EffectiveAibiDashboardEmbeddingApprovedDomains;
     /**
-     * (ClusterAutoRestartMessage)
+     * (ClusterAutoRestartMessage) - Effective setting value for automaticClusterUpdateWorkspace setting. This is the final effective value of setting. To set a value use automatic_cluster_update_workspace
      */
     readonly effectiveAutomaticClusterUpdateWorkspace: outputs.GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspace;
     /**
-     * (BooleanMessage)
+     * (BooleanMessage) - Effective setting value for boolean type setting. This is the final effective value of setting. To set a value use boolean_val
      */
     readonly effectiveBooleanVal: outputs.GetAccountSettingV2EffectiveBooleanVal;
     /**
-     * (IntegerMessage)
+     * (IntegerMessage) - Effective setting value for integer type setting. This is the final effective value of setting. To set a value use integer_val
      */
     readonly effectiveIntegerVal: outputs.GetAccountSettingV2EffectiveIntegerVal;
     /**
-     * (PersonalComputeMessage)
+     * (PersonalComputeMessage) - Effective setting value for personalCompute setting. This is the final effective value of setting. To set a value use personal_compute
      */
     readonly effectivePersonalCompute: outputs.GetAccountSettingV2EffectivePersonalCompute;
     /**
-     * (RestrictWorkspaceAdminsMessage)
+     * (RestrictWorkspaceAdminsMessage) - Effective setting value for restrictWorkspaceAdmins setting. This is the final effective value of setting. To set a value use restrict_workspace_admins
      */
     readonly effectiveRestrictWorkspaceAdmins: outputs.GetAccountSettingV2EffectiveRestrictWorkspaceAdmins;
     /**
-     * (StringMessage)
+     * (StringMessage) - Effective setting value for string type setting. This is the final effective value of setting. To set a value use string_val
      */
     readonly effectiveStringVal: outputs.GetAccountSettingV2EffectiveStringVal;
     /**
@@ -89,7 +89,7 @@ export interface GetAccountSettingV2Result {
      */
     readonly id: string;
     /**
-     * (IntegerMessage)
+     * (IntegerMessage) - Setting value for integer type setting. This is the setting value set by consumers, check effectiveIntegerVal for final setting value
      */
     readonly integerVal: outputs.GetAccountSettingV2IntegerVal;
     /**
@@ -97,15 +97,15 @@ export interface GetAccountSettingV2Result {
      */
     readonly name: string;
     /**
-     * (PersonalComputeMessage)
+     * (PersonalComputeMessage) - Setting value for personalCompute setting. This is the setting value set by consumers, check effectivePersonalCompute for final setting value
      */
     readonly personalCompute: outputs.GetAccountSettingV2PersonalCompute;
     /**
-     * (RestrictWorkspaceAdminsMessage)
+     * (RestrictWorkspaceAdminsMessage) - Setting value for restrictWorkspaceAdmins setting. This is the setting value set by consumers, check effectiveRestrictWorkspaceAdmins for final setting value
      */
     readonly restrictWorkspaceAdmins: outputs.GetAccountSettingV2RestrictWorkspaceAdmins;
     /**
-     * (StringMessage)
+     * (StringMessage) - Setting value for string type setting. This is the setting value set by consumers, check effectiveStringVal for final setting value
      */
     readonly stringVal: outputs.GetAccountSettingV2StringVal;
 }

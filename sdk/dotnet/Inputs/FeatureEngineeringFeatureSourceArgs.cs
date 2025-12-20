@@ -15,6 +15,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("deltaTableSource")]
         public Input<Inputs.FeatureEngineeringFeatureSourceDeltaTableSourceArgs>? DeltaTableSource { get; set; }
 
+        [Input("kafkaSource")]
+        public Input<Inputs.FeatureEngineeringFeatureSourceKafkaSourceArgs>? KafkaSource { get; set; }
+
         public FeatureEngineeringFeatureSourceArgs()
         {
         }

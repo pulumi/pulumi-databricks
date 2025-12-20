@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class PipelineIngestionDefinitionSourceConfiguration {
     /**
-     * @return The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
+     * @return The name of default catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline if you switch from `storage` to `catalog` or vice versa.  If pipeline was already created with `catalog` set, the value could be changed.* (Conflicts with `storage`).
      * 
      */
     private @Nullable PipelineIngestionDefinitionSourceConfigurationCatalog catalog;
 
     private PipelineIngestionDefinitionSourceConfiguration() {}
     /**
-     * @return The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
+     * @return The name of default catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline if you switch from `storage` to `catalog` or vice versa.  If pipeline was already created with `catalog` set, the value could be changed.* (Conflicts with `storage`).
      * 
      */
     public Optional<PipelineIngestionDefinitionSourceConfigurationCatalog> catalog() {

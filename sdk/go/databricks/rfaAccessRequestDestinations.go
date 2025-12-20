@@ -108,9 +108,6 @@ func NewRfaAccessRequestDestinations(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Destinations == nil {
-		return nil, errors.New("invalid value for required argument 'Destinations'")
-	}
 	if args.Securable == nil {
 		return nil, errors.New("invalid value for required argument 'Securable'")
 	}

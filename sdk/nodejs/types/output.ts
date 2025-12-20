@@ -18,6 +18,9 @@ export interface AccessControlRuleSetGrantRule {
      * * `accounts/{account_id}/ruleSets/default`
      * * `roles/marketplace.admin` - Databricks Marketplace administrator.
      * * `roles/billing.admin` - Billing administrator.
+     * * `roles/tagPolicy.creator` - Creator of tag policies.
+     * * `roles/tagPolicy.manager` - Manager of tag policies.
+     * * `roles/tagPolicy.assigner` - Assigner of tag policies.
      * * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`
      * * `roles/servicePrincipal.manager` - Manager of a service principal.
      * * `roles/servicePrincipal.user` - User of a service principal.
@@ -26,6 +29,9 @@ export interface AccessControlRuleSetGrantRule {
      * * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default`
      * * `roles/budgetPolicy.manager` - Manager of a budget policy.
      * * `roles/budgetPolicy.user` - User of a budget policy.
+     * * `accounts/{account_id}/tagPolicies/{tag_policy_id}/ruleSets/default`
+     * * `roles/tagPolicy.manager` - Manager of a specific tag policy.
+     * * `roles/tagPolicy.assigner` - Assigner of a specific tag policy.
      */
     role: string;
 }
@@ -416,7 +422,9 @@ export interface AlertV2EvaluationNotification {
      */
     notifyOnOk?: boolean;
     /**
-     * Number of seconds an alert must wait after being triggered to rearm itself. After rearming, it can be triggered again. If 0 or not specified, the alert will not be triggered again
+     * Number of seconds an alert waits after being triggered before it is allowed to send another notification.
+     * If set to 0 or omitted, the alert will not send any further notifications after the first trigger
+     * Setting this value to 1 allows the alert to send a notification on every evaluation where the condition is met, effectively making it always retrigger for notification purposes
      */
     retriggerSeconds?: number;
     subscriptions?: outputs.AlertV2EvaluationNotificationSubscription[];
@@ -429,7 +437,7 @@ export interface AlertV2EvaluationNotificationSubscription {
 
 export interface AlertV2EvaluationSource {
     /**
-     * Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
+     * If not set, the behavior is equivalent to using `First row` in the UI. Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
      */
     aggregation?: string;
     display?: string;
@@ -443,7 +451,7 @@ export interface AlertV2EvaluationThreshold {
 
 export interface AlertV2EvaluationThresholdColumn {
     /**
-     * Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
+     * If not set, the behavior is equivalent to using `First row` in the UI. Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
      */
     aggregation?: string;
     display?: string;
@@ -956,11 +964,17 @@ export interface ClusterAwsAttributes {
      * The number of volumes launched for each instance. You can choose up to 10 volumes. This feature is only enabled for supported node types. Legacy node types cannot specify custom EBS volumes. For node types with no instance store, at least one EBS volume needs to be specified; otherwise, cluster creation will fail. These EBS volumes will be mounted at /ebs0, /ebs1, and etc. Instance store volumes will be mounted at /local_disk0, /local_disk1, and etc. If EBS volumes are attached, Databricks will configure Spark to use only the EBS volumes for scratch storage because heterogeneously sized scratch devices can lead to inefficient disk utilization. If no EBS volumes are attached, Databricks will configure Spark to use instance store volumes. If EBS volumes are specified, then the Spark configuration spark.local.dir will be overridden.
      */
     ebsVolumeCount?: number;
+    /**
+     * If using gp3 volumes, what IOPS to use for the disk. If this is not set, the maximum performance of a gp2 volume with the same volume size will be used.
+     */
     ebsVolumeIops?: number;
     /**
      * The size of each EBS volume (in GiB) launched for each instance. For general purpose SSD, this value must be within the range 100 - 4096. For throughput optimized HDD, this value must be within the range 500 - 4096. Custom EBS volumes cannot be specified for the legacy node types (memory-optimized and compute-optimized).
      */
     ebsVolumeSize?: number;
+    /**
+     * If using gp3 volumes, what throughput to use for the disk. If this is not set, the maximum performance of a gp2 volume with the same volume size will be used.
+     */
     ebsVolumeThroughput?: number;
     /**
      * The type of EBS volumes that will be launched with this cluster. Valid values are `GENERAL_PURPOSE_SSD` or `THROUGHPUT_OPTIMIZED_HDD`. Use this option only if you're not picking *Delta Optimized `i3.*`* node types.
@@ -1940,6 +1954,10 @@ export interface DatabaseSyncedDatabaseTableSpec {
 
 export interface DatabaseSyncedDatabaseTableSpecNewPipelineSpec {
     /**
+     * Budget policy to set on the newly created pipeline
+     */
+    budgetPolicyId?: string;
+    /**
      * This field needs to be specified if the destination catalog is a managed postgres catalog.
      *
      * UC catalog for the pipeline to store intermediate files (checkpoints, event logs etc).
@@ -2121,8 +2139,31 @@ export interface FeatureEngineeringFeatureFunctionExtraParameter {
     value: string;
 }
 
+export interface FeatureEngineeringFeatureLineageContext {
+    /**
+     * Job context information including job ID and run ID
+     */
+    jobContext?: outputs.FeatureEngineeringFeatureLineageContextJobContext;
+    /**
+     * The notebook ID where this API was invoked
+     */
+    notebookId?: number;
+}
+
+export interface FeatureEngineeringFeatureLineageContextJobContext {
+    /**
+     * The job ID where this API invoked
+     */
+    jobId?: number;
+    /**
+     * The job run ID where this API was invoked
+     */
+    jobRunId?: number;
+}
+
 export interface FeatureEngineeringFeatureSource {
     deltaTableSource?: outputs.FeatureEngineeringFeatureSourceDeltaTableSource;
+    kafkaSource?: outputs.FeatureEngineeringFeatureSourceKafkaSource;
 }
 
 export interface FeatureEngineeringFeatureSourceDeltaTableSource {
@@ -2138,6 +2179,37 @@ export interface FeatureEngineeringFeatureSourceDeltaTableSource {
      * The timeseries column of the Delta table
      */
     timeseriesColumn: string;
+}
+
+export interface FeatureEngineeringFeatureSourceKafkaSource {
+    /**
+     * The entity column identifiers of the Kafka source
+     */
+    entityColumnIdentifiers: outputs.FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifier[];
+    /**
+     * Name of the Kafka source, used to identify it. This is used to look up the corresponding KafkaConfig object. Can be distinct from topic name
+     */
+    name: string;
+    /**
+     * The timeseries column identifier of the Kafka source
+     */
+    timeseriesColumnIdentifier: outputs.FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifier;
+}
+
+export interface FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifier {
+    /**
+     * String representation of the column name or variant expression path. For nested fields, the leaf value is what will be present in materialized tables
+     * and expected to match at query time. For example, the leaf node of value:trip_details.location_details.pickup_zip is pickup_zip
+     */
+    variantExprPath: string;
+}
+
+export interface FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifier {
+    /**
+     * String representation of the column name or variant expression path. For nested fields, the leaf value is what will be present in materialized tables
+     * and expected to match at query time. For example, the leaf node of value:trip_details.location_details.pickup_zip is pickup_zip
+     */
+    variantExprPath: string;
 }
 
 export interface FeatureEngineeringFeatureTimeWindow {
@@ -2166,47 +2238,57 @@ export interface FeatureEngineeringFeatureTimeWindowTumbling {
     windowDuration: string;
 }
 
+export interface FeatureEngineeringKafkaConfigAuthConfig {
+    /**
+     * Name of the Unity Catalog service credential. This value will be set under the option databricks.serviceCredential
+     */
+    ucServiceCredentialName?: string;
+}
+
+export interface FeatureEngineeringKafkaConfigKeySchema {
+    /**
+     * Schema of the JSON object in standard IETF JSON schema format (https://json-schema.org/)
+     */
+    jsonSchema?: string;
+}
+
+export interface FeatureEngineeringKafkaConfigSubscriptionMode {
+    /**
+     * A JSON string that contains the specific topic-partitions to consume from.
+     * For example, for '{"topicA":[0,1],"topicB":[2,4]}', topicA's 0'th and 1st partitions will be consumed from
+     */
+    assign?: string;
+    /**
+     * A comma-separated list of Kafka topics to read from. For example, 'topicA,topicB,topicC'
+     */
+    subscribe?: string;
+    /**
+     * A regular expression matching topics to subscribe to. For example, 'topic.*' will subscribe to all topics starting with 'topic'
+     */
+    subscribePattern?: string;
+}
+
+export interface FeatureEngineeringKafkaConfigValueSchema {
+    /**
+     * Schema of the JSON object in standard IETF JSON schema format (https://json-schema.org/)
+     */
+    jsonSchema?: string;
+}
+
 export interface FeatureEngineeringMaterializedFeatureOfflineStoreConfig {
-    /**
-     * The Unity Catalog catalog name
-     */
     catalogName: string;
-    /**
-     * The Unity Catalog schema name
-     */
     schemaName: string;
-    /**
-     * Prefix for Unity Catalog table name.
-     * The materialized feature will be stored in a table with this prefix and a generated postfix
-     */
     tableNamePrefix: string;
 }
 
 export interface FeatureEngineeringMaterializedFeatureOnlineStoreConfig {
+    catalogName: string;
     /**
-     * The capacity of the online store. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
+     * The name of the target online store
      */
-    capacity: string;
-    /**
-     * (string) - The timestamp when the online store was created
-     */
-    creationTime: string;
-    /**
-     * (string) - The email of the creator of the online store
-     */
-    creator: string;
-    /**
-     * The name of the online store. This is the unique identifier for the online store
-     */
-    name: string;
-    /**
-     * The number of read replicas for the online store. Defaults to 0
-     */
-    readReplicaCount?: number;
-    /**
-     * (string) - The current state of the online store. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
-     */
-    state: string;
+    onlineStoreName: string;
+    schemaName: string;
+    tableNamePrefix: string;
 }
 
 export interface GetAccountFederationPoliciesPolicy {
@@ -2788,7 +2870,9 @@ export interface GetAlertV2EvaluationNotification {
      */
     notifyOnOk?: boolean;
     /**
-     * (integer) - Number of seconds an alert must wait after being triggered to rearm itself. After rearming, it can be triggered again. If 0 or not specified, the alert will not be triggered again
+     * (integer) - Number of seconds an alert waits after being triggered before it is allowed to send another notification.
+     * If set to 0 or omitted, the alert will not send any further notifications after the first trigger
+     * Setting this value to 1 allows the alert to send a notification on every evaluation where the condition is met, effectively making it always retrigger for notification purposes
      */
     retriggerSeconds?: number;
     /**
@@ -2810,7 +2894,7 @@ export interface GetAlertV2EvaluationNotificationSubscription {
 
 export interface GetAlertV2EvaluationSource {
     /**
-     * (string) - Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
+     * (string) - If not set, the behavior is equivalent to using `First row` in the UI. Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
      */
     aggregation?: string;
     /**
@@ -2836,7 +2920,7 @@ export interface GetAlertV2EvaluationThreshold {
 
 export interface GetAlertV2EvaluationThresholdColumn {
     /**
-     * (string) - Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
+     * (string) - If not set, the behavior is equivalent to using `First row` in the UI. Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
      */
     aggregation?: string;
     /**
@@ -3018,7 +3102,9 @@ export interface GetAlertsV2AlertEvaluationNotification {
      */
     notifyOnOk?: boolean;
     /**
-     * (integer) - Number of seconds an alert must wait after being triggered to rearm itself. After rearming, it can be triggered again. If 0 or not specified, the alert will not be triggered again
+     * (integer) - Number of seconds an alert waits after being triggered before it is allowed to send another notification.
+     * If set to 0 or omitted, the alert will not send any further notifications after the first trigger
+     * Setting this value to 1 allows the alert to send a notification on every evaluation where the condition is met, effectively making it always retrigger for notification purposes
      */
     retriggerSeconds?: number;
     /**
@@ -3040,7 +3126,7 @@ export interface GetAlertsV2AlertEvaluationNotificationSubscription {
 
 export interface GetAlertsV2AlertEvaluationSource {
     /**
-     * (string) - Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
+     * (string) - If not set, the behavior is equivalent to using `First row` in the UI. Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
      */
     aggregation?: string;
     /**
@@ -3066,7 +3152,7 @@ export interface GetAlertsV2AlertEvaluationThreshold {
 
 export interface GetAlertsV2AlertEvaluationThresholdColumn {
     /**
-     * (string) - Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
+     * (string) - If not set, the behavior is equivalent to using `First row` in the UI. Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
      */
     aggregation?: string;
     /**
@@ -5857,6 +5943,10 @@ export interface GetDatabaseSyncedDatabaseTableSpec {
 
 export interface GetDatabaseSyncedDatabaseTableSpecNewPipelineSpec {
     /**
+     * (string) - Budget policy to set on the newly created pipeline
+     */
+    budgetPolicyId?: string;
+    /**
      * (string) - This field needs to be specified if the destination catalog is a managed postgres catalog.
      */
     storageCatalog?: string;
@@ -6145,6 +6235,10 @@ export interface GetDatabaseSyncedDatabaseTablesSyncedTableSpec {
 
 export interface GetDatabaseSyncedDatabaseTablesSyncedTableSpecNewPipelineSpec {
     /**
+     * (string) - Budget policy to set on the newly created pipeline
+     */
+    budgetPolicyId?: string;
+    /**
      * (string) - This field needs to be specified if the destination catalog is a managed postgres catalog.
      */
     storageCatalog?: string;
@@ -6404,11 +6498,37 @@ export interface GetFeatureEngineeringFeatureFunctionExtraParameter {
     value: string;
 }
 
+export interface GetFeatureEngineeringFeatureLineageContext {
+    /**
+     * (JobContext) - Job context information including job ID and run ID
+     */
+    jobContext?: outputs.GetFeatureEngineeringFeatureLineageContextJobContext;
+    /**
+     * (integer) - The notebook ID where this API was invoked
+     */
+    notebookId?: number;
+}
+
+export interface GetFeatureEngineeringFeatureLineageContextJobContext {
+    /**
+     * (integer) - The job ID where this API invoked
+     */
+    jobId?: number;
+    /**
+     * (integer) - The job run ID where this API was invoked
+     */
+    jobRunId?: number;
+}
+
 export interface GetFeatureEngineeringFeatureSource {
     /**
      * (DeltaTableSource)
      */
     deltaTableSource?: outputs.GetFeatureEngineeringFeatureSourceDeltaTableSource;
+    /**
+     * (KafkaSource)
+     */
+    kafkaSource?: outputs.GetFeatureEngineeringFeatureSourceKafkaSource;
 }
 
 export interface GetFeatureEngineeringFeatureSourceDeltaTableSource {
@@ -6424,6 +6544,37 @@ export interface GetFeatureEngineeringFeatureSourceDeltaTableSource {
      * (string) - The timeseries column of the Delta table
      */
     timeseriesColumn: string;
+}
+
+export interface GetFeatureEngineeringFeatureSourceKafkaSource {
+    /**
+     * (list of ColumnIdentifier) - The entity column identifiers of the Kafka source
+     */
+    entityColumnIdentifiers: outputs.GetFeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifier[];
+    /**
+     * (string) - Name of the Kafka source, used to identify it. This is used to look up the corresponding KafkaConfig object. Can be distinct from topic name
+     */
+    name: string;
+    /**
+     * (ColumnIdentifier) - The timeseries column identifier of the Kafka source
+     */
+    timeseriesColumnIdentifier: outputs.GetFeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifier;
+}
+
+export interface GetFeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifier {
+    /**
+     * (string) - String representation of the column name or variant expression path. For nested fields, the leaf value is what will be present in materialized tables
+     * and expected to match at query time. For example, the leaf node of value:trip_details.location_details.pickup_zip is pickup_zip
+     */
+    variantExprPath: string;
+}
+
+export interface GetFeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifier {
+    /**
+     * (string) - String representation of the column name or variant expression path. For nested fields, the leaf value is what will be present in materialized tables
+     * and expected to match at query time. For example, the leaf node of value:trip_details.location_details.pickup_zip is pickup_zip
+     */
+    variantExprPath: string;
 }
 
 export interface GetFeatureEngineeringFeatureTimeWindow {
@@ -6491,6 +6642,7 @@ export interface GetFeatureEngineeringFeaturesFeature {
      * (list of string) - The input columns from which the feature is computed
      */
     inputs: string[];
+    lineageContext: outputs.GetFeatureEngineeringFeaturesFeatureLineageContext;
     /**
      * (DataSource) - The data source of the feature
      */
@@ -6523,11 +6675,37 @@ export interface GetFeatureEngineeringFeaturesFeatureFunctionExtraParameter {
     value: string;
 }
 
+export interface GetFeatureEngineeringFeaturesFeatureLineageContext {
+    /**
+     * (JobContext) - Job context information including job ID and run ID
+     */
+    jobContext?: outputs.GetFeatureEngineeringFeaturesFeatureLineageContextJobContext;
+    /**
+     * (integer) - The notebook ID where this API was invoked
+     */
+    notebookId?: number;
+}
+
+export interface GetFeatureEngineeringFeaturesFeatureLineageContextJobContext {
+    /**
+     * (integer) - The job ID where this API invoked
+     */
+    jobId?: number;
+    /**
+     * (integer) - The job run ID where this API was invoked
+     */
+    jobRunId?: number;
+}
+
 export interface GetFeatureEngineeringFeaturesFeatureSource {
     /**
      * (DeltaTableSource)
      */
     deltaTableSource?: outputs.GetFeatureEngineeringFeaturesFeatureSourceDeltaTableSource;
+    /**
+     * (KafkaSource)
+     */
+    kafkaSource?: outputs.GetFeatureEngineeringFeaturesFeatureSourceKafkaSource;
 }
 
 export interface GetFeatureEngineeringFeaturesFeatureSourceDeltaTableSource {
@@ -6543,6 +6721,37 @@ export interface GetFeatureEngineeringFeaturesFeatureSourceDeltaTableSource {
      * (string) - The timeseries column of the Delta table
      */
     timeseriesColumn: string;
+}
+
+export interface GetFeatureEngineeringFeaturesFeatureSourceKafkaSource {
+    /**
+     * (list of ColumnIdentifier) - The entity column identifiers of the Kafka source
+     */
+    entityColumnIdentifiers: outputs.GetFeatureEngineeringFeaturesFeatureSourceKafkaSourceEntityColumnIdentifier[];
+    /**
+     * (string) - Name of the Kafka source, used to identify it. This is used to look up the corresponding KafkaConfig object. Can be distinct from topic name
+     */
+    name: string;
+    /**
+     * (ColumnIdentifier) - The timeseries column identifier of the Kafka source
+     */
+    timeseriesColumnIdentifier: outputs.GetFeatureEngineeringFeaturesFeatureSourceKafkaSourceTimeseriesColumnIdentifier;
+}
+
+export interface GetFeatureEngineeringFeaturesFeatureSourceKafkaSourceEntityColumnIdentifier {
+    /**
+     * (string) - String representation of the column name or variant expression path. For nested fields, the leaf value is what will be present in materialized tables
+     * and expected to match at query time. For example, the leaf node of value:trip_details.location_details.pickup_zip is pickup_zip
+     */
+    variantExprPath: string;
+}
+
+export interface GetFeatureEngineeringFeaturesFeatureSourceKafkaSourceTimeseriesColumnIdentifier {
+    /**
+     * (string) - String representation of the column name or variant expression path. For nested fields, the leaf value is what will be present in materialized tables
+     * and expected to match at query time. For example, the leaf node of value:trip_details.location_details.pickup_zip is pickup_zip
+     */
+    variantExprPath: string;
 }
 
 export interface GetFeatureEngineeringFeaturesFeatureTimeWindow {
@@ -6589,9 +6798,115 @@ export interface GetFeatureEngineeringFeaturesFeatureTimeWindowTumbling {
     windowDuration: string;
 }
 
+export interface GetFeatureEngineeringKafkaConfigAuthConfig {
+    /**
+     * (string) - Name of the Unity Catalog service credential. This value will be set under the option databricks.serviceCredential
+     */
+    ucServiceCredentialName?: string;
+}
+
+export interface GetFeatureEngineeringKafkaConfigKeySchema {
+    /**
+     * (string) - Schema of the JSON object in standard IETF JSON schema format (https://json-schema.org/)
+     */
+    jsonSchema?: string;
+}
+
+export interface GetFeatureEngineeringKafkaConfigSubscriptionMode {
+    /**
+     * (string) - A JSON string that contains the specific topic-partitions to consume from.
+     * For example, for '{"topicA":[0,1],"topicB":[2,4]}', topicA's 0'th and 1st partitions will be consumed from
+     */
+    assign?: string;
+    /**
+     * (string) - A comma-separated list of Kafka topics to read from. For example, 'topicA,topicB,topicC'
+     */
+    subscribe?: string;
+    /**
+     * (string) - A regular expression matching topics to subscribe to. For example, 'topic.*' will subscribe to all topics starting with 'topic'
+     */
+    subscribePattern?: string;
+}
+
+export interface GetFeatureEngineeringKafkaConfigValueSchema {
+    /**
+     * (string) - Schema of the JSON object in standard IETF JSON schema format (https://json-schema.org/)
+     */
+    jsonSchema?: string;
+}
+
+export interface GetFeatureEngineeringKafkaConfigsKafkaConfig {
+    /**
+     * (AuthConfig) - Authentication configuration for connection to topics
+     */
+    authConfig: outputs.GetFeatureEngineeringKafkaConfigsKafkaConfigAuthConfig;
+    /**
+     * (string) - A comma-separated list of host/port pairs pointing to Kafka cluster
+     */
+    bootstrapServers: string;
+    /**
+     * (object) - Catch-all for miscellaneous options. Keys should be source options or Kafka consumer options (kafka.*)
+     */
+    extraOptions: {[key: string]: string};
+    /**
+     * (SchemaConfig) - Schema configuration for extracting message keys from topics. At least one of keySchema and valueSchema must be provided
+     */
+    keySchema: outputs.GetFeatureEngineeringKafkaConfigsKafkaConfigKeySchema;
+    /**
+     * (string) - Name that uniquely identifies this Kafka config within the metastore. This will be the identifier used from the Feature object to reference these configs for a feature.
+     * Can be distinct from topic name
+     */
+    name: string;
+    /**
+     * (SubscriptionMode) - Options to configure which Kafka topics to pull data from
+     */
+    subscriptionMode: outputs.GetFeatureEngineeringKafkaConfigsKafkaConfigSubscriptionMode;
+    /**
+     * (SchemaConfig) - Schema configuration for extracting message values from topics. At least one of keySchema and valueSchema must be provided
+     */
+    valueSchema: outputs.GetFeatureEngineeringKafkaConfigsKafkaConfigValueSchema;
+}
+
+export interface GetFeatureEngineeringKafkaConfigsKafkaConfigAuthConfig {
+    /**
+     * (string) - Name of the Unity Catalog service credential. This value will be set under the option databricks.serviceCredential
+     */
+    ucServiceCredentialName?: string;
+}
+
+export interface GetFeatureEngineeringKafkaConfigsKafkaConfigKeySchema {
+    /**
+     * (string) - Schema of the JSON object in standard IETF JSON schema format (https://json-schema.org/)
+     */
+    jsonSchema?: string;
+}
+
+export interface GetFeatureEngineeringKafkaConfigsKafkaConfigSubscriptionMode {
+    /**
+     * (string) - A JSON string that contains the specific topic-partitions to consume from.
+     * For example, for '{"topicA":[0,1],"topicB":[2,4]}', topicA's 0'th and 1st partitions will be consumed from
+     */
+    assign?: string;
+    /**
+     * (string) - A comma-separated list of Kafka topics to read from. For example, 'topicA,topicB,topicC'
+     */
+    subscribe?: string;
+    /**
+     * (string) - A regular expression matching topics to subscribe to. For example, 'topic.*' will subscribe to all topics starting with 'topic'
+     */
+    subscribePattern?: string;
+}
+
+export interface GetFeatureEngineeringKafkaConfigsKafkaConfigValueSchema {
+    /**
+     * (string) - Schema of the JSON object in standard IETF JSON schema format (https://json-schema.org/)
+     */
+    jsonSchema?: string;
+}
+
 export interface GetFeatureEngineeringMaterializedFeatureOfflineStoreConfig {
     /**
-     * (string) - The Unity Catalog catalog name
+     * (string) - The Unity Catalog catalog name. This name is also used as the Lakebase logical database name
      */
     catalogName: string;
     /**
@@ -6600,39 +6915,36 @@ export interface GetFeatureEngineeringMaterializedFeatureOfflineStoreConfig {
     schemaName: string;
     /**
      * (string) - Prefix for Unity Catalog table name.
-     * The materialized feature will be stored in a table with this prefix and a generated postfix
+     * The materialized feature will be stored in a Lakebase table with this prefix and a generated postfix
      */
     tableNamePrefix: string;
 }
 
 export interface GetFeatureEngineeringMaterializedFeatureOnlineStoreConfig {
     /**
-     * (string) - The capacity of the online store. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
+     * (string) - The Unity Catalog catalog name. This name is also used as the Lakebase logical database name
      */
-    capacity: string;
+    catalogName: string;
     /**
-     * (string) - The timestamp when the online store was created
+     * (string) - The name of the target online store
      */
-    creationTime: string;
+    onlineStoreName: string;
     /**
-     * (string) - The email of the creator of the online store
+     * (string) - The Unity Catalog schema name
      */
-    creator: string;
+    schemaName: string;
     /**
-     * (string) - The name of the online store. This is the unique identifier for the online store
+     * (string) - Prefix for Unity Catalog table name.
+     * The materialized feature will be stored in a Lakebase table with this prefix and a generated postfix
      */
-    name: string;
-    /**
-     * (integer) - The number of read replicas for the online store. Defaults to 0
-     */
-    readReplicaCount?: number;
-    /**
-     * (string) - The current state of the online store. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
-     */
-    state: string;
+    tableNamePrefix: string;
 }
 
 export interface GetFeatureEngineeringMaterializedFeaturesMaterializedFeature {
+    /**
+     * (string) - The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone
+     */
+    cronSchedule: string;
     /**
      * Filter by feature name. If specified, only materialized features materialized from this feature will be returned
      */
@@ -6651,7 +6963,7 @@ export interface GetFeatureEngineeringMaterializedFeaturesMaterializedFeature {
      */
     offlineStoreConfig: outputs.GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOfflineStoreConfig;
     /**
-     * (OnlineStore)
+     * (OnlineStoreConfig)
      */
     onlineStoreConfig: outputs.GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOnlineStoreConfig;
     /**
@@ -6666,7 +6978,7 @@ export interface GetFeatureEngineeringMaterializedFeaturesMaterializedFeature {
 
 export interface GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOfflineStoreConfig {
     /**
-     * (string) - The Unity Catalog catalog name
+     * (string) - The Unity Catalog catalog name. This name is also used as the Lakebase logical database name
      */
     catalogName: string;
     /**
@@ -6675,36 +6987,29 @@ export interface GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOff
     schemaName: string;
     /**
      * (string) - Prefix for Unity Catalog table name.
-     * The materialized feature will be stored in a table with this prefix and a generated postfix
+     * The materialized feature will be stored in a Lakebase table with this prefix and a generated postfix
      */
     tableNamePrefix: string;
 }
 
 export interface GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOnlineStoreConfig {
     /**
-     * (string) - The capacity of the online store. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
+     * (string) - The Unity Catalog catalog name. This name is also used as the Lakebase logical database name
      */
-    capacity: string;
+    catalogName: string;
     /**
-     * (string) - The timestamp when the online store was created
+     * (string) - The name of the target online store
      */
-    creationTime: string;
+    onlineStoreName: string;
     /**
-     * (string) - The email of the creator of the online store
+     * (string) - The Unity Catalog schema name
      */
-    creator: string;
+    schemaName: string;
     /**
-     * (string) - The name of the online store. This is the unique identifier for the online store
+     * (string) - Prefix for Unity Catalog table name.
+     * The materialized feature will be stored in a Lakebase table with this prefix and a generated postfix
      */
-    name: string;
-    /**
-     * (integer) - The number of read replicas for the online store. Defaults to 0
-     */
-    readReplicaCount?: number;
-    /**
-     * (string) - The current state of the online store. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
-     */
-    state: string;
+    tableNamePrefix: string;
 }
 
 export interface GetFunctionsFunction {
@@ -9650,6 +9955,46 @@ export interface GetServicePrincipalFederationPolicyOidcPolicy {
     subjectClaim?: string;
 }
 
+export interface GetServicePrincipalsServicePrincipal {
+    /**
+     * identifier for use in databricks_access_control_rule_set, e.g. `servicePrincipals/00000000-0000-0000-0000-000000000000`.
+     */
+    aclPrincipalId: string;
+    /**
+     * Whether service principal is active or not.
+     */
+    active: boolean;
+    /**
+     * Application ID of the service principal.
+     */
+    applicationId: string;
+    /**
+     * Display name of the service principal, e.g. `Foo SPN`.
+     */
+    displayName: string;
+    /**
+     * ID of the service principal in an external identity provider.
+     */
+    externalId: string;
+    /**
+     * Home folder of the service principal, e.g. `/Users/11111111-2222-3333-4444-555666777888`.
+     */
+    home: string;
+    /**
+     * The id of the service principal (SCIM ID).
+     */
+    id: string;
+    /**
+     * Repos location of the service principal, e.g. `/Repos/11111111-2222-3333-4444-555666777888`.
+     */
+    repos: string;
+    /**
+     * same as `id`.
+     */
+    scimId: string;
+    spId: string;
+}
+
 export interface GetServingEndpointsEndpoint {
     /**
      * A block with AI Gateway configuration for the serving endpoint.
@@ -10385,6 +10730,85 @@ export interface GetTagPolicyValue {
     name: string;
 }
 
+export interface GetUsersUser {
+    /**
+     * Boolean that represents if this user is active.
+     */
+    active?: boolean;
+    displayName?: string;
+    /**
+     * All the emails associated with the Databricks user.
+     */
+    emails?: outputs.GetUsersUserEmail[];
+    /**
+     * Entitlements assigned to the user.
+     */
+    entitlements?: outputs.GetUsersUserEntitlement[];
+    externalId?: string;
+    /**
+     * Indicates if the user is part of any groups.
+     */
+    groups?: outputs.GetUsersUserGroup[];
+    /**
+     * The ID of the user.
+     * - `userName` - The username of the user.
+     */
+    id?: string;
+    /**
+     * - `givenName` - Given name of the Databricks user.
+     * - `familyName` - Family name of the Databricks user.
+     * - `displayName` - The display name of the user.
+     */
+    name?: outputs.GetUsersUserName;
+    /**
+     * Indicates if the user has any associated roles.
+     */
+    roles?: outputs.GetUsersUserRole[];
+    /**
+     * The schema of the user.
+     * - `externalId` - Reserved for future use.
+     */
+    schemas?: string[];
+    userName?: string;
+}
+
+export interface GetUsersUserEmail {
+    display?: string;
+    primary?: boolean;
+    ref?: string;
+    type?: string;
+    value?: string;
+}
+
+export interface GetUsersUserEntitlement {
+    display?: string;
+    primary?: boolean;
+    ref?: string;
+    type?: string;
+    value?: string;
+}
+
+export interface GetUsersUserGroup {
+    display?: string;
+    primary?: boolean;
+    ref?: string;
+    type?: string;
+    value?: string;
+}
+
+export interface GetUsersUserName {
+    familyName?: string;
+    givenName?: string;
+}
+
+export interface GetUsersUserRole {
+    display?: string;
+    primary?: boolean;
+    ref?: string;
+    type?: string;
+    value?: string;
+}
+
 export interface GetViewsProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
@@ -10484,6 +10908,25 @@ export interface GetVolumesProviderConfig {
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
     workspaceId: string;
+}
+
+export interface GetWorkspaceEntityTagAssignmentsTagAssignment {
+    /**
+     * The identifier of the entity to which the tag is assigned
+     */
+    entityId: string;
+    /**
+     * The type of entity to which the tag is assigned. Allowed values are dashboards, geniespaces
+     */
+    entityType: string;
+    /**
+     * (string) - The key of the tag. The characters , . : / - = and leading/trailing spaces are not allowed
+     */
+    tagKey: string;
+    /**
+     * (string) - The value of the tag
+     */
+    tagValue: string;
 }
 
 export interface GetWorkspaceSettingV2AibiDashboardEmbeddingAccessPolicy {
@@ -13721,6 +14164,7 @@ export interface JobTrigger {
      * configuration block to define a trigger for [File Arrival events](https://learn.microsoft.com/en-us/azure/databricks/workflows/jobs/file-arrival-triggers) consisting of following attributes:
      */
     fileArrival?: outputs.JobTriggerFileArrival;
+    model?: outputs.JobTriggerModel;
     /**
      * Indicate whether this trigger is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pauseStatus` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pauseStatus`.
      */
@@ -13747,6 +14191,17 @@ export interface JobTriggerFileArrival {
     /**
      * If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
      */
+    waitAfterLastChangeSeconds?: number;
+}
+
+export interface JobTriggerModel {
+    aliases?: string[];
+    /**
+     * The table(s) condition based on which to trigger a job run.  Possible values are `ANY_UPDATED`, `ALL_UPDATED`.
+     */
+    condition: string;
+    minTimeBetweenTriggersSeconds?: number;
+    securableName?: string;
     waitAfterLastChangeSeconds?: number;
 }
 
@@ -15027,11 +15482,11 @@ export interface MwsNetworksGcpNetworkInfo {
      */
     networkProjectId: string;
     /**
-     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.97.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.100.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     podIpRangeName?: string;
     /**
-     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.97.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.100.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     serviceIpRangeName?: string;
     /**
@@ -15098,11 +15553,11 @@ export interface MwsWorkspacesExternalCustomerInfo {
 
 export interface MwsWorkspacesGcpManagedNetworkConfig {
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.97.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.100.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterPodIpRange?: string;
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.97.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.100.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterServiceIpRange?: string;
     subnetCidr: string;
@@ -15564,10 +16019,14 @@ export interface PipelineFilters {
 
 export interface PipelineGatewayDefinition {
     /**
-     * Immutable. The Unity Catalog connection this gateway pipeline uses to communicate with the source.
+     * Deprecated, Immutable. The Unity Catalog connection this gateway pipeline uses to communicate with the source. *Use `connectionName` instead!*
      */
     connectionId?: string;
+    /**
+     * Immutable. The Unity Catalog connection that this gateway pipeline uses to communicate with the source.
+     */
     connectionName: string;
+    connectionParameters?: outputs.PipelineGatewayDefinitionConnectionParameters;
     /**
      * Required, Immutable. The name of the catalog for the gateway pipeline's storage location.
      */
@@ -15582,8 +16041,13 @@ export interface PipelineGatewayDefinition {
     gatewayStorageSchema: string;
 }
 
+export interface PipelineGatewayDefinitionConnectionParameters {
+    sourceCatalog?: string;
+}
+
 export interface PipelineIngestionDefinition {
     connectionName?: string;
+    ingestFromUcForeignCatalog?: boolean;
     ingestionGatewayId?: string;
     netsuiteJarPath?: string;
     objects?: outputs.PipelineIngestionDefinitionObject[];
@@ -15713,7 +16177,7 @@ export interface PipelineIngestionDefinitionObjectTableTableConfigurationWorkday
 
 export interface PipelineIngestionDefinitionSourceConfiguration {
     /**
-     * The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
+     * The name of default catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline if you switch from `storage` to `catalog` or vice versa.  If pipeline was already created with `catalog` set, the value could be changed.* (Conflicts with `storage`).
      */
     catalog?: outputs.PipelineIngestionDefinitionSourceConfigurationCatalog;
 }
@@ -16340,9 +16804,12 @@ export interface ShareObject {
      * Description about the object.
      */
     comment?: string;
+    /**
+     * The content of the notebook file when the data object type is NOTEBOOK_FILE. This should be base64 encoded. Required for adding a NOTEBOOK_FILE, optional for updating, ignored for other types.
+     */
     content?: string;
     /**
-     * Type of the data object, currently `TABLE`, `VIEW`, `SCHEMA`, `VOLUME`, and `MODEL` are supported.
+     * Type of the data object. Supported types: `TABLE`, `FOREIGN_TABLE`, `SCHEMA`, `VIEW`, `MATERIALIZED_VIEW`, `STREAMING_TABLE`, `MODEL`, `NOTEBOOK_FILE`, `FUNCTION`, `FEATURE_SPEC`, and `VOLUME`.
      */
     dataObjectType: string;
     effectiveCdfEnabled: boolean;
@@ -16360,6 +16827,9 @@ export interface ShareObject {
      * Full name of the object, e.g. `catalog.schema.name` for a tables, views, volumes and models, or `catalog.schema` for schemas.
      */
     name: string;
+    /**
+     * Array of partitions for the shared data.
+     */
     partitions?: outputs.ShareObjectPartition[];
     /**
      * A user-provided new name for the data object within the share. If this new name is not provided, the object's original name will be used as the `sharedAs` name. The `sharedAs` name must be unique within a Share. Change forces creation of a new resource.

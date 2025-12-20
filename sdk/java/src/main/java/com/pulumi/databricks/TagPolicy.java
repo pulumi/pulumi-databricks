@@ -19,7 +19,7 @@ import javax.annotation.Nullable;
 /**
  * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
  * 
- * Define tag policies to manage governed tags in your account.
+ * Define tag policies to manage governed tags in your account. Manage tag policy permissions using the `databricks.AccessControlRuleSet` resource.
  * 
  * &gt; **Note** This resource can only be used with a workspace-level provider!
  * 

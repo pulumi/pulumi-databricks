@@ -35,14 +35,14 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`, `LIQUID`.
+     * A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`.
      * 
      */
     @Import(name="computeSize")
     private @Nullable Output<String> computeSize;
 
     /**
-     * @return A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`, `LIQUID`.
+     * @return A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`.
      * 
      */
     public Optional<Output<String>> computeSize() {
@@ -176,7 +176,7 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param computeSize A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`, `LIQUID`.
+         * @param computeSize A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`.
          * 
          * @return builder
          * 
@@ -187,7 +187,7 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param computeSize A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`, `LIQUID`.
+         * @param computeSize A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`.
          * 
          * @return builder
          * 

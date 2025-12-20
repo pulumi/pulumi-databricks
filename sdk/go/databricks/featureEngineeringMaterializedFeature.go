@@ -36,6 +36,8 @@ import (
 type FeatureEngineeringMaterializedFeature struct {
 	pulumi.CustomResourceState
 
+	// The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone
+	CronSchedule pulumi.StringPtrOutput `pulumi:"cronSchedule"`
 	// The full name of the feature in Unity Catalog
 	FeatureName pulumi.StringOutput `pulumi:"featureName"`
 	// (string) - The timestamp when the pipeline last ran and updated the materialized feature values.
@@ -84,6 +86,8 @@ func GetFeatureEngineeringMaterializedFeature(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering FeatureEngineeringMaterializedFeature resources.
 type featureEngineeringMaterializedFeatureState struct {
+	// The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone
+	CronSchedule *string `pulumi:"cronSchedule"`
 	// The full name of the feature in Unity Catalog
 	FeatureName *string `pulumi:"featureName"`
 	// (string) - The timestamp when the pipeline last ran and updated the materialized feature values.
@@ -100,6 +104,8 @@ type featureEngineeringMaterializedFeatureState struct {
 }
 
 type FeatureEngineeringMaterializedFeatureState struct {
+	// The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone
+	CronSchedule pulumi.StringPtrInput
 	// The full name of the feature in Unity Catalog
 	FeatureName pulumi.StringPtrInput
 	// (string) - The timestamp when the pipeline last ran and updated the materialized feature values.
@@ -120,6 +126,8 @@ func (FeatureEngineeringMaterializedFeatureState) ElementType() reflect.Type {
 }
 
 type featureEngineeringMaterializedFeatureArgs struct {
+	// The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone
+	CronSchedule *string `pulumi:"cronSchedule"`
 	// The full name of the feature in Unity Catalog
 	FeatureName        string                                                   `pulumi:"featureName"`
 	OfflineStoreConfig *FeatureEngineeringMaterializedFeatureOfflineStoreConfig `pulumi:"offlineStoreConfig"`
@@ -130,6 +138,8 @@ type featureEngineeringMaterializedFeatureArgs struct {
 
 // The set of arguments for constructing a FeatureEngineeringMaterializedFeature resource.
 type FeatureEngineeringMaterializedFeatureArgs struct {
+	// The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone
+	CronSchedule pulumi.StringPtrInput
 	// The full name of the feature in Unity Catalog
 	FeatureName        pulumi.StringInput
 	OfflineStoreConfig FeatureEngineeringMaterializedFeatureOfflineStoreConfigPtrInput
@@ -223,6 +233,11 @@ func (o FeatureEngineeringMaterializedFeatureOutput) ToFeatureEngineeringMateria
 
 func (o FeatureEngineeringMaterializedFeatureOutput) ToFeatureEngineeringMaterializedFeatureOutputWithContext(ctx context.Context) FeatureEngineeringMaterializedFeatureOutput {
 	return o
+}
+
+// The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone
+func (o FeatureEngineeringMaterializedFeatureOutput) CronSchedule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureEngineeringMaterializedFeature) pulumi.StringPtrOutput { return v.CronSchedule }).(pulumi.StringPtrOutput)
 }
 
 // The full name of the feature in Unity Catalog

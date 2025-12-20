@@ -119,7 +119,7 @@ export interface GetSparkVersionArgs {
      */
     providerConfig?: inputs.GetSparkVersionProviderConfig;
     /**
-     * if we should limit the search only to runtimes that are based on specific Scala version. Default to `2.12`.
+     * if we should limit the search only to runtimes that are based on specific Scala version. Default to `2.1` to select either `2.12` or `2.13` depending on the DBR version (for DBR that has both `2.12` and `2.13` flavors, `2.12` is returned by default).
      */
     scala?: string;
     /**
@@ -267,7 +267,7 @@ export interface GetSparkVersionOutputArgs {
      */
     providerConfig?: pulumi.Input<inputs.GetSparkVersionProviderConfigArgs>;
     /**
-     * if we should limit the search only to runtimes that are based on specific Scala version. Default to `2.12`.
+     * if we should limit the search only to runtimes that are based on specific Scala version. Default to `2.1` to select either `2.12` or `2.13` depending on the DBR version (for DBR that has both `2.12` and `2.13` flavors, `2.12` is returned by default).
      */
     scala?: pulumi.Input<string>;
     /**

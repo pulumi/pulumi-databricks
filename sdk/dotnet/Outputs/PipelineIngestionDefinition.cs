@@ -14,6 +14,7 @@ namespace Pulumi.Databricks.Outputs
     public sealed class PipelineIngestionDefinition
     {
         public readonly string? ConnectionName;
+        public readonly bool? IngestFromUcForeignCatalog;
         public readonly string? IngestionGatewayId;
         public readonly string? NetsuiteJarPath;
         public readonly ImmutableArray<Outputs.PipelineIngestionDefinitionObject> Objects;
@@ -24,6 +25,8 @@ namespace Pulumi.Databricks.Outputs
         [OutputConstructor]
         private PipelineIngestionDefinition(
             string? connectionName,
+
+            bool? ingestFromUcForeignCatalog,
 
             string? ingestionGatewayId,
 
@@ -38,6 +41,7 @@ namespace Pulumi.Databricks.Outputs
             Outputs.PipelineIngestionDefinitionTableConfiguration? tableConfiguration)
         {
             ConnectionName = connectionName;
+            IngestFromUcForeignCatalog = ingestFromUcForeignCatalog;
             IngestionGatewayId = ingestionGatewayId;
             NetsuiteJarPath = netsuiteJarPath;
             Objects = objects;
