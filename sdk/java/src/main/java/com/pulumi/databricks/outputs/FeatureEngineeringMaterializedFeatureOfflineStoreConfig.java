@@ -10,43 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class FeatureEngineeringMaterializedFeatureOfflineStoreConfig {
-    /**
-     * @return The Unity Catalog catalog name
-     * 
-     */
     private String catalogName;
-    /**
-     * @return The Unity Catalog schema name
-     * 
-     */
     private String schemaName;
-    /**
-     * @return Prefix for Unity Catalog table name.
-     * The materialized feature will be stored in a table with this prefix and a generated postfix
-     * 
-     */
     private String tableNamePrefix;
 
     private FeatureEngineeringMaterializedFeatureOfflineStoreConfig() {}
-    /**
-     * @return The Unity Catalog catalog name
-     * 
-     */
     public String catalogName() {
         return this.catalogName;
     }
-    /**
-     * @return The Unity Catalog schema name
-     * 
-     */
     public String schemaName() {
         return this.schemaName;
     }
-    /**
-     * @return Prefix for Unity Catalog table name.
-     * The materialized feature will be stored in a table with this prefix and a generated postfix
-     * 
-     */
     public String tableNamePrefix() {
         return this.tableNamePrefix;
     }

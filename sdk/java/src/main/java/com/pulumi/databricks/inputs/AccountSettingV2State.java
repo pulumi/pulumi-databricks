@@ -31,64 +31,120 @@ public final class AccountSettingV2State extends com.pulumi.resources.ResourceAr
 
     public static final AccountSettingV2State Empty = new AccountSettingV2State();
 
+    /**
+     * Setting value for aibiDashboardEmbeddingAccessPolicy setting. This is the setting value set by consumers, check effectiveAibiDashboardEmbeddingAccessPolicy for final setting value
+     * 
+     */
     @Import(name="aibiDashboardEmbeddingAccessPolicy")
     private @Nullable Output<AccountSettingV2AibiDashboardEmbeddingAccessPolicyArgs> aibiDashboardEmbeddingAccessPolicy;
 
+    /**
+     * @return Setting value for aibiDashboardEmbeddingAccessPolicy setting. This is the setting value set by consumers, check effectiveAibiDashboardEmbeddingAccessPolicy for final setting value
+     * 
+     */
     public Optional<Output<AccountSettingV2AibiDashboardEmbeddingAccessPolicyArgs>> aibiDashboardEmbeddingAccessPolicy() {
         return Optional.ofNullable(this.aibiDashboardEmbeddingAccessPolicy);
     }
 
+    /**
+     * Setting value for aibiDashboardEmbeddingApprovedDomains setting. This is the setting value set by consumers, check effectiveAibiDashboardEmbeddingApprovedDomains for final setting value
+     * 
+     */
     @Import(name="aibiDashboardEmbeddingApprovedDomains")
     private @Nullable Output<AccountSettingV2AibiDashboardEmbeddingApprovedDomainsArgs> aibiDashboardEmbeddingApprovedDomains;
 
+    /**
+     * @return Setting value for aibiDashboardEmbeddingApprovedDomains setting. This is the setting value set by consumers, check effectiveAibiDashboardEmbeddingApprovedDomains for final setting value
+     * 
+     */
     public Optional<Output<AccountSettingV2AibiDashboardEmbeddingApprovedDomainsArgs>> aibiDashboardEmbeddingApprovedDomains() {
         return Optional.ofNullable(this.aibiDashboardEmbeddingApprovedDomains);
     }
 
+    /**
+     * Setting value for automaticClusterUpdateWorkspace setting. This is the setting value set by consumers, check effectiveAutomaticClusterUpdateWorkspace for final setting value
+     * 
+     */
     @Import(name="automaticClusterUpdateWorkspace")
     private @Nullable Output<AccountSettingV2AutomaticClusterUpdateWorkspaceArgs> automaticClusterUpdateWorkspace;
 
+    /**
+     * @return Setting value for automaticClusterUpdateWorkspace setting. This is the setting value set by consumers, check effectiveAutomaticClusterUpdateWorkspace for final setting value
+     * 
+     */
     public Optional<Output<AccountSettingV2AutomaticClusterUpdateWorkspaceArgs>> automaticClusterUpdateWorkspace() {
         return Optional.ofNullable(this.automaticClusterUpdateWorkspace);
     }
 
+    /**
+     * Setting value for boolean type setting. This is the setting value set by consumers, check effectiveBooleanVal for final setting value
+     * 
+     */
     @Import(name="booleanVal")
     private @Nullable Output<AccountSettingV2BooleanValArgs> booleanVal;
 
+    /**
+     * @return Setting value for boolean type setting. This is the setting value set by consumers, check effectiveBooleanVal for final setting value
+     * 
+     */
     public Optional<Output<AccountSettingV2BooleanValArgs>> booleanVal() {
         return Optional.ofNullable(this.booleanVal);
     }
 
+    /**
+     * Effective setting value for aibiDashboardEmbeddingAccessPolicy setting. This is the final effective value of setting. To set a value use aibi_dashboard_embedding_access_policy
+     * 
+     */
     @Import(name="effectiveAibiDashboardEmbeddingAccessPolicy")
     private @Nullable Output<AccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgs> effectiveAibiDashboardEmbeddingAccessPolicy;
 
+    /**
+     * @return Effective setting value for aibiDashboardEmbeddingAccessPolicy setting. This is the final effective value of setting. To set a value use aibi_dashboard_embedding_access_policy
+     * 
+     */
     public Optional<Output<AccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgs>> effectiveAibiDashboardEmbeddingAccessPolicy() {
         return Optional.ofNullable(this.effectiveAibiDashboardEmbeddingAccessPolicy);
     }
 
+    /**
+     * Effective setting value for aibiDashboardEmbeddingApprovedDomains setting. This is the final effective value of setting. To set a value use aibi_dashboard_embedding_approved_domains
+     * 
+     */
     @Import(name="effectiveAibiDashboardEmbeddingApprovedDomains")
     private @Nullable Output<AccountSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgs> effectiveAibiDashboardEmbeddingApprovedDomains;
 
+    /**
+     * @return Effective setting value for aibiDashboardEmbeddingApprovedDomains setting. This is the final effective value of setting. To set a value use aibi_dashboard_embedding_approved_domains
+     * 
+     */
     public Optional<Output<AccountSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgs>> effectiveAibiDashboardEmbeddingApprovedDomains() {
         return Optional.ofNullable(this.effectiveAibiDashboardEmbeddingApprovedDomains);
     }
 
+    /**
+     * Effective setting value for automaticClusterUpdateWorkspace setting. This is the final effective value of setting. To set a value use automatic_cluster_update_workspace
+     * 
+     */
     @Import(name="effectiveAutomaticClusterUpdateWorkspace")
     private @Nullable Output<AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgs> effectiveAutomaticClusterUpdateWorkspace;
 
+    /**
+     * @return Effective setting value for automaticClusterUpdateWorkspace setting. This is the final effective value of setting. To set a value use automatic_cluster_update_workspace
+     * 
+     */
     public Optional<Output<AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgs>> effectiveAutomaticClusterUpdateWorkspace() {
         return Optional.ofNullable(this.effectiveAutomaticClusterUpdateWorkspace);
     }
 
     /**
-     * (BooleanMessage)
+     * (BooleanMessage) - Effective setting value for boolean type setting. This is the final effective value of setting. To set a value use boolean_val
      * 
      */
     @Import(name="effectiveBooleanVal")
     private @Nullable Output<AccountSettingV2EffectiveBooleanValArgs> effectiveBooleanVal;
 
     /**
-     * @return (BooleanMessage)
+     * @return (BooleanMessage) - Effective setting value for boolean type setting. This is the final effective value of setting. To set a value use boolean_val
      * 
      */
     public Optional<Output<AccountSettingV2EffectiveBooleanValArgs>> effectiveBooleanVal() {
@@ -96,52 +152,76 @@ public final class AccountSettingV2State extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * (IntegerMessage)
+     * (IntegerMessage) - Effective setting value for integer type setting. This is the final effective value of setting. To set a value use integer_val
      * 
      */
     @Import(name="effectiveIntegerVal")
     private @Nullable Output<AccountSettingV2EffectiveIntegerValArgs> effectiveIntegerVal;
 
     /**
-     * @return (IntegerMessage)
+     * @return (IntegerMessage) - Effective setting value for integer type setting. This is the final effective value of setting. To set a value use integer_val
      * 
      */
     public Optional<Output<AccountSettingV2EffectiveIntegerValArgs>> effectiveIntegerVal() {
         return Optional.ofNullable(this.effectiveIntegerVal);
     }
 
+    /**
+     * Effective setting value for personalCompute setting. This is the final effective value of setting. To set a value use personal_compute
+     * 
+     */
     @Import(name="effectivePersonalCompute")
     private @Nullable Output<AccountSettingV2EffectivePersonalComputeArgs> effectivePersonalCompute;
 
+    /**
+     * @return Effective setting value for personalCompute setting. This is the final effective value of setting. To set a value use personal_compute
+     * 
+     */
     public Optional<Output<AccountSettingV2EffectivePersonalComputeArgs>> effectivePersonalCompute() {
         return Optional.ofNullable(this.effectivePersonalCompute);
     }
 
+    /**
+     * Effective setting value for restrictWorkspaceAdmins setting. This is the final effective value of setting. To set a value use restrict_workspace_admins
+     * 
+     */
     @Import(name="effectiveRestrictWorkspaceAdmins")
     private @Nullable Output<AccountSettingV2EffectiveRestrictWorkspaceAdminsArgs> effectiveRestrictWorkspaceAdmins;
 
+    /**
+     * @return Effective setting value for restrictWorkspaceAdmins setting. This is the final effective value of setting. To set a value use restrict_workspace_admins
+     * 
+     */
     public Optional<Output<AccountSettingV2EffectiveRestrictWorkspaceAdminsArgs>> effectiveRestrictWorkspaceAdmins() {
         return Optional.ofNullable(this.effectiveRestrictWorkspaceAdmins);
     }
 
     /**
-     * (StringMessage)
+     * (StringMessage) - Effective setting value for string type setting. This is the final effective value of setting. To set a value use string_val
      * 
      */
     @Import(name="effectiveStringVal")
     private @Nullable Output<AccountSettingV2EffectiveStringValArgs> effectiveStringVal;
 
     /**
-     * @return (StringMessage)
+     * @return (StringMessage) - Effective setting value for string type setting. This is the final effective value of setting. To set a value use string_val
      * 
      */
     public Optional<Output<AccountSettingV2EffectiveStringValArgs>> effectiveStringVal() {
         return Optional.ofNullable(this.effectiveStringVal);
     }
 
+    /**
+     * Setting value for integer type setting. This is the setting value set by consumers, check effectiveIntegerVal for final setting value
+     * 
+     */
     @Import(name="integerVal")
     private @Nullable Output<AccountSettingV2IntegerValArgs> integerVal;
 
+    /**
+     * @return Setting value for integer type setting. This is the setting value set by consumers, check effectiveIntegerVal for final setting value
+     * 
+     */
     public Optional<Output<AccountSettingV2IntegerValArgs>> integerVal() {
         return Optional.ofNullable(this.integerVal);
     }
@@ -161,23 +241,47 @@ public final class AccountSettingV2State extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * Setting value for personalCompute setting. This is the setting value set by consumers, check effectivePersonalCompute for final setting value
+     * 
+     */
     @Import(name="personalCompute")
     private @Nullable Output<AccountSettingV2PersonalComputeArgs> personalCompute;
 
+    /**
+     * @return Setting value for personalCompute setting. This is the setting value set by consumers, check effectivePersonalCompute for final setting value
+     * 
+     */
     public Optional<Output<AccountSettingV2PersonalComputeArgs>> personalCompute() {
         return Optional.ofNullable(this.personalCompute);
     }
 
+    /**
+     * Setting value for restrictWorkspaceAdmins setting. This is the setting value set by consumers, check effectiveRestrictWorkspaceAdmins for final setting value
+     * 
+     */
     @Import(name="restrictWorkspaceAdmins")
     private @Nullable Output<AccountSettingV2RestrictWorkspaceAdminsArgs> restrictWorkspaceAdmins;
 
+    /**
+     * @return Setting value for restrictWorkspaceAdmins setting. This is the setting value set by consumers, check effectiveRestrictWorkspaceAdmins for final setting value
+     * 
+     */
     public Optional<Output<AccountSettingV2RestrictWorkspaceAdminsArgs>> restrictWorkspaceAdmins() {
         return Optional.ofNullable(this.restrictWorkspaceAdmins);
     }
 
+    /**
+     * Setting value for string type setting. This is the setting value set by consumers, check effectiveStringVal for final setting value
+     * 
+     */
     @Import(name="stringVal")
     private @Nullable Output<AccountSettingV2StringValArgs> stringVal;
 
+    /**
+     * @return Setting value for string type setting. This is the setting value set by consumers, check effectiveStringVal for final setting value
+     * 
+     */
     public Optional<Output<AccountSettingV2StringValArgs>> stringVal() {
         return Optional.ofNullable(this.stringVal);
     }
@@ -222,71 +326,155 @@ public final class AccountSettingV2State extends com.pulumi.resources.ResourceAr
             $ = new AccountSettingV2State(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param aibiDashboardEmbeddingAccessPolicy Setting value for aibiDashboardEmbeddingAccessPolicy setting. This is the setting value set by consumers, check effectiveAibiDashboardEmbeddingAccessPolicy for final setting value
+         * 
+         * @return builder
+         * 
+         */
         public Builder aibiDashboardEmbeddingAccessPolicy(@Nullable Output<AccountSettingV2AibiDashboardEmbeddingAccessPolicyArgs> aibiDashboardEmbeddingAccessPolicy) {
             $.aibiDashboardEmbeddingAccessPolicy = aibiDashboardEmbeddingAccessPolicy;
             return this;
         }
 
+        /**
+         * @param aibiDashboardEmbeddingAccessPolicy Setting value for aibiDashboardEmbeddingAccessPolicy setting. This is the setting value set by consumers, check effectiveAibiDashboardEmbeddingAccessPolicy for final setting value
+         * 
+         * @return builder
+         * 
+         */
         public Builder aibiDashboardEmbeddingAccessPolicy(AccountSettingV2AibiDashboardEmbeddingAccessPolicyArgs aibiDashboardEmbeddingAccessPolicy) {
             return aibiDashboardEmbeddingAccessPolicy(Output.of(aibiDashboardEmbeddingAccessPolicy));
         }
 
+        /**
+         * @param aibiDashboardEmbeddingApprovedDomains Setting value for aibiDashboardEmbeddingApprovedDomains setting. This is the setting value set by consumers, check effectiveAibiDashboardEmbeddingApprovedDomains for final setting value
+         * 
+         * @return builder
+         * 
+         */
         public Builder aibiDashboardEmbeddingApprovedDomains(@Nullable Output<AccountSettingV2AibiDashboardEmbeddingApprovedDomainsArgs> aibiDashboardEmbeddingApprovedDomains) {
             $.aibiDashboardEmbeddingApprovedDomains = aibiDashboardEmbeddingApprovedDomains;
             return this;
         }
 
+        /**
+         * @param aibiDashboardEmbeddingApprovedDomains Setting value for aibiDashboardEmbeddingApprovedDomains setting. This is the setting value set by consumers, check effectiveAibiDashboardEmbeddingApprovedDomains for final setting value
+         * 
+         * @return builder
+         * 
+         */
         public Builder aibiDashboardEmbeddingApprovedDomains(AccountSettingV2AibiDashboardEmbeddingApprovedDomainsArgs aibiDashboardEmbeddingApprovedDomains) {
             return aibiDashboardEmbeddingApprovedDomains(Output.of(aibiDashboardEmbeddingApprovedDomains));
         }
 
+        /**
+         * @param automaticClusterUpdateWorkspace Setting value for automaticClusterUpdateWorkspace setting. This is the setting value set by consumers, check effectiveAutomaticClusterUpdateWorkspace for final setting value
+         * 
+         * @return builder
+         * 
+         */
         public Builder automaticClusterUpdateWorkspace(@Nullable Output<AccountSettingV2AutomaticClusterUpdateWorkspaceArgs> automaticClusterUpdateWorkspace) {
             $.automaticClusterUpdateWorkspace = automaticClusterUpdateWorkspace;
             return this;
         }
 
+        /**
+         * @param automaticClusterUpdateWorkspace Setting value for automaticClusterUpdateWorkspace setting. This is the setting value set by consumers, check effectiveAutomaticClusterUpdateWorkspace for final setting value
+         * 
+         * @return builder
+         * 
+         */
         public Builder automaticClusterUpdateWorkspace(AccountSettingV2AutomaticClusterUpdateWorkspaceArgs automaticClusterUpdateWorkspace) {
             return automaticClusterUpdateWorkspace(Output.of(automaticClusterUpdateWorkspace));
         }
 
+        /**
+         * @param booleanVal Setting value for boolean type setting. This is the setting value set by consumers, check effectiveBooleanVal for final setting value
+         * 
+         * @return builder
+         * 
+         */
         public Builder booleanVal(@Nullable Output<AccountSettingV2BooleanValArgs> booleanVal) {
             $.booleanVal = booleanVal;
             return this;
         }
 
+        /**
+         * @param booleanVal Setting value for boolean type setting. This is the setting value set by consumers, check effectiveBooleanVal for final setting value
+         * 
+         * @return builder
+         * 
+         */
         public Builder booleanVal(AccountSettingV2BooleanValArgs booleanVal) {
             return booleanVal(Output.of(booleanVal));
         }
 
+        /**
+         * @param effectiveAibiDashboardEmbeddingAccessPolicy Effective setting value for aibiDashboardEmbeddingAccessPolicy setting. This is the final effective value of setting. To set a value use aibi_dashboard_embedding_access_policy
+         * 
+         * @return builder
+         * 
+         */
         public Builder effectiveAibiDashboardEmbeddingAccessPolicy(@Nullable Output<AccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgs> effectiveAibiDashboardEmbeddingAccessPolicy) {
             $.effectiveAibiDashboardEmbeddingAccessPolicy = effectiveAibiDashboardEmbeddingAccessPolicy;
             return this;
         }
 
+        /**
+         * @param effectiveAibiDashboardEmbeddingAccessPolicy Effective setting value for aibiDashboardEmbeddingAccessPolicy setting. This is the final effective value of setting. To set a value use aibi_dashboard_embedding_access_policy
+         * 
+         * @return builder
+         * 
+         */
         public Builder effectiveAibiDashboardEmbeddingAccessPolicy(AccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgs effectiveAibiDashboardEmbeddingAccessPolicy) {
             return effectiveAibiDashboardEmbeddingAccessPolicy(Output.of(effectiveAibiDashboardEmbeddingAccessPolicy));
         }
 
+        /**
+         * @param effectiveAibiDashboardEmbeddingApprovedDomains Effective setting value for aibiDashboardEmbeddingApprovedDomains setting. This is the final effective value of setting. To set a value use aibi_dashboard_embedding_approved_domains
+         * 
+         * @return builder
+         * 
+         */
         public Builder effectiveAibiDashboardEmbeddingApprovedDomains(@Nullable Output<AccountSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgs> effectiveAibiDashboardEmbeddingApprovedDomains) {
             $.effectiveAibiDashboardEmbeddingApprovedDomains = effectiveAibiDashboardEmbeddingApprovedDomains;
             return this;
         }
 
+        /**
+         * @param effectiveAibiDashboardEmbeddingApprovedDomains Effective setting value for aibiDashboardEmbeddingApprovedDomains setting. This is the final effective value of setting. To set a value use aibi_dashboard_embedding_approved_domains
+         * 
+         * @return builder
+         * 
+         */
         public Builder effectiveAibiDashboardEmbeddingApprovedDomains(AccountSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgs effectiveAibiDashboardEmbeddingApprovedDomains) {
             return effectiveAibiDashboardEmbeddingApprovedDomains(Output.of(effectiveAibiDashboardEmbeddingApprovedDomains));
         }
 
+        /**
+         * @param effectiveAutomaticClusterUpdateWorkspace Effective setting value for automaticClusterUpdateWorkspace setting. This is the final effective value of setting. To set a value use automatic_cluster_update_workspace
+         * 
+         * @return builder
+         * 
+         */
         public Builder effectiveAutomaticClusterUpdateWorkspace(@Nullable Output<AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgs> effectiveAutomaticClusterUpdateWorkspace) {
             $.effectiveAutomaticClusterUpdateWorkspace = effectiveAutomaticClusterUpdateWorkspace;
             return this;
         }
 
+        /**
+         * @param effectiveAutomaticClusterUpdateWorkspace Effective setting value for automaticClusterUpdateWorkspace setting. This is the final effective value of setting. To set a value use automatic_cluster_update_workspace
+         * 
+         * @return builder
+         * 
+         */
         public Builder effectiveAutomaticClusterUpdateWorkspace(AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgs effectiveAutomaticClusterUpdateWorkspace) {
             return effectiveAutomaticClusterUpdateWorkspace(Output.of(effectiveAutomaticClusterUpdateWorkspace));
         }
 
         /**
-         * @param effectiveBooleanVal (BooleanMessage)
+         * @param effectiveBooleanVal (BooleanMessage) - Effective setting value for boolean type setting. This is the final effective value of setting. To set a value use boolean_val
          * 
          * @return builder
          * 
@@ -297,7 +485,7 @@ public final class AccountSettingV2State extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param effectiveBooleanVal (BooleanMessage)
+         * @param effectiveBooleanVal (BooleanMessage) - Effective setting value for boolean type setting. This is the final effective value of setting. To set a value use boolean_val
          * 
          * @return builder
          * 
@@ -307,7 +495,7 @@ public final class AccountSettingV2State extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param effectiveIntegerVal (IntegerMessage)
+         * @param effectiveIntegerVal (IntegerMessage) - Effective setting value for integer type setting. This is the final effective value of setting. To set a value use integer_val
          * 
          * @return builder
          * 
@@ -318,7 +506,7 @@ public final class AccountSettingV2State extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param effectiveIntegerVal (IntegerMessage)
+         * @param effectiveIntegerVal (IntegerMessage) - Effective setting value for integer type setting. This is the final effective value of setting. To set a value use integer_val
          * 
          * @return builder
          * 
@@ -327,26 +515,50 @@ public final class AccountSettingV2State extends com.pulumi.resources.ResourceAr
             return effectiveIntegerVal(Output.of(effectiveIntegerVal));
         }
 
+        /**
+         * @param effectivePersonalCompute Effective setting value for personalCompute setting. This is the final effective value of setting. To set a value use personal_compute
+         * 
+         * @return builder
+         * 
+         */
         public Builder effectivePersonalCompute(@Nullable Output<AccountSettingV2EffectivePersonalComputeArgs> effectivePersonalCompute) {
             $.effectivePersonalCompute = effectivePersonalCompute;
             return this;
         }
 
+        /**
+         * @param effectivePersonalCompute Effective setting value for personalCompute setting. This is the final effective value of setting. To set a value use personal_compute
+         * 
+         * @return builder
+         * 
+         */
         public Builder effectivePersonalCompute(AccountSettingV2EffectivePersonalComputeArgs effectivePersonalCompute) {
             return effectivePersonalCompute(Output.of(effectivePersonalCompute));
         }
 
+        /**
+         * @param effectiveRestrictWorkspaceAdmins Effective setting value for restrictWorkspaceAdmins setting. This is the final effective value of setting. To set a value use restrict_workspace_admins
+         * 
+         * @return builder
+         * 
+         */
         public Builder effectiveRestrictWorkspaceAdmins(@Nullable Output<AccountSettingV2EffectiveRestrictWorkspaceAdminsArgs> effectiveRestrictWorkspaceAdmins) {
             $.effectiveRestrictWorkspaceAdmins = effectiveRestrictWorkspaceAdmins;
             return this;
         }
 
+        /**
+         * @param effectiveRestrictWorkspaceAdmins Effective setting value for restrictWorkspaceAdmins setting. This is the final effective value of setting. To set a value use restrict_workspace_admins
+         * 
+         * @return builder
+         * 
+         */
         public Builder effectiveRestrictWorkspaceAdmins(AccountSettingV2EffectiveRestrictWorkspaceAdminsArgs effectiveRestrictWorkspaceAdmins) {
             return effectiveRestrictWorkspaceAdmins(Output.of(effectiveRestrictWorkspaceAdmins));
         }
 
         /**
-         * @param effectiveStringVal (StringMessage)
+         * @param effectiveStringVal (StringMessage) - Effective setting value for string type setting. This is the final effective value of setting. To set a value use string_val
          * 
          * @return builder
          * 
@@ -357,7 +569,7 @@ public final class AccountSettingV2State extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param effectiveStringVal (StringMessage)
+         * @param effectiveStringVal (StringMessage) - Effective setting value for string type setting. This is the final effective value of setting. To set a value use string_val
          * 
          * @return builder
          * 
@@ -366,11 +578,23 @@ public final class AccountSettingV2State extends com.pulumi.resources.ResourceAr
             return effectiveStringVal(Output.of(effectiveStringVal));
         }
 
+        /**
+         * @param integerVal Setting value for integer type setting. This is the setting value set by consumers, check effectiveIntegerVal for final setting value
+         * 
+         * @return builder
+         * 
+         */
         public Builder integerVal(@Nullable Output<AccountSettingV2IntegerValArgs> integerVal) {
             $.integerVal = integerVal;
             return this;
         }
 
+        /**
+         * @param integerVal Setting value for integer type setting. This is the setting value set by consumers, check effectiveIntegerVal for final setting value
+         * 
+         * @return builder
+         * 
+         */
         public Builder integerVal(AccountSettingV2IntegerValArgs integerVal) {
             return integerVal(Output.of(integerVal));
         }
@@ -396,29 +620,65 @@ public final class AccountSettingV2State extends com.pulumi.resources.ResourceAr
             return name(Output.of(name));
         }
 
+        /**
+         * @param personalCompute Setting value for personalCompute setting. This is the setting value set by consumers, check effectivePersonalCompute for final setting value
+         * 
+         * @return builder
+         * 
+         */
         public Builder personalCompute(@Nullable Output<AccountSettingV2PersonalComputeArgs> personalCompute) {
             $.personalCompute = personalCompute;
             return this;
         }
 
+        /**
+         * @param personalCompute Setting value for personalCompute setting. This is the setting value set by consumers, check effectivePersonalCompute for final setting value
+         * 
+         * @return builder
+         * 
+         */
         public Builder personalCompute(AccountSettingV2PersonalComputeArgs personalCompute) {
             return personalCompute(Output.of(personalCompute));
         }
 
+        /**
+         * @param restrictWorkspaceAdmins Setting value for restrictWorkspaceAdmins setting. This is the setting value set by consumers, check effectiveRestrictWorkspaceAdmins for final setting value
+         * 
+         * @return builder
+         * 
+         */
         public Builder restrictWorkspaceAdmins(@Nullable Output<AccountSettingV2RestrictWorkspaceAdminsArgs> restrictWorkspaceAdmins) {
             $.restrictWorkspaceAdmins = restrictWorkspaceAdmins;
             return this;
         }
 
+        /**
+         * @param restrictWorkspaceAdmins Setting value for restrictWorkspaceAdmins setting. This is the setting value set by consumers, check effectiveRestrictWorkspaceAdmins for final setting value
+         * 
+         * @return builder
+         * 
+         */
         public Builder restrictWorkspaceAdmins(AccountSettingV2RestrictWorkspaceAdminsArgs restrictWorkspaceAdmins) {
             return restrictWorkspaceAdmins(Output.of(restrictWorkspaceAdmins));
         }
 
+        /**
+         * @param stringVal Setting value for string type setting. This is the setting value set by consumers, check effectiveStringVal for final setting value
+         * 
+         * @return builder
+         * 
+         */
         public Builder stringVal(@Nullable Output<AccountSettingV2StringValArgs> stringVal) {
             $.stringVal = stringVal;
             return this;
         }
 
+        /**
+         * @param stringVal Setting value for string type setting. This is the setting value set by consumers, check effectiveStringVal for final setting value
+         * 
+         * @return builder
+         * 
+         */
         public Builder stringVal(AccountSettingV2StringValArgs stringVal) {
             return stringVal(Output.of(stringVal));
         }

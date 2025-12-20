@@ -64,7 +64,7 @@ class PipelineArgs:
         The set of arguments for constructing a Pipeline resource.
         :param pulumi.Input[_builtins.bool] allow_duplicate_names: Optional boolean flag. If false, deployment will fail if name conflicts with that of another pipeline. default is `false`.
         :param pulumi.Input[_builtins.str] budget_policy_id: optional string specifying ID of the budget policy for this Lakeflow Declarative Pipeline.
-        :param pulumi.Input[_builtins.str] catalog: The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
+        :param pulumi.Input[_builtins.str] catalog: The name of default catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline if you switch from `storage` to `catalog` or vice versa.  If pipeline was already created with `catalog` set, the value could be changed.* (Conflicts with `storage`).
         :param pulumi.Input[_builtins.str] channel: optional name of the release channel for Spark version used by Lakeflow Declarative Pipeline.  Supported values are: `CURRENT` (default) and `PREVIEW`.
         :param pulumi.Input[Sequence[pulumi.Input['PipelineClusterArgs']]] clusters: blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that Lakeflow Declarative Pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/api/workspace/pipelines/create#clusters).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] configuration: An optional list of values to apply to the entire pipeline. Elements must be formatted as key:value pairs.
@@ -193,7 +193,7 @@ class PipelineArgs:
     @pulumi.getter
     def catalog(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
+        The name of default catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline if you switch from `storage` to `catalog` or vice versa.  If pipeline was already created with `catalog` set, the value could be changed.* (Conflicts with `storage`).
         """
         return pulumi.get(self, "catalog")
 
@@ -632,7 +632,7 @@ class _PipelineState:
         Input properties used for looking up and filtering Pipeline resources.
         :param pulumi.Input[_builtins.bool] allow_duplicate_names: Optional boolean flag. If false, deployment will fail if name conflicts with that of another pipeline. default is `false`.
         :param pulumi.Input[_builtins.str] budget_policy_id: optional string specifying ID of the budget policy for this Lakeflow Declarative Pipeline.
-        :param pulumi.Input[_builtins.str] catalog: The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
+        :param pulumi.Input[_builtins.str] catalog: The name of default catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline if you switch from `storage` to `catalog` or vice versa.  If pipeline was already created with `catalog` set, the value could be changed.* (Conflicts with `storage`).
         :param pulumi.Input[_builtins.str] channel: optional name of the release channel for Spark version used by Lakeflow Declarative Pipeline.  Supported values are: `CURRENT` (default) and `PREVIEW`.
         :param pulumi.Input[Sequence[pulumi.Input['PipelineClusterArgs']]] clusters: blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that Lakeflow Declarative Pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/api/workspace/pipelines/create#clusters).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] configuration: An optional list of values to apply to the entire pipeline. Elements must be formatted as key:value pairs.
@@ -761,7 +761,7 @@ class _PipelineState:
     @pulumi.getter
     def catalog(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
+        The name of default catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline if you switch from `storage` to `catalog` or vice versa.  If pipeline was already created with `catalog` set, the value could be changed.* (Conflicts with `storage`).
         """
         return pulumi.get(self, "catalog")
 
@@ -1305,7 +1305,7 @@ class Pipeline(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] allow_duplicate_names: Optional boolean flag. If false, deployment will fail if name conflicts with that of another pipeline. default is `false`.
         :param pulumi.Input[_builtins.str] budget_policy_id: optional string specifying ID of the budget policy for this Lakeflow Declarative Pipeline.
-        :param pulumi.Input[_builtins.str] catalog: The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
+        :param pulumi.Input[_builtins.str] catalog: The name of default catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline if you switch from `storage` to `catalog` or vice versa.  If pipeline was already created with `catalog` set, the value could be changed.* (Conflicts with `storage`).
         :param pulumi.Input[_builtins.str] channel: optional name of the release channel for Spark version used by Lakeflow Declarative Pipeline.  Supported values are: `CURRENT` (default) and `PREVIEW`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['PipelineClusterArgs', 'PipelineClusterArgsDict']]]] clusters: blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that Lakeflow Declarative Pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/api/workspace/pipelines/create#clusters).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] configuration: An optional list of values to apply to the entire pipeline. Elements must be formatted as key:value pairs.
@@ -1594,7 +1594,7 @@ class Pipeline(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] allow_duplicate_names: Optional boolean flag. If false, deployment will fail if name conflicts with that of another pipeline. default is `false`.
         :param pulumi.Input[_builtins.str] budget_policy_id: optional string specifying ID of the budget policy for this Lakeflow Declarative Pipeline.
-        :param pulumi.Input[_builtins.str] catalog: The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
+        :param pulumi.Input[_builtins.str] catalog: The name of default catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline if you switch from `storage` to `catalog` or vice versa.  If pipeline was already created with `catalog` set, the value could be changed.* (Conflicts with `storage`).
         :param pulumi.Input[_builtins.str] channel: optional name of the release channel for Spark version used by Lakeflow Declarative Pipeline.  Supported values are: `CURRENT` (default) and `PREVIEW`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['PipelineClusterArgs', 'PipelineClusterArgsDict']]]] clusters: blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that Lakeflow Declarative Pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/api/workspace/pipelines/create#clusters).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] configuration: An optional list of values to apply to the entire pipeline. Elements must be formatted as key:value pairs.
@@ -1681,7 +1681,7 @@ class Pipeline(pulumi.CustomResource):
     @pulumi.getter
     def catalog(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
+        The name of default catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline if you switch from `storage` to `catalog` or vice versa.  If pipeline was already created with `catalog` set, the value could be changed.* (Conflicts with `storage`).
         """
         return pulumi.get(self, "catalog")
 

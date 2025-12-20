@@ -27,7 +27,10 @@ class GetFeatureEngineeringMaterializedFeatureResult:
     """
     A collection of values returned by getFeatureEngineeringMaterializedFeature.
     """
-    def __init__(__self__, feature_name=None, id=None, last_materialization_time=None, materialized_feature_id=None, offline_store_config=None, online_store_config=None, pipeline_schedule_state=None, table_name=None):
+    def __init__(__self__, cron_schedule=None, feature_name=None, id=None, last_materialization_time=None, materialized_feature_id=None, offline_store_config=None, online_store_config=None, pipeline_schedule_state=None, table_name=None):
+        if cron_schedule and not isinstance(cron_schedule, str):
+            raise TypeError("Expected argument 'cron_schedule' to be a str")
+        pulumi.set(__self__, "cron_schedule", cron_schedule)
         if feature_name and not isinstance(feature_name, str):
             raise TypeError("Expected argument 'feature_name' to be a str")
         pulumi.set(__self__, "feature_name", feature_name)
@@ -52,6 +55,14 @@ class GetFeatureEngineeringMaterializedFeatureResult:
         if table_name and not isinstance(table_name, str):
             raise TypeError("Expected argument 'table_name' to be a str")
         pulumi.set(__self__, "table_name", table_name)
+
+    @_builtins.property
+    @pulumi.getter(name="cronSchedule")
+    def cron_schedule(self) -> _builtins.str:
+        """
+        (string) - The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone
+        """
+        return pulumi.get(self, "cron_schedule")
 
     @_builtins.property
     @pulumi.getter(name="featureName")
@@ -98,7 +109,7 @@ class GetFeatureEngineeringMaterializedFeatureResult:
     @pulumi.getter(name="onlineStoreConfig")
     def online_store_config(self) -> 'outputs.GetFeatureEngineeringMaterializedFeatureOnlineStoreConfigResult':
         """
-        (OnlineStore)
+        (OnlineStoreConfig)
         """
         return pulumi.get(self, "online_store_config")
 
@@ -125,6 +136,7 @@ class AwaitableGetFeatureEngineeringMaterializedFeatureResult(GetFeatureEngineer
         if False:
             yield self
         return GetFeatureEngineeringMaterializedFeatureResult(
+            cron_schedule=self.cron_schedule,
             feature_name=self.feature_name,
             id=self.id,
             last_materialization_time=self.last_materialization_time,
@@ -149,6 +161,7 @@ def get_feature_engineering_materialized_feature(materialized_feature_id: Option
     __ret__ = pulumi.runtime.invoke('databricks:index/getFeatureEngineeringMaterializedFeature:getFeatureEngineeringMaterializedFeature', __args__, opts=opts, typ=GetFeatureEngineeringMaterializedFeatureResult).value
 
     return AwaitableGetFeatureEngineeringMaterializedFeatureResult(
+        cron_schedule=pulumi.get(__ret__, 'cron_schedule'),
         feature_name=pulumi.get(__ret__, 'feature_name'),
         id=pulumi.get(__ret__, 'id'),
         last_materialization_time=pulumi.get(__ret__, 'last_materialization_time'),
@@ -170,6 +183,7 @@ def get_feature_engineering_materialized_feature_output(materialized_feature_id:
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getFeatureEngineeringMaterializedFeature:getFeatureEngineeringMaterializedFeature', __args__, opts=opts, typ=GetFeatureEngineeringMaterializedFeatureResult)
     return __ret__.apply(lambda __response__: GetFeatureEngineeringMaterializedFeatureResult(
+        cron_schedule=pulumi.get(__response__, 'cron_schedule'),
         feature_name=pulumi.get(__response__, 'feature_name'),
         id=pulumi.get(__response__, 'id'),
         last_materialization_time=pulumi.get(__response__, 'last_materialization_time'),

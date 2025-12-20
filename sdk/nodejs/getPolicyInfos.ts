@@ -7,7 +7,25 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
+ * Retrieves a list of all ABAC (Attribute-Based Access Control) policies defined on a specific securable in Unity Catalog. Use this data source to query all policies for a given securable type and name.
+ *
+ * ABAC policies provide governance for enforcing compliance through data attributes, allowing flexible and comprehensive access control based on conditions rather than specific resources.
+ *
+ * ## Example Usage
+ *
+ * ### List All Policies on a Securable
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const catalogPolicies = databricks.getPolicyInfos({
+ *     onSecurableType: "catalog",
+ *     onSecurableFullname: "main",
+ * });
+ * ```
  */
 export function getPolicyInfos(args: GetPolicyInfosArgs, opts?: pulumi.InvokeOptions): Promise<GetPolicyInfosResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -68,7 +86,25 @@ export interface GetPolicyInfosResult {
     readonly policies: outputs.GetPolicyInfosPolicy[];
 }
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
+ * Retrieves a list of all ABAC (Attribute-Based Access Control) policies defined on a specific securable in Unity Catalog. Use this data source to query all policies for a given securable type and name.
+ *
+ * ABAC policies provide governance for enforcing compliance through data attributes, allowing flexible and comprehensive access control based on conditions rather than specific resources.
+ *
+ * ## Example Usage
+ *
+ * ### List All Policies on a Securable
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const catalogPolicies = databricks.getPolicyInfos({
+ *     onSecurableType: "catalog",
+ *     onSecurableFullname: "main",
+ * });
+ * ```
  */
 export function getPolicyInfosOutput(args: GetPolicyInfosOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPolicyInfosResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

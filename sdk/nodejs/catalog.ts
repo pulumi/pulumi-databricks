@@ -145,7 +145,7 @@ export class Catalog extends pulumi.CustomResource {
      * For Delta Sharing Catalogs: the name of the delta sharing provider. Change forces creation of a new resource.
      */
     declare public readonly providerName: pulumi.Output<string | undefined>;
-    declare public readonly provisioningInfo: pulumi.Output<outputs.CatalogProvisioningInfo | undefined>;
+    declare public readonly provisioningInfo: pulumi.Output<outputs.CatalogProvisioningInfo>;
     /**
      * the type of Unity Catalog securable.
      */

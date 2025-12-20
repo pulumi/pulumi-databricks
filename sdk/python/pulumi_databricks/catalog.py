@@ -1078,7 +1078,7 @@ class Catalog(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="provisioningInfo")
-    def provisioning_info(self) -> pulumi.Output[Optional['outputs.CatalogProvisioningInfo']]:
+    def provisioning_info(self) -> pulumi.Output['outputs.CatalogProvisioningInfo']:
         return pulumi.get(self, "provisioning_info")
 
     @_builtins.property

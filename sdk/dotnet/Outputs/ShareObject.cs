@@ -23,9 +23,12 @@ namespace Pulumi.Databricks.Outputs
         /// Description about the object.
         /// </summary>
         public readonly string? Comment;
+        /// <summary>
+        /// The content of the notebook file when the data object type is NOTEBOOK_FILE. This should be base64 encoded. Required for adding a NOTEBOOK_FILE, optional for updating, ignored for other types.
+        /// </summary>
         public readonly string? Content;
         /// <summary>
-        /// Type of the data object, currently `TABLE`, `VIEW`, `SCHEMA`, `VOLUME`, and `MODEL` are supported.
+        /// Type of the data object. Supported types: `TABLE`, `FOREIGN_TABLE`, `SCHEMA`, `VIEW`, `MATERIALIZED_VIEW`, `STREAMING_TABLE`, `MODEL`, `NOTEBOOK_FILE`, `FUNCTION`, `FEATURE_SPEC`, and `VOLUME`.
         /// </summary>
         public readonly string DataObjectType;
         public readonly bool? EffectiveCdfEnabled;
@@ -43,6 +46,9 @@ namespace Pulumi.Databricks.Outputs
         /// Full name of the object, e.g. `catalog.schema.name` for a tables, views, volumes and models, or `catalog.schema` for schemas.
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Array of partitions for the shared data.
+        /// </summary>
         public readonly ImmutableArray<Outputs.ShareObjectPartition> Partitions;
         /// <summary>
         /// A user-provided new name for the data object within the share. If this new name is not provided, the object's original name will be used as the `SharedAs` name. The `SharedAs` name must be unique within a Share. Change forces creation of a new resource.

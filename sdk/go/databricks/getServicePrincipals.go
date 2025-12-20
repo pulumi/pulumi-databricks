@@ -43,19 +43,23 @@ func GetServicePrincipals(ctx *pulumi.Context, args *GetServicePrincipalsArgs, o
 
 // A collection of arguments for invoking getServicePrincipals.
 type GetServicePrincipalsArgs struct {
-	// List of `applicationIds` of service principals.  Individual service principal can be retrieved using ServicePrincipal data source
+	// List of `applicationIds` of service principals.  Individual service principal can be retrieved using ServicePrincipal data source or from `servicePrincipals` attribute.
 	ApplicationIds []string `pulumi:"applicationIds"`
 	// Only return ServicePrincipal display name that match the given name string
 	DisplayNameContains *string `pulumi:"displayNameContains"`
+	// List of objects describing individual service principals. Each object has the following attributes:
+	ServicePrincipals []GetServicePrincipalsServicePrincipal `pulumi:"servicePrincipals"`
 }
 
 // A collection of values returned by getServicePrincipals.
 type GetServicePrincipalsResult struct {
-	// List of `applicationIds` of service principals.  Individual service principal can be retrieved using ServicePrincipal data source
+	// List of `applicationIds` of service principals.  Individual service principal can be retrieved using ServicePrincipal data source or from `servicePrincipals` attribute.
 	ApplicationIds      []string `pulumi:"applicationIds"`
 	DisplayNameContains string   `pulumi:"displayNameContains"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
+	// List of objects describing individual service principals. Each object has the following attributes:
+	ServicePrincipals []GetServicePrincipalsServicePrincipal `pulumi:"servicePrincipals"`
 }
 
 func GetServicePrincipalsOutput(ctx *pulumi.Context, args GetServicePrincipalsOutputArgs, opts ...pulumi.InvokeOption) GetServicePrincipalsResultOutput {
@@ -69,10 +73,12 @@ func GetServicePrincipalsOutput(ctx *pulumi.Context, args GetServicePrincipalsOu
 
 // A collection of arguments for invoking getServicePrincipals.
 type GetServicePrincipalsOutputArgs struct {
-	// List of `applicationIds` of service principals.  Individual service principal can be retrieved using ServicePrincipal data source
+	// List of `applicationIds` of service principals.  Individual service principal can be retrieved using ServicePrincipal data source or from `servicePrincipals` attribute.
 	ApplicationIds pulumi.StringArrayInput `pulumi:"applicationIds"`
 	// Only return ServicePrincipal display name that match the given name string
 	DisplayNameContains pulumi.StringPtrInput `pulumi:"displayNameContains"`
+	// List of objects describing individual service principals. Each object has the following attributes:
+	ServicePrincipals GetServicePrincipalsServicePrincipalArrayInput `pulumi:"servicePrincipals"`
 }
 
 func (GetServicePrincipalsOutputArgs) ElementType() reflect.Type {
@@ -94,7 +100,7 @@ func (o GetServicePrincipalsResultOutput) ToGetServicePrincipalsResultOutputWith
 	return o
 }
 
-// List of `applicationIds` of service principals.  Individual service principal can be retrieved using ServicePrincipal data source
+// List of `applicationIds` of service principals.  Individual service principal can be retrieved using ServicePrincipal data source or from `servicePrincipals` attribute.
 func (o GetServicePrincipalsResultOutput) ApplicationIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetServicePrincipalsResult) []string { return v.ApplicationIds }).(pulumi.StringArrayOutput)
 }
@@ -106,6 +112,11 @@ func (o GetServicePrincipalsResultOutput) DisplayNameContains() pulumi.StringOut
 // The provider-assigned unique ID for this managed resource.
 func (o GetServicePrincipalsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServicePrincipalsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// List of objects describing individual service principals. Each object has the following attributes:
+func (o GetServicePrincipalsResultOutput) ServicePrincipals() GetServicePrincipalsServicePrincipalArrayOutput {
+	return o.ApplyT(func(v GetServicePrincipalsResult) []GetServicePrincipalsServicePrincipal { return v.ServicePrincipals }).(GetServicePrincipalsServicePrincipalArrayOutput)
 }
 
 func init() {

@@ -22,12 +22,20 @@ public final class ClusterAwsAttributes {
      * 
      */
     private @Nullable Integer ebsVolumeCount;
+    /**
+     * @return If using gp3 volumes, what IOPS to use for the disk. If this is not set, the maximum performance of a gp2 volume with the same volume size will be used.
+     * 
+     */
     private @Nullable Integer ebsVolumeIops;
     /**
      * @return The size of each EBS volume (in GiB) launched for each instance. For general purpose SSD, this value must be within the range 100 - 4096. For throughput optimized HDD, this value must be within the range 500 - 4096. Custom EBS volumes cannot be specified for the legacy node types (memory-optimized and compute-optimized).
      * 
      */
     private @Nullable Integer ebsVolumeSize;
+    /**
+     * @return If using gp3 volumes, what throughput to use for the disk. If this is not set, the maximum performance of a gp2 volume with the same volume size will be used.
+     * 
+     */
     private @Nullable Integer ebsVolumeThroughput;
     /**
      * @return The type of EBS volumes that will be launched with this cluster. Valid values are `GENERAL_PURPOSE_SSD` or `THROUGHPUT_OPTIMIZED_HDD`. Use this option only if you&#39;re not picking *Delta Optimized `i3.*`* node types.
@@ -70,6 +78,10 @@ public final class ClusterAwsAttributes {
     public Optional<Integer> ebsVolumeCount() {
         return Optional.ofNullable(this.ebsVolumeCount);
     }
+    /**
+     * @return If using gp3 volumes, what IOPS to use for the disk. If this is not set, the maximum performance of a gp2 volume with the same volume size will be used.
+     * 
+     */
     public Optional<Integer> ebsVolumeIops() {
         return Optional.ofNullable(this.ebsVolumeIops);
     }
@@ -80,6 +92,10 @@ public final class ClusterAwsAttributes {
     public Optional<Integer> ebsVolumeSize() {
         return Optional.ofNullable(this.ebsVolumeSize);
     }
+    /**
+     * @return If using gp3 volumes, what throughput to use for the disk. If this is not set, the maximum performance of a gp2 volume with the same volume size will be used.
+     * 
+     */
     public Optional<Integer> ebsVolumeThroughput() {
         return Optional.ofNullable(this.ebsVolumeThroughput);
     }

@@ -12,22 +12,12 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class FeatureEngineeringMaterializedFeatureOfflineStoreConfigGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The Unity Catalog catalog name
-        /// </summary>
         [Input("catalogName", required: true)]
         public Input<string> CatalogName { get; set; } = null!;
 
-        /// <summary>
-        /// The Unity Catalog schema name
-        /// </summary>
         [Input("schemaName", required: true)]
         public Input<string> SchemaName { get; set; } = null!;
 
-        /// <summary>
-        /// Prefix for Unity Catalog table name.
-        /// The materialized feature will be stored in a table with this prefix and a generated postfix
-        /// </summary>
         [Input("tableNamePrefix", required: true)]
         public Input<string> TableNamePrefix { get; set; } = null!;
 

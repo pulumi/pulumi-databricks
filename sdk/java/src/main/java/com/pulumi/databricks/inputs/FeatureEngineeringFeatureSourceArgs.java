@@ -6,6 +6,7 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.FeatureEngineeringFeatureSourceDeltaTableSourceArgs;
+import com.pulumi.databricks.inputs.FeatureEngineeringFeatureSourceKafkaSourceArgs;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -22,10 +23,18 @@ public final class FeatureEngineeringFeatureSourceArgs extends com.pulumi.resour
         return Optional.ofNullable(this.deltaTableSource);
     }
 
+    @Import(name="kafkaSource")
+    private @Nullable Output<FeatureEngineeringFeatureSourceKafkaSourceArgs> kafkaSource;
+
+    public Optional<Output<FeatureEngineeringFeatureSourceKafkaSourceArgs>> kafkaSource() {
+        return Optional.ofNullable(this.kafkaSource);
+    }
+
     private FeatureEngineeringFeatureSourceArgs() {}
 
     private FeatureEngineeringFeatureSourceArgs(FeatureEngineeringFeatureSourceArgs $) {
         this.deltaTableSource = $.deltaTableSource;
+        this.kafkaSource = $.kafkaSource;
     }
 
     public static Builder builder() {
@@ -53,6 +62,15 @@ public final class FeatureEngineeringFeatureSourceArgs extends com.pulumi.resour
 
         public Builder deltaTableSource(FeatureEngineeringFeatureSourceDeltaTableSourceArgs deltaTableSource) {
             return deltaTableSource(Output.of(deltaTableSource));
+        }
+
+        public Builder kafkaSource(@Nullable Output<FeatureEngineeringFeatureSourceKafkaSourceArgs> kafkaSource) {
+            $.kafkaSource = kafkaSource;
+            return this;
+        }
+
+        public Builder kafkaSource(FeatureEngineeringFeatureSourceKafkaSourceArgs kafkaSource) {
+            return kafkaSource(Output.of(kafkaSource));
         }
 
         public FeatureEngineeringFeatureSourceArgs build() {

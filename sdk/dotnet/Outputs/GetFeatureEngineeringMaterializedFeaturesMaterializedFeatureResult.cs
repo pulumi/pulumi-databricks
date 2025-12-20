@@ -14,6 +14,10 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureResult
     {
         /// <summary>
+        /// (string) - The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone
+        /// </summary>
+        public readonly string CronSchedule;
+        /// <summary>
         /// Filter by feature name. If specified, only materialized features materialized from this feature will be returned
         /// </summary>
         public readonly string FeatureName;
@@ -31,7 +35,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly Outputs.GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOfflineStoreConfigResult OfflineStoreConfig;
         /// <summary>
-        /// (OnlineStore)
+        /// (OnlineStoreConfig)
         /// </summary>
         public readonly Outputs.GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOnlineStoreConfigResult OnlineStoreConfig;
         /// <summary>
@@ -45,6 +49,8 @@ namespace Pulumi.Databricks.Outputs
 
         [OutputConstructor]
         private GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureResult(
+            string cronSchedule,
+
             string featureName,
 
             string lastMaterializationTime,
@@ -59,6 +65,7 @@ namespace Pulumi.Databricks.Outputs
 
             string tableName)
         {
+            CronSchedule = cronSchedule;
             FeatureName = featureName;
             LastMaterializationTime = lastMaterializationTime;
             MaterializedFeatureId = materializedFeatureId;

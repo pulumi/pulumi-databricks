@@ -202,6 +202,49 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
+ * ## Tag policy usage
+ *
+ * Access to tag policies could be controlled with this resource:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const accountId = "00000000-0000-0000-0000-000000000000";
+ * // account level group
+ * const ds = databricks.getGroup({
+ *     displayName: "Data Science",
+ * });
+ * const john = databricks.getUser({
+ *     userName: "john.doe@example.com",
+ * });
+ * const _this = new databricks.TagPolicy("this", {
+ *     tagKey: "example_tag_key",
+ *     description: "Example description.",
+ *     values: [
+ *         {
+ *             name: "example_value_2",
+ *         },
+ *         {
+ *             name: "example_value_3",
+ *         },
+ *     ],
+ * });
+ * const tagPolicyUsage = new databricks.AccessControlRuleSet("tag_policy_usage", {
+ *     name: pulumi.interpolate`accounts/${accountId}/tagPolicies/${_this.id}/ruleSets/default`,
+ *     grantRules: [
+ *         {
+ *             principals: [john.then(john => john.aclPrincipalId)],
+ *             role: "roles/tagPolicy.manager",
+ *         },
+ *         {
+ *             principals: [ds.then(ds => ds.aclPrincipalId)],
+ *             role: "roles/tagPolicy.assigner",
+ *         },
+ *     ],
+ * });
+ * ```
+ *
  * ## Related Resources
  *
  * The following resources are often used in the same context:
@@ -251,6 +294,7 @@ export class AccessControlRuleSet extends pulumi.CustomResource {
      * * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default` - access control for a specific service principal.
      * * `accounts/{account_id}/groups/{group_id}/ruleSets/default` - access control for a specific group.
      * * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default` - access control for a specific budget policy.
+     * * `accounts/{account_id}/tagPolicies/{tag_policy_id}/ruleSets/default` - access control for a specific tag policy.
      */
     declare public readonly name: pulumi.Output<string>;
 
@@ -298,6 +342,7 @@ export interface AccessControlRuleSetState {
      * * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default` - access control for a specific service principal.
      * * `accounts/{account_id}/groups/{group_id}/ruleSets/default` - access control for a specific group.
      * * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default` - access control for a specific budget policy.
+     * * `accounts/{account_id}/tagPolicies/{tag_policy_id}/ruleSets/default` - access control for a specific tag policy.
      */
     name?: pulumi.Input<string>;
 }
@@ -318,6 +363,7 @@ export interface AccessControlRuleSetArgs {
      * * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default` - access control for a specific service principal.
      * * `accounts/{account_id}/groups/{group_id}/ruleSets/default` - access control for a specific group.
      * * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default` - access control for a specific budget policy.
+     * * `accounts/{account_id}/tagPolicies/{tag_policy_id}/ruleSets/default` - access control for a specific tag policy.
      */
     name?: pulumi.Input<string>;
 }

@@ -106,8 +106,8 @@ class MwsWorkspacesArgs:
         if gcp_managed_network_config is not None:
             pulumi.set(__self__, "gcp_managed_network_config", gcp_managed_network_config)
         if gke_config is not None:
-            warnings.warn("""gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.97.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""", DeprecationWarning)
-            pulumi.log.warn("""gke_config is deprecated: gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.97.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+            warnings.warn("""gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.100.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""", DeprecationWarning)
+            pulumi.log.warn("""gke_config is deprecated: gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.100.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
         if gke_config is not None:
             pulumi.set(__self__, "gke_config", gke_config)
         if is_no_public_ip_enabled is not None:
@@ -300,7 +300,7 @@ class MwsWorkspacesArgs:
 
     @_builtins.property
     @pulumi.getter(name="gkeConfig")
-    @_utilities.deprecated("""gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.97.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+    @_utilities.deprecated("""gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.100.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
     def gke_config(self) -> Optional[pulumi.Input['MwsWorkspacesGkeConfigArgs']]:
         return pulumi.get(self, "gke_config")
 
@@ -564,8 +564,8 @@ class _MwsWorkspacesState:
         if gcp_workspace_sa is not None:
             pulumi.set(__self__, "gcp_workspace_sa", gcp_workspace_sa)
         if gke_config is not None:
-            warnings.warn("""gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.97.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""", DeprecationWarning)
-            pulumi.log.warn("""gke_config is deprecated: gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.97.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+            warnings.warn("""gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.100.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""", DeprecationWarning)
+            pulumi.log.warn("""gke_config is deprecated: gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.100.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
         if gke_config is not None:
             pulumi.set(__self__, "gke_config", gke_config)
         if is_no_public_ip_enabled is not None:
@@ -772,7 +772,7 @@ class _MwsWorkspacesState:
 
     @_builtins.property
     @pulumi.getter(name="gkeConfig")
-    @_utilities.deprecated("""gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.97.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+    @_utilities.deprecated("""gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.100.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
     def gke_config(self) -> Optional[pulumi.Input['MwsWorkspacesGkeConfigArgs']]:
         return pulumi.get(self, "gke_config")
 
@@ -999,11 +999,11 @@ class MwsWorkspaces(pulumi.CustomResource):
 
         ## Example Usage
 
-        ### Creating a serverless workspace in AWS
+        ### Creating a serverless workspace in AWS and GCP
 
         Creating a serverless workspace does not require any prerequisite resources. Simply specify `compute_mode = "SERVERLESS"` when creating the workspace. Serverless workspaces must not include `credentials_id` or `storage_configuration_id`.
 
-        To use serverless workspaces, you must enroll in the [Default Storage preview](https://docs.databricks.com/aws/en/storage/express-storage).
+        On [AWS](https://docs.databricks.com/aws/en/admin/workspace/serverless-workspaces):
 
         ```python
         import pulumi
@@ -1013,6 +1013,19 @@ class MwsWorkspaces(pulumi.CustomResource):
             account_id="",
             workspace_name="serverless-workspace",
             aws_region="us-east-1",
+            compute_mode="SERVERLESS")
+        ```
+
+        On [GCP](https://docs.databricks.com/gcp/en/admin/workspace/serverless-workspaces):
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        serverless_workspace = databricks.MwsWorkspaces("serverless_workspace",
+            account_id="",
+            workspace_name="serverless-workspace",
+            location="us-east4",
             compute_mode="SERVERLESS")
         ```
 
@@ -1260,11 +1273,11 @@ class MwsWorkspaces(pulumi.CustomResource):
 
         ## Example Usage
 
-        ### Creating a serverless workspace in AWS
+        ### Creating a serverless workspace in AWS and GCP
 
         Creating a serverless workspace does not require any prerequisite resources. Simply specify `compute_mode = "SERVERLESS"` when creating the workspace. Serverless workspaces must not include `credentials_id` or `storage_configuration_id`.
 
-        To use serverless workspaces, you must enroll in the [Default Storage preview](https://docs.databricks.com/aws/en/storage/express-storage).
+        On [AWS](https://docs.databricks.com/aws/en/admin/workspace/serverless-workspaces):
 
         ```python
         import pulumi
@@ -1274,6 +1287,19 @@ class MwsWorkspaces(pulumi.CustomResource):
             account_id="",
             workspace_name="serverless-workspace",
             aws_region="us-east-1",
+            compute_mode="SERVERLESS")
+        ```
+
+        On [GCP](https://docs.databricks.com/gcp/en/admin/workspace/serverless-workspaces):
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        serverless_workspace = databricks.MwsWorkspaces("serverless_workspace",
+            account_id="",
+            workspace_name="serverless-workspace",
+            location="us-east4",
             compute_mode="SERVERLESS")
         ```
 
@@ -1792,7 +1818,7 @@ class MwsWorkspaces(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="gkeConfig")
-    @_utilities.deprecated("""gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.97.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+    @_utilities.deprecated("""gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.100.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
     def gke_config(self) -> pulumi.Output[Optional['outputs.MwsWorkspacesGkeConfig']]:
         return pulumi.get(self, "gke_config")
 

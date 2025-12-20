@@ -19,6 +19,21 @@ public final class FeatureEngineeringMaterializedFeatureArgs extends com.pulumi.
     public static final FeatureEngineeringMaterializedFeatureArgs Empty = new FeatureEngineeringMaterializedFeatureArgs();
 
     /**
+     * The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone
+     * 
+     */
+    @Import(name="cronSchedule")
+    private @Nullable Output<String> cronSchedule;
+
+    /**
+     * @return The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone
+     * 
+     */
+    public Optional<Output<String>> cronSchedule() {
+        return Optional.ofNullable(this.cronSchedule);
+    }
+
+    /**
      * The full name of the feature in Unity Catalog
      * 
      */
@@ -65,6 +80,7 @@ public final class FeatureEngineeringMaterializedFeatureArgs extends com.pulumi.
     private FeatureEngineeringMaterializedFeatureArgs() {}
 
     private FeatureEngineeringMaterializedFeatureArgs(FeatureEngineeringMaterializedFeatureArgs $) {
+        this.cronSchedule = $.cronSchedule;
         this.featureName = $.featureName;
         this.offlineStoreConfig = $.offlineStoreConfig;
         this.onlineStoreConfig = $.onlineStoreConfig;
@@ -87,6 +103,27 @@ public final class FeatureEngineeringMaterializedFeatureArgs extends com.pulumi.
 
         public Builder(FeatureEngineeringMaterializedFeatureArgs defaults) {
             $ = new FeatureEngineeringMaterializedFeatureArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param cronSchedule The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cronSchedule(@Nullable Output<String> cronSchedule) {
+            $.cronSchedule = cronSchedule;
+            return this;
+        }
+
+        /**
+         * @param cronSchedule The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cronSchedule(String cronSchedule) {
+            return cronSchedule(Output.of(cronSchedule));
         }
 
         /**

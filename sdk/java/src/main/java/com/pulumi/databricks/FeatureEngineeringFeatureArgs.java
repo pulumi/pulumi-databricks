@@ -6,6 +6,7 @@ package com.pulumi.databricks;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.FeatureEngineeringFeatureFunctionArgs;
+import com.pulumi.databricks.inputs.FeatureEngineeringFeatureLineageContextArgs;
 import com.pulumi.databricks.inputs.FeatureEngineeringFeatureSourceArgs;
 import com.pulumi.databricks.inputs.FeatureEngineeringFeatureTimeWindowArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -95,6 +96,13 @@ public final class FeatureEngineeringFeatureArgs extends com.pulumi.resources.Re
         return this.inputs;
     }
 
+    @Import(name="lineageContext")
+    private @Nullable Output<FeatureEngineeringFeatureLineageContextArgs> lineageContext;
+
+    public Optional<Output<FeatureEngineeringFeatureLineageContextArgs>> lineageContext() {
+        return Optional.ofNullable(this.lineageContext);
+    }
+
     /**
      * The data source of the feature
      * 
@@ -114,15 +122,15 @@ public final class FeatureEngineeringFeatureArgs extends com.pulumi.resources.Re
      * The time window in which the feature is computed
      * 
      */
-    @Import(name="timeWindow", required=true)
-    private Output<FeatureEngineeringFeatureTimeWindowArgs> timeWindow;
+    @Import(name="timeWindow")
+    private @Nullable Output<FeatureEngineeringFeatureTimeWindowArgs> timeWindow;
 
     /**
      * @return The time window in which the feature is computed
      * 
      */
-    public Output<FeatureEngineeringFeatureTimeWindowArgs> timeWindow() {
-        return this.timeWindow;
+    public Optional<Output<FeatureEngineeringFeatureTimeWindowArgs>> timeWindow() {
+        return Optional.ofNullable(this.timeWindow);
     }
 
     private FeatureEngineeringFeatureArgs() {}
@@ -133,6 +141,7 @@ public final class FeatureEngineeringFeatureArgs extends com.pulumi.resources.Re
         this.fullName = $.fullName;
         this.function = $.function;
         this.inputs = $.inputs;
+        this.lineageContext = $.lineageContext;
         this.source = $.source;
         this.timeWindow = $.timeWindow;
     }
@@ -270,6 +279,15 @@ public final class FeatureEngineeringFeatureArgs extends com.pulumi.resources.Re
             return inputs(List.of(inputs));
         }
 
+        public Builder lineageContext(@Nullable Output<FeatureEngineeringFeatureLineageContextArgs> lineageContext) {
+            $.lineageContext = lineageContext;
+            return this;
+        }
+
+        public Builder lineageContext(FeatureEngineeringFeatureLineageContextArgs lineageContext) {
+            return lineageContext(Output.of(lineageContext));
+        }
+
         /**
          * @param source The data source of the feature
          * 
@@ -297,7 +315,7 @@ public final class FeatureEngineeringFeatureArgs extends com.pulumi.resources.Re
          * @return builder
          * 
          */
-        public Builder timeWindow(Output<FeatureEngineeringFeatureTimeWindowArgs> timeWindow) {
+        public Builder timeWindow(@Nullable Output<FeatureEngineeringFeatureTimeWindowArgs> timeWindow) {
             $.timeWindow = timeWindow;
             return this;
         }
@@ -324,9 +342,6 @@ public final class FeatureEngineeringFeatureArgs extends com.pulumi.resources.Re
             }
             if ($.source == null) {
                 throw new MissingRequiredPropertyException("FeatureEngineeringFeatureArgs", "source");
-            }
-            if ($.timeWindow == null) {
-                throw new MissingRequiredPropertyException("FeatureEngineeringFeatureArgs", "timeWindow");
             }
             return $;
         }

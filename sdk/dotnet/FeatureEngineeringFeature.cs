@@ -65,6 +65,9 @@ namespace Pulumi.Databricks
         [Output("inputs")]
         public Output<ImmutableArray<string>> Inputs { get; private set; } = null!;
 
+        [Output("lineageContext")]
+        public Output<Outputs.FeatureEngineeringFeatureLineageContext?> LineageContext { get; private set; } = null!;
+
         /// <summary>
         /// The data source of the feature
         /// </summary>
@@ -75,7 +78,7 @@ namespace Pulumi.Databricks
         /// The time window in which the feature is computed
         /// </summary>
         [Output("timeWindow")]
-        public Output<Outputs.FeatureEngineeringFeatureTimeWindow> TimeWindow { get; private set; } = null!;
+        public Output<Outputs.FeatureEngineeringFeatureTimeWindow?> TimeWindow { get; private set; } = null!;
 
 
         /// <summary>
@@ -159,6 +162,9 @@ namespace Pulumi.Databricks
             set => _inputs = value;
         }
 
+        [Input("lineageContext")]
+        public Input<Inputs.FeatureEngineeringFeatureLineageContextArgs>? LineageContext { get; set; }
+
         /// <summary>
         /// The data source of the feature
         /// </summary>
@@ -168,8 +174,8 @@ namespace Pulumi.Databricks
         /// <summary>
         /// The time window in which the feature is computed
         /// </summary>
-        [Input("timeWindow", required: true)]
-        public Input<Inputs.FeatureEngineeringFeatureTimeWindowArgs> TimeWindow { get; set; } = null!;
+        [Input("timeWindow")]
+        public Input<Inputs.FeatureEngineeringFeatureTimeWindowArgs>? TimeWindow { get; set; }
 
         public FeatureEngineeringFeatureArgs()
         {
@@ -214,6 +220,9 @@ namespace Pulumi.Databricks
             get => _inputs ?? (_inputs = new InputList<string>());
             set => _inputs = value;
         }
+
+        [Input("lineageContext")]
+        public Input<Inputs.FeatureEngineeringFeatureLineageContextGetArgs>? LineageContext { get; set; }
 
         /// <summary>
         /// The data source of the feature

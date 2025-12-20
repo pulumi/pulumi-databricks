@@ -4,6 +4,7 @@
 package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetServicePrincipalsServicePrincipal;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -16,14 +17,14 @@ public final class GetServicePrincipalsPlainArgs extends com.pulumi.resources.In
     public static final GetServicePrincipalsPlainArgs Empty = new GetServicePrincipalsPlainArgs();
 
     /**
-     * List of `applicationIds` of service principals.  Individual service principal can be retrieved using databricks.ServicePrincipal data source
+     * List of `applicationIds` of service principals.  Individual service principal can be retrieved using databricks.ServicePrincipal data source or from `servicePrincipals` attribute.
      * 
      */
     @Import(name="applicationIds")
     private @Nullable List<String> applicationIds;
 
     /**
-     * @return List of `applicationIds` of service principals.  Individual service principal can be retrieved using databricks.ServicePrincipal data source
+     * @return List of `applicationIds` of service principals.  Individual service principal can be retrieved using databricks.ServicePrincipal data source or from `servicePrincipals` attribute.
      * 
      */
     public Optional<List<String>> applicationIds() {
@@ -45,11 +46,27 @@ public final class GetServicePrincipalsPlainArgs extends com.pulumi.resources.In
         return Optional.ofNullable(this.displayNameContains);
     }
 
+    /**
+     * List of objects describing individual service principals. Each object has the following attributes:
+     * 
+     */
+    @Import(name="servicePrincipals")
+    private @Nullable List<GetServicePrincipalsServicePrincipal> servicePrincipals;
+
+    /**
+     * @return List of objects describing individual service principals. Each object has the following attributes:
+     * 
+     */
+    public Optional<List<GetServicePrincipalsServicePrincipal>> servicePrincipals() {
+        return Optional.ofNullable(this.servicePrincipals);
+    }
+
     private GetServicePrincipalsPlainArgs() {}
 
     private GetServicePrincipalsPlainArgs(GetServicePrincipalsPlainArgs $) {
         this.applicationIds = $.applicationIds;
         this.displayNameContains = $.displayNameContains;
+        this.servicePrincipals = $.servicePrincipals;
     }
 
     public static Builder builder() {
@@ -71,7 +88,7 @@ public final class GetServicePrincipalsPlainArgs extends com.pulumi.resources.In
         }
 
         /**
-         * @param applicationIds List of `applicationIds` of service principals.  Individual service principal can be retrieved using databricks.ServicePrincipal data source
+         * @param applicationIds List of `applicationIds` of service principals.  Individual service principal can be retrieved using databricks.ServicePrincipal data source or from `servicePrincipals` attribute.
          * 
          * @return builder
          * 
@@ -82,7 +99,7 @@ public final class GetServicePrincipalsPlainArgs extends com.pulumi.resources.In
         }
 
         /**
-         * @param applicationIds List of `applicationIds` of service principals.  Individual service principal can be retrieved using databricks.ServicePrincipal data source
+         * @param applicationIds List of `applicationIds` of service principals.  Individual service principal can be retrieved using databricks.ServicePrincipal data source or from `servicePrincipals` attribute.
          * 
          * @return builder
          * 
@@ -100,6 +117,27 @@ public final class GetServicePrincipalsPlainArgs extends com.pulumi.resources.In
         public Builder displayNameContains(@Nullable String displayNameContains) {
             $.displayNameContains = displayNameContains;
             return this;
+        }
+
+        /**
+         * @param servicePrincipals List of objects describing individual service principals. Each object has the following attributes:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder servicePrincipals(@Nullable List<GetServicePrincipalsServicePrincipal> servicePrincipals) {
+            $.servicePrincipals = servicePrincipals;
+            return this;
+        }
+
+        /**
+         * @param servicePrincipals List of objects describing individual service principals. Each object has the following attributes:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder servicePrincipals(GetServicePrincipalsServicePrincipal... servicePrincipals) {
+            return servicePrincipals(List.of(servicePrincipals));
         }
 
         public GetServicePrincipalsPlainArgs build() {

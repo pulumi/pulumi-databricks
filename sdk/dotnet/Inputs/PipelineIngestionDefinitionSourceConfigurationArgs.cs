@@ -13,7 +13,7 @@ namespace Pulumi.Databricks.Inputs
     public sealed class PipelineIngestionDefinitionSourceConfigurationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `Storage`).
+        /// The name of default catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline if you switch from `Storage` to `Catalog` or vice versa.  If pipeline was already created with `Catalog` set, the value could be changed.* (Conflicts with `Storage`).
         /// </summary>
         [Input("catalog")]
         public Input<Inputs.PipelineIngestionDefinitionSourceConfigurationCatalogArgs>? Catalog { get; set; }

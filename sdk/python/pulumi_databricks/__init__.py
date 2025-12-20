@@ -46,6 +46,7 @@ from .entity_tag_assignment import *
 from .external_location import *
 from .external_metadata import *
 from .feature_engineering_feature import *
+from .feature_engineering_kafka_config import *
 from .feature_engineering_materialized_feature import *
 from .file import *
 from .get_account_federation_policies import *
@@ -96,6 +97,8 @@ from .get_external_metadata import *
 from .get_external_metadatas import *
 from .get_feature_engineering_feature import *
 from .get_feature_engineering_features import *
+from .get_feature_engineering_kafka_config import *
+from .get_feature_engineering_kafka_configs import *
 from .get_feature_engineering_materialized_feature import *
 from .get_feature_engineering_materialized_features import *
 from .get_functions import *
@@ -148,9 +151,12 @@ from .get_tables import *
 from .get_tag_policies import *
 from .get_tag_policy import *
 from .get_user import *
+from .get_users import *
 from .get_views import *
 from .get_volume import *
 from .get_volumes import *
+from .get_workspace_entity_tag_assignment import *
+from .get_workspace_entity_tag_assignments import *
 from .get_workspace_network_option import *
 from .get_workspace_setting_v2 import *
 from .get_zones import *
@@ -240,6 +246,7 @@ from .vector_search_index import *
 from .volume import *
 from .workspace_binding import *
 from .workspace_conf import *
+from .workspace_entity_tag_assignment import *
 from .workspace_file import *
 from .workspace_network_option import *
 from .workspace_setting_v2 import *
@@ -574,6 +581,14 @@ _utilities.register(
   "fqn": "pulumi_databricks",
   "classes": {
    "databricks:index/featureEngineeringFeature:FeatureEngineeringFeature": "FeatureEngineeringFeature"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/featureEngineeringKafkaConfig",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/featureEngineeringKafkaConfig:FeatureEngineeringKafkaConfig": "FeatureEngineeringKafkaConfig"
   }
  },
  {
@@ -1270,6 +1285,14 @@ _utilities.register(
   "fqn": "pulumi_databricks",
   "classes": {
    "databricks:index/workspaceConf:WorkspaceConf": "WorkspaceConf"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/workspaceEntityTagAssignment",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/workspaceEntityTagAssignment:WorkspaceEntityTagAssignment": "WorkspaceEntityTagAssignment"
   }
  },
  {

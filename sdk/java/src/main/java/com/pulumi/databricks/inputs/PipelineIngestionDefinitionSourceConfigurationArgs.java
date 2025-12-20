@@ -16,14 +16,14 @@ public final class PipelineIngestionDefinitionSourceConfigurationArgs extends co
     public static final PipelineIngestionDefinitionSourceConfigurationArgs Empty = new PipelineIngestionDefinitionSourceConfigurationArgs();
 
     /**
-     * The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
+     * The name of default catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline if you switch from `storage` to `catalog` or vice versa.  If pipeline was already created with `catalog` set, the value could be changed.* (Conflicts with `storage`).
      * 
      */
     @Import(name="catalog")
     private @Nullable Output<PipelineIngestionDefinitionSourceConfigurationCatalogArgs> catalog;
 
     /**
-     * @return The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
+     * @return The name of default catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline if you switch from `storage` to `catalog` or vice versa.  If pipeline was already created with `catalog` set, the value could be changed.* (Conflicts with `storage`).
      * 
      */
     public Optional<Output<PipelineIngestionDefinitionSourceConfigurationCatalogArgs>> catalog() {
@@ -55,7 +55,7 @@ public final class PipelineIngestionDefinitionSourceConfigurationArgs extends co
         }
 
         /**
-         * @param catalog The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
+         * @param catalog The name of default catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline if you switch from `storage` to `catalog` or vice versa.  If pipeline was already created with `catalog` set, the value could be changed.* (Conflicts with `storage`).
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class PipelineIngestionDefinitionSourceConfigurationArgs extends co
         }
 
         /**
-         * @param catalog The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
+         * @param catalog The name of default catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline if you switch from `storage` to `catalog` or vice versa.  If pipeline was already created with `catalog` set, the value could be changed.* (Conflicts with `storage`).
          * 
          * @return builder
          * 

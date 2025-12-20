@@ -13,13 +13,19 @@ namespace Pulumi.Databricks.Inputs
     public sealed class PipelineGatewayDefinitionGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Immutable. The Unity Catalog connection this gateway pipeline uses to communicate with the source.
+        /// Deprecated, Immutable. The Unity Catalog connection this gateway pipeline uses to communicate with the source. *Use `ConnectionName` instead!*
         /// </summary>
         [Input("connectionId")]
         public Input<string>? ConnectionId { get; set; }
 
+        /// <summary>
+        /// Immutable. The Unity Catalog connection that this gateway pipeline uses to communicate with the source.
+        /// </summary>
         [Input("connectionName", required: true)]
         public Input<string> ConnectionName { get; set; } = null!;
+
+        [Input("connectionParameters")]
+        public Input<Inputs.PipelineGatewayDefinitionConnectionParametersGetArgs>? ConnectionParameters { get; set; }
 
         /// <summary>
         /// Required, Immutable. The name of the catalog for the gateway pipeline's storage location.

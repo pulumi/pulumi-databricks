@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetFeatureEngineeringFeaturesFeatureFunction;
+import com.pulumi.databricks.outputs.GetFeatureEngineeringFeaturesFeatureLineageContext;
 import com.pulumi.databricks.outputs.GetFeatureEngineeringFeaturesFeatureSource;
 import com.pulumi.databricks.outputs.GetFeatureEngineeringFeaturesFeatureTimeWindow;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -39,6 +40,7 @@ public final class GetFeatureEngineeringFeaturesFeature {
      * 
      */
     private List<String> inputs;
+    private GetFeatureEngineeringFeaturesFeatureLineageContext lineageContext;
     /**
      * @return (DataSource) - The data source of the feature
      * 
@@ -86,6 +88,9 @@ public final class GetFeatureEngineeringFeaturesFeature {
     public List<String> inputs() {
         return this.inputs;
     }
+    public GetFeatureEngineeringFeaturesFeatureLineageContext lineageContext() {
+        return this.lineageContext;
+    }
     /**
      * @return (DataSource) - The data source of the feature
      * 
@@ -115,6 +120,7 @@ public final class GetFeatureEngineeringFeaturesFeature {
         private String fullName;
         private GetFeatureEngineeringFeaturesFeatureFunction function;
         private List<String> inputs;
+        private GetFeatureEngineeringFeaturesFeatureLineageContext lineageContext;
         private GetFeatureEngineeringFeaturesFeatureSource source;
         private GetFeatureEngineeringFeaturesFeatureTimeWindow timeWindow;
         public Builder() {}
@@ -125,6 +131,7 @@ public final class GetFeatureEngineeringFeaturesFeature {
     	      this.fullName = defaults.fullName;
     	      this.function = defaults.function;
     	      this.inputs = defaults.inputs;
+    	      this.lineageContext = defaults.lineageContext;
     	      this.source = defaults.source;
     	      this.timeWindow = defaults.timeWindow;
         }
@@ -173,6 +180,14 @@ public final class GetFeatureEngineeringFeaturesFeature {
             return inputs(List.of(inputs));
         }
         @CustomType.Setter
+        public Builder lineageContext(GetFeatureEngineeringFeaturesFeatureLineageContext lineageContext) {
+            if (lineageContext == null) {
+              throw new MissingRequiredPropertyException("GetFeatureEngineeringFeaturesFeature", "lineageContext");
+            }
+            this.lineageContext = lineageContext;
+            return this;
+        }
+        @CustomType.Setter
         public Builder source(GetFeatureEngineeringFeaturesFeatureSource source) {
             if (source == null) {
               throw new MissingRequiredPropertyException("GetFeatureEngineeringFeaturesFeature", "source");
@@ -195,6 +210,7 @@ public final class GetFeatureEngineeringFeaturesFeature {
             _resultValue.fullName = fullName;
             _resultValue.function = function;
             _resultValue.inputs = inputs;
+            _resultValue.lineageContext = lineageContext;
             _resultValue.source = source;
             _resultValue.timeWindow = timeWindow;
             return _resultValue;

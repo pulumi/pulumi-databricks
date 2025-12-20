@@ -155,7 +155,7 @@ namespace Pulumi.Databricks
 
     public sealed class RfaAccessRequestDestinationsArgs : global::Pulumi.ResourceArgs
     {
-        [Input("destinations", required: true)]
+        [Input("destinations")]
         private InputList<Inputs.RfaAccessRequestDestinationsDestinationArgs>? _destinations;
 
         /// <summary>

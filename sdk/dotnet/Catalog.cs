@@ -166,7 +166,7 @@ namespace Pulumi.Databricks
         public Output<string?> ProviderName { get; private set; } = null!;
 
         [Output("provisioningInfo")]
-        public Output<Outputs.CatalogProvisioningInfo?> ProvisioningInfo { get; private set; } = null!;
+        public Output<Outputs.CatalogProvisioningInfo> ProvisioningInfo { get; private set; } = null!;
 
         /// <summary>
         /// the type of Unity Catalog securable.

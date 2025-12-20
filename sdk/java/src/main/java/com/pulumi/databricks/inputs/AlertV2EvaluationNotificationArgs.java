@@ -48,14 +48,18 @@ public final class AlertV2EvaluationNotificationArgs extends com.pulumi.resource
     }
 
     /**
-     * Number of seconds an alert must wait after being triggered to rearm itself. After rearming, it can be triggered again. If 0 or not specified, the alert will not be triggered again
+     * Number of seconds an alert waits after being triggered before it is allowed to send another notification.
+     * If set to 0 or omitted, the alert will not send any further notifications after the first trigger
+     * Setting this value to 1 allows the alert to send a notification on every evaluation where the condition is met, effectively making it always retrigger for notification purposes
      * 
      */
     @Import(name="retriggerSeconds")
     private @Nullable Output<Integer> retriggerSeconds;
 
     /**
-     * @return Number of seconds an alert must wait after being triggered to rearm itself. After rearming, it can be triggered again. If 0 or not specified, the alert will not be triggered again
+     * @return Number of seconds an alert waits after being triggered before it is allowed to send another notification.
+     * If set to 0 or omitted, the alert will not send any further notifications after the first trigger
+     * Setting this value to 1 allows the alert to send a notification on every evaluation where the condition is met, effectively making it always retrigger for notification purposes
      * 
      */
     public Optional<Output<Integer>> retriggerSeconds() {
@@ -137,7 +141,9 @@ public final class AlertV2EvaluationNotificationArgs extends com.pulumi.resource
         }
 
         /**
-         * @param retriggerSeconds Number of seconds an alert must wait after being triggered to rearm itself. After rearming, it can be triggered again. If 0 or not specified, the alert will not be triggered again
+         * @param retriggerSeconds Number of seconds an alert waits after being triggered before it is allowed to send another notification.
+         * If set to 0 or omitted, the alert will not send any further notifications after the first trigger
+         * Setting this value to 1 allows the alert to send a notification on every evaluation where the condition is met, effectively making it always retrigger for notification purposes
          * 
          * @return builder
          * 
@@ -148,7 +154,9 @@ public final class AlertV2EvaluationNotificationArgs extends com.pulumi.resource
         }
 
         /**
-         * @param retriggerSeconds Number of seconds an alert must wait after being triggered to rearm itself. After rearming, it can be triggered again. If 0 or not specified, the alert will not be triggered again
+         * @param retriggerSeconds Number of seconds an alert waits after being triggered before it is allowed to send another notification.
+         * If set to 0 or omitted, the alert will not send any further notifications after the first trigger
+         * Setting this value to 1 allows the alert to send a notification on every evaluation where the condition is met, effectively making it always retrigger for notification purposes
          * 
          * @return builder
          * 

@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
 /**
  * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
- * This data source can be used to list all tag policies in the account.
+ * This data source can be used to list all tag policies in the account. Manage tag policy permissions using the `databricks.AccessControlRuleSet` resource.
  *
  * > **Note** This resource can only be used with a workspace-level provider!
  *
@@ -59,7 +59,7 @@ export interface GetTagPoliciesResult {
 /**
  * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
- * This data source can be used to list all tag policies in the account.
+ * This data source can be used to list all tag policies in the account. Manage tag policy permissions using the `databricks.AccessControlRuleSet` resource.
  *
  * > **Note** This resource can only be used with a workspace-level provider!
  *

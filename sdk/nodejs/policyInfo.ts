@@ -7,7 +7,69 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
+ * Attribute-Based Access Control (ABAC) policies in Unity Catalog provide high leverage governance for enforcing compliance policies. With ABAC policies, access is controlled in a hierarchical and scalable manner, based on data attributes rather than specific resources, enabling more flexible and comprehensive access control.
+ *
+ * ABAC policies in Unity Catalog support conditions on governance tags and the user identity. Callers must have the `MANAGE` privilege on a securable to view, create, update, or delete ABAC policies.
+ *
+ * ## Example Usage
+ *
+ * ### Row Filter Policy
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const piiRowFilter = new databricks.PolicyInfo("pii_row_filter", {
+ *     onSecurableType: "catalog",
+ *     onSecurableFullname: "main",
+ *     name: "pii_data_policy",
+ *     policyType: "POLICY_TYPE_ROW_FILTER",
+ *     forSecurableType: "table",
+ *     toPrincipals: ["account users"],
+ *     whenCondition: "hasTag('pii')",
+ *     matchColumns: [{
+ *         condition: "hasTag('pii')",
+ *         alias: "pii_col",
+ *     }],
+ *     rowFilter: {
+ *         functionName: "main.filters.mask_pii_rows",
+ *         usings: [{
+ *             alias: "pii_col",
+ *         }],
+ *     },
+ * });
+ * ```
+ *
+ * ### Column Mask Policy
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const sensitiveColumnMask = new databricks.PolicyInfo("sensitive_column_mask", {
+ *     onSecurableType: "schema",
+ *     onSecurableFullname: "main.finance",
+ *     name: "sensitive_data_mask",
+ *     policyType: "POLICY_TYPE_COLUMN_MASK",
+ *     forSecurableType: "table",
+ *     toPrincipals: ["account users"],
+ *     exceptPrincipals: ["finance_admins"],
+ *     whenCondition: "hasTag('pii')",
+ *     matchColumns: [{
+ *         condition: "hasTag('pii')",
+ *         alias: "sensitive_col",
+ *     }],
+ *     columnMask: {
+ *         functionName: "main.masks.redact_sensitive",
+ *         onColumn: "sensitive_col",
+ *         usings: [{
+ *             constant: "4",
+ *         }],
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

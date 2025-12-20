@@ -14,6 +14,10 @@ namespace Pulumi.Databricks.Outputs
     public sealed class DatabaseSyncedDatabaseTableSpecNewPipelineSpec
     {
         /// <summary>
+        /// Budget policy to set on the newly created pipeline
+        /// </summary>
+        public readonly string? BudgetPolicyId;
+        /// <summary>
         /// This field needs to be specified if the destination catalog is a managed postgres catalog.
         /// 
         /// UC catalog for the pipeline to store intermediate files (checkpoints, event logs etc).
@@ -30,10 +34,13 @@ namespace Pulumi.Databricks.Outputs
 
         [OutputConstructor]
         private DatabaseSyncedDatabaseTableSpecNewPipelineSpec(
+            string? budgetPolicyId,
+
             string? storageCatalog,
 
             string? storageSchema)
         {
+            BudgetPolicyId = budgetPolicyId;
             StorageCatalog = storageCatalog;
             StorageSchema = storageSchema;
         }

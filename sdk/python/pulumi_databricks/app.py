@@ -32,7 +32,7 @@ class AppArgs:
         """
         The set of arguments for constructing a App resource.
         :param pulumi.Input[_builtins.str] budget_policy_id: The Budget Policy ID set for this resource.
-        :param pulumi.Input[_builtins.str] compute_size: A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`, `LIQUID`.
+        :param pulumi.Input[_builtins.str] compute_size: A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`.
         :param pulumi.Input[_builtins.str] description: The description of the app.
         :param pulumi.Input[_builtins.str] name: The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
         :param pulumi.Input[Sequence[pulumi.Input['AppResourceArgs']]] resources: A list of resources that the app have access to.
@@ -71,7 +71,7 @@ class AppArgs:
     @pulumi.getter(name="computeSize")
     def compute_size(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`, `LIQUID`.
+        A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`.
         """
         return pulumi.get(self, "compute_size")
 
@@ -178,7 +178,7 @@ class _AppState:
         Input properties used for looking up and filtering App resources.
         :param pulumi.Input['AppAppStatusArgs'] app_status: attribute
         :param pulumi.Input[_builtins.str] budget_policy_id: The Budget Policy ID set for this resource.
-        :param pulumi.Input[_builtins.str] compute_size: A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`, `LIQUID`.
+        :param pulumi.Input[_builtins.str] compute_size: A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`.
         :param pulumi.Input['AppComputeStatusArgs'] compute_status: attribute
         :param pulumi.Input[_builtins.str] create_time: The creation time of the app.
         :param pulumi.Input[_builtins.str] creator: The email of the user that created the app.
@@ -284,7 +284,7 @@ class _AppState:
     @pulumi.getter(name="computeSize")
     def compute_size(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`, `LIQUID`.
+        A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`.
         """
         return pulumi.get(self, "compute_size")
 
@@ -618,7 +618,7 @@ class App(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] budget_policy_id: The Budget Policy ID set for this resource.
-        :param pulumi.Input[_builtins.str] compute_size: A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`, `LIQUID`.
+        :param pulumi.Input[_builtins.str] compute_size: A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`.
         :param pulumi.Input[_builtins.str] description: The description of the app.
         :param pulumi.Input[_builtins.str] name: The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AppResourceArgs', 'AppResourceArgsDict']]]] resources: A list of resources that the app have access to.
@@ -801,7 +801,7 @@ class App(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['AppAppStatusArgs', 'AppAppStatusArgsDict']] app_status: attribute
         :param pulumi.Input[_builtins.str] budget_policy_id: The Budget Policy ID set for this resource.
-        :param pulumi.Input[_builtins.str] compute_size: A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`, `LIQUID`.
+        :param pulumi.Input[_builtins.str] compute_size: A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`.
         :param pulumi.Input[Union['AppComputeStatusArgs', 'AppComputeStatusArgsDict']] compute_status: attribute
         :param pulumi.Input[_builtins.str] create_time: The creation time of the app.
         :param pulumi.Input[_builtins.str] creator: The email of the user that created the app.
@@ -875,7 +875,7 @@ class App(pulumi.CustomResource):
     @pulumi.getter(name="computeSize")
     def compute_size(self) -> pulumi.Output[_builtins.str]:
         """
-        A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`, `LIQUID`.
+        A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`.
         """
         return pulumi.get(self, "compute_size")
 

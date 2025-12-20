@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.JobTriggerFileArrival;
+import com.pulumi.databricks.outputs.JobTriggerModel;
 import com.pulumi.databricks.outputs.JobTriggerPeriodic;
 import com.pulumi.databricks.outputs.JobTriggerTableUpdate;
 import java.lang.String;
@@ -19,6 +20,7 @@ public final class JobTrigger {
      * 
      */
     private @Nullable JobTriggerFileArrival fileArrival;
+    private @Nullable JobTriggerModel model;
     /**
      * @return Indicate whether this trigger is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pauseStatus` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pauseStatus`.
      * 
@@ -42,6 +44,9 @@ public final class JobTrigger {
      */
     public Optional<JobTriggerFileArrival> fileArrival() {
         return Optional.ofNullable(this.fileArrival);
+    }
+    public Optional<JobTriggerModel> model() {
+        return Optional.ofNullable(this.model);
     }
     /**
      * @return Indicate whether this trigger is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pauseStatus` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pauseStatus`.
@@ -75,6 +80,7 @@ public final class JobTrigger {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable JobTriggerFileArrival fileArrival;
+        private @Nullable JobTriggerModel model;
         private @Nullable String pauseStatus;
         private @Nullable JobTriggerPeriodic periodic;
         private @Nullable JobTriggerTableUpdate tableUpdate;
@@ -82,6 +88,7 @@ public final class JobTrigger {
         public Builder(JobTrigger defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.fileArrival = defaults.fileArrival;
+    	      this.model = defaults.model;
     	      this.pauseStatus = defaults.pauseStatus;
     	      this.periodic = defaults.periodic;
     	      this.tableUpdate = defaults.tableUpdate;
@@ -91,6 +98,12 @@ public final class JobTrigger {
         public Builder fileArrival(@Nullable JobTriggerFileArrival fileArrival) {
 
             this.fileArrival = fileArrival;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder model(@Nullable JobTriggerModel model) {
+
+            this.model = model;
             return this;
         }
         @CustomType.Setter
@@ -114,6 +127,7 @@ public final class JobTrigger {
         public JobTrigger build() {
             final var _resultValue = new JobTrigger();
             _resultValue.fileArrival = fileArrival;
+            _resultValue.model = model;
             _resultValue.pauseStatus = pauseStatus;
             _resultValue.periodic = periodic;
             _resultValue.tableUpdate = tableUpdate;

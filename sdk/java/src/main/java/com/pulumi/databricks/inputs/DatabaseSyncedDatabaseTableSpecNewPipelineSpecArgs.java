@@ -16,6 +16,21 @@ public final class DatabaseSyncedDatabaseTableSpecNewPipelineSpecArgs extends co
     public static final DatabaseSyncedDatabaseTableSpecNewPipelineSpecArgs Empty = new DatabaseSyncedDatabaseTableSpecNewPipelineSpecArgs();
 
     /**
+     * Budget policy to set on the newly created pipeline
+     * 
+     */
+    @Import(name="budgetPolicyId")
+    private @Nullable Output<String> budgetPolicyId;
+
+    /**
+     * @return Budget policy to set on the newly created pipeline
+     * 
+     */
+    public Optional<Output<String>> budgetPolicyId() {
+        return Optional.ofNullable(this.budgetPolicyId);
+    }
+
+    /**
      * This field needs to be specified if the destination catalog is a managed postgres catalog.
      * 
      * UC catalog for the pipeline to store intermediate files (checkpoints, event logs etc).
@@ -60,6 +75,7 @@ public final class DatabaseSyncedDatabaseTableSpecNewPipelineSpecArgs extends co
     private DatabaseSyncedDatabaseTableSpecNewPipelineSpecArgs() {}
 
     private DatabaseSyncedDatabaseTableSpecNewPipelineSpecArgs(DatabaseSyncedDatabaseTableSpecNewPipelineSpecArgs $) {
+        this.budgetPolicyId = $.budgetPolicyId;
         this.storageCatalog = $.storageCatalog;
         this.storageSchema = $.storageSchema;
     }
@@ -80,6 +96,27 @@ public final class DatabaseSyncedDatabaseTableSpecNewPipelineSpecArgs extends co
 
         public Builder(DatabaseSyncedDatabaseTableSpecNewPipelineSpecArgs defaults) {
             $ = new DatabaseSyncedDatabaseTableSpecNewPipelineSpecArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param budgetPolicyId Budget policy to set on the newly created pipeline
+         * 
+         * @return builder
+         * 
+         */
+        public Builder budgetPolicyId(@Nullable Output<String> budgetPolicyId) {
+            $.budgetPolicyId = budgetPolicyId;
+            return this;
+        }
+
+        /**
+         * @param budgetPolicyId Budget policy to set on the newly created pipeline
+         * 
+         * @return builder
+         * 
+         */
+        public Builder budgetPolicyId(String budgetPolicyId) {
+            return budgetPolicyId(Output.of(budgetPolicyId));
         }
 
         /**

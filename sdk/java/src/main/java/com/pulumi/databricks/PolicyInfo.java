@@ -20,7 +20,117 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * 
+ * Attribute-Based Access Control (ABAC) policies in Unity Catalog provide high leverage governance for enforcing compliance policies. With ABAC policies, access is controlled in a hierarchical and scalable manner, based on data attributes rather than specific resources, enabling more flexible and comprehensive access control.
+ * 
+ * ABAC policies in Unity Catalog support conditions on governance tags and the user identity. Callers must have the `MANAGE` privilege on a securable to view, create, update, or delete ABAC policies.
+ * 
+ * ## Example Usage
+ * 
+ * ### Row Filter Policy
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.PolicyInfo;
+ * import com.pulumi.databricks.PolicyInfoArgs;
+ * import com.pulumi.databricks.inputs.PolicyInfoMatchColumnArgs;
+ * import com.pulumi.databricks.inputs.PolicyInfoRowFilterArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var piiRowFilter = new PolicyInfo("piiRowFilter", PolicyInfoArgs.builder()
+ *             .onSecurableType("catalog")
+ *             .onSecurableFullname("main")
+ *             .name("pii_data_policy")
+ *             .policyType("POLICY_TYPE_ROW_FILTER")
+ *             .forSecurableType("table")
+ *             .toPrincipals("account users")
+ *             .whenCondition("hasTag('pii')")
+ *             .matchColumns(PolicyInfoMatchColumnArgs.builder()
+ *                 .condition("hasTag('pii')")
+ *                 .alias("pii_col")
+ *                 .build())
+ *             .rowFilter(PolicyInfoRowFilterArgs.builder()
+ *                 .functionName("main.filters.mask_pii_rows")
+ *                 .usings(PolicyInfoRowFilterUsingArgs.builder()
+ *                     .alias("pii_col")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Column Mask Policy
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.PolicyInfo;
+ * import com.pulumi.databricks.PolicyInfoArgs;
+ * import com.pulumi.databricks.inputs.PolicyInfoMatchColumnArgs;
+ * import com.pulumi.databricks.inputs.PolicyInfoColumnMaskArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var sensitiveColumnMask = new PolicyInfo("sensitiveColumnMask", PolicyInfoArgs.builder()
+ *             .onSecurableType("schema")
+ *             .onSecurableFullname("main.finance")
+ *             .name("sensitive_data_mask")
+ *             .policyType("POLICY_TYPE_COLUMN_MASK")
+ *             .forSecurableType("table")
+ *             .toPrincipals("account users")
+ *             .exceptPrincipals("finance_admins")
+ *             .whenCondition("hasTag('pii')")
+ *             .matchColumns(PolicyInfoMatchColumnArgs.builder()
+ *                 .condition("hasTag('pii')")
+ *                 .alias("sensitive_col")
+ *                 .build())
+ *             .columnMask(PolicyInfoColumnMaskArgs.builder()
+ *                 .functionName("main.masks.redact_sensitive")
+ *                 .onColumn("sensitive_col")
+ *                 .usings(PolicyInfoColumnMaskUsingArgs.builder()
+ *                     .constant("4")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 

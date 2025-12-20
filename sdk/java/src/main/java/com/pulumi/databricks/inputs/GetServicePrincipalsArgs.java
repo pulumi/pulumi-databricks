@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.GetServicePrincipalsServicePrincipalArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -17,14 +18,14 @@ public final class GetServicePrincipalsArgs extends com.pulumi.resources.InvokeA
     public static final GetServicePrincipalsArgs Empty = new GetServicePrincipalsArgs();
 
     /**
-     * List of `applicationIds` of service principals.  Individual service principal can be retrieved using databricks.ServicePrincipal data source
+     * List of `applicationIds` of service principals.  Individual service principal can be retrieved using databricks.ServicePrincipal data source or from `servicePrincipals` attribute.
      * 
      */
     @Import(name="applicationIds")
     private @Nullable Output<List<String>> applicationIds;
 
     /**
-     * @return List of `applicationIds` of service principals.  Individual service principal can be retrieved using databricks.ServicePrincipal data source
+     * @return List of `applicationIds` of service principals.  Individual service principal can be retrieved using databricks.ServicePrincipal data source or from `servicePrincipals` attribute.
      * 
      */
     public Optional<Output<List<String>>> applicationIds() {
@@ -46,11 +47,27 @@ public final class GetServicePrincipalsArgs extends com.pulumi.resources.InvokeA
         return Optional.ofNullable(this.displayNameContains);
     }
 
+    /**
+     * List of objects describing individual service principals. Each object has the following attributes:
+     * 
+     */
+    @Import(name="servicePrincipals")
+    private @Nullable Output<List<GetServicePrincipalsServicePrincipalArgs>> servicePrincipals;
+
+    /**
+     * @return List of objects describing individual service principals. Each object has the following attributes:
+     * 
+     */
+    public Optional<Output<List<GetServicePrincipalsServicePrincipalArgs>>> servicePrincipals() {
+        return Optional.ofNullable(this.servicePrincipals);
+    }
+
     private GetServicePrincipalsArgs() {}
 
     private GetServicePrincipalsArgs(GetServicePrincipalsArgs $) {
         this.applicationIds = $.applicationIds;
         this.displayNameContains = $.displayNameContains;
+        this.servicePrincipals = $.servicePrincipals;
     }
 
     public static Builder builder() {
@@ -72,7 +89,7 @@ public final class GetServicePrincipalsArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param applicationIds List of `applicationIds` of service principals.  Individual service principal can be retrieved using databricks.ServicePrincipal data source
+         * @param applicationIds List of `applicationIds` of service principals.  Individual service principal can be retrieved using databricks.ServicePrincipal data source or from `servicePrincipals` attribute.
          * 
          * @return builder
          * 
@@ -83,7 +100,7 @@ public final class GetServicePrincipalsArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param applicationIds List of `applicationIds` of service principals.  Individual service principal can be retrieved using databricks.ServicePrincipal data source
+         * @param applicationIds List of `applicationIds` of service principals.  Individual service principal can be retrieved using databricks.ServicePrincipal data source or from `servicePrincipals` attribute.
          * 
          * @return builder
          * 
@@ -93,7 +110,7 @@ public final class GetServicePrincipalsArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param applicationIds List of `applicationIds` of service principals.  Individual service principal can be retrieved using databricks.ServicePrincipal data source
+         * @param applicationIds List of `applicationIds` of service principals.  Individual service principal can be retrieved using databricks.ServicePrincipal data source or from `servicePrincipals` attribute.
          * 
          * @return builder
          * 
@@ -121,6 +138,37 @@ public final class GetServicePrincipalsArgs extends com.pulumi.resources.InvokeA
          */
         public Builder displayNameContains(String displayNameContains) {
             return displayNameContains(Output.of(displayNameContains));
+        }
+
+        /**
+         * @param servicePrincipals List of objects describing individual service principals. Each object has the following attributes:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder servicePrincipals(@Nullable Output<List<GetServicePrincipalsServicePrincipalArgs>> servicePrincipals) {
+            $.servicePrincipals = servicePrincipals;
+            return this;
+        }
+
+        /**
+         * @param servicePrincipals List of objects describing individual service principals. Each object has the following attributes:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder servicePrincipals(List<GetServicePrincipalsServicePrincipalArgs> servicePrincipals) {
+            return servicePrincipals(Output.of(servicePrincipals));
+        }
+
+        /**
+         * @param servicePrincipals List of objects describing individual service principals. Each object has the following attributes:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder servicePrincipals(GetServicePrincipalsServicePrincipalArgs... servicePrincipals) {
+            return servicePrincipals(List.of(servicePrincipals));
         }
 
         public GetServicePrincipalsArgs build() {

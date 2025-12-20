@@ -13,18 +13,8 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class FeatureEngineeringMaterializedFeatureOfflineStoreConfig
     {
-        /// <summary>
-        /// The Unity Catalog catalog name
-        /// </summary>
         public readonly string CatalogName;
-        /// <summary>
-        /// The Unity Catalog schema name
-        /// </summary>
         public readonly string SchemaName;
-        /// <summary>
-        /// Prefix for Unity Catalog table name.
-        /// The materialized feature will be stored in a table with this prefix and a generated postfix
-        /// </summary>
         public readonly string TableNamePrefix;
 
         [OutputConstructor]

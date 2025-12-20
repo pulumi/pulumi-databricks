@@ -24,6 +24,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("ebsVolumeCount")]
         public Input<int>? EbsVolumeCount { get; set; }
 
+        /// <summary>
+        /// If using gp3 volumes, what IOPS to use for the disk. If this is not set, the maximum performance of a gp2 volume with the same volume size will be used.
+        /// </summary>
         [Input("ebsVolumeIops")]
         public Input<int>? EbsVolumeIops { get; set; }
 
@@ -33,6 +36,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("ebsVolumeSize")]
         public Input<int>? EbsVolumeSize { get; set; }
 
+        /// <summary>
+        /// If using gp3 volumes, what throughput to use for the disk. If this is not set, the maximum performance of a gp2 volume with the same volume size will be used.
+        /// </summary>
         [Input("ebsVolumeThroughput")]
         public Input<int>? EbsVolumeThroughput { get; set; }
 

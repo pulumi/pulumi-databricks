@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.PipelineGatewayDefinitionConnectionParametersArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
@@ -17,25 +18,40 @@ public final class PipelineGatewayDefinitionArgs extends com.pulumi.resources.Re
     public static final PipelineGatewayDefinitionArgs Empty = new PipelineGatewayDefinitionArgs();
 
     /**
-     * Immutable. The Unity Catalog connection this gateway pipeline uses to communicate with the source.
+     * Deprecated, Immutable. The Unity Catalog connection this gateway pipeline uses to communicate with the source. *Use `connectionName` instead!*
      * 
      */
     @Import(name="connectionId")
     private @Nullable Output<String> connectionId;
 
     /**
-     * @return Immutable. The Unity Catalog connection this gateway pipeline uses to communicate with the source.
+     * @return Deprecated, Immutable. The Unity Catalog connection this gateway pipeline uses to communicate with the source. *Use `connectionName` instead!*
      * 
      */
     public Optional<Output<String>> connectionId() {
         return Optional.ofNullable(this.connectionId);
     }
 
+    /**
+     * Immutable. The Unity Catalog connection that this gateway pipeline uses to communicate with the source.
+     * 
+     */
     @Import(name="connectionName", required=true)
     private Output<String> connectionName;
 
+    /**
+     * @return Immutable. The Unity Catalog connection that this gateway pipeline uses to communicate with the source.
+     * 
+     */
     public Output<String> connectionName() {
         return this.connectionName;
+    }
+
+    @Import(name="connectionParameters")
+    private @Nullable Output<PipelineGatewayDefinitionConnectionParametersArgs> connectionParameters;
+
+    public Optional<Output<PipelineGatewayDefinitionConnectionParametersArgs>> connectionParameters() {
+        return Optional.ofNullable(this.connectionParameters);
     }
 
     /**
@@ -88,6 +104,7 @@ public final class PipelineGatewayDefinitionArgs extends com.pulumi.resources.Re
     private PipelineGatewayDefinitionArgs(PipelineGatewayDefinitionArgs $) {
         this.connectionId = $.connectionId;
         this.connectionName = $.connectionName;
+        this.connectionParameters = $.connectionParameters;
         this.gatewayStorageCatalog = $.gatewayStorageCatalog;
         this.gatewayStorageName = $.gatewayStorageName;
         this.gatewayStorageSchema = $.gatewayStorageSchema;
@@ -112,7 +129,7 @@ public final class PipelineGatewayDefinitionArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param connectionId Immutable. The Unity Catalog connection this gateway pipeline uses to communicate with the source.
+         * @param connectionId Deprecated, Immutable. The Unity Catalog connection this gateway pipeline uses to communicate with the source. *Use `connectionName` instead!*
          * 
          * @return builder
          * 
@@ -123,7 +140,7 @@ public final class PipelineGatewayDefinitionArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param connectionId Immutable. The Unity Catalog connection this gateway pipeline uses to communicate with the source.
+         * @param connectionId Deprecated, Immutable. The Unity Catalog connection this gateway pipeline uses to communicate with the source. *Use `connectionName` instead!*
          * 
          * @return builder
          * 
@@ -132,13 +149,34 @@ public final class PipelineGatewayDefinitionArgs extends com.pulumi.resources.Re
             return connectionId(Output.of(connectionId));
         }
 
+        /**
+         * @param connectionName Immutable. The Unity Catalog connection that this gateway pipeline uses to communicate with the source.
+         * 
+         * @return builder
+         * 
+         */
         public Builder connectionName(Output<String> connectionName) {
             $.connectionName = connectionName;
             return this;
         }
 
+        /**
+         * @param connectionName Immutable. The Unity Catalog connection that this gateway pipeline uses to communicate with the source.
+         * 
+         * @return builder
+         * 
+         */
         public Builder connectionName(String connectionName) {
             return connectionName(Output.of(connectionName));
+        }
+
+        public Builder connectionParameters(@Nullable Output<PipelineGatewayDefinitionConnectionParametersArgs> connectionParameters) {
+            $.connectionParameters = connectionParameters;
+            return this;
+        }
+
+        public Builder connectionParameters(PipelineGatewayDefinitionConnectionParametersArgs connectionParameters) {
+            return connectionParameters(Output.of(connectionParameters));
         }
 
         /**

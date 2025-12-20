@@ -14,7 +14,7 @@ namespace Pulumi.Databricks.Outputs
     public sealed class PipelineIngestionDefinitionSourceConfiguration
     {
         /// <summary>
-        /// The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `Storage`).
+        /// The name of default catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline if you switch from `Storage` to `Catalog` or vice versa.  If pipeline was already created with `Catalog` set, the value could be changed.* (Conflicts with `Storage`).
         /// </summary>
         public readonly Outputs.PipelineIngestionDefinitionSourceConfigurationCatalog? Catalog;
 

@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.PipelineIngestionDefinitionObjectArgs;
 import com.pulumi.databricks.inputs.PipelineIngestionDefinitionSourceConfigurationArgs;
 import com.pulumi.databricks.inputs.PipelineIngestionDefinitionTableConfigurationArgs;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -24,6 +25,13 @@ public final class PipelineIngestionDefinitionArgs extends com.pulumi.resources.
 
     public Optional<Output<String>> connectionName() {
         return Optional.ofNullable(this.connectionName);
+    }
+
+    @Import(name="ingestFromUcForeignCatalog")
+    private @Nullable Output<Boolean> ingestFromUcForeignCatalog;
+
+    public Optional<Output<Boolean>> ingestFromUcForeignCatalog() {
+        return Optional.ofNullable(this.ingestFromUcForeignCatalog);
     }
 
     @Import(name="ingestionGatewayId")
@@ -72,6 +80,7 @@ public final class PipelineIngestionDefinitionArgs extends com.pulumi.resources.
 
     private PipelineIngestionDefinitionArgs(PipelineIngestionDefinitionArgs $) {
         this.connectionName = $.connectionName;
+        this.ingestFromUcForeignCatalog = $.ingestFromUcForeignCatalog;
         this.ingestionGatewayId = $.ingestionGatewayId;
         this.netsuiteJarPath = $.netsuiteJarPath;
         this.objects = $.objects;
@@ -105,6 +114,15 @@ public final class PipelineIngestionDefinitionArgs extends com.pulumi.resources.
 
         public Builder connectionName(String connectionName) {
             return connectionName(Output.of(connectionName));
+        }
+
+        public Builder ingestFromUcForeignCatalog(@Nullable Output<Boolean> ingestFromUcForeignCatalog) {
+            $.ingestFromUcForeignCatalog = ingestFromUcForeignCatalog;
+            return this;
+        }
+
+        public Builder ingestFromUcForeignCatalog(Boolean ingestFromUcForeignCatalog) {
+            return ingestFromUcForeignCatalog(Output.of(ingestFromUcForeignCatalog));
         }
 
         public Builder ingestionGatewayId(@Nullable Output<String> ingestionGatewayId) {

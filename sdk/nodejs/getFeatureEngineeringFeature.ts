@@ -54,6 +54,7 @@ export interface GetFeatureEngineeringFeatureResult {
      * (list of string) - The input columns from which the feature is computed
      */
     readonly inputs: string[];
+    readonly lineageContext: outputs.GetFeatureEngineeringFeatureLineageContext;
     /**
      * (DataSource) - The data source of the feature
      */

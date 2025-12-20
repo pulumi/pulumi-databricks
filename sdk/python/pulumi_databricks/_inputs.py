@@ -351,10 +351,20 @@ __all__ = [
     'FeatureEngineeringFeatureFunctionArgsDict',
     'FeatureEngineeringFeatureFunctionExtraParameterArgs',
     'FeatureEngineeringFeatureFunctionExtraParameterArgsDict',
+    'FeatureEngineeringFeatureLineageContextArgs',
+    'FeatureEngineeringFeatureLineageContextArgsDict',
+    'FeatureEngineeringFeatureLineageContextJobContextArgs',
+    'FeatureEngineeringFeatureLineageContextJobContextArgsDict',
     'FeatureEngineeringFeatureSourceArgs',
     'FeatureEngineeringFeatureSourceArgsDict',
     'FeatureEngineeringFeatureSourceDeltaTableSourceArgs',
     'FeatureEngineeringFeatureSourceDeltaTableSourceArgsDict',
+    'FeatureEngineeringFeatureSourceKafkaSourceArgs',
+    'FeatureEngineeringFeatureSourceKafkaSourceArgsDict',
+    'FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierArgs',
+    'FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierArgsDict',
+    'FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierArgs',
+    'FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierArgsDict',
     'FeatureEngineeringFeatureTimeWindowArgs',
     'FeatureEngineeringFeatureTimeWindowArgsDict',
     'FeatureEngineeringFeatureTimeWindowContinuousArgs',
@@ -363,6 +373,14 @@ __all__ = [
     'FeatureEngineeringFeatureTimeWindowSlidingArgsDict',
     'FeatureEngineeringFeatureTimeWindowTumblingArgs',
     'FeatureEngineeringFeatureTimeWindowTumblingArgsDict',
+    'FeatureEngineeringKafkaConfigAuthConfigArgs',
+    'FeatureEngineeringKafkaConfigAuthConfigArgsDict',
+    'FeatureEngineeringKafkaConfigKeySchemaArgs',
+    'FeatureEngineeringKafkaConfigKeySchemaArgsDict',
+    'FeatureEngineeringKafkaConfigSubscriptionModeArgs',
+    'FeatureEngineeringKafkaConfigSubscriptionModeArgsDict',
+    'FeatureEngineeringKafkaConfigValueSchemaArgs',
+    'FeatureEngineeringKafkaConfigValueSchemaArgsDict',
     'FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgs',
     'FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgsDict',
     'FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgs',
@@ -877,6 +895,8 @@ __all__ = [
     'JobTriggerArgsDict',
     'JobTriggerFileArrivalArgs',
     'JobTriggerFileArrivalArgsDict',
+    'JobTriggerModelArgs',
+    'JobTriggerModelArgsDict',
     'JobTriggerPeriodicArgs',
     'JobTriggerPeriodicArgsDict',
     'JobTriggerTableUpdateArgs',
@@ -1167,6 +1187,8 @@ __all__ = [
     'PipelineFiltersArgsDict',
     'PipelineGatewayDefinitionArgs',
     'PipelineGatewayDefinitionArgsDict',
+    'PipelineGatewayDefinitionConnectionParametersArgs',
+    'PipelineGatewayDefinitionConnectionParametersArgsDict',
     'PipelineIngestionDefinitionArgs',
     'PipelineIngestionDefinitionArgsDict',
     'PipelineIngestionDefinitionObjectArgs',
@@ -2177,6 +2199,8 @@ __all__ = [
     'GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagArgsDict',
     'GetSchemasProviderConfigArgs',
     'GetSchemasProviderConfigArgsDict',
+    'GetServicePrincipalsServicePrincipalArgs',
+    'GetServicePrincipalsServicePrincipalArgsDict',
     'GetServingEndpointsEndpointArgs',
     'GetServingEndpointsEndpointArgsDict',
     'GetServingEndpointsEndpointAiGatewayArgs',
@@ -2325,6 +2349,18 @@ __all__ = [
     'GetTableTableInfoViewDependenciesDependencyTableArgsDict',
     'GetTablesProviderConfigArgs',
     'GetTablesProviderConfigArgsDict',
+    'GetUsersUserArgs',
+    'GetUsersUserArgsDict',
+    'GetUsersUserEmailArgs',
+    'GetUsersUserEmailArgsDict',
+    'GetUsersUserEntitlementArgs',
+    'GetUsersUserEntitlementArgsDict',
+    'GetUsersUserGroupArgs',
+    'GetUsersUserGroupArgsDict',
+    'GetUsersUserNameArgs',
+    'GetUsersUserNameArgsDict',
+    'GetUsersUserRoleArgs',
+    'GetUsersUserRoleArgsDict',
     'GetViewsProviderConfigArgs',
     'GetViewsProviderConfigArgsDict',
     'GetVolumeProviderConfigArgs',
@@ -2351,6 +2387,9 @@ if not MYPY:
         * `accounts/{account_id}/ruleSets/default`
         * `roles/marketplace.admin` - Databricks Marketplace administrator.
         * `roles/billing.admin` - Billing administrator.
+        * `roles/tagPolicy.creator` - Creator of tag policies.
+        * `roles/tagPolicy.manager` - Manager of tag policies.
+        * `roles/tagPolicy.assigner` - Assigner of tag policies.
         * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`
         * `roles/servicePrincipal.manager` - Manager of a service principal.
         * `roles/servicePrincipal.user` - User of a service principal.
@@ -2359,6 +2398,9 @@ if not MYPY:
         * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default`
         * `roles/budgetPolicy.manager` - Manager of a budget policy.
         * `roles/budgetPolicy.user` - User of a budget policy.
+        * `accounts/{account_id}/tagPolicies/{tag_policy_id}/ruleSets/default`
+        * `roles/tagPolicy.manager` - Manager of a specific tag policy.
+        * `roles/tagPolicy.assigner` - Assigner of a specific tag policy.
         """
         principals: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
         """
@@ -2380,6 +2422,9 @@ class AccessControlRuleSetGrantRuleArgs:
                * `accounts/{account_id}/ruleSets/default`
                * `roles/marketplace.admin` - Databricks Marketplace administrator.
                * `roles/billing.admin` - Billing administrator.
+               * `roles/tagPolicy.creator` - Creator of tag policies.
+               * `roles/tagPolicy.manager` - Manager of tag policies.
+               * `roles/tagPolicy.assigner` - Assigner of tag policies.
                * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`
                * `roles/servicePrincipal.manager` - Manager of a service principal.
                * `roles/servicePrincipal.user` - User of a service principal.
@@ -2388,6 +2433,9 @@ class AccessControlRuleSetGrantRuleArgs:
                * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default`
                * `roles/budgetPolicy.manager` - Manager of a budget policy.
                * `roles/budgetPolicy.user` - User of a budget policy.
+               * `accounts/{account_id}/tagPolicies/{tag_policy_id}/ruleSets/default`
+               * `roles/tagPolicy.manager` - Manager of a specific tag policy.
+               * `roles/tagPolicy.assigner` - Assigner of a specific tag policy.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] principals: a list of principals who are granted a role. The following format is supported:
                * `users/{username}` (also exposed as `acl_principal_id` attribute of `User` resource).
                * `groups/{groupname}` (also exposed as `acl_principal_id` attribute of `Group` resource).
@@ -2405,6 +2453,9 @@ class AccessControlRuleSetGrantRuleArgs:
         * `accounts/{account_id}/ruleSets/default`
         * `roles/marketplace.admin` - Databricks Marketplace administrator.
         * `roles/billing.admin` - Billing administrator.
+        * `roles/tagPolicy.creator` - Creator of tag policies.
+        * `roles/tagPolicy.manager` - Manager of tag policies.
+        * `roles/tagPolicy.assigner` - Assigner of tag policies.
         * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`
         * `roles/servicePrincipal.manager` - Manager of a service principal.
         * `roles/servicePrincipal.user` - User of a service principal.
@@ -2413,6 +2464,9 @@ class AccessControlRuleSetGrantRuleArgs:
         * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default`
         * `roles/budgetPolicy.manager` - Manager of a budget policy.
         * `roles/budgetPolicy.user` - User of a budget policy.
+        * `accounts/{account_id}/tagPolicies/{tag_policy_id}/ruleSets/default`
+        * `roles/tagPolicy.manager` - Manager of a specific tag policy.
+        * `roles/tagPolicy.assigner` - Assigner of a specific tag policy.
         """
         return pulumi.get(self, "role")
 
@@ -4375,7 +4429,9 @@ if not MYPY:
         """
         retrigger_seconds: NotRequired[pulumi.Input[_builtins.int]]
         """
-        Number of seconds an alert must wait after being triggered to rearm itself. After rearming, it can be triggered again. If 0 or not specified, the alert will not be triggered again
+        Number of seconds an alert waits after being triggered before it is allowed to send another notification.
+        If set to 0 or omitted, the alert will not send any further notifications after the first trigger
+        Setting this value to 1 allows the alert to send a notification on every evaluation where the condition is met, effectively making it always retrigger for notification purposes
         """
         subscriptions: NotRequired[pulumi.Input[Sequence[pulumi.Input['AlertV2EvaluationNotificationSubscriptionArgsDict']]]]
 elif False:
@@ -4391,7 +4447,9 @@ class AlertV2EvaluationNotificationArgs:
                  subscriptions: Optional[pulumi.Input[Sequence[pulumi.Input['AlertV2EvaluationNotificationSubscriptionArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.bool] notify_on_ok: Whether to notify alert subscribers when alert returns back to normal
-        :param pulumi.Input[_builtins.int] retrigger_seconds: Number of seconds an alert must wait after being triggered to rearm itself. After rearming, it can be triggered again. If 0 or not specified, the alert will not be triggered again
+        :param pulumi.Input[_builtins.int] retrigger_seconds: Number of seconds an alert waits after being triggered before it is allowed to send another notification.
+               If set to 0 or omitted, the alert will not send any further notifications after the first trigger
+               Setting this value to 1 allows the alert to send a notification on every evaluation where the condition is met, effectively making it always retrigger for notification purposes
         """
         if effective_notify_on_ok is not None:
             pulumi.set(__self__, "effective_notify_on_ok", effective_notify_on_ok)
@@ -4438,7 +4496,9 @@ class AlertV2EvaluationNotificationArgs:
     @pulumi.getter(name="retriggerSeconds")
     def retrigger_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Number of seconds an alert must wait after being triggered to rearm itself. After rearming, it can be triggered again. If 0 or not specified, the alert will not be triggered again
+        Number of seconds an alert waits after being triggered before it is allowed to send another notification.
+        If set to 0 or omitted, the alert will not send any further notifications after the first trigger
+        Setting this value to 1 allows the alert to send a notification on every evaluation where the condition is met, effectively making it always retrigger for notification purposes
         """
         return pulumi.get(self, "retrigger_seconds")
 
@@ -4497,7 +4557,7 @@ if not MYPY:
         name: pulumi.Input[_builtins.str]
         aggregation: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
+        If not set, the behavior is equivalent to using `First row` in the UI. Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
         """
         display: NotRequired[pulumi.Input[_builtins.str]]
 elif False:
@@ -4510,7 +4570,7 @@ class AlertV2EvaluationSourceArgs:
                  aggregation: Optional[pulumi.Input[_builtins.str]] = None,
                  display: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] aggregation: Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
+        :param pulumi.Input[_builtins.str] aggregation: If not set, the behavior is equivalent to using `First row` in the UI. Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
         """
         pulumi.set(__self__, "name", name)
         if aggregation is not None:
@@ -4531,7 +4591,7 @@ class AlertV2EvaluationSourceArgs:
     @pulumi.getter
     def aggregation(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
+        If not set, the behavior is equivalent to using `First row` in the UI. Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
         """
         return pulumi.get(self, "aggregation")
 
@@ -4590,7 +4650,7 @@ if not MYPY:
         name: pulumi.Input[_builtins.str]
         aggregation: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
+        If not set, the behavior is equivalent to using `First row` in the UI. Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
         """
         display: NotRequired[pulumi.Input[_builtins.str]]
 elif False:
@@ -4603,7 +4663,7 @@ class AlertV2EvaluationThresholdColumnArgs:
                  aggregation: Optional[pulumi.Input[_builtins.str]] = None,
                  display: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] aggregation: Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
+        :param pulumi.Input[_builtins.str] aggregation: If not set, the behavior is equivalent to using `First row` in the UI. Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
         """
         pulumi.set(__self__, "name", name)
         if aggregation is not None:
@@ -4624,7 +4684,7 @@ class AlertV2EvaluationThresholdColumnArgs:
     @pulumi.getter
     def aggregation(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
+        If not set, the behavior is equivalent to using `First row` in the UI. Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
         """
         return pulumi.get(self, "aggregation")
 
@@ -7244,11 +7304,17 @@ if not MYPY:
         The number of volumes launched for each instance. You can choose up to 10 volumes. This feature is only enabled for supported node types. Legacy node types cannot specify custom EBS volumes. For node types with no instance store, at least one EBS volume needs to be specified; otherwise, cluster creation will fail. These EBS volumes will be mounted at /ebs0, /ebs1, and etc. Instance store volumes will be mounted at /local_disk0, /local_disk1, and etc. If EBS volumes are attached, Databricks will configure Spark to use only the EBS volumes for scratch storage because heterogeneously sized scratch devices can lead to inefficient disk utilization. If no EBS volumes are attached, Databricks will configure Spark to use instance store volumes. If EBS volumes are specified, then the Spark configuration spark.local.dir will be overridden.
         """
         ebs_volume_iops: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        If using gp3 volumes, what IOPS to use for the disk. If this is not set, the maximum performance of a gp2 volume with the same volume size will be used.
+        """
         ebs_volume_size: NotRequired[pulumi.Input[_builtins.int]]
         """
         The size of each EBS volume (in GiB) launched for each instance. For general purpose SSD, this value must be within the range 100 - 4096. For throughput optimized HDD, this value must be within the range 500 - 4096. Custom EBS volumes cannot be specified for the legacy node types (memory-optimized and compute-optimized).
         """
         ebs_volume_throughput: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        If using gp3 volumes, what throughput to use for the disk. If this is not set, the maximum performance of a gp2 volume with the same volume size will be used.
+        """
         ebs_volume_type: NotRequired[pulumi.Input[_builtins.str]]
         """
         The type of EBS volumes that will be launched with this cluster. Valid values are `GENERAL_PURPOSE_SSD` or `THROUGHPUT_OPTIMIZED_HDD`. Use this option only if you're not picking *Delta Optimized `i3.*`* node types.
@@ -7288,7 +7354,9 @@ class ClusterAwsAttributesArgs:
         """
         :param pulumi.Input[_builtins.str] availability: Availability type used for all subsequent nodes past the `first_on_demand` ones. Valid values are `SPOT`, `SPOT_WITH_FALLBACK` and `ON_DEMAND`. Note: If `first_on_demand` is zero, this availability type will be used for the entire cluster. Backend default value is `SPOT_WITH_FALLBACK` and could change in the future
         :param pulumi.Input[_builtins.int] ebs_volume_count: The number of volumes launched for each instance. You can choose up to 10 volumes. This feature is only enabled for supported node types. Legacy node types cannot specify custom EBS volumes. For node types with no instance store, at least one EBS volume needs to be specified; otherwise, cluster creation will fail. These EBS volumes will be mounted at /ebs0, /ebs1, and etc. Instance store volumes will be mounted at /local_disk0, /local_disk1, and etc. If EBS volumes are attached, Databricks will configure Spark to use only the EBS volumes for scratch storage because heterogeneously sized scratch devices can lead to inefficient disk utilization. If no EBS volumes are attached, Databricks will configure Spark to use instance store volumes. If EBS volumes are specified, then the Spark configuration spark.local.dir will be overridden.
+        :param pulumi.Input[_builtins.int] ebs_volume_iops: If using gp3 volumes, what IOPS to use for the disk. If this is not set, the maximum performance of a gp2 volume with the same volume size will be used.
         :param pulumi.Input[_builtins.int] ebs_volume_size: The size of each EBS volume (in GiB) launched for each instance. For general purpose SSD, this value must be within the range 100 - 4096. For throughput optimized HDD, this value must be within the range 500 - 4096. Custom EBS volumes cannot be specified for the legacy node types (memory-optimized and compute-optimized).
+        :param pulumi.Input[_builtins.int] ebs_volume_throughput: If using gp3 volumes, what throughput to use for the disk. If this is not set, the maximum performance of a gp2 volume with the same volume size will be used.
         :param pulumi.Input[_builtins.str] ebs_volume_type: The type of EBS volumes that will be launched with this cluster. Valid values are `GENERAL_PURPOSE_SSD` or `THROUGHPUT_OPTIMIZED_HDD`. Use this option only if you're not picking *Delta Optimized `i3.*`* node types.
         :param pulumi.Input[_builtins.int] first_on_demand: The first `first_on_demand` nodes of the cluster will be placed on on-demand instances. If this value is greater than 0, the cluster driver node will be placed on an on-demand instance. If this value is greater than or equal to the current cluster size, all nodes will be placed on on-demand instances. If this value is less than the current cluster size, `first_on_demand` nodes will be placed on on-demand instances, and the remainder will be placed on availability instances. This value does not affect cluster size and cannot be mutated over the lifetime of a cluster. If unspecified, the default value is 0.
         :param pulumi.Input[_builtins.str] instance_profile_arn: Nodes for this cluster will only be placed on AWS instances with this instance profile. Please see InstanceProfile resource documentation for extended examples on adding a valid instance profile using Pulumi.
@@ -7343,6 +7411,9 @@ class ClusterAwsAttributesArgs:
     @_builtins.property
     @pulumi.getter(name="ebsVolumeIops")
     def ebs_volume_iops(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        If using gp3 volumes, what IOPS to use for the disk. If this is not set, the maximum performance of a gp2 volume with the same volume size will be used.
+        """
         return pulumi.get(self, "ebs_volume_iops")
 
     @ebs_volume_iops.setter
@@ -7364,6 +7435,9 @@ class ClusterAwsAttributesArgs:
     @_builtins.property
     @pulumi.getter(name="ebsVolumeThroughput")
     def ebs_volume_throughput(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        If using gp3 volumes, what throughput to use for the disk. If this is not set, the maximum performance of a gp2 volume with the same volume size will be used.
+        """
         return pulumi.get(self, "ebs_volume_throughput")
 
     @ebs_volume_throughput.setter
@@ -12158,6 +12232,10 @@ class DatabaseSyncedDatabaseTableSpecArgs:
 
 if not MYPY:
     class DatabaseSyncedDatabaseTableSpecNewPipelineSpecArgsDict(TypedDict):
+        budget_policy_id: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Budget policy to set on the newly created pipeline
+        """
         storage_catalog: NotRequired[pulumi.Input[_builtins.str]]
         """
         This field needs to be specified if the destination catalog is a managed postgres catalog.
@@ -12178,9 +12256,11 @@ elif False:
 @pulumi.input_type
 class DatabaseSyncedDatabaseTableSpecNewPipelineSpecArgs:
     def __init__(__self__, *,
+                 budget_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
                  storage_catalog: Optional[pulumi.Input[_builtins.str]] = None,
                  storage_schema: Optional[pulumi.Input[_builtins.str]] = None):
         """
+        :param pulumi.Input[_builtins.str] budget_policy_id: Budget policy to set on the newly created pipeline
         :param pulumi.Input[_builtins.str] storage_catalog: This field needs to be specified if the destination catalog is a managed postgres catalog.
                
                UC catalog for the pipeline to store intermediate files (checkpoints, event logs etc).
@@ -12190,10 +12270,24 @@ class DatabaseSyncedDatabaseTableSpecNewPipelineSpecArgs:
                UC schema for the pipeline to store intermediate files (checkpoints, event logs etc).
                This needs to be in the standard catalog where the user has permissions to create Delta tables
         """
+        if budget_policy_id is not None:
+            pulumi.set(__self__, "budget_policy_id", budget_policy_id)
         if storage_catalog is not None:
             pulumi.set(__self__, "storage_catalog", storage_catalog)
         if storage_schema is not None:
             pulumi.set(__self__, "storage_schema", storage_schema)
+
+    @_builtins.property
+    @pulumi.getter(name="budgetPolicyId")
+    def budget_policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Budget policy to set on the newly created pipeline
+        """
+        return pulumi.get(self, "budget_policy_id")
+
+    @budget_policy_id.setter
+    def budget_policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "budget_policy_id", value)
 
     @_builtins.property
     @pulumi.getter(name="storageCatalog")
@@ -13043,17 +13137,125 @@ class FeatureEngineeringFeatureFunctionExtraParameterArgs:
 
 
 if not MYPY:
+    class FeatureEngineeringFeatureLineageContextArgsDict(TypedDict):
+        job_context: NotRequired[pulumi.Input['FeatureEngineeringFeatureLineageContextJobContextArgsDict']]
+        """
+        Job context information including job ID and run ID
+        """
+        notebook_id: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        The notebook ID where this API was invoked
+        """
+elif False:
+    FeatureEngineeringFeatureLineageContextArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class FeatureEngineeringFeatureLineageContextArgs:
+    def __init__(__self__, *,
+                 job_context: Optional[pulumi.Input['FeatureEngineeringFeatureLineageContextJobContextArgs']] = None,
+                 notebook_id: Optional[pulumi.Input[_builtins.int]] = None):
+        """
+        :param pulumi.Input['FeatureEngineeringFeatureLineageContextJobContextArgs'] job_context: Job context information including job ID and run ID
+        :param pulumi.Input[_builtins.int] notebook_id: The notebook ID where this API was invoked
+        """
+        if job_context is not None:
+            pulumi.set(__self__, "job_context", job_context)
+        if notebook_id is not None:
+            pulumi.set(__self__, "notebook_id", notebook_id)
+
+    @_builtins.property
+    @pulumi.getter(name="jobContext")
+    def job_context(self) -> Optional[pulumi.Input['FeatureEngineeringFeatureLineageContextJobContextArgs']]:
+        """
+        Job context information including job ID and run ID
+        """
+        return pulumi.get(self, "job_context")
+
+    @job_context.setter
+    def job_context(self, value: Optional[pulumi.Input['FeatureEngineeringFeatureLineageContextJobContextArgs']]):
+        pulumi.set(self, "job_context", value)
+
+    @_builtins.property
+    @pulumi.getter(name="notebookId")
+    def notebook_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The notebook ID where this API was invoked
+        """
+        return pulumi.get(self, "notebook_id")
+
+    @notebook_id.setter
+    def notebook_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "notebook_id", value)
+
+
+if not MYPY:
+    class FeatureEngineeringFeatureLineageContextJobContextArgsDict(TypedDict):
+        job_id: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        The job ID where this API invoked
+        """
+        job_run_id: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        The job run ID where this API was invoked
+        """
+elif False:
+    FeatureEngineeringFeatureLineageContextJobContextArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class FeatureEngineeringFeatureLineageContextJobContextArgs:
+    def __init__(__self__, *,
+                 job_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 job_run_id: Optional[pulumi.Input[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] job_id: The job ID where this API invoked
+        :param pulumi.Input[_builtins.int] job_run_id: The job run ID where this API was invoked
+        """
+        if job_id is not None:
+            pulumi.set(__self__, "job_id", job_id)
+        if job_run_id is not None:
+            pulumi.set(__self__, "job_run_id", job_run_id)
+
+    @_builtins.property
+    @pulumi.getter(name="jobId")
+    def job_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The job ID where this API invoked
+        """
+        return pulumi.get(self, "job_id")
+
+    @job_id.setter
+    def job_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "job_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="jobRunId")
+    def job_run_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The job run ID where this API was invoked
+        """
+        return pulumi.get(self, "job_run_id")
+
+    @job_run_id.setter
+    def job_run_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "job_run_id", value)
+
+
+if not MYPY:
     class FeatureEngineeringFeatureSourceArgsDict(TypedDict):
         delta_table_source: NotRequired[pulumi.Input['FeatureEngineeringFeatureSourceDeltaTableSourceArgsDict']]
+        kafka_source: NotRequired[pulumi.Input['FeatureEngineeringFeatureSourceKafkaSourceArgsDict']]
 elif False:
     FeatureEngineeringFeatureSourceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class FeatureEngineeringFeatureSourceArgs:
     def __init__(__self__, *,
-                 delta_table_source: Optional[pulumi.Input['FeatureEngineeringFeatureSourceDeltaTableSourceArgs']] = None):
+                 delta_table_source: Optional[pulumi.Input['FeatureEngineeringFeatureSourceDeltaTableSourceArgs']] = None,
+                 kafka_source: Optional[pulumi.Input['FeatureEngineeringFeatureSourceKafkaSourceArgs']] = None):
         if delta_table_source is not None:
             pulumi.set(__self__, "delta_table_source", delta_table_source)
+        if kafka_source is not None:
+            pulumi.set(__self__, "kafka_source", kafka_source)
 
     @_builtins.property
     @pulumi.getter(name="deltaTableSource")
@@ -13063,6 +13265,15 @@ class FeatureEngineeringFeatureSourceArgs:
     @delta_table_source.setter
     def delta_table_source(self, value: Optional[pulumi.Input['FeatureEngineeringFeatureSourceDeltaTableSourceArgs']]):
         pulumi.set(self, "delta_table_source", value)
+
+    @_builtins.property
+    @pulumi.getter(name="kafkaSource")
+    def kafka_source(self) -> Optional[pulumi.Input['FeatureEngineeringFeatureSourceKafkaSourceArgs']]:
+        return pulumi.get(self, "kafka_source")
+
+    @kafka_source.setter
+    def kafka_source(self, value: Optional[pulumi.Input['FeatureEngineeringFeatureSourceKafkaSourceArgs']]):
+        pulumi.set(self, "kafka_source", value)
 
 
 if not MYPY:
@@ -13132,6 +13343,143 @@ class FeatureEngineeringFeatureSourceDeltaTableSourceArgs:
     @timeseries_column.setter
     def timeseries_column(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "timeseries_column", value)
+
+
+if not MYPY:
+    class FeatureEngineeringFeatureSourceKafkaSourceArgsDict(TypedDict):
+        entity_column_identifiers: pulumi.Input[Sequence[pulumi.Input['FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierArgsDict']]]
+        """
+        The entity column identifiers of the Kafka source
+        """
+        name: pulumi.Input[_builtins.str]
+        """
+        Name of the Kafka source, used to identify it. This is used to look up the corresponding KafkaConfig object. Can be distinct from topic name
+        """
+        timeseries_column_identifier: pulumi.Input['FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierArgsDict']
+        """
+        The timeseries column identifier of the Kafka source
+        """
+elif False:
+    FeatureEngineeringFeatureSourceKafkaSourceArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class FeatureEngineeringFeatureSourceKafkaSourceArgs:
+    def __init__(__self__, *,
+                 entity_column_identifiers: pulumi.Input[Sequence[pulumi.Input['FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierArgs']]],
+                 name: pulumi.Input[_builtins.str],
+                 timeseries_column_identifier: pulumi.Input['FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierArgs']):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierArgs']]] entity_column_identifiers: The entity column identifiers of the Kafka source
+        :param pulumi.Input[_builtins.str] name: Name of the Kafka source, used to identify it. This is used to look up the corresponding KafkaConfig object. Can be distinct from topic name
+        :param pulumi.Input['FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierArgs'] timeseries_column_identifier: The timeseries column identifier of the Kafka source
+        """
+        pulumi.set(__self__, "entity_column_identifiers", entity_column_identifiers)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "timeseries_column_identifier", timeseries_column_identifier)
+
+    @_builtins.property
+    @pulumi.getter(name="entityColumnIdentifiers")
+    def entity_column_identifiers(self) -> pulumi.Input[Sequence[pulumi.Input['FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierArgs']]]:
+        """
+        The entity column identifiers of the Kafka source
+        """
+        return pulumi.get(self, "entity_column_identifiers")
+
+    @entity_column_identifiers.setter
+    def entity_column_identifiers(self, value: pulumi.Input[Sequence[pulumi.Input['FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierArgs']]]):
+        pulumi.set(self, "entity_column_identifiers", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        Name of the Kafka source, used to identify it. This is used to look up the corresponding KafkaConfig object. Can be distinct from topic name
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="timeseriesColumnIdentifier")
+    def timeseries_column_identifier(self) -> pulumi.Input['FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierArgs']:
+        """
+        The timeseries column identifier of the Kafka source
+        """
+        return pulumi.get(self, "timeseries_column_identifier")
+
+    @timeseries_column_identifier.setter
+    def timeseries_column_identifier(self, value: pulumi.Input['FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierArgs']):
+        pulumi.set(self, "timeseries_column_identifier", value)
+
+
+if not MYPY:
+    class FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierArgsDict(TypedDict):
+        variant_expr_path: pulumi.Input[_builtins.str]
+        """
+        String representation of the column name or variant expression path. For nested fields, the leaf value is what will be present in materialized tables
+        and expected to match at query time. For example, the leaf node of value:trip_details.location_details.pickup_zip is pickup_zip
+        """
+elif False:
+    FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierArgs:
+    def __init__(__self__, *,
+                 variant_expr_path: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] variant_expr_path: String representation of the column name or variant expression path. For nested fields, the leaf value is what will be present in materialized tables
+               and expected to match at query time. For example, the leaf node of value:trip_details.location_details.pickup_zip is pickup_zip
+        """
+        pulumi.set(__self__, "variant_expr_path", variant_expr_path)
+
+    @_builtins.property
+    @pulumi.getter(name="variantExprPath")
+    def variant_expr_path(self) -> pulumi.Input[_builtins.str]:
+        """
+        String representation of the column name or variant expression path. For nested fields, the leaf value is what will be present in materialized tables
+        and expected to match at query time. For example, the leaf node of value:trip_details.location_details.pickup_zip is pickup_zip
+        """
+        return pulumi.get(self, "variant_expr_path")
+
+    @variant_expr_path.setter
+    def variant_expr_path(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "variant_expr_path", value)
+
+
+if not MYPY:
+    class FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierArgsDict(TypedDict):
+        variant_expr_path: pulumi.Input[_builtins.str]
+        """
+        String representation of the column name or variant expression path. For nested fields, the leaf value is what will be present in materialized tables
+        and expected to match at query time. For example, the leaf node of value:trip_details.location_details.pickup_zip is pickup_zip
+        """
+elif False:
+    FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierArgs:
+    def __init__(__self__, *,
+                 variant_expr_path: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] variant_expr_path: String representation of the column name or variant expression path. For nested fields, the leaf value is what will be present in materialized tables
+               and expected to match at query time. For example, the leaf node of value:trip_details.location_details.pickup_zip is pickup_zip
+        """
+        pulumi.set(__self__, "variant_expr_path", variant_expr_path)
+
+    @_builtins.property
+    @pulumi.getter(name="variantExprPath")
+    def variant_expr_path(self) -> pulumi.Input[_builtins.str]:
+        """
+        String representation of the column name or variant expression path. For nested fields, the leaf value is what will be present in materialized tables
+        and expected to match at query time. For example, the leaf node of value:trip_details.location_details.pickup_zip is pickup_zip
+        """
+        return pulumi.get(self, "variant_expr_path")
+
+    @variant_expr_path.setter
+    def variant_expr_path(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "variant_expr_path", value)
 
 
 if not MYPY:
@@ -13293,20 +13641,181 @@ class FeatureEngineeringFeatureTimeWindowTumblingArgs:
 
 
 if not MYPY:
+    class FeatureEngineeringKafkaConfigAuthConfigArgsDict(TypedDict):
+        uc_service_credential_name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Name of the Unity Catalog service credential. This value will be set under the option databricks.serviceCredential
+        """
+elif False:
+    FeatureEngineeringKafkaConfigAuthConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class FeatureEngineeringKafkaConfigAuthConfigArgs:
+    def __init__(__self__, *,
+                 uc_service_credential_name: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] uc_service_credential_name: Name of the Unity Catalog service credential. This value will be set under the option databricks.serviceCredential
+        """
+        if uc_service_credential_name is not None:
+            pulumi.set(__self__, "uc_service_credential_name", uc_service_credential_name)
+
+    @_builtins.property
+    @pulumi.getter(name="ucServiceCredentialName")
+    def uc_service_credential_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Name of the Unity Catalog service credential. This value will be set under the option databricks.serviceCredential
+        """
+        return pulumi.get(self, "uc_service_credential_name")
+
+    @uc_service_credential_name.setter
+    def uc_service_credential_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "uc_service_credential_name", value)
+
+
+if not MYPY:
+    class FeatureEngineeringKafkaConfigKeySchemaArgsDict(TypedDict):
+        json_schema: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Schema of the JSON object in standard IETF JSON schema format (https://json-schema.org/)
+        """
+elif False:
+    FeatureEngineeringKafkaConfigKeySchemaArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class FeatureEngineeringKafkaConfigKeySchemaArgs:
+    def __init__(__self__, *,
+                 json_schema: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] json_schema: Schema of the JSON object in standard IETF JSON schema format (https://json-schema.org/)
+        """
+        if json_schema is not None:
+            pulumi.set(__self__, "json_schema", json_schema)
+
+    @_builtins.property
+    @pulumi.getter(name="jsonSchema")
+    def json_schema(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Schema of the JSON object in standard IETF JSON schema format (https://json-schema.org/)
+        """
+        return pulumi.get(self, "json_schema")
+
+    @json_schema.setter
+    def json_schema(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "json_schema", value)
+
+
+if not MYPY:
+    class FeatureEngineeringKafkaConfigSubscriptionModeArgsDict(TypedDict):
+        assign: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        A JSON string that contains the specific topic-partitions to consume from.
+        For example, for '{"topicA":[0,1],"topicB":[2,4]}', topicA's 0'th and 1st partitions will be consumed from
+        """
+        subscribe: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        A comma-separated list of Kafka topics to read from. For example, 'topicA,topicB,topicC'
+        """
+        subscribe_pattern: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        A regular expression matching topics to subscribe to. For example, 'topic.*' will subscribe to all topics starting with 'topic'
+        """
+elif False:
+    FeatureEngineeringKafkaConfigSubscriptionModeArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class FeatureEngineeringKafkaConfigSubscriptionModeArgs:
+    def __init__(__self__, *,
+                 assign: Optional[pulumi.Input[_builtins.str]] = None,
+                 subscribe: Optional[pulumi.Input[_builtins.str]] = None,
+                 subscribe_pattern: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] assign: A JSON string that contains the specific topic-partitions to consume from.
+               For example, for '{"topicA":[0,1],"topicB":[2,4]}', topicA's 0'th and 1st partitions will be consumed from
+        :param pulumi.Input[_builtins.str] subscribe: A comma-separated list of Kafka topics to read from. For example, 'topicA,topicB,topicC'
+        :param pulumi.Input[_builtins.str] subscribe_pattern: A regular expression matching topics to subscribe to. For example, 'topic.*' will subscribe to all topics starting with 'topic'
+        """
+        if assign is not None:
+            pulumi.set(__self__, "assign", assign)
+        if subscribe is not None:
+            pulumi.set(__self__, "subscribe", subscribe)
+        if subscribe_pattern is not None:
+            pulumi.set(__self__, "subscribe_pattern", subscribe_pattern)
+
+    @_builtins.property
+    @pulumi.getter
+    def assign(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A JSON string that contains the specific topic-partitions to consume from.
+        For example, for '{"topicA":[0,1],"topicB":[2,4]}', topicA's 0'th and 1st partitions will be consumed from
+        """
+        return pulumi.get(self, "assign")
+
+    @assign.setter
+    def assign(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "assign", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def subscribe(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A comma-separated list of Kafka topics to read from. For example, 'topicA,topicB,topicC'
+        """
+        return pulumi.get(self, "subscribe")
+
+    @subscribe.setter
+    def subscribe(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "subscribe", value)
+
+    @_builtins.property
+    @pulumi.getter(name="subscribePattern")
+    def subscribe_pattern(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A regular expression matching topics to subscribe to. For example, 'topic.*' will subscribe to all topics starting with 'topic'
+        """
+        return pulumi.get(self, "subscribe_pattern")
+
+    @subscribe_pattern.setter
+    def subscribe_pattern(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "subscribe_pattern", value)
+
+
+if not MYPY:
+    class FeatureEngineeringKafkaConfigValueSchemaArgsDict(TypedDict):
+        json_schema: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Schema of the JSON object in standard IETF JSON schema format (https://json-schema.org/)
+        """
+elif False:
+    FeatureEngineeringKafkaConfigValueSchemaArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class FeatureEngineeringKafkaConfigValueSchemaArgs:
+    def __init__(__self__, *,
+                 json_schema: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] json_schema: Schema of the JSON object in standard IETF JSON schema format (https://json-schema.org/)
+        """
+        if json_schema is not None:
+            pulumi.set(__self__, "json_schema", json_schema)
+
+    @_builtins.property
+    @pulumi.getter(name="jsonSchema")
+    def json_schema(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Schema of the JSON object in standard IETF JSON schema format (https://json-schema.org/)
+        """
+        return pulumi.get(self, "json_schema")
+
+    @json_schema.setter
+    def json_schema(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "json_schema", value)
+
+
+if not MYPY:
     class FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgsDict(TypedDict):
         catalog_name: pulumi.Input[_builtins.str]
-        """
-        The Unity Catalog catalog name
-        """
         schema_name: pulumi.Input[_builtins.str]
-        """
-        The Unity Catalog schema name
-        """
         table_name_prefix: pulumi.Input[_builtins.str]
-        """
-        Prefix for Unity Catalog table name.
-        The materialized feature will be stored in a table with this prefix and a generated postfix
-        """
 elif False:
     FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -13316,12 +13825,6 @@ class FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgs:
                  catalog_name: pulumi.Input[_builtins.str],
                  schema_name: pulumi.Input[_builtins.str],
                  table_name_prefix: pulumi.Input[_builtins.str]):
-        """
-        :param pulumi.Input[_builtins.str] catalog_name: The Unity Catalog catalog name
-        :param pulumi.Input[_builtins.str] schema_name: The Unity Catalog schema name
-        :param pulumi.Input[_builtins.str] table_name_prefix: Prefix for Unity Catalog table name.
-               The materialized feature will be stored in a table with this prefix and a generated postfix
-        """
         pulumi.set(__self__, "catalog_name", catalog_name)
         pulumi.set(__self__, "schema_name", schema_name)
         pulumi.set(__self__, "table_name_prefix", table_name_prefix)
@@ -13329,9 +13832,6 @@ class FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgs:
     @_builtins.property
     @pulumi.getter(name="catalogName")
     def catalog_name(self) -> pulumi.Input[_builtins.str]:
-        """
-        The Unity Catalog catalog name
-        """
         return pulumi.get(self, "catalog_name")
 
     @catalog_name.setter
@@ -13341,9 +13841,6 @@ class FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgs:
     @_builtins.property
     @pulumi.getter(name="schemaName")
     def schema_name(self) -> pulumi.Input[_builtins.str]:
-        """
-        The Unity Catalog schema name
-        """
         return pulumi.get(self, "schema_name")
 
     @schema_name.setter
@@ -13353,10 +13850,6 @@ class FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgs:
     @_builtins.property
     @pulumi.getter(name="tableNamePrefix")
     def table_name_prefix(self) -> pulumi.Input[_builtins.str]:
-        """
-        Prefix for Unity Catalog table name.
-        The materialized feature will be stored in a table with this prefix and a generated postfix
-        """
         return pulumi.get(self, "table_name_prefix")
 
     @table_name_prefix.setter
@@ -13366,132 +13859,69 @@ class FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgs:
 
 if not MYPY:
     class FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgsDict(TypedDict):
-        capacity: pulumi.Input[_builtins.str]
+        catalog_name: pulumi.Input[_builtins.str]
+        online_store_name: pulumi.Input[_builtins.str]
         """
-        The capacity of the online store. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
+        The name of the target online store
         """
-        name: pulumi.Input[_builtins.str]
-        """
-        The name of the online store. This is the unique identifier for the online store
-        """
-        creation_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (string) - The timestamp when the online store was created
-        """
-        creator: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (string) - The email of the creator of the online store
-        """
-        read_replica_count: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of read replicas for the online store. Defaults to 0
-        """
-        state: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (string) - The current state of the online store. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
-        """
+        schema_name: pulumi.Input[_builtins.str]
+        table_name_prefix: pulumi.Input[_builtins.str]
 elif False:
     FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgs:
     def __init__(__self__, *,
-                 capacity: pulumi.Input[_builtins.str],
-                 name: pulumi.Input[_builtins.str],
-                 creation_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 creator: Optional[pulumi.Input[_builtins.str]] = None,
-                 read_replica_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None):
+                 catalog_name: pulumi.Input[_builtins.str],
+                 online_store_name: pulumi.Input[_builtins.str],
+                 schema_name: pulumi.Input[_builtins.str],
+                 table_name_prefix: pulumi.Input[_builtins.str]):
         """
-        :param pulumi.Input[_builtins.str] capacity: The capacity of the online store. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
-        :param pulumi.Input[_builtins.str] name: The name of the online store. This is the unique identifier for the online store
-        :param pulumi.Input[_builtins.str] creation_time: (string) - The timestamp when the online store was created
-        :param pulumi.Input[_builtins.str] creator: (string) - The email of the creator of the online store
-        :param pulumi.Input[_builtins.int] read_replica_count: The number of read replicas for the online store. Defaults to 0
-        :param pulumi.Input[_builtins.str] state: (string) - The current state of the online store. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
+        :param pulumi.Input[_builtins.str] online_store_name: The name of the target online store
         """
-        pulumi.set(__self__, "capacity", capacity)
-        pulumi.set(__self__, "name", name)
-        if creation_time is not None:
-            pulumi.set(__self__, "creation_time", creation_time)
-        if creator is not None:
-            pulumi.set(__self__, "creator", creator)
-        if read_replica_count is not None:
-            pulumi.set(__self__, "read_replica_count", read_replica_count)
-        if state is not None:
-            pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "catalog_name", catalog_name)
+        pulumi.set(__self__, "online_store_name", online_store_name)
+        pulumi.set(__self__, "schema_name", schema_name)
+        pulumi.set(__self__, "table_name_prefix", table_name_prefix)
 
     @_builtins.property
-    @pulumi.getter
-    def capacity(self) -> pulumi.Input[_builtins.str]:
-        """
-        The capacity of the online store. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
-        """
-        return pulumi.get(self, "capacity")
+    @pulumi.getter(name="catalogName")
+    def catalog_name(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "catalog_name")
 
-    @capacity.setter
-    def capacity(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "capacity", value)
+    @catalog_name.setter
+    def catalog_name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "catalog_name", value)
 
     @_builtins.property
-    @pulumi.getter
-    def name(self) -> pulumi.Input[_builtins.str]:
+    @pulumi.getter(name="onlineStoreName")
+    def online_store_name(self) -> pulumi.Input[_builtins.str]:
         """
-        The name of the online store. This is the unique identifier for the online store
+        The name of the target online store
         """
-        return pulumi.get(self, "name")
+        return pulumi.get(self, "online_store_name")
 
-    @name.setter
-    def name(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "name", value)
-
-    @_builtins.property
-    @pulumi.getter(name="creationTime")
-    def creation_time(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        (string) - The timestamp when the online store was created
-        """
-        return pulumi.get(self, "creation_time")
-
-    @creation_time.setter
-    def creation_time(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "creation_time", value)
+    @online_store_name.setter
+    def online_store_name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "online_store_name", value)
 
     @_builtins.property
-    @pulumi.getter
-    def creator(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        (string) - The email of the creator of the online store
-        """
-        return pulumi.get(self, "creator")
+    @pulumi.getter(name="schemaName")
+    def schema_name(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "schema_name")
 
-    @creator.setter
-    def creator(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "creator", value)
+    @schema_name.setter
+    def schema_name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "schema_name", value)
 
     @_builtins.property
-    @pulumi.getter(name="readReplicaCount")
-    def read_replica_count(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        The number of read replicas for the online store. Defaults to 0
-        """
-        return pulumi.get(self, "read_replica_count")
+    @pulumi.getter(name="tableNamePrefix")
+    def table_name_prefix(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "table_name_prefix")
 
-    @read_replica_count.setter
-    def read_replica_count(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "read_replica_count", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        (string) - The current state of the online store. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
-        """
-        return pulumi.get(self, "state")
-
-    @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "state", value)
+    @table_name_prefix.setter
+    def table_name_prefix(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "table_name_prefix", value)
 
 
 if not MYPY:
@@ -31628,6 +32058,7 @@ if not MYPY:
         """
         configuration block to define a trigger for [File Arrival events](https://learn.microsoft.com/en-us/azure/databricks/workflows/jobs/file-arrival-triggers) consisting of following attributes:
         """
+        model: NotRequired[pulumi.Input['JobTriggerModelArgsDict']]
         pause_status: NotRequired[pulumi.Input[_builtins.str]]
         """
         Indicate whether this trigger is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pause_status` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pause_status`.
@@ -31647,6 +32078,7 @@ elif False:
 class JobTriggerArgs:
     def __init__(__self__, *,
                  file_arrival: Optional[pulumi.Input['JobTriggerFileArrivalArgs']] = None,
+                 model: Optional[pulumi.Input['JobTriggerModelArgs']] = None,
                  pause_status: Optional[pulumi.Input[_builtins.str]] = None,
                  periodic: Optional[pulumi.Input['JobTriggerPeriodicArgs']] = None,
                  table_update: Optional[pulumi.Input['JobTriggerTableUpdateArgs']] = None):
@@ -31658,6 +32090,8 @@ class JobTriggerArgs:
         """
         if file_arrival is not None:
             pulumi.set(__self__, "file_arrival", file_arrival)
+        if model is not None:
+            pulumi.set(__self__, "model", model)
         if pause_status is not None:
             pulumi.set(__self__, "pause_status", pause_status)
         if periodic is not None:
@@ -31676,6 +32110,15 @@ class JobTriggerArgs:
     @file_arrival.setter
     def file_arrival(self, value: Optional[pulumi.Input['JobTriggerFileArrivalArgs']]):
         pulumi.set(self, "file_arrival", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def model(self) -> Optional[pulumi.Input['JobTriggerModelArgs']]:
+        return pulumi.get(self, "model")
+
+    @model.setter
+    def model(self, value: Optional[pulumi.Input['JobTriggerModelArgs']]):
+        pulumi.set(self, "model", value)
 
     @_builtins.property
     @pulumi.getter(name="pauseStatus")
@@ -31778,6 +32221,89 @@ class JobTriggerFileArrivalArgs:
         """
         If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
         """
+        return pulumi.get(self, "wait_after_last_change_seconds")
+
+    @wait_after_last_change_seconds.setter
+    def wait_after_last_change_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "wait_after_last_change_seconds", value)
+
+
+if not MYPY:
+    class JobTriggerModelArgsDict(TypedDict):
+        condition: pulumi.Input[_builtins.str]
+        """
+        The table(s) condition based on which to trigger a job run.  Possible values are `ANY_UPDATED`, `ALL_UPDATED`.
+        """
+        aliases: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        min_time_between_triggers_seconds: NotRequired[pulumi.Input[_builtins.int]]
+        securable_name: NotRequired[pulumi.Input[_builtins.str]]
+        wait_after_last_change_seconds: NotRequired[pulumi.Input[_builtins.int]]
+elif False:
+    JobTriggerModelArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class JobTriggerModelArgs:
+    def __init__(__self__, *,
+                 condition: pulumi.Input[_builtins.str],
+                 aliases: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 min_time_between_triggers_seconds: Optional[pulumi.Input[_builtins.int]] = None,
+                 securable_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 wait_after_last_change_seconds: Optional[pulumi.Input[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.str] condition: The table(s) condition based on which to trigger a job run.  Possible values are `ANY_UPDATED`, `ALL_UPDATED`.
+        """
+        pulumi.set(__self__, "condition", condition)
+        if aliases is not None:
+            pulumi.set(__self__, "aliases", aliases)
+        if min_time_between_triggers_seconds is not None:
+            pulumi.set(__self__, "min_time_between_triggers_seconds", min_time_between_triggers_seconds)
+        if securable_name is not None:
+            pulumi.set(__self__, "securable_name", securable_name)
+        if wait_after_last_change_seconds is not None:
+            pulumi.set(__self__, "wait_after_last_change_seconds", wait_after_last_change_seconds)
+
+    @_builtins.property
+    @pulumi.getter
+    def condition(self) -> pulumi.Input[_builtins.str]:
+        """
+        The table(s) condition based on which to trigger a job run.  Possible values are `ANY_UPDATED`, `ALL_UPDATED`.
+        """
+        return pulumi.get(self, "condition")
+
+    @condition.setter
+    def condition(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "condition", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def aliases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        return pulumi.get(self, "aliases")
+
+    @aliases.setter
+    def aliases(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "aliases", value)
+
+    @_builtins.property
+    @pulumi.getter(name="minTimeBetweenTriggersSeconds")
+    def min_time_between_triggers_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "min_time_between_triggers_seconds")
+
+    @min_time_between_triggers_seconds.setter
+    def min_time_between_triggers_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "min_time_between_triggers_seconds", value)
+
+    @_builtins.property
+    @pulumi.getter(name="securableName")
+    def securable_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "securable_name")
+
+    @securable_name.setter
+    def securable_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "securable_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="waitAfterLastChangeSeconds")
+    def wait_after_last_change_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
         return pulumi.get(self, "wait_after_last_change_seconds")
 
     @wait_after_last_change_seconds.setter
@@ -38439,13 +38965,13 @@ class MwsNetworksGcpNetworkInfoArgs:
         pulumi.set(__self__, "subnet_region", subnet_region)
         pulumi.set(__self__, "vpc_id", vpc_id)
         if pod_ip_range_name is not None:
-            warnings.warn("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.97.0/docs/guides/gcp-workspace#creating-a-vpc""", DeprecationWarning)
-            pulumi.log.warn("""pod_ip_range_name is deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.97.0/docs/guides/gcp-workspace#creating-a-vpc""")
+            warnings.warn("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.100.0/docs/guides/gcp-workspace#creating-a-vpc""", DeprecationWarning)
+            pulumi.log.warn("""pod_ip_range_name is deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.100.0/docs/guides/gcp-workspace#creating-a-vpc""")
         if pod_ip_range_name is not None:
             pulumi.set(__self__, "pod_ip_range_name", pod_ip_range_name)
         if service_ip_range_name is not None:
-            warnings.warn("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.97.0/docs/guides/gcp-workspace#creating-a-vpc""", DeprecationWarning)
-            pulumi.log.warn("""service_ip_range_name is deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.97.0/docs/guides/gcp-workspace#creating-a-vpc""")
+            warnings.warn("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.100.0/docs/guides/gcp-workspace#creating-a-vpc""", DeprecationWarning)
+            pulumi.log.warn("""service_ip_range_name is deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.100.0/docs/guides/gcp-workspace#creating-a-vpc""")
         if service_ip_range_name is not None:
             pulumi.set(__self__, "service_ip_range_name", service_ip_range_name)
 
@@ -38499,7 +39025,7 @@ class MwsNetworksGcpNetworkInfoArgs:
 
     @_builtins.property
     @pulumi.getter(name="podIpRangeName")
-    @_utilities.deprecated("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.97.0/docs/guides/gcp-workspace#creating-a-vpc""")
+    @_utilities.deprecated("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.100.0/docs/guides/gcp-workspace#creating-a-vpc""")
     def pod_ip_range_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "pod_ip_range_name")
 
@@ -38509,7 +39035,7 @@ class MwsNetworksGcpNetworkInfoArgs:
 
     @_builtins.property
     @pulumi.getter(name="serviceIpRangeName")
-    @_utilities.deprecated("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.97.0/docs/guides/gcp-workspace#creating-a-vpc""")
+    @_utilities.deprecated("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.100.0/docs/guides/gcp-workspace#creating-a-vpc""")
     def service_ip_range_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "service_ip_range_name")
 
@@ -38785,13 +39311,13 @@ class MwsWorkspacesGcpManagedNetworkConfigArgs:
                  gke_cluster_service_ip_range: Optional[pulumi.Input[_builtins.str]] = None):
         pulumi.set(__self__, "subnet_cidr", subnet_cidr)
         if gke_cluster_pod_ip_range is not None:
-            warnings.warn("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.97.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""", DeprecationWarning)
-            pulumi.log.warn("""gke_cluster_pod_ip_range is deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.97.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+            warnings.warn("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.100.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""", DeprecationWarning)
+            pulumi.log.warn("""gke_cluster_pod_ip_range is deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.100.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
         if gke_cluster_pod_ip_range is not None:
             pulumi.set(__self__, "gke_cluster_pod_ip_range", gke_cluster_pod_ip_range)
         if gke_cluster_service_ip_range is not None:
-            warnings.warn("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.97.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""", DeprecationWarning)
-            pulumi.log.warn("""gke_cluster_service_ip_range is deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.97.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+            warnings.warn("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.100.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""", DeprecationWarning)
+            pulumi.log.warn("""gke_cluster_service_ip_range is deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.100.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
         if gke_cluster_service_ip_range is not None:
             pulumi.set(__self__, "gke_cluster_service_ip_range", gke_cluster_service_ip_range)
 
@@ -38806,7 +39332,7 @@ class MwsWorkspacesGcpManagedNetworkConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="gkeClusterPodIpRange")
-    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.97.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.100.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
     def gke_cluster_pod_ip_range(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "gke_cluster_pod_ip_range")
 
@@ -38816,7 +39342,7 @@ class MwsWorkspacesGcpManagedNetworkConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="gkeClusterServiceIpRange")
-    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.97.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.100.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
     def gke_cluster_service_ip_range(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "gke_cluster_service_ip_range")
 
@@ -41780,6 +42306,9 @@ class PipelineFiltersArgs:
 if not MYPY:
     class PipelineGatewayDefinitionArgsDict(TypedDict):
         connection_name: pulumi.Input[_builtins.str]
+        """
+        Immutable. The Unity Catalog connection that this gateway pipeline uses to communicate with the source.
+        """
         gateway_storage_catalog: pulumi.Input[_builtins.str]
         """
         Required, Immutable. The name of the catalog for the gateway pipeline's storage location.
@@ -41790,8 +42319,9 @@ if not MYPY:
         """
         connection_id: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Immutable. The Unity Catalog connection this gateway pipeline uses to communicate with the source.
+        Deprecated, Immutable. The Unity Catalog connection this gateway pipeline uses to communicate with the source. *Use `connection_name` instead!*
         """
+        connection_parameters: NotRequired[pulumi.Input['PipelineGatewayDefinitionConnectionParametersArgsDict']]
         gateway_storage_name: NotRequired[pulumi.Input[_builtins.str]]
         """
         Required. The Unity Catalog-compatible naming for the gateway storage location. This is the destination to use for the data that is extracted by the gateway. Lakeflow Declarative Pipelines system will automatically create the storage location under the catalog and schema.
@@ -41806,11 +42336,13 @@ class PipelineGatewayDefinitionArgs:
                  gateway_storage_catalog: pulumi.Input[_builtins.str],
                  gateway_storage_schema: pulumi.Input[_builtins.str],
                  connection_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 connection_parameters: Optional[pulumi.Input['PipelineGatewayDefinitionConnectionParametersArgs']] = None,
                  gateway_storage_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
+        :param pulumi.Input[_builtins.str] connection_name: Immutable. The Unity Catalog connection that this gateway pipeline uses to communicate with the source.
         :param pulumi.Input[_builtins.str] gateway_storage_catalog: Required, Immutable. The name of the catalog for the gateway pipeline's storage location.
         :param pulumi.Input[_builtins.str] gateway_storage_schema: Required, Immutable. The name of the schema for the gateway pipelines's storage location.
-        :param pulumi.Input[_builtins.str] connection_id: Immutable. The Unity Catalog connection this gateway pipeline uses to communicate with the source.
+        :param pulumi.Input[_builtins.str] connection_id: Deprecated, Immutable. The Unity Catalog connection this gateway pipeline uses to communicate with the source. *Use `connection_name` instead!*
         :param pulumi.Input[_builtins.str] gateway_storage_name: Required. The Unity Catalog-compatible naming for the gateway storage location. This is the destination to use for the data that is extracted by the gateway. Lakeflow Declarative Pipelines system will automatically create the storage location under the catalog and schema.
         """
         pulumi.set(__self__, "connection_name", connection_name)
@@ -41818,12 +42350,17 @@ class PipelineGatewayDefinitionArgs:
         pulumi.set(__self__, "gateway_storage_schema", gateway_storage_schema)
         if connection_id is not None:
             pulumi.set(__self__, "connection_id", connection_id)
+        if connection_parameters is not None:
+            pulumi.set(__self__, "connection_parameters", connection_parameters)
         if gateway_storage_name is not None:
             pulumi.set(__self__, "gateway_storage_name", gateway_storage_name)
 
     @_builtins.property
     @pulumi.getter(name="connectionName")
     def connection_name(self) -> pulumi.Input[_builtins.str]:
+        """
+        Immutable. The Unity Catalog connection that this gateway pipeline uses to communicate with the source.
+        """
         return pulumi.get(self, "connection_name")
 
     @connection_name.setter
@@ -41858,13 +42395,22 @@ class PipelineGatewayDefinitionArgs:
     @pulumi.getter(name="connectionId")
     def connection_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Immutable. The Unity Catalog connection this gateway pipeline uses to communicate with the source.
+        Deprecated, Immutable. The Unity Catalog connection this gateway pipeline uses to communicate with the source. *Use `connection_name` instead!*
         """
         return pulumi.get(self, "connection_id")
 
     @connection_id.setter
     def connection_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "connection_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="connectionParameters")
+    def connection_parameters(self) -> Optional[pulumi.Input['PipelineGatewayDefinitionConnectionParametersArgs']]:
+        return pulumi.get(self, "connection_parameters")
+
+    @connection_parameters.setter
+    def connection_parameters(self, value: Optional[pulumi.Input['PipelineGatewayDefinitionConnectionParametersArgs']]):
+        pulumi.set(self, "connection_parameters", value)
 
     @_builtins.property
     @pulumi.getter(name="gatewayStorageName")
@@ -41880,8 +42426,32 @@ class PipelineGatewayDefinitionArgs:
 
 
 if not MYPY:
+    class PipelineGatewayDefinitionConnectionParametersArgsDict(TypedDict):
+        source_catalog: NotRequired[pulumi.Input[_builtins.str]]
+elif False:
+    PipelineGatewayDefinitionConnectionParametersArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PipelineGatewayDefinitionConnectionParametersArgs:
+    def __init__(__self__, *,
+                 source_catalog: Optional[pulumi.Input[_builtins.str]] = None):
+        if source_catalog is not None:
+            pulumi.set(__self__, "source_catalog", source_catalog)
+
+    @_builtins.property
+    @pulumi.getter(name="sourceCatalog")
+    def source_catalog(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "source_catalog")
+
+    @source_catalog.setter
+    def source_catalog(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "source_catalog", value)
+
+
+if not MYPY:
     class PipelineIngestionDefinitionArgsDict(TypedDict):
         connection_name: NotRequired[pulumi.Input[_builtins.str]]
+        ingest_from_uc_foreign_catalog: NotRequired[pulumi.Input[_builtins.bool]]
         ingestion_gateway_id: NotRequired[pulumi.Input[_builtins.str]]
         netsuite_jar_path: NotRequired[pulumi.Input[_builtins.str]]
         objects: NotRequired[pulumi.Input[Sequence[pulumi.Input['PipelineIngestionDefinitionObjectArgsDict']]]]
@@ -41895,6 +42465,7 @@ elif False:
 class PipelineIngestionDefinitionArgs:
     def __init__(__self__, *,
                  connection_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 ingest_from_uc_foreign_catalog: Optional[pulumi.Input[_builtins.bool]] = None,
                  ingestion_gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
                  netsuite_jar_path: Optional[pulumi.Input[_builtins.str]] = None,
                  objects: Optional[pulumi.Input[Sequence[pulumi.Input['PipelineIngestionDefinitionObjectArgs']]]] = None,
@@ -41903,6 +42474,8 @@ class PipelineIngestionDefinitionArgs:
                  table_configuration: Optional[pulumi.Input['PipelineIngestionDefinitionTableConfigurationArgs']] = None):
         if connection_name is not None:
             pulumi.set(__self__, "connection_name", connection_name)
+        if ingest_from_uc_foreign_catalog is not None:
+            pulumi.set(__self__, "ingest_from_uc_foreign_catalog", ingest_from_uc_foreign_catalog)
         if ingestion_gateway_id is not None:
             pulumi.set(__self__, "ingestion_gateway_id", ingestion_gateway_id)
         if netsuite_jar_path is not None:
@@ -41924,6 +42497,15 @@ class PipelineIngestionDefinitionArgs:
     @connection_name.setter
     def connection_name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "connection_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ingestFromUcForeignCatalog")
+    def ingest_from_uc_foreign_catalog(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        return pulumi.get(self, "ingest_from_uc_foreign_catalog")
+
+    @ingest_from_uc_foreign_catalog.setter
+    def ingest_from_uc_foreign_catalog(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "ingest_from_uc_foreign_catalog", value)
 
     @_builtins.property
     @pulumi.getter(name="ingestionGatewayId")
@@ -43028,7 +43610,7 @@ if not MYPY:
     class PipelineIngestionDefinitionSourceConfigurationArgsDict(TypedDict):
         catalog: NotRequired[pulumi.Input['PipelineIngestionDefinitionSourceConfigurationCatalogArgsDict']]
         """
-        The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
+        The name of default catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline if you switch from `storage` to `catalog` or vice versa.  If pipeline was already created with `catalog` set, the value could be changed.* (Conflicts with `storage`).
         """
 elif False:
     PipelineIngestionDefinitionSourceConfigurationArgsDict: TypeAlias = Mapping[str, Any]
@@ -43038,7 +43620,7 @@ class PipelineIngestionDefinitionSourceConfigurationArgs:
     def __init__(__self__, *,
                  catalog: Optional[pulumi.Input['PipelineIngestionDefinitionSourceConfigurationCatalogArgs']] = None):
         """
-        :param pulumi.Input['PipelineIngestionDefinitionSourceConfigurationCatalogArgs'] catalog: The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
+        :param pulumi.Input['PipelineIngestionDefinitionSourceConfigurationCatalogArgs'] catalog: The name of default catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline if you switch from `storage` to `catalog` or vice versa.  If pipeline was already created with `catalog` set, the value could be changed.* (Conflicts with `storage`).
         """
         if catalog is not None:
             pulumi.set(__self__, "catalog", catalog)
@@ -43047,7 +43629,7 @@ class PipelineIngestionDefinitionSourceConfigurationArgs:
     @pulumi.getter
     def catalog(self) -> Optional[pulumi.Input['PipelineIngestionDefinitionSourceConfigurationCatalogArgs']]:
         """
-        The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
+        The name of default catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline if you switch from `storage` to `catalog` or vice versa.  If pipeline was already created with `catalog` set, the value could be changed.* (Conflicts with `storage`).
         """
         return pulumi.get(self, "catalog")
 
@@ -46253,7 +46835,7 @@ if not MYPY:
     class ShareObjectArgsDict(TypedDict):
         data_object_type: pulumi.Input[_builtins.str]
         """
-        Type of the data object, currently `TABLE`, `VIEW`, `SCHEMA`, `VOLUME`, and `MODEL` are supported.
+        Type of the data object. Supported types: `TABLE`, `FOREIGN_TABLE`, `SCHEMA`, `VIEW`, `MATERIALIZED_VIEW`, `STREAMING_TABLE`, `MODEL`, `NOTEBOOK_FILE`, `FUNCTION`, `FEATURE_SPEC`, and `VOLUME`.
         """
         name: pulumi.Input[_builtins.str]
         """
@@ -46270,6 +46852,9 @@ if not MYPY:
         Description about the object.
         """
         content: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The content of the notebook file when the data object type is NOTEBOOK_FILE. This should be base64 encoded. Required for adding a NOTEBOOK_FILE, optional for updating, ignored for other types.
+        """
         effective_cdf_enabled: NotRequired[pulumi.Input[_builtins.bool]]
         effective_history_data_sharing_status: NotRequired[pulumi.Input[_builtins.str]]
         effective_shared_as: NotRequired[pulumi.Input[_builtins.str]]
@@ -46282,6 +46867,9 @@ if not MYPY:
         To share only part of a table when you add the table to a share, you can provide partition specifications. This is specified by a number of `partition` blocks. Each entry in `partition` block takes a list of `value` blocks. The field is documented below.
         """
         partitions: NotRequired[pulumi.Input[Sequence[pulumi.Input['ShareObjectPartitionArgsDict']]]]
+        """
+        Array of partitions for the shared data.
+        """
         shared_as: NotRequired[pulumi.Input[_builtins.str]]
         """
         A user-provided new name for the data object within the share. If this new name is not provided, the object's original name will be used as the `shared_as` name. The `shared_as` name must be unique within a Share. Change forces creation of a new resource.
@@ -46320,13 +46908,15 @@ class ShareObjectArgs:
                  status: Optional[pulumi.Input[_builtins.str]] = None,
                  string_shared_as: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] data_object_type: Type of the data object, currently `TABLE`, `VIEW`, `SCHEMA`, `VOLUME`, and `MODEL` are supported.
+        :param pulumi.Input[_builtins.str] data_object_type: Type of the data object. Supported types: `TABLE`, `FOREIGN_TABLE`, `SCHEMA`, `VIEW`, `MATERIALIZED_VIEW`, `STREAMING_TABLE`, `MODEL`, `NOTEBOOK_FILE`, `FUNCTION`, `FEATURE_SPEC`, and `VOLUME`.
         :param pulumi.Input[_builtins.str] name: Full name of the object, e.g. `catalog.schema.name` for a tables, views, volumes and models, or `catalog.schema` for schemas.
         :param pulumi.Input[_builtins.bool] cdf_enabled: Whether to enable Change Data Feed (cdf) on the shared object. When this field is set, field `history_data_sharing_status` can not be set.
         :param pulumi.Input[_builtins.str] comment: Description about the object.
+        :param pulumi.Input[_builtins.str] content: The content of the notebook file when the data object type is NOTEBOOK_FILE. This should be base64 encoded. Required for adding a NOTEBOOK_FILE, optional for updating, ignored for other types.
         :param pulumi.Input[_builtins.str] history_data_sharing_status: Whether to enable history sharing, one of: `ENABLED`, `DISABLED`. When a table has history sharing enabled, recipients can query table data by version, starting from the current table version. If not specified, clients can only query starting from the version of the object at the time it was added to the share. *NOTE*: The start_version should be less than or equal the current version of the object. When this field is set, field `cdf_enabled` can not be set.
                
                To share only part of a table when you add the table to a share, you can provide partition specifications. This is specified by a number of `partition` blocks. Each entry in `partition` block takes a list of `value` blocks. The field is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['ShareObjectPartitionArgs']]] partitions: Array of partitions for the shared data.
         :param pulumi.Input[_builtins.str] shared_as: A user-provided new name for the data object within the share. If this new name is not provided, the object's original name will be used as the `shared_as` name. The `shared_as` name must be unique within a Share. Change forces creation of a new resource.
         :param pulumi.Input[_builtins.int] start_version: The start version associated with the object for cdf. This allows data providers to control the lowest object version that is accessible by clients.
         :param pulumi.Input[_builtins.str] status: Status of the object, one of: `ACTIVE`, `PERMISSION_DENIED`.
@@ -46370,7 +46960,7 @@ class ShareObjectArgs:
     @pulumi.getter(name="dataObjectType")
     def data_object_type(self) -> pulumi.Input[_builtins.str]:
         """
-        Type of the data object, currently `TABLE`, `VIEW`, `SCHEMA`, `VOLUME`, and `MODEL` are supported.
+        Type of the data object. Supported types: `TABLE`, `FOREIGN_TABLE`, `SCHEMA`, `VIEW`, `MATERIALIZED_VIEW`, `STREAMING_TABLE`, `MODEL`, `NOTEBOOK_FILE`, `FUNCTION`, `FEATURE_SPEC`, and `VOLUME`.
         """
         return pulumi.get(self, "data_object_type")
 
@@ -46435,6 +47025,9 @@ class ShareObjectArgs:
     @_builtins.property
     @pulumi.getter
     def content(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The content of the notebook file when the data object type is NOTEBOOK_FILE. This should be base64 encoded. Required for adding a NOTEBOOK_FILE, optional for updating, ignored for other types.
+        """
         return pulumi.get(self, "content")
 
     @content.setter
@@ -46503,6 +47096,9 @@ class ShareObjectArgs:
     @_builtins.property
     @pulumi.getter
     def partitions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ShareObjectPartitionArgs']]]]:
+        """
+        Array of partitions for the shared data.
+        """
         return pulumi.get(self, "partitions")
 
     @partitions.setter
@@ -74957,6 +75553,201 @@ class GetSchemasProviderConfigArgs:
 
 
 if not MYPY:
+    class GetServicePrincipalsServicePrincipalArgsDict(TypedDict):
+        acl_principal_id: _builtins.str
+        """
+        identifier for use in databricks_access_control_rule_set, e.g. `servicePrincipals/00000000-0000-0000-0000-000000000000`.
+        """
+        active: _builtins.bool
+        """
+        Whether service principal is active or not.
+        """
+        application_id: _builtins.str
+        """
+        Application ID of the service principal.
+        """
+        display_name: _builtins.str
+        """
+        Display name of the service principal, e.g. `Foo SPN`.
+        """
+        external_id: _builtins.str
+        """
+        ID of the service principal in an external identity provider.
+        """
+        home: _builtins.str
+        """
+        Home folder of the service principal, e.g. `/Users/11111111-2222-3333-4444-555666777888`.
+        """
+        id: _builtins.str
+        """
+        The id of the service principal (SCIM ID).
+        """
+        repos: _builtins.str
+        """
+        Repos location of the service principal, e.g. `/Repos/11111111-2222-3333-4444-555666777888`.
+        """
+        scim_id: _builtins.str
+        """
+        same as `id`.
+        """
+        sp_id: _builtins.str
+elif False:
+    GetServicePrincipalsServicePrincipalArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetServicePrincipalsServicePrincipalArgs:
+    def __init__(__self__, *,
+                 acl_principal_id: _builtins.str,
+                 active: _builtins.bool,
+                 application_id: _builtins.str,
+                 display_name: _builtins.str,
+                 external_id: _builtins.str,
+                 home: _builtins.str,
+                 id: _builtins.str,
+                 repos: _builtins.str,
+                 scim_id: _builtins.str,
+                 sp_id: _builtins.str):
+        """
+        :param _builtins.str acl_principal_id: identifier for use in databricks_access_control_rule_set, e.g. `servicePrincipals/00000000-0000-0000-0000-000000000000`.
+        :param _builtins.bool active: Whether service principal is active or not.
+        :param _builtins.str application_id: Application ID of the service principal.
+        :param _builtins.str display_name: Display name of the service principal, e.g. `Foo SPN`.
+        :param _builtins.str external_id: ID of the service principal in an external identity provider.
+        :param _builtins.str home: Home folder of the service principal, e.g. `/Users/11111111-2222-3333-4444-555666777888`.
+        :param _builtins.str id: The id of the service principal (SCIM ID).
+        :param _builtins.str repos: Repos location of the service principal, e.g. `/Repos/11111111-2222-3333-4444-555666777888`.
+        :param _builtins.str scim_id: same as `id`.
+        """
+        pulumi.set(__self__, "acl_principal_id", acl_principal_id)
+        pulumi.set(__self__, "active", active)
+        pulumi.set(__self__, "application_id", application_id)
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "external_id", external_id)
+        pulumi.set(__self__, "home", home)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "repos", repos)
+        pulumi.set(__self__, "scim_id", scim_id)
+        pulumi.set(__self__, "sp_id", sp_id)
+
+    @_builtins.property
+    @pulumi.getter(name="aclPrincipalId")
+    def acl_principal_id(self) -> _builtins.str:
+        """
+        identifier for use in databricks_access_control_rule_set, e.g. `servicePrincipals/00000000-0000-0000-0000-000000000000`.
+        """
+        return pulumi.get(self, "acl_principal_id")
+
+    @acl_principal_id.setter
+    def acl_principal_id(self, value: _builtins.str):
+        pulumi.set(self, "acl_principal_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def active(self) -> _builtins.bool:
+        """
+        Whether service principal is active or not.
+        """
+        return pulumi.get(self, "active")
+
+    @active.setter
+    def active(self, value: _builtins.bool):
+        pulumi.set(self, "active", value)
+
+    @_builtins.property
+    @pulumi.getter(name="applicationId")
+    def application_id(self) -> _builtins.str:
+        """
+        Application ID of the service principal.
+        """
+        return pulumi.get(self, "application_id")
+
+    @application_id.setter
+    def application_id(self, value: _builtins.str):
+        pulumi.set(self, "application_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> _builtins.str:
+        """
+        Display name of the service principal, e.g. `Foo SPN`.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: _builtins.str):
+        pulumi.set(self, "display_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="externalId")
+    def external_id(self) -> _builtins.str:
+        """
+        ID of the service principal in an external identity provider.
+        """
+        return pulumi.get(self, "external_id")
+
+    @external_id.setter
+    def external_id(self, value: _builtins.str):
+        pulumi.set(self, "external_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def home(self) -> _builtins.str:
+        """
+        Home folder of the service principal, e.g. `/Users/11111111-2222-3333-4444-555666777888`.
+        """
+        return pulumi.get(self, "home")
+
+    @home.setter
+    def home(self, value: _builtins.str):
+        pulumi.set(self, "home", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The id of the service principal (SCIM ID).
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: _builtins.str):
+        pulumi.set(self, "id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def repos(self) -> _builtins.str:
+        """
+        Repos location of the service principal, e.g. `/Repos/11111111-2222-3333-4444-555666777888`.
+        """
+        return pulumi.get(self, "repos")
+
+    @repos.setter
+    def repos(self, value: _builtins.str):
+        pulumi.set(self, "repos", value)
+
+    @_builtins.property
+    @pulumi.getter(name="scimId")
+    def scim_id(self) -> _builtins.str:
+        """
+        same as `id`.
+        """
+        return pulumi.get(self, "scim_id")
+
+    @scim_id.setter
+    def scim_id(self, value: _builtins.str):
+        pulumi.set(self, "scim_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="spId")
+    def sp_id(self) -> _builtins.str:
+        return pulumi.get(self, "sp_id")
+
+    @sp_id.setter
+    def sp_id(self, value: _builtins.str):
+        pulumi.set(self, "sp_id", value)
+
+
+if not MYPY:
     class GetServingEndpointsEndpointArgsDict(TypedDict):
         ai_gateways: NotRequired[Sequence['GetServingEndpointsEndpointAiGatewayArgsDict']]
         """
@@ -79913,6 +80704,565 @@ class GetTablesProviderConfigArgs:
     @workspace_id.setter
     def workspace_id(self, value: _builtins.str):
         pulumi.set(self, "workspace_id", value)
+
+
+if not MYPY:
+    class GetUsersUserArgsDict(TypedDict):
+        active: NotRequired[_builtins.bool]
+        """
+        Boolean that represents if this user is active.
+        """
+        display_name: NotRequired[_builtins.str]
+        emails: NotRequired[Sequence['GetUsersUserEmailArgsDict']]
+        """
+        All the emails associated with the Databricks user.
+        """
+        entitlements: NotRequired[Sequence['GetUsersUserEntitlementArgsDict']]
+        """
+        Entitlements assigned to the user.
+        """
+        external_id: NotRequired[_builtins.str]
+        groups: NotRequired[Sequence['GetUsersUserGroupArgsDict']]
+        """
+        Indicates if the user is part of any groups.
+        """
+        id: NotRequired[_builtins.str]
+        """
+        The ID of the user.
+        - `userName` - The username of the user.
+        """
+        name: NotRequired['GetUsersUserNameArgsDict']
+        """
+        - `givenName` - Given name of the Databricks user.
+        - `familyName` - Family name of the Databricks user.
+        - `displayName` - The display name of the user.
+        """
+        roles: NotRequired[Sequence['GetUsersUserRoleArgsDict']]
+        """
+        Indicates if the user has any associated roles.
+        """
+        schemas: NotRequired[Sequence[_builtins.str]]
+        """
+        The schema of the user.
+        - `externalId` - Reserved for future use.
+        """
+        user_name: NotRequired[_builtins.str]
+elif False:
+    GetUsersUserArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetUsersUserArgs:
+    def __init__(__self__, *,
+                 active: Optional[_builtins.bool] = None,
+                 display_name: Optional[_builtins.str] = None,
+                 emails: Optional[Sequence['GetUsersUserEmailArgs']] = None,
+                 entitlements: Optional[Sequence['GetUsersUserEntitlementArgs']] = None,
+                 external_id: Optional[_builtins.str] = None,
+                 groups: Optional[Sequence['GetUsersUserGroupArgs']] = None,
+                 id: Optional[_builtins.str] = None,
+                 name: Optional['GetUsersUserNameArgs'] = None,
+                 roles: Optional[Sequence['GetUsersUserRoleArgs']] = None,
+                 schemas: Optional[Sequence[_builtins.str]] = None,
+                 user_name: Optional[_builtins.str] = None):
+        """
+        :param _builtins.bool active: Boolean that represents if this user is active.
+        :param Sequence['GetUsersUserEmailArgs'] emails: All the emails associated with the Databricks user.
+        :param Sequence['GetUsersUserEntitlementArgs'] entitlements: Entitlements assigned to the user.
+        :param Sequence['GetUsersUserGroupArgs'] groups: Indicates if the user is part of any groups.
+        :param _builtins.str id: The ID of the user.
+               - `userName` - The username of the user.
+        :param 'GetUsersUserNameArgs' name: - `givenName` - Given name of the Databricks user.
+               - `familyName` - Family name of the Databricks user.
+               - `displayName` - The display name of the user.
+        :param Sequence['GetUsersUserRoleArgs'] roles: Indicates if the user has any associated roles.
+        :param Sequence[_builtins.str] schemas: The schema of the user.
+               - `externalId` - Reserved for future use.
+        """
+        if active is not None:
+            pulumi.set(__self__, "active", active)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if emails is not None:
+            pulumi.set(__self__, "emails", emails)
+        if entitlements is not None:
+            pulumi.set(__self__, "entitlements", entitlements)
+        if external_id is not None:
+            pulumi.set(__self__, "external_id", external_id)
+        if groups is not None:
+            pulumi.set(__self__, "groups", groups)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if roles is not None:
+            pulumi.set(__self__, "roles", roles)
+        if schemas is not None:
+            pulumi.set(__self__, "schemas", schemas)
+        if user_name is not None:
+            pulumi.set(__self__, "user_name", user_name)
+
+    @_builtins.property
+    @pulumi.getter
+    def active(self) -> Optional[_builtins.bool]:
+        """
+        Boolean that represents if this user is active.
+        """
+        return pulumi.get(self, "active")
+
+    @active.setter
+    def active(self, value: Optional[_builtins.bool]):
+        pulumi.set(self, "active", value)
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "display_name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def emails(self) -> Optional[Sequence['GetUsersUserEmailArgs']]:
+        """
+        All the emails associated with the Databricks user.
+        """
+        return pulumi.get(self, "emails")
+
+    @emails.setter
+    def emails(self, value: Optional[Sequence['GetUsersUserEmailArgs']]):
+        pulumi.set(self, "emails", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def entitlements(self) -> Optional[Sequence['GetUsersUserEntitlementArgs']]:
+        """
+        Entitlements assigned to the user.
+        """
+        return pulumi.get(self, "entitlements")
+
+    @entitlements.setter
+    def entitlements(self, value: Optional[Sequence['GetUsersUserEntitlementArgs']]):
+        pulumi.set(self, "entitlements", value)
+
+    @_builtins.property
+    @pulumi.getter(name="externalId")
+    def external_id(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "external_id")
+
+    @external_id.setter
+    def external_id(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "external_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def groups(self) -> Optional[Sequence['GetUsersUserGroupArgs']]:
+        """
+        Indicates if the user is part of any groups.
+        """
+        return pulumi.get(self, "groups")
+
+    @groups.setter
+    def groups(self, value: Optional[Sequence['GetUsersUserGroupArgs']]):
+        pulumi.set(self, "groups", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the user.
+        - `userName` - The username of the user.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional['GetUsersUserNameArgs']:
+        """
+        - `givenName` - Given name of the Databricks user.
+        - `familyName` - Family name of the Databricks user.
+        - `displayName` - The display name of the user.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional['GetUsersUserNameArgs']):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def roles(self) -> Optional[Sequence['GetUsersUserRoleArgs']]:
+        """
+        Indicates if the user has any associated roles.
+        """
+        return pulumi.get(self, "roles")
+
+    @roles.setter
+    def roles(self, value: Optional[Sequence['GetUsersUserRoleArgs']]):
+        pulumi.set(self, "roles", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def schemas(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The schema of the user.
+        - `externalId` - Reserved for future use.
+        """
+        return pulumi.get(self, "schemas")
+
+    @schemas.setter
+    def schemas(self, value: Optional[Sequence[_builtins.str]]):
+        pulumi.set(self, "schemas", value)
+
+    @_builtins.property
+    @pulumi.getter(name="userName")
+    def user_name(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "user_name")
+
+    @user_name.setter
+    def user_name(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "user_name", value)
+
+
+if not MYPY:
+    class GetUsersUserEmailArgsDict(TypedDict):
+        display: NotRequired[_builtins.str]
+        primary: NotRequired[_builtins.bool]
+        ref: NotRequired[_builtins.str]
+        type: NotRequired[_builtins.str]
+        value: NotRequired[_builtins.str]
+elif False:
+    GetUsersUserEmailArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetUsersUserEmailArgs:
+    def __init__(__self__, *,
+                 display: Optional[_builtins.str] = None,
+                 primary: Optional[_builtins.bool] = None,
+                 ref: Optional[_builtins.str] = None,
+                 type: Optional[_builtins.str] = None,
+                 value: Optional[_builtins.str] = None):
+        if display is not None:
+            pulumi.set(__self__, "display", display)
+        if primary is not None:
+            pulumi.set(__self__, "primary", primary)
+        if ref is not None:
+            pulumi.set(__self__, "ref", ref)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def display(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "display")
+
+    @display.setter
+    def display(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "display", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def primary(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "primary")
+
+    @primary.setter
+    def primary(self, value: Optional[_builtins.bool]):
+        pulumi.set(self, "primary", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def ref(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "ref")
+
+    @ref.setter
+    def ref(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "ref", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class GetUsersUserEntitlementArgsDict(TypedDict):
+        display: NotRequired[_builtins.str]
+        primary: NotRequired[_builtins.bool]
+        ref: NotRequired[_builtins.str]
+        type: NotRequired[_builtins.str]
+        value: NotRequired[_builtins.str]
+elif False:
+    GetUsersUserEntitlementArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetUsersUserEntitlementArgs:
+    def __init__(__self__, *,
+                 display: Optional[_builtins.str] = None,
+                 primary: Optional[_builtins.bool] = None,
+                 ref: Optional[_builtins.str] = None,
+                 type: Optional[_builtins.str] = None,
+                 value: Optional[_builtins.str] = None):
+        if display is not None:
+            pulumi.set(__self__, "display", display)
+        if primary is not None:
+            pulumi.set(__self__, "primary", primary)
+        if ref is not None:
+            pulumi.set(__self__, "ref", ref)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def display(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "display")
+
+    @display.setter
+    def display(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "display", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def primary(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "primary")
+
+    @primary.setter
+    def primary(self, value: Optional[_builtins.bool]):
+        pulumi.set(self, "primary", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def ref(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "ref")
+
+    @ref.setter
+    def ref(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "ref", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class GetUsersUserGroupArgsDict(TypedDict):
+        display: NotRequired[_builtins.str]
+        primary: NotRequired[_builtins.bool]
+        ref: NotRequired[_builtins.str]
+        type: NotRequired[_builtins.str]
+        value: NotRequired[_builtins.str]
+elif False:
+    GetUsersUserGroupArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetUsersUserGroupArgs:
+    def __init__(__self__, *,
+                 display: Optional[_builtins.str] = None,
+                 primary: Optional[_builtins.bool] = None,
+                 ref: Optional[_builtins.str] = None,
+                 type: Optional[_builtins.str] = None,
+                 value: Optional[_builtins.str] = None):
+        if display is not None:
+            pulumi.set(__self__, "display", display)
+        if primary is not None:
+            pulumi.set(__self__, "primary", primary)
+        if ref is not None:
+            pulumi.set(__self__, "ref", ref)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def display(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "display")
+
+    @display.setter
+    def display(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "display", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def primary(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "primary")
+
+    @primary.setter
+    def primary(self, value: Optional[_builtins.bool]):
+        pulumi.set(self, "primary", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def ref(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "ref")
+
+    @ref.setter
+    def ref(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "ref", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class GetUsersUserNameArgsDict(TypedDict):
+        family_name: NotRequired[_builtins.str]
+        given_name: NotRequired[_builtins.str]
+elif False:
+    GetUsersUserNameArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetUsersUserNameArgs:
+    def __init__(__self__, *,
+                 family_name: Optional[_builtins.str] = None,
+                 given_name: Optional[_builtins.str] = None):
+        if family_name is not None:
+            pulumi.set(__self__, "family_name", family_name)
+        if given_name is not None:
+            pulumi.set(__self__, "given_name", given_name)
+
+    @_builtins.property
+    @pulumi.getter(name="familyName")
+    def family_name(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "family_name")
+
+    @family_name.setter
+    def family_name(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "family_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="givenName")
+    def given_name(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "given_name")
+
+    @given_name.setter
+    def given_name(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "given_name", value)
+
+
+if not MYPY:
+    class GetUsersUserRoleArgsDict(TypedDict):
+        display: NotRequired[_builtins.str]
+        primary: NotRequired[_builtins.bool]
+        ref: NotRequired[_builtins.str]
+        type: NotRequired[_builtins.str]
+        value: NotRequired[_builtins.str]
+elif False:
+    GetUsersUserRoleArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetUsersUserRoleArgs:
+    def __init__(__self__, *,
+                 display: Optional[_builtins.str] = None,
+                 primary: Optional[_builtins.bool] = None,
+                 ref: Optional[_builtins.str] = None,
+                 type: Optional[_builtins.str] = None,
+                 value: Optional[_builtins.str] = None):
+        if display is not None:
+            pulumi.set(__self__, "display", display)
+        if primary is not None:
+            pulumi.set(__self__, "primary", primary)
+        if ref is not None:
+            pulumi.set(__self__, "ref", ref)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def display(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "display")
+
+    @display.setter
+    def display(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "display", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def primary(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "primary")
+
+    @primary.setter
+    def primary(self, value: Optional[_builtins.bool]):
+        pulumi.set(self, "primary", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def ref(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "ref")
+
+    @ref.setter
+    def ref(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "ref", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "value", value)
 
 
 if not MYPY:

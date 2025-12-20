@@ -64,22 +64,30 @@ public final class ShareObjectArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.comment);
     }
 
+    /**
+     * The content of the notebook file when the data object type is NOTEBOOK_FILE. This should be base64 encoded. Required for adding a NOTEBOOK_FILE, optional for updating, ignored for other types.
+     * 
+     */
     @Import(name="content")
     private @Nullable Output<String> content;
 
+    /**
+     * @return The content of the notebook file when the data object type is NOTEBOOK_FILE. This should be base64 encoded. Required for adding a NOTEBOOK_FILE, optional for updating, ignored for other types.
+     * 
+     */
     public Optional<Output<String>> content() {
         return Optional.ofNullable(this.content);
     }
 
     /**
-     * Type of the data object, currently `TABLE`, `VIEW`, `SCHEMA`, `VOLUME`, and `MODEL` are supported.
+     * Type of the data object. Supported types: `TABLE`, `FOREIGN_TABLE`, `SCHEMA`, `VIEW`, `MATERIALIZED_VIEW`, `STREAMING_TABLE`, `MODEL`, `NOTEBOOK_FILE`, `FUNCTION`, `FEATURE_SPEC`, and `VOLUME`.
      * 
      */
     @Import(name="dataObjectType", required=true)
     private Output<String> dataObjectType;
 
     /**
-     * @return Type of the data object, currently `TABLE`, `VIEW`, `SCHEMA`, `VOLUME`, and `MODEL` are supported.
+     * @return Type of the data object. Supported types: `TABLE`, `FOREIGN_TABLE`, `SCHEMA`, `VIEW`, `MATERIALIZED_VIEW`, `STREAMING_TABLE`, `MODEL`, `NOTEBOOK_FILE`, `FUNCTION`, `FEATURE_SPEC`, and `VOLUME`.
      * 
      */
     public Output<String> dataObjectType() {
@@ -155,9 +163,17 @@ public final class ShareObjectArgs extends com.pulumi.resources.ResourceArgs {
         return this.name;
     }
 
+    /**
+     * Array of partitions for the shared data.
+     * 
+     */
     @Import(name="partitions")
     private @Nullable Output<List<ShareObjectPartitionArgs>> partitions;
 
+    /**
+     * @return Array of partitions for the shared data.
+     * 
+     */
     public Optional<Output<List<ShareObjectPartitionArgs>>> partitions() {
         return Optional.ofNullable(this.partitions);
     }
@@ -315,17 +331,29 @@ public final class ShareObjectArgs extends com.pulumi.resources.ResourceArgs {
             return comment(Output.of(comment));
         }
 
+        /**
+         * @param content The content of the notebook file when the data object type is NOTEBOOK_FILE. This should be base64 encoded. Required for adding a NOTEBOOK_FILE, optional for updating, ignored for other types.
+         * 
+         * @return builder
+         * 
+         */
         public Builder content(@Nullable Output<String> content) {
             $.content = content;
             return this;
         }
 
+        /**
+         * @param content The content of the notebook file when the data object type is NOTEBOOK_FILE. This should be base64 encoded. Required for adding a NOTEBOOK_FILE, optional for updating, ignored for other types.
+         * 
+         * @return builder
+         * 
+         */
         public Builder content(String content) {
             return content(Output.of(content));
         }
 
         /**
-         * @param dataObjectType Type of the data object, currently `TABLE`, `VIEW`, `SCHEMA`, `VOLUME`, and `MODEL` are supported.
+         * @param dataObjectType Type of the data object. Supported types: `TABLE`, `FOREIGN_TABLE`, `SCHEMA`, `VIEW`, `MATERIALIZED_VIEW`, `STREAMING_TABLE`, `MODEL`, `NOTEBOOK_FILE`, `FUNCTION`, `FEATURE_SPEC`, and `VOLUME`.
          * 
          * @return builder
          * 
@@ -336,7 +364,7 @@ public final class ShareObjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dataObjectType Type of the data object, currently `TABLE`, `VIEW`, `SCHEMA`, `VOLUME`, and `MODEL` are supported.
+         * @param dataObjectType Type of the data object. Supported types: `TABLE`, `FOREIGN_TABLE`, `SCHEMA`, `VIEW`, `MATERIALIZED_VIEW`, `STREAMING_TABLE`, `MODEL`, `NOTEBOOK_FILE`, `FUNCTION`, `FEATURE_SPEC`, and `VOLUME`.
          * 
          * @return builder
          * 
@@ -436,15 +464,33 @@ public final class ShareObjectArgs extends com.pulumi.resources.ResourceArgs {
             return name(Output.of(name));
         }
 
+        /**
+         * @param partitions Array of partitions for the shared data.
+         * 
+         * @return builder
+         * 
+         */
         public Builder partitions(@Nullable Output<List<ShareObjectPartitionArgs>> partitions) {
             $.partitions = partitions;
             return this;
         }
 
+        /**
+         * @param partitions Array of partitions for the shared data.
+         * 
+         * @return builder
+         * 
+         */
         public Builder partitions(List<ShareObjectPartitionArgs> partitions) {
             return partitions(Output.of(partitions));
         }
 
+        /**
+         * @param partitions Array of partitions for the shared data.
+         * 
+         * @return builder
+         * 
+         */
         public Builder partitions(ShareObjectPartitionArgs... partitions) {
             return partitions(List.of(partitions));
         }

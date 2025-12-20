@@ -115,7 +115,7 @@ def get_tag_policy(tag_key: Optional[_builtins.str] = None,
     """
     [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
-    This data source can be used to get a single tag policy by its tag key.
+    This data source can be used to get a single tag policy by its tag key. Manage tag policy permissions using the `AccessControlRuleSet` resource.
 
     > **Note** This resource can only be used with a workspace-level provider!
 
@@ -147,7 +147,7 @@ def get_tag_policy_output(tag_key: Optional[pulumi.Input[_builtins.str]] = None,
     """
     [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
-    This data source can be used to get a single tag policy by its tag key.
+    This data source can be used to get a single tag policy by its tag key. Manage tag policy permissions using the `AccessControlRuleSet` resource.
 
     > **Note** This resource can only be used with a workspace-level provider!
 

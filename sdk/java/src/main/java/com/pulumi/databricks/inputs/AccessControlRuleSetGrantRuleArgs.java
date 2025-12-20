@@ -43,6 +43,9 @@ public final class AccessControlRuleSetGrantRuleArgs extends com.pulumi.resource
      * * `accounts/{account_id}/ruleSets/default`
      * * `roles/marketplace.admin` - Databricks Marketplace administrator.
      * * `roles/billing.admin` - Billing administrator.
+     * * `roles/tagPolicy.creator` - Creator of tag policies.
+     * * `roles/tagPolicy.manager` - Manager of tag policies.
+     * * `roles/tagPolicy.assigner` - Assigner of tag policies.
      * * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`
      * * `roles/servicePrincipal.manager` - Manager of a service principal.
      * * `roles/servicePrincipal.user` - User of a service principal.
@@ -51,6 +54,9 @@ public final class AccessControlRuleSetGrantRuleArgs extends com.pulumi.resource
      * * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default`
      * * `roles/budgetPolicy.manager` - Manager of a budget policy.
      * * `roles/budgetPolicy.user` - User of a budget policy.
+     * * `accounts/{account_id}/tagPolicies/{tag_policy_id}/ruleSets/default`
+     * * `roles/tagPolicy.manager` - Manager of a specific tag policy.
+     * * `roles/tagPolicy.assigner` - Assigner of a specific tag policy.
      * 
      */
     @Import(name="role", required=true)
@@ -61,6 +67,9 @@ public final class AccessControlRuleSetGrantRuleArgs extends com.pulumi.resource
      * * `accounts/{account_id}/ruleSets/default`
      * * `roles/marketplace.admin` - Databricks Marketplace administrator.
      * * `roles/billing.admin` - Billing administrator.
+     * * `roles/tagPolicy.creator` - Creator of tag policies.
+     * * `roles/tagPolicy.manager` - Manager of tag policies.
+     * * `roles/tagPolicy.assigner` - Assigner of tag policies.
      * * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`
      * * `roles/servicePrincipal.manager` - Manager of a service principal.
      * * `roles/servicePrincipal.user` - User of a service principal.
@@ -69,6 +78,9 @@ public final class AccessControlRuleSetGrantRuleArgs extends com.pulumi.resource
      * * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default`
      * * `roles/budgetPolicy.manager` - Manager of a budget policy.
      * * `roles/budgetPolicy.user` - User of a budget policy.
+     * * `accounts/{account_id}/tagPolicies/{tag_policy_id}/ruleSets/default`
+     * * `roles/tagPolicy.manager` - Manager of a specific tag policy.
+     * * `roles/tagPolicy.assigner` - Assigner of a specific tag policy.
      * 
      */
     public Output<String> role() {
@@ -145,6 +157,9 @@ public final class AccessControlRuleSetGrantRuleArgs extends com.pulumi.resource
          * * `accounts/{account_id}/ruleSets/default`
          * * `roles/marketplace.admin` - Databricks Marketplace administrator.
          * * `roles/billing.admin` - Billing administrator.
+         * * `roles/tagPolicy.creator` - Creator of tag policies.
+         * * `roles/tagPolicy.manager` - Manager of tag policies.
+         * * `roles/tagPolicy.assigner` - Assigner of tag policies.
          * * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`
          * * `roles/servicePrincipal.manager` - Manager of a service principal.
          * * `roles/servicePrincipal.user` - User of a service principal.
@@ -153,6 +168,9 @@ public final class AccessControlRuleSetGrantRuleArgs extends com.pulumi.resource
          * * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default`
          * * `roles/budgetPolicy.manager` - Manager of a budget policy.
          * * `roles/budgetPolicy.user` - User of a budget policy.
+         * * `accounts/{account_id}/tagPolicies/{tag_policy_id}/ruleSets/default`
+         * * `roles/tagPolicy.manager` - Manager of a specific tag policy.
+         * * `roles/tagPolicy.assigner` - Assigner of a specific tag policy.
          * 
          * @return builder
          * 
@@ -167,6 +185,9 @@ public final class AccessControlRuleSetGrantRuleArgs extends com.pulumi.resource
          * * `accounts/{account_id}/ruleSets/default`
          * * `roles/marketplace.admin` - Databricks Marketplace administrator.
          * * `roles/billing.admin` - Billing administrator.
+         * * `roles/tagPolicy.creator` - Creator of tag policies.
+         * * `roles/tagPolicy.manager` - Manager of tag policies.
+         * * `roles/tagPolicy.assigner` - Assigner of tag policies.
          * * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`
          * * `roles/servicePrincipal.manager` - Manager of a service principal.
          * * `roles/servicePrincipal.user` - User of a service principal.
@@ -175,6 +196,9 @@ public final class AccessControlRuleSetGrantRuleArgs extends com.pulumi.resource
          * * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default`
          * * `roles/budgetPolicy.manager` - Manager of a budget policy.
          * * `roles/budgetPolicy.user` - User of a budget policy.
+         * * `accounts/{account_id}/tagPolicies/{tag_policy_id}/ruleSets/default`
+         * * `roles/tagPolicy.manager` - Manager of a specific tag policy.
+         * * `roles/tagPolicy.assigner` - Assigner of a specific tag policy.
          * 
          * @return builder
          * 

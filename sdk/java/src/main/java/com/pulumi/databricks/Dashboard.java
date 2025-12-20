@@ -111,6 +111,34 @@ public class Dashboard extends com.pulumi.resources.CustomResource {
         return this.dashboardId;
     }
     /**
+     * Sets the default catalog for all datasets in this dashboard. Does not impact table references that use fully qualified catalog names (ex: samples.nyctaxi.trips).
+     * 
+     */
+    @Export(name="datasetCatalog", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> datasetCatalog;
+
+    /**
+     * @return Sets the default catalog for all datasets in this dashboard. Does not impact table references that use fully qualified catalog names (ex: samples.nyctaxi.trips).
+     * 
+     */
+    public Output<Optional<String>> datasetCatalog() {
+        return Codegen.optional(this.datasetCatalog);
+    }
+    /**
+     * Sets the default schema for all datasets in this dashboard. Does not impact table references that use fully qualified catalog names (ex: samples.nyctaxi.trips).
+     * 
+     */
+    @Export(name="datasetSchema", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> datasetSchema;
+
+    /**
+     * @return Sets the default schema for all datasets in this dashboard. Does not impact table references that use fully qualified catalog names (ex: samples.nyctaxi.trips).
+     * 
+     */
+    public Output<Optional<String>> datasetSchema() {
+        return Codegen.optional(this.datasetSchema);
+    }
+    /**
      * The display name of the dashboard.
      * 
      */

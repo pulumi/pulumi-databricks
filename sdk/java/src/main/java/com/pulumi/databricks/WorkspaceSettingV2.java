@@ -100,105 +100,185 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="databricks:index/workspaceSettingV2:WorkspaceSettingV2")
 public class WorkspaceSettingV2 extends com.pulumi.resources.CustomResource {
+    /**
+     * Setting value for aibiDashboardEmbeddingAccessPolicy setting. This is the setting value set by consumers, check effectiveAibiDashboardEmbeddingAccessPolicy for final setting value
+     * 
+     */
     @Export(name="aibiDashboardEmbeddingAccessPolicy", refs={WorkspaceSettingV2AibiDashboardEmbeddingAccessPolicy.class}, tree="[0]")
     private Output</* @Nullable */ WorkspaceSettingV2AibiDashboardEmbeddingAccessPolicy> aibiDashboardEmbeddingAccessPolicy;
 
+    /**
+     * @return Setting value for aibiDashboardEmbeddingAccessPolicy setting. This is the setting value set by consumers, check effectiveAibiDashboardEmbeddingAccessPolicy for final setting value
+     * 
+     */
     public Output<Optional<WorkspaceSettingV2AibiDashboardEmbeddingAccessPolicy>> aibiDashboardEmbeddingAccessPolicy() {
         return Codegen.optional(this.aibiDashboardEmbeddingAccessPolicy);
     }
+    /**
+     * Setting value for aibiDashboardEmbeddingApprovedDomains setting. This is the setting value set by consumers, check effectiveAibiDashboardEmbeddingApprovedDomains for final setting value
+     * 
+     */
     @Export(name="aibiDashboardEmbeddingApprovedDomains", refs={WorkspaceSettingV2AibiDashboardEmbeddingApprovedDomains.class}, tree="[0]")
     private Output</* @Nullable */ WorkspaceSettingV2AibiDashboardEmbeddingApprovedDomains> aibiDashboardEmbeddingApprovedDomains;
 
+    /**
+     * @return Setting value for aibiDashboardEmbeddingApprovedDomains setting. This is the setting value set by consumers, check effectiveAibiDashboardEmbeddingApprovedDomains for final setting value
+     * 
+     */
     public Output<Optional<WorkspaceSettingV2AibiDashboardEmbeddingApprovedDomains>> aibiDashboardEmbeddingApprovedDomains() {
         return Codegen.optional(this.aibiDashboardEmbeddingApprovedDomains);
     }
+    /**
+     * Setting value for automaticClusterUpdateWorkspace setting. This is the setting value set by consumers, check effectiveAutomaticClusterUpdateWorkspace for final setting value
+     * 
+     */
     @Export(name="automaticClusterUpdateWorkspace", refs={WorkspaceSettingV2AutomaticClusterUpdateWorkspace.class}, tree="[0]")
     private Output</* @Nullable */ WorkspaceSettingV2AutomaticClusterUpdateWorkspace> automaticClusterUpdateWorkspace;
 
+    /**
+     * @return Setting value for automaticClusterUpdateWorkspace setting. This is the setting value set by consumers, check effectiveAutomaticClusterUpdateWorkspace for final setting value
+     * 
+     */
     public Output<Optional<WorkspaceSettingV2AutomaticClusterUpdateWorkspace>> automaticClusterUpdateWorkspace() {
         return Codegen.optional(this.automaticClusterUpdateWorkspace);
     }
+    /**
+     * Setting value for boolean type setting. This is the setting value set by consumers, check effectiveBooleanVal for final setting value
+     * 
+     */
     @Export(name="booleanVal", refs={WorkspaceSettingV2BooleanVal.class}, tree="[0]")
     private Output</* @Nullable */ WorkspaceSettingV2BooleanVal> booleanVal;
 
+    /**
+     * @return Setting value for boolean type setting. This is the setting value set by consumers, check effectiveBooleanVal for final setting value
+     * 
+     */
     public Output<Optional<WorkspaceSettingV2BooleanVal>> booleanVal() {
         return Codegen.optional(this.booleanVal);
     }
+    /**
+     * Effective setting value for aibiDashboardEmbeddingAccessPolicy setting. This is the final effective value of setting. To set a value use aibi_dashboard_embedding_access_policy
+     * 
+     */
     @Export(name="effectiveAibiDashboardEmbeddingAccessPolicy", refs={WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy.class}, tree="[0]")
     private Output</* @Nullable */ WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy> effectiveAibiDashboardEmbeddingAccessPolicy;
 
+    /**
+     * @return Effective setting value for aibiDashboardEmbeddingAccessPolicy setting. This is the final effective value of setting. To set a value use aibi_dashboard_embedding_access_policy
+     * 
+     */
     public Output<Optional<WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy>> effectiveAibiDashboardEmbeddingAccessPolicy() {
         return Codegen.optional(this.effectiveAibiDashboardEmbeddingAccessPolicy);
     }
+    /**
+     * Effective setting value for aibiDashboardEmbeddingApprovedDomains setting. This is the final effective value of setting. To set a value use aibi_dashboard_embedding_approved_domains
+     * 
+     */
     @Export(name="effectiveAibiDashboardEmbeddingApprovedDomains", refs={WorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomains.class}, tree="[0]")
     private Output</* @Nullable */ WorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomains> effectiveAibiDashboardEmbeddingApprovedDomains;
 
+    /**
+     * @return Effective setting value for aibiDashboardEmbeddingApprovedDomains setting. This is the final effective value of setting. To set a value use aibi_dashboard_embedding_approved_domains
+     * 
+     */
     public Output<Optional<WorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomains>> effectiveAibiDashboardEmbeddingApprovedDomains() {
         return Codegen.optional(this.effectiveAibiDashboardEmbeddingApprovedDomains);
     }
+    /**
+     * Effective setting value for automaticClusterUpdateWorkspace setting. This is the final effective value of setting. To set a value use automatic_cluster_update_workspace
+     * 
+     */
     @Export(name="effectiveAutomaticClusterUpdateWorkspace", refs={WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspace.class}, tree="[0]")
     private Output</* @Nullable */ WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspace> effectiveAutomaticClusterUpdateWorkspace;
 
+    /**
+     * @return Effective setting value for automaticClusterUpdateWorkspace setting. This is the final effective value of setting. To set a value use automatic_cluster_update_workspace
+     * 
+     */
     public Output<Optional<WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspace>> effectiveAutomaticClusterUpdateWorkspace() {
         return Codegen.optional(this.effectiveAutomaticClusterUpdateWorkspace);
     }
     /**
-     * (BooleanMessage)
+     * (BooleanMessage) - Effective setting value for boolean type setting. This is the final effective value of setting. To set a value use boolean_val
      * 
      */
     @Export(name="effectiveBooleanVal", refs={WorkspaceSettingV2EffectiveBooleanVal.class}, tree="[0]")
     private Output<WorkspaceSettingV2EffectiveBooleanVal> effectiveBooleanVal;
 
     /**
-     * @return (BooleanMessage)
+     * @return (BooleanMessage) - Effective setting value for boolean type setting. This is the final effective value of setting. To set a value use boolean_val
      * 
      */
     public Output<WorkspaceSettingV2EffectiveBooleanVal> effectiveBooleanVal() {
         return this.effectiveBooleanVal;
     }
     /**
-     * (IntegerMessage)
+     * (IntegerMessage) - Effective setting value for integer type setting. This is the final effective value of setting. To set a value use integer_val
      * 
      */
     @Export(name="effectiveIntegerVal", refs={WorkspaceSettingV2EffectiveIntegerVal.class}, tree="[0]")
     private Output<WorkspaceSettingV2EffectiveIntegerVal> effectiveIntegerVal;
 
     /**
-     * @return (IntegerMessage)
+     * @return (IntegerMessage) - Effective setting value for integer type setting. This is the final effective value of setting. To set a value use integer_val
      * 
      */
     public Output<WorkspaceSettingV2EffectiveIntegerVal> effectiveIntegerVal() {
         return this.effectiveIntegerVal;
     }
+    /**
+     * Effective setting value for personalCompute setting. This is the final effective value of setting. To set a value use personal_compute
+     * 
+     */
     @Export(name="effectivePersonalCompute", refs={WorkspaceSettingV2EffectivePersonalCompute.class}, tree="[0]")
     private Output</* @Nullable */ WorkspaceSettingV2EffectivePersonalCompute> effectivePersonalCompute;
 
+    /**
+     * @return Effective setting value for personalCompute setting. This is the final effective value of setting. To set a value use personal_compute
+     * 
+     */
     public Output<Optional<WorkspaceSettingV2EffectivePersonalCompute>> effectivePersonalCompute() {
         return Codegen.optional(this.effectivePersonalCompute);
     }
+    /**
+     * Effective setting value for restrictWorkspaceAdmins setting. This is the final effective value of setting. To set a value use restrict_workspace_admins
+     * 
+     */
     @Export(name="effectiveRestrictWorkspaceAdmins", refs={WorkspaceSettingV2EffectiveRestrictWorkspaceAdmins.class}, tree="[0]")
     private Output</* @Nullable */ WorkspaceSettingV2EffectiveRestrictWorkspaceAdmins> effectiveRestrictWorkspaceAdmins;
 
+    /**
+     * @return Effective setting value for restrictWorkspaceAdmins setting. This is the final effective value of setting. To set a value use restrict_workspace_admins
+     * 
+     */
     public Output<Optional<WorkspaceSettingV2EffectiveRestrictWorkspaceAdmins>> effectiveRestrictWorkspaceAdmins() {
         return Codegen.optional(this.effectiveRestrictWorkspaceAdmins);
     }
     /**
-     * (StringMessage)
+     * (StringMessage) - Effective setting value for string type setting. This is the final effective value of setting. To set a value use string_val
      * 
      */
     @Export(name="effectiveStringVal", refs={WorkspaceSettingV2EffectiveStringVal.class}, tree="[0]")
     private Output<WorkspaceSettingV2EffectiveStringVal> effectiveStringVal;
 
     /**
-     * @return (StringMessage)
+     * @return (StringMessage) - Effective setting value for string type setting. This is the final effective value of setting. To set a value use string_val
      * 
      */
     public Output<WorkspaceSettingV2EffectiveStringVal> effectiveStringVal() {
         return this.effectiveStringVal;
     }
+    /**
+     * Setting value for integer type setting. This is the setting value set by consumers, check effectiveIntegerVal for final setting value
+     * 
+     */
     @Export(name="integerVal", refs={WorkspaceSettingV2IntegerVal.class}, tree="[0]")
     private Output</* @Nullable */ WorkspaceSettingV2IntegerVal> integerVal;
 
+    /**
+     * @return Setting value for integer type setting. This is the setting value set by consumers, check effectiveIntegerVal for final setting value
+     * 
+     */
     public Output<Optional<WorkspaceSettingV2IntegerVal>> integerVal() {
         return Codegen.optional(this.integerVal);
     }
@@ -216,21 +296,45 @@ public class WorkspaceSettingV2 extends com.pulumi.resources.CustomResource {
     public Output<String> name() {
         return this.name;
     }
+    /**
+     * Setting value for personalCompute setting. This is the setting value set by consumers, check effectivePersonalCompute for final setting value
+     * 
+     */
     @Export(name="personalCompute", refs={WorkspaceSettingV2PersonalCompute.class}, tree="[0]")
     private Output</* @Nullable */ WorkspaceSettingV2PersonalCompute> personalCompute;
 
+    /**
+     * @return Setting value for personalCompute setting. This is the setting value set by consumers, check effectivePersonalCompute for final setting value
+     * 
+     */
     public Output<Optional<WorkspaceSettingV2PersonalCompute>> personalCompute() {
         return Codegen.optional(this.personalCompute);
     }
+    /**
+     * Setting value for restrictWorkspaceAdmins setting. This is the setting value set by consumers, check effectiveRestrictWorkspaceAdmins for final setting value
+     * 
+     */
     @Export(name="restrictWorkspaceAdmins", refs={WorkspaceSettingV2RestrictWorkspaceAdmins.class}, tree="[0]")
     private Output</* @Nullable */ WorkspaceSettingV2RestrictWorkspaceAdmins> restrictWorkspaceAdmins;
 
+    /**
+     * @return Setting value for restrictWorkspaceAdmins setting. This is the setting value set by consumers, check effectiveRestrictWorkspaceAdmins for final setting value
+     * 
+     */
     public Output<Optional<WorkspaceSettingV2RestrictWorkspaceAdmins>> restrictWorkspaceAdmins() {
         return Codegen.optional(this.restrictWorkspaceAdmins);
     }
+    /**
+     * Setting value for string type setting. This is the setting value set by consumers, check effectiveStringVal for final setting value
+     * 
+     */
     @Export(name="stringVal", refs={WorkspaceSettingV2StringVal.class}, tree="[0]")
     private Output</* @Nullable */ WorkspaceSettingV2StringVal> stringVal;
 
+    /**
+     * @return Setting value for string type setting. This is the setting value set by consumers, check effectiveStringVal for final setting value
+     * 
+     */
     public Output<Optional<WorkspaceSettingV2StringVal>> stringVal() {
         return Codegen.optional(this.stringVal);
     }

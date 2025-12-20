@@ -82,51 +82,51 @@ namespace Pulumi.Databricks
     public sealed class GetAccountSettingV2Result
     {
         /// <summary>
-        /// (AibiDashboardEmbeddingAccessPolicy)
+        /// (AibiDashboardEmbeddingAccessPolicy) - Setting value for AibiDashboardEmbeddingAccessPolicy setting. This is the setting value set by consumers, check EffectiveAibiDashboardEmbeddingAccessPolicy for final setting value
         /// </summary>
         public readonly Outputs.GetAccountSettingV2AibiDashboardEmbeddingAccessPolicyResult AibiDashboardEmbeddingAccessPolicy;
         /// <summary>
-        /// (AibiDashboardEmbeddingApprovedDomains)
+        /// (AibiDashboardEmbeddingApprovedDomains) - Setting value for AibiDashboardEmbeddingApprovedDomains setting. This is the setting value set by consumers, check EffectiveAibiDashboardEmbeddingApprovedDomains for final setting value
         /// </summary>
         public readonly Outputs.GetAccountSettingV2AibiDashboardEmbeddingApprovedDomainsResult AibiDashboardEmbeddingApprovedDomains;
         /// <summary>
-        /// (ClusterAutoRestartMessage)
+        /// (ClusterAutoRestartMessage) - Setting value for AutomaticClusterUpdateWorkspace setting. This is the setting value set by consumers, check EffectiveAutomaticClusterUpdateWorkspace for final setting value
         /// </summary>
         public readonly Outputs.GetAccountSettingV2AutomaticClusterUpdateWorkspaceResult AutomaticClusterUpdateWorkspace;
         /// <summary>
-        /// (BooleanMessage)
+        /// (BooleanMessage) - Setting value for boolean type setting. This is the setting value set by consumers, check EffectiveBooleanVal for final setting value
         /// </summary>
         public readonly Outputs.GetAccountSettingV2BooleanValResult BooleanVal;
         /// <summary>
-        /// (AibiDashboardEmbeddingAccessPolicy)
+        /// (AibiDashboardEmbeddingAccessPolicy) - Effective setting value for AibiDashboardEmbeddingAccessPolicy setting. This is the final effective value of setting. To set a value use aibi_dashboard_embedding_access_policy
         /// </summary>
         public readonly Outputs.GetAccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyResult EffectiveAibiDashboardEmbeddingAccessPolicy;
         /// <summary>
-        /// (AibiDashboardEmbeddingApprovedDomains)
+        /// (AibiDashboardEmbeddingApprovedDomains) - Effective setting value for AibiDashboardEmbeddingApprovedDomains setting. This is the final effective value of setting. To set a value use aibi_dashboard_embedding_approved_domains
         /// </summary>
         public readonly Outputs.GetAccountSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsResult EffectiveAibiDashboardEmbeddingApprovedDomains;
         /// <summary>
-        /// (ClusterAutoRestartMessage)
+        /// (ClusterAutoRestartMessage) - Effective setting value for AutomaticClusterUpdateWorkspace setting. This is the final effective value of setting. To set a value use automatic_cluster_update_workspace
         /// </summary>
         public readonly Outputs.GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceResult EffectiveAutomaticClusterUpdateWorkspace;
         /// <summary>
-        /// (BooleanMessage)
+        /// (BooleanMessage) - Effective setting value for boolean type setting. This is the final effective value of setting. To set a value use boolean_val
         /// </summary>
         public readonly Outputs.GetAccountSettingV2EffectiveBooleanValResult EffectiveBooleanVal;
         /// <summary>
-        /// (IntegerMessage)
+        /// (IntegerMessage) - Effective setting value for integer type setting. This is the final effective value of setting. To set a value use integer_val
         /// </summary>
         public readonly Outputs.GetAccountSettingV2EffectiveIntegerValResult EffectiveIntegerVal;
         /// <summary>
-        /// (PersonalComputeMessage)
+        /// (PersonalComputeMessage) - Effective setting value for PersonalCompute setting. This is the final effective value of setting. To set a value use personal_compute
         /// </summary>
         public readonly Outputs.GetAccountSettingV2EffectivePersonalComputeResult EffectivePersonalCompute;
         /// <summary>
-        /// (RestrictWorkspaceAdminsMessage)
+        /// (RestrictWorkspaceAdminsMessage) - Effective setting value for RestrictWorkspaceAdmins setting. This is the final effective value of setting. To set a value use restrict_workspace_admins
         /// </summary>
         public readonly Outputs.GetAccountSettingV2EffectiveRestrictWorkspaceAdminsResult EffectiveRestrictWorkspaceAdmins;
         /// <summary>
-        /// (StringMessage)
+        /// (StringMessage) - Effective setting value for string type setting. This is the final effective value of setting. To set a value use string_val
         /// </summary>
         public readonly Outputs.GetAccountSettingV2EffectiveStringValResult EffectiveStringVal;
         /// <summary>
@@ -134,7 +134,7 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// (IntegerMessage)
+        /// (IntegerMessage) - Setting value for integer type setting. This is the setting value set by consumers, check EffectiveIntegerVal for final setting value
         /// </summary>
         public readonly Outputs.GetAccountSettingV2IntegerValResult IntegerVal;
         /// <summary>
@@ -142,15 +142,15 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// (PersonalComputeMessage)
+        /// (PersonalComputeMessage) - Setting value for PersonalCompute setting. This is the setting value set by consumers, check EffectivePersonalCompute for final setting value
         /// </summary>
         public readonly Outputs.GetAccountSettingV2PersonalComputeResult PersonalCompute;
         /// <summary>
-        /// (RestrictWorkspaceAdminsMessage)
+        /// (RestrictWorkspaceAdminsMessage) - Setting value for RestrictWorkspaceAdmins setting. This is the setting value set by consumers, check EffectiveRestrictWorkspaceAdmins for final setting value
         /// </summary>
         public readonly Outputs.GetAccountSettingV2RestrictWorkspaceAdminsResult RestrictWorkspaceAdmins;
         /// <summary>
-        /// (StringMessage)
+        /// (StringMessage) - Setting value for string type setting. This is the setting value set by consumers, check EffectiveStringVal for final setting value
         /// </summary>
         public readonly Outputs.GetAccountSettingV2StringValResult StringVal;
 

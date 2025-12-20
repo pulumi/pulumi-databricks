@@ -189,14 +189,14 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.budgetPolicyId);
     }
     /**
-     * The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
+     * The name of default catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline if you switch from `storage` to `catalog` or vice versa.  If pipeline was already created with `catalog` set, the value could be changed.* (Conflicts with `storage`).
      * 
      */
     @Export(name="catalog", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> catalog;
 
     /**
-     * @return The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
+     * @return The name of default catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline if you switch from `storage` to `catalog` or vice versa.  If pipeline was already created with `catalog` set, the value could be changed.* (Conflicts with `storage`).
      * 
      */
     public Output<Optional<String>> catalog() {

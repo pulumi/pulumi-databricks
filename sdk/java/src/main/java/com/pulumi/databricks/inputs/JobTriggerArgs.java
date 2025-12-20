@@ -6,6 +6,7 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.JobTriggerFileArrivalArgs;
+import com.pulumi.databricks.inputs.JobTriggerModelArgs;
 import com.pulumi.databricks.inputs.JobTriggerPeriodicArgs;
 import com.pulumi.databricks.inputs.JobTriggerTableUpdateArgs;
 import java.lang.String;
@@ -31,6 +32,13 @@ public final class JobTriggerArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<JobTriggerFileArrivalArgs>> fileArrival() {
         return Optional.ofNullable(this.fileArrival);
+    }
+
+    @Import(name="model")
+    private @Nullable Output<JobTriggerModelArgs> model;
+
+    public Optional<Output<JobTriggerModelArgs>> model() {
+        return Optional.ofNullable(this.model);
     }
 
     /**
@@ -82,6 +90,7 @@ public final class JobTriggerArgs extends com.pulumi.resources.ResourceArgs {
 
     private JobTriggerArgs(JobTriggerArgs $) {
         this.fileArrival = $.fileArrival;
+        this.model = $.model;
         this.pauseStatus = $.pauseStatus;
         this.periodic = $.periodic;
         this.tableUpdate = $.tableUpdate;
@@ -124,6 +133,15 @@ public final class JobTriggerArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder fileArrival(JobTriggerFileArrivalArgs fileArrival) {
             return fileArrival(Output.of(fileArrival));
+        }
+
+        public Builder model(@Nullable Output<JobTriggerModelArgs> model) {
+            $.model = model;
+            return this;
+        }
+
+        public Builder model(JobTriggerModelArgs model) {
+            return model(Output.of(model));
         }
 
         /**

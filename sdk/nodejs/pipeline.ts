@@ -145,7 +145,7 @@ export class Pipeline extends pulumi.CustomResource {
      */
     declare public readonly budgetPolicyId: pulumi.Output<string | undefined>;
     /**
-     * The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
+     * The name of default catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline if you switch from `storage` to `catalog` or vice versa.  If pipeline was already created with `catalog` set, the value could be changed.* (Conflicts with `storage`).
      */
     declare public readonly catalog: pulumi.Output<string | undefined>;
     declare public readonly cause: pulumi.Output<string>;
@@ -357,7 +357,7 @@ export interface PipelineState {
      */
     budgetPolicyId?: pulumi.Input<string>;
     /**
-     * The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
+     * The name of default catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline if you switch from `storage` to `catalog` or vice versa.  If pipeline was already created with `catalog` set, the value could be changed.* (Conflicts with `storage`).
      */
     catalog?: pulumi.Input<string>;
     cause?: pulumi.Input<string>;
@@ -471,7 +471,7 @@ export interface PipelineArgs {
      */
     budgetPolicyId?: pulumi.Input<string>;
     /**
-     * The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
+     * The name of default catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline if you switch from `storage` to `catalog` or vice versa.  If pipeline was already created with `catalog` set, the value could be changed.* (Conflicts with `storage`).
      */
     catalog?: pulumi.Input<string>;
     cause?: pulumi.Input<string>;

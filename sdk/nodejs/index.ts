@@ -205,6 +205,11 @@ export type FeatureEngineeringFeature = import("./featureEngineeringFeature").Fe
 export const FeatureEngineeringFeature: typeof import("./featureEngineeringFeature").FeatureEngineeringFeature = null as any;
 utilities.lazyLoad(exports, ["FeatureEngineeringFeature"], () => require("./featureEngineeringFeature"));
 
+export { FeatureEngineeringKafkaConfigArgs, FeatureEngineeringKafkaConfigState } from "./featureEngineeringKafkaConfig";
+export type FeatureEngineeringKafkaConfig = import("./featureEngineeringKafkaConfig").FeatureEngineeringKafkaConfig;
+export const FeatureEngineeringKafkaConfig: typeof import("./featureEngineeringKafkaConfig").FeatureEngineeringKafkaConfig = null as any;
+utilities.lazyLoad(exports, ["FeatureEngineeringKafkaConfig"], () => require("./featureEngineeringKafkaConfig"));
+
 export { FeatureEngineeringMaterializedFeatureArgs, FeatureEngineeringMaterializedFeatureState } from "./featureEngineeringMaterializedFeature";
 export type FeatureEngineeringMaterializedFeature = import("./featureEngineeringMaterializedFeature").FeatureEngineeringMaterializedFeature;
 export const FeatureEngineeringMaterializedFeature: typeof import("./featureEngineeringMaterializedFeature").FeatureEngineeringMaterializedFeature = null as any;
@@ -454,6 +459,16 @@ export { GetFeatureEngineeringFeaturesArgs, GetFeatureEngineeringFeaturesResult,
 export const getFeatureEngineeringFeatures: typeof import("./getFeatureEngineeringFeatures").getFeatureEngineeringFeatures = null as any;
 export const getFeatureEngineeringFeaturesOutput: typeof import("./getFeatureEngineeringFeatures").getFeatureEngineeringFeaturesOutput = null as any;
 utilities.lazyLoad(exports, ["getFeatureEngineeringFeatures","getFeatureEngineeringFeaturesOutput"], () => require("./getFeatureEngineeringFeatures"));
+
+export { GetFeatureEngineeringKafkaConfigArgs, GetFeatureEngineeringKafkaConfigResult, GetFeatureEngineeringKafkaConfigOutputArgs } from "./getFeatureEngineeringKafkaConfig";
+export const getFeatureEngineeringKafkaConfig: typeof import("./getFeatureEngineeringKafkaConfig").getFeatureEngineeringKafkaConfig = null as any;
+export const getFeatureEngineeringKafkaConfigOutput: typeof import("./getFeatureEngineeringKafkaConfig").getFeatureEngineeringKafkaConfigOutput = null as any;
+utilities.lazyLoad(exports, ["getFeatureEngineeringKafkaConfig","getFeatureEngineeringKafkaConfigOutput"], () => require("./getFeatureEngineeringKafkaConfig"));
+
+export { GetFeatureEngineeringKafkaConfigsArgs, GetFeatureEngineeringKafkaConfigsResult, GetFeatureEngineeringKafkaConfigsOutputArgs } from "./getFeatureEngineeringKafkaConfigs";
+export const getFeatureEngineeringKafkaConfigs: typeof import("./getFeatureEngineeringKafkaConfigs").getFeatureEngineeringKafkaConfigs = null as any;
+export const getFeatureEngineeringKafkaConfigsOutput: typeof import("./getFeatureEngineeringKafkaConfigs").getFeatureEngineeringKafkaConfigsOutput = null as any;
+utilities.lazyLoad(exports, ["getFeatureEngineeringKafkaConfigs","getFeatureEngineeringKafkaConfigsOutput"], () => require("./getFeatureEngineeringKafkaConfigs"));
 
 export { GetFeatureEngineeringMaterializedFeatureArgs, GetFeatureEngineeringMaterializedFeatureResult, GetFeatureEngineeringMaterializedFeatureOutputArgs } from "./getFeatureEngineeringMaterializedFeature";
 export const getFeatureEngineeringMaterializedFeature: typeof import("./getFeatureEngineeringMaterializedFeature").getFeatureEngineeringMaterializedFeature = null as any;
@@ -715,6 +730,11 @@ export const getUser: typeof import("./getUser").getUser = null as any;
 export const getUserOutput: typeof import("./getUser").getUserOutput = null as any;
 utilities.lazyLoad(exports, ["getUser","getUserOutput"], () => require("./getUser"));
 
+export { GetUsersArgs, GetUsersResult, GetUsersOutputArgs } from "./getUsers";
+export const getUsers: typeof import("./getUsers").getUsers = null as any;
+export const getUsersOutput: typeof import("./getUsers").getUsersOutput = null as any;
+utilities.lazyLoad(exports, ["getUsers","getUsersOutput"], () => require("./getUsers"));
+
 export { GetViewsArgs, GetViewsResult, GetViewsOutputArgs } from "./getViews";
 export const getViews: typeof import("./getViews").getViews = null as any;
 export const getViewsOutput: typeof import("./getViews").getViewsOutput = null as any;
@@ -729,6 +749,16 @@ export { GetVolumesArgs, GetVolumesResult, GetVolumesOutputArgs } from "./getVol
 export const getVolumes: typeof import("./getVolumes").getVolumes = null as any;
 export const getVolumesOutput: typeof import("./getVolumes").getVolumesOutput = null as any;
 utilities.lazyLoad(exports, ["getVolumes","getVolumesOutput"], () => require("./getVolumes"));
+
+export { GetWorkspaceEntityTagAssignmentArgs, GetWorkspaceEntityTagAssignmentResult, GetWorkspaceEntityTagAssignmentOutputArgs } from "./getWorkspaceEntityTagAssignment";
+export const getWorkspaceEntityTagAssignment: typeof import("./getWorkspaceEntityTagAssignment").getWorkspaceEntityTagAssignment = null as any;
+export const getWorkspaceEntityTagAssignmentOutput: typeof import("./getWorkspaceEntityTagAssignment").getWorkspaceEntityTagAssignmentOutput = null as any;
+utilities.lazyLoad(exports, ["getWorkspaceEntityTagAssignment","getWorkspaceEntityTagAssignmentOutput"], () => require("./getWorkspaceEntityTagAssignment"));
+
+export { GetWorkspaceEntityTagAssignmentsArgs, GetWorkspaceEntityTagAssignmentsResult, GetWorkspaceEntityTagAssignmentsOutputArgs } from "./getWorkspaceEntityTagAssignments";
+export const getWorkspaceEntityTagAssignments: typeof import("./getWorkspaceEntityTagAssignments").getWorkspaceEntityTagAssignments = null as any;
+export const getWorkspaceEntityTagAssignmentsOutput: typeof import("./getWorkspaceEntityTagAssignments").getWorkspaceEntityTagAssignmentsOutput = null as any;
+utilities.lazyLoad(exports, ["getWorkspaceEntityTagAssignments","getWorkspaceEntityTagAssignmentsOutput"], () => require("./getWorkspaceEntityTagAssignments"));
 
 export { GetWorkspaceNetworkOptionArgs, GetWorkspaceNetworkOptionResult, GetWorkspaceNetworkOptionOutputArgs } from "./getWorkspaceNetworkOption";
 export const getWorkspaceNetworkOption: typeof import("./getWorkspaceNetworkOption").getWorkspaceNetworkOption = null as any;
@@ -1173,6 +1203,11 @@ export type WorkspaceConf = import("./workspaceConf").WorkspaceConf;
 export const WorkspaceConf: typeof import("./workspaceConf").WorkspaceConf = null as any;
 utilities.lazyLoad(exports, ["WorkspaceConf"], () => require("./workspaceConf"));
 
+export { WorkspaceEntityTagAssignmentArgs, WorkspaceEntityTagAssignmentState } from "./workspaceEntityTagAssignment";
+export type WorkspaceEntityTagAssignment = import("./workspaceEntityTagAssignment").WorkspaceEntityTagAssignment;
+export const WorkspaceEntityTagAssignment: typeof import("./workspaceEntityTagAssignment").WorkspaceEntityTagAssignment = null as any;
+utilities.lazyLoad(exports, ["WorkspaceEntityTagAssignment"], () => require("./workspaceEntityTagAssignment"));
+
 export { WorkspaceFileArgs, WorkspaceFileState } from "./workspaceFile";
 export type WorkspaceFile = import("./workspaceFile").WorkspaceFile;
 export const WorkspaceFile: typeof import("./workspaceFile").WorkspaceFile = null as any;
@@ -1282,6 +1317,8 @@ const _module = {
                 return new ExternalMetadata(name, <any>undefined, { urn })
             case "databricks:index/featureEngineeringFeature:FeatureEngineeringFeature":
                 return new FeatureEngineeringFeature(name, <any>undefined, { urn })
+            case "databricks:index/featureEngineeringKafkaConfig:FeatureEngineeringKafkaConfig":
+                return new FeatureEngineeringKafkaConfig(name, <any>undefined, { urn })
             case "databricks:index/featureEngineeringMaterializedFeature:FeatureEngineeringMaterializedFeature":
                 return new FeatureEngineeringMaterializedFeature(name, <any>undefined, { urn })
             case "databricks:index/file:File":
@@ -1456,6 +1493,8 @@ const _module = {
                 return new WorkspaceBinding(name, <any>undefined, { urn })
             case "databricks:index/workspaceConf:WorkspaceConf":
                 return new WorkspaceConf(name, <any>undefined, { urn })
+            case "databricks:index/workspaceEntityTagAssignment:WorkspaceEntityTagAssignment":
+                return new WorkspaceEntityTagAssignment(name, <any>undefined, { urn })
             case "databricks:index/workspaceFile:WorkspaceFile":
                 return new WorkspaceFile(name, <any>undefined, { urn })
             case "databricks:index/workspaceNetworkOption:WorkspaceNetworkOption":
@@ -1507,6 +1546,7 @@ pulumi.runtime.registerResourceModule("databricks", "index/entityTagAssignment",
 pulumi.runtime.registerResourceModule("databricks", "index/externalLocation", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/externalMetadata", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/featureEngineeringFeature", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/featureEngineeringKafkaConfig", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/featureEngineeringMaterializedFeature", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/file", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/gitCredential", _module)
@@ -1594,6 +1634,7 @@ pulumi.runtime.registerResourceModule("databricks", "index/vectorSearchIndex", _
 pulumi.runtime.registerResourceModule("databricks", "index/volume", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/workspaceBinding", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/workspaceConf", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/workspaceEntityTagAssignment", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/workspaceFile", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/workspaceNetworkOption", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/workspaceSettingV2", _module)

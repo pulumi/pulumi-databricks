@@ -87,7 +87,7 @@ class GetAccountSettingV2Result:
     @pulumi.getter(name="aibiDashboardEmbeddingAccessPolicy")
     def aibi_dashboard_embedding_access_policy(self) -> 'outputs.GetAccountSettingV2AibiDashboardEmbeddingAccessPolicyResult':
         """
-        (AibiDashboardEmbeddingAccessPolicy)
+        (AibiDashboardEmbeddingAccessPolicy) - Setting value for aibi_dashboard_embedding_access_policy setting. This is the setting value set by consumers, check effective_aibi_dashboard_embedding_access_policy for final setting value
         """
         return pulumi.get(self, "aibi_dashboard_embedding_access_policy")
 
@@ -95,7 +95,7 @@ class GetAccountSettingV2Result:
     @pulumi.getter(name="aibiDashboardEmbeddingApprovedDomains")
     def aibi_dashboard_embedding_approved_domains(self) -> 'outputs.GetAccountSettingV2AibiDashboardEmbeddingApprovedDomainsResult':
         """
-        (AibiDashboardEmbeddingApprovedDomains)
+        (AibiDashboardEmbeddingApprovedDomains) - Setting value for aibi_dashboard_embedding_approved_domains setting. This is the setting value set by consumers, check effective_aibi_dashboard_embedding_approved_domains for final setting value
         """
         return pulumi.get(self, "aibi_dashboard_embedding_approved_domains")
 
@@ -103,7 +103,7 @@ class GetAccountSettingV2Result:
     @pulumi.getter(name="automaticClusterUpdateWorkspace")
     def automatic_cluster_update_workspace(self) -> 'outputs.GetAccountSettingV2AutomaticClusterUpdateWorkspaceResult':
         """
-        (ClusterAutoRestartMessage)
+        (ClusterAutoRestartMessage) - Setting value for automatic_cluster_update_workspace setting. This is the setting value set by consumers, check effective_automatic_cluster_update_workspace for final setting value
         """
         return pulumi.get(self, "automatic_cluster_update_workspace")
 
@@ -111,7 +111,7 @@ class GetAccountSettingV2Result:
     @pulumi.getter(name="booleanVal")
     def boolean_val(self) -> 'outputs.GetAccountSettingV2BooleanValResult':
         """
-        (BooleanMessage)
+        (BooleanMessage) - Setting value for boolean type setting. This is the setting value set by consumers, check effective_boolean_val for final setting value
         """
         return pulumi.get(self, "boolean_val")
 
@@ -119,7 +119,7 @@ class GetAccountSettingV2Result:
     @pulumi.getter(name="effectiveAibiDashboardEmbeddingAccessPolicy")
     def effective_aibi_dashboard_embedding_access_policy(self) -> 'outputs.GetAccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyResult':
         """
-        (AibiDashboardEmbeddingAccessPolicy)
+        (AibiDashboardEmbeddingAccessPolicy) - Effective setting value for aibi_dashboard_embedding_access_policy setting. This is the final effective value of setting. To set a value use aibi_dashboard_embedding_access_policy
         """
         return pulumi.get(self, "effective_aibi_dashboard_embedding_access_policy")
 
@@ -127,7 +127,7 @@ class GetAccountSettingV2Result:
     @pulumi.getter(name="effectiveAibiDashboardEmbeddingApprovedDomains")
     def effective_aibi_dashboard_embedding_approved_domains(self) -> 'outputs.GetAccountSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsResult':
         """
-        (AibiDashboardEmbeddingApprovedDomains)
+        (AibiDashboardEmbeddingApprovedDomains) - Effective setting value for aibi_dashboard_embedding_approved_domains setting. This is the final effective value of setting. To set a value use aibi_dashboard_embedding_approved_domains
         """
         return pulumi.get(self, "effective_aibi_dashboard_embedding_approved_domains")
 
@@ -135,7 +135,7 @@ class GetAccountSettingV2Result:
     @pulumi.getter(name="effectiveAutomaticClusterUpdateWorkspace")
     def effective_automatic_cluster_update_workspace(self) -> 'outputs.GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceResult':
         """
-        (ClusterAutoRestartMessage)
+        (ClusterAutoRestartMessage) - Effective setting value for automatic_cluster_update_workspace setting. This is the final effective value of setting. To set a value use automatic_cluster_update_workspace
         """
         return pulumi.get(self, "effective_automatic_cluster_update_workspace")
 
@@ -143,7 +143,7 @@ class GetAccountSettingV2Result:
     @pulumi.getter(name="effectiveBooleanVal")
     def effective_boolean_val(self) -> 'outputs.GetAccountSettingV2EffectiveBooleanValResult':
         """
-        (BooleanMessage)
+        (BooleanMessage) - Effective setting value for boolean type setting. This is the final effective value of setting. To set a value use boolean_val
         """
         return pulumi.get(self, "effective_boolean_val")
 
@@ -151,7 +151,7 @@ class GetAccountSettingV2Result:
     @pulumi.getter(name="effectiveIntegerVal")
     def effective_integer_val(self) -> 'outputs.GetAccountSettingV2EffectiveIntegerValResult':
         """
-        (IntegerMessage)
+        (IntegerMessage) - Effective setting value for integer type setting. This is the final effective value of setting. To set a value use integer_val
         """
         return pulumi.get(self, "effective_integer_val")
 
@@ -159,7 +159,7 @@ class GetAccountSettingV2Result:
     @pulumi.getter(name="effectivePersonalCompute")
     def effective_personal_compute(self) -> 'outputs.GetAccountSettingV2EffectivePersonalComputeResult':
         """
-        (PersonalComputeMessage)
+        (PersonalComputeMessage) - Effective setting value for personal_compute setting. This is the final effective value of setting. To set a value use personal_compute
         """
         return pulumi.get(self, "effective_personal_compute")
 
@@ -167,7 +167,7 @@ class GetAccountSettingV2Result:
     @pulumi.getter(name="effectiveRestrictWorkspaceAdmins")
     def effective_restrict_workspace_admins(self) -> 'outputs.GetAccountSettingV2EffectiveRestrictWorkspaceAdminsResult':
         """
-        (RestrictWorkspaceAdminsMessage)
+        (RestrictWorkspaceAdminsMessage) - Effective setting value for restrict_workspace_admins setting. This is the final effective value of setting. To set a value use restrict_workspace_admins
         """
         return pulumi.get(self, "effective_restrict_workspace_admins")
 
@@ -175,7 +175,7 @@ class GetAccountSettingV2Result:
     @pulumi.getter(name="effectiveStringVal")
     def effective_string_val(self) -> 'outputs.GetAccountSettingV2EffectiveStringValResult':
         """
-        (StringMessage)
+        (StringMessage) - Effective setting value for string type setting. This is the final effective value of setting. To set a value use string_val
         """
         return pulumi.get(self, "effective_string_val")
 
@@ -191,7 +191,7 @@ class GetAccountSettingV2Result:
     @pulumi.getter(name="integerVal")
     def integer_val(self) -> 'outputs.GetAccountSettingV2IntegerValResult':
         """
-        (IntegerMessage)
+        (IntegerMessage) - Setting value for integer type setting. This is the setting value set by consumers, check effective_integer_val for final setting value
         """
         return pulumi.get(self, "integer_val")
 
@@ -207,7 +207,7 @@ class GetAccountSettingV2Result:
     @pulumi.getter(name="personalCompute")
     def personal_compute(self) -> 'outputs.GetAccountSettingV2PersonalComputeResult':
         """
-        (PersonalComputeMessage)
+        (PersonalComputeMessage) - Setting value for personal_compute setting. This is the setting value set by consumers, check effective_personal_compute for final setting value
         """
         return pulumi.get(self, "personal_compute")
 
@@ -215,7 +215,7 @@ class GetAccountSettingV2Result:
     @pulumi.getter(name="restrictWorkspaceAdmins")
     def restrict_workspace_admins(self) -> 'outputs.GetAccountSettingV2RestrictWorkspaceAdminsResult':
         """
-        (RestrictWorkspaceAdminsMessage)
+        (RestrictWorkspaceAdminsMessage) - Setting value for restrict_workspace_admins setting. This is the setting value set by consumers, check effective_restrict_workspace_admins for final setting value
         """
         return pulumi.get(self, "restrict_workspace_admins")
 
@@ -223,7 +223,7 @@ class GetAccountSettingV2Result:
     @pulumi.getter(name="stringVal")
     def string_val(self) -> 'outputs.GetAccountSettingV2StringValResult':
         """
-        (StringMessage)
+        (StringMessage) - Setting value for string type setting. This is the setting value set by consumers, check effective_string_val for final setting value
         """
         return pulumi.get(self, "string_val")
 

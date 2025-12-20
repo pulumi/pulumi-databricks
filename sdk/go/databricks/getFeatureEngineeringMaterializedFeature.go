@@ -30,6 +30,8 @@ type LookupFeatureEngineeringMaterializedFeatureArgs struct {
 
 // A collection of values returned by getFeatureEngineeringMaterializedFeature.
 type LookupFeatureEngineeringMaterializedFeatureResult struct {
+	// (string) - The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone
+	CronSchedule string `pulumi:"cronSchedule"`
 	// (string) - The full name of the feature in Unity Catalog
 	FeatureName string `pulumi:"featureName"`
 	// The provider-assigned unique ID for this managed resource.
@@ -41,7 +43,7 @@ type LookupFeatureEngineeringMaterializedFeatureResult struct {
 	MaterializedFeatureId string `pulumi:"materializedFeatureId"`
 	// (OfflineStoreConfig)
 	OfflineStoreConfig GetFeatureEngineeringMaterializedFeatureOfflineStoreConfig `pulumi:"offlineStoreConfig"`
-	// (OnlineStore)
+	// (OnlineStoreConfig)
 	OnlineStoreConfig GetFeatureEngineeringMaterializedFeatureOnlineStoreConfig `pulumi:"onlineStoreConfig"`
 	// (string) - The schedule state of the materialization pipeline. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
 	PipelineScheduleState string `pulumi:"pipelineScheduleState"`
@@ -83,6 +85,11 @@ func (o LookupFeatureEngineeringMaterializedFeatureResultOutput) ToLookupFeature
 	return o
 }
 
+// (string) - The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone
+func (o LookupFeatureEngineeringMaterializedFeatureResultOutput) CronSchedule() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFeatureEngineeringMaterializedFeatureResult) string { return v.CronSchedule }).(pulumi.StringOutput)
+}
+
 // (string) - The full name of the feature in Unity Catalog
 func (o LookupFeatureEngineeringMaterializedFeatureResultOutput) FeatureName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFeatureEngineeringMaterializedFeatureResult) string { return v.FeatureName }).(pulumi.StringOutput)
@@ -111,7 +118,7 @@ func (o LookupFeatureEngineeringMaterializedFeatureResultOutput) OfflineStoreCon
 	}).(GetFeatureEngineeringMaterializedFeatureOfflineStoreConfigOutput)
 }
 
-// (OnlineStore)
+// (OnlineStoreConfig)
 func (o LookupFeatureEngineeringMaterializedFeatureResultOutput) OnlineStoreConfig() GetFeatureEngineeringMaterializedFeatureOnlineStoreConfigOutput {
 	return o.ApplyT(func(v LookupFeatureEngineeringMaterializedFeatureResult) GetFeatureEngineeringMaterializedFeatureOnlineStoreConfig {
 		return v.OnlineStoreConfig

@@ -28,9 +28,13 @@ public final class ShareObject {
      * 
      */
     private @Nullable String comment;
+    /**
+     * @return The content of the notebook file when the data object type is NOTEBOOK_FILE. This should be base64 encoded. Required for adding a NOTEBOOK_FILE, optional for updating, ignored for other types.
+     * 
+     */
     private @Nullable String content;
     /**
-     * @return Type of the data object, currently `TABLE`, `VIEW`, `SCHEMA`, `VOLUME`, and `MODEL` are supported.
+     * @return Type of the data object. Supported types: `TABLE`, `FOREIGN_TABLE`, `SCHEMA`, `VIEW`, `MATERIALIZED_VIEW`, `STREAMING_TABLE`, `MODEL`, `NOTEBOOK_FILE`, `FUNCTION`, `FEATURE_SPEC`, and `VOLUME`.
      * 
      */
     private String dataObjectType;
@@ -51,6 +55,10 @@ public final class ShareObject {
      * 
      */
     private String name;
+    /**
+     * @return Array of partitions for the shared data.
+     * 
+     */
     private @Nullable List<ShareObjectPartition> partitions;
     /**
      * @return A user-provided new name for the data object within the share. If this new name is not provided, the object&#39;s original name will be used as the `sharedAs` name. The `sharedAs` name must be unique within a Share. Change forces creation of a new resource.
@@ -90,11 +98,15 @@ public final class ShareObject {
     public Optional<String> comment() {
         return Optional.ofNullable(this.comment);
     }
+    /**
+     * @return The content of the notebook file when the data object type is NOTEBOOK_FILE. This should be base64 encoded. Required for adding a NOTEBOOK_FILE, optional for updating, ignored for other types.
+     * 
+     */
     public Optional<String> content() {
         return Optional.ofNullable(this.content);
     }
     /**
-     * @return Type of the data object, currently `TABLE`, `VIEW`, `SCHEMA`, `VOLUME`, and `MODEL` are supported.
+     * @return Type of the data object. Supported types: `TABLE`, `FOREIGN_TABLE`, `SCHEMA`, `VIEW`, `MATERIALIZED_VIEW`, `STREAMING_TABLE`, `MODEL`, `NOTEBOOK_FILE`, `FUNCTION`, `FEATURE_SPEC`, and `VOLUME`.
      * 
      */
     public String dataObjectType() {
@@ -131,6 +143,10 @@ public final class ShareObject {
     public String name() {
         return this.name;
     }
+    /**
+     * @return Array of partitions for the shared data.
+     * 
+     */
     public List<ShareObjectPartition> partitions() {
         return this.partitions == null ? List.of() : this.partitions;
     }

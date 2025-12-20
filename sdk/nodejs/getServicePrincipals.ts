@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -59,6 +61,7 @@ export function getServicePrincipals(args?: GetServicePrincipalsArgs, opts?: pul
     return pulumi.runtime.invoke("databricks:index/getServicePrincipals:getServicePrincipals", {
         "applicationIds": args.applicationIds,
         "displayNameContains": args.displayNameContains,
+        "servicePrincipals": args.servicePrincipals,
     }, opts);
 }
 
@@ -67,13 +70,17 @@ export function getServicePrincipals(args?: GetServicePrincipalsArgs, opts?: pul
  */
 export interface GetServicePrincipalsArgs {
     /**
-     * List of `applicationIds` of service principals.  Individual service principal can be retrieved using databricks.ServicePrincipal data source
+     * List of `applicationIds` of service principals.  Individual service principal can be retrieved using databricks.ServicePrincipal data source or from `servicePrincipals` attribute.
      */
     applicationIds?: string[];
     /**
      * Only return databricks.ServicePrincipal display name that match the given name string
      */
     displayNameContains?: string;
+    /**
+     * List of objects describing individual service principals. Each object has the following attributes:
+     */
+    servicePrincipals?: inputs.GetServicePrincipalsServicePrincipal[];
 }
 
 /**
@@ -81,7 +88,7 @@ export interface GetServicePrincipalsArgs {
  */
 export interface GetServicePrincipalsResult {
     /**
-     * List of `applicationIds` of service principals.  Individual service principal can be retrieved using databricks.ServicePrincipal data source
+     * List of `applicationIds` of service principals.  Individual service principal can be retrieved using databricks.ServicePrincipal data source or from `servicePrincipals` attribute.
      */
     readonly applicationIds: string[];
     readonly displayNameContains: string;
@@ -89,6 +96,10 @@ export interface GetServicePrincipalsResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * List of objects describing individual service principals. Each object has the following attributes:
+     */
+    readonly servicePrincipals: outputs.GetServicePrincipalsServicePrincipal[];
 }
 /**
  * Retrieves `applicationIds` of all databricks.ServicePrincipal based on their `displayName`
@@ -145,6 +156,7 @@ export function getServicePrincipalsOutput(args?: GetServicePrincipalsOutputArgs
     return pulumi.runtime.invokeOutput("databricks:index/getServicePrincipals:getServicePrincipals", {
         "applicationIds": args.applicationIds,
         "displayNameContains": args.displayNameContains,
+        "servicePrincipals": args.servicePrincipals,
     }, opts);
 }
 
@@ -153,11 +165,15 @@ export function getServicePrincipalsOutput(args?: GetServicePrincipalsOutputArgs
  */
 export interface GetServicePrincipalsOutputArgs {
     /**
-     * List of `applicationIds` of service principals.  Individual service principal can be retrieved using databricks.ServicePrincipal data source
+     * List of `applicationIds` of service principals.  Individual service principal can be retrieved using databricks.ServicePrincipal data source or from `servicePrincipals` attribute.
      */
     applicationIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Only return databricks.ServicePrincipal display name that match the given name string
      */
     displayNameContains?: pulumi.Input<string>;
+    /**
+     * List of objects describing individual service principals. Each object has the following attributes:
+     */
+    servicePrincipals?: pulumi.Input<pulumi.Input<inputs.GetServicePrincipalsServicePrincipalArgs>[]>;
 }

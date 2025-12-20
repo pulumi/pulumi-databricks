@@ -101,6 +101,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ExternalMetadata{}
 	case "databricks:index/featureEngineeringFeature:FeatureEngineeringFeature":
 		r = &FeatureEngineeringFeature{}
+	case "databricks:index/featureEngineeringKafkaConfig:FeatureEngineeringKafkaConfig":
+		r = &FeatureEngineeringKafkaConfig{}
 	case "databricks:index/featureEngineeringMaterializedFeature:FeatureEngineeringMaterializedFeature":
 		r = &FeatureEngineeringMaterializedFeature{}
 	case "databricks:index/file:File":
@@ -275,6 +277,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &WorkspaceBinding{}
 	case "databricks:index/workspaceConf:WorkspaceConf":
 		r = &WorkspaceConf{}
+	case "databricks:index/workspaceEntityTagAssignment:WorkspaceEntityTagAssignment":
+		r = &WorkspaceEntityTagAssignment{}
 	case "databricks:index/workspaceFile:WorkspaceFile":
 		r = &WorkspaceFile{}
 	case "databricks:index/workspaceNetworkOption:WorkspaceNetworkOption":
@@ -510,6 +514,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"databricks",
 		"index/featureEngineeringFeature",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/featureEngineeringKafkaConfig",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -945,6 +954,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"databricks",
 		"index/workspaceConf",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/workspaceEntityTagAssignment",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

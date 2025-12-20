@@ -427,6 +427,81 @@ import (
 //
 // ```
 //
+// ## Tag policy usage
+//
+// Access to tag policies could be controlled with this resource:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			accountId := "00000000-0000-0000-0000-000000000000"
+//			// account level group
+//			ds, err := databricks.LookupGroup(ctx, &databricks.LookupGroupArgs{
+//				DisplayName: "Data Science",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			john, err := databricks.LookupUser(ctx, &databricks.LookupUserArgs{
+//				UserName: pulumi.StringRef("john.doe@example.com"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			this, err := databricks.NewTagPolicy(ctx, "this", &databricks.TagPolicyArgs{
+//				TagKey:      pulumi.String("example_tag_key"),
+//				Description: pulumi.String("Example description."),
+//				Values: databricks.TagPolicyValueArray{
+//					&databricks.TagPolicyValueArgs{
+//						Name: pulumi.String("example_value_2"),
+//					},
+//					&databricks.TagPolicyValueArgs{
+//						Name: pulumi.String("example_value_3"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewAccessControlRuleSet(ctx, "tag_policy_usage", &databricks.AccessControlRuleSetArgs{
+//				Name: this.ID().ApplyT(func(id string) (string, error) {
+//					return fmt.Sprintf("accounts/%v/tagPolicies/%v/ruleSets/default", accountId, id), nil
+//				}).(pulumi.StringOutput),
+//				GrantRules: databricks.AccessControlRuleSetGrantRuleArray{
+//					&databricks.AccessControlRuleSetGrantRuleArgs{
+//						Principals: pulumi.StringArray{
+//							pulumi.String(john.AclPrincipalId),
+//						},
+//						Role: pulumi.String("roles/tagPolicy.manager"),
+//					},
+//					&databricks.AccessControlRuleSetGrantRuleArgs{
+//						Principals: pulumi.StringArray{
+//							pulumi.String(ds.AclPrincipalId),
+//						},
+//						Role: pulumi.String("roles/tagPolicy.assigner"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Related Resources
 //
 // The following resources are often used in the same context:
@@ -447,6 +522,7 @@ type AccessControlRuleSet struct {
 	// * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default` - access control for a specific service principal.
 	// * `accounts/{account_id}/groups/{group_id}/ruleSets/default` - access control for a specific group.
 	// * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default` - access control for a specific budget policy.
+	// * `accounts/{account_id}/tagPolicies/{tag_policy_id}/ruleSets/default` - access control for a specific tag policy.
 	Name pulumi.StringOutput `pulumi:"name"`
 }
 
@@ -490,6 +566,7 @@ type accessControlRuleSetState struct {
 	// * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default` - access control for a specific service principal.
 	// * `accounts/{account_id}/groups/{group_id}/ruleSets/default` - access control for a specific group.
 	// * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default` - access control for a specific budget policy.
+	// * `accounts/{account_id}/tagPolicies/{tag_policy_id}/ruleSets/default` - access control for a specific tag policy.
 	Name *string `pulumi:"name"`
 }
 
@@ -504,6 +581,7 @@ type AccessControlRuleSetState struct {
 	// * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default` - access control for a specific service principal.
 	// * `accounts/{account_id}/groups/{group_id}/ruleSets/default` - access control for a specific group.
 	// * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default` - access control for a specific budget policy.
+	// * `accounts/{account_id}/tagPolicies/{tag_policy_id}/ruleSets/default` - access control for a specific tag policy.
 	Name pulumi.StringPtrInput
 }
 
@@ -521,6 +599,7 @@ type accessControlRuleSetArgs struct {
 	// * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default` - access control for a specific service principal.
 	// * `accounts/{account_id}/groups/{group_id}/ruleSets/default` - access control for a specific group.
 	// * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default` - access control for a specific budget policy.
+	// * `accounts/{account_id}/tagPolicies/{tag_policy_id}/ruleSets/default` - access control for a specific tag policy.
 	Name *string `pulumi:"name"`
 }
 
@@ -535,6 +614,7 @@ type AccessControlRuleSetArgs struct {
 	// * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default` - access control for a specific service principal.
 	// * `accounts/{account_id}/groups/{group_id}/ruleSets/default` - access control for a specific group.
 	// * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default` - access control for a specific budget policy.
+	// * `accounts/{account_id}/tagPolicies/{tag_policy_id}/ruleSets/default` - access control for a specific tag policy.
 	Name pulumi.StringPtrInput
 }
 
@@ -641,6 +721,7 @@ func (o AccessControlRuleSetOutput) GrantRules() AccessControlRuleSetGrantRuleAr
 // * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default` - access control for a specific service principal.
 // * `accounts/{account_id}/groups/{group_id}/ruleSets/default` - access control for a specific group.
 // * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default` - access control for a specific budget policy.
+// * `accounts/{account_id}/tagPolicies/{tag_policy_id}/ruleSets/default` - access control for a specific tag policy.
 func (o AccessControlRuleSetOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessControlRuleSet) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

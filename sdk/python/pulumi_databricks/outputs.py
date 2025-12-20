@@ -184,12 +184,21 @@ __all__ = [
     'ExternalLocationFileEventQueueProvidedSqs',
     'FeatureEngineeringFeatureFunction',
     'FeatureEngineeringFeatureFunctionExtraParameter',
+    'FeatureEngineeringFeatureLineageContext',
+    'FeatureEngineeringFeatureLineageContextJobContext',
     'FeatureEngineeringFeatureSource',
     'FeatureEngineeringFeatureSourceDeltaTableSource',
+    'FeatureEngineeringFeatureSourceKafkaSource',
+    'FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifier',
+    'FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifier',
     'FeatureEngineeringFeatureTimeWindow',
     'FeatureEngineeringFeatureTimeWindowContinuous',
     'FeatureEngineeringFeatureTimeWindowSliding',
     'FeatureEngineeringFeatureTimeWindowTumbling',
+    'FeatureEngineeringKafkaConfigAuthConfig',
+    'FeatureEngineeringKafkaConfigKeySchema',
+    'FeatureEngineeringKafkaConfigSubscriptionMode',
+    'FeatureEngineeringKafkaConfigValueSchema',
     'FeatureEngineeringMaterializedFeatureOfflineStoreConfig',
     'FeatureEngineeringMaterializedFeatureOnlineStoreConfig',
     'GrantsGrant',
@@ -447,6 +456,7 @@ __all__ = [
     'JobTaskWebhookNotificationsOnSuccess',
     'JobTrigger',
     'JobTriggerFileArrival',
+    'JobTriggerModel',
     'JobTriggerPeriodic',
     'JobTriggerTableUpdate',
     'JobWebhookNotifications',
@@ -592,6 +602,7 @@ __all__ = [
     'PipelineEventLog',
     'PipelineFilters',
     'PipelineGatewayDefinition',
+    'PipelineGatewayDefinitionConnectionParameters',
     'PipelineIngestionDefinition',
     'PipelineIngestionDefinitionObject',
     'PipelineIngestionDefinitionObjectReport',
@@ -999,8 +1010,13 @@ __all__ = [
     'GetExternalMetadatasExternalMetadataResult',
     'GetFeatureEngineeringFeatureFunctionResult',
     'GetFeatureEngineeringFeatureFunctionExtraParameterResult',
+    'GetFeatureEngineeringFeatureLineageContextResult',
+    'GetFeatureEngineeringFeatureLineageContextJobContextResult',
     'GetFeatureEngineeringFeatureSourceResult',
     'GetFeatureEngineeringFeatureSourceDeltaTableSourceResult',
+    'GetFeatureEngineeringFeatureSourceKafkaSourceResult',
+    'GetFeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierResult',
+    'GetFeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierResult',
     'GetFeatureEngineeringFeatureTimeWindowResult',
     'GetFeatureEngineeringFeatureTimeWindowContinuousResult',
     'GetFeatureEngineeringFeatureTimeWindowSlidingResult',
@@ -1008,12 +1024,26 @@ __all__ = [
     'GetFeatureEngineeringFeaturesFeatureResult',
     'GetFeatureEngineeringFeaturesFeatureFunctionResult',
     'GetFeatureEngineeringFeaturesFeatureFunctionExtraParameterResult',
+    'GetFeatureEngineeringFeaturesFeatureLineageContextResult',
+    'GetFeatureEngineeringFeaturesFeatureLineageContextJobContextResult',
     'GetFeatureEngineeringFeaturesFeatureSourceResult',
     'GetFeatureEngineeringFeaturesFeatureSourceDeltaTableSourceResult',
+    'GetFeatureEngineeringFeaturesFeatureSourceKafkaSourceResult',
+    'GetFeatureEngineeringFeaturesFeatureSourceKafkaSourceEntityColumnIdentifierResult',
+    'GetFeatureEngineeringFeaturesFeatureSourceKafkaSourceTimeseriesColumnIdentifierResult',
     'GetFeatureEngineeringFeaturesFeatureTimeWindowResult',
     'GetFeatureEngineeringFeaturesFeatureTimeWindowContinuousResult',
     'GetFeatureEngineeringFeaturesFeatureTimeWindowSlidingResult',
     'GetFeatureEngineeringFeaturesFeatureTimeWindowTumblingResult',
+    'GetFeatureEngineeringKafkaConfigAuthConfigResult',
+    'GetFeatureEngineeringKafkaConfigKeySchemaResult',
+    'GetFeatureEngineeringKafkaConfigSubscriptionModeResult',
+    'GetFeatureEngineeringKafkaConfigValueSchemaResult',
+    'GetFeatureEngineeringKafkaConfigsKafkaConfigResult',
+    'GetFeatureEngineeringKafkaConfigsKafkaConfigAuthConfigResult',
+    'GetFeatureEngineeringKafkaConfigsKafkaConfigKeySchemaResult',
+    'GetFeatureEngineeringKafkaConfigsKafkaConfigSubscriptionModeResult',
+    'GetFeatureEngineeringKafkaConfigsKafkaConfigValueSchemaResult',
     'GetFeatureEngineeringMaterializedFeatureOfflineStoreConfigResult',
     'GetFeatureEngineeringMaterializedFeatureOnlineStoreConfigResult',
     'GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureResult',
@@ -1312,6 +1342,7 @@ __all__ = [
     'GetServicePrincipalFederationPoliciesPolicyResult',
     'GetServicePrincipalFederationPoliciesPolicyOidcPolicyResult',
     'GetServicePrincipalFederationPolicyOidcPolicyResult',
+    'GetServicePrincipalsServicePrincipalResult',
     'GetServingEndpointsEndpointResult',
     'GetServingEndpointsEndpointAiGatewayResult',
     'GetServingEndpointsEndpointAiGatewayFallbackConfigResult',
@@ -1389,12 +1420,19 @@ __all__ = [
     'GetTagPoliciesTagPolicyResult',
     'GetTagPoliciesTagPolicyValueResult',
     'GetTagPolicyValueResult',
+    'GetUsersUserResult',
+    'GetUsersUserEmailResult',
+    'GetUsersUserEntitlementResult',
+    'GetUsersUserGroupResult',
+    'GetUsersUserNameResult',
+    'GetUsersUserRoleResult',
     'GetViewsProviderConfigResult',
     'GetVolumeProviderConfigResult',
     'GetVolumeVolumeInfoResult',
     'GetVolumeVolumeInfoEncryptionDetailsResult',
     'GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsResult',
     'GetVolumesProviderConfigResult',
+    'GetWorkspaceEntityTagAssignmentsTagAssignmentResult',
     'GetWorkspaceSettingV2AibiDashboardEmbeddingAccessPolicyResult',
     'GetWorkspaceSettingV2AibiDashboardEmbeddingApprovedDomainsResult',
     'GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceResult',
@@ -1432,6 +1470,9 @@ class AccessControlRuleSetGrantRule(dict):
                * `accounts/{account_id}/ruleSets/default`
                * `roles/marketplace.admin` - Databricks Marketplace administrator.
                * `roles/billing.admin` - Billing administrator.
+               * `roles/tagPolicy.creator` - Creator of tag policies.
+               * `roles/tagPolicy.manager` - Manager of tag policies.
+               * `roles/tagPolicy.assigner` - Assigner of tag policies.
                * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`
                * `roles/servicePrincipal.manager` - Manager of a service principal.
                * `roles/servicePrincipal.user` - User of a service principal.
@@ -1440,6 +1481,9 @@ class AccessControlRuleSetGrantRule(dict):
                * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default`
                * `roles/budgetPolicy.manager` - Manager of a budget policy.
                * `roles/budgetPolicy.user` - User of a budget policy.
+               * `accounts/{account_id}/tagPolicies/{tag_policy_id}/ruleSets/default`
+               * `roles/tagPolicy.manager` - Manager of a specific tag policy.
+               * `roles/tagPolicy.assigner` - Assigner of a specific tag policy.
         :param Sequence[_builtins.str] principals: a list of principals who are granted a role. The following format is supported:
                * `users/{username}` (also exposed as `acl_principal_id` attribute of `User` resource).
                * `groups/{groupname}` (also exposed as `acl_principal_id` attribute of `Group` resource).
@@ -1457,6 +1501,9 @@ class AccessControlRuleSetGrantRule(dict):
         * `accounts/{account_id}/ruleSets/default`
         * `roles/marketplace.admin` - Databricks Marketplace administrator.
         * `roles/billing.admin` - Billing administrator.
+        * `roles/tagPolicy.creator` - Creator of tag policies.
+        * `roles/tagPolicy.manager` - Manager of tag policies.
+        * `roles/tagPolicy.assigner` - Assigner of tag policies.
         * `accounts/{account_id}/servicePrincipals/{service_principal_application_id}/ruleSets/default`
         * `roles/servicePrincipal.manager` - Manager of a service principal.
         * `roles/servicePrincipal.user` - User of a service principal.
@@ -1465,6 +1512,9 @@ class AccessControlRuleSetGrantRule(dict):
         * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default`
         * `roles/budgetPolicy.manager` - Manager of a budget policy.
         * `roles/budgetPolicy.user` - User of a budget policy.
+        * `accounts/{account_id}/tagPolicies/{tag_policy_id}/ruleSets/default`
+        * `roles/tagPolicy.manager` - Manager of a specific tag policy.
+        * `roles/tagPolicy.assigner` - Assigner of a specific tag policy.
         """
         return pulumi.get(self, "role")
 
@@ -3114,7 +3164,9 @@ class AlertV2EvaluationNotification(dict):
                  subscriptions: Optional[Sequence['outputs.AlertV2EvaluationNotificationSubscription']] = None):
         """
         :param _builtins.bool notify_on_ok: Whether to notify alert subscribers when alert returns back to normal
-        :param _builtins.int retrigger_seconds: Number of seconds an alert must wait after being triggered to rearm itself. After rearming, it can be triggered again. If 0 or not specified, the alert will not be triggered again
+        :param _builtins.int retrigger_seconds: Number of seconds an alert waits after being triggered before it is allowed to send another notification.
+               If set to 0 or omitted, the alert will not send any further notifications after the first trigger
+               Setting this value to 1 allows the alert to send a notification on every evaluation where the condition is met, effectively making it always retrigger for notification purposes
         """
         if effective_notify_on_ok is not None:
             pulumi.set(__self__, "effective_notify_on_ok", effective_notify_on_ok)
@@ -3149,7 +3201,9 @@ class AlertV2EvaluationNotification(dict):
     @pulumi.getter(name="retriggerSeconds")
     def retrigger_seconds(self) -> Optional[_builtins.int]:
         """
-        Number of seconds an alert must wait after being triggered to rearm itself. After rearming, it can be triggered again. If 0 or not specified, the alert will not be triggered again
+        Number of seconds an alert waits after being triggered before it is allowed to send another notification.
+        If set to 0 or omitted, the alert will not send any further notifications after the first trigger
+        Setting this value to 1 allows the alert to send a notification on every evaluation where the condition is met, effectively making it always retrigger for notification purposes
         """
         return pulumi.get(self, "retrigger_seconds")
 
@@ -3206,7 +3260,7 @@ class AlertV2EvaluationSource(dict):
                  aggregation: Optional[_builtins.str] = None,
                  display: Optional[_builtins.str] = None):
         """
-        :param _builtins.str aggregation: Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
+        :param _builtins.str aggregation: If not set, the behavior is equivalent to using `First row` in the UI. Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
         """
         pulumi.set(__self__, "name", name)
         if aggregation is not None:
@@ -3223,7 +3277,7 @@ class AlertV2EvaluationSource(dict):
     @pulumi.getter
     def aggregation(self) -> Optional[_builtins.str]:
         """
-        Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
+        If not set, the behavior is equivalent to using `First row` in the UI. Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
         """
         return pulumi.get(self, "aggregation")
 
@@ -3261,7 +3315,7 @@ class AlertV2EvaluationThresholdColumn(dict):
                  aggregation: Optional[_builtins.str] = None,
                  display: Optional[_builtins.str] = None):
         """
-        :param _builtins.str aggregation: Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
+        :param _builtins.str aggregation: If not set, the behavior is equivalent to using `First row` in the UI. Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
         """
         pulumi.set(__self__, "name", name)
         if aggregation is not None:
@@ -3278,7 +3332,7 @@ class AlertV2EvaluationThresholdColumn(dict):
     @pulumi.getter
     def aggregation(self) -> Optional[_builtins.str]:
         """
-        Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
+        If not set, the behavior is equivalent to using `First row` in the UI. Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
         """
         return pulumi.get(self, "aggregation")
 
@@ -5367,7 +5421,9 @@ class ClusterAwsAttributes(dict):
         """
         :param _builtins.str availability: Availability type used for all subsequent nodes past the `first_on_demand` ones. Valid values are `SPOT`, `SPOT_WITH_FALLBACK` and `ON_DEMAND`. Note: If `first_on_demand` is zero, this availability type will be used for the entire cluster. Backend default value is `SPOT_WITH_FALLBACK` and could change in the future
         :param _builtins.int ebs_volume_count: The number of volumes launched for each instance. You can choose up to 10 volumes. This feature is only enabled for supported node types. Legacy node types cannot specify custom EBS volumes. For node types with no instance store, at least one EBS volume needs to be specified; otherwise, cluster creation will fail. These EBS volumes will be mounted at /ebs0, /ebs1, and etc. Instance store volumes will be mounted at /local_disk0, /local_disk1, and etc. If EBS volumes are attached, Databricks will configure Spark to use only the EBS volumes for scratch storage because heterogeneously sized scratch devices can lead to inefficient disk utilization. If no EBS volumes are attached, Databricks will configure Spark to use instance store volumes. If EBS volumes are specified, then the Spark configuration spark.local.dir will be overridden.
+        :param _builtins.int ebs_volume_iops: If using gp3 volumes, what IOPS to use for the disk. If this is not set, the maximum performance of a gp2 volume with the same volume size will be used.
         :param _builtins.int ebs_volume_size: The size of each EBS volume (in GiB) launched for each instance. For general purpose SSD, this value must be within the range 100 - 4096. For throughput optimized HDD, this value must be within the range 500 - 4096. Custom EBS volumes cannot be specified for the legacy node types (memory-optimized and compute-optimized).
+        :param _builtins.int ebs_volume_throughput: If using gp3 volumes, what throughput to use for the disk. If this is not set, the maximum performance of a gp2 volume with the same volume size will be used.
         :param _builtins.str ebs_volume_type: The type of EBS volumes that will be launched with this cluster. Valid values are `GENERAL_PURPOSE_SSD` or `THROUGHPUT_OPTIMIZED_HDD`. Use this option only if you're not picking *Delta Optimized `i3.*`* node types.
         :param _builtins.int first_on_demand: The first `first_on_demand` nodes of the cluster will be placed on on-demand instances. If this value is greater than 0, the cluster driver node will be placed on an on-demand instance. If this value is greater than or equal to the current cluster size, all nodes will be placed on on-demand instances. If this value is less than the current cluster size, `first_on_demand` nodes will be placed on on-demand instances, and the remainder will be placed on availability instances. This value does not affect cluster size and cannot be mutated over the lifetime of a cluster. If unspecified, the default value is 0.
         :param _builtins.str instance_profile_arn: Nodes for this cluster will only be placed on AWS instances with this instance profile. Please see InstanceProfile resource documentation for extended examples on adding a valid instance profile using Pulumi.
@@ -5414,6 +5470,9 @@ class ClusterAwsAttributes(dict):
     @_builtins.property
     @pulumi.getter(name="ebsVolumeIops")
     def ebs_volume_iops(self) -> Optional[_builtins.int]:
+        """
+        If using gp3 volumes, what IOPS to use for the disk. If this is not set, the maximum performance of a gp2 volume with the same volume size will be used.
+        """
         return pulumi.get(self, "ebs_volume_iops")
 
     @_builtins.property
@@ -5427,6 +5486,9 @@ class ClusterAwsAttributes(dict):
     @_builtins.property
     @pulumi.getter(name="ebsVolumeThroughput")
     def ebs_volume_throughput(self) -> Optional[_builtins.int]:
+        """
+        If using gp3 volumes, what throughput to use for the disk. If this is not set, the maximum performance of a gp2 volume with the same volume size will be used.
+        """
         return pulumi.get(self, "ebs_volume_throughput")
 
     @_builtins.property
@@ -9101,7 +9163,9 @@ class DatabaseSyncedDatabaseTableSpecNewPipelineSpec(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "storageCatalog":
+        if key == "budgetPolicyId":
+            suggest = "budget_policy_id"
+        elif key == "storageCatalog":
             suggest = "storage_catalog"
         elif key == "storageSchema":
             suggest = "storage_schema"
@@ -9118,9 +9182,11 @@ class DatabaseSyncedDatabaseTableSpecNewPipelineSpec(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 budget_policy_id: Optional[_builtins.str] = None,
                  storage_catalog: Optional[_builtins.str] = None,
                  storage_schema: Optional[_builtins.str] = None):
         """
+        :param _builtins.str budget_policy_id: Budget policy to set on the newly created pipeline
         :param _builtins.str storage_catalog: This field needs to be specified if the destination catalog is a managed postgres catalog.
                
                UC catalog for the pipeline to store intermediate files (checkpoints, event logs etc).
@@ -9130,10 +9196,20 @@ class DatabaseSyncedDatabaseTableSpecNewPipelineSpec(dict):
                UC schema for the pipeline to store intermediate files (checkpoints, event logs etc).
                This needs to be in the standard catalog where the user has permissions to create Delta tables
         """
+        if budget_policy_id is not None:
+            pulumi.set(__self__, "budget_policy_id", budget_policy_id)
         if storage_catalog is not None:
             pulumi.set(__self__, "storage_catalog", storage_catalog)
         if storage_schema is not None:
             pulumi.set(__self__, "storage_schema", storage_schema)
+
+    @_builtins.property
+    @pulumi.getter(name="budgetPolicyId")
+    def budget_policy_id(self) -> Optional[_builtins.str]:
+        """
+        Budget policy to set on the newly created pipeline
+        """
+        return pulumi.get(self, "budget_policy_id")
 
     @_builtins.property
     @pulumi.getter(name="storageCatalog")
@@ -9860,12 +9936,114 @@ class FeatureEngineeringFeatureFunctionExtraParameter(dict):
 
 
 @pulumi.output_type
+class FeatureEngineeringFeatureLineageContext(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "jobContext":
+            suggest = "job_context"
+        elif key == "notebookId":
+            suggest = "notebook_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FeatureEngineeringFeatureLineageContext. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FeatureEngineeringFeatureLineageContext.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FeatureEngineeringFeatureLineageContext.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 job_context: Optional['outputs.FeatureEngineeringFeatureLineageContextJobContext'] = None,
+                 notebook_id: Optional[_builtins.int] = None):
+        """
+        :param 'FeatureEngineeringFeatureLineageContextJobContextArgs' job_context: Job context information including job ID and run ID
+        :param _builtins.int notebook_id: The notebook ID where this API was invoked
+        """
+        if job_context is not None:
+            pulumi.set(__self__, "job_context", job_context)
+        if notebook_id is not None:
+            pulumi.set(__self__, "notebook_id", notebook_id)
+
+    @_builtins.property
+    @pulumi.getter(name="jobContext")
+    def job_context(self) -> Optional['outputs.FeatureEngineeringFeatureLineageContextJobContext']:
+        """
+        Job context information including job ID and run ID
+        """
+        return pulumi.get(self, "job_context")
+
+    @_builtins.property
+    @pulumi.getter(name="notebookId")
+    def notebook_id(self) -> Optional[_builtins.int]:
+        """
+        The notebook ID where this API was invoked
+        """
+        return pulumi.get(self, "notebook_id")
+
+
+@pulumi.output_type
+class FeatureEngineeringFeatureLineageContextJobContext(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "jobId":
+            suggest = "job_id"
+        elif key == "jobRunId":
+            suggest = "job_run_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FeatureEngineeringFeatureLineageContextJobContext. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FeatureEngineeringFeatureLineageContextJobContext.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FeatureEngineeringFeatureLineageContextJobContext.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 job_id: Optional[_builtins.int] = None,
+                 job_run_id: Optional[_builtins.int] = None):
+        """
+        :param _builtins.int job_id: The job ID where this API invoked
+        :param _builtins.int job_run_id: The job run ID where this API was invoked
+        """
+        if job_id is not None:
+            pulumi.set(__self__, "job_id", job_id)
+        if job_run_id is not None:
+            pulumi.set(__self__, "job_run_id", job_run_id)
+
+    @_builtins.property
+    @pulumi.getter(name="jobId")
+    def job_id(self) -> Optional[_builtins.int]:
+        """
+        The job ID where this API invoked
+        """
+        return pulumi.get(self, "job_id")
+
+    @_builtins.property
+    @pulumi.getter(name="jobRunId")
+    def job_run_id(self) -> Optional[_builtins.int]:
+        """
+        The job run ID where this API was invoked
+        """
+        return pulumi.get(self, "job_run_id")
+
+
+@pulumi.output_type
 class FeatureEngineeringFeatureSource(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
         if key == "deltaTableSource":
             suggest = "delta_table_source"
+        elif key == "kafkaSource":
+            suggest = "kafka_source"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in FeatureEngineeringFeatureSource. Access the value via the '{suggest}' property getter instead.")
@@ -9879,14 +10057,22 @@ class FeatureEngineeringFeatureSource(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 delta_table_source: Optional['outputs.FeatureEngineeringFeatureSourceDeltaTableSource'] = None):
+                 delta_table_source: Optional['outputs.FeatureEngineeringFeatureSourceDeltaTableSource'] = None,
+                 kafka_source: Optional['outputs.FeatureEngineeringFeatureSourceKafkaSource'] = None):
         if delta_table_source is not None:
             pulumi.set(__self__, "delta_table_source", delta_table_source)
+        if kafka_source is not None:
+            pulumi.set(__self__, "kafka_source", kafka_source)
 
     @_builtins.property
     @pulumi.getter(name="deltaTableSource")
     def delta_table_source(self) -> Optional['outputs.FeatureEngineeringFeatureSourceDeltaTableSource']:
         return pulumi.get(self, "delta_table_source")
+
+    @_builtins.property
+    @pulumi.getter(name="kafkaSource")
+    def kafka_source(self) -> Optional['outputs.FeatureEngineeringFeatureSourceKafkaSource']:
+        return pulumi.get(self, "kafka_source")
 
 
 @pulumi.output_type
@@ -9948,6 +10134,139 @@ class FeatureEngineeringFeatureSourceDeltaTableSource(dict):
         The timeseries column of the Delta table
         """
         return pulumi.get(self, "timeseries_column")
+
+
+@pulumi.output_type
+class FeatureEngineeringFeatureSourceKafkaSource(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entityColumnIdentifiers":
+            suggest = "entity_column_identifiers"
+        elif key == "timeseriesColumnIdentifier":
+            suggest = "timeseries_column_identifier"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FeatureEngineeringFeatureSourceKafkaSource. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FeatureEngineeringFeatureSourceKafkaSource.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FeatureEngineeringFeatureSourceKafkaSource.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 entity_column_identifiers: Sequence['outputs.FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifier'],
+                 name: _builtins.str,
+                 timeseries_column_identifier: 'outputs.FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifier'):
+        """
+        :param Sequence['FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierArgs'] entity_column_identifiers: The entity column identifiers of the Kafka source
+        :param _builtins.str name: Name of the Kafka source, used to identify it. This is used to look up the corresponding KafkaConfig object. Can be distinct from topic name
+        :param 'FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierArgs' timeseries_column_identifier: The timeseries column identifier of the Kafka source
+        """
+        pulumi.set(__self__, "entity_column_identifiers", entity_column_identifiers)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "timeseries_column_identifier", timeseries_column_identifier)
+
+    @_builtins.property
+    @pulumi.getter(name="entityColumnIdentifiers")
+    def entity_column_identifiers(self) -> Sequence['outputs.FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifier']:
+        """
+        The entity column identifiers of the Kafka source
+        """
+        return pulumi.get(self, "entity_column_identifiers")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Name of the Kafka source, used to identify it. This is used to look up the corresponding KafkaConfig object. Can be distinct from topic name
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="timeseriesColumnIdentifier")
+    def timeseries_column_identifier(self) -> 'outputs.FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifier':
+        """
+        The timeseries column identifier of the Kafka source
+        """
+        return pulumi.get(self, "timeseries_column_identifier")
+
+
+@pulumi.output_type
+class FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifier(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "variantExprPath":
+            suggest = "variant_expr_path"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifier. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifier.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifier.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 variant_expr_path: _builtins.str):
+        """
+        :param _builtins.str variant_expr_path: String representation of the column name or variant expression path. For nested fields, the leaf value is what will be present in materialized tables
+               and expected to match at query time. For example, the leaf node of value:trip_details.location_details.pickup_zip is pickup_zip
+        """
+        pulumi.set(__self__, "variant_expr_path", variant_expr_path)
+
+    @_builtins.property
+    @pulumi.getter(name="variantExprPath")
+    def variant_expr_path(self) -> _builtins.str:
+        """
+        String representation of the column name or variant expression path. For nested fields, the leaf value is what will be present in materialized tables
+        and expected to match at query time. For example, the leaf node of value:trip_details.location_details.pickup_zip is pickup_zip
+        """
+        return pulumi.get(self, "variant_expr_path")
+
+
+@pulumi.output_type
+class FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifier(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "variantExprPath":
+            suggest = "variant_expr_path"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifier. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifier.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifier.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 variant_expr_path: _builtins.str):
+        """
+        :param _builtins.str variant_expr_path: String representation of the column name or variant expression path. For nested fields, the leaf value is what will be present in materialized tables
+               and expected to match at query time. For example, the leaf node of value:trip_details.location_details.pickup_zip is pickup_zip
+        """
+        pulumi.set(__self__, "variant_expr_path", variant_expr_path)
+
+    @_builtins.property
+    @pulumi.getter(name="variantExprPath")
+    def variant_expr_path(self) -> _builtins.str:
+        """
+        String representation of the column name or variant expression path. For nested fields, the leaf value is what will be present in materialized tables
+        and expected to match at query time. For example, the leaf node of value:trip_details.location_details.pickup_zip is pickup_zip
+        """
+        return pulumi.get(self, "variant_expr_path")
 
 
 @pulumi.output_type
@@ -10096,6 +10415,176 @@ class FeatureEngineeringFeatureTimeWindowTumbling(dict):
 
 
 @pulumi.output_type
+class FeatureEngineeringKafkaConfigAuthConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ucServiceCredentialName":
+            suggest = "uc_service_credential_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FeatureEngineeringKafkaConfigAuthConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FeatureEngineeringKafkaConfigAuthConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FeatureEngineeringKafkaConfigAuthConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 uc_service_credential_name: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str uc_service_credential_name: Name of the Unity Catalog service credential. This value will be set under the option databricks.serviceCredential
+        """
+        if uc_service_credential_name is not None:
+            pulumi.set(__self__, "uc_service_credential_name", uc_service_credential_name)
+
+    @_builtins.property
+    @pulumi.getter(name="ucServiceCredentialName")
+    def uc_service_credential_name(self) -> Optional[_builtins.str]:
+        """
+        Name of the Unity Catalog service credential. This value will be set under the option databricks.serviceCredential
+        """
+        return pulumi.get(self, "uc_service_credential_name")
+
+
+@pulumi.output_type
+class FeatureEngineeringKafkaConfigKeySchema(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "jsonSchema":
+            suggest = "json_schema"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FeatureEngineeringKafkaConfigKeySchema. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FeatureEngineeringKafkaConfigKeySchema.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FeatureEngineeringKafkaConfigKeySchema.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 json_schema: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str json_schema: Schema of the JSON object in standard IETF JSON schema format (https://json-schema.org/)
+        """
+        if json_schema is not None:
+            pulumi.set(__self__, "json_schema", json_schema)
+
+    @_builtins.property
+    @pulumi.getter(name="jsonSchema")
+    def json_schema(self) -> Optional[_builtins.str]:
+        """
+        Schema of the JSON object in standard IETF JSON schema format (https://json-schema.org/)
+        """
+        return pulumi.get(self, "json_schema")
+
+
+@pulumi.output_type
+class FeatureEngineeringKafkaConfigSubscriptionMode(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "subscribePattern":
+            suggest = "subscribe_pattern"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FeatureEngineeringKafkaConfigSubscriptionMode. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FeatureEngineeringKafkaConfigSubscriptionMode.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FeatureEngineeringKafkaConfigSubscriptionMode.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 assign: Optional[_builtins.str] = None,
+                 subscribe: Optional[_builtins.str] = None,
+                 subscribe_pattern: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str assign: A JSON string that contains the specific topic-partitions to consume from.
+               For example, for '{"topicA":[0,1],"topicB":[2,4]}', topicA's 0'th and 1st partitions will be consumed from
+        :param _builtins.str subscribe: A comma-separated list of Kafka topics to read from. For example, 'topicA,topicB,topicC'
+        :param _builtins.str subscribe_pattern: A regular expression matching topics to subscribe to. For example, 'topic.*' will subscribe to all topics starting with 'topic'
+        """
+        if assign is not None:
+            pulumi.set(__self__, "assign", assign)
+        if subscribe is not None:
+            pulumi.set(__self__, "subscribe", subscribe)
+        if subscribe_pattern is not None:
+            pulumi.set(__self__, "subscribe_pattern", subscribe_pattern)
+
+    @_builtins.property
+    @pulumi.getter
+    def assign(self) -> Optional[_builtins.str]:
+        """
+        A JSON string that contains the specific topic-partitions to consume from.
+        For example, for '{"topicA":[0,1],"topicB":[2,4]}', topicA's 0'th and 1st partitions will be consumed from
+        """
+        return pulumi.get(self, "assign")
+
+    @_builtins.property
+    @pulumi.getter
+    def subscribe(self) -> Optional[_builtins.str]:
+        """
+        A comma-separated list of Kafka topics to read from. For example, 'topicA,topicB,topicC'
+        """
+        return pulumi.get(self, "subscribe")
+
+    @_builtins.property
+    @pulumi.getter(name="subscribePattern")
+    def subscribe_pattern(self) -> Optional[_builtins.str]:
+        """
+        A regular expression matching topics to subscribe to. For example, 'topic.*' will subscribe to all topics starting with 'topic'
+        """
+        return pulumi.get(self, "subscribe_pattern")
+
+
+@pulumi.output_type
+class FeatureEngineeringKafkaConfigValueSchema(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "jsonSchema":
+            suggest = "json_schema"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FeatureEngineeringKafkaConfigValueSchema. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FeatureEngineeringKafkaConfigValueSchema.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FeatureEngineeringKafkaConfigValueSchema.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 json_schema: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str json_schema: Schema of the JSON object in standard IETF JSON schema format (https://json-schema.org/)
+        """
+        if json_schema is not None:
+            pulumi.set(__self__, "json_schema", json_schema)
+
+    @_builtins.property
+    @pulumi.getter(name="jsonSchema")
+    def json_schema(self) -> Optional[_builtins.str]:
+        """
+        Schema of the JSON object in standard IETF JSON schema format (https://json-schema.org/)
+        """
+        return pulumi.get(self, "json_schema")
+
+
+@pulumi.output_type
 class FeatureEngineeringMaterializedFeatureOfflineStoreConfig(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -10122,12 +10611,6 @@ class FeatureEngineeringMaterializedFeatureOfflineStoreConfig(dict):
                  catalog_name: _builtins.str,
                  schema_name: _builtins.str,
                  table_name_prefix: _builtins.str):
-        """
-        :param _builtins.str catalog_name: The Unity Catalog catalog name
-        :param _builtins.str schema_name: The Unity Catalog schema name
-        :param _builtins.str table_name_prefix: Prefix for Unity Catalog table name.
-               The materialized feature will be stored in a table with this prefix and a generated postfix
-        """
         pulumi.set(__self__, "catalog_name", catalog_name)
         pulumi.set(__self__, "schema_name", schema_name)
         pulumi.set(__self__, "table_name_prefix", table_name_prefix)
@@ -10135,26 +10618,16 @@ class FeatureEngineeringMaterializedFeatureOfflineStoreConfig(dict):
     @_builtins.property
     @pulumi.getter(name="catalogName")
     def catalog_name(self) -> _builtins.str:
-        """
-        The Unity Catalog catalog name
-        """
         return pulumi.get(self, "catalog_name")
 
     @_builtins.property
     @pulumi.getter(name="schemaName")
     def schema_name(self) -> _builtins.str:
-        """
-        The Unity Catalog schema name
-        """
         return pulumi.get(self, "schema_name")
 
     @_builtins.property
     @pulumi.getter(name="tableNamePrefix")
     def table_name_prefix(self) -> _builtins.str:
-        """
-        Prefix for Unity Catalog table name.
-        The materialized feature will be stored in a table with this prefix and a generated postfix
-        """
         return pulumi.get(self, "table_name_prefix")
 
 
@@ -10163,10 +10636,14 @@ class FeatureEngineeringMaterializedFeatureOnlineStoreConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "creationTime":
-            suggest = "creation_time"
-        elif key == "readReplicaCount":
-            suggest = "read_replica_count"
+        if key == "catalogName":
+            suggest = "catalog_name"
+        elif key == "onlineStoreName":
+            suggest = "online_store_name"
+        elif key == "schemaName":
+            suggest = "schema_name"
+        elif key == "tableNamePrefix":
+            suggest = "table_name_prefix"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in FeatureEngineeringMaterializedFeatureOnlineStoreConfig. Access the value via the '{suggest}' property getter instead.")
@@ -10180,78 +10657,40 @@ class FeatureEngineeringMaterializedFeatureOnlineStoreConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 capacity: _builtins.str,
-                 name: _builtins.str,
-                 creation_time: Optional[_builtins.str] = None,
-                 creator: Optional[_builtins.str] = None,
-                 read_replica_count: Optional[_builtins.int] = None,
-                 state: Optional[_builtins.str] = None):
+                 catalog_name: _builtins.str,
+                 online_store_name: _builtins.str,
+                 schema_name: _builtins.str,
+                 table_name_prefix: _builtins.str):
         """
-        :param _builtins.str capacity: The capacity of the online store. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
-        :param _builtins.str name: The name of the online store. This is the unique identifier for the online store
-        :param _builtins.str creation_time: (string) - The timestamp when the online store was created
-        :param _builtins.str creator: (string) - The email of the creator of the online store
-        :param _builtins.int read_replica_count: The number of read replicas for the online store. Defaults to 0
-        :param _builtins.str state: (string) - The current state of the online store. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
+        :param _builtins.str online_store_name: The name of the target online store
         """
-        pulumi.set(__self__, "capacity", capacity)
-        pulumi.set(__self__, "name", name)
-        if creation_time is not None:
-            pulumi.set(__self__, "creation_time", creation_time)
-        if creator is not None:
-            pulumi.set(__self__, "creator", creator)
-        if read_replica_count is not None:
-            pulumi.set(__self__, "read_replica_count", read_replica_count)
-        if state is not None:
-            pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "catalog_name", catalog_name)
+        pulumi.set(__self__, "online_store_name", online_store_name)
+        pulumi.set(__self__, "schema_name", schema_name)
+        pulumi.set(__self__, "table_name_prefix", table_name_prefix)
 
     @_builtins.property
-    @pulumi.getter
-    def capacity(self) -> _builtins.str:
-        """
-        The capacity of the online store. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
-        """
-        return pulumi.get(self, "capacity")
+    @pulumi.getter(name="catalogName")
+    def catalog_name(self) -> _builtins.str:
+        return pulumi.get(self, "catalog_name")
 
     @_builtins.property
-    @pulumi.getter
-    def name(self) -> _builtins.str:
+    @pulumi.getter(name="onlineStoreName")
+    def online_store_name(self) -> _builtins.str:
         """
-        The name of the online store. This is the unique identifier for the online store
+        The name of the target online store
         """
-        return pulumi.get(self, "name")
+        return pulumi.get(self, "online_store_name")
 
     @_builtins.property
-    @pulumi.getter(name="creationTime")
-    def creation_time(self) -> Optional[_builtins.str]:
-        """
-        (string) - The timestamp when the online store was created
-        """
-        return pulumi.get(self, "creation_time")
+    @pulumi.getter(name="schemaName")
+    def schema_name(self) -> _builtins.str:
+        return pulumi.get(self, "schema_name")
 
     @_builtins.property
-    @pulumi.getter
-    def creator(self) -> Optional[_builtins.str]:
-        """
-        (string) - The email of the creator of the online store
-        """
-        return pulumi.get(self, "creator")
-
-    @_builtins.property
-    @pulumi.getter(name="readReplicaCount")
-    def read_replica_count(self) -> Optional[_builtins.int]:
-        """
-        The number of read replicas for the online store. Defaults to 0
-        """
-        return pulumi.get(self, "read_replica_count")
-
-    @_builtins.property
-    @pulumi.getter
-    def state(self) -> Optional[_builtins.str]:
-        """
-        (string) - The current state of the online store. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
-        """
-        return pulumi.get(self, "state")
+    @pulumi.getter(name="tableNamePrefix")
+    def table_name_prefix(self) -> _builtins.str:
+        return pulumi.get(self, "table_name_prefix")
 
 
 @pulumi.output_type
@@ -24535,6 +24974,7 @@ class JobTrigger(dict):
 
     def __init__(__self__, *,
                  file_arrival: Optional['outputs.JobTriggerFileArrival'] = None,
+                 model: Optional['outputs.JobTriggerModel'] = None,
                  pause_status: Optional[_builtins.str] = None,
                  periodic: Optional['outputs.JobTriggerPeriodic'] = None,
                  table_update: Optional['outputs.JobTriggerTableUpdate'] = None):
@@ -24546,6 +24986,8 @@ class JobTrigger(dict):
         """
         if file_arrival is not None:
             pulumi.set(__self__, "file_arrival", file_arrival)
+        if model is not None:
+            pulumi.set(__self__, "model", model)
         if pause_status is not None:
             pulumi.set(__self__, "pause_status", pause_status)
         if periodic is not None:
@@ -24560,6 +25002,11 @@ class JobTrigger(dict):
         configuration block to define a trigger for [File Arrival events](https://learn.microsoft.com/en-us/azure/databricks/workflows/jobs/file-arrival-triggers) consisting of following attributes:
         """
         return pulumi.get(self, "file_arrival")
+
+    @_builtins.property
+    @pulumi.getter
+    def model(self) -> Optional['outputs.JobTriggerModel']:
+        return pulumi.get(self, "model")
 
     @_builtins.property
     @pulumi.getter(name="pauseStatus")
@@ -24644,6 +25091,77 @@ class JobTriggerFileArrival(dict):
         """
         If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
         """
+        return pulumi.get(self, "wait_after_last_change_seconds")
+
+
+@pulumi.output_type
+class JobTriggerModel(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "minTimeBetweenTriggersSeconds":
+            suggest = "min_time_between_triggers_seconds"
+        elif key == "securableName":
+            suggest = "securable_name"
+        elif key == "waitAfterLastChangeSeconds":
+            suggest = "wait_after_last_change_seconds"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobTriggerModel. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobTriggerModel.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobTriggerModel.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 condition: _builtins.str,
+                 aliases: Optional[Sequence[_builtins.str]] = None,
+                 min_time_between_triggers_seconds: Optional[_builtins.int] = None,
+                 securable_name: Optional[_builtins.str] = None,
+                 wait_after_last_change_seconds: Optional[_builtins.int] = None):
+        """
+        :param _builtins.str condition: The table(s) condition based on which to trigger a job run.  Possible values are `ANY_UPDATED`, `ALL_UPDATED`.
+        """
+        pulumi.set(__self__, "condition", condition)
+        if aliases is not None:
+            pulumi.set(__self__, "aliases", aliases)
+        if min_time_between_triggers_seconds is not None:
+            pulumi.set(__self__, "min_time_between_triggers_seconds", min_time_between_triggers_seconds)
+        if securable_name is not None:
+            pulumi.set(__self__, "securable_name", securable_name)
+        if wait_after_last_change_seconds is not None:
+            pulumi.set(__self__, "wait_after_last_change_seconds", wait_after_last_change_seconds)
+
+    @_builtins.property
+    @pulumi.getter
+    def condition(self) -> _builtins.str:
+        """
+        The table(s) condition based on which to trigger a job run.  Possible values are `ANY_UPDATED`, `ALL_UPDATED`.
+        """
+        return pulumi.get(self, "condition")
+
+    @_builtins.property
+    @pulumi.getter
+    def aliases(self) -> Optional[Sequence[_builtins.str]]:
+        return pulumi.get(self, "aliases")
+
+    @_builtins.property
+    @pulumi.getter(name="minTimeBetweenTriggersSeconds")
+    def min_time_between_triggers_seconds(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "min_time_between_triggers_seconds")
+
+    @_builtins.property
+    @pulumi.getter(name="securableName")
+    def securable_name(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "securable_name")
+
+    @_builtins.property
+    @pulumi.getter(name="waitAfterLastChangeSeconds")
+    def wait_after_last_change_seconds(self) -> Optional[_builtins.int]:
         return pulumi.get(self, "wait_after_last_change_seconds")
 
 
@@ -30076,13 +30594,13 @@ class MwsNetworksGcpNetworkInfo(dict):
 
     @_builtins.property
     @pulumi.getter(name="podIpRangeName")
-    @_utilities.deprecated("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.97.0/docs/guides/gcp-workspace#creating-a-vpc""")
+    @_utilities.deprecated("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.100.0/docs/guides/gcp-workspace#creating-a-vpc""")
     def pod_ip_range_name(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "pod_ip_range_name")
 
     @_builtins.property
     @pulumi.getter(name="serviceIpRangeName")
-    @_utilities.deprecated("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.97.0/docs/guides/gcp-workspace#creating-a-vpc""")
+    @_utilities.deprecated("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.100.0/docs/guides/gcp-workspace#creating-a-vpc""")
     def service_ip_range_name(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "service_ip_range_name")
 
@@ -30354,13 +30872,13 @@ class MwsWorkspacesGcpManagedNetworkConfig(dict):
 
     @_builtins.property
     @pulumi.getter(name="gkeClusterPodIpRange")
-    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.97.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.100.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
     def gke_cluster_pod_ip_range(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "gke_cluster_pod_ip_range")
 
     @_builtins.property
     @pulumi.getter(name="gkeClusterServiceIpRange")
-    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.97.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.100.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
     def gke_cluster_service_ip_range(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "gke_cluster_service_ip_range")
 
@@ -32781,6 +33299,8 @@ class PipelineGatewayDefinition(dict):
             suggest = "gateway_storage_schema"
         elif key == "connectionId":
             suggest = "connection_id"
+        elif key == "connectionParameters":
+            suggest = "connection_parameters"
         elif key == "gatewayStorageName":
             suggest = "gateway_storage_name"
 
@@ -32800,11 +33320,13 @@ class PipelineGatewayDefinition(dict):
                  gateway_storage_catalog: _builtins.str,
                  gateway_storage_schema: _builtins.str,
                  connection_id: Optional[_builtins.str] = None,
+                 connection_parameters: Optional['outputs.PipelineGatewayDefinitionConnectionParameters'] = None,
                  gateway_storage_name: Optional[_builtins.str] = None):
         """
+        :param _builtins.str connection_name: Immutable. The Unity Catalog connection that this gateway pipeline uses to communicate with the source.
         :param _builtins.str gateway_storage_catalog: Required, Immutable. The name of the catalog for the gateway pipeline's storage location.
         :param _builtins.str gateway_storage_schema: Required, Immutable. The name of the schema for the gateway pipelines's storage location.
-        :param _builtins.str connection_id: Immutable. The Unity Catalog connection this gateway pipeline uses to communicate with the source.
+        :param _builtins.str connection_id: Deprecated, Immutable. The Unity Catalog connection this gateway pipeline uses to communicate with the source. *Use `connection_name` instead!*
         :param _builtins.str gateway_storage_name: Required. The Unity Catalog-compatible naming for the gateway storage location. This is the destination to use for the data that is extracted by the gateway. Lakeflow Declarative Pipelines system will automatically create the storage location under the catalog and schema.
         """
         pulumi.set(__self__, "connection_name", connection_name)
@@ -32812,12 +33334,17 @@ class PipelineGatewayDefinition(dict):
         pulumi.set(__self__, "gateway_storage_schema", gateway_storage_schema)
         if connection_id is not None:
             pulumi.set(__self__, "connection_id", connection_id)
+        if connection_parameters is not None:
+            pulumi.set(__self__, "connection_parameters", connection_parameters)
         if gateway_storage_name is not None:
             pulumi.set(__self__, "gateway_storage_name", gateway_storage_name)
 
     @_builtins.property
     @pulumi.getter(name="connectionName")
     def connection_name(self) -> _builtins.str:
+        """
+        Immutable. The Unity Catalog connection that this gateway pipeline uses to communicate with the source.
+        """
         return pulumi.get(self, "connection_name")
 
     @_builtins.property
@@ -32840,9 +33367,14 @@ class PipelineGatewayDefinition(dict):
     @pulumi.getter(name="connectionId")
     def connection_id(self) -> Optional[_builtins.str]:
         """
-        Immutable. The Unity Catalog connection this gateway pipeline uses to communicate with the source.
+        Deprecated, Immutable. The Unity Catalog connection this gateway pipeline uses to communicate with the source. *Use `connection_name` instead!*
         """
         return pulumi.get(self, "connection_id")
+
+    @_builtins.property
+    @pulumi.getter(name="connectionParameters")
+    def connection_parameters(self) -> Optional['outputs.PipelineGatewayDefinitionConnectionParameters']:
+        return pulumi.get(self, "connection_parameters")
 
     @_builtins.property
     @pulumi.getter(name="gatewayStorageName")
@@ -32854,12 +33386,44 @@ class PipelineGatewayDefinition(dict):
 
 
 @pulumi.output_type
+class PipelineGatewayDefinitionConnectionParameters(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sourceCatalog":
+            suggest = "source_catalog"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PipelineGatewayDefinitionConnectionParameters. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PipelineGatewayDefinitionConnectionParameters.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PipelineGatewayDefinitionConnectionParameters.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 source_catalog: Optional[_builtins.str] = None):
+        if source_catalog is not None:
+            pulumi.set(__self__, "source_catalog", source_catalog)
+
+    @_builtins.property
+    @pulumi.getter(name="sourceCatalog")
+    def source_catalog(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "source_catalog")
+
+
+@pulumi.output_type
 class PipelineIngestionDefinition(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
         if key == "connectionName":
             suggest = "connection_name"
+        elif key == "ingestFromUcForeignCatalog":
+            suggest = "ingest_from_uc_foreign_catalog"
         elif key == "ingestionGatewayId":
             suggest = "ingestion_gateway_id"
         elif key == "netsuiteJarPath":
@@ -32884,6 +33448,7 @@ class PipelineIngestionDefinition(dict):
 
     def __init__(__self__, *,
                  connection_name: Optional[_builtins.str] = None,
+                 ingest_from_uc_foreign_catalog: Optional[_builtins.bool] = None,
                  ingestion_gateway_id: Optional[_builtins.str] = None,
                  netsuite_jar_path: Optional[_builtins.str] = None,
                  objects: Optional[Sequence['outputs.PipelineIngestionDefinitionObject']] = None,
@@ -32892,6 +33457,8 @@ class PipelineIngestionDefinition(dict):
                  table_configuration: Optional['outputs.PipelineIngestionDefinitionTableConfiguration'] = None):
         if connection_name is not None:
             pulumi.set(__self__, "connection_name", connection_name)
+        if ingest_from_uc_foreign_catalog is not None:
+            pulumi.set(__self__, "ingest_from_uc_foreign_catalog", ingest_from_uc_foreign_catalog)
         if ingestion_gateway_id is not None:
             pulumi.set(__self__, "ingestion_gateway_id", ingestion_gateway_id)
         if netsuite_jar_path is not None:
@@ -32909,6 +33476,11 @@ class PipelineIngestionDefinition(dict):
     @pulumi.getter(name="connectionName")
     def connection_name(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "connection_name")
+
+    @_builtins.property
+    @pulumi.getter(name="ingestFromUcForeignCatalog")
+    def ingest_from_uc_foreign_catalog(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "ingest_from_uc_foreign_catalog")
 
     @_builtins.property
     @pulumi.getter(name="ingestionGatewayId")
@@ -33853,7 +34425,7 @@ class PipelineIngestionDefinitionSourceConfiguration(dict):
     def __init__(__self__, *,
                  catalog: Optional['outputs.PipelineIngestionDefinitionSourceConfigurationCatalog'] = None):
         """
-        :param 'PipelineIngestionDefinitionSourceConfigurationCatalogArgs' catalog: The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
+        :param 'PipelineIngestionDefinitionSourceConfigurationCatalogArgs' catalog: The name of default catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline if you switch from `storage` to `catalog` or vice versa.  If pipeline was already created with `catalog` set, the value could be changed.* (Conflicts with `storage`).
         """
         if catalog is not None:
             pulumi.set(__self__, "catalog", catalog)
@@ -33862,7 +34434,7 @@ class PipelineIngestionDefinitionSourceConfiguration(dict):
     @pulumi.getter
     def catalog(self) -> Optional['outputs.PipelineIngestionDefinitionSourceConfigurationCatalog']:
         """
-        The name of catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `storage`).
+        The name of default catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline if you switch from `storage` to `catalog` or vice versa.  If pipeline was already created with `catalog` set, the value could be changed.* (Conflicts with `storage`).
         """
         return pulumi.get(self, "catalog")
 
@@ -36500,13 +37072,15 @@ class ShareObject(dict):
                  status: Optional[_builtins.str] = None,
                  string_shared_as: Optional[_builtins.str] = None):
         """
-        :param _builtins.str data_object_type: Type of the data object, currently `TABLE`, `VIEW`, `SCHEMA`, `VOLUME`, and `MODEL` are supported.
+        :param _builtins.str data_object_type: Type of the data object. Supported types: `TABLE`, `FOREIGN_TABLE`, `SCHEMA`, `VIEW`, `MATERIALIZED_VIEW`, `STREAMING_TABLE`, `MODEL`, `NOTEBOOK_FILE`, `FUNCTION`, `FEATURE_SPEC`, and `VOLUME`.
         :param _builtins.str name: Full name of the object, e.g. `catalog.schema.name` for a tables, views, volumes and models, or `catalog.schema` for schemas.
         :param _builtins.bool cdf_enabled: Whether to enable Change Data Feed (cdf) on the shared object. When this field is set, field `history_data_sharing_status` can not be set.
         :param _builtins.str comment: Description about the object.
+        :param _builtins.str content: The content of the notebook file when the data object type is NOTEBOOK_FILE. This should be base64 encoded. Required for adding a NOTEBOOK_FILE, optional for updating, ignored for other types.
         :param _builtins.str history_data_sharing_status: Whether to enable history sharing, one of: `ENABLED`, `DISABLED`. When a table has history sharing enabled, recipients can query table data by version, starting from the current table version. If not specified, clients can only query starting from the version of the object at the time it was added to the share. *NOTE*: The start_version should be less than or equal the current version of the object. When this field is set, field `cdf_enabled` can not be set.
                
                To share only part of a table when you add the table to a share, you can provide partition specifications. This is specified by a number of `partition` blocks. Each entry in `partition` block takes a list of `value` blocks. The field is documented below.
+        :param Sequence['ShareObjectPartitionArgs'] partitions: Array of partitions for the shared data.
         :param _builtins.str shared_as: A user-provided new name for the data object within the share. If this new name is not provided, the object's original name will be used as the `shared_as` name. The `shared_as` name must be unique within a Share. Change forces creation of a new resource.
         :param _builtins.int start_version: The start version associated with the object for cdf. This allows data providers to control the lowest object version that is accessible by clients.
         :param _builtins.str status: Status of the object, one of: `ACTIVE`, `PERMISSION_DENIED`.
@@ -36550,7 +37124,7 @@ class ShareObject(dict):
     @pulumi.getter(name="dataObjectType")
     def data_object_type(self) -> _builtins.str:
         """
-        Type of the data object, currently `TABLE`, `VIEW`, `SCHEMA`, `VOLUME`, and `MODEL` are supported.
+        Type of the data object. Supported types: `TABLE`, `FOREIGN_TABLE`, `SCHEMA`, `VIEW`, `MATERIALIZED_VIEW`, `STREAMING_TABLE`, `MODEL`, `NOTEBOOK_FILE`, `FUNCTION`, `FEATURE_SPEC`, and `VOLUME`.
         """
         return pulumi.get(self, "data_object_type")
 
@@ -36591,6 +37165,9 @@ class ShareObject(dict):
     @_builtins.property
     @pulumi.getter
     def content(self) -> Optional[_builtins.str]:
+        """
+        The content of the notebook file when the data object type is NOTEBOOK_FILE. This should be base64 encoded. Required for adding a NOTEBOOK_FILE, optional for updating, ignored for other types.
+        """
         return pulumi.get(self, "content")
 
     @_builtins.property
@@ -36631,6 +37208,9 @@ class ShareObject(dict):
     @_builtins.property
     @pulumi.getter
     def partitions(self) -> Optional[Sequence['outputs.ShareObjectPartition']]:
+        """
+        Array of partitions for the shared data.
+        """
         return pulumi.get(self, "partitions")
 
     @_builtins.property
@@ -41439,7 +42019,9 @@ class GetAlertV2EvaluationNotificationResult(dict):
                  subscriptions: Optional[Sequence['outputs.GetAlertV2EvaluationNotificationSubscriptionResult']] = None):
         """
         :param _builtins.bool notify_on_ok: (boolean) - Whether to notify alert subscribers when alert returns back to normal
-        :param _builtins.int retrigger_seconds: (integer) - Number of seconds an alert must wait after being triggered to rearm itself. After rearming, it can be triggered again. If 0 or not specified, the alert will not be triggered again
+        :param _builtins.int retrigger_seconds: (integer) - Number of seconds an alert waits after being triggered before it is allowed to send another notification.
+               If set to 0 or omitted, the alert will not send any further notifications after the first trigger
+               Setting this value to 1 allows the alert to send a notification on every evaluation where the condition is met, effectively making it always retrigger for notification purposes
         :param Sequence['GetAlertV2EvaluationNotificationSubscriptionArgs'] subscriptions: (list of AlertV2Subscription)
         """
         pulumi.set(__self__, "effective_notify_on_ok", effective_notify_on_ok)
@@ -41473,7 +42055,9 @@ class GetAlertV2EvaluationNotificationResult(dict):
     @pulumi.getter(name="retriggerSeconds")
     def retrigger_seconds(self) -> Optional[_builtins.int]:
         """
-        (integer) - Number of seconds an alert must wait after being triggered to rearm itself. After rearming, it can be triggered again. If 0 or not specified, the alert will not be triggered again
+        (integer) - Number of seconds an alert waits after being triggered before it is allowed to send another notification.
+        If set to 0 or omitted, the alert will not send any further notifications after the first trigger
+        Setting this value to 1 allows the alert to send a notification on every evaluation where the condition is met, effectively making it always retrigger for notification purposes
         """
         return pulumi.get(self, "retrigger_seconds")
 
@@ -41525,7 +42109,7 @@ class GetAlertV2EvaluationSourceResult(dict):
                  display: Optional[_builtins.str] = None):
         """
         :param _builtins.str name: (string)
-        :param _builtins.str aggregation: (string) - Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
+        :param _builtins.str aggregation: (string) - If not set, the behavior is equivalent to using `First row` in the UI. Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
         :param _builtins.str display: (string)
         """
         pulumi.set(__self__, "name", name)
@@ -41546,7 +42130,7 @@ class GetAlertV2EvaluationSourceResult(dict):
     @pulumi.getter
     def aggregation(self) -> Optional[_builtins.str]:
         """
-        (string) - Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
+        (string) - If not set, the behavior is equivalent to using `First row` in the UI. Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
         """
         return pulumi.get(self, "aggregation")
 
@@ -41598,7 +42182,7 @@ class GetAlertV2EvaluationThresholdColumnResult(dict):
                  display: Optional[_builtins.str] = None):
         """
         :param _builtins.str name: (string)
-        :param _builtins.str aggregation: (string) - Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
+        :param _builtins.str aggregation: (string) - If not set, the behavior is equivalent to using `First row` in the UI. Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
         :param _builtins.str display: (string)
         """
         pulumi.set(__self__, "name", name)
@@ -41619,7 +42203,7 @@ class GetAlertV2EvaluationThresholdColumnResult(dict):
     @pulumi.getter
     def aggregation(self) -> Optional[_builtins.str]:
         """
-        (string) - Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
+        (string) - If not set, the behavior is equivalent to using `First row` in the UI. Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
         """
         return pulumi.get(self, "aggregation")
 
@@ -42080,7 +42664,9 @@ class GetAlertsV2AlertEvaluationNotificationResult(dict):
                  subscriptions: Optional[Sequence['outputs.GetAlertsV2AlertEvaluationNotificationSubscriptionResult']] = None):
         """
         :param _builtins.bool notify_on_ok: (boolean) - Whether to notify alert subscribers when alert returns back to normal
-        :param _builtins.int retrigger_seconds: (integer) - Number of seconds an alert must wait after being triggered to rearm itself. After rearming, it can be triggered again. If 0 or not specified, the alert will not be triggered again
+        :param _builtins.int retrigger_seconds: (integer) - Number of seconds an alert waits after being triggered before it is allowed to send another notification.
+               If set to 0 or omitted, the alert will not send any further notifications after the first trigger
+               Setting this value to 1 allows the alert to send a notification on every evaluation where the condition is met, effectively making it always retrigger for notification purposes
         :param Sequence['GetAlertsV2AlertEvaluationNotificationSubscriptionArgs'] subscriptions: (list of AlertV2Subscription)
         """
         pulumi.set(__self__, "effective_notify_on_ok", effective_notify_on_ok)
@@ -42114,7 +42700,9 @@ class GetAlertsV2AlertEvaluationNotificationResult(dict):
     @pulumi.getter(name="retriggerSeconds")
     def retrigger_seconds(self) -> Optional[_builtins.int]:
         """
-        (integer) - Number of seconds an alert must wait after being triggered to rearm itself. After rearming, it can be triggered again. If 0 or not specified, the alert will not be triggered again
+        (integer) - Number of seconds an alert waits after being triggered before it is allowed to send another notification.
+        If set to 0 or omitted, the alert will not send any further notifications after the first trigger
+        Setting this value to 1 allows the alert to send a notification on every evaluation where the condition is met, effectively making it always retrigger for notification purposes
         """
         return pulumi.get(self, "retrigger_seconds")
 
@@ -42166,7 +42754,7 @@ class GetAlertsV2AlertEvaluationSourceResult(dict):
                  display: Optional[_builtins.str] = None):
         """
         :param _builtins.str name: (string)
-        :param _builtins.str aggregation: (string) - Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
+        :param _builtins.str aggregation: (string) - If not set, the behavior is equivalent to using `First row` in the UI. Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
         :param _builtins.str display: (string)
         """
         pulumi.set(__self__, "name", name)
@@ -42187,7 +42775,7 @@ class GetAlertsV2AlertEvaluationSourceResult(dict):
     @pulumi.getter
     def aggregation(self) -> Optional[_builtins.str]:
         """
-        (string) - Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
+        (string) - If not set, the behavior is equivalent to using `First row` in the UI. Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
         """
         return pulumi.get(self, "aggregation")
 
@@ -42239,7 +42827,7 @@ class GetAlertsV2AlertEvaluationThresholdColumnResult(dict):
                  display: Optional[_builtins.str] = None):
         """
         :param _builtins.str name: (string)
-        :param _builtins.str aggregation: (string) - Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
+        :param _builtins.str aggregation: (string) - If not set, the behavior is equivalent to using `First row` in the UI. Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
         :param _builtins.str display: (string)
         """
         pulumi.set(__self__, "name", name)
@@ -42260,7 +42848,7 @@ class GetAlertsV2AlertEvaluationThresholdColumnResult(dict):
     @pulumi.getter
     def aggregation(self) -> Optional[_builtins.str]:
         """
-        (string) - Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
+        (string) - If not set, the behavior is equivalent to using `First row` in the UI. Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
         """
         return pulumi.get(self, "aggregation")
 
@@ -51000,16 +51588,28 @@ class GetDatabaseSyncedDatabaseTableSpecResult(dict):
 @pulumi.output_type
 class GetDatabaseSyncedDatabaseTableSpecNewPipelineSpecResult(dict):
     def __init__(__self__, *,
+                 budget_policy_id: Optional[_builtins.str] = None,
                  storage_catalog: Optional[_builtins.str] = None,
                  storage_schema: Optional[_builtins.str] = None):
         """
+        :param _builtins.str budget_policy_id: (string) - Budget policy to set on the newly created pipeline
         :param _builtins.str storage_catalog: (string) - This field needs to be specified if the destination catalog is a managed postgres catalog.
         :param _builtins.str storage_schema: (string) - This field needs to be specified if the destination catalog is a managed postgres catalog.
         """
+        if budget_policy_id is not None:
+            pulumi.set(__self__, "budget_policy_id", budget_policy_id)
         if storage_catalog is not None:
             pulumi.set(__self__, "storage_catalog", storage_catalog)
         if storage_schema is not None:
             pulumi.set(__self__, "storage_schema", storage_schema)
+
+    @_builtins.property
+    @pulumi.getter(name="budgetPolicyId")
+    def budget_policy_id(self) -> Optional[_builtins.str]:
+        """
+        (string) - Budget policy to set on the newly created pipeline
+        """
+        return pulumi.get(self, "budget_policy_id")
 
     @_builtins.property
     @pulumi.getter(name="storageCatalog")
@@ -51770,16 +52370,28 @@ class GetDatabaseSyncedDatabaseTablesSyncedTableSpecResult(dict):
 @pulumi.output_type
 class GetDatabaseSyncedDatabaseTablesSyncedTableSpecNewPipelineSpecResult(dict):
     def __init__(__self__, *,
+                 budget_policy_id: Optional[_builtins.str] = None,
                  storage_catalog: Optional[_builtins.str] = None,
                  storage_schema: Optional[_builtins.str] = None):
         """
+        :param _builtins.str budget_policy_id: (string) - Budget policy to set on the newly created pipeline
         :param _builtins.str storage_catalog: (string) - This field needs to be specified if the destination catalog is a managed postgres catalog.
         :param _builtins.str storage_schema: (string) - This field needs to be specified if the destination catalog is a managed postgres catalog.
         """
+        if budget_policy_id is not None:
+            pulumi.set(__self__, "budget_policy_id", budget_policy_id)
         if storage_catalog is not None:
             pulumi.set(__self__, "storage_catalog", storage_catalog)
         if storage_schema is not None:
             pulumi.set(__self__, "storage_schema", storage_schema)
+
+    @_builtins.property
+    @pulumi.getter(name="budgetPolicyId")
+    def budget_policy_id(self) -> Optional[_builtins.str]:
+        """
+        (string) - Budget policy to set on the newly created pipeline
+        """
+        return pulumi.get(self, "budget_policy_id")
 
     @_builtins.property
     @pulumi.getter(name="storageCatalog")
@@ -52615,14 +53227,80 @@ class GetFeatureEngineeringFeatureFunctionExtraParameterResult(dict):
 
 
 @pulumi.output_type
+class GetFeatureEngineeringFeatureLineageContextResult(dict):
+    def __init__(__self__, *,
+                 job_context: Optional['outputs.GetFeatureEngineeringFeatureLineageContextJobContextResult'] = None,
+                 notebook_id: Optional[_builtins.int] = None):
+        """
+        :param 'GetFeatureEngineeringFeatureLineageContextJobContextArgs' job_context: (JobContext) - Job context information including job ID and run ID
+        :param _builtins.int notebook_id: (integer) - The notebook ID where this API was invoked
+        """
+        if job_context is not None:
+            pulumi.set(__self__, "job_context", job_context)
+        if notebook_id is not None:
+            pulumi.set(__self__, "notebook_id", notebook_id)
+
+    @_builtins.property
+    @pulumi.getter(name="jobContext")
+    def job_context(self) -> Optional['outputs.GetFeatureEngineeringFeatureLineageContextJobContextResult']:
+        """
+        (JobContext) - Job context information including job ID and run ID
+        """
+        return pulumi.get(self, "job_context")
+
+    @_builtins.property
+    @pulumi.getter(name="notebookId")
+    def notebook_id(self) -> Optional[_builtins.int]:
+        """
+        (integer) - The notebook ID where this API was invoked
+        """
+        return pulumi.get(self, "notebook_id")
+
+
+@pulumi.output_type
+class GetFeatureEngineeringFeatureLineageContextJobContextResult(dict):
+    def __init__(__self__, *,
+                 job_id: Optional[_builtins.int] = None,
+                 job_run_id: Optional[_builtins.int] = None):
+        """
+        :param _builtins.int job_id: (integer) - The job ID where this API invoked
+        :param _builtins.int job_run_id: (integer) - The job run ID where this API was invoked
+        """
+        if job_id is not None:
+            pulumi.set(__self__, "job_id", job_id)
+        if job_run_id is not None:
+            pulumi.set(__self__, "job_run_id", job_run_id)
+
+    @_builtins.property
+    @pulumi.getter(name="jobId")
+    def job_id(self) -> Optional[_builtins.int]:
+        """
+        (integer) - The job ID where this API invoked
+        """
+        return pulumi.get(self, "job_id")
+
+    @_builtins.property
+    @pulumi.getter(name="jobRunId")
+    def job_run_id(self) -> Optional[_builtins.int]:
+        """
+        (integer) - The job run ID where this API was invoked
+        """
+        return pulumi.get(self, "job_run_id")
+
+
+@pulumi.output_type
 class GetFeatureEngineeringFeatureSourceResult(dict):
     def __init__(__self__, *,
-                 delta_table_source: Optional['outputs.GetFeatureEngineeringFeatureSourceDeltaTableSourceResult'] = None):
+                 delta_table_source: Optional['outputs.GetFeatureEngineeringFeatureSourceDeltaTableSourceResult'] = None,
+                 kafka_source: Optional['outputs.GetFeatureEngineeringFeatureSourceKafkaSourceResult'] = None):
         """
         :param 'GetFeatureEngineeringFeatureSourceDeltaTableSourceArgs' delta_table_source: (DeltaTableSource)
+        :param 'GetFeatureEngineeringFeatureSourceKafkaSourceArgs' kafka_source: (KafkaSource)
         """
         if delta_table_source is not None:
             pulumi.set(__self__, "delta_table_source", delta_table_source)
+        if kafka_source is not None:
+            pulumi.set(__self__, "kafka_source", kafka_source)
 
     @_builtins.property
     @pulumi.getter(name="deltaTableSource")
@@ -52631,6 +53309,14 @@ class GetFeatureEngineeringFeatureSourceResult(dict):
         (DeltaTableSource)
         """
         return pulumi.get(self, "delta_table_source")
+
+    @_builtins.property
+    @pulumi.getter(name="kafkaSource")
+    def kafka_source(self) -> Optional['outputs.GetFeatureEngineeringFeatureSourceKafkaSourceResult']:
+        """
+        (KafkaSource)
+        """
+        return pulumi.get(self, "kafka_source")
 
 
 @pulumi.output_type
@@ -52671,6 +53357,86 @@ class GetFeatureEngineeringFeatureSourceDeltaTableSourceResult(dict):
         (string) - The timeseries column of the Delta table
         """
         return pulumi.get(self, "timeseries_column")
+
+
+@pulumi.output_type
+class GetFeatureEngineeringFeatureSourceKafkaSourceResult(dict):
+    def __init__(__self__, *,
+                 entity_column_identifiers: Sequence['outputs.GetFeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierResult'],
+                 name: _builtins.str,
+                 timeseries_column_identifier: 'outputs.GetFeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierResult'):
+        """
+        :param Sequence['GetFeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierArgs'] entity_column_identifiers: (list of ColumnIdentifier) - The entity column identifiers of the Kafka source
+        :param _builtins.str name: (string) - Name of the Kafka source, used to identify it. This is used to look up the corresponding KafkaConfig object. Can be distinct from topic name
+        :param 'GetFeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierArgs' timeseries_column_identifier: (ColumnIdentifier) - The timeseries column identifier of the Kafka source
+        """
+        pulumi.set(__self__, "entity_column_identifiers", entity_column_identifiers)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "timeseries_column_identifier", timeseries_column_identifier)
+
+    @_builtins.property
+    @pulumi.getter(name="entityColumnIdentifiers")
+    def entity_column_identifiers(self) -> Sequence['outputs.GetFeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierResult']:
+        """
+        (list of ColumnIdentifier) - The entity column identifiers of the Kafka source
+        """
+        return pulumi.get(self, "entity_column_identifiers")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        (string) - Name of the Kafka source, used to identify it. This is used to look up the corresponding KafkaConfig object. Can be distinct from topic name
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="timeseriesColumnIdentifier")
+    def timeseries_column_identifier(self) -> 'outputs.GetFeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierResult':
+        """
+        (ColumnIdentifier) - The timeseries column identifier of the Kafka source
+        """
+        return pulumi.get(self, "timeseries_column_identifier")
+
+
+@pulumi.output_type
+class GetFeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifierResult(dict):
+    def __init__(__self__, *,
+                 variant_expr_path: _builtins.str):
+        """
+        :param _builtins.str variant_expr_path: (string) - String representation of the column name or variant expression path. For nested fields, the leaf value is what will be present in materialized tables
+               and expected to match at query time. For example, the leaf node of value:trip_details.location_details.pickup_zip is pickup_zip
+        """
+        pulumi.set(__self__, "variant_expr_path", variant_expr_path)
+
+    @_builtins.property
+    @pulumi.getter(name="variantExprPath")
+    def variant_expr_path(self) -> _builtins.str:
+        """
+        (string) - String representation of the column name or variant expression path. For nested fields, the leaf value is what will be present in materialized tables
+        and expected to match at query time. For example, the leaf node of value:trip_details.location_details.pickup_zip is pickup_zip
+        """
+        return pulumi.get(self, "variant_expr_path")
+
+
+@pulumi.output_type
+class GetFeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifierResult(dict):
+    def __init__(__self__, *,
+                 variant_expr_path: _builtins.str):
+        """
+        :param _builtins.str variant_expr_path: (string) - String representation of the column name or variant expression path. For nested fields, the leaf value is what will be present in materialized tables
+               and expected to match at query time. For example, the leaf node of value:trip_details.location_details.pickup_zip is pickup_zip
+        """
+        pulumi.set(__self__, "variant_expr_path", variant_expr_path)
+
+    @_builtins.property
+    @pulumi.getter(name="variantExprPath")
+    def variant_expr_path(self) -> _builtins.str:
+        """
+        (string) - String representation of the column name or variant expression path. For nested fields, the leaf value is what will be present in materialized tables
+        and expected to match at query time. For example, the leaf node of value:trip_details.location_details.pickup_zip is pickup_zip
+        """
+        return pulumi.get(self, "variant_expr_path")
 
 
 @pulumi.output_type
@@ -52801,6 +53567,7 @@ class GetFeatureEngineeringFeaturesFeatureResult(dict):
                  full_name: _builtins.str,
                  function: 'outputs.GetFeatureEngineeringFeaturesFeatureFunctionResult',
                  inputs: Sequence[_builtins.str],
+                 lineage_context: 'outputs.GetFeatureEngineeringFeaturesFeatureLineageContextResult',
                  source: 'outputs.GetFeatureEngineeringFeaturesFeatureSourceResult',
                  time_window: 'outputs.GetFeatureEngineeringFeaturesFeatureTimeWindowResult'):
         """
@@ -52817,6 +53584,7 @@ class GetFeatureEngineeringFeaturesFeatureResult(dict):
         pulumi.set(__self__, "full_name", full_name)
         pulumi.set(__self__, "function", function)
         pulumi.set(__self__, "inputs", inputs)
+        pulumi.set(__self__, "lineage_context", lineage_context)
         pulumi.set(__self__, "source", source)
         pulumi.set(__self__, "time_window", time_window)
 
@@ -52859,6 +53627,11 @@ class GetFeatureEngineeringFeaturesFeatureResult(dict):
         (list of string) - The input columns from which the feature is computed
         """
         return pulumi.get(self, "inputs")
+
+    @_builtins.property
+    @pulumi.getter(name="lineageContext")
+    def lineage_context(self) -> 'outputs.GetFeatureEngineeringFeaturesFeatureLineageContextResult':
+        return pulumi.get(self, "lineage_context")
 
     @_builtins.property
     @pulumi.getter
@@ -52937,14 +53710,80 @@ class GetFeatureEngineeringFeaturesFeatureFunctionExtraParameterResult(dict):
 
 
 @pulumi.output_type
+class GetFeatureEngineeringFeaturesFeatureLineageContextResult(dict):
+    def __init__(__self__, *,
+                 job_context: Optional['outputs.GetFeatureEngineeringFeaturesFeatureLineageContextJobContextResult'] = None,
+                 notebook_id: Optional[_builtins.int] = None):
+        """
+        :param 'GetFeatureEngineeringFeaturesFeatureLineageContextJobContextArgs' job_context: (JobContext) - Job context information including job ID and run ID
+        :param _builtins.int notebook_id: (integer) - The notebook ID where this API was invoked
+        """
+        if job_context is not None:
+            pulumi.set(__self__, "job_context", job_context)
+        if notebook_id is not None:
+            pulumi.set(__self__, "notebook_id", notebook_id)
+
+    @_builtins.property
+    @pulumi.getter(name="jobContext")
+    def job_context(self) -> Optional['outputs.GetFeatureEngineeringFeaturesFeatureLineageContextJobContextResult']:
+        """
+        (JobContext) - Job context information including job ID and run ID
+        """
+        return pulumi.get(self, "job_context")
+
+    @_builtins.property
+    @pulumi.getter(name="notebookId")
+    def notebook_id(self) -> Optional[_builtins.int]:
+        """
+        (integer) - The notebook ID where this API was invoked
+        """
+        return pulumi.get(self, "notebook_id")
+
+
+@pulumi.output_type
+class GetFeatureEngineeringFeaturesFeatureLineageContextJobContextResult(dict):
+    def __init__(__self__, *,
+                 job_id: Optional[_builtins.int] = None,
+                 job_run_id: Optional[_builtins.int] = None):
+        """
+        :param _builtins.int job_id: (integer) - The job ID where this API invoked
+        :param _builtins.int job_run_id: (integer) - The job run ID where this API was invoked
+        """
+        if job_id is not None:
+            pulumi.set(__self__, "job_id", job_id)
+        if job_run_id is not None:
+            pulumi.set(__self__, "job_run_id", job_run_id)
+
+    @_builtins.property
+    @pulumi.getter(name="jobId")
+    def job_id(self) -> Optional[_builtins.int]:
+        """
+        (integer) - The job ID where this API invoked
+        """
+        return pulumi.get(self, "job_id")
+
+    @_builtins.property
+    @pulumi.getter(name="jobRunId")
+    def job_run_id(self) -> Optional[_builtins.int]:
+        """
+        (integer) - The job run ID where this API was invoked
+        """
+        return pulumi.get(self, "job_run_id")
+
+
+@pulumi.output_type
 class GetFeatureEngineeringFeaturesFeatureSourceResult(dict):
     def __init__(__self__, *,
-                 delta_table_source: Optional['outputs.GetFeatureEngineeringFeaturesFeatureSourceDeltaTableSourceResult'] = None):
+                 delta_table_source: Optional['outputs.GetFeatureEngineeringFeaturesFeatureSourceDeltaTableSourceResult'] = None,
+                 kafka_source: Optional['outputs.GetFeatureEngineeringFeaturesFeatureSourceKafkaSourceResult'] = None):
         """
         :param 'GetFeatureEngineeringFeaturesFeatureSourceDeltaTableSourceArgs' delta_table_source: (DeltaTableSource)
+        :param 'GetFeatureEngineeringFeaturesFeatureSourceKafkaSourceArgs' kafka_source: (KafkaSource)
         """
         if delta_table_source is not None:
             pulumi.set(__self__, "delta_table_source", delta_table_source)
+        if kafka_source is not None:
+            pulumi.set(__self__, "kafka_source", kafka_source)
 
     @_builtins.property
     @pulumi.getter(name="deltaTableSource")
@@ -52953,6 +53792,14 @@ class GetFeatureEngineeringFeaturesFeatureSourceResult(dict):
         (DeltaTableSource)
         """
         return pulumi.get(self, "delta_table_source")
+
+    @_builtins.property
+    @pulumi.getter(name="kafkaSource")
+    def kafka_source(self) -> Optional['outputs.GetFeatureEngineeringFeaturesFeatureSourceKafkaSourceResult']:
+        """
+        (KafkaSource)
+        """
+        return pulumi.get(self, "kafka_source")
 
 
 @pulumi.output_type
@@ -52993,6 +53840,86 @@ class GetFeatureEngineeringFeaturesFeatureSourceDeltaTableSourceResult(dict):
         (string) - The timeseries column of the Delta table
         """
         return pulumi.get(self, "timeseries_column")
+
+
+@pulumi.output_type
+class GetFeatureEngineeringFeaturesFeatureSourceKafkaSourceResult(dict):
+    def __init__(__self__, *,
+                 entity_column_identifiers: Sequence['outputs.GetFeatureEngineeringFeaturesFeatureSourceKafkaSourceEntityColumnIdentifierResult'],
+                 name: _builtins.str,
+                 timeseries_column_identifier: 'outputs.GetFeatureEngineeringFeaturesFeatureSourceKafkaSourceTimeseriesColumnIdentifierResult'):
+        """
+        :param Sequence['GetFeatureEngineeringFeaturesFeatureSourceKafkaSourceEntityColumnIdentifierArgs'] entity_column_identifiers: (list of ColumnIdentifier) - The entity column identifiers of the Kafka source
+        :param _builtins.str name: (string) - Name of the Kafka source, used to identify it. This is used to look up the corresponding KafkaConfig object. Can be distinct from topic name
+        :param 'GetFeatureEngineeringFeaturesFeatureSourceKafkaSourceTimeseriesColumnIdentifierArgs' timeseries_column_identifier: (ColumnIdentifier) - The timeseries column identifier of the Kafka source
+        """
+        pulumi.set(__self__, "entity_column_identifiers", entity_column_identifiers)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "timeseries_column_identifier", timeseries_column_identifier)
+
+    @_builtins.property
+    @pulumi.getter(name="entityColumnIdentifiers")
+    def entity_column_identifiers(self) -> Sequence['outputs.GetFeatureEngineeringFeaturesFeatureSourceKafkaSourceEntityColumnIdentifierResult']:
+        """
+        (list of ColumnIdentifier) - The entity column identifiers of the Kafka source
+        """
+        return pulumi.get(self, "entity_column_identifiers")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        (string) - Name of the Kafka source, used to identify it. This is used to look up the corresponding KafkaConfig object. Can be distinct from topic name
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="timeseriesColumnIdentifier")
+    def timeseries_column_identifier(self) -> 'outputs.GetFeatureEngineeringFeaturesFeatureSourceKafkaSourceTimeseriesColumnIdentifierResult':
+        """
+        (ColumnIdentifier) - The timeseries column identifier of the Kafka source
+        """
+        return pulumi.get(self, "timeseries_column_identifier")
+
+
+@pulumi.output_type
+class GetFeatureEngineeringFeaturesFeatureSourceKafkaSourceEntityColumnIdentifierResult(dict):
+    def __init__(__self__, *,
+                 variant_expr_path: _builtins.str):
+        """
+        :param _builtins.str variant_expr_path: (string) - String representation of the column name or variant expression path. For nested fields, the leaf value is what will be present in materialized tables
+               and expected to match at query time. For example, the leaf node of value:trip_details.location_details.pickup_zip is pickup_zip
+        """
+        pulumi.set(__self__, "variant_expr_path", variant_expr_path)
+
+    @_builtins.property
+    @pulumi.getter(name="variantExprPath")
+    def variant_expr_path(self) -> _builtins.str:
+        """
+        (string) - String representation of the column name or variant expression path. For nested fields, the leaf value is what will be present in materialized tables
+        and expected to match at query time. For example, the leaf node of value:trip_details.location_details.pickup_zip is pickup_zip
+        """
+        return pulumi.get(self, "variant_expr_path")
+
+
+@pulumi.output_type
+class GetFeatureEngineeringFeaturesFeatureSourceKafkaSourceTimeseriesColumnIdentifierResult(dict):
+    def __init__(__self__, *,
+                 variant_expr_path: _builtins.str):
+        """
+        :param _builtins.str variant_expr_path: (string) - String representation of the column name or variant expression path. For nested fields, the leaf value is what will be present in materialized tables
+               and expected to match at query time. For example, the leaf node of value:trip_details.location_details.pickup_zip is pickup_zip
+        """
+        pulumi.set(__self__, "variant_expr_path", variant_expr_path)
+
+    @_builtins.property
+    @pulumi.getter(name="variantExprPath")
+    def variant_expr_path(self) -> _builtins.str:
+        """
+        (string) - String representation of the column name or variant expression path. For nested fields, the leaf value is what will be present in materialized tables
+        and expected to match at query time. For example, the leaf node of value:trip_details.location_details.pickup_zip is pickup_zip
+        """
+        return pulumi.get(self, "variant_expr_path")
 
 
 @pulumi.output_type
@@ -53116,16 +54043,306 @@ class GetFeatureEngineeringFeaturesFeatureTimeWindowTumblingResult(dict):
 
 
 @pulumi.output_type
+class GetFeatureEngineeringKafkaConfigAuthConfigResult(dict):
+    def __init__(__self__, *,
+                 uc_service_credential_name: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str uc_service_credential_name: (string) - Name of the Unity Catalog service credential. This value will be set under the option databricks.serviceCredential
+        """
+        if uc_service_credential_name is not None:
+            pulumi.set(__self__, "uc_service_credential_name", uc_service_credential_name)
+
+    @_builtins.property
+    @pulumi.getter(name="ucServiceCredentialName")
+    def uc_service_credential_name(self) -> Optional[_builtins.str]:
+        """
+        (string) - Name of the Unity Catalog service credential. This value will be set under the option databricks.serviceCredential
+        """
+        return pulumi.get(self, "uc_service_credential_name")
+
+
+@pulumi.output_type
+class GetFeatureEngineeringKafkaConfigKeySchemaResult(dict):
+    def __init__(__self__, *,
+                 json_schema: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str json_schema: (string) - Schema of the JSON object in standard IETF JSON schema format (https://json-schema.org/)
+        """
+        if json_schema is not None:
+            pulumi.set(__self__, "json_schema", json_schema)
+
+    @_builtins.property
+    @pulumi.getter(name="jsonSchema")
+    def json_schema(self) -> Optional[_builtins.str]:
+        """
+        (string) - Schema of the JSON object in standard IETF JSON schema format (https://json-schema.org/)
+        """
+        return pulumi.get(self, "json_schema")
+
+
+@pulumi.output_type
+class GetFeatureEngineeringKafkaConfigSubscriptionModeResult(dict):
+    def __init__(__self__, *,
+                 assign: Optional[_builtins.str] = None,
+                 subscribe: Optional[_builtins.str] = None,
+                 subscribe_pattern: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str assign: (string) - A JSON string that contains the specific topic-partitions to consume from.
+               For example, for '{"topicA":[0,1],"topicB":[2,4]}', topicA's 0'th and 1st partitions will be consumed from
+        :param _builtins.str subscribe: (string) - A comma-separated list of Kafka topics to read from. For example, 'topicA,topicB,topicC'
+        :param _builtins.str subscribe_pattern: (string) - A regular expression matching topics to subscribe to. For example, 'topic.*' will subscribe to all topics starting with 'topic'
+        """
+        if assign is not None:
+            pulumi.set(__self__, "assign", assign)
+        if subscribe is not None:
+            pulumi.set(__self__, "subscribe", subscribe)
+        if subscribe_pattern is not None:
+            pulumi.set(__self__, "subscribe_pattern", subscribe_pattern)
+
+    @_builtins.property
+    @pulumi.getter
+    def assign(self) -> Optional[_builtins.str]:
+        """
+        (string) - A JSON string that contains the specific topic-partitions to consume from.
+        For example, for '{"topicA":[0,1],"topicB":[2,4]}', topicA's 0'th and 1st partitions will be consumed from
+        """
+        return pulumi.get(self, "assign")
+
+    @_builtins.property
+    @pulumi.getter
+    def subscribe(self) -> Optional[_builtins.str]:
+        """
+        (string) - A comma-separated list of Kafka topics to read from. For example, 'topicA,topicB,topicC'
+        """
+        return pulumi.get(self, "subscribe")
+
+    @_builtins.property
+    @pulumi.getter(name="subscribePattern")
+    def subscribe_pattern(self) -> Optional[_builtins.str]:
+        """
+        (string) - A regular expression matching topics to subscribe to. For example, 'topic.*' will subscribe to all topics starting with 'topic'
+        """
+        return pulumi.get(self, "subscribe_pattern")
+
+
+@pulumi.output_type
+class GetFeatureEngineeringKafkaConfigValueSchemaResult(dict):
+    def __init__(__self__, *,
+                 json_schema: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str json_schema: (string) - Schema of the JSON object in standard IETF JSON schema format (https://json-schema.org/)
+        """
+        if json_schema is not None:
+            pulumi.set(__self__, "json_schema", json_schema)
+
+    @_builtins.property
+    @pulumi.getter(name="jsonSchema")
+    def json_schema(self) -> Optional[_builtins.str]:
+        """
+        (string) - Schema of the JSON object in standard IETF JSON schema format (https://json-schema.org/)
+        """
+        return pulumi.get(self, "json_schema")
+
+
+@pulumi.output_type
+class GetFeatureEngineeringKafkaConfigsKafkaConfigResult(dict):
+    def __init__(__self__, *,
+                 auth_config: 'outputs.GetFeatureEngineeringKafkaConfigsKafkaConfigAuthConfigResult',
+                 bootstrap_servers: _builtins.str,
+                 extra_options: Mapping[str, _builtins.str],
+                 key_schema: 'outputs.GetFeatureEngineeringKafkaConfigsKafkaConfigKeySchemaResult',
+                 name: _builtins.str,
+                 subscription_mode: 'outputs.GetFeatureEngineeringKafkaConfigsKafkaConfigSubscriptionModeResult',
+                 value_schema: 'outputs.GetFeatureEngineeringKafkaConfigsKafkaConfigValueSchemaResult'):
+        """
+        :param 'GetFeatureEngineeringKafkaConfigsKafkaConfigAuthConfigArgs' auth_config: (AuthConfig) - Authentication configuration for connection to topics
+        :param _builtins.str bootstrap_servers: (string) - A comma-separated list of host/port pairs pointing to Kafka cluster
+        :param Mapping[str, _builtins.str] extra_options: (object) - Catch-all for miscellaneous options. Keys should be source options or Kafka consumer options (kafka.*)
+        :param 'GetFeatureEngineeringKafkaConfigsKafkaConfigKeySchemaArgs' key_schema: (SchemaConfig) - Schema configuration for extracting message keys from topics. At least one of key_schema and value_schema must be provided
+        :param _builtins.str name: (string) - Name that uniquely identifies this Kafka config within the metastore. This will be the identifier used from the Feature object to reference these configs for a feature.
+               Can be distinct from topic name
+        :param 'GetFeatureEngineeringKafkaConfigsKafkaConfigSubscriptionModeArgs' subscription_mode: (SubscriptionMode) - Options to configure which Kafka topics to pull data from
+        :param 'GetFeatureEngineeringKafkaConfigsKafkaConfigValueSchemaArgs' value_schema: (SchemaConfig) - Schema configuration for extracting message values from topics. At least one of key_schema and value_schema must be provided
+        """
+        pulumi.set(__self__, "auth_config", auth_config)
+        pulumi.set(__self__, "bootstrap_servers", bootstrap_servers)
+        pulumi.set(__self__, "extra_options", extra_options)
+        pulumi.set(__self__, "key_schema", key_schema)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "subscription_mode", subscription_mode)
+        pulumi.set(__self__, "value_schema", value_schema)
+
+    @_builtins.property
+    @pulumi.getter(name="authConfig")
+    def auth_config(self) -> 'outputs.GetFeatureEngineeringKafkaConfigsKafkaConfigAuthConfigResult':
+        """
+        (AuthConfig) - Authentication configuration for connection to topics
+        """
+        return pulumi.get(self, "auth_config")
+
+    @_builtins.property
+    @pulumi.getter(name="bootstrapServers")
+    def bootstrap_servers(self) -> _builtins.str:
+        """
+        (string) - A comma-separated list of host/port pairs pointing to Kafka cluster
+        """
+        return pulumi.get(self, "bootstrap_servers")
+
+    @_builtins.property
+    @pulumi.getter(name="extraOptions")
+    def extra_options(self) -> Mapping[str, _builtins.str]:
+        """
+        (object) - Catch-all for miscellaneous options. Keys should be source options or Kafka consumer options (kafka.*)
+        """
+        return pulumi.get(self, "extra_options")
+
+    @_builtins.property
+    @pulumi.getter(name="keySchema")
+    def key_schema(self) -> 'outputs.GetFeatureEngineeringKafkaConfigsKafkaConfigKeySchemaResult':
+        """
+        (SchemaConfig) - Schema configuration for extracting message keys from topics. At least one of key_schema and value_schema must be provided
+        """
+        return pulumi.get(self, "key_schema")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        (string) - Name that uniquely identifies this Kafka config within the metastore. This will be the identifier used from the Feature object to reference these configs for a feature.
+        Can be distinct from topic name
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="subscriptionMode")
+    def subscription_mode(self) -> 'outputs.GetFeatureEngineeringKafkaConfigsKafkaConfigSubscriptionModeResult':
+        """
+        (SubscriptionMode) - Options to configure which Kafka topics to pull data from
+        """
+        return pulumi.get(self, "subscription_mode")
+
+    @_builtins.property
+    @pulumi.getter(name="valueSchema")
+    def value_schema(self) -> 'outputs.GetFeatureEngineeringKafkaConfigsKafkaConfigValueSchemaResult':
+        """
+        (SchemaConfig) - Schema configuration for extracting message values from topics. At least one of key_schema and value_schema must be provided
+        """
+        return pulumi.get(self, "value_schema")
+
+
+@pulumi.output_type
+class GetFeatureEngineeringKafkaConfigsKafkaConfigAuthConfigResult(dict):
+    def __init__(__self__, *,
+                 uc_service_credential_name: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str uc_service_credential_name: (string) - Name of the Unity Catalog service credential. This value will be set under the option databricks.serviceCredential
+        """
+        if uc_service_credential_name is not None:
+            pulumi.set(__self__, "uc_service_credential_name", uc_service_credential_name)
+
+    @_builtins.property
+    @pulumi.getter(name="ucServiceCredentialName")
+    def uc_service_credential_name(self) -> Optional[_builtins.str]:
+        """
+        (string) - Name of the Unity Catalog service credential. This value will be set under the option databricks.serviceCredential
+        """
+        return pulumi.get(self, "uc_service_credential_name")
+
+
+@pulumi.output_type
+class GetFeatureEngineeringKafkaConfigsKafkaConfigKeySchemaResult(dict):
+    def __init__(__self__, *,
+                 json_schema: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str json_schema: (string) - Schema of the JSON object in standard IETF JSON schema format (https://json-schema.org/)
+        """
+        if json_schema is not None:
+            pulumi.set(__self__, "json_schema", json_schema)
+
+    @_builtins.property
+    @pulumi.getter(name="jsonSchema")
+    def json_schema(self) -> Optional[_builtins.str]:
+        """
+        (string) - Schema of the JSON object in standard IETF JSON schema format (https://json-schema.org/)
+        """
+        return pulumi.get(self, "json_schema")
+
+
+@pulumi.output_type
+class GetFeatureEngineeringKafkaConfigsKafkaConfigSubscriptionModeResult(dict):
+    def __init__(__self__, *,
+                 assign: Optional[_builtins.str] = None,
+                 subscribe: Optional[_builtins.str] = None,
+                 subscribe_pattern: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str assign: (string) - A JSON string that contains the specific topic-partitions to consume from.
+               For example, for '{"topicA":[0,1],"topicB":[2,4]}', topicA's 0'th and 1st partitions will be consumed from
+        :param _builtins.str subscribe: (string) - A comma-separated list of Kafka topics to read from. For example, 'topicA,topicB,topicC'
+        :param _builtins.str subscribe_pattern: (string) - A regular expression matching topics to subscribe to. For example, 'topic.*' will subscribe to all topics starting with 'topic'
+        """
+        if assign is not None:
+            pulumi.set(__self__, "assign", assign)
+        if subscribe is not None:
+            pulumi.set(__self__, "subscribe", subscribe)
+        if subscribe_pattern is not None:
+            pulumi.set(__self__, "subscribe_pattern", subscribe_pattern)
+
+    @_builtins.property
+    @pulumi.getter
+    def assign(self) -> Optional[_builtins.str]:
+        """
+        (string) - A JSON string that contains the specific topic-partitions to consume from.
+        For example, for '{"topicA":[0,1],"topicB":[2,4]}', topicA's 0'th and 1st partitions will be consumed from
+        """
+        return pulumi.get(self, "assign")
+
+    @_builtins.property
+    @pulumi.getter
+    def subscribe(self) -> Optional[_builtins.str]:
+        """
+        (string) - A comma-separated list of Kafka topics to read from. For example, 'topicA,topicB,topicC'
+        """
+        return pulumi.get(self, "subscribe")
+
+    @_builtins.property
+    @pulumi.getter(name="subscribePattern")
+    def subscribe_pattern(self) -> Optional[_builtins.str]:
+        """
+        (string) - A regular expression matching topics to subscribe to. For example, 'topic.*' will subscribe to all topics starting with 'topic'
+        """
+        return pulumi.get(self, "subscribe_pattern")
+
+
+@pulumi.output_type
+class GetFeatureEngineeringKafkaConfigsKafkaConfigValueSchemaResult(dict):
+    def __init__(__self__, *,
+                 json_schema: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str json_schema: (string) - Schema of the JSON object in standard IETF JSON schema format (https://json-schema.org/)
+        """
+        if json_schema is not None:
+            pulumi.set(__self__, "json_schema", json_schema)
+
+    @_builtins.property
+    @pulumi.getter(name="jsonSchema")
+    def json_schema(self) -> Optional[_builtins.str]:
+        """
+        (string) - Schema of the JSON object in standard IETF JSON schema format (https://json-schema.org/)
+        """
+        return pulumi.get(self, "json_schema")
+
+
+@pulumi.output_type
 class GetFeatureEngineeringMaterializedFeatureOfflineStoreConfigResult(dict):
     def __init__(__self__, *,
                  catalog_name: _builtins.str,
                  schema_name: _builtins.str,
                  table_name_prefix: _builtins.str):
         """
-        :param _builtins.str catalog_name: (string) - The Unity Catalog catalog name
+        :param _builtins.str catalog_name: (string) - The Unity Catalog catalog name. This name is also used as the Lakebase logical database name
         :param _builtins.str schema_name: (string) - The Unity Catalog schema name
         :param _builtins.str table_name_prefix: (string) - Prefix for Unity Catalog table name.
-               The materialized feature will be stored in a table with this prefix and a generated postfix
+               The materialized feature will be stored in a Lakebase table with this prefix and a generated postfix
         """
         pulumi.set(__self__, "catalog_name", catalog_name)
         pulumi.set(__self__, "schema_name", schema_name)
@@ -53135,7 +54352,7 @@ class GetFeatureEngineeringMaterializedFeatureOfflineStoreConfigResult(dict):
     @pulumi.getter(name="catalogName")
     def catalog_name(self) -> _builtins.str:
         """
-        (string) - The Unity Catalog catalog name
+        (string) - The Unity Catalog catalog name. This name is also used as the Lakebase logical database name
         """
         return pulumi.get(self, "catalog_name")
 
@@ -53152,7 +54369,7 @@ class GetFeatureEngineeringMaterializedFeatureOfflineStoreConfigResult(dict):
     def table_name_prefix(self) -> _builtins.str:
         """
         (string) - Prefix for Unity Catalog table name.
-        The materialized feature will be stored in a table with this prefix and a generated postfix
+        The materialized feature will be stored in a Lakebase table with this prefix and a generated postfix
         """
         return pulumi.get(self, "table_name_prefix")
 
@@ -53160,80 +54377,60 @@ class GetFeatureEngineeringMaterializedFeatureOfflineStoreConfigResult(dict):
 @pulumi.output_type
 class GetFeatureEngineeringMaterializedFeatureOnlineStoreConfigResult(dict):
     def __init__(__self__, *,
-                 capacity: _builtins.str,
-                 creation_time: _builtins.str,
-                 creator: _builtins.str,
-                 name: _builtins.str,
-                 state: _builtins.str,
-                 read_replica_count: Optional[_builtins.int] = None):
+                 catalog_name: _builtins.str,
+                 online_store_name: _builtins.str,
+                 schema_name: _builtins.str,
+                 table_name_prefix: _builtins.str):
         """
-        :param _builtins.str capacity: (string) - The capacity of the online store. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
-        :param _builtins.str creation_time: (string) - The timestamp when the online store was created
-        :param _builtins.str creator: (string) - The email of the creator of the online store
-        :param _builtins.str name: (string) - The name of the online store. This is the unique identifier for the online store
-        :param _builtins.str state: (string) - The current state of the online store. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
-        :param _builtins.int read_replica_count: (integer) - The number of read replicas for the online store. Defaults to 0
+        :param _builtins.str catalog_name: (string) - The Unity Catalog catalog name. This name is also used as the Lakebase logical database name
+        :param _builtins.str online_store_name: (string) - The name of the target online store
+        :param _builtins.str schema_name: (string) - The Unity Catalog schema name
+        :param _builtins.str table_name_prefix: (string) - Prefix for Unity Catalog table name.
+               The materialized feature will be stored in a Lakebase table with this prefix and a generated postfix
         """
-        pulumi.set(__self__, "capacity", capacity)
-        pulumi.set(__self__, "creation_time", creation_time)
-        pulumi.set(__self__, "creator", creator)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "state", state)
-        if read_replica_count is not None:
-            pulumi.set(__self__, "read_replica_count", read_replica_count)
+        pulumi.set(__self__, "catalog_name", catalog_name)
+        pulumi.set(__self__, "online_store_name", online_store_name)
+        pulumi.set(__self__, "schema_name", schema_name)
+        pulumi.set(__self__, "table_name_prefix", table_name_prefix)
 
     @_builtins.property
-    @pulumi.getter
-    def capacity(self) -> _builtins.str:
+    @pulumi.getter(name="catalogName")
+    def catalog_name(self) -> _builtins.str:
         """
-        (string) - The capacity of the online store. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
+        (string) - The Unity Catalog catalog name. This name is also used as the Lakebase logical database name
         """
-        return pulumi.get(self, "capacity")
+        return pulumi.get(self, "catalog_name")
 
     @_builtins.property
-    @pulumi.getter(name="creationTime")
-    def creation_time(self) -> _builtins.str:
+    @pulumi.getter(name="onlineStoreName")
+    def online_store_name(self) -> _builtins.str:
         """
-        (string) - The timestamp when the online store was created
+        (string) - The name of the target online store
         """
-        return pulumi.get(self, "creation_time")
+        return pulumi.get(self, "online_store_name")
 
     @_builtins.property
-    @pulumi.getter
-    def creator(self) -> _builtins.str:
+    @pulumi.getter(name="schemaName")
+    def schema_name(self) -> _builtins.str:
         """
-        (string) - The email of the creator of the online store
+        (string) - The Unity Catalog schema name
         """
-        return pulumi.get(self, "creator")
+        return pulumi.get(self, "schema_name")
 
     @_builtins.property
-    @pulumi.getter
-    def name(self) -> _builtins.str:
+    @pulumi.getter(name="tableNamePrefix")
+    def table_name_prefix(self) -> _builtins.str:
         """
-        (string) - The name of the online store. This is the unique identifier for the online store
+        (string) - Prefix for Unity Catalog table name.
+        The materialized feature will be stored in a Lakebase table with this prefix and a generated postfix
         """
-        return pulumi.get(self, "name")
-
-    @_builtins.property
-    @pulumi.getter
-    def state(self) -> _builtins.str:
-        """
-        (string) - The current state of the online store. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
-        """
-        return pulumi.get(self, "state")
-
-    @_builtins.property
-    @pulumi.getter(name="readReplicaCount")
-    def read_replica_count(self) -> Optional[_builtins.int]:
-        """
-        (integer) - The number of read replicas for the online store. Defaults to 0
-        """
-        return pulumi.get(self, "read_replica_count")
+        return pulumi.get(self, "table_name_prefix")
 
 
 @pulumi.output_type
 class GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureResult(dict):
     def __init__(__self__, *,
+                 cron_schedule: _builtins.str,
                  feature_name: _builtins.str,
                  last_materialization_time: _builtins.str,
                  materialized_feature_id: _builtins.str,
@@ -53242,15 +54439,17 @@ class GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureResult(dict):
                  pipeline_schedule_state: _builtins.str,
                  table_name: _builtins.str):
         """
+        :param _builtins.str cron_schedule: (string) - The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone
         :param _builtins.str feature_name: Filter by feature name. If specified, only materialized features materialized from this feature will be returned
         :param _builtins.str last_materialization_time: (string) - The timestamp when the pipeline last ran and updated the materialized feature values.
                If the pipeline has not run yet, this field will be null
         :param _builtins.str materialized_feature_id: (string) - Unique identifier for the materialized feature
         :param 'GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOfflineStoreConfigArgs' offline_store_config: (OfflineStoreConfig)
-        :param 'GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOnlineStoreConfigArgs' online_store_config: (OnlineStore)
+        :param 'GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOnlineStoreConfigArgs' online_store_config: (OnlineStoreConfig)
         :param _builtins.str pipeline_schedule_state: (string) - The schedule state of the materialization pipeline. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
         :param _builtins.str table_name: (string) - The fully qualified Unity Catalog path to the table containing the materialized feature (Delta table or Lakebase table). Output only
         """
+        pulumi.set(__self__, "cron_schedule", cron_schedule)
         pulumi.set(__self__, "feature_name", feature_name)
         pulumi.set(__self__, "last_materialization_time", last_materialization_time)
         pulumi.set(__self__, "materialized_feature_id", materialized_feature_id)
@@ -53258,6 +54457,14 @@ class GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureResult(dict):
         pulumi.set(__self__, "online_store_config", online_store_config)
         pulumi.set(__self__, "pipeline_schedule_state", pipeline_schedule_state)
         pulumi.set(__self__, "table_name", table_name)
+
+    @_builtins.property
+    @pulumi.getter(name="cronSchedule")
+    def cron_schedule(self) -> _builtins.str:
+        """
+        (string) - The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone
+        """
+        return pulumi.get(self, "cron_schedule")
 
     @_builtins.property
     @pulumi.getter(name="featureName")
@@ -53296,7 +54503,7 @@ class GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureResult(dict):
     @pulumi.getter(name="onlineStoreConfig")
     def online_store_config(self) -> 'outputs.GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOnlineStoreConfigResult':
         """
-        (OnlineStore)
+        (OnlineStoreConfig)
         """
         return pulumi.get(self, "online_store_config")
 
@@ -53324,10 +54531,10 @@ class GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOfflineStoreCo
                  schema_name: _builtins.str,
                  table_name_prefix: _builtins.str):
         """
-        :param _builtins.str catalog_name: (string) - The Unity Catalog catalog name
+        :param _builtins.str catalog_name: (string) - The Unity Catalog catalog name. This name is also used as the Lakebase logical database name
         :param _builtins.str schema_name: (string) - The Unity Catalog schema name
         :param _builtins.str table_name_prefix: (string) - Prefix for Unity Catalog table name.
-               The materialized feature will be stored in a table with this prefix and a generated postfix
+               The materialized feature will be stored in a Lakebase table with this prefix and a generated postfix
         """
         pulumi.set(__self__, "catalog_name", catalog_name)
         pulumi.set(__self__, "schema_name", schema_name)
@@ -53337,7 +54544,7 @@ class GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOfflineStoreCo
     @pulumi.getter(name="catalogName")
     def catalog_name(self) -> _builtins.str:
         """
-        (string) - The Unity Catalog catalog name
+        (string) - The Unity Catalog catalog name. This name is also used as the Lakebase logical database name
         """
         return pulumi.get(self, "catalog_name")
 
@@ -53354,7 +54561,7 @@ class GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOfflineStoreCo
     def table_name_prefix(self) -> _builtins.str:
         """
         (string) - Prefix for Unity Catalog table name.
-        The materialized feature will be stored in a table with this prefix and a generated postfix
+        The materialized feature will be stored in a Lakebase table with this prefix and a generated postfix
         """
         return pulumi.get(self, "table_name_prefix")
 
@@ -53362,75 +54569,54 @@ class GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOfflineStoreCo
 @pulumi.output_type
 class GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOnlineStoreConfigResult(dict):
     def __init__(__self__, *,
-                 capacity: _builtins.str,
-                 creation_time: _builtins.str,
-                 creator: _builtins.str,
-                 name: _builtins.str,
-                 state: _builtins.str,
-                 read_replica_count: Optional[_builtins.int] = None):
+                 catalog_name: _builtins.str,
+                 online_store_name: _builtins.str,
+                 schema_name: _builtins.str,
+                 table_name_prefix: _builtins.str):
         """
-        :param _builtins.str capacity: (string) - The capacity of the online store. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
-        :param _builtins.str creation_time: (string) - The timestamp when the online store was created
-        :param _builtins.str creator: (string) - The email of the creator of the online store
-        :param _builtins.str name: (string) - The name of the online store. This is the unique identifier for the online store
-        :param _builtins.str state: (string) - The current state of the online store. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
-        :param _builtins.int read_replica_count: (integer) - The number of read replicas for the online store. Defaults to 0
+        :param _builtins.str catalog_name: (string) - The Unity Catalog catalog name. This name is also used as the Lakebase logical database name
+        :param _builtins.str online_store_name: (string) - The name of the target online store
+        :param _builtins.str schema_name: (string) - The Unity Catalog schema name
+        :param _builtins.str table_name_prefix: (string) - Prefix for Unity Catalog table name.
+               The materialized feature will be stored in a Lakebase table with this prefix and a generated postfix
         """
-        pulumi.set(__self__, "capacity", capacity)
-        pulumi.set(__self__, "creation_time", creation_time)
-        pulumi.set(__self__, "creator", creator)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "state", state)
-        if read_replica_count is not None:
-            pulumi.set(__self__, "read_replica_count", read_replica_count)
+        pulumi.set(__self__, "catalog_name", catalog_name)
+        pulumi.set(__self__, "online_store_name", online_store_name)
+        pulumi.set(__self__, "schema_name", schema_name)
+        pulumi.set(__self__, "table_name_prefix", table_name_prefix)
 
     @_builtins.property
-    @pulumi.getter
-    def capacity(self) -> _builtins.str:
+    @pulumi.getter(name="catalogName")
+    def catalog_name(self) -> _builtins.str:
         """
-        (string) - The capacity of the online store. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
+        (string) - The Unity Catalog catalog name. This name is also used as the Lakebase logical database name
         """
-        return pulumi.get(self, "capacity")
+        return pulumi.get(self, "catalog_name")
 
     @_builtins.property
-    @pulumi.getter(name="creationTime")
-    def creation_time(self) -> _builtins.str:
+    @pulumi.getter(name="onlineStoreName")
+    def online_store_name(self) -> _builtins.str:
         """
-        (string) - The timestamp when the online store was created
+        (string) - The name of the target online store
         """
-        return pulumi.get(self, "creation_time")
+        return pulumi.get(self, "online_store_name")
 
     @_builtins.property
-    @pulumi.getter
-    def creator(self) -> _builtins.str:
+    @pulumi.getter(name="schemaName")
+    def schema_name(self) -> _builtins.str:
         """
-        (string) - The email of the creator of the online store
+        (string) - The Unity Catalog schema name
         """
-        return pulumi.get(self, "creator")
+        return pulumi.get(self, "schema_name")
 
     @_builtins.property
-    @pulumi.getter
-    def name(self) -> _builtins.str:
+    @pulumi.getter(name="tableNamePrefix")
+    def table_name_prefix(self) -> _builtins.str:
         """
-        (string) - The name of the online store. This is the unique identifier for the online store
+        (string) - Prefix for Unity Catalog table name.
+        The materialized feature will be stored in a Lakebase table with this prefix and a generated postfix
         """
-        return pulumi.get(self, "name")
-
-    @_builtins.property
-    @pulumi.getter
-    def state(self) -> _builtins.str:
-        """
-        (string) - The current state of the online store. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
-        """
-        return pulumi.get(self, "state")
-
-    @_builtins.property
-    @pulumi.getter(name="readReplicaCount")
-    def read_replica_count(self) -> Optional[_builtins.int]:
-        """
-        (integer) - The number of read replicas for the online store. Defaults to 0
-        """
-        return pulumi.get(self, "read_replica_count")
+        return pulumi.get(self, "table_name_prefix")
 
 
 @pulumi.output_type
@@ -65293,6 +66479,119 @@ class GetServicePrincipalFederationPolicyOidcPolicyResult(dict):
 
 
 @pulumi.output_type
+class GetServicePrincipalsServicePrincipalResult(dict):
+    def __init__(__self__, *,
+                 acl_principal_id: _builtins.str,
+                 active: _builtins.bool,
+                 application_id: _builtins.str,
+                 display_name: _builtins.str,
+                 external_id: _builtins.str,
+                 home: _builtins.str,
+                 id: _builtins.str,
+                 repos: _builtins.str,
+                 scim_id: _builtins.str,
+                 sp_id: _builtins.str):
+        """
+        :param _builtins.str acl_principal_id: identifier for use in databricks_access_control_rule_set, e.g. `servicePrincipals/00000000-0000-0000-0000-000000000000`.
+        :param _builtins.bool active: Whether service principal is active or not.
+        :param _builtins.str application_id: Application ID of the service principal.
+        :param _builtins.str display_name: Display name of the service principal, e.g. `Foo SPN`.
+        :param _builtins.str external_id: ID of the service principal in an external identity provider.
+        :param _builtins.str home: Home folder of the service principal, e.g. `/Users/11111111-2222-3333-4444-555666777888`.
+        :param _builtins.str id: The id of the service principal (SCIM ID).
+        :param _builtins.str repos: Repos location of the service principal, e.g. `/Repos/11111111-2222-3333-4444-555666777888`.
+        :param _builtins.str scim_id: same as `id`.
+        """
+        pulumi.set(__self__, "acl_principal_id", acl_principal_id)
+        pulumi.set(__self__, "active", active)
+        pulumi.set(__self__, "application_id", application_id)
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "external_id", external_id)
+        pulumi.set(__self__, "home", home)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "repos", repos)
+        pulumi.set(__self__, "scim_id", scim_id)
+        pulumi.set(__self__, "sp_id", sp_id)
+
+    @_builtins.property
+    @pulumi.getter(name="aclPrincipalId")
+    def acl_principal_id(self) -> _builtins.str:
+        """
+        identifier for use in databricks_access_control_rule_set, e.g. `servicePrincipals/00000000-0000-0000-0000-000000000000`.
+        """
+        return pulumi.get(self, "acl_principal_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def active(self) -> _builtins.bool:
+        """
+        Whether service principal is active or not.
+        """
+        return pulumi.get(self, "active")
+
+    @_builtins.property
+    @pulumi.getter(name="applicationId")
+    def application_id(self) -> _builtins.str:
+        """
+        Application ID of the service principal.
+        """
+        return pulumi.get(self, "application_id")
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> _builtins.str:
+        """
+        Display name of the service principal, e.g. `Foo SPN`.
+        """
+        return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter(name="externalId")
+    def external_id(self) -> _builtins.str:
+        """
+        ID of the service principal in an external identity provider.
+        """
+        return pulumi.get(self, "external_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def home(self) -> _builtins.str:
+        """
+        Home folder of the service principal, e.g. `/Users/11111111-2222-3333-4444-555666777888`.
+        """
+        return pulumi.get(self, "home")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The id of the service principal (SCIM ID).
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def repos(self) -> _builtins.str:
+        """
+        Repos location of the service principal, e.g. `/Repos/11111111-2222-3333-4444-555666777888`.
+        """
+        return pulumi.get(self, "repos")
+
+    @_builtins.property
+    @pulumi.getter(name="scimId")
+    def scim_id(self) -> _builtins.str:
+        """
+        same as `id`.
+        """
+        return pulumi.get(self, "scim_id")
+
+    @_builtins.property
+    @pulumi.getter(name="spId")
+    def sp_id(self) -> _builtins.str:
+        return pulumi.get(self, "sp_id")
+
+
+@pulumi.output_type
 class GetServingEndpointsEndpointResult(dict):
     def __init__(__self__, *,
                  ai_gateways: Optional[Sequence['outputs.GetServingEndpointsEndpointAiGatewayResult']] = None,
@@ -68351,6 +69650,342 @@ class GetTagPolicyValueResult(dict):
 
 
 @pulumi.output_type
+class GetUsersUserResult(dict):
+    def __init__(__self__, *,
+                 active: Optional[_builtins.bool] = None,
+                 display_name: Optional[_builtins.str] = None,
+                 emails: Optional[Sequence['outputs.GetUsersUserEmailResult']] = None,
+                 entitlements: Optional[Sequence['outputs.GetUsersUserEntitlementResult']] = None,
+                 external_id: Optional[_builtins.str] = None,
+                 groups: Optional[Sequence['outputs.GetUsersUserGroupResult']] = None,
+                 id: Optional[_builtins.str] = None,
+                 name: Optional['outputs.GetUsersUserNameResult'] = None,
+                 roles: Optional[Sequence['outputs.GetUsersUserRoleResult']] = None,
+                 schemas: Optional[Sequence[_builtins.str]] = None,
+                 user_name: Optional[_builtins.str] = None):
+        """
+        :param _builtins.bool active: Boolean that represents if this user is active.
+        :param Sequence['GetUsersUserEmailArgs'] emails: All the emails associated with the Databricks user.
+        :param Sequence['GetUsersUserEntitlementArgs'] entitlements: Entitlements assigned to the user.
+        :param Sequence['GetUsersUserGroupArgs'] groups: Indicates if the user is part of any groups.
+        :param _builtins.str id: The ID of the user.
+               - `userName` - The username of the user.
+        :param 'GetUsersUserNameArgs' name: - `givenName` - Given name of the Databricks user.
+               - `familyName` - Family name of the Databricks user.
+               - `displayName` - The display name of the user.
+        :param Sequence['GetUsersUserRoleArgs'] roles: Indicates if the user has any associated roles.
+        :param Sequence[_builtins.str] schemas: The schema of the user.
+               - `externalId` - Reserved for future use.
+        """
+        if active is not None:
+            pulumi.set(__self__, "active", active)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if emails is not None:
+            pulumi.set(__self__, "emails", emails)
+        if entitlements is not None:
+            pulumi.set(__self__, "entitlements", entitlements)
+        if external_id is not None:
+            pulumi.set(__self__, "external_id", external_id)
+        if groups is not None:
+            pulumi.set(__self__, "groups", groups)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if roles is not None:
+            pulumi.set(__self__, "roles", roles)
+        if schemas is not None:
+            pulumi.set(__self__, "schemas", schemas)
+        if user_name is not None:
+            pulumi.set(__self__, "user_name", user_name)
+
+    @_builtins.property
+    @pulumi.getter
+    def active(self) -> Optional[_builtins.bool]:
+        """
+        Boolean that represents if this user is active.
+        """
+        return pulumi.get(self, "active")
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def emails(self) -> Optional[Sequence['outputs.GetUsersUserEmailResult']]:
+        """
+        All the emails associated with the Databricks user.
+        """
+        return pulumi.get(self, "emails")
+
+    @_builtins.property
+    @pulumi.getter
+    def entitlements(self) -> Optional[Sequence['outputs.GetUsersUserEntitlementResult']]:
+        """
+        Entitlements assigned to the user.
+        """
+        return pulumi.get(self, "entitlements")
+
+    @_builtins.property
+    @pulumi.getter(name="externalId")
+    def external_id(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "external_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def groups(self) -> Optional[Sequence['outputs.GetUsersUserGroupResult']]:
+        """
+        Indicates if the user is part of any groups.
+        """
+        return pulumi.get(self, "groups")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the user.
+        - `userName` - The username of the user.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional['outputs.GetUsersUserNameResult']:
+        """
+        - `givenName` - Given name of the Databricks user.
+        - `familyName` - Family name of the Databricks user.
+        - `displayName` - The display name of the user.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def roles(self) -> Optional[Sequence['outputs.GetUsersUserRoleResult']]:
+        """
+        Indicates if the user has any associated roles.
+        """
+        return pulumi.get(self, "roles")
+
+    @_builtins.property
+    @pulumi.getter
+    def schemas(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The schema of the user.
+        - `externalId` - Reserved for future use.
+        """
+        return pulumi.get(self, "schemas")
+
+    @_builtins.property
+    @pulumi.getter(name="userName")
+    def user_name(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "user_name")
+
+
+@pulumi.output_type
+class GetUsersUserEmailResult(dict):
+    def __init__(__self__, *,
+                 display: Optional[_builtins.str] = None,
+                 primary: Optional[_builtins.bool] = None,
+                 ref: Optional[_builtins.str] = None,
+                 type: Optional[_builtins.str] = None,
+                 value: Optional[_builtins.str] = None):
+        if display is not None:
+            pulumi.set(__self__, "display", display)
+        if primary is not None:
+            pulumi.set(__self__, "primary", primary)
+        if ref is not None:
+            pulumi.set(__self__, "ref", ref)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def display(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "display")
+
+    @_builtins.property
+    @pulumi.getter
+    def primary(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "primary")
+
+    @_builtins.property
+    @pulumi.getter
+    def ref(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "ref")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetUsersUserEntitlementResult(dict):
+    def __init__(__self__, *,
+                 display: Optional[_builtins.str] = None,
+                 primary: Optional[_builtins.bool] = None,
+                 ref: Optional[_builtins.str] = None,
+                 type: Optional[_builtins.str] = None,
+                 value: Optional[_builtins.str] = None):
+        if display is not None:
+            pulumi.set(__self__, "display", display)
+        if primary is not None:
+            pulumi.set(__self__, "primary", primary)
+        if ref is not None:
+            pulumi.set(__self__, "ref", ref)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def display(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "display")
+
+    @_builtins.property
+    @pulumi.getter
+    def primary(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "primary")
+
+    @_builtins.property
+    @pulumi.getter
+    def ref(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "ref")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetUsersUserGroupResult(dict):
+    def __init__(__self__, *,
+                 display: Optional[_builtins.str] = None,
+                 primary: Optional[_builtins.bool] = None,
+                 ref: Optional[_builtins.str] = None,
+                 type: Optional[_builtins.str] = None,
+                 value: Optional[_builtins.str] = None):
+        if display is not None:
+            pulumi.set(__self__, "display", display)
+        if primary is not None:
+            pulumi.set(__self__, "primary", primary)
+        if ref is not None:
+            pulumi.set(__self__, "ref", ref)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def display(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "display")
+
+    @_builtins.property
+    @pulumi.getter
+    def primary(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "primary")
+
+    @_builtins.property
+    @pulumi.getter
+    def ref(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "ref")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetUsersUserNameResult(dict):
+    def __init__(__self__, *,
+                 family_name: Optional[_builtins.str] = None,
+                 given_name: Optional[_builtins.str] = None):
+        if family_name is not None:
+            pulumi.set(__self__, "family_name", family_name)
+        if given_name is not None:
+            pulumi.set(__self__, "given_name", given_name)
+
+    @_builtins.property
+    @pulumi.getter(name="familyName")
+    def family_name(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "family_name")
+
+    @_builtins.property
+    @pulumi.getter(name="givenName")
+    def given_name(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "given_name")
+
+
+@pulumi.output_type
+class GetUsersUserRoleResult(dict):
+    def __init__(__self__, *,
+                 display: Optional[_builtins.str] = None,
+                 primary: Optional[_builtins.bool] = None,
+                 ref: Optional[_builtins.str] = None,
+                 type: Optional[_builtins.str] = None,
+                 value: Optional[_builtins.str] = None):
+        if display is not None:
+            pulumi.set(__self__, "display", display)
+        if primary is not None:
+            pulumi.set(__self__, "primary", primary)
+        if ref is not None:
+            pulumi.set(__self__, "ref", ref)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def display(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "display")
+
+    @_builtins.property
+    @pulumi.getter
+    def primary(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "primary")
+
+    @_builtins.property
+    @pulumi.getter
+    def ref(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "ref")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
 class GetViewsProviderConfigResult(dict):
     def __init__(__self__, *,
                  workspace_id: _builtins.str):
@@ -68647,6 +70282,57 @@ class GetVolumesProviderConfigResult(dict):
         Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
         """
         return pulumi.get(self, "workspace_id")
+
+
+@pulumi.output_type
+class GetWorkspaceEntityTagAssignmentsTagAssignmentResult(dict):
+    def __init__(__self__, *,
+                 entity_id: _builtins.str,
+                 entity_type: _builtins.str,
+                 tag_key: _builtins.str,
+                 tag_value: _builtins.str):
+        """
+        :param _builtins.str entity_id: The identifier of the entity to which the tag is assigned
+        :param _builtins.str entity_type: The type of entity to which the tag is assigned. Allowed values are dashboards, geniespaces
+        :param _builtins.str tag_key: (string) - The key of the tag. The characters , . : / - = and leading/trailing spaces are not allowed
+        :param _builtins.str tag_value: (string) - The value of the tag
+        """
+        pulumi.set(__self__, "entity_id", entity_id)
+        pulumi.set(__self__, "entity_type", entity_type)
+        pulumi.set(__self__, "tag_key", tag_key)
+        pulumi.set(__self__, "tag_value", tag_value)
+
+    @_builtins.property
+    @pulumi.getter(name="entityId")
+    def entity_id(self) -> _builtins.str:
+        """
+        The identifier of the entity to which the tag is assigned
+        """
+        return pulumi.get(self, "entity_id")
+
+    @_builtins.property
+    @pulumi.getter(name="entityType")
+    def entity_type(self) -> _builtins.str:
+        """
+        The type of entity to which the tag is assigned. Allowed values are dashboards, geniespaces
+        """
+        return pulumi.get(self, "entity_type")
+
+    @_builtins.property
+    @pulumi.getter(name="tagKey")
+    def tag_key(self) -> _builtins.str:
+        """
+        (string) - The key of the tag. The characters , . : / - = and leading/trailing spaces are not allowed
+        """
+        return pulumi.get(self, "tag_key")
+
+    @_builtins.property
+    @pulumi.getter(name="tagValue")
+    def tag_value(self) -> _builtins.str:
+        """
+        (string) - The value of the tag
+        """
+        return pulumi.get(self, "tag_value")
 
 
 @pulumi.output_type

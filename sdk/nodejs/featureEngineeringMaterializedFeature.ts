@@ -58,6 +58,10 @@ export class FeatureEngineeringMaterializedFeature extends pulumi.CustomResource
     }
 
     /**
+     * The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone
+     */
+    declare public readonly cronSchedule: pulumi.Output<string | undefined>;
+    /**
      * The full name of the feature in Unity Catalog
      */
     declare public readonly featureName: pulumi.Output<string>;
@@ -94,6 +98,7 @@ export class FeatureEngineeringMaterializedFeature extends pulumi.CustomResource
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FeatureEngineeringMaterializedFeatureState | undefined;
+            resourceInputs["cronSchedule"] = state?.cronSchedule;
             resourceInputs["featureName"] = state?.featureName;
             resourceInputs["lastMaterializationTime"] = state?.lastMaterializationTime;
             resourceInputs["materializedFeatureId"] = state?.materializedFeatureId;
@@ -106,6 +111,7 @@ export class FeatureEngineeringMaterializedFeature extends pulumi.CustomResource
             if (args?.featureName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'featureName'");
             }
+            resourceInputs["cronSchedule"] = args?.cronSchedule;
             resourceInputs["featureName"] = args?.featureName;
             resourceInputs["offlineStoreConfig"] = args?.offlineStoreConfig;
             resourceInputs["onlineStoreConfig"] = args?.onlineStoreConfig;
@@ -123,6 +129,10 @@ export class FeatureEngineeringMaterializedFeature extends pulumi.CustomResource
  * Input properties used for looking up and filtering FeatureEngineeringMaterializedFeature resources.
  */
 export interface FeatureEngineeringMaterializedFeatureState {
+    /**
+     * The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone
+     */
+    cronSchedule?: pulumi.Input<string>;
     /**
      * The full name of the feature in Unity Catalog
      */
@@ -152,6 +162,10 @@ export interface FeatureEngineeringMaterializedFeatureState {
  * The set of arguments for constructing a FeatureEngineeringMaterializedFeature resource.
  */
 export interface FeatureEngineeringMaterializedFeatureArgs {
+    /**
+     * The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone
+     */
+    cronSchedule?: pulumi.Input<string>;
     /**
      * The full name of the feature in Unity Catalog
      */
