@@ -138,15 +138,27 @@ namespace Pulumi.Databricks
     [DatabricksResourceType("databricks:index/metastore:Metastore")]
     public partial class Metastore : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Cloud vendor of the metastore home shard (e.g., `Aws`, `Azure`, `Gcp`).
+        /// </summary>
         [Output("cloud")]
         public Output<string> Cloud { get; private set; } = null!;
 
+        /// <summary>
+        /// Time at which the metastore was created, in epoch milliseconds.
+        /// </summary>
         [Output("createdAt")]
         public Output<int> CreatedAt { get; private set; } = null!;
 
+        /// <summary>
+        /// Username of metastore creator.
+        /// </summary>
         [Output("createdBy")]
         public Output<string> CreatedBy { get; private set; } = null!;
 
+        /// <summary>
+        /// (Optional) Unique identifier of the metastore's default data access configuration.
+        /// </summary>
         [Output("defaultDataAccessConfigId")]
         public Output<string?> DefaultDataAccessConfigId { get; private set; } = null!;
 
@@ -163,10 +175,16 @@ namespace Pulumi.Databricks
         public Output<int?> DeltaSharingRecipientTokenLifetimeInSeconds { get; private set; } = null!;
 
         /// <summary>
-        /// Required along with `DeltaSharingRecipientTokenLifetimeInSeconds`. Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.  INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
+        /// Required along with `DeltaSharingRecipientTokenLifetimeInSeconds`. Used to enable delta sharing on the metastore. Valid values: `INTERNAL`, `INTERNAL_AND_EXTERNAL`.  `INTERNAL` only allows sharing within the same account, and `INTERNAL_AND_EXTERNAL` allows cross account sharing and token based sharing.
         /// </summary>
         [Output("deltaSharingScope")]
         public Output<string?> DeltaSharingScope { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether to allow non-DBR clients to directly access entities under the metastore.
+        /// </summary>
+        [Output("externalAccessEnabled")]
+        public Output<bool?> ExternalAccessEnabled { get; private set; } = null!;
 
         /// <summary>
         /// Destroy metastore regardless of its contents.
@@ -174,9 +192,15 @@ namespace Pulumi.Databricks
         [Output("forceDestroy")]
         public Output<bool?> ForceDestroy { get; private set; } = null!;
 
+        /// <summary>
+        /// Globally unique metastore ID across clouds and regions, of the form `cloud:region:metastore_id`.
+        /// </summary>
         [Output("globalMetastoreId")]
         public Output<string> GlobalMetastoreId { get; private set; } = null!;
 
+        /// <summary>
+        /// Unique identifier of the metastore.
+        /// </summary>
         [Output("metastoreId")]
         public Output<string> MetastoreId { get; private set; } = null!;
 
@@ -193,23 +217,44 @@ namespace Pulumi.Databricks
         public Output<string> Owner { get; private set; } = null!;
 
         /// <summary>
+        /// Privilege model version of the metastore, of the form `major.minor` (e.g., `1.0`).
+        /// </summary>
+        [Output("privilegeModelVersion")]
+        public Output<string> PrivilegeModelVersion { get; private set; } = null!;
+
+        /// <summary>
         /// The region of the metastore
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
-        /// Path on cloud storage account, where managed `databricks.Table` are stored.  If the URL contains special characters, such as space, `&amp;`, etc., they should be percent-encoded (space &gt; `%20`, etc.). Change forces creation of a new resource. If no `StorageRoot` is defined for the metastore, each catalog must have a `StorageRoot` defined.
+        /// Path on cloud storage account, where managed `databricks.Table` are stored.  If the URL contains special characters, such as space, `&amp;`, etc., they should be percent-encoded (space &gt; `%20`, etc.). Change forces creation of a new resource. If no `StorageRoot` is defined for the metastore, each catalog must have a `StorageRoot` defined.  **It's recommended to define `StorageRoot` on the catalog level.
         /// </summary>
         [Output("storageRoot")]
         public Output<string?> StorageRoot { get; private set; } = null!;
 
+        /// <summary>
+        /// (Optional) UUID of storage credential to access the metastore storage_root.
+        /// </summary>
         [Output("storageRootCredentialId")]
         public Output<string?> StorageRootCredentialId { get; private set; } = null!;
 
+        /// <summary>
+        /// Name of the storage credential to access the metastore storage_root.
+        /// </summary>
+        [Output("storageRootCredentialName")]
+        public Output<string?> StorageRootCredentialName { get; private set; } = null!;
+
+        /// <summary>
+        /// Time at which the metastore was last modified, in epoch milliseconds.
+        /// </summary>
         [Output("updatedAt")]
         public Output<int> UpdatedAt { get; private set; } = null!;
 
+        /// <summary>
+        /// Username of user who last modified the metastore.
+        /// </summary>
         [Output("updatedBy")]
         public Output<string> UpdatedBy { get; private set; } = null!;
 
@@ -259,15 +304,9 @@ namespace Pulumi.Databricks
 
     public sealed class MetastoreArgs : global::Pulumi.ResourceArgs
     {
-        [Input("cloud")]
-        public Input<string>? Cloud { get; set; }
-
-        [Input("createdAt")]
-        public Input<int>? CreatedAt { get; set; }
-
-        [Input("createdBy")]
-        public Input<string>? CreatedBy { get; set; }
-
+        /// <summary>
+        /// (Optional) Unique identifier of the metastore's default data access configuration.
+        /// </summary>
         [Input("defaultDataAccessConfigId")]
         public Input<string>? DefaultDataAccessConfigId { get; set; }
 
@@ -284,22 +323,22 @@ namespace Pulumi.Databricks
         public Input<int>? DeltaSharingRecipientTokenLifetimeInSeconds { get; set; }
 
         /// <summary>
-        /// Required along with `DeltaSharingRecipientTokenLifetimeInSeconds`. Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.  INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
+        /// Required along with `DeltaSharingRecipientTokenLifetimeInSeconds`. Used to enable delta sharing on the metastore. Valid values: `INTERNAL`, `INTERNAL_AND_EXTERNAL`.  `INTERNAL` only allows sharing within the same account, and `INTERNAL_AND_EXTERNAL` allows cross account sharing and token based sharing.
         /// </summary>
         [Input("deltaSharingScope")]
         public Input<string>? DeltaSharingScope { get; set; }
+
+        /// <summary>
+        /// Whether to allow non-DBR clients to directly access entities under the metastore.
+        /// </summary>
+        [Input("externalAccessEnabled")]
+        public Input<bool>? ExternalAccessEnabled { get; set; }
 
         /// <summary>
         /// Destroy metastore regardless of its contents.
         /// </summary>
         [Input("forceDestroy")]
         public Input<bool>? ForceDestroy { get; set; }
-
-        [Input("globalMetastoreId")]
-        public Input<string>? GlobalMetastoreId { get; set; }
-
-        [Input("metastoreId")]
-        public Input<string>? MetastoreId { get; set; }
 
         /// <summary>
         /// Name of metastore.
@@ -314,25 +353,34 @@ namespace Pulumi.Databricks
         public Input<string>? Owner { get; set; }
 
         /// <summary>
+        /// Privilege model version of the metastore, of the form `major.minor` (e.g., `1.0`).
+        /// </summary>
+        [Input("privilegeModelVersion")]
+        public Input<string>? PrivilegeModelVersion { get; set; }
+
+        /// <summary>
         /// The region of the metastore
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// Path on cloud storage account, where managed `databricks.Table` are stored.  If the URL contains special characters, such as space, `&amp;`, etc., they should be percent-encoded (space &gt; `%20`, etc.). Change forces creation of a new resource. If no `StorageRoot` is defined for the metastore, each catalog must have a `StorageRoot` defined.
+        /// Path on cloud storage account, where managed `databricks.Table` are stored.  If the URL contains special characters, such as space, `&amp;`, etc., they should be percent-encoded (space &gt; `%20`, etc.). Change forces creation of a new resource. If no `StorageRoot` is defined for the metastore, each catalog must have a `StorageRoot` defined.  **It's recommended to define `StorageRoot` on the catalog level.
         /// </summary>
         [Input("storageRoot")]
         public Input<string>? StorageRoot { get; set; }
 
+        /// <summary>
+        /// (Optional) UUID of storage credential to access the metastore storage_root.
+        /// </summary>
         [Input("storageRootCredentialId")]
         public Input<string>? StorageRootCredentialId { get; set; }
 
-        [Input("updatedAt")]
-        public Input<int>? UpdatedAt { get; set; }
-
-        [Input("updatedBy")]
-        public Input<string>? UpdatedBy { get; set; }
+        /// <summary>
+        /// Name of the storage credential to access the metastore storage_root.
+        /// </summary>
+        [Input("storageRootCredentialName")]
+        public Input<string>? StorageRootCredentialName { get; set; }
 
         public MetastoreArgs()
         {
@@ -342,15 +390,27 @@ namespace Pulumi.Databricks
 
     public sealed class MetastoreState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Cloud vendor of the metastore home shard (e.g., `Aws`, `Azure`, `Gcp`).
+        /// </summary>
         [Input("cloud")]
         public Input<string>? Cloud { get; set; }
 
+        /// <summary>
+        /// Time at which the metastore was created, in epoch milliseconds.
+        /// </summary>
         [Input("createdAt")]
         public Input<int>? CreatedAt { get; set; }
 
+        /// <summary>
+        /// Username of metastore creator.
+        /// </summary>
         [Input("createdBy")]
         public Input<string>? CreatedBy { get; set; }
 
+        /// <summary>
+        /// (Optional) Unique identifier of the metastore's default data access configuration.
+        /// </summary>
         [Input("defaultDataAccessConfigId")]
         public Input<string>? DefaultDataAccessConfigId { get; set; }
 
@@ -367,10 +427,16 @@ namespace Pulumi.Databricks
         public Input<int>? DeltaSharingRecipientTokenLifetimeInSeconds { get; set; }
 
         /// <summary>
-        /// Required along with `DeltaSharingRecipientTokenLifetimeInSeconds`. Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.  INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
+        /// Required along with `DeltaSharingRecipientTokenLifetimeInSeconds`. Used to enable delta sharing on the metastore. Valid values: `INTERNAL`, `INTERNAL_AND_EXTERNAL`.  `INTERNAL` only allows sharing within the same account, and `INTERNAL_AND_EXTERNAL` allows cross account sharing and token based sharing.
         /// </summary>
         [Input("deltaSharingScope")]
         public Input<string>? DeltaSharingScope { get; set; }
+
+        /// <summary>
+        /// Whether to allow non-DBR clients to directly access entities under the metastore.
+        /// </summary>
+        [Input("externalAccessEnabled")]
+        public Input<bool>? ExternalAccessEnabled { get; set; }
 
         /// <summary>
         /// Destroy metastore regardless of its contents.
@@ -378,9 +444,15 @@ namespace Pulumi.Databricks
         [Input("forceDestroy")]
         public Input<bool>? ForceDestroy { get; set; }
 
+        /// <summary>
+        /// Globally unique metastore ID across clouds and regions, of the form `cloud:region:metastore_id`.
+        /// </summary>
         [Input("globalMetastoreId")]
         public Input<string>? GlobalMetastoreId { get; set; }
 
+        /// <summary>
+        /// Unique identifier of the metastore.
+        /// </summary>
         [Input("metastoreId")]
         public Input<string>? MetastoreId { get; set; }
 
@@ -397,23 +469,44 @@ namespace Pulumi.Databricks
         public Input<string>? Owner { get; set; }
 
         /// <summary>
+        /// Privilege model version of the metastore, of the form `major.minor` (e.g., `1.0`).
+        /// </summary>
+        [Input("privilegeModelVersion")]
+        public Input<string>? PrivilegeModelVersion { get; set; }
+
+        /// <summary>
         /// The region of the metastore
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// Path on cloud storage account, where managed `databricks.Table` are stored.  If the URL contains special characters, such as space, `&amp;`, etc., they should be percent-encoded (space &gt; `%20`, etc.). Change forces creation of a new resource. If no `StorageRoot` is defined for the metastore, each catalog must have a `StorageRoot` defined.
+        /// Path on cloud storage account, where managed `databricks.Table` are stored.  If the URL contains special characters, such as space, `&amp;`, etc., they should be percent-encoded (space &gt; `%20`, etc.). Change forces creation of a new resource. If no `StorageRoot` is defined for the metastore, each catalog must have a `StorageRoot` defined.  **It's recommended to define `StorageRoot` on the catalog level.
         /// </summary>
         [Input("storageRoot")]
         public Input<string>? StorageRoot { get; set; }
 
+        /// <summary>
+        /// (Optional) UUID of storage credential to access the metastore storage_root.
+        /// </summary>
         [Input("storageRootCredentialId")]
         public Input<string>? StorageRootCredentialId { get; set; }
 
+        /// <summary>
+        /// Name of the storage credential to access the metastore storage_root.
+        /// </summary>
+        [Input("storageRootCredentialName")]
+        public Input<string>? StorageRootCredentialName { get; set; }
+
+        /// <summary>
+        /// Time at which the metastore was last modified, in epoch milliseconds.
+        /// </summary>
         [Input("updatedAt")]
         public Input<int>? UpdatedAt { get; set; }
 
+        /// <summary>
+        /// Username of user who last modified the metastore.
+        /// </summary>
         [Input("updatedBy")]
         public Input<string>? UpdatedBy { get; set; }
 

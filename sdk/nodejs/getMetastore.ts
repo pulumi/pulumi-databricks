@@ -90,6 +90,9 @@ export interface GetMetastoreResult {
      * ID of the metastore
      */
     readonly id: string;
+    /**
+     * Unique identifier of the metastore.
+     */
     readonly metastoreId: string;
     /**
      * MetastoreInfo object for a databricks_metastore. This contains the following attributes:
@@ -99,6 +102,9 @@ export interface GetMetastoreResult {
      * Name of metastore.
      */
     readonly name: string;
+    /**
+     * Cloud region which the metastore serves (e.g., `us-west-2`, `westus`).
+     */
     readonly region: string;
 }
 /**

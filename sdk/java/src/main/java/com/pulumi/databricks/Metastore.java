@@ -191,27 +191,59 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="databricks:index/metastore:Metastore")
 public class Metastore extends com.pulumi.resources.CustomResource {
+    /**
+     * Cloud vendor of the metastore home shard (e.g., `aws`, `azure`, `gcp`).
+     * 
+     */
     @Export(name="cloud", refs={String.class}, tree="[0]")
     private Output<String> cloud;
 
+    /**
+     * @return Cloud vendor of the metastore home shard (e.g., `aws`, `azure`, `gcp`).
+     * 
+     */
     public Output<String> cloud() {
         return this.cloud;
     }
+    /**
+     * Time at which the metastore was created, in epoch milliseconds.
+     * 
+     */
     @Export(name="createdAt", refs={Integer.class}, tree="[0]")
     private Output<Integer> createdAt;
 
+    /**
+     * @return Time at which the metastore was created, in epoch milliseconds.
+     * 
+     */
     public Output<Integer> createdAt() {
         return this.createdAt;
     }
+    /**
+     * Username of metastore creator.
+     * 
+     */
     @Export(name="createdBy", refs={String.class}, tree="[0]")
     private Output<String> createdBy;
 
+    /**
+     * @return Username of metastore creator.
+     * 
+     */
     public Output<String> createdBy() {
         return this.createdBy;
     }
+    /**
+     * (Optional) Unique identifier of the metastore&#39;s default data access configuration.
+     * 
+     */
     @Export(name="defaultDataAccessConfigId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> defaultDataAccessConfigId;
 
+    /**
+     * @return (Optional) Unique identifier of the metastore&#39;s default data access configuration.
+     * 
+     */
     public Output<Optional<String>> defaultDataAccessConfigId() {
         return Codegen.optional(this.defaultDataAccessConfigId);
     }
@@ -244,18 +276,32 @@ public class Metastore extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.deltaSharingRecipientTokenLifetimeInSeconds);
     }
     /**
-     * Required along with `deltaSharingRecipientTokenLifetimeInSeconds`. Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.  INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
+     * Required along with `deltaSharingRecipientTokenLifetimeInSeconds`. Used to enable delta sharing on the metastore. Valid values: `INTERNAL`, `INTERNAL_AND_EXTERNAL`.  `INTERNAL` only allows sharing within the same account, and `INTERNAL_AND_EXTERNAL` allows cross account sharing and token based sharing.
      * 
      */
     @Export(name="deltaSharingScope", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> deltaSharingScope;
 
     /**
-     * @return Required along with `deltaSharingRecipientTokenLifetimeInSeconds`. Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.  INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
+     * @return Required along with `deltaSharingRecipientTokenLifetimeInSeconds`. Used to enable delta sharing on the metastore. Valid values: `INTERNAL`, `INTERNAL_AND_EXTERNAL`.  `INTERNAL` only allows sharing within the same account, and `INTERNAL_AND_EXTERNAL` allows cross account sharing and token based sharing.
      * 
      */
     public Output<Optional<String>> deltaSharingScope() {
         return Codegen.optional(this.deltaSharingScope);
+    }
+    /**
+     * Whether to allow non-DBR clients to directly access entities under the metastore.
+     * 
+     */
+    @Export(name="externalAccessEnabled", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> externalAccessEnabled;
+
+    /**
+     * @return Whether to allow non-DBR clients to directly access entities under the metastore.
+     * 
+     */
+    public Output<Optional<Boolean>> externalAccessEnabled() {
+        return Codegen.optional(this.externalAccessEnabled);
     }
     /**
      * Destroy metastore regardless of its contents.
@@ -271,15 +317,31 @@ public class Metastore extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> forceDestroy() {
         return Codegen.optional(this.forceDestroy);
     }
+    /**
+     * Globally unique metastore ID across clouds and regions, of the form `cloud:region:metastore_id`.
+     * 
+     */
     @Export(name="globalMetastoreId", refs={String.class}, tree="[0]")
     private Output<String> globalMetastoreId;
 
+    /**
+     * @return Globally unique metastore ID across clouds and regions, of the form `cloud:region:metastore_id`.
+     * 
+     */
     public Output<String> globalMetastoreId() {
         return this.globalMetastoreId;
     }
+    /**
+     * Unique identifier of the metastore.
+     * 
+     */
     @Export(name="metastoreId", refs={String.class}, tree="[0]")
     private Output<String> metastoreId;
 
+    /**
+     * @return Unique identifier of the metastore.
+     * 
+     */
     public Output<String> metastoreId() {
         return this.metastoreId;
     }
@@ -312,6 +374,20 @@ public class Metastore extends com.pulumi.resources.CustomResource {
         return this.owner;
     }
     /**
+     * Privilege model version of the metastore, of the form `major.minor` (e.g., `1.0`).
+     * 
+     */
+    @Export(name="privilegeModelVersion", refs={String.class}, tree="[0]")
+    private Output<String> privilegeModelVersion;
+
+    /**
+     * @return Privilege model version of the metastore, of the form `major.minor` (e.g., `1.0`).
+     * 
+     */
+    public Output<String> privilegeModelVersion() {
+        return this.privilegeModelVersion;
+    }
+    /**
      * The region of the metastore
      * 
      */
@@ -326,34 +402,72 @@ public class Metastore extends com.pulumi.resources.CustomResource {
         return this.region;
     }
     /**
-     * Path on cloud storage account, where managed `databricks.Table` are stored.  If the URL contains special characters, such as space, `&amp;`, etc., they should be percent-encoded (space &gt; `%20`, etc.). Change forces creation of a new resource. If no `storageRoot` is defined for the metastore, each catalog must have a `storageRoot` defined.
+     * Path on cloud storage account, where managed `databricks.Table` are stored.  If the URL contains special characters, such as space, `&amp;`, etc., they should be percent-encoded (space &gt; `%20`, etc.). Change forces creation of a new resource. If no `storageRoot` is defined for the metastore, each catalog must have a `storageRoot` defined.  **It&#39;s recommended to define `storageRoot` on the catalog level.
      * 
      */
     @Export(name="storageRoot", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> storageRoot;
 
     /**
-     * @return Path on cloud storage account, where managed `databricks.Table` are stored.  If the URL contains special characters, such as space, `&amp;`, etc., they should be percent-encoded (space &gt; `%20`, etc.). Change forces creation of a new resource. If no `storageRoot` is defined for the metastore, each catalog must have a `storageRoot` defined.
+     * @return Path on cloud storage account, where managed `databricks.Table` are stored.  If the URL contains special characters, such as space, `&amp;`, etc., they should be percent-encoded (space &gt; `%20`, etc.). Change forces creation of a new resource. If no `storageRoot` is defined for the metastore, each catalog must have a `storageRoot` defined.  **It&#39;s recommended to define `storageRoot` on the catalog level.
      * 
      */
     public Output<Optional<String>> storageRoot() {
         return Codegen.optional(this.storageRoot);
     }
+    /**
+     * (Optional) UUID of storage credential to access the metastore storage_root.
+     * 
+     */
     @Export(name="storageRootCredentialId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> storageRootCredentialId;
 
+    /**
+     * @return (Optional) UUID of storage credential to access the metastore storage_root.
+     * 
+     */
     public Output<Optional<String>> storageRootCredentialId() {
         return Codegen.optional(this.storageRootCredentialId);
     }
+    /**
+     * Name of the storage credential to access the metastore storage_root.
+     * 
+     */
+    @Export(name="storageRootCredentialName", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> storageRootCredentialName;
+
+    /**
+     * @return Name of the storage credential to access the metastore storage_root.
+     * 
+     */
+    public Output<Optional<String>> storageRootCredentialName() {
+        return Codegen.optional(this.storageRootCredentialName);
+    }
+    /**
+     * Time at which the metastore was last modified, in epoch milliseconds.
+     * 
+     */
     @Export(name="updatedAt", refs={Integer.class}, tree="[0]")
     private Output<Integer> updatedAt;
 
+    /**
+     * @return Time at which the metastore was last modified, in epoch milliseconds.
+     * 
+     */
     public Output<Integer> updatedAt() {
         return this.updatedAt;
     }
+    /**
+     * Username of user who last modified the metastore.
+     * 
+     */
     @Export(name="updatedBy", refs={String.class}, tree="[0]")
     private Output<String> updatedBy;
 
+    /**
+     * @return Username of user who last modified the metastore.
+     * 
+     */
     public Output<String> updatedBy() {
         return this.updatedBy;
     }

@@ -13,9 +13,21 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class GetMetastoreMetastoreInfoResult
     {
+        /// <summary>
+        /// Cloud vendor of the metastore home shard (e.g., `Aws`, `Azure`, `Gcp`).
+        /// </summary>
         public readonly string? Cloud;
+        /// <summary>
+        /// Time at which the metastore was created, in epoch milliseconds.
+        /// </summary>
         public readonly int? CreatedAt;
+        /// <summary>
+        /// Username of metastore creator.
+        /// </summary>
         public readonly string? CreatedBy;
+        /// <summary>
+        /// Unique identifier of the metastore's default data access configuration.
+        /// </summary>
         public readonly string? DefaultDataAccessConfigId;
         /// <summary>
         /// The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing.
@@ -29,7 +41,13 @@ namespace Pulumi.Databricks.Outputs
         /// Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL. INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
         /// </summary>
         public readonly string? DeltaSharingScope;
+        /// <summary>
+        /// Whether to allow non-DBR clients to directly access entities under the metastore.
+        /// </summary>
         public readonly bool? ExternalAccessEnabled;
+        /// <summary>
+        /// Globally unique metastore ID across clouds and regions, of the form `cloud:region:metastore_id`.
+        /// </summary>
         public readonly string? GlobalMetastoreId;
         /// <summary>
         /// ID of the metastore
@@ -43,6 +61,9 @@ namespace Pulumi.Databricks.Outputs
         /// Username/groupname/sp ApplicationId of the metastore owner.
         /// </summary>
         public readonly string? Owner;
+        /// <summary>
+        /// Privilege model version of the metastore, of the form `major.minor` (e.g., `1.0`).
+        /// </summary>
         public readonly string? PrivilegeModelVersion;
         /// <summary>
         /// Region of the metastore
@@ -52,9 +73,21 @@ namespace Pulumi.Databricks.Outputs
         /// Path on cloud storage account, where managed `databricks.Table` are stored.
         /// </summary>
         public readonly string? StorageRoot;
+        /// <summary>
+        /// UUID of storage credential to access the metastore storage_root.
+        /// </summary>
         public readonly string? StorageRootCredentialId;
+        /// <summary>
+        /// Name of the storage credential to access the metastore storage_root.
+        /// </summary>
         public readonly string? StorageRootCredentialName;
+        /// <summary>
+        /// Time at which the metastore was last modified, in epoch milliseconds.
+        /// </summary>
         public readonly int? UpdatedAt;
+        /// <summary>
+        /// Username of user who last modified the metastore.
+        /// </summary>
         public readonly string? UpdatedBy;
 
         [OutputConstructor]

@@ -45,6 +45,45 @@ namespace Pulumi.Databricks
     /// });
     /// ```
     /// 
+    /// Creating a Delta Sharing share with mixed object types (tables and volumes)
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var mixed = new Databricks.Share("mixed", new()
+    ///     {
+    ///         Name = "mixed_share",
+    ///         Objects = new[]
+    ///         {
+    ///             new Databricks.Inputs.ShareObjectArgs
+    ///             {
+    ///                 Name = "my_catalog.my_schema.sales_table",
+    ///                 DataObjectType = "TABLE",
+    ///                 SharedAs = "my_schema.sales_table",
+    ///             },
+    ///             new Databricks.Inputs.ShareObjectArgs
+    ///             {
+    ///                 Name = "my_catalog.my_schema.sales_mv",
+    ///                 DataObjectType = "MATERIALIZED_VIEW",
+    ///                 SharedAs = "my_schema.sales_mv",
+    ///             },
+    ///             new Databricks.Inputs.ShareObjectArgs
+    ///             {
+    ///                 Name = "my_catalog.my_schema.training_data",
+    ///                 DataObjectType = "VOLUME",
+    ///                 StringSharedAs = "my_schema.training_data",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// Creating a Delta Sharing share and add a schema to it(including all current and future tables).
     /// 
     /// ```csharp

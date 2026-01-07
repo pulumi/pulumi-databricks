@@ -38965,13 +38965,13 @@ class MwsNetworksGcpNetworkInfoArgs:
         pulumi.set(__self__, "subnet_region", subnet_region)
         pulumi.set(__self__, "vpc_id", vpc_id)
         if pod_ip_range_name is not None:
-            warnings.warn("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.100.0/docs/guides/gcp-workspace#creating-a-vpc""", DeprecationWarning)
-            pulumi.log.warn("""pod_ip_range_name is deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.100.0/docs/guides/gcp-workspace#creating-a-vpc""")
+            warnings.warn("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.101.0/docs/guides/gcp-workspace#creating-a-vpc""", DeprecationWarning)
+            pulumi.log.warn("""pod_ip_range_name is deprecated: gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.101.0/docs/guides/gcp-workspace#creating-a-vpc""")
         if pod_ip_range_name is not None:
             pulumi.set(__self__, "pod_ip_range_name", pod_ip_range_name)
         if service_ip_range_name is not None:
-            warnings.warn("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.100.0/docs/guides/gcp-workspace#creating-a-vpc""", DeprecationWarning)
-            pulumi.log.warn("""service_ip_range_name is deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.100.0/docs/guides/gcp-workspace#creating-a-vpc""")
+            warnings.warn("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.101.0/docs/guides/gcp-workspace#creating-a-vpc""", DeprecationWarning)
+            pulumi.log.warn("""service_ip_range_name is deprecated: gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.101.0/docs/guides/gcp-workspace#creating-a-vpc""")
         if service_ip_range_name is not None:
             pulumi.set(__self__, "service_ip_range_name", service_ip_range_name)
 
@@ -39025,7 +39025,7 @@ class MwsNetworksGcpNetworkInfoArgs:
 
     @_builtins.property
     @pulumi.getter(name="podIpRangeName")
-    @_utilities.deprecated("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.100.0/docs/guides/gcp-workspace#creating-a-vpc""")
+    @_utilities.deprecated("""gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.101.0/docs/guides/gcp-workspace#creating-a-vpc""")
     def pod_ip_range_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "pod_ip_range_name")
 
@@ -39035,7 +39035,7 @@ class MwsNetworksGcpNetworkInfoArgs:
 
     @_builtins.property
     @pulumi.getter(name="serviceIpRangeName")
-    @_utilities.deprecated("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.100.0/docs/guides/gcp-workspace#creating-a-vpc""")
+    @_utilities.deprecated("""gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.101.0/docs/guides/gcp-workspace#creating-a-vpc""")
     def service_ip_range_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "service_ip_range_name")
 
@@ -39311,13 +39311,13 @@ class MwsWorkspacesGcpManagedNetworkConfigArgs:
                  gke_cluster_service_ip_range: Optional[pulumi.Input[_builtins.str]] = None):
         pulumi.set(__self__, "subnet_cidr", subnet_cidr)
         if gke_cluster_pod_ip_range is not None:
-            warnings.warn("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.100.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""", DeprecationWarning)
-            pulumi.log.warn("""gke_cluster_pod_ip_range is deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.100.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+            warnings.warn("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.101.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""", DeprecationWarning)
+            pulumi.log.warn("""gke_cluster_pod_ip_range is deprecated: gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.101.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
         if gke_cluster_pod_ip_range is not None:
             pulumi.set(__self__, "gke_cluster_pod_ip_range", gke_cluster_pod_ip_range)
         if gke_cluster_service_ip_range is not None:
-            warnings.warn("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.100.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""", DeprecationWarning)
-            pulumi.log.warn("""gke_cluster_service_ip_range is deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.100.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+            warnings.warn("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.101.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""", DeprecationWarning)
+            pulumi.log.warn("""gke_cluster_service_ip_range is deprecated: gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.101.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
         if gke_cluster_service_ip_range is not None:
             pulumi.set(__self__, "gke_cluster_service_ip_range", gke_cluster_service_ip_range)
 
@@ -39332,7 +39332,7 @@ class MwsWorkspacesGcpManagedNetworkConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="gkeClusterPodIpRange")
-    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.100.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.101.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
     def gke_cluster_pod_ip_range(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "gke_cluster_pod_ip_range")
 
@@ -39342,7 +39342,7 @@ class MwsWorkspacesGcpManagedNetworkConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="gkeClusterServiceIpRange")
-    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.100.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+    @_utilities.deprecated("""gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.101.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
     def gke_cluster_service_ip_range(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "gke_cluster_service_ip_range")
 
@@ -46872,7 +46872,7 @@ if not MYPY:
         """
         shared_as: NotRequired[pulumi.Input[_builtins.str]]
         """
-        A user-provided new name for the data object within the share. If this new name is not provided, the object's original name will be used as the `shared_as` name. The `shared_as` name must be unique within a Share. Change forces creation of a new resource.
+        A user-provided alias name for **table-like data objects** within the share. Use this field for: `TABLE`, `VIEW`, `MATERIALIZED_VIEW`, `STREAMING_TABLE`, `FOREIGN_TABLE`. **Do not use this field for volumes, models, notebooks, or functions** (use `string_shared_as` instead). If not provided, the object's original name will be used. Must be a 2-part name `<schema>.<table>` containing only alphanumeric characters and underscores. The `shared_as` name must be unique within a share. Change forces creation of a new resource.
         """
         start_version: NotRequired[pulumi.Input[_builtins.int]]
         """
@@ -46883,6 +46883,9 @@ if not MYPY:
         Status of the object, one of: `ACTIVE`, `PERMISSION_DENIED`.
         """
         string_shared_as: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        A user-provided alias name for **non-table data objects** within the share. Use this field for: `VOLUME`, `MODEL`, `NOTEBOOK_FILE`, `FUNCTION`. **Do not use this field for tables, views, or streaming tables** (use `shared_as` instead). Format varies by type: For volumes, models, and functions use `<schema>.<name>` (2-part name); for notebooks use the file name. Names must contain only alphanumeric characters and underscores. The `string_shared_as` name must be unique for objects of the same type within a share. Change forces creation of a new resource.
+        """
 elif False:
     ShareObjectArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -46917,9 +46920,10 @@ class ShareObjectArgs:
                
                To share only part of a table when you add the table to a share, you can provide partition specifications. This is specified by a number of `partition` blocks. Each entry in `partition` block takes a list of `value` blocks. The field is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['ShareObjectPartitionArgs']]] partitions: Array of partitions for the shared data.
-        :param pulumi.Input[_builtins.str] shared_as: A user-provided new name for the data object within the share. If this new name is not provided, the object's original name will be used as the `shared_as` name. The `shared_as` name must be unique within a Share. Change forces creation of a new resource.
+        :param pulumi.Input[_builtins.str] shared_as: A user-provided alias name for **table-like data objects** within the share. Use this field for: `TABLE`, `VIEW`, `MATERIALIZED_VIEW`, `STREAMING_TABLE`, `FOREIGN_TABLE`. **Do not use this field for volumes, models, notebooks, or functions** (use `string_shared_as` instead). If not provided, the object's original name will be used. Must be a 2-part name `<schema>.<table>` containing only alphanumeric characters and underscores. The `shared_as` name must be unique within a share. Change forces creation of a new resource.
         :param pulumi.Input[_builtins.int] start_version: The start version associated with the object for cdf. This allows data providers to control the lowest object version that is accessible by clients.
         :param pulumi.Input[_builtins.str] status: Status of the object, one of: `ACTIVE`, `PERMISSION_DENIED`.
+        :param pulumi.Input[_builtins.str] string_shared_as: A user-provided alias name for **non-table data objects** within the share. Use this field for: `VOLUME`, `MODEL`, `NOTEBOOK_FILE`, `FUNCTION`. **Do not use this field for tables, views, or streaming tables** (use `shared_as` instead). Format varies by type: For volumes, models, and functions use `<schema>.<name>` (2-part name); for notebooks use the file name. Names must contain only alphanumeric characters and underscores. The `string_shared_as` name must be unique for objects of the same type within a share. Change forces creation of a new resource.
         """
         pulumi.set(__self__, "data_object_type", data_object_type)
         pulumi.set(__self__, "name", name)
@@ -47109,7 +47113,7 @@ class ShareObjectArgs:
     @pulumi.getter(name="sharedAs")
     def shared_as(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        A user-provided new name for the data object within the share. If this new name is not provided, the object's original name will be used as the `shared_as` name. The `shared_as` name must be unique within a Share. Change forces creation of a new resource.
+        A user-provided alias name for **table-like data objects** within the share. Use this field for: `TABLE`, `VIEW`, `MATERIALIZED_VIEW`, `STREAMING_TABLE`, `FOREIGN_TABLE`. **Do not use this field for volumes, models, notebooks, or functions** (use `string_shared_as` instead). If not provided, the object's original name will be used. Must be a 2-part name `<schema>.<table>` containing only alphanumeric characters and underscores. The `shared_as` name must be unique within a share. Change forces creation of a new resource.
         """
         return pulumi.get(self, "shared_as")
 
@@ -47144,6 +47148,9 @@ class ShareObjectArgs:
     @_builtins.property
     @pulumi.getter(name="stringSharedAs")
     def string_shared_as(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A user-provided alias name for **non-table data objects** within the share. Use this field for: `VOLUME`, `MODEL`, `NOTEBOOK_FILE`, `FUNCTION`. **Do not use this field for tables, views, or streaming tables** (use `shared_as` instead). Format varies by type: For volumes, models, and functions use `<schema>.<name>` (2-part name); for notebooks use the file name. Names must contain only alphanumeric characters and underscores. The `string_shared_as` name must be unique for objects of the same type within a share. Change forces creation of a new resource.
+        """
         return pulumi.get(self, "string_shared_as")
 
     @string_shared_as.setter
@@ -72363,9 +72370,21 @@ class GetJobsProviderConfigArgs:
 if not MYPY:
     class GetMetastoreMetastoreInfoArgsDict(TypedDict):
         cloud: NotRequired[_builtins.str]
+        """
+        Cloud vendor of the metastore home shard (e.g., `aws`, `azure`, `gcp`).
+        """
         created_at: NotRequired[_builtins.int]
+        """
+        Time at which the metastore was created, in epoch milliseconds.
+        """
         created_by: NotRequired[_builtins.str]
+        """
+        Username of metastore creator.
+        """
         default_data_access_config_id: NotRequired[_builtins.str]
+        """
+        Unique identifier of the metastore's default data access configuration.
+        """
         delta_sharing_organization_name: NotRequired[_builtins.str]
         """
         The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing.
@@ -72379,7 +72398,13 @@ if not MYPY:
         Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL. INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
         """
         external_access_enabled: NotRequired[_builtins.bool]
+        """
+        Whether to allow non-DBR clients to directly access entities under the metastore.
+        """
         global_metastore_id: NotRequired[_builtins.str]
+        """
+        Globally unique metastore ID across clouds and regions, of the form `cloud:region:metastore_id`.
+        """
         metastore_id: NotRequired[_builtins.str]
         """
         ID of the metastore
@@ -72393,6 +72418,9 @@ if not MYPY:
         Username/groupname/sp application_id of the metastore owner.
         """
         privilege_model_version: NotRequired[_builtins.str]
+        """
+        Privilege model version of the metastore, of the form `major.minor` (e.g., `1.0`).
+        """
         region: NotRequired[_builtins.str]
         """
         Region of the metastore
@@ -72402,9 +72430,21 @@ if not MYPY:
         Path on cloud storage account, where managed `Table` are stored.
         """
         storage_root_credential_id: NotRequired[_builtins.str]
+        """
+        UUID of storage credential to access the metastore storage_root.
+        """
         storage_root_credential_name: NotRequired[_builtins.str]
+        """
+        Name of the storage credential to access the metastore storage_root.
+        """
         updated_at: NotRequired[_builtins.int]
+        """
+        Time at which the metastore was last modified, in epoch milliseconds.
+        """
         updated_by: NotRequired[_builtins.str]
+        """
+        Username of user who last modified the metastore.
+        """
 elif False:
     GetMetastoreMetastoreInfoArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -72431,14 +72471,25 @@ class GetMetastoreMetastoreInfoArgs:
                  updated_at: Optional[_builtins.int] = None,
                  updated_by: Optional[_builtins.str] = None):
         """
+        :param _builtins.str cloud: Cloud vendor of the metastore home shard (e.g., `aws`, `azure`, `gcp`).
+        :param _builtins.int created_at: Time at which the metastore was created, in epoch milliseconds.
+        :param _builtins.str created_by: Username of metastore creator.
+        :param _builtins.str default_data_access_config_id: Unique identifier of the metastore's default data access configuration.
         :param _builtins.str delta_sharing_organization_name: The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing.
         :param _builtins.int delta_sharing_recipient_token_lifetime_in_seconds: Used to set expiration duration in seconds on recipient data access tokens.
         :param _builtins.str delta_sharing_scope: Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL. INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
+        :param _builtins.bool external_access_enabled: Whether to allow non-DBR clients to directly access entities under the metastore.
+        :param _builtins.str global_metastore_id: Globally unique metastore ID across clouds and regions, of the form `cloud:region:metastore_id`.
         :param _builtins.str metastore_id: ID of the metastore
         :param _builtins.str name: Name of the metastore
         :param _builtins.str owner: Username/groupname/sp application_id of the metastore owner.
+        :param _builtins.str privilege_model_version: Privilege model version of the metastore, of the form `major.minor` (e.g., `1.0`).
         :param _builtins.str region: Region of the metastore
         :param _builtins.str storage_root: Path on cloud storage account, where managed `Table` are stored.
+        :param _builtins.str storage_root_credential_id: UUID of storage credential to access the metastore storage_root.
+        :param _builtins.str storage_root_credential_name: Name of the storage credential to access the metastore storage_root.
+        :param _builtins.int updated_at: Time at which the metastore was last modified, in epoch milliseconds.
+        :param _builtins.str updated_by: Username of user who last modified the metastore.
         """
         if cloud is not None:
             pulumi.set(__self__, "cloud", cloud)
@@ -72482,6 +72533,9 @@ class GetMetastoreMetastoreInfoArgs:
     @_builtins.property
     @pulumi.getter
     def cloud(self) -> Optional[_builtins.str]:
+        """
+        Cloud vendor of the metastore home shard (e.g., `aws`, `azure`, `gcp`).
+        """
         return pulumi.get(self, "cloud")
 
     @cloud.setter
@@ -72491,6 +72545,9 @@ class GetMetastoreMetastoreInfoArgs:
     @_builtins.property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> Optional[_builtins.int]:
+        """
+        Time at which the metastore was created, in epoch milliseconds.
+        """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
@@ -72500,6 +72557,9 @@ class GetMetastoreMetastoreInfoArgs:
     @_builtins.property
     @pulumi.getter(name="createdBy")
     def created_by(self) -> Optional[_builtins.str]:
+        """
+        Username of metastore creator.
+        """
         return pulumi.get(self, "created_by")
 
     @created_by.setter
@@ -72509,6 +72569,9 @@ class GetMetastoreMetastoreInfoArgs:
     @_builtins.property
     @pulumi.getter(name="defaultDataAccessConfigId")
     def default_data_access_config_id(self) -> Optional[_builtins.str]:
+        """
+        Unique identifier of the metastore's default data access configuration.
+        """
         return pulumi.get(self, "default_data_access_config_id")
 
     @default_data_access_config_id.setter
@@ -72554,6 +72617,9 @@ class GetMetastoreMetastoreInfoArgs:
     @_builtins.property
     @pulumi.getter(name="externalAccessEnabled")
     def external_access_enabled(self) -> Optional[_builtins.bool]:
+        """
+        Whether to allow non-DBR clients to directly access entities under the metastore.
+        """
         return pulumi.get(self, "external_access_enabled")
 
     @external_access_enabled.setter
@@ -72563,6 +72629,9 @@ class GetMetastoreMetastoreInfoArgs:
     @_builtins.property
     @pulumi.getter(name="globalMetastoreId")
     def global_metastore_id(self) -> Optional[_builtins.str]:
+        """
+        Globally unique metastore ID across clouds and regions, of the form `cloud:region:metastore_id`.
+        """
         return pulumi.get(self, "global_metastore_id")
 
     @global_metastore_id.setter
@@ -72608,6 +72677,9 @@ class GetMetastoreMetastoreInfoArgs:
     @_builtins.property
     @pulumi.getter(name="privilegeModelVersion")
     def privilege_model_version(self) -> Optional[_builtins.str]:
+        """
+        Privilege model version of the metastore, of the form `major.minor` (e.g., `1.0`).
+        """
         return pulumi.get(self, "privilege_model_version")
 
     @privilege_model_version.setter
@@ -72641,6 +72713,9 @@ class GetMetastoreMetastoreInfoArgs:
     @_builtins.property
     @pulumi.getter(name="storageRootCredentialId")
     def storage_root_credential_id(self) -> Optional[_builtins.str]:
+        """
+        UUID of storage credential to access the metastore storage_root.
+        """
         return pulumi.get(self, "storage_root_credential_id")
 
     @storage_root_credential_id.setter
@@ -72650,6 +72725,9 @@ class GetMetastoreMetastoreInfoArgs:
     @_builtins.property
     @pulumi.getter(name="storageRootCredentialName")
     def storage_root_credential_name(self) -> Optional[_builtins.str]:
+        """
+        Name of the storage credential to access the metastore storage_root.
+        """
         return pulumi.get(self, "storage_root_credential_name")
 
     @storage_root_credential_name.setter
@@ -72659,6 +72737,9 @@ class GetMetastoreMetastoreInfoArgs:
     @_builtins.property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> Optional[_builtins.int]:
+        """
+        Time at which the metastore was last modified, in epoch milliseconds.
+        """
         return pulumi.get(self, "updated_at")
 
     @updated_at.setter
@@ -72668,6 +72749,9 @@ class GetMetastoreMetastoreInfoArgs:
     @_builtins.property
     @pulumi.getter(name="updatedBy")
     def updated_by(self) -> Optional[_builtins.str]:
+        """
+        Username of user who last modified the metastore.
+        """
         return pulumi.get(self, "updated_by")
 
     @updated_by.setter

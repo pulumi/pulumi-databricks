@@ -7990,9 +7990,21 @@ export interface GetJobsProviderConfigArgs {
 }
 
 export interface GetMetastoreMetastoreInfo {
+    /**
+     * Cloud vendor of the metastore home shard (e.g., `aws`, `azure`, `gcp`).
+     */
     cloud?: string;
+    /**
+     * Time at which the metastore was created, in epoch milliseconds.
+     */
     createdAt?: number;
+    /**
+     * Username of metastore creator.
+     */
     createdBy?: string;
+    /**
+     * Unique identifier of the metastore's default data access configuration.
+     */
     defaultDataAccessConfigId?: string;
     /**
      * The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing.
@@ -8006,7 +8018,13 @@ export interface GetMetastoreMetastoreInfo {
      * Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL. INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
      */
     deltaSharingScope?: string;
+    /**
+     * Whether to allow non-DBR clients to directly access entities under the metastore.
+     */
     externalAccessEnabled?: boolean;
+    /**
+     * Globally unique metastore ID across clouds and regions, of the form `cloud:region:metastore_id`.
+     */
     globalMetastoreId?: string;
     /**
      * ID of the metastore
@@ -8020,6 +8038,9 @@ export interface GetMetastoreMetastoreInfo {
      * Username/groupname/sp applicationId of the metastore owner.
      */
     owner?: string;
+    /**
+     * Privilege model version of the metastore, of the form `major.minor` (e.g., `1.0`).
+     */
     privilegeModelVersion?: string;
     /**
      * Region of the metastore
@@ -8029,16 +8050,40 @@ export interface GetMetastoreMetastoreInfo {
      * Path on cloud storage account, where managed `databricks.Table` are stored.
      */
     storageRoot?: string;
+    /**
+     * UUID of storage credential to access the metastore storage_root.
+     */
     storageRootCredentialId?: string;
+    /**
+     * Name of the storage credential to access the metastore storage_root.
+     */
     storageRootCredentialName?: string;
+    /**
+     * Time at which the metastore was last modified, in epoch milliseconds.
+     */
     updatedAt?: number;
+    /**
+     * Username of user who last modified the metastore.
+     */
     updatedBy?: string;
 }
 
 export interface GetMetastoreMetastoreInfoArgs {
+    /**
+     * Cloud vendor of the metastore home shard (e.g., `aws`, `azure`, `gcp`).
+     */
     cloud?: pulumi.Input<string>;
+    /**
+     * Time at which the metastore was created, in epoch milliseconds.
+     */
     createdAt?: pulumi.Input<number>;
+    /**
+     * Username of metastore creator.
+     */
     createdBy?: pulumi.Input<string>;
+    /**
+     * Unique identifier of the metastore's default data access configuration.
+     */
     defaultDataAccessConfigId?: pulumi.Input<string>;
     /**
      * The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing.
@@ -8052,7 +8097,13 @@ export interface GetMetastoreMetastoreInfoArgs {
      * Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL. INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
      */
     deltaSharingScope?: pulumi.Input<string>;
+    /**
+     * Whether to allow non-DBR clients to directly access entities under the metastore.
+     */
     externalAccessEnabled?: pulumi.Input<boolean>;
+    /**
+     * Globally unique metastore ID across clouds and regions, of the form `cloud:region:metastore_id`.
+     */
     globalMetastoreId?: pulumi.Input<string>;
     /**
      * ID of the metastore
@@ -8066,6 +8117,9 @@ export interface GetMetastoreMetastoreInfoArgs {
      * Username/groupname/sp applicationId of the metastore owner.
      */
     owner?: pulumi.Input<string>;
+    /**
+     * Privilege model version of the metastore, of the form `major.minor` (e.g., `1.0`).
+     */
     privilegeModelVersion?: pulumi.Input<string>;
     /**
      * Region of the metastore
@@ -8075,9 +8129,21 @@ export interface GetMetastoreMetastoreInfoArgs {
      * Path on cloud storage account, where managed `databricks.Table` are stored.
      */
     storageRoot?: pulumi.Input<string>;
+    /**
+     * UUID of storage credential to access the metastore storage_root.
+     */
     storageRootCredentialId?: pulumi.Input<string>;
+    /**
+     * Name of the storage credential to access the metastore storage_root.
+     */
     storageRootCredentialName?: pulumi.Input<string>;
+    /**
+     * Time at which the metastore was last modified, in epoch milliseconds.
+     */
     updatedAt?: pulumi.Input<number>;
+    /**
+     * Username of user who last modified the metastore.
+     */
     updatedBy?: pulumi.Input<string>;
 }
 
@@ -15315,11 +15381,11 @@ export interface MwsNetworksGcpNetworkInfo {
      */
     networkProjectId: pulumi.Input<string>;
     /**
-     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.100.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.101.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     podIpRangeName?: pulumi.Input<string>;
     /**
-     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.100.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.101.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     serviceIpRangeName?: pulumi.Input<string>;
     /**
@@ -15386,11 +15452,11 @@ export interface MwsWorkspacesExternalCustomerInfo {
 
 export interface MwsWorkspacesGcpManagedNetworkConfig {
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.100.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.101.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterPodIpRange?: pulumi.Input<string>;
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.100.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.101.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterServiceIpRange?: pulumi.Input<string>;
     subnetCidr: pulumi.Input<string>;
@@ -16665,7 +16731,7 @@ export interface ShareObject {
      */
     partitions?: pulumi.Input<pulumi.Input<inputs.ShareObjectPartition>[]>;
     /**
-     * A user-provided new name for the data object within the share. If this new name is not provided, the object's original name will be used as the `sharedAs` name. The `sharedAs` name must be unique within a Share. Change forces creation of a new resource.
+     * A user-provided alias name for **table-like data objects** within the share. Use this field for: `TABLE`, `VIEW`, `MATERIALIZED_VIEW`, `STREAMING_TABLE`, `FOREIGN_TABLE`. **Do not use this field for volumes, models, notebooks, or functions** (use `stringSharedAs` instead). If not provided, the object's original name will be used. Must be a 2-part name `<schema>.<table>` containing only alphanumeric characters and underscores. The `sharedAs` name must be unique within a share. Change forces creation of a new resource.
      */
     sharedAs?: pulumi.Input<string>;
     /**
@@ -16676,6 +16742,9 @@ export interface ShareObject {
      * Status of the object, one of: `ACTIVE`, `PERMISSION_DENIED`.
      */
     status?: pulumi.Input<string>;
+    /**
+     * A user-provided alias name for **non-table data objects** within the share. Use this field for: `VOLUME`, `MODEL`, `NOTEBOOK_FILE`, `FUNCTION`. **Do not use this field for tables, views, or streaming tables** (use `sharedAs` instead). Format varies by type: For volumes, models, and functions use `<schema>.<name>` (2-part name); for notebooks use the file name. Names must contain only alphanumeric characters and underscores. The `stringSharedAs` name must be unique for objects of the same type within a share. Change forces creation of a new resource.
+     */
     stringSharedAs?: pulumi.Input<string>;
 }
 

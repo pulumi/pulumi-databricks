@@ -96,12 +96,14 @@ type LookupMetastoreArgs struct {
 // A collection of values returned by getMetastore.
 type LookupMetastoreResult struct {
 	// ID of the metastore
-	Id          string `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// Unique identifier of the metastore.
 	MetastoreId string `pulumi:"metastoreId"`
 	// MetastoreInfo object for a databricks_metastore. This contains the following attributes:
 	MetastoreInfo GetMetastoreMetastoreInfo `pulumi:"metastoreInfo"`
 	// Name of metastore.
-	Name   string `pulumi:"name"`
+	Name string `pulumi:"name"`
+	// Cloud region which the metastore serves (e.g., `us-west-2`, `westus`).
 	Region string `pulumi:"region"`
 }
 
@@ -152,6 +154,7 @@ func (o LookupMetastoreResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMetastoreResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Unique identifier of the metastore.
 func (o LookupMetastoreResultOutput) MetastoreId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMetastoreResult) string { return v.MetastoreId }).(pulumi.StringOutput)
 }
@@ -166,6 +169,7 @@ func (o LookupMetastoreResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMetastoreResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Cloud region which the metastore serves (e.g., `us-west-2`, `westus`).
 func (o LookupMetastoreResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMetastoreResult) string { return v.Region }).(pulumi.StringOutput)
 }

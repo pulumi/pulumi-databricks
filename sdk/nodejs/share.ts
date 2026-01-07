@@ -36,6 +36,34 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
+ * Creating a Delta Sharing share with mixed object types (tables and volumes)
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const mixed = new databricks.Share("mixed", {
+ *     name: "mixed_share",
+ *     objects: [
+ *         {
+ *             name: "my_catalog.my_schema.sales_table",
+ *             dataObjectType: "TABLE",
+ *             sharedAs: "my_schema.sales_table",
+ *         },
+ *         {
+ *             name: "my_catalog.my_schema.sales_mv",
+ *             dataObjectType: "MATERIALIZED_VIEW",
+ *             sharedAs: "my_schema.sales_mv",
+ *         },
+ *         {
+ *             name: "my_catalog.my_schema.training_data",
+ *             dataObjectType: "VOLUME",
+ *             stringSharedAs: "my_schema.training_data",
+ *         },
+ *     ],
+ * });
+ * ```
+ *
  * Creating a Delta Sharing share and add a schema to it(including all current and future tables).
  *
  * ```typescript
