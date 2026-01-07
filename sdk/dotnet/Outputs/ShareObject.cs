@@ -51,7 +51,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.ShareObjectPartition> Partitions;
         /// <summary>
-        /// A user-provided new name for the data object within the share. If this new name is not provided, the object's original name will be used as the `SharedAs` name. The `SharedAs` name must be unique within a Share. Change forces creation of a new resource.
+        /// A user-provided alias name for **table-like data objects** within the share. Use this field for: `TABLE`, `VIEW`, `MATERIALIZED_VIEW`, `STREAMING_TABLE`, `FOREIGN_TABLE`. **Do not use this field for volumes, models, notebooks, or functions** (use `StringSharedAs` instead). If not provided, the object's original name will be used. Must be a 2-part name `&lt;schema&gt;.&lt;table&gt;` containing only alphanumeric characters and underscores. The `SharedAs` name must be unique within a share. Change forces creation of a new resource.
         /// </summary>
         public readonly string? SharedAs;
         /// <summary>
@@ -62,6 +62,9 @@ namespace Pulumi.Databricks.Outputs
         /// Status of the object, one of: `ACTIVE`, `PERMISSION_DENIED`.
         /// </summary>
         public readonly string? Status;
+        /// <summary>
+        /// A user-provided alias name for **non-table data objects** within the share. Use this field for: `VOLUME`, `MODEL`, `NOTEBOOK_FILE`, `FUNCTION`. **Do not use this field for tables, views, or streaming tables** (use `SharedAs` instead). Format varies by type: For volumes, models, and functions use `&lt;schema&gt;.&lt;name&gt;` (2-part name); for notebooks use the file name. Names must contain only alphanumeric characters and underscores. The `StringSharedAs` name must be unique for objects of the same type within a share. Change forces creation of a new resource.
+        /// </summary>
         public readonly string? StringSharedAs;
 
         [OutputConstructor]

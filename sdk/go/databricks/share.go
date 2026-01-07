@@ -23,6 +23,49 @@ import (
 //
 // # Creating a Delta Sharing share and add some existing tables to it
 //
+// Creating a Delta Sharing share with mixed object types (tables and volumes)
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewShare(ctx, "mixed", &databricks.ShareArgs{
+//				Name: pulumi.String("mixed_share"),
+//				Objects: databricks.ShareObjectArray{
+//					&databricks.ShareObjectArgs{
+//						Name:           pulumi.String("my_catalog.my_schema.sales_table"),
+//						DataObjectType: pulumi.String("TABLE"),
+//						SharedAs:       pulumi.String("my_schema.sales_table"),
+//					},
+//					&databricks.ShareObjectArgs{
+//						Name:           pulumi.String("my_catalog.my_schema.sales_mv"),
+//						DataObjectType: pulumi.String("MATERIALIZED_VIEW"),
+//						SharedAs:       pulumi.String("my_schema.sales_mv"),
+//					},
+//					&databricks.ShareObjectArgs{
+//						Name:           pulumi.String("my_catalog.my_schema.training_data"),
+//						DataObjectType: pulumi.String("VOLUME"),
+//						StringSharedAs: pulumi.String("my_schema.training_data"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // Creating a Delta Sharing share and add a schema to it(including all current and future tables).
 //
 // ```go

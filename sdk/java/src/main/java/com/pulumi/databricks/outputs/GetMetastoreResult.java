@@ -16,6 +16,10 @@ public final class GetMetastoreResult {
      * 
      */
     private String id;
+    /**
+     * @return Unique identifier of the metastore.
+     * 
+     */
     private String metastoreId;
     /**
      * @return MetastoreInfo object for a databricks_metastore. This contains the following attributes:
@@ -27,6 +31,10 @@ public final class GetMetastoreResult {
      * 
      */
     private String name;
+    /**
+     * @return Cloud region which the metastore serves (e.g., `us-west-2`, `westus`).
+     * 
+     */
     private String region;
 
     private GetMetastoreResult() {}
@@ -37,6 +45,10 @@ public final class GetMetastoreResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return Unique identifier of the metastore.
+     * 
+     */
     public String metastoreId() {
         return this.metastoreId;
     }
@@ -54,6 +66,10 @@ public final class GetMetastoreResult {
     public String name() {
         return this.name;
     }
+    /**
+     * @return Cloud region which the metastore serves (e.g., `us-west-2`, `westus`).
+     * 
+     */
     public String region() {
         return this.region;
     }

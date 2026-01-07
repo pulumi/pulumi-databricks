@@ -12,15 +12,27 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class GetMetastoreMetastoreInfoInputArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Cloud vendor of the metastore home shard (e.g., `Aws`, `Azure`, `Gcp`).
+        /// </summary>
         [Input("cloud")]
         public Input<string>? Cloud { get; set; }
 
+        /// <summary>
+        /// Time at which the metastore was created, in epoch milliseconds.
+        /// </summary>
         [Input("createdAt")]
         public Input<int>? CreatedAt { get; set; }
 
+        /// <summary>
+        /// Username of metastore creator.
+        /// </summary>
         [Input("createdBy")]
         public Input<string>? CreatedBy { get; set; }
 
+        /// <summary>
+        /// Unique identifier of the metastore's default data access configuration.
+        /// </summary>
         [Input("defaultDataAccessConfigId")]
         public Input<string>? DefaultDataAccessConfigId { get; set; }
 
@@ -42,9 +54,15 @@ namespace Pulumi.Databricks.Inputs
         [Input("deltaSharingScope")]
         public Input<string>? DeltaSharingScope { get; set; }
 
+        /// <summary>
+        /// Whether to allow non-DBR clients to directly access entities under the metastore.
+        /// </summary>
         [Input("externalAccessEnabled")]
         public Input<bool>? ExternalAccessEnabled { get; set; }
 
+        /// <summary>
+        /// Globally unique metastore ID across clouds and regions, of the form `cloud:region:metastore_id`.
+        /// </summary>
         [Input("globalMetastoreId")]
         public Input<string>? GlobalMetastoreId { get; set; }
 
@@ -66,6 +84,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("owner")]
         public Input<string>? Owner { get; set; }
 
+        /// <summary>
+        /// Privilege model version of the metastore, of the form `major.minor` (e.g., `1.0`).
+        /// </summary>
         [Input("privilegeModelVersion")]
         public Input<string>? PrivilegeModelVersion { get; set; }
 
@@ -81,15 +102,27 @@ namespace Pulumi.Databricks.Inputs
         [Input("storageRoot")]
         public Input<string>? StorageRoot { get; set; }
 
+        /// <summary>
+        /// UUID of storage credential to access the metastore storage_root.
+        /// </summary>
         [Input("storageRootCredentialId")]
         public Input<string>? StorageRootCredentialId { get; set; }
 
+        /// <summary>
+        /// Name of the storage credential to access the metastore storage_root.
+        /// </summary>
         [Input("storageRootCredentialName")]
         public Input<string>? StorageRootCredentialName { get; set; }
 
+        /// <summary>
+        /// Time at which the metastore was last modified, in epoch milliseconds.
+        /// </summary>
         [Input("updatedAt")]
         public Input<int>? UpdatedAt { get; set; }
 
+        /// <summary>
+        /// Username of user who last modified the metastore.
+        /// </summary>
         [Input("updatedBy")]
         public Input<string>? UpdatedBy { get; set; }
 

@@ -262,6 +262,9 @@ namespace Pulumi.Databricks
         /// ID of the metastore
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Unique identifier of the metastore.
+        /// </summary>
         public readonly string MetastoreId;
         /// <summary>
         /// MetastoreInfo object for a databricks_metastore. This contains the following attributes:
@@ -271,6 +274,9 @@ namespace Pulumi.Databricks
         /// Name of metastore.
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Cloud region which the metastore serves (e.g., `us-west-2`, `Westus`).
+        /// </summary>
         public readonly string Region;
 
         [OutputConstructor]

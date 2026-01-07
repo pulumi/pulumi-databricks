@@ -31,6 +31,56 @@ import javax.annotation.Nullable;
  * 
  * Creating a Delta Sharing share and add some existing tables to it
  * 
+ * Creating a Delta Sharing share with mixed object types (tables and volumes)
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.Share;
+ * import com.pulumi.databricks.ShareArgs;
+ * import com.pulumi.databricks.inputs.ShareObjectArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var mixed = new Share("mixed", ShareArgs.builder()
+ *             .name("mixed_share")
+ *             .objects(            
+ *                 ShareObjectArgs.builder()
+ *                     .name("my_catalog.my_schema.sales_table")
+ *                     .dataObjectType("TABLE")
+ *                     .sharedAs("my_schema.sales_table")
+ *                     .build(),
+ *                 ShareObjectArgs.builder()
+ *                     .name("my_catalog.my_schema.sales_mv")
+ *                     .dataObjectType("MATERIALIZED_VIEW")
+ *                     .sharedAs("my_schema.sales_mv")
+ *                     .build(),
+ *                 ShareObjectArgs.builder()
+ *                     .name("my_catalog.my_schema.training_data")
+ *                     .dataObjectType("VOLUME")
+ *                     .stringSharedAs("my_schema.training_data")
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * Creating a Delta Sharing share and add a schema to it(including all current and future tables).
  * 
  * <pre>

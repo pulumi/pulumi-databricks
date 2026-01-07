@@ -56,6 +56,9 @@ class GetMetastoreResult:
     @_builtins.property
     @pulumi.getter(name="metastoreId")
     def metastore_id(self) -> _builtins.str:
+        """
+        Unique identifier of the metastore.
+        """
         return pulumi.get(self, "metastore_id")
 
     @_builtins.property
@@ -77,6 +80,9 @@ class GetMetastoreResult:
     @_builtins.property
     @pulumi.getter
     def region(self) -> _builtins.str:
+        """
+        Cloud region which the metastore serves (e.g., `us-west-2`, `westus`).
+        """
         return pulumi.get(self, "region")
 
 

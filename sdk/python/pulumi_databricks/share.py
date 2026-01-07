@@ -330,6 +330,33 @@ class Share(pulumi.CustomResource):
             name="my_share")
         ```
 
+        Creating a Delta Sharing share with mixed object types (tables and volumes)
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        mixed = databricks.Share("mixed",
+            name="mixed_share",
+            objects=[
+                {
+                    "name": "my_catalog.my_schema.sales_table",
+                    "data_object_type": "TABLE",
+                    "shared_as": "my_schema.sales_table",
+                },
+                {
+                    "name": "my_catalog.my_schema.sales_mv",
+                    "data_object_type": "MATERIALIZED_VIEW",
+                    "shared_as": "my_schema.sales_mv",
+                },
+                {
+                    "name": "my_catalog.my_schema.training_data",
+                    "data_object_type": "VOLUME",
+                    "string_shared_as": "my_schema.training_data",
+                },
+            ])
+        ```
+
         Creating a Delta Sharing share and add a schema to it(including all current and future tables).
 
         ```python
@@ -451,6 +478,33 @@ class Share(pulumi.CustomResource):
                 "dataObjectType": "TABLE",
             } for entry in entries]),
             name="my_share")
+        ```
+
+        Creating a Delta Sharing share with mixed object types (tables and volumes)
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        mixed = databricks.Share("mixed",
+            name="mixed_share",
+            objects=[
+                {
+                    "name": "my_catalog.my_schema.sales_table",
+                    "data_object_type": "TABLE",
+                    "shared_as": "my_schema.sales_table",
+                },
+                {
+                    "name": "my_catalog.my_schema.sales_mv",
+                    "data_object_type": "MATERIALIZED_VIEW",
+                    "shared_as": "my_schema.sales_mv",
+                },
+                {
+                    "name": "my_catalog.my_schema.training_data",
+                    "data_object_type": "VOLUME",
+                    "string_shared_as": "my_schema.training_data",
+                },
+            ])
         ```
 
         Creating a Delta Sharing share and add a schema to it(including all current and future tables).

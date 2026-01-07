@@ -179,14 +179,14 @@ public final class ShareObjectArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A user-provided new name for the data object within the share. If this new name is not provided, the object&#39;s original name will be used as the `sharedAs` name. The `sharedAs` name must be unique within a Share. Change forces creation of a new resource.
+     * A user-provided alias name for **table-like data objects** within the share. Use this field for: `TABLE`, `VIEW`, `MATERIALIZED_VIEW`, `STREAMING_TABLE`, `FOREIGN_TABLE`. **Do not use this field for volumes, models, notebooks, or functions** (use `stringSharedAs` instead). If not provided, the object&#39;s original name will be used. Must be a 2-part name `&lt;schema&gt;.&lt;table&gt;` containing only alphanumeric characters and underscores. The `sharedAs` name must be unique within a share. Change forces creation of a new resource.
      * 
      */
     @Import(name="sharedAs")
     private @Nullable Output<String> sharedAs;
 
     /**
-     * @return A user-provided new name for the data object within the share. If this new name is not provided, the object&#39;s original name will be used as the `sharedAs` name. The `sharedAs` name must be unique within a Share. Change forces creation of a new resource.
+     * @return A user-provided alias name for **table-like data objects** within the share. Use this field for: `TABLE`, `VIEW`, `MATERIALIZED_VIEW`, `STREAMING_TABLE`, `FOREIGN_TABLE`. **Do not use this field for volumes, models, notebooks, or functions** (use `stringSharedAs` instead). If not provided, the object&#39;s original name will be used. Must be a 2-part name `&lt;schema&gt;.&lt;table&gt;` containing only alphanumeric characters and underscores. The `sharedAs` name must be unique within a share. Change forces creation of a new resource.
      * 
      */
     public Optional<Output<String>> sharedAs() {
@@ -223,9 +223,17 @@ public final class ShareObjectArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.status);
     }
 
+    /**
+     * A user-provided alias name for **non-table data objects** within the share. Use this field for: `VOLUME`, `MODEL`, `NOTEBOOK_FILE`, `FUNCTION`. **Do not use this field for tables, views, or streaming tables** (use `sharedAs` instead). Format varies by type: For volumes, models, and functions use `&lt;schema&gt;.&lt;name&gt;` (2-part name); for notebooks use the file name. Names must contain only alphanumeric characters and underscores. The `stringSharedAs` name must be unique for objects of the same type within a share. Change forces creation of a new resource.
+     * 
+     */
     @Import(name="stringSharedAs")
     private @Nullable Output<String> stringSharedAs;
 
+    /**
+     * @return A user-provided alias name for **non-table data objects** within the share. Use this field for: `VOLUME`, `MODEL`, `NOTEBOOK_FILE`, `FUNCTION`. **Do not use this field for tables, views, or streaming tables** (use `sharedAs` instead). Format varies by type: For volumes, models, and functions use `&lt;schema&gt;.&lt;name&gt;` (2-part name); for notebooks use the file name. Names must contain only alphanumeric characters and underscores. The `stringSharedAs` name must be unique for objects of the same type within a share. Change forces creation of a new resource.
+     * 
+     */
     public Optional<Output<String>> stringSharedAs() {
         return Optional.ofNullable(this.stringSharedAs);
     }
@@ -496,7 +504,7 @@ public final class ShareObjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sharedAs A user-provided new name for the data object within the share. If this new name is not provided, the object&#39;s original name will be used as the `sharedAs` name. The `sharedAs` name must be unique within a Share. Change forces creation of a new resource.
+         * @param sharedAs A user-provided alias name for **table-like data objects** within the share. Use this field for: `TABLE`, `VIEW`, `MATERIALIZED_VIEW`, `STREAMING_TABLE`, `FOREIGN_TABLE`. **Do not use this field for volumes, models, notebooks, or functions** (use `stringSharedAs` instead). If not provided, the object&#39;s original name will be used. Must be a 2-part name `&lt;schema&gt;.&lt;table&gt;` containing only alphanumeric characters and underscores. The `sharedAs` name must be unique within a share. Change forces creation of a new resource.
          * 
          * @return builder
          * 
@@ -507,7 +515,7 @@ public final class ShareObjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sharedAs A user-provided new name for the data object within the share. If this new name is not provided, the object&#39;s original name will be used as the `sharedAs` name. The `sharedAs` name must be unique within a Share. Change forces creation of a new resource.
+         * @param sharedAs A user-provided alias name for **table-like data objects** within the share. Use this field for: `TABLE`, `VIEW`, `MATERIALIZED_VIEW`, `STREAMING_TABLE`, `FOREIGN_TABLE`. **Do not use this field for volumes, models, notebooks, or functions** (use `stringSharedAs` instead). If not provided, the object&#39;s original name will be used. Must be a 2-part name `&lt;schema&gt;.&lt;table&gt;` containing only alphanumeric characters and underscores. The `sharedAs` name must be unique within a share. Change forces creation of a new resource.
          * 
          * @return builder
          * 
@@ -558,11 +566,23 @@ public final class ShareObjectArgs extends com.pulumi.resources.ResourceArgs {
             return status(Output.of(status));
         }
 
+        /**
+         * @param stringSharedAs A user-provided alias name for **non-table data objects** within the share. Use this field for: `VOLUME`, `MODEL`, `NOTEBOOK_FILE`, `FUNCTION`. **Do not use this field for tables, views, or streaming tables** (use `sharedAs` instead). Format varies by type: For volumes, models, and functions use `&lt;schema&gt;.&lt;name&gt;` (2-part name); for notebooks use the file name. Names must contain only alphanumeric characters and underscores. The `stringSharedAs` name must be unique for objects of the same type within a share. Change forces creation of a new resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder stringSharedAs(@Nullable Output<String> stringSharedAs) {
             $.stringSharedAs = stringSharedAs;
             return this;
         }
 
+        /**
+         * @param stringSharedAs A user-provided alias name for **non-table data objects** within the share. Use this field for: `VOLUME`, `MODEL`, `NOTEBOOK_FILE`, `FUNCTION`. **Do not use this field for tables, views, or streaming tables** (use `sharedAs` instead). Format varies by type: For volumes, models, and functions use `&lt;schema&gt;.&lt;name&gt;` (2-part name); for notebooks use the file name. Names must contain only alphanumeric characters and underscores. The `stringSharedAs` name must be unique for objects of the same type within a share. Change forces creation of a new resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder stringSharedAs(String stringSharedAs) {
             return stringSharedAs(Output.of(stringSharedAs));
         }

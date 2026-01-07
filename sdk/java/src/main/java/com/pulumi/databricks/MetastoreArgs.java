@@ -17,30 +17,17 @@ public final class MetastoreArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final MetastoreArgs Empty = new MetastoreArgs();
 
-    @Import(name="cloud")
-    private @Nullable Output<String> cloud;
-
-    public Optional<Output<String>> cloud() {
-        return Optional.ofNullable(this.cloud);
-    }
-
-    @Import(name="createdAt")
-    private @Nullable Output<Integer> createdAt;
-
-    public Optional<Output<Integer>> createdAt() {
-        return Optional.ofNullable(this.createdAt);
-    }
-
-    @Import(name="createdBy")
-    private @Nullable Output<String> createdBy;
-
-    public Optional<Output<String>> createdBy() {
-        return Optional.ofNullable(this.createdBy);
-    }
-
+    /**
+     * (Optional) Unique identifier of the metastore&#39;s default data access configuration.
+     * 
+     */
     @Import(name="defaultDataAccessConfigId")
     private @Nullable Output<String> defaultDataAccessConfigId;
 
+    /**
+     * @return (Optional) Unique identifier of the metastore&#39;s default data access configuration.
+     * 
+     */
     public Optional<Output<String>> defaultDataAccessConfigId() {
         return Optional.ofNullable(this.defaultDataAccessConfigId);
     }
@@ -76,18 +63,33 @@ public final class MetastoreArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Required along with `deltaSharingRecipientTokenLifetimeInSeconds`. Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.  INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
+     * Required along with `deltaSharingRecipientTokenLifetimeInSeconds`. Used to enable delta sharing on the metastore. Valid values: `INTERNAL`, `INTERNAL_AND_EXTERNAL`.  `INTERNAL` only allows sharing within the same account, and `INTERNAL_AND_EXTERNAL` allows cross account sharing and token based sharing.
      * 
      */
     @Import(name="deltaSharingScope")
     private @Nullable Output<String> deltaSharingScope;
 
     /**
-     * @return Required along with `deltaSharingRecipientTokenLifetimeInSeconds`. Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.  INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
+     * @return Required along with `deltaSharingRecipientTokenLifetimeInSeconds`. Used to enable delta sharing on the metastore. Valid values: `INTERNAL`, `INTERNAL_AND_EXTERNAL`.  `INTERNAL` only allows sharing within the same account, and `INTERNAL_AND_EXTERNAL` allows cross account sharing and token based sharing.
      * 
      */
     public Optional<Output<String>> deltaSharingScope() {
         return Optional.ofNullable(this.deltaSharingScope);
+    }
+
+    /**
+     * Whether to allow non-DBR clients to directly access entities under the metastore.
+     * 
+     */
+    @Import(name="externalAccessEnabled")
+    private @Nullable Output<Boolean> externalAccessEnabled;
+
+    /**
+     * @return Whether to allow non-DBR clients to directly access entities under the metastore.
+     * 
+     */
+    public Optional<Output<Boolean>> externalAccessEnabled() {
+        return Optional.ofNullable(this.externalAccessEnabled);
     }
 
     /**
@@ -103,20 +105,6 @@ public final class MetastoreArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> forceDestroy() {
         return Optional.ofNullable(this.forceDestroy);
-    }
-
-    @Import(name="globalMetastoreId")
-    private @Nullable Output<String> globalMetastoreId;
-
-    public Optional<Output<String>> globalMetastoreId() {
-        return Optional.ofNullable(this.globalMetastoreId);
-    }
-
-    @Import(name="metastoreId")
-    private @Nullable Output<String> metastoreId;
-
-    public Optional<Output<String>> metastoreId() {
-        return Optional.ofNullable(this.metastoreId);
     }
 
     /**
@@ -150,6 +138,21 @@ public final class MetastoreArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Privilege model version of the metastore, of the form `major.minor` (e.g., `1.0`).
+     * 
+     */
+    @Import(name="privilegeModelVersion")
+    private @Nullable Output<String> privilegeModelVersion;
+
+    /**
+     * @return Privilege model version of the metastore, of the form `major.minor` (e.g., `1.0`).
+     * 
+     */
+    public Optional<Output<String>> privilegeModelVersion() {
+        return Optional.ofNullable(this.privilegeModelVersion);
+    }
+
+    /**
      * The region of the metastore
      * 
      */
@@ -165,61 +168,66 @@ public final class MetastoreArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Path on cloud storage account, where managed `databricks.Table` are stored.  If the URL contains special characters, such as space, `&amp;`, etc., they should be percent-encoded (space &gt; `%20`, etc.). Change forces creation of a new resource. If no `storageRoot` is defined for the metastore, each catalog must have a `storageRoot` defined.
+     * Path on cloud storage account, where managed `databricks.Table` are stored.  If the URL contains special characters, such as space, `&amp;`, etc., they should be percent-encoded (space &gt; `%20`, etc.). Change forces creation of a new resource. If no `storageRoot` is defined for the metastore, each catalog must have a `storageRoot` defined.  **It&#39;s recommended to define `storageRoot` on the catalog level.
      * 
      */
     @Import(name="storageRoot")
     private @Nullable Output<String> storageRoot;
 
     /**
-     * @return Path on cloud storage account, where managed `databricks.Table` are stored.  If the URL contains special characters, such as space, `&amp;`, etc., they should be percent-encoded (space &gt; `%20`, etc.). Change forces creation of a new resource. If no `storageRoot` is defined for the metastore, each catalog must have a `storageRoot` defined.
+     * @return Path on cloud storage account, where managed `databricks.Table` are stored.  If the URL contains special characters, such as space, `&amp;`, etc., they should be percent-encoded (space &gt; `%20`, etc.). Change forces creation of a new resource. If no `storageRoot` is defined for the metastore, each catalog must have a `storageRoot` defined.  **It&#39;s recommended to define `storageRoot` on the catalog level.
      * 
      */
     public Optional<Output<String>> storageRoot() {
         return Optional.ofNullable(this.storageRoot);
     }
 
+    /**
+     * (Optional) UUID of storage credential to access the metastore storage_root.
+     * 
+     */
     @Import(name="storageRootCredentialId")
     private @Nullable Output<String> storageRootCredentialId;
 
+    /**
+     * @return (Optional) UUID of storage credential to access the metastore storage_root.
+     * 
+     */
     public Optional<Output<String>> storageRootCredentialId() {
         return Optional.ofNullable(this.storageRootCredentialId);
     }
 
-    @Import(name="updatedAt")
-    private @Nullable Output<Integer> updatedAt;
+    /**
+     * Name of the storage credential to access the metastore storage_root.
+     * 
+     */
+    @Import(name="storageRootCredentialName")
+    private @Nullable Output<String> storageRootCredentialName;
 
-    public Optional<Output<Integer>> updatedAt() {
-        return Optional.ofNullable(this.updatedAt);
-    }
-
-    @Import(name="updatedBy")
-    private @Nullable Output<String> updatedBy;
-
-    public Optional<Output<String>> updatedBy() {
-        return Optional.ofNullable(this.updatedBy);
+    /**
+     * @return Name of the storage credential to access the metastore storage_root.
+     * 
+     */
+    public Optional<Output<String>> storageRootCredentialName() {
+        return Optional.ofNullable(this.storageRootCredentialName);
     }
 
     private MetastoreArgs() {}
 
     private MetastoreArgs(MetastoreArgs $) {
-        this.cloud = $.cloud;
-        this.createdAt = $.createdAt;
-        this.createdBy = $.createdBy;
         this.defaultDataAccessConfigId = $.defaultDataAccessConfigId;
         this.deltaSharingOrganizationName = $.deltaSharingOrganizationName;
         this.deltaSharingRecipientTokenLifetimeInSeconds = $.deltaSharingRecipientTokenLifetimeInSeconds;
         this.deltaSharingScope = $.deltaSharingScope;
+        this.externalAccessEnabled = $.externalAccessEnabled;
         this.forceDestroy = $.forceDestroy;
-        this.globalMetastoreId = $.globalMetastoreId;
-        this.metastoreId = $.metastoreId;
         this.name = $.name;
         this.owner = $.owner;
+        this.privilegeModelVersion = $.privilegeModelVersion;
         this.region = $.region;
         this.storageRoot = $.storageRoot;
         this.storageRootCredentialId = $.storageRootCredentialId;
-        this.updatedAt = $.updatedAt;
-        this.updatedBy = $.updatedBy;
+        this.storageRootCredentialName = $.storageRootCredentialName;
     }
 
     public static Builder builder() {
@@ -240,38 +248,23 @@ public final class MetastoreArgs extends com.pulumi.resources.ResourceArgs {
             $ = new MetastoreArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder cloud(@Nullable Output<String> cloud) {
-            $.cloud = cloud;
-            return this;
-        }
-
-        public Builder cloud(String cloud) {
-            return cloud(Output.of(cloud));
-        }
-
-        public Builder createdAt(@Nullable Output<Integer> createdAt) {
-            $.createdAt = createdAt;
-            return this;
-        }
-
-        public Builder createdAt(Integer createdAt) {
-            return createdAt(Output.of(createdAt));
-        }
-
-        public Builder createdBy(@Nullable Output<String> createdBy) {
-            $.createdBy = createdBy;
-            return this;
-        }
-
-        public Builder createdBy(String createdBy) {
-            return createdBy(Output.of(createdBy));
-        }
-
+        /**
+         * @param defaultDataAccessConfigId (Optional) Unique identifier of the metastore&#39;s default data access configuration.
+         * 
+         * @return builder
+         * 
+         */
         public Builder defaultDataAccessConfigId(@Nullable Output<String> defaultDataAccessConfigId) {
             $.defaultDataAccessConfigId = defaultDataAccessConfigId;
             return this;
         }
 
+        /**
+         * @param defaultDataAccessConfigId (Optional) Unique identifier of the metastore&#39;s default data access configuration.
+         * 
+         * @return builder
+         * 
+         */
         public Builder defaultDataAccessConfigId(String defaultDataAccessConfigId) {
             return defaultDataAccessConfigId(Output.of(defaultDataAccessConfigId));
         }
@@ -319,7 +312,7 @@ public final class MetastoreArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deltaSharingScope Required along with `deltaSharingRecipientTokenLifetimeInSeconds`. Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.  INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
+         * @param deltaSharingScope Required along with `deltaSharingRecipientTokenLifetimeInSeconds`. Used to enable delta sharing on the metastore. Valid values: `INTERNAL`, `INTERNAL_AND_EXTERNAL`.  `INTERNAL` only allows sharing within the same account, and `INTERNAL_AND_EXTERNAL` allows cross account sharing and token based sharing.
          * 
          * @return builder
          * 
@@ -330,13 +323,34 @@ public final class MetastoreArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deltaSharingScope Required along with `deltaSharingRecipientTokenLifetimeInSeconds`. Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.  INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
+         * @param deltaSharingScope Required along with `deltaSharingRecipientTokenLifetimeInSeconds`. Used to enable delta sharing on the metastore. Valid values: `INTERNAL`, `INTERNAL_AND_EXTERNAL`.  `INTERNAL` only allows sharing within the same account, and `INTERNAL_AND_EXTERNAL` allows cross account sharing and token based sharing.
          * 
          * @return builder
          * 
          */
         public Builder deltaSharingScope(String deltaSharingScope) {
             return deltaSharingScope(Output.of(deltaSharingScope));
+        }
+
+        /**
+         * @param externalAccessEnabled Whether to allow non-DBR clients to directly access entities under the metastore.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder externalAccessEnabled(@Nullable Output<Boolean> externalAccessEnabled) {
+            $.externalAccessEnabled = externalAccessEnabled;
+            return this;
+        }
+
+        /**
+         * @param externalAccessEnabled Whether to allow non-DBR clients to directly access entities under the metastore.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder externalAccessEnabled(Boolean externalAccessEnabled) {
+            return externalAccessEnabled(Output.of(externalAccessEnabled));
         }
 
         /**
@@ -358,24 +372,6 @@ public final class MetastoreArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder forceDestroy(Boolean forceDestroy) {
             return forceDestroy(Output.of(forceDestroy));
-        }
-
-        public Builder globalMetastoreId(@Nullable Output<String> globalMetastoreId) {
-            $.globalMetastoreId = globalMetastoreId;
-            return this;
-        }
-
-        public Builder globalMetastoreId(String globalMetastoreId) {
-            return globalMetastoreId(Output.of(globalMetastoreId));
-        }
-
-        public Builder metastoreId(@Nullable Output<String> metastoreId) {
-            $.metastoreId = metastoreId;
-            return this;
-        }
-
-        public Builder metastoreId(String metastoreId) {
-            return metastoreId(Output.of(metastoreId));
         }
 
         /**
@@ -421,6 +417,27 @@ public final class MetastoreArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param privilegeModelVersion Privilege model version of the metastore, of the form `major.minor` (e.g., `1.0`).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder privilegeModelVersion(@Nullable Output<String> privilegeModelVersion) {
+            $.privilegeModelVersion = privilegeModelVersion;
+            return this;
+        }
+
+        /**
+         * @param privilegeModelVersion Privilege model version of the metastore, of the form `major.minor` (e.g., `1.0`).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder privilegeModelVersion(String privilegeModelVersion) {
+            return privilegeModelVersion(Output.of(privilegeModelVersion));
+        }
+
+        /**
          * @param region The region of the metastore
          * 
          * @return builder
@@ -442,7 +459,7 @@ public final class MetastoreArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param storageRoot Path on cloud storage account, where managed `databricks.Table` are stored.  If the URL contains special characters, such as space, `&amp;`, etc., they should be percent-encoded (space &gt; `%20`, etc.). Change forces creation of a new resource. If no `storageRoot` is defined for the metastore, each catalog must have a `storageRoot` defined.
+         * @param storageRoot Path on cloud storage account, where managed `databricks.Table` are stored.  If the URL contains special characters, such as space, `&amp;`, etc., they should be percent-encoded (space &gt; `%20`, etc.). Change forces creation of a new resource. If no `storageRoot` is defined for the metastore, each catalog must have a `storageRoot` defined.  **It&#39;s recommended to define `storageRoot` on the catalog level.
          * 
          * @return builder
          * 
@@ -453,7 +470,7 @@ public final class MetastoreArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param storageRoot Path on cloud storage account, where managed `databricks.Table` are stored.  If the URL contains special characters, such as space, `&amp;`, etc., they should be percent-encoded (space &gt; `%20`, etc.). Change forces creation of a new resource. If no `storageRoot` is defined for the metastore, each catalog must have a `storageRoot` defined.
+         * @param storageRoot Path on cloud storage account, where managed `databricks.Table` are stored.  If the URL contains special characters, such as space, `&amp;`, etc., they should be percent-encoded (space &gt; `%20`, etc.). Change forces creation of a new resource. If no `storageRoot` is defined for the metastore, each catalog must have a `storageRoot` defined.  **It&#39;s recommended to define `storageRoot` on the catalog level.
          * 
          * @return builder
          * 
@@ -462,31 +479,46 @@ public final class MetastoreArgs extends com.pulumi.resources.ResourceArgs {
             return storageRoot(Output.of(storageRoot));
         }
 
+        /**
+         * @param storageRootCredentialId (Optional) UUID of storage credential to access the metastore storage_root.
+         * 
+         * @return builder
+         * 
+         */
         public Builder storageRootCredentialId(@Nullable Output<String> storageRootCredentialId) {
             $.storageRootCredentialId = storageRootCredentialId;
             return this;
         }
 
+        /**
+         * @param storageRootCredentialId (Optional) UUID of storage credential to access the metastore storage_root.
+         * 
+         * @return builder
+         * 
+         */
         public Builder storageRootCredentialId(String storageRootCredentialId) {
             return storageRootCredentialId(Output.of(storageRootCredentialId));
         }
 
-        public Builder updatedAt(@Nullable Output<Integer> updatedAt) {
-            $.updatedAt = updatedAt;
+        /**
+         * @param storageRootCredentialName Name of the storage credential to access the metastore storage_root.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder storageRootCredentialName(@Nullable Output<String> storageRootCredentialName) {
+            $.storageRootCredentialName = storageRootCredentialName;
             return this;
         }
 
-        public Builder updatedAt(Integer updatedAt) {
-            return updatedAt(Output.of(updatedAt));
-        }
-
-        public Builder updatedBy(@Nullable Output<String> updatedBy) {
-            $.updatedBy = updatedBy;
-            return this;
-        }
-
-        public Builder updatedBy(String updatedBy) {
-            return updatedBy(Output.of(updatedBy));
+        /**
+         * @param storageRootCredentialName Name of the storage credential to access the metastore storage_root.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder storageRootCredentialName(String storageRootCredentialName) {
+            return storageRootCredentialName(Output.of(storageRootCredentialName));
         }
 
         public MetastoreArgs build() {

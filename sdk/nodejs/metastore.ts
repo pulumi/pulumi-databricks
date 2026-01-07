@@ -129,9 +129,21 @@ export class Metastore extends pulumi.CustomResource {
         return obj['__pulumiType'] === Metastore.__pulumiType;
     }
 
-    declare public readonly cloud: pulumi.Output<string>;
-    declare public readonly createdAt: pulumi.Output<number>;
-    declare public readonly createdBy: pulumi.Output<string>;
+    /**
+     * Cloud vendor of the metastore home shard (e.g., `aws`, `azure`, `gcp`).
+     */
+    declare public /*out*/ readonly cloud: pulumi.Output<string>;
+    /**
+     * Time at which the metastore was created, in epoch milliseconds.
+     */
+    declare public /*out*/ readonly createdAt: pulumi.Output<number>;
+    /**
+     * Username of metastore creator.
+     */
+    declare public /*out*/ readonly createdBy: pulumi.Output<string>;
+    /**
+     * (Optional) Unique identifier of the metastore's default data access configuration.
+     */
     declare public readonly defaultDataAccessConfigId: pulumi.Output<string | undefined>;
     /**
      * The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing. Once this is set it cannot be removed and can only be modified to another valid value. To delete this value please taint and recreate the resource.
@@ -142,15 +154,25 @@ export class Metastore extends pulumi.CustomResource {
      */
     declare public readonly deltaSharingRecipientTokenLifetimeInSeconds: pulumi.Output<number | undefined>;
     /**
-     * Required along with `deltaSharingRecipientTokenLifetimeInSeconds`. Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.  INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
+     * Required along with `deltaSharingRecipientTokenLifetimeInSeconds`. Used to enable delta sharing on the metastore. Valid values: `INTERNAL`, `INTERNAL_AND_EXTERNAL`.  `INTERNAL` only allows sharing within the same account, and `INTERNAL_AND_EXTERNAL` allows cross account sharing and token based sharing.
      */
     declare public readonly deltaSharingScope: pulumi.Output<string | undefined>;
+    /**
+     * Whether to allow non-DBR clients to directly access entities under the metastore.
+     */
+    declare public readonly externalAccessEnabled: pulumi.Output<boolean | undefined>;
     /**
      * Destroy metastore regardless of its contents.
      */
     declare public readonly forceDestroy: pulumi.Output<boolean | undefined>;
-    declare public readonly globalMetastoreId: pulumi.Output<string>;
-    declare public readonly metastoreId: pulumi.Output<string>;
+    /**
+     * Globally unique metastore ID across clouds and regions, of the form `cloud:region:metastore_id`.
+     */
+    declare public /*out*/ readonly globalMetastoreId: pulumi.Output<string>;
+    /**
+     * Unique identifier of the metastore.
+     */
+    declare public /*out*/ readonly metastoreId: pulumi.Output<string>;
     /**
      * Name of metastore.
      */
@@ -160,16 +182,33 @@ export class Metastore extends pulumi.CustomResource {
      */
     declare public readonly owner: pulumi.Output<string>;
     /**
+     * Privilege model version of the metastore, of the form `major.minor` (e.g., `1.0`).
+     */
+    declare public readonly privilegeModelVersion: pulumi.Output<string>;
+    /**
      * The region of the metastore
      */
     declare public readonly region: pulumi.Output<string>;
     /**
-     * Path on cloud storage account, where managed `databricks.Table` are stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). Change forces creation of a new resource. If no `storageRoot` is defined for the metastore, each catalog must have a `storageRoot` defined.
+     * Path on cloud storage account, where managed `databricks.Table` are stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). Change forces creation of a new resource. If no `storageRoot` is defined for the metastore, each catalog must have a `storageRoot` defined.  **It's recommended to define `storageRoot` on the catalog level.
      */
     declare public readonly storageRoot: pulumi.Output<string | undefined>;
+    /**
+     * (Optional) UUID of storage credential to access the metastore storage_root.
+     */
     declare public readonly storageRootCredentialId: pulumi.Output<string | undefined>;
-    declare public readonly updatedAt: pulumi.Output<number>;
-    declare public readonly updatedBy: pulumi.Output<string>;
+    /**
+     * Name of the storage credential to access the metastore storage_root.
+     */
+    declare public readonly storageRootCredentialName: pulumi.Output<string | undefined>;
+    /**
+     * Time at which the metastore was last modified, in epoch milliseconds.
+     */
+    declare public /*out*/ readonly updatedAt: pulumi.Output<number>;
+    /**
+     * Username of user who last modified the metastore.
+     */
+    declare public /*out*/ readonly updatedBy: pulumi.Output<string>;
 
     /**
      * Create a Metastore resource with the given unique name, arguments, and options.
@@ -191,35 +230,41 @@ export class Metastore extends pulumi.CustomResource {
             resourceInputs["deltaSharingOrganizationName"] = state?.deltaSharingOrganizationName;
             resourceInputs["deltaSharingRecipientTokenLifetimeInSeconds"] = state?.deltaSharingRecipientTokenLifetimeInSeconds;
             resourceInputs["deltaSharingScope"] = state?.deltaSharingScope;
+            resourceInputs["externalAccessEnabled"] = state?.externalAccessEnabled;
             resourceInputs["forceDestroy"] = state?.forceDestroy;
             resourceInputs["globalMetastoreId"] = state?.globalMetastoreId;
             resourceInputs["metastoreId"] = state?.metastoreId;
             resourceInputs["name"] = state?.name;
             resourceInputs["owner"] = state?.owner;
+            resourceInputs["privilegeModelVersion"] = state?.privilegeModelVersion;
             resourceInputs["region"] = state?.region;
             resourceInputs["storageRoot"] = state?.storageRoot;
             resourceInputs["storageRootCredentialId"] = state?.storageRootCredentialId;
+            resourceInputs["storageRootCredentialName"] = state?.storageRootCredentialName;
             resourceInputs["updatedAt"] = state?.updatedAt;
             resourceInputs["updatedBy"] = state?.updatedBy;
         } else {
             const args = argsOrState as MetastoreArgs | undefined;
-            resourceInputs["cloud"] = args?.cloud;
-            resourceInputs["createdAt"] = args?.createdAt;
-            resourceInputs["createdBy"] = args?.createdBy;
             resourceInputs["defaultDataAccessConfigId"] = args?.defaultDataAccessConfigId;
             resourceInputs["deltaSharingOrganizationName"] = args?.deltaSharingOrganizationName;
             resourceInputs["deltaSharingRecipientTokenLifetimeInSeconds"] = args?.deltaSharingRecipientTokenLifetimeInSeconds;
             resourceInputs["deltaSharingScope"] = args?.deltaSharingScope;
+            resourceInputs["externalAccessEnabled"] = args?.externalAccessEnabled;
             resourceInputs["forceDestroy"] = args?.forceDestroy;
-            resourceInputs["globalMetastoreId"] = args?.globalMetastoreId;
-            resourceInputs["metastoreId"] = args?.metastoreId;
             resourceInputs["name"] = args?.name;
             resourceInputs["owner"] = args?.owner;
+            resourceInputs["privilegeModelVersion"] = args?.privilegeModelVersion;
             resourceInputs["region"] = args?.region;
             resourceInputs["storageRoot"] = args?.storageRoot;
             resourceInputs["storageRootCredentialId"] = args?.storageRootCredentialId;
-            resourceInputs["updatedAt"] = args?.updatedAt;
-            resourceInputs["updatedBy"] = args?.updatedBy;
+            resourceInputs["storageRootCredentialName"] = args?.storageRootCredentialName;
+            resourceInputs["cloud"] = undefined /*out*/;
+            resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["createdBy"] = undefined /*out*/;
+            resourceInputs["globalMetastoreId"] = undefined /*out*/;
+            resourceInputs["metastoreId"] = undefined /*out*/;
+            resourceInputs["updatedAt"] = undefined /*out*/;
+            resourceInputs["updatedBy"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Metastore.__pulumiType, name, resourceInputs, opts);
@@ -230,9 +275,21 @@ export class Metastore extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Metastore resources.
  */
 export interface MetastoreState {
+    /**
+     * Cloud vendor of the metastore home shard (e.g., `aws`, `azure`, `gcp`).
+     */
     cloud?: pulumi.Input<string>;
+    /**
+     * Time at which the metastore was created, in epoch milliseconds.
+     */
     createdAt?: pulumi.Input<number>;
+    /**
+     * Username of metastore creator.
+     */
     createdBy?: pulumi.Input<string>;
+    /**
+     * (Optional) Unique identifier of the metastore's default data access configuration.
+     */
     defaultDataAccessConfigId?: pulumi.Input<string>;
     /**
      * The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing. Once this is set it cannot be removed and can only be modified to another valid value. To delete this value please taint and recreate the resource.
@@ -243,14 +300,24 @@ export interface MetastoreState {
      */
     deltaSharingRecipientTokenLifetimeInSeconds?: pulumi.Input<number>;
     /**
-     * Required along with `deltaSharingRecipientTokenLifetimeInSeconds`. Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.  INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
+     * Required along with `deltaSharingRecipientTokenLifetimeInSeconds`. Used to enable delta sharing on the metastore. Valid values: `INTERNAL`, `INTERNAL_AND_EXTERNAL`.  `INTERNAL` only allows sharing within the same account, and `INTERNAL_AND_EXTERNAL` allows cross account sharing and token based sharing.
      */
     deltaSharingScope?: pulumi.Input<string>;
+    /**
+     * Whether to allow non-DBR clients to directly access entities under the metastore.
+     */
+    externalAccessEnabled?: pulumi.Input<boolean>;
     /**
      * Destroy metastore regardless of its contents.
      */
     forceDestroy?: pulumi.Input<boolean>;
+    /**
+     * Globally unique metastore ID across clouds and regions, of the form `cloud:region:metastore_id`.
+     */
     globalMetastoreId?: pulumi.Input<string>;
+    /**
+     * Unique identifier of the metastore.
+     */
     metastoreId?: pulumi.Input<string>;
     /**
      * Name of metastore.
@@ -261,15 +328,32 @@ export interface MetastoreState {
      */
     owner?: pulumi.Input<string>;
     /**
+     * Privilege model version of the metastore, of the form `major.minor` (e.g., `1.0`).
+     */
+    privilegeModelVersion?: pulumi.Input<string>;
+    /**
      * The region of the metastore
      */
     region?: pulumi.Input<string>;
     /**
-     * Path on cloud storage account, where managed `databricks.Table` are stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). Change forces creation of a new resource. If no `storageRoot` is defined for the metastore, each catalog must have a `storageRoot` defined.
+     * Path on cloud storage account, where managed `databricks.Table` are stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). Change forces creation of a new resource. If no `storageRoot` is defined for the metastore, each catalog must have a `storageRoot` defined.  **It's recommended to define `storageRoot` on the catalog level.
      */
     storageRoot?: pulumi.Input<string>;
+    /**
+     * (Optional) UUID of storage credential to access the metastore storage_root.
+     */
     storageRootCredentialId?: pulumi.Input<string>;
+    /**
+     * Name of the storage credential to access the metastore storage_root.
+     */
+    storageRootCredentialName?: pulumi.Input<string>;
+    /**
+     * Time at which the metastore was last modified, in epoch milliseconds.
+     */
     updatedAt?: pulumi.Input<number>;
+    /**
+     * Username of user who last modified the metastore.
+     */
     updatedBy?: pulumi.Input<string>;
 }
 
@@ -277,9 +361,9 @@ export interface MetastoreState {
  * The set of arguments for constructing a Metastore resource.
  */
 export interface MetastoreArgs {
-    cloud?: pulumi.Input<string>;
-    createdAt?: pulumi.Input<number>;
-    createdBy?: pulumi.Input<string>;
+    /**
+     * (Optional) Unique identifier of the metastore's default data access configuration.
+     */
     defaultDataAccessConfigId?: pulumi.Input<string>;
     /**
      * The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing. Once this is set it cannot be removed and can only be modified to another valid value. To delete this value please taint and recreate the resource.
@@ -290,15 +374,17 @@ export interface MetastoreArgs {
      */
     deltaSharingRecipientTokenLifetimeInSeconds?: pulumi.Input<number>;
     /**
-     * Required along with `deltaSharingRecipientTokenLifetimeInSeconds`. Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL.  INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
+     * Required along with `deltaSharingRecipientTokenLifetimeInSeconds`. Used to enable delta sharing on the metastore. Valid values: `INTERNAL`, `INTERNAL_AND_EXTERNAL`.  `INTERNAL` only allows sharing within the same account, and `INTERNAL_AND_EXTERNAL` allows cross account sharing and token based sharing.
      */
     deltaSharingScope?: pulumi.Input<string>;
+    /**
+     * Whether to allow non-DBR clients to directly access entities under the metastore.
+     */
+    externalAccessEnabled?: pulumi.Input<boolean>;
     /**
      * Destroy metastore regardless of its contents.
      */
     forceDestroy?: pulumi.Input<boolean>;
-    globalMetastoreId?: pulumi.Input<string>;
-    metastoreId?: pulumi.Input<string>;
     /**
      * Name of metastore.
      */
@@ -308,14 +394,23 @@ export interface MetastoreArgs {
      */
     owner?: pulumi.Input<string>;
     /**
+     * Privilege model version of the metastore, of the form `major.minor` (e.g., `1.0`).
+     */
+    privilegeModelVersion?: pulumi.Input<string>;
+    /**
      * The region of the metastore
      */
     region?: pulumi.Input<string>;
     /**
-     * Path on cloud storage account, where managed `databricks.Table` are stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). Change forces creation of a new resource. If no `storageRoot` is defined for the metastore, each catalog must have a `storageRoot` defined.
+     * Path on cloud storage account, where managed `databricks.Table` are stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). Change forces creation of a new resource. If no `storageRoot` is defined for the metastore, each catalog must have a `storageRoot` defined.  **It's recommended to define `storageRoot` on the catalog level.
      */
     storageRoot?: pulumi.Input<string>;
+    /**
+     * (Optional) UUID of storage credential to access the metastore storage_root.
+     */
     storageRootCredentialId?: pulumi.Input<string>;
-    updatedAt?: pulumi.Input<number>;
-    updatedBy?: pulumi.Input<string>;
+    /**
+     * Name of the storage credential to access the metastore storage_root.
+     */
+    storageRootCredentialName?: pulumi.Input<string>;
 }

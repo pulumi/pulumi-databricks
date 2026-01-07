@@ -17,30 +17,62 @@ public final class GetMetastoreMetastoreInfoArgs extends com.pulumi.resources.Re
 
     public static final GetMetastoreMetastoreInfoArgs Empty = new GetMetastoreMetastoreInfoArgs();
 
+    /**
+     * Cloud vendor of the metastore home shard (e.g., `aws`, `azure`, `gcp`).
+     * 
+     */
     @Import(name="cloud")
     private @Nullable Output<String> cloud;
 
+    /**
+     * @return Cloud vendor of the metastore home shard (e.g., `aws`, `azure`, `gcp`).
+     * 
+     */
     public Optional<Output<String>> cloud() {
         return Optional.ofNullable(this.cloud);
     }
 
+    /**
+     * Time at which the metastore was created, in epoch milliseconds.
+     * 
+     */
     @Import(name="createdAt")
     private @Nullable Output<Integer> createdAt;
 
+    /**
+     * @return Time at which the metastore was created, in epoch milliseconds.
+     * 
+     */
     public Optional<Output<Integer>> createdAt() {
         return Optional.ofNullable(this.createdAt);
     }
 
+    /**
+     * Username of metastore creator.
+     * 
+     */
     @Import(name="createdBy")
     private @Nullable Output<String> createdBy;
 
+    /**
+     * @return Username of metastore creator.
+     * 
+     */
     public Optional<Output<String>> createdBy() {
         return Optional.ofNullable(this.createdBy);
     }
 
+    /**
+     * Unique identifier of the metastore&#39;s default data access configuration.
+     * 
+     */
     @Import(name="defaultDataAccessConfigId")
     private @Nullable Output<String> defaultDataAccessConfigId;
 
+    /**
+     * @return Unique identifier of the metastore&#39;s default data access configuration.
+     * 
+     */
     public Optional<Output<String>> defaultDataAccessConfigId() {
         return Optional.ofNullable(this.defaultDataAccessConfigId);
     }
@@ -90,16 +122,32 @@ public final class GetMetastoreMetastoreInfoArgs extends com.pulumi.resources.Re
         return Optional.ofNullable(this.deltaSharingScope);
     }
 
+    /**
+     * Whether to allow non-DBR clients to directly access entities under the metastore.
+     * 
+     */
     @Import(name="externalAccessEnabled")
     private @Nullable Output<Boolean> externalAccessEnabled;
 
+    /**
+     * @return Whether to allow non-DBR clients to directly access entities under the metastore.
+     * 
+     */
     public Optional<Output<Boolean>> externalAccessEnabled() {
         return Optional.ofNullable(this.externalAccessEnabled);
     }
 
+    /**
+     * Globally unique metastore ID across clouds and regions, of the form `cloud:region:metastore_id`.
+     * 
+     */
     @Import(name="globalMetastoreId")
     private @Nullable Output<String> globalMetastoreId;
 
+    /**
+     * @return Globally unique metastore ID across clouds and regions, of the form `cloud:region:metastore_id`.
+     * 
+     */
     public Optional<Output<String>> globalMetastoreId() {
         return Optional.ofNullable(this.globalMetastoreId);
     }
@@ -149,9 +197,17 @@ public final class GetMetastoreMetastoreInfoArgs extends com.pulumi.resources.Re
         return Optional.ofNullable(this.owner);
     }
 
+    /**
+     * Privilege model version of the metastore, of the form `major.minor` (e.g., `1.0`).
+     * 
+     */
     @Import(name="privilegeModelVersion")
     private @Nullable Output<String> privilegeModelVersion;
 
+    /**
+     * @return Privilege model version of the metastore, of the form `major.minor` (e.g., `1.0`).
+     * 
+     */
     public Optional<Output<String>> privilegeModelVersion() {
         return Optional.ofNullable(this.privilegeModelVersion);
     }
@@ -186,30 +242,62 @@ public final class GetMetastoreMetastoreInfoArgs extends com.pulumi.resources.Re
         return Optional.ofNullable(this.storageRoot);
     }
 
+    /**
+     * UUID of storage credential to access the metastore storage_root.
+     * 
+     */
     @Import(name="storageRootCredentialId")
     private @Nullable Output<String> storageRootCredentialId;
 
+    /**
+     * @return UUID of storage credential to access the metastore storage_root.
+     * 
+     */
     public Optional<Output<String>> storageRootCredentialId() {
         return Optional.ofNullable(this.storageRootCredentialId);
     }
 
+    /**
+     * Name of the storage credential to access the metastore storage_root.
+     * 
+     */
     @Import(name="storageRootCredentialName")
     private @Nullable Output<String> storageRootCredentialName;
 
+    /**
+     * @return Name of the storage credential to access the metastore storage_root.
+     * 
+     */
     public Optional<Output<String>> storageRootCredentialName() {
         return Optional.ofNullable(this.storageRootCredentialName);
     }
 
+    /**
+     * Time at which the metastore was last modified, in epoch milliseconds.
+     * 
+     */
     @Import(name="updatedAt")
     private @Nullable Output<Integer> updatedAt;
 
+    /**
+     * @return Time at which the metastore was last modified, in epoch milliseconds.
+     * 
+     */
     public Optional<Output<Integer>> updatedAt() {
         return Optional.ofNullable(this.updatedAt);
     }
 
+    /**
+     * Username of user who last modified the metastore.
+     * 
+     */
     @Import(name="updatedBy")
     private @Nullable Output<String> updatedBy;
 
+    /**
+     * @return Username of user who last modified the metastore.
+     * 
+     */
     public Optional<Output<String>> updatedBy() {
         return Optional.ofNullable(this.updatedBy);
     }
@@ -256,38 +344,86 @@ public final class GetMetastoreMetastoreInfoArgs extends com.pulumi.resources.Re
             $ = new GetMetastoreMetastoreInfoArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param cloud Cloud vendor of the metastore home shard (e.g., `aws`, `azure`, `gcp`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder cloud(@Nullable Output<String> cloud) {
             $.cloud = cloud;
             return this;
         }
 
+        /**
+         * @param cloud Cloud vendor of the metastore home shard (e.g., `aws`, `azure`, `gcp`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder cloud(String cloud) {
             return cloud(Output.of(cloud));
         }
 
+        /**
+         * @param createdAt Time at which the metastore was created, in epoch milliseconds.
+         * 
+         * @return builder
+         * 
+         */
         public Builder createdAt(@Nullable Output<Integer> createdAt) {
             $.createdAt = createdAt;
             return this;
         }
 
+        /**
+         * @param createdAt Time at which the metastore was created, in epoch milliseconds.
+         * 
+         * @return builder
+         * 
+         */
         public Builder createdAt(Integer createdAt) {
             return createdAt(Output.of(createdAt));
         }
 
+        /**
+         * @param createdBy Username of metastore creator.
+         * 
+         * @return builder
+         * 
+         */
         public Builder createdBy(@Nullable Output<String> createdBy) {
             $.createdBy = createdBy;
             return this;
         }
 
+        /**
+         * @param createdBy Username of metastore creator.
+         * 
+         * @return builder
+         * 
+         */
         public Builder createdBy(String createdBy) {
             return createdBy(Output.of(createdBy));
         }
 
+        /**
+         * @param defaultDataAccessConfigId Unique identifier of the metastore&#39;s default data access configuration.
+         * 
+         * @return builder
+         * 
+         */
         public Builder defaultDataAccessConfigId(@Nullable Output<String> defaultDataAccessConfigId) {
             $.defaultDataAccessConfigId = defaultDataAccessConfigId;
             return this;
         }
 
+        /**
+         * @param defaultDataAccessConfigId Unique identifier of the metastore&#39;s default data access configuration.
+         * 
+         * @return builder
+         * 
+         */
         public Builder defaultDataAccessConfigId(String defaultDataAccessConfigId) {
             return defaultDataAccessConfigId(Output.of(defaultDataAccessConfigId));
         }
@@ -355,20 +491,44 @@ public final class GetMetastoreMetastoreInfoArgs extends com.pulumi.resources.Re
             return deltaSharingScope(Output.of(deltaSharingScope));
         }
 
+        /**
+         * @param externalAccessEnabled Whether to allow non-DBR clients to directly access entities under the metastore.
+         * 
+         * @return builder
+         * 
+         */
         public Builder externalAccessEnabled(@Nullable Output<Boolean> externalAccessEnabled) {
             $.externalAccessEnabled = externalAccessEnabled;
             return this;
         }
 
+        /**
+         * @param externalAccessEnabled Whether to allow non-DBR clients to directly access entities under the metastore.
+         * 
+         * @return builder
+         * 
+         */
         public Builder externalAccessEnabled(Boolean externalAccessEnabled) {
             return externalAccessEnabled(Output.of(externalAccessEnabled));
         }
 
+        /**
+         * @param globalMetastoreId Globally unique metastore ID across clouds and regions, of the form `cloud:region:metastore_id`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder globalMetastoreId(@Nullable Output<String> globalMetastoreId) {
             $.globalMetastoreId = globalMetastoreId;
             return this;
         }
 
+        /**
+         * @param globalMetastoreId Globally unique metastore ID across clouds and regions, of the form `cloud:region:metastore_id`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder globalMetastoreId(String globalMetastoreId) {
             return globalMetastoreId(Output.of(globalMetastoreId));
         }
@@ -436,11 +596,23 @@ public final class GetMetastoreMetastoreInfoArgs extends com.pulumi.resources.Re
             return owner(Output.of(owner));
         }
 
+        /**
+         * @param privilegeModelVersion Privilege model version of the metastore, of the form `major.minor` (e.g., `1.0`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder privilegeModelVersion(@Nullable Output<String> privilegeModelVersion) {
             $.privilegeModelVersion = privilegeModelVersion;
             return this;
         }
 
+        /**
+         * @param privilegeModelVersion Privilege model version of the metastore, of the form `major.minor` (e.g., `1.0`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder privilegeModelVersion(String privilegeModelVersion) {
             return privilegeModelVersion(Output.of(privilegeModelVersion));
         }
@@ -487,38 +659,86 @@ public final class GetMetastoreMetastoreInfoArgs extends com.pulumi.resources.Re
             return storageRoot(Output.of(storageRoot));
         }
 
+        /**
+         * @param storageRootCredentialId UUID of storage credential to access the metastore storage_root.
+         * 
+         * @return builder
+         * 
+         */
         public Builder storageRootCredentialId(@Nullable Output<String> storageRootCredentialId) {
             $.storageRootCredentialId = storageRootCredentialId;
             return this;
         }
 
+        /**
+         * @param storageRootCredentialId UUID of storage credential to access the metastore storage_root.
+         * 
+         * @return builder
+         * 
+         */
         public Builder storageRootCredentialId(String storageRootCredentialId) {
             return storageRootCredentialId(Output.of(storageRootCredentialId));
         }
 
+        /**
+         * @param storageRootCredentialName Name of the storage credential to access the metastore storage_root.
+         * 
+         * @return builder
+         * 
+         */
         public Builder storageRootCredentialName(@Nullable Output<String> storageRootCredentialName) {
             $.storageRootCredentialName = storageRootCredentialName;
             return this;
         }
 
+        /**
+         * @param storageRootCredentialName Name of the storage credential to access the metastore storage_root.
+         * 
+         * @return builder
+         * 
+         */
         public Builder storageRootCredentialName(String storageRootCredentialName) {
             return storageRootCredentialName(Output.of(storageRootCredentialName));
         }
 
+        /**
+         * @param updatedAt Time at which the metastore was last modified, in epoch milliseconds.
+         * 
+         * @return builder
+         * 
+         */
         public Builder updatedAt(@Nullable Output<Integer> updatedAt) {
             $.updatedAt = updatedAt;
             return this;
         }
 
+        /**
+         * @param updatedAt Time at which the metastore was last modified, in epoch milliseconds.
+         * 
+         * @return builder
+         * 
+         */
         public Builder updatedAt(Integer updatedAt) {
             return updatedAt(Output.of(updatedAt));
         }
 
+        /**
+         * @param updatedBy Username of user who last modified the metastore.
+         * 
+         * @return builder
+         * 
+         */
         public Builder updatedBy(@Nullable Output<String> updatedBy) {
             $.updatedBy = updatedBy;
             return this;
         }
 
+        /**
+         * @param updatedBy Username of user who last modified the metastore.
+         * 
+         * @return builder
+         * 
+         */
         public Builder updatedBy(String updatedBy) {
             return updatedBy(Output.of(updatedBy));
         }

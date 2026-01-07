@@ -41729,33 +41729,44 @@ func (o GetMaterializedFeaturesFeatureTagsFeatureTagArrayOutput) Index(i pulumi.
 }
 
 type GetMetastoreMetastoreInfo struct {
-	Cloud                     *string `pulumi:"cloud"`
-	CreatedAt                 *int    `pulumi:"createdAt"`
-	CreatedBy                 *string `pulumi:"createdBy"`
+	// Cloud vendor of the metastore home shard (e.g., `aws`, `azure`, `gcp`).
+	Cloud *string `pulumi:"cloud"`
+	// Time at which the metastore was created, in epoch milliseconds.
+	CreatedAt *int `pulumi:"createdAt"`
+	// Username of metastore creator.
+	CreatedBy *string `pulumi:"createdBy"`
+	// Unique identifier of the metastore's default data access configuration.
 	DefaultDataAccessConfigId *string `pulumi:"defaultDataAccessConfigId"`
 	// The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing.
 	DeltaSharingOrganizationName *string `pulumi:"deltaSharingOrganizationName"`
 	// Used to set expiration duration in seconds on recipient data access tokens.
 	DeltaSharingRecipientTokenLifetimeInSeconds *int `pulumi:"deltaSharingRecipientTokenLifetimeInSeconds"`
 	// Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL. INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
-	DeltaSharingScope     *string `pulumi:"deltaSharingScope"`
-	ExternalAccessEnabled *bool   `pulumi:"externalAccessEnabled"`
-	GlobalMetastoreId     *string `pulumi:"globalMetastoreId"`
+	DeltaSharingScope *string `pulumi:"deltaSharingScope"`
+	// Whether to allow non-DBR clients to directly access entities under the metastore.
+	ExternalAccessEnabled *bool `pulumi:"externalAccessEnabled"`
+	// Globally unique metastore ID across clouds and regions, of the form `cloud:region:metastore_id`.
+	GlobalMetastoreId *string `pulumi:"globalMetastoreId"`
 	// ID of the metastore
 	MetastoreId *string `pulumi:"metastoreId"`
 	// Name of the metastore
 	Name *string `pulumi:"name"`
 	// Username/groupname/sp applicationId of the metastore owner.
-	Owner                 *string `pulumi:"owner"`
+	Owner *string `pulumi:"owner"`
+	// Privilege model version of the metastore, of the form `major.minor` (e.g., `1.0`).
 	PrivilegeModelVersion *string `pulumi:"privilegeModelVersion"`
 	// Region of the metastore
 	Region *string `pulumi:"region"`
 	// Path on cloud storage account, where managed `Table` are stored.
-	StorageRoot               *string `pulumi:"storageRoot"`
-	StorageRootCredentialId   *string `pulumi:"storageRootCredentialId"`
+	StorageRoot *string `pulumi:"storageRoot"`
+	// UUID of storage credential to access the metastore storage_root.
+	StorageRootCredentialId *string `pulumi:"storageRootCredentialId"`
+	// Name of the storage credential to access the metastore storage_root.
 	StorageRootCredentialName *string `pulumi:"storageRootCredentialName"`
-	UpdatedAt                 *int    `pulumi:"updatedAt"`
-	UpdatedBy                 *string `pulumi:"updatedBy"`
+	// Time at which the metastore was last modified, in epoch milliseconds.
+	UpdatedAt *int `pulumi:"updatedAt"`
+	// Username of user who last modified the metastore.
+	UpdatedBy *string `pulumi:"updatedBy"`
 }
 
 // GetMetastoreMetastoreInfoInput is an input type that accepts GetMetastoreMetastoreInfoArgs and GetMetastoreMetastoreInfoOutput values.
@@ -41770,33 +41781,44 @@ type GetMetastoreMetastoreInfoInput interface {
 }
 
 type GetMetastoreMetastoreInfoArgs struct {
-	Cloud                     pulumi.StringPtrInput `pulumi:"cloud"`
-	CreatedAt                 pulumi.IntPtrInput    `pulumi:"createdAt"`
-	CreatedBy                 pulumi.StringPtrInput `pulumi:"createdBy"`
+	// Cloud vendor of the metastore home shard (e.g., `aws`, `azure`, `gcp`).
+	Cloud pulumi.StringPtrInput `pulumi:"cloud"`
+	// Time at which the metastore was created, in epoch milliseconds.
+	CreatedAt pulumi.IntPtrInput `pulumi:"createdAt"`
+	// Username of metastore creator.
+	CreatedBy pulumi.StringPtrInput `pulumi:"createdBy"`
+	// Unique identifier of the metastore's default data access configuration.
 	DefaultDataAccessConfigId pulumi.StringPtrInput `pulumi:"defaultDataAccessConfigId"`
 	// The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing.
 	DeltaSharingOrganizationName pulumi.StringPtrInput `pulumi:"deltaSharingOrganizationName"`
 	// Used to set expiration duration in seconds on recipient data access tokens.
 	DeltaSharingRecipientTokenLifetimeInSeconds pulumi.IntPtrInput `pulumi:"deltaSharingRecipientTokenLifetimeInSeconds"`
 	// Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL. INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
-	DeltaSharingScope     pulumi.StringPtrInput `pulumi:"deltaSharingScope"`
-	ExternalAccessEnabled pulumi.BoolPtrInput   `pulumi:"externalAccessEnabled"`
-	GlobalMetastoreId     pulumi.StringPtrInput `pulumi:"globalMetastoreId"`
+	DeltaSharingScope pulumi.StringPtrInput `pulumi:"deltaSharingScope"`
+	// Whether to allow non-DBR clients to directly access entities under the metastore.
+	ExternalAccessEnabled pulumi.BoolPtrInput `pulumi:"externalAccessEnabled"`
+	// Globally unique metastore ID across clouds and regions, of the form `cloud:region:metastore_id`.
+	GlobalMetastoreId pulumi.StringPtrInput `pulumi:"globalMetastoreId"`
 	// ID of the metastore
 	MetastoreId pulumi.StringPtrInput `pulumi:"metastoreId"`
 	// Name of the metastore
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Username/groupname/sp applicationId of the metastore owner.
-	Owner                 pulumi.StringPtrInput `pulumi:"owner"`
+	Owner pulumi.StringPtrInput `pulumi:"owner"`
+	// Privilege model version of the metastore, of the form `major.minor` (e.g., `1.0`).
 	PrivilegeModelVersion pulumi.StringPtrInput `pulumi:"privilegeModelVersion"`
 	// Region of the metastore
 	Region pulumi.StringPtrInput `pulumi:"region"`
 	// Path on cloud storage account, where managed `Table` are stored.
-	StorageRoot               pulumi.StringPtrInput `pulumi:"storageRoot"`
-	StorageRootCredentialId   pulumi.StringPtrInput `pulumi:"storageRootCredentialId"`
+	StorageRoot pulumi.StringPtrInput `pulumi:"storageRoot"`
+	// UUID of storage credential to access the metastore storage_root.
+	StorageRootCredentialId pulumi.StringPtrInput `pulumi:"storageRootCredentialId"`
+	// Name of the storage credential to access the metastore storage_root.
 	StorageRootCredentialName pulumi.StringPtrInput `pulumi:"storageRootCredentialName"`
-	UpdatedAt                 pulumi.IntPtrInput    `pulumi:"updatedAt"`
-	UpdatedBy                 pulumi.StringPtrInput `pulumi:"updatedBy"`
+	// Time at which the metastore was last modified, in epoch milliseconds.
+	UpdatedAt pulumi.IntPtrInput `pulumi:"updatedAt"`
+	// Username of user who last modified the metastore.
+	UpdatedBy pulumi.StringPtrInput `pulumi:"updatedBy"`
 }
 
 func (GetMetastoreMetastoreInfoArgs) ElementType() reflect.Type {
@@ -41876,18 +41898,22 @@ func (o GetMetastoreMetastoreInfoOutput) ToGetMetastoreMetastoreInfoPtrOutputWit
 	}).(GetMetastoreMetastoreInfoPtrOutput)
 }
 
+// Cloud vendor of the metastore home shard (e.g., `aws`, `azure`, `gcp`).
 func (o GetMetastoreMetastoreInfoOutput) Cloud() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMetastoreMetastoreInfo) *string { return v.Cloud }).(pulumi.StringPtrOutput)
 }
 
+// Time at which the metastore was created, in epoch milliseconds.
 func (o GetMetastoreMetastoreInfoOutput) CreatedAt() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetMetastoreMetastoreInfo) *int { return v.CreatedAt }).(pulumi.IntPtrOutput)
 }
 
+// Username of metastore creator.
 func (o GetMetastoreMetastoreInfoOutput) CreatedBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMetastoreMetastoreInfo) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
 }
 
+// Unique identifier of the metastore's default data access configuration.
 func (o GetMetastoreMetastoreInfoOutput) DefaultDataAccessConfigId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMetastoreMetastoreInfo) *string { return v.DefaultDataAccessConfigId }).(pulumi.StringPtrOutput)
 }
@@ -41907,10 +41933,12 @@ func (o GetMetastoreMetastoreInfoOutput) DeltaSharingScope() pulumi.StringPtrOut
 	return o.ApplyT(func(v GetMetastoreMetastoreInfo) *string { return v.DeltaSharingScope }).(pulumi.StringPtrOutput)
 }
 
+// Whether to allow non-DBR clients to directly access entities under the metastore.
 func (o GetMetastoreMetastoreInfoOutput) ExternalAccessEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetMetastoreMetastoreInfo) *bool { return v.ExternalAccessEnabled }).(pulumi.BoolPtrOutput)
 }
 
+// Globally unique metastore ID across clouds and regions, of the form `cloud:region:metastore_id`.
 func (o GetMetastoreMetastoreInfoOutput) GlobalMetastoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMetastoreMetastoreInfo) *string { return v.GlobalMetastoreId }).(pulumi.StringPtrOutput)
 }
@@ -41930,6 +41958,7 @@ func (o GetMetastoreMetastoreInfoOutput) Owner() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMetastoreMetastoreInfo) *string { return v.Owner }).(pulumi.StringPtrOutput)
 }
 
+// Privilege model version of the metastore, of the form `major.minor` (e.g., `1.0`).
 func (o GetMetastoreMetastoreInfoOutput) PrivilegeModelVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMetastoreMetastoreInfo) *string { return v.PrivilegeModelVersion }).(pulumi.StringPtrOutput)
 }
@@ -41944,18 +41973,22 @@ func (o GetMetastoreMetastoreInfoOutput) StorageRoot() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMetastoreMetastoreInfo) *string { return v.StorageRoot }).(pulumi.StringPtrOutput)
 }
 
+// UUID of storage credential to access the metastore storage_root.
 func (o GetMetastoreMetastoreInfoOutput) StorageRootCredentialId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMetastoreMetastoreInfo) *string { return v.StorageRootCredentialId }).(pulumi.StringPtrOutput)
 }
 
+// Name of the storage credential to access the metastore storage_root.
 func (o GetMetastoreMetastoreInfoOutput) StorageRootCredentialName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMetastoreMetastoreInfo) *string { return v.StorageRootCredentialName }).(pulumi.StringPtrOutput)
 }
 
+// Time at which the metastore was last modified, in epoch milliseconds.
 func (o GetMetastoreMetastoreInfoOutput) UpdatedAt() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetMetastoreMetastoreInfo) *int { return v.UpdatedAt }).(pulumi.IntPtrOutput)
 }
 
+// Username of user who last modified the metastore.
 func (o GetMetastoreMetastoreInfoOutput) UpdatedBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetMetastoreMetastoreInfo) *string { return v.UpdatedBy }).(pulumi.StringPtrOutput)
 }
@@ -41984,6 +42017,7 @@ func (o GetMetastoreMetastoreInfoPtrOutput) Elem() GetMetastoreMetastoreInfoOutp
 	}).(GetMetastoreMetastoreInfoOutput)
 }
 
+// Cloud vendor of the metastore home shard (e.g., `aws`, `azure`, `gcp`).
 func (o GetMetastoreMetastoreInfoPtrOutput) Cloud() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetMetastoreMetastoreInfo) *string {
 		if v == nil {
@@ -41993,6 +42027,7 @@ func (o GetMetastoreMetastoreInfoPtrOutput) Cloud() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Time at which the metastore was created, in epoch milliseconds.
 func (o GetMetastoreMetastoreInfoPtrOutput) CreatedAt() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetMetastoreMetastoreInfo) *int {
 		if v == nil {
@@ -42002,6 +42037,7 @@ func (o GetMetastoreMetastoreInfoPtrOutput) CreatedAt() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Username of metastore creator.
 func (o GetMetastoreMetastoreInfoPtrOutput) CreatedBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetMetastoreMetastoreInfo) *string {
 		if v == nil {
@@ -42011,6 +42047,7 @@ func (o GetMetastoreMetastoreInfoPtrOutput) CreatedBy() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Unique identifier of the metastore's default data access configuration.
 func (o GetMetastoreMetastoreInfoPtrOutput) DefaultDataAccessConfigId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetMetastoreMetastoreInfo) *string {
 		if v == nil {
@@ -42050,6 +42087,7 @@ func (o GetMetastoreMetastoreInfoPtrOutput) DeltaSharingScope() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
+// Whether to allow non-DBR clients to directly access entities under the metastore.
 func (o GetMetastoreMetastoreInfoPtrOutput) ExternalAccessEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GetMetastoreMetastoreInfo) *bool {
 		if v == nil {
@@ -42059,6 +42097,7 @@ func (o GetMetastoreMetastoreInfoPtrOutput) ExternalAccessEnabled() pulumi.BoolP
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Globally unique metastore ID across clouds and regions, of the form `cloud:region:metastore_id`.
 func (o GetMetastoreMetastoreInfoPtrOutput) GlobalMetastoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetMetastoreMetastoreInfo) *string {
 		if v == nil {
@@ -42098,6 +42137,7 @@ func (o GetMetastoreMetastoreInfoPtrOutput) Owner() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Privilege model version of the metastore, of the form `major.minor` (e.g., `1.0`).
 func (o GetMetastoreMetastoreInfoPtrOutput) PrivilegeModelVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetMetastoreMetastoreInfo) *string {
 		if v == nil {
@@ -42127,6 +42167,7 @@ func (o GetMetastoreMetastoreInfoPtrOutput) StorageRoot() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+// UUID of storage credential to access the metastore storage_root.
 func (o GetMetastoreMetastoreInfoPtrOutput) StorageRootCredentialId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetMetastoreMetastoreInfo) *string {
 		if v == nil {
@@ -42136,6 +42177,7 @@ func (o GetMetastoreMetastoreInfoPtrOutput) StorageRootCredentialId() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
+// Name of the storage credential to access the metastore storage_root.
 func (o GetMetastoreMetastoreInfoPtrOutput) StorageRootCredentialName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetMetastoreMetastoreInfo) *string {
 		if v == nil {
@@ -42145,6 +42187,7 @@ func (o GetMetastoreMetastoreInfoPtrOutput) StorageRootCredentialName() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
+// Time at which the metastore was last modified, in epoch milliseconds.
 func (o GetMetastoreMetastoreInfoPtrOutput) UpdatedAt() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetMetastoreMetastoreInfo) *int {
 		if v == nil {
@@ -42154,6 +42197,7 @@ func (o GetMetastoreMetastoreInfoPtrOutput) UpdatedAt() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Username of user who last modified the metastore.
 func (o GetMetastoreMetastoreInfoPtrOutput) UpdatedBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetMetastoreMetastoreInfo) *string {
 		if v == nil {
