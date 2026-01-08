@@ -150,7 +150,14 @@ class TagPolicy(pulumi.CustomResource):
         """
         [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
-        Define tag policies to manage governed tags in your account. Manage tag policy permissions using the `AccessControlRuleSet` resource.
+        Define tag policies to manage governed tags in your account.
+
+        The following resources are often used in the same context:
+
+        * EntityTagAssignment for assigning tags to supported Unity Catalog entities.
+        * WorkspaceEntityTagAssignment for assigning tags to supported workspace entities.
+        * PolicyInfo for defining ABAC policies using governed tags.
+        * AccessControlRuleSet for managing account-level and individual tag policy permissions.
 
         > **Note** This resource can only be used with a workspace-level provider!
 
@@ -208,7 +215,14 @@ class TagPolicy(pulumi.CustomResource):
         """
         [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
-        Define tag policies to manage governed tags in your account. Manage tag policy permissions using the `AccessControlRuleSet` resource.
+        Define tag policies to manage governed tags in your account.
+
+        The following resources are often used in the same context:
+
+        * EntityTagAssignment for assigning tags to supported Unity Catalog entities.
+        * WorkspaceEntityTagAssignment for assigning tags to supported workspace entities.
+        * PolicyInfo for defining ABAC policies using governed tags.
+        * AccessControlRuleSet for managing account-level and individual tag policy permissions.
 
         > **Note** This resource can only be used with a workspace-level provider!
 

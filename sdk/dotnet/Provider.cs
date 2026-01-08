@@ -226,6 +226,9 @@ namespace Pulumi.Databricks
         [Input("debugTruncateBytes", json: true)]
         public Input<int>? DebugTruncateBytes { get; set; }
 
+        [Input("disableOauthRefreshToken", json: true)]
+        public Input<bool>? DisableOauthRefreshToken { get; set; }
+
         [Input("experimentalIsUnifiedHost", json: true)]
         public Input<bool>? ExperimentalIsUnifiedHost { get; set; }
 

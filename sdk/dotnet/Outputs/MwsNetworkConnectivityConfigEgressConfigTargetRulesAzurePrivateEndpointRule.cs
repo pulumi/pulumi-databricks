@@ -22,6 +22,7 @@ namespace Pulumi.Databricks.Outputs
         public readonly int? DeactivatedAt;
         public readonly ImmutableArray<string> DomainNames;
         public readonly string? EndpointName;
+        public readonly string? ErrorMessage;
         public readonly string? GroupId;
         /// <summary>
         /// Canonical unique identifier of Network Connectivity Config in Databricks Account
@@ -48,6 +49,8 @@ namespace Pulumi.Databricks.Outputs
 
             string? endpointName,
 
+            string? errorMessage,
+
             string? groupId,
 
             string? networkConnectivityConfigId,
@@ -64,6 +67,7 @@ namespace Pulumi.Databricks.Outputs
             DeactivatedAt = deactivatedAt;
             DomainNames = domainNames;
             EndpointName = endpointName;
+            ErrorMessage = errorMessage;
             GroupId = groupId;
             NetworkConnectivityConfigId = networkConnectivityConfigId;
             ResourceId = resourceId;

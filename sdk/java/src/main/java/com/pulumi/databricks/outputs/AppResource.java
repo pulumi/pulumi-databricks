@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.AppResourceDatabase;
+import com.pulumi.databricks.outputs.AppResourceExperiment;
 import com.pulumi.databricks.outputs.AppResourceGenieSpace;
 import com.pulumi.databricks.outputs.AppResourceJob;
 import com.pulumi.databricks.outputs.AppResourceSecret;
@@ -31,6 +32,7 @@ public final class AppResource {
      * 
      */
     private @Nullable String description;
+    private @Nullable AppResourceExperiment experiment;
     /**
      * @return attribute
      * 
@@ -83,6 +85,9 @@ public final class AppResource {
      */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
+    }
+    public Optional<AppResourceExperiment> experiment() {
+        return Optional.ofNullable(this.experiment);
     }
     /**
      * @return attribute
@@ -145,6 +150,7 @@ public final class AppResource {
     public static final class Builder {
         private @Nullable AppResourceDatabase database;
         private @Nullable String description;
+        private @Nullable AppResourceExperiment experiment;
         private @Nullable AppResourceGenieSpace genieSpace;
         private @Nullable AppResourceJob job;
         private String name;
@@ -157,6 +163,7 @@ public final class AppResource {
     	      Objects.requireNonNull(defaults);
     	      this.database = defaults.database;
     	      this.description = defaults.description;
+    	      this.experiment = defaults.experiment;
     	      this.genieSpace = defaults.genieSpace;
     	      this.job = defaults.job;
     	      this.name = defaults.name;
@@ -176,6 +183,12 @@ public final class AppResource {
         public Builder description(@Nullable String description) {
 
             this.description = description;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder experiment(@Nullable AppResourceExperiment experiment) {
+
+            this.experiment = experiment;
             return this;
         }
         @CustomType.Setter
@@ -226,6 +239,7 @@ public final class AppResource {
             final var _resultValue = new AppResource();
             _resultValue.database = database;
             _resultValue.description = description;
+            _resultValue.experiment = experiment;
             _resultValue.genieSpace = genieSpace;
             _resultValue.job = job;
             _resultValue.name = name;

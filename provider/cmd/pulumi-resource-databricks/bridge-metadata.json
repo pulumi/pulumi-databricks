@@ -156,8 +156,28 @@
                 "current": "databricks:index/app:App",
                 "majorVersion": 1,
                 "fields": {
+                    "active_deployment": {
+                        "fields": {
+                            "command": {
+                                "maxItemsOne": false
+                            },
+                            "env_vars": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    },
                     "effective_user_api_scopes": {
                         "maxItemsOne": false
+                    },
+                    "pending_deployment": {
+                        "fields": {
+                            "command": {
+                                "maxItemsOne": false
+                            },
+                            "env_vars": {
+                                "maxItemsOne": false
+                            }
+                        }
                     },
                     "resources": {
                         "maxItemsOne": false
@@ -529,6 +549,13 @@
                 "current": "databricks:index/dataQualityMonitor:DataQualityMonitor",
                 "majorVersion": 1,
                 "fields": {
+                    "anomaly_detection_config": {
+                        "fields": {
+                            "excluded_table_full_names": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    },
                     "data_profiling_config": {
                         "fields": {
                             "custom_metrics": {
@@ -3396,6 +3423,18 @@
                     }
                 }
             },
+            "databricks_postgres_branch": {
+                "current": "databricks:index/postgresBranch:PostgresBranch",
+                "majorVersion": 1
+            },
+            "databricks_postgres_endpoint": {
+                "current": "databricks:index/postgresEndpoint:PostgresEndpoint",
+                "majorVersion": 1
+            },
+            "databricks_postgres_project": {
+                "current": "databricks:index/postgresProject:PostgresProject",
+                "majorVersion": 1
+            },
             "databricks_provider": {
                 "current": "databricks:index/metastoreProvider:MetastoreProvider",
                 "majorVersion": 1
@@ -3480,7 +3519,16 @@
             },
             "databricks_quality_monitor_v2": {
                 "current": "databricks:index/qualityMonitorV2:QualityMonitorV2",
-                "majorVersion": 1
+                "majorVersion": 1,
+                "fields": {
+                    "anomaly_detection_config": {
+                        "fields": {
+                            "excluded_table_full_names": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    }
+                }
             },
             "databricks_query": {
                 "current": "databricks:index/query:Query",
@@ -4207,8 +4255,28 @@
                 "fields": {
                     "app": {
                         "fields": {
+                            "active_deployment": {
+                                "fields": {
+                                    "command": {
+                                        "maxItemsOne": false
+                                    },
+                                    "env_vars": {
+                                        "maxItemsOne": false
+                                    }
+                                }
+                            },
                             "effective_user_api_scopes": {
                                 "maxItemsOne": false
+                            },
+                            "pending_deployment": {
+                                "fields": {
+                                    "command": {
+                                        "maxItemsOne": false
+                                    },
+                                    "env_vars": {
+                                        "maxItemsOne": false
+                                    }
+                                }
                             },
                             "resources": {
                                 "maxItemsOne": false
@@ -4228,8 +4296,28 @@
                         "maxItemsOne": false,
                         "elem": {
                             "fields": {
+                                "active_deployment": {
+                                    "fields": {
+                                        "command": {
+                                            "maxItemsOne": false
+                                        },
+                                        "env_vars": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                },
                                 "effective_user_api_scopes": {
                                     "maxItemsOne": false
+                                },
+                                "pending_deployment": {
+                                    "fields": {
+                                        "command": {
+                                            "maxItemsOne": false
+                                        },
+                                        "env_vars": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
                                 },
                                 "resources": {
                                     "maxItemsOne": false
@@ -4692,6 +4780,13 @@
                 "current": "databricks:index/getDataQualityMonitor:getDataQualityMonitor",
                 "majorVersion": 1,
                 "fields": {
+                    "anomaly_detection_config": {
+                        "fields": {
+                            "excluded_table_full_names": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    },
                     "data_profiling_config": {
                         "fields": {
                             "custom_metrics": {
@@ -4744,6 +4839,13 @@
                         "maxItemsOne": false,
                         "elem": {
                             "fields": {
+                                "anomaly_detection_config": {
+                                    "fields": {
+                                        "excluded_table_full_names": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                },
                                 "data_profiling_config": {
                                     "fields": {
                                         "custom_metrics": {
@@ -6597,16 +6699,75 @@
                     }
                 }
             },
+            "databricks_postgres_branch": {
+                "current": "databricks:index/getPostgresBranch:getPostgresBranch",
+                "majorVersion": 1
+            },
+            "databricks_postgres_branches": {
+                "current": "databricks:index/getPostgresBranches:getPostgresBranches",
+                "majorVersion": 1,
+                "fields": {
+                    "branches": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "databricks_postgres_endpoint": {
+                "current": "databricks:index/getPostgresEndpoint:getPostgresEndpoint",
+                "majorVersion": 1
+            },
+            "databricks_postgres_endpoints": {
+                "current": "databricks:index/getPostgresEndpoints:getPostgresEndpoints",
+                "majorVersion": 1,
+                "fields": {
+                    "endpoints": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "databricks_postgres_project": {
+                "current": "databricks:index/getPostgresProject:getPostgresProject",
+                "majorVersion": 1
+            },
+            "databricks_postgres_projects": {
+                "current": "databricks:index/getPostgresProjects:getPostgresProjects",
+                "majorVersion": 1,
+                "fields": {
+                    "projects": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "databricks_quality_monitor_v2": {
                 "current": "databricks:index/getQualityMonitorV2:getQualityMonitorV2",
-                "majorVersion": 1
+                "majorVersion": 1,
+                "fields": {
+                    "anomaly_detection_config": {
+                        "fields": {
+                            "excluded_table_full_names": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    }
+                }
             },
             "databricks_quality_monitors_v2": {
                 "current": "databricks:index/getQualityMonitorsV2:getQualityMonitorsV2",
                 "majorVersion": 1,
                 "fields": {
                     "quality_monitors": {
-                        "maxItemsOne": false
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "anomaly_detection_config": {
+                                    "fields": {
+                                        "excluded_table_full_names": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -7455,6 +7616,9 @@
             "databricks:index/permissions:Permissions": 0,
             "databricks:index/pipeline:Pipeline": 0,
             "databricks:index/policyInfo:PolicyInfo": 1,
+            "databricks:index/postgresBranch:PostgresBranch": 1,
+            "databricks:index/postgresEndpoint:PostgresEndpoint": 1,
+            "databricks:index/postgresProject:PostgresProject": 1,
             "databricks:index/qualityMonitor:QualityMonitor": 1,
             "databricks:index/qualityMonitorV2:QualityMonitorV2": 1,
             "databricks:index/query:Query": 0,
@@ -7578,6 +7742,12 @@
             "databricks:index/getPipelines:getPipelines": 0,
             "databricks:index/getPolicyInfo:getPolicyInfo": 1,
             "databricks:index/getPolicyInfos:getPolicyInfos": 1,
+            "databricks:index/getPostgresBranch:getPostgresBranch": 1,
+            "databricks:index/getPostgresBranches:getPostgresBranches": 1,
+            "databricks:index/getPostgresEndpoint:getPostgresEndpoint": 1,
+            "databricks:index/getPostgresEndpoints:getPostgresEndpoints": 1,
+            "databricks:index/getPostgresProject:getPostgresProject": 1,
+            "databricks:index/getPostgresProjects:getPostgresProjects": 1,
             "databricks:index/getQualityMonitorV2:getQualityMonitorV2": 1,
             "databricks:index/getQualityMonitorsV2:getQualityMonitorsV2": 1,
             "databricks:index/getRegisteredModel:getRegisteredModel": 1,

@@ -18,14 +18,47 @@ import (
 // ## Example Usage
 //
 // Referring to RFA access request destinations by securable type and full name:
-func LookupRfaAccessRequestDestinations(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*LookupRfaAccessRequestDestinationsResult, error) {
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.LookupRfaAccessRequestDestinations(ctx, &databricks.LookupRfaAccessRequestDestinationsArgs{
+//				SecurableType: "SCHEMA",
+//				FullName:      "main.customer_data",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+func LookupRfaAccessRequestDestinations(ctx *pulumi.Context, args *LookupRfaAccessRequestDestinationsArgs, opts ...pulumi.InvokeOption) (*LookupRfaAccessRequestDestinationsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupRfaAccessRequestDestinationsResult
-	err := ctx.Invoke("databricks:index/getRfaAccessRequestDestinations:getRfaAccessRequestDestinations", nil, &rv, opts...)
+	err := ctx.Invoke("databricks:index/getRfaAccessRequestDestinations:getRfaAccessRequestDestinations", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &rv, nil
+}
+
+// A collection of arguments for invoking getRfaAccessRequestDestinations.
+type LookupRfaAccessRequestDestinationsArgs struct {
+	// The full name of the securable. Redundant with the name in the securable object, but necessary for Pulumi integration
+	FullName string `pulumi:"fullName"`
+	// The type of the securable. Redundant with the type in the securable object, but necessary for Pulumi integration
+	SecurableType string `pulumi:"securableType"`
 }
 
 // A collection of values returned by getRfaAccessRequestDestinations.
@@ -33,19 +66,41 @@ type LookupRfaAccessRequestDestinationsResult struct {
 	// (boolean) - Indicates whether any destinations are hidden from the caller due to a lack of permissions.
 	// This value is true if the caller does not have permission to see all destinations
 	AreAnyDestinationsHidden bool `pulumi:"areAnyDestinationsHidden"`
+	// (Securable) - The source securable from which the destinations are inherited. Either the same value as securable (if destination
+	// is set directly on the securable) or the nearest parent securable with destinations set
+	DestinationSourceSecurable GetRfaAccessRequestDestinationsDestinationSourceSecurable `pulumi:"destinationSourceSecurable"`
 	// (list of NotificationDestination) - The access request destinations for the securable
 	Destinations []GetRfaAccessRequestDestinationsDestination `pulumi:"destinations"`
+	// (string) - Required. The full name of the catalog/schema/table.
+	// Optional if resourceName is present
+	FullName string `pulumi:"fullName"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// (Securable) - The securable for which the access request destinations are being retrieved
+	// (Securable) - The securable for which the access request destinations are being modified or read
 	Securable GetRfaAccessRequestDestinationsSecurable `pulumi:"securable"`
+	// (string) - The type of the securable. Redundant with the type in the securable object, but necessary for Pulumi integration
+	SecurableType string `pulumi:"securableType"`
 }
 
-func LookupRfaAccessRequestDestinationsOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) LookupRfaAccessRequestDestinationsResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (LookupRfaAccessRequestDestinationsResultOutput, error) {
-		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-		return ctx.InvokeOutput("databricks:index/getRfaAccessRequestDestinations:getRfaAccessRequestDestinations", nil, LookupRfaAccessRequestDestinationsResultOutput{}, options).(LookupRfaAccessRequestDestinationsResultOutput), nil
-	}).(LookupRfaAccessRequestDestinationsResultOutput)
+func LookupRfaAccessRequestDestinationsOutput(ctx *pulumi.Context, args LookupRfaAccessRequestDestinationsOutputArgs, opts ...pulumi.InvokeOption) LookupRfaAccessRequestDestinationsResultOutput {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (LookupRfaAccessRequestDestinationsResultOutput, error) {
+			args := v.(LookupRfaAccessRequestDestinationsArgs)
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("databricks:index/getRfaAccessRequestDestinations:getRfaAccessRequestDestinations", args, LookupRfaAccessRequestDestinationsResultOutput{}, options).(LookupRfaAccessRequestDestinationsResultOutput), nil
+		}).(LookupRfaAccessRequestDestinationsResultOutput)
+}
+
+// A collection of arguments for invoking getRfaAccessRequestDestinations.
+type LookupRfaAccessRequestDestinationsOutputArgs struct {
+	// The full name of the securable. Redundant with the name in the securable object, but necessary for Pulumi integration
+	FullName pulumi.StringInput `pulumi:"fullName"`
+	// The type of the securable. Redundant with the type in the securable object, but necessary for Pulumi integration
+	SecurableType pulumi.StringInput `pulumi:"securableType"`
+}
+
+func (LookupRfaAccessRequestDestinationsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupRfaAccessRequestDestinationsArgs)(nil)).Elem()
 }
 
 // A collection of values returned by getRfaAccessRequestDestinations.
@@ -69,6 +124,14 @@ func (o LookupRfaAccessRequestDestinationsResultOutput) AreAnyDestinationsHidden
 	return o.ApplyT(func(v LookupRfaAccessRequestDestinationsResult) bool { return v.AreAnyDestinationsHidden }).(pulumi.BoolOutput)
 }
 
+// (Securable) - The source securable from which the destinations are inherited. Either the same value as securable (if destination
+// is set directly on the securable) or the nearest parent securable with destinations set
+func (o LookupRfaAccessRequestDestinationsResultOutput) DestinationSourceSecurable() GetRfaAccessRequestDestinationsDestinationSourceSecurableOutput {
+	return o.ApplyT(func(v LookupRfaAccessRequestDestinationsResult) GetRfaAccessRequestDestinationsDestinationSourceSecurable {
+		return v.DestinationSourceSecurable
+	}).(GetRfaAccessRequestDestinationsDestinationSourceSecurableOutput)
+}
+
 // (list of NotificationDestination) - The access request destinations for the securable
 func (o LookupRfaAccessRequestDestinationsResultOutput) Destinations() GetRfaAccessRequestDestinationsDestinationArrayOutput {
 	return o.ApplyT(func(v LookupRfaAccessRequestDestinationsResult) []GetRfaAccessRequestDestinationsDestination {
@@ -76,16 +139,27 @@ func (o LookupRfaAccessRequestDestinationsResultOutput) Destinations() GetRfaAcc
 	}).(GetRfaAccessRequestDestinationsDestinationArrayOutput)
 }
 
+// (string) - Required. The full name of the catalog/schema/table.
+// Optional if resourceName is present
+func (o LookupRfaAccessRequestDestinationsResultOutput) FullName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRfaAccessRequestDestinationsResult) string { return v.FullName }).(pulumi.StringOutput)
+}
+
 // The provider-assigned unique ID for this managed resource.
 func (o LookupRfaAccessRequestDestinationsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRfaAccessRequestDestinationsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// (Securable) - The securable for which the access request destinations are being retrieved
+// (Securable) - The securable for which the access request destinations are being modified or read
 func (o LookupRfaAccessRequestDestinationsResultOutput) Securable() GetRfaAccessRequestDestinationsSecurableOutput {
 	return o.ApplyT(func(v LookupRfaAccessRequestDestinationsResult) GetRfaAccessRequestDestinationsSecurable {
 		return v.Securable
 	}).(GetRfaAccessRequestDestinationsSecurableOutput)
+}
+
+// (string) - The type of the securable. Redundant with the type in the securable object, but necessary for Pulumi integration
+func (o LookupRfaAccessRequestDestinationsResultOutput) SecurableType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRfaAccessRequestDestinationsResult) string { return v.SecurableType }).(pulumi.StringOutput)
 }
 
 func init() {

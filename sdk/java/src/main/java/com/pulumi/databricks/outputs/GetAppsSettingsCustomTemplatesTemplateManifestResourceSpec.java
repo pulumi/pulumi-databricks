@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetAppsSettingsCustomTemplatesTemplateManifestResourceSpecExperimentSpec;
 import com.pulumi.databricks.outputs.GetAppsSettingsCustomTemplatesTemplateManifestResourceSpecJobSpec;
 import com.pulumi.databricks.outputs.GetAppsSettingsCustomTemplatesTemplateManifestResourceSpecSecretSpec;
 import com.pulumi.databricks.outputs.GetAppsSettingsCustomTemplatesTemplateManifestResourceSpecServingEndpointSpec;
@@ -22,6 +23,11 @@ public final class GetAppsSettingsCustomTemplatesTemplateManifestResourceSpec {
      * 
      */
     private @Nullable String description;
+    /**
+     * @return (AppManifestAppResourceExperimentSpec)
+     * 
+     */
+    private @Nullable GetAppsSettingsCustomTemplatesTemplateManifestResourceSpecExperimentSpec experimentSpec;
     /**
      * @return (AppManifestAppResourceJobSpec)
      * 
@@ -60,6 +66,13 @@ public final class GetAppsSettingsCustomTemplatesTemplateManifestResourceSpec {
      */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
+    }
+    /**
+     * @return (AppManifestAppResourceExperimentSpec)
+     * 
+     */
+    public Optional<GetAppsSettingsCustomTemplatesTemplateManifestResourceSpecExperimentSpec> experimentSpec() {
+        return Optional.ofNullable(this.experimentSpec);
     }
     /**
      * @return (AppManifestAppResourceJobSpec)
@@ -114,6 +127,7 @@ public final class GetAppsSettingsCustomTemplatesTemplateManifestResourceSpec {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String description;
+        private @Nullable GetAppsSettingsCustomTemplatesTemplateManifestResourceSpecExperimentSpec experimentSpec;
         private @Nullable GetAppsSettingsCustomTemplatesTemplateManifestResourceSpecJobSpec jobSpec;
         private String name;
         private @Nullable GetAppsSettingsCustomTemplatesTemplateManifestResourceSpecSecretSpec secretSpec;
@@ -124,6 +138,7 @@ public final class GetAppsSettingsCustomTemplatesTemplateManifestResourceSpec {
         public Builder(GetAppsSettingsCustomTemplatesTemplateManifestResourceSpec defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
+    	      this.experimentSpec = defaults.experimentSpec;
     	      this.jobSpec = defaults.jobSpec;
     	      this.name = defaults.name;
     	      this.secretSpec = defaults.secretSpec;
@@ -136,6 +151,12 @@ public final class GetAppsSettingsCustomTemplatesTemplateManifestResourceSpec {
         public Builder description(@Nullable String description) {
 
             this.description = description;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder experimentSpec(@Nullable GetAppsSettingsCustomTemplatesTemplateManifestResourceSpecExperimentSpec experimentSpec) {
+
+            this.experimentSpec = experimentSpec;
             return this;
         }
         @CustomType.Setter
@@ -179,6 +200,7 @@ public final class GetAppsSettingsCustomTemplatesTemplateManifestResourceSpec {
         public GetAppsSettingsCustomTemplatesTemplateManifestResourceSpec build() {
             final var _resultValue = new GetAppsSettingsCustomTemplatesTemplateManifestResourceSpec();
             _resultValue.description = description;
+            _resultValue.experimentSpec = experimentSpec;
             _resultValue.jobSpec = jobSpec;
             _resultValue.name = name;
             _resultValue.secretSpec = secretSpec;

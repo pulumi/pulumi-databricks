@@ -114,6 +114,13 @@ public final class GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPriv
         return Optional.ofNullable(this.endpointService);
     }
 
+    @Import(name="errorMessage")
+    private @Nullable Output<String> errorMessage;
+
+    public Optional<Output<String>> errorMessage() {
+        return Optional.ofNullable(this.errorMessage);
+    }
+
     /**
      * The Databricks network connectivity configuration ID.
      * 
@@ -184,6 +191,7 @@ public final class GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPriv
         this.domainNames = $.domainNames;
         this.enabled = $.enabled;
         this.endpointService = $.endpointService;
+        this.errorMessage = $.errorMessage;
         this.networkConnectivityConfigId = $.networkConnectivityConfigId;
         this.resourceNames = $.resourceNames;
         this.ruleId = $.ruleId;
@@ -343,6 +351,15 @@ public final class GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPriv
 
         public Builder endpointService(String endpointService) {
             return endpointService(Output.of(endpointService));
+        }
+
+        public Builder errorMessage(@Nullable Output<String> errorMessage) {
+            $.errorMessage = errorMessage;
+            return this;
+        }
+
+        public Builder errorMessage(String errorMessage) {
+            return errorMessage(Output.of(errorMessage));
         }
 
         /**

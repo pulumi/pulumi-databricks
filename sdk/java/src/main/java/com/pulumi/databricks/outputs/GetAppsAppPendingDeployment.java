@@ -5,15 +5,19 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetAppsAppPendingDeploymentDeploymentArtifacts;
+import com.pulumi.databricks.outputs.GetAppsAppPendingDeploymentEnvVar;
+import com.pulumi.databricks.outputs.GetAppsAppPendingDeploymentGitSource;
 import com.pulumi.databricks.outputs.GetAppsAppPendingDeploymentStatus;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAppsAppPendingDeployment {
+    private @Nullable List<String> commands;
     /**
      * @return The creation time of the app.
      * 
@@ -26,6 +30,8 @@ public final class GetAppsAppPendingDeployment {
     private String creator;
     private GetAppsAppPendingDeploymentDeploymentArtifacts deploymentArtifacts;
     private @Nullable String deploymentId;
+    private @Nullable List<GetAppsAppPendingDeploymentEnvVar> envVars;
+    private @Nullable GetAppsAppPendingDeploymentGitSource gitSource;
     private @Nullable String mode;
     private @Nullable String sourceCodePath;
     private GetAppsAppPendingDeploymentStatus status;
@@ -36,6 +42,9 @@ public final class GetAppsAppPendingDeployment {
     private String updateTime;
 
     private GetAppsAppPendingDeployment() {}
+    public List<String> commands() {
+        return this.commands == null ? List.of() : this.commands;
+    }
     /**
      * @return The creation time of the app.
      * 
@@ -55,6 +64,12 @@ public final class GetAppsAppPendingDeployment {
     }
     public Optional<String> deploymentId() {
         return Optional.ofNullable(this.deploymentId);
+    }
+    public List<GetAppsAppPendingDeploymentEnvVar> envVars() {
+        return this.envVars == null ? List.of() : this.envVars;
+    }
+    public Optional<GetAppsAppPendingDeploymentGitSource> gitSource() {
+        return Optional.ofNullable(this.gitSource);
     }
     public Optional<String> mode() {
         return Optional.ofNullable(this.mode);
@@ -82,10 +97,13 @@ public final class GetAppsAppPendingDeployment {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<String> commands;
         private String createTime;
         private String creator;
         private GetAppsAppPendingDeploymentDeploymentArtifacts deploymentArtifacts;
         private @Nullable String deploymentId;
+        private @Nullable List<GetAppsAppPendingDeploymentEnvVar> envVars;
+        private @Nullable GetAppsAppPendingDeploymentGitSource gitSource;
         private @Nullable String mode;
         private @Nullable String sourceCodePath;
         private GetAppsAppPendingDeploymentStatus status;
@@ -93,16 +111,28 @@ public final class GetAppsAppPendingDeployment {
         public Builder() {}
         public Builder(GetAppsAppPendingDeployment defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.commands = defaults.commands;
     	      this.createTime = defaults.createTime;
     	      this.creator = defaults.creator;
     	      this.deploymentArtifacts = defaults.deploymentArtifacts;
     	      this.deploymentId = defaults.deploymentId;
+    	      this.envVars = defaults.envVars;
+    	      this.gitSource = defaults.gitSource;
     	      this.mode = defaults.mode;
     	      this.sourceCodePath = defaults.sourceCodePath;
     	      this.status = defaults.status;
     	      this.updateTime = defaults.updateTime;
         }
 
+        @CustomType.Setter
+        public Builder commands(@Nullable List<String> commands) {
+
+            this.commands = commands;
+            return this;
+        }
+        public Builder commands(String... commands) {
+            return commands(List.of(commands));
+        }
         @CustomType.Setter
         public Builder createTime(String createTime) {
             if (createTime == null) {
@@ -131,6 +161,21 @@ public final class GetAppsAppPendingDeployment {
         public Builder deploymentId(@Nullable String deploymentId) {
 
             this.deploymentId = deploymentId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder envVars(@Nullable List<GetAppsAppPendingDeploymentEnvVar> envVars) {
+
+            this.envVars = envVars;
+            return this;
+        }
+        public Builder envVars(GetAppsAppPendingDeploymentEnvVar... envVars) {
+            return envVars(List.of(envVars));
+        }
+        @CustomType.Setter
+        public Builder gitSource(@Nullable GetAppsAppPendingDeploymentGitSource gitSource) {
+
+            this.gitSource = gitSource;
             return this;
         }
         @CustomType.Setter
@@ -163,10 +208,13 @@ public final class GetAppsAppPendingDeployment {
         }
         public GetAppsAppPendingDeployment build() {
             final var _resultValue = new GetAppsAppPendingDeployment();
+            _resultValue.commands = commands;
             _resultValue.createTime = createTime;
             _resultValue.creator = creator;
             _resultValue.deploymentArtifacts = deploymentArtifacts;
             _resultValue.deploymentId = deploymentId;
+            _resultValue.envVars = envVars;
+            _resultValue.gitSource = gitSource;
             _resultValue.mode = mode;
             _resultValue.sourceCodePath = sourceCodePath;
             _resultValue.status = status;

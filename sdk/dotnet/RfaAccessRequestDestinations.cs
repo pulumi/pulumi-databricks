@@ -75,7 +75,7 @@ namespace Pulumi.Databricks
     /// 
     /// import {
     /// 
-    ///   id = ""
+    ///   id = "securable_type,full_name"
     /// 
     ///   to = databricks_rfa_access_request_destinations.this
     /// 
@@ -84,7 +84,7 @@ namespace Pulumi.Databricks
     /// If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
     /// 
     /// ```sh
-    /// $ pulumi import databricks:index/rfaAccessRequestDestinations:RfaAccessRequestDestinations this ""
+    /// $ pulumi import databricks:index/rfaAccessRequestDestinations:RfaAccessRequestDestinations this "securable_type,full_name"
     /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/rfaAccessRequestDestinations:RfaAccessRequestDestinations")]
@@ -98,16 +98,35 @@ namespace Pulumi.Databricks
         public Output<bool> AreAnyDestinationsHidden { get; private set; } = null!;
 
         /// <summary>
+        /// (Securable) - The source securable from which the destinations are inherited. Either the same value as securable (if destination
+        /// is set directly on the securable) or the nearest parent securable with destinations set
+        /// </summary>
+        [Output("destinationSourceSecurable")]
+        public Output<Outputs.RfaAccessRequestDestinationsDestinationSourceSecurable> DestinationSourceSecurable { get; private set; } = null!;
+
+        /// <summary>
         /// The access request destinations for the securable
         /// </summary>
         [Output("destinations")]
         public Output<ImmutableArray<Outputs.RfaAccessRequestDestinationsDestination>> Destinations { get; private set; } = null!;
 
         /// <summary>
-        /// The securable for which the access request destinations are being retrieved
+        /// (string) - The full name of the securable. Redundant with the name in the securable object, but necessary for Pulumi integration
+        /// </summary>
+        [Output("fullName")]
+        public Output<string> FullName { get; private set; } = null!;
+
+        /// <summary>
+        /// The securable for which the access request destinations are being modified or read
         /// </summary>
         [Output("securable")]
         public Output<Outputs.RfaAccessRequestDestinationsSecurable> Securable { get; private set; } = null!;
+
+        /// <summary>
+        /// (string) - The type of the securable. Redundant with the type in the securable object, but necessary for Pulumi integration
+        /// </summary>
+        [Output("securableType")]
+        public Output<string> SecurableType { get; private set; } = null!;
 
 
         /// <summary>
@@ -168,7 +187,7 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
-        /// The securable for which the access request destinations are being retrieved
+        /// The securable for which the access request destinations are being modified or read
         /// </summary>
         [Input("securable", required: true)]
         public Input<Inputs.RfaAccessRequestDestinationsSecurableArgs> Securable { get; set; } = null!;
@@ -188,6 +207,13 @@ namespace Pulumi.Databricks
         [Input("areAnyDestinationsHidden")]
         public Input<bool>? AreAnyDestinationsHidden { get; set; }
 
+        /// <summary>
+        /// (Securable) - The source securable from which the destinations are inherited. Either the same value as securable (if destination
+        /// is set directly on the securable) or the nearest parent securable with destinations set
+        /// </summary>
+        [Input("destinationSourceSecurable")]
+        public Input<Inputs.RfaAccessRequestDestinationsDestinationSourceSecurableGetArgs>? DestinationSourceSecurable { get; set; }
+
         [Input("destinations")]
         private InputList<Inputs.RfaAccessRequestDestinationsDestinationGetArgs>? _destinations;
 
@@ -201,10 +227,22 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
-        /// The securable for which the access request destinations are being retrieved
+        /// (string) - The full name of the securable. Redundant with the name in the securable object, but necessary for Pulumi integration
+        /// </summary>
+        [Input("fullName")]
+        public Input<string>? FullName { get; set; }
+
+        /// <summary>
+        /// The securable for which the access request destinations are being modified or read
         /// </summary>
         [Input("securable")]
         public Input<Inputs.RfaAccessRequestDestinationsSecurableGetArgs>? Securable { get; set; }
+
+        /// <summary>
+        /// (string) - The type of the securable. Redundant with the type in the securable object, but necessary for Pulumi integration
+        /// </summary>
+        [Input("securableType")]
+        public Input<string>? SecurableType { get; set; }
 
         public RfaAccessRequestDestinationsState()
         {

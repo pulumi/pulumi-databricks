@@ -17,6 +17,7 @@ namespace Pulumi.Databricks.Outputs
         /// The description of the template
         /// </summary>
         public readonly string? Description;
+        public readonly Outputs.AppsSettingsCustomTemplateManifestResourceSpecExperimentSpec? ExperimentSpec;
         public readonly Outputs.AppsSettingsCustomTemplateManifestResourceSpecJobSpec? JobSpec;
         /// <summary>
         /// The name of the template. It must contain only alphanumeric characters, hyphens, underscores, and whitespaces.
@@ -32,6 +33,8 @@ namespace Pulumi.Databricks.Outputs
         private AppsSettingsCustomTemplateManifestResourceSpec(
             string? description,
 
+            Outputs.AppsSettingsCustomTemplateManifestResourceSpecExperimentSpec? experimentSpec,
+
             Outputs.AppsSettingsCustomTemplateManifestResourceSpecJobSpec? jobSpec,
 
             string name,
@@ -45,6 +48,7 @@ namespace Pulumi.Databricks.Outputs
             Outputs.AppsSettingsCustomTemplateManifestResourceSpecUcSecurableSpec? ucSecurableSpec)
         {
             Description = description;
+            ExperimentSpec = experimentSpec;
             JobSpec = jobSpec;
             Name = name;
             SecretSpec = secretSpec;

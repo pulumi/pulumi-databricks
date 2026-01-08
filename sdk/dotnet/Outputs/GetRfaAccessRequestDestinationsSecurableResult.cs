@@ -14,8 +14,7 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetRfaAccessRequestDestinationsSecurableResult
     {
         /// <summary>
-        /// (string) - Required. The full name of the catalog/schema/table.
-        /// Optional if ResourceName is present
+        /// The full name of the securable. Redundant with the name in the securable object, but necessary for Pulumi integration
         /// </summary>
         public readonly string? FullName;
         /// <summary>

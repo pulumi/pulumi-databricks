@@ -38,6 +38,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("endpointName")]
         public Input<string>? EndpointName { get; set; }
 
+        [Input("errorMessage")]
+        public Input<string>? ErrorMessage { get; set; }
+
         [Input("groupId")]
         public Input<string>? GroupId { get; set; }
 

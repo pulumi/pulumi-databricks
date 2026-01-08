@@ -24,6 +24,7 @@ public final class MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePriva
     private @Nullable Integer deactivatedAt;
     private @Nullable List<String> domainNames;
     private @Nullable String endpointName;
+    private @Nullable String errorMessage;
     private @Nullable String groupId;
     /**
      * @return Canonical unique identifier of Network Connectivity Config in Databricks Account
@@ -60,6 +61,9 @@ public final class MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePriva
     }
     public Optional<String> endpointName() {
         return Optional.ofNullable(this.endpointName);
+    }
+    public Optional<String> errorMessage() {
+        return Optional.ofNullable(this.errorMessage);
     }
     public Optional<String> groupId() {
         return Optional.ofNullable(this.groupId);
@@ -100,6 +104,7 @@ public final class MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePriva
         private @Nullable Integer deactivatedAt;
         private @Nullable List<String> domainNames;
         private @Nullable String endpointName;
+        private @Nullable String errorMessage;
         private @Nullable String groupId;
         private @Nullable String networkConnectivityConfigId;
         private @Nullable String resourceId;
@@ -114,6 +119,7 @@ public final class MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePriva
     	      this.deactivatedAt = defaults.deactivatedAt;
     	      this.domainNames = defaults.domainNames;
     	      this.endpointName = defaults.endpointName;
+    	      this.errorMessage = defaults.errorMessage;
     	      this.groupId = defaults.groupId;
     	      this.networkConnectivityConfigId = defaults.networkConnectivityConfigId;
     	      this.resourceId = defaults.resourceId;
@@ -161,6 +167,12 @@ public final class MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePriva
             return this;
         }
         @CustomType.Setter
+        public Builder errorMessage(@Nullable String errorMessage) {
+
+            this.errorMessage = errorMessage;
+            return this;
+        }
+        @CustomType.Setter
         public Builder groupId(@Nullable String groupId) {
 
             this.groupId = groupId;
@@ -198,6 +210,7 @@ public final class MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePriva
             _resultValue.deactivatedAt = deactivatedAt;
             _resultValue.domainNames = domainNames;
             _resultValue.endpointName = endpointName;
+            _resultValue.errorMessage = errorMessage;
             _resultValue.groupId = groupId;
             _resultValue.networkConnectivityConfigId = networkConnectivityConfigId;
             _resultValue.resourceId = resourceId;

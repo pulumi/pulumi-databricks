@@ -86,6 +86,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["databricksIdTokenFilepath"] = args?.databricksIdTokenFilepath;
             resourceInputs["debugHeaders"] = pulumi.output(args?.debugHeaders).apply(JSON.stringify);
             resourceInputs["debugTruncateBytes"] = pulumi.output(args?.debugTruncateBytes).apply(JSON.stringify);
+            resourceInputs["disableOauthRefreshToken"] = pulumi.output(args?.disableOauthRefreshToken).apply(JSON.stringify);
             resourceInputs["experimentalIsUnifiedHost"] = pulumi.output(args?.experimentalIsUnifiedHost).apply(JSON.stringify);
             resourceInputs["googleCredentials"] = args?.googleCredentials ? pulumi.secret(args.googleCredentials) : undefined;
             resourceInputs["googleServiceAccount"] = args?.googleServiceAccount;
@@ -145,6 +146,7 @@ export interface ProviderArgs {
     databricksIdTokenFilepath?: pulumi.Input<string>;
     debugHeaders?: pulumi.Input<boolean>;
     debugTruncateBytes?: pulumi.Input<number>;
+    disableOauthRefreshToken?: pulumi.Input<boolean>;
     experimentalIsUnifiedHost?: pulumi.Input<boolean>;
     googleCredentials?: pulumi.Input<string>;
     googleServiceAccount?: pulumi.Input<string>;

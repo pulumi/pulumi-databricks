@@ -72,6 +72,9 @@ public final class Config {
     public Optional<Integer> debugTruncateBytes() {
         return Codegen.integerProp("debugTruncateBytes").config(config).get();
     }
+    public Optional<Boolean> disableOauthRefreshToken() {
+        return Codegen.booleanProp("disableOauthRefreshToken").config(config).get();
+    }
     public Optional<Boolean> experimentalIsUnifiedHost() {
         return Codegen.booleanProp("experimentalIsUnifiedHost").config(config).get();
     }

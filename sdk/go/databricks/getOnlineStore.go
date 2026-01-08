@@ -44,6 +44,8 @@ type LookupOnlineStoreResult struct {
 	ReadReplicaCount int `pulumi:"readReplicaCount"`
 	// (string) - The current state of the online store. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
 	State string `pulumi:"state"`
+	// (string) - The usage policy applied to the online store to track billing
+	UsagePolicyId string `pulumi:"usagePolicyId"`
 }
 
 func LookupOnlineStoreOutput(ctx *pulumi.Context, args LookupOnlineStoreOutputArgs, opts ...pulumi.InvokeOption) LookupOnlineStoreResultOutput {
@@ -113,6 +115,11 @@ func (o LookupOnlineStoreResultOutput) ReadReplicaCount() pulumi.IntOutput {
 // (string) - The current state of the online store. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
 func (o LookupOnlineStoreResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOnlineStoreResult) string { return v.State }).(pulumi.StringOutput)
+}
+
+// (string) - The usage policy applied to the online store to track billing
+func (o LookupOnlineStoreResultOutput) UsagePolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOnlineStoreResult) string { return v.UsagePolicyId }).(pulumi.StringOutput)
 }
 
 func init() {

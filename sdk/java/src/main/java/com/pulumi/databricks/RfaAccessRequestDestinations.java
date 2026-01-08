@@ -11,8 +11,10 @@ import com.pulumi.databricks.RfaAccessRequestDestinationsArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.RfaAccessRequestDestinationsState;
 import com.pulumi.databricks.outputs.RfaAccessRequestDestinationsDestination;
+import com.pulumi.databricks.outputs.RfaAccessRequestDestinationsDestinationSourceSecurable;
 import com.pulumi.databricks.outputs.RfaAccessRequestDestinationsSecurable;
 import java.lang.Boolean;
+import java.lang.String;
 import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -92,7 +94,7 @@ import javax.annotation.Nullable;
  * 
  * import {
  * 
- *   id = &#34;&#34;
+ *   id = &#34;securable_type,full_name&#34;
  * 
  *   to = databricks_rfa_access_request_destinations.this
  * 
@@ -101,7 +103,7 @@ import javax.annotation.Nullable;
  * If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
  * 
  * ```sh
- * $ pulumi import databricks:index/rfaAccessRequestDestinations:RfaAccessRequestDestinations this &#34;&#34;
+ * $ pulumi import databricks:index/rfaAccessRequestDestinations:RfaAccessRequestDestinations this &#34;securable_type,full_name&#34;
  * ```
  * 
  */
@@ -124,6 +126,22 @@ public class RfaAccessRequestDestinations extends com.pulumi.resources.CustomRes
         return this.areAnyDestinationsHidden;
     }
     /**
+     * (Securable) - The source securable from which the destinations are inherited. Either the same value as securable (if destination
+     * is set directly on the securable) or the nearest parent securable with destinations set
+     * 
+     */
+    @Export(name="destinationSourceSecurable", refs={RfaAccessRequestDestinationsDestinationSourceSecurable.class}, tree="[0]")
+    private Output<RfaAccessRequestDestinationsDestinationSourceSecurable> destinationSourceSecurable;
+
+    /**
+     * @return (Securable) - The source securable from which the destinations are inherited. Either the same value as securable (if destination
+     * is set directly on the securable) or the nearest parent securable with destinations set
+     * 
+     */
+    public Output<RfaAccessRequestDestinationsDestinationSourceSecurable> destinationSourceSecurable() {
+        return this.destinationSourceSecurable;
+    }
+    /**
      * The access request destinations for the securable
      * 
      */
@@ -138,18 +156,46 @@ public class RfaAccessRequestDestinations extends com.pulumi.resources.CustomRes
         return Codegen.optional(this.destinations);
     }
     /**
-     * The securable for which the access request destinations are being retrieved
+     * (string) - The full name of the securable. Redundant with the name in the securable object, but necessary for Pulumi integration
+     * 
+     */
+    @Export(name="fullName", refs={String.class}, tree="[0]")
+    private Output<String> fullName;
+
+    /**
+     * @return (string) - The full name of the securable. Redundant with the name in the securable object, but necessary for Pulumi integration
+     * 
+     */
+    public Output<String> fullName() {
+        return this.fullName;
+    }
+    /**
+     * The securable for which the access request destinations are being modified or read
      * 
      */
     @Export(name="securable", refs={RfaAccessRequestDestinationsSecurable.class}, tree="[0]")
     private Output<RfaAccessRequestDestinationsSecurable> securable;
 
     /**
-     * @return The securable for which the access request destinations are being retrieved
+     * @return The securable for which the access request destinations are being modified or read
      * 
      */
     public Output<RfaAccessRequestDestinationsSecurable> securable() {
         return this.securable;
+    }
+    /**
+     * (string) - The type of the securable. Redundant with the type in the securable object, but necessary for Pulumi integration
+     * 
+     */
+    @Export(name="securableType", refs={String.class}, tree="[0]")
+    private Output<String> securableType;
+
+    /**
+     * @return (string) - The type of the securable. Redundant with the type in the securable object, but necessary for Pulumi integration
+     * 
+     */
+    public Output<String> securableType() {
+        return this.securableType;
     }
 
     /**

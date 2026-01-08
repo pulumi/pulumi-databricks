@@ -113,6 +113,7 @@ type providerArgs struct {
 	DatabricksIdTokenFilepath  *string `pulumi:"databricksIdTokenFilepath"`
 	DebugHeaders               *bool   `pulumi:"debugHeaders"`
 	DebugTruncateBytes         *int    `pulumi:"debugTruncateBytes"`
+	DisableOauthRefreshToken   *bool   `pulumi:"disableOauthRefreshToken"`
 	ExperimentalIsUnifiedHost  *bool   `pulumi:"experimentalIsUnifiedHost"`
 	GoogleCredentials          *string `pulumi:"googleCredentials"`
 	GoogleServiceAccount       *string `pulumi:"googleServiceAccount"`
@@ -155,6 +156,7 @@ type ProviderArgs struct {
 	DatabricksIdTokenFilepath  pulumi.StringPtrInput
 	DebugHeaders               pulumi.BoolPtrInput
 	DebugTruncateBytes         pulumi.IntPtrInput
+	DisableOauthRefreshToken   pulumi.BoolPtrInput
 	ExperimentalIsUnifiedHost  pulumi.BoolPtrInput
 	GoogleCredentials          pulumi.StringPtrInput
 	GoogleServiceAccount       pulumi.StringPtrInput

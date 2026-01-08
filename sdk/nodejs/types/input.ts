@@ -494,6 +494,7 @@ export interface AlertV2Schedule {
 }
 
 export interface AppActiveDeployment {
+    commands?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The creation time of the app.
      */
@@ -504,6 +505,8 @@ export interface AppActiveDeployment {
     creator?: pulumi.Input<string>;
     deploymentArtifacts?: pulumi.Input<inputs.AppActiveDeploymentDeploymentArtifacts>;
     deploymentId?: pulumi.Input<string>;
+    envVars?: pulumi.Input<pulumi.Input<inputs.AppActiveDeploymentEnvVar>[]>;
+    gitSource?: pulumi.Input<inputs.AppActiveDeploymentGitSource>;
     mode?: pulumi.Input<string>;
     sourceCodePath?: pulumi.Input<string>;
     status?: pulumi.Input<inputs.AppActiveDeploymentStatus>;
@@ -515,6 +518,32 @@ export interface AppActiveDeployment {
 
 export interface AppActiveDeploymentDeploymentArtifacts {
     sourceCodePath?: pulumi.Input<string>;
+}
+
+export interface AppActiveDeploymentEnvVar {
+    /**
+     * The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
+     */
+    name?: pulumi.Input<string>;
+    value?: pulumi.Input<string>;
+    valueFrom?: pulumi.Input<string>;
+}
+
+export interface AppActiveDeploymentGitSource {
+    branch?: pulumi.Input<string>;
+    commit?: pulumi.Input<string>;
+    gitRepository?: pulumi.Input<inputs.AppActiveDeploymentGitSourceGitRepository>;
+    resolvedCommit?: pulumi.Input<string>;
+    sourceCodePath?: pulumi.Input<string>;
+    tag?: pulumi.Input<string>;
+}
+
+export interface AppActiveDeploymentGitSourceGitRepository {
+    provider: pulumi.Input<string>;
+    /**
+     * The URL of the app once it is deployed.
+     */
+    url: pulumi.Input<string>;
 }
 
 export interface AppActiveDeploymentStatus {
@@ -550,7 +579,16 @@ export interface AppComputeStatus {
     state?: pulumi.Input<string>;
 }
 
+export interface AppGitRepository {
+    provider: pulumi.Input<string>;
+    /**
+     * The URL of the app once it is deployed.
+     */
+    url: pulumi.Input<string>;
+}
+
 export interface AppPendingDeployment {
+    commands?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The creation time of the app.
      */
@@ -561,6 +599,8 @@ export interface AppPendingDeployment {
     creator?: pulumi.Input<string>;
     deploymentArtifacts?: pulumi.Input<inputs.AppPendingDeploymentDeploymentArtifacts>;
     deploymentId?: pulumi.Input<string>;
+    envVars?: pulumi.Input<pulumi.Input<inputs.AppPendingDeploymentEnvVar>[]>;
+    gitSource?: pulumi.Input<inputs.AppPendingDeploymentGitSource>;
     mode?: pulumi.Input<string>;
     sourceCodePath?: pulumi.Input<string>;
     status?: pulumi.Input<inputs.AppPendingDeploymentStatus>;
@@ -572,6 +612,32 @@ export interface AppPendingDeployment {
 
 export interface AppPendingDeploymentDeploymentArtifacts {
     sourceCodePath?: pulumi.Input<string>;
+}
+
+export interface AppPendingDeploymentEnvVar {
+    /**
+     * The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
+     */
+    name?: pulumi.Input<string>;
+    value?: pulumi.Input<string>;
+    valueFrom?: pulumi.Input<string>;
+}
+
+export interface AppPendingDeploymentGitSource {
+    branch?: pulumi.Input<string>;
+    commit?: pulumi.Input<string>;
+    gitRepository?: pulumi.Input<inputs.AppPendingDeploymentGitSourceGitRepository>;
+    resolvedCommit?: pulumi.Input<string>;
+    sourceCodePath?: pulumi.Input<string>;
+    tag?: pulumi.Input<string>;
+}
+
+export interface AppPendingDeploymentGitSourceGitRepository {
+    provider: pulumi.Input<string>;
+    /**
+     * The URL of the app once it is deployed.
+     */
+    url: pulumi.Input<string>;
 }
 
 export interface AppPendingDeploymentStatus {
@@ -600,6 +666,7 @@ export interface AppResource {
      * Exactly one of the following attributes must be provided:
      */
     description?: pulumi.Input<string>;
+    experiment?: pulumi.Input<inputs.AppResourceExperiment>;
     /**
      * attribute
      */
@@ -642,6 +709,11 @@ export interface AppResourceDatabase {
     /**
      * Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
      */
+    permission: pulumi.Input<string>;
+}
+
+export interface AppResourceExperiment {
+    experimentId: pulumi.Input<string>;
     permission: pulumi.Input<string>;
 }
 
@@ -742,6 +814,7 @@ export interface AppsSettingsCustomTemplateManifestResourceSpec {
      * The description of the template
      */
     description?: pulumi.Input<string>;
+    experimentSpec?: pulumi.Input<inputs.AppsSettingsCustomTemplateManifestResourceSpecExperimentSpec>;
     jobSpec?: pulumi.Input<inputs.AppsSettingsCustomTemplateManifestResourceSpecJobSpec>;
     /**
      * The name of the template. It must contain only alphanumeric characters, hyphens, underscores, and whitespaces.
@@ -752,6 +825,10 @@ export interface AppsSettingsCustomTemplateManifestResourceSpec {
     servingEndpointSpec?: pulumi.Input<inputs.AppsSettingsCustomTemplateManifestResourceSpecServingEndpointSpec>;
     sqlWarehouseSpec?: pulumi.Input<inputs.AppsSettingsCustomTemplateManifestResourceSpecSqlWarehouseSpec>;
     ucSecurableSpec?: pulumi.Input<inputs.AppsSettingsCustomTemplateManifestResourceSpecUcSecurableSpec>;
+}
+
+export interface AppsSettingsCustomTemplateManifestResourceSpecExperimentSpec {
+    permission: pulumi.Input<string>;
 }
 
 export interface AppsSettingsCustomTemplateManifestResourceSpecJobSpec {
@@ -773,7 +850,7 @@ export interface AppsSettingsCustomTemplateManifestResourceSpecSqlWarehouseSpec 
 export interface AppsSettingsCustomTemplateManifestResourceSpecUcSecurableSpec {
     permission: pulumi.Input<string>;
     /**
-     * Possible values are: `TABLE`, `VOLUME`
+     * Possible values are: `CONNECTION`, `FUNCTION`, `TABLE`, `VOLUME`
      */
     securableType: pulumi.Input<string>;
 }
@@ -1476,6 +1553,10 @@ export interface CustomAppIntegrationTokenAccessPolicy {
 }
 
 export interface DataQualityMonitorAnomalyDetectionConfig {
+    /**
+     * List of fully qualified table names to exclude from anomaly detection
+     */
+    excludedTableFullNames?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface DataQualityMonitorDataProfilingConfig {
@@ -8403,6 +8484,7 @@ export interface GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivat
     domainNames?: string[];
     enabled?: boolean;
     endpointService?: string;
+    errorMessage?: string;
     /**
      * The Databricks network connectivity configuration ID.
      */
@@ -8443,6 +8525,7 @@ export interface GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivat
     domainNames?: pulumi.Input<pulumi.Input<string>[]>;
     enabled?: pulumi.Input<boolean>;
     endpointService?: pulumi.Input<string>;
+    errorMessage?: pulumi.Input<string>;
     /**
      * The Databricks network connectivity configuration ID.
      */
@@ -8481,6 +8564,7 @@ export interface GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePriv
      * The name of the Azure private endpoint resource.
      */
     endpointName?: string;
+    errorMessage?: string;
     /**
      * The sub-resource type (group ID) of the target resource.
      */
@@ -8525,6 +8609,7 @@ export interface GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePriv
      * The name of the Azure private endpoint resource.
      */
     endpointName?: pulumi.Input<string>;
+    errorMessage?: pulumi.Input<string>;
     /**
      * The sub-resource type (group ID) of the target resource.
      */
@@ -11990,6 +12075,7 @@ export interface JobQueue {
 }
 
 export interface JobRunAs {
+    groupName?: pulumi.Input<string>;
     /**
      * The application ID of an active service principal. Setting this field requires the `servicePrincipal/user` role.
      *
@@ -15334,6 +15420,7 @@ export interface MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEn
     domainNames?: pulumi.Input<pulumi.Input<string>[]>;
     enabled?: pulumi.Input<boolean>;
     endpointService?: pulumi.Input<string>;
+    errorMessage?: pulumi.Input<string>;
     /**
      * Canonical unique identifier of Network Connectivity Config in Databricks Account
      */
@@ -15357,6 +15444,7 @@ export interface MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivate
     deactivatedAt?: pulumi.Input<number>;
     domainNames?: pulumi.Input<pulumi.Input<string>[]>;
     endpointName?: pulumi.Input<string>;
+    errorMessage?: pulumi.Input<string>;
     groupId?: pulumi.Input<string>;
     /**
      * Canonical unique identifier of Network Connectivity Config in Databricks Account
@@ -15381,11 +15469,11 @@ export interface MwsNetworksGcpNetworkInfo {
      */
     networkProjectId: pulumi.Input<string>;
     /**
-     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.101.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.102.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     podIpRangeName?: pulumi.Input<string>;
     /**
-     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.101.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.102.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     serviceIpRangeName?: pulumi.Input<string>;
     /**
@@ -15452,11 +15540,11 @@ export interface MwsWorkspacesExternalCustomerInfo {
 
 export interface MwsWorkspacesGcpManagedNetworkConfig {
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.101.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.102.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterPodIpRange?: pulumi.Input<string>;
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.101.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.102.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterServiceIpRange?: pulumi.Input<string>;
     subnetCidr: pulumi.Input<string>;
@@ -15977,6 +16065,7 @@ export interface PipelineIngestionDefinitionObjectReportTableConfiguration {
     includeColumns?: pulumi.Input<pulumi.Input<string>[]>;
     primaryKeys?: pulumi.Input<pulumi.Input<string>[]>;
     queryBasedConnectorConfig?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectReportTableConfigurationQueryBasedConnectorConfig>;
+    rowFilter?: pulumi.Input<string>;
     salesforceIncludeFormulaFields?: pulumi.Input<boolean>;
     scdType?: pulumi.Input<string>;
     sequenceBies?: pulumi.Input<pulumi.Input<string>[]>;
@@ -16013,6 +16102,7 @@ export interface PipelineIngestionDefinitionObjectSchemaTableConfiguration {
     includeColumns?: pulumi.Input<pulumi.Input<string>[]>;
     primaryKeys?: pulumi.Input<pulumi.Input<string>[]>;
     queryBasedConnectorConfig?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaTableConfigurationQueryBasedConnectorConfig>;
+    rowFilter?: pulumi.Input<string>;
     salesforceIncludeFormulaFields?: pulumi.Input<boolean>;
     scdType?: pulumi.Input<string>;
     sequenceBies?: pulumi.Input<pulumi.Input<string>[]>;
@@ -16051,6 +16141,7 @@ export interface PipelineIngestionDefinitionObjectTableTableConfiguration {
     includeColumns?: pulumi.Input<pulumi.Input<string>[]>;
     primaryKeys?: pulumi.Input<pulumi.Input<string>[]>;
     queryBasedConnectorConfig?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableTableConfigurationQueryBasedConnectorConfig>;
+    rowFilter?: pulumi.Input<string>;
     salesforceIncludeFormulaFields?: pulumi.Input<boolean>;
     scdType?: pulumi.Input<string>;
     sequenceBies?: pulumi.Input<pulumi.Input<string>[]>;
@@ -16100,6 +16191,7 @@ export interface PipelineIngestionDefinitionTableConfiguration {
     includeColumns?: pulumi.Input<pulumi.Input<string>[]>;
     primaryKeys?: pulumi.Input<pulumi.Input<string>[]>;
     queryBasedConnectorConfig?: pulumi.Input<inputs.PipelineIngestionDefinitionTableConfigurationQueryBasedConnectorConfig>;
+    rowFilter?: pulumi.Input<string>;
     salesforceIncludeFormulaFields?: pulumi.Input<boolean>;
     scdType?: pulumi.Input<string>;
     sequenceBies?: pulumi.Input<pulumi.Input<string>[]>;
@@ -16250,6 +16342,306 @@ export interface PolicyInfoRowFilterUsing {
     constant?: pulumi.Input<string>;
 }
 
+export interface PostgresBranchSpec {
+    /**
+     * (boolean) - Whether the branch is the project's default branch
+     */
+    default?: pulumi.Input<boolean>;
+    /**
+     * (boolean) - Whether the branch is protected
+     */
+    isProtected?: pulumi.Input<boolean>;
+    /**
+     * (string) - The name of the source branch from which this branch was created.
+     * Format: projects/{project_id}/branches/{branch_id}
+     */
+    sourceBranch?: pulumi.Input<string>;
+    /**
+     * (string) - The Log Sequence Number (LSN) on the source branch from which this branch was created
+     */
+    sourceBranchLsn?: pulumi.Input<string>;
+    /**
+     * (string) - The point in time on the source branch from which this branch was created
+     */
+    sourceBranchTime?: pulumi.Input<string>;
+}
+
+export interface PostgresBranchStatus {
+    /**
+     * (string) - The branch's state, indicating if it is initializing, ready for use, or archived. Possible values are: `ARCHIVED`, `IMPORTING`, `INIT`, `READY`, `RESETTING`
+     */
+    currentState?: pulumi.Input<string>;
+    /**
+     * (boolean) - Whether the branch is the project's default branch
+     */
+    default?: pulumi.Input<boolean>;
+    /**
+     * (boolean) - Whether the branch is protected
+     */
+    isProtected?: pulumi.Input<boolean>;
+    /**
+     * (integer) - The logical size of the branch
+     */
+    logicalSizeBytes?: pulumi.Input<number>;
+    /**
+     * (string) - The pending state of the branch, if a state transition is in progress. Possible values are: `ARCHIVED`, `IMPORTING`, `INIT`, `READY`, `RESETTING`
+     */
+    pendingState?: pulumi.Input<string>;
+    /**
+     * (string) - The name of the source branch from which this branch was created.
+     * Format: projects/{project_id}/branches/{branch_id}
+     */
+    sourceBranch?: pulumi.Input<string>;
+    /**
+     * (string) - The Log Sequence Number (LSN) on the source branch from which this branch was created
+     */
+    sourceBranchLsn?: pulumi.Input<string>;
+    /**
+     * (string) - The point in time on the source branch from which this branch was created
+     */
+    sourceBranchTime?: pulumi.Input<string>;
+    /**
+     * (string) - A timestamp indicating when the `currentState` began
+     */
+    stateChangeTime?: pulumi.Input<string>;
+}
+
+export interface PostgresEndpointSpec {
+    /**
+     * (number) - The maximum number of Compute Units
+     */
+    autoscalingLimitMaxCu?: pulumi.Input<number>;
+    /**
+     * (number) - The minimum number of Compute Units
+     */
+    autoscalingLimitMinCu?: pulumi.Input<number>;
+    /**
+     * (boolean) - Whether to restrict connections to the compute endpoint.
+     * Enabling this option schedules a suspend compute operation.
+     * A disabled compute endpoint cannot be enabled by a connection or
+     * console action
+     */
+    disabled?: pulumi.Input<boolean>;
+    /**
+     * (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `READ_ONLY`, `READ_WRITE`
+     */
+    endpointType: pulumi.Input<string>;
+    /**
+     * (string) - Possible values are: `TRANSACTION`
+     */
+    poolerMode?: pulumi.Input<string>;
+    /**
+     * (EndpointSettings)
+     */
+    settings?: pulumi.Input<inputs.PostgresEndpointSpecSettings>;
+    /**
+     * (string) - Duration of inactivity after which the compute endpoint is automatically suspended
+     */
+    suspendTimeoutDuration?: pulumi.Input<string>;
+}
+
+export interface PostgresEndpointSpecSettings {
+    /**
+     * A raw representation of Postgres settings
+     */
+    pgSettings?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * A raw representation of PgBouncer settings
+     */
+    pgbouncerSettings?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}
+
+export interface PostgresEndpointStatus {
+    /**
+     * (number) - The maximum number of Compute Units
+     */
+    autoscalingLimitMaxCu?: pulumi.Input<number>;
+    /**
+     * (number) - The minimum number of Compute Units
+     */
+    autoscalingLimitMinCu?: pulumi.Input<number>;
+    /**
+     * (string) - Possible values are: `ACTIVE`, `IDLE`, `INIT`
+     */
+    currentState?: pulumi.Input<string>;
+    /**
+     * (boolean) - Whether to restrict connections to the compute endpoint.
+     * Enabling this option schedules a suspend compute operation.
+     * A disabled compute endpoint cannot be enabled by a connection or
+     * console action
+     */
+    disabled?: pulumi.Input<boolean>;
+    /**
+     * (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `READ_ONLY`, `READ_WRITE`
+     */
+    endpointType?: pulumi.Input<string>;
+    /**
+     * (string) - The hostname of the compute endpoint. This is the hostname specified when connecting to a database
+     */
+    host?: pulumi.Input<string>;
+    /**
+     * (string) - A timestamp indicating when the compute endpoint was last active
+     */
+    lastActiveTime?: pulumi.Input<string>;
+    /**
+     * (string) - Possible values are: `ACTIVE`, `IDLE`, `INIT`
+     */
+    pendingState?: pulumi.Input<string>;
+    /**
+     * (string) - Possible values are: `TRANSACTION`
+     */
+    poolerMode?: pulumi.Input<string>;
+    /**
+     * (EndpointSettings)
+     */
+    settings?: pulumi.Input<inputs.PostgresEndpointStatusSettings>;
+    /**
+     * (string) - A timestamp indicating when the compute endpoint was last started
+     */
+    startTime?: pulumi.Input<string>;
+    /**
+     * (string) - A timestamp indicating when the compute endpoint was last suspended
+     */
+    suspendTime?: pulumi.Input<string>;
+    /**
+     * (string) - Duration of inactivity after which the compute endpoint is automatically suspended
+     */
+    suspendTimeoutDuration?: pulumi.Input<string>;
+}
+
+export interface PostgresEndpointStatusSettings {
+    /**
+     * A raw representation of Postgres settings
+     */
+    pgSettings?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * A raw representation of PgBouncer settings
+     */
+    pgbouncerSettings?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}
+
+export interface PostgresProjectSpec {
+    /**
+     * (ProjectDefaultEndpointSettings) - The effective default endpoint settings
+     */
+    defaultEndpointSettings?: pulumi.Input<inputs.PostgresProjectSpecDefaultEndpointSettings>;
+    /**
+     * (string) - The effective human-readable project name
+     */
+    displayName?: pulumi.Input<string>;
+    /**
+     * (string) - The effective number of seconds to retain the shared history for point in time recovery
+     */
+    historyRetentionDuration?: pulumi.Input<string>;
+    /**
+     * (integer) - The effective major Postgres version number
+     */
+    pgVersion?: pulumi.Input<number>;
+    /**
+     * (ProjectSettings) - The effective project settings
+     */
+    settings?: pulumi.Input<inputs.PostgresProjectSpecSettings>;
+}
+
+export interface PostgresProjectSpecDefaultEndpointSettings {
+    /**
+     * The maximum number of Compute Units
+     */
+    autoscalingLimitMaxCu?: pulumi.Input<number>;
+    /**
+     * The minimum number of Compute Units
+     */
+    autoscalingLimitMinCu?: pulumi.Input<number>;
+    /**
+     * A raw representation of Postgres settings
+     */
+    pgSettings?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * A raw representation of PgBouncer settings
+     */
+    pgbouncerSettings?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Duration of inactivity after which the compute endpoint is automatically suspended
+     */
+    suspendTimeoutDuration?: pulumi.Input<string>;
+}
+
+export interface PostgresProjectSpecSettings {
+    /**
+     * Sets wal_level=logical for all compute endpoints in this project.
+     * All active endpoints will be suspended.
+     * Once enabled, logical replication cannot be disabled
+     */
+    enableLogicalReplication?: pulumi.Input<boolean>;
+}
+
+export interface PostgresProjectStatus {
+    /**
+     * (integer) - The logical size limit for a branch
+     */
+    branchLogicalSizeLimitBytes?: pulumi.Input<number>;
+    /**
+     * (string) - The most recent time when any endpoint of this project was active
+     */
+    computeLastActiveTime?: pulumi.Input<string>;
+    /**
+     * (ProjectDefaultEndpointSettings) - The effective default endpoint settings
+     */
+    defaultEndpointSettings?: pulumi.Input<inputs.PostgresProjectStatusDefaultEndpointSettings>;
+    /**
+     * (string) - The effective human-readable project name
+     */
+    displayName?: pulumi.Input<string>;
+    /**
+     * (string) - The effective number of seconds to retain the shared history for point in time recovery
+     */
+    historyRetentionDuration?: pulumi.Input<string>;
+    /**
+     * (integer) - The effective major Postgres version number
+     */
+    pgVersion?: pulumi.Input<number>;
+    /**
+     * (ProjectSettings) - The effective project settings
+     */
+    settings?: pulumi.Input<inputs.PostgresProjectStatusSettings>;
+    /**
+     * (integer) - The current space occupied by the project in storage
+     */
+    syntheticStorageSizeBytes?: pulumi.Input<number>;
+}
+
+export interface PostgresProjectStatusDefaultEndpointSettings {
+    /**
+     * The maximum number of Compute Units
+     */
+    autoscalingLimitMaxCu?: pulumi.Input<number>;
+    /**
+     * The minimum number of Compute Units
+     */
+    autoscalingLimitMinCu?: pulumi.Input<number>;
+    /**
+     * A raw representation of Postgres settings
+     */
+    pgSettings?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * A raw representation of PgBouncer settings
+     */
+    pgbouncerSettings?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Duration of inactivity after which the compute endpoint is automatically suspended
+     */
+    suspendTimeoutDuration?: pulumi.Input<string>;
+}
+
+export interface PostgresProjectStatusSettings {
+    /**
+     * Sets wal_level=logical for all compute endpoints in this project.
+     * All active endpoints will be suspended.
+     * Once enabled, logical replication cannot be disabled
+     */
+    enableLogicalReplication?: pulumi.Input<boolean>;
+}
+
 export interface QualityMonitorCustomMetric {
     /**
      * [create metric definition](https://docs.databricks.com/en/lakehouse-monitoring/custom-metrics.html#create-definition)
@@ -16364,6 +16756,10 @@ export interface QualityMonitorTimeSeries {
 }
 
 export interface QualityMonitorV2AnomalyDetectionConfig {
+    /**
+     * List of fully qualified table names to exclude from anomaly detection
+     */
+    excludedTableFullNames?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * (string) - Run id of the last run of the workflow
      */
@@ -16624,6 +17020,23 @@ export interface RfaAccessRequestDestinationsDestination {
      * The **destination_type** of a **special_destination** is always EMAIL. Possible values are: `SPECIAL_DESTINATION_CATALOG_OWNER`, `SPECIAL_DESTINATION_CONNECTION_OWNER`, `SPECIAL_DESTINATION_CREDENTIAL_OWNER`, `SPECIAL_DESTINATION_EXTERNAL_LOCATION_OWNER`, `SPECIAL_DESTINATION_METASTORE_OWNER`
      */
     specialDestination?: pulumi.Input<string>;
+}
+
+export interface RfaAccessRequestDestinationsDestinationSourceSecurable {
+    /**
+     * (string) - The full name of the securable. Redundant with the name in the securable object, but necessary for Pulumi integration
+     */
+    fullName?: pulumi.Input<string>;
+    /**
+     * Optional. The name of the Share object that contains the securable when the securable is
+     * getting shared in D2D Delta Sharing
+     */
+    providerShare?: pulumi.Input<string>;
+    /**
+     * Required. The type of securable (catalog/schema/table).
+     * Optional if resourceName is present. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+     */
+    type?: pulumi.Input<string>;
 }
 
 export interface RfaAccessRequestDestinationsSecurable {

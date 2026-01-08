@@ -15,7 +15,7 @@ namespace Pulumi.Databricks.Outputs
     {
         public readonly string Permission;
         /// <summary>
-        /// Possible values are: `TABLE`, `VOLUME`
+        /// Possible values are: `CONNECTION`, `FUNCTION`, `TABLE`, `VOLUME`
         /// </summary>
         public readonly string SecurableType;
 

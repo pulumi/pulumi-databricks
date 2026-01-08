@@ -47,6 +47,13 @@ public final class PipelineIngestionDefinitionTableConfigurationArgs extends com
         return Optional.ofNullable(this.queryBasedConnectorConfig);
     }
 
+    @Import(name="rowFilter")
+    private @Nullable Output<String> rowFilter;
+
+    public Optional<Output<String>> rowFilter() {
+        return Optional.ofNullable(this.rowFilter);
+    }
+
     @Import(name="salesforceIncludeFormulaFields")
     private @Nullable Output<Boolean> salesforceIncludeFormulaFields;
 
@@ -82,6 +89,7 @@ public final class PipelineIngestionDefinitionTableConfigurationArgs extends com
         this.includeColumns = $.includeColumns;
         this.primaryKeys = $.primaryKeys;
         this.queryBasedConnectorConfig = $.queryBasedConnectorConfig;
+        this.rowFilter = $.rowFilter;
         this.salesforceIncludeFormulaFields = $.salesforceIncludeFormulaFields;
         this.scdType = $.scdType;
         this.sequenceBies = $.sequenceBies;
@@ -152,6 +160,15 @@ public final class PipelineIngestionDefinitionTableConfigurationArgs extends com
 
         public Builder queryBasedConnectorConfig(PipelineIngestionDefinitionTableConfigurationQueryBasedConnectorConfigArgs queryBasedConnectorConfig) {
             return queryBasedConnectorConfig(Output.of(queryBasedConnectorConfig));
+        }
+
+        public Builder rowFilter(@Nullable Output<String> rowFilter) {
+            $.rowFilter = rowFilter;
+            return this;
+        }
+
+        public Builder rowFilter(String rowFilter) {
+            return rowFilter(Output.of(rowFilter));
         }
 
         public Builder salesforceIncludeFormulaFields(@Nullable Output<Boolean> salesforceIncludeFormulaFields) {

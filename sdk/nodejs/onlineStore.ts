@@ -79,6 +79,10 @@ export class OnlineStore extends pulumi.CustomResource {
      * (string) - The current state of the online store. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
      */
     declare public /*out*/ readonly state: pulumi.Output<string>;
+    /**
+     * The usage policy applied to the online store to track billing
+     */
+    declare public readonly usagePolicyId: pulumi.Output<string | undefined>;
 
     /**
      * Create a OnlineStore resource with the given unique name, arguments, and options.
@@ -99,6 +103,7 @@ export class OnlineStore extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["readReplicaCount"] = state?.readReplicaCount;
             resourceInputs["state"] = state?.state;
+            resourceInputs["usagePolicyId"] = state?.usagePolicyId;
         } else {
             const args = argsOrState as OnlineStoreArgs | undefined;
             if (args?.capacity === undefined && !opts.urn) {
@@ -107,6 +112,7 @@ export class OnlineStore extends pulumi.CustomResource {
             resourceInputs["capacity"] = args?.capacity;
             resourceInputs["name"] = args?.name;
             resourceInputs["readReplicaCount"] = args?.readReplicaCount;
+            resourceInputs["usagePolicyId"] = args?.usagePolicyId;
             resourceInputs["creationTime"] = undefined /*out*/;
             resourceInputs["creator"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
@@ -144,6 +150,10 @@ export interface OnlineStoreState {
      * (string) - The current state of the online store. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
      */
     state?: pulumi.Input<string>;
+    /**
+     * The usage policy applied to the online store to track billing
+     */
+    usagePolicyId?: pulumi.Input<string>;
 }
 
 /**
@@ -162,4 +172,8 @@ export interface OnlineStoreArgs {
      * The number of read replicas for the online store. Defaults to 0
      */
     readReplicaCount?: pulumi.Input<number>;
+    /**
+     * The usage policy applied to the online store to track billing
+     */
+    usagePolicyId?: pulumi.Input<string>;
 }

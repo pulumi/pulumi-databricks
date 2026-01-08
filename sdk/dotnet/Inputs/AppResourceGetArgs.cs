@@ -26,6 +26,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        [Input("experiment")]
+        public Input<Inputs.AppResourceExperimentGetArgs>? Experiment { get; set; }
+
         /// <summary>
         /// attribute
         /// </summary>

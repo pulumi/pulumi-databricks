@@ -5,6 +5,7 @@ package com.pulumi.databricks;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.AppGitRepositoryArgs;
 import com.pulumi.databricks.inputs.AppProviderConfigArgs;
 import com.pulumi.databricks.inputs.AppResourceArgs;
 import java.lang.Boolean;
@@ -64,6 +65,13 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.description);
     }
 
+    @Import(name="gitRepository")
+    private @Nullable Output<AppGitRepositoryArgs> gitRepository;
+
+    public Optional<Output<AppGitRepositoryArgs>> gitRepository() {
+        return Optional.ofNullable(this.gitRepository);
+    }
+
     /**
      * The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
      * 
@@ -108,6 +116,13 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.resources);
     }
 
+    @Import(name="usagePolicyId")
+    private @Nullable Output<String> usagePolicyId;
+
+    public Optional<Output<String>> usagePolicyId() {
+        return Optional.ofNullable(this.usagePolicyId);
+    }
+
     /**
      * A list of api scopes granted to the user access token.
      * 
@@ -129,10 +144,12 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
         this.budgetPolicyId = $.budgetPolicyId;
         this.computeSize = $.computeSize;
         this.description = $.description;
+        this.gitRepository = $.gitRepository;
         this.name = $.name;
         this.noCompute = $.noCompute;
         this.providerConfig = $.providerConfig;
         this.resources = $.resources;
+        this.usagePolicyId = $.usagePolicyId;
         this.userApiScopes = $.userApiScopes;
     }
 
@@ -217,6 +234,15 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
             return description(Output.of(description));
         }
 
+        public Builder gitRepository(@Nullable Output<AppGitRepositoryArgs> gitRepository) {
+            $.gitRepository = gitRepository;
+            return this;
+        }
+
+        public Builder gitRepository(AppGitRepositoryArgs gitRepository) {
+            return gitRepository(Output.of(gitRepository));
+        }
+
         /**
          * @param name The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
          * 
@@ -285,6 +311,15 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder resources(AppResourceArgs... resources) {
             return resources(List.of(resources));
+        }
+
+        public Builder usagePolicyId(@Nullable Output<String> usagePolicyId) {
+            $.usagePolicyId = usagePolicyId;
+            return this;
+        }
+
+        public Builder usagePolicyId(String usagePolicyId) {
+            return usagePolicyId(Output.of(usagePolicyId));
         }
 
         /**

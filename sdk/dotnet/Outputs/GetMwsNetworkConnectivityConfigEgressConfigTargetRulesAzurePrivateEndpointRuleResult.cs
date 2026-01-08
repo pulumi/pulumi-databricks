@@ -34,6 +34,7 @@ namespace Pulumi.Databricks.Outputs
         /// The name of the Azure private endpoint resource.
         /// </summary>
         public readonly string? EndpointName;
+        public readonly string? ErrorMessage;
         /// <summary>
         /// The sub-resource type (group ID) of the target resource.
         /// </summary>
@@ -69,6 +70,8 @@ namespace Pulumi.Databricks.Outputs
 
             string? endpointName,
 
+            string? errorMessage,
+
             string? groupId,
 
             string? networkConnectivityConfigId,
@@ -85,6 +88,7 @@ namespace Pulumi.Databricks.Outputs
             DeactivatedAt = deactivatedAt;
             DomainNames = domainNames;
             EndpointName = endpointName;
+            ErrorMessage = errorMessage;
             GroupId = groupId;
             NetworkConnectivityConfigId = networkConnectivityConfigId;
             ResourceId = resourceId;

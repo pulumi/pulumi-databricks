@@ -56,6 +56,10 @@ export interface GetOnlineStoreResult {
      * (string) - The current state of the online store. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
      */
     readonly state: string;
+    /**
+     * (string) - The usage policy applied to the online store to track billing
+     */
+    readonly usagePolicyId: string;
 }
 /**
  * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)

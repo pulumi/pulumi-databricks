@@ -157,6 +157,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.debugTruncateBytes);
     }
 
+    @Import(name="disableOauthRefreshToken", json=true)
+    private @Nullable Output<Boolean> disableOauthRefreshToken;
+
+    public Optional<Output<Boolean>> disableOauthRefreshToken() {
+        return Optional.ofNullable(this.disableOauthRefreshToken);
+    }
+
     @Import(name="experimentalIsUnifiedHost", json=true)
     private @Nullable Output<Boolean> experimentalIsUnifiedHost;
 
@@ -306,6 +313,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.databricksIdTokenFilepath = $.databricksIdTokenFilepath;
         this.debugHeaders = $.debugHeaders;
         this.debugTruncateBytes = $.debugTruncateBytes;
+        this.disableOauthRefreshToken = $.disableOauthRefreshToken;
         this.experimentalIsUnifiedHost = $.experimentalIsUnifiedHost;
         this.googleCredentials = $.googleCredentials;
         this.googleServiceAccount = $.googleServiceAccount;
@@ -522,6 +530,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder debugTruncateBytes(Integer debugTruncateBytes) {
             return debugTruncateBytes(Output.of(debugTruncateBytes));
+        }
+
+        public Builder disableOauthRefreshToken(@Nullable Output<Boolean> disableOauthRefreshToken) {
+            $.disableOauthRefreshToken = disableOauthRefreshToken;
+            return this;
+        }
+
+        public Builder disableOauthRefreshToken(Boolean disableOauthRefreshToken) {
+            return disableOauthRefreshToken(Output.of(disableOauthRefreshToken));
         }
 
         public Builder experimentalIsUnifiedHost(@Nullable Output<Boolean> experimentalIsUnifiedHost) {

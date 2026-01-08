@@ -34,14 +34,14 @@ public final class RfaAccessRequestDestinationsArgs extends com.pulumi.resources
     }
 
     /**
-     * The securable for which the access request destinations are being retrieved
+     * The securable for which the access request destinations are being modified or read
      * 
      */
     @Import(name="securable", required=true)
     private Output<RfaAccessRequestDestinationsSecurableArgs> securable;
 
     /**
-     * @return The securable for which the access request destinations are being retrieved
+     * @return The securable for which the access request destinations are being modified or read
      * 
      */
     public Output<RfaAccessRequestDestinationsSecurableArgs> securable() {
@@ -105,7 +105,7 @@ public final class RfaAccessRequestDestinationsArgs extends com.pulumi.resources
         }
 
         /**
-         * @param securable The securable for which the access request destinations are being retrieved
+         * @param securable The securable for which the access request destinations are being modified or read
          * 
          * @return builder
          * 
@@ -116,7 +116,7 @@ public final class RfaAccessRequestDestinationsArgs extends com.pulumi.resources
         }
 
         /**
-         * @param securable The securable for which the access request destinations are being retrieved
+         * @param securable The securable for which the access request destinations are being modified or read
          * 
          * @return builder
          * 

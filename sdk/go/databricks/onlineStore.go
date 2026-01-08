@@ -48,6 +48,8 @@ type OnlineStore struct {
 	ReadReplicaCount pulumi.IntPtrOutput `pulumi:"readReplicaCount"`
 	// (string) - The current state of the online store. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
 	State pulumi.StringOutput `pulumi:"state"`
+	// The usage policy applied to the online store to track billing
+	UsagePolicyId pulumi.StringPtrOutput `pulumi:"usagePolicyId"`
 }
 
 // NewOnlineStore registers a new resource with the given unique name, arguments, and options.
@@ -95,6 +97,8 @@ type onlineStoreState struct {
 	ReadReplicaCount *int `pulumi:"readReplicaCount"`
 	// (string) - The current state of the online store. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
 	State *string `pulumi:"state"`
+	// The usage policy applied to the online store to track billing
+	UsagePolicyId *string `pulumi:"usagePolicyId"`
 }
 
 type OnlineStoreState struct {
@@ -110,6 +114,8 @@ type OnlineStoreState struct {
 	ReadReplicaCount pulumi.IntPtrInput
 	// (string) - The current state of the online store. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
 	State pulumi.StringPtrInput
+	// The usage policy applied to the online store to track billing
+	UsagePolicyId pulumi.StringPtrInput
 }
 
 func (OnlineStoreState) ElementType() reflect.Type {
@@ -123,6 +129,8 @@ type onlineStoreArgs struct {
 	Name *string `pulumi:"name"`
 	// The number of read replicas for the online store. Defaults to 0
 	ReadReplicaCount *int `pulumi:"readReplicaCount"`
+	// The usage policy applied to the online store to track billing
+	UsagePolicyId *string `pulumi:"usagePolicyId"`
 }
 
 // The set of arguments for constructing a OnlineStore resource.
@@ -133,6 +141,8 @@ type OnlineStoreArgs struct {
 	Name pulumi.StringPtrInput
 	// The number of read replicas for the online store. Defaults to 0
 	ReadReplicaCount pulumi.IntPtrInput
+	// The usage policy applied to the online store to track billing
+	UsagePolicyId pulumi.StringPtrInput
 }
 
 func (OnlineStoreArgs) ElementType() reflect.Type {
@@ -250,6 +260,11 @@ func (o OnlineStoreOutput) ReadReplicaCount() pulumi.IntPtrOutput {
 // (string) - The current state of the online store. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
 func (o OnlineStoreOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *OnlineStore) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// The usage policy applied to the online store to track billing
+func (o OnlineStoreOutput) UsagePolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OnlineStore) pulumi.StringPtrOutput { return v.UsagePolicyId }).(pulumi.StringPtrOutput)
 }
 
 type OnlineStoreArrayOutput struct{ *pulumi.OutputState }

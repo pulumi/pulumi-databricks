@@ -125,6 +125,20 @@ public class OnlineStore extends com.pulumi.resources.CustomResource {
     public Output<String> state() {
         return this.state;
     }
+    /**
+     * The usage policy applied to the online store to track billing
+     * 
+     */
+    @Export(name="usagePolicyId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> usagePolicyId;
+
+    /**
+     * @return The usage policy applied to the online store to track billing
+     * 
+     */
+    public Output<Optional<String>> usagePolicyId() {
+        return Codegen.optional(this.usagePolicyId);
+    }
 
     /**
      *

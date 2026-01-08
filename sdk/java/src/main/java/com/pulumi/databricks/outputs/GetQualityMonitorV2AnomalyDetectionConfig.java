@@ -6,10 +6,17 @@ package com.pulumi.databricks.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetQualityMonitorV2AnomalyDetectionConfig {
+    /**
+     * @return (list of string) - List of fully qualified table names to exclude from anomaly detection
+     * 
+     */
+    private @Nullable List<String> excludedTableFullNames;
     /**
      * @return (string) - Run id of the last run of the workflow
      * 
@@ -22,6 +29,13 @@ public final class GetQualityMonitorV2AnomalyDetectionConfig {
     private String latestRunStatus;
 
     private GetQualityMonitorV2AnomalyDetectionConfig() {}
+    /**
+     * @return (list of string) - List of fully qualified table names to exclude from anomaly detection
+     * 
+     */
+    public List<String> excludedTableFullNames() {
+        return this.excludedTableFullNames == null ? List.of() : this.excludedTableFullNames;
+    }
     /**
      * @return (string) - Run id of the last run of the workflow
      * 
@@ -46,15 +60,26 @@ public final class GetQualityMonitorV2AnomalyDetectionConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<String> excludedTableFullNames;
         private String lastRunId;
         private String latestRunStatus;
         public Builder() {}
         public Builder(GetQualityMonitorV2AnomalyDetectionConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.excludedTableFullNames = defaults.excludedTableFullNames;
     	      this.lastRunId = defaults.lastRunId;
     	      this.latestRunStatus = defaults.latestRunStatus;
         }
 
+        @CustomType.Setter
+        public Builder excludedTableFullNames(@Nullable List<String> excludedTableFullNames) {
+
+            this.excludedTableFullNames = excludedTableFullNames;
+            return this;
+        }
+        public Builder excludedTableFullNames(String... excludedTableFullNames) {
+            return excludedTableFullNames(List.of(excludedTableFullNames));
+        }
         @CustomType.Setter
         public Builder lastRunId(String lastRunId) {
             if (lastRunId == null) {
@@ -73,6 +98,7 @@ public final class GetQualityMonitorV2AnomalyDetectionConfig {
         }
         public GetQualityMonitorV2AnomalyDetectionConfig build() {
             final var _resultValue = new GetQualityMonitorV2AnomalyDetectionConfig();
+            _resultValue.excludedTableFullNames = excludedTableFullNames;
             _resultValue.lastRunId = lastRunId;
             _resultValue.latestRunStatus = latestRunStatus;
             return _resultValue;

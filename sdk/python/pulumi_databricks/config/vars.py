@@ -101,6 +101,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get_int('debugTruncateBytes')
 
     @_builtins.property
+    def disable_oauth_refresh_token(self) -> Optional[bool]:
+        return __config__.get_bool('disableOauthRefreshToken')
+
+    @_builtins.property
     def experimental_is_unified_host(self) -> Optional[bool]:
         return __config__.get_bool('experimentalIsUnifiedHost')
 

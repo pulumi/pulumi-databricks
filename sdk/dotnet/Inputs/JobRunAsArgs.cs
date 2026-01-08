@@ -12,6 +12,9 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class JobRunAsArgs : global::Pulumi.ResourceArgs
     {
+        [Input("groupName")]
+        public Input<string>? GroupName { get; set; }
+
         /// <summary>
         /// The application ID of an active service principal. Setting this field requires the `servicePrincipal/user` role.
         /// 

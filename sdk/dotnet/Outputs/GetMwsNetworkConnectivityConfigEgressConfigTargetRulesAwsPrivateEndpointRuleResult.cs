@@ -36,6 +36,7 @@ namespace Pulumi.Databricks.Outputs
         public readonly ImmutableArray<string> DomainNames;
         public readonly bool? Enabled;
         public readonly string? EndpointService;
+        public readonly string? ErrorMessage;
         /// <summary>
         /// The Databricks network connectivity configuration ID.
         /// </summary>
@@ -69,6 +70,8 @@ namespace Pulumi.Databricks.Outputs
 
             string? endpointService,
 
+            string? errorMessage,
+
             string? networkConnectivityConfigId,
 
             ImmutableArray<string> resourceNames,
@@ -87,6 +90,7 @@ namespace Pulumi.Databricks.Outputs
             DomainNames = domainNames;
             Enabled = enabled;
             EndpointService = endpointService;
+            ErrorMessage = errorMessage;
             NetworkConnectivityConfigId = networkConnectivityConfigId;
             ResourceNames = resourceNames;
             RuleId = ruleId;

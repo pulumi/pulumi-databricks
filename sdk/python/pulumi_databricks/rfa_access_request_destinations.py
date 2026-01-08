@@ -25,7 +25,7 @@ class RfaAccessRequestDestinationsArgs:
                  destinations: Optional[pulumi.Input[Sequence[pulumi.Input['RfaAccessRequestDestinationsDestinationArgs']]]] = None):
         """
         The set of arguments for constructing a RfaAccessRequestDestinations resource.
-        :param pulumi.Input['RfaAccessRequestDestinationsSecurableArgs'] securable: The securable for which the access request destinations are being retrieved
+        :param pulumi.Input['RfaAccessRequestDestinationsSecurableArgs'] securable: The securable for which the access request destinations are being modified or read
         :param pulumi.Input[Sequence[pulumi.Input['RfaAccessRequestDestinationsDestinationArgs']]] destinations: The access request destinations for the securable
         """
         pulumi.set(__self__, "securable", securable)
@@ -36,7 +36,7 @@ class RfaAccessRequestDestinationsArgs:
     @pulumi.getter
     def securable(self) -> pulumi.Input['RfaAccessRequestDestinationsSecurableArgs']:
         """
-        The securable for which the access request destinations are being retrieved
+        The securable for which the access request destinations are being modified or read
         """
         return pulumi.get(self, "securable")
 
@@ -61,21 +61,34 @@ class RfaAccessRequestDestinationsArgs:
 class _RfaAccessRequestDestinationsState:
     def __init__(__self__, *,
                  are_any_destinations_hidden: Optional[pulumi.Input[_builtins.bool]] = None,
+                 destination_source_securable: Optional[pulumi.Input['RfaAccessRequestDestinationsDestinationSourceSecurableArgs']] = None,
                  destinations: Optional[pulumi.Input[Sequence[pulumi.Input['RfaAccessRequestDestinationsDestinationArgs']]]] = None,
-                 securable: Optional[pulumi.Input['RfaAccessRequestDestinationsSecurableArgs']] = None):
+                 full_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 securable: Optional[pulumi.Input['RfaAccessRequestDestinationsSecurableArgs']] = None,
+                 securable_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RfaAccessRequestDestinations resources.
         :param pulumi.Input[_builtins.bool] are_any_destinations_hidden: (boolean) - Indicates whether any destinations are hidden from the caller due to a lack of permissions.
                This value is true if the caller does not have permission to see all destinations
+        :param pulumi.Input['RfaAccessRequestDestinationsDestinationSourceSecurableArgs'] destination_source_securable: (Securable) - The source securable from which the destinations are inherited. Either the same value as securable (if destination
+               is set directly on the securable) or the nearest parent securable with destinations set
         :param pulumi.Input[Sequence[pulumi.Input['RfaAccessRequestDestinationsDestinationArgs']]] destinations: The access request destinations for the securable
-        :param pulumi.Input['RfaAccessRequestDestinationsSecurableArgs'] securable: The securable for which the access request destinations are being retrieved
+        :param pulumi.Input[_builtins.str] full_name: (string) - The full name of the securable. Redundant with the name in the securable object, but necessary for Pulumi integration
+        :param pulumi.Input['RfaAccessRequestDestinationsSecurableArgs'] securable: The securable for which the access request destinations are being modified or read
+        :param pulumi.Input[_builtins.str] securable_type: (string) - The type of the securable. Redundant with the type in the securable object, but necessary for Pulumi integration
         """
         if are_any_destinations_hidden is not None:
             pulumi.set(__self__, "are_any_destinations_hidden", are_any_destinations_hidden)
+        if destination_source_securable is not None:
+            pulumi.set(__self__, "destination_source_securable", destination_source_securable)
         if destinations is not None:
             pulumi.set(__self__, "destinations", destinations)
+        if full_name is not None:
+            pulumi.set(__self__, "full_name", full_name)
         if securable is not None:
             pulumi.set(__self__, "securable", securable)
+        if securable_type is not None:
+            pulumi.set(__self__, "securable_type", securable_type)
 
     @_builtins.property
     @pulumi.getter(name="areAnyDestinationsHidden")
@@ -91,6 +104,19 @@ class _RfaAccessRequestDestinationsState:
         pulumi.set(self, "are_any_destinations_hidden", value)
 
     @_builtins.property
+    @pulumi.getter(name="destinationSourceSecurable")
+    def destination_source_securable(self) -> Optional[pulumi.Input['RfaAccessRequestDestinationsDestinationSourceSecurableArgs']]:
+        """
+        (Securable) - The source securable from which the destinations are inherited. Either the same value as securable (if destination
+        is set directly on the securable) or the nearest parent securable with destinations set
+        """
+        return pulumi.get(self, "destination_source_securable")
+
+    @destination_source_securable.setter
+    def destination_source_securable(self, value: Optional[pulumi.Input['RfaAccessRequestDestinationsDestinationSourceSecurableArgs']]):
+        pulumi.set(self, "destination_source_securable", value)
+
+    @_builtins.property
     @pulumi.getter
     def destinations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RfaAccessRequestDestinationsDestinationArgs']]]]:
         """
@@ -103,16 +129,40 @@ class _RfaAccessRequestDestinationsState:
         pulumi.set(self, "destinations", value)
 
     @_builtins.property
+    @pulumi.getter(name="fullName")
+    def full_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (string) - The full name of the securable. Redundant with the name in the securable object, but necessary for Pulumi integration
+        """
+        return pulumi.get(self, "full_name")
+
+    @full_name.setter
+    def full_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "full_name", value)
+
+    @_builtins.property
     @pulumi.getter
     def securable(self) -> Optional[pulumi.Input['RfaAccessRequestDestinationsSecurableArgs']]:
         """
-        The securable for which the access request destinations are being retrieved
+        The securable for which the access request destinations are being modified or read
         """
         return pulumi.get(self, "securable")
 
     @securable.setter
     def securable(self, value: Optional[pulumi.Input['RfaAccessRequestDestinationsSecurableArgs']]):
         pulumi.set(self, "securable", value)
+
+    @_builtins.property
+    @pulumi.getter(name="securableType")
+    def securable_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (string) - The type of the securable. Redundant with the type in the securable object, but necessary for Pulumi integration
+        """
+        return pulumi.get(self, "securable_type")
+
+    @securable_type.setter
+    def securable_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "securable_type", value)
 
 
 @pulumi.type_token("databricks:index/rfaAccessRequestDestinations:RfaAccessRequestDestinations")
@@ -175,7 +225,7 @@ class RfaAccessRequestDestinations(pulumi.CustomResource):
 
         import {
 
-          id = ""
+          id = "securable_type,full_name"
 
           to = databricks_rfa_access_request_destinations.this
 
@@ -184,13 +234,13 @@ class RfaAccessRequestDestinations(pulumi.CustomResource):
         If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
 
         ```sh
-        $ pulumi import databricks:index/rfaAccessRequestDestinations:RfaAccessRequestDestinations this ""
+        $ pulumi import databricks:index/rfaAccessRequestDestinations:RfaAccessRequestDestinations this "securable_type,full_name"
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['RfaAccessRequestDestinationsDestinationArgs', 'RfaAccessRequestDestinationsDestinationArgsDict']]]] destinations: The access request destinations for the securable
-        :param pulumi.Input[Union['RfaAccessRequestDestinationsSecurableArgs', 'RfaAccessRequestDestinationsSecurableArgsDict']] securable: The securable for which the access request destinations are being retrieved
+        :param pulumi.Input[Union['RfaAccessRequestDestinationsSecurableArgs', 'RfaAccessRequestDestinationsSecurableArgsDict']] securable: The securable for which the access request destinations are being modified or read
         """
         ...
     @overload
@@ -249,7 +299,7 @@ class RfaAccessRequestDestinations(pulumi.CustomResource):
 
         import {
 
-          id = ""
+          id = "securable_type,full_name"
 
           to = databricks_rfa_access_request_destinations.this
 
@@ -258,7 +308,7 @@ class RfaAccessRequestDestinations(pulumi.CustomResource):
         If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
 
         ```sh
-        $ pulumi import databricks:index/rfaAccessRequestDestinations:RfaAccessRequestDestinations this ""
+        $ pulumi import databricks:index/rfaAccessRequestDestinations:RfaAccessRequestDestinations this "securable_type,full_name"
         ```
 
         :param str resource_name: The name of the resource.
@@ -292,6 +342,9 @@ class RfaAccessRequestDestinations(pulumi.CustomResource):
                 raise TypeError("Missing required property 'securable'")
             __props__.__dict__["securable"] = securable
             __props__.__dict__["are_any_destinations_hidden"] = None
+            __props__.__dict__["destination_source_securable"] = None
+            __props__.__dict__["full_name"] = None
+            __props__.__dict__["securable_type"] = None
         super(RfaAccessRequestDestinations, __self__).__init__(
             'databricks:index/rfaAccessRequestDestinations:RfaAccessRequestDestinations',
             resource_name,
@@ -303,8 +356,11 @@ class RfaAccessRequestDestinations(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             are_any_destinations_hidden: Optional[pulumi.Input[_builtins.bool]] = None,
+            destination_source_securable: Optional[pulumi.Input[Union['RfaAccessRequestDestinationsDestinationSourceSecurableArgs', 'RfaAccessRequestDestinationsDestinationSourceSecurableArgsDict']]] = None,
             destinations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RfaAccessRequestDestinationsDestinationArgs', 'RfaAccessRequestDestinationsDestinationArgsDict']]]]] = None,
-            securable: Optional[pulumi.Input[Union['RfaAccessRequestDestinationsSecurableArgs', 'RfaAccessRequestDestinationsSecurableArgsDict']]] = None) -> 'RfaAccessRequestDestinations':
+            full_name: Optional[pulumi.Input[_builtins.str]] = None,
+            securable: Optional[pulumi.Input[Union['RfaAccessRequestDestinationsSecurableArgs', 'RfaAccessRequestDestinationsSecurableArgsDict']]] = None,
+            securable_type: Optional[pulumi.Input[_builtins.str]] = None) -> 'RfaAccessRequestDestinations':
         """
         Get an existing RfaAccessRequestDestinations resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -314,16 +370,23 @@ class RfaAccessRequestDestinations(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] are_any_destinations_hidden: (boolean) - Indicates whether any destinations are hidden from the caller due to a lack of permissions.
                This value is true if the caller does not have permission to see all destinations
+        :param pulumi.Input[Union['RfaAccessRequestDestinationsDestinationSourceSecurableArgs', 'RfaAccessRequestDestinationsDestinationSourceSecurableArgsDict']] destination_source_securable: (Securable) - The source securable from which the destinations are inherited. Either the same value as securable (if destination
+               is set directly on the securable) or the nearest parent securable with destinations set
         :param pulumi.Input[Sequence[pulumi.Input[Union['RfaAccessRequestDestinationsDestinationArgs', 'RfaAccessRequestDestinationsDestinationArgsDict']]]] destinations: The access request destinations for the securable
-        :param pulumi.Input[Union['RfaAccessRequestDestinationsSecurableArgs', 'RfaAccessRequestDestinationsSecurableArgsDict']] securable: The securable for which the access request destinations are being retrieved
+        :param pulumi.Input[_builtins.str] full_name: (string) - The full name of the securable. Redundant with the name in the securable object, but necessary for Pulumi integration
+        :param pulumi.Input[Union['RfaAccessRequestDestinationsSecurableArgs', 'RfaAccessRequestDestinationsSecurableArgsDict']] securable: The securable for which the access request destinations are being modified or read
+        :param pulumi.Input[_builtins.str] securable_type: (string) - The type of the securable. Redundant with the type in the securable object, but necessary for Pulumi integration
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _RfaAccessRequestDestinationsState.__new__(_RfaAccessRequestDestinationsState)
 
         __props__.__dict__["are_any_destinations_hidden"] = are_any_destinations_hidden
+        __props__.__dict__["destination_source_securable"] = destination_source_securable
         __props__.__dict__["destinations"] = destinations
+        __props__.__dict__["full_name"] = full_name
         __props__.__dict__["securable"] = securable
+        __props__.__dict__["securable_type"] = securable_type
         return RfaAccessRequestDestinations(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -336,6 +399,15 @@ class RfaAccessRequestDestinations(pulumi.CustomResource):
         return pulumi.get(self, "are_any_destinations_hidden")
 
     @_builtins.property
+    @pulumi.getter(name="destinationSourceSecurable")
+    def destination_source_securable(self) -> pulumi.Output['outputs.RfaAccessRequestDestinationsDestinationSourceSecurable']:
+        """
+        (Securable) - The source securable from which the destinations are inherited. Either the same value as securable (if destination
+        is set directly on the securable) or the nearest parent securable with destinations set
+        """
+        return pulumi.get(self, "destination_source_securable")
+
+    @_builtins.property
     @pulumi.getter
     def destinations(self) -> pulumi.Output[Optional[Sequence['outputs.RfaAccessRequestDestinationsDestination']]]:
         """
@@ -344,10 +416,26 @@ class RfaAccessRequestDestinations(pulumi.CustomResource):
         return pulumi.get(self, "destinations")
 
     @_builtins.property
+    @pulumi.getter(name="fullName")
+    def full_name(self) -> pulumi.Output[_builtins.str]:
+        """
+        (string) - The full name of the securable. Redundant with the name in the securable object, but necessary for Pulumi integration
+        """
+        return pulumi.get(self, "full_name")
+
+    @_builtins.property
     @pulumi.getter
     def securable(self) -> pulumi.Output['outputs.RfaAccessRequestDestinationsSecurable']:
         """
-        The securable for which the access request destinations are being retrieved
+        The securable for which the access request destinations are being modified or read
         """
         return pulumi.get(self, "securable")
+
+    @_builtins.property
+    @pulumi.getter(name="securableType")
+    def securable_type(self) -> pulumi.Output[_builtins.str]:
+        """
+        (string) - The type of the securable. Redundant with the type in the securable object, but necessary for Pulumi integration
+        """
+        return pulumi.get(self, "securable_type")
 

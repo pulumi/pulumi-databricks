@@ -6,8 +6,11 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.AppPendingDeploymentDeploymentArtifactsArgs;
+import com.pulumi.databricks.inputs.AppPendingDeploymentEnvVarArgs;
+import com.pulumi.databricks.inputs.AppPendingDeploymentGitSourceArgs;
 import com.pulumi.databricks.inputs.AppPendingDeploymentStatusArgs;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,6 +19,13 @@ import javax.annotation.Nullable;
 public final class AppPendingDeploymentArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final AppPendingDeploymentArgs Empty = new AppPendingDeploymentArgs();
+
+    @Import(name="commands")
+    private @Nullable Output<List<String>> commands;
+
+    public Optional<Output<List<String>>> commands() {
+        return Optional.ofNullable(this.commands);
+    }
 
     /**
      * The creation time of the app.
@@ -61,6 +71,20 @@ public final class AppPendingDeploymentArgs extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.deploymentId);
     }
 
+    @Import(name="envVars")
+    private @Nullable Output<List<AppPendingDeploymentEnvVarArgs>> envVars;
+
+    public Optional<Output<List<AppPendingDeploymentEnvVarArgs>>> envVars() {
+        return Optional.ofNullable(this.envVars);
+    }
+
+    @Import(name="gitSource")
+    private @Nullable Output<AppPendingDeploymentGitSourceArgs> gitSource;
+
+    public Optional<Output<AppPendingDeploymentGitSourceArgs>> gitSource() {
+        return Optional.ofNullable(this.gitSource);
+    }
+
     @Import(name="mode")
     private @Nullable Output<String> mode;
 
@@ -100,10 +124,13 @@ public final class AppPendingDeploymentArgs extends com.pulumi.resources.Resourc
     private AppPendingDeploymentArgs() {}
 
     private AppPendingDeploymentArgs(AppPendingDeploymentArgs $) {
+        this.commands = $.commands;
         this.createTime = $.createTime;
         this.creator = $.creator;
         this.deploymentArtifacts = $.deploymentArtifacts;
         this.deploymentId = $.deploymentId;
+        this.envVars = $.envVars;
+        this.gitSource = $.gitSource;
         this.mode = $.mode;
         this.sourceCodePath = $.sourceCodePath;
         this.status = $.status;
@@ -126,6 +153,19 @@ public final class AppPendingDeploymentArgs extends com.pulumi.resources.Resourc
 
         public Builder(AppPendingDeploymentArgs defaults) {
             $ = new AppPendingDeploymentArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder commands(@Nullable Output<List<String>> commands) {
+            $.commands = commands;
+            return this;
+        }
+
+        public Builder commands(List<String> commands) {
+            return commands(Output.of(commands));
+        }
+
+        public Builder commands(String... commands) {
+            return commands(List.of(commands));
         }
 
         /**
@@ -186,6 +226,28 @@ public final class AppPendingDeploymentArgs extends com.pulumi.resources.Resourc
 
         public Builder deploymentId(String deploymentId) {
             return deploymentId(Output.of(deploymentId));
+        }
+
+        public Builder envVars(@Nullable Output<List<AppPendingDeploymentEnvVarArgs>> envVars) {
+            $.envVars = envVars;
+            return this;
+        }
+
+        public Builder envVars(List<AppPendingDeploymentEnvVarArgs> envVars) {
+            return envVars(Output.of(envVars));
+        }
+
+        public Builder envVars(AppPendingDeploymentEnvVarArgs... envVars) {
+            return envVars(List.of(envVars));
+        }
+
+        public Builder gitSource(@Nullable Output<AppPendingDeploymentGitSourceArgs> gitSource) {
+            $.gitSource = gitSource;
+            return this;
+        }
+
+        public Builder gitSource(AppPendingDeploymentGitSourceArgs gitSource) {
+            return gitSource(Output.of(gitSource));
         }
 
         public Builder mode(@Nullable Output<String> mode) {

@@ -15,6 +15,13 @@ public final class JobRunAsArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final JobRunAsArgs Empty = new JobRunAsArgs();
 
+    @Import(name="groupName")
+    private @Nullable Output<String> groupName;
+
+    public Optional<Output<String>> groupName() {
+        return Optional.ofNullable(this.groupName);
+    }
+
     /**
      * The application ID of an active service principal. Setting this field requires the `servicePrincipal/user` role.
      * 
@@ -120,6 +127,7 @@ public final class JobRunAsArgs extends com.pulumi.resources.ResourceArgs {
     private JobRunAsArgs() {}
 
     private JobRunAsArgs(JobRunAsArgs $) {
+        this.groupName = $.groupName;
         this.servicePrincipalName = $.servicePrincipalName;
         this.userName = $.userName;
     }
@@ -140,6 +148,15 @@ public final class JobRunAsArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(JobRunAsArgs defaults) {
             $ = new JobRunAsArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder groupName(@Nullable Output<String> groupName) {
+            $.groupName = groupName;
+            return this;
+        }
+
+        public Builder groupName(String groupName) {
+            return groupName(Output.of(groupName));
         }
 
         /**

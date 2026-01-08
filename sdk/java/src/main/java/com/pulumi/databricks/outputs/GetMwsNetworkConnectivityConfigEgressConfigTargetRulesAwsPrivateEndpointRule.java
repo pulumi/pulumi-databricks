@@ -42,6 +42,7 @@ public final class GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPriv
     private @Nullable List<String> domainNames;
     private @Nullable Boolean enabled;
     private @Nullable String endpointService;
+    private @Nullable String errorMessage;
     /**
      * @return The Databricks network connectivity configuration ID.
      * 
@@ -105,6 +106,9 @@ public final class GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPriv
     public Optional<String> endpointService() {
         return Optional.ofNullable(this.endpointService);
     }
+    public Optional<String> errorMessage() {
+        return Optional.ofNullable(this.errorMessage);
+    }
     /**
      * @return The Databricks network connectivity configuration ID.
      * 
@@ -150,6 +154,7 @@ public final class GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPriv
         private @Nullable List<String> domainNames;
         private @Nullable Boolean enabled;
         private @Nullable String endpointService;
+        private @Nullable String errorMessage;
         private @Nullable String networkConnectivityConfigId;
         private @Nullable List<String> resourceNames;
         private @Nullable String ruleId;
@@ -166,6 +171,7 @@ public final class GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPriv
     	      this.domainNames = defaults.domainNames;
     	      this.enabled = defaults.enabled;
     	      this.endpointService = defaults.endpointService;
+    	      this.errorMessage = defaults.errorMessage;
     	      this.networkConnectivityConfigId = defaults.networkConnectivityConfigId;
     	      this.resourceNames = defaults.resourceNames;
     	      this.ruleId = defaults.ruleId;
@@ -225,6 +231,12 @@ public final class GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPriv
             return this;
         }
         @CustomType.Setter
+        public Builder errorMessage(@Nullable String errorMessage) {
+
+            this.errorMessage = errorMessage;
+            return this;
+        }
+        @CustomType.Setter
         public Builder networkConnectivityConfigId(@Nullable String networkConnectivityConfigId) {
 
             this.networkConnectivityConfigId = networkConnectivityConfigId;
@@ -267,6 +279,7 @@ public final class GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPriv
             _resultValue.domainNames = domainNames;
             _resultValue.enabled = enabled;
             _resultValue.endpointService = endpointService;
+            _resultValue.errorMessage = errorMessage;
             _resultValue.networkConnectivityConfigId = networkConnectivityConfigId;
             _resultValue.resourceNames = resourceNames;
             _resultValue.ruleId = ruleId;

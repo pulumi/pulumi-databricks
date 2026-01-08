@@ -11,6 +11,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class JobRunAs {
+    private @Nullable String groupName;
     /**
      * @return The application ID of an active service principal. Setting this field requires the `servicePrincipal/user` role.
      * 
@@ -59,6 +60,9 @@ public final class JobRunAs {
     private @Nullable String userName;
 
     private JobRunAs() {}
+    public Optional<String> groupName() {
+        return Optional.ofNullable(this.groupName);
+    }
     /**
      * @return The application ID of an active service principal. Setting this field requires the `servicePrincipal/user` role.
      * 
@@ -119,15 +123,23 @@ public final class JobRunAs {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String groupName;
         private @Nullable String servicePrincipalName;
         private @Nullable String userName;
         public Builder() {}
         public Builder(JobRunAs defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.groupName = defaults.groupName;
     	      this.servicePrincipalName = defaults.servicePrincipalName;
     	      this.userName = defaults.userName;
         }
 
+        @CustomType.Setter
+        public Builder groupName(@Nullable String groupName) {
+
+            this.groupName = groupName;
+            return this;
+        }
         @CustomType.Setter
         public Builder servicePrincipalName(@Nullable String servicePrincipalName) {
 
@@ -142,6 +154,7 @@ public final class JobRunAs {
         }
         public JobRunAs build() {
             final var _resultValue = new JobRunAs();
+            _resultValue.groupName = groupName;
             _resultValue.servicePrincipalName = servicePrincipalName;
             _resultValue.userName = userName;
             return _resultValue;

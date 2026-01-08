@@ -13,6 +13,7 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class GetAppAppPendingDeploymentResult
     {
+        public readonly ImmutableArray<string> Commands;
         /// <summary>
         /// The creation time of the app.
         /// </summary>
@@ -23,6 +24,8 @@ namespace Pulumi.Databricks.Outputs
         public readonly string Creator;
         public readonly Outputs.GetAppAppPendingDeploymentDeploymentArtifactsResult DeploymentArtifacts;
         public readonly string? DeploymentId;
+        public readonly ImmutableArray<Outputs.GetAppAppPendingDeploymentEnvVarResult> EnvVars;
+        public readonly Outputs.GetAppAppPendingDeploymentGitSourceResult? GitSource;
         public readonly string? Mode;
         public readonly string? SourceCodePath;
         public readonly Outputs.GetAppAppPendingDeploymentStatusResult Status;
@@ -33,6 +36,8 @@ namespace Pulumi.Databricks.Outputs
 
         [OutputConstructor]
         private GetAppAppPendingDeploymentResult(
+            ImmutableArray<string> commands,
+
             string createTime,
 
             string creator,
@@ -40,6 +45,10 @@ namespace Pulumi.Databricks.Outputs
             Outputs.GetAppAppPendingDeploymentDeploymentArtifactsResult deploymentArtifacts,
 
             string? deploymentId,
+
+            ImmutableArray<Outputs.GetAppAppPendingDeploymentEnvVarResult> envVars,
+
+            Outputs.GetAppAppPendingDeploymentGitSourceResult? gitSource,
 
             string? mode,
 
@@ -49,10 +58,13 @@ namespace Pulumi.Databricks.Outputs
 
             string updateTime)
         {
+            Commands = commands;
             CreateTime = createTime;
             Creator = creator;
             DeploymentArtifacts = deploymentArtifacts;
             DeploymentId = deploymentId;
+            EnvVars = envVars;
+            GitSource = gitSource;
             Mode = mode;
             SourceCodePath = sourceCodePath;
             Status = status;

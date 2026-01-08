@@ -17,6 +17,7 @@ namespace Pulumi.Databricks.Outputs
         public readonly ImmutableArray<string> IncludeColumns;
         public readonly ImmutableArray<string> PrimaryKeys;
         public readonly Outputs.PipelineIngestionDefinitionObjectTableTableConfigurationQueryBasedConnectorConfig? QueryBasedConnectorConfig;
+        public readonly string? RowFilter;
         public readonly bool? SalesforceIncludeFormulaFields;
         public readonly string? ScdType;
         public readonly ImmutableArray<string> SequenceBies;
@@ -32,6 +33,8 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.PipelineIngestionDefinitionObjectTableTableConfigurationQueryBasedConnectorConfig? queryBasedConnectorConfig,
 
+            string? rowFilter,
+
             bool? salesforceIncludeFormulaFields,
 
             string? scdType,
@@ -44,6 +47,7 @@ namespace Pulumi.Databricks.Outputs
             IncludeColumns = includeColumns;
             PrimaryKeys = primaryKeys;
             QueryBasedConnectorConfig = queryBasedConnectorConfig;
+            RowFilter = rowFilter;
             SalesforceIncludeFormulaFields = salesforceIncludeFormulaFields;
             ScdType = scdType;
             SequenceBies = sequenceBies;

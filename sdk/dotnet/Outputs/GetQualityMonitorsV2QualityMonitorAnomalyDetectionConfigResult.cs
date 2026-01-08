@@ -14,6 +14,10 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetQualityMonitorsV2QualityMonitorAnomalyDetectionConfigResult
     {
         /// <summary>
+        /// (list of string) - List of fully qualified table names to exclude from anomaly detection
+        /// </summary>
+        public readonly ImmutableArray<string> ExcludedTableFullNames;
+        /// <summary>
         /// (string) - Run id of the last run of the workflow
         /// </summary>
         public readonly string LastRunId;
@@ -24,10 +28,13 @@ namespace Pulumi.Databricks.Outputs
 
         [OutputConstructor]
         private GetQualityMonitorsV2QualityMonitorAnomalyDetectionConfigResult(
+            ImmutableArray<string> excludedTableFullNames,
+
             string lastRunId,
 
             string latestRunStatus)
         {
+            ExcludedTableFullNames = excludedTableFullNames;
             LastRunId = lastRunId;
             LatestRunStatus = latestRunStatus;
         }

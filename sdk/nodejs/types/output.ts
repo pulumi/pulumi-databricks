@@ -494,6 +494,7 @@ export interface AlertV2Schedule {
 }
 
 export interface AppActiveDeployment {
+    commands?: string[];
     /**
      * The creation time of the app.
      */
@@ -504,6 +505,8 @@ export interface AppActiveDeployment {
     creator: string;
     deploymentArtifacts: outputs.AppActiveDeploymentDeploymentArtifacts;
     deploymentId?: string;
+    envVars?: outputs.AppActiveDeploymentEnvVar[];
+    gitSource?: outputs.AppActiveDeploymentGitSource;
     mode?: string;
     sourceCodePath?: string;
     status: outputs.AppActiveDeploymentStatus;
@@ -515,6 +518,32 @@ export interface AppActiveDeployment {
 
 export interface AppActiveDeploymentDeploymentArtifacts {
     sourceCodePath?: string;
+}
+
+export interface AppActiveDeploymentEnvVar {
+    /**
+     * The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
+     */
+    name?: string;
+    value?: string;
+    valueFrom?: string;
+}
+
+export interface AppActiveDeploymentGitSource {
+    branch?: string;
+    commit?: string;
+    gitRepository: outputs.AppActiveDeploymentGitSourceGitRepository;
+    resolvedCommit: string;
+    sourceCodePath?: string;
+    tag?: string;
+}
+
+export interface AppActiveDeploymentGitSourceGitRepository {
+    provider: string;
+    /**
+     * The URL of the app once it is deployed.
+     */
+    url: string;
 }
 
 export interface AppActiveDeploymentStatus {
@@ -550,7 +579,16 @@ export interface AppComputeStatus {
     state: string;
 }
 
+export interface AppGitRepository {
+    provider: string;
+    /**
+     * The URL of the app once it is deployed.
+     */
+    url: string;
+}
+
 export interface AppPendingDeployment {
+    commands?: string[];
     /**
      * The creation time of the app.
      */
@@ -561,6 +599,8 @@ export interface AppPendingDeployment {
     creator: string;
     deploymentArtifacts: outputs.AppPendingDeploymentDeploymentArtifacts;
     deploymentId?: string;
+    envVars?: outputs.AppPendingDeploymentEnvVar[];
+    gitSource?: outputs.AppPendingDeploymentGitSource;
     mode?: string;
     sourceCodePath?: string;
     status: outputs.AppPendingDeploymentStatus;
@@ -572,6 +612,32 @@ export interface AppPendingDeployment {
 
 export interface AppPendingDeploymentDeploymentArtifacts {
     sourceCodePath?: string;
+}
+
+export interface AppPendingDeploymentEnvVar {
+    /**
+     * The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
+     */
+    name?: string;
+    value?: string;
+    valueFrom?: string;
+}
+
+export interface AppPendingDeploymentGitSource {
+    branch?: string;
+    commit?: string;
+    gitRepository: outputs.AppPendingDeploymentGitSourceGitRepository;
+    resolvedCommit: string;
+    sourceCodePath?: string;
+    tag?: string;
+}
+
+export interface AppPendingDeploymentGitSourceGitRepository {
+    provider: string;
+    /**
+     * The URL of the app once it is deployed.
+     */
+    url: string;
 }
 
 export interface AppPendingDeploymentStatus {
@@ -600,6 +666,7 @@ export interface AppResource {
      * Exactly one of the following attributes must be provided:
      */
     description?: string;
+    experiment?: outputs.AppResourceExperiment;
     /**
      * attribute
      */
@@ -642,6 +709,11 @@ export interface AppResourceDatabase {
     /**
      * Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
      */
+    permission: string;
+}
+
+export interface AppResourceExperiment {
+    experimentId: string;
     permission: string;
 }
 
@@ -742,6 +814,7 @@ export interface AppsSettingsCustomTemplateManifestResourceSpec {
      * The description of the template
      */
     description?: string;
+    experimentSpec?: outputs.AppsSettingsCustomTemplateManifestResourceSpecExperimentSpec;
     jobSpec?: outputs.AppsSettingsCustomTemplateManifestResourceSpecJobSpec;
     /**
      * The name of the template. It must contain only alphanumeric characters, hyphens, underscores, and whitespaces.
@@ -752,6 +825,10 @@ export interface AppsSettingsCustomTemplateManifestResourceSpec {
     servingEndpointSpec?: outputs.AppsSettingsCustomTemplateManifestResourceSpecServingEndpointSpec;
     sqlWarehouseSpec?: outputs.AppsSettingsCustomTemplateManifestResourceSpecSqlWarehouseSpec;
     ucSecurableSpec?: outputs.AppsSettingsCustomTemplateManifestResourceSpecUcSecurableSpec;
+}
+
+export interface AppsSettingsCustomTemplateManifestResourceSpecExperimentSpec {
+    permission: string;
 }
 
 export interface AppsSettingsCustomTemplateManifestResourceSpecJobSpec {
@@ -773,7 +850,7 @@ export interface AppsSettingsCustomTemplateManifestResourceSpecSqlWarehouseSpec 
 export interface AppsSettingsCustomTemplateManifestResourceSpecUcSecurableSpec {
     permission: string;
     /**
-     * Possible values are: `TABLE`, `VOLUME`
+     * Possible values are: `CONNECTION`, `FUNCTION`, `TABLE`, `VOLUME`
      */
     securableType: string;
 }
@@ -1476,6 +1553,10 @@ export interface CustomAppIntegrationTokenAccessPolicy {
 }
 
 export interface DataQualityMonitorAnomalyDetectionConfig {
+    /**
+     * List of fully qualified table names to exclude from anomaly detection
+     */
+    excludedTableFullNames?: string[];
 }
 
 export interface DataQualityMonitorDataProfilingConfig {
@@ -3247,10 +3328,12 @@ export interface GetAppApp {
      * The effective budget policy ID.
      */
     effectiveBudgetPolicyId: string;
+    effectiveUsagePolicyId: string;
     /**
      * A list of effective api scopes granted to the user access token.
      */
     effectiveUserApiScopes: string[];
+    gitRepository?: outputs.GetAppAppGitRepository;
     /**
      * Id of the job to grant permission on.
      */
@@ -3290,10 +3373,12 @@ export interface GetAppApp {
      * The URL of the app once it is deployed.
      */
     url: string;
+    usagePolicyId?: string;
     userApiScopes?: string[];
 }
 
 export interface GetAppAppActiveDeployment {
+    commands?: string[];
     /**
      * The creation time of the app.
      */
@@ -3304,6 +3389,8 @@ export interface GetAppAppActiveDeployment {
     creator: string;
     deploymentArtifacts: outputs.GetAppAppActiveDeploymentDeploymentArtifacts;
     deploymentId?: string;
+    envVars?: outputs.GetAppAppActiveDeploymentEnvVar[];
+    gitSource?: outputs.GetAppAppActiveDeploymentGitSource;
     mode?: string;
     sourceCodePath?: string;
     status: outputs.GetAppAppActiveDeploymentStatus;
@@ -3315,6 +3402,32 @@ export interface GetAppAppActiveDeployment {
 
 export interface GetAppAppActiveDeploymentDeploymentArtifacts {
     sourceCodePath?: string;
+}
+
+export interface GetAppAppActiveDeploymentEnvVar {
+    /**
+     * The name of the app.
+     */
+    name?: string;
+    value?: string;
+    valueFrom?: string;
+}
+
+export interface GetAppAppActiveDeploymentGitSource {
+    branch?: string;
+    commit?: string;
+    gitRepository: outputs.GetAppAppActiveDeploymentGitSourceGitRepository;
+    resolvedCommit: string;
+    sourceCodePath?: string;
+    tag?: string;
+}
+
+export interface GetAppAppActiveDeploymentGitSourceGitRepository {
+    provider: string;
+    /**
+     * The URL of the app once it is deployed.
+     */
+    url: string;
 }
 
 export interface GetAppAppActiveDeploymentStatus {
@@ -3350,7 +3463,16 @@ export interface GetAppAppComputeStatus {
     state: string;
 }
 
+export interface GetAppAppGitRepository {
+    provider: string;
+    /**
+     * The URL of the app once it is deployed.
+     */
+    url: string;
+}
+
 export interface GetAppAppPendingDeployment {
+    commands?: string[];
     /**
      * The creation time of the app.
      */
@@ -3361,6 +3483,8 @@ export interface GetAppAppPendingDeployment {
     creator: string;
     deploymentArtifacts: outputs.GetAppAppPendingDeploymentDeploymentArtifacts;
     deploymentId?: string;
+    envVars?: outputs.GetAppAppPendingDeploymentEnvVar[];
+    gitSource?: outputs.GetAppAppPendingDeploymentGitSource;
     mode?: string;
     sourceCodePath?: string;
     status: outputs.GetAppAppPendingDeploymentStatus;
@@ -3372,6 +3496,32 @@ export interface GetAppAppPendingDeployment {
 
 export interface GetAppAppPendingDeploymentDeploymentArtifacts {
     sourceCodePath?: string;
+}
+
+export interface GetAppAppPendingDeploymentEnvVar {
+    /**
+     * The name of the app.
+     */
+    name?: string;
+    value?: string;
+    valueFrom?: string;
+}
+
+export interface GetAppAppPendingDeploymentGitSource {
+    branch?: string;
+    commit?: string;
+    gitRepository: outputs.GetAppAppPendingDeploymentGitSourceGitRepository;
+    resolvedCommit: string;
+    sourceCodePath?: string;
+    tag?: string;
+}
+
+export interface GetAppAppPendingDeploymentGitSourceGitRepository {
+    provider: string;
+    /**
+     * The URL of the app once it is deployed.
+     */
+    url: string;
 }
 
 export interface GetAppAppPendingDeploymentStatus {
@@ -3394,6 +3544,7 @@ export interface GetAppAppResource {
      * The description of the resource.
      */
     description?: string;
+    experiment?: outputs.GetAppAppResourceExperiment;
     /**
      * attribute
      */
@@ -3433,6 +3584,14 @@ export interface GetAppAppResourceDatabase {
      * The name of database instance.
      */
     instanceName: string;
+    /**
+     * Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
+     */
+    permission: string;
+}
+
+export interface GetAppAppResourceExperiment {
+    experimentId: string;
     /**
      * Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
      */
@@ -3559,10 +3718,12 @@ export interface GetAppsApp {
      * The effective budget policy ID.
      */
     effectiveBudgetPolicyId: string;
+    effectiveUsagePolicyId: string;
     /**
      * A list of effective api scopes granted to the user access token.
      */
     effectiveUserApiScopes: string[];
+    gitRepository?: outputs.GetAppsAppGitRepository;
     /**
      * Id of the job to grant permission on.
      */
@@ -3602,10 +3763,12 @@ export interface GetAppsApp {
      * The URL of the app once it is deployed.
      */
     url: string;
+    usagePolicyId?: string;
     userApiScopes?: string[];
 }
 
 export interface GetAppsAppActiveDeployment {
+    commands?: string[];
     /**
      * The creation time of the app.
      */
@@ -3616,6 +3779,8 @@ export interface GetAppsAppActiveDeployment {
     creator: string;
     deploymentArtifacts: outputs.GetAppsAppActiveDeploymentDeploymentArtifacts;
     deploymentId?: string;
+    envVars?: outputs.GetAppsAppActiveDeploymentEnvVar[];
+    gitSource?: outputs.GetAppsAppActiveDeploymentGitSource;
     mode?: string;
     sourceCodePath?: string;
     status: outputs.GetAppsAppActiveDeploymentStatus;
@@ -3627,6 +3792,32 @@ export interface GetAppsAppActiveDeployment {
 
 export interface GetAppsAppActiveDeploymentDeploymentArtifacts {
     sourceCodePath?: string;
+}
+
+export interface GetAppsAppActiveDeploymentEnvVar {
+    /**
+     * The name of Genie Space.
+     */
+    name?: string;
+    value?: string;
+    valueFrom?: string;
+}
+
+export interface GetAppsAppActiveDeploymentGitSource {
+    branch?: string;
+    commit?: string;
+    gitRepository: outputs.GetAppsAppActiveDeploymentGitSourceGitRepository;
+    resolvedCommit: string;
+    sourceCodePath?: string;
+    tag?: string;
+}
+
+export interface GetAppsAppActiveDeploymentGitSourceGitRepository {
+    provider: string;
+    /**
+     * The URL of the app once it is deployed.
+     */
+    url: string;
 }
 
 export interface GetAppsAppActiveDeploymentStatus {
@@ -3662,7 +3853,16 @@ export interface GetAppsAppComputeStatus {
     state: string;
 }
 
+export interface GetAppsAppGitRepository {
+    provider: string;
+    /**
+     * The URL of the app once it is deployed.
+     */
+    url: string;
+}
+
 export interface GetAppsAppPendingDeployment {
+    commands?: string[];
     /**
      * The creation time of the app.
      */
@@ -3673,6 +3873,8 @@ export interface GetAppsAppPendingDeployment {
     creator: string;
     deploymentArtifacts: outputs.GetAppsAppPendingDeploymentDeploymentArtifacts;
     deploymentId?: string;
+    envVars?: outputs.GetAppsAppPendingDeploymentEnvVar[];
+    gitSource?: outputs.GetAppsAppPendingDeploymentGitSource;
     mode?: string;
     sourceCodePath?: string;
     status: outputs.GetAppsAppPendingDeploymentStatus;
@@ -3684,6 +3886,32 @@ export interface GetAppsAppPendingDeployment {
 
 export interface GetAppsAppPendingDeploymentDeploymentArtifacts {
     sourceCodePath?: string;
+}
+
+export interface GetAppsAppPendingDeploymentEnvVar {
+    /**
+     * The name of Genie Space.
+     */
+    name?: string;
+    value?: string;
+    valueFrom?: string;
+}
+
+export interface GetAppsAppPendingDeploymentGitSource {
+    branch?: string;
+    commit?: string;
+    gitRepository: outputs.GetAppsAppPendingDeploymentGitSourceGitRepository;
+    resolvedCommit: string;
+    sourceCodePath?: string;
+    tag?: string;
+}
+
+export interface GetAppsAppPendingDeploymentGitSourceGitRepository {
+    provider: string;
+    /**
+     * The URL of the app once it is deployed.
+     */
+    url: string;
 }
 
 export interface GetAppsAppPendingDeploymentStatus {
@@ -3706,6 +3934,7 @@ export interface GetAppsAppResource {
      * The description of the resource.
      */
     description?: string;
+    experiment?: outputs.GetAppsAppResourceExperiment;
     /**
      * attribute
      */
@@ -3745,6 +3974,14 @@ export interface GetAppsAppResourceDatabase {
      * The name of database instance.
      */
     instanceName: string;
+    /**
+     * Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
+     */
+    permission: string;
+}
+
+export interface GetAppsAppResourceExperiment {
+    experimentId: string;
     /**
      * Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
      */
@@ -3859,6 +4096,10 @@ export interface GetAppsSettingsCustomTemplateManifestResourceSpec {
      */
     description?: string;
     /**
+     * (AppManifestAppResourceExperimentSpec)
+     */
+    experimentSpec?: outputs.GetAppsSettingsCustomTemplateManifestResourceSpecExperimentSpec;
+    /**
      * (AppManifestAppResourceJobSpec)
      */
     jobSpec?: outputs.GetAppsSettingsCustomTemplateManifestResourceSpecJobSpec;
@@ -3885,41 +4126,48 @@ export interface GetAppsSettingsCustomTemplateManifestResourceSpec {
     ucSecurableSpec?: outputs.GetAppsSettingsCustomTemplateManifestResourceSpecUcSecurableSpec;
 }
 
+export interface GetAppsSettingsCustomTemplateManifestResourceSpecExperimentSpec {
+    /**
+     * (string) - Possible values are: `EXECUTE`, `MANAGE`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+     */
+    permission: string;
+}
+
 export interface GetAppsSettingsCustomTemplateManifestResourceSpecJobSpec {
     /**
-     * (string) - Possible values are: `MANAGE`, `READ_VOLUME`, `SELECT`, `WRITE_VOLUME`
+     * (string) - Possible values are: `EXECUTE`, `MANAGE`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
      */
     permission: string;
 }
 
 export interface GetAppsSettingsCustomTemplateManifestResourceSpecSecretSpec {
     /**
-     * (string) - Possible values are: `MANAGE`, `READ_VOLUME`, `SELECT`, `WRITE_VOLUME`
+     * (string) - Possible values are: `EXECUTE`, `MANAGE`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
      */
     permission: string;
 }
 
 export interface GetAppsSettingsCustomTemplateManifestResourceSpecServingEndpointSpec {
     /**
-     * (string) - Possible values are: `MANAGE`, `READ_VOLUME`, `SELECT`, `WRITE_VOLUME`
+     * (string) - Possible values are: `EXECUTE`, `MANAGE`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
      */
     permission: string;
 }
 
 export interface GetAppsSettingsCustomTemplateManifestResourceSpecSqlWarehouseSpec {
     /**
-     * (string) - Possible values are: `MANAGE`, `READ_VOLUME`, `SELECT`, `WRITE_VOLUME`
+     * (string) - Possible values are: `EXECUTE`, `MANAGE`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
      */
     permission: string;
 }
 
 export interface GetAppsSettingsCustomTemplateManifestResourceSpecUcSecurableSpec {
     /**
-     * (string) - Possible values are: `MANAGE`, `READ_VOLUME`, `SELECT`, `WRITE_VOLUME`
+     * (string) - Possible values are: `EXECUTE`, `MANAGE`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
      */
     permission: string;
     /**
-     * (string) - Possible values are: `TABLE`, `VOLUME`
+     * (string) - Possible values are: `CONNECTION`, `FUNCTION`, `TABLE`, `VOLUME`
      */
     securableType: string;
 }
@@ -3980,6 +4228,10 @@ export interface GetAppsSettingsCustomTemplatesTemplateManifestResourceSpec {
      */
     description?: string;
     /**
+     * (AppManifestAppResourceExperimentSpec)
+     */
+    experimentSpec?: outputs.GetAppsSettingsCustomTemplatesTemplateManifestResourceSpecExperimentSpec;
+    /**
      * (AppManifestAppResourceJobSpec)
      */
     jobSpec?: outputs.GetAppsSettingsCustomTemplatesTemplateManifestResourceSpecJobSpec;
@@ -4005,41 +4257,48 @@ export interface GetAppsSettingsCustomTemplatesTemplateManifestResourceSpec {
     ucSecurableSpec?: outputs.GetAppsSettingsCustomTemplatesTemplateManifestResourceSpecUcSecurableSpec;
 }
 
+export interface GetAppsSettingsCustomTemplatesTemplateManifestResourceSpecExperimentSpec {
+    /**
+     * (string) - Possible values are: `EXECUTE`, `MANAGE`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+     */
+    permission: string;
+}
+
 export interface GetAppsSettingsCustomTemplatesTemplateManifestResourceSpecJobSpec {
     /**
-     * (string) - Possible values are: `MANAGE`, `READ_VOLUME`, `SELECT`, `WRITE_VOLUME`
+     * (string) - Possible values are: `EXECUTE`, `MANAGE`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
      */
     permission: string;
 }
 
 export interface GetAppsSettingsCustomTemplatesTemplateManifestResourceSpecSecretSpec {
     /**
-     * (string) - Possible values are: `MANAGE`, `READ_VOLUME`, `SELECT`, `WRITE_VOLUME`
+     * (string) - Possible values are: `EXECUTE`, `MANAGE`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
      */
     permission: string;
 }
 
 export interface GetAppsSettingsCustomTemplatesTemplateManifestResourceSpecServingEndpointSpec {
     /**
-     * (string) - Possible values are: `MANAGE`, `READ_VOLUME`, `SELECT`, `WRITE_VOLUME`
+     * (string) - Possible values are: `EXECUTE`, `MANAGE`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
      */
     permission: string;
 }
 
 export interface GetAppsSettingsCustomTemplatesTemplateManifestResourceSpecSqlWarehouseSpec {
     /**
-     * (string) - Possible values are: `MANAGE`, `READ_VOLUME`, `SELECT`, `WRITE_VOLUME`
+     * (string) - Possible values are: `EXECUTE`, `MANAGE`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
      */
     permission: string;
 }
 
 export interface GetAppsSettingsCustomTemplatesTemplateManifestResourceSpecUcSecurableSpec {
     /**
-     * (string) - Possible values are: `MANAGE`, `READ_VOLUME`, `SELECT`, `WRITE_VOLUME`
+     * (string) - Possible values are: `EXECUTE`, `MANAGE`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
      */
     permission: string;
     /**
-     * (string) - Possible values are: `TABLE`, `VOLUME`
+     * (string) - Possible values are: `CONNECTION`, `FUNCTION`, `TABLE`, `VOLUME`
      */
     securableType: string;
 }
@@ -4943,6 +5202,10 @@ export interface GetDashboardsProviderConfig {
 }
 
 export interface GetDataQualityMonitorAnomalyDetectionConfig {
+    /**
+     * (list of string) - List of fully qualified table names to exclude from anomaly detection
+     */
+    excludedTableFullNames?: string[];
 }
 
 export interface GetDataQualityMonitorDataProfilingConfig {
@@ -5157,6 +5420,10 @@ export interface GetDataQualityMonitorsMonitor {
 }
 
 export interface GetDataQualityMonitorsMonitorAnomalyDetectionConfig {
+    /**
+     * (list of string) - List of fully qualified table names to exclude from anomaly detection
+     */
+    excludedTableFullNames?: string[];
 }
 
 export interface GetDataQualityMonitorsMonitorDataProfilingConfig {
@@ -9116,6 +9383,7 @@ export interface GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivat
     domainNames?: string[];
     enabled?: boolean;
     endpointService?: string;
+    errorMessage?: string;
     /**
      * The Databricks network connectivity configuration ID.
      */
@@ -9154,6 +9422,7 @@ export interface GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePriv
      * The name of the Azure private endpoint resource.
      */
     endpointName?: string;
+    errorMessage?: string;
     /**
      * The sub-resource type (group ID) of the target resource.
      */
@@ -9242,6 +9511,10 @@ export interface GetOnlineStoresOnlineStore {
      * (string) - The current state of the online store. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
      */
     state: string;
+    /**
+     * (string) - The usage policy applied to the online store to track billing
+     */
+    usagePolicyId: string;
 }
 
 export interface GetPipelinesProviderConfig {
@@ -9470,7 +9743,705 @@ export interface GetPolicyInfosPolicyRowFilterUsing {
     constant?: string;
 }
 
+export interface GetPostgresBranchSpec {
+    /**
+     * (boolean) - Whether the branch is the project's default branch
+     */
+    default?: boolean;
+    /**
+     * (boolean) - Whether the branch is protected
+     */
+    isProtected?: boolean;
+    /**
+     * (string) - The name of the source branch from which this branch was created.
+     * Format: projects/{project_id}/branches/{branch_id}
+     */
+    sourceBranch?: string;
+    /**
+     * (string) - The Log Sequence Number (LSN) on the source branch from which this branch was created
+     */
+    sourceBranchLsn?: string;
+    /**
+     * (string) - The point in time on the source branch from which this branch was created
+     */
+    sourceBranchTime?: string;
+}
+
+export interface GetPostgresBranchStatus {
+    /**
+     * (string) - The branch's state, indicating if it is initializing, ready for use, or archived. Possible values are: `ARCHIVED`, `IMPORTING`, `INIT`, `READY`, `RESETTING`
+     */
+    currentState: string;
+    /**
+     * (boolean) - Whether the branch is the project's default branch
+     */
+    default: boolean;
+    /**
+     * (boolean) - Whether the branch is protected
+     */
+    isProtected: boolean;
+    /**
+     * (integer) - The logical size of the branch
+     */
+    logicalSizeBytes: number;
+    /**
+     * (string) - The pending state of the branch, if a state transition is in progress. Possible values are: `ARCHIVED`, `IMPORTING`, `INIT`, `READY`, `RESETTING`
+     */
+    pendingState: string;
+    /**
+     * (string) - The name of the source branch from which this branch was created.
+     * Format: projects/{project_id}/branches/{branch_id}
+     */
+    sourceBranch: string;
+    /**
+     * (string) - The Log Sequence Number (LSN) on the source branch from which this branch was created
+     */
+    sourceBranchLsn: string;
+    /**
+     * (string) - The point in time on the source branch from which this branch was created
+     */
+    sourceBranchTime: string;
+    /**
+     * (string) - A timestamp indicating when the `currentState` began
+     */
+    stateChangeTime: string;
+}
+
+export interface GetPostgresBranchesBranch {
+    /**
+     * (string) - A timestamp indicating when the branch was created
+     */
+    createTime: string;
+    /**
+     * (string) - The resource name of the branch.
+     * Format: projects/{project_id}/branches/{branch_id}
+     */
+    name: string;
+    /**
+     * The Project that owns this collection of branches.
+     * Format: projects/{project_id}
+     */
+    parent: string;
+    /**
+     * (BranchSpec) - The desired state of a Branch
+     */
+    spec: outputs.GetPostgresBranchesBranchSpec;
+    /**
+     * (BranchStatus) - The current status of a Branch
+     */
+    status: outputs.GetPostgresBranchesBranchStatus;
+    /**
+     * (string) - System generated unique ID for the branch
+     */
+    uid: string;
+    /**
+     * (string) - A timestamp indicating when the branch was last updated
+     */
+    updateTime: string;
+}
+
+export interface GetPostgresBranchesBranchSpec {
+    /**
+     * (boolean) - Whether the branch is the project's default branch
+     */
+    default?: boolean;
+    /**
+     * (boolean) - Whether the branch is protected
+     */
+    isProtected?: boolean;
+    /**
+     * (string) - The name of the source branch from which this branch was created.
+     * Format: projects/{project_id}/branches/{branch_id}
+     */
+    sourceBranch?: string;
+    /**
+     * (string) - The Log Sequence Number (LSN) on the source branch from which this branch was created
+     */
+    sourceBranchLsn?: string;
+    /**
+     * (string) - The point in time on the source branch from which this branch was created
+     */
+    sourceBranchTime?: string;
+}
+
+export interface GetPostgresBranchesBranchStatus {
+    /**
+     * (string) - The branch's state, indicating if it is initializing, ready for use, or archived. Possible values are: `ARCHIVED`, `IMPORTING`, `INIT`, `READY`, `RESETTING`
+     */
+    currentState: string;
+    /**
+     * (boolean) - Whether the branch is the project's default branch
+     */
+    default: boolean;
+    /**
+     * (boolean) - Whether the branch is protected
+     */
+    isProtected: boolean;
+    /**
+     * (integer) - The logical size of the branch
+     */
+    logicalSizeBytes: number;
+    /**
+     * (string) - The pending state of the branch, if a state transition is in progress. Possible values are: `ARCHIVED`, `IMPORTING`, `INIT`, `READY`, `RESETTING`
+     */
+    pendingState: string;
+    /**
+     * (string) - The name of the source branch from which this branch was created.
+     * Format: projects/{project_id}/branches/{branch_id}
+     */
+    sourceBranch: string;
+    /**
+     * (string) - The Log Sequence Number (LSN) on the source branch from which this branch was created
+     */
+    sourceBranchLsn: string;
+    /**
+     * (string) - The point in time on the source branch from which this branch was created
+     */
+    sourceBranchTime: string;
+    /**
+     * (string) - A timestamp indicating when the `currentState` began
+     */
+    stateChangeTime: string;
+}
+
+export interface GetPostgresEndpointSpec {
+    /**
+     * (number) - The maximum number of Compute Units
+     */
+    autoscalingLimitMaxCu?: number;
+    /**
+     * (number) - The minimum number of Compute Units
+     */
+    autoscalingLimitMinCu?: number;
+    /**
+     * (boolean) - Whether to restrict connections to the compute endpoint.
+     * Enabling this option schedules a suspend compute operation.
+     * A disabled compute endpoint cannot be enabled by a connection or
+     * console action
+     */
+    disabled?: boolean;
+    /**
+     * (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `READ_ONLY`, `READ_WRITE`
+     */
+    endpointType: string;
+    /**
+     * (string) - Possible values are: `TRANSACTION`
+     */
+    poolerMode?: string;
+    /**
+     * (EndpointSettings)
+     */
+    settings?: outputs.GetPostgresEndpointSpecSettings;
+    /**
+     * (string) - Duration of inactivity after which the compute endpoint is automatically suspended
+     */
+    suspendTimeoutDuration?: string;
+}
+
+export interface GetPostgresEndpointSpecSettings {
+    /**
+     * (object) - A raw representation of Postgres settings
+     */
+    pgSettings?: {[key: string]: string};
+    /**
+     * (object) - A raw representation of PgBouncer settings
+     */
+    pgbouncerSettings?: {[key: string]: string};
+}
+
+export interface GetPostgresEndpointStatus {
+    /**
+     * (number) - The maximum number of Compute Units
+     */
+    autoscalingLimitMaxCu: number;
+    /**
+     * (number) - The minimum number of Compute Units
+     */
+    autoscalingLimitMinCu: number;
+    /**
+     * (string) - Possible values are: `ACTIVE`, `IDLE`, `INIT`
+     */
+    currentState: string;
+    /**
+     * (boolean) - Whether to restrict connections to the compute endpoint.
+     * Enabling this option schedules a suspend compute operation.
+     * A disabled compute endpoint cannot be enabled by a connection or
+     * console action
+     */
+    disabled: boolean;
+    /**
+     * (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `READ_ONLY`, `READ_WRITE`
+     */
+    endpointType: string;
+    /**
+     * (string) - The hostname of the compute endpoint. This is the hostname specified when connecting to a database
+     */
+    host: string;
+    /**
+     * (string) - A timestamp indicating when the compute endpoint was last active
+     */
+    lastActiveTime: string;
+    /**
+     * (string) - Possible values are: `ACTIVE`, `IDLE`, `INIT`
+     */
+    pendingState: string;
+    /**
+     * (string) - Possible values are: `TRANSACTION`
+     */
+    poolerMode: string;
+    /**
+     * (EndpointSettings)
+     */
+    settings: outputs.GetPostgresEndpointStatusSettings;
+    /**
+     * (string) - A timestamp indicating when the compute endpoint was last started
+     */
+    startTime: string;
+    /**
+     * (string) - A timestamp indicating when the compute endpoint was last suspended
+     */
+    suspendTime: string;
+    /**
+     * (string) - Duration of inactivity after which the compute endpoint is automatically suspended
+     */
+    suspendTimeoutDuration: string;
+}
+
+export interface GetPostgresEndpointStatusSettings {
+    /**
+     * (object) - A raw representation of Postgres settings
+     */
+    pgSettings?: {[key: string]: string};
+    /**
+     * (object) - A raw representation of PgBouncer settings
+     */
+    pgbouncerSettings?: {[key: string]: string};
+}
+
+export interface GetPostgresEndpointsEndpoint {
+    /**
+     * (string) - A timestamp indicating when the compute endpoint was created
+     */
+    createTime: string;
+    /**
+     * (string) - The resource name of the endpoint.
+     * Format: projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}
+     */
+    name: string;
+    /**
+     * The Branch that owns this collection of endpoints.
+     * Format: projects/{project_id}/branches/{branch_id}
+     */
+    parent: string;
+    /**
+     * (EndpointSpec) - The desired state of an Endpoint
+     */
+    spec: outputs.GetPostgresEndpointsEndpointSpec;
+    /**
+     * (EndpointStatus) - The current status of an Endpoint
+     */
+    status: outputs.GetPostgresEndpointsEndpointStatus;
+    /**
+     * (string) - System generated unique ID for the endpoint
+     */
+    uid: string;
+    /**
+     * (string) - A timestamp indicating when the compute endpoint was last updated
+     */
+    updateTime: string;
+}
+
+export interface GetPostgresEndpointsEndpointSpec {
+    /**
+     * (number) - The maximum number of Compute Units
+     */
+    autoscalingLimitMaxCu?: number;
+    /**
+     * (number) - The minimum number of Compute Units
+     */
+    autoscalingLimitMinCu?: number;
+    /**
+     * (boolean) - Whether to restrict connections to the compute endpoint.
+     * Enabling this option schedules a suspend compute operation.
+     * A disabled compute endpoint cannot be enabled by a connection or
+     * console action
+     */
+    disabled?: boolean;
+    /**
+     * (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `READ_ONLY`, `READ_WRITE`
+     */
+    endpointType: string;
+    /**
+     * (string) - Possible values are: `TRANSACTION`
+     */
+    poolerMode?: string;
+    /**
+     * (EndpointSettings)
+     */
+    settings?: outputs.GetPostgresEndpointsEndpointSpecSettings;
+    /**
+     * (string) - Duration of inactivity after which the compute endpoint is automatically suspended
+     */
+    suspendTimeoutDuration?: string;
+}
+
+export interface GetPostgresEndpointsEndpointSpecSettings {
+    /**
+     * (object) - A raw representation of Postgres settings
+     */
+    pgSettings?: {[key: string]: string};
+    /**
+     * (object) - A raw representation of PgBouncer settings
+     */
+    pgbouncerSettings?: {[key: string]: string};
+}
+
+export interface GetPostgresEndpointsEndpointStatus {
+    /**
+     * (number) - The maximum number of Compute Units
+     */
+    autoscalingLimitMaxCu: number;
+    /**
+     * (number) - The minimum number of Compute Units
+     */
+    autoscalingLimitMinCu: number;
+    /**
+     * (string) - Possible values are: `ACTIVE`, `IDLE`, `INIT`
+     */
+    currentState: string;
+    /**
+     * (boolean) - Whether to restrict connections to the compute endpoint.
+     * Enabling this option schedules a suspend compute operation.
+     * A disabled compute endpoint cannot be enabled by a connection or
+     * console action
+     */
+    disabled: boolean;
+    /**
+     * (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `READ_ONLY`, `READ_WRITE`
+     */
+    endpointType: string;
+    /**
+     * (string) - The hostname of the compute endpoint. This is the hostname specified when connecting to a database
+     */
+    host: string;
+    /**
+     * (string) - A timestamp indicating when the compute endpoint was last active
+     */
+    lastActiveTime: string;
+    /**
+     * (string) - Possible values are: `ACTIVE`, `IDLE`, `INIT`
+     */
+    pendingState: string;
+    /**
+     * (string) - Possible values are: `TRANSACTION`
+     */
+    poolerMode: string;
+    /**
+     * (EndpointSettings)
+     */
+    settings: outputs.GetPostgresEndpointsEndpointStatusSettings;
+    /**
+     * (string) - A timestamp indicating when the compute endpoint was last started
+     */
+    startTime: string;
+    /**
+     * (string) - A timestamp indicating when the compute endpoint was last suspended
+     */
+    suspendTime: string;
+    /**
+     * (string) - Duration of inactivity after which the compute endpoint is automatically suspended
+     */
+    suspendTimeoutDuration: string;
+}
+
+export interface GetPostgresEndpointsEndpointStatusSettings {
+    /**
+     * (object) - A raw representation of Postgres settings
+     */
+    pgSettings?: {[key: string]: string};
+    /**
+     * (object) - A raw representation of PgBouncer settings
+     */
+    pgbouncerSettings?: {[key: string]: string};
+}
+
+export interface GetPostgresProjectSpec {
+    /**
+     * (ProjectDefaultEndpointSettings) - The effective default endpoint settings
+     */
+    defaultEndpointSettings?: outputs.GetPostgresProjectSpecDefaultEndpointSettings;
+    /**
+     * (string) - The effective human-readable project name
+     */
+    displayName?: string;
+    /**
+     * (string) - The effective number of seconds to retain the shared history for point in time recovery
+     */
+    historyRetentionDuration?: string;
+    /**
+     * (integer) - The effective major Postgres version number
+     */
+    pgVersion?: number;
+    /**
+     * (ProjectSettings) - The effective project settings
+     */
+    settings?: outputs.GetPostgresProjectSpecSettings;
+}
+
+export interface GetPostgresProjectSpecDefaultEndpointSettings {
+    /**
+     * (number) - The maximum number of Compute Units
+     */
+    autoscalingLimitMaxCu?: number;
+    /**
+     * (number) - The minimum number of Compute Units
+     */
+    autoscalingLimitMinCu?: number;
+    /**
+     * (object) - A raw representation of Postgres settings
+     */
+    pgSettings?: {[key: string]: string};
+    /**
+     * (object) - A raw representation of PgBouncer settings
+     */
+    pgbouncerSettings?: {[key: string]: string};
+    /**
+     * (string) - Duration of inactivity after which the compute endpoint is automatically suspended
+     */
+    suspendTimeoutDuration?: string;
+}
+
+export interface GetPostgresProjectSpecSettings {
+    /**
+     * (boolean) - Sets wal_level=logical for all compute endpoints in this project.
+     * All active endpoints will be suspended.
+     * Once enabled, logical replication cannot be disabled
+     */
+    enableLogicalReplication?: boolean;
+}
+
+export interface GetPostgresProjectStatus {
+    /**
+     * (integer) - The logical size limit for a branch
+     */
+    branchLogicalSizeLimitBytes: number;
+    /**
+     * (string) - The most recent time when any endpoint of this project was active
+     */
+    computeLastActiveTime: string;
+    /**
+     * (ProjectDefaultEndpointSettings) - The effective default endpoint settings
+     */
+    defaultEndpointSettings: outputs.GetPostgresProjectStatusDefaultEndpointSettings;
+    /**
+     * (string) - The effective human-readable project name
+     */
+    displayName: string;
+    /**
+     * (string) - The effective number of seconds to retain the shared history for point in time recovery
+     */
+    historyRetentionDuration: string;
+    /**
+     * (integer) - The effective major Postgres version number
+     */
+    pgVersion: number;
+    /**
+     * (ProjectSettings) - The effective project settings
+     */
+    settings: outputs.GetPostgresProjectStatusSettings;
+    /**
+     * (integer) - The current space occupied by the project in storage
+     */
+    syntheticStorageSizeBytes: number;
+}
+
+export interface GetPostgresProjectStatusDefaultEndpointSettings {
+    /**
+     * (number) - The maximum number of Compute Units
+     */
+    autoscalingLimitMaxCu?: number;
+    /**
+     * (number) - The minimum number of Compute Units
+     */
+    autoscalingLimitMinCu?: number;
+    /**
+     * (object) - A raw representation of Postgres settings
+     */
+    pgSettings?: {[key: string]: string};
+    /**
+     * (object) - A raw representation of PgBouncer settings
+     */
+    pgbouncerSettings?: {[key: string]: string};
+    /**
+     * (string) - Duration of inactivity after which the compute endpoint is automatically suspended
+     */
+    suspendTimeoutDuration?: string;
+}
+
+export interface GetPostgresProjectStatusSettings {
+    /**
+     * (boolean) - Sets wal_level=logical for all compute endpoints in this project.
+     * All active endpoints will be suspended.
+     * Once enabled, logical replication cannot be disabled
+     */
+    enableLogicalReplication?: boolean;
+}
+
+export interface GetPostgresProjectsProject {
+    /**
+     * (string) - A timestamp indicating when the project was created
+     */
+    createTime: string;
+    /**
+     * (string) - The resource name of the project.
+     * Format: projects/{project_id}
+     */
+    name: string;
+    /**
+     * (ProjectSpec) - The desired state of a Project
+     */
+    spec: outputs.GetPostgresProjectsProjectSpec;
+    /**
+     * (ProjectStatus) - The current status of a Project
+     */
+    status: outputs.GetPostgresProjectsProjectStatus;
+    /**
+     * (string) - System generated unique ID for the project
+     */
+    uid: string;
+    /**
+     * (string) - A timestamp indicating when the project was last updated
+     */
+    updateTime: string;
+}
+
+export interface GetPostgresProjectsProjectSpec {
+    /**
+     * (ProjectDefaultEndpointSettings) - The effective default endpoint settings
+     */
+    defaultEndpointSettings?: outputs.GetPostgresProjectsProjectSpecDefaultEndpointSettings;
+    /**
+     * (string) - The effective human-readable project name
+     */
+    displayName?: string;
+    /**
+     * (string) - The effective number of seconds to retain the shared history for point in time recovery
+     */
+    historyRetentionDuration?: string;
+    /**
+     * (integer) - The effective major Postgres version number
+     */
+    pgVersion?: number;
+    /**
+     * (ProjectSettings) - The effective project settings
+     */
+    settings?: outputs.GetPostgresProjectsProjectSpecSettings;
+}
+
+export interface GetPostgresProjectsProjectSpecDefaultEndpointSettings {
+    /**
+     * (number) - The maximum number of Compute Units
+     */
+    autoscalingLimitMaxCu?: number;
+    /**
+     * (number) - The minimum number of Compute Units
+     */
+    autoscalingLimitMinCu?: number;
+    /**
+     * (object) - A raw representation of Postgres settings
+     */
+    pgSettings?: {[key: string]: string};
+    /**
+     * (object) - A raw representation of PgBouncer settings
+     */
+    pgbouncerSettings?: {[key: string]: string};
+    /**
+     * (string) - Duration of inactivity after which the compute endpoint is automatically suspended
+     */
+    suspendTimeoutDuration?: string;
+}
+
+export interface GetPostgresProjectsProjectSpecSettings {
+    /**
+     * (boolean) - Sets wal_level=logical for all compute endpoints in this project.
+     * All active endpoints will be suspended.
+     * Once enabled, logical replication cannot be disabled
+     */
+    enableLogicalReplication?: boolean;
+}
+
+export interface GetPostgresProjectsProjectStatus {
+    /**
+     * (integer) - The logical size limit for a branch
+     */
+    branchLogicalSizeLimitBytes: number;
+    /**
+     * (string) - The most recent time when any endpoint of this project was active
+     */
+    computeLastActiveTime: string;
+    /**
+     * (ProjectDefaultEndpointSettings) - The effective default endpoint settings
+     */
+    defaultEndpointSettings: outputs.GetPostgresProjectsProjectStatusDefaultEndpointSettings;
+    /**
+     * (string) - The effective human-readable project name
+     */
+    displayName: string;
+    /**
+     * (string) - The effective number of seconds to retain the shared history for point in time recovery
+     */
+    historyRetentionDuration: string;
+    /**
+     * (integer) - The effective major Postgres version number
+     */
+    pgVersion: number;
+    /**
+     * (ProjectSettings) - The effective project settings
+     */
+    settings: outputs.GetPostgresProjectsProjectStatusSettings;
+    /**
+     * (integer) - The current space occupied by the project in storage
+     */
+    syntheticStorageSizeBytes: number;
+}
+
+export interface GetPostgresProjectsProjectStatusDefaultEndpointSettings {
+    /**
+     * (number) - The maximum number of Compute Units
+     */
+    autoscalingLimitMaxCu?: number;
+    /**
+     * (number) - The minimum number of Compute Units
+     */
+    autoscalingLimitMinCu?: number;
+    /**
+     * (object) - A raw representation of Postgres settings
+     */
+    pgSettings?: {[key: string]: string};
+    /**
+     * (object) - A raw representation of PgBouncer settings
+     */
+    pgbouncerSettings?: {[key: string]: string};
+    /**
+     * (string) - Duration of inactivity after which the compute endpoint is automatically suspended
+     */
+    suspendTimeoutDuration?: string;
+}
+
+export interface GetPostgresProjectsProjectStatusSettings {
+    /**
+     * (boolean) - Sets wal_level=logical for all compute endpoints in this project.
+     * All active endpoints will be suspended.
+     * Once enabled, logical replication cannot be disabled
+     */
+    enableLogicalReplication?: boolean;
+}
+
 export interface GetQualityMonitorV2AnomalyDetectionConfig {
+    /**
+     * (list of string) - List of fully qualified table names to exclude from anomaly detection
+     */
+    excludedTableFullNames?: string[];
     /**
      * (string) - Run id of the last run of the workflow
      */
@@ -9497,6 +10468,10 @@ export interface GetQualityMonitorsV2QualityMonitor {
 }
 
 export interface GetQualityMonitorsV2QualityMonitorAnomalyDetectionConfig {
+    /**
+     * (list of string) - List of fully qualified table names to exclude from anomaly detection
+     */
+    excludedTableFullNames?: string[];
     /**
      * (string) - Run id of the last run of the workflow
      */
@@ -9749,10 +10724,26 @@ export interface GetRfaAccessRequestDestinationsDestination {
     specialDestination?: string;
 }
 
+export interface GetRfaAccessRequestDestinationsDestinationSourceSecurable {
+    /**
+     * The full name of the securable. Redundant with the name in the securable object, but necessary for Pulumi integration
+     */
+    fullName?: string;
+    /**
+     * (string) - Optional. The name of the Share object that contains the securable when the securable is
+     * getting shared in D2D Delta Sharing
+     */
+    providerShare?: string;
+    /**
+     * (string) - Required. The type of securable (catalog/schema/table).
+     * Optional if resourceName is present. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+     */
+    type?: string;
+}
+
 export interface GetRfaAccessRequestDestinationsSecurable {
     /**
-     * (string) - Required. The full name of the catalog/schema/table.
-     * Optional if resourceName is present
+     * The full name of the securable. Redundant with the name in the securable object, but necessary for Pulumi integration
      */
     fullName?: string;
     /**
@@ -12124,6 +13115,7 @@ export interface JobQueue {
 }
 
 export interface JobRunAs {
+    groupName?: string;
     /**
      * The application ID of an active service principal. Setting this field requires the `servicePrincipal/user` role.
      *
@@ -15468,6 +16460,7 @@ export interface MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEn
     domainNames?: string[];
     enabled?: boolean;
     endpointService?: string;
+    errorMessage?: string;
     /**
      * Canonical unique identifier of Network Connectivity Config in Databricks Account
      */
@@ -15491,6 +16484,7 @@ export interface MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivate
     deactivatedAt?: number;
     domainNames?: string[];
     endpointName?: string;
+    errorMessage?: string;
     groupId?: string;
     /**
      * Canonical unique identifier of Network Connectivity Config in Databricks Account
@@ -15515,11 +16509,11 @@ export interface MwsNetworksGcpNetworkInfo {
      */
     networkProjectId: string;
     /**
-     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.101.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.102.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     podIpRangeName?: string;
     /**
-     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.101.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.102.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     serviceIpRangeName?: string;
     /**
@@ -15586,11 +16580,11 @@ export interface MwsWorkspacesExternalCustomerInfo {
 
 export interface MwsWorkspacesGcpManagedNetworkConfig {
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.101.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.102.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterPodIpRange?: string;
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.101.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.102.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterServiceIpRange?: string;
     subnetCidr: string;
@@ -16111,6 +17105,7 @@ export interface PipelineIngestionDefinitionObjectReportTableConfiguration {
     includeColumns?: string[];
     primaryKeys?: string[];
     queryBasedConnectorConfig?: outputs.PipelineIngestionDefinitionObjectReportTableConfigurationQueryBasedConnectorConfig;
+    rowFilter?: string;
     salesforceIncludeFormulaFields?: boolean;
     scdType?: string;
     sequenceBies?: string[];
@@ -16147,6 +17142,7 @@ export interface PipelineIngestionDefinitionObjectSchemaTableConfiguration {
     includeColumns?: string[];
     primaryKeys?: string[];
     queryBasedConnectorConfig?: outputs.PipelineIngestionDefinitionObjectSchemaTableConfigurationQueryBasedConnectorConfig;
+    rowFilter?: string;
     salesforceIncludeFormulaFields?: boolean;
     scdType?: string;
     sequenceBies?: string[];
@@ -16185,6 +17181,7 @@ export interface PipelineIngestionDefinitionObjectTableTableConfiguration {
     includeColumns?: string[];
     primaryKeys?: string[];
     queryBasedConnectorConfig?: outputs.PipelineIngestionDefinitionObjectTableTableConfigurationQueryBasedConnectorConfig;
+    rowFilter?: string;
     salesforceIncludeFormulaFields?: boolean;
     scdType?: string;
     sequenceBies?: string[];
@@ -16234,6 +17231,7 @@ export interface PipelineIngestionDefinitionTableConfiguration {
     includeColumns?: string[];
     primaryKeys?: string[];
     queryBasedConnectorConfig?: outputs.PipelineIngestionDefinitionTableConfigurationQueryBasedConnectorConfig;
+    rowFilter?: string;
     salesforceIncludeFormulaFields?: boolean;
     scdType?: string;
     sequenceBies?: string[];
@@ -16384,6 +17382,306 @@ export interface PolicyInfoRowFilterUsing {
     constant?: string;
 }
 
+export interface PostgresBranchSpec {
+    /**
+     * (boolean) - Whether the branch is the project's default branch
+     */
+    default?: boolean;
+    /**
+     * (boolean) - Whether the branch is protected
+     */
+    isProtected?: boolean;
+    /**
+     * (string) - The name of the source branch from which this branch was created.
+     * Format: projects/{project_id}/branches/{branch_id}
+     */
+    sourceBranch?: string;
+    /**
+     * (string) - The Log Sequence Number (LSN) on the source branch from which this branch was created
+     */
+    sourceBranchLsn?: string;
+    /**
+     * (string) - The point in time on the source branch from which this branch was created
+     */
+    sourceBranchTime?: string;
+}
+
+export interface PostgresBranchStatus {
+    /**
+     * (string) - The branch's state, indicating if it is initializing, ready for use, or archived. Possible values are: `ARCHIVED`, `IMPORTING`, `INIT`, `READY`, `RESETTING`
+     */
+    currentState: string;
+    /**
+     * (boolean) - Whether the branch is the project's default branch
+     */
+    default: boolean;
+    /**
+     * (boolean) - Whether the branch is protected
+     */
+    isProtected: boolean;
+    /**
+     * (integer) - The logical size of the branch
+     */
+    logicalSizeBytes: number;
+    /**
+     * (string) - The pending state of the branch, if a state transition is in progress. Possible values are: `ARCHIVED`, `IMPORTING`, `INIT`, `READY`, `RESETTING`
+     */
+    pendingState: string;
+    /**
+     * (string) - The name of the source branch from which this branch was created.
+     * Format: projects/{project_id}/branches/{branch_id}
+     */
+    sourceBranch: string;
+    /**
+     * (string) - The Log Sequence Number (LSN) on the source branch from which this branch was created
+     */
+    sourceBranchLsn: string;
+    /**
+     * (string) - The point in time on the source branch from which this branch was created
+     */
+    sourceBranchTime: string;
+    /**
+     * (string) - A timestamp indicating when the `currentState` began
+     */
+    stateChangeTime: string;
+}
+
+export interface PostgresEndpointSpec {
+    /**
+     * (number) - The maximum number of Compute Units
+     */
+    autoscalingLimitMaxCu?: number;
+    /**
+     * (number) - The minimum number of Compute Units
+     */
+    autoscalingLimitMinCu?: number;
+    /**
+     * (boolean) - Whether to restrict connections to the compute endpoint.
+     * Enabling this option schedules a suspend compute operation.
+     * A disabled compute endpoint cannot be enabled by a connection or
+     * console action
+     */
+    disabled?: boolean;
+    /**
+     * (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `READ_ONLY`, `READ_WRITE`
+     */
+    endpointType: string;
+    /**
+     * (string) - Possible values are: `TRANSACTION`
+     */
+    poolerMode?: string;
+    /**
+     * (EndpointSettings)
+     */
+    settings?: outputs.PostgresEndpointSpecSettings;
+    /**
+     * (string) - Duration of inactivity after which the compute endpoint is automatically suspended
+     */
+    suspendTimeoutDuration?: string;
+}
+
+export interface PostgresEndpointSpecSettings {
+    /**
+     * A raw representation of Postgres settings
+     */
+    pgSettings?: {[key: string]: string};
+    /**
+     * A raw representation of PgBouncer settings
+     */
+    pgbouncerSettings?: {[key: string]: string};
+}
+
+export interface PostgresEndpointStatus {
+    /**
+     * (number) - The maximum number of Compute Units
+     */
+    autoscalingLimitMaxCu: number;
+    /**
+     * (number) - The minimum number of Compute Units
+     */
+    autoscalingLimitMinCu: number;
+    /**
+     * (string) - Possible values are: `ACTIVE`, `IDLE`, `INIT`
+     */
+    currentState: string;
+    /**
+     * (boolean) - Whether to restrict connections to the compute endpoint.
+     * Enabling this option schedules a suspend compute operation.
+     * A disabled compute endpoint cannot be enabled by a connection or
+     * console action
+     */
+    disabled: boolean;
+    /**
+     * (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `READ_ONLY`, `READ_WRITE`
+     */
+    endpointType: string;
+    /**
+     * (string) - The hostname of the compute endpoint. This is the hostname specified when connecting to a database
+     */
+    host: string;
+    /**
+     * (string) - A timestamp indicating when the compute endpoint was last active
+     */
+    lastActiveTime: string;
+    /**
+     * (string) - Possible values are: `ACTIVE`, `IDLE`, `INIT`
+     */
+    pendingState: string;
+    /**
+     * (string) - Possible values are: `TRANSACTION`
+     */
+    poolerMode: string;
+    /**
+     * (EndpointSettings)
+     */
+    settings: outputs.PostgresEndpointStatusSettings;
+    /**
+     * (string) - A timestamp indicating when the compute endpoint was last started
+     */
+    startTime: string;
+    /**
+     * (string) - A timestamp indicating when the compute endpoint was last suspended
+     */
+    suspendTime: string;
+    /**
+     * (string) - Duration of inactivity after which the compute endpoint is automatically suspended
+     */
+    suspendTimeoutDuration: string;
+}
+
+export interface PostgresEndpointStatusSettings {
+    /**
+     * A raw representation of Postgres settings
+     */
+    pgSettings?: {[key: string]: string};
+    /**
+     * A raw representation of PgBouncer settings
+     */
+    pgbouncerSettings?: {[key: string]: string};
+}
+
+export interface PostgresProjectSpec {
+    /**
+     * (ProjectDefaultEndpointSettings) - The effective default endpoint settings
+     */
+    defaultEndpointSettings?: outputs.PostgresProjectSpecDefaultEndpointSettings;
+    /**
+     * (string) - The effective human-readable project name
+     */
+    displayName?: string;
+    /**
+     * (string) - The effective number of seconds to retain the shared history for point in time recovery
+     */
+    historyRetentionDuration?: string;
+    /**
+     * (integer) - The effective major Postgres version number
+     */
+    pgVersion?: number;
+    /**
+     * (ProjectSettings) - The effective project settings
+     */
+    settings?: outputs.PostgresProjectSpecSettings;
+}
+
+export interface PostgresProjectSpecDefaultEndpointSettings {
+    /**
+     * The maximum number of Compute Units
+     */
+    autoscalingLimitMaxCu?: number;
+    /**
+     * The minimum number of Compute Units
+     */
+    autoscalingLimitMinCu?: number;
+    /**
+     * A raw representation of Postgres settings
+     */
+    pgSettings?: {[key: string]: string};
+    /**
+     * A raw representation of PgBouncer settings
+     */
+    pgbouncerSettings?: {[key: string]: string};
+    /**
+     * Duration of inactivity after which the compute endpoint is automatically suspended
+     */
+    suspendTimeoutDuration?: string;
+}
+
+export interface PostgresProjectSpecSettings {
+    /**
+     * Sets wal_level=logical for all compute endpoints in this project.
+     * All active endpoints will be suspended.
+     * Once enabled, logical replication cannot be disabled
+     */
+    enableLogicalReplication?: boolean;
+}
+
+export interface PostgresProjectStatus {
+    /**
+     * (integer) - The logical size limit for a branch
+     */
+    branchLogicalSizeLimitBytes: number;
+    /**
+     * (string) - The most recent time when any endpoint of this project was active
+     */
+    computeLastActiveTime: string;
+    /**
+     * (ProjectDefaultEndpointSettings) - The effective default endpoint settings
+     */
+    defaultEndpointSettings: outputs.PostgresProjectStatusDefaultEndpointSettings;
+    /**
+     * (string) - The effective human-readable project name
+     */
+    displayName: string;
+    /**
+     * (string) - The effective number of seconds to retain the shared history for point in time recovery
+     */
+    historyRetentionDuration: string;
+    /**
+     * (integer) - The effective major Postgres version number
+     */
+    pgVersion: number;
+    /**
+     * (ProjectSettings) - The effective project settings
+     */
+    settings: outputs.PostgresProjectStatusSettings;
+    /**
+     * (integer) - The current space occupied by the project in storage
+     */
+    syntheticStorageSizeBytes: number;
+}
+
+export interface PostgresProjectStatusDefaultEndpointSettings {
+    /**
+     * The maximum number of Compute Units
+     */
+    autoscalingLimitMaxCu?: number;
+    /**
+     * The minimum number of Compute Units
+     */
+    autoscalingLimitMinCu?: number;
+    /**
+     * A raw representation of Postgres settings
+     */
+    pgSettings?: {[key: string]: string};
+    /**
+     * A raw representation of PgBouncer settings
+     */
+    pgbouncerSettings?: {[key: string]: string};
+    /**
+     * Duration of inactivity after which the compute endpoint is automatically suspended
+     */
+    suspendTimeoutDuration?: string;
+}
+
+export interface PostgresProjectStatusSettings {
+    /**
+     * Sets wal_level=logical for all compute endpoints in this project.
+     * All active endpoints will be suspended.
+     * Once enabled, logical replication cannot be disabled
+     */
+    enableLogicalReplication?: boolean;
+}
+
 export interface QualityMonitorCustomMetric {
     /**
      * [create metric definition](https://docs.databricks.com/en/lakehouse-monitoring/custom-metrics.html#create-definition)
@@ -16498,6 +17796,10 @@ export interface QualityMonitorTimeSeries {
 }
 
 export interface QualityMonitorV2AnomalyDetectionConfig {
+    /**
+     * List of fully qualified table names to exclude from anomaly detection
+     */
+    excludedTableFullNames?: string[];
     /**
      * (string) - Run id of the last run of the workflow
      */
@@ -16758,6 +18060,23 @@ export interface RfaAccessRequestDestinationsDestination {
      * The **destination_type** of a **special_destination** is always EMAIL. Possible values are: `SPECIAL_DESTINATION_CATALOG_OWNER`, `SPECIAL_DESTINATION_CONNECTION_OWNER`, `SPECIAL_DESTINATION_CREDENTIAL_OWNER`, `SPECIAL_DESTINATION_EXTERNAL_LOCATION_OWNER`, `SPECIAL_DESTINATION_METASTORE_OWNER`
      */
     specialDestination?: string;
+}
+
+export interface RfaAccessRequestDestinationsDestinationSourceSecurable {
+    /**
+     * (string) - The full name of the securable. Redundant with the name in the securable object, but necessary for Pulumi integration
+     */
+    fullName?: string;
+    /**
+     * Optional. The name of the Share object that contains the securable when the securable is
+     * getting shared in D2D Delta Sharing
+     */
+    providerShare?: string;
+    /**
+     * Required. The type of securable (catalog/schema/table).
+     * Optional if resourceName is present. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+     */
+    type?: string;
 }
 
 export interface RfaAccessRequestDestinationsSecurable {

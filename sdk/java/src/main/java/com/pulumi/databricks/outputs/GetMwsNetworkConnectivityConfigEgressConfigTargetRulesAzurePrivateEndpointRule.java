@@ -40,6 +40,7 @@ public final class GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePr
      * 
      */
     private @Nullable String endpointName;
+    private @Nullable String errorMessage;
     /**
      * @return The sub-resource type (group ID) of the target resource.
      * 
@@ -105,6 +106,9 @@ public final class GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePr
     public Optional<String> endpointName() {
         return Optional.ofNullable(this.endpointName);
     }
+    public Optional<String> errorMessage() {
+        return Optional.ofNullable(this.errorMessage);
+    }
     /**
      * @return The sub-resource type (group ID) of the target resource.
      * 
@@ -156,6 +160,7 @@ public final class GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePr
         private @Nullable Integer deactivatedAt;
         private @Nullable List<String> domainNames;
         private @Nullable String endpointName;
+        private @Nullable String errorMessage;
         private @Nullable String groupId;
         private @Nullable String networkConnectivityConfigId;
         private @Nullable String resourceId;
@@ -170,6 +175,7 @@ public final class GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePr
     	      this.deactivatedAt = defaults.deactivatedAt;
     	      this.domainNames = defaults.domainNames;
     	      this.endpointName = defaults.endpointName;
+    	      this.errorMessage = defaults.errorMessage;
     	      this.groupId = defaults.groupId;
     	      this.networkConnectivityConfigId = defaults.networkConnectivityConfigId;
     	      this.resourceId = defaults.resourceId;
@@ -217,6 +223,12 @@ public final class GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePr
             return this;
         }
         @CustomType.Setter
+        public Builder errorMessage(@Nullable String errorMessage) {
+
+            this.errorMessage = errorMessage;
+            return this;
+        }
+        @CustomType.Setter
         public Builder groupId(@Nullable String groupId) {
 
             this.groupId = groupId;
@@ -254,6 +266,7 @@ public final class GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePr
             _resultValue.deactivatedAt = deactivatedAt;
             _resultValue.domainNames = domainNames;
             _resultValue.endpointName = endpointName;
+            _resultValue.errorMessage = errorMessage;
             _resultValue.groupId = groupId;
             _resultValue.networkConnectivityConfigId = networkConnectivityConfigId;
             _resultValue.resourceId = resourceId;

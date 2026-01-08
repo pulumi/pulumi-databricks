@@ -58,7 +58,7 @@ import * as utilities from "./utilities";
  *
  * import {
  *
- *   id = ""
+ *   id = "securable_type,full_name"
  *
  *   to = databricks_rfa_access_request_destinations.this
  *
@@ -67,7 +67,7 @@ import * as utilities from "./utilities";
  * If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
  *
  * ```sh
- * $ pulumi import databricks:index/rfaAccessRequestDestinations:RfaAccessRequestDestinations this ""
+ * $ pulumi import databricks:index/rfaAccessRequestDestinations:RfaAccessRequestDestinations this "securable_type,full_name"
  * ```
  */
 export class RfaAccessRequestDestinations extends pulumi.CustomResource {
@@ -104,13 +104,26 @@ export class RfaAccessRequestDestinations extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly areAnyDestinationsHidden: pulumi.Output<boolean>;
     /**
+     * (Securable) - The source securable from which the destinations are inherited. Either the same value as securable (if destination
+     * is set directly on the securable) or the nearest parent securable with destinations set
+     */
+    declare public /*out*/ readonly destinationSourceSecurable: pulumi.Output<outputs.RfaAccessRequestDestinationsDestinationSourceSecurable>;
+    /**
      * The access request destinations for the securable
      */
     declare public readonly destinations: pulumi.Output<outputs.RfaAccessRequestDestinationsDestination[] | undefined>;
     /**
-     * The securable for which the access request destinations are being retrieved
+     * (string) - The full name of the securable. Redundant with the name in the securable object, but necessary for Pulumi integration
+     */
+    declare public /*out*/ readonly fullName: pulumi.Output<string>;
+    /**
+     * The securable for which the access request destinations are being modified or read
      */
     declare public readonly securable: pulumi.Output<outputs.RfaAccessRequestDestinationsSecurable>;
+    /**
+     * (string) - The type of the securable. Redundant with the type in the securable object, but necessary for Pulumi integration
+     */
+    declare public /*out*/ readonly securableType: pulumi.Output<string>;
 
     /**
      * Create a RfaAccessRequestDestinations resource with the given unique name, arguments, and options.
@@ -126,8 +139,11 @@ export class RfaAccessRequestDestinations extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as RfaAccessRequestDestinationsState | undefined;
             resourceInputs["areAnyDestinationsHidden"] = state?.areAnyDestinationsHidden;
+            resourceInputs["destinationSourceSecurable"] = state?.destinationSourceSecurable;
             resourceInputs["destinations"] = state?.destinations;
+            resourceInputs["fullName"] = state?.fullName;
             resourceInputs["securable"] = state?.securable;
+            resourceInputs["securableType"] = state?.securableType;
         } else {
             const args = argsOrState as RfaAccessRequestDestinationsArgs | undefined;
             if (args?.securable === undefined && !opts.urn) {
@@ -136,6 +152,9 @@ export class RfaAccessRequestDestinations extends pulumi.CustomResource {
             resourceInputs["destinations"] = args?.destinations;
             resourceInputs["securable"] = args?.securable;
             resourceInputs["areAnyDestinationsHidden"] = undefined /*out*/;
+            resourceInputs["destinationSourceSecurable"] = undefined /*out*/;
+            resourceInputs["fullName"] = undefined /*out*/;
+            resourceInputs["securableType"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(RfaAccessRequestDestinations.__pulumiType, name, resourceInputs, opts);
@@ -152,13 +171,26 @@ export interface RfaAccessRequestDestinationsState {
      */
     areAnyDestinationsHidden?: pulumi.Input<boolean>;
     /**
+     * (Securable) - The source securable from which the destinations are inherited. Either the same value as securable (if destination
+     * is set directly on the securable) or the nearest parent securable with destinations set
+     */
+    destinationSourceSecurable?: pulumi.Input<inputs.RfaAccessRequestDestinationsDestinationSourceSecurable>;
+    /**
      * The access request destinations for the securable
      */
     destinations?: pulumi.Input<pulumi.Input<inputs.RfaAccessRequestDestinationsDestination>[]>;
     /**
-     * The securable for which the access request destinations are being retrieved
+     * (string) - The full name of the securable. Redundant with the name in the securable object, but necessary for Pulumi integration
+     */
+    fullName?: pulumi.Input<string>;
+    /**
+     * The securable for which the access request destinations are being modified or read
      */
     securable?: pulumi.Input<inputs.RfaAccessRequestDestinationsSecurable>;
+    /**
+     * (string) - The type of the securable. Redundant with the type in the securable object, but necessary for Pulumi integration
+     */
+    securableType?: pulumi.Input<string>;
 }
 
 /**
@@ -170,7 +202,7 @@ export interface RfaAccessRequestDestinationsArgs {
      */
     destinations?: pulumi.Input<pulumi.Input<inputs.RfaAccessRequestDestinationsDestination>[]>;
     /**
-     * The securable for which the access request destinations are being retrieved
+     * The securable for which the access request destinations are being modified or read
      */
     securable: pulumi.Input<inputs.RfaAccessRequestDestinationsSecurable>;
 }

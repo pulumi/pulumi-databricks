@@ -13,6 +13,7 @@ import com.pulumi.databricks.inputs.AppState;
 import com.pulumi.databricks.outputs.AppActiveDeployment;
 import com.pulumi.databricks.outputs.AppAppStatus;
 import com.pulumi.databricks.outputs.AppComputeStatus;
+import com.pulumi.databricks.outputs.AppGitRepository;
 import com.pulumi.databricks.outputs.AppPendingDeployment;
 import com.pulumi.databricks.outputs.AppProviderConfig;
 import com.pulumi.databricks.outputs.AppResource;
@@ -254,6 +255,12 @@ public class App extends com.pulumi.resources.CustomResource {
     public Output<String> effectiveBudgetPolicyId() {
         return this.effectiveBudgetPolicyId;
     }
+    @Export(name="effectiveUsagePolicyId", refs={String.class}, tree="[0]")
+    private Output<String> effectiveUsagePolicyId;
+
+    public Output<String> effectiveUsagePolicyId() {
+        return this.effectiveUsagePolicyId;
+    }
     /**
      * A list of effective api scopes granted to the user access token.
      * 
@@ -267,6 +274,12 @@ public class App extends com.pulumi.resources.CustomResource {
      */
     public Output<List<String>> effectiveUserApiScopes() {
         return this.effectiveUserApiScopes;
+    }
+    @Export(name="gitRepository", refs={AppGitRepository.class}, tree="[0]")
+    private Output</* @Nullable */ AppGitRepository> gitRepository;
+
+    public Output<Optional<AppGitRepository>> gitRepository() {
+        return Codegen.optional(this.gitRepository);
     }
     /**
      * The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
@@ -409,6 +422,12 @@ public class App extends com.pulumi.resources.CustomResource {
      */
     public Output<String> url() {
         return this.url;
+    }
+    @Export(name="usagePolicyId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> usagePolicyId;
+
+    public Output<Optional<String>> usagePolicyId() {
+        return Codegen.optional(this.usagePolicyId);
     }
     /**
      * A list of api scopes granted to the user access token.

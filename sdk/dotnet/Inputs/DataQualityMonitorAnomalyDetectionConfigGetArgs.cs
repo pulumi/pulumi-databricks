@@ -12,6 +12,18 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class DataQualityMonitorAnomalyDetectionConfigGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("excludedTableFullNames")]
+        private InputList<string>? _excludedTableFullNames;
+
+        /// <summary>
+        /// List of fully qualified table names to exclude from anomaly detection
+        /// </summary>
+        public InputList<string> ExcludedTableFullNames
+        {
+            get => _excludedTableFullNames ?? (_excludedTableFullNames = new InputList<string>());
+            set => _excludedTableFullNames = value;
+        }
+
         public DataQualityMonitorAnomalyDetectionConfigGetArgs()
         {
         }

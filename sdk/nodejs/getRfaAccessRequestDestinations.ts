@@ -14,11 +14,37 @@ import * as utilities from "./utilities";
  * ## Example Usage
  *
  * Referring to RFA access request destinations by securable type and full name:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const customerDataSchema = databricks.getRfaAccessRequestDestinations({
+ *     securableType: "SCHEMA",
+ *     fullName: "main.customer_data",
+ * });
+ * ```
  */
-export function getRfaAccessRequestDestinations(opts?: pulumi.InvokeOptions): Promise<GetRfaAccessRequestDestinationsResult> {
+export function getRfaAccessRequestDestinations(args: GetRfaAccessRequestDestinationsArgs, opts?: pulumi.InvokeOptions): Promise<GetRfaAccessRequestDestinationsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getRfaAccessRequestDestinations:getRfaAccessRequestDestinations", {
+        "fullName": args.fullName,
+        "securableType": args.securableType,
     }, opts);
+}
+
+/**
+ * A collection of arguments for invoking getRfaAccessRequestDestinations.
+ */
+export interface GetRfaAccessRequestDestinationsArgs {
+    /**
+     * The full name of the securable. Redundant with the name in the securable object, but necessary for Pulumi integration
+     */
+    fullName: string;
+    /**
+     * The type of the securable. Redundant with the type in the securable object, but necessary for Pulumi integration
+     */
+    securableType: string;
 }
 
 /**
@@ -31,17 +57,31 @@ export interface GetRfaAccessRequestDestinationsResult {
      */
     readonly areAnyDestinationsHidden: boolean;
     /**
+     * (Securable) - The source securable from which the destinations are inherited. Either the same value as securable (if destination
+     * is set directly on the securable) or the nearest parent securable with destinations set
+     */
+    readonly destinationSourceSecurable: outputs.GetRfaAccessRequestDestinationsDestinationSourceSecurable;
+    /**
      * (list of NotificationDestination) - The access request destinations for the securable
      */
     readonly destinations: outputs.GetRfaAccessRequestDestinationsDestination[];
+    /**
+     * (string) - Required. The full name of the catalog/schema/table.
+     * Optional if resourceName is present
+     */
+    readonly fullName: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     /**
-     * (Securable) - The securable for which the access request destinations are being retrieved
+     * (Securable) - The securable for which the access request destinations are being modified or read
      */
     readonly securable: outputs.GetRfaAccessRequestDestinationsSecurable;
+    /**
+     * (string) - The type of the securable. Redundant with the type in the securable object, but necessary for Pulumi integration
+     */
+    readonly securableType: string;
 }
 /**
  * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -51,9 +91,35 @@ export interface GetRfaAccessRequestDestinationsResult {
  * ## Example Usage
  *
  * Referring to RFA access request destinations by securable type and full name:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const customerDataSchema = databricks.getRfaAccessRequestDestinations({
+ *     securableType: "SCHEMA",
+ *     fullName: "main.customer_data",
+ * });
+ * ```
  */
-export function getRfaAccessRequestDestinationsOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRfaAccessRequestDestinationsResult> {
+export function getRfaAccessRequestDestinationsOutput(args: GetRfaAccessRequestDestinationsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRfaAccessRequestDestinationsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getRfaAccessRequestDestinations:getRfaAccessRequestDestinations", {
+        "fullName": args.fullName,
+        "securableType": args.securableType,
     }, opts);
+}
+
+/**
+ * A collection of arguments for invoking getRfaAccessRequestDestinations.
+ */
+export interface GetRfaAccessRequestDestinationsOutputArgs {
+    /**
+     * The full name of the securable. Redundant with the name in the securable object, but necessary for Pulumi integration
+     */
+    fullName: pulumi.Input<string>;
+    /**
+     * The type of the securable. Redundant with the type in the securable object, but necessary for Pulumi integration
+     */
+    securableType: pulumi.Input<string>;
 }
