@@ -6,8 +6,11 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.AppActiveDeploymentDeploymentArtifactsArgs;
+import com.pulumi.databricks.inputs.AppActiveDeploymentEnvVarArgs;
+import com.pulumi.databricks.inputs.AppActiveDeploymentGitSourceArgs;
 import com.pulumi.databricks.inputs.AppActiveDeploymentStatusArgs;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,6 +19,13 @@ import javax.annotation.Nullable;
 public final class AppActiveDeploymentArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final AppActiveDeploymentArgs Empty = new AppActiveDeploymentArgs();
+
+    @Import(name="commands")
+    private @Nullable Output<List<String>> commands;
+
+    public Optional<Output<List<String>>> commands() {
+        return Optional.ofNullable(this.commands);
+    }
 
     /**
      * The creation time of the app.
@@ -61,6 +71,20 @@ public final class AppActiveDeploymentArgs extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.deploymentId);
     }
 
+    @Import(name="envVars")
+    private @Nullable Output<List<AppActiveDeploymentEnvVarArgs>> envVars;
+
+    public Optional<Output<List<AppActiveDeploymentEnvVarArgs>>> envVars() {
+        return Optional.ofNullable(this.envVars);
+    }
+
+    @Import(name="gitSource")
+    private @Nullable Output<AppActiveDeploymentGitSourceArgs> gitSource;
+
+    public Optional<Output<AppActiveDeploymentGitSourceArgs>> gitSource() {
+        return Optional.ofNullable(this.gitSource);
+    }
+
     @Import(name="mode")
     private @Nullable Output<String> mode;
 
@@ -100,10 +124,13 @@ public final class AppActiveDeploymentArgs extends com.pulumi.resources.Resource
     private AppActiveDeploymentArgs() {}
 
     private AppActiveDeploymentArgs(AppActiveDeploymentArgs $) {
+        this.commands = $.commands;
         this.createTime = $.createTime;
         this.creator = $.creator;
         this.deploymentArtifacts = $.deploymentArtifacts;
         this.deploymentId = $.deploymentId;
+        this.envVars = $.envVars;
+        this.gitSource = $.gitSource;
         this.mode = $.mode;
         this.sourceCodePath = $.sourceCodePath;
         this.status = $.status;
@@ -126,6 +153,19 @@ public final class AppActiveDeploymentArgs extends com.pulumi.resources.Resource
 
         public Builder(AppActiveDeploymentArgs defaults) {
             $ = new AppActiveDeploymentArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder commands(@Nullable Output<List<String>> commands) {
+            $.commands = commands;
+            return this;
+        }
+
+        public Builder commands(List<String> commands) {
+            return commands(Output.of(commands));
+        }
+
+        public Builder commands(String... commands) {
+            return commands(List.of(commands));
         }
 
         /**
@@ -186,6 +226,28 @@ public final class AppActiveDeploymentArgs extends com.pulumi.resources.Resource
 
         public Builder deploymentId(String deploymentId) {
             return deploymentId(Output.of(deploymentId));
+        }
+
+        public Builder envVars(@Nullable Output<List<AppActiveDeploymentEnvVarArgs>> envVars) {
+            $.envVars = envVars;
+            return this;
+        }
+
+        public Builder envVars(List<AppActiveDeploymentEnvVarArgs> envVars) {
+            return envVars(Output.of(envVars));
+        }
+
+        public Builder envVars(AppActiveDeploymentEnvVarArgs... envVars) {
+            return envVars(List.of(envVars));
+        }
+
+        public Builder gitSource(@Nullable Output<AppActiveDeploymentGitSourceArgs> gitSource) {
+            $.gitSource = gitSource;
+            return this;
+        }
+
+        public Builder gitSource(AppActiveDeploymentGitSourceArgs gitSource) {
+            return gitSource(Output.of(gitSource));
         }
 
         public Builder mode(@Nullable Output<String> mode) {

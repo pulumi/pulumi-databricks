@@ -6,8 +6,10 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.RfaAccessRequestDestinationsDestinationArgs;
+import com.pulumi.databricks.inputs.RfaAccessRequestDestinationsDestinationSourceSecurableArgs;
 import com.pulumi.databricks.inputs.RfaAccessRequestDestinationsSecurableArgs;
 import java.lang.Boolean;
+import java.lang.String;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -36,6 +38,23 @@ public final class RfaAccessRequestDestinationsState extends com.pulumi.resource
     }
 
     /**
+     * (Securable) - The source securable from which the destinations are inherited. Either the same value as securable (if destination
+     * is set directly on the securable) or the nearest parent securable with destinations set
+     * 
+     */
+    @Import(name="destinationSourceSecurable")
+    private @Nullable Output<RfaAccessRequestDestinationsDestinationSourceSecurableArgs> destinationSourceSecurable;
+
+    /**
+     * @return (Securable) - The source securable from which the destinations are inherited. Either the same value as securable (if destination
+     * is set directly on the securable) or the nearest parent securable with destinations set
+     * 
+     */
+    public Optional<Output<RfaAccessRequestDestinationsDestinationSourceSecurableArgs>> destinationSourceSecurable() {
+        return Optional.ofNullable(this.destinationSourceSecurable);
+    }
+
+    /**
      * The access request destinations for the securable
      * 
      */
@@ -51,26 +70,59 @@ public final class RfaAccessRequestDestinationsState extends com.pulumi.resource
     }
 
     /**
-     * The securable for which the access request destinations are being retrieved
+     * (string) - The full name of the securable. Redundant with the name in the securable object, but necessary for Pulumi integration
+     * 
+     */
+    @Import(name="fullName")
+    private @Nullable Output<String> fullName;
+
+    /**
+     * @return (string) - The full name of the securable. Redundant with the name in the securable object, but necessary for Pulumi integration
+     * 
+     */
+    public Optional<Output<String>> fullName() {
+        return Optional.ofNullable(this.fullName);
+    }
+
+    /**
+     * The securable for which the access request destinations are being modified or read
      * 
      */
     @Import(name="securable")
     private @Nullable Output<RfaAccessRequestDestinationsSecurableArgs> securable;
 
     /**
-     * @return The securable for which the access request destinations are being retrieved
+     * @return The securable for which the access request destinations are being modified or read
      * 
      */
     public Optional<Output<RfaAccessRequestDestinationsSecurableArgs>> securable() {
         return Optional.ofNullable(this.securable);
     }
 
+    /**
+     * (string) - The type of the securable. Redundant with the type in the securable object, but necessary for Pulumi integration
+     * 
+     */
+    @Import(name="securableType")
+    private @Nullable Output<String> securableType;
+
+    /**
+     * @return (string) - The type of the securable. Redundant with the type in the securable object, but necessary for Pulumi integration
+     * 
+     */
+    public Optional<Output<String>> securableType() {
+        return Optional.ofNullable(this.securableType);
+    }
+
     private RfaAccessRequestDestinationsState() {}
 
     private RfaAccessRequestDestinationsState(RfaAccessRequestDestinationsState $) {
         this.areAnyDestinationsHidden = $.areAnyDestinationsHidden;
+        this.destinationSourceSecurable = $.destinationSourceSecurable;
         this.destinations = $.destinations;
+        this.fullName = $.fullName;
         this.securable = $.securable;
+        this.securableType = $.securableType;
     }
 
     public static Builder builder() {
@@ -115,6 +167,29 @@ public final class RfaAccessRequestDestinationsState extends com.pulumi.resource
         }
 
         /**
+         * @param destinationSourceSecurable (Securable) - The source securable from which the destinations are inherited. Either the same value as securable (if destination
+         * is set directly on the securable) or the nearest parent securable with destinations set
+         * 
+         * @return builder
+         * 
+         */
+        public Builder destinationSourceSecurable(@Nullable Output<RfaAccessRequestDestinationsDestinationSourceSecurableArgs> destinationSourceSecurable) {
+            $.destinationSourceSecurable = destinationSourceSecurable;
+            return this;
+        }
+
+        /**
+         * @param destinationSourceSecurable (Securable) - The source securable from which the destinations are inherited. Either the same value as securable (if destination
+         * is set directly on the securable) or the nearest parent securable with destinations set
+         * 
+         * @return builder
+         * 
+         */
+        public Builder destinationSourceSecurable(RfaAccessRequestDestinationsDestinationSourceSecurableArgs destinationSourceSecurable) {
+            return destinationSourceSecurable(Output.of(destinationSourceSecurable));
+        }
+
+        /**
          * @param destinations The access request destinations for the securable
          * 
          * @return builder
@@ -146,7 +221,28 @@ public final class RfaAccessRequestDestinationsState extends com.pulumi.resource
         }
 
         /**
-         * @param securable The securable for which the access request destinations are being retrieved
+         * @param fullName (string) - The full name of the securable. Redundant with the name in the securable object, but necessary for Pulumi integration
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fullName(@Nullable Output<String> fullName) {
+            $.fullName = fullName;
+            return this;
+        }
+
+        /**
+         * @param fullName (string) - The full name of the securable. Redundant with the name in the securable object, but necessary for Pulumi integration
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fullName(String fullName) {
+            return fullName(Output.of(fullName));
+        }
+
+        /**
+         * @param securable The securable for which the access request destinations are being modified or read
          * 
          * @return builder
          * 
@@ -157,13 +253,34 @@ public final class RfaAccessRequestDestinationsState extends com.pulumi.resource
         }
 
         /**
-         * @param securable The securable for which the access request destinations are being retrieved
+         * @param securable The securable for which the access request destinations are being modified or read
          * 
          * @return builder
          * 
          */
         public Builder securable(RfaAccessRequestDestinationsSecurableArgs securable) {
             return securable(Output.of(securable));
+        }
+
+        /**
+         * @param securableType (string) - The type of the securable. Redundant with the type in the securable object, but necessary for Pulumi integration
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securableType(@Nullable Output<String> securableType) {
+            $.securableType = securableType;
+            return this;
+        }
+
+        /**
+         * @param securableType (string) - The type of the securable. Redundant with the type in the securable object, but necessary for Pulumi integration
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securableType(String securableType) {
+            return securableType(Output.of(securableType));
         }
 
         public RfaAccessRequestDestinationsState build() {

@@ -71,6 +71,12 @@ namespace Pulumi.Databricks
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
 
+        /// <summary>
+        /// The usage policy applied to the online store to track billing
+        /// </summary>
+        [Output("usagePolicyId")]
+        public Output<string?> UsagePolicyId { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a OnlineStore resource with the given unique name, arguments, and options.
@@ -135,6 +141,12 @@ namespace Pulumi.Databricks
         [Input("readReplicaCount")]
         public Input<int>? ReadReplicaCount { get; set; }
 
+        /// <summary>
+        /// The usage policy applied to the online store to track billing
+        /// </summary>
+        [Input("usagePolicyId")]
+        public Input<string>? UsagePolicyId { get; set; }
+
         public OnlineStoreArgs()
         {
         }
@@ -178,6 +190,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
+
+        /// <summary>
+        /// The usage policy applied to the online store to track billing
+        /// </summary>
+        [Input("usagePolicyId")]
+        public Input<string>? UsagePolicyId { get; set; }
 
         public OnlineStoreState()
         {

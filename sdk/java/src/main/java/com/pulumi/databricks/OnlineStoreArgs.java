@@ -62,12 +62,28 @@ public final class OnlineStoreArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.readReplicaCount);
     }
 
+    /**
+     * The usage policy applied to the online store to track billing
+     * 
+     */
+    @Import(name="usagePolicyId")
+    private @Nullable Output<String> usagePolicyId;
+
+    /**
+     * @return The usage policy applied to the online store to track billing
+     * 
+     */
+    public Optional<Output<String>> usagePolicyId() {
+        return Optional.ofNullable(this.usagePolicyId);
+    }
+
     private OnlineStoreArgs() {}
 
     private OnlineStoreArgs(OnlineStoreArgs $) {
         this.capacity = $.capacity;
         this.name = $.name;
         this.readReplicaCount = $.readReplicaCount;
+        this.usagePolicyId = $.usagePolicyId;
     }
 
     public static Builder builder() {
@@ -149,6 +165,27 @@ public final class OnlineStoreArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder readReplicaCount(Integer readReplicaCount) {
             return readReplicaCount(Output.of(readReplicaCount));
+        }
+
+        /**
+         * @param usagePolicyId The usage policy applied to the online store to track billing
+         * 
+         * @return builder
+         * 
+         */
+        public Builder usagePolicyId(@Nullable Output<String> usagePolicyId) {
+            $.usagePolicyId = usagePolicyId;
+            return this;
+        }
+
+        /**
+         * @param usagePolicyId The usage policy applied to the online store to track billing
+         * 
+         * @return builder
+         * 
+         */
+        public Builder usagePolicyId(String usagePolicyId) {
+            return usagePolicyId(Output.of(usagePolicyId));
         }
 
         public OnlineStoreArgs build() {

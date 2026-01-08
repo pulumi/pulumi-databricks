@@ -154,11 +154,17 @@ namespace Pulumi.Databricks
         [Output("effectiveBudgetPolicyId")]
         public Output<string> EffectiveBudgetPolicyId { get; private set; } = null!;
 
+        [Output("effectiveUsagePolicyId")]
+        public Output<string> EffectiveUsagePolicyId { get; private set; } = null!;
+
         /// <summary>
         /// A list of effective api scopes granted to the user access token.
         /// </summary>
         [Output("effectiveUserApiScopes")]
         public Output<ImmutableArray<string>> EffectiveUserApiScopes { get; private set; } = null!;
+
+        [Output("gitRepository")]
+        public Output<Outputs.AppGitRepository?> GitRepository { get; private set; } = null!;
 
         /// <summary>
         /// The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
@@ -222,6 +228,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("url")]
         public Output<string> Url { get; private set; } = null!;
+
+        [Output("usagePolicyId")]
+        public Output<string?> UsagePolicyId { get; private set; } = null!;
 
         /// <summary>
         /// A list of api scopes granted to the user access token.
@@ -293,6 +302,9 @@ namespace Pulumi.Databricks
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        [Input("gitRepository")]
+        public Input<Inputs.AppGitRepositoryArgs>? GitRepository { get; set; }
+
         /// <summary>
         /// The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
         /// </summary>
@@ -316,6 +328,9 @@ namespace Pulumi.Databricks
             get => _resources ?? (_resources = new InputList<Inputs.AppResourceArgs>());
             set => _resources = value;
         }
+
+        [Input("usagePolicyId")]
+        public Input<string>? UsagePolicyId { get; set; }
 
         [Input("userApiScopes")]
         private InputList<string>? _userApiScopes;
@@ -394,6 +409,9 @@ namespace Pulumi.Databricks
         [Input("effectiveBudgetPolicyId")]
         public Input<string>? EffectiveBudgetPolicyId { get; set; }
 
+        [Input("effectiveUsagePolicyId")]
+        public Input<string>? EffectiveUsagePolicyId { get; set; }
+
         [Input("effectiveUserApiScopes")]
         private InputList<string>? _effectiveUserApiScopes;
 
@@ -405,6 +423,9 @@ namespace Pulumi.Databricks
             get => _effectiveUserApiScopes ?? (_effectiveUserApiScopes = new InputList<string>());
             set => _effectiveUserApiScopes = value;
         }
+
+        [Input("gitRepository")]
+        public Input<Inputs.AppGitRepositoryGetArgs>? GitRepository { get; set; }
 
         /// <summary>
         /// The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
@@ -474,6 +495,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }
+
+        [Input("usagePolicyId")]
+        public Input<string>? UsagePolicyId { get; set; }
 
         [Input("userApiScopes")]
         private InputList<string>? _userApiScopes;

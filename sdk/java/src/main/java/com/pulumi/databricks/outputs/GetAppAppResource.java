@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetAppAppResourceDatabase;
+import com.pulumi.databricks.outputs.GetAppAppResourceExperiment;
 import com.pulumi.databricks.outputs.GetAppAppResourceGenieSpace;
 import com.pulumi.databricks.outputs.GetAppAppResourceJob;
 import com.pulumi.databricks.outputs.GetAppAppResourceSecret;
@@ -29,6 +30,7 @@ public final class GetAppAppResource {
      * 
      */
     private @Nullable String description;
+    private @Nullable GetAppAppResourceExperiment experiment;
     /**
      * @return attribute
      * 
@@ -79,6 +81,9 @@ public final class GetAppAppResource {
      */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
+    }
+    public Optional<GetAppAppResourceExperiment> experiment() {
+        return Optional.ofNullable(this.experiment);
     }
     /**
      * @return attribute
@@ -141,6 +146,7 @@ public final class GetAppAppResource {
     public static final class Builder {
         private @Nullable GetAppAppResourceDatabase database;
         private @Nullable String description;
+        private @Nullable GetAppAppResourceExperiment experiment;
         private @Nullable GetAppAppResourceGenieSpace genieSpace;
         private @Nullable GetAppAppResourceJob job;
         private String name;
@@ -153,6 +159,7 @@ public final class GetAppAppResource {
     	      Objects.requireNonNull(defaults);
     	      this.database = defaults.database;
     	      this.description = defaults.description;
+    	      this.experiment = defaults.experiment;
     	      this.genieSpace = defaults.genieSpace;
     	      this.job = defaults.job;
     	      this.name = defaults.name;
@@ -172,6 +179,12 @@ public final class GetAppAppResource {
         public Builder description(@Nullable String description) {
 
             this.description = description;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder experiment(@Nullable GetAppAppResourceExperiment experiment) {
+
+            this.experiment = experiment;
             return this;
         }
         @CustomType.Setter
@@ -222,6 +235,7 @@ public final class GetAppAppResource {
             final var _resultValue = new GetAppAppResource();
             _resultValue.database = database;
             _resultValue.description = description;
+            _resultValue.experiment = experiment;
             _resultValue.genieSpace = genieSpace;
             _resultValue.job = job;
             _resultValue.name = name;

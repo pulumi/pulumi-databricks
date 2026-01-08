@@ -127,6 +127,12 @@ from .get_online_stores import *
 from .get_pipelines import *
 from .get_policy_info import *
 from .get_policy_infos import *
+from .get_postgres_branch import *
+from .get_postgres_branches import *
+from .get_postgres_endpoint import *
+from .get_postgres_endpoints import *
+from .get_postgres_project import *
+from .get_postgres_projects import *
 from .get_quality_monitor_v2 import *
 from .get_quality_monitors_v2 import *
 from .get_registered_model import *
@@ -206,6 +212,9 @@ from .permission_assignment import *
 from .permissions import *
 from .pipeline import *
 from .policy_info import *
+from .postgres_branch import *
+from .postgres_endpoint import *
+from .postgres_project import *
 from .provider import *
 from .quality_monitor import *
 from .quality_monitor_v2 import *
@@ -973,6 +982,30 @@ _utilities.register(
   "fqn": "pulumi_databricks",
   "classes": {
    "databricks:index/policyInfo:PolicyInfo": "PolicyInfo"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/postgresBranch",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/postgresBranch:PostgresBranch": "PostgresBranch"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/postgresEndpoint",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/postgresEndpoint:PostgresEndpoint": "PostgresEndpoint"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/postgresProject",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/postgresProject:PostgresProject": "PostgresProject"
   }
  },
  {

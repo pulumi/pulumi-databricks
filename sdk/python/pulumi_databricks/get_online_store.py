@@ -26,7 +26,7 @@ class GetOnlineStoreResult:
     """
     A collection of values returned by getOnlineStore.
     """
-    def __init__(__self__, capacity=None, creation_time=None, creator=None, id=None, name=None, read_replica_count=None, state=None):
+    def __init__(__self__, capacity=None, creation_time=None, creator=None, id=None, name=None, read_replica_count=None, state=None, usage_policy_id=None):
         if capacity and not isinstance(capacity, str):
             raise TypeError("Expected argument 'capacity' to be a str")
         pulumi.set(__self__, "capacity", capacity)
@@ -48,6 +48,9 @@ class GetOnlineStoreResult:
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         pulumi.set(__self__, "state", state)
+        if usage_policy_id and not isinstance(usage_policy_id, str):
+            raise TypeError("Expected argument 'usage_policy_id' to be a str")
+        pulumi.set(__self__, "usage_policy_id", usage_policy_id)
 
     @_builtins.property
     @pulumi.getter
@@ -105,6 +108,14 @@ class GetOnlineStoreResult:
         """
         return pulumi.get(self, "state")
 
+    @_builtins.property
+    @pulumi.getter(name="usagePolicyId")
+    def usage_policy_id(self) -> _builtins.str:
+        """
+        (string) - The usage policy applied to the online store to track billing
+        """
+        return pulumi.get(self, "usage_policy_id")
+
 
 class AwaitableGetOnlineStoreResult(GetOnlineStoreResult):
     # pylint: disable=using-constant-test
@@ -118,7 +129,8 @@ class AwaitableGetOnlineStoreResult(GetOnlineStoreResult):
             id=self.id,
             name=self.name,
             read_replica_count=self.read_replica_count,
-            state=self.state)
+            state=self.state,
+            usage_policy_id=self.usage_policy_id)
 
 
 def get_online_store(name: Optional[_builtins.str] = None,
@@ -141,7 +153,8 @@ def get_online_store(name: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
         read_replica_count=pulumi.get(__ret__, 'read_replica_count'),
-        state=pulumi.get(__ret__, 'state'))
+        state=pulumi.get(__ret__, 'state'),
+        usage_policy_id=pulumi.get(__ret__, 'usage_policy_id'))
 def get_online_store_output(name: Optional[pulumi.Input[_builtins.str]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOnlineStoreResult]:
     """
@@ -161,4 +174,5 @@ def get_online_store_output(name: Optional[pulumi.Input[_builtins.str]] = None,
         id=pulumi.get(__response__, 'id'),
         name=pulumi.get(__response__, 'name'),
         read_replica_count=pulumi.get(__response__, 'read_replica_count'),
-        state=pulumi.get(__response__, 'state')))
+        state=pulumi.get(__response__, 'state'),
+        usage_policy_id=pulumi.get(__response__, 'usage_policy_id')))

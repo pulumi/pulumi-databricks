@@ -22,14 +22,14 @@ public final class AppsSettingsCustomTemplateManifestResourceSpecUcSecurableSpec
     }
 
     /**
-     * Possible values are: `TABLE`, `VOLUME`
+     * Possible values are: `CONNECTION`, `FUNCTION`, `TABLE`, `VOLUME`
      * 
      */
     @Import(name="securableType", required=true)
     private Output<String> securableType;
 
     /**
-     * @return Possible values are: `TABLE`, `VOLUME`
+     * @return Possible values are: `CONNECTION`, `FUNCTION`, `TABLE`, `VOLUME`
      * 
      */
     public Output<String> securableType() {
@@ -71,7 +71,7 @@ public final class AppsSettingsCustomTemplateManifestResourceSpecUcSecurableSpec
         }
 
         /**
-         * @param securableType Possible values are: `TABLE`, `VOLUME`
+         * @param securableType Possible values are: `CONNECTION`, `FUNCTION`, `TABLE`, `VOLUME`
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class AppsSettingsCustomTemplateManifestResourceSpecUcSecurableSpec
         }
 
         /**
-         * @param securableType Possible values are: `TABLE`, `VOLUME`
+         * @param securableType Possible values are: `CONNECTION`, `FUNCTION`, `TABLE`, `VOLUME`
          * 
          * @return builder
          * 

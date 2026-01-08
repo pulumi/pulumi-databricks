@@ -44,6 +44,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("endpointService")]
         public Input<string>? EndpointService { get; set; }
 
+        [Input("errorMessage")]
+        public Input<string>? ErrorMessage { get; set; }
+
         /// <summary>
         /// Canonical unique identifier of Network Connectivity Config in Databricks Account
         /// </summary>

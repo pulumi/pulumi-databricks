@@ -18,6 +18,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        [Input("experimentSpec")]
+        public Input<Inputs.AppsSettingsCustomTemplateManifestResourceSpecExperimentSpecGetArgs>? ExperimentSpec { get; set; }
+
         [Input("jobSpec")]
         public Input<Inputs.AppsSettingsCustomTemplateManifestResourceSpecJobSpecGetArgs>? JobSpec { get; set; }
 

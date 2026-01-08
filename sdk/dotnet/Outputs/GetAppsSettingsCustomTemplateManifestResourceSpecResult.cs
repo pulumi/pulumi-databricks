@@ -18,6 +18,10 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string? Description;
         /// <summary>
+        /// (AppManifestAppResourceExperimentSpec)
+        /// </summary>
+        public readonly Outputs.GetAppsSettingsCustomTemplateManifestResourceSpecExperimentSpecResult? ExperimentSpec;
+        /// <summary>
         /// (AppManifestAppResourceJobSpec)
         /// </summary>
         public readonly Outputs.GetAppsSettingsCustomTemplateManifestResourceSpecJobSpecResult? JobSpec;
@@ -47,6 +51,8 @@ namespace Pulumi.Databricks.Outputs
         private GetAppsSettingsCustomTemplateManifestResourceSpecResult(
             string? description,
 
+            Outputs.GetAppsSettingsCustomTemplateManifestResourceSpecExperimentSpecResult? experimentSpec,
+
             Outputs.GetAppsSettingsCustomTemplateManifestResourceSpecJobSpecResult? jobSpec,
 
             string name,
@@ -60,6 +66,7 @@ namespace Pulumi.Databricks.Outputs
             Outputs.GetAppsSettingsCustomTemplateManifestResourceSpecUcSecurableSpecResult? ucSecurableSpec)
         {
             Description = description;
+            ExperimentSpec = experimentSpec;
             JobSpec = jobSpec;
             Name = name;
             SecretSpec = secretSpec;

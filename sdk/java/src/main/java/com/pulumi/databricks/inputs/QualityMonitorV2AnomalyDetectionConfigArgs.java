@@ -6,6 +6,7 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -14,6 +15,21 @@ import javax.annotation.Nullable;
 public final class QualityMonitorV2AnomalyDetectionConfigArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final QualityMonitorV2AnomalyDetectionConfigArgs Empty = new QualityMonitorV2AnomalyDetectionConfigArgs();
+
+    /**
+     * List of fully qualified table names to exclude from anomaly detection
+     * 
+     */
+    @Import(name="excludedTableFullNames")
+    private @Nullable Output<List<String>> excludedTableFullNames;
+
+    /**
+     * @return List of fully qualified table names to exclude from anomaly detection
+     * 
+     */
+    public Optional<Output<List<String>>> excludedTableFullNames() {
+        return Optional.ofNullable(this.excludedTableFullNames);
+    }
 
     /**
      * (string) - Run id of the last run of the workflow
@@ -48,6 +64,7 @@ public final class QualityMonitorV2AnomalyDetectionConfigArgs extends com.pulumi
     private QualityMonitorV2AnomalyDetectionConfigArgs() {}
 
     private QualityMonitorV2AnomalyDetectionConfigArgs(QualityMonitorV2AnomalyDetectionConfigArgs $) {
+        this.excludedTableFullNames = $.excludedTableFullNames;
         this.lastRunId = $.lastRunId;
         this.latestRunStatus = $.latestRunStatus;
     }
@@ -68,6 +85,37 @@ public final class QualityMonitorV2AnomalyDetectionConfigArgs extends com.pulumi
 
         public Builder(QualityMonitorV2AnomalyDetectionConfigArgs defaults) {
             $ = new QualityMonitorV2AnomalyDetectionConfigArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param excludedTableFullNames List of fully qualified table names to exclude from anomaly detection
+         * 
+         * @return builder
+         * 
+         */
+        public Builder excludedTableFullNames(@Nullable Output<List<String>> excludedTableFullNames) {
+            $.excludedTableFullNames = excludedTableFullNames;
+            return this;
+        }
+
+        /**
+         * @param excludedTableFullNames List of fully qualified table names to exclude from anomaly detection
+         * 
+         * @return builder
+         * 
+         */
+        public Builder excludedTableFullNames(List<String> excludedTableFullNames) {
+            return excludedTableFullNames(Output.of(excludedTableFullNames));
+        }
+
+        /**
+         * @param excludedTableFullNames List of fully qualified table names to exclude from anomaly detection
+         * 
+         * @return builder
+         * 
+         */
+        public Builder excludedTableFullNames(String... excludedTableFullNames) {
+            return excludedTableFullNames(List.of(excludedTableFullNames));
         }
 
         /**

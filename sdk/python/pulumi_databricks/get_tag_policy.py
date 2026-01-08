@@ -115,7 +115,14 @@ def get_tag_policy(tag_key: Optional[_builtins.str] = None,
     """
     [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
-    This data source can be used to get a single tag policy by its tag key. Manage tag policy permissions using the `AccessControlRuleSet` resource.
+    This data source can be used to get a single tag policy by its tag key.
+
+    The following resources are often used in the same context:
+
+    * EntityTagAssignment for assigning tags to supported Unity Catalog entities.
+    * WorkspaceEntityTagAssignment for assigning tags to supported workspace entities.
+    * PolicyInfo for defining ABAC policies using governed tags.
+    * AccessControlRuleSet for managing account-level and individual tag policy permissions.
 
     > **Note** This resource can only be used with a workspace-level provider!
 
@@ -147,7 +154,14 @@ def get_tag_policy_output(tag_key: Optional[pulumi.Input[_builtins.str]] = None,
     """
     [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
-    This data source can be used to get a single tag policy by its tag key. Manage tag policy permissions using the `AccessControlRuleSet` resource.
+    This data source can be used to get a single tag policy by its tag key.
+
+    The following resources are often used in the same context:
+
+    * EntityTagAssignment for assigning tags to supported Unity Catalog entities.
+    * WorkspaceEntityTagAssignment for assigning tags to supported workspace entities.
+    * PolicyInfo for defining ABAC policies using governed tags.
+    * AccessControlRuleSet for managing account-level and individual tag policy permissions.
 
     > **Note** This resource can only be used with a workspace-level provider!
 

@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.AppsSettingsCustomTemplateManifestResourceSpecExperimentSpecArgs;
 import com.pulumi.databricks.inputs.AppsSettingsCustomTemplateManifestResourceSpecJobSpecArgs;
 import com.pulumi.databricks.inputs.AppsSettingsCustomTemplateManifestResourceSpecSecretSpecArgs;
 import com.pulumi.databricks.inputs.AppsSettingsCustomTemplateManifestResourceSpecServingEndpointSpecArgs;
@@ -34,6 +35,13 @@ public final class AppsSettingsCustomTemplateManifestResourceSpecArgs extends co
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
+    }
+
+    @Import(name="experimentSpec")
+    private @Nullable Output<AppsSettingsCustomTemplateManifestResourceSpecExperimentSpecArgs> experimentSpec;
+
+    public Optional<Output<AppsSettingsCustomTemplateManifestResourceSpecExperimentSpecArgs>> experimentSpec() {
+        return Optional.ofNullable(this.experimentSpec);
     }
 
     @Import(name="jobSpec")
@@ -92,6 +100,7 @@ public final class AppsSettingsCustomTemplateManifestResourceSpecArgs extends co
 
     private AppsSettingsCustomTemplateManifestResourceSpecArgs(AppsSettingsCustomTemplateManifestResourceSpecArgs $) {
         this.description = $.description;
+        this.experimentSpec = $.experimentSpec;
         this.jobSpec = $.jobSpec;
         this.name = $.name;
         this.secretSpec = $.secretSpec;
@@ -137,6 +146,15 @@ public final class AppsSettingsCustomTemplateManifestResourceSpecArgs extends co
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        public Builder experimentSpec(@Nullable Output<AppsSettingsCustomTemplateManifestResourceSpecExperimentSpecArgs> experimentSpec) {
+            $.experimentSpec = experimentSpec;
+            return this;
+        }
+
+        public Builder experimentSpec(AppsSettingsCustomTemplateManifestResourceSpecExperimentSpecArgs experimentSpec) {
+            return experimentSpec(Output.of(experimentSpec));
         }
 
         public Builder jobSpec(@Nullable Output<AppsSettingsCustomTemplateManifestResourceSpecJobSpecArgs> jobSpec) {

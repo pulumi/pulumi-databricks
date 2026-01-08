@@ -9,7 +9,14 @@ import * as utilities from "./utilities";
 /**
  * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
- * This data source can be used to get a single tag policy by its tag key. Manage tag policy permissions using the `databricks.AccessControlRuleSet` resource.
+ * This data source can be used to get a single tag policy by its tag key.
+ *
+ * The following resources are often used in the same context:
+ *
+ * * databricks.EntityTagAssignment for assigning tags to supported Unity Catalog entities.
+ * * databricks.WorkspaceEntityTagAssignment for assigning tags to supported workspace entities.
+ * * databricks.PolicyInfo for defining ABAC policies using governed tags.
+ * * databricks.AccessControlRuleSet for managing account-level and individual tag policy permissions.
  *
  * > **Note** This resource can only be used with a workspace-level provider!
  *
@@ -72,7 +79,14 @@ export interface GetTagPolicyResult {
 /**
  * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
- * This data source can be used to get a single tag policy by its tag key. Manage tag policy permissions using the `databricks.AccessControlRuleSet` resource.
+ * This data source can be used to get a single tag policy by its tag key.
+ *
+ * The following resources are often used in the same context:
+ *
+ * * databricks.EntityTagAssignment for assigning tags to supported Unity Catalog entities.
+ * * databricks.WorkspaceEntityTagAssignment for assigning tags to supported workspace entities.
+ * * databricks.PolicyInfo for defining ABAC policies using governed tags.
+ * * databricks.AccessControlRuleSet for managing account-level and individual tag policy permissions.
  *
  * > **Note** This resource can only be used with a workspace-level provider!
  *

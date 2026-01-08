@@ -71,6 +71,9 @@ func GetDebugHeaders(ctx *pulumi.Context) bool {
 func GetDebugTruncateBytes(ctx *pulumi.Context) int {
 	return config.GetInt(ctx, "databricks:debugTruncateBytes")
 }
+func GetDisableOauthRefreshToken(ctx *pulumi.Context) bool {
+	return config.GetBool(ctx, "databricks:disableOauthRefreshToken")
+}
 func GetExperimentalIsUnifiedHost(ctx *pulumi.Context) bool {
 	return config.GetBool(ctx, "databricks:experimentalIsUnifiedHost")
 }

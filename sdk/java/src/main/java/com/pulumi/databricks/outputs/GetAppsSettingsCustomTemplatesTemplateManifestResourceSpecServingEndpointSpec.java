@@ -11,14 +11,14 @@ import java.util.Objects;
 @CustomType
 public final class GetAppsSettingsCustomTemplatesTemplateManifestResourceSpecServingEndpointSpec {
     /**
-     * @return (string) - Possible values are: `MANAGE`, `READ_VOLUME`, `SELECT`, `WRITE_VOLUME`
+     * @return (string) - Possible values are: `EXECUTE`, `MANAGE`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
      * 
      */
     private String permission;
 
     private GetAppsSettingsCustomTemplatesTemplateManifestResourceSpecServingEndpointSpec() {}
     /**
-     * @return (string) - Possible values are: `MANAGE`, `READ_VOLUME`, `SELECT`, `WRITE_VOLUME`
+     * @return (string) - Possible values are: `EXECUTE`, `MANAGE`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
      * 
      */
     public String permission() {

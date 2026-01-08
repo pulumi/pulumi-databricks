@@ -610,6 +610,36 @@ export const getPolicyInfos: typeof import("./getPolicyInfos").getPolicyInfos = 
 export const getPolicyInfosOutput: typeof import("./getPolicyInfos").getPolicyInfosOutput = null as any;
 utilities.lazyLoad(exports, ["getPolicyInfos","getPolicyInfosOutput"], () => require("./getPolicyInfos"));
 
+export { GetPostgresBranchArgs, GetPostgresBranchResult, GetPostgresBranchOutputArgs } from "./getPostgresBranch";
+export const getPostgresBranch: typeof import("./getPostgresBranch").getPostgresBranch = null as any;
+export const getPostgresBranchOutput: typeof import("./getPostgresBranch").getPostgresBranchOutput = null as any;
+utilities.lazyLoad(exports, ["getPostgresBranch","getPostgresBranchOutput"], () => require("./getPostgresBranch"));
+
+export { GetPostgresBranchesArgs, GetPostgresBranchesResult, GetPostgresBranchesOutputArgs } from "./getPostgresBranches";
+export const getPostgresBranches: typeof import("./getPostgresBranches").getPostgresBranches = null as any;
+export const getPostgresBranchesOutput: typeof import("./getPostgresBranches").getPostgresBranchesOutput = null as any;
+utilities.lazyLoad(exports, ["getPostgresBranches","getPostgresBranchesOutput"], () => require("./getPostgresBranches"));
+
+export { GetPostgresEndpointArgs, GetPostgresEndpointResult, GetPostgresEndpointOutputArgs } from "./getPostgresEndpoint";
+export const getPostgresEndpoint: typeof import("./getPostgresEndpoint").getPostgresEndpoint = null as any;
+export const getPostgresEndpointOutput: typeof import("./getPostgresEndpoint").getPostgresEndpointOutput = null as any;
+utilities.lazyLoad(exports, ["getPostgresEndpoint","getPostgresEndpointOutput"], () => require("./getPostgresEndpoint"));
+
+export { GetPostgresEndpointsArgs, GetPostgresEndpointsResult, GetPostgresEndpointsOutputArgs } from "./getPostgresEndpoints";
+export const getPostgresEndpoints: typeof import("./getPostgresEndpoints").getPostgresEndpoints = null as any;
+export const getPostgresEndpointsOutput: typeof import("./getPostgresEndpoints").getPostgresEndpointsOutput = null as any;
+utilities.lazyLoad(exports, ["getPostgresEndpoints","getPostgresEndpointsOutput"], () => require("./getPostgresEndpoints"));
+
+export { GetPostgresProjectArgs, GetPostgresProjectResult, GetPostgresProjectOutputArgs } from "./getPostgresProject";
+export const getPostgresProject: typeof import("./getPostgresProject").getPostgresProject = null as any;
+export const getPostgresProjectOutput: typeof import("./getPostgresProject").getPostgresProjectOutput = null as any;
+utilities.lazyLoad(exports, ["getPostgresProject","getPostgresProjectOutput"], () => require("./getPostgresProject"));
+
+export { GetPostgresProjectsArgs, GetPostgresProjectsResult, GetPostgresProjectsOutputArgs } from "./getPostgresProjects";
+export const getPostgresProjects: typeof import("./getPostgresProjects").getPostgresProjects = null as any;
+export const getPostgresProjectsOutput: typeof import("./getPostgresProjects").getPostgresProjectsOutput = null as any;
+utilities.lazyLoad(exports, ["getPostgresProjects","getPostgresProjectsOutput"], () => require("./getPostgresProjects"));
+
 export { GetQualityMonitorV2Args, GetQualityMonitorV2Result, GetQualityMonitorV2OutputArgs } from "./getQualityMonitorV2";
 export const getQualityMonitorV2: typeof import("./getQualityMonitorV2").getQualityMonitorV2 = null as any;
 export const getQualityMonitorV2Output: typeof import("./getQualityMonitorV2").getQualityMonitorV2Output = null as any;
@@ -630,7 +660,7 @@ export const getRegisteredModelVersions: typeof import("./getRegisteredModelVers
 export const getRegisteredModelVersionsOutput: typeof import("./getRegisteredModelVersions").getRegisteredModelVersionsOutput = null as any;
 utilities.lazyLoad(exports, ["getRegisteredModelVersions","getRegisteredModelVersionsOutput"], () => require("./getRegisteredModelVersions"));
 
-export { GetRfaAccessRequestDestinationsResult } from "./getRfaAccessRequestDestinations";
+export { GetRfaAccessRequestDestinationsArgs, GetRfaAccessRequestDestinationsResult, GetRfaAccessRequestDestinationsOutputArgs } from "./getRfaAccessRequestDestinations";
 export const getRfaAccessRequestDestinations: typeof import("./getRfaAccessRequestDestinations").getRfaAccessRequestDestinations = null as any;
 export const getRfaAccessRequestDestinationsOutput: typeof import("./getRfaAccessRequestDestinations").getRfaAccessRequestDestinationsOutput = null as any;
 utilities.lazyLoad(exports, ["getRfaAccessRequestDestinations","getRfaAccessRequestDestinationsOutput"], () => require("./getRfaAccessRequestDestinations"));
@@ -1004,6 +1034,21 @@ export { PolicyInfoArgs, PolicyInfoState } from "./policyInfo";
 export type PolicyInfo = import("./policyInfo").PolicyInfo;
 export const PolicyInfo: typeof import("./policyInfo").PolicyInfo = null as any;
 utilities.lazyLoad(exports, ["PolicyInfo"], () => require("./policyInfo"));
+
+export { PostgresBranchArgs, PostgresBranchState } from "./postgresBranch";
+export type PostgresBranch = import("./postgresBranch").PostgresBranch;
+export const PostgresBranch: typeof import("./postgresBranch").PostgresBranch = null as any;
+utilities.lazyLoad(exports, ["PostgresBranch"], () => require("./postgresBranch"));
+
+export { PostgresEndpointArgs, PostgresEndpointState } from "./postgresEndpoint";
+export type PostgresEndpoint = import("./postgresEndpoint").PostgresEndpoint;
+export const PostgresEndpoint: typeof import("./postgresEndpoint").PostgresEndpoint = null as any;
+utilities.lazyLoad(exports, ["PostgresEndpoint"], () => require("./postgresEndpoint"));
+
+export { PostgresProjectArgs, PostgresProjectState } from "./postgresProject";
+export type PostgresProject = import("./postgresProject").PostgresProject;
+export const PostgresProject: typeof import("./postgresProject").PostgresProject = null as any;
+utilities.lazyLoad(exports, ["PostgresProject"], () => require("./postgresProject"));
 
 export * from "./provider";
 import { Provider } from "./provider";
@@ -1415,6 +1460,12 @@ const _module = {
                 return new Pipeline(name, <any>undefined, { urn })
             case "databricks:index/policyInfo:PolicyInfo":
                 return new PolicyInfo(name, <any>undefined, { urn })
+            case "databricks:index/postgresBranch:PostgresBranch":
+                return new PostgresBranch(name, <any>undefined, { urn })
+            case "databricks:index/postgresEndpoint:PostgresEndpoint":
+                return new PostgresEndpoint(name, <any>undefined, { urn })
+            case "databricks:index/postgresProject:PostgresProject":
+                return new PostgresProject(name, <any>undefined, { urn })
             case "databricks:index/qualityMonitor:QualityMonitor":
                 return new QualityMonitor(name, <any>undefined, { urn })
             case "databricks:index/qualityMonitorV2:QualityMonitorV2":
@@ -1595,6 +1646,9 @@ pulumi.runtime.registerResourceModule("databricks", "index/permissionAssignment"
 pulumi.runtime.registerResourceModule("databricks", "index/permissions", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/pipeline", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/policyInfo", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/postgresBranch", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/postgresEndpoint", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/postgresProject", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/qualityMonitor", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/qualityMonitorV2", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/query", _module)

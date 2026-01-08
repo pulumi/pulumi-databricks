@@ -23,6 +23,7 @@ namespace Pulumi.Databricks.Outputs
         /// Exactly one of the following attributes must be provided:
         /// </summary>
         public readonly string? Description;
+        public readonly Outputs.AppResourceExperiment? Experiment;
         /// <summary>
         /// attribute
         /// </summary>
@@ -58,6 +59,8 @@ namespace Pulumi.Databricks.Outputs
 
             string? description,
 
+            Outputs.AppResourceExperiment? experiment,
+
             Outputs.AppResourceGenieSpace? genieSpace,
 
             Outputs.AppResourceJob? job,
@@ -74,6 +77,7 @@ namespace Pulumi.Databricks.Outputs
         {
             Database = database;
             Description = description;
+            Experiment = experiment;
             GenieSpace = genieSpace;
             Job = job;
             Name = name;

@@ -156,6 +156,18 @@ import com.pulumi.databricks.inputs.GetPolicyInfoArgs;
 import com.pulumi.databricks.inputs.GetPolicyInfoPlainArgs;
 import com.pulumi.databricks.inputs.GetPolicyInfosArgs;
 import com.pulumi.databricks.inputs.GetPolicyInfosPlainArgs;
+import com.pulumi.databricks.inputs.GetPostgresBranchArgs;
+import com.pulumi.databricks.inputs.GetPostgresBranchPlainArgs;
+import com.pulumi.databricks.inputs.GetPostgresBranchesArgs;
+import com.pulumi.databricks.inputs.GetPostgresBranchesPlainArgs;
+import com.pulumi.databricks.inputs.GetPostgresEndpointArgs;
+import com.pulumi.databricks.inputs.GetPostgresEndpointPlainArgs;
+import com.pulumi.databricks.inputs.GetPostgresEndpointsArgs;
+import com.pulumi.databricks.inputs.GetPostgresEndpointsPlainArgs;
+import com.pulumi.databricks.inputs.GetPostgresProjectArgs;
+import com.pulumi.databricks.inputs.GetPostgresProjectPlainArgs;
+import com.pulumi.databricks.inputs.GetPostgresProjectsArgs;
+import com.pulumi.databricks.inputs.GetPostgresProjectsPlainArgs;
 import com.pulumi.databricks.inputs.GetQualityMonitorV2Args;
 import com.pulumi.databricks.inputs.GetQualityMonitorV2PlainArgs;
 import com.pulumi.databricks.inputs.GetQualityMonitorsV2Args;
@@ -164,6 +176,8 @@ import com.pulumi.databricks.inputs.GetRegisteredModelArgs;
 import com.pulumi.databricks.inputs.GetRegisteredModelPlainArgs;
 import com.pulumi.databricks.inputs.GetRegisteredModelVersionsArgs;
 import com.pulumi.databricks.inputs.GetRegisteredModelVersionsPlainArgs;
+import com.pulumi.databricks.inputs.GetRfaAccessRequestDestinationsArgs;
+import com.pulumi.databricks.inputs.GetRfaAccessRequestDestinationsPlainArgs;
 import com.pulumi.databricks.inputs.GetSchemaArgs;
 import com.pulumi.databricks.inputs.GetSchemaPlainArgs;
 import com.pulumi.databricks.inputs.GetSchemasArgs;
@@ -298,6 +312,12 @@ import com.pulumi.databricks.outputs.GetOnlineStoresResult;
 import com.pulumi.databricks.outputs.GetPipelinesResult;
 import com.pulumi.databricks.outputs.GetPolicyInfoResult;
 import com.pulumi.databricks.outputs.GetPolicyInfosResult;
+import com.pulumi.databricks.outputs.GetPostgresBranchResult;
+import com.pulumi.databricks.outputs.GetPostgresBranchesResult;
+import com.pulumi.databricks.outputs.GetPostgresEndpointResult;
+import com.pulumi.databricks.outputs.GetPostgresEndpointsResult;
+import com.pulumi.databricks.outputs.GetPostgresProjectResult;
+import com.pulumi.databricks.outputs.GetPostgresProjectsResult;
 import com.pulumi.databricks.outputs.GetQualityMonitorV2Result;
 import com.pulumi.databricks.outputs.GetQualityMonitorsV2Result;
 import com.pulumi.databricks.outputs.GetRegisteredModelResult;
@@ -22961,6 +22981,230 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getPolicyInfos:getPolicyInfos", TypeShape.of(GetPolicyInfosResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetPostgresBranchResult> getPostgresBranch(GetPostgresBranchArgs args) {
+        return getPostgresBranch(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetPostgresBranchResult> getPostgresBranchPlain(GetPostgresBranchPlainArgs args) {
+        return getPostgresBranchPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetPostgresBranchResult> getPostgresBranch(GetPostgresBranchArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getPostgresBranch:getPostgresBranch", TypeShape.of(GetPostgresBranchResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetPostgresBranchResult> getPostgresBranch(GetPostgresBranchArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getPostgresBranch:getPostgresBranch", TypeShape.of(GetPostgresBranchResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetPostgresBranchResult> getPostgresBranchPlain(GetPostgresBranchPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getPostgresBranch:getPostgresBranch", TypeShape.of(GetPostgresBranchResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetPostgresBranchesResult> getPostgresBranches(GetPostgresBranchesArgs args) {
+        return getPostgresBranches(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetPostgresBranchesResult> getPostgresBranchesPlain(GetPostgresBranchesPlainArgs args) {
+        return getPostgresBranchesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetPostgresBranchesResult> getPostgresBranches(GetPostgresBranchesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getPostgresBranches:getPostgresBranches", TypeShape.of(GetPostgresBranchesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetPostgresBranchesResult> getPostgresBranches(GetPostgresBranchesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getPostgresBranches:getPostgresBranches", TypeShape.of(GetPostgresBranchesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetPostgresBranchesResult> getPostgresBranchesPlain(GetPostgresBranchesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getPostgresBranches:getPostgresBranches", TypeShape.of(GetPostgresBranchesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetPostgresEndpointResult> getPostgresEndpoint(GetPostgresEndpointArgs args) {
+        return getPostgresEndpoint(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetPostgresEndpointResult> getPostgresEndpointPlain(GetPostgresEndpointPlainArgs args) {
+        return getPostgresEndpointPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetPostgresEndpointResult> getPostgresEndpoint(GetPostgresEndpointArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getPostgresEndpoint:getPostgresEndpoint", TypeShape.of(GetPostgresEndpointResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetPostgresEndpointResult> getPostgresEndpoint(GetPostgresEndpointArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getPostgresEndpoint:getPostgresEndpoint", TypeShape.of(GetPostgresEndpointResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetPostgresEndpointResult> getPostgresEndpointPlain(GetPostgresEndpointPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getPostgresEndpoint:getPostgresEndpoint", TypeShape.of(GetPostgresEndpointResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetPostgresEndpointsResult> getPostgresEndpoints(GetPostgresEndpointsArgs args) {
+        return getPostgresEndpoints(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetPostgresEndpointsResult> getPostgresEndpointsPlain(GetPostgresEndpointsPlainArgs args) {
+        return getPostgresEndpointsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetPostgresEndpointsResult> getPostgresEndpoints(GetPostgresEndpointsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getPostgresEndpoints:getPostgresEndpoints", TypeShape.of(GetPostgresEndpointsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetPostgresEndpointsResult> getPostgresEndpoints(GetPostgresEndpointsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getPostgresEndpoints:getPostgresEndpoints", TypeShape.of(GetPostgresEndpointsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetPostgresEndpointsResult> getPostgresEndpointsPlain(GetPostgresEndpointsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getPostgresEndpoints:getPostgresEndpoints", TypeShape.of(GetPostgresEndpointsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetPostgresProjectResult> getPostgresProject(GetPostgresProjectArgs args) {
+        return getPostgresProject(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetPostgresProjectResult> getPostgresProjectPlain(GetPostgresProjectPlainArgs args) {
+        return getPostgresProjectPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetPostgresProjectResult> getPostgresProject(GetPostgresProjectArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getPostgresProject:getPostgresProject", TypeShape.of(GetPostgresProjectResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetPostgresProjectResult> getPostgresProject(GetPostgresProjectArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getPostgresProject:getPostgresProject", TypeShape.of(GetPostgresProjectResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetPostgresProjectResult> getPostgresProjectPlain(GetPostgresProjectPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getPostgresProject:getPostgresProject", TypeShape.of(GetPostgresProjectResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetPostgresProjectsResult> getPostgresProjects() {
+        return getPostgresProjects(GetPostgresProjectsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetPostgresProjectsResult> getPostgresProjectsPlain() {
+        return getPostgresProjectsPlain(GetPostgresProjectsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetPostgresProjectsResult> getPostgresProjects(GetPostgresProjectsArgs args) {
+        return getPostgresProjects(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetPostgresProjectsResult> getPostgresProjectsPlain(GetPostgresProjectsPlainArgs args) {
+        return getPostgresProjectsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetPostgresProjectsResult> getPostgresProjects(GetPostgresProjectsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getPostgresProjects:getPostgresProjects", TypeShape.of(GetPostgresProjectsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetPostgresProjectsResult> getPostgresProjects(GetPostgresProjectsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getPostgresProjects:getPostgresProjects", TypeShape.of(GetPostgresProjectsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetPostgresProjectsResult> getPostgresProjectsPlain(GetPostgresProjectsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getPostgresProjects:getPostgresProjects", TypeShape.of(GetPostgresProjectsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * This data source can be used to fetch a quality monitors v2.
@@ -24049,34 +24293,40 @@ public final class DatabricksFunctions {
      * 
      * Referring to RFA access request destinations by securable type and full name:
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetRfaAccessRequestDestinationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var customerDataSchema = DatabricksFunctions.getRfaAccessRequestDestinations(GetRfaAccessRequestDestinationsArgs.builder()
+     *             .securableType("SCHEMA")
+     *             .fullName("main.customer_data")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
-    public static Output<GetRfaAccessRequestDestinationsResult> getRfaAccessRequestDestinations() {
-        return getRfaAccessRequestDestinations(InvokeArgs.Empty, InvokeOptions.Empty);
-    }
-    /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
-     * 
-     * This data source can be used to get the Request for Access (RFA) access request destinations for a specific securable object.
-     * 
-     * ## Example Usage
-     * 
-     * Referring to RFA access request destinations by securable type and full name:
-     * 
-     */
-    public static CompletableFuture<GetRfaAccessRequestDestinationsResult> getRfaAccessRequestDestinationsPlain() {
-        return getRfaAccessRequestDestinationsPlain(InvokeArgs.Empty, InvokeOptions.Empty);
-    }
-    /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
-     * 
-     * This data source can be used to get the Request for Access (RFA) access request destinations for a specific securable object.
-     * 
-     * ## Example Usage
-     * 
-     * Referring to RFA access request destinations by securable type and full name:
-     * 
-     */
-    public static Output<GetRfaAccessRequestDestinationsResult> getRfaAccessRequestDestinations(InvokeArgs args) {
+    public static Output<GetRfaAccessRequestDestinationsResult> getRfaAccessRequestDestinations(GetRfaAccessRequestDestinationsArgs args) {
         return getRfaAccessRequestDestinations(args, InvokeOptions.Empty);
     }
     /**
@@ -24088,8 +24338,40 @@ public final class DatabricksFunctions {
      * 
      * Referring to RFA access request destinations by securable type and full name:
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetRfaAccessRequestDestinationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var customerDataSchema = DatabricksFunctions.getRfaAccessRequestDestinations(GetRfaAccessRequestDestinationsArgs.builder()
+     *             .securableType("SCHEMA")
+     *             .fullName("main.customer_data")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
-    public static CompletableFuture<GetRfaAccessRequestDestinationsResult> getRfaAccessRequestDestinationsPlain(InvokeArgs args) {
+    public static CompletableFuture<GetRfaAccessRequestDestinationsResult> getRfaAccessRequestDestinationsPlain(GetRfaAccessRequestDestinationsPlainArgs args) {
         return getRfaAccessRequestDestinationsPlain(args, InvokeOptions.Empty);
     }
     /**
@@ -24101,8 +24383,40 @@ public final class DatabricksFunctions {
      * 
      * Referring to RFA access request destinations by securable type and full name:
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetRfaAccessRequestDestinationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var customerDataSchema = DatabricksFunctions.getRfaAccessRequestDestinations(GetRfaAccessRequestDestinationsArgs.builder()
+     *             .securableType("SCHEMA")
+     *             .fullName("main.customer_data")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
-    public static Output<GetRfaAccessRequestDestinationsResult> getRfaAccessRequestDestinations(InvokeArgs args, InvokeOptions options) {
+    public static Output<GetRfaAccessRequestDestinationsResult> getRfaAccessRequestDestinations(GetRfaAccessRequestDestinationsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getRfaAccessRequestDestinations:getRfaAccessRequestDestinations", TypeShape.of(GetRfaAccessRequestDestinationsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -24114,8 +24428,40 @@ public final class DatabricksFunctions {
      * 
      * Referring to RFA access request destinations by securable type and full name:
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetRfaAccessRequestDestinationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var customerDataSchema = DatabricksFunctions.getRfaAccessRequestDestinations(GetRfaAccessRequestDestinationsArgs.builder()
+     *             .securableType("SCHEMA")
+     *             .fullName("main.customer_data")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
-    public static Output<GetRfaAccessRequestDestinationsResult> getRfaAccessRequestDestinations(InvokeArgs args, InvokeOutputOptions options) {
+    public static Output<GetRfaAccessRequestDestinationsResult> getRfaAccessRequestDestinations(GetRfaAccessRequestDestinationsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getRfaAccessRequestDestinations:getRfaAccessRequestDestinations", TypeShape.of(GetRfaAccessRequestDestinationsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -24127,8 +24473,40 @@ public final class DatabricksFunctions {
      * 
      * Referring to RFA access request destinations by securable type and full name:
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetRfaAccessRequestDestinationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var customerDataSchema = DatabricksFunctions.getRfaAccessRequestDestinations(GetRfaAccessRequestDestinationsArgs.builder()
+     *             .securableType("SCHEMA")
+     *             .fullName("main.customer_data")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
-    public static CompletableFuture<GetRfaAccessRequestDestinationsResult> getRfaAccessRequestDestinationsPlain(InvokeArgs args, InvokeOptions options) {
+    public static CompletableFuture<GetRfaAccessRequestDestinationsResult> getRfaAccessRequestDestinationsPlain(GetRfaAccessRequestDestinationsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getRfaAccessRequestDestinations:getRfaAccessRequestDestinations", TypeShape.of(GetRfaAccessRequestDestinationsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -29711,7 +30089,14 @@ public final class DatabricksFunctions {
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
-     * This data source can be used to list all tag policies in the account. Manage tag policy permissions using the `databricks.AccessControlRuleSet` resource.
+     * This data source can be used to list all tag policies in the account.
+     * 
+     * The following resources are often used in the same context:
+     * 
+     * * databricks.EntityTagAssignment for assigning tags to supported Unity Catalog entities.
+     * * databricks.WorkspaceEntityTagAssignment for assigning tags to supported workspace entities.
+     * * databricks.PolicyInfo for defining ABAC policies using governed tags.
+     * * databricks.AccessControlRuleSet for managing account-level and individual tag policy permissions.
      * 
      * &gt; **Note** This resource can only be used with a workspace-level provider!
      * 
@@ -29757,7 +30142,14 @@ public final class DatabricksFunctions {
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
-     * This data source can be used to list all tag policies in the account. Manage tag policy permissions using the `databricks.AccessControlRuleSet` resource.
+     * This data source can be used to list all tag policies in the account.
+     * 
+     * The following resources are often used in the same context:
+     * 
+     * * databricks.EntityTagAssignment for assigning tags to supported Unity Catalog entities.
+     * * databricks.WorkspaceEntityTagAssignment for assigning tags to supported workspace entities.
+     * * databricks.PolicyInfo for defining ABAC policies using governed tags.
+     * * databricks.AccessControlRuleSet for managing account-level and individual tag policy permissions.
      * 
      * &gt; **Note** This resource can only be used with a workspace-level provider!
      * 
@@ -29803,7 +30195,14 @@ public final class DatabricksFunctions {
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
-     * This data source can be used to list all tag policies in the account. Manage tag policy permissions using the `databricks.AccessControlRuleSet` resource.
+     * This data source can be used to list all tag policies in the account.
+     * 
+     * The following resources are often used in the same context:
+     * 
+     * * databricks.EntityTagAssignment for assigning tags to supported Unity Catalog entities.
+     * * databricks.WorkspaceEntityTagAssignment for assigning tags to supported workspace entities.
+     * * databricks.PolicyInfo for defining ABAC policies using governed tags.
+     * * databricks.AccessControlRuleSet for managing account-level and individual tag policy permissions.
      * 
      * &gt; **Note** This resource can only be used with a workspace-level provider!
      * 
@@ -29849,7 +30248,14 @@ public final class DatabricksFunctions {
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
-     * This data source can be used to list all tag policies in the account. Manage tag policy permissions using the `databricks.AccessControlRuleSet` resource.
+     * This data source can be used to list all tag policies in the account.
+     * 
+     * The following resources are often used in the same context:
+     * 
+     * * databricks.EntityTagAssignment for assigning tags to supported Unity Catalog entities.
+     * * databricks.WorkspaceEntityTagAssignment for assigning tags to supported workspace entities.
+     * * databricks.PolicyInfo for defining ABAC policies using governed tags.
+     * * databricks.AccessControlRuleSet for managing account-level and individual tag policy permissions.
      * 
      * &gt; **Note** This resource can only be used with a workspace-level provider!
      * 
@@ -29895,7 +30301,14 @@ public final class DatabricksFunctions {
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
-     * This data source can be used to list all tag policies in the account. Manage tag policy permissions using the `databricks.AccessControlRuleSet` resource.
+     * This data source can be used to list all tag policies in the account.
+     * 
+     * The following resources are often used in the same context:
+     * 
+     * * databricks.EntityTagAssignment for assigning tags to supported Unity Catalog entities.
+     * * databricks.WorkspaceEntityTagAssignment for assigning tags to supported workspace entities.
+     * * databricks.PolicyInfo for defining ABAC policies using governed tags.
+     * * databricks.AccessControlRuleSet for managing account-level and individual tag policy permissions.
      * 
      * &gt; **Note** This resource can only be used with a workspace-level provider!
      * 
@@ -29941,7 +30354,14 @@ public final class DatabricksFunctions {
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
-     * This data source can be used to list all tag policies in the account. Manage tag policy permissions using the `databricks.AccessControlRuleSet` resource.
+     * This data source can be used to list all tag policies in the account.
+     * 
+     * The following resources are often used in the same context:
+     * 
+     * * databricks.EntityTagAssignment for assigning tags to supported Unity Catalog entities.
+     * * databricks.WorkspaceEntityTagAssignment for assigning tags to supported workspace entities.
+     * * databricks.PolicyInfo for defining ABAC policies using governed tags.
+     * * databricks.AccessControlRuleSet for managing account-level and individual tag policy permissions.
      * 
      * &gt; **Note** This resource can only be used with a workspace-level provider!
      * 
@@ -29987,7 +30407,14 @@ public final class DatabricksFunctions {
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
-     * This data source can be used to list all tag policies in the account. Manage tag policy permissions using the `databricks.AccessControlRuleSet` resource.
+     * This data source can be used to list all tag policies in the account.
+     * 
+     * The following resources are often used in the same context:
+     * 
+     * * databricks.EntityTagAssignment for assigning tags to supported Unity Catalog entities.
+     * * databricks.WorkspaceEntityTagAssignment for assigning tags to supported workspace entities.
+     * * databricks.PolicyInfo for defining ABAC policies using governed tags.
+     * * databricks.AccessControlRuleSet for managing account-level and individual tag policy permissions.
      * 
      * &gt; **Note** This resource can only be used with a workspace-level provider!
      * 
@@ -30033,7 +30460,14 @@ public final class DatabricksFunctions {
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
-     * This data source can be used to get a single tag policy by its tag key. Manage tag policy permissions using the `databricks.AccessControlRuleSet` resource.
+     * This data source can be used to get a single tag policy by its tag key.
+     * 
+     * The following resources are often used in the same context:
+     * 
+     * * databricks.EntityTagAssignment for assigning tags to supported Unity Catalog entities.
+     * * databricks.WorkspaceEntityTagAssignment for assigning tags to supported workspace entities.
+     * * databricks.PolicyInfo for defining ABAC policies using governed tags.
+     * * databricks.AccessControlRuleSet for managing account-level and individual tag policy permissions.
      * 
      * &gt; **Note** This resource can only be used with a workspace-level provider!
      * 
@@ -30079,7 +30513,14 @@ public final class DatabricksFunctions {
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
-     * This data source can be used to get a single tag policy by its tag key. Manage tag policy permissions using the `databricks.AccessControlRuleSet` resource.
+     * This data source can be used to get a single tag policy by its tag key.
+     * 
+     * The following resources are often used in the same context:
+     * 
+     * * databricks.EntityTagAssignment for assigning tags to supported Unity Catalog entities.
+     * * databricks.WorkspaceEntityTagAssignment for assigning tags to supported workspace entities.
+     * * databricks.PolicyInfo for defining ABAC policies using governed tags.
+     * * databricks.AccessControlRuleSet for managing account-level and individual tag policy permissions.
      * 
      * &gt; **Note** This resource can only be used with a workspace-level provider!
      * 
@@ -30125,7 +30566,14 @@ public final class DatabricksFunctions {
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
-     * This data source can be used to get a single tag policy by its tag key. Manage tag policy permissions using the `databricks.AccessControlRuleSet` resource.
+     * This data source can be used to get a single tag policy by its tag key.
+     * 
+     * The following resources are often used in the same context:
+     * 
+     * * databricks.EntityTagAssignment for assigning tags to supported Unity Catalog entities.
+     * * databricks.WorkspaceEntityTagAssignment for assigning tags to supported workspace entities.
+     * * databricks.PolicyInfo for defining ABAC policies using governed tags.
+     * * databricks.AccessControlRuleSet for managing account-level and individual tag policy permissions.
      * 
      * &gt; **Note** This resource can only be used with a workspace-level provider!
      * 
@@ -30171,7 +30619,14 @@ public final class DatabricksFunctions {
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
-     * This data source can be used to get a single tag policy by its tag key. Manage tag policy permissions using the `databricks.AccessControlRuleSet` resource.
+     * This data source can be used to get a single tag policy by its tag key.
+     * 
+     * The following resources are often used in the same context:
+     * 
+     * * databricks.EntityTagAssignment for assigning tags to supported Unity Catalog entities.
+     * * databricks.WorkspaceEntityTagAssignment for assigning tags to supported workspace entities.
+     * * databricks.PolicyInfo for defining ABAC policies using governed tags.
+     * * databricks.AccessControlRuleSet for managing account-level and individual tag policy permissions.
      * 
      * &gt; **Note** This resource can only be used with a workspace-level provider!
      * 
@@ -30217,7 +30672,14 @@ public final class DatabricksFunctions {
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
-     * This data source can be used to get a single tag policy by its tag key. Manage tag policy permissions using the `databricks.AccessControlRuleSet` resource.
+     * This data source can be used to get a single tag policy by its tag key.
+     * 
+     * The following resources are often used in the same context:
+     * 
+     * * databricks.EntityTagAssignment for assigning tags to supported Unity Catalog entities.
+     * * databricks.WorkspaceEntityTagAssignment for assigning tags to supported workspace entities.
+     * * databricks.PolicyInfo for defining ABAC policies using governed tags.
+     * * databricks.AccessControlRuleSet for managing account-level and individual tag policy permissions.
      * 
      * &gt; **Note** This resource can only be used with a workspace-level provider!
      * 

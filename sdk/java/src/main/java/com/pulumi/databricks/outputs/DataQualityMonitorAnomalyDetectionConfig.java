@@ -4,11 +4,27 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.String;
+import java.util.List;
 import java.util.Objects;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class DataQualityMonitorAnomalyDetectionConfig {
+    /**
+     * @return List of fully qualified table names to exclude from anomaly detection
+     * 
+     */
+    private @Nullable List<String> excludedTableFullNames;
+
     private DataQualityMonitorAnomalyDetectionConfig() {}
+    /**
+     * @return List of fully qualified table names to exclude from anomaly detection
+     * 
+     */
+    public List<String> excludedTableFullNames() {
+        return this.excludedTableFullNames == null ? List.of() : this.excludedTableFullNames;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -19,13 +35,25 @@ public final class DataQualityMonitorAnomalyDetectionConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<String> excludedTableFullNames;
         public Builder() {}
         public Builder(DataQualityMonitorAnomalyDetectionConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.excludedTableFullNames = defaults.excludedTableFullNames;
         }
 
+        @CustomType.Setter
+        public Builder excludedTableFullNames(@Nullable List<String> excludedTableFullNames) {
+
+            this.excludedTableFullNames = excludedTableFullNames;
+            return this;
+        }
+        public Builder excludedTableFullNames(String... excludedTableFullNames) {
+            return excludedTableFullNames(List.of(excludedTableFullNames));
+        }
         public DataQualityMonitorAnomalyDetectionConfig build() {
             final var _resultValue = new DataQualityMonitorAnomalyDetectionConfig();
+            _resultValue.excludedTableFullNames = excludedTableFullNames;
             return _resultValue;
         }
     }

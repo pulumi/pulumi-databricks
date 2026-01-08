@@ -91,6 +91,10 @@ namespace Pulumi.Databricks
         /// (string) - The current state of the online store. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
         /// </summary>
         public readonly string State;
+        /// <summary>
+        /// (string) - The usage policy applied to the online store to track billing
+        /// </summary>
+        public readonly string UsagePolicyId;
 
         [OutputConstructor]
         private GetOnlineStoreResult(
@@ -106,7 +110,9 @@ namespace Pulumi.Databricks
 
             int readReplicaCount,
 
-            string state)
+            string state,
+
+            string usagePolicyId)
         {
             Capacity = capacity;
             CreationTime = creationTime;
@@ -115,6 +121,7 @@ namespace Pulumi.Databricks
             Name = name;
             ReadReplicaCount = readReplicaCount;
             State = state;
+            UsagePolicyId = usagePolicyId;
         }
     }
 }

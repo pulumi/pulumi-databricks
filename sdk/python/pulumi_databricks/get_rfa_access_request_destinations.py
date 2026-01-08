@@ -27,19 +27,28 @@ class GetRfaAccessRequestDestinationsResult:
     """
     A collection of values returned by getRfaAccessRequestDestinations.
     """
-    def __init__(__self__, are_any_destinations_hidden=None, destinations=None, id=None, securable=None):
+    def __init__(__self__, are_any_destinations_hidden=None, destination_source_securable=None, destinations=None, full_name=None, id=None, securable=None, securable_type=None):
         if are_any_destinations_hidden and not isinstance(are_any_destinations_hidden, bool):
             raise TypeError("Expected argument 'are_any_destinations_hidden' to be a bool")
         pulumi.set(__self__, "are_any_destinations_hidden", are_any_destinations_hidden)
+        if destination_source_securable and not isinstance(destination_source_securable, dict):
+            raise TypeError("Expected argument 'destination_source_securable' to be a dict")
+        pulumi.set(__self__, "destination_source_securable", destination_source_securable)
         if destinations and not isinstance(destinations, list):
             raise TypeError("Expected argument 'destinations' to be a list")
         pulumi.set(__self__, "destinations", destinations)
+        if full_name and not isinstance(full_name, str):
+            raise TypeError("Expected argument 'full_name' to be a str")
+        pulumi.set(__self__, "full_name", full_name)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
         if securable and not isinstance(securable, dict):
             raise TypeError("Expected argument 'securable' to be a dict")
         pulumi.set(__self__, "securable", securable)
+        if securable_type and not isinstance(securable_type, str):
+            raise TypeError("Expected argument 'securable_type' to be a str")
+        pulumi.set(__self__, "securable_type", securable_type)
 
     @_builtins.property
     @pulumi.getter(name="areAnyDestinationsHidden")
@@ -51,12 +60,30 @@ class GetRfaAccessRequestDestinationsResult:
         return pulumi.get(self, "are_any_destinations_hidden")
 
     @_builtins.property
+    @pulumi.getter(name="destinationSourceSecurable")
+    def destination_source_securable(self) -> 'outputs.GetRfaAccessRequestDestinationsDestinationSourceSecurableResult':
+        """
+        (Securable) - The source securable from which the destinations are inherited. Either the same value as securable (if destination
+        is set directly on the securable) or the nearest parent securable with destinations set
+        """
+        return pulumi.get(self, "destination_source_securable")
+
+    @_builtins.property
     @pulumi.getter
     def destinations(self) -> Sequence['outputs.GetRfaAccessRequestDestinationsDestinationResult']:
         """
         (list of NotificationDestination) - The access request destinations for the securable
         """
         return pulumi.get(self, "destinations")
+
+    @_builtins.property
+    @pulumi.getter(name="fullName")
+    def full_name(self) -> _builtins.str:
+        """
+        (string) - Required. The full name of the catalog/schema/table.
+        Optional if resource_name is present
+        """
+        return pulumi.get(self, "full_name")
 
     @_builtins.property
     @pulumi.getter
@@ -70,9 +97,17 @@ class GetRfaAccessRequestDestinationsResult:
     @pulumi.getter
     def securable(self) -> 'outputs.GetRfaAccessRequestDestinationsSecurableResult':
         """
-        (Securable) - The securable for which the access request destinations are being retrieved
+        (Securable) - The securable for which the access request destinations are being modified or read
         """
         return pulumi.get(self, "securable")
+
+    @_builtins.property
+    @pulumi.getter(name="securableType")
+    def securable_type(self) -> _builtins.str:
+        """
+        (string) - The type of the securable. Redundant with the type in the securable object, but necessary for Pulumi integration
+        """
+        return pulumi.get(self, "securable_type")
 
 
 class AwaitableGetRfaAccessRequestDestinationsResult(GetRfaAccessRequestDestinationsResult):
@@ -82,12 +117,17 @@ class AwaitableGetRfaAccessRequestDestinationsResult(GetRfaAccessRequestDestinat
             yield self
         return GetRfaAccessRequestDestinationsResult(
             are_any_destinations_hidden=self.are_any_destinations_hidden,
+            destination_source_securable=self.destination_source_securable,
             destinations=self.destinations,
+            full_name=self.full_name,
             id=self.id,
-            securable=self.securable)
+            securable=self.securable,
+            securable_type=self.securable_type)
 
 
-def get_rfa_access_request_destinations(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRfaAccessRequestDestinationsResult:
+def get_rfa_access_request_destinations(full_name: Optional[_builtins.str] = None,
+                                        securable_type: Optional[_builtins.str] = None,
+                                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRfaAccessRequestDestinationsResult:
     """
     [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
@@ -96,17 +136,36 @@ def get_rfa_access_request_destinations(opts: Optional[pulumi.InvokeOptions] = N
     ## Example Usage
 
     Referring to RFA access request destinations by securable type and full name:
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    customer_data_schema = databricks.get_rfa_access_request_destinations(securable_type="SCHEMA",
+        full_name="main.customer_data")
+    ```
+
+
+    :param _builtins.str full_name: The full name of the securable. Redundant with the name in the securable object, but necessary for Pulumi integration
+    :param _builtins.str securable_type: The type of the securable. Redundant with the type in the securable object, but necessary for Pulumi integration
     """
     __args__ = dict()
+    __args__['fullName'] = full_name
+    __args__['securableType'] = securable_type
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getRfaAccessRequestDestinations:getRfaAccessRequestDestinations', __args__, opts=opts, typ=GetRfaAccessRequestDestinationsResult).value
 
     return AwaitableGetRfaAccessRequestDestinationsResult(
         are_any_destinations_hidden=pulumi.get(__ret__, 'are_any_destinations_hidden'),
+        destination_source_securable=pulumi.get(__ret__, 'destination_source_securable'),
         destinations=pulumi.get(__ret__, 'destinations'),
+        full_name=pulumi.get(__ret__, 'full_name'),
         id=pulumi.get(__ret__, 'id'),
-        securable=pulumi.get(__ret__, 'securable'))
-def get_rfa_access_request_destinations_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRfaAccessRequestDestinationsResult]:
+        securable=pulumi.get(__ret__, 'securable'),
+        securable_type=pulumi.get(__ret__, 'securable_type'))
+def get_rfa_access_request_destinations_output(full_name: Optional[pulumi.Input[_builtins.str]] = None,
+                                               securable_type: Optional[pulumi.Input[_builtins.str]] = None,
+                                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRfaAccessRequestDestinationsResult]:
     """
     [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
@@ -115,12 +174,29 @@ def get_rfa_access_request_destinations_output(opts: Optional[Union[pulumi.Invok
     ## Example Usage
 
     Referring to RFA access request destinations by securable type and full name:
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    customer_data_schema = databricks.get_rfa_access_request_destinations(securable_type="SCHEMA",
+        full_name="main.customer_data")
+    ```
+
+
+    :param _builtins.str full_name: The full name of the securable. Redundant with the name in the securable object, but necessary for Pulumi integration
+    :param _builtins.str securable_type: The type of the securable. Redundant with the type in the securable object, but necessary for Pulumi integration
     """
     __args__ = dict()
+    __args__['fullName'] = full_name
+    __args__['securableType'] = securable_type
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getRfaAccessRequestDestinations:getRfaAccessRequestDestinations', __args__, opts=opts, typ=GetRfaAccessRequestDestinationsResult)
     return __ret__.apply(lambda __response__: GetRfaAccessRequestDestinationsResult(
         are_any_destinations_hidden=pulumi.get(__response__, 'are_any_destinations_hidden'),
+        destination_source_securable=pulumi.get(__response__, 'destination_source_securable'),
         destinations=pulumi.get(__response__, 'destinations'),
+        full_name=pulumi.get(__response__, 'full_name'),
         id=pulumi.get(__response__, 'id'),
-        securable=pulumi.get(__response__, 'securable')))
+        securable=pulumi.get(__response__, 'securable'),
+        securable_type=pulumi.get(__response__, 'securable_type')))

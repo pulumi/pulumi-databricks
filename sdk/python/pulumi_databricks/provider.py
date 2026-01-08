@@ -39,6 +39,7 @@ class ProviderArgs:
                  databricks_id_token_filepath: Optional[pulumi.Input[_builtins.str]] = None,
                  debug_headers: Optional[pulumi.Input[_builtins.bool]] = None,
                  debug_truncate_bytes: Optional[pulumi.Input[_builtins.int]] = None,
+                 disable_oauth_refresh_token: Optional[pulumi.Input[_builtins.bool]] = None,
                  experimental_is_unified_host: Optional[pulumi.Input[_builtins.bool]] = None,
                  google_credentials: Optional[pulumi.Input[_builtins.str]] = None,
                  google_service_account: Optional[pulumi.Input[_builtins.str]] = None,
@@ -100,6 +101,8 @@ class ProviderArgs:
             pulumi.set(__self__, "debug_headers", debug_headers)
         if debug_truncate_bytes is not None:
             pulumi.set(__self__, "debug_truncate_bytes", debug_truncate_bytes)
+        if disable_oauth_refresh_token is not None:
+            pulumi.set(__self__, "disable_oauth_refresh_token", disable_oauth_refresh_token)
         if experimental_is_unified_host is not None:
             pulumi.set(__self__, "experimental_is_unified_host", experimental_is_unified_host)
         if google_credentials is not None:
@@ -318,6 +321,15 @@ class ProviderArgs:
         pulumi.set(self, "debug_truncate_bytes", value)
 
     @_builtins.property
+    @pulumi.getter(name="disableOauthRefreshToken")
+    def disable_oauth_refresh_token(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        return pulumi.get(self, "disable_oauth_refresh_token")
+
+    @disable_oauth_refresh_token.setter
+    def disable_oauth_refresh_token(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "disable_oauth_refresh_token", value)
+
+    @_builtins.property
     @pulumi.getter(name="experimentalIsUnifiedHost")
     def experimental_is_unified_host(self) -> Optional[pulumi.Input[_builtins.bool]]:
         return pulumi.get(self, "experimental_is_unified_host")
@@ -506,6 +518,7 @@ class Provider(pulumi.ProviderResource):
                  databricks_id_token_filepath: Optional[pulumi.Input[_builtins.str]] = None,
                  debug_headers: Optional[pulumi.Input[_builtins.bool]] = None,
                  debug_truncate_bytes: Optional[pulumi.Input[_builtins.int]] = None,
+                 disable_oauth_refresh_token: Optional[pulumi.Input[_builtins.bool]] = None,
                  experimental_is_unified_host: Optional[pulumi.Input[_builtins.bool]] = None,
                  google_credentials: Optional[pulumi.Input[_builtins.str]] = None,
                  google_service_account: Optional[pulumi.Input[_builtins.str]] = None,
@@ -581,6 +594,7 @@ class Provider(pulumi.ProviderResource):
                  databricks_id_token_filepath: Optional[pulumi.Input[_builtins.str]] = None,
                  debug_headers: Optional[pulumi.Input[_builtins.bool]] = None,
                  debug_truncate_bytes: Optional[pulumi.Input[_builtins.int]] = None,
+                 disable_oauth_refresh_token: Optional[pulumi.Input[_builtins.bool]] = None,
                  experimental_is_unified_host: Optional[pulumi.Input[_builtins.bool]] = None,
                  google_credentials: Optional[pulumi.Input[_builtins.str]] = None,
                  google_service_account: Optional[pulumi.Input[_builtins.str]] = None,
@@ -628,6 +642,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["databricks_id_token_filepath"] = databricks_id_token_filepath
             __props__.__dict__["debug_headers"] = pulumi.Output.from_input(debug_headers).apply(pulumi.runtime.to_json) if debug_headers is not None else None
             __props__.__dict__["debug_truncate_bytes"] = pulumi.Output.from_input(debug_truncate_bytes).apply(pulumi.runtime.to_json) if debug_truncate_bytes is not None else None
+            __props__.__dict__["disable_oauth_refresh_token"] = pulumi.Output.from_input(disable_oauth_refresh_token).apply(pulumi.runtime.to_json) if disable_oauth_refresh_token is not None else None
             __props__.__dict__["experimental_is_unified_host"] = pulumi.Output.from_input(experimental_is_unified_host).apply(pulumi.runtime.to_json) if experimental_is_unified_host is not None else None
             __props__.__dict__["google_credentials"] = None if google_credentials is None else pulumi.Output.secret(google_credentials)
             __props__.__dict__["google_service_account"] = google_service_account

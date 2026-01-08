@@ -106,6 +106,21 @@ public final class OnlineStoreState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.state);
     }
 
+    /**
+     * The usage policy applied to the online store to track billing
+     * 
+     */
+    @Import(name="usagePolicyId")
+    private @Nullable Output<String> usagePolicyId;
+
+    /**
+     * @return The usage policy applied to the online store to track billing
+     * 
+     */
+    public Optional<Output<String>> usagePolicyId() {
+        return Optional.ofNullable(this.usagePolicyId);
+    }
+
     private OnlineStoreState() {}
 
     private OnlineStoreState(OnlineStoreState $) {
@@ -115,6 +130,7 @@ public final class OnlineStoreState extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.readReplicaCount = $.readReplicaCount;
         this.state = $.state;
+        this.usagePolicyId = $.usagePolicyId;
     }
 
     public static Builder builder() {
@@ -259,6 +275,27 @@ public final class OnlineStoreState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder state(String state) {
             return state(Output.of(state));
+        }
+
+        /**
+         * @param usagePolicyId The usage policy applied to the online store to track billing
+         * 
+         * @return builder
+         * 
+         */
+        public Builder usagePolicyId(@Nullable Output<String> usagePolicyId) {
+            $.usagePolicyId = usagePolicyId;
+            return this;
+        }
+
+        /**
+         * @param usagePolicyId The usage policy applied to the online store to track billing
+         * 
+         * @return builder
+         * 
+         */
+        public Builder usagePolicyId(String usagePolicyId) {
+            return usagePolicyId(Output.of(usagePolicyId));
         }
 
         public OnlineStoreState build() {

@@ -172,6 +172,13 @@ namespace Pulumi.Databricks
             set => _debugTruncateBytes.Set(value);
         }
 
+        private static readonly __Value<bool?> _disableOauthRefreshToken = new __Value<bool?>(() => __config.GetBoolean("disableOauthRefreshToken"));
+        public static bool? DisableOauthRefreshToken
+        {
+            get => _disableOauthRefreshToken.Get();
+            set => _disableOauthRefreshToken.Set(value);
+        }
+
         private static readonly __Value<bool?> _experimentalIsUnifiedHost = new __Value<bool?>(() => __config.GetBoolean("experimentalIsUnifiedHost"));
         public static bool? ExperimentalIsUnifiedHost
         {

@@ -117,8 +117,10 @@ type App struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The effective budget policy ID.
 	EffectiveBudgetPolicyId pulumi.StringOutput `pulumi:"effectiveBudgetPolicyId"`
+	EffectiveUsagePolicyId  pulumi.StringOutput `pulumi:"effectiveUsagePolicyId"`
 	// A list of effective api scopes granted to the user access token.
-	EffectiveUserApiScopes pulumi.StringArrayOutput `pulumi:"effectiveUserApiScopes"`
+	EffectiveUserApiScopes pulumi.StringArrayOutput  `pulumi:"effectiveUserApiScopes"`
+	GitRepository          AppGitRepositoryPtrOutput `pulumi:"gitRepository"`
 	// The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
 	Name                   pulumi.StringOutput        `pulumi:"name"`
 	NoCompute              pulumi.BoolPtrOutput       `pulumi:"noCompute"`
@@ -139,7 +141,8 @@ type App struct {
 	// The email of the user that last updated the app.
 	Updater pulumi.StringOutput `pulumi:"updater"`
 	// The URL of the app once it is deployed.
-	Url pulumi.StringOutput `pulumi:"url"`
+	Url           pulumi.StringOutput    `pulumi:"url"`
+	UsagePolicyId pulumi.StringPtrOutput `pulumi:"usagePolicyId"`
 	// A list of api scopes granted to the user access token.
 	UserApiScopes pulumi.StringArrayOutput `pulumi:"userApiScopes"`
 }
@@ -193,8 +196,10 @@ type appState struct {
 	Description *string `pulumi:"description"`
 	// The effective budget policy ID.
 	EffectiveBudgetPolicyId *string `pulumi:"effectiveBudgetPolicyId"`
+	EffectiveUsagePolicyId  *string `pulumi:"effectiveUsagePolicyId"`
 	// A list of effective api scopes granted to the user access token.
-	EffectiveUserApiScopes []string `pulumi:"effectiveUserApiScopes"`
+	EffectiveUserApiScopes []string          `pulumi:"effectiveUserApiScopes"`
+	GitRepository          *AppGitRepository `pulumi:"gitRepository"`
 	// The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
 	Name                   *string               `pulumi:"name"`
 	NoCompute              *bool                 `pulumi:"noCompute"`
@@ -215,7 +220,8 @@ type appState struct {
 	// The email of the user that last updated the app.
 	Updater *string `pulumi:"updater"`
 	// The URL of the app once it is deployed.
-	Url *string `pulumi:"url"`
+	Url           *string `pulumi:"url"`
+	UsagePolicyId *string `pulumi:"usagePolicyId"`
 	// A list of api scopes granted to the user access token.
 	UserApiScopes []string `pulumi:"userApiScopes"`
 }
@@ -240,8 +246,10 @@ type AppState struct {
 	Description pulumi.StringPtrInput
 	// The effective budget policy ID.
 	EffectiveBudgetPolicyId pulumi.StringPtrInput
+	EffectiveUsagePolicyId  pulumi.StringPtrInput
 	// A list of effective api scopes granted to the user access token.
 	EffectiveUserApiScopes pulumi.StringArrayInput
+	GitRepository          AppGitRepositoryPtrInput
 	// The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
 	Name                   pulumi.StringPtrInput
 	NoCompute              pulumi.BoolPtrInput
@@ -262,7 +270,8 @@ type AppState struct {
 	// The email of the user that last updated the app.
 	Updater pulumi.StringPtrInput
 	// The URL of the app once it is deployed.
-	Url pulumi.StringPtrInput
+	Url           pulumi.StringPtrInput
+	UsagePolicyId pulumi.StringPtrInput
 	// A list of api scopes granted to the user access token.
 	UserApiScopes pulumi.StringArrayInput
 }
@@ -277,13 +286,15 @@ type appArgs struct {
 	// A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`.
 	ComputeSize *string `pulumi:"computeSize"`
 	// The description of the app.
-	Description *string `pulumi:"description"`
+	Description   *string           `pulumi:"description"`
+	GitRepository *AppGitRepository `pulumi:"gitRepository"`
 	// The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
 	Name           *string            `pulumi:"name"`
 	NoCompute      *bool              `pulumi:"noCompute"`
 	ProviderConfig *AppProviderConfig `pulumi:"providerConfig"`
 	// A list of resources that the app have access to.
-	Resources []AppResource `pulumi:"resources"`
+	Resources     []AppResource `pulumi:"resources"`
+	UsagePolicyId *string       `pulumi:"usagePolicyId"`
 	// A list of api scopes granted to the user access token.
 	UserApiScopes []string `pulumi:"userApiScopes"`
 }
@@ -295,13 +306,15 @@ type AppArgs struct {
 	// A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`.
 	ComputeSize pulumi.StringPtrInput
 	// The description of the app.
-	Description pulumi.StringPtrInput
+	Description   pulumi.StringPtrInput
+	GitRepository AppGitRepositoryPtrInput
 	// The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
 	Name           pulumi.StringPtrInput
 	NoCompute      pulumi.BoolPtrInput
 	ProviderConfig AppProviderConfigPtrInput
 	// A list of resources that the app have access to.
-	Resources AppResourceArrayInput
+	Resources     AppResourceArrayInput
+	UsagePolicyId pulumi.StringPtrInput
 	// A list of api scopes granted to the user access token.
 	UserApiScopes pulumi.StringArrayInput
 }
@@ -442,9 +455,17 @@ func (o AppOutput) EffectiveBudgetPolicyId() pulumi.StringOutput {
 	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.EffectiveBudgetPolicyId }).(pulumi.StringOutput)
 }
 
+func (o AppOutput) EffectiveUsagePolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.EffectiveUsagePolicyId }).(pulumi.StringOutput)
+}
+
 // A list of effective api scopes granted to the user access token.
 func (o AppOutput) EffectiveUserApiScopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *App) pulumi.StringArrayOutput { return v.EffectiveUserApiScopes }).(pulumi.StringArrayOutput)
+}
+
+func (o AppOutput) GitRepository() AppGitRepositoryPtrOutput {
+	return o.ApplyT(func(v *App) AppGitRepositoryPtrOutput { return v.GitRepository }).(AppGitRepositoryPtrOutput)
 }
 
 // The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
@@ -505,6 +526,10 @@ func (o AppOutput) Updater() pulumi.StringOutput {
 // The URL of the app once it is deployed.
 func (o AppOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
+}
+
+func (o AppOutput) UsagePolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *App) pulumi.StringPtrOutput { return v.UsagePolicyId }).(pulumi.StringPtrOutput)
 }
 
 // A list of api scopes granted to the user access token.

@@ -50,6 +50,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("endpointName")]
         public string? EndpointName { get; set; }
 
+        [Input("errorMessage")]
+        public string? ErrorMessage { get; set; }
+
         /// <summary>
         /// The sub-resource type (group ID) of the target resource.
         /// </summary>

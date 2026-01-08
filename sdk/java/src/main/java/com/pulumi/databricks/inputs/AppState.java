@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.AppActiveDeploymentArgs;
 import com.pulumi.databricks.inputs.AppAppStatusArgs;
 import com.pulumi.databricks.inputs.AppComputeStatusArgs;
+import com.pulumi.databricks.inputs.AppGitRepositoryArgs;
 import com.pulumi.databricks.inputs.AppPendingDeploymentArgs;
 import com.pulumi.databricks.inputs.AppProviderConfigArgs;
 import com.pulumi.databricks.inputs.AppResourceArgs;
@@ -166,6 +167,13 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.effectiveBudgetPolicyId);
     }
 
+    @Import(name="effectiveUsagePolicyId")
+    private @Nullable Output<String> effectiveUsagePolicyId;
+
+    public Optional<Output<String>> effectiveUsagePolicyId() {
+        return Optional.ofNullable(this.effectiveUsagePolicyId);
+    }
+
     /**
      * A list of effective api scopes granted to the user access token.
      * 
@@ -179,6 +187,13 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<List<String>>> effectiveUserApiScopes() {
         return Optional.ofNullable(this.effectiveUserApiScopes);
+    }
+
+    @Import(name="gitRepository")
+    private @Nullable Output<AppGitRepositoryArgs> gitRepository;
+
+    public Optional<Output<AppGitRepositoryArgs>> gitRepository() {
+        return Optional.ofNullable(this.gitRepository);
     }
 
     /**
@@ -336,6 +351,13 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.url);
     }
 
+    @Import(name="usagePolicyId")
+    private @Nullable Output<String> usagePolicyId;
+
+    public Optional<Output<String>> usagePolicyId() {
+        return Optional.ofNullable(this.usagePolicyId);
+    }
+
     /**
      * A list of api scopes granted to the user access token.
      * 
@@ -364,7 +386,9 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
         this.defaultSourceCodePath = $.defaultSourceCodePath;
         this.description = $.description;
         this.effectiveBudgetPolicyId = $.effectiveBudgetPolicyId;
+        this.effectiveUsagePolicyId = $.effectiveUsagePolicyId;
         this.effectiveUserApiScopes = $.effectiveUserApiScopes;
+        this.gitRepository = $.gitRepository;
         this.name = $.name;
         this.noCompute = $.noCompute;
         this.oauth2AppClientId = $.oauth2AppClientId;
@@ -378,6 +402,7 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
         this.updateTime = $.updateTime;
         this.updater = $.updater;
         this.url = $.url;
+        this.usagePolicyId = $.usagePolicyId;
         this.userApiScopes = $.userApiScopes;
     }
 
@@ -597,6 +622,15 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
             return effectiveBudgetPolicyId(Output.of(effectiveBudgetPolicyId));
         }
 
+        public Builder effectiveUsagePolicyId(@Nullable Output<String> effectiveUsagePolicyId) {
+            $.effectiveUsagePolicyId = effectiveUsagePolicyId;
+            return this;
+        }
+
+        public Builder effectiveUsagePolicyId(String effectiveUsagePolicyId) {
+            return effectiveUsagePolicyId(Output.of(effectiveUsagePolicyId));
+        }
+
         /**
          * @param effectiveUserApiScopes A list of effective api scopes granted to the user access token.
          * 
@@ -626,6 +660,15 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder effectiveUserApiScopes(String... effectiveUserApiScopes) {
             return effectiveUserApiScopes(List.of(effectiveUserApiScopes));
+        }
+
+        public Builder gitRepository(@Nullable Output<AppGitRepositoryArgs> gitRepository) {
+            $.gitRepository = gitRepository;
+            return this;
+        }
+
+        public Builder gitRepository(AppGitRepositoryArgs gitRepository) {
+            return gitRepository(Output.of(gitRepository));
         }
 
         /**
@@ -849,6 +892,15 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder url(String url) {
             return url(Output.of(url));
+        }
+
+        public Builder usagePolicyId(@Nullable Output<String> usagePolicyId) {
+            $.usagePolicyId = usagePolicyId;
+            return this;
+        }
+
+        public Builder usagePolicyId(String usagePolicyId) {
+            return usagePolicyId(Output.of(usagePolicyId));
         }
 
         /**

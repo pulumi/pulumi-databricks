@@ -78,7 +78,7 @@ import (
 //
 // import {
 //
-//	id = ""
+//	id = "securable_type,full_name"
 //
 //	to = databricks_rfa_access_request_destinations.this
 //
@@ -87,7 +87,7 @@ import (
 // If you are using an older version of Pulumi, import the resource using the `pulumi import` command as follows:
 //
 // ```sh
-// $ pulumi import databricks:index/rfaAccessRequestDestinations:RfaAccessRequestDestinations this ""
+// $ pulumi import databricks:index/rfaAccessRequestDestinations:RfaAccessRequestDestinations this "securable_type,full_name"
 // ```
 type RfaAccessRequestDestinations struct {
 	pulumi.CustomResourceState
@@ -95,10 +95,17 @@ type RfaAccessRequestDestinations struct {
 	// (boolean) - Indicates whether any destinations are hidden from the caller due to a lack of permissions.
 	// This value is true if the caller does not have permission to see all destinations
 	AreAnyDestinationsHidden pulumi.BoolOutput `pulumi:"areAnyDestinationsHidden"`
+	// (Securable) - The source securable from which the destinations are inherited. Either the same value as securable (if destination
+	// is set directly on the securable) or the nearest parent securable with destinations set
+	DestinationSourceSecurable RfaAccessRequestDestinationsDestinationSourceSecurableOutput `pulumi:"destinationSourceSecurable"`
 	// The access request destinations for the securable
 	Destinations RfaAccessRequestDestinationsDestinationArrayOutput `pulumi:"destinations"`
-	// The securable for which the access request destinations are being retrieved
+	// (string) - The full name of the securable. Redundant with the name in the securable object, but necessary for Pulumi integration
+	FullName pulumi.StringOutput `pulumi:"fullName"`
+	// The securable for which the access request destinations are being modified or read
 	Securable RfaAccessRequestDestinationsSecurableOutput `pulumi:"securable"`
+	// (string) - The type of the securable. Redundant with the type in the securable object, but necessary for Pulumi integration
+	SecurableType pulumi.StringOutput `pulumi:"securableType"`
 }
 
 // NewRfaAccessRequestDestinations registers a new resource with the given unique name, arguments, and options.
@@ -137,20 +144,34 @@ type rfaAccessRequestDestinationsState struct {
 	// (boolean) - Indicates whether any destinations are hidden from the caller due to a lack of permissions.
 	// This value is true if the caller does not have permission to see all destinations
 	AreAnyDestinationsHidden *bool `pulumi:"areAnyDestinationsHidden"`
+	// (Securable) - The source securable from which the destinations are inherited. Either the same value as securable (if destination
+	// is set directly on the securable) or the nearest parent securable with destinations set
+	DestinationSourceSecurable *RfaAccessRequestDestinationsDestinationSourceSecurable `pulumi:"destinationSourceSecurable"`
 	// The access request destinations for the securable
 	Destinations []RfaAccessRequestDestinationsDestination `pulumi:"destinations"`
-	// The securable for which the access request destinations are being retrieved
+	// (string) - The full name of the securable. Redundant with the name in the securable object, but necessary for Pulumi integration
+	FullName *string `pulumi:"fullName"`
+	// The securable for which the access request destinations are being modified or read
 	Securable *RfaAccessRequestDestinationsSecurable `pulumi:"securable"`
+	// (string) - The type of the securable. Redundant with the type in the securable object, but necessary for Pulumi integration
+	SecurableType *string `pulumi:"securableType"`
 }
 
 type RfaAccessRequestDestinationsState struct {
 	// (boolean) - Indicates whether any destinations are hidden from the caller due to a lack of permissions.
 	// This value is true if the caller does not have permission to see all destinations
 	AreAnyDestinationsHidden pulumi.BoolPtrInput
+	// (Securable) - The source securable from which the destinations are inherited. Either the same value as securable (if destination
+	// is set directly on the securable) or the nearest parent securable with destinations set
+	DestinationSourceSecurable RfaAccessRequestDestinationsDestinationSourceSecurablePtrInput
 	// The access request destinations for the securable
 	Destinations RfaAccessRequestDestinationsDestinationArrayInput
-	// The securable for which the access request destinations are being retrieved
+	// (string) - The full name of the securable. Redundant with the name in the securable object, but necessary for Pulumi integration
+	FullName pulumi.StringPtrInput
+	// The securable for which the access request destinations are being modified or read
 	Securable RfaAccessRequestDestinationsSecurablePtrInput
+	// (string) - The type of the securable. Redundant with the type in the securable object, but necessary for Pulumi integration
+	SecurableType pulumi.StringPtrInput
 }
 
 func (RfaAccessRequestDestinationsState) ElementType() reflect.Type {
@@ -160,7 +181,7 @@ func (RfaAccessRequestDestinationsState) ElementType() reflect.Type {
 type rfaAccessRequestDestinationsArgs struct {
 	// The access request destinations for the securable
 	Destinations []RfaAccessRequestDestinationsDestination `pulumi:"destinations"`
-	// The securable for which the access request destinations are being retrieved
+	// The securable for which the access request destinations are being modified or read
 	Securable RfaAccessRequestDestinationsSecurable `pulumi:"securable"`
 }
 
@@ -168,7 +189,7 @@ type rfaAccessRequestDestinationsArgs struct {
 type RfaAccessRequestDestinationsArgs struct {
 	// The access request destinations for the securable
 	Destinations RfaAccessRequestDestinationsDestinationArrayInput
-	// The securable for which the access request destinations are being retrieved
+	// The securable for which the access request destinations are being modified or read
 	Securable RfaAccessRequestDestinationsSecurableInput
 }
 
@@ -265,6 +286,14 @@ func (o RfaAccessRequestDestinationsOutput) AreAnyDestinationsHidden() pulumi.Bo
 	return o.ApplyT(func(v *RfaAccessRequestDestinations) pulumi.BoolOutput { return v.AreAnyDestinationsHidden }).(pulumi.BoolOutput)
 }
 
+// (Securable) - The source securable from which the destinations are inherited. Either the same value as securable (if destination
+// is set directly on the securable) or the nearest parent securable with destinations set
+func (o RfaAccessRequestDestinationsOutput) DestinationSourceSecurable() RfaAccessRequestDestinationsDestinationSourceSecurableOutput {
+	return o.ApplyT(func(v *RfaAccessRequestDestinations) RfaAccessRequestDestinationsDestinationSourceSecurableOutput {
+		return v.DestinationSourceSecurable
+	}).(RfaAccessRequestDestinationsDestinationSourceSecurableOutput)
+}
+
 // The access request destinations for the securable
 func (o RfaAccessRequestDestinationsOutput) Destinations() RfaAccessRequestDestinationsDestinationArrayOutput {
 	return o.ApplyT(func(v *RfaAccessRequestDestinations) RfaAccessRequestDestinationsDestinationArrayOutput {
@@ -272,9 +301,19 @@ func (o RfaAccessRequestDestinationsOutput) Destinations() RfaAccessRequestDesti
 	}).(RfaAccessRequestDestinationsDestinationArrayOutput)
 }
 
-// The securable for which the access request destinations are being retrieved
+// (string) - The full name of the securable. Redundant with the name in the securable object, but necessary for Pulumi integration
+func (o RfaAccessRequestDestinationsOutput) FullName() pulumi.StringOutput {
+	return o.ApplyT(func(v *RfaAccessRequestDestinations) pulumi.StringOutput { return v.FullName }).(pulumi.StringOutput)
+}
+
+// The securable for which the access request destinations are being modified or read
 func (o RfaAccessRequestDestinationsOutput) Securable() RfaAccessRequestDestinationsSecurableOutput {
 	return o.ApplyT(func(v *RfaAccessRequestDestinations) RfaAccessRequestDestinationsSecurableOutput { return v.Securable }).(RfaAccessRequestDestinationsSecurableOutput)
+}
+
+// (string) - The type of the securable. Redundant with the type in the securable object, but necessary for Pulumi integration
+func (o RfaAccessRequestDestinationsOutput) SecurableType() pulumi.StringOutput {
+	return o.ApplyT(func(v *RfaAccessRequestDestinations) pulumi.StringOutput { return v.SecurableType }).(pulumi.StringOutput)
 }
 
 type RfaAccessRequestDestinationsArrayOutput struct{ *pulumi.OutputState }

@@ -50,10 +50,12 @@ namespace Pulumi.Databricks.Outputs
         /// The effective budget policy ID.
         /// </summary>
         public readonly string EffectiveBudgetPolicyId;
+        public readonly string EffectiveUsagePolicyId;
         /// <summary>
         /// A list of effective api scopes granted to the user access token.
         /// </summary>
         public readonly ImmutableArray<string> EffectiveUserApiScopes;
+        public readonly Outputs.GetAppAppGitRepositoryResult? GitRepository;
         /// <summary>
         /// Id of the job to grant permission on.
         /// </summary>
@@ -93,6 +95,7 @@ namespace Pulumi.Databricks.Outputs
         /// The URL of the app once it is deployed.
         /// </summary>
         public readonly string Url;
+        public readonly string? UsagePolicyId;
         public readonly ImmutableArray<string> UserApiScopes;
 
         [OutputConstructor]
@@ -117,7 +120,11 @@ namespace Pulumi.Databricks.Outputs
 
             string effectiveBudgetPolicyId,
 
+            string effectiveUsagePolicyId,
+
             ImmutableArray<string> effectiveUserApiScopes,
+
+            Outputs.GetAppAppGitRepositoryResult? gitRepository,
 
             string id,
 
@@ -143,6 +150,8 @@ namespace Pulumi.Databricks.Outputs
 
             string url,
 
+            string? usagePolicyId,
+
             ImmutableArray<string> userApiScopes)
         {
             ActiveDeployment = activeDeployment;
@@ -155,7 +164,9 @@ namespace Pulumi.Databricks.Outputs
             DefaultSourceCodePath = defaultSourceCodePath;
             Description = description;
             EffectiveBudgetPolicyId = effectiveBudgetPolicyId;
+            EffectiveUsagePolicyId = effectiveUsagePolicyId;
             EffectiveUserApiScopes = effectiveUserApiScopes;
+            GitRepository = gitRepository;
             Id = id;
             Name = name;
             Oauth2AppClientId = oauth2AppClientId;
@@ -168,6 +179,7 @@ namespace Pulumi.Databricks.Outputs
             UpdateTime = updateTime;
             Updater = updater;
             Url = url;
+            UsagePolicyId = usagePolicyId;
             UserApiScopes = userApiScopes;
         }
     }

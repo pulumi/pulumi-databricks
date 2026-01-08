@@ -5,15 +5,19 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetAppsAppActiveDeploymentDeploymentArtifacts;
+import com.pulumi.databricks.outputs.GetAppsAppActiveDeploymentEnvVar;
+import com.pulumi.databricks.outputs.GetAppsAppActiveDeploymentGitSource;
 import com.pulumi.databricks.outputs.GetAppsAppActiveDeploymentStatus;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAppsAppActiveDeployment {
+    private @Nullable List<String> commands;
     /**
      * @return The creation time of the app.
      * 
@@ -26,6 +30,8 @@ public final class GetAppsAppActiveDeployment {
     private String creator;
     private GetAppsAppActiveDeploymentDeploymentArtifacts deploymentArtifacts;
     private @Nullable String deploymentId;
+    private @Nullable List<GetAppsAppActiveDeploymentEnvVar> envVars;
+    private @Nullable GetAppsAppActiveDeploymentGitSource gitSource;
     private @Nullable String mode;
     private @Nullable String sourceCodePath;
     private GetAppsAppActiveDeploymentStatus status;
@@ -36,6 +42,9 @@ public final class GetAppsAppActiveDeployment {
     private String updateTime;
 
     private GetAppsAppActiveDeployment() {}
+    public List<String> commands() {
+        return this.commands == null ? List.of() : this.commands;
+    }
     /**
      * @return The creation time of the app.
      * 
@@ -55,6 +64,12 @@ public final class GetAppsAppActiveDeployment {
     }
     public Optional<String> deploymentId() {
         return Optional.ofNullable(this.deploymentId);
+    }
+    public List<GetAppsAppActiveDeploymentEnvVar> envVars() {
+        return this.envVars == null ? List.of() : this.envVars;
+    }
+    public Optional<GetAppsAppActiveDeploymentGitSource> gitSource() {
+        return Optional.ofNullable(this.gitSource);
     }
     public Optional<String> mode() {
         return Optional.ofNullable(this.mode);
@@ -82,10 +97,13 @@ public final class GetAppsAppActiveDeployment {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<String> commands;
         private String createTime;
         private String creator;
         private GetAppsAppActiveDeploymentDeploymentArtifacts deploymentArtifacts;
         private @Nullable String deploymentId;
+        private @Nullable List<GetAppsAppActiveDeploymentEnvVar> envVars;
+        private @Nullable GetAppsAppActiveDeploymentGitSource gitSource;
         private @Nullable String mode;
         private @Nullable String sourceCodePath;
         private GetAppsAppActiveDeploymentStatus status;
@@ -93,16 +111,28 @@ public final class GetAppsAppActiveDeployment {
         public Builder() {}
         public Builder(GetAppsAppActiveDeployment defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.commands = defaults.commands;
     	      this.createTime = defaults.createTime;
     	      this.creator = defaults.creator;
     	      this.deploymentArtifacts = defaults.deploymentArtifacts;
     	      this.deploymentId = defaults.deploymentId;
+    	      this.envVars = defaults.envVars;
+    	      this.gitSource = defaults.gitSource;
     	      this.mode = defaults.mode;
     	      this.sourceCodePath = defaults.sourceCodePath;
     	      this.status = defaults.status;
     	      this.updateTime = defaults.updateTime;
         }
 
+        @CustomType.Setter
+        public Builder commands(@Nullable List<String> commands) {
+
+            this.commands = commands;
+            return this;
+        }
+        public Builder commands(String... commands) {
+            return commands(List.of(commands));
+        }
         @CustomType.Setter
         public Builder createTime(String createTime) {
             if (createTime == null) {
@@ -131,6 +161,21 @@ public final class GetAppsAppActiveDeployment {
         public Builder deploymentId(@Nullable String deploymentId) {
 
             this.deploymentId = deploymentId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder envVars(@Nullable List<GetAppsAppActiveDeploymentEnvVar> envVars) {
+
+            this.envVars = envVars;
+            return this;
+        }
+        public Builder envVars(GetAppsAppActiveDeploymentEnvVar... envVars) {
+            return envVars(List.of(envVars));
+        }
+        @CustomType.Setter
+        public Builder gitSource(@Nullable GetAppsAppActiveDeploymentGitSource gitSource) {
+
+            this.gitSource = gitSource;
             return this;
         }
         @CustomType.Setter
@@ -163,10 +208,13 @@ public final class GetAppsAppActiveDeployment {
         }
         public GetAppsAppActiveDeployment build() {
             final var _resultValue = new GetAppsAppActiveDeployment();
+            _resultValue.commands = commands;
             _resultValue.createTime = createTime;
             _resultValue.creator = creator;
             _resultValue.deploymentArtifacts = deploymentArtifacts;
             _resultValue.deploymentId = deploymentId;
+            _resultValue.envVars = envVars;
+            _resultValue.gitSource = gitSource;
             _resultValue.mode = mode;
             _resultValue.sourceCodePath = sourceCodePath;
             _resultValue.status = status;

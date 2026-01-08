@@ -41,6 +41,11 @@ public final class GetOnlineStoresOnlineStore {
      * 
      */
     private String state;
+    /**
+     * @return (string) - The usage policy applied to the online store to track billing
+     * 
+     */
+    private String usagePolicyId;
 
     private GetOnlineStoresOnlineStore() {}
     /**
@@ -85,6 +90,13 @@ public final class GetOnlineStoresOnlineStore {
     public String state() {
         return this.state;
     }
+    /**
+     * @return (string) - The usage policy applied to the online store to track billing
+     * 
+     */
+    public String usagePolicyId() {
+        return this.usagePolicyId;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -101,6 +113,7 @@ public final class GetOnlineStoresOnlineStore {
         private String name;
         private Integer readReplicaCount;
         private String state;
+        private String usagePolicyId;
         public Builder() {}
         public Builder(GetOnlineStoresOnlineStore defaults) {
     	      Objects.requireNonNull(defaults);
@@ -110,6 +123,7 @@ public final class GetOnlineStoresOnlineStore {
     	      this.name = defaults.name;
     	      this.readReplicaCount = defaults.readReplicaCount;
     	      this.state = defaults.state;
+    	      this.usagePolicyId = defaults.usagePolicyId;
         }
 
         @CustomType.Setter
@@ -160,6 +174,14 @@ public final class GetOnlineStoresOnlineStore {
             this.state = state;
             return this;
         }
+        @CustomType.Setter
+        public Builder usagePolicyId(String usagePolicyId) {
+            if (usagePolicyId == null) {
+              throw new MissingRequiredPropertyException("GetOnlineStoresOnlineStore", "usagePolicyId");
+            }
+            this.usagePolicyId = usagePolicyId;
+            return this;
+        }
         public GetOnlineStoresOnlineStore build() {
             final var _resultValue = new GetOnlineStoresOnlineStore();
             _resultValue.capacity = capacity;
@@ -168,6 +190,7 @@ public final class GetOnlineStoresOnlineStore {
             _resultValue.name = name;
             _resultValue.readReplicaCount = readReplicaCount;
             _resultValue.state = state;
+            _resultValue.usagePolicyId = usagePolicyId;
             return _resultValue;
         }
     }

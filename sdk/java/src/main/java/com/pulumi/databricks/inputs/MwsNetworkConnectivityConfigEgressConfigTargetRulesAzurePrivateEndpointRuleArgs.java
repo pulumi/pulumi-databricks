@@ -68,6 +68,13 @@ public final class MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePriva
         return Optional.ofNullable(this.endpointName);
     }
 
+    @Import(name="errorMessage")
+    private @Nullable Output<String> errorMessage;
+
+    public Optional<Output<String>> errorMessage() {
+        return Optional.ofNullable(this.errorMessage);
+    }
+
     @Import(name="groupId")
     private @Nullable Output<String> groupId;
 
@@ -128,6 +135,7 @@ public final class MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePriva
         this.deactivatedAt = $.deactivatedAt;
         this.domainNames = $.domainNames;
         this.endpointName = $.endpointName;
+        this.errorMessage = $.errorMessage;
         this.groupId = $.groupId;
         this.networkConnectivityConfigId = $.networkConnectivityConfigId;
         this.resourceId = $.resourceId;
@@ -221,6 +229,15 @@ public final class MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePriva
 
         public Builder endpointName(String endpointName) {
             return endpointName(Output.of(endpointName));
+        }
+
+        public Builder errorMessage(@Nullable Output<String> errorMessage) {
+            $.errorMessage = errorMessage;
+            return this;
+        }
+
+        public Builder errorMessage(String errorMessage) {
+            return errorMessage(Output.of(errorMessage));
         }
 
         public Builder groupId(@Nullable Output<String> groupId) {

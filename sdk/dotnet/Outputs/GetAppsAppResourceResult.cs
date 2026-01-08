@@ -21,6 +21,7 @@ namespace Pulumi.Databricks.Outputs
         /// The description of the resource.
         /// </summary>
         public readonly string? Description;
+        public readonly Outputs.GetAppsAppResourceExperimentResult? Experiment;
         /// <summary>
         /// attribute
         /// </summary>
@@ -56,6 +57,8 @@ namespace Pulumi.Databricks.Outputs
 
             string? description,
 
+            Outputs.GetAppsAppResourceExperimentResult? experiment,
+
             Outputs.GetAppsAppResourceGenieSpaceResult? genieSpace,
 
             Outputs.GetAppsAppResourceJobResult? job,
@@ -72,6 +75,7 @@ namespace Pulumi.Databricks.Outputs
         {
             Database = database;
             Description = description;
+            Experiment = experiment;
             GenieSpace = genieSpace;
             Job = job;
             Name = name;

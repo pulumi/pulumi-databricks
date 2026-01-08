@@ -54,6 +54,8 @@ debugHeaders: Optional[bool]
 
 debugTruncateBytes: Optional[int]
 
+disableOauthRefreshToken: Optional[bool]
+
 experimentalIsUnifiedHost: Optional[bool]
 
 googleCredentials: Optional[str]

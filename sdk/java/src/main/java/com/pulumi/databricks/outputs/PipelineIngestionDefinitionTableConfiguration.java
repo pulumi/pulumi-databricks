@@ -19,6 +19,7 @@ public final class PipelineIngestionDefinitionTableConfiguration {
     private @Nullable List<String> includeColumns;
     private @Nullable List<String> primaryKeys;
     private @Nullable PipelineIngestionDefinitionTableConfigurationQueryBasedConnectorConfig queryBasedConnectorConfig;
+    private @Nullable String rowFilter;
     private @Nullable Boolean salesforceIncludeFormulaFields;
     private @Nullable String scdType;
     private @Nullable List<String> sequenceBies;
@@ -36,6 +37,9 @@ public final class PipelineIngestionDefinitionTableConfiguration {
     }
     public Optional<PipelineIngestionDefinitionTableConfigurationQueryBasedConnectorConfig> queryBasedConnectorConfig() {
         return Optional.ofNullable(this.queryBasedConnectorConfig);
+    }
+    public Optional<String> rowFilter() {
+        return Optional.ofNullable(this.rowFilter);
     }
     public Optional<Boolean> salesforceIncludeFormulaFields() {
         return Optional.ofNullable(this.salesforceIncludeFormulaFields);
@@ -63,6 +67,7 @@ public final class PipelineIngestionDefinitionTableConfiguration {
         private @Nullable List<String> includeColumns;
         private @Nullable List<String> primaryKeys;
         private @Nullable PipelineIngestionDefinitionTableConfigurationQueryBasedConnectorConfig queryBasedConnectorConfig;
+        private @Nullable String rowFilter;
         private @Nullable Boolean salesforceIncludeFormulaFields;
         private @Nullable String scdType;
         private @Nullable List<String> sequenceBies;
@@ -74,6 +79,7 @@ public final class PipelineIngestionDefinitionTableConfiguration {
     	      this.includeColumns = defaults.includeColumns;
     	      this.primaryKeys = defaults.primaryKeys;
     	      this.queryBasedConnectorConfig = defaults.queryBasedConnectorConfig;
+    	      this.rowFilter = defaults.rowFilter;
     	      this.salesforceIncludeFormulaFields = defaults.salesforceIncludeFormulaFields;
     	      this.scdType = defaults.scdType;
     	      this.sequenceBies = defaults.sequenceBies;
@@ -114,6 +120,12 @@ public final class PipelineIngestionDefinitionTableConfiguration {
             return this;
         }
         @CustomType.Setter
+        public Builder rowFilter(@Nullable String rowFilter) {
+
+            this.rowFilter = rowFilter;
+            return this;
+        }
+        @CustomType.Setter
         public Builder salesforceIncludeFormulaFields(@Nullable Boolean salesforceIncludeFormulaFields) {
 
             this.salesforceIncludeFormulaFields = salesforceIncludeFormulaFields;
@@ -146,6 +158,7 @@ public final class PipelineIngestionDefinitionTableConfiguration {
             _resultValue.includeColumns = includeColumns;
             _resultValue.primaryKeys = primaryKeys;
             _resultValue.queryBasedConnectorConfig = queryBasedConnectorConfig;
+            _resultValue.rowFilter = rowFilter;
             _resultValue.salesforceIncludeFormulaFields = salesforceIncludeFormulaFields;
             _resultValue.scdType = scdType;
             _resultValue.sequenceBies = sequenceBies;

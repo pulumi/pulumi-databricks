@@ -46,6 +46,11 @@ public final class GetOnlineStoreResult {
      * 
      */
     private String state;
+    /**
+     * @return (string) - The usage policy applied to the online store to track billing
+     * 
+     */
+    private String usagePolicyId;
 
     private GetOnlineStoreResult() {}
     /**
@@ -97,6 +102,13 @@ public final class GetOnlineStoreResult {
     public String state() {
         return this.state;
     }
+    /**
+     * @return (string) - The usage policy applied to the online store to track billing
+     * 
+     */
+    public String usagePolicyId() {
+        return this.usagePolicyId;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -114,6 +126,7 @@ public final class GetOnlineStoreResult {
         private String name;
         private Integer readReplicaCount;
         private String state;
+        private String usagePolicyId;
         public Builder() {}
         public Builder(GetOnlineStoreResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -124,6 +137,7 @@ public final class GetOnlineStoreResult {
     	      this.name = defaults.name;
     	      this.readReplicaCount = defaults.readReplicaCount;
     	      this.state = defaults.state;
+    	      this.usagePolicyId = defaults.usagePolicyId;
         }
 
         @CustomType.Setter
@@ -182,6 +196,14 @@ public final class GetOnlineStoreResult {
             this.state = state;
             return this;
         }
+        @CustomType.Setter
+        public Builder usagePolicyId(String usagePolicyId) {
+            if (usagePolicyId == null) {
+              throw new MissingRequiredPropertyException("GetOnlineStoreResult", "usagePolicyId");
+            }
+            this.usagePolicyId = usagePolicyId;
+            return this;
+        }
         public GetOnlineStoreResult build() {
             final var _resultValue = new GetOnlineStoreResult();
             _resultValue.capacity = capacity;
@@ -191,6 +213,7 @@ public final class GetOnlineStoreResult {
             _resultValue.name = name;
             _resultValue.readReplicaCount = readReplicaCount;
             _resultValue.state = state;
+            _resultValue.usagePolicyId = usagePolicyId;
             return _resultValue;
         }
     }

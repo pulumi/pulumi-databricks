@@ -99,6 +99,13 @@ public final class GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePr
         return Optional.ofNullable(this.endpointName);
     }
 
+    @Import(name="errorMessage")
+    private @Nullable String errorMessage;
+
+    public Optional<String> errorMessage() {
+        return Optional.ofNullable(this.errorMessage);
+    }
+
     /**
      * The sub-resource type (group ID) of the target resource.
      * 
@@ -183,6 +190,7 @@ public final class GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePr
         this.deactivatedAt = $.deactivatedAt;
         this.domainNames = $.domainNames;
         this.endpointName = $.endpointName;
+        this.errorMessage = $.errorMessage;
         this.groupId = $.groupId;
         this.networkConnectivityConfigId = $.networkConnectivityConfigId;
         this.resourceId = $.resourceId;
@@ -269,6 +277,11 @@ public final class GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePr
          */
         public Builder endpointName(@Nullable String endpointName) {
             $.endpointName = endpointName;
+            return this;
+        }
+
+        public Builder errorMessage(@Nullable String errorMessage) {
+            $.errorMessage = errorMessage;
             return this;
         }
 

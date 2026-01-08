@@ -142,10 +142,12 @@ export class App extends pulumi.CustomResource {
      * The effective budget policy ID.
      */
     declare public /*out*/ readonly effectiveBudgetPolicyId: pulumi.Output<string>;
+    declare public /*out*/ readonly effectiveUsagePolicyId: pulumi.Output<string>;
     /**
      * A list of effective api scopes granted to the user access token.
      */
     declare public /*out*/ readonly effectiveUserApiScopes: pulumi.Output<string[]>;
+    declare public readonly gitRepository: pulumi.Output<outputs.AppGitRepository | undefined>;
     /**
      * The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
      */
@@ -183,6 +185,7 @@ export class App extends pulumi.CustomResource {
      * The URL of the app once it is deployed.
      */
     declare public /*out*/ readonly url: pulumi.Output<string>;
+    declare public readonly usagePolicyId: pulumi.Output<string | undefined>;
     /**
      * A list of api scopes granted to the user access token.
      */
@@ -211,7 +214,9 @@ export class App extends pulumi.CustomResource {
             resourceInputs["defaultSourceCodePath"] = state?.defaultSourceCodePath;
             resourceInputs["description"] = state?.description;
             resourceInputs["effectiveBudgetPolicyId"] = state?.effectiveBudgetPolicyId;
+            resourceInputs["effectiveUsagePolicyId"] = state?.effectiveUsagePolicyId;
             resourceInputs["effectiveUserApiScopes"] = state?.effectiveUserApiScopes;
+            resourceInputs["gitRepository"] = state?.gitRepository;
             resourceInputs["name"] = state?.name;
             resourceInputs["noCompute"] = state?.noCompute;
             resourceInputs["oauth2AppClientId"] = state?.oauth2AppClientId;
@@ -225,16 +230,19 @@ export class App extends pulumi.CustomResource {
             resourceInputs["updateTime"] = state?.updateTime;
             resourceInputs["updater"] = state?.updater;
             resourceInputs["url"] = state?.url;
+            resourceInputs["usagePolicyId"] = state?.usagePolicyId;
             resourceInputs["userApiScopes"] = state?.userApiScopes;
         } else {
             const args = argsOrState as AppArgs | undefined;
             resourceInputs["budgetPolicyId"] = args?.budgetPolicyId;
             resourceInputs["computeSize"] = args?.computeSize;
             resourceInputs["description"] = args?.description;
+            resourceInputs["gitRepository"] = args?.gitRepository;
             resourceInputs["name"] = args?.name;
             resourceInputs["noCompute"] = args?.noCompute;
             resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["resources"] = args?.resources;
+            resourceInputs["usagePolicyId"] = args?.usagePolicyId;
             resourceInputs["userApiScopes"] = args?.userApiScopes;
             resourceInputs["activeDeployment"] = undefined /*out*/;
             resourceInputs["appStatus"] = undefined /*out*/;
@@ -243,6 +251,7 @@ export class App extends pulumi.CustomResource {
             resourceInputs["creator"] = undefined /*out*/;
             resourceInputs["defaultSourceCodePath"] = undefined /*out*/;
             resourceInputs["effectiveBudgetPolicyId"] = undefined /*out*/;
+            resourceInputs["effectiveUsagePolicyId"] = undefined /*out*/;
             resourceInputs["effectiveUserApiScopes"] = undefined /*out*/;
             resourceInputs["oauth2AppClientId"] = undefined /*out*/;
             resourceInputs["oauth2AppIntegrationId"] = undefined /*out*/;
@@ -300,10 +309,12 @@ export interface AppState {
      * The effective budget policy ID.
      */
     effectiveBudgetPolicyId?: pulumi.Input<string>;
+    effectiveUsagePolicyId?: pulumi.Input<string>;
     /**
      * A list of effective api scopes granted to the user access token.
      */
     effectiveUserApiScopes?: pulumi.Input<pulumi.Input<string>[]>;
+    gitRepository?: pulumi.Input<inputs.AppGitRepository>;
     /**
      * The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
      */
@@ -341,6 +352,7 @@ export interface AppState {
      * The URL of the app once it is deployed.
      */
     url?: pulumi.Input<string>;
+    usagePolicyId?: pulumi.Input<string>;
     /**
      * A list of api scopes granted to the user access token.
      */
@@ -363,6 +375,7 @@ export interface AppArgs {
      * The description of the app.
      */
     description?: pulumi.Input<string>;
+    gitRepository?: pulumi.Input<inputs.AppGitRepository>;
     /**
      * The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
      */
@@ -373,6 +386,7 @@ export interface AppArgs {
      * A list of resources that the app have access to.
      */
     resources?: pulumi.Input<pulumi.Input<inputs.AppResource>[]>;
+    usagePolicyId?: pulumi.Input<string>;
     /**
      * A list of api scopes granted to the user access token.
      */

@@ -6,6 +6,7 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.AppResourceDatabaseArgs;
+import com.pulumi.databricks.inputs.AppResourceExperimentArgs;
 import com.pulumi.databricks.inputs.AppResourceGenieSpaceArgs;
 import com.pulumi.databricks.inputs.AppResourceJobArgs;
 import com.pulumi.databricks.inputs.AppResourceSecretArgs;
@@ -55,6 +56,13 @@ public final class AppResourceArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
+    }
+
+    @Import(name="experiment")
+    private @Nullable Output<AppResourceExperimentArgs> experiment;
+
+    public Optional<Output<AppResourceExperimentArgs>> experiment() {
+        return Optional.ofNullable(this.experiment);
     }
 
     /**
@@ -167,6 +175,7 @@ public final class AppResourceArgs extends com.pulumi.resources.ResourceArgs {
     private AppResourceArgs(AppResourceArgs $) {
         this.database = $.database;
         this.description = $.description;
+        this.experiment = $.experiment;
         this.genieSpace = $.genieSpace;
         this.job = $.job;
         this.name = $.name;
@@ -238,6 +247,15 @@ public final class AppResourceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        public Builder experiment(@Nullable Output<AppResourceExperimentArgs> experiment) {
+            $.experiment = experiment;
+            return this;
+        }
+
+        public Builder experiment(AppResourceExperimentArgs experiment) {
+            return experiment(Output.of(experiment));
         }
 
         /**

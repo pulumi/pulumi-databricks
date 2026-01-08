@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetRfaAccessRequestDestinationsDestination;
+import com.pulumi.databricks.outputs.GetRfaAccessRequestDestinationsDestinationSourceSecurable;
 import com.pulumi.databricks.outputs.GetRfaAccessRequestDestinationsSecurable;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
@@ -21,20 +22,37 @@ public final class GetRfaAccessRequestDestinationsResult {
      */
     private Boolean areAnyDestinationsHidden;
     /**
+     * @return (Securable) - The source securable from which the destinations are inherited. Either the same value as securable (if destination
+     * is set directly on the securable) or the nearest parent securable with destinations set
+     * 
+     */
+    private GetRfaAccessRequestDestinationsDestinationSourceSecurable destinationSourceSecurable;
+    /**
      * @return (list of NotificationDestination) - The access request destinations for the securable
      * 
      */
     private List<GetRfaAccessRequestDestinationsDestination> destinations;
+    /**
+     * @return (string) - Required. The full name of the catalog/schema/table.
+     * Optional if resourceName is present
+     * 
+     */
+    private String fullName;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
     /**
-     * @return (Securable) - The securable for which the access request destinations are being retrieved
+     * @return (Securable) - The securable for which the access request destinations are being modified or read
      * 
      */
     private GetRfaAccessRequestDestinationsSecurable securable;
+    /**
+     * @return (string) - The type of the securable. Redundant with the type in the securable object, but necessary for Pulumi integration
+     * 
+     */
+    private String securableType;
 
     private GetRfaAccessRequestDestinationsResult() {}
     /**
@@ -46,11 +64,27 @@ public final class GetRfaAccessRequestDestinationsResult {
         return this.areAnyDestinationsHidden;
     }
     /**
+     * @return (Securable) - The source securable from which the destinations are inherited. Either the same value as securable (if destination
+     * is set directly on the securable) or the nearest parent securable with destinations set
+     * 
+     */
+    public GetRfaAccessRequestDestinationsDestinationSourceSecurable destinationSourceSecurable() {
+        return this.destinationSourceSecurable;
+    }
+    /**
      * @return (list of NotificationDestination) - The access request destinations for the securable
      * 
      */
     public List<GetRfaAccessRequestDestinationsDestination> destinations() {
         return this.destinations;
+    }
+    /**
+     * @return (string) - Required. The full name of the catalog/schema/table.
+     * Optional if resourceName is present
+     * 
+     */
+    public String fullName() {
+        return this.fullName;
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -60,11 +94,18 @@ public final class GetRfaAccessRequestDestinationsResult {
         return this.id;
     }
     /**
-     * @return (Securable) - The securable for which the access request destinations are being retrieved
+     * @return (Securable) - The securable for which the access request destinations are being modified or read
      * 
      */
     public GetRfaAccessRequestDestinationsSecurable securable() {
         return this.securable;
+    }
+    /**
+     * @return (string) - The type of the securable. Redundant with the type in the securable object, but necessary for Pulumi integration
+     * 
+     */
+    public String securableType() {
+        return this.securableType;
     }
 
     public static Builder builder() {
@@ -77,16 +118,22 @@ public final class GetRfaAccessRequestDestinationsResult {
     @CustomType.Builder
     public static final class Builder {
         private Boolean areAnyDestinationsHidden;
+        private GetRfaAccessRequestDestinationsDestinationSourceSecurable destinationSourceSecurable;
         private List<GetRfaAccessRequestDestinationsDestination> destinations;
+        private String fullName;
         private String id;
         private GetRfaAccessRequestDestinationsSecurable securable;
+        private String securableType;
         public Builder() {}
         public Builder(GetRfaAccessRequestDestinationsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.areAnyDestinationsHidden = defaults.areAnyDestinationsHidden;
+    	      this.destinationSourceSecurable = defaults.destinationSourceSecurable;
     	      this.destinations = defaults.destinations;
+    	      this.fullName = defaults.fullName;
     	      this.id = defaults.id;
     	      this.securable = defaults.securable;
+    	      this.securableType = defaults.securableType;
         }
 
         @CustomType.Setter
@@ -95,6 +142,14 @@ public final class GetRfaAccessRequestDestinationsResult {
               throw new MissingRequiredPropertyException("GetRfaAccessRequestDestinationsResult", "areAnyDestinationsHidden");
             }
             this.areAnyDestinationsHidden = areAnyDestinationsHidden;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder destinationSourceSecurable(GetRfaAccessRequestDestinationsDestinationSourceSecurable destinationSourceSecurable) {
+            if (destinationSourceSecurable == null) {
+              throw new MissingRequiredPropertyException("GetRfaAccessRequestDestinationsResult", "destinationSourceSecurable");
+            }
+            this.destinationSourceSecurable = destinationSourceSecurable;
             return this;
         }
         @CustomType.Setter
@@ -107,6 +162,14 @@ public final class GetRfaAccessRequestDestinationsResult {
         }
         public Builder destinations(GetRfaAccessRequestDestinationsDestination... destinations) {
             return destinations(List.of(destinations));
+        }
+        @CustomType.Setter
+        public Builder fullName(String fullName) {
+            if (fullName == null) {
+              throw new MissingRequiredPropertyException("GetRfaAccessRequestDestinationsResult", "fullName");
+            }
+            this.fullName = fullName;
+            return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
@@ -124,12 +187,23 @@ public final class GetRfaAccessRequestDestinationsResult {
             this.securable = securable;
             return this;
         }
+        @CustomType.Setter
+        public Builder securableType(String securableType) {
+            if (securableType == null) {
+              throw new MissingRequiredPropertyException("GetRfaAccessRequestDestinationsResult", "securableType");
+            }
+            this.securableType = securableType;
+            return this;
+        }
         public GetRfaAccessRequestDestinationsResult build() {
             final var _resultValue = new GetRfaAccessRequestDestinationsResult();
             _resultValue.areAnyDestinationsHidden = areAnyDestinationsHidden;
+            _resultValue.destinationSourceSecurable = destinationSourceSecurable;
             _resultValue.destinations = destinations;
+            _resultValue.fullName = fullName;
             _resultValue.id = id;
             _resultValue.securable = securable;
+            _resultValue.securableType = securableType;
             return _resultValue;
         }
     }

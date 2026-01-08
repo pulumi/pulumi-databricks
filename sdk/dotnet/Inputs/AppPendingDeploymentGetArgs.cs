@@ -12,6 +12,14 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class AppPendingDeploymentGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("commands")]
+        private InputList<string>? _commands;
+        public InputList<string> Commands
+        {
+            get => _commands ?? (_commands = new InputList<string>());
+            set => _commands = value;
+        }
+
         /// <summary>
         /// The creation time of the app.
         /// </summary>
@@ -29,6 +37,17 @@ namespace Pulumi.Databricks.Inputs
 
         [Input("deploymentId")]
         public Input<string>? DeploymentId { get; set; }
+
+        [Input("envVars")]
+        private InputList<Inputs.AppPendingDeploymentEnvVarGetArgs>? _envVars;
+        public InputList<Inputs.AppPendingDeploymentEnvVarGetArgs> EnvVars
+        {
+            get => _envVars ?? (_envVars = new InputList<Inputs.AppPendingDeploymentEnvVarGetArgs>());
+            set => _envVars = value;
+        }
+
+        [Input("gitSource")]
+        public Input<Inputs.AppPendingDeploymentGitSourceGetArgs>? GitSource { get; set; }
 
         [Input("mode")]
         public Input<string>? Mode { get; set; }

@@ -167,6 +167,14 @@ Object.defineProperty(exports, "debugTruncateBytes", {
     enumerable: true,
 });
 
+export declare const disableOauthRefreshToken: boolean | undefined;
+Object.defineProperty(exports, "disableOauthRefreshToken", {
+    get() {
+        return __config.getObject<boolean>("disableOauthRefreshToken");
+    },
+    enumerable: true,
+});
+
 export declare const experimentalIsUnifiedHost: boolean | undefined;
 Object.defineProperty(exports, "experimentalIsUnifiedHost", {
     get() {
